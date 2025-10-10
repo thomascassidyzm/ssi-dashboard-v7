@@ -5,6 +5,8 @@ import ProcessOverview from '../views/ProcessOverview.vue'
 import CanonicalSeeds from '../views/CanonicalSeeds.vue'
 import APMLSpec from '../views/APMLSpec.vue'
 import CourseGeneration from '../views/CourseGeneration.vue'
+import CourseBrowser from '../views/CourseBrowser.vue'
+import CourseEditor from '../views/CourseEditor.vue'
 
 const routes = [
   {
@@ -16,6 +18,17 @@ const routes = [
     path: '/generate',
     name: 'CourseGeneration',
     component: CourseGeneration
+  },
+  {
+    path: '/courses',
+    name: 'CourseBrowser',
+    component: CourseBrowser
+  },
+  {
+    path: '/courses/:courseCode',
+    name: 'CourseEditor',
+    component: CourseEditor,
+    props: true
   },
   {
     path: '/phase/:id',

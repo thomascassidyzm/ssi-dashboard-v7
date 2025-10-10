@@ -783,6 +783,195 @@ app.get('/api/courses/:courseCode/status', (req, res) => {
   });
 });
 
+/**
+ * GET /api/courses
+ * List all available courses
+ */
+app.get('/api/courses', async (req, res) => {
+  try {
+    const courseDirs = await fs.readdir(CONFIG.VFS_ROOT);
+    const courses = [];
+
+    for (const dir of courseDirs) {
+      const coursePath = path.join(CONFIG.VFS_ROOT, dir);
+      const stats = await fs.stat(coursePath);
+
+      if (stats.isDirectory()) {
+        const metadataPath = path.join(coursePath, 'course_metadata.json');
+
+        if (await fs.pathExists(metadataPath)) {
+          const metadata = await fs.readJson(metadataPath);
+          courses.push(metadata);
+        }
+      }
+    }
+
+    res.json({ courses });
+  } catch (error) {
+    console.error('Error listing courses:', error);
+    res.status(500).json({ error: 'Failed to list courses' });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode
+ * Get detailed course information including amino acids
+ */
+app.get('/api/courses/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+
+    // Check if course exists
+    if (!await fs.pathExists(coursePath)) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    // Load metadata
+    const metadataPath = path.join(coursePath, 'course_metadata.json');
+    const course = await fs.readJson(metadataPath);
+
+    // Load translations
+    const translationsDir = path.join(coursePath, 'amino_acids', 'translations');
+    const translations = [];
+
+    if (await fs.pathExists(translationsDir)) {
+      const files = await fs.readdir(translationsDir);
+      for (const file of files.slice(0, 100)) { // Limit to first 100 for performance
+        if (file.endsWith('.json')) {
+          const data = await fs.readJson(path.join(translationsDir, file));
+          translations.push(data);
+        }
+      }
+    }
+
+    // Sort translations by seed_id
+    translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id));
+
+    // Load deduplicated LEGOs
+    const legosDir = path.join(coursePath, 'amino_acids', 'legos_deduplicated');
+    const legos = [];
+
+    if (await fs.pathExists(legosDir)) {
+      const files = await fs.readdir(legosDir);
+      for (const file of files.slice(0, 50)) { // Limit to first 50
+        if (file.endsWith('.json')) {
+          const data = await fs.readJson(path.join(legosDir, file));
+          legos.push(data);
+        }
+      }
+    }
+
+    // Load baskets
+    const basketsDir = path.join(coursePath, 'amino_acids', 'baskets');
+    const baskets = [];
+
+    if (await fs.pathExists(basketsDir)) {
+      const files = await fs.readdir(basketsDir);
+      for (const file of files) {
+        if (file.endsWith('.json')) {
+          const data = await fs.readJson(path.join(basketsDir, file));
+          baskets.push(data);
+        }
+      }
+      baskets.sort((a, b) => a.basket_id - b.basket_id);
+    }
+
+    res.json({
+      course,
+      translations,
+      legos,
+      baskets
+    });
+  } catch (error) {
+    console.error('Error loading course:', error);
+    res.status(500).json({ error: 'Failed to load course' });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/provenance/:seedId
+ * Trace provenance for a specific seed
+ */
+app.get('/api/courses/:courseCode/provenance/:seedId', async (req, res) => {
+  try {
+    const { courseCode, seedId } = req.params;
+    const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+
+    // Find translation for this seed
+    const translationsDir = path.join(coursePath, 'amino_acids', 'translations');
+    const translationFiles = await fs.readdir(translationsDir);
+
+    let translation = null;
+    for (const file of translationFiles) {
+      const data = await fs.readJson(path.join(translationsDir, file));
+      if (data.seed_id === seedId) {
+        translation = data;
+        break;
+      }
+    }
+
+    if (!translation) {
+      return res.status(404).json({ error: 'Seed not found' });
+    }
+
+    // Find all LEGOs from this translation
+    const legosDir = path.join(coursePath, 'amino_acids', 'legos');
+    const legoFiles = await fs.readdir(legosDir);
+    const legos = [];
+
+    for (const file of legoFiles) {
+      const data = await fs.readJson(path.join(legosDir, file));
+      if (data.source_translation_uuid === translation.uuid) {
+        legos.push(data);
+      }
+    }
+
+    // Find deduplicated LEGOs containing this seed
+    const dedupeDir = path.join(coursePath, 'amino_acids', 'legos_deduplicated');
+    const dedupeFiles = await fs.readdir(dedupeDir);
+    const deduplicatedLEGOs = [];
+
+    for (const file of dedupeFiles) {
+      const data = await fs.readJson(path.join(dedupeDir, file));
+      const hasOurSeed = data.provenance.some(p => p.source_seed_id === seedId);
+      if (hasOurSeed) {
+        deduplicatedLEGOs.push(data);
+      }
+    }
+
+    // Find baskets containing these LEGOs
+    const basketsDir = path.join(coursePath, 'amino_acids', 'baskets');
+    const basketFiles = await fs.readdir(basketsDir);
+    const affectedBaskets = [];
+
+    const legoUUIDs = new Set(deduplicatedLEGOs.map(l => l.uuid));
+
+    for (const file of basketFiles) {
+      const basket = await fs.readJson(path.join(basketsDir, file));
+      const containsOurLEGOs = basket.legos.some(l => legoUUIDs.has(l.uuid));
+      if (containsOurLEGOs) {
+        affectedBaskets.push(basket);
+      }
+    }
+
+    res.json({
+      legos: legos.length,
+      deduplicated: deduplicatedLEGOs.length,
+      baskets: affectedBaskets.length,
+      details: {
+        translation,
+        legos,
+        deduplicatedLEGOs,
+        affectedBaskets
+      }
+    });
+  } catch (error) {
+    console.error('Error tracing provenance:', error);
+    res.status(500).json({ error: 'Failed to trace provenance' });
+  }
+});
+
 // =============================================================================
 // SERVER START
 // =============================================================================
@@ -800,7 +989,10 @@ async function startServer() {
     console.log(`Training Dashboard: ${CONFIG.TRAINING_URL}`);
     console.log(`\nAPI Endpoints:`);
     console.log(`  POST http://localhost:${CONFIG.PORT}/api/courses/generate`);
+    console.log(`  GET  http://localhost:${CONFIG.PORT}/api/courses`);
+    console.log(`  GET  http://localhost:${CONFIG.PORT}/api/courses/:courseCode`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/courses/:courseCode/status`);
+    console.log(`  GET  http://localhost:${CONFIG.PORT}/api/courses/:courseCode/provenance/:seedId`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/health`);
     console.log(`\nNext Steps:`);
     console.log(`  1. Install ngrok: brew install ngrok`);

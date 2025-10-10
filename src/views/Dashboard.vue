@@ -15,19 +15,37 @@
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-      <!-- Generate Course CTA -->
-      <section class="mb-12">
+      <!-- Quick Actions -->
+      <section class="mb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Generate New Course -->
         <router-link to="/generate" class="block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-lg border border-emerald-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-emerald-500/20">
           <div class="flex items-center justify-between">
             <div>
-              <h2 class="text-3xl font-bold text-white mb-2">🚀 Generate New Course</h2>
-              <p class="text-emerald-100">
+              <h2 class="text-2xl font-bold text-white mb-2">🚀 Generate New Course</h2>
+              <p class="text-emerald-100 text-sm">
                 Start the complete 8-phase pipeline to generate a new language course
               </p>
             </div>
             <div class="text-white">
-              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </div>
+          </div>
+        </router-link>
+
+        <!-- Browse Existing Courses -->
+        <router-link to="/courses" class="block bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 border border-slate-500/30 rounded-lg p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-slate-500/20">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-2xl font-bold text-emerald-400 mb-2">📚 Browse Courses</h2>
+              <p class="text-slate-300 text-sm">
+                View, edit, and manage existing courses with provenance tracking
+              </p>
+            </div>
+            <div class="text-emerald-400">
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
               </svg>
             </div>
           </div>

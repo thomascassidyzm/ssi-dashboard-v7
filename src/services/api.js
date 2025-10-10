@@ -31,6 +31,21 @@ export default {
     async getStatus(courseCode) {
       const response = await api.get(`/api/courses/${courseCode}/status`)
       return response.data
+    },
+
+    async list() {
+      const response = await api.get('/api/courses')
+      return response.data
+    },
+
+    async get(courseCode) {
+      const response = await api.get(`/api/courses/${courseCode}`)
+      return response.data
+    },
+
+    async traceProvenance(courseCode, seedId) {
+      const response = await api.get(`/api/courses/${courseCode}/provenance/${seedId}`)
+      return response.data
     }
   }
 }
