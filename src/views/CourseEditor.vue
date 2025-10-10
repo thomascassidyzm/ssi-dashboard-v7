@@ -236,6 +236,111 @@
         </div>
       </div>
     </div>
+
+    <!-- Edit Modal -->
+    <div
+      v-if="editModal.open"
+      class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4"
+      @click.self="closeEditModal"
+    >
+      <div class="bg-slate-800 border border-slate-700 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-6 border-b border-slate-700">
+          <div>
+            <h2 class="text-2xl font-bold text-emerald-400">Edit Translation</h2>
+            <p class="text-sm text-slate-400 mt-1">{{ editModal.translation?.seed_id }}</p>
+          </div>
+          <button
+            @click="closeEditModal"
+            class="text-slate-400 hover:text-slate-300 text-2xl"
+          >
+            ×
+          </button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="p-6 space-y-6">
+          <!-- Impact Analysis -->
+          <div v-if="editModal.impact" class="bg-yellow-900/20 border border-yellow-500/50 rounded-lg p-4">
+            <div class="text-yellow-400 font-semibold mb-2">⚠️ Edit Impact</div>
+            <div class="text-sm text-slate-300">
+              Editing this translation will regenerate:
+            </div>
+            <div class="grid grid-cols-3 gap-4 mt-3">
+              <div>
+                <div class="text-xs text-slate-400">LEGOs</div>
+                <div class="text-xl font-bold text-yellow-400">{{ editModal.impact.legos }}</div>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400">Deduplicated</div>
+                <div class="text-xl font-bold text-yellow-400">{{ editModal.impact.deduplicated }}</div>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400">Baskets Affected</div>
+                <div class="text-xl font-bold text-yellow-400">{{ editModal.impact.baskets }}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Edit Form -->
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">
+                Known Language (Source)
+              </label>
+              <textarea
+                v-model="editModal.editedSource"
+                class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-3 text-slate-100 focus:outline-none focus:border-emerald-500 font-mono"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">
+                Target Language
+              </label>
+              <textarea
+                v-model="editModal.editedTarget"
+                class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-3 text-slate-100 focus:outline-none focus:border-emerald-500 font-mono"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Original Values -->
+          <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+            <div class="text-xs text-slate-400 mb-2">Original Values</div>
+            <div class="space-y-2 text-sm">
+              <div>
+                <span class="text-slate-500">Source:</span>
+                <span class="text-slate-300 ml-2">{{ editModal.translation?.source }}</span>
+              </div>
+              <div>
+                <span class="text-slate-500">Target:</span>
+                <span class="text-slate-300 ml-2">{{ editModal.translation?.target }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end gap-3 p-6 border-t border-slate-700">
+          <button
+            @click="closeEditModal"
+            class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            @click="saveTranslation"
+            :disabled="editModal.saving"
+            class="px-6 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors"
+          >
+            {{ editModal.saving ? 'Saving...' : 'Save & Regenerate' }}
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -258,6 +363,16 @@ const activeTab = ref('translations')
 const searchQuery = ref('')
 const selectedSeed = ref('')
 const provenanceResult = ref(null)
+
+// Edit modal state
+const editModal = ref({
+  open: false,
+  translation: null,
+  editedSource: '',
+  editedTarget: '',
+  impact: null,
+  saving: false
+})
 
 const tabs = [
   { id: 'translations', label: 'Translations' },
@@ -327,9 +442,52 @@ function formatProvenance(provenance) {
 }
 
 async function editTranslation(translation) {
-  // TODO: Implement edit dialog with impact analysis
-  console.log('Edit translation:', translation)
-  alert('Edit functionality coming soon - will show impact analysis before save')
+  editModal.value.translation = translation
+  editModal.value.editedSource = translation.source
+  editModal.value.editedTarget = translation.target
+  editModal.value.open = true
+
+  // Fetch impact analysis
+  try {
+    const response = await api.course.traceProvenance(courseCode, translation.seed_id)
+    editModal.value.impact = response
+  } catch (err) {
+    console.error('Failed to fetch impact:', err)
+  }
+}
+
+function closeEditModal() {
+  editModal.value.open = false
+  editModal.value.translation = null
+  editModal.value.editedSource = ''
+  editModal.value.editedTarget = ''
+  editModal.value.impact = null
+}
+
+async function saveTranslation() {
+  if (!editModal.value.translation) return
+
+  editModal.value.saving = true
+  try {
+    // TODO: Implement save API call
+    await api.course.updateTranslation(
+      courseCode,
+      editModal.value.translation.uuid,
+      {
+        source: editModal.value.editedSource,
+        target: editModal.value.editedTarget
+      }
+    )
+
+    // Reload course data
+    await loadCourse()
+    closeEditModal()
+  } catch (err) {
+    console.error('Failed to save translation:', err)
+    alert('Failed to save: ' + err.message)
+  } finally {
+    editModal.value.saving = false
+  }
 }
 
 async function traceProvenance() {

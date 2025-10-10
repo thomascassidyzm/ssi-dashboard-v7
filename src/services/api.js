@@ -47,6 +47,11 @@ export default {
     async traceProvenance(courseCode, seedId) {
       const response = await api.get(`/api/courses/${courseCode}/provenance/${seedId}`)
       return response.data
+    },
+
+    async updateTranslation(courseCode, uuid, data) {
+      const response = await api.put(`/api/courses/${courseCode}/translations/${uuid}`, data)
+      return response.data
     }
   }
 }

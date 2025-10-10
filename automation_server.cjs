@@ -972,6 +972,56 @@ app.get('/api/courses/:courseCode/provenance/:seedId', async (req, res) => {
   }
 });
 
+/**
+ * PUT /api/courses/:courseCode/translations/:uuid
+ * Update a translation and trigger regeneration
+ */
+app.put('/api/courses/:courseCode/translations/:uuid', async (req, res) => {
+  try {
+    const { courseCode, uuid } = req.params;
+    const { source, target } = req.body;
+    const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+
+    // Find translation file
+    const translationPath = path.join(coursePath, 'amino_acids', 'translations', `${uuid}.json`);
+
+    if (!await fs.pathExists(translationPath)) {
+      return res.status(404).json({ error: 'Translation not found' });
+    }
+
+    // Load existing translation
+    const translation = await fs.readJson(translationPath);
+
+    // Update fields
+    translation.source = source;
+    translation.target = target;
+    translation.metadata.updated_at = new Date().toISOString();
+    translation.metadata.edited = true;
+
+    // Save updated translation
+    await fs.writeJson(translationPath, translation, { spaces: 2 });
+
+    // Update course metadata to mark for regeneration
+    const metadataPath = path.join(coursePath, 'course_metadata.json');
+    const metadata = await fs.readJson(metadataPath);
+    metadata.needs_regeneration = true;
+    metadata.last_edit = {
+      seed_id: translation.seed_id,
+      timestamp: new Date().toISOString()
+    };
+    await fs.writeJson(metadataPath, metadata, { spaces: 2 });
+
+    res.json({
+      success: true,
+      message: 'Translation updated. Course marked for regeneration.',
+      translation
+    });
+  } catch (error) {
+    console.error('Error updating translation:', error);
+    res.status(500).json({ error: 'Failed to update translation' });
+  }
+});
+
 // =============================================================================
 // SERVER START
 // =============================================================================
