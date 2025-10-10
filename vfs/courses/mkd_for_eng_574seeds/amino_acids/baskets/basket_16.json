@@ -1,0 +1,165 @@
+{
+  "uuid": "a60df2cd35722a0388d6bb8ab8ee33a0",
+  "type": "basket",
+  "basket_id": 16,
+  "lego_count": 10,
+  "legos": [
+    {
+      "uuid": "c44e75287885dc93ec39ab39c8f662c6",
+      "text": "not sure if I can",
+      "provenance": [
+        {
+          "provenance": "S8L5",
+          "source_translation_uuid": "80327835084a08588ec9f5b816fb131a",
+          "source_seed_id": "C0008",
+          "original_uuid": "8a654b735e5ef2da2e0af95db4bda1f4"
+        }
+      ],
+      "fcfs_score": 26.4,
+      "utility_score": 50
+    },
+    {
+      "uuid": "6acf0a07969aa294286615c5b585f430",
+      "text": "want to speak Macedonian",
+      "provenance": [
+        {
+          "provenance": "S1L4",
+          "source_translation_uuid": "abe563fe55e11c8d67a5969e50a38651",
+          "source_seed_id": "C0001",
+          "original_uuid": "5c912804dc709ac4de3c6cac87504281"
+        }
+      ],
+      "fcfs_score": 38,
+      "utility_score": 66
+    },
+    {
+      "uuid": "d703af1ffb4246c635f2a128f4c67425",
+      "text": "You're going to remember",
+      "provenance": [
+        {
+          "provenance": "S18L2",
+          "source_translation_uuid": "0b9c5b0d9b7cd0c14cc59dc70b0a758c",
+          "source_seed_id": "C0018",
+          "original_uuid": "217598a2e1e1c1316589cb6e25886295"
+        }
+      ],
+      "fcfs_score": 32.6,
+      "utility_score": 63
+    },
+    {
+      "uuid": "f6fe65bb85d8b14a4f36835e3b86c64f",
+      "text": "I know how to practise",
+      "provenance": [
+        {
+          "provenance": "S37L2",
+          "source_translation_uuid": "e5e82f717bc05ee954a80ad21f216c44",
+          "source_seed_id": "C0037",
+          "original_uuid": "32a0eb5228767c8799a6014f692e2716"
+        }
+      ],
+      "fcfs_score": 41.8,
+      "utility_score": 70
+    },
+    {
+      "uuid": "e7236b14049074ae9de73dda718ffd59",
+      "text": "do you feel",
+      "provenance": [
+        {
+          "provenance": "S26L2",
+          "source_translation_uuid": "10595763fe88deaaf0e2d583196e14a9",
+          "source_seed_id": "C0026",
+          "original_uuid": "1c86e10b355ed5dafd8517e95e13b293"
+        }
+      ],
+      "fcfs_score": 18,
+      "utility_score": 42
+    },
+    {
+      "uuid": "2c0fa430705ce6c5969bdef22414a219",
+      "text": "And I want",
+      "provenance": [
+        {
+          "provenance": "S12L1",
+          "source_translation_uuid": "e10f4bfdf8ceeedf9076544b2f66854b",
+          "source_seed_id": "C0012",
+          "original_uuid": "293b9c257deef901a4e7274baff7631a"
+        }
+      ],
+      "fcfs_score": 34.6,
+      "utility_score": 63
+    },
+    {
+      "uuid": "6799b06678b00a07dd8171997af4d13f",
+      "text": "speak Macedonian very",
+      "provenance": [
+        {
+          "provenance": "S10L2",
+          "source_translation_uuid": "9e5837b377e1c48a8f18fa187763d7dc",
+          "source_seed_id": "C0010",
+          "original_uuid": "414bf6cb864aefba6d5b81574a6c1067"
+        }
+      ],
+      "fcfs_score": 34.6,
+      "utility_score": 67
+    },
+    {
+      "uuid": "f578fbe7da97aabad0e19d12d5016214",
+      "text": "you speak",
+      "provenance": [
+        {
+          "provenance": "S11L5",
+          "source_translation_uuid": "0e9dc6e05cc3bf4d2953878713a88579",
+          "source_seed_id": "C0011",
+          "original_uuid": "12d65053f826124ec8a79ccc95e0d606"
+        }
+      ],
+      "fcfs_score": 32.5,
+      "utility_score": 70
+    },
+    {
+      "uuid": "669b1c7c4ed68d22cfa62e76806b9b52",
+      "text": "You're learning Macedonian",
+      "provenance": [
+        {
+          "provenance": "S15L1",
+          "source_translation_uuid": "328baae5c8d6c983d661fe27bcb4a7d2",
+          "source_seed_id": "C0015",
+          "original_uuid": "328b178c8109f0d9a766817c3b0e02c1"
+        }
+      ],
+      "fcfs_score": 26.5,
+      "utility_score": 48
+    },
+    {
+      "uuid": "93538cd3400c2f71d82f831aa83d30d6",
+      "text": "learning for about a",
+      "provenance": [
+        {
+          "provenance": "S24L2",
+          "source_translation_uuid": "191bc2611c6622463631df6d1b2a789c",
+          "source_seed_id": "C0024",
+          "original_uuid": "f0517d669a45dd62ef6d321db7e3919a"
+        }
+      ],
+      "fcfs_score": 19.3,
+      "utility_score": 34
+    }
+  ],
+  "metadata": {
+    "course_code": "mkd_for_eng_574seeds",
+    "phase": "phase_5",
+    "patterns_included": [
+      "subject_verb",
+      "verb_phrases",
+      "questions",
+      "general"
+    ],
+    "composite_score": 46,
+    "pedagogical_notes": {
+      "purpose": "Grouped for optimal teaching sequence",
+      "pattern_diversity": 4,
+      "progression": "Balanced mix of FCFS and utility priorities"
+    },
+    "created_at": "2025-10-10T10:27:35.755Z"
+  }
+}

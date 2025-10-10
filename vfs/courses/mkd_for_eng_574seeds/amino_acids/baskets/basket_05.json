@@ -1,0 +1,166 @@
+{
+  "uuid": "1940f01a498a60712b74d068cf4d58d1",
+  "type": "basket",
+  "basket_id": 5,
+  "lego_count": 10,
+  "legos": [
+    {
+      "uuid": "40676fa84ce117a642693c3087fd2e10",
+      "text": "So I can remember",
+      "provenance": [
+        {
+          "provenance": "S34L3",
+          "source_translation_uuid": "a83dcf4e6423f31924be58390a82d5cd",
+          "source_seed_id": "C0034",
+          "original_uuid": "df11556744f3dfe8ffd05cbe117438ab"
+        }
+      ],
+      "fcfs_score": 27.4,
+      "utility_score": 55
+    },
+    {
+      "uuid": "5a069f7d6a7776f8ddea2e76852c698b",
+      "text": "You want to learn",
+      "provenance": [
+        {
+          "provenance": "S14L2",
+          "source_translation_uuid": "52ff0369b289ec31ad8ec133efa92e0d",
+          "source_seed_id": "C0014",
+          "original_uuid": "ef48df4ceb3e47eeb7b587a170646250"
+        }
+      ],
+      "fcfs_score": 46.2,
+      "utility_score": 72
+    },
+    {
+      "uuid": "5f76af3eb886462791309d5d52220854",
+      "text": "able to speak",
+      "provenance": [
+        {
+          "provenance": "S9L1",
+          "source_translation_uuid": "62c0412ce2256fb9f05b11cded5c4c70",
+          "source_seed_id": "C0009",
+          "original_uuid": "5ccdcc21c64fbe196c0fdf46606e0337"
+        }
+      ],
+      "fcfs_score": 35.3,
+      "utility_score": 65
+    },
+    {
+      "uuid": "c63428c6d72f03db49c38dd2cfc2fd80",
+      "text": "Did you want to ask",
+      "provenance": [
+        {
+          "provenance": "S21L4",
+          "source_translation_uuid": "3a74af5264570f94a034101860e90228",
+          "source_seed_id": "C0021",
+          "original_uuid": "1fc31a692cc50e743dad44257c473469"
+        }
+      ],
+      "fcfs_score": 26.6,
+      "utility_score": 62
+    },
+    {
+      "uuid": "b9f89eb9885814bf18ea6f1f77205198",
+      "text": "how to say something in Macedonian",
+      "provenance": [
+        {
+          "provenance": "S4L5",
+          "source_translation_uuid": "c284115024769a4d02f4077ac776ee96",
+          "source_seed_id": "C0004",
+          "original_uuid": "4b808b9fdd27ccf0cf01a20524c00407"
+        }
+      ],
+      "fcfs_score": 35.3,
+      "utility_score": 67
+    },
+    {
+      "uuid": "72fb5430845f52cf78484bfd6dc89290",
+      "text": "I don't care about making mistakes",
+      "provenance": [
+        {
+          "provenance": "S31L3",
+          "source_translation_uuid": "bfd7a4272a21dea27f7e1fc28e57c51e",
+          "source_seed_id": "C0031",
+          "original_uuid": "134e1f9dd2dff609a18445492c8aaf4b"
+        }
+      ],
+      "fcfs_score": 25.3,
+      "utility_score": 47
+    },
+    {
+      "uuid": "81a5c25e3a13a957e6a98c59f79c2e2d",
+      "text": "I started to learn last",
+      "provenance": [
+        {
+          "provenance": "S23L5",
+          "source_translation_uuid": "b7dc2f1286902050dfe88ad6b85ca788",
+          "source_seed_id": "C0023",
+          "original_uuid": "e89eeb92ab15245bf8e2d7052c950dfc"
+        }
+      ],
+      "fcfs_score": 35.7,
+      "utility_score": 67
+    },
+    {
+      "uuid": "0ee73cc6575e288d1d4ea6eba34b4787",
+      "text": "practise speaking more",
+      "provenance": [
+        {
+          "provenance": "S33L2",
+          "source_translation_uuid": "eba7e9d2598e96664df5f72ab4d02815",
+          "source_seed_id": "C0033",
+          "original_uuid": "fcfe01a794bfeb43bdd9ad52e1f69733"
+        }
+      ],
+      "fcfs_score": 33.3,
+      "utility_score": 65
+    },
+    {
+      "uuid": "e3dbd092612ebe6500d52db6838af7bb",
+      "text": "Thank you very",
+      "provenance": [
+        {
+          "provenance": "S46L1",
+          "source_translation_uuid": "88b755a0317ef3732d2fe20be0f9077c",
+          "source_seed_id": "C0046",
+          "original_uuid": "468c432093b293f3d286612738f49ba1"
+        }
+      ],
+      "fcfs_score": 26.6,
+      "utility_score": 53
+    },
+    {
+      "uuid": "9d4abcbcf027ffe0c0b83da45dad3a1d",
+      "text": "I think that you're doing very",
+      "provenance": [
+        {
+          "provenance": "S44L4",
+          "source_translation_uuid": "04e26f811c296d7ea0a9ac33f69d906a",
+          "source_seed_id": "C0044",
+          "original_uuid": "e94f80b1ec5f0984b9a4e62a8482ef64"
+        }
+      ],
+      "fcfs_score": 23.6,
+      "utility_score": 44
+    }
+  ],
+  "metadata": {
+    "course_code": "mkd_for_eng_574seeds",
+    "phase": "phase_5",
+    "patterns_included": [
+      "subject_verb",
+      "verb_phrases",
+      "questions",
+      "negations",
+      "general"
+    ],
+    "composite_score": 48,
+    "pedagogical_notes": {
+      "purpose": "Grouped for optimal teaching sequence",
+      "pattern_diversity": 5,
+      "progression": "Balanced mix of FCFS and utility priorities"
+    },
+    "created_at": "2025-10-10T10:27:35.753Z"
+  }
+}
