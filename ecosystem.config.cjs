@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'ssi-automation',
-      script: 'automation_server.js',
+      script: 'automation_server.cjs',
       cwd: '/Users/tomcassidy/SSi/ssi-dashboard-v7-clean',
       interpreter: 'node',
       instances: 1,
