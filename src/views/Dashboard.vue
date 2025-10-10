@@ -15,6 +15,25 @@
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
+      <!-- Generate Course CTA -->
+      <section class="mb-12">
+        <router-link to="/generate" class="block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-lg border border-emerald-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-emerald-500/20">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-3xl font-bold text-white mb-2">🚀 Generate New Course</h2>
+              <p class="text-emerald-100">
+                Start the complete 8-phase pipeline to generate a new language course
+              </p>
+            </div>
+            <div class="text-white">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </div>
+          </div>
+        </router-link>
+      </section>
+
       <!-- Phase Training Pages -->
       <section class="mb-12">
         <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">

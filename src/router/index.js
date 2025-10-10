@@ -4,12 +4,18 @@ import TrainingPhase from '../views/TrainingPhase.vue'
 import ProcessOverview from '../views/ProcessOverview.vue'
 import CanonicalSeeds from '../views/CanonicalSeeds.vue'
 import APMLSpec from '../views/APMLSpec.vue'
+import CourseGeneration from '../views/CourseGeneration.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Dashboard',
     component: Dashboard
+  },
+  {
+    path: '/generate',
+    name: 'CourseGeneration',
+    component: CourseGeneration
   },
   {
     path: '/phase/:id',
