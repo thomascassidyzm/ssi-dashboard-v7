@@ -23,35 +23,35 @@ vfs/courses/{courseCode}/
 
 ---
 
-## Quick Start (3 Steps)
+## Quick Start (ONE Command!)
 
-### 1. Start the Automation Server
+### PM2 Auto-Start (Recommended)
 
+**Run once to set up:**
 ```bash
 cd /Users/tomcassidy/SSi/ssi-dashboard-v7-clean
-npm run server
+./start-pm2.sh
 ```
 
-You should see:
-```
-═══════════════════════════════════════════════════════════════
-SSi Course Production - Automation Server v7.0
-═══════════════════════════════════════════════════════════════
-Status: RUNNING
-Port: 3456
-VFS Root: ./vfs/courses
-```
+This will:
+- ✅ Start automation server (port 3456)
+- ✅ Start ngrok tunnel (using your reserved URL)
+- ✅ Auto-restart if crashes
+- ✅ Run in background
 
-### 2. Expose Server via ngrok
+**That's it!** Your server is now running and will auto-start on Mac boot.
 
-In a new terminal:
+### Verify It's Running
+
 ```bash
-ngrok http 3456
+pm2 list
+# Should show: ssi-automation (online), ssi-ngrok (online)
+
+pm2 logs
+# View live logs
 ```
 
-Copy the ngrok URL (e.g., `https://abc123.ngrok.io`)
-
-### 3. Open Dashboard and Generate
+### Open Dashboard and Generate
 
 1. Go to https://ssi-dashboard-v7.vercel.app
 2. Click **"🚀 Generate New Course"**
