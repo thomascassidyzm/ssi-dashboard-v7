@@ -1,0 +1,46 @@
+{
+  "version": "7.0",
+  "phase": "4",
+  "generated_at": "2025-10-10T11:13:33.065Z",
+  "course_code": "spa_for_eng_30seeds",
+  "statistics": {
+    "original_legos": 85,
+    "unique_legos": 80,
+    "deduplicated_legos": 80,
+    "duplicate_groups": 2,
+    "compression_ratio": "85:80",
+    "reduction_percentage": 6
+  },
+  "merge_log": [
+    {
+      "text": "I am",
+      "original_count": 5,
+      "provenance_preserved": 5,
+      "canonical_provenance": "S14L3",
+      "all_sources": "S14L3, S21L2, S22L2, S25L4, S4L2"
+    },
+    {
+      "text": "are you",
+      "original_count": 2,
+      "provenance_preserved": 2,
+      "canonical_provenance": "S24L3",
+      "all_sources": "S24L3, S3L3"
+    }
+  ],
+  "provenance_preservation": {
+    "description": "All provenance preserved in provenance arrays",
+    "format": "[{ provenance, source_translation_uuid, source_seed_id, original_uuid }, ...]",
+    "example": {
+      "text": "I am",
+      "original_count": 5,
+      "provenance_preserved": 5,
+      "canonical_provenance": "S14L3",
+      "all_sources": "S14L3, S21L2, S22L2, S25L4, S4L2"
+    }
+  },
+  "next_phase": {
+    "phase": "5",
+    "name": "Pattern-Aware Baskets",
+    "purpose": "Group LEGOs into pedagogically optimal baskets using graph patterns"
+  }
+}

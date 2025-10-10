@@ -1,0 +1,170 @@
+{
+  "uuid": "e22966a3768844c057adbb8b3a525dfd",
+  "type": "basket",
+  "basket_id": 7,
+  "lego_count": 10,
+  "legos": [
+    {
+      "uuid": "33ec7cd262aeabc56378aaede3e6182f",
+      "text": "I am from the",
+      "provenance": [
+        {
+          "provenance": "S25L1",
+          "source_translation_uuid": "fbc6663405969a340040061492989366",
+          "source_seed_id": "S025",
+          "original_uuid": "f7c876d8c5cd083639f1c9b45aad45ae"
+        }
+      ],
+      "fcfs_score": 21,
+      "utility_score": 39
+    },
+    {
+      "uuid": "614d0b9694b4326f9d9ddc4b823e028b",
+      "text": "Can you help me",
+      "provenance": [
+        {
+          "provenance": "S26L3",
+          "source_translation_uuid": "628e64f4593f910a8e9b83c2dacf93bb",
+          "source_seed_id": "S026",
+          "original_uuid": "58346968dea729753cd076d15e675c09"
+        }
+      ],
+      "fcfs_score": 17,
+      "utility_score": 39
+    },
+    {
+      "uuid": "a41428af22f890b88ba92a0e1aa2421d",
+      "text": "What time is it",
+      "provenance": [
+        {
+          "provenance": "S23L3",
+          "source_translation_uuid": "04b6e4a1202ddf4effa4d99862333a8b",
+          "source_seed_id": "S023",
+          "original_uuid": "21596a4ac00ecb947fcc5c5561f06631"
+        }
+      ],
+      "fcfs_score": 15.5,
+      "utility_score": 35
+    },
+    {
+      "uuid": "01caf3b821cd0bdc2522a170bc7d0be2",
+      "text": "What is",
+      "provenance": [
+        {
+          "provenance": "S15L4",
+          "source_translation_uuid": "ad4d5f288c48e2d00b2fe167b7d59318",
+          "source_seed_id": "S015",
+          "original_uuid": "2f4ffeada77495781d7d50e4102e0f7b"
+        }
+      ],
+      "fcfs_score": 15.5,
+      "utility_score": 35
+    },
+    {
+      "uuid": "ea7ec71792fdce5136c26685728d4a26",
+      "text": "I need help",
+      "provenance": [
+        {
+          "provenance": "S10L1",
+          "source_translation_uuid": "1a1e1c04c4d86120327409c98b9a5f89",
+          "source_seed_id": "S010",
+          "original_uuid": "59f14e7f194bc3a5e1c6f290187f889c"
+        }
+      ],
+      "fcfs_score": 25.7,
+      "utility_score": 47
+    },
+    {
+      "uuid": "396ce80d2db4ad37ea0e735902ba6557",
+      "text": "am learning Spanish",
+      "provenance": [
+        {
+          "provenance": "S14L4",
+          "source_translation_uuid": "5c26c008edcf8cabdf2124783de166a5",
+          "source_seed_id": "S014",
+          "original_uuid": "dd86796fade801de599a043f2b1efbbd"
+        }
+      ],
+      "fcfs_score": 24.5,
+      "utility_score": 45
+    },
+    {
+      "uuid": "644f5dd78d894a0faf4a34a336f4300a",
+      "text": "Nice to meet",
+      "provenance": [
+        {
+          "provenance": "S17L1",
+          "source_translation_uuid": "daf48be404685db773477872e17ef813",
+          "source_seed_id": "S017",
+          "original_uuid": "f76fa245ed1c86c8cea221e82b0f4713"
+        }
+      ],
+      "fcfs_score": 21,
+      "utility_score": 37
+    },
+    {
+      "uuid": "ae703d03790e49b65356d4333554527e",
+      "text": "are you",
+      "provenance": [
+        {
+          "provenance": "S24L3",
+          "source_translation_uuid": "4340624e8478e3216d90b7f5740daa6c",
+          "source_seed_id": "S024",
+          "original_uuid": "8d416aab193e87bd193ec3a438c44b3c"
+        },
+        {
+          "provenance": "S3L3",
+          "source_translation_uuid": "c91ce9bcda96a854c211857e1675e88e",
+          "source_seed_id": "S003",
+          "original_uuid": "54b995bb27a9f03294bd863bad156969"
+        }
+      ],
+      "fcfs_score": 18.4,
+      "utility_score": 42
+    },
+    {
+      "uuid": "bf9cc2b12e0fa2307c3c1f9570f4a3fa",
+      "text": "name is",
+      "provenance": [
+        {
+          "provenance": "S16L5",
+          "source_translation_uuid": "740dd4fe09e231f8068455398f5cc531",
+          "source_seed_id": "S016",
+          "original_uuid": "c82dccf93b8bae268d14ab2c7e626db1"
+        }
+      ],
+      "fcfs_score": 20,
+      "utility_score": 34
+    },
+    {
+      "uuid": "3fae794b4da96041609b2e490f836c6b",
+      "text": "time is",
+      "provenance": [
+        {
+          "provenance": "S23L5",
+          "source_translation_uuid": "04b6e4a1202ddf4effa4d99862333a8b",
+          "source_seed_id": "S023",
+          "original_uuid": "36a7e227dc223279dd6213f530638836"
+        }
+      ],
+      "fcfs_score": 15.5,
+      "utility_score": 35
+    }
+  ],
+  "metadata": {
+    "course_code": "spa_for_eng_30seeds",
+    "phase": "phase_5",
+    "patterns_included": [
+      "subject_verb",
+      "questions",
+      "general"
+    ],
+    "composite_score": 34,
+    "pedagogical_notes": {
+      "purpose": "Grouped for optimal teaching sequence",
+      "pattern_diversity": 3,
+      "progression": "Balanced mix of FCFS and utility priorities"
+    },
+    "created_at": "2025-10-10T11:13:55.745Z"
+  }
+}

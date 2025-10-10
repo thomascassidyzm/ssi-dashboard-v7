@@ -1,0 +1,75 @@
+{
+  "version": "7.0",
+  "phase": "6",
+  "generated_at": "2025-10-10T11:14:20.014Z",
+  "course_code": "spa_for_eng_30seeds",
+  "statistics": {
+    "total_baskets": 8,
+    "total_introductions": 8,
+    "avg_introduction_length": "3.0",
+    "pedagogical_strategy": "Known-only priming before new content"
+  },
+  "introductions_summary": [
+    {
+      "basket_id": 1,
+      "sequence_length": 3,
+      "items_preview": "I, you..."
+    },
+    {
+      "basket_id": 2,
+      "sequence_length": 3,
+      "items_preview": "I am fine, I am from the United States..."
+    },
+    {
+      "basket_id": 3,
+      "sequence_length": 3,
+      "items_preview": "I am fine, I am from the United States..."
+    },
+    {
+      "basket_id": 4,
+      "sequence_length": 3,
+      "items_preview": "I am fine, I am from the United States..."
+    },
+    {
+      "basket_id": 5,
+      "sequence_length": 3,
+      "items_preview": "I am fine, I am from the United States..."
+    },
+    {
+      "basket_id": 6,
+      "sequence_length": 3,
+      "items_preview": "I am fine, I am from the United States..."
+    },
+    {
+      "basket_id": 7,
+      "sequence_length": 3,
+      "items_preview": "I am fine, I am from the United States..."
+    },
+    {
+      "basket_id": 8,
+      "sequence_length": 3,
+      "items_preview": "I am fine, I am from the United States..."
+    }
+  ],
+  "course_complete": {
+    "status": "ALL PHASES COMPLETE",
+    "phases_executed": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "3.5",
+      "4",
+      "5",
+      "6"
+    ],
+    "ready_for": "Training deployment",
+    "amino_acids_generated": {
+      "translations": 30,
+      "legos_raw": 243,
+      "legos_deduplicated": 230,
+      "baskets": 8,
+      "introductions": 8
+    }
+  }
+}
