@@ -121,31 +121,31 @@
 
           <div class="space-y-4">
             <!-- Complete Process Overview -->
-            <div class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5">
+            <router-link to="/reference/overview" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">📚</div>
               <div>
                 <h3 class="font-semibold text-slate-100">Complete Process Overview</h3>
                 <p class="text-sm text-slate-400">Comprehensive documentation of the entire SSI Course Production pipeline - all phases in detail</p>
               </div>
-            </div>
+            </router-link>
 
             <!-- Canonical Seeds -->
-            <div class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5">
+            <router-link to="/reference/seeds" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">🌱</div>
               <div>
                 <h3 class="font-semibold text-slate-100">Canonical Seeds</h3>
                 <p class="text-sm text-slate-400">All 574 canonical seed pairs (16 years empirical optimization)</p>
               </div>
-            </div>
+            </router-link>
 
             <!-- APML v7.0 Specification -->
-            <div class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5">
+            <router-link to="/reference/apml" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">📋</div>
               <div>
                 <h3 class="font-semibold text-slate-100">APML v7.0 Specification</h3>
                 <p class="text-sm text-slate-400">Complete architectural specification with amino acid storage model</p>
               </div>
-            </div>
+            </router-link>
           </div>
         </div>
       </section>
