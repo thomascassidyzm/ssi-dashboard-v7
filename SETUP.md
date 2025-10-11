@@ -51,13 +51,13 @@ pm2 logs
 # View live logs
 ```
 
-### Open Dashboard and Generate
+### Open Dashboard
 
-1. Go to https://ssi-dashboard-v7.vercel.app
-2. Click **"🚀 Generate New Course"**
-3. Select languages (e.g., Irish from English)
-4. Click **"Generate Course"**
-5. Watch as Terminal windows spawn for each phase!
+1. Go to https://ssi-dashboard-v7-clean.vercel.app
+2. Browse existing courses in **Course Library**
+3. Click on a course to view translations, LEGOs, and baskets
+4. Click **Edit** on any translation to see impact analysis
+5. Or click **"🚀 Generate New Course"** to create a new one
 
 ---
 
@@ -143,6 +143,44 @@ For ngrok URL changes:
 
 ---
 
+## Editing Workflow
+
+### How to Edit a Translation
+
+1. **Open Course Library** → https://ssi-dashboard-v7-clean.vercel.app/courses
+2. **Click on a course** (e.g., Spanish 574 seeds)
+3. **Browse translations** in the Translations tab
+4. **Click "Edit"** on any translation
+5. **Review impact analysis:**
+   - LEGOs generated from this seed
+   - Deduplicated LEGOs affected
+   - Baskets impacted
+6. **Edit source or target text**
+7. **Click "Save & Regenerate"**
+
+### What Happens After Edit
+
+1. Translation amino acid file is updated in VFS
+2. `course_metadata.json` marked with `needs_regeneration: true`
+3. Phases 3-6 must be re-run to propagate changes:
+   - Phase 3: LEGO Extraction
+   - Phase 3.5: Graph Construction
+   - Phase 4: Deduplication
+   - Phase 5: Baskets
+   - Phase 6: Introductions
+
+### Regeneration Process
+
+```bash
+# Navigate to course directory
+cd vfs/courses/spa_for_eng_574seeds
+
+# Run phases 3-6 with Claude Code
+# Each phase will detect changes and regenerate affected amino acids
+```
+
+---
+
 ## API Endpoints
 
 ### Health Check
@@ -150,19 +188,47 @@ For ngrok URL changes:
 GET http://localhost:3456/api/health
 ```
 
+### List All Courses
+```bash
+GET http://localhost:3456/api/courses
+# Returns all courses with metadata and phase completion status
+```
+
+### Get Course Data
+```bash
+GET http://localhost:3456/api/courses/:courseCode
+# Returns full course: translations, LEGOs, baskets
+```
+
+### Trace Provenance
+```bash
+GET http://localhost:3456/api/courses/:courseCode/provenance/:seedId
+# Returns: LEGOs generated, deduplicated, baskets affected
+```
+
+### Update Translation (NEW)
+```bash
+PUT http://localhost:3456/api/courses/:courseCode/translations/:uuid
+{
+  "source": "Updated known language text",
+  "target": "Updated target language text"
+}
+# Marks course for regeneration, triggers phases 3-6
+```
+
 ### Generate Course
 ```bash
 POST http://localhost:3456/api/courses/generate
 {
-  "target": "gle",
+  "target": "spa",
   "known": "eng",
   "seeds": 574
 }
 ```
 
-### Get Status
+### Get Generation Status
 ```bash
-GET http://localhost:3456/api/courses/gle_for_eng_574seeds/status
+GET http://localhost:3456/api/courses/:courseCode/status
 ```
 
 ---
@@ -188,11 +254,15 @@ GET http://localhost:3456/api/courses/gle_for_eng_574seeds/status
 
 | File | Purpose |
 |------|---------|
-| `automation_server.js` | Backend API + phase orchestration |
+| `automation_server.cjs` | Backend API + phase orchestration + editing endpoints |
+| `src/views/CourseBrowser.vue` | Course Library - browse all courses |
+| `src/views/CourseEditor.vue` | Edit translations with impact analysis |
 | `src/views/CourseGeneration.vue` | Generation UI + progress monitor |
-| `src/services/api.js` | API client (axios) |
+| `src/views/APMLSpec.vue` | APML v7.0 specification documentation |
+| `src/services/api.js` | API client (axios) with ngrok bypass header |
 | `src/views/TrainingPhase.vue` | Phase prompts (editable) |
-| `vfs/courses/` | Generated course storage |
+| `vfs/courses/` | Generated course storage (VFS) |
+| `migrate-course.cjs` | Migration tool for legacy courses |
 
 ---
 

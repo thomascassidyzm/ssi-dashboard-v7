@@ -84,13 +84,39 @@
         └── metadata.json</code></pre>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Edit Propagation</h3>
-            <p>When a seed is edited:</p>
-            <ol class="space-y-1">
-              <li>1. Provenance tracking identifies affected LEGOs (S{seed}L{position})</li>
-              <li>2. Only affected amino acids are regenerated with new UUIDs</li>
-              <li>3. Downstream phases recompile using new amino acids</li>
-              <li>4. Protein manifests update references automatically</li>
+            <p>When a translation is edited via the dashboard:</p>
+            <ol class="space-y-2">
+              <li>1. <strong>API Request:</strong> PUT /api/courses/:code/translations/:uuid with new source/target</li>
+              <li>2. <strong>Amino Acid Update:</strong> Translation file is updated in VFS with metadata.edited = true</li>
+              <li>3. <strong>Regeneration Flag:</strong> course_metadata.json is marked with needs_regeneration = true</li>
+              <li>4. <strong>Impact Analysis:</strong> Provenance tracking identifies affected LEGOs via S{seed}L{position}</li>
+              <li>5. <strong>Phase Regeneration:</strong> Phases 3-6 are re-run to update LEGOs, deduplication, baskets, introductions</li>
+              <li>6. <strong>Deterministic UUIDs:</strong> New content generates new UUIDs, old references are automatically updated</li>
             </ol>
+
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">API Endpoints</h3>
+            <div class="space-y-3 mt-4">
+              <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+                <h4 class="font-semibold text-emerald-300">GET /api/courses</h4>
+                <p class="text-sm text-slate-400 mt-1">List all courses with metadata and phase completion status</p>
+              </div>
+              <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+                <h4 class="font-semibold text-emerald-300">GET /api/courses/:courseCode</h4>
+                <p class="text-sm text-slate-400 mt-1">Get full course data including translations, LEGOs, and baskets</p>
+              </div>
+              <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+                <h4 class="font-semibold text-emerald-300">GET /api/courses/:courseCode/provenance/:seedId</h4>
+                <p class="text-sm text-slate-400 mt-1">Trace provenance chain for a seed - returns LEGOs generated, deduplicated, and affected baskets</p>
+              </div>
+              <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+                <h4 class="font-semibold text-emerald-300">PUT /api/courses/:courseCode/translations/:uuid</h4>
+                <p class="text-sm text-slate-400 mt-1">Update a translation amino acid - triggers needs_regeneration flag for downstream phases</p>
+              </div>
+              <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
+                <h4 class="font-semibold text-emerald-300">POST /api/courses/generate</h4>
+                <p class="text-sm text-slate-400 mt-1">Generate new course from seed pairs - orchestrates all 6 phases via Claude Code agents</p>
+              </div>
+            </div>
           </div>
         </section>
 

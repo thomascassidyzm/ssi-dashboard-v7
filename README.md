@@ -11,6 +11,9 @@ Clean, minimal dashboard for SSi Course Production APML v7.0 specification.
 - ✅ All v7.0 phases (0, 1, 2, 3, 3.5, 4, 5, 6)
 - ✅ Amino acid storage architecture
 - ✅ Graph intelligence (Phase 3.5)
+- ✅ **Inline Translation Editing** with impact analysis
+- ✅ **Provenance Tracking** - trace seed impact through all phases
+- ✅ **Course Library Browser** - view and edit existing courses
 - ✅ Beautiful, subtle design (emerald/slate theme)
 - ✅ No garish colors or flickering animations
 - ✅ Zero legacy baggage
@@ -55,6 +58,52 @@ vercel --prod
 ```
 
 Or connect to GitHub and auto-deploy.
+
+## Architecture
+
+### Editing Workflow
+
+1. **User edits translation** in Course Editor UI
+2. **Impact analysis** shown before save (LEGOs affected, baskets impacted)
+3. **PUT /api/courses/:code/translations/:uuid** updates amino acid file
+4. **Course metadata flagged** with `needs_regeneration: true`
+5. **Phases 3-6 regenerate** to propagate changes through pipeline
+6. **Deterministic UUIDs** ensure automatic reference updates
+
+### API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/courses` | List all courses |
+| GET | `/api/courses/:code` | Get full course data |
+| GET | `/api/courses/:code/provenance/:seedId` | Trace provenance chain |
+| PUT | `/api/courses/:code/translations/:uuid` | Update translation |
+| POST | `/api/courses/generate` | Generate new course |
+
+### VFS Structure
+
+```
+vfs/courses/:courseCode/
+├── amino_acids/
+│   ├── translations/
+│   │   └── {uuid}.json          # Translation amino acids
+│   ├── legos/
+│   │   └── {uuid}.json          # LEGO amino acids
+│   ├── legos_deduplicated/
+│   │   └── {uuid}.json          # Deduplicated LEGOs
+│   ├── baskets/
+│   │   └── basket_{id}.json     # Basket amino acids
+│   └── introductions/
+│       └── intro_basket_{id}.json
+├── phase_outputs/
+│   ├── phase_2_corpus_intelligence.json
+│   ├── phase_3_lego_extraction.json
+│   ├── phase_3.5_graph.json
+│   ├── phase_4_deduplication.json
+│   ├── phase_5_baskets.json
+│   └── phase_6_introductions.json
+└── course_metadata.json
+```
 
 ## Design Philosophy
 
