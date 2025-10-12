@@ -517,6 +517,8 @@ app.use((req, res, next) => {
 
 const STATE = {
   jobs: new Map(), // courseCode -> { status, phase, progress, startTime }
+  regenerationJobs: new Map(), // jobId -> { status, courseCode, seedIds, startTime, results }
+  promptVersions: new Map(), // courseCode -> version history
 };
 
 // =============================================================================
@@ -697,8 +699,798 @@ async function compileManifest(courseCode) {
 }
 
 // =============================================================================
+// QUALITY & REGENERATION HELPERS
+// =============================================================================
+
+/**
+ * Calculate quality score for a translation based on various factors
+ */
+function calculateQualityScore(translation, legos = []) {
+  const scores = {
+    iron_rule_compliance: 100,
+    lego_count: 0,
+    avg_lego_quality: 0,
+    issues: []
+  };
+
+  // Check LEGOs for IRON RULE violations
+  const prepositions = ['to', 'from', 'with', 'at', 'in', 'on', 'by', 'for', 'of', 'about'];
+  let violationCount = 0;
+
+  for (const lego of legos) {
+    const words = lego.text.toLowerCase().split(/\s+/);
+    const firstWord = words[0];
+    const lastWord = words[words.length - 1];
+
+    if (prepositions.includes(firstWord) || prepositions.includes(lastWord)) {
+      violationCount++;
+      scores.issues.push({
+        type: 'iron_rule_violation',
+        lego: lego.text,
+        position: lego.provenance
+      });
+    }
+  }
+
+  if (violationCount > 0) {
+    scores.iron_rule_compliance = Math.max(0, 100 - (violationCount * 20));
+  }
+
+  // Calculate LEGO quality metrics
+  scores.lego_count = legos.length;
+  if (legos.length > 0) {
+    const avgPedScore = legos.reduce((sum, l) => sum + (l.pedagogical_score || 0), 0) / legos.length;
+    scores.avg_lego_quality = Math.round(avgPedScore);
+  }
+
+  // Check for common issues
+  if (legos.length < 2) {
+    scores.issues.push({
+      type: 'low_lego_count',
+      message: 'Translation produced fewer than 2 LEGOs'
+    });
+  }
+
+  // Calculate composite score
+  const composite = Math.round(
+    scores.iron_rule_compliance * 0.6 +
+    Math.min(100, scores.lego_count * 10) * 0.2 +
+    scores.avg_lego_quality * 0.2
+  );
+
+  return {
+    composite_score: composite,
+    details: scores,
+    flagged: composite < 70 || scores.issues.length > 0
+  };
+}
+
+/**
+ * Get quality report for entire course
+ */
+async function getCourseQualityReport(courseCode) {
+  const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+  const translationsDir = path.join(courseDir, 'amino_acids', 'translations');
+  const legosDir = path.join(courseDir, 'amino_acids', 'legos');
+
+  if (!await fs.pathExists(translationsDir)) {
+    throw new Error('Course not found or no translations available');
+  }
+
+  const report = {
+    course_code: courseCode,
+    generated_at: new Date().toISOString(),
+    total_seeds: 0,
+    flagged_seeds: [],
+    quality_distribution: {
+      excellent: 0,  // 90-100
+      good: 0,       // 70-89
+      poor: 0,       // 50-69
+      critical: 0    // 0-49
+    },
+    avg_quality: 0,
+    attempt_summary: {
+      total_attempts: 0,
+      avg_attempts_per_seed: 0,
+      seeds_with_multiple_attempts: 0
+    }
+  };
+
+  // Load all LEGOs for reference
+  const allLegos = new Map();
+  if (await fs.pathExists(legosDir)) {
+    const legoFiles = await fs.readdir(legosDir);
+    for (const file of legoFiles.filter(f => f.endsWith('.json'))) {
+      const lego = await fs.readJson(path.join(legosDir, file));
+      if (!allLegos.has(lego.source_translation_uuid)) {
+        allLegos.set(lego.source_translation_uuid, []);
+      }
+      allLegos.get(lego.source_translation_uuid).push(lego);
+    }
+  }
+
+  // Analyze each translation
+  const translationFiles = await fs.readdir(translationsDir);
+  let totalQuality = 0;
+
+  for (const file of translationFiles.filter(f => f.endsWith('.json'))) {
+    const translation = await fs.readJson(path.join(translationsDir, file));
+    const legos = allLegos.get(translation.uuid) || [];
+
+    const quality = calculateQualityScore(translation, legos);
+    totalQuality += quality.composite_score;
+    report.total_seeds++;
+
+    // Track attempt history
+    const attempts = translation.metadata?.attempt_history || [];
+    report.attempt_summary.total_attempts += attempts.length + 1; // +1 for current
+    if (attempts.length > 0) {
+      report.attempt_summary.seeds_with_multiple_attempts++;
+    }
+
+    // Categorize by quality
+    if (quality.composite_score >= 90) {
+      report.quality_distribution.excellent++;
+    } else if (quality.composite_score >= 70) {
+      report.quality_distribution.good++;
+    } else if (quality.composite_score >= 50) {
+      report.quality_distribution.poor++;
+    } else {
+      report.quality_distribution.critical++;
+    }
+
+    // Flag problematic seeds
+    if (quality.flagged) {
+      report.flagged_seeds.push({
+        seed_id: translation.seed_id,
+        uuid: translation.uuid,
+        quality_score: quality.composite_score,
+        issues: quality.details.issues,
+        attempts: attempts.length + 1,
+        last_modified: translation.metadata?.updated_at || translation.metadata?.created_at
+      });
+    }
+  }
+
+  report.avg_quality = report.total_seeds > 0
+    ? Math.round(totalQuality / report.total_seeds)
+    : 0;
+
+  report.attempt_summary.avg_attempts_per_seed = report.total_seeds > 0
+    ? (report.attempt_summary.total_attempts / report.total_seeds).toFixed(2)
+    : 0;
+
+  // Sort flagged seeds by quality (worst first)
+  report.flagged_seeds.sort((a, b) => a.quality_score - b.quality_score);
+
+  return report;
+}
+
+/**
+ * Get detailed review for specific SEED
+ */
+async function getSeedDetailedReview(courseCode, seedId) {
+  const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+  const translationsDir = path.join(courseDir, 'amino_acids', 'translations');
+  const legosDir = path.join(courseDir, 'amino_acids', 'legos');
+
+  // Find translation for this seed
+  const translationFiles = await fs.readdir(translationsDir);
+  let translation = null;
+
+  for (const file of translationFiles.filter(f => f.endsWith('.json'))) {
+    const data = await fs.readJson(path.join(translationsDir, file));
+    if (data.seed_id === seedId) {
+      translation = data;
+      break;
+    }
+  }
+
+  if (!translation) {
+    throw new Error(`Seed ${seedId} not found`);
+  }
+
+  // Load associated LEGOs
+  const legos = [];
+  if (await fs.pathExists(legosDir)) {
+    const legoFiles = await fs.readdir(legosDir);
+    for (const file of legoFiles.filter(f => f.endsWith('.json'))) {
+      const lego = await fs.readJson(path.join(legosDir, file));
+      if (lego.source_translation_uuid === translation.uuid) {
+        legos.push(lego);
+      }
+    }
+  }
+
+  // Calculate quality
+  const quality = calculateQualityScore(translation, legos);
+
+  // Get attempt history
+  const attemptHistory = translation.metadata?.attempt_history || [];
+  const allAttempts = [
+    ...attemptHistory,
+    {
+      attempt_number: attemptHistory.length + 1,
+      timestamp: translation.metadata?.updated_at || translation.metadata?.created_at,
+      source: translation.source,
+      target: translation.target,
+      quality_score: quality.composite_score,
+      lego_count: legos.length,
+      status: 'current'
+    }
+  ];
+
+  return {
+    seed_id: seedId,
+    translation,
+    legos,
+    quality,
+    attempts: allAttempts,
+    total_attempts: allAttempts.length,
+    status: translation.metadata?.status || 'active'
+  };
+}
+
+/**
+ * Add attempt to translation history
+ */
+async function recordAttempt(courseCode, seedId, attemptData) {
+  const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+  const translationsDir = path.join(courseDir, 'amino_acids', 'translations');
+
+  // Find translation
+  const translationFiles = await fs.readdir(translationsDir);
+  let translationPath = null;
+  let translation = null;
+
+  for (const file of translationFiles.filter(f => f.endsWith('.json'))) {
+    const filePath = path.join(translationsDir, file);
+    const data = await fs.readJson(filePath);
+    if (data.seed_id === seedId) {
+      translation = data;
+      translationPath = filePath;
+      break;
+    }
+  }
+
+  if (!translation) {
+    throw new Error(`Seed ${seedId} not found`);
+  }
+
+  // Initialize attempt history if needed
+  if (!translation.metadata.attempt_history) {
+    translation.metadata.attempt_history = [];
+  }
+
+  // Archive current state as previous attempt
+  const currentAttempt = {
+    attempt_number: translation.metadata.attempt_history.length + 1,
+    timestamp: translation.metadata?.updated_at || translation.metadata?.created_at,
+    source: translation.source,
+    target: translation.target,
+    quality_score: attemptData.previous_quality_score,
+    lego_count: attemptData.previous_lego_count,
+    issues: attemptData.issues || [],
+    prompt_version: translation.metadata.prompt_version || 'v1.0'
+  };
+
+  translation.metadata.attempt_history.push(currentAttempt);
+
+  // Update with new attempt
+  translation.source = attemptData.source;
+  translation.target = attemptData.target;
+  translation.metadata.updated_at = new Date().toISOString();
+  translation.metadata.prompt_version = attemptData.prompt_version || 'v1.0';
+  translation.metadata.regeneration_reason = attemptData.reason;
+
+  // Save updated translation
+  await fs.writeJson(translationPath, translation, { spaces: 2 });
+
+  return translation;
+}
+
+/**
+ * Spawn regeneration agent for specific SEEDs
+ */
+async function spawnRegenerationAgent(courseCode, seedIds, options = {}) {
+  const jobId = `regen_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+
+  console.log(`[Regen] Starting regeneration job ${jobId} for ${seedIds.length} seeds`);
+
+  // Load current prompt version
+  const promptVersion = options.prompt_version || 'v1.0';
+  const reason = options.reason || 'manual_regeneration';
+
+  // Create regeneration job
+  const job = {
+    jobId,
+    courseCode,
+    seedIds,
+    status: 'in_progress',
+    startTime: new Date(),
+    reason,
+    promptVersion,
+    results: []
+  };
+
+  STATE.regenerationJobs.set(jobId, job);
+
+  // Build regeneration prompt
+  const seedList = seedIds.join(', ');
+  const regenerationPrompt = `# Phase 1 Regeneration: Targeted Translation Re-extraction
+
+## Task
+Re-extract and improve translations for specific SEEDs that have been flagged for quality issues.
+
+## Context
+Course: ${courseCode}
+Seeds to regenerate: ${seedList}
+Reason: ${reason}
+Prompt version: ${promptVersion}
+
+## Your Mission
+1. Load the specified seeds from the canonical seed corpus
+2. Review the current translations and identify quality issues
+3. Apply all 6 pedagogical heuristics with extra attention to:
+   - IRON RULE compliance (no LEGOs starting/ending with prepositions)
+   - Natural phrasing in the target language
+   - Optimal LEGO extraction potential
+4. Generate improved translations
+5. Self-assess the quality of each new translation
+6. Save attempt history in the translation amino acid metadata
+
+## Quality Self-Assessment
+For each translation, evaluate:
+- IRON RULE compliance: Will this produce valid LEGOs?
+- LEGO potential: Can this be split into 3+ useful teaching phrases?
+- Naturalness: Does this sound like a native speaker?
+- Issues: Any concerns or trade-offs made?
+
+## Output Format
+Update translation amino acids with:
+- New source/target text
+- Attempt history preserved in metadata.attempt_history
+- Quality self-assessment in metadata.quality_notes
+- Prompt version: ${promptVersion}
+
+## Critical Rules
+- NEVER lose attempt history - append to metadata.attempt_history
+- Each attempt must include timestamp, quality score, and issues found
+- Mark regeneration_reason in metadata
+- Preserve original UUID (immutable identifier)
+
+## Success Criteria
+✓ All specified seeds regenerated
+✓ Quality improvements documented
+✓ Attempt history complete
+✓ Ready for Phase 3 re-extraction (if needed)
+
+Start with: ${courseDir}
+`;
+
+  // Spawn agent
+  await spawnPhaseAgent('1-regen', regenerationPrompt, courseDir, courseCode);
+
+  return job;
+}
+
+/**
+ * Load or initialize prompt evolution log
+ */
+async function getPromptEvolution(courseCode) {
+  const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+  const evolutionFile = path.join(courseDir, 'prompt_evolution', 'evolution_log.json');
+
+  await fs.ensureDir(path.join(courseDir, 'prompt_evolution'));
+
+  if (await fs.pathExists(evolutionFile)) {
+    return await fs.readJson(evolutionFile);
+  }
+
+  // Initialize new evolution log
+  const evolution = {
+    course_code: courseCode,
+    created_at: new Date().toISOString(),
+    versions: [
+      {
+        version: 'v1.0',
+        created_at: new Date().toISOString(),
+        rules: [
+          'Apply 6 pedagogical heuristics',
+          'IRON RULE: No LEGOs with preposition boundaries',
+          'Prioritize naturalness over literal translation'
+        ],
+        success_rate: null,
+        status: 'active'
+      }
+    ],
+    learned_rules: [],
+    experimental_rules: []
+  };
+
+  await fs.writeJson(evolutionFile, evolution, { spaces: 2 });
+  return evolution;
+}
+
+/**
+ * Add learned rule to prompt evolution
+ */
+async function addLearnedRule(courseCode, rule, testResults) {
+  const evolution = await getPromptEvolution(courseCode);
+
+  const learnedRule = {
+    rule,
+    discovered_at: new Date().toISOString(),
+    test_results: testResults,
+    success_rate: testResults.success_rate,
+    status: testResults.success_rate >= 0.8 ? 'committed' : 'experimental',
+    examples: testResults.examples || []
+  };
+
+  if (learnedRule.status === 'committed') {
+    evolution.learned_rules.push(learnedRule);
+
+    // Create new version with this rule
+    const newVersion = {
+      version: `v${evolution.versions.length + 1}.0`,
+      created_at: new Date().toISOString(),
+      rules: [
+        ...evolution.versions[evolution.versions.length - 1].rules,
+        rule
+      ],
+      parent_version: evolution.versions[evolution.versions.length - 1].version,
+      success_rate: null,
+      status: 'active'
+    };
+    evolution.versions.push(newVersion);
+  } else {
+    evolution.experimental_rules.push(learnedRule);
+  }
+
+  const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+  const evolutionFile = path.join(courseDir, 'prompt_evolution', 'evolution_log.json');
+  await fs.writeJson(evolutionFile, evolution, { spaces: 2 });
+
+  return evolution;
+}
+
+// =============================================================================
 // API ENDPOINTS
 // =============================================================================
+
+// --------------------------------------------------------------------------
+// REGENERATION & QUALITY ENDPOINTS
+// --------------------------------------------------------------------------
+
+/**
+ * GET /api/courses/:code/quality
+ * Get quality report for course with flagged SEEDs and attempt history
+ */
+app.get('/api/courses/:code/quality', async (req, res) => {
+  try {
+    const { code } = req.params;
+    const report = await getCourseQualityReport(code);
+    res.json(report);
+  } catch (error) {
+    console.error('[API] Error generating quality report:', error);
+    res.status(500).json({
+      error: 'Failed to generate quality report',
+      message: error.message
+    });
+  }
+});
+
+/**
+ * GET /api/courses/:code/seeds/:seedId/review
+ * Get detailed review for specific SEED with all attempts and quality scores
+ */
+app.get('/api/courses/:code/seeds/:seedId/review', async (req, res) => {
+  try {
+    const { code, seedId } = req.params;
+    const review = await getSeedDetailedReview(code, seedId);
+    res.json(review);
+  } catch (error) {
+    console.error('[API] Error getting seed review:', error);
+    res.status(error.message.includes('not found') ? 404 : 500).json({
+      error: 'Failed to get seed review',
+      message: error.message
+    });
+  }
+});
+
+/**
+ * POST /api/courses/:code/seeds/regenerate
+ * Trigger re-run for specific SEED(s)
+ * Body: { seed_ids: ["C0001", "C0012"], reason: "low_quality", prompt_version: "v1.0" }
+ */
+app.post('/api/courses/:code/seeds/regenerate', async (req, res) => {
+  try {
+    const { code } = req.params;
+    const { seed_ids, reason, prompt_version } = req.body;
+
+    if (!seed_ids || !Array.isArray(seed_ids) || seed_ids.length === 0) {
+      return res.status(400).json({
+        error: 'Missing or invalid seed_ids array'
+      });
+    }
+
+    const job = await spawnRegenerationAgent(code, seed_ids, {
+      reason: reason || 'manual_regeneration',
+      prompt_version: prompt_version || 'v1.0'
+    });
+
+    res.json({
+      success: true,
+      message: `Regeneration job started for ${seed_ids.length} seeds`,
+      job: {
+        jobId: job.jobId,
+        courseCode: job.courseCode,
+        seedIds: job.seedIds,
+        status: job.status,
+        reason: job.reason,
+        promptVersion: job.promptVersion
+      }
+    });
+  } catch (error) {
+    console.error('[API] Error starting regeneration:', error);
+    res.status(500).json({
+      error: 'Failed to start regeneration',
+      message: error.message
+    });
+  }
+});
+
+/**
+ * GET /api/courses/:code/regeneration/:jobId
+ * Get status of regeneration job
+ */
+app.get('/api/courses/:code/regeneration/:jobId', (req, res) => {
+  try {
+    const { jobId } = req.params;
+    const job = STATE.regenerationJobs.get(jobId);
+
+    if (!job) {
+      return res.status(404).json({
+        error: 'Regeneration job not found',
+        jobId
+      });
+    }
+
+    res.json({
+      job,
+      elapsed: job.startTime ? Date.now() - job.startTime.getTime() : 0
+    });
+  } catch (error) {
+    console.error('[API] Error getting regeneration status:', error);
+    res.status(500).json({
+      error: 'Failed to get regeneration status',
+      message: error.message
+    });
+  }
+});
+
+/**
+ * POST /api/courses/:code/seeds/:seedId/accept
+ * Accept current extraction attempt and mark as reviewed
+ */
+app.post('/api/courses/:code/seeds/:seedId/accept', async (req, res) => {
+  try {
+    const { code, seedId } = req.params;
+    const courseDir = path.join(CONFIG.VFS_ROOT, code);
+    const translationsDir = path.join(courseDir, 'amino_acids', 'translations');
+
+    // Find and update translation
+    const translationFiles = await fs.readdir(translationsDir);
+    let updated = false;
+
+    for (const file of translationFiles.filter(f => f.endsWith('.json'))) {
+      const filePath = path.join(translationsDir, file);
+      const translation = await fs.readJson(filePath);
+
+      if (translation.seed_id === seedId) {
+        translation.metadata.status = 'accepted';
+        translation.metadata.accepted_at = new Date().toISOString();
+        translation.metadata.reviewed = true;
+        await fs.writeJson(filePath, translation, { spaces: 2 });
+        updated = true;
+
+        res.json({
+          success: true,
+          message: `Seed ${seedId} marked as accepted`,
+          translation
+        });
+        break;
+      }
+    }
+
+    if (!updated) {
+      res.status(404).json({
+        error: 'Seed not found',
+        seedId
+      });
+    }
+  } catch (error) {
+    console.error('[API] Error accepting seed:', error);
+    res.status(500).json({
+      error: 'Failed to accept seed',
+      message: error.message
+    });
+  }
+});
+
+/**
+ * DELETE /api/courses/:code/seeds/:seedId
+ * Remove SEED from corpus (mark as excluded)
+ */
+app.delete('/api/courses/:code/seeds/:seedId', async (req, res) => {
+  try {
+    const { code, seedId } = req.params;
+    const { reason } = req.body;
+    const courseDir = path.join(CONFIG.VFS_ROOT, code);
+    const translationsDir = path.join(courseDir, 'amino_acids', 'translations');
+
+    // Find and update translation
+    const translationFiles = await fs.readdir(translationsDir);
+    let updated = false;
+
+    for (const file of translationFiles.filter(f => f.endsWith('.json'))) {
+      const filePath = path.join(translationsDir, file);
+      const translation = await fs.readJson(filePath);
+
+      if (translation.seed_id === seedId) {
+        translation.metadata.status = 'excluded';
+        translation.metadata.excluded_at = new Date().toISOString();
+        translation.metadata.exclusion_reason = reason || 'manual_removal';
+        await fs.writeJson(filePath, translation, { spaces: 2 });
+        updated = true;
+
+        // Update course metadata
+        const metadataPath = path.join(courseDir, 'course_metadata.json');
+        if (await fs.pathExists(metadataPath)) {
+          const courseMetadata = await fs.readJson(metadataPath);
+          if (!courseMetadata.excluded_seeds) {
+            courseMetadata.excluded_seeds = [];
+          }
+          courseMetadata.excluded_seeds.push({
+            seed_id: seedId,
+            excluded_at: new Date().toISOString(),
+            reason: reason || 'manual_removal'
+          });
+          await fs.writeJson(metadataPath, courseMetadata, { spaces: 2 });
+        }
+
+        res.json({
+          success: true,
+          message: `Seed ${seedId} marked as excluded`,
+          translation
+        });
+        break;
+      }
+    }
+
+    if (!updated) {
+      res.status(404).json({
+        error: 'Seed not found',
+        seedId
+      });
+    }
+  } catch (error) {
+    console.error('[API] Error excluding seed:', error);
+    res.status(500).json({
+      error: 'Failed to exclude seed',
+      message: error.message
+    });
+  }
+});
+
+/**
+ * GET /api/courses/:code/prompt-evolution
+ * Get prompt evolution data including learned rules and success rates
+ */
+app.get('/api/courses/:code/prompt-evolution', async (req, res) => {
+  try {
+    const { code } = req.params;
+    const evolution = await getPromptEvolution(code);
+    res.json(evolution);
+  } catch (error) {
+    console.error('[API] Error getting prompt evolution:', error);
+    res.status(500).json({
+      error: 'Failed to get prompt evolution',
+      message: error.message
+    });
+  }
+});
+
+/**
+ * POST /api/courses/:code/experimental-rules
+ * Test experimental rule on subset of seeds
+ * Body: { rule: "...", test_seed_ids: ["C0001", "C0002"], description: "..." }
+ */
+app.post('/api/courses/:code/experimental-rules', async (req, res) => {
+  try {
+    const { code } = req.params;
+    const { rule, test_seed_ids, description } = req.body;
+
+    if (!rule || !test_seed_ids || !Array.isArray(test_seed_ids)) {
+      return res.status(400).json({
+        error: 'Missing required fields: rule, test_seed_ids'
+      });
+    }
+
+    // Get current evolution state
+    const evolution = await getPromptEvolution(code);
+    const currentVersion = evolution.versions[evolution.versions.length - 1];
+
+    // Create experimental version
+    const experimentalVersion = `v${evolution.versions.length + 1}.0-exp`;
+
+    // Trigger test run with new rule
+    const job = await spawnRegenerationAgent(code, test_seed_ids, {
+      reason: `experimental_rule_test: ${description || rule}`,
+      prompt_version: experimentalVersion,
+      experimental_rule: rule
+    });
+
+    res.json({
+      success: true,
+      message: `Experimental rule test started on ${test_seed_ids.length} seeds`,
+      experiment: {
+        version: experimentalVersion,
+        rule,
+        description,
+        test_seed_ids,
+        jobId: job.jobId,
+        base_version: currentVersion.version
+      }
+    });
+  } catch (error) {
+    console.error('[API] Error testing experimental rule:', error);
+    res.status(500).json({
+      error: 'Failed to test experimental rule',
+      message: error.message
+    });
+  }
+});
+
+/**
+ * POST /api/courses/:code/prompt-evolution/commit
+ * Commit experimental rule to active prompt
+ * Body: { rule: "...", test_results: { success_rate: 0.85, examples: [...] } }
+ */
+app.post('/api/courses/:code/prompt-evolution/commit', async (req, res) => {
+  try {
+    const { code } = req.params;
+    const { rule, test_results } = req.body;
+
+    if (!rule || !test_results || typeof test_results.success_rate !== 'number') {
+      return res.status(400).json({
+        error: 'Missing required fields: rule, test_results.success_rate'
+      });
+    }
+
+    const evolution = await addLearnedRule(code, rule, test_results);
+
+    res.json({
+      success: true,
+      message: test_results.success_rate >= 0.8
+        ? 'Rule committed to active prompt'
+        : 'Rule added as experimental (success rate < 80%)',
+      evolution,
+      new_version: evolution.versions[evolution.versions.length - 1]
+    });
+  } catch (error) {
+    console.error('[API] Error committing rule:', error);
+    res.status(500).json({
+      error: 'Failed to commit rule',
+      message: error.message
+    });
+  }
+});
+
+// --------------------------------------------------------------------------
+// EXISTING ENDPOINTS
+// --------------------------------------------------------------------------
 
 /**
  * GET /api/health
@@ -1037,13 +1829,24 @@ async function startServer() {
     console.log(`Port: ${CONFIG.PORT}`);
     console.log(`VFS Root: ${CONFIG.VFS_ROOT}`);
     console.log(`Training Dashboard: ${CONFIG.TRAINING_URL}`);
-    console.log(`\nAPI Endpoints:`);
+    console.log(`\nCore API Endpoints:`);
     console.log(`  POST http://localhost:${CONFIG.PORT}/api/courses/generate`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/courses`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/courses/:courseCode`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/courses/:courseCode/status`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/courses/:courseCode/provenance/:seedId`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/health`);
+    console.log(`\nRegeneration & Quality Endpoints:`);
+    console.log(`  GET    http://localhost:${CONFIG.PORT}/api/courses/:code/quality`);
+    console.log(`  GET    http://localhost:${CONFIG.PORT}/api/courses/:code/seeds/:seedId/review`);
+    console.log(`  POST   http://localhost:${CONFIG.PORT}/api/courses/:code/seeds/regenerate`);
+    console.log(`  GET    http://localhost:${CONFIG.PORT}/api/courses/:code/regeneration/:jobId`);
+    console.log(`  POST   http://localhost:${CONFIG.PORT}/api/courses/:code/seeds/:seedId/accept`);
+    console.log(`  DELETE http://localhost:${CONFIG.PORT}/api/courses/:code/seeds/:seedId`);
+    console.log(`\nPrompt Evolution Endpoints:`);
+    console.log(`  GET  http://localhost:${CONFIG.PORT}/api/courses/:code/prompt-evolution`);
+    console.log(`  POST http://localhost:${CONFIG.PORT}/api/courses/:code/experimental-rules`);
+    console.log(`  POST http://localhost:${CONFIG.PORT}/api/courses/:code/prompt-evolution/commit`);
     console.log(`\nNext Steps:`);
     console.log(`  1. Install ngrok: brew install ngrok`);
     console.log(`  2. Start tunnel: ngrok http ${CONFIG.PORT}`);

@@ -1,0 +1,37 @@
+LEGO VISUALIZER - ALL FILE PATHS
+=====================================
+
+COMPONENT FILES
+---------------
+/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/src/components/LegoVisualizer.vue
+/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/src/components/LegoVisualizerExample.vue
+
+TEST SCRIPT
+-----------
+/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/test-lego-loader.cjs
+
+DOCUMENTATION
+-------------
+/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/src/components/LEGO_VISUALIZER_README.md
+/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/LEGO_VISUALIZER_INTEGRATION.md
+/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/LEGO_VISUALIZER_SUMMARY.md
+/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/LEGO_VISUALIZER_QUICKSTART.md
+/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/LEGO_VISUALIZER_FILES.txt
+
+DATA SOURCE
+-----------
+/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/mkd_for_eng_574seeds/amino_acids/legos_deduplicated/
+
+QUICK COMMANDS
+--------------
+# Run test
+cd /Users/tomcassidy/SSi/ssi-dashboard-v7-clean && node test-lego-loader.cjs
+
+# View component
+cat /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/src/components/LegoVisualizer.vue
+
+# Read docs
+cat /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/LEGO_VISUALIZER_QUICKSTART.md
+
+# Count LEGOs
+ls /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/mkd_for_eng_574seeds/amino_acids/legos_deduplicated/*.json | wc -l
