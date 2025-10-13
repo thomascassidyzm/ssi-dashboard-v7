@@ -137,7 +137,6 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
-import seedService from '../services/seedService'
 
 const props = defineProps({
   translationUuid: {
@@ -272,20 +271,25 @@ async function loadData() {
   error.value = null
 
   try {
-    // Load translation using service
-    translation.value = await seedService.loadTranslation(
-      props.courseCode,
-      props.translationUuid
-    )
+    // Fetch seed data from API endpoint
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:54321'
+    const response = await fetch(`${API_BASE_URL}/api/visualization/seed/${props.translationUuid}?courseCode=${props.courseCode}`, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
 
-    // Load all LEGOs for this translation
-    const loadedLegos = await seedService.loadLegosForTranslation(
-      props.courseCode,
-      props.translationUuid
-    )
+    if (!response.ok) {
+      throw new Error(`API returned ${response.status}: ${response.statusText}`)
+    }
 
-    // Sort LEGOs by provenance
-    legos.value = seedService.sortLegosByProvenance(loadedLegos)
+    const data = await response.json()
+
+    // Set translation data
+    translation.value = data.translation || null
+
+    // Set LEGOs data - already sorted by provenance from API
+    legos.value = data.legos || []
 
     // Extract boundaries from LEGOs
     boundaries.value = extractBoundariesFromLegos()

@@ -52,6 +52,110 @@
         </router-link>
       </section>
 
+      <!-- Quality Review & Self-Healing -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Quality Review & Self-Healing</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- Quality Dashboard Card -->
+          <router-link to="/quality/cym_for_eng_574seeds"
+                       class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6 hover:border-emerald-500/50 transition group">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-8 h-8 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <h3 class="text-xl font-semibold text-slate-100">Quality Dashboard</h3>
+            </div>
+            <p class="text-slate-400 mb-4">
+              Review extraction quality, flag problematic seeds, trigger regeneration
+            </p>
+            <div class="text-emerald-400 group-hover:translate-x-1 transition">
+              View Quality Report →
+            </div>
+          </router-link>
+
+          <!-- Prompt Evolution Card -->
+          <router-link to="/quality/cym_for_eng_574seeds/evolution"
+                       class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6 hover:border-emerald-500/50 transition group">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-8 h-8 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+              </svg>
+              <h3 class="text-xl font-semibold text-slate-100">Prompt Evolution</h3>
+            </div>
+            <p class="text-slate-400 mb-4">
+              Track prompt versions, learned rules, A/B testing, self-improvement history
+            </p>
+            <div class="text-emerald-400 group-hover:translate-x-1 transition">
+              View Evolution Log →
+            </div>
+          </router-link>
+
+        </div>
+      </section>
+
+      <!-- Visualization Tools -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Visualization Tools</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- LEGO Visualizer Card -->
+          <router-link to="/visualize/lego"
+                       class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6 hover:border-emerald-500/50 transition group">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-8 h-8 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z"/>
+                <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z"/>
+                <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z"/>
+              </svg>
+              <h3 class="text-xl font-semibold text-slate-100">LEGO Visualizer</h3>
+            </div>
+            <p class="text-slate-400 mb-4">
+              Visual breakdown of LEGO extraction with provenance labels
+            </p>
+            <div class="text-emerald-400 group-hover:translate-x-1 transition">
+              View Demo →
+            </div>
+          </router-link>
+
+          <!-- Seed Visualizer Card -->
+          <router-link to="/visualize/seed"
+                       class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6 hover:border-emerald-500/50 transition group">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+              </svg>
+              <h3 class="text-xl font-semibold text-slate-100">Seed Visualizer</h3>
+            </div>
+            <p class="text-slate-400 mb-4">
+              Visualize seed pairs and extracted LEGOs with translations
+            </p>
+            <div class="text-emerald-400 group-hover:translate-x-1 transition">
+              View Demo →
+            </div>
+          </router-link>
+
+          <!-- Basket Visualizer Card -->
+          <router-link to="/visualize/basket"
+                       class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6 hover:border-emerald-500/50 transition group">
+            <div class="flex items-center gap-3 mb-3">
+              <svg class="w-8 h-8 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/>
+              </svg>
+              <h3 class="text-xl font-semibold text-slate-100">Basket Visualizer</h3>
+            </div>
+            <p class="text-slate-400 mb-4">
+              View pattern-aware basket construction with graph coverage
+            </p>
+            <div class="text-emerald-400 group-hover:translate-x-1 transition">
+              View Demo →
+            </div>
+          </router-link>
+
+        </div>
+      </section>
+
       <!-- Phase Training Pages -->
       <section class="mb-12">
         <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">

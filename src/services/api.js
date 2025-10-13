@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // API Base URL - set this to your ngrok URL when running locally
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:54321'
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -52,6 +52,11 @@ export default {
     async updateTranslation(courseCode, uuid, data) {
       const response = await api.put(`/api/courses/${courseCode}/translations/${uuid}`, data)
       return response.data
+    },
+
+    async getRegenerationStatus(courseCode, jobId) {
+      const response = await api.get(`/api/courses/${courseCode}/regeneration/${jobId}`)
+      return response.data
     }
   },
 
@@ -59,31 +64,33 @@ export default {
   quality: {
     // Get quality overview for a course
     async getOverview(courseCode) {
-      const response = await api.get(`/api/quality/${courseCode}/overview`)
+      const response = await api.get(`/api/courses/${courseCode}/quality`)
       return response.data
     },
 
     // Get all SEEDs with quality data
     async getSeeds(courseCode, filters = {}) {
-      const response = await api.get(`/api/quality/${courseCode}/seeds`, { params: filters })
-      return response.data
+      // Get seeds from quality overview for now
+      const overview = await this.getOverview(courseCode)
+      return { seeds: overview.flagged_seeds || [] }
     },
 
     // Get detailed quality data for a specific SEED
     async getSeedDetail(courseCode, seedId) {
-      const response = await api.get(`/api/quality/${courseCode}/seeds/${seedId}`)
+      const response = await api.get(`/api/courses/${courseCode}/seeds/${seedId}/review`)
       return response.data
     },
 
     // Get all extraction attempts for a SEED
     async getSeedAttempts(courseCode, seedId) {
-      const response = await api.get(`/api/quality/${courseCode}/seeds/${seedId}/attempts`)
-      return response.data
+      // This is part of getSeedDetail
+      const detail = await this.getSeedDetail(courseCode, seedId)
+      return { attempts: detail.attempts || [] }
     },
 
     // Accept an extraction attempt
     async acceptAttempt(courseCode, seedId, attemptId) {
-      const response = await api.post(`/api/quality/${courseCode}/seeds/${seedId}/accept`, {
+      const response = await api.post(`/api/courses/${courseCode}/seeds/${seedId}/accept`, {
         attemptId
       })
       return response.data
@@ -91,7 +98,7 @@ export default {
 
     // Reject an extraction attempt
     async rejectAttempt(courseCode, seedId, attemptId) {
-      const response = await api.post(`/api/quality/${courseCode}/seeds/${seedId}/reject`, {
+      const response = await api.post(`/api/courses/${courseCode}/seeds/${seedId}/reject`, {
         attemptId
       })
       return response.data
@@ -99,21 +106,23 @@ export default {
 
     // Trigger re-run for a SEED
     async rerunSeed(courseCode, seedId) {
-      const response = await api.post(`/api/quality/${courseCode}/seeds/${seedId}/rerun`)
+      const response = await api.post(`/api/courses/${courseCode}/seeds/regenerate`, {
+        seed_ids: [seedId]
+      })
       return response.data
     },
 
     // Bulk re-run for multiple SEEDs
     async bulkRerun(courseCode, seedIds) {
-      const response = await api.post(`/api/quality/${courseCode}/seeds/bulk-rerun`, {
-        seedIds
+      const response = await api.post(`/api/courses/${courseCode}/seeds/regenerate`, {
+        seed_ids: seedIds
       })
       return response.data
     },
 
     // Bulk accept
     async bulkAccept(courseCode, seedIds) {
-      const response = await api.post(`/api/quality/${courseCode}/seeds/bulk-accept`, {
+      const response = await api.post(`/api/courses/${courseCode}/seeds/bulk-accept`, {
         seedIds
       })
       return response.data
@@ -121,25 +130,25 @@ export default {
 
     // Remove SEED from corpus
     async removeSeed(courseCode, seedId) {
-      const response = await api.delete(`/api/quality/${courseCode}/seeds/${seedId}`)
+      const response = await api.delete(`/api/courses/${courseCode}/seeds/${seedId}`)
       return response.data
     },
 
     // Get prompt evolution data
     async getPromptEvolution(courseCode) {
-      const response = await api.get(`/api/quality/${courseCode}/prompt-evolution`)
+      const response = await api.get(`/api/courses/${courseCode}/prompt-evolution`)
       return response.data
     },
 
     // Get learned rules
     async getLearnedRules(courseCode) {
-      const response = await api.get(`/api/quality/${courseCode}/learned-rules`)
+      const response = await api.get(`/api/courses/${courseCode}/learned-rules`)
       return response.data
     },
 
     // Enable/disable a learned rule
     async toggleRule(courseCode, ruleId, enabled) {
-      const response = await api.put(`/api/quality/${courseCode}/learned-rules/${ruleId}`, {
+      const response = await api.put(`/api/courses/${courseCode}/learned-rules/${ruleId}`, {
         enabled
       })
       return response.data
@@ -147,31 +156,31 @@ export default {
 
     // Get experimental rules (A/B testing)
     async getExperimentalRules(courseCode) {
-      const response = await api.get(`/api/quality/${courseCode}/experimental-rules`)
+      const response = await api.get(`/api/courses/${courseCode}/experimental-rules`)
       return response.data
     },
 
     // Promote experimental rule to production
     async promoteRule(courseCode, ruleId) {
-      const response = await api.post(`/api/quality/${courseCode}/experimental-rules/${ruleId}/promote`)
+      const response = await api.post(`/api/courses/${courseCode}/experimental-rules/${ruleId}/promote`)
       return response.data
     },
 
     // Reject experimental rule
     async rejectRule(courseCode, ruleId) {
-      const response = await api.delete(`/api/quality/${courseCode}/experimental-rules/${ruleId}`)
+      const response = await api.delete(`/api/courses/${courseCode}/experimental-rules/${ruleId}`)
       return response.data
     },
 
     // Get course health report
     async getHealthReport(courseCode) {
-      const response = await api.get(`/api/quality/${courseCode}/health`)
+      const response = await api.get(`/api/courses/${courseCode}/health`)
       return response.data
     },
 
     // Get quality trend data
     async getQualityTrend(courseCode, days = 30) {
-      const response = await api.get(`/api/quality/${courseCode}/trend`, {
+      const response = await api.get(`/api/courses/${courseCode}/quality/trend`, {
         params: { days }
       })
       return response.data
@@ -179,7 +188,7 @@ export default {
 
     // Export quality report
     async exportReport(courseCode, format = 'csv') {
-      const response = await api.get(`/api/quality/${courseCode}/export`, {
+      const response = await api.get(`/api/courses/${courseCode}/quality/export`, {
         params: { format },
         responseType: 'blob'
       })
@@ -188,7 +197,7 @@ export default {
 
     // Rollback to previous prompt version
     async rollbackPrompt(courseCode, version) {
-      const response = await api.post(`/api/quality/${courseCode}/rollback`, {
+      const response = await api.post(`/api/courses/${courseCode}/prompts/rollback`, {
         version
       })
       return response.data

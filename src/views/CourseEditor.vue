@@ -237,6 +237,80 @@
       </div>
     </div>
 
+    <!-- Enhanced Regeneration Progress UI -->
+    <div
+      v-if="regenerationState.active"
+      class="fixed bottom-4 right-4 bg-slate-800 border border-emerald-500/30 rounded-lg p-6 w-96 shadow-2xl z-50"
+    >
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-emerald-400">Regenerating Course</h3>
+        <button
+          v-if="regenerationState.status === 'completed' || regenerationState.status === 'failed'"
+          @click="dismissRegenerationProgress"
+          class="text-slate-400 hover:text-slate-300"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Status indicator -->
+      <div class="mb-3">
+        <div v-if="regenerationState.status === 'queued'" class="flex items-center gap-2 text-yellow-400">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+          </svg>
+          <span>Queued...</span>
+        </div>
+
+        <div v-else-if="regenerationState.status === 'running'" class="flex items-center gap-2 text-blue-400">
+          <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span>Phase {{ regenerationState.currentPhase }} in progress...</span>
+        </div>
+
+        <div v-else-if="regenerationState.status === 'completed'" class="flex items-center gap-2 text-green-400">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>Regeneration complete!</span>
+        </div>
+
+        <div v-else-if="regenerationState.status === 'failed'" class="flex items-center gap-2 text-red-400">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+          </svg>
+          <span>Regeneration failed</span>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div v-if="regenerationState.status === 'running' || regenerationState.status === 'queued'" class="mb-3">
+        <div class="w-full bg-slate-700 rounded-full h-2">
+          <div
+            class="bg-emerald-500 h-2 rounded-full transition-all duration-300"
+            :style="{ width: regenerationState.progress + '%' }"
+          ></div>
+        </div>
+        <div class="text-xs text-slate-400 mt-1 text-right">
+          {{ Math.round(regenerationState.progress) }}%
+        </div>
+      </div>
+
+      <!-- Error message -->
+      <div v-if="regenerationState.error" class="mt-3 text-sm text-red-400 bg-red-900/20 border border-red-500/30 rounded p-2">
+        {{ regenerationState.error }}
+      </div>
+
+      <!-- Job ID for debugging -->
+      <div class="text-xs text-slate-500 mt-3">
+        Job ID: {{ regenerationState.jobId }}
+      </div>
+    </div>
+
     <!-- Edit Modal -->
     <div
       v-if="editModal.open"
@@ -345,7 +419,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import api from '../services/api'
 
@@ -373,6 +447,19 @@ const editModal = ref({
   impact: null,
   saving: false
 })
+
+// Regeneration state - Enhanced for real-time tracking
+const regenerationState = ref({
+  active: false,
+  jobId: null,
+  status: 'idle', // idle | queued | running | completed | failed
+  currentPhase: null,
+  progress: 0,
+  startTime: null,
+  completionTime: null,
+  error: null
+})
+const pollingInterval = ref(null)
 
 const tabs = [
   { id: 'translations', label: 'Translations' },
@@ -469,8 +556,8 @@ async function saveTranslation() {
 
   editModal.value.saving = true
   try {
-    // TODO: Implement save API call
-    await api.course.updateTranslation(
+    // Save the edited translation - backend will automatically trigger regeneration
+    const response = await api.course.updateTranslation(
       courseCode,
       editModal.value.translation.uuid,
       {
@@ -479,9 +566,30 @@ async function saveTranslation() {
       }
     )
 
-    // Reload course data
-    await loadCourse()
+    // Check if backend returned regeneration job info
+    if (response.regeneration && response.regeneration.jobId) {
+      // Initialize regeneration tracking
+      regenerationState.value = {
+        active: true,
+        jobId: response.regeneration.jobId,
+        status: response.regeneration.status || 'running',
+        currentPhase: 3,
+        progress: 0,
+        startTime: Date.now(),
+        completionTime: null,
+        error: null
+      }
+
+      // Start polling for status updates
+      startRegenerationPolling()
+    }
+
     closeEditModal()
+
+    // Show success message
+    if (response.regeneration && response.regeneration.jobId) {
+      console.log('Translation saved. Regeneration started with job ID:', response.regeneration.jobId)
+    }
   } catch (err) {
     console.error('Failed to save translation:', err)
     alert('Failed to save: ' + err.message)
@@ -501,4 +609,63 @@ async function traceProvenance() {
     alert('Failed to trace provenance: ' + err.message)
   }
 }
+
+function startRegenerationPolling() {
+  if (pollingInterval.value) {
+    clearInterval(pollingInterval.value)
+  }
+
+  pollingInterval.value = setInterval(async () => {
+    try {
+      const status = await api.course.getRegenerationStatus(
+        courseCode,
+        regenerationState.value.jobId
+      )
+
+      // Update regeneration state
+      regenerationState.value.status = status.status
+      regenerationState.value.currentPhase = status.currentPhase
+      regenerationState.value.progress = status.progress || 0
+
+      // Check if regeneration is complete or failed
+      if (status.status === 'completed' || status.status === 'failed') {
+        stopRegenerationPolling()
+        regenerationState.value.completionTime = Date.now()
+
+        if (status.status === 'failed') {
+          regenerationState.value.error = status.error || 'Regeneration failed'
+        }
+
+        // Reload course data to show updated results
+        if (status.status === 'completed') {
+          await loadCourse()
+        }
+      }
+    } catch (err) {
+      console.error('Failed to poll regeneration status:', err)
+      // Don't stop polling on error - might be temporary network issue
+    }
+  }, 3000) // Poll every 3 seconds
+}
+
+function stopRegenerationPolling() {
+  if (pollingInterval.value) {
+    clearInterval(pollingInterval.value)
+    pollingInterval.value = null
+  }
+}
+
+function dismissRegenerationProgress() {
+  regenerationState.value.active = false
+  regenerationState.value.jobId = null
+  regenerationState.value.status = 'idle'
+  regenerationState.value.currentPhase = null
+  regenerationState.value.progress = 0
+  regenerationState.value.error = null
+}
+
+// Cleanup on component unmount
+onUnmounted(() => {
+  stopRegenerationPolling()
+})
 </script>

@@ -20,6 +20,42 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
 
+        <!-- Live Data Indicator -->
+        <div v-if="promptMeta" class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4 mb-6">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-emerald-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"/>
+            </svg>
+            <span class="text-emerald-300 font-medium">Live from APML Registry</span>
+          </div>
+          <div class="mt-2 text-sm text-slate-400 grid grid-cols-2 gap-4">
+            <div>Version: {{ promptMeta.version }}</div>
+            <div>Last Modified: {{ new Date(promptMeta.lastModified).toLocaleString() }}</div>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div v-if="loading" class="bg-slate-900/80 border border-slate-400/20 rounded-lg p-6 mb-6 text-center">
+          <div class="flex items-center justify-center gap-3 text-slate-400">
+            <svg class="animate-spin w-6 h-6" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span>Loading prompt from APML registry...</span>
+          </div>
+        </div>
+
+        <!-- Error State -->
+        <div v-if="error" class="bg-red-900/20 border border-red-500/30 rounded-lg p-4 mb-6">
+          <div class="flex items-center gap-2 text-red-400">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+            </svg>
+            <span>{{ error }}</span>
+          </div>
+          <p class="text-sm text-slate-400 mt-2">Falling back to cached documentation</p>
+        </div>
+
         <!-- Overview Section -->
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Overview</h2>
@@ -85,6 +121,43 @@
           </div>
         </section>
 
+        <!-- Version History -->
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Version History</h2>
+          <div v-if="loadingHistory" class="text-slate-400 text-center py-6">
+            <svg class="animate-spin w-6 h-6 mx-auto mb-2" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Loading history...
+          </div>
+          <div v-else-if="versionHistory.length === 0" class="bg-slate-900/80 border border-slate-400/20 rounded-lg p-6 text-center text-slate-500">
+            No version history available
+          </div>
+          <div v-else class="space-y-3">
+            <div v-for="version in versionHistory" :key="version.hash"
+                 class="bg-slate-900/80 border border-slate-400/20 rounded-lg p-4 hover:border-emerald-500/30 transition">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex-1">
+                  <div class="text-slate-300 font-medium">{{ version.message }}</div>
+                  <div class="text-xs text-slate-500 mt-1 flex items-center gap-3">
+                    <span>by {{ version.author }}</span>
+                    <span>•</span>
+                    <span>{{ new Date(version.date).toLocaleDateString() }}</span>
+                    <span>•</span>
+                    <span class="font-mono">{{ version.hash.substring(0, 7) }}</span>
+                  </div>
+                </div>
+                <span v-if="version.improved_by"
+                      :class="version.improved_by === 'ai' ? 'bg-purple-500/20 text-purple-400' : 'bg-blue-500/20 text-blue-400'"
+                      class="text-xs px-2 py-1 rounded font-medium">
+                  {{ version.improved_by }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Important Notes -->
         <section v-if="phaseData.notes && phaseData.notes.length > 0" class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Important Notes</h2>
@@ -126,9 +199,32 @@ const props = defineProps({
 // Use prompt manager composable to fetch from APML registry
 const { prompt: promptText, loading, saving, error, promptMeta, fetchPrompt, savePrompt } = usePromptManager(props.id)
 
+// Version history state
+const versionHistory = ref([])
+const loadingHistory = ref(false)
+
+// Fetch version history from API
+const fetchVersionHistory = async () => {
+  loadingHistory.value = true
+  try {
+    const response = await fetch(`http://localhost:54321/api/prompts/${props.id}/history`)
+    const data = await response.json()
+    if (response.ok) {
+      versionHistory.value = data.history || []
+    } else {
+      console.error('Failed to load version history:', data.error)
+    }
+  } catch (err) {
+    console.error('Failed to load version history:', err)
+  } finally {
+    loadingHistory.value = false
+  }
+}
+
 // Fetch actual prompt from APML when component mounts
 onMounted(async () => {
   await fetchPrompt()
+  await fetchVersionHistory()
 })
 
 // Save changes back to APML file
@@ -139,6 +235,8 @@ const saveChanges = async () => {
   try {
     await savePrompt(changelog, 'human')
     alert('✅ Prompt saved successfully! Changes committed to APML and Git.')
+    // Refresh version history after save
+    await fetchVersionHistory()
   } catch (err) {
     alert(`❌ Failed to save prompt: ${err.message}`)
   }
@@ -913,6 +1011,21 @@ If you're unsure, DON'T use it.
 }
 
 const phaseData = computed(() => {
+  // Prioritize live data from APML registry
+  if (promptMeta.value && promptMeta.value.name) {
+    return {
+      name: promptMeta.value.name || `Phase ${props.id}`,
+      description: promptMeta.value.description || 'Live from APML Registry',
+      overview: 'This phase prompt is fetched live from the APML registry and reflects the current working configuration.',
+      objectives: phaseContent[props.id]?.objectives || [],
+      steps: phaseContent[props.id]?.steps || [],
+      notes: phaseContent[props.id]?.notes || [],
+      output: phaseContent[props.id]?.output || '',
+      prompt: promptText.value || ''
+    }
+  }
+
+  // Fallback to hardcoded content if API fails
   return phaseContent[props.id] || {
     name: 'Unknown Phase',
     description: 'Phase not found',

@@ -1,6 +1,6 @@
 app ssi_course_production:
   title: "SSi Language Course Production System"
-  version: "7.1.0"
+  version: "7.2.0"
   apml_version: "1.1.0"
   description: |
     Complete specification for SSi (Say Something In) language course production system.
@@ -612,11 +612,26 @@ EXAMPLE:
 
 ### IRON RULE
 ABSOLUTE_CONSTRAINT: No LEGO begins or ends with a preposition
-EXAMPLES:
-  ✗ "to the"
-  ✗ "with me"
-  ✗ "in"
-NON_NEGOTIABLE: Zero exceptions allowed
+
+IMPORTANT CLARIFICATION:
+  - The infinitive marker "to" (as in "to speak") is NOT a preposition
+  - It is a grammatical marker that forms part of the infinitive verb
+  - Full infinitives like "to speak", "to learn" are ALLOWED and FD-compliant
+  - Bare infinitives are NOT FD (conflict with commands and conjugations)
+
+EXAMPLES OF VIOLATIONS:
+  ✗ "to the" (preposition "to" for direction)
+  ✗ "with me" (preposition "with")
+  ✗ "in" (standalone preposition)
+  ✗ "con" (standalone preposition)
+  ✗ "da" (standalone preposition)
+
+EXAMPLES OF ALLOWED:
+  ✅ "to speak" (infinitive marker + verb)
+  ✅ "to learn" (infinitive marker + verb)
+  ✅ "parlare" (infinitive without marker)
+
+NON_NEGOTIABLE: No standalone prepositions or prepositional phrase boundaries
 
 ### UID FORMAT
 MANDATORY_STRUCTURE:
@@ -805,8 +820,23 @@ PROMPT: |
 
   ## THE IRON RULE (ABSOLUTE)
   **No LEGO begins or ends with a preposition.**
-  - Examples: ✗ "to the", ✗ "with me", ✗ "in"
-  - This is NON-NEGOTIABLE
+
+  **IMPORTANT CLARIFICATION**:
+  - The infinitive marker "to" (as in "to speak") is NOT a preposition
+  - It is a grammatical marker that forms part of the infinitive verb
+  - Full infinitives like "to speak", "to learn" are ALLOWED and FD-compliant
+  - Bare infinitives are NOT FD (conflict with commands and conjugations)
+
+  **Examples of VIOLATIONS**:
+  - ✗ "to the" (preposition "to" for direction)
+  - ✗ "with me" (preposition "with")
+  - ✗ "in" (standalone preposition)
+
+  **Examples of ALLOWED**:
+  - ✅ "to speak" (infinitive marker + verb)
+  - ✅ "to learn" (infinitive marker + verb)
+
+  - This is NON-NEGOTIABLE for standalone prepositions
 
   ## INPUT DATA
   Course folder: /Users/tomcassidy/SSi/SSi_Course_Production/vfs/courses/${targetCode}_for_${knownCode}_speakers/
@@ -1179,6 +1209,41 @@ PROMPT: |
   Read FCFS: vfs/phase_outputs/phase_2_corpus_intelligence.json
 
   ## E-PHRASES (5 Eternal Practice Phrases per LEGO)
+
+  ## E-PHRASE CRITICAL REQUIREMENTS (NON-NEGOTIABLE)
+
+  ### Length Requirements (ABSOLUTE)
+  - **MINIMUM**: 7 words in target language
+  - **IDEAL**: 10 words in target language
+  - **MAXIMUM**: 15 words (hard cap)
+  - Short e-phrases (< 7 words) are a CRITICAL FAILURE
+  - Better to have NO e-phrase than a short/clunky one
+
+  ### Quality Requirements (ABSOLUTE)
+  - QUALITY > QUANTITY: Do not force bad phrases to hit a count
+  - E-phrases must be NATURAL and conversational in BOTH languages
+  - If vocabulary is insufficient for quality 10-word phrase, skip it
+  - Aim for 3-5 excellent e-phrases per basket (not forced to 5)
+
+  ### Target Language Grammar (UNFORGIVEABLE ERRORS)
+  ⚠️ **POOR SYNTAX IN TARGET LANGUAGE IS UNFORGIVEABLE** ⚠️
+
+  For Italian specifically:
+  - "cercare" + infinitive REQUIRES "di": "cercando di parlare" NOT "cercando parlare"
+  - "imparare" + infinitive REQUIRES "a": "imparando a parlare" NOT "imparando parlare"
+  - "provare" + infinitive REQUIRES "a": "provando a dire" NOT "provando dire"
+  - "continuare" + infinitive REQUIRES "a": "continuando a parlare" NOT "continuando parlare"
+  - "finire" + infinitive REQUIRES "di": "finendo di parlare" NOT "finendo parlare"
+
+  **VALIDATE EVERY E-PHRASE**:
+  - Is the target language grammar PERFECT?
+  - Would a native speaker say this naturally?
+  - Are all required prepositions present?
+
+  If you cannot ensure perfect target language grammar, DO NOT include the phrase.
+
+  ---
+
   Create 5 phrases, each 7-10 words (balanced across 7/8/9/10):
   - **MUST contain the target LEGO**
   - **Perfect grammar** in BOTH languages - validate target AND known language
@@ -1191,13 +1256,30 @@ PROMPT: |
     - Semantically meaningful in BOTH languages
     - Natural and idiomatic in BOTH cultures
 
-  ### CRITICAL RULE - CULMINATING LEGOs
-  **IF this is the LAST LEGO in a seed (e.g., S0123L03 is the last of S0123):**
-  - **E-phrase #1 MUST be the COMPLETE SEED PHRASE itself**
-  - This complete seed phrase should be used HEAVILY in D-phrases (3+ times)
-  - Why: The learner finally has ALL pieces to understand the full seed!
-  - Example: If S0123 = "I want to speak Italian with you now" and S0123L03 = "now",
-    then E1 must be exactly "I want to speak Italian with you now"
+  ### CRITICAL RULE - CULMINATING LEGOs (ABSOLUTE REQUIREMENT)
+
+  **Definition**: A "culminating LEGO" is the LAST LEGO in a seed's decomposition
+
+  **How to identify**:
+  - Check the LEGO's seed_id (e.g., S0005L02)
+  - Look up the seed in Phase 3 LEGO breakdown
+  - If this is the highest L-number for that seed → it's culminating
+
+  **ABSOLUTE RULE**:
+  - **E-phrase #1 MUST be the COMPLETE SEED sentence itself**
+  - Not a variation, not similar - the EXACT seed sentence
+  - This complete seed MUST also appear 3+ times in D-phrases
+
+  **Example**:
+  - Seed S0005: "Sto per esercitarmi a parlare"
+  - LEGOs: S0005L01 (sto per) + S0005L02 (esercitarmi a parlare)
+  - S0005L02 is culminating (last LEGO)
+  - Therefore: S0005L02 basket MUST have E-phrase #1 = "Sto per esercitarmi a parlare"
+
+  **Validation**:
+  - Before finalizing basket, check if LEGO is culminating
+  - If yes, verify E-phrase #1 is complete seed
+  - If not, regenerate basket
 
   ## VOCABULARY SELECTION (Recency Guidelines - for LEGOs 50+)
   **For early LEGOs (1-50):** Use whatever vocabulary is available - there's not enough yet for recency preferences.
@@ -1210,6 +1292,20 @@ PROMPT: |
   BUT ALWAYS PRIORITIZE natural, useful phrases over strict percentages.
 
   ## D-PHRASES (Auto-Generated Debuts)
+
+  ### D-PHRASE QUALITY ALLOWANCE
+
+  **Important**: D-phrases CAN be somewhat clunky or fragment-like
+  - They are expanding windows from e-phrases (2-lego, 3-lego, 4-lego, 5-lego)
+  - Syntactic correctness required, but naturalness is less critical
+  - Focus: Help learners build up to full e-phrases gradually
+
+  **Contrast with E-phrases**:
+  - E-phrases: MUST be natural, conversational, perfect grammar
+  - D-phrases: Can be awkward fragments as long as syntax is correct
+
+  ---
+
   You will generate D-phrases using expanding window from E-phrases:
   - 2x 2-LEGO phrases
   - 2x 3-LEGO phrases
@@ -1546,6 +1642,17 @@ LOCAL_AUTOMATION:
 # =============================================================================
 # VERSION HISTORY
 # =============================================================================
+
+VERSION: 7.2.0
+DATE: 2025-10-13
+CHANGES:
+  - Clarified IRON RULE: infinitive "to" is NOT a preposition (explicitly allowed)
+  - Updated Phase 5 prompt with CRITICAL e-phrase length requirements (7-10 words)
+  - Added UNFORGIVEABLE target language grammar validation
+  - Strengthened culminating LEGO rule enforcement
+  - Clarified e-phrase quality > quantity (3-5 excellent vs forced 5)
+  - Added D-phrase quality allowance explanation
+  - Based on 30-seed Italian validation findings (QUALITY_REPORT.md)
 
 VERSION: 7.1.0
 DATE: 2025-10-13

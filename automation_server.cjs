@@ -143,28 +143,40 @@ async function ensureCourseDirectory(courseCode) {
 
 /**
  * Spawns a Claude Code agent via osascript
+ * Uses temp file approach to avoid AppleScript escaping issues with complex prompts
  */
 async function spawnPhaseAgent(phase, prompt, courseDir, courseCode) {
   console.log(`[Agent] Spawning Phase ${phase} agent...`);
 
   const trainingURL = `${CONFIG.TRAINING_URL}/phase/${phase}`;
 
+  // Write prompt to temp file to avoid AppleScript escaping issues
+  const promptFile = path.join(__dirname, `.prompt-${phase}-${Date.now()}.txt`);
+  await fs.writeFile(promptFile, prompt, 'utf8');
+
   // Create AppleScript to spawn new Terminal with Claude Code
+  // The prompt is read from the temp file, avoiding all escaping issues
   const appleScript = `
 tell application "Terminal"
     activate
-    set newTab to do script "cd ${courseDir} && echo '═══════════════════════════════════════════════════════' && echo 'SSi Course Production - Phase ${phase}' && echo '═══════════════════════════════════════════════════════' && echo 'Course: ${courseCode}' && echo 'Training: ${trainingURL}' && echo '' && echo 'PROMPT:' && cat <<'PROMPT_EOF'
-${prompt}
-PROMPT_EOF
-"
+    set newTab to do script "cd ${courseDir} && echo '═══════════════════════════════════════════════════════' && echo 'SSi Course Production - Phase ${phase}' && echo '═══════════════════════════════════════════════════════' && echo 'Course: ${courseCode}' && echo 'Training: ${trainingURL}' && echo '' && echo 'PROMPT:' && cat '${promptFile}' && echo '' && echo '═══════════════════════════════════════════════════════'"
 end tell
   `.trim();
 
   try {
     await execAsync(`osascript -e '${appleScript.replace(/'/g, "'\\''")}'`);
     console.log(`[Agent] Phase ${phase} agent spawned successfully`);
+
+    // Clean up temp file after delay (give Terminal time to read it)
+    setTimeout(() => {
+      fs.unlink(promptFile).catch(err => {
+        console.warn(`[Agent] Failed to clean up temp prompt file: ${err.message}`);
+      });
+    }, 5000);
   } catch (error) {
     console.error(`[Agent] Failed to spawn Phase ${phase} agent:`, error.message);
+    // Clean up temp file on error
+    await fs.unlink(promptFile).catch(() => {});
     throw error;
   }
 }
@@ -867,6 +879,45 @@ app.get('/api/courses/:code/regeneration/:jobId', (req, res) => {
 });
 
 /**
+ * GET /api/courses/:code/regeneration/:jobId/status
+ * Alias endpoint for regeneration job status (matches ITERATION_2_BRIEF spec)
+ */
+app.get('/api/courses/:code/regeneration/:jobId/status', (req, res) => {
+  try {
+    const { jobId } = req.params;
+    const job = STATE.regenerationJobs.get(jobId);
+
+    if (!job) {
+      return res.status(404).json({
+        error: 'Regeneration job not found',
+        jobId
+      });
+    }
+
+    // Return formatted status (matching frontend expectations)
+    res.json({
+      jobId: job.jobId,
+      status: job.status,
+      currentPhase: job.currentPhase,
+      progress: job.progress,
+      startTime: job.startTime,
+      endTime: job.endTime,
+      completedPhases: job.completedPhases,
+      affectedPhases: job.phases,
+      seedId: job.seedId,
+      error: job.error,
+      elapsed: job.startTime ? Date.now() - job.startTime.getTime() : 0
+    });
+  } catch (error) {
+    console.error('[API] Error getting regeneration status:', error);
+    res.status(500).json({
+      error: 'Failed to get regeneration status',
+      message: error.message
+    });
+  }
+});
+
+/**
  * POST /api/courses/:code/seeds/:seedId/accept
  * Accept current extraction attempt and mark as reviewed
  */
@@ -1361,8 +1412,96 @@ app.get('/api/courses/:courseCode/provenance/:seedId', async (req, res) => {
 });
 
 /**
+ * Trigger automatic regeneration cascade for edited translation
+ * Runs Phase 3 → 3.5 → 4 → 5 → 6 in sequence
+ *
+ * @param {string} courseCode - Course identifier
+ * @param {string} seedId - Edited seed ID (e.g., 'S0042')
+ * @param {string} translationUuid - UUID of the edited translation
+ * @returns {Promise<string>} - Job ID for tracking
+ */
+async function triggerRegenerationCascade(courseCode, seedId, translationUuid) {
+  const jobId = `regen_${Date.now()}_${seedId}`;
+  const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+
+  console.log(`[Cascade] Starting Phase 3+ regeneration for ${seedId} (job: ${jobId})`);
+
+  // Create regeneration job
+  const job = {
+    jobId,
+    type: 'edit_cascade',
+    courseCode,
+    seedId,
+    translationUuid,
+    status: 'queued',
+    startTime: new Date(),
+    phases: ['3', '3.5', '4', '5', '6'],
+    currentPhase: null,
+    progress: 0,
+    completedPhases: [],
+    error: null
+  };
+
+  STATE.regenerationJobs.set(jobId, job);
+
+  // Define phases to regenerate (3 → 3.5 → 4 → 5 → 6)
+  const phasesToRun = [
+    { id: '3', name: 'LEGO Extraction', weight: 20 },
+    { id: '3.5', name: 'Graph Construction', weight: 15 },
+    { id: '4', name: 'LEGO Deduplication', weight: 20 },
+    { id: '5', name: 'Pattern-Aware Baskets', weight: 25 },
+    { id: '6', name: 'Introductions', weight: 20 }
+  ];
+
+  // Execute cascade asynchronously (don't block response)
+  (async () => {
+    try {
+      job.status = 'running';
+      let cumulativeProgress = 0;
+
+      for (const phase of phasesToRun) {
+        job.currentPhase = phase.id;
+        console.log(`[${jobId}] Running Phase ${phase.id}: ${phase.name}...`);
+
+        // Get phase prompt from registry
+        const prompt = PHASE_PROMPTS[phase.id];
+        if (!prompt) {
+          throw new Error(`Phase ${phase.id} prompt not found in registry`);
+        }
+
+        // Execute phase using existing infrastructure
+        await spawnPhaseAgent(phase.id, prompt, coursePath, courseCode);
+
+        // Update progress
+        cumulativeProgress += phase.weight;
+        job.progress = cumulativeProgress;
+        job.completedPhases.push(phase.id);
+
+        console.log(`[${jobId}] Phase ${phase.id} complete (${job.progress}% total)`);
+      }
+
+      // Mark job complete
+      job.status = 'completed';
+      job.progress = 100;
+      job.endTime = new Date();
+      job.duration = job.endTime - job.startTime;
+
+      console.log(`✅ [${jobId}] Regeneration cascade complete for ${seedId} (${job.duration}ms)`);
+
+    } catch (error) {
+      job.status = 'failed';
+      job.error = error.message;
+      job.endTime = new Date();
+      console.error(`❌ [${jobId}] Regeneration cascade failed:`, error);
+    }
+  })();
+
+  return jobId;
+}
+
+/**
  * PUT /api/courses/:courseCode/translations/:uuid
- * Update a translation and trigger regeneration
+ * Update a translation and automatically trigger Phase 3+ regeneration
  */
 app.put('/api/courses/:courseCode/translations/:uuid', async (req, res) => {
   try {
@@ -1399,14 +1538,119 @@ app.put('/api/courses/:courseCode/translations/:uuid', async (req, res) => {
     };
     await fs.writeJson(metadataPath, metadata, { spaces: 2 });
 
+    // **NEW**: Trigger automatic Phase 3+ regeneration cascade
+    const jobId = await triggerRegenerationCascade(courseCode, translation.seed_id, uuid);
+
     res.json({
       success: true,
-      message: 'Translation updated. Course marked for regeneration.',
-      translation
+      message: 'Translation updated. Phase 3+ regeneration started automatically.',
+      translation,
+      regeneration: {
+        jobId,
+        status: 'queued',
+        affectedPhases: ['3', '3.5', '4', '5', '6'],
+        seedId: translation.seed_id,
+        statusUrl: `/api/courses/${courseCode}/regeneration/${jobId}/status`
+      }
     });
   } catch (error) {
     console.error('Error updating translation:', error);
     res.status(500).json({ error: 'Failed to update translation' });
+  }
+});
+
+// =============================================================================
+// VISUALIZATION API ENDPOINTS
+// =============================================================================
+
+/**
+ * GET /api/visualization/legos/:code
+ * Load all deduplicated LEGOs for a course (for LEGO visualizer)
+ */
+app.get('/api/visualization/legos/:code', async (req, res) => {
+  try {
+    const { code } = req.params;
+    const legosDir = path.join(CONFIG.VFS_ROOT, code, 'amino_acids', 'legos_deduplicated');
+
+    if (!await fs.pathExists(legosDir)) {
+      return res.status(404).json({ error: 'LEGOs not found for this course' });
+    }
+
+    const files = await fs.readdir(legosDir);
+    const legos = [];
+
+    for (const file of files.filter(f => f.endsWith('.json'))) {
+      const content = await fs.readJson(path.join(legosDir, file));
+      legos.push({ file, ...content });
+    }
+
+    res.json({ courseCode: code, legos });
+  } catch (err) {
+    console.error('[API] Error loading LEGOs:', err);
+    res.status(500).json({ error: 'Failed to load LEGOs', details: err.message });
+  }
+});
+
+/**
+ * GET /api/visualization/seed/:uuid
+ * Load translation (seed) by UUID (for Seed visualizer)
+ */
+app.get('/api/visualization/seed/:uuid', async (req, res) => {
+  try {
+    const { uuid } = req.params;
+
+    // Search all courses for this translation UUID
+    const courses = await fs.readdir(CONFIG.VFS_ROOT);
+
+    for (const course of courses) {
+      const courseDir = path.join(CONFIG.VFS_ROOT, course);
+      const stats = await fs.stat(courseDir);
+
+      if (!stats.isDirectory()) continue;
+
+      const translationFile = path.join(courseDir, 'amino_acids', 'translations', `${uuid}.json`);
+
+      if (await fs.pathExists(translationFile)) {
+        const translation = await fs.readJson(translationFile);
+        return res.json({ courseCode: course, translation });
+      }
+    }
+
+    res.status(404).json({ error: 'Translation not found' });
+  } catch (err) {
+    console.error('[API] Error loading seed:', err);
+    res.status(500).json({ error: 'Failed to load seed', details: err.message });
+  }
+});
+
+/**
+ * GET /api/visualization/phrases/:code
+ * Load all baskets for a course (for Phrase visualizer)
+ */
+app.get('/api/visualization/phrases/:code', async (req, res) => {
+  try {
+    const { code } = req.params;
+    const basketsDir = path.join(CONFIG.VFS_ROOT, code, 'amino_acids', 'baskets');
+
+    if (!await fs.pathExists(basketsDir)) {
+      return res.status(404).json({ error: 'Baskets not found for this course' });
+    }
+
+    const files = await fs.readdir(basketsDir);
+    const baskets = [];
+
+    for (const file of files.filter(f => f.endsWith('.json'))) {
+      const content = await fs.readJson(path.join(basketsDir, file));
+      baskets.push({ file, ...content });
+    }
+
+    // Sort by basket_id
+    baskets.sort((a, b) => (a.basket_id || 0) - (b.basket_id || 0));
+
+    res.json({ courseCode: code, baskets });
+  } catch (err) {
+    console.error('[API] Error loading phrases:', err);
+    res.status(500).json({ error: 'Failed to load phrases', details: err.message });
   }
 });
 
@@ -1559,6 +1803,10 @@ async function startServer() {
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/courses/:code/prompt-evolution`);
     console.log(`  POST http://localhost:${CONFIG.PORT}/api/courses/:code/experimental-rules`);
     console.log(`  POST http://localhost:${CONFIG.PORT}/api/courses/:code/prompt-evolution/commit`);
+    console.log(`\nVisualization Endpoints:`);
+    console.log(`  GET  http://localhost:${CONFIG.PORT}/api/visualization/legos/:code`);
+    console.log(`  GET  http://localhost:${CONFIG.PORT}/api/visualization/seed/:uuid`);
+    console.log(`  GET  http://localhost:${CONFIG.PORT}/api/visualization/phrases/:code`);
     console.log(`\nPrompt Management API (Self-Improving DNA):`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/prompts/:phase`);
     console.log(`  PUT  http://localhost:${CONFIG.PORT}/api/prompts/:phase`);

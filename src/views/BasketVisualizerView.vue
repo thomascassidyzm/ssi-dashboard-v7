@@ -74,7 +74,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import PhraseVisualizer from '@/components/PhraseVisualizer.vue'
+import PhraseVisualizer from '../components/PhraseVisualizer.vue'
 
 const route = useRoute()
 const courseCode = computed(() => route.params.courseCode || 'mkd_for_eng_574seeds')

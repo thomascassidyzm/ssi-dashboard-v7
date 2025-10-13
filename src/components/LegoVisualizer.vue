@@ -479,15 +479,17 @@ async function loadLegos() {
   error.value = null
 
   try {
-    // Load all LEGO files from the deduplicated directory
-    const legoPath = `/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/${props.courseCode}/amino_acids/legos_deduplicated/`
-
-    // In a real application, this would be an API call
-    // For now, we'll fetch from the file system
-    const response = await fetch(`/api/legos/${props.courseCode}`)
+    // Fetch LEGOs from the API endpoint
+    // This should match the automation server API structure
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:54321'
+    const response = await fetch(`${API_BASE_URL}/api/visualization/legos/${props.courseCode}`, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
 
     if (!response.ok) {
-      throw new Error('Failed to load LEGOs')
+      throw new Error(`API returned ${response.status}: ${response.statusText}`)
     }
 
     const data = await response.json()
@@ -495,38 +497,9 @@ async function loadLegos() {
   } catch (err) {
     error.value = err.message || 'Failed to load LEGOs'
     console.error('Failed to load LEGOs:', err)
-
-    // Fallback: Load LEGOs directly from file system (development mode)
-    try {
-      await loadLegosFromFileSystem()
-    } catch (fsErr) {
-      console.error('Fallback loading also failed:', fsErr)
-    }
   } finally {
     loading.value = false
   }
-}
-
-async function loadLegosFromFileSystem() {
-  // This is a development-only fallback
-  // In production, this would use the API
-  const fs = window.require?.('fs')
-  const path = window.require?.('path')
-
-  if (!fs || !path) {
-    throw new Error('File system access not available')
-  }
-
-  const legoDir = `/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/${props.courseCode}/amino_acids/legos_deduplicated/`
-  const files = fs.readdirSync(legoDir).filter(f => f.endsWith('.json'))
-
-  const legoData = files.map(file => {
-    const filePath = path.join(legoDir, file)
-    const content = fs.readFileSync(filePath, 'utf-8')
-    return JSON.parse(content)
-  })
-
-  legos.value = legoData
 }
 
 function resetFilters() {

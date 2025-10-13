@@ -283,32 +283,20 @@ async function loadBaskets() {
   error.value = null
 
   try {
-    // Load basket files from VFS
-    const basketPath = `/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/${props.courseCode}/amino_acids/baskets`
-
-    // For now, we'll load a fixed set of baskets
-    // In production, this would use an API or file system service
-    const basketFiles = []
-    for (let i = 1; i <= 23; i++) {
-      const basketNum = i.toString().padStart(2, '0')
-      basketFiles.push(`${basketPath}/basket_${basketNum}.json`)
-    }
-
-    // Load all baskets
-    const loadedBaskets = []
-    for (const file of basketFiles) {
-      try {
-        const response = await fetch(`/vfs/courses/${props.courseCode}/amino_acids/baskets/basket_${(loadedBaskets.length + 1).toString().padStart(2, '0')}.json`)
-        if (response.ok) {
-          const basket = await response.json()
-          loadedBaskets.push(basket)
-        }
-      } catch (err) {
-        console.warn(`Failed to load basket from ${file}:`, err)
+    // Fetch baskets from API endpoint
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:54321'
+    const response = await fetch(`${API_BASE_URL}/api/visualization/phrases/${props.courseCode}`, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
       }
+    })
+
+    if (!response.ok) {
+      throw new Error(`API returned ${response.status}: ${response.statusText}`)
     }
 
-    baskets.value = loadedBaskets
+    const data = await response.json()
+    baskets.value = data.baskets || []
 
     // Set initial basket based on prop
     if (props.basketId !== null) {
