@@ -1,0 +1,47 @@
+{
+  "seed_id": "615",
+  "source_english": "I thought you were very brave to say that.",
+  "target_italian": "Pensavo fossi molto coraggioso a dirlo.",
+  "uuid": "6e931eb5-6846-171b-69de-c53baadc0b41",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "06320d8c-3da5-8ae2-b038-190810580d2c",
+          "lego_text": "a",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.449Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.449Z",
+        "source": "I thought you were very brave to say that.",
+        "target": "Pensavo fossi molto coraggioso a dirlo.",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "06320d8c-3da5-8ae2-b038-190810580d2c",
+            "lego_text": "a",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "seed_id": "186",
+  "source_english": "Do you want to talk about something different next week?",
+  "target_italian": "Vuoi parlare di qualcosa di diverso la settimana prossima?",
+  "uuid": "484d9ff7-6924-7763-e42c-8f8631054405",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 5,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "02c298f5-07b7-b65f-fcc8-8753d46086d6",
+          "lego_text": "di",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.240Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.240Z",
+        "source": "Do you want to talk about something different next week?",
+        "target": "Vuoi parlare di qualcosa di diverso la settimana prossima?",
+        "quality_score": 8,
+        "lego_count": 5,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "02c298f5-07b7-b65f-fcc8-8753d46086d6",
+            "lego_text": "di",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

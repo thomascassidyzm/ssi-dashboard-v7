@@ -1,0 +1,45 @@
+{
+  "seed_id": "658",
+  "source_english": "Do you all want?",
+  "target_italian": "Volete tutti?",
+  "uuid": "ddff86a1-cc33-782d-5d5e-48706ce7c915",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 1,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "low_lego_count",
+          "count": 1,
+          "severity": "high"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.469Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.469Z",
+        "source": "Do you all want?",
+        "target": "Volete tutti?",
+        "quality_score": 8,
+        "lego_count": 1,
+        "issues": [
+          {
+            "type": "low_lego_count",
+            "count": 1,
+            "severity": "high"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "seed_id": "40",
+  "source_english": "How do you feel at the moment?",
+  "target_italian": "Come ti senti in questo momento?",
+  "uuid": "aa38de7e-6e77-49f7-6439-88c57331bc04",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 3,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "28a7601e-a61c-0af4-477d-5c62a2087328",
+          "lego_text": "in",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.189Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.189Z",
+        "source": "How do you feel at the moment?",
+        "target": "Come ti senti in questo momento?",
+        "quality_score": 8,
+        "lego_count": 3,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "28a7601e-a61c-0af4-477d-5c62a2087328",
+            "lego_text": "in",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

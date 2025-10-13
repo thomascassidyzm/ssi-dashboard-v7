@@ -1,0 +1,47 @@
+{
+  "seed_id": "395",
+  "source_english": "We need to turn left at the next corner.",
+  "target_italian": "Dobbiamo girare a sinistra al prossimo angolo.",
+  "uuid": "3ad2a930-b797-9148-86e0-29f5ae80d1cb",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "4c8fb9e9-8559-61ac-6b6b-bf20a71ffb0c",
+          "lego_text": "a",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.333Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.333Z",
+        "source": "We need to turn left at the next corner.",
+        "target": "Dobbiamo girare a sinistra al prossimo angolo.",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "4c8fb9e9-8559-61ac-6b6b-bf20a71ffb0c",
+            "lego_text": "a",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

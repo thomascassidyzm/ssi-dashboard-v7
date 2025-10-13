@@ -1,0 +1,47 @@
+{
+  "seed_id": "506",
+  "source_english": "I used to live around here years ago before we moved.",
+  "target_italian": "Vivevo da queste parti anni fa prima di trasferirci.",
+  "uuid": "d4b915c9-d75b-75b2-6983-75ec431f4914",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 5,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "8f3782da-4292-2b15-babb-2353d8ede24e",
+          "lego_text": "di",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.399Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.399Z",
+        "source": "I used to live around here years ago before we moved.",
+        "target": "Vivevo da queste parti anni fa prima di trasferirci.",
+        "quality_score": 8,
+        "lego_count": 5,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "8f3782da-4292-2b15-babb-2353d8ede24e",
+            "lego_text": "di",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

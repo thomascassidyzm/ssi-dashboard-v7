@@ -1,0 +1,216 @@
+{
+  "uuid": "0b3ecfc4d318109293f6dd48dcf915d3",
+  "type": "translation",
+  "seed_id": "C0302",
+  "source": "She said that she doesn't want to live in a city.",
+  "target": "Ella dijo que no quiere vivir en una ciudad.",
+  "metadata": {
+    "course_code": "spa_for_eng_668seeds",
+    "phase": "phase_1",
+    "heuristics_applied": [
+      "naturalness",
+      "frequency",
+      "clarity",
+      "brevity",
+      "consistency",
+      "utility"
+    ],
+    "created_at": "2025-10-12T22:05:46.480Z"
+  },
+  "lego_extraction_attempts": [
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:07:54.840Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 3,
+      "legos": [
+        {
+          "text": "Ella dijo",
+          "provenance": "C0302L1",
+          "position": 1
+        },
+        {
+          "text": "que",
+          "provenance": "C0302L2",
+          "position": 2
+        },
+        {
+          "text": "no quiere vivir en una ciudad",
+          "provenance": "C0302L3",
+          "position": 3
+        }
+      ],
+      "quality_score": {
+        "overall_score": 7.5,
+        "dimension_scores": {
+          "iron_rule_compliance": 10,
+          "naturalness": 2,
+          "pedagogical_value": 9,
+          "consistency": 8,
+          "edge_case_handling": 9
+        },
+        "calculated_at": "2025-10-12T22:07:54.840Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "Ella dijo"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "no quiere vivir en una ciudad"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "no quiere vivir en una ciudad"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "no quiere vivir en una ciudad"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [
+        {
+          "suggestion_id": "s001_naturalness",
+          "type": "prompt_improvement",
+          "priority": "high",
+          "suggested_change": "Add specific instruction: \"Keep reflexive verbs together (me gusta, se puede, etc.)\"",
+          "rationale": "Low naturalness score indicates phrase boundary issues",
+          "expected_improvement": "+1.5 points in naturalness"
+        }
+      ],
+      "status": "flagged",
+      "review_notes": "Attempt 1: Fair extraction. 4 issue(s) requiring attention."
+    },
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:08:06.838Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 3,
+      "legos": [
+        {
+          "text": "Ella dijo",
+          "provenance": "C0302L1",
+          "position": 1
+        },
+        {
+          "text": "que",
+          "provenance": "C0302L2",
+          "position": 2
+        },
+        {
+          "text": "no quiere vivir en una ciudad",
+          "provenance": "C0302L3",
+          "position": 3
+        }
+      ],
+      "quality_score": {
+        "overall_score": 7.5,
+        "dimension_scores": {
+          "iron_rule_compliance": 10,
+          "naturalness": 2,
+          "pedagogical_value": 9,
+          "consistency": 8,
+          "edge_case_handling": 9
+        },
+        "calculated_at": "2025-10-12T22:08:06.838Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "Ella dijo"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "no quiere vivir en una ciudad"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "no quiere vivir en una ciudad"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "no quiere vivir en una ciudad"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [
+        {
+          "suggestion_id": "s001_naturalness",
+          "type": "prompt_improvement",
+          "priority": "high",
+          "suggested_change": "Add specific instruction: \"Keep reflexive verbs together (me gusta, se puede, etc.)\"",
+          "rationale": "Low naturalness score indicates phrase boundary issues",
+          "expected_improvement": "+1.5 points in naturalness"
+        }
+      ],
+      "status": "flagged",
+      "review_notes": "Attempt 1: Fair extraction. 4 issue(s) requiring attention."
+    }
+  ],
+  "quality_status": "flagged",
+  "current_quality_score": 7.5,
+  "total_attempts": 1,
+  "flagged_for_review": true,
+  "human_review_requested": false,
+  "last_reviewed_at": "2025-10-12T22:08:06.838Z"
+}

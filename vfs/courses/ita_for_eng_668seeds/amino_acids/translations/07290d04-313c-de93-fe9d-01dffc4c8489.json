@@ -1,0 +1,47 @@
+{
+  "seed_id": "304",
+  "source_english": "I think that she doesn't want to work from home.",
+  "target_italian": "Penso che lei non voglia lavorare da casa.",
+  "uuid": "07290d04-313c-de93-fe9d-01dffc4c8489",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 5,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "b1a067c3-2ec3-3df6-5504-512a0685e384",
+          "lego_text": "da",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.284Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.284Z",
+        "source": "I think that she doesn't want to work from home.",
+        "target": "Penso che lei non voglia lavorare da casa.",
+        "quality_score": 8,
+        "lego_count": 5,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "b1a067c3-2ec3-3df6-5504-512a0685e384",
+            "lego_text": "da",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

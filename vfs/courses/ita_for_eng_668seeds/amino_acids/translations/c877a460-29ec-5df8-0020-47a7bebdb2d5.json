@@ -1,0 +1,47 @@
+{
+  "seed_id": "118",
+  "source_english": "I feel better than I felt when we were in the pub.",
+  "target_italian": "Mi sento meglio di come mi sentivo quando eravamo al pub.",
+  "uuid": "c877a460-29ec-5df8-0020-47a7bebdb2d5",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 6,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "6d7c52db-0a0e-efdb-4f76-8d4bab305783",
+          "lego_text": "al",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.217Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.217Z",
+        "source": "I feel better than I felt when we were in the pub.",
+        "target": "Mi sento meglio di come mi sentivo quando eravamo al pub.",
+        "quality_score": 8,
+        "lego_count": 6,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "6d7c52db-0a0e-efdb-4f76-8d4bab305783",
+            "lego_text": "al",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

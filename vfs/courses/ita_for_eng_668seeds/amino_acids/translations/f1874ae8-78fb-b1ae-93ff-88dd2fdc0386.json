@@ -1,0 +1,47 @@
+{
+  "seed_id": "93",
+  "source_english": "It's time to go now.",
+  "target_italian": "È ora di andare adesso.",
+  "uuid": "f1874ae8-78fb-b1ae-93ff-88dd2fdc0386",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 3,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "3267f4e7-b309-7f94-b94a-489a8182b6d9",
+          "lego_text": "di",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.207Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.207Z",
+        "source": "It's time to go now.",
+        "target": "È ora di andare adesso.",
+        "quality_score": 8,
+        "lego_count": 3,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "3267f4e7-b309-7f94-b94a-489a8182b6d9",
+            "lego_text": "di",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

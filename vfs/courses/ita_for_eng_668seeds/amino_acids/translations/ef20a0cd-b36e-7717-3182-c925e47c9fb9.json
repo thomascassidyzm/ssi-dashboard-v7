@@ -1,0 +1,47 @@
+{
+  "seed_id": "383",
+  "source_english": "Yes he said he wanted to put it in the garden.",
+  "target_italian": "Sì, ha detto che voleva metterlo in giardino.",
+  "uuid": "ef20a0cd-b36e-7717-3182-c925e47c9fb9",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 5,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "04201d68-02a3-55d8-d483-7716aa52a33a",
+          "lego_text": "in",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.325Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.325Z",
+        "source": "Yes he said he wanted to put it in the garden.",
+        "target": "Sì, ha detto che voleva metterlo in giardino.",
+        "quality_score": 8,
+        "lego_count": 5,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "04201d68-02a3-55d8-d483-7716aa52a33a",
+            "lego_text": "in",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

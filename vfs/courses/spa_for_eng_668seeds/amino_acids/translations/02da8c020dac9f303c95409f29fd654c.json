@@ -1,0 +1,174 @@
+{
+  "uuid": "02da8c020dac9f303c95409f29fd654c",
+  "type": "translation",
+  "seed_id": "C0267",
+  "source": "Have you heard from your friend?",
+  "target": "¿Has tenido noticias de tu amigo?",
+  "metadata": {
+    "course_code": "spa_for_eng_668seeds",
+    "phase": "phase_1",
+    "heuristics_applied": [
+      "naturalness",
+      "frequency",
+      "clarity",
+      "brevity",
+      "consistency",
+      "utility"
+    ],
+    "created_at": "2025-10-12T22:05:46.477Z"
+  },
+  "lego_extraction_attempts": [
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:07:54.831Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 1,
+      "legos": [
+        {
+          "text": "¿Has tenido noticias de tu amigo?",
+          "provenance": "C0267L1",
+          "position": 1
+        }
+      ],
+      "quality_score": {
+        "overall_score": 7.9,
+        "dimension_scores": {
+          "iron_rule_compliance": 10,
+          "naturalness": 4,
+          "pedagogical_value": 8.5,
+          "consistency": 9,
+          "edge_case_handling": 8.3
+        },
+        "calculated_at": "2025-10-12T22:07:54.831Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "¿Has tenido noticias de tu amigo?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "¿Has tenido noticias de tu amigo?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "¿Has tenido noticias de tu amigo?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [
+        {
+          "suggestion_id": "s001_naturalness",
+          "type": "prompt_improvement",
+          "priority": "high",
+          "suggested_change": "Add specific instruction: \"Keep reflexive verbs together (me gusta, se puede, etc.)\"",
+          "rationale": "Low naturalness score indicates phrase boundary issues",
+          "expected_improvement": "+1.5 points in naturalness"
+        }
+      ],
+      "status": "flagged",
+      "review_notes": "Attempt 1: Fair extraction. 3 issue(s) requiring attention."
+    },
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:08:06.830Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 1,
+      "legos": [
+        {
+          "text": "¿Has tenido noticias de tu amigo?",
+          "provenance": "C0267L1",
+          "position": 1
+        }
+      ],
+      "quality_score": {
+        "overall_score": 7.9,
+        "dimension_scores": {
+          "iron_rule_compliance": 10,
+          "naturalness": 4,
+          "pedagogical_value": 8.5,
+          "consistency": 9,
+          "edge_case_handling": 8.3
+        },
+        "calculated_at": "2025-10-12T22:08:06.830Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "¿Has tenido noticias de tu amigo?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "¿Has tenido noticias de tu amigo?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "¿Has tenido noticias de tu amigo?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [
+        {
+          "suggestion_id": "s001_naturalness",
+          "type": "prompt_improvement",
+          "priority": "high",
+          "suggested_change": "Add specific instruction: \"Keep reflexive verbs together (me gusta, se puede, etc.)\"",
+          "rationale": "Low naturalness score indicates phrase boundary issues",
+          "expected_improvement": "+1.5 points in naturalness"
+        }
+      ],
+      "status": "flagged",
+      "review_notes": "Attempt 1: Fair extraction. 3 issue(s) requiring attention."
+    }
+  ],
+  "quality_status": "flagged",
+  "current_quality_score": 7.9,
+  "total_attempts": 1,
+  "flagged_for_review": true,
+  "human_review_requested": false,
+  "last_reviewed_at": "2025-10-12T22:08:06.830Z"
+}

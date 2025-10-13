@@ -1,0 +1,47 @@
+{
+  "seed_id": "598",
+  "source_english": "He's heard a thousand stories about what they were doing.",
+  "target_italian": "Ha sentito mille storie su quello che stavano facendo.",
+  "uuid": "14574c29-710c-2fac-2a61-15f8f2db4f1b",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 5,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "280bde29-59ff-74ac-416b-6c31fd0d3367",
+          "lego_text": "su",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.442Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.442Z",
+        "source": "He's heard a thousand stories about what they were doing.",
+        "target": "Ha sentito mille storie su quello che stavano facendo.",
+        "quality_score": 8,
+        "lego_count": 5,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "280bde29-59ff-74ac-416b-6c31fd0d3367",
+            "lego_text": "su",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

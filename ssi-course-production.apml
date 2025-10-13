@@ -1,0 +1,1296 @@
+app ssi_course_production:
+  title: "SSi Language Course Production System"
+  version: "7.0.0"
+  apml_version: "1.1.0"
+  description: |
+    Complete specification for SSi (Say Something In) language course production system.
+    This system transforms canonical seed sentences into pedagogically optimized
+    language learning courses through a 7-phase pipeline orchestrated by Claude Code agents.
+
+  created: "2024-10-13"
+  author: "Tom Cassidy / SSi Team"
+
+  pss_compliance:
+    structure_standard: "APML-PSS v1.0.0"
+    self_documentation: enabled
+
+  deterministic_compilation:
+    target_platform: "Vue3 + Node.js + Claude Code"
+    compilation_guarantee: "Specification-driven phase orchestration"
+
+# =============================================================================
+# SYSTEM OVERVIEW & INTENT
+# =============================================================================
+
+## System Purpose
+
+The SSi Course Production System enables:
+
+1. **Automated Course Generation** - Transform 668 canonical English sentences into
+   pedagogically optimized courses for ANY target language
+
+2. **Distributed Collaboration** - Web dashboard accessible from any computer tunnels
+   to SSi Mac machine running Claude Code (Sonnet 4.5) for AI-powered generation
+
+3. **Self-Documenting Intelligence** - Dashboard displays the ACTUAL prompts used by
+   Claude, making the system fully transparent and editable
+
+4. **Quality Assurance** - Visual review and editing of all phase outputs with
+   automatic regeneration of affected downstream phases
+
+5. **Course Delivery** - Final JSON manifest drives SSi mobile app, coordinating
+   text display with AWS-hosted audio files
+
+## Critical Success Factors
+
+✅ Dashboard shows working reality (not generic documentation)
+✅ Edit intelligence in UI → updates source → execution and docs stay in sync
+✅ No intelligence loss during code refactors or UI redesigns
+✅ Claude Code agents receive detailed, battle-tested prompts
+✅ Generated courses work perfectly in SSi app
+
+## System Architecture
+
+```
+User (any computer, any location)
+  ↓
+Web Dashboard (Vercel-hosted Vue3 app)
+  ↓
+ngrok Tunnel
+  ↓
+automation_server.cjs (on SSi Mac, port 3456)
+  ↓
+osascript (opens Claude Code)
+  ↓
+Claude Code (Sonnet 4.5) executes phase prompts
+  ↓
+VFS (Virtual File System) - stores amino acid outputs
+  ↓
+Dashboard polls for updates, displays results
+  ↓
+User reviews/edits, triggers regeneration
+  ↓
+Final JSON manifest → SSi mobile app
+```
+
+# =============================================================================
+# VARIABLE REGISTRY (Single Source of Truth)
+# =============================================================================
+
+## Core Concepts
+
+### Amino Acids
+PURPOSE: Immutable components with deterministic UUIDs
+DEFINITION: Each phase output is an "amino acid" - a discrete, content-addressed component
+UUID_GENERATION: hash(content + metadata) - ensures same content always gets same ID
+IMMUTABILITY: Edits create NEW amino acids with updated provenance, never modify originals
+PROVENANCE: S{seed}L{position} format tracks birth-parent relationships
+
+### VFS (Virtual File System)
+PURPOSE: Organized storage for all course generation artifacts
+BASE_PATH: /Users/tomcassidy/SSi/SSi_Course_Production/vfs/courses/
+STRUCTURE: {target_code}_for_{known_code}_speakers/
+SUBDIRS:
+  - amino_acids/translations/
+  - amino_acids/legos/
+  - amino_acids/legos_deduplicated/
+  - amino_acids/baskets/
+  - amino_acids/introductions/
+  - phase_outputs/
+  - proteins/ (compiled manifests)
+
+### Course Codes
+FORMAT: "{target_iso}_for_{known_iso}_speakers"
+EXAMPLES:
+  - fra_for_eng_speakers (French for English speakers)
+  - cym_for_eng_speakers (Welsh for English speakers)
+  - ita_for_fra_speakers (Italian for French speakers)
+
+## API Endpoints
+
+ENDPOINTS:
+  - POST /api/courses/generate
+    PURPOSE: Start complete course generation pipeline
+    PARAMETERS: { target, known, seeds }
+    RETURNS: { courseCode, status }
+
+  - GET /api/courses/:courseCode/status
+    PURPOSE: Poll for generation progress
+    RETURNS: { phase, progress, status }
+
+  - GET /api/courses/:courseCode
+    PURPOSE: Get complete course data
+    RETURNS: Course metadata and manifest
+
+  - POST /api/courses/:code/seeds/regenerate
+    PURPOSE: Regenerate specific seeds after edits
+    PARAMETERS: { seedIds }
+
+  - GET /api/registry/phase-prompts/:phase
+    PURPOSE: Fetch actual prompt for phase (from this APML registry)
+    RETURNS: { name, prompt, metadata }
+
+  - PUT /api/registry/phase-prompts/:phase
+    PURPOSE: Update phase prompt (writes to APML registry)
+    PARAMETERS: { prompt, changelog }
+    CREATES: New version in prompt history
+
+## Batch Configuration
+
+BATCH_SIZES:
+  PHASE_1_TRANSLATION: 100 seeds per batch (easier work, larger batches)
+  PHASE_3_LEGO_DECOMPOSITION: 20 seeds per batch (complex work, smaller batches)
+  PHASE_5_BASKETS: 20 LEGOs per batch
+
+TOTAL_SEEDS: 668 (canonical SSi corpus)
+
+# =============================================================================
+# PHASE SPECIFICATIONS
+# =============================================================================
+
+## Phase 0: Corpus Pre-Analysis
+
+NAME: "Corpus Pre-Analysis"
+PURPOSE: Analyze source corpus to inform translation decisions
+INPUT: vfs/seeds/canonical_seeds.json (668 English seeds)
+OUTPUT: vfs/phase_outputs/phase_0_intelligence.json
+
+TASKS:
+  1. Calculate word frequency distributions
+  2. Identify high-frequency vocabulary and patterns
+  3. Assess translation complexity (cognates, false friends)
+  4. Map grammatical dependencies and prerequisites
+  5. Generate intelligence report for Phase 1 heuristics
+
+CRITICAL_NOTES:
+  - Does NOT modify corpus - analysis only
+  - Informs Phase 1's 6 pedagogical heuristics
+  - Consider learner perspective (what's easy/hard)
+
+PROMPT: |
+  # Phase 0: Corpus Pre-Analysis
+
+  ## Task
+  Analyze the source corpus to generate intelligence data for pedagogical translation.
+
+  ## Input
+  - Source corpus (668 canonical seed pairs)
+  - Located in: vfs/seeds/canonical_seeds.json
+
+  ## Your Mission
+  1. Load and validate the canonical seed corpus
+  2. Perform linguistic analysis:
+     - Calculate word frequency distributions
+     - Identify high-frequency vocabulary and grammatical patterns
+     - Assess translation complexity (cognates, false friends, structural challenges)
+     - Map grammatical dependencies and prerequisite knowledge
+  3. Generate intelligence report with:
+     - Frequency rankings for words and phrases
+     - Complexity scores for each seed
+     - Translation guidance notes (tricky structures, idioms, etc.)
+     - Recommendations for Phase 1 heuristic application
+
+  ## Output Format
+  Store results as JSON:
+  vfs/phase_outputs/phase_0_intelligence.json
+
+  Structure:
+  {
+    "frequency_analysis": { ... },
+    "complexity_scores": { ... },
+    "translation_guidance": { ... },
+    "recommendations": { ... }
+  }
+
+  ## Important Notes
+  - DO NOT modify the source corpus - analysis only
+  - Focus on patterns that affect pedagogical decisions
+  - This intelligence informs Phase 1's 6 heuristics
+  - Consider learner perspective (what's easy/hard to learn)
+
+  ## Success Criteria
+  ✓ All 668 seeds analyzed
+  ✓ Intelligence report generated
+  ✓ Frequency rankings accurate
+  ✓ Complexity assessments complete
+  ✓ Ready for Phase 1 consumption
+
+## Phase 1: Pedagogical Translation
+
+NAME: "Pedagogical Translation"
+PURPOSE: Apply 6 pedagogical heuristics to create optimal learning translations
+INPUT:
+  - vfs/seeds/canonical_seeds.json
+  - vfs/phase_outputs/phase_0_intelligence.json
+OUTPUT: vfs/amino_acids/translations/{uuid}.json (668 translation amino acids)
+
+THE_6_HEURISTICS:
+  1. Naturalness - Target language should sound native, not transliterated
+  2. Frequency - Prefer high-frequency vocabulary and common structures
+  3. Clarity - Prioritize clear, unambiguous expressions over idiomatic complexity
+  4. Brevity - Shorter translations preferred when pedagogically equivalent
+  5. Consistency - Maintain consistent terminology across seeds
+  6. Utility - Maximize teaching value (versatile phrases, reusable structures)
+
+BATCH_PROCESSING:
+  BATCH_SIZE: 100 seeds
+  BATCHES: 7 total (668 ÷ 100 = 6.68, rounded up to 7)
+  NAMING: phase1_batch_001.json, phase1_batch_002.json, etc.
+
+AMINO_ACID_STRUCTURE:
+  uuid: hash(source + target + metadata)
+  source: original English seed
+  target: pedagogically optimized translation
+  seed_id: provenance tracking (S0001, S0002, etc.)
+  heuristics_applied: array of which heuristics influenced this translation
+  metadata: language codes, batch info, timestamp
+
+CRITICAL_RULES:
+  - Translations are NOT literal - they are pedagogically optimized
+  - Each translation is an immutable amino acid component
+  - UUIDs are deterministic (content-based)
+  - Preserve seed_id for provenance tracking
+
+PROMPT: |
+  # Phase 1: Pedagogical Translation
+
+  ## Task
+  Apply 6 pedagogical heuristics to translate all 668 canonical seed pairs into optimized learning material.
+
+  ## Input
+  - Canonical seeds: vfs/seeds/canonical_seeds.json
+  - Phase 0 intelligence: vfs/phase_outputs/phase_0_intelligence.json
+
+  ## The 6 Pedagogical Heuristics
+  1. **Naturalness**: Target language should sound native, not transliterated
+  2. **Frequency**: Prefer high-frequency vocabulary and common structures
+  3. **Clarity**: Prioritize clear, unambiguous expressions over idiomatic complexity
+  4. **Brevity**: Shorter translations preferred when pedagogically equivalent
+  5. **Consistency**: Maintain consistent terminology across seeds
+  6. **Utility**: Maximize teaching value (versatile phrases, reusable structures)
+
+  ## Your Mission
+  For each seed:
+  1. Apply all 6 heuristics to create pedagogically optimized translation
+  2. Generate deterministic UUID: hash(source + target + metadata)
+  3. Store as translation amino acid JSON:
+     - UUID as filename
+     - Content: { source, target, seed_id, heuristics_applied, metadata }
+  4. Save to: vfs/amino_acids/translations/{uuid}.json
+
+  ## Critical Rules
+  - Translations are NOT literal - they are pedagogically optimized
+  - Each translation is an immutable amino acid component
+  - UUIDs are content-based (deterministic)
+  - Preserve seed_id for provenance tracking
+
+  ## Example Translation
+  Seed S42: "I would like to go"
+  Literal: "Hoffwn i fynd"
+  Pedagogical: "Dw i eisiau mynd" (more natural, higher frequency, clearer for learners)
+
+  ## Success Criteria
+  ✓ All 668 seeds translated
+  ✓ All 6 heuristics applied to each
+  ✓ Deterministic UUIDs generated
+  ✓ Amino acids stored in VFS
+  ✓ Provenance preserved (seed_id in each amino acid)
+
+## Phase 2: Corpus Intelligence
+
+NAME: "Corpus Intelligence"
+PURPOSE: Map FCFS chronological order and calculate utility scores
+INPUT:
+  - vfs/amino_acids/translations/*.json
+  - vfs/phase_outputs/phase_0_intelligence.json
+OUTPUT: vfs/phase_outputs/phase_2_corpus_intelligence.json
+
+FCFS_DEFINITION: First-Can-First-Say
+  - Identifies chronological learning order
+  - Maps prerequisite dependencies (word A requires word B)
+  - Establishes natural learning progression
+
+UTILITY_SCORING:
+  FORMULA: Frequency × Versatility × Simplicity
+  FREQUENCY: How often used in corpus
+  VERSATILITY: How many contexts it appears in
+  SIMPLICITY: How easy to learn/teach
+  SCALE: 0-100
+
+PURPOSE_FOR_PHASE_3:
+  - FCFS provides chronological baseline for LEGO extraction
+  - Utility may override FCFS for high-value teaching opportunities
+  - This intelligence drives LEGO decomposition decisions
+
+PROMPT: |
+  # Phase 2: Corpus Intelligence
+
+  ## Task
+  Analyze translated corpus to determine FCFS (First-Can-First-Say) order and calculate utility scores.
+
+  ## Input
+  - Translation amino acids: vfs/amino_acids/translations/*.json
+  - Phase 0 intelligence: vfs/phase_outputs/phase_0_intelligence.json
+
+  ## Your Mission
+  1. **FCFS Mapping**: Determine chronological teaching order
+     - Identify prerequisite knowledge (what must be learned first)
+     - Map dependency chains (word A requires word B)
+     - Establish natural learning progression
+
+  2. **Utility Scoring**: Calculate pedagogical value
+     - Formula: Frequency × Versatility × Simplicity
+     - Frequency: How often used in corpus
+     - Versatility: How many contexts it appears in
+     - Simplicity: How easy to learn/teach
+
+  3. **Generate Intelligence Report**:
+     - FCFS rankings for all translations
+     - Utility scores (0-100 scale)
+     - Dependency maps
+     - Teaching sequence recommendations
+
+  ## Output Format
+  vfs/phase_outputs/phase_2_corpus_intelligence.json
+
+  {
+    "fcfs_order": [ ... ],
+    "utility_scores": { translation_uuid: score, ... },
+    "dependencies": { ... },
+    "recommendations": { ... }
+  }
+
+  ## Critical Notes
+  - FCFS = "natural" chronological sequence
+  - Utility may override FCFS for high-value opportunities
+  - This data drives Phase 3 LEGO extraction algorithm
+
+  ## Success Criteria
+  ✓ FCFS order complete
+  ✓ Utility scores calculated for all translations
+  ✓ Dependency maps generated
+  ✓ Ready for Phase 3 consumption
+
+## Phase 3: LEGO Decomposition
+
+NAME: "LEGO Extraction"
+PURPOSE: Extract optimal teaching phrases while enforcing FD_LOOP and FCFS rules
+INPUT:
+  - vfs/amino_acids/translations/*.json
+  - vfs/phase_outputs/phase_2_corpus_intelligence.json
+OUTPUT: vfs/amino_acids/legos/{uuid}.json
+
+BATCH_PROCESSING:
+  BATCH_SIZE: 20 seeds (complex work requires smaller batches)
+  BATCHES: 34 total (668 ÷ 20 = 33.4, rounded up to 34)
+
+CRITICAL_INTELLIGENCE:
+
+### FD_LOOP TEST (MANDATORY FOR EVERY CHUNK)
+DEFINITION: Forward-Deterministic Loop Test
+RULE: Target → Known → Target MUST BE IDENTICAL
+EXAMPLES:
+  ✅ "importante" → "important" → "importante" (IDENTICAL - PASS)
+  ❌ "bien" → "good" → "bueno" (DIFFERENT - FAIL)
+
+PURPOSE: Ensures every LEGO chunk can be reliably translated back and forth
+WHY_CRITICAL: Prevents ambiguous mappings that confuse learners
+
+### FCFS RULE (First Come, First Served)
+DEFINITION: Corpus frequency determines semantic territory claiming
+PROCESS:
+  1. Count frequency of each mapping in corpus
+  2. Most frequent CLAIMS the simple mapping (if grammatically valid)
+  3. Less frequent must ADD context to differentiate
+  4. If corpus edit needed to maintain FD, NOTE it for SEED_PAIR revision
+
+ARTISTIC_CHOICE (flexible mapping):
+  - "quiero" appears 15x as "I want" → CLAIMS "I want"
+  - "deseo" appears 2x → must use "I desire" or "I really want"
+  - Once claimed, "I want" ALWAYS → "quiero" in this course
+
+GRAMMATICAL_CONSTRAINT (NO flexibility):
+  - "estoy" CANNOT claim generic "I am" - MUST include temporal aspect
+    ✅ "estoy aprendiendo" → "I'm learning" (temporary state)
+    ❌ "estoy" → "I am" (loses critical grammar distinction)
+  - "soy" CANNOT claim generic "I am" - MUST include permanent aspect
+    ✅ "soy de Inglaterra" → "I'm from England" (permanent origin)
+    ❌ "soy" → "I am" (loses critical grammar distinction)
+
+### AUTOMATIC REJECTION LIST
+FUNCTION_WORDS (ALWAYS FAIL FD):
+  - Articles: el/la/los/las, un/una (gender ambiguous)
+  - Pronouns: le/lo/la (multiple meanings)
+  - Prepositions: en (in/on/at), de (of/from/about), por/para
+  - "que" (that/what/which) - context dependent
+
+MULTI_MEANING_WITHOUT_CONSTRAINTS:
+  - "bien" → well/good/fine (use FCFS to claim primary meaning)
+  - "muy" → very/really (use FCFS for intensity)
+
+### DUAL-PASS METHODOLOGY
+
+PASS 1: Forward Analysis (Target → Known)
+  1. Start with first word of target sentence
+  2. Test for FD compliance using FD_LOOP
+  3. If fails, expand to include next word
+  4. Continue until FD passes or sentence complete
+  5. Move to next unmapped word
+
+PASS 2: Reverse Validation (Known → Target)
+  1. Take each known chunk
+  2. Verify it maps back to EXACT target chunk
+  3. If different → REJECT and re-decompose
+
+PASS 3: Corpus-Wide Validation
+  For EVERY chunk, search ALL other SEED_PAIRS in batch:
+  - Find every occurrence of this chunk
+  - Count frequency of each mapping
+  - Apply FCFS: most frequent claims simple mapping
+  - Less frequent must differentiate with context
+  - If conflicts cannot be resolved → FLAG for SEED_PAIR revision
+
+PASS 4: SEED_PAIR Revision Notes
+  If decomposition reveals FD conflicts:
+  - Note which SEED_PAIRS need editing
+  - Suggest specific changes to maintain FD
+  - Example: "I want coffee" might need → "I'd like coffee" if "quiero" is claimed
+
+### COMPONENTIZATION REQUIREMENT
+DEFINITION: Breaking multi-word LEGOs into sub-components (FEEDERs)
+RULE: ONLY when BOTH target AND known are multi-word
+
+REQUIRED:
+  ✅ "parlare italiano" ↔ "parler italien" (BOTH are 2 words)
+  ✅ "para su hermana" ↔ "for his sister" (BOTH are 3+ words)
+
+NOT_REQUIRED:
+  ❌ "construir" ↔ "build" (both single words)
+  ❌ "una nueva vida" ↔ "a new life" (simple 1:1 mapping even if multi-word)
+
+FORMAT: Simple word mappings ONLY (no grammar explanations)
+  "[known LEGO] = [target LEGO], where [target1] = [known1] and [target2] = [known2]"
+
+CRITICAL: Write ALL componentization in KNOWN language, NOT English!
+  - French speakers: Use "où" (not "where"), "et" (not "and")
+  - Spanish speakers: Use "donde" (not "where"), "y" (not "and")
+  - Chinese speakers: Use "其中" (not "where"), "和" (not "and")
+
+EXAMPLE:
+  French: "parler italien = parlare italiano, où parlare = parler et italiano = italien"
+  NOT: "parler italien = parlare italiano, where parlare = parler and italiano = italien" ❌
+
+### IRON RULE
+ABSOLUTE_CONSTRAINT: No LEGO begins or ends with a preposition
+EXAMPLES:
+  ✗ "to the"
+  ✗ "with me"
+  ✗ "in"
+NON_NEGOTIABLE: Zero exceptions allowed
+
+### UID FORMAT
+MANDATORY_STRUCTURE:
+  LEGOs: S{seed_id}L{position}
+  FEEDERs: S{seed_id}F{position}
+
+EXAMPLES:
+  - Seed S0001 → LEGOs: S0001L01, S0001L02, S0001L03
+  - Seed S0001 → FEEDERs: S0001F01, S0001F02
+
+NEVER_USE:
+  ❌ L0001 (missing parent seed ID)
+  ❌ F0001 (missing parent seed ID)
+
+### CONCRETE EXAMPLE
+
+INPUT (from Phase 1):
+{
+  "seed_id": "S0001",
+  "target": "Voglio parlare italiano con te adesso.",
+  "known": "Je veux parler italien avec toi maintenant."
+}
+
+OUTPUT (Phase 3 decomposition):
+{
+  "seed_id": "S0001",
+  "original_target": "Voglio parlare italiano con te adesso.",
+  "original_known": "Je veux parler italien avec toi maintenant.",
+  "lego_pairs": [
+    {
+      "lego_id": "S0001L01",
+      "target_chunk": "Voglio",
+      "known_chunk": "Je veux",
+      "fd_validated": true
+    },
+    {
+      "lego_id": "S0001L02",
+      "target_chunk": "parlare italiano",
+      "known_chunk": "parler italien",
+      "fd_validated": true
+    },
+    {
+      "lego_id": "S0001L03",
+      "target_chunk": "con te",
+      "known_chunk": "avec toi",
+      "fd_validated": true
+    },
+    {
+      "lego_id": "S0001L04",
+      "target_chunk": "adesso",
+      "known_chunk": "maintenant",
+      "fd_validated": true
+    }
+  ],
+  "feeder_pairs": [
+    {
+      "feeder_id": "S0001F01",
+      "target_chunk": "parlare",
+      "known_chunk": "parler"
+    },
+    {
+      "feeder_id": "S0001F02",
+      "target_chunk": "italiano",
+      "known_chunk": "italien"
+    }
+  ],
+  "componentization": [
+    {
+      "lego_id": "S0001L02",
+      "explanation": "parler italien = parlare italiano, où parlare = parler et italiano = italien"
+    },
+    {
+      "lego_id": "S0001L03",
+      "explanation": "avec toi = con te, où con = avec et te = toi"
+    }
+  ]
+}
+
+PROMPT: |
+  # Phase 3: LEGO Decomposition
+
+  Hi! I need help with Phase 3 of my language course project - LEGO decomposition.
+
+  Working with ${targetLang} for ${knownLang} speakers.
+
+  ## CORE PRINCIPLE
+  Break each SEED_PAIR into LEGO chunks that:
+  1. When placed side-by-side, EXACTLY reconstruct the original sentence
+  2. Each LEGO passes the FD_LOOP test independently
+  3. Are reusable across multiple sentences
+
+  ## MANDATORY UID FORMAT
+  For seed S0001:
+  - LEGOs: S0001L01, S0001L02, S0001L03
+  - FEEDERs: S0001F01, S0001F02 (sub-components of multi-word LEGOs)
+  NEVER use L0001 or F0001 (missing parent seed ID)
+
+  ## 🔍 FD_LOOP TEST (MANDATORY FOR EVERY CHUNK)
+  Target → Known → Target = MUST BE IDENTICAL
+  ✅ "importante" → "important" → "importante" (IDENTICAL)
+  ❌ "bien" → "good" → "bueno" (DIFFERENT = FAIL)
+
+  ## 🎯 FCFS RULE (First Come, First Served)
+  When multiple valid mappings exist, use corpus frequency to CLAIM semantic territory:
+
+  ### ARTISTIC CHOICE (flexible mapping allowed):
+  - "quiero" appears 15x as "I want" in corpus → CLAIM as "I want"
+  - "deseo" appears 2x → must use MORE SPECIFIC: "I desire" or "I really want"
+  - Once claimed, "I want" ALWAYS → "quiero" in this course
+
+  ### GRAMMATICAL CONSTRAINT (NO flexibility):
+  - "estoy" CANNOT claim generic "I am" - MUST include temporal aspect
+    ✅ "estoy aprendiendo" → "I'm learning" (temporary state)
+    ✅ "estoy feliz" → "I'm happy (right now)"
+    ❌ "estoy" → "I am" (loses critical grammar distinction)
+
+  - "soy" CANNOT claim generic "I am" - MUST include permanent aspect
+    ✅ "soy de Inglaterra" → "I'm from England" (permanent origin)
+    ✅ "soy profesor" → "I'm a teacher" (identity/profession)
+    ❌ "soy" → "I am" (loses critical grammar distinction)
+
+  ### FCFS PROCESS:
+  1. Count frequency of each mapping in corpus
+  2. Most frequent CLAIMS the simple mapping (if grammatically valid)
+  3. Less frequent must ADD context to differentiate
+  4. If corpus edit needed to maintain FD, NOTE it for SEED_PAIR revision
+
+  ## 🚫 AUTOMATIC REJECTION LIST
+  **Function Words (ALWAYS FAIL FD):**
+  - Articles: el/la/los/las, un/una (gender ambiguous)
+  - Pronouns: le/lo/la (multiple meanings)
+  - Prepositions: en (in/on/at), de (of/from/about), por/para
+  - "que" (that/what/which) - context dependent
+
+  **Multi-meaning words WITHOUT grammar constraints:**
+  - "bien" → well/good/fine (use FCFS to claim primary meaning)
+  - "muy" → very/really (use FCFS for intensity)
+
+  ## ✅ DUAL-PASS METHODOLOGY
+
+  ### PASS 1: Forward Analysis (${targetLang} → ${knownLang})
+  1. Start with first word of ${targetLang} sentence
+  2. Test for FD compliance using FD_LOOP
+  3. If fails, expand to include next word
+  4. Continue until FD passes or sentence complete
+  5. Move to next unmapped word
+
+  ### PASS 2: Reverse Validation (${knownLang} → ${targetLang})
+  1. Take each ${knownLang} chunk
+  2. Verify it maps back to EXACT ${targetLang} chunk
+  3. If different → REJECT and re-decompose
+
+  ### PASS 3: Corpus-Wide Validation
+  For EVERY chunk, search ALL other SEED_PAIRS in batch:
+  - Find every occurrence of this chunk
+  - Count frequency of each mapping
+  - Apply FCFS: most frequent claims simple mapping
+  - Less frequent must differentiate with context
+  - If conflicts cannot be resolved → FLAG for SEED_PAIR revision
+
+  ### PASS 4: SEED_PAIR Revision Notes
+  If decomposition reveals FD conflicts:
+  - Note which SEED_PAIRS need editing
+  - Suggest specific changes to maintain FD
+  - Example: "I want coffee" might need → "I'd like coffee" if "quiero" is claimed
+
+  ## 📝 COMPONENTIZATION REQUIREMENT (BOTH languages must be multi-word!)
+  COMPONENTIZATION is ONLY needed when BOTH target AND known are multi-word:
+  - ✅ REQUIRED: "parlare italiano" ↔ "parler italien" (BOTH are 2 words)
+  - ✅ REQUIRED: "para su hermana" ↔ "for his sister" (BOTH are 3 words)
+  - ❌ NOT NEEDED: "construir" ↔ "build" (both single words)
+  - ❌ NOT NEEDED: "una nueva vida" ↔ "a new life" (even though multi-word, simple 1:1 mapping)
+
+  FORMAT: Simple word mappings ONLY (no grammar explanations):
+  "[known LEGO] = [target LEGO], where [target1] = [known1] and [target2] = [known2]"
+
+  ⚠️ CRITICAL: Write ALL componentization in ${knownLang}, NOT English!
+  - French speakers: Use French words like "où" (not "where"), "et" (not "and")
+  - Spanish speakers: Use Spanish words like "donde" (not "where"), "y" (not "and")
+  - Chinese speakers: Use Chinese: "其中" (not "where"), "和" (not "and")
+
+  Example for ${knownLang} speakers:
+  French: "parler italien = parlare italiano, où parlare = parler et italiano = italien"
+  Spanish: "hablar italiano = parlare italiano, donde parlare = hablar y italiano = italiano"
+  NOT: "parler italien = parlare italiano, where parlare = parler and italiano = italien" ❌
+
+  ## THE IRON RULE (ABSOLUTE)
+  **No LEGO begins or ends with a preposition.**
+  - Examples: ✗ "to the", ✗ "with me", ✗ "in"
+  - This is NON-NEGOTIABLE
+
+  ## INPUT DATA
+  Course folder: /Users/tomcassidy/SSi/SSi_Course_Production/vfs/courses/${targetCode}_for_${knownCode}_speakers/
+
+  Read ALL SEED_PAIRS from:
+  SEED_PAIRS_COMPLETE.json (contains all 668 seeds)
+
+  The files contain JSON with structure:
+  {
+    "seed_pairs": [
+      {
+        "seed_id": "S0001",
+        "target": "[sentence in ${targetLang}]",
+        "known": "[sentence in ${knownLang}]"
+      }
+    ]
+  }
+
+  ## OUTPUT FILES
+  Save to course folder: /Users/tomcassidy/SSi/SSi_Course_Production/vfs/courses/${targetCode}_for_${knownCode}_speakers/
+
+  1. Process in batches of 20 seeds:
+     - LEGO_BREAKDOWNS_BATCH_001.json (seeds 1-20)
+     - LEGO_BREAKDOWNS_BATCH_002.json (seeds 21-40)
+     - etc.
+
+  2. ALSO create combined file with ALL breakdowns:
+     - LEGO_BREAKDOWNS_COMPLETE.json (all seeds combined)
+
+  Create this exact structure for each file:
+  {
+    "phase": "LEGO_BREAKDOWNS",
+    "batch": "001",
+    "target_language": "${targetLang}",
+    "known_language": "${knownLang}",
+    "lego_breakdowns": [
+      // For EACH seed_pair in the input file:
+      {
+        "seed_id": "S0001",
+        "canonical_id": "C0001",
+        "original_target": "actual ${targetLang} sentence",
+        "original_known": "actual ${knownLang} sentence",
+        "lego_pairs": [
+          // Break into FD-compliant chunks
+        ],
+        "feeder_pairs": [
+          // Sub-components of multi-word LEGOs
+        ],
+        "componentization": [
+          // ONLY when BOTH target AND known are multi-word!
+          // Simple mappings format: known = target, where word1 = word1 and word2 = word2
+          {
+            "lego_id": "S0001L02",
+            "explanation": "[known LEGO] = [target LEGO], where [word1] = [word1] and [word2] = [word2]"
+          }
+          // Skip if either side is single word or if it's a simple 1:1 mapping
+        ]
+      }
+    ]
+  }
+
+  ## CRITICAL OUTPUT RULES
+  - **SILENT OPERATION** - Work quietly, save to file
+  - **NO PRINTING** - Don't display breakdowns
+  - **VFS ONLY** - Save to VFS only, no console output
+
+  Start decomposing immediately.
+
+## Phase 3.5: Graph Construction
+
+NAME: "Graph Construction"
+PURPOSE: Build directed graph of LEGO adjacency relationships
+INPUT:
+  - vfs/amino_acids/legos/*.json
+  - vfs/amino_acids/translations/*.json (for co-occurrence analysis)
+OUTPUT: vfs/phase_outputs/phase_3.5_lego_graph.json
+
+NEW_IN_V7: This phase is NEW in APML v7.0 - introduces graph intelligence
+
+GRAPH_STRUCTURE:
+  NODES: All LEGO amino acids
+  EDGES: Directed edges LEGO_A → LEGO_B (when A precedes B in corpus)
+  WEIGHTS: co-occurrence frequency × pedagogical value
+
+PURPOSE_FOR_PHASE_5:
+  - Graph edges represent legitimate LEGO sequence patterns
+  - Phase 5 uses this to ensure pattern coverage in baskets
+  - Replaces old DEBUT/ETERNAL pattern logic with measurable diversity
+
+ADJACENCY_DETECTION:
+  - Scan translations to find which LEGOs appear adjacent
+  - Example: In "Dw i eisiau mynd", LEGOs "Dw i" and "eisiau" are adjacent
+  - Direction matters: A→B ≠ B→A
+
+VALIDATION:
+  - Ensure graph is connected
+  - Check for invalid cycles
+  - Verify all LEGOs represented
+
+PROMPT: |
+  # Phase 3.5: Graph Construction (NEW in v7.0)
+
+  ## Task
+  Build directed graph of LEGO adjacency relationships to enable pattern-aware basket construction.
+
+  ## Input
+  - LEGO amino acids: vfs/amino_acids/legos/*.json
+  - Translation amino acids: vfs/amino_acids/translations/*.json (for co-occurrence analysis)
+
+  ## Your Mission
+  1. **Detect Adjacency Patterns**:
+     - Scan source translations to find which LEGOs appear adjacent to each other
+     - Example: In "Dw i eisiau mynd", LEGOs "Dw i" and "eisiau" are adjacent
+
+  2. **Build Directed Graph**:
+     - Nodes: All LEGO amino acids
+     - Edges: LEGO_A → LEGO_B (A precedes B in corpus)
+     - Direction matters (A→B ≠ B→A)
+
+  3. **Calculate Edge Weights**:
+     - Weight = co-occurrence frequency × pedagogical value
+     - Higher weight = more important pattern to teach
+
+  4. **Validate Graph**:
+     - Ensure graph is connected
+     - Check for invalid cycles
+     - Verify all LEGOs represented
+
+  5. **Export Graph Structure**:
+     - Adjacency list format
+     - Include edge weights
+     - Store metadata (total nodes, edges, density)
+
+  ## Output Format
+  vfs/phase_outputs/phase_3.5_lego_graph.json
+
+  {
+    "nodes": [ ... ],
+    "edges": [
+      { "from": "uuid_A", "to": "uuid_B", "weight": 42 },
+      ...
+    ],
+    "metadata": { ... }
+  }
+
+  ## Critical Notes
+  - This is NEW in APML v7.0 - graph intelligence!
+  - Phase 5 uses this graph for pattern coverage optimization
+  - Edges represent legitimate LEGO sequence patterns
+  - Replaces old DEBUT/ETERNAL pattern logic
+
+  ## Success Criteria
+  ✓ All LEGO adjacencies mapped
+  ✓ Directed edges created
+  ✓ Edge weights calculated
+  ✓ Graph validated (connected, no invalid cycles)
+  ✓ Ready for Phase 5 consumption
+
+## Phase 4: Deduplication
+
+NAME: "Deduplication"
+PURPOSE: Merge duplicate LEGOs while preserving ALL provenance
+INPUT: vfs/amino_acids/legos/*.json
+OUTPUT: vfs/amino_acids/legos_deduplicated/*.json
+
+WHY_CRITICAL:
+  - Many LEGOs appear in multiple seeds
+  - Example: "Dw i" might appear from S1L1, S4L2, S12L3
+  - Provenance enables edit propagation
+  - If seed S12 changes, we know which LEGOs to update
+
+MERGING_PROCESS:
+  1. Detect duplicates (identical text content, different UUIDs)
+  2. Combine ALL S{seed}L{position} labels
+  3. Example: S1L1, S4L2, S12L3 → "S1L1, S4L2, S12L3"
+  4. Generate new deterministic UUID based on merged provenance
+  5. Create deduplicated set (one LEGO per unique text)
+
+IMMUTABILITY_PRESERVED:
+  - Keep original LEGOs (immutable)
+  - Deduplicated set is NEW amino acids
+  - NEVER lose any provenance information
+
+OUTPUT_STRUCTURE:
+  uuid: new_deduplicated_uuid
+  text: "the LEGO phrase"
+  provenance: ["S1L1", "S4L2", "S12L3"]
+  source_count: 3
+  metadata: { ... }
+
+PROMPT: |
+  # Phase 4: Deduplication
+
+  ## Task
+  Identify and merge duplicate LEGOs while preserving ALL provenance information.
+
+  ## Input
+  - LEGO amino acids: vfs/amino_acids/legos/*.json
+
+  ## Your Mission
+  1. **Detect Duplicates**:
+     - Find LEGOs with identical text content
+     - May have different UUIDs (different provenance)
+     - Example: "Dw i" might appear from S1L1, S4L2, S12L3
+
+  2. **Merge Provenance**:
+     - Combine all S{seed}L{position} labels
+     - Example: Merge S1L1, S4L2, S12L3 → "S1L1, S4L2, S12L3"
+     - NEVER lose any provenance information
+
+  3. **Recalculate UUID**:
+     - Generate new deterministic UUID based on:
+       - LEGO text
+       - ALL merged provenance labels
+       - Metadata
+
+  4. **Create Deduplicated Set**:
+     - One LEGO per unique text
+     - Complete provenance history preserved
+     - Update graph references if needed
+
+  5. **Store Results**:
+     - vfs/amino_acids/legos_deduplicated/*.json
+     - Keep original LEGOs (immutable)
+     - Deduplicated set is NEW amino acids
+
+  ## Why This Matters
+  - Many LEGOs appear in multiple seeds
+  - Provenance enables edit propagation
+  - If seed S12 changes, we know which LEGOs to update
+  - Birth-parent history must NEVER be lost
+
+  ## Output Structure
+  {
+    "uuid": "new_deduplicated_uuid",
+    "text": "the LEGO phrase",
+    "provenance": ["S1L1", "S4L2", "S12L3"],
+    "source_count": 3,
+    "metadata": { ... }
+  }
+
+  ## Success Criteria
+  ✓ All duplicates identified
+  ✓ Provenance fully merged (no data loss)
+  ✓ New UUIDs generated
+  ✓ Deduplicated set created
+  ✓ Original LEGOs preserved (immutable)
+
+## Phase 5: Pattern-Aware Baskets
+
+NAME: "Pattern-Aware Baskets"
+PURPOSE: Construct learning baskets optimized for edge coverage
+INPUT:
+  - vfs/amino_acids/legos_deduplicated/*.json
+  - vfs/phase_outputs/phase_3.5_lego_graph.json
+  - vfs/phase_outputs/phase_2_corpus_intelligence.json
+OUTPUT: vfs/amino_acids/baskets/{uuid}.json
+
+BATCH_PROCESSING:
+  BATCH_SIZE: 20 LEGOs per basket
+  PROCESSING: Forward (LEGO 1 → last LEGO, NOT backwards)
+
+EDGE_COVERAGE_OPTIMIZATION:
+  - Select LEGOs to expose DIVERSE patterns
+  - Each basket should cover unique graph edges
+  - Avoid redundant LEGO sequences across baskets
+  - Goal: Learners experience maximum pattern variety
+
+PEDAGOGICAL_COHERENCE:
+  - Follow FCFS chronological progression (from Phase 2)
+  - Apply utility scoring for high-value sequences
+  - Ensure smooth difficulty progression
+  - Balance novelty with reinforcement
+
+REPLACES_OLD_LOGIC:
+  OLD: DEBUT/ETERNAL pattern terminology
+  NEW: Graph-driven edge coverage
+  BETTER: Measurable pattern diversity
+
+BASKET_STRUCTURE:
+  uuid: deterministic based on manifest content
+  lego_manifest: ["uuid1", "uuid2", ...] (list of LEGO UUIDs)
+  edge_coverage: ["edge_A_B", "edge_C_D", ...] (which patterns covered)
+  fcfs_score: 78 (chronological appropriateness)
+  difficulty_level: "intermediate"
+  metadata: { ... }
+
+PROMPT: |
+  # Phase 5: Pattern-Aware Baskets
+
+  ## Task
+  Construct learning baskets (lessons) optimized for graph edge coverage and pedagogical progression.
+
+  ## Input
+  - Deduplicated LEGOs: vfs/amino_acids/legos_deduplicated/*.json
+  - LEGO graph: vfs/phase_outputs/phase_3.5_lego_graph.json
+  - Corpus intelligence: vfs/phase_outputs/phase_2_corpus_intelligence.json
+
+  ## Your Mission
+  1. **Load Graph Intelligence**:
+     - LEGO adjacency graph with edges and weights
+     - This drives pattern coverage optimization
+
+  2. **Maximize Edge Coverage**:
+     - Select LEGOs to expose DIVERSE patterns
+     - Each basket should cover unique graph edges
+     - Avoid redundant LEGO sequences across baskets
+     - Goal: Learners experience maximum pattern variety
+
+  3. **Maintain Pedagogical Coherence**:
+     - Follow FCFS chronological progression
+     - Apply utility scoring for high-value sequences
+     - Ensure smooth difficulty progression
+     - Balance novelty with reinforcement
+
+  4. **Construct Basket Amino Acids**:
+     - Each basket = collection of LEGO UUIDs (manifest)
+     - Metadata: edge coverage stats, difficulty level, etc.
+     - Deterministic UUID based on manifest content
+
+  5. **Store Results**:
+     - vfs/amino_acids/baskets/{uuid}.json
+
+  ## Basket Amino Acid Structure
+  {
+    "uuid": "...",
+    "lego_manifest": ["uuid1", "uuid2", ...],
+    "edge_coverage": ["edge_A_B", "edge_C_D", ...],
+    "fcfs_score": 78,
+    "difficulty_level": "intermediate",
+    "metadata": { ... }
+  }
+
+  ## This Replaces OLD Logic
+  - OLD: DEBUT/ETERNAL pattern terminology
+  - NEW: Graph-driven edge coverage
+  - BETTER: Measurable pattern diversity
+
+  ## Success Criteria
+  ✓ All LEGOs assigned to baskets
+  ✓ Maximum edge coverage per basket
+  ✓ FCFS/utility balance maintained
+  ✓ Basket amino acids created with manifests
+  ✓ Ready for Phase 6 (introductions)
+
+## Phase 6: Introductions
+
+NAME: "Introductions"
+PURPOSE: Generate known-only priming phrases
+INPUT:
+  - vfs/amino_acids/baskets/*.json
+  - vfs/amino_acids/legos_deduplicated/*.json
+OUTPUT: vfs/amino_acids/introductions/{uuid}.json
+
+ABSOLUTE_RULE: Zero unknown elements allowed in introductions
+
+KNOWN_ONLY_PRINCIPLE:
+  - For each basket, identify ALL LEGOs from PREVIOUS baskets
+  - These form the "known set"
+  - Introduction phrases use ONLY known LEGOs
+  - NO new vocabulary or structures
+  - Goal: Activate prior knowledge, build confidence
+
+WHY_CRITICAL:
+  - Reduces cognitive load before new learning
+  - Builds learner confidence (100% comprehension)
+  - Primes brain for new content
+  - Creates smooth entry point to each basket
+
+VALIDATION:
+  - Double-check: NO new LEGOs in introductions
+  - Every word/phrase must be from known set
+  - Absolute rule - no exceptions
+
+INTRODUCTION_STRUCTURE:
+  uuid: deterministic based on content + basket reference
+  basket_uuid: which basket this introduction precedes
+  phrases: ["phrase1", "phrase2", ...] (using only known LEGOs)
+  known_legos_used: ["uuid1", "uuid2", ...] (which known LEGOs were used)
+  validation:
+    all_known: true
+    unknown_count: 0 (MUST be zero)
+
+PROMPT: |
+  # Phase 6: Introductions
+
+  ## Task
+  Generate known-only introduction phrases for each basket to prime learners with zero unknowns.
+
+  ## Input
+  - Basket amino acids: vfs/amino_acids/baskets/*.json
+  - Deduplicated LEGOs: vfs/amino_acids/legos_deduplicated/*.json
+
+  ## Your Mission
+  For each basket:
+  1. **Identify Known LEGOs**:
+     - Scan ALL previous baskets (baskets 1 to N-1)
+     - Compile complete inventory of LEGOs learner has mastered
+     - These are the ONLY LEGOs you can use
+
+  2. **Generate Introduction Phrases**:
+     - Create warm-up phrases using ONLY known LEGOs
+     - ZERO unknown vocabulary or structures
+     - Goal: Activate prior knowledge, build confidence
+     - Prepare learner for new basket content
+
+  3. **Validate Known-Only Rule**:
+     - Double-check: NO new LEGOs in introductions
+     - Every word/phrase must be from known set
+     - Absolute rule - no exceptions
+
+  4. **Create Introduction Amino Acids**:
+     - Deterministic UUID based on content + basket reference
+     - Store: vfs/amino_acids/introductions/{uuid}.json
+
+  ## Introduction Amino Acid Structure
+  {
+    "uuid": "...",
+    "basket_uuid": "...",
+    "phrases": ["phrase1", "phrase2", ...],
+    "known_legos_used": ["uuid1", "uuid2", ...],
+    "validation": {
+      "all_known": true,
+      "unknown_count": 0
+    }
+  }
+
+  ## Why This Matters
+  - Reduces cognitive load before new learning
+  - Builds learner confidence (100% comprehension)
+  - Primes brain for new content
+  - Creates smooth entry point to each basket
+
+  ## CRITICAL RULE
+  **ZERO unknown elements allowed in introductions.**
+  If you're unsure, DON'T use it.
+
+  ## Success Criteria
+  ✓ Introduction generated for each basket
+  ✓ All LEGOs verified as "known" from previous baskets
+  ✓ Zero unknown elements (validated)
+  ✓ Introduction amino acids stored
+  ✓ Course ready for final compilation
+
+# =============================================================================
+# DASHBOARD INTERFACE SPECIFICATIONS
+# =============================================================================
+
+## Interface Section 1: Course Generation Pipeline
+
+COMPONENTS:
+  - CourseGeneration.vue (main generation interface)
+  - ProcessOverview.vue (phase progress visualization)
+  - TrainingPhase.vue (phase documentation and prompt display)
+
+CRITICAL_FEATURE: TrainingPhase.vue displays ACTUAL prompts from registry
+  - Fetches from: GET /api/registry/phase-prompts/:phase
+  - Shows working reality (not generic docs)
+  - Editable textarea allows prompt updates
+  - Updates POST to: PUT /api/registry/phase-prompts/:phase
+  - Creates version history for every change
+
+DATA_FLOW:
+  User selects languages + seed count
+    ↓
+  POST /api/courses/generate
+    ↓
+  automation_server.cjs creates job
+    ↓
+  cascadePhases() reads PHASE_PROMPTS from registry
+    ↓
+  spawnPhaseAgent() via osascript
+    ↓
+  Claude Code receives actual working prompts
+    ↓
+  Outputs saved to VFS
+    ↓
+  Dashboard polls: GET /api/courses/:code/status
+    ↓
+  Displays results in real-time
+
+## Interface Section 2: Quality Review & Self-Healing
+
+COMPONENTS:
+  - QualityDashboard.vue (overview and metrics)
+  - SeedQualityReview.vue (individual seed review)
+  - PromptEvolutionView.vue (prompt version history)
+
+PURPOSE:
+  - Visual review of all phase outputs
+  - Flag problematic seeds for regeneration
+  - Track prompt evolution over time
+  - Self-healing: automatic rerun of failed extractions
+
+## Interface Section 3: Visualization & Editing
+
+COMPONENTS:
+  - LegoVisualizer.vue (visual LEGO breakdown display)
+  - SeedVisualizer.vue (seed pair visualization)
+  - PhraseVisualizer.vue (phrase pattern visualization)
+  - CourseEditor.vue (edit translations and LEGOs)
+
+EDIT_WORKFLOW:
+  User edits translation in UI
+    ↓
+  PUT /api/courses/:code/translations/:uuid
+    ↓
+  Triggers regeneration of affected phases
+    ↓
+  Phase 3+ re-run with updated translation
+    ↓
+  Dashboard shows updated results
+
+## Interface Section 4: APML Specification & Docs
+
+COMPONENTS:
+  - APMLSpec.vue (displays this specification)
+  - Dashboard.vue (main navigation)
+  - PROJECT-DASHBOARD.html (auto-generated from APML)
+
+SELF_DOCUMENTATION:
+  - This APML file is the single source of truth
+  - Dashboard components fetch from this specification
+  - Changes to APML regenerate documentation
+  - No drift between docs and reality
+
+# =============================================================================
+# COMPILATION & DEPLOYMENT
+# =============================================================================
+
+## Compilation Process
+
+1. **Parse APML Specification**
+   - Read ssi-course-production.apml
+   - Extract Variable Registry
+   - Extract Phase Prompts
+   - Extract Interface Specs
+
+2. **Generate .apml-registry.json**
+   - Machine-readable format for runtime access
+   - Contains all PHASE_PROMPTS
+   - Contains all API endpoints
+   - Contains all configuration
+
+3. **Update automation_server.cjs**
+   - Replace hardcoded PHASE_PROMPTS with registry import
+   - const apmlRegistry = require('./.apml-registry.json');
+   - const PHASE_PROMPTS = apmlRegistry.variable_registry.PHASE_PROMPTS;
+
+4. **Update TrainingPhase.vue**
+   - Fetch prompts from: GET /api/registry/phase-prompts/:phase
+   - Display in editable textarea
+   - Enable prompt updates via API
+
+5. **Generate PROJECT-DASHBOARD.html**
+   - Auto-generated navigation interface
+   - Links to all interface sections
+   - Shows current system status
+
+## Deployment
+
+VERCEL_DEPLOYMENT:
+  - Dashboard deployed to Vercel (frontend)
+  - Includes .apml-registry.json (latest prompts)
+  - Includes auto-generated documentation
+  - User can access from anywhere
+
+LOCAL_AUTOMATION:
+  - automation_server.cjs runs on SSi Mac (port 3456)
+  - ngrok tunnel exposes to internet
+  - Dashboard connects via tunnel
+  - Claude Code executes locally with full intelligence
+
+# =============================================================================
+# VERSION HISTORY
+# =============================================================================
+
+VERSION: 7.0.0
+DATE: 2025-10-13
+CHANGES:
+  - Created complete APML specification
+  - Documented all 668 canonical seeds
+  - Preserved critical Phase 3 intelligence (250+ lines)
+  - Added Phase 3.5 (Graph Construction)
+  - Updated all batch calculations
+  - Defined Variable Registry as single source of truth
+  - Specified dashboard interface components
+  - Documented compilation and deployment process
+
+PREVIOUS_VERSION: 6.x (scattered across multiple files)
+MIGRATION: v6 → v7 consolidated all intelligence into this APML specification
+
+# =============================================================================
+# SUCCESS CRITERIA
+# =============================================================================
+
+✅ Complete specification preserves all intelligence
+✅ No information loss during code refactors
+✅ Dashboard shows actual working prompts (not generic docs)
+✅ Edit in UI → updates source → execution and docs stay in sync
+✅ Variable Registry eliminates naming inconsistencies
+✅ APML standard compliance (PSS, Intent Capture, Variable Registry)
+✅ Self-documenting system (specification IS implementation)
+✅ Version controlled (Git tracks every change)
+✅ Published with dashboard (Vercel has latest)
+✅ Claude receives detailed, battle-tested prompts
+✅ Generated courses work perfectly in SSi mobile app
+
+# =============================================================================
+# END OF SPECIFICATION
+# =============================================================================
+
+For implementation: https://apml.dev/toolchain/
+For APML standards: /Users/tomcassidy/APML/apml-dev-website/specifications/
+
+This specification is the永久的真理 (permanent truth) of the SSi Course Production System.
+

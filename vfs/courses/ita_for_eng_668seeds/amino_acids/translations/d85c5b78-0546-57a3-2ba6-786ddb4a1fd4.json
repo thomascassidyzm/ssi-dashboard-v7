@@ -1,0 +1,47 @@
+{
+  "seed_id": "356",
+  "source_english": "Yes they had something important to discuss.",
+  "target_italian": "Sì, avevano qualcosa di importante da discutere.",
+  "uuid": "d85c5b78-0546-57a3-2ba6-786ddb4a1fd4",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "80377f55-e225-6cbd-f28c-c7bc9da75fc3",
+          "lego_text": "da",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.309Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.309Z",
+        "source": "Yes they had something important to discuss.",
+        "target": "Sì, avevano qualcosa di importante da discutere.",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "80377f55-e225-6cbd-f28c-c7bc9da75fc3",
+            "lego_text": "da",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

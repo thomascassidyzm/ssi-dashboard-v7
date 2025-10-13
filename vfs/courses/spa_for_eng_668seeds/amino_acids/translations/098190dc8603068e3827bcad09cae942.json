@@ -1,0 +1,134 @@
+{
+  "uuid": "098190dc8603068e3827bcad09cae942",
+  "type": "translation",
+  "seed_id": "C0215",
+  "source": "I went out on Saturday night.",
+  "target": "Salí el sábado por la noche.",
+  "metadata": {
+    "course_code": "spa_for_eng_668seeds",
+    "phase": "phase_1",
+    "heuristics_applied": [
+      "naturalness",
+      "frequency",
+      "clarity",
+      "brevity",
+      "consistency",
+      "utility"
+    ],
+    "created_at": "2025-10-12T22:05:46.474Z"
+  },
+  "lego_extraction_attempts": [
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:07:54.838Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 1,
+      "legos": [
+        {
+          "text": "Salí el sábado por la noche",
+          "provenance": "C0215L1",
+          "position": 1
+        }
+      ],
+      "quality_score": {
+        "overall_score": 8.4,
+        "dimension_scores": {
+          "iron_rule_compliance": 10,
+          "naturalness": 6,
+          "pedagogical_value": 8,
+          "consistency": 9,
+          "edge_case_handling": 9.2
+        },
+        "calculated_at": "2025-10-12T22:07:54.838Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "Salí el sábado por la noche"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"al lado de\" might be split",
+          "affected_legos": [
+            "Salí el sábado por la noche"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [],
+      "status": "accepted",
+      "review_notes": "Attempt 1: Good extraction. 2 minor concern(s) noted but acceptable."
+    },
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:08:06.836Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 1,
+      "legos": [
+        {
+          "text": "Salí el sábado por la noche",
+          "provenance": "C0215L1",
+          "position": 1
+        }
+      ],
+      "quality_score": {
+        "overall_score": 8.4,
+        "dimension_scores": {
+          "iron_rule_compliance": 10,
+          "naturalness": 6,
+          "pedagogical_value": 8,
+          "consistency": 9,
+          "edge_case_handling": 9.2
+        },
+        "calculated_at": "2025-10-12T22:08:06.836Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "Salí el sábado por la noche"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"al lado de\" might be split",
+          "affected_legos": [
+            "Salí el sábado por la noche"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [],
+      "status": "accepted",
+      "review_notes": "Attempt 1: Good extraction. 2 minor concern(s) noted but acceptable."
+    }
+  ],
+  "quality_status": "accepted",
+  "current_quality_score": 8.4,
+  "total_attempts": 1,
+  "flagged_for_review": false,
+  "human_review_requested": false,
+  "last_reviewed_at": "2025-10-12T22:08:06.836Z"
+}

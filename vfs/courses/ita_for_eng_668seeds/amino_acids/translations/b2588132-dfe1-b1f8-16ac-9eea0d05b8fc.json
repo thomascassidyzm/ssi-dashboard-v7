@@ -1,0 +1,47 @@
+{
+  "seed_id": "19",
+  "source_english": "But I don't want to stop talking.",
+  "target_italian": "Ma non voglio smettere di parlare.",
+  "uuid": "b2588132-dfe1-b1f8-16ac-9eea0d05b8fc",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "6ab356b8-a145-b82c-23ff-3e8d1d05e8e4",
+          "lego_text": "di",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.180Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.180Z",
+        "source": "But I don't want to stop talking.",
+        "target": "Ma non voglio smettere di parlare.",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "6ab356b8-a145-b82c-23ff-3e8d1d05e8e4",
+            "lego_text": "di",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

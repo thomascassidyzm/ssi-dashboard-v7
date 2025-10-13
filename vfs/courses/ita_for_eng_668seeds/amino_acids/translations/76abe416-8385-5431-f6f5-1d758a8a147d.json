@@ -1,0 +1,47 @@
+{
+  "seed_id": "394",
+  "source_english": "That girl with the yellow dress.",
+  "target_italian": "Quella ragazza con il vestito giallo.",
+  "uuid": "76abe416-8385-5431-f6f5-1d758a8a147d",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "136a0696-b5a3-e43a-af34-122636c17997",
+          "lego_text": "con",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.331Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.331Z",
+        "source": "That girl with the yellow dress.",
+        "target": "Quella ragazza con il vestito giallo.",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "136a0696-b5a3-e43a-af34-122636c17997",
+            "lego_text": "con",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

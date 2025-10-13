@@ -1,0 +1,47 @@
+{
+  "seed_id": "92",
+  "source_english": "I'd like to keep on doing this for a while.",
+  "target_italian": "Vorrei continuare a farlo per un po'.",
+  "uuid": "d96db6b4-0d0f-fe8b-60a3-03f2da2ba8c6",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "6b2fc3d5-9305-9142-bc67-ff43eb54c532",
+          "lego_text": "a",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.207Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.207Z",
+        "source": "I'd like to keep on doing this for a while.",
+        "target": "Vorrei continuare a farlo per un po'.",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "6b2fc3d5-9305-9142-bc67-ff43eb54c532",
+            "lego_text": "a",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

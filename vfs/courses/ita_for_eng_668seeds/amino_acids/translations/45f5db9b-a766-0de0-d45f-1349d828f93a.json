@@ -1,0 +1,47 @@
+{
+  "seed_id": "62",
+  "source_english": "I'm not sure if I can help you at the same time.",
+  "target_italian": "Non sono sicuro se posso aiutarti allo stesso tempo.",
+  "uuid": "45f5db9b-a766-0de0-d45f-1349d828f93a",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 5,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "10b62cab-65b0-c7c3-0101-3f1201b8b651",
+          "lego_text": "allo",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.197Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.197Z",
+        "source": "I'm not sure if I can help you at the same time.",
+        "target": "Non sono sicuro se posso aiutarti allo stesso tempo.",
+        "quality_score": 8,
+        "lego_count": 5,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "10b62cab-65b0-c7c3-0101-3f1201b8b651",
+            "lego_text": "allo",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

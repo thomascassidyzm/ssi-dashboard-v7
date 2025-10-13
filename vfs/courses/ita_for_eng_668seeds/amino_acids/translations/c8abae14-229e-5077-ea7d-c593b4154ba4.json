@@ -1,0 +1,55 @@
+{
+  "seed_id": "77",
+  "source_english": "I'm surprised at how quickly I'm starting to understand.",
+  "target_italian": "Sono sorpreso di quanto velocemente sto cominciando a capire.",
+  "uuid": "c8abae14-229e-5077-ea7d-c593b4154ba4",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 9,
+      "issues": [],
+      "extracted_at": "2025-10-12T22:14:42.075Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.202Z",
+        "source": "I'm surprised at how quickly I'm starting to understand.",
+        "target": "Sono sorpreso di quanto velocemente sto cominciando a capire.",
+        "quality_score": 6,
+        "lego_count": 6,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "2f1d0962-4901-4440-e5eb-58b91b5049a7",
+            "lego_text": "di",
+            "severity": "critical"
+          },
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "3d479972-a17f-89f4-61c9-ecd53ccecb05",
+            "lego_text": "a",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      },
+      {
+        "attempt_number": 2,
+        "timestamp": "2025-10-12T22:14:42.075Z",
+        "quality_score": 9,
+        "lego_count": 4,
+        "issues": [],
+        "improvement": 3,
+        "prompt_version": "v1.1_italian"
+      }
+    ]
+  }
+}

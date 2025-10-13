@@ -1,0 +1,47 @@
+{
+  "seed_id": "351",
+  "source_english": "No he didn't want to leave me on my own.",
+  "target_italian": "No, non voleva lasciarmi da solo.",
+  "uuid": "f36e5a7e-248c-b722-4044-94e4c46c4691",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "a759d477-571f-31ce-2ed3-ed64c381d5b8",
+          "lego_text": "da",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.306Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.306Z",
+        "source": "No he didn't want to leave me on my own.",
+        "target": "No, non voleva lasciarmi da solo.",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "a759d477-571f-31ce-2ed3-ed64c381d5b8",
+            "lego_text": "da",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "seed_id": "101",
+  "source_english": "I'm enjoying finding out more about this language.",
+  "target_italian": "Mi piace scoprire di più su questa lingua.",
+  "uuid": "3ad74ccb-c2a1-8cc1-b99a-c808f17a6cac",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "cf8be999-503e-d15a-1e5f-295d0216ee5c",
+          "lego_text": "su",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.210Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.210Z",
+        "source": "I'm enjoying finding out more about this language.",
+        "target": "Mi piace scoprire di più su questa lingua.",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "cf8be999-503e-d15a-1e5f-295d0216ee5c",
+            "lego_text": "su",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

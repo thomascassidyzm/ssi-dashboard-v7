@@ -1,0 +1,45 @@
+{
+  "seed_id": "2",
+  "source_english": "I'm trying to learn.",
+  "target_italian": "Sto cercando di imparare.",
+  "uuid": "7b25daff-abcf-39a5-37f3-ddd1fd03e581",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.361Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 1,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "low_lego_count",
+          "count": 1,
+          "severity": "high"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.174Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.174Z",
+        "source": "I'm trying to learn.",
+        "target": "Sto cercando di imparare.",
+        "quality_score": 8,
+        "lego_count": 1,
+        "issues": [
+          {
+            "type": "low_lego_count",
+            "count": 1,
+            "severity": "high"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

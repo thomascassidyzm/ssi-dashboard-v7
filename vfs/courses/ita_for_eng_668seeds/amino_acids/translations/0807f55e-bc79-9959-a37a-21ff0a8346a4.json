@@ -1,0 +1,47 @@
+{
+  "seed_id": "510",
+  "source_english": "She's gone to look for somewhere safe to park the car.",
+  "target_italian": "È andata a cercare un posto sicuro dove parcheggiare l'auto.",
+  "uuid": "0807f55e-bc79-9959-a37a-21ff0a8346a4",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 6,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "5e33bde5-0aec-163a-83f4-f6b4b89803da",
+          "lego_text": "a",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.402Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.402Z",
+        "source": "She's gone to look for somewhere safe to park the car.",
+        "target": "È andata a cercare un posto sicuro dove parcheggiare l'auto.",
+        "quality_score": 8,
+        "lego_count": 6,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "5e33bde5-0aec-163a-83f4-f6b4b89803da",
+            "lego_text": "a",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "seed_id": "625",
+  "source_english": "Do you want something to drink?",
+  "target_italian": "Vuoi qualcosa da bere?",
+  "uuid": "17a3d224-0afe-6ef8-36da-d8e4789409b9",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 2,
+      "quality_score": 9,
+      "issues": [],
+      "extracted_at": "2025-10-12T22:14:44.116Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.452Z",
+        "source": "Do you want something to drink?",
+        "target": "Vuoi qualcosa da bere?",
+        "quality_score": 6.5,
+        "lego_count": 3,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "20a87c80-9276-fcd7-fc88-3b8c15beba21",
+            "lego_text": "da",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      },
+      {
+        "attempt_number": 2,
+        "timestamp": "2025-10-12T22:14:44.116Z",
+        "quality_score": 9,
+        "lego_count": 2,
+        "issues": [],
+        "improvement": 2.5,
+        "prompt_version": "v1.1_italian"
+      }
+    ]
+  }
+}

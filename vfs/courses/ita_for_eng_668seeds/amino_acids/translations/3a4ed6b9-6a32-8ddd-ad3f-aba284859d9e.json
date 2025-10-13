@@ -1,0 +1,47 @@
+{
+  "seed_id": "5",
+  "source_english": "I'm going to practise speaking with someone else.",
+  "target_italian": "Proverò a parlare con qualcun altro.",
+  "uuid": "3a4ed6b9-6a32-8ddd-ad3f-aba284859d9e",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.361Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 3,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "d6d29b2a-f511-1a2e-4f2f-861c5d2bc5a3",
+          "lego_text": "con",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.175Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.175Z",
+        "source": "I'm going to practise speaking with someone else.",
+        "target": "Proverò a parlare con qualcun altro.",
+        "quality_score": 8,
+        "lego_count": 3,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "d6d29b2a-f511-1a2e-4f2f-861c5d2bc5a3",
+            "lego_text": "con",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

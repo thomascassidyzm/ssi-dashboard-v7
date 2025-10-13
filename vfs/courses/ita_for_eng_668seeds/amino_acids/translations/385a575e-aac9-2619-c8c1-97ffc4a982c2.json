@@ -1,0 +1,45 @@
+{
+  "seed_id": "422",
+  "source_english": "A question.",
+  "target_italian": "Una domanda.",
+  "uuid": "385a575e-aac9-2619-c8c1-97ffc4a982c2",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 1,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "low_lego_count",
+          "count": 1,
+          "severity": "high"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.343Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.343Z",
+        "source": "A question.",
+        "target": "Una domanda.",
+        "quality_score": 8,
+        "lego_count": 1,
+        "issues": [
+          {
+            "type": "low_lego_count",
+            "count": 1,
+            "severity": "high"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "seed_id": "597",
+  "source_english": "I suspect that he's heard a hundred stories about it.",
+  "target_italian": "Sospetto che abbia sentito un centinaio di storie a riguardo.",
+  "uuid": "8c079522-1b50-4075-8016-a0c8e76a4728",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 5,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "d739db26-47ea-5c8d-2b85-7f4ebacc3e4e",
+          "lego_text": "di",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.442Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.442Z",
+        "source": "I suspect that he's heard a hundred stories about it.",
+        "target": "Sospetto che abbia sentito un centinaio di storie a riguardo.",
+        "quality_score": 8,
+        "lego_count": 5,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "d739db26-47ea-5c8d-2b85-7f4ebacc3e4e",
+            "lego_text": "di",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "seed_id": "256",
+  "source_english": "I think I'll be ready in less than an hour.",
+  "target_italian": "Penso di essere pronto tra meno di un'ora.",
+  "uuid": "fd960860-ce0e-1a78-ef4e-2fd7a93b9949",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "543fc7db-8f81-6e72-1163-622b4197734e",
+          "lego_text": "di",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.266Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.266Z",
+        "source": "I think I'll be ready in less than an hour.",
+        "target": "Penso di essere pronto tra meno di un'ora.",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "543fc7db-8f81-6e72-1163-622b4197734e",
+            "lego_text": "di",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

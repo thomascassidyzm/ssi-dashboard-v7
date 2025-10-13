@@ -1,0 +1,154 @@
+{
+  "uuid": "04674667db96244d192e90f769a6b3f7",
+  "type": "translation",
+  "seed_id": "C0312",
+  "source": "She said that she could use the other room tomorrow night.",
+  "target": "Ella dijo que podría usar la otra habitación mañana por la noche.",
+  "metadata": {
+    "course_code": "spa_for_eng_668seeds",
+    "phase": "phase_1",
+    "heuristics_applied": [
+      "naturalness",
+      "frequency",
+      "clarity",
+      "brevity",
+      "consistency",
+      "utility"
+    ],
+    "created_at": "2025-10-12T22:05:46.480Z"
+  },
+  "lego_extraction_attempts": [
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:07:54.834Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 3,
+      "legos": [
+        {
+          "text": "Ella dijo",
+          "provenance": "C0312L1",
+          "position": 1
+        },
+        {
+          "text": "que",
+          "provenance": "C0312L2",
+          "position": 2
+        },
+        {
+          "text": "podría usar la otra habitación mañana por la noche",
+          "provenance": "C0312L3",
+          "position": 3
+        }
+      ],
+      "quality_score": {
+        "overall_score": 8.4,
+        "dimension_scores": {
+          "iron_rule_compliance": 10,
+          "naturalness": 6,
+          "pedagogical_value": 9,
+          "consistency": 6.5,
+          "edge_case_handling": 9
+        },
+        "calculated_at": "2025-10-12T22:07:54.834Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "Ella dijo"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "podría usar la otra habitación mañana por la noche"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [],
+      "status": "accepted",
+      "review_notes": "Attempt 1: Good extraction. 2 minor concern(s) noted but acceptable."
+    },
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:08:06.833Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 3,
+      "legos": [
+        {
+          "text": "Ella dijo",
+          "provenance": "C0312L1",
+          "position": 1
+        },
+        {
+          "text": "que",
+          "provenance": "C0312L2",
+          "position": 2
+        },
+        {
+          "text": "podría usar la otra habitación mañana por la noche",
+          "provenance": "C0312L3",
+          "position": 3
+        }
+      ],
+      "quality_score": {
+        "overall_score": 8.4,
+        "dimension_scores": {
+          "iron_rule_compliance": 10,
+          "naturalness": 6,
+          "pedagogical_value": 9,
+          "consistency": 6.5,
+          "edge_case_handling": 9
+        },
+        "calculated_at": "2025-10-12T22:08:06.833Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "Ella dijo"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "podría usar la otra habitación mañana por la noche"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [],
+      "status": "accepted",
+      "review_notes": "Attempt 1: Good extraction. 2 minor concern(s) noted but acceptable."
+    }
+  ],
+  "quality_status": "accepted",
+  "current_quality_score": 8.4,
+  "total_attempts": 1,
+  "flagged_for_review": false,
+  "human_review_requested": false,
+  "last_reviewed_at": "2025-10-12T22:08:06.833Z"
+}

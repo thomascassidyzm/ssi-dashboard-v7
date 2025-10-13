@@ -1,0 +1,55 @@
+{
+  "seed_id": "83",
+  "source_english": "I agree with what you said about your friend.",
+  "target_italian": "Sono d'accordo con quello che hai detto del tuo amico.",
+  "uuid": "e2ca1196-d8d9-9670-5be2-9a7bc75b9bbc",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 10,
+      "issues": [],
+      "extracted_at": "2025-10-12T22:14:42.162Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.204Z",
+        "source": "I agree with what you said about your friend.",
+        "target": "Sono d'accordo con quello che hai detto del tuo amico.",
+        "quality_score": 6,
+        "lego_count": 6,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "bb519f65-0c7e-df44-eae5-8d606e0b4283",
+            "lego_text": "con",
+            "severity": "critical"
+          },
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "d43b7dab-b555-3457-ac71-1ecf2eaad00e",
+            "lego_text": "del",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      },
+      {
+        "attempt_number": 2,
+        "timestamp": "2025-10-12T22:14:42.162Z",
+        "quality_score": 10,
+        "lego_count": 4,
+        "issues": [],
+        "improvement": 4,
+        "prompt_version": "v1.1_italian"
+      }
+    ]
+  }
+}

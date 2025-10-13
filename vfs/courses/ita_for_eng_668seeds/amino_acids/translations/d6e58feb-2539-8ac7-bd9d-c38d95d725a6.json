@@ -1,0 +1,47 @@
+{
+  "seed_id": "534",
+  "source_english": "Let's not go outside in this dreadful weather.",
+  "target_italian": "Non usciamo con questo tempo terribile.",
+  "uuid": "d6e58feb-2539-8ac7-bd9d-c38d95d725a6",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "efe08efb-c78b-79a7-b845-6006ec8969cf",
+          "lego_text": "con",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.414Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.414Z",
+        "source": "Let's not go outside in this dreadful weather.",
+        "target": "Non usciamo con questo tempo terribile.",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "efe08efb-c78b-79a7-b845-6006ec8969cf",
+            "lego_text": "con",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

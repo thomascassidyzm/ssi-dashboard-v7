@@ -1,0 +1,532 @@
+{
+  "uuid": "03213950bbc0b5d8517009e8c12a58a0",
+  "type": "translation",
+  "seed_id": "C0021",
+  "source": "Why are you learning her name?",
+  "target": "¿Por qué estás aprendiendo su nombre?",
+  "metadata": {
+    "course_code": "spa_for_eng_668seeds",
+    "phase": "phase_1",
+    "heuristics_applied": [
+      "naturalness",
+      "frequency",
+      "clarity",
+      "brevity",
+      "consistency",
+      "utility"
+    ],
+    "created_at": "2025-10-12T22:05:46.460Z"
+  },
+  "lego_extraction_attempts": [
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:07:54.832Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 1,
+      "legos": [
+        {
+          "text": "¿Por qué estás aprendiendo su nombre?",
+          "provenance": "C0021L1",
+          "position": 1
+        }
+      ],
+      "quality_score": {
+        "overall_score": 4.4,
+        "dimension_scores": {
+          "iron_rule_compliance": 0,
+          "naturalness": 4,
+          "pedagogical_value": 8.5,
+          "consistency": 9,
+          "edge_case_handling": 8.3
+        },
+        "calculated_at": "2025-10-12T22:07:54.832Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c001_iron_rule_violation",
+          "severity": "critical",
+          "category": "iron_rule",
+          "description": "1 Iron Rule violation(s) detected",
+          "affected_legos": [
+            "C0021L1"
+          ],
+          "suggested_fix": "Extend LEGO boundaries to include preposition with adjacent word",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [
+        {
+          "suggestion_id": "s001_naturalness",
+          "type": "prompt_improvement",
+          "priority": "high",
+          "suggested_change": "Add specific instruction: \"Keep reflexive verbs together (me gusta, se puede, etc.)\"",
+          "rationale": "Low naturalness score indicates phrase boundary issues",
+          "expected_improvement": "+1.5 points in naturalness"
+        }
+      ],
+      "status": "failed",
+      "review_notes": "Attempt 1: Poor extraction. Significant issues detected. Retry recommended."
+    },
+    {
+      "attempt_number": 2,
+      "timestamp": "2025-10-12T22:07:54.832Z",
+      "agent_version": "phase3_v1.2",
+      "prompt_version": "3.1.2",
+      "legos_extracted": 1,
+      "legos": [
+        {
+          "text": "¿Por qué estás aprendiendo su nombre?",
+          "provenance": "C0021L1",
+          "position": 1
+        }
+      ],
+      "quality_score": {
+        "overall_score": 4.4,
+        "dimension_scores": {
+          "iron_rule_compliance": 0,
+          "naturalness": 4,
+          "pedagogical_value": 8.5,
+          "consistency": 9,
+          "edge_case_handling": 8.3
+        },
+        "calculated_at": "2025-10-12T22:07:54.832Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c001_iron_rule_violation",
+          "severity": "critical",
+          "category": "iron_rule",
+          "description": "1 Iron Rule violation(s) detected",
+          "affected_legos": [
+            "C0021L1"
+          ],
+          "suggested_fix": "Extend LEGO boundaries to include preposition with adjacent word",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [
+        {
+          "suggestion_id": "s001_naturalness",
+          "type": "prompt_improvement",
+          "priority": "high",
+          "suggested_change": "Add specific instruction: \"Keep reflexive verbs together (me gusta, se puede, etc.)\"",
+          "rationale": "Low naturalness score indicates phrase boundary issues",
+          "expected_improvement": "+1.5 points in naturalness"
+        }
+      ],
+      "status": "failed",
+      "review_notes": "Attempt 2: Poor extraction. Significant issues detected. Retry recommended."
+    },
+    {
+      "attempt_number": 3,
+      "timestamp": "2025-10-12T22:07:54.832Z",
+      "agent_version": "phase3_v1.3",
+      "prompt_version": "3.1.3",
+      "legos_extracted": 1,
+      "legos": [
+        {
+          "text": "¿Por qué estás aprendiendo su nombre?",
+          "provenance": "C0021L1",
+          "position": 1
+        }
+      ],
+      "quality_score": {
+        "overall_score": 4.4,
+        "dimension_scores": {
+          "iron_rule_compliance": 0,
+          "naturalness": 4,
+          "pedagogical_value": 8.5,
+          "consistency": 9,
+          "edge_case_handling": 8.3
+        },
+        "calculated_at": "2025-10-12T22:07:54.832Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c001_iron_rule_violation",
+          "severity": "critical",
+          "category": "iron_rule",
+          "description": "1 Iron Rule violation(s) detected",
+          "affected_legos": [
+            "C0021L1"
+          ],
+          "suggested_fix": "Extend LEGO boundaries to include preposition with adjacent word",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [
+        {
+          "suggestion_id": "s001_naturalness",
+          "type": "prompt_improvement",
+          "priority": "high",
+          "suggested_change": "Add specific instruction: \"Keep reflexive verbs together (me gusta, se puede, etc.)\"",
+          "rationale": "Low naturalness score indicates phrase boundary issues",
+          "expected_improvement": "+1.5 points in naturalness"
+        }
+      ],
+      "status": "failed",
+      "review_notes": "Attempt 3: Poor extraction. Significant issues detected. Retry recommended."
+    },
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:08:06.831Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 1,
+      "legos": [
+        {
+          "text": "¿Por qué estás aprendiendo su nombre?",
+          "provenance": "C0021L1",
+          "position": 1
+        }
+      ],
+      "quality_score": {
+        "overall_score": 4.4,
+        "dimension_scores": {
+          "iron_rule_compliance": 0,
+          "naturalness": 4,
+          "pedagogical_value": 8.5,
+          "consistency": 9,
+          "edge_case_handling": 8.3
+        },
+        "calculated_at": "2025-10-12T22:08:06.830Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c001_iron_rule_violation",
+          "severity": "critical",
+          "category": "iron_rule",
+          "description": "1 Iron Rule violation(s) detected",
+          "affected_legos": [
+            "C0021L1"
+          ],
+          "suggested_fix": "Extend LEGO boundaries to include preposition with adjacent word",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [
+        {
+          "suggestion_id": "s001_naturalness",
+          "type": "prompt_improvement",
+          "priority": "high",
+          "suggested_change": "Add specific instruction: \"Keep reflexive verbs together (me gusta, se puede, etc.)\"",
+          "rationale": "Low naturalness score indicates phrase boundary issues",
+          "expected_improvement": "+1.5 points in naturalness"
+        }
+      ],
+      "status": "failed",
+      "review_notes": "Attempt 1: Poor extraction. Significant issues detected. Retry recommended."
+    },
+    {
+      "attempt_number": 2,
+      "timestamp": "2025-10-12T22:08:06.831Z",
+      "agent_version": "phase3_v1.2",
+      "prompt_version": "3.1.2",
+      "legos_extracted": 1,
+      "legos": [
+        {
+          "text": "¿Por qué estás aprendiendo su nombre?",
+          "provenance": "C0021L1",
+          "position": 1
+        }
+      ],
+      "quality_score": {
+        "overall_score": 4.4,
+        "dimension_scores": {
+          "iron_rule_compliance": 0,
+          "naturalness": 4,
+          "pedagogical_value": 8.5,
+          "consistency": 9,
+          "edge_case_handling": 8.3
+        },
+        "calculated_at": "2025-10-12T22:08:06.831Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c001_iron_rule_violation",
+          "severity": "critical",
+          "category": "iron_rule",
+          "description": "1 Iron Rule violation(s) detected",
+          "affected_legos": [
+            "C0021L1"
+          ],
+          "suggested_fix": "Extend LEGO boundaries to include preposition with adjacent word",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [
+        {
+          "suggestion_id": "s001_naturalness",
+          "type": "prompt_improvement",
+          "priority": "high",
+          "suggested_change": "Add specific instruction: \"Keep reflexive verbs together (me gusta, se puede, etc.)\"",
+          "rationale": "Low naturalness score indicates phrase boundary issues",
+          "expected_improvement": "+1.5 points in naturalness"
+        }
+      ],
+      "status": "failed",
+      "review_notes": "Attempt 2: Poor extraction. Significant issues detected. Retry recommended."
+    },
+    {
+      "attempt_number": 3,
+      "timestamp": "2025-10-12T22:08:06.831Z",
+      "agent_version": "phase3_v1.3",
+      "prompt_version": "3.1.3",
+      "legos_extracted": 1,
+      "legos": [
+        {
+          "text": "¿Por qué estás aprendiendo su nombre?",
+          "provenance": "C0021L1",
+          "position": 1
+        }
+      ],
+      "quality_score": {
+        "overall_score": 4.4,
+        "dimension_scores": {
+          "iron_rule_compliance": 0,
+          "naturalness": 4,
+          "pedagogical_value": 8.5,
+          "consistency": 9,
+          "edge_case_handling": 8.3
+        },
+        "calculated_at": "2025-10-12T22:08:06.831Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c001_iron_rule_violation",
+          "severity": "critical",
+          "category": "iron_rule",
+          "description": "1 Iron Rule violation(s) detected",
+          "affected_legos": [
+            "C0021L1"
+          ],
+          "suggested_fix": "Extend LEGO boundaries to include preposition with adjacent word",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "¿Por qué estás aprendiendo su nombre?"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [
+        {
+          "suggestion_id": "s001_naturalness",
+          "type": "prompt_improvement",
+          "priority": "high",
+          "suggested_change": "Add specific instruction: \"Keep reflexive verbs together (me gusta, se puede, etc.)\"",
+          "rationale": "Low naturalness score indicates phrase boundary issues",
+          "expected_improvement": "+1.5 points in naturalness"
+        }
+      ],
+      "status": "failed",
+      "review_notes": "Attempt 3: Poor extraction. Significant issues detected. Retry recommended."
+    }
+  ],
+  "quality_status": "failed",
+  "current_quality_score": 4.4,
+  "total_attempts": 3,
+  "flagged_for_review": false,
+  "human_review_requested": true,
+  "last_reviewed_at": "2025-10-12T22:08:06.831Z"
+}

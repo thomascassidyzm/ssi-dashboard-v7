@@ -1,0 +1,55 @@
+{
+  "seed_id": "377",
+  "source_english": "Did you go anywhere in the world last year?",
+  "target_italian": "Sei andato da qualche parte nel mondo l'anno scorso?",
+  "uuid": "8f3706b5-b1e4-6f91-9d71-93654719ccaf",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 9,
+      "issues": [],
+      "extracted_at": "2025-10-12T22:14:42.936Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.322Z",
+        "source": "Did you go anywhere in the world last year?",
+        "target": "Sei andato da qualche parte nel mondo l'anno scorso?",
+        "quality_score": 6,
+        "lego_count": 6,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "063a9bf5-e98b-3f0b-49d4-cc945e824aff",
+            "lego_text": "da",
+            "severity": "critical"
+          },
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "048304e9-16cd-e465-0c70-ca7a95cba1e6",
+            "lego_text": "nel",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      },
+      {
+        "attempt_number": 2,
+        "timestamp": "2025-10-12T22:14:42.936Z",
+        "quality_score": 9,
+        "lego_count": 4,
+        "issues": [],
+        "improvement": 3,
+        "prompt_version": "v1.1_italian"
+      }
+    ]
+  }
+}

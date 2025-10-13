@@ -1,0 +1,49 @@
+{
+  "seed_id": "593",
+  "source_english": "However much I argued I still had to share.",
+  "target_italian": "Per quanto discutessi, dovevo comunque condividere.",
+  "uuid": "054e476d-082c-a7ca-f1f1-3eafea93d2a6",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 3,
+      "quality_score": 9,
+      "issues": [],
+      "extracted_at": "2025-10-12T22:14:44.034Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.440Z",
+        "source": "However much I argued I still had to share.",
+        "target": "Per quanto discutessi, dovevo comunque condividere.",
+        "quality_score": 7.5,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "9e15a2bb-dfb9-6c90-44da-eb5686a819b2",
+            "lego_text": "Per",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      },
+      {
+        "attempt_number": 2,
+        "timestamp": "2025-10-12T22:14:44.034Z",
+        "quality_score": 9,
+        "lego_count": 3,
+        "issues": [],
+        "improvement": 1.5,
+        "prompt_version": "v1.1_italian"
+      }
+    ]
+  }
+}

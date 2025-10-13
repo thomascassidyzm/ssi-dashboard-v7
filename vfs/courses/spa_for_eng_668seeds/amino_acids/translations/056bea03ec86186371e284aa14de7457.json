@@ -1,0 +1,154 @@
+{
+  "uuid": "056bea03ec86186371e284aa14de7457",
+  "type": "translation",
+  "seed_id": "C0251",
+  "source": "I don't want to find out until after we finish.",
+  "target": "No quiero descubrirlo hasta después de que terminemos.",
+  "metadata": {
+    "course_code": "spa_for_eng_668seeds",
+    "phase": "phase_1",
+    "heuristics_applied": [
+      "naturalness",
+      "frequency",
+      "clarity",
+      "brevity",
+      "consistency",
+      "utility"
+    ],
+    "created_at": "2025-10-12T22:05:46.476Z"
+  },
+  "lego_extraction_attempts": [
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:07:54.836Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 3,
+      "legos": [
+        {
+          "text": "No quiero descubrirlo hasta después de",
+          "provenance": "C0251L1",
+          "position": 1
+        },
+        {
+          "text": "que",
+          "provenance": "C0251L2",
+          "position": 2
+        },
+        {
+          "text": "terminemos",
+          "provenance": "C0251L3",
+          "position": 3
+        }
+      ],
+      "quality_score": {
+        "overall_score": 5.4,
+        "dimension_scores": {
+          "iron_rule_compliance": 0,
+          "naturalness": 8,
+          "pedagogical_value": 8.5,
+          "consistency": 8,
+          "edge_case_handling": 9
+        },
+        "calculated_at": "2025-10-12T22:07:54.836Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c001_iron_rule_violation",
+          "severity": "critical",
+          "category": "iron_rule",
+          "description": "1 Iron Rule violation(s) detected",
+          "affected_legos": [
+            "C0251L1"
+          ],
+          "suggested_fix": "Extend LEGO boundaries to include preposition with adjacent word",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "No quiero descubrirlo hasta después de"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [],
+      "status": "flagged",
+      "review_notes": "Attempt 1: Poor extraction. Significant issues detected. Retry recommended."
+    },
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:08:06.834Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 3,
+      "legos": [
+        {
+          "text": "No quiero descubrirlo hasta después de",
+          "provenance": "C0251L1",
+          "position": 1
+        },
+        {
+          "text": "que",
+          "provenance": "C0251L2",
+          "position": 2
+        },
+        {
+          "text": "terminemos",
+          "provenance": "C0251L3",
+          "position": 3
+        }
+      ],
+      "quality_score": {
+        "overall_score": 5.4,
+        "dimension_scores": {
+          "iron_rule_compliance": 0,
+          "naturalness": 8,
+          "pedagogical_value": 8.5,
+          "consistency": 8,
+          "edge_case_handling": 9
+        },
+        "calculated_at": "2025-10-12T22:08:06.834Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c001_iron_rule_violation",
+          "severity": "critical",
+          "category": "iron_rule",
+          "description": "1 Iron Rule violation(s) detected",
+          "affected_legos": [
+            "C0251L1"
+          ],
+          "suggested_fix": "Extend LEGO boundaries to include preposition with adjacent word",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "No quiero descubrirlo hasta después de"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [],
+      "status": "flagged",
+      "review_notes": "Attempt 1: Poor extraction. Significant issues detected. Retry recommended."
+    }
+  ],
+  "quality_status": "flagged",
+  "current_quality_score": 5.4,
+  "total_attempts": 1,
+  "flagged_for_review": true,
+  "human_review_requested": false,
+  "last_reviewed_at": "2025-10-12T22:08:06.834Z"
+}

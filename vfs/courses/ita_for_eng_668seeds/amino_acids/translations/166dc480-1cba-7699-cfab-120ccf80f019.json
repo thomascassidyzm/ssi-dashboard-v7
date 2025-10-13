@@ -1,0 +1,49 @@
+{
+  "seed_id": "75",
+  "source_english": "Have you got more to learn?",
+  "target_italian": "Hai ancora da imparare?",
+  "uuid": "166dc480-1cba-7699-cfab-120ccf80f019",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 2,
+      "quality_score": 9,
+      "issues": [],
+      "extracted_at": "2025-10-12T22:14:41.987Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.201Z",
+        "source": "Have you got more to learn?",
+        "target": "Hai ancora da imparare?",
+        "quality_score": 7.5,
+        "lego_count": 3,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "3cfd1eb0-1c32-3d29-48f3-61acf91b8ec3",
+            "lego_text": "da",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      },
+      {
+        "attempt_number": 2,
+        "timestamp": "2025-10-12T22:14:41.987Z",
+        "quality_score": 9,
+        "lego_count": 2,
+        "issues": [],
+        "improvement": 1.5,
+        "prompt_version": "v1.1_italian"
+      }
+    ]
+  }
+}

@@ -33,6 +33,9 @@
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-2xl font-semibold text-emerald-400">Claude Code Prompt</h2>
             <div class="flex gap-2">
+              <button @click="saveChanges" :disabled="saving" class="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white text-sm font-medium rounded transition">
+                {{ saving ? 'Saving...' : '💾 Save Changes' }}
+              </button>
               <button @click="copyPrompt" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm rounded transition">
                 Copy
               </button>
@@ -110,7 +113,8 @@
 </template>
 
 <script setup>
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, onMounted } from 'vue'
+import { usePromptManager } from '../composables/usePromptManager'
 
 const props = defineProps({
   id: {
@@ -119,7 +123,26 @@ const props = defineProps({
   }
 })
 
-const promptText = ref('')
+// Use prompt manager composable to fetch from APML registry
+const { prompt: promptText, loading, saving, error, promptMeta, fetchPrompt, savePrompt } = usePromptManager(props.id)
+
+// Fetch actual prompt from APML when component mounts
+onMounted(async () => {
+  await fetchPrompt()
+})
+
+// Save changes back to APML file
+const saveChanges = async () => {
+  const changelog = prompt(`Enter changelog message for this update:`, `Update Phase ${props.id} prompt`)
+  if (!changelog) return
+
+  try {
+    await savePrompt(changelog, 'human')
+    alert('✅ Prompt saved successfully! Changes committed to APML and Git.')
+  } catch (err) {
+    alert(`❌ Failed to save prompt: ${err.message}`)
+  }
+}
 
 // Copy prompt to clipboard
 const copyPrompt = async () => {

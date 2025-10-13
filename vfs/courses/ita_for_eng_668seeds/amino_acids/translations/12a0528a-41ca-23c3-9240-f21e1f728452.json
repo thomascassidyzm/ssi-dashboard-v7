@@ -1,0 +1,47 @@
+{
+  "seed_id": "24",
+  "source_english": "I'm not going to be able to remember easily.",
+  "target_italian": "Non riuscirò a ricordare facilmente.",
+  "uuid": "12a0528a-41ca-23c3-9240-f21e1f728452",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 3,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "ceefa40d-4518-bde0-01ad-6398de07be25",
+          "lego_text": "a",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.182Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.182Z",
+        "source": "I'm not going to be able to remember easily.",
+        "target": "Non riuscirò a ricordare facilmente.",
+        "quality_score": 8,
+        "lego_count": 3,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "ceefa40d-4518-bde0-01ad-6398de07be25",
+            "lego_text": "a",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

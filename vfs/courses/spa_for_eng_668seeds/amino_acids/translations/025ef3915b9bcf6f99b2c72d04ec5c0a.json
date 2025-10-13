@@ -1,0 +1,112 @@
+{
+  "uuid": "025ef3915b9bcf6f99b2c72d04ec5c0a",
+  "type": "translation",
+  "seed_id": "C0604",
+  "source": "She offered to let us stay with her.",
+  "target": "Ella se ofreció a dejarnos quedarnos con ella.",
+  "metadata": {
+    "course_code": "spa_for_eng_668seeds",
+    "phase": "phase_1",
+    "heuristics_applied": [
+      "naturalness",
+      "frequency",
+      "clarity",
+      "brevity",
+      "consistency",
+      "utility"
+    ],
+    "created_at": "2025-10-12T22:05:46.501Z"
+  },
+  "lego_extraction_attempts": [
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:07:54.831Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 1,
+      "legos": [
+        {
+          "text": "Ella se ofreció a dejarnos quedarnos con ella",
+          "provenance": "C0604L1",
+          "position": 1
+        }
+      ],
+      "quality_score": {
+        "overall_score": 8.7,
+        "dimension_scores": {
+          "iron_rule_compliance": 10,
+          "naturalness": 8,
+          "pedagogical_value": 7,
+          "consistency": 9,
+          "edge_case_handling": 9
+        },
+        "calculated_at": "2025-10-12T22:07:54.831Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "Ella se ofreció a dejarnos quedarnos con ella"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [],
+      "status": "accepted",
+      "review_notes": "Attempt 1: Good extraction. 1 minor concern(s) noted but acceptable."
+    },
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:08:06.830Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 1,
+      "legos": [
+        {
+          "text": "Ella se ofreció a dejarnos quedarnos con ella",
+          "provenance": "C0604L1",
+          "position": 1
+        }
+      ],
+      "quality_score": {
+        "overall_score": 8.7,
+        "dimension_scores": {
+          "iron_rule_compliance": 10,
+          "naturalness": 8,
+          "pedagogical_value": 7,
+          "consistency": 9,
+          "edge_case_handling": 9
+        },
+        "calculated_at": "2025-10-12T22:08:06.830Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "Ella se ofreció a dejarnos quedarnos con ella"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [],
+      "status": "accepted",
+      "review_notes": "Attempt 1: Good extraction. 1 minor concern(s) noted but acceptable."
+    }
+  ],
+  "quality_status": "accepted",
+  "current_quality_score": 8.7,
+  "total_attempts": 1,
+  "flagged_for_review": false,
+  "human_review_requested": false,
+  "last_reviewed_at": "2025-10-12T22:08:06.830Z"
+}

@@ -1,0 +1,47 @@
+{
+  "seed_id": "220",
+  "source_english": "Did you watch a bit of television?",
+  "target_italian": "Hai guardato un po' di televisione?",
+  "uuid": "7ac2230d-b453-1027-5d95-dc3fff8d8b3a",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "0eb91442-5531-acb9-2023-a010ce3cef6e",
+          "lego_text": "di",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.251Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.251Z",
+        "source": "Did you watch a bit of television?",
+        "target": "Hai guardato un po' di televisione?",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "0eb91442-5531-acb9-2023-a010ce3cef6e",
+            "lego_text": "di",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

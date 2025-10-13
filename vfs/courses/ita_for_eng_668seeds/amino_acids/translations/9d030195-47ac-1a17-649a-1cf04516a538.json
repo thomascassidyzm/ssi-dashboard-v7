@@ -1,0 +1,47 @@
+{
+  "seed_id": "476",
+  "source_english": "I'm waiting for the end of the second half.",
+  "target_italian": "Sto aspettando la fine del secondo tempo.",
+  "uuid": "9d030195-47ac-1a17-649a-1cf04516a538",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "27a90f00-09f6-61a8-0ca3-93e6d0c4a2af",
+          "lego_text": "del",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.369Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.369Z",
+        "source": "I'm waiting for the end of the second half.",
+        "target": "Sto aspettando la fine del secondo tempo.",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "27a90f00-09f6-61a8-0ca3-93e6d0c4a2af",
+            "lego_text": "del",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

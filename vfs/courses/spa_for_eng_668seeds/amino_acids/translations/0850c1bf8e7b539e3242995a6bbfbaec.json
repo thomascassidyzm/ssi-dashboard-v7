@@ -1,0 +1,280 @@
+{
+  "uuid": "0850c1bf8e7b539e3242995a6bbfbaec",
+  "type": "translation",
+  "seed_id": "C0132",
+  "source": "That's less exciting than what she was saying.",
+  "target": "Eso es menos emocionante que lo que ella estaba diciendo.",
+  "metadata": {
+    "course_code": "spa_for_eng_668seeds",
+    "phase": "phase_1",
+    "heuristics_applied": [
+      "naturalness",
+      "frequency",
+      "clarity",
+      "brevity",
+      "consistency",
+      "utility"
+    ],
+    "created_at": "2025-10-12T22:05:46.468Z"
+  },
+  "lego_extraction_attempts": [
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:07:54.837Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 5,
+      "legos": [
+        {
+          "text": "Eso es menos emocionante",
+          "provenance": "C0132L1",
+          "position": 1
+        },
+        {
+          "text": "que",
+          "provenance": "C0132L2",
+          "position": 2
+        },
+        {
+          "text": "lo",
+          "provenance": "C0132L3",
+          "position": 3
+        },
+        {
+          "text": "que",
+          "provenance": "C0132L4",
+          "position": 4
+        },
+        {
+          "text": "ella estaba diciendo",
+          "provenance": "C0132L5",
+          "position": 5
+        }
+      ],
+      "quality_score": {
+        "overall_score": 6.8,
+        "dimension_scores": {
+          "iron_rule_compliance": 10,
+          "naturalness": 0,
+          "pedagogical_value": 8,
+          "consistency": 8,
+          "edge_case_handling": 9
+        },
+        "calculated_at": "2025-10-12T22:07:54.837Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "Eso es menos emocionante"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "Eso es menos emocionante"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "Eso es menos emocionante"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "ella estaba diciendo"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "ella estaba diciendo"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "ella estaba diciendo"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [
+        {
+          "suggestion_id": "s001_naturalness",
+          "type": "prompt_improvement",
+          "priority": "high",
+          "suggested_change": "Add specific instruction: \"Keep reflexive verbs together (me gusta, se puede, etc.)\"",
+          "rationale": "Low naturalness score indicates phrase boundary issues",
+          "expected_improvement": "+1.5 points in naturalness"
+        }
+      ],
+      "status": "flagged",
+      "review_notes": "Attempt 1: Fair extraction. 6 issue(s) requiring attention."
+    },
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-10-12T22:08:06.835Z",
+      "agent_version": "phase3_v1.1",
+      "prompt_version": "3.1.1",
+      "legos_extracted": 5,
+      "legos": [
+        {
+          "text": "Eso es menos emocionante",
+          "provenance": "C0132L1",
+          "position": 1
+        },
+        {
+          "text": "que",
+          "provenance": "C0132L2",
+          "position": 2
+        },
+        {
+          "text": "lo",
+          "provenance": "C0132L3",
+          "position": 3
+        },
+        {
+          "text": "que",
+          "provenance": "C0132L4",
+          "position": 4
+        },
+        {
+          "text": "ella estaba diciendo",
+          "provenance": "C0132L5",
+          "position": 5
+        }
+      ],
+      "quality_score": {
+        "overall_score": 6.8,
+        "dimension_scores": {
+          "iron_rule_compliance": 10,
+          "naturalness": 0,
+          "pedagogical_value": 8,
+          "consistency": 8,
+          "edge_case_handling": 9
+        },
+        "calculated_at": "2025-10-12T22:08:06.835Z",
+        "scoring_version": "1.0"
+      },
+      "concerns": [
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "Eso es menos emocionante"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "Eso es menos emocionante"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "Eso es menos emocionante"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"a través de\" might be split",
+          "affected_legos": [
+            "ella estaba diciendo"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en vez de\" might be split",
+          "affected_legos": [
+            "ella estaba diciendo"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        },
+        {
+          "concern_id": "c002_split_compound_preposition",
+          "severity": "high",
+          "category": "naturalness",
+          "description": "Compound preposition \"en lugar de\" might be split",
+          "affected_legos": [
+            "ella estaba diciendo"
+          ],
+          "suggested_fix": "Adjust boundaries to preserve natural phrase units",
+          "auto_fixable": false
+        }
+      ],
+      "suggestions": [
+        {
+          "suggestion_id": "s001_naturalness",
+          "type": "prompt_improvement",
+          "priority": "high",
+          "suggested_change": "Add specific instruction: \"Keep reflexive verbs together (me gusta, se puede, etc.)\"",
+          "rationale": "Low naturalness score indicates phrase boundary issues",
+          "expected_improvement": "+1.5 points in naturalness"
+        }
+      ],
+      "status": "flagged",
+      "review_notes": "Attempt 1: Fair extraction. 6 issue(s) requiring attention."
+    }
+  ],
+  "quality_status": "flagged",
+  "current_quality_score": 6.8,
+  "total_attempts": 1,
+  "flagged_for_review": true,
+  "human_review_requested": false,
+  "last_reviewed_at": "2025-10-12T22:08:06.835Z"
+}

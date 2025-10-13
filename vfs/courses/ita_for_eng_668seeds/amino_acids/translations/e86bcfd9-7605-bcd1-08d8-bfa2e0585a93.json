@@ -1,0 +1,47 @@
+{
+  "seed_id": "388",
+  "source_english": "That person you work with.",
+  "target_italian": "Quella persona con cui lavori.",
+  "uuid": "e86bcfd9-7605-bcd1-08d8-bfa2e0585a93",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 3,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "d5cc05d7-e926-c8ee-5a52-939754ab5c1f",
+          "lego_text": "con",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.328Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.328Z",
+        "source": "That person you work with.",
+        "target": "Quella persona con cui lavori.",
+        "quality_score": 8,
+        "lego_count": 3,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "d5cc05d7-e926-c8ee-5a52-939754ab5c1f",
+            "lego_text": "con",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

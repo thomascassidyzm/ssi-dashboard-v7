@@ -1,0 +1,47 @@
+{
+  "seed_id": "398",
+  "source_english": "We want to become more patient with our children.",
+  "target_italian": "Vogliamo diventare più pazienti con i nostri figli.",
+  "uuid": "9f238c7c-8117-fd9e-8e9d-0a77f5d1e314",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 5,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "36bce9da-4677-3b13-5ef2-81d7af7dd505",
+          "lego_text": "con",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.334Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.334Z",
+        "source": "We want to become more patient with our children.",
+        "target": "Vogliamo diventare più pazienti con i nostri figli.",
+        "quality_score": 8,
+        "lego_count": 5,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "36bce9da-4677-3b13-5ef2-81d7af7dd505",
+            "lego_text": "con",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "seed_id": "560",
+  "source_english": "It goes down to the beach",
+  "target_italian": "Scende fino alla spiaggia",
+  "uuid": "5f5dfd93-aa14-30a5-e784-4c8075f4bc37",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 2,
+      "quality_score": 9,
+      "issues": [],
+      "extracted_at": "2025-10-12T22:14:43.926Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.425Z",
+        "source": "It goes down to the beach",
+        "target": "Scende fino alla spiaggia",
+        "quality_score": 6.5,
+        "lego_count": 3,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "16bfbc38-4bfb-ca69-b203-2ddd8970b7f8",
+            "lego_text": "alla",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      },
+      {
+        "attempt_number": 2,
+        "timestamp": "2025-10-12T22:14:43.926Z",
+        "quality_score": 9,
+        "lego_count": 2,
+        "issues": [],
+        "improvement": 2.5,
+        "prompt_version": "v1.1_italian"
+      }
+    ]
+  }
+}

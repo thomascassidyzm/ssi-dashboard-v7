@@ -1,0 +1,49 @@
+{
+  "seed_id": "667",
+  "source_english": "Do you all mind?",
+  "target_italian": "Vi dispiace a tutti?",
+  "uuid": "52e828bc-86fe-60da-a97a-0729fffbbdfa",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 2,
+      "quality_score": 9,
+      "issues": [],
+      "extracted_at": "2025-10-12T22:14:44.531Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.472Z",
+        "source": "Do you all mind?",
+        "target": "Vi dispiace a tutti?",
+        "quality_score": 7.5,
+        "lego_count": 3,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "75cd4a61-fbe4-3bad-f192-d92b7b588621",
+            "lego_text": "a",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      },
+      {
+        "attempt_number": 2,
+        "timestamp": "2025-10-12T22:14:44.531Z",
+        "quality_score": 9,
+        "lego_count": 2,
+        "issues": [],
+        "improvement": 1.5,
+        "prompt_version": "v1.1_italian"
+      }
+    ]
+  }
+}

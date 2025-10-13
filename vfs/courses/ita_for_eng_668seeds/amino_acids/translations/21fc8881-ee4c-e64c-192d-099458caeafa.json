@@ -1,0 +1,49 @@
+{
+  "seed_id": "532",
+  "source_english": "Unless they're lucky.",
+  "target_italian": "A meno che non siano fortunati.",
+  "uuid": "21fc8881-ee4c-e64c-192d-099458caeafa",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 3,
+      "quality_score": 9,
+      "issues": [],
+      "extracted_at": "2025-10-12T22:14:43.672Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.413Z",
+        "source": "Unless they're lucky.",
+        "target": "A meno che non siano fortunati.",
+        "quality_score": 7.5,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "39cca0e1-f16b-4192-bf20-a84139a41365",
+            "lego_text": "A",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      },
+      {
+        "attempt_number": 2,
+        "timestamp": "2025-10-12T22:14:43.672Z",
+        "quality_score": 9,
+        "lego_count": 3,
+        "issues": [],
+        "improvement": 1.5,
+        "prompt_version": "v1.1_italian"
+      }
+    ]
+  }
+}

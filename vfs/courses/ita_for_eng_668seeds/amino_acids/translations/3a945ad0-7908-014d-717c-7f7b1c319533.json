@@ -1,0 +1,47 @@
+{
+  "seed_id": "38",
+  "source_english": "I've been learning for about a week.",
+  "target_italian": "Sto imparando da circa una settimana.",
+  "uuid": "3a945ad0-7908-014d-717c-7f7b1c319533",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.362Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 4,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "iron_rule_violation",
+          "lego_id": "0c8ce299-b40a-6c60-0197-7df583378ccb",
+          "lego_text": "da",
+          "severity": "critical"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.187Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.187Z",
+        "source": "I've been learning for about a week.",
+        "target": "Sto imparando da circa una settimana.",
+        "quality_score": 8,
+        "lego_count": 4,
+        "issues": [
+          {
+            "type": "iron_rule_violation",
+            "lego_id": "0c8ce299-b40a-6c60-0197-7df583378ccb",
+            "lego_text": "da",
+            "severity": "critical"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}

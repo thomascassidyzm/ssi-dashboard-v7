@@ -1,0 +1,45 @@
+{
+  "seed_id": "631",
+  "source_english": "What would you like?",
+  "target_italian": "Cosa vorresti?",
+  "uuid": "34009c11-32af-f43e-440e-695988526304",
+  "metadata": {
+    "translation_approach": "pedagogical",
+    "naturalness_score": 9,
+    "frequency_level": "high",
+    "pedagogical_value": "optimized",
+    "created_at": "2025-10-12T22:10:54.363Z",
+    "translator": "claude_italian_expert",
+    "version": "1.0",
+    "lego_extraction": {
+      "lego_count": 1,
+      "quality_score": 8,
+      "issues": [
+        {
+          "type": "low_lego_count",
+          "count": 1,
+          "severity": "high"
+        }
+      ],
+      "extracted_at": "2025-10-12T22:13:01.455Z"
+    },
+    "attempt_history": [
+      {
+        "attempt_number": 1,
+        "timestamp": "2025-10-12T22:13:01.455Z",
+        "source": "What would you like?",
+        "target": "Cosa vorresti?",
+        "quality_score": 8,
+        "lego_count": 1,
+        "issues": [
+          {
+            "type": "low_lego_count",
+            "count": 1,
+            "severity": "high"
+          }
+        ],
+        "prompt_version": "v1.0_italian"
+      }
+    ]
+  }
+}
