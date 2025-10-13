@@ -925,102 +925,204 @@ PROMPT: |
   ✓ Deduplicated set created
   ✓ Original LEGOs preserved (immutable)
 
-## Phase 5: Pattern-Aware Baskets
+## Phase 5: Basket Generation (d-phrases and e-phrases)
 
-NAME: "Pattern-Aware Baskets"
-PURPOSE: Construct learning baskets optimized for edge coverage
+NAME: "Basket Generation with Progressive Vocabulary"
+PURPOSE: Generate practice phrases (baskets) for each LEGO with vocabulary constraints
 INPUT:
   - vfs/amino_acids/legos_deduplicated/*.json
-  - vfs/phase_outputs/phase_3.5_lego_graph.json
-  - vfs/phase_outputs/phase_2_corpus_intelligence.json
-OUTPUT: vfs/amino_acids/baskets/{uuid}.json
+  - All previously learned LEGOs (progressive vocabulary)
+OUTPUT: phase_outputs/phase_5_baskets.json
 
 BATCH_PROCESSING:
-  BATCH_SIZE: 20 LEGOs per basket
+  BATCH_SIZE: 20 LEGOs per batch
   PROCESSING: Forward (LEGO 1 → last LEGO, NOT backwards)
 
-EDGE_COVERAGE_OPTIMIZATION:
-  - Select LEGOs to expose DIVERSE patterns
-  - Each basket should cover unique graph edges
-  - Avoid redundant LEGO sequences across baskets
-  - Goal: Learners experience maximum pattern variety
+CORE_CONCEPT:
+  Each LEGO can ONLY use vocabulary from LEGOs that came before it.
+  - LEGO #1: NO vocabulary available = empty basket
+  - LEGO #2: Can only use LEGO #1 = very limited
+  - LEGO #N: Can use LEGOs #1 through #(N-1)
+  This creates natural progression where complexity builds gradually.
 
-PEDAGOGICAL_COHERENCE:
-  - Follow FCFS chronological progression (from Phase 2)
-  - Apply utility scoring for high-value sequences
-  - Ensure smooth difficulty progression
-  - Balance novelty with reinforcement
+E_PHRASES (Eternal Practice Phrases):
+  - 5 phrases per LEGO
+  - Each 7-10 words long
+  - Must contain the target LEGO
+  - Perfect grammar in BOTH languages
+  - Natural, conversational usage
+  - Only use vocabulary from previous LEGOs
 
-REPLACES_OLD_LOGIC:
-  OLD: DEBUT/ETERNAL pattern terminology
-  NEW: Graph-driven edge coverage
-  BETTER: Measurable pattern diversity
+D_PHRASES (Deconstructed Practice Phrases):
+  - Auto-generated from e_phrases using expanding windows
+  - 2_lego: 2 phrases with 2 LEGOs each
+  - 3_lego: 2 phrases with 3 LEGOs each
+  - 4_lego: 2 phrases with 4 LEGOs each
+  - 5_lego: 2 phrases with 5 LEGOs each
+  - Must be syntactically correct (even as fragments) in BOTH languages
+
+CULMINATING_LEGO_RULE:
+  If this is the LAST LEGO in a seed (e.g., S0123L03 is last of S0123):
+  - E-phrase #1 MUST be the COMPLETE SEED sentence
+  - Use complete seed heavily in d-phrases (3+ times)
+  - Gives learner satisfaction of understanding full seed
 
 BASKET_STRUCTURE:
-  uuid: deterministic based on manifest content
-  lego_manifest: ["uuid1", "uuid2", ...] (list of LEGO UUIDs)
-  edge_coverage: ["edge_A_B", "edge_C_D", ...] (which patterns covered)
-  fcfs_score: 78 (chronological appropriateness)
-  difficulty_level: "intermediate"
-  metadata: { ... }
-
-PROMPT: |
-  # Phase 5: Pattern-Aware Baskets
-
-  ## Task
-  Construct learning baskets (lessons) optimized for graph edge coverage and pedagogical progression.
-
-  ## Input
-  - Deduplicated LEGOs: vfs/amino_acids/legos_deduplicated/*.json
-  - LEGO graph: vfs/phase_outputs/phase_3.5_lego_graph.json
-  - Corpus intelligence: vfs/phase_outputs/phase_2_corpus_intelligence.json
-
-  ## Your Mission
-  1. **Load Graph Intelligence**:
-     - LEGO adjacency graph with edges and weights
-     - This drives pattern coverage optimization
-
-  2. **Maximize Edge Coverage**:
-     - Select LEGOs to expose DIVERSE patterns
-     - Each basket should cover unique graph edges
-     - Avoid redundant LEGO sequences across baskets
-     - Goal: Learners experience maximum pattern variety
-
-  3. **Maintain Pedagogical Coherence**:
-     - Follow FCFS chronological progression
-     - Apply utility scoring for high-value sequences
-     - Ensure smooth difficulty progression
-     - Balance novelty with reinforcement
-
-  4. **Construct Basket Amino Acids**:
-     - Each basket = collection of LEGO UUIDs (manifest)
-     - Metadata: edge coverage stats, difficulty level, etc.
-     - Deterministic UUID based on manifest content
-
-  5. **Store Results**:
-     - vfs/amino_acids/baskets/{uuid}.json
-
-  ## Basket Amino Acid Structure
   {
-    "uuid": "...",
-    "lego_manifest": ["uuid1", "uuid2", ...],
-    "edge_coverage": ["edge_A_B", "edge_C_D", ...],
-    "fcfs_score": 78,
-    "difficulty_level": "intermediate",
-    "metadata": { ... }
+    "S####L##": {
+      "target": "target language LEGO",
+      "known": "English translation",
+      "e_phrases": [
+        ["7-10 word phrase with LEGO", "English translation"],
+        ... (5 total)
+      ],
+      "d_phrases": {
+        "2_lego": [["phrase", "translation"], ...],
+        "3_lego": [["phrase", "translation"], ...],
+        "4_lego": [["phrase", "translation"], ...],
+        "5_lego": [["phrase", "translation"], ...]
+      }
+    }
   }
 
-  ## This Replaces OLD Logic
-  - OLD: DEBUT/ETERNAL pattern terminology
-  - NEW: Graph-driven edge coverage
-  - BETTER: Measurable pattern diversity
+PROMPT: |
+  # Phase 5: Basket Generation - Progressive Vocabulary Practice
+
+  ## CRITICAL PER-LEGO VOCABULARY CONSTRAINTS
+  **ABSOLUTE RULE**: Each LEGO has DIFFERENT available vocabulary!
+  - LEGO #1: NO VOCABULARY AVAILABLE = NO PHRASES POSSIBLE (empty basket)
+  - LEGO #2: Can only use LEGO #1 = VERY LIMITED phrases possible
+  - LEGO #3: Can only use LEGOs #1-2 = A FEW phrases possible
+  - LEGO #N: Can only use LEGOs #1 through #(N-1)
+
+  ## Input Data
+  Course folder: /Users/tomcassidy/SSi/SSi_Course_Production/vfs/courses/${targetCode}_for_${knownCode}_speakers/
+
+  Read LEGOs from: vfs/amino_acids/legos_deduplicated/*.json
+
+  ## E-PHRASES (5 Eternal Practice Phrases per LEGO)
+  Create 5 phrases, each 7-10 words (balanced across 7/8/9/10):
+  - **MUST contain the target LEGO**
+  - **Perfect grammar** in BOTH languages - validate target AND known language
+  - **Natural, conversational** - things people actually say in BOTH languages
+  - **Smooth pronunciation** - not clunky or awkward in either language
+  - **Variety in position** - LEGO at different positions in phrase
+  - **BILINGUAL VALIDATION**: Each phrase must be:
+    - Grammatically correct in target language
+    - Grammatically correct in known language
+    - Semantically meaningful in BOTH languages
+    - Natural and idiomatic in BOTH cultures
+
+  ### CRITICAL RULE - CULMINATING LEGOs
+  **IF this is the LAST LEGO in a seed (e.g., S0123L03 is the last of S0123):**
+  - **E-phrase #1 MUST be the COMPLETE SEED PHRASE itself**
+  - This complete seed phrase should be used HEAVILY in D-phrases (3+ times)
+  - Why: The learner finally has ALL pieces to understand the full seed!
+  - Example: If S0123 = "I want to speak Italian with you now" and S0123L03 = "now",
+    then E1 must be exactly "I want to speak Italian with you now"
+
+  ## VOCABULARY SELECTION (Recency Guidelines - for LEGOs 50+)
+  **For early LEGOs (1-50):** Use whatever vocabulary is available - there's not enough yet for recency preferences.
+
+  **For later LEGOs (50+):** When building E-phrases, PREFER recent vocabulary:
+  - ~50% of vocabulary from recent seeds (N-5 to N-1)
+  - ~25% from medium-recent (N-20 to N-1)
+  - ~25% from all earlier seeds
+
+  BUT ALWAYS PRIORITIZE natural, useful phrases over strict percentages.
+
+  ## D-PHRASES (Auto-Generated Debuts)
+  You will generate D-phrases using expanding window from E-phrases:
+  - 2x 2-LEGO phrases
+  - 2x 3-LEGO phrases
+  - 2x 4-LEGO phrases
+  - 2x 5-LEGO phrases
+  ALL 5 E-phrases must contribute to D-phrases (variety is key).
+
+  **BILINGUAL SYNTAX RULES FOR D-PHRASES:**
+  - D-phrases can be fragments (don't need to be complete sentences)
+  - BUT they MUST be syntactically correct as far as they go in BOTH languages
+  - Examples:
+    - ✅ "quiero hablar" / "I want to speak" (fragment but correct in both)
+    - ✅ "español contigo" / "Spanish with you" (fragment but correct in both)
+    - ❌ "quiero de" / "I want of" (syntactically broken in both)
+    - ❌ "hablar yo" / "speak I" (wrong word order in both)
+  - Always validate BOTH the target AND known language versions
+
+  **For CULMINATING LEGOs:** Use the complete seed (E1) in at least:
+  - 1x in 2-LEGO phrases
+  - 1x in 3-LEGO phrases
+  - 1x in 4 or 5-LEGO phrases
+  This reinforces the complete seed understanding!
+
+  ## VALIDATION REQUIREMENTS
+  1. For EACH LEGO's basket:
+     - If NO valid phrases can be made: Output {"e_phrases": [], "d_phrases": {}}
+     - If only 1-2 phrases possible: Use what's available, don't force 5 phrases
+     - EVERY word MUST come from the available vocabulary list
+
+  2. NEVER use:
+     - Words from LEGOs that haven't been learned yet
+     - Words not in a LEGO (no "y", "de", "el" unless they're in a LEGO)
+     - Made-up words to fill space
+
+  3. Expected pattern for early LEGOs:
+     - LEGO #1: NO PHRASES POSSIBLE (empty basket)
+     - LEGO #2: Maybe 1 meaningful combination if semantically valid
+     - LEGO #3: 1-3 phrases depending on semantic validity
+     - Only after ~10-15 LEGOs will you have enough vocabulary for D-phrases
+     - Only after ~50-100 LEGOs will you have enough vocabulary for full E-phrase baskets
+
+  4. SEMANTIC VALIDITY RULES:
+     - All phrases must be grammatically AND semantically correct in BOTH languages
+     - Consider actual language usage and meaning
+     - Validate each combination for real-world meaningfulness
+
+  ## Output Format
+  Save to: course_folder/phase_outputs/phase_5_baskets.json
+
+  {
+    "baskets": {
+      "S####L##": {
+        "target": "[target lego]",
+        "known": "[known translation]",
+        "seed_origin": "S####",
+        "e_phrases": [
+          ["[7-10 word phrase with target LEGO]", "[translation]"],
+          ["[7-10 word phrase with target LEGO]", "[translation]"],
+          ["[7-10 word phrase with target LEGO]", "[translation]"],
+          ["[7-10 word phrase with target LEGO]", "[translation]"],
+          ["[7-10 word phrase with target LEGO]", "[translation]"]
+        ],
+        "d_phrases": {
+          "2_lego": [
+            ["[2-LEGO phrase]", "[translation]"],
+            ["[2-LEGO phrase]", "[translation]"]
+          ],
+          "3_lego": [
+            ["[3-LEGO phrase]", "[translation]"],
+            ["[3-LEGO phrase]", "[translation]"]
+          ],
+          "4_lego": [
+            ["[4-LEGO phrase]", "[translation]"],
+            ["[4-LEGO phrase]", "[translation]"]
+          ],
+          "5_lego": [
+            ["[5-LEGO phrase]", "[translation]"],
+            ["[5-LEGO phrase]", "[translation]"]
+          ]
+        }
+      }
+    }
+  }
 
   ## Success Criteria
-  ✓ All LEGOs assigned to baskets
-  ✓ Maximum edge coverage per basket
-  ✓ FCFS/utility balance maintained
-  ✓ Basket amino acids created with manifests
-  ✓ Ready for Phase 6 (introductions)
+  ✓ Every LEGO has a basket (even if empty for early LEGOs)
+  ✓ All vocabulary constraints respected
+  ✓ E-phrases are natural and conversational in BOTH languages
+  ✓ D-phrases are syntactically correct in BOTH languages
+  ✓ Culminating LEGOs include complete seed as E-phrase #1
+  ✓ Progressive difficulty from LEGO #1 to last LEGO
 
 ## Phase 6: Introductions
 
