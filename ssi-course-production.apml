@@ -925,25 +925,42 @@ PROMPT: |
   ✓ Deduplicated set created
   ✓ Original LEGOs preserved (immutable)
 
-## Phase 5: Basket Generation (d-phrases and e-phrases)
+## Phase 5: Basket Generation (Edge-Aware + d-phrases/e-phrases)
 
-NAME: "Basket Generation with Progressive Vocabulary"
-PURPOSE: Generate practice phrases (baskets) for each LEGO with vocabulary constraints
+NAME: "Basket Generation with Graph Intelligence and Progressive Vocabulary"
+PURPOSE: Select pedagogically optimal LEGO groupings, then generate practice phrases
 INPUT:
   - vfs/amino_acids/legos_deduplicated/*.json
-  - All previously learned LEGOs (progressive vocabulary)
+  - vfs/phase_outputs/phase_3.5_lego_graph.json (for edge coverage)
+  - vfs/phase_outputs/phase_2_corpus_intelligence.json (for FCFS ordering)
 OUTPUT: phase_outputs/phase_5_baskets.json
 
 BATCH_PROCESSING:
   BATCH_SIZE: 20 LEGOs per batch
   PROCESSING: Forward (LEGO 1 → last LEGO, NOT backwards)
 
-CORE_CONCEPT:
-  Each LEGO can ONLY use vocabulary from LEGOs that came before it.
-  - LEGO #1: NO vocabulary available = empty basket
-  - LEGO #2: Can only use LEGO #1 = very limited
-  - LEGO #N: Can use LEGOs #1 through #(N-1)
-  This creates natural progression where complexity builds gradually.
+TWO_STAGE_PROCESS:
+  STAGE 1 - Basket Selection (Graph-Driven):
+    - Analyze LEGO adjacency graph from Phase 3.5
+    - Select LEGOs to maximize edge coverage (pattern diversity)
+    - Follow FCFS chronological progression from Phase 2
+    - Ensure smooth difficulty progression
+    - Goal: Learners experience maximum pattern variety
+
+  STAGE 2 - Phrase Generation (Vocabulary-Constrained):
+    - For each selected LEGO, generate d-phrases and e-phrases
+    - Apply progressive vocabulary constraint
+    - Each LEGO can ONLY use vocabulary from LEGOs that came before it
+    - LEGO #1: NO vocabulary available = empty basket
+    - LEGO #2: Can only use LEGO #1 = very limited
+    - LEGO #N: Can use LEGOs #1 through #(N-1)
+    - This creates natural progression where complexity builds gradually
+
+COMBINING_BOTH_APPROACHES:
+  - Edge coverage ensures corpus patterns are reflected
+  - Progressive vocabulary ensures pedagogical soundness
+  - FCFS ordering maintains chronological appropriateness
+  - Result: Optimal learning sequence with rich practice
 
 E_PHRASES (Eternal Practice Phrases):
   - 5 phrases per LEGO
@@ -986,7 +1003,36 @@ BASKET_STRUCTURE:
   }
 
 PROMPT: |
-  # Phase 5: Basket Generation - Progressive Vocabulary Practice
+  # Phase 5: Basket Generation - Graph Intelligence + Progressive Vocabulary
+
+  ## TWO-STAGE PROCESS
+
+  ### STAGE 1: Basket Selection (Graph-Driven)
+
+  **Goal**: Select LEGO groupings that maximize pattern diversity
+
+  1. **Load Graph Intelligence**:
+     - Read: vfs/phase_outputs/phase_3.5_lego_graph.json
+     - Adjacency graph showing which LEGOs appear near each other
+     - Edge weights indicate co-occurrence frequency
+
+  2. **Load FCFS Ordering**:
+     - Read: vfs/phase_outputs/phase_2_corpus_intelligence.json
+     - Chronological ordering from corpus frequency analysis
+     - Ensures pedagogically sound sequence
+
+  3. **Select LEGOs for Each Basket** (20 LEGOs per basket):
+     - Maximize edge coverage (expose diverse patterns)
+     - Follow FCFS chronological progression
+     - Avoid redundant LEGO sequences across baskets
+     - Ensure smooth difficulty progression
+     - Balance novelty with reinforcement
+
+  **Output of Stage 1**: Ordered list of LEGOs to process
+
+  ### STAGE 2: Phrase Generation (Vocabulary-Constrained)
+
+  **Goal**: Generate d-phrases and e-phrases for each selected LEGO
 
   ## CRITICAL PER-LEGO VOCABULARY CONSTRAINTS
   **ABSOLUTE RULE**: Each LEGO has DIFFERENT available vocabulary!
@@ -999,6 +1045,8 @@ PROMPT: |
   Course folder: /Users/tomcassidy/SSi/SSi_Course_Production/vfs/courses/${targetCode}_for_${knownCode}_speakers/
 
   Read LEGOs from: vfs/amino_acids/legos_deduplicated/*.json
+  Read Graph: vfs/phase_outputs/phase_3.5_lego_graph.json
+  Read FCFS: vfs/phase_outputs/phase_2_corpus_intelligence.json
 
   ## E-PHRASES (5 Eternal Practice Phrases per LEGO)
   Create 5 phrases, each 7-10 words (balanced across 7/8/9/10):
@@ -1117,12 +1165,25 @@ PROMPT: |
   }
 
   ## Success Criteria
-  ✓ Every LEGO has a basket (even if empty for early LEGOs)
+
+  **Stage 1 (Selection):**
+  ✓ All LEGOs assigned to baskets
+  ✓ Maximum edge coverage per basket (diverse patterns)
+  ✓ FCFS/chronological ordering maintained
+  ✓ Smooth difficulty progression
+
+  **Stage 2 (Generation):**
+  ✓ Every LEGO has d-phrases and e-phrases (even if empty for early LEGOs)
   ✓ All vocabulary constraints respected
   ✓ E-phrases are natural and conversational in BOTH languages
   ✓ D-phrases are syntactically correct in BOTH languages
   ✓ Culminating LEGOs include complete seed as E-phrase #1
   ✓ Progressive difficulty from LEGO #1 to last LEGO
+
+  **Combined Result:**
+  ✓ Corpus patterns reflected through edge coverage
+  ✓ Pedagogical soundness through vocabulary constraints
+  ✓ Optimal learning sequence with rich practice
 
 ## Phase 6: Introductions
 
