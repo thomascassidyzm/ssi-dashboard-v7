@@ -77,15 +77,27 @@
           </div>
 
           <div class="mb-4">
-            <span class="text-sm font-medium text-slate-400">Structure:</span>
+            <span class="text-sm font-medium text-slate-400">Structure (BASE LEGO example):</span>
             <pre class="bg-slate-900 p-4 rounded mt-2 text-sm overflow-x-auto"><code>{
-  "provenance": "S0041L02",
-  "target_text": "Voglio parlare",
-  "known_text": "Je veux parler",
-  "type": "BASE" | "COMPOSITE",
-  "componentization": { ... },
+  "provenance": "S0041L01",
+  "target_text": "Voglio",
+  "known_text": "Je veux",
+  "type": "BASE",
   "metadata": { ... }
 }</code></pre>
+          </div>
+
+          <div class="mb-4">
+            <span class="text-sm font-medium text-slate-400">Example Breakdown:</span>
+            <div class="bg-slate-900 p-4 rounded mt-2 text-sm">
+              <p class="text-slate-300 mb-2">SEED_PAIR S0041: "I want to speak"</p>
+              <p class="text-slate-400 mb-3">Decomposes into 2 LEGO_PAIRS:</p>
+              <ul class="space-y-2 text-slate-300">
+                <li>• <strong>S0041L01:</strong> "Voglio" = "Je veux" (I want) - BASE LEGO</li>
+                <li>• <strong>S0041L02:</strong> "parlare" = "parler" (to speak) - BASE LEGO</li>
+              </ul>
+              <p class="text-emerald-400 mt-3 text-xs">✓ These 2 LEGOs tile perfectly to reconstruct the SEED_PAIR (lego_complete)</p>
+            </div>
           </div>
 
           <div class="mb-4">
