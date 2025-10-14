@@ -11,7 +11,7 @@
  *
  * Architecture: Dashboard → ngrok → automation_server → osascript → Claude Code
  *
- * Port: 3456
+ * Port: 54321
  * CORS: Enabled for Vercel domain
  * VFS: ./vfs/courses/
  */
@@ -31,7 +31,7 @@ const execAsync = promisify(exec);
 // =============================================================================
 
 const CONFIG = {
-  PORT: process.env.PORT || 3456,
+  PORT: process.env.PORT || 54321,
   VFS_ROOT: path.join(__dirname, 'vfs', 'courses'),
   TRAINING_URL: 'https://ssi-dashboard-v7.vercel.app',
 
@@ -1983,10 +1983,26 @@ app.get('/api/courses/:code/lego/:legoProvenance/basket', async (req, res) => {
 
     // Phase 5 baskets.json structure: { "baskets": { "S####L##": {...}, ... } }
     const baskets = basketsData.baskets || basketsData;
-    const basket = baskets[legoProvenance];
+    let basket = baskets[legoProvenance];
 
     if (!basket) {
       return res.status(404).json({ error: `Basket not found for LEGO ${legoProvenance}` });
+    }
+
+    // Detect and normalize basket format (backward compatibility for Italian course)
+    // Old format: has 'lego_uuid_list' property
+    // New format: has 'lego_manifest' property
+    const isLegacyFormat = basket.lego_uuid_list !== undefined;
+
+    if (isLegacyFormat) {
+      // Convert old format to new format for consistent frontend display
+      basket = {
+        ...basket,
+        lego_manifest: basket.lego_uuid_list, // Map old field to new
+        format: 'legacy'
+      };
+    } else {
+      basket = { ...basket, format: 'v7' };
     }
 
     // Calculate stats
@@ -2002,6 +2018,7 @@ app.get('/api/courses/:code/lego/:legoProvenance/basket', async (req, res) => {
       seedOrigin: basket.seed_origin,
       ePhrases: basket.e_phrases || [],
       dPhrases: basket.d_phrases || {},
+      format: basket.format, // Indicate which format was used
       stats: {
         ePhraseCount,
         dPhraseCount,
@@ -2195,6 +2212,34 @@ app.get('/api/prompts/:phase/history', async (req, res) => {
   } catch (error) {
     console.error('Error fetching prompt history:', error);
     res.status(500).json({ error: 'Failed to fetch history' });
+  }
+});
+
+/**
+ * GET /api/apml/full
+ * Return complete APML document structure
+ */
+app.get('/api/apml/full', async (req, res) => {
+  try {
+    const apmlPath = path.join(__dirname, 'ssi-course-production.apml');
+    const apmlContent = await fs.readFile(apmlPath, 'utf8');
+
+    // Parse APML structure (basic parsing - can be enhanced later)
+    const versionMatch = apmlContent.match(/VERSION:\s*([0-9.]+)/);
+    const version = versionMatch ? versionMatch[1] : '7.0.0';
+
+    const stats = await fs.stat(apmlPath);
+
+    res.json({
+      version,
+      raw_content: apmlContent,
+      file_path: apmlPath,
+      size_bytes: apmlContent.length,
+      last_modified: stats.mtime
+    });
+  } catch (error) {
+    console.error('[API] Failed to read APML:', error);
+    res.status(500).json({ error: 'Failed to read APML file' });
   }
 });
 

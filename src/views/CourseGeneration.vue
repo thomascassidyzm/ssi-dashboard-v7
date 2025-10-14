@@ -233,10 +233,9 @@ const currentPhaseIndex = computed(() => {
 const loadLanguages = async () => {
   languagesLoading.value = true
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/languages`)
-    const languages = await response.json()
-    targetLanguages.value = languages
-    knownLanguages.value = languages
+    const response = await api.get('/api/languages')
+    targetLanguages.value = response.data
+    knownLanguages.value = response.data
   } catch (error) {
     console.error('Failed to load languages:', error)
     // Fallback to basic list

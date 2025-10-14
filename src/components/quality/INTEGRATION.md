@@ -248,7 +248,7 @@ Add these to your `.env` file:
 
 ```bash
 # API Base URL
-VITE_API_BASE_URL=http://localhost:3456
+VITE_API_BASE_URL=http://localhost:54321
 
 # Or use ngrok for remote access
 # VITE_API_BASE_URL=https://your-ngrok-url.ngrok.io

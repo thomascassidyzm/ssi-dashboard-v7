@@ -11,6 +11,18 @@ const api = axios.create({
   }
 })
 
+// Add interceptor to suppress 404 errors for non-critical endpoints
+api.interceptors.response.use(
+  response => response,
+  error => {
+    // Log non-404 errors, suppress 404 for better UX
+    if (error.response?.status !== 404) {
+      console.error('[API Error]', error.message, error.response?.data)
+    }
+    return Promise.reject(error)
+  }
+)
+
 export default {
   // Health check
   async health() {
@@ -142,8 +154,15 @@ export default {
 
     // Get learned rules
     async getLearnedRules(courseCode) {
-      const response = await api.get(`/api/courses/${courseCode}/learned-rules`)
-      return response.data
+      try {
+        const response = await api.get(`/api/courses/${courseCode}/learned-rules`)
+        return response.data
+      } catch (error) {
+        if (error.response?.status === 404) {
+          return { rules: [] } // Return empty array if endpoint not implemented
+        }
+        throw error
+      }
     },
 
     // Enable/disable a learned rule
@@ -174,16 +193,30 @@ export default {
 
     // Get course health report
     async getHealthReport(courseCode) {
-      const response = await api.get(`/api/courses/${courseCode}/health`)
-      return response.data
+      try {
+        const response = await api.get(`/api/courses/${courseCode}/health`)
+        return response.data
+      } catch (error) {
+        if (error.response?.status === 404) {
+          return { health: 'unknown', message: 'Health endpoint not available' }
+        }
+        throw error
+      }
     },
 
     // Get quality trend data
     async getQualityTrend(courseCode, days = 30) {
-      const response = await api.get(`/api/courses/${courseCode}/quality/trend`, {
-        params: { days }
-      })
-      return response.data
+      try {
+        const response = await api.get(`/api/courses/${courseCode}/quality/trend`, {
+          params: { days }
+        })
+        return response.data
+      } catch (error) {
+        if (error.response?.status === 404) {
+          return { trend: [], message: 'Trend data not available' }
+        }
+        throw error
+      }
     },
 
     // Export quality report

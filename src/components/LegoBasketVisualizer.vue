@@ -102,8 +102,18 @@ curl -X POST http://localhost:54321/api/courses/{{ selectedCourse }}/regenerate-
           </div>
         </div>
 
-        <div v-if="basket.seedOrigin" class="mt-3 text-sm text-slate-500">
-          Origin: Seed {{ basket.seedOrigin }}
+        <div class="mt-3 flex items-center gap-4">
+          <div v-if="basket.seedOrigin" class="text-sm text-slate-500">
+            Origin: Seed {{ basket.seedOrigin }}
+          </div>
+          <div v-if="basket.format" class="text-xs text-slate-600">
+            <span v-if="basket.format === 'legacy'" class="bg-yellow-900/20 text-yellow-400 px-2 py-0.5 rounded">
+              Legacy Format
+            </span>
+            <span v-else class="bg-emerald-900/20 text-emerald-400 px-2 py-0.5 rounded">
+              v7 Format
+            </span>
+          </div>
         </div>
       </div>
 

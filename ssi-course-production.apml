@@ -4,8 +4,9 @@ app ssi_course_production:
   apml_version: "1.1.0"
   description: |
     Complete specification for SSi (Say Something In) language course production system.
-    This system transforms canonical seed sentences into pedagogically optimized
-    language learning courses through a 7-phase pipeline orchestrated by Claude Code agents.
+    This system transforms 668 canonical concepts (expressed in English as a reference language)
+    into pedagogically optimized language learning courses through a 7-phase pipeline
+    orchestrated by Claude Code agents.
 
   created: "2024-10-13"
   author: "Tom Cassidy / SSi Team"
@@ -26,8 +27,8 @@ app ssi_course_production:
 
 The SSi Course Production System enables:
 
-1. **Automated Course Generation** - Transform 668 canonical English sentences into
-   pedagogically optimized courses for ANY target language
+1. **Automated Course Generation** - Transform 668 canonical concepts (expressed in English)
+   into pedagogically optimized courses for ANY language direction (target + known)
 
 2. **Distributed Collaboration** - Web dashboard accessible from any computer tunnels
    to SSi Mac machine running Claude Code (Sonnet 4.5) for AI-powered generation
@@ -274,7 +275,7 @@ TOTAL_SEEDS: 668 (canonical SSi corpus)
 
 NAME: "Corpus Pre-Analysis"
 PURPOSE: Analyze source corpus to inform translation decisions
-INPUT: vfs/seeds/canonical_seeds.json (668 English seeds)
+INPUT: vfs/seeds/canonical_seeds.json (668 canonical concepts expressed in English)
 OUTPUT: vfs/phase_outputs/phase_0_intelligence.json
 
 TASKS:
@@ -298,11 +299,22 @@ Test prompt content - updated at 23:51:51
   Analyze the source corpus to generate intelligence data for pedagogical translation.
 
   ## Input
-  - Source corpus (668 canonical seed pairs)
+  - Source corpus (668 canonical concepts expressed in English)
   - Located in: vfs/seeds/canonical_seeds.json
 
   ## Your Mission
   1. Load and validate the canonical seed corpus
+
+  ## Important: What Are Canonical Seeds?
+
+  Canonical seeds are **language-agnostic foundational concepts** expressed in English
+  (only because they need to be expressed in something). They are NOT inherently English
+  language content - they are universal concepts that will be translated into BOTH:
+  - Target language (the language being learned)
+  - Known language (the learner's language)
+
+  If either target or known happens to BE English, that translation step is simply reused
+  from the canonical expression.
   2. Perform linguistic analysis:
      - Calculate word frequency distributions
      - Identify high-frequency vocabulary and grammatical patterns
@@ -379,10 +391,11 @@ TRANSLATION_ARCHITECTURE:
   Phase 1 uses a TWO-STEP translation process to ensure optimal FD_LOOP compliance:
 
   STEP 1 - Canonical → Target (Pedagogical Optimization):
-    - Start with English canonical seed
+    - Start with canonical concept (expressed in English as reference)
     - Apply all 6 pedagogical heuristics
     - Generate pedagogically optimized target language translation
     - This becomes the "source of truth"
+    - NOTE: If target language IS English, optimize the canonical expression
 
   STEP 2 - Target → Known (Back-Translation):
     - Take the optimized target translation from Step 1
@@ -392,15 +405,15 @@ TRANSLATION_ARCHITECTURE:
 
   EXAMPLES:
     Course: ita_for_eng (Italian for English speakers)
-      - Canonical: "I want to speak Italian with you now"
-      - Step 1: English → Italian (optimized): "Voglio parlare italiano con te adesso"
-      - Step 2: Italian → English: Use canonical (since canonical IS English)
+      - Canonical: "I want to speak Italian with you now" (reference language)
+      - Step 1: Canonical → Italian (optimized): "Voglio parlare italiano con te adesso"
+      - Step 2: Italian → English: Use canonical expression (since known language IS English)
 
     Course: ita_for_fra (Italian for French speakers)
-      - Canonical: "I want to speak Italian with you now"
-      - Step 1: English → Italian (optimized): "Voglio parlare italiano con te adesso"
+      - Canonical: "I want to speak Italian with you now" (reference language)
+      - Step 1: Canonical → Italian (optimized): "Voglio parlare italiano con te adesso"
       - Step 2: Italian → French: "Je veux parler italien avec toi maintenant"
-      - Note: French matches Italian structure, NOT English canonical
+      - Note: French matches Italian structure, NOT the canonical English expression
 
   WHY THIS WORKS:
     - Target is pedagogically optimized (6 heuristics applied)
@@ -418,10 +431,22 @@ All previous content maintained...
   # Phase 1: Pedagogical Translation
 
   ## Task
-  Apply 6 pedagogical heuristics to translate all 668 canonical seed pairs into optimized learning material.
+  Apply 6 pedagogical heuristics to translate all 668 canonical concepts into BOTH target
+  and known languages, creating optimized learning material.
 
   ## Input
-  - Canonical seeds: vfs/seeds/canonical_seeds.json
+  - Canonical seeds: vfs/seeds/canonical_seeds.json (668 concepts expressed in English)
+  - Target language code (e.g., "ita" for Italian)
+  - Known language code (e.g., "fra" for French)
+
+  ## Critical Understanding
+
+  Canonical seeds are **NOT English content** - they are language-agnostic concepts that
+  happen to be expressed in English as a reference. You will translate each concept into:
+  1. TARGET language (the language being learned) - pedagogically optimized
+  2. KNOWN language (the learner's language) - structurally matched to target
+
+  Exception: If target or known IS English, reuse the canonical expression (no translation needed).
   - Phase 0 intelligence: vfs/phase_outputs/phase_0_intelligence.json
 
   ## The 6 Pedagogical Heuristics
@@ -434,7 +459,7 @@ All previous content maintained...
 
   ## Your Mission
 
-For each canonical English seed:
+For each canonical concept (expressed in English as reference):
 
 1. **STEP 1: Canonical → Target (Pedagogical Optimization)**
    - Apply all 6 pedagogical heuristics
