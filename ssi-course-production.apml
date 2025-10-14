@@ -375,6 +375,39 @@ CRITICAL_RULES:
   - UUIDs are deterministic (content-based)
   - Preserve seed_id for provenance tracking
 
+TRANSLATION_ARCHITECTURE:
+  Phase 1 uses a TWO-STEP translation process to ensure optimal FD_LOOP compliance:
+
+  STEP 1 - Canonical → Target (Pedagogical Optimization):
+    - Start with English canonical seed
+    - Apply all 6 pedagogical heuristics
+    - Generate pedagogically optimized target language translation
+    - This becomes the "source of truth"
+
+  STEP 2 - Target → Known (Back-Translation):
+    - Take the optimized target translation from Step 1
+    - Translate it into the known language
+    - Ensure known translation MATCHES target's structure
+    - This creates better FD_LOOP compliance (target ↔ known alignment)
+
+  EXAMPLES:
+    Course: ita_for_eng (Italian for English speakers)
+      - Canonical: "I want to speak Italian with you now"
+      - Step 1: English → Italian (optimized): "Voglio parlare italiano con te adesso"
+      - Step 2: Italian → English: Use canonical (since canonical IS English)
+
+    Course: ita_for_fra (Italian for French speakers)
+      - Canonical: "I want to speak Italian with you now"
+      - Step 1: English → Italian (optimized): "Voglio parlare italiano con te adesso"
+      - Step 2: Italian → French: "Je veux parler italien avec toi maintenant"
+      - Note: French matches Italian structure, NOT English canonical
+
+  WHY THIS WORKS:
+    - Target is pedagogically optimized (6 heuristics applied)
+    - Known translation mirrors target structure (easier LEGO mapping)
+    - FD_LOOP more reliable (target ↔ known designed to align)
+    - Works for ANY language pair combination
+
 PROMPT: |
 # Phase 1: Pedagogical Translation
 
@@ -400,13 +433,34 @@ All previous content maintained...
   6. **Utility**: Maximize teaching value (versatile phrases, reusable structures)
 
   ## Your Mission
-  For each seed:
-  1. Apply all 6 heuristics to create pedagogically optimized translation
-  2. Generate deterministic UUID: hash(source + target + metadata)
-  3. Store as translation amino acid JSON:
-     - UUID as filename
-     - Content: { source, target, seed_id, heuristics_applied, metadata }
-  4. Save to: vfs/amino_acids/translations/{uuid}.json
+
+For each canonical English seed:
+
+1. **STEP 1: Canonical → Target (Pedagogical Optimization)**
+   - Apply all 6 pedagogical heuristics
+   - Generate optimized target language translation
+   - Validate: Natural, high-frequency, clear, brief, consistent, useful
+
+2. **STEP 2: Target → Known (Back-Translation)**
+   - Take the optimized target translation
+   - Translate to known language
+   - Ensure known translation MATCHES target structure
+   - Goal: Known ↔ Target alignment for better FD_LOOP
+
+3. **Generate Amino Acid**
+   - Deterministic UUID: hash(source + target + metadata)
+   - Store as: vfs/amino_acids/translations/{uuid}.json
+   - Content: { source, target, seed_id, heuristics_applied, metadata }
+
+IMPORTANT: For courses where known=English (e.g., ita_for_eng):
+- Step 1 produces optimized target
+- Step 2 can reuse canonical English (it's already the known language)
+- But verify the English phrasing aligns with target structure
+
+For courses where known≠English (e.g., ita_for_fra):
+- Step 1 produces optimized Italian
+- Step 2 MUST translate Italian → French (NOT English → French)
+- This ensures French mirrors Italian structure
 
   ## Critical Rules
   - Translations are NOT literal - they are pedagogically optimized
@@ -1646,6 +1700,7 @@ LOCAL_AUTOMATION:
 VERSION: 7.2.0
 DATE: 2025-10-13
 CHANGES:
+  - Clarified Phase 1 two-step translation architecture (canonical→target→known)
   - Clarified IRON RULE: infinitive "to" is NOT a preposition (explicitly allowed)
   - Updated Phase 5 prompt with CRITICAL e-phrase length requirements (7-10 words)
   - Added UNFORGIVEABLE target language grammar validation
