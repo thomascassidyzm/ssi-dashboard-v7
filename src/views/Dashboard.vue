@@ -163,17 +163,6 @@
           <p class="text-slate-400 mb-6">Detailed instructions for each phase of course production:</p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- Phase 0 -->
-            <router-link to="/phase/0" class="flex items-center gap-3 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center font-bold text-slate-900">
-                0
-              </div>
-              <div>
-                <h3 class="font-semibold text-slate-100">Corpus Pre-Analysis</h3>
-                <p class="text-sm text-slate-400">Translation intelligence</p>
-              </div>
-            </router-link>
-
             <!-- Phase 1 -->
             <router-link to="/phase/1" class="flex items-center gap-3 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center font-bold text-slate-900">
@@ -181,7 +170,7 @@
               </div>
               <div>
                 <h3 class="font-semibold text-slate-100">Pedagogical Translation</h3>
-                <p class="text-sm text-slate-400">6 heuristics optimization</p>
+                <p class="text-sm text-slate-400">Generate SEED_PAIRS</p>
               </div>
             </router-link>
 

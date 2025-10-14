@@ -348,93 +348,11 @@ TOTAL_SEEDS: 668 (canonical SSi corpus)
 # PHASE SPECIFICATIONS
 # =============================================================================
 
-## Phase 0: Corpus Pre-Analysis
-
-NAME: "Corpus Pre-Analysis"
-PURPOSE: Analyze source corpus to inform translation decisions
-INPUT: vfs/seeds/canonical_seeds.json (668 canonical concepts expressed in English)
-OUTPUT: vfs/phase_outputs/phase_0_intelligence.json
-
-TASKS:
-  1. Calculate word frequency distributions
-  2. Identify high-frequency vocabulary and patterns
-  3. Assess translation complexity (cognates, false friends)
-  4. Map grammatical dependencies and prerequisites
-  5. Generate intelligence report for Phase 1 heuristics
-
-CRITICAL_NOTES:
-  - Does NOT modify corpus - analysis only
-  - Informs Phase 1's 6 pedagogical heuristics
-  - Consider learner perspective (what's easy/hard)
-
-PROMPT: |
-Test prompt content - updated at 23:51:51
-
-  # Phase 0: Corpus Pre-Analysis
-
-  ## Task
-  Analyze the source corpus to generate intelligence data for pedagogical translation.
-
-  ## Input
-  - Source corpus (668 canonical concepts expressed in English)
-  - Located in: vfs/seeds/canonical_seeds.json
-
-  ## Your Mission
-  1. Load and validate the canonical seed corpus
-
-  ## Important: What Are Canonical Seeds?
-
-  Canonical seeds are **language-agnostic foundational concepts** expressed in English
-  (only because they need to be expressed in something). They are NOT inherently English
-  language content - they are universal concepts that will be translated into BOTH:
-  - Target language (the language being learned)
-  - Known language (the learner's language)
-
-  If either target or known happens to BE English, that translation step is simply reused
-  from the canonical expression.
-  2. Perform linguistic analysis:
-     - Calculate word frequency distributions
-     - Identify high-frequency vocabulary and grammatical patterns
-     - Assess translation complexity (cognates, false friends, structural challenges)
-     - Map grammatical dependencies and prerequisite knowledge
-  3. Generate intelligence report with:
-     - Frequency rankings for words and phrases
-     - Complexity scores for each seed
-     - Translation guidance notes (tricky structures, idioms, etc.)
-     - Recommendations for Phase 1 heuristic application
-
-  ## Output Format
-  Store results as JSON:
-  vfs/phase_outputs/phase_0_intelligence.json
-
-  Structure:
-  {
-    "frequency_analysis": { ... },
-    "complexity_scores": { ... },
-    "translation_guidance": { ... },
-    "recommendations": { ... }
-  }
-
-  ## Important Notes
-  - DO NOT modify the source corpus - analysis only
-  - Focus on patterns that affect pedagogical decisions
-  - This intelligence informs Phase 1's 6 heuristics
-  - Consider learner perspective (what's easy/hard to learn)
-
-  ## Success Criteria
-  ✓ All 668 seeds analyzed
-  ✓ Intelligence report generated
-  ✓ Frequency rankings accurate
-  ✓ Complexity assessments complete
-  ✓ Ready for Phase 1 consumption
-
 ## Phase 1: Pedagogical Translation
 
 NAME: "Pedagogical Translation"
 PURPOSE: Apply 6 pedagogical heuristics to create optimal learning translations
-INPUT:
-  - vfs/seeds/canonical_seeds.json
-  - vfs/phase_outputs/phase_0_intelligence.json
+INPUT: vfs/seeds/canonical_seeds.json
 OUTPUT: vfs/amino_acids/translations/{uuid}.json (668 translation amino acids)
 
 THE_6_HEURISTICS:
@@ -524,7 +442,6 @@ All previous content maintained...
   2. KNOWN language (the learner's language) - structurally matched to target
 
   Exception: If target or known IS English, reuse the canonical expression (no translation needed).
-  - Phase 0 intelligence: vfs/phase_outputs/phase_0_intelligence.json
 
   ## The 6 Pedagogical Heuristics
   1. **Naturalness**: Target language should sound native, not transliterated
@@ -586,15 +503,15 @@ For courses where known≠English (e.g., ita_for_fra):
 
 NAME: "Corpus Intelligence"
 PURPOSE: Map FCFS chronological order and calculate utility scores
-INPUT:
-  - vfs/amino_acids/translations/*.json
-  - vfs/phase_outputs/phase_0_intelligence.json
+INPUT: vfs/amino_acids/translations/*.json
 OUTPUT: vfs/phase_outputs/phase_2_corpus_intelligence.json
 
-FCFS_DEFINITION: First-Can-First-Say
-  - Identifies chronological learning order
-  - Maps prerequisite dependencies (word A requires word B)
-  - Establishes natural learning progression
+FCFS_DEFINITION: First-Can-First-Say (Semantic Priority)
+  - The first word/LEGO to teach a concept CLAIMS that meaning as a BASE LEGO
+  - Later words with overlapping meanings must be taught in more specific contexts
+  - Example: "estoy" appears first → claims "I am" as BASE
+              "soy" appears later → taught as "I am (permanent)" in context like "soy profesor"
+  - Establishes which LEGOs get semantic priority in the teaching sequence
 
 UTILITY_SCORING:
   FORMULA: Frequency × Versatility × Simplicity
@@ -616,13 +533,16 @@ PROMPT: |
 
   ## Input
   - Translation amino acids: vfs/amino_acids/translations/*.json
-  - Phase 0 intelligence: vfs/phase_outputs/phase_0_intelligence.json
 
   ## Your Mission
-  1. **FCFS Mapping**: Determine chronological teaching order
-     - Identify prerequisite knowledge (what must be learned first)
-     - Map dependency chains (word A requires word B)
-     - Establish natural learning progression
+  1. **FCFS Mapping** (First-Can-First-Say - Semantic Priority):
+     - Determine which words/LEGOs appear first in the teaching sequence
+     - The FIRST word to teach a concept CLAIMS that meaning as a BASE LEGO
+     - Later words with overlapping meanings must be taught in more specific contexts
+     - Example: If "estoy" = "I am" appears before "soy" = "I am", then:
+       * "estoy" claims "I am" as its BASE meaning
+       * "soy" must be taught differently (e.g., "soy profesor" = "I am a teacher (permanent)")
+     - Map semantic priority: which word gets to "own" each core meaning
 
   2. **Utility Scoring**: Calculate pedagogical value
      - Formula: Frequency × Versatility × Simplicity
