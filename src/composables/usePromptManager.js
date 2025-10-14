@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import api from '../services/api'
+import { baseURL } from '../services/api'
 
 export function usePromptManager(phaseId) {
   const prompt = ref('')
@@ -14,7 +14,7 @@ export function usePromptManager(phaseId) {
     error.value = null
 
     try {
-      const response = await fetch(`${api.defaults.baseURL}/api/prompts/${phaseId}`)
+      const response = await fetch(`${baseURL}/api/prompts/${phaseId}`)
       const data = await response.json()
 
       if (response.ok) {
@@ -42,7 +42,7 @@ export function usePromptManager(phaseId) {
     error.value = null
 
     try {
-      const response = await fetch(`${api.defaults.baseURL}/api/prompts/${phaseId}`, {
+      const response = await fetch(`${baseURL}/api/prompts/${phaseId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -11,6 +11,9 @@ const api = axios.create({
   }
 })
 
+// Export baseURL for components that need direct fetch access
+export const baseURL = API_BASE_URL
+
 // Add interceptor to suppress 404 errors for non-critical endpoints
 api.interceptors.response.use(
   response => response,
