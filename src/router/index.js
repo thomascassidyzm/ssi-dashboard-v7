@@ -7,6 +7,7 @@ import APMLSpec from '../views/APMLSpec.vue'
 import CourseGeneration from '../views/CourseGeneration.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
+import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 
 // Quality Review Components
 import QualityDashboard from '../components/quality/QualityDashboard.vue'
@@ -61,6 +62,12 @@ const routes = [
     path: '/reference/apml',
     name: 'APMLSpec',
     component: APMLSpec
+  },
+  {
+    path: '/reference/terminology',
+    name: 'TerminologyGlossary',
+    component: TerminologyGlossary,
+    meta: { title: 'Terminology Glossary' }
   },
 
   // Quality Review Routes

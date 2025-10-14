@@ -1464,12 +1464,86 @@ app.get('/api/courses', async (req, res) => {
       const coursePath = path.join(CONFIG.VFS_ROOT, dir);
       const stats = await fs.stat(coursePath);
 
-      if (stats.isDirectory()) {
+      if (stats.isDirectory() && dir !== '.DS_Store') {
         const metadataPath = path.join(coursePath, 'course_metadata.json');
+        const aminoAcidsPath = path.join(coursePath, 'amino_acids');
 
-        if (await fs.pathExists(metadataPath)) {
-          const metadata = await fs.readJson(metadataPath);
-          courses.push(metadata);
+        // Check if this is a valid course directory (has amino_acids folder)
+        if (await fs.pathExists(aminoAcidsPath)) {
+          if (await fs.pathExists(metadataPath)) {
+            // Has metadata - use it
+            const metadata = await fs.readJson(metadataPath);
+
+            // Add computed fields for new terminology
+            // Handle both amino_acids and amino_acids_count field names
+            const aminoData = metadata.amino_acids || metadata.amino_acids_count || {};
+            metadata.seed_pairs = aminoData.translations || 0;
+            metadata.lego_pairs = aminoData.legos_deduplicated || 0;
+            metadata.lego_baskets = aminoData.baskets || 0;
+            metadata.lego_introductions = aminoData.introductions || 0;
+
+            courses.push(metadata);
+          } else {
+            // No metadata - generate basic info from directory scan
+            console.log(`[API] Course ${dir} missing metadata - generating basic info`);
+
+            // Parse course code for language info
+            const match = dir.match(/^([a-z]{3})_for_([a-z]{3})_(\d+)seeds$/);
+            const targetLang = match ? match[1] : 'unknown';
+            const knownLang = match ? match[2] : 'unknown';
+            const seedCount = match ? parseInt(match[3]) : 0;
+
+            // Count amino acids
+            const translationsDir = path.join(aminoAcidsPath, 'translations');
+            const legosDir = path.join(aminoAcidsPath, 'legos_deduplicated');
+            const basketsDir = path.join(aminoAcidsPath, 'baskets');
+            const introsDir = path.join(aminoAcidsPath, 'introductions');
+
+            const translationsCount = await fs.pathExists(translationsDir) ? (await fs.readdir(translationsDir)).filter(f => f.endsWith('.json')).length : 0;
+            const legosCount = await fs.pathExists(legosDir) ? (await fs.readdir(legosDir)).filter(f => f.endsWith('.json')).length : 0;
+            const basketsCount = await fs.pathExists(basketsDir) ? (await fs.readdir(basketsDir)).filter(f => f.endsWith('.json')).length : 0;
+            const introsCount = await fs.pathExists(introsDir) ? (await fs.readdir(introsDir)).filter(f => f.endsWith('.json')).length : 0;
+
+            // Determine status based on what exists
+            let status = 'unknown';
+            let phases_completed = [];
+            if (translationsCount > 0) {
+              phases_completed.push('1');
+              status = 'ready_for_phase_2';
+            }
+            if (legosCount > 0) {
+              phases_completed.push('3');
+              status = 'ready_for_phase_4';
+            }
+            if (basketsCount > 0) {
+              phases_completed.push('5');
+              status = 'ready_for_phase_6';
+            }
+
+            courses.push({
+              course_code: dir,
+              source_language: knownLang.toUpperCase(),
+              target_language: targetLang.toUpperCase(),
+              total_seeds: seedCount,
+              version: '1.0',
+              created_at: (await fs.stat(coursePath)).birthtime.toISOString(),
+              status: status,
+              amino_acids: {
+                translations: translationsCount,
+                legos: 0,
+                legos_deduplicated: legosCount,
+                baskets: basketsCount,
+                introductions: introsCount
+              },
+              // Computed fields for new terminology
+              seed_pairs: translationsCount,
+              lego_pairs: legosCount,
+              lego_baskets: basketsCount,
+              lego_introductions: introsCount,
+              phases_completed: phases_completed,
+              needs_metadata: true
+            });
+          }
         }
       }
     }
@@ -1888,8 +1962,50 @@ app.get('/api/visualization/phrases/:code', async (req, res) => {
 // =============================================================================
 
 /**
+ * Helper: Calculate lego_complete status and known language alignment
+ */
+function calculateLegoAlignment(targetText, sourceText, targetLegos) {
+  // Split texts into words
+  const targetWords = targetText.split(/\s+/).filter(w => w.length > 0);
+  const sourceWords = sourceText.split(/\s+/).filter(w => w.length > 0);
+
+  // Calculate target word coverage
+  let targetWordsCovered = 0;
+  const legoPairs = [];
+
+  for (const lego of targetLegos) {
+    const legoWords = lego.text.split(/\s+/).filter(w => w.length > 0);
+    targetWordsCovered += legoWords.length;
+
+    // For now, we'll create a simple proportional alignment for known language
+    // This is a placeholder - proper alignment would need linguistic analysis
+    const startIdx = Math.floor((lego.position - 1) * sourceWords.length / targetLegos.length);
+    const endIdx = Math.floor(lego.position * sourceWords.length / targetLegos.length);
+    const knownWords = sourceWords.slice(startIdx, endIdx);
+
+    legoPairs.push({
+      uuid: lego.uuid,
+      lego_id: lego.provenance,
+      target: lego.text,
+      known: knownWords.join(' '),
+      target_words: legoWords,
+      known_words: knownWords,
+      position: lego.position,
+      word_count: lego.word_count,
+      pedagogical_score: lego.pedagogical_score
+    });
+  }
+
+  // Check if all target words are covered
+  const lego_complete = targetWordsCovered === targetWords.length;
+
+  return { legoPairs, lego_complete };
+}
+
+/**
  * GET /api/courses/:code/seed-lego-breakdown?limit=30
  * Returns multiple seeds with their LEGO breakdowns for tiling visualization
+ * Now includes known language alignment and lego_complete validation
  */
 app.get('/api/courses/:code/seed-lego-breakdown', async (req, res) => {
   try {
@@ -1942,12 +2058,16 @@ app.get('/api/courses/:code/seed-lego-breakdown', async (req, res) => {
       const sourceText = translation.source || translation.english || translation.source_english;
       const targetText = translation.target || translation.translation || translation.target_italian || translation.target_spanish;
 
+      // Calculate lego_complete and known language alignment
+      const { legoPairs, lego_complete } = calculateLegoAlignment(targetText, sourceText, seedLegos);
+
       seeds.push({
         uuid: translation.uuid,
         seed_id: translation.seed_id || translation.uuid.substring(0, 4),
         source: sourceText,
         target: targetText,
-        legos: seedLegos,
+        lego_pairs: legoPairs,
+        lego_complete,
         quality_score: translation.metadata?.lego_extraction?.quality_score || translation.quality_score || 0
       });
     }
@@ -1962,6 +2082,88 @@ app.get('/api/courses/:code/seed-lego-breakdown', async (req, res) => {
   } catch (err) {
     console.error('[API] Error loading seed-lego breakdown:', err);
     res.status(500).json({ error: 'Failed to load seed-lego breakdown', details: err.message });
+  }
+});
+
+/**
+ * PUT /api/courses/:code/seeds/:seedId/lego-breakdown
+ * Updates the LEGO breakdown for a specific seed
+ * Body: { lego_pairs: [{ target: "...", known: "..." }, ...] }
+ */
+app.put('/api/courses/:code/seeds/:seedId/lego-breakdown', async (req, res) => {
+  try {
+    const { code, seedId } = req.params;
+    const { lego_pairs } = req.body;
+
+    if (!lego_pairs || !Array.isArray(lego_pairs)) {
+      return res.status(400).json({ error: 'lego_pairs array is required' });
+    }
+
+    console.log(`[API] Updating LEGO breakdown for seed ${seedId} in course ${code}`);
+
+    // Find the translation file
+    const translationsPath = path.join(CONFIG.VFS_ROOT, code, 'phase_outputs', 'phase_1_translations');
+    const files = await fs.readdir(translationsPath);
+    const translationFile = files.find(f => f.includes(seedId));
+
+    if (!translationFile) {
+      return res.status(404).json({ error: `Seed ${seedId} not found` });
+    }
+
+    const filePath = path.join(translationsPath, translationFile);
+    const translation = await fs.readJson(filePath);
+
+    // Get seed_id for provenance labels
+    const seedNum = translation.seed_id || translation.uuid.substring(0, 4);
+
+    // Convert lego_pairs to LEGO extraction format with provenance
+    const updatedLegos = lego_pairs.map((pair, index) => {
+      const position = index + 1;
+      const provenance = `S${String(seedNum).padStart(4, '0')}L${String(position).padStart(2, '0')}`;
+
+      return {
+        uuid: `${translation.uuid}-L${position}`,
+        text: pair.target,
+        known: pair.known,
+        provenance,
+        position,
+        word_count: pair.target.split(/\s+/).filter(w => w.length > 0).length,
+        pedagogical_score: 50 // Default score
+      };
+    });
+
+    // Update translation metadata
+    if (!translation.metadata) translation.metadata = {};
+    if (!translation.metadata.lego_extraction) translation.metadata.lego_extraction = {};
+
+    translation.metadata.lego_extraction.legos = updatedLegos;
+    translation.metadata.lego_extraction.manually_edited = true;
+    translation.metadata.lego_extraction.edited_at = new Date().toISOString();
+    translation.metadata.lego_extraction.quality_score = 10; // Full score for manual edits
+
+    // Save updated translation
+    await fs.writeJson(filePath, translation, { spaces: 2 });
+
+    console.log(`[API] Saved ${updatedLegos.length} LEGOs for seed ${seedNum}`);
+
+    // Return success with updated breakdown
+    const { legoPairs, lego_complete } = calculateLegoAlignment(
+      translation.target_text,
+      translation.source_text,
+      updatedLegos
+    );
+
+    res.json({
+      success: true,
+      seed_id: seedNum,
+      lego_pairs: legoPairs,
+      lego_complete,
+      message: 'LEGO breakdown updated successfully'
+    });
+
+  } catch (err) {
+    console.error('[API] Error updating LEGO breakdown:', err);
+    res.status(500).json({ error: 'Failed to update LEGO breakdown', details: err.message });
   }
 });
 

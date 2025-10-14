@@ -287,6 +287,15 @@
                 <p class="text-sm text-slate-400">Complete architectural specification with amino acid storage model</p>
               </div>
             </router-link>
+
+            <!-- Terminology Glossary -->
+            <router-link to="/reference/terminology" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
+              <div class="text-3xl">📖</div>
+              <div>
+                <h3 class="font-semibold text-slate-100">Terminology Glossary</h3>
+                <p class="text-sm text-slate-400">SEED_PAIRS, LEGO_PAIRS, LEGO_BASKETS - single source of truth for all terminology</p>
+              </div>
+            </router-link>
           </div>
         </div>
       </section>

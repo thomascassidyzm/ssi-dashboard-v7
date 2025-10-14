@@ -202,13 +202,13 @@ let pollInterval = null
 // Phase names for UI
 const phaseNames = [
   { id: 0, name: 'Phase 0: Corpus Pre-Analysis' },
-  { id: 1, name: 'Phase 1: Pedagogical Translation' },
+  { id: 1, name: 'Phase 1: Generate SEED_PAIRS' },
   { id: 2, name: 'Phase 2: Corpus Intelligence' },
-  { id: 3, name: 'Phase 3: LEGO Extraction' },
-  { id: 4, name: 'Phase 3.5: Graph Construction' },
-  { id: 5, name: 'Phase 4: Deduplication' },
-  { id: 6, name: 'Phase 5: Pattern-Aware Baskets' },
-  { id: 7, name: 'Phase 6: Introductions' },
+  { id: 3, name: 'Phase 3: Extract LEGO_PAIRS' },
+  { id: 4, name: 'Phase 3.5: LEGO Graph Construction' },
+  { id: 5, name: 'Phase 4: LEGO Deduplication' },
+  { id: 6, name: 'Phase 5: Generate LEGO_BASKETS' },
+  { id: 7, name: 'Phase 6: Generate LEGO_INTRODUCTIONS' },
   { id: 8, name: 'Compilation' }
 ]
 

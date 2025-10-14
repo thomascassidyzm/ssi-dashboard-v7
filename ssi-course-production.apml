@@ -200,26 +200,103 @@ You are part of a **self-improving system**. Your role is to help guide its evol
 # VARIABLE REGISTRY (Single Source of Truth)
 # =============================================================================
 
-## Core Concepts
+## Domain Concepts (User-Facing)
 
-### Amino Acids
+### SEED_PAIRS
+PURPOSE: Pedagogically optimized translations of canonical seeds
+DEFINITION: Translation of a canonical seed into BOTH target AND known languages
+REFERENCE_FORMAT: S0001 to S0668 (S + 4-digit number)
+STRUCTURE:
+  {
+    "seed_id": "S0041",
+    "canonical_english": "I want to speak",
+    "target_language": "Voglio parlare",
+    "known_language": "Je veux parler",
+    "metadata": { ... }
+  }
+KEY_PROPERTIES:
+  - Total: 668 per course
+  - Language-direction specific (ita_for_fra has different SEED_PAIRS than ita_for_eng)
+  - Must be "lego_complete" - decomposes into LEGO_PAIRS that tile back perfectly
+PHASE: Phase 1 (Pedagogical Translation)
+STORAGE: vfs/courses/{course_code}/amino_acids/translations/
+
+### LEGO_PAIRS
+PURPOSE: Forward-deterministic teaching units extracted from SEED_PAIRS
+DEFINITION: A LEGO cannot exist unless it has BOTH target and known languages mapped
+REFERENCE_FORMAT: S0041L02 (seed reference + L + position)
+STRUCTURE:
+  {
+    "provenance": "S0041L02",
+    "target_text": "Voglio parlare",
+    "known_text": "Je veux parler",
+    "type": "BASE" | "COMPOSITE",
+    "componentization": { ... },
+    "metadata": { ... }
+  }
+KEY_PROPERTIES:
+  - Course-specific AND language-direction specific
+  - Must pass FD_LOOP test (target → known → target = IDENTICAL)
+  - Two types:
+    * BASE LEGO: Atomic, cannot be decomposed further
+    * COMPOSITE LEGO: Contains BASE LEGOs + glue words, needs componentization
+  - Count: ~2000-3000 per course
+PHASE: Phase 3 (LEGO Decomposition)
+STORAGE: vfs/courses/{course_code}/amino_acids/legos_deduplicated/
+
+### LEGO_BASKETS
+PURPOSE: Complete set of practice phrases associated with ONE LEGO_PAIR
+DEFINITION: One basket per LEGO_PAIR (1:1 relationship)
+STRUCTURE:
+  {
+    "lego_pair_id": "S0041L02",
+    "debut_phrases": [ ... ],    // Up to 8 d-phrases
+    "eternal_phrases": [ ... ],  // Up to 5 e-phrases
+    "metadata": { ... }
+  }
+KEY_PROPERTIES:
+  - DEBUT_PHRASES (d-phrases): Up to 8 phrases, progressive vocabulary only
+  - ETERNAL_PHRASES (e-phrases): Up to 5 phrases, 7-10 words, perfect target grammar
+  - Count: Matches LEGO_PAIRS count (if 2341 LEGO_PAIRS → 2341 LEGO_BASKETS)
+PHASE: Phase 5 (Basket Generation)
+STORAGE: vfs/courses/{course_code}/amino_acids/baskets/
+
+### LEGO_INTRODUCTIONS
+PURPOSE: Intelligence about LEGO type (BASE vs COMPOSITE) and componentization
+DEFINITION: Pedagogical explanation of how LEGO breaks down into components
+STRUCTURE:
+  {
+    "lego_pair_id": "S0041L02",
+    "type": "BASE" | "COMPOSITE",
+    "feeders": [ ... ],  // For COMPOSITE LEGOs
+    "componentization": { "explanation": "..." }
+  }
+KEY_PROPERTIES:
+  - Explains BASE vs COMPOSITE distinction
+  - For COMPOSITE LEGOs: shows how they break down into FEEDERs
+PHASE: Phase 6 (Introductions)
+STORAGE: vfs/courses/{course_code}/amino_acids/introductions/
+
+## Technical Architecture (Implementation Details)
+
+### Amino Acids (Storage Layer)
 PURPOSE: Immutable components with deterministic UUIDs
-DEFINITION: Each phase output is an "amino acid" - a discrete, content-addressed component
+DEFINITION: All phase outputs are stored as "amino acids" - discrete, content-addressed components
 UUID_GENERATION: hash(content + metadata) - ensures same content always gets same ID
 IMMUTABILITY: Edits create NEW amino acids with updated provenance, never modify originals
 PROVENANCE: S{seed}L{position} format tracks birth-parent relationships
+NOTE: This is an implementation detail - users see SEED_PAIRS, LEGO_PAIRS, LEGO_BASKETS
 
 ### VFS (Virtual File System)
 PURPOSE: Organized storage for all course generation artifacts
-BASE_PATH: /Users/tomcassidy/SSi/SSi_Course_Production/vfs/courses/
-STRUCTURE: {target_code}_for_{known_code}_speakers/
+BASE_PATH: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/
+STRUCTURE: {target_code}_for_{known_code}_{seed_count}seeds/
 SUBDIRS:
-  - amino_acids/translations/
-  - amino_acids/legos/
-  - amino_acids/legos_deduplicated/
-  - amino_acids/baskets/
-  - amino_acids/introductions/
-  - phase_outputs/
+  - amino_acids/translations/ (stores SEED_PAIRS)
+  - amino_acids/legos_deduplicated/ (stores LEGO_PAIRS)
+  - amino_acids/baskets/ (stores LEGO_BASKETS)
+  - amino_acids/introductions/ (stores LEGO_INTRODUCTIONS)
+  - phase_outputs/ (intermediate files)
   - proteins/ (compiled manifests)
 
 ### Course Codes
