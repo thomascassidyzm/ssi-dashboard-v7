@@ -1570,7 +1570,7 @@ app.put('/api/courses/:courseCode/translations/:uuid', async (req, res) => {
 app.get('/api/visualization/legos/:code', async (req, res) => {
   try {
     const { code } = req.params;
-    const legosDir = path.join(CONFIG.VFS_ROOT, code, 'amino_acids', 'legos_deduplicated');
+    const legosDir = path.join(CONFIG.VFS_ROOT, code, 'amino_acids', 'legos');
 
     if (!await fs.pathExists(legosDir)) {
       return res.status(404).json({ error: 'LEGOs not found for this course' });
