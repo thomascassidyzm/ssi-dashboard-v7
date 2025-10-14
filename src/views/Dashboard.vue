@@ -275,7 +275,7 @@
               <div class="text-3xl">🌱</div>
               <div>
                 <h3 class="font-semibold text-slate-100">Canonical Seeds</h3>
-                <p class="text-sm text-slate-400">All 574 canonical seed pairs (16 years empirical optimization)</p>
+                <p class="text-sm text-slate-400">All 668 canonical seeds (16 years empirical optimization)</p>
               </div>
             </router-link>
 

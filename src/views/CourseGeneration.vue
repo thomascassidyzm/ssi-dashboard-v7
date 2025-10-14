@@ -31,14 +31,17 @@
             </label>
             <select
               v-model="knownLanguage"
+              :disabled="languagesLoading"
               class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
             >
-              <option value="eng">English (eng)</option>
-              <option value="spa">Spanish (spa)</option>
-              <option value="fra">French (fra)</option>
-              <option value="deu">German (deu)</option>
-              <option value="ita">Italian (ita)</option>
-              <option value="por">Portuguese (por)</option>
+              <option value="" disabled>{{ languagesLoading ? 'Loading...' : 'Select known language' }}</option>
+              <option
+                v-for="lang in knownLanguages"
+                :key="lang.code"
+                :value="lang.code"
+              >
+                {{ lang.name }} ({{ lang.code }}) - {{ lang.native }}
+              </option>
             </select>
           </div>
 
@@ -49,18 +52,17 @@
             </label>
             <select
               v-model="targetLanguage"
+              :disabled="languagesLoading"
               class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
             >
-              <option value="gle">Irish Gaeilge (gle)</option>
-              <option value="cym">Welsh Cymraeg (cym)</option>
-              <option value="ita">Italian (ita)</option>
-              <option value="spa">Spanish (spa)</option>
-              <option value="fra">French (fra)</option>
-              <option value="deu">German (deu)</option>
-              <option value="nld">Dutch (nld)</option>
-              <option value="nor">Norwegian (nor)</option>
-              <option value="swe">Swedish (swe)</option>
-              <option value="mkd">Macedonian (mkd)</option>
+              <option value="" disabled>{{ languagesLoading ? 'Loading...' : 'Select target language' }}</option>
+              <option
+                v-for="lang in targetLanguages"
+                :key="lang.code"
+                :value="lang.code"
+              >
+                {{ lang.name }} ({{ lang.code }}) - {{ lang.native }}
+              </option>
             </select>
           </div>
         </div>
@@ -74,10 +76,10 @@
             v-model.number="seedCount"
             type="number"
             min="1"
-            max="574"
+            max="668"
             class="w-full md:w-64 bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
           />
-          <p class="mt-2 text-sm text-slate-400">Default: 574 (full SSi course)</p>
+          <p class="mt-2 text-sm text-slate-400">Default: 668 (full canonical corpus)</p>
         </div>
 
         <!-- Generate Button -->
@@ -176,13 +178,17 @@
 </template>
 
 <script setup>
-import { ref, computed, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import api from '../services/api'
 
 // State
 const knownLanguage = ref('eng')
 const targetLanguage = ref('gle')
-const seedCount = ref(574)
+const seedCount = ref(668)
+
+const targetLanguages = ref([])
+const knownLanguages = ref([])
+const languagesLoading = ref(false)
 
 const isGenerating = ref(false)
 const isCompleted = ref(false)
@@ -223,6 +229,32 @@ const currentPhaseIndex = computed(() => {
 })
 
 // Methods
+// Fetch languages from API
+const loadLanguages = async () => {
+  languagesLoading.value = true
+  try {
+    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/languages`)
+    const languages = await response.json()
+    targetLanguages.value = languages
+    knownLanguages.value = languages
+  } catch (error) {
+    console.error('Failed to load languages:', error)
+    // Fallback to basic list
+    const fallback = [
+      { code: 'eng', name: 'English', native: 'English' },
+      { code: 'ita', name: 'Italian', native: 'Italiano' },
+      { code: 'spa', name: 'Spanish', native: 'Español' },
+      { code: 'fra', name: 'French', native: 'Français' },
+      { code: 'cym', name: 'Welsh', native: 'Cymraeg' },
+      { code: 'gle', name: 'Irish', native: 'Gaeilge' }
+    ]
+    targetLanguages.value = fallback
+    knownLanguages.value = fallback
+  } finally {
+    languagesLoading.value = false
+  }
+}
+
 const startGeneration = async () => {
   try {
     errorMessage.value = ''
@@ -289,6 +321,11 @@ const startNew = () => {
 const viewCourse = () => {
   alert(`Course files saved to: vfs/courses/${courseCode.value}`)
 }
+
+// Lifecycle hooks
+onMounted(async () => {
+  await loadLanguages()
+})
 
 // Cleanup
 onUnmounted(() => {

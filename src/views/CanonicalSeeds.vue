@@ -11,7 +11,7 @@
           Canonical Seeds
         </h1>
         <p class="mt-2 text-slate-400">
-          All 574 canonical seed pairs (16 years empirical optimization)
+          All 668 canonical seed pairs (16 years empirical optimization)
         </p>
       </div>
     </header>
@@ -23,7 +23,7 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">About Canonical Seeds</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p>The 574 canonical seed pairs represent 16 years of empirical optimization in language course design. Each seed is a carefully selected source language sentence paired with its target language counterpart.</p>
+            <p>The 668 canonical seed pairs represent 16 years of empirical optimization in language course design. Each seed is a carefully selected source language sentence paired with its target language counterpart.</p>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Seed Characteristics</h3>
             <ul class="space-y-2">
@@ -36,7 +36,7 @@
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Seed Structure</h3>
             <p>Each canonical seed contains:</p>
             <ul class="space-y-1">
-              <li><code class="text-emerald-400">seed_id</code> - Unique identifier (S1 - S574)</li>
+              <li><code class="text-emerald-400">seed_id</code> - Unique identifier (S1 - S668)</li>
               <li><code class="text-emerald-400">source</code> - Source language sentence (e.g., English)</li>
               <li><code class="text-emerald-400">target</code> - Target language sentence (e.g., Welsh)</li>
               <li><code class="text-emerald-400">metadata</code> - Complexity, frequency, and pedagogical notes</li>

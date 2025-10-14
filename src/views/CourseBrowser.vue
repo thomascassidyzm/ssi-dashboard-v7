@@ -146,7 +146,7 @@ async function loadCourses() {
 }
 
 function formatCourseCode(code) {
-  // mkd_for_eng_574seeds -> Macedonian for English (574 seeds)
+  // mkd_for_eng_668seeds -> Macedonian for English (668 seeds)
   const parts = code.split('_')
   const target = parts[0]?.toUpperCase() || ''
   const seeds = code.match(/(\d+)seeds/)?.[1] || ''

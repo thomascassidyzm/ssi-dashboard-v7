@@ -332,32 +332,23 @@ async function spawnPhaseAgent(phase, prompt, courseDir, courseCode) {
   const promptFile = path.join(__dirname, `.prompt-${phase}-${Date.now()}.txt`);
   await fs.writeFile(promptFile, prompt, 'utf8');
 
-  // Build command to execute in Warp
-  const command = [
-    `cd "${courseDir}"`,
-    `echo "═══════════════════════════════════════════════════════"`,
-    `echo "SSi Course Production - Phase ${phase}"`,
-    `echo "═══════════════════════════════════════════════════════"`,
-    `echo "Course: ${courseCode}"`,
-    `echo "Training: ${trainingURL}"`,
-    `echo ""`,
-    `echo "PROMPT:"`,
-    `cat "${promptFile}"`,
-    `echo ""`,
-    `echo "═══════════════════════════════════════════════════════"`,
-    `exec $SHELL` // Keep shell open
-  ].join(' && ');
-
   try {
-    // Spawn Warp with new window
     const { spawn } = require('child_process');
 
-    const child = spawn('open', [
-      '-a', 'Warp',
-      '-n', // New instance
-      '--args',
-      `--execute-command`, command
-    ], {
+    // Use AppleScript to control Warp more reliably
+    const appleScript = `
+tell application "Warp"
+    activate
+    tell application "System Events"
+        keystroke "t" using {command down}
+    end tell
+    delay 0.5
+    do script "cd \\"${courseDir}\\" && echo '═══════════════════════════════════════════════════════' && echo 'SSi Course Production - Phase ${phase}' && echo '═══════════════════════════════════════════════════════' && echo 'Course: ${courseCode}' && echo 'Training: ${trainingURL}' && echo '' && echo 'PROMPT:' && cat \\"${promptFile}\\" && echo '' && echo '═══════════════════════════════════════════════════════'"
+end tell
+    `.trim();
+
+    // Spawn osascript to execute AppleScript
+    const child = spawn('osascript', ['-e', appleScript], {
       detached: true,
       stdio: 'ignore'
     });

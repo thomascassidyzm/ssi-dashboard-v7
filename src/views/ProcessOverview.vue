@@ -79,7 +79,7 @@
                 <div class="flex items-center justify-between">
                   <div>
                     <h4 class="font-semibold text-emerald-300">Phase 1: Pedagogical Translation</h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: 574 seed pairs + intelligence → Output: Translation amino acids</p>
+                    <p class="text-sm text-slate-400 mt-1">Input: 668 seeds + intelligence → Output: Translation amino acids</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>

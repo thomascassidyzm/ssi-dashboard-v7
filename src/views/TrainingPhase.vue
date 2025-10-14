@@ -172,6 +172,14 @@
           </div>
         </section>
 
+        <!-- LEGO Architecture (Phase 3 specific) -->
+        <section v-if="phaseData.lego_architecture" class="mb-8">
+          <h2 class="text-2xl font-semibold text-emerald-400 mb-4">{{ phaseData.lego_architecture.title }}</h2>
+          <div class="bg-slate-900/80 border border-slate-400/20 rounded-lg p-6">
+            <pre class="text-slate-300 whitespace-pre-wrap font-sans text-sm leading-relaxed">{{ phaseData.lego_architecture.content }}</pre>
+          </div>
+        </section>
+
         <!-- Output Format -->
         <section v-if="phaseData.output" class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">Expected Output</h2>
@@ -306,7 +314,7 @@ const phaseContent = {
 Analyze the source corpus to generate intelligence data for pedagogical translation.
 
 ## Input
-- Source corpus (574 canonical seed pairs)
+- Source corpus (668 canonical seeds)
 - Located in: vfs/seeds/canonical_seeds.json
 
 ## Your Mission
@@ -341,7 +349,7 @@ Structure:
 - Consider learner perspective (what's easy/hard to learn)
 
 ## Success Criteria
-✓ All 574 seeds analyzed
+✓ All 668 seeds analyzed
 ✓ Intelligence report generated
 ✓ Frequency rankings accurate
 ✓ Complexity assessments complete
@@ -360,7 +368,7 @@ Structure:
     steps: [
       {
         title: 'Load Seed Pairs',
-        description: 'Load all 574 canonical seed pairs for translation'
+        description: 'Load all 668 canonical seeds for translation'
       },
       {
         title: 'Apply Heuristics',
@@ -385,11 +393,11 @@ Structure:
       'UUIDs are deterministic: UUID = hash(source + target + metadata)',
       'Phase 1 creates the foundational translation layer for all downstream phases'
     ],
-    output: '574 translation amino acid JSON files stored in VFS with deterministic UUIDs',
+    output: '668 translation amino acid JSON files stored in VFS with deterministic UUIDs',
     prompt: `# Phase 1: Pedagogical Translation
 
 ## Task
-Apply 6 pedagogical heuristics to translate all 574 canonical seed pairs into optimized learning material.
+Apply 6 pedagogical heuristics to translate all 668 canonical seeds into optimized learning material.
 
 ## Input
 - Canonical seeds: vfs/seeds/canonical_seeds.json
@@ -424,7 +432,7 @@ Literal: "Hoffwn i fynd"
 Pedagogical: "Dw i eisiau mynd" (more natural, higher frequency, clearer for learners)
 
 ## Success Criteria
-✓ All 574 seeds translated
+✓ All 668 seeds translated
 ✓ All 6 heuristics applied to each
 ✓ Deterministic UUIDs generated
 ✓ Amino acids stored in VFS
@@ -560,6 +568,47 @@ vfs/phase_outputs/phase_2_corpus_intelligence.json
       'LEGOs are immutable amino acids - edits create new LEGOs with updated provenance',
       'Each LEGO is a discrete component that will be used in pattern construction'
     ],
+    lego_architecture: {
+      title: 'LEGO Types & Architecture',
+      content: `
+## LEGO Types
+
+### BASE LEGO
+- Fundamental FD unit that cannot be broken down further
+- Single, atomic unit
+- Examples: "Voglio" = "I want", "voy" = "I'm going", "algo" = "something"
+
+### COMPOSITE LEGO
+- FD unit comprising BASE LEGOs + non-LEGO glue words
+- BASE LEGOs within DO NOT TILE (don't concatenate cleanly)
+- Examples:
+  - "voy a decir" = "I'm going to say" (contains: voy + a + decir, where "a" is glue)
+  - "sto per esercitarmi" = "I'm going to practice" (contains: sto + per + esercitarmi, where "per" is glue)
+
+### FEEDERS
+- BASE LEGOs that participate in a COMPOSITE LEGO
+- Have dual existence: as independent BASE LEGOs AND as components within COMPOSITE
+- Stored with F## suffix when referenced in COMPOSITE context
+- Example: In "voy a decir" (S0005L02), "voy" is F01 and "decir" is F02
+
+### TILING Concept (Critical Decision Rule)
+- **TILES** = LEGOs concatenate cleanly without glue words
+  - Example: "Voglio parlare" = "Voglio" + "parlare" ✅ TILES
+  - Action: Keep as separate BASE LEGOs
+
+- **DOESN'T TILE** = Additional words required between LEGOs
+  - Example: "voy a decir" ≠ "voy" + "decir" ❌ (needs "a")
+  - Action: Create COMPOSITE LEGO with FEEDERs
+
+**Decision Tree**:
+1. Is chunk FD? → YES, continue
+2. Multiple BASE LEGOs? → YES, continue
+3. Do they TILE? → YES: keep separate | NO: create COMPOSITE
+4. Create COMPOSITE with FEEDERs
+
+This architecture is documented in APML v7.3.0.
+      `
+    },
     output: 'LEGO amino acid JSON files in VFS with provenance labels and deterministic UUIDs',
     prompt: `# Phase 3: LEGO Extraction
 

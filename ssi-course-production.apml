@@ -1,6 +1,6 @@
 app ssi_course_production:
   title: "SSi Language Course Production System"
-  version: "7.2.0"
+  version: "7.3.0"
   apml_version: "1.1.0"
   description: |
     Complete specification for SSi (Say Something In) language course production system.
@@ -640,29 +640,98 @@ PASS 4: SEED_PAIR Revision Notes
   - Suggest specific changes to maintain FD
   - Example: "I want coffee" might need → "I'd like coffee" if "quiero" is claimed
 
-### COMPONENTIZATION REQUIREMENT
-DEFINITION: Breaking multi-word LEGOs into sub-components (FEEDERs)
-RULE: ONLY when BOTH target AND known are multi-word
+### LEGO TYPES
 
-REQUIRED:
-  ✅ "parlare italiano" ↔ "parler italien" (BOTH are 2 words)
-  ✅ "para su hermana" ↔ "for his sister" (BOTH are 3+ words)
+BASE_LEGO:
+  DEFINITION: Fundamental FD unit that cannot be broken down further
+  CHARACTERISTICS:
+    - Single, atomic unit
+    - FD (passes target → known → target)
+    - Not composed of other LEGOs
+  EXAMPLES:
+    - "Voglio" = "I want"
+    - "voy" = "I'm going"
+    - "algo" = "something"
 
-NOT_REQUIRED:
-  ❌ "construir" ↔ "build" (both single words)
-  ❌ "una nueva vida" ↔ "a new life" (simple 1:1 mapping even if multi-word)
+COMPOSITE_LEGO:
+  DEFINITION: FD unit comprising BASE LEGOs + non-LEGO glue words
+  CHARACTERISTICS:
+    - Itself is FD as a complete unit
+    - Contains at least ONE BASE LEGO + glue words
+    - BASE LEGOs within DO NOT TILE (don't concatenate cleanly)
+    - Glue words are NOT LEGOs themselves
+  EXAMPLES:
+    - "voy a decir" = "I'm going to say" (glue: "a")
+    - "sto per esercitarmi" = "I'm going to practice" (glue: "per")
+  WHEN_TO_CREATE:
+    - BASE LEGOs don't TILE if concatenated directly
+    - Glue words (prepositions, particles) required between
+    - Unit is more useful taught as one piece
 
-FORMAT: Simple word mappings ONLY (no grammar explanations)
+FEEDERS:
+  DEFINITION: BASE LEGOs that feed into a COMPOSITE LEGO
+  CHARACTERISTICS:
+    - They are BASE LEGOs themselves (FD, atomic, standalone)
+    - Have dual existence:
+      1. As independent BASE LEGOs (own baskets, used in phrases)
+      2. As components within COMPOSITE LEGO
+    - Stored with F## suffix (not L##) when part of COMPOSITE
+    - NOT subordinate to COMPOSITE - full LEGOs used in multiple contexts
+  EXAMPLE:
+    - COMPOSITE: "voy a decir" (S0005L02)
+    - FEEDER 1: "voy" (S0005F01) ← Also exists as BASE LEGO elsewhere
+    - FEEDER 2: "decir" (S0005F02) ← Also exists as BASE LEGO elsewhere
+    - Glue: "a" (NOT a LEGO, NOT a FEEDER)
+
+### TILING CONCEPT
+
+DEFINITION: LEGOs that concatenate cleanly without glue words
+
+TILES (Concatenate directly):
+  - No additional words needed between LEGOs
+  - Direct concatenation reconstructs sentence
+  - Keep as separate BASE LEGOs
+  EXAMPLE: "Voglio parlare" = "Voglio" + "parlare" ✅ TILES
+
+DOES_NOT_TILE (Needs glue):
+  - Additional words required between LEGOs
+  - Cannot concatenate directly
+  - Create COMPOSITE LEGO
+  EXAMPLE: "voy a decir" ≠ "voy" + "decir" ❌ DOESN'T TILE (needs "a")
+
+DECISION_RULE:
+  IF (BASE LEGOs TILE):
+    → Keep as separate BASE LEGOs
+  ELSE IF (BASE LEGOs DON'T TILE):
+    → Create COMPOSITE LEGO with FEEDERs
+
+### COMPONENTIZATION (Pedagogical Explanation)
+
+PURPOSE: Help learners understand how multi-word LEGOs break down
+
+TWO TYPES:
+
+1. For BASE LEGOs that TILE:
+   - LEGOs remain separate in structure
+   - But add explanation for learner clarity
+   - Example: "parlare italiano" stays as two LEGOs (parlare + italiano)
+   - Add: "parler italien = parlare italiano, où parlare = parler et italiano = italien"
+
+2. For COMPOSITE LEGOs:
+   - LEGO is structurally one unit (doesn't tile)
+   - Show FEEDERs to help learner understand components
+   - Example: "voy a decir" is ONE COMPOSITE LEGO
+   - FEEDERs: voy (F01), decir (F02)
+   - Explanation: "voy a decir = I'm going to say, where voy = I'm going, a = [particle], decir = to say"
+
+RULE: Add componentization when BOTH target AND known are multi-word
+
+FORMAT: Simple word mappings in KNOWN language
   "[known LEGO] = [target LEGO], where [target1] = [known1] and [target2] = [known2]"
 
 CRITICAL: Write ALL componentization in KNOWN language, NOT English!
   - French speakers: Use "où" (not "where"), "et" (not "and")
   - Spanish speakers: Use "donde" (not "where"), "y" (not "and")
-  - Chinese speakers: Use "其中" (not "where"), "和" (not "and")
-
-EXAMPLE:
-  French: "parler italien = parlare italiano, où parlare = parler et italiano = italien"
-  NOT: "parler italien = parlare italiano, where parlare = parler and italiano = italien" ❌
 
 ### IRON RULE
 ABSOLUTE_CONSTRAINT: No LEGO begins or ends with a preposition
@@ -776,6 +845,50 @@ PROMPT: |
   1. When placed side-by-side, EXACTLY reconstruct the original sentence
   2. Each LEGO passes the FD_LOOP test independently
   3. Are reusable across multiple sentences
+
+  ## LEGO TYPES & ARCHITECTURE
+
+  ### BASE LEGO (Simple/Atomic)
+  - Fundamental FD unit
+  - Cannot be broken down further
+  - Examples: "Voglio", "parlare", "voy", "decir"
+
+  ### COMPOSITE LEGO (Contains BASE + Glue)
+  - FD unit with BASE LEGOs + non-LEGO glue words
+  - BASE LEGOs DON'T TILE (can't concatenate directly)
+  - Examples:
+    - "voy a decir" (voy + a + decir) - "a" is glue
+    - "sto per esercitarmi" (sto + per + esercitarmi) - "per" is glue
+
+  ### FEEDERS
+  - BASE LEGOs within a COMPOSITE
+  - Stored separately with F## suffix
+  - Help learners understand COMPOSITE structure
+
+  ### TILING TEST
+  **Question**: Can you concatenate these LEGOs directly?
+
+  IF YES (TILES):
+  → Keep as separate BASE LEGOs
+  Example: "Voglio" + "parlare" = "Voglio parlare" ✅
+
+  IF NO (DOESN'T TILE):
+  → Create COMPOSITE LEGO + FEEDERs
+  Example: "voy" + "decir" ≠ "voy decir" ❌ (need "a")
+  → COMPOSITE: "voy a decir"
+  → FEEDERs: "voy" (F01), "decir" (F02)
+
+  ## YOUR EXTRACTION PROCESS
+
+  For each seed:
+
+  1. Break into potential chunks
+  2. Validate each chunk is FD
+  3. Check if chunks contain multiple BASE LEGOs
+  4. Apply TILING TEST:
+     - TILES? → Separate BASE LEGOs
+     - DOESN'T TILE? → COMPOSITE LEGO + FEEDERs
+  5. Add componentization explanation (pedagogical)
 
   ## MANDATORY UID FORMAT
   For seed S0001:
@@ -1696,6 +1809,16 @@ LOCAL_AUTOMATION:
 # =============================================================================
 # VERSION HISTORY
 # =============================================================================
+
+VERSION: 7.3.0
+DATE: 2025-10-13
+CHANGES:
+  - Added LEGO type definitions (BASE, COMPOSITE, FEEDERS)
+  - Added TILING concept with decision tree
+  - Clarified COMPONENTIZATION as pedagogical (not structural)
+  - Updated Phase 3 prompt with LEGO architecture extraction logic
+  - Examples use "voy a decir" pattern
+  - Based on LEGO_ARCHITECTURE_CLARIFICATION_BRIEF.md
 
 VERSION: 7.2.0
 DATE: 2025-10-13
