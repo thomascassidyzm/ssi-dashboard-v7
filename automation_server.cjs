@@ -142,32 +142,231 @@ async function ensureCourseDirectory(courseCode) {
 }
 
 /**
- * Spawns a Claude Code agent via osascript
- * Uses temp file approach to avoid AppleScript escaping issues with complex prompts
+ * Generates comprehensive orchestrator brief for course generation
+ */
+function generateOrchestratorBrief(courseCode, params, courseDir) {
+  const { target, known, seeds } = params;
+
+  return `# Course Generation Orchestrator Brief
+
+## Mission
+Generate complete SSi language course from canonical English seeds.
+
+**Course**: ${courseCode}
+**Target Language**: ${target} (learning language)
+**Known Language**: ${known} (learner's language)
+**Seeds**: ${seeds} (total canonical sentences to process)
+
+---
+
+## Your Role
+
+You are the **course generation orchestrator**. You will execute all 7 phases sequentially in this single Claude Code session. Work autonomously - read specs, execute phases, write outputs, report status.
+
+---
+
+## Key Files
+
+**APML Specification** (Single Source of Truth):
+\`/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/ssi-course-production.apml\`
+- Read this FIRST
+- Contains all phase prompts and rules
+- VERSION: 7.3.0
+
+**Course Directory** (Your workspace):
+\`${courseDir}\`
+- Write all outputs here
+- VFS structure pre-created (amino_acids/, phase_outputs/, proteins/)
+
+**Canonical Seeds** (Input data):
+\`/Users/tomcassidy/SSi/SSi_Course_Production/vfs/seeds/canonical_seeds.json\`
+- 668 English sentences to translate and process
+
+---
+
+## Phase Execution Sequence
+
+Execute phases in order. Each phase reads from APML for detailed instructions.
+
+### Phase 0: Corpus Pre-Analysis
+- **Input**: canonical_seeds.json
+- **Output**: phase_outputs/phase_0_intelligence.json
+- **Prompt**: Read from APML Phase 0 section
+- **Purpose**: Analyze corpus for pedagogical translation
+
+### Phase 1: Pedagogical Translation
+- **Input**: canonical_seeds.json + phase_0_intelligence.json
+- **Output**: amino_acids/translations/*.json (${seeds} files)
+- **Prompt**: Read from APML Phase 1 section
+- **Purpose**: Apply 6 heuristics, create optimized translations
+- **Critical**: Two-step process (canonical→target→known)
+
+### Phase 2: Corpus Intelligence
+- **Input**: amino_acids/translations/*.json
+- **Output**: phase_outputs/phase_2_corpus_intelligence.json
+- **Prompt**: Read from APML Phase 2 section
+- **Purpose**: Map FCFS order, calculate utility scores
+
+### Phase 3: LEGO Extraction
+- **Input**: amino_acids/translations/*.json + phase_2_corpus_intelligence.json
+- **Output**: amino_acids/legos/*.json
+- **Prompt**: Read from APML Phase 3 section
+- **Purpose**: Extract FD-compliant LEGOs (BASE + COMPOSITE using TILING test)
+- **Critical**: FD_LOOP test, IRON RULE, TILING test
+
+### Phase 3.5: Graph Construction
+- **Input**: amino_acids/legos/*.json
+- **Output**: phase_outputs/phase_3.5_lego_graph.json
+- **Prompt**: Read from APML Phase 3.5 section
+- **Purpose**: Build adjacency graph for pattern coverage
+
+### Phase 4: Deduplication
+- **Input**: amino_acids/legos/*.json
+- **Output**: amino_acids/legos_deduplicated/*.json
+- **Prompt**: Read from APML Phase 4 section
+- **Purpose**: Merge duplicate LEGOs, preserve provenance
+
+### Phase 5: Basket Generation
+- **Input**: amino_acids/legos_deduplicated/*.json + phase_3.5_lego_graph.json
+- **Output**: phase_outputs/phase_5_baskets.json
+- **Prompt**: Read from APML Phase 5 section
+- **Purpose**: Generate e-phrases + d-phrases with progressive vocabulary
+- **Critical**: 7-10 word e-phrases, perfect target grammar
+
+### Phase 6: Introductions
+- **Input**: phase_outputs/phase_5_baskets.json + amino_acids/legos_deduplicated/*.json
+- **Output**: amino_acids/introductions/*.json
+- **Prompt**: Read from APML Phase 6 section
+- **Purpose**: Generate zero-unknowns introductions for COMPOSITE LEGOs
+
+---
+
+## Critical Rules
+
+1. **Read APML First**: All phase details are in ssi-course-production.apml
+2. **Sequential Execution**: Complete each phase before starting next
+3. **Write to VFS**: All outputs go to ${courseDir}
+4. **Quality Validation**: After Phase 5, spot-check 5-10 baskets for grammar
+5. **Report Status**: At end, report completion or failure with specifics
+
+---
+
+## Quality Checkpoints
+
+### After Phase 1
+- Spot-check 5 translations: Natural? High-frequency vocabulary?
+
+### After Phase 3
+- Spot-check 10 LEGOs: Pass FD_LOOP? IRON RULE compliant? TILING correct?
+
+### After Phase 5
+- Spot-check 10 baskets: 7-10 word e-phrases? Perfect target grammar?
+- Check for grammar errors (e.g., Italian: cercando di, imparando a)
+
+If critical issues found: Document them, but continue (self-healing on next run).
+
+---
+
+## Success Criteria
+
+✅ All 7 phases executed
+✅ Phase outputs written to VFS
+✅ No critical errors (translations natural, LEGOs FD-compliant, baskets grammatical)
+✅ Status reported
+
+---
+
+## Failure Handling
+
+If any phase fails:
+1. Document specific error
+2. Note which seeds/LEGOs/baskets affected
+3. Report failure status with details
+4. Do NOT continue to next phase
+
+---
+
+## Final Report Format
+
+After Phase 6 (or on failure), report:
+
+\`\`\`
+✅ Course Generation Complete: ${courseCode}
+
+Phase 0: ✅ Corpus analyzed
+Phase 1: ✅ ${seeds} translations created
+Phase 2: ✅ FCFS intelligence generated
+Phase 3: ✅ [X] LEGOs extracted ([Y] BASE, [Z] COMPOSITE)
+Phase 3.5: ✅ Adjacency graph built
+Phase 4: ✅ [X] unique LEGOs (deduplicated)
+Phase 5: ✅ [X] baskets generated
+Phase 6: ✅ Introductions created
+
+Quality Checks:
+- Translations: [Natural/Issues found]
+- LEGOs: [FD-compliant/Issues found]
+- Baskets: [Grammar perfect/Issues found]
+
+Status: COMPLETE
+Next: Review in dashboard at ${CONFIG.TRAINING_URL}
+\`\`\`
+
+---
+
+## Begin Execution
+
+Read APML spec, execute Phase 0, proceed sequentially through Phase 6, report status.
+`;
+}
+
+/**
+ * Spawns a Claude Code agent via Warp terminal
+ * Uses direct command approach to avoid AppleScript escaping issues
  */
 async function spawnPhaseAgent(phase, prompt, courseDir, courseCode) {
-  console.log(`[Agent] Spawning Phase ${phase} agent...`);
+  console.log(`[Agent] Spawning Phase ${phase} agent in Warp...`);
 
   const trainingURL = `${CONFIG.TRAINING_URL}/phase/${phase}`;
 
-  // Write prompt to temp file to avoid AppleScript escaping issues
+  // Write prompt to temp file to avoid escaping issues
   const promptFile = path.join(__dirname, `.prompt-${phase}-${Date.now()}.txt`);
   await fs.writeFile(promptFile, prompt, 'utf8');
 
-  // Create AppleScript to spawn new Terminal with Claude Code
-  // The prompt is read from the temp file, avoiding all escaping issues
-  const appleScript = `
-tell application "Terminal"
-    activate
-    set newTab to do script "cd ${courseDir} && echo '═══════════════════════════════════════════════════════' && echo 'SSi Course Production - Phase ${phase}' && echo '═══════════════════════════════════════════════════════' && echo 'Course: ${courseCode}' && echo 'Training: ${trainingURL}' && echo '' && echo 'PROMPT:' && cat '${promptFile}' && echo '' && echo '═══════════════════════════════════════════════════════'"
-end tell
-  `.trim();
+  // Build command to execute in Warp
+  const command = [
+    `cd "${courseDir}"`,
+    `echo "═══════════════════════════════════════════════════════"`,
+    `echo "SSi Course Production - Phase ${phase}"`,
+    `echo "═══════════════════════════════════════════════════════"`,
+    `echo "Course: ${courseCode}"`,
+    `echo "Training: ${trainingURL}"`,
+    `echo ""`,
+    `echo "PROMPT:"`,
+    `cat "${promptFile}"`,
+    `echo ""`,
+    `echo "═══════════════════════════════════════════════════════"`,
+    `exec $SHELL` // Keep shell open
+  ].join(' && ');
 
   try {
-    await execAsync(`osascript -e '${appleScript.replace(/'/g, "'\\''")}'`);
-    console.log(`[Agent] Phase ${phase} agent spawned successfully`);
+    // Spawn Warp with new window
+    const { spawn } = require('child_process');
 
-    // Clean up temp file after delay (give Terminal time to read it)
+    const child = spawn('open', [
+      '-a', 'Warp',
+      '-n', // New instance
+      '--args',
+      `--execute-command`, command
+    ], {
+      detached: true,
+      stdio: 'ignore'
+    });
+
+    child.unref();
+
+    console.log(`[Agent] Phase ${phase} agent spawned successfully in Warp`);
+
+    // Clean up temp file after delay (give Warp time to read it)
     setTimeout(() => {
       fs.unlink(promptFile).catch(err => {
         console.warn(`[Agent] Failed to clean up temp prompt file: ${err.message}`);
@@ -182,7 +381,46 @@ end tell
 }
 
 /**
- * Orchestrates sequential phase execution
+ * Spawns single orchestrator agent for entire course generation pipeline
+ */
+async function spawnCourseOrchestrator(courseCode, params) {
+  console.log(`[Orchestrator] Starting course generation: ${courseCode}`);
+
+  const job = STATE.jobs.get(courseCode);
+  const courseDir = await ensureCourseDirectory(courseCode);
+
+  try {
+    // Generate orchestrator brief
+    const brief = generateOrchestratorBrief(courseCode, params, courseDir);
+
+    // Write brief to file
+    const briefFile = path.join(__dirname, `.orchestrator-${courseCode}-${Date.now()}.md`);
+    await fs.writeFile(briefFile, brief, 'utf8');
+
+    console.log(`[Orchestrator] Brief created: ${briefFile}`);
+
+    // Spawn single orchestrator agent
+    job.phase = 'orchestrator';
+    job.progress = 0;
+    await spawnPhaseAgent('orchestrator', brief, courseDir, courseCode);
+
+    console.log(`[Orchestrator] Course orchestrator spawned for ${courseCode}`);
+    console.log(`[Orchestrator] Single Warp window executing all phases`);
+
+    // Note: Orchestrator will run autonomously and write outputs to VFS
+    // Dashboard can poll VFS to track progress
+    job.status = 'running';
+
+  } catch (error) {
+    console.error(`[Orchestrator] Error generating course:`, error);
+    job.status = 'failed';
+    job.error = error.message;
+  }
+}
+
+/**
+ * Orchestrates sequential phase execution (LEGACY - replaced by spawnCourseOrchestrator)
+ * Kept for backward compatibility and manual phase-by-phase execution if needed
  */
 async function cascadePhases(courseCode, params) {
   console.log(`[Cascade] Starting course generation: ${courseCode}`);
@@ -1188,15 +1426,15 @@ app.post('/api/courses/generate', async (req, res) => {
 
   STATE.jobs.set(courseCode, job);
 
-  // Start cascade in background
-  cascadePhases(courseCode, { target, known, seeds }).catch(err => {
-    console.error(`[API] Cascade error:`, err);
+  // Start orchestrator in background
+  spawnCourseOrchestrator(courseCode, { target, known, seeds }).catch(err => {
+    console.error(`[API] Orchestrator error:`, err);
   });
 
   res.json({
     success: true,
     courseCode,
-    message: 'Course generation started',
+    message: 'Course generation started with orchestrator pattern',
     status: job
   });
 });
@@ -1655,6 +1893,205 @@ app.get('/api/visualization/phrases/:code', async (req, res) => {
 });
 
 // =============================================================================
+// SEED-LEGO BREAKDOWN API
+// =============================================================================
+
+/**
+ * GET /api/courses/:code/seed-lego-breakdown?limit=30
+ * Returns multiple seeds with their LEGO breakdowns for tiling visualization
+ */
+app.get('/api/courses/:code/seed-lego-breakdown', async (req, res) => {
+  try {
+    const { code } = req.params;
+    const limit = parseInt(req.query.limit) || 30;
+    const offset = parseInt(req.query.offset) || 0;
+
+    const translationsDir = path.join(CONFIG.VFS_ROOT, code, 'amino_acids', 'translations');
+    const legosDir = path.join(CONFIG.VFS_ROOT, code, 'amino_acids', 'legos');
+
+    if (!await fs.pathExists(translationsDir) || !await fs.pathExists(legosDir)) {
+      return res.status(404).json({ error: 'Course data not found' });
+    }
+
+    // Read translations
+    const translationFiles = await fs.readdir(translationsDir);
+    const limitedFiles = translationFiles
+      .filter(f => f.endsWith('.json'))
+      .slice(offset, offset + limit);
+
+    const seeds = [];
+
+    for (const file of limitedFiles) {
+      const translation = await fs.readJson(path.join(translationsDir, file));
+
+      // Find LEGOs for this seed
+      const legoFiles = await fs.readdir(legosDir);
+      const seedLegos = [];
+
+      for (const legoFile of legoFiles.filter(f => f.endsWith('.json'))) {
+        const lego = await fs.readJson(path.join(legosDir, legoFile));
+
+        // Match LEGOs to this translation
+        if (lego.source_translation_uuid === translation.uuid) {
+          seedLegos.push({
+            uuid: lego.uuid,
+            text: lego.text,
+            provenance: lego.provenance,
+            position: lego.position,
+            word_count: lego.word_count,
+            pedagogical_score: lego.pedagogical_score || 0
+          });
+        }
+      }
+
+      // Sort LEGOs by position
+      seedLegos.sort((a, b) => a.position - b.position);
+
+      // Handle multiple field naming conventions
+      const sourceText = translation.source || translation.english || translation.source_english;
+      const targetText = translation.target || translation.translation || translation.target_italian || translation.target_spanish;
+
+      seeds.push({
+        uuid: translation.uuid,
+        seed_id: translation.seed_id || translation.uuid.substring(0, 4),
+        source: sourceText,
+        target: targetText,
+        legos: seedLegos,
+        quality_score: translation.metadata?.lego_extraction?.quality_score || translation.quality_score || 0
+      });
+    }
+
+    res.json({
+      courseCode: code,
+      total: translationFiles.length,
+      offset,
+      limit,
+      seeds
+    });
+  } catch (err) {
+    console.error('[API] Error loading seed-lego breakdown:', err);
+    res.status(500).json({ error: 'Failed to load seed-lego breakdown', details: err.message });
+  }
+});
+
+/**
+ * GET /api/courses/:code/lego/:legoProvenance/basket
+ * Returns e-phrases and d-phrases for one LEGO from Phase 5 baskets
+ * legoProvenance example: S0005L01
+ */
+app.get('/api/courses/:code/lego/:legoProvenance/basket', async (req, res) => {
+  try {
+    const { code, legoProvenance } = req.params;
+    const basketsFile = path.join(CONFIG.VFS_ROOT, code, 'phase_outputs', 'phase_5_baskets.json');
+
+    if (!await fs.pathExists(basketsFile)) {
+      return res.status(404).json({ error: 'Phase 5 baskets not found for this course' });
+    }
+
+    const basketsData = await fs.readJson(basketsFile);
+
+    // Phase 5 baskets.json structure: { "baskets": { "S####L##": {...}, ... } }
+    const baskets = basketsData.baskets || basketsData;
+    const basket = baskets[legoProvenance];
+
+    if (!basket) {
+      return res.status(404).json({ error: `Basket not found for LEGO ${legoProvenance}` });
+    }
+
+    // Calculate stats
+    const ePhraseCount = basket.e_phrases ? basket.e_phrases.length : 0;
+    const dPhraseCount = basket.d_phrases ?
+      Object.values(basket.d_phrases).reduce((sum, phrases) => sum + phrases.length, 0) : 0;
+
+    res.json({
+      courseCode: code,
+      legoProvenance,
+      target: basket.target,
+      known: basket.known,
+      seedOrigin: basket.seed_origin,
+      ePhrases: basket.e_phrases || [],
+      dPhrases: basket.d_phrases || {},
+      stats: {
+        ePhraseCount,
+        dPhraseCount,
+        totalPhrases: ePhraseCount + dPhraseCount
+      }
+    });
+  } catch (err) {
+    console.error('[API] Error loading LEGO basket:', err);
+    res.status(500).json({ error: 'Failed to load LEGO basket', details: err.message });
+  }
+});
+
+// =============================================================================
+// LANGUAGES API
+// =============================================================================
+
+/**
+ * GET /api/languages
+ * Return list of supported languages with ISO 639-3 codes
+ */
+app.get('/api/languages', (req, res) => {
+  const languages = [
+    { code: 'afr', name: 'Afrikaans', native: 'Afrikaans' },
+    { code: 'ara', name: 'Arabic', native: 'العربية' },
+    { code: 'ben', name: 'Bengali', native: 'বাংলা' },
+    { code: 'bre', name: 'Breton', native: 'Brezhoneg' },
+    { code: 'bul', name: 'Bulgarian', native: 'Български' },
+    { code: 'cat', name: 'Catalan', native: 'Català' },
+    { code: 'cmn', name: 'Mandarin Chinese', native: '中文' },
+    { code: 'cor', name: 'Cornish', native: 'Kernewek' },
+    { code: 'ces', name: 'Czech', native: 'Čeština' },
+    { code: 'cym', name: 'Welsh', native: 'Cymraeg' },
+    { code: 'dan', name: 'Danish', native: 'Dansk' },
+    { code: 'deu', name: 'German', native: 'Deutsch' },
+    { code: 'ell', name: 'Greek', native: 'Ελληνικά' },
+    { code: 'eng', name: 'English', native: 'English' },
+    { code: 'eus', name: 'Basque', native: 'Euskara' },
+    { code: 'fas', name: 'Persian', native: 'فارسی' },
+    { code: 'fra', name: 'French', native: 'Français' },
+    { code: 'gla', name: 'Scottish Gaelic', native: 'Gàidhlig' },
+    { code: 'gle', name: 'Irish', native: 'Gaeilge' },
+    { code: 'glv', name: 'Manx', native: 'Gaelg' },
+    { code: 'heb', name: 'Hebrew', native: 'עברית' },
+    { code: 'hin', name: 'Hindi', native: 'हिन्दी' },
+    { code: 'hrv', name: 'Croatian', native: 'Hrvatski' },
+    { code: 'hun', name: 'Hungarian', native: 'Magyar' },
+    { code: 'ind', name: 'Indonesian', native: 'Bahasa Indonesia' },
+    { code: 'isl', name: 'Icelandic', native: 'Íslenska' },
+    { code: 'ita', name: 'Italian', native: 'Italiano' },
+    { code: 'jpn', name: 'Japanese', native: '日本語' },
+    { code: 'kor', name: 'Korean', native: '한국어' },
+    { code: 'mkd', name: 'Macedonian', native: 'Македонски' },
+    { code: 'msa', name: 'Malay', native: 'Bahasa Melayu' },
+    { code: 'nld', name: 'Dutch', native: 'Nederlands' },
+    { code: 'nor', name: 'Norwegian', native: 'Norsk' },
+    { code: 'pol', name: 'Polish', native: 'Polski' },
+    { code: 'por', name: 'Portuguese', native: 'Português' },
+    { code: 'ron', name: 'Romanian', native: 'Română' },
+    { code: 'rus', name: 'Russian', native: 'Русский' },
+    { code: 'slk', name: 'Slovak', native: 'Slovenčina' },
+    { code: 'slv', name: 'Slovenian', native: 'Slovenščina' },
+    { code: 'spa', name: 'Spanish', native: 'Español' },
+    { code: 'srp', name: 'Serbian', native: 'Српски' },
+    { code: 'swa', name: 'Swahili', native: 'Kiswahili' },
+    { code: 'swe', name: 'Swedish', native: 'Svenska' },
+    { code: 'tgl', name: 'Tagalog', native: 'Tagalog' },
+    { code: 'tha', name: 'Thai', native: 'ไทย' },
+    { code: 'tur', name: 'Turkish', native: 'Türkçe' },
+    { code: 'ukr', name: 'Ukrainian', native: 'Українська' },
+    { code: 'urd', name: 'Urdu', native: 'اردو' },
+    { code: 'vie', name: 'Vietnamese', native: 'Tiếng Việt' },
+    { code: 'yue', name: 'Cantonese', native: '粵語' }
+  ];
+
+  // Sort by English name
+  languages.sort((a, b) => a.name.localeCompare(b.name));
+
+  res.json(languages);
+});
+
+// =============================================================================
 // PROMPT MANAGEMENT API (Self-Improving DNA)
 // =============================================================================
 
@@ -1807,11 +2244,23 @@ async function startServer() {
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/visualization/legos/:code`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/visualization/seed/:uuid`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/visualization/phrases/:code`);
+    console.log(`\nLanguages API:`);
+    console.log(`  GET  http://localhost:${CONFIG.PORT}/api/languages`);
     console.log(`\nPrompt Management API (Self-Improving DNA):`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/prompts/:phase`);
     console.log(`  PUT  http://localhost:${CONFIG.PORT}/api/prompts/:phase`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/prompts/:phase/history`);
+    console.log(`\nOrchestrator Pattern:`);
+    console.log(`  - Single Warp window for entire course generation`);
+    console.log(`  - All 7 phases executed sequentially in one Claude session`);
+    console.log(`  - Self-healing: Claude maintains context across phases`);
+    console.log(`  - Progress tracking: Dashboard polls VFS for outputs`);
     console.log(`\nNext Steps:`);
+    console.log(`  1. Generate course: POST /api/courses/generate`);
+    console.log(`  2. Single orchestrator spawns in Warp`);
+    console.log(`  3. Executes all 7 phases autonomously`);
+    console.log(`  4. Check results in dashboard when complete`);
+    console.log(`\nOptional (for remote access):`);
     console.log(`  1. Install ngrok: brew install ngrok`);
     console.log(`  2. Start tunnel: ngrok http ${CONFIG.PORT}`);
     console.log(`  3. Update dashboard API_BASE_URL with ngrok URL`);

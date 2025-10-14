@@ -141,6 +141,20 @@ const routes = [
     meta: { title: 'Phrase Visualizer' }
   },
   {
+    path: '/visualize/seed-lego/:courseCode?',
+    name: 'SeedLegoVisualizer',
+    component: () => import('../components/SeedLegoVisualizer.vue'),
+    props: true,
+    meta: { title: 'SEED → LEGO Breakdown' }
+  },
+  {
+    path: '/visualize/lego-basket/:courseCode?',
+    name: 'LegoBasketVisualizer',
+    component: () => import('../components/LegoBasketVisualizer.vue'),
+    props: true,
+    meta: { title: 'LEGO Basket Practice Phrases' }
+  },
+  {
     path: '/edit/:courseCode',
     name: 'CourseEditorAlt',
     redirect: to => ({ name: 'CourseEditor', params: { courseCode: to.params.courseCode } })
