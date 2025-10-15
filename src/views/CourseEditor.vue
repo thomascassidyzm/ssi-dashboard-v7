@@ -167,10 +167,10 @@
                         {{ breakdown.seed_id }}
                       </span>
                       <span class="text-xs text-slate-400">
-                        {{ breakdown.lego_pairs?.length || 0 }} LEGO_PAIRS
+                        {{ breakdown.lego_pairs?.length || 0 }} LEGOs • {{ (breakdown.feeder_pairs || []).length }} FEEDERs
                       </span>
                       <span v-if="breakdown.lego_pairs?.some(lp => lp.lego_type === 'COMPOSITE')" class="text-xs text-purple-400">
-                        Contains composites
+                        ⚡ Contains composites
                       </span>
                     </div>
 
@@ -179,7 +179,7 @@
                       @click="startEditingBreakdown(breakdown)"
                       class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded transition"
                     >
-                      Edit Boundaries
+                      Edit LEGOs
                     </button>
                     <div v-else class="flex gap-2">
                       <button
@@ -209,49 +209,101 @@
                       </div>
                     </div>
 
-                    <!-- View Mode: Display LEGO Pairs -->
+                    <!-- View Mode: 3-Level Hierarchy Display -->
                     <div v-if="editingBreakdown !== breakdown.seed_id">
-                      <div v-if="breakdown.lego_pairs && breakdown.lego_pairs.length > 0" class="space-y-3">
+                      <div v-if="breakdown.lego_pairs && breakdown.lego_pairs.length > 0" class="space-y-6">
+
+                        <!-- LEGO Containers (Target Language) -->
+                        <div class="flex flex-wrap gap-3 justify-center">
+                          <div
+                            v-for="(pair, index) in breakdown.lego_pairs"
+                            :key="pair.lego_id"
+                            class="px-4 py-3 rounded-lg border-2 transition-all"
+                            :class="pair.lego_type === 'COMPOSITE'
+                              ? 'bg-purple-900/30 border-purple-500 hover:bg-purple-900/50'
+                              : 'bg-blue-900/30 border-blue-600 hover:bg-blue-900/50'"
+                          >
+                            <div class="text-blue-100 font-medium text-center mb-1">
+                              {{ pair.target_chunk }}
+                            </div>
+                            <div class="text-xs text-blue-400 text-center font-mono">
+                              {{ pair.lego_id }}
+                              <span v-if="pair.lego_type === 'COMPOSITE'" class="ml-1 text-purple-400">⚡</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Arrow Down -->
+                        <div class="flex justify-center">
+                          <svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                          </svg>
+                        </div>
+
+                        <!-- LEGO Containers (Known Language) -->
+                        <div class="flex flex-wrap gap-3 justify-center">
+                          <div
+                            v-for="(pair, index) in breakdown.lego_pairs"
+                            :key="'known-' + pair.lego_id"
+                            class="px-4 py-3 rounded-lg border-2 transition-all"
+                            :class="pair.lego_type === 'COMPOSITE'
+                              ? 'bg-purple-900/20 border-purple-600/50 hover:bg-purple-900/30'
+                              : 'bg-slate-700/50 border-slate-600 hover:bg-slate-700'"
+                          >
+                            <div class="text-slate-100 font-medium text-center">
+                              {{ pair.known_chunk }}
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- COMPONENTIZATION Sections -->
                         <div
-                          v-for="(pair, index) in breakdown.lego_pairs"
-                          :key="pair.lego_id"
-                          class="grid grid-cols-12 gap-4 items-stretch"
+                          v-for="pair in breakdown.lego_pairs.filter(p => p.lego_type === 'COMPOSITE')"
+                          :key="'comp-' + pair.lego_id"
+                          class="bg-purple-900/10 border border-purple-700/50 rounded-lg p-4 mt-4"
                         >
-                          <!-- Position indicator -->
-                          <div class="col-span-1 flex items-center justify-center">
-                            <div class="text-xs font-mono text-slate-500 bg-slate-700/50 rounded px-2 py-1">
-                              {{ index + 1 }}
-                            </div>
+                          <div class="text-sm font-semibold text-purple-300 mb-2">
+                            {{ pair.lego_id }} COMPONENTIZATION:
+                          </div>
+                          <div class="text-sm text-slate-300 font-mono bg-slate-900/50 rounded p-3 mb-3">
+                            {{ pair.componentization || 'No componentization details provided' }}
                           </div>
 
-                          <!-- Known chunk -->
-                          <div class="col-span-5">
-                            <div class="h-full bg-slate-700/50 border border-slate-600 rounded p-3">
-                              <div class="text-slate-100 font-medium mb-1">{{ pair.known_chunk }}</div>
-                              <div class="text-xs text-slate-400">
-                                {{ pair.lego_id }} • {{ pair.lego_type }}
-                              </div>
-                            </div>
-                          </div>
-
-                          <!-- Alignment arrow -->
-                          <div class="col-span-1 flex items-center justify-center">
-                            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                            </svg>
-                          </div>
-
-                          <!-- Target chunk -->
-                          <div class="col-span-5">
-                            <div class="h-full bg-blue-900/30 border border-blue-700 rounded p-3">
-                              <div class="text-blue-100 font-medium mb-1">{{ pair.target_chunk }}</div>
-                              <div class="text-xs text-blue-300 flex gap-2">
-                                <span v-if="pair.fd_validated" class="text-emerald-400">✓ FD</span>
-                                <span v-else class="text-red-400">✗ FD</span>
+                          <!-- Associated Feeders (if available in data) -->
+                          <div v-if="breakdown.feeder_pairs && breakdown.feeder_pairs.length > 0" class="mt-3">
+                            <div class="text-xs text-slate-400 mb-2 uppercase">Associated Feeders:</div>
+                            <div class="flex flex-wrap gap-2">
+                              <div
+                                v-for="feeder in breakdown.feeder_pairs"
+                                :key="feeder.feeder_id"
+                                class="bg-emerald-900/30 border border-emerald-700/50 rounded px-3 py-1.5 text-sm"
+                              >
+                                <div class="text-emerald-300 font-mono text-xs">{{ feeder.feeder_id }}</div>
+                                <div class="text-emerald-200">{{ feeder.target_chunk }} ⟷ {{ feeder.known_chunk }}</div>
                               </div>
                             </div>
                           </div>
                         </div>
+
+                        <!-- ALL SEED FEEDERS -->
+                        <div v-if="breakdown.feeder_pairs && breakdown.feeder_pairs.length > 0" class="border-t border-slate-700 pt-4 mt-6">
+                          <div class="text-sm font-semibold text-slate-300 mb-3 uppercase">All Seed Feeders:</div>
+                          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div
+                              v-for="feeder in breakdown.feeder_pairs"
+                              :key="'all-' + feeder.feeder_id"
+                              class="bg-emerald-900/20 border border-emerald-700/40 rounded-lg p-3"
+                            >
+                              <div class="text-emerald-400 font-mono text-xs mb-1">{{ feeder.feeder_id }}</div>
+                              <div class="text-sm">
+                                <span class="text-slate-300">{{ feeder.known_chunk }}</span>
+                                <span class="text-emerald-500 mx-2">⟷</span>
+                                <span class="text-blue-300">{{ feeder.target_chunk }}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
                       </div>
 
                       <div v-else class="text-center py-8 text-slate-400">
