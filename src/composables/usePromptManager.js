@@ -14,7 +14,18 @@ export function usePromptManager(phaseId) {
     error.value = null
 
     try {
-      const response = await fetch(`${baseURL}/api/prompts/${phaseId}`)
+      const response = await fetch(`${baseURL}/api/prompts/${phaseId}`, {
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
+      })
+
+      // Check if response is JSON (not HTML)
+      const contentType = response.headers.get('content-type')
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Automation server not available. Prompt editing requires the local automation server to be running.')
+      }
+
       const data = await response.json()
 
       if (response.ok) {
