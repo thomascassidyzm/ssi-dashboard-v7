@@ -1839,53 +1839,52 @@ app.put('/api/courses/:courseCode/translations/:uuid', async (req, res) => {
     const { source, target } = req.body;
     const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
 
-    // Find translation file
-    const translationPath = path.join(coursePath, 'amino_acids', 'translations', `${uuid}.json`);
+    console.log(`[API] Updating translation ${uuid} in ${courseCode}`);
+    console.log(`[API] New values - source: "${source}", target: "${target}"`);
 
-    if (!await fs.pathExists(translationPath)) {
-      return res.status(404).json({ error: 'Translation not found' });
+    // NEW FORMAT: Read from translations.json
+    const translationsPath = path.join(coursePath, 'translations.json');
+
+    if (!await fs.pathExists(translationsPath)) {
+      return res.status(404).json({ error: 'translations.json not found' });
     }
 
-    // Load existing translation
-    const translation = await fs.readJson(translationPath);
+    // Load all translations
+    const translationsData = await fs.readJson(translationsPath);
 
-    // Update fields
-    translation.source = source;
-    translation.target = target;
-    translation.metadata.updated_at = new Date().toISOString();
-    translation.metadata.edited = true;
+    // Find the seed (uuid is actually seed_id in new format)
+    const seedId = uuid;
+    if (!translationsData[seedId]) {
+      return res.status(404).json({ error: `Seed ${seedId} not found` });
+    }
 
-    // Save updated translation
-    await fs.writeJson(translationPath, translation, { spaces: 2 });
+    // Update the translation
+    // Format: { "S0001": [target_phrase, known_phrase] }
+    translationsData[seedId] = [target, source];
 
-    // Update course metadata to mark for regeneration
-    const metadataPath = path.join(coursePath, 'course_metadata.json');
-    const metadata = await fs.readJson(metadataPath);
-    metadata.needs_regeneration = true;
-    metadata.last_edit = {
-      seed_id: translation.seed_id,
-      timestamp: new Date().toISOString()
-    };
-    await fs.writeJson(metadataPath, metadata, { spaces: 2 });
+    // Write back to translations.json
+    await fs.writeJson(translationsPath, translationsData, { spaces: 2 });
 
-    // **NEW**: Trigger automatic Phase 3+ regeneration cascade
-    const jobId = await triggerRegenerationCascade(courseCode, translation.seed_id, uuid);
+    console.log(`[API] Successfully updated ${seedId} in translations.json`);
+
+    // TODO: Optionally trigger LEGO regeneration here
+    // For now, just mark that translation was edited
 
     res.json({
       success: true,
-      message: 'Translation updated. Phase 3+ regeneration started automatically.',
-      translation,
-      regeneration: {
-        jobId,
-        status: 'queued',
-        affectedPhases: ['3', '3.5', '4', '5', '6'],
-        seedId: translation.seed_id,
-        statusUrl: `/api/courses/${courseCode}/regeneration/${jobId}/status`
+      message: 'Translation updated successfully',
+      seed_id: seedId,
+      updated: {
+        target_phrase: target,
+        known_phrase: source
       }
     });
   } catch (error) {
-    console.error('Error updating translation:', error);
-    res.status(500).json({ error: 'Failed to update translation' });
+    console.error('[API] Error updating translation:', error);
+    res.status(500).json({
+      error: 'Failed to update translation',
+      details: error.message
+    });
   }
 });
 

@@ -1,32 +1,122 @@
 {
-  "S0001": ["Je veux parler français avec toi maintenant.", "I want to speak French with you now."],
-  "S0002": ["J'essaie d'apprendre.", "I'm trying to learn."],
-  "S0003": ["Comment parler le plus possible.", "How to speak as much as possible."],
-  "S0004": ["Comment dire quelque chose en français.", "How to say something in French."],
-  "S0005": ["Je vais pratiquer parler avec quelqu'un d'autre.", "I'm going to practice speaking with someone else."],
-  "S0006": ["J'essaie de me souvenir d'un mot.", "I'm trying to remember a word."],
-  "S0007": ["Je veux essayer le plus possible aujourd'hui.", "I want to try as hard as I can today."],
-  "S0008": ["Je vais essayer d'expliquer ce que je veux dire.", "I'm going to try to explain what I mean."],
-  "S0009": ["Je parle un peu français maintenant.", "I speak a little French now."],
-  "S0010": ["Je ne suis pas sûr si je peux me souvenir de toute la phrase.", "I'm not sure if I can remember the whole sentence."],
-  "S0011": ["J'aimerais pouvoir parler après que tu aies fini.", "I'd like to be able to speak after you finish."],
-  "S0012": ["Je n'aimerais pas deviner ce qui va se passer demain.", "I wouldn't like to guess what's going to happen tomorrow."],
-  "S0013": ["Tu parles français très bien.", "You speak French very well."],
-  "S0014": ["Tu parles français toute la journée?", "Do you speak French all day?"],
-  "S0015": ["Et je veux que tu parles français avec moi demain.", "And I want you to speak French with me tomorrow."],
-  "S0016": ["Il veut revenir avec tous les autres plus tard.", "He wants to come back with everyone else later on."],
-  "S0017": ["Elle veut découvrir quelle est la réponse.", "She wants to find out what the answer is."],
-  "S0018": ["Nous voulons nous rencontrer à six heures ce soir.", "We want to meet at six o'clock this evening."],
-  "S0019": ["Mais je ne veux pas arrêter de parler.", "But I don't want to stop talking."],
-  "S0020": ["Tu veux apprendre son nom rapidement.", "You want to learn their name quickly."],
-  "S0021": ["Pourquoi apprends-tu son nom?", "Why are you learning their name?"],
-  "S0022": ["Parce que je veux rencontrer des gens qui parlent français.", "Because I want to meet people who speak French."],
-  "S0023": ["Je vais commencer à parler plus bientôt.", "I'm going to start talking more soon."],
-  "S0024": ["Je ne vais pas pouvoir me souvenir facilement.", "I'm not going to be able to remember easily."],
-  "S0025": ["Vas-tu m'aider avant que je doive partir?", "Are you going to help me before I have to go?"],
-  "S0026": ["J'aime me sentir comme si j'étais presque prêt à partir.", "I like feeling as if I'm nearly ready to go."],
-  "S0027": ["Je n'aime pas prendre trop de temps pour répondre.", "I don't like taking too much time to answer."],
-  "S0028": ["C'est utile de commencer à parler dès que tu peux.", "It's useful to start talking as soon as you can."],
-  "S0029": ["J'ai hâte de parler mieux dès que je peux.", "I'm looking forward to speaking better as soon as I can."],
-  "S0030": ["Je voulais te demander quelque chose hier.", "I wanted to ask you something yesterday."]
+  "S0001": [
+    "Je veux parler français avec toi maintenant.",
+    "I want to speak French with you now."
+  ],
+  "S0002": [
+    "J'essaie d'apprendre.",
+    "I'm trying to learn."
+  ],
+  "S0003": [
+    "Comment parler le plus possible.",
+    "How to speak as much as possible."
+  ],
+  "S0004": [
+    "Comment dire quelque chose en français.",
+    "How to say something in French."
+  ],
+  "S0005": [
+    "Je vais pratiquer parler avec quelqu'un d'autre.",
+    "I'm going to practice speaking with someone else."
+  ],
+  "S0006": [
+    "J'essaie de me souvenir d'un mot.",
+    "I'm trying to remember a word."
+  ],
+  "S0007": [
+    "Je veux essayer le plus possible aujourd'hui.",
+    "I want to try as hard as I can today."
+  ],
+  "S0008": [
+    "Je vais essayer d'expliquer ce que je veux dire.",
+    "I'm going to try to explain what I mean."
+  ],
+  "S0009": [
+    "Je parle un peu français maintenant.",
+    "I speak a little French now."
+  ],
+  "S0010": [
+    "Je ne suis pas sûr si je peux me souvenir de toute la phrase.",
+    "I'm not sure if I can remember the whole sentence."
+  ],
+  "S0011": [
+    "J'aimerais pouvoir parler après que tu aies fini.",
+    "I'd like to be able to speak after you finish."
+  ],
+  "S0012": [
+    "Je n'aimerais pas deviner ce qui va se passer demain.",
+    "I wouldn't like to guess what's going to happen tomorrow."
+  ],
+  "S0013": [
+    "Tu parles français très bien.",
+    "You speak French very well."
+  ],
+  "S0014": [
+    "Tu parles français toute la journée?",
+    "Do you speak French all day?"
+  ],
+  "S0015": [
+    "Et je veux que tu parles français avec moi demain.",
+    "And I want you to speak French with me tomorrow."
+  ],
+  "S0016": [
+    "Il veut revenir avec tous les autres plus tard.",
+    "He wants to come back with everyone else later on."
+  ],
+  "S0017": [
+    "Elle veut découvrir quelle est la réponse.",
+    "She wants to find out what the answer is."
+  ],
+  "S0018": [
+    "Nous voulons nous rencontrer à six heures ce soir.",
+    "We want to meet at six o'clock this evening."
+  ],
+  "S0019": [
+    "Mais je ne veux pas arrêter de parler.",
+    "But I don't want to stop talking."
+  ],
+  "S0020": [
+    "Tu veux apprendre son nom rapidement.",
+    "You want to learn their name quickly."
+  ],
+  "S0021": [
+    "Pourquoi apprends-tu son nom?",
+    "Why are you learning their name?"
+  ],
+  "S0022": [
+    "Parce que je veux rencontrer des gens qui parlent français.",
+    "Because I want to meet people who speak French."
+  ],
+  "S0023": [
+    "Je vais commencer à parler plus bientôt.",
+    "I'm going to start talking more soon."
+  ],
+  "S0024": [
+    "Je ne vais pas pouvoir me souvenir facilement.",
+    "I'm not going to be able to remember easily."
+  ],
+  "S0025": [
+    "Vas-tu m'aider avant que je doive partir?",
+    "Are you going to help me before I have to go?"
+  ],
+  "S0026": [
+    "J'aime me sentir comme si j'étais presque prêt à partir.",
+    "I like feeling as if I'm nearly ready to go."
+  ],
+  "S0027": [
+    "Je n'aime pas prendre trop de temps pour répondre.",
+    "I don't like taking too much time to answer."
+  ],
+  "S0028": [
+    "C'est utile de commencer à parler dès que tu peux.",
+    "It's useful to start talking as soon as you can."
+  ],
+  "S0029": [
+    "J'ai hâte de parler mieux dès que je peux.",
+    "I'm looking forward to speaking better as soon as I can."
+  ],
+  "S0030": [
+    "Je voulais te demander quelque chose hier.",
+    "I wanted to ask you something yesterday."
+  ]
 }
