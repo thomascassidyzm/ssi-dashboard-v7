@@ -1703,6 +1703,38 @@ app.get('/api/courses/:courseCode', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/:courseCode/vfs/:filename
+ * Serve VFS files from course directory
+ */
+app.get('/api/courses/:courseCode/vfs/:filename', async (req, res) => {
+  try {
+    const { courseCode, filename } = req.params;
+    const filePath = path.join(CONFIG.VFS_ROOT, courseCode, filename);
+
+    // Security: Ensure the resolved path is within the course directory
+    const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+    if (!filePath.startsWith(coursePath)) {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+
+    // Check if file exists
+    if (!await fs.pathExists(filePath)) {
+      return res.status(404).json({ error: 'File not found' });
+    }
+
+    // Read and return the file as JSON
+    const data = await fs.readJson(filePath);
+    res.json(data);
+  } catch (error) {
+    console.error(`[API] Error serving VFS file:`, error);
+    res.status(500).json({
+      error: 'Failed to read file',
+      details: error.message
+    });
+  }
+});
+
+/**
  * GET /api/courses/:courseCode/provenance/:seedId
  * Trace provenance for a specific seed
  *
