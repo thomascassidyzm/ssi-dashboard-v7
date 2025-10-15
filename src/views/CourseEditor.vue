@@ -38,19 +38,19 @@
         <!-- Stats Overview -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">Translations</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ course.amino_acids?.translations || 0 }}</div>
-            <div class="text-xs text-slate-500 mt-1">Phase 1 amino acids</div>
+            <div class="text-sm text-slate-400 mb-1">SEED_PAIRS</div>
+            <div class="text-3xl font-bold text-emerald-400">{{ course.seed_pairs || 0 }}</div>
+            <div class="text-xs text-slate-500 mt-1">Phase 1 translations</div>
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">LEGOs</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ course.amino_acids?.legos_deduplicated || 0 }}</div>
-            <div class="text-xs text-slate-500 mt-1">Deduplicated phrases</div>
+            <div class="text-sm text-slate-400 mb-1">LEGO_PAIRS</div>
+            <div class="text-3xl font-bold text-emerald-400">{{ course.lego_pairs || 0 }}</div>
+            <div class="text-xs text-slate-500 mt-1">Phase 3 teaching units</div>
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">Baskets</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ course.amino_acids?.baskets || 0 }}</div>
-            <div class="text-xs text-slate-500 mt-1">Teaching groups</div>
+            <div class="text-sm text-slate-400 mb-1">LEGO_BASKETS</div>
+            <div class="text-3xl font-bold text-emerald-400">{{ course.lego_baskets || 0 }}</div>
+            <div class="text-xs text-slate-500 mt-1">Phase 5 lesson groupings</div>
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">Introductions</div>
@@ -79,7 +79,7 @@
             <!-- Translations Tab -->
             <div v-if="activeTab === 'translations'">
               <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-semibold text-emerald-400">Translation Amino Acids</h3>
+                <h3 class="text-lg font-semibold text-emerald-400">SEED_PAIRS (Phase 1)</h3>
                 <input
                   v-model="searchQuery"
                   type="text"
@@ -95,7 +95,7 @@
               <div v-else class="space-y-3">
                 <div
                   v-for="translation in filteredTranslations"
-                  :key="translation.uuid"
+                  :key="translation.seed_id || translation.uuid"
                   class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/50 transition-colors"
                 >
                   <div class="flex items-start justify-between mb-2">
@@ -112,7 +112,7 @@
                   </div>
                   <div class="flex gap-4 text-xs text-slate-500 mt-3">
                     <span>Seed: {{ translation.seed_id }}</span>
-                    <span>UUID: {{ translation.uuid.substring(0, 8) }}...</span>
+                    <span v-if="translation.uuid">UUID: {{ translation.uuid.substring(0, 8) }}...</span>
                   </div>
                 </div>
               </div>
@@ -120,10 +120,10 @@
 
             <!-- LEGOs Tab -->
             <div v-if="activeTab === 'legos'">
-              <h3 class="text-lg font-semibold text-emerald-400 mb-4">Deduplicated LEGOs</h3>
+              <h3 class="text-lg font-semibold text-emerald-400 mb-4">LEGO_PAIRS (Phase 3)</h3>
 
               <div v-if="legos.length === 0" class="text-center py-8 text-slate-400">
-                No LEGOs found. Run Phase 3-4 to generate LEGOs.
+                No LEGO_PAIRS found. Run Phase 3-4 to generate them.
               </div>
 
               <div v-else class="space-y-3">
@@ -148,10 +148,10 @@
 
             <!-- Baskets Tab -->
             <div v-if="activeTab === 'baskets'">
-              <h3 class="text-lg font-semibold text-emerald-400 mb-4">Teaching Baskets</h3>
+              <h3 class="text-lg font-semibold text-emerald-400 mb-4">LEGO_BASKETS (Phase 5)</h3>
 
               <div v-if="baskets.length === 0" class="text-center py-8 text-slate-400">
-                No baskets found. Run Phase 5 to generate baskets.
+                No LEGO_BASKETS found. Run Phase 5 to generate them.
               </div>
 
               <div v-else class="space-y-4">
@@ -462,9 +462,9 @@ const regenerationState = ref({
 const pollingInterval = ref(null)
 
 const tabs = [
-  { id: 'translations', label: 'Translations' },
-  { id: 'legos', label: 'LEGOs' },
-  { id: 'baskets', label: 'Baskets' },
+  { id: 'translations', label: 'SEED_PAIRS' },
+  { id: 'legos', label: 'LEGO_PAIRS' },
+  { id: 'baskets', label: 'LEGO_BASKETS' },
   { id: 'provenance', label: 'Provenance Tracking' }
 ]
 
@@ -489,7 +489,13 @@ async function loadCourse() {
   try {
     const response = await api.course.get(courseCode)
     course.value = response.course
-    translations.value = response.translations || []
+    // Map API response to component format
+    translations.value = (response.translations || []).map(t => ({
+      ...t,
+      source: t.known_phrase || t.source,
+      target: t.target_phrase || t.target,
+      uuid: t.uuid || t.seed_id
+    }))
     legos.value = response.legos || []
     baskets.value = response.baskets || []
   } catch (err) {
