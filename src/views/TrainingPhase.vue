@@ -363,7 +363,7 @@ Structure:
       'Apply 6 pedagogical heuristics to each seed translation',
       'Optimize for learner comprehension and retention',
       'Maintain natural target language expression',
-      'Generate amino acid translation records with deterministic UUIDs'
+      'Generate SEED_PAIRS with target + known language'
     ],
     steps: [
       {
@@ -393,11 +393,11 @@ Structure:
       'UUIDs are deterministic: UUID = hash(source + target + metadata)',
       'Phase 1 creates the foundational translation layer for all downstream phases'
     ],
-    output: '668 translation amino acid JSON files stored in VFS with deterministic UUIDs',
+    output: 'SEED_PAIRS_COMPLETE.json containing all 668 translated seed pairs (target + known language)',
     prompt: `# Phase 1: Pedagogical Translation
 
 ## Task
-Apply 6 pedagogical heuristics to translate all 668 canonical seeds into optimized learning material.
+Apply 6 pedagogical heuristics to translate all 668 canonical seeds into optimized SEED_PAIRS.
 
 ## Input
 - Canonical seeds: vfs/seeds/canonical_seeds.json
@@ -414,29 +414,43 @@ Apply 6 pedagogical heuristics to translate all 668 canonical seeds into optimiz
 ## Your Mission
 For each seed:
 1. Apply all 6 heuristics to create pedagogically optimized translation
-2. Generate deterministic UUID: hash(source + target + metadata)
-3. Store as translation amino acid JSON:
-   - UUID as filename
-   - Content: { source, target, seed_id, heuristics_applied, metadata }
-4. Save to: vfs/amino_acids/translations/{uuid}.json
+2. Create SEED_PAIR with both target and known language
+3. Store as SEED_PAIR with structure:
+   {
+     "seed_id": "S0001",
+     "target": "[target language sentence]",
+     "known": "[known language sentence]",
+     "heuristics_applied": [...],
+     "metadata": {...}
+   }
+4. Process in batches of 100 seeds
+5. Save to: SEED_PAIRS_COMPLETE.json (all 668 seeds combined)
 
 ## Critical Rules
 - Translations are NOT literal - they are pedagogically optimized
-- Each translation is an immutable amino acid component
-- UUIDs are content-based (deterministic)
+- Each SEED_PAIR is the foundation for LEGO decomposition (Phase 3)
+- Both target AND known language must be natural and pedagogically sound
 - Preserve seed_id for provenance tracking
 
 ## Example Translation
 Seed S42: "I would like to go"
-Literal: "Hoffwn i fynd"
-Pedagogical: "Dw i eisiau mynd" (more natural, higher frequency, clearer for learners)
+Literal Welsh: "Hoffwn i fynd"
+Pedagogical Welsh: "Dw i eisiau mynd" (more natural, higher frequency, clearer)
+
+## Output Format
+Process in batches:
+- SEED_PAIRS_BATCH_001.json (seeds 1-100)
+- SEED_PAIRS_BATCH_002.json (seeds 101-200)
+- etc.
+
+ALSO create: SEED_PAIRS_COMPLETE.json (all 668 seeds)
 
 ## Success Criteria
 ✓ All 668 seeds translated
 ✓ All 6 heuristics applied to each
-✓ Deterministic UUIDs generated
-✓ Amino acids stored in VFS
-✓ Provenance preserved (seed_id in each amino acid)`
+✓ SEED_PAIRS stored with target + known language
+✓ Batch files and complete file generated
+✓ Provenance preserved (seed_id in each SEED_PAIR)`
   },
   '2': {
     name: 'Corpus Intelligence',
@@ -471,14 +485,14 @@ Pedagogical: "Dw i eisiau mynd" (more natural, higher frequency, clearer for lea
       'Utility scores may override FCFS for high-value teaching opportunities',
       'This phase prepares the key inputs for LEGO extraction decisions'
     ],
-    output: 'Corpus intelligence JSON with FCFS mappings and utility scores for each translation',
+    output: 'Corpus intelligence JSON with FCFS mappings and utility scores for all SEED_PAIRS',
     prompt: `# Phase 2: Corpus Intelligence
 
 ## Task
-Analyze translated corpus to determine FCFS (First-Can-First-Say) order and calculate utility scores.
+Analyze SEED_PAIRS corpus to determine FCFS (First-Can-First-Say) order and calculate utility scores.
 
 ## Input
-- Translation amino acids: vfs/amino_acids/translations/*.json
+- SEED_PAIRS: SEED_PAIRS_COMPLETE.json (all 668 seeds)
 - Phase 0 intelligence: vfs/phase_outputs/phase_0_intelligence.json
 
 ## Your Mission
@@ -486,50 +500,57 @@ Analyze translated corpus to determine FCFS (First-Can-First-Say) order and calc
    - Identify prerequisite knowledge (what must be learned first)
    - Map dependency chains (word A requires word B)
    - Establish natural learning progression
+   - Analyze BOTH target and known language structures
 
 2. **Utility Scoring**: Calculate pedagogical value
    - Formula: Frequency × Versatility × Simplicity
    - Frequency: How often used in corpus
    - Versatility: How many contexts it appears in
    - Simplicity: How easy to learn/teach
+   - Consider both languages for complete assessment
 
 3. **Generate Intelligence Report**:
-   - FCFS rankings for all translations
+   - FCFS rankings for all SEED_PAIRS
    - Utility scores (0-100 scale)
    - Dependency maps
    - Teaching sequence recommendations
+   - Pattern analysis for LEGO extraction
 
 ## Output Format
 vfs/phase_outputs/phase_2_corpus_intelligence.json
 
 {
-  "fcfs_order": [ ... ],
-  "utility_scores": { translation_uuid: score, ... },
+  "fcfs_order": [ "S0001", "S0042", ... ],
+  "utility_scores": { "S0001": 85, "S0042": 92, ... },
   "dependencies": { ... },
+  "patterns": { ... },
   "recommendations": { ... }
 }
 
 ## Critical Notes
 - FCFS = "natural" chronological sequence
 - Utility may override FCFS for high-value opportunities
-- This data drives Phase 3 LEGO extraction algorithm
+- This intelligence drives Phase 3 LEGO decomposition
+- Analyze frequency patterns across the entire corpus
+- Consider both target and known language complexity
 
 ## Success Criteria
-✓ FCFS order complete
-✓ Utility scores calculated for all translations
+✓ FCFS order complete for all 668 SEED_PAIRS
+✓ Utility scores calculated
 ✓ Dependency maps generated
-✓ Ready for Phase 3 consumption`
+✓ Pattern analysis complete
+✓ Ready for Phase 3 LEGO decomposition`
   },
   '3': {
     name: 'LEGO Extraction',
     description: 'FCFS vs Utility optimization + IRON RULE enforcement',
     overview: 'Phase 3 extracts LEGO (teaching) phrases from translations by balancing FCFS chronological order against pedagogical utility, while strictly enforcing the IRON RULE: no LEGO begins or ends with a preposition.',
     objectives: [
-      'Extract optimal teaching phrases (LEGOs) from translations',
-      'Balance FCFS order vs utility scoring',
-      'Enforce IRON RULE: no preposition boundaries',
+      'Decompose SEED_PAIRS into FD-compliant LEGO_PAIRS',
+      'Apply FD_LOOP test to every LEGO chunk',
+      'Use FCFS corpus frequency to claim semantic territory',
       'Track provenance with S{seed}L{position} format',
-      'Generate LEGO amino acids with deterministic UUIDs'
+      'Generate LEGO_BREAKDOWNS_COMPLETE.json with all decompositions'
     ],
     steps: [
       {
@@ -609,56 +630,135 @@ vfs/phase_outputs/phase_2_corpus_intelligence.json
 This architecture is documented in APML v7.3.0.
       `
     },
-    output: 'LEGO amino acid JSON files in VFS with provenance labels and deterministic UUIDs',
-    prompt: `# Phase 3: LEGO Extraction
+    output: 'LEGO_BREAKDOWNS_COMPLETE.json with all SEED_PAIR decompositions into LEGO_PAIRS',
+    prompt: `# Phase 3: LEGO Decomposition
 
-## Task
-Extract optimal teaching phrases (LEGOs) from translations, balancing FCFS vs Utility while enforcing the IRON RULE.
+Break each SEED_PAIR into LEGO chunks that:
+1. When placed side-by-side, EXACTLY reconstruct the original sentence
+2. Each LEGO passes the FD_LOOP test independently
+3. Are reusable across multiple sentences
 
-## Input
-- Translation amino acids: vfs/amino_acids/translations/*.json
-- Corpus intelligence: vfs/phase_outputs/phase_2_corpus_intelligence.json
+## MANDATORY UID FORMAT
+For seed S0001:
+- LEGOs: S0001L01, S0001L02, S0001L03
+- FEEDERs: S0001F01, S0001F02 (sub-components of multi-word LEGOs)
+NEVER use L0001 or F0001 (missing parent seed ID)
+
+## FD_LOOP TEST (MANDATORY FOR EVERY CHUNK)
+Target → Known → Target = MUST BE IDENTICAL
+✅ "importante" → "important" → "importante" (IDENTICAL)
+❌ "bien" → "good" → "bueno" (DIFFERENT = FAIL)
+
+## FCFS RULE (First Come, First Served)
+When multiple valid mappings exist, use corpus frequency to CLAIM semantic territory:
+
+### ARTISTIC CHOICE (flexible mapping allowed):
+- "quiero" appears 15x as "I want" in corpus → CLAIM as "I want"
+- "deseo" appears 2x → must use MORE SPECIFIC: "I desire" or "I really want"
+- Once claimed, "I want" ALWAYS → "quiero" in this course
+
+### GRAMMATICAL CONSTRAINT (NO flexibility):
+- "estoy" CANNOT claim generic "I am" - MUST include temporal aspect
+  ✅ "estoy aprendiendo" → "I'm learning" (temporary state)
+  ❌ "estoy" → "I am" (loses critical grammar distinction)
+
+## AUTOMATIC REJECTION LIST
+**Function Words (ALWAYS FAIL FD):**
+- Articles: el/la/los/las, un/una (gender ambiguous)
+- Pronouns: le/lo/la (multiple meanings)
+- Prepositions: en (in/on/at), de (of/from/about), por/para
+- "que" (that/what/which) - context dependent
+
+## DUAL-PASS METHODOLOGY
+
+### PASS 1: Forward Analysis (Target → Known)
+1. Start with first word of target sentence
+2. Test for FD compliance using FD_LOOP
+3. If fails, expand to include next word
+4. Continue until FD passes or sentence complete
+
+### PASS 2: Reverse Validation (Known → Target)
+1. Take each known chunk
+2. Verify it maps back to EXACT target chunk
+3. If different → REJECT and re-decompose
+
+### PASS 3: Corpus-Wide Validation
+For EVERY chunk, search ALL other SEED_PAIRS:
+- Find every occurrence of this chunk
+- Count frequency of each mapping
+- Apply FCFS: most frequent claims simple mapping
+- Less frequent must differentiate with context
+
+## COMPONENTIZATION (when BOTH languages are multi-word)
+✅ REQUIRED: "parlare italiano" ↔ "parler italien" (BOTH are 2 words)
+✅ REQUIRED: "para su hermana" ↔ "for his sister" (BOTH are 3 words)
+❌ NOT NEEDED: "construir" ↔ "build" (both single words)
+
+FORMAT: Simple word mappings ONLY
+"[known LEGO] = [target LEGO], where [target1] = [known1] and [target2] = [known2]"
 
 ## THE IRON RULE (ABSOLUTE)
 **No LEGO begins or ends with a preposition.**
 - Examples: ✗ "to the", ✗ "with me", ✗ "in"
 - This is NON-NEGOTIABLE
 
-## Your Mission
-For each translation:
-1. **Identify LEGO candidates** (potential teaching phrases)
-2. **Apply IRON RULE filter** - reject any LEGO with preposition boundaries
-3. **Balance FCFS vs Utility**:
-   - FCFS: Chronological learning order (baseline)
-   - Utility: Pedagogical value (may override FCFS for high-value LEGOs)
-4. **Assign Provenance**: S{seed}L{position}
-   - Example: S12L3 = Seed 12, LEGO position 3
-5. **Generate deterministic UUID**: hash(lego_text + source_translation + position)
-6. **Store as LEGO amino acid**: vfs/amino_acids/legos/{uuid}.json
+## INPUT DATA
+Read ALL SEED_PAIRS from: SEED_PAIRS_COMPLETE.json (contains all 668 seeds)
 
-## LEGO Amino Acid Structure
+Structure:
 {
-  "uuid": "...",
-  "text": "the LEGO phrase",
-  "provenance": "S12L3",
-  "source_translation_uuid": "...",
-  "fcfs_score": 85,
-  "utility_score": 92,
-  "metadata": { ... }
+  "seed_pairs": [
+    {
+      "seed_id": "S0001",
+      "target": "[sentence in target language]",
+      "known": "[sentence in known language]"
+    }
+  ]
 }
 
-## Critical Rules
-- IRON RULE is absolute
-- Each LEGO is immutable (edits create NEW LEGOs)
-- Provenance enables edit propagation
-- Balance FCFS (chronological) vs Utility (pedagogical value)
+## OUTPUT FILES
+Process in batches of 20 seeds:
+- LEGO_BREAKDOWNS_BATCH_001.json (seeds 1-20)
+- LEGO_BREAKDOWNS_BATCH_002.json (seeds 21-40)
+- etc.
+
+ALSO create combined file: LEGO_BREAKDOWNS_COMPLETE.json (all seeds)
+
+Structure for each file:
+{
+  "phase": "LEGO_BREAKDOWNS",
+  "batch": "001",
+  "target_language": "[target]",
+  "known_language": "[known]",
+  "lego_breakdowns": [
+    {
+      "seed_id": "S0001",
+      "canonical_id": "C0001",
+      "original_target": "actual target sentence",
+      "original_known": "actual known sentence",
+      "lego_pairs": [
+        // FD-compliant chunks
+      ],
+      "feeder_pairs": [
+        // Sub-components of multi-word LEGOs
+      ],
+      "componentization": [
+        // ONLY when BOTH target AND known are multi-word
+        {
+          "lego_id": "S0001L02",
+          "explanation": "[known] = [target], where [word1] = [word1] and [word2] = [word2]"
+        }
+      ]
+    }
+  ]
+}
 
 ## Success Criteria
-✓ All translations processed
-✓ IRON RULE enforced (zero preposition boundaries)
+✓ All SEED_PAIRS processed
+✓ FD_LOOP test passed for every LEGO
+✓ FCFS rules applied corpus-wide
 ✓ Provenance assigned (S{seed}L{position})
-✓ UUIDs deterministic
-✓ LEGO amino acids stored in VFS`
+✓ LEGO_BREAKDOWNS_COMPLETE.json generated`
   },
   '3.5': {
     name: 'Graph Construction',

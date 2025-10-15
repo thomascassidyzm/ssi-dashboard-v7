@@ -59,16 +59,16 @@
           <!-- Stats -->
           <div class="grid grid-cols-2 gap-3 mb-4 text-sm">
             <div class="bg-slate-900/50 rounded p-3">
-              <div class="text-slate-400 text-xs mb-1">Translations</div>
-              <div class="text-emerald-400 font-semibold">{{ course.amino_acids?.translations || 0 }}</div>
+              <div class="text-slate-400 text-xs mb-1">SEED_PAIRS</div>
+              <div class="text-emerald-400 font-semibold">{{ course.seed_pairs || 0 }}</div>
             </div>
             <div class="bg-slate-900/50 rounded p-3">
-              <div class="text-slate-400 text-xs mb-1">LEGOs</div>
-              <div class="text-emerald-400 font-semibold">{{ course.amino_acids?.legos_deduplicated || 0 }}</div>
+              <div class="text-slate-400 text-xs mb-1">LEGO_PAIRS</div>
+              <div class="text-emerald-400 font-semibold">{{ course.lego_pairs || 0 }}</div>
             </div>
             <div class="bg-slate-900/50 rounded p-3">
-              <div class="text-slate-400 text-xs mb-1">Baskets</div>
-              <div class="text-emerald-400 font-semibold">{{ course.amino_acids?.baskets || 0 }}</div>
+              <div class="text-slate-400 text-xs mb-1">LEGO_BASKETS</div>
+              <div class="text-emerald-400 font-semibold">{{ course.lego_baskets || 0 }}</div>
             </div>
             <div class="bg-slate-900/50 rounded p-3">
               <div class="text-slate-400 text-xs mb-1">Introductions</div>

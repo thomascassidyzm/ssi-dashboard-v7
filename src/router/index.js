@@ -99,6 +99,13 @@ const routes = [
     props: true,
     meta: { title: 'Course Health Report' }
   },
+  {
+    path: '/quality/:courseCode/learned-rules',
+    name: 'LearnedRulesView',
+    component: () => import('../components/quality/LearnedRulesView.vue'),
+    props: true,
+    meta: { title: 'Self-Learning Rules' }
+  },
 
   // Visualization Routes
   {

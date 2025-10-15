@@ -1637,8 +1637,27 @@ app.get('/api/courses/:courseCode', async (req, res) => {
     // Load LEGO_BREAKDOWNS_COMPLETE.json
     const legoData = await fs.readJson(legosPath);
 
-    // Extract lego_breakdowns array (already in correct format!)
-    const legos = legoData.lego_breakdowns || [];
+    // Flatten lego_breakdowns into individual LEGO pairs for frontend
+    // Input: lego_breakdowns array where each has lego_pairs array
+    // Output: flat array of individual LEGO pairs in frontend format
+    const legos = [];
+    for (const breakdown of (legoData.lego_breakdowns || [])) {
+      for (const legoPair of (breakdown.lego_pairs || [])) {
+        legos.push({
+          uuid: legoPair.lego_id,
+          seed_id: breakdown.seed_id,
+          text: `${legoPair.known_chunk} = ${legoPair.target_chunk}`,
+          lego_type: legoPair.lego_type,
+          target_chunk: legoPair.target_chunk,
+          known_chunk: legoPair.known_chunk,
+          fd_validated: legoPair.fd_validated,
+          componentization: legoPair.componentization || null,
+          provenance: breakdown.seed_id, // Provenance is the seed that generated this LEGO
+          fcfs_score: null, // Not calculated yet (Phase 4)
+          utility_score: null // Not calculated yet (Phase 4)
+        });
+      }
+    }
 
     // Generate course metadata
     const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\\d+)seeds$/);
@@ -1661,16 +1680,17 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       phases_completed: ['1', '3'],
 
       // Metadata from LEGO file
-      target_language_name: legoData.target_language,
-      known_language_name: legoData.known_language
+      target_language_name: legoData.course_metadata?.target_language || legoData.target_language,
+      known_language_name: legoData.course_metadata?.known_language || legoData.known_language
     };
 
-    console.log(`[API] Loaded course ${courseCode}: ${translations.length} translations, ${legos.length} LEGO breakdowns`);
+    console.log(`[API] Loaded course ${courseCode}: ${translations.length} translations, ${legos.length} LEGO pairs`);
 
     res.json({
       course,
       translations,
       legos,
+      lego_breakdowns: legoData.lego_breakdowns || [], // Raw breakdown data for visualizer
       baskets: [] // Empty for now (Phase 5 not implemented)
     });
   } catch (error) {
@@ -1883,6 +1903,66 @@ app.put('/api/courses/:courseCode/translations/:uuid', async (req, res) => {
     console.error('[API] Error updating translation:', error);
     res.status(500).json({
       error: 'Failed to update translation',
+      details: error.message
+    });
+  }
+});
+
+/**
+ * PUT /api/courses/:courseCode/breakdowns/:seedId
+ * Update LEGO breakdown for a specific seed
+ */
+app.put('/api/courses/:courseCode/breakdowns/:seedId', async (req, res) => {
+  try {
+    const { courseCode, seedId } = req.params;
+    const { lego_pairs } = req.body;
+    const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+
+    console.log(`[API] Updating LEGO breakdown for ${seedId} in ${courseCode}`);
+    console.log(`[API] New LEGO pairs:`, lego_pairs);
+
+    // Load LEGO_BREAKDOWNS_COMPLETE.json
+    const legosPath = path.join(coursePath, 'LEGO_BREAKDOWNS_COMPLETE.json');
+
+    if (!await fs.pathExists(legosPath)) {
+      return res.status(404).json({ error: 'LEGO_BREAKDOWNS_COMPLETE.json not found' });
+    }
+
+    const legoData = await fs.readJson(legosPath);
+
+    // Find the breakdown for this seed
+    const breakdownIndex = legoData.lego_breakdowns.findIndex(b => b.seed_id === seedId);
+    if (breakdownIndex === -1) {
+      return res.status(404).json({ error: `Breakdown for ${seedId} not found` });
+    }
+
+    const breakdown = legoData.lego_breakdowns[breakdownIndex];
+
+    // Update lego_pairs with new boundaries
+    // Convert simple pairs to full format
+    breakdown.lego_pairs = lego_pairs.map((pair, index) => ({
+      lego_id: `${seedId}L${String(index + 1).padStart(2, '0')}`,
+      lego_type: 'BASE', // Default to BASE, user would need to manually mark as COMPOSITE
+      target_chunk: pair.target,
+      known_chunk: pair.known,
+      fd_validated: false // Mark as needs revalidation
+    }));
+
+    // Write back to LEGO_BREAKDOWNS_COMPLETE.json
+    await fs.writeJson(legosPath, legoData, { spaces: 2 });
+
+    console.log(`[API] Successfully updated LEGO breakdown for ${seedId}`);
+
+    res.json({
+      success: true,
+      message: 'LEGO breakdown updated successfully',
+      seed_id: seedId,
+      lego_pairs: breakdown.lego_pairs
+    });
+  } catch (error) {
+    console.error('[API] Error updating LEGO breakdown:', error);
+    res.status(500).json({
+      error: 'Failed to update LEGO breakdown',
       details: error.message
     });
   }

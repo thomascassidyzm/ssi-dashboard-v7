@@ -120,25 +120,222 @@
 
             <!-- LEGOs Tab -->
             <div v-if="activeTab === 'legos'">
-              <h3 class="text-lg font-semibold text-emerald-400 mb-4">LEGO_PAIRS (Phase 3)</h3>
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-emerald-400">SEED → LEGO Breakdown (Phase 3)</h3>
+                <div class="text-sm text-slate-400">
+                  {{ legoBreakdowns.length }} seeds • {{ legos.length }} LEGO pairs
+                </div>
+              </div>
 
-              <div v-if="legos.length === 0" class="text-center py-8 text-slate-400">
+              <div v-if="legoBreakdowns.length === 0" class="text-center py-8 text-slate-400">
                 No LEGO_PAIRS found. Run Phase 3-4 to generate them.
               </div>
 
-              <div v-else class="space-y-3">
+              <div v-else class="space-y-6">
                 <div
-                  v-for="lego in legos.slice(0, 50)"
-                  :key="lego.uuid"
-                  class="bg-slate-900/50 border border-slate-700 rounded-lg p-4"
+                  v-for="breakdown in legoBreakdowns.slice(0, 10)"
+                  :key="breakdown.seed_id"
+                  class="bg-slate-800 border rounded-lg overflow-hidden"
+                  :class="{
+                    'border-emerald-500': breakdown.lego_pairs?.length > 0,
+                    'border-yellow-500': !breakdown.lego_pairs || breakdown.lego_pairs.length === 0,
+                    'border-blue-500 ring-2 ring-blue-500/50': editingBreakdown === breakdown.seed_id
+                  }"
                 >
-                  <div class="flex items-start justify-between">
-                    <div class="flex-1">
-                      <div class="text-emerald-400 font-medium mb-2">"{{ lego.text }}"</div>
-                      <div class="flex gap-3 text-xs text-slate-400">
-                        <span>Provenance: {{ formatProvenance(lego.provenance) }}</span>
-                        <span>FCFS: {{ lego.fcfs_score }}</span>
-                        <span>Utility: {{ lego.utility_score }}</span>
+                  <!-- Breakdown Header -->
+                  <div class="px-6 py-4 border-b bg-slate-800/50 flex items-center justify-between"
+                       :class="{
+                         'border-slate-700': editingBreakdown !== breakdown.seed_id,
+                         'border-blue-500': editingBreakdown === breakdown.seed_id
+                       }">
+                    <div class="flex items-center gap-4">
+                      <span class="text-sm font-mono text-cyan-400 bg-cyan-400/10 px-3 py-1 rounded">
+                        {{ breakdown.seed_id }}
+                      </span>
+                      <span class="text-xs text-slate-400">
+                        {{ breakdown.lego_pairs?.length || 0 }} LEGO_PAIRS
+                      </span>
+                      <span v-if="breakdown.lego_pairs?.some(lp => lp.lego_type === 'COMPOSITE')" class="text-xs text-purple-400">
+                        Contains composites
+                      </span>
+                    </div>
+
+                    <button
+                      v-if="editingBreakdown !== breakdown.seed_id"
+                      @click="startEditingBreakdown(breakdown)"
+                      class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded transition"
+                    >
+                      Edit Boundaries
+                    </button>
+                    <div v-else class="flex gap-2">
+                      <button
+                        @click="saveBreakdown(breakdown)"
+                        class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm rounded transition"
+                      >
+                        Save Changes
+                      </button>
+                      <button
+                        @click="cancelEditingBreakdown"
+                        class="px-4 py-2 bg-slate-600 hover:bg-slate-700 text-white text-sm rounded transition"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Breakdown Content -->
+                  <div class="p-6">
+                    <!-- Full Sentences (Reference) -->
+                    <div class="mb-6 text-sm text-slate-400 bg-slate-900/50 rounded p-4">
+                      <div class="mb-2">
+                        <span class="text-emerald-400 font-semibold">Target:</span> {{ breakdown.original_target }}
+                      </div>
+                      <div>
+                        <span class="text-slate-300 font-semibold">Known:</span> {{ breakdown.original_known }}
+                      </div>
+                    </div>
+
+                    <!-- View Mode: Display LEGO Pairs -->
+                    <div v-if="editingBreakdown !== breakdown.seed_id">
+                      <div v-if="breakdown.lego_pairs && breakdown.lego_pairs.length > 0" class="space-y-3">
+                        <div
+                          v-for="(pair, index) in breakdown.lego_pairs"
+                          :key="pair.lego_id"
+                          class="grid grid-cols-12 gap-4 items-stretch"
+                        >
+                          <!-- Position indicator -->
+                          <div class="col-span-1 flex items-center justify-center">
+                            <div class="text-xs font-mono text-slate-500 bg-slate-700/50 rounded px-2 py-1">
+                              {{ index + 1 }}
+                            </div>
+                          </div>
+
+                          <!-- Known chunk -->
+                          <div class="col-span-5">
+                            <div class="h-full bg-slate-700/50 border border-slate-600 rounded p-3">
+                              <div class="text-slate-100 font-medium mb-1">{{ pair.known_chunk }}</div>
+                              <div class="text-xs text-slate-400">
+                                {{ pair.lego_id }} • {{ pair.lego_type }}
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Alignment arrow -->
+                          <div class="col-span-1 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                          </div>
+
+                          <!-- Target chunk -->
+                          <div class="col-span-5">
+                            <div class="h-full bg-blue-900/30 border border-blue-700 rounded p-3">
+                              <div class="text-blue-100 font-medium mb-1">{{ pair.target_chunk }}</div>
+                              <div class="text-xs text-blue-300 flex gap-2">
+                                <span v-if="pair.fd_validated" class="text-emerald-400">✓ FD</span>
+                                <span v-else class="text-red-400">✗ FD</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div v-else class="text-center py-8 text-slate-400">
+                        No LEGO_PAIRS extracted yet
+                      </div>
+                    </div>
+
+                    <!-- Edit Mode: Draggable Dividers -->
+                    <div v-else class="space-y-6">
+                      <!-- Instructions -->
+                      <div class="p-4 bg-blue-900/20 border border-blue-700/50 rounded">
+                        <div class="text-sm text-blue-200">
+                          <div class="font-semibold mb-2">✏️ Editing Mode</div>
+                          <p class="text-xs text-blue-300">
+                            Click the vertical dividers between words to add/remove LEGO boundaries. LEGOs must tile perfectly to cover all words.
+                          </p>
+                        </div>
+                      </div>
+
+                      <!-- Known Language Editor -->
+                      <div class="space-y-2">
+                        <div class="text-sm font-semibold text-slate-300">Known Language</div>
+                        <div class="bg-slate-700/50 border border-slate-600 rounded p-4">
+                          <div class="flex flex-wrap items-center gap-1">
+                            <template v-for="(word, wordIndex) in getWords(breakdown.original_known)" :key="'known-' + wordIndex">
+                              <span class="px-2 py-1 bg-slate-600/50 rounded text-slate-100">{{ word }}</span>
+                              <div
+                                v-if="wordIndex < getWords(breakdown.original_known).length - 1"
+                                @click="toggleDivider(breakdown, wordIndex)"
+                                class="cursor-pointer group relative"
+                              >
+                                <div
+                                  class="w-1 h-8 rounded transition-all"
+                                  :class="isDividerActive(breakdown, wordIndex) ? 'bg-emerald-500' : 'bg-slate-500 group-hover:bg-slate-400'"
+                                ></div>
+                                <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                  <div class="text-xs bg-slate-700 px-2 py-1 rounded whitespace-nowrap">
+                                    {{ isDividerActive(breakdown, wordIndex) ? 'Remove split' : 'Split here' }}
+                                  </div>
+                                </div>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Target Language Editor -->
+                      <div class="space-y-2">
+                        <div class="text-sm font-semibold text-blue-300">Target Language</div>
+                        <div class="bg-blue-900/30 border border-blue-700 rounded p-4">
+                          <div class="flex flex-wrap items-center gap-1">
+                            <template v-for="(word, wordIndex) in getWords(breakdown.original_target)" :key="'target-' + wordIndex">
+                              <span class="px-2 py-1 bg-blue-800/50 rounded text-blue-100">{{ word }}</span>
+                              <div
+                                v-if="wordIndex < getWords(breakdown.original_target).length - 1"
+                                @click="toggleDivider(breakdown, wordIndex)"
+                                class="cursor-pointer group relative"
+                              >
+                                <div
+                                  class="w-1 h-8 rounded transition-all"
+                                  :class="isDividerActive(breakdown, wordIndex) ? 'bg-emerald-500' : 'bg-slate-600 group-hover:bg-slate-400'"
+                                ></div>
+                                <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                  <div class="text-xs bg-slate-700 px-2 py-1 rounded whitespace-nowrap">
+                                    {{ isDividerActive(breakdown, wordIndex) ? 'Remove split' : 'Split here' }}
+                                  </div>
+                                </div>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Preview of Current LEGO_PAIRS -->
+                      <div class="space-y-2">
+                        <div class="text-sm font-semibold text-emerald-300">Preview ({{ getPreviewLegoCount(breakdown) }} LEGOs)</div>
+                        <div class="space-y-2">
+                          <div
+                            v-for="(lego, index) in getPreviewLegoPairs(breakdown)"
+                            :key="index"
+                            class="grid grid-cols-12 gap-2 items-center text-sm"
+                          >
+                            <div class="col-span-1 text-center text-slate-500 font-mono text-xs">
+                              {{ index + 1 }}
+                            </div>
+                            <div class="col-span-5 bg-slate-700/30 border border-slate-600/30 rounded px-3 py-2">
+                              <span class="text-slate-200">{{ lego.known }}</span>
+                            </div>
+                            <div class="col-span-1 flex justify-center">
+                              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                              </svg>
+                            </div>
+                            <div class="col-span-5 bg-blue-900/20 border border-blue-700/30 rounded px-3 py-2">
+                              <span class="text-blue-200">{{ lego.target }}</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -429,9 +626,12 @@ const courseCode = route.params.courseCode
 const course = ref(null)
 const translations = ref([])
 const legos = ref([])
+const legoBreakdowns = ref([]) // Raw breakdown data for visualizer
 const baskets = ref([])
 const loading = ref(true)
 const error = ref(null)
+const editingBreakdown = ref(null) // Track which seed breakdown is being edited
+const editDividers = ref({}) // Track divider positions for editing
 
 const activeTab = ref('translations')
 const searchQuery = ref('')
@@ -497,6 +697,7 @@ async function loadCourse() {
       uuid: t.uuid || t.seed_id
     }))
     legos.value = response.legos || []
+    legoBreakdowns.value = response.lego_breakdowns || []
     baskets.value = response.baskets || []
   } catch (err) {
     error.value = err.message || 'Failed to load course'
@@ -532,6 +733,126 @@ function formatProvenance(provenance) {
     return provenance.map(p => p.provenance).join(', ')
   }
   return provenance || 'N/A'
+}
+
+// LEGO Breakdown Editing Functions
+function getWords(text) {
+  if (!text) return []
+  return text.split(/\s+/).filter(w => w.length > 0)
+}
+
+function startEditingBreakdown(breakdown) {
+  editingBreakdown.value = breakdown.seed_id
+
+  // Initialize divider positions from existing LEGO boundaries
+  const knownWords = getWords(breakdown.original_known)
+  const targetWords = getWords(breakdown.original_target)
+  const dividers = new Array(Math.max(knownWords.length, targetWords.length) - 1).fill(false)
+
+  // Mark existing LEGO boundaries
+  let wordCount = 0
+  for (const pair of breakdown.lego_pairs || []) {
+    const pairWords = getWords(pair.known_chunk)
+    wordCount += pairWords.length
+    if (wordCount < knownWords.length) {
+      dividers[wordCount - 1] = true
+    }
+  }
+
+  editDividers.value[breakdown.seed_id] = dividers
+}
+
+function cancelEditingBreakdown() {
+  if (editingBreakdown.value) {
+    delete editDividers.value[editingBreakdown.value]
+  }
+  editingBreakdown.value = null
+}
+
+function toggleDivider(breakdown, wordIndex) {
+  const dividers = editDividers.value[breakdown.seed_id]
+  if (!dividers) return
+
+  dividers[wordIndex] = !dividers[wordIndex]
+}
+
+function isDividerActive(breakdown, wordIndex) {
+  const dividers = editDividers.value[breakdown.seed_id]
+  if (!dividers) return false
+  return dividers[wordIndex] || false
+}
+
+function getPreviewLegoCount(breakdown) {
+  const dividers = editDividers.value[breakdown.seed_id]
+  if (!dividers) return 0
+
+  const splits = dividers.filter(d => d).length
+  return splits + 1
+}
+
+function getPreviewLegoPairs(breakdown) {
+  const dividers = editDividers.value[breakdown.seed_id]
+  if (!dividers) return []
+
+  const knownWords = getWords(breakdown.original_known)
+  const targetWords = getWords(breakdown.original_target)
+
+  const pairs = []
+  let knownStart = 0
+  let targetStart = 0
+
+  for (let i = 0; i < dividers.length; i++) {
+    if (dividers[i] || i === dividers.length - 1) {
+      const knownEnd = i + 1
+      const targetEnd = i + 1
+
+      const knownChunk = knownWords.slice(knownStart, knownEnd).join(' ')
+      const targetChunk = targetWords.slice(targetStart, targetEnd).join(' ')
+
+      if (knownChunk) {
+        pairs.push({
+          known: knownChunk,
+          target: targetChunk
+        })
+      }
+
+      knownStart = knownEnd
+      targetStart = targetEnd
+    }
+  }
+
+  // Add final LEGO if there are remaining words
+  if (knownStart < knownWords.length) {
+    pairs.push({
+      known: knownWords.slice(knownStart).join(' '),
+      target: targetWords.slice(targetStart).join(' ')
+    })
+  }
+
+  return pairs
+}
+
+async function saveBreakdown(breakdown) {
+  try {
+    const editedPairs = getPreviewLegoPairs(breakdown)
+
+    console.log(`[CourseEditor] Saving breakdown for ${breakdown.seed_id}`, editedPairs)
+
+    // Send to API - we need to create this endpoint
+    await api.put(`/api/courses/${courseCode}/breakdowns/${breakdown.seed_id}`, {
+      lego_pairs: editedPairs
+    })
+
+    // Reload course data
+    await loadCourse()
+
+    // Clear edit state
+    cancelEditingBreakdown()
+
+  } catch (err) {
+    console.error('Failed to save breakdown:', err)
+    alert('Failed to save breakdown: ' + err.message)
+  }
 }
 
 async function editTranslation(translation) {

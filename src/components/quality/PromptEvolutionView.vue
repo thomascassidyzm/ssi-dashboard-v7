@@ -16,10 +16,18 @@
             <p class="text-slate-400">Self-healing prompt learning system</p>
           </div>
 
-          <div class="text-right">
-            <div class="text-sm text-slate-400 mb-1">Current Version</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ currentVersion }}</div>
-            <div class="text-xs text-slate-500 mt-1">{{ learnedRules.length }} learned rules</div>
+          <div class="text-right space-y-2">
+            <div>
+              <div class="text-sm text-slate-400 mb-1">Current Version</div>
+              <div class="text-3xl font-bold text-emerald-400">{{ currentVersion }}</div>
+              <div class="text-xs text-slate-500 mt-1">{{ learnedRules.length }} learned rules</div>
+            </div>
+            <router-link
+              :to="`/quality/${courseCode}/learned-rules`"
+              class="inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded transition"
+            >
+              🧠 View Self-Learning Rules
+            </router-link>
           </div>
         </div>
       </div>
