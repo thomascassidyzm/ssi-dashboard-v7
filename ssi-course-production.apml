@@ -1,6 +1,6 @@
 app ssi_course_production:
   title: "SSi Language Course Production System"
-  version: "7.3.0"
+  version: "7.6.0"
   apml_version: "1.1.0"
   description: |
     Complete specification for SSi (Say Something In) language course production system.
@@ -206,34 +206,29 @@ You are part of a **self-improving system**. Your role is to help guide its evol
 PURPOSE: Pedagogically optimized translations of canonical seeds
 DEFINITION: Translation of a canonical seed into BOTH target AND known languages
 REFERENCE_FORMAT: S0001 to S0668 (S + 4-digit number)
+FILE_FORMAT: Single consolidated JSON file
 STRUCTURE:
   {
-    "seed_id": "S0041",
-    "canonical_english": "I want to speak",
-    "target_language": "Voglio parlare",
-    "known_language": "Je veux parler",
-    "metadata": { ... }
+    "S0001": ["Quiero hablar español contigo ahora.", "I want to speak Spanish with you now."],
+    "S0002": ["Estoy tratando de aprender.", "I'm trying to learn."],
+    ...
   }
+  Format: { "seed_id": [target, known] }
 KEY_PROPERTIES:
   - Total: 668 per course
   - Language-direction specific (ita_for_fra has different SEED_PAIRS than ita_for_eng)
   - Must be "lego_complete" - decomposes into LEGO_PAIRS that tile back perfectly
+  - Stored as SINGLE FILE (not individual amino acids) for efficiency
 PHASE: Phase 1 (Pedagogical Translation)
-STORAGE: vfs/courses/{course_code}/amino_acids/translations/
+STORAGE: vfs/courses/{course_code}/translations.json
 
 ### LEGO_PAIRS
 PURPOSE: Forward-deterministic teaching units extracted from SEED_PAIRS
 DEFINITION: A LEGO cannot exist unless it has BOTH target and known languages mapped
 REFERENCE_FORMAT: S0041L02 (seed reference + L + position)
-STRUCTURE:
-  {
-    "provenance": "S0041L02",
-    "target_text": "Voglio parlare",
-    "known_text": "Je veux parler",
-    "type": "BASE" | "COMPOSITE",
-    "componentization": { ... },
-    "metadata": { ... }
-  }
+NOTE: LEGO_PAIRS are now SUBSUMED by LEGO_BASKETS (see below)
+      Each basket contains the LEGO itself plus all practice phrases
+      LEGOs no longer stored separately - baskets.json is the single source
 KEY_PROPERTIES:
   - Course-specific AND language-direction specific
   - Must pass FD_LOOP test (target → known → target = IDENTICAL)
@@ -242,24 +237,39 @@ KEY_PROPERTIES:
     * COMPOSITE LEGO: Contains BASE LEGOs + glue words, needs componentization
   - Count: ~2000-3000 per course
 PHASE: Phase 3 (LEGO Decomposition)
-STORAGE: vfs/courses/{course_code}/amino_acids/legos_deduplicated/
+STORAGE: Integrated into baskets.json (Phase 5)
 
 ### LEGO_BASKETS
 PURPOSE: Complete set of practice phrases associated with ONE LEGO_PAIR
-DEFINITION: One basket per LEGO_PAIR (1:1 relationship)
+DEFINITION: One basket per LEGO_PAIR (1:1 relationship), INCLUDES the LEGO itself
+FILE_FORMAT: Single consolidated JSON file
 STRUCTURE:
   {
-    "lego_pair_id": "S0041L02",
-    "debut_phrases": [ ... ],    // Up to 8 d-phrases
-    "eternal_phrases": [ ... ],  // Up to 5 e-phrases
-    "metadata": { ... }
+    "S0001L01": {
+      "lego": ["Quiero", "I want"],
+      "e": [
+        ["Quiero hablar español.", "I want to speak Spanish."],
+        ["Quiero practicar contigo.", "I want to practice with you."]
+      ],
+      "d": {
+        "2": [["Quiero hablar", "I want to speak"], ["hablar español", "to speak Spanish"]],
+        "3": [["Quiero hablar español", "I want to speak Spanish"], ...],
+        "4": [...],
+        "5": [...]
+      }
+    },
+    "S0002L04": { ... }
   }
+  Format: { "lego_id": { lego: [target, known], e: [[t,k]...], d: {window: [[t,k]...]} } }
 KEY_PROPERTIES:
-  - DEBUT_PHRASES (d-phrases): Up to 8 phrases, progressive vocabulary only
-  - ETERNAL_PHRASES (e-phrases): Up to 5 phrases, 7-10 words, perfect target grammar
+  - LEGO field contains the core teaching unit (target/known pair)
+  - E-PHRASES (e): Up to 5 phrases, 7-10 words, perfect target grammar
+  - D-PHRASES (d): Organized by window size (2-5 LEGOs), progressive vocabulary only
   - Count: Matches LEGO_PAIRS count (if 2341 LEGO_PAIRS → 2341 LEGO_BASKETS)
+  - Stored as SINGLE FILE for efficiency (not individual amino acids)
+  - LEGO_ID is used as key (e.g., "S0001L01", "S0002L04")
 PHASE: Phase 5 (Basket Generation)
-STORAGE: vfs/courses/{course_code}/amino_acids/baskets/
+STORAGE: vfs/courses/{course_code}/baskets.json
 
 ### LEGO_INTRODUCTIONS
 PURPOSE: Intelligence about LEGO type (BASE vs COMPOSITE) and componentization
@@ -291,13 +301,14 @@ NOTE: This is an implementation detail - users see SEED_PAIRS, LEGO_PAIRS, LEGO_
 PURPOSE: Organized storage for all course generation artifacts
 BASE_PATH: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/
 STRUCTURE: {target_code}_for_{known_code}_{seed_count}seeds/
+FILES:
+  - translations.json (stores all SEED_PAIRS - single consolidated file)
+  - baskets.json (stores all LEGO_BASKETS including LEGOs - single consolidated file)
+  - course_metadata.json (course-level metadata)
 SUBDIRS:
-  - amino_acids/translations/ (stores SEED_PAIRS)
-  - amino_acids/legos_deduplicated/ (stores LEGO_PAIRS)
-  - amino_acids/baskets/ (stores LEGO_BASKETS)
-  - amino_acids/introductions/ (stores LEGO_INTRODUCTIONS)
-  - phase_outputs/ (intermediate files)
-  - proteins/ (compiled manifests)
+  - phase_outputs/ (intermediate files like graphs, corpus intelligence)
+  - proteins/ (compiled manifests for app consumption)
+NOTE: Old amino_acids/ subdirectory structure deprecated in favor of single consolidated files
 
 ### Course Codes
 FORMAT: "{target_iso}_for_{known_iso}_speakers"
@@ -355,13 +366,115 @@ PURPOSE: Apply 6 pedagogical heuristics to create optimal learning translations
 INPUT: vfs/seeds/canonical_seeds.json
 OUTPUT: vfs/amino_acids/translations/{uuid}.json (668 translation amino acids)
 
-THE_6_HEURISTICS:
-  1. Naturalness - Target language should sound native, not transliterated
-  2. Frequency - Prefer high-frequency vocabulary and common structures
-  3. Clarity - Prioritize clear, unambiguous expressions over idiomatic complexity
-  4. Brevity - Shorter translations preferred when pedagogically equivalent
-  5. Consistency - Maintain consistent terminology across seeds
-  6. Utility - Maximize teaching value (versatile phrases, reusable structures)
+THE_PEDAGOGICAL_HEURISTICS:
+
+CRITICAL: Heuristic priority changes based on seed position (progressive optimization curve)
+
+SEEDS 1-100 (Beginner Phase - Cognate-Heavy + Variation Reduction):
+  1. COGNATE PREFERENCE ⭐ - Maximize vocabulary similarity to known language
+  2. VARIATION REDUCTION ⭐ - Once you establish a mapping, stick with it
+  3. Consistency - Reinforce same patterns and vocabulary repeatedly
+  4. Clarity - Prioritize clear, unambiguous expressions
+  5. Utility - Maximize teaching value (versatile phrases, reusable structures)
+  6. Frequency - De-prioritized (cognates trump frequency for beginners)
+  7. Naturalness - De-prioritized (patterns trump naturalness for beginners)
+  8. Brevity - Lowest priority
+
+SEEDS 101-300 (Intermediate Phase - Natural Alternatives):
+  1. Consistency - Maintain established patterns while introducing alternatives
+  2. Frequency - Start preferring high-frequency vocabulary
+  3. Naturalness - Increase natural/common expressions
+  4. Clarity - Still prioritize clear expressions
+  5. Utility - Maximize teaching value
+  6. Cognate Preference - Still useful but lower priority
+  7. Brevity - Shorter preferred when equivalent
+
+SEEDS 301-668 (Advanced Phase - Idiomatic + Colloquial):
+  1. Naturalness - Target should sound fully native
+  2. Frequency - Prefer most common expressions
+  3. Utility - Maximum versatility and real-world usage
+  4. Clarity - Can introduce more nuanced/ambiguous expressions
+  5. Consistency - Still important but allows more variation
+  6. Brevity - Natural length preferred
+  7. Cognate Preference - No longer prioritized
+
+DETAILED HEURISTIC DEFINITIONS:
+
+1. COGNATE PREFERENCE (Seeds 1-100 priority)
+   DEFINITION: Prefer vocabulary with similar form/sound to known language
+
+   EXAMPLES:
+     Spanish for English:
+       ✅ "intentar" (cognate: intend) > "tratar" (not cognate)
+       ✅ "practicar" (cognate: practice) > "entrenar" (not cognate)
+       ✅ "importante" (cognate: important) > "relevante" (also cognate but less common)
+       ✅ "usar" (cognate: use) even better "utilizar" (cognate: utilize)
+
+     French for English:
+       ✅ "pratiquer" (cognate: practice) > "s'entraîner" (not cognate)
+       ✅ "important" > "significatif"
+       ✅ "utiliser" (cognate: utilize) > "employer" (not cognate)
+       ✅ "essayer" (cognate: essay/assay) is acceptable
+
+     Italian for English:
+       ✅ "importante" > "rilevante"
+       ✅ "praticare" > "allenarsi"
+       ✅ "usare" even better "utilizzare"
+
+     Mandarin for English:
+       (No cognates - use SIMPLEST high-frequency characters instead)
+       ✅ 说 (shuō - speak, 1 character) > 讲话 (jiǎnghuà - speak, 2 characters)
+       ✅ 学 (xué - learn, 1 character) > 学习 (xuéxí - study, 2 characters)
+
+   TRADE-OFF: Accept slightly less common word if cognate
+   BENEFIT: Reduces cognitive load, increases confidence, faster to conversation
+   APPLIES: Primarily seeds 1-100, gradually de-prioritize after
+
+2. VARIATION REDUCTION (Seeds 1-100 priority)
+   DEFINITION: Once you establish a mapping, stick with it - vocabulary claiming
+
+   RULE: "First Word Wins" for early seeds
+     - First seed that needs "to try" → pick ONE verb (e.g., "intentar")
+     - ALL subsequent "to try" contexts → use SAME verb
+     - Do NOT introduce synonyms until seeds 100+
+     - Create internal vocabulary registry to track claims
+
+   EXAMPLES:
+     ❌ BAD (introduces confusion):
+       S0002: "tratando" = trying
+       S0007: "intentar" = to try
+       S0008: "tratar" = to try
+       S0015: "probar" = to try
+       (Learner confused: which one should I use??)
+
+     ✅ GOOD (builds confidence):
+       S0002: "intentando" = trying
+       S0007: "intentar" = to try
+       S0008: "intentar" = to try
+       S0015: "intentar" = to try
+       (Learner confident: "intentar" is THE word for "try"!)
+
+   VOCABULARY REGISTRY (maintain during generation):
+     - "to try" → CLAIMED by "intentar" (S0002)
+     - "to speak" → CLAIMED by "hablar" (S0001)
+     - "to want" → CLAIMED by "querer" (S0001)
+     - "to learn" → CLAIMED by "aprender" (S0002)
+
+   EXCEPTION: Only introduce variation when GRAMMATICALLY NECESSARY
+     (e.g., Spanish "ser" vs "estar" - different grammar, must introduce both)
+     (e.g., French "savoir" vs "connaître" - different contexts, must introduce both)
+
+   LATER INTRODUCTION (Seeds 100-300):
+     "You know 'intentar' = to try. You can also say 'tratar de' (more common in some regions) or 'probar' (to try/test)."
+
+   APPLIES: Strictly seeds 1-100, gradually relax after
+
+3. Naturalness - Target language should sound native, not transliterated
+4. Frequency - Prefer high-frequency vocabulary and common structures
+5. Clarity - Prioritize clear, unambiguous expressions over idiomatic complexity
+6. Brevity - Shorter translations preferred when pedagogically equivalent
+7. Consistency - Maintain consistent terminology across seeds
+8. Utility - Maximize teaching value (versatile phrases, reusable structures)
 
 BATCH_PROCESSING:
   BATCH_SIZE: 100 seeds
@@ -443,13 +556,143 @@ All previous content maintained...
 
   Exception: If target or known IS English, reuse the canonical expression (no translation needed).
 
-  ## The 6 Pedagogical Heuristics
-  1. **Naturalness**: Target language should sound native, not transliterated
-  2. **Frequency**: Prefer high-frequency vocabulary and common structures
-  3. **Clarity**: Prioritize clear, unambiguous expressions over idiomatic complexity
-  4. **Brevity**: Shorter translations preferred when pedagogically equivalent
-  5. **Consistency**: Maintain consistent terminology across seeds
-  6. **Utility**: Maximize teaching value (versatile phrases, reusable structures)
+  ## The Pedagogical Heuristics (Progressive Optimization Curve)
+
+  **CRITICAL**: Heuristic priority changes based on seed position!
+
+  ### SEEDS 1-100 (Beginner Phase - You are translating these!)
+  **Priority order for first 100 seeds:**
+
+  1. **COGNATE PREFERENCE** ⭐ - Maximize vocabulary similarity to known language
+     - Spanish: "intentar" (cognate) > "tratar" (not cognate)
+     - French: "pratiquer" (cognate) > "s'entraîner" (not cognate)
+     - Accept slightly less common word if it's a cognate
+     - BENEFIT: Reduces cognitive load, learner recognizes words faster
+
+  2. **VARIATION REDUCTION** ⭐ - Once you establish a mapping, stick with it!
+     - First seed needs "to try" → Pick ONE verb (e.g., "intentar")
+     - ALL subsequent "to try" contexts → Use SAME verb
+     - Maintain VOCABULARY REGISTRY as you translate:
+       * "to try" → CLAIMED by "intentar" (S0002)
+       * "to speak" → CLAIMED by "hablar" (S0001)
+       * "to want" → CLAIMED by "querer" (S0001)
+     - Do NOT introduce synonyms in seeds 1-100
+     - EXCEPTION: Only when grammatically necessary (ser vs estar, savoir vs connaître)
+
+  3. **Consistency** - Reinforce same patterns and vocabulary repeatedly
+  4. **Clarity** - Clear, unambiguous expressions
+  5. **Utility** - Maximize teaching value
+  6. **Frequency** - De-prioritized (cognates trump frequency for beginners)
+  7. **Naturalness** - De-prioritized (patterns trump naturalness for beginners)
+  8. **Brevity** - Lowest priority
+
+  ### SEEDS 101-300 (Intermediate Phase - Not translating now)
+  Start introducing natural alternatives while maintaining established patterns
+
+  ### SEEDS 301-668 (Advanced Phase - Not translating now)
+  Full natural/idiomatic expressions, variation encouraged
+
+  ---
+
+  ## Detailed Heuristic Definitions
+
+  ### 1. COGNATE PREFERENCE (Your #1 priority for seeds 1-100)
+
+  **Definition:** Prefer vocabulary with similar form/sound to known language
+
+  **How to identify cognates:**
+  - Spanish/French/Italian for English: Look for Latin-derived words
+  - Words ending in -tion, -ción, -zione are usually cognates
+  - Words with similar roots (practice/practicar, important/importante)
+
+  **Examples by language:**
+
+  **Spanish for English:**
+  - ✅ "intentar" (intend) > "tratar" (try)
+  - ✅ "practicar" (practice) > "entrenar" (train)
+  - ✅ "importante" (important) > "relevante" (relevant)
+  - ✅ "usar" (use), even better "utilizar" (utilize)
+  - ✅ "continuar" (continue) > "seguir" (continue)
+  - ✅ "explicar" (explain) > "aclarar" (clarify)
+
+  **French for English:**
+  - ✅ "pratiquer" (practice) > "s'entraîner" (train)
+  - ✅ "important" > "significatif"
+  - ✅ "utiliser" (utilize) > "employer" (use)
+  - ✅ "essayer" (essay/assay) is acceptable
+  - ✅ "expliquer" (explain) > "clarifier"
+  - ✅ "continuer" (continue) > "poursuivre"
+
+  **Italian for English:**
+  - ✅ "importante" > "rilevante"
+  - ✅ "praticare" > "allenarsi"
+  - ✅ "usare", even better "utilizzare"
+  - ✅ "continuare" > "proseguire"
+  - ✅ "spiegare" is OK (explain)
+
+  **Mandarin for English:**
+  - No cognates available
+  - Use SIMPLEST high-frequency characters instead
+  - ✅ Single character > two-character compounds when possible
+  - ✅ 说 (shuō - speak) > 讲话 (jiǎnghuà - speak)
+  - ✅ 学 (xué - learn) > 学习 (xuéxí - study)
+
+  ### 2. VARIATION REDUCTION (Your #2 priority for seeds 1-100)
+
+  **Definition:** Once you establish a mapping, stick with it - "First Word Wins"
+
+  **Process:**
+  As you translate seeds 1-100, maintain an internal VOCABULARY REGISTRY:
+
+  ```
+  VOCABULARY REGISTRY (build as you translate):
+  - "to speak" → "hablar" (claimed in S0001)
+  - "to want" → "querer" (claimed in S0001)
+  - "to try" → "intentar" (claimed in S0002)
+  - "to learn" → "aprender" (claimed in S0002)
+  - "to practice" → "practicar" (claimed in S0005)
+  - "to remember" → "recordar" (claimed in S0006)
+  - "to explain" → "explicar" (claimed in S0008)
+  - ... continue building registry
+  ```
+
+  **Rules:**
+  1. When you encounter a new concept, pick the BEST cognate
+  2. Record it in your registry
+  3. ALL future occurrences of that concept → use SAME word
+  4. Do NOT introduce synonyms, even if "more natural"
+
+  **Example - BAD (current overnight generation):**
+  ```
+  S0002: "tratando" = trying
+  S0007: "intentar" = to try
+  S0008: "tratar" = to try
+  ```
+  ❌ Learner confused: "Which word should I use for 'try'?"
+
+  **Example - GOOD (what you should generate):**
+  ```
+  S0002: "intentando" = trying (CLAIM: "intentar" for "to try")
+  S0007: "intentar" = to try (use claimed word)
+  S0008: "intentar" = to try (use claimed word)
+  ```
+  ✅ Learner confident: "'intentar' is THE word for try!"
+
+  **EXCEPTION - Grammatically Required Variation:**
+  Some variation is unavoidable when grammar requires it:
+  - Spanish: "ser" vs "estar" (both "to be" but permanent vs temporary)
+  - French: "savoir" vs "connaître" (both "to know" but facts vs people)
+
+  In these cases, introduce BOTH but explain the distinction clearly in seed context.
+
+  ### 3-8. Other Heuristics (lower priority for seeds 1-100)
+
+  3. **Consistency** - Maintain consistent terminology across seeds
+  4. **Clarity** - Prioritize clear, unambiguous expressions
+  5. **Utility** - Maximize teaching value (versatile phrases, reusable structures)
+  6. **Frequency** - Prefer high-frequency vocabulary (but AFTER cognates)
+  7. **Naturalness** - Target should sound native (but AFTER cognates/consistency)
+  8. **Brevity** - Shorter translations preferred when equivalent
 
   ## Your Mission
 
@@ -466,10 +709,10 @@ For each canonical concept (expressed in English as reference):
    - Ensure known translation MATCHES target structure
    - Goal: Known ↔ Target alignment for better FD_LOOP
 
-3. **Generate Amino Acid**
-   - Deterministic UUID: hash(source + target + metadata)
-   - Store as: vfs/amino_acids/translations/{uuid}.json
-   - Content: { source, target, seed_id, heuristics_applied, metadata }
+3. **Generate Output**
+   - Store ALL translations in single consolidated file
+   - Format: { "S0001": [target, known], "S0002": [target, known], ... }
+   - File: vfs/courses/{course_code}/translations.json
 
 IMPORTANT: For courses where known=English (e.g., ita_for_eng):
 - Step 1 produces optimized target
@@ -503,8 +746,8 @@ For courses where known≠English (e.g., ita_for_fra):
 
 NAME: "Corpus Intelligence"
 PURPOSE: Map FCFS chronological order and calculate utility scores
-INPUT: vfs/amino_acids/translations/*.json
-OUTPUT: vfs/phase_outputs/phase_2_corpus_intelligence.json
+INPUT: vfs/courses/{course_code}/translations.json
+OUTPUT: vfs/courses/{course_code}/phase_outputs/phase_2_corpus_intelligence.json
 
 FCFS_DEFINITION: First-Can-First-Say (Semantic Priority)
   - The first word/LEGO to teach a concept CLAIMS that meaning as a BASE LEGO
@@ -602,26 +845,122 @@ EXAMPLES:
 PURPOSE: Ensures every LEGO chunk can be reliably translated back and forth
 WHY_CRITICAL: Prevents ambiguous mappings that confuse learners
 
+### FD_LOOP GENDER AND CONTEXT NEUTRALITY
+
+LEGOs must be CONTEXT-INDEPENDENT and GENDER-NEUTRAL to ensure FD compliance.
+
+GENDER-SPECIFIC TRANSLATIONS VIOLATE FD:
+  ❌ "Vuole" / "He wants" → FD fails: "He wants" → "Lui vuole" or "Vuole"?
+  ❌ "Vuole" / "She wants" → FD fails: "She wants" → "Lei vuole" or "Vuole"?
+  ✅ "Vuole" / "Wants" → FD passes: "Wants" → "Vuole" (unambiguous)
+
+POSSESSIVE AMBIGUITY VIOLATES FD:
+  ❌ "il suo nome" / "his name" → FD fails: "his" could be "il suo" or "di lui"
+  ❌ "il suo nome" / "her name" → FD fails: "her" could be "il suo" or "di lei"
+  ✅ "il suo nome" / "their name" → FD passes: "their" → "il suo" (singular they)
+
+CONTEXT-DEPENDENT TRANSLATIONS VIOLATE FD:
+  ❌ "que" / "what" (could be "that", "which", "what")
+  ❌ "bien" / "good" (could be "well", "good", "fine", "very")
+  ✅ Apply FCFS to claim primary meaning with most frequent usage
+  ✅ Less frequent must add context: "muy bien" / "very good"
+
+THE CHUNK UP PRINCIPLE (FD Rescue Strategy):
+  When a word alone violates FD → Don't just "apply context" → CHUNK UP!
+
+  ALGORITHM:
+    1. Test word alone for FD → FAIL?
+    2. Add surrounding word (left or right) → Test FD
+    3. Still FAIL? Keep expanding
+    4. Create COMPOSITE LEGO with full context that PASSES FD
+    5. Extract FD components as FEEDERS
+    6. Add COMPONENTIZATION explanation
+
+  EXAMPLES:
+    ❌ WRONG: "parlare" / "speaking" (context-dependent - vague!)
+    ✅ RIGHT: "sta parlando" / "is speaking" (COMPOSITE includes context)
+              FEEDERS: "sta" / "is", "parlare" / "to speak"
+
+    ❌ WRONG: "ricordare" / "remember" (could be infinitive or command)
+    ✅ RIGHT: "voglio ricordare" / "I want to remember" (COMPOSITE clarifies)
+              FEEDERS: "voglio" / "I want", "ricordare" / "to remember"
+
+PRINCIPLE:
+  LEGOs are reusable across multiple contexts.
+  Gender, number, and semantic ambiguity must be resolved via:
+    1. Gender-neutral translations (they/their instead of he/she)
+    2. FCFS claiming (most frequent usage claims simple form)
+    3. Context addition via CHUNKING UP (create larger COMPOSITE LEGOs)
+    4. NEVER leave ambiguity unresolved
+
 ### FCFS RULE (First Come, First Served)
 DEFINITION: Corpus frequency determines semantic territory claiming
+
+UNIVERSAL PRINCIPLE:
+  Most frequent variant CLAIMS simple translation (if grammatically valid)
+  Less frequent variants must ADD context to differentiate
+  This applies to ANY language pair combination
+
 PROCESS:
-  1. Count frequency of each mapping in corpus
+  1. Count frequency of each mapping across ALL corpus seeds
   2. Most frequent CLAIMS the simple mapping (if grammatically valid)
   3. Less frequent must ADD context to differentiate
   4. If corpus edit needed to maintain FD, NOTE it for SEED_PAIR revision
 
-ARTISTIC_CHOICE (flexible mapping):
-  - "quiero" appears 15x as "I want" → CLAIMS "I want"
-  - "deseo" appears 2x → must use "I desire" or "I really want"
-  - Once claimed, "I want" ALWAYS → "quiero" in this course
+ARTISTIC_CHOICE (Flexible mapping allowed):
+  When multiple words can express the same meaning, frequency decides.
+
+  Examples across language families:
+    - Spanish: "quiero" (15x) claims "I want" → "deseo" (2x) uses "I desire"
+    - Italian: "voglio" (15x) claims "I want" → "desidero" (2x) uses "I desire"
+    - Welsh: "eisiau" (15x) claims "want" → other forms differentiate with context
+    - Mandarin: "想 xiǎng" (15x) claims "want" → "要 yào" (3x) uses "need/want"
+    - German: "wollen" (15x) claims "to want" → "möchten" (5x) uses "would like"
+
+  Once claimed, the mapping is LOCKED for consistency.
 
 GRAMMATICAL_CONSTRAINT (NO flexibility):
-  - "estoy" CANNOT claim generic "I am" - MUST include temporal aspect
-    ✅ "estoy aprendiendo" → "I'm learning" (temporary state)
-    ❌ "estoy" → "I am" (loses critical grammar distinction)
-  - "soy" CANNOT claim generic "I am" - MUST include permanent aspect
-    ✅ "soy de Inglaterra" → "I'm from England" (permanent origin)
-    ❌ "soy" → "I am" (loses critical grammar distinction)
+  When target language grammar makes semantic distinctions that known language lacks,
+  LEGOs MUST preserve that distinction with required context.
+
+  NEVER allow grammatically ambiguous mappings that lose critical distinctions.
+
+  Examples by language family:
+
+  Spanish (ser/estar distinction - permanent vs temporary):
+    ✅ "estoy aprendiendo" / "I'm learning" (temporary state - estar)
+    ✅ "soy profesor" / "I'm a teacher" (permanent identity - ser)
+    ❌ "estoy" / "I am" (loses ser/estar distinction)
+    ❌ "soy" / "I am" (loses ser/estar distinction)
+    SOLUTION: Always include context that disambiguates
+
+  German (du/Sie distinction - formal vs informal):
+    ✅ "Wie geht es Ihnen" / "How are you (formal)"
+    ✅ "Wie geht es dir" / "How are you (informal)"
+    ❌ "Sie/du" / "you" (loses formality distinction)
+    SOLUTION: Include context or use register markers
+
+  Japanese (honorific levels - plain/polite/humble/respectful):
+    ✅ "食べます (tabemasu)" / "to eat (polite)"
+    ✅ "食べる (taberu)" / "to eat (plain)"
+    ❌ Generic "eat" without register marker
+    SOLUTION: Always mark register in known translation
+
+  Mandarin (aspect markers - progressive/completed/experiential):
+    ✅ "我在吃 (wǒ zài chī)" / "I'm eating (progressive 在)"
+    ✅ "我吃了 (wǒ chī le)" / "I ate (completed 了)"
+    ❌ "吃 (chī)" / "eat" (loses aspect distinction)
+    SOLUTION: Include aspect marker in COMPOSITE LEGO
+
+  French (tu/vous distinction):
+    ✅ "Comment allez-vous" / "How are you (formal)"
+    ✅ "Comment vas-tu" / "How are you (informal)"
+    ❌ "tu/vous" / "you" (loses formality distinction)
+
+CRITICAL RULE:
+  If your target language has grammatical distinctions that known language doesn't,
+  you MUST use CHUNK UP principle to preserve those distinctions in LEGOs.
+  Never create ambiguous mappings that collapse critical grammar.
 
 ### AUTOMATIC REJECTION LIST
 FUNCTION_WORDS (ALWAYS FAIL FD):
@@ -756,27 +1095,41 @@ CRITICAL: Write ALL componentization in KNOWN language, NOT English!
   - Spanish speakers: Use "donde" (not "where"), "y" (not "and")
 
 ### IRON RULE
-ABSOLUTE_CONSTRAINT: No LEGO begins or ends with a preposition
+ABSOLUTE_CONSTRAINT: No LEGO begins or ends with a STANDALONE preposition
 
-IMPORTANT CLARIFICATION:
+CRITICAL CLARIFICATION - Prepositional Phrases:
+  - Standalone prepositions WITHOUT objects: ❌ FORBIDDEN
+  - Complete prepositional phrases WITH objects: ✅ ALLOWED
+
+ALLOWED (Complete prepositional phrases):
+  ✅ "con te" / "with you" (complete prepositional phrase)
+  ✅ "con me" / "with me" (complete prepositional phrase)
+  ✅ "in italiano" / "in Italian" (complete prepositional phrase)
+  ✅ "avec tous les autres" / "with everyone else" (complete prepositional phrase)
+  ✅ "con tutti gli altri" / "with everyone else" (complete prepositional phrase)
+
+NOT ALLOWED (Standalone prepositions):
+  ❌ "con" / "with" (standalone preposition)
+  ❌ "in" / "in" (standalone preposition)
+  ❌ "per" / "to" (standalone preposition)
+  ❌ "de" / "of" (standalone preposition)
+  ❌ "da" / "from" (standalone preposition)
+
+INFINITIVE MARKER CLARIFICATION:
   - The infinitive marker "to" (as in "to speak") is NOT a preposition
   - It is a grammatical marker that forms part of the infinitive verb
   - Full infinitives like "to speak", "to learn" are ALLOWED and FD-compliant
   - Bare infinitives are NOT FD (conflict with commands and conjugations)
 
-EXAMPLES OF VIOLATIONS:
-  ✗ "to the" (preposition "to" for direction)
-  ✗ "with me" (preposition "with")
-  ✗ "in" (standalone preposition)
-  ✗ "con" (standalone preposition)
-  ✗ "da" (standalone preposition)
+EXAMPLES:
+  ✅ "to speak" / "parlare" (infinitive marker + verb)
+  ✅ "to learn" / "imparare" (infinitive marker + verb)
+  ❌ "to the" / "al" (directional preposition - needs object!)
 
-EXAMPLES OF ALLOWED:
-  ✅ "to speak" (infinitive marker + verb)
-  ✅ "to learn" (infinitive marker + verb)
-  ✅ "parlare" (infinitive without marker)
+PRINCIPLE: Prepositional phrases are complete, meaningful, FD-compliant units.
+          The issue is orphaned prepositions without objects, not complete phrases.
 
-NON_NEGOTIABLE: No standalone prepositions or prepositional phrase boundaries
+NON_NEGOTIABLE: No standalone prepositions at LEGO boundaries
 
 ### UID FORMAT
 MANDATORY_STRUCTURE:
@@ -855,6 +1208,209 @@ OUTPUT (Phase 3 decomposition):
   ]
 }
 
+### PHASE 3 REFINEMENTS (Validated from Italian 30-seed production test)
+
+These 10 critical refinements emerged from real-world decomposition testing and
+should be applied to ALL language pair combinations.
+
+#### 1. IRON RULE CLARIFICATION - Prepositional Phrases
+**Prepositional phrases WITH objects are FD-compliant and ALLOWED.**
+
+See IRON RULE section above for complete details.
+
+Key insight: The problem is orphaned prepositions, not complete prepositional phrases.
+Complete phrases like "con te" / "with you" are meaningful FD units.
+
+#### 2. Infinitive "to" Placement Rule
+**English infinitives: "to" attaches to the FOLLOWING verb, not trailing on modals.**
+
+CORRECT:
+  - "poter" = "to be able" (NOT "to be able to")
+  - "parlare" = "to speak"
+  - Combined: "poter parlare" = "to be able to speak"
+
+INCORRECT:
+  - ❌ "poter" = "to be able to"
+  - ❌ "parlare" = "speak"
+
+RATIONALE:
+  In "I want to be able to speak", the structure has TWO infinitives:
+    - "want" (modal)
+    - "to be able" (infinitive 1)
+    - "to speak" (infinitive 2)
+  Each infinitive carries its own "to" marker.
+
+#### 3. Minimal FD Chunks Principle
+**Break LEGOs into SMALLEST FD-compliant chunks that are PEDAGOGICALLY HELPFUL.**
+
+PROCESS:
+  1. Can this LEGO break into smaller FD components?
+  2. Would learning components FIRST help understand the composite?
+  3. If YES → Create BASE LEGOs + COMPOSITE + FEEDERS
+  4. If NO → Keep as single LEGO
+
+EXAMPLE - GOOD BREAKDOWN:
+  "il più spesso possibile" / "as often as possible"
+
+  BASE LEGOs:
+    - "spesso" / "often" (FD ✓, pedagogically helpful ✓)
+    - "possibile" / "possible" (FD ✓, pedagogically helpful ✓)
+
+  COMPOSITE LEGO:
+    - "il più spesso possibile" / "as often as possible"
+
+  FEEDERS:
+    - "spesso" (learned as BASE LEGO)
+    - "possibile" (learned as BASE LEGO)
+
+EXAMPLE - KEEP AS SINGLE:
+  "il più possibile" / "as hard as I can"
+
+  Why? English translation is idiomatic and doesn't map directly to components.
+  Breaking down "possibile" = "possible" wouldn't help learner understand
+  "as hard as I can" - the mapping is non-compositional.
+
+#### 4. Glue Words Must Stay INSIDE Composites
+**Function words (di, a, per, che, de, à, von, etc.) must NEVER appear at LEGO edges.**
+**They must be CONTAINED within composite units.**
+
+CORRECT:
+  ✅ "Sto cercando di ricordare" / "I'm trying to remember" (full COMPOSITE)
+  ✅ "cercare di spiegare" / "to try to explain" (full COMPOSITE)
+  ✅ "smettere di parlare" / "to stop talking" (full COMPOSITE)
+
+INCORRECT:
+  ❌ "Sto cercando di" / "I'm trying to" + "ricordare" / "remember"
+      (leaves "di" trailing - breaks recombination)
+  ❌ "cercare di" / "to try to" + "spiegare" / "explain"
+      (leaves "di" trailing - breaks recombination)
+
+RATIONALE:
+  Leaving glue words at edges makes basket recombination (Phase 5) nearly
+  impossible and creates unnatural phrase boundaries.
+
+#### 5. FEEDERS - Selective, Not Exhaustive
+**Only include FD and PEDAGOGICALLY HELPFUL components as FEEDERs.**
+
+OLD APPROACH (wrong):
+  Include ALL components of a COMPOSITE as FEEDERs
+
+NEW APPROACH (correct):
+  Only include components that are:
+    1. FD-compliant (pass FD_LOOP test independently)
+    2. Pedagogically helpful (aid learner understanding)
+
+EXAMPLE:
+  Seed: "Sto per cercare di spiegare quello che intendo."
+  English: "I'm going to try to explain what I mean."
+
+  LEGO: "quello che intendo" / "what I mean"
+
+  FEEDERS:
+    ✅ "intendo" / "I mean" (FD ✓, helpful ✓)
+
+  NOT FEEDERS:
+    ❌ "quello che" / "what" (NOT FD - could be cosa, che cosa, quale, etc.)
+
+PRINCIPLE:
+  If a component is NOT FD, don't include it as a FEEDER.
+  The componentization explanation can still MENTION it for learner context,
+  but it shouldn't be a separate teaching unit.
+
+#### 6. Componentization Language - "represents" vs "means"
+**Use precise language to describe component relationships.**
+
+USE "means" when:
+  - Direct, literal, word-for-word translation
+  - Clear 1:1 correspondence
+  - Example: "dove con = with and me = me"
+
+USE "represents" when:
+  - Idiomatic or structural translations
+  - Grammar that doesn't translate directly
+  - Non-compositional mappings
+  - Example: "where Non vedo l'ora represents looking forward"
+  - Example: "where che finisci represents that you finish"
+
+This helps learners understand which mappings are direct vs interpretive.
+
+#### 7. Function Words - Avoid Standalone LEGOs
+**Function words should NOT be standalone LEGOs unless genuinely useful alone.**
+
+AVOID AS STANDALONE:
+  ❌ "E" / "And" (rarely useful in isolation)
+  ❌ "Ma" / "But" (rarely useful in isolation)
+  ❌ "se" / "if" (combine with clause: "se posso ricordare" / "if I can remember")
+  ❌ "per" / "to" (combine with verb: "per rispondere" / "to answer")
+
+ACCEPTABLE STANDALONE:
+  ✅ "Perché" / "Why" or "Because" (question word / connector, high utility)
+  ✅ "con" / "with" (when it appears separately in useful contexts)
+
+PRINCIPLE:
+  If a word rarely appears alone in natural speech, don't make it a standalone LEGO.
+  CHUNK UP to include context that makes it a complete, useful teaching unit.
+
+#### 8. FD Violations - Gender and Context Ambiguity
+**CRITICAL: Avoid gender-specific or context-dependent translations.**
+(See FD_LOOP GENDER AND CONTEXT NEUTRALITY section above for complete details)
+
+Quick reference:
+  - Use gender-neutral translations: "wants" not "he wants" / "she wants"
+  - Use singular "they/their" for possessives: "their name" not "his/her name"
+  - Context provided in full seed, NOT in individual LEGO translations
+
+#### 9. Building Composites Hierarchically
+**Create LEGOs at each hierarchical level when phrases build up naturally.**
+
+EXAMPLE:
+  Seed: "con qualcun altro" / "with someone else"
+
+  Hierarchical breakdown:
+    L01: "con" / "with"
+    L02: "qualcuno" / "someone"
+    L03: "altro" / "else"
+    L04: "qualcun altro" / "someone else"
+        FEEDERS: qualcuno, altro
+        COMPONENTIZATION: "someone else = qualcun altro, where qualcuno = someone and altro = else"
+    L05: "con qualcun altro" / "with someone else"
+        FEEDERS: con, qualcun altro
+        COMPONENTIZATION: "with someone else = con qualcun altro, where con = with and qualcun altro = someone else"
+
+RATIONALE:
+  Learners build understanding from smallest units to complete phrases naturally.
+  This hierarchical structure mirrors natural language acquisition.
+
+#### 10. CHUNK UP Principle - The FD Rescue Strategy
+**When context is needed for FD compliance → CHUNK UP to create larger COMPOSITE.**
+(See THE CHUNK UP PRINCIPLE in FD_LOOP section above for complete algorithm)
+
+DO NOT use vague "context-dependent" labels:
+  ❌ WRONG: "parlare" / "speaking" (gerund in context) ← Vague! What context?
+  ❌ WRONG: "ricordare" / "remember" (after modal) ← Ambiguous!
+
+INSTEAD, CHUNK UP to include context:
+  ✅ RIGHT: "sta parlando" / "is speaking" (COMPOSITE includes progressive marker)
+            FEEDERS: "sta" / "is", "parlare" / "to speak"
+            COMPONENTIZATION: "is speaking = sta parlando, where sta represents is and parlando represents speaking"
+
+  ✅ RIGHT: "voglio ricordare" / "I want to remember" (COMPOSITE includes modal)
+            FEEDERS: "voglio" / "I want", "ricordare" / "to remember"
+
+  ✅ RIGHT: "sto cercando di ricordare" / "I'm trying to remember" (larger COMPOSITE)
+            FEEDERS: "sto" / "I'm", "cercare" / "to try", "ricordare" / "to remember"
+            COMPONENTIZATION: Shows how "cercando di" forms progressive + infinitive structure
+
+THE ALGORITHM:
+  1. Test word alone for FD → FAIL?
+  2. Add surrounding word (left or right) → Test FD
+  3. Still FAIL? Keep expanding
+  4. Create COMPOSITE LEGO with full context that PASSES FD
+  5. Extract FD components as FEEDERS
+  6. Add COMPONENTIZATION explanation for learner understanding
+
+This is the universal FD rescue strategy that works across ALL language pairs.
+
 PROMPT: |
   # Phase 3: LEGO Decomposition
 
@@ -924,27 +1480,42 @@ PROMPT: |
   ❌ "bien" → "good" → "bueno" (DIFFERENT = FAIL)
 
   ## 🎯 FCFS RULE (First Come, First Served)
-  When multiple valid mappings exist, use corpus frequency to CLAIM semantic territory:
+  When multiple valid mappings exist, use corpus frequency to CLAIM semantic territory.
+
+  **UNIVERSAL PRINCIPLE**: Most frequent variant claims simple translation (if grammatically valid).
+  Less frequent variants must differentiate with context. Works for ANY language pair.
 
   ### ARTISTIC CHOICE (flexible mapping allowed):
-  - "quiero" appears 15x as "I want" in corpus → CLAIM as "I want"
-  - "deseo" appears 2x → must use MORE SPECIFIC: "I desire" or "I really want"
-  - Once claimed, "I want" ALWAYS → "quiero" in this course
+  When multiple ${targetLang} words can express the same ${knownLang} meaning:
+  - Most frequent (15x) → CLAIMS simple translation
+  - Less frequent (2x) → must use more specific translation
+  - Once claimed, mapping is LOCKED for consistency
+
+  Example patterns:
+    - If "word_A" appears 15x → claims simple meaning
+    - If "word_B" appears 2x → must differentiate (e.g., add intensity/formality)
 
   ### GRAMMATICAL CONSTRAINT (NO flexibility):
-  - "estoy" CANNOT claim generic "I am" - MUST include temporal aspect
-    ✅ "estoy aprendiendo" → "I'm learning" (temporary state)
-    ✅ "estoy feliz" → "I'm happy (right now)"
-    ❌ "estoy" → "I am" (loses critical grammar distinction)
+  When ${targetLang} grammar makes distinctions that ${knownLang} doesn't:
+  → LEGOs MUST preserve that distinction with context
+  → NEVER create ambiguous mappings
+  → Use CHUNK UP principle to include disambiguating context
 
-  - "soy" CANNOT claim generic "I am" - MUST include permanent aspect
-    ✅ "soy de Inglaterra" → "I'm from England" (permanent origin)
-    ✅ "soy profesor" → "I'm a teacher" (identity/profession)
-    ❌ "soy" → "I am" (loses critical grammar distinction)
+  Common patterns to watch for:
+    - Formal/informal distinctions (Spanish tú/usted, German du/Sie, French tu/vous)
+    - Permanent/temporary states (Spanish ser/estar)
+    - Aspect markers (Mandarin 了/在/过, Slavic perfective/imperfective)
+    - Honorific levels (Japanese plain/polite/humble, Korean 해요/합니다)
+    - Gender agreement (Romance languages, German, Slavic)
+
+  **CRITICAL**: If ${targetLang} has grammatical distinctions, CHUNK UP to preserve them!
+
+  ✅ RIGHT: Include context that disambiguates
+  ❌ WRONG: Collapse distinctions into generic translation
 
   ### FCFS PROCESS:
-  1. Count frequency of each mapping in corpus
-  2. Most frequent CLAIMS the simple mapping (if grammatically valid)
+  1. Count frequency of each mapping across ALL corpus seeds
+  2. Most frequent CLAIMS simple mapping (if grammatically valid)
   3. Less frequent must ADD context to differentiate
   4. If corpus edit needed to maintain FD, NOTE it for SEED_PAIR revision
 
@@ -1008,24 +1579,39 @@ PROMPT: |
   NOT: "parler italien = parlare italiano, where parlare = parler and italiano = italien" ❌
 
   ## THE IRON RULE (ABSOLUTE)
-  **No LEGO begins or ends with a preposition.**
+  **No LEGO begins or ends with a STANDALONE preposition.**
 
-  **IMPORTANT CLARIFICATION**:
+  **CRITICAL CLARIFICATION - Prepositional Phrases**:
+  - Standalone prepositions WITHOUT objects: ❌ FORBIDDEN
+  - Complete prepositional phrases WITH objects: ✅ ALLOWED
+
+  **ALLOWED (Complete prepositional phrases)**:
+  - ✅ "con te" / "with you" (complete prepositional phrase)
+  - ✅ "con me" / "with me" (complete prepositional phrase)
+  - ✅ "in italiano" / "in Italian" (complete prepositional phrase)
+  - ✅ "avec tous" / "with everyone" (complete prepositional phrase)
+
+  **NOT ALLOWED (Standalone prepositions)**:
+  - ❌ "con" / "with" (standalone preposition)
+  - ❌ "in" / "in" (standalone preposition)
+  - ❌ "per" / "to" (standalone preposition)
+  - ❌ "de" / "of" (standalone preposition)
+
+  **INFINITIVE MARKER CLARIFICATION**:
   - The infinitive marker "to" (as in "to speak") is NOT a preposition
   - It is a grammatical marker that forms part of the infinitive verb
   - Full infinitives like "to speak", "to learn" are ALLOWED and FD-compliant
   - Bare infinitives are NOT FD (conflict with commands and conjugations)
 
-  **Examples of VIOLATIONS**:
-  - ✗ "to the" (preposition "to" for direction)
-  - ✗ "with me" (preposition "with")
-  - ✗ "in" (standalone preposition)
+  **Examples**:
+  - ✅ "to speak" / "parlare" (infinitive marker + verb)
+  - ✅ "to learn" / "imparare" (infinitive marker + verb)
+  - ❌ "to the" / "al" (directional preposition - needs object!)
 
-  **Examples of ALLOWED**:
-  - ✅ "to speak" (infinitive marker + verb)
-  - ✅ "to learn" (infinitive marker + verb)
+  **PRINCIPLE**: Prepositional phrases are complete, meaningful, FD-compliant units.
+              The issue is orphaned prepositions without objects.
 
-  - This is NON-NEGOTIABLE for standalone prepositions
+  **NON-NEGOTIABLE**: No standalone prepositions at LEGO boundaries
 
   ## INPUT DATA
   Course folder: /Users/tomcassidy/SSi/SSi_Course_Production/vfs/courses/${targetCode}_for_${knownCode}_speakers/
@@ -1184,7 +1770,18 @@ PROMPT: |
   ✓ Graph validated (connected, no invalid cycles)
   ✓ Ready for Phase 5 consumption
 
-## Phase 4: Deduplication
+## Phase 4: DEPRECATED - Merged into Phase 5.5
+
+DEPRECATED: This phase has been replaced by Phase 5.5 (Basket Deduplication)
+REASON: More efficient to create baskets for all LEGO_PAIRS first, then deduplicate baskets
+OLD APPROACH: Deduplicate LEGOs → Create baskets
+NEW APPROACH: Create baskets (with seed context) → Deduplicate baskets
+
+See Phase 5.5 for new deduplication workflow.
+
+---
+
+## Phase 4 (OLD - DEPRECATED): Deduplication
 
 NAME: "Deduplication"
 PURPOSE: Merge duplicate LEGOs while preserving ALL provenance
@@ -1277,12 +1874,18 @@ PROMPT: |
 ## Phase 5: Basket Generation (Edge-Aware + d-phrases/e-phrases)
 
 NAME: "Basket Generation with Graph Intelligence and Progressive Vocabulary"
-PURPOSE: Select pedagogically optimal LEGO groupings, then generate practice phrases
+PURPOSE: Create practice phrase baskets for ALL LEGO_PAIRS (deduplication happens in Phase 5.5)
 INPUT:
-  - vfs/amino_acids/legos_deduplicated/*.json
-  - vfs/phase_outputs/phase_3.5_lego_graph.json (for edge coverage)
-  - vfs/phase_outputs/phase_2_corpus_intelligence.json (for FCFS ordering)
-OUTPUT: phase_outputs/phase_5_baskets.json
+  - vfs/courses/{course_code}/translations.json (to get LEGO decomposition)
+  - vfs/courses/{course_code}/phase_outputs/phase_3.5_lego_graph.json (for edge coverage)
+  - vfs/courses/{course_code}/phase_outputs/phase_2_corpus_intelligence.json (for FCFS ordering)
+OUTPUT: vfs/courses/{course_code}/baskets.json (ALL LEGO_PAIR baskets - includes duplicates)
+
+CRITICAL_CHANGE:
+  - OLD: Create baskets only for deduplicated LEGOs
+  - NEW: Create baskets for ALL LEGO_PAIRS (every LEGO in every seed)
+  - WHY: Each basket created with full SEED_PAIR context (culminating LEGO rule works naturally)
+  - Deduplication happens AFTER in Phase 5.5 (delete duplicate baskets, keep first occurrence)
 
 BATCH_PROCESSING:
   BATCH_SIZE: 20 LEGOs per batch
@@ -1502,6 +2105,21 @@ PROMPT: |
   - 2x 5-LEGO phrases
   ALL 5 E-phrases must contribute to D-phrases (variety is key).
 
+  **CRITICAL RULE: OPERATIVE LEGO MUST BE PRESENT**
+  - EVERY d-phrase MUST contain the operative LEGO (the LEGO this basket teaches)
+  - Example: If basket is for "Quiero" (S0001L01), ALL d-phrases must contain "Quiero"
+  - You CANNOT extract arbitrary contiguous windows - only windows containing the operative LEGO
+
+  **CORRECT EXTRACTION (Basket for "Quiero"):**
+    E-phrase: "Quiero hablar español contigo ahora"
+    - 2-LEGO: "Quiero hablar" ✅ (contains "Quiero")
+    - 3-LEGO: "Quiero hablar español" ✅ (contains "Quiero")
+    - 4-LEGO: "Quiero hablar español contigo" ✅ (contains "Quiero")
+
+  **INCORRECT EXTRACTION (Basket for "Quiero"):**
+    - 2-LEGO: "hablar español" ❌ (missing "Quiero")
+    - 3-LEGO: "español contigo ahora" ❌ (missing "Quiero")
+
   **BILINGUAL SYNTAX RULES FOR D-PHRASES:**
   - D-phrases can be fragments (don't need to be complete sentences)
   - BUT they MUST be syntactically correct as far as they go in BOTH languages
@@ -1542,42 +2160,36 @@ PROMPT: |
      - Validate each combination for real-world meaningfulness
 
   ## Output Format
-  Save to: course_folder/phase_outputs/phase_5_baskets.json
+  Save to: vfs/courses/{course_code}/baskets.json
 
   {
-    "baskets": {
-      "S####L##": {
-        "target": "[target lego]",
-        "known": "[known translation]",
-        "seed_origin": "S####",
-        "e_phrases": [
-          ["[7-10 word phrase with target LEGO]", "[translation]"],
-          ["[7-10 word phrase with target LEGO]", "[translation]"],
-          ["[7-10 word phrase with target LEGO]", "[translation]"],
-          ["[7-10 word phrase with target LEGO]", "[translation]"],
-          ["[7-10 word phrase with target LEGO]", "[translation]"]
-        ],
-        "d_phrases": {
-          "2_lego": [
-            ["[2-LEGO phrase]", "[translation]"],
-            ["[2-LEGO phrase]", "[translation]"]
-          ],
-          "3_lego": [
-            ["[3-LEGO phrase]", "[translation]"],
-            ["[3-LEGO phrase]", "[translation]"]
-          ],
-          "4_lego": [
-            ["[4-LEGO phrase]", "[translation]"],
-            ["[4-LEGO phrase]", "[translation]"]
-          ],
-          "5_lego": [
-            ["[5-LEGO phrase]", "[translation]"],
-            ["[5-LEGO phrase]", "[translation]"]
-          ]
-        }
+    "S0001L01": {
+      "lego": ["Quiero", "I want"],
+      "e": [
+        ["Quiero hablar español.", "I want to speak Spanish."],
+        ["Quiero practicar contigo ahora.", "I want to practice with you now."],
+        ["No quiero adivinar.", "I don't want to guess."],
+        ["Quiero recordar esto.", "I want to remember this."],
+        ["Quiero intentar hablar más.", "I want to try to speak more."]
+      ],
+      "d": {
+        "2": [["Quiero hablar", "I want to speak"], ["hablar español", "to speak Spanish"]],
+        "3": [["Quiero hablar español", "I want to speak Spanish"], ["No quiero hablar", "I don't want to speak"]],
+        "4": [["No quiero hablar ahora", "I don't want to speak now"], ...],
+        "5": [["Quiero hablar español contigo ahora", "I want to speak Spanish with you now"], ...]
       }
-    }
+    },
+    "S0001L02": { ... }
   }
+
+  Format: { "lego_id": { lego: [target, known], e: [[t,k]...], d: {window_size: [[t,k]...]} } }
+
+  Notes:
+  - LEGO field contains the core teaching unit itself
+  - "e" array contains e-phrases (7-10 words, natural conversational phrases)
+  - "d" object contains d-phrases organized by window size ("2", "3", "4", "5")
+  - Window size refers to number of LEGOs combined in the phrase
+  - All phrases are [target, known] pairs
 
   ## Success Criteria
 
@@ -1599,6 +2211,84 @@ PROMPT: |
   ✓ Corpus patterns reflected through edge coverage
   ✓ Pedagogical soundness through vocabulary constraints
   ✓ Optimal learning sequence with rich practice
+
+## Phase 5.5: Basket Deduplication
+
+NAME: "Basket Deduplication"
+PURPOSE: Remove duplicate LEGO baskets, keeping first occurrence with full provenance
+INPUT: vfs/courses/{course_code}/baskets.json (ALL LEGO_PAIR baskets)
+OUTPUT: vfs/courses/{course_code}/baskets_deduplicated.json
+
+WHY_THIS_APPROACH:
+  - Phase 5 creates baskets for ALL LEGO_PAIRS (e.g., 150 baskets)
+  - Many LEGOs appear in multiple seeds (e.g., "parlare" in S0001, S0003, S0005)
+  - Each basket created with full SEED_PAIR context (culminating LEGO rule works naturally)
+  - Deduplication is simple: DELETE duplicate baskets, KEEP first occurrence
+
+DEDUPLICATION_PROCESS:
+
+  1. **Identify Duplicates**:
+     - Group baskets by LEGO text (target + known)
+     - Example: "parlare"/"to speak" appears as S0001L02, S0003L02, S0005L04
+
+  2. **Determine First Occurrence**:
+     - Sort by FCFS order (from Phase 2)
+     - First occurrence = lowest seed number
+     - Example: S0001L02 comes before S0003L02 and S0005L04
+
+  3. **Delete Duplicates**:
+     - KEEP: S0001L02 basket (first occurrence)
+     - DELETE: S0003L02 basket (duplicate)
+     - DELETE: S0005L04 basket (duplicate)
+
+  4. **Track Provenance**:
+     - Create mapping: {"S0003L02": "→ S0001L02", "S0005L04": "→ S0001L02"}
+     - This enables seed reconstruction (S0005 needs "parlare" → use L0002)
+     - Store in: vfs/courses/{course_code}/lego_provenance_map.json
+
+CRITICAL_RULES:
+  - NEVER merge basket phrases (just delete entire duplicate baskets)
+  - ALWAYS keep first occurrence (FCFS principle)
+  - ALWAYS track provenance mapping (for seed reconstruction)
+  - Basket IDs stay as-is (S0001L02 remains S0001L02, not renumbered to L0002)
+
+OUTPUT_STRUCTURE:
+
+  baskets_deduplicated.json:
+  {
+    "S0001L01": { basket for "Voglio" },
+    "S0001L02": { basket for "parlare" },    ← Kept (first occurrence)
+    "S0001L03": { basket for "italiano" },
+    // S0003L02 deleted (duplicate of S0001L02)
+    "S0003L01": { basket for "come" },
+    "S0003L03": { basket for "il più" },
+    ...
+  }
+
+  lego_provenance_map.json:
+  {
+    "S0003L02": "S0001L02",
+    "S0005L04": "S0001L02",
+    ...
+  }
+
+EXAMPLE:
+
+  Before deduplication (150 baskets):
+  - S0001L02: "parlare"
+  - S0003L02: "parlare" (duplicate)
+  - S0005L04: "parlare" (duplicate)
+
+  After deduplication (~80 baskets):
+  - S0001L02: "parlare" (kept)
+  - Mapping: {"S0003L02": "S0001L02", "S0005L04": "S0001L02"}
+
+SUCCESS_CRITERIA:
+  ✓ All duplicate baskets identified
+  ✓ Only first occurrence baskets kept
+  ✓ Provenance mapping complete
+  ✓ Reduction from ~150 to ~80 baskets (typical)
+  ✓ Ready for Phase 6 (introductions)
 
 ## Phase 6: Introductions
 
@@ -1698,6 +2388,351 @@ PROMPT: |
   ✓ Zero unknown elements (validated)
   ✓ Introduction amino acids stored
   ✓ Course ready for final compilation
+
+# =============================================================================
+# QUALITY VALIDATION & SELF-ASSESSMENT (v7.4)
+# =============================================================================
+
+## Overview: The Recursive Improvement Loop
+
+The system implements a continuous quality improvement loop inspired by Self-Adapting Language Models (SEAL), combining automated Claude self-assessment with human oversight to achieve iterative convergence on high-quality output.
+
+## The Complete Learning Cycle
+
+```
+ITERATION 1:
+  Generate Course → Claude Self-Assessment → 85% quality → Flags issues
+       ↓
+  Human Review → Identifies prompt gaps → Updates APML → Learns patterns
+       ↓
+  Regenerate Course
+
+ITERATION 2:
+  Generate Course → Claude Self-Assessment → 92% quality → Minor issues
+       ↓
+  Quick human check → One prompt tweak → Pattern reinforced
+       ↓
+  Regenerate Course
+
+ITERATION 3:
+  Generate Course → Claude Self-Assessment → 97% quality → Meets threshold
+       ↓
+  ✅ Done! → Learned patterns committed → Next course starts better
+```
+
+## Dual Quality Signal (Better than Pure RL)
+
+Unlike pure reinforcement learning approaches (e.g., SEAL), we use TWO quality signals:
+
+1. **Claude's Self-Assessment**: Automated syntax, FD, and semantic validation
+2. **Human Expert Review**: Pedagogical judgment and edge case identification
+
+This hybrid approach provides:
+- Higher signal quality (human expertise)
+- Faster iteration (automated pre-filtering)
+- No catastrophic forgetting (prompt-based accumulation)
+- Explainable decisions (traceable to rules)
+
+## Phase 3.9: Automated Quality Validation
+
+TRIGGERED: Automatically after Phase 3 (LEGO Decomposition)
+PURPOSE: Validate APML compliance before human review
+IMPLEMENTATION: vfs/courses/validate-lego-breakdowns.cjs
+OUTPUT: Terminal report + optional JSON log
+
+VALIDATION_SCRIPT_USAGE:
+
+```bash
+# Validate single course
+cd vfs/courses
+node validate-lego-breakdowns.cjs spa_for_eng_30seeds
+
+# Validate all courses
+node validate-lego-breakdowns.cjs --all
+```
+
+AUTOMATED_CHECKS:
+
+1. **FD_LOOP Compliance** (CRITICAL)
+   - Tests: target → known → target must be IDENTICAL
+   - Detects: Subjunctive/conditional forms without context
+   - Example violation: "pueda" / "I can" (ambiguous)
+   - Correct: "en cuanto pueda" / "as soon as I can"
+   - Auto-detects: Spanish/Italian/French subjunctive patterns
+
+2. **IRON RULE Enforcement** (CRITICAL)
+   - No standalone prepositions without objects
+   - Detects: "con" / "with", "de" / "of", "à" / "to"
+   - Correct: "con te" / "with you" (complete prepositional phrase)
+   - Checks: Both target and known chunks
+
+3. **CHUNK UP Principle** (HIGH)
+   - Context-dependent forms must include disambiguating context
+   - Detects: Gender-ambiguous words without nouns
+   - Example: "su" → should be "su nombre" for FD clarity
+   - Language-aware: Checks Spanish/Italian/French/German patterns
+
+4. **Translation Synchronization** (CRITICAL)
+   - LEGO breakdown matches translations.json exactly
+   - Detects: Mismatches in original_target/original_known
+   - Ensures: Regenerated LEGOs use updated Phase 1 translations
+
+5. **Structure Validation** (HIGH)
+   - All required fields present (lego_id, lego_type, chunks, fd_validated)
+   - No empty chunks
+   - Valid lego_type values (BASE or COMPOSITE)
+
+6. **COMPOSITE Validation** (MEDIUM)
+   - COMPOSITEs have componentization explanations
+   - COMPOSITE components listed in feeder_pairs (recommended)
+   - Pedagogically useful decomposition
+
+SEVERITY_LEVELS:
+
+CRITICAL (Must Fix):
+  - IRON_RULE_VIOLATION: Standalone prepositions
+  - FD_VALIDATION_FAILED: fd_validated: false in output
+  - TRANSLATION_MISMATCH: Doesn't match translations.json
+  - EMPTY_CHUNK: Empty target_chunk or known_chunk
+
+HIGH (Should Fix):
+  - FD_CONTEXT_MISSING: Subjunctive without temporal clause
+  - TRANSLATION_MISSING: Seed not found in translations.json
+  - MISSING_FIELD: Required field absent
+
+MEDIUM (Fix If Time):
+  - FD_GENDER_AMBIGUOUS: Gender word without noun (reduces clarity)
+  - MISSING_COMPONENTIZATION: COMPOSITE lacks explanation
+
+LOW (Optional):
+  - MISSING_FEEDERS: COMPOSITE has no feeder_pairs (may be intentional)
+
+VALIDATION_OUTPUT_EXAMPLE:
+```
+══════════════════════════════════════════════════════════════
+LEGO BREAKDOWNS VALIDATION REPORT
+Course: spa_for_eng_30seeds
+══════════════════════════════════════════════════════════════
+
+SUMMARY
+  Total Issues: 2
+  CRITICAL: 0
+  HIGH: 0
+  MEDIUM: 0
+  LOW: 2
+
+ℹ️  MEDIUM/LOW PRIORITY ISSUES
+  0 medium priority, 2 low priority
+  Run with --verbose to see all issues
+
+══════════════════════════════════════════════════════════════
+✅ VALIDATION PASSED - No critical or high-priority issues
+══════════════════════════════════════════════════════════════
+```
+
+ITERATION_STRATEGY:
+
+When Validation Fails:
+  1. CRITICAL/HIGH issues → MUST regenerate or manually fix
+  2. MEDIUM issues → Fix if time permits
+  3. LOW issues → Accept (agent non-determinism may not improve)
+
+Regeneration Decision Matrix:
+  - >10% seeds with CRITICAL → Full regeneration with improved prompt
+  - Systematic pattern (e.g., all subjunctives fail) → Update prompt, regenerate
+  - 1-2 isolated CRITICAL → Manual fix faster
+  - Only LOW/MEDIUM → Ship it (next generation may be worse)
+
+Multi-Pass Strategy (for non-deterministic agents):
+  1. Generate version A
+  2. Validate → Record scores
+  3. Generate version B
+  4. Validate → Record scores
+  5. Compare: Pick version with fewer CRITICAL/HIGH issues
+  6. If tied, pick version with higher MEDIUM/LOW tolerance
+
+AUTOMATED_ORCHESTRATION:
+
+Script: vfs/courses/process-phase-3-with-validation.cjs
+
+Usage:
+```bash
+# Single course with automatic retries
+node process-phase-3-with-validation.cjs spa_for_eng_30seeds
+
+# Specify max retry attempts
+node process-phase-3-with-validation.cjs spa_for_eng_30seeds --max-attempts=5
+
+# Process all courses
+node process-phase-3-with-validation.cjs --all
+```
+
+Features:
+  - Automatic validation after generation
+  - Multi-attempt strategy with backups
+  - Comparative scoring across attempts
+  - Recommendation of best attempt
+  - Batch processing support
+
+Workflow:
+  1. Generate LEGO decompositions (Phase 3)
+  2. Backup existing if regenerating
+  3. Run validation (Phase 3.9)
+  4. If PASS → Done
+  5. If FAIL with CRITICAL/HIGH → Retry (up to max-attempts)
+  6. Compare all attempts → Recommend best
+  7. User selects final version
+
+INTEGRATION_WITH_PHASE_3_PROMPT:
+
+When generating LEGOs, the agent should be aware that validation will run.
+Include in Phase 3 agent prompt:
+
+"Your output will be automatically validated for:
+- FD_LOOP compliance (CRITICAL)
+- IRON RULE enforcement (CRITICAL)
+- Translation synchronization (CRITICAL)
+- CHUNK UP principle (HIGH)
+- Structure completeness (HIGH)
+
+Focus especially on:
+1. Subjunctive forms → Must include temporal context
+2. Standalone prepositions → Must include objects
+3. Gender-ambiguous words → Must include nouns
+4. fd_validated field → Must be true for all LEGOs
+
+Validation severity levels will be reported. Aim for ZERO CRITICAL/HIGH issues."
+
+## Automatic Self-Learning from Manual Edits
+
+WHEN: User manually corrects LEGO breakdown in dashboard
+TRIGGERED: PUT /api/courses/:code/seeds/:seedId/lego-breakdown
+
+PROCESS:
+1. **Pattern Extraction**: learnFromManualEdit() analyzes differences
+2. **Rule Creation**: Pattern becomes "experimental" rule (confidence: 50%)
+3. **Auto-Promotion**:
+   - 5+ occurrences → "validated" (confidence: 80%)
+   - 10+ occurrences → "committed" (confidence: 95%)
+4. **Prompt Injection**: commitRuleToPrompt() updates Phase 3 DNA
+5. **Next Generation**: New courses automatically use evolved prompts
+
+STORAGE: vfs/courses/{courseCode}/learned_rules.json
+
+STRUCTURE:
+```json
+{
+  "rules": [
+    {
+      "type": "merge" | "split" | "boundary_shift",
+      "description": "Consider larger LEGO chunks for verb + prep + inf",
+      "occurrences": 12,
+      "confidence": 0.95,
+      "status": "committed",
+      "first_seen": "2025-10-14T10:23:00Z",
+      "last_seen": "2025-10-14T15:42:00Z",
+      "effectiveness": {
+        "courses_applied": ["ita_for_eng_574seeds", "spa_for_eng_668seeds"],
+        "quality_impact": +0.08,
+        "success_rate": 0.91
+      }
+    }
+  ],
+  "manual_edits": [
+    {
+      "seed_id": "S0042",
+      "timestamp": "2025-10-14T15:42:00Z",
+      "original_count": 3,
+      "edited_count": 2,
+      "patterns": [
+        {
+          "type": "merge",
+          "description": "Human merged 3 LEGOs into 2",
+          "learned_rule": "Consider larger LEGO chunks for this pattern"
+        }
+      ]
+    }
+  ]
+}
+```
+
+PATTERN_TYPES:
+
+MERGE: Human combines multiple AI-generated LEGOs into one
+  - Learns: "Consider larger LEGO chunks for this pattern"
+  - Example: ["voy", "a", "decir"] → ["voy a decir"]
+
+SPLIT: Human breaks one AI-generated LEGO into multiple
+  - Learns: "Consider smaller LEGO chunks for this pattern"
+  - Example: ["quiero hablar español"] → ["quiero", "hablar español"]
+
+BOUNDARY_SHIFT: Human adjusts LEGO boundaries
+  - Learns: "Adjust chunk boundaries at this linguistic marker"
+  - Example: ["estoy feliz"] → ["estoy", "feliz"] (temporary vs state)
+
+## API Endpoints for Quality Loop
+
+GET /api/courses/:code/quality-assessment
+  - Retrieve Claude's self-assessment report
+  - Returns quality_assessment.json with all metrics
+  - Used by dashboard to show quality scores
+
+GET /api/courses/:code/learned-rules
+  - View all learned rules (experimental/validated/committed)
+  - Returns learned_rules.json with effectiveness data
+  - Powers LearnedRulesView.vue dashboard
+
+POST /api/courses/:code/regenerate
+  - Trigger regeneration after prompt improvements
+  - Parameters: { phases: [3, 5], reason: "Fix FD compliance issues" }
+  - Creates new quality assessment cycle
+
+## Dashboard Components
+
+QualityDashboard.vue:
+  - Display overall quality scores
+  - Show Claude's self-assessment metrics
+  - Highlight issues flagged for human review
+  - Track improvement across iterations
+
+LearnedRulesView.vue:
+  - Summary stats (experimental/validated/committed counts)
+  - Rule lifecycle visualization
+  - Recent manual edits display
+  - Rule effectiveness tracking
+
+PromptEvolutionView.vue:
+  - Version history of prompt changes
+  - Correlation with quality improvements
+  - A/B comparison of different prompt versions
+
+## Key Advantage Over Pure RL (e.g., SEAL)
+
+SEAL Paper Problem: Catastrophic forgetting - new updates overwrite previous learning
+
+OUR SOLUTION: Prompt-based accumulation with no forgetting
+  ✅ Rules are additive (append, don't overwrite)
+  ✅ Each rule is versioned and traceable
+  ✅ Can selectively disable rules without data loss
+  ✅ Human oversight prevents harmful updates
+  ✅ Explainable: Every rule traces to specific manual edits
+
+## The Meta-Insight
+
+Every manual correction makes the system smarter. After 10 similar corrections, the pattern is automatically committed to prompt DNA and applied to all future courses.
+
+**This is true recursive self-improvement: the system learns how to learn better.**
+
+Unlike weight-based approaches, our prompt-based learning:
+- Accumulates without forgetting
+- Is human-auditable (can read the rules)
+- Can be selectively controlled (enable/disable rules)
+- Generalizes across language pairs (rules transfer)
+
+IMPLEMENTATION:
+  - learnFromManualEdit() [automation_server.cjs:2010-2127]
+  - commitRuleToPrompt() [automation_server.cjs:2133-2170]
+  - Quality assessment integration [planned]
 
 # =============================================================================
 # DASHBOARD INTERFACE SPECIFICATIONS
@@ -1831,6 +2866,74 @@ LOCAL_AUTOMATION:
 # =============================================================================
 # VERSION HISTORY
 # =============================================================================
+
+VERSION: 7.6.0
+DATE: 2025-10-15
+CHANGES:
+  - 🎯 CRITICAL: Added COGNATE PREFERENCE heuristic for seeds 1-100
+  - 🎯 CRITICAL: Added VARIATION REDUCTION principle (vocabulary claiming)
+  - 🎯 CRITICAL: Added Phase 3.9 automated quality validation system
+  - 🔧 NEW: validate-lego-breakdowns.cjs (automated APML compliance checking)
+  - 🔧 NEW: process-phase-3-with-validation.cjs (orchestration with auto-retry)
+  - Established Progressive Optimization Curve (seeds 1-100, 101-300, 301-668)
+  - Heuristic priority now changes based on seed position
+  - Seeds 1-100: Cognate-heavy + variation reduction (max learner confidence)
+  - Seeds 101-300: Introduce natural alternatives gradually
+  - Seeds 301-668: Full idiomatic/colloquial expressions
+  - Updated Phase 1 spec (lines 369-477) with detailed examples
+  - Updated Phase 1 prompt (lines 559-695) with VOCABULARY REGISTRY process
+  - Updated Phase 3.9 spec (lines 2436-2605) with validation workflow
+  - Added "First Word Wins" rule for early seeds
+  - Cognate examples across Spanish/French/Italian/Mandarin
+  - EXCEPTION handling for grammatically required variation (ser/estar, savoir/connaître)
+  - Automated checks: FD_LOOP, IRON RULE, CHUNK UP, Translation Sync, Structure
+  - Severity levels: CRITICAL/HIGH/MEDIUM/LOW with iteration strategies
+  - Multi-attempt comparison strategy for non-deterministic agent generation
+  - Based on analysis of overnight generation showing excessive variation in seeds 1-30
+  - Principle: Get learners into conversation FASTER by reducing cognitive load early
+  - Validation ensures quality before human review, supports iterative refinement
+
+VERSION: 7.5.0
+DATE: 2025-10-15
+CHANGES:
+  - 🌍 MAJOR: Complete language-agnostic transformation of Phase 3
+  - Fixed IRON RULE contradiction: prepositional phrases WITH objects now explicitly ALLOWED
+  - Replaced Spanish-only examples with universal principles + diverse language families
+  - Added comprehensive FD_LOOP GENDER AND CONTEXT NEUTRALITY section
+  - Introduced THE CHUNK UP PRINCIPLE as universal FD rescue strategy
+  - Integrated all 10 Phase 3 refinements from Italian 30-seed validation:
+    1. IRON RULE clarification (prepositional phrases OK)
+    2. Infinitive "to" placement rule
+    3. Minimal FD chunks principle
+    4. Glue words must stay inside composites
+    5. Selective FEEDERS (not exhaustive)
+    6. "represents" vs "means" language precision
+    7. Function word handling (avoid standalone)
+    8. FD violations (gender/context ambiguity)
+    9. Building composites hierarchically
+    10. CHUNK UP principle (not "context-dependent" labels)
+  - Updated FCFS examples to cover 6+ language families (Romance, Germanic, Celtic, Sino-Tibetan, Japonic, Slavic)
+  - Added grammatical constraint examples for diverse languages (Spanish, German, Japanese, Mandarin, French)
+  - Eliminated language bias: 97 Spanish/Italian-specific references replaced with ${targetLang}/${knownLang} variables
+  - Updated both spec (lines 606-731) and prompt (lines 1250-1382) for consistency
+  - Based on APML_Phase3_Updates_2025.md + extended language-agnostic analysis
+
+VERSION: 7.4.0
+DATE: 2025-10-14
+CHANGES:
+  - Added "Quality Validation & Self-Assessment" section
+  - Documented Phase 3.9: Automated Quality Assessment
+  - Formalized Claude self-assessment with quality thresholds
+  - Added automatic self-learning from manual edits
+  - Documented three-stage rule lifecycle (experimental → validated → committed)
+  - Added learned_rules.json structure and pattern types
+  - Integrated SEAL paper insights (recursive improvement without forgetting)
+  - Added API endpoints for quality loop (quality-assessment, learned-rules, regenerate)
+  - Updated dashboard fallback prompts to v7.0 architecture (TrainingPhase.vue)
+  - Documented dual quality signal advantage over pure RL approaches
+  - Implemented learnFromManualEdit() and commitRuleToPrompt() functions
+  - Created LearnedRulesView.vue dashboard component
+  - Based on SEAL paper analysis and recursive improvement requirements
 
 VERSION: 7.3.0
 DATE: 2025-10-13
