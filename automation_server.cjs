@@ -1364,6 +1364,57 @@ app.post('/api/courses/:code/prompt-evolution/commit', async (req, res) => {
   }
 });
 
+/**
+ * GET /api/courses/:code/learned-rules
+ * View all learned rules from manual edits and their effectiveness
+ */
+app.get('/api/courses/:code/learned-rules', async (req, res) => {
+  try {
+    const { code } = req.params;
+    const learningPath = path.join(CONFIG.VFS_ROOT, code, 'learned_rules.json');
+
+    if (!await fs.pathExists(learningPath)) {
+      return res.json({
+        courseCode: code,
+        rules: [],
+        manual_edits: [],
+        summary: {
+          total_rules: 0,
+          experimental: 0,
+          validated: 0,
+          committed: 0,
+          total_edits: 0
+        }
+      });
+    }
+
+    const learnedRules = await fs.readJson(learningPath);
+
+    // Calculate summary stats
+    const summary = {
+      total_rules: learnedRules.rules.length,
+      experimental: learnedRules.rules.filter(r => r.status === 'experimental').length,
+      validated: learnedRules.rules.filter(r => r.status === 'validated').length,
+      committed: learnedRules.rules.filter(r => r.status === 'committed').length,
+      total_edits: learnedRules.manual_edits.length
+    };
+
+    res.json({
+      courseCode: code,
+      rules: learnedRules.rules,
+      manual_edits: learnedRules.manual_edits.slice(-10), // Last 10 edits only
+      summary
+    });
+
+  } catch (error) {
+    console.error('[API] Error loading learned rules:', error);
+    res.status(500).json({
+      error: 'Failed to load learned rules',
+      message: error.message
+    });
+  }
+});
+
 // --------------------------------------------------------------------------
 // EXISTING ENDPOINTS
 // --------------------------------------------------------------------------
@@ -1454,6 +1505,8 @@ app.get('/api/courses/:courseCode/status', (req, res) => {
 /**
  * GET /api/courses
  * List all available courses
+ *
+ * NEW: Reads from translations.json + LEGO_BREAKDOWNS_COMPLETE.json directly
  */
 app.get('/api/courses', async (req, res) => {
   try {
@@ -1462,102 +1515,86 @@ app.get('/api/courses', async (req, res) => {
 
     for (const dir of courseDirs) {
       const coursePath = path.join(CONFIG.VFS_ROOT, dir);
-      const stats = await fs.stat(coursePath);
 
-      if (stats.isDirectory() && dir !== '.DS_Store') {
-        const metadataPath = path.join(coursePath, 'course_metadata.json');
-        const aminoAcidsPath = path.join(coursePath, 'amino_acids');
+      try {
+        const stats = await fs.stat(coursePath);
 
-        // Check if this is a valid course directory (has amino_acids folder)
-        if (await fs.pathExists(aminoAcidsPath)) {
-          if (await fs.pathExists(metadataPath)) {
-            // Has metadata - use it
-            const metadata = await fs.readJson(metadataPath);
+        if (!stats.isDirectory() || dir === '.DS_Store') continue;
 
-            // Add computed fields for new terminology
-            // Handle both amino_acids and amino_acids_count field names
-            const aminoData = metadata.amino_acids || metadata.amino_acids_count || {};
-            metadata.seed_pairs = aminoData.translations || 0;
-            metadata.lego_pairs = aminoData.legos_deduplicated || 0;
-            metadata.lego_baskets = aminoData.baskets || 0;
-            metadata.lego_introductions = aminoData.introductions || 0;
+        // Look for new format: translations.json + LEGO_BREAKDOWNS_COMPLETE.json
+        const translationsPath = path.join(coursePath, 'translations.json');
+        const legosPath = path.join(coursePath, 'LEGO_BREAKDOWNS_COMPLETE.json');
 
-            courses.push(metadata);
-          } else {
-            // No metadata - generate basic info from directory scan
-            console.log(`[API] Course ${dir} missing metadata - generating basic info`);
-
-            // Parse course code for language info
-            const match = dir.match(/^([a-z]{3})_for_([a-z]{3})_(\d+)seeds$/);
-            const targetLang = match ? match[1] : 'unknown';
-            const knownLang = match ? match[2] : 'unknown';
-            const seedCount = match ? parseInt(match[3]) : 0;
-
-            // Count amino acids
-            const translationsDir = path.join(aminoAcidsPath, 'translations');
-            const legosDir = path.join(aminoAcidsPath, 'legos_deduplicated');
-            const basketsDir = path.join(aminoAcidsPath, 'baskets');
-            const introsDir = path.join(aminoAcidsPath, 'introductions');
-
-            const translationsCount = await fs.pathExists(translationsDir) ? (await fs.readdir(translationsDir)).filter(f => f.endsWith('.json')).length : 0;
-            const legosCount = await fs.pathExists(legosDir) ? (await fs.readdir(legosDir)).filter(f => f.endsWith('.json')).length : 0;
-            const basketsCount = await fs.pathExists(basketsDir) ? (await fs.readdir(basketsDir)).filter(f => f.endsWith('.json')).length : 0;
-            const introsCount = await fs.pathExists(introsDir) ? (await fs.readdir(introsDir)).filter(f => f.endsWith('.json')).length : 0;
-
-            // Determine status based on what exists
-            let status = 'unknown';
-            let phases_completed = [];
-            if (translationsCount > 0) {
-              phases_completed.push('1');
-              status = 'ready_for_phase_2';
-            }
-            if (legosCount > 0) {
-              phases_completed.push('3');
-              status = 'ready_for_phase_4';
-            }
-            if (basketsCount > 0) {
-              phases_completed.push('5');
-              status = 'ready_for_phase_6';
-            }
-
-            courses.push({
-              course_code: dir,
-              source_language: knownLang.toUpperCase(),
-              target_language: targetLang.toUpperCase(),
-              total_seeds: seedCount,
-              version: '1.0',
-              created_at: (await fs.stat(coursePath)).birthtime.toISOString(),
-              status: status,
-              amino_acids: {
-                translations: translationsCount,
-                legos: 0,
-                legos_deduplicated: legosCount,
-                baskets: basketsCount,
-                introductions: introsCount
-              },
-              // Computed fields for new terminology
-              seed_pairs: translationsCount,
-              lego_pairs: legosCount,
-              lego_baskets: basketsCount,
-              lego_introductions: introsCount,
-              phases_completed: phases_completed,
-              needs_metadata: true
-            });
+        // Check if this is a valid course (has both required files)
+        if (await fs.pathExists(translationsPath) && await fs.pathExists(legosPath)) {
+          // Parse course code (e.g., spa_for_eng_30seeds)
+          const match = dir.match(/^([a-z]{3})_for_([a-z]{3})_(\d+)seeds$/);
+          if (!match) {
+            console.log(`[API] Skipping directory ${dir} - doesn't match course code pattern`);
+            continue;
           }
+
+          const targetLang = match[1];
+          const knownLang = match[2];
+          const seedCount = parseInt(match[3]);
+
+          // Load translations to get actual count
+          const translations = await fs.readJson(translationsPath);
+          const translationCount = Object.keys(translations).length;
+
+          // Load LEGO breakdowns to get count
+          const legoData = await fs.readJson(legosPath);
+          const legoCount = legoData.lego_breakdowns?.length || 0;
+
+          // Determine status based on what exists
+          let status = 'phase_3_complete'; // Has translations + LEGOs
+          let phases_completed = ['1', '3'];
+
+          courses.push({
+            course_code: dir,
+            source_language: knownLang.toUpperCase(),
+            target_language: targetLang.toUpperCase(),
+            total_seeds: seedCount,
+            version: '1.0',
+            created_at: stats.birthtime.toISOString(),
+            status: status,
+
+            // New terminology (dashboard displays these)
+            seed_pairs: translationCount,
+            lego_pairs: legoCount,
+            lego_baskets: 0, // Phase 5 not implemented yet
+
+            phases_completed: phases_completed,
+
+            // Backward compatibility (if needed by older components)
+            amino_acids: {
+              translations: translationCount,
+              legos: 0,
+              legos_deduplicated: legoCount,
+              baskets: 0,
+              introductions: 0
+            }
+          });
         }
+      } catch (error) {
+        console.error(`[API] Error processing course directory ${dir}:`, error.message);
+        // Skip this course and continue
       }
     }
 
+    console.log(`[API] Found ${courses.length} courses`);
     res.json({ courses });
   } catch (error) {
-    console.error('Error listing courses:', error);
+    console.error('[API] Error listing courses:', error);
     res.status(500).json({ error: 'Failed to list courses' });
   }
 });
 
 /**
  * GET /api/courses/:courseCode
- * Get detailed course information including amino acids
+ * Get detailed course information including translations and LEGOs
+ *
+ * NEW: Reads from translations.json + LEGO_BREAKDOWNS_COMPLETE.json directly
  */
 app.get('/api/courses/:courseCode', async (req, res) => {
   try {
@@ -1569,147 +1606,137 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       return res.status(404).json({ error: 'Course not found' });
     }
 
-    // Load metadata
-    const metadataPath = path.join(coursePath, 'course_metadata.json');
-    const course = await fs.readJson(metadataPath);
+    // Check for required files
+    const translationsPath = path.join(coursePath, 'translations.json');
+    const legosPath = path.join(coursePath, 'LEGO_BREAKDOWNS_COMPLETE.json');
 
-    // Load translations
-    const translationsDir = path.join(coursePath, 'amino_acids', 'translations');
-    const translations = [];
-
-    if (await fs.pathExists(translationsDir)) {
-      const files = await fs.readdir(translationsDir);
-      for (const file of files.slice(0, 100)) { // Limit to first 100 for performance
-        if (file.endsWith('.json')) {
-          const data = await fs.readJson(path.join(translationsDir, file));
-          translations.push(data);
-        }
-      }
+    if (!await fs.pathExists(translationsPath)) {
+      return res.status(404).json({ error: 'translations.json not found' });
     }
 
-    // Sort translations by seed_id
+    if (!await fs.pathExists(legosPath)) {
+      return res.status(404).json({ error: 'LEGO_BREAKDOWNS_COMPLETE.json not found' });
+    }
+
+    // Load translations.json
+    const translationsData = await fs.readJson(translationsPath);
+
+    // Convert to array format expected by frontend
+    // Input: { "S0001": ["target", "known"], ... }
+    // Output: [{ seed_id: "S0001", target_phrase: "...", known_phrase: "..." }, ...]
+    const translations = Object.entries(translationsData).map(([seed_id, [target_phrase, known_phrase]]) => ({
+      seed_id,
+      target_phrase,
+      known_phrase,
+      canonical_seed: null // We don't have canonical seeds yet
+    }));
+
+    // Sort by seed_id
     translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id));
 
-    // Load deduplicated LEGOs
-    const legosDir = path.join(coursePath, 'amino_acids', 'legos_deduplicated');
-    const legos = [];
+    // Load LEGO_BREAKDOWNS_COMPLETE.json
+    const legoData = await fs.readJson(legosPath);
 
-    if (await fs.pathExists(legosDir)) {
-      const files = await fs.readdir(legosDir);
-      for (const file of files.slice(0, 50)) { // Limit to first 50
-        if (file.endsWith('.json')) {
-          const data = await fs.readJson(path.join(legosDir, file));
-          legos.push(data);
-        }
-      }
-    }
+    // Extract lego_breakdowns array (already in correct format!)
+    const legos = legoData.lego_breakdowns || [];
 
-    // Load baskets
-    const basketsDir = path.join(coursePath, 'amino_acids', 'baskets');
-    const baskets = [];
+    // Generate course metadata
+    const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\\d+)seeds$/);
+    const stats = await fs.stat(coursePath);
 
-    if (await fs.pathExists(basketsDir)) {
-      const files = await fs.readdir(basketsDir);
-      for (const file of files) {
-        if (file.endsWith('.json')) {
-          const data = await fs.readJson(path.join(basketsDir, file));
-          baskets.push(data);
-        }
-      }
-      baskets.sort((a, b) => a.basket_id - b.basket_id);
-    }
+    const course = {
+      course_code: courseCode,
+      source_language: match ? match[2].toUpperCase() : 'UNK',
+      target_language: match ? match[1].toUpperCase() : 'UNK',
+      total_seeds: match ? parseInt(match[3]) : 0,
+      version: '1.0',
+      created_at: stats.birthtime.toISOString(),
+      status: 'phase_3_complete',
+
+      // Dashboard-displayed fields
+      seed_pairs: translations.length,
+      lego_pairs: legos.length,
+      lego_baskets: 0,
+
+      phases_completed: ['1', '3'],
+
+      // Metadata from LEGO file
+      target_language_name: legoData.target_language,
+      known_language_name: legoData.known_language
+    };
+
+    console.log(`[API] Loaded course ${courseCode}: ${translations.length} translations, ${legos.length} LEGO breakdowns`);
 
     res.json({
       course,
       translations,
       legos,
-      baskets
+      baskets: [] // Empty for now (Phase 5 not implemented)
     });
   } catch (error) {
-    console.error('Error loading course:', error);
-    res.status(500).json({ error: 'Failed to load course' });
+    console.error(`[API] Error loading course ${req.params.courseCode}:`, error);
+    res.status(500).json({
+      error: 'Failed to load course',
+      details: error.message
+    });
   }
 });
 
 /**
  * GET /api/courses/:courseCode/provenance/:seedId
  * Trace provenance for a specific seed
+ *
+ * NEW: Reads from translations.json + LEGO_BREAKDOWNS_COMPLETE.json
  */
 app.get('/api/courses/:courseCode/provenance/:seedId', async (req, res) => {
   try {
     const { courseCode, seedId } = req.params;
     const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
 
-    // Find translation for this seed
-    const translationsDir = path.join(coursePath, 'amino_acids', 'translations');
-    const translationFiles = await fs.readdir(translationsDir);
+    // Load translations
+    const translationsPath = path.join(coursePath, 'translations.json');
+    const translationsData = await fs.readJson(translationsPath);
 
-    let translation = null;
-    for (const file of translationFiles) {
-      const data = await fs.readJson(path.join(translationsDir, file));
-      if (data.seed_id === seedId) {
-        translation = data;
-        break;
-      }
+    const translationPair = translationsData[seedId];
+    if (!translationPair) {
+      return res.status(404).json({ error: `Seed ${seedId} not found` });
     }
 
-    if (!translation) {
-      return res.status(404).json({ error: 'Seed not found' });
-    }
+    const translation = {
+      seed_id: seedId,
+      target_phrase: translationPair[0],
+      known_phrase: translationPair[1]
+    };
 
-    // Find all LEGOs from this translation
-    const legosDir = path.join(coursePath, 'amino_acids', 'legos');
-    const legoFiles = await fs.readdir(legosDir);
-    const legos = [];
+    // Load LEGO breakdown for this seed
+    const legosPath = path.join(coursePath, 'LEGO_BREAKDOWNS_COMPLETE.json');
+    const legoData = await fs.readJson(legosPath);
 
-    for (const file of legoFiles) {
-      const data = await fs.readJson(path.join(legosDir, file));
-      if (data.source_translation_uuid === translation.uuid) {
-        legos.push(data);
-      }
-    }
+    const legoBreakdown = legoData.lego_breakdowns?.find(l => l.seed_id === seedId);
 
-    // Find deduplicated LEGOs containing this seed
-    const dedupeDir = path.join(coursePath, 'amino_acids', 'legos_deduplicated');
-    const dedupeFiles = await fs.readdir(dedupeDir);
-    const deduplicatedLEGOs = [];
+    // Build provenance chain
+    const provenance = {
+      seed: translation,
+      lego_breakdown: legoBreakdown || null,
+      phase_history: [
+        {
+          phase: '1',
+          name: 'Translation',
+          completed: true,
+          output: translation
+        },
+        {
+          phase: '3',
+          name: 'LEGO Extraction',
+          completed: !!legoBreakdown,
+          output: legoBreakdown
+        }
+      ]
+    };
 
-    for (const file of dedupeFiles) {
-      const data = await fs.readJson(path.join(dedupeDir, file));
-      const hasOurSeed = data.provenance.some(p => p.source_seed_id === seedId);
-      if (hasOurSeed) {
-        deduplicatedLEGOs.push(data);
-      }
-    }
-
-    // Find baskets containing these LEGOs
-    const basketsDir = path.join(coursePath, 'amino_acids', 'baskets');
-    const basketFiles = await fs.readdir(basketsDir);
-    const affectedBaskets = [];
-
-    const legoUUIDs = new Set(deduplicatedLEGOs.map(l => l.uuid));
-
-    for (const file of basketFiles) {
-      const basket = await fs.readJson(path.join(basketsDir, file));
-      const containsOurLEGOs = basket.legos.some(l => legoUUIDs.has(l.uuid));
-      if (containsOurLEGOs) {
-        affectedBaskets.push(basket);
-      }
-    }
-
-    res.json({
-      legos: legos.length,
-      deduplicated: deduplicatedLEGOs.length,
-      baskets: affectedBaskets.length,
-      details: {
-        translation,
-        legos,
-        deduplicatedLEGOs,
-        affectedBaskets
-      }
-    });
+    res.json(provenance);
   } catch (error) {
-    console.error('Error tracing provenance:', error);
+    console.error(`[API] Error tracing provenance for ${req.params.seedId}:`, error);
     res.status(500).json({ error: 'Failed to trace provenance' });
   }
 });
@@ -2003,6 +2030,173 @@ function calculateLegoAlignment(targetText, sourceText, targetLegos) {
 }
 
 /**
+ * SELF-LEARNING: Extract patterns from manual edits
+ * This is called whenever a human manually edits a LEGO breakdown
+ * It analyzes the difference and generates learned rules for future extractions
+ */
+async function learnFromManualEdit(courseCode, translation, newLegos) {
+  try {
+    console.log(`[SELF-LEARNING] Analyzing manual edit for seed ${translation.seed_id}`);
+
+    // Get original AI-generated LEGOs (if they exist)
+    const originalLegos = translation.metadata?.lego_extraction?.original_legos ||
+                         translation.metadata?.lego_extraction?.legos || [];
+
+    if (originalLegos.length === 0) {
+      console.log('[SELF-LEARNING] No original LEGOs found for comparison');
+      return;
+    }
+
+    // Store original LEGOs before overwriting (for future comparison)
+    if (!translation.metadata.lego_extraction.original_legos) {
+      translation.metadata.lego_extraction.original_legos = [...originalLegos];
+    }
+
+    // Analyze the differences
+    const analysis = {
+      seed_id: translation.seed_id,
+      timestamp: new Date().toISOString(),
+      original_count: originalLegos.length,
+      edited_count: newLegos.length,
+      patterns: []
+    };
+
+    // Pattern 1: Different LEGO count (merged or split)
+    if (newLegos.length !== originalLegos.length) {
+      if (newLegos.length < originalLegos.length) {
+        analysis.patterns.push({
+          type: 'merge',
+          description: `Human merged ${originalLegos.length} LEGOs into ${newLegos.length}`,
+          context: translation.target_text,
+          learned_rule: 'Consider larger LEGO chunks for this pattern'
+        });
+      } else {
+        analysis.patterns.push({
+          type: 'split',
+          description: `Human split ${originalLegos.length} LEGOs into ${newLegos.length}`,
+          context: translation.target_text,
+          learned_rule: 'Consider smaller LEGO chunks for this pattern'
+        });
+      }
+    }
+
+    // Pattern 2: Boundary differences (where did splits happen?)
+    const originalTexts = originalLegos.map(l => l.text);
+    const newTexts = newLegos.map(l => l.text);
+
+    if (JSON.stringify(originalTexts) !== JSON.stringify(newTexts)) {
+      analysis.patterns.push({
+        type: 'boundary_shift',
+        description: 'Human adjusted LEGO boundaries',
+        original_breakdown: originalTexts,
+        edited_breakdown: newTexts,
+        learned_rule: 'Review boundary heuristics for similar constructions'
+      });
+    }
+
+    // Save learned patterns to course learning file
+    const learningPath = path.join(CONFIG.VFS_ROOT, courseCode, 'learned_rules.json');
+    let learnedRules = { rules: [], manual_edits: [] };
+
+    if (await fs.pathExists(learningPath)) {
+      learnedRules = await fs.readJson(learningPath);
+    }
+
+    learnedRules.manual_edits.push(analysis);
+
+    // Extract generalizable rules
+    for (const pattern of analysis.patterns) {
+      const existingRule = learnedRules.rules.find(r => r.type === pattern.type);
+
+      if (existingRule) {
+        existingRule.occurrences += 1;
+        existingRule.last_seen = new Date().toISOString();
+      } else {
+        learnedRules.rules.push({
+          type: pattern.type,
+          description: pattern.learned_rule,
+          occurrences: 1,
+          first_seen: new Date().toISOString(),
+          last_seen: new Date().toISOString(),
+          confidence: 0.5, // Start at 50% confidence
+          status: 'experimental' // experimental -> validated -> committed
+        });
+      }
+    }
+
+    // Auto-promote rules with high occurrence counts
+    for (const rule of learnedRules.rules) {
+      if (rule.occurrences >= 5 && rule.status === 'experimental') {
+        rule.status = 'validated';
+        rule.confidence = 0.8;
+        console.log(`[SELF-LEARNING] ✅ Rule promoted to validated: ${rule.description}`);
+      }
+
+      if (rule.occurrences >= 10 && rule.status === 'validated') {
+        rule.status = 'committed';
+        rule.confidence = 0.95;
+        console.log(`[SELF-LEARNING] 🎯 Rule committed to prompt DNA: ${rule.description}`);
+
+        // TODO: Actually update the Phase 3 prompt with this rule
+        await commitRuleToPrompt(courseCode, rule);
+      }
+    }
+
+    await fs.writeJson(learningPath, learnedRules, { spaces: 2 });
+
+    console.log(`[SELF-LEARNING] ✅ Learned ${analysis.patterns.length} patterns from manual edit`);
+    console.log(`[SELF-LEARNING] Total rules in database: ${learnedRules.rules.length}`);
+
+  } catch (err) {
+    console.error('[SELF-LEARNING] Error analyzing manual edit:', err);
+    // Don't fail the request if learning fails
+  }
+}
+
+/**
+ * Commit a validated rule to the Phase 3 LEGO extraction prompt
+ * This modifies the prompt DNA to include the learned rule
+ */
+async function commitRuleToPrompt(courseCode, rule) {
+  try {
+    console.log(`[SELF-LEARNING] Committing rule to prompt: ${rule.description}`);
+
+    // Get current Phase 3 prompt
+    const promptPath = path.join(CONFIG.VFS_ROOT, courseCode, 'prompts', 'phase_3_lego_extraction.json');
+
+    if (!await fs.pathExists(promptPath)) {
+      console.log('[SELF-LEARNING] Phase 3 prompt not found, cannot commit rule');
+      return;
+    }
+
+    const promptData = await fs.readJson(promptPath);
+
+    // Add learned rule to prompt instructions
+    if (!promptData.learned_rules) {
+      promptData.learned_rules = [];
+    }
+
+    promptData.learned_rules.push({
+      rule: rule.description,
+      added: new Date().toISOString(),
+      confidence: rule.confidence,
+      occurrences: rule.occurrences
+    });
+
+    // Update version
+    promptData.version = (parseFloat(promptData.version || '1.0') + 0.1).toFixed(1);
+    promptData.last_updated = new Date().toISOString();
+
+    await fs.writeJson(promptPath, promptData, { spaces: 2 });
+
+    console.log(`[SELF-LEARNING] 🎯 Rule committed to Phase 3 prompt v${promptData.version}`);
+
+  } catch (err) {
+    console.error('[SELF-LEARNING] Error committing rule to prompt:', err);
+  }
+}
+
+/**
  * GET /api/courses/:code/seed-lego-breakdown?limit=30
  * Returns multiple seeds with their LEGO breakdowns for tiling visualization
  * Now includes known language alignment and lego_complete validation
@@ -2145,6 +2339,9 @@ app.put('/api/courses/:code/seeds/:seedId/lego-breakdown', async (req, res) => {
     await fs.writeJson(filePath, translation, { spaces: 2 });
 
     console.log(`[API] Saved ${updatedLegos.length} LEGOs for seed ${seedNum}`);
+
+    // SELF-LEARNING: Analyze manual edit and extract learned rules
+    await learnFromManualEdit(code, translation, updatedLegos);
 
     // Return success with updated breakdown
     const { legoPairs, lego_complete } = calculateLegoAlignment(
@@ -2474,8 +2671,9 @@ async function startServer() {
     console.log(`  GET    http://localhost:${CONFIG.PORT}/api/courses/:code/regeneration/:jobId`);
     console.log(`  POST   http://localhost:${CONFIG.PORT}/api/courses/:code/seeds/:seedId/accept`);
     console.log(`  DELETE http://localhost:${CONFIG.PORT}/api/courses/:code/seeds/:seedId`);
-    console.log(`\nPrompt Evolution Endpoints:`);
+    console.log(`\nPrompt Evolution & Self-Learning:`);
     console.log(`  GET  http://localhost:${CONFIG.PORT}/api/courses/:code/prompt-evolution`);
+    console.log(`  GET  http://localhost:${CONFIG.PORT}/api/courses/:code/learned-rules`);
     console.log(`  POST http://localhost:${CONFIG.PORT}/api/courses/:code/experimental-rules`);
     console.log(`  POST http://localhost:${CONFIG.PORT}/api/courses/:code/prompt-evolution/commit`);
     console.log(`\nVisualization Endpoints:`);

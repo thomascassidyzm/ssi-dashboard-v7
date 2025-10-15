@@ -1,7 +1,22 @@
 {
+  "headers": [
+    {
+      "source": "/vfs/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!vfs).*)",
       "destination": "/index.html"
     }
   ]

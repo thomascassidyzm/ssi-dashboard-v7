@@ -1,0 +1,166 @@
+{
+  "uuid": "25dc881b63627288c2800624f8c1a029",
+  "type": "basket",
+  "basket_id": 1,
+  "lego_count": 10,
+  "legos": [
+    {
+      "uuid": "18b8cebedcd2e35034fcf3489e54900e",
+      "text": "I can't remember how",
+      "provenance": [
+        {
+          "provenance": "S35L2",
+          "source_translation_uuid": "60873fea1ee976d4fd31e46b72a31b82",
+          "source_seed_id": "C0035",
+          "original_uuid": "9f7fd62eed4f6ba28d6d037fe91ec331"
+        }
+      ],
+      "fcfs_score": 33.7,
+      "utility_score": 61
+    },
+    {
+      "uuid": "b49474ac699d7e57626fbdc9e4a79589",
+      "text": "easy but it is",
+      "provenance": [
+        {
+          "provenance": "S41L3",
+          "source_translation_uuid": "8f1c075e5927b78002fa50a0751d182a",
+          "source_seed_id": "C0041",
+          "original_uuid": "95ffa4d00928b1faf24a98aca03ea42b"
+        }
+      ],
+      "fcfs_score": 19,
+      "utility_score": 34
+    },
+    {
+      "uuid": "806a0ac3976ceda9555adbb1362bf353",
+      "text": "going to learn",
+      "provenance": [
+        {
+          "provenance": "S17L1",
+          "source_translation_uuid": "1c0f9556358d91b91db8953ed8f81871",
+          "source_seed_id": "C0017",
+          "original_uuid": "fa41bd580877e007be1ae72c7f07ad8e"
+        }
+      ],
+      "fcfs_score": 34.7,
+      "utility_score": 67
+    },
+    {
+      "uuid": "db8d4a0836622a161fbb6b06a3f71ee4",
+      "text": "I'm trying to remember",
+      "provenance": [
+        {
+          "provenance": "S6L3",
+          "source_translation_uuid": "fa05b79d4eef4b6fb6e4b8c97cff2e77",
+          "source_seed_id": "C0006",
+          "original_uuid": "2a03337583d975ce287d933a043144fe"
+        }
+      ],
+      "fcfs_score": 34.3,
+      "utility_score": 67
+    },
+    {
+      "uuid": "d724cb826dde0e964eef1685b5e79550",
+      "text": "how to say",
+      "provenance": [
+        {
+          "provenance": "S4L1",
+          "source_translation_uuid": "c284115024769a4d02f4077ac776ee96",
+          "source_seed_id": "C0004",
+          "original_uuid": "d63e57560d2f3802d18e6e21ff9d5dab"
+        }
+      ],
+      "fcfs_score": 35.3,
+      "utility_score": 67
+    },
+    {
+      "uuid": "11a5eb6975cc7d9a66fe4a40661bf9de",
+      "text": "I don't know",
+      "provenance": [
+        {
+          "provenance": "S38L1",
+          "source_translation_uuid": "3047454a4b2b533029393cc3a37a22d4",
+          "source_seed_id": "C0038",
+          "original_uuid": "66dc300542d364082ae25aab0e3a0e46"
+        }
+      ],
+      "fcfs_score": 26.2,
+      "utility_score": 52
+    },
+    {
+      "uuid": "fd0665629ca6d5ac3fbdd9e95bb3ec9e",
+      "text": "speak with me",
+      "provenance": [
+        {
+          "provenance": "S20L2",
+          "source_translation_uuid": "eed5103b4dd2a1ca818a87c5efff29a7",
+          "source_seed_id": "C0020",
+          "original_uuid": "06dbc538f0b69f05bb4dc78b874d04f0"
+        }
+      ],
+      "fcfs_score": 37.3,
+      "utility_score": 68
+    },
+    {
+      "uuid": "4a58af294171237df3e0d3a1c02ddfdb",
+      "text": "got more to learn",
+      "provenance": [
+        {
+          "provenance": "S47L5",
+          "source_translation_uuid": "25466594915c7736c64315bc3e8c59df",
+          "source_seed_id": "C0047",
+          "original_uuid": "cb8e7b227dbbfac20d9c48e4fb9c963e"
+        }
+      ],
+      "fcfs_score": 32,
+      "utility_score": 68
+    },
+    {
+      "uuid": "d7209ff6999510b686fc3bfed3f6870b",
+      "text": "I feel",
+      "provenance": [
+        {
+          "provenance": "S27L2",
+          "source_translation_uuid": "a31246e1932839b8bf1a08d8ac639cd6",
+          "source_seed_id": "C0027",
+          "original_uuid": "fd95c41384cef30306fca140ebebc9bc"
+        }
+      ],
+      "fcfs_score": 32.3,
+      "utility_score": 61
+    },
+    {
+      "uuid": "2408187233b9952fcb708df1adc01aee",
+      "text": "But I'm a little",
+      "provenance": [
+        {
+          "provenance": "S25L4",
+          "source_translation_uuid": "933915c394abdaf1bca5b5ebdc44eb54",
+          "source_seed_id": "C0025",
+          "original_uuid": "c687b5f0109fa37fccdbe94c44cf6752"
+        }
+      ],
+      "fcfs_score": 25.8,
+      "utility_score": 47
+    }
+  ],
+  "metadata": {
+    "course_code": "mkd_for_eng_574seeds",
+    "phase": "phase_5",
+    "patterns_included": [
+      "subject_verb",
+      "verb_phrases",
+      "questions",
+      "negations",
+      "general"
+    ],
+    "composite_score": 47,
+    "pedagogical_notes": {
+      "purpose": "Grouped for optimal teaching sequence",
+      "pattern_diversity": 5,
+      "progression": "Balanced mix of FCFS and utility priorities"
+    },
+    "created_at": "2025-10-10T10:27:35.752Z"
+  }
+}

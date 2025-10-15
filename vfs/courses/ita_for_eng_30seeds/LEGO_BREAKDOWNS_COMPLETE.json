@@ -1,0 +1,1040 @@
+{
+  "course_metadata": {
+    "lang_pair": "ita_for_eng",
+    "target_language": "Italian",
+    "known_language": "English",
+    "phase": 3,
+    "seeds_count": 30
+  },
+  "lego_breakdowns": [
+    {
+      "seed_id": "S0001",
+      "original_target": "Voglio parlare italiano con te adesso.",
+      "original_known": "I want to speak Italian with you now.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0001L01",
+          "lego_type": "BASE",
+          "target_chunk": "Voglio",
+          "known_chunk": "I want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0001L02",
+          "lego_type": "BASE",
+          "target_chunk": "parlare",
+          "known_chunk": "to speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0001L03",
+          "lego_type": "BASE",
+          "target_chunk": "italiano",
+          "known_chunk": "Italian",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0001L04",
+          "lego_type": "BASE",
+          "target_chunk": "con te",
+          "known_chunk": "with you",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0001L05",
+          "lego_type": "BASE",
+          "target_chunk": "adesso",
+          "known_chunk": "now",
+          "fd_validated": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0002",
+      "original_target": "Sto tentando di imparare.",
+      "original_known": "I'm trying to learn.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0002L01",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "Sto tentando di",
+          "known_chunk": "I'm trying to",
+          "fd_validated": true,
+          "componentization": "I'm trying to = Sto tentando di, where Sto = I'm, tentando represents trying, and di = to"
+        },
+        {
+          "lego_id": "S0002L02",
+          "lego_type": "BASE",
+          "target_chunk": "imparare",
+          "known_chunk": "to learn",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0002F01",
+          "target_chunk": "Sto",
+          "known_chunk": "I'm"
+        },
+        {
+          "feeder_id": "S0002F02",
+          "target_chunk": "tentare",
+          "known_chunk": "to try"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "original_target": "Come parlare il più possibile.",
+      "original_known": "How to speak as much as possible.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0003L01",
+          "lego_type": "BASE",
+          "target_chunk": "Come",
+          "known_chunk": "How",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0003L02",
+          "lego_type": "BASE",
+          "target_chunk": "il più possibile",
+          "known_chunk": "as much as possible",
+          "fd_validated": true,
+          "componentization": "as much as possible = il più possibile (idiomatic superlative phrase)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0004",
+      "original_target": "Come dire qualcosa in italiano.",
+      "original_known": "How to say something in Italian.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0004L01",
+          "lego_type": "BASE",
+          "target_chunk": "dire",
+          "known_chunk": "to say",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0004L02",
+          "lego_type": "BASE",
+          "target_chunk": "qualcosa",
+          "known_chunk": "something",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0004L03",
+          "lego_type": "BASE",
+          "target_chunk": "in italiano",
+          "known_chunk": "in Italian",
+          "fd_validated": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "original_target": "Vado a praticare parlare con qualcun altro.",
+      "original_known": "I'm going to practice speaking with someone else.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0005L01",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "Vado a praticare",
+          "known_chunk": "I'm going to practice",
+          "fd_validated": true,
+          "componentization": "I'm going to practice = Vado a praticare, where Vado = I'm going and praticare = to practice"
+        },
+        {
+          "lego_id": "S0005L02",
+          "lego_type": "BASE",
+          "target_chunk": "con qualcun altro",
+          "known_chunk": "with someone else",
+          "fd_validated": true,
+          "componentization": "with someone else = con qualcun altro, where con = with and qualcun altro = someone else"
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0005F01",
+          "target_chunk": "Vado",
+          "known_chunk": "I'm going"
+        },
+        {
+          "feeder_id": "S0005F02",
+          "target_chunk": "praticare",
+          "known_chunk": "to practice"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "original_target": "Sto tentando di ricordare una parola.",
+      "original_known": "I'm trying to remember a word.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0006L01",
+          "lego_type": "BASE",
+          "target_chunk": "ricordare",
+          "known_chunk": "to remember",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0006L02",
+          "lego_type": "BASE",
+          "target_chunk": "una parola",
+          "known_chunk": "a word",
+          "fd_validated": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0007",
+      "original_target": "Voglio tentare il più possibile oggi.",
+      "original_known": "I want to try as hard as I can today.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0007L01",
+          "lego_type": "BASE",
+          "target_chunk": "tentare",
+          "known_chunk": "to try",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0007L02",
+          "lego_type": "BASE",
+          "target_chunk": "oggi",
+          "known_chunk": "today",
+          "fd_validated": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0008",
+      "original_target": "Vado a tentare di spiegare cosa voglio dire.",
+      "original_known": "I'm going to try to explain what I mean.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0008L01",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "Vado a tentare di",
+          "known_chunk": "I'm going to try to",
+          "fd_validated": true,
+          "componentization": "I'm going to try to = Vado a tentare di, where Vado = I'm going, tentare = to try, and di = to"
+        },
+        {
+          "lego_id": "S0008L02",
+          "lego_type": "BASE",
+          "target_chunk": "spiegare",
+          "known_chunk": "to explain",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0008L03",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "cosa voglio dire",
+          "known_chunk": "what I mean",
+          "fd_validated": true,
+          "componentization": "what I mean = cosa voglio dire, where cosa = what, voglio = I want, and dire = to say"
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0008F01",
+          "target_chunk": "Vado",
+          "known_chunk": "I'm going"
+        },
+        {
+          "feeder_id": "S0008F02",
+          "target_chunk": "tentare",
+          "known_chunk": "to try"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "original_target": "Parlo un po' di italiano adesso.",
+      "original_known": "I speak a little Italian now.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0009L01",
+          "lego_type": "BASE",
+          "target_chunk": "Parlo",
+          "known_chunk": "I speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0009L02",
+          "lego_type": "BASE",
+          "target_chunk": "un po' di",
+          "known_chunk": "a little",
+          "fd_validated": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0010",
+      "original_target": "Non sono sicuro se posso ricordare tutta la frase.",
+      "original_known": "I'm not sure if I can remember the whole sentence.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0010L01",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "Non sono sicuro",
+          "known_chunk": "I'm not sure",
+          "fd_validated": true,
+          "componentization": "I'm not sure = Non sono sicuro, where Non = not, sono = I am, and sicuro = sure"
+        },
+        {
+          "lego_id": "S0010L02",
+          "lego_type": "BASE",
+          "target_chunk": "se",
+          "known_chunk": "if",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0010L03",
+          "lego_type": "BASE",
+          "target_chunk": "posso",
+          "known_chunk": "I can",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0010L04",
+          "lego_type": "BASE",
+          "target_chunk": "tutta la frase",
+          "known_chunk": "the whole sentence",
+          "fd_validated": true,
+          "componentization": "the whole sentence = tutta la frase, where tutta = whole/all, la = the, and frase = sentence"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0011",
+      "original_target": "Mi piacerebbe poter parlare dopo che finisci.",
+      "original_known": "I'd like to be able to speak after you finish.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0011L01",
+          "lego_type": "BASE",
+          "target_chunk": "Mi piacerebbe",
+          "known_chunk": "I'd like",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0011L02",
+          "lego_type": "BASE",
+          "target_chunk": "poter",
+          "known_chunk": "to be able",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0011L03",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "dopo che finisci",
+          "known_chunk": "after you finish",
+          "fd_validated": true,
+          "componentization": "after you finish = dopo che finisci, where dopo che = after and finisci = you finish"
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0011F01",
+          "target_chunk": "finire",
+          "known_chunk": "to finish"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0012",
+      "original_target": "Non mi piacerebbe indovinare cosa succederà domani.",
+      "original_known": "I wouldn't like to guess what's going to happen tomorrow.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0012L01",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "Non mi piacerebbe",
+          "known_chunk": "I wouldn't like",
+          "fd_validated": true,
+          "componentization": "I wouldn't like = Non mi piacerebbe, where Non = not/wouldn't, mi = me, and piacerebbe = would like"
+        },
+        {
+          "lego_id": "S0012L02",
+          "lego_type": "BASE",
+          "target_chunk": "indovinare",
+          "known_chunk": "to guess",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0012L03",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "cosa succederà",
+          "known_chunk": "what's going to happen",
+          "fd_validated": true,
+          "componentization": "what's going to happen = cosa succederà, where cosa = what and succederà = will happen"
+        },
+        {
+          "lego_id": "S0012L04",
+          "lego_type": "BASE",
+          "target_chunk": "domani",
+          "known_chunk": "tomorrow",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0012F01",
+          "target_chunk": "succedere",
+          "known_chunk": "to happen"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0013",
+      "original_target": "Parli italiano molto bene.",
+      "original_known": "You speak Italian very well.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0013L01",
+          "lego_type": "BASE",
+          "target_chunk": "Parli",
+          "known_chunk": "You speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0013L02",
+          "lego_type": "BASE",
+          "target_chunk": "molto bene",
+          "known_chunk": "very well",
+          "fd_validated": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0014",
+      "original_target": "Parli italiano tutto il giorno?",
+      "original_known": "Do you speak Italian all day?",
+      "lego_pairs": [
+        {
+          "lego_id": "S0014L01",
+          "lego_type": "BASE",
+          "target_chunk": "tutto il giorno",
+          "known_chunk": "all day",
+          "fd_validated": true,
+          "componentization": "all day = tutto il giorno, where tutto = all, il = the, and giorno = day"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0015",
+      "original_target": "E voglio che tu parli italiano con me domani.",
+      "original_known": "And I want you to speak Italian with me tomorrow.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0015L01",
+          "lego_type": "BASE",
+          "target_chunk": "E",
+          "known_chunk": "And",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0015L02",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "voglio che tu parli",
+          "known_chunk": "I want you to speak",
+          "fd_validated": true,
+          "componentization": "I want you to speak = voglio che tu parli, where voglio = I want, che = that (subjunctive trigger), tu = you, and parli = you speak"
+        },
+        {
+          "lego_id": "S0015L03",
+          "lego_type": "BASE",
+          "target_chunk": "con me",
+          "known_chunk": "with me",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0015F01",
+          "target_chunk": "parlare",
+          "known_chunk": "to speak"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0016",
+      "original_target": "Lui vuole ritornare con tutti gli altri più tardi.",
+      "original_known": "He wants to come back with everyone else later on.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0016L01",
+          "lego_type": "BASE",
+          "target_chunk": "Lui vuole",
+          "known_chunk": "He wants",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0016L02",
+          "lego_type": "BASE",
+          "target_chunk": "ritornare",
+          "known_chunk": "to come back",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0016L03",
+          "lego_type": "BASE",
+          "target_chunk": "con tutti gli altri",
+          "known_chunk": "with everyone else",
+          "fd_validated": true,
+          "componentization": "with everyone else = con tutti gli altri, where con = with, tutti = everyone, and gli altri = the others"
+        },
+        {
+          "lego_id": "S0016L04",
+          "lego_type": "BASE",
+          "target_chunk": "più tardi",
+          "known_chunk": "later on",
+          "fd_validated": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0017",
+      "original_target": "Lei vuole scoprire qual è la risposta.",
+      "original_known": "She wants to find out what the answer is.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0017L01",
+          "lego_type": "BASE",
+          "target_chunk": "Lei vuole",
+          "known_chunk": "She wants",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0017L02",
+          "lego_type": "BASE",
+          "target_chunk": "scoprire",
+          "known_chunk": "to find out",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0017L03",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "qual è la risposta",
+          "known_chunk": "what the answer is",
+          "fd_validated": true,
+          "componentization": "what the answer is = qual è la risposta, where qual = what/which, è = is, and la risposta = the answer"
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0017F01",
+          "target_chunk": "la risposta",
+          "known_chunk": "the answer"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0018",
+      "original_target": "Vogliamo incontrarci alle sei stasera.",
+      "original_known": "We want to meet at six o'clock this evening.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0018L01",
+          "lego_type": "BASE",
+          "target_chunk": "Vogliamo",
+          "known_chunk": "We want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0018L02",
+          "lego_type": "BASE",
+          "target_chunk": "incontrarci",
+          "known_chunk": "to meet",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0018L03",
+          "lego_type": "BASE",
+          "target_chunk": "alle sei",
+          "known_chunk": "at six o'clock",
+          "fd_validated": true,
+          "componentization": "at six o'clock = alle sei, where alle = at (the), and sei = six"
+        },
+        {
+          "lego_id": "S0018L04",
+          "lego_type": "BASE",
+          "target_chunk": "stasera",
+          "known_chunk": "this evening",
+          "fd_validated": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0019",
+      "original_target": "Ma non voglio smettere di parlare.",
+      "original_known": "But I don't want to stop talking.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0019L01",
+          "lego_type": "BASE",
+          "target_chunk": "Ma",
+          "known_chunk": "But",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0019L02",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "non voglio",
+          "known_chunk": "I don't want",
+          "fd_validated": true,
+          "componentization": "I don't want = non voglio, where non = not and voglio = I want"
+        },
+        {
+          "lego_id": "S0019L03",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "smettere di parlare",
+          "known_chunk": "to stop talking",
+          "fd_validated": true,
+          "componentization": "to stop talking = smettere di parlare, where smettere di = to stop and parlare = talking/to speak"
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0019F01",
+          "target_chunk": "smettere",
+          "known_chunk": "to stop"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0020",
+      "original_target": "Vuoi imparare il suo nome rapidamente.",
+      "original_known": "You want to learn their name quickly.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0020L01",
+          "lego_type": "BASE",
+          "target_chunk": "Vuoi",
+          "known_chunk": "You want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0020L02",
+          "lego_type": "BASE",
+          "target_chunk": "il suo nome",
+          "known_chunk": "their name",
+          "fd_validated": true,
+          "componentization": "their name = il suo nome, where il = the, suo = their, and nome = name"
+        },
+        {
+          "lego_id": "S0020L03",
+          "lego_type": "BASE",
+          "target_chunk": "rapidamente",
+          "known_chunk": "quickly",
+          "fd_validated": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0021",
+      "original_target": "Perché stai imparando il suo nome?",
+      "original_known": "Why are you learning their name?",
+      "lego_pairs": [
+        {
+          "lego_id": "S0021L01",
+          "lego_type": "BASE",
+          "target_chunk": "Perché",
+          "known_chunk": "Why",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0021L02",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "stai imparando",
+          "known_chunk": "you are learning",
+          "fd_validated": true,
+          "componentization": "you are learning = stai imparando, where stai = you are and imparando represents learning"
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0021F01",
+          "target_chunk": "stai",
+          "known_chunk": "you are"
+        },
+        {
+          "feeder_id": "S0021F02",
+          "target_chunk": "imparare",
+          "known_chunk": "to learn"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0022",
+      "original_target": "Perché voglio incontrare persone che parlano italiano.",
+      "original_known": "Because I want to meet people who speak Italian.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0022L01",
+          "lego_type": "BASE",
+          "target_chunk": "Perché",
+          "known_chunk": "Because",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0022L02",
+          "lego_type": "BASE",
+          "target_chunk": "incontrare",
+          "known_chunk": "to meet",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0022L03",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "persone che parlano",
+          "known_chunk": "people who speak",
+          "fd_validated": true,
+          "componentization": "people who speak = persone che parlano, where persone = people, che = who, and parlano = speak"
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0022F01",
+          "target_chunk": "persone",
+          "known_chunk": "people"
+        },
+        {
+          "feeder_id": "S0022F02",
+          "target_chunk": "parlano",
+          "known_chunk": "speak"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0023",
+      "original_target": "Sto per iniziare a parlare di più presto.",
+      "original_known": "I'm going to start talking more soon.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0023L01",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "Sto per iniziare a",
+          "known_chunk": "I'm going to start",
+          "fd_validated": true,
+          "componentization": "I'm going to start = Sto per iniziare a, where Sto = I'm, per = (about to), iniziare = to start, and a = to"
+        },
+        {
+          "lego_id": "S0023L02",
+          "lego_type": "BASE",
+          "target_chunk": "di più",
+          "known_chunk": "more",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0023L03",
+          "lego_type": "BASE",
+          "target_chunk": "presto",
+          "known_chunk": "soon",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0023F01",
+          "target_chunk": "Sto",
+          "known_chunk": "I'm"
+        },
+        {
+          "feeder_id": "S0023F02",
+          "target_chunk": "iniziare",
+          "known_chunk": "to start"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0024",
+      "original_target": "Non potrò ricordare facilmente.",
+      "original_known": "I'm not going to be able to remember easily.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0024L01",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "Non potrò",
+          "known_chunk": "I'm not going to be able",
+          "fd_validated": true,
+          "componentization": "I'm not going to be able = Non potrò, where Non = not and potrò = I will be able"
+        },
+        {
+          "lego_id": "S0024L02",
+          "lego_type": "BASE",
+          "target_chunk": "facilmente",
+          "known_chunk": "easily",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0024F01",
+          "target_chunk": "potere",
+          "known_chunk": "to be able"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0025",
+      "original_target": "Mi aiuterai prima che io debba andare?",
+      "original_known": "Are you going to help me before I have to go?",
+      "lego_pairs": [
+        {
+          "lego_id": "S0025L01",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "Mi aiuterai",
+          "known_chunk": "Are you going to help me",
+          "fd_validated": true,
+          "componentization": "Are you going to help me = Mi aiuterai, where Mi = me and aiuterai = you will help"
+        },
+        {
+          "lego_id": "S0025L02",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "prima che io debba",
+          "known_chunk": "before I have to",
+          "fd_validated": true,
+          "componentization": "before I have to = prima che io debba, where prima che = before (subjunctive trigger), io = I, and debba = I have to"
+        },
+        {
+          "lego_id": "S0025L03",
+          "lego_type": "BASE",
+          "target_chunk": "andare",
+          "known_chunk": "to go",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0025F01",
+          "target_chunk": "aiutare",
+          "known_chunk": "to help"
+        },
+        {
+          "feeder_id": "S0025F02",
+          "target_chunk": "dovere",
+          "known_chunk": "to have to"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0026",
+      "original_target": "Mi piace sentire come se fossi quasi pronto per andare.",
+      "original_known": "I like feeling as if I'm nearly ready to go.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0026L01",
+          "lego_type": "BASE",
+          "target_chunk": "Mi piace",
+          "known_chunk": "I like",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0026L02",
+          "lego_type": "BASE",
+          "target_chunk": "sentire",
+          "known_chunk": "feeling",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0026L03",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "come se fossi",
+          "known_chunk": "as if I'm",
+          "fd_validated": true,
+          "componentization": "as if I'm = come se fossi, where come se = as if and fossi represents I were/am (subjunctive)"
+        },
+        {
+          "lego_id": "S0026L04",
+          "lego_type": "BASE",
+          "target_chunk": "quasi",
+          "known_chunk": "nearly",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0026L05",
+          "lego_type": "BASE",
+          "target_chunk": "pronto",
+          "known_chunk": "ready",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0026L06",
+          "lego_type": "BASE",
+          "target_chunk": "per andare",
+          "known_chunk": "to go",
+          "fd_validated": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0027",
+      "original_target": "Non mi piace prendere troppo tempo per rispondere.",
+      "original_known": "I don't like taking too much time to answer.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0027L01",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "Non mi piace",
+          "known_chunk": "I don't like",
+          "fd_validated": true,
+          "componentization": "I don't like = Non mi piace, where Non = not/don't, mi = me, and piace = likes"
+        },
+        {
+          "lego_id": "S0027L02",
+          "lego_type": "BASE",
+          "target_chunk": "prendere",
+          "known_chunk": "taking",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0027L03",
+          "lego_type": "BASE",
+          "target_chunk": "troppo tempo",
+          "known_chunk": "too much time",
+          "fd_validated": true,
+          "componentization": "too much time = troppo tempo, where troppo = too much and tempo = time"
+        },
+        {
+          "lego_id": "S0027L04",
+          "lego_type": "BASE",
+          "target_chunk": "per rispondere",
+          "known_chunk": "to answer",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0027F01",
+          "target_chunk": "rispondere",
+          "known_chunk": "to answer"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0028",
+      "original_target": "È utile iniziare a parlare appena puoi.",
+      "original_known": "It's useful to start talking as soon as you can.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0028L01",
+          "lego_type": "BASE",
+          "target_chunk": "È utile",
+          "known_chunk": "It's useful",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0028L02",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "iniziare a parlare",
+          "known_chunk": "to start talking",
+          "fd_validated": true,
+          "componentization": "to start talking = iniziare a parlare, where iniziare = to start/begin, a = to, and parlare = to talk/speak"
+        },
+        {
+          "lego_id": "S0028L03",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "appena puoi",
+          "known_chunk": "as soon as you can",
+          "fd_validated": true,
+          "componentization": "as soon as you can = appena puoi, where appena = as soon as and puoi = you can"
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0028F01",
+          "target_chunk": "iniziare",
+          "known_chunk": "to start"
+        },
+        {
+          "feeder_id": "S0028F02",
+          "target_chunk": "potere",
+          "known_chunk": "can"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "original_target": "Non vedo l'ora di parlare meglio appena posso.",
+      "original_known": "I'm looking forward to speaking better as soon as I can.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0029L01",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "Non vedo l'ora di",
+          "known_chunk": "I'm looking forward to",
+          "fd_validated": true,
+          "componentization": "I'm looking forward to = Non vedo l'ora di (idiomatic expression meaning can't wait)"
+        },
+        {
+          "lego_id": "S0029L02",
+          "lego_type": "BASE",
+          "target_chunk": "meglio",
+          "known_chunk": "better",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0029L03",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "appena posso",
+          "known_chunk": "as soon as I can",
+          "fd_validated": true,
+          "componentization": "as soon as I can = appena posso, where appena = as soon as and posso = I can"
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0029F01",
+          "target_chunk": "vedere",
+          "known_chunk": "to see"
+        },
+        {
+          "feeder_id": "S0029F02",
+          "target_chunk": "potere",
+          "known_chunk": "can"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "original_target": "Volevo domandarti qualcosa ieri.",
+      "original_known": "I wanted to ask you something yesterday.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0030L01",
+          "lego_type": "BASE",
+          "target_chunk": "Volevo",
+          "known_chunk": "I wanted",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0030L02",
+          "lego_type": "BASE",
+          "target_chunk": "domandarti",
+          "known_chunk": "to ask you",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0030L03",
+          "lego_type": "BASE",
+          "target_chunk": "qualcosa",
+          "known_chunk": "something",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0030L04",
+          "lego_type": "BASE",
+          "target_chunk": "ieri",
+          "known_chunk": "yesterday",
+          "fd_validated": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1499 @@
+{
+  "phase": "LEGO_BREAKDOWNS",
+  "target_language": "Spanish",
+  "known_language": "English",
+  "lego_breakdowns": [
+    {
+      "seed_id": "S0001",
+      "original_target": "Quiero hablar español contigo ahora.",
+      "original_known": "I want to speak Spanish with you now.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0001L01",
+          "target_chunk": "Quiero",
+          "known_chunk": "I want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0001L02",
+          "target_chunk": "hablar",
+          "known_chunk": "to speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0001L03",
+          "target_chunk": "español",
+          "known_chunk": "Spanish",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0001L04",
+          "target_chunk": "contigo",
+          "known_chunk": "with you",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0001L05",
+          "target_chunk": "ahora",
+          "known_chunk": "now",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [],
+      "componentization": []
+    },
+    {
+      "seed_id": "S0002",
+      "original_target": "Estoy intentando aprender.",
+      "original_known": "I'm trying to learn.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0002L01",
+          "target_chunk": "Estoy intentando aprender",
+          "known_chunk": "I'm trying to learn",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0002F01",
+          "target_chunk": "Estoy intentando",
+          "known_chunk": "I'm trying"
+        },
+        {
+          "feeder_id": "S0002F02",
+          "target_chunk": "aprender",
+          "known_chunk": "to learn"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0002L01",
+          "explanation": "I'm trying to learn = Estoy intentando aprender, where Estoy intentando = I'm trying (cognate: intend), and aprender = to learn"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "original_target": "cómo hablar lo más a menudo posible.",
+      "original_known": "how to speak as often as possible.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0003L01",
+          "target_chunk": "cómo",
+          "known_chunk": "how",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0003L02",
+          "target_chunk": "hablar",
+          "known_chunk": "to speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0003L03",
+          "target_chunk": "a menudo",
+          "known_chunk": "often",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0003L04",
+          "target_chunk": "posible",
+          "known_chunk": "possible",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0003L05",
+          "target_chunk": "lo más a menudo posible",
+          "known_chunk": "as often as possible",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0003F01",
+          "target_chunk": "a menudo",
+          "known_chunk": "often"
+        },
+        {
+          "feeder_id": "S0003F02",
+          "target_chunk": "posible",
+          "known_chunk": "possible"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0003L05",
+          "explanation": "as often as possible = lo más a menudo posible, where lo más = as, a menudo = often, and posible = possible"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0004",
+      "original_target": "cómo decir algo en español",
+      "original_known": "how to say something in Spanish",
+      "lego_pairs": [
+        {
+          "lego_id": "S0004L01",
+          "target_chunk": "cómo",
+          "known_chunk": "how",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0004L02",
+          "target_chunk": "decir",
+          "known_chunk": "to say",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0004L03",
+          "target_chunk": "algo",
+          "known_chunk": "something",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0004L04",
+          "target_chunk": "en español",
+          "known_chunk": "in Spanish",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0004F01",
+          "target_chunk": "español",
+          "known_chunk": "Spanish"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0004L04",
+          "explanation": "in Spanish = en español, where en = in and español = Spanish"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "original_target": "Voy a practicar a hablar con otra persona.",
+      "original_known": "I'm going to practice speaking with someone else.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0005L01",
+          "target_chunk": "Voy a",
+          "known_chunk": "I'm going to",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0005L02",
+          "target_chunk": "practicar a hablar",
+          "known_chunk": "to practice speaking",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0005L04",
+          "target_chunk": "otra persona",
+          "known_chunk": "someone else",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0005L05",
+          "target_chunk": "con otra persona",
+          "known_chunk": "with someone else",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0005F01",
+          "target_chunk": "practicar",
+          "known_chunk": "to practice"
+        },
+        {
+          "feeder_id": "S0005F02",
+          "target_chunk": "hablar",
+          "known_chunk": "to speak"
+        },
+        {
+          "feeder_id": "S0005F03",
+          "target_chunk": "con",
+          "known_chunk": "with"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0005L01",
+          "explanation": "I'm going to = Voy a, where voy = I'm going and a = to"
+        },
+        {
+          "lego_id": "S0005L02",
+          "explanation": "to practice speaking = practicar a hablar, where practicar = to practice, a = to, and hablar = to speak"
+        },
+        {
+          "lego_id": "S0005L04",
+          "explanation": "someone else = otra persona, where otra = another and persona = person"
+        },
+        {
+          "lego_id": "S0005L05",
+          "explanation": "with someone else = con otra persona, where con = with and otra persona = someone else"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "original_target": "Estoy intentando recordar una palabra.",
+      "original_known": "I'm trying to remember a word.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0006L01",
+          "target_chunk": "Estoy intentando recordar",
+          "known_chunk": "I'm trying to remember",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0006L02",
+          "target_chunk": "palabra",
+          "known_chunk": "word",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0006L03",
+          "target_chunk": "una palabra",
+          "known_chunk": "a word",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0006F01",
+          "target_chunk": "Estoy intentando",
+          "known_chunk": "I'm trying"
+        },
+        {
+          "feeder_id": "S0006F02",
+          "target_chunk": "recordar",
+          "known_chunk": "to remember"
+        },
+        {
+          "feeder_id": "S0006F03",
+          "target_chunk": "palabra",
+          "known_chunk": "word"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0006L01",
+          "explanation": "I'm trying to remember = Estoy intentando recordar, where Estoy intentando = I'm trying (cognate: intend), and recordar = to remember"
+        },
+        {
+          "lego_id": "S0006L03",
+          "explanation": "a word = una palabra, where una = a and palabra = word"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0007",
+      "original_target": "Quiero intentar lo más posible hoy.",
+      "original_known": "I want to try as hard as I can today.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0007L01",
+          "target_chunk": "Quiero",
+          "known_chunk": "I want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0007L02",
+          "target_chunk": "intentar",
+          "known_chunk": "to try",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0007L03",
+          "target_chunk": "lo más posible",
+          "known_chunk": "as hard as I can",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0007L04",
+          "target_chunk": "hoy",
+          "known_chunk": "today",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [],
+      "componentization": [
+        {
+          "lego_id": "S0007L03",
+          "explanation": "as hard as I can = lo más posible, where lo más = as much and posible = possible"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0008",
+      "original_target": "Voy a intentar explicar lo que quiero decir.",
+      "original_known": "I'm going to try to explain what I mean.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0008L01",
+          "target_chunk": "Voy a",
+          "known_chunk": "I'm going to",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0008L02",
+          "target_chunk": "intentar explicar",
+          "known_chunk": "to try to explain",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0008L03",
+          "target_chunk": "lo que quiero decir",
+          "known_chunk": "what I mean",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0008F01",
+          "target_chunk": "intentar",
+          "known_chunk": "to try (cognate: intend)"
+        },
+        {
+          "feeder_id": "S0008F02",
+          "target_chunk": "explicar",
+          "known_chunk": "to explain"
+        },
+        {
+          "feeder_id": "S0008F03",
+          "target_chunk": "quiero decir",
+          "known_chunk": "I mean"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0008L01",
+          "explanation": "I'm going to = Voy a, where voy = I'm going and a = to"
+        },
+        {
+          "lego_id": "S0008L02",
+          "explanation": "to try to explain = intentar explicar, where intentar = to try (cognate: intend), and explicar = to explain"
+        },
+        {
+          "lego_id": "S0008L03",
+          "explanation": "what I mean = lo que quiero decir, where lo que = what and quiero decir = I mean"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "original_target": "Hablo un poco de español ahora.",
+      "original_known": "I speak a little Spanish now.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0009L01",
+          "target_chunk": "Hablo",
+          "known_chunk": "I speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0009L02",
+          "target_chunk": "un poco de español",
+          "known_chunk": "a little Spanish",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0009L03",
+          "target_chunk": "ahora",
+          "known_chunk": "now",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0009F01",
+          "target_chunk": "un poco",
+          "known_chunk": "a little"
+        },
+        {
+          "feeder_id": "S0009F02",
+          "target_chunk": "español",
+          "known_chunk": "Spanish"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0009L02",
+          "explanation": "a little Spanish = un poco de español, where un poco = a little, de = of, and español = Spanish"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0010",
+      "original_target": "No estoy seguro si puedo recordar toda la frase.",
+      "original_known": "I'm not sure if I can remember the whole sentence.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0010L01",
+          "target_chunk": "No estoy seguro",
+          "known_chunk": "I'm not sure",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0010L02",
+          "target_chunk": "si puedo recordar",
+          "known_chunk": "if I can remember",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0010L03",
+          "target_chunk": "toda la frase",
+          "known_chunk": "the whole sentence",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0010F01",
+          "target_chunk": "estoy",
+          "known_chunk": "I am"
+        },
+        {
+          "feeder_id": "S0010F02",
+          "target_chunk": "no estoy",
+          "known_chunk": "I'm not"
+        },
+        {
+          "feeder_id": "S0010F03",
+          "target_chunk": "seguro",
+          "known_chunk": "sure"
+        },
+        {
+          "feeder_id": "S0010F04",
+          "target_chunk": "si",
+          "known_chunk": "if"
+        },
+        {
+          "feeder_id": "S0010F05",
+          "target_chunk": "puedo",
+          "known_chunk": "I can"
+        },
+        {
+          "feeder_id": "S0010F06",
+          "target_chunk": "recordar",
+          "known_chunk": "to remember"
+        },
+        {
+          "feeder_id": "S0010F07",
+          "target_chunk": "frase",
+          "known_chunk": "sentence"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0010L01",
+          "explanation": "I'm not sure = No estoy seguro, where no = not, estoy = I am, and seguro = sure"
+        },
+        {
+          "lego_id": "S0010L02",
+          "explanation": "if I can remember = si puedo recordar, where si = if, puedo = I can, and recordar = to remember"
+        },
+        {
+          "lego_id": "S0010L03",
+          "explanation": "the whole sentence = toda la frase, where toda = whole, la = the, and frase = sentence"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0011",
+      "original_target": "Me gustaría poder hablar después de que termines.",
+      "original_known": "I'd like to be able to speak after you finish.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0011L01",
+          "target_chunk": "Me gustaría",
+          "known_chunk": "I'd like",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0011L02",
+          "target_chunk": "poder",
+          "known_chunk": "to be able",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0011L03",
+          "target_chunk": "hablar",
+          "known_chunk": "to speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0011L04",
+          "target_chunk": "después de que termines",
+          "known_chunk": "after you finish",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0011F01",
+          "target_chunk": "después",
+          "known_chunk": "after"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0011L04",
+          "explanation": "after you finish = después de que termines, where después = after and que termines represents that you finish"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0012",
+      "original_target": "No me gustaría adivinar qué va a pasar mañana.",
+      "original_known": "I wouldn't like to guess what's going to happen tomorrow.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0012L01",
+          "target_chunk": "No me gustaría",
+          "known_chunk": "I wouldn't like",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0012L02",
+          "target_chunk": "adivinar",
+          "known_chunk": "to guess",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0012L03",
+          "target_chunk": "qué va a pasar",
+          "known_chunk": "what's going to happen",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0012L04",
+          "target_chunk": "mañana",
+          "known_chunk": "tomorrow",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0012F01",
+          "target_chunk": "me gustaría",
+          "known_chunk": "I'd like"
+        },
+        {
+          "feeder_id": "S0012F02",
+          "target_chunk": "qué",
+          "known_chunk": "what"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0012L01",
+          "explanation": "I wouldn't like = No me gustaría, where no = not and me gustaría = I'd like"
+        },
+        {
+          "lego_id": "S0012L03",
+          "explanation": "what's going to happen = qué va a pasar, where qué = what and va a pasar represents will happen"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0013",
+      "original_target": "Hablas español muy bien.",
+      "original_known": "You speak Spanish very well.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0013L01",
+          "target_chunk": "Hablas",
+          "known_chunk": "You speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0013L02",
+          "target_chunk": "español",
+          "known_chunk": "Spanish",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0013L03",
+          "target_chunk": "muy bien",
+          "known_chunk": "very well",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0013F01",
+          "target_chunk": "muy",
+          "known_chunk": "very"
+        },
+        {
+          "feeder_id": "S0013F02",
+          "target_chunk": "bien",
+          "known_chunk": "well"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0013L03",
+          "explanation": "very well = muy bien, where muy = very and bien = well"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0014",
+      "original_target": "¿Hablas español todo el día?",
+      "original_known": "Do you speak Spanish all day?",
+      "lego_pairs": [
+        {
+          "lego_id": "S0014L01",
+          "target_chunk": "Hablas",
+          "known_chunk": "You speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0014L02",
+          "target_chunk": "español",
+          "known_chunk": "Spanish",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0014L03",
+          "target_chunk": "todo el día",
+          "known_chunk": "all day",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0014F01",
+          "target_chunk": "todo",
+          "known_chunk": "all"
+        },
+        {
+          "feeder_id": "S0014F02",
+          "target_chunk": "día",
+          "known_chunk": "day"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0014L03",
+          "explanation": "all day = todo el día, where todo = all, el = the, and día = day"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0015",
+      "original_target": "Y quiero que hables español conmigo mañana.",
+      "original_known": "And I want you to speak Spanish with me tomorrow.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0015L01",
+          "target_chunk": "quiero que hables",
+          "known_chunk": "I want you to speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0015L02",
+          "target_chunk": "español",
+          "known_chunk": "Spanish",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0015L03",
+          "target_chunk": "conmigo",
+          "known_chunk": "with me",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0015L04",
+          "target_chunk": "mañana",
+          "known_chunk": "tomorrow",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0015F01",
+          "target_chunk": "quiero",
+          "known_chunk": "I want"
+        },
+        {
+          "feeder_id": "S0015F02",
+          "target_chunk": "hables",
+          "known_chunk": "you speak"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0015L01",
+          "explanation": "I want you to speak = quiero que hables, where quiero = I want, que = that, and hables = you speak"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0016",
+      "original_target": "Quiere volver con todos los demás más tarde.",
+      "original_known": "Wants to come back with everyone else later on.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0016L01",
+          "target_chunk": "Quiere",
+          "known_chunk": "Wants",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0016L02",
+          "target_chunk": "volver",
+          "known_chunk": "to come back",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0016L03",
+          "target_chunk": "con todos los demás",
+          "known_chunk": "with everyone else",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0016L04",
+          "target_chunk": "más tarde",
+          "known_chunk": "later on",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0016F01",
+          "target_chunk": "con",
+          "known_chunk": "with"
+        },
+        {
+          "feeder_id": "S0016F02",
+          "target_chunk": "todos",
+          "known_chunk": "everyone"
+        },
+        {
+          "feeder_id": "S0016F03",
+          "target_chunk": "tarde",
+          "known_chunk": "later"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0016L03",
+          "explanation": "with everyone else = con todos los demás, where con = with, todos = everyone, los = the, and demás represents else"
+        },
+        {
+          "lego_id": "S0016L04",
+          "explanation": "later on = más tarde, where más = more and tarde = later"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0017",
+      "original_target": "Quiere descubrir cuál es la respuesta.",
+      "original_known": "Wants to find out what the answer is.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0017L01",
+          "target_chunk": "Quiere",
+          "known_chunk": "Wants",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0017L02",
+          "target_chunk": "descubrir",
+          "known_chunk": "to find out",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0017L03",
+          "target_chunk": "cuál es la respuesta",
+          "known_chunk": "what the answer is",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0017F01",
+          "target_chunk": "respuesta",
+          "known_chunk": "answer"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0017L03",
+          "explanation": "what the answer is = cuál es la respuesta, where cuál = what, es = is, la = the, and respuesta = answer"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0018",
+      "original_target": "Queremos encontrarnos a las seis esta noche.",
+      "original_known": "We want to meet at six o'clock this evening.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0018L01",
+          "target_chunk": "Queremos",
+          "known_chunk": "We want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0018L02",
+          "target_chunk": "encontrarnos",
+          "known_chunk": "to meet",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0018L03",
+          "target_chunk": "a las seis",
+          "known_chunk": "at six o'clock",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0018L04",
+          "target_chunk": "esta noche",
+          "known_chunk": "this evening",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0018F01",
+          "target_chunk": "seis",
+          "known_chunk": "six"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0018L03",
+          "explanation": "at six o'clock = a las seis, where a = at, las = the, and seis = six"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0019",
+      "original_target": "Pero no quiero dejar de hablar.",
+      "original_known": "But I don't want to stop talking.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0019L01",
+          "target_chunk": "no quiero",
+          "known_chunk": "I don't want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0019L02",
+          "target_chunk": "dejar de hablar",
+          "known_chunk": "to stop talking",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0019F01",
+          "target_chunk": "quiero",
+          "known_chunk": "I want"
+        },
+        {
+          "feeder_id": "S0019F02",
+          "target_chunk": "dejar",
+          "known_chunk": "to stop"
+        },
+        {
+          "feeder_id": "S0019F03",
+          "target_chunk": "hablar",
+          "known_chunk": "to speak"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0019L01",
+          "explanation": "I don't want = no quiero, where no = not and quiero = I want"
+        },
+        {
+          "lego_id": "S0019L02",
+          "explanation": "to stop talking = dejar de hablar, where dejar = to stop, de = to, and hablar = to speak"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0020",
+      "original_target": "Quieres aprender su nombre rápidamente.",
+      "original_known": "You want to learn their name quickly.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0020L01",
+          "target_chunk": "Quieres",
+          "known_chunk": "You want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0020L02",
+          "target_chunk": "aprender",
+          "known_chunk": "to learn",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0020L03",
+          "target_chunk": "su nombre",
+          "known_chunk": "their name",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0020L04",
+          "target_chunk": "rápidamente",
+          "known_chunk": "quickly",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0020F01",
+          "target_chunk": "nombre",
+          "known_chunk": "name"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0020L03",
+          "explanation": "their name = su nombre, where su = their and nombre = name"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0021",
+      "original_target": "¿Por qué estás aprendiendo su nombre?",
+      "original_known": "Why are you learning their name?",
+      "lego_pairs": [
+        {
+          "lego_id": "S0021L01",
+          "target_chunk": "Por qué",
+          "known_chunk": "Why",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0021L02",
+          "target_chunk": "estás aprendiendo",
+          "known_chunk": "are you learning",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0021L03",
+          "target_chunk": "su nombre",
+          "known_chunk": "their name",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0021F01",
+          "target_chunk": "estás",
+          "known_chunk": "you are"
+        },
+        {
+          "feeder_id": "S0021F02",
+          "target_chunk": "aprendiendo",
+          "known_chunk": "learning"
+        },
+        {
+          "feeder_id": "S0021F03",
+          "target_chunk": "nombre",
+          "known_chunk": "name"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0021L02",
+          "explanation": "are you learning = estás aprendiendo, where estás = you are and aprendiendo = learning"
+        },
+        {
+          "lego_id": "S0021L03",
+          "explanation": "their name = su nombre, where su = their and nombre = name"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0022",
+      "original_target": "Porque quiero conocer gente que habla español.",
+      "original_known": "Because I want to meet people who speak Spanish.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0022L01",
+          "target_chunk": "Porque",
+          "known_chunk": "Because",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0022L02",
+          "target_chunk": "quiero",
+          "known_chunk": "I want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0022L03",
+          "target_chunk": "conocer",
+          "known_chunk": "to meet",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0022L04",
+          "target_chunk": "gente que habla español",
+          "known_chunk": "people who speak Spanish",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0022F01",
+          "target_chunk": "gente",
+          "known_chunk": "people"
+        },
+        {
+          "feeder_id": "S0022F02",
+          "target_chunk": "habla",
+          "known_chunk": "speaks"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0022L04",
+          "explanation": "people who speak Spanish = gente que habla español, where gente = people, que = who, habla = speaks, and español = Spanish"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0023",
+      "original_target": "Voy a comenzar a hablar más pronto.",
+      "original_known": "I'm going to start talking more soon.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0023L01",
+          "target_chunk": "Voy a",
+          "known_chunk": "I'm going to",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0023L02",
+          "target_chunk": "comenzar a hablar",
+          "known_chunk": "to start talking",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0023L03",
+          "target_chunk": "más",
+          "known_chunk": "more",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0023L04",
+          "target_chunk": "pronto",
+          "known_chunk": "soon",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0023F01",
+          "target_chunk": "comenzar",
+          "known_chunk": "to start (cognate: commence)"
+        },
+        {
+          "feeder_id": "S0023F02",
+          "target_chunk": "hablar",
+          "known_chunk": "to speak"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0023L01",
+          "explanation": "I'm going to = Voy a, where voy = I'm going and a = to"
+        },
+        {
+          "lego_id": "S0023L02",
+          "explanation": "to start talking = comenzar a hablar, where comenzar = to start (cognate: commence), a = to, and hablar = to speak"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0024",
+      "original_target": "No voy a poder recordar fácilmente.",
+      "original_known": "I'm not going to be able to remember easily.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0024L01",
+          "target_chunk": "No voy a poder recordar",
+          "known_chunk": "I'm not going to be able to remember",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0024L02",
+          "target_chunk": "fácilmente",
+          "known_chunk": "easily",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0024F01",
+          "target_chunk": "recordar",
+          "known_chunk": "to remember"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0024L01",
+          "explanation": "I'm not going to be able to remember = No voy a poder recordar, where no = not, voy a = I'm going to, poder = to be able, and recordar = to remember"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0025",
+      "original_target": "¿Me vas a ayudar antes de que tenga que irme?",
+      "original_known": "Are you going to help me before I have to go?",
+      "lego_pairs": [
+        {
+          "lego_id": "S0025L01",
+          "target_chunk": "Me vas a ayudar",
+          "known_chunk": "Are you going to help me",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0025L02",
+          "target_chunk": "antes de que tenga que irme",
+          "known_chunk": "before I have to go",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0025F01",
+          "target_chunk": "vas a ayudar",
+          "known_chunk": "you are going to help"
+        },
+        {
+          "feeder_id": "S0025F02",
+          "target_chunk": "antes",
+          "known_chunk": "before"
+        },
+        {
+          "feeder_id": "S0025F03",
+          "target_chunk": "irme",
+          "known_chunk": "to go"
+        },
+        {
+          "feeder_id": "S0025F04",
+          "target_chunk": "tenga que",
+          "known_chunk": "have to"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0025L01",
+          "explanation": "Are you going to help me = Me vas a ayudar, where me = me, vas a = you are going to, and ayudar = to help"
+        },
+        {
+          "lego_id": "S0025L02",
+          "explanation": "before I have to go = antes de que tenga que irme, where antes = before, de que = that, tenga que = have to, and irme = to go"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0026",
+      "original_target": "Me gusta sentir como si estuviera casi listo para irme.",
+      "original_known": "I like feeling as if I'm nearly ready to go.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0026L01",
+          "target_chunk": "Me gusta",
+          "known_chunk": "I like",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0026L02",
+          "target_chunk": "sentir",
+          "known_chunk": "feeling",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0026L03",
+          "target_chunk": "como si estuviera",
+          "known_chunk": "as if I'm",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0026L04",
+          "target_chunk": "casi",
+          "known_chunk": "nearly",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0026L05",
+          "target_chunk": "listo para irme",
+          "known_chunk": "ready to go",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0026F01",
+          "target_chunk": "gusta",
+          "known_chunk": "like"
+        },
+        {
+          "feeder_id": "S0026F02",
+          "target_chunk": "estuviera",
+          "known_chunk": "I'm"
+        },
+        {
+          "feeder_id": "S0026F03",
+          "target_chunk": "listo",
+          "known_chunk": "ready"
+        },
+        {
+          "feeder_id": "S0026F04",
+          "target_chunk": "irme",
+          "known_chunk": "to go"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0026L01",
+          "explanation": "I like = Me gusta, where me = to me and gusta = pleases"
+        },
+        {
+          "lego_id": "S0026L03",
+          "explanation": "as if I'm = como si estuviera, where como = as, si = if, and estuviera represents I am"
+        },
+        {
+          "lego_id": "S0026L05",
+          "explanation": "ready to go = listo para irme, where listo = ready, para = to, and irme = to go"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0027",
+      "original_target": "No me gusta tardar demasiado tiempo en responder.",
+      "original_known": "I don't like taking too much time to answer.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0027L01",
+          "target_chunk": "No me gusta",
+          "known_chunk": "I don't like",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0027L02",
+          "target_chunk": "tardar",
+          "known_chunk": "taking",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0027L03",
+          "target_chunk": "demasiado tiempo",
+          "known_chunk": "too much time",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0027L04",
+          "target_chunk": "en responder",
+          "known_chunk": "to answer",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0027F01",
+          "target_chunk": "gusta",
+          "known_chunk": "like"
+        },
+        {
+          "feeder_id": "S0027F02",
+          "target_chunk": "demasiado",
+          "known_chunk": "too much"
+        },
+        {
+          "feeder_id": "S0027F03",
+          "target_chunk": "tiempo",
+          "known_chunk": "time"
+        },
+        {
+          "feeder_id": "S0027F04",
+          "target_chunk": "responder",
+          "known_chunk": "to answer"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0027L01",
+          "explanation": "I don't like = No me gusta, where no = not, me = to me, and gusta = pleases"
+        },
+        {
+          "lego_id": "S0027L03",
+          "explanation": "too much time = demasiado tiempo, where demasiado = too much and tiempo = time"
+        },
+        {
+          "lego_id": "S0027L04",
+          "explanation": "to answer = en responder, where en = in and responder = to answer"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0028",
+      "original_target": "Es útil comenzar a hablar en cuanto puedas.",
+      "original_known": "It's useful to start talking as soon as you can.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0028L01",
+          "target_chunk": "Es útil",
+          "known_chunk": "It's useful",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0028L02",
+          "target_chunk": "comenzar a hablar",
+          "known_chunk": "to start talking",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0028L03",
+          "target_chunk": "en cuanto",
+          "known_chunk": "as soon as",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0028L05",
+          "target_chunk": "en cuanto puedas",
+          "known_chunk": "as soon as you can",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0028F01",
+          "target_chunk": "útil",
+          "known_chunk": "useful"
+        },
+        {
+          "feeder_id": "S0028F02",
+          "target_chunk": "comenzar",
+          "known_chunk": "to start (cognate: commence)"
+        },
+        {
+          "feeder_id": "S0028F03",
+          "target_chunk": "hablar",
+          "known_chunk": "to speak"
+        },
+        {
+          "feeder_id": "S0028F04",
+          "target_chunk": "puedas",
+          "known_chunk": "you can (subjunctive)"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0028L01",
+          "explanation": "It's useful = Es útil, where es = is and útil = useful"
+        },
+        {
+          "lego_id": "S0028L02",
+          "explanation": "to start talking = comenzar a hablar, where comenzar = to start (cognate: commence), a = to, and hablar = to speak"
+        },
+        {
+          "lego_id": "S0028L05",
+          "explanation": "as soon as you can = en cuanto puedas, where en cuanto = as soon as and puedas = you can (subjunctive triggered by temporal clause)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "original_target": "Estoy deseando hablar mejor en cuanto pueda.",
+      "original_known": "I'm looking forward to speaking better as soon as I can.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0029L01",
+          "target_chunk": "Estoy deseando hablar",
+          "known_chunk": "I'm looking forward to speaking",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0029L02",
+          "target_chunk": "mejor",
+          "known_chunk": "better",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0029L03",
+          "target_chunk": "en cuanto",
+          "known_chunk": "as soon as",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0029L05",
+          "target_chunk": "en cuanto pueda",
+          "known_chunk": "as soon as I can",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0029F01",
+          "target_chunk": "hablar",
+          "known_chunk": "to speak"
+        },
+        {
+          "feeder_id": "S0029F02",
+          "target_chunk": "pueda",
+          "known_chunk": "I can (subjunctive)"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0029L01",
+          "explanation": "I'm looking forward to speaking = Estoy deseando hablar, where Estoy deseando represents looking forward and hablar = to speak"
+        },
+        {
+          "lego_id": "S0029L05",
+          "explanation": "as soon as I can = en cuanto pueda, where en cuanto = as soon as and pueda = I can (subjunctive triggered by temporal clause, person clarified by context using FCFS principle)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "original_target": "Quería preguntarte algo ayer.",
+      "original_known": "I wanted to ask you something yesterday.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0030L01",
+          "target_chunk": "Quería",
+          "known_chunk": "I wanted",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0030L02",
+          "target_chunk": "preguntarte",
+          "known_chunk": "to ask you",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0030L03",
+          "target_chunk": "algo",
+          "known_chunk": "something",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0030L04",
+          "target_chunk": "ayer",
+          "known_chunk": "yesterday",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [],
+      "componentization": []
+    }
+  ]
+}

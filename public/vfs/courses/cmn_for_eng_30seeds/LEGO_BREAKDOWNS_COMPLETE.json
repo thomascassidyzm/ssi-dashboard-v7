@@ -1,0 +1,1546 @@
+{
+  "phase": "LEGO_BREAKDOWNS",
+  "target_language": "Mandarin Chinese",
+  "known_language": "English",
+  "lego_breakdowns": [
+    {
+      "seed_id": "S0001",
+      "original_target": "我想跟你现在说中文。",
+      "original_known": "I want to speak Chinese with you now.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0001L01",
+          "target_chunk": "我想",
+          "known_chunk": "I want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0001L02",
+          "target_chunk": "跟你",
+          "known_chunk": "with you",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0001L03",
+          "target_chunk": "现在",
+          "known_chunk": "now",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0001L04",
+          "target_chunk": "说",
+          "known_chunk": "to speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0001L05",
+          "target_chunk": "中文",
+          "known_chunk": "Chinese",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0001F01",
+          "target_chunk": "跟",
+          "known_chunk": "with"
+        },
+        {
+          "feeder_id": "S0001F02",
+          "target_chunk": "你",
+          "known_chunk": "you"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0001L02",
+          "explanation": "with you = 跟你, where 跟 = with and 你 = you"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0002",
+      "original_target": "我在试着学。",
+      "original_known": "I'm trying to learn.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0002L01",
+          "target_chunk": "我在试着学",
+          "known_chunk": "I'm trying to learn",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0002F01",
+          "target_chunk": "我在",
+          "known_chunk": "I'm"
+        },
+        {
+          "feeder_id": "S0002F02",
+          "target_chunk": "试",
+          "known_chunk": "to try"
+        },
+        {
+          "feeder_id": "S0002F03",
+          "target_chunk": "学",
+          "known_chunk": "to learn"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0002L01",
+          "explanation": "I'm trying to learn = 我在试着学, where 我 = I, 在 = progressive marker, 试 = try, 着 = progressive particle, and 学 = learn"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "original_target": "怎么尽量常说。",
+      "original_known": "how to speak as often as possible.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0003L01",
+          "target_chunk": "怎么",
+          "known_chunk": "how",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0003L02",
+          "target_chunk": "尽量",
+          "known_chunk": "as much as possible",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0003L03",
+          "target_chunk": "常",
+          "known_chunk": "often",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0003L04",
+          "target_chunk": "说",
+          "known_chunk": "to speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0003L05",
+          "target_chunk": "尽量常说",
+          "known_chunk": "to speak as often as possible",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0003F01",
+          "target_chunk": "尽量",
+          "known_chunk": "as much as possible"
+        },
+        {
+          "feeder_id": "S0003F02",
+          "target_chunk": "常",
+          "known_chunk": "often"
+        },
+        {
+          "feeder_id": "S0003F03",
+          "target_chunk": "说",
+          "known_chunk": "to speak"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0003L05",
+          "explanation": "to speak as often as possible = 尽量常说, where 尽量 = as much as possible, 常 = often, and 说 = to speak"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0004",
+      "original_target": "怎么用中文说什么",
+      "original_known": "how to say something in Chinese",
+      "lego_pairs": [
+        {
+          "lego_id": "S0004L01",
+          "target_chunk": "怎么",
+          "known_chunk": "how",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0004L02",
+          "target_chunk": "用中文",
+          "known_chunk": "in Chinese",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0004L03",
+          "target_chunk": "说",
+          "known_chunk": "to say",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0004L04",
+          "target_chunk": "什么",
+          "known_chunk": "something",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0004F01",
+          "target_chunk": "用",
+          "known_chunk": "to use"
+        },
+        {
+          "feeder_id": "S0004F02",
+          "target_chunk": "中文",
+          "known_chunk": "Chinese"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0004L02",
+          "explanation": "in Chinese = 用中文, where 用 = to use and 中文 = Chinese"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "original_target": "我要跟别人练习说。",
+      "original_known": "I'm going to practice speaking with someone else.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0005L01",
+          "target_chunk": "我要",
+          "known_chunk": "I'm going to",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0005L02",
+          "target_chunk": "跟别人",
+          "known_chunk": "with someone else",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0005L03",
+          "target_chunk": "练习说",
+          "known_chunk": "to practice speaking",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0005F01",
+          "target_chunk": "跟",
+          "known_chunk": "with"
+        },
+        {
+          "feeder_id": "S0005F02",
+          "target_chunk": "别人",
+          "known_chunk": "someone else"
+        },
+        {
+          "feeder_id": "S0005F03",
+          "target_chunk": "练习",
+          "known_chunk": "to practice"
+        },
+        {
+          "feeder_id": "S0005F04",
+          "target_chunk": "说",
+          "known_chunk": "to speak"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0005L02",
+          "explanation": "with someone else = 跟别人, where 跟 = with and 别人 = someone else"
+        },
+        {
+          "lego_id": "S0005L03",
+          "explanation": "to practice speaking = 练习说, where 练习 = to practice and 说 = to speak"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "original_target": "我在试着想起一个词。",
+      "original_known": "I'm trying to remember a word.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0006L01",
+          "target_chunk": "我在试着想起",
+          "known_chunk": "I'm trying to remember",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0006L02",
+          "target_chunk": "一个词",
+          "known_chunk": "a word",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0006F01",
+          "target_chunk": "我在",
+          "known_chunk": "I'm"
+        },
+        {
+          "feeder_id": "S0006F02",
+          "target_chunk": "试",
+          "known_chunk": "to try"
+        },
+        {
+          "feeder_id": "S0006F03",
+          "target_chunk": "想起",
+          "known_chunk": "to remember"
+        },
+        {
+          "feeder_id": "S0006F04",
+          "target_chunk": "词",
+          "known_chunk": "word"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0006L01",
+          "explanation": "I'm trying to remember = 我在试着想起, where 我 = I, 在 = progressive marker, 试着 = trying, and 想起 = to remember"
+        },
+        {
+          "lego_id": "S0006L02",
+          "explanation": "a word = 一个词, where 一个 = a (measure word + one) and 词 = word"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0007",
+      "original_target": "我今天想尽量试。",
+      "original_known": "I want to try as hard as I can today.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0007L01",
+          "target_chunk": "我想",
+          "known_chunk": "I want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0007L02",
+          "target_chunk": "今天",
+          "known_chunk": "today",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0007L03",
+          "target_chunk": "尽量试",
+          "known_chunk": "to try as hard as I can",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0007F01",
+          "target_chunk": "尽量",
+          "known_chunk": "as much as possible"
+        },
+        {
+          "feeder_id": "S0007F02",
+          "target_chunk": "试",
+          "known_chunk": "to try"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0007L03",
+          "explanation": "to try as hard as I can = 尽量试, where 尽量 = as much as possible and 试 = to try"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0008",
+      "original_target": "我要试着解释我的意思。",
+      "original_known": "I'm going to try to explain what I mean.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0008L01",
+          "target_chunk": "我要",
+          "known_chunk": "I'm going to",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0008L02",
+          "target_chunk": "试着解释",
+          "known_chunk": "to try to explain",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0008L03",
+          "target_chunk": "我的意思",
+          "known_chunk": "what I mean",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0008F01",
+          "target_chunk": "试",
+          "known_chunk": "to try"
+        },
+        {
+          "feeder_id": "S0008F02",
+          "target_chunk": "解释",
+          "known_chunk": "to explain"
+        },
+        {
+          "feeder_id": "S0008F03",
+          "target_chunk": "意思",
+          "known_chunk": "meaning"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0008L02",
+          "explanation": "to try to explain = 试着解释, where 试着 = to try and 解释 = to explain"
+        },
+        {
+          "lego_id": "S0008L03",
+          "explanation": "what I mean = 我的意思, where 我的 = my and 意思 = meaning"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "original_target": "我现在会说一点儿中文。",
+      "original_known": "I speak a little Chinese now.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0009L01",
+          "target_chunk": "我会说",
+          "known_chunk": "I speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0009L02",
+          "target_chunk": "一点儿中文",
+          "known_chunk": "a little Chinese",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0009L03",
+          "target_chunk": "现在",
+          "known_chunk": "now",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0009F01",
+          "target_chunk": "会",
+          "known_chunk": "can"
+        },
+        {
+          "feeder_id": "S0009F02",
+          "target_chunk": "一点儿",
+          "known_chunk": "a little"
+        },
+        {
+          "feeder_id": "S0009F03",
+          "target_chunk": "中文",
+          "known_chunk": "Chinese"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0009L01",
+          "explanation": "I speak = 我会说, where 我 = I, 会 = can, and 说 = to speak"
+        },
+        {
+          "lego_id": "S0009L02",
+          "explanation": "a little Chinese = 一点儿中文, where 一点儿 = a little and 中文 = Chinese"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0010",
+      "original_target": "我不确定我能不能记得整个句子。",
+      "original_known": "I'm not sure if I can remember the whole sentence.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0010L01",
+          "target_chunk": "我不确定",
+          "known_chunk": "I'm not sure",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0010L02",
+          "target_chunk": "我能不能记得",
+          "known_chunk": "if I can remember",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0010L03",
+          "target_chunk": "整个句子",
+          "known_chunk": "the whole sentence",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0010F01",
+          "target_chunk": "我",
+          "known_chunk": "I"
+        },
+        {
+          "feeder_id": "S0010F02",
+          "target_chunk": "不确定",
+          "known_chunk": "not sure"
+        },
+        {
+          "feeder_id": "S0010F03",
+          "target_chunk": "能",
+          "known_chunk": "can"
+        },
+        {
+          "feeder_id": "S0010F04",
+          "target_chunk": "记得",
+          "known_chunk": "to remember"
+        },
+        {
+          "feeder_id": "S0010F05",
+          "target_chunk": "句子",
+          "known_chunk": "sentence"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0010L01",
+          "explanation": "I'm not sure = 我不确定, where 我 = I and 不确定 = not sure"
+        },
+        {
+          "lego_id": "S0010L02",
+          "explanation": "if I can remember = 我能不能记得, where 我 = I, 能不能 = can or not (if can), and 记得 = to remember"
+        },
+        {
+          "lego_id": "S0010L03",
+          "explanation": "the whole sentence = 整个句子, where 整个 = whole and 句子 = sentence"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0011",
+      "original_target": "我想在你说完之后能说。",
+      "original_known": "I'd like to be able to speak after you finish.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0011L01",
+          "target_chunk": "我想",
+          "known_chunk": "I'd like",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0011L02",
+          "target_chunk": "能说",
+          "known_chunk": "to be able to speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0011L03",
+          "target_chunk": "在你说完之后",
+          "known_chunk": "after you finish",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0011F01",
+          "target_chunk": "能",
+          "known_chunk": "to be able"
+        },
+        {
+          "feeder_id": "S0011F02",
+          "target_chunk": "说",
+          "known_chunk": "to speak"
+        },
+        {
+          "feeder_id": "S0011F03",
+          "target_chunk": "之后",
+          "known_chunk": "after"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0011L02",
+          "explanation": "to be able to speak = 能说, where 能 = to be able and 说 = to speak"
+        },
+        {
+          "lego_id": "S0011L03",
+          "explanation": "after you finish = 在你说完之后, where 在 = at, 你说完 = you finish speaking, and 之后 = after"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0012",
+      "original_target": "我不想猜明天会发生什么。",
+      "original_known": "I wouldn't like to guess what's going to happen tomorrow.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0012L01",
+          "target_chunk": "我不想",
+          "known_chunk": "I wouldn't like",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0012L02",
+          "target_chunk": "猜",
+          "known_chunk": "to guess",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0012L03",
+          "target_chunk": "明天会发生什么",
+          "known_chunk": "what's going to happen tomorrow",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0012F01",
+          "target_chunk": "明天",
+          "known_chunk": "tomorrow"
+        },
+        {
+          "feeder_id": "S0012F02",
+          "target_chunk": "会",
+          "known_chunk": "will"
+        },
+        {
+          "feeder_id": "S0012F03",
+          "target_chunk": "发生",
+          "known_chunk": "to happen"
+        },
+        {
+          "feeder_id": "S0012F04",
+          "target_chunk": "什么",
+          "known_chunk": "what"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0012L01",
+          "explanation": "I wouldn't like = 我不想, where 我 = I and 不想 = don't want"
+        },
+        {
+          "lego_id": "S0012L03",
+          "explanation": "what's going to happen tomorrow = 明天会发生什么, where 明天 = tomorrow, 会 = will, 发生 = to happen, and 什么 = what"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0013",
+      "original_target": "你中文说得很好。",
+      "original_known": "You speak Chinese very well.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0013L01",
+          "target_chunk": "你说得很好",
+          "known_chunk": "You speak very well",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0013L02",
+          "target_chunk": "中文",
+          "known_chunk": "Chinese",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0013F01",
+          "target_chunk": "你",
+          "known_chunk": "you"
+        },
+        {
+          "feeder_id": "S0013F02",
+          "target_chunk": "说",
+          "known_chunk": "to speak"
+        },
+        {
+          "feeder_id": "S0013F03",
+          "target_chunk": "得很好",
+          "known_chunk": "very well"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0013L01",
+          "explanation": "You speak very well = 你说得很好, where 你 = you, 说 = speak, 得 = degree marker, 很好 = very well"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0014",
+      "original_target": "你整天都说中文吗?",
+      "original_known": "Do you speak Chinese all day?",
+      "lego_pairs": [
+        {
+          "lego_id": "S0014L01",
+          "target_chunk": "你说中文",
+          "known_chunk": "You speak Chinese",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0014L02",
+          "target_chunk": "整天",
+          "known_chunk": "all day",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0014F01",
+          "target_chunk": "你",
+          "known_chunk": "you"
+        },
+        {
+          "feeder_id": "S0014F02",
+          "target_chunk": "说",
+          "known_chunk": "to speak"
+        },
+        {
+          "feeder_id": "S0014F03",
+          "target_chunk": "中文",
+          "known_chunk": "Chinese"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0014L01",
+          "explanation": "You speak Chinese = 你说中文, where 你 = you, 说 = speak, and 中文 = Chinese"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0015",
+      "original_target": "而且我想让你明天跟我说中文。",
+      "original_known": "And I want you to speak Chinese with me tomorrow.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0015L01",
+          "target_chunk": "我想让你说",
+          "known_chunk": "I want you to speak",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0015L02",
+          "target_chunk": "中文",
+          "known_chunk": "Chinese",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0015L03",
+          "target_chunk": "跟我",
+          "known_chunk": "with me",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0015L04",
+          "target_chunk": "明天",
+          "known_chunk": "tomorrow",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0015F01",
+          "target_chunk": "我想",
+          "known_chunk": "I want"
+        },
+        {
+          "feeder_id": "S0015F02",
+          "target_chunk": "让",
+          "known_chunk": "to let"
+        },
+        {
+          "feeder_id": "S0015F03",
+          "target_chunk": "你",
+          "known_chunk": "you"
+        },
+        {
+          "feeder_id": "S0015F04",
+          "target_chunk": "我",
+          "known_chunk": "me"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0015L01",
+          "explanation": "I want you to speak = 我想让你说, where 我想 = I want, 让 = to let, 你 = you, and 说 = to speak"
+        },
+        {
+          "lego_id": "S0015L03",
+          "explanation": "with me = 跟我, where 跟 = with and 我 = me"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0016",
+      "original_target": "想晚点儿跟其他人一起回来。",
+      "original_known": "Wants to come back with everyone else later on.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0016L01",
+          "target_chunk": "想",
+          "known_chunk": "Wants",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0016L02",
+          "target_chunk": "回来",
+          "known_chunk": "to come back",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0016L03",
+          "target_chunk": "跟其他人一起",
+          "known_chunk": "with everyone else",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0016L04",
+          "target_chunk": "晚点儿",
+          "known_chunk": "later on",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0016F01",
+          "target_chunk": "跟",
+          "known_chunk": "with"
+        },
+        {
+          "feeder_id": "S0016F02",
+          "target_chunk": "其他人",
+          "known_chunk": "everyone else"
+        },
+        {
+          "feeder_id": "S0016F03",
+          "target_chunk": "一起",
+          "known_chunk": "together"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0016L03",
+          "explanation": "with everyone else = 跟其他人一起, where 跟 = with, 其他人 = everyone else, and 一起 = together"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0017",
+      "original_target": "想知道答案是什么。",
+      "original_known": "Wants to find out what the answer is.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0017L01",
+          "target_chunk": "想",
+          "known_chunk": "Wants",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0017L02",
+          "target_chunk": "知道",
+          "known_chunk": "to find out",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0017L03",
+          "target_chunk": "答案是什么",
+          "known_chunk": "what the answer is",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0017F01",
+          "target_chunk": "答案",
+          "known_chunk": "answer"
+        },
+        {
+          "feeder_id": "S0017F02",
+          "target_chunk": "是",
+          "known_chunk": "is"
+        },
+        {
+          "feeder_id": "S0017F03",
+          "target_chunk": "什么",
+          "known_chunk": "what"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0017L03",
+          "explanation": "what the answer is = 答案是什么, where 答案 = answer, 是 = is, and 什么 = what"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0018",
+      "original_target": "我们想今晚六点见面。",
+      "original_known": "We want to meet at six o'clock this evening.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0018L01",
+          "target_chunk": "我们想",
+          "known_chunk": "We want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0018L02",
+          "target_chunk": "见面",
+          "known_chunk": "to meet",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0018L03",
+          "target_chunk": "今晚六点",
+          "known_chunk": "at six o'clock this evening",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0018F01",
+          "target_chunk": "今晚",
+          "known_chunk": "this evening"
+        },
+        {
+          "feeder_id": "S0018F02",
+          "target_chunk": "六点",
+          "known_chunk": "six o'clock"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0018L03",
+          "explanation": "at six o'clock this evening = 今晚六点, where 今晚 = this evening and 六点 = six o'clock"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0019",
+      "original_target": "但是我不想停止说。",
+      "original_known": "But I don't want to stop talking.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0019L01",
+          "target_chunk": "我不想",
+          "known_chunk": "I don't want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0019L02",
+          "target_chunk": "停止说",
+          "known_chunk": "to stop talking",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0019F01",
+          "target_chunk": "我想",
+          "known_chunk": "I want"
+        },
+        {
+          "feeder_id": "S0019F02",
+          "target_chunk": "停止",
+          "known_chunk": "to stop"
+        },
+        {
+          "feeder_id": "S0019F03",
+          "target_chunk": "说",
+          "known_chunk": "to speak"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0019L01",
+          "explanation": "I don't want = 我不想, where 我 = I and 不想 = don't want"
+        },
+        {
+          "lego_id": "S0019L02",
+          "explanation": "to stop talking = 停止说, where 停止 = to stop and 说 = to speak"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0020",
+      "original_target": "你想快点儿学会他们的名字。",
+      "original_known": "You want to learn their name quickly.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0020L01",
+          "target_chunk": "你想",
+          "known_chunk": "You want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0020L02",
+          "target_chunk": "学会",
+          "known_chunk": "to learn",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0020L03",
+          "target_chunk": "他们的名字",
+          "known_chunk": "their name",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0020L04",
+          "target_chunk": "快点儿",
+          "known_chunk": "quickly",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0020F01",
+          "target_chunk": "他们的",
+          "known_chunk": "their"
+        },
+        {
+          "feeder_id": "S0020F02",
+          "target_chunk": "名字",
+          "known_chunk": "name"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0020L03",
+          "explanation": "their name = 他们的名字, where 他们的 = their and 名字 = name"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0021",
+      "original_target": "你为什么在学他们的名字?",
+      "original_known": "Why are you learning their name?",
+      "lego_pairs": [
+        {
+          "lego_id": "S0021L01",
+          "target_chunk": "你为什么",
+          "known_chunk": "Why are you",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0021L02",
+          "target_chunk": "在学",
+          "known_chunk": "learning",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0021L03",
+          "target_chunk": "他们的名字",
+          "known_chunk": "their name",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0021F01",
+          "target_chunk": "为什么",
+          "known_chunk": "why"
+        },
+        {
+          "feeder_id": "S0021F02",
+          "target_chunk": "在",
+          "known_chunk": "progressive marker"
+        },
+        {
+          "feeder_id": "S0021F03",
+          "target_chunk": "学",
+          "known_chunk": "to learn"
+        },
+        {
+          "feeder_id": "S0021F04",
+          "target_chunk": "名字",
+          "known_chunk": "name"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0021L01",
+          "explanation": "Why are you = 你为什么, where 你 = you and 为什么 = why"
+        },
+        {
+          "lego_id": "S0021L02",
+          "explanation": "learning = 在学, where 在 = progressive marker and 学 = to learn"
+        },
+        {
+          "lego_id": "S0021L03",
+          "explanation": "their name = 他们的名字, where 他们的 = their and 名字 = name"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0022",
+      "original_target": "因为我想认识说中文的人。",
+      "original_known": "Because I want to meet people who speak Chinese.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0022L01",
+          "target_chunk": "因为",
+          "known_chunk": "Because",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0022L02",
+          "target_chunk": "我想",
+          "known_chunk": "I want",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0022L03",
+          "target_chunk": "认识",
+          "known_chunk": "to meet",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0022L04",
+          "target_chunk": "说中文的人",
+          "known_chunk": "people who speak Chinese",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0022F01",
+          "target_chunk": "人",
+          "known_chunk": "people"
+        },
+        {
+          "feeder_id": "S0022F02",
+          "target_chunk": "说",
+          "known_chunk": "to speak"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0022L04",
+          "explanation": "people who speak Chinese = 说中文的人, where 说中文 = speak Chinese, 的 = possessive/relativizer, and 人 = people"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0023",
+      "original_target": "我快要开始多说了。",
+      "original_known": "I'm going to start talking more soon.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0023L01",
+          "target_chunk": "我快要",
+          "known_chunk": "I'm going to soon",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0023L02",
+          "target_chunk": "开始",
+          "known_chunk": "to start",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0023L03",
+          "target_chunk": "多说",
+          "known_chunk": "talking more",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0023F01",
+          "target_chunk": "快要",
+          "known_chunk": "about to"
+        },
+        {
+          "feeder_id": "S0023F02",
+          "target_chunk": "多",
+          "known_chunk": "more"
+        },
+        {
+          "feeder_id": "S0023F03",
+          "target_chunk": "说",
+          "known_chunk": "to speak"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0023L01",
+          "explanation": "I'm going to soon = 我快要, where 我 = I and 快要 = about to"
+        },
+        {
+          "lego_id": "S0023L03",
+          "explanation": "talking more = 多说, where 多 = more and 说 = to speak"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0024",
+      "original_target": "我不会容易地记住。",
+      "original_known": "I'm not going to be able to remember easily.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0024L01",
+          "target_chunk": "我不会记住",
+          "known_chunk": "I'm not going to be able to remember",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0024L02",
+          "target_chunk": "容易地",
+          "known_chunk": "easily",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0024F01",
+          "target_chunk": "会",
+          "known_chunk": "will"
+        },
+        {
+          "feeder_id": "S0024F02",
+          "target_chunk": "记住",
+          "known_chunk": "to remember"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0024L01",
+          "explanation": "I'm not going to be able to remember = 我不会记住, where 我 = I, 不会 = won't be able to, and 记住 = to remember"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0025",
+      "original_target": "在我得走之前你会帮我吗?",
+      "original_known": "Are you going to help me before I have to go?",
+      "lego_pairs": [
+        {
+          "lego_id": "S0025L01",
+          "target_chunk": "你会帮我",
+          "known_chunk": "Are you going to help me",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0025L02",
+          "target_chunk": "在我得走之前",
+          "known_chunk": "before I have to go",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0025F01",
+          "target_chunk": "会",
+          "known_chunk": "will"
+        },
+        {
+          "feeder_id": "S0025F02",
+          "target_chunk": "帮",
+          "known_chunk": "to help"
+        },
+        {
+          "feeder_id": "S0025F03",
+          "target_chunk": "得",
+          "known_chunk": "have to"
+        },
+        {
+          "feeder_id": "S0025F04",
+          "target_chunk": "走",
+          "known_chunk": "to go"
+        },
+        {
+          "feeder_id": "S0025F05",
+          "target_chunk": "之前",
+          "known_chunk": "before"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0025L01",
+          "explanation": "Are you going to help me = 你会帮我, where 你 = you, 会 = will, 帮 = to help, and 我 = me"
+        },
+        {
+          "lego_id": "S0025L02",
+          "explanation": "before I have to go = 在我得走之前, where 在 = at, 我 = I, 得 = have to, 走 = to go, and 之前 = before"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0026",
+      "original_target": "我喜欢感觉好像我快准备好走了。",
+      "original_known": "I like feeling as if I'm nearly ready to go.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0026L01",
+          "target_chunk": "我喜欢",
+          "known_chunk": "I like",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0026L02",
+          "target_chunk": "感觉",
+          "known_chunk": "feeling",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0026L03",
+          "target_chunk": "好像我快准备好走了",
+          "known_chunk": "as if I'm nearly ready to go",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0026F01",
+          "target_chunk": "好像",
+          "known_chunk": "as if"
+        },
+        {
+          "feeder_id": "S0026F02",
+          "target_chunk": "快",
+          "known_chunk": "nearly"
+        },
+        {
+          "feeder_id": "S0026F03",
+          "target_chunk": "准备好",
+          "known_chunk": "ready"
+        },
+        {
+          "feeder_id": "S0026F04",
+          "target_chunk": "走",
+          "known_chunk": "to go"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0026L03",
+          "explanation": "as if I'm nearly ready to go = 好像我快准备好走了, where 好像 = as if, 我 = I, 快 = nearly, 准备好 = ready, 走 = to go, and 了 = completion marker"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0027",
+      "original_target": "我不喜欢花太多时间回答。",
+      "original_known": "I don't like taking too much time to answer.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0027L01",
+          "target_chunk": "我不喜欢",
+          "known_chunk": "I don't like",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0027L02",
+          "target_chunk": "花太多时间",
+          "known_chunk": "taking too much time",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0027L03",
+          "target_chunk": "回答",
+          "known_chunk": "to answer",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0027F01",
+          "target_chunk": "喜欢",
+          "known_chunk": "to like"
+        },
+        {
+          "feeder_id": "S0027F02",
+          "target_chunk": "花",
+          "known_chunk": "to spend"
+        },
+        {
+          "feeder_id": "S0027F03",
+          "target_chunk": "太多",
+          "known_chunk": "too much"
+        },
+        {
+          "feeder_id": "S0027F04",
+          "target_chunk": "时间",
+          "known_chunk": "time"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0027L01",
+          "explanation": "I don't like = 我不喜欢, where 我 = I and 不喜欢 = don't like"
+        },
+        {
+          "lego_id": "S0027L02",
+          "explanation": "taking too much time = 花太多时间, where 花 = to spend, 太多 = too much, and 时间 = time"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0028",
+      "original_target": "一有机会就开始说是有用的。",
+      "original_known": "It's useful to start talking as soon as you can.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0028L01",
+          "target_chunk": "是有用的",
+          "known_chunk": "It's useful",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0028L02",
+          "target_chunk": "开始说",
+          "known_chunk": "to start talking",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0028L03",
+          "target_chunk": "一有机会就",
+          "known_chunk": "as soon as you can",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0028F01",
+          "target_chunk": "有用",
+          "known_chunk": "useful"
+        },
+        {
+          "feeder_id": "S0028F02",
+          "target_chunk": "开始",
+          "known_chunk": "to start"
+        },
+        {
+          "feeder_id": "S0028F03",
+          "target_chunk": "说",
+          "known_chunk": "to speak"
+        },
+        {
+          "feeder_id": "S0028F04",
+          "target_chunk": "机会",
+          "known_chunk": "opportunity"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0028L01",
+          "explanation": "It's useful = 是有用的, where 是 = is, 有用 = useful, and 的 = nominalizer"
+        },
+        {
+          "lego_id": "S0028L02",
+          "explanation": "to start talking = 开始说, where 开始 = to start and 说 = to speak"
+        },
+        {
+          "lego_id": "S0028L03",
+          "explanation": "as soon as you can = 一有机会就, where 一有 = as soon as have, 机会 = opportunity, and 就 = then"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "original_target": "我期待一有机会就说得更好。",
+      "original_known": "I'm looking forward to speaking better as soon as I can.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0029L01",
+          "target_chunk": "我期待",
+          "known_chunk": "I'm looking forward to",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0029L02",
+          "target_chunk": "说得更好",
+          "known_chunk": "speaking better",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0029L03",
+          "target_chunk": "一有机会就",
+          "known_chunk": "as soon as I can",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0029F01",
+          "target_chunk": "期待",
+          "known_chunk": "to look forward to"
+        },
+        {
+          "feeder_id": "S0029F02",
+          "target_chunk": "说",
+          "known_chunk": "to speak"
+        },
+        {
+          "feeder_id": "S0029F03",
+          "target_chunk": "更好",
+          "known_chunk": "better"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0029L02",
+          "explanation": "speaking better = 说得更好, where 说 = to speak, 得 = degree marker, and 更好 = better"
+        },
+        {
+          "lego_id": "S0029L03",
+          "explanation": "as soon as I can = 一有机会就, where 一有 = as soon as have, 机会 = opportunity, and 就 = then"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "original_target": "我昨天想问你一些事。",
+      "original_known": "I wanted to ask you something yesterday.",
+      "lego_pairs": [
+        {
+          "lego_id": "S0030L01",
+          "target_chunk": "我想",
+          "known_chunk": "I wanted",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0030L02",
+          "target_chunk": "问你",
+          "known_chunk": "to ask you",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0030L03",
+          "target_chunk": "一些事",
+          "known_chunk": "something",
+          "fd_validated": true
+        },
+        {
+          "lego_id": "S0030L04",
+          "target_chunk": "昨天",
+          "known_chunk": "yesterday",
+          "fd_validated": true
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0030F01",
+          "target_chunk": "问",
+          "known_chunk": "to ask"
+        }
+      ],
+      "componentization": [
+        {
+          "lego_id": "S0030L02",
+          "explanation": "to ask you = 问你, where 问 = to ask and 你 = you"
+        }
+      ]
+    }
+  ]
+}

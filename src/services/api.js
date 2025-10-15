@@ -50,18 +50,164 @@ export default {
     },
 
     async list() {
-      const response = await api.get('/api/courses')
-      return response.data
+      try {
+        // Try API server first (for real-time updates)
+        const response = await api.get('/api/courses')
+        return response.data
+      } catch (err) {
+        // Fallback to static files if API unavailable
+        console.log('[API] Server unavailable, using static files')
+
+        const courseCodes = ['spa_for_eng_30seeds', 'fra_for_eng_30seeds', 'ita_for_eng_30seeds', 'cmn_for_eng_30seeds']
+        const courses = []
+
+        for (const courseCode of courseCodes) {
+          try {
+            const translationsRes = await fetch(`/vfs/courses/${courseCode}/translations.json`)
+            const legosRes = await fetch(`/vfs/courses/${courseCode}/LEGO_BREAKDOWNS_COMPLETE.json`)
+
+            if (translationsRes.ok && legosRes.ok) {
+              const translations = await translationsRes.json()
+              const legoData = await legosRes.json()
+
+              const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\\d+)seeds$/)
+
+              courses.push({
+                course_code: courseCode,
+                source_language: match ? match[2].toUpperCase() : 'UNK',
+                target_language: match ? match[1].toUpperCase() : 'UNK',
+                total_seeds: match ? parseInt(match[3]) : 0,
+                version: '1.0',
+                created_at: new Date().toISOString(),
+                status: 'phase_3_complete',
+                seed_pairs: Object.keys(translations).length,
+                lego_pairs: legoData.lego_breakdowns?.length || 0,
+                lego_baskets: 0,
+                phases_completed: ['1', '3']
+              })
+            }
+          } catch (staticErr) {
+            // Skip courses that don't have the required files
+          }
+        }
+
+        if (courses.length > 0) {
+          return { courses }
+        }
+
+        // If both fail, throw the original API error
+        throw err
+      }
     },
 
     async get(courseCode) {
-      const response = await api.get(`/api/courses/${courseCode}`)
-      return response.data
+      try {
+        // Try API server first
+        const response = await api.get(`/api/courses/${courseCode}`)
+        return response.data
+      } catch (err) {
+        // Fallback to static files if API unavailable
+        console.log(`[API] Server unavailable, using static files for ${courseCode}`)
+
+        const translationsRes = await fetch(`/vfs/courses/${courseCode}/translations.json`)
+        const legosRes = await fetch(`/vfs/courses/${courseCode}/LEGO_BREAKDOWNS_COMPLETE.json`)
+
+        if (translationsRes.ok && legosRes.ok) {
+          const translationsData = await translationsRes.json()
+          const legoData = await legosRes.json()
+
+          // Convert translations object to array
+          const translations = Object.entries(translationsData).map(([seed_id, [target_phrase, known_phrase]]) => ({
+            seed_id,
+            target_phrase,
+            known_phrase,
+            canonical_seed: null
+          }))
+
+          translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
+
+          const legos = legoData.lego_breakdowns || []
+          const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\\d+)seeds$/)
+
+          const course = {
+            course_code: courseCode,
+            source_language: match ? match[2].toUpperCase() : 'UNK',
+            target_language: match ? match[1].toUpperCase() : 'UNK',
+            total_seeds: match ? parseInt(match[3]) : 0,
+            version: '1.0',
+            created_at: new Date().toISOString(),
+            status: 'phase_3_complete',
+            seed_pairs: translations.length,
+            lego_pairs: legos.length,
+            lego_baskets: 0,
+            phases_completed: ['1', '3'],
+            target_language_name: legoData.target_language,
+            known_language_name: legoData.known_language
+          }
+
+          return {
+            course,
+            translations,
+            legos,
+            baskets: []
+          }
+        }
+
+        throw err
+      }
     },
 
     async traceProvenance(courseCode, seedId) {
-      const response = await api.get(`/api/courses/${courseCode}/provenance/${seedId}`)
-      return response.data
+      try {
+        // Try API server first
+        const response = await api.get(`/api/courses/${courseCode}/provenance/${seedId}`)
+        return response.data
+      } catch (err) {
+        // Fallback to static files if API unavailable
+        console.log(`[API] Server unavailable, using static files for provenance ${courseCode}/${seedId}`)
+
+        const translationsRes = await fetch(`/vfs/courses/${courseCode}/translations.json`)
+        const legosRes = await fetch(`/vfs/courses/${courseCode}/LEGO_BREAKDOWNS_COMPLETE.json`)
+
+        if (translationsRes.ok && legosRes.ok) {
+          const translationsData = await translationsRes.json()
+          const legoData = await legosRes.json()
+
+          const translationPair = translationsData[seedId]
+          if (!translationPair) {
+            throw new Error(`Seed ${seedId} not found`)
+          }
+
+          const translation = {
+            seed_id: seedId,
+            target_phrase: translationPair[0],
+            known_phrase: translationPair[1]
+          }
+
+          const legoBreakdown = legoData.lego_breakdowns?.find(l => l.seed_id === seedId)
+
+          return {
+            seed: translation,
+            lego_breakdown: legoBreakdown || null,
+            phase_history: [
+              {
+                phase: '1',
+                name: 'Translation',
+                completed: true,
+                output: translation
+              },
+              {
+                phase: '3',
+                name: 'LEGO Extraction',
+                completed: !!legoBreakdown,
+                output: legoBreakdown
+              }
+            ]
+          }
+        }
+
+        throw err
+      }
     },
 
     async updateTranslation(courseCode, uuid, data) {
