@@ -936,9 +936,43 @@ function mergeLego(breakdown, index) {
   const current = legos[index]
   const previous = legos[index - 1]
 
-  // Merge chunks
-  previous.target_chunk = previous.target_chunk + ' ' + current.target_chunk
-  previous.known_chunk = previous.known_chunk + ' ' + current.known_chunk
+  // Helper: Smart concatenate with overlap detection
+  function smartConcat(prev, curr) {
+    const prevTrimmed = prev.trim()
+    const currTrimmed = curr.trim()
+
+    // Check for elision (no space needed)
+    if (prevTrimmed.endsWith("'")) {
+      return prevTrimmed + currTrimmed
+    }
+
+    // Check for overlapping words at boundary (e.g., "try to" + "to explain" → "try to explain")
+    const prevWords = prevTrimmed.split(/\s+/)
+    const currWords = currTrimmed.split(/\s+/)
+
+    // Look for overlap (check if last word(s) of prev match first word(s) of curr)
+    for (let overlapLen = Math.min(prevWords.length, currWords.length); overlapLen > 0; overlapLen--) {
+      const prevEnd = prevWords.slice(-overlapLen).join(' ').toLowerCase()
+      const currStart = currWords.slice(0, overlapLen).join(' ').toLowerCase()
+
+      if (prevEnd === currStart) {
+        // Found overlap - remove duplicate
+        const resultWords = [...prevWords, ...currWords.slice(overlapLen)]
+        return resultWords.join(' ')
+      }
+    }
+
+    // No overlap, simple concatenation with space
+    return prevTrimmed + ' ' + currTrimmed
+  }
+
+  previous.target_chunk = smartConcat(previous.target_chunk, current.target_chunk)
+  previous.known_chunk = smartConcat(previous.known_chunk, current.known_chunk)
+
+  // If merging creates COMPOSITE, update type
+  if (previous.lego_type === 'BASE' && current.lego_type === 'BASE') {
+    previous.lego_type = 'COMPOSITE'
+  }
 
   // Remove current LEGO
   legos.splice(index, 1)
