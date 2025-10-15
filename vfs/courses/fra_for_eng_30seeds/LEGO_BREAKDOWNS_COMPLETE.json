@@ -74,12 +74,14 @@
         {
           "feeder_id": "S0002F01",
           "target_chunk": "J'essaie",
-          "known_chunk": "I'm trying"
+          "known_chunk": "I'm trying",
+          "parent_lego_id": "S0002L01"
         },
         {
           "feeder_id": "S0002F02",
           "target_chunk": "essayer",
-          "known_chunk": "to try"
+          "known_chunk": "to try",
+          "parent_lego_id": "S0002L01"
         }
       ]
     },
@@ -159,12 +161,14 @@
         {
           "feeder_id": "S0005F01",
           "target_chunk": "Je vais",
-          "known_chunk": "I'm going"
+          "known_chunk": "I'm going",
+          "parent_lego_id": "S0005L01"
         },
         {
           "feeder_id": "S0005F02",
           "target_chunk": "pratiquer",
-          "known_chunk": "to practice"
+          "known_chunk": "to practice",
+          "parent_lego_id": "S0005L01"
         }
       ]
     },
@@ -193,7 +197,8 @@
         {
           "feeder_id": "S0006F01",
           "target_chunk": "souvenir",
-          "known_chunk": "to remember"
+          "known_chunk": "to remember",
+          "parent_lego_id": "S0006L01"
         }
       ]
     },
@@ -251,12 +256,14 @@
         {
           "feeder_id": "S0008F01",
           "target_chunk": "Je vais",
-          "known_chunk": "I'm going"
+          "known_chunk": "I'm going",
+          "parent_lego_id": "S0008L01"
         },
         {
           "feeder_id": "S0008F02",
           "target_chunk": "essayer",
-          "known_chunk": "to try"
+          "known_chunk": "to try",
+          "parent_lego_id": "S0008L01"
         }
       ]
     },
@@ -350,7 +357,8 @@
         {
           "feeder_id": "S0011F01",
           "target_chunk": "finir",
-          "known_chunk": "to finish"
+          "known_chunk": "to finish",
+          "parent_lego_id": "S0011L03"
         }
       ]
     },
@@ -394,7 +402,8 @@
         {
           "feeder_id": "S0012F01",
           "target_chunk": "passer",
-          "known_chunk": "to happen"
+          "known_chunk": "to happen",
+          "parent_lego_id": "S0012L01"
         }
       ]
     },
@@ -473,7 +482,8 @@
         {
           "feeder_id": "S0015F01",
           "target_chunk": "parler",
-          "known_chunk": "to speak"
+          "known_chunk": "to speak",
+          "parent_lego_id": "S0015L02"
         }
       ]
     },
@@ -545,7 +555,8 @@
         {
           "feeder_id": "S0017F01",
           "target_chunk": "la réponse",
-          "known_chunk": "the answer"
+          "known_chunk": "the answer",
+          "parent_lego_id": "S0017L03"
         }
       ]
     },
@@ -618,7 +629,8 @@
         {
           "feeder_id": "S0019F01",
           "target_chunk": "arrêter",
-          "known_chunk": "to stop"
+          "known_chunk": "to stop",
+          "parent_lego_id": "S0019L02"
         }
       ]
     },
@@ -675,7 +687,8 @@
         {
           "feeder_id": "S0021F01",
           "target_chunk": "apprendre",
-          "known_chunk": "to learn"
+          "known_chunk": "to learn",
+          "parent_lego_id": "S0021L02"
         }
       ]
     },
@@ -711,12 +724,14 @@
         {
           "feeder_id": "S0022F01",
           "target_chunk": "gens",
-          "known_chunk": "people"
+          "known_chunk": "people",
+          "parent_lego_id": "S0022L03"
         },
         {
           "feeder_id": "S0022F02",
           "target_chunk": "parlent",
-          "known_chunk": "speak"
+          "known_chunk": "speak",
+          "parent_lego_id": "S0022L03"
         }
       ]
     },
@@ -752,12 +767,14 @@
         {
           "feeder_id": "S0023F01",
           "target_chunk": "Je vais",
-          "known_chunk": "I'm going"
+          "known_chunk": "I'm going",
+          "parent_lego_id": "S0023L01"
         },
         {
           "feeder_id": "S0023F02",
           "target_chunk": "commencer",
-          "known_chunk": "to start"
+          "known_chunk": "to start",
+          "parent_lego_id": "S0023L01"
         }
       ]
     },
@@ -786,12 +803,14 @@
         {
           "feeder_id": "S0024F01",
           "target_chunk": "Je vais",
-          "known_chunk": "I'm going"
+          "known_chunk": "I'm going",
+          "parent_lego_id": "S0024L01"
         },
         {
           "feeder_id": "S0024F02",
           "target_chunk": "pouvoir",
-          "known_chunk": "to be able"
+          "known_chunk": "to be able",
+          "parent_lego_id": "S0024L01"
         }
       ]
     },
@@ -828,12 +847,14 @@
         {
           "feeder_id": "S0025F01",
           "target_chunk": "aider",
-          "known_chunk": "to help"
+          "known_chunk": "to help",
+          "parent_lego_id": "S0025L01"
         },
         {
           "feeder_id": "S0025F02",
           "target_chunk": "devoir",
-          "known_chunk": "to have to"
+          "known_chunk": "to have to",
+          "parent_lego_id": "S0025L01"
         }
       ]
     },
@@ -927,7 +948,8 @@
         {
           "feeder_id": "S0027F01",
           "target_chunk": "répondre",
-          "known_chunk": "to answer"
+          "known_chunk": "to answer",
+          "parent_lego_id": "S0027L01"
         }
       ]
     },
@@ -964,12 +986,14 @@
         {
           "feeder_id": "S0028F01",
           "target_chunk": "commencer",
-          "known_chunk": "to start"
+          "known_chunk": "to start",
+          "parent_lego_id": "S0028L02"
         },
         {
           "feeder_id": "S0028F02",
           "target_chunk": "pouvoir",
-          "known_chunk": "can"
+          "known_chunk": "can",
+          "parent_lego_id": "S0028L02"
         }
       ]
     },
@@ -1006,12 +1030,14 @@
         {
           "feeder_id": "S0029F01",
           "target_chunk": "avoir hâte",
-          "known_chunk": "to look forward"
+          "known_chunk": "to look forward",
+          "parent_lego_id": "S0029L01"
         },
         {
           "feeder_id": "S0029F02",
           "target_chunk": "pouvoir",
-          "known_chunk": "can"
+          "known_chunk": "can",
+          "parent_lego_id": "S0029L01"
         }
       ]
     },

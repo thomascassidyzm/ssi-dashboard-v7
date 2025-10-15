@@ -74,12 +74,14 @@
         {
           "feeder_id": "S0002F01",
           "target_chunk": "我在",
-          "known_chunk": "I'm (progressive)"
+          "known_chunk": "I'm (progressive)",
+          "parent_lego_id": "S0002L01"
         },
         {
           "feeder_id": "S0002F02",
           "target_chunk": "试",
-          "known_chunk": "to try"
+          "known_chunk": "to try",
+          "parent_lego_id": "S0002L01"
         }
       ]
     },
@@ -330,7 +332,8 @@
         {
           "feeder_id": "S0011F01",
           "target_chunk": "说完",
-          "known_chunk": "to finish speaking"
+          "known_chunk": "to finish speaking",
+          "parent_lego_id": "S0011L02"
         }
       ]
     },
@@ -374,7 +377,8 @@
         {
           "feeder_id": "S0012F01",
           "target_chunk": "发生",
-          "known_chunk": "to happen"
+          "known_chunk": "to happen",
+          "parent_lego_id": "S0012L04"
         }
       ]
     },
@@ -518,7 +522,8 @@
         {
           "feeder_id": "S0017F01",
           "target_chunk": "答案",
-          "known_chunk": "answer"
+          "known_chunk": "answer",
+          "parent_lego_id": "S0017L03"
         }
       ]
     },
@@ -642,12 +647,14 @@
         {
           "feeder_id": "S0021F01",
           "target_chunk": "在",
-          "known_chunk": "(progressive marker)"
+          "known_chunk": "(progressive marker)",
+          "parent_lego_id": "S0021L02"
         },
         {
           "feeder_id": "S0021F02",
           "target_chunk": "学",
-          "known_chunk": "to learn"
+          "known_chunk": "to learn",
+          "parent_lego_id": "S0021L02"
         }
       ]
     },
@@ -683,7 +690,8 @@
         {
           "feeder_id": "S0022F01",
           "target_chunk": "人",
-          "known_chunk": "people"
+          "known_chunk": "people",
+          "parent_lego_id": "S0022L03"
         }
       ]
     },
@@ -780,12 +788,14 @@
         {
           "feeder_id": "S0025F01",
           "target_chunk": "帮",
-          "known_chunk": "to help"
+          "known_chunk": "to help",
+          "parent_lego_id": "S0025L01"
         },
         {
           "feeder_id": "S0025F02",
           "target_chunk": "得",
-          "known_chunk": "to have to"
+          "known_chunk": "to have to",
+          "parent_lego_id": "S0025L01"
         }
       ]
     },
@@ -910,7 +920,8 @@
         {
           "feeder_id": "S0028F01",
           "target_chunk": "机会",
-          "known_chunk": "opportunity"
+          "known_chunk": "opportunity",
+          "parent_lego_id": "S0028L01"
         }
       ]
     },

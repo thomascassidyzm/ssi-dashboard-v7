@@ -74,12 +74,14 @@
         {
           "feeder_id": "S0002F01",
           "target_chunk": "Estoy",
-          "known_chunk": "I'm"
+          "known_chunk": "I'm",
+          "parent_lego_id": "S0002L01"
         },
         {
           "feeder_id": "S0002F02",
           "target_chunk": "intentar",
-          "known_chunk": "to try"
+          "known_chunk": "to try",
+          "parent_lego_id": "S0002L01"
         }
       ]
     },
@@ -159,12 +161,14 @@
         {
           "feeder_id": "S0005F01",
           "target_chunk": "Voy",
-          "known_chunk": "I'm going"
+          "known_chunk": "I'm going",
+          "parent_lego_id": "S0005L01"
         },
         {
           "feeder_id": "S0005F02",
           "target_chunk": "practicar",
-          "known_chunk": "to practice"
+          "known_chunk": "to practice",
+          "parent_lego_id": "S0005L01"
         }
       ]
     },
@@ -243,12 +247,14 @@
         {
           "feeder_id": "S0008F01",
           "target_chunk": "Voy",
-          "known_chunk": "I'm going"
+          "known_chunk": "I'm going",
+          "parent_lego_id": "S0008L01"
         },
         {
           "feeder_id": "S0008F02",
           "target_chunk": "intentar",
-          "known_chunk": "to try"
+          "known_chunk": "to try",
+          "parent_lego_id": "S0008L01"
         }
       ]
     },
@@ -342,7 +348,8 @@
         {
           "feeder_id": "S0011F01",
           "target_chunk": "terminar",
-          "known_chunk": "to finish"
+          "known_chunk": "to finish",
+          "parent_lego_id": "S0011L03"
         }
       ]
     },
@@ -386,7 +393,8 @@
         {
           "feeder_id": "S0012F01",
           "target_chunk": "pasar",
-          "known_chunk": "to happen"
+          "known_chunk": "to happen",
+          "parent_lego_id": "S0012L01"
         }
       ]
     },
@@ -458,7 +466,8 @@
         {
           "feeder_id": "S0015F01",
           "target_chunk": "hablar",
-          "known_chunk": "to speak"
+          "known_chunk": "to speak",
+          "parent_lego_id": "S0015L02"
         }
       ]
     },
@@ -530,7 +539,8 @@
         {
           "feeder_id": "S0017F01",
           "target_chunk": "la respuesta",
-          "known_chunk": "the answer"
+          "known_chunk": "the answer",
+          "parent_lego_id": "S0017L03"
         }
       ]
     },
@@ -603,7 +613,8 @@
         {
           "feeder_id": "S0019F01",
           "target_chunk": "dejar",
-          "known_chunk": "to leave"
+          "known_chunk": "to leave",
+          "parent_lego_id": "S0019L02"
         }
       ]
     },
@@ -660,12 +671,14 @@
         {
           "feeder_id": "S0021F01",
           "target_chunk": "estás",
-          "known_chunk": "you are"
+          "known_chunk": "you are",
+          "parent_lego_id": "S0021L02"
         },
         {
           "feeder_id": "S0021F02",
           "target_chunk": "aprender",
-          "known_chunk": "to learn"
+          "known_chunk": "to learn",
+          "parent_lego_id": "S0021L02"
         }
       ]
     },
@@ -701,12 +714,14 @@
         {
           "feeder_id": "S0022F01",
           "target_chunk": "gente",
-          "known_chunk": "people"
+          "known_chunk": "people",
+          "parent_lego_id": "S0022L03"
         },
         {
           "feeder_id": "S0022F02",
           "target_chunk": "habla",
-          "known_chunk": "speaks"
+          "known_chunk": "speaks",
+          "parent_lego_id": "S0022L03"
         }
       ]
     },
@@ -742,12 +757,14 @@
         {
           "feeder_id": "S0023F01",
           "target_chunk": "Voy",
-          "known_chunk": "I'm going"
+          "known_chunk": "I'm going",
+          "parent_lego_id": "S0023L01"
         },
         {
           "feeder_id": "S0023F02",
           "target_chunk": "comenzar",
-          "known_chunk": "to start"
+          "known_chunk": "to start",
+          "parent_lego_id": "S0023L01"
         }
       ]
     },
@@ -776,12 +793,14 @@
         {
           "feeder_id": "S0024F01",
           "target_chunk": "Voy",
-          "known_chunk": "I'm going"
+          "known_chunk": "I'm going",
+          "parent_lego_id": "S0024L01"
         },
         {
           "feeder_id": "S0024F02",
           "target_chunk": "poder",
-          "known_chunk": "to be able"
+          "known_chunk": "to be able",
+          "parent_lego_id": "S0024L01"
         }
       ]
     },
@@ -818,12 +837,14 @@
         {
           "feeder_id": "S0025F01",
           "target_chunk": "ayudar",
-          "known_chunk": "to help"
+          "known_chunk": "to help",
+          "parent_lego_id": "S0025L01"
         },
         {
           "feeder_id": "S0025F02",
           "target_chunk": "tener que",
-          "known_chunk": "to have to"
+          "known_chunk": "to have to",
+          "parent_lego_id": "S0025L01"
         }
       ]
     },
@@ -917,7 +938,8 @@
         {
           "feeder_id": "S0027F01",
           "target_chunk": "responder",
-          "known_chunk": "to answer"
+          "known_chunk": "to answer",
+          "parent_lego_id": "S0027L01"
         }
       ]
     },
@@ -954,12 +976,14 @@
         {
           "feeder_id": "S0028F01",
           "target_chunk": "comenzar",
-          "known_chunk": "to start"
+          "known_chunk": "to start",
+          "parent_lego_id": "S0028L02"
         },
         {
           "feeder_id": "S0028F02",
           "target_chunk": "poder",
-          "known_chunk": "can"
+          "known_chunk": "can",
+          "parent_lego_id": "S0028L02"
         }
       ]
     },
@@ -996,12 +1020,14 @@
         {
           "feeder_id": "S0029F01",
           "target_chunk": "Estoy",
-          "known_chunk": "I'm"
+          "known_chunk": "I'm",
+          "parent_lego_id": "S0029L01"
         },
         {
           "feeder_id": "S0029F02",
           "target_chunk": "desear",
-          "known_chunk": "to wish"
+          "known_chunk": "to wish",
+          "parent_lego_id": "S0029L01"
         }
       ]
     },

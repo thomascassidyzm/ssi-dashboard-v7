@@ -1953,6 +1953,7 @@ app.put('/api/courses/:courseCode/breakdowns/:seedId', async (req, res) => {
     if (feeder_pairs && feeder_pairs.length > 0) {
       breakdown.feeder_pairs = feeder_pairs.map(feeder => ({
         feeder_id: feeder.feeder_id,
+        parent_lego_id: feeder.parent_lego_id,
         target_chunk: feeder.target_chunk,
         known_chunk: feeder.known_chunk
       }));

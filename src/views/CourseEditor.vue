@@ -269,36 +269,17 @@
                             {{ pair.componentization || 'No componentization details provided' }}
                           </div>
 
-                          <!-- Associated Feeders (if available in data) -->
-                          <div v-if="breakdown.feeder_pairs && breakdown.feeder_pairs.length > 0" class="mt-3">
+                          <!-- Associated Feeders (filtered by parent_lego_id) -->
+                          <div v-if="getFeedersForLego(breakdown, pair.lego_id).length > 0" class="mt-3">
                             <div class="text-xs text-slate-400 mb-2 uppercase">Associated Feeders:</div>
                             <div class="flex flex-wrap gap-2">
                               <div
-                                v-for="feeder in breakdown.feeder_pairs"
+                                v-for="feeder in getFeedersForLego(breakdown, pair.lego_id)"
                                 :key="feeder.feeder_id"
                                 class="bg-emerald-900/30 border border-emerald-700/50 rounded px-3 py-1.5 text-sm"
                               >
                                 <div class="text-emerald-300 font-mono text-xs">{{ feeder.feeder_id }}</div>
                                 <div class="text-emerald-200">{{ feeder.target_chunk }} ⟷ {{ feeder.known_chunk }}</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- ALL SEED FEEDERS -->
-                        <div v-if="breakdown.feeder_pairs && breakdown.feeder_pairs.length > 0" class="border-t border-slate-700 pt-4 mt-6">
-                          <div class="text-sm font-semibold text-slate-300 mb-3 uppercase">All Seed Feeders:</div>
-                          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <div
-                              v-for="feeder in breakdown.feeder_pairs"
-                              :key="'all-' + feeder.feeder_id"
-                              class="bg-emerald-900/20 border border-emerald-700/40 rounded-lg p-3"
-                            >
-                              <div class="text-emerald-400 font-mono text-xs mb-1">{{ feeder.feeder_id }}</div>
-                              <div class="text-sm">
-                                <span class="text-slate-300">{{ feeder.known_chunk }}</span>
-                                <span class="text-emerald-500 mx-2">⟷</span>
-                                <span class="text-blue-300">{{ feeder.target_chunk }}</span>
                               </div>
                             </div>
                           </div>
@@ -407,14 +388,71 @@
                           </div>
 
                           <!-- COMPONENTIZATION Editor (for COMPOSITE LEGOs) -->
-                          <div v-if="lego.lego_type === 'COMPOSITE'" class="mt-3 pt-3 border-t border-purple-700/50">
-                            <label class="text-xs text-purple-400 mb-1 block">Componentization</label>
-                            <textarea
-                              v-model="lego.componentization"
-                              class="w-full bg-purple-900/20 border border-purple-700 rounded px-3 py-2 text-purple-100 focus:outline-none focus:border-purple-500 font-mono text-sm"
-                              rows="2"
-                              placeholder="e.g., I'm trying to = J'essaie d', where J'essaie = I'm trying and d' = to"
-                            ></textarea>
+                          <div v-if="lego.lego_type === 'COMPOSITE'" class="mt-3 pt-3 border-t border-purple-700/50 space-y-3">
+                            <div>
+                              <label class="text-xs text-purple-400 mb-1 block">Componentization</label>
+                              <textarea
+                                v-model="lego.componentization"
+                                class="w-full bg-purple-900/20 border border-purple-700 rounded px-3 py-2 text-purple-100 focus:outline-none focus:border-purple-500 font-mono text-sm"
+                                rows="2"
+                                placeholder="e.g., I'm trying to = J'essaie d', where J'essaie = I'm trying and d' = to"
+                              ></textarea>
+                            </div>
+
+                            <!-- FEEDERs for this COMPOSITE LEGO -->
+                            <div class="space-y-2">
+                              <div class="flex items-center justify-between">
+                                <label class="text-xs text-emerald-400 font-semibold">Associated FEEDERs</label>
+                                <button
+                                  @click="addFeederToLego(breakdown, lego.lego_id)"
+                                  class="text-xs px-2 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded"
+                                >
+                                  + Add FEEDER
+                                </button>
+                              </div>
+
+                              <div
+                                v-for="(feeder, fIndex) in getFeedersForLegoInEdit(breakdown, lego.lego_id)"
+                                :key="fIndex"
+                                class="border border-emerald-700/30 bg-emerald-900/10 rounded p-2"
+                              >
+                                <div class="flex items-center justify-between mb-2">
+                                  <input
+                                    v-model="feeder.feeder_id"
+                                    class="text-xs font-mono bg-slate-900 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-24"
+                                    placeholder="S0001F01"
+                                  />
+                                  <button
+                                    @click="deleteFeederFromLego(breakdown, lego.lego_id, fIndex)"
+                                    class="text-xs px-2 py-1 bg-red-700 hover:bg-red-600 text-white rounded"
+                                  >
+                                    🗑️
+                                  </button>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2">
+                                  <div>
+                                    <label class="text-xs text-blue-400 mb-1 block">Target</label>
+                                    <input
+                                      v-model="feeder.target_chunk"
+                                      class="w-full bg-blue-900/30 border border-blue-700 rounded px-2 py-1 text-blue-100 text-xs"
+                                      placeholder="target..."
+                                    />
+                                  </div>
+                                  <div>
+                                    <label class="text-xs text-slate-400 mb-1 block">Known</label>
+                                    <input
+                                      v-model="feeder.known_chunk"
+                                      class="w-full bg-slate-700/50 border border-slate-600 rounded px-2 py-1 text-slate-100 text-xs"
+                                      placeholder="known..."
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div v-if="getFeedersForLegoInEdit(breakdown, lego.lego_id).length === 0" class="text-center py-2 text-slate-500 text-xs">
+                                No FEEDERs yet
+                              </div>
+                            </div>
                           </div>
                         </div>
 
@@ -425,61 +463,6 @@
                         >
                           + Add New LEGO Container
                         </button>
-                      </div>
-
-                      <!-- FEEDER Editor -->
-                      <div class="space-y-4">
-                        <div class="flex items-center justify-between">
-                          <div class="text-sm font-semibold text-emerald-300">FEEDER Pairs</div>
-                          <button
-                            @click="addNewFeeder(breakdown)"
-                            class="text-xs px-3 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded"
-                          >
-                            + Add FEEDER
-                          </button>
-                        </div>
-
-                        <div
-                          v-for="(feeder, index) in getEditableFeeders(breakdown)"
-                          :key="index"
-                          class="border border-emerald-700/50 bg-emerald-900/10 rounded-lg p-3"
-                        >
-                          <div class="flex items-center justify-between mb-2">
-                            <input
-                              v-model="feeder.feeder_id"
-                              class="text-xs font-mono bg-slate-900 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-24"
-                              placeholder="S0001F01"
-                            />
-                            <button
-                              @click="deleteFeeder(breakdown, index)"
-                              class="text-xs px-2 py-1 bg-red-700 hover:bg-red-600 text-white rounded"
-                            >
-                              🗑️
-                            </button>
-                          </div>
-                          <div class="grid grid-cols-2 gap-2">
-                            <div>
-                              <label class="text-xs text-blue-400 mb-1 block">Target Chunk</label>
-                              <input
-                                v-model="feeder.target_chunk"
-                                class="w-full bg-blue-900/30 border border-blue-700 rounded px-2 py-1.5 text-blue-100 text-sm"
-                                placeholder="target..."
-                              />
-                            </div>
-                            <div>
-                              <label class="text-xs text-slate-400 mb-1 block">Known Chunk</label>
-                              <input
-                                v-model="feeder.known_chunk"
-                                class="w-full bg-slate-700/50 border border-slate-600 rounded px-2 py-1.5 text-slate-100 text-sm"
-                                placeholder="known..."
-                              />
-                            </div>
-                          </div>
-                        </div>
-
-                        <div v-if="!getEditableFeeders(breakdown) || getEditableFeeders(breakdown).length === 0" class="text-center py-4 text-slate-500 text-sm">
-                          No FEEDERs yet. Click "+ Add FEEDER" to create one.
-                        </div>
                       </div>
 
                       <!-- Tiling Validation -->
@@ -934,6 +917,18 @@ function getEditableFeeders(breakdown) {
   return editDividers.value[breakdown.seed_id].feeder_pairs || []
 }
 
+// Get feeders for a specific LEGO (view mode)
+function getFeedersForLego(breakdown, legoId) {
+  if (!breakdown.feeder_pairs) return []
+  return breakdown.feeder_pairs.filter(f => f.parent_lego_id === legoId)
+}
+
+// Get feeders for a specific LEGO (edit mode)
+function getFeedersForLegoInEdit(breakdown, legoId) {
+  const feeders = getEditableFeeders(breakdown)
+  return feeders.filter(f => f.parent_lego_id === legoId)
+}
+
 function mergeLego(breakdown, index) {
   const legos = getEditableLegos(breakdown)
   if (index === 0 || index >= legos.length) return
@@ -1006,20 +1001,29 @@ function addNewLego(breakdown) {
   legos.push(newLego)
 }
 
-function addNewFeeder(breakdown) {
+function addFeederToLego(breakdown, legoId) {
   const feeders = getEditableFeeders(breakdown)
-  const lastIndex = feeders.length
+  const existingFeedersForLego = feeders.filter(f => f.parent_lego_id === legoId)
+  const nextIndex = existingFeedersForLego.length + 1
+
   const newFeeder = {
-    feeder_id: `${breakdown.seed_id}F${String(lastIndex + 1).padStart(2, '0')}`,
+    feeder_id: `${breakdown.seed_id}F${String(feeders.length + 1).padStart(2, '0')}`,
+    parent_lego_id: legoId,
     target_chunk: '',
     known_chunk: ''
   }
   feeders.push(newFeeder)
 }
 
-function deleteFeeder(breakdown, index) {
+function deleteFeederFromLego(breakdown, legoId, feederIndex) {
   const feeders = getEditableFeeders(breakdown)
-  feeders.splice(index, 1)
+  const feedersForLego = feeders.filter(f => f.parent_lego_id === legoId)
+  const feederToDelete = feedersForLego[feederIndex]
+
+  const globalIndex = feeders.findIndex(f => f.feeder_id === feederToDelete.feeder_id)
+  if (globalIndex !== -1) {
+    feeders.splice(globalIndex, 1)
+  }
 }
 
 function validateTiling(breakdown) {
