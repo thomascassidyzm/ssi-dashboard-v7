@@ -123,17 +123,31 @@
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-semibold text-emerald-400">SEED → LEGO Breakdown (Phase 3)</h3>
                 <div class="text-sm text-slate-400">
-                  {{ legoBreakdowns.length }} seeds • {{ legos.length }} LEGO pairs
+                  <span v-if="legoSearchQuery">{{ filteredLegoBreakdowns.length }} of </span>{{ legoBreakdowns.length }} seeds • {{ legos.length }} LEGO pairs
                 </div>
+              </div>
+
+              <!-- Search Bar -->
+              <div v-if="legoBreakdowns.length > 0" class="mb-4">
+                <input
+                  v-model="legoSearchQuery"
+                  type="text"
+                  placeholder="Search by SEED ID (e.g. S0001), target phrase, known phrase, or LEGO content..."
+                  class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-2 text-sm text-slate-300 focus:outline-none focus:border-emerald-500"
+                />
               </div>
 
               <div v-if="legoBreakdowns.length === 0" class="text-center py-8 text-slate-400">
                 No LEGO_PAIRS found. Run Phase 3-4 to generate them.
               </div>
 
+              <div v-else-if="filteredLegoBreakdowns.length === 0" class="text-center py-8 text-slate-400">
+                No breakdowns match your search.
+              </div>
+
               <div v-else class="space-y-6">
                 <div
-                  v-for="breakdown in legoBreakdowns.slice(0, 10)"
+                  v-for="breakdown in filteredLegoBreakdowns.slice(0, 20)"
                   :key="breakdown.seed_id"
                   class="bg-slate-800 border rounded-lg overflow-hidden"
                   :class="{
@@ -635,6 +649,7 @@ const editDividers = ref({}) // Track divider positions for editing
 
 const activeTab = ref('translations')
 const searchQuery = ref('')
+const legoSearchQuery = ref('') // Search for LEGO breakdowns
 const selectedSeed = ref('')
 const provenanceResult = ref(null)
 
@@ -675,6 +690,25 @@ const filteredTranslations = computed(() => {
     t.source.toLowerCase().includes(query) ||
     t.target.toLowerCase().includes(query) ||
     t.seed_id.toLowerCase().includes(query)
+  )
+})
+
+const filteredLegoBreakdowns = computed(() => {
+  if (!legoSearchQuery.value) return legoBreakdowns.value
+  const query = legoSearchQuery.value.toLowerCase()
+  return legoBreakdowns.value.filter(breakdown =>
+    // Search by seed ID
+    breakdown.seed_id.toLowerCase().includes(query) ||
+    // Search in target language
+    breakdown.original_target.toLowerCase().includes(query) ||
+    // Search in known language
+    breakdown.original_known.toLowerCase().includes(query) ||
+    // Search in individual LEGO chunks
+    (breakdown.lego_pairs || []).some(pair =>
+      pair.target_chunk.toLowerCase().includes(query) ||
+      pair.known_chunk.toLowerCase().includes(query) ||
+      pair.lego_id.toLowerCase().includes(query)
+    )
   )
 })
 

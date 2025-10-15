@@ -1,0 +1,441 @@
+{
+  "course_metadata": {
+    "lang_pair": "cmn_for_eng",
+    "target_language": "Mandarin",
+    "known_language": "English",
+    "phase": 5,
+    "batch": 1,
+    "lego_range": "1-18"
+  },
+  "baskets": [
+    {
+      "lego_id": "S0001L01",
+      "target_chunk": "我想",
+      "known_chunk": "I want",
+      "e_phrases": []
+    },
+    {
+      "lego_id": "S0001L02",
+      "target_chunk": "跟你",
+      "known_chunk": "with you",
+      "e_phrases": []
+    },
+    {
+      "lego_id": "S0001L03",
+      "target_chunk": "现在",
+      "known_chunk": "now",
+      "e_phrases": []
+    },
+    {
+      "lego_id": "S0001L04",
+      "target_chunk": "说",
+      "known_chunk": "to speak",
+      "e_phrases": []
+    },
+    {
+      "lego_id": "S0001L05",
+      "target_chunk": "中文",
+      "known_chunk": "Chinese",
+      "e_phrases": [
+        {
+          "target": "我想跟你现在说中文。",
+          "known": "I want to speak Chinese with you now."
+        },
+        {
+          "target": "我想现在说中文。",
+          "known": "I want to speak Chinese now."
+        },
+        {
+          "target": "我想跟你说中文。",
+          "known": "I want to speak Chinese with you."
+        },
+        {
+          "target": "我现在想说中文。",
+          "known": "I want to speak Chinese now."
+        },
+        {
+          "target": "我想说中文。",
+          "known": "I want to speak Chinese."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0002L01",
+      "target_chunk": "我在试着",
+      "known_chunk": "I'm trying",
+      "e_phrases": [
+        {
+          "target": "我在试着说中文。",
+          "known": "I'm trying to speak Chinese."
+        },
+        {
+          "target": "我在试着跟你说。",
+          "known": "I'm trying to speak with you."
+        },
+        {
+          "target": "我在试着现在说。",
+          "known": "I'm trying to speak now."
+        },
+        {
+          "target": "我在试着说。",
+          "known": "I'm trying to speak."
+        },
+        {
+          "target": "我现在在试着说中文。",
+          "known": "I'm trying to speak Chinese now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0002L02",
+      "target_chunk": "学",
+      "known_chunk": "to learn",
+      "e_phrases": [
+        {
+          "target": "我在试着学。",
+          "known": "I'm trying to learn."
+        },
+        {
+          "target": "我想学中文。",
+          "known": "I want to learn Chinese."
+        },
+        {
+          "target": "我在试着学中文。",
+          "known": "I'm trying to learn Chinese."
+        },
+        {
+          "target": "我现在想学。",
+          "known": "I want to learn now."
+        },
+        {
+          "target": "我想跟你学。",
+          "known": "I want to learn with you."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0003L01",
+      "target_chunk": "怎么",
+      "known_chunk": "how",
+      "e_phrases": [
+        {
+          "target": "我想学怎么说中文。",
+          "known": "I want to learn how to speak Chinese."
+        },
+        {
+          "target": "我在试着学怎么说。",
+          "known": "I'm trying to learn how to speak."
+        },
+        {
+          "target": "我想学怎么学中文。",
+          "known": "I want to learn how to learn Chinese."
+        },
+        {
+          "target": "我现在想学怎么说。",
+          "known": "I want to learn how to speak now."
+        },
+        {
+          "target": "我想跟你学怎么说中文。",
+          "known": "I want to learn how to speak Chinese with you."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0003L02",
+      "target_chunk": "尽量",
+      "known_chunk": "as much as possible",
+      "e_phrases": [
+        {
+          "target": "我想尽量说中文。",
+          "known": "I want to speak Chinese as much as possible."
+        },
+        {
+          "target": "我在试着尽量学。",
+          "known": "I'm trying to learn as much as possible."
+        },
+        {
+          "target": "我想尽量跟你说。",
+          "known": "I want to speak with you as much as possible."
+        },
+        {
+          "target": "我现在想尽量说。",
+          "known": "I want to speak as much as possible now."
+        },
+        {
+          "target": "我想尽量学怎么说中文。",
+          "known": "I want to learn how to speak Chinese as much as possible."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0003L03",
+      "target_chunk": "常说",
+      "known_chunk": "to speak often",
+      "e_phrases": [
+        {
+          "target": "怎么尽量常说。",
+          "known": "how to speak as often as possible."
+        },
+        {
+          "target": "我想尽量常说中文。",
+          "known": "I want to speak Chinese as often as possible."
+        },
+        {
+          "target": "我在试着学怎么常说。",
+          "known": "I'm trying to learn how to speak often."
+        },
+        {
+          "target": "我想跟你常说中文。",
+          "known": "I want to speak Chinese often with you."
+        },
+        {
+          "target": "我现在想常说。",
+          "known": "I want to speak often now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0004L01",
+      "target_chunk": "用中文",
+      "known_chunk": "in Chinese",
+      "e_phrases": [
+        {
+          "target": "我想学怎么用中文说。",
+          "known": "I want to learn how to speak in Chinese."
+        },
+        {
+          "target": "我在试着用中文说。",
+          "known": "I'm trying to speak in Chinese."
+        },
+        {
+          "target": "我现在想用中文说。",
+          "known": "I want to speak in Chinese now."
+        },
+        {
+          "target": "我想跟你用中文说。",
+          "known": "I want to speak in Chinese with you."
+        },
+        {
+          "target": "我想尽量用中文常说。",
+          "known": "I want to speak in Chinese often as much as possible."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0004L02",
+      "target_chunk": "什么",
+      "known_chunk": "something",
+      "e_phrases": [
+        {
+          "target": "怎么用中文说什么",
+          "known": "how to say something in Chinese"
+        },
+        {
+          "target": "我想学怎么说什么。",
+          "known": "I want to learn how to say something."
+        },
+        {
+          "target": "我在试着用中文说什么。",
+          "known": "I'm trying to say something in Chinese."
+        },
+        {
+          "target": "我现在想说什么。",
+          "known": "I want to say something now."
+        },
+        {
+          "target": "我想跟你说什么。",
+          "known": "I want to say something to you."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0005L01",
+      "target_chunk": "我要",
+      "known_chunk": "I'm going to",
+      "e_phrases": [
+        {
+          "target": "我要跟你说中文。",
+          "known": "I'm going to speak Chinese with you."
+        },
+        {
+          "target": "我要现在说。",
+          "known": "I'm going to speak now."
+        },
+        {
+          "target": "我要学怎么说。",
+          "known": "I'm going to learn how to speak."
+        },
+        {
+          "target": "我要尽量说中文。",
+          "known": "I'm going to speak Chinese as much as possible."
+        },
+        {
+          "target": "我要用中文说什么。",
+          "known": "I'm going to say something in Chinese."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0005L02",
+      "target_chunk": "跟别人",
+      "known_chunk": "with someone else",
+      "e_phrases": [
+        {
+          "target": "我要跟别人说中文。",
+          "known": "I'm going to speak Chinese with someone else."
+        },
+        {
+          "target": "我想跟别人学。",
+          "known": "I want to learn with someone else."
+        },
+        {
+          "target": "我在试着跟别人说。",
+          "known": "I'm trying to speak with someone else."
+        },
+        {
+          "target": "我要跟别人现在说。",
+          "known": "I'm going to speak with someone else now."
+        },
+        {
+          "target": "我想跟别人常说中文。",
+          "known": "I want to speak Chinese often with someone else."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0005L03",
+      "target_chunk": "练习说",
+      "known_chunk": "practice speaking",
+      "e_phrases": [
+        {
+          "target": "我要跟别人练习说。",
+          "known": "I'm going to practice speaking with someone else."
+        },
+        {
+          "target": "我想练习说中文。",
+          "known": "I want to practice speaking Chinese."
+        },
+        {
+          "target": "我在试着练习说。",
+          "known": "I'm trying to practice speaking."
+        },
+        {
+          "target": "我要现在练习说。",
+          "known": "I'm going to practice speaking now."
+        },
+        {
+          "target": "我想跟你练习说中文。",
+          "known": "I want to practice speaking Chinese with you."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0006L01",
+      "target_chunk": "想起",
+      "known_chunk": "to remember",
+      "e_phrases": [
+        {
+          "target": "我在试着想起怎么说。",
+          "known": "I'm trying to remember how to speak."
+        },
+        {
+          "target": "我想想起什么。",
+          "known": "I want to remember something."
+        },
+        {
+          "target": "我要想起。",
+          "known": "I'm going to remember."
+        },
+        {
+          "target": "我现在想想起。",
+          "known": "I want to remember now."
+        },
+        {
+          "target": "我在试着想起用中文怎么说。",
+          "known": "I'm trying to remember how to say it in Chinese."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0006L02",
+      "target_chunk": "一个词",
+      "known_chunk": "a word",
+      "e_phrases": [
+        {
+          "target": "我在试着想起一个词。",
+          "known": "I'm trying to remember a word."
+        },
+        {
+          "target": "我想学一个词。",
+          "known": "I want to learn a word."
+        },
+        {
+          "target": "我要说一个词。",
+          "known": "I'm going to say a word."
+        },
+        {
+          "target": "我现在想起一个词。",
+          "known": "I'm remembering a word now."
+        },
+        {
+          "target": "我想跟你练习说一个词。",
+          "known": "I want to practice saying a word with you."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0007L01",
+      "target_chunk": "今天",
+      "known_chunk": "today",
+      "e_phrases": [
+        {
+          "target": "我今天想说中文。",
+          "known": "I want to speak Chinese today."
+        },
+        {
+          "target": "我今天要练习说。",
+          "known": "I'm going to practice speaking today."
+        },
+        {
+          "target": "我今天在试着学。",
+          "known": "I'm trying to learn today."
+        },
+        {
+          "target": "我今天想跟你说。",
+          "known": "I want to speak with you today."
+        },
+        {
+          "target": "我今天要跟别人练习说中文。",
+          "known": "I'm going to practice speaking Chinese with someone else today."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0007L02",
+      "target_chunk": "试",
+      "known_chunk": "to try",
+      "e_phrases": [
+        {
+          "target": "我今天想尽量试。",
+          "known": "I want to try as hard as I can today."
+        },
+        {
+          "target": "我要试说中文。",
+          "known": "I'm going to try to speak Chinese."
+        },
+        {
+          "target": "我今天想试。",
+          "known": "I want to try today."
+        },
+        {
+          "target": "我想跟你试一个词。",
+          "known": "I want to try a word with you."
+        },
+        {
+          "target": "我现在想试说。",
+          "known": "I want to try to speak now."
+        }
+      ]
+    }
+  ]
+}

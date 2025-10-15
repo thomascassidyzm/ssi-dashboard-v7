@@ -1,0 +1,1295 @@
+{
+  "course_metadata": {
+    "lang_pair": "fra_for_eng",
+    "target_language": "French",
+    "known_language": "English",
+    "phase": 5,
+    "seeds_count": 30,
+    "batch_info": "BATCH 1: LEGOs 1-18"
+  },
+  "baskets": [
+    {
+      "lego_id": "S0001L01",
+      "target_chunk": "Je veux",
+      "known_chunk": "I want",
+      "basket": []
+    },
+    {
+      "lego_id": "S0001L02",
+      "target_chunk": "parler",
+      "known_chunk": "to speak",
+      "basket": []
+    },
+    {
+      "lego_id": "S0001L03",
+      "target_chunk": "français",
+      "known_chunk": "French",
+      "basket": []
+    },
+    {
+      "lego_id": "S0001L04",
+      "target_chunk": "avec toi",
+      "known_chunk": "with you",
+      "basket": []
+    },
+    {
+      "lego_id": "S0001L05",
+      "target_chunk": "maintenant",
+      "known_chunk": "now",
+      "basket": [
+        {
+          "target": "Je veux parler français avec toi maintenant.",
+          "known": "I want to speak French with you now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0002L01",
+      "target_chunk": "J'essaie d'",
+      "known_chunk": "I'm trying to",
+      "basket": []
+    },
+    {
+      "lego_id": "S0002L02",
+      "target_chunk": "apprendre",
+      "known_chunk": "to learn",
+      "basket": [
+        {
+          "target": "J'essaie d'apprendre.",
+          "known": "I'm trying to learn."
+        },
+        {
+          "target": "Je veux apprendre français maintenant.",
+          "known": "I want to learn French now."
+        },
+        {
+          "target": "J'essaie d'apprendre avec toi.",
+          "known": "I'm trying to learn with you."
+        },
+        {
+          "target": "Je veux apprendre français avec toi.",
+          "known": "I want to learn French with you."
+        },
+        {
+          "target": "J'essaie d'apprendre français maintenant.",
+          "known": "I'm trying to learn French now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0003L01",
+      "target_chunk": "Comment",
+      "known_chunk": "How",
+      "basket": [
+        {
+          "target": "Comment parler français maintenant.",
+          "known": "How to speak French now."
+        },
+        {
+          "target": "Comment apprendre français avec toi.",
+          "known": "How to learn French with you."
+        },
+        {
+          "target": "Je veux apprendre comment parler français.",
+          "known": "I want to learn how to speak French."
+        },
+        {
+          "target": "Comment parler avec toi maintenant.",
+          "known": "How to speak with you now."
+        },
+        {
+          "target": "J'essaie d'apprendre comment parler français.",
+          "known": "I'm trying to learn how to speak French."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0003L02",
+      "target_chunk": "le plus possible",
+      "known_chunk": "as much as possible",
+      "basket": [
+        {
+          "target": "Comment parler le plus possible.",
+          "known": "How to speak as much as possible."
+        },
+        {
+          "target": "Je veux parler français le plus possible.",
+          "known": "I want to speak French as much as possible."
+        },
+        {
+          "target": "J'essaie de parler le plus possible maintenant.",
+          "known": "I'm trying to speak as much as possible now."
+        },
+        {
+          "target": "Je veux apprendre le plus possible.",
+          "known": "I want to learn as much as possible."
+        },
+        {
+          "target": "Parler français le plus possible avec toi.",
+          "known": "To speak French as much as possible with you."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0004L01",
+      "target_chunk": "dire",
+      "known_chunk": "to say",
+      "basket": [
+        {
+          "target": "Comment dire français maintenant.",
+          "known": "How to say French now."
+        },
+        {
+          "target": "Je veux dire le plus possible.",
+          "known": "I want to say as much as possible."
+        },
+        {
+          "target": "J'essaie d'apprendre comment dire français.",
+          "known": "I'm trying to learn how to say French."
+        },
+        {
+          "target": "Comment dire avec toi maintenant.",
+          "known": "How to say with you now."
+        },
+        {
+          "target": "Je veux apprendre comment dire français.",
+          "known": "I want to learn how to say French."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0004L02",
+      "target_chunk": "quelque chose",
+      "known_chunk": "something",
+      "basket": [
+        {
+          "target": "Je veux dire quelque chose maintenant.",
+          "known": "I want to say something now."
+        },
+        {
+          "target": "J'essaie de dire quelque chose en français.",
+          "known": "I'm trying to say something in French."
+        },
+        {
+          "target": "Comment dire quelque chose le plus possible.",
+          "known": "How to say something as much as possible."
+        },
+        {
+          "target": "Je veux apprendre quelque chose avec toi.",
+          "known": "I want to learn something with you."
+        },
+        {
+          "target": "J'essaie d'apprendre quelque chose maintenant.",
+          "known": "I'm trying to learn something now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0004L03",
+      "target_chunk": "en français",
+      "known_chunk": "in French",
+      "basket": [
+        {
+          "target": "Comment dire quelque chose en français.",
+          "known": "How to say something in French."
+        },
+        {
+          "target": "Je veux dire quelque chose en français maintenant.",
+          "known": "I want to say something in French now."
+        },
+        {
+          "target": "J'essaie de parler en français le plus possible.",
+          "known": "I'm trying to speak in French as much as possible."
+        },
+        {
+          "target": "Comment apprendre en français avec toi.",
+          "known": "How to learn in French with you."
+        },
+        {
+          "target": "Je veux parler en français avec toi maintenant.",
+          "known": "I want to speak in French with you now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0005L01",
+      "target_chunk": "Je vais pratiquer",
+      "known_chunk": "I'm going to practice",
+      "basket": [
+        {
+          "target": "Je vais pratiquer français maintenant.",
+          "known": "I'm going to practice French now."
+        },
+        {
+          "target": "Je vais pratiquer le plus possible avec toi.",
+          "known": "I'm going to practice as much as possible with you."
+        },
+        {
+          "target": "Je vais pratiquer comment dire quelque chose en français.",
+          "known": "I'm going to practice how to say something in French."
+        },
+        {
+          "target": "Je vais pratiquer parler français avec toi.",
+          "known": "I'm going to practice speaking French with you."
+        },
+        {
+          "target": "Je veux pratiquer dire quelque chose maintenant.",
+          "known": "I want to practice saying something now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0005L02",
+      "target_chunk": "avec quelqu'un d'autre",
+      "known_chunk": "with someone else",
+      "basket": [
+        {
+          "target": "Je vais pratiquer parler avec quelqu'un d'autre.",
+          "known": "I'm going to practice speaking with someone else."
+        },
+        {
+          "target": "Je veux parler français avec quelqu'un d'autre maintenant.",
+          "known": "I want to speak French with someone else now."
+        },
+        {
+          "target": "J'essaie d'apprendre avec quelqu'un d'autre le plus possible.",
+          "known": "I'm trying to learn with someone else as much as possible."
+        },
+        {
+          "target": "Comment dire quelque chose avec quelqu'un d'autre.",
+          "known": "How to say something with someone else."
+        },
+        {
+          "target": "Je vais pratiquer français avec quelqu'un d'autre maintenant.",
+          "known": "I'm going to practice French with someone else now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0006L01",
+      "target_chunk": "me souvenir de",
+      "known_chunk": "to remember",
+      "basket": [
+        {
+          "target": "J'essaie de me souvenir de quelque chose maintenant.",
+          "known": "I'm trying to remember something now."
+        },
+        {
+          "target": "Je veux me souvenir de français le plus possible.",
+          "known": "I want to remember French as much as possible."
+        },
+        {
+          "target": "Je vais pratiquer me souvenir de quelque chose en français.",
+          "known": "I'm going to practice remembering something in French."
+        },
+        {
+          "target": "Comment me souvenir de parler français avec toi.",
+          "known": "How to remember to speak French with you."
+        },
+        {
+          "target": "J'essaie de me souvenir de dire quelque chose.",
+          "known": "I'm trying to remember to say something."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0006L02",
+      "target_chunk": "un mot",
+      "known_chunk": "a word",
+      "basket": [
+        {
+          "target": "J'essaie de me souvenir d'un mot.",
+          "known": "I'm trying to remember a word."
+        },
+        {
+          "target": "Je veux apprendre un mot en français maintenant.",
+          "known": "I want to learn a word in French now."
+        },
+        {
+          "target": "Comment dire un mot français avec toi.",
+          "known": "How to say a French word with you."
+        },
+        {
+          "target": "Je vais pratiquer un mot le plus possible.",
+          "known": "I'm going to practice a word as much as possible."
+        },
+        {
+          "target": "J'essaie de me souvenir d'un mot français maintenant.",
+          "known": "I'm trying to remember a French word now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0007L01",
+      "target_chunk": "essayer",
+      "known_chunk": "to try",
+      "basket": [
+        {
+          "target": "Je veux essayer de parler français maintenant.",
+          "known": "I want to try to speak French now."
+        },
+        {
+          "target": "Je vais essayer de me souvenir d'un mot.",
+          "known": "I'm going to try to remember a word."
+        },
+        {
+          "target": "Comment essayer de dire quelque chose en français.",
+          "known": "How to try to say something in French."
+        },
+        {
+          "target": "Je veux essayer le plus possible avec toi.",
+          "known": "I want to try as much as possible with you."
+        },
+        {
+          "target": "Je vais essayer avec quelqu'un d'autre maintenant.",
+          "known": "I'm going to try with someone else now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0007L02",
+      "target_chunk": "aujourd'hui",
+      "known_chunk": "today",
+      "basket": [
+        {
+          "target": "Je veux essayer le plus possible aujourd'hui.",
+          "known": "I want to try as hard as I can today."
+        },
+        {
+          "target": "Je vais pratiquer parler français avec toi aujourd'hui.",
+          "known": "I'm going to practice speaking French with you today."
+        },
+        {
+          "target": "J'essaie d'apprendre quelque chose en français aujourd'hui.",
+          "known": "I'm trying to learn something in French today."
+        },
+        {
+          "target": "Je veux me souvenir d'un mot aujourd'hui.",
+          "known": "I want to remember a word today."
+        },
+        {
+          "target": "Comment parler français le plus possible aujourd'hui.",
+          "known": "How to speak French as much as possible today."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0008L01",
+      "target_chunk": "Je vais essayer d'",
+      "known_chunk": "I'm going to try to",
+      "basket": [
+        {
+          "target": "Je vais essayer de parler français aujourd'hui.",
+          "known": "I'm going to try to speak French today."
+        },
+        {
+          "target": "Je vais essayer d'apprendre un mot maintenant.",
+          "known": "I'm going to try to learn a word now."
+        },
+        {
+          "target": "Je vais essayer de me souvenir de quelque chose.",
+          "known": "I'm going to try to remember something."
+        },
+        {
+          "target": "Je vais essayer de dire un mot en français.",
+          "known": "I'm going to try to say a word in French."
+        },
+        {
+          "target": "Je vais essayer de pratiquer le plus possible aujourd'hui.",
+          "known": "I'm going to try to practice as much as possible today."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0008L02",
+      "target_chunk": "expliquer",
+      "known_chunk": "to explain",
+      "basket": [
+        {
+          "target": "Je vais essayer d'expliquer quelque chose en français.",
+          "known": "I'm going to try to explain something in French."
+        },
+        {
+          "target": "Je veux expliquer un mot français avec toi.",
+          "known": "I want to explain a French word with you."
+        },
+        {
+          "target": "J'essaie d'expliquer le plus possible aujourd'hui.",
+          "known": "I'm trying to explain as much as possible today."
+        },
+        {
+          "target": "Comment expliquer quelque chose avec quelqu'un d'autre.",
+          "known": "How to explain something with someone else."
+        },
+        {
+          "target": "Je vais pratiquer expliquer français avec toi maintenant.",
+          "known": "I'm going to practice explaining French with you now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0008L03",
+      "target_chunk": "ce que je veux dire",
+      "known_chunk": "what I mean",
+      "basket": [
+        {
+          "target": "Je vais essayer d'expliquer ce que je veux dire.",
+          "known": "I'm going to try to explain what I mean."
+        },
+        {
+          "target": "J'essaie de me souvenir de ce que je veux dire.",
+          "known": "I'm trying to remember what I mean."
+        },
+        {
+          "target": "Comment expliquer ce que je veux dire en français.",
+          "known": "How to explain what I mean in French."
+        },
+        {
+          "target": "Je veux dire ce que je veux dire aujourd'hui.",
+          "known": "I want to say what I mean today."
+        },
+        {
+          "target": "Je vais pratiquer expliquer ce que je veux dire.",
+          "known": "I'm going to practice explaining what I mean."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0009L01",
+      "target_chunk": "Je parle",
+      "known_chunk": "I speak",
+      "basket": [
+        {
+          "target": "Je parle français avec toi aujourd'hui.",
+          "known": "I speak French with you today."
+        },
+        {
+          "target": "Je parle le plus possible en français maintenant.",
+          "known": "I speak as much as possible in French now."
+        },
+        {
+          "target": "Je parle avec quelqu'un d'autre aujourd'hui.",
+          "known": "I speak with someone else today."
+        },
+        {
+          "target": "Je vais essayer d'expliquer comment je parle français.",
+          "known": "I'm going to try to explain how I speak French."
+        },
+        {
+          "target": "Je parle français avec toi maintenant.",
+          "known": "I speak French with you now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0009L02",
+      "target_chunk": "un peu",
+      "known_chunk": "a little",
+      "basket": [
+        {
+          "target": "Je parle un peu français maintenant.",
+          "known": "I speak a little French now."
+        },
+        {
+          "target": "Je veux apprendre un peu avec toi aujourd'hui.",
+          "known": "I want to learn a little with you today."
+        },
+        {
+          "target": "J'essaie de parler un peu en français.",
+          "known": "I'm trying to speak a little in French."
+        },
+        {
+          "target": "Je vais pratiquer un peu avec quelqu'un d'autre.",
+          "known": "I'm going to practice a little with someone else."
+        },
+        {
+          "target": "Je parle un peu français avec toi maintenant.",
+          "known": "I speak a little French with you now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0010L01",
+      "target_chunk": "Je ne suis pas sûr",
+      "known_chunk": "I'm not sure",
+      "basket": [
+        {
+          "target": "Je ne suis pas sûr aujourd'hui.",
+          "known": "I'm not sure today."
+        },
+        {
+          "target": "Je ne suis pas sûr comment dire un mot français.",
+          "known": "I'm not sure how to say a French word."
+        },
+        {
+          "target": "Je ne suis pas sûr ce que je veux dire.",
+          "known": "I'm not sure what I mean."
+        },
+        {
+          "target": "Je ne suis pas sûr comment parler français maintenant.",
+          "known": "I'm not sure how to speak French now."
+        },
+        {
+          "target": "Je vais essayer d'expliquer pourquoi je ne suis pas sûr.",
+          "known": "I'm going to try to explain why I'm not sure."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0010L02",
+      "target_chunk": "si",
+      "known_chunk": "if",
+      "basket": [
+        {
+          "target": "Je ne suis pas sûr si je parle français.",
+          "known": "I'm not sure if I speak French."
+        },
+        {
+          "target": "Je veux apprendre si je parle un peu français.",
+          "known": "I want to learn if I speak a little French."
+        },
+        {
+          "target": "Je ne suis pas sûr si je vais essayer aujourd'hui.",
+          "known": "I'm not sure if I'm going to try today."
+        },
+        {
+          "target": "Comment apprendre si je parle français avec toi.",
+          "known": "How to learn if I speak French with you."
+        },
+        {
+          "target": "Je ne suis pas sûr si je veux dire quelque chose.",
+          "known": "I'm not sure if I want to say something."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0010L03",
+      "target_chunk": "je peux",
+      "known_chunk": "I can",
+      "basket": [
+        {
+          "target": "Je ne suis pas sûr si je peux parler français.",
+          "known": "I'm not sure if I can speak French."
+        },
+        {
+          "target": "Je peux dire un peu en français maintenant.",
+          "known": "I can say a little in French now."
+        },
+        {
+          "target": "Je vais essayer si je peux apprendre aujourd'hui.",
+          "known": "I'm going to try if I can learn today."
+        },
+        {
+          "target": "Comment expliquer si je peux me souvenir d'un mot.",
+          "known": "How to explain if I can remember a word."
+        },
+        {
+          "target": "Je peux pratiquer français le plus possible avec toi.",
+          "known": "I can practice French as much as possible with you."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0010L04",
+      "target_chunk": "toute la phrase",
+      "known_chunk": "the whole sentence",
+      "basket": [
+        {
+          "target": "Je ne suis pas sûr si je peux me souvenir de toute la phrase.",
+          "known": "I'm not sure if I can remember the whole sentence."
+        },
+        {
+          "target": "Je veux apprendre toute la phrase en français aujourd'hui.",
+          "known": "I want to learn the whole sentence in French today."
+        },
+        {
+          "target": "J'essaie de dire toute la phrase le plus possible.",
+          "known": "I'm trying to say the whole sentence as much as possible."
+        },
+        {
+          "target": "Comment expliquer toute la phrase avec quelqu'un d'autre.",
+          "known": "How to explain the whole sentence with someone else."
+        },
+        {
+          "target": "Je peux me souvenir de toute la phrase maintenant.",
+          "known": "I can remember the whole sentence now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0011L01",
+      "target_chunk": "J'aimerais",
+      "known_chunk": "I'd like",
+      "basket": [
+        {
+          "target": "J'aimerais parler français avec toi aujourd'hui.",
+          "known": "I'd like to speak French with you today."
+        },
+        {
+          "target": "J'aimerais apprendre toute la phrase maintenant.",
+          "known": "I'd like to learn the whole sentence now."
+        },
+        {
+          "target": "J'aimerais essayer de dire quelque chose en français.",
+          "known": "I'd like to try to say something in French."
+        },
+        {
+          "target": "J'aimerais me souvenir d'un mot si je peux.",
+          "known": "I'd like to remember a word if I can."
+        },
+        {
+          "target": "J'aimerais expliquer ce que je veux dire un peu.",
+          "known": "I'd like to explain what I mean a little."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0011L02",
+      "target_chunk": "pouvoir",
+      "known_chunk": "to be able",
+      "basket": [
+        {
+          "target": "J'aimerais pouvoir parler français le plus possible.",
+          "known": "I'd like to be able to speak French as much as possible."
+        },
+        {
+          "target": "Je vais essayer de pouvoir dire toute la phrase.",
+          "known": "I'm going to try to be able to say the whole sentence."
+        },
+        {
+          "target": "Je ne suis pas sûr si je vais pouvoir aujourd'hui.",
+          "known": "I'm not sure if I'm going to be able to today."
+        },
+        {
+          "target": "J'aimerais pouvoir expliquer quelque chose en français avec toi.",
+          "known": "I'd like to be able to explain something in French with you."
+        },
+        {
+          "target": "Comment pouvoir me souvenir d'un mot maintenant.",
+          "known": "How to be able to remember a word now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0011L03",
+      "target_chunk": "après que tu aies fini",
+      "known_chunk": "after you finish",
+      "basket": [
+        {
+          "target": "J'aimerais pouvoir parler après que tu aies fini.",
+          "known": "I'd like to be able to speak after you finish."
+        },
+        {
+          "target": "Je vais essayer de dire quelque chose après que tu aies fini.",
+          "known": "I'm going to try to say something after you finish."
+        },
+        {
+          "target": "Je veux apprendre un peu après que tu aies fini.",
+          "known": "I want to learn a little after you finish."
+        },
+        {
+          "target": "Je parle français avec toi après que tu aies fini.",
+          "known": "I speak French with you after you finish."
+        },
+        {
+          "target": "Je peux expliquer ce que je veux dire après que tu aies fini.",
+          "known": "I can explain what I mean after you finish."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0012L01",
+      "target_chunk": "Je n'aimerais pas",
+      "known_chunk": "I wouldn't like",
+      "basket": [
+        {
+          "target": "Je n'aimerais pas parler français aujourd'hui.",
+          "known": "I wouldn't like to speak French today."
+        },
+        {
+          "target": "Je n'aimerais pas essayer après que tu aies fini.",
+          "known": "I wouldn't like to try after you finish."
+        },
+        {
+          "target": "Je n'aimerais pas dire toute la phrase maintenant.",
+          "known": "I wouldn't like to say the whole sentence now."
+        },
+        {
+          "target": "Je n'aimerais pas expliquer si je ne suis pas sûr.",
+          "known": "I wouldn't like to explain if I'm not sure."
+        },
+        {
+          "target": "Je n'aimerais pas pouvoir me souvenir d'un peu.",
+          "known": "I wouldn't like to be able to remember a little."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0012L02",
+      "target_chunk": "deviner",
+      "known_chunk": "to guess",
+      "basket": [
+        {
+          "target": "Je n'aimerais pas deviner un mot en français.",
+          "known": "I wouldn't like to guess a word in French."
+        },
+        {
+          "target": "J'essaie de deviner ce que je veux dire.",
+          "known": "I'm trying to guess what I mean."
+        },
+        {
+          "target": "Je ne suis pas sûr si je peux deviner toute la phrase.",
+          "known": "I'm not sure if I can guess the whole sentence."
+        },
+        {
+          "target": "J'aimerais pouvoir deviner quelque chose après que tu aies fini.",
+          "known": "I'd like to be able to guess something after you finish."
+        },
+        {
+          "target": "Je vais essayer de deviner un peu maintenant.",
+          "known": "I'm going to try to guess a little now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0012L03",
+      "target_chunk": "ce qui va se passer",
+      "known_chunk": "what's going to happen",
+      "basket": [
+        {
+          "target": "Je n'aimerais pas deviner ce qui va se passer.",
+          "known": "I wouldn't like to guess what's going to happen."
+        },
+        {
+          "target": "Je ne suis pas sûr ce qui va se passer aujourd'hui.",
+          "known": "I'm not sure what's going to happen today."
+        },
+        {
+          "target": "J'aimerais pouvoir expliquer ce qui va se passer après que tu aies fini.",
+          "known": "I'd like to be able to explain what's going to happen after you finish."
+        },
+        {
+          "target": "Je vais essayer de deviner ce qui va se passer maintenant.",
+          "known": "I'm going to try to guess what's going to happen now."
+        },
+        {
+          "target": "Comment expliquer ce qui va se passer en français.",
+          "known": "How to explain what's going to happen in French."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0012L04",
+      "target_chunk": "demain",
+      "known_chunk": "tomorrow",
+      "basket": [
+        {
+          "target": "Je n'aimerais pas deviner ce qui va se passer demain.",
+          "known": "I wouldn't like to guess what's going to happen tomorrow."
+        },
+        {
+          "target": "Je vais essayer de parler français avec toi demain.",
+          "known": "I'm going to try to speak French with you tomorrow."
+        },
+        {
+          "target": "J'aimerais pouvoir expliquer toute la phrase demain.",
+          "known": "I'd like to be able to explain the whole sentence tomorrow."
+        },
+        {
+          "target": "Je ne suis pas sûr si je peux apprendre demain.",
+          "known": "I'm not sure if I can learn tomorrow."
+        },
+        {
+          "target": "Je parle un peu français avec quelqu'un d'autre demain.",
+          "known": "I speak a little French with someone else tomorrow."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0013L01",
+      "target_chunk": "Tu parles",
+      "known_chunk": "You speak",
+      "basket": [
+        {
+          "target": "Tu parles français le plus possible aujourd'hui.",
+          "known": "You speak French as much as possible today."
+        },
+        {
+          "target": "Je ne suis pas sûr si tu parles un peu.",
+          "known": "I'm not sure if you speak a little."
+        },
+        {
+          "target": "Tu parles avec quelqu'un d'autre après que tu aies fini.",
+          "known": "You speak with someone else after you finish."
+        },
+        {
+          "target": "J'aimerais pouvoir expliquer comment tu parles français.",
+          "known": "I'd like to be able to explain how you speak French."
+        },
+        {
+          "target": "Tu parles demain si je peux me souvenir.",
+          "known": "You speak tomorrow if I can remember."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0013L02",
+      "target_chunk": "très bien",
+      "known_chunk": "very well",
+      "basket": [
+        {
+          "target": "Tu parles français très bien.",
+          "known": "You speak French very well."
+        },
+        {
+          "target": "Je vais essayer de parler très bien demain.",
+          "known": "I'm going to try to speak very well tomorrow."
+        },
+        {
+          "target": "J'aimerais pouvoir expliquer très bien en français.",
+          "known": "I'd like to be able to explain very well in French."
+        },
+        {
+          "target": "Je parle un peu français très bien maintenant.",
+          "known": "I speak a little French very well now."
+        },
+        {
+          "target": "Tu parles très bien avec quelqu'un d'autre aujourd'hui.",
+          "known": "You speak very well with someone else today."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0014L01",
+      "target_chunk": "toute la journée",
+      "known_chunk": "all day",
+      "basket": [
+        {
+          "target": "Tu parles français toute la journée?",
+          "known": "Do you speak French all day?"
+        },
+        {
+          "target": "Je vais essayer de parler toute la journée demain.",
+          "known": "I'm going to try to speak all day tomorrow."
+        },
+        {
+          "target": "J'aimerais pouvoir apprendre français toute la journée.",
+          "known": "I'd like to be able to learn French all day."
+        },
+        {
+          "target": "Je ne suis pas sûr si je peux parler toute la journée.",
+          "known": "I'm not sure if I can speak all day."
+        },
+        {
+          "target": "Je parle un peu très bien toute la journée.",
+          "known": "I speak a little very well all day."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0015L01",
+      "target_chunk": "Et",
+      "known_chunk": "And",
+      "basket": [
+        {
+          "target": "Et je parle français très bien maintenant.",
+          "known": "And I speak French very well now."
+        },
+        {
+          "target": "Et tu parles toute la journée avec quelqu'un d'autre.",
+          "known": "And you speak all day with someone else."
+        },
+        {
+          "target": "Et je vais essayer demain si je peux.",
+          "known": "And I'm going to try tomorrow if I can."
+        },
+        {
+          "target": "Et j'aimerais pouvoir expliquer ce qui va se passer.",
+          "known": "And I'd like to be able to explain what's going to happen."
+        },
+        {
+          "target": "Et je ne suis pas sûr toute la journée.",
+          "known": "And I'm not sure all day."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0015L02",
+      "target_chunk": "je veux que tu parles",
+      "known_chunk": "I want you to speak",
+      "basket": [
+        {
+          "target": "Et je veux que tu parles français demain.",
+          "known": "And I want you to speak French tomorrow."
+        },
+        {
+          "target": "Je veux que tu parles très bien toute la journée.",
+          "known": "I want you to speak very well all day."
+        },
+        {
+          "target": "Je ne suis pas sûr si je veux que tu parles maintenant.",
+          "known": "I'm not sure if I want you to speak now."
+        },
+        {
+          "target": "J'aimerais que tu parles avec quelqu'un d'autre aujourd'hui.",
+          "known": "I'd like you to speak with someone else today."
+        },
+        {
+          "target": "Je veux que tu parles après que tu aies fini.",
+          "known": "I want you to speak after you finish."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0015L03",
+      "target_chunk": "avec moi",
+      "known_chunk": "with me",
+      "basket": [
+        {
+          "target": "Je veux que tu parles français avec moi.",
+          "known": "I want you to speak French with me."
+        },
+        {
+          "target": "Et je vais essayer de parler avec moi demain.",
+          "known": "And I'm going to try to speak with me tomorrow."
+        },
+        {
+          "target": "Tu parles très bien avec moi toute la journée.",
+          "known": "You speak very well with me all day."
+        },
+        {
+          "target": "J'aimerais pouvoir expliquer quelque chose avec moi.",
+          "known": "I'd like to be able to explain something with me."
+        },
+        {
+          "target": "Je veux que tu parles avec moi maintenant.",
+          "known": "I want you to speak with me now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0015L04",
+      "target_chunk": "demain",
+      "known_chunk": "tomorrow",
+      "basket": [
+        {
+          "target": "Et je veux que tu parles français avec moi demain.",
+          "known": "And I want you to speak French with me tomorrow."
+        },
+        {
+          "target": "Je vais essayer de parler très bien demain.",
+          "known": "I'm going to try to speak very well tomorrow."
+        },
+        {
+          "target": "Tu parles toute la journée avec moi demain.",
+          "known": "You speak all day with me tomorrow."
+        },
+        {
+          "target": "Je ne suis pas sûr ce qui va se passer demain.",
+          "known": "I'm not sure what's going to happen tomorrow."
+        },
+        {
+          "target": "J'aimerais pouvoir apprendre avec quelqu'un d'autre demain.",
+          "known": "I'd like to be able to learn with someone else tomorrow."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0016L01",
+      "target_chunk": "Il veut",
+      "known_chunk": "He wants",
+      "basket": [
+        {
+          "target": "Il veut parler français avec moi demain.",
+          "known": "He wants to speak French with me tomorrow."
+        },
+        {
+          "target": "Il veut que tu parles très bien toute la journée.",
+          "known": "He wants you to speak very well all day."
+        },
+        {
+          "target": "Et il veut essayer de me souvenir d'un mot.",
+          "known": "And he wants to try to remember a word."
+        },
+        {
+          "target": "Je ne suis pas sûr si il veut apprendre aujourd'hui.",
+          "known": "I'm not sure if he wants to learn today."
+        },
+        {
+          "target": "Il veut expliquer ce qui va se passer maintenant.",
+          "known": "He wants to explain what's going to happen now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0016L02",
+      "target_chunk": "revenir",
+      "known_chunk": "to come back",
+      "basket": [
+        {
+          "target": "Il veut revenir demain après que tu aies fini.",
+          "known": "He wants to come back tomorrow after you finish."
+        },
+        {
+          "target": "Je vais essayer de revenir toute la journée.",
+          "known": "I'm going to try to come back all day."
+        },
+        {
+          "target": "J'aimerais pouvoir revenir si je peux parler français.",
+          "known": "I'd like to be able to come back if I can speak French."
+        },
+        {
+          "target": "Il veut que tu reviennes très bien avec moi.",
+          "known": "He wants you to come back very well with me."
+        },
+        {
+          "target": "Je ne suis pas sûr si il veut revenir aujourd'hui.",
+          "known": "I'm not sure if he wants to come back today."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0016L03",
+      "target_chunk": "avec tous les autres",
+      "known_chunk": "with everyone else",
+      "basket": [
+        {
+          "target": "Il veut revenir avec tous les autres demain.",
+          "known": "He wants to come back with everyone else tomorrow."
+        },
+        {
+          "target": "Je vais essayer de parler avec tous les autres aujourd'hui.",
+          "known": "I'm going to try to speak with everyone else today."
+        },
+        {
+          "target": "J'aimerais pouvoir expliquer français avec tous les autres.",
+          "known": "I'd like to be able to explain French with everyone else."
+        },
+        {
+          "target": "Tu parles très bien avec tous les autres toute la journée.",
+          "known": "You speak very well with everyone else all day."
+        },
+        {
+          "target": "Je veux que tu parles avec tous les autres maintenant.",
+          "known": "I want you to speak with everyone else now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0016L04",
+      "target_chunk": "plus tard",
+      "known_chunk": "later on",
+      "basket": [
+        {
+          "target": "Il veut revenir avec tous les autres plus tard.",
+          "known": "He wants to come back with everyone else later on."
+        },
+        {
+          "target": "Je vais essayer de parler français avec toi plus tard.",
+          "known": "I'm going to try to speak French with you later on."
+        },
+        {
+          "target": "J'aimerais pouvoir expliquer ce qui va se passer plus tard.",
+          "known": "I'd like to be able to explain what's going to happen later on."
+        },
+        {
+          "target": "Tu parles très bien avec moi plus tard demain.",
+          "known": "You speak very well with me later on tomorrow."
+        },
+        {
+          "target": "Il veut que tu reviennes avec tous les autres plus tard.",
+          "known": "He wants you to come back with everyone else later on."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0017L01",
+      "target_chunk": "Elle veut",
+      "known_chunk": "She wants",
+      "basket": [
+        {
+          "target": "Elle veut parler français avec moi plus tard.",
+          "known": "She wants to speak French with me later on."
+        },
+        {
+          "target": "Elle veut revenir avec tous les autres demain.",
+          "known": "She wants to come back with everyone else tomorrow."
+        },
+        {
+          "target": "Et elle veut que tu parles très bien toute la journée.",
+          "known": "And she wants you to speak very well all day."
+        },
+        {
+          "target": "Je ne suis pas sûr si elle veut essayer aujourd'hui.",
+          "known": "I'm not sure if she wants to try today."
+        },
+        {
+          "target": "Elle veut expliquer ce qui va se passer maintenant.",
+          "known": "She wants to explain what's going to happen now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0017L02",
+      "target_chunk": "découvrir",
+      "known_chunk": "to find out",
+      "basket": [
+        {
+          "target": "Elle veut découvrir si tu parles français.",
+          "known": "She wants to find out if you speak French."
+        },
+        {
+          "target": "J'aimerais pouvoir découvrir ce qui va se passer demain.",
+          "known": "I'd like to be able to find out what's going to happen tomorrow."
+        },
+        {
+          "target": "Il veut découvrir comment revenir avec tous les autres.",
+          "known": "He wants to find out how to come back with everyone else."
+        },
+        {
+          "target": "Je vais essayer de découvrir quelque chose plus tard.",
+          "known": "I'm going to try to find out something later on."
+        },
+        {
+          "target": "Elle veut découvrir très bien avec moi aujourd'hui.",
+          "known": "She wants to find out very well with me today."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0017L03",
+      "target_chunk": "quelle est la réponse",
+      "known_chunk": "what the answer is",
+      "basket": [
+        {
+          "target": "Elle veut découvrir quelle est la réponse.",
+          "known": "She wants to find out what the answer is."
+        },
+        {
+          "target": "Je ne suis pas sûr quelle est la réponse maintenant.",
+          "known": "I'm not sure what the answer is now."
+        },
+        {
+          "target": "J'aimerais pouvoir expliquer quelle est la réponse demain.",
+          "known": "I'd like to be able to explain what the answer is tomorrow."
+        },
+        {
+          "target": "Il veut découvrir quelle est la réponse plus tard.",
+          "known": "He wants to find out what the answer is later on."
+        },
+        {
+          "target": "Je vais essayer de deviner quelle est la réponse aujourd'hui.",
+          "known": "I'm going to try to guess what the answer is today."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0018L01",
+      "target_chunk": "Nous voulons",
+      "known_chunk": "We want",
+      "basket": [
+        {
+          "target": "Nous voulons parler français avec toi plus tard.",
+          "known": "We want to speak French with you later on."
+        },
+        {
+          "target": "Nous voulons découvrir quelle est la réponse demain.",
+          "known": "We want to find out what the answer is tomorrow."
+        },
+        {
+          "target": "Et nous voulons revenir avec tous les autres aujourd'hui.",
+          "known": "And we want to come back with everyone else today."
+        },
+        {
+          "target": "Nous voulons que tu parles très bien avec moi.",
+          "known": "We want you to speak very well with me."
+        },
+        {
+          "target": "Je ne suis pas sûr si nous voulons essayer maintenant.",
+          "known": "I'm not sure if we want to try now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0018L02",
+      "target_chunk": "nous rencontrer",
+      "known_chunk": "to meet",
+      "basket": [
+        {
+          "target": "Nous voulons nous rencontrer plus tard avec tous les autres.",
+          "known": "We want to meet later on with everyone else."
+        },
+        {
+          "target": "Elle veut nous rencontrer si elle peut découvrir demain.",
+          "known": "She wants to meet us if she can find out tomorrow."
+        },
+        {
+          "target": "J'aimerais pouvoir nous rencontrer toute la journée.",
+          "known": "I'd like to be able to meet us all day."
+        },
+        {
+          "target": "Il veut nous rencontrer après que tu aies fini aujourd'hui.",
+          "known": "He wants to meet us after you finish today."
+        },
+        {
+          "target": "Je vais essayer de nous rencontrer très bien maintenant.",
+          "known": "I'm going to try to meet us very well now."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0018L03",
+      "target_chunk": "à six heures",
+      "known_chunk": "at six o'clock",
+      "basket": [
+        {
+          "target": "Nous voulons nous rencontrer à six heures demain.",
+          "known": "We want to meet at six o'clock tomorrow."
+        },
+        {
+          "target": "Elle veut revenir à six heures avec tous les autres.",
+          "known": "She wants to come back at six o'clock with everyone else."
+        },
+        {
+          "target": "Je vais essayer de parler français à six heures.",
+          "known": "I'm going to try to speak French at six o'clock."
+        },
+        {
+          "target": "Il veut découvrir quelle est la réponse à six heures.",
+          "known": "He wants to find out what the answer is at six o'clock."
+        },
+        {
+          "target": "J'aimerais pouvoir nous rencontrer à six heures plus tard.",
+          "known": "I'd like to be able to meet us at six o'clock later on."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0018L04",
+      "target_chunk": "ce soir",
+      "known_chunk": "this evening",
+      "basket": [
+        {
+          "target": "Nous voulons nous rencontrer à six heures ce soir.",
+          "known": "We want to meet at six o'clock this evening."
+        },
+        {
+          "target": "Elle veut découvrir quelle est la réponse ce soir.",
+          "known": "She wants to find out what the answer is this evening."
+        },
+        {
+          "target": "Je vais essayer de parler français très bien ce soir.",
+          "known": "I'm going to try to speak French very well this evening."
+        },
+        {
+          "target": "Il veut revenir avec tous les autres ce soir.",
+          "known": "He wants to come back with everyone else this evening."
+        },
+        {
+          "target": "J'aimerais pouvoir nous rencontrer plus tard ce soir.",
+          "known": "I'd like to be able to meet us later on this evening."
+        }
+      ]
+    }
+  ]
+}

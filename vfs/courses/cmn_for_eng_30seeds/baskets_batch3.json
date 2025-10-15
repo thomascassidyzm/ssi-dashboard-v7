@@ -1,0 +1,606 @@
+{
+  "course_metadata": {
+    "lang_pair": "cmn_for_eng",
+    "target_language": "Mandarin",
+    "known_language": "English",
+    "phase": 5,
+    "batch": 3,
+    "lego_range": "38-55"
+  },
+  "baskets": [
+    {
+      "basket_id": "P5B038",
+      "culminating_lego_id": "S0014L01",
+      "culminating_lego_target": "整天",
+      "culminating_lego_known": "all day",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B038E01",
+          "target": "我想整天跟你说中文。",
+          "known": "I want to speak Chinese with you all day."
+        },
+        {
+          "e_phrase_id": "P5B038E02",
+          "target": "她整天在学中文。",
+          "known": "She's learning Chinese all day."
+        },
+        {
+          "e_phrase_id": "P5B038E03",
+          "target": "你整天在试着记住什么?",
+          "known": "What are you trying to remember all day?"
+        },
+        {
+          "e_phrase_id": "P5B038E04",
+          "target": "我不想整天练习说。",
+          "known": "I don't want to practice speaking all day."
+        },
+        {
+          "e_phrase_id": "P5B038E05",
+          "target": "他们整天在试着学。",
+          "known": "They're trying to learn all day."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B039",
+      "culminating_lego_id": "S0014L02",
+      "culminating_lego_target": "吗",
+      "culminating_lego_known": "(question particle)",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B039E01",
+          "target": "你想跟我说中文吗?",
+          "known": "Do you want to speak Chinese with me?"
+        },
+        {
+          "e_phrase_id": "P5B039E02",
+          "target": "她在学怎么说吗?",
+          "known": "Is she learning how to speak?"
+        },
+        {
+          "e_phrase_id": "P5B039E03",
+          "target": "你会说一点儿中文吗?",
+          "known": "Do you speak a little Chinese?"
+        },
+        {
+          "e_phrase_id": "P5B039E04",
+          "target": "他们今天想练习说吗?",
+          "known": "Do they want to practice speaking today?"
+        },
+        {
+          "e_phrase_id": "P5B039E05",
+          "target": "你整天在试着学吗?",
+          "known": "Are you trying to learn all day?"
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B040",
+      "culminating_lego_id": "S0015L01",
+      "culminating_lego_target": "而且",
+      "culminating_lego_known": "And",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B040E01",
+          "target": "我想学中文而且想常说。",
+          "known": "I want to learn Chinese and speak often."
+        },
+        {
+          "e_phrase_id": "P5B040E02",
+          "target": "她在学说而且说得很好。",
+          "known": "She's learning to speak and speaks very well."
+        },
+        {
+          "e_phrase_id": "P5B040E03",
+          "target": "我想起了一个词而且想说。",
+          "known": "I remembered a word and want to speak."
+        },
+        {
+          "e_phrase_id": "P5B040E04",
+          "target": "他在试着学而且在试着说。",
+          "known": "He's trying to learn and trying to speak."
+        },
+        {
+          "e_phrase_id": "P5B040E05",
+          "target": "我今天想练习而且想常说。",
+          "known": "I want to practice today and speak often."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B041",
+      "culminating_lego_id": "S0015L02",
+      "culminating_lego_target": "我想让你",
+      "culminating_lego_known": "I want you to",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B041E01",
+          "target": "我想让你今天跟我说中文。",
+          "known": "I want you to speak Chinese with me today."
+        },
+        {
+          "e_phrase_id": "P5B041E02",
+          "target": "我想让你试着解释你的意思。",
+          "known": "I want you to try to explain what you mean."
+        },
+        {
+          "e_phrase_id": "P5B041E03",
+          "target": "我想让你尽量常说。",
+          "known": "I want you to speak as often as possible."
+        },
+        {
+          "e_phrase_id": "P5B041E04",
+          "target": "我想让你快点儿学会说。",
+          "known": "I want you to learn to speak quickly."
+        },
+        {
+          "e_phrase_id": "P5B041E05",
+          "target": "我想让你整天练习说。",
+          "known": "I want you to practice speaking all day."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B042",
+      "culminating_lego_id": "S0015L03",
+      "culminating_lego_target": "跟我",
+      "culminating_lego_known": "with me",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B042E01",
+          "target": "你想明天跟我说中文吗?",
+          "known": "Do you want to speak Chinese with me tomorrow?"
+        },
+        {
+          "e_phrase_id": "P5B042E02",
+          "target": "他今晚想跟我练习说。",
+          "known": "He wants to practice speaking with me this evening."
+        },
+        {
+          "e_phrase_id": "P5B042E03",
+          "target": "她在试着跟我解释。",
+          "known": "She's trying to explain with me."
+        },
+        {
+          "e_phrase_id": "P5B042E04",
+          "target": "你要跟我一起学吗?",
+          "known": "Are you going to learn with me?"
+        },
+        {
+          "e_phrase_id": "P5B042E05",
+          "target": "而且我想让你跟我说。",
+          "known": "And I want you to speak with me."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B043",
+      "culminating_lego_id": "S0016L01",
+      "culminating_lego_target": "他想",
+      "culminating_lego_known": "He wants",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B043E01",
+          "target": "他想跟你说中文。",
+          "known": "He wants to speak Chinese with you."
+        },
+        {
+          "e_phrase_id": "P5B043E02",
+          "target": "他想今天学怎么说。",
+          "known": "He wants to learn how to speak today."
+        },
+        {
+          "e_phrase_id": "P5B043E03",
+          "target": "他想试着解释他的意思。",
+          "known": "He wants to try to explain what he means."
+        },
+        {
+          "e_phrase_id": "P5B043E04",
+          "target": "他想快点儿学会说中文。",
+          "known": "He wants to learn to speak Chinese quickly."
+        },
+        {
+          "e_phrase_id": "P5B043E05",
+          "target": "他想明天跟别人练习说。",
+          "known": "He wants to practice speaking with someone else tomorrow."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B044",
+      "culminating_lego_id": "S0016L02",
+      "culminating_lego_target": "晚点儿",
+      "culminating_lego_known": "later on",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B044E01",
+          "target": "我想晚点儿跟你说中文。",
+          "known": "I want to speak Chinese with you later on."
+        },
+        {
+          "e_phrase_id": "P5B044E02",
+          "target": "她要晚点儿试着解释。",
+          "known": "She's going to try to explain later on."
+        },
+        {
+          "e_phrase_id": "P5B044E03",
+          "target": "他们晚点儿想练习说吗?",
+          "known": "Do they want to practice speaking later on?"
+        },
+        {
+          "e_phrase_id": "P5B044E04",
+          "target": "我不想晚点儿学说。",
+          "known": "I don't want to learn to speak later on."
+        },
+        {
+          "e_phrase_id": "P5B044E05",
+          "target": "你晚点儿会说中文吗?",
+          "known": "Are you going to speak Chinese later on?"
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B045",
+      "culminating_lego_id": "S0016L03",
+      "culminating_lego_target": "跟其他人一起",
+      "culminating_lego_known": "with everyone else",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B045E01",
+          "target": "我想跟其他人一起学中文。",
+          "known": "I want to learn Chinese with everyone else."
+        },
+        {
+          "e_phrase_id": "P5B045E02",
+          "target": "她在试着跟其他人一起说。",
+          "known": "She's trying to speak with everyone else."
+        },
+        {
+          "e_phrase_id": "P5B045E03",
+          "target": "你想跟其他人一起练习说吗?",
+          "known": "Do you want to practice speaking with everyone else?"
+        },
+        {
+          "e_phrase_id": "P5B045E04",
+          "target": "他要跟其他人一起学怎么说。",
+          "known": "He's going to learn how to speak with everyone else."
+        },
+        {
+          "e_phrase_id": "P5B045E05",
+          "target": "我们晚点儿跟其他人一起说吧。",
+          "known": "Let's speak with everyone else later on."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B046",
+      "culminating_lego_id": "S0016L04",
+      "culminating_lego_target": "回来",
+      "culminating_lego_known": "to come back",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B046E01",
+          "target": "你想明天回来吗?",
+          "known": "Do you want to come back tomorrow?"
+        },
+        {
+          "e_phrase_id": "P5B046E02",
+          "target": "我要晚点儿回来跟你说。",
+          "known": "I'm going to come back later on to speak with you."
+        },
+        {
+          "e_phrase_id": "P5B046E03",
+          "target": "她想快点儿回来练习说。",
+          "known": "She wants to come back quickly to practice speaking."
+        },
+        {
+          "e_phrase_id": "P5B046E04",
+          "target": "他们今晚想回来吗?",
+          "known": "Do they want to come back this evening?"
+        },
+        {
+          "e_phrase_id": "P5B046E05",
+          "target": "他想晚点儿跟其他人一起回来。",
+          "known": "He wants to come back with everyone else later on."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B047",
+      "culminating_lego_id": "S0017L01",
+      "culminating_lego_target": "她想",
+      "culminating_lego_known": "She wants",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B047E01",
+          "target": "她想跟你说中文。",
+          "known": "She wants to speak Chinese with you."
+        },
+        {
+          "e_phrase_id": "P5B047E02",
+          "target": "她想明天学怎么说。",
+          "known": "She wants to learn how to speak tomorrow."
+        },
+        {
+          "e_phrase_id": "P5B047E03",
+          "target": "她想试着解释她的意思。",
+          "known": "She wants to try to explain what she means."
+        },
+        {
+          "e_phrase_id": "P5B047E04",
+          "target": "她想晚点儿回来练习说。",
+          "known": "She wants to come back later on to practice speaking."
+        },
+        {
+          "e_phrase_id": "P5B047E05",
+          "target": "她想跟其他人一起学。",
+          "known": "She wants to learn with everyone else."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B048",
+      "culminating_lego_id": "S0017L02",
+      "culminating_lego_target": "知道",
+      "culminating_lego_known": "to find out",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B048E01",
+          "target": "我想知道怎么用中文说。",
+          "known": "I want to find out how to say something in Chinese."
+        },
+        {
+          "e_phrase_id": "P5B048E02",
+          "target": "她在试着知道你的意思。",
+          "known": "She's trying to find out what you mean."
+        },
+        {
+          "e_phrase_id": "P5B048E03",
+          "target": "你想知道他们的名字吗?",
+          "known": "Do you want to find out their name?"
+        },
+        {
+          "e_phrase_id": "P5B048E04",
+          "target": "我不确定我能不能知道。",
+          "known": "I'm not sure if I can find out."
+        },
+        {
+          "e_phrase_id": "P5B048E05",
+          "target": "他想快点儿知道答案。",
+          "known": "He wants to find out the answer quickly."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B049",
+      "culminating_lego_id": "S0017L03",
+      "culminating_lego_target": "答案是什么",
+      "culminating_lego_known": "what the answer is",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B049E01",
+          "target": "你知道答案是什么吗?",
+          "known": "Do you find out what the answer is?"
+        },
+        {
+          "e_phrase_id": "P5B049E02",
+          "target": "我想知道答案是什么。",
+          "known": "I want to find out what the answer is."
+        },
+        {
+          "e_phrase_id": "P5B049E03",
+          "target": "他在试着想起答案是什么。",
+          "known": "He's trying to remember what the answer is."
+        },
+        {
+          "e_phrase_id": "P5B049E04",
+          "target": "我不确定答案是什么。",
+          "known": "I'm not sure what the answer is."
+        },
+        {
+          "e_phrase_id": "P5B049E05",
+          "target": "她想知道答案是什么。",
+          "known": "She wants to find out what the answer is."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B050",
+      "culminating_lego_id": "S0018L01",
+      "culminating_lego_target": "我们想",
+      "culminating_lego_known": "We want",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B050E01",
+          "target": "我们想跟你说中文。",
+          "known": "We want to speak Chinese with you."
+        },
+        {
+          "e_phrase_id": "P5B050E02",
+          "target": "我们想明天学怎么说。",
+          "known": "We want to learn how to speak tomorrow."
+        },
+        {
+          "e_phrase_id": "P5B050E03",
+          "target": "我们想试着解释我们的意思。",
+          "known": "We want to try to explain what we mean."
+        },
+        {
+          "e_phrase_id": "P5B050E04",
+          "target": "我们想晚点儿回来练习说。",
+          "known": "We want to come back later on to practice speaking."
+        },
+        {
+          "e_phrase_id": "P5B050E05",
+          "target": "我们想知道答案是什么。",
+          "known": "We want to find out what the answer is."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B051",
+      "culminating_lego_id": "S0018L02",
+      "culminating_lego_target": "今晚",
+      "culminating_lego_known": "this evening",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B051E01",
+          "target": "我想今晚跟你说中文。",
+          "known": "I want to speak Chinese with you this evening."
+        },
+        {
+          "e_phrase_id": "P5B051E02",
+          "target": "她今晚在试着学说。",
+          "known": "She's trying to learn to speak this evening."
+        },
+        {
+          "e_phrase_id": "P5B051E03",
+          "target": "你今晚想练习说吗?",
+          "known": "Do you want to practice speaking this evening?"
+        },
+        {
+          "e_phrase_id": "P5B051E04",
+          "target": "他们今晚要回来吗?",
+          "known": "Are they going to come back this evening?"
+        },
+        {
+          "e_phrase_id": "P5B051E05",
+          "target": "我们今晚想跟其他人一起说。",
+          "known": "We want to speak with everyone else this evening."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B052",
+      "culminating_lego_id": "S0018L03",
+      "culminating_lego_target": "六点",
+      "culminating_lego_known": "at six o'clock",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B052E01",
+          "target": "我想六点跟你说中文。",
+          "known": "I want to speak Chinese with you at six o'clock."
+        },
+        {
+          "e_phrase_id": "P5B052E02",
+          "target": "她六点在学怎么说。",
+          "known": "She's learning how to speak at six o'clock."
+        },
+        {
+          "e_phrase_id": "P5B052E03",
+          "target": "你明天六点想练习说吗?",
+          "known": "Do you want to practice speaking tomorrow at six o'clock?"
+        },
+        {
+          "e_phrase_id": "P5B052E04",
+          "target": "他们今晚六点要回来。",
+          "known": "They're going to come back at six o'clock this evening."
+        },
+        {
+          "e_phrase_id": "P5B052E05",
+          "target": "我们今晚六点想说中文。",
+          "known": "We want to speak Chinese at six o'clock this evening."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B053",
+      "culminating_lego_id": "S0018L04",
+      "culminating_lego_target": "见面",
+      "culminating_lego_known": "to meet",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B053E01",
+          "target": "我想明天见面跟你说。",
+          "known": "I want to meet tomorrow to speak with you."
+        },
+        {
+          "e_phrase_id": "P5B053E02",
+          "target": "她今晚想见面练习说。",
+          "known": "She wants to meet this evening to practice speaking."
+        },
+        {
+          "e_phrase_id": "P5B053E03",
+          "target": "你想六点见面吗?",
+          "known": "Do you want to meet at six o'clock?"
+        },
+        {
+          "e_phrase_id": "P5B053E04",
+          "target": "他们晚点儿要见面。",
+          "known": "They're going to meet later on."
+        },
+        {
+          "e_phrase_id": "P5B053E05",
+          "target": "我们想今晚六点见面。",
+          "known": "We want to meet at six o'clock this evening."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B054",
+      "culminating_lego_id": "S0019L01",
+      "culminating_lego_target": "但是",
+      "culminating_lego_known": "But",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B054E01",
+          "target": "我想学中文但是不想整天学。",
+          "known": "I want to learn Chinese but don't want to learn all day."
+        },
+        {
+          "e_phrase_id": "P5B054E02",
+          "target": "她会说但是说得不太好。",
+          "known": "She speaks but doesn't speak very well."
+        },
+        {
+          "e_phrase_id": "P5B054E03",
+          "target": "我知道答案但是不想说。",
+          "known": "I find out the answer but don't want to speak."
+        },
+        {
+          "e_phrase_id": "P5B054E04",
+          "target": "他想见面但是晚点儿想见面。",
+          "known": "He wants to meet but wants to meet later on."
+        },
+        {
+          "e_phrase_id": "P5B054E05",
+          "target": "我们想今晚见面但是六点太早。",
+          "known": "We want to meet this evening but six o'clock is too early."
+        }
+      ]
+    },
+    {
+      "basket_id": "P5B055",
+      "culminating_lego_id": "S0019L02",
+      "culminating_lego_target": "停止说",
+      "culminating_lego_known": "to stop talking",
+      "e_phrases": [
+        {
+          "e_phrase_id": "P5B055E01",
+          "target": "我不想停止说中文。",
+          "known": "I don't want to stop talking in Chinese."
+        },
+        {
+          "e_phrase_id": "P5B055E02",
+          "target": "她要停止说了吗?",
+          "known": "Is she going to stop talking?"
+        },
+        {
+          "e_phrase_id": "P5B055E03",
+          "target": "你想六点停止说吗?",
+          "known": "Do you want to stop talking at six o'clock?"
+        },
+        {
+          "e_phrase_id": "P5B055E04",
+          "target": "他们不想停止说。",
+          "known": "They don't want to stop talking."
+        },
+        {
+          "e_phrase_id": "P5B055E05",
+          "target": "但是我不想停止说。",
+          "known": "But I don't want to stop talking."
+        }
+      ]
+    }
+  ]
+}
