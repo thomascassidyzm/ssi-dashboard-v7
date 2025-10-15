@@ -1613,6 +1613,59 @@ PROMPT: |
 
   **NON-NEGOTIABLE**: No standalone prepositions at LEGO boundaries
 
+  ## THE ELISION RULE (ABSOLUTE)
+  **Never split after an elided word (apostrophe) without including the following word.**
+
+  **ELISION PATTERNS** (vary by language):
+  Romance languages commonly use elision where vowels are dropped before another vowel:
+  - French: d', l', n', s', t', qu', m', c', j' (de, le, ne, se, te, que, me, ce, je)
+  - Italian: d', l', un', all', dell', sull', nell' (di, lo/la, uno/una, alla, della, sulla, nella)
+  - Spanish: (less common, but exists in contractions like "del" = de + el)
+  - Catalan: d', l', n', s', t', m' (similar to French)
+
+  **THE PROBLEM**:
+  Elided words are grammatically incomplete - they MUST attach to the following word.
+  - ❌ "d'" alone means nothing - it's an incomplete preposition
+  - ❌ "l'" alone means nothing - it's an incomplete article
+  - ✅ "d'expliquer" / "to explain" - complete meaningful unit
+  - ✅ "l'italiano" / "the Italian" - complete meaningful unit
+
+  **CRITICAL RULE**: NEVER create a LEGO that ends with an apostrophe!
+
+  **EXAMPLES OF VIOLATIONS (DO NOT DO THIS)**:
+  - ❌ "Je vais essayer d'" / "I'm going to try to" (d' is orphaned)
+  - ❌ "Voglio parlare l'" / "I want to speak the" (l' is orphaned)
+  - ❌ "Je n'" / "I don't" (n' is orphaned)
+
+  **EXAMPLES OF CORRECT HANDLING**:
+  - ✅ "Je vais essayer d'expliquer" / "I'm going to try to explain" (d' attached to expliquer)
+  - ✅ "Voglio parlare l'italiano" / "I want to speak Italian" (l' attached to italiano)
+  - ✅ "Je n'aime pas" / "I don't like" (n' attached to aime)
+
+  **TILING WITH ELISIONS**:
+  When you encounter elisions, apply the TILING TEST to the COMPLETE phrase (with elision + following word):
+
+  Example: "Je vais essayer d'expliquer"
+  1. Can we tile "Je vais essayer" + "d'expliquer"? → Check if concatenation works
+  2. NO → They don't tile (missing "d'"), so create COMPOSITE:
+     - COMPOSITE: "Je vais essayer d'expliquer" / "I'm going to try to explain"
+     - FEEDERs: "Je vais" (I'm going), "essayer" (to try), "expliquer" (to explain)
+
+  **DETECTION STRATEGY**:
+  1. Scan target language text for apostrophes (')
+  2. If apostrophe found, check if it's at end of current chunk
+  3. If yes → EXTEND chunk to include next word
+  4. Then apply FD_LOOP test to extended chunk
+
+  **LANGUAGE-SPECIFIC GUIDANCE**:
+  - **French**: Very common - watch for d', l', n', s', t', qu', m', j', c'
+  - **Italian**: Common - watch for d', l', un', all', dell', sull', nell'
+  - **Spanish**: Rare - mostly in contractions (del, al) which are written as single words
+  - **English**: Contractions like "I'm", "don't", "can't" → treat as single words (already FD-compliant)
+  - **Other languages**: Check for similar vowel elision patterns
+
+  **NON-NEGOTIABLE**: No LEGO may end with an apostrophe indicating elision
+
   ## INPUT DATA
   Course folder: /Users/tomcassidy/SSi/SSi_Course_Production/vfs/courses/${targetCode}_for_${knownCode}_speakers/
 
@@ -1874,17 +1927,32 @@ PROMPT: |
 ## Phase 5: Basket Generation (Edge-Aware + d-phrases/e-phrases)
 
 NAME: "Basket Generation with Graph Intelligence and Progressive Vocabulary"
-PURPOSE: Create practice phrase baskets for ALL LEGO_PAIRS (deduplication happens in Phase 5.5)
+PURPOSE: Create practice phrase baskets for ALL LEGOs (deduplication happens in Phase 5.5)
 INPUT:
-  - vfs/courses/{course_code}/translations.json (to get LEGO decomposition)
+  - vfs/courses/{course_code}/LEGO_BREAKDOWNS_COMPLETE.json (contains all LEGOs)
   - vfs/courses/{course_code}/phase_outputs/phase_3.5_lego_graph.json (for edge coverage)
   - vfs/courses/{course_code}/phase_outputs/phase_2_corpus_intelligence.json (for FCFS ordering)
-OUTPUT: vfs/courses/{course_code}/baskets.json (ALL LEGO_PAIR baskets - includes duplicates)
+OUTPUT: vfs/courses/{course_code}/baskets.json (ALL LEGO baskets - includes duplicates)
+
+CRITICAL: WHAT COUNTS AS A LEGO
+  **ALL of these structures need baskets:**
+  1. **lego_pairs[]** - Both BASE and COMPOSITE type LEGOs
+     - Example: {"lego_id": "S0001L02", "target_chunk": "parler", "known_chunk": "to speak"}
+
+  2. **feeder_pairs[]** - Atomic components of COMPOSITE LEGOs
+     - Example: {"feeder_id": "S0015F01", "target_chunk": "parler", "known_chunk": "to speak"}
+     - FEEDERS ARE LEGOS - They might be new, or duplicates of existing LEGOs
+     - Generate baskets for ALL feeders (deduplication removes duplicates later)
+
+  **Why process feeders:**
+  - A FEEDER might introduce NEW vocabulary not yet seen
+  - A FEEDER might be a DUPLICATE of an existing LEGO (dedup handles this)
+  - We can't know which without checking, so we generate baskets for ALL
 
 CRITICAL_CHANGE:
-  - OLD: Create baskets only for deduplicated LEGOs
-  - NEW: Create baskets for ALL LEGO_PAIRS (every LEGO in every seed)
-  - WHY: Each basket created with full SEED_PAIR context (culminating LEGO rule works naturally)
+  - OLD: Create baskets only for lego_pairs[] entries
+  - NEW: Create baskets for BOTH lego_pairs[] AND feeder_pairs[]
+  - WHY: Feeders are legitimate LEGOs that need practice baskets
   - Deduplication happens AFTER in Phase 5.5 (delete duplicate baskets, keep first occurrence)
 
 BATCH_PROCESSING:
@@ -1996,9 +2064,50 @@ PROMPT: |
   ## Input Data
   Course folder: /Users/tomcassidy/SSi/SSi_Course_Production/vfs/courses/${targetCode}_for_${knownCode}_speakers/
 
-  Read LEGOs from: vfs/amino_acids/legos_deduplicated/*.json
-  Read Graph: vfs/phase_outputs/phase_3.5_lego_graph.json
-  Read FCFS: vfs/phase_outputs/phase_2_corpus_intelligence.json
+  Read LEGOs from: vfs/courses/{course_code}/LEGO_BREAKDOWNS_COMPLETE.json
+
+  **CRITICAL: Extract ALL LEGOs from two sources:**
+
+  1. **lego_pairs[]** - Both BASE and COMPOSITE LEGOs from Phase 3
+     ```javascript
+     for (const seed of legoBreakdowns.lego_breakdowns) {
+       for (const lego of seed.lego_pairs) {
+         allLegos.push({
+           lego_id: lego.lego_id,
+           target_chunk: lego.target_chunk,
+           known_chunk: lego.known_chunk,
+           seed_id: seed.seed_id
+         });
+       }
+     }
+     ```
+
+  2. **feeder_pairs[]** - Atomic components of COMPOSITE LEGOs (THESE ARE LEGOS TOO!)
+     ```javascript
+     for (const seed of legoBreakdowns.lego_breakdowns) {
+       for (const feeder of seed.feeder_pairs || []) {
+         allLegos.push({
+           lego_id: feeder.feeder_id,  // Note: feeder_id, not lego_id
+           target_chunk: feeder.target_chunk,
+           known_chunk: feeder.known_chunk,
+           seed_id: seed.seed_id,
+           parent_lego_id: feeder.parent_lego_id  // Track which COMPOSITE this feeds
+         });
+       }
+     }
+     ```
+
+  **WHY process feeder_pairs:**
+  - A feeder might introduce NEW vocabulary not yet seen (needs its own basket)
+  - A feeder might be a DUPLICATE of an existing LEGO (Phase 5.5 dedup handles this)
+  - We can't know which without processing ALL of them
+  - Phase 5.5 deduplication will remove duplicate baskets, keeping first occurrence
+
+  **Total LEGOs to process:**
+  - Spanish: ~115 (89 lego_pairs + 26 feeder_pairs)
+  - Italian: ~115 (90 lego_pairs + 25 feeder_pairs)
+  - French: ~116 (90 lego_pairs + 26 feeder_pairs)
+  - Mandarin: ~103 (92 lego_pairs + 11 feeder_pairs)
 
   ## E-PHRASES (5 Eternal Practice Phrases per LEGO)
 
@@ -2162,6 +2271,8 @@ PROMPT: |
   ## Output Format
   Save to: vfs/courses/{course_code}/baskets.json
 
+  **IMPORTANT: Use BOTH lego_id AND feeder_id as keys**
+
   {
     "S0001L01": {
       "lego": ["Quiero", "I want"],
@@ -2179,10 +2290,29 @@ PROMPT: |
         "5": [["Quiero hablar español contigo ahora", "I want to speak Spanish with you now"], ...]
       }
     },
-    "S0001L02": { ... }
+    "S0001L02": { ... },
+    "S0015F01": {
+      "lego": ["parler", "to speak"],
+      "e": [
+        ["Je veux parler français maintenant avec toi ici.", "I want to speak French now with you here."],
+        ["Parler français est important pour moi aujourd'hui.", "Speaking French is important to me today."]
+      ],
+      "d": {
+        "2": [["veux parler", "want to speak"], ["parler français", "to speak French"]],
+        "3": [["veux parler français", "want to speak French"], ...],
+        "4": [...],
+        "5": [...]
+      }
+    }
   }
 
-  Format: { "lego_id": { lego: [target, known], e: [[t,k]...], d: {window_size: [[t,k]...]} } }
+  Format: { "lego_id_or_feeder_id": { lego: [target, known], e: [[t,k]...], d: {window_size: [[t,k]...]} } }
+
+  **Key naming rules:**
+  - Regular LEGOs use lego_id format: "S0001L01", "S0001L02", etc.
+  - Feeder LEGOs use feeder_id format: "S0015F01", "S0015F02", etc.
+  - Both are treated identically during basket generation
+  - Phase 5.5 deduplication will remove duplicates (e.g., if S0015F01 duplicates S0001L02)
 
   Notes:
   - LEGO field contains the core teaching unit itself
@@ -2193,11 +2323,11 @@ PROMPT: |
 
   ## Success Criteria
 
-  **Stage 1 (Selection):**
-  ✓ All LEGOs assigned to baskets
-  ✓ Maximum edge coverage per basket (diverse patterns)
-  ✓ FCFS/chronological ordering maintained
-  ✓ Smooth difficulty progression
+  **Stage 1 (Extraction):**
+  ✓ All lego_pairs[] extracted and processed
+  ✓ All feeder_pairs[] extracted and processed (CRITICAL - don't miss these!)
+  ✓ Both types use correct ID field (lego_id vs feeder_id)
+  ✓ Total LEGO count matches expected: lego_pairs + feeder_pairs
 
   **Stage 2 (Generation):**
   ✓ Every LEGO has d-phrases and e-phrases (even if empty for early LEGOs)
@@ -2208,7 +2338,9 @@ PROMPT: |
   ✓ Progressive difficulty from LEGO #1 to last LEGO
 
   **Combined Result:**
-  ✓ Corpus patterns reflected through edge coverage
+  ✓ Baskets generated for ALL LEGOs (both lego_pairs and feeder_pairs)
+  ✓ Basket count = lego_pairs count + feeder_pairs count (before deduplication)
+  ✓ Spanish: ~115 baskets, Italian: ~115, French: ~116, Mandarin: ~103
   ✓ Pedagogical soundness through vocabulary constraints
   ✓ Optimal learning sequence with rich practice
 
@@ -2216,20 +2348,28 @@ PROMPT: |
 
 NAME: "Basket Deduplication"
 PURPOSE: Remove duplicate LEGO baskets, keeping first occurrence with full provenance
-INPUT: vfs/courses/{course_code}/baskets.json (ALL LEGO_PAIR baskets)
+INPUT: vfs/courses/{course_code}/baskets.json (ALL lego_pairs AND feeder_pairs baskets)
 OUTPUT: vfs/courses/{course_code}/baskets_deduplicated.json
 
 WHY_THIS_APPROACH:
-  - Phase 5 creates baskets for ALL LEGO_PAIRS (e.g., 150 baskets)
-  - Many LEGOs appear in multiple seeds (e.g., "parlare" in S0001, S0003, S0005)
+  - Phase 5 creates baskets for ALL LEGOs: lego_pairs[] AND feeder_pairs[] (e.g., ~115 baskets per course)
+  - Many LEGOs appear in multiple seeds (e.g., "parlare" in S0001L02, S0003L02, S0005L04)
+  - Feeders often duplicate existing LEGOs (e.g., S0015F01 "parler" duplicates S0001L02 "parler")
   - Each basket created with full SEED_PAIR context (culminating LEGO rule works naturally)
   - Deduplication is simple: DELETE duplicate baskets, KEEP first occurrence
+
+**EXPECTED DUPLICATE PATTERNS:**
+  - Spanish: ~115 baskets → ~89 after dedup (26 feeder duplicates expected)
+  - Italian: ~115 baskets → ~90 after dedup (25 feeder duplicates expected)
+  - French: ~116 baskets → ~90 after dedup (26 feeder duplicates expected)
+  - Mandarin: ~103 baskets → ~92 after dedup (11 feeder duplicates expected)
 
 DEDUPLICATION_PROCESS:
 
   1. **Identify Duplicates**:
-     - Group baskets by LEGO text (target + known)
-     - Example: "parlare"/"to speak" appears as S0001L02, S0003L02, S0005L04
+     - Group baskets by LEGO text (case-insensitive: target + known)
+     - Example: "parlare"/"to speak" appears as S0001L02, S0003L02, S0005F01, S0015F02
+     - All four have identical LEGO text → duplicates
 
   2. **Determine First Occurrence**:
      - Sort by FCFS order (from Phase 2)
