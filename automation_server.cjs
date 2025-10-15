@@ -1915,11 +1915,12 @@ app.put('/api/courses/:courseCode/translations/:uuid', async (req, res) => {
 app.put('/api/courses/:courseCode/breakdowns/:seedId', async (req, res) => {
   try {
     const { courseCode, seedId } = req.params;
-    const { lego_pairs } = req.body;
+    const { lego_pairs, feeder_pairs } = req.body;
     const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
 
     console.log(`[API] Updating LEGO breakdown for ${seedId} in ${courseCode}`);
     console.log(`[API] New LEGO pairs:`, lego_pairs);
+    console.log(`[API] New FEEDER pairs:`, feeder_pairs);
 
     // Load LEGO_BREAKDOWNS_COMPLETE.json
     const legosPath = path.join(coursePath, 'LEGO_BREAKDOWNS_COMPLETE.json');
@@ -1938,15 +1939,27 @@ app.put('/api/courses/:courseCode/breakdowns/:seedId', async (req, res) => {
 
     const breakdown = legoData.lego_breakdowns[breakdownIndex];
 
-    // Update lego_pairs with new boundaries
-    // Convert simple pairs to full format
-    breakdown.lego_pairs = lego_pairs.map((pair, index) => ({
-      lego_id: `${seedId}L${String(index + 1).padStart(2, '0')}`,
-      lego_type: 'BASE', // Default to BASE, user would need to manually mark as COMPOSITE
-      target_chunk: pair.target,
-      known_chunk: pair.known,
-      fd_validated: false // Mark as needs revalidation
+    // Update lego_pairs (preserving full structure from frontend)
+    breakdown.lego_pairs = lego_pairs.map(pair => ({
+      lego_id: pair.lego_id,
+      lego_type: pair.lego_type || 'BASE',
+      target_chunk: pair.target_chunk,
+      known_chunk: pair.known_chunk,
+      fd_validated: pair.fd_validated || false,
+      componentization: pair.componentization || undefined
     }));
+
+    // Update feeder_pairs if provided
+    if (feeder_pairs && feeder_pairs.length > 0) {
+      breakdown.feeder_pairs = feeder_pairs.map(feeder => ({
+        feeder_id: feeder.feeder_id,
+        target_chunk: feeder.target_chunk,
+        known_chunk: feeder.known_chunk
+      }));
+    } else {
+      // Remove feeder_pairs if none provided
+      delete breakdown.feeder_pairs;
+    }
 
     // Write back to LEGO_BREAKDOWNS_COMPLETE.json
     await fs.writeJson(legosPath, legoData, { spaces: 2 });
@@ -1957,7 +1970,8 @@ app.put('/api/courses/:courseCode/breakdowns/:seedId', async (req, res) => {
       success: true,
       message: 'LEGO breakdown updated successfully',
       seed_id: seedId,
-      lego_pairs: breakdown.lego_pairs
+      lego_pairs: breakdown.lego_pairs,
+      feeder_pairs: breakdown.feeder_pairs || []
     });
   } catch (error) {
     console.error('[API] Error updating LEGO breakdown:', error);
