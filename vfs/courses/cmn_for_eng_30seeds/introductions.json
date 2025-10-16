@@ -1,0 +1,830 @@
+{
+  "course_metadata": {
+    "lang_pair": "cmn_for_eng",
+    "target_language": "Mandarin",
+    "known_language": "English",
+    "phase": 6,
+    "seeds_count": 30,
+    "generation_date": "2025-10-16T22:11:15.866Z"
+  },
+  "introductions": [
+    {
+      "lego_id": "S0001L01",
+      "lego_type": "BASE",
+      "target_chunk": "我想",
+      "known_chunk": "I want",
+      "seed_context": "I want to speak Chinese with you now.",
+      "introduction_text": "The Mandarin for I want, as in I want to speak Chinese with you now., is: 我想"
+    },
+    {
+      "lego_id": "S0001L02",
+      "lego_type": "BASE",
+      "target_chunk": "跟你",
+      "known_chunk": "with you",
+      "seed_context": "I want to speak Chinese with you now.",
+      "introduction_text": "The Mandarin for with you, as in I want to speak Chinese with you now., is: 跟你"
+    },
+    {
+      "lego_id": "S0001L03",
+      "lego_type": "BASE",
+      "target_chunk": "现在",
+      "known_chunk": "now",
+      "seed_context": "I want to speak Chinese with you now.",
+      "introduction_text": "The Mandarin for now, as in I want to speak Chinese with you now., is: 现在"
+    },
+    {
+      "lego_id": "S0001L04",
+      "lego_type": "BASE",
+      "target_chunk": "说",
+      "known_chunk": "to speak",
+      "seed_context": "I want to speak Chinese with you now.",
+      "introduction_text": "The Mandarin for to speak, as in I want to speak Chinese with you now., is: 说"
+    },
+    {
+      "lego_id": "S0001L05",
+      "lego_type": "BASE",
+      "target_chunk": "中文",
+      "known_chunk": "Chinese",
+      "seed_context": "I want to speak Chinese with you now.",
+      "introduction_text": "The Mandarin for Chinese, as in I want to speak Chinese with you now., is: 中文"
+    },
+    {
+      "lego_id": "S0002L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "我在试着",
+      "known_chunk": "I'm trying",
+      "seed_context": "I'm trying to learn.",
+      "introduction_text": "The Mandarin for I'm trying, as in I'm trying to learn., is: 我在试着, I'm trying = 我在试着, where 我 = I, 在 = (progressive marker), and 试着 = trying"
+    },
+    {
+      "lego_id": "S0002L02",
+      "lego_type": "BASE",
+      "target_chunk": "学",
+      "known_chunk": "to learn",
+      "seed_context": "I'm trying to learn.",
+      "introduction_text": "The Mandarin for to learn, as in I'm trying to learn., is: 学"
+    },
+    {
+      "feeder_id": "S0002F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "我在",
+      "known_chunk": "I'm (progressive)",
+      "parent_lego_id": "S0002L01",
+      "seed_context": "I'm trying to learn.",
+      "introduction_text": "The Mandarin for I'm (progressive), as in I'm trying to learn., is: 我在"
+    },
+    {
+      "feeder_id": "S0002F02",
+      "lego_type": "FEEDER",
+      "target_chunk": "试",
+      "known_chunk": "to try",
+      "parent_lego_id": "S0002L01",
+      "seed_context": "I'm trying to learn.",
+      "introduction_text": "The Mandarin for to try, as in I'm trying to learn., is: 试"
+    },
+    {
+      "lego_id": "S0003L01",
+      "lego_type": "BASE",
+      "target_chunk": "怎么",
+      "known_chunk": "how",
+      "seed_context": "how to speak as often as possible.",
+      "introduction_text": "The Mandarin for how, as in how to speak as often as possible., is: 怎么"
+    },
+    {
+      "lego_id": "S0003L02",
+      "lego_type": "BASE",
+      "target_chunk": "尽量",
+      "known_chunk": "as much as possible",
+      "seed_context": "how to speak as often as possible.",
+      "introduction_text": "The Mandarin for as much as possible, as in how to speak as often as possible., is: 尽量"
+    },
+    {
+      "lego_id": "S0003L03",
+      "lego_type": "BASE",
+      "target_chunk": "常说",
+      "known_chunk": "to speak often",
+      "seed_context": "how to speak as often as possible.",
+      "introduction_text": "The Mandarin for to speak often, as in how to speak as often as possible., is: 常说"
+    },
+    {
+      "lego_id": "S0004L01",
+      "lego_type": "BASE",
+      "target_chunk": "用中文",
+      "known_chunk": "in Chinese",
+      "seed_context": "how to say something in Chinese",
+      "introduction_text": "The Mandarin for in Chinese, as in how to say something in Chinese, is: 用中文, in Chinese = 用中文, where 用 = using and 中文 = Chinese"
+    },
+    {
+      "lego_id": "S0004L02",
+      "lego_type": "BASE",
+      "target_chunk": "什么",
+      "known_chunk": "something",
+      "seed_context": "how to say something in Chinese",
+      "introduction_text": "The Mandarin for something, as in how to say something in Chinese, is: 什么"
+    },
+    {
+      "lego_id": "S0005L01",
+      "lego_type": "BASE",
+      "target_chunk": "我要",
+      "known_chunk": "I'm going to",
+      "seed_context": "I'm going to practice speaking with someone else.",
+      "introduction_text": "The Mandarin for I'm going to, as in I'm going to practice speaking with someone else., is: 我要"
+    },
+    {
+      "lego_id": "S0005L02",
+      "lego_type": "BASE",
+      "target_chunk": "跟别人",
+      "known_chunk": "with someone else",
+      "seed_context": "I'm going to practice speaking with someone else.",
+      "introduction_text": "The Mandarin for with someone else, as in I'm going to practice speaking with someone else., is: 跟别人, with someone else = 跟别人, where 跟 = with and 别人 = someone else"
+    },
+    {
+      "lego_id": "S0005L03",
+      "lego_type": "BASE",
+      "target_chunk": "练习说",
+      "known_chunk": "practice speaking",
+      "seed_context": "I'm going to practice speaking with someone else.",
+      "introduction_text": "The Mandarin for practice speaking, as in I'm going to practice speaking with someone else., is: 练习说, practice speaking = 练习说, where 练习 = practice and 说 = speak"
+    },
+    {
+      "lego_id": "S0006L01",
+      "lego_type": "BASE",
+      "target_chunk": "想起",
+      "known_chunk": "to remember",
+      "seed_context": "I'm trying to remember a word.",
+      "introduction_text": "The Mandarin for to remember, as in I'm trying to remember a word., is: 想起, to remember = 想起, where 想 = to think and 起 = up (resultative complement)"
+    },
+    {
+      "lego_id": "S0006L02",
+      "lego_type": "BASE",
+      "target_chunk": "一个词",
+      "known_chunk": "a word",
+      "seed_context": "I'm trying to remember a word.",
+      "introduction_text": "The Mandarin for a word, as in I'm trying to remember a word., is: 一个词, a word = 一个词, where 一 = one, 个 = (measure word), and 词 = word"
+    },
+    {
+      "lego_id": "S0007L01",
+      "lego_type": "BASE",
+      "target_chunk": "今天",
+      "known_chunk": "today",
+      "seed_context": "I want to try as hard as I can today.",
+      "introduction_text": "The Mandarin for today, as in I want to try as hard as I can today., is: 今天"
+    },
+    {
+      "lego_id": "S0008L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "我要试着",
+      "known_chunk": "I'm going to try",
+      "seed_context": "I'm going to try to explain what I mean.",
+      "introduction_text": "The Mandarin for I'm going to try, as in I'm going to try to explain what I mean., is: 我要试着, I'm going to try = 我要试着, where 我要 = I'm going to and 试着 = to try"
+    },
+    {
+      "lego_id": "S0008L02",
+      "lego_type": "BASE",
+      "target_chunk": "解释",
+      "known_chunk": "to explain",
+      "seed_context": "I'm going to try to explain what I mean.",
+      "introduction_text": "The Mandarin for to explain, as in I'm going to try to explain what I mean., is: 解释"
+    },
+    {
+      "lego_id": "S0008L03",
+      "lego_type": "BASE",
+      "target_chunk": "我的意思",
+      "known_chunk": "what I mean",
+      "seed_context": "I'm going to try to explain what I mean.",
+      "introduction_text": "The Mandarin for what I mean, as in I'm going to try to explain what I mean., is: 我的意思, what I mean = 我的意思, where 我的 = my and 意思 = meaning"
+    },
+    {
+      "lego_id": "S0009L01",
+      "lego_type": "BASE",
+      "target_chunk": "我会说",
+      "known_chunk": "I speak",
+      "seed_context": "I speak a little Chinese now.",
+      "introduction_text": "The Mandarin for I speak, as in I speak a little Chinese now., is: 我会说, I speak = 我会说, where 我 = I, 会 = can/able to, and 说 = speak"
+    },
+    {
+      "lego_id": "S0009L02",
+      "lego_type": "BASE",
+      "target_chunk": "一点儿",
+      "known_chunk": "a little",
+      "seed_context": "I speak a little Chinese now.",
+      "introduction_text": "The Mandarin for a little, as in I speak a little Chinese now., is: 一点儿"
+    },
+    {
+      "lego_id": "S0010L01",
+      "lego_type": "BASE",
+      "target_chunk": "我不确定",
+      "known_chunk": "I'm not sure",
+      "seed_context": "I'm not sure if I can remember the whole sentence.",
+      "introduction_text": "The Mandarin for I'm not sure, as in I'm not sure if I can remember the whole sentence., is: 我不确定, I'm not sure = 我不确定, where 我 = I, 不 = not, and 确定 = sure"
+    },
+    {
+      "lego_id": "S0010L02",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "能不能",
+      "known_chunk": "if I can",
+      "seed_context": "I'm not sure if I can remember the whole sentence.",
+      "introduction_text": "The Mandarin for if I can, as in I'm not sure if I can remember the whole sentence., is: 能不能, if I can = 能不能 (affirmative-negative question form for 'can')"
+    },
+    {
+      "lego_id": "S0010L03",
+      "lego_type": "BASE",
+      "target_chunk": "记得",
+      "known_chunk": "to remember",
+      "seed_context": "I'm not sure if I can remember the whole sentence.",
+      "introduction_text": "The Mandarin for to remember, as in I'm not sure if I can remember the whole sentence., is: 记得"
+    },
+    {
+      "lego_id": "S0010L04",
+      "lego_type": "BASE",
+      "target_chunk": "整个句子",
+      "known_chunk": "the whole sentence",
+      "seed_context": "I'm not sure if I can remember the whole sentence.",
+      "introduction_text": "The Mandarin for the whole sentence, as in I'm not sure if I can remember the whole sentence., is: 整个句子, the whole sentence = 整个句子, where 整个 = whole and 句子 = sentence"
+    },
+    {
+      "lego_id": "S0011L01",
+      "lego_type": "BASE",
+      "target_chunk": "我想",
+      "known_chunk": "I'd like",
+      "seed_context": "I'd like to be able to speak after you finish.",
+      "introduction_text": "The Mandarin for I'd like, as in I'd like to be able to speak after you finish., is: 我想"
+    },
+    {
+      "lego_id": "S0011L02",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "在你说完之后",
+      "known_chunk": "after you finish",
+      "seed_context": "I'd like to be able to speak after you finish.",
+      "introduction_text": "The Mandarin for after you finish, as in I'd like to be able to speak after you finish., is: 在你说完之后, after you finish = 在你说完之后, where 在 = at, 你 = you, 说完 = finish speaking, and 之后 = after"
+    },
+    {
+      "lego_id": "S0011L03",
+      "lego_type": "BASE",
+      "target_chunk": "能说",
+      "known_chunk": "to be able to speak",
+      "seed_context": "I'd like to be able to speak after you finish.",
+      "introduction_text": "The Mandarin for to be able to speak, as in I'd like to be able to speak after you finish., is: 能说, to be able to speak = 能说, where 能 = can/able and 说 = speak"
+    },
+    {
+      "feeder_id": "S0011F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "说完",
+      "known_chunk": "to finish speaking",
+      "parent_lego_id": "S0011L02",
+      "seed_context": "I'd like to be able to speak after you finish.",
+      "introduction_text": "The Mandarin for to finish speaking, as in I'd like to be able to speak after you finish., is: 说完"
+    },
+    {
+      "lego_id": "S0012L01",
+      "lego_type": "BASE",
+      "target_chunk": "我不想",
+      "known_chunk": "I wouldn't like",
+      "seed_context": "I wouldn't like to guess what's going to happen tomorrow.",
+      "introduction_text": "The Mandarin for I wouldn't like, as in I wouldn't like to guess what's going to happen tomorrow., is: 我不想, I wouldn't like = 我不想, where 我 = I, 不 = not, and 想 = want"
+    },
+    {
+      "lego_id": "S0012L02",
+      "lego_type": "BASE",
+      "target_chunk": "猜",
+      "known_chunk": "to guess",
+      "seed_context": "I wouldn't like to guess what's going to happen tomorrow.",
+      "introduction_text": "The Mandarin for to guess, as in I wouldn't like to guess what's going to happen tomorrow., is: 猜"
+    },
+    {
+      "lego_id": "S0012L03",
+      "lego_type": "BASE",
+      "target_chunk": "明天",
+      "known_chunk": "tomorrow",
+      "seed_context": "I wouldn't like to guess what's going to happen tomorrow.",
+      "introduction_text": "The Mandarin for tomorrow, as in I wouldn't like to guess what's going to happen tomorrow., is: 明天"
+    },
+    {
+      "lego_id": "S0012L04",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "会发生什么",
+      "known_chunk": "what's going to happen",
+      "seed_context": "I wouldn't like to guess what's going to happen tomorrow.",
+      "introduction_text": "The Mandarin for what's going to happen, as in I wouldn't like to guess what's going to happen tomorrow., is: 会发生什么, what's going to happen = 会发生什么, where 会 = will, 发生 = happen, and 什么 = what"
+    },
+    {
+      "feeder_id": "S0012F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "发生",
+      "known_chunk": "to happen",
+      "parent_lego_id": "S0012L04",
+      "seed_context": "I wouldn't like to guess what's going to happen tomorrow.",
+      "introduction_text": "The Mandarin for to happen, as in I wouldn't like to guess what's going to happen tomorrow., is: 发生"
+    },
+    {
+      "lego_id": "S0013L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "你说得",
+      "known_chunk": "You speak",
+      "seed_context": "You speak Chinese very well.",
+      "introduction_text": "The Mandarin for You speak, as in You speak Chinese very well., is: 你说得, You speak = 你说得, where 你 = you, 说 = speak, and 得 = (degree complement marker)"
+    },
+    {
+      "lego_id": "S0013L02",
+      "lego_type": "BASE",
+      "target_chunk": "很好",
+      "known_chunk": "very well",
+      "seed_context": "You speak Chinese very well.",
+      "introduction_text": "The Mandarin for very well, as in You speak Chinese very well., is: 很好"
+    },
+    {
+      "lego_id": "S0014L01",
+      "lego_type": "BASE",
+      "target_chunk": "整天",
+      "known_chunk": "all day",
+      "seed_context": "Do you speak Chinese all day?",
+      "introduction_text": "The Mandarin for all day, as in Do you speak Chinese all day?, is: 整天"
+    },
+    {
+      "lego_id": "S0014L02",
+      "lego_type": "BASE",
+      "target_chunk": "吗",
+      "known_chunk": "(question particle)",
+      "seed_context": "Do you speak Chinese all day?",
+      "introduction_text": "The Mandarin for (question particle), as in Do you speak Chinese all day?, is: 吗"
+    },
+    {
+      "lego_id": "S0015L01",
+      "lego_type": "BASE",
+      "target_chunk": "而且",
+      "known_chunk": "And",
+      "seed_context": "And I want you to speak Chinese with me tomorrow.",
+      "introduction_text": "The Mandarin for And, as in And I want you to speak Chinese with me tomorrow., is: 而且"
+    },
+    {
+      "lego_id": "S0015L02",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "我想让你",
+      "known_chunk": "I want you to",
+      "seed_context": "And I want you to speak Chinese with me tomorrow.",
+      "introduction_text": "The Mandarin for I want you to, as in And I want you to speak Chinese with me tomorrow., is: 我想让你, I want you to = 我想让你, where 我想 = I want, 让 = to let/make, and 你 = you"
+    },
+    {
+      "lego_id": "S0015L03",
+      "lego_type": "BASE",
+      "target_chunk": "跟我",
+      "known_chunk": "with me",
+      "seed_context": "And I want you to speak Chinese with me tomorrow.",
+      "introduction_text": "The Mandarin for with me, as in And I want you to speak Chinese with me tomorrow., is: 跟我"
+    },
+    {
+      "lego_id": "S0016L01",
+      "lego_type": "BASE",
+      "target_chunk": "他想",
+      "known_chunk": "He wants",
+      "seed_context": "He wants to come back with everyone else later on.",
+      "introduction_text": "The Mandarin for He wants, as in He wants to come back with everyone else later on., is: 他想"
+    },
+    {
+      "lego_id": "S0016L02",
+      "lego_type": "BASE",
+      "target_chunk": "晚点儿",
+      "known_chunk": "later on",
+      "seed_context": "He wants to come back with everyone else later on.",
+      "introduction_text": "The Mandarin for later on, as in He wants to come back with everyone else later on., is: 晚点儿"
+    },
+    {
+      "lego_id": "S0016L03",
+      "lego_type": "BASE",
+      "target_chunk": "跟其他人一起",
+      "known_chunk": "with everyone else",
+      "seed_context": "He wants to come back with everyone else later on.",
+      "introduction_text": "The Mandarin for with everyone else, as in He wants to come back with everyone else later on., is: 跟其他人一起, with everyone else = 跟其他人一起, where 跟 = with, 其他人 = other people, and 一起 = together"
+    },
+    {
+      "lego_id": "S0016L04",
+      "lego_type": "BASE",
+      "target_chunk": "回来",
+      "known_chunk": "to come back",
+      "seed_context": "He wants to come back with everyone else later on.",
+      "introduction_text": "The Mandarin for to come back, as in He wants to come back with everyone else later on., is: 回来"
+    },
+    {
+      "lego_id": "S0017L01",
+      "lego_type": "BASE",
+      "target_chunk": "她想",
+      "known_chunk": "She wants",
+      "seed_context": "She wants to find out what the answer is.",
+      "introduction_text": "The Mandarin for She wants, as in She wants to find out what the answer is., is: 她想"
+    },
+    {
+      "lego_id": "S0017L02",
+      "lego_type": "BASE",
+      "target_chunk": "知道",
+      "known_chunk": "to find out",
+      "seed_context": "She wants to find out what the answer is.",
+      "introduction_text": "The Mandarin for to find out, as in She wants to find out what the answer is., is: 知道"
+    },
+    {
+      "lego_id": "S0017L03",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "答案是什么",
+      "known_chunk": "what the answer is",
+      "seed_context": "She wants to find out what the answer is.",
+      "introduction_text": "The Mandarin for what the answer is, as in She wants to find out what the answer is., is: 答案是什么, what the answer is = 答案是什么, where 答案 = answer, 是 = is, and 什么 = what"
+    },
+    {
+      "feeder_id": "S0017F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "答案",
+      "known_chunk": "answer",
+      "parent_lego_id": "S0017L03",
+      "seed_context": "She wants to find out what the answer is.",
+      "introduction_text": "The Mandarin for answer, as in She wants to find out what the answer is., is: 答案"
+    },
+    {
+      "lego_id": "S0018L01",
+      "lego_type": "BASE",
+      "target_chunk": "我们想",
+      "known_chunk": "We want",
+      "seed_context": "We want to meet at six o'clock this evening.",
+      "introduction_text": "The Mandarin for We want, as in We want to meet at six o'clock this evening., is: 我们想"
+    },
+    {
+      "lego_id": "S0018L02",
+      "lego_type": "BASE",
+      "target_chunk": "今晚",
+      "known_chunk": "this evening",
+      "seed_context": "We want to meet at six o'clock this evening.",
+      "introduction_text": "The Mandarin for this evening, as in We want to meet at six o'clock this evening., is: 今晚"
+    },
+    {
+      "lego_id": "S0018L03",
+      "lego_type": "BASE",
+      "target_chunk": "六点",
+      "known_chunk": "at six o'clock",
+      "seed_context": "We want to meet at six o'clock this evening.",
+      "introduction_text": "The Mandarin for at six o'clock, as in We want to meet at six o'clock this evening., is: 六点, at six o'clock = 六点, where 六 = six and 点 = o'clock"
+    },
+    {
+      "lego_id": "S0018L04",
+      "lego_type": "BASE",
+      "target_chunk": "见面",
+      "known_chunk": "to meet",
+      "seed_context": "We want to meet at six o'clock this evening.",
+      "introduction_text": "The Mandarin for to meet, as in We want to meet at six o'clock this evening., is: 见面"
+    },
+    {
+      "lego_id": "S0019L01",
+      "lego_type": "BASE",
+      "target_chunk": "但是",
+      "known_chunk": "But",
+      "seed_context": "But I don't want to stop talking.",
+      "introduction_text": "The Mandarin for But, as in But I don't want to stop talking., is: 但是"
+    },
+    {
+      "lego_id": "S0019L02",
+      "lego_type": "BASE",
+      "target_chunk": "停止说",
+      "known_chunk": "to stop talking",
+      "seed_context": "But I don't want to stop talking.",
+      "introduction_text": "The Mandarin for to stop talking, as in But I don't want to stop talking., is: 停止说, to stop talking = 停止说, where 停止 = to stop and 说 = talking"
+    },
+    {
+      "lego_id": "S0020L01",
+      "lego_type": "BASE",
+      "target_chunk": "你想",
+      "known_chunk": "You want",
+      "seed_context": "You want to learn their name quickly.",
+      "introduction_text": "The Mandarin for You want, as in You want to learn their name quickly., is: 你想"
+    },
+    {
+      "lego_id": "S0020L02",
+      "lego_type": "BASE",
+      "target_chunk": "快点儿",
+      "known_chunk": "quickly",
+      "seed_context": "You want to learn their name quickly.",
+      "introduction_text": "The Mandarin for quickly, as in You want to learn their name quickly., is: 快点儿"
+    },
+    {
+      "lego_id": "S0020L03",
+      "lego_type": "BASE",
+      "target_chunk": "学会",
+      "known_chunk": "to learn",
+      "seed_context": "You want to learn their name quickly.",
+      "introduction_text": "The Mandarin for to learn, as in You want to learn their name quickly., is: 学会, to learn = 学会, where 学 = learn and 会 = (resultative complement: successfully)"
+    },
+    {
+      "lego_id": "S0020L04",
+      "lego_type": "BASE",
+      "target_chunk": "他们的名字",
+      "known_chunk": "their name",
+      "seed_context": "You want to learn their name quickly.",
+      "introduction_text": "The Mandarin for their name, as in You want to learn their name quickly., is: 他们的名字, their name = 他们的名字, where 他们的 = their and 名字 = name"
+    },
+    {
+      "lego_id": "S0021L01",
+      "lego_type": "BASE",
+      "target_chunk": "为什么",
+      "known_chunk": "Why",
+      "seed_context": "Why are you learning their name?",
+      "introduction_text": "The Mandarin for Why, as in Why are you learning their name?, is: 为什么"
+    },
+    {
+      "lego_id": "S0021L02",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "你在学",
+      "known_chunk": "you are learning",
+      "seed_context": "Why are you learning their name?",
+      "introduction_text": "The Mandarin for you are learning, as in Why are you learning their name?, is: 你在学, you are learning = 你在学, where 你 = you, 在 = (progressive marker), and 学 = learn"
+    },
+    {
+      "feeder_id": "S0021F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "在",
+      "known_chunk": "(progressive marker)",
+      "parent_lego_id": "S0021L02",
+      "seed_context": "Why are you learning their name?",
+      "introduction_text": "The Mandarin for (progressive marker), as in Why are you learning their name?, is: 在"
+    },
+    {
+      "lego_id": "S0022L01",
+      "lego_type": "BASE",
+      "target_chunk": "因为",
+      "known_chunk": "Because",
+      "seed_context": "Because I want to meet people who speak Chinese.",
+      "introduction_text": "The Mandarin for Because, as in Because I want to meet people who speak Chinese., is: 因为"
+    },
+    {
+      "lego_id": "S0022L02",
+      "lego_type": "BASE",
+      "target_chunk": "认识",
+      "known_chunk": "to meet",
+      "seed_context": "Because I want to meet people who speak Chinese.",
+      "introduction_text": "The Mandarin for to meet, as in Because I want to meet people who speak Chinese., is: 认识"
+    },
+    {
+      "lego_id": "S0022L03",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "说中文的人",
+      "known_chunk": "people who speak Chinese",
+      "seed_context": "Because I want to meet people who speak Chinese.",
+      "introduction_text": "The Mandarin for people who speak Chinese, as in Because I want to meet people who speak Chinese., is: 说中文的人, people who speak Chinese = 说中文的人, where 说中文 = speak Chinese, 的 = (relative clause marker), and 人 = people"
+    },
+    {
+      "feeder_id": "S0022F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "人",
+      "known_chunk": "people",
+      "parent_lego_id": "S0022L03",
+      "seed_context": "Because I want to meet people who speak Chinese.",
+      "introduction_text": "The Mandarin for people, as in Because I want to meet people who speak Chinese., is: 人"
+    },
+    {
+      "lego_id": "S0023L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "我快要",
+      "known_chunk": "I'm going to soon",
+      "seed_context": "I'm going to start talking more soon.",
+      "introduction_text": "The Mandarin for I'm going to soon, as in I'm going to start talking more soon., is: 我快要, I'm going to soon = 我快要, where 我 = I, 快 = soon, and 要 = going to"
+    },
+    {
+      "lego_id": "S0023L02",
+      "lego_type": "BASE",
+      "target_chunk": "开始",
+      "known_chunk": "to start",
+      "seed_context": "I'm going to start talking more soon.",
+      "introduction_text": "The Mandarin for to start, as in I'm going to start talking more soon., is: 开始"
+    },
+    {
+      "lego_id": "S0023L03",
+      "lego_type": "BASE",
+      "target_chunk": "多说",
+      "known_chunk": "talking more",
+      "seed_context": "I'm going to start talking more soon.",
+      "introduction_text": "The Mandarin for talking more, as in I'm going to start talking more soon., is: 多说, talking more = 多说, where 多 = more and 说 = talk"
+    },
+    {
+      "lego_id": "S0023L04",
+      "lego_type": "BASE",
+      "target_chunk": "了",
+      "known_chunk": "(change of state particle)",
+      "seed_context": "I'm going to start talking more soon.",
+      "introduction_text": "The Mandarin for (change of state particle), as in I'm going to start talking more soon., is: 了"
+    },
+    {
+      "lego_id": "S0024L01",
+      "lego_type": "BASE",
+      "target_chunk": "我不会",
+      "known_chunk": "I'm not going to be able",
+      "seed_context": "I'm not going to be able to remember easily.",
+      "introduction_text": "The Mandarin for I'm not going to be able, as in I'm not going to be able to remember easily., is: 我不会, I'm not going to be able = 我不会, where 我 = I, 不 = not, and 会 = will/can"
+    },
+    {
+      "lego_id": "S0024L02",
+      "lego_type": "BASE",
+      "target_chunk": "容易地",
+      "known_chunk": "easily",
+      "seed_context": "I'm not going to be able to remember easily.",
+      "introduction_text": "The Mandarin for easily, as in I'm not going to be able to remember easily., is: 容易地"
+    },
+    {
+      "lego_id": "S0024L03",
+      "lego_type": "BASE",
+      "target_chunk": "记住",
+      "known_chunk": "to remember",
+      "seed_context": "I'm not going to be able to remember easily.",
+      "introduction_text": "The Mandarin for to remember, as in I'm not going to be able to remember easily., is: 记住, to remember = 记住, where 记 = remember and 住 = (resultative complement: securely)"
+    },
+    {
+      "lego_id": "S0025L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "在我得走之前",
+      "known_chunk": "before I have to go",
+      "seed_context": "Are you going to help me before I have to go?",
+      "introduction_text": "The Mandarin for before I have to go, as in Are you going to help me before I have to go?, is: 在我得走之前, before I have to go = 在我得走之前, where 在 = at, 我 = I, 得 = have to, 走 = go, and 之前 = before"
+    },
+    {
+      "lego_id": "S0025L02",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "你会帮我",
+      "known_chunk": "Are you going to help me",
+      "seed_context": "Are you going to help me before I have to go?",
+      "introduction_text": "The Mandarin for Are you going to help me, as in Are you going to help me before I have to go?, is: 你会帮我, Are you going to help me = 你会帮我, where 你 = you, 会 = will, 帮 = help, and 我 = me"
+    },
+    {
+      "feeder_id": "S0025F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "帮",
+      "known_chunk": "to help",
+      "parent_lego_id": "S0025L01",
+      "seed_context": "Are you going to help me before I have to go?",
+      "introduction_text": "The Mandarin for to help, as in Are you going to help me before I have to go?, is: 帮"
+    },
+    {
+      "feeder_id": "S0025F02",
+      "lego_type": "FEEDER",
+      "target_chunk": "得",
+      "known_chunk": "to have to",
+      "parent_lego_id": "S0025L01",
+      "seed_context": "Are you going to help me before I have to go?",
+      "introduction_text": "The Mandarin for to have to, as in Are you going to help me before I have to go?, is: 得"
+    },
+    {
+      "lego_id": "S0026L01",
+      "lego_type": "BASE",
+      "target_chunk": "我喜欢",
+      "known_chunk": "I like",
+      "seed_context": "I like feeling as if I'm nearly ready to go.",
+      "introduction_text": "The Mandarin for I like, as in I like feeling as if I'm nearly ready to go., is: 我喜欢"
+    },
+    {
+      "lego_id": "S0026L02",
+      "lego_type": "BASE",
+      "target_chunk": "感觉",
+      "known_chunk": "feeling",
+      "seed_context": "I like feeling as if I'm nearly ready to go.",
+      "introduction_text": "The Mandarin for feeling, as in I like feeling as if I'm nearly ready to go., is: 感觉"
+    },
+    {
+      "lego_id": "S0026L03",
+      "lego_type": "BASE",
+      "target_chunk": "好像",
+      "known_chunk": "as if",
+      "seed_context": "I like feeling as if I'm nearly ready to go.",
+      "introduction_text": "The Mandarin for as if, as in I like feeling as if I'm nearly ready to go., is: 好像"
+    },
+    {
+      "lego_id": "S0026L04",
+      "lego_type": "BASE",
+      "target_chunk": "快",
+      "known_chunk": "nearly",
+      "seed_context": "I like feeling as if I'm nearly ready to go.",
+      "introduction_text": "The Mandarin for nearly, as in I like feeling as if I'm nearly ready to go., is: 快"
+    },
+    {
+      "lego_id": "S0026L05",
+      "lego_type": "BASE",
+      "target_chunk": "准备好",
+      "known_chunk": "ready",
+      "seed_context": "I like feeling as if I'm nearly ready to go.",
+      "introduction_text": "The Mandarin for ready, as in I like feeling as if I'm nearly ready to go., is: 准备好, ready = 准备好, where 准备 = prepare and 好 = (resultative complement: completed)"
+    },
+    {
+      "lego_id": "S0026L06",
+      "lego_type": "BASE",
+      "target_chunk": "走了",
+      "known_chunk": "to go",
+      "seed_context": "I like feeling as if I'm nearly ready to go.",
+      "introduction_text": "The Mandarin for to go, as in I like feeling as if I'm nearly ready to go., is: 走了"
+    },
+    {
+      "lego_id": "S0027L01",
+      "lego_type": "BASE",
+      "target_chunk": "我不喜欢",
+      "known_chunk": "I don't like",
+      "seed_context": "I don't like taking too much time to answer.",
+      "introduction_text": "The Mandarin for I don't like, as in I don't like taking too much time to answer., is: 我不喜欢, I don't like = 我不喜欢, where 我 = I, 不 = not, and 喜欢 = like"
+    },
+    {
+      "lego_id": "S0027L02",
+      "lego_type": "BASE",
+      "target_chunk": "花",
+      "known_chunk": "taking",
+      "seed_context": "I don't like taking too much time to answer.",
+      "introduction_text": "The Mandarin for taking, as in I don't like taking too much time to answer., is: 花"
+    },
+    {
+      "lego_id": "S0027L03",
+      "lego_type": "BASE",
+      "target_chunk": "太多时间",
+      "known_chunk": "too much time",
+      "seed_context": "I don't like taking too much time to answer.",
+      "introduction_text": "The Mandarin for too much time, as in I don't like taking too much time to answer., is: 太多时间, too much time = 太多时间, where 太多 = too much and 时间 = time"
+    },
+    {
+      "lego_id": "S0027L04",
+      "lego_type": "BASE",
+      "target_chunk": "回答",
+      "known_chunk": "to answer",
+      "seed_context": "I don't like taking too much time to answer.",
+      "introduction_text": "The Mandarin for to answer, as in I don't like taking too much time to answer., is: 回答"
+    },
+    {
+      "lego_id": "S0028L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "一有机会就",
+      "known_chunk": "as soon as you can",
+      "seed_context": "It's useful to start talking as soon as you can.",
+      "introduction_text": "The Mandarin for as soon as you can, as in It's useful to start talking as soon as you can., is: 一有机会就, as soon as you can = 一有机会就, where 一 = as soon as, 有机会 = have opportunity, and 就 = then"
+    },
+    {
+      "lego_id": "S0028L02",
+      "lego_type": "BASE",
+      "target_chunk": "开始说",
+      "known_chunk": "to start talking",
+      "seed_context": "It's useful to start talking as soon as you can.",
+      "introduction_text": "The Mandarin for to start talking, as in It's useful to start talking as soon as you can., is: 开始说, to start talking = 开始说, where 开始 = start and 说 = talk"
+    },
+    {
+      "lego_id": "S0028L03",
+      "lego_type": "BASE",
+      "target_chunk": "是有用的",
+      "known_chunk": "It's useful",
+      "seed_context": "It's useful to start talking as soon as you can.",
+      "introduction_text": "The Mandarin for It's useful, as in It's useful to start talking as soon as you can., is: 是有用的, It's useful = 是有用的, where 是 = is, 有用 = useful, and 的 = (nominalizer)"
+    },
+    {
+      "feeder_id": "S0028F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "机会",
+      "known_chunk": "opportunity",
+      "parent_lego_id": "S0028L01",
+      "seed_context": "It's useful to start talking as soon as you can.",
+      "introduction_text": "The Mandarin for opportunity, as in It's useful to start talking as soon as you can., is: 机会"
+    },
+    {
+      "lego_id": "S0029L01",
+      "lego_type": "BASE",
+      "target_chunk": "我期待",
+      "known_chunk": "I'm looking forward to",
+      "seed_context": "I'm looking forward to speaking better as soon as I can.",
+      "introduction_text": "The Mandarin for I'm looking forward to, as in I'm looking forward to speaking better as soon as I can., is: 我期待"
+    },
+    {
+      "lego_id": "S0029L02",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "说得更好",
+      "known_chunk": "speaking better",
+      "seed_context": "I'm looking forward to speaking better as soon as I can.",
+      "introduction_text": "The Mandarin for speaking better, as in I'm looking forward to speaking better as soon as I can., is: 说得更好, speaking better = 说得更好, where 说 = speak, 得 = (degree complement marker), and 更好 = better"
+    },
+    {
+      "lego_id": "S0030L01",
+      "lego_type": "BASE",
+      "target_chunk": "我想",
+      "known_chunk": "I wanted",
+      "seed_context": "I wanted to ask you something yesterday.",
+      "introduction_text": "The Mandarin for I wanted, as in I wanted to ask you something yesterday., is: 我想"
+    },
+    {
+      "lego_id": "S0030L02",
+      "lego_type": "BASE",
+      "target_chunk": "昨天",
+      "known_chunk": "yesterday",
+      "seed_context": "I wanted to ask you something yesterday.",
+      "introduction_text": "The Mandarin for yesterday, as in I wanted to ask you something yesterday., is: 昨天"
+    },
+    {
+      "lego_id": "S0030L03",
+      "lego_type": "BASE",
+      "target_chunk": "问你",
+      "known_chunk": "to ask you",
+      "seed_context": "I wanted to ask you something yesterday.",
+      "introduction_text": "The Mandarin for to ask you, as in I wanted to ask you something yesterday., is: 问你, to ask you = 问你, where 问 = ask and 你 = you"
+    },
+    {
+      "lego_id": "S0030L04",
+      "lego_type": "BASE",
+      "target_chunk": "一些事",
+      "known_chunk": "something",
+      "seed_context": "I wanted to ask you something yesterday.",
+      "introduction_text": "The Mandarin for something, as in I wanted to ask you something yesterday., is: 一些事, something = 一些事, where 一些 = some and 事 = thing"
+    }
+  ]
+}

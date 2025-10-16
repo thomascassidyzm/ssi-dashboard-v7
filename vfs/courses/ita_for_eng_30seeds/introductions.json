@@ -1,0 +1,878 @@
+{
+  "course_metadata": {
+    "lang_pair": "ita_for_eng",
+    "target_language": "Italian",
+    "known_language": "English",
+    "phase": 6,
+    "seeds_count": 30,
+    "generation_date": "2025-10-16T22:11:15.862Z"
+  },
+  "introductions": [
+    {
+      "lego_id": "S0001L01",
+      "lego_type": "BASE",
+      "target_chunk": "Voglio",
+      "known_chunk": "I want",
+      "seed_context": "I want to speak Italian with you now.",
+      "introduction_text": "The Italian for I want, as in I want to speak Italian with you now., is: Voglio"
+    },
+    {
+      "lego_id": "S0001L02",
+      "lego_type": "BASE",
+      "target_chunk": "parlare",
+      "known_chunk": "to speak",
+      "seed_context": "I want to speak Italian with you now.",
+      "introduction_text": "The Italian for to speak, as in I want to speak Italian with you now., is: parlare"
+    },
+    {
+      "lego_id": "S0001L03",
+      "lego_type": "BASE",
+      "target_chunk": "italiano",
+      "known_chunk": "Italian",
+      "seed_context": "I want to speak Italian with you now.",
+      "introduction_text": "The Italian for Italian, as in I want to speak Italian with you now., is: italiano"
+    },
+    {
+      "lego_id": "S0001L04",
+      "lego_type": "BASE",
+      "target_chunk": "con te",
+      "known_chunk": "with you",
+      "seed_context": "I want to speak Italian with you now.",
+      "introduction_text": "The Italian for with you, as in I want to speak Italian with you now., is: con te"
+    },
+    {
+      "lego_id": "S0001L05",
+      "lego_type": "BASE",
+      "target_chunk": "adesso",
+      "known_chunk": "now",
+      "seed_context": "I want to speak Italian with you now.",
+      "introduction_text": "The Italian for now, as in I want to speak Italian with you now., is: adesso"
+    },
+    {
+      "lego_id": "S0002L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "Sto tentando di",
+      "known_chunk": "I'm trying to",
+      "seed_context": "I'm trying to learn.",
+      "introduction_text": "The Italian for I'm trying to, as in I'm trying to learn., is: Sto tentando di, I'm trying to = Sto tentando di, where Sto = I'm, tentando represents trying, and di = to"
+    },
+    {
+      "lego_id": "S0002L02",
+      "lego_type": "BASE",
+      "target_chunk": "imparare",
+      "known_chunk": "to learn",
+      "seed_context": "I'm trying to learn.",
+      "introduction_text": "The Italian for to learn, as in I'm trying to learn., is: imparare"
+    },
+    {
+      "feeder_id": "S0002F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "Sto",
+      "known_chunk": "I'm",
+      "parent_lego_id": "S0002L01",
+      "seed_context": "I'm trying to learn.",
+      "introduction_text": "The Italian for I'm, as in I'm trying to learn., is: Sto"
+    },
+    {
+      "feeder_id": "S0002F02",
+      "lego_type": "FEEDER",
+      "target_chunk": "tentare",
+      "known_chunk": "to try",
+      "parent_lego_id": "S0002L01",
+      "seed_context": "I'm trying to learn.",
+      "introduction_text": "The Italian for to try, as in I'm trying to learn., is: tentare"
+    },
+    {
+      "lego_id": "S0003L01",
+      "lego_type": "BASE",
+      "target_chunk": "Come",
+      "known_chunk": "How",
+      "seed_context": "How to speak as much as possible.",
+      "introduction_text": "The Italian for How, as in How to speak as much as possible., is: Come"
+    },
+    {
+      "lego_id": "S0003L02",
+      "lego_type": "BASE",
+      "target_chunk": "il più possibile",
+      "known_chunk": "as much as possible",
+      "seed_context": "How to speak as much as possible.",
+      "introduction_text": "The Italian for as much as possible, as in How to speak as much as possible., is: il più possibile, as much as possible = il più possibile (idiomatic superlative phrase)"
+    },
+    {
+      "lego_id": "S0004L01",
+      "lego_type": "BASE",
+      "target_chunk": "dire",
+      "known_chunk": "to say",
+      "seed_context": "How to say something in Italian.",
+      "introduction_text": "The Italian for to say, as in How to say something in Italian., is: dire"
+    },
+    {
+      "lego_id": "S0004L02",
+      "lego_type": "BASE",
+      "target_chunk": "qualcosa",
+      "known_chunk": "something",
+      "seed_context": "How to say something in Italian.",
+      "introduction_text": "The Italian for something, as in How to say something in Italian., is: qualcosa"
+    },
+    {
+      "lego_id": "S0004L03",
+      "lego_type": "BASE",
+      "target_chunk": "in italiano",
+      "known_chunk": "in Italian",
+      "seed_context": "How to say something in Italian.",
+      "introduction_text": "The Italian for in Italian, as in How to say something in Italian., is: in italiano"
+    },
+    {
+      "lego_id": "S0005L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "Vado a praticare",
+      "known_chunk": "I'm going to practice",
+      "seed_context": "I'm going to practice speaking with someone else.",
+      "introduction_text": "The Italian for I'm going to practice, as in I'm going to practice speaking with someone else., is: Vado a praticare, I'm going to practice = Vado a praticare, where Vado = I'm going and praticare = to practice"
+    },
+    {
+      "lego_id": "S0005L02",
+      "lego_type": "BASE",
+      "target_chunk": "con qualcun altro",
+      "known_chunk": "with someone else",
+      "seed_context": "I'm going to practice speaking with someone else.",
+      "introduction_text": "The Italian for with someone else, as in I'm going to practice speaking with someone else., is: con qualcun altro, with someone else = con qualcun altro, where con = with and qualcun altro = someone else"
+    },
+    {
+      "feeder_id": "S0005F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "Vado",
+      "known_chunk": "I'm going",
+      "parent_lego_id": "S0005L01",
+      "seed_context": "I'm going to practice speaking with someone else.",
+      "introduction_text": "The Italian for I'm going, as in I'm going to practice speaking with someone else., is: Vado"
+    },
+    {
+      "feeder_id": "S0005F02",
+      "lego_type": "FEEDER",
+      "target_chunk": "praticare",
+      "known_chunk": "to practice",
+      "parent_lego_id": "S0005L01",
+      "seed_context": "I'm going to practice speaking with someone else.",
+      "introduction_text": "The Italian for to practice, as in I'm going to practice speaking with someone else., is: praticare"
+    },
+    {
+      "lego_id": "S0006L01",
+      "lego_type": "BASE",
+      "target_chunk": "ricordare",
+      "known_chunk": "to remember",
+      "seed_context": "I'm trying to remember a word.",
+      "introduction_text": "The Italian for to remember, as in I'm trying to remember a word., is: ricordare"
+    },
+    {
+      "lego_id": "S0006L02",
+      "lego_type": "BASE",
+      "target_chunk": "una parola",
+      "known_chunk": "a word",
+      "seed_context": "I'm trying to remember a word.",
+      "introduction_text": "The Italian for a word, as in I'm trying to remember a word., is: una parola"
+    },
+    {
+      "lego_id": "S0007L02",
+      "lego_type": "BASE",
+      "target_chunk": "oggi",
+      "known_chunk": "today",
+      "seed_context": "I want to try as hard as I can today.",
+      "introduction_text": "The Italian for today, as in I want to try as hard as I can today., is: oggi"
+    },
+    {
+      "lego_id": "S0008L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "Vado a tentare di",
+      "known_chunk": "I'm going to try to",
+      "seed_context": "I'm going to try to explain what I mean.",
+      "introduction_text": "The Italian for I'm going to try to, as in I'm going to try to explain what I mean., is: Vado a tentare di, I'm going to try to = Vado a tentare di, where Vado = I'm going, tentare = to try, and di = to"
+    },
+    {
+      "lego_id": "S0008L02",
+      "lego_type": "BASE",
+      "target_chunk": "spiegare",
+      "known_chunk": "to explain",
+      "seed_context": "I'm going to try to explain what I mean.",
+      "introduction_text": "The Italian for to explain, as in I'm going to try to explain what I mean., is: spiegare"
+    },
+    {
+      "lego_id": "S0008L03",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "cosa voglio dire",
+      "known_chunk": "what I mean",
+      "seed_context": "I'm going to try to explain what I mean.",
+      "introduction_text": "The Italian for what I mean, as in I'm going to try to explain what I mean., is: cosa voglio dire, what I mean = cosa voglio dire, where cosa = what, voglio = I want, and dire = to say"
+    },
+    {
+      "lego_id": "S0009L01",
+      "lego_type": "BASE",
+      "target_chunk": "Parlo",
+      "known_chunk": "I speak",
+      "seed_context": "I speak a little Italian now.",
+      "introduction_text": "The Italian for I speak, as in I speak a little Italian now., is: Parlo"
+    },
+    {
+      "lego_id": "S0009L02",
+      "lego_type": "BASE",
+      "target_chunk": "un po' di",
+      "known_chunk": "a little",
+      "seed_context": "I speak a little Italian now.",
+      "introduction_text": "The Italian for a little, as in I speak a little Italian now., is: un po' di"
+    },
+    {
+      "lego_id": "S0010L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "Non sono sicuro",
+      "known_chunk": "I'm not sure",
+      "seed_context": "I'm not sure if I can remember the whole sentence.",
+      "introduction_text": "The Italian for I'm not sure, as in I'm not sure if I can remember the whole sentence., is: Non sono sicuro, I'm not sure = Non sono sicuro, where Non = not, sono = I am, and sicuro = sure"
+    },
+    {
+      "lego_id": "S0010L02",
+      "lego_type": "BASE",
+      "target_chunk": "se",
+      "known_chunk": "if",
+      "seed_context": "I'm not sure if I can remember the whole sentence.",
+      "introduction_text": "The Italian for if, as in I'm not sure if I can remember the whole sentence., is: se"
+    },
+    {
+      "lego_id": "S0010L03",
+      "lego_type": "BASE",
+      "target_chunk": "posso",
+      "known_chunk": "I can",
+      "seed_context": "I'm not sure if I can remember the whole sentence.",
+      "introduction_text": "The Italian for I can, as in I'm not sure if I can remember the whole sentence., is: posso"
+    },
+    {
+      "lego_id": "S0010L04",
+      "lego_type": "BASE",
+      "target_chunk": "tutta la frase",
+      "known_chunk": "the whole sentence",
+      "seed_context": "I'm not sure if I can remember the whole sentence.",
+      "introduction_text": "The Italian for the whole sentence, as in I'm not sure if I can remember the whole sentence., is: tutta la frase, the whole sentence = tutta la frase, where tutta = whole/all, la = the, and frase = sentence"
+    },
+    {
+      "lego_id": "S0011L01",
+      "lego_type": "BASE",
+      "target_chunk": "Mi piacerebbe",
+      "known_chunk": "I'd like",
+      "seed_context": "I'd like to be able to speak after you finish.",
+      "introduction_text": "The Italian for I'd like, as in I'd like to be able to speak after you finish., is: Mi piacerebbe"
+    },
+    {
+      "lego_id": "S0011L02",
+      "lego_type": "BASE",
+      "target_chunk": "poter",
+      "known_chunk": "to be able",
+      "seed_context": "I'd like to be able to speak after you finish.",
+      "introduction_text": "The Italian for to be able, as in I'd like to be able to speak after you finish., is: poter"
+    },
+    {
+      "lego_id": "S0011L03",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "dopo che finisci",
+      "known_chunk": "after you finish",
+      "seed_context": "I'd like to be able to speak after you finish.",
+      "introduction_text": "The Italian for after you finish, as in I'd like to be able to speak after you finish., is: dopo che finisci, after you finish = dopo che finisci, where dopo che = after and finisci = you finish"
+    },
+    {
+      "feeder_id": "S0011F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "finire",
+      "known_chunk": "to finish",
+      "parent_lego_id": "S0011L03",
+      "seed_context": "I'd like to be able to speak after you finish.",
+      "introduction_text": "The Italian for to finish, as in I'd like to be able to speak after you finish., is: finire"
+    },
+    {
+      "lego_id": "S0012L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "Non mi piacerebbe",
+      "known_chunk": "I wouldn't like",
+      "seed_context": "I wouldn't like to guess what's going to happen tomorrow.",
+      "introduction_text": "The Italian for I wouldn't like, as in I wouldn't like to guess what's going to happen tomorrow., is: Non mi piacerebbe, I wouldn't like = Non mi piacerebbe, where Non = not/wouldn't, mi = me, and piacerebbe = would like"
+    },
+    {
+      "lego_id": "S0012L02",
+      "lego_type": "BASE",
+      "target_chunk": "indovinare",
+      "known_chunk": "to guess",
+      "seed_context": "I wouldn't like to guess what's going to happen tomorrow.",
+      "introduction_text": "The Italian for to guess, as in I wouldn't like to guess what's going to happen tomorrow., is: indovinare"
+    },
+    {
+      "lego_id": "S0012L03",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "cosa succederà",
+      "known_chunk": "what's going to happen",
+      "seed_context": "I wouldn't like to guess what's going to happen tomorrow.",
+      "introduction_text": "The Italian for what's going to happen, as in I wouldn't like to guess what's going to happen tomorrow., is: cosa succederà, what's going to happen = cosa succederà, where cosa = what and succederà = will happen"
+    },
+    {
+      "lego_id": "S0012L04",
+      "lego_type": "BASE",
+      "target_chunk": "domani",
+      "known_chunk": "tomorrow",
+      "seed_context": "I wouldn't like to guess what's going to happen tomorrow.",
+      "introduction_text": "The Italian for tomorrow, as in I wouldn't like to guess what's going to happen tomorrow., is: domani"
+    },
+    {
+      "feeder_id": "S0012F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "succedere",
+      "known_chunk": "to happen",
+      "parent_lego_id": "S0012L01",
+      "seed_context": "I wouldn't like to guess what's going to happen tomorrow.",
+      "introduction_text": "The Italian for to happen, as in I wouldn't like to guess what's going to happen tomorrow., is: succedere"
+    },
+    {
+      "lego_id": "S0013L01",
+      "lego_type": "BASE",
+      "target_chunk": "Parli",
+      "known_chunk": "You speak",
+      "seed_context": "You speak Italian very well.",
+      "introduction_text": "The Italian for You speak, as in You speak Italian very well., is: Parli"
+    },
+    {
+      "lego_id": "S0013L02",
+      "lego_type": "BASE",
+      "target_chunk": "molto bene",
+      "known_chunk": "very well",
+      "seed_context": "You speak Italian very well.",
+      "introduction_text": "The Italian for very well, as in You speak Italian very well., is: molto bene"
+    },
+    {
+      "lego_id": "S0014L01",
+      "lego_type": "BASE",
+      "target_chunk": "tutto il giorno",
+      "known_chunk": "all day",
+      "seed_context": "Do you speak Italian all day?",
+      "introduction_text": "The Italian for all day, as in Do you speak Italian all day?, is: tutto il giorno, all day = tutto il giorno, where tutto = all, il = the, and giorno = day"
+    },
+    {
+      "lego_id": "S0015L01",
+      "lego_type": "BASE",
+      "target_chunk": "E",
+      "known_chunk": "And",
+      "seed_context": "And I want you to speak Italian with me tomorrow.",
+      "introduction_text": "The Italian for And, as in And I want you to speak Italian with me tomorrow., is: E"
+    },
+    {
+      "lego_id": "S0015L02",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "voglio che tu parli",
+      "known_chunk": "I want you to speak",
+      "seed_context": "And I want you to speak Italian with me tomorrow.",
+      "introduction_text": "The Italian for I want you to speak, as in And I want you to speak Italian with me tomorrow., is: voglio che tu parli, I want you to speak = voglio che tu parli, where voglio = I want, che = that (subjunctive trigger), tu = you, and parli = you speak"
+    },
+    {
+      "lego_id": "S0015L03",
+      "lego_type": "BASE",
+      "target_chunk": "con me",
+      "known_chunk": "with me",
+      "seed_context": "And I want you to speak Italian with me tomorrow.",
+      "introduction_text": "The Italian for with me, as in And I want you to speak Italian with me tomorrow., is: con me"
+    },
+    {
+      "lego_id": "S0016L01",
+      "lego_type": "BASE",
+      "target_chunk": "Lui vuole",
+      "known_chunk": "He wants",
+      "seed_context": "He wants to come back with everyone else later on.",
+      "introduction_text": "The Italian for He wants, as in He wants to come back with everyone else later on., is: Lui vuole"
+    },
+    {
+      "lego_id": "S0016L02",
+      "lego_type": "BASE",
+      "target_chunk": "ritornare",
+      "known_chunk": "to come back",
+      "seed_context": "He wants to come back with everyone else later on.",
+      "introduction_text": "The Italian for to come back, as in He wants to come back with everyone else later on., is: ritornare"
+    },
+    {
+      "lego_id": "S0016L03",
+      "lego_type": "BASE",
+      "target_chunk": "con tutti gli altri",
+      "known_chunk": "with everyone else",
+      "seed_context": "He wants to come back with everyone else later on.",
+      "introduction_text": "The Italian for with everyone else, as in He wants to come back with everyone else later on., is: con tutti gli altri, with everyone else = con tutti gli altri, where con = with, tutti = everyone, and gli altri = the others"
+    },
+    {
+      "lego_id": "S0016L04",
+      "lego_type": "BASE",
+      "target_chunk": "più tardi",
+      "known_chunk": "later on",
+      "seed_context": "He wants to come back with everyone else later on.",
+      "introduction_text": "The Italian for later on, as in He wants to come back with everyone else later on., is: più tardi"
+    },
+    {
+      "lego_id": "S0017L01",
+      "lego_type": "BASE",
+      "target_chunk": "Lei vuole",
+      "known_chunk": "She wants",
+      "seed_context": "She wants to find out what the answer is.",
+      "introduction_text": "The Italian for She wants, as in She wants to find out what the answer is., is: Lei vuole"
+    },
+    {
+      "lego_id": "S0017L02",
+      "lego_type": "BASE",
+      "target_chunk": "scoprire",
+      "known_chunk": "to find out",
+      "seed_context": "She wants to find out what the answer is.",
+      "introduction_text": "The Italian for to find out, as in She wants to find out what the answer is., is: scoprire"
+    },
+    {
+      "lego_id": "S0017L03",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "qual è la risposta",
+      "known_chunk": "what the answer is",
+      "seed_context": "She wants to find out what the answer is.",
+      "introduction_text": "The Italian for what the answer is, as in She wants to find out what the answer is., is: qual è la risposta, what the answer is = qual è la risposta, where qual = what/which, è = is, and la risposta = the answer"
+    },
+    {
+      "feeder_id": "S0017F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "la risposta",
+      "known_chunk": "the answer",
+      "parent_lego_id": "S0017L03",
+      "seed_context": "She wants to find out what the answer is.",
+      "introduction_text": "The Italian for the answer, as in She wants to find out what the answer is., is: la risposta"
+    },
+    {
+      "lego_id": "S0018L01",
+      "lego_type": "BASE",
+      "target_chunk": "Vogliamo",
+      "known_chunk": "We want",
+      "seed_context": "We want to meet at six o'clock this evening.",
+      "introduction_text": "The Italian for We want, as in We want to meet at six o'clock this evening., is: Vogliamo"
+    },
+    {
+      "lego_id": "S0018L02",
+      "lego_type": "BASE",
+      "target_chunk": "incontrarci",
+      "known_chunk": "to meet",
+      "seed_context": "We want to meet at six o'clock this evening.",
+      "introduction_text": "The Italian for to meet, as in We want to meet at six o'clock this evening., is: incontrarci"
+    },
+    {
+      "lego_id": "S0018L03",
+      "lego_type": "BASE",
+      "target_chunk": "alle sei",
+      "known_chunk": "at six o'clock",
+      "seed_context": "We want to meet at six o'clock this evening.",
+      "introduction_text": "The Italian for at six o'clock, as in We want to meet at six o'clock this evening., is: alle sei, at six o'clock = alle sei, where alle = at (the), and sei = six"
+    },
+    {
+      "lego_id": "S0018L04",
+      "lego_type": "BASE",
+      "target_chunk": "stasera",
+      "known_chunk": "this evening",
+      "seed_context": "We want to meet at six o'clock this evening.",
+      "introduction_text": "The Italian for this evening, as in We want to meet at six o'clock this evening., is: stasera"
+    },
+    {
+      "lego_id": "S0019L01",
+      "lego_type": "BASE",
+      "target_chunk": "Ma",
+      "known_chunk": "But",
+      "seed_context": "But I don't want to stop talking.",
+      "introduction_text": "The Italian for But, as in But I don't want to stop talking., is: Ma"
+    },
+    {
+      "lego_id": "S0019L02",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "non voglio",
+      "known_chunk": "I don't want",
+      "seed_context": "But I don't want to stop talking.",
+      "introduction_text": "The Italian for I don't want, as in But I don't want to stop talking., is: non voglio, I don't want = non voglio, where non = not and voglio = I want"
+    },
+    {
+      "lego_id": "S0019L03",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "smettere di parlare",
+      "known_chunk": "to stop talking",
+      "seed_context": "But I don't want to stop talking.",
+      "introduction_text": "The Italian for to stop talking, as in But I don't want to stop talking., is: smettere di parlare, to stop talking = smettere di parlare, where smettere di = to stop and parlare = talking/to speak"
+    },
+    {
+      "feeder_id": "S0019F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "smettere",
+      "known_chunk": "to stop",
+      "parent_lego_id": "S0019L02",
+      "seed_context": "But I don't want to stop talking.",
+      "introduction_text": "The Italian for to stop, as in But I don't want to stop talking., is: smettere"
+    },
+    {
+      "lego_id": "S0020L01",
+      "lego_type": "BASE",
+      "target_chunk": "Vuoi",
+      "known_chunk": "You want",
+      "seed_context": "You want to learn their name quickly.",
+      "introduction_text": "The Italian for You want, as in You want to learn their name quickly., is: Vuoi"
+    },
+    {
+      "lego_id": "S0020L02",
+      "lego_type": "BASE",
+      "target_chunk": "il suo nome",
+      "known_chunk": "their name",
+      "seed_context": "You want to learn their name quickly.",
+      "introduction_text": "The Italian for their name, as in You want to learn their name quickly., is: il suo nome, their name = il suo nome, where il = the, suo = their, and nome = name"
+    },
+    {
+      "lego_id": "S0020L03",
+      "lego_type": "BASE",
+      "target_chunk": "rapidamente",
+      "known_chunk": "quickly",
+      "seed_context": "You want to learn their name quickly.",
+      "introduction_text": "The Italian for quickly, as in You want to learn their name quickly., is: rapidamente"
+    },
+    {
+      "lego_id": "S0021L01",
+      "lego_type": "BASE",
+      "target_chunk": "Perché",
+      "known_chunk": "Why",
+      "seed_context": "Why are you learning their name?",
+      "introduction_text": "The Italian for Why, as in Why are you learning their name?, is: Perché"
+    },
+    {
+      "lego_id": "S0021L02",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "stai imparando",
+      "known_chunk": "you are learning",
+      "seed_context": "Why are you learning their name?",
+      "introduction_text": "The Italian for you are learning, as in Why are you learning their name?, is: stai imparando, you are learning = stai imparando, where stai = you are and imparando represents learning"
+    },
+    {
+      "feeder_id": "S0021F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "stai",
+      "known_chunk": "you are",
+      "parent_lego_id": "S0021L02",
+      "seed_context": "Why are you learning their name?",
+      "introduction_text": "The Italian for you are, as in Why are you learning their name?, is: stai"
+    },
+    {
+      "lego_id": "S0022L01",
+      "lego_type": "BASE",
+      "target_chunk": "Perché",
+      "known_chunk": "Because",
+      "seed_context": "Because I want to meet people who speak Italian.",
+      "introduction_text": "The Italian for Because, as in Because I want to meet people who speak Italian., is: Perché"
+    },
+    {
+      "lego_id": "S0022L02",
+      "lego_type": "BASE",
+      "target_chunk": "incontrare",
+      "known_chunk": "to meet",
+      "seed_context": "Because I want to meet people who speak Italian.",
+      "introduction_text": "The Italian for to meet, as in Because I want to meet people who speak Italian., is: incontrare"
+    },
+    {
+      "lego_id": "S0022L03",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "persone che parlano",
+      "known_chunk": "people who speak",
+      "seed_context": "Because I want to meet people who speak Italian.",
+      "introduction_text": "The Italian for people who speak, as in Because I want to meet people who speak Italian., is: persone che parlano, people who speak = persone che parlano, where persone = people, che = who, and parlano = speak"
+    },
+    {
+      "feeder_id": "S0022F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "persone",
+      "known_chunk": "people",
+      "parent_lego_id": "S0022L03",
+      "seed_context": "Because I want to meet people who speak Italian.",
+      "introduction_text": "The Italian for people, as in Because I want to meet people who speak Italian., is: persone"
+    },
+    {
+      "feeder_id": "S0022F02",
+      "lego_type": "FEEDER",
+      "target_chunk": "parlano",
+      "known_chunk": "speak",
+      "parent_lego_id": "S0022L03",
+      "seed_context": "Because I want to meet people who speak Italian.",
+      "introduction_text": "The Italian for speak, as in Because I want to meet people who speak Italian., is: parlano"
+    },
+    {
+      "lego_id": "S0023L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "Sto per iniziare a",
+      "known_chunk": "I'm going to start",
+      "seed_context": "I'm going to start talking more soon.",
+      "introduction_text": "The Italian for I'm going to start, as in I'm going to start talking more soon., is: Sto per iniziare a, I'm going to start = Sto per iniziare a, where Sto = I'm, per = (about to), iniziare = to start, and a = to"
+    },
+    {
+      "lego_id": "S0023L02",
+      "lego_type": "BASE",
+      "target_chunk": "di più",
+      "known_chunk": "more",
+      "seed_context": "I'm going to start talking more soon.",
+      "introduction_text": "The Italian for more, as in I'm going to start talking more soon., is: di più"
+    },
+    {
+      "lego_id": "S0023L03",
+      "lego_type": "BASE",
+      "target_chunk": "presto",
+      "known_chunk": "soon",
+      "seed_context": "I'm going to start talking more soon.",
+      "introduction_text": "The Italian for soon, as in I'm going to start talking more soon., is: presto"
+    },
+    {
+      "feeder_id": "S0023F02",
+      "lego_type": "FEEDER",
+      "target_chunk": "iniziare",
+      "known_chunk": "to start",
+      "parent_lego_id": "S0023L01",
+      "seed_context": "I'm going to start talking more soon.",
+      "introduction_text": "The Italian for to start, as in I'm going to start talking more soon., is: iniziare"
+    },
+    {
+      "lego_id": "S0024L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "Non potrò",
+      "known_chunk": "I'm not going to be able",
+      "seed_context": "I'm not going to be able to remember easily.",
+      "introduction_text": "The Italian for I'm not going to be able, as in I'm not going to be able to remember easily., is: Non potrò, I'm not going to be able = Non potrò, where Non = not and potrò = I will be able"
+    },
+    {
+      "lego_id": "S0024L02",
+      "lego_type": "BASE",
+      "target_chunk": "facilmente",
+      "known_chunk": "easily",
+      "seed_context": "I'm not going to be able to remember easily.",
+      "introduction_text": "The Italian for easily, as in I'm not going to be able to remember easily., is: facilmente"
+    },
+    {
+      "feeder_id": "S0024F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "potere",
+      "known_chunk": "to be able",
+      "parent_lego_id": "S0024L01",
+      "seed_context": "I'm not going to be able to remember easily.",
+      "introduction_text": "The Italian for to be able, as in I'm not going to be able to remember easily., is: potere"
+    },
+    {
+      "lego_id": "S0025L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "Mi aiuterai",
+      "known_chunk": "Are you going to help me",
+      "seed_context": "Are you going to help me before I have to go?",
+      "introduction_text": "The Italian for Are you going to help me, as in Are you going to help me before I have to go?, is: Mi aiuterai, Are you going to help me = Mi aiuterai, where Mi = me and aiuterai = you will help"
+    },
+    {
+      "lego_id": "S0025L02",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "prima che io debba",
+      "known_chunk": "before I have to",
+      "seed_context": "Are you going to help me before I have to go?",
+      "introduction_text": "The Italian for before I have to, as in Are you going to help me before I have to go?, is: prima che io debba, before I have to = prima che io debba, where prima che = before (subjunctive trigger), io = I, and debba = I have to"
+    },
+    {
+      "lego_id": "S0025L03",
+      "lego_type": "BASE",
+      "target_chunk": "andare",
+      "known_chunk": "to go",
+      "seed_context": "Are you going to help me before I have to go?",
+      "introduction_text": "The Italian for to go, as in Are you going to help me before I have to go?, is: andare"
+    },
+    {
+      "feeder_id": "S0025F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "aiutare",
+      "known_chunk": "to help",
+      "parent_lego_id": "S0025L01",
+      "seed_context": "Are you going to help me before I have to go?",
+      "introduction_text": "The Italian for to help, as in Are you going to help me before I have to go?, is: aiutare"
+    },
+    {
+      "feeder_id": "S0025F02",
+      "lego_type": "FEEDER",
+      "target_chunk": "dovere",
+      "known_chunk": "to have to",
+      "parent_lego_id": "S0025L01",
+      "seed_context": "Are you going to help me before I have to go?",
+      "introduction_text": "The Italian for to have to, as in Are you going to help me before I have to go?, is: dovere"
+    },
+    {
+      "lego_id": "S0026L01",
+      "lego_type": "BASE",
+      "target_chunk": "Mi piace",
+      "known_chunk": "I like",
+      "seed_context": "I like feeling as if I'm nearly ready to go.",
+      "introduction_text": "The Italian for I like, as in I like feeling as if I'm nearly ready to go., is: Mi piace"
+    },
+    {
+      "lego_id": "S0026L02",
+      "lego_type": "BASE",
+      "target_chunk": "sentire",
+      "known_chunk": "feeling",
+      "seed_context": "I like feeling as if I'm nearly ready to go.",
+      "introduction_text": "The Italian for feeling, as in I like feeling as if I'm nearly ready to go., is: sentire"
+    },
+    {
+      "lego_id": "S0026L03",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "come se fossi",
+      "known_chunk": "as if I'm",
+      "seed_context": "I like feeling as if I'm nearly ready to go.",
+      "introduction_text": "The Italian for as if I'm, as in I like feeling as if I'm nearly ready to go., is: come se fossi, as if I'm = come se fossi, where come se = as if and fossi represents I were/am (subjunctive)"
+    },
+    {
+      "lego_id": "S0026L04",
+      "lego_type": "BASE",
+      "target_chunk": "quasi",
+      "known_chunk": "nearly",
+      "seed_context": "I like feeling as if I'm nearly ready to go.",
+      "introduction_text": "The Italian for nearly, as in I like feeling as if I'm nearly ready to go., is: quasi"
+    },
+    {
+      "lego_id": "S0026L05",
+      "lego_type": "BASE",
+      "target_chunk": "pronto",
+      "known_chunk": "ready",
+      "seed_context": "I like feeling as if I'm nearly ready to go.",
+      "introduction_text": "The Italian for ready, as in I like feeling as if I'm nearly ready to go., is: pronto"
+    },
+    {
+      "lego_id": "S0026L06",
+      "lego_type": "BASE",
+      "target_chunk": "per andare",
+      "known_chunk": "to go",
+      "seed_context": "I like feeling as if I'm nearly ready to go.",
+      "introduction_text": "The Italian for to go, as in I like feeling as if I'm nearly ready to go., is: per andare"
+    },
+    {
+      "lego_id": "S0027L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "Non mi piace",
+      "known_chunk": "I don't like",
+      "seed_context": "I don't like taking too much time to answer.",
+      "introduction_text": "The Italian for I don't like, as in I don't like taking too much time to answer., is: Non mi piace, I don't like = Non mi piace, where Non = not/don't, mi = me, and piace = likes"
+    },
+    {
+      "lego_id": "S0027L02",
+      "lego_type": "BASE",
+      "target_chunk": "prendere",
+      "known_chunk": "taking",
+      "seed_context": "I don't like taking too much time to answer.",
+      "introduction_text": "The Italian for taking, as in I don't like taking too much time to answer., is: prendere"
+    },
+    {
+      "lego_id": "S0027L03",
+      "lego_type": "BASE",
+      "target_chunk": "troppo tempo",
+      "known_chunk": "too much time",
+      "seed_context": "I don't like taking too much time to answer.",
+      "introduction_text": "The Italian for too much time, as in I don't like taking too much time to answer., is: troppo tempo, too much time = troppo tempo, where troppo = too much and tempo = time"
+    },
+    {
+      "lego_id": "S0027L04",
+      "lego_type": "BASE",
+      "target_chunk": "per rispondere",
+      "known_chunk": "to answer",
+      "seed_context": "I don't like taking too much time to answer.",
+      "introduction_text": "The Italian for to answer, as in I don't like taking too much time to answer., is: per rispondere"
+    },
+    {
+      "feeder_id": "S0027F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "rispondere",
+      "known_chunk": "to answer",
+      "parent_lego_id": "S0027L01",
+      "seed_context": "I don't like taking too much time to answer.",
+      "introduction_text": "The Italian for to answer, as in I don't like taking too much time to answer., is: rispondere"
+    },
+    {
+      "lego_id": "S0028L01",
+      "lego_type": "BASE",
+      "target_chunk": "È utile",
+      "known_chunk": "It's useful",
+      "seed_context": "It's useful to start talking as soon as you can.",
+      "introduction_text": "The Italian for It's useful, as in It's useful to start talking as soon as you can., is: È utile"
+    },
+    {
+      "lego_id": "S0028L02",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "iniziare a parlare",
+      "known_chunk": "to start talking",
+      "seed_context": "It's useful to start talking as soon as you can.",
+      "introduction_text": "The Italian for to start talking, as in It's useful to start talking as soon as you can., is: iniziare a parlare, to start talking = iniziare a parlare, where iniziare = to start/begin, a = to, and parlare = to talk/speak"
+    },
+    {
+      "lego_id": "S0028L03",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "appena puoi",
+      "known_chunk": "as soon as you can",
+      "seed_context": "It's useful to start talking as soon as you can.",
+      "introduction_text": "The Italian for as soon as you can, as in It's useful to start talking as soon as you can., is: appena puoi, as soon as you can = appena puoi, where appena = as soon as and puoi = you can"
+    },
+    {
+      "feeder_id": "S0028F02",
+      "lego_type": "FEEDER",
+      "target_chunk": "potere",
+      "known_chunk": "can",
+      "parent_lego_id": "S0028L02",
+      "seed_context": "It's useful to start talking as soon as you can.",
+      "introduction_text": "The Italian for can, as in It's useful to start talking as soon as you can., is: potere"
+    },
+    {
+      "lego_id": "S0029L01",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "Non vedo l'ora di",
+      "known_chunk": "I'm looking forward to",
+      "seed_context": "I'm looking forward to speaking better as soon as I can.",
+      "introduction_text": "The Italian for I'm looking forward to, as in I'm looking forward to speaking better as soon as I can., is: Non vedo l'ora di, I'm looking forward to = Non vedo l'ora di (idiomatic expression meaning can't wait)"
+    },
+    {
+      "lego_id": "S0029L02",
+      "lego_type": "BASE",
+      "target_chunk": "meglio",
+      "known_chunk": "better",
+      "seed_context": "I'm looking forward to speaking better as soon as I can.",
+      "introduction_text": "The Italian for better, as in I'm looking forward to speaking better as soon as I can., is: meglio"
+    },
+    {
+      "lego_id": "S0029L03",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "appena posso",
+      "known_chunk": "as soon as I can",
+      "seed_context": "I'm looking forward to speaking better as soon as I can.",
+      "introduction_text": "The Italian for as soon as I can, as in I'm looking forward to speaking better as soon as I can., is: appena posso, as soon as I can = appena posso, where appena = as soon as and posso = I can"
+    },
+    {
+      "feeder_id": "S0029F01",
+      "lego_type": "FEEDER",
+      "target_chunk": "vedere",
+      "known_chunk": "to see",
+      "parent_lego_id": "S0029L01",
+      "seed_context": "I'm looking forward to speaking better as soon as I can.",
+      "introduction_text": "The Italian for to see, as in I'm looking forward to speaking better as soon as I can., is: vedere"
+    },
+    {
+      "lego_id": "S0030L01",
+      "lego_type": "BASE",
+      "target_chunk": "Volevo",
+      "known_chunk": "I wanted",
+      "seed_context": "I wanted to ask you something yesterday.",
+      "introduction_text": "The Italian for I wanted, as in I wanted to ask you something yesterday., is: Volevo"
+    },
+    {
+      "lego_id": "S0030L02",
+      "lego_type": "BASE",
+      "target_chunk": "domandarti",
+      "known_chunk": "to ask you",
+      "seed_context": "I wanted to ask you something yesterday.",
+      "introduction_text": "The Italian for to ask you, as in I wanted to ask you something yesterday., is: domandarti"
+    },
+    {
+      "lego_id": "S0030L04",
+      "lego_type": "BASE",
+      "target_chunk": "ieri",
+      "known_chunk": "yesterday",
+      "seed_context": "I wanted to ask you something yesterday.",
+      "introduction_text": "The Italian for yesterday, as in I wanted to ask you something yesterday., is: ieri"
+    }
+  ]
+}
