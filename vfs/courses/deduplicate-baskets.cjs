@@ -4,13 +4,20 @@
  * Phase 5.5: Basket Deduplication
  *
  * Removes duplicate LEGO baskets, keeping first occurrence only.
+ * Processes baskets from BOTH lego_pairs (S0001L01) and feeder_pairs (S0015F01).
  * Creates provenance map for seed reconstruction.
  *
  * Algorithm:
- * - Group baskets by LEGO text (target + known)
- * - Keep first occurrence (lowest LEGO ID)
+ * - Group baskets by LEGO text (target + known, case-insensitive)
+ * - Keep first occurrence (lowest LEGO ID or FEEDER ID)
  * - Delete all duplicates
  * - Create provenance mapping
+ *
+ * Expected duplicates:
+ * - Spanish: ~115 → ~89 (26 feeder duplicates)
+ * - Italian: ~115 → ~90 (25 feeder duplicates)
+ * - French: ~116 → ~90 (26 feeder duplicates)
+ * - Mandarin: ~103 → ~92 (11 feeder duplicates)
  *
  * Usage:
  *   node deduplicate-baskets.cjs <course_dir>
@@ -26,15 +33,30 @@ const path = require('path');
 // =============================================================================
 
 /**
- * Extract LEGO number from LEGO ID (e.g., "S0005L02" → 5002)
- * This gives us natural ordering: S0001L01 < S0001L02 < S0002L01
+ * Extract LEGO number from LEGO ID or FEEDER ID
+ * Handles both formats:
+ * - lego_id:   "S0005L02" → 5002
+ * - feeder_id: "S0015F01" → 15001
+ * This gives us natural ordering: S0001L01 < S0001L02 < S0002L01 < S0015F01
  */
 function legoIdToNumber(legoId) {
-  const match = legoId.match(/S(\d+)L(\d+)/);
-  if (!match) return 0;
-  const seedNum = parseInt(match[1], 10);
-  const legoNum = parseInt(match[2], 10);
-  return seedNum * 1000 + legoNum; // S0005L02 → 5002
+  // Try lego_id pattern first: S0005L02
+  let match = legoId.match(/S(\d+)L(\d+)/);
+  if (match) {
+    const seedNum = parseInt(match[1], 10);
+    const legoNum = parseInt(match[2], 10);
+    return seedNum * 1000 + legoNum; // S0005L02 → 5002
+  }
+
+  // Try feeder_id pattern: S0015F01
+  match = legoId.match(/S(\d+)F(\d+)/);
+  if (match) {
+    const seedNum = parseInt(match[1], 10);
+    const feederNum = parseInt(match[2], 10);
+    return seedNum * 1000 + feederNum; // S0015F01 → 15001
+  }
+
+  return 0; // Unknown format
 }
 
 /**
