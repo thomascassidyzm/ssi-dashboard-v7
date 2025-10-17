@@ -169,18 +169,7 @@
               </div>
               <div>
                 <h3 class="font-semibold text-slate-100">Pedagogical Translation</h3>
-                <p class="text-sm text-slate-400">Generate SEED_PAIRS</p>
-              </div>
-            </router-link>
-
-            <!-- Phase 2 -->
-            <router-link to="/phase/2" class="flex items-center gap-3 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center font-bold text-slate-900">
-                2
-              </div>
-              <div>
-                <h3 class="font-semibold text-slate-100">Corpus Intelligence</h3>
-                <p class="text-sm text-slate-400">FCFS mapping + utility</p>
+                <p class="text-sm text-slate-400">6 pedagogical heuristics</p>
               </div>
             </router-link>
 
@@ -190,30 +179,8 @@
                 3
               </div>
               <div>
-                <h3 class="font-semibold text-slate-100">LEGO Extraction</h3>
-                <p class="text-sm text-slate-400">FCFS vs Utility + IRON RULE</p>
-              </div>
-            </router-link>
-
-            <!-- Phase 3.5 -->
-            <router-link to="/phase/3.5" class="flex items-center gap-3 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center font-bold text-slate-900">
-                3.5
-              </div>
-              <div>
-                <h3 class="font-semibold text-slate-100">Graph Construction</h3>
-                <p class="text-sm text-slate-400">LEGO adjacency edges</p>
-              </div>
-            </router-link>
-
-            <!-- Phase 4 -->
-            <router-link to="/phase/4" class="flex items-center gap-3 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center font-bold text-slate-900">
-                4
-              </div>
-              <div>
-                <h3 class="font-semibold text-slate-100">Deduplication</h3>
-                <p class="text-sm text-slate-400">Provenance preservation</p>
+                <h3 class="font-semibold text-slate-100">LEGO Breakdowns</h3>
+                <p class="text-sm text-slate-400">BASE/COMPOSITE/FEEDER</p>
               </div>
             </router-link>
 
@@ -223,8 +190,19 @@
                 5
               </div>
               <div>
-                <h3 class="font-semibold text-slate-100">Pattern-Aware Baskets</h3>
-                <p class="text-sm text-slate-400">Graph-driven edge coverage</p>
+                <h3 class="font-semibold text-slate-100">Basket Generation</h3>
+                <p class="text-sm text-slate-400">e-phrases + d-phrases</p>
+              </div>
+            </router-link>
+
+            <!-- Phase 5.5 -->
+            <router-link to="/phase/5.5" class="flex items-center gap-3 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center font-bold text-slate-900">
+                5.5
+              </div>
+              <div>
+                <h3 class="font-semibold text-slate-100">Basket Deduplication</h3>
+                <p class="text-sm text-slate-400">Provenance preservation</p>
               </div>
             </router-link>
 
@@ -235,7 +213,7 @@
               </div>
               <div>
                 <h3 class="font-semibold text-slate-100">Introductions</h3>
-                <p class="text-sm text-slate-400">Known-only priming</p>
+                <p class="text-sm text-slate-400">Contextual with provenance</p>
               </div>
             </router-link>
           </div>
