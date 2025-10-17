@@ -241,27 +241,41 @@ async function loadLegos() {
     loading.value = true
     error.value = null
 
-    // Get all seeds with their LEGO breakdowns
-    const response = await api.default.get(
-      `/api/courses/${selectedCourse.value}/seed-lego-breakdown?limit=668&offset=0`
-    )
+    // Load from static files
+    const legosRes = await fetch(`/vfs/courses/${selectedCourse.value}/LEGO_BREAKDOWNS_COMPLETE.json`)
+
+    if (!legosRes.ok) {
+      throw new Error('Failed to load LEGO breakdowns')
+    }
+
+    const legoData = await legosRes.json()
 
     // Flatten all LEGO pairs into a searchable list
     const legosList = []
-    for (const seed of response.data.seeds || []) {
-      for (const pair of seed.lego_pairs || []) {
+    for (const breakdown of legoData.lego_breakdowns || []) {
+      // Add lego_pairs
+      for (const lego of breakdown.lego_pairs || []) {
         legosList.push({
-          provenance: pair.lego_id,
-          target: pair.target,
-          known: pair.known,
-          seedId: seed.seed_id
+          provenance: lego.lego_id,
+          target: lego.target_chunk,
+          known: lego.known_chunk,
+          seedId: breakdown.seed_id
+        })
+      }
+      // Add feeder_pairs
+      for (const feeder of breakdown.feeder_pairs || []) {
+        legosList.push({
+          provenance: feeder.feeder_id,
+          target: feeder.target_chunk,
+          known: feeder.known_chunk,
+          seedId: breakdown.seed_id
         })
       }
     }
 
     allLegos.value = legosList
     filteredLegos.value = legosList
-    console.log(`Loaded ${legosList.length} LEGOs from ${selectedCourse.value}`)
+    console.log(`✅ Loaded ${legosList.length} LEGOs from ${selectedCourse.value}`)
   } catch (err) {
     error.value = `Failed to load LEGOs: ${err.message}`
     console.error('Error loading LEGOs:', err)
@@ -295,13 +309,41 @@ async function selectLego(lego) {
     error.value = null
     selectedLego.value = lego
 
-    // Load basket data for this LEGO
-    const response = await api.default.get(
-      `/api/courses/${selectedCourse.value}/lego/${lego.provenance}/basket`
-    )
+    // Load basket data from static file
+    const basketsRes = await fetch(`/vfs/courses/${selectedCourse.value}/baskets_deduplicated.json`)
 
-    basketData.value = response.data
-    console.log('Loaded basket data for', lego.provenance, response.data)
+    if (!basketsRes.ok) {
+      throw new Error('Failed to load baskets')
+    }
+
+    const basketsData = await basketsRes.json()
+
+    // Find the basket for this LEGO (baskets are keyed by LEGO ID)
+    const basketRaw = basketsData[lego.provenance]
+
+    if (!basketRaw) {
+      throw new Error(`Basket not found for ${lego.provenance}`)
+    }
+
+    // Convert to format expected by component
+    // basketRaw structure: { lego: [target, known], e: [...], d: { "2": [...], "3": [...], ... } }
+    const debutPhrases = []
+    if (basketRaw.d) {
+      for (const phrases of Object.values(basketRaw.d)) {
+        debutPhrases.push(...phrases)
+      }
+    }
+
+    basketData.value = {
+      lego_id: lego.provenance,
+      eternal_phrases: basketRaw.e || [],
+      debut_phrases: debutPhrases,
+      stats: {
+        totalPhrases: (basketRaw.e?.length || 0) + debutPhrases.length
+      }
+    }
+
+    console.log('✅ Loaded basket data for', lego.provenance)
   } catch (err) {
     error.value = `Failed to load basket phrases: ${err.message}`
     console.error('Error loading basket:', err)

@@ -381,12 +381,42 @@ async function loadSeeds() {
   error.value = null
 
   try {
-    const response = await api.default.get(
-      `/api/courses/${selectedCourse.value}/seed-lego-breakdown?limit=${seedsPerPage.value}&offset=${offset.value}`
-    )
+    // Load from static files
+    const translationsRes = await fetch(`/vfs/courses/${selectedCourse.value}/translations.json`)
+    const legosRes = await fetch(`/vfs/courses/${selectedCourse.value}/LEGO_BREAKDOWNS_COMPLETE.json`)
 
-    seeds.value = response.data.seeds
-    total.value = response.data.total
+    if (!translationsRes.ok || !legosRes.ok) {
+      throw new Error('Failed to load course data')
+    }
+
+    const translationsData = await translationsRes.json()
+    const legoData = await legosRes.json()
+
+    // Convert to format expected by component
+    const allSeeds = legoData.lego_breakdowns.map(breakdown => {
+      const translationPair = translationsData[breakdown.seed_id]
+      return {
+        uuid: breakdown.seed_id,
+        seed_id: breakdown.seed_id,
+        target: breakdown.original_target,
+        source: breakdown.original_known,
+        lego_pairs: breakdown.lego_pairs.map(lego => ({
+          lego_id: lego.lego_id,
+          target: lego.target_chunk,
+          known: lego.known_chunk,
+          target_words: lego.target_chunk.split(/\s+/)
+        })),
+        feeder_pairs: breakdown.feeder_pairs || []
+      }
+    })
+
+    // Pagination
+    const start = offset.value
+    const end = start + seedsPerPage.value
+    seeds.value = allSeeds.slice(start, end)
+    total.value = allSeeds.length
+
+    console.log(`✅ Loaded ${seeds.value.length} seeds (${total.value} total)`)
   } catch (err) {
     error.value = `Failed to load seeds: ${err.message}`
     console.error('Error loading seeds:', err)
