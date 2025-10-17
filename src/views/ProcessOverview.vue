@@ -53,7 +53,7 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">End-to-End Pipeline</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p>The SSi Course Production system uses APML v7.0 specification to generate complete language courses from canonical seed pairs through an 8-phase pipeline.</p>
+            <p>The SSi Course Production system uses APML v7.6 specification to generate complete language courses from canonical seed pairs through a streamlined 5-phase pipeline.</p>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Architecture Overview</h3>
             <ul class="space-y-2">
@@ -64,31 +64,13 @@
               <li><strong>VFS Structure:</strong> Local virtual file system with amino_acids/ and proteins/ directories</li>
             </ul>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Phase Flow</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Active Phase Flow (v7.6)</h3>
             <div class="space-y-4 mt-4">
-              <router-link to="/phase/0" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 0: Corpus Pre-Analysis</h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: Source corpus → Output: Intelligence report (frequency, complexity)</p>
-                  </div>
-                  <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
-                </div>
-              </router-link>
               <router-link to="/phase/1" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
                     <h4 class="font-semibold text-emerald-300">Phase 1: Pedagogical Translation</h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: 668 seeds + intelligence → Output: Translation amino acids</p>
-                  </div>
-                  <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
-                </div>
-              </router-link>
-              <router-link to="/phase/2" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 2: Corpus Intelligence</h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: Translations → Output: FCFS mappings + utility scores</p>
+                    <p class="text-sm text-slate-400 mt-1">Input: canonical_seeds.json → Output: translations.json (applies 6 pedagogical heuristics)</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
@@ -96,26 +78,8 @@
               <router-link to="/phase/3" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 3: LEGO Extraction</h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: Translations + corpus intelligence → Output: LEGO amino acids with provenance</p>
-                  </div>
-                  <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
-                </div>
-              </router-link>
-              <router-link to="/phase/3.5" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 3.5: Graph Construction (NEW v7.0)</h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: LEGO amino acids → Output: Adjacency graph with edges</p>
-                  </div>
-                  <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
-                </div>
-              </router-link>
-              <router-link to="/phase/4" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 4: Deduplication</h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: LEGO amino acids → Output: Deduplicated LEGOs with merged provenance</p>
+                    <h4 class="font-semibold text-emerald-300">Phase 3: LEGO Breakdowns</h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: translations.json → Output: LEGO_BREAKDOWNS_COMPLETE.json (BASE/COMPOSITE/FEEDER with componentization)</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
@@ -123,8 +87,17 @@
               <router-link to="/phase/5" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 5: Pattern-Aware Baskets</h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: Deduplicated LEGOs + graph → Output: Basket amino acids</p>
+                    <h4 class="font-semibold text-emerald-300">Phase 5: Basket Generation</h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: LEGO_BREAKDOWNS_COMPLETE.json → Output: baskets.json (e-phrases + d-phrases for ALL LEGOs including feeders)</p>
+                  </div>
+                  <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
+                </div>
+              </router-link>
+              <router-link to="/phase/5.5" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h4 class="font-semibold text-emerald-300">Phase 5.5: Basket Deduplication</h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: baskets.json → Output: baskets_deduplicated.json + lego_provenance_map.json (removes duplicate LEGOs)</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
@@ -133,20 +106,21 @@
                 <div class="flex items-center justify-between">
                   <div>
                     <h4 class="font-semibold text-emerald-300">Phase 6: Introductions</h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: Baskets → Output: Known-only introduction phrases</p>
+                    <p class="text-sm text-slate-400 mt-1">Input: LEGO_BREAKDOWNS + provenance_map → Output: introductions.json (contextual introductions with seed context, skips duplicates)</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
               </router-link>
             </div>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Key Innovations in v7.0</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Key Features in v7.6</h3>
             <ul class="space-y-2">
-              <li><strong>Graph Intelligence (Phase 3.5):</strong> LEGO adjacency edges for pattern coverage</li>
-              <li><strong>Amino Acid Storage:</strong> Immutable discrete components enable surgical edits</li>
-              <li><strong>Pattern-Aware Baskets:</strong> Replaces DEBUT/ETERNAL with graph-driven edge coverage</li>
-              <li><strong>Provenance Tracking:</strong> S{seed}L{position} format preserves birth-parent relationships</li>
-              <li><strong>Deterministic UUIDs:</strong> Content-based UUIDs enable automatic edit propagation</li>
+              <li><strong>LEGO Types:</strong> BASE (atomic), COMPOSITE (multi-part with componentization), FEEDER (components of composites)</li>
+              <li><strong>Comprehensive Basket Generation:</strong> All LEGOs (including feeders) get full basket treatment with e-phrases and d-phrases</li>
+              <li><strong>Intelligent Deduplication (Phase 5.5):</strong> Removes duplicate LEGOs while preserving provenance mapping</li>
+              <li><strong>Provenance-Aware Introductions:</strong> Contextual introductions using seed context, automatically skip duplicates</li>
+              <li><strong>Provenance Tracking:</strong> S####L## (LEGOs) and S####F## (feeders) format preserves birth-parent relationships</li>
+              <li><strong>Componentization:</strong> COMPOSITE LEGOs include pedagogical breakdown of their component parts</li>
             </ul>
           </div>
         </section>

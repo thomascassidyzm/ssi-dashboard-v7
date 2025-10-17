@@ -4,7 +4,7 @@
     <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <h1 class="text-3xl font-bold text-emerald-400">
-          SSI Course Production Dashboard v7.0
+          SSI Course Production Dashboard v7.6
         </h1>
         <p class="mt-2 text-slate-400">
           Complete training documentation for Claude/Sonnet AI agents
@@ -267,12 +267,12 @@
               </div>
             </router-link>
 
-            <!-- APML v7.0 Specification -->
+            <!-- APML v7.6 Specification -->
             <router-link to="/reference/apml" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">📋</div>
               <div>
-                <h3 class="font-semibold text-slate-100">APML v7.0 Specification</h3>
-                <p class="text-sm text-slate-400">Complete architectural specification with amino acid storage model</p>
+                <h3 class="font-semibold text-slate-100">APML v7.6 Specification</h3>
+                <p class="text-sm text-slate-400">Complete architectural specification with streamlined 5-phase pipeline</p>
               </div>
             </router-link>
 
@@ -290,8 +290,8 @@
 
       <!-- Footer Note -->
       <div class="mt-12 text-center text-slate-400 text-sm">
-        <p>SSi Course Production Dashboard v7.0 • Graph Intelligence + Pattern Coverage</p>
-        <p class="mt-1">Clean build • No legacy dependencies</p>
+        <p>SSi Course Production Dashboard v7.6 • Streamlined 5-Phase Pipeline</p>
+        <p class="mt-1">BASE/COMPOSITE/FEEDER LEGOs • Provenance-Aware Introductions</p>
       </div>
     </main>
   </div>

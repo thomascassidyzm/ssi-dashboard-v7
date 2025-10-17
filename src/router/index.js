@@ -197,7 +197,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title
     ? `${to.meta.title} - SSi Dashboard`
-    : 'SSi Course Production Dashboard v7.0'
+    : 'SSi Course Production Dashboard v7.6'
   next()
 })
 
