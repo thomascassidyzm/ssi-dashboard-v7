@@ -101,7 +101,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
           <!-- SEED → LEGO Breakdown (Spanish) -->
-          <router-link to="/visualize/seed-lego/spa_for_eng_30seeds"
+          <router-link to="/courses/spa_for_eng_30seeds"
                        class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6 hover:border-emerald-500/50 transition group">
             <div class="flex items-center gap-3 mb-3">
               <svg class="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 20 20">
@@ -118,7 +118,7 @@
           </router-link>
 
           <!-- LEGO Basket Phrases (Italian) -->
-          <router-link to="/visualize/lego-basket/ita_for_eng_30seeds"
+          <router-link to="/courses/ita_for_eng_30seeds"
                        class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6 hover:border-emerald-500/50 transition group">
             <div class="flex items-center gap-3 mb-3">
               <svg class="w-8 h-8 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
