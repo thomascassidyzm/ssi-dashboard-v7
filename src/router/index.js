@@ -15,10 +15,6 @@ import SeedQualityReview from '../components/quality/SeedQualityReview.vue'
 import PromptEvolutionView from '../components/quality/PromptEvolutionView.vue'
 import CourseHealthReport from '../components/quality/CourseHealthReport.vue'
 
-// Visualization Components
-import LegoVisualizerExample from '../components/LegoVisualizerExample.vue'
-import SeedVisualizerDemo from '../views/SeedVisualizerDemo.vue'
-import BasketVisualizerView from '../views/BasketVisualizerView.vue'
 
 const routes = [
   {
@@ -107,67 +103,6 @@ const routes = [
     meta: { title: 'Self-Learning Rules' }
   },
 
-  // Visualization Routes
-  {
-    path: '/visualize/lego',
-    name: 'LegoVisualizerDemo',
-    component: LegoVisualizerExample,
-    meta: { title: 'LEGO Visualizer Demo' }
-  },
-  {
-    path: '/visualize/lego/:courseCode',
-    name: 'LegoVisualizer',
-    component: LegoVisualizerExample,
-    props: true,
-    meta: { title: 'LEGO Visualizer' }
-  },
-  {
-    path: '/visualize/seed',
-    name: 'SeedVisualizerDemo',
-    component: SeedVisualizerDemo,
-    meta: { title: 'Seed Visualizer Demo' }
-  },
-  {
-    path: '/visualize/seed/:translationUuid',
-    name: 'SeedVisualizer',
-    component: SeedVisualizerDemo,
-    props: true,
-    meta: { title: 'Seed Visualizer' }
-  },
-  {
-    path: '/visualize/basket',
-    name: 'BasketVisualizerDemo',
-    component: BasketVisualizerView,
-    meta: { title: 'Basket Visualizer Demo' }
-  },
-  {
-    path: '/visualize/basket/:courseCode',
-    name: 'BasketVisualizer',
-    component: BasketVisualizerView,
-    props: true,
-    meta: { title: 'Basket Visualizer' }
-  },
-  {
-    path: '/visualize/phrases/:courseCode',
-    name: 'PhraseVisualizer',
-    component: () => import('../components/PhraseVisualizer.vue'),
-    props: true,
-    meta: { title: 'Phrase Visualizer' }
-  },
-  {
-    path: '/visualize/seed-lego/:courseCode?',
-    name: 'SeedLegoVisualizer',
-    component: () => import('../components/SeedLegoVisualizer.vue'),
-    props: true,
-    meta: { title: 'SEED → LEGO Breakdown' }
-  },
-  {
-    path: '/visualize/lego-basket/:courseCode?',
-    name: 'LegoBasketVisualizer',
-    component: () => import('../components/LegoBasketVisualizer.vue'),
-    props: true,
-    meta: { title: 'LEGO Basket Practice Phrases' }
-  },
   {
     path: '/edit/:courseCode',
     name: 'CourseEditorAlt',
