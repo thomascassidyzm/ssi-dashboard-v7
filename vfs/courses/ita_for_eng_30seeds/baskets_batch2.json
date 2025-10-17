@@ -1,306 +1,1542 @@
 {
-  "S0007L01": {
-    "lego": ["tentare", "to try"],
+  "S0018L04": {
+    "lego": ["stasera", "this evening"],
     "e": [
-      "Voglio tentare il più possibile oggi.",
-      "I want to try as hard as I can today.",
-      "I want to try to speak Italian now.",
-      "You want to try with me today.",
-      "I'm trying to try as much as possible.",
-      "How to try to learn something in Italian.",
-      "I'm going to practice trying to speak with you.",
-      "I'm trying to try to remember a word now.",
-      "I want you to try to speak with me."
+      ["Vogliamo incontrarci alle sei stasera.", "We want to meet at six o'clock this evening."],
+      ["Voglio parlare con te stasera dopo che finisci.", "I want to speak with you this evening after you finish."],
+      ["Mi piacerebbe tentare di spiegare tutto stasera.", "I'd like to try to explain everything this evening."],
+      ["Non posso ricordare se lui vuole ritornare stasera oggi.", "I can't remember if he wants to come back this evening today."],
+      ["Sto tentando di parlare italiano molto bene stasera adesso.", "I'm trying to speak Italian very well this evening now."]
     ],
     "d": {
-      "tentare": "to try"
+      "2": [
+        ["con te stasera", "with you this evening"],
+        ["stasera voglio parlare", "this evening I want to speak"]
+      ],
+      "3": [
+        ["Vogliamo incontrarci stasera", "We want to meet this evening"],
+        ["parlare con te stasera", "to speak with you this evening"]
+      ],
+      "4": [
+        ["Voglio parlare con te stasera oggi", "I want to speak with you this evening today"],
+        ["voglio ritornare stasera con te", "I want to come back this evening with you"]
+      ],
+      "5": [
+        ["Vogliamo incontrarci alle sei stasera", "We want to meet at six o'clock this evening"],
+        ["Voglio parlare italiano con te stasera adesso", "I want to speak Italian with you this evening now"]
+      ]
     }
   },
-  "S0007L02": {
-    "lego": ["oggi", "today"],
+  "S0019L01": {
+    "lego": ["Ma", "But"],
     "e": [
-      "Voglio tentare il più possibile oggi.",
-      "I want to try as hard as I can today.",
-      "I want to speak Italian with you today.",
-      "I'm trying to learn how to speak today.",
-      "You want to learn something in Italian today.",
-      "I'm going to practice speaking with someone else today.",
-      "I'm trying to remember a word today.",
-      "How to say something in Italian today.",
-      "I want to try as much as possible today."
+      ["Ma non voglio smettere di parlare.", "But I don't want to stop talking."],
+      ["Ma voglio tentare di imparare italiano adesso con te.", "But I want to try to learn Italian now with you."],
+      ["Ma mi piace parlare con te oggi molto bene.", "But I like speaking with you today very well."],
+      ["Ma non sono sicuro se posso ricordare tutto.", "But I'm not sure if I can remember everything."],
+      ["Ma lui vuole ritornare con tutti gli altri domani.", "But he wants to come back with everyone else tomorrow."]
     ],
     "d": {
-      "oggi": "today"
+      "2": [
+        ["Ma non voglio", "But I don't want"],
+        ["Ma voglio tentare", "But I want to try"]
+      ],
+      "3": [
+        ["Ma non voglio smettere", "But I don't want to stop"],
+        ["Ma mi piace parlare", "But I like speaking"]
+      ],
+      "4": [
+        ["Ma non voglio smettere di parlare", "But I don't want to stop talking"],
+        ["Ma voglio tentare di imparare", "But I want to try to learn"]
+      ],
+      "5": [
+        ["Ma non voglio smettere di parlare", "But I don't want to stop talking"],
+        ["Ma voglio tentare di imparare italiano adesso", "But I want to try to learn Italian now"]
+      ]
     }
   },
-  "S0008L01": {
-    "lego": ["Vado a tentare di", "I'm going to try to"],
+  "S0019L02": {
+    "lego": ["non voglio", "I don't want"],
     "e": [
-      "Vado a tentare di spiegare cosa voglio dire.",
-      "I'm going to try to explain what I mean.",
-      "I'm going to try to speak Italian now.",
-      "I'm going to try to learn something today.",
-      "I'm going to try to remember a word.",
-      "I'm going to try to say something in Italian.",
-      "I'm going to try to practice speaking with you.",
-      "I'm going to try to speak as much as possible."
+      ["Ma non voglio smettere di parlare.", "But I don't want to stop talking."],
+      ["Non voglio parlare italiano tutto il giorno domani adesso.", "I don't want to speak Italian all day tomorrow now."],
+      ["Non voglio tentare di indovinare la risposta oggi.", "I don't want to try to guess the answer today."],
+      ["Non voglio prendere troppo tempo per spiegare con te.", "I don't want to take too much time to explain with you."],
+      ["Non voglio ricordare una parola in italiano stasera.", "I don't want to remember a word in Italian this evening."]
     ],
     "d": {
-      "Vado": "I'm going",
-      "tentare": "to try",
-      "di": "to"
+      "2": [
+        ["non voglio smettere", "I don't want to stop"],
+        ["non voglio parlare", "I don't want to speak"]
+      ],
+      "3": [
+        ["Ma non voglio smettere", "But I don't want to stop"],
+        ["non voglio parlare italiano", "I don't want to speak Italian"]
+      ],
+      "4": [
+        ["Ma non voglio smettere di parlare", "But I don't want to stop talking"],
+        ["non voglio tentare di indovinare", "I don't want to try to guess"]
+      ],
+      "5": [
+        ["Ma non voglio smettere di parlare", "But I don't want to stop talking"],
+        ["Non voglio parlare italiano tutto il giorno", "I don't want to speak Italian all day"]
+      ]
     }
   },
-  "S0008L02": {
-    "lego": ["spiegare", "to explain"],
+  "S0019L03": {
+    "lego": ["smettere di parlare", "to stop talking"],
     "e": [
-      "Vado a tentare di spiegare cosa voglio dire.",
-      "I'm going to try to explain what I mean.",
-      "I want to explain something in Italian.",
-      "I'm trying to explain how to speak Italian.",
-      "How to explain something as much as possible.",
-      "I'm going to practice explaining with you today.",
-      "I'm trying to explain what I mean now.",
-      "You want to explain something with me."
+      ["Ma non voglio smettere di parlare.", "But I don't want to stop talking."],
+      ["Voglio smettere di parlare con qualcun altro adesso oggi.", "I want to stop talking with someone else now today."],
+      ["Mi piace smettere di parlare dopo che finisci stasera.", "I like to stop talking after you finish this evening."],
+      ["Lei vuole smettere di parlare molto bene italiano domani.", "She wants to stop speaking Italian very well tomorrow."],
+      ["Non mi piace smettere di parlare tutto il giorno.", "I don't like to stop talking all day."]
     ],
     "d": {
-      "spiegare": "to explain"
+      "2": [
+        ["smettere di parlare", "to stop talking"],
+        ["voglio smettere", "I want to stop"]
+      ],
+      "3": [
+        ["non voglio smettere di parlare", "I don't want to stop talking"],
+        ["voglio smettere di parlare", "I want to stop talking"]
+      ],
+      "4": [
+        ["Ma non voglio smettere di parlare", "But I don't want to stop talking"],
+        ["Voglio smettere di parlare adesso", "I want to stop talking now"]
+      ],
+      "5": [
+        ["Ma non voglio smettere di parlare", "But I don't want to stop talking"],
+        ["Voglio smettere di parlare con te oggi", "I want to stop talking with you today"]
+      ]
     }
   },
-  "S0008L03": {
-    "lego": ["cosa voglio dire", "what I mean"],
+  "S0019F01": {
+    "lego": ["smettere", "to stop"],
     "e": [
-      "Vado a tentare di spiegare cosa voglio dire.",
-      "I'm going to try to explain what I mean.",
-      "I'm trying to remember what I mean.",
-      "I want to say what I mean in Italian.",
-      "How to explain what I mean as much as possible.",
-      "I'm going to practice saying what I mean with you.",
-      "I'm trying to explain what I mean now.",
-      "You want to learn what I mean today."
+      ["Voglio smettere di tentare di imparare oggi con te.", "I want to stop trying to learn today with you."],
+      ["Non voglio smettere di parlare con te adesso stasera.", "I don't want to stop speaking with you now this evening."],
+      ["Mi piacerebbe smettere di prendere troppo tempo domani.", "I'd like to stop taking too much time tomorrow."],
+      ["Lei vuole smettere di indovinare la risposta molto bene.", "She wants to stop guessing the answer very well."],
+      ["Vado a smettere di parlare italiano tutto il giorno.", "I'm going to stop speaking Italian all day."]
     ],
     "d": {
-      "cosa": "what",
-      "voglio": "I want",
-      "dire": "to say"
+      "2": [
+        ["Voglio smettere", "I want to stop"],
+        ["smettere di tentare", "to stop trying"]
+      ],
+      "3": [
+        ["Voglio smettere di tentare", "I want to stop trying"],
+        ["Non voglio smettere", "I don't want to stop"]
+      ],
+      "4": [
+        ["Voglio smettere di tentare di imparare", "I want to stop trying to learn"],
+        ["Non voglio smettere di parlare", "I don't want to stop speaking"]
+      ],
+      "5": [
+        ["Voglio smettere di tentare di imparare oggi", "I want to stop trying to learn today"],
+        ["Non voglio smettere di parlare con te", "I don't want to stop speaking with you"]
+      ]
     }
   },
-  "S0009L01": {
-    "lego": ["Parlo", "I speak"],
+  "S0020L01": {
+    "lego": ["Vuoi", "You want"],
     "e": [
-      "Parlo un po' di italiano adesso.",
-      "I speak a little Italian now.",
-      "I speak Italian with you today.",
-      "I speak as much as possible.",
-      "I speak Italian with someone else now.",
-      "I speak Italian and I want to learn.",
-      "I speak a little with you.",
-      "I speak Italian and I'm trying to remember."
+      ["Vuoi imparare il suo nome rapidamente.", "You want to learn their name quickly."],
+      ["Vuoi parlare italiano con me tutto il giorno domani adesso.", "You want to speak Italian with me all day tomorrow now."],
+      ["Vuoi tentare di ricordare una parola adesso con te.", "You want to try to remember a word now with you."],
+      ["Vuoi smettere di prendere troppo tempo per spiegare oggi.", "You want to stop taking too much time to explain today."],
+      ["Vuoi scoprire qual è la risposta oggi molto bene.", "You want to find out what the answer is today very well."]
     ],
     "d": {
-      "Parlo": "I speak"
+      "2": [
+        ["Vuoi imparare", "You want to learn"],
+        ["Vuoi parlare", "You want to speak"]
+      ],
+      "3": [
+        ["Vuoi imparare il suo nome", "You want to learn their name"],
+        ["Vuoi parlare italiano", "You want to speak Italian"]
+      ],
+      "4": [
+        ["Vuoi imparare il suo nome rapidamente", "You want to learn their name quickly"],
+        ["Vuoi parlare italiano con me", "You want to speak Italian with me"]
+      ],
+      "5": [
+        ["Vuoi imparare il suo nome rapidamente", "You want to learn their name quickly"],
+        ["Vuoi parlare italiano con me domani adesso", "You want to speak Italian with me tomorrow now"]
+      ]
     }
   },
-  "S0009L02": {
-    "lego": ["un po' di", "a little"],
+  "S0020L02": {
+    "lego": ["il suo nome", "their name"],
     "e": [
-      "Parlo un po' di italiano adesso.",
-      "I speak a little Italian now.",
-      "I want to learn a little Italian today.",
-      "I'm trying to speak a little with you.",
-      "I'm going to practice a little with someone else.",
-      "I speak a little and I want to learn.",
-      "How to say a little something in Italian.",
-      "I'm trying to remember a little now."
+      ["Vuoi imparare il suo nome rapidamente.", "You want to learn their name quickly."],
+      ["Voglio ricordare il suo nome molto bene adesso con te.", "I want to remember their name very well now with you."],
+      ["Sto tentando di dire il suo nome in italiano oggi.", "I'm trying to say their name in Italian today."],
+      ["Non sono sicuro se posso dire il suo nome stasera.", "I'm not sure if I can say their name this evening."],
+      ["Mi piacerebbe imparare il suo nome dopo che finisci domani.", "I'd like to learn their name after you finish tomorrow."]
     ],
     "d": {
-      "un po' di": "a little"
+      "2": [
+        ["il suo nome", "their name"],
+        ["imparare il suo nome", "to learn their name"]
+      ],
+      "3": [
+        ["Vuoi imparare il suo nome", "You want to learn their name"],
+        ["Voglio ricordare il suo nome", "I want to remember their name"]
+      ],
+      "4": [
+        ["Vuoi imparare il suo nome rapidamente", "You want to learn their name quickly"],
+        ["Voglio ricordare il suo nome adesso", "I want to remember their name now"]
+      ],
+      "5": [
+        ["Vuoi imparare il suo nome rapidamente", "You want to learn their name quickly"],
+        ["Voglio ricordare il suo nome molto bene adesso", "I want to remember their name very well now"]
+      ]
     }
   },
-  "S0010L01": {
-    "lego": ["Non sono sicuro", "I'm not sure"],
+  "S0020L03": {
+    "lego": ["rapidamente", "quickly"],
     "e": [
-      "Non sono sicuro se posso ricordare tutta la frase.",
-      "I'm not sure if I can remember the whole sentence.",
-      "I'm not sure how to speak Italian.",
-      "I'm not sure what I want to say.",
-      "I'm not sure if I want to try today.",
-      "I'm not sure how to explain something in Italian.",
-      "I'm not sure if I'm going to practice now.",
-      "I'm not sure what I mean."
+      ["Vuoi imparare il suo nome rapidamente.", "You want to learn their name quickly."],
+      ["Voglio parlare italiano rapidamente con te oggi stasera.", "I want to speak Italian quickly with you today this evening."],
+      ["Sto tentando di ricordare una parola rapidamente adesso.", "I'm trying to remember a word quickly now."],
+      ["Non posso spiegare cosa voglio dire rapidamente domani.", "I can't explain what I mean quickly tomorrow."],
+      ["Mi piacerebbe imparare a parlare rapidamente domani con te.", "I'd like to learn to speak quickly tomorrow with you."]
     ],
     "d": {
-      "Non": "not",
-      "sono": "I am",
-      "sicuro": "sure"
+      "2": [
+        ["imparare rapidamente", "to learn quickly"],
+        ["parlare rapidamente", "to speak quickly"]
+      ],
+      "3": [
+        ["Vuoi imparare rapidamente", "You want to learn quickly"],
+        ["Voglio parlare rapidamente", "I want to speak quickly"]
+      ],
+      "4": [
+        ["Vuoi imparare il suo nome rapidamente", "You want to learn their name quickly"],
+        ["Voglio parlare italiano rapidamente", "I want to speak Italian quickly"]
+      ],
+      "5": [
+        ["Vuoi imparare il suo nome rapidamente", "You want to learn their name quickly"],
+        ["Voglio parlare italiano rapidamente con te oggi", "I want to speak Italian quickly with you today"]
+      ]
     }
   },
-  "S0010L02": {
-    "lego": ["se", "if"],
+  "S0021L01": {
+    "lego": ["Perché", "Why"],
     "e": [
-      "Non sono sicuro se posso ricordare tutta la frase.",
-      "I'm not sure if I can remember the whole sentence.",
-      "I want to learn if you speak Italian.",
-      "I'm trying to say something if I can.",
-      "I'm not sure if I want to speak now.",
-      "I'm going to try if you want to practice.",
-      "How to speak Italian if you can today.",
-      "I'm not sure if I'm going to explain."
+      ["Perché stai imparando il suo nome?", "Why are you learning their name?"],
+      ["Perché voglio parlare italiano con te oggi stasera adesso.", "Because I want to speak Italian with you today this evening now."],
+      ["Perché non sono sicuro se posso ricordare tutto.", "Because I'm not sure if I can remember everything."],
+      ["Perché mi piace tentare di imparare rapidamente con te.", "Because I like trying to learn quickly with you."],
+      ["Perché lui vuole smettere di parlare adesso domani.", "Because he wants to stop talking now tomorrow."]
     ],
     "d": {
-      "se": "if"
+      "2": [
+        ["Perché stai imparando", "Why are you learning"],
+        ["Perché voglio parlare", "Because I want to speak"]
+      ],
+      "3": [
+        ["Perché stai imparando il suo nome", "Why are you learning their name"],
+        ["Perché voglio parlare italiano", "Because I want to speak Italian"]
+      ],
+      "4": [
+        ["Perché stai imparando il suo nome?", "Why are you learning their name?"],
+        ["Perché voglio parlare italiano con te", "Because I want to speak Italian with you"]
+      ],
+      "5": [
+        ["Perché stai imparando il suo nome?", "Why are you learning their name?"],
+        ["Perché voglio parlare italiano con te oggi", "Because I want to speak Italian with you today"]
+      ]
     }
   },
-  "S0010L03": {
-    "lego": ["posso", "I can"],
+  "S0021L02": {
+    "lego": ["stai imparando", "you are learning"],
     "e": [
-      "Non sono sicuro se posso ricordare tutta la frase.",
-      "I'm not sure if I can remember the whole sentence.",
-      "I want to speak Italian if I can.",
-      "I'm trying to learn as much as I can.",
-      "I can speak a little Italian now.",
-      "I'm going to try to speak if I can.",
-      "I can say something in Italian today.",
-      "I'm not sure what I can explain."
+      ["Perché stai imparando il suo nome?", "Why are you learning their name?"],
+      ["Stai imparando a parlare italiano molto bene adesso con me.", "You are learning to speak Italian very well now with me."],
+      ["Stai imparando una parola in italiano con me oggi stasera.", "You are learning a word in Italian with me today this evening."],
+      ["Non sono sicuro se stai imparando rapidamente tutto il giorno.", "I'm not sure if you are learning quickly all day."],
+      ["Stai imparando come dire qualcosa dopo che finisci domani.", "You are learning how to say something after you finish tomorrow."]
     ],
     "d": {
-      "posso": "I can"
+      "2": [
+        ["stai imparando", "you are learning"],
+        ["Perché stai imparando", "Why are you learning"]
+      ],
+      "3": [
+        ["Perché stai imparando il suo nome", "Why are you learning their name"],
+        ["stai imparando a parlare", "you are learning to speak"]
+      ],
+      "4": [
+        ["Perché stai imparando il suo nome?", "Why are you learning their name?"],
+        ["Stai imparando a parlare italiano", "You are learning to speak Italian"]
+      ],
+      "5": [
+        ["Perché stai imparando il suo nome?", "Why are you learning their name?"],
+        ["Stai imparando a parlare italiano molto bene adesso", "You are learning to speak Italian very well now"]
+      ]
     }
   },
-  "S0010L04": {
-    "lego": ["tutta la frase", "the whole sentence"],
+  "S0021F01": {
+    "lego": ["stai", "you are"],
     "e": [
-      "Non sono sicuro se posso ricordare tutta la frase.",
-      "I'm not sure if I can remember the whole sentence.",
-      "I want to say the whole sentence in Italian.",
-      "I'm trying to learn the whole sentence today.",
-      "I'm going to practice the whole sentence with you.",
-      "How to speak the whole sentence as much as possible.",
-      "I'm trying to explain the whole sentence now.",
-      "I can speak the whole sentence if I try."
+      ["Stai tentando di parlare italiano con me adesso oggi.", "You are trying to speak Italian with me now today."],
+      ["Stai imparando come dire il suo nome rapidamente stasera.", "You are learning how to say their name quickly this evening."],
+      ["Non sono sicuro se stai prendendo troppo tempo domani.", "I'm not sure if you are taking too much time tomorrow."],
+      ["Stai parlando italiano molto bene tutto il giorno con te.", "You are speaking Italian very well all day with you."],
+      ["Stai smettendo di tentare di ricordare oggi adesso.", "You are stopping trying to remember today now."]
     ],
     "d": {
-      "tutta": "whole/all",
-      "la": "the",
-      "frase": "sentence"
+      "2": [
+        ["Stai tentando", "You are trying"],
+        ["Stai imparando", "You are learning"]
+      ],
+      "3": [
+        ["Stai tentando di parlare", "You are trying to speak"],
+        ["Stai imparando come dire", "You are learning how to say"]
+      ],
+      "4": [
+        ["Stai tentando di parlare italiano", "You are trying to speak Italian"],
+        ["Stai imparando il suo nome rapidamente", "You are learning their name quickly"]
+      ],
+      "5": [
+        ["Stai tentando di parlare italiano con me", "You are trying to speak Italian with me"],
+        ["Stai parlando italiano molto bene tutto il giorno", "You are speaking Italian very well all day"]
+      ]
     }
   },
-  "S0011L01": {
-    "lego": ["Mi piacerebbe", "I'd like"],
+  "S0021F02": {
+    "lego": ["imparare", "to learn"],
     "e": [
-      "Mi piacerebbe poter parlare dopo che finisci.",
-      "I'd like to be able to speak after you finish.",
-      "I'd like to speak Italian with you now.",
-      "I'd like to try to learn something today.",
-      "I'd like to say something in Italian if I can.",
-      "I'd like to practice speaking as much as possible.",
-      "I'd like to explain what I mean.",
-      "I'd like to remember the whole sentence."
+      ["Sto tentando di imparare.", "I'm trying to learn."],
+      ["Voglio imparare il suo nome rapidamente oggi con te.", "I want to learn their name quickly today with you."],
+      ["Mi piace imparare a parlare italiano con te stasera.", "I like learning to speak Italian with you this evening."],
+      ["Vado a imparare come dire qualcosa domani adesso.", "I'm going to learn how to say something tomorrow now."],
+      ["Non voglio smettere di imparare una parola adesso oggi.", "I don't want to stop learning a word now today."]
     ],
     "d": {
-      "Mi piacerebbe": "I'd like"
+      "2": [
+        ["tentando di imparare", "trying to learn"],
+        ["Voglio imparare", "I want to learn"]
+      ],
+      "3": [
+        ["Sto tentando di imparare", "I'm trying to learn"],
+        ["Voglio imparare il suo nome", "I want to learn their name"]
+      ],
+      "4": [
+        ["Sto tentando di imparare", "I'm trying to learn"],
+        ["Voglio imparare il suo nome rapidamente", "I want to learn their name quickly"]
+      ],
+      "5": [
+        ["Sto tentando di imparare", "I'm trying to learn"],
+        ["Voglio imparare il suo nome rapidamente oggi", "I want to learn their name quickly today"]
+      ]
     }
   },
-  "S0011L02": {
-    "lego": ["poter", "to be able"],
+  "S0022L01": {
+    "lego": ["Perché", "Because"],
     "e": [
-      "Mi piacerebbe poter parlare dopo che finisci.",
-      "I'd like to be able to speak after you finish.",
-      "I want to be able to speak Italian now.",
-      "I'm trying to be able to say something today.",
-      "I'm going to be able to learn a little.",
-      "I'm not sure if I'm going to be able to remember.",
-      "I'd like to be able to explain what I mean.",
-      "How to be able to speak the whole sentence."
+      ["Perché voglio incontrare persone che parlano italiano.", "Because I want to meet people who speak Italian."],
+      ["Perché mi piace tentare di imparare rapidamente con te.", "Because I like trying to learn quickly with you."],
+      ["Perché sto tentando di ricordare il suo nome adesso.", "Because I'm trying to remember their name now."],
+      ["Perché non voglio smettere di parlare adesso oggi.", "Because I don't want to stop talking now today."],
+      ["Perché vogliamo incontrarci alle sei stasera con te.", "Because we want to meet at six o'clock this evening with you."]
     ],
     "d": {
-      "poter": "to be able"
+      "2": [
+        ["Perché voglio incontrare", "Because I want to meet"],
+        ["Perché mi piace", "Because I like"]
+      ],
+      "3": [
+        ["Perché voglio incontrare persone", "Because I want to meet people"],
+        ["Perché mi piace tentare", "Because I like trying"]
+      ],
+      "4": [
+        ["Perché voglio incontrare persone che parlano", "Because I want to meet people who speak"],
+        ["Perché sto tentando di ricordare", "Because I'm trying to remember"]
+      ],
+      "5": [
+        ["Perché voglio incontrare persone che parlano italiano", "Because I want to meet people who speak Italian"],
+        ["Perché non voglio smettere di parlare adesso", "Because I don't want to stop talking now"]
+      ]
     }
   },
-  "S0011L03": {
-    "lego": ["dopo che finisci", "after you finish"],
+  "S0022L02": {
+    "lego": ["incontrare", "to meet"],
     "e": [
-      "Mi piacerebbe poter parlare dopo che finisci.",
-      "I'd like to be able to speak after you finish.",
-      "I want to try to speak after you finish.",
-      "I'm going to practice speaking after you finish today.",
-      "I can speak a little Italian after you finish.",
-      "I'm trying to learn something after you finish.",
-      "I'd like to say something after you finish.",
-      "I'm not sure what to say after you finish."
+      ["Perché voglio incontrare persone che parlano italiano.", "Because I want to meet people who speak Italian."],
+      ["Voglio incontrare qualcun altro dopo che finisci oggi stasera.", "I want to meet someone else after you finish today this evening."],
+      ["Vogliamo incontrare persone che parlano molto bene domani adesso.", "We want to meet people who speak very well tomorrow now."],
+      ["Mi piacerebbe incontrare con te alle sei stasera oggi.", "I'd like to meet with you at six o'clock this evening today."],
+      ["Vado a incontrare il suo nome rapidamente adesso con te.", "I'm going to meet their name quickly now with you."]
     ],
     "d": {
-      "dopo che": "after",
-      "finisci": "you finish",
-      "finire": "to finish"
+      "2": [
+        ["voglio incontrare", "I want to meet"],
+        ["incontrare persone", "to meet people"]
+      ],
+      "3": [
+        ["Perché voglio incontrare persone", "Because I want to meet people"],
+        ["Voglio incontrare qualcun altro", "I want to meet someone else"]
+      ],
+      "4": [
+        ["Perché voglio incontrare persone che parlano", "Because I want to meet people who speak"],
+        ["Voglio incontrare qualcun altro oggi", "I want to meet someone else today"]
+      ],
+      "5": [
+        ["Perché voglio incontrare persone che parlano italiano", "Because I want to meet people who speak Italian"],
+        ["Voglio incontrare qualcun altro dopo che finisci", "I want to meet someone else after you finish"]
+      ]
     }
   },
-  "S0012L01": {
-    "lego": ["Non mi piacerebbe", "I wouldn't like"],
+  "S0022L03": {
+    "lego": ["persone che parlano", "people who speak"],
     "e": [
-      "Non mi piacerebbe indovinare cosa succederà domani.",
-      "I wouldn't like to guess what's going to happen tomorrow.",
-      "I wouldn't like to speak Italian now.",
-      "I wouldn't like to try to learn today.",
-      "I wouldn't like to say something if I can.",
-      "I wouldn't like to practice speaking with you.",
-      "I wouldn't like to explain what I mean.",
-      "I wouldn't like to remember the whole sentence."
+      ["Perché voglio incontrare persone che parlano italiano.", "Because I want to meet people who speak Italian."],
+      ["Voglio tentare di parlare con persone che parlano molto bene.", "I want to try to speak with people who speak very well."],
+      ["Mi piace incontrare persone che parlano rapidamente oggi stasera.", "I like meeting people who speak quickly today this evening."],
+      ["Sto tentando di ricordare persone che parlano con me domani.", "I'm trying to remember people who speak with me tomorrow."],
+      ["Non voglio smettere di incontrare persone che parlano adesso.", "I don't want to stop meeting people who speak now."]
     ],
     "d": {
-      "Non": "not/wouldn't",
-      "mi": "me",
-      "piacerebbe": "would like"
+      "2": [
+        ["persone che parlano", "people who speak"],
+        ["incontrare persone", "to meet people"]
+      ],
+      "3": [
+        ["incontrare persone che parlano", "to meet people who speak"],
+        ["persone che parlano italiano", "people who speak Italian"]
+      ],
+      "4": [
+        ["Perché voglio incontrare persone che parlano", "Because I want to meet people who speak"],
+        ["voglio parlare con persone che parlano", "I want to speak with people who speak"]
+      ],
+      "5": [
+        ["Perché voglio incontrare persone che parlano italiano", "Because I want to meet people who speak Italian"],
+        ["Mi piace incontrare persone che parlano molto bene", "I like meeting people who speak very well"]
+      ]
     }
   },
-  "S0012L02": {
-    "lego": ["indovinare", "to guess"],
+  "S0022F01": {
+    "lego": ["persone", "people"],
     "e": [
-      "Non mi piacerebbe indovinare cosa succederà domani.",
-      "I wouldn't like to guess what's going to happen tomorrow.",
-      "I want to guess what you mean.",
-      "I'm trying to guess the whole sentence now.",
-      "I'm not sure if I can guess something in Italian.",
-      "I'm going to try to guess after you finish.",
-      "I'd like to be able to guess a little.",
-      "How to guess as much as possible today."
+      ["Voglio incontrare persone che parlano italiano oggi con te.", "I want to meet people who speak Italian today with you."],
+      ["Mi piace parlare con persone molto bene adesso stasera.", "I like speaking with people very well now this evening."],
+      ["Sto tentando di ricordare persone dopo che finisci domani.", "I'm trying to remember people after you finish tomorrow."],
+      ["Vogliamo parlare con persone alle sei stasera rapidamente.", "We want to speak with people at six o'clock this evening quickly."],
+      ["Non voglio smettere di incontrare persone domani adesso.", "I don't want to stop meeting people tomorrow now."]
     ],
     "d": {
-      "indovinare": "to guess"
+      "2": [
+        ["incontrare persone", "to meet people"],
+        ["parlare con persone", "to speak with people"]
+      ],
+      "3": [
+        ["Voglio incontrare persone", "I want to meet people"],
+        ["parlare con persone molto bene", "to speak with people very well"]
+      ],
+      "4": [
+        ["Voglio incontrare persone che parlano italiano", "I want to meet people who speak Italian"],
+        ["Mi piace parlare con persone", "I like speaking with people"]
+      ],
+      "5": [
+        ["Voglio incontrare persone che parlano italiano oggi", "I want to meet people who speak Italian today"],
+        ["Vogliamo parlare con persone alle sei stasera", "We want to speak with people at six o'clock this evening"]
+      ]
     }
   },
-  "S0012L03": {
-    "lego": ["cosa succederà", "what's going to happen"],
+  "S0022F02": {
+    "lego": ["parlano", "speak"],
     "e": [
-      "Non mi piacerebbe indovinare cosa succederà domani.",
-      "I wouldn't like to guess what's going to happen tomorrow.",
-      "I want to know what's going to happen today.",
-      "I'm trying to explain what's going to happen now.",
-      "I'm not sure what's going to happen if I speak.",
-      "I'd like to guess what's going to happen after you finish.",
-      "I can say what's going to happen a little.",
-      "I'm going to try to remember what's going to happen."
+      ["Persone che parlano italiano voglio incontrare oggi con te.", "People who speak Italian I want to meet today with you."],
+      ["Vuoi tentare di incontrare persone che parlano rapidamente adesso.", "You want to try to meet people who speak quickly now."],
+      ["Mi piace quando persone parlano con me molto bene.", "I like when people speak with me very well."],
+      ["Stai imparando come persone parlano in italiano adesso stasera.", "You are learning how people speak in Italian now this evening."],
+      ["Non sono sicuro se persone parlano tutto il giorno.", "I'm not sure if people speak all day."]
     ],
     "d": {
-      "cosa": "what",
-      "succederà": "will happen",
-      "succedere": "to happen"
+      "2": [
+        ["persone parlano", "people speak"],
+        ["che parlano", "who speak"]
+      ],
+      "3": [
+        ["persone che parlano italiano", "people who speak Italian"],
+        ["persone parlano con me", "people speak with me"]
+      ],
+      "4": [
+        ["persone che parlano italiano voglio incontrare", "people who speak Italian I want to meet"],
+        ["quando persone parlano con me", "when people speak with me"]
+      ],
+      "5": [
+        ["Persone che parlano italiano voglio incontrare oggi", "People who speak Italian I want to meet today"],
+        ["Mi piace quando persone parlano con me", "I like when people speak with me"]
+      ]
     }
   },
-  "S0012L04": {
-    "lego": ["domani", "tomorrow"],
+  "S0023L01": {
+    "lego": ["Sto per iniziare a", "I'm going to start"],
     "e": [
-      "Non mi piacerebbe indovinare cosa succederà domani.",
-      "I wouldn't like to guess what's going to happen tomorrow.",
-      "I want to speak Italian with you tomorrow.",
-      "I'm going to try to learn something tomorrow.",
-      "I'd like to be able to practice speaking tomorrow.",
-      "I'm trying to remember what I mean tomorrow.",
-      "I can speak a little Italian tomorrow.",
-      "I'm not sure if I'm going to speak tomorrow."
+      ["Sto per iniziare a parlare di più presto.", "I'm going to start talking more soon."],
+      ["Sto per iniziare a imparare il suo nome oggi.", "I'm going to start learning their name today."],
+      ["Sto per iniziare a tentare di ricordare domani adesso.", "I'm going to start trying to remember tomorrow now."],
+      ["Sto per iniziare a parlare con persone adesso rapidamente.", "I'm going to start speaking with people now quickly."],
+      ["Sto per iniziare a incontrare qualcun altro stasera.", "I'm going to start meeting someone else this evening."]
     ],
     "d": {
-      "domani": "tomorrow"
+      "2": [
+        ["Sto per iniziare", "I'm going to start"],
+        ["iniziare a parlare", "to start talking"]
+      ],
+      "3": [
+        ["Sto per iniziare a parlare", "I'm going to start talking"],
+        ["Sto per iniziare a imparare", "I'm going to start learning"]
+      ],
+      "4": [
+        ["Sto per iniziare a parlare di più", "I'm going to start talking more"],
+        ["Sto per iniziare a imparare il suo nome", "I'm going to start learning their name"]
+      ],
+      "5": [
+        ["Sto per iniziare a parlare di più presto", "I'm going to start talking more soon"],
+        ["Sto per iniziare a parlare con persone", "I'm going to start speaking with people"]
+      ]
+    }
+  },
+  "S0023L02": {
+    "lego": ["di più", "more"],
+    "e": [
+      ["Sto per iniziare a parlare di più presto.", "I'm going to start talking more soon."],
+      ["Voglio parlare italiano di più con te oggi stasera.", "I want to speak Italian more with you today this evening."],
+      ["Mi piace tentare di imparare di più adesso con persone.", "I like trying to learn more now with people."],
+      ["Stai imparando a parlare di più molto bene domani.", "You are learning to speak more very well tomorrow."],
+      ["Non voglio prendere troppo tempo per spiegare di più.", "I don't want to take too much time to explain more."]
+    ],
+    "d": {
+      "2": [
+        ["parlare di più", "to speak more"],
+        ["di più presto", "more soon"]
+      ],
+      "3": [
+        ["Sto per iniziare a parlare di più", "I'm going to start talking more"],
+        ["Voglio parlare di più", "I want to speak more"]
+      ],
+      "4": [
+        ["Sto per iniziare a parlare di più presto", "I'm going to start talking more soon"],
+        ["Voglio parlare italiano di più", "I want to speak Italian more"]
+      ],
+      "5": [
+        ["Sto per iniziare a parlare di più presto", "I'm going to start talking more soon"],
+        ["Voglio parlare italiano di più con te", "I want to speak Italian more with you"]
+      ]
+    }
+  },
+  "S0023L03": {
+    "lego": ["presto", "soon"],
+    "e": [
+      ["Sto per iniziare a parlare di più presto.", "I'm going to start talking more soon."],
+      ["Voglio incontrare persone che parlano italiano presto oggi.", "I want to meet people who speak Italian soon today."],
+      ["Mi piacerebbe tentare di imparare rapidamente presto con te.", "I'd like to try to learn quickly soon with you."],
+      ["Vogliamo incontrarci alle sei presto dopo che finisci stasera.", "We want to meet at six soon after you finish this evening."],
+      ["Sto tentando di ricordare il suo nome presto oggi.", "I'm trying to remember their name soon today."]
+    ],
+    "d": {
+      "2": [
+        ["di più presto", "more soon"],
+        ["parlare presto", "to speak soon"]
+      ],
+      "3": [
+        ["Sto per iniziare a parlare presto", "I'm going to start speaking soon"],
+        ["Voglio incontrare persone presto", "I want to meet people soon"]
+      ],
+      "4": [
+        ["Sto per iniziare a parlare di più presto", "I'm going to start talking more soon"],
+        ["Voglio incontrare persone che parlano presto", "I want to meet people who speak soon"]
+      ],
+      "5": [
+        ["Sto per iniziare a parlare di più presto", "I'm going to start talking more soon"],
+        ["Voglio incontrare persone che parlano italiano presto", "I want to meet people who speak Italian soon"]
+      ]
+    }
+  },
+  "S0023F01": {
+    "lego": ["Sto", "I'm"],
+    "e": [
+      ["Sto tentando di imparare.", "I'm trying to learn."],
+      ["Sto per iniziare a parlare di più presto.", "I'm going to start talking more soon."],
+      ["Sto imparando il suo nome rapidamente adesso oggi.", "I'm learning their name quickly now today."],
+      ["Sto parlando italiano con persone tutto il giorno stasera.", "I'm speaking Italian with people all day this evening."],
+      ["Sto prendendo troppo tempo per ricordare una parola.", "I'm taking too much time to remember a word."]
+    ],
+    "d": {
+      "2": [
+        ["Sto tentando", "I'm trying"],
+        ["Sto per iniziare", "I'm going to start"]
+      ],
+      "3": [
+        ["Sto tentando di imparare", "I'm trying to learn"],
+        ["Sto per iniziare a parlare", "I'm going to start talking"]
+      ],
+      "4": [
+        ["Sto tentando di imparare", "I'm trying to learn"],
+        ["Sto per iniziare a parlare di più", "I'm going to start talking more"]
+      ],
+      "5": [
+        ["Sto per iniziare a parlare di più presto", "I'm going to start talking more soon"],
+        ["Sto parlando italiano con persone tutto il giorno", "I'm speaking Italian with people all day"]
+      ]
+    }
+  },
+  "S0023F02": {
+    "lego": ["iniziare", "to start"],
+    "e": [
+      ["Sto per iniziare a parlare di più presto.", "I'm going to start talking more soon."],
+      ["Voglio iniziare a imparare il suo nome oggi con te.", "I want to start learning their name today with you."],
+      ["Mi piace iniziare a parlare con persone adesso stasera.", "I like starting to speak with people now this evening."],
+      ["È utile iniziare a tentare di ricordare rapidamente domani.", "It's useful to start trying to remember quickly tomorrow."],
+      ["Non voglio iniziare a smettere di parlare domani adesso.", "I don't want to start stopping to speak tomorrow now."]
+    ],
+    "d": {
+      "2": [
+        ["per iniziare", "to start"],
+        ["iniziare a parlare", "to start talking"]
+      ],
+      "3": [
+        ["Sto per iniziare a parlare", "I'm going to start talking"],
+        ["Voglio iniziare a imparare", "I want to start learning"]
+      ],
+      "4": [
+        ["Sto per iniziare a parlare di più", "I'm going to start talking more"],
+        ["Voglio iniziare a imparare il suo nome", "I want to start learning their name"]
+      ],
+      "5": [
+        ["Sto per iniziare a parlare di più presto", "I'm going to start talking more soon"],
+        ["Mi piace iniziare a parlare con persone", "I like starting to speak with people"]
+      ]
+    }
+  },
+  "S0024L01": {
+    "lego": ["Non potrò", "I'm not going to be able"],
+    "e": [
+      ["Non potrò ricordare facilmente.", "I'm not going to be able to remember easily."],
+      ["Non potrò parlare italiano con persone tutto il giorno domani.", "I'm not going to be able to speak Italian with people all day tomorrow."],
+      ["Non potrò incontrare qualcun altro alle sei stasera oggi.", "I'm not going to be able to meet someone else at six o'clock this evening today."],
+      ["Non potrò iniziare a imparare di più presto oggi.", "I'm not going to be able to start learning more soon today."],
+      ["Non potrò tentare di spiegare rapidamente il suo nome adesso.", "I'm not going to be able to try to explain their name quickly now."]
+    ],
+    "d": {
+      "2": [
+        ["Non potrò ricordare", "I'm not going to be able to remember"],
+        ["Non potrò parlare", "I'm not going to be able to speak"]
+      ],
+      "3": [
+        ["Non potrò ricordare facilmente", "I'm not going to be able to remember easily"],
+        ["Non potrò parlare italiano", "I'm not going to be able to speak Italian"]
+      ],
+      "4": [
+        ["Non potrò ricordare facilmente", "I'm not going to be able to remember easily"],
+        ["Non potrò parlare italiano con persone", "I'm not going to be able to speak Italian with people"]
+      ],
+      "5": [
+        ["Non potrò ricordare facilmente", "I'm not going to be able to remember easily"],
+        ["Non potrò parlare italiano con persone domani", "I'm not going to be able to speak Italian with people tomorrow"]
+      ]
+    }
+  },
+  "S0024L02": {
+    "lego": ["facilmente", "easily"],
+    "e": [
+      ["Non potrò ricordare facilmente.", "I'm not going to be able to remember easily."],
+      ["Voglio imparare a parlare italiano facilmente presto con te.", "I want to learn to speak Italian easily soon with you."],
+      ["Mi piace tentare di spiegare facilmente con te oggi.", "I like trying to explain easily with you today."],
+      ["Stai imparando il suo nome facilmente adesso con persone.", "You are learning their name easily now with people."],
+      ["Posso dire qualcosa in italiano facilmente oggi stasera.", "I can say something in Italian easily today this evening."]
+    ],
+    "d": {
+      "2": [
+        ["ricordare facilmente", "to remember easily"],
+        ["parlare facilmente", "to speak easily"]
+      ],
+      "3": [
+        ["Non potrò ricordare facilmente", "I'm not going to be able to remember easily"],
+        ["imparare a parlare facilmente", "to learn to speak easily"]
+      ],
+      "4": [
+        ["Non potrò ricordare facilmente", "I'm not going to be able to remember easily"],
+        ["Voglio imparare a parlare facilmente", "I want to learn to speak easily"]
+      ],
+      "5": [
+        ["Non potrò ricordare facilmente", "I'm not going to be able to remember easily"],
+        ["Voglio imparare a parlare italiano facilmente", "I want to learn to speak Italian easily"]
+      ]
+    }
+  },
+  "S0024F01": {
+    "lego": ["potere", "to be able"],
+    "e": [
+      ["Mi piacerebbe poter parlare dopo che finisci.", "I'd like to be able to speak after you finish."],
+      ["Voglio poter ricordare il suo nome facilmente oggi con te.", "I want to be able to remember their name easily today with you."],
+      ["Non potrò poter incontrare persone alle sei stasera adesso.", "I'm not going to be able to be able to meet people at six o'clock this evening now."],
+      ["Sto tentando di poter imparare di più presto domani.", "I'm trying to be able to learn more soon tomorrow."],
+      ["Mi piace poter parlare italiano molto bene adesso.", "I like being able to speak Italian very well now."]
+    ],
+    "d": {
+      "2": [
+        ["poter parlare", "to be able to speak"],
+        ["poter ricordare", "to be able to remember"]
+      ],
+      "3": [
+        ["Mi piacerebbe poter parlare", "I'd like to be able to speak"],
+        ["Voglio poter ricordare", "I want to be able to remember"]
+      ],
+      "4": [
+        ["Mi piacerebbe poter parlare dopo che finisci", "I'd like to be able to speak after you finish"],
+        ["Voglio poter ricordare il suo nome", "I want to be able to remember their name"]
+      ],
+      "5": [
+        ["Mi piacerebbe poter parlare dopo che finisci", "I'd like to be able to speak after you finish"],
+        ["Voglio poter ricordare il suo nome facilmente", "I want to be able to remember their name easily"]
+      ]
+    }
+  },
+  "S0025L01": {
+    "lego": ["Mi aiuterai", "Are you going to help me"],
+    "e": [
+      ["Mi aiuterai prima che io debba andare?", "Are you going to help me before I have to go?"],
+      ["Mi aiuterai a imparare il suo nome oggi con persone.", "You are going to help me learn their name today with people."],
+      ["Mi aiuterai a parlare italiano di più presto stasera.", "You are going to help me speak Italian more soon this evening."],
+      ["Mi aiuterai a ricordare una parola facilmente adesso domani.", "You are going to help me remember a word easily now tomorrow."],
+      ["Mi aiuterai a incontrare persone che parlano domani rapidamente.", "You are going to help me meet people who speak tomorrow quickly."]
+    ],
+    "d": {
+      "2": [
+        ["Mi aiuterai", "You will help me"],
+        ["aiuterai a parlare", "you will help to speak"]
+      ],
+      "3": [
+        ["Mi aiuterai prima che", "You will help me before"],
+        ["Mi aiuterai a imparare", "You will help me learn"]
+      ],
+      "4": [
+        ["Mi aiuterai prima che io debba andare", "You will help me before I have to go"],
+        ["Mi aiuterai a imparare il suo nome", "You will help me learn their name"]
+      ],
+      "5": [
+        ["Mi aiuterai prima che io debba andare?", "Are you going to help me before I have to go?"],
+        ["Mi aiuterai a parlare italiano di più", "You are going to help me speak Italian more"]
+      ]
+    }
+  },
+  "S0025L02": {
+    "lego": ["prima che io debba", "before I have to"],
+    "e": [
+      ["Mi aiuterai prima che io debba andare?", "Are you going to help me before I have to go?"],
+      ["Voglio parlare con te prima che io debba smettere oggi.", "I want to speak with you before I have to stop today."],
+      ["Mi piacerebbe imparare il suo nome prima che io debba ritornare stasera.", "I'd like to learn their name before I have to come back this evening."],
+      ["Sto tentando di ricordare prima che io debba spiegare domani.", "I'm trying to remember before I have to explain tomorrow."],
+      ["Posso incontrare persone prima che io debba parlare italiano adesso.", "I can meet people before I have to speak Italian now."]
+    ],
+    "d": {
+      "2": [
+        ["prima che io debba", "before I have to"],
+        ["prima che io debba andare", "before I have to go"]
+      ],
+      "3": [
+        ["Mi aiuterai prima che io debba", "You will help me before I have to"],
+        ["parlare prima che io debba", "to speak before I have to"]
+      ],
+      "4": [
+        ["Mi aiuterai prima che io debba andare", "You will help me before I have to go"],
+        ["Voglio parlare prima che io debba smettere", "I want to speak before I have to stop"]
+      ],
+      "5": [
+        ["Mi aiuterai prima che io debba andare?", "Are you going to help me before I have to go?"],
+        ["Voglio parlare con te prima che io debba smettere", "I want to speak with you before I have to stop"]
+      ]
+    }
+  },
+  "S0025L03": {
+    "lego": ["andare", "to go"],
+    "e": [
+      ["Mi aiuterai prima che io debba andare?", "Are you going to help me before I have to go?"],
+      ["Vado a praticare parlare con qualcun altro.", "I'm going to practice speaking with someone else."],
+      ["Voglio andare a incontrare persone che parlano italiano oggi.", "I want to go to meet people who speak Italian today."],
+      ["Mi piace sentire come se fossi quasi pronto per andare.", "I like feeling as if I'm nearly ready to go."],
+      ["Non voglio andare a smettere di tentare adesso stasera.", "I don't want to go to stop trying now this evening."]
+    ],
+    "d": {
+      "2": [
+        ["debba andare", "have to go"],
+        ["Vado a praticare", "I'm going to practice"]
+      ],
+      "3": [
+        ["prima che io debba andare", "before I have to go"],
+        ["Vado a praticare parlare", "I'm going to practice speaking"]
+      ],
+      "4": [
+        ["Mi aiuterai prima che io debba andare", "You will help me before I have to go"],
+        ["Voglio andare a incontrare persone", "I want to go to meet people"]
+      ],
+      "5": [
+        ["Mi aiuterai prima che io debba andare?", "Are you going to help me before I have to go?"],
+        ["Voglio andare a incontrare persone che parlano", "I want to go to meet people who speak"]
+      ]
+    }
+  },
+  "S0025F01": {
+    "lego": ["aiutare", "to help"],
+    "e": [
+      ["Mi aiuterai prima che io debba andare?", "Are you going to help me before I have to go?"],
+      ["Voglio aiutare persone a imparare italiano oggi con te.", "I want to help people learn Italian today with you."],
+      ["Mi piace aiutare qualcun altro a parlare di più stasera.", "I like helping someone else to speak more this evening."],
+      ["Sto tentando di aiutare a ricordare il suo nome adesso.", "I'm trying to help to remember their name now."],
+      ["È utile aiutare a iniziare a parlare presto domani.", "It's useful to help to start speaking soon tomorrow."]
+    ],
+    "d": {
+      "2": [
+        ["Mi aiuterai", "You will help me"],
+        ["aiutare persone", "to help people"]
+      ],
+      "3": [
+        ["Mi aiuterai prima che", "You will help me before"],
+        ["Voglio aiutare persone", "I want to help people"]
+      ],
+      "4": [
+        ["Mi aiuterai prima che io debba andare", "You will help me before I have to go"],
+        ["Voglio aiutare persone a imparare", "I want to help people learn"]
+      ],
+      "5": [
+        ["Mi aiuterai prima che io debba andare?", "Are you going to help me before I have to go?"],
+        ["Voglio aiutare persone a imparare italiano", "I want to help people learn Italian"]
+      ]
+    }
+  },
+  "S0025F02": {
+    "lego": ["dovere", "to have to"],
+    "e": [
+      ["Mi aiuterai prima che io debba andare?", "Are you going to help me before I have to go?"],
+      ["Voglio parlare con te prima che tu debba smettere oggi.", "I want to speak with you before you have to stop today."],
+      ["Non sono sicuro se io debba ricordare tutto oggi.", "I'm not sure if I have to remember everything today."],
+      ["Mi piace imparare prima che io debba iniziare adesso stasera.", "I like learning before I have to start now this evening."],
+      ["Sto tentando di spiegare prima che io debba ritornare domani.", "I'm trying to explain before I have to come back tomorrow."]
+    ],
+    "d": {
+      "2": [
+        ["io debba", "I have to"],
+        ["debba andare", "have to go"]
+      ],
+      "3": [
+        ["prima che io debba", "before I have to"],
+        ["prima che io debba andare", "before I have to go"]
+      ],
+      "4": [
+        ["Mi aiuterai prima che io debba", "You will help me before I have to"],
+        ["prima che io debba andare", "before I have to go"]
+      ],
+      "5": [
+        ["Mi aiuterai prima che io debba andare?", "Are you going to help me before I have to go?"],
+        ["Voglio parlare prima che tu debba smettere", "I want to speak before you have to stop"]
+      ]
+    }
+  },
+  "S0026L01": {
+    "lego": ["Mi piace", "I like"],
+    "e": [
+      ["Mi piace sentire come se fossi quasi pronto per andare.", "I like feeling as if I'm nearly ready to go."],
+      ["Mi piace parlare italiano con persone tutto il giorno oggi.", "I like speaking Italian with people all day today."],
+      ["Mi piace tentare di imparare il suo nome rapidamente stasera.", "I like trying to learn their name quickly this evening."],
+      ["Mi piace incontrare qualcun altro dopo che finisci oggi domani.", "I like meeting someone else after you finish today tomorrow."],
+      ["Mi piace iniziare a parlare di più presto adesso.", "I like starting to speak more soon now."]
+    ],
+    "d": {
+      "2": [
+        ["Mi piace sentire", "I like feeling"],
+        ["Mi piace parlare", "I like speaking"]
+      ],
+      "3": [
+        ["Mi piace sentire come se", "I like feeling as if"],
+        ["Mi piace parlare italiano", "I like speaking Italian"]
+      ],
+      "4": [
+        ["Mi piace sentire come se fossi", "I like feeling as if I'm"],
+        ["Mi piace parlare italiano con persone", "I like speaking Italian with people"]
+      ],
+      "5": [
+        ["Mi piace sentire come se fossi quasi pronto", "I like feeling as if I'm nearly ready"],
+        ["Mi piace parlare italiano con persone tutto il giorno", "I like speaking Italian with people all day"]
+      ]
+    }
+  },
+  "S0026L02": {
+    "lego": ["sentire", "feeling"],
+    "e": [
+      ["Mi piace sentire come se fossi quasi pronto per andare.", "I like feeling as if I'm nearly ready to go."],
+      ["Voglio sentire persone che parlano italiano oggi con te.", "I want to feel people who speak Italian today with you."],
+      ["Mi piacerebbe sentire quando tu parli di più stasera.", "I'd like to feel when you speak more this evening."],
+      ["Sto tentando di sentire il suo nome rapidamente adesso domani.", "I'm trying to feel their name quickly now tomorrow."],
+      ["Non voglio smettere di sentire qualcosa domani con persone.", "I don't want to stop feeling something tomorrow with people."]
+    ],
+    "d": {
+      "2": [
+        ["Mi piace sentire", "I like feeling"],
+        ["sentire come se", "feeling as if"]
+      ],
+      "3": [
+        ["Mi piace sentire come se", "I like feeling as if"],
+        ["Voglio sentire persone", "I want to feel people"]
+      ],
+      "4": [
+        ["Mi piace sentire come se fossi", "I like feeling as if I'm"],
+        ["Voglio sentire persone che parlano", "I want to feel people who speak"]
+      ],
+      "5": [
+        ["Mi piace sentire come se fossi quasi pronto", "I like feeling as if I'm nearly ready"],
+        ["Voglio sentire persone che parlano italiano", "I want to feel people who speak Italian"]
+      ]
+    }
+  },
+  "S0026L03": {
+    "lego": ["come se fossi", "as if I'm"],
+    "e": [
+      ["Mi piace sentire come se fossi quasi pronto per andare.", "I like feeling as if I'm nearly ready to go."],
+      ["Voglio parlare come se fossi italiano adesso con persone.", "I want to speak as if I'm Italian now with people."],
+      ["Sto tentando di imparare come se fossi persone domani.", "I'm trying to learn as if I'm people tomorrow."],
+      ["Mi piacerebbe tentare come se fossi pronto oggi stasera.", "I'd like to try as if I'm ready today this evening."],
+      ["Non sono sicuro come se fossi facilmente stasera rapidamente.", "I'm not sure as if I'm easily this evening quickly."]
+    ],
+    "d": {
+      "2": [
+        ["come se fossi", "as if I'm"],
+        ["se fossi pronto", "if I'm ready"]
+      ],
+      "3": [
+        ["sentire come se fossi", "to feel as if I'm"],
+        ["come se fossi quasi pronto", "as if I'm nearly ready"]
+      ],
+      "4": [
+        ["Mi piace sentire come se fossi", "I like feeling as if I'm"],
+        ["parlare come se fossi italiano", "to speak as if I'm Italian"]
+      ],
+      "5": [
+        ["Mi piace sentire come se fossi quasi pronto", "I like feeling as if I'm nearly ready"],
+        ["Voglio parlare come se fossi italiano adesso", "I want to speak as if I'm Italian now"]
+      ]
+    }
+  },
+  "S0026L04": {
+    "lego": ["quasi", "nearly"],
+    "e": [
+      ["Mi piace sentire come se fossi quasi pronto per andare.", "I like feeling as if I'm nearly ready to go."],
+      ["Voglio parlare italiano quasi molto bene oggi con te.", "I want to speak Italian nearly very well today with you."],
+      ["Sto quasi tentando di ricordare il suo nome adesso stasera.", "I'm nearly trying to remember their name now this evening."],
+      ["Posso quasi imparare a parlare di più presto domani.", "I can nearly learn to speak more soon tomorrow."],
+      ["Mi piacerebbe incontrare persone quasi alle sei stasera oggi.", "I'd like to meet people nearly at six o'clock this evening today."]
+    ],
+    "d": {
+      "2": [
+        ["fossi quasi", "I'm nearly"],
+        ["quasi pronto", "nearly ready"]
+      ],
+      "3": [
+        ["come se fossi quasi", "as if I'm nearly"],
+        ["quasi pronto per andare", "nearly ready to go"]
+      ],
+      "4": [
+        ["Mi piace sentire come se fossi quasi", "I like feeling as if I'm nearly"],
+        ["Voglio parlare italiano quasi molto bene", "I want to speak Italian nearly very well"]
+      ],
+      "5": [
+        ["Mi piace sentire come se fossi quasi pronto", "I like feeling as if I'm nearly ready"],
+        ["Voglio parlare italiano quasi molto bene oggi", "I want to speak Italian nearly very well today"]
+      ]
+    }
+  },
+  "S0026L05": {
+    "lego": ["pronto", "ready"],
+    "e": [
+      ["Mi piace sentire come se fossi quasi pronto per andare.", "I like feeling as if I'm nearly ready to go."],
+      ["Voglio essere pronto a parlare italiano oggi con persone.", "I want to be ready to speak Italian today with people."],
+      ["Non sono sicuro se sono pronto a incontrare persone.", "I'm not sure if I'm ready to meet people."],
+      ["Mi piacerebbe essere pronto a tentare di imparare presto stasera.", "I'd like to be ready to try to learn soon this evening."],
+      ["Stai quasi pronto a iniziare a parlare di più domani.", "You are nearly ready to start speaking more tomorrow."]
+    ],
+    "d": {
+      "2": [
+        ["quasi pronto", "nearly ready"],
+        ["pronto per andare", "ready to go"]
+      ],
+      "3": [
+        ["fossi quasi pronto", "I'm nearly ready"],
+        ["quasi pronto per andare", "nearly ready to go"]
+      ],
+      "4": [
+        ["come se fossi quasi pronto", "as if I'm nearly ready"],
+        ["Voglio essere pronto a parlare", "I want to be ready to speak"]
+      ],
+      "5": [
+        ["Mi piace sentire come se fossi quasi pronto", "I like feeling as if I'm nearly ready"],
+        ["Voglio essere pronto a parlare italiano", "I want to be ready to speak Italian"]
+      ]
+    }
+  },
+  "S0026L06": {
+    "lego": ["per andare", "to go"],
+    "e": [
+      ["Mi piace sentire come se fossi quasi pronto per andare.", "I like feeling as if I'm nearly ready to go."],
+      ["Voglio essere pronto per andare a incontrare persone oggi.", "I want to be ready to go to meet people today."],
+      ["Mi piacerebbe prendere troppo tempo per andare a parlare domani stasera.", "I'd like to take too much time to go to speak tomorrow this evening."],
+      ["Sto tentando di essere quasi pronto per andare adesso.", "I'm trying to be nearly ready to go now."],
+      ["Non voglio smettere di essere pronto per andare presto.", "I don't want to stop being ready to go soon."]
+    ],
+    "d": {
+      "2": [
+        ["pronto per andare", "ready to go"],
+        ["per andare a incontrare", "to go to meet"]
+      ],
+      "3": [
+        ["quasi pronto per andare", "nearly ready to go"],
+        ["pronto per andare a incontrare", "ready to go to meet"]
+      ],
+      "4": [
+        ["come se fossi quasi pronto per andare", "as if I'm nearly ready to go"],
+        ["Voglio essere pronto per andare", "I want to be ready to go"]
+      ],
+      "5": [
+        ["Mi piace sentire come se fossi quasi pronto per andare", "I like feeling as if I'm nearly ready to go"],
+        ["Voglio essere pronto per andare a incontrare persone", "I want to be ready to go to meet people"]
+      ]
+    }
+  },
+  "S0027L01": {
+    "lego": ["Non mi piace", "I don't like"],
+    "e": [
+      ["Non mi piace prendere troppo tempo per rispondere.", "I don't like taking too much time to answer."],
+      ["Non mi piace parlare italiano tutto il giorno oggi.", "I don't like speaking Italian all day today."],
+      ["Non mi piace tentare di ricordare il suo nome adesso.", "I don't like trying to remember their name now."],
+      ["Non mi piace incontrare persone che parlano rapidamente domani stasera.", "I don't like meeting people who speak quickly tomorrow this evening."],
+      ["Non mi piace smettere di imparare di più presto.", "I don't like stopping learning more soon."]
+    ],
+    "d": {
+      "2": [
+        ["Non mi piace", "I don't like"],
+        ["Non mi piace prendere", "I don't like taking"]
+      ],
+      "3": [
+        ["Non mi piace prendere troppo tempo", "I don't like taking too much time"],
+        ["Non mi piace parlare italiano", "I don't like speaking Italian"]
+      ],
+      "4": [
+        ["Non mi piace prendere troppo tempo per rispondere", "I don't like taking too much time to answer"],
+        ["Non mi piace parlare italiano tutto il giorno", "I don't like speaking Italian all day"]
+      ],
+      "5": [
+        ["Non mi piace prendere troppo tempo per rispondere", "I don't like taking too much time to answer"],
+        ["Non mi piace incontrare persone che parlano rapidamente", "I don't like meeting people who speak quickly"]
+      ]
+    }
+  },
+  "S0027L02": {
+    "lego": ["prendere", "taking"],
+    "e": [
+      ["Non mi piace prendere troppo tempo per rispondere.", "I don't like taking too much time to answer."],
+      ["Voglio prendere il suo nome rapidamente oggi con persone.", "I want to take their name quickly today with people."],
+      ["Mi piacerebbe prendere una parola in italiano adesso stasera.", "I'd like to take a word in Italian now this evening."],
+      ["Sto tentando di prendere qualcosa con te domani oggi.", "I'm trying to take something with you tomorrow today."],
+      ["Non voglio smettere di prendere troppo tempo presto.", "I don't want to stop taking too much time soon."]
+    ],
+    "d": {
+      "2": [
+        ["Non mi piace prendere", "I don't like taking"],
+        ["prendere troppo tempo", "taking too much time"]
+      ],
+      "3": [
+        ["Non mi piace prendere troppo tempo", "I don't like taking too much time"],
+        ["Voglio prendere il suo nome", "I want to take their name"]
+      ],
+      "4": [
+        ["Non mi piace prendere troppo tempo per rispondere", "I don't like taking too much time to answer"],
+        ["Voglio prendere il suo nome rapidamente", "I want to take their name quickly"]
+      ],
+      "5": [
+        ["Non mi piace prendere troppo tempo per rispondere", "I don't like taking too much time to answer"],
+        ["Voglio prendere il suo nome rapidamente oggi", "I want to take their name quickly today"]
+      ]
+    }
+  },
+  "S0027L03": {
+    "lego": ["troppo tempo", "too much time"],
+    "e": [
+      ["Non mi piace prendere troppo tempo per rispondere.", "I don't like taking too much time to answer."],
+      ["Voglio parlare italiano senza prendere troppo tempo oggi.", "I want to speak Italian without taking too much time today."],
+      ["Stai imparando il suo nome troppo tempo adesso con persone.", "You are learning their name too much time now with people."],
+      ["Non posso ricordare senza prendere troppo tempo domani stasera.", "I can't remember without taking too much time tomorrow this evening."],
+      ["Mi piacerebbe tentare di spiegare senza troppo tempo presto.", "I'd like to try to explain without too much time soon."]
+    ],
+    "d": {
+      "2": [
+        ["troppo tempo", "too much time"],
+        ["prendere troppo tempo", "taking too much time"]
+      ],
+      "3": [
+        ["Non mi piace prendere troppo tempo", "I don't like taking too much time"],
+        ["prendere troppo tempo per rispondere", "taking too much time to answer"]
+      ],
+      "4": [
+        ["Non mi piace prendere troppo tempo per rispondere", "I don't like taking too much time to answer"],
+        ["parlare senza prendere troppo tempo", "to speak without taking too much time"]
+      ],
+      "5": [
+        ["Non mi piace prendere troppo tempo per rispondere", "I don't like taking too much time to answer"],
+        ["Voglio parlare senza prendere troppo tempo oggi", "I want to speak without taking too much time today"]
+      ]
+    }
+  },
+  "S0027L04": {
+    "lego": ["per rispondere", "to answer"],
+    "e": [
+      ["Non mi piace prendere troppo tempo per rispondere.", "I don't like taking too much time to answer."],
+      ["Voglio essere pronto per rispondere in italiano oggi.", "I want to be ready to answer in Italian today."],
+      ["Mi piace tentare per rispondere rapidamente adesso con persone.", "I like trying to answer quickly now with people."],
+      ["Sto imparando come per rispondere molto bene domani stasera.", "I'm learning how to answer very well tomorrow this evening."],
+      ["Non posso essere quasi pronto per rispondere presto oggi.", "I can't be nearly ready to answer soon today."]
+    ],
+    "d": {
+      "2": [
+        ["per rispondere", "to answer"],
+        ["tempo per rispondere", "time to answer"]
+      ],
+      "3": [
+        ["troppo tempo per rispondere", "too much time to answer"],
+        ["pronto per rispondere", "ready to answer"]
+      ],
+      "4": [
+        ["Non mi piace prendere troppo tempo per rispondere", "I don't like taking too much time to answer"],
+        ["Voglio essere pronto per rispondere", "I want to be ready to answer"]
+      ],
+      "5": [
+        ["Non mi piace prendere troppo tempo per rispondere", "I don't like taking too much time to answer"],
+        ["Voglio essere pronto per rispondere in italiano", "I want to be ready to answer in Italian"]
+      ]
+    }
+  },
+  "S0027F01": {
+    "lego": ["rispondere", "to answer"],
+    "e": [
+      ["Non mi piace prendere troppo tempo per rispondere.", "I don't like taking too much time to answer."],
+      ["Voglio rispondere in italiano rapidamente oggi con persone.", "I want to answer in Italian quickly today with people."],
+      ["Mi piace rispondere dopo che finisci adesso stasera.", "I like answering after you finish now this evening."],
+      ["Sto tentando di rispondere molto bene domani con te.", "I'm trying to answer very well tomorrow with you."],
+      ["Non posso rispondere se prendo troppo tempo presto.", "I can't answer if I take too much time soon."]
+    ],
+    "d": {
+      "2": [
+        ["per rispondere", "to answer"],
+        ["Voglio rispondere", "I want to answer"]
+      ],
+      "3": [
+        ["Non mi piace prendere tempo per rispondere", "I don't like taking time to answer"],
+        ["Voglio rispondere in italiano", "I want to answer in Italian"]
+      ],
+      "4": [
+        ["Non mi piace prendere troppo tempo per rispondere", "I don't like taking too much time to answer"],
+        ["Voglio rispondere in italiano rapidamente", "I want to answer in Italian quickly"]
+      ],
+      "5": [
+        ["Non mi piace prendere troppo tempo per rispondere", "I don't like taking too much time to answer"],
+        ["Voglio rispondere in italiano rapidamente oggi", "I want to answer in Italian quickly today"]
+      ]
+    }
+  },
+  "S0028L01": {
+    "lego": ["È utile", "It's useful"],
+    "e": [
+      ["È utile iniziare a parlare appena puoi.", "It's useful to start talking as soon as you can."],
+      ["È utile tentare di imparare il suo nome oggi.", "It's useful to try to learn their name today."],
+      ["È utile ricordare persone che parlano italiano adesso con te.", "It's useful to remember people who speak Italian now with you."],
+      ["È utile incontrare qualcun altro dopo che finisci domani stasera.", "It's useful to meet someone else after you finish tomorrow this evening."],
+      ["È utile essere quasi pronto per rispondere presto oggi.", "It's useful to be nearly ready to answer soon today."]
+    ],
+    "d": {
+      "2": [
+        ["È utile", "It's useful"],
+        ["È utile iniziare", "It's useful to start"]
+      ],
+      "3": [
+        ["È utile iniziare a parlare", "It's useful to start talking"],
+        ["È utile tentare di imparare", "It's useful to try to learn"]
+      ],
+      "4": [
+        ["È utile iniziare a parlare appena puoi", "It's useful to start talking as soon as you can"],
+        ["È utile tentare di imparare il suo nome", "It's useful to try to learn their name"]
+      ],
+      "5": [
+        ["È utile iniziare a parlare appena puoi", "It's useful to start talking as soon as you can"],
+        ["È utile ricordare persone che parlano italiano", "It's useful to remember people who speak Italian"]
+      ]
+    }
+  },
+  "S0028L02": {
+    "lego": ["iniziare a parlare", "to start talking"],
+    "e": [
+      ["È utile iniziare a parlare appena puoi.", "It's useful to start talking as soon as you can."],
+      ["Voglio iniziare a parlare italiano con persone oggi stasera.", "I want to start talking Italian with people today this evening."],
+      ["Mi piace iniziare a parlare di più presto con te.", "I like starting to talk more soon with you."],
+      ["Sto per iniziare a parlare dopo che finisci adesso domani.", "I'm going to start talking after you finish now tomorrow."],
+      ["Non mi piace iniziare a parlare troppo tempo domani.", "I don't like starting to talk too much time tomorrow."]
+    ],
+    "d": {
+      "2": [
+        ["iniziare a parlare", "to start talking"],
+        ["È utile iniziare", "It's useful to start"]
+      ],
+      "3": [
+        ["È utile iniziare a parlare", "It's useful to start talking"],
+        ["Voglio iniziare a parlare", "I want to start talking"]
+      ],
+      "4": [
+        ["È utile iniziare a parlare appena puoi", "It's useful to start talking as soon as you can"],
+        ["Voglio iniziare a parlare italiano", "I want to start talking Italian"]
+      ],
+      "5": [
+        ["È utile iniziare a parlare appena puoi", "It's useful to start talking as soon as you can"],
+        ["Voglio iniziare a parlare italiano con persone", "I want to start talking Italian with people"]
+      ]
+    }
+  },
+  "S0028L03": {
+    "lego": ["appena puoi", "as soon as you can"],
+    "e": [
+      ["È utile iniziare a parlare appena puoi.", "It's useful to start talking as soon as you can."],
+      ["Voglio incontrare persone che parlano italiano appena puoi oggi.", "I want to meet people who speak Italian as soon as you can today."],
+      ["Mi piacerebbe tentare di imparare il suo nome appena puoi adesso.", "I'd like to try to learn their name as soon as you can now."],
+      ["Sto per rispondere appena puoi dopo che finisci domani stasera.", "I'm going to answer as soon as you can after you finish tomorrow this evening."],
+      ["Non mi piace prendere troppo tempo appena puoi presto.", "I don't like taking too much time as soon as you can soon."]
+    ],
+    "d": {
+      "2": [
+        ["appena puoi", "as soon as you can"],
+        ["parlare appena puoi", "to speak as soon as you can"]
+      ],
+      "3": [
+        ["È utile iniziare appena puoi", "It's useful to start as soon as you can"],
+        ["iniziare a parlare appena puoi", "to start talking as soon as you can"]
+      ],
+      "4": [
+        ["È utile iniziare a parlare appena puoi", "It's useful to start talking as soon as you can"],
+        ["Voglio incontrare persone appena puoi", "I want to meet people as soon as you can"]
+      ],
+      "5": [
+        ["È utile iniziare a parlare appena puoi", "It's useful to start talking as soon as you can"],
+        ["Voglio incontrare persone che parlano appena puoi", "I want to meet people who speak as soon as you can"]
+      ]
+    }
+  },
+  "S0028F01": {
+    "lego": ["iniziare", "to start"],
+    "e": [
+      ["Sto per iniziare a parlare di più presto.", "I'm going to start talking more soon."],
+      ["È utile iniziare a tentare di imparare oggi con persone.", "It's useful to start trying to learn today with people."],
+      ["Voglio iniziare a incontrare persone che parlano italiano adesso stasera.", "I want to start meeting people who speak Italian now this evening."],
+      ["Mi piace iniziare a ricordare il suo nome rapidamente domani.", "I like starting to remember their name quickly tomorrow."],
+      ["Non mi piace iniziare a prendere troppo tempo presto.", "I don't like starting to take too much time soon."]
+    ],
+    "d": {
+      "2": [
+        ["per iniziare", "to start"],
+        ["iniziare a parlare", "to start talking"]
+      ],
+      "3": [
+        ["Sto per iniziare a parlare", "I'm going to start talking"],
+        ["È utile iniziare a tentare", "It's useful to start trying"]
+      ],
+      "4": [
+        ["Sto per iniziare a parlare di più", "I'm going to start talking more"],
+        ["Voglio iniziare a incontrare persone", "I want to start meeting people"]
+      ],
+      "5": [
+        ["Sto per iniziare a parlare di più presto", "I'm going to start talking more soon"],
+        ["Voglio iniziare a incontrare persone che parlano", "I want to start meeting people who speak"]
+      ]
+    }
+  },
+  "S0028F02": {
+    "lego": ["potere", "can"],
+    "e": [
+      ["È utile iniziare a parlare appena puoi.", "It's useful to start talking as soon as you can."],
+      ["Voglio potere parlare italiano con persone oggi stasera.", "I want to be able to speak Italian with people today this evening."],
+      ["Mi piace potere ricordare il suo nome rapidamente adesso.", "I like being able to remember their name quickly now."],
+      ["Non sono sicuro se posso potere tentare domani con te.", "I'm not sure if I can be able to try tomorrow with you."],
+      ["Mi piacerebbe poter rispondere dopo che finisci presto oggi.", "I'd like to be able to answer after you finish soon today."]
+    ],
+    "d": {
+      "2": [
+        ["appena puoi", "as soon as you can"],
+        ["posso potere", "I can be able"]
+      ],
+      "3": [
+        ["È utile iniziare appena puoi", "It's useful to start as soon as you can"],
+        ["Voglio potere parlare", "I want to be able to speak"]
+      ],
+      "4": [
+        ["È utile iniziare a parlare appena puoi", "It's useful to start talking as soon as you can"],
+        ["Voglio potere parlare italiano", "I want to be able to speak Italian"]
+      ],
+      "5": [
+        ["È utile iniziare a parlare appena puoi", "It's useful to start talking as soon as you can"],
+        ["Voglio potere parlare italiano con persone", "I want to be able to speak Italian with people"]
+      ]
+    }
+  },
+  "S0029L01": {
+    "lego": ["Non vedo l'ora di", "I'm looking forward to"],
+    "e": [
+      ["Non vedo l'ora di parlare meglio appena posso.", "I'm looking forward to speaking better as soon as I can."],
+      ["Non vedo l'ora di incontrare persone che parlano italiano oggi.", "I'm looking forward to meeting people who speak Italian today."],
+      ["Non vedo l'ora di iniziare a imparare il suo nome domani stasera.", "I'm looking forward to starting to learn their name tomorrow this evening."],
+      ["Non vedo l'ora di tentare di rispondere rapidamente adesso.", "I'm looking forward to trying to answer quickly now."],
+      ["Non vedo l'ora di essere quasi pronto per andare presto.", "I'm looking forward to being nearly ready to go soon."]
+    ],
+    "d": {
+      "2": [
+        ["Non vedo l'ora", "I'm looking forward"],
+        ["vedo l'ora di parlare", "looking forward to speaking"]
+      ],
+      "3": [
+        ["Non vedo l'ora di parlare", "I'm looking forward to speaking"],
+        ["Non vedo l'ora di incontrare", "I'm looking forward to meeting"]
+      ],
+      "4": [
+        ["Non vedo l'ora di parlare meglio", "I'm looking forward to speaking better"],
+        ["Non vedo l'ora di incontrare persone", "I'm looking forward to meeting people"]
+      ],
+      "5": [
+        ["Non vedo l'ora di parlare meglio appena posso", "I'm looking forward to speaking better as soon as I can"],
+        ["Non vedo l'ora di incontrare persone che parlano", "I'm looking forward to meeting people who speak"]
+      ]
+    }
+  },
+  "S0029L02": {
+    "lego": ["meglio", "better"],
+    "e": [
+      ["Non vedo l'ora di parlare meglio appena posso.", "I'm looking forward to speaking better as soon as I can."],
+      ["Voglio imparare a parlare italiano meglio oggi con persone.", "I want to learn to speak Italian better today with people."],
+      ["Mi piace tentare di ricordare il suo nome meglio adesso.", "I like trying to remember their name better now."],
+      ["Stai parlando molto bene meglio domani dopo che finisci stasera.", "You are speaking very well better tomorrow after you finish this evening."],
+      ["È utile iniziare a rispondere meglio presto con te.", "It's useful to start answering better soon with you."]
+    ],
+    "d": {
+      "2": [
+        ["parlare meglio", "to speak better"],
+        ["imparare meglio", "to learn better"]
+      ],
+      "3": [
+        ["Non vedo l'ora di parlare meglio", "I'm looking forward to speaking better"],
+        ["Voglio imparare a parlare meglio", "I want to learn to speak better"]
+      ],
+      "4": [
+        ["Non vedo l'ora di parlare meglio appena posso", "I'm looking forward to speaking better as soon as I can"],
+        ["Voglio imparare a parlare italiano meglio", "I want to learn to speak Italian better"]
+      ],
+      "5": [
+        ["Non vedo l'ora di parlare meglio appena posso", "I'm looking forward to speaking better as soon as I can"],
+        ["Voglio imparare a parlare italiano meglio oggi", "I want to learn to speak Italian better today"]
+      ]
+    }
+  },
+  "S0029L03": {
+    "lego": ["appena posso", "as soon as I can"],
+    "e": [
+      ["Non vedo l'ora di parlare meglio appena posso.", "I'm looking forward to speaking better as soon as I can."],
+      ["Voglio iniziare a imparare il suo nome appena posso oggi.", "I want to start learning their name as soon as I can today."],
+      ["Mi piace tentare di rispondere in italiano appena posso adesso.", "I like trying to answer in Italian as soon as I can now."],
+      ["Sto per incontrare persone che parlano appena posso domani stasera.", "I'm going to meet people who speak as soon as I can tomorrow this evening."],
+      ["È utile essere quasi pronto per andare appena posso presto.", "It's useful to be nearly ready to go as soon as I can soon."]
+    ],
+    "d": {
+      "2": [
+        ["appena posso", "as soon as I can"],
+        ["parlare appena posso", "to speak as soon as I can"]
+      ],
+      "3": [
+        ["Non vedo l'ora di parlare appena posso", "I'm looking forward to speaking as soon as I can"],
+        ["parlare meglio appena posso", "to speak better as soon as I can"]
+      ],
+      "4": [
+        ["Non vedo l'ora di parlare meglio appena posso", "I'm looking forward to speaking better as soon as I can"],
+        ["Voglio iniziare a imparare appena posso", "I want to start learning as soon as I can"]
+      ],
+      "5": [
+        ["Non vedo l'ora di parlare meglio appena posso", "I'm looking forward to speaking better as soon as I can"],
+        ["Voglio iniziare a imparare il suo nome appena posso", "I want to start learning their name as soon as I can"]
+      ]
+    }
+  },
+  "S0029F01": {
+    "lego": ["vedere", "to see"],
+    "e": [
+      ["Non vedo l'ora di parlare meglio appena posso.", "I'm looking forward to speaking better as soon as I can."],
+      ["Voglio vedere persone che parlano italiano oggi con te.", "I want to see people who speak Italian today with you."],
+      ["Mi piace vedere il suo nome rapidamente adesso stasera.", "I like seeing their name quickly now this evening."],
+      ["Sto tentando di vedere qualcosa in italiano domani con persone.", "I'm trying to see something in Italian tomorrow with people."],
+      ["È utile vedere dopo che finisci presto oggi.", "It's useful to see after you finish soon today."]
+    ],
+    "d": {
+      "2": [
+        ["Non vedo", "I don't see"],
+        ["Voglio vedere", "I want to see"]
+      ],
+      "3": [
+        ["Non vedo l'ora di", "I'm looking forward to"],
+        ["Voglio vedere persone", "I want to see people"]
+      ],
+      "4": [
+        ["Non vedo l'ora di parlare meglio", "I'm looking forward to speaking better"],
+        ["Voglio vedere persone che parlano", "I want to see people who speak"]
+      ],
+      "5": [
+        ["Non vedo l'ora di parlare meglio appena posso", "I'm looking forward to speaking better as soon as I can"],
+        ["Voglio vedere persone che parlano italiano", "I want to see people who speak Italian"]
+      ]
+    }
+  },
+  "S0029F02": {
+    "lego": ["potere", "can"],
+    "e": [
+      ["Non vedo l'ora di parlare meglio appena posso.", "I'm looking forward to speaking better as soon as I can."],
+      ["Voglio potere ricordare il suo nome facilmente oggi con persone.", "I want to be able to remember their name easily today with people."],
+      ["Mi piace potere iniziare a parlare di più adesso.", "I like being able to start speaking more now."],
+      ["Non sono sicuro se posso potere incontrare persone domani stasera.", "I'm not sure if I can be able to meet people tomorrow this evening."],
+      ["È utile potere rispondere in italiano rapidamente presto oggi.", "It's useful to be able to answer in Italian quickly soon today."]
+    ],
+    "d": {
+      "2": [
+        ["appena posso", "as soon as I can"],
+        ["Voglio potere", "I want to be able"]
+      ],
+      "3": [
+        ["parlare meglio appena posso", "to speak better as soon as I can"],
+        ["Voglio potere ricordare", "I want to be able to remember"]
+      ],
+      "4": [
+        ["Non vedo l'ora di parlare appena posso", "I'm looking forward to speaking as soon as I can"],
+        ["Voglio potere ricordare il suo nome", "I want to be able to remember their name"]
+      ],
+      "5": [
+        ["Non vedo l'ora di parlare meglio appena posso", "I'm looking forward to speaking better as soon as I can"],
+        ["Voglio potere ricordare il suo nome facilmente", "I want to be able to remember their name easily"]
+      ]
+    }
+  },
+  "S0030L01": {
+    "lego": ["Volevo", "I wanted"],
+    "e": [
+      ["Volevo domandarti qualcosa ieri.", "I wanted to ask you something yesterday."],
+      ["Volevo parlare italiano con persone tutto il giorno oggi stasera.", "I wanted to speak Italian with people all day today this evening."],
+      ["Volevo tentare di imparare il suo nome rapidamente adesso.", "I wanted to try to learn their name quickly now."],
+      ["Volevo incontrare qualcun altro dopo che finisci domani con te.", "I wanted to meet someone else after you finish tomorrow with you."],
+      ["Volevo essere quasi pronto per rispondere meglio presto oggi.", "I wanted to be nearly ready to answer better soon today."]
+    ],
+    "d": {
+      "2": [
+        ["Volevo domandarti", "I wanted to ask you"],
+        ["Volevo parlare", "I wanted to speak"]
+      ],
+      "3": [
+        ["Volevo domandarti qualcosa", "I wanted to ask you something"],
+        ["Volevo parlare italiano", "I wanted to speak Italian"]
+      ],
+      "4": [
+        ["Volevo domandarti qualcosa ieri", "I wanted to ask you something yesterday"],
+        ["Volevo parlare italiano con persone", "I wanted to speak Italian with people"]
+      ],
+      "5": [
+        ["Volevo domandarti qualcosa ieri", "I wanted to ask you something yesterday"],
+        ["Volevo parlare italiano con persone tutto il giorno", "I wanted to speak Italian with people all day"]
+      ]
+    }
+  },
+  "S0030L02": {
+    "lego": ["domandarti", "to ask you"],
+    "e": [
+      ["Volevo domandarti qualcosa ieri.", "I wanted to ask you something yesterday."],
+      ["Voglio domandarti il suo nome rapidamente oggi con persone.", "I want to ask you their name quickly today with people."],
+      ["Mi piacerebbe domandarti dopo che finisci adesso stasera.", "I'd like to ask you after you finish now this evening."],
+      ["Sto tentando di domandarti in italiano domani con te.", "I'm trying to ask you in Italian tomorrow with you."],
+      ["Non mi piace domandarti troppo tempo per rispondere presto.", "I don't like asking you too much time to answer soon."]
+    ],
+    "d": {
+      "2": [
+        ["Volevo domandarti", "I wanted to ask you"],
+        ["domandarti qualcosa", "to ask you something"]
+      ],
+      "3": [
+        ["Volevo domandarti qualcosa", "I wanted to ask you something"],
+        ["Voglio domandarti il suo nome", "I want to ask you their name"]
+      ],
+      "4": [
+        ["Volevo domandarti qualcosa ieri", "I wanted to ask you something yesterday"],
+        ["Voglio domandarti il suo nome rapidamente", "I want to ask you their name quickly"]
+      ],
+      "5": [
+        ["Volevo domandarti qualcosa ieri", "I wanted to ask you something yesterday"],
+        ["Voglio domandarti il suo nome rapidamente oggi", "I want to ask you their name quickly today"]
+      ]
+    }
+  },
+  "S0030L03": {
+    "lego": ["qualcosa", "something"],
+    "e": [
+      ["Volevo domandarti qualcosa ieri.", "I wanted to ask you something yesterday."],
+      ["Voglio dire qualcosa in italiano oggi con persone.", "I want to say something in Italian today with people."],
+      ["Come dire qualcosa con persone che parlano adesso stasera.", "How to say something with people who speak now this evening."],
+      ["Mi piace tentare di imparare qualcosa rapidamente domani.", "I like trying to learn something quickly tomorrow."],
+      ["Sto per iniziare a ricordare qualcosa meglio presto con te.", "I'm going to start remembering something better soon with you."]
+    ],
+    "d": {
+      "2": [
+        ["domandarti qualcosa", "to ask you something"],
+        ["dire qualcosa", "to say something"]
+      ],
+      "3": [
+        ["Volevo domandarti qualcosa", "I wanted to ask you something"],
+        ["Voglio dire qualcosa", "I want to say something"]
+      ],
+      "4": [
+        ["Volevo domandarti qualcosa ieri", "I wanted to ask you something yesterday"],
+        ["Voglio dire qualcosa in italiano", "I want to say something in Italian"]
+      ],
+      "5": [
+        ["Volevo domandarti qualcosa ieri", "I wanted to ask you something yesterday"],
+        ["Come dire qualcosa con persone che parlano", "How to say something with people who speak"]
+      ]
+    }
+  },
+  "S0030L04": {
+    "lego": ["ieri", "yesterday"],
+    "e": [
+      ["Volevo domandarti qualcosa ieri.", "I wanted to ask you something yesterday."],
+      ["Volevo parlare italiano con te ieri oggi con persone.", "I wanted to speak Italian with you yesterday today with people."],
+      ["Mi piace tentare di ricordare il suo nome ieri stasera.", "I like trying to remember their name yesterday this evening."],
+      ["Stai imparando a parlare meglio ieri adesso con te.", "You are learning to speak better yesterday now with you."],
+      ["È utile incontrare persone che parlano ieri domani presto.", "It's useful to meet people who speak yesterday tomorrow soon."]
+    ],
+    "d": {
+      "2": [
+        ["qualcosa ieri", "something yesterday"],
+        ["parlare ieri", "to speak yesterday"]
+      ],
+      "3": [
+        ["Volevo domandarti qualcosa ieri", "I wanted to ask you something yesterday"],
+        ["Volevo parlare ieri", "I wanted to speak yesterday"]
+      ],
+      "4": [
+        ["Volevo domandarti qualcosa ieri", "I wanted to ask you something yesterday"],
+        ["Volevo parlare italiano con te ieri", "I wanted to speak Italian with you yesterday"]
+      ],
+      "5": [
+        ["Volevo domandarti qualcosa ieri", "I wanted to ask you something yesterday"],
+        ["Mi piace tentare di ricordare il suo nome ieri", "I like trying to remember their name yesterday"]
+      ]
     }
   }
 }

@@ -2,6 +2,13 @@
   <div class="lego-basket-phrase-viewer min-h-screen bg-slate-900 text-slate-100 p-6">
     <!-- Header -->
     <div class="max-w-7xl mx-auto mb-8">
+      <router-link
+        to="/"
+        class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition mb-4"
+      >
+        <span>←</span>
+        <span>Back to Dashboard</span>
+      </router-link>
       <h1 class="text-3xl font-bold text-emerald-400 mb-2">LEGO → BASKET Practice Phrases</h1>
       <p class="text-slate-400">
         View d-phrases (debut) and e-phrases (eternal) for each LEGO_PAIR
@@ -18,8 +25,10 @@
             @change="loadLegos"
             class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-2 text-slate-100 focus:outline-none focus:border-emerald-500"
           >
-            <option value="ita_for_eng_668seeds">Italian for English Speakers</option>
-            <option value="spa_for_eng_668seeds">Spanish for English Speakers</option>
+            <option value="ita_for_eng_30seeds">Italian for English Speakers</option>
+            <option value="spa_for_eng_30seeds">Spanish for English Speakers</option>
+            <option value="fra_for_eng_30seeds">French for English Speakers</option>
+            <option value="cmn_for_eng_30seeds">Mandarin for English Speakers</option>
             <option value="mkd_for_eng_574seeds">Macedonian for English Speakers</option>
           </select>
         </div>
@@ -225,7 +234,7 @@
 import { ref, onMounted } from 'vue'
 import * as api from '../services/api'
 
-const selectedCourse = ref('ita_for_eng_668seeds')
+const selectedCourse = ref('ita_for_eng_30seeds')
 const searchProvenance = ref('')
 const allLegos = ref([])
 const filteredLegos = ref([])
