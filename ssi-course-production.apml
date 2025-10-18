@@ -276,12 +276,13 @@ Generation 50: 99.9% quality → 0.1% flagged (novel edge cases only)
 - [ ] Move comprehensive examples to training/ directory
 - [ ] Update Skills README with lean philosophy
 
-**Phase 3: Training Dataset Infrastructure**
-- [ ] Create `skills/{phase}-skill/training/` directories
-- [ ] Build `build-training-dataset.js` - extracts patterns from approved courses
-- [ ] Build `add-corrections.js` - captures human corrections with reasoning
-- [ ] Extract training examples from existing 30-seed courses (spa, ita, fra, cmn)
-- [ ] Format: `{input: {...}, output: {...}, reasoning: "..."}`
+**Phase 3: Training Dataset Infrastructure** ✅ (COMPLETE)
+- [x] Create `skills/{phase}-skill/training/` directories
+- [x] Build `build-training-dataset.cjs` - extracts patterns from approved courses
+- [x] Build `add-correction.cjs` - captures human corrections with reasoning
+- [x] Extract training examples from existing 30-seed courses (spa, ita, fra, cmn)
+- [x] Format: `{input: {...}, output: {...}, reasoning: "..."}`
+- [x] Generated 449 training examples (115 Spanish, 115 Italian, 116 French, 103 Mandarin)
 
 **Phase 4: Validation Scripts** (Critical for QA)
 - [ ] `validate-fd.js` - FD + FCFS compliance test
@@ -354,6 +355,158 @@ Generation 50: 99.9% quality → 0.1% flagged (novel edge cases only)
 - System applies learned patterns autonomously
 - Quality maintained at 99.9%+ automatically
 - Human role: Strategic direction + edge case adjudication
+
+# =============================================================================
+# CLAUDE SKILLS: LEAN METHODOLOGY WITH PROGRESSIVE DISCLOSURE
+# =============================================================================
+
+## What Are Skills?
+
+**Skills are lean, modular methodology libraries** that replace large APML prompts with progressive disclosure.
+
+**Key Principle:** Quality comes from **model learning**, not prompt bloat.
+
+```
+❌ OLD APPROACH: Heavy APML prompts (15KB with examples)
+✅ NEW APPROACH: Lean Skills (8KB methodology) + Fine-tuned model
+```
+
+### Skills vs APML Prompts
+
+**Before (APML Prompts):**
+- 15KB prompts loaded into every agent invocation
+- Examples bloat documentation
+- Hard to maintain (must recompile registry)
+- Token inefficient
+- No progressive disclosure
+
+**After (Skills):**
+- ~8KB lean methodology
+- Examples → training dataset (in model weights)
+- Easy to maintain (edit Skills directly)
+- Token efficient (progressive loading)
+- Agent loads only what's needed
+
+### Skills Architecture
+
+```
+skills/
+├── README.md                              # Skills overview
+│
+├── lego-extraction-skill/                 # Phase 3: LEGO extraction
+│   ├── SKILL.md                          # Main skill definition
+│   ├── rules/
+│   │   ├── FD_VALIDATION.md              # FD + FCFS rules
+│   │   ├── CLASSIFICATION.md             # BASE/COMPOSITE/FEEDER
+│   │   └── COMPONENTIZATION.md           # Format guide
+│   ├── training/
+│   │   ├── build-training-dataset.cjs    # Extract patterns from approved courses
+│   │   ├── add-correction.cjs            # Capture human corrections
+│   │   └── generation-1/                 # 449 training examples
+│   └── scripts/
+│       └── validate-legos.cjs            # (Future) Validation scripts
+│
+├── introductions-skill/                   # Phase 6: Introduction generation
+│   ├── SKILL.md                          # Main skill definition
+│   ├── GENERATION_LOGIC.md               # Detailed methodology
+│   └── scripts/
+│       └── generate-introductions.cjs    # Bundled executable script
+│
+└── (more skills for other phases...)
+```
+
+### How Agents Use Skills
+
+**Progressive Disclosure Pattern:**
+
+1. **Orchestrator invokes phase:**
+   ```
+   "Use the LEGO Extraction Skill to process translations.json"
+   ```
+
+2. **Agent reads SKILL.md** (~2KB overview):
+   - Understands task: extract LEGOs
+   - Sees decision tree reference
+   - Checks quick reference
+
+3. **Agent loads rules as needed:**
+   - "Is this atomic?" → Reads CLASSIFICATION.md (5KB)
+   - "Does it pass FD?" → Reads FD_VALIDATION.md (4KB)
+   - "How to write componentization?" → Reads COMPONENTIZATION.md (3KB)
+
+4. **Agent reuses loaded knowledge:**
+   - First seed: ~14KB tokens (load all rules)
+   - Subsequent seeds: ~400 tokens (reuse knowledge)
+   - Average: ~1KB per seed (93% savings)
+
+**Total tokens:** Load once, apply many times.
+
+### Bundled Scripts Pattern
+
+Some Skills include **executable scripts** that ensure correctness:
+
+**Example: introductions-skill**
+```bash
+# Agent doesn't interpret logic - just runs script
+node skills/introductions-skill/scripts/generate-introductions.cjs \
+  --input vfs/courses/spa_for_eng_30seeds \
+  --output vfs/courses/spa_for_eng_30seeds/introductions.json
+```
+
+**Benefits:**
+- ✅ No interpretation errors (script is pre-tested)
+- ✅ Consistent across all courses
+- ✅ Faster execution (no agent interpretation needed)
+- ✅ Zero tokens for logic (script executes in bash)
+
+### Skills Integration with AI OS
+
+Skills are the **KERNEL** layer of the AI Operating System:
+
+```
+KERNEL (Skills) → Immutable methodology
+   ↓
+PROCESSING (Fine-tuned Model) → Applies learned patterns
+   ↓
+MEMORY (Training Dataset) → Extracted from Skills execution
+   ↓
+SELF-REGULATION (Validation Scripts) → Enforce Skills rules
+   ↓
+EVOLUTION (Fine-Tuning) → Model learns from corrections
+```
+
+**The loop:**
+1. Agent executes using Skills methodology
+2. Outputs validated against Skills rules
+3. Approved outputs → training dataset
+4. Corrections → training dataset (with reasoning)
+5. Model fine-tuned on dataset
+6. Next generation: Model applies learned patterns without heavy prompts
+7. Skills stay lean, model gets smarter
+
+### Current Skills Status
+
+**✅ Complete:**
+- `lego-extraction-skill` - FD + FCFS + Classification + Training dataset (449 examples)
+- `introductions-skill` - Generation logic + Bundled script
+
+**📋 Planned:**
+- `basket-generation-skill` - Phase 5: Basket creation
+- `basket-deduplication-skill` - Phase 5.5: Cross-seed deduplication
+- `pedagogical-translation-skill` - Phase 1: Generate pedagogical translations
+
+### Skills Documentation
+
+**Each Skill includes:**
+1. **SKILL.md** - Main entry point, overview, quick reference
+2. **rules/** - Detailed methodology (progressive disclosure)
+3. **training/** - Training dataset extraction and correction capture
+4. **scripts/** - (Optional) Bundled executable scripts
+5. **examples/** - (Optional) Annotated examples for reference
+
+**See:** `skills/README.md` for complete Skills documentation.
+
+**See:** `SKILLS_TRANSFORMATION.md` for before/after comparison and token savings analysis.
 
 # =============================================================================
 # HUMAN-AI COLLABORATION MODEL
@@ -1090,7 +1243,8 @@ PROMPT: |
 ## Phase 3: LEGO Decomposition
 
 NAME: "LEGO Extraction"
-PURPOSE: Extract optimal teaching phrases while enforcing FD_LOOP and FCFS rules
+PURPOSE: Extract optimal teaching phrases while enforcing FD and FCFS rules
+METHODOLOGY: See `skills/lego-extraction-skill/` for complete methodology
 INPUT:
   - vfs/amino_acids/translations/*.json
   - vfs/phase_outputs/phase_2_corpus_intelligence.json
@@ -1102,15 +1256,25 @@ BATCH_PROCESSING:
 
 CRITICAL_INTELLIGENCE:
 
-### FD_LOOP TEST (MANDATORY FOR EVERY CHUNK)
-DEFINITION: Forward-Deterministic Loop Test
-RULE: Target → Known → Target MUST BE IDENTICAL
-EXAMPLES:
-  ✅ "importante" → "important" → "importante" (IDENTICAL - PASS)
-  ❌ "bien" → "good" → "bueno" (DIFFERENT - FAIL)
+**NOTE:** Complete LEGO extraction methodology is in `skills/lego-extraction-skill/`.
+This section provides Phase 3 overview. See Skills for detailed rules and examples.
 
-PURPOSE: Ensures every LEGO chunk can be reliably translated back and forth
-WHY_CRITICAL: Prevents ambiguous mappings that confuse learners
+### FD (Functionally Deterministic) - MANDATORY FOR EVERY CHUNK
+
+**DEFINITION:** A LEGO is functionally deterministic if showing the learner the **known chunk**
+results in **exactly ONE correct target response**.
+
+**THE TEST:**
+- Learner sees: known chunk (e.g., "I want")
+- Learner must know: exactly ONE target response (e.g., "Quiero")
+- No ambiguity, no alternatives, no guessing
+
+**EXAMPLES:**
+  ✅ "Hello" → "Hola" (one and only one target)
+  ✅ "I'm trying" → "Estoy intentando" (one target)
+  ❌ "the" → ??? (could be "el", "la", "los", "las" - FAILS FD)
+
+**WHY CRITICAL:** Prevents ambiguous mappings that confuse learners. Learner must always know what to say.
 
 ### FD_LOOP GENDER AND CONTEXT NEUTRALITY
 
@@ -1160,19 +1324,24 @@ PRINCIPLE:
     3. Context addition via CHUNKING UP (create larger COMPOSITE LEGOs)
     4. NEVER leave ambiguity unresolved
 
-### FCFS RULE (First Come, First Served)
-DEFINITION: Corpus frequency determines semantic territory claiming
+### FCFS (First Come First Served) - Resolves Ambiguity
 
-UNIVERSAL PRINCIPLE:
-  Most frequent variant CLAIMS simple translation (if grammatically valid)
-  Less frequent variants must ADD context to differentiate
-  This applies to ANY language pair combination
+**DEFINITION:** When a known chunk *could* map to multiple target chunks, the **FIRST occurrence**
+in the course claims that mapping. All subsequent occurrences must **chunk up** with context to remain FD.
 
-PROCESS:
-  1. Count frequency of each mapping across ALL corpus seeds
-  2. Most frequent CLAIMS the simple mapping (if grammatically valid)
-  3. Less frequent must ADD context to differentiate
-  4. If corpus edit needed to maintain FD, NOTE it for SEED_PAIR revision
+**THE RULE:**
+- First occurrence: Claims the simple mapping (if FD passes)
+- Subsequent occurrences: Must add context to differentiate
+
+**EXAMPLE:**
+  Seed 1: "I think" → "creo" ✅ (FCFS claims)
+  Seed 15: "I think about you" → "pienso en ti" ✅ (chunked up with context)
+  NOT: "I think" → "pienso" ❌ (FCFS violation - already claimed by "creo")
+
+**WHY IT MATTERS:** Prevents learner confusion. Once "I think" → "creo" is established,
+every time learner sees "I think" alone, they know to say "creo".
+
+**See `skills/lego-extraction-skill/rules/FD_VALIDATION.md` for complete FCFS methodology.**
 
 ARTISTIC_CHOICE (Flexible mapping allowed):
   When multiple words can express the same meaning, frequency decides.
@@ -2701,6 +2870,7 @@ SUCCESS_CRITERIA:
 
 NAME: "Introductions"
 PURPOSE: Generate known-only priming phrases
+METHODOLOGY: See `skills/introductions-skill/` for complete methodology and bundled script
 INPUT:
   - vfs/amino_acids/baskets/*.json
   - vfs/amino_acids/legos_deduplicated/*.json
