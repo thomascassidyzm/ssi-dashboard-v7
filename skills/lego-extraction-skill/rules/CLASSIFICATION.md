@@ -336,6 +336,10 @@ Don't break "I'm" into "I" + "am" - it's atomic in this context.
 
 Before finalizing a LEGO classification:
 
+**Note:** "FD validation" refers to **Functional Determinism + FCFS** (First Come First Served). See [FD_VALIDATION.md](./FD_VALIDATION.md) for complete test logic. In brief:
+- **FD:** Learner sees known chunk → knows exactly ONE target response
+- **FCFS:** First occurrence of known chunk claims that mapping
+
 ### For BASE LEGOs:
 - [ ] Cannot be meaningfully broken down
 - [ ] Has pedagogical value as-is

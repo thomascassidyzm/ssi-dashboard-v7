@@ -172,14 +172,14 @@ Extract pedagogically optimal LEGO pairs from translations.
 - Examples:
   [... 30+ lines of examples ...]
 
-### Forward-Derivation Validation
+### FD (Functional Determinism) + FCFS Validation
 
-CRITICAL: All LEGOs must pass FD test.
+CRITICAL: All LEGOs must pass FD + FCFS test.
 
 **FD Test:**
-1. Does known naturally derive from target? (not reverse)
-2. Is known chunk natural, idiomatic language?
-3. Would native speaker say it this way?
+1. Learner sees known chunk → exactly ONE target response?
+2. Is this the FIRST occurrence of this known chunk? (FCFS)
+3. If not first, has it been chunked up with more context?
 
 **Valid FD Examples:**
 [... 50+ lines of valid examples ...]
@@ -239,7 +239,7 @@ Use the **LEGO Extraction Skill** to process translations.json.
 For each seed:
 1. Extract pedagogically valuable chunks
 2. Classify as BASE, COMPOSITE, or FEEDER
-3. Validate forward-derivation
+3. Validate functional determinism (FD) and FCFS
 4. Generate componentization for COMPOSITE LEGOs
 
 Output: LEGO_BREAKDOWNS_COMPLETE.json
@@ -400,25 +400,25 @@ See FD_VALIDATION.md for validation
 
 ---
 
-#### Step 3: FD Validation (FD_VALIDATION.md)
+#### Step 3: FD + FCFS Validation (FD_VALIDATION.md)
 
 **Agent loads:** +4KB (total: 11KB)
 
 **Agent reads:**
 ```markdown
-# FD Validation
+# FD Validation: Functional Determinism + FCFS
 
 Test:
-1. "Estoy intentando" → "I'm trying" ✅ Natural
-2. "I'm trying" is idiomatic English ✅
-3. Native speakers say this ✅
+1. Learner sees "I'm trying" → exactly one target? "Estoy intentando" (only one) ✅
+2. "I'm trying" hasn't been mapped before? (FCFS check) YES ✅
+3. FD passes + FCFS allows ✅
 
-PASSES FD
+PASSES FD + FCFS
 
 See COMPONENTIZATION.md for format
 ```
 
-**Agent thinks:** "FD passes. Now I need to write componentization."
+**Agent thinks:** "FD + FCFS passes. Now I need to write componentization."
 
 ---
 

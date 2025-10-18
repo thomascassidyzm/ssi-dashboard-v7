@@ -1,399 +1,486 @@
-# Forward-Derivation Validation
+# FD Validation: Functional Determinism + FCFS
 
-## Core Principle
+## Core Principles
 
-**Forward-Derivation (FD)** means the known language chunk naturally derives from the target language chunk, not the other way around.
+### FD = Functionally Deterministic
 
-**Direction:** `Target Language → Known Language`
+**Definition:** A LEGO is **functionally deterministic** if showing the learner the **known chunk** results in **exactly ONE correct target response**.
+
+**Why it matters:** If a learner sees "the" and doesn't know whether to say "el", "la", "los", or "las", the LEGO fails. The learner must **always know what to say**.
+
+### FCFS = First Come First Served
+
+**The Rule:** When a known chunk *could* map to multiple target chunks, the **FIRST occurrence** claims that mapping. All subsequent occurrences must be **chunked up** with more context to remain FD.
+
+**Why it matters:** This prevents ambiguity. Once "I think" → "creo" is established (first occurrence), every time the learner sees "I think" alone, they know to say "creo".
+
+---
 
 ## The FD Test
 
 For every LEGO pair, ask:
 
-1. **"Can I naturally translate the target chunk into the known chunk?"**
-   - YES → Passes FD
-   - NO → Fails FD
+**"If I show the learner ONLY the known chunk, do they know EXACTLY what target chunk to produce?"**
 
-2. **"Does the known chunk feel natural and idiomatic in English?"**
-   - YES → Passes FD
-   - NO → Fails FD (forced translation)
+- **YES** → FD passes ✅
+- **NO** → FD fails ❌ (chunk up or reject)
 
-3. **"Would a native speaker say it this way?"**
-   - YES → Passes FD
-   - NO → Fails FD (artificial)
+### Valid FD Examples
 
-## Valid FD Examples
-
-### Example 1: Simple Word
+#### Example 1: Simple Word
 ```
-Target: "Hola"
 Known: "Hello"
+Target: "Hola"
 ```
 
 **Test:**
-- ✅ "Hola" naturally translates to "Hello"
-- ✅ "Hello" is natural English
-- ✅ Native speakers say "Hello"
-**Result:** PASSES FD
+- Learner sees: "Hello"
+- Learner says: "Hola" (only one option)
+- **Result: PASSES FD** ✅
 
 ---
 
-### Example 2: Phrase
+#### Example 2: Phrase
 ```
-Target: "Estoy intentando"
 Known: "I'm trying"
+Target: "Estoy intentando"
 ```
 
 **Test:**
-- ✅ "Estoy intentando" naturally translates to "I'm trying"
-- ✅ "I'm trying" is natural English
-- ✅ Native speakers say "I'm trying"
-**Result:** PASSES FD
+- Learner sees: "I'm trying"
+- Learner says: "Estoy intentando" (only one option)
+- **Result: PASSES FD** ✅
 
 ---
 
-### Example 3: Idiomatic Expression
+#### Example 3: Complete Context
 ```
-Target: "no lo sé"
-Known: "I don't know"
-```
-
-**Test:**
-- ✅ "no lo sé" naturally translates to "I don't know"
-- ✅ "I don't know" is natural English
-- ✅ Native speakers say "I don't know"
-**Result:** PASSES FD
-
----
-
-### Example 4: Component Parts
-```
-Target: "la mesa"
 Known: "the table"
-
-Components:
-- "la" → "the" ✅
-- "mesa" → "table" ✅
+Target: "la mesa"
 ```
 
 **Test:**
-- ✅ "la mesa" naturally translates to "the table"
-- ✅ "the table" is natural English
-- ✅ Each component passes FD independently
-**Result:** PASSES FD
-
-## Invalid FD Examples
-
-### Example 1: Forced Translation
-```
-Target: "lo hecho"
-Known: "made it"
-```
-
-**Test:**
-- ❌ "made it" doesn't naturally come from "lo hecho"
-- ❌ Better translation would be "the done/made thing"
-- ❌ "made it" is idiomatic in English but not equivalent here
-**Result:** FAILS FD
-
-**Why it fails:**
-- "lo hecho" literally means "the done" (past participle)
-- "made it" is an English idiom meaning "succeeded"
-- The semantic mapping is forced, not natural
+- Learner sees: "the table"
+- Learner says: "la mesa" (only one option - context determines gender)
+- **Result: PASSES FD** ✅
 
 ---
 
-### Example 2: Reverse Derivation
+### Invalid FD Examples
+
+#### Example 1: Ambiguous Article
 ```
-Target: "I'm trying"
-Known: "Estoy intentando"
-```
-
-**Test:**
-- ❌ This is BACKWARDS (English → Spanish)
-- ❌ Should be: Target = Spanish, Known = English
-**Result:** FAILS FD (wrong direction)
-
-**Correct:**
-```
-Target: "Estoy intentando"
-Known: "I'm trying"
-```
-
----
-
-### Example 3: Unnatural Known Chunk
-```
-Target: "sé lo no"
-Known: "know it not"
-```
-
-**Test:**
-- ❌ "know it not" is archaic/unnatural English
-- ❌ Native speakers don't say this
-- ❌ Feels forced and artificial
-**Result:** FAILS FD
-
-**Correct:**
-```
-Target: "no lo sé"
-Known: "I don't know"
-```
-
----
-
-### Example 4: Meaningless Component
-```
-Target: "que bueno"
-Known: "how good"
-
-Attempting to extract:
-- "que" → "how" ✅ (valid)
-- "bueno" → "good" ✅ (valid)
-```
-
-**But also considering:**
-```
-- "que" → "that" (in different context)
-```
-
-**Problem:**
-- "que" in isolation is too abstract
-- Without context, learner can't use "que" meaningfully
-- Better to keep "que bueno" as BASE LEGO
-
-**Result:** "que" alone FAILS pedagogical FD test
-
-## FD Validation for COMPOSITE LEGOs
-
-When validating COMPOSITE LEGOs, you must check:
-
-1. **Parent LEGO passes FD**
-2. **Each FEEDER passes FD independently**
-3. **Components combine naturally**
-
-### Example: Valid COMPOSITE FD
-
-```json
-{
-  "lego_type": "COMPOSITE",
-  "target_chunk": "no lo",
-  "known_chunk": "not it",
-  "componentization": "not it = no lo, where no = not and lo = it"
-}
-```
-
-**Parent FD Test:**
-- ✅ "no lo" → "not it" is natural
-
-**FEEDER FD Tests:**
-```
-"no" → "not" ✅ Natural
-"lo" → "it" ✅ Natural
-```
-
-**Combination Test:**
-- ✅ "not" + "it" = "not it" (natural English)
-- ✅ Components map clearly to parent
-
-**Result:** PASSES FD completely
-
----
-
-### Example: Invalid COMPOSITE FD
-
-```json
-{
-  "lego_type": "COMPOSITE",
-  "target_chunk": "me lo",
-  "known_chunk": "to me it",
-  "componentization": "to me it = me lo, where me = to me and lo = it"
-}
-```
-
-**Parent FD Test:**
-- ❌ "to me it" is unnatural English
-- ❌ Should be "it to me" or just context-dependent
-
-**FEEDER FD Test:**
-```
-"me" → "to me" ❌ Forced (missing context)
-"lo" → "it" ✅ Natural
-```
-
-**Result:** FAILS FD (unnatural known chunk)
-
-## Special Cases
-
-### Case 1: Pronouns and Particles
-
-**Example:** "lo" → "it"
-
-**Question:** Does this pass FD?
-
-**Answer:** YES, in most contexts
-
-**But watch for:**
-- Abstract particles like "que" (that/which/what) - may be too vague
-- Contextual particles that change meaning
-
-**Test:** Can the learner use this chunk in a sentence?
-- "lo" → "it" ✅ Yes ("I want it" = "Lo quiero")
-- "que" → "that" ❌ Too ambiguous without context
-
----
-
-### Case 2: Grammatical Transformations
-
-**Example:**
-```
-Target: "hablando"
-Known: "speaking"
-```
-
-**Question:** Is this FD valid even though English uses "-ing"?
-
-**Answer:** YES
-
-**Reasoning:**
-- "hablando" naturally translates to "speaking"
-- Both are present participles in their languages
-- The grammatical form is preserved
-- Native speakers use "speaking"
-
----
-
-### Case 3: Multi-word Idioms
-
-**Example:**
-```
-Target: "qué tal"
-Known: "how's it going"
-```
-
-**Question:** Does this pass FD?
-
-**Answer:** YES (if treating as BASE), but be careful
-
-**Reasoning:**
-- "qué tal" doesn't literally mean "how's it going"
-- But it's the natural, idiomatic equivalent
-- Native Spanish speakers use "qué tal" for greetings
-- Native English speakers say "how's it going"
-
-**Best practice:** Treat as BASE LEGO (don't split)
-
----
-
-### Case 4: Articles and Determiners
-
-**Example:**
-```
-Target: "la"
 Known: "the"
+Target: ???
 ```
 
-**Question:** Does this pass FD?
+**Test:**
+- Learner sees: "the"
+- Learner could say: "el" OR "la" OR "los" OR "las"
+- **Result: FAILS FD** ❌
 
-**Answer:** YES, but be careful with context
+**Why it fails:** Gender/number of following noun determines which article. Without context, learner cannot know which to use.
 
-**Reasoning:**
-- "la" is the feminine article in Spanish
-- "the" is the definite article in English
-- Straightforward mapping
+**Fix:** Only extract "the" with full context:
+```
+✅ "the table" → "la mesa" (FD passes)
+✅ "the book" → "el libro" (FD passes)
+```
 
-**But watch for:**
-- Spanish uses articles more broadly than English
-- "la casa" → "the house" ✅
-- "la vida" → "life" (no article) ❌
+---
 
-**Best practice:** Extract "la" as FEEDER from "la mesa", not standalone
+#### Example 2: Ambiguous Verb Form
+```
+Known: "I like"
+Target: ???
+```
 
-## FD Validation Checklist
+**Test:**
+- Learner sees: "I like"
+- Learner could say: "me gusta" (singular object) OR "me gustan" (plural object)
+- **Result: FAILS FD** ❌
+
+**Why it fails:** Singular/plural object determines verb form. Learner needs context.
+
+**Fix:** Include object for determinism:
+```
+✅ "I like it" → "me gusta" (FD passes)
+✅ "I like them" → "me gustan" (FD passes)
+```
+
+---
+
+#### Example 3: Multiple Verb Meanings
+```
+Known: "I think"
+Target: ???
+```
+
+**Test:**
+- Learner sees: "I think"
+- Learner could say: "creo" (believe/think an opinion) OR "pienso" (think about something)
+- **Result: FAILS FD** ❌
+
+**Why it fails:** Context determines which verb. But FCFS can save this!
+
+**Fix with FCFS:** See next section.
+
+---
+
+## The FCFS Rule
+
+### How FCFS Works
+
+When a known chunk has **multiple possible targets**, the **first seed** claims one mapping. Subsequent seeds must chunk up.
+
+### Example 1: "I think" (creo vs pienso)
+
+**Seed 1 (First occurrence):**
+```
+Translation: "I think" → "creo"
+Extract: "I think" → "creo" ✅
+Status: FCFS claims "I think" → "creo"
+```
+
+**Seed 15 (Later occurrence):**
+```
+Translation: "I think about you" → "pienso en ti"
+Problem: "I think" already mapped to "creo" (FCFS)
+Cannot extract: "I think" → "pienso" ❌
+Solution: Chunk up with context
+Extract: "I think about you" → "pienso en ti" ✅
+```
+
+**Result:**
+- Learner sees "I think" alone → says "creo" (FD maintained)
+- Learner sees "I think about you" → says "pienso en ti" (FD maintained)
+- No ambiguity ✅
+
+---
+
+### Example 2: "the" (el vs la)
+
+**Seed 3 (First occurrence):**
+```
+Translation: "the table" → "la mesa"
+Extract: "la" → "the" (as FEEDER) ✅
+Status: FCFS claims "the" → "la" (feminine article)
+```
+
+**Seed 10 (Later occurrence):**
+```
+Translation: "the book" → "el libro"
+Problem: "the" already mapped to "la" (FCFS)
+Cannot extract: "the" → "el" ❌
+Solution: Don't extract "the" from this seed
+Extract: "the book" → "el libro" (keep full phrase) ✅
+OR: Wait to introduce "el" in different context (e.g., "he" → "él")
+```
+
+**Result:**
+- Learner sees "the" alone → says "la" (FD maintained via FCFS)
+- Learner sees "the book" → says "el libro" (FD via full phrase)
+- No ambiguity ✅
+
+---
+
+### Example 3: "to be" (ser vs estar)
+
+**Seed 5 (First occurrence):**
+```
+Translation: "I am" → "Estoy"
+Extract: "I am" → "Estoy" ✅
+Status: FCFS claims "I am" → "Estoy" (estar form)
+```
+
+**Seed 20 (Later occurrence):**
+```
+Translation: "I am a teacher" → "Soy un profesor"
+Problem: "I am" already mapped to "Estoy" (FCFS)
+Cannot extract: "I am" → "Soy" ❌
+Solution: Chunk up with context
+Extract: "I am a teacher" → "Soy un profesor" ✅
+```
+
+**Result:**
+- Learner sees "I am" alone → says "Estoy" (FD via FCFS)
+- Learner sees "I am a teacher" → says "Soy un profesor" (FD via context)
+- No ambiguity ✅
+
+---
+
+## FD + FCFS Validation Process
+
+### Step 1: FD Test
+
+**Ask:** "If learner sees the known chunk, is there exactly ONE target response?"
+
+```
+Known: "Hello" → Target: ?
+Answer: "Hola" (only one) ✅ → GO TO STEP 2
+
+Known: "the" → Target: ?
+Answer: "el"? "la"? "los"? "las"? ❌ → FAILS FD, chunk up
+```
+
+### Step 2: FCFS Check
+
+**Ask:** "Has this known chunk already been mapped in an earlier seed?"
+
+```
+Check extraction history:
+- "I think" already mapped?
+  - NO → This is FIRST occurrence, extract it ✅
+  - YES → FCFS already claimed, chunk up or mark duplicate
+```
+
+### Step 3: Extract or Chunk Up
+
+**If FD passes AND FCFS allows:**
+```json
+{
+  "lego_id": "S0001L01",
+  "target_chunk": "creo",
+  "known_chunk": "I think"
+}
+```
+
+**If FD fails OR FCFS blocks:**
+```json
+{
+  "lego_id": "S0015L01",
+  "target_chunk": "pienso en ti",
+  "known_chunk": "I think about you"
+}
+```
+
+---
+
+## Chunking Up Strategies
+
+When FCFS blocks extraction or FD fails, add context to make it deterministic:
+
+### Strategy 1: Add Object
+```
+❌ "I like" → "me gustan" (blocked by FCFS or FD)
+✅ "I like them" → "me gustan" (chunked up)
+```
+
+### Strategy 2: Add Prepositional Phrase
+```
+❌ "I think" → "pienso" (blocked by FCFS)
+✅ "I think about" → "pienso en" (chunked up)
+```
+
+### Strategy 3: Add Complement
+```
+❌ "I am" → "Soy" (blocked by FCFS)
+✅ "I am a teacher" → "Soy un profesor" (chunked up)
+```
+
+### Strategy 4: Keep Full Phrase
+```
+❌ "the" → "el" (blocked by FCFS)
+✅ "the book" → "el libro" (keep full phrase, don't extract article)
+```
+
+---
+
+## Provenance Map Connection
+
+**Phase 5.5 (Deduplication)** creates a provenance map that enforces FCFS:
+
+```json
+{
+  "S0015F01": "S0001L02"
+}
+```
+
+**Meaning:**
+- `S0015F01` tried to map "the" → "el"
+- But `S0001L02` already mapped "the" → "la" (FCFS)
+- Mark `S0015F01` as duplicate of `S0001L02`
+
+**In Phase 6 (Introductions):**
+```javascript
+if (provenanceMap["S0015F01"]) {
+  console.log("SKIP S0015F01: duplicate of S0001L02");
+  continue; // Don't create introduction for duplicate
+}
+```
+
+**The provenance map is the enforcement mechanism for FCFS + FD.**
+
+---
+
+## FD + FCFS Validation Checklist
 
 Before approving any LEGO:
 
-- [ ] Target chunk is in target language
-- [ ] Known chunk is in known language
-- [ ] Known chunk naturally derives from target chunk (not reverse)
-- [ ] Known chunk uses natural, idiomatic language
-- [ ] Native speakers would say the known chunk this way
-- [ ] If COMPOSITE: all FEEDERs pass FD independently
-- [ ] If COMPOSITE: FEEDERs combine naturally to form parent
-- [ ] No forced or artificial translations
-- [ ] No archaic or unnatural known chunks
-- [ ] Semantic mapping is clear and direct
+- [ ] **FD Test:** Show learner known chunk → exactly ONE target response?
+- [ ] **FCFS Check:** Is this the first occurrence of this known chunk?
+- [ ] **If FCFS blocked:** Have I chunked up with enough context?
+- [ ] **Determinism confirmed:** No possible ambiguity for learner?
+- [ ] **Natural language:** Both chunks feel natural in their languages?
+- [ ] **Pedagogical value:** Chunk is reusable and generalizable?
 
-## Common FD Violations
+---
 
-### ❌ Violation 1: Reverse Direction
+## Common FD Violations and Fixes
+
+### ❌ Violation 1: Ambiguous Articles
+
+**Bad:**
 ```
-Target: "Hello"
-Known: "Hola"
+"the" → "el"  (learner doesn't know when to use this vs "la")
 ```
-**Fix:** Swap them!
+
+**Good:**
 ```
-Target: "Hola"
-Known: "Hello"
+First occurrence:  "the table" → "la mesa" (FCFS claims "la")
+Later occurrences: "the book" → "el libro" (full phrase, not just "the")
 ```
 
 ---
 
-### ❌ Violation 2: Unnatural Known Chunk
+### ❌ Violation 2: Ambiguous Verbs
+
+**Bad:**
 ```
-Target: "no lo sé"
-Known: "not it I-know"
+Seed 1: "I think" → "creo" ✅ (FCFS)
+Seed 15: "I think" → "pienso" ❌ (violates FCFS)
 ```
-**Fix:** Use natural English
+
+**Good:**
 ```
-Target: "no lo sé"
-Known: "I don't know"
+Seed 1: "I think" → "creo" ✅ (FCFS claims)
+Seed 15: "I think about you" → "pienso en ti" ✅ (chunked up)
 ```
 
 ---
 
-### ❌ Violation 3: Forced Semantic Mapping
-```
-Target: "que"
-Known: "that"
-```
-(Without context, too ambiguous)
+### ❌ Violation 3: Ignoring FCFS
 
-**Fix:** Only extract in meaningful context
+**Bad:**
 ```
-Target: "que bueno"
-Known: "how good"
-(Keep as BASE, don't split)
+Both extracted as separate LEGOs:
+- "I am" → "Estoy"
+- "I am" → "Soy"
+```
+
+**Good:**
+```
+FCFS resolution:
+- "I am" → "Estoy" ✅ (first occurrence)
+- "I am a teacher" → "Soy un profesor" ✅ (chunked up)
 ```
 
 ---
 
-### ❌ Violation 4: Component Doesn't Match Parent
-```
-COMPOSITE:
-Target: "no lo sé"
-Known: "I don't know"
+### ❌ Violation 4: Missing Context
 
-FEEDER:
-Target: "no"
-Known: "don't"
+**Bad:**
+```
+"I like" → "me gustan" (learner doesn't know singular vs plural)
 ```
 
-**Fix:** Align components properly
+**Good:**
 ```
-FEEDER:
-Target: "no"
-Known: "not" (or "no")
+"I like them" → "me gustan" (plural object makes it deterministic)
 ```
+
+---
+
+## Language-Specific FD Challenges
+
+### Spanish
+
+**Common FD issues:**
+- Articles: el/la/los/las
+- Verb forms: ser/estar, saber/conocer
+- Object pronouns: lo/la/los/las
+- Verb conjugations based on subject
+
+**FCFS strategy:** First occurrence claims basic form, chunk up later
+
+---
+
+### Italian
+
+**Common FD issues:**
+- Articles: il/lo/la/i/gli/le
+- Preposition + article contractions: del/dello/della/etc.
+- Verb forms: essere/stare
+
+**FCFS strategy:** Same as Spanish
+
+---
+
+### French
+
+**Common FD issues:**
+- Articles: le/la/les
+- Contractions: du/de la/des, au/à la/aux
+- Verb forms: être/avoir
+
+**FCFS strategy:** Same as Spanish
+
+---
+
+### Mandarin
+
+**Common FD issues:**
+- Measure words: 个/只/本/张 (context-dependent)
+- Aspect markers: 了/过/着 (semantic differences)
+- Question particles: 吗/呢
+
+**FCFS strategy:** First occurrence claims basic form
+
+---
 
 ## FD Quick Reference
 
-**ASK YOURSELF:**
+**Ask yourself:**
 
-1. **Direction correct?** Target → Known ✅
-2. **Natural English?** Would a native speaker say it? ✅
-3. **Clear mapping?** Meaning preserved both directions? ✅
-4. **Not forced?** Translation feels natural, not contrived? ✅
+1. **Determinism:** Learner sees known chunk → exactly ONE target? ✅
+2. **FCFS:** Is this the FIRST time this known chunk appears? ✅
+3. **If blocked:** Have I chunked up with enough context? ✅
+4. **No ambiguity:** Learner always knows what to say? ✅
 
-**If ALL four are YES → PASSES FD**
-**If ANY are NO → FAILS FD**
+**If all YES → EXTRACT**
+**If any NO → CHUNK UP or REJECT**
+
+---
+
+## Examples Summary
+
+### ✅ PASSES FD + FCFS
+
+```
+"Hello" → "Hola" (deterministic, no alternatives)
+"I'm trying" → "Estoy intentando" (deterministic)
+"I think" → "creo" (first occurrence, FCFS claims it)
+"the table" → "la mesa" (context makes it deterministic)
+```
+
+### ❌ FAILS FD
+
+```
+"the" → "el" (could be la/los/las)
+"I like" → "me gustan" (could be gusta with singular)
+"I am" → "Soy" (if "Estoy" already claimed by FCFS)
+```
+
+### ✅ CHUNKED UP (FD Restored)
+
+```
+"I think about you" → "pienso en ti" (chunked up from "I think")
+"I like them" → "me gustan" (chunked up from "I like")
+"I am a teacher" → "Soy un profesor" (chunked up from "I am")
+"the book" → "el libro" (full phrase instead of just "the")
+```
+
+---
+
+**FD = Functionally Deterministic: One known → One target, always**
+**FCFS = First Come First Served: First occurrence wins the mapping**

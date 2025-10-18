@@ -108,7 +108,7 @@ lego-extraction-skill/
 ├── SKILL.md                     # Main skill definition
 ├── rules/
 │   ├── CLASSIFICATION.md        # BASE/COMPOSITE/FEEDER decision tree
-│   ├── FD_VALIDATION.md         # Forward-derivation test
+│   ├── FD_VALIDATION.md         # Functional determinism + FCFS test
 │   ├── COMPONENTIZATION.md      # How to explain COMPOSITE breakdown
 │   └── QUALITY_HEURISTICS.md    # 6 quality filters (TODO)
 ├── schemas/
@@ -129,7 +129,7 @@ Use the LEGO Extraction Skill to process translations.json.
 For each seed:
 1. Extract pedagogically valuable chunks
 2. Classify as BASE, COMPOSITE, or FEEDER
-3. Validate forward-derivation
+3. Validate functional determinism (FD) and FCFS
 4. Generate componentization for COMPOSITE LEGOs
 
 The skill provides complete decision tree and validation logic.
@@ -227,17 +227,17 @@ Decision Tree:
 
 **Step 3: Agent reads FD_VALIDATION.md**
 ```markdown
-# Forward-Derivation Validation
+# FD Validation: Functional Determinism + FCFS
 
-Test: Does known naturally derive from target?
-1. "Estoy intentando" → "I'm trying" ✅
-2. "I'm trying" is natural English ✅
-3. Passes FD ✅
+Test: Learner sees known chunk → exactly ONE target response?
+1. "I'm trying" → "Estoy intentando" (only one) ✅
+2. "I'm trying" hasn't been mapped before (FCFS allows) ✅
+3. Passes FD + FCFS ✅
 
 See COMPONENTIZATION.md for how to explain breakdown
 ```
 
-**Agent thinks:** "FD passes. Now I need componentization."
+**Agent thinks:** "FD + FCFS passes. Now I need componentization."
 
 ---
 
@@ -286,8 +286,8 @@ CLASSIFICATION RULES:
   - Has parent_lego_id
   - Examples: "Estoy" → "I'm" (from S0002L01)
 
-FORWARD-DERIVATION VALIDATION:
-[... 3KB of FD rules ...]
+FD (FUNCTIONAL DETERMINISM) + FCFS VALIDATION:
+[... 3KB of FD + FCFS rules ...]
 
 COMPONENTIZATION GUIDELINES:
 [... 2KB of componentization examples ...]
@@ -321,7 +321,7 @@ Output: LEGO_BREAKDOWNS_COMPLETE.json
 
 The skill provides:
 - BASE/COMPOSITE/FEEDER classification logic
-- Forward-derivation validation rules
+- Functional determinism (FD) + FCFS validation rules
 - Componentization guidelines
 - Quality heuristics
 - Complete schemas and examples
