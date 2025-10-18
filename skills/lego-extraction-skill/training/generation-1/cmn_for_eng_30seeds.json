@@ -2056,11 +2056,88 @@
         "componentization": "something = 一些事, where 一些 = some and 事 = thing"
       },
       "reasoning": "FD passes: Learner sees \"something\" → exactly one target \"一些事\". No alternatives, deterministic. FCFS allows: First occurrence of \"something\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0022",
+        "target": "因为我想认识说中文的人。",
+        "known": "Because I want to meet people who speak Chinese.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Mandarin",
+          "known_language": "English"
+        },
+        "incorrect_output": {
+          "lego_id": "S0022L02",
+          "lego_type": "BASE",
+          "target_chunk": "认识",
+          "known_chunk": "to meet"
+        }
+      },
+      "output": {
+        "lego_id": "S0022L02",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "认识新朋友",
+        "known_chunk": "to meet someone new",
+        "componentization": "to meet someone new = 认识新朋友, where 认识 = to know/meet and 新朋友 = new friend"
+      },
+      "reasoning": "FCFS violation: to",
+      "metadata": {
+        "correction_type": "human_review",
+        "error_type": "FCFS_VIOLATION",
+        "corrected_at": "2025-10-18T19:59:24.051Z",
+        "learning_priority": "high"
+      }
+    },
+    {
+      "input": {
+        "seed_id": "S0010",
+        "target": "我不确定我能不能记得整个句子。",
+        "known": "I'm not sure if I can remember the whole sentence.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Mandarin",
+          "known_language": "English"
+        },
+        "incorrect_output": {
+          "lego_id": "S0010L03",
+          "lego_type": "BASE",
+          "target_chunk": "记得",
+          "known_chunk": "to remember"
+        }
+      },
+      "output": {
+        "lego_id": "S0010L03",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "记得做某事",
+        "known_chunk": "to remember to do something",
+        "componentization": "to remember to do something = 记得做某事, where 记得 = to remember and 做某事 = to do something"
+      },
+      "reasoning": "FCFS violation: to",
+      "metadata": {
+        "correction_type": "human_review",
+        "error_type": "FCFS_VIOLATION",
+        "corrected_at": "2025-10-18T19:59:24.074Z",
+        "learning_priority": "high"
+      }
     }
   ],
   "stats": {
-    "total_examples": 103,
+    "total_examples": 105,
     "lego_examples": 92,
-    "feeder_examples": 11
-  }
+    "feeder_examples": 11,
+    "corrections": 2
+  },
+  "corrections_added": [
+    {
+      "date": "2025-10-18T19:59:24.053Z",
+      "error_type": "FCFS_VIOLATION",
+      "seed_id": "S0022"
+    },
+    {
+      "date": "2025-10-18T19:59:24.075Z",
+      "error_type": "FCFS_VIOLATION",
+      "seed_id": "S0010"
+    }
+  ]
 }

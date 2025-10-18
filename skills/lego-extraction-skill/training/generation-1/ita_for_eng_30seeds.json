@@ -2282,11 +2282,51 @@
         "componentization": null
       },
       "reasoning": "FD passes: Learner sees \"yesterday\" → exactly one target \"ieri\". No alternatives, deterministic. FCFS allows: First occurrence of \"yesterday\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0022",
+        "target": "Perché voglio incontrare persone che parlano italiano.",
+        "known": "Because I want to meet people who speak Italian.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Italian",
+          "known_language": "English"
+        },
+        "incorrect_output": {
+          "lego_id": "S0022L02",
+          "lego_type": "BASE",
+          "target_chunk": "incontrare",
+          "known_chunk": "to meet"
+        }
+      },
+      "output": {
+        "lego_id": "S0022L02",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "incontrare qualcuno",
+        "known_chunk": "to meet someone",
+        "componentization": "to meet someone = incontrare qualcuno, where incontrare = to meet and qualcuno = someone"
+      },
+      "reasoning": "FCFS violation: to",
+      "metadata": {
+        "correction_type": "human_review",
+        "error_type": "FCFS_VIOLATION",
+        "corrected_at": "2025-10-18T19:59:24.027Z",
+        "learning_priority": "high"
+      }
     }
   ],
   "stats": {
-    "total_examples": 115,
+    "total_examples": 116,
     "lego_examples": 90,
-    "feeder_examples": 25
-  }
+    "feeder_examples": 25,
+    "corrections": 1
+  },
+  "corrections_added": [
+    {
+      "date": "2025-10-18T19:59:24.028Z",
+      "error_type": "FCFS_VIOLATION",
+      "seed_id": "S0022"
+    }
+  ]
 }
