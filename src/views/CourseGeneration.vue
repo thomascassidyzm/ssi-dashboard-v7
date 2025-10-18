@@ -179,7 +179,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import api from '../services/api'
+import api, { apiClient } from '../services/api'
 
 // State
 const knownLanguage = ref('eng')
@@ -231,7 +231,7 @@ const currentPhaseIndex = computed(() => {
 const loadLanguages = async () => {
   languagesLoading.value = true
   try {
-    const response = await api.get('/api/languages')
+    const response = await apiClient.get('/api/languages')
     targetLanguages.value = response.data
     knownLanguages.value = response.data
   } catch (error) {
