@@ -8,6 +8,7 @@ import CourseGeneration from '../views/CourseGeneration.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
 import TerminologyGlossary from '../views/TerminologyGlossary.vue'
+import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
 
 // Quality Review Components
 import QualityDashboard from '../components/quality/QualityDashboard.vue'
@@ -101,6 +102,14 @@ const routes = [
     component: () => import('../components/quality/LearnedRulesView.vue'),
     props: true,
     meta: { title: 'Self-Learning Rules' }
+  },
+
+  // Recursive Up-Regulation
+  {
+    path: '/recursive-upregulation',
+    name: 'RecursiveUpregulation',
+    component: RecursiveUpregulation,
+    meta: { title: 'Recursive Up-Regulation' }
   },
 
   {

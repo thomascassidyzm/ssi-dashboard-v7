@@ -55,7 +55,7 @@
       <!-- Quality Review & Self-Healing -->
       <section class="mb-12">
         <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Quality Review & Self-Healing</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
           <!-- Quality Dashboard Card -->
           <router-link to="/quality/cym_for_eng_574seeds"
@@ -89,6 +89,21 @@
             </p>
             <div class="text-emerald-400 group-hover:translate-x-1 transition">
               View Evolution Log →
+            </div>
+          </router-link>
+
+          <!-- Recursive Up-Regulation Card -->
+          <router-link to="/recursive-upregulation"
+                       class="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border border-purple-400/30 rounded-lg p-6 hover:border-purple-500/60 transition group">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="text-3xl">🧠</div>
+              <h3 class="text-xl font-semibold text-purple-200">Recursive Up-Regulation</h3>
+            </div>
+            <p class="text-purple-200/80 mb-4">
+              AI OS self-improvement: Track generations, fine-tune models, prove self-healing
+            </p>
+            <div class="text-purple-300 group-hover:translate-x-1 transition">
+              View AI OS Dashboard →
             </div>
           </router-link>
 

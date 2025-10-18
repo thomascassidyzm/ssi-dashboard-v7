@@ -2769,6 +2769,216 @@ app.get('/api/apml/full', async (req, res) => {
 });
 
 // =============================================================================
+// RECURSIVE UP-REGULATION / FINE-TUNING API
+// =============================================================================
+
+/**
+ * GET /api/metrics/generations
+ * Load all generation metrics for comparison
+ */
+app.get('/api/metrics/generations', async (req, res) => {
+  try {
+    const testingDir = path.join(__dirname, 'skills', 'lego-extraction-skill', 'testing');
+
+    // Load Generation 0 baseline
+    const gen0Path = path.join(testingDir, 'generation-0-baseline.json');
+    let gen0 = null;
+    if (await fs.pathExists(gen0Path)) {
+      gen0 = await fs.readJson(gen0Path);
+    }
+
+    // Load Generation 1 results (if exists)
+    const gen1Path = path.join(testingDir, 'generation-1-results.json');
+    let gen1 = null;
+    if (await fs.pathExists(gen1Path)) {
+      gen1 = await fs.readJson(gen1Path);
+    }
+
+    // Load comparison results (if exists)
+    const comparisonPath = path.join(testingDir, 'generation-comparison.json');
+    let comparison = null;
+    if (await fs.pathExists(comparisonPath)) {
+      comparison = await fs.readJson(comparisonPath);
+    }
+
+    res.json({
+      generation_0: gen0,
+      generation_1: gen1,
+      comparison: comparison,
+      current_generation: gen1 ? 1 : 0
+    });
+  } catch (error) {
+    console.error('[API] Failed to load generation metrics:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * GET /api/fine-tuning/ready
+ * Check if system is ready to start fine-tuning
+ */
+app.get('/api/fine-tuning/ready', async (req, res) => {
+  try {
+    const trainingDir = path.join(__dirname, 'skills', 'lego-extraction-skill', 'training', 'anthropic-format');
+    const testingDir = path.join(__dirname, 'skills', 'lego-extraction-skill', 'testing');
+
+    // Check prerequisites (API key will be checked by Claude Code, not Node.js)
+    const trainingDataExists = await fs.pathExists(path.join(trainingDir, 'training.jsonl'));
+    const validationDataExists = await fs.pathExists(path.join(trainingDir, 'validation.jsonl'));
+    const baselineExists = await fs.pathExists(path.join(testingDir, 'generation-0-baseline.json'));
+
+    const ready = trainingDataExists && validationDataExists && baselineExists;
+
+    res.json({
+      ready,
+      prerequisites: {
+        training_data: trainingDataExists,
+        validation_data: validationDataExists,
+        baseline_metrics: baselineExists,
+        claude_code_configured: true // Claude Code has API access
+      }
+    });
+  } catch (error) {
+    console.error('[API] Failed to check fine-tuning readiness:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * POST /api/fine-tuning/start
+ * Start fine-tuning job via Claude Code (osascript → Warp → Claude)
+ */
+app.post('/api/fine-tuning/start', async (req, res) => {
+  try {
+    const skillDir = path.join(__dirname, 'skills', 'lego-extraction-skill');
+
+    // Create prompt for Claude Code to start fine-tuning
+    const prompt = `Start the Anthropic fine-tuning job for Generation 1 LEGO extraction model.
+
+**Training Data:**
+- Training: skills/lego-extraction-skill/training/anthropic-format/training.jsonl (408 examples)
+- Validation: skills/lego-extraction-skill/training/anthropic-format/validation.jsonl (45 examples)
+
+**Task:**
+1. Read the START_FINE_TUNING.md guide: skills/lego-extraction-skill/testing/START_FINE_TUNING.md
+2. Use the Anthropic SDK to create a fine-tuning job:
+   - Base model: claude-sonnet-4-5
+   - Suffix: ssi-lego-v1
+   - Upload the training.jsonl and validation.jsonl files
+3. Save the job details to: skills/lego-extraction-skill/testing/fine-tuning-job.json
+
+Format:
+\`\`\`json
+{
+  "job_id": "the-job-id",
+  "status": "pending",
+  "model": "claude-sonnet-4-5",
+  "started_at": "2025-10-18T...",
+  "fine_tuned_model": null
+}
+\`\`\`
+
+This starts Generation 1 training to prove recursive up-regulation works!`;
+
+    // Write prompt to temp file
+    const promptFile = path.join(__dirname, `.fine-tuning-start-${Date.now()}.txt`);
+    await fs.writeFile(promptFile, prompt, 'utf8');
+
+    console.log('[Fine-Tuning] Spawning Claude Code to start fine-tuning...');
+
+    // Spawn Claude Code via osascript (same pattern as spawnPhaseAgent)
+    const { spawn } = require('child_process');
+    const appleScript = `
+tell application "Warp"
+    activate
+    tell application "System Events"
+        keystroke "t" using {command down}
+    end tell
+    delay 0.5
+    do script "cd \\"${skillDir}\\" && echo '═══════════════════════════════════════════════════════' && echo 'Fine-Tuning: Generation 1' && echo '═══════════════════════════════════════════════════════' && echo '' && cat \\"${promptFile}\\" && echo '' && echo '═══════════════════════════════════════════════════════'"
+end tell
+    `.trim();
+
+    const child = spawn('osascript', ['-e', appleScript], {
+      detached: true,
+      stdio: 'ignore'
+    });
+    child.unref();
+
+    // Clean up temp file after delay
+    setTimeout(() => {
+      fs.unlink(promptFile).catch(() => {});
+    }, 5000);
+
+    res.json({
+      success: true,
+      message: 'Fine-tuning task sent to Claude Code. Check Warp terminal for progress.',
+      note: 'Job details will be saved to: skills/lego-extraction-skill/testing/fine-tuning-job.json'
+    });
+  } catch (error) {
+    console.error('[API] Failed to start fine-tuning:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * GET /api/fine-tuning/status/:jobId
+ * Poll fine-tuning job status (reads from file written by Claude Code)
+ */
+app.get('/api/fine-tuning/status/:jobId', async (req, res) => {
+  try {
+    const jobFile = path.join(__dirname, 'skills', 'lego-extraction-skill', 'testing', 'fine-tuning-job.json');
+
+    if (!await fs.pathExists(jobFile)) {
+      return res.status(404).json({
+        error: 'Fine-tuning job file not found',
+        note: 'Job may not have started yet, or Claude Code may still be processing'
+      });
+    }
+
+    const jobData = await fs.readJson(jobFile);
+
+    res.json({
+      job_id: jobData.job_id,
+      status: jobData.status,
+      fine_tuned_model: jobData.fine_tuned_model || null,
+      created_at: jobData.started_at,
+      completed_at: jobData.completed_at || null,
+      updated_at: jobData.updated_at || null
+    });
+  } catch (error) {
+    console.error('[API] Failed to get fine-tuning status:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * POST /api/fine-tuning/compare
+ * Run A/B comparison between Generation 0 and Generation 1
+ */
+app.post('/api/fine-tuning/compare', async (req, res) => {
+  try {
+    const scriptPath = path.join(__dirname, 'skills', 'lego-extraction-skill', 'testing', 'compare-generations.cjs');
+
+    // Run comparison script
+    const { stdout, stderr } = await execAsync(`node ${scriptPath}`);
+
+    // Load comparison results
+    const comparisonPath = path.join(__dirname, 'skills', 'lego-extraction-skill', 'testing', 'generation-comparison.json');
+    const results = await fs.readJson(comparisonPath);
+
+    res.json({
+      success: true,
+      results,
+      console_output: stdout
+    });
+  } catch (error) {
+    console.error('[API] Failed to run comparison:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// =============================================================================
 // SERVER START
 // =============================================================================
 
