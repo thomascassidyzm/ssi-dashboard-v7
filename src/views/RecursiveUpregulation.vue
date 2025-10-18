@@ -3,16 +3,24 @@
     <!-- Header -->
     <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div class="flex items-center gap-3">
-          <div class="text-4xl">🧠</div>
-          <div>
-            <h1 class="text-3xl font-bold text-purple-400">
-              Recursive Up-Regulation
-            </h1>
-            <p class="mt-2 text-slate-400">
-              AI Operating System: Self-Learning & Self-Healing
-            </p>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="text-4xl">🧠</div>
+            <div>
+              <h1 class="text-3xl font-bold text-purple-400">
+                Recursive Up-Regulation
+              </h1>
+              <p class="mt-2 text-slate-400">
+                AI Operating System: Self-Learning & Self-Healing
+              </p>
+            </div>
           </div>
+          <router-link to="/" class="text-slate-400 hover:text-emerald-400 transition flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Dashboard
+          </router-link>
         </div>
       </div>
     </header>
