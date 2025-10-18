@@ -74,19 +74,286 @@ User reviews/edits, triggers regeneration
 Final JSON manifest → SSi mobile app
 ```
 
-## Self-Upregulating Intelligence
+## Self-Upregulating Intelligence: AI as Operating System
 
-This system is designed as a **recursive self-improvement loop**:
+This system is designed as a **recursive self-improvement loop** with TWO parallel learning mechanisms:
 
-1. **System executes** using APML prompts
+### Loop 1: Prompt Evolution (Methodology Improvement)
+
+1. **System executes** using lean Skills (methodology)
 2. **Quality issues detected** (human or automated review)
-3. **Prompts improved** (edited in dashboard UI)
-4. **APML updates** (git commit, registry recompile)
-5. **System learns** (documents what worked)
-6. **Next execution better** (improved prompts used)
-7. **Cycle continues** (recursive improvement)
+3. **Methodology improved** (edited in Skills documentation)
+4. **Skills updated** (git commit, no compilation needed)
+5. **System documents** (what worked, what didn't)
+6. **Next execution better** (improved methodology used)
+7. **Cycle continues** (methodology evolves)
 
-**Key Insight**: The dashboard IS the living system - not just a UI, but the published SSoT that contains the process, intelligence, training, and evolution engine.
+### Loop 2: Model Fine-Tuning (Intelligence Upregulation)
+
+1. **System executes** using fine-tuned model + Skills
+2. **Outputs validated** (automated scripts + human review)
+3. **Approved outputs** → training dataset
+4. **Human corrections** → training dataset (with reasoning)
+5. **Model fine-tuned** on expanded dataset
+6. **Model weights updated** (learned patterns internalized)
+7. **Next generation better** (same errors won't recur)
+8. **Cycle continues** (model evolves autonomously)
+
+### The AI Operating System Architecture
+
+```
+┌─────────────────────────────────────────────────────┐
+│ KERNEL (Immutable Quality Standards)                │
+│ - Skills: Lean methodology (~8KB, not 70KB)         │
+│ - FD (Functionally Deterministic): One known → one  │
+│   target, no ambiguity                              │
+│ - FCFS (First Come First Served): First occurrence  │
+│   claims mapping, later must chunk up               │
+│ - JSON schemas: Structural validation               │
+│ - Validation scripts: Automated enforcement         │
+└──────────────────┬──────────────────────────────────┘
+                   ↓
+┌─────────────────────────────────────────────────────┐
+│ PROCESSING (Fine-Tuned Model)                       │
+│ - Generation 1: Base Sonnet 4.5                     │
+│ - Generation 2: +100 corrections (90% quality)      │
+│ - Generation 5: +500 corrections (95% quality)      │
+│ - Generation 10: +1000 corrections (98% quality)    │
+│ - Generation 50: Near-perfect autonomy (99.9%)      │
+└──────────────────┬──────────────────────────────────┘
+                   ↓
+┌─────────────────────────────────────────────────────┐
+│ MEMORY (Training Dataset - System's Experience)     │
+│ - Approved course outputs (patterns that worked)    │
+│ - Human corrections (before/after + reasoning)      │
+│ - Edge cases (accumulated knowledge)                │
+│ - Grows with each generation                        │
+│ - Stored in: skills/{phase}-skill/training/         │
+└──────────────────┬──────────────────────────────────┘
+                   ↓
+┌─────────────────────────────────────────────────────┐
+│ SELF-REGULATION (Quality Gates)                     │
+│ - Validation scripts detect errors (FD, FCFS, etc)  │
+│ - Flag violations for human review (~10% → ~0.1%)   │
+│ - Block downstream phases if errors present         │
+│ - Ensure training dataset quality                   │
+└──────────────────┬──────────────────────────────────┘
+                   ↓
+┌─────────────────────────────────────────────────────┐
+│ EVOLUTION (Fine-Tuning Pipeline)                    │
+│ - Corrections → training examples                   │
+│ - Auto-retrain after each generation                │
+│ - Model weights improve (patterns internalized)     │
+│ - Quality metrics track improvement                 │
+│ - System becomes progressively autonomous           │
+└─────────────────────────────────────────────────────┘
+```
+
+### Self-Healing Mechanism
+
+**Example: FCFS Violation Detection**
+
+Generation 1 (Base Model):
+```
+Seed S0005: "I am" → "Estoy"
+Extract: "I am" → "Estoy" ✅
+
+Seed S0020: "I am a teacher" → "Soy un profesor"
+Extract: "I am" → "Soy" ❌ FCFS VIOLATION
+
+Validation script: ❌ FCFS conflict detected
+Status: FLAGGED for human review
+```
+
+Human Correction:
+```
+Error: "I am" already mapped to "Estoy" (FCFS rule)
+Fix: Extract full phrase "I am a teacher" → "Soy un profesor"
+Reasoning: When FCFS blocks, chunk up with context to restore FD
+→ Added to training dataset
+```
+
+Generation 2 (Fine-Tuned v1):
+```
+Seed S0005: "I am" → "Estoy"
+Extract: "I am" → "Estoy" ✅
+
+Seed S0020: "I am a teacher" → "Soy un profesor"
+Model checks: "I am" in extraction history? YES (FCFS blocks)
+Model applies learned pattern: Chunk up
+Extract: "I am a teacher" → "Soy un profesor" ✅
+
+Validation script: ✅ PASS
+Status: NO human review needed
+```
+
+**System healed itself.** Same error won't recur.
+
+### Progressive Autonomy (Measured by Human Intervention)
+
+```
+Generation 1:  80% quality → 20% flagged for human review
+Generation 2:  90% quality → 10% flagged for human review
+Generation 5:  95% quality → 5% flagged for human review
+Generation 10: 98% quality → 2% flagged for human review
+Generation 20: 99% quality → 1% flagged for human review
+Generation 50: 99.9% quality → 0.1% flagged (novel edge cases only)
+```
+
+**End State:** System autonomously generates courses with human oversight only on novel patterns.
+
+### Key Architectural Principles
+
+**1. Skills Stay Lean**
+- Methodology only (~8KB, not 70KB with examples)
+- Examples → training dataset (in model weights, not documentation)
+- Token efficient, progressively disclosed
+- Easy to maintain and update
+
+**2. Examples Train Model, Not Documentation**
+- Approved course outputs → training dataset
+- Human corrections → training dataset (with reasoning)
+- Model learns patterns from experience
+- Quality improves without expanding prompts
+
+**3. Validation Scripts Enforce Standards**
+- validate-fd.js: Tests FD + FCFS compliance
+- validate-classification.js: Checks BASE/COMPOSITE/FEEDER
+- validate-schema.js: JSON structure validation
+- No interpretation errors (scripts are deterministic)
+
+**4. Quality Gates Between Phases**
+- Phase 3 output → QA validation → Phase 5
+- Errors block downstream propagation
+- Prevents bad data contamination
+- Ensures training dataset quality
+
+**5. Metrics Track Evolution**
+- Quality score per generation
+- Error types and frequencies
+- Human intervention rate
+- Time to autonomy metrics
+
+### The Vision: Zero-Touch Course Production
+
+**Today (Manual):**
+- 8 hours human work per course
+- 100% outputs require review
+- Same errors repeat across generations
+
+**Generation 5 (Semi-Autonomous):**
+- 1 hour human work per course (87% reduction)
+- 10% outputs require review
+- Most errors auto-corrected
+
+**Generation 20 (Highly Autonomous):**
+- 5 minutes human work per course (99% reduction)
+- 1% outputs require review (novel edge cases only)
+- System self-corrects known patterns
+
+**Generation 50 (Fully Autonomous):**
+- 0 minutes human work per course
+- Human defines strategy (new language directions)
+- System applies learned patterns autonomously
+- Human spot-checks for quality assurance only
+
+**This is AI as Operating System** - not just automation, but a self-learning, self-healing, self-upregulating system that gets progressively smarter through experience.
+
+**Key Insight**: The dashboard publishes the SSoT (Skills + methodology), the training dataset captures experience, the fine-tuned model IS the learned intelligence, and the validation scripts enforce quality standards. Together, they form a living system that improves itself recursively.
+
+### Implementation Roadmap: Building the AI OS
+
+**Phase 1: Skills Infrastructure** ✅ (COMPLETE)
+- [x] Create Skills directory structure
+- [x] Build lego-extraction-skill with FD + FCFS methodology
+- [x] Build introductions-skill with bundled script
+- [x] Document progressive disclosure pattern
+- [x] Correct FD definition (Functionally Deterministic, not Forward-Derivation)
+
+**Phase 2: Refactor to Lean Skills** (NEXT)
+- [ ] Remove heavy examples from Skills documentation (~70KB → ~8KB)
+- [ ] Keep methodology only (1-2 canonical examples per rule)
+- [ ] Move comprehensive examples to training/ directory
+- [ ] Update Skills README with lean philosophy
+
+**Phase 3: Training Dataset Infrastructure**
+- [ ] Create `skills/{phase}-skill/training/` directories
+- [ ] Build `build-training-dataset.js` - extracts patterns from approved courses
+- [ ] Build `add-corrections.js` - captures human corrections with reasoning
+- [ ] Extract training examples from existing 30-seed courses (spa, ita, fra, cmn)
+- [ ] Format: `{input: {...}, output: {...}, reasoning: "..."}`
+
+**Phase 4: Validation Scripts** (Critical for QA)
+- [ ] `validate-fd.js` - FD + FCFS compliance test
+- [ ] `validate-fcfs.js` - Cross-reference known chunks for conflicts
+- [ ] `validate-classification.js` - BASE/COMPOSITE/FEEDER validation
+- [ ] `validate-componentization.js` - Format and content check
+- [ ] `validate-schema.js` - JSON structure validation
+- [ ] `test-cases.json` - Known good/bad test cases (50+ examples)
+
+**Phase 5: Quality Gates**
+- [ ] Phase 3 QA gate (blocks Phase 5 if errors)
+- [ ] Phase 5 QA gate (blocks Phase 6 if errors)
+- [ ] Automated error detection and flagging
+- [ ] Human review queue for flagged items
+
+**Phase 6: Correction Capture System**
+- [ ] UI for human review of flagged outputs
+- [ ] Before/after comparison interface
+- [ ] Reasoning capture (why was this corrected?)
+- [ ] Auto-add corrections to training dataset
+- [ ] Track correction patterns over time
+
+**Phase 7: Fine-Tuning Pipeline**
+- [ ] Anthropic fine-tuning API integration
+- [ ] Automated dataset preparation (approved outputs + corrections)
+- [ ] Trigger fine-tuning after N generations or M corrections
+- [ ] Model versioning (sonnet-4.5-ssi-lego-v1, v2, v3...)
+- [ ] A/B testing: base model vs fine-tuned model
+
+**Phase 8: Metrics & Evolution Tracking**
+- [ ] Quality score per generation (% passing validation)
+- [ ] Human intervention rate tracking
+- [ ] Error type frequency analysis
+- [ ] Time to autonomy metrics
+- [ ] Dashboard visualization of improvement curve
+
+**Phase 9: Autonomous Operations**
+- [ ] Auto-trigger course generation
+- [ ] Auto-validation with quality gates
+- [ ] Auto-correction of known patterns
+- [ ] Human review only for novel edge cases
+- [ ] Auto-fine-tuning pipeline
+
+**Phase 10: Multi-Language Generalization**
+- [ ] Test if patterns learned from Spanish apply to Italian
+- [ ] Test if patterns learned from Romance languages apply to Mandarin
+- [ ] Cross-language transfer learning
+- [ ] Language-agnostic pattern recognition
+
+### Success Metrics
+
+**Generation 1 → 5:**
+- Quality: 80% → 95% (+15%)
+- Human review: 20% → 5% (75% reduction)
+- Time per course: 8hrs → 1hr (87% reduction)
+
+**Generation 5 → 20:**
+- Quality: 95% → 99% (+4%)
+- Human review: 5% → 1% (80% reduction)
+- Time per course: 1hr → 5min (92% reduction)
+
+**Generation 20 → 50:**
+- Quality: 99% → 99.9% (+0.9%)
+- Human review: 1% → 0.1% (90% reduction)
+- Time per course: 5min → 0min (100% reduction - spot checks only)
+
+**Final State: Fully Autonomous AI OS**
+- System generates courses without human intervention
+- Human defines strategy (new languages, new methodologies)
+- System applies learned patterns autonomously
+- Quality maintained at 99.9%+ automatically
+- Human role: Strategic direction + edge case adjudication
 
 # =============================================================================
 # HUMAN-AI COLLABORATION MODEL
