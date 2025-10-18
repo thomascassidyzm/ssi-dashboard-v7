@@ -343,7 +343,7 @@ tell application "Warp"
         keystroke "t" using {command down}
     end tell
     delay 0.5
-    do script "cd \\"${courseDir}\\" && echo '═══════════════════════════════════════════════════════' && echo 'SSi Course Production - Phase ${phase}' && echo '═══════════════════════════════════════════════════════' && echo 'Course: ${courseCode}' && echo 'Training: ${trainingURL}' && echo '' && echo 'PROMPT:' && cat \\"${promptFile}\\" && echo '' && echo '═══════════════════════════════════════════════════════'"
+    do script "cd \\"${courseDir}\\" && echo '═══════════════════════════════════════════════════════' && echo 'SSi Course Production - Phase ${phase}' && echo '═══════════════════════════════════════════════════════' && echo 'Course: ${courseCode}' && echo 'Training: ${trainingURL}' && echo '' && echo 'PROMPT:' && cat \\"${promptFile}\\" && echo '' && echo '═══════════════════════════════════════════════════════' && echo '' && cat \\"${promptFile}\\" | claude"
 end tell
     `.trim();
 
