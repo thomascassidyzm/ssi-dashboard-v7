@@ -126,17 +126,15 @@ const STATE = {
  */
 async function ensureCourseDirectory(courseCode) {
   const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
-  const aminoAcidsDir = path.join(courseDir, 'amino_acids');
-  const proteinsDir = path.join(courseDir, 'proteins');
   const phaseOutputsDir = path.join(courseDir, 'phase_outputs');
 
-  await fs.ensureDir(path.join(aminoAcidsDir, 'translations'));
-  await fs.ensureDir(path.join(aminoAcidsDir, 'legos'));
-  await fs.ensureDir(path.join(aminoAcidsDir, 'legos_deduplicated'));
-  await fs.ensureDir(path.join(aminoAcidsDir, 'baskets'));
-  await fs.ensureDir(path.join(aminoAcidsDir, 'introductions'));
+  // New simplified structure (APML v7.3+):
+  // - translations.json (single file for all SEED_PAIRS)
+  // - baskets.json (single file for all LEGO_BASKETS including LEGOs)
+  // - phase_outputs/ (intermediate processing files)
+
+  await fs.ensureDir(courseDir);
   await fs.ensureDir(phaseOutputsDir);
-  await fs.ensureDir(proteinsDir);
 
   return courseDir;
 }
@@ -176,7 +174,7 @@ You are the **course generation orchestrator**. You will execute all 7 phases se
 **Course Directory** (Your workspace):
 \`${courseDir}\`
 - Write all outputs here
-- VFS structure pre-created (amino_acids/, phase_outputs/, proteins/)
+- VFS structure: translations.json, baskets.json, phase_outputs/
 
 **Canonical Seeds** (Input data):
 \`/Users/tomcassidy/SSi/SSi_Course_Production/vfs/seeds/canonical_seeds.json\`
@@ -186,58 +184,30 @@ You are the **course generation orchestrator**. You will execute all 7 phases se
 
 ## Phase Execution Sequence
 
-Execute phases in order. Each phase reads from APML for detailed instructions.
-
-### Phase 0: Corpus Pre-Analysis
-- **Input**: canonical_seeds.json
-- **Output**: phase_outputs/phase_0_intelligence.json
-- **Prompt**: Read from APML Phase 0 section
-- **Purpose**: Analyze corpus for pedagogical translation
+Execute phases in order. **Read APML for detailed instructions** - it contains the actual prompts and rules.
 
 ### Phase 1: Pedagogical Translation
-- **Input**: canonical_seeds.json + phase_0_intelligence.json
-- **Output**: amino_acids/translations/*.json (${seeds} files)
+- **Input**: canonical_seeds.json (first ${seeds} seeds)
+- **Output**: translations.json (single file, all SEED_PAIRS)
 - **Prompt**: Read from APML Phase 1 section
 - **Purpose**: Apply 6 heuristics, create optimized translations
 - **Critical**: Two-step process (canonical→target→known)
 
-### Phase 2: Corpus Intelligence
-- **Input**: amino_acids/translations/*.json
-- **Output**: phase_outputs/phase_2_corpus_intelligence.json
-- **Prompt**: Read from APML Phase 2 section
-- **Purpose**: Map FCFS order, calculate utility scores
-
 ### Phase 3: LEGO Extraction
-- **Input**: amino_acids/translations/*.json + phase_2_corpus_intelligence.json
-- **Output**: amino_acids/legos/*.json
-- **Prompt**: Read from APML Phase 3 section
-- **Purpose**: Extract FD-compliant LEGOs (BASE + COMPOSITE using TILING test)
-- **Critical**: FD_LOOP test, IRON RULE, TILING test
-
-### Phase 3.5: Graph Construction
-- **Input**: amino_acids/legos/*.json
-- **Output**: phase_outputs/phase_3.5_lego_graph.json
-- **Prompt**: Read from APML Phase 3.5 section
-- **Purpose**: Build adjacency graph for pattern coverage
-
-### Phase 4: Deduplication
-- **Input**: amino_acids/legos/*.json
-- **Output**: amino_acids/legos_deduplicated/*.json
-- **Prompt**: Read from APML Phase 4 section
-- **Purpose**: Merge duplicate LEGOs, preserve provenance
+- **Input**: translations.json
+- **Output**: Store LEGOs in baskets.json structure (prepare for Phase 5)
+- **Prompt**: Read from APML Phase 3 section (uses LEGO Extraction Skill)
+- **Purpose**: Extract FD-compliant LEGOs (BASE + COMPOSITE)
+- **Critical**: FD (Functionally Deterministic), FCFS (First Come First Served), TILING test
 
 ### Phase 5: Basket Generation
-- **Input**: amino_acids/legos_deduplicated/*.json + phase_3.5_lego_graph.json
-- **Output**: phase_outputs/phase_5_baskets.json
+- **Input**: LEGOs from Phase 3
+- **Output**: baskets.json (single file, all LEGO_BASKETS with e-phrases and d-phrases)
 - **Prompt**: Read from APML Phase 5 section
-- **Purpose**: Generate e-phrases + d-phrases with progressive vocabulary
+- **Purpose**: Generate learning baskets with progressive vocabulary
 - **Critical**: 7-10 word e-phrases, perfect target grammar
 
-### Phase 6: Introductions
-- **Input**: phase_outputs/phase_5_baskets.json + amino_acids/legos_deduplicated/*.json
-- **Output**: amino_acids/introductions/*.json
-- **Prompt**: Read from APML Phase 6 section
-- **Purpose**: Generate zero-unknowns introductions for COMPOSITE LEGOs
+**NOTE**: APML contains the full details. These are just the key milestones. Read APML phase sections for complete instructions.
 
 ---
 
@@ -257,7 +227,7 @@ Execute phases in order. Each phase reads from APML for detailed instructions.
 - Spot-check 5 translations: Natural? High-frequency vocabulary?
 
 ### After Phase 3
-- Spot-check 10 LEGOs: Pass FD_LOOP? IRON RULE compliant? TILING correct?
+- Spot-check 10 LEGOs: Pass FD (Functionally Deterministic)? FCFS compliant? TILING correct?
 
 ### After Phase 5
 - Spot-check 10 baskets: 7-10 word e-phrases? Perfect target grammar?
@@ -269,8 +239,8 @@ If critical issues found: Document them, but continue (self-healing on next run)
 
 ## Success Criteria
 
-✅ All 7 phases executed
-✅ Phase outputs written to VFS
+✅ All 3 phases executed (1, 3, 5)
+✅ Phase outputs written to VFS (translations.json, baskets.json)
 ✅ No critical errors (translations natural, LEGOs FD-compliant, baskets grammatical)
 ✅ Status reported
 
@@ -288,19 +258,14 @@ If any phase fails:
 
 ## Final Report Format
 
-After Phase 6 (or on failure), report:
+After all phases (or on failure), report:
 
 \`\`\`
 ✅ Course Generation Complete: ${courseCode}
 
-Phase 0: ✅ Corpus analyzed
-Phase 1: ✅ ${seeds} translations created
-Phase 2: ✅ FCFS intelligence generated
+Phase 1: ✅ ${seeds} translations created → translations.json
 Phase 3: ✅ [X] LEGOs extracted ([Y] BASE, [Z] COMPOSITE)
-Phase 3.5: ✅ Adjacency graph built
-Phase 4: ✅ [X] unique LEGOs (deduplicated)
-Phase 5: ✅ [X] baskets generated
-Phase 6: ✅ Introductions created
+Phase 5: ✅ [X] baskets generated → baskets.json
 
 Quality Checks:
 - Translations: [Natural/Issues found]
@@ -315,7 +280,7 @@ Next: Review in dashboard at ${CONFIG.TRAINING_URL}
 
 ## Begin Execution
 
-Read APML spec, execute Phase 0, proceed sequentially through Phase 6, report status.
+Read APML spec, execute Phase 1, then Phase 3, then Phase 5. Report status when complete.
 `;
 }
 
@@ -335,7 +300,7 @@ async function spawnPhaseAgent(phase, prompt, courseDir, courseCode) {
   try {
     const { spawn } = require('child_process');
 
-    // Use AppleScript to control Warp more reliably
+    // Use AppleScript to control Warp and auto-invoke Claude Code
     const appleScript = `
 tell application "Warp"
     activate
@@ -343,7 +308,12 @@ tell application "Warp"
         keystroke "t" using {command down}
     end tell
     delay 0.5
-    do script "cd \\"${courseDir}\\" && echo '═══════════════════════════════════════════════════════' && echo 'SSi Course Production - Phase ${phase}' && echo '═══════════════════════════════════════════════════════' && echo 'Course: ${courseCode}' && echo 'Training: ${trainingURL}' && echo '' && echo 'PROMPT:' && cat \\"${promptFile}\\" && echo '' && echo '═══════════════════════════════════════════════════════' && echo '' && cat \\"${promptFile}\\" | claude"
+    do script "cd \\"${courseDir}\\" && echo '═══════════════════════════════════════════════════════' && echo 'SSi Course Production - Phase ${phase}' && echo '═══════════════════════════════════════════════════════' && echo 'Course: ${courseCode}' && echo 'Training: ${trainingURL}' && echo '' && cat \\"${promptFile}\\" && echo '' && echo '═══════════════════════════════════════════════════════'"
+    delay 1.0
+    tell application "System Events"
+        keystroke "claude < \\"${promptFile}\\""
+        keystroke return
+    end tell
 end tell
     `.trim();
 
