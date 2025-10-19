@@ -308,8 +308,8 @@ end tell
 delay 0.5
 tell application "System Events"
     keystroke "t" using {command down}
-    delay 0.5
-    keystroke "cd \\"${courseDir}\\" && cat \\"${promptFile}\\""
+    delay 1.0
+    keystroke "cd \\"${courseDir}\\""
     keystroke return
     delay 1.0
     keystroke "claude < \\"${promptFile}\\""
