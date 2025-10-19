@@ -304,16 +304,16 @@ async function spawnPhaseAgent(phase, prompt, courseDir, courseCode) {
     const appleScript = `
 tell application "Warp"
     activate
-    tell application "System Events"
-        keystroke "t" using {command down}
-    end tell
+end tell
+delay 0.5
+tell application "System Events"
+    keystroke "t" using {command down}
     delay 0.5
-    do script "cd \\"${courseDir}\\" && echo '═══════════════════════════════════════════════════════' && echo 'SSi Course Production - Phase ${phase}' && echo '═══════════════════════════════════════════════════════' && echo 'Course: ${courseCode}' && echo 'Training: ${trainingURL}' && echo '' && cat \\"${promptFile}\\" && echo '' && echo '═══════════════════════════════════════════════════════'"
+    keystroke "cd \\"${courseDir}\\" && cat \\"${promptFile}\\""
+    keystroke return
     delay 1.0
-    tell application "System Events"
-        keystroke "claude < \\"${promptFile}\\""
-        keystroke return
-    end tell
+    keystroke "claude < \\"${promptFile}\\""
+    keystroke return
 end tell
     `.trim();
 
