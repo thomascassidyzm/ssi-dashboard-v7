@@ -1,17 +1,15 @@
 <template>
   <router-view />
   <div class="build-label">
-    v{{ version }}
+    {{ gitCommit }}
   </div>
 </template>
 
 <script setup>
-import packageJson from '../package.json'
-
-const version = packageJson.version
+const gitCommit = __GIT_COMMIT__
 
 // Clean v7.0 build with Vue Router
-console.log(`🚀 SSi Dashboard v${version} - Clean Build`)
+console.log(`🚀 SSi Dashboard ${gitCommit} - Clean Build`)
 </script>
 
 <style scoped>
