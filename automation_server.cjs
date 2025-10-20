@@ -300,20 +300,14 @@ async function spawnPhaseAgent(phase, prompt, courseDir, courseCode) {
   try {
     const { spawn } = require('child_process');
 
-    // Use AppleScript to control Warp and auto-invoke Claude Code
+    // Use AppleScript to control iTerm2 and auto-invoke Claude Code
     const appleScript = `
-tell application "Warp"
-    activate
-end tell
-delay 0.5
-tell application "System Events"
-    keystroke "t" using {command down}
-    delay 1.0
-    keystroke "cd \\"${courseDir}\\""
-    keystroke return
-    delay 1.0
-    keystroke "claude < \\"${promptFile}\\""
-    keystroke return
+tell application "iTerm2"
+    create window with default profile
+    tell current session of current window
+        write text "cd \\"${courseDir}\\""
+        write text "claude < \\"${promptFile}\\""
+    end tell
 end tell
     `.trim();
 
