@@ -300,13 +300,22 @@ async function spawnPhaseAgent(phase, prompt, courseDir, courseCode) {
   try {
     const { spawn } = require('child_process');
 
-    // Use AppleScript to control iTerm2 and auto-invoke Claude Code
+    // Use AppleScript to control iTerm2 and invoke Claude Code
     const appleScript = `
 tell application "iTerm2"
     create window with default profile
     tell current session of current window
         write text "cd \\"${courseDir}\\""
-        write text "claude < \\"${promptFile}\\""
+        write text "claude"
+        delay 15
+        -- Read prompt file and paste via clipboard
+        set promptContent to read POSIX file "${promptFile}" as «class utf8»
+        set the clipboard to promptContent
+        tell application "System Events"
+            keystroke "v" using command down
+            delay 1
+            keystroke return
+        end tell
     end tell
 end tell
     `.trim();
@@ -319,14 +328,14 @@ end tell
 
     child.unref();
 
-    console.log(`[Agent] Phase ${phase} agent spawned successfully in Warp`);
+    console.log(`[Agent] Phase ${phase} agent spawned successfully in iTerm2`);
 
-    // Clean up temp file after delay (give Warp time to read it)
+    // Clean up temp file after delay (give iTerm2 time to execute)
     setTimeout(() => {
       fs.unlink(promptFile).catch(err => {
         console.warn(`[Agent] Failed to clean up temp prompt file: ${err.message}`);
       });
-    }, 5000);
+    }, 20000);
   } catch (error) {
     console.error(`[Agent] Failed to spawn Phase ${phase} agent:`, error.message);
     // Clean up temp file on error
