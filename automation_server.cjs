@@ -307,7 +307,14 @@ tell application "iTerm2"
     tell current session of current window
         write text "cd \\"${courseDir}\\""
         write text "claude"
-        delay 15
+        delay 10
+        -- Accept trust prompt (press 'y' then Enter)
+        tell application "System Events"
+            keystroke "y"
+            delay 0.5
+            keystroke return
+            delay 3
+        end tell
         -- Read prompt file and paste via clipboard
         set promptContent to read POSIX file "${promptFile}" as «class utf8»
         set the clipboard to promptContent
