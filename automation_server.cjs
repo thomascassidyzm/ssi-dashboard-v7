@@ -163,59 +163,57 @@ You are the **course generation orchestrator**. You will execute all 7 phases se
 
 ---
 
-## Key Files
+## Key Files & Resources
 
-**APML Specification** (Single Source of Truth):
-\`/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/ssi-course-production.apml\`
-- Read this FIRST
-- Contains all phase prompts and rules
-- VERSION: 7.3.0
+**Dashboard API** (Single Source of Truth for prompts):
+\`https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/:phase\`
+- Fetch phase instructions from here using WebFetch
+- Always up-to-date with latest methodology
 
 **Course Directory** (Your workspace):
 \`${courseDir}\`
 - Write all outputs here
-- VFS structure: translations.json, baskets.json, phase_outputs/
+- Structure: translations.json, legos.json, baskets.json
 
 **Canonical Seeds** (Input data):
-\`/Users/tomcassidy/SSi/SSi_Course_Production/vfs/seeds/canonical_seeds.json\`
-- 668 English sentences to translate and process
+\`${courseDir}/../../../seeds/canonical_seeds.json\`
+- 668 English reference concepts
+- You'll process the first ${seeds} seeds
 
 ---
 
 ## Phase Execution Sequence
 
-Execute phases in order. **Read APML for detailed instructions** - it contains the actual prompts and rules.
+Execute phases in order. Fetch phase instructions from dashboard API (single source of truth).
 
 ### Phase 1: Pedagogical Translation
-- **Input**: canonical_seeds.json (first ${seeds} seeds)
-- **Output**: translations.json (single file, all SEED_PAIRS)
-- **Prompt**: Read from APML Phase 1 section
+- **Input**: ${courseDir}/../../../seeds/canonical_seeds.json (first ${seeds} seeds)
+- **Output**: ${courseDir}/translations.json
+- **Instructions**: Fetch via WebFetch from https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/1
 - **Purpose**: Apply 6 heuristics, create optimized translations
 - **Critical**: Two-step process (canonical→target→known)
 
 ### Phase 3: LEGO Extraction
-- **Input**: translations.json
-- **Output**: Store LEGOs in baskets.json structure (prepare for Phase 5)
-- **Prompt**: Read from APML Phase 3 section (uses LEGO Extraction Skill)
+- **Input**: ${courseDir}/translations.json
+- **Output**: ${courseDir}/legos.json
+- **Instructions**: Fetch via WebFetch from https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/3
 - **Purpose**: Extract FD-compliant LEGOs (BASE + COMPOSITE)
 - **Critical**: FD (Functionally Deterministic), FCFS (First Come First Served), TILING test
 
 ### Phase 5: Basket Generation
-- **Input**: LEGOs from Phase 3
-- **Output**: baskets.json (single file, all LEGO_BASKETS with e-phrases and d-phrases)
-- **Prompt**: Read from APML Phase 5 section
+- **Input**: ${courseDir}/legos.json
+- **Output**: ${courseDir}/baskets.json
+- **Instructions**: Fetch via WebFetch from https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/5
 - **Purpose**: Generate learning baskets with progressive vocabulary
 - **Critical**: 7-10 word e-phrases, perfect target grammar
-
-**NOTE**: APML contains the full details. These are just the key milestones. Read APML phase sections for complete instructions.
 
 ---
 
 ## Critical Rules
 
-1. **Read APML First**: All phase details are in ssi-course-production.apml
+1. **Fetch Instructions from Dashboard**: Use WebFetch to get phase prompts from API URLs above
 2. **Sequential Execution**: Complete each phase before starting next
-3. **Write to VFS**: All outputs go to ${courseDir}
+3. **Write to Workspace**: All outputs go to ${courseDir}
 4. **Quality Validation**: After Phase 5, spot-check 5-10 baskets for grammar
 5. **Report Status**: At end, report completion or failure with specifics
 
@@ -280,7 +278,9 @@ Next: Review in dashboard at ${CONFIG.TRAINING_URL}
 
 ## Begin Execution
 
-Read APML spec, execute Phase 1, then Phase 3, then Phase 5. Report status when complete.
+**Step 1**: WebFetch phase prompts from dashboard API
+**Step 2**: Execute Phase 1 (translations), then Phase 3 (LEGOs), then Phase 5 (baskets)
+**Step 3**: Report completion status
 `;
 }
 
