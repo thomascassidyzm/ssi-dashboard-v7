@@ -90,9 +90,9 @@ A **basket** is a practice set that demonstrates how THIS LEGO "plugs into" LEGO
 
 ## Schema Files
 
-- `phase1-translations.json` - Phase 1 output format
-- `phase3-legos.json` - Phase 3 output format
-- `phase5-baskets.json` - Phase 5 output format
+- `phase1-seed_pairs.json` - Phase 1 output format (SEED_PAIRS)
+- `phase3-lego_pairs.json` - Phase 3 output format (LEGO_PAIRS)
+- `phase5-lego_baskets.json` - Phase 5 output format (LEGO_BASKETS)
 
 ## Token Savings
 
