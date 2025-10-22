@@ -306,7 +306,7 @@ tell application "iTerm2"
     create window with default profile
     tell current session of current window
         write text "cd \\"${courseDir}\\""
-        write text "claude"
+        write text "claude --permission-mode bypassPermissions"
         delay 15
         -- Read prompt file and paste via clipboard
         set promptContent to read POSIX file "${promptFile}" as «class utf8»
