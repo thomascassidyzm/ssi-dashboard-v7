@@ -23,8 +23,10 @@ const fs = require('fs-extra');
 const path = require('path');
 const { exec } = require('child_process');
 const { promisify } = require('util');
+const Ajv = require('ajv');
 
 const execAsync = promisify(exec);
+const ajv = new Ajv({ allErrors: true });
 
 // =============================================================================
 // CONFIGURATION
@@ -318,8 +320,32 @@ Next: Review in dashboard at ${CONFIG.TRAINING_URL}
 ## Begin Execution
 
 **Step 1**: WebFetch phase prompts from dashboard API
-**Step 2**: Execute Phase 1 (translations), then Phase 3 (LEGOs), then Phase 5 (baskets)
+**Step 2**: Execute each phase WITH VALIDATION:
+  - Generate phase output
+  - Write to file
+  - Validate via: \`curl -X POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/validate/phase/1 -d @translations.json -H "Content-Type: application/json"\`
+  - If valid: continue to next phase
+  - If invalid: fix errors and retry (max 3 attempts)
 **Step 3**: Report completion status
+
+## Validation Loop
+
+After writing each phase output, validate it:
+
+\`\`\`bash
+# Example for Phase 1
+curl -X POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/validate/phase/1 \\
+  -H "Content-Type: application/json" \\
+  -d @translations.json
+
+# Response if valid:
+{"valid": true}
+
+# Response if invalid:
+{"valid": false, "errors": [...]}
+\`\`\`
+
+**CRITICAL**: Do NOT proceed to next phase if validation fails. Fix errors first.
 `;
 }
 
@@ -2988,6 +3014,51 @@ app.post('/api/fine-tuning/compare', async (req, res) => {
     console.error('[API] Failed to run comparison:', error);
     res.status(500).json({ error: error.message });
   }
+});
+
+// =============================================================================
+// VALIDATION ENDPOINTS
+// =============================================================================
+
+// Load schemas
+const SCHEMAS = {
+  phase1: require('./schemas/phase1-translations.json'),
+  phase3: require('./schemas/phase3-legos.json'),
+  phase5: require('./schemas/phase5-baskets.json')
+};
+
+// Compile validators
+const validators = {
+  phase1: ajv.compile(SCHEMAS.phase1),
+  phase3: ajv.compile(SCHEMAS.phase3),
+  phase5: ajv.compile(SCHEMAS.phase5)
+};
+
+/**
+ * POST /api/validate/phase/:phase
+ * Validate phase output against canonical schema
+ */
+app.post('/api/validate/phase/:phase', (req, res) => {
+  const { phase } = req.params;
+  const data = req.body;
+
+  const validatorKey = `phase${phase}`;
+  const validator = validators[validatorKey];
+
+  if (!validator) {
+    return res.status(400).json({ error: `No validator for phase ${phase}` });
+  }
+
+  const valid = validator(data);
+
+  if (!valid) {
+    return res.json({
+      valid: false,
+      errors: validator.errors
+    });
+  }
+
+  res.json({ valid: true });
 });
 
 // =============================================================================
