@@ -38,6 +38,7 @@
               "description": "[lego_id, type, target, known] or [lego_id, type, target, known, feeders[]]",
               "minItems": 4,
               "maxItems": 5
+            }
           }
         ]
       }
