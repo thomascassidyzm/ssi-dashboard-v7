@@ -15,9 +15,9 @@ const ajv = new Ajv({ allErrors: true });
 
 // Load schemas
 const SCHEMAS = {
-  phase1: require('../schemas/phase1-translations.json'),
-  phase3: require('../schemas/phase3-legos.json'),
-  phase5: require('../schemas/phase5-baskets.json')
+  phase1: require('../schemas/phase1-seed_pairs.json'),
+  phase3: require('../schemas/phase3-lego_pairs.json'),
+  phase5: require('../schemas/phase5-lego_baskets.json')
 };
 
 // Compile validators
@@ -38,8 +38,8 @@ async function validateCourse(courseCode) {
     errors: []
   };
 
-  // Check Phase 1: translations.json
-  const translationsPath = path.join(courseDir, 'translations.json');
+  // Check Phase 1: seed_pairs.json
+  const translationsPath = path.join(courseDir, 'seed_pairs.json');
   if (await fs.pathExists(translationsPath)) {
     const data = await fs.readJson(translationsPath);
     const valid = validators.phase1(data);
@@ -48,21 +48,21 @@ async function validateCourse(courseCode) {
       results.valid = false;
       results.errors.push({
         phase: 'Phase 1',
-        file: 'translations.json',
+        file: 'seed_pairs.json',
         errors: validators.phase1.errors
       });
-      console.log(`❌ Phase 1 (translations.json): INVALID`);
+      console.log(`❌ Phase 1 (seed_pairs.json): INVALID`);
       console.log(JSON.stringify(validators.phase1.errors, null, 2));
     } else {
-      console.log(`✅ Phase 1 (translations.json): Valid`);
+      console.log(`✅ Phase 1 (seed_pairs.json): Valid`);
       console.log(`   ${Object.keys(data.translations || {}).length} translations`);
     }
   } else {
-    console.log(`⚠️  Phase 1 (translations.json): Not found`);
+    console.log(`⚠️  Phase 1 (seed_pairs.json): Not found`);
   }
 
-  // Check Phase 3: legos.json
-  const legosPath = path.join(courseDir, 'legos.json');
+  // Check Phase 3: lego_pairs.json
+  const legosPath = path.join(courseDir, 'lego_pairs.json');
   if (await fs.pathExists(legosPath)) {
     const data = await fs.readJson(legosPath);
     const valid = validators.phase3(data);
@@ -71,21 +71,21 @@ async function validateCourse(courseCode) {
       results.valid = false;
       results.errors.push({
         phase: 'Phase 3',
-        file: 'legos.json',
+        file: 'lego_pairs.json',
         errors: validators.phase3.errors
       });
-      console.log(`❌ Phase 3 (legos.json): INVALID`);
+      console.log(`❌ Phase 3 (lego_pairs.json): INVALID`);
       console.log(JSON.stringify(validators.phase3.errors, null, 2));
     } else {
-      console.log(`✅ Phase 3 (legos.json): Valid`);
+      console.log(`✅ Phase 3 (lego_pairs.json): Valid`);
       console.log(`   ${data.seeds?.length || 0} seed breakdowns`);
     }
   } else {
-    console.log(`⚠️  Phase 3 (legos.json): Not found`);
+    console.log(`⚠️  Phase 3 (lego_pairs.json): Not found`);
   }
 
-  // Check Phase 5: baskets.json
-  const basketsPath = path.join(courseDir, 'baskets.json');
+  // Check Phase 5: lego_baskets.json
+  const basketsPath = path.join(courseDir, 'lego_baskets.json');
   if (await fs.pathExists(basketsPath)) {
     const data = await fs.readJson(basketsPath);
     const valid = validators.phase5(data);
@@ -94,17 +94,17 @@ async function validateCourse(courseCode) {
       results.valid = false;
       results.errors.push({
         phase: 'Phase 5',
-        file: 'baskets.json',
+        file: 'lego_baskets.json',
         errors: validators.phase5.errors
       });
-      console.log(`❌ Phase 5 (baskets.json): INVALID`);
+      console.log(`❌ Phase 5 (lego_baskets.json): INVALID`);
       console.log(JSON.stringify(validators.phase5.errors, null, 2));
     } else {
-      console.log(`✅ Phase 5 (baskets.json): Valid`);
+      console.log(`✅ Phase 5 (lego_baskets.json): Valid`);
       console.log(`   ${Object.keys(data.baskets || {}).length} baskets`);
     }
   } else {
-    console.log(`⚠️  Phase 5 (baskets.json): Not found`);
+    console.log(`⚠️  Phase 5 (lego_baskets.json): Not found`);
   }
 
   console.log(`\n${results.valid ? '✅ COURSE VALID' : '❌ COURSE INVALID'}\n`);

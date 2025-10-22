@@ -421,7 +421,7 @@ skills/
 
 1. **Orchestrator invokes phase:**
    ```
-   "Use the LEGO Extraction Skill to process translations.json"
+   "Use the LEGO Extraction Skill to process seed_pairs.json"
    ```
 
 2. **Agent reads SKILL.md** (~2KB overview):
@@ -640,7 +640,7 @@ KEY_PROPERTIES:
   - Must be "lego_complete" - decomposes into LEGO_PAIRS that tile back perfectly
   - Stored as SINGLE FILE (not individual amino acids) for efficiency
 PHASE: Phase 1 (Pedagogical Translation)
-STORAGE: vfs/courses/{course_code}/translations.json
+STORAGE: vfs/courses/{course_code}/seed_pairs.json
 
 ### LEGO_PAIRS
 PURPOSE: Forward-deterministic teaching units extracted from SEED_PAIRS
@@ -648,7 +648,7 @@ DEFINITION: A LEGO cannot exist unless it has BOTH target and known languages ma
 REFERENCE_FORMAT: S0041L02 (seed reference + L + position)
 NOTE: LEGO_PAIRS are now SUBSUMED by LEGO_BASKETS (see below)
       Each basket contains the LEGO itself plus all practice phrases
-      LEGOs no longer stored separately - baskets.json is the single source
+      LEGOs no longer stored separately - lego_baskets.json is the single source
 KEY_PROPERTIES:
   - Course-specific AND language-direction specific
   - Must pass FD_LOOP test (target → known → target = IDENTICAL)
@@ -657,7 +657,7 @@ KEY_PROPERTIES:
     * COMPOSITE LEGO: Contains BASE LEGOs + glue words, needs componentization
   - Count: ~2000-3000 per course
 PHASE: Phase 3 (LEGO Decomposition)
-STORAGE: Integrated into baskets.json (Phase 5)
+STORAGE: Integrated into lego_baskets.json (Phase 5)
 
 ### LEGO_BASKETS
 PURPOSE: Complete set of practice phrases associated with ONE LEGO_PAIR
@@ -689,7 +689,7 @@ KEY_PROPERTIES:
   - Stored as SINGLE FILE for efficiency (not individual amino acids)
   - LEGO_ID is used as key (e.g., "S0001L01", "S0002L04")
 PHASE: Phase 5 (Basket Generation)
-STORAGE: vfs/courses/{course_code}/baskets.json
+STORAGE: vfs/courses/{course_code}/lego_baskets.json
 
 ### LEGO_INTRODUCTIONS
 PURPOSE: Intelligence about LEGO type (BASE vs COMPOSITE) and componentization
@@ -722,8 +722,8 @@ PURPOSE: Organized storage for all course generation artifacts
 BASE_PATH: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/
 STRUCTURE: {target_code}_for_{known_code}_{seed_count}seeds/
 FILES:
-  - translations.json (stores all SEED_PAIRS - single consolidated file)
-  - baskets.json (stores all LEGO_BASKETS including LEGOs - single consolidated file)
+  - seed_pairs.json (stores all SEED_PAIRS - single consolidated file)
+  - lego_baskets.json (stores all LEGO_BASKETS including LEGOs - single consolidated file)
   - course_metadata.json (course-level metadata)
 SUBDIRS:
   - phase_outputs/ (intermediate files like graphs, corpus intelligence)
@@ -1132,7 +1132,7 @@ For each canonical concept (expressed in English as reference):
 3. **Generate Output**
    - Store ALL translations in single consolidated file
    - Format: { "S0001": [target, known], "S0002": [target, known], ... }
-   - File: vfs/courses/{course_code}/translations.json
+   - File: vfs/courses/{course_code}/seed_pairs.json
 
 IMPORTANT: For courses where known=English (e.g., ita_for_eng):
 - Step 1 produces optimized target
@@ -1166,7 +1166,7 @@ For courses where known≠English (e.g., ita_for_fra):
 
 NAME: "Corpus Intelligence"
 PURPOSE: Map FCFS chronological order and calculate utility scores
-INPUT: vfs/courses/{course_code}/translations.json
+INPUT: vfs/courses/{course_code}/seed_pairs.json
 OUTPUT: vfs/courses/{course_code}/phase_outputs/phase_2_corpus_intelligence.json
 
 FCFS_DEFINITION: First-Can-First-Say (Semantic Priority)
@@ -2368,7 +2368,7 @@ INPUT:
   - vfs/courses/{course_code}/LEGO_BREAKDOWNS_COMPLETE.json (contains all LEGOs)
   - vfs/courses/{course_code}/phase_outputs/phase_3.5_lego_graph.json (for edge coverage)
   - vfs/courses/{course_code}/phase_outputs/phase_2_corpus_intelligence.json (for FCFS ordering)
-OUTPUT: vfs/courses/{course_code}/baskets.json (ALL LEGO baskets - includes duplicates)
+OUTPUT: vfs/courses/{course_code}/lego_baskets.json (ALL LEGO baskets - includes duplicates)
 
 CRITICAL: WHAT COUNTS AS A LEGO
   **ALL of these structures need baskets:**
@@ -2719,7 +2719,7 @@ PROMPT: |
      - Validate each combination for real-world meaningfulness
 
   ## Output Format
-  Save to: vfs/courses/{course_code}/baskets.json
+  Save to: vfs/courses/{course_code}/lego_baskets.json
 
   **IMPORTANT: Use BOTH lego_id AND feeder_id as keys**
 
@@ -2798,7 +2798,7 @@ PROMPT: |
 
 NAME: "Basket Deduplication"
 PURPOSE: Remove duplicate LEGO baskets, keeping first occurrence with full provenance
-INPUT: vfs/courses/{course_code}/baskets.json (ALL lego_pairs AND feeder_pairs baskets)
+INPUT: vfs/courses/{course_code}/lego_baskets.json (ALL lego_pairs AND feeder_pairs baskets)
 OUTPUT: vfs/courses/{course_code}/baskets_deduplicated.json
 
 WHY_THIS_APPROACH:
@@ -3064,7 +3064,7 @@ AUTOMATED_CHECKS:
    - Language-aware: Checks Spanish/Italian/French/German patterns
 
 4. **Translation Synchronization** (CRITICAL)
-   - LEGO breakdown matches translations.json exactly
+   - LEGO breakdown matches seed_pairs.json exactly
    - Detects: Mismatches in original_target/original_known
    - Ensures: Regenerated LEGOs use updated Phase 1 translations
 
@@ -3083,12 +3083,12 @@ SEVERITY_LEVELS:
 CRITICAL (Must Fix):
   - IRON_RULE_VIOLATION: Standalone prepositions
   - FD_VALIDATION_FAILED: fd_validated: false in output
-  - TRANSLATION_MISMATCH: Doesn't match translations.json
+  - TRANSLATION_MISMATCH: Doesn't match seed_pairs.json
   - EMPTY_CHUNK: Empty target_chunk or known_chunk
 
 HIGH (Should Fix):
   - FD_CONTEXT_MISSING: Subjunctive without temporal clause
-  - TRANSLATION_MISSING: Seed not found in translations.json
+  - TRANSLATION_MISSING: Seed not found in seed_pairs.json
   - MISSING_FIELD: Required field absent
 
 MEDIUM (Fix If Time):
