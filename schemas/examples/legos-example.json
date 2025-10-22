@@ -1,0 +1,19 @@
+{
+  "version": "7.0",
+  "seeds": [
+    ["S0001", ["Quiero hablar español contigo ahora.", "I want to speak Spanish with you now."], [
+      ["S0001L01", "B", "Quiero", "I want"],
+      ["S0001L02", "B", "hablar", "to speak"],
+      ["S0001L03", "B", "español", "Spanish"],
+      ["S0001L04", "B", "contigo", "with you"],
+      ["S0001L05", "B", "ahora", "now"]
+    ]],
+    ["S0002", ["Estoy intentando aprender.", "I'm trying to learn."], [
+      ["S0002L01", "C", "Estoy intentando", "I'm trying", [
+        ["S0002F01", "F", "Estoy", "I'm"],
+        ["S0002F02", "F", "intentando", "trying"]
+      ]],
+      ["S0002L02", "B", "aprender", "to learn"]
+    ]]
+  }
+}

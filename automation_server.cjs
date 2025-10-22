@@ -189,23 +189,62 @@ Execute phases in order. Fetch phase instructions from dashboard API (single sou
 ### Phase 1: Pedagogical Translation
 - **Input**: ${courseDir}/../../../seeds/canonical_seeds.json (first ${seeds} seeds)
 - **Output**: ${courseDir}/translations.json
+- **Format**: Compact JSON - \`{"version": "7.0", "translations": {"S0001": [target, known], ...}}\`
 - **Instructions**: Fetch via WebFetch from https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/1
 - **Purpose**: Apply 6 heuristics, create optimized translations
 - **Critical**: Two-step process (canonical→target→known)
+- **Example**:
+\`\`\`json
+{
+  "version": "7.0",
+  "translations": {
+    "S0001": ["Quiero hablar español contigo ahora.", "I want to speak Spanish with you now."],
+    "S0002": ["Estoy intentando aprender.", "I'm trying to learn."]
+  }
+}
+\`\`\`
 
 ### Phase 3: LEGO Extraction
 - **Input**: ${courseDir}/translations.json
 - **Output**: ${courseDir}/legos.json
+- **Format**: Compact arrays - \`{"version": "7.0", "seeds": [["S0001", [target, known], [LEGOs]], ...]}\`
 - **Instructions**: Fetch via WebFetch from https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/3
 - **Purpose**: Extract FD-compliant LEGOs (BASE + COMPOSITE)
 - **Critical**: FD (Functionally Deterministic), FCFS (First Come First Served), TILING test
+- **Type codes**: B=BASE, C=COMPOSITE, F=FEEDER
+- **Example**:
+\`\`\`json
+{
+  "version": "7.0",
+  "seeds": [
+    ["S0001", ["Quiero hablar", "I want to speak"], [
+      ["S0001L01", "B", "Quiero", "I want"],
+      ["S0001L02", "B", "hablar", "to speak"]
+    ]]
+  ]
+}
+\`\`\`
 
 ### Phase 5: Basket Generation
 - **Input**: ${courseDir}/legos.json
 - **Output**: ${courseDir}/baskets.json
+- **Format**: Compact arrays - \`{"version": "7.0", "baskets": {"S0001L01": [[lego], [e-phrases], [d-phrases]], ...}}\`
 - **Instructions**: Fetch via WebFetch from https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/5
 - **Purpose**: Generate learning baskets with progressive vocabulary
 - **Critical**: 7-10 word e-phrases, perfect target grammar
+- **Example**:
+\`\`\`json
+{
+  "version": "7.0",
+  "baskets": {
+    "S0001L01": [
+      ["Quiero", "I want"],
+      [["Quiero hablar ahora", "I want to speak now"]],
+      [[["Quiero hablar", "I want to speak"]], [], [], []]
+    ]
+  }
+}
+\`\`\`
 
 ---
 

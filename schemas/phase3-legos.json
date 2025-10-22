@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Phase 3: LEGO Extraction",
+  "description": "FD-compliant LEGO pairs that TILE to reconstruct seed translations",
+  "type": "object",
+  "required": ["version", "seeds"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "7.0"
+    },
+    "seeds": {
+      "type": "array",
+      "description": "Array of seed breakdowns",
+      "items": {
+        "type": "array",
+        "description": "[seed_id, [target, known], [legos]]",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": [
+          {
+            "type": "string",
+            "pattern": "^S\\d{4}$",
+            "description": "Seed ID"
+          },
+          {
+            "type": "array",
+            "description": "[target, known] - original seed pair",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {"type": "string"}
+          },
+          {
+            "type": "array",
+            "description": "Array of LEGO pairs",
+            "items": {
+              "type": "array",
+              "description": "[lego_id, type, target, known] or [lego_id, type, target, known, feeders[]]",
+              "minItems": 4,
+              "maxItems": 5
+          }
+        ]
+      }
+    }
+  }
+}

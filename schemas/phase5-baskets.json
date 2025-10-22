@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Phase 5: Practice Baskets",
+  "description": "Learning baskets with eternal and debut phrases for each LEGO",
+  "type": "object",
+  "required": ["version", "baskets"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "7.0"
+    },
+    "baskets": {
+      "type": "object",
+      "description": "Baskets keyed by lego_id",
+      "patternProperties": {
+        "^S\\d{4}[LF]\\d{2}$": {
+          "type": "array",
+          "description": "[lego_pair, e_phrases[], d_phrases[]]",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": [
+            {
+              "type": "array",
+              "description": "[target, known] - the LEGO itself",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {"type": "string"}
+            },
+            {
+              "type": "array",
+              "description": "Eternal phrases (known vocabulary only)",
+              "items": {
+                "type": "array",
+                "description": "[target, known]",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {"type": "string"}
+              }
+            },
+            {
+              "type": "array",
+              "description": "Debut phrases by difficulty [d2[], d3[], d4[], d5[]]",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": {
+                "type": "array",
+                "description": "Array of debut phrases at this difficulty",
+                "items": {
+                  "type": "array",
+                  "description": "[target, known]",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": {"type": "string"}
+                }
+              }
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

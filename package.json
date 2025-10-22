@@ -10,6 +10,7 @@
     "server": "node automation_server.cjs"
   },
   "dependencies": {
+    "ajv": "^8.17.1",
     "axios": "^1.7.9",
     "vue": "^3.5.22",
     "vue-router": "^4.5.1"

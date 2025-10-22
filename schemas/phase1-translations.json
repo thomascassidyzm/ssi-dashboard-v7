@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Phase 1: Translations",
+  "description": "Pedagogically optimized translations of canonical seeds",
+  "type": "object",
+  "required": ["version", "translations"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "7.0"
+    },
+    "translations": {
+      "type": "object",
+      "description": "Seed translations keyed by seed_id",
+      "patternProperties": {
+        "^S\\d{4}$": {
+          "type": "array",
+          "description": "[target, known]",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
