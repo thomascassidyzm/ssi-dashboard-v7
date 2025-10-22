@@ -2418,21 +2418,35 @@ COMBINING_BOTH_APPROACHES:
   - FCFS ordering maintains chronological appropriateness
   - Result: Optimal learning sequence with rich practice
 
-E_PHRASES (Eternal Practice Phrases):
-  - 5 phrases per LEGO
-  - Each 7-10 words long
-  - Must contain the target LEGO
-  - Perfect grammar in BOTH languages
-  - Natural, conversational usage
-  - Only use vocabulary from previous LEGOs
+E_PHRASES (ETERNAL Practice Phrases):
+  WHEN_USED: At ANY point in the course AFTER this LEGO's introduction (reusable FOREVER)
+  FREQUENCY: Permanent practice material - practiced hundreds of times throughout the course
+  PURPOSE: Long-term practice for this LEGO (learner at lesson #50 practicing LEGO #10 uses these)
+  QUALITY: MUST be excellent - natural, conversational, high-quality sentences
+  REQUIREMENTS:
+    - 5 phrases per LEGO
+    - Each 7-10 words long
+    - Must contain the target LEGO
+    - Perfect grammar in BOTH languages
+    - Natural, conversational usage
+    - Only use vocabulary from previous LEGOs
 
-D_PHRASES (Deconstructed Practice Phrases):
-  - Auto-generated from e_phrases using expanding windows
-  - 2_lego: 2 phrases with 2 LEGOs each
-  - 3_lego: 2 phrases with 3 LEGOs each
-  - 4_lego: 2 phrases with 4 LEGOs each
-  - 5_lego: 2 phrases with 5 LEGOs each
-  - Must be syntactically correct (even as fragments) in BOTH languages
+D_PHRASES (DEBUT Practice Phrases):
+  WHEN_USED: ONLY during this LEGO's FIRST introduction (used ONCE, never repeated)
+  FREQUENCY: Temporary scaffolding for initial learning
+  PURPOSE: Help learner build up to full sentences progressively (2→3→4→5 LEGOs)
+  QUALITY: Syntactically correct, but CAN be awkward fragments (temporary learning aids)
+  REQUIREMENTS:
+    - Auto-generated from e_phrases using expanding windows
+    - 2_lego: 2 phrases with 2 LEGOs each
+    - 3_lego: 2 phrases with 3 LEGOs each
+    - 4_lego: 2 phrases with 4 LEGOs each
+    - 5_lego: 2 phrases with 5 LEGOs each
+    - Must be syntactically correct (even as fragments) in BOTH languages
+
+CRITICAL_DISTINCTION:
+  E-phrases = Training wheels you keep FOREVER (permanent practice)
+  D-phrases = Training wheels you remove AFTER debut (temporary scaffolding)
 
 CULMINATING_LEGO_RULE:
   If this is the LAST LEGO in a seed (e.g., S0123L03 is last of S0123):

@@ -154,22 +154,62 @@
           </div>
 
           <div class="mb-4">
-            <span class="text-sm font-medium text-slate-400">Contains:</span>
+            <span class="text-sm font-medium text-slate-400">Contains TWO types of practice phrases with fundamentally different purposes:</span>
             <div class="space-y-3 mt-2">
-              <div class="bg-slate-900 p-3 rounded">
-                <p class="text-emerald-300 font-medium mb-1">DEBUT_PHRASES (d-phrases): Up to 8 phrases</p>
-                <ul class="list-disc list-inside text-slate-300 text-sm space-y-1">
-                  <li>Progressive vocabulary only (can be clunky, just syntactically correct)</li>
-                  <li>Expanding window fragments</li>
-                </ul>
+              <div class="bg-slate-900 p-3 rounded border-l-4 border-emerald-500">
+                <p class="text-emerald-300 font-medium mb-2">ETERNAL_PHRASES (e-phrases): Permanent Practice Material</p>
+                <div class="mb-2 bg-slate-800 p-2 rounded">
+                  <p class="text-xs font-semibold text-emerald-400 mb-1">⏰ WHEN USED:</p>
+                  <p class="text-slate-300 text-xs">At ANY point in the course AFTER this LEGO's introduction - reusable FOREVER</p>
+                </div>
+                <div class="mb-2 bg-slate-800 p-2 rounded">
+                  <p class="text-xs font-semibold text-amber-400 mb-1">🔁 FREQUENCY:</p>
+                  <p class="text-slate-300 text-xs">Permanent practice material - practiced hundreds of times throughout entire course</p>
+                </div>
+                <div class="mb-2 bg-slate-800 p-2 rounded">
+                  <p class="text-xs font-semibold text-blue-400 mb-1">🎯 PURPOSE:</p>
+                  <p class="text-slate-300 text-xs">Long-term practice for this LEGO (e.g., learner at lesson #50 practicing LEGO #10 uses these)</p>
+                </div>
+                <div class="bg-red-900/30 p-2 rounded border border-red-700">
+                  <p class="text-xs font-semibold text-red-300 mb-1">✅ QUALITY REQUIREMENT:</p>
+                  <ul class="list-disc list-inside text-slate-300 text-xs space-y-1">
+                    <li>MUST be excellent, natural, conversational (7-10 words)</li>
+                    <li>Perfect grammar in BOTH languages</li>
+                    <li>Quality over quantity (3 excellent > 5 forced)</li>
+                    <li><strong class="text-red-400">UNFORGIVEABLE to have grammar errors</strong> - these are practiced forever!</li>
+                  </ul>
+                </div>
               </div>
-              <div class="bg-slate-900 p-3 rounded">
-                <p class="text-emerald-300 font-medium mb-1">ETERNAL_PHRASES (e-phrases): Up to 5 phrases</p>
-                <ul class="list-disc list-inside text-slate-300 text-sm space-y-1">
-                  <li>7-10 words, natural, perfect target grammar</li>
-                  <li>Quality over quantity (3 excellent > 5 forced)</li>
-                  <li><strong class="text-red-400">UNFORGIVEABLE to have grammar errors</strong></li>
-                </ul>
+
+              <div class="bg-slate-900 p-3 rounded border-l-4 border-blue-500">
+                <p class="text-blue-300 font-medium mb-2">DEBUT_PHRASES (d-phrases): Temporary Scaffolding</p>
+                <div class="mb-2 bg-slate-800 p-2 rounded">
+                  <p class="text-xs font-semibold text-emerald-400 mb-1">⏰ WHEN USED:</p>
+                  <p class="text-slate-300 text-xs">ONLY during this LEGO's FIRST introduction - used ONCE, never repeated</p>
+                </div>
+                <div class="mb-2 bg-slate-800 p-2 rounded">
+                  <p class="text-xs font-semibold text-amber-400 mb-1">🔁 FREQUENCY:</p>
+                  <p class="text-slate-300 text-xs">Temporary scaffolding - shown once during debut, then discarded forever</p>
+                </div>
+                <div class="mb-2 bg-slate-800 p-2 rounded">
+                  <p class="text-xs font-semibold text-blue-400 mb-1">🎯 PURPOSE:</p>
+                  <p class="text-slate-300 text-xs">Help learner build up to full sentences progressively (2-LEGO → 3-LEGO → 4-LEGO → 5-LEGO)</p>
+                </div>
+                <div class="bg-blue-900/30 p-2 rounded border border-blue-700">
+                  <p class="text-xs font-semibold text-blue-300 mb-1">✅ QUALITY REQUIREMENT:</p>
+                  <ul class="list-disc list-inside text-slate-300 text-xs space-y-1">
+                    <li>Syntactically correct, but CAN be awkward fragments</li>
+                    <li>Expanding window fragments (progressive vocabulary only)</li>
+                    <li>Focus on demonstrating progressive complexity, not naturalness</li>
+                    <li>Temporary learning aids - quality less critical since used once</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-amber-900/20 p-3 rounded border border-amber-700 mt-3">
+                <p class="text-xs font-semibold text-amber-300 mb-2">🏍️ ANALOGY: Training Wheels</p>
+                <p class="text-slate-300 text-xs mb-2"><strong>E-phrases</strong> = Actual cycling (used forever after you learn)</p>
+                <p class="text-slate-300 text-xs"><strong>D-phrases</strong> = Training wheels (used once during initial learning, then removed)</p>
               </div>
             </div>
           </div>

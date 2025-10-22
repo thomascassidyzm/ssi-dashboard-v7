@@ -8,6 +8,7 @@ import CourseGeneration from '../views/CourseGeneration.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
 import TerminologyGlossary from '../views/TerminologyGlossary.vue'
+import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
 
 // Quality Review Components
@@ -65,6 +66,12 @@ const routes = [
     name: 'TerminologyGlossary',
     component: TerminologyGlossary,
     meta: { title: 'Terminology Glossary' }
+  },
+  {
+    path: '/reference/pedagogy',
+    name: 'Pedagogy',
+    component: Pedagogy,
+    meta: { title: 'Pedagogical Model' }
   },
 
   // Quality Review Routes
