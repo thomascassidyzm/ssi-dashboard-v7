@@ -90,12 +90,7 @@
     ]],
     ["S0009", ["Parlo un po' italiano adesso.", "I speak a little Italian now."], [
       ["S0009L01", "B", "Parlo", "I speak"],
-      ["S0009F01", "F", "un", "a"],
-      ["S0009F02", "F", "po'", "little"],
-      ["S0009L02", "C", "un po'", "a little", [
-        ["S0009F01", "F", "un", "a"],
-        ["S0009F02", "F", "po'", "little"]
-      ]],
+      ["S0009L02", "B", "un po'", "a little"],
       ["S0009L03", "B", "italiano", "Italian"],
       ["S0009L04", "B", "adesso", "now"]
     ]],
@@ -111,12 +106,8 @@
       ["S0010L02", "B", "se", "if"],
       ["S0010L03", "B", "posso", "I can"],
       ["S0010L04", "B", "ricordare", "to remember"],
-      ["S0010F04", "F", "tutta", "whole"],
-      ["S0010F05", "F", "la", "the"],
       ["S0010F06", "F", "frase", "sentence"],
       ["S0010L05", "C", "tutta la frase", "the whole sentence", [
-        ["S0010F04", "F", "tutta", "whole"],
-        ["S0010F05", "F", "la", "the"],
         ["S0010F06", "F", "frase", "sentence"]
       ]]
     ]]
