@@ -1,0 +1,322 @@
+{
+  "language": "italian",
+  "corpus": "ita_for_eng_668seeds",
+  "phase": "LEGO_DECOMPOSITION",
+  "purpose": "Instruct LEGO decomposition agent on optimal sentence breakpoints to maximize recombinatory power",
+  "strategy": "High composability chunks should be EXPOSED (separated) to enable maximum substitution; low composability chunks should remain BONDED to their context",
+  "decomposition_rules": [
+    {
+      "rule_id": "R1_HIGH_COMPOSABILITY_EXPOSE",
+      "description": "Chunks with composability_score >= 9 should ALWAYS be exposed as separate LEGO pieces",
+      "rationale": "These chunks can combine with many other pieces, so exposing them maximizes recombinatory potential",
+      "examples": ["voglio", "parlare", "con", "a", "sto", "posso", "devo", "fare", "andare", "è", "ho", "di", "non", "e", "ma"],
+      "action": "SEPARATE from adjacent material"
+    },
+    {
+      "rule_id": "R2_MODAL_VERB_INFINITIVE_SPLIT",
+      "description": "Modal verbs (voglio, posso, devo) should be separated from their infinitives",
+      "rationale": "Modal can attach to many different infinitives; infinitive can follow many modals. Splitting exposes both edges.",
+      "patterns": ["voglio [INFINITIVE]", "posso [INFINITIVE]", "devo [INFINITIVE]"],
+      "action": "Create LEGO_PAIR boundary: {modal_verb} <edge:infinitive> [INFINITIVE]"
+    },
+    {
+      "rule_id": "R3_PREPOSITION_OBJECT_SPLIT",
+      "description": "Prepositions (con, a, di, per, in) should separate from objects to expose both edges",
+      "rationale": "Preposition can attach to many objects; object can follow many prepositions",
+      "patterns": ["con [PRONOUN/NOUN]", "a [INFINITIVE/LOCATION]", "di [NOUN/INFINITIVE]"],
+      "action": "Create LEGO_PAIR boundary: {preposition} <edge:object_type> [OBJECT]"
+    },
+    {
+      "rule_id": "R4_CONJUNCTION_CLAUSE_SPLIT",
+      "description": "Conjunctions (che, ma, e, quando) should separate from clauses",
+      "rationale": "Conjunction bridges two independent pieces; exposed edges enable recombination",
+      "patterns": ["penso che [CLAUSE]", "ma [CLAUSE]", "quando [CLAUSE]"],
+      "action": "Create LEGO_PAIR boundary: {conjunction} <edge:clause> [CLAUSE]"
+    },
+    {
+      "rule_id": "R5_LOW_COMPOSABILITY_BOND",
+      "description": "Chunks with composability_score <= 5 should REMAIN BONDED to context",
+      "rationale": "Limited combinatorial freedom; breaking would create unusable pieces",
+      "examples": ["frase (noun alone)", "difficile (isolated adjective)", "testarti (with specific object)"],
+      "action": "KEEP bonded with articles, context, or containers"
+    },
+    {
+      "rule_id": "R6_ARTICLE_NOUN_BOND",
+      "description": "Articles (il, la, un, una) should bond with their head noun as single unit",
+      "rationale": "In Italian, articles are obligatory; separating creates orphaned pieces",
+      "patterns": ["il [NOUN]", "la [NOUN]", "un [NOUN]", "una [NOUN]"],
+      "action": "Create COMPOUND LEGO unit: {article+noun} (e.g., 'la_frase', 'il_tempo')"
+    },
+    {
+      "rule_id": "R7_GERUND_PARTICLE_SPLIT",
+      "description": "Continuous structures (sto + gerund) should split with explicit edge",
+      "rationale": "Gerund can attach to different auxiliaries; auxiliary can use different gerunds",
+      "patterns": ["sto [GERUND]", "stai [GERUND]", "sta [GERUND]"],
+      "action": "Create LEGO_PAIR boundary: {continuous_aux} <edge:gerund> [GERUND]"
+    },
+    {
+      "rule_id": "R8_ADJECTIVE_ADVERB_FOLLOW",
+      "description": "Adjectives and adverbs modifying verbs/adjectives should be separable",
+      "rationale": "High substitution value: 'parlare bene', 'parlare meglio', 'parlare velocemente'",
+      "patterns": ["parlare [ADV]", "è [ADJ]", "molto [ADJ]", "più [ADJ]"],
+      "action": "Expose as separate LEGO: {verb/adj} <edge:modifier> [ADV/ADJ]"
+    },
+    {
+      "rule_id": "R9_NEGATION_EXPOSURE",
+      "description": "Negation particle (non) should be separated to expose verb edges",
+      "rationale": "Can negate any verb; exposes both negation and affirmative verb edges",
+      "patterns": ["non [VERB]", "non [ADJ]"],
+      "action": "Create LEGO_PAIR boundary: {non} <edge:verb/adj> [VERB/ADJ]"
+    },
+    {
+      "rule_id": "R10_TEMPORAL_ADVERB_FLOAT",
+      "description": "Temporal adverbs (adesso, domani, ieri, stasera) can be separate LEGO pieces",
+      "rationale": "Can attach to many sentence types; enables temporal variation",
+      "patterns": ["[SENTENCE] adesso", "[SENTENCE] domani"],
+      "action": "Separate as optional LEGO: {sentence} <edge:temporal> [TEMPORAL_ADV]"
+    }
+  ],
+  "connector_taxonomy": {
+    "PREPOSITIONS": {
+      "universal_connectors": ["con", "a", "di", "per", "in"],
+      "composability": 10,
+      "left_edges_variety": "High - attaches to verbs, adjectives, nouns",
+      "right_edges_variety": "High - attaches to pronouns, infinitives, nouns, locations",
+      "decomposition_priority": "ALWAYS EXPOSE",
+      "example_recompositions": [
+        "parlare con [te/lui/lei/qualcun altro]",
+        "è importante per [fare/imparare/capire]",
+        "di [italiano/più/nuovo/importante]"
+      ]
+    },
+    "MODAL_VERBS": {
+      "items": ["voglio", "posso", "devo", "vuoi", "puoi", "devi"],
+      "composability": 10,
+      "pattern": "[MODAL] + {edge:infinitive} + [INFINITIVE]",
+      "recombinable_infinitives": ["parlare", "imparare", "fare", "dire", "ricordare", "andare", "venire", "capire", "aiutare"],
+      "decomposition_priority": "ALWAYS EXPOSE",
+      "recombination_count": "9+ possible infinitives per modal"
+    },
+    "CONTINUATIVE_AUXILIARY": {
+      "items": ["sto", "stai", "sta", "stiamo", "stanno"],
+      "composability": 10,
+      "pattern": "[CONTINUOUS_AUX] + {edge:gerund} + [GERUND]",
+      "recombinable_gerunds": ["provando", "imparando", "parlando", "facendo", "dicendo", "pensando", "cercando"],
+      "decomposition_priority": "ALWAYS EXPOSE",
+      "recombination_count": "7+ possible gerunds per auxiliary"
+    },
+    "PERFECT_AUXILIARY": {
+      "items": ["ho", "hai", "ha", "abbiamo", "hanno"],
+      "composability": 10,
+      "pattern": "[PERFECT_AUX] + {edge:past_participle} + [PAST_PARTICIPLE]",
+      "recombinable_participles": ["imparato", "fatto", "visto", "sentito", "detto", "cominciato"],
+      "decomposition_priority": "ALWAYS EXPOSE",
+      "recombination_count": "6+ possible participles per auxiliary"
+    },
+    "CONJUNCTIONS": {
+      "items": ["che", "ma", "e", "quando"],
+      "composability": 10,
+      "pattern": "[LEFT_CLAUSE] + {conjunction} + {edge:right_clause} + [RIGHT_CLAUSE]",
+      "decomposition_priority": "ALWAYS EXPOSE",
+      "note": "These bridge entire clauses; exposing maximizes structural recombination"
+    },
+    "NEGATION": {
+      "items": ["non"],
+      "composability": 10,
+      "pattern": "{non} + {edge:verb/adj} + [VERB/ADJ]",
+      "recombinable_targets": ["sono", "è", "posso", "voglio", "devo", "puoi", "può"],
+      "decomposition_priority": "ALWAYS EXPOSE",
+      "recombination_insight": "Any positive verb becomes negative; doubles potential combinations"
+    }
+  },
+  "edge_catalog": {
+    "voglio": {
+      "composability_score": 10,
+      "left_edges": ["e", "non", "perché", "così", "quindi", "ma"],
+      "right_edges": ["parlare", "provare", "che", "imparare", "incontrare", "scoprire"],
+      "recombination_potential": "9+ right_edge options",
+      "decomposition_action": "EXPOSE - separate from preceding connector and from infinitive"
+    },
+    "parlare": {
+      "composability_score": 10,
+      "left_edges": ["voglio", "posso", "devo", "possiamo", "possono", "a", "per", "di"],
+      "right_edges": ["italiano", "con te", "con me", "con qualcun altro", "di più", "meglio", "spesso"],
+      "recombination_potential": "15+ left_edge + 7+ right_edge combinations",
+      "decomposition_action": "EXPOSE as core infinitive - separate from modal/auxiliary and from objects"
+    },
+    "con": {
+      "composability_score": 10,
+      "left_edges": ["parlare", "incontrare", "lavorare", "vedere", "d'accordo"],
+      "right_edges": ["te", "me", "lui", "lei", "qualcun altro", "tutti gli altri", "i miei amici"],
+      "recombination_potential": "5+ left_edge × 8+ right_edge = 40+ combinations",
+      "decomposition_action": "EXPOSE - critical connector; separate from both verb and pronoun"
+    },
+    "a": {
+      "composability_score": 10,
+      "left_edges": ["provando", "cominciare", "voglio", "devo", "posso", "pronto", "capace"],
+      "right_edges": ["imparare", "parlare", "ricordare", "spiegare", "dire", "casa", "scuola"],
+      "recombination_potential": "7+ left_edge × 8+ right_edge = 56+ combinations",
+      "decomposition_action": "EXPOSE - most versatile preposition; separate from both sides"
+    },
+    "italiano": {
+      "composability_score": 9,
+      "left_edges": ["parlare", "imparare", "dire", "in"],
+      "right_edges": ["con te", "molto bene", "tutto il giorno"],
+      "recombination_potential": "4+ left_edge × 3+ right_edge = 12+ combinations",
+      "decomposition_action": "EXPOSE but note: often follows verbs/prepositions; main recombination via left edges"
+    },
+    "non": {
+      "composability_score": 10,
+      "left_edges": ["ma", "e", "perché"],
+      "right_edges": ["sono", "è", "posso", "voglio", "devo", "so", "mi", "ti"],
+      "recombination_potential": "Creates binary (affirmative/negative) for any verb/adj; doubles all combinations",
+      "decomposition_action": "ALWAYS EXPOSE - negation is a high-leverage recombination point"
+    }
+  },
+  "substitution_classes": {
+    "INFINITIVE_VERBS": {
+      "members": ["parlare", "imparare", "fare", "dire", "ricordare", "vedere", "andare", "venire", "capire", "aiutare"],
+      "composability": "High (9-10)",
+      "substitution_position": "After modal verbs (voglio [___], posso [___], devo [___])",
+      "recombination_value": "Each infinitive can replace others in same position",
+      "decomposition": "EXPOSE each infinitive separately"
+    },
+    "MODAL_VERBS": {
+      "members": ["voglio", "posso", "devo", "vuoi", "puoi", "devi"],
+      "composability": "High (10)",
+      "substitution_position": "Before infinitive ([___] parlare, [___] fare, [___] dire)",
+      "recombination_value": "Each modal can precede same set of infinitives",
+      "decomposition": "EXPOSE each modal separately"
+    },
+    "PRONOUNS_POSTPREPOSITION": {
+      "members": ["te", "me", "lui", "lei", "loro", "voi", "noi"],
+      "composability": "Medium-High (8-9)",
+      "substitution_position": "After prepositions (con [___], a [___], di [___])",
+      "recombination_value": "Enables personalization: 'con te' vs 'con lui' vs 'con loro'",
+      "decomposition": "EXPOSE pronouns after prepositions"
+    },
+    "ARTICLES_WITH_NOUNS": {
+      "members": ["il", "la", "un", "una", "gli", "le"],
+      "composability": "Medium (must bond with noun)",
+      "substitution_position": "Before nouns ([___] frase, [___] tempo, [___] giorno)",
+      "recombination_value": "Definite vs indefinite variation",
+      "decomposition": "BOND article + noun as single unit (e.g., 'la_frase', 'un_tempo')"
+    },
+    "MODIFIERS_AFTER_VERB": {
+      "members": ["bene", "meglio", "più", "spesso", "male", "lentamente", "velocemente"],
+      "composability": "Medium-High (7-9)",
+      "substitution_position": "After action verb ([VERB] [___], e.g., 'parlare bene' vs 'parlare meglio')",
+      "recombination_value": "Quality variation: intensity, frequency, manner",
+      "decomposition": "EXPOSE modifiers separately for adverbial variation"
+    },
+    "TEMPORAL_ADVERBS": {
+      "members": ["adesso", "domani", "ieri", "stasera", "stamattina", "oggi"],
+      "composability": "Medium (7-8)",
+      "substitution_position": "Sentence final or clause final ([CLAUSE] [___])",
+      "recombination_value": "Temporal anchoring for any sentence",
+      "decomposition": "EXPOSE as optional floating LEGO"
+    }
+  },
+  "decomposition_patterns_from_corpus": {
+    "pattern_MODAL_INFINITIVE": {
+      "structure": "[MODAL] + {edge} + [INFINITIVE]",
+      "examples": ["voglio parlare", "posso fare", "devo andare", "vuoi imparare"],
+      "corpus_frequency": "High (appears in 100+ seeds)",
+      "decomposition": "Always split: {voglio} <edge:inf> {parlare}",
+      "recombination_examples": [
+        "voglio fare",
+        "voglio imparare",
+        "posso parlare",
+        "devo ricordare"
+      ]
+    },
+    "pattern_CONTINUOUS": {
+      "structure": "[AUXILIARY] + {edge} + [GERUND] + [OBJECT]",
+      "examples": ["sto provando a parlare", "stai facendo qualcosa", "sta dicendo"],
+      "corpus_frequency": "High (appears in 80+ seeds)",
+      "decomposition": "Always split: {sto} <edge:gerund> {provando} <edge:object> {a_parlare}",
+      "recombination_examples": [
+        "sto provando a ricordare",
+        "sto facendo questo",
+        "sta dicendo cosa"
+      ]
+    },
+    "pattern_PREPOSITION_PRONOUN": {
+      "structure": "[VERB] + [PREPOSITION] + {edge} + [PRONOUN]",
+      "examples": ["parlare con te", "incontrare con lui", "dire a lei"],
+      "corpus_frequency": "High (appears in 120+ seeds)",
+      "decomposition": "Always split: {parlare} <edge:con> {con} <edge:pronoun> {te}",
+      "recombination_examples": [
+        "parlare con me",
+        "parlare con qualcun altro",
+        "parlare con loro",
+        "fare con te",
+        "incontrare con lui"
+      ]
+    },
+    "pattern_NEGATION_VERB": {
+      "structure": "{non} + {edge} + [VERB/ADJ]",
+      "examples": ["non voglio", "non posso", "non sono"],
+      "corpus_frequency": "High (appears in 150+ seeds)",
+      "decomposition": "Always expose: {non} <edge:verb> {voglio}",
+      "recombination_insight": "Doubles combinations: for every 'voglio X', get 'non voglio X'"
+    },
+    "pattern_OBJECT_MODIFIER": {
+      "structure": "[VERB] + [OBJECT] + {edge} + [MODIFIER]",
+      "examples": ["parlare italiano bene", "dire qualcosa di nuovo"],
+      "corpus_frequency": "Medium (appears in 40+ seeds)",
+      "decomposition": "Split if modifier is high-composability adjective/adverb",
+      "recombination_examples": [
+        "parlare italiano meglio",
+        "parlare italiano più spesso",
+        "dire qualcosa di importante"
+      ]
+    }
+  },
+  "recombination_potential_map": {
+    "by_connector_type": {
+      "MODAL_VERBS": {
+        "avg_edges": 9,
+        "total_recombinatory_power": "6 modals × 9 infinitives = 54+ combinations"
+      },
+      "PREPOSITIONS": {
+        "avg_edges": 8,
+        "total_recombinatory_power": "5 key prepositions × 8+ objects = 40+ combinations"
+      },
+      "CONJUNCTIONS": {
+        "avg_edges": "unlimited",
+        "total_recombinatory_power": "Bridges any two compatible clauses"
+      },
+      "NEGATION": {
+        "avg_edges": "all verbs/adj",
+        "total_recombinatory_power": "Creates binary (neg/pos) for entire sentence space"
+      }
+    },
+    "by_decomposition_quality": {
+      "optimal_split_count": "Aim for 4-6 LEGO pieces per average seed",
+      "example_seed": "Voglio parlare italiano con te adesso.",
+      "suboptimal_decomposition": [
+        "Voglio parlare",
+        "italiano con te adesso"
+      ],
+      "optimal_decomposition": [
+        "voglio",
+        "parlare",
+        "italiano",
+        "con",
+        "te",
+        "adesso"
+      ],
+      "recombination_gain": "Optimal exposes 6 independent edges vs suboptimal's 2 edges"
+    }
+  },
+  "agent_instructions": {
+    "step_1_identify_high_composability": "Mark all chunks with composability_score >= 9 as EXPOSURE_CANDIDATES",
+    "step_2_mark_connector_boundaries": "For each connector (modal, preposition, conjunction, negation), mark boundaries on both sides",
+    "step_3_bond_low_composability": "Keep chunks with score <= 5 bonded to their host (e.g., articles to nouns)",
+    "step_4_test_recombination": "For each proposed LEGO piece, verify it has >=2 left_edges AND >=2 right_edges (unless it's sentence-final)",
+    "step_5_maximize_edges": "Prefer splits that expose high-edge chunks (score 10) over medium-edge chunks (score 6)",
+    "step_6_create_edge_labels": "For each LEGO piece, label all left_edges and right_edges explicitly",
+    "step_7_generate_recombinations": "For top 20% LEGO pieces (by composability), generate 5-10 novel recombination examples"
+  }
+}

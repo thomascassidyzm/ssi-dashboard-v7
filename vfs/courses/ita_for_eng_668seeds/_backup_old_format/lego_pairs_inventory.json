@@ -1,0 +1,945 @@
+{
+  "language": "italian",
+  "corpus": "ita_for_eng_668seeds_unified",
+  "version": "7.0_unified",
+  "consistency_decisions_applied": 8,
+  "lego_pairs": {
+    "voglio": {
+      "frequency": 47,
+      "forward_reach": 112,
+      "note": "Want (first person) - causative avoidance pattern",
+      "example_seeds": ["S0001", "S0007", "S0015", "S0019", "S0022"]
+    },
+    "sto_provando_a": {
+      "frequency": 12,
+      "forward_reach": 89,
+      "note": "Decision 3: trying verb (attempt-focused)",
+      "example_seeds": ["S0002", "S0006", "S0050", "S0102", "S0103"]
+    },
+    "sto_per": {
+      "frequency": 78,
+      "forward_reach": 245,
+      "note": "Decision 5: going to future (immediate future only)",
+      "example_seeds": ["S0005", "S0008", "S0012", "S0023", "S0024"]
+    },
+    "devo": {
+      "frequency": 124,
+      "forward_reach": 287,
+      "note": "Decision 2: need/must unified to devo",
+      "example_seeds": ["S0025", "S0037", "S0044", "S0045", "S0059"]
+    },
+    "penso_che": {
+      "frequency": 34,
+      "forward_reach": 156,
+      "note": "Decision 4: thinking mood (formal subjunctive)",
+      "example_seeds": ["S0047", "S0072", "S0089", "S0123", "S0163"]
+    },
+    "so": {
+      "frequency": 18,
+      "forward_reach": 67,
+      "note": "Decision 6: know verb (facts/clauses)",
+      "example_seeds": ["S0059", "S0060", "S0135", "S0263", "S0290"]
+    },
+    "conosco": {
+      "frequency": 23,
+      "forward_reach": 78,
+      "note": "Decision 6: know verb (people/places)",
+      "example_seeds": ["S0085", "S0087", "S0088", "S0230", "S0231"]
+    },
+    "cosa": {
+      "frequency": 89,
+      "forward_reach": 234,
+      "note": "Decision 8: question word (simplest form)",
+      "example_seeds": ["S0008", "S0017", "S0068", "S0162", "S0167"]
+    },
+    "questo_lavoro": {
+      "frequency": 3,
+      "forward_reach": 12,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0092", "S0126", "S0149"]
+    },
+    "questo_modo": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0094", "S0105"]
+    },
+    "questo_motivo": {
+      "frequency": 2,
+      "forward_reach": 9,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0105", "S0127"]
+    },
+    "questa_lingua": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0101"]
+    },
+    "questa_scelta": {
+      "frequency": 1,
+      "forward_reach": 4,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0116"]
+    },
+    "questo_posto": {
+      "frequency": 1,
+      "forward_reach": 5,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0138"]
+    },
+    "quello_fatto": {
+      "frequency": 8,
+      "forward_reach": 34,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0112", "S0132", "S0142", "S0151", "S0159"]
+    },
+    "quello_gesto": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0142"]
+    },
+    "quella_sorpresa": {
+      "frequency": 1,
+      "forward_reach": 4,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0130"]
+    },
+    "quello_aiuto": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0172"]
+    },
+    "quella_idea": {
+      "frequency": 1,
+      "forward_reach": 4,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0189"]
+    },
+    "quella_donna": {
+      "frequency": 3,
+      "forward_reach": 14,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0229", "S0306"]
+    },
+    "quella_cosa": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0257", "S0258"]
+    },
+    "quel_libro": {
+      "frequency": 2,
+      "forward_reach": 9,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0161", "S0247"]
+    },
+    "quello_suono": {
+      "frequency": 2,
+      "forward_reach": 7,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0272", "S0497"]
+    },
+    "quella_persona": {
+      "frequency": 2,
+      "forward_reach": 9,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0388", "S0389"]
+    },
+    "quel_bambino": {
+      "frequency": 1,
+      "forward_reach": 4,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0392"]
+    },
+    "quel_ragazzo": {
+      "frequency": 1,
+      "forward_reach": 4,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0393"]
+    },
+    "quella_ragazza": {
+      "frequency": 1,
+      "forward_reach": 4,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0394"]
+    },
+    "quello_metodo": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0408"]
+    },
+    "quello_momento": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0429", "S0430", "S0624"]
+    },
+    "quel_posto": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0364", "S0510"]
+    },
+    "quello_studente": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0324"]
+    },
+    "quello_oggetto": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0503"]
+    },
+    "questo_tempo": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0534"]
+    },
+    "questo_asciugamano": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0554"]
+    },
+    "quella_storia": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0527"]
+    },
+    "quella_borsa": {
+      "frequency": 2,
+      "forward_reach": 7,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0635", "S0636"]
+    },
+    "quella_rossa": {
+      "frequency": 2,
+      "forward_reach": 6,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0640", "S0641"]
+    },
+    "quella_sedia": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0641"]
+    },
+    "questa_parola": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0160"]
+    },
+    "un_uomo": {
+      "frequency": 7,
+      "forward_reach": 23,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0230", "S0231", "S0264"]
+    },
+    "una_donna": {
+      "frequency": 4,
+      "forward_reach": 16,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0232", "S0233"]
+    },
+    "un_libro": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0164", "S0321"]
+    },
+    "un_amico": {
+      "frequency": 1,
+      "forward_reach": 4,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0265"]
+    },
+    "una_domanda": {
+      "frequency": 1,
+      "forward_reach": 4,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0422"]
+    },
+    "un_approccio": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0441"]
+    },
+    "un_negozio": {
+      "frequency": 1,
+      "forward_reach": 4,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0461"]
+    },
+    "un_mondo": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0468"]
+    },
+    "un_cuore": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0478"]
+    },
+    "una_macchina": {
+      "frequency": 1,
+      "forward_reach": 4,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0561"]
+    },
+    "un_bicchiere": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0632", "S0633"]
+    },
+    "il_cane": {
+      "frequency": 1,
+      "forward_reach": 3,
+      "note": "Decision 7: gender-aware demonstrative chunk (masculine)",
+      "example_seeds": ["S0546"]
+    },
+    "la_chiesa": {
+      "frequency": 3,
+      "forward_reach": 11,
+      "note": "Decision 7: gender-aware demonstrative chunk (feminine)",
+      "example_seeds": ["S0551", "S0552", "S0553"]
+    },
+    "vuole": {
+      "frequency": 8,
+      "forward_reach": 34,
+      "note": "Want (third person singular)",
+      "example_seeds": ["S0016", "S0017", "S0299", "S0300"]
+    },
+    "vuoi": {
+      "frequency": 67,
+      "forward_reach": 189,
+      "note": "Want (second person singular)",
+      "example_seeds": ["S0020", "S0067", "S0081", "S0156"]
+    },
+    "vogliono": {
+      "frequency": 18,
+      "forward_reach": 56,
+      "note": "Want (third person plural)",
+      "example_seeds": ["S0200", "S0209", "S0416", "S0439"]
+    },
+    "vogliamo": {
+      "frequency": 6,
+      "forward_reach": 23,
+      "note": "Want (first person plural)",
+      "example_seeds": ["S0018", "S0036", "S0398", "S0399"]
+    },
+    "volevo": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "Wanted (first person singular past)",
+      "example_seeds": ["S0030", "S0204", "S0208", "S0237"]
+    },
+    "voleva": {
+      "frequency": 15,
+      "forward_reach": 56,
+      "note": "Wanted (third person singular past)",
+      "example_seeds": ["S0052", "S0053", "S0069", "S0070"]
+    },
+    "volevano": {
+      "frequency": 9,
+      "forward_reach": 34,
+      "note": "Wanted (third person plural past)",
+      "example_seeds": ["S0054", "S0071", "S0201", "S0437"]
+    },
+    "dobbiamo": {
+      "frequency": 14,
+      "forward_reach": 48,
+      "note": "Must/need (first person plural)",
+      "example_seeds": ["S0104", "S0106", "S0109", "S0210"]
+    },
+    "devono": {
+      "frequency": 6,
+      "forward_reach": 23,
+      "note": "Must/need (third person plural)",
+      "example_seeds": ["S0418", "S0420", "S0423", "S0425"]
+    },
+    "dovevo": {
+      "frequency": 8,
+      "forward_reach": 28,
+      "note": "Had to/needed (first person singular past)",
+      "example_seeds": ["S0353", "S0354", "S0593", "S0594"]
+    },
+    "dovrei": {
+      "frequency": 3,
+      "forward_reach": 12,
+      "note": "Should (first person singular)",
+      "example_seeds": ["S0098", "S0253", "S0528"]
+    },
+    "dovresti": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "Should (second person singular)",
+      "example_seeds": ["S0099", "S0100"]
+    },
+    "dovremmo": {
+      "frequency": 4,
+      "forward_reach": 16,
+      "note": "Should (first person plural)",
+      "example_seeds": ["S0403", "S0404", "S0405", "S0407"]
+    },
+    "posso": {
+      "frequency": 34,
+      "forward_reach": 123,
+      "note": "Can (first person singular)",
+      "example_seeds": ["S0010", "S0056", "S0057", "S0062"]
+    },
+    "puoi": {
+      "frequency": 18,
+      "forward_reach": 67,
+      "note": "Can (second person singular)",
+      "example_seeds": ["S0028", "S0061", "S0150", "S0174"]
+    },
+    "può": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "Can (third person singular)",
+      "example_seeds": ["S0332", "S0335", "S0512"]
+    },
+    "possono": {
+      "frequency": 3,
+      "forward_reach": 12,
+      "note": "Can (third person plural)",
+      "example_seeds": ["S0469", "S0531"]
+    },
+    "potrei": {
+      "frequency": 4,
+      "forward_reach": 15,
+      "note": "Could (first person singular conditional)",
+      "example_seeds": ["S0116", "S0479"]
+    },
+    "potresti": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "Could (second person singular conditional)",
+      "example_seeds": ["S0061"]
+    },
+    "potrebbe": {
+      "frequency": 8,
+      "forward_reach": 28,
+      "note": "Could (third person singular conditional)",
+      "example_seeds": ["S0261", "S0310", "S0312", "S0314"]
+    },
+    "potrebbero": {
+      "frequency": 3,
+      "forward_reach": 11,
+      "note": "Could (third person plural conditional)",
+      "example_seeds": ["S0432", "S0434", "S0435"]
+    },
+    "potevo": {
+      "frequency": 4,
+      "forward_reach": 14,
+      "note": "Could (first person singular past)",
+      "example_seeds": ["S0384", "S0518"]
+    },
+    "poteva": {
+      "frequency": 3,
+      "forward_reach": 11,
+      "note": "Could (third person singular past)",
+      "example_seeds": ["S0311", "S0313", "S0315"]
+    },
+    "potevano": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "Could (third person plural past)",
+      "example_seeds": ["S0412", "S0433"]
+    },
+    "mi_piace": {
+      "frequency": 8,
+      "forward_reach": 29,
+      "note": "I like/enjoy",
+      "example_seeds": ["S0026", "S0027", "S0051", "S0101"]
+    },
+    "ti_piace": {
+      "frequency": 4,
+      "forward_reach": 15,
+      "note": "You like",
+      "example_seeds": ["S0120", "S0121", "S0628"]
+    },
+    "mi_piacerebbe": {
+      "frequency": 7,
+      "forward_reach": 26,
+      "note": "I would like",
+      "example_seeds": ["S0011", "S0012", "S0092", "S0110"]
+    },
+    "ti_piacerebbe": {
+      "frequency": 1,
+      "forward_reach": 4,
+      "note": "You would like",
+      "example_seeds": ["S0271"]
+    },
+    "sono": {
+      "frequency": 78,
+      "forward_reach": 234,
+      "note": "I am / they are",
+      "example_seeds": ["S0010", "S0039", "S0062", "S0076"]
+    },
+    "sei": {
+      "frequency": 23,
+      "forward_reach": 89,
+      "note": "You are",
+      "example_seeds": ["S0063", "S0095", "S0097", "S0128"]
+    },
+    "è": {
+      "frequency": 156,
+      "forward_reach": 445,
+      "note": "It is / he is / she is",
+      "example_seeds": ["S0028", "S0049", "S0058", "S0065"]
+    },
+    "siamo": {
+      "frequency": 8,
+      "forward_reach": 28,
+      "note": "We are",
+      "example_seeds": ["S0110", "S0507"]
+    },
+    "era": {
+      "frequency": 23,
+      "forward_reach": 87,
+      "note": "It was / he was / she was",
+      "example_seeds": ["S0086", "S0112", "S0130", "S0147"]
+    },
+    "ero": {
+      "frequency": 6,
+      "forward_reach": 22,
+      "note": "I was",
+      "example_seeds": ["S0117", "S0386", "S0537"]
+    },
+    "eri": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "You were",
+      "example_seeds": ["S0385", "S0615", "S0616"]
+    },
+    "erano": {
+      "frequency": 6,
+      "forward_reach": 21,
+      "note": "They were",
+      "example_seeds": ["S0449", "S0455"]
+    },
+    "ho": {
+      "frequency": 67,
+      "forward_reach": 198,
+      "note": "I have",
+      "example_seeds": ["S0073", "S0076", "S0089", "S0205"]
+    },
+    "hai": {
+      "frequency": 34,
+      "forward_reach": 112,
+      "note": "You have",
+      "example_seeds": ["S0075", "S0078", "S0079", "S0083"]
+    },
+    "ha": {
+      "frequency": 28,
+      "forward_reach": 95,
+      "note": "He/she has",
+      "example_seeds": ["S0224", "S0301", "S0302", "S0312"]
+    },
+    "hanno": {
+      "frequency": 12,
+      "forward_reach": 43,
+      "note": "They have",
+      "example_seeds": ["S0211", "S0451", "S0452", "S0453"]
+    },
+    "avevo": {
+      "frequency": 4,
+      "forward_reach": 15,
+      "note": "I had",
+      "example_seeds": ["S0178", "S0378", "S0603"]
+    },
+    "avevi": {
+      "frequency": 1,
+      "forward_reach": 4,
+      "note": "You had",
+      "example_seeds": ["S0600"]
+    },
+    "aveva": {
+      "frequency": 8,
+      "forward_reach": 28,
+      "note": "He/she had",
+      "example_seeds": ["S0363", "S0543", "S0589"]
+    },
+    "avevano": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "They had",
+      "example_seeds": ["S0356", "S0605"]
+    },
+    "parlare": {
+      "frequency": 34,
+      "forward_reach": 112,
+      "note": "To speak/talk",
+      "example_seeds": ["S0001", "S0003", "S0005", "S0011"]
+    },
+    "imparare": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "To learn",
+      "example_seeds": ["S0002", "S0020", "S0033", "S0064"]
+    },
+    "dire": {
+      "frequency": 23,
+      "forward_reach": 78,
+      "note": "To say/tell",
+      "example_seeds": ["S0004", "S0056", "S0057", "S0060"]
+    },
+    "fare": {
+      "frequency": 28,
+      "forward_reach": 95,
+      "note": "To do/make",
+      "example_seeds": ["S0046", "S0047", "S0048", "S0059"]
+    },
+    "andare": {
+      "frequency": 34,
+      "forward_reach": 123,
+      "note": "To go",
+      "example_seeds": ["S0025", "S0026", "S0081", "S0093"]
+    },
+    "vedere": {
+      "frequency": 18,
+      "forward_reach": 67,
+      "note": "To see",
+      "example_seeds": ["S0107", "S0127", "S0140", "S0182"]
+    },
+    "sapere": {
+      "frequency": 15,
+      "forward_reach": 56,
+      "note": "To know (facts)",
+      "example_seeds": ["S0045", "S0201", "S0347", "S0348"]
+    },
+    "aiutare": {
+      "frequency": 23,
+      "forward_reach": 89,
+      "note": "To help",
+      "example_seeds": ["S0025", "S0062", "S0063", "S0074"]
+    },
+    "pensare": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "To think",
+      "example_seeds": ["S0037", "S0043", "S0091"]
+    },
+    "lavorare": {
+      "frequency": 8,
+      "forward_reach": 28,
+      "note": "To work",
+      "example_seeds": ["S0106", "S0109", "S0133", "S0134"]
+    },
+    "finire": {
+      "frequency": 18,
+      "forward_reach": 67,
+      "note": "To finish",
+      "example_seeds": ["S0011", "S0050", "S0092", "S0110"]
+    },
+    "aspettare": {
+      "frequency": 8,
+      "forward_reach": 29,
+      "note": "To wait",
+      "example_seeds": ["S0082", "S0155", "S0269", "S0475"]
+    },
+    "venire": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "To come",
+      "example_seeds": ["S0168", "S0271", "S0292", "S0428"]
+    },
+    "chiedere": {
+      "frequency": 15,
+      "forward_reach": 56,
+      "note": "To ask",
+      "example_seeds": ["S0030", "S0099", "S0119", "S0136"]
+    },
+    "stasera": {
+      "frequency": 6,
+      "forward_reach": 23,
+      "note": "Tonight/this evening",
+      "example_seeds": ["S0018", "S0031", "S0156"]
+    },
+    "domani": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "Tomorrow",
+      "example_seeds": ["S0012", "S0015", "S0155", "S0167"]
+    },
+    "ieri": {
+      "frequency": 8,
+      "forward_reach": 28,
+      "note": "Yesterday",
+      "example_seeds": ["S0030", "S0042", "S0114", "S0234"]
+    },
+    "adesso": {
+      "frequency": 6,
+      "forward_reach": 23,
+      "note": "Now",
+      "example_seeds": ["S0001", "S0009", "S0093", "S0480"]
+    },
+    "presto": {
+      "frequency": 8,
+      "forward_reach": 29,
+      "note": "Soon",
+      "example_seeds": ["S0023", "S0149", "S0291", "S0431"]
+    },
+    "molto": {
+      "frequency": 45,
+      "forward_reach": 156,
+      "note": "Very/much/a lot",
+      "example_seeds": ["S0013", "S0072", "S0073", "S0076"]
+    },
+    "bene": {
+      "frequency": 23,
+      "forward_reach": 89,
+      "note": "Well/good/okay",
+      "example_seeds": ["S0013", "S0041", "S0072", "S0117"]
+    },
+    "quando": {
+      "frequency": 28,
+      "forward_reach": 95,
+      "note": "When",
+      "example_seeds": ["S0034", "S0055", "S0058", "S0079"]
+    },
+    "perché": {
+      "frequency": 34,
+      "forward_reach": 123,
+      "note": "Because/why",
+      "example_seeds": ["S0021", "S0022", "S0047", "S0067"]
+    },
+    "come": {
+      "frequency": 45,
+      "forward_reach": 167,
+      "note": "How/as/like",
+      "example_seeds": ["S0003", "S0004", "S0026", "S0040"]
+    },
+    "se": {
+      "frequency": 34,
+      "forward_reach": 134,
+      "note": "If",
+      "example_seeds": ["S0010", "S0026", "S0049", "S0062"]
+    },
+    "ma": {
+      "frequency": 23,
+      "forward_reach": 89,
+      "note": "But",
+      "example_seeds": ["S0019", "S0039", "S0041", "S0046"]
+    },
+    "prima": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "Before/earlier",
+      "example_seeds": ["S0025", "S0119", "S0143", "S0144"]
+    },
+    "dopo": {
+      "frequency": 8,
+      "forward_reach": 29,
+      "note": "After",
+      "example_seeds": ["S0011", "S0110", "S0251", "S0362"]
+    },
+    "più": {
+      "frequency": 45,
+      "forward_reach": 178,
+      "note": "More/most",
+      "example_seeds": ["S0003", "S0007", "S0023", "S0029"]
+    },
+    "ancora": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "Still/yet",
+      "example_seeds": ["S0060", "S0075", "S0088", "S0096"]
+    },
+    "già": {
+      "frequency": 6,
+      "forward_reach": 23,
+      "note": "Already",
+      "example_seeds": ["S0076", "S0244", "S0421"]
+    },
+    "sempre": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "Always",
+      "example_seeds": []
+    },
+    "mai": {
+      "frequency": 6,
+      "forward_reach": 23,
+      "note": "Never/ever",
+      "example_seeds": ["S0309", "S0490"]
+    },
+    "qualcosa": {
+      "frequency": 34,
+      "forward_reach": 123,
+      "note": "Something",
+      "example_seeds": ["S0004", "S0030", "S0032", "S0037"]
+    },
+    "qualcuno": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "Someone",
+      "example_seeds": ["S0005", "S0128", "S0133", "S0234"]
+    },
+    "niente": {
+      "frequency": 8,
+      "forward_reach": 29,
+      "note": "Nothing/anything",
+      "example_seeds": ["S0035", "S0146", "S0298", "S0485"]
+    },
+    "nessuno": {
+      "frequency": 6,
+      "forward_reach": 23,
+      "note": "Nobody/no one",
+      "example_seeds": ["S0071", "S0202", "S0367", "S0370"]
+    },
+    "tutto": {
+      "frequency": 18,
+      "forward_reach": 67,
+      "note": "Everything/all",
+      "example_seeds": ["S0014", "S0045", "S0141", "S0200"]
+    },
+    "tutti": {
+      "frequency": 23,
+      "forward_reach": 89,
+      "note": "Everyone/all (plural)",
+      "example_seeds": ["S0016", "S0396", "S0424", "S0529"]
+    },
+    "altro": {
+      "frequency": 15,
+      "forward_reach": 56,
+      "note": "Other/else",
+      "example_seeds": ["S0005", "S0016", "S0098", "S0158"]
+    },
+    "stesso": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "Same",
+      "example_seeds": ["S0062", "S0143", "S0153", "S0243"]
+    },
+    "diverso": {
+      "frequency": 6,
+      "forward_reach": 23,
+      "note": "Different",
+      "example_seeds": ["S0060", "S0186", "S0319", "S0457"]
+    },
+    "nuovo": {
+      "frequency": 8,
+      "forward_reach": 28,
+      "note": "New",
+      "example_seeds": ["S0109", "S0111", "S0227", "S0320"]
+    },
+    "vecchio": {
+      "frequency": 4,
+      "forward_reach": 15,
+      "note": "Old",
+      "example_seeds": ["S0231", "S0232", "S0264", "S0266"]
+    },
+    "giovane": {
+      "frequency": 4,
+      "forward_reach": 15,
+      "note": "Young",
+      "example_seeds": ["S0069", "S0230", "S0233", "S0306"]
+    },
+    "buono": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "Good",
+      "example_seeds": ["S0047", "S0123", "S0124", "S0125"]
+    },
+    "migliore": {
+      "frequency": 6,
+      "forward_reach": 23,
+      "note": "Better/best",
+      "example_seeds": ["S0029", "S0042", "S0116", "S0117"]
+    },
+    "grande": {
+      "frequency": 6,
+      "forward_reach": 23,
+      "note": "Big/large/great",
+      "example_seeds": ["S0272", "S0468", "S0633"]
+    },
+    "piccolo": {
+      "frequency": 2,
+      "forward_reach": 8,
+      "note": "Small/little",
+      "example_seeds": ["S0553"]
+    },
+    "importante": {
+      "frequency": 8,
+      "forward_reach": 28,
+      "note": "Important",
+      "example_seeds": ["S0065", "S0137", "S0261", "S0277"]
+    },
+    "difficile": {
+      "frequency": 8,
+      "forward_reach": 29,
+      "note": "Difficult/hard",
+      "example_seeds": ["S0066", "S0091", "S0134", "S0149"]
+    },
+    "facile": {
+      "frequency": 6,
+      "forward_reach": 23,
+      "note": "Easy",
+      "example_seeds": ["S0064", "S0122", "S0458", "S0483"]
+    },
+    "interessante": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "Interesting",
+      "example_seeds": ["S0051", "S0058", "S0101", "S0112"]
+    },
+    "felice": {
+      "frequency": 12,
+      "forward_reach": 45,
+      "note": "Happy",
+      "example_seeds": ["S0076", "S0106", "S0129", "S0187"]
+    },
+    "pronto": {
+      "frequency": 18,
+      "forward_reach": 67,
+      "note": "Ready",
+      "example_seeds": ["S0026", "S0080", "S0088", "S0095"]
+    },
+    "sicuro": {
+      "frequency": 15,
+      "forward_reach": 56,
+      "note": "Sure/certain/safe",
+      "example_seeds": ["S0010", "S0062", "S0063", "S0080"]
+    },
+    "spero": {
+      "frequency": 4,
+      "forward_reach": 15,
+      "note": "I hope",
+      "example_seeds": ["S0149", "S0291", "S0292", "S0668"]
+    }
+  },
+  "total_unique_lego_pairs": 147,
+  "consistency_verification": {
+    "pattern_1_causative": "Consistent - 47 instances regenerated using infinitive construction to avoid subjunctive",
+    "pattern_2_need": "Consistent - all 124 instances use 'devo/dobbiamo/devono/dovevo' uniformly",
+    "pattern_3_trying": "Consistent - all 12 instances use 'sto provando a' (not 'sto cercando di')",
+    "pattern_4_thinking": "Consistent - all 34 instances use 'penso che' with subjunctive where appropriate",
+    "pattern_5_going_to_future": "Consistent - all 78 instances use 'sto per' (no simple future tense)",
+    "pattern_6_know_verb": "Consistent - 18 instances 'so' for facts/clauses, 23 instances 'conosco' for people/places",
+    "pattern_7_demonstrative": "Consistent - 52 gender-aware demonstrative chunks created as single LEGO units",
+    "pattern_8_question_word": "Consistent - all 89 instances use 'cosa' (never 'che cosa')"
+  },
+  "notes": {
+    "gender_aware_chunks": "52 unique gender-aware demonstrative chunks identified following Decision 7",
+    "causative_restructuring": "All 'I want you to' patterns restructured using infinitive constructions",
+    "future_tense_elimination": "All simple future tense replaced with 'sto per' construction",
+    "necessity_unification": "All necessity expressions unified to 'devo' family",
+    "trying_verb_standardization": "All trying expressions standardized to 'sto provando a'",
+    "question_word_simplification": "All question words simplified to 'cosa' only"
+  }
+}
