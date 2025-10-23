@@ -1,0 +1,207 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SSi Course Manifest Schema",
+  "description": "Final compiled course format for SSi mobile app (Phase 7 output)",
+  "version": "7.7.0",
+  "type": "object",
+  "required": ["id", "version", "target", "known", "slices"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Course identifier (e.g., 'en-ga', 'ita-eng')",
+      "pattern": "^[a-z]{2,3}-[a-z]{2,3}$"
+    },
+    "version": {
+      "type": "string",
+      "description": "Course version (semantic versioning)"
+    },
+    "target": {
+      "type": "string",
+      "description": "Target language code (ISO 639-2/3)",
+      "pattern": "^[a-z]{2,3}$"
+    },
+    "known": {
+      "type": "string",
+      "description": "Known language code (ISO 639-2/3)",
+      "pattern": "^[a-z]{2,3}$"
+    },
+    "blackBeltBoundary": {
+      "type": "integer",
+      "description": "Seed index that marks completion boundary"
+    },
+    "introduction": {
+      "type": "object",
+      "description": "Course introduction content"
+    },
+    "beltAssessor": {
+      "type": "object",
+      "description": "Belt level assessment configuration"
+    },
+    "slices": {
+      "type": "array",
+      "description": "Course content organized in slices (lessons/sessions)",
+      "items": {
+        "type": "object",
+        "required": ["id", "seeds", "samples"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Slice UUID"
+          },
+          "version": {
+            "type": "string",
+            "description": "Slice version"
+          },
+          "seeds": {
+            "type": "array",
+            "description": "Seeds (base sentences) in this slice",
+            "items": {
+              "type": "object",
+              "required": ["id", "node", "seedSentence", "introductionItems"],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "node": {
+                  "type": "object",
+                  "required": ["id", "target", "known"],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "target": {
+                      "$ref": "#/definitions/languageNode"
+                    },
+                    "known": {
+                      "$ref": "#/definitions/languageNode"
+                    }
+                  }
+                },
+                "seedSentence": {
+                  "type": "object",
+                  "required": ["canonical"],
+                  "properties": {
+                    "canonical": {
+                      "type": "string",
+                      "description": "Original canonical English concept"
+                    }
+                  }
+                },
+                "introductionItems": {
+                  "type": "array",
+                  "description": "LEGOs that build up to the complete seed",
+                  "items": {
+                    "type": "object",
+                    "required": ["id", "node", "presentation"],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "node": {
+                        "type": "object",
+                        "description": "The LEGO being introduced"
+                      },
+                      "presentation": {
+                        "type": "string",
+                        "description": "Spoken text introducing this LEGO"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "description": "Practice nodes (expanding windows)",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "target": {
+                              "$ref": "#/definitions/languageNode"
+                            },
+                            "known": {
+                              "$ref": "#/definitions/languageNode"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "samples": {
+            "type": "object",
+            "description": "Audio samples keyed by phrase text",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "cadence", "role"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Audio file UUID"
+                  },
+                  "cadence": {
+                    "type": "string",
+                    "enum": ["natural", "slow"],
+                    "description": "Speaking speed"
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": ["target1", "target2", "known"],
+                    "description": "Voice role (target1=primary, target2=alternate, known=translation)"
+                  },
+                  "duration": {
+                    "type": "number",
+                    "description": "Audio duration in seconds"
+                  }
+                }
+              }
+            }
+          },
+          "pooledEncouragements": {
+            "type": "array",
+            "description": "Pooled encouragement audio"
+          },
+          "orderedEncouragements": {
+            "type": "array",
+            "description": "Ordered encouragement audio"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "languageNode": {
+      "type": "object",
+      "required": ["tokens", "text", "lemmas"],
+      "properties": {
+        "tokens": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Tokenized words"
+        },
+        "text": {
+          "type": "string",
+          "description": "Complete phrase text"
+        },
+        "lemmas": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Lemmatized forms"
+        }
+      }
+    }
+  }
+}
