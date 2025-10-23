@@ -3075,25 +3075,68 @@ app.post('/api/courses/:courseCode/phase/2', async (req, res) => {
   try {
     console.log(`[Phase 2] Starting corpus analysis for ${courseCode}...`);
 
-    // TODO: Implement Phase 2 logic tomorrow
-    // - Load SEED_PAIRS from VFS
-    // - Perform FCFS (First-Can-First-Say) analysis
-    // - Calculate utility scores
-    // - Generate corpus intelligence JSON
+    const courseDir = await ensureCourseDirectory(courseCode);
 
-    res.status(501).json({
-      error: 'Phase 2 not yet implemented',
-      message: 'Phase 2: Corpus Analysis endpoint stub - implementation pending',
+    // Check if course exists
+    if (!await fs.pathExists(courseDir)) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    // Get or create job
+    let job = STATE.jobs.get(courseCode);
+    if (!job) {
+      job = {
+        courseCode,
+        status: 'in_progress',
+        phase: 'phase_2',
+        progress: 0,
+        startTime: new Date()
+      };
+      STATE.jobs.set(courseCode, job);
+    }
+
+    // Construct prompt for Claude agent
+    const prompt = `# Phase 2: Corpus Analysis for ${courseCode}
+
+## Instructions
+Please visit ${CONFIG.TRAINING_URL}/phase/2 for complete phase instructions.
+
+## Task Summary
+1. Load translations.json from ${courseDir}
+2. Analyze FCFS (First-Can-First-Say) chronological order
+3. Calculate utility scores for each translation
+4. Output phase_2_corpus_intelligence.json
+
+## Working Directory
+${courseDir}
+
+## Output File
+phase_outputs/phase_2_corpus_intelligence.json
+
+Begin Phase 2 now.`;
+
+    // Update job status
+    job.phase = 'phase_2';
+    job.progress = 35;
+
+    // Spawn agent
+    console.log(`[Phase 2] Spawning Claude Code agent for ${courseCode}...`);
+    await spawnPhaseAgent('2', prompt, courseDir, courseCode);
+
+    res.json({
+      success: true,
+      message: 'Phase 2 (Corpus Analysis) agent spawned successfully',
       courseCode,
-      nextSteps: [
-        'Load SEED_PAIRS from VFS',
-        'Analyze FCFS order',
-        'Calculate utility scores',
-        'Generate phase_2_corpus_intelligence.json'
-      ]
+      phase: 'phase_2',
+      status: job
     });
   } catch (err) {
     console.error('[Phase 2] Error:', err);
+    if (STATE.jobs.has(courseCode)) {
+      const job = STATE.jobs.get(courseCode);
+      job.status = 'failed';
+      job.error = err.message;
+    }
     res.status(500).json({ error: err.message });
   }
 });
@@ -3108,27 +3151,76 @@ app.post('/api/courses/:courseCode/phase/6', async (req, res) => {
   try {
     console.log(`[Phase 6] Starting introduction generation for ${courseCode}...`);
 
-    // TODO: Implement Phase 6 logic tomorrow
-    // - Load basket amino acids
-    // - For each basket, identify known LEGOs from previous baskets
-    // - Generate known-only introduction phrases
-    // - Validate zero unknown elements
-    // - Store introduction amino acids
+    const courseDir = await ensureCourseDirectory(courseCode);
 
-    res.status(501).json({
-      error: 'Phase 6 not yet implemented',
-      message: 'Phase 6: Introductions endpoint stub - implementation pending',
+    // Check if course exists
+    if (!await fs.pathExists(courseDir)) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    // Get or create job
+    let job = STATE.jobs.get(courseCode);
+    if (!job) {
+      job = {
+        courseCode,
+        status: 'in_progress',
+        phase: 'phase_6',
+        progress: 0,
+        startTime: new Date()
+      };
+      STATE.jobs.set(courseCode, job);
+    }
+
+    // Construct prompt for Claude agent
+    const prompt = `# Phase 6: Introduction Generation for ${courseCode}
+
+## Instructions
+Please visit ${CONFIG.TRAINING_URL}/phase/6 for complete phase instructions.
+
+## Task Summary
+1. Load baskets_deduplicated.json and lego_provenance_map.json from ${courseDir}
+2. For each basket, identify known LEGOs from previous baskets
+3. Generate known-only introduction phrases (zero unknown elements)
+4. Include seed context for contextual introductions
+5. Skip introductions for duplicate LEGOs (use provenance map)
+6. Output phase_outputs/phase_6_introductions.json
+
+## Working Directory
+${courseDir}
+
+## Output File
+phase_outputs/phase_6_introductions.json
+
+## Key Rules
+- Introductions must contain ONLY known elements (already learned LEGOs)
+- Use seed context for pedagogical value
+- Skip duplicates automatically using provenance map
+- Format: contextual natural language in known language only
+
+Begin Phase 6 now.`;
+
+    // Update job status
+    job.phase = 'phase_6';
+    job.progress = 96;
+
+    // Spawn agent
+    console.log(`[Phase 6] Spawning Claude Code agent for ${courseCode}...`);
+    await spawnPhaseAgent('6', prompt, courseDir, courseCode);
+
+    res.json({
+      success: true,
+      message: 'Phase 6 (Introductions) agent spawned successfully',
       courseCode,
-      nextSteps: [
-        'Load basket amino acids',
-        'Identify known LEGOs',
-        'Generate introduction phrases',
-        'Validate known-only rule',
-        'Store introduction amino acids'
-      ]
+      phase: 'phase_6',
+      status: job
     });
   } catch (err) {
     console.error('[Phase 6] Error:', err);
+    if (STATE.jobs.has(courseCode)) {
+      const job = STATE.jobs.get(courseCode);
+      job.status = 'failed';
+      job.error = err.message;
+    }
     res.status(500).json({ error: err.message });
   }
 });
@@ -3143,27 +3235,65 @@ app.post('/api/courses/:courseCode/compile', async (req, res) => {
   try {
     console.log(`[Phase 7] Starting course compilation for ${courseCode}...`);
 
-    // TODO: Implement Phase 7 logic tomorrow
-    // - Load all amino acids from VFS (translations, LEGOs, baskets, introductions)
-    // - Compile into app-ready JSON structure with slices, seeds, samples
-    // - Generate sample metadata (roles, cadence, duration)
-    // - Add course metadata (languages, version, ID)
-    // - Write compiled.json
+    const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
 
-    res.status(501).json({
-      error: 'Phase 7 not yet implemented',
-      message: 'Phase 7: Course Compilation endpoint stub - implementation pending',
+    // Check if course exists
+    if (!await fs.pathExists(courseDir)) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    // Get or create job
+    let job = STATE.jobs.get(courseCode);
+    if (!job) {
+      job = {
+        courseCode,
+        status: 'in_progress',
+        phase: 'compilation',
+        progress: 0,
+        startTime: new Date()
+      };
+      STATE.jobs.set(courseCode, job);
+    }
+
+    // Update job status
+    job.phase = 'compilation';
+    job.progress = 99;
+
+    // Use existing compileManifest function
+    await compileManifest(courseCode);
+
+    // TODO: Enhance this to match Phase 7 spec from dashboard
+    // Current compileManifest creates basic manifest with legos, baskets, graph
+    // Phase 7 spec requires full app-ready JSON with:
+    // - seeds[] with introductionItems
+    // - samples{} object with roles and metadata
+    // - slices structure
+    // - Full course metadata (languages, version, ID)
+    //
+    // For now, the basic manifest is saved to proteins/manifest.json
+    // Full Phase 7 implementation should write to compiled.json
+
+    const manifestPath = path.join(courseDir, 'proteins', 'manifest.json');
+    const manifest = await fs.readJson(manifestPath);
+
+    job.status = 'completed';
+    job.progress = 100;
+    job.endTime = new Date();
+
+    res.json({
+      success: true,
+      message: 'Phase 7 (Course Compilation) completed - basic manifest generated',
       courseCode,
-      nextSteps: [
-        'Load VFS amino acids',
-        'Build seeds array with introductionItems',
-        'Generate samples{} object',
-        'Create slices structure',
-        'Write vfs/courses/{courseCode}/compiled.json'
-      ]
+      manifest: manifest,
+      note: 'Full app-ready JSON compilation (slices, seeds, samples) requires enhancement'
     });
   } catch (err) {
     console.error('[Phase 7] Error:', err);
+    if (STATE.jobs.has(courseCode)) {
+      const job = STATE.jobs.get(courseCode);
+      job.status = 'failed';
+      job.error = err.message;
+    }
     res.status(500).json({ error: err.message });
   }
 });
