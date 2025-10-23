@@ -47,17 +47,20 @@
       "phase_6": {
         "file": "phase_6_introductions.md",
         "output": "introductions.json",
-        "status": "being_created_by_parallel_agent"
+        "version": "1.0",
+        "status": "active"
       },
       "phase_7": {
         "file": "phase_7_compilation.md",
-        "output": "course_complete.json",
-        "status": "being_created_by_parallel_agent"
+        "output": "course_manifest.json",
+        "version": "1.0",
+        "status": "active"
       },
       "phase_8": {
         "file": "phase_8_audio_generation.md",
         "output": "audio/*.mp3 (S3)",
-        "status": "being_created_by_kai_on_feature_branch",
+        "version": "1.0",
+        "status": "documented_for_kai_implementation",
         "branch": "feature/phase8-audio-generation",
         "assignee": "Kai"
       }
