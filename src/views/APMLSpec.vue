@@ -8,10 +8,10 @@
           <span>Back to Dashboard</span>
         </router-link>
         <h1 class="text-3xl font-bold text-emerald-400">
-          APML v7.6 Specification
+          APML v7.0 Specification
         </h1>
         <p class="mt-2 text-slate-400">
-          Complete architectural specification with amino acid storage model
+          Current format specification - Ultra-compact consolidated JSON (Oct 22, 2024)
         </p>
       </div>
     </header>
@@ -23,98 +23,100 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">APML Architecture</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p><strong>APML (Autonomous Parallel Markup Language)</strong> v7.6 is the architectural specification for the SSi Course Production system. It defines the amino acid storage model, phase pipeline, and orchestration protocols.</p>
+            <p><strong>APML (Autonomous Parallel Markup Language)</strong> v7.0 is the current architectural specification for the SSi Course Production system. It defines the ultra-compact consolidated JSON format, phase pipeline, and orchestration protocols.</p>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Core Principles</h3>
             <ul class="space-y-2">
-              <li><strong>Amino Acid Storage:</strong> Discrete, immutable components stored as JSON amino acids</li>
-              <li><strong>Protein Compilation:</strong> Amino acids compile into manifest proteins (courses)</li>
-              <li><strong>Deterministic UUIDs:</strong> Content-based UUIDs enable automatic edit propagation</li>
-              <li><strong>Provenance Tracking:</strong> S{seed}L{position} labels preserve birth-parent relationships</li>
+              <li><strong>Consolidated Storage:</strong> Courses stored as 3 consolidated JSON files (seed_pairs.json, lego_pairs.json, lego_baskets.json)</li>
+              <li><strong>Ultra-Compact Arrays:</strong> Space-efficient array format with single-letter type codes (B/C/F)</li>
+              <li><strong>Seed-Centric Structure:</strong> All data organized by seed ID, preserving breakdown relationships</li>
+              <li><strong>Provenance Tracking:</strong> S{seed}L{position} IDs preserve birth-parent relationships</li>
               <li><strong>Parallel Orchestration:</strong> osascript spawns multiple Claude Code agents in parallel</li>
             </ul>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Amino Acid Types</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Core Data Files</h3>
             <div class="space-y-3 mt-4">
               <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-                <h4 class="font-semibold text-emerald-300">Translations</h4>
+                <h4 class="font-semibold text-emerald-300">seed_pairs.json</h4>
                 <p class="text-sm text-slate-400 mt-1">
-                  Pedagogically optimized translations of seed pairs<br/>
-                  <code class="text-xs">amino_acids/translations/{uuid}.json</code>
+                  Pedagogically optimized translations (Phase 1 output)<br/>
+                  <code class="text-xs">{"version": "7.0", "translations": {"S0001": [target, known]}}</code>
                 </p>
               </div>
               <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-                <h4 class="font-semibold text-emerald-300">LEGOs</h4>
+                <h4 class="font-semibold text-emerald-300">lego_pairs.json</h4>
                 <p class="text-sm text-slate-400 mt-1">
-                  Teaching phrases extracted from translations with provenance<br/>
-                  <code class="text-xs">amino_acids/legos/{uuid}.json</code>
+                  LEGO breakdowns with composites and feeders (Phase 3 output)<br/>
+                  <code class="text-xs">{"version": "7.0", "seeds": [[seed_id, [t,k], [[lego_id, type, t, k]]]]}</code>
                 </p>
               </div>
               <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-                <h4 class="font-semibold text-emerald-300">Baskets</h4>
+                <h4 class="font-semibold text-emerald-300">lego_baskets.json</h4>
                 <p class="text-sm text-slate-400 mt-1">
-                  Learning lessons with LEGO manifests and graph coverage<br/>
-                  <code class="text-xs">amino_acids/baskets/{uuid}.json</code>
+                  Learning baskets with enabling/discovery phrases (Phase 5 output)<br/>
+                  <code class="text-xs">{"version": "7.0", "baskets": {lego_id: [[lego], [e-phrases], [d-phrases]]}}</code>
                 </p>
               </div>
               <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-                <h4 class="font-semibold text-emerald-300">Introductions</h4>
+                <h4 class="font-semibold text-emerald-300">introductions.json</h4>
                 <p class="text-sm text-slate-400 mt-1">
-                  Known-only priming phrases for basket entry<br/>
-                  <code class="text-xs">amino_acids/introductions/{uuid}.json</code>
+                  Known-only priming phrases for basket entry (Phase 6 output)<br/>
+                  <code class="text-xs">{"version": "7.0", "introductions": [...]}</code>
                 </p>
               </div>
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">VFS Structure</h3>
             <pre class="bg-slate-900/80 border border-slate-400/20 rounded p-4 text-xs overflow-x-auto"><code>vfs/
-├── amino_acids/
-│   ├── translations/
-│   │   └── {uuid}.json
-│   ├── legos/
-│   │   └── {uuid}.json
-│   ├── baskets/
-│   │   └── {uuid}.json
-│   └── introductions/
-│       └── {uuid}.json
-└── proteins/
-    └── {course_id}/
-        ├── manifest.json
-        ├── baskets.json
-        └── metadata.json</code></pre>
+└── courses/
+    └── {course_code}/
+        ├── seed_pairs.json           # Phase 1: Translations
+        ├── lego_pairs.json            # Phase 3: LEGO breakdowns
+        ├── lego_baskets.json          # Phase 5: Learning baskets
+        ├── introductions.json         # Phase 6: Introduction phrases
+        ├── course_manifest.json       # Phase 7: Compiled course
+        └── _backup_pre_v7.0/          # Old format backups</code></pre>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Edit Propagation</h3>
-            <p>When a translation is edited via the dashboard:</p>
-            <ol class="space-y-2">
-              <li>1. <strong>API Request:</strong> PUT /api/courses/:code/translations/:uuid with new source/target</li>
-              <li>2. <strong>Amino Acid Update:</strong> Translation file is updated in VFS with metadata.edited = true</li>
-              <li>3. <strong>Regeneration Flag:</strong> course_metadata.json is marked with needs_regeneration = true</li>
-              <li>4. <strong>Impact Analysis:</strong> Provenance tracking identifies affected LEGOs via S{seed}L{position}</li>
-              <li>5. <strong>Phase Regeneration:</strong> Phases 3-6 are re-run to update LEGOs, deduplication, baskets, introductions</li>
-              <li>6. <strong>Deterministic UUIDs:</strong> New content generates new UUIDs, old references are automatically updated</li>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Type Codes</h3>
+            <div class="space-y-2 mt-4 bg-slate-900/80 border border-slate-400/20 rounded p-4">
+              <p class="text-sm"><strong class="text-emerald-300">"B"</strong> = BASE LEGO (atomic, indivisible teaching chunk)</p>
+              <p class="text-sm"><strong class="text-emerald-300">"C"</strong> = COMPOSITE LEGO (multi-word phrase with feeder components)</p>
+              <p class="text-sm"><strong class="text-emerald-300">"F"</strong> = FEEDER (component of a composite, taught before the whole)</p>
+            </div>
+
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Phase Pipeline</h3>
+            <ol class="space-y-2 text-sm">
+              <li><strong>Phase 1:</strong> Translation Generation → seed_pairs.json</li>
+              <li><strong>Phase 2:</strong> Corpus Analysis (FCFS + utility scoring)</li>
+              <li><strong>Phase 3:</strong> LEGO Extraction → lego_pairs.json</li>
+              <li><strong>Phase 4:</strong> Deduplication (merges duplicate LEGOs across seeds)</li>
+              <li><strong>Phase 5:</strong> Basket Construction → lego_baskets.json</li>
+              <li><strong>Phase 6:</strong> Introduction Phrases → introductions.json</li>
+              <li><strong>Phase 7:</strong> Course Compilation → course_manifest.json</li>
+              <li><strong>Phase 8:</strong> Audio Generation (TTS for all phrases)</li>
             </ol>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">API Endpoints</h3>
             <div class="space-y-3 mt-4">
               <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
                 <h4 class="font-semibold text-emerald-300">GET /api/courses</h4>
-                <p class="text-sm text-slate-400 mt-1">List all courses with metadata and phase completion status</p>
+                <p class="text-sm text-slate-400 mt-1">List all courses from VFS with metadata and phase completion status</p>
               </div>
               <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
                 <h4 class="font-semibold text-emerald-300">GET /api/courses/:courseCode</h4>
-                <p class="text-sm text-slate-400 mt-1">Get full course data including translations, LEGOs, and baskets</p>
+                <p class="text-sm text-slate-400 mt-1">Get full course data - reads seed_pairs.json, lego_pairs.json, lego_baskets.json</p>
               </div>
               <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-                <h4 class="font-semibold text-emerald-300">GET /api/courses/:courseCode/provenance/:seedId</h4>
-                <p class="text-sm text-slate-400 mt-1">Trace provenance chain for a seed - returns LEGOs generated, deduplicated, and affected baskets</p>
+                <h4 class="font-semibold text-emerald-300">POST /api/courses/:courseCode/phase/:phaseNum</h4>
+                <p class="text-sm text-slate-400 mt-1">Spawn Claude Code agent for specific phase (1-8) - orchestrates via osascript</p>
               </div>
               <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-                <h4 class="font-semibold text-emerald-300">PUT /api/courses/:courseCode/translations/:uuid</h4>
-                <p class="text-sm text-slate-400 mt-1">Update a translation amino acid - triggers needs_regeneration flag for downstream phases</p>
+                <h4 class="font-semibold text-emerald-300">GET /api/courses/:courseCode/job</h4>
+                <p class="text-sm text-slate-400 mt-1">Check generation job status and progress</p>
               </div>
               <div class="bg-slate-900/80 border border-slate-400/20 rounded p-4">
-                <h4 class="font-semibold text-emerald-300">POST /api/courses/generate</h4>
-                <p class="text-sm text-slate-400 mt-1">Generate new course from seed pairs - orchestrates all 6 phases via Claude Code agents</p>
+                <h4 class="font-semibold text-emerald-300">GET /api/training/phase/:phaseNum</h4>
+                <p class="text-sm text-slate-400 mt-1">Get runtime prompt for phase execution (fetched by Claude agents)</p>
               </div>
             </div>
           </div>

@@ -1735,7 +1735,7 @@ app.get('/api/courses/:courseCode', async (req, res) => {
     }
 
     // Generate course metadata
-    const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\\d+)seeds$/);
+    const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\d+)seeds$/);
     const stats = await fs.stat(coursePath);
 
     const course = {
@@ -1765,7 +1765,7 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       course,
       translations,
       legos,
-      lego_breakdowns: legoData.lego_breakdowns || [], // Raw breakdown data for visualizer
+      lego_breakdowns: seedsArray || [], // Raw breakdown data for visualizer (v7.0 format)
       baskets: [] // Empty for now (Phase 5 not implemented)
     });
   } catch (error) {
@@ -3059,9 +3059,9 @@ app.post('/api/fine-tuning/compare', async (req, res) => {
 
 // Load schemas
 const SCHEMAS = {
-  phase1: require('./schemas/phase1-translations.json'),
-  phase3: require('./schemas/phase3-legos.json'),
-  phase5: require('./schemas/phase5-baskets.json')
+  phase1: require('./schemas/phase1-seed_pairs.json'),
+  phase3: require('./schemas/phase3-lego_pairs.json'),
+  phase5: require('./schemas/phase5-lego_baskets.json')
 };
 
 // Compile validators

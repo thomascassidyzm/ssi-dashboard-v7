@@ -1038,17 +1038,33 @@ Construct learning baskets (lessons) optimized for graph edge coverage and pedag
    - Deterministic UUID based on manifest content
 
 5. **Store Results**:
-   - vfs/amino_acids/baskets/{uuid}.json
+   - **lego_baskets.json** (consolidated v7.0 format)
 
-## Basket Amino Acid Structure
+## Basket Structure (v7.0 Ultra-Compact Array Format)
+\`\`\`json
 {
-  "uuid": "...",
-  "lego_manifest": ["uuid1", "uuid2", ...],
-  "edge_coverage": ["edge_A_B", "edge_C_D", ...],
-  "fcfs_score": 78,
-  "difficulty_level": "intermediate",
-  "metadata": { ... }
+  "version": "7.0",
+  "baskets": {
+    "S0001L01": [
+      ["lego_target", "lego_known"],
+      [["e_phrase_target", "e_phrase_known"]],
+      [
+        [["d2_target", "d2_known"]],
+        [["d3_target", "d3_known"]],
+        [["d4_target", "d4_known"]],
+        [["d5_target", "d5_known"]]
+      ]
+    ]
+  }
 }
+\`\`\`
+
+**Format:**
+- Key: LEGO ID
+- Value: `[lego_pair, e_phrases, d_phrases]`
+  - `lego_pair`: `[target, known]` - the LEGO itself
+  - `e_phrases`: Array of enabling phrases (full sentence context)
+  - `d_phrases`: Discovery phrases by length (d2, d3, d4, d5)
 
 ## This Replaces OLD Logic
 - OLD: DEBUT/ETERNAL pattern terminology
@@ -1107,8 +1123,8 @@ Construct learning baskets (lessons) optimized for graph edge coverage and pedag
 Generate known-only introduction phrases for each basket to prime learners with zero unknowns.
 
 ## Input
-- Basket amino acids: vfs/amino_acids/baskets/*.json
-- Deduplicated LEGOs: vfs/amino_acids/legos_deduplicated/*.json
+- **lego_baskets.json** (Phase 5 output)
+- **lego_pairs.json** (Phase 3 output - deduplicated LEGOs)
 
 ## Your Mission
 For each basket:
@@ -1213,10 +1229,10 @@ If you're unsure, DON'T use it.
 Compile VFS amino acids into final app-ready JSON structure.
 
 ## Input
-- Translation amino acids: vfs/amino_acids/translations/*.json
-- LEGO amino acids: vfs/amino_acids/legos_deduplicated/*.json
-- Basket amino acids: vfs/amino_acids/baskets/*.json
-- Introduction amino acids: vfs/amino_acids/introductions/*.json
+- **seed_pairs.json** (Phase 1 output - translations)
+- **lego_pairs.json** (Phase 3 output - LEGO decompositions)
+- **lego_baskets.json** (Phase 5 output - baskets with e/d phrases)
+- **introductions.json** (Phase 6 output - introduction phrases)
 
 ## Your Mission
 
