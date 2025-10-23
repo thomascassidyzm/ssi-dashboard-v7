@@ -7,6 +7,7 @@ import APMLSpec from '../views/APMLSpec.vue'
 import CourseGeneration from '../views/CourseGeneration.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
+import CourseCompilation from '../views/CourseCompilation.vue'
 import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
@@ -39,6 +40,13 @@ const routes = [
     name: 'CourseEditor',
     component: CourseEditor,
     props: true
+  },
+  {
+    path: '/courses/:courseCode/compile',
+    name: 'CourseCompilation',
+    component: CourseCompilation,
+    props: true,
+    meta: { title: 'Course Compilation' }
   },
   {
     path: '/phase/:id',

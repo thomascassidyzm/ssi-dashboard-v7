@@ -221,6 +221,18 @@ export default {
     async getRegenerationStatus(courseCode, jobId) {
       const response = await api.get(`/api/courses/${courseCode}/regeneration/${jobId}`)
       return response.data
+    },
+
+    async compile(courseCode) {
+      const response = await api.post(`/api/courses/${courseCode}/compile`)
+      return response.data
+    },
+
+    async deploy(courseCode, courseJSON) {
+      const response = await api.post(`/api/courses/${courseCode}/deploy`, {
+        courseJSON
+      })
+      return response.data
     }
   },
 
@@ -385,6 +397,31 @@ export default {
       const response = await api.post(`/api/courses/${courseCode}/prompts/rollback`, {
         version
       })
+      return response.data
+    }
+  },
+
+  // Audio management
+  audio: {
+    // Check which audio files exist in S3
+    async checkS3(sampleIds) {
+      const response = await api.post('/api/audio/check-s3', {
+        sampleIds
+      })
+      return response.data
+    },
+
+    // Generate missing audio files
+    async generateMissing(missingAudio) {
+      const response = await api.post('/api/audio/generate-missing', {
+        missingAudio
+      })
+      return response.data
+    },
+
+    // Get generation status
+    async getGenerationStatus(jobId) {
+      const response = await api.get(`/api/audio/generation-status/${jobId}`)
       return response.data
     }
   }

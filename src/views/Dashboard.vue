@@ -38,9 +38,9 @@
         <router-link to="/courses" class="block bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 border border-slate-500/30 rounded-lg p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-slate-500/20">
           <div class="flex items-center justify-between">
             <div>
-              <h2 class="text-2xl font-bold text-emerald-400 mb-2">📚 Browse Courses</h2>
+              <h2 class="text-2xl font-bold text-emerald-400 mb-2">📚 Browse & Compile Courses</h2>
               <p class="text-slate-300 text-sm">
-                View, edit, and manage existing courses with provenance tracking
+                View, edit, compile courses and generate audio for app deployment
               </p>
             </div>
             <div class="text-emerald-400">

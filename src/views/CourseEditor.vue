@@ -13,12 +13,23 @@
             </h1>
             <p class="text-slate-400">{{ course.total_seeds }} seeds • Version {{ course.version }}</p>
           </div>
-          <span
-            class="px-4 py-2 rounded-lg text-sm font-medium"
-            :class="getStatusClass(course.status)"
-          >
-            {{ formatStatus(course.status) }}
-          </span>
+          <div class="flex items-center gap-3">
+            <span
+              class="px-4 py-2 rounded-lg text-sm font-medium"
+              :class="getStatusClass(course.status)"
+            >
+              {{ formatStatus(course.status) }}
+            </span>
+            <router-link
+              :to="`/courses/${course.course_code}/compile`"
+              class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+              </svg>
+              Compile & Generate Audio
+            </router-link>
+          </div>
         </div>
       </div>
 
