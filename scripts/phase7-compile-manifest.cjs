@@ -35,14 +35,40 @@ const legoBasketsPath = path.join(courseDir, 'lego_baskets.json');
 const introductionsPath = path.join(courseDir, 'introductions.json');
 const outputPath = path.join(courseDir, 'course_manifest.json');
 
-// SSi namespace UUID for deterministic audio sample UUIDs
-const SSI_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+// Role-specific UUID segments (legacy SSi format)
+const ROLE_SEGMENTS = {
+  'target1': { seg2: '6044', seg3: 'AC07', seg4: '8F4E' },
+  'target2': { seg2: '6044', seg3: 'E115', seg4: '8F4E' },
+  'source':  { seg2: '6044', seg3: '36CD', seg4: '31D4' }
+};
 
-// Generate deterministic UUID for audio sample
+// Generate deterministic UUID for audio sample using SSi legacy format
 // Same text + language + role + cadence = same UUID every time
+// Format: XXXXXXXX-6044-YYYY-ZZZZ-XXXXXXXXXXXX
+// Where YYYY and ZZZZ are role-specific fixed segments
 function generateSampleUUID(text, language, role, cadence) {
   const key = `${text}|${language}|${role}|${cadence}`;
-  return uuidv5(key, SSI_NAMESPACE);
+
+  // Generate hash
+  const hash = crypto.createHash('sha1').update(key).digest('hex');
+
+  // Get role-specific segments
+  const segments = ROLE_SEGMENTS[role];
+  if (!segments) {
+    throw new Error(`Unknown role: ${role}`);
+  }
+
+  // Build UUID with role-specific middle sections
+  // seg1 from hash bytes 0-3, seg5 from hash bytes 10-15
+  const uuid = [
+    hash.substring(0, 8),           // segment 1: first 4 bytes of hash
+    segments.seg2,                   // segment 2: always 6044
+    segments.seg3,                   // segment 3: role-specific
+    segments.seg4,                   // segment 4: role-specific
+    hash.substring(20, 32)          // segment 5: last 6 bytes of hash
+  ].join('-').toUpperCase();
+
+  return uuid;
 }
 
 // Helper to create language node (tokens/lemmas empty per user request)
@@ -142,7 +168,7 @@ async function compileManifest() {
     // Register seed sentence samples
     registerSample(targetSeed, targetCode, 'target1', 'natural');
     registerSample(targetSeed, targetCode, 'target2', 'natural');
-    registerSample(knownSeed, knownCode, 'known', 'natural');
+    registerSample(knownSeed, knownCode, 'source', 'natural');
 
     // Build introduction items for this seed
     const introductionItems = [];
@@ -160,10 +186,10 @@ async function compileManifest() {
       // Register LEGO pair samples
       registerSample(targetLego, targetCode, 'target1', 'natural');
       registerSample(targetLego, targetCode, 'target2', 'natural');
-      registerSample(knownLego, knownCode, 'known', 'natural');
+      registerSample(knownLego, knownCode, 'source', 'natural');
 
       // Register presentation text sample (spoken in known language)
-      registerSample(presentation, knownCode, 'known', 'natural');
+      registerSample(presentation, knownCode, 'source', 'natural');
 
       // Get practice phrases (nodes) from baskets
       const basket = basketLookup[legoId];
@@ -184,7 +210,7 @@ async function compileManifest() {
                 // Register practice phrase samples
                 registerSample(targetPhrase, targetCode, 'target1', 'natural');
                 registerSample(targetPhrase, targetCode, 'target2', 'natural');
-                registerSample(knownPhrase, knownCode, 'known', 'natural');
+                registerSample(knownPhrase, knownCode, 'source', 'natural');
 
                 practiceNodes.push({
                   id: uuidv4(),

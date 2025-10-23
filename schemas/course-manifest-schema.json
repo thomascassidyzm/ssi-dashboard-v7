@@ -150,13 +150,13 @@
                   },
                   "cadence": {
                     "type": "string",
-                    "enum": ["natural", "slow"],
+                    "enum": ["natural", "slow", "fast"],
                     "description": "Speaking speed"
                   },
                   "role": {
                     "type": "string",
-                    "enum": ["target1", "target2", "known"],
-                    "description": "Voice role (target1=primary, target2=alternate, known=translation)"
+                    "enum": ["target1", "target2", "source"],
+                    "description": "Voice role (target1=primary target voice, target2=alternate target voice, source=known language)"
                   },
                   "duration": {
                     "type": "number",
