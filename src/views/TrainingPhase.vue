@@ -424,7 +424,7 @@ For each seed:
      "metadata": {...}
    }
 4. Process in batches of 100 seeds
-5. Save to: SEED_PAIRS_COMPLETE.json (all 668 seeds combined)
+5. Save to: **seed_pairs.json** (all 668 seeds combined)
 
 ## Critical Rules
 - Translations are NOT literal - they are pedagogically optimized
@@ -438,12 +438,17 @@ Literal Welsh: "Hoffwn i fynd"
 Pedagogical Welsh: "Dw i eisiau mynd" (more natural, higher frequency, clearer)
 
 ## Output Format
-Process in batches:
-- SEED_PAIRS_BATCH_001.json (seeds 1-100)
-- SEED_PAIRS_BATCH_002.json (seeds 101-200)
-- etc.
-
-ALSO create: SEED_PAIRS_COMPLETE.json (all 668 seeds)
+Final consolidated file:
+**seed_pairs.json** with structure:
+\`\`\`json
+{
+  "version": "7.0",
+  "translations": {
+    "S0001": ["target_phrase", "known_phrase"],
+    "S0002": ["target_phrase", "known_phrase"]
+  }
+}
+\`\`\`
 
 ## Success Criteria
 ✓ All 668 seeds translated
@@ -703,62 +708,61 @@ FORMAT: Simple word mappings ONLY
 - This is NON-NEGOTIABLE
 
 ## INPUT DATA
-Read ALL SEED_PAIRS from: SEED_PAIRS_COMPLETE.json (contains all 668 seeds)
+Read ALL SEED_PAIRS from: **seed_pairs.json** (contains all 668 seeds)
 
 Structure:
+\`\`\`json
 {
-  "seed_pairs": [
-    {
-      "seed_id": "S0001",
-      "target": "[sentence in target language]",
-      "known": "[sentence in known language]"
-    }
-  ]
+  "version": "7.0",
+  "translations": {
+    "S0001": ["target_sentence", "known_sentence"],
+    "S0002": ["target_sentence", "known_sentence"]
+  }
 }
+\`\`\`
 
-## OUTPUT FILES
-Process in batches of 20 seeds:
-- LEGO_BREAKDOWNS_BATCH_001.json (seeds 1-20)
-- LEGO_BREAKDOWNS_BATCH_002.json (seeds 21-40)
-- etc.
+## OUTPUT FILE
+Final consolidated file: **lego_pairs.json** with ultra-compact v7.0 array format:
 
-ALSO create combined file: LEGO_BREAKDOWNS_COMPLETE.json (all seeds)
-
-Structure for each file:
+\`\`\`json
 {
-  "phase": "LEGO_BREAKDOWNS",
-  "batch": "001",
-  "target_language": "[target]",
-  "known_language": "[known]",
-  "lego_breakdowns": [
-    {
-      "seed_id": "S0001",
-      "canonical_id": "C0001",
-      "original_target": "actual target sentence",
-      "original_known": "actual known sentence",
-      "lego_pairs": [
-        // FD-compliant chunks
-      ],
-      "feeder_pairs": [
-        // Sub-components of multi-word LEGOs
-      ],
-      "componentization": [
-        // ONLY when BOTH target AND known are multi-word
-        {
-          "lego_id": "S0001L02",
-          "explanation": "[known] = [target], where [word1] = [word1] and [word2] = [word2]"
-        }
+  "version": "7.0",
+  "seeds": [
+    [
+      "S0001",
+      ["target_sentence", "known_sentence"],
+      [
+        ["S0001L01", "B", "target_chunk", "known_chunk"],
+        ["S0001L02", "C", "composite_target", "composite_known", [
+          ["S0001F01", "F", "feeder1_target", "feeder1_known"],
+          ["S0001F02", "F", "feeder2_target", "feeder2_known"]
+        ]]
       ]
-    }
+    ]
   ]
 }
+\`\`\`
+
+**Type Codes:**
+- `"B"` = BASE LEGO (atomic, indivisible)
+- `"C"` = COMPOSITE LEGO (multi-word, contains feeders)
+- `"F"` = FEEDER (component of composite)
+
+**LEGO ID Format:**
+- LEGOs: `S####L##` (e.g., S0001L01, S0001L02)
+- FEEDERs: `S####F##` (e.g., S0001F01, S0001F02)
+
+**FEEDER Rules:**
+- FEEDERs ONLY appear inside COMPOSITE LEGOs (as 5th array element)
+- FEEDERs are BASE LEGOs that participate in a COMPOSITE
+- When COMPOSITE doesn't tile cleanly, include FEEDER breakdown
 
 ## Success Criteria
 ✓ All SEED_PAIRS processed
 ✓ FD_LOOP test passed for every LEGO
 ✓ FCFS rules applied corpus-wide
 ✓ Provenance assigned (S{seed}L{position})
-✓ LEGO_BREAKDOWNS_COMPLETE.json generated`
+✓ **lego_pairs.json** generated in v7.0 ultra-compact format`
   },
   '3.5': {
     name: 'Graph Construction',

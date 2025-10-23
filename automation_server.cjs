@@ -124,6 +124,30 @@ const STATE = {
 // =============================================================================
 
 /**
+ * Convert 3-letter language code to full language name
+ */
+function getLanguageName(code) {
+  const names = {
+    'eng': 'English',
+    'ita': 'Italian',
+    'spa': 'Spanish',
+    'fra': 'French',
+    'gle': 'Irish',
+    'cym': 'Welsh',
+    'cmn': 'Mandarin Chinese',
+    'mkd': 'Macedonian',
+    'deu': 'German',
+    'por': 'Portuguese',
+    'nld': 'Dutch',
+    'swe': 'Swedish',
+    'nor': 'Norwegian',
+    'dan': 'Danish',
+    'fin': 'Finnish'
+  };
+  return names[code.toLowerCase()] || code.toUpperCase();
+}
+
+/**
  * Ensures a course directory exists in VFS
  */
 async function ensureCourseDirectory(courseCode) {
@@ -1559,12 +1583,12 @@ app.get('/api/courses', async (req, res) => {
 
         if (!stats.isDirectory() || dir === '.DS_Store') continue;
 
-        // Look for new format: translations.json + LEGO_BREAKDOWNS_COMPLETE.json
-        const translationsPath = path.join(coursePath, 'translations.json');
-        const legosPath = path.join(coursePath, 'LEGO_BREAKDOWNS_COMPLETE.json');
+        // Look for v7.0 format: seed_pairs.json + lego_pairs.json (Oct 22, 2024)
+        const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
+        const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
 
         // Check if this is a valid course (has both required files)
-        if (await fs.pathExists(translationsPath) && await fs.pathExists(legosPath)) {
+        if (await fs.pathExists(seedPairsPath) && await fs.pathExists(legoPairsPath)) {
           // Parse course code (e.g., spa_for_eng_30seeds)
           const match = dir.match(/^([a-z]{3})_for_([a-z]{3})_(\d+)seeds$/);
           if (!match) {
@@ -1576,13 +1600,19 @@ app.get('/api/courses', async (req, res) => {
           const knownLang = match[2];
           const seedCount = parseInt(match[3]);
 
-          // Load translations to get actual count
-          const translations = await fs.readJson(translationsPath);
-          const translationCount = Object.keys(translations).length;
+          // Load seed_pairs.json to get actual count
+          const seedPairsData = await fs.readJson(seedPairsPath);
+          const translationCount = Object.keys(seedPairsData.translations || {}).length;
 
-          // Load LEGO breakdowns to get count
-          const legoData = await fs.readJson(legosPath);
-          const legoCount = legoData.lego_breakdowns?.length || 0;
+          // Load lego_pairs.json to get LEGO count
+          const legoPairsData = await fs.readJson(legoPairsPath);
+          const seedsArray = legoPairsData.seeds || [];
+
+          // Count total LEGOs across all seeds
+          let legoCount = 0;
+          for (const [seedId, seedPair, legos] of seedsArray) {
+            legoCount += legos.length;
+          }
 
           // Determine status based on what exists
           let status = 'phase_3_complete'; // Has translations + LEGOs
@@ -1644,25 +1674,26 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       return res.status(404).json({ error: 'Course not found' });
     }
 
-    // Check for required files
-    const translationsPath = path.join(coursePath, 'translations.json');
-    const legosPath = path.join(coursePath, 'LEGO_BREAKDOWNS_COMPLETE.json');
+    // Check for required files (v7.0 format)
+    const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
+    const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
 
-    if (!await fs.pathExists(translationsPath)) {
-      return res.status(404).json({ error: 'translations.json not found' });
+    if (!await fs.pathExists(seedPairsPath)) {
+      return res.status(404).json({ error: 'seed_pairs.json not found' });
     }
 
-    if (!await fs.pathExists(legosPath)) {
-      return res.status(404).json({ error: 'LEGO_BREAKDOWNS_COMPLETE.json not found' });
+    if (!await fs.pathExists(legoPairsPath)) {
+      return res.status(404).json({ error: 'lego_pairs.json not found' });
     }
 
-    // Load translations.json
-    const translationsData = await fs.readJson(translationsPath);
+    // Load seed_pairs.json
+    const seedPairsData = await fs.readJson(seedPairsPath);
+    const translationsObj = seedPairsData.translations || {};
 
     // Convert to array format expected by frontend
     // Input: { "S0001": ["target", "known"], ... }
     // Output: [{ seed_id: "S0001", target_phrase: "...", known_phrase: "..." }, ...]
-    const translations = Object.entries(translationsData).map(([seed_id, [target_phrase, known_phrase]]) => ({
+    const translations = Object.entries(translationsObj).map(([seed_id, [target_phrase, known_phrase]]) => ({
       seed_id,
       target_phrase,
       known_phrase,
@@ -1672,25 +1703,31 @@ app.get('/api/courses/:courseCode', async (req, res) => {
     // Sort by seed_id
     translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id));
 
-    // Load LEGO_BREAKDOWNS_COMPLETE.json
-    const legoData = await fs.readJson(legosPath);
+    // Load lego_pairs.json
+    const legoPairsData = await fs.readJson(legoPairsPath);
+    const seedsArray = legoPairsData.seeds || [];
 
-    // Flatten lego_breakdowns into individual LEGO pairs for frontend
-    // Input: lego_breakdowns array where each has lego_pairs array
+    // Flatten seeds array into individual LEGO pairs for frontend
+    // Input: v7.0 format [[seed_id, [target, known], [[lego_id, type, t, k], ...]]]
     // Output: flat array of individual LEGO pairs in frontend format
     const legos = [];
-    for (const breakdown of (legoData.lego_breakdowns || [])) {
-      for (const legoPair of (breakdown.lego_pairs || [])) {
+    for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
+      for (const legoEntry of legoArray) {
+        const [lego_id, type, target_chunk, known_chunk, feeders] = legoEntry;
+
+        // Convert single-letter type to full name for frontend compatibility
+        const lego_type = type === "B" ? "BASE" : type === "C" ? "COMPOSITE" : type === "F" ? "FEEDER" : type;
+
         legos.push({
-          uuid: legoPair.lego_id,
-          seed_id: breakdown.seed_id,
-          text: `${legoPair.known_chunk} = ${legoPair.target_chunk}`,
-          lego_type: legoPair.lego_type,
-          target_chunk: legoPair.target_chunk,
-          known_chunk: legoPair.known_chunk,
-          fd_validated: legoPair.fd_validated,
-          componentization: legoPair.componentization || null,
-          provenance: breakdown.seed_id, // Provenance is the seed that generated this LEGO
+          uuid: lego_id,
+          seed_id: seed_id,
+          text: `${known_chunk} = ${target_chunk}`,
+          lego_type: lego_type,
+          target_chunk: target_chunk,
+          known_chunk: known_chunk,
+          fd_validated: true, // Assume validated in v7.0
+          componentization: feeders ? `Has ${feeders.length} feeders` : null,
+          provenance: seed_id, // Provenance is the seed that generated this LEGO
           fcfs_score: null, // Not calculated yet (Phase 4)
           utility_score: null // Not calculated yet (Phase 4)
         });
@@ -1717,9 +1754,9 @@ app.get('/api/courses/:courseCode', async (req, res) => {
 
       phases_completed: ['1', '3'],
 
-      // Metadata from LEGO file
-      target_language_name: legoData.course_metadata?.target_language || legoData.target_language,
-      known_language_name: legoData.course_metadata?.known_language || legoData.known_language
+      // Metadata from LEGO file (v7.0 format doesn't include metadata, derive from course code)
+      target_language_name: getLanguageName(match ? match[1] : 'unk'),
+      known_language_name: getLanguageName(match ? match[2] : 'unk')
     };
 
     console.log(`[API] Loaded course ${courseCode}: ${translations.length} translations, ${legos.length} LEGO pairs`);
