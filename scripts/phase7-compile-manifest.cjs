@@ -99,8 +99,8 @@ async function compileManifest() {
   // Create basket lookup (baskets is an object, not array)
   const basketLookup = legoBaskets.baskets;
 
-  // Build slices (one slice per seed for now)
-  const slices = [];
+  // Build all seeds (all seeds go in a single slice)
+  const seeds = [];
   let totalIntroductionItems = 0;
   let totalPracticeNodes = 0;
 
@@ -182,16 +182,16 @@ async function compileManifest() {
       introductionItems: introductionItems
     };
 
-    // Create slice for this seed
-    const slice = {
-      id: uuidv4(),
-      version: seedPairs.version,
-      seeds: [seedObj],
-      samples: {} // Phase 8 will populate audio samples
-    };
-
-    slices.push(slice);
+    seeds.push(seedObj);
   }
+
+  // Create single slice with all seeds
+  const slices = [{
+    id: uuidv4(),
+    version: seedPairs.version,
+    seeds: seeds,
+    samples: {} // Phase 8 will populate audio samples
+  }];
 
   // Build final manifest
   const manifest = {
@@ -206,14 +206,14 @@ async function compileManifest() {
   await fs.writeJson(outputPath, manifest, { spaces: 2 });
 
   console.log(`✅ Compiled course manifest:`);
-  console.log(`   - Slices: ${slices.length}`);
+  console.log(`   - Seeds: ${seeds.length}`);
   console.log(`   - Introduction Items: ${totalIntroductionItems}`);
   console.log(`   - Practice Nodes: ${totalPracticeNodes}`);
   console.log(`\n💾 Output: ${outputPath}\n`);
 
   // Show sample structure
-  if (slices.length > 0 && slices[0].seeds.length > 0) {
-    const firstSeed = slices[0].seeds[0];
+  if (seeds.length > 0) {
+    const firstSeed = seeds[0];
     console.log(`📝 Sample structure:\n`);
     console.log(`Seed: "${firstSeed.node.known.text}"`);
     console.log(`  → LEGOs: ${firstSeed.introductionItems.length}`);
