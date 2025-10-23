@@ -1156,6 +1156,389 @@ If you're unsure, DON'T use it.
 ✓ Zero unknown elements (validated)
 ✓ Introduction amino acids stored
 ✓ Course ready for final compilation`
+  },
+  '7': {
+    name: 'Course Compilation',
+    description: 'VFS amino acids → App JSON structure',
+    overview: 'Phase 7 compiles all amino acids (translations, LEGOs, baskets, introductions) from the VFS into the final JSON structure required by the SSi mobile app. This phase assembles the course data into slices, seeds, samples, and introduction items.',
+    objectives: [
+      'Load all amino acids from VFS directories',
+      'Compile into app-ready JSON format (slices, seeds, samples)',
+      'Generate sample metadata (role, cadence, duration)',
+      'Create course-level metadata (language names, version, ID)',
+      'Output single JSON file ready for audio generation'
+    ],
+    steps: [
+      {
+        title: 'Load VFS Amino Acids',
+        description: 'Read all amino acids from vfs/amino_acids: translations, legos, baskets, introductions'
+      },
+      {
+        title: 'Build Seeds Array',
+        description: 'Compile each translation into a seed with its introduction items (LEGO chunks)'
+      },
+      {
+        title: 'Generate Samples Object',
+        description: 'Create samples{} mapping of text → audio metadata for all unique phrases'
+      },
+      {
+        title: 'Create Slices',
+        description: 'Package seeds and samples into slices (typically 1 slice per course)'
+      },
+      {
+        title: 'Add Course Metadata',
+        description: 'Add course ID, languages, version, belt assessor, introduction audio'
+      },
+      {
+        title: 'Write Course JSON',
+        description: 'Output final JSON to vfs/courses/{course_code}/compiled.json'
+      }
+    ],
+    notes: [
+      'This is the bridge between VFS amino acids and the mobile app',
+      'Output follows the en-ga-demo.json structure exactly',
+      'Sample IDs are UUIDs that will be used for audio file names',
+      'Roles: presentation (English narration), source (English), target1/target2 (Irish)',
+      'Cadence options: natural, slow, ultra-slow',
+      'Duration estimates can be calculated from text length initially'
+    ],
+    output: 'Complete course JSON file ready for Phase 8 audio generation',
+    prompt: `# Phase 7: Course Compilation
+
+## Task
+Compile VFS amino acids into final app-ready JSON structure.
+
+## Input
+- Translation amino acids: vfs/amino_acids/translations/*.json
+- LEGO amino acids: vfs/amino_acids/legos_deduplicated/*.json
+- Basket amino acids: vfs/amino_acids/baskets/*.json
+- Introduction amino acids: vfs/amino_acids/introductions/*.json
+
+## Your Mission
+
+### 1. Load All Amino Acids
+- Read all amino acid JSON files from VFS directories
+- Build complete inventory of course components
+- Map relationships (which LEGOs belong to which seeds, etc.)
+
+### 2. Build Course Structure
+Create JSON with this exact structure:
+
+\`\`\`json
+{
+  "id": "{course-uuid}",
+  "known": "{known_language_code}",
+  "target": "{target_language_code}",
+  "version": "1.0",
+  "beltAssessor": { ... },
+  "blackBeltBoundary": 0,
+  "introduction": {
+    "id": "{uuid}",
+    "role": "presentation",
+    "cadence": "natural",
+    "duration": 0.0
+  },
+  "slices": [
+    {
+      "id": "{slice-uuid}",
+      "version": "1.0",
+      "seeds": [
+        {
+          "id": "{seed-uuid}",
+          "node": {
+            "id": "{seed-uuid}",
+            "known": {
+              "text": "I'd like to speak Irish with you now",
+              "tokens": ["I'd", "like", "to", ...],
+              "lemmas": [...]
+            },
+            "target": {
+              "text": "ba mhaith liom Gaeilge a labhairt leat anois",
+              "tokens": ["ba", "mhaith", ...],
+              "lemmas": [...]
+            }
+          },
+          "seedSentence": {
+            "canonical": "I'd like to speak Irish with you now."
+          },
+          "introductionItems": [
+            {
+              "id": "{lego-uuid}",
+              "node": { ... },
+              "presentation": "Now, the Irish for 'I'd like' is 'ba mhaith liom', ba mhaith liom.",
+              "nodes": []
+            }
+          ]
+        }
+      ],
+      "samples": {
+        "ba mhaith liom": [
+          {
+            "id": "{audio-sample-uuid}",
+            "role": "target1",
+            "cadence": "natural",
+            "duration": 0.78
+          },
+          {
+            "id": "{audio-sample-uuid-2}",
+            "role": "target2",
+            "cadence": "natural",
+            "duration": 0.83
+          }
+        ],
+        "I'd like": [
+          {
+            "id": "{audio-sample-uuid-3}",
+            "role": "source",
+            "cadence": "natural",
+            "duration": 0.45
+          }
+        ],
+        "Now, the Irish for 'I'd like' is 'ba mhaith liom', ba mhaith liom.": [
+          {
+            "id": "{audio-sample-uuid-4}",
+            "role": "presentation",
+            "cadence": "natural",
+            "duration": 3.2
+          }
+        ]
+      },
+      "orderedEncouragements": [],
+      "pooledEncouragements": []
+    }
+  ]
+}
+\`\`\`
+
+### 3. Sample Generation Rules
+For each unique text string in the course:
+- **Target language chunks**: Create target1 AND target2 samples (two speakers)
+- **Source language chunks**: Create source sample
+- **Presentation narration**: Create presentation sample
+- Generate unique UUIDs for each sample
+- Estimate duration: ~0.15s per word as baseline
+
+### 4. Output Location
+Write compiled JSON to:
+\`vfs/courses/{course_code}/compiled.json\`
+
+## Audio Roles Explained
+- **presentation**: English narration ("Now, the Irish for X is Y")
+- **source**: English phrase audio
+- **target1**: Target language (speaker 1)
+- **target2**: Target language (speaker 2 - for variety/comparison)
+
+## Important Notes
+- Sample IDs become audio file names: {uuid}.mp3
+- Every unique text needs corresponding audio samples
+- Slices typically contain all seeds for small courses
+- Larger courses may split into multiple slices
+- UUIDs must be deterministic and content-based
+
+## Success Criteria
+✓ All amino acids loaded and compiled
+✓ JSON structure matches app format exactly
+✓ All unique texts have sample metadata
+✓ UUIDs generated for all samples
+✓ Output file created
+✓ Ready for Phase 8 audio generation`
+  },
+  '8': {
+    name: 'Audio Generation',
+    description: 'TTS synthesis & S3 upload',
+    overview: 'Phase 8 generates audio files for all samples defined in the compiled course JSON using Text-to-Speech services, then uploads them to AWS S3 for delivery to the mobile app. This is the final phase before deployment.',
+    objectives: [
+      'Check AWS S3 for existing audio files',
+      'Generate missing audio using TTS (ElevenLabs/AWS Polly)',
+      'Match voice characteristics to roles (presentation, source, target1, target2)',
+      'Upload all audio files to S3 bucket',
+      'Verify all required audio samples are available'
+    ],
+    steps: [
+      {
+        title: 'Load Compiled Course',
+        description: 'Read compiled.json from Phase 7 to get all sample requirements'
+      },
+      {
+        title: 'Check S3 Status',
+        description: 'Query S3 bucket to identify which audio files already exist'
+      },
+      {
+        title: 'Generate Missing Audio',
+        description: 'Use TTS services to synthesize audio for missing samples'
+      },
+      {
+        title: 'Upload to S3',
+        description: 'Upload generated audio files to S3 with proper naming: {uuid}.mp3'
+      },
+      {
+        title: 'Verify Deployment',
+        description: 'Confirm all required samples are now available in S3'
+      },
+      {
+        title: 'Update Course Record',
+        description: 'Mark course as audio-complete and ready for app deployment'
+      }
+    ],
+    notes: [
+      'Audio files are named by sample UUID: {uuid}.mp3',
+      'Use different voices for different roles (presentation, source, target1, target2)',
+      'Target1 and target2 should be different native speakers for comparison',
+      'Presentation voice should be warm, encouraging, instructional',
+      'Respect cadence settings: natural, slow, ultra-slow',
+      'S3 bucket structure: s3://ssi-audio/{language_pair}/{uuid}.mp3',
+      'Failed TTS attempts should be logged and retried with fallback voices'
+    ],
+    output: 'All audio files uploaded to S3, course ready for deployment',
+    prompt: `# Phase 8: Audio Generation
+
+## Task
+Generate and upload all required audio samples to AWS S3.
+
+## Input
+- Compiled course JSON: vfs/courses/{course_code}/compiled.json
+- AWS S3 credentials (from environment)
+- TTS service API keys (ElevenLabs, AWS Polly, etc.)
+
+## Your Mission
+
+### 1. Parse Course Requirements
+- Load compiled.json
+- Extract all samples from slices[].samples object
+- Build complete list of required audio files (UUIDs + text + role + cadence)
+
+### 2. Check S3 Status
+Query S3 to determine which audio files already exist:
+\`\`\`bash
+aws s3 ls s3://ssi-audio/{language_pair}/
+\`\`\`
+
+Create two lists:
+- **Available**: Sample UUIDs that exist in S3
+- **Missing**: Sample UUIDs that need to be generated
+
+### 3. Generate Missing Audio
+For each missing sample:
+
+**Presentation (English narration)**:
+- Use warm, encouraging instructional voice
+- Example: "Now, the Irish for 'I'd like' is 'ba mhaith liom', ba mhaith liom."
+- Voice: ElevenLabs "Rachel" or AWS Polly "Joanna"
+
+**Source (English phrases)**:
+- Clear, neutral English voice
+- Example: "I'd like"
+- Voice: ElevenLabs "Drew" or AWS Polly "Matthew"
+
+**Target1 (Target language speaker 1)**:
+- Native target language speaker
+- Example: "ba mhaith liom"
+- Voice: ElevenLabs language-specific voice
+
+**Target2 (Target language speaker 2)**:
+- Different native speaker (for comparison/variety)
+- Same text as target1, different voice
+- Voice: Alternative language-specific voice
+
+**Cadence handling**:
+- natural: Normal speech rate
+- slow: 0.75x speed
+- ultra-slow: 0.5x speed
+
+### 4. TTS Generation
+\`\`\`javascript
+async function generateAudio(text, role, cadence, sampleId) {
+  const voice = selectVoice(role, targetLanguage)
+  const speed = cadenceToSpeed(cadence)
+
+  const audioBuffer = await ttsService.synthesize({
+    text,
+    voice,
+    speed
+  })
+
+  return {
+    id: sampleId,
+    audioBuffer,
+    format: 'mp3'
+  }
+}
+\`\`\`
+
+### 5. Upload to S3
+\`\`\`javascript
+async function uploadToS3(sampleId, audioBuffer, languagePair) {
+  const key = \`\${languagePair}/\${sampleId}.mp3\`
+
+  await s3.putObject({
+    Bucket: 'ssi-audio',
+    Key: key,
+    Body: audioBuffer,
+    ContentType: 'audio/mpeg',
+    ACL: 'public-read'
+  })
+
+  return \`https://ssi-audio.s3.amazonaws.com/\${key}\`
+}
+\`\`\`
+
+### 6. Progress Tracking
+- Log generation progress to database
+- Support job status queries: /api/audio/generation-status/{jobId}
+- Return structure:
+\`\`\`json
+{
+  "jobId": "...",
+  "status": "running|completed|failed",
+  "total": 447,
+  "completed": 120,
+  "failed": 2,
+  "errors": [...]
+}
+\`\`\`
+
+### 7. Verification
+After generation:
+- Re-query S3 to confirm all files uploaded
+- Check file sizes (audio files should be > 0 bytes)
+- Spot-check a few samples by downloading and playing
+- Update course record: \`audio_status: "complete"\`
+
+## Error Handling
+- **TTS failures**: Retry with fallback voice
+- **S3 upload failures**: Retry with exponential backoff
+- **Invalid text**: Log and skip, report to admin
+- **Rate limiting**: Implement queuing and throttling
+
+## Voice Selection Guide
+| Role | Language | Suggested Voice |
+|------|----------|----------------|
+| presentation | English | ElevenLabs "Rachel" / Polly "Joanna" |
+| source | English | ElevenLabs "Drew" / Polly "Matthew" |
+| target1 | Irish | ElevenLabs custom/Polly "Niamh" |
+| target2 | Irish | Alternative Irish voice |
+| target1 | Spanish | ElevenLabs Spanish voice |
+| target2 | Spanish | Alternative Spanish voice |
+
+## S3 Bucket Structure
+\`\`\`
+ssi-audio/
+  en-ga/
+    {uuid1}.mp3
+    {uuid2}.mp3
+    ...
+  en-es/
+    {uuid1}.mp3
+    ...
+\`\`\`
+
+## Success Criteria
+✓ All missing samples generated
+✓ All audio files uploaded to S3
+✓ S3 verification passed (100% available)
+✓ Course marked as audio-complete
+✓ Job status logged and accessible
+✓ Course ready for app deployment`
   }
 }
 
