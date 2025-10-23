@@ -1,22 +1,22 @@
 #!/usr/bin/env node
 
 /**
- * Convert Old Format Courses to APML v7.0 Current Format (Oct 22, 2024)
+ * Convert Old Format Courses to APML v7.7 Current Format (Oct 23, 2024)
  *
  * OLD FORMATS:
  * - Oct 10: amino acid model (individual UUID files)
  * - Oct 15: translations.json + LEGO_BREAKDOWNS_COMPLETE.json (verbose objects)
  * - Pre-Oct: seed_pairs.json with nested {version, translations}
  *
- * CURRENT FORMAT (Oct 22):
- * - seed_pairs.json: {version: "7.0", translations: {"S0001": [target, known]}}
- * - lego_pairs.json: {version: "7.0", seeds: [[seed_id, [t,k], [[lego_id, type, t, k]]]]}
- * - lego_baskets.json: {version: "7.0", baskets: {lego_id: [[lego], [e-phrases], [d-phrases]]}}
+ * CURRENT FORMAT (Oct 23):
+ * - seed_pairs.json: {version: "7.7.0", translations: {"S0001": [target, known]}}
+ * - lego_pairs.json: {version: "7.7.0", seeds: [[seed_id, [t,k], [[lego_id, type, t, k]]]]}
+ * - lego_baskets.json: {version: "7.7.0", baskets: {lego_id: [[lego], [e-phrases], [d-phrases]]}}
  *
  * Reference: /schemas/examples/*.json and test_for_eng_5seeds/
  *
  * Usage:
- *   node convert-to-v7.0-format.cjs <course_code>
+ *   node convert-to-v7.7-format.cjs <course_code>
  */
 
 const fs = require('fs-extra');
@@ -32,7 +32,7 @@ if (!courseCode) {
 const courseDir = path.join(__dirname, courseCode);
 
 async function convertCourse() {
-  console.log(`\n🔄 Converting ${courseCode} to APML v7.0 format (Oct 22, 2024)...\n`);
+  console.log(`\n🔄 Converting ${courseCode} to APML v7.7 format (Oct 23, 2024)...\n`);
 
   // Check if course exists
   if (!await fs.pathExists(courseDir)) {
@@ -90,10 +90,10 @@ async function convertCourse() {
     }
   }
 
-  // Write in v7.0 format
+  // Write in v7.7 format
   const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
   const seedPairsData = {
-    version: "7.0",
+    version: "7.7.0",
     translations: cleanedTranslations
   };
 
@@ -139,7 +139,7 @@ async function convertCourse() {
 
     const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
     await fs.writeJson(legoPairsPath, {
-      version: "7.0",
+      version: "7.7.0",
       seeds: seeds
     }, { spaces: 2 });
 
@@ -186,7 +186,7 @@ async function convertCourse() {
 
     const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
     await fs.writeJson(legoPairsPath, {
-      version: "7.0",
+      version: "7.7.0",
       seeds: seeds
     }, { spaces: 2 });
 
@@ -214,9 +214,9 @@ async function convertCourse() {
   if (basketsSourceFile) {
     const basketsData = await fs.readJson(basketsSourceFile);
 
-    // Check if already in v7.0 format
-    if (basketsData.version === "7.0" && basketsData.baskets) {
-      console.log(`✅ lego_baskets.json already in v7.0 format`);
+    // Check if already in v7.7 format
+    if ((basketsData.version === "7.7.0" || basketsData.version === "7.0") && basketsData.baskets) {
+      console.log(`✅ lego_baskets.json already in v7.7 format`);
 
       // Just ensure it's named correctly
       const basketsPath = path.join(courseDir, 'lego_baskets.json');
@@ -272,7 +272,7 @@ async function convertCourse() {
   console.log(`   - lego_pairs.json: Created ✅`);
   console.log(`   - lego_baskets.json: ${basketsSourceFile ? 'Present' : 'Not generated yet'}`);
   console.log(`   - Old files backed up to: _backup_pre_v7.0/`);
-  console.log(`\n📖 Format Spec: /docs/APML_v7.0_CURRENT_FORMAT.md\n`);
+  console.log(`\n📖 Format Spec: APML v7.7.0\n`);
 }
 
 convertCourse().catch(err => {

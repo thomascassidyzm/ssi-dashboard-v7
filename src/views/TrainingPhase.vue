@@ -443,7 +443,7 @@ Final consolidated file:
 **seed_pairs.json** with structure:
 \`\`\`json
 {
-  "version": "7.0",
+  "version": "7.7.0",
   "translations": {
     "S0001": ["target_phrase", "known_phrase"],
     "S0002": ["target_phrase", "known_phrase"]
@@ -714,7 +714,7 @@ Read ALL SEED_PAIRS from: **seed_pairs.json** (contains all 668 seeds)
 Structure:
 \`\`\`json
 {
-  "version": "7.0",
+  "version": "7.7.0",
   "translations": {
     "S0001": ["target_sentence", "known_sentence"],
     "S0002": ["target_sentence", "known_sentence"]
@@ -727,7 +727,7 @@ Final consolidated file: **lego_pairs.json** with ultra-compact v7.0 array forma
 
 \`\`\`json
 {
-  "version": "7.0",
+  "version": "7.7.0",
   "seeds": [
     [
       "S0001",
@@ -1039,12 +1039,12 @@ Construct learning baskets (lessons) optimized for graph edge coverage and pedag
    - Deterministic UUID based on manifest content
 
 5. **Store Results**:
-   - **lego_baskets.json** (consolidated v7.0 format)
+   - **lego_baskets.json** (consolidated v7.7 format)
 
 ## Basket Structure (v7.0 Ultra-Compact Array Format)
 \`\`\`json
 {
-  "version": "7.0",
+  "version": "7.7.0",
   "baskets": {
     "S0001L01": [
       ["lego_target", "lego_known"],

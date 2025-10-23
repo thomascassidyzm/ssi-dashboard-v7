@@ -17,19 +17,19 @@ app ssi_course_production:
 
     BREAKING CHANGES:
     - Fully deprecated amino_acids/ subdirectory model
-    - Consolidated to 3 primary JSON files per course (v7.0 format)
+    - Consolidated to 3 primary JSON files per course (v7.7 format)
     - Updated all API endpoints and documentation to match reality
 
     FILE STRUCTURE CHANGES:
     ✅ seed_pairs.json (Phase 1 output)
-       Format: {"version": "7.0", "translations": {"S0001": [target, known]}}
+       Format: {"version": "7.7.0", "translations": {"S0001": [target, known]}}
 
     ✅ lego_pairs.json (Phase 3 output)
-       Format: {"version": "7.0", "seeds": [[seed_id, [t,k], [[lego_id, type, t, k]]]]}
+       Format: {"version": "7.7.0", "seeds": [[seed_id, [t,k], [[lego_id, type, t, k]]]]}
        Type codes: "B" (BASE), "C" (COMPOSITE), "F" (FEEDER)
 
     ✅ lego_baskets.json (Phase 5 output)
-       Format: {"version": "7.0", "baskets": {lego_id: [[lego], [e-phrases], [d-phrases]]}}
+       Format: {"version": "7.7.0", "baskets": {lego_id: [[lego], [e-phrases], [d-phrases]]}}
 
     DOCUMENTATION UPDATES:
     - Updated APMLSpec.vue from amino acid model to v7.0 consolidated format
@@ -41,7 +41,7 @@ app ssi_course_production:
     VALIDATION:
     ✅ Tested v7.0 course loading (test_for_eng_5seeds: 5 seeds → 17 LEGOs)
     ✅ Tested large course support (ita_for_eng_668seeds: 668 seeds)
-    ✅ API correctly parses all v7.0 format files
+    ✅ API correctly parses all v7.7 format files
     ✅ Type conversion working (B/C/F → BASE/COMPOSITE/FEEDER for frontend)
 
     See: docs/APML_v7.0_CURRENT_FORMAT.md for complete format specification
@@ -100,7 +100,7 @@ osascript (opens Claude Code)
   ↓
 Claude Code (Sonnet 4.5) executes phase prompts
   ↓
-VFS (Virtual File System) - stores v7.0 format JSON outputs
+VFS (Virtual File System) - stores v7.7 format JSON outputs
   ↓
 Dashboard polls for updates, displays results
   ↓
@@ -759,17 +759,17 @@ STRUCTURE: {target_code}_for_{known_code}_{seed_count}seeds/
 
 CORE FILES (v7.0 ultra-compact consolidated format):
   - seed_pairs.json           # Phase 1: Translation pairs
-    Format: {"version": "7.0", "translations": {"S0001": [target, known]}}
+    Format: {"version": "7.7.0", "translations": {"S0001": [target, known]}}
 
   - lego_pairs.json            # Phase 3: LEGO breakdowns with composites/feeders
-    Format: {"version": "7.0", "seeds": [[seed_id, [t,k], [[lego_id, type, t, k]]]]}
+    Format: {"version": "7.7.0", "seeds": [[seed_id, [t,k], [[lego_id, type, t, k]]]]}
     Type codes: "B" (BASE), "C" (COMPOSITE), "F" (FEEDER)
 
   - lego_baskets.json          # Phase 5: Learning baskets with e/d phrases
-    Format: {"version": "7.0", "baskets": {lego_id: [[lego], [e-phrases], [d-phrases]]}}
+    Format: {"version": "7.7.0", "baskets": {lego_id: [[lego], [e-phrases], [d-phrases]]}}
 
   - introductions.json         # Phase 6: Introduction phrases (optional)
-    Format: {"version": "7.0", "introductions": [...]}
+    Format: {"version": "7.7.0", "introductions": [...]}
 
   - course_manifest.json       # Phase 7: Compiled course for app
     Format: Final manifest for SSi mobile app consumption
@@ -835,7 +835,7 @@ TOTAL_SEEDS: 668 (canonical SSi corpus)
 NAME: "Pedagogical Translation"
 PURPOSE: Apply 6 pedagogical heuristics to create optimal learning translations
 INPUT: vfs/seeds/canonical_seeds.json
-OUTPUT: vfs/courses/{course_code}/seed_pairs.json (v7.0 format - all 668 translations consolidated)
+OUTPUT: vfs/courses/{course_code}/seed_pairs.json (v7.7 format - all 668 translations consolidated)
 
 THE_PEDAGOGICAL_HEURISTICS:
 
@@ -1299,7 +1299,7 @@ METHODOLOGY: See `skills/lego-extraction-skill/` for complete methodology
 INPUT:
   - vfs/courses/{course_code}/seed_pairs.json (Phase 1 output)
   - vfs/phase_outputs/phase_2_corpus_intelligence.json (optional)
-OUTPUT: vfs/courses/{course_code}/lego_pairs.json (v7.0 format - all LEGO breakdowns consolidated)
+OUTPUT: vfs/courses/{course_code}/lego_pairs.json (v7.7 format - all LEGO breakdowns consolidated)
 
 BATCH_PROCESSING:
   BATCH_SIZE: 20 seeds (complex work requires smaller batches)

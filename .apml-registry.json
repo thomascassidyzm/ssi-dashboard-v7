@@ -1,7 +1,50 @@
 {
-  "version": "7.7.0",
-  "generated_at": "2025-10-23T11:22:49.684Z",
+  "version": "7.7.1",
+  "generated_at": "2025-10-23T12:30:00.000Z",
   "apml_file": "ssi-course-production.apml",
+  "phase_intelligence": {
+    "status": "ACTIVE - Static file serving",
+    "location": "docs/phase_intelligence/*.md",
+    "access": "GET http://localhost:3456/phase-intelligence/:phase",
+    "format": "Markdown text files",
+    "modules": {
+      "phase_1": {
+        "file": "phase_1_translation.md",
+        "status": "pending_creation"
+      },
+      "phase_2": {
+        "file": "phase_2_corpus.md",
+        "status": "pending_creation"
+      },
+      "phase_3": {
+        "file": "phase_3_extraction.md",
+        "version": "2.0",
+        "status": "active"
+      },
+      "phase_3_5": {
+        "file": "phase_3_5_graph.md",
+        "status": "pending_creation"
+      },
+      "phase_5": {
+        "file": "phase_5_baskets.md",
+        "status": "pending_creation"
+      },
+      "phase_5_5": {
+        "file": "phase_5_5_dedup.md",
+        "status": "pending_creation"
+      },
+      "phase_6": {
+        "file": "phase_6_introductions.md",
+        "status": "future_phase"
+      }
+    },
+    "workflow": [
+      "1. Edit: docs/phase_intelligence/phase_X.md",
+      "2. Commit: git commit -m 'Update phase X'",
+      "3. Restart: pm2 restart automation-server",
+      "4. Done: Agents fetch from /phase-intelligence/X"
+    ]
+  },
   "variable_registry": {
     "TOTAL_SEEDS": 668,
     "BATCH_SIZES": {
@@ -20,7 +63,8 @@
       "COURSES_GET": "/api/courses/:courseCode",
       "PROMPTS_GET": "/api/prompts/:phase",
       "PROMPTS_UPDATE": "/api/prompts/:phase",
-      "PROMPTS_HISTORY": "/api/prompts/:phase/history"
+      "PROMPTS_HISTORY": "/api/prompts/:phase/history",
+      "PHASE_INTELLIGENCE": "/phase-intelligence/:phase"
     },
     "PHASE_PROMPTS": {
       "PHASE_1": {

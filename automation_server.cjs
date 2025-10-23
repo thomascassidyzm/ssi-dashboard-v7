@@ -219,14 +219,14 @@ Execute phases in order. Fetch phase instructions from dashboard API (single sou
 ### Phase 1: Pedagogical Translation
 - **Input**: ${courseDir}/../../../seeds/canonical_seeds.json (first ${seeds} seeds)
 - **Output**: ${courseDir}/translations.json
-- **Format**: Compact JSON - \`{"version": "7.0", "translations": {"S0001": [target, known], ...}}\`
+- **Format**: Compact JSON - \`{"version": "7.7.0", "translations": {"S0001": [target, known], ...}}\`
 - **Instructions**: Fetch via WebFetch from https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/1
 - **Purpose**: Apply 6 heuristics, create optimized translations
 - **Critical**: Two-step process (canonical→target→known)
 - **Example**:
 \`\`\`json
 {
-  "version": "7.0",
+  "version": "7.7.0",
   "translations": {
     "S0001": ["Quiero hablar español contigo ahora.", "I want to speak Spanish with you now."],
     "S0002": ["Estoy intentando aprender.", "I'm trying to learn."]
@@ -237,7 +237,7 @@ Execute phases in order. Fetch phase instructions from dashboard API (single sou
 ### Phase 3: LEGO Extraction
 - **Input**: ${courseDir}/translations.json
 - **Output**: ${courseDir}/legos.json
-- **Format**: Compact arrays - \`{"version": "7.0", "seeds": [["S0001", [target, known], [LEGOs]], ...]}\`
+- **Format**: Compact arrays - \`{"version": "7.7.0", "seeds": [["S0001", [target, known], [LEGOs]], ...]}\`
 - **Instructions**: Fetch via WebFetch from https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/3
 - **Purpose**: Extract FD-compliant LEGOs (BASE + COMPOSITE)
 - **Critical**: FD (Functionally Deterministic), FCFS (First Come First Served), TILING test
@@ -245,7 +245,7 @@ Execute phases in order. Fetch phase instructions from dashboard API (single sou
 - **Example**:
 \`\`\`json
 {
-  "version": "7.0",
+  "version": "7.7.0",
   "seeds": [
     ["S0001", ["Quiero hablar", "I want to speak"], [
       ["S0001L01", "B", "Quiero", "I want"],
@@ -258,14 +258,14 @@ Execute phases in order. Fetch phase instructions from dashboard API (single sou
 ### Phase 5: Basket Generation
 - **Input**: ${courseDir}/legos.json
 - **Output**: ${courseDir}/baskets.json
-- **Format**: Compact arrays - \`{"version": "7.0", "baskets": {"S0001L01": [[lego], [e-phrases], [d-phrases]], ...}}\`
+- **Format**: Compact arrays - \`{"version": "7.7.0", "baskets": {"S0001L01": [[lego], [e-phrases], [d-phrases]], ...}}\`
 - **Instructions**: Fetch via WebFetch from https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/5
 - **Purpose**: Generate learning baskets with progressive vocabulary
 - **Critical**: 7-10 word e-phrases, perfect target grammar
 - **Example**:
 \`\`\`json
 {
-  "version": "7.0",
+  "version": "7.7.0",
   "baskets": {
     "S0001L01": [
       ["Quiero", "I want"],
@@ -1587,7 +1587,7 @@ app.get('/api/courses', async (req, res) => {
 
         if (!stats.isDirectory() || dir === '.DS_Store') continue;
 
-        // Look for v7.0 format: seed_pairs.json + lego_pairs.json (Oct 22, 2024)
+        // Look for v7.7 format: seed_pairs.json + lego_pairs.json (Oct 22, 2024)
         const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
         const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
 
@@ -1678,7 +1678,7 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       return res.status(404).json({ error: 'Course not found' });
     }
 
-    // Check for required files (v7.0 format)
+    // Check for required files (v7.7 format)
     const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
     const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
 
@@ -1712,7 +1712,7 @@ app.get('/api/courses/:courseCode', async (req, res) => {
     const seedsArray = legoPairsData.seeds || [];
 
     // Flatten seeds array into individual LEGO pairs for frontend
-    // Input: v7.0 format [[seed_id, [target, known], [[lego_id, type, t, k], ...]]]
+    // Input: v7.7 format [[seed_id, [target, known], [[lego_id, type, t, k], ...]]]
     // Output: flat array of individual LEGO pairs in frontend format
     const legos = [];
     for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
@@ -1758,7 +1758,7 @@ app.get('/api/courses/:courseCode', async (req, res) => {
 
       phases_completed: ['1', '3'],
 
-      // Metadata from LEGO file (v7.0 format doesn't include metadata, derive from course code)
+      // Metadata from LEGO file (v7.7 format doesn't include metadata, derive from course code)
       target_language_name: getLanguageName(match ? match[1] : 'unk'),
       known_language_name: getLanguageName(match ? match[2] : 'unk')
     };
@@ -1769,7 +1769,7 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       course,
       translations,
       legos,
-      lego_breakdowns: seedsArray || [], // Raw breakdown data for visualizer (v7.0 format)
+      lego_breakdowns: seedsArray || [], // Raw breakdown data for visualizer (v7.7 format)
       baskets: [] // Empty for now (Phase 5 not implemented)
     });
   } catch (error) {
@@ -2816,6 +2816,55 @@ app.get('/api/prompts/:phase/history', async (req, res) => {
   } catch (error) {
     console.error('Error fetching prompt history:', error);
     res.status(500).json({ error: 'Failed to fetch history' });
+  }
+});
+
+// =============================================================================
+// PHASE INTELLIGENCE - STATIC FILE SERVING
+// =============================================================================
+
+/**
+ * GET /phase-intelligence/:phase
+ * Serve phase intelligence markdown files as static content
+ *
+ * Example: GET /phase-intelligence/3
+ *          → Serves docs/phase_intelligence/phase_3_extraction.md
+ */
+app.get('/phase-intelligence/:phase', async (req, res) => {
+  const { phase } = req.params;
+
+  try {
+    const intelligenceDir = path.join(__dirname, 'docs', 'phase_intelligence');
+
+    // Find matching file: phase_3_*.md
+    const files = await fs.readdir(intelligenceDir);
+    const matchingFile = files.find(f =>
+      f.startsWith(`phase_${phase}_`) && f.endsWith('.md')
+    );
+
+    if (!matchingFile) {
+      // Fallback to legacy APML prompts
+      const promptKey = `PHASE_${phase.replace('.', '_')}`;
+      const promptData = apmlRegistry.variable_registry.PHASE_PROMPTS[promptKey];
+
+      if (promptData) {
+        console.log(`⚠️  Phase ${phase} module not found, falling back to APML prompt`);
+        return res.type('text/markdown').send(promptData.prompt);
+      }
+
+      return res.status(404).type('text/plain').send(`Phase ${phase} intelligence not found`);
+    }
+
+    // Read and serve markdown file
+    const filePath = path.join(intelligenceDir, matchingFile);
+    const content = await fs.readFile(filePath, 'utf8');
+
+    console.log(`✅ Served phase ${phase} intelligence: ${matchingFile}`);
+    res.type('text/markdown').send(content);
+
+  } catch (error) {
+    console.error(`Error serving phase ${phase} intelligence:`, error);
+    res.status(500).type('text/plain').send('Error loading phase intelligence');
   }
 });
 
