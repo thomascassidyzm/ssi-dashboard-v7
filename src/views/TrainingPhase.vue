@@ -1062,10 +1062,10 @@ Construct learning baskets (lessons) optimized for graph edge coverage and pedag
 
 **Format:**
 - Key: LEGO ID
-- Value: `[lego_pair, e_phrases, d_phrases]`
-  - `lego_pair`: `[target, known]` - the LEGO itself
-  - `e_phrases`: Array of enabling phrases (full sentence context)
-  - `d_phrases`: Discovery phrases by length (d2, d3, d4, d5)
+- Value: [lego_pair, e_phrases, d_phrases]
+  - lego_pair: [target, known] - the LEGO itself
+  - e_phrases: Array of enabling phrases (full sentence context)
+  - d_phrases: Discovery phrases by length (d2, d3, d4, d5)
 
 ## This Replaces OLD Logic
 - OLD: DEBUT/ETERNAL pattern terminology
@@ -1489,7 +1489,7 @@ async function generateAudio(text, role, cadence, sampleId) {
 ### 5. Upload to S3
 \`\`\`javascript
 async function uploadToS3(sampleId, audioBuffer, languagePair) {
-  const key = \`\${languagePair}/\${sampleId}.mp3\`
+  const key = languagePair + '/' + sampleId + '.mp3'
 
   await s3.putObject({
     Bucket: 'ssi-audio',
@@ -1499,7 +1499,7 @@ async function uploadToS3(sampleId, audioBuffer, languagePair) {
     ACL: 'public-read'
   })
 
-  return \`https://ssi-audio.s3.amazonaws.com/\${key}\`
+  return 'https://ssi-audio.s3.amazonaws.com/' + key
 }
 \`\`\`
 
@@ -1523,7 +1523,7 @@ After generation:
 - Re-query S3 to confirm all files uploaded
 - Check file sizes (audio files should be > 0 bytes)
 - Spot-check a few samples by downloading and playing
-- Update course record: \`audio_status: "complete"\`
+- Update course record: audio_status: "complete"
 
 ## Error Handling
 - **TTS failures**: Retry with fallback voice
