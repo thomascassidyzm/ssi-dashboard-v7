@@ -52,64 +52,6 @@
         </router-link>
       </section>
 
-      <!-- Quality Review & Self-Healing -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Quality Review & Self-Healing</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          <!-- Quality Dashboard Card -->
-          <router-link to="/quality/cym_for_eng_574seeds"
-                       class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6 hover:border-emerald-500/50 transition group">
-            <div class="flex items-center gap-3 mb-3">
-              <svg class="w-8 h-8 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              <h3 class="text-xl font-semibold text-slate-100">Quality Dashboard</h3>
-            </div>
-            <p class="text-slate-400 mb-4">
-              Review extraction quality, flag problematic seeds, trigger regeneration
-            </p>
-            <div class="text-emerald-400 group-hover:translate-x-1 transition">
-              View Quality Report →
-            </div>
-          </router-link>
-
-          <!-- Prompt Evolution Card -->
-          <router-link to="/quality/cym_for_eng_574seeds/evolution"
-                       class="bg-slate-800/50 border border-slate-400/20 rounded-lg p-6 hover:border-emerald-500/50 transition group">
-            <div class="flex items-center gap-3 mb-3">
-              <svg class="w-8 h-8 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
-              </svg>
-              <h3 class="text-xl font-semibold text-slate-100">Prompt Evolution</h3>
-            </div>
-            <p class="text-slate-400 mb-4">
-              Track prompt versions, learned rules, A/B testing, self-improvement history
-            </p>
-            <div class="text-emerald-400 group-hover:translate-x-1 transition">
-              View Evolution Log →
-            </div>
-          </router-link>
-
-          <!-- Recursive Up-Regulation Card -->
-          <router-link to="/recursive-upregulation"
-                       class="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border border-purple-400/30 rounded-lg p-6 hover:border-purple-500/60 transition group">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="text-3xl">🧠</div>
-              <h3 class="text-xl font-semibold text-purple-200">Recursive Up-Regulation</h3>
-            </div>
-            <p class="text-purple-200/80 mb-4">
-              AI OS self-improvement: Track generations, fine-tune models, prove self-healing
-            </p>
-            <div class="text-purple-300 group-hover:translate-x-1 transition">
-              View AI OS Dashboard →
-            </div>
-          </router-link>
-
-        </div>
-      </section>
-
       <!-- Visualization Tools -->
       <section class="mb-12">
         <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Visualization Tools</h2>
