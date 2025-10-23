@@ -27,6 +27,7 @@ const path = require('path');
 const { exec } = require('child_process');
 const { promisify } = require('util');
 const Ajv = require('ajv');
+const chokidar = require('chokidar');
 
 const execAsync = promisify(exec);
 const ajv = new Ajv({ allErrors: true });
@@ -3652,11 +3653,101 @@ app.post('/api/courses/:courseCode/deploy', async (req, res) => {
 });
 
 // =============================================================================
+// VFS AUTO-SYNC TO S3
+// =============================================================================
+
+/**
+ * Syncs a local VFS file to S3
+ */
+async function syncFileToS3(filePath) {
+  try {
+    // Extract course code and filename from path
+    // Path format: vfs/courses/{courseCode}/{filename}
+    const relativePath = path.relative(CONFIG.VFS_ROOT, filePath);
+    const parts = relativePath.split(path.sep);
+
+    if (parts.length < 2) {
+      console.log(`[VFS Sync] Skipping file outside course structure: ${filePath}`);
+      return;
+    }
+
+    const courseCode = parts[0];
+    const fileName = parts.slice(1).join('/');
+
+    // Only sync .json files (not .md, .log, etc.)
+    if (!fileName.endsWith('.json')) {
+      return;
+    }
+
+    // Read file content
+    const content = await fs.readFile(filePath, 'utf8');
+    const key = `courses/${courseCode}/${fileName}`;
+
+    // Upload to S3
+    await s3.putObject({
+      Bucket: S3_BUCKET,
+      Key: key,
+      Body: content,
+      ContentType: 'application/json',
+      ACL: 'private'
+    }).promise();
+
+    console.log(`✅ [VFS Sync] ${courseCode}/${fileName} → S3`);
+  } catch (error) {
+    console.error(`❌ [VFS Sync] Failed to sync ${filePath}:`, error.message);
+  }
+}
+
+/**
+ * Initialize VFS file watcher for auto-sync to S3
+ */
+function initializeVFSWatcher() {
+  const watchPath = path.join(CONFIG.VFS_ROOT, '**', '*.json');
+
+  console.log(`\n[VFS Sync] Watching: ${watchPath}`);
+  console.log(`[VFS Sync] Auto-syncing course files to S3 bucket: ${S3_BUCKET}\n`);
+
+  const watcher = chokidar.watch(watchPath, {
+    ignored: /(^|[\/\\])\../, // ignore dotfiles
+    persistent: true,
+    ignoreInitial: true, // Don't sync existing files on startup
+    awaitWriteFinish: {
+      stabilityThreshold: 500, // Wait for file to stop changing
+      pollInterval: 100
+    }
+  });
+
+  watcher
+    .on('ready', () => {
+      console.log(`[VFS Sync] Watcher ready and monitoring for changes`);
+    })
+    .on('add', filePath => {
+      console.log(`[VFS Sync] New file detected: ${path.relative(CONFIG.VFS_ROOT, filePath)}`);
+      syncFileToS3(filePath);
+    })
+    .on('change', filePath => {
+      console.log(`[VFS Sync] File changed: ${path.relative(CONFIG.VFS_ROOT, filePath)}`);
+      syncFileToS3(filePath);
+    })
+    .on('error', error => {
+      console.error(`[VFS Sync] Watcher error:`, error);
+    })
+    .on('raw', (event, path, details) => {
+      console.log(`[VFS Sync Debug] Raw event: ${event} on ${path}`);
+    });
+
+  return watcher;
+}
+
+// =============================================================================
 // SERVER START
 // =============================================================================
 
 async function startServer() {
   await fs.ensureDir(CONFIG.VFS_ROOT);
+
+  // Initialize VFS auto-sync to S3
+  initializeVFSWatcher();
 
   app.listen(CONFIG.PORT, () => {
     console.log('\n═══════════════════════════════════════════════════════════════');
