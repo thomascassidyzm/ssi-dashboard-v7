@@ -65,17 +65,33 @@ Phase 3 involves:
    Solution: Wrap inside composite → "provando a imparare"
    ```
 
-3. **Component hierarchy reasoning**
+3. **Component hierarchy reasoning with feeder identification**
    ```
    Composite: "provando a imparare"
-   Components: ["provando", "trying"], ["a", "to"], ["imparare", "to learn"]
 
-   Check: Are components meaningful?
-   - "provando" alone = "trying" (valid gerund)
-   - "a" alone = meaningless (but needed for structure)
-   - "imparare" alone = "to learn" (valid infinitive)
+   Component analysis:
+   - "provando" (trying)
+     → Meaningful? YES (gerund, reusable)
+     → Should get own basket? YES
+     → Decision: FEEDER → ["provando", "trying", "S0002L01a"]
+     → Must define: ["S0002L01a", "B", "provando", "trying"]
 
-   Decision: Valid composite with preposition wrapped
+   - "a" (to)
+     → Meaningful? NO (bare preposition)
+     → Decision: ATOMIC GLUE → ["a", "to"]
+
+   - "imparare" (to learn)
+     → Meaningful? YES (infinitive, reusable)
+     → Should get own basket? YES
+     → Decision: FEEDER → ["imparare", "to learn", "S0002L01b"]
+     → Must define: ["S0002L01b", "B", "imparare", "to learn"]
+
+   Final composite:
+   ["S0002L01", "C", "provando a imparare", "trying to learn", [
+     ["provando", "trying", "S0002L01a"],
+     ["a", "to"],
+     ["imparare", "to learn", "S0002L01b"]
+   ]]
    ```
 
 4. **FD validation (Feeder Dependency)**
@@ -202,31 +218,118 @@ Right edge: "imparare"
 
 ---
 
-### 4. BASE vs COMPOSITE (No Separate Feeders)
-
-**Key change from earlier thinking**: No separate FEEDER type in v7.0 compact format.
+### 4. BASE vs COMPOSITE with Explicit Feeders
 
 **Structure**:
 - **BASE (B)**: Standalone unit (single word or bonded phrase)
 - **COMPOSITE (C)**: Multi-word unit with component array
 
-**Component array purpose**:
-- Documents how composite breaks down
-- DATA for Phase 6 to generate explanations
-- NOT separate LEGOs with their own baskets
+**Component arrays MUST distinguish THREE types of elements:**
 
-**Example**:
+#### Type 1: Atomic Glue (no third element)
+Words providing structure but not needing separate teaching.
 ```json
-["S0002L03", "C", "Sto provando", "I'm trying", [
-  ["Sto", "I'm"],
-  ["provando", "trying"]
+["tan", "as"]  // Just a word
+["de", "of"]   // Preposition glue
+```
+
+#### Type 2: Feeders (third element = LEGO ID)
+Meaningful chunks needing their own basket BEFORE use in parent composite.
+```json
+["a menudo", "often", "S0003L02a"]  // ← Feeder with ID
+```
+**This feeder MUST be defined as separate LEGO in output.**
+
+#### Type 3: Nested Composites (third element = LEGO ID, defined as composite)
+Complex chunks that are themselves composites.
+```json
+["como sea posible", "as possible", "S0003L02b"]  // ← References nested composite
+
+// Defined elsewhere:
+["S0003L02b", "C", "como sea posible", "as possible", [
+  ["como", "as"],
+  ["sea", "it may be"],
+  ["posible", "possible"]
 ]]
 ```
 
-**"Sto" and "provando"**:
-- Mentioned in component array (for explanation)
-- NOT extracted as separate S0002L01, S0002L02
-- Componentisation only (no separate baskets)
+---
+
+### CRITICAL: Feeder Identification Protocol
+
+**For EACH component in composite, ask:**
+
+1. **Is it just structural glue?** (bare articles/prepositions/conjunctions)
+   → NO third element
+
+2. **Is it meaningful and reusable alone?**
+   → YES - add third element (LEGO ID), define as separate LEGO
+
+3. **Does it need its own component breakdown?**
+   → YES - define as nested COMPOSITE with feeders
+
+**Example Decision Process:**
+
+Composite: "tan a menudo como sea posible" (as often as possible)
+
+- "tan" (as) → Structural glue → `["tan", "as"]`
+- "a menudo" (often) → Meaningful adverb, reusable → `["a menudo", "often", "S0003L02a"]` + define `["S0003L02a", "B", "a menudo", "often"]`
+- "como sea posible" (as possible) → Complex phrase, needs breakdown → `["como sea posible", "as possible", "S0003L02b"]` + define `["S0003L02b", "C", ...]`
+
+---
+
+### Complete Example with Explicit Feeders
+
+**Seed S0003**: "cómo hablar tan a menudo como sea posible"
+
+```json
+["S0003", ["cómo hablar tan a menudo como sea posible", "how to speak as often as possible"], [
+  ["S0003L01", "B", "cómo", "how"],
+  ["S0003L02", "C", "tan a menudo como sea posible", "as often as possible", [
+    ["tan", "as"],  // Atomic glue (no ID)
+    ["a menudo", "often", "S0003L02a"],  // Feeder (with ID)
+    ["como sea posible", "as possible", "S0003L02b"]  // Feeder (with ID)
+  ]],
+  ["S0003L02a", "B", "a menudo", "often"],  // Feeder definition
+  ["S0003L02b", "C", "como sea posible", "as possible", [  // Nested composite
+    ["como", "as"],
+    ["sea", "it may be"],
+    ["posible", "possible"]
+  ]]
+]]
+```
+
+**Teaching sequence established:**
+1. S0003L01: "cómo" (how)
+2. S0003L02a: "a menudo" (often) ← Taught BEFORE parent
+3. S0003L02b: "como sea posible" (as possible) ← Taught BEFORE parent
+4. S0003L02: "tan a menudo como sea posible" ← Uses feeders
+
+---
+
+### Why Explicit Feeder IDs Matter
+
+**WITHOUT feeder IDs (AMBIGUOUS):**
+```json
+["S0003L02", "C", "tan a menudo como sea posible", "as often as possible", [
+  ["tan", "as"],
+  ["a menudo", "often"],  // ← Glue or feeder? UNCLEAR
+  ["como sea posible", "as possible"]  // ← Gets basket? UNCLEAR
+]]
+```
+Phase 5 cannot determine teaching sequence or validate vocabulary constraints.
+
+**WITH feeder IDs (EXPLICIT):**
+```json
+["S0003L02a", "B", "a menudo", "often"]  // ← Gets basket, taught first
+["S0003L02", "C", ..., [
+  ["a menudo", "often", "S0003L02a"]  // ← References feeder
+]]
+```
+Phase 5 knows:
+- S0003L02a gets own basket
+- S0003L02a taught before S0003L02
+- "a menudo" is available vocabulary when teaching S0003L02
 
 ---
 
