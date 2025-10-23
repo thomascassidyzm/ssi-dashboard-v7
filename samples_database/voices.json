@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2025-01-23T00:00:00Z",
+  "voices": {
+    "elevenlabs_ENGLISH_VOICE_ID_HERE": {
+      "provider": "elevenlabs",
+      "provider_id": "ENGLISH_VOICE_ID_HERE",
+      "language": "eng",
+      "display_name": "English Narrator",
+      "gender": "female",
+      "typical_roles": ["source", "presentation"],
+      "sample_count": 0,
+      "created_at": "2025-01-23T00:00:00Z",
+      "notes": "Primary English voice for all courses"
+    },
+    "elevenlabs_ITALIAN_VOICE_1_ID_HERE": {
+      "provider": "elevenlabs",
+      "provider_id": "ITALIAN_VOICE_1_ID_HERE",
+      "language": "ita",
+      "display_name": "Italian Voice 1",
+      "gender": "female",
+      "typical_roles": ["target1"],
+      "sample_count": 0,
+      "created_at": "2025-01-23T00:00:00Z",
+      "notes": "Primary Italian voice"
+    },
+    "elevenlabs_ITALIAN_VOICE_2_ID_HERE": {
+      "provider": "elevenlabs",
+      "provider_id": "ITALIAN_VOICE_2_ID_HERE",
+      "language": "ita",
+      "display_name": "Italian Voice 2",
+      "gender": "male",
+      "typical_roles": ["target2"],
+      "sample_count": 0,
+      "created_at": "2025-01-23T00:00:00Z",
+      "notes": "Alternate Italian voice"
+    }
+  },
+  "course_assignments": {
+    "ita_for_eng_10seeds": {
+      "target1": "elevenlabs_ITALIAN_VOICE_1_ID_HERE",
+      "target2": "elevenlabs_ITALIAN_VOICE_2_ID_HERE",
+      "source": "elevenlabs_ENGLISH_VOICE_ID_HERE",
+      "presentation": "elevenlabs_ENGLISH_VOICE_ID_HERE"
+    },
+    "ita_for_eng_668seeds": {
+      "target1": "elevenlabs_ITALIAN_VOICE_1_ID_HERE",
+      "target2": "elevenlabs_ITALIAN_VOICE_2_ID_HERE",
+      "source": "elevenlabs_ENGLISH_VOICE_ID_HERE",
+      "presentation": "elevenlabs_ENGLISH_VOICE_ID_HERE"
+    }
+  }
+}
