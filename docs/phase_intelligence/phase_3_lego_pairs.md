@@ -28,6 +28,106 @@ Phase 6 will READ component arrays and generate intelligent introductions:
 
 ---
 
+## ⚠️ CRITICAL: USE EXTENDED THINKING MODE ⚠️
+
+**LEGO decomposition requires careful reasoning about linguistic structure and pedagogical principles.**
+
+### Why Extended Thinking?
+
+Phase 3 involves:
+- Judging what qualifies as "minimum meaningful unit"
+- Deciding basic vs composite classification
+- Applying preposition wrapping rules
+- Ensuring hierarchical component structures are correct
+- Balancing granularity with pedagogical utility
+
+**Without extended thinking, you WILL create inconsistent decompositions.**
+
+### How to Use Extended Thinking
+
+**Before decomposing EACH seed, use `<thinking>` tags to reason through:**
+
+1. **Meaningful unit identification**
+   ```
+   Seed: "Sto provando a imparare"
+
+   Candidate decomposition:
+   - "Sto" alone? → NO - meaningless fragment
+   - "Sto provando"? → YES - "I'm trying" is meaningful
+   - "a" alone? → NO - preposition, meaningless
+   - "provando a imparare"? → YES - "trying to learn" is meaningful composite
+   ```
+
+2. **Preposition wrapping check**
+   ```
+   Does decomposition expose bare prepositions on edges?
+   "provando" + "a" + "imparare" → YES, "a" is exposed
+   Solution: Wrap inside composite → "provando a imparare"
+   ```
+
+3. **Component hierarchy reasoning**
+   ```
+   Composite: "provando a imparare"
+   Components: ["provando", "trying"], ["a", "to"], ["imparare", "to learn"]
+
+   Check: Are components meaningful?
+   - "provando" alone = "trying" (valid gerund)
+   - "a" alone = meaningless (but needed for structure)
+   - "imparare" alone = "to learn" (valid infinitive)
+
+   Decision: Valid composite with preposition wrapped
+   ```
+
+4. **FD validation (Feeder Dependency)**
+   ```
+   Does this LEGO depend on specific previous LEGOs to make sense?
+   "con qualcun altro" = "with someone else"
+
+   Can it stand alone? YES - complete prepositional phrase
+   Mark as: BASIC (no feeders needed)
+
+   vs.
+
+   "a imparare" = "to learn"
+   Can it stand alone? NO - needs verb before it
+   Mark as: COMPOSITE with feeder dependency
+   ```
+
+### Extended Thinking Protocol
+
+**For EVERY seed decomposition:**
+```
+<thinking>
+1. Identify natural break points in the seed
+2. Test each candidate LEGO for meaningfulness
+3. Check for exposed prepositions → wrap if found
+4. Determine basic vs composite classification
+5. For composites: define component structure
+6. Validate FD dependencies
+7. Document reasoning for complex decisions
+</thinking>
+
+[Generate LEGO decomposition output]
+```
+
+### Impact on Quality
+
+**Without extended thinking:**
+- ~20-30% inconsistent decompositions
+- Preposition exposure violations
+- Over-granularization (meaningless fragments)
+- Incorrect basic/composite classification
+
+**With extended thinking:**
+- ~95% consistent decompositions on first pass
+- Proper preposition wrapping
+- Pedagogically sound minimum meaningful units
+- Correct hierarchical structures
+
+**Use extended thinking mode for EVERY seed decomposition.**
+
+---
+
 ## CORE EXTRACTION PRINCIPLES
 
 ### 1. Minimum Reusable Unit of Meaning

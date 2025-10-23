@@ -221,7 +221,9 @@ Use WebFetch to get the latest methodology before executing each phase.
 - Phase 3: \`${courseDir}/lego_pairs.json\`
 - Phase 5: \`${courseDir}/lego_baskets.json\`
 
-**Input**: \`${courseDir}/../../../seeds/canonical_seeds.json\` (first ${seeds} seeds)
+**Canonical Seeds**: Fetch from \`GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/seeds?limit=${seeds}\`
+- Pipe-delimited format: \`S0001|I want to speak {target} with you now.\`
+- Token-efficient: ~3k tokens vs 30k for JSON
 
 ---
 
@@ -2996,6 +2998,60 @@ app.get('/phase-intelligence/:phase', async (req, res) => {
   } catch (error) {
     console.error(`Error serving phase ${phase} intelligence:`, error);
     res.status(500).type('text/plain').send('Error loading phase intelligence');
+  }
+});
+
+// =============================================================================
+// SEEDS API - CANONICAL SEEDS
+// =============================================================================
+
+/**
+ * GET /api/seeds
+ * Serve canonical seeds as pipe-delimited text (much more token-efficient than JSON)
+ *
+ * Query params:
+ *   ?limit=N    - Return first N seeds only
+ *   ?offset=N   - Skip first N seeds
+ *   ?format=json - Return as JSON array instead of text
+ *
+ * Examples:
+ *   GET /api/seeds              → All 668 seeds as text
+ *   GET /api/seeds?limit=30     → First 30 seeds
+ *   GET /api/seeds?format=json  → JSON array format
+ */
+app.get('/api/seeds', async (req, res) => {
+  try {
+    const seedsPath = path.join(__dirname, 'seeds', 'canonical_seeds.txt');
+    const content = await fs.readFile(seedsPath, 'utf8');
+    const allSeeds = content.trim().split('\n');
+
+    const { limit, offset, format } = req.query;
+
+    // Apply offset/limit
+    let seeds = allSeeds;
+    if (offset) seeds = seeds.slice(parseInt(offset));
+    if (limit) seeds = seeds.slice(0, parseInt(limit));
+
+    // Return as JSON if requested
+    if (format === 'json') {
+      const jsonSeeds = seeds.map(line => {
+        const [seed_id, source] = line.split('|');
+        return { seed_id, source };
+      });
+      return res.json({
+        total: allSeeds.length,
+        returned: jsonSeeds.length,
+        seeds: jsonSeeds
+      });
+    }
+
+    // Default: return as pipe-delimited text
+    res.type('text/plain').send(seeds.join('\n'));
+    console.log(`✅ Served ${seeds.length}/${allSeeds.length} canonical seeds`);
+
+  } catch (error) {
+    console.error('Error serving seeds:', error);
+    res.status(500).type('text/plain').send('Error loading canonical seeds');
   }
 });
 

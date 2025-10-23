@@ -12,7 +12,10 @@ Apply 6 pedagogical heuristics to translate all 668 canonical concepts into BOTH
 
 ## Input
 
-- Canonical seeds: `vfs/seeds/canonical_seeds.json` (668 concepts expressed in English)
+- **Canonical seeds**: Fetch from `GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/seeds`
+  - Returns 668 pipe-delimited seeds: `S0001|I want to speak {target} with you now.`
+  - Supports `?limit=30` to fetch subset (e.g., first 30 seeds)
+  - Token-efficient format (~3k tokens vs 30k for JSON)
 - Target language code (e.g., "ita" for Italian)
 - Known language code (e.g., "fra" for French)
 
