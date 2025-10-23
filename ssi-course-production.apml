@@ -1,6 +1,6 @@
 app ssi_course_production:
   title: "SSi Language Course Production System"
-  version: "7.6.0"
+  version: "7.7.0"
   apml_version: "1.1.0"
   description: |
     Complete specification for SSi (Say Something In) language course production system.
@@ -10,6 +10,41 @@ app ssi_course_production:
 
   created: "2024-10-13"
   author: "Tom Cassidy / SSi Team"
+
+  changelog_v7_7_0: |
+    **Date:** 2025-10-23
+    **Summary:** Format Consolidation & Documentation Synchronization
+
+    BREAKING CHANGES:
+    - Fully deprecated amino_acids/ subdirectory model
+    - Consolidated to 3 primary JSON files per course (v7.0 format)
+    - Updated all API endpoints and documentation to match reality
+
+    FILE STRUCTURE CHANGES:
+    ✅ seed_pairs.json (Phase 1 output)
+       Format: {"version": "7.0", "translations": {"S0001": [target, known]}}
+
+    ✅ lego_pairs.json (Phase 3 output)
+       Format: {"version": "7.0", "seeds": [[seed_id, [t,k], [[lego_id, type, t, k]]]]}
+       Type codes: "B" (BASE), "C" (COMPOSITE), "F" (FEEDER)
+
+    ✅ lego_baskets.json (Phase 5 output)
+       Format: {"version": "7.0", "baskets": {lego_id: [[lego], [e-phrases], [d-phrases]]}}
+
+    DOCUMENTATION UPDATES:
+    - Updated APMLSpec.vue from amino acid model to v7.0 consolidated format
+    - Updated TrainingPhase.vue Phase 1/3/5/6/7 prompts with correct filenames
+    - Fixed automation_server.cjs schema references and regex bugs
+    - Created docs/APML_v7.0_CURRENT_FORMAT.md as format reference
+    - Created docs/NAMING_AUDIT.md tracking format evolution
+
+    VALIDATION:
+    ✅ Tested v7.0 course loading (test_for_eng_5seeds: 5 seeds → 17 LEGOs)
+    ✅ Tested large course support (ita_for_eng_668seeds: 668 seeds)
+    ✅ API correctly parses all v7.0 format files
+    ✅ Type conversion working (B/C/F → BASE/COMPOSITE/FEEDER for frontend)
+
+    See: docs/APML_v7.0_CURRENT_FORMAT.md for complete format specification
 
   pss_compliance:
     structure_standard: "APML-PSS v1.0.0"
@@ -65,7 +100,7 @@ osascript (opens Claude Code)
   ↓
 Claude Code (Sonnet 4.5) executes phase prompts
   ↓
-VFS (Virtual File System) - stores amino acid outputs
+VFS (Virtual File System) - stores v7.0 format JSON outputs
   ↓
 Dashboard polls for updates, displays results
   ↓
@@ -717,18 +752,34 @@ IMMUTABILITY: Edits create NEW amino acids with updated provenance, never modify
 PROVENANCE: S{seed}L{position} format tracks birth-parent relationships
 NOTE: This is an implementation detail - users see SEED_PAIRS, LEGO_PAIRS, LEGO_BASKETS
 
-### VFS (Virtual File System)
+### VFS (Virtual File System) - v7.0 Format
 PURPOSE: Organized storage for all course generation artifacts
 BASE_PATH: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/
 STRUCTURE: {target_code}_for_{known_code}_{seed_count}seeds/
-FILES:
-  - seed_pairs.json (stores all SEED_PAIRS - single consolidated file)
-  - lego_baskets.json (stores all LEGO_BASKETS including LEGOs - single consolidated file)
-  - course_metadata.json (course-level metadata)
-SUBDIRS:
-  - phase_outputs/ (intermediate files like graphs, corpus intelligence)
-  - proteins/ (compiled manifests for app consumption)
-NOTE: Old amino_acids/ subdirectory structure deprecated in favor of single consolidated files
+
+CORE FILES (v7.0 ultra-compact consolidated format):
+  - seed_pairs.json           # Phase 1: Translation pairs
+    Format: {"version": "7.0", "translations": {"S0001": [target, known]}}
+
+  - lego_pairs.json            # Phase 3: LEGO breakdowns with composites/feeders
+    Format: {"version": "7.0", "seeds": [[seed_id, [t,k], [[lego_id, type, t, k]]]]}
+    Type codes: "B" (BASE), "C" (COMPOSITE), "F" (FEEDER)
+
+  - lego_baskets.json          # Phase 5: Learning baskets with e/d phrases
+    Format: {"version": "7.0", "baskets": {lego_id: [[lego], [e-phrases], [d-phrases]]}}
+
+  - introductions.json         # Phase 6: Introduction phrases (optional)
+    Format: {"version": "7.0", "introductions": [...]}
+
+  - course_manifest.json       # Phase 7: Compiled course for app
+    Format: Final manifest for SSi mobile app consumption
+
+LEGACY STRUCTURE (DEPRECATED as of v7.7.0):
+  - amino_acids/ subdirectories (Oct 10-15, 2024 format)
+  - translations.json, LEGO_BREAKDOWNS_COMPLETE.json (Oct 15, 2024 interim format)
+
+MIGRATION:
+  Use vfs/courses/convert-to-v7.0-format.cjs to migrate old courses
 
 ### Course Codes
 FORMAT: "{target_iso}_for_{known_iso}_speakers"
@@ -784,7 +835,7 @@ TOTAL_SEEDS: 668 (canonical SSi corpus)
 NAME: "Pedagogical Translation"
 PURPOSE: Apply 6 pedagogical heuristics to create optimal learning translations
 INPUT: vfs/seeds/canonical_seeds.json
-OUTPUT: vfs/amino_acids/translations/{uuid}.json (668 translation amino acids)
+OUTPUT: vfs/courses/{course_code}/seed_pairs.json (v7.0 format - all 668 translations consolidated)
 
 THE_PEDAGOGICAL_HEURISTICS:
 
@@ -1246,9 +1297,9 @@ NAME: "LEGO Extraction"
 PURPOSE: Extract optimal teaching phrases while enforcing FD and FCFS rules
 METHODOLOGY: See `skills/lego-extraction-skill/` for complete methodology
 INPUT:
-  - vfs/amino_acids/translations/*.json
-  - vfs/phase_outputs/phase_2_corpus_intelligence.json
-OUTPUT: vfs/amino_acids/legos/{uuid}.json
+  - vfs/courses/{course_code}/seed_pairs.json (Phase 1 output)
+  - vfs/phase_outputs/phase_2_corpus_intelligence.json (optional)
+OUTPUT: vfs/courses/{course_code}/lego_pairs.json (v7.0 format - all LEGO breakdowns consolidated)
 
 BATCH_PROCESSING:
   BATCH_SIZE: 20 seeds (complex work requires smaller batches)
