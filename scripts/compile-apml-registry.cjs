@@ -50,8 +50,12 @@ console.log(`✅ Extracted ${phaseCount} phase prompts`);
 // Extract variable registry
 console.log(`🔍 Extracting variable registry...`);
 
+// Extract version from APML
+const versionMatch = apmlContent.match(/version:\s*"([^"]+)"/);
+const version = versionMatch ? versionMatch[1] : '7.0.0';
+
 const registry = {
-  version: '7.0.0',
+  version: version,
   generated_at: new Date().toISOString(),
   apml_file: 'ssi-course-production.apml',
 
