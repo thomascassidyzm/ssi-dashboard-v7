@@ -17,7 +17,8 @@
 
 const fs = require('fs-extra');
 const path = require('path');
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4, v5: uuidv5 } = require('uuid');
+const crypto = require('crypto');
 
 const courseCode = process.argv[2];
 
@@ -33,6 +34,16 @@ const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
 const legoBasketsPath = path.join(courseDir, 'lego_baskets.json');
 const introductionsPath = path.join(courseDir, 'introductions.json');
 const outputPath = path.join(courseDir, 'course_manifest.json');
+
+// SSi namespace UUID for deterministic audio sample UUIDs
+const SSI_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+
+// Generate deterministic UUID for audio sample
+// Same text + language + role + cadence = same UUID every time
+function generateSampleUUID(text, language, role, cadence) {
+  const key = `${text}|${language}|${role}|${cadence}`;
+  return uuidv5(key, SSI_NAMESPACE);
+}
 
 // Helper to create language node (tokens/lemmas empty per user request)
 function createLanguageNode(text) {
@@ -99,6 +110,27 @@ async function compileManifest() {
   // Create basket lookup (baskets is an object, not array)
   const basketLookup = legoBaskets.baskets;
 
+  // Track all audio samples
+  const samples = {};
+
+  function registerSample(text, language, role, cadence) {
+    if (!text || text.trim() === '') return;
+
+    if (!samples[text]) {
+      samples[text] = [];
+    }
+
+    // Check if this exact role/cadence combo already exists
+    const exists = samples[text].some(s => s.role === role && s.cadence === cadence);
+    if (!exists) {
+      samples[text].push({
+        id: generateSampleUUID(text, language, role, cadence),
+        cadence: cadence,
+        role: role
+      });
+    }
+  }
+
   // Build all seeds (all seeds go in a single slice)
   const seeds = [];
   let totalIntroductionItems = 0;
@@ -106,6 +138,11 @@ async function compileManifest() {
 
   for (const seed of legoPairs.seeds) {
     const [seedId, [targetSeed, knownSeed], legos] = seed;
+
+    // Register seed sentence samples
+    registerSample(targetSeed, targetCode, 'target1', 'natural');
+    registerSample(targetSeed, targetCode, 'target2', 'natural');
+    registerSample(knownSeed, knownCode, 'known', 'natural');
 
     // Build introduction items for this seed
     const introductionItems = [];
@@ -119,6 +156,14 @@ async function compileManifest() {
         console.warn(`⚠️  No presentation found for ${legoId}, skipping`);
         continue;
       }
+
+      // Register LEGO pair samples
+      registerSample(targetLego, targetCode, 'target1', 'natural');
+      registerSample(targetLego, targetCode, 'target2', 'natural');
+      registerSample(knownLego, knownCode, 'known', 'natural');
+
+      // Register presentation text sample (spoken in known language)
+      registerSample(presentation, knownCode, 'known', 'natural');
 
       // Get practice phrases (nodes) from baskets
       const basket = basketLookup[legoId];
@@ -135,6 +180,12 @@ async function compileManifest() {
             for (const phrase of window) {
               if (Array.isArray(phrase) && phrase.length === 2) {
                 const [targetPhrase, knownPhrase] = phrase;
+
+                // Register practice phrase samples
+                registerSample(targetPhrase, targetCode, 'target1', 'natural');
+                registerSample(targetPhrase, targetCode, 'target2', 'natural');
+                registerSample(knownPhrase, knownCode, 'known', 'natural');
+
                 practiceNodes.push({
                   id: uuidv4(),
                   target: createLanguageNode(targetPhrase),
@@ -190,7 +241,7 @@ async function compileManifest() {
     id: uuidv4(),
     version: seedPairs.version,
     seeds: seeds,
-    samples: {} // Phase 8 will populate audio samples
+    samples: samples // Audio sample metadata (Phase 8 will generate actual audio files)
   }];
 
   // Build final manifest
@@ -205,10 +256,15 @@ async function compileManifest() {
   // Write manifest
   await fs.writeJson(outputPath, manifest, { spaces: 2 });
 
+  // Count total sample entries
+  const totalSamples = Object.keys(samples).length;
+  const totalSampleVariants = Object.values(samples).reduce((sum, arr) => sum + arr.length, 0);
+
   console.log(`✅ Compiled course manifest:`);
   console.log(`   - Seeds: ${seeds.length}`);
   console.log(`   - Introduction Items: ${totalIntroductionItems}`);
   console.log(`   - Practice Nodes: ${totalPracticeNodes}`);
+  console.log(`   - Audio Samples: ${totalSamples} unique phrases, ${totalSampleVariants} total variants`);
   console.log(`\n💾 Output: ${outputPath}\n`);
 
   // Show sample structure
