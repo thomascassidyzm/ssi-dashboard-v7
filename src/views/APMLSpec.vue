@@ -8,7 +8,7 @@
           <span>Back to Dashboard</span>
         </router-link>
         <h1 class="text-3xl font-bold text-emerald-400">
-          APML v7.0 Specification
+          APML v7.6 Specification
         </h1>
         <p class="mt-2 text-slate-400">
           Complete architectural specification with amino acid storage model
@@ -23,7 +23,7 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">APML Architecture</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p><strong>APML (Autonomous Parallel Markup Language)</strong> v7.0 is the architectural specification for the SSi Course Production system. It defines the amino acid storage model, phase pipeline, and orchestration protocols.</p>
+            <p><strong>APML (Autonomous Parallel Markup Language)</strong> v7.6 is the architectural specification for the SSi Course Production system. It defines the amino acid storage model, phase pipeline, and orchestration protocols.</p>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Core Principles</h3>
             <ul class="space-y-2">

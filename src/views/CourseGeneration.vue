@@ -11,7 +11,7 @@
           Generate New Course
         </h1>
         <p class="mt-2 text-slate-400">
-          SSi Course Production Dashboard v7.0 - Complete course generation pipeline
+          SSi Course Production Dashboard v7.6 - Complete 8-phase generation pipeline
         </p>
       </div>
     </header>

@@ -3062,6 +3062,246 @@ app.post('/api/validate/phase/:phase', (req, res) => {
 });
 
 // =============================================================================
+// PHASE EXECUTION ENDPOINTS (Phase 2, 6, 7, 8 - APML v7.6)
+// =============================================================================
+
+/**
+ * POST /api/courses/:courseCode/phase/2
+ * Execute Phase 2: Corpus Analysis
+ */
+app.post('/api/courses/:courseCode/phase/2', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    console.log(`[Phase 2] Starting corpus analysis for ${courseCode}...`);
+
+    // TODO: Implement Phase 2 logic tomorrow
+    // - Load SEED_PAIRS from VFS
+    // - Perform FCFS (First-Can-First-Say) analysis
+    // - Calculate utility scores
+    // - Generate corpus intelligence JSON
+
+    res.status(501).json({
+      error: 'Phase 2 not yet implemented',
+      message: 'Phase 2: Corpus Analysis endpoint stub - implementation pending',
+      courseCode,
+      nextSteps: [
+        'Load SEED_PAIRS from VFS',
+        'Analyze FCFS order',
+        'Calculate utility scores',
+        'Generate phase_2_corpus_intelligence.json'
+      ]
+    });
+  } catch (err) {
+    console.error('[Phase 2] Error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/phase/6
+ * Execute Phase 6: Introduction Generation
+ */
+app.post('/api/courses/:courseCode/phase/6', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    console.log(`[Phase 6] Starting introduction generation for ${courseCode}...`);
+
+    // TODO: Implement Phase 6 logic tomorrow
+    // - Load basket amino acids
+    // - For each basket, identify known LEGOs from previous baskets
+    // - Generate known-only introduction phrases
+    // - Validate zero unknown elements
+    // - Store introduction amino acids
+
+    res.status(501).json({
+      error: 'Phase 6 not yet implemented',
+      message: 'Phase 6: Introductions endpoint stub - implementation pending',
+      courseCode,
+      nextSteps: [
+        'Load basket amino acids',
+        'Identify known LEGOs',
+        'Generate introduction phrases',
+        'Validate known-only rule',
+        'Store introduction amino acids'
+      ]
+    });
+  } catch (err) {
+    console.error('[Phase 6] Error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/compile
+ * Execute Phase 7: Course Compilation (VFS → App JSON)
+ */
+app.post('/api/courses/:courseCode/compile', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    console.log(`[Phase 7] Starting course compilation for ${courseCode}...`);
+
+    // TODO: Implement Phase 7 logic tomorrow
+    // - Load all amino acids from VFS (translations, LEGOs, baskets, introductions)
+    // - Compile into app-ready JSON structure with slices, seeds, samples
+    // - Generate sample metadata (roles, cadence, duration)
+    // - Add course metadata (languages, version, ID)
+    // - Write compiled.json
+
+    res.status(501).json({
+      error: 'Phase 7 not yet implemented',
+      message: 'Phase 7: Course Compilation endpoint stub - implementation pending',
+      courseCode,
+      nextSteps: [
+        'Load VFS amino acids',
+        'Build seeds array with introductionItems',
+        'Generate samples{} object',
+        'Create slices structure',
+        'Write vfs/courses/{courseCode}/compiled.json'
+      ]
+    });
+  } catch (err) {
+    console.error('[Phase 7] Error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/audio/check-s3
+ * Check which audio files exist in AWS S3
+ */
+app.post('/api/audio/check-s3', async (req, res) => {
+  const { sampleIds } = req.body;
+
+  try {
+    console.log(`[Audio] Checking S3 status for ${sampleIds?.length || 0} samples...`);
+
+    // TODO: Implement S3 check logic tomorrow
+    // - Query AWS S3 bucket for existing audio files
+    // - Compare with requested sample IDs
+    // - Return available/missing counts and ID lists
+
+    res.status(501).json({
+      error: 'Audio S3 check not yet implemented',
+      message: 'Phase 8: Audio S3 check endpoint stub - implementation pending',
+      sampleCount: sampleIds?.length || 0,
+      nextSteps: [
+        'Configure AWS S3 credentials',
+        'Query S3 bucket for existing {uuid}.mp3 files',
+        'Compare with requested sample IDs',
+        'Return {available, missing, total, availableIds}'
+      ]
+    });
+  } catch (err) {
+    console.error('[Audio] S3 check error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/audio/generate-missing
+ * Generate missing audio files using TTS
+ */
+app.post('/api/audio/generate-missing', async (req, res) => {
+  const { courseCode, missingAudio } = req.body;
+
+  try {
+    console.log(`[Audio] Starting audio generation for ${missingAudio?.length || 0} samples...`);
+
+    // TODO: Implement audio generation logic tomorrow
+    // - Parse missing audio requirements (text, role, cadence)
+    // - Use TTS service (ElevenLabs/AWS Polly) to synthesize audio
+    // - Upload generated files to S3 with UUID-based naming
+    // - Track progress for job status queries
+
+    const jobId = `audio_gen_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
+    res.status(501).json({
+      error: 'Audio generation not yet implemented',
+      message: 'Phase 8: Audio generation endpoint stub - implementation pending',
+      jobId,
+      sampleCount: missingAudio?.length || 0,
+      nextSteps: [
+        'Configure TTS service (ElevenLabs/AWS Polly)',
+        'Generate audio for each sample',
+        'Upload to S3 as {uuid}.mp3',
+        'Track job progress',
+        'Support polling via /api/audio/generation-status/:jobId'
+      ]
+    });
+  } catch (err) {
+    console.error('[Audio] Generation error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/audio/generation-status/:jobId
+ * Get audio generation job status
+ */
+app.get('/api/audio/generation-status/:jobId', async (req, res) => {
+  const { jobId } = req.params;
+
+  try {
+    console.log(`[Audio] Checking status for job ${jobId}...`);
+
+    // TODO: Implement job status tracking tomorrow
+    // - Query job status from database or in-memory store
+    // - Return progress, completed count, status
+
+    res.status(501).json({
+      error: 'Audio generation status not yet implemented',
+      message: 'Phase 8: Audio status endpoint stub - implementation pending',
+      jobId,
+      nextSteps: [
+        'Implement job tracking system',
+        'Store job progress in database',
+        'Return {status, completed, total, errors}'
+      ]
+    });
+  } catch (err) {
+    console.error('[Audio] Status check error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/deploy
+ * Deploy compiled course to production
+ */
+app.post('/api/courses/:courseCode/deploy', async (req, res) => {
+  const { courseCode } = req.params;
+  const { courseJSON } = req.body;
+
+  try {
+    console.log(`[Deploy] Starting deployment for ${courseCode}...`);
+
+    // TODO: Implement deployment logic tomorrow
+    // - Validate course JSON structure
+    // - Verify all audio files are available in S3
+    // - Deploy to production environment
+    // - Update course status
+
+    res.status(501).json({
+      error: 'Deployment not yet implemented',
+      message: 'Course deployment endpoint stub - implementation pending',
+      courseCode,
+      nextSteps: [
+        'Validate course JSON',
+        'Verify audio availability',
+        'Deploy to production',
+        'Update course status'
+      ]
+    });
+  } catch (err) {
+    console.error('[Deploy] Error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// =============================================================================
 // SERVER START
 // =============================================================================
 

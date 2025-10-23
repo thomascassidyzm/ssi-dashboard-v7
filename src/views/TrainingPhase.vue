@@ -627,7 +627,7 @@ vfs/phase_outputs/phase_2_corpus_intelligence.json
 3. Do they TILE? → YES: keep separate | NO: create COMPOSITE
 4. Create COMPOSITE with FEEDERs
 
-This architecture is documented in APML v7.3.0.
+This architecture is documented in APML v7.6.
       `
     },
     output: 'LEGO_BREAKDOWNS_COMPLETE.json with all SEED_PAIR decompositions into LEGO_PAIRS',
@@ -797,7 +797,7 @@ Structure for each file:
       }
     ],
     notes: [
-      'This is a NEW phase in APML v7.0 - introduces graph intelligence',
+      'This is a NEW phase in APML v7.6 - introduces graph intelligence',
       'Graph edges represent legitimate LEGO sequence patterns',
       'Phase 5 uses this graph to ensure pattern coverage in baskets',
       'Edge weights inform pattern selection during basket construction'
@@ -849,7 +849,7 @@ vfs/phase_outputs/phase_3.5_lego_graph.json
 }
 
 ## Critical Notes
-- This is NEW in APML v7.0 - graph intelligence!
+- This is NEW in APML v7.6 - graph intelligence!
 - Phase 5 uses this graph for pattern coverage optimization
 - Edges represent legitimate LEGO sequence patterns
 - Replaces old DEBUT/ETERNAL pattern logic

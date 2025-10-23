@@ -53,7 +53,7 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">End-to-End Pipeline</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p>The SSi Course Production system uses APML v7.6 specification to generate complete language courses from canonical seed pairs through a streamlined 5-phase pipeline.</p>
+            <p>The SSi Course Production system uses APML v7.6 specification to generate complete language courses from canonical seed pairs through a complete 8-phase pipeline from translation to audio generation and deployment.</p>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Architecture Overview</h3>
             <ul class="space-y-2">
