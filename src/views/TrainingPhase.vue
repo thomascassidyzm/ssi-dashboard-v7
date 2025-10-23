@@ -745,13 +745,13 @@ Final consolidated file: **lego_pairs.json** with ultra-compact v7.0 array forma
 \`\`\`
 
 **Type Codes:**
-- `"B"` = BASE LEGO (atomic, indivisible)
-- `"C"` = COMPOSITE LEGO (multi-word, contains feeders)
-- `"F"` = FEEDER (component of composite)
+- "B" = BASE LEGO (atomic, indivisible)
+- "C" = COMPOSITE LEGO (multi-word, contains feeders)
+- "F" = FEEDER (component of composite)
 
 **LEGO ID Format:**
-- LEGOs: `S####L##` (e.g., S0001L01, S0001L02)
-- FEEDERs: `S####F##` (e.g., S0001F01, S0001F02)
+- LEGOs: S####L## (e.g., S0001L01, S0001L02)
+- FEEDERs: S####F## (e.g., S0001F01, S0001F02)
 
 **FEEDER Rules:**
 - FEEDERs ONLY appear inside COMPOSITE LEGOs (as 5th array element)
