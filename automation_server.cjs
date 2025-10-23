@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+// Load environment variables from .env file
+require('dotenv').config();
+
 /**
  * SSi Course Production - Automation Server v7.0
  *
@@ -2816,6 +2819,140 @@ app.get('/api/prompts/:phase/history', async (req, res) => {
   } catch (error) {
     console.error('Error fetching prompt history:', error);
     res.status(500).json({ error: 'Failed to fetch history' });
+  }
+});
+
+// =============================================================================
+// VFS API - CLOUD-NATIVE FILE OPERATIONS (S3)
+// =============================================================================
+
+const AWS = require('aws-sdk');
+
+// Configure S3 client
+const s3 = new AWS.S3({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION || 'eu-west-1'
+});
+
+const S3_BUCKET = process.env.S3_BUCKET || 'popty-bach-lfs';
+
+/**
+ * GET /api/vfs/courses
+ * List all courses in S3
+ */
+app.get('/api/vfs/courses', async (req, res) => {
+  try {
+    const result = await s3.listObjectsV2({
+      Bucket: S3_BUCKET,
+      Prefix: 'courses/',
+      Delimiter: '/'
+    }).promise();
+
+    const courses = result.CommonPrefixes
+      ? result.CommonPrefixes.map(p => p.Prefix.replace('courses/', '').replace('/', ''))
+      : [];
+
+    console.log(`✅ Listed ${courses.length} courses from S3`);
+    res.json({ courses });
+  } catch (error) {
+    console.error('❌ S3 list error:', error.message);
+    res.status(500).json({ error: 'Failed to list courses', detail: error.message });
+  }
+});
+
+/**
+ * GET /api/vfs/courses/:code/:file
+ * Read a course file from S3 (JSON only, not audio)
+ */
+app.get('/api/vfs/courses/:code/:file(*)', async (req, res) => {
+  const { code, file } = req.params;
+  const key = `courses/${code}/${file}`;
+
+  // Only allow JSON files (Phase 1-7), not audio (Phase 8 is Kai's)
+  if (!file.endsWith('.json')) {
+    return res.status(400).json({ error: 'Only JSON files supported in VFS API' });
+  }
+
+  try {
+    const obj = await s3.getObject({ Bucket: S3_BUCKET, Key: key }).promise();
+
+    const content = obj.Body.toString('utf8');
+    console.log(`✅ Read ${key} from S3 (${content.length} bytes)`);
+
+    res.type('application/json').send(content);
+  } catch (error) {
+    if (error.code === 'NoSuchKey') {
+      console.log(`⚠️  File not found: ${key}`);
+      res.status(404).json({ error: 'File not found', key });
+    } else {
+      console.error(`❌ S3 read error for ${key}:`, error.message);
+      res.status(500).json({ error: 'Failed to read file', detail: error.message });
+    }
+  }
+});
+
+/**
+ * PUT /api/vfs/courses/:code/:file
+ * Write a course file to S3 (JSON only)
+ */
+app.put('/api/vfs/courses/:code/:file(*)', async (req, res) => {
+  const { code, file } = req.params;
+  const key = `courses/${code}/${file}`;
+
+  // Only allow JSON files
+  if (!file.endsWith('.json')) {
+    return res.status(400).json({ error: 'Only JSON files supported in VFS API' });
+  }
+
+  try {
+    // Get raw body content
+    let content;
+    if (typeof req.body === 'string') {
+      content = req.body;
+    } else if (typeof req.body === 'object') {
+      content = JSON.stringify(req.body, null, 2);
+    } else {
+      return res.status(400).json({ error: 'Invalid request body' });
+    }
+
+    await s3.putObject({
+      Bucket: S3_BUCKET,
+      Key: key,
+      Body: content,
+      ContentType: 'application/json',
+      ACL: 'private' // Course data is private (not audio)
+    }).promise();
+
+    console.log(`✅ Wrote ${key} to S3 (${content.length} bytes)`);
+    res.json({ success: true, key, size: content.length });
+  } catch (error) {
+    console.error(`❌ S3 write error for ${key}:`, error.message);
+    res.status(500).json({ error: 'Failed to write file', detail: error.message });
+  }
+});
+
+/**
+ * DELETE /api/vfs/courses/:code/:file
+ * Delete a course file from S3 (JSON only)
+ */
+app.delete('/api/vfs/courses/:code/:file(*)', async (req, res) => {
+  const { code, file } = req.params;
+  const key = `courses/${code}/${file}`;
+
+  // Only allow JSON files
+  if (!file.endsWith('.json')) {
+    return res.status(400).json({ error: 'Only JSON files supported in VFS API' });
+  }
+
+  try {
+    await s3.deleteObject({ Bucket: S3_BUCKET, Key: key }).promise();
+
+    console.log(`✅ Deleted ${key} from S3`);
+    res.json({ success: true, key });
+  } catch (error) {
+    console.error(`❌ S3 delete error for ${key}:`, error.message);
+    res.status(500).json({ error: 'Failed to delete file', detail: error.message });
   }
 });
 

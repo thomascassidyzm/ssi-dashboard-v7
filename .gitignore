@@ -24,3 +24,12 @@ dist-ssr
 *.sw?
 .vercel
 logs/
+
+# Environment variables (contains credentials)
+.env
+
+# Orchestrator temp files
+.orchestrator-*.md
+
+# Server logs
+server.log
