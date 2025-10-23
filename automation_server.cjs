@@ -178,10 +178,10 @@ async function ensureCourseDirectory(courseCode) {
 function generateOrchestratorBrief(courseCode, params, courseDir) {
   const { target, known, seeds } = params;
 
-  return `# Course Generation Orchestrator Brief
+  return `# Course Generation Orchestrator Brief (v7.7.1)
 
 ## Mission
-Generate complete SSi language course from canonical English seeds.
+Generate complete SSi language course using cloud-native phase intelligence.
 
 **Course**: ${courseCode}
 **Target Language**: ${target} (learning language)
@@ -192,191 +192,184 @@ Generate complete SSi language course from canonical English seeds.
 
 ## Your Role
 
-You are the **course generation orchestrator**. You will execute all 7 phases sequentially in this single Claude Code session. Work autonomously - read specs, execute phases, write outputs, report status.
+You are the **course generation orchestrator**. Execute phases 1, 3, and 5 sequentially. Fetch latest methodology from phase intelligence endpoints, apply it, write outputs to VFS.
 
 ---
 
-## Key Files & Resources
+## Phase Intelligence (Single Source of Truth)
 
-**Dashboard API** (Single Source of Truth for prompts):
-\`https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/:phase\`
-- Fetch phase instructions from here using WebFetch
-- Always up-to-date with latest methodology
+**NEW Architecture**: Phase intelligence served from modular markdown files
 
-**Course Directory** (Your workspace):
-\`${courseDir}\`
-- Write all outputs here
-- Structure: translations.json, legos.json, baskets.json
+**Endpoint**: \`GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase-intelligence/:phase\`
 
-**Canonical Seeds** (Input data):
-\`${courseDir}/../../../seeds/canonical_seeds.json\`
-- 668 English reference concepts
-- You'll process the first ${seeds} seeds
+Fetch instructions for each phase:
+- **Phase 1**: \`/phase-intelligence/1\` → Returns phase_1_seed_pairs.md
+- **Phase 3**: \`/phase-intelligence/3\` → Returns phase_3_lego_pairs.md
+- **Phase 5**: \`/phase-intelligence/5\` → Returns phase_5_lego_baskets.md
+
+Use WebFetch to get the latest methodology before executing each phase.
 
 ---
 
-## Phase Execution Sequence
+## File Locations
 
-Execute phases in order. Fetch phase instructions from dashboard API (single source of truth).
+**Course Directory**: \`${courseDir}\`
 
-### Phase 1: Pedagogical Translation
-- **Input**: ${courseDir}/../../../seeds/canonical_seeds.json (first ${seeds} seeds)
-- **Output**: ${courseDir}/translations.json
-- **Format**: Compact JSON - \`{"version": "7.7.0", "translations": {"S0001": [target, known], ...}}\`
-- **Instructions**: Fetch via WebFetch from https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/1
-- **Purpose**: Apply 6 heuristics, create optimized translations
-- **Critical**: Two-step process (canonical→target→known)
-- **Example**:
+**Output Files** (NEW v7.7.1 naming):
+- Phase 1: \`${courseDir}/seed_pairs.json\`
+- Phase 3: \`${courseDir}/lego_pairs.json\`
+- Phase 5: \`${courseDir}/lego_baskets.json\`
+
+**Input**: \`${courseDir}/../../../seeds/canonical_seeds.json\` (first ${seeds} seeds)
+
+---
+
+## Phase 1: Pedagogical Translation
+
+**Fetch Instructions**: \`GET /phase-intelligence/1\`
+
+**Output File**: \`seed_pairs.json\`
+
+**Format**:
 \`\`\`json
 {
-  "version": "7.7.0",
-  "translations": {
-    "S0001": ["Quiero hablar español contigo ahora.", "I want to speak Spanish with you now."],
-    "S0002": ["Estoy intentando aprender.", "I'm trying to learn."]
+  "S0001": ["Quiero hablar español", "I want to speak Spanish"],
+  "S0002": ["Estoy intentando aprender", "I'm trying to learn"]
+}
+\`\`\`
+
+**Key Points**:
+- Apply 6 pedagogical heuristics (cognate preference, variation reduction, etc.)
+- Two-step process: canonical → target → known
+- Maintain vocabulary registry (First Word Wins)
+- Read FULL phase intelligence for all details
+
+---
+
+## Phase 3: LEGO Extraction
+
+**Fetch Instructions**: \`GET /phase-intelligence/3\`
+
+**Input**: \`seed_pairs.json\`
+**Output File**: \`lego_pairs.json\`
+
+**Format**:
+\`\`\`json
+[
+  ["S0001", ["Quiero hablar español", "I want to speak Spanish"], [
+    ["S0001L01", "B", "Quiero", "I want"],
+    ["S0001L02", "B", "hablar", "to speak"],
+    ["S0001L03", "B", "español", "Spanish"]
+  ]]
+]
+\`\`\`
+
+**Key Points**:
+- Extract BASE and COMPOSITE LEGOs only (v7.0 compact format)
+- Component arrays for composites: \`[["component", "trans", "LEGO_ID"], ...]\`
+- FD compliance, FCFS, minimum reusable unit
+- Read FULL phase intelligence for all details
+
+---
+
+## Phase 5: Basket Generation
+
+**Fetch Instructions**: \`GET /phase-intelligence/5\`
+
+**Input**: \`lego_pairs.json\`
+**Output File**: \`lego_baskets.json\`
+
+**Format**:
+\`\`\`json
+{
+  "S0001L01": {
+    "lego": ["Quiero", "I want"],
+    "e": [
+      ["Quiero hablar español ahora", "I want to speak Spanish now"],
+      ["Quiero hablar contigo mañana", "I want to speak with you tomorrow"]
+    ],
+    "d": {
+      "2": [["Quiero hablar", "I want to speak"]],
+      "3": [["Quiero hablar español", "I want to speak Spanish"]]
+    }
   }
 }
 \`\`\`
 
-### Phase 3: LEGO Extraction
-- **Input**: ${courseDir}/translations.json
-- **Output**: ${courseDir}/legos.json
-- **Format**: Compact arrays - \`{"version": "7.7.0", "seeds": [["S0001", [target, known], [LEGOs]], ...]}\`
-- **Instructions**: Fetch via WebFetch from https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/3
-- **Purpose**: Extract FD-compliant LEGOs (BASE + COMPOSITE)
-- **Critical**: FD (Functionally Deterministic), FCFS (First Come First Served), TILING test
-- **Type codes**: B=BASE, C=COMPOSITE, F=FEEDER
-- **Example**:
-\`\`\`json
-{
-  "version": "7.7.0",
-  "seeds": [
-    ["S0001", ["Quiero hablar", "I want to speak"], [
-      ["S0001L01", "B", "Quiero", "I want"],
-      ["S0001L02", "B", "hablar", "to speak"]
-    ]]
-  ]
-}
-\`\`\`
-
-### Phase 5: Basket Generation
-- **Input**: ${courseDir}/legos.json
-- **Output**: ${courseDir}/baskets.json
-- **Format**: Compact arrays - \`{"version": "7.7.0", "baskets": {"S0001L01": [[lego], [e-phrases], [d-phrases]], ...}}\`
-- **Instructions**: Fetch via WebFetch from https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/5
-- **Purpose**: Generate learning baskets with progressive vocabulary
-- **Critical**: 7-10 word e-phrases, perfect target grammar
-- **Example**:
-\`\`\`json
-{
-  "version": "7.7.0",
-  "baskets": {
-    "S0001L01": [
-      ["Quiero", "I want"],
-      [["Quiero hablar ahora", "I want to speak now"]],
-      [[["Quiero hablar", "I want to speak"]], [], [], []]
-    ]
-  }
-}
-\`\`\`
+**Key Points**:
+- E-phrases: 7-10 words, natural, conversational
+- D-phrases: Expanding windows (2, 3, 4, 5 LEGOs)
+- Vocabulary constraints: LEGO #N only uses LEGOs #1 to N-1
+- Perfect grammar in BOTH languages
+- Read FULL phase intelligence for all details
 
 ---
 
-## Critical Rules
+## Execution Steps
 
-1. **Fetch Instructions from Dashboard**: Use WebFetch to get phase prompts from API URLs above
-2. **Sequential Execution**: Complete each phase before starting next
-3. **Write to Workspace**: All outputs go to ${courseDir}
-4. **Quality Validation**: After Phase 5, spot-check 5-10 baskets for grammar
-5. **Report Status**: At end, report completion or failure with specifics
+**For each phase:**
+
+1. **Fetch Phase Intelligence**: Use WebFetch to get latest methodology
+2. **Read Input**: Load required input file(s)
+3. **Apply Methodology**: Follow phase intelligence exactly
+4. **Write Output**: Save to correct filename in ${courseDir}
+5. **Spot Check**: Verify quality (5-10 samples)
+6. **Continue**: Move to next phase if successful
+
+**No validation endpoints** - just follow the phase intelligence and use your judgment on quality.
 
 ---
 
 ## Quality Checkpoints
 
 ### After Phase 1
-- Spot-check 5 translations: Natural? High-frequency vocabulary?
+- Natural translations?
+- High-frequency vocabulary?
+- Cognates preferred for seeds 1-${Math.min(seeds, 100)}?
 
 ### After Phase 3
-- Spot-check 10 LEGOs: Pass FD (Functionally Deterministic)? FCFS compliant? TILING correct?
+- All LEGOs FD-compliant?
+- Component arrays correct format?
+- No orphaned LEGOs?
 
 ### After Phase 5
-- Spot-check 10 baskets: 7-10 word e-phrases? Perfect target grammar?
-- Check for grammar errors (e.g., Italian: cercando di, imparando a)
-
-If critical issues found: Document them, but continue (self-healing on next run).
+- E-phrases 7-10 words?
+- Perfect target grammar?
+- D-phrases respect vocabulary constraints?
 
 ---
 
 ## Success Criteria
 
-✅ All 3 phases executed (1, 3, 5)
-✅ Phase outputs written to VFS (translations.json, baskets.json)
-✅ No critical errors (translations natural, LEGOs FD-compliant, baskets grammatical)
-✅ Status reported
+✅ Phase 1: \`seed_pairs.json\` created with ${seeds} seed pairs
+✅ Phase 3: \`lego_pairs.json\` created with extracted LEGOs
+✅ Phase 5: \`lego_baskets.json\` created with baskets for each LEGO
+✅ Quality checks passed
+✅ Files written to correct locations
 
 ---
 
-## Failure Handling
+## Final Report
 
-If any phase fails:
-1. Document specific error
-2. Note which seeds/LEGOs/baskets affected
-3. Report failure status with details
-4. Do NOT continue to next phase
-
----
-
-## Final Report Format
-
-After all phases (or on failure), report:
+After completion, report:
 
 \`\`\`
 ✅ Course Generation Complete: ${courseCode}
 
-Phase 1: ✅ ${seeds} translations created → translations.json
-Phase 3: ✅ [X] LEGOs extracted ([Y] BASE, [Z] COMPOSITE)
-Phase 5: ✅ [X] baskets generated → baskets.json
+Phase 1: ✅ ${seeds} seed pairs → seed_pairs.json
+Phase 3: ✅ [X] LEGOs → lego_pairs.json
+Phase 5: ✅ [X] baskets → lego_baskets.json
 
-Quality Checks:
-- Translations: [Natural/Issues found]
-- LEGOs: [FD-compliant/Issues found]
-- Baskets: [Grammar perfect/Issues found]
-
-Status: COMPLETE
-Next: Review in dashboard at ${CONFIG.TRAINING_URL}
+Quality: [Summary of spot checks]
+Location: ${courseDir}
+Next: Review at ${CONFIG.TRAINING_URL}/courses/${courseCode}
 \`\`\`
 
 ---
 
 ## Begin Execution
 
-**Step 1**: WebFetch phase prompts from dashboard API
-**Step 2**: Execute each phase WITH VALIDATION:
-  - Generate phase output
-  - Write to file
-  - Validate via: \`curl -X POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/validate/phase/1 -d @translations.json -H "Content-Type: application/json"\`
-  - If valid: continue to next phase
-  - If invalid: fix errors and retry (max 3 attempts)
-**Step 3**: Report completion status
-
-## Validation Loop
-
-After writing each phase output, validate it:
-
-\`\`\`bash
-# Example for Phase 1
-curl -X POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/validate/phase/1 \\
-  -H "Content-Type: application/json" \\
-  -d @translations.json
-
-# Response if valid:
-{"valid": true}
-
-# Response if invalid:
-{"valid": false, "errors": [...]}
-\`\`\`
-
-**CRITICAL**: Do NOT proceed to next phase if validation fails. Fix errors first.
+**Start with Phase 1** - fetch intelligence and execute!
 `;
 }
 
