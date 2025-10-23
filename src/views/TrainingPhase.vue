@@ -215,7 +215,8 @@ const loadingHistory = ref(false)
 const fetchVersionHistory = async () => {
   loadingHistory.value = true
   try {
-    const response = await fetch(`http://localhost:54321/api/prompts/${props.id}/history`)
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const response = await fetch(`${API_BASE_URL}/api/prompts/${props.id}/history`)
     const data = await response.json()
     if (response.ok) {
       versionHistory.value = data.history || []

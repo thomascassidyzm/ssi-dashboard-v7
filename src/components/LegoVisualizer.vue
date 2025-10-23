@@ -481,7 +481,7 @@ async function loadLegos() {
   try {
     // Fetch LEGOs from the API endpoint
     // This should match the automation server API structure
-    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:54321'
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
     const response = await fetch(`${API_BASE_URL}/api/visualization/legos/${props.courseCode}`, {
       headers: {
         'ngrok-skip-browser-warning': 'true'

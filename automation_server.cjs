@@ -11,7 +11,7 @@
  *
  * Architecture: Dashboard → ngrok → automation_server → osascript → Claude Code
  *
- * Port: 54321
+ * Port: 3456
  * CORS: Enabled for Vercel domain
  * VFS: ./vfs/courses/
  */
@@ -33,7 +33,7 @@ const ajv = new Ajv({ allErrors: true });
 // =============================================================================
 
 const CONFIG = {
-  PORT: process.env.PORT || 54321,
+  PORT: process.env.PORT || 3456,
   VFS_ROOT: path.join(__dirname, 'vfs', 'courses'),
   TRAINING_URL: 'https://ssi-dashboard-v7.vercel.app',
 
