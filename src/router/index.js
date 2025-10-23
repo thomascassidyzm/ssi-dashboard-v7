@@ -11,6 +11,7 @@ import CourseCompilation from '../views/CourseCompilation.vue'
 import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
+import PhaseIntelligence from '../views/PhaseIntelligence.vue'
 
 // Quality Review Components
 import QualityDashboard from '../components/quality/QualityDashboard.vue'
@@ -80,6 +81,12 @@ const routes = [
     name: 'Pedagogy',
     component: Pedagogy,
     meta: { title: 'Pedagogical Model' }
+  },
+  {
+    path: '/intelligence',
+    name: 'PhaseIntelligence',
+    component: PhaseIntelligence,
+    meta: { title: 'Phase Intelligence' }
   },
 
   // Quality Review Routes

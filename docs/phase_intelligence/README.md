@@ -328,4 +328,19 @@ This allows:
 
 ---
 
+## Cloud-Native Architecture
+
+**See**: `docs/CLOUD_NATIVE_DASHBOARD_ARCHITECTURE.md`
+
+The entire system is designed to be cloud-native:
+- **Dashboard + S3 = SSoT** (no local files)
+- **VFS API endpoints** (all file operations through REST)
+- **Phase intelligence** served from docs/ (static files)
+- **Course data** served from S3 (cloud storage)
+- **Audio files** stored in S3 (public access)
+
+**Vision**: "The dashboard is everything" - a single published URL containing everything for both humans AND agents. Claude Code just executes, no file management.
+
+---
+
 **Remember**: The dashboard is the SSoT for agents. These docs are the source, but dashboard is the authority.

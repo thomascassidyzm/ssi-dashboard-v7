@@ -9,33 +9,57 @@
     "format": "Markdown text files",
     "modules": {
       "phase_1": {
-        "file": "phase_1_translation.md",
-        "status": "pending_creation"
+        "file": "phase_1_seed_pairs.md",
+        "output": "seed_pairs.json",
+        "version": "1.0",
+        "status": "active"
       },
       "phase_2": {
-        "file": "phase_2_corpus.md",
-        "status": "pending_creation"
+        "file": "phase_2_corpus_intelligence.md",
+        "output": "phase_2_corpus_intelligence.json",
+        "version": "1.0",
+        "status": "active"
       },
       "phase_3": {
-        "file": "phase_3_extraction.md",
+        "file": "phase_3_lego_pairs.md",
+        "output": "lego_pairs.json",
         "version": "2.0",
         "status": "active"
       },
       "phase_3_5": {
-        "file": "phase_3_5_graph.md",
-        "status": "pending_creation"
+        "file": "phase_3.5_lego_graph.md",
+        "output": "phase_3.5_lego_graph.json",
+        "version": "1.0",
+        "status": "active"
       },
       "phase_5": {
-        "file": "phase_5_baskets.md",
-        "status": "pending_creation"
+        "file": "phase_5_lego_baskets.md",
+        "output": "lego_baskets.json",
+        "version": "1.0",
+        "status": "active"
       },
       "phase_5_5": {
-        "file": "phase_5_5_dedup.md",
-        "status": "pending_creation"
+        "file": "phase_5.5_basket_deduplication.md",
+        "output": "lego_baskets_deduplicated.json",
+        "version": "1.0",
+        "status": "active"
       },
       "phase_6": {
         "file": "phase_6_introductions.md",
-        "status": "future_phase"
+        "output": "introductions.json",
+        "status": "being_created_by_parallel_agent"
+      },
+      "phase_7": {
+        "file": "phase_7_compilation.md",
+        "output": "course_complete.json",
+        "status": "being_created_by_parallel_agent"
+      },
+      "phase_8": {
+        "file": "phase_8_audio_generation.md",
+        "output": "audio/*.mp3 (S3)",
+        "status": "being_created_by_kai_on_feature_branch",
+        "branch": "feature/phase8-audio-generation",
+        "assignee": "Kai"
       }
     },
     "workflow": [

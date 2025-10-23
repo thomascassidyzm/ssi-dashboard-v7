@@ -94,12 +94,13 @@ audio/
 
 ### S3 Structure
 ```
-s3://ssi-courses/
-└── {course_code}/
-    └── audio/
-        ├── C6A82DE8-6044-AC07-8F4E-412F54FEF5F7.mp3
-        ├── 4114E479-6044-E115-8F4E-8B1C4F02C6C8.mp3
-        └── ...
+s3://popty-bach-lfs/
+└── courses/
+    └── {course_code}/
+        └── audio/
+            ├── C6A82DE8-6044-AC07-8F4E-412F54FEF5F7.mp3
+            ├── 4114E479-6044-E115-8F4E-8B1C4F02C6C8.mp3
+            └── ...
 ```
 
 ---
@@ -138,7 +139,7 @@ for (const [text, variants] of Object.entries(samples)) {
     await fs.writeFile(`audio/${id}.mp3`, audioBuffer);
 
     // Upload to S3
-    await uploadToS3(`${courseCode}/audio/${id}.mp3`, audioBuffer);
+    await uploadToS3(`courses/${courseCode}/audio/${id}.mp3`, audioBuffer);
 
     console.log(`✅ ${id}.mp3 - "${text}" (${role})`);
   }
@@ -318,10 +319,12 @@ async function generateTTS(text, voiceId, cadence = 'natural') {
 ### S3 Upload Example
 ```javascript
 async function uploadToS3(key, buffer) {
-  const s3 = new AWS.S3();
+  const s3 = new AWS.S3({
+    region: process.env.AWS_REGION || 'eu-west-1'
+  });
 
   await s3.putObject({
-    Bucket: 'ssi-courses',
+    Bucket: process.env.S3_BUCKET || 'popty-bach-lfs',
     Key: key,
     Body: buffer,
     ContentType: 'audio/mpeg',
@@ -350,10 +353,10 @@ Configure voice IDs for each language:
 ### Environment Variables
 ```bash
 ELEVENLABS_API_KEY=your_key_here
-AWS_ACCESS_KEY_ID=your_key_here
-AWS_SECRET_ACCESS_KEY=your_secret_here
-AWS_REGION=us-east-1
-S3_BUCKET=ssi-courses
+AWS_ACCESS_KEY_ID=AKIAYOZ5W4WS34FFVFOJ
+AWS_SECRET_ACCESS_KEY=47InCYXc9vQue4RzvFc1C1TOFcxjqWSVsRLlB+h3
+AWS_REGION=eu-west-1
+S3_BUCKET=popty-bach-lfs
 ```
 
 ---
