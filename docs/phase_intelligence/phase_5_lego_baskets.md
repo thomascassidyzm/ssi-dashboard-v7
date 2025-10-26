@@ -76,6 +76,7 @@ Each basket contains two types of practice phrases:
 
 ### E-PHRASES (Eternal Practice Phrases)
 **Purpose**: Natural, conversational sentences for real-world practice
+
 **Characteristics**:
 - Full, natural sentences in BOTH languages
 - Things people actually say
@@ -83,23 +84,63 @@ Each basket contains two types of practice phrases:
 - Ideal length: 7-10 words (if vocabulary permits)
 - Quality over quantity: 3-5 excellent phrases per basket
 
+**CRITICAL CONSTRAINT**: E-phrases must **TILE perfectly** from available LEGOs
+- Every word must map to a LEGO
+- No extra words allowed (no "y", "de", "el" unless they're in a LEGO)
+- No missing words
+- Must compose cleanly: LEGO + LEGO + LEGO = complete phrase
+
 **Pedagogical role**: Core practice content - learners speak these repeatedly to build fluency
 
 ### D-PHRASES (Debut/Development Phrases)
 **Purpose**: Scaffolding to build up to e-phrases gradually
+
 **Characteristics**:
 - Expanding windows: 2-LEGO, 3-LEGO, 4-LEGO, 5-LEGO combinations
+- Extracted directly FROM e-phrases (not independent constructions)
+- Windows expand AROUND the operative LEGO (LEGO #N being taught)
 - Can be fragments (don't need to be complete sentences)
 - Syntactically correct but can be awkward
-- Extracted from e-phrases
+
+**CRITICAL CONSTRAINT**: D-phrases MUST contain the operative LEGO
+- If basket is for S0001L01 (Quiero), ALL d-phrases must include "Quiero"
+- Windows expand outward from operative LEGO
 
 **Pedagogical role**: Help learners assemble pieces before speaking full e-phrases
 
-### Key Difference
-- **E-phrases**: Must be NATURAL ("I want to speak Spanish with you now")
-- **D-phrases**: Can be FRAGMENTS ("want to speak", "to speak Spanish", "speak Spanish with you")
+### Complete Example (Basket for S0001L01 "Quiero" / "I want")
 
-Both types MUST respect vocabulary constraint - no difference in that rule.
+**Available vocabulary**: None (this is LEGO #1) → This basket would be EMPTY
+
+**Better example - Basket for S0001L05 "ahora" / "now":**
+
+**Available vocabulary**: S0001L01 (Quiero), S0001L02 (hablar), S0001L03 (español), S0001L04 (contigo)
+
+**E-phrase** (tiles perfectly from LEGOs):
+```
+"Quiero hablar español contigo ahora" / "I want to speak Spanish with you now"
+Tiles: S0001L01 + S0001L02 + S0001L03 + S0001L04 + S0001L05
+```
+
+**D-phrases** (expanding windows around S0001L05 "ahora"):
+```
+2-LEGO: "hablar ahora" / "to speak now"
+        (S0001L02 + S0001L05 - contains operative LEGO)
+
+3-LEGO: "hablar español ahora" / "to speak Spanish now"
+        (S0001L02 + S0001L03 + S0001L05 - contains operative LEGO)
+
+4-LEGO: "hablar español contigo ahora" / "to speak Spanish with you now"
+        (S0001L02 + S0001L03 + S0001L04 + S0001L05 - contains operative LEGO)
+
+5-LEGO: "Quiero hablar español contigo ahora" / "I want to speak Spanish with you now"
+        (All 5 LEGOs - contains operative LEGO)
+```
+
+### Key Rules
+- **E-phrases**: Must TILE perfectly from LEGOs (no extra/missing words)
+- **D-phrases**: Expanding windows FROM e-phrases, expanding AROUND operative LEGO
+- **Both**: MUST respect vocabulary constraint (only use LEGOs #1 to #N-1)
 
 ---
 
