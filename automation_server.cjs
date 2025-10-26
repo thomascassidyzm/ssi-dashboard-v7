@@ -475,6 +475,41 @@ async function spawnCourseOrchestrator(courseCode, params) {
 }
 
 /**
+ * Run validation on a completed phase
+ */
+async function validatePhase(phase, courseDir) {
+  const { validatePhase3 } = require('./validators/validate-phase3-legos.cjs');
+  const { validatePhase5 } = require('./validators/validate-phase5-baskets.cjs');
+
+  console.log(`[Validation] Running Phase ${phase} validation...`);
+
+  let result;
+  if (phase === '3') {
+    result = await validatePhase3(courseDir);
+  } else if (phase === '5') {
+    result = await validatePhase5(courseDir);
+  } else {
+    // No validator for this phase yet
+    return { valid: true, errors: [] };
+  }
+
+  if (!result.valid) {
+    console.error(`[Validation] ❌ Phase ${phase} validation FAILED`);
+    console.error(`[Validation] Found ${result.errors.length} errors:`);
+    result.errors.slice(0, 10).forEach(err => {
+      console.error(`  - ${err.type}: ${err.message}`);
+    });
+    if (result.errors.length > 10) {
+      console.error(`  ... and ${result.errors.length - 10} more errors`);
+    }
+  } else {
+    console.log(`[Validation] ✅ Phase ${phase} validation passed`);
+  }
+
+  return result;
+}
+
+/**
  * Orchestrates sequential phase execution (LEGACY - replaced by spawnCourseOrchestrator)
  * Kept for backward compatibility and manual phase-by-phase execution if needed
  */
@@ -507,6 +542,12 @@ async function cascadePhases(courseCode, params) {
     job.phase = 'phase_3';
     job.progress = 50;
     await spawnPhaseAgent('3', PHASE_PROMPTS['3'], courseDir, courseCode);
+
+    // Validate Phase 3
+    const phase3Validation = await validatePhase('3', courseDir);
+    if (!phase3Validation.valid) {
+      throw new Error(`Phase 3 validation failed: ${phase3Validation.errors.length} errors found`);
+    }
     job.progress = 60;
 
     // Phase 3.5: Graph Construction
@@ -525,6 +566,12 @@ async function cascadePhases(courseCode, params) {
     job.phase = 'phase_5';
     job.progress = 88;
     await spawnPhaseAgent('5', PHASE_PROMPTS['5'], courseDir, courseCode);
+
+    // Validate Phase 5
+    const phase5Validation = await validatePhase('5', courseDir);
+    if (!phase5Validation.valid) {
+      throw new Error(`Phase 5 validation failed: ${phase5Validation.errors.length} errors found`);
+    }
     job.progress = 93;
 
     // Phase 6: Introductions
@@ -2949,6 +2996,49 @@ app.delete('/api/vfs/courses/:code/:file(*)', async (req, res) => {
   } catch (error) {
     console.error(`❌ S3 delete error for ${key}:`, error.message);
     res.status(500).json({ error: 'Failed to delete file', detail: error.message });
+  }
+});
+
+// =============================================================================
+// VALIDATION API
+// =============================================================================
+
+/**
+ * POST /api/courses/:courseCode/validate/:phase
+ * Run automated validation on a phase's output
+ */
+app.post('/api/courses/:courseCode/validate/:phase', async (req, res) => {
+  const { courseCode, phase } = req.params;
+
+  try {
+    const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+
+    if (!await fs.pathExists(courseDir)) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    const result = await validatePhase(phase, courseDir);
+
+    if (result.valid) {
+      res.json({
+        success: true,
+        phase: phase,
+        message: `Phase ${phase} validation passed`,
+        stats: result.stats
+      });
+    } else {
+      res.status(422).json({
+        success: false,
+        phase: phase,
+        message: `Phase ${phase} validation failed`,
+        errors: result.errors,
+        stats: result.stats
+      });
+    }
+
+  } catch (error) {
+    console.error(`[Validation API] Error validating phase ${phase}:`, error);
+    res.status(500).json({ error: error.message });
   }
 });
 
