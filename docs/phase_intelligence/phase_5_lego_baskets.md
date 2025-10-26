@@ -70,6 +70,39 @@ Generate practice phrase baskets for each LEGO respecting the absolute vocabular
 
 ---
 
+## BASKET STRUCTURE: E-PHRASES vs D-PHRASES
+
+Each basket contains two types of practice phrases:
+
+### E-PHRASES (Eternal Practice Phrases)
+**Purpose**: Natural, conversational sentences for real-world practice
+**Characteristics**:
+- Full, natural sentences in BOTH languages
+- Things people actually say
+- Perfect grammar required
+- Ideal length: 7-10 words (if vocabulary permits)
+- Quality over quantity: 3-5 excellent phrases per basket
+
+**Pedagogical role**: Core practice content - learners speak these repeatedly to build fluency
+
+### D-PHRASES (Debut/Development Phrases)
+**Purpose**: Scaffolding to build up to e-phrases gradually
+**Characteristics**:
+- Expanding windows: 2-LEGO, 3-LEGO, 4-LEGO, 5-LEGO combinations
+- Can be fragments (don't need to be complete sentences)
+- Syntactically correct but can be awkward
+- Extracted from e-phrases
+
+**Pedagogical role**: Help learners assemble pieces before speaking full e-phrases
+
+### Key Difference
+- **E-phrases**: Must be NATURAL ("I want to speak Spanish with you now")
+- **D-phrases**: Can be FRAGMENTS ("want to speak", "to speak Spanish", "speak Spanish with you")
+
+Both types MUST respect vocabulary constraint - no difference in that rule.
+
+---
+
 ## ⚠️ CRITICAL: USE EXTENDED THINKING MODE ⚠️
 
 **This phase requires deep attention to pedagogical rules and structural constraints.**
@@ -725,6 +758,10 @@ Save to: `vfs/courses/{course_code}/lego_baskets.json`
 **v2.0 (2025-10-26)**:
 - **CRITICAL RESTRUCTURE**: Vocabulary constraint now THE ABSOLUTE GATE
 - Added "THE LEARNING MODEL (FOUNDATION)" section explaining one-LEGO-at-a-time acquisition
+- Added "BASKET STRUCTURE: E-PHRASES vs D-PHRASES" disambiguation section
+  - E = Eternal (natural, conversational sentences for core practice)
+  - D = Debut/Development (scaffolding fragments, expanding windows)
+  - Clarified pedagogical roles and key differences
 - Moved vocabulary constraint to TOP of document as primary rule
 - Reframed length requirements as "aspiration IF vocabulary permits" (not hard requirement)
 - Added explicit examples: S0001L01 (empty), S0001L02 (2 words max), progression to S0010+
