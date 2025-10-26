@@ -116,10 +116,23 @@ Each basket contains two types of practice phrases:
 
 **Available vocabulary**: S0001L01 (Quiero), S0001L02 (hablar), S0001L03 (español), S0001L04 (contigo)
 
-**E-phrase** (tiles perfectly from LEGOs):
+**SPECIAL RULE**: S0001L05 is the **culminating LEGO** (last LEGO in seed S0001)
+- Therefore: **E-phrase #1 MUST be the complete seed sentence**
+
+**E-phrase #1** (REQUIRED - the complete seed):
 ```
 "Quiero hablar español contigo ahora" / "I want to speak Spanish with you now"
 Tiles: S0001L01 + S0001L02 + S0001L03 + S0001L04 + S0001L05
+This is the exact SEED_PAIR from S0001
+```
+
+**E-phrases #2-5** (additional practice phrases, tiles perfectly from LEGOs):
+```
+"Quiero hablar contigo ahora" / "I want to speak with you now"
+Tiles: S0001L01 + S0001L02 + S0001L04 + S0001L05
+
+"Hablo español ahora" / "I speak Spanish now"  (if "Hablo" available)
+etc.
 ```
 
 **D-phrases** (expanding windows around S0001L05 "ahora"):
@@ -803,6 +816,9 @@ Save to: `vfs/courses/{course_code}/lego_baskets.json`
   - E = Eternal (natural, conversational sentences for core practice)
   - D = Debut/Development (scaffolding fragments, expanding windows)
   - Clarified pedagogical roles and key differences
+  - E-phrases must TILE perfectly from LEGOs (no extra/missing words)
+  - D-phrases are expanding windows FROM e-phrases, AROUND operative LEGO
+  - Complete example showing S0001L05 as culminating LEGO with seed as E-phrase #1
 - Moved vocabulary constraint to TOP of document as primary rule
 - Reframed length requirements as "aspiration IF vocabulary permits" (not hard requirement)
 - Added explicit examples: S0001L01 (empty), S0001L02 (2 words max), progression to S0010+
