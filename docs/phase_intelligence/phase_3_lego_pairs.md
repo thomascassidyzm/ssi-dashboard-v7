@@ -1,7 +1,67 @@
 # Phase 3: LEGO Extraction Intelligence
 
-**Version**: 3.1 (2025-10-26)
+**Version**: 3.2 (2025-10-26)
 **Status**: Active methodology for all Phase 3 extraction
+
+---
+
+## 🚨 PRE-FLIGHT CHECK (READ BEFORE STARTING) 🚨
+
+**Before decomposing ANY seeds, acknowledge these ABSOLUTE RULES:**
+
+### ❌ NEVER CREATE:
+
+1. **Standalone prepositions as BASE LEGOs**
+   ```
+   ❌ WRONG: ["S0004L03", "B", "en", "in"]
+   ✅ RIGHT: Wrap inside composite "en español" (in Spanish)
+   ```
+
+2. **Auxiliary verbs without main verbs**
+   ```
+   ❌ WRONG: ["S0002L01", "B", "Estoy", "I am"]
+   ✅ RIGHT: ["S0002L01", "C", "Estoy intentando", "I'm trying"]
+   ```
+
+3. **Negation markers alone**
+   ```
+   ❌ WRONG: ["S0010L01", "B", "No", "not"]
+   ✅ RIGHT: ["S0010L01", "C", "No estoy seguro", "I'm not sure"]
+   ```
+
+4. **Object pronouns alone (when verb-attached)**
+   ```
+   ❌ WRONG: ["S0011L01", "B", "Me", "me"]
+   ✅ RIGHT: ["S0011L01", "C", "Me gustaría", "I would like"]
+   ```
+
+5. **Gender-marked articles without nouns**
+   ```
+   ❌ WRONG: ["S0006L02", "B", "una", "a"]
+   ✅ RIGHT: ["S0006L02", "B", "una palabra", "a word"]
+   ```
+
+6. **Parts of multi-word verb constructions**
+   ```
+   ❌ WRONG: ["S0012L03", "B", "va", "goes"] + ["S0012L04", "B", "a", "to"]
+   ✅ RIGHT: ["S0012L03", "C", "va a", "is going to"]
+   ```
+
+### ✅ ALWAYS DO:
+
+1. **Ask: "Would a learner use this piece alone meaningfully?"**
+   - If NO → It's not a valid BASE LEGO
+
+2. **Check LEGO edges for exposed prepositions**
+   - If found → Wrap inside composite
+
+3. **Bond gender-marked articles with nouns**
+   - "una palabra" (not "una" + "palabra")
+   - "la frase" (not "la" + "frase")
+   - "el día" (not "el" + "día")
+
+4. **Run validation loop BEFORE outputting files**
+   - See VALIDATION LOOP section below
 
 ---
 
@@ -118,11 +178,23 @@ Phase 3 involves:
 5. Identify Form Changes - any unpredictable morphology?
 6. Apply Five Quality Questions
 7. Check Red Flags for wrong boundaries
-8. Document reasoning for complex decisions
+
+8. **CRITICAL ERROR CHECK** (scan every LEGO before finalizing):
+   ❌ Any standalone prepositions? (en, de, con, a, per, di, etc.)
+   ❌ Any auxiliary verbs alone? (Estoy, va, voy, etc.)
+   ❌ Any negation markers alone? (No, non, ne, etc.)
+   ❌ Any pronouns alone? (Me, te, se, etc.)
+   ❌ Any articles without nouns? (una, la, el, un, etc.)
+   ❌ Any incomplete verb phrases? (va + a separately)
+
+9. If ANY errors found → regenerate that LEGO as COMPOSITE or bonded unit
+10. Document reasoning for complex decisions
 </thinking>
 
 [Generate LEGO decomposition output]
 ```
+
+**MANDATORY**: If Extended Thinking detects ANY of the error patterns in step 8, you MUST regenerate the problematic LEGO before outputting files.
 
 ---
 
@@ -803,7 +875,49 @@ After decomposing all seeds, you MUST run this validation pass:
 - Failed substitutability test → adjust boundaries
 - Glue words not wrapped → create composites
 
-**Only proceed to file output when ALL validations pass.**
+### 🛑 STOP AND FIX BEFORE OUTPUTTING FILES 🛑
+
+**Scan ENTIRE output for these BLOCKING ERRORS:**
+
+```python
+# Pseudo-code validation (run mentally or actually):
+for lego in all_legos:
+    if lego.type == "B":
+        # Check 1: Standalone prepositions
+        if lego.target in ["en", "de", "con", "a", "per", "di", "dans", "à", "sur", "para"]:
+            ERROR: f"LEGO {lego.id} is standalone preposition '{lego.target}'"
+            ACTION: "Wrap inside composite or remove"
+
+        # Check 2: Articles without nouns
+        if lego.target in ["una", "la", "el", "un", "lo", "los", "las"]:
+            ERROR: f"LEGO {lego.id} is standalone article '{lego.target}'"
+            ACTION: "Bond with following noun"
+
+        # Check 3: Auxiliary verbs alone
+        if lego.target in ["Estoy", "estoy", "va", "voy", "Voy", "está", "están"]:
+            ERROR: f"LEGO {lego.id} is incomplete verb construction '{lego.target}'"
+            ACTION: "Combine with main verb in composite"
+
+        # Check 4: Negation alone
+        if lego.target in ["No", "no", "non", "ne"]:
+            ERROR: f"LEGO {lego.id} is standalone negation '{lego.target}'"
+            ACTION: "Combine with verb/expression in composite"
+
+        # Check 5: Pronouns alone
+        if lego.target in ["Me", "me", "Te", "te", "Se", "se"]:
+            ERROR: f"LEGO {lego.id} is standalone pronoun '{lego.target}'"
+            ACTION: "Combine with verb in composite"
+
+# If ANY errors found:
+if errors_found:
+    STOP()
+    REGENERATE_FAILED_LEGOS()
+    RERUN_VALIDATION()
+else:
+    PROCEED_TO_FILE_OUTPUT()
+```
+
+**Only proceed to file output when ZERO blocking errors remain.**
 
 ---
 
@@ -929,6 +1043,14 @@ The learner will see that "Sto" means "I'm" and combines with gerunds...
 ---
 
 ## VERSION HISTORY
+
+**v3.2 (2025-10-26)**:
+- **CRITICAL**: Added PRE-FLIGHT CHECK section at top with explicit ❌ NEVER CREATE examples
+- Added STOP AND FIX validation gate with pseudo-code error checking
+- Strengthened Extended Thinking protocol with CRITICAL ERROR CHECK (step 8)
+- Added mandatory regeneration requirement if errors detected
+- Made blocking errors absolutely unmissable for fresh Claude Code sessions
+- Addresses persistent over-granularization issues in spa_for_eng_20seeds test
 
 **v3.1 (2025-10-26)**:
 - Updated all examples to use cognates (frecuentemente > a menudo)
