@@ -1,14 +1,72 @@
 # Phase 5: Basket Generation → lego_baskets.json
 
-**Version**: 1.0 (Extracted from APML 2025-10-23)
+**Version**: 2.0 (2025-10-26)
 **Status**: Active methodology for Phase 5 basket generation
 **Output**: `vfs/courses/{course_code}/lego_baskets.json`
 
 ---
 
+## 🎯 THE LEARNING MODEL (FOUNDATION)
+
+**SSi learners acquire ONE LEGO at a time in strict sequence.**
+
+### How Learners Progress
+
+When a learner is practicing **LEGO #N**:
+- ✅ They **HAVE** learned: LEGOs #1 through #(N-1)
+- 🎯 They **ARE** learning: LEGO #N (current basket)
+- ❌ They **HAVE NOT** seen: LEGOs #(N+1) onwards
+
+**This is not optional - it's the entire pedagogical foundation.**
+
+### Implication for Basket Generation
+
+When generating practice phrases for LEGO #N:
+- You can ONLY use vocabulary from LEGOs #1 to #(N-1)
+- You CANNOT use LEGO #N itself (it's what they're learning)
+- You CANNOT use any LEGOs from #(N+1) onwards (future vocabulary)
+
+**Using future vocabulary destroys the pedagogy completely.**
+
+---
+
+## 🚨 VOCABULARY CONSTRAINT = ABSOLUTE GATE 🚨
+
+**Before generating ANY phrase for LEGO #N, you MUST:**
+
+### Step 1: Identify Available Vocabulary
+
+```
+Current basket: S0005L02
+Available vocabulary: All LEGOs with UID < S0005L02
+This means: S0001L01, S0001L02, ..., S0005L01 ✓
+NOT ALLOWED: S0005L02 (self), S0005L03+, S0006L01+ ✗
+```
+
+### Step 2: Accept Vocabulary Limitations
+
+**Early LEGOs have VERY LIMITED or NO vocabulary available:**
+
+- **S0001L01** (1st LEGO): NO prior vocabulary → **Empty basket** `{"e": [], "d": {}}`
+- **S0001L02** (2nd LEGO): Can only use S0001L01 → **Maximum 2-word phrases**
+- **S0001L03** (3rd LEGO): Can only use S0001L01-L02 → **Maximum 3-4 word phrases**
+- **S0001L05** (5th LEGO): Can only use S0001L01-L04 → **Maximum 5-6 word phrases**
+- **S0010L01** (10th+ LEGO): Enough vocabulary for 7+ word phrases
+
+**This is expected and correct.**
+
+### Step 3: ONLY Generate Phrases Within Vocabulary Constraint
+
+❌ **CATASTROPHIC ERROR**: Using future vocabulary to hit length requirements
+✅ **CORRECT**: Accepting shorter phrases or empty baskets when vocabulary is limited
+
+**ABSOLUTE RULE**: Vocabulary constraint is NON-NEGOTIABLE. All other requirements (length, naturalness, quantity) apply ONLY IF vocabulary permits.
+
+---
+
 ## Task
 
-Generate practice phrase baskets for each LEGO using graph intelligence and progressive vocabulary constraints.
+Generate practice phrase baskets for each LEGO respecting the absolute vocabulary constraint.
 
 ---
 
@@ -72,19 +130,30 @@ Basket generation involves:
 **For EVERY basket:**
 ```
 <thinking>
-1. Identify available vocabulary (all UIDs < current)
-2. Generate candidate phrases
+1. **FIRST**: Identify available vocabulary (all UIDs < current)
+   - List out ALL LEGOs available
+   - Accept vocabulary limitations
+   - If LEGO #1 or #2: Recognize empty/minimal basket is correct
+
+2. Generate candidate phrases USING ONLY available vocabulary
+   - Do NOT use future LEGOs to hit length requirements
+   - Accept short phrases if that's all vocabulary allows
+
 3. Validate each phrase:
-   - Parse into components
-   - Check all components < current UID
-   - Assess naturalness in BOTH languages
-   - Verify grammar perfection
-4. If ANY validation fails → regenerate
-5. Document reasoning for quality phrases
+   - **GATE**: Parse into components, check ALL components < current UID
+   - If ANY component >= current UID → REJECT immediately
+   - Then assess naturalness in BOTH languages
+   - Then verify grammar perfection
+
+4. If vocabulary validation fails → REJECT (do not regenerate with future vocab)
+5. If quality/grammar fails → regenerate with SAME vocabulary constraints
+6. Document reasoning for acceptable shorter phrases when vocabulary limited
 </thinking>
 
 [Generate basket output]
 ```
+
+**MANDATORY**: Vocabulary checking is the FIRST gate. No phrase passes if it uses future vocabulary, regardless of how natural or grammatically perfect it is.
 
 ### Impact on Quality
 
@@ -135,14 +204,16 @@ Basket generation involves:
 
 ---
 
-## CRITICAL PER-LEGO VOCABULARY CONSTRAINTS
+## VOCABULARY CONSTRAINT EXAMPLES
 
-**ABSOLUTE RULE**: Each LEGO has DIFFERENT available vocabulary!
+**See "VOCABULARY CONSTRAINT = ABSOLUTE GATE" section above for full explanation.**
 
-- **LEGO #1**: NO VOCABULARY AVAILABLE = NO PHRASES POSSIBLE (empty basket)
-- **LEGO #2**: Can only use LEGO #1 = VERY LIMITED phrases possible
-- **LEGO #3**: Can only use LEGOs #1-2 = A FEW phrases possible
-- **LEGO #N**: Can only use LEGOs #1 through #(N-1)
+Quick reference:
+- LEGO #1: Empty basket
+- LEGO #2: Max 2-word phrases
+- LEGO #3: Max 3-4-word phrases
+- LEGO #5: Max 5-6-word phrases
+- LEGO #10+: Can start making 7+ word phrases
 
 ---
 
@@ -194,24 +265,35 @@ if (lego[1] === 'C' && lego[4]) {  // Has component array
 
 ---
 
-## E-PHRASES (5 Eternal Practice Phrases per LEGO)
+## E-PHRASES (Eternal Practice Phrases per LEGO)
 
-### E-PHRASE CRITICAL REQUIREMENTS (NON-NEGOTIABLE)
+### E-PHRASE REQUIREMENTS (IN PRIORITY ORDER)
 
-#### Length Requirements (ABSOLUTE)
+#### 1. VOCABULARY CONSTRAINT (ABSOLUTE - NON-NEGOTIABLE)
 
-- **MINIMUM**: 7 words in target language
-- **IDEAL**: 10 words in target language
+**ALL words in e-phrase MUST come from LEGOs #1 to #(N-1) where N is current basket.**
+
+❌ **CATASTROPHIC FAILURE**: Using future vocabulary
+✅ **CORRECT**: Empty e-phrases array if insufficient vocabulary
+
+**This rule overrides ALL other requirements.**
+
+#### 2. Quality Requirements (IF Vocabulary Permits)
+
+- **Perfect grammar** in BOTH languages
+- **Natural, conversational** - things people actually say in BOTH languages
+- **Smooth pronunciation** - not clunky or awkward in either language
+- **QUALITY > QUANTITY**: Better to have 2 excellent phrases than 5 mediocre ones
+
+#### 3. Length Goals (IF Vocabulary Permits)
+
+- **IDEAL**: 7-10 words in target language
+- **ACCEPTABLE**: 4-6 words for LEGOs #5-15 (limited vocabulary)
+- **ACCEPTABLE**: 2-3 words for LEGOs #2-4 (very limited vocabulary)
+- **ACCEPTABLE**: Empty for LEGO #1 (no prior vocabulary)
 - **MAXIMUM**: 15 words (hard cap)
-- Short e-phrases (< 7 words) are a CRITICAL FAILURE
-- Better to have NO e-phrase than a short/clunky one
 
-#### Quality Requirements (ABSOLUTE)
-
-- **QUALITY > QUANTITY**: Do not force bad phrases to hit a count
-- E-phrases must be NATURAL and conversational in BOTH languages
-- If vocabulary is insufficient for quality 10-word phrase, skip it
-- Aim for 3-5 excellent e-phrases per basket (not forced to 5)
+**Length is an ASPIRATION, not a requirement. Never sacrifice vocabulary constraint for length.**
 
 #### Target Language Grammar (UNFORGIVEABLE ERRORS)
 
@@ -235,13 +317,18 @@ if (lego[1] === 'C' && lego[4]) {  // Has component array
 
 ### E-Phrase Generation Rules
 
-Create 5 phrases, each 7-10 words (balanced across 7/8/9/10):
+Aim for 3-5 phrases per basket IF vocabulary permits:
 
-- **MUST contain the target LEGO**
+- **MUST use ONLY vocabulary from LEGOs #1 to #(N-1)** (ABSOLUTE GATE)
+- **MUST contain the target LEGO** (what learner is practicing)
 - **Perfect grammar** in BOTH languages - validate target AND known language
 - **Natural, conversational** - things people actually say in BOTH languages
 - **Smooth pronunciation** - not clunky or awkward in either language
-- **Variety in position** - LEGO at different positions in phrase
+- **Variety in position** - LEGO at different positions in phrase (if vocabulary allows)
+
+**Early LEGOs (1-10)**: Expect empty baskets or 1-3 short phrases - this is correct!
+**Mid LEGOs (10-50)**: Expect 2-5 phrases, varying lengths
+**Later LEGOs (50+)**: Expect 3-5 phrases, 7-10 words each
 
 ### BILINGUAL VALIDATION
 
@@ -525,29 +612,41 @@ Regenerate as: "Hablo español contigo ahora"
 
 ### VALIDATION RULES SUMMARY
 
-**Basic Requirements:**
+**Basic Requirements (IN PRIORITY ORDER):**
 
-1. For EACH LEGO's basket:
-   - If NO valid phrases can be made: Output `{"e": [], "d": {}}`
-   - If only 1-2 phrases possible: Use what's available, don't force 5 phrases
-   - EVERY word MUST come from the available vocabulary list
+#### 1. VOCABULARY CONSTRAINT (ABSOLUTE GATE - ZERO TOLERANCE)
 
-2. NEVER use:
-   - Words from LEGOs that haven't been learned yet
-   - Words not in a LEGO (no "y", "de", "el" unless they're in a LEGO)
-   - Made-up words to fill space
+**For EACH phrase in EACH basket:**
+- Parse phrase into component LEGOs
+- Check: Are ALL components from LEGOs #1 to #(N-1)?
+- If ANY component is >= N → REJECT IMMEDIATELY
 
-3. Expected pattern for early LEGOs:
-   - LEGO #1: NO PHRASES POSSIBLE (empty basket)
-   - LEGO #2: Maybe 1 meaningful combination if semantically valid
-   - LEGO #3: 1-3 phrases depending on semantic validity
-   - Only after ~10-15 LEGOs will you have enough vocabulary for D-phrases
-   - Only after ~50-100 LEGOs will you have enough vocabulary for full E-phrase baskets
+**NEVER use:**
+- ❌ Words from LEGOs that haven't been learned yet (LEGO #N or higher)
+- ❌ Words not in any LEGO
+- ❌ Future vocabulary to hit length requirements
+- ❌ Made-up words to fill space
 
-4. SEMANTIC VALIDITY RULES:
-   - All phrases must be grammatically AND semantically correct in BOTH languages
-   - Consider actual language usage and meaning
-   - Validate each combination for real-world meaningfulness
+**This is the FIRST and ONLY non-negotiable gate.**
+
+#### 2. Accept Vocabulary Limitations (Required Mindset)
+
+**Expected pattern for baskets:**
+- **LEGO #1**: EMPTY basket `{"e": [], "d": {}}` - NO PRIOR VOCABULARY
+- **LEGO #2**: 0-1 phrases, max 2 words - VERY LIMITED VOCABULARY
+- **LEGO #3-4**: 1-2 phrases, max 3-4 words - LIMITED VOCABULARY
+- **LEGO #5-9**: 2-3 phrases, max 5-6 words - GROWING VOCABULARY
+- **LEGO #10-20**: 2-4 phrases, 6-8 words - MODERATE VOCABULARY
+- **LEGO #50+**: 3-5 phrases, 7-10 words - SUFFICIENT VOCABULARY
+
+**This progression is EXPECTED and CORRECT.**
+
+#### 3. Quality Requirements (IF Vocabulary Permits)
+
+- All phrases must be grammatically correct in BOTH languages
+- All phrases must be semantically meaningful in BOTH languages
+- Prefer natural, conversational phrasing when possible
+- Validate real-world language usage
 
 ---
 
@@ -623,6 +722,20 @@ Save to: `vfs/courses/{course_code}/lego_baskets.json`
 
 ## Version History
 
+**v2.0 (2025-10-26)**:
+- **CRITICAL RESTRUCTURE**: Vocabulary constraint now THE ABSOLUTE GATE
+- Added "THE LEARNING MODEL (FOUNDATION)" section explaining one-LEGO-at-a-time acquisition
+- Moved vocabulary constraint to TOP of document as primary rule
+- Reframed length requirements as "aspiration IF vocabulary permits" (not hard requirement)
+- Added explicit examples: S0001L01 (empty), S0001L02 (2 words max), progression to S0010+
+- Changed priority order: 1) Vocabulary (ABSOLUTE), 2) Quality (IF permits), 3) Length (IF permits)
+- Removed "CRITICAL FAILURE" language from length requirements
+- Added "CATASTROPHIC ERROR" language to vocabulary violations
+- Updated Extended Thinking protocol to check vocabulary FIRST as gate
+- Added expected basket progression by LEGO number
+- Clarified that empty/short baskets for early LEGOs are CORRECT and EXPECTED
+- Addresses catastrophic vocabulary constraint violations in spa_for_eng_20seeds output
+
 **v1.0 (2025-10-23)**:
 - Extracted from APML PHASE_PROMPTS
 - Documented two-stage process (graph-driven selection + vocabulary-constrained generation)
@@ -635,4 +748,4 @@ Save to: `vfs/courses/{course_code}/lego_baskets.json`
 
 ---
 
-**Next Update**: Capture any new basket generation patterns discovered during multi-language course generation
+**Next Update**: Refine based on real-world generation results with v2.0 vocabulary-first approach
