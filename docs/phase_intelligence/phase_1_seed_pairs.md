@@ -1,6 +1,6 @@
 # Phase 1: Pedagogical Translation → seed_pairs.json
 
-**Version**: 2.1 (2025-10-26)
+**Version**: 2.3 (2025-10-28)
 **Status**: Active methodology for Phase 1 translation
 **Output**: `vfs/courses/{course_code}/seed_pairs.json`
 
@@ -54,11 +54,20 @@ Apply pedagogical translation methodology to translate all 668 canonical concept
 
 ## Critical Understanding
 
-Canonical seeds are **NOT English content** - they are language-agnostic concepts that happen to be expressed in English as a reference. You will translate each concept into:
+Canonical seeds are **language-agnostic concepts** expressed in English as a reference format. You will generate:
 1. **TARGET language** (the language being learned) - pedagogically optimized
-2. **KNOWN language** (the learner's language) - structurally matched to target
+2. **KNOWN language** (the learner's language) - provides the learning context
 
-**Exception**: If target or known IS English, reuse the canonical expression (no translation needed).
+**CRITICAL RULE**:
+- **If target OR known IS English → Use canonical English directly**
+- **NO back-translation from target to English**
+- **NO "optimizing" the English**
+- The canonical seeds ARE the definitive English version
+
+**Why this matters:**
+- Back-translation optimizes English naturalness at target language's expense
+- Canonical English is already perfectly understandable
+- Target language should maintain full naturalness (not compromised by back-translation)
 
 ---
 
@@ -516,8 +525,37 @@ This becomes the deterministic mapping for that concept
 
 For each canonical concept (expressed in English as reference):
 
-### STEP 1: Canonical → Target (Pedagogical Optimization)
+### ⚠️ CRITICAL: English Handling
 
+**If target OR known language is English:**
+- **Use canonical English seeds directly** (no translation needed)
+- The canonical seeds ARE the English version
+- Do NOT back-translate from target to English
+
+**Example - Spanish for English (spa_for_eng):**
+```
+Canonical: "I want to speak {target} with you now."
+Target (Spanish): Translate: "Quiero hablar español contigo ahora."
+Known (English): Use canonical: "I want to speak Spanish with you now."
+```
+
+**Example - English for Spanish (eng_for_spa):**
+```
+Canonical: "I want to speak {target} with you now."
+Target (English): Use canonical: "I want to speak English with you now."
+Known (Spanish): Translate: "Quiero hablar inglés contigo ahora."
+```
+
+**Only translate when NEITHER language is English** (e.g., ita_for_fra).
+
+---
+
+### STEP 1: Generate Target Language
+
+**If target IS English:**
+- Use canonical directly (replace {target} placeholder with target language name)
+
+**If target is NOT English:**
 - Apply all pedagogical heuristics
 - Check vocabulary registry for existing mappings
 - For new concepts: Apply cognate preference + utility analysis
@@ -525,56 +563,35 @@ For each canonical concept (expressed in English as reference):
 - Generate optimized target language translation
 - Validate: Natural, high-frequency, clear, brief, consistent, useful
 
-### STEP 2: Target → Known (Back-Translation with Synonym Flexibility)
+### STEP 2: Generate Known Language
 
-**Critical insight**: The known language can use synonyms to match target language pedagogical choices.
+**If known IS English:**
+- Use canonical directly (replace {target} placeholder with target language name)
 
-**The learner is FLUENT in the known language** - synonym recognition is trivial cognitive work.
-
-**Process:**
-- Take the optimized target translation
-- Translate to known language
+**If known is NOT English:**
+- Translate canonical to known language
 - **If target uses cognate, match it with cognate in known**
-- Ensure known translation MATCHES target structure
+- Ensure known translation MATCHES target structure (when both are non-English)
 - Goal: Known ↔ Target alignment for better FD_LOOP
 
-**Example:**
+**Example (Italian for French - NEITHER is English):**
 ```
 Canonical: "as often as possible"
-Target: "lo más frecuentemente posible" (uses cognate "frecuentemente")
-Known: "as frequently as possible" (matches cognate with synonym)
+Target (Italian): "il più frequentemente possibile" (uses cognate "frequentemente")
+Known (French): "aussi fréquemment que possible" (matches cognate "fréquemment")
 
 Why this works:
-- Learner is fluent in known language
-- Recognizing "often" = "frequently" requires ~0.1 units of cognitive effort
-- Frees up 10+ units for target language work
-- Enables transparent cognate mapping: "frequently" ↔ "frecuentemente"
+- Learner is fluent in known language (French)
+- Recognizing synonym variations requires ~0.1 units of cognitive effort
+- Enables transparent cognate mapping: "fréquemment" ↔ "frequentemente"
 - All cognitive load goes to target language learning
 ```
 
-**Principle**: Prefer synonyms in known language that:
+**Principle for non-English known language**: Prefer translations that:
 - Match target language cognates (maximize transparency)
 - Preserve semantic meaning (no drift)
-- Require minimal cognitive effort (synonyms native speaker already knows)
+- Require minimal cognitive effort
 - Build semantic network understanding
-
-**Examples:**
-
-```
-Target chose: "importante" (cognate)
-Known uses: "important" (matches cognate)
-✓ Transparent mapping
-
-Target chose: "frecuentemente" (cognate)
-Known uses: "frequently" (matches cognate, synonym of "often")
-✓ Transparent mapping
-
-Target chose: "utilizar" (cognate)
-Known uses: "utilize" (matches cognate, synonym of "use")
-✓ Transparent mapping
-```
-
-**This is NOT changing semantic meaning** - it's optimizing for pedagogical transparency.
 
 ### STEP 3: Update Vocabulary Registry
 
@@ -591,16 +608,21 @@ Known uses: "utilize" (matches cognate, synonym of "use")
 
 ## Language-Specific Rules
 
-### For courses where known=English (e.g., ita_for_eng):
-- Step 1 produces optimized target
-- Step 2: Back-translate to English, using synonyms to match cognates
-- Verify the English phrasing aligns with target structure
+### For courses where known=English (e.g., spa_for_eng):
+- Step 1: Translate canonical English → optimized target (Spanish)
+- Step 2: **Use canonical English directly** (no back-translation)
+- Result: Canonical English + optimized Spanish
 
-### For courses where known≠English (e.g., ita_for_fra):
-- Step 1 produces optimized Italian
-- Step 2 MUST translate Italian → French (NOT English → French)
-- Use synonym flexibility in French to match Italian cognate choices
-- This ensures French mirrors Italian structure
+### For courses where target=English (e.g., eng_for_spa):
+- Step 1: **Use canonical English directly** for target
+- Step 2: Translate canonical English → optimized known (Spanish)
+- Result: Canonical English + optimized Spanish
+
+### For courses where NEITHER is English (e.g., ita_for_fra):
+- Step 1: Translate canonical English → optimized target (Italian)
+- Step 2: Translate canonical English → optimized known (French)
+- Use cognate matching between Italian and French where possible
+- This ensures French mirrors Italian structure for transparency
 
 ---
 
@@ -664,6 +686,14 @@ If your Extended Thinking identifies issues, regenerate that seed before continu
 ---
 
 ## Version History
+
+**v2.3 (2025-10-28)**:
+- **CRITICAL FIX**: English handling - use canonical directly when English is target OR known
+- **NO back-translation**: Eliminates target language quality degradation from English back-translation
+- Updated Translation Workflow to check English first before translating
+- Clarified Critical Understanding section with explicit NO back-translation rule
+- Updated Language-Specific Rules with three scenarios (known=English, target=English, neither=English)
+- **Impact**: Preserves target language naturalness when English is involved
 
 **v2.2 (2025-10-27)**:
 - **Generation-focused**: Removed validation loop (now Phase 1.5's responsibility)

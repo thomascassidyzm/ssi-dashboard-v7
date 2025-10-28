@@ -54,26 +54,35 @@ const CONFIG = {
 };
 
 // =============================================================================
-// PHASE PROMPTS (loaded from APML Registry - Single Source of Truth)
+// PHASE PROMPTS (loaded from docs/phase_intelligence/)
 // =============================================================================
 
-// Load phase prompts from compiled registry
-const apmlRegistry = require('./.apml-registry.json');
-
-// Convert registry format to automation server format
-const PHASE_PROMPTS_RAW = apmlRegistry.variable_registry.PHASE_PROMPTS;
+// Load phase intelligence from markdown files
 const PHASE_PROMPTS = {};
 
-// Map registry prompts to server format
-for (const [key, value] of Object.entries(PHASE_PROMPTS_RAW)) {
-  const phaseId = value.phase.replace('.', '_');
-  PHASE_PROMPTS[value.phase] = value.prompt;
+// Phase intelligence files
+const phaseIntelligenceFiles = {
+  '1': 'docs/phase_intelligence/phase_1_seed_pairs.md',
+  '3': 'docs/phase_intelligence/phase_3_lego_pairs.md',
+  '5': 'docs/phase_intelligence/phase_5_lego_baskets.md'
+};
+
+// Load each phase intelligence file
+for (const [phase, filePath] of Object.entries(phaseIntelligenceFiles)) {
+  try {
+    const fullPath = path.join(__dirname, filePath);
+    const intelligence = fs.readFileSync(fullPath, 'utf-8');
+    PHASE_PROMPTS[phase] = intelligence;
+    console.log(`✅ Loaded Phase ${phase} intelligence from ${filePath}`);
+  } catch (error) {
+    console.error(`❌ Failed to load Phase ${phase} intelligence:`, error.message);
+  }
 }
 
-console.log(`✅ Loaded ${Object.keys(PHASE_PROMPTS).length} phase prompts from APML registry`);
+console.log(`✅ Loaded ${Object.keys(PHASE_PROMPTS).length} phase prompts from docs/phase_intelligence/`);
 
-// Note: Old hardcoded prompts removed - all prompts now come from ssi-course-production.apml
-// To update a prompt: Edit ssi-course-production.apml, then run: node scripts/compile-apml-registry.cjs
+// Note: Phase intelligence now loaded directly from markdown files
+// To update: Edit the .md files in docs/phase_intelligence/ and restart automation server
 
 
 // =============================================================================
@@ -2755,24 +2764,23 @@ app.get('/api/languages', (req, res) => {
 
 /**
  * GET /api/prompts/:phase
- * Fetch current prompt for a phase from APML registry
+ * Fetch current prompt for a phase from docs/phase_intelligence/
  */
 app.get('/api/prompts/:phase', (req, res) => {
   const { phase } = req.params;
 
-  const promptKey = `PHASE_${phase.replace('.', '_')}`;
-  const promptData = apmlRegistry.variable_registry.PHASE_PROMPTS[promptKey];
+  const promptContent = PHASE_PROMPTS[phase];
 
-  if (!promptData) {
+  if (!promptContent) {
     return res.status(404).json({ error: `Phase ${phase} not found` });
   }
 
   res.json({
-    phase: promptData.phase,
-    name: promptData.name,
-    prompt: promptData.prompt,
-    version: apmlRegistry.version,
-    lastModified: apmlRegistry.generated_at
+    phase: phase,
+    name: `Phase ${phase}`,
+    prompt: promptContent,
+    version: '7.0.1',
+    lastModified: new Date().toISOString()
   });
 });
 
