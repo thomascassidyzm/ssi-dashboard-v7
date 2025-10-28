@@ -604,91 +604,21 @@ Known uses: "utilize" (matches cognate, synonym of "use")
 
 ---
 
-## VALIDATION LOOP (MANDATORY)
+## 📝 NOTE ON VALIDATION
 
-After generating all translations, you MUST run a validation pass:
+**Self-checking during generation** (via Extended Thinking) is part of this phase.
 
-### Step 1: Semantic Accuracy Check
+**Formal validation** (systematic checking across all seeds) happens in Phase 1.5.
 
-**Common Semantic Errors to Catch:**
+Phase 1.5 validator checks:
+- ✓ Zero-variation compliance (one concept = one word)
+- ✓ Cognate preference applied (seeds 1-100)
+- ✓ Grammatical simplicity (no subjunctive in seeds 1-50)
+- ✓ Semantic accuracy (frequency vs quantity vs intensity)
+- ✓ Grammar perfection (target and known languages)
+- ✓ Vocabulary consistency (registry maintained)
 
-1. **FREQUENCY vs QUANTITY Confusion**
-   - Canonical concept: "as often as possible" (FREQUENCY)
-   - ❌ ERROR: Translating as "as much as possible" (QUANTITY)
-   - **Check**: Does your translation mean frequency of occurrence, or amount/quantity?
-   - If the canonical says "often", your translation must convey TEMPORAL FREQUENCY, not amount
-
-2. **INTENSITY vs QUANTITY Confusion**
-   - Canonical concept: "as hard as I can" (INTENSITY/EFFORT)
-   - ❌ ERROR: Translating as "as much as I can" (QUANTITY)
-   - **Check**: Does your translation mean level of effort/intensity, or amount/quantity?
-   - If the canonical says "hard", your translation must convey DEGREE OF EFFORT, not amount
-
-3. **ADVERB/ADJECTIVE Semantic Drift**
-   - Canonical uses specific modifier (often/hard/quick/slow/etc.)
-   - ❌ ERROR: Substituting similar-but-different concept
-   - **Check**: Re-read canonical. Does your modifier convey EXACTLY the same concept?
-   - Don't optimize for "naturalness" by changing meaning
-
-**For EACH translation:**
-- Re-read the canonical concept
-- Verify your translation conveys the EXACT same meaning
-- If ANY semantic drift detected → regenerate that seed
-
-### Step 2: Grammar Validation
-
-**Common Grammar Errors to Catch:**
-
-1. **Spanish: Missing "de" after "un poco"**
-   - ❌ "Hablo un poco español"
-   - ✅ "Hablo un poco de español"
-
-2. **Italian: Missing prepositions with infinitives**
-   - ❌ "cercando parlare"
-   - ✅ "cercando di parlare"
-
-3. **French: Missing articles/pronouns**
-   - Verify all required grammatical elements present
-
-**For EACH translation:**
-- Check target language grammar is PERFECT
-- Check known language grammar is PERFECT
-- Would a native speaker say this EXACTLY?
-- If ANY grammar error detected → regenerate that seed
-
-### Step 3: Vocabulary Consistency Check
-
-**For EACH seed:**
-- Check vocabulary registry for existing concept mappings
-- Verify you used the SAME word as previous occurrences
-- Check you didn't introduce synonyms unnecessarily
-- Verify cognates were preferred over non-cognates
-
-**Common Consistency Errors:**
-- Using "tratar" in S0002 but "intentar" in S0007 (both "try")
-- Using "hablar" in S0001 but "decir" in S0005 (both "speak/say")
-- Using "a menudo" in S0003 but "frecuentemente" in S0010 (both "often")
-- Using different gender defaults inconsistently
-
-### Step 4: Grammatical Simplicity Check
-
-**For seeds 1-50:**
-- Check for subjunctive usage → Replace with simpler structure
-- Check for complex conditional forms → Use simpler alternatives
-- Check for advanced constructions → Delay to later seeds
-
-### Step 5: Final Review
-
-**After validation loops, confirm:**
-- Zero semantic errors
-- Zero grammar errors
-- All vocabulary registry entries consistent
-- All cognates appropriate for beginner level (seeds 1-100)
-- Zero variations for same concept (seeds 1-100)
-- Subjunctive avoided in seeds 1-50
-- Known language uses synonyms to match cognates where appropriate
-
-**Only proceed to file output when ALL validations pass.**
+If your Extended Thinking identifies issues, regenerate that seed before continuing.
 
 ---
 
@@ -734,6 +664,12 @@ After generating all translations, you MUST run a validation pass:
 ---
 
 ## Version History
+
+**v2.2 (2025-10-27)**:
+- **Generation-focused**: Removed validation loop (now Phase 1.5's responsibility)
+- **Self-checking in Extended Thinking**: Agent validates own work during generation
+- Added note directing to Phase 1.5 for formal validation
+- Batch processing ready: Designed for 20-seed batches with fresh intelligence
 
 **v2.1 (2025-10-26)**:
 - Added Extended Thinking requirement (CRITICAL for quality)

@@ -533,207 +533,21 @@ This reinforces the complete seed understanding!
 
 ---
 
-## VALIDATION REQUIREMENTS (TWO-LOOP PROCESS)
+## 📝 NOTE ON VALIDATION
 
-After generating all baskets, you MUST run TWO validation loops before finalizing output.
+**Self-checking during generation** (via Extended Thinking) is part of this phase.
 
----
+**Formal validation** (systematic checking across all baskets) happens in Phase 5.5.
 
-### VALIDATION LOOP 1: STRUCTURAL VALIDATION (Automated Sequence Check)
+Phase 5.5 validator checks:
+- ✓ **Vocabulary constraint**: Each basket ONLY uses prior LEGOs (ABSOLUTE GATE)
+- ✓ **E-phrase tiling**: E-phrases tile perfectly from available LEGOs
+- ✓ **D-phrase operative LEGO**: D-phrases contain the LEGO being taught
+- ✓ **Culminating LEGO**: E-phrase #1 is complete seed
+- ✓ **Grammar perfection**: Both target and known languages
+- ✓ **Naturalness**: E-phrases conversational in both languages
 
-**Goal**: Ensure every phrase respects the introduction sequence
-
-**For EACH basket's EACH phrase:**
-
-1. **Identify the basket's lego position**
-   - Example: Basket S0005L02 is the 10th lego overall
-
-2. **Parse the phrase into component legos**
-   - Example: "Quiero hablar español ahora"
-   - Components: Quiero (S0001L01), hablar (S0001L02), español (S0001L03), ahora (S0001L05)
-
-3. **Check: Are ALL components from EARLIER legos?**
-   - S0001L01 ✅ (comes before S0005L02)
-   - S0001L02 ✅ (comes before S0005L02)
-   - S0001L03 ✅ (comes before S0005L02)
-   - S0001L05 ❌ FAIL (comes AFTER S0005L02)
-
-4. **If ANY component comes from a later lego → REJECT phrase**
-
-**Example Validation Pass:**
-
-```
-Basket: S0005L02
-Available vocabulary: S0001L01 through S0005L01 ONLY
-
-✅ VALID: "Quiero hablar contigo ahora"
-   - Uses: S0001L01, S0001L02, S0001L04, S0001L05
-   - Wait... S0001L05 is #5 in seed 1, S0005L02 is #2 in seed 5
-   - Need to check GLOBAL position, not just seed-local position
-
-✅ VALID: "Estoy intentando aprender"
-   - Uses: S0002L01, S0002L02, S0002L03
-   - All from seed 2, all before S0005L02
-
-❌ INVALID: "Quiero aprender frecuentemente"
-   - Uses: S0001L01, S0002L03, S0003L03
-   - S0003L03 might come AFTER S0005L02 in sequence
-```
-
-**Validation Algorithm (Simplified via Lexicographic UID Ordering):**
-
-LEGO UIDs are designed to be lexicographically sortable:
-- S0001L01 < S0001L05 < S0002L01 < S0005L02 < S0010L03
-
-**Simple string comparison works directly:**
-
-```
-For basket lego_id:
-  For each phrase in basket.e and basket.d:
-    phrase_components = decompose_into_legos(phrase)
-
-    For each component in phrase_components:
-      if component.lego_id >= basket.lego_id:  // String comparison!
-        REJECT PHRASE (uses future vocabulary)
-        Mark for regeneration
-```
-
-**Example:**
-```python
-basket = "S0005L02"
-components = ["S0001L01", "S0001L02", "S0001L05", "S0002L03"]
-
-for comp in components:
-    if comp >= basket:  # All comparisons are False ✓
-        reject()
-
-# But if components included "S0005L02" or "S0006L01":
-"S0005L02" >= "S0005L02"  # True → REJECT (can't use self)
-"S0006L01" >= "S0005L02"  # True → REJECT (future vocab)
-```
-
-**After Loop 1:**
-- Count failures: How many phrases violated sequence?
-- If ANY failures found → Regenerate ONLY the failing baskets
-- Re-run Loop 1 until ZERO structural violations
-
----
-
-### VALIDATION LOOP 2: QUALITY VALIDATION (Native Speaker Check)
-
-**Goal**: Ensure phrases are natural, conversational, and grammatically perfect
-
-**For EACH basket's e-phrases (skip d-phrases, they can be fragments):**
-
-1. **Re-read each e-phrase with fresh eyes**
-2. **Ask yourself:**
-   - Would a native speaker say this EXACTLY?
-   - Is the grammar PERFECT in target language?
-   - Is the grammar PERFECT in known language?
-   - Does it sound natural and conversational in BOTH?
-   - Any missing prepositions? (e.g., Italian "cercare di", "provare a")
-
-3. **Common quality failures to check:**
-   - ❌ Clunky word order in either language
-   - ❌ Missing required prepositions
-   - ❌ Semantically weird combinations ("I want Spanish" instead of "I want to speak Spanish")
-   - ❌ Unnatural phrasing native speakers wouldn't use
-   - ❌ Grammar errors in either language
-
-4. **If ANY phrase fails quality check → REJECT and regenerate**
-
-**Example Quality Check:**
-
-```
-Basket: S0001L03 ("español" / "Spanish")
-
-Generated phrase: "Quiero español ahora"
-Target: "I want Spanish now"
-
-❌ REJECT - Semantically incomplete
-   - Native speakers say "I want to speak Spanish" not "I want Spanish"
-   - Missing the verb "hablar"
-
-Regenerate as: "Quiero hablar español contigo"
-✅ ACCEPT - Natural and complete
-
----
-
-Generated phrase: "español contigo ahora"
-Target: "Spanish with you now"
-
-❌ REJECT - Fragment, not a complete thought
-   - While grammatically possible, it's not conversational
-   - Needs a verb or fuller context
-
-Regenerate as: "Hablo español contigo ahora"
-✅ ACCEPT - Complete and natural
-```
-
-**After Loop 2:**
-- Count quality failures: How many phrases were unnatural?
-- If ANY failures found → Regenerate ONLY the failing phrases
-- Re-run Loop 2 until ALL phrases are natural
-
----
-
-### COMBINED VALIDATION WORKFLOW
-
-```
-1. Generate all baskets (initial generation)
-
-2. Run LOOP 1: Structural Validation
-   → Identify phrases using future vocabulary
-   → Regenerate failing baskets
-   → Repeat until ZERO structural violations
-
-3. Run LOOP 2: Quality Validation
-   → Identify unnatural/grammatically incorrect phrases
-   → Regenerate failing phrases
-   → Repeat until ALL phrases are natural
-
-4. Final output: lego_baskets.json
-```
-
----
-
-### VALIDATION RULES SUMMARY
-
-**Basic Requirements (IN PRIORITY ORDER):**
-
-#### 1. VOCABULARY CONSTRAINT (ABSOLUTE GATE - ZERO TOLERANCE)
-
-**For EACH phrase in EACH basket:**
-- Parse phrase into component LEGOs
-- Check: Are ALL components from LEGOs #1 to #(N-1)?
-- If ANY component is >= N → REJECT IMMEDIATELY
-
-**NEVER use:**
-- ❌ Words from LEGOs that haven't been learned yet (LEGO #N or higher)
-- ❌ Words not in any LEGO
-- ❌ Future vocabulary to hit length requirements
-- ❌ Made-up words to fill space
-
-**This is the FIRST and ONLY non-negotiable gate.**
-
-#### 2. Accept Vocabulary Limitations (Required Mindset)
-
-**Expected pattern for baskets:**
-- **LEGO #1**: EMPTY basket `{"e": [], "d": {}}` - NO PRIOR VOCABULARY
-- **LEGO #2**: 0-1 phrases, max 2 words - VERY LIMITED VOCABULARY
-- **LEGO #3-4**: 1-2 phrases, max 3-4 words - LIMITED VOCABULARY
-- **LEGO #5-9**: 2-3 phrases, max 5-6 words - GROWING VOCABULARY
-- **LEGO #10-20**: 2-4 phrases, 6-8 words - MODERATE VOCABULARY
-- **LEGO #50+**: 3-5 phrases, 7-10 words - SUFFICIENT VOCABULARY
-
-**This progression is EXPECTED and CORRECT.**
-
-#### 3. Quality Requirements (IF Vocabulary Permits)
-
-- All phrases must be grammatically correct in BOTH languages
-- All phrases must be semantically meaningful in BOTH languages
-- Prefer natural, conversational phrasing when possible
-- Validate real-world language usage
+If your Extended Thinking identifies issues, regenerate that basket before continuing.
 
 ---
 
@@ -808,6 +622,12 @@ Save to: `vfs/courses/{course_code}/lego_baskets.json`
 ---
 
 ## Version History
+
+**v2.1 (2025-10-27)**:
+- **Generation-focused**: Removed validation loops (now Phase 5.5's responsibility)
+- **Self-checking in Extended Thinking**: Agent validates own work during generation
+- Added note directing to Phase 5.5 for formal validation
+- Batch processing ready: Designed for batching with fresh intelligence
 
 **v2.0 (2025-10-26)**:
 - **CRITICAL RESTRUCTURE**: Vocabulary constraint now THE ABSOLUTE GATE
