@@ -1,6 +1,6 @@
 # Phase 1: Pedagogical Translation → seed_pairs.json
 
-**Version**: 2.3 (2025-10-28)
+**Version**: 2.4 (2025-10-28)
 **Status**: Active methodology for Phase 1 translation
 **Output**: `vfs/courses/{course_code}/seed_pairs.json`
 
@@ -38,6 +38,46 @@ Apply pedagogical translation methodology to translate all 668 canonical concept
 - Consistency over naturalness (early seeds)
 - Semantic network building through cognates
 - Grammatical simplicity in early seeds
+
+---
+
+## ⚠️ TWO ABSOLUTE RULES (NEVER VIOLATE)
+
+### RULE 1: NEVER CHANGE CANONICAL MEANING
+
+**The canonical seed defines the exact concept to teach.**
+- ✅ Translate the canonical meaning faithfully
+- ❌ **NEVER simplify by changing what the seed says**
+- ❌ **NEVER avoid complex grammar by altering semantics**
+
+**Example:**
+```
+Canonical: "And I want you to speak {target} with me tomorrow"
+
+WRONG: "Y quiero hablar español contigo mañana" (I want to speak)
+RIGHT: "Y quiero que hables español conmigo mañana" (I want YOU to speak)
+
+Even though subjunctive is hard, canonical meaning must be preserved.
+```
+
+### RULE 2: COGNATE FIRST FOR SEEDS 1-100 (MANDATORY)
+
+**Always check for cognate before choosing vocabulary.**
+1. Look for known language synonyms that have cognates
+2. Use the cognate in target language
+3. Use matching synonym in known language
+
+**Example:**
+```
+Canonical: "as often as possible" (seed 3)
+
+WRONG: "tan a menudo como posible" (no cognate)
+RIGHT: "lo más frecuentemente posible" (cognate with "frequently")
+
+Known (English): "as frequently as possible" (synonym of "often")
+```
+
+**These rules override all other heuristics.**
 
 ---
 
@@ -169,14 +209,22 @@ Phase 1 involves:
 **For EVERY seed translation:**
 ```
 <thinking>
-1. Check vocabulary registry for existing concept mappings
-2. If new concept: Apply cognate preference + utility analysis
-3. Validate semantic accuracy (correct category?)
-4. Check for grammatical simplification opportunities
-5. Validate grammar patterns for target language
-6. Update registry with new concept mappings
-7. Perform back-translation with synonym flexibility
-8. Document reasoning for complex decisions
+1. ⚠️ VERIFY CANONICAL MEANING - understand exactly what seed says
+2. Check vocabulary registry for existing concept mappings
+3. If new concept: CHECK FOR COGNATE FIRST (mandatory seeds 1-100)
+   - Does known language have synonym that's cognate-friendly?
+   - Does target language have the cognate?
+   - If YES → use cognate (required)
+4. Validate semantic accuracy (correct category?)
+5. Check for grammatical simplification opportunities
+   - Can I preserve meaning with simpler grammar?
+   - If NO → use required grammar (subjunctive, etc.)
+   - NEVER change canonical meaning to simplify
+6. Validate grammar patterns for target language
+7. Update registry with new concept mappings
+8. If known is English → use canonical directly
+9. If known is NOT English → translate with cognate matching
+10. Document reasoning for complex decisions
 </thinking>
 
 [Generate target and known translations]
@@ -249,7 +297,7 @@ SEEDs 200+: Introduce "decir" as distinct concept with distinct contexts
 
 **Priority order for first 100 seeds:**
 
-#### 1. COGNATE PREFERENCE ⭐⭐⭐
+#### 1. COGNATE PREFERENCE ⭐⭐⭐ (MANDATORY FOR SEEDS 1-100)
 
 **Maximize vocabulary similarity to known language**
 
@@ -264,7 +312,29 @@ SEEDs 200+: Introduce "decir" as distinct concept with distinct contexts
 - ✅ **Transferable knowledge** (concept applies across many contexts)
 - ✅ **Reduced memorization** (pattern recognition instead of rote learning)
 
-**Example: "often" in seed 3**
+**⚠️ CRITICAL RULE: Always attempt cognate translation FIRST**
+
+For seeds 1-100, follow this process:
+1. **Check if cognate exists** in target language
+2. **If cognate exists** → Use it (even if less common)
+3. **Leverage known language synonyms** to match the cognate
+
+**Example: Seed 3 "often" - MANDATORY COGNATE APPROACH**
+
+```
+Canonical: "as often as possible"
+
+STEP 1: Check for cognate
+- "often" → English has synonym "frequently"
+- "frequently" → Spanish cognate "frecuentemente" ✓
+
+STEP 2: Use cognate in target
+- Target: "lo más frecuentemente posible"
+
+STEP 3: Use matching synonym in known (English)
+- Known: "as frequently as possible" (synonym of "often")
+- This matches the cognate and requires ~0.1 cognitive units
+```
 
 **Bad choice: "a menudo"**
 - ❌ Isolated vocabulary item
@@ -272,6 +342,7 @@ SEEDs 200+: Introduce "decir" as distinct concept with distinct contexts
 - ❌ No English cognate
 - ❌ Just memorization, no insight
 - ❌ Doesn't transfer to related concepts
+- ❌ **NEVER use for seed 3** (violates cognate-first rule)
 
 **Good choice: "frecuentemente"**
 - ✅ Cognate with "frequently"
@@ -279,8 +350,9 @@ SEEDs 200+: Introduce "decir" as distinct concept with distinct contexts
 - ✅ Clarifies frequency/temporal concept
 - ✅ Useful across many contexts
 - ✅ Builds semantic network understanding
+- ✅ **REQUIRED for seed 3** (cognate exists)
 
-**The principle**: Cognates provide **semantic network building**, not just ease of learning.
+**The principle**: For seeds 1-100, cognates provide **semantic network building**, not just ease of learning. Always check for cognate FIRST, then use known language synonyms to match.
 
 **Examples by language:**
 
@@ -398,49 +470,50 @@ In these cases, introduce BOTH but choose consistently based on context.
 
 **Principle**: When multiple structures express the same meaning, choose the grammatically simpler one.
 
-**Critical grammar to avoid in early seeds:**
+**⚠️ CRITICAL CONSTRAINT: NEVER CHANGE CANONICAL MEANING**
 
-**Seeds 1-50: Avoid subjunctive**
-- Complex mood system
-- Unpredictable from English
-- Cognitive load too high for beginners
+**Grammatical simplification means:**
+- ✅ Choosing simpler structure when canonical allows flexibility
+- ✅ Avoiding subjunctive when meaning permits alternatives
+- ❌ **NEVER changing what the canonical seed says**
+- ❌ **NEVER simplifying by altering semantics**
 
-**Example: "as...as possible" in Spanish**
-
+**Example - CORRECT simplification:**
+```
 Canonical: "as often as possible" (seed 3)
 
 Options:
-- ❌ "tan frecuentemente como sea posible"
-  - Uses subjunctive mood ("sea")
-  - Too complex for seed 3
-  - More literary/formal
+- ❌ "tan frecuentemente como sea posible" (subjunctive "sea")
+- ✅ "lo más frecuentemente posible" (no subjunctive, SAME meaning)
 
-- ✅ "lo más frecuentemente posible"
-  - Superlative structure (simpler)
-  - Same meaning
-  - No subjunctive required
-  - More common in speech
-
-**Decision for seed 3**: Use simpler structure
-
-**Other simplification examples:**
-
-**Spanish conditional structures:**
-```
-Seed 10: "I would like"
-- ❌ "quisiera" (conditional/subjunctive form)
-- ✅ "me gustaría" (conditional of gustar - more common, clearer structure)
+Decision: Use simpler structure, meaning preserved ✓
 ```
 
-**Complex verb constructions:**
+**Example - INCORRECT simplification (semantic change):**
 ```
-Seed 20: "I keep trying"
-- ❌ "sigo intentando" (requires understanding of "seguir + gerund")
-- ✅ "intento otra vez" (simpler: "I try again")
-- OR wait until seed 100+ to introduce "seguir + gerund" pattern
+Canonical: "And I want you to speak {target} with me tomorrow" (S0015)
+
+WRONG approach:
+- Agent thinks: "Subjunctive is hard, let me simplify"
+- ❌ "Y quiero hablar español contigo mañana" (I want to speak = WRONG MEANING)
+
+CORRECT approach:
+- Canonical requires subjunctive trigger ("want YOU to...")
+- ✅ "Y quiero que hables español conmigo mañana" (preserves meaning)
+- Subjunctive is grammatically required here - you CANNOT simplify
 ```
 
-**The principle**: Grammatical simplification without semantic loss. Preserve the meaning, simplify the grammar.
+**The principle**: Grammatical simplification without semantic loss. If simplification requires changing meaning, **DO NOT SIMPLIFY** - preserve the canonical meaning exactly.
+
+**When subjunctive is REQUIRED by canonical meaning:**
+- Canonical: "I want you to..." → Requires subjunctive in Spanish/Romance languages
+- Canonical: "I hope that..." → Requires subjunctive
+- Canonical: "It's important that..." → Requires subjunctive
+- **You MUST use subjunctive** - semantic preservation > grammatical simplicity
+
+**When subjunctive can be AVOIDED through synonym choice:**
+- Canonical: "as...as possible" → Can use "lo más...posible" (no subjunctive)
+- This is legitimate simplification - meaning unchanged
 
 #### 4-8. Other Heuristics (lower priority for seeds 1-100)
 
@@ -687,13 +760,23 @@ If your Extended Thinking identifies issues, regenerate that seed before continu
 
 ## Version History
 
+**v2.4 (2025-10-28)**:
+- **TWO ABSOLUTE RULES** section added at top (never violate)
+  - **RULE 1**: NEVER change canonical meaning (even to avoid complex grammar)
+  - **RULE 2**: COGNATE FIRST for seeds 1-100 (mandatory)
+- Updated Extended Thinking Protocol to check cognate first
+- Strengthened Grammatical Simplicity section with semantic preservation examples
+- Added explicit S0015 example (subjunctive required when canonical demands it)
+- Added explicit S0003 example (frecuentemente required, not a menudo)
+- **Impact**: Prevents semantic drift and enforces cognate-first approach
+
 **v2.3 (2025-10-28)**:
 - **CRITICAL FIX**: English handling - use canonical directly when English is target OR known
-- **NO back-translation**: Eliminates target language quality degradation from English back-translation
+- **NO back-translation**: Eliminates known English quality degradation from back-translation
 - Updated Translation Workflow to check English first before translating
 - Clarified Critical Understanding section with explicit NO back-translation rule
 - Updated Language-Specific Rules with three scenarios (known=English, target=English, neither=English)
-- **Impact**: Preserves target language naturalness when English is involved
+- **Impact**: Preserves known English naturalness when English is involved
 
 **v2.2 (2025-10-27)**:
 - **Generation-focused**: Removed validation loop (now Phase 1.5's responsibility)
