@@ -64,7 +64,11 @@ const PHASE_PROMPTS = {};
 const phaseIntelligenceFiles = {
   '1': 'docs/phase_intelligence/phase_1_seed_pairs.md',
   '3': 'docs/phase_intelligence/phase_3_lego_pairs.md',
-  '5': 'docs/phase_intelligence/phase_5_lego_baskets.md'
+  '5': 'docs/phase_intelligence/phase_5_lego_baskets.md',
+  '5.5': 'docs/phase_intelligence/phase_5.5_basket_deduplication.md',
+  '6': 'docs/phase_intelligence/phase_6_introductions.md',
+  '7': 'docs/phase_intelligence/phase_7_compilation.md',
+  '8': 'docs/phase_intelligence/phase_8_audio_generation.md'
 };
 
 // Load each phase intelligence file
