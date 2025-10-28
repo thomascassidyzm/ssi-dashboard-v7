@@ -1,8 +1,8 @@
 # Phase 6: Introduction Generation
 
-**Version**: 1.0
+**Version**: 2.0 🔒 **LOCKED**
 **Status**: ✅ Active
-**Last Updated**: 2025-10-23
+**Last Updated**: 2025-10-28
 **Script**: `scripts/phase6-generate-introductions.cjs`
 
 ---
@@ -38,13 +38,7 @@ Simple introduction format:
 
 Example:
 ```
-"Now, the Italian for "I want" as in "I want to speak Italian with you now." is "Voglio", Voglio."
-```
-
-#### FEEDER LEGOs (type: F)
-Same format as BASE (they're just BASE LEGOs introduced in a different seed for reuse):
-```
-"Now, the {target_lang} for "{known_lego}" as in "{known_seed}" is "{target_lego}", {target_lego}."
+"Now, the Spanish for "I want" as in "I want to speak Spanish with you now" is "Quiero", Quiero."
 ```
 
 #### COMPOSITE LEGOs (type: C)
@@ -53,36 +47,38 @@ Detailed breakdown with component explanation:
 "The {target_lang} for "{known_lego}" as in "{known_seed}" is "{target_lego}" - where {component_explanations}."
 ```
 
-Component explanations:
-- For FEEDER components: `"{target_part}" is "{known_part}" (which you learned earlier)`
-- For new components: `"{target_part}" is "{known_part}"`
+Component explanations use "means":
+- `"{target_part}" means "{known_part}"`
 
-Example:
+Examples:
 ```
-"The Italian for "I'm trying" as in "I'm trying to learn." is "Sto provando" - where "Sto" is "I'm" (which you learned earlier) and "provando" is "trying" (which you learned earlier)."
+"The Spanish for "I'm trying" as in "I'm trying to learn" is "Estoy intentando" - where "Estoy" means "I am" and "intentando" means "trying"."
+
+"The Spanish for "as often as possible" as in "how to speak as often as possible" is "lo más a menudo posible" - where "lo más" means "as", "a menudo" means "often", and "posible" means "possible"."
 ```
 
 ---
 
 ## Input Format
 
-**File**: `vfs/courses/{course_code}/lego_pairs.json`
+**File**: `vfs/courses/{course_code}/lego_pairs_deduplicated.json` (preferred)
+**Fallback**: `vfs/courses/{course_code}/lego_pairs.json`
 
 ### LEGO Structure
 ```json
 [
   "S0002L01",                    // LEGO ID
-  "C",                           // Type: B=BASE, F=FEEDER, C=COMPOSITE
-  "Sto provando",                // Target language LEGO
+  "C",                           // Type: B=BASE, C=COMPOSITE
+  "Estoy intentando",            // Target language LEGO
   "I'm trying",                  // Known language LEGO
   [                              // Components (only for COMPOSITE)
-    ["S0002F01", "F", "Sto", "I'm"],
-    ["S0002F02", "F", "provando", "trying"]
+    ["Estoy", "I am"],
+    ["intentando", "trying"]
   ]
 ]
 ```
 
-Component format: `[legoId, type, targetPart, knownPart]`
+Component format: `[[targetPart, knownPart], ...]`
 
 ---
 
@@ -189,6 +185,17 @@ const LANGUAGE_NAMES = {
 ---
 
 ## Version History
+
+### v2.0 (2025-10-28) 🔒 **LOCKED**
+- **Simplified to two types**: BASE and COMPOSITE (removed FEEDER type)
+- **Component wording**: Changed "is" to "means" for clarity
+- **Literal componentization**: Reads literal translations from Phase 3 v3.4
+- **Format simplified**: Components are `[[target, known], ...]` (no feeder IDs)
+- **Input flexibility**: Reads deduplicated file (preferred) or original
+- **Version bump**: 7.8.0
+- **Pedagogical transparency**: Introductions now reveal target language construction
+  - "where 'lo más' means 'the most'" shows Spanish superlative pattern
+  - "where 'que' means 'that'" shows subjunctive construction
 
 ### v1.0 (2025-10-23)
 - Initial implementation

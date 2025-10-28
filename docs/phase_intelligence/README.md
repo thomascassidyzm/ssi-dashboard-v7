@@ -89,7 +89,7 @@ Each phase intelligence module contains:
 
 ### Phase 3: LEGO Extraction → lego_pairs.json
 **File**: `phase_3_lego_pairs.md`
-**Version**: 3.3 🔒 **LOCKED** (2025-10-27)
+**Version**: 3.4 🔒 **LOCKED** (2025-10-28)
 **Status**: ✅ **ACTIVE**
 **Output**: `lego_pairs.json`
 
@@ -97,18 +97,19 @@ Each phase intelligence module contains:
 - **TILING FIRST**: Every seed must decompose into LEGOs that reconstruct it perfectly
 - Treat each seed as isolated (no "reused LEGOs from earlier seeds" thinking)
 - 4-step decomposition sequence (tiling, feeders, composite marking, FD validation)
-- COMPOSITE LEGOs with componentization arrays and feeder references
+- **LITERAL componentization**: Components reveal HOW target language constructs meaning
+- COMPOSITE LEGOs format: `[[targetPart, literalKnown], ...]`
 - Functional Determinism compliance (one input = one output)
-- Literal component translations (reveal target language construction)
 
-**Latest updates (v3.3)**:
-- TILING FIRST principle (primary focus)
-- Generation-focused (validation in Phase 3.5)
-- 4-step decomposition sequence
-- Isolated seed approach (no premature de-duplication thinking)
-- Emphasis on FD compliance and semantic preservation
+**Latest updates (v3.4)**:
+- **CRITICAL**: Strengthened STEP 4 - componentization MUST use literal translations
+- Golden rule: "If I saw this component alone, what does it literally mean?"
+- "lo más" = "the most" (literal) NOT "as" (semantic role)
+- Pedagogical transparency: Learners see how target language constructs meaning
+- Format simplified: no feeder IDs in componentization arrays
 
 **Previous versions**:
+- v3.3: TILING FIRST principle, isolated seed decomposition
 - v3.2: Validation-focused iteration
 - v2.0: Multiple composites strategy, preposition wrapping
 - v1.0: Initial extraction from APML
@@ -182,18 +183,27 @@ Each phase intelligence module contains:
 
 ### Phase 6: Introduction Generation → introductions.json
 **File**: `phase_6_introductions.md`
-**Version**: 1.0
+**Version**: 2.0 🔒 **LOCKED** (2025-10-28)
 **Status**: ✅ **ACTIVE**
 **Output**: `introductions.json`
 
 **Focus**:
-- Reading component arrays from Phase 3
-- Generating natural language presentations
+- Reading literal component arrays from Phase 3 v3.4
+- Generating natural language presentations with pedagogical transparency
 - Seed context requirement ("as in...")
-- Type-specific formats (BASE/COMPOSITE with components)
-- FEEDER recognition with "learned earlier" text
+- Two types: BASE (simple) and COMPOSITE (component breakdown)
+- Component wording: "means" (not "is")
+- Reveals target language construction patterns
 
-**Completed**: 2025-10-23
+**Latest updates (v2.0)**:
+- Simplified to BASE/COMPOSITE only (removed FEEDER)
+- "means" wording for component explanations
+- Reads deduplicated LEGOs (preferred) or original
+- Script updated: `scripts/phase6-generate-introductions.cjs`
+- Tested: 64 introductions (41 BASE, 23 COMPOSITE) on spa_for_eng_20seeds
+
+**Previous versions**:
+- v1.0: Initial implementation with three types (BASE/FEEDER/COMPOSITE)
 
 ---
 

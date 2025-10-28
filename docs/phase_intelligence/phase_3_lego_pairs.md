@@ -1,7 +1,7 @@
 # Phase 3: LEGO Extraction Intelligence
 
-**Version**: 3.3 (2025-10-27)
-**Status**: Draft - Major Restructure
+**Version**: 3.4 🔒 **LOCKED** (2025-10-28)
+**Status**: Active
 **Output**: `vfs/courses/{course_code}/lego_pairs.json`
 
 ---
@@ -94,35 +94,60 @@ Decision: Extract feeders
 
 ### STEP 4: Componentize with LITERAL Translations
 
-For COMPOSITE LEGOs, show component breakdown with **LITERAL translations** (not functional equivalents).
+**CRITICAL RULE:** For COMPOSITE LEGOs, componentization arrays MUST use **LITERAL translations**, NOT semantic roles.
 
-**Why literal?** Reveals target language construction patterns for pedagogical benefit.
+**Why literal?**
+- Reveals HOW the target language constructs meaning
+- Shows learner the actual "building blocks" of target language thought
+- Enables transparent understanding of language patterns
+- Components can be recognized in other contexts
+
+**Format:** `[[targetPart, literalKnown], ...]`
 
 ```
-✅ CORRECT (literal):
-["lo más frecuentemente posible", "as frequently as possible", [
-  ["lo más", "the most"],                    // literal: shows Spanish uses superlative
-  ["frecuentemente", "frequently", "S0003L02"],
-  ["posible", "possible", "S0003L03"]
+✅ CORRECT (literal - reveals construction):
+["lo más a menudo posible", "as often as possible", [
+  ["lo más", "the most"],      // literal: Spanish uses superlative "the most"
+  ["a menudo", "often"],        // literal: direct translation
+  ["posible", "possible"]       // literal: direct translation
 ]]
 
-❌ WRONG (functional):
-["lo más frecuentemente posible", "as frequently as possible", [
-  ["lo más", "as"],                          // obscures construction
-  ["frecuentemente", "frequently", "S0003L02"],
-  ["posible", "as possible", "S0003L03"]     // obscures meaning
+Phase 6 says: "where 'lo más' means 'the most', 'a menudo' means 'often',
+               and 'posible' means 'possible'"
+Learner sees: Spanish literally says "the most often possible" ← transparency!
+
+❌ WRONG (semantic role - obscures construction):
+["lo más a menudo posible", "as often as possible", [
+  ["lo más", "as"],             // semantic role in English idiom
+  ["a menudo", "often"],
+  ["posible", "possible"]
 ]]
+
+Phase 6 would say: "where 'lo más' means 'as'..." ← confusing! Hides superlative.
+Learner thinks: "lo más" = "as" ← WRONG mental model
 ```
 
 **Another example:**
 ```
+✅ CORRECT:
 ["que hables", "you to speak", [
-  ["que", "that"],                           // shows Spanish uses "that"
-  ["hables", "you speak"]                    // shows conjugated subjunctive
+  ["que", "that"],              // Spanish literally uses "that"
+  ["hables", "you speak"]       // subjunctive form
 ]]
+
+Learner sees: Spanish says "that you speak", English says "you to speak"
+Pedagogical win: Reveals subjunctive construction pattern
+
+❌ WRONG:
+["que hables", "you to speak", [
+  ["que", "you to"],            // semantic role
+  ["hables", "speak"]
+]]
+
+Hides the "that" + subjunctive pattern - learner can't recognize it elsewhere
 ```
 
-Learner sees: Spanish says "that you speak", English says "you to speak" - aha!
+**Golden rule:** Ask yourself: "If I saw this component alone in another sentence, what does it literally mean?"
 
 ---
 
@@ -428,6 +453,15 @@ Ready to output ✓
 
 ## 🔄 VERSION HISTORY
 
+**v3.4 (2025-10-28) 🔒 LOCKED - LITERAL COMPONENTIZATION**:
+- **CRITICAL CLARIFICATION**: Strengthened STEP 4 to emphasize LITERAL translations in componentization
+- **Pedagogical transparency**: Components must reveal HOW target language constructs meaning, not semantic roles
+- **Golden rule added**: "If I saw this component alone, what does it literally mean?"
+- **Clear examples**: "lo más" = "the most" (literal) NOT "as" (semantic role)
+- **Phase 6 integration**: Literal components enable pedagogical introductions that show language construction
+- **Why this matters**: Learners see "Spanish says 'the most often possible'" vs semantic obscurity
+- Format simplified: `[[targetPart, literalKnown], ...]` (no feeder IDs in componentization array)
+
 **v3.3 (2025-10-27) - MAJOR RESTRUCTURE**:
 - **FOUNDATIONAL CHANGE**: TILING FIRST principle added as primary task
 - **Isolated seed decomposition**: No "reused LEGO" concept - each seed decomposes independently
@@ -450,4 +484,4 @@ Ready to output ✓
 
 ---
 
-**End of Phase 3 v3.3 Intelligence**
+**End of Phase 3 v3.4 Intelligence**
