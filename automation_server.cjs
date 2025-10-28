@@ -792,19 +792,227 @@ async function spawnCourseOrchestrator(courseCode, params) {
 
     console.log(`[Phase 1] All ${phase1Batches} batches spawned. Agents running in parallel.`);
     console.log(`[Phase 1] ⏳ Waiting for all Phase 1 batches to complete before Phase 3...`);
-    console.log(`[Phase 1] 📍 Check VFS for seed_pairs.json to monitor progress`);
+    console.log(`[Phase 1] 📍 Polling seed_pairs.json for completion...`);
 
     job.phase = 'phase_1_waiting';
     job.progress = 10;
 
-    // Note: In a real implementation, we'd poll for completion
-    // For now, agents run autonomously and write to VFS
+    // Poll for Phase 1 completion, then auto-progress to Phase 3 and Phase 5
+    pollAndContinue(courseCode, params, courseDir, phase1Batches, phase3Batches, phase5Batches);
 
   } catch (error) {
     console.error(`[Orchestrator] Error in batch orchestration:`, error);
     job.status = 'failed';
     job.error = error.message;
   }
+}
+
+/**
+ * Poll for phase completion and auto-progress through pipeline
+ */
+async function pollAndContinue(courseCode, params, courseDir, phase1Batches, phase3Batches, phase5Batches) {
+  const job = STATE.jobs.get(courseCode);
+  const { target, known, seeds } = params;
+
+  try {
+    // WAIT FOR PHASE 1 COMPLETION
+    console.log(`[Polling] Checking Phase 1 completion every 30s...`);
+    const phase1Complete = await pollPhaseCompletion(courseDir, 'seed_pairs.json', seeds, 30000);
+
+    if (!phase1Complete) {
+      console.error(`[Polling] ❌ Phase 1 timeout after 30 minutes`);
+      job.status = 'failed';
+      job.error = 'Phase 1 completion timeout';
+      return;
+    }
+
+    console.log(`\n[Polling] ✅ Phase 1 COMPLETE! All ${seeds} seed pairs generated.\n`);
+    job.progress = 30;
+
+    // START PHASE 3
+    job.phase = 'phase_3';
+    console.log(`[Phase 3] Starting ${phase3Batches} LEGO extraction batches...`);
+
+    for (let i = 0; i < phase3Batches; i++) {
+      const startSeed = i * 50 + 1;
+      const endSeed = Math.min((i + 1) * 50, seeds);
+      const batchNum = i + 1;
+
+      console.log(`[Phase 3] Spawning batch ${batchNum}/${phase3Batches}: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`);
+
+      const brief = generatePhase3Brief(courseCode, { target, known, startSeed, endSeed, batchNum, totalBatches: phase3Batches }, courseDir);
+      await spawnPhaseAgent(`3-batch${batchNum}`, brief, courseDir, courseCode);
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+
+    console.log(`[Phase 3] All ${phase3Batches} batches spawned. Waiting for completion...`);
+    job.progress = 40;
+
+    // WAIT FOR PHASE 3 COMPLETION
+    console.log(`[Polling] Checking Phase 3 completion every 30s...`);
+    const phase3Complete = await pollPhaseCompletion(courseDir, 'lego_pairs.json', seeds, 30000);
+
+    if (!phase3Complete) {
+      console.error(`[Polling] ❌ Phase 3 timeout after 30 minutes`);
+      job.status = 'failed';
+      job.error = 'Phase 3 completion timeout';
+      return;
+    }
+
+    console.log(`\n[Polling] ✅ Phase 3 COMPLETE! LEGOs extracted for all ${seeds} seeds.\n`);
+    job.progress = 60;
+
+    // START PHASE 5 (SEQUENTIAL with validators)
+    job.phase = 'phase_5';
+    console.log(`[Phase 5] Starting ${phase5Batches} basket batches (SEQUENTIAL)...\n`);
+
+    let validatorOutput = null;
+
+    for (let i = 0; i < phase5Batches; i++) {
+      const startSeed = i * 20 + 1;
+      const endSeed = Math.min((i + 1) * 20, seeds);
+      const batchNum = i + 1;
+
+      console.log(`[Phase 5] === BATCH ${batchNum}/${phase5Batches}: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')} ===`);
+
+      const brief = generatePhase5Brief(courseCode, { target, known, startSeed, endSeed, batchNum, totalBatches: phase5Batches }, courseDir, validatorOutput);
+      await spawnPhaseAgent(`5-batch${batchNum}`, brief, courseDir, courseCode);
+
+      // Wait for batch to complete
+      console.log(`[Phase 5] ⏳ Waiting for batch ${batchNum} to complete...`);
+      await new Promise(resolve => setTimeout(resolve, 90000)); // 1.5 min initial delay
+
+      const expectedLegoCount = Math.ceil(endSeed * 3);
+      const batchComplete = await pollPhase5BatchCompletion(courseDir, expectedLegoCount, 30000);
+
+      if (batchComplete) {
+        console.log(`[Phase 5] ✅ Batch ${batchNum} complete!\n`);
+
+        // Read validator output for next batch
+        if (i < phase5Batches - 1) {
+          validatorOutput = await readValidatorOutput(courseDir);
+          if (validatorOutput) {
+            console.log(`[Phase 5] 📊 Validators: ${validatorOutput.patternDensity}% pattern density`);
+          }
+        }
+      } else {
+        console.warn(`[Phase 5] ⚠️  Batch ${batchNum} timeout - continuing anyway\n`);
+      }
+
+      job.progress = 60 + Math.floor((batchNum / phase5Batches) * 35);
+    }
+
+    console.log(`\n[Phase 5] ✅ ALL BATCHES COMPLETE!\n`);
+    job.progress = 100;
+    job.phase = 'completed';
+    job.status = 'completed';
+    job.endTime = new Date();
+
+    console.log(`✅ COURSE GENERATION COMPLETE: ${courseCode}`);
+    console.log(`📊 Check validator reports for final stats\n`);
+
+  } catch (error) {
+    console.error(`[Polling] Error:`, error);
+    job.status = 'failed';
+    job.error = error.message;
+  }
+}
+
+/**
+ * Poll for phase completion by checking file and seed count
+ */
+async function pollPhaseCompletion(courseDir, filename, expectedSeeds, pollInterval) {
+  const filePath = path.join(courseDir, filename);
+  const maxAttempts = 60; // 30 minutes
+  let attempts = 0;
+
+  while (attempts < maxAttempts) {
+    try {
+      if (await fs.pathExists(filePath)) {
+        const data = await fs.readJson(filePath);
+        let actualCount = 0;
+
+        if (filename === 'seed_pairs.json') {
+          actualCount = Object.keys(data.translations || {}).length;
+        } else if (filename === 'lego_pairs.json') {
+          actualCount = (data.seeds || []).length;
+        }
+
+        if (actualCount > 0) {
+          console.log(`[Polling] ${filename}: ${actualCount}/${expectedSeeds} seeds`);
+        }
+
+        if (actualCount >= expectedSeeds) {
+          return true;
+        }
+      }
+    } catch (err) {
+      // File might be mid-write
+    }
+
+    attempts++;
+    await new Promise(resolve => setTimeout(resolve, pollInterval));
+  }
+
+  return false;
+}
+
+/**
+ * Poll for Phase 5 batch completion
+ */
+async function pollPhase5BatchCompletion(courseDir, expectedLegoCount, pollInterval) {
+  const filePath = path.join(courseDir, 'lego_baskets.json');
+  const maxAttempts = 40; // 20 minutes
+  let attempts = 0;
+  let lastCount = 0;
+
+  while (attempts < maxAttempts) {
+    try {
+      if (await fs.pathExists(filePath)) {
+        const data = await fs.readJson(filePath);
+        const actualCount = Object.keys(data.baskets || data || {}).length;
+
+        if (actualCount > lastCount) {
+          console.log(`[Polling] Baskets: ${actualCount} (~${expectedLegoCount} target)`);
+          lastCount = actualCount;
+        }
+
+        if (actualCount >= expectedLegoCount * 0.8) {
+          return true;
+        }
+      }
+    } catch (err) {
+      // File might be mid-write
+    }
+
+    attempts++;
+    await new Promise(resolve => setTimeout(resolve, pollInterval));
+  }
+
+  return false;
+}
+
+/**
+ * Read validator output from previous batch
+ */
+async function readValidatorOutput(courseDir) {
+  try {
+    const patternPath = path.join(courseDir, 'pattern_coverage_report.json');
+
+    if (await fs.pathExists(patternPath)) {
+      const patternData = await fs.readJson(patternPath);
+
+      return {
+        patternDensity: patternData.summary?.pattern_density || 0,
+        missingEdges: patternData.missing_edges || [],
+        underusedLegos: patternData.lego_frequency?.filter(l => l.edge_count < 3) || []
+      };
+    }
+  } catch (err) {
+    console.warn(`[Validator] Could not read: ${err.message}`);
+  }
+
+  return null;
 }
 
 /**
