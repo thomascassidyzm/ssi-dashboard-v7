@@ -1,7 +1,7 @@
 # SSi Dashboard v7 Documentation
 
-**Version**: 7.7.1
-**Last Updated**: 2025-10-23
+**Version**: 7.8.1
+**Last Updated**: 2025-10-28
 
 ---
 

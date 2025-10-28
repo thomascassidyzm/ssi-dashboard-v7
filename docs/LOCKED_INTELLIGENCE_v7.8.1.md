@@ -1,23 +1,23 @@
-# Locked Intelligence v7.8.0
+# Locked Intelligence v7.8.1
 
 **Date**: 2025-10-28
 **Status**: 🔒 Production-ready SSoT for course generation
-**Previous Version**: 7.7.0
+**Previous Version**: 7.8.0
 
 ---
 
 ## Overview
 
-This document captures the locked, tested intelligence that serves as the Single Source of Truth (SSoT) for SSi course production v7.8.0.
+This document captures the locked, tested intelligence that serves as the Single Source of Truth (SSoT) for SSi course production v7.8.1.
 
-**Active Workflow**: Phase 1 → 3 → 5
+**Active Workflow**: Phase 1 → 3 → 5 → 5.5 → 6
 
 ---
 
 ## 🔒 Locked Phase Intelligence
 
 ### Phase 1: Pedagogical Translation → seed_pairs.json
-**Version**: v2.5 (2025-10-28)
+**Version**: v2.6 (2025-10-28)
 **File**: `docs/phase_intelligence/phase_1_seed_pairs.md`
 **Status**: ✅ ACTIVE (Locked SSoT)
 
@@ -37,7 +37,7 @@ This document captures the locked, tested intelligence that serves as the Single
 ---
 
 ### Phase 3: LEGO Extraction → lego_pairs.json
-**Version**: v3.3 (2025-10-27)
+**Version**: v3.5 (2025-10-28)
 **File**: `docs/phase_intelligence/phase_3_lego_pairs.md`
 **Status**: ✅ ACTIVE (Locked SSoT)
 
@@ -166,8 +166,29 @@ For intelligence to be "locked":
 6. ✅ Dashboard UI reflects current versions
 7. ✅ Committed to version control
 
-**All criteria met for Phase 1 v2.5, Phase 3 v3.3, Phase 5 v2.1** 🔒
+**All criteria met for Phase 1 v2.6, Phase 3 v3.5, Phase 5 v2.1, Phase 5.5 v2.0, Phase 6 v2.0** 🔒
 
 ---
 
-**This document serves as the definitive reference for v7.8.0 locked intelligence state.**
+## 📝 Version History
+
+### v7.8.1 (2025-10-28)
+**Changes from v7.8.0:**
+- Phase 1 updated: v2.5 → v2.6 (synonym flexibility principle documented)
+- Phase 3 updated: v3.3 → v3.5 (synonym flexibility through literal components)
+- Phase 5.5 created: v2.0 (literal componentization deduplication - locked)
+- Phase 6 updated: v1.0 → v2.0 (simplified to BASE/COMPOSITE, "means" wording, literal reading)
+- Active workflow extended: Phase 1 → 3 → 5 → 5.5 → 6
+- Dashboard UI updated to reflect current locked versions
+- System-wide version unification to v7.8.1
+
+### v7.8.0 (2025-10-28)
+**Initial locked intelligence:**
+- Phase 1 v2.5: TWO ABSOLUTE RULES, examples over precepts, cognate preference
+- Phase 3 v3.3: TILING FIRST, isolated seeds, literal componentization
+- Phase 5 v2.1: Eternal vs debut distinction, ABSOLUTE GATE
+- Test course: spa_for_eng_20seeds (verified quality)
+
+---
+
+**This document serves as the definitive reference for v7.8.1 locked intelligence state.**

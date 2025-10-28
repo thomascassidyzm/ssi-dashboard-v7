@@ -128,13 +128,13 @@
 import { ref, computed, onMounted } from 'vue'
 
 const phases = [
-  { id: '1', name: 'Translation', status: 'active', version: '2.5', locked: true },
+  { id: '1', name: 'Translation', status: 'active', version: '2.6', locked: true },
   { id: '2', name: 'Corpus', status: 'inactive', version: '1.0' },
-  { id: '3', name: 'LEGO Extraction', status: 'active', version: '3.3', locked: true },
+  { id: '3', name: 'LEGO Extraction', status: 'active', version: '3.5', locked: true },
   { id: '3.5', name: 'Graph', status: 'inactive', version: '1.0' },
   { id: '5', name: 'Baskets', status: 'active', version: '2.1', locked: true },
-  { id: '5.5', name: 'Deduplication', status: 'todo', version: '1.0' },
-  { id: '6', name: 'Introductions', status: 'todo', version: '1.0' },
+  { id: '5.5', name: 'Deduplication', status: 'active', version: '2.0', locked: true },
+  { id: '6', name: 'Introductions', status: 'active', version: '2.0', locked: true },
   { id: '7', name: 'Compilation', status: 'complete', version: '1.0' },
   { id: '8', name: 'Audio (Kai)', status: 'documented', version: '1.0' }
 ]
