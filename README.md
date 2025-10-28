@@ -129,7 +129,7 @@ vfs/courses/:courseCode/
 
 ---
 
-**Version:** 7.0.1 (Locked Intelligence)
+**Version:** 7.8.0 (Locked Intelligence)
 **Build:** Clean
 **Phase Intelligence**: Phase 1 v2.5, Phase 3 v3.3, Phase 5 v2.1 (🔒 Locked SSoT)
 **Date:** 2025-10-28

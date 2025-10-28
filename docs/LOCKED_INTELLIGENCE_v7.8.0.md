@@ -1,13 +1,14 @@
-# Locked Intelligence v7.0.1
+# Locked Intelligence v7.8.0
 
 **Date**: 2025-10-28
 **Status**: 🔒 Production-ready SSoT for course generation
+**Previous Version**: 7.7.0
 
 ---
 
 ## Overview
 
-This document captures the locked, tested intelligence that serves as the Single Source of Truth (SSoT) for SSi course production v7.0.1.
+This document captures the locked, tested intelligence that serves as the Single Source of Truth (SSoT) for SSi course production v7.8.0.
 
 **Active Workflow**: Phase 1 → 3 → 5
 
@@ -169,4 +170,4 @@ For intelligence to be "locked":
 
 ---
 
-**This document serves as the definitive reference for v7.0.1 locked intelligence state.**
+**This document serves as the definitive reference for v7.8.0 locked intelligence state.**
