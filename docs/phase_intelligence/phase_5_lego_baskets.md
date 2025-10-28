@@ -1,8 +1,15 @@
 # Phase 5: Basket Generation → lego_baskets.json
 
-**Version**: 2.0 (2025-10-26)
-**Status**: Active methodology for Phase 5 basket generation
+**Version**: 2.2 (2025-10-28)
+**Status**: Active methodology for Phase 5 basket generation (batch-aware, edge-targeting)
 **Output**: `vfs/courses/{course_code}/lego_baskets.json`
+
+**Changes in v2.2:**
+- Added batch-aware edge targeting (self-healing pattern coverage)
+- Agents can read validator output from previous batches
+- Prioritize filling pattern gaps (missing edges, underused LEGOs)
+- 50% of eternal phrases target identified weaknesses
+- Creates self-correcting feedback loop across batches
 
 ---
 
@@ -258,24 +265,129 @@ Basket generation involves:
 
 ---
 
+## BATCH-AWARE EDGE TARGETING (Self-Healing Pattern Coverage)
+
+**PRINCIPLE**: When generating courses in batches (e.g., seeds 1-20, 21-40, etc.), each batch should learn from the previous batch's quality metrics and prioritize filling pattern gaps.
+
+### Checking for Previous Batch Feedback
+
+**Before generating baskets, check if validator output exists from previous batch:**
+
+```javascript
+// Check for validator output from previous batch
+const validatorPath = `vfs/courses/${courseCode}/completeness_report.json`;
+const patternPath = `vfs/courses/${courseCode}/pattern_coverage_report.json`;
+
+let edgeTargets = null;
+if (fileExists(validatorPath) && fileExists(patternPath)) {
+  const completeness = readJSON(validatorPath);
+  const patterns = readJSON(patternPath);
+
+  // Extract priority targets
+  edgeTargets = {
+    missingEdges: patterns.missing_edges.slice(0, 20), // Top 20 priorities
+    underusedLegos: /* LEGOs with low edge_count */,
+    patternDensity: patterns.summary.pattern_density
+  };
+}
+```
+
+### Adaptive Eternal Phrase Strategy
+
+**If validator feedback exists (batch N > 1), apply edge-aware selection:**
+
+**RULE**: 50% of eternal phrases should target identified gaps
+
+**Strategy**:
+1. **Identify underused LEGOs**: LEGOs that appear in few edges (LEGO combinations)
+2. **Identify missing edges**: Valid LEGO pairs (respecting GATE) that never appear together
+3. **Weight selection**: When choosing which previous LEGOs to combine, prioritize:
+   - LEGOs from `underusedLegos` list
+   - LEGO pairs that form `missingEdges`
+   - Diverse sampling (avoid clustering on same 5 LEGOs)
+
+**Example** (Batch 2, generating basket for S0021L01 "terminar"):
+
+```
+<thinking>
+Checking for previous batch feedback...
+
+Found validator output from batch 1:
+- Pattern density: 29.6% (low - target is 40%+)
+- Missing edge: S0001L01 "Quiero" ||| S0002L01 "Estoy intentando" (never appear together)
+- Underused LEGO: S0001L04 "contigo" (only 2 edges, others have 8-10)
+
+Available vocabulary for S0021L01: S0001L01 through S0020L05 (all previous LEGOs)
+
+ADAPTIVE STRATEGY:
+- Generate 4 eternal phrases
+- 2 phrases (50%) should target gaps:
+  1. Use "Quiero" + other underused LEGOs → helps Quiero get more edge diversity
+  2. Use "contigo" in combination → helps underused LEGO get more practice
+
+Eternal phrase candidates:
+1. "Quiero terminar ahora" ← Uses Quiero (underused for edges)
+2. "Estoy intentando terminar" ← Creates Estoy intentando + terminar edge
+3. "terminar contigo" ← Uses underused "contigo"
+4. "Me gustaría terminar" ← Normal high-value phrase
+</thinking>
+```
+
+### When No Validator Feedback Exists (Batch 1)
+
+**Generate baskets normally** - prioritize:
+- Natural, high-value eternal phrases
+- Diverse vocabulary sampling
+- Balanced LEGO usage
+
+**The validator will measure output and provide feedback for batch 2.**
+
+### Self-Healing Mechanism
+
+**Over multiple batches, pattern density should improve:**
+- Batch 1: Generate naturally → density 29.6%
+- Validator identifies: 1420 missing edges, underused LEGOs
+- Batch 2: Targets gaps → density improves to 34.8%
+- Batch 3: Continues targeting → density improves to 38.5%
+- Batch N: Reaches target 40%+ density
+
+**This creates a self-correcting feedback loop** where each batch compensates for previous batch weaknesses.
+
+### Quality Thresholds (Guardrails)
+
+**Pattern Density Targets** (from APML specification):
+- Seeds 1-100 (batch 1-5): Target 40-50%
+- Seeds 101-400: Target 30-40%
+- Seeds 401-668: Target 20-30%
+
+**If pattern density falls below threshold, prioritize gap-filling more aggressively** (up to 75% of phrases target gaps).
+
+---
+
 ## TWO-STAGE PROCESS
 
-### STAGE 1: Basket Selection (Graph-Driven)
+### STAGE 1: Basket Selection (Edge-Aware)
 
-**Goal**: Select LEGO groupings that maximize pattern diversity
+**Goal**: Select LEGO groupings that maximize pattern diversity while respecting batch feedback
 
-#### 1. Load Graph Intelligence
-- Read: `vfs/phase_outputs/phase_3.5_lego_graph.json`
+#### 1. Load Previous Batch Feedback (If Exists)
+- Read: `vfs/courses/{course}/completeness_report.json`
+- Read: `vfs/courses/{course}/pattern_coverage_report.json`
+- Extract priority targets: missing edges, underused LEGOs
+
+#### 2. Load Graph Intelligence (Optional)
+- Read: `vfs/phase_outputs/phase_3.5_lego_graph.json` (if available)
 - Adjacency graph showing which LEGOs appear near each other
 - Edge weights indicate co-occurrence frequency
 
-#### 2. Load FCFS Ordering
-- Read: `vfs/phase_outputs/phase_2_corpus_intelligence.json`
+#### 3. Load FCFS Ordering (Optional)
+- Read: `vfs/phase_outputs/phase_2_corpus_intelligence.json` (if available)
 - Chronological ordering from corpus frequency analysis
 - Ensures pedagogically sound sequence
 
-#### 3. Select LEGOs for Each Basket (20 LEGOs per basket)
-- Maximize edge coverage (expose diverse patterns)
+#### 4. Select LEGOs for Eternal Phrases
+- If batch feedback exists: Prioritize underused LEGOs and missing edges
+- If no feedback: Maximize edge coverage and diverse patterns
 - Follow FCFS chronological progression
 - Avoid redundant LEGO sequences across baskets
 - Ensure smooth difficulty progression

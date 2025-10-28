@@ -27,21 +27,26 @@ Clean, minimal dashboard for SSi Course Production with locked phase intelligenc
 
 ### Phase Coverage (Locked Intelligence)
 
-**Active Workflow**: Phase 1 → 3 → 5
+**Active Workflow**: Phase 1 → 3 → 5 → 5.5 → 6 → 7
+
+**Architectural Boundary**:
+- **Phases 1-6**: Evolvable intelligence (can iterate, refactor, improve internal processing)
+- **Phase 7**: Immutable contract (fixed JSON manifest format for mobile app - cannot change without app update)
 
 | Phase | Name | Version | Status | Description |
 |-------|------|---------|--------|-------------|
-| 1 | Pedagogical Translation | v2.5 🔒 | ACTIVE | TWO ABSOLUTE RULES, examples over precepts, English handling |
+| 1 | Pedagogical Translation | v2.6 🔒 | ACTIVE | TWO ABSOLUTE RULES, examples over precepts, synonym flexibility |
 | 2 | Corpus Intelligence | v1.0 | Inactive | FCFS mapping + utility (not in current workflow) |
-| 3 | LEGO Extraction | v3.3 🔒 | ACTIVE | TILING FIRST, COMPOSITE with componentization |
+| 3 | LEGO Extraction | v3.5 🔒 | ACTIVE | TILING FIRST, COMPOSITE with literal componentization |
 | 3.5 | Graph Construction | v1.0 | Inactive | LEGO adjacency edges (not in current workflow) |
-| 4 | Deduplication | - | TODO | Provenance preservation (Phase 5.5) |
-| 5 | Basket Generation | v2.1 🔒 | ACTIVE | Eternal/debut phrases, ABSOLUTE GATE constraint |
-| 6 | Introductions | v1.0 | TODO | Component-based presentations |
-| 7 | Compilation | v1.0 | Complete | Legacy format manifest |
+| 5 | Basket Generation | v2.2 🔒 | ACTIVE | Eternal/debut phrases, batch-aware edge targeting |
+| 5.5 | Deduplication | v2.0 🔒 | ACTIVE | Character-identical matching, first occurrence wins |
+| 6 | Introductions | v2.0 🔒 | ACTIVE | BASE/COMPOSITE presentations, "means" wording, literal reading |
+| 7 | Compilation | v1.0 🔐 | IMMUTABLE | Fixed app manifest format (API contract) |
 | 8 | Audio | v1.0 | Documented | TTS + S3 upload (Kai) |
 
-🔒 = Locked, production-ready SSoT
+🔒 = Locked, production-ready SSoT (evolvable)
+🔐 = Immutable contract (cannot change without external system update)
 
 **Phase Intelligence**: See `docs/phase_intelligence/README.md` for detailed methodology
 
@@ -112,6 +117,51 @@ vfs/courses/:courseCode/
 └── course_metadata.json
 ```
 
+## Course Validation
+
+Comprehensive validation tools for quality assurance and self-healing batch generation.
+
+### Evolution Principle
+
+**Validators are NOT fixed specifications** - they are v1.0 measurement tools that can evolve. The system can refine validators, create new ones, and iterate on measurement algorithms as it learns. Validators feed the SELF-REGULATION layer, enabling batch-aware course generation where each batch reads previous quality metrics and self-corrects.
+
+### Validators (v1.0)
+
+| Tool | Purpose | Key Metrics |
+|------|---------|-------------|
+| **analyze-lego-frequency.cjs** | Vocabulary coverage | Practice distribution, under/over-practiced LEGOs |
+| **analyze-pattern-coverage.cjs** | LEGO combination diversity | Pattern density, missing/over-used edges |
+| **analyze-completeness.cjs** | Overall quality score | Multi-dimensional completeness (0-100%) |
+
+### Quick Start
+
+```bash
+# Run all validators on a course
+COURSE="spa_for_eng_20seeds"
+
+node validators/analyze-lego-frequency.cjs $COURSE --output vfs/courses/$COURSE/frequency_report.json
+node validators/analyze-pattern-coverage.cjs $COURSE --output vfs/courses/$COURSE/pattern_report.json
+node validators/analyze-completeness.cjs $COURSE --output vfs/courses/$COURSE/completeness_report.json
+```
+
+### Completeness Score Dimensions
+
+1. **Vocabulary (35%)** - Coverage + balance of practice distribution
+2. **Patterns (35%)** - Diversity of LEGO combinations (edge coverage)
+3. **Distribution (15%)** - Semantic diversity across LEGO types
+4. **Progression (15%)** - Complexity increase over time
+
+**Target**: Overall score > 70% for production courses
+
+### Self-Healing Batch Generation
+
+When generating courses in batches (e.g., 20 seeds at a time), validators provide feedback for the next batch:
+- Pattern density too low? Next batch prioritizes underused LEGO combinations
+- Vocabulary imbalanced? Next batch targets under-practiced LEGOs
+- System reads validator output and self-corrects recursively
+
+**See**: `validators/README.md` for detailed documentation and `ssi-course-production.apml` for batch-aware generation architecture
+
 ## Design Philosophy
 
 - Clean, professional aesthetic
@@ -129,7 +179,7 @@ vfs/courses/:courseCode/
 
 ---
 
-**Version:** 7.8.0 (Locked Intelligence)
+**Version:** 7.8.2 (Locked Intelligence + Batch-Aware Generation)
 **Build:** Clean
-**Phase Intelligence**: Phase 1 v2.5, Phase 3 v3.3, Phase 5 v2.1 (🔒 Locked SSoT)
+**Phase Intelligence**: Phase 1 v2.6, Phase 3 v3.5, Phase 5 v2.2 (batch-aware), Phase 5.5 v2.0, Phase 6 v2.0 (🔒 Locked SSoT)
 **Date:** 2025-10-28
