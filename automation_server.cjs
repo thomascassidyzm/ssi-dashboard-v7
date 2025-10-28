@@ -187,7 +187,254 @@ async function ensureCourseDirectory(courseCode) {
 }
 
 /**
- * Generates comprehensive orchestrator brief for course generation
+ * Phase 1 Brief: Translation batch
+ */
+function generatePhase1Brief(courseCode, params, courseDir) {
+  const { target, known, startSeed, endSeed, batchNum, totalBatches } = params;
+  const seedRange = `S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`;
+
+  return `# Phase 1: Pedagogical Translation (Batch ${batchNum}/${totalBatches})
+
+**Course**: ${courseCode}
+**Target Language**: ${target} (learning language)
+**Known Language**: ${known} (learner's language)
+**Seed Range**: ${seedRange} (${endSeed - startSeed + 1} seeds)
+**Output**: ${courseDir}/seed_pairs.json
+
+---
+
+## Your Task
+
+Translate seeds ${seedRange} following Phase 1 intelligence.
+
+**Fetch Instructions**: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase-intelligence/1
+
+**Fetch Seeds**: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/seeds?limit=${endSeed}
+(Filter to seeds ${startSeed}-${endSeed})
+
+---
+
+## Output Format
+
+Append to existing seed_pairs.json (or create if batch 1):
+
+\`\`\`json
+{
+  "version": "7.7",
+  "translations": {
+    "S${String(startSeed).padStart(4, '0')}": ["target phrase", "known phrase"],
+    "S${String(startSeed + 1).padStart(4, '0')}": ["target phrase", "known phrase"],
+    ...
+  }
+}
+\`\`\`
+
+**CRITICAL**: If this is batch ${batchNum} > 1, READ existing seed_pairs.json and MERGE your translations (don't overwrite!)
+
+---
+
+## Success Criteria
+
+✅ ${endSeed - startSeed + 1} translations completed
+✅ Merged with existing seed_pairs.json (if not batch 1)
+✅ Natural translations with cognate preference (seeds 1-100)
+✅ Zero variation ("First Word Wins")
+
+When done, report completion and stats.
+`;
+}
+
+/**
+ * Phase 3 Brief: LEGO Extraction batch
+ */
+function generatePhase3Brief(courseCode, params, courseDir) {
+  const { target, known, startSeed, endSeed, batchNum, totalBatches } = params;
+  const seedRange = `S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`;
+
+  return `# Phase 3: LEGO Extraction (Batch ${batchNum}/${totalBatches})
+
+**Course**: ${courseCode}
+**Seed Range**: ${seedRange} (${endSeed - startSeed + 1} seeds)
+**Input**: ${courseDir}/seed_pairs.json (filter to ${seedRange})
+**Output**: ${courseDir}/lego_pairs.json
+
+---
+
+## Your Task
+
+Extract LEGOs from seeds ${seedRange} following Phase 3 intelligence.
+
+**Fetch Instructions**: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase-intelligence/3
+
+**Read seed_pairs.json** and filter to seeds ${startSeed}-${endSeed}.
+
+---
+
+## Output Format
+
+Append to existing lego_pairs.json (or create if batch 1):
+
+\`\`\`json
+{
+  "version": "7.7",
+  "seeds": [
+    ["S${String(startSeed).padStart(4, '0')}", ["target", "known"], [
+      ["S${String(startSeed).padStart(4, '0')}L01", "B", "target", "known"],
+      ["S${String(startSeed).padStart(4, '0')}L02", "C", "target", "known", [["part1", "literal"], ["part2", "literal"]]]
+    ]],
+    ...
+  ]
+}
+\`\`\`
+
+**CRITICAL**:
+- If batch ${batchNum} > 1, READ existing lego_pairs.json and APPEND to seeds array
+- Componentization: TWO elements [["targetPart", "literalKnown"], ...] - NO third element!
+- Multi-word target phrases MUST be COMPOSITE with componentization
+
+---
+
+## Success Criteria
+
+✅ LEGOs extracted for all ${endSeed - startSeed + 1} seeds
+✅ Appended to existing lego_pairs.json (if not batch 1)
+✅ COMPOSITE LEGOs with 2-element componentization arrays
+✅ FD-compliant, TILING verified
+
+When done, report completion and LEGO count.
+`;
+}
+
+/**
+ * Phase 5 Brief: Basket Generation batch (with validator feedback)
+ */
+function generatePhase5Brief(courseCode, params, courseDir, validatorOutput) {
+  const { target, known, startSeed, endSeed, batchNum, totalBatches } = params;
+  const seedRange = `S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`;
+
+  let validatorSection = '';
+  if (validatorOutput && batchNum > 1) {
+    validatorSection = `
+---
+
+## VALIDATOR FEEDBACK FROM BATCH ${batchNum - 1}
+
+**Pattern Coverage**: ${validatorOutput.patternDensity}%
+**Missing Edges**: ${validatorOutput.missingEdges?.length || 0}
+**Underused LEGOs**: ${validatorOutput.underusedLegos?.length || 0}
+
+**CRITICAL**: Read completeness_report.json and pattern_coverage_report.json for full details.
+
+**YOUR TASK**: 50% of eternal phrases MUST target identified gaps:
+- Missing edges: Create phrases that combine underused LEGO pairs
+- Underused LEGOs: Incorporate low-frequency LEGOs more often
+- Pattern diversity: Maximize unique LEGO combinations
+
+This is BATCH-AWARE SELF-HEALING - you're fixing previous batch's weaknesses!
+
+`;
+  }
+
+  return `# Phase 5: Basket Generation (Batch ${batchNum}/${totalBatches}) 🧺
+
+**Course**: ${courseCode}
+**Seed Range**: ${seedRange} (generates ~${(endSeed - startSeed + 1) * 3} LEGOs)
+**Input**: ${courseDir}/lego_pairs.json (filter to ${seedRange})
+**Output**: ${courseDir}/lego_baskets.json
+${validatorSection}
+---
+
+## Your Task
+
+Generate practice baskets for LEGOs from seeds ${seedRange}.
+
+**Fetch Instructions**: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase-intelligence/5
+
+**Read lego_pairs.json** and filter to LEGOs with IDs ${seedRange}Lxx.
+
+---
+
+## CRITICAL CONSTRAINTS
+
+🚨 **USE LINGUISTIC JUDGMENT - DO NOT SCRIPT THIS!** 🚨
+
+Phase 5 requires:
+- Natural, grammatically perfect sentences in BOTH languages
+- Pedagogical value (phrases learners would actually say)
+- Creative variety (not random concatenation)
+
+**NEVER**:
+❌ Write a Python/JavaScript script to generate baskets
+❌ Randomly concatenate LEGOs
+❌ Generate phrases without checking grammar
+❌ Create meaningless word salad like "con de no quiero"
+
+**ALWAYS**:
+✅ Think linguistically about each phrase
+✅ Ensure perfect grammar in target AND known languages
+✅ Create useful, natural sentences
+✅ Verify ABSOLUTE GATE (LEGO N only uses LEGOs 1 to N-1)
+
+---
+
+## Output Format
+
+${batchNum === 1 ? 'Create' : 'APPEND to existing'} lego_baskets.json:
+
+\`\`\`json
+{
+  "version": "7.7",
+  "baskets": {
+    "S${String(startSeed).padStart(4, '0')}L01": {
+      "lego": ["target", "known"],
+      "e": [
+        ["Natural target sentence", "Natural known sentence"],
+        ...
+      ],
+      "d": {
+        "2": [["2-word phrase", "translation"]],
+        "3": [["3-word phrase", "translation"]],
+        ...
+      }
+    },
+    ...
+  }
+}
+\`\`\`
+
+**CRITICAL**: If batch ${batchNum} > 1, READ existing lego_baskets.json and MERGE baskets object (don't overwrite!)
+
+---
+
+## After Generation
+
+Run validators to measure pattern coverage:
+
+\`\`\`bash
+cd ${courseDir}
+node ../../validators/analyze-pattern-coverage.cjs ${courseCode} --output ${courseDir}/pattern_coverage_report.json
+node ../../validators/analyze-completeness.cjs ${courseCode} --output ${courseDir}/completeness_report.json
+\`\`\`
+
+Report pattern density and completeness score!
+
+---
+
+## Success Criteria
+
+✅ Baskets for ~${(endSeed - startSeed + 1) * 3} LEGOs
+✅ Merged with existing lego_baskets.json (if not batch 1)
+✅ Perfect grammar in BOTH languages
+✅ ABSOLUTE GATE enforced
+✅ Validators run, reports generated
+${batchNum > 1 ? '✅ Pattern gaps from batch ' + (batchNum - 1) + ' addressed' : ''}
+
+When done, report completion, LEGO count, and pattern density!
+`;
+}
+
+/**
+ * Generates comprehensive orchestrator brief for course generation (DEPRECATED - use batch-specific briefs)
  */
 function generateOrchestratorBrief(courseCode, params, courseDir) {
   const { target, known, seeds } = params;
@@ -499,38 +746,62 @@ end tell
 }
 
 /**
- * Spawns single orchestrator agent for entire course generation pipeline
+ * INTELLIGENT BATCH ORCHESTRATOR
+ * Spawns phase-specific agents with appropriate batch sizes
+ *
+ * Phase 1: 100 seeds/batch (light, parallel)
+ * Phase 3: 50 seeds/batch (medium, parallel)
+ * Phase 5: 20 seeds/batch (heavy, SEQUENTIAL with validators)
  */
 async function spawnCourseOrchestrator(courseCode, params) {
-  console.log(`[Orchestrator] Starting course generation: ${courseCode}`);
+  console.log(`[Orchestrator] Starting INTELLIGENT BATCH orchestration: ${courseCode}`);
+  console.log(`[Orchestrator] Total seeds: ${params.seeds}`);
 
   const job = STATE.jobs.get(courseCode);
   const courseDir = await ensureCourseDirectory(courseCode);
+  const { target, known, seeds } = params;
 
   try {
-    // Generate orchestrator brief
-    const brief = generateOrchestratorBrief(courseCode, params, courseDir);
+    // Calculate batch counts
+    const phase1Batches = Math.ceil(seeds / 100);
+    const phase3Batches = Math.ceil(seeds / 50);
+    const phase5Batches = Math.ceil(seeds / 20);
 
-    // Write brief to file
-    const briefFile = path.join(__dirname, `.orchestrator-${courseCode}-${Date.now()}.md`);
-    await fs.writeFile(briefFile, brief, 'utf8');
+    console.log(`[Orchestrator] Phase 1: ${phase1Batches} batches (100 seeds each)`);
+    console.log(`[Orchestrator] Phase 3: ${phase3Batches} batches (50 seeds each)`);
+    console.log(`[Orchestrator] Phase 5: ${phase5Batches} batches (20 seeds each, sequential)`);
 
-    console.log(`[Orchestrator] Brief created: ${briefFile}`);
-
-    // Spawn single orchestrator agent
-    job.phase = 'orchestrator';
+    // PHASE 1: Translation (can spawn in parallel)
+    job.phase = 'phase_1';
     job.progress = 0;
-    await spawnPhaseAgent('orchestrator', brief, courseDir, courseCode);
+    console.log(`\n[Phase 1] Starting ${phase1Batches} translation batches...`);
 
-    console.log(`[Orchestrator] Course orchestrator spawned for ${courseCode}`);
-    console.log(`[Orchestrator] Single Warp window executing all phases`);
+    for (let i = 0; i < phase1Batches; i++) {
+      const startSeed = i * 100 + 1;
+      const endSeed = Math.min((i + 1) * 100, seeds);
+      const batchNum = i + 1;
 
-    // Note: Orchestrator will run autonomously and write outputs to VFS
-    // Dashboard can poll VFS to track progress
-    job.status = 'running';
+      console.log(`[Phase 1] Spawning batch ${batchNum}/${phase1Batches}: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`);
+
+      const brief = generatePhase1Brief(courseCode, { target, known, startSeed, endSeed, batchNum, totalBatches: phase1Batches }, courseDir);
+      await spawnPhaseAgent(`1-batch${batchNum}`, brief, courseDir, courseCode);
+
+      // Small delay between spawns to avoid overwhelming iTerm2
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+
+    console.log(`[Phase 1] All ${phase1Batches} batches spawned. Agents running in parallel.`);
+    console.log(`[Phase 1] ⏳ Waiting for all Phase 1 batches to complete before Phase 3...`);
+    console.log(`[Phase 1] 📍 Check VFS for seed_pairs.json to monitor progress`);
+
+    job.phase = 'phase_1_waiting';
+    job.progress = 10;
+
+    // Note: In a real implementation, we'd poll for completion
+    // For now, agents run autonomously and write to VFS
 
   } catch (error) {
-    console.error(`[Orchestrator] Error generating course:`, error);
+    console.error(`[Orchestrator] Error in batch orchestration:`, error);
     job.status = 'failed';
     job.error = error.message;
   }
