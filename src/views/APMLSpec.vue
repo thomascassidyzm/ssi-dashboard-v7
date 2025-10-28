@@ -8,10 +8,13 @@
           <span>Back to Dashboard</span>
         </router-link>
         <h1 class="text-3xl font-bold text-emerald-400">
-          APML v7.0 Specification
+          APML v7.8.2 Specification
         </h1>
         <p class="mt-2 text-slate-400">
-          Current format specification - Ultra-compact consolidated JSON (Oct 22, 2024)
+          Batch-aware generation with self-healing pattern coverage
+        </p>
+        <p class="mt-1 text-xs text-slate-500">
+          Build: f1e75235 | Oct 28, 2025
         </p>
       </div>
     </header>
@@ -23,7 +26,11 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">APML Architecture</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p><strong>APML (Autonomous Parallel Markup Language)</strong> v7.0 is the current architectural specification for the SSi Course Production system. It defines the ultra-compact consolidated JSON format, phase pipeline, and orchestration protocols.</p>
+            <p><strong>APML (Autonomous Parallel Markup Language)</strong> v7.8.2 is the current architectural specification for the SSi Course Production system. It defines v7.7+ consolidated JSON format, batch-aware generation, self-healing pattern coverage, and immutable contract boundaries.</p>
+
+            <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-3 my-3">
+              <p class="text-xs text-slate-400">Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v3.5, 5 v2.2 (batch-aware), 5.5 v2.0, 6 v2.0, 7 v1.0 🔐</span></p>
+            </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Core Principles</h3>
             <ul class="space-y-2">
