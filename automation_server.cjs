@@ -288,36 +288,66 @@ Use WebFetch to get the latest methodology before executing each phase.
 
 ---
 
-## Phase 5: Basket Generation
+## Phase 5: Basket Generation (BATCH-AWARE SELF-HEALING)
+
+**CRITICAL**: Phase 5 MUST be executed in BATCHES by seed provenance.
 
 **Fetch Instructions**: \`GET /phase-intelligence/5\`
 
 **Input**: \`lego_pairs.json\`
-**Output File**: \`lego_baskets.json\`
+**Output File**: \`lego_baskets.json\` (append each batch, don't overwrite!)
 
-**Format**:
-\`\`\`json
-{
-  "S0001L01": {
-    "lego": ["Quiero", "I want"],
-    "e": [
-      ["Quiero hablar español ahora", "I want to speak Spanish now"],
-      ["Quiero hablar contigo mañana", "I want to speak with you tomorrow"]
-    ],
-    "d": {
-      "2": [["Quiero hablar", "I want to speak"]],
-      "3": [["Quiero hablar español", "I want to speak Spanish"]]
-    }
-  }
-}
+**Batch Size**: 20 seeds per batch
+
+**Batch Strategy**:
+1. **Batch 1** (Seeds S0001-S0020):
+   - Filter LEGOs with IDs S0001Lxx through S0020Lxx from lego_pairs.json
+   - Generate baskets for these LEGOs following phase intelligence
+   - Write initial lego_baskets.json
+   - Run validators: node validators/analyze-pattern-coverage.cjs
+   - Run validators: node validators/analyze-completeness.cjs
+   - Validator output → completeness_report.json, pattern_coverage_report.json
+
+2. **Batch 2** (Seeds S0021-S0040):
+   - Filter LEGOs S0021Lxx through S0040Lxx
+   - **READ validator output from Batch 1** (completeness_report.json, pattern_coverage_report.json)
+   - Identify missing edges and underused LEGOs
+   - Generate baskets, targeting gaps (50% of eternal phrases should address identified weaknesses)
+   - **APPEND** to existing lego_baskets.json (merge, don't replace!)
+   - Run validators on ALL baskets (S0001-S0040 combined)
+   - Update validator output files
+
+3. **Batch 3** (Seeds S0041-S0060):
+   - Filter LEGOs S0041Lxx through S0060Lxx
+   - Read Batch 2 validator output
+   - Target new gaps
+   - APPEND to lego_baskets.json
+   - Run validators on ALL baskets
+   - Continue pattern...
+
+4. **Continue** for remaining batches (up to S0${String(seeds).padStart(4, '0')})
+
+**Running Validators** (after each batch):
+\`\`\`bash
+# Pattern coverage analysis
+node validators/analyze-pattern-coverage.cjs ${courseCode} --output ${courseDir}/pattern_coverage_report.json
+
+# Completeness score
+node validators/analyze-completeness.cjs ${courseCode} --output ${courseDir}/completeness_report.json
 \`\`\`
+
+**Reading Validator Output** (for batch N+1):
+- Read \`${courseDir}/pattern_coverage_report.json\` → identifies missing edges, underused LEGOs
+- Read \`${courseDir}/completeness_report.json\` → overall quality score, vocabulary balance
+- Use this data to target gaps in eternal phrase generation (see Phase 5 intelligence for details)
 
 **Key Points**:
 - E-phrases: 7-10 words, natural, conversational
 - D-phrases: Expanding windows (2, 3, 4, 5 LEGOs)
-- Vocabulary constraints: LEGO #N only uses LEGOs #1 to N-1
+- ABSOLUTE GATE: LEGO #N only uses LEGOs #1 to N-1 (guaranteed by seed ordering)
 - Perfect grammar in BOTH languages
-- Read FULL phase intelligence for all details
+- **Batch-aware**: Each batch learns from previous batch's pattern gaps
+- Read FULL phase intelligence for batch-aware edge targeting details
 
 ---
 
@@ -348,10 +378,11 @@ Use WebFetch to get the latest methodology before executing each phase.
 - Component arrays correct format?
 - No orphaned LEGOs?
 
-### After Phase 5
+### After Phase 5 (each batch)
 - E-phrases 7-10 words?
 - Perfect target grammar?
 - D-phrases respect vocabulary constraints?
+- Validator output shows improving pattern density across batches?
 
 ---
 
@@ -359,7 +390,9 @@ Use WebFetch to get the latest methodology before executing each phase.
 
 ✅ Phase 1: \`seed_pairs.json\` created with ${seeds} seed pairs
 ✅ Phase 3: \`lego_pairs.json\` created with extracted LEGOs
-✅ Phase 5: \`lego_baskets.json\` created with baskets for each LEGO
+✅ Phase 5: \`lego_baskets.json\` created with baskets for each LEGO (batch-aware, self-healing)
+✅ Validators run after each Phase 5 batch
+✅ Pattern density improves across batches
 ✅ Quality checks passed
 ✅ Files written to correct locations
 
@@ -374,9 +407,14 @@ After completion, report:
 
 Phase 1: ✅ ${seeds} seed pairs → seed_pairs.json
 Phase 3: ✅ [X] LEGOs → lego_pairs.json
-Phase 5: ✅ [X] baskets → lego_baskets.json
+Phase 5: ✅ [X] baskets (${Math.ceil(seeds / 20)} batches, batch-aware) → lego_baskets.json
 
-Quality: [Summary of spot checks]
+Pattern Coverage Evolution:
+- Batch 1: [X]% pattern density
+- Batch 2: [X]% pattern density (↑ from batch 1)
+- Final: [X]% pattern density
+
+Quality: [Summary of final validator output]
 Location: ${courseDir}
 Next: Review at ${CONFIG.TRAINING_URL}/courses/${courseCode}
 \`\`\`
