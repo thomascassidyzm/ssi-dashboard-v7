@@ -276,15 +276,26 @@ Use WebFetch to get the latest methodology before executing each phase.
     ["S0001L01", "B", "Quiero", "I want"],
     ["S0001L02", "B", "hablar", "to speak"],
     ["S0001L03", "B", "español", "Spanish"]
+  ]],
+  ["S0019", ["Pero no quiero parar de hablar", "But I don't want to stop talking"], [
+    ["S0019L01", "B", "pero", "but"],
+    ["S0019L02", "C", "no quiero", "I don't want", [["no", "not"], ["quiero", "I want"]]],
+    ["S0019L03", "C", "parar de", "to stop", [["parar", "to stop"], ["de", "of"]]],
+    ["S0019L04", "B", "hablar", "to talk"]
   ]]
 ]
 \`\`\`
 
+**COMPOSITE format**: \`["LEGO_ID", "C", "target", "known", [["part1_target", "part1_literal"], ["part2_target", "part2_literal"]]]\`
+**Note**: Componentization is TWO elements per component (target + literal known), NO third element!
+
 **Key Points**:
-- Extract BASE and COMPOSITE LEGOs only (v7.0 compact format)
-- Component arrays for composites: \`[["component", "trans", "LEGO_ID"], ...]\`
-- FD compliance, FCFS, minimum reusable unit
-- Read FULL phase intelligence for all details
+- Extract BASE and COMPOSITE LEGOs (v7.7 format)
+- **COMPOSITE rule**: Multi-word target phrases that can be pedagogically broken down MUST be COMPOSITE with componentization
+- **Componentization format**: \`[["targetPart", "literalKnown"], ...]\` (TWO elements, NO LEGO_IDs!)
+- **Literal translations**: Components must show HOW target language constructs meaning
+- FD compliance determines validity, pedagogical judgment determines granularity
+- Read FULL phase intelligence for componentization examples and judgment criteria
 
 ---
 
