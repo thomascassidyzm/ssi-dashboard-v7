@@ -38,7 +38,10 @@
                   :class="[
                     'text-xs px-2 py-1 rounded',
                     phase.status === 'active' ? 'bg-green-500/20 text-green-400' :
-                    phase.status === 'pending' ? 'bg-yellow-500/20 text-yellow-400' :
+                    phase.status === 'inactive' ? 'bg-gray-500/20 text-gray-400' :
+                    phase.status === 'todo' ? 'bg-yellow-500/20 text-yellow-400' :
+                    phase.status === 'complete' ? 'bg-blue-500/20 text-blue-400' :
+                    phase.status === 'documented' ? 'bg-purple-500/20 text-purple-400' :
                     'bg-gray-500/20 text-gray-400'
                   ]"
                 >
@@ -46,6 +49,9 @@
                 </span>
                 <span v-if="phase.version" class="text-xs text-emerald-400 ml-2">
                   v{{ phase.version }}
+                </span>
+                <span v-if="phase.locked" class="text-xs text-amber-400 ml-1" title="Locked SSoT">
+                  🔒
                 </span>
               </div>
             </div>
@@ -118,15 +124,15 @@
 import { ref, computed, onMounted } from 'vue'
 
 const phases = [
-  { id: '1', name: 'Translation', status: 'active', version: '1.0' },
-  { id: '2', name: 'Corpus', status: 'active', version: '1.0' },
-  { id: '3', name: 'LEGO Extraction', status: 'active', version: '2.0' },
-  { id: '3.5', name: 'Graph', status: 'active', version: '1.0' },
-  { id: '5', name: 'Baskets', status: 'active', version: '1.0' },
-  { id: '5.5', name: 'Deduplication', status: 'active', version: '1.0' },
-  { id: '6', name: 'Introductions', status: 'pending' },
-  { id: '7', name: 'Compilation', status: 'pending' },
-  { id: '8', name: 'Audio (Kai)', status: 'pending' }
+  { id: '1', name: 'Translation', status: 'active', version: '2.5', locked: true },
+  { id: '2', name: 'Corpus', status: 'inactive', version: '1.0' },
+  { id: '3', name: 'LEGO Extraction', status: 'active', version: '3.3', locked: true },
+  { id: '3.5', name: 'Graph', status: 'inactive', version: '1.0' },
+  { id: '5', name: 'Baskets', status: 'active', version: '2.1', locked: true },
+  { id: '5.5', name: 'Deduplication', status: 'todo', version: '1.0' },
+  { id: '6', name: 'Introductions', status: 'todo', version: '1.0' },
+  { id: '7', name: 'Compilation', status: 'complete', version: '1.0' },
+  { id: '8', name: 'Audio (Kai)', status: 'documented', version: '1.0' }
 ]
 
 const selectedPhase = ref('3')
@@ -144,13 +150,14 @@ async function loadPhase(phase) {
   selectedPhase.value = phase
 
   try {
-    const response = await fetch(`http://localhost:3456/phase-intelligence/${phase}`)
+    const response = await fetch(`http://localhost:3456/api/prompts/${phase}`)
 
     if (!response.ok) {
       throw new Error(`Phase ${phase} not found`)
     }
 
-    intelligence.value = await response.text()
+    const data = await response.json()
+    intelligence.value = data.prompt
   } catch (err) {
     error.value = err.message
     intelligence.value = ''
