@@ -156,20 +156,27 @@ Each phase intelligence module contains:
 
 ---
 
-### Phase 5.5: Basket Deduplication → lego_baskets_deduplicated.json
+### Phase 5.5: Basket Deduplication → lego_pairs_deduplicated.json, lego_baskets_deduplicated.json
 **File**: `phase_5.5_basket_deduplication.md`
-**Version**: 1.0
+**Version**: 2.0 🔒 **LOCKED** (2025-10-28)
 **Status**: ✅ **ACTIVE**
-**Output**: `lego_baskets_deduplicated.json`
+**Output**: `lego_pairs_deduplicated.json`, `lego_baskets_deduplicated.json`
 
 **Focus**:
-- Identify duplicate LEGOs (same target + known text)
-- First occurrence wins (by LEGO ID order)
-- Remove ~22% duplicates (typical deduplication rate)
-- Generate deduplication report
+- Character-identical deduplication (trim + lowercase, preserve punctuation)
+- First occurrence wins (by chronological order in seed sequence)
+- Remove ~20-30% duplicates (typical deduplication rate)
+- Punctuation preserved (semantic difference: "quieres" ≠ "¿quieres?")
 
-**Note**: Logic created from Phase 5 requirements (not in separate APML prompt)
-**Created**: 2025-10-23
+**Latest updates (v2.0)**:
+- Simplified to character-identical logic (removed feeder-specific logic)
+- Case-insensitive matching with trimmed whitespace
+- Punctuation semantic preservation
+- Script implemented: `scripts/phase5.5-deduplicate-baskets.cjs`
+- Tested: 28.1% deduplication on spa_for_eng_20seeds
+
+**Previous versions**:
+- v1.0: Initial feeder-based deduplication logic
 
 ---
 

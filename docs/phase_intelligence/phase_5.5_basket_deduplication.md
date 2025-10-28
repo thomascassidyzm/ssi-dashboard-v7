@@ -1,236 +1,164 @@
-# Phase 5.5: Basket Deduplication → lego_baskets_deduplicated.json
+# Phase 5.5: LEGO Basket Deduplication
 
-**Version**: 1.0 (Created 2025-10-23)
-**Status**: Active methodology for Phase 5.5 deduplication
-**Output**: `vfs/courses/{course_code}/lego_baskets_deduplicated.json`
-
-**NOTE**: APML registry slot PHASE_5_5 contains mislabeled Phase 6 (Introductions) content. This module documents the actual deduplication logic.
-
----
-
-## Task
-
-Remove duplicate LEGO baskets that result from feeder LEGOs duplicating regular LEGOs from Phase 3.
-
-## Problem Statement
-
-Phase 5 generates baskets for ALL LEGOs including:
-1. Regular lego_pairs from Phase 3
-2. Feeder components extracted from COMPOSITE LEGOs
-
-**Result**: Some feeders are DUPLICATES of existing LEGOs, creating redundant baskets.
-
-**Example**:
-```
-S0002L01: "provando" / "trying" (regular LEGO)
-S0002L03: Component array includes ["provando", "trying", "S0002L01"]
-→ No duplicate created (component references existing LEGO)
-
-But if a feeder was created as separate entry:
-S0002F01: "provando" / "trying" (feeder)
-→ DUPLICATE of S0002L01 - basket should be removed
-```
+**Version**: 2.0 🔒 (Updated 2025-10-28)
+**Status**: Locked
+**Input**: `lego_pairs.json`, `lego_baskets.json`
+**Output**: `lego_pairs_deduplicated.json`, `lego_baskets_deduplicated.json`
 
 ---
 
-## Input
+## Purpose
 
-- Unfiltered baskets: `vfs/courses/{course_code}/lego_baskets.json`
-- LEGO pairs with components: `vfs/courses/{course_code}/lego_pairs.json`
+Remove duplicate LEGO pairs where both target and known text are character-identical (case-insensitive, trimmed). First occurrence wins. Remove baskets for deduplicated LEGOs.
 
----
+## Deduplication Logic
 
-## Your Mission
+### Identity Rules
 
-### 1. Identify Duplicates
+1. **Character-level comparison** after normalization:
+   - Trim leading/trailing whitespace
+   - Case-insensitive (lowercase both)
+   - **Preserve punctuation** (semantic difference)
 
-**Matching criteria** (ALL must match):
-- Same `target` text
-- Same `known` text
-- Both are BASE LEGOs or equivalent functionality
+2. **Deduplication key:** `target.trim().toLowerCase() ||| known.trim().toLowerCase()`
 
-**Algorithm**:
+3. **First occurrence wins:**
+   - Keep first LEGO with this key
+   - Discard all subsequent LEGOs with same key
+   - Remove baskets for discarded LEGOs
+
+### Examples
+
+**Identical (deduplicate):**
+- "Hablo" + "I speak" = "hablo" + "I SPEAK" ✅
+- "quiero que hables" + "I want you to speak" = "Quiero Que Hables" + "I Want You To Speak" ✅
+
+**Different (keep both):**
+- "quieres" + "you want" ≠ "¿quieres?" + "do you want?" ❌ (punctuation = semantic)
+- "habló" + "he spoke" ≠ "hablo" + "I speak" ❌ (accents preserved)
+
+## Implementation
+
 ```javascript
-const seen = new Map() // key: "target|known", value: first_lego_id
+function createDedupeKey(target, known) {
+  return `${target.trim().toLowerCase()}|||${known.trim().toLowerCase()}`;
+}
 
-for (const [lego_id, basket] of Object.entries(lego_baskets)) {
-  const key = `${basket.lego[0]}|${basket.lego[1]}`
+// Track first occurrence of each unique LEGO
+const seen = new Map(); // dedupeKey -> first legoId
+const keptLegoIds = new Set();
 
-  if (seen.has(key)) {
-    // Duplicate found!
-    const original_id = seen.get(key)
-    console.log(`Duplicate: ${lego_id} matches ${original_id}`)
-    duplicates.push(lego_id)
-  } else {
-    // First occurrence - keep it
-    seen.set(key, lego_id)
+for (const seed of seeds) {
+  const [seedId, pair, legos] = seed;
+  const deduplicatedLegos = [];
+
+  for (const lego of legos) {
+    const [legoId, type, target, known] = lego;
+    const dedupeKey = createDedupeKey(target, known);
+
+    if (!seen.has(dedupeKey)) {
+      // First occurrence - keep it
+      seen.set(dedupeKey, legoId);
+      keptLegoIds.add(legoId);
+      deduplicatedLegos.push(lego);
+    }
+    // else: duplicate - discard
+  }
+
+  if (deduplicatedLegos.length > 0) {
+    deduplicatedSeeds.push([seedId, pair, deduplicatedLegos]);
+  }
+}
+
+// Filter baskets: only keep baskets for kept LEGOs
+const deduplicatedBaskets = {};
+for (const [legoId, basket] of Object.entries(basketsData)) {
+  if (keptLegoIds.has(legoId)) {
+    deduplicatedBaskets[legoId] = basket;
   }
 }
 ```
 
-### 2. Deduplication Strategy
+## Expected Deduplication Rate
 
-**Rule**: **First occurrence wins** (by LEGO ID order)
+**~20-30%** of LEGOs are duplicates across seeds.
 
-**Priority**:
-1. Regular LEGOs (S0001L01, S0001L02, ...) come before feeders
-2. Within each type, lower numbers win
-3. S0001L01 > S0001F01 (regular LEGO wins)
-4. S0001L01 > S0002L01 (earlier seed wins)
-
-**Example**:
-```
-S0002L01: "provando" / "trying" ← KEEP (first occurrence)
-S0005F02: "provando" / "trying" ← REMOVE (duplicate)
-```
-
-### 3. Remove Duplicates
-
-Generate deduplicated output with only first occurrences.
+Common duplicates:
+- High-frequency words: "quiero" (I want), "hablar" (to speak), "español" (Spanish)
+- Question words: "cómo" (how), "qué" (what), "cuándo" (when)
+- Pronouns: "yo" (I), "tú" (you), "él" (he)
 
 ---
 
 ## Output Format
 
-Save to: `vfs/courses/{course_code}/lego_baskets_deduplicated.json`
+**lego_pairs_deduplicated.json:**
+- Array of seeds (same structure as input)
+- Only first occurrence of each unique LEGO
+- Seeds with no LEGOs after deduplication are removed
 
-**Same format as input**, but with duplicates removed:
+**lego_baskets_deduplicated.json:**
+- Object keyed by lego_id (same structure as input)
+- Only baskets for LEGOs that were kept
 
-```json
-{
-  "S0001L01": {
-    "lego": ["Quiero", "I want"],
-    "e": [...],
-    "d": {...}
-  },
-  "S0001L02": {
-    "lego": ["hablar", "to speak"],
-    "e": [...],
-    "d": {...}
-  }
-  // S0005F01 removed (was duplicate of S0001L02)
-}
+---
+
+## Test Results: spa_for_eng_20seeds
+
+**Input:**
+- 20 seeds
+- 89 total LEGOs
+- 64 baskets
+
+**Output:**
+- 20 seeds (no seeds removed)
+- 64 unique LEGOs (25 duplicates removed, 28.1%)
+- 64 baskets kept (0 removed - duplicates had no baskets)
+
+**Sample duplicates removed:**
+- S0001L02 (hablar, to speak) - appeared 5 times, kept first occurrence
+- S0001L03 (español, Spanish) - appeared 6 times, kept first occurrence
+- S0001L01 (Quiero, I want) - appeared 4 times, kept first occurrence
+
+---
+
+## Usage
+
+```bash
+node scripts/phase5.5-deduplicate-baskets.cjs <course_code>
+
+# Example
+node scripts/phase5.5-deduplicate-baskets.cjs spa_for_eng_20seeds
 ```
 
 ---
 
-## Deduplication Report
+## Notes
 
-Generate a report showing what was removed:
+1. **Why 0 baskets removed?**
+   - Only first occurrence of each LEGO gets a basket (from Phase 5)
+   - Duplicates are references to earlier LEGOs
+   - Therefore, duplicates have no baskets to remove
 
-```json
-{
-  "input_count": 115,
-  "output_count": 90,
-  "duplicates_removed": 25,
-  "removed_baskets": [
-    {
-      "lego_id": "S0005F01",
-      "duplicate_of": "S0001L02",
-      "lego": ["hablar", "to speak"]
-    },
-    {
-      "lego_id": "S0008F02",
-      "duplicate_of": "S0002L01",
-      "lego": ["provando", "trying"]
-    }
-  ]
-}
-```
+2. **Seed removal:**
+   - Seeds with all LEGOs deduplicated are removed entirely
+   - This is rare (usually only for test/demo seeds)
 
-Save to: `vfs/phase_outputs/phase_5.5_deduplication_report.json`
-
----
-
-## Critical Notes
-
-- **Preserve basket content**: Only remove duplicates, don't modify baskets
-- **Maintain order**: Output should preserve chronological LEGO order
-- **Keep first occurrence**: Earlier LEGOs always win over later duplicates
-- **No merging**: Don't combine baskets - just remove duplicates entirely
-
----
-
-## Expected Deduplication Rates
-
-Based on empirical data:
-
-- **Spanish**: 115 baskets → ~90 baskets (22% duplicates)
-- **Italian**: 115 baskets → ~90 baskets (22% duplicates)
-- **French**: 116 baskets → ~90 baskets (22% duplicates)
-- **Mandarin**: 103 baskets → ~92 baskets (11% duplicates, fewer compounds)
-
----
-
-## Validation Requirements
-
-### 1. Uniqueness Check
-
-After deduplication:
-```javascript
-const targets = new Set()
-for (const basket of Object.values(deduplicated)) {
-  const key = `${basket.lego[0]}|${basket.lego[1]}`
-  if (targets.has(key)) {
-    throw new Error(`Deduplication failed - duplicate remains: ${key}`)
-  }
-  targets.add(key)
-}
-```
-
-### 2. Preserve Originals
-
-Verify no first-occurrence LEGOs were removed:
-```javascript
-// All S0001L01, S0001L02, etc. should still exist
-// unless they were genuinely duplicates of even earlier LEGOs
-```
-
-### 3. Count Validation
-
-```javascript
-if (input_count - output_count !== duplicates_removed) {
-  throw new Error('Deduplication count mismatch')
-}
-```
-
----
-
-## Success Criteria
-
-✓ All duplicate baskets identified
-✓ First occurrence preserved for each unique LEGO
-✓ Later duplicates removed
-✓ Output contains NO duplicates (verified)
-✓ Deduplication report generated
-✓ Basket count reduced by expected percentage (~22%)
-✓ Ready for Phase 6 (Introduction generation)
-
----
-
-## Why This Phase Exists
-
-**Problem**: Phase 5 must process ALL potential LEGOs (including feeders) because:
-- Can't know in advance which feeders are duplicates
-- Need to maintain vocabulary constraints
-- Must respect chronological order
-
-**Solution**: Phase 5.5 cleans up after the fact
-- Phase 5 generates ALL baskets (better safe than sorry)
-- Phase 5.5 removes redundant baskets (clean final output)
-- Phase 6 works with deduplicated set
+3. **LEGO ID preservation:**
+   - Original LEGO IDs are preserved (S0001L02, etc.)
+   - Makes tracing back to original seeds easier
 
 ---
 
 ## Version History
 
-**v1.0 (2025-10-23)**:
-- Created module (not extracted from APML - logic was inline in Phase 5)
-- Documented deduplication algorithm (first occurrence wins)
-- Added validation requirements
-- Defined output format and deduplication report
-- Noted APML mislabeling (PHASE_5_5 slot contains Phase 6 content)
+- **v2.0** 🔒 (2025-10-28): **LOCKED** - Simplified to character-identical deduplication
+  - Character-identical deduplication (trim + lowercase)
+  - Punctuation preserved (semantic difference)
+  - First occurrence wins
+  - Script implemented: `scripts/phase5.5-deduplicate-baskets.cjs`
+  - Tested on spa_for_eng_20seeds: 28.1% deduplication rate
 
----
-
-**Next Update**: Capture any edge cases discovered during multi-language deduplication
+- **v1.0** (2025-10-23): Initial version (feeder-based deduplication)
+  - Focused on removing feeder duplicates
+  - More complex logic based on LEGO types
