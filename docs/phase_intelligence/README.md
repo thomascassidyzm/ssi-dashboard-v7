@@ -44,25 +44,26 @@ Each phase intelligence module contains:
 
 ### Phase 1: Pedagogical Translation → seed_pairs.json
 **File**: `phase_1_seed_pairs.md`
-**Version**: 2.5 🔒 **LOCKED** (2025-10-28)
+**Version**: 2.6 🔒 **LOCKED** (2025-10-28)
 **Status**: ✅ **ACTIVE**
 **Output**: `seed_pairs.json`
 
 **Focus**:
 - **TWO ABSOLUTE RULES**: (1) Never change canonical meaning, (2) Strongly prefer cognates
+- **Synonym flexibility**: Canonical known can say "often" while target uses cognate "frecuentemente"
 - Examples over precepts (Spanish, French, Mandarin thinking patterns)
 - Use canonical English directly when English is target OR known (no back-translation)
 - Balance principle: Cognate transparency vs known language smoothness
 - Zero-variation principle ("First Word Wins")
 - Progressive heuristic curve (seeds 1-100, 101-300, 301-668)
 
-**Latest updates (v2.5)**:
-- Added "Learning by Example" section with multi-language thinking
-- Softened cognate rule from "MANDATORY" to "strongly prefer" (avoid overfitting)
-- Cross-language examples showing decision-making process
-- Balance principle for transparent vs natural translations
+**Latest updates (v2.6)**:
+- **Synonym flexibility principle**: Documented how literal componentization teaches synonym relationships
+- Canonical naturalness ("often") + cognate transparency ("frecuentemente") → learner bridges "often = frequently"
+- No need to force exact word matches between known and target
 
 **Previous versions**:
+- v2.5: "Learning by Example" section with multi-language thinking
 - v2.4: TWO ABSOLUTE RULES section
 - v2.3: English handling fix (use canonical directly)
 - v2.2: Generation-focused (validation in Phase 1.5)
@@ -89,7 +90,7 @@ Each phase intelligence module contains:
 
 ### Phase 3: LEGO Extraction → lego_pairs.json
 **File**: `phase_3_lego_pairs.md`
-**Version**: 3.4 🔒 **LOCKED** (2025-10-28)
+**Version**: 3.5 🔒 **LOCKED** (2025-10-28)
 **Status**: ✅ **ACTIVE**
 **Output**: `lego_pairs.json`
 
@@ -98,17 +99,18 @@ Each phase intelligence module contains:
 - Treat each seed as isolated (no "reused LEGOs from earlier seeds" thinking)
 - 4-step decomposition sequence (tiling, feeders, composite marking, FD validation)
 - **LITERAL componentization**: Components reveal HOW target language constructs meaning
+- **Synonym flexibility**: Literal components automatically teach synonym relationships
 - COMPOSITE LEGOs format: `[[targetPart, literalKnown], ...]`
 - Functional Determinism compliance (one input = one output)
 
-**Latest updates (v3.4)**:
-- **CRITICAL**: Strengthened STEP 4 - componentization MUST use literal translations
-- Golden rule: "If I saw this component alone, what does it literally mean?"
-- "lo más" = "the most" (literal) NOT "as" (semantic role)
-- Pedagogical transparency: Learners see how target language constructs meaning
-- Format simplified: no feeder IDs in componentization arrays
+**Latest updates (v3.5)**:
+- **NEW SECTION**: "Synonym Flexibility Through Literal Components"
+- Documented "often" → "frecuentemente" (frequently) example
+- Learner experience: Hears "often", learns "frecuentemente", sees "frequently" breakdown, bridges synonyms
+- Validates Phase 1's synonym flexibility principle through implementation
 
 **Previous versions**:
+- v3.4: Strengthened STEP 4 - literal componentization rule
 - v3.3: TILING FIRST principle, isolated seed decomposition
 - v3.2: Validation-focused iteration
 - v2.0: Multiple composites strategy, preposition wrapping

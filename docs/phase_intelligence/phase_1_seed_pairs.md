@@ -1,6 +1,6 @@
 # Phase 1: Pedagogical Translation → seed_pairs.json
 
-**Version**: 2.5 (2025-10-28)
+**Version**: 2.6 🔒 **LOCKED** (2025-10-28)
 **Status**: Active methodology for Phase 1 translation
 **Output**: `vfs/courses/{course_code}/seed_pairs.json`
 
@@ -221,6 +221,7 @@ Output: ["而且我想要你明天和我说英语", "And I want you to speak Eng
 3. **Semantic preservation is absolute** - never change meaning to simplify grammar (S0015 subjunctive)
 4. **Language-specific strategies emerge** - Mandarin uses simplicity, Romance uses cognates
 5. **Balance is key** - no rigid rules, just principled thinking
+6. **Synonym flexibility** - canonical known language can use one word ("often") while target uses cognate equivalent ("frecuentemente" for "frequently"). Phase 6 introductions will reveal: "frecuentemente means frequently" and learner makes natural mental bridge: often = frequently. This teaches synonym relationships gracefully without changing canonical seeds.
 
 **These rules override all other heuristics.**
 
@@ -904,6 +905,13 @@ If your Extended Thinking identifies issues, regenerate that seed before continu
 ---
 
 ## Version History
+
+**v2.6 (2025-10-28) 🔒 LOCKED**:
+- **Synonym flexibility principle**: Added explicit documentation of how literal componentization teaches synonym relationships
+- Canonical known language can use natural wording ("often") while target uses cognate ("frecuentemente")
+- Phase 6 introductions reveal "frecuentemente means frequently" → learner bridges "often = frequently"
+- No need to force exact word matches between known and target
+- **Impact**: Maintains canonical naturalness while maximizing cognate transparency
 
 **v2.5 (2025-10-28)**:
 - **Examples over precepts**: Added "Learning by Example" section with multi-language thinking

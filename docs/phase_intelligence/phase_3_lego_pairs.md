@@ -1,6 +1,6 @@
 # Phase 3: LEGO Extraction Intelligence
 
-**Version**: 3.4 🔒 **LOCKED** (2025-10-28)
+**Version**: 3.5 🔒 **LOCKED** (2025-10-28)
 **Status**: Active
 **Output**: `vfs/courses/{course_code}/lego_pairs.json`
 
@@ -148,6 +148,44 @@ Hides the "that" + subjunctive pattern - learner can't recognize it elsewhere
 ```
 
 **Golden rule:** Ask yourself: "If I saw this component alone in another sentence, what does it literally mean?"
+
+### Synonym Flexibility Through Literal Components
+
+**KEY INSIGHT**: Literal componentization automatically teaches synonym relationships.
+
+**Example from Phase 1:**
+```
+Seed: "cómo hablar lo más frecuentemente posible"
+Known: "how to speak as often as possible"
+
+Notice: Spanish says "frecuentemente" (frequently), English says "often"
+```
+
+**Phase 3 componentization (literal):**
+```json
+["lo más frecuentemente posible", "as often as possible", [
+  ["lo más", "the most"],
+  ["frecuentemente", "frequently"],  ← literal translation
+  ["posible", "possible"]
+]]
+```
+
+**Phase 6 introduction says:**
+"The Spanish for 'as often as possible' is 'lo más frecuentemente posible' - where 'lo más' means 'the most', 'frecuentemente' means 'frequently', and 'posible' means 'possible'."
+
+**Learner experience:**
+1. Hears English: "as **often** as possible"
+2. Learns Spanish: "lo más **frecuentemente** posible"
+3. Sees breakdown: "frecuentemente means **frequently**"
+4. Mental bridge: "often = frequently" (synonyms!)
+5. Bonus: Cognate transparency (frecuentemente ≈ frequently)
+
+**Why this works pedagogically:**
+- Canonical English stays natural ("often")
+- Spanish uses cognate for transparency ("frecuentemente")
+- Literal componentization reveals the synonym relationship
+- Learner gains flexible vocabulary understanding
+- No need to change canonical seeds to force exact word matches
 
 ---
 
@@ -452,6 +490,15 @@ Ready to output ✓
 ---
 
 ## 🔄 VERSION HISTORY
+
+**v3.5 (2025-10-28) 🔒 LOCKED - SYNONYM FLEXIBILITY**:
+- **NEW SECTION**: Added "Synonym Flexibility Through Literal Components"
+- **KEY INSIGHT**: Literal componentization automatically teaches synonym relationships
+- Documented "often" → "frecuentemente" (frequently) example showing natural synonym bridging
+- Learner experience: Hears "often", learns "frecuentemente", sees "frequently" breakdown, bridges synonyms
+- **Pedagogical win**: Maintains canonical naturalness while maximizing cognate transparency
+- No need to change canonical seeds to force exact word matches
+- **Impact**: Validates Phase 1's synonym flexibility principle through Phase 3 implementation
 
 **v3.4 (2025-10-28) 🔒 LOCKED - LITERAL COMPONENTIZATION**:
 - **CRITICAL CLARIFICATION**: Strengthened STEP 4 to emphasize LITERAL translations in componentization
