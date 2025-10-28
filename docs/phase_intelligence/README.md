@@ -40,28 +40,41 @@ Each phase intelligence module contains:
 
 ---
 
-## Available Modules (Migrated)
+## Available Modules (Locked Intelligence - SSoT)
 
 ### Phase 1: Pedagogical Translation → seed_pairs.json
 **File**: `phase_1_seed_pairs.md`
-**Version**: 1.0
+**Version**: 2.5 🔒 **LOCKED** (2025-10-28)
 **Status**: ✅ **ACTIVE**
 **Output**: `seed_pairs.json`
 
 **Focus**:
-- Cognate preference (maximize vocabulary similarity)
-- Variation reduction ("First Word Wins")
+- **TWO ABSOLUTE RULES**: (1) Never change canonical meaning, (2) Strongly prefer cognates
+- Examples over precepts (Spanish, French, Mandarin thinking patterns)
+- Use canonical English directly when English is target OR known (no back-translation)
+- Balance principle: Cognate transparency vs known language smoothness
+- Zero-variation principle ("First Word Wins")
 - Progressive heuristic curve (seeds 1-100, 101-300, 301-668)
-- Language-specific examples (Spanish, French, Italian, Mandarin)
 
-**Extracted from**: APML PHASE_PROMPTS.PHASE_1 (2025-10-23)
+**Latest updates (v2.5)**:
+- Added "Learning by Example" section with multi-language thinking
+- Softened cognate rule from "MANDATORY" to "strongly prefer" (avoid overfitting)
+- Cross-language examples showing decision-making process
+- Balance principle for transparent vs natural translations
+
+**Previous versions**:
+- v2.4: TWO ABSOLUTE RULES section
+- v2.3: English handling fix (use canonical directly)
+- v2.2: Generation-focused (validation in Phase 1.5)
+- v2.1: Extended Thinking requirement, cognate preference
+- v1.0: Initial extraction from APML PHASE_PROMPTS.PHASE_1
 
 ---
 
 ### Phase 2: Corpus Intelligence → corpus_intelligence.json
 **File**: `phase_2_corpus_intelligence.md`
 **Version**: 1.0
-**Status**: ✅ **ACTIVE**
+**Status**: ⚠️ **NEEDS UPDATE** (not currently in use for v7.0 workflow)
 **Output**: `phase_2_corpus_intelligence.json`
 
 **Focus**:
@@ -70,38 +83,42 @@ Each phase intelligence module contains:
 - Concept ownership mapping
 - Dependency tracking
 
-**Extracted from**: APML PHASE_PROMPTS.PHASE_2 (2025-10-23)
+**Note**: Phase 2 not currently invoked in locked workflow. Phases 1 → 3 → 5 active.
 
 ---
 
 ### Phase 3: LEGO Extraction → lego_pairs.json
 **File**: `phase_3_lego_pairs.md`
-**Version**: 2.0
+**Version**: 3.3 🔒 **LOCKED** (2025-10-27)
 **Status**: ✅ **ACTIVE**
 **Output**: `lego_pairs.json`
 
 **Focus**:
-- Minimum reusable unit principle
-- Preposition wrapping (must be buried in composites)
-- Multiple composites for reusability
-- Component data vs explanations (Phase 3/6 separation)
-- BASE vs COMPOSITE (no separate feeders in v7.0 compact format)
+- **TILING FIRST**: Every seed must decompose into LEGOs that reconstruct it perfectly
+- Treat each seed as isolated (no "reused LEGOs from earlier seeds" thinking)
+- 4-step decomposition sequence (tiling, feeders, composite marking, FD validation)
+- COMPOSITE LEGOs with componentization arrays and feeder references
+- Functional Determinism compliance (one input = one output)
+- Literal component translations (reveal target language construction)
 
-**Latest updates (2025-10-23)**:
-- Added minimum unit heuristic (no "Sto", "a" fragments)
-- Clarified preposition wrapping with component array format
-- Multiple composites strategy (maximize reusability)
-- Phase 3/Phase 6 responsibility separation
-- Removed FEEDER type (compact v7.0 format)
+**Latest updates (v3.3)**:
+- TILING FIRST principle (primary focus)
+- Generation-focused (validation in Phase 3.5)
+- 4-step decomposition sequence
+- Isolated seed approach (no premature de-duplication thinking)
+- Emphasis on FD compliance and semantic preservation
 
-**Previously**: `phase_3_extraction.md` (renamed to match output file)
+**Previous versions**:
+- v3.2: Validation-focused iteration
+- v2.0: Multiple composites strategy, preposition wrapping
+- v1.0: Initial extraction from APML
 
 ---
 
 ### Phase 3.5: Graph Construction → lego_graph.json
 **File**: `phase_3.5_lego_graph.md`
 **Version**: 1.0
-**Status**: ✅ **ACTIVE**
+**Status**: ⚠️ **NEEDS UPDATE** (not currently in use for v7.0 workflow)
 **Output**: `phase_3.5_lego_graph.json`
 
 **Focus**:
@@ -110,26 +127,32 @@ Each phase intelligence module contains:
 - Edge weight calculation (frequency × pedagogical value)
 - Graph validation (connectivity, cycles)
 
-**Extracted from**: APML PHASE_PROMPTS.PHASE_3_5 (2025-10-23)
-**New in**: APML v7.0 (replaces manual DEBUT/ETERNAL logic)
+**Note**: Graph construction not currently invoked. Basket generation goes directly from Phase 3 → Phase 5.
 
 ---
 
 ### Phase 5: Basket Generation → lego_baskets.json
 **File**: `phase_5_lego_baskets.md`
-**Version**: 1.0
+**Version**: 2.1 🔒 **LOCKED** (2025-10-26)
 **Status**: ✅ **ACTIVE**
 **Output**: `lego_baskets.json`
 
 **Focus**:
-- E-phrases (7-10 words, natural, conversational)
-- D-phrases (expanding windows: 2, 3, 4, 5 LEGOs)
-- Vocabulary constraints (LEGO #N can only use LEGOs #1 to N-1)
-- Culminating LEGO rules (E-phrase #1 = complete seed)
-- Italian-specific grammar rules (infinitive + preposition requirements)
-- Bilingual validation (perfect grammar in BOTH languages)
+- **Eternal phrases (e)**: 3-4 high-value phrases for spaced repetition (returned to repeatedly)
+- **Debut phrases (d)**: Expanding windows (2, 3, 4, 5 LEGOs) for first presentation only
+- **ABSOLUTE GATE**: Vocabulary constraint (LEGO #N can only use LEGOs #1 to N-1)
+- Balanced vocabulary coverage across eternal phrases
+- Grammatical accuracy in BOTH languages (never sacrifice for variety)
+- Natural, semantically valuable phrases only
 
-**Extracted from**: APML PHASE_PROMPTS.PHASE_5 (2025-10-23)
+**Latest updates (v2.1)**:
+- Clarified eternal vs debut distinction (spaced rep vs first exposure)
+- ABSOLUTE GATE vocabulary constraint (immutable rule)
+- Eternal phrase selection: high-value, balanced previous vocab
+- Debut phrases: systematic expanding windows from eternal phrases
+
+**Previous versions**:
+- v1.0: Initial extraction from APML PHASE_PROMPTS.PHASE_5
 
 ---
 
@@ -212,21 +235,23 @@ Each phase intelligence module contains:
 
 ---
 
-## Migration Status
+## Locked Intelligence Status
 
-**Completed**: 8 of 8 phases documented (100%) ✅
+**Active Workflow**: Phase 1 → 3 → 5 (seed_pairs → lego_pairs → lego_baskets)
 
-| Phase | Status | File | Version | Assignee |
-|-------|--------|------|---------|----------|
-| 1 | ✅ Complete | phase_1_seed_pairs.md | 1.0 | - |
-| 2 | ✅ Complete | phase_2_corpus_intelligence.md | 1.0 | - |
-| 3 | ✅ Complete | phase_3_lego_pairs.md | 2.0 | - |
-| 3.5 | ✅ Complete | phase_3.5_lego_graph.md | 1.0 | - |
-| 5 | ✅ Complete | phase_5_lego_baskets.md | 1.0 | - |
-| 5.5 | ✅ Complete | phase_5.5_basket_deduplication.md | 1.0 | - |
-| 6 | ✅ Complete | phase_6_introductions.md | 1.0 | ✅ This session |
-| 7 | ✅ Complete | phase_7_compilation.md | 1.0 | ✅ This session |
-| 8 | ✅ Documented | phase_8_audio_generation.md | 1.0 | 🔧 Kai (implementation) |
+| Phase | Status | File | Version | Locked | Notes |
+|-------|--------|------|---------|--------|-------|
+| 1 | ✅ ACTIVE | phase_1_seed_pairs.md | 2.5 | 🔒 | Examples over precepts, English handling |
+| 2 | ⚠️ Inactive | phase_2_corpus_intelligence.md | 1.0 | - | Not in current workflow |
+| 3 | ✅ ACTIVE | phase_3_lego_pairs.md | 3.3 | 🔒 | TILING FIRST, generation-focused |
+| 3.5 | ⚠️ Inactive | phase_3.5_lego_graph.md | 1.0 | - | Not in current workflow |
+| 5 | ✅ ACTIVE | phase_5_lego_baskets.md | 2.1 | 🔒 | Eternal/debut, ABSOLUTE GATE |
+| 5.5 | 🔨 TODO | phase_5.5_basket_deduplication.md | 1.0 | - | Next implementation target |
+| 6 | 🔨 TODO | phase_6_introductions.md | 1.0 | - | After deduplication |
+| 7 | ✅ Complete | phase_7_compilation.md | 1.0 | - | Legacy format compilation |
+| 8 | 📋 Documented | phase_8_audio_generation.md | 1.0 | - | Assigned to Kai |
+
+**Locked versions** (🔒) represent tested, production-ready intelligence serving as SSoT for course generation.
 
 ---
 
@@ -273,15 +298,24 @@ pm2 restart automation-server
 
 ### For Agents (Runtime)
 ```javascript
-const response = await fetch('http://localhost:3456/phase-intelligence/3')
-const methodology = await response.text()  // Raw markdown
+// Current endpoint (served from automation_server.cjs)
+const response = await fetch('http://localhost:3456/api/prompts/3')
+const data = await response.json()
+const methodology = data.prompt  // Raw markdown from phase_3_lego_pairs.md
+const version = data.version     // e.g., "7.0.1"
+const phase = data.phase         // e.g., "3"
 ```
 
+**Available phases**: 1, 3, 5 (locked intelligence)
+
 ### For Humans (Dashboard UI)
-Visit: `https://ssi-dashboard-v7.vercel.app/intelligence`
+Visit: `https://ssi-dashboard-v7.vercel.app/intelligence` (planned)
 - Select phase from tabs
 - View rendered methodology
 - Check version and status
+
+**Current access**: Via ngrok tunnel to local automation server
+- `https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/prompts/:phase`
 
 ---
 

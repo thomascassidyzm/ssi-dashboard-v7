@@ -25,18 +25,25 @@ Clean, minimal dashboard for SSi Course Production APML v7.0 specification.
 - Tailwind CSS 4
 - No router (single page for now)
 
-### Phase Coverage
+### Phase Coverage (Locked Intelligence)
 
-| Phase | Name | Description |
-|-------|------|-------------|
-| 0 | Corpus Pre-Analysis | Translation intelligence |
-| 1 | Pedagogical Translation | 6 heuristics optimization |
-| 2 | Corpus Intelligence | FCFS mapping + utility |
-| 3 | LEGO Extraction | FCFS vs Utility + IRON RULE |
-| 3.5 | Graph Construction | LEGO adjacency edges (NEW) |
-| 4 | Deduplication | Provenance preservation |
-| 5 | Pattern-Aware Baskets | Graph-driven edge coverage |
-| 6 | Introductions | Known-only priming |
+**Active Workflow**: Phase 1 → 3 → 5
+
+| Phase | Name | Version | Status | Description |
+|-------|------|---------|--------|-------------|
+| 1 | Pedagogical Translation | v2.5 🔒 | ACTIVE | TWO ABSOLUTE RULES, examples over precepts, English handling |
+| 2 | Corpus Intelligence | v1.0 | Inactive | FCFS mapping + utility (not in current workflow) |
+| 3 | LEGO Extraction | v3.3 🔒 | ACTIVE | TILING FIRST, COMPOSITE with componentization |
+| 3.5 | Graph Construction | v1.0 | Inactive | LEGO adjacency edges (not in current workflow) |
+| 4 | Deduplication | - | TODO | Provenance preservation (Phase 5.5) |
+| 5 | Basket Generation | v2.1 🔒 | ACTIVE | Eternal/debut phrases, ABSOLUTE GATE constraint |
+| 6 | Introductions | v1.0 | TODO | Component-based presentations |
+| 7 | Compilation | v1.0 | Complete | Legacy format manifest |
+| 8 | Audio | v1.0 | Documented | TTS + S3 upload (Kai) |
+
+🔒 = Locked, production-ready SSoT
+
+**Phase Intelligence**: See `docs/phase_intelligence/README.md` for detailed methodology
 
 ## Development
 
@@ -115,14 +122,14 @@ vfs/courses/:courseCode/
 
 ## What's NOT Included
 
-- No legacy v6.x phase references (Phase 7, 8 removed)
-- No DEBUT/ETERNAL terminology (outdated)
-- No old FD testing workflows
-- No Python corpus analysis references
-- Clean slate, v7.0 only
+- No legacy v6.x workflows (pre-v7.0 architecture)
+- No manual APML registry compilation (now markdown-based intelligence)
+- No monolithic phase orchestration (now modular, locked intelligence)
+- Clean v7.0+ architecture with locked SSoT
 
 ---
 
-**Version:** 7.0.0
+**Version:** 7.0.1 (Locked Intelligence)
 **Build:** Clean
-**Date:** 2025-10-10
+**Phase Intelligence**: Phase 1 v2.5, Phase 3 v3.3, Phase 5 v2.1 (🔒 Locked SSoT)
+**Date:** 2025-10-28
