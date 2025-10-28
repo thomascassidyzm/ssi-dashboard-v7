@@ -66,14 +66,21 @@ export default {
 
         for (const courseCode of courseCodes) {
           try {
-            const translationsRes = await fetch(`/vfs/courses/${courseCode}/translations.json`)
-            const legosRes = await fetch(`/vfs/courses/${courseCode}/LEGO_BREAKDOWNS_COMPLETE.json`)
+            const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
+            const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
 
-            if (translationsRes.ok && legosRes.ok) {
-              const translations = await translationsRes.json()
-              const legoData = await legosRes.json()
+            if (seedPairsRes.ok && legoPairsRes.ok) {
+              const seedPairsData = await seedPairsRes.json()
+              const legoPairsData = await legoPairsRes.json()
 
               const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\\d+)seeds$/)
+
+              // Count LEGOs from v7.7 format: seeds array [[seed_id, [t,k], [[lego_id, type, t, k], ...]]]
+              let legoCount = 0
+              const seedsArray = legoPairsData.seeds || []
+              for (const [seedId, seedPair, legos] of seedsArray) {
+                legoCount += legos.length
+              }
 
               courses.push({
                 course_code: courseCode,
@@ -83,8 +90,8 @@ export default {
                 version: '1.0',
                 created_at: new Date().toISOString(),
                 status: 'phase_3_complete',
-                seed_pairs: Object.keys(translations).length,
-                lego_pairs: legoData.lego_breakdowns?.length || 0,
+                seed_pairs: Object.keys(seedPairsData.translations || {}).length,
+                lego_pairs: legoCount,
                 lego_baskets: 0,
                 phases_completed: ['1', '3']
               })
@@ -112,15 +119,18 @@ export default {
         // Fallback to static files if API unavailable
         console.log(`[API] Server unavailable, using static files for ${courseCode}`)
 
-        const translationsRes = await fetch(`/vfs/courses/${courseCode}/translations.json`)
-        const legosRes = await fetch(`/vfs/courses/${courseCode}/LEGO_BREAKDOWNS_COMPLETE.json`)
+        const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
+        const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
 
-        if (translationsRes.ok && legosRes.ok) {
-          const translationsData = await translationsRes.json()
-          const legoData = await legosRes.json()
+        if (seedPairsRes.ok && legoPairsRes.ok) {
+          const seedPairsData = await seedPairsRes.json()
+          const legoPairsData = await legoPairsRes.json()
 
-          // Convert translations object to array
-          const translations = Object.entries(translationsData).map(([seed_id, [target_phrase, known_phrase]]) => ({
+          // Convert v7.7 format translations object to array
+          // Input: { translations: { "S0001": ["target", "known"], ... } }
+          // Output: [{ seed_id: "S0001", target_phrase: "...", known_phrase: "..." }, ...]
+          const translationsObj = seedPairsData.translations || {}
+          const translations = Object.entries(translationsObj).map(([seed_id, [target_phrase, known_phrase]]) => ({
             seed_id,
             target_phrase,
             known_phrase,
@@ -129,7 +139,23 @@ export default {
 
           translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
 
-          const legos = legoData.lego_breakdowns || []
+          // Convert v7.7 format lego_pairs to flat array
+          // Input: { seeds: [[seed_id, [target, known], [[lego_id, type, t, k], ...]]] }
+          const seedsArray = legoPairsData.seeds || []
+          const legos = []
+          for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
+            for (const legoEntry of legoArray) {
+              const [lego_id, type, target_chunk, known_chunk] = legoEntry
+              legos.push({
+                seed_id,
+                lego_id,
+                lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
+                target_chunk,
+                known_chunk
+              })
+            }
+          }
+
           const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\\d+)seeds$/)
 
           const course = {
@@ -144,14 +170,15 @@ export default {
             lego_pairs: legos.length,
             lego_baskets: 0,
             phases_completed: ['1', '3'],
-            target_language_name: legoData.target_language,
-            known_language_name: legoData.known_language
+            target_language_name: match ? match[1] : 'unknown',
+            known_language_name: match ? match[2] : 'unknown'
           }
 
           return {
             course,
             translations,
             legos,
+            lego_breakdowns: seedsArray, // Raw v7.7 format for visualizer
             baskets: []
           }
         }
@@ -169,14 +196,15 @@ export default {
         // Fallback to static files if API unavailable
         console.log(`[API] Server unavailable, using static files for provenance ${courseCode}/${seedId}`)
 
-        const translationsRes = await fetch(`/vfs/courses/${courseCode}/translations.json`)
-        const legosRes = await fetch(`/vfs/courses/${courseCode}/LEGO_BREAKDOWNS_COMPLETE.json`)
+        const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
+        const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
 
-        if (translationsRes.ok && legosRes.ok) {
-          const translationsData = await translationsRes.json()
-          const legoData = await legosRes.json()
+        if (seedPairsRes.ok && legoPairsRes.ok) {
+          const seedPairsData = await seedPairsRes.json()
+          const legoPairsData = await legoPairsRes.json()
 
-          const translationPair = translationsData[seedId]
+          const translationsObj = seedPairsData.translations || {}
+          const translationPair = translationsObj[seedId]
           if (!translationPair) {
             throw new Error(`Seed ${seedId} not found`)
           }
@@ -187,7 +215,9 @@ export default {
             known_phrase: translationPair[1]
           }
 
-          const legoBreakdown = legoData.lego_breakdowns?.find(l => l.seed_id === seedId)
+          // Find LEGO breakdown in v7.7 format
+          const seedsArray = legoPairsData.seeds || []
+          const legoBreakdown = seedsArray.find(([seed_id]) => seed_id === seedId)
 
           return {
             seed: translation,

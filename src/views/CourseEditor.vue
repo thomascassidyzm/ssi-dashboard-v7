@@ -962,9 +962,9 @@ async function loadCourse() {
     legoBreakdowns.value = response.lego_breakdowns || []
     baskets.value = response.baskets || []
 
-    // Load baskets.json from VFS
+    // Load lego_baskets.json from VFS (v7.7+ format)
     try {
-      const basketsResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/vfs/baskets.json`, {
+      const basketsResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/vfs/lego_baskets.json`, {
         headers: {
           'ngrok-skip-browser-warning': 'true'
         }
@@ -972,11 +972,11 @@ async function loadCourse() {
       if (basketsResponse.ok) {
         basketsData.value = await basketsResponse.json()
       } else {
-        console.log('baskets.json not found (Phase 5 may not be complete)')
+        console.log('lego_baskets.json not found (Phase 5 may not be complete)')
         basketsData.value = null
       }
     } catch (err) {
-      console.log('Could not load baskets.json:', err.message)
+      console.log('Could not load lego_baskets.json:', err.message)
       basketsData.value = null
     }
   } catch (err) {
