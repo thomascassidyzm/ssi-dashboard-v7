@@ -3,6 +3,10 @@
     <!-- Header -->
     <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <router-link to="/" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition mb-4">
+          <span>←</span>
+          <span>Back to Dashboard</span>
+        </router-link>
         <h1 class="text-3xl font-bold text-emerald-400">
           Phase Intelligence
         </h1>
