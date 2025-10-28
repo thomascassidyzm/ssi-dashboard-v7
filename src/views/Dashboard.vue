@@ -76,17 +76,6 @@
               </div>
             </router-link>
 
-            <!-- Phase 2 -->
-            <router-link to="/phase/2" class="flex items-center gap-3 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center font-bold text-slate-900">
-                2
-              </div>
-              <div>
-                <h3 class="font-semibold text-slate-100">Corpus Analysis</h3>
-                <p class="text-sm text-slate-400">Pre-LEGO intel</p>
-              </div>
-            </router-link>
-
             <!-- Phase 3 -->
             <router-link to="/phase/3" class="flex items-center gap-3 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center font-bold text-slate-900">
