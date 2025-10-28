@@ -1,6 +1,6 @@
 # Phase 1: Pedagogical Translation → seed_pairs.json
 
-**Version**: 2.4 (2025-10-28)
+**Version**: 2.5 (2025-10-28)
 **Status**: Active methodology for Phase 1 translation
 **Output**: `vfs/courses/{course_code}/seed_pairs.json`
 
@@ -60,22 +60,167 @@ RIGHT: "Y quiero que hables español conmigo mañana" (I want YOU to speak)
 Even though subjunctive is hard, canonical meaning must be preserved.
 ```
 
-### RULE 2: COGNATE FIRST FOR SEEDS 1-100 (MANDATORY)
+### RULE 2: STRONGLY PREFER COGNATES FOR SEEDS 1-100
 
-**Always check for cognate before choosing vocabulary.**
+**Cognates build semantic networks - check for them first.**
 1. Look for known language synonyms that have cognates
-2. Use the cognate in target language
-3. Use matching synonym in known language
+2. Strongly prefer the cognate in target language
+3. Use matching synonym in known language (balance with naturalness)
 
-**Example:**
+**Balance principle**: Cognate transparency vs known language smoothness
+
+---
+
+## 💡 LEARNING BY EXAMPLE: Translation Thinking Across Languages
+
+Examples show the thinking process better than rigid precepts. Here's how to approach seeds with different language pairs:
+
+### Example Set 1: Seed 3 - "as often as possible"
+
+**Spanish for English (spa_for_eng):**
 ```
-Canonical: "as often as possible" (seed 3)
+<thinking>
+Canonical: "as often as possible"
 
-WRONG: "tan a menudo como posible" (no cognate)
-RIGHT: "lo más frecuentemente posible" (cognate with "frequently")
+Cognate check:
+- "often" → English synonym "frequently"
+- "frequently" → Spanish cognate "frecuentemente" ✓
 
-Known (English): "as frequently as possible" (synonym of "often")
+Target choice:
+- "tan a menudo como posible" (no cognate, unwieldy)
+- "lo más frecuentemente posible" (cognate, simpler) ✓
+
+Known (English): Use canonical directly
+- "as often as possible" (natural English ✓)
+
+Decision: Target uses cognate, known uses natural canonical
+</thinking>
+
+Output: ["lo más frecuentemente posible", "as often as possible"]
 ```
+
+**French for English (fra_for_eng):**
+```
+<thinking>
+Canonical: "as often as possible"
+
+Cognate check:
+- "often" → English synonym "frequently"
+- "frequently" → French cognate "fréquemment" ✓
+
+Target choice:
+- "aussi souvent que possible" (no cognate)
+- "aussi fréquemment que possible" (cognate) ✓
+
+Known (English): Use canonical directly
+- "as often as possible" (natural English ✓)
+
+Decision: Target uses cognate, known uses natural canonical
+</thinking>
+
+Output: ["aussi fréquemment que possible", "as often as possible"]
+```
+
+**Mandarin for English (cmn_for_eng):**
+```
+<thinking>
+Canonical: "as often as possible"
+
+Cognate check:
+- No cognates available between English and Mandarin
+
+Fallback strategy: Use simplest, highest-frequency construction
+- "尽可能经常" (jǐnkěnéng jīngcháng)
+  - 尽可能 = as...as possible (common pattern)
+  - 经常 = often (high-frequency, simple)
+
+Known (English): Use canonical directly
+- "as often as possible" (natural English ✓)
+
+Decision: No cognate available, use simple high-frequency pattern
+</thinking>
+
+Output: ["尽可能经常", "as often as possible"]
+```
+
+---
+
+### Example Set 2: Seed 15 - "And I want you to speak {target} with me tomorrow"
+
+**Spanish for English:**
+```
+<thinking>
+Canonical: "And I want you to speak Spanish with me tomorrow"
+
+Semantic check: "I want YOU to..." (triggers subjunctive in Spanish)
+
+Can I avoid subjunctive by simplifying?
+- "Y quiero hablar español contigo mañana" = "I want to speak" ❌ WRONG MEANING
+- Must preserve: "I want YOU to speak" → subjunctive required
+
+Target choice:
+- "Y quiero que hables español conmigo mañana" ✓
+- Subjunctive required to preserve canonical meaning
+
+Known (English): Use canonical directly
+- "And I want you to speak Spanish with me tomorrow"
+
+Decision: Semantic preservation > grammatical simplicity
+</thinking>
+
+Output: ["Y quiero que hables español conmigo mañana", "And I want you to speak Spanish with me tomorrow"]
+```
+
+**French for English:**
+```
+<thinking>
+Canonical: "And I want you to speak French with me tomorrow"
+
+Semantic check: "I want YOU to..." (triggers subjunctive in French)
+
+Target choice:
+- "Et je veux que tu parles français avec moi demain" ✓
+- Subjunctive required to preserve meaning
+
+Known (English): Use canonical directly
+- "And I want you to speak French with me tomorrow"
+
+Decision: Semantic preservation > grammatical simplicity
+</thinking>
+
+Output: ["Et je veux que tu parles français avec moi demain", "And I want you to speak French with me tomorrow"]
+```
+
+**Mandarin for English:**
+```
+<thinking>
+Canonical: "And I want you to speak English with me tomorrow"
+
+Semantic check: "I want YOU to..." (no subjunctive in Mandarin)
+
+Target choice:
+- "而且我想要你明天和我说英语"
+- 想要你 = want you to (direct construction)
+- No subjunctive needed
+
+Known (English): Use canonical directly
+- "And I want you to speak English with me tomorrow"
+
+Decision: Simpler construction available (language difference)
+</thinking>
+
+Output: ["而且我想要你明天和我说英语", "And I want you to speak English with me tomorrow"]
+```
+
+---
+
+### What These Examples Show
+
+1. **Cognate preference is strong but flexible** - use when available (Spanish/French), skip when not (Mandarin)
+2. **Known language naturalness matters** - when known is English, use canonical directly (already optimal)
+3. **Semantic preservation is absolute** - never change meaning to simplify grammar (S0015 subjunctive)
+4. **Language-specific strategies emerge** - Mandarin uses simplicity, Romance uses cognates
+5. **Balance is key** - no rigid rules, just principled thinking
 
 **These rules override all other heuristics.**
 
@@ -759,6 +904,14 @@ If your Extended Thinking identifies issues, regenerate that seed before continu
 ---
 
 ## Version History
+
+**v2.5 (2025-10-28)**:
+- **Examples over precepts**: Added "Learning by Example" section with multi-language thinking
+- Softened RULE 2 from "MANDATORY" to "strongly prefer" (avoid overfitting to Spanish)
+- Cross-language examples: Spanish, French, Mandarin (for English speakers)
+- Shows: Cognate preference (Romance), simplicity fallback (Mandarin), semantic preservation (subjunctive)
+- Balance principle: Cognate transparency vs known language smoothness
+- **Impact**: Language-agnostic guidance through demonstrated thinking patterns
 
 **v2.4 (2025-10-28)**:
 - **TWO ABSOLUTE RULES** section added at top (never violate)
