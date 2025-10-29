@@ -198,17 +198,63 @@ This document contains:
 
 **Your workflow:**
 1. Run preparation scripts via Bash tool
-2. Spawn orchestrators using Task tool (with 30s delays between spawns)
-3. Monitor for chunk completion via Read/Glob tools
-4. Run merge scripts via Bash tool
-5. Provide clear status updates
-6. Coordinate all phases from start to finish
+2. Spawn orchestrators in NEW iTerm2 windows using osascript via Bash tool
+3. Wait 30 seconds between each orchestrator spawn (prevents overload)
+4. Monitor for chunk completion via Read/Glob tools
+5. Run merge scripts via Bash tool
+6. Provide clear status updates
+7. Coordinate all phases from start to finish
 
-**Important notes:**
-- Use Task tool with subagent_type "general-purpose" to spawn orchestrator agents
-- Wait 30 seconds between each orchestrator spawn (prevents overload)
-- Monitor chunk files in vfs/courses/${courseCode}/orchestrator_batches/phase*/
-- Run merge scripts immediately after all chunks complete
+**CRITICAL: How to spawn orchestrators in iTerm2:**
+
+**DO NOT use the Task tool** - that spawns sub-agents within your Claude Code session. You need **NEW iTerm2 windows** so orchestrators can spawn their own Task agents.
+
+Use the Bash tool with osascript to create new iTerm2 windows. For each orchestrator:
+
+**Step 1:** Write the orchestrator prompt to a temp file:
+\`\`\`bash
+cat > /tmp/phase1_orch_01.txt << 'PROMPT_EOF'
+[Full orchestrator prompt text here - see dashboard_master_agent.md lines 413-483]
+PROMPT_EOF
+\`\`\`
+
+**Step 2:** Spawn iTerm2 window with osascript:
+\`\`\`bash
+osascript -e 'tell application "iTerm2"
+    create window with default profile
+    tell current session of current window
+        write text "cd /Users/tomcassidy/SSi/ssi-dashboard-v7-clean"
+        write text "claude --permission-mode bypassPermissions"
+        delay 15
+        set promptContent to read POSIX file "/tmp/phase1_orch_01.txt" as «class utf8»
+        set the clipboard to promptContent
+        tell application "System Events"
+            keystroke "v" using command down
+            delay 1
+            keystroke return
+        end tell
+    end tell
+end tell'
+\`\`\`
+
+**Step 3:** Wait 30 seconds before spawning next orchestrator
+
+**Orchestrator prompt template for Phase 1:**
+\`\`\`
+You are Phase 1 Orchestrator #N for ${courseCode}.
+
+Your task: Translate ~134 canonical sentences using 10 sub-agents.
+
+1. Read batch: vfs/courses/${courseCode}/orchestrator_batches/phase1/orchestrator_batch_0N.json
+2. Read intelligence: docs/phase_intelligence/phase_1_orchestrator.md
+3. Divide work among 10 sub-agents
+4. Spawn all 10 using Task tool in parallel (one message)
+5. Validate outputs
+6. Write chunk: vfs/courses/${courseCode}/orchestrator_batches/phase1/chunk_0N.json
+7. Report completion
+
+Use extended thinking. Follow validation rules.
+\`\`\`
 
 **Expected deliverables:**
 - seed_pairs.json (${totalSeeds} translations)
