@@ -2795,9 +2795,60 @@ app.get('/api/courses', async (req, res) => {
             legoCount += legos.length;
           }
 
-          // Determine status based on what exists
-          let status = 'phase_3_complete'; // Has translations + LEGOs
-          let phases_completed = ['1', '3'];
+          // Determine which phases are complete based on file existence
+          const phases_completed = [];
+          let status = 'in_progress';
+
+          // Phase 1: seed_pairs.json exists
+          if (await fs.pathExists(seedPairsPath)) {
+            phases_completed.push('1');
+          }
+
+          // Phase 3: lego_pairs.json exists
+          if (await fs.pathExists(legoPairsPath)) {
+            phases_completed.push('3');
+            status = 'phase_3_complete';
+          }
+
+          // Phase 4: batches/ directory exists (batch preparation)
+          const batchesPath = path.join(coursePath, 'batches');
+          if (await fs.pathExists(batchesPath)) {
+            phases_completed.push('4');
+          }
+
+          // Phase 5: lego_baskets.json exists
+          const legoBasketsPath = path.join(coursePath, 'lego_baskets.json');
+          let basketCount = 0;
+          if (await fs.pathExists(legoBasketsPath)) {
+            phases_completed.push('5');
+            const basketsData = await fs.readJson(legoBasketsPath);
+            basketCount = basketsData.baskets?.length || 0;
+            status = 'phase_5_complete';
+          }
+
+          // Phase 6: introductions.json exists
+          const introsPath = path.join(coursePath, 'introductions.json');
+          let introCount = 0;
+          if (await fs.pathExists(introsPath)) {
+            phases_completed.push('6');
+            const introsData = await fs.readJson(introsPath);
+            introCount = introsData.introductions?.length || 0;
+            status = 'phase_6_complete';
+          }
+
+          // Phase 7: course_manifest.json exists (compilation)
+          const manifestPath = path.join(coursePath, 'course_manifest.json');
+          if (await fs.pathExists(manifestPath)) {
+            phases_completed.push('7');
+            status = 'phase_7_complete';
+          }
+
+          // Phase 8: Check if audio exists (placeholder - actual check would be S3)
+          const audioPath = path.join(coursePath, 'audio');
+          if (await fs.pathExists(audioPath)) {
+            phases_completed.push('8');
+            status = 'complete';
+          }
 
           courses.push({
             course_code: dir,
@@ -2811,7 +2862,7 @@ app.get('/api/courses', async (req, res) => {
             // New terminology (dashboard displays these)
             seed_pairs: translationCount,
             lego_pairs: legoCount,
-            lego_baskets: 0, // Phase 5 not implemented yet
+            lego_baskets: basketCount,
 
             phases_completed: phases_completed,
 
@@ -2820,8 +2871,8 @@ app.get('/api/courses', async (req, res) => {
               translations: translationCount,
               legos: 0,
               legos_deduplicated: legoCount,
-              baskets: 0,
-              introductions: 0
+              baskets: basketCount,
+              introductions: introCount
             }
           });
         }

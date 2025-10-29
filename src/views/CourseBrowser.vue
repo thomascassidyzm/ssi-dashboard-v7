@@ -81,7 +81,7 @@
             <div class="text-xs text-slate-400 mb-2">Phases Completed</div>
             <div class="flex gap-1">
               <span
-                v-for="phase in ['0', '1', '2', '3', '3.5', '4', '5', '6']"
+                v-for="phase in ['1', '3', '4', '5', '6', '7', '8']"
                 :key="phase"
                 class="w-8 h-8 flex items-center justify-center rounded text-xs font-medium"
                 :class="course.phases_completed?.includes(phase)
