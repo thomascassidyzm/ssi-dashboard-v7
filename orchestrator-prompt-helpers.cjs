@@ -202,8 +202,10 @@ This document contains:
 3. Wait 30 seconds between each orchestrator spawn (prevents overload)
 4. Monitor for chunk completion via Read/Glob tools
    - Check every 60 seconds for new chunks
-   - If 4/5 chunks complete and last chunk is 5+ minutes behind → retry missing orchestrator
-   - Osascript can fail (clipboard paste issues) → missing chunk after 5 min = failed spawn
+   - Use DIFFERENTIAL LOGIC: If N-1 chunks complete within tight window (3-5 min) and 1 chunk is 5+ min behind the last completion → failed spawn, retry immediately
+   - Example: chunks 1,2,3,5 done at 21:29-21:32, chunk 4 missing at 21:37 → chunk 4 failed, retry now
+   - Don't wait absolute 10-15 min if differential timing shows clear failure
+   - Osascript clipboard paste can fail silently
 5. Run merge scripts via Bash tool
 6. Provide clear status updates
 7. Coordinate all phases from start to finish
