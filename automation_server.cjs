@@ -214,6 +214,29 @@ Translate seeds ${seedRange} following Phase 1 intelligence.
 
 ---
 
+## CRITICAL: {target} Placeholder Replacement
+
+Canonical seeds use \`{target}\` as a placeholder. **ALWAYS replace it with the target language NAME:**
+
+- Target language code: **${target}**
+- Target language name: **${getLanguageName(target)}**
+
+**Examples:**
+- Canonical: "I want to speak {target} with you now."
+- If target=spa: "I want to speak **Spanish** with you now."
+- If target=ita: "I want to speak **Italian** with you now."
+- If target=fra: "I want to speak **French** with you now."
+
+**When known language is English:**
+- Use canonical seed directly
+- Replace \`{target}\` with **${getLanguageName(target)}**
+
+**When target language is English:**
+- Use canonical seed directly
+- Replace \`{target}\` with **English**
+
+---
+
 ## Output Format
 
 Append to existing seed_pairs.json (or create if batch 1):
