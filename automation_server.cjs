@@ -2742,6 +2742,34 @@ app.get('/api/courses/:courseCode/status', (req, res) => {
 });
 
 /**
+ * DELETE /api/courses/:courseCode/status
+ * Clear/cancel a course generation job (useful for stuck jobs)
+ */
+app.delete('/api/courses/:courseCode/status', (req, res) => {
+  const { courseCode } = req.params;
+  const job = STATE.jobs.get(courseCode);
+
+  if (!job) {
+    return res.status(404).json({
+      error: 'No job found for this course',
+      courseCode
+    });
+  }
+
+  // Delete the job from state
+  STATE.jobs.delete(courseCode);
+
+  console.log(`[API] Cleared job for course: ${courseCode}`);
+
+  res.json({
+    success: true,
+    message: 'Job cleared successfully',
+    courseCode,
+    previousStatus: job.status
+  });
+});
+
+/**
  * GET /api/courses
  * List all available courses
  *

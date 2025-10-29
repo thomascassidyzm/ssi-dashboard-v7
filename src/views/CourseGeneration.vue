@@ -3,10 +3,19 @@
     <!-- Header -->
     <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <router-link to="/" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition mb-4">
-          <span>←</span>
-          <span>Back to Dashboard</span>
-        </router-link>
+        <div class="flex items-start justify-between mb-4">
+          <router-link to="/" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition">
+            <span>←</span>
+            <span>Back to Dashboard</span>
+          </router-link>
+          <button
+            v-if="errorMessage && courseCode"
+            @click="clearStuckJob"
+            class="bg-red-600/20 hover:bg-red-600/30 border border-red-500/50 text-red-400 text-sm font-semibold px-4 py-2 rounded-lg transition"
+          >
+            🔧 Clear Stuck Job
+          </button>
+        </div>
         <h1 class="text-3xl font-bold text-emerald-400">
           Generate New Course
         </h1>
@@ -284,8 +293,17 @@
         </div>
 
         <!-- Error Message -->
-        <div v-if="errorMessage" class="mt-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400">
-          {{ errorMessage }}
+        <div v-if="errorMessage" class="mt-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
+          <div class="flex items-start justify-between gap-4">
+            <p class="text-red-400 flex-1">{{ errorMessage }}</p>
+            <button
+              v-if="courseCode"
+              @click="clearStuckJob"
+              class="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition whitespace-nowrap"
+            >
+              Clear Stuck Job
+            </button>
+          </div>
         </div>
       </div>
 
@@ -495,6 +513,34 @@ const startNew = () => {
 
 const viewCourse = () => {
   alert(`Course files saved to: vfs/courses/${courseCode.value}`)
+}
+
+const clearStuckJob = async () => {
+  if (!courseCode.value) {
+    // If no courseCode, try to derive it from languages
+    if (targetLanguage.value && knownLanguage.value) {
+      courseCode.value = `${targetLanguage.value}_for_${knownLanguage.value}`
+    } else {
+      errorMessage.value = 'Cannot determine course code to clear'
+      return
+    }
+  }
+
+  try {
+    console.log(`Clearing stuck job for: ${courseCode.value}`)
+    await api.course.clearJob(courseCode.value)
+
+    // Reset state
+    errorMessage.value = ''
+    isGenerating.value = false
+    isCompleted.value = false
+    stopPolling()
+
+    console.log('Job cleared successfully - you can now retry generation')
+  } catch (error) {
+    console.error('Failed to clear job:', error)
+    errorMessage.value = 'Failed to clear job: ' + (error.response?.data?.error || error.message)
+  }
 }
 
 // Lifecycle hooks

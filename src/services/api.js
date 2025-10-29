@@ -52,6 +52,11 @@ export default {
       return response.data
     },
 
+    async clearJob(courseCode) {
+      const response = await api.delete(`/api/courses/${courseCode}/status`)
+      return response.data
+    },
+
     async list() {
       try {
         // Try API server first (for real-time updates)
