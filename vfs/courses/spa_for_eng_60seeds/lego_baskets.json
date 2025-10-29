@@ -1,0 +1,1405 @@
+{
+  "version": "7.7",
+  "baskets": {
+    "S0001L01": {
+      "lego": ["Quiero", "I want"],
+      "e": [],
+      "d": {}
+    },
+    "S0001L02": {
+      "lego": ["hablar", "to speak"],
+      "e": [
+        ["Quiero hablar.", "I want to speak."]
+      ],
+      "d": {
+        "2": [
+          ["Quiero hablar", "I want to speak"]
+        ]
+      }
+    },
+    "S0001L03": {
+      "lego": ["español", "Spanish"],
+      "e": [
+        ["Quiero hablar español.", "I want to speak Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["hablar español", "to speak Spanish"]
+        ],
+        "3": [
+          ["Quiero hablar español", "I want to speak Spanish"]
+        ]
+      }
+    },
+    "S0001L04": {
+      "lego": ["contigo", "with you"],
+      "e": [
+        ["Quiero hablar contigo.", "I want to speak with you."],
+        ["Quiero hablar español contigo.", "I want to speak Spanish with you."]
+      ],
+      "d": {
+        "2": [
+          ["hablar contigo", "to speak with you"]
+        ],
+        "3": [
+          ["Quiero hablar contigo", "I want to speak with you"],
+          ["hablar español contigo", "to speak Spanish with you"]
+        ]
+      }
+    },
+    "S0001L05": {
+      "lego": ["ahora", "now"],
+      "e": [
+        ["Quiero hablar español contigo ahora.", "I want to speak Spanish with you now."],
+        ["Quiero hablar ahora.", "I want to speak now."],
+        ["Quiero hablar contigo ahora.", "I want to speak with you now."],
+        ["Quiero hablar español ahora.", "I want to speak Spanish now."]
+      ],
+      "d": {
+        "2": [
+          ["hablar ahora", "to speak now"],
+          ["contigo ahora", "with you now"]
+        ],
+        "3": [
+          ["Quiero hablar ahora", "I want to speak now"],
+          ["hablar contigo ahora", "to speak with you now"],
+          ["hablar español ahora", "to speak Spanish now"]
+        ],
+        "4": [
+          ["Quiero hablar contigo ahora", "I want to speak with you now"],
+          ["Quiero hablar español ahora", "I want to speak Spanish now"]
+        ]
+      }
+    },
+    "S0002L01": {
+      "lego": ["Estoy tratando de", "I'm trying to"],
+      "e": [
+        ["Estoy tratando de hablar.", "I'm trying to speak."],
+        ["Estoy tratando de hablar español.", "I'm trying to speak Spanish."],
+        ["Estoy tratando de hablar contigo ahora.", "I'm trying to speak with you now."]
+      ],
+      "d": {
+        "2": [
+          ["Estoy tratando de", "I'm trying to"]
+        ],
+        "3": [
+          ["Estoy tratando de hablar", "I'm trying to speak"]
+        ],
+        "4": [
+          ["Estoy tratando de hablar español", "I'm trying to speak Spanish"]
+        ]
+      }
+    },
+    "S0002L02": {
+      "lego": ["aprender", "learn"],
+      "e": [
+        ["Estoy tratando de aprender.", "I'm trying to learn."],
+        ["Quiero aprender.", "I want to learn."],
+        ["Quiero aprender español.", "I want to learn Spanish."],
+        ["Estoy tratando de aprender español ahora.", "I'm trying to learn Spanish now."]
+      ],
+      "d": {
+        "2": [
+          ["Quiero aprender", "I want to learn"],
+          ["aprender español", "to learn Spanish"]
+        ],
+        "3": [
+          ["Estoy tratando de aprender", "I'm trying to learn"],
+          ["Quiero aprender español", "I want to learn Spanish"]
+        ],
+        "4": [
+          ["Estoy tratando de aprender español", "I'm trying to learn Spanish"]
+        ]
+      }
+    },
+    "S0003L01": {
+      "lego": ["cómo", "how"],
+      "e": [
+        ["Quiero aprender cómo hablar.", "I want to learn how to speak."],
+        ["Estoy tratando de aprender cómo hablar español.", "I'm trying to learn how to speak Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["cómo hablar", "how to speak"]
+        ],
+        "3": [
+          ["aprender cómo hablar", "to learn how to speak"],
+          ["Quiero aprender cómo", "I want to learn how"]
+        ],
+        "4": [
+          ["Quiero aprender cómo hablar", "I want to learn how to speak"]
+        ]
+      }
+    },
+    "S0003L02": {
+      "lego": ["hablar", "to speak"],
+      "e": [
+        ["Quiero hablar español contigo ahora.", "I want to speak Spanish with you now."],
+        ["Estoy tratando de hablar.", "I'm trying to speak."],
+        ["Quiero aprender cómo hablar.", "I want to learn how to speak."]
+      ],
+      "d": {
+        "2": [
+          ["cómo hablar", "how to speak"]
+        ],
+        "3": [
+          ["aprender cómo hablar", "to learn how to speak"]
+        ]
+      }
+    },
+    "S0003L03": {
+      "lego": ["tan frecuentemente como sea posible", "as often as possible"],
+      "e": [
+        ["Quiero hablar tan frecuentemente como sea posible.", "I want to speak as often as possible."],
+        ["Quiero hablar español tan frecuentemente como sea posible.", "I want to speak Spanish as often as possible."],
+        ["Estoy tratando de hablar contigo tan frecuentemente como sea posible.", "I'm trying to speak with you as often as possible."]
+      ],
+      "d": {
+        "3": [
+          ["hablar tan frecuentemente como sea posible", "to speak as often as possible"]
+        ],
+        "4": [
+          ["Quiero hablar tan frecuentemente como sea posible", "I want to speak as often as possible"]
+        ],
+        "5": [
+          ["hablar español tan frecuentemente como sea posible", "to speak Spanish as often as possible"]
+        ]
+      }
+    },
+    "S0004L01": {
+      "lego": ["cómo", "how"],
+      "e": [
+        ["Quiero aprender cómo hablar español.", "I want to learn how to speak Spanish."],
+        ["Estoy tratando de aprender cómo hablar contigo.", "I'm trying to learn how to speak with you."]
+      ],
+      "d": {
+        "2": [
+          ["cómo hablar", "how to speak"]
+        ],
+        "3": [
+          ["aprender cómo hablar", "to learn how to speak"]
+        ]
+      }
+    },
+    "S0004L02": {
+      "lego": ["decir", "to say"],
+      "e": [
+        ["Quiero decir ahora.", "I want to say now."],
+        ["Estoy tratando de aprender cómo decir.", "I'm trying to learn how to say."]
+      ],
+      "d": {
+        "2": [
+          ["Quiero decir", "I want to say"],
+          ["cómo decir", "how to say"]
+        ],
+        "3": [
+          ["aprender cómo decir", "to learn how to say"]
+        ]
+      }
+    },
+    "S0004L03": {
+      "lego": ["algo", "something"],
+      "e": [
+        ["Quiero decir algo.", "I want to say something."],
+        ["Quiero decir algo ahora.", "I want to say something now."],
+        ["Estoy tratando de aprender cómo decir algo.", "I'm trying to learn how to say something."]
+      ],
+      "d": {
+        "2": [
+          ["decir algo", "to say something"]
+        ],
+        "3": [
+          ["Quiero decir algo", "I want to say something"],
+          ["cómo decir algo", "how to say something"]
+        ],
+        "4": [
+          ["aprender cómo decir algo", "to learn how to say something"]
+        ]
+      }
+    },
+    "S0004L04": {
+      "lego": ["en español", "in Spanish"],
+      "e": [
+        ["Quiero decir algo en español.", "I want to say something in Spanish."],
+        ["Estoy tratando de decir algo en español.", "I'm trying to say something in Spanish."],
+        ["Quiero aprender cómo decir algo en español.", "I want to learn how to say something in Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["en español", "in Spanish"],
+          ["algo en español", "something in Spanish"]
+        ],
+        "3": [
+          ["decir algo en español", "to say something in Spanish"]
+        ],
+        "4": [
+          ["Quiero decir algo en español", "I want to say something in Spanish"],
+          ["cómo decir algo en español", "how to say something in Spanish"]
+        ]
+      }
+    },
+    "S0005L01": {
+      "lego": ["Voy a", "I'm going to"],
+      "e": [
+        ["Voy a hablar.", "I'm going to speak."],
+        ["Voy a hablar español.", "I'm going to speak Spanish."],
+        ["Voy a hablar contigo ahora.", "I'm going to speak with you now."],
+        ["Voy a decir algo en español.", "I'm going to say something in Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["Voy a", "I'm going to"]
+        ],
+        "3": [
+          ["Voy a hablar", "I'm going to speak"],
+          ["Voy a aprender", "I'm going to learn"]
+        ],
+        "4": [
+          ["Voy a hablar español", "I'm going to speak Spanish"],
+          ["Voy a decir algo", "I'm going to say something"]
+        ]
+      }
+    },
+    "S0005L02": {
+      "lego": ["practicar", "practise"],
+      "e": [
+        ["Quiero practicar.", "I want to practise."],
+        ["Voy a practicar ahora.", "I'm going to practise now."],
+        ["Estoy tratando de practicar español.", "I'm trying to practise Spanish."],
+        ["Quiero practicar tan frecuentemente como sea posible.", "I want to practise as often as possible."]
+      ],
+      "d": {
+        "2": [
+          ["Quiero practicar", "I want to practise"],
+          ["practicar español", "to practise Spanish"]
+        ],
+        "3": [
+          ["Voy a practicar", "I'm going to practise"],
+          ["Estoy tratando de practicar", "I'm trying to practise"]
+        ],
+        "4": [
+          ["Voy a practicar español", "I'm going to practise Spanish"]
+        ]
+      }
+    },
+    "S0005L03": {
+      "lego": ["hablando", "speaking"],
+      "e": [
+        ["Estoy tratando de practicar hablando.", "I'm trying to practise speaking."],
+        ["Voy a practicar hablando español.", "I'm going to practise speaking Spanish."],
+        ["Quiero practicar hablando contigo.", "I want to practise speaking with you."]
+      ],
+      "d": {
+        "2": [
+          ["practicar hablando", "to practise speaking"]
+        ],
+        "3": [
+          ["practicar hablando español", "to practise speaking Spanish"],
+          ["Voy a practicar hablando", "I'm going to practise speaking"]
+        ]
+      }
+    },
+    "S0005L04": {
+      "lego": ["con", "with"],
+      "e": [
+        ["Quiero hablar con algo.", "I want to speak with something."],
+        ["Voy a practicar con contigo.", "I'm going to practise with you."]
+      ],
+      "d": {
+        "2": [
+          ["con algo", "with something"]
+        ]
+      }
+    },
+    "S0005L05": {
+      "lego": ["otra persona", "someone else"],
+      "e": [
+        ["Voy a practicar hablando con otra persona.", "I'm going to practise speaking with someone else."],
+        ["Quiero hablar con otra persona.", "I want to speak with someone else."],
+        ["Estoy tratando de hablar español con otra persona.", "I'm trying to speak Spanish with someone else."]
+      ],
+      "d": {
+        "2": [
+          ["otra persona", "someone else"]
+        ],
+        "3": [
+          ["con otra persona", "with someone else"],
+          ["hablar con otra persona", "to speak with someone else"]
+        ],
+        "4": [
+          ["practicar hablando con otra persona", "to practise speaking with someone else"]
+        ]
+      }
+    },
+    "S0006L01": {
+      "lego": ["Estoy tratando de", "I'm trying to"],
+      "e": [
+        ["Estoy tratando de hablar español.", "I'm trying to speak Spanish."],
+        ["Estoy tratando de practicar ahora.", "I'm trying to practise now."]
+      ],
+      "d": {
+        "2": [
+          ["Estoy tratando de", "I'm trying to"]
+        ],
+        "3": [
+          ["Estoy tratando de hablar", "I'm trying to speak"]
+        ]
+      }
+    },
+    "S0006L02": {
+      "lego": ["recordar", "remember"],
+      "e": [
+        ["Quiero recordar.", "I want to remember."],
+        ["Estoy tratando de recordar.", "I'm trying to remember."],
+        ["Voy a recordar algo.", "I'm going to remember something."]
+      ],
+      "d": {
+        "2": [
+          ["Quiero recordar", "I want to remember"],
+          ["recordar algo", "to remember something"]
+        ],
+        "3": [
+          ["Estoy tratando de recordar", "I'm trying to remember"],
+          ["Voy a recordar", "I'm going to remember"]
+        ]
+      }
+    },
+    "S0006L03": {
+      "lego": ["una palabra", "a word"],
+      "e": [
+        ["Estoy tratando de recordar una palabra.", "I'm trying to remember a word."],
+        ["Quiero aprender una palabra.", "I want to learn a word."],
+        ["Voy a decir una palabra en español.", "I'm going to say a word in Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["una palabra", "a word"]
+        ],
+        "3": [
+          ["recordar una palabra", "to remember a word"],
+          ["aprender una palabra", "to learn a word"]
+        ],
+        "4": [
+          ["Estoy tratando de recordar una palabra", "I'm trying to remember a word"]
+        ]
+      }
+    },
+    "S0007L01": {
+      "lego": ["Quiero", "I want"],
+      "e": [
+        ["Quiero hablar español.", "I want to speak Spanish."],
+        ["Quiero practicar ahora.", "I want to practise now."]
+      ],
+      "d": {
+        "2": [
+          ["Quiero hablar", "I want to speak"],
+          ["Quiero aprender", "I want to learn"]
+        ]
+      }
+    },
+    "S0007L02": {
+      "lego": ["intentar", "to try"],
+      "e": [
+        ["Quiero intentar.", "I want to try."],
+        ["Voy a intentar hablar español.", "I'm going to try to speak Spanish."],
+        ["Quiero intentar decir algo ahora.", "I want to try to say something now."]
+      ],
+      "d": {
+        "2": [
+          ["Quiero intentar", "I want to try"],
+          ["intentar hablar", "to try to speak"]
+        ],
+        "3": [
+          ["Voy a intentar", "I'm going to try"],
+          ["intentar decir algo", "to try to say something"]
+        ]
+      }
+    },
+    "S0007L03": {
+      "lego": ["tan duro como pueda", "as hard as I can"],
+      "e": [
+        ["Quiero intentar tan duro como pueda.", "I want to try as hard as I can."],
+        ["Voy a practicar tan duro como pueda.", "I'm going to practise as hard as I can."],
+        ["Estoy tratando de hablar tan duro como pueda.", "I'm trying to speak as hard as I can."]
+      ],
+      "d": {
+        "3": [
+          ["intentar tan duro como pueda", "to try as hard as I can"]
+        ],
+        "4": [
+          ["Quiero intentar tan duro como pueda", "I want to try as hard as I can"]
+        ]
+      }
+    },
+    "S0007L04": {
+      "lego": ["hoy", "today"],
+      "e": [
+        ["Quiero intentar tan duro como pueda hoy.", "I want to try as hard as I can today."],
+        ["Voy a hablar español hoy.", "I'm going to speak Spanish today."],
+        ["Quiero practicar hablando contigo hoy.", "I want to practise speaking with you today."],
+        ["Estoy tratando de aprender algo hoy.", "I'm trying to learn something today."]
+      ],
+      "d": {
+        "2": [
+          ["hablar hoy", "to speak today"],
+          ["practicar hoy", "to practise today"]
+        ],
+        "3": [
+          ["Voy a hablar hoy", "I'm going to speak today"],
+          ["Quiero practicar hoy", "I want to practise today"]
+        ],
+        "4": [
+          ["Voy a hablar español hoy", "I'm going to speak Spanish today"]
+        ]
+      }
+    },
+    "S0008L01": {
+      "lego": ["Voy a", "I'm going to"],
+      "e": [
+        ["Voy a hablar español.", "I'm going to speak Spanish."],
+        ["Voy a intentar hoy.", "I'm going to try today."]
+      ],
+      "d": {
+        "2": [
+          ["Voy a", "I'm going to"]
+        ],
+        "3": [
+          ["Voy a hablar", "I'm going to speak"]
+        ]
+      }
+    },
+    "S0008L02": {
+      "lego": ["tratar de", "try to"],
+      "e": [
+        ["Voy a tratar de hablar.", "I'm going to try to speak."],
+        ["Voy a tratar de aprender español.", "I'm going to try to learn Spanish."],
+        ["Voy a tratar de decir algo.", "I'm going to try to say something."]
+      ],
+      "d": {
+        "2": [
+          ["tratar de", "try to"]
+        ],
+        "3": [
+          ["Voy a tratar de", "I'm going to try to"],
+          ["tratar de hablar", "try to speak"]
+        ],
+        "4": [
+          ["Voy a tratar de hablar", "I'm going to try to speak"]
+        ]
+      }
+    },
+    "S0008L03": {
+      "lego": ["explicar", "explain"],
+      "e": [
+        ["Voy a tratar de explicar.", "I'm going to try to explain."],
+        ["Quiero explicar algo.", "I want to explain something."],
+        ["Estoy tratando de explicar ahora.", "I'm trying to explain now."]
+      ],
+      "d": {
+        "2": [
+          ["Quiero explicar", "I want to explain"],
+          ["tratar de explicar", "try to explain"]
+        ],
+        "3": [
+          ["Voy a tratar de explicar", "I'm going to try to explain"],
+          ["explicar algo", "to explain something"]
+        ]
+      }
+    },
+    "S0008L04": {
+      "lego": ["lo que", "what"],
+      "e": [
+        ["Quiero decir lo que.", "I want to say what."],
+        ["Estoy tratando de recordar lo que.", "I'm trying to remember what."]
+      ],
+      "d": {
+        "2": [
+          ["lo que", "what"],
+          ["decir lo que", "to say what"]
+        ],
+        "3": [
+          ["recordar lo que", "to remember what"]
+        ]
+      }
+    },
+    "S0008L05": {
+      "lego": ["quiero decir", "I mean"],
+      "e": [
+        ["Voy a tratar de explicar lo que quiero decir.", "I'm going to try to explain what I mean."],
+        ["Estoy tratando de recordar lo que quiero decir.", "I'm trying to remember what I mean."],
+        ["Quiero practicar decir lo que quiero decir.", "I want to practise saying what I mean."]
+      ],
+      "d": {
+        "2": [
+          ["quiero decir", "I mean"]
+        ],
+        "3": [
+          ["lo que quiero decir", "what I mean"],
+          ["explicar lo que quiero decir", "to explain what I mean"]
+        ],
+        "4": [
+          ["tratar de explicar lo que quiero decir", "try to explain what I mean"]
+        ]
+      }
+    },
+    "S0009L01": {
+      "lego": ["Hablo", "I speak"],
+      "e": [
+        ["Hablo español.", "I speak Spanish."],
+        ["Hablo contigo ahora.", "I speak with you now."]
+      ],
+      "d": {
+        "2": [
+          ["Hablo español", "I speak Spanish"]
+        ],
+        "3": [
+          ["Hablo contigo ahora", "I speak with you now"]
+        ]
+      }
+    },
+    "S0009L02": {
+      "lego": ["un poco de", "a little"],
+      "e": [
+        ["Hablo un poco de español.", "I speak a little Spanish."],
+        ["Quiero aprender un poco de español.", "I want to learn a little Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["un poco de", "a little"]
+        ],
+        "3": [
+          ["un poco de español", "a little Spanish"],
+          ["Hablo un poco de", "I speak a little"]
+        ],
+        "4": [
+          ["Hablo un poco de español", "I speak a little Spanish"]
+        ]
+      }
+    },
+    "S0009L03": {
+      "lego": ["español", "Spanish"],
+      "e": [
+        ["Hablo español.", "I speak Spanish."],
+        ["Quiero hablar español.", "I want to speak Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["Hablo español", "I speak Spanish"]
+        ]
+      }
+    },
+    "S0009L04": {
+      "lego": ["ahora", "now"],
+      "e": [
+        ["Hablo un poco de español ahora.", "I speak a little Spanish now."],
+        ["Voy a intentar hablar ahora.", "I'm going to try to speak now."],
+        ["Quiero practicar hablando ahora.", "I want to practise speaking now."]
+      ],
+      "d": {
+        "2": [
+          ["español ahora", "Spanish now"]
+        ],
+        "3": [
+          ["Hablo español ahora", "I speak Spanish now"],
+          ["hablar ahora", "to speak now"]
+        ],
+        "4": [
+          ["Hablo un poco de español ahora", "I speak a little Spanish now"]
+        ]
+      }
+    },
+    "S0010L01": {
+      "lego": ["No estoy seguro", "I'm not sure"],
+      "e": [
+        ["No estoy seguro.", "I'm not sure."]
+      ],
+      "d": {
+        "2": [
+          ["No estoy seguro", "I'm not sure"]
+        ]
+      }
+    },
+    "S0010L02": {
+      "lego": ["si", "if"],
+      "e": [
+        ["No estoy seguro si.", "I'm not sure if."]
+      ],
+      "d": {
+        "2": [
+          ["seguro si", "sure if"]
+        ],
+        "3": [
+          ["No estoy seguro si", "I'm not sure if"]
+        ]
+      }
+    },
+    "S0010L03": {
+      "lego": ["puedo", "I can"],
+      "e": [
+        ["No estoy seguro si puedo.", "I'm not sure if I can."],
+        ["puedo hablar español.", "I can speak Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["si puedo", "if I can"],
+          ["puedo hablar", "I can speak"]
+        ],
+        "3": [
+          ["No estoy seguro si puedo", "I'm not sure if I can"],
+          ["puedo hablar español", "I can speak Spanish"]
+        ]
+      }
+    },
+    "S0010L04": {
+      "lego": ["recordar", "remember"],
+      "e": [
+        ["No estoy seguro si puedo recordar.", "I'm not sure if I can remember."],
+        ["Voy a tratar de recordar.", "I'm going to try to remember."]
+      ],
+      "d": {
+        "2": [
+          ["puedo recordar", "I can remember"]
+        ],
+        "3": [
+          ["si puedo recordar", "if I can remember"],
+          ["tratar de recordar", "try to remember"]
+        ],
+        "4": [
+          ["No estoy seguro si puedo recordar", "I'm not sure if I can remember"]
+        ]
+      }
+    },
+    "S0010L05": {
+      "lego": ["toda la frase", "the whole sentence"],
+      "e": [
+        ["No estoy seguro si puedo recordar toda la frase.", "I'm not sure if I can remember the whole sentence."],
+        ["Quiero aprender toda la frase.", "I want to learn the whole sentence."],
+        ["Voy a tratar de decir toda la frase.", "I'm going to try to say the whole sentence."]
+      ],
+      "d": {
+        "2": [
+          ["toda la frase", "the whole sentence"]
+        ],
+        "3": [
+          ["recordar toda la frase", "to remember the whole sentence"],
+          ["decir toda la frase", "to say the whole sentence"]
+        ],
+        "4": [
+          ["puedo recordar toda la frase", "I can remember the whole sentence"]
+        ]
+      }
+    },
+    "S0011L01": {
+      "lego": ["Me gustaría", "I'd like"],
+      "e": [
+        ["Me gustaría hablar.", "I'd like to speak."],
+        ["Me gustaría aprender español.", "I'd like to learn Spanish."],
+        ["Me gustaría practicar contigo ahora.", "I'd like to practise with you now."]
+      ],
+      "d": {
+        "2": [
+          ["Me gustaría", "I'd like"]
+        ],
+        "3": [
+          ["Me gustaría hablar", "I'd like to speak"],
+          ["Me gustaría aprender", "I'd like to learn"]
+        ],
+        "4": [
+          ["Me gustaría hablar español", "I'd like to speak Spanish"]
+        ]
+      }
+    },
+    "S0011L02": {
+      "lego": ["poder", "to be able"],
+      "e": [
+        ["Me gustaría poder hablar.", "I'd like to be able to speak."],
+        ["Quiero poder decir algo.", "I want to be able to say something."],
+        ["Voy a poder recordar.", "I'm going to be able to remember."]
+      ],
+      "d": {
+        "2": [
+          ["poder hablar", "to be able to speak"],
+          ["poder decir", "to be able to say"]
+        ],
+        "3": [
+          ["Me gustaría poder", "I'd like to be able"],
+          ["Quiero poder hablar", "I want to be able to speak"]
+        ],
+        "4": [
+          ["Me gustaría poder hablar", "I'd like to be able to speak"]
+        ]
+      }
+    },
+    "S0011L03": {
+      "lego": ["hablar", "to speak"],
+      "e": [
+        ["Me gustaría poder hablar.", "I'd like to be able to speak."],
+        ["Voy a poder hablar español.", "I'm going to be able to speak Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["poder hablar", "to be able to speak"]
+        ],
+        "3": [
+          ["Me gustaría poder hablar", "I'd like to be able to speak"]
+        ]
+      }
+    },
+    "S0011L04": {
+      "lego": ["después de que", "after"],
+      "e": [
+        ["Me gustaría hablar después de que.", "I'd like to speak after."]
+      ],
+      "d": {
+        "2": [
+          ["después de que", "after"]
+        ],
+        "3": [
+          ["hablar después de que", "to speak after"]
+        ]
+      }
+    },
+    "S0011L05": {
+      "lego": ["termines", "you finish"],
+      "e": [
+        ["Me gustaría poder hablar después de que termines.", "I'd like to be able to speak after you finish."],
+        ["Voy a hablar después de que termines.", "I'm going to speak after you finish."],
+        ["Quiero decir algo después de que termines.", "I want to say something after you finish."]
+      ],
+      "d": {
+        "2": [
+          ["termines", "you finish"]
+        ],
+        "3": [
+          ["después de que termines", "after you finish"],
+          ["hablar después de que termines", "to speak after you finish"]
+        ],
+        "4": [
+          ["poder hablar después de que termines", "to be able to speak after you finish"]
+        ]
+      }
+    },
+    "S0012L01": {
+      "lego": ["No me gustaría", "I wouldn't like"],
+      "e": [
+        ["No me gustaría hablar.", "I wouldn't like to speak."],
+        ["No me gustaría intentar ahora.", "I wouldn't like to try now."]
+      ],
+      "d": {
+        "2": [
+          ["No me gustaría", "I wouldn't like"]
+        ],
+        "3": [
+          ["No me gustaría hablar", "I wouldn't like to speak"]
+        ]
+      }
+    },
+    "S0012L02": {
+      "lego": ["adivinar", "to guess"],
+      "e": [
+        ["No me gustaría adivinar.", "I wouldn't like to guess."],
+        ["Voy a tratar de adivinar.", "I'm going to try to guess."]
+      ],
+      "d": {
+        "2": [
+          ["No me gustaría adivinar", "I wouldn't like to guess"],
+          ["tratar de adivinar", "try to guess"]
+        ],
+        "3": [
+          ["Voy a tratar de adivinar", "I'm going to try to guess"]
+        ]
+      }
+    },
+    "S0012L03": {
+      "lego": ["qué", "what"],
+      "e": [
+        ["No me gustaría adivinar qué.", "I wouldn't like to guess what."],
+        ["No estoy seguro qué.", "I'm not sure what."]
+      ],
+      "d": {
+        "2": [
+          ["adivinar qué", "to guess what"],
+          ["seguro qué", "sure what"]
+        ],
+        "3": [
+          ["No me gustaría adivinar qué", "I wouldn't like to guess what"]
+        ]
+      }
+    },
+    "S0012L04": {
+      "lego": ["va a", "is going to"],
+      "e": [
+        ["No estoy seguro qué va a.", "I'm not sure what is going to."]
+      ],
+      "d": {
+        "2": [
+          ["va a", "is going to"],
+          ["qué va a", "what is going to"]
+        ]
+      }
+    },
+    "S0012L05": {
+      "lego": ["pasar", "happen"],
+      "e": [
+        ["No me gustaría adivinar qué va a pasar.", "I wouldn't like to guess what's going to happen."],
+        ["No estoy seguro qué va a pasar.", "I'm not sure what's going to happen."]
+      ],
+      "d": {
+        "2": [
+          ["va a pasar", "is going to happen"]
+        ],
+        "3": [
+          ["qué va a pasar", "what's going to happen"],
+          ["adivinar qué va a pasar", "to guess what's going to happen"]
+        ]
+      }
+    },
+    "S0012L06": {
+      "lego": ["mañana", "tomorrow"],
+      "e": [
+        ["No me gustaría adivinar qué va a pasar mañana.", "I wouldn't like to guess what's going to happen tomorrow."],
+        ["Voy a hablar contigo mañana.", "I'm going to speak with you tomorrow."],
+        ["Quiero practicar hablando mañana.", "I want to practise speaking tomorrow."],
+        ["Me gustaría poder hablar español mañana.", "I'd like to be able to speak Spanish tomorrow."]
+      ],
+      "d": {
+        "2": [
+          ["pasar mañana", "happen tomorrow"]
+        ],
+        "3": [
+          ["va a pasar mañana", "is going to happen tomorrow"],
+          ["hablar mañana", "to speak tomorrow"]
+        ],
+        "4": [
+          ["qué va a pasar mañana", "what's going to happen tomorrow"]
+        ]
+      }
+    },
+    "S0013L01": {
+      "lego": ["Hablas", "You speak"],
+      "e": [
+        ["Hablas español.", "You speak Spanish."],
+        ["Hablas contigo ahora.", "You speak with you now."]
+      ],
+      "d": {
+        "2": [
+          ["Hablas español", "You speak Spanish"]
+        ]
+      }
+    },
+    "S0013L02": {
+      "lego": ["español", "Spanish"],
+      "e": [
+        ["Hablas español.", "You speak Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["Hablas español", "You speak Spanish"]
+        ]
+      }
+    },
+    "S0013L03": {
+      "lego": ["muy bien", "very well"],
+      "e": [
+        ["Hablas español muy bien.", "You speak Spanish very well."],
+        ["Hablas muy bien.", "You speak very well."],
+        ["Quiero hablar español muy bien.", "I want to speak Spanish very well."]
+      ],
+      "d": {
+        "2": [
+          ["muy bien", "very well"],
+          ["español muy bien", "Spanish very well"]
+        ],
+        "3": [
+          ["Hablas muy bien", "You speak very well"],
+          ["Hablas español muy bien", "You speak Spanish very well"]
+        ]
+      }
+    },
+    "S0014L01": {
+      "lego": ["Hablas", "Do you speak"],
+      "e": [
+        ["Hablas español.", "Do you speak Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["Hablas español", "Do you speak Spanish"]
+        ]
+      }
+    },
+    "S0014L02": {
+      "lego": ["español", "Spanish"],
+      "e": [
+        ["Hablas español.", "Do you speak Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["Hablas español", "Do you speak Spanish"]
+        ]
+      }
+    },
+    "S0014L03": {
+      "lego": ["todo el día", "all day"],
+      "e": [
+        ["Hablas español todo el día.", "Do you speak Spanish all day."],
+        ["Voy a hablar español todo el día.", "I'm going to speak Spanish all day."],
+        ["Quiero practicar hablando todo el día.", "I want to practise speaking all day."]
+      ],
+      "d": {
+        "2": [
+          ["todo el día", "all day"]
+        ],
+        "3": [
+          ["español todo el día", "Spanish all day"],
+          ["hablar todo el día", "to speak all day"]
+        ],
+        "4": [
+          ["Hablas español todo el día", "Do you speak Spanish all day"]
+        ]
+      }
+    },
+    "S0015L01": {
+      "lego": ["Y", "And"],
+      "e": [
+        ["Y ahora.", "And now."],
+        ["Y hoy.", "And today."]
+      ],
+      "d": {
+        "2": [
+          ["Y ahora", "And now"],
+          ["Y hoy", "And today"]
+        ]
+      }
+    },
+    "S0015L02": {
+      "lego": ["quiero que", "I want"],
+      "e": [
+        ["Y quiero que.", "And I want."]
+      ],
+      "d": {
+        "2": [
+          ["quiero que", "I want"],
+          ["Y quiero que", "And I want"]
+        ]
+      }
+    },
+    "S0015L03": {
+      "lego": ["hables", "you to speak"],
+      "e": [
+        ["Y quiero que hables.", "And I want you to speak."],
+        ["Quiero que hables español.", "I want you to speak Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["hables", "you to speak"],
+          ["hables español", "you to speak Spanish"]
+        ],
+        "3": [
+          ["quiero que hables", "I want you to speak"],
+          ["Y quiero que hables", "And I want you to speak"]
+        ]
+      }
+    },
+    "S0015L04": {
+      "lego": ["español", "Spanish"],
+      "e": [
+        ["Y quiero que hables español.", "And I want you to speak Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["hables español", "you to speak Spanish"]
+        ],
+        "3": [
+          ["quiero que hables español", "I want you to speak Spanish"]
+        ]
+      }
+    },
+    "S0015L05": {
+      "lego": ["conmigo", "with me"],
+      "e": [
+        ["Y quiero que hables conmigo.", "And I want you to speak with me."],
+        ["Quiero hablar español conmigo.", "I want to speak Spanish with me."]
+      ],
+      "d": {
+        "2": [
+          ["conmigo", "with me"],
+          ["hables conmigo", "you to speak with me"]
+        ],
+        "3": [
+          ["hablar conmigo", "to speak with me"],
+          ["quiero que hables conmigo", "I want you to speak with me"]
+        ]
+      }
+    },
+    "S0015L06": {
+      "lego": ["mañana", "tomorrow"],
+      "e": [
+        ["Y quiero que hables español conmigo mañana.", "And I want you to speak Spanish with me tomorrow."],
+        ["Voy a hablar contigo mañana.", "I'm going to speak with you tomorrow."],
+        ["Me gustaría poder hablar español mañana.", "I'd like to be able to speak Spanish tomorrow."]
+      ],
+      "d": {
+        "2": [
+          ["conmigo mañana", "with me tomorrow"]
+        ],
+        "3": [
+          ["hables conmigo mañana", "you to speak with me tomorrow"],
+          ["hablar mañana", "to speak tomorrow"]
+        ],
+        "4": [
+          ["hables español conmigo mañana", "you to speak Spanish with me tomorrow"]
+        ]
+      }
+    },
+    "S0016L01": {
+      "lego": ["Él", "He"],
+      "e": [
+        ["Él habla español.", "He speaks Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["Él habla", "He speaks"]
+        ]
+      }
+    },
+    "S0016L02": {
+      "lego": ["quiere", "wants"],
+      "e": [
+        ["Él quiere hablar.", "He wants to speak."],
+        ["Él quiere aprender español.", "He wants to learn Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["Él quiere", "He wants"],
+          ["quiere hablar", "wants to speak"]
+        ],
+        "3": [
+          ["Él quiere hablar", "He wants to speak"]
+        ]
+      }
+    },
+    "S0016L03": {
+      "lego": ["volver", "to come back"],
+      "e": [
+        ["Él quiere volver.", "He wants to come back."],
+        ["Voy a volver mañana.", "I'm going to come back tomorrow."]
+      ],
+      "d": {
+        "2": [
+          ["Él quiere volver", "He wants to come back"],
+          ["volver mañana", "to come back tomorrow"]
+        ],
+        "3": [
+          ["Voy a volver", "I'm going to come back"]
+        ]
+      }
+    },
+    "S0016L04": {
+      "lego": ["con", "with"],
+      "e": [
+        ["Él quiere volver con.", "He wants to come back with."]
+      ],
+      "d": {
+        "2": [
+          ["volver con", "to come back with"]
+        ]
+      }
+    },
+    "S0016L05": {
+      "lego": ["todos los demás", "everyone else"],
+      "e": [
+        ["Él quiere volver con todos los demás.", "He wants to come back with everyone else."],
+        ["Quiero hablar con todos los demás.", "I want to speak with everyone else."]
+      ],
+      "d": {
+        "2": [
+          ["todos los demás", "everyone else"]
+        ],
+        "3": [
+          ["con todos los demás", "with everyone else"],
+          ["volver con todos los demás", "to come back with everyone else"]
+        ]
+      }
+    },
+    "S0016L06": {
+      "lego": ["más tarde", "later on"],
+      "e": [
+        ["Él quiere volver con todos los demás más tarde.", "He wants to come back with everyone else later on."],
+        ["Voy a hablar contigo más tarde.", "I'm going to speak with you later on."],
+        ["Me gustaría poder decir algo más tarde.", "I'd like to be able to say something later on."]
+      ],
+      "d": {
+        "2": [
+          ["más tarde", "later on"]
+        ],
+        "3": [
+          ["volver más tarde", "to come back later on"],
+          ["hablar más tarde", "to speak later on"]
+        ],
+        "4": [
+          ["con todos los demás más tarde", "with everyone else later on"]
+        ]
+      }
+    },
+    "S0017L01": {
+      "lego": ["Ella", "She"],
+      "e": [
+        ["Ella habla español.", "She speaks Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["Ella habla", "She speaks"]
+        ]
+      }
+    },
+    "S0017L02": {
+      "lego": ["quiere", "wants"],
+      "e": [
+        ["Ella quiere hablar.", "She wants to speak."],
+        ["Ella quiere aprender español.", "She wants to learn Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["Ella quiere", "She wants"]
+        ]
+      }
+    },
+    "S0017L03": {
+      "lego": ["descubrir", "to find out"],
+      "e": [
+        ["Ella quiere descubrir.", "She wants to find out."],
+        ["Voy a tratar de descubrir.", "I'm going to try to find out."]
+      ],
+      "d": {
+        "2": [
+          ["Ella quiere descubrir", "She wants to find out"],
+          ["tratar de descubrir", "try to find out"]
+        ],
+        "3": [
+          ["Voy a tratar de descubrir", "I'm going to try to find out"]
+        ]
+      }
+    },
+    "S0017L04": {
+      "lego": ["cuál es", "what is"],
+      "e": [
+        ["Ella quiere descubrir cuál es.", "She wants to find out what is."],
+        ["No estoy seguro cuál es.", "I'm not sure what is."]
+      ],
+      "d": {
+        "2": [
+          ["cuál es", "what is"]
+        ],
+        "3": [
+          ["descubrir cuál es", "to find out what is"]
+        ]
+      }
+    },
+    "S0017L05": {
+      "lego": ["la respuesta", "the answer"],
+      "e": [
+        ["Ella quiere descubrir cuál es la respuesta.", "She wants to find out what the answer is."],
+        ["No estoy seguro cuál es la respuesta.", "I'm not sure what the answer is."],
+        ["Voy a tratar de recordar la respuesta.", "I'm going to try to remember the answer."]
+      ],
+      "d": {
+        "2": [
+          ["la respuesta", "the answer"]
+        ],
+        "3": [
+          ["cuál es la respuesta", "what the answer is"],
+          ["descubrir la respuesta", "to find out the answer"]
+        ],
+        "4": [
+          ["descubrir cuál es la respuesta", "to find out what the answer is"]
+        ]
+      }
+    },
+    "S0018L01": {
+      "lego": ["Queremos", "We want"],
+      "e": [
+        ["Queremos hablar.", "We want to speak."],
+        ["Queremos aprender español.", "We want to learn Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["Queremos hablar", "We want to speak"],
+          ["Queremos aprender", "We want to learn"]
+        ]
+      }
+    },
+    "S0018L02": {
+      "lego": ["encontrarnos", "to meet"],
+      "e": [
+        ["Queremos encontrarnos.", "We want to meet."],
+        ["Voy a encontrarnos mañana.", "I'm going to meet tomorrow."]
+      ],
+      "d": {
+        "2": [
+          ["Queremos encontrarnos", "We want to meet"]
+        ]
+      }
+    },
+    "S0018L03": {
+      "lego": ["a las seis", "at six o'clock"],
+      "e": [
+        ["Queremos encontrarnos a las seis.", "We want to meet at six o'clock."],
+        ["Voy a hablar contigo a las seis.", "I'm going to speak with you at six o'clock."]
+      ],
+      "d": {
+        "2": [
+          ["a las seis", "at six o'clock"]
+        ],
+        "3": [
+          ["encontrarnos a las seis", "to meet at six o'clock"]
+        ]
+      }
+    },
+    "S0018L04": {
+      "lego": ["esta tarde", "this evening"],
+      "e": [
+        ["Queremos encontrarnos a las seis esta tarde.", "We want to meet at six o'clock this evening."],
+        ["Voy a hablar español esta tarde.", "I'm going to speak Spanish this evening."],
+        ["Me gustaría poder practicar esta tarde.", "I'd like to be able to practise this evening."]
+      ],
+      "d": {
+        "2": [
+          ["esta tarde", "this evening"]
+        ],
+        "3": [
+          ["a las seis esta tarde", "at six o'clock this evening"],
+          ["hablar esta tarde", "to speak this evening"]
+        ],
+        "4": [
+          ["encontrarnos a las seis esta tarde", "to meet at six o'clock this evening"]
+        ]
+      }
+    },
+    "S0019L01": {
+      "lego": ["Pero", "But"],
+      "e": [
+        ["Pero ahora.", "But now."],
+        ["Pero hoy.", "But today."]
+      ],
+      "d": {
+        "2": [
+          ["Pero ahora", "But now"]
+        ]
+      }
+    },
+    "S0019L02": {
+      "lego": ["no quiero", "I don't want"],
+      "e": [
+        ["Pero no quiero.", "But I don't want."],
+        ["No quiero hablar.", "I don't want to speak."]
+      ],
+      "d": {
+        "2": [
+          ["no quiero", "I don't want"],
+          ["Pero no quiero", "But I don't want"]
+        ],
+        "3": [
+          ["No quiero hablar", "I don't want to speak"]
+        ]
+      }
+    },
+    "S0019L03": {
+      "lego": ["dejar de", "to stop"],
+      "e": [
+        ["Pero no quiero dejar de.", "But I don't want to stop."],
+        ["No quiero dejar de hablar.", "I don't want to stop speaking."]
+      ],
+      "d": {
+        "2": [
+          ["dejar de", "to stop"]
+        ],
+        "3": [
+          ["no quiero dejar de", "I don't want to stop"],
+          ["dejar de hablar", "to stop speaking"]
+        ]
+      }
+    },
+    "S0019L04": {
+      "lego": ["hablar", "talking"],
+      "e": [
+        ["Pero no quiero dejar de hablar.", "But I don't want to stop talking."],
+        ["No quiero dejar de hablar español.", "I don't want to stop talking Spanish."],
+        ["Voy a dejar de hablar mañana.", "I'm going to stop talking tomorrow."]
+      ],
+      "d": {
+        "2": [
+          ["dejar de hablar", "to stop talking"]
+        ],
+        "3": [
+          ["no quiero dejar de hablar", "I don't want to stop talking"]
+        ],
+        "4": [
+          ["Pero no quiero dejar de hablar", "But I don't want to stop talking"]
+        ]
+      }
+    },
+    "S0020L01": {
+      "lego": ["Quieres", "You want"],
+      "e": [
+        ["Quieres hablar.", "You want to speak."],
+        ["Quieres aprender español.", "You want to learn Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["Quieres hablar", "You want to speak"],
+          ["Quieres aprender", "You want to learn"]
+        ]
+      }
+    },
+    "S0020L02": {
+      "lego": ["aprender", "to learn"],
+      "e": [
+        ["Quieres aprender.", "You want to learn."],
+        ["Quieres aprender español.", "You want to learn Spanish."]
+      ],
+      "d": {
+        "2": [
+          ["Quieres aprender", "You want to learn"]
+        ]
+      }
+    },
+    "S0020L03": {
+      "lego": ["su nombre", "his name"],
+      "e": [
+        ["Quieres aprender su nombre.", "You want to learn his name."],
+        ["No puedo recordar su nombre.", "I can't remember his name."]
+      ],
+      "d": {
+        "2": [
+          ["su nombre", "his name"]
+        ],
+        "3": [
+          ["aprender su nombre", "to learn his name"],
+          ["recordar su nombre", "to remember his name"]
+        ]
+      }
+    },
+    "S0020L04": {
+      "lego": ["rápidamente", "quickly"],
+      "e": [
+        ["Quieres aprender su nombre rápidamente.", "You want to learn his name quickly."],
+        ["Voy a hablar español rápidamente.", "I'm going to speak Spanish quickly."],
+        ["Me gustaría poder aprender rápidamente.", "I'd like to be able to learn quickly."],
+        ["No puedo recordar rápidamente.", "I can't remember quickly."]
+      ],
+      "d": {
+        "2": [
+          ["aprender rápidamente", "to learn quickly"],
+          ["hablar rápidamente", "to speak quickly"]
+        ],
+        "3": [
+          ["aprender su nombre rápidamente", "to learn his name quickly"],
+          ["Quieres aprender rápidamente", "You want to learn quickly"]
+        ],
+        "4": [
+          ["Quieres aprender su nombre rápidamente", "You want to learn his name quickly"]
+        ]
+      }
+    }
+  }
+}
