@@ -173,15 +173,13 @@ function getLanguageName(code) {
  */
 async function ensureCourseDirectory(courseCode) {
   const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
-  const phaseOutputsDir = path.join(courseDir, 'phase_outputs');
 
-  // New simplified structure (APML v7.3+):
-  // - translations.json (single file for all SEED_PAIRS)
-  // - baskets.json (single file for all LEGO_BASKETS including LEGOs)
-  // - phase_outputs/ (intermediate processing files)
+  // Simplified structure (APML v7.7+):
+  // - seed_pairs.json (all seed translations)
+  // - lego_pairs.json (all LEGO breakdowns)
+  // - lego_baskets.json (all practice baskets)
 
   await fs.ensureDir(courseDir);
-  await fs.ensureDir(phaseOutputsDir);
 
   return courseDir;
 }
