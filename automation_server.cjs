@@ -938,30 +938,52 @@ async function spawnCourseOrchestrator(courseCode, params) {
     console.log(`[Orchestrator] Phase 5: ${phase5Batches} batches (20 seeds each, sequential)`);
 
     // PHASE 1: Translation (can spawn in parallel)
-    job.phase = 'phase_1';
-    job.progress = 0;
-    console.log(`\n[Phase 1] Starting ${phase1Batches} translation batches...`);
+    // CHECK FOR INTELLIGENT RESUME
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+    let phase1AlreadyComplete = false;
 
-    for (let i = 0; i < phase1Batches; i++) {
-      const startSeed = i * 100 + 1;
-      const endSeed = Math.min((i + 1) * 100, seeds);
-      const batchNum = i + 1;
-
-      console.log(`[Phase 1] Spawning batch ${batchNum}/${phase1Batches}: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`);
-
-      const brief = generatePhase1Brief(courseCode, { target, known, startSeed, endSeed, batchNum, totalBatches: phase1Batches }, courseDir);
-      await spawnPhaseAgent(`1-batch${batchNum}`, brief, courseDir, courseCode);
-
-      // Small delay between spawns to avoid overwhelming iTerm2
-      await new Promise(resolve => setTimeout(resolve, 2000));
+    if (await fs.pathExists(seedPairsPath)) {
+      try {
+        const seedPairsData = await fs.readJson(seedPairsPath);
+        const actualSeeds = Object.keys(seedPairsData.translations || {}).length;
+        if (actualSeeds >= seeds) {
+          phase1AlreadyComplete = true;
+          console.log(`\n[Resume] ✅ Phase 1 already complete! Found ${actualSeeds}/${seeds} seed pairs`);
+          console.log(`[Resume] Skipping Phase 1 generation, proceeding to Phase 3...\n`);
+          job.phase = 'phase_1_complete';
+          job.progress = 30;
+        }
+      } catch (err) {
+        console.log(`[Resume] seed_pairs.json exists but invalid, will regenerate`);
+      }
     }
 
-    console.log(`[Phase 1] All ${phase1Batches} batches spawned. Agents running in parallel.`);
-    console.log(`[Phase 1] ⏳ Waiting for all Phase 1 batches to complete before Phase 3...`);
-    console.log(`[Phase 1] 📍 Polling seed_pairs.json for completion...`);
+    if (!phase1AlreadyComplete) {
+      job.phase = 'phase_1';
+      job.progress = 0;
+      console.log(`\n[Phase 1] Starting ${phase1Batches} translation batches...`);
 
-    job.phase = 'phase_1_waiting';
-    job.progress = 10;
+      for (let i = 0; i < phase1Batches; i++) {
+        const startSeed = i * 100 + 1;
+        const endSeed = Math.min((i + 1) * 100, seeds);
+        const batchNum = i + 1;
+
+        console.log(`[Phase 1] Spawning batch ${batchNum}/${phase1Batches}: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`);
+
+        const brief = generatePhase1Brief(courseCode, { target, known, startSeed, endSeed, batchNum, totalBatches: phase1Batches }, courseDir);
+        await spawnPhaseAgent(`1-batch${batchNum}`, brief, courseDir, courseCode);
+
+        // Small delay between spawns to avoid overwhelming iTerm2
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      }
+
+      console.log(`[Phase 1] All ${phase1Batches} batches spawned. Agents running in parallel.`);
+      console.log(`[Phase 1] ⏳ Waiting for all Phase 1 batches to complete before Phase 3...`);
+      console.log(`[Phase 1] 📍 Polling seed_pairs.json for completion...`);
+
+      job.phase = 'phase_1_waiting';
+      job.progress = 10;
+    }
 
     // Poll for Phase 1 completion, then auto-progress to Phase 3 and Phase 5
     pollAndContinue(courseCode, params, courseDir, phase1Batches, phase3Batches, phase5Batches);
@@ -996,23 +1018,44 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
     job.progress = 30;
 
     // START PHASE 3
-    job.phase = 'phase_3';
-    console.log(`[Phase 3] Starting ${phase3Batches} LEGO extraction batches...`);
+    // CHECK FOR INTELLIGENT RESUME
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    let phase3AlreadyComplete = false;
 
-    for (let i = 0; i < phase3Batches; i++) {
-      const startSeed = i * 50 + 1;
-      const endSeed = Math.min((i + 1) * 50, seeds);
-      const batchNum = i + 1;
-
-      console.log(`[Phase 3] Spawning batch ${batchNum}/${phase3Batches}: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`);
-
-      const brief = generatePhase3Brief(courseCode, { target, known, startSeed, endSeed, batchNum, totalBatches: phase3Batches }, courseDir);
-      await spawnPhaseAgent(`3-batch${batchNum}`, brief, courseDir, courseCode);
-      await new Promise(resolve => setTimeout(resolve, 2000));
+    if (await fs.pathExists(legoPairsPath)) {
+      try {
+        const legoPairsData = await fs.readJson(legoPairsPath);
+        const actualSeeds = (legoPairsData.seeds || []).length;
+        if (actualSeeds >= seeds) {
+          phase3AlreadyComplete = true;
+          console.log(`[Resume] ✅ Phase 3 already complete! Found ${actualSeeds}/${seeds} LEGO breakdowns`);
+          console.log(`[Resume] Skipping Phase 3 generation, proceeding to Phase 5...\n`);
+          job.progress = 60;
+        }
+      } catch (err) {
+        console.log(`[Resume] lego_pairs.json exists but invalid, will regenerate`);
+      }
     }
 
-    console.log(`[Phase 3] All ${phase3Batches} batches spawned. Waiting for completion...`);
-    job.progress = 40;
+    if (!phase3AlreadyComplete) {
+      job.phase = 'phase_3';
+      console.log(`[Phase 3] Starting ${phase3Batches} LEGO extraction batches...`);
+
+      for (let i = 0; i < phase3Batches; i++) {
+        const startSeed = i * 50 + 1;
+        const endSeed = Math.min((i + 1) * 50, seeds);
+        const batchNum = i + 1;
+
+        console.log(`[Phase 3] Spawning batch ${batchNum}/${phase3Batches}: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`);
+
+        const brief = generatePhase3Brief(courseCode, { target, known, startSeed, endSeed, batchNum, totalBatches: phase3Batches }, courseDir);
+        await spawnPhaseAgent(`3-batch${batchNum}`, brief, courseDir, courseCode);
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      }
+
+      console.log(`[Phase 3] All ${phase3Batches} batches spawned. Waiting for completion...`);
+      job.progress = 40;
+    }
 
     // WAIT FOR PHASE 3 COMPLETION
     console.log(`[Polling] Checking Phase 3 completion every 30s...`);
@@ -1029,6 +1072,32 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
     job.progress = 60;
 
     // START PHASE 5 (SEQUENTIAL with validators)
+    // CHECK FOR INTELLIGENT RESUME
+    const legoBasketsPath = path.join(courseDir, 'lego_baskets.json');
+    let phase5AlreadyComplete = false;
+
+    if (await fs.pathExists(legoBasketsPath)) {
+      try {
+        const basketsData = await fs.readJson(legoBasketsPath);
+        const baskets = basketsData.baskets || basketsData;
+        const actualBaskets = Object.keys(baskets).length;
+        const expectedBaskets = Math.ceil(seeds * 3); // Rough estimate: ~3 LEGOs per seed
+
+        if (actualBaskets >= expectedBaskets * 0.8) { // 80% threshold (generous)
+          phase5AlreadyComplete = true;
+          console.log(`[Resume] ✅ Phase 5 already complete! Found ${actualBaskets} baskets (expected ~${expectedBaskets})`);
+          console.log(`[Resume] Skipping Phase 5 generation. Course generation complete!\n`);
+          job.phase = 'completed';
+          job.status = 'completed';
+          job.progress = 100;
+          job.endTime = new Date();
+          return; // Skip Phase 5 entirely
+        }
+      } catch (err) {
+        console.log(`[Resume] lego_baskets.json exists but invalid, will regenerate`);
+      }
+    }
+
     job.phase = 'phase_5';
     console.log(`[Phase 5] Starting ${phase5Batches} basket batches (SEQUENTIAL)...\n`);
 
