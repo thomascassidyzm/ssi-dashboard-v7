@@ -200,15 +200,28 @@ This document contains:
 1. Run preparation scripts via Bash tool
 2. Spawn orchestrators in NEW iTerm2 windows using osascript via Bash tool
 3. Wait 30 seconds between each orchestrator spawn (prevents overload)
-4. Monitor for chunk completion via Read/Glob tools
-   - Check every 60 seconds for new chunks
-   - Use DIFFERENTIAL LOGIC: If N-1 chunks complete within tight window (3-5 min) and 1 chunk is 5+ min behind the last completion → failed spawn, retry immediately
-   - Example: chunks 1,2,3,5 done at 21:29-21:32, chunk 4 missing at 21:37 → chunk 4 failed, retry now
-   - Don't wait absolute 10-15 min if differential timing shows clear failure
-   - Osascript clipboard paste can fail silently
-5. Run merge scripts via Bash tool
-6. Provide clear status updates
+4. **IMMEDIATELY start monitoring** for chunk completion (don't wait for all orchestrators to spawn):
+   - Check every 30 seconds using Glob tool: vfs/courses/{course}/orchestrator_batches/phase*/chunk_*.json
+   - Track timestamps of each chunk as it appears
+   - Report progress: "Chunks: 1,2 complete (2/5), waiting for 3,4,5..."
+   - Use DIFFERENTIAL LOGIC for failure detection:
+     * If N-1 chunks complete within 3-5 min window
+     * And 1 chunk is 5+ min behind the last completion
+     * → Failed spawn, retry immediately (don't wait 10-15 min)
+   - Example: chunks 1,2,3,5 complete at 21:29-21:32, chunk 4 missing at 21:37 → retry chunk 4 now
+   - Continuous 30s polling allows fast detection (within 5-6 minutes of failure vs 10-15 min)
+5. When all chunks complete, run merge scripts via Bash tool
+6. Provide clear status updates throughout monitoring
 7. Coordinate all phases from start to finish
+
+**Monitoring pattern:**
+\`\`\`
+Loop every 30 seconds:
+  1. Count chunks: ls vfs/courses/{course}/orchestrator_batches/phase1/chunk_*.json | wc -l
+  2. If all 5 present → proceed to merge
+  3. If <5 present → check differential timing → retry outliers if needed
+  4. Report: "⏳ Phase 1: 3/5 chunks complete (waiting 2 min)"
+\`\`\`
 
 **CRITICAL: How to spawn orchestrators in iTerm2:**
 
