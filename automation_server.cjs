@@ -4822,7 +4822,7 @@ app.post('/api/validate/phase/:phase', (req, res) => {
 });
 
 // =============================================================================
-// PHASE EXECUTION ENDPOINTS (Phase 2, 6, 7, 8 - APML v7.6)
+// PHASE EXECUTION ENDPOINTS (Phase 2, 4, 5, 6, 7, 8 - APML v7.8.4)
 // =============================================================================
 
 /**
@@ -4897,6 +4897,322 @@ Begin Phase 2 now.`;
       job.status = 'failed';
       job.error = err.message;
     }
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/phase/4
+ * Execute Phase 4: Batch Preparation with Smart Deduplication
+ *
+ * Reads lego_pairs.json, identifies duplicates, creates batches for parallel Phase 5
+ */
+app.post('/api/courses/:courseCode/phase/4', async (req, res) => {
+  const { courseCode } = req.params;
+  const { parallelism = 8 } = req.body;
+
+  try {
+    console.log(`[Phase 4] Starting batch preparation for ${courseCode}...`);
+
+    const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+
+    // Check if course exists
+    if (!await fs.pathExists(courseDir)) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    // Check if Phase 3 is complete (lego_pairs.json exists)
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    if (!await fs.pathExists(legoPairsPath)) {
+      return res.status(400).json({ error: 'Phase 3 not complete - lego_pairs.json not found' });
+    }
+
+    // Get or create job
+    let job = STATE.jobs.get(courseCode);
+    if (!job) {
+      job = {
+        courseCode,
+        status: 'in_progress',
+        phase: 'phase_4',
+        progress: 0,
+        startTime: new Date()
+      };
+      STATE.jobs.set(courseCode, job);
+    }
+
+    // Update job status
+    job.phase = 'phase_4';
+    job.progress = 70;
+
+    // Run phase4-prepare-batches.cjs script
+    console.log(`[Phase 4] Running batch preparation script with parallelism=${parallelism}...`);
+
+    const scriptPath = path.join(__dirname, 'scripts', 'phase4-prepare-batches.cjs');
+    const { spawn } = require('child_process');
+
+    const batchProcess = spawn('node', [scriptPath, courseCode, String(parallelism)], {
+      cwd: __dirname,
+      stdio: 'inherit'
+    });
+
+    batchProcess.on('close', (code) => {
+      if (code === 0) {
+        console.log(`[Phase 4] ✅ Batch preparation complete for ${courseCode}`);
+        job.progress = 75;
+        job.status = 'phase_4_complete';
+      } else {
+        console.error(`[Phase 4] ❌ Batch preparation failed with code ${code}`);
+        job.status = 'failed';
+        job.error = `Batch preparation script exited with code ${code}`;
+      }
+    });
+
+    res.json({
+      success: true,
+      message: 'Phase 4 (Batch Preparation) started successfully',
+      courseCode,
+      phase: 'phase_4',
+      parallelism,
+      status: job
+    });
+  } catch (err) {
+    console.error('[Phase 4] Error:', err);
+    if (STATE.jobs.has(courseCode)) {
+      const job = STATE.jobs.get(courseCode);
+      job.status = 'failed';
+      job.error = err.message;
+    }
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/phase/4/status
+ * Check Phase 4 batch preparation status
+ */
+app.get('/api/courses/:courseCode/phase/4/status', async (req, res) => {
+  const { courseCode } = req.params;
+  const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+  const batchesDir = path.join(courseDir, 'batches');
+
+  try {
+    // Check if batches directory exists
+    const batchesExist = await fs.pathExists(batchesDir);
+
+    if (!batchesExist) {
+      return res.json({
+        complete: false,
+        status: 'not_started',
+        message: 'Phase 4 not started - batches/ directory does not exist'
+      });
+    }
+
+    // Count batch files
+    const files = await fs.readdir(batchesDir);
+    const batchFiles = files.filter(f => f.startsWith('batch_') && f.endsWith('.json'));
+
+    // Check if metadata exists
+    const metadataPath = path.join(batchesDir, 'batch_metadata.json');
+    const metadataExists = await fs.pathExists(metadataPath);
+
+    if (metadataExists) {
+      const metadata = await fs.readJson(metadataPath);
+      return res.json({
+        complete: true,
+        status: 'complete',
+        batches: batchFiles.length,
+        totalLegos: metadata.totalLegos || 0,
+        uniqueLegos: metadata.uniqueLegos || 0,
+        duplicates: metadata.duplicates || 0,
+        deduplicationRate: metadata.deduplicationRate || '0%',
+        metadata
+      });
+    }
+
+    res.json({
+      complete: false,
+      status: 'in_progress',
+      batches: batchFiles.length
+    });
+  } catch (err) {
+    console.error('[Phase 4] Status check error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/phase/5
+ * Execute Phase 5: Basket Generation (Parallel, reads Phase 4 batches)
+ *
+ * NEW in v3.0: Reads batches from Phase 4, generates only unique baskets
+ */
+app.post('/api/courses/:courseCode/phase/5', async (req, res) => {
+  const { courseCode } = req.params;
+  const { batchNumber } = req.body; // Optional: specific batch to run
+
+  try {
+    console.log(`[Phase 5] Starting basket generation for ${courseCode}...`);
+
+    const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+    const batchesDir = path.join(courseDir, 'batches');
+
+    // Check if course exists
+    if (!await fs.pathExists(courseDir)) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    // Check if Phase 4 is complete (batches/ exists)
+    if (!await fs.pathExists(batchesDir)) {
+      return res.status(400).json({ error: 'Phase 4 not complete - run batch preparation first' });
+    }
+
+    // Get or create job
+    let job = STATE.jobs.get(courseCode);
+    if (!job) {
+      job = {
+        courseCode,
+        status: 'in_progress',
+        phase: 'phase_5',
+        progress: 0,
+        startTime: new Date()
+      };
+      STATE.jobs.set(courseCode, job);
+    }
+
+    // Update job status
+    job.phase = 'phase_5';
+    job.progress = 80;
+
+    // Construct prompt for Claude agent (Phase 5 v3.0)
+    const batchInfo = batchNumber ? `batch ${batchNumber}` : 'all batches';
+    const prompt = `# Phase 5 v3.0: Basket Generation for ${courseCode}
+
+## Instructions
+Please visit ${CONFIG.TRAINING_URL}/phase/5 for complete phase instructions.
+
+## Task Summary (NEW in v3.0)
+1. Read batch files from ${batchesDir}${batchNumber ? `/batch_${batchNumber}.json` : '/*.json'}
+2. For each LEGO marked "generate": true, create basket with:
+   - Eternal phrase (known = target, decontextualized)
+   - Debut phrase (seed context where LEGO first appeared)
+3. Skip LEGOs marked "generate": false (duplicates already handled by Phase 4)
+4. Output lego_baskets.json
+
+## Working Directory
+${courseDir}
+
+## Output File
+lego_baskets.json
+
+## Key Rules (v3.0)
+- Only generate baskets for LEGOs with "generate": true
+- Phase 4 already handled deduplication
+- Each basket: { lego_id, eternal_phrase, debut_phrase, seed_context }
+- Parallel-safe: Each batch can run independently
+
+Begin Phase 5 now.`;
+
+    // Spawn agent
+    console.log(`[Phase 5] Spawning Claude Code agent for ${courseCode} (${batchInfo})...`);
+    await spawnPhaseAgent('5', prompt, courseDir, courseCode);
+
+    res.json({
+      success: true,
+      message: `Phase 5 v3.0 (Basket Generation) agent spawned successfully for ${batchInfo}`,
+      courseCode,
+      phase: 'phase_5',
+      batchNumber: batchNumber || 'all',
+      status: job
+    });
+  } catch (err) {
+    console.error('[Phase 5] Error:', err);
+    if (STATE.jobs.has(courseCode)) {
+      const job = STATE.jobs.get(courseCode);
+      job.status = 'failed';
+      job.error = err.message;
+    }
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/phase/5/status
+ * Check Phase 5 basket generation status
+ */
+app.get('/api/courses/:courseCode/phase/5/status', async (req, res) => {
+  const { courseCode } = req.params;
+  const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+  const basketsPath = path.join(courseDir, 'lego_baskets.json');
+
+  try {
+    // Check if lego_baskets.json exists
+    const basketsExist = await fs.pathExists(basketsPath);
+
+    if (!basketsExist) {
+      return res.json({
+        complete: false,
+        status: 'not_started',
+        message: 'Phase 5 not started - lego_baskets.json does not exist'
+      });
+    }
+
+    // Load and analyze baskets
+    const basketsData = await fs.readJson(basketsPath);
+    const baskets = basketsData.baskets || [];
+
+    res.json({
+      complete: true,
+      status: 'complete',
+      totalBaskets: baskets.length,
+      basketsData
+    });
+  } catch (err) {
+    console.error('[Phase 5] Status check error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/phase/5/merge
+ * Merge Phase 5 batch outputs into single lego_baskets.json
+ */
+app.post('/api/courses/:courseCode/phase/5/merge', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    console.log(`[Phase 5] Merging basket batch outputs for ${courseCode}...`);
+
+    const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+
+    // Check if course exists
+    if (!await fs.pathExists(courseDir)) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    // Run phase5-merge-batches.cjs script
+    const scriptPath = path.join(__dirname, 'scripts', 'phase5-merge-batches.cjs');
+    const { spawn } = require('child_process');
+
+    const mergeProcess = spawn('node', [scriptPath, courseCode], {
+      cwd: __dirname,
+      stdio: 'inherit'
+    });
+
+    mergeProcess.on('close', (code) => {
+      if (code === 0) {
+        console.log(`[Phase 5] ✅ Batch merge complete for ${courseCode}`);
+      } else {
+        console.error(`[Phase 5] ❌ Batch merge failed with code ${code}`);
+      }
+    });
+
+    res.json({
+      success: true,
+      message: 'Phase 5 batch merge started successfully',
+      courseCode
+    });
+  } catch (err) {
+    console.error('[Phase 5] Merge error:', err);
     res.status(500).json({ error: err.message });
   }
 });
