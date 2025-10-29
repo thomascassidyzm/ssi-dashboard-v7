@@ -90,7 +90,7 @@ Each phase intelligence module contains:
 
 ### Phase 3: LEGO Extraction → lego_pairs.json
 **File**: `phase_3_lego_pairs.md`
-**Version**: 3.5 🔒 **LOCKED** (2025-10-28)
+**Version**: 4.0.2 🔒 **LOCKED** (2025-10-29)
 **Status**: ✅ **ACTIVE**
 **Output**: `lego_pairs.json`
 
@@ -136,7 +136,7 @@ Each phase intelligence module contains:
 
 ### Phase 5: Basket Generation → lego_baskets.json
 **File**: `phase_5_lego_baskets.md`
-**Version**: 2.1 🔒 **LOCKED** (2025-10-26)
+**Version**: 2.2 🔒 **LOCKED** (2025-10-28)
 **Status**: ✅ **ACTIVE**
 **Output**: `lego_baskets.json`
 
@@ -260,11 +260,11 @@ Each phase intelligence module contains:
 
 | Phase | Status | File | Version | Locked | Notes |
 |-------|--------|------|---------|--------|-------|
-| 1 | ✅ ACTIVE | phase_1_seed_pairs.md | 2.5 | 🔒 | Examples over precepts, English handling |
+| 1 | ✅ ACTIVE | phase_1_seed_pairs.md | 2.6 | 🔒 | Examples over precepts, English handling |
 | 2 | ⚠️ Inactive | phase_2_corpus_intelligence.md | 1.0 | - | Not in current workflow |
-| 3 | ✅ ACTIVE | phase_3_lego_pairs.md | 3.3 | 🔒 | TILING FIRST, generation-focused |
+| 3 | ✅ ACTIVE | phase_3_lego_pairs.md | 4.0.2 | 🔒 | TILING FIRST, generation-focused |
 | 3.5 | ⚠️ Inactive | phase_3.5_lego_graph.md | 1.0 | - | Not in current workflow |
-| 5 | ✅ ACTIVE | phase_5_lego_baskets.md | 2.1 | 🔒 | Eternal/debut, ABSOLUTE GATE |
+| 5 | ✅ ACTIVE | phase_5_lego_baskets.md | 2.2 | 🔒 | Eternal/debut, ABSOLUTE GATE |
 | 5.5 | 🔨 TODO | phase_5.5_basket_deduplication.md | 1.0 | - | Next implementation target |
 | 6 | 🔨 TODO | phase_6_introductions.md | 1.0 | - | After deduplication |
 | 7 | ✅ Complete | phase_7_compilation.md | 1.0 | - | Legacy format compilation |

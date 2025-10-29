@@ -2955,6 +2955,176 @@ app.get('/api/courses/:courseCode', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/:courseCode/analyze
+ * Analyze course progress and suggest next actions
+ *
+ * Returns:
+ * - What seeds exist vs missing
+ * - What phases are complete
+ * - Smart options for resuming/testing
+ */
+app.get('/api/courses/:courseCode/analyze', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+
+    // Check if course directory exists
+    if (!await fs.pathExists(coursePath)) {
+      return res.status(404).json({
+        error: 'Course not found',
+        courseCode,
+        exists: false
+      });
+    }
+
+    const analysis = {
+      courseCode,
+      exists: true,
+      seed_pairs: { exists: false, count: 0, range: null },
+      lego_pairs: { exists: false, count: 0, range: null, missing: [] },
+      phase_5: { exists: false, count: 0 },
+      phase_6: { exists: false, count: 0 },
+      recommendations: []
+    };
+
+    // Check Phase 1: seed_pairs.json
+    const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
+    if (await fs.pathExists(seedPairsPath)) {
+      const seedPairsData = await fs.readJson(seedPairsPath);
+      const seedIds = Object.keys(seedPairsData.translations || {});
+
+      analysis.seed_pairs.exists = true;
+      analysis.seed_pairs.count = seedIds.length;
+
+      if (seedIds.length > 0) {
+        seedIds.sort();
+        analysis.seed_pairs.range = {
+          first: seedIds[0],
+          last: seedIds[seedIds.length - 1]
+        };
+      }
+    }
+
+    // Check Phase 3: lego_pairs.json
+    const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
+    if (await fs.pathExists(legoPairsPath)) {
+      const legoPairsData = await fs.readJson(legoPairsPath);
+      const seedsWithLegos = legoPairsData.seeds || [];
+
+      analysis.lego_pairs.exists = true;
+      analysis.lego_pairs.count = seedsWithLegos.length;
+
+      if (seedsWithLegos.length > 0) {
+        const legoSeedIds = seedsWithLegos.map(s => s[0]).sort();
+        analysis.lego_pairs.range = {
+          first: legoSeedIds[0],
+          last: legoSeedIds[legoSeedIds.length - 1]
+        };
+
+        // Find missing seeds (if we have seed_pairs)
+        if (analysis.seed_pairs.exists) {
+          const allSeedIds = Object.keys((await fs.readJson(seedPairsPath)).translations);
+          const legoSeedSet = new Set(legoSeedIds);
+          analysis.lego_pairs.missing = allSeedIds.filter(id => !legoSeedSet.has(id)).sort();
+        }
+      }
+    }
+
+    // Generate recommendations
+    if (!analysis.seed_pairs.exists) {
+      analysis.recommendations.push({
+        type: 'create',
+        phase: 1,
+        title: 'Generate Phase 1: Seed Pairs',
+        description: 'Start by creating seed_pairs.json (668 translations)',
+        action: { startSeed: 1, endSeed: 668 }
+      });
+    } else if (!analysis.lego_pairs.exists) {
+      // No LEGOs at all
+      analysis.recommendations.push({
+        type: 'test',
+        phase: 3,
+        title: 'Test Run: First 50 Seeds',
+        description: `Test Phase 3 LEGO extraction on first 50 seeds`,
+        action: { startSeed: 1, endSeed: 50 }
+      });
+      analysis.recommendations.push({
+        type: 'full',
+        phase: 3,
+        title: 'Full Run: All Seeds',
+        description: `Extract LEGOs for all ${analysis.seed_pairs.count} seeds`,
+        action: { startSeed: 1, endSeed: analysis.seed_pairs.count }
+      });
+    } else if (analysis.lego_pairs.missing.length > 0) {
+      // Some LEGOs missing
+      const missing = analysis.lego_pairs.missing;
+
+      // Find contiguous ranges of missing seeds
+      const ranges = [];
+      let rangeStart = null;
+      let rangeEnd = null;
+
+      for (let i = 0; i < missing.length; i++) {
+        const seedNum = parseInt(missing[i].substring(1));
+
+        if (rangeStart === null) {
+          rangeStart = seedNum;
+          rangeEnd = seedNum;
+        } else if (seedNum === rangeEnd + 1) {
+          rangeEnd = seedNum;
+        } else {
+          ranges.push({ start: rangeStart, end: rangeEnd, count: rangeEnd - rangeStart + 1 });
+          rangeStart = seedNum;
+          rangeEnd = seedNum;
+        }
+      }
+
+      if (rangeStart !== null) {
+        ranges.push({ start: rangeStart, end: rangeEnd, count: rangeEnd - rangeStart + 1 });
+      }
+
+      // Suggest processing missing ranges
+      for (const range of ranges.slice(0, 3)) { // Show max 3 ranges
+        analysis.recommendations.push({
+          type: 'resume',
+          phase: 3,
+          title: `Resume: Seeds ${range.start}-${range.end}`,
+          description: `Process ${range.count} missing seeds`,
+          action: { startSeed: range.start, endSeed: range.end }
+        });
+      }
+
+      if (missing.length > 0) {
+        analysis.recommendations.push({
+          type: 'full',
+          phase: 3,
+          title: 'Process All Missing',
+          description: `Process all ${missing.length} missing seeds`,
+          action: { startSeed: 1, endSeed: analysis.seed_pairs.count }
+        });
+      }
+    } else {
+      // Phase 3 complete!
+      analysis.recommendations.push({
+        type: 'next',
+        phase: 4,
+        title: 'Continue: Phase 4',
+        description: 'Phase 3 complete! Continue to Phase 4: Deduplication',
+        action: { startSeed: 1, endSeed: analysis.seed_pairs.count }
+      });
+    }
+
+    res.json(analysis);
+  } catch (error) {
+    console.error(`[API] Error analyzing course:`, error);
+    res.status(500).json({
+      error: 'Failed to analyze course',
+      details: error.message
+    });
+  }
+});
+
+/**
  * GET /api/courses/:courseCode/vfs/:filename
  * Serve VFS files from course directory
  */
