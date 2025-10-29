@@ -203,6 +203,23 @@ This document contains:
 - Monitoring instructions
 - Success criteria
 
+**INTELLIGENT RESUME - CHECK BEFORE STARTING:**
+Before running any phase, check if it's already complete:
+
+1. **Phase 1 Check**: Read vfs/courses/${courseCode}/seed_pairs.json
+   - If exists and has ${totalSeeds} seeds in translations object → Skip Phase 1
+   - Report: "✅ Phase 1 COMPLETE: ${totalSeeds}/${totalSeeds} seeds found, skipping to Phase 3"
+
+2. **Phase 3 Check**: Read vfs/courses/${courseCode}/lego_pairs.json
+   - If exists and has ${totalSeeds} seeds in seeds array → Skip Phase 3
+   - Report: "✅ Phase 3 COMPLETE: ${totalSeeds}/${totalSeeds} LEGO breakdowns found, skipping to Phase 5"
+
+3. **Phase 5 Check**: Read vfs/courses/${courseCode}/lego_baskets.json
+   - If exists and has baskets object → Skip Phase 5
+   - Report: "✅ Phase 5 COMPLETE: Baskets found, skipping to Phase 6"
+
+**Start from the first incomplete phase.** Don't regenerate completed work!
+
 **Architecture:**
 - 5 orchestrators × 10 sub-agents = 50 concurrent agents per phase
 - 30-second delays between orchestrator spawns (prevents iTerm2 overload)
