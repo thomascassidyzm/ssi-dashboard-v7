@@ -920,11 +920,36 @@ end tell
  * Phase 5: 20 seeds/batch (heavy, SEQUENTIAL with validators)
  */
 async function spawnCourseOrchestrator(courseCode, params) {
-  console.log(`[Orchestrator] Starting INTELLIGENT BATCH orchestration: ${courseCode}`);
-  console.log(`[Orchestrator] Seed range: S${String(params.startSeed).padStart(4, '0')}-S${String(params.endSeed).padStart(4, '0')} (${params.seeds} seeds)`);
-
   const job = STATE.jobs.get(courseCode);
   const courseDir = await ensureCourseDirectory(courseCode);
+
+  // Check for orchestrator v2 feature flag
+  const useOrchestratorV2 = process.env.USE_ORCHESTRATOR_V2 === 'true';
+
+  if (useOrchestratorV2) {
+    console.log(`[Orchestrator] Using NEW ORCHESTRATOR WORKFLOW (v2)`);
+    console.log(`[Orchestrator] Architecture: 5 orchestrators × 10 agents = 50 concurrent per phase`);
+
+    try {
+      // Load the new orchestrator workflow module
+      const { runOrchestratorWorkflow } = require('./orchestrator-workflow.cjs');
+
+      // Run the new workflow (it handles all STATE.jobs updates internally)
+      await runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent, CONFIG.TRAINING_URL);
+
+    } catch (error) {
+      console.error(`[Orchestrator] Error in v2 workflow:`, error);
+      job.status = 'failed';
+      job.error = error.message;
+    }
+
+    return; // Exit early - new workflow handles everything
+  }
+
+  // Otherwise, use the original batch orchestrator (v1)
+  console.log(`[Orchestrator] Using ORIGINAL BATCH orchestration (v1): ${courseCode}`);
+  console.log(`[Orchestrator] Seed range: S${String(params.startSeed).padStart(4, '0')}-S${String(params.endSeed).padStart(4, '0')} (${params.seeds} seeds)`);
+
   const { target, known, seeds, startSeed, endSeed } = params;
 
   try {
