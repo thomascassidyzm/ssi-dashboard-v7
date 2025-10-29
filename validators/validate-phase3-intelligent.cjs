@@ -59,13 +59,18 @@ class IntelligentValidator {
   /**
    * BUILD EVIDENCE: Learn patterns from the course data itself
    * No hardcoding - patterns emerge from data
+   *
+   * FCFS PRINCIPLE: First Come First Served
+   * - First occurrence of a target word establishes the BASE LEGO
+   * - Subsequent occurrences needing different forms must be COMPOSITE
    */
   buildEvidence() {
     const mappings = {}; // { target: Set([known1, known2, ...]) }
+    const firstOccurrence = {}; // { target: { seedId, legoId, known } } - FCFS tracker
     const cooccurrence = {}; // { "word1|||word2": count }
     const constructions = []; // Detected patterns
 
-    // Learn from all LEGOs across all seeds
+    // Learn from all LEGOs across all seeds (in order - FCFS matters!)
     for (const seed of this.legoPairs.seeds || []) {
       const [seedId, seedPair, legos] = seed;
       const [targetSeed, knownSeed] = seedPair;
@@ -76,10 +81,21 @@ class IntelligentValidator {
 
         if (type === 'B') {
           const targetLower = target.toLowerCase().trim();
+
+          // Track all mappings
           if (!mappings[targetLower]) {
             mappings[targetLower] = new Set();
           }
           mappings[targetLower].add(known);
+
+          // Track FIRST occurrence (FCFS)
+          if (!firstOccurrence[targetLower]) {
+            firstOccurrence[targetLower] = {
+              seedId,
+              legoId,
+              known
+            };
+          }
         }
       }
 
@@ -98,13 +114,15 @@ class IntelligentValidator {
         inconsistentMappings.push({
           target,
           knowns: Array.from(knowns),
-          count: knowns.size
+          count: knowns.size,
+          firstOccurrence: firstOccurrence[target] // FCFS reference
         });
       }
     }
 
     return {
       mappings,
+      firstOccurrence,
       inconsistentMappings,
       cooccurrence,
       constructions
@@ -164,12 +182,12 @@ class IntelligentValidator {
   }
 
   /**
-   * CHECK 2: CONSISTENCY (evidence-based FD checking)
+   * CHECK 2: CONSISTENCY (evidence-based FD checking with FCFS)
    * One target word should map to ONE known translation
-   * Detect inconsistencies by analyzing all mappings
+   * FCFS: First occurrence establishes BASE, subsequent must be COMPOSITE
    */
   checkConsistency() {
-    console.log('\n🔍 Check 2: FD Consistency (Evidence-Based)');
+    console.log('\n🔍 Check 2: FD Consistency (Evidence-Based + FCFS)');
     const consistencyErrors = [];
 
     // Check each seed's LEGOs against learned evidence
@@ -183,31 +201,47 @@ class IntelligentValidator {
 
         const targetLower = target.toLowerCase().trim();
         const evidence = this.evidence.mappings[targetLower];
+        const firstOccurrence = this.evidence.firstOccurrence[targetLower];
 
         if (evidence && evidence.size > 1) {
-          // This target has multiple known translations - FD violation
-          const allKnowns = Array.from(evidence);
-          const expectedKnown = this.getMostCommonMapping(targetLower);
+          // This target has multiple known translations - potential FD violation
 
-          if (known !== expectedKnown) {
+          // Check if THIS is the first occurrence (FCFS - this one wins!)
+          const isFirstOccurrence = firstOccurrence &&
+                                    firstOccurrence.seedId === seedId &&
+                                    firstOccurrence.legoId === legoId;
+
+          if (isFirstOccurrence) {
+            // This is the FCFS winner - it's CORRECT, skip it
+            continue;
+          }
+
+          // This is NOT the first occurrence
+          const fcfsKnown = firstOccurrence.known;
+          const allKnowns = Array.from(evidence);
+
+          if (known !== fcfsKnown) {
+            // Violation: Using different mapping than FCFS
             consistencyErrors.push({
-              type: 'fd_violation_inconsistent',
+              type: 'fd_violation_fcfs',
               seedId,
               legoId,
               target,
               known,
-              expectedKnown,
+              fcfsKnown,
+              fcfsSeedId: firstOccurrence.seedId,
+              fcfsLegoId: firstOccurrence.legoId,
               allMappings: allKnowns,
-              message: `"${target}" inconsistently mapped to "${known}", expected "${expectedKnown}"`,
-              evidence: `This word maps to: ${allKnowns.join(', ')} across different seeds`,
-              fix: `Use consistent mapping: "${target}" → "${expectedKnown}"`
+              message: `"${target}" FD violation: needs different form than FCFS established mapping`,
+              evidence: `First occurrence: ${firstOccurrence.seedId} → "${fcfsKnown}" (FCFS - locked in)\nThis occurrence: ${seedId} → "${known}" (different form needed)`,
+              fix: `CHUNK UP AS COMPOSITE: Include surrounding context to make "${target}" unambiguous.\nExample: If this needs gerund form, combine with preceding construction as COMPOSITE with componentization.`
             });
           }
         }
       }
     }
 
-    console.log(`   Found ${consistencyErrors.length} consistency violations`);
+    console.log(`   Found ${consistencyErrors.length} FCFS violations (need COMPOSITE chunking)`);
     return consistencyErrors;
   }
 
