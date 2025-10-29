@@ -201,28 +201,27 @@ let pollInterval = null
 
 // Phase names for UI
 const phaseNames = [
-  { id: 0, name: 'Phase 1: Generate SEED_PAIRS' },
-  { id: 1, name: 'Phase 2: Corpus Intelligence (FCFS)' },
-  { id: 2, name: 'Phase 3: Extract LEGO_PAIRS' },
-  { id: 3, name: 'Phase 3.5: LEGO Graph Construction' },
-  { id: 4, name: 'Phase 4: LEGO Deduplication' },
-  { id: 5, name: 'Phase 5: Generate LEGO_BASKETS' },
-  { id: 6, name: 'Phase 6: Generate LEGO_INTRODUCTIONS' },
-  { id: 7, name: 'Compilation' }
+  { id: 0, name: 'Phase 1: Pedagogical Translation' },
+  { id: 1, name: 'Phase 3: LEGO Extraction' },
+  { id: 2, name: 'Phase 5: Basket Generation' },
+  { id: 3, name: 'Phase 5.5: Basket Deduplication' },
+  { id: 4, name: 'Phase 6: Introduction Generation' },
+  { id: 5, name: 'Phase 7: Compilation' },
+  { id: 6, name: 'Phase 8: Audio Generation (Kai)' }
 ]
 
 // Computed
 const currentPhaseIndex = computed(() => {
   const phase = currentPhase.value
   if (phase === 'initializing') return -1
-  if (phase === 'phase_1') return 0
-  if (phase === 'phase_2') return 1
-  if (phase === 'phase_3') return 2
-  if (phase === 'phase_3.5') return 3
-  if (phase === 'phase_4') return 4
-  if (phase === 'phase_5') return 5
-  if (phase === 'phase_6') return 6
-  if (phase === 'compilation') return 7
+  if (phase === 'phase_1' || phase === 'phase_1_waiting' || phase === 'phase_1_complete') return 0
+  if (phase === 'phase_3') return 1
+  if (phase === 'phase_5') return 2
+  if (phase === 'phase_5.5') return 3
+  if (phase === 'phase_6') return 4
+  if (phase === 'phase_7' || phase === 'compilation') return 5
+  if (phase === 'phase_8') return 6
+  if (phase === 'completed') return 7
   return -1
 })
 
