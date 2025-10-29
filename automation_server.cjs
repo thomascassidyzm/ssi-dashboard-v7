@@ -279,7 +279,7 @@ function generatePhase3Brief(courseCode, params, courseDir) {
 **Course**: ${courseCode}
 **Seed Range**: ${seedRange} (${endSeed - startSeed + 1} seeds)
 **Input**: ${courseDir}/seed_pairs.json (filter to ${seedRange})
-**Output**: ${courseDir}/lego_pairs.json
+**Output**: ${courseDir}/lego_pairs.tmp.json (TEMPORARY - will be validated and renamed)
 
 ---
 
@@ -295,7 +295,7 @@ Extract LEGOs from seeds ${seedRange} following Phase 3 intelligence.
 
 ## Output Format
 
-Append to existing lego_pairs.json (or create if batch 1):
+Append to existing lego_pairs.tmp.json (or create if batch 1):
 
 \`\`\`json
 {
@@ -311,7 +311,8 @@ Append to existing lego_pairs.json (or create if batch 1):
 \`\`\`
 
 **CRITICAL**:
-- If batch ${batchNum} > 1, READ existing lego_pairs.json and APPEND to seeds array
+- If batch ${batchNum} > 1, READ existing lego_pairs.tmp.json and APPEND to seeds array
+- Write to lego_pairs.tmp.json (TEMPORARY - Phase 3.5 validation will rename to final)
 - Componentization: TWO elements [["targetPart", "literalKnown"], ...] - NO third element!
 - Multi-word target phrases MUST be COMPOSITE with componentization
 
@@ -320,11 +321,12 @@ Append to existing lego_pairs.json (or create if batch 1):
 ## Success Criteria
 
 ✅ LEGOs extracted for all ${endSeed - startSeed + 1} seeds
-✅ Appended to existing lego_pairs.json (if not batch 1)
+✅ Appended to existing lego_pairs.tmp.json (if not batch 1)
 ✅ COMPOSITE LEGOs with 2-element componentization arrays
 ✅ FD-compliant, TILING verified
 
 When done, report completion and LEGO count.
+NOTE: File will remain .tmp.json until Phase 3.5 validation passes.
 `;
 }
 
@@ -996,6 +998,166 @@ async function spawnCourseOrchestrator(courseCode, params) {
 }
 
 /**
+ * Run intelligent validator on Phase 3 output
+ * Temporarily renames .tmp.json to .json for validation, then renames back if validation fails
+ */
+async function runIntelligentValidator(courseDir) {
+  const tmpPath = path.join(courseDir, 'lego_pairs.tmp.json');
+  const finalPath = path.join(courseDir, 'lego_pairs.json');
+
+  try {
+    // Temporarily rename .tmp.json → .json for validator
+    if (await fs.pathExists(tmpPath)) {
+      await fs.rename(tmpPath, finalPath);
+    }
+
+    const { IntelligentValidator } = require('./validators/validate-phase3-intelligent.cjs');
+    const validator = new IntelligentValidator(courseDir);
+    const result = await validator.validate();
+
+    // If validation fails, rename back to .tmp.json
+    if (!result.valid && await fs.pathExists(finalPath)) {
+      await fs.rename(finalPath, tmpPath);
+    }
+    // If validation passes, leave as .json (final name)
+
+    return result;
+  } catch (error) {
+    console.error(`[Validation] Error running intelligent validator:`, error.message);
+
+    // On error, restore .tmp.json if needed
+    if (await fs.pathExists(finalPath) && !await fs.pathExists(tmpPath)) {
+      await fs.rename(finalPath, tmpPath);
+    }
+
+    return { valid: false, errors: [{ message: error.message }], stats: { totalSeeds: 0, passedSeeds: 0, failedSeeds: 0 }, failedSeeds: [] };
+  }
+}
+
+/**
+ * Regenerate failed Phase 3 seeds with explicit error feedback
+ */
+async function regeneratePhase3Seeds(courseCode, courseDir, validation, params) {
+  const { target, known } = params;
+  const { failedSeeds, errors } = validation;
+
+  console.log(`\n[Phase 3 Retry] Regenerating ${failedSeeds.length} failed seeds`);
+  console.log(`[Phase 3 Retry] Error breakdown:`);
+  console.log(`  - Tiling: ${validation.stats.errorBreakdown.tiling}`);
+  console.log(`  - Consistency (FD): ${validation.stats.errorBreakdown.consistency}`);
+  console.log(`  - Co-occurrence: ${validation.stats.errorBreakdown.cooccurrence}`);
+  console.log(`  - Hard rules: ${validation.stats.errorBreakdown.hardRules}`);
+
+  // Build retry brief with explicit error feedback
+  const retryBrief = generatePhase3RetryBrief(courseCode, {
+    target,
+    known,
+    failedSeeds,
+    errors,
+    validation
+  }, courseDir);
+
+  // Spawn retry agent
+  await spawnPhaseAgent('3-retry', retryBrief, courseDir, courseCode);
+
+  console.log(`[Phase 3 Retry] Retry agent spawned for ${failedSeeds.length} seeds\n`);
+}
+
+/**
+ * Generate Phase 3 retry brief with error feedback
+ */
+function generatePhase3RetryBrief(courseCode, retryParams, courseDir) {
+  const { target, known, failedSeeds, errors, validation } = retryParams;
+
+  // Group errors by seed
+  const errorsBySeed = {};
+  for (const error of errors) {
+    if (!errorsBySeed[error.seedId]) {
+      errorsBySeed[error.seedId] = [];
+    }
+    errorsBySeed[error.seedId].push(error);
+  }
+
+  // Build error feedback section
+  let errorFeedback = '';
+  for (const seedId of failedSeeds.slice(0, 20)) { // Limit to first 20 for brevity
+    const seedErrors = errorsBySeed[seedId] || [];
+    errorFeedback += `\n### ${seedId}\n`;
+    for (const err of seedErrors) {
+      errorFeedback += `**Error**: ${err.type}\n`;
+      errorFeedback += `- Message: ${err.message}\n`;
+      if (err.evidence) {
+        errorFeedback += `- Evidence: ${err.evidence}\n`;
+      }
+      if (err.fix) {
+        errorFeedback += `- Fix: ${err.fix}\n`;
+      }
+      errorFeedback += '\n';
+    }
+  }
+
+  if (failedSeeds.length > 20) {
+    errorFeedback += `\n... and ${failedSeeds.length - 20} more seeds with similar errors\n`;
+  }
+
+  const brief = `# Phase 3 RETRY: LEGO Extraction with Error Feedback
+
+## Course: ${courseCode}
+Target Language: ${target.toUpperCase()}
+Known Language: ${known.toUpperCase()}
+
+## Retry Context
+
+You generated LEGO decompositions for ${validation.stats.totalSeeds} seeds.
+
+✅ **PASSED**: ${validation.stats.passedSeeds} seeds
+❌ **FAILED**: ${validation.stats.failedSeeds} seeds due to validation errors
+
+## Validation Errors Found
+
+${errorFeedback}
+
+## Your Task
+
+Regenerate **ONLY** the ${failedSeeds.length} failed seeds listed above, fixing the specific errors identified.
+
+### Failed Seed IDs
+${failedSeeds.join(', ')}
+
+## Phase 3 Intelligence
+
+${PHASE_PROMPTS['3']}
+
+## Critical Rules (from validation)
+
+1. **Tiling Integrity**: LEGOs must reconstruct seed EXACTLY (nothing missing, nothing extra)
+2. **Functional Determinism (FD)**: One target word = ONE known translation across all seeds
+   - Example: "hablar" should ALWAYS map to "to speak" (not "talking", "to speaking", etc.)
+   - Use the MOST COMMON mapping shown in evidence
+3. **Consistency**: Check existing mappings across all seeds and maintain consistency
+4. **Constructions**: Multi-word constructions stay together (negations + verbs, auxiliaries + verbs)
+
+## Output Format
+
+Update the existing lego_pairs.tmp.json file with corrected decompositions for the failed seeds.
+DO NOT regenerate seeds that passed validation - only fix the failed ones.
+
+Read the current lego_pairs.tmp.json, update only the failed seed entries, and write back.
+
+## Files
+
+- Input: ${path.join(courseDir, 'seed_pairs.json')} (all seed translations)
+- Input: ${path.join(courseDir, 'lego_pairs.tmp.json')} (current LEGO decompositions - UPDATE FAILED SEEDS)
+- Input: ${path.join(courseDir, 'validation_phase3_intelligent.json')} (detailed validation report)
+- Output: ${path.join(courseDir, 'lego_pairs.tmp.json')} (corrected - overwrite with fixes)
+
+NOTE: File remains .tmp.json until all validation passes, then will be renamed to lego_pairs.json
+`;
+
+  return brief;
+}
+
+/**
  * Poll for phase completion and auto-progress through pipeline
  */
 async function pollAndContinue(courseCode, params, courseDir, phase1Batches, phase3Batches, phase5Batches) {
@@ -1057,18 +1219,59 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
       job.progress = 40;
     }
 
-    // WAIT FOR PHASE 3 COMPLETION
-    console.log(`[Polling] Checking Phase 3 completion every 30s...`);
-    const phase3Complete = await pollPhaseCompletion(courseDir, 'lego_pairs.json', seeds, 30000);
+    // WAIT FOR PHASE 3 GENERATION (temp file)
+    console.log(`[Polling] Checking Phase 3 generation completion every 30s...`);
+    const phase3GenerationComplete = await pollPhaseCompletion(courseDir, 'lego_pairs.tmp.json', seeds, 30000);
 
-    if (!phase3Complete) {
-      console.error(`[Polling] ❌ Phase 3 timeout after 30 minutes`);
+    if (!phase3GenerationComplete) {
+      console.error(`[Polling] ❌ Phase 3 generation timeout after 30 minutes`);
       job.status = 'failed';
-      job.error = 'Phase 3 completion timeout';
+      job.error = 'Phase 3 generation timeout';
       return;
     }
 
-    console.log(`\n[Polling] ✅ Phase 3 COMPLETE! LEGOs extracted for all ${seeds} seeds.\n`);
+    console.log(`\n[Polling] ✅ Phase 3 GENERATION COMPLETE! LEGOs extracted for all ${seeds} seeds.\n`);
+
+    // PHASE 3.5: INTELLIGENT VALIDATION LOOP
+    console.log(`\n[Phase 3.5] Starting intelligent validation loop...\n`);
+    console.log(`[Phase 3.5] Validating lego_pairs.tmp.json → will rename to lego_pairs.json when validated\n`);
+    let phase3Valid = false;
+    let phase3Attempts = 0;
+    const maxPhase3Attempts = 3;
+
+    while (!phase3Valid && phase3Attempts < maxPhase3Attempts) {
+      phase3Attempts++;
+      console.log(`[Phase 3.5] Validation attempt ${phase3Attempts}/${maxPhase3Attempts}`);
+
+      // Run intelligent validator (renames .tmp.json → .json, validates, renames back if fail)
+      const validation = await runIntelligentValidator(courseDir);
+
+      if (validation.valid) {
+        phase3Valid = true;
+        console.log(`[Phase 3.5] ✅ Validation passed! ${validation.stats.passedSeeds}/${validation.stats.totalSeeds} seeds valid`);
+        console.log(`[Phase 3.5] ✅ Renamed lego_pairs.tmp.json → lego_pairs.json (FINAL)\n`);
+      } else {
+        console.log(`[Phase 3.5] ❌ Validation failed: ${validation.errors.length} errors in ${validation.failedSeeds.length} seeds`);
+        console.log(`[Phase 3.5] Failed seeds: ${validation.failedSeeds.slice(0, 10).join(', ')}${validation.failedSeeds.length > 10 ? '...' : ''}`);
+        console.log(`[Phase 3.5] File remains as lego_pairs.tmp.json (not validated yet)`);
+
+        if (phase3Attempts < maxPhase3Attempts) {
+          console.log(`[Phase 3.5] 🔄 Regenerating ${validation.failedSeeds.length} failed seeds with explicit error feedback...`);
+          await regeneratePhase3Seeds(courseCode, courseDir, validation, params);
+
+          // Wait for regeneration to complete
+          console.log(`[Phase 3.5] ⏳ Waiting for regeneration...`);
+          await new Promise(resolve => setTimeout(resolve, 60000)); // 1 min wait
+        } else {
+          console.error(`[Phase 3.5] ❌ Validation failed after ${maxPhase3Attempts} attempts`);
+          console.error(`[Phase 3.5] File remains as lego_pairs.tmp.json - MANUAL FIX REQUIRED`);
+          job.status = 'failed';
+          job.error = `Phase 3 validation failed: ${validation.errors.length} errors persist`;
+          return;
+        }
+      }
+    }
+
     job.progress = 60;
 
     // START PHASE 5 (SEQUENTIAL with validators)
@@ -1175,7 +1378,7 @@ async function pollPhaseCompletion(courseDir, filename, expectedSeeds, pollInter
 
         if (filename === 'seed_pairs.json') {
           actualCount = Object.keys(data.translations || {}).length;
-        } else if (filename === 'lego_pairs.json') {
+        } else if (filename === 'lego_pairs.json' || filename === 'lego_pairs.tmp.json') {
           actualCount = (data.seeds || []).length;
         }
 
