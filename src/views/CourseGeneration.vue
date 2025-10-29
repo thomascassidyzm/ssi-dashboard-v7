@@ -321,12 +321,12 @@ const showManualInput = ref(false)
 
 let pollInterval = null
 
-// Phase names for UI
+// Phase names for UI (matches Phase Intelligence architecture)
 const phaseNames = [
   { id: 0, name: 'Phase 1: Pedagogical Translation' },
   { id: 1, name: 'Phase 3: LEGO Extraction' },
-  { id: 2, name: 'Phase 5: Basket Generation' },
-  { id: 3, name: 'Phase 5.5: Basket Deduplication' },
+  { id: 2, name: 'Phase 4: Batch Preparation' },
+  { id: 3, name: 'Phase 5: Basket Generation' },
   { id: 4, name: 'Phase 6: Introduction Generation' },
   { id: 5, name: 'Phase 7: Compilation' },
   { id: 6, name: 'Phase 8: Audio Generation (Kai)' }
