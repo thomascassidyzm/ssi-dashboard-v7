@@ -110,6 +110,10 @@ function generateValidatorPrompt(courseCode) {
 
 Your task: Ensure vocabulary consistency across all 668 seeds from 5 orchestrator chunks.
 
+**CRITICAL: DO NOT write Python/JavaScript scripts to do validation work.**
+**YOU are the intelligent validator. Use your reasoning + tools (Read, Write) directly.**
+**Scripts delegate intelligence to code - we want agent-native validation.**
+
 1. Read all 5 chunk files:
    - vfs/courses/${courseCode}/orchestrator_batches/phase1/chunk_01.json
    - vfs/courses/${courseCode}/orchestrator_batches/phase1/chunk_02.json
@@ -130,7 +134,11 @@ Chunks use canonical IDs (C####) with target language only:
 }
 \`\`\`
 
-3. Detect vocabulary conflicts across chunks (same English word → different translations)
+3. **Use extended thinking** to analyze all translations:
+   - Build vocabulary map in your reasoning (English word → target translations → occurrences)
+   - Detect conflicts (same English word → multiple target translations)
+   - Apply Phase 1 rules mechanically (First Word Wins, Prefer Cognate, Zero Variation)
+   - Track fixes in your thinking
 
 4. Auto-fix conflicts using Phase 1 rules:
    - First Word Wins (use earliest occurrence)
@@ -140,8 +148,14 @@ Chunks use canonical IDs (C####) with target language only:
 5. Flag subjective conflicts (if any) for review
 
 6. Convert C#### to S#### and add known language from canonical_seeds.json
+   - Read canonical_seeds.json to get source sentences
+   - Map C#### → S#### using seed_id from batch files
+   - Add known language translations
 
-7. Output final validated file: vfs/courses/${courseCode}/seed_pairs.json
+7. **Use Write tool** to output final validated file: vfs/courses/${courseCode}/seed_pairs.json
+   - Do NOT use scripts - assemble the JSON structure yourself
+   - Use extended thinking to organize the data
+   - Write directly with Write tool
 
 **CRITICAL: Final output format:**
 \`\`\`json
