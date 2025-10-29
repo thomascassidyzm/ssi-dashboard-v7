@@ -41,20 +41,15 @@ if (!fs.existsSync(canonicalSeedsFile)) {
 }
 
 const canonicalData = JSON.parse(fs.readFileSync(canonicalSeedsFile, 'utf8'));
-let canonicalSeeds = Object.entries(canonicalData).sort((a, b) => {
-  const numA = parseInt(a[0].replace('S', '').replace('C', ''));
-  const numB = parseInt(b[0].replace('S', '').replace('C', ''));
-  return numA - numB;
-});
 
 // Filter by seed range if specified
-const finalEndSeed = endSeed || canonicalSeeds.length;
-canonicalSeeds = canonicalSeeds.filter(([seedId]) => {
-  const num = parseInt(seedId.substring(1));
+const finalEndSeed = endSeed || canonicalData.length;
+let canonicalSeeds = canonicalData.filter(seed => {
+  const num = parseInt(seed.seed_id.replace('S', '').replace('C', ''));
   return num >= startSeed && num <= finalEndSeed;
 });
 
-console.log(`Total seeds available: ${Object.keys(translations.canonical).length}`);
+console.log(`Total seeds available: ${canonicalData.length}`);
 console.log(`Seed range: ${startSeed}-${finalEndSeed} (${canonicalSeeds.length} seeds)`);
 
 // Create orchestrator directory
@@ -78,14 +73,15 @@ for (let i = 0; i < numOrchestrators; i++) {
     total_chunks: numOrchestrators,
     course_code: courseCode,
 
-    seeds: chunk.map(([seedId, canonicalText]) => ({
-      seed_id: seedId,
-      canonical: canonicalText
+    seeds: chunk.map(seed => ({
+      seed_id: seed.seed_id,
+      canonical_id: seed.canonical_id,
+      source: seed.source
     })),
 
     metadata: {
       total_seeds: chunk.length,
-      seed_range: `${chunk[0][0]} - ${chunk[chunk.length - 1][0]}`,
+      seed_range: `${chunk[0].seed_id} - ${chunk[chunk.length - 1].seed_id}`,
       agents_to_spawn: 10,
       seeds_per_agent: Math.ceil(chunk.length / 10)
     },
@@ -107,7 +103,7 @@ for (let i = 0; i < numOrchestrators; i++) {
   fs.writeFileSync(batchFile, JSON.stringify(orchestratorBatch, null, 2));
 
   console.log(`✓ Created orchestrator_batch_${String(i + 1).padStart(2, '0')}.json`);
-  console.log(`  Seeds: ${chunk.length} (${chunk[0][0]} - ${chunk[chunk.length - 1][0]})`);
+  console.log(`  Seeds: ${chunk.length} (${chunk[0].seed_id} - ${chunk[chunk.length - 1].seed_id})`);
 }
 
 // Create manifest
