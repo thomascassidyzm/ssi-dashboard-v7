@@ -252,6 +252,11 @@ Append to existing seed_pairs.json (or create if batch 1):
 
 **CRITICAL**: If this is batch ${batchNum} > 1, READ existing seed_pairs.json and MERGE your translations (don't overwrite!)
 
+**FORMATTING**: After writing JSON, run compact formatter for better readability:
+\`\`\`bash
+node compact-json-formatter.cjs ${path.join(courseDir, 'seed_pairs.json')}
+\`\`\`
+
 ---
 
 ## Success Criteria
@@ -260,6 +265,7 @@ Append to existing seed_pairs.json (or create if batch 1):
 ✅ Merged with existing seed_pairs.json (if not batch 1)
 ✅ Natural translations with cognate preference (seeds 1-100)
 ✅ Zero variation ("First Word Wins")
+✅ JSON formatted with compact-json-formatter.cjs
 
 When done, report completion and stats.
 `;
@@ -314,6 +320,11 @@ Append to existing lego_pairs.tmp.json (or create if batch 1):
 - Componentization: TWO elements [["targetPart", "literalKnown"], ...] - NO third element!
 - Multi-word target phrases MUST be COMPOSITE with componentization
 
+**FORMATTING**: After writing JSON, run compact formatter for better readability:
+\`\`\`bash
+node compact-json-formatter.cjs ${path.join(courseDir, 'lego_pairs.tmp.json')}
+\`\`\`
+
 ---
 
 ## Success Criteria
@@ -322,6 +333,7 @@ Append to existing lego_pairs.tmp.json (or create if batch 1):
 ✅ Appended to existing lego_pairs.tmp.json (if not batch 1)
 ✅ COMPOSITE LEGOs with 2-element componentization arrays
 ✅ FD-compliant, TILING verified
+✅ JSON formatted with compact-json-formatter.cjs
 
 When done, report completion and LEGO count.
 NOTE: File will remain .tmp.json until Phase 3.5 validation passes.
@@ -489,6 +501,11 @@ ${batchNum === 1 ? 'Create' : 'APPEND to existing'} lego_baskets.json:
 
 **CRITICAL**: If batch ${batchNum} > 1, READ existing lego_baskets.json and MERGE baskets object (don't overwrite!)
 
+**FORMATTING**: After writing JSON, run compact formatter for better readability:
+\`\`\`bash
+node compact-json-formatter.cjs ${path.join(courseDir, 'lego_baskets.json')}
+\`\`\`
+
 ---
 
 ## After Generation
@@ -519,6 +536,7 @@ Report: GATE compliance status, pattern density, and completeness score!
 ✅ Perfect grammar in BOTH languages
 ✅ **ABSOLUTE GATE: 0 violations** (validate-gate-compliance.cjs MUST pass)
 ✅ Pattern coverage validators run, reports generated
+✅ JSON formatted with compact-json-formatter.cjs
 ${batchNum > 1 ? '✅ Pattern gaps from batch ' + (batchNum - 1) + ' addressed' : ''}
 
 **MANDATORY**: GATE compliance = 100%. Any violations = failed batch, must regenerate.
@@ -780,18 +798,44 @@ Next: Review at ${CONFIG.TRAINING_URL}/courses/${courseCode}
 }
 
 /**
- * Closes iTerm2 windows to free RAM after job completion
+ * Closes iTerm2 windows and kills specific agent processes to free RAM
  */
-async function closeAgentWindows(windowIds) {
-  if (!windowIds || windowIds.length === 0) {
+async function closeAgentWindows(windowIds, processIds = []) {
+  if ((!windowIds || windowIds.length === 0) && (!processIds || processIds.length === 0)) {
     return;
   }
 
-  console.log(`[Cleanup] Closing ${windowIds.length} iTerm2 window(s) to free RAM...`);
+  console.log(`[Cleanup] Closing ${windowIds?.length || 0} iTerm2 window(s) and killing ${processIds?.length || 0} process(es) to free RAM...`);
 
-  for (const windowId of windowIds) {
-    try {
-      const appleScript = `
+  // First, kill the specific Claude processes to free RAM immediately
+  if (processIds && processIds.length > 0) {
+    for (const pid of processIds) {
+      try {
+        const { exec } = require('child_process');
+        await new Promise((resolve) => {
+          exec(`kill -9 ${pid}`, (error) => {
+            if (error) {
+              console.warn(`[Cleanup] PID ${pid} already dead or not found`);
+            } else {
+              console.log(`[Cleanup] Killed Claude process ${pid}`);
+            }
+            resolve();
+          });
+        });
+      } catch (error) {
+        console.warn(`[Cleanup] Failed to kill PID ${pid}:`, error.message);
+      }
+    }
+
+    // Give processes time to die
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+
+  // Then close the iTerm2 windows
+  if (windowIds && windowIds.length > 0) {
+    for (const windowId of windowIds) {
+      try {
+        const appleScript = `
 tell application "iTerm2"
     repeat with w in windows
         if id of w is "${windowId}" then
@@ -800,30 +844,85 @@ tell application "iTerm2"
         end if
     end repeat
 end tell
-      `.trim();
+        `.trim();
 
-      const { spawn } = require('child_process');
-      const child = spawn('osascript', ['-e', appleScript], {
-        stdio: 'ignore'
-      });
+        const { spawn } = require('child_process');
+        const child = spawn('osascript', ['-e', appleScript], {
+          stdio: 'ignore'
+        });
 
-      await new Promise((resolve) => {
-        child.on('close', resolve);
-        setTimeout(resolve, 2000); // Don't block on single window
-      });
+        // Wait up to 10 seconds for window to close
+        await new Promise((resolve, reject) => {
+          const timeout = setTimeout(() => {
+            child.kill();
+            resolve(); // Still resolve to continue cleanup
+          }, 10000);
 
-      console.log(`[Cleanup] Closed iTerm2 window ${windowId}`);
-    } catch (error) {
-      console.warn(`[Cleanup] Failed to close window ${windowId}:`, error.message);
+          child.on('close', (code) => {
+            clearTimeout(timeout);
+            resolve();
+          });
+
+          child.on('error', (err) => {
+            clearTimeout(timeout);
+            reject(err);
+          });
+        });
+
+        console.log(`[Cleanup] Closed iTerm2 window ${windowId}`);
+
+      } catch (error) {
+        console.warn(`[Cleanup] Failed to close window ${windowId}:`, error.message);
+      }
     }
   }
 
-  console.log(`[Cleanup] ✅ All agent windows closed, RAM freed`);
+  console.log(`[Cleanup] ✅ All agent windows closed and processes killed, RAM freed`);
+}
+
+/**
+ * Finds the PID of a Claude process in a specific directory
+ */
+async function findClaudePid(courseDir, maxAttempts = 10) {
+  const { exec } = require('child_process');
+
+  for (let i = 0; i < maxAttempts; i++) {
+    try {
+      const result = await new Promise((resolve, reject) => {
+        // Find claude processes and check their working directory
+        exec(`lsof -c claude -a -d cwd -Fn | grep -A1 "${courseDir}" | grep ^p | cut -c2-`,
+          (error, stdout, stderr) => {
+            if (error && !stdout) {
+              resolve(null);
+            } else {
+              resolve(stdout.trim());
+            }
+          }
+        );
+      });
+
+      if (result) {
+        const pid = parseInt(result.split('\n')[0]); // Take first PID if multiple
+        if (pid) {
+          console.log(`[Agent] Found Claude PID: ${pid} in ${courseDir}`);
+          return pid;
+        }
+      }
+    } catch (error) {
+      console.warn(`[Agent] Attempt ${i + 1} to find PID failed:`, error.message);
+    }
+
+    // Wait 2 seconds before next attempt
+    await new Promise(resolve => setTimeout(resolve, 2000));
+  }
+
+  console.warn(`[Agent] Could not find Claude PID after ${maxAttempts} attempts`);
+  return null;
 }
 
 /**
  * Spawns a Claude Code agent via iTerm2 terminal
- * Uses direct command approach to avoid AppleScript escaping issues
+ * Returns both window ID and process ID for cleanup
  */
 async function spawnPhaseAgent(phase, prompt, courseDir, courseCode) {
   console.log(`[Agent] Spawning Phase ${phase} agent in iTerm2...`);
@@ -884,14 +983,24 @@ end tell
 
     console.log(`[Agent] Phase ${phase} agent spawned successfully in iTerm2 window ${windowId}`);
 
-    // Track window ID in job state
+    // Wait a bit for claude to start, then find its PID
+    console.log(`[Agent] Waiting for Claude process to start in ${courseDir}...`);
+    const pid = await findClaudePid(courseDir);
+
+    // Track window ID and PID in job state
     const job = STATE.jobs.get(courseCode);
     if (job) {
       if (!job.windowIds) {
         job.windowIds = [];
       }
+      if (!job.processIds) {
+        job.processIds = [];
+      }
       if (windowId) {
         job.windowIds.push(windowId);
+      }
+      if (pid) {
+        job.processIds.push(pid);
       }
     }
 
@@ -902,7 +1011,7 @@ end tell
       });
     }, 20000);
 
-    return windowId;
+    return { windowId, pid };
   } catch (error) {
     console.error(`[Agent] Failed to spawn Phase ${phase} agent:`, error.message);
     // Clean up temp file on error
@@ -1288,8 +1397,9 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
 
     // Close Phase 1 windows to free RAM before Phase 3
     if (job.windowIds && job.windowIds.length > 0) {
-      await closeAgentWindows(job.windowIds);
+      await closeAgentWindows(job.windowIds, job.processIds || []);
       job.windowIds = []; // Reset for Phase 3
+      job.processIds = []; // Reset for Phase 3
     }
 
     // START PHASE 3
@@ -1352,8 +1462,9 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
     // Close Phase 3 windows to free RAM before validation
     if (job.windowIds && job.windowIds.length > 0) {
       console.log(`[Cleanup] Closing ${job.windowIds.length} Phase 3 windows to free RAM...`);
-      await closeAgentWindows(job.windowIds);
+      await closeAgentWindows(job.windowIds, job.processIds || []);
       job.windowIds = []; // Reset for Phase 5
+      job.processIds = []; // Reset for Phase 5
     }
 
     // PHASE 3.5: INTELLIGENT VALIDATION LOOP
@@ -1400,8 +1511,9 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
 
     // Close Phase 3 windows to free RAM before Phase 5
     if (job.windowIds && job.windowIds.length > 0) {
-      await closeAgentWindows(job.windowIds);
+      await closeAgentWindows(job.windowIds, job.processIds || []);
       job.windowIds = []; // Reset for Phase 5
+      job.processIds = []; // Reset for Phase 5
     }
 
     // START PHASE 5 (SEQUENTIAL with validators)
@@ -1476,8 +1588,9 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
     // Close Phase 5 windows to free RAM before Phase 5.5
     if (job.windowIds && job.windowIds.length > 0) {
       console.log(`[Cleanup] Closing ${job.windowIds.length} Phase 5 windows to free RAM...`);
-      await closeAgentWindows(job.windowIds);
+      await closeAgentWindows(job.windowIds, job.processIds || []);
       job.windowIds = [];
+      job.processIds = [];
     }
 
     // PHASE 5.5: DEDUPLICATION
@@ -1536,8 +1649,9 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
 
     // Close all agent windows to free RAM
     if (job.windowIds && job.windowIds.length > 0) {
-      await closeAgentWindows(job.windowIds);
+      await closeAgentWindows(job.windowIds, job.processIds || []);
       job.windowIds = []; // Clear tracked windows
+      job.processIds = []; // Clear tracked processes
     }
 
   } catch (error) {
@@ -1762,8 +1876,9 @@ async function cascadePhases(courseCode, params) {
 
     // Close all agent windows to free RAM
     if (job.windowIds && job.windowIds.length > 0) {
-      await closeAgentWindows(job.windowIds);
+      await closeAgentWindows(job.windowIds, job.processIds || []);
       job.windowIds = []; // Clear tracked windows
+      job.processIds = []; // Clear tracked processes
     }
 
   } catch (error) {
