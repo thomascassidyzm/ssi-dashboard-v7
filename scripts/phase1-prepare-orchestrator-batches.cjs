@@ -27,23 +27,23 @@ if (!courseCode) {
 }
 
 const courseDir = path.join(__dirname, '../vfs/courses', courseCode);
-const translationsFile = path.join(courseDir, 'translations.json');
+const canonicalSeedsFile = path.join(__dirname, '../seeds/canonical_seeds.json');
 const orchestratorDir = path.join(courseDir, 'orchestrator_batches', 'phase1');
 
 console.log('🔧 Phase 1: Preparing Orchestrator Batches\n');
 console.log(`Course: ${courseCode}`);
 console.log(`Orchestrators: ${numOrchestrators}\n`);
 
-// Read canonical translations
-if (!fs.existsSync(translationsFile)) {
-  console.error(`❌ translations.json not found at: ${translationsFile}`);
+// Read canonical seeds from source
+if (!fs.existsSync(canonicalSeedsFile)) {
+  console.error(`❌ canonical_seeds.json not found at: ${canonicalSeedsFile}`);
   process.exit(1);
 }
 
-const translations = JSON.parse(fs.readFileSync(translationsFile, 'utf8'));
-let canonicalSeeds = Object.entries(translations.canonical).sort((a, b) => {
-  const numA = parseInt(a[0].substring(1));
-  const numB = parseInt(b[0].substring(1));
+const canonicalData = JSON.parse(fs.readFileSync(canonicalSeedsFile, 'utf8'));
+let canonicalSeeds = Object.entries(canonicalData).sort((a, b) => {
+  const numA = parseInt(a[0].replace('S', '').replace('C', ''));
+  const numB = parseInt(b[0].replace('S', '').replace('C', ''));
   return numA - numB;
 });
 
