@@ -4,13 +4,13 @@
     <header class="bg-slate-800/50 border-b border-slate-400/10 backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <h1 class="text-3xl font-bold text-emerald-400">
-          SSI Course Production Dashboard v7.8.2
+          SSI Course Production Dashboard v7.8.3
         </h1>
         <p class="mt-2 text-slate-400">
-          Batch-aware generation with self-healing pattern coverage
+          Phase 3 v4.0.2 (simplified) + Smart Resume
         </p>
         <p class="mt-1 text-xs text-slate-500">
-          Build: f1e75235 | APML v7.8.2 | Phase 5 v2.2 (batch-aware)
+          Build: cb4aa8b9 | APML v7.8.3 | Phase 3 v4.0.2 🔒
         </p>
       </div>
     </header>
