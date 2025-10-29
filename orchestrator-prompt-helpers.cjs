@@ -243,14 +243,14 @@ Before running any phase, check if it's already complete:
    - Continuous 30s polling allows fast detection (within 5-6 minutes of failure vs 10-15 min)
 5. When all chunks complete:
    - Run merge/validator scripts via Bash tool
-   - **CRITICAL: Close orchestrator iTerm2 windows to free RAM**
-   - When spawning orchestrators, capture window IDs by modifying osascript to return window ID:
+   - **CRITICAL: Kill orchestrator processes and close windows to free RAM**
+   - When spawning orchestrators, capture window IDs:
      \`\`\`bash
      window_id=\$(osascript -e 'tell application "iTerm2"
          create window with default profile
          set newWindow to current window
          tell current session of newWindow
-             write text "cd ..."
+             write text "cd /Users/tomcassidy/SSi/ssi-dashboard-v7-clean"
              write text "claude --permission-mode bypassPermissions"
              delay 15
              ...
@@ -259,11 +259,24 @@ Before running any phase, check if it's already complete:
      end tell')
      \`\`\`
    - Track all window IDs: \`window_ids="id1 id2 id3 id4 id5"\`
-   - After validation completes, close them:
+   - After validation completes, **FIRST kill the Claude processes**, then close windows:
      \`\`\`bash
+     # Find and kill Claude PIDs in this course directory
+     pids=\$(lsof -c claude -a -d cwd -Fn | grep -A1 "vfs/courses/${courseCode}" | grep ^p | cut -c2-)
+     for pid in \$pids; do
+         echo "Killing orchestrator PID: \$pid"
+         kill -9 \$pid
+     done
+
+     # Wait for processes to die
+     sleep 2
+
+     # Then close the iTerm2 windows
      for win_id in \$window_ids; do
          osascript -e "tell application \\"iTerm2\\" to close (every window whose id is \$win_id)"
      done
+
+     echo "✅ All orchestrator processes killed and windows closed - RAM freed"
      \`\`\`
 6. Provide clear status updates throughout monitoring
 7. Coordinate all phases from start to finish
