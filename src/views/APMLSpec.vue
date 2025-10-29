@@ -29,7 +29,7 @@
             <p><strong>APML (Autonomous Parallel Markup Language)</strong> v7.8.3 is the current architectural specification for the SSi Course Production system. It defines v7.7+ consolidated JSON format, batch-aware generation, self-healing pattern coverage, and immutable contract boundaries.</p>
 
             <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-3 my-3">
-              <p class="text-xs text-slate-400">Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v4.0.2 🔒, 5 v2.2 (batch-aware), 5.5 v2.0, 6 v2.0, 7 v1.0 🔐</span></p>
+              <p class="text-xs text-slate-400">Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v4.0.2, 4 v1.0, 5 v3.0, 6 v2.0, 7 v1.0 🔐</span></p>
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Core Principles</h3>
@@ -96,8 +96,8 @@
               <li><strong>Phase 1:</strong> Translation Generation → seed_pairs.json</li>
               <li><strong>Phase 2:</strong> Corpus Analysis (FCFS + utility scoring)</li>
               <li><strong>Phase 3:</strong> LEGO Extraction → lego_pairs.json</li>
-              <li><strong>Phase 4:</strong> Deduplication (merges duplicate LEGOs across seeds)</li>
-              <li><strong>Phase 5:</strong> Basket Construction → lego_baskets.json</li>
+              <li><strong>Phase 4:</strong> Batch Preparation → batches/*.json (smart dedup pre-generation, keeps ALL in context)</li>
+              <li><strong>Phase 5:</strong> Basket Construction → lego_baskets.json (reads Phase 4 batches, unique only)</li>
               <li><strong>Phase 6:</strong> Introduction Phrases → introductions.json</li>
               <li><strong>Phase 7:</strong> Course Compilation → course_manifest.json</li>
               <li><strong>Phase 8:</strong> Audio Generation (TTS for all phrases)</li>

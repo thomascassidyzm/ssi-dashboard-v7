@@ -7,10 +7,10 @@
           SSI Course Production Dashboard v7.8.3
         </h1>
         <p class="mt-2 text-slate-400">
-          Phase 3 v4.0.2 (simplified) + Smart Resume
+          Phase 3 v4.0.2 + Phase 4 Batch Prep + Smart Resume
         </p>
         <p class="mt-1 text-xs text-slate-500">
-          Build: cb4aa8b9 | APML v7.8.3 | Phase 3 v4.0.2 🔒
+          Build: 8afb9ddc | APML v7.8.3 | Phases: 1 v2.6, 3 v4.0.2, 4 v1.0, 5 v3.0, 6 v2.0, 7 v1.0
         </p>
       </div>
     </header>

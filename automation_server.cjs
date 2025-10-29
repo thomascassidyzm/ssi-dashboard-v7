@@ -2943,13 +2943,52 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       known_language_name: getLanguageName(match ? match[2] : 'unk')
     };
 
-    console.log(`[API] Loaded course ${courseCode}: ${translations.length} translations, ${legos.length} LEGO pairs`);
+    // Transform v7.7 format to CourseEditor breakdown format
+    // Input: [[seed_id, [target, known], [[lego_id, type, t, k], ...]]]
+    // Output: [{ seed_id, original_target, original_known, lego_pairs: [...], feeder_pairs: [...] }]
+    const legoBreakdowns = seedsArray.map(([seed_id, [seed_target, seed_known], legoArray]) => {
+      const lego_pairs = [];
+      const feeder_pairs = [];
+
+      for (const legoEntry of legoArray) {
+        const [lego_id, type, target_chunk, known_chunk, componentization] = legoEntry;
+        const lego_type = type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type;
+
+        if (lego_type === 'FEEDER') {
+          feeder_pairs.push({
+            feeder_id: lego_id,
+            parent_lego_id: null, // Would need to track this in v7.7 format
+            target_chunk,
+            known_chunk
+          });
+        } else {
+          lego_pairs.push({
+            lego_id,
+            lego_type,
+            target_chunk,
+            known_chunk,
+            componentization: componentization || null,
+            fd_validated: true
+          });
+        }
+      }
+
+      return {
+        seed_id,
+        original_target: seed_target,
+        original_known: seed_known,
+        lego_pairs,
+        feeder_pairs
+      };
+    });
+
+    console.log(`[API] Loaded course ${courseCode}: ${translations.length} translations, ${legos.length} LEGO pairs, ${legoBreakdowns.length} breakdowns`);
 
     res.json({
       course,
       translations,
       legos,
-      lego_breakdowns: seedsArray || [], // Raw breakdown data for visualizer (v7.7 format)
+      lego_breakdowns: legoBreakdowns,
       baskets: [] // Empty for now (Phase 5 not implemented)
     });
   } catch (error) {

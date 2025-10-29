@@ -56,8 +56,8 @@
             <p>The SSi Course Production system uses APML v7.8.3 specification to generate complete language courses from canonical seed pairs through batch-aware, self-healing generation with pattern coverage optimization.</p>
 
             <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-4 my-4">
-              <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">cb4aa8b9</span></p>
-              <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v7.8.3</span> | Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v4.0.2 🔒, 5 v2.2, 5.5 v2.0, 6 v2.0, 7 v1.0</span></p>
+              <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">8afb9ddc</span></p>
+              <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v7.8.3</span> | Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v4.0.2, 4 v1.0, 5 v3.0, 6 v2.0, 7 v1.0 🔒</span></p>
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Architecture Overview</h3>
@@ -90,20 +90,20 @@
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
               </router-link>
-              <router-link to="/phase/5" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
+              <router-link to="/phase/4" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 5: Basket Generation <span class="text-xs text-emerald-400">v2.2 🔒</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: lego_pairs.json → Output: lego_baskets.json (batch-aware edge targeting, self-healing)</p>
+                    <h4 class="font-semibold text-emerald-300">Phase 4: Batch Preparation <span class="text-xs text-emerald-400">v1.0 🔒</span></h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: lego_pairs.json → Output: batches/*.json (smart dedup, keeps ALL in context, marks first for generation)</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
               </router-link>
-              <router-link to="/phase/5.5" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
+              <router-link to="/phase/5" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 5.5: Deduplication <span class="text-xs text-emerald-400">v2.0 🔒</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: lego_baskets.json → Output: *_deduplicated.json (character-identical matching)</p>
+                    <h4 class="font-semibold text-emerald-300">Phase 5: Basket Generation <span class="text-xs text-emerald-400">v3.0 🔒</span></h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: batches/*.json → Output: lego_baskets.json (reads Phase 4 batches, generates unique baskets only)</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
