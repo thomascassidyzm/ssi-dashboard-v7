@@ -709,11 +709,53 @@ Next: Review at ${CONFIG.TRAINING_URL}/courses/${courseCode}
 }
 
 /**
- * Spawns a Claude Code agent via Warp terminal
+ * Closes iTerm2 windows to free RAM after job completion
+ */
+async function closeAgentWindows(windowIds) {
+  if (!windowIds || windowIds.length === 0) {
+    return;
+  }
+
+  console.log(`[Cleanup] Closing ${windowIds.length} iTerm2 window(s) to free RAM...`);
+
+  for (const windowId of windowIds) {
+    try {
+      const appleScript = `
+tell application "iTerm2"
+    repeat with w in windows
+        if id of w is "${windowId}" then
+            close w
+            exit repeat
+        end if
+    end repeat
+end tell
+      `.trim();
+
+      const { spawn } = require('child_process');
+      const child = spawn('osascript', ['-e', appleScript], {
+        stdio: 'ignore'
+      });
+
+      await new Promise((resolve) => {
+        child.on('close', resolve);
+        setTimeout(resolve, 2000); // Don't block on single window
+      });
+
+      console.log(`[Cleanup] Closed iTerm2 window ${windowId}`);
+    } catch (error) {
+      console.warn(`[Cleanup] Failed to close window ${windowId}:`, error.message);
+    }
+  }
+
+  console.log(`[Cleanup] ✅ All agent windows closed, RAM freed`);
+}
+
+/**
+ * Spawns a Claude Code agent via iTerm2 terminal
  * Uses direct command approach to avoid AppleScript escaping issues
  */
 async function spawnPhaseAgent(phase, prompt, courseDir, courseCode) {
-  console.log(`[Agent] Spawning Phase ${phase} agent in Warp...`);
+  console.log(`[Agent] Spawning Phase ${phase} agent in iTerm2...`);
 
   const trainingURL = `${CONFIG.TRAINING_URL}/phase/${phase}`;
 
@@ -725,10 +767,12 @@ async function spawnPhaseAgent(phase, prompt, courseDir, courseCode) {
     const { spawn } = require('child_process');
 
     // Use AppleScript to control iTerm2 and invoke Claude Code
+    // Returns window ID for later cleanup
     const appleScript = `
 tell application "iTerm2"
     create window with default profile
-    tell current session of current window
+    set newWindow to current window
+    tell current session of newWindow
         write text "cd \\"${courseDir}\\""
         write text "claude --permission-mode bypassPermissions"
         delay 15
@@ -741,18 +785,44 @@ tell application "iTerm2"
             keystroke return
         end tell
     end tell
+    return id of newWindow
 end tell
     `.trim();
 
-    // Spawn osascript to execute AppleScript
+    // Spawn osascript to execute AppleScript and capture window ID
     const child = spawn('osascript', ['-e', appleScript], {
-      detached: true,
-      stdio: 'ignore'
+      detached: false,
+      stdio: ['ignore', 'pipe', 'ignore']
     });
 
-    child.unref();
+    let windowId = null;
+    child.stdout.on('data', (data) => {
+      windowId = data.toString().trim();
+    });
 
-    console.log(`[Agent] Phase ${phase} agent spawned successfully in iTerm2`);
+    await new Promise((resolve, reject) => {
+      child.on('close', (code) => {
+        if (code === 0) {
+          resolve();
+        } else {
+          reject(new Error(`osascript exited with code ${code}`));
+        }
+      });
+      child.on('error', reject);
+    });
+
+    console.log(`[Agent] Phase ${phase} agent spawned successfully in iTerm2 window ${windowId}`);
+
+    // Track window ID in job state
+    const job = STATE.jobs.get(courseCode);
+    if (job) {
+      if (!job.windowIds) {
+        job.windowIds = [];
+      }
+      if (windowId) {
+        job.windowIds.push(windowId);
+      }
+    }
 
     // Clean up temp file after delay (give iTerm2 time to execute)
     setTimeout(() => {
@@ -760,6 +830,8 @@ end tell
         console.warn(`[Agent] Failed to clean up temp prompt file: ${err.message}`);
       });
     }, 20000);
+
+    return windowId;
   } catch (error) {
     console.error(`[Agent] Failed to spawn Phase ${phase} agent:`, error.message);
     // Clean up temp file on error
@@ -933,6 +1005,12 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
 
     console.log(`✅ COURSE GENERATION COMPLETE: ${courseCode}`);
     console.log(`📊 Check validator reports for final stats\n`);
+
+    // Close all agent windows to free RAM
+    if (job.windowIds && job.windowIds.length > 0) {
+      await closeAgentWindows(job.windowIds);
+      job.windowIds = []; // Clear tracked windows
+    }
 
   } catch (error) {
     console.error(`[Polling] Error:`, error);
@@ -1153,6 +1231,12 @@ async function cascadePhases(courseCode, params) {
     job.status = 'completed';
     job.endTime = new Date();
     console.log(`[Cascade] Course generation complete: ${courseCode}`);
+
+    // Close all agent windows to free RAM
+    if (job.windowIds && job.windowIds.length > 0) {
+      await closeAgentWindows(job.windowIds);
+      job.windowIds = []; // Clear tracked windows
+    }
 
   } catch (error) {
     console.error(`[Cascade] Error generating course:`, error);
@@ -2139,7 +2223,8 @@ app.post('/api/courses/generate', async (req, res) => {
     phase: 'initializing',
     progress: 0,
     startTime: new Date(),
-    params: { target, known, seeds }
+    params: { target, known, seeds },
+    windowIds: [] // Track iTerm2 windows for cleanup
   };
 
   STATE.jobs.set(courseCode, job);

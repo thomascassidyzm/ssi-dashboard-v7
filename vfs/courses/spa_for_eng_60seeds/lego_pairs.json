@@ -1,0 +1,400 @@
+{
+  "version": "7.7",
+  "seeds": [
+    ["S0001", ["Quiero hablar español contigo ahora.", "I want to speak Spanish with you now."], [
+      ["S0001L01", "B", "Quiero", "I want"],
+      ["S0001L02", "B", "hablar", "to speak"],
+      ["S0001L03", "B", "español", "Spanish"],
+      ["S0001L04", "B", "contigo", "with you"],
+      ["S0001L05", "B", "ahora", "now"]
+    ]],
+    ["S0002", ["Estoy tratando de aprender.", "I'm trying to learn."], [
+      ["S0002L01", "C", "Estoy tratando de", "I'm trying to", [["Estoy tratando", "I'm trying"], ["de", "to"]]],
+      ["S0002L02", "B", "aprender", "learn"]
+    ]],
+    ["S0003", ["cómo hablar tan frecuentemente como sea posible.", "how to speak as often as possible."], [
+      ["S0003L01", "B", "cómo", "how"],
+      ["S0003L02", "B", "hablar", "to speak"],
+      ["S0003L03", "C", "tan frecuentemente como sea posible", "as often as possible", [["tan frecuentemente como", "as often as"], ["sea posible", "be possible"]]]
+    ]],
+    ["S0004", ["cómo decir algo en español", "how to say something in Spanish"], [
+      ["S0004L01", "B", "cómo", "how"],
+      ["S0004L02", "B", "decir", "to say"],
+      ["S0004L03", "B", "algo", "something"],
+      ["S0004L04", "C", "en español", "in Spanish", [["en", "in"], ["español", "Spanish"]]]
+    ]],
+    ["S0005", ["Voy a practicar hablando con otra persona.", "I'm going to practise speaking with someone else."], [
+      ["S0005L01", "C", "Voy a", "I'm going to", [["Voy", "I go"], ["a", "to"]]],
+      ["S0005L02", "B", "practicar", "practise"],
+      ["S0005L03", "B", "hablando", "speaking"],
+      ["S0005L04", "B", "con", "with"],
+      ["S0005L05", "C", "otra persona", "someone else", [["otra", "another"], ["persona", "person"]]]
+    ]],
+    ["S0006", ["Estoy tratando de recordar una palabra.", "I'm trying to remember a word."], [
+      ["S0006L01", "C", "Estoy tratando de", "I'm trying to", [["Estoy tratando", "I'm trying"], ["de", "to"]]],
+      ["S0006L02", "B", "recordar", "remember"],
+      ["S0006L03", "C", "una palabra", "a word", [["una", "a"], ["palabra", "word"]]]
+    ]],
+    ["S0007", ["Quiero intentar tan duro como pueda hoy.", "I want to try as hard as I can today."], [
+      ["S0007L01", "B", "Quiero", "I want"],
+      ["S0007L02", "B", "intentar", "to try"],
+      ["S0007L03", "C", "tan duro como pueda", "as hard as I can", [["tan duro como", "as hard as"], ["pueda", "I can"]]],
+      ["S0007L04", "B", "hoy", "today"]
+    ]],
+    ["S0008", ["Voy a tratar de explicar lo que quiero decir.", "I'm going to try to explain what I mean."], [
+      ["S0008L01", "C", "Voy a", "I'm going to", [["Voy", "I go"], ["a", "to"]]],
+      ["S0008L02", "C", "tratar de", "try to", [["tratar", "try"], ["de", "to"]]],
+      ["S0008L03", "B", "explicar", "explain"],
+      ["S0008L04", "C", "lo que", "what", [["lo", "the"], ["que", "that"]]],
+      ["S0008L05", "C", "quiero decir", "I mean", [["quiero", "I want"], ["decir", "to say"]]]
+    ]],
+    ["S0009", ["Hablo un poco de español ahora.", "I speak a little Spanish now."], [
+      ["S0009L01", "B", "Hablo", "I speak"],
+      ["S0009L02", "C", "un poco de", "a little", [["un poco", "a little"], ["de", "of"]]],
+      ["S0009L03", "B", "español", "Spanish"],
+      ["S0009L04", "B", "ahora", "now"]
+    ]],
+    ["S0010", ["No estoy seguro si puedo recordar toda la frase.", "I'm not sure if I can remember the whole sentence."], [
+      ["S0010L01", "C", "No estoy seguro", "I'm not sure", [["No estoy", "I'm not"], ["seguro", "sure"]]],
+      ["S0010L02", "B", "si", "if"],
+      ["S0010L03", "B", "puedo", "I can"],
+      ["S0010L04", "B", "recordar", "remember"],
+      ["S0010L05", "C", "toda la frase", "the whole sentence", [["toda", "whole"], ["la frase", "the sentence"]]]
+    ]],
+    ["S0011", ["Me gustaría poder hablar después de que termines.", "I'd like to be able to speak after you finish."], [
+      ["S0011L01", "C", "Me gustaría", "I'd like", [["Me", "me"], ["gustaría", "would like"]]],
+      ["S0011L02", "B", "poder", "to be able"],
+      ["S0011L03", "B", "hablar", "to speak"],
+      ["S0011L04", "C", "después de que", "after", [["después de", "after"], ["que", "that"]]],
+      ["S0011L05", "B", "termines", "you finish"]
+    ]],
+    ["S0012", ["No me gustaría adivinar qué va a pasar mañana.", "I wouldn't like to guess what's going to happen tomorrow."], [
+      ["S0012L01", "C", "No me gustaría", "I wouldn't like", [["No me", "not me"], ["gustaría", "would like"]]],
+      ["S0012L02", "B", "adivinar", "to guess"],
+      ["S0012L03", "B", "qué", "what"],
+      ["S0012L04", "C", "va a", "is going to", [["va", "goes"], ["a", "to"]]],
+      ["S0012L05", "B", "pasar", "happen"],
+      ["S0012L06", "B", "mañana", "tomorrow"]
+    ]],
+    ["S0013", ["Hablas español muy bien.", "You speak Spanish very well."], [
+      ["S0013L01", "B", "Hablas", "You speak"],
+      ["S0013L02", "B", "español", "Spanish"],
+      ["S0013L03", "C", "muy bien", "very well", [["muy", "very"], ["bien", "well"]]]
+    ]],
+    ["S0014", ["¿Hablas español todo el día?", "Do you speak Spanish all day?"], [
+      ["S0014L01", "B", "Hablas", "Do you speak"],
+      ["S0014L02", "B", "español", "Spanish"],
+      ["S0014L03", "C", "todo el día", "all day", [["todo", "all"], ["el día", "the day"]]]
+    ]],
+    ["S0015", ["Y quiero que hables español conmigo mañana.", "And I want you to speak Spanish with me tomorrow."], [
+      ["S0015L01", "B", "Y", "And"],
+      ["S0015L02", "C", "quiero que", "I want", [["quiero", "I want"], ["que", "that"]]],
+      ["S0015L03", "B", "hables", "you to speak"],
+      ["S0015L04", "B", "español", "Spanish"],
+      ["S0015L05", "B", "conmigo", "with me"],
+      ["S0015L06", "B", "mañana", "tomorrow"]
+    ]],
+    ["S0016", ["Él quiere volver con todos los demás más tarde.", "He wants to come back with everyone else later on."], [
+      ["S0016L01", "B", "Él", "He"],
+      ["S0016L02", "B", "quiere", "wants"],
+      ["S0016L03", "B", "volver", "to come back"],
+      ["S0016L04", "B", "con", "with"],
+      ["S0016L05", "C", "todos los demás", "everyone else", [["todos", "all"], ["los demás", "the rest"]]],
+      ["S0016L06", "C", "más tarde", "later on", [["más", "more"], ["tarde", "late"]]]
+    ]],
+    ["S0017", ["Ella quiere descubrir cuál es la respuesta.", "She wants to find out what the answer is."], [
+      ["S0017L01", "B", "Ella", "She"],
+      ["S0017L02", "B", "quiere", "wants"],
+      ["S0017L03", "B", "descubrir", "to find out"],
+      ["S0017L04", "C", "cuál es", "what is", [["cuál", "what"], ["es", "is"]]],
+      ["S0017L05", "C", "la respuesta", "the answer", [["la", "the"], ["respuesta", "answer"]]]
+    ]],
+    ["S0018", ["Queremos encontrarnos a las seis esta tarde.", "We want to meet at six o'clock this evening."], [
+      ["S0018L01", "B", "Queremos", "We want"],
+      ["S0018L02", "B", "encontrarnos", "to meet"],
+      ["S0018L03", "C", "a las seis", "at six o'clock", [["a", "at"], ["las seis", "the six"]]],
+      ["S0018L04", "C", "esta tarde", "this evening", [["esta", "this"], ["tarde", "evening"]]]
+    ]],
+    ["S0019", ["Pero no quiero dejar de hablar.", "But I don't want to stop talking."], [
+      ["S0019L01", "B", "Pero", "But"],
+      ["S0019L02", "C", "no quiero", "I don't want", [["no", "not"], ["quiero", "I want"]]],
+      ["S0019L03", "C", "dejar de", "to stop", [["dejar", "to leave"], ["de", "of"]]],
+      ["S0019L04", "B", "hablar", "talking"]
+    ]],
+    ["S0020", ["Quieres aprender su nombre rápidamente.", "You want to learn his name quickly."], [
+      ["S0020L01", "B", "Quieres", "You want"],
+      ["S0020L02", "B", "aprender", "to learn"],
+      ["S0020L03", "C", "su nombre", "his name", [["su", "his"], ["nombre", "name"]]],
+      ["S0020L04", "B", "rápidamente", "quickly"]
+    ]],
+    ["S0021", ["¿Por qué estás aprendiendo su nombre?", "Why are you learning her name?"], [
+      ["S0021L01", "C", "Por qué", "Why", [["Por", "For"], ["qué", "what"]]],
+      ["S0021L02", "B", "estás", "are you"],
+      ["S0021L03", "B", "aprendiendo", "learning"],
+      ["S0021L04", "C", "su nombre", "her name", [["su", "her"], ["nombre", "name"]]]
+    ]],
+    ["S0022", ["Porque quiero conocer a gente que hable español.", "Because I want to meet people who speak Spanish."], [
+      ["S0022L01", "B", "Porque", "Because"],
+      ["S0022L02", "B", "quiero", "I want"],
+      ["S0022L03", "C", "conocer a", "to meet", [["conocer", "to know"], ["a", "to"]]],
+      ["S0022L04", "B", "gente", "people"],
+      ["S0022L05", "B", "que", "who"],
+      ["S0022L06", "B", "hable", "speak"],
+      ["S0022L07", "B", "español", "Spanish"]
+    ]],
+    ["S0023", ["Voy a empezar a hablar más pronto.", "I'm going to start talking more soon."], [
+      ["S0023L01", "C", "Voy a", "I'm going to", [["Voy", "I go"], ["a", "to"]]],
+      ["S0023L02", "C", "empezar a", "start", [["empezar", "to start"], ["a", "to"]]],
+      ["S0023L03", "B", "hablar", "talking"],
+      ["S0023L04", "C", "más pronto", "more soon", [["más", "more"], ["pronto", "soon"]]]
+    ]],
+    ["S0024", ["No voy a poder recordar fácilmente.", "I'm not going to be able to remember easily."], [
+      ["S0024L01", "C", "No voy a", "I'm not going to", [["No", "not"], ["voy a", "I'm going to"]]],
+      ["S0024L02", "B", "poder", "be able"],
+      ["S0024L03", "B", "recordar", "to remember"],
+      ["S0024L04", "B", "fácilmente", "easily"]
+    ]],
+    ["S0025", ["¿Vas a ayudarme antes de que tenga que irme?", "Are you going to help me before I have to go?"], [
+      ["S0025L01", "C", "Vas a", "Are you going to", [["Vas", "You go"], ["a", "to"]]],
+      ["S0025L02", "B", "ayudarme", "help me"],
+      ["S0025L03", "C", "antes de que", "before", [["antes de", "before"], ["que", "that"]]],
+      ["S0025L04", "C", "tenga que", "I have to", [["tenga", "I have"], ["que", "to"]]],
+      ["S0025L05", "B", "irme", "go"]
+    ]],
+    ["S0026", ["Me gusta sentir como si estuviera casi listo para ir.", "I like feeling as if I'm nearly ready to go."], [
+      ["S0026L01", "C", "Me gusta", "I like", [["Me", "me"], ["gusta", "likes"]]],
+      ["S0026L02", "B", "sentir", "feeling"],
+      ["S0026L03", "C", "como si", "as if", [["como", "like"], ["si", "if"]]],
+      ["S0026L04", "B", "estuviera", "I'm"],
+      ["S0026L05", "B", "casi", "nearly"],
+      ["S0026L06", "B", "listo", "ready"],
+      ["S0026L07", "C", "para ir", "to go", [["para", "for"], ["ir", "to go"]]]
+    ]],
+    ["S0027", ["No me gusta tomar demasiado tiempo para responder.", "I don't like taking too much time to answer."], [
+      ["S0027L01", "C", "No me gusta", "I don't like", [["No me", "not me"], ["gusta", "likes"]]],
+      ["S0027L02", "B", "tomar", "taking"],
+      ["S0027L03", "C", "demasiado tiempo", "too much time", [["demasiado", "too much"], ["tiempo", "time"]]],
+      ["S0027L04", "C", "para responder", "to answer", [["para", "for"], ["responder", "to answer"]]]
+    ]],
+    ["S0028", ["Es útil empezar a hablar tan pronto como puedas.", "It's useful to start talking as soon as you can."], [
+      ["S0028L01", "C", "Es útil", "It's useful", [["Es", "It is"], ["útil", "useful"]]],
+      ["S0028L02", "C", "empezar a", "to start", [["empezar", "to start"], ["a", "to"]]],
+      ["S0028L03", "B", "hablar", "talking"],
+      ["S0028L04", "C", "tan pronto como", "as soon as", [["tan pronto", "as soon"], ["como", "as"]]],
+      ["S0028L05", "B", "puedas", "you can"]
+    ]],
+    ["S0029", ["Espero con ganas hablar mejor tan pronto como pueda.", "I'm looking forward to speaking better as soon as I can."], [
+      ["S0029L01", "C", "Espero con ganas", "I'm looking forward", [["Espero", "I hope"], ["con ganas", "with desire"]]],
+      ["S0029L02", "B", "hablar", "to speaking"],
+      ["S0029L03", "B", "mejor", "better"],
+      ["S0029L04", "C", "tan pronto como", "as soon as", [["tan pronto", "as soon"], ["como", "as"]]],
+      ["S0029L05", "B", "pueda", "I can"]
+    ]],
+    ["S0030", ["Querría preguntarte algo ayer.", "I wanted to ask you something yesterday."], [
+      ["S0030L01", "B", "Querría", "I wanted"],
+      ["S0030L02", "B", "preguntarte", "to ask you"],
+      ["S0030L03", "B", "algo", "something"],
+      ["S0030L04", "B", "ayer", "yesterday"]
+    ]],
+    ["S0031", ["Querías hablar conmigo esta noche.", "You wanted to speak with me tonight."], [
+      ["S0031L01", "B", "Querías", "You wanted"],
+      ["S0031L02", "B", "hablar", "to speak"],
+      ["S0031L03", "B", "conmigo", "with me"],
+      ["S0031L04", "C", "esta noche", "tonight", [["esta", "this"], ["noche", "night"]]]
+    ]],
+    ["S0032", ["¿Querías mostrarme algo?", "Did you want to show me something?"], [
+      ["S0032L01", "B", "Querías", "Did you want"],
+      ["S0032L02", "B", "mostrarme", "to show me"],
+      ["S0032L03", "B", "algo", "something"]
+    ]],
+    ["S0033", ["¿Cuánto tiempo llevas aprendiendo español?", "How long have you been learning Spanish?"], [
+      ["S0033L01", "C", "Cuánto tiempo", "How long", [["Cuánto", "How much"], ["tiempo", "time"]]],
+      ["S0033L02", "B", "llevas", "have you been"],
+      ["S0033L03", "B", "aprendiendo", "learning"],
+      ["S0033L04", "B", "español", "Spanish"]
+    ]],
+    ["S0034", ["Él no quiere estar callado cuando otras personas están aquí.", "He doesn't want to be quiet when other people are here."], [
+      ["S0034L01", "B", "Él", "He"],
+      ["S0034L02", "C", "no quiere", "doesn't want", [["no", "not"], ["quiere", "wants"]]],
+      ["S0034L03", "B", "estar", "to be"],
+      ["S0034L04", "B", "callado", "quiet"],
+      ["S0034L05", "B", "cuando", "when"],
+      ["S0034L06", "C", "otras personas", "other people", [["otras", "other"], ["personas", "people"]]],
+      ["S0034L07", "B", "están", "are"],
+      ["S0034L08", "B", "aquí", "here"]
+    ]],
+    ["S0035", ["Ella no quiere leer nada esta tarde.", "She doesn't want to read anything this afternoon."], [
+      ["S0035L01", "B", "Ella", "She"],
+      ["S0035L02", "C", "no quiere", "doesn't want", [["no", "not"], ["quiere", "wants"]]],
+      ["S0035L03", "B", "leer", "to read"],
+      ["S0035L04", "B", "nada", "anything"],
+      ["S0035L05", "C", "esta tarde", "this afternoon", [["esta", "this"], ["tarde", "afternoon"]]]
+    ]],
+    ["S0036", ["No queremos interrumpir la historia.", "We don't want to interrupt the story."], [
+      ["S0036L01", "C", "No queremos", "We don't want", [["No", "not"], ["queremos", "we want"]]],
+      ["S0036L02", "B", "interrumpir", "to interrupt"],
+      ["S0036L03", "C", "la historia", "the story", [["la", "the"], ["historia", "story"]]]
+    ]],
+    ["S0037", ["Empecé a pensar en ello cuidadosamente el mes pasado.", "I started to think about it carefully last month."], [
+      ["S0037L01", "C", "Empecé a", "I started to", [["Empecé", "I started"], ["a", "to"]]],
+      ["S0037L02", "B", "pensar", "think"],
+      ["S0037L03", "C", "en ello", "about it", [["en", "in"], ["ello", "it"]]],
+      ["S0037L04", "B", "cuidadosamente", "carefully"],
+      ["S0037L05", "C", "el mes pasado", "last month", [["el mes", "the month"], ["pasado", "past"]]]
+    ]],
+    ["S0038", ["He estado aprendiendo por aproximadamente una semana.", "I've been learning for about a week."], [
+      ["S0038L01", "C", "He estado", "I've been", [["He", "I have"], ["estado", "been"]]],
+      ["S0038L02", "B", "aprendiendo", "learning"],
+      ["S0038L03", "B", "por", "for"],
+      ["S0038L04", "B", "aproximadamente", "about"],
+      ["S0038L05", "C", "una semana", "a week", [["una", "a"], ["semana", "week"]]]
+    ]],
+    ["S0039", ["Pero estoy un poco cansado esta mañana.", "But I'm a little tired this morning."], [
+      ["S0039L01", "B", "Pero", "But"],
+      ["S0039L02", "B", "estoy", "I'm"],
+      ["S0039L03", "C", "un poco", "a little", [["un", "a"], ["poco", "little"]]],
+      ["S0039L04", "B", "cansado", "tired"],
+      ["S0039L05", "C", "esta mañana", "this morning", [["esta", "this"], ["mañana", "morning"]]]
+    ]],
+    ["S0040", ["¿Cómo te sientes en este momento?", "How do you feel at the moment?"], [
+      ["S0040L01", "B", "Cómo", "How"],
+      ["S0040L02", "C", "te sientes", "do you feel", [["te", "you"], ["sientes", "feel"]]],
+      ["S0040L03", "C", "en este momento", "at the moment", [["en", "in"], ["este momento", "this moment"]]]
+    ]],
+    ["S0041", ["Me siento bien, pero estoy empezando a sentirme cansado.", "I feel okay, but I'm starting to feel tired."], [
+      ["S0041L01", "C", "Me siento", "I feel", [["Me", "me"], ["siento", "feel"]]],
+      ["S0041L02", "B", "bien", "okay"],
+      ["S0041L03", "B", "pero", "but"],
+      ["S0041L04", "C", "estoy empezando a", "I'm starting to", [["estoy empezando", "I'm starting"], ["a", "to"]]],
+      ["S0041L05", "B", "sentirme", "feel"],
+      ["S0041L06", "B", "cansado", "tired"]
+    ]],
+    ["S0042", ["Estaba empezando a sentirme mejor que anoche.", "I was starting to feel better than last night."], [
+      ["S0042L01", "C", "Estaba empezando a", "I was starting to", [["Estaba empezando", "I was starting"], ["a", "to"]]],
+      ["S0042L02", "B", "sentirme", "feel"],
+      ["S0042L03", "B", "mejor", "better"],
+      ["S0042L04", "C", "que anoche", "than last night", [["que", "than"], ["anoche", "last night"]]]
+    ]],
+    ["S0043", ["No estaba pensando en cómo responder.", "I wasn't thinking about how to answer."], [
+      ["S0043L01", "C", "No estaba", "I wasn't", [["No", "not"], ["estaba", "I was"]]],
+      ["S0043L02", "B", "pensando", "thinking"],
+      ["S0043L03", "B", "en", "about"],
+      ["S0043L04", "B", "cómo", "how"],
+      ["S0043L05", "B", "responder", "to answer"]
+    ]],
+    ["S0044", ["O si necesito mejorar.", "Or if I need to improve."], [
+      ["S0044L01", "B", "O", "Or"],
+      ["S0044L02", "B", "si", "if"],
+      ["S0044L03", "B", "necesito", "I need"],
+      ["S0044L04", "B", "mejorar", "to improve"]
+    ]],
+    ["S0045", ["No necesito saber todo.", "I don't need to know everything."], [
+      ["S0045L01", "C", "No necesito", "I don't need", [["No", "not"], ["necesito", "I need"]]],
+      ["S0045L02", "B", "saber", "to know"],
+      ["S0045L03", "B", "todo", "everything"]
+    ]],
+    ["S0046", ["Pero no me preocupo por cometer errores.", "But I don't worry about making mistakes."], [
+      ["S0046L01", "B", "Pero", "But"],
+      ["S0046L02", "C", "no me preocupo", "I don't worry", [["no me", "not me"], ["preocupo", "worry"]]],
+      ["S0046L03", "B", "por", "about"],
+      ["S0046L04", "B", "cometer", "making"],
+      ["S0046L05", "B", "errores", "mistakes"]
+    ]],
+    ["S0047", ["Porque creo que es bueno cometer errores.", "Because I think that it's a good thing to make mistakes."], [
+      ["S0047L01", "B", "Porque", "Because"],
+      ["S0047L02", "C", "creo que", "I think that", [["creo", "I believe"], ["que", "that"]]],
+      ["S0047L03", "C", "es bueno", "it's a good thing", [["es", "it is"], ["bueno", "good"]]],
+      ["S0047L04", "B", "cometer", "to make"],
+      ["S0047L05", "B", "errores", "mistakes"]
+    ]],
+    ["S0048", ["No me importa cometer errores.", "I don't care about making mistakes."], [
+      ["S0048L01", "C", "No me importa", "I don't care", [["No me", "not me"], ["importa", "matters"]]],
+      ["S0048L02", "B", "cometer", "about making"],
+      ["S0048L03", "B", "errores", "mistakes"]
+    ]],
+    ["S0049", ["Es así, si sabes lo que quiero decir.", "It's like this, if you know what I mean."], [
+      ["S0049L01", "C", "Es así", "It's like this", [["Es", "It is"], ["así", "thus"]]],
+      ["S0049L02", "B", "si", "if"],
+      ["S0049L03", "B", "sabes", "you know"],
+      ["S0049L04", "C", "lo que", "what", [["lo", "the"], ["que", "that"]]],
+      ["S0049L05", "C", "quiero decir", "I mean", [["quiero", "I want"], ["decir", "to say"]]]
+    ]],
+    ["S0050", ["No estoy tratando de terminar tan rápido como sea posible.", "I'm not trying to finish as quickly as possible."], [
+      ["S0050L01", "C", "No estoy tratando de", "I'm not trying to", [["No estoy tratando", "I'm not trying"], ["de", "to"]]],
+      ["S0050L02", "B", "terminar", "finish"],
+      ["S0050L03", "C", "tan rápido como sea posible", "as quickly as possible", [["tan rápido como", "as quickly as"], ["sea posible", "be possible"]]]
+    ]],
+    ["S0051", ["Disfruto hacer cosas interesantes con mis amigos.", "I enjoy doing interesting things with my friends."], [
+      ["S0051L01", "B", "Disfruto", "I enjoy"],
+      ["S0051L02", "B", "hacer", "doing"],
+      ["S0051L03", "C", "cosas interesantes", "interesting things", [["cosas", "things"], ["interesantes", "interesting"]]],
+      ["S0051L04", "B", "con", "with"],
+      ["S0051L05", "C", "mis amigos", "my friends", [["mis", "my"], ["amigos", "friends"]]]
+    ]],
+    ["S0052", ["Él quería escribir una carta a su amigo la semana pasada.", "He wanted to write a letter to his friend last week."], [
+      ["S0052L01", "B", "Él", "He"],
+      ["S0052L02", "B", "quería", "wanted"],
+      ["S0052L03", "B", "escribir", "to write"],
+      ["S0052L04", "C", "una carta", "a letter", [["una", "a"], ["carta", "letter"]]],
+      ["S0052L05", "C", "a su amigo", "to his friend", [["a", "to"], ["su amigo", "his friend"]]],
+      ["S0052L06", "C", "la semana pasada", "last week", [["la semana", "the week"], ["pasada", "past"]]]
+    ]],
+    ["S0053", ["Ella quería poner su carta en su bolsa.", "She wanted to put his letter in her bag."], [
+      ["S0053L01", "B", "Ella", "She"],
+      ["S0053L02", "B", "quería", "wanted"],
+      ["S0053L03", "B", "poner", "to put"],
+      ["S0053L04", "C", "su carta", "his letter", [["su", "his"], ["carta", "letter"]]],
+      ["S0053L05", "C", "en su bolsa", "in her bag", [["en", "in"], ["su bolsa", "her bag"]]]
+    ]],
+    ["S0054", ["Queríamos darte un poco más de tiempo.", "We wanted to give you a little more time."], [
+      ["S0054L01", "B", "Queríamos", "We wanted"],
+      ["S0054L02", "B", "darte", "to give you"],
+      ["S0054L03", "C", "un poco más", "a little more", [["un poco", "a little"], ["más", "more"]]],
+      ["S0054L04", "C", "de tiempo", "time", [["de", "of"], ["tiempo", "time"]]]
+    ]],
+    ["S0055", ["No disfruto despertarme cuando no dormí muy bien.", "I don't enjoy waking up when I didn't sleep very well."], [
+      ["S0055L01", "C", "No disfruto", "I don't enjoy", [["No", "not"], ["disfruto", "I enjoy"]]],
+      ["S0055L02", "B", "despertarme", "waking up"],
+      ["S0055L03", "B", "cuando", "when"],
+      ["S0055L04", "C", "no dormí", "I didn't sleep", [["no", "not"], ["dormí", "I slept"]]],
+      ["S0055L05", "C", "muy bien", "very well", [["muy", "very"], ["bien", "well"]]]
+    ]],
+    ["S0056", ["Así que puedo recordar cómo decir unas pocas palabras.", "So I can remember how to say a few words."], [
+      ["S0056L01", "C", "Así que", "So", [["Así", "Thus"], ["que", "that"]]],
+      ["S0056L02", "B", "puedo", "I can"],
+      ["S0056L03", "B", "recordar", "remember"],
+      ["S0056L04", "B", "cómo", "how"],
+      ["S0056L05", "B", "decir", "to say"],
+      ["S0056L06", "C", "unas pocas palabras", "a few words", [["unas pocas", "a few"], ["palabras", "words"]]]
+    ]],
+    ["S0057", ["No puedo recordar cómo decir lo que quería decir.", "I can't remember how to say what I wanted to say."], [
+      ["S0057L01", "C", "No puedo", "I can't", [["No", "not"], ["puedo", "I can"]]],
+      ["S0057L02", "B", "recordar", "remember"],
+      ["S0057L03", "B", "cómo", "how"],
+      ["S0057L04", "B", "decir", "to say"],
+      ["S0057L05", "C", "lo que", "what", [["lo", "the"], ["que", "that"]]],
+      ["S0057L06", "C", "quería decir", "I wanted to say", [["quería", "I wanted"], ["decir", "to say"]]]
+    ]],
+    ["S0058", ["Es interesante cuando entiendes suficientes palabras.", "It's interesting when you understand enough words."], [
+      ["S0058L01", "C", "Es interesante", "It's interesting", [["Es", "It is"], ["interesante", "interesting"]]],
+      ["S0058L02", "B", "cuando", "when"],
+      ["S0058L03", "B", "entiendes", "you understand"],
+      ["S0058L04", "C", "suficientes palabras", "enough words", [["suficientes", "enough"], ["palabras", "words"]]]
+    ]],
+    ["S0059", ["Sé cómo hacer lo que necesito hacer la próxima semana.", "I know how to do what I need to do next week."], [
+      ["S0059L01", "B", "Sé", "I know"],
+      ["S0059L02", "B", "cómo", "how"],
+      ["S0059L03", "B", "hacer", "to do"],
+      ["S0059L04", "C", "lo que", "what", [["lo", "the"], ["que", "that"]]],
+      ["S0059L05", "C", "necesito hacer", "I need to do", [["necesito", "I need"], ["hacer", "to do"]]],
+      ["S0059L06", "C", "la próxima semana", "next week", [["la próxima", "the next"], ["semana", "week"]]]
+    ]],
+    ["S0060", ["No sé cómo decir suficientes palabras diferentes todavía.", "I don't know how to say enough different words yet."], [
+      ["S0060L01", "C", "No sé", "I don't know", [["No", "not"], ["sé", "I know"]]],
+      ["S0060L02", "B", "cómo", "how"],
+      ["S0060L03", "B", "decir", "to say"],
+      ["S0060L04", "C", "suficientes palabras diferentes", "enough different words", [["suficientes palabras", "enough words"], ["diferentes", "different"]]],
+      ["S0060L05", "B", "todavía", "yet"]
+    ]]
+  ]
+}
