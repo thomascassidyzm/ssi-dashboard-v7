@@ -134,52 +134,76 @@ Each phase intelligence module contains:
 
 ---
 
+### Phase 4: Batch Preparation with Smart Deduplication → batches/*.json
+**File**: `phase_4_batch_preparation.md`
+**Version**: 1.0 (2025-10-29)
+**Status**: ✅ **ACTIVE**
+**Output**: `batches/batch_*.json`, `batches/manifest.json`
+
+**Focus**:
+- **Smart deduplication**: Generate only FIRST occurrences (36% time savings)
+- Identify duplicate LEGOs (same target + known, normalized)
+- Keep ALL LEGOs in vocabulary context (preserves recency bias)
+- Calculate recency windows (last 10 seeds)
+- Prepare balanced batches for parallel Phase 5 execution
+- Map duplicates to canonical IDs (for merge step)
+
+**Why it's Phase 4**: This MUST happen BEFORE basket generation (Phase 5) to enable parallelization and deduplication. Replaces old Phase 5.5 post-generation deduplication.
+
+**Time savings example (Spanish course)**:
+- Without dedup: 2.9 hours (8 agents) or 5.9 hours (4 agents)
+- With smart dedup: 1.9 hours (8 agents) or 3.8 hours (4 agents)
+- Saved: 1-2 hours per run
+
+---
+
 ### Phase 5: Basket Generation → lego_baskets.json
 **File**: `phase_5_lego_baskets.md`
-**Version**: 2.2 🔒 **LOCKED** (2025-10-28)
+**Version**: 3.0 🔒 **LOCKED** (2025-10-29)
 **Status**: ✅ **ACTIVE**
 **Output**: `lego_baskets.json`
 
 **Focus**:
-- **Eternal phrases (e)**: 3-4 high-value phrases for spaced repetition (returned to repeatedly)
-- **Debut phrases (d)**: Expanding windows (2, 3, 4, 5 LEGOs) for first presentation only
-- **ABSOLUTE GATE**: Vocabulary constraint (LEGO #N can only use LEGOs #1 to N-1)
-- Balanced vocabulary coverage across eternal phrases
-- Grammatical accuracy in BOTH languages (never sacrifice for variety)
-- Natural, semantically valuable phrases only
+- **Simplified workflow**: Generate E-phrases → Extract D-phrases → Output
+- **E-phrases (eternal)**: Natural sentences for spaced repetition (3-5 per basket)
+- **D-phrases (debut)**: Mechanically extracted fragments (2-5 LEGO windows)
+- **GATE constraint**: LEGO #N can ONLY use vocabulary from LEGOs #1 to #(N-1) - ABSOLUTE
+- **Grammar perfection**: Both languages, 100% compliance
+- **Recency bias**: 30-50% vocabulary from last 10 seeds (for LEGOs #50+)
+- **Culminating LEGOs**: E-phrase #1 MUST be complete seed sentence
 
-**Latest updates (v2.1)**:
-- Clarified eternal vs debut distinction (spaced rep vs first exposure)
-- ABSOLUTE GATE vocabulary constraint (immutable rule)
-- Eternal phrase selection: high-value, balanced previous vocab
-- Debut phrases: systematic expanding windows from eternal phrases
+**Latest updates (v3.0)**:
+- Radical simplification: 778 lines → 318 lines
+- Removed: Batch-aware edge targeting, pattern density targets, two-stage selection
+- D-phrases are mechanically extracted from e-phrases (no independent generation)
+- Focus on essentials: GATE + Grammar + Recency bias
+- Trust the agent to make good phrases
 
 **Previous versions**:
+- v2.2: Batch-aware edge targeting with pattern density (removed in v3.0)
+- v2.1: Generation-focused, removed validation loops
+- v2.0: Vocabulary constraint as absolute gate
 - v1.0: Initial extraction from APML PHASE_PROMPTS.PHASE_5
 
 ---
 
 ### Phase 5.5: Basket Deduplication → lego_pairs_deduplicated.json, lego_baskets_deduplicated.json
 **File**: `phase_5.5_basket_deduplication.md`
-**Version**: 2.0 🔒 **LOCKED** (2025-10-28)
-**Status**: ✅ **ACTIVE**
+**Version**: 2.0
+**Status**: ⚠️ **OBSOLETE** (replaced by Phase 4 smart deduplication)
 **Output**: `lego_pairs_deduplicated.json`, `lego_baskets_deduplicated.json`
 
-**Focus**:
+**Note**: This post-generation deduplication phase has been replaced by Phase 4's smart deduplication strategy, which deduplicates BEFORE generation (saving 36% time). Phase 5.5 is kept for reference only.
+
+**Why obsolete**:
+- Phase 4 deduplicates before generation (1-2 hour time savings)
+- Smart dedup preserves recency bias (keeps duplicates in vocabulary context)
+- Duplicate references created during merge (no separate dedup step needed)
+
+**Old focus** (for reference):
 - Character-identical deduplication (trim + lowercase, preserve punctuation)
 - First occurrence wins (by chronological order in seed sequence)
-- Remove ~20-30% duplicates (typical deduplication rate)
-- Punctuation preserved (semantic difference: "quieres" ≠ "¿quieres?")
-
-**Latest updates (v2.0)**:
-- Simplified to character-identical logic (removed feeder-specific logic)
-- Case-insensitive matching with trimmed whitespace
-- Punctuation semantic preservation
-- Script implemented: `scripts/phase5.5-deduplicate-baskets.cjs`
-- Tested: 28.1% deduplication on spa_for_eng_20seeds
-
-**Previous versions**:
-- v1.0: Initial feeder-based deduplication logic
+- Script: `scripts/phase5.5-deduplicate-baskets.cjs`
 
 ---
 
@@ -256,7 +280,7 @@ Each phase intelligence module contains:
 
 ## Locked Intelligence Status
 
-**Active Workflow**: Phase 1 → 3 → 5 (seed_pairs → lego_pairs → lego_baskets)
+**Active Workflow**: Phase 1 → 3 → 4 → 5 (seed_pairs → lego_pairs → batches → lego_baskets)
 
 | Phase | Status | File | Version | Locked | Notes |
 |-------|--------|------|---------|--------|-------|
@@ -264,9 +288,10 @@ Each phase intelligence module contains:
 | 2 | ⚠️ Inactive | phase_2_corpus_intelligence.md | 1.0 | - | Not in current workflow |
 | 3 | ✅ ACTIVE | phase_3_lego_pairs.md | 4.0.2 | 🔒 | TILING FIRST, generation-focused |
 | 3.5 | ⚠️ Inactive | phase_3.5_lego_graph.md | 1.0 | - | Not in current workflow |
-| 5 | ✅ ACTIVE | phase_5_lego_baskets.md | 2.2 | 🔒 | Eternal/debut, ABSOLUTE GATE |
-| 5.5 | 🔨 TODO | phase_5.5_basket_deduplication.md | 1.0 | - | Next implementation target |
-| 6 | 🔨 TODO | phase_6_introductions.md | 1.0 | - | After deduplication |
+| 4 | ✅ ACTIVE | phase_4_batch_preparation.md | 1.0 | 🔒 | Smart dedup, 36% time savings |
+| 5 | ✅ ACTIVE | phase_5_lego_baskets.md | 3.0 | 🔒 | Simplified, GATE + Grammar + Recency |
+| 5.5 | ⚠️ Obsolete | phase_5.5_basket_deduplication.md | 2.0 | - | Replaced by Phase 4 |
+| 6 | 🔨 TODO | phase_6_introductions.md | 1.0 | - | After basket generation |
 | 7 | ✅ Complete | phase_7_compilation.md | 1.0 | - | Legacy format compilation |
 | 8 | 📋 Documented | phase_8_audio_generation.md | 1.0 | - | Assigned to Kai |
 

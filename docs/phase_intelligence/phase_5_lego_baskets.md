@@ -1,777 +1,317 @@
 # Phase 5: Basket Generation → lego_baskets.json
 
-**Version**: 2.2 (2025-10-28)
-**Status**: Active methodology for Phase 5 basket generation (batch-aware, edge-targeting)
+**Version**: 3.0 (2025-10-29)
+**Status**: Simplified methodology - focus on essentials
 **Output**: `vfs/courses/{course_code}/lego_baskets.json`
 
-**Changes in v2.2:**
-- Added batch-aware edge targeting (self-healing pattern coverage)
-- Agents can read validator output from previous batches
-- Prioritize filling pattern gaps (missing edges, underused LEGOs)
-- 50% of eternal phrases target identified weaknesses
-- Creates self-correcting feedback loop across batches
+**Changes in v3.0:**
+- Removed batch-aware edge targeting (overcomplicated)
+- Removed pattern density targets (metric is flawed)
+- Simplified to core workflow: Generate E-phrases → Extract D-phrases
+- Focus on: GATE constraint + Grammar perfection + Recency bias
+- Reduced from 778 lines to ~200 lines
 
 ---
 
-## 🎯 THE LEARNING MODEL (FOUNDATION)
+## 🎯 THE TASK
 
-**SSi learners acquire ONE LEGO at a time in strict sequence.**
+Generate practice phrase baskets for each LEGO.
 
-### How Learners Progress
-
-When a learner is practicing **LEGO #N**:
-- ✅ They **HAVE** learned: LEGOs #1 through #(N-1)
-- 🎯 They **ARE** learning: LEGO #N (current basket)
-- ❌ They **HAVE NOT** seen: LEGOs #(N+1) onwards
-
-**This is not optional - it's the entire pedagogical foundation.**
-
-### Implication for Basket Generation
-
-When generating practice phrases for LEGO #N:
-- You can ONLY use vocabulary from LEGOs #1 to #(N-1)
-- You CANNOT use LEGO #N itself (it's what they're learning)
-- You CANNOT use any LEGOs from #(N+1) onwards (future vocabulary)
-
-**Using future vocabulary destroys the pedagogy completely.**
+Each basket contains:
+- **E-phrases** (eternal): Natural sentences for spaced repetition
+- **D-phrases** (debut): Fragments extracted from e-phrases for initial scaffolding
 
 ---
 
-## 🚨 VOCABULARY CONSTRAINT = ABSOLUTE GATE 🚨
+## 🚨 THE ABSOLUTE CONSTRAINT: GATE
 
-**Before generating ANY phrase for LEGO #N, you MUST:**
+**LEGO #N can ONLY use vocabulary from LEGOs #1 to #(N-1)**
 
-### Step 1: Identify Available Vocabulary
+This is non-negotiable. Everything else is secondary.
 
+### Examples:
 ```
-Current basket: S0005L02
-Available vocabulary: All LEGOs with UID < S0005L02
-This means: S0001L01, S0001L02, ..., S0005L01 ✓
-NOT ALLOWED: S0005L02 (self), S0005L03+, S0006L01+ ✗
+LEGO #1: Empty basket {} (no prior vocabulary)
+LEGO #2: Max 2-word phrases (only LEGO #1 available)
+LEGO #5: Max 5-6 word phrases (LEGOs #1-4 available)
+LEGO #100: Can make 7-10 word phrases (99 LEGOs available)
 ```
 
-### Step 2: Accept Vocabulary Limitations
-
-**Early LEGOs have VERY LIMITED or NO vocabulary available:**
-
-- **S0001L01** (1st LEGO): NO prior vocabulary → **Empty basket** `{"e": [], "d": {}}`
-- **S0001L02** (2nd LEGO): Can only use S0001L01 → **Maximum 2-word phrases**
-- **S0001L03** (3rd LEGO): Can only use S0001L01-L02 → **Maximum 3-4 word phrases**
-- **S0001L05** (5th LEGO): Can only use S0001L01-L04 → **Maximum 5-6 word phrases**
-- **S0010L01** (10th+ LEGO): Enough vocabulary for 7+ word phrases
-
-**This is expected and correct.**
-
-### Step 3: ONLY Generate Phrases Within Vocabulary Constraint
-
-❌ **CATASTROPHIC ERROR**: Using future vocabulary to hit length requirements
-✅ **CORRECT**: Accepting shorter phrases or empty baskets when vocabulary is limited
-
-**ABSOLUTE RULE**: Vocabulary constraint is NON-NEGOTIABLE. All other requirements (length, naturalness, quantity) apply ONLY IF vocabulary permits.
+**If you can't make a good phrase within the vocabulary constraint, make a shorter phrase or leave the basket empty. NEVER use future vocabulary.**
 
 ---
 
-## Task
-
-Generate practice phrase baskets for each LEGO respecting the absolute vocabulary constraint.
-
----
-
-## BASKET STRUCTURE: E-PHRASES vs D-PHRASES
-
-Each basket contains two types of practice phrases:
-
-### E-PHRASES (Eternal Practice Phrases)
-**Purpose**: Natural, conversational sentences for real-world practice
-
-**Characteristics**:
-- Full, natural sentences in BOTH languages
-- Things people actually say
-- Perfect grammar required
-- Ideal length: 7-10 words (if vocabulary permits)
-- Quality over quantity: 3-5 excellent phrases per basket
-
-**CRITICAL CONSTRAINT**: E-phrases must **TILE perfectly** from available LEGOs
-- Every word must map to a LEGO
-- No extra words allowed (no "y", "de", "el" unless they're in a LEGO)
-- No missing words
-- Must compose cleanly: LEGO + LEGO + LEGO = complete phrase
-
-**Pedagogical role**: Core practice content - learners speak these repeatedly to build fluency
-
-### D-PHRASES (Debut/Development Phrases)
-**Purpose**: Scaffolding to build up to e-phrases gradually
-
-**Characteristics**:
-- Expanding windows: 2-LEGO, 3-LEGO, 4-LEGO, 5-LEGO combinations
-- Extracted directly FROM e-phrases (not independent constructions)
-- Windows expand AROUND the operative LEGO (LEGO #N being taught)
-- Can be fragments (don't need to be complete sentences)
-- Syntactically correct but can be awkward
-
-**CRITICAL CONSTRAINT**: D-phrases MUST contain the operative LEGO
-- If basket is for S0001L01 (Quiero), ALL d-phrases must include "Quiero"
-- Windows expand outward from operative LEGO
-
-**Pedagogical role**: Help learners assemble pieces before speaking full e-phrases
-
-### Complete Example (Basket for S0001L01 "Quiero" / "I want")
-
-**Available vocabulary**: None (this is LEGO #1) → This basket would be EMPTY
-
-**Better example - Basket for S0001L05 "ahora" / "now":**
-
-**Available vocabulary**: S0001L01 (Quiero), S0001L02 (hablar), S0001L03 (español), S0001L04 (contigo)
-
-**SPECIAL RULE**: S0001L05 is the **culminating LEGO** (last LEGO in seed S0001)
-- Therefore: **E-phrase #1 MUST be the complete seed sentence**
-
-**E-phrase #1** (REQUIRED - the complete seed):
-```
-"Quiero hablar español contigo ahora" / "I want to speak Spanish with you now"
-Tiles: S0001L01 + S0001L02 + S0001L03 + S0001L04 + S0001L05
-This is the exact SEED_PAIR from S0001
-```
-
-**E-phrases #2-5** (additional practice phrases, tiles perfectly from LEGOs):
-```
-"Quiero hablar contigo ahora" / "I want to speak with you now"
-Tiles: S0001L01 + S0001L02 + S0001L04 + S0001L05
-
-"Hablo español ahora" / "I speak Spanish now"  (if "Hablo" available)
-etc.
-```
-
-**D-phrases** (expanding windows around S0001L05 "ahora"):
-```
-2-LEGO: "hablar ahora" / "to speak now"
-        (S0001L02 + S0001L05 - contains operative LEGO)
-
-3-LEGO: "hablar español ahora" / "to speak Spanish now"
-        (S0001L02 + S0001L03 + S0001L05 - contains operative LEGO)
-
-4-LEGO: "hablar español contigo ahora" / "to speak Spanish with you now"
-        (S0001L02 + S0001L03 + S0001L04 + S0001L05 - contains operative LEGO)
-
-5-LEGO: "Quiero hablar español contigo ahora" / "I want to speak Spanish with you now"
-        (All 5 LEGOs - contains operative LEGO)
-```
-
-### Key Rules
-- **E-phrases**: Must TILE perfectly from LEGOs (no extra/missing words)
-- **D-phrases**: Expanding windows FROM e-phrases, expanding AROUND operative LEGO
-- **Both**: MUST respect vocabulary constraint (only use LEGOs #1 to #N-1)
-
----
-
-## ⚠️ CRITICAL: USE EXTENDED THINKING MODE ⚠️
-
-**This phase requires deep attention to pedagogical rules and structural constraints.**
-
-### Why Extended Thinking?
-
-Basket generation involves:
-- Vocabulary sequence validation (UIDs must respect introduction order)
-- Naturalness judgment across two languages
-- Pedagogical heuristic application
-- Balancing creativity with strict constraints
-
-**Without extended thinking, you WILL generate invalid phrases that violate sequence constraints.**
-
-### How to Use Extended Thinking
-
-**Before generating EACH basket, use `<thinking>` tags to reason through:**
-
-1. **Available vocabulary check**
-   ```
-   Current basket: S0005L02
-   Available vocabulary: All legos with UID < S0005L02
-   This means: S0001L01, S0001L02, ..., S0005L01 ✓
-   NOT ALLOWED: S0005L02 (self), S0005L03+, S0006L01+ ✗
-   ```
-
-2. **Phrase composition reasoning**
-   ```
-   Candidate phrase: "Quiero hablar español ahora"
-   Components: Quiero (S0001L01), hablar (S0001L02), español (S0001L03), ahora (S0001L05)
-   Check: Are ALL < S0005L02?
-   S0001L01 < S0005L02 ✓
-   S0001L02 < S0005L02 ✓
-   S0001L03 < S0005L02 ✓
-   S0001L05 < S0005L02 ✓
-   VALID phrase
-   ```
-
-3. **Quality reasoning**
-   ```
-   Is "Quiero español ahora" natural?
-   English: "I want Spanish now"
-   Problem: Missing verb - native speakers say "I want to speak Spanish"
-   Decision: REJECT - semantically incomplete
-   Alternative: "Quiero hablar español ahora" ✓
-   ```
-
-4. **Rule adherence check**
-   ```
-   Is this basket for a culminating LEGO?
-   Check: Is S0005L02 the last lego in seed S0005?
-   If yes: E-phrase #1 MUST be complete seed
-   If no: Standard basket rules apply
-   ```
-
-### Extended Thinking Protocol
-
-**For EVERY basket:**
-```
-<thinking>
-1. **FIRST**: Identify available vocabulary (all UIDs < current)
-   - List out ALL LEGOs available
-   - Accept vocabulary limitations
-   - If LEGO #1 or #2: Recognize empty/minimal basket is correct
-
-2. Generate candidate phrases USING ONLY available vocabulary
-   - Do NOT use future LEGOs to hit length requirements
-   - Accept short phrases if that's all vocabulary allows
-
-3. Validate each phrase:
-   - **GATE**: Parse into components, check ALL components < current UID
-   - If ANY component >= current UID → REJECT immediately
-   - Then assess naturalness in BOTH languages
-   - Then verify grammar perfection
-
-4. If vocabulary validation fails → REJECT (do not regenerate with future vocab)
-5. If quality/grammar fails → regenerate with SAME vocabulary constraints
-6. Document reasoning for acceptable shorter phrases when vocabulary limited
-</thinking>
-
-[Generate basket output]
-```
-
-**MANDATORY**: Vocabulary checking is the FIRST gate. No phrase passes if it uses future vocabulary, regardless of how natural or grammatically perfect it is.
-
-### Impact on Quality
-
-**Without extended thinking:**
-- ~30-40% of baskets violate sequence constraints
-- ~20% have unnatural phrasing
-- Requires 2-3 validation loops
-
-**With extended thinking:**
-- ~5-10% violations (edge cases only)
-- ~5% quality issues (subjective judgment)
-- Most baskets valid on first pass
-
-**Use extended thinking mode for EVERY basket generation.**
-
----
-
-## BATCH-AWARE EDGE TARGETING (Self-Healing Pattern Coverage)
-
-**PRINCIPLE**: When generating courses in batches (e.g., seeds 1-20, 21-40, etc.), each batch should learn from the previous batch's quality metrics and prioritize filling pattern gaps.
-
-### Checking for Previous Batch Feedback
-
-**Before generating baskets, check if validator output exists from previous batch:**
-
-```javascript
-// Check for validator output from previous batch
-const validatorPath = `vfs/courses/${courseCode}/completeness_report.json`;
-const patternPath = `vfs/courses/${courseCode}/pattern_coverage_report.json`;
-
-let edgeTargets = null;
-if (fileExists(validatorPath) && fileExists(patternPath)) {
-  const completeness = readJSON(validatorPath);
-  const patterns = readJSON(patternPath);
-
-  // Extract priority targets
-  edgeTargets = {
-    missingEdges: patterns.missing_edges.slice(0, 20), // Top 20 priorities
-    underusedLegos: /* LEGOs with low edge_count */,
-    patternDensity: patterns.summary.pattern_density
-  };
-}
-```
-
-### Adaptive Eternal Phrase Strategy
-
-**If validator feedback exists (batch N > 1), apply edge-aware selection:**
-
-**RULE**: 50% of eternal phrases should target identified gaps
-
-**Strategy**:
-1. **Identify underused LEGOs**: LEGOs that appear in few edges (LEGO combinations)
-2. **Identify missing edges**: Valid LEGO pairs (respecting GATE) that never appear together
-3. **Weight selection**: When choosing which previous LEGOs to combine, prioritize:
-   - LEGOs from `underusedLegos` list
-   - LEGO pairs that form `missingEdges`
-   - Diverse sampling (avoid clustering on same 5 LEGOs)
-
-**Example** (Batch 2, generating basket for S0021L01 "terminar"):
-
-```
-<thinking>
-Checking for previous batch feedback...
-
-Found validator output from batch 1:
-- Pattern density: 29.6% (low - target is 40%+)
-- Missing edge: S0001L01 "Quiero" ||| S0002L01 "Estoy intentando" (never appear together)
-- Underused LEGO: S0001L04 "contigo" (only 2 edges, others have 8-10)
-
-Available vocabulary for S0021L01: S0001L01 through S0020L05 (all previous LEGOs)
-
-ADAPTIVE STRATEGY:
-- Generate 4 eternal phrases
-- 2 phrases (50%) should target gaps:
-  1. Use "Quiero" + other underused LEGOs → helps Quiero get more edge diversity
-  2. Use "contigo" in combination → helps underused LEGO get more practice
-
-Eternal phrase candidates:
-1. "Quiero terminar ahora" ← Uses Quiero (underused for edges)
-2. "Estoy intentando terminar" ← Creates Estoy intentando + terminar edge
-3. "terminar contigo" ← Uses underused "contigo"
-4. "Me gustaría terminar" ← Normal high-value phrase
-</thinking>
-```
-
-### When No Validator Feedback Exists (Batch 1)
-
-**Generate baskets normally** - prioritize:
-- Natural, high-value eternal phrases
-- Diverse vocabulary sampling
-- Balanced LEGO usage
-
-**The validator will measure output and provide feedback for batch 2.**
-
-### Self-Healing Mechanism
-
-**Over multiple batches, pattern density should improve:**
-- Batch 1: Generate naturally → density 29.6%
-- Validator identifies: 1420 missing edges, underused LEGOs
-- Batch 2: Targets gaps → density improves to 34.8%
-- Batch 3: Continues targeting → density improves to 38.5%
-- Batch N: Reaches target 40%+ density
-
-**This creates a self-correcting feedback loop** where each batch compensates for previous batch weaknesses.
-
-### Quality Thresholds (Guardrails)
-
-**Pattern Density Targets** (from APML specification):
-- Seeds 1-100 (batch 1-5): Target 40-50%
-- Seeds 101-400: Target 30-40%
-- Seeds 401-668: Target 20-30%
-
-**If pattern density falls below threshold, prioritize gap-filling more aggressively** (up to 75% of phrases target gaps).
-
----
-
-## TWO-STAGE PROCESS
-
-### STAGE 1: Basket Selection (Edge-Aware)
-
-**Goal**: Select LEGO groupings that maximize pattern diversity while respecting batch feedback
-
-#### 1. Load Previous Batch Feedback (If Exists)
-- Read: `vfs/courses/{course}/completeness_report.json`
-- Read: `vfs/courses/{course}/pattern_coverage_report.json`
-- Extract priority targets: missing edges, underused LEGOs
-
-#### 2. Load Graph Intelligence (Optional)
-- Read: `vfs/phase_outputs/phase_3.5_lego_graph.json` (if available)
-- Adjacency graph showing which LEGOs appear near each other
-- Edge weights indicate co-occurrence frequency
-
-#### 3. Load FCFS Ordering (Optional)
-- Read: `vfs/phase_outputs/phase_2_corpus_intelligence.json` (if available)
-- Chronological ordering from corpus frequency analysis
-- Ensures pedagogically sound sequence
-
-#### 4. Select LEGOs for Eternal Phrases
-- If batch feedback exists: Prioritize underused LEGOs and missing edges
-- If no feedback: Maximize edge coverage and diverse patterns
-- Follow FCFS chronological progression
-- Avoid redundant LEGO sequences across baskets
-- Ensure smooth difficulty progression
-- Balance novelty with reinforcement
-
-**Output of Stage 1**: Ordered list of LEGOs to process
-
----
-
-### STAGE 2: Phrase Generation (Vocabulary-Constrained)
-
-**Goal**: Generate d-phrases and e-phrases for each selected LEGO
-
----
-
-## VOCABULARY CONSTRAINT EXAMPLES
-
-**See "VOCABULARY CONSTRAINT = ABSOLUTE GATE" section above for full explanation.**
-
-Quick reference:
-- LEGO #1: Empty basket
-- LEGO #2: Max 2-word phrases
-- LEGO #3: Max 3-4-word phrases
-- LEGO #5: Max 5-6-word phrases
-- LEGO #10+: Can start making 7+ word phrases
-
----
-
-## Input Data
-
-**Course folder**: `/Users/tomcassidy/SSi/SSi_Course_Production/vfs/courses/${targetCode}_for_${knownCode}_speakers/`
-
-**Read LEGOs from**: `vfs/courses/{course_code}/lego_pairs.json`
-
-### CRITICAL: Extract ALL LEGOs from All Sources
-
-**1. lego_pairs[]** - Both BASE and COMPOSITE LEGOs from Phase 3
-
-```javascript
-for (const seed of lego_pairs) {
-  for (const lego of seed.legos) {
-    allLegos.push({
-      lego_id: lego[0],        // e.g., "S0001L01"
-      type: lego[1],           // "B" or "C"
-      target_chunk: lego[2],
-      known_chunk: lego[3],
-      seed_id: seed[0]
-    });
-  }
-}
-```
-
-**2. Component arrays** - Components inside COMPOSITE LEGOs
-
-For COMPOSITE LEGOs with component arrays, extract components that reference other LEGOs (feeders):
-
-```javascript
-if (lego[1] === 'C' && lego[4]) {  // Has component array
-  for (const component of lego[4]) {
-    if (component[2]) {  // Has lego_id reference (is a feeder)
-      // This component references another LEGO
-      // Mark it as a dependency but don't create duplicate basket
+## 📋 THE WORKFLOW
+
+### STEP 1: Generate E-Phrases
+
+Generate 3-5 natural, conversational sentences that:
+- Use ONLY vocabulary from prior LEGOs (GATE)
+- Include the operative LEGO (what's being taught)
+- Have perfect grammar in BOTH languages
+- Are things people actually say
+- Tile perfectly from LEGOs (no extra/missing words)
+
+**Recency bias** (for LEGOs #50+):
+- ~30-50% vocabulary from recent seeds (last 10 seeds)
+- ~50-70% from older seeds (foundational + medium-recent)
+
+**Culminating LEGOs** (last LEGO in seed):
+- E-phrase #1 MUST be the complete seed sentence
+
+### STEP 2: Extract D-Phrases (Mechanical)
+
+From each e-phrase, extract expanding windows containing the operative LEGO:
+- All 2-LEGO windows containing operative
+- All 3-LEGO windows containing operative
+- All 4-LEGO windows containing operative
+- All 5-LEGO windows containing operative
+
+**This is automatic - no thinking needed.**
+
+### STEP 3: Output Basket
+
+```json
+{
+  "S0200L01": {
+    "lego": ["reservar", "to reserve"],
+    "e": [
+      ["Quiero reservar un libro.", "I want to reserve a book."],
+      ["Voy a reservar esto ahora.", "I'm going to reserve this now."],
+      ["Necesito reservar un sitio.", "I need to reserve a spot."]
+    ],
+    "d": {
+      "2": [["reservar un libro", "to reserve a book"], ...],
+      "3": [["Quiero reservar un libro", "I want to reserve a book"], ...],
+      "4": [...],
+      "5": [...]
     }
   }
 }
 ```
 
-### Total LEGOs to Process
+---
 
-- Spanish: ~115 LEGOs
-- Italian: ~115 LEGOs
-- French: ~116 LEGOs
-- Mandarin: ~103 LEGOs
+## ✅ E-PHRASE QUALITY CHECKLIST
+
+Before accepting an e-phrase, verify:
+
+1. **GATE**: All LEGOs < current UID? (ABSOLUTE)
+2. **Grammar**: Perfect in BOTH languages? (ABSOLUTE)
+3. **Tiling**: Composes exactly from LEGOs, no extra words? (ABSOLUTE)
+4. **Natural**: Something people actually say? (IMPORTANT)
+5. **Operative**: Contains the LEGO being taught? (ABSOLUTE)
+
+If all YES → accept
+If any ABSOLUTE fails → reject
 
 ---
 
-## E-PHRASES (Eternal Practice Phrases per LEGO)
+## 📊 RECENCY BIAS (Optional, for LEGOs #50+)
 
-### E-PHRASE REQUIREMENTS (IN PRIORITY ORDER)
+When selecting which prior LEGOs to use in e-phrases:
 
-#### 1. VOCABULARY CONSTRAINT (ABSOLUTE - NON-NEGOTIABLE)
+**Target distribution:**
+- 30-50% from last 10 seeds (recent, topic-coherent)
+- 50-70% from all earlier seeds (foundational, timeless)
 
-**ALL words in e-phrase MUST come from LEGOs #1 to #(N-1) where N is current basket.**
+**Why:**
+- Provides topic coherence during initial learning
+- Uses timeless vocabulary for long-term spaced repetition
+- Prevents early LEGOs from dominating every basket
 
-❌ **CATASTROPHIC FAILURE**: Using future vocabulary
-✅ **CORRECT**: Empty e-phrases array if insufficient vocabulary
+**Example for LEGO #200:**
+```
+Primary window: Seeds 190-199 (~40 LEGOs)
+Other: Seeds 1-189 (~800 LEGOs)
 
-**This rule overrides ALL other requirements.**
+E-phrase 1: "Quiero reservar un libro de la biblioteca"
+  → 50% recent: "un libro", "biblioteca"
+  → 50% foundational: "Quiero"
 
-#### 2. Quality Requirements (IF Vocabulary Permits)
+E-phrase 2: "Voy a reservar esto ahora"
+  → 25% recent: "esto"
+  → 75% foundational: "Voy a", "ahora"
 
-- **Perfect grammar** in BOTH languages
-- **Natural, conversational** - things people actually say in BOTH languages
-- **Smooth pronunciation** - not clunky or awkward in either language
-- **QUALITY > QUANTITY**: Better to have 2 excellent phrases than 5 mediocre ones
+Aggregate: ~35% recent ✅
+```
 
-#### 3. Length Goals (IF Vocabulary Permits)
-
-- **IDEAL**: 7-10 words in target language
-- **ACCEPTABLE**: 4-6 words for LEGOs #5-15 (limited vocabulary)
-- **ACCEPTABLE**: 2-3 words for LEGOs #2-4 (very limited vocabulary)
-- **ACCEPTABLE**: Empty for LEGO #1 (no prior vocabulary)
-- **MAXIMUM**: 15 words (hard cap)
-
-**Length is an ASPIRATION, not a requirement. Never sacrifice vocabulary constraint for length.**
-
-#### Target Language Grammar (UNFORGIVEABLE ERRORS)
-
-⚠️ **POOR SYNTAX IN TARGET LANGUAGE IS UNFORGIVEABLE** ⚠️
-
-**For Italian specifically**:
-- "cercare" + infinitive REQUIRES "di": "cercando di parlare" NOT "cercando parlare"
-- "imparare" + infinitive REQUIRES "a": "imparando a parlare" NOT "imparando parlare"
-- "provare" + infinitive REQUIRES "a": "provando a dire" NOT "provando dire"
-- "continuare" + infinitive REQUIRES "a": "continuando a parlare" NOT "continuando parlare"
-- "finire" + infinitive REQUIRES "di": "finendo di parlare" NOT "finendo parlare"
-
-**VALIDATE EVERY E-PHRASE**:
-- Is the target language grammar PERFECT?
-- Would a native speaker say this naturally?
-- Are all required prepositions present?
-
-**If you cannot ensure perfect target language grammar, DO NOT include the phrase.**
+**Don't stress exact percentages. Prioritize natural, useful phrases.**
 
 ---
 
-### E-Phrase Generation Rules
+## 🔧 D-PHRASE EXTRACTION (Mechanical)
 
-Aim for 3-5 phrases per basket IF vocabulary permits:
+```javascript
+function extractDPhrases(ePhrases, operativeLegoId) {
+  const dPhrases = { "2": [], "3": [], "4": [], "5": [] };
 
-- **MUST use ONLY vocabulary from LEGOs #1 to #(N-1)** (ABSOLUTE GATE)
-- **MUST contain the target LEGO** (what learner is practicing)
-- **Perfect grammar** in BOTH languages - validate target AND known language
-- **Natural, conversational** - things people actually say in BOTH languages
-- **Smooth pronunciation** - not clunky or awkward in either language
-- **Variety in position** - LEGO at different positions in phrase (if vocabulary allows)
+  for (const ePhrase of ePhrases) {
+    const legoSequence = parseIntoLegos(ePhrase);
 
-**Early LEGOs (1-10)**: Expect empty baskets or 1-3 short phrases - this is correct!
-**Mid LEGOs (10-50)**: Expect 2-5 phrases, varying lengths
-**Later LEGOs (50+)**: Expect 3-5 phrases, 7-10 words each
+    for (let windowSize = 2; windowSize <= 5; windowSize++) {
+      for (let start = 0; start <= legoSequence.length - windowSize; start++) {
+        const window = legoSequence.slice(start, start + windowSize);
 
-### BILINGUAL VALIDATION
+        if (window.includes(operativeLegoId)) {
+          const phrase = reconstructPhrase(window);
+          dPhrases[windowSize.toString()].push(phrase);
+        }
+      }
+    }
+  }
 
-Each phrase must be:
-- Grammatically correct in target language
-- Grammatically correct in known language
-- Semantically meaningful in BOTH languages
-- Natural and idiomatic in BOTH cultures
+  return deduplicate(dPhrases);
+}
+```
 
----
-
-### CRITICAL RULE - CULMINATING LEGOs (ABSOLUTE REQUIREMENT)
-
-**Definition**: A "culminating LEGO" is the LAST LEGO in a seed's decomposition
-
-**How to identify**:
-- Check the LEGO's seed_id (e.g., S0005L02)
-- Look up the seed in Phase 3 LEGO breakdown
-- If this is the highest L-number for that seed → it's culminating
-
-**ABSOLUTE RULE**:
-- **E-phrase #1 MUST be the COMPLETE SEED sentence itself**
-- Not a variation, not similar - the EXACT seed sentence
-- This complete seed MUST also appear 3+ times in D-phrases
-
-**Example**:
-- Seed S0005: "Sto per esercitarmi a parlare"
-- LEGOs: S0005L01 (sto per) + S0005L02 (esercitarmi a parlare)
-- S0005L02 is culminating (last LEGO)
-- Therefore: S0005L02 basket MUST have E-phrase #1 = "Sto per esercitarmi a parlare"
-
-**Validation**:
-- Before finalizing basket, check if LEGO is culminating
-- If yes, verify E-phrase #1 is complete seed
-- If not, regenerate basket
+**That's it. No special logic. Just extraction.**
 
 ---
 
-## VOCABULARY SELECTION (Recency Guidelines - for LEGOs 50+)
+## 🎯 SPECIAL CASES
 
-**For early LEGOs (1-50):** Use whatever vocabulary is available - there's not enough yet for recency preferences.
+### Early LEGOs (#1-10)
+- May have empty or minimal baskets
+- This is CORRECT and EXPECTED
+- Don't force phrases if vocabulary is insufficient
 
-**For later LEGOs (50+):** When building E-phrases, PREFER recent vocabulary:
-- ~50% of vocabulary from recent seeds (N-5 to N-1)
-- ~25% from medium-recent (N-20 to N-1)
-- ~25% from all earlier seeds
+### Culminating LEGOs (Last in Seed)
+- E-phrase #1 MUST be the complete seed sentence
+- This is the one LEGO where the learner can speak the full seed
 
-**BUT ALWAYS PRIORITIZE natural, useful phrases over strict percentages.**
+### Language-Specific Grammar
+**Italian infinitive + preposition rules:**
+- cercare + infinitive → "di" (cercando di parlare)
+- imparare + infinitive → "a" (imparando a parlare)
+- provare + infinitive → "a" (provando a dire)
+- continuare + infinitive → "a" (continuando a parlare)
 
----
-
-## D-PHRASES (Auto-Generated Debuts)
-
-### D-PHRASE QUALITY ALLOWANCE
-
-**Important**: D-phrases CAN be somewhat clunky or fragment-like
-- They are expanding windows from e-phrases (2-lego, 3-lego, 4-lego, 5-lego)
-- Syntactic correctness required, but naturalness is less critical
-- Focus: Help learners build up to full e-phrases gradually
-
-**Contrast with E-phrases**:
-- **E-phrases**: MUST be natural, conversational, perfect grammar
-- **D-phrases**: Can be awkward fragments as long as syntax is correct
+**Validate target language grammar carefully.**
 
 ---
 
-### D-Phrase Generation Rules
+## 💭 EXTENDED THINKING (Use This)
 
-You will generate D-phrases using expanding window from E-phrases:
-- 2x 2-LEGO phrases
-- 2x 3-LEGO phrases
-- 2x 4-LEGO phrases
-- 2x 5-LEGO phrases
+```
+<thinking>
+Basket for S0200L01 "reservar"...
 
-**ALL 5 E-phrases must contribute to D-phrases (variety is key).**
+STEP 1: Check constraints
+- Available vocabulary: LEGOs #1-199 ✓
+- Is culminating? No ✓
+- Context: Seeds 190-200 about library
 
-### CRITICAL RULE: OPERATIVE LEGO MUST BE PRESENT
+STEP 2: Generate e-phrase candidates
+- "Quiero reservar un libro de la biblioteca"
+  → Parse: S0001L01, S0200L01, S0195L02, S0194L03
+  → All < S0200L01? YES ✓
+  → Grammar perfect? YES ✓
+  → Natural? YES ✓
+  → Tiles perfectly? YES ✓
+  → ACCEPT
 
-- EVERY d-phrase MUST contain the operative LEGO (the LEGO this basket teaches)
-- Example: If basket is for "Quiero" (S0001L01), ALL d-phrases must contain "Quiero"
-- You CANNOT extract arbitrary contiguous windows - only windows containing the operative LEGO
+- "Voy a reservar esto ahora"
+  → Parse: S0012L04, S0200L01, S0197L05, S0005L05
+  → All < S0200L01? YES ✓
+  → Grammar perfect? YES ✓
+  → Natural? YES ✓
+  → Tiles perfectly? YES ✓
+  → ACCEPT
 
-**CORRECT EXTRACTION (Basket for "Quiero")**:
+[Generate 2-3 more e-phrases...]
 
-E-phrase: "Quiero hablar español contigo ahora"
-- 2-LEGO: "Quiero hablar" ✅ (contains "Quiero")
-- 3-LEGO: "Quiero hablar español" ✅ (contains "Quiero")
-- 4-LEGO: "Quiero hablar español contigo" ✅ (contains "Quiero")
+STEP 3: Check recency
+- E1: 50% recent, E2: 25% recent, E3: 40% recent
+- Aggregate: ~35% recent ✓ (within 30-50%)
 
-**INCORRECT EXTRACTION (Basket for "Quiero")**:
-- 2-LEGO: "hablar español" ❌ (missing "Quiero")
-- 3-LEGO: "español contigo ahora" ❌ (missing "Quiero")
+STEP 4: Extract d-phrases mechanically
+[Extraction is automatic, no validation needed]
+</thinking>
 
-### BILINGUAL SYNTAX RULES FOR D-PHRASES
-
-- D-phrases can be fragments (don't need to be complete sentences)
-- BUT they MUST be syntactically correct as far as they go in BOTH languages
-
-**Examples**:
-- ✅ "quiero hablar" / "I want to speak" (fragment but correct in both)
-- ✅ "español contigo" / "Spanish with you" (fragment but correct in both)
-- ❌ "quiero de" / "I want of" (syntactically broken in both)
-- ❌ "hablar yo" / "speak I" (wrong word order in both)
-
-**Always validate BOTH the target AND known language versions**
-
-### For CULMINATING LEGOs
-
-Use the complete seed (E1) in at least:
-- 1x in 2-LEGO phrases
-- 1x in 3-LEGO phrases
-- 1x in 4 or 5-LEGO phrases
-
-This reinforces the complete seed understanding!
+[Output basket]
+```
 
 ---
 
-## 📝 NOTE ON VALIDATION
-
-**Self-checking during generation** (via Extended Thinking) is part of this phase.
-
-**Formal validation** (systematic checking across all baskets) happens in Phase 5.5.
-
-Phase 5.5 validator checks:
-- ✓ **Vocabulary constraint**: Each basket ONLY uses prior LEGOs (ABSOLUTE GATE)
-- ✓ **E-phrase tiling**: E-phrases tile perfectly from available LEGOs
-- ✓ **D-phrase operative LEGO**: D-phrases contain the LEGO being taught
-- ✓ **Culminating LEGO**: E-phrase #1 is complete seed
-- ✓ **Grammar perfection**: Both target and known languages
-- ✓ **Naturalness**: E-phrases conversational in both languages
-
-If your Extended Thinking identifies issues, regenerate that basket before continuing.
-
----
-
-## Output Format
-
-Save to: `vfs/courses/{course_code}/lego_baskets.json`
+## 📤 OUTPUT FORMAT
 
 ```json
 {
-  "S0001L01": {
-    "lego": ["Quiero", "I want"],
+  "S0001L05": {
+    "lego": ["ahora", "now"],
     "e": [
-      ["Quiero hablar español.", "I want to speak Spanish."],
-      ["Quiero practicar contigo ahora.", "I want to practice with you now."],
-      ["No quiero adivinar.", "I don't want to guess."],
-      ["Quiero recordar esto.", "I want to remember this."],
-      ["Quiero intentar hablar más.", "I want to try to speak more."]
+      ["Quiero hablar español contigo ahora.", "I want to speak Spanish with you now."],
+      ["Hablo español ahora.", "I speak Spanish now."]
     ],
     "d": {
       "2": [
-        ["Quiero hablar", "I want to speak"],
-        ["hablar español", "to speak Spanish"]
+        ["hablar ahora", "to speak now"],
+        ["español ahora", "Spanish now"]
       ],
       "3": [
-        ["Quiero hablar español", "I want to speak Spanish"],
-        ["No quiero hablar", "I don't want to speak"]
+        ["hablar español ahora", "to speak Spanish now"],
+        ["Hablo español ahora", "I speak Spanish now"]
       ],
       "4": [
-        ["No quiero hablar ahora", "I don't want to speak now"]
+        ["Quiero hablar español ahora", "I want to speak Spanish now"]
       ],
       "5": [
         ["Quiero hablar español contigo ahora", "I want to speak Spanish with you now"]
       ]
     }
-  },
-  "S0001L02": { ... }
+  }
 }
 ```
 
-**Format**: `{ "lego_id": { lego: [target, known], e: [[t,k]...], d: {window_size: [[t,k]...]} } }`
+---
 
-**Notes**:
-- LEGO field contains the core teaching unit itself
-- "e" array contains e-phrases (7-10 words, natural conversational phrases)
-- "d" object contains d-phrases organized by window size ("2", "3", "4", "5")
-- Window size refers to number of LEGOs combined in the phrase
-- All phrases are [target, known] pairs
+## ✅ SUCCESS CRITERIA
+
+- ✓ GATE constraint: 100% compliance
+- ✓ Grammar perfection: 100% (both languages)
+- ✓ E-phrase tiling: 100% (tiles perfectly from LEGOs)
+- ✓ D-phrases contain operative: 100%
+- ✓ Culminating LEGOs have complete seed: 100%
+- ✓ Naturalness: >95% (human judgment)
+- ✓ Recency distribution: 30-50% for LEGOs #50+ (approximate)
+
+**Forget pattern density, edge coverage, and batch iteration. Just make good phrases.**
 
 ---
 
-## Success Criteria
+## 🚫 WHAT TO IGNORE
 
-### Stage 1 (Extraction):
-✓ All lego_pairs[] extracted and processed
-✓ All components with LEGO references identified
-✓ Total LEGO count matches expected
+- ❌ Pattern density targets (40-50%, 30-40%, etc.) - metric is flawed
+- ❌ Batch-aware edge targeting - overcomplicated
+- ❌ Missing edges analysis - focus on quality, not arbitrary combinations
+- ❌ Two-stage selection process - just generate baskets in order
 
-### Stage 2 (Generation):
-✓ Every LEGO has d-phrases and e-phrases (even if empty for early LEGOs)
-✓ All vocabulary constraints respected
-✓ E-phrases are natural and conversational in BOTH languages
-✓ D-phrases are syntactically correct in BOTH languages
-✓ Culminating LEGOs include complete seed as E-phrase #1
-✓ Progressive difficulty from LEGO #1 to last LEGO
-
-### Combined Result:
-✓ Baskets generated for ALL LEGOs
-✓ Spanish: ~115 baskets, Italian: ~115, French: ~116, Mandarin: ~103
-✓ Pedagogical soundness through vocabulary constraints
-✓ Optimal learning sequence with rich practice
+**If phrases are grammatical, natural, and respect GATE → you're done.**
 
 ---
 
 ## Version History
 
-**v2.1 (2025-10-27)**:
-- **Generation-focused**: Removed validation loops (now Phase 5.5's responsibility)
-- **Self-checking in Extended Thinking**: Agent validates own work during generation
-- Added note directing to Phase 5.5 for formal validation
-- Batch processing ready: Designed for batching with fresh intelligence
+**v3.0 (2025-10-29):**
+- Radical simplification: 778 lines → ~200 lines
+- Removed batch-aware targeting, pattern density, edge analysis
+- Focus on essentials: GATE + Grammar + Recency bias
+- Clear workflow: Generate E → Extract D
+- Trust the agent to make good phrases
 
-**v2.0 (2025-10-26)**:
-- **CRITICAL RESTRUCTURE**: Vocabulary constraint now THE ABSOLUTE GATE
-- Added "THE LEARNING MODEL (FOUNDATION)" section explaining one-LEGO-at-a-time acquisition
-- Added "BASKET STRUCTURE: E-PHRASES vs D-PHRASES" disambiguation section
-  - E = Eternal (natural, conversational sentences for core practice)
-  - D = Debut/Development (scaffolding fragments, expanding windows)
-  - Clarified pedagogical roles and key differences
-  - E-phrases must TILE perfectly from LEGOs (no extra/missing words)
-  - D-phrases are expanding windows FROM e-phrases, AROUND operative LEGO
-  - Complete example showing S0001L05 as culminating LEGO with seed as E-phrase #1
-- Moved vocabulary constraint to TOP of document as primary rule
-- Reframed length requirements as "aspiration IF vocabulary permits" (not hard requirement)
-- Added explicit examples: S0001L01 (empty), S0001L02 (2 words max), progression to S0010+
-- Changed priority order: 1) Vocabulary (ABSOLUTE), 2) Quality (IF permits), 3) Length (IF permits)
-- Removed "CRITICAL FAILURE" language from length requirements
-- Added "CATASTROPHIC ERROR" language to vocabulary violations
-- Updated Extended Thinking protocol to check vocabulary FIRST as gate
-- Added expected basket progression by LEGO number
-- Clarified that empty/short baskets for early LEGOs are CORRECT and EXPECTED
-- Addresses catastrophic vocabulary constraint violations in spa_for_eng_20seeds output
+**v2.2 (2025-10-28):**
+- Added batch-aware edge targeting (removed in v3.0)
 
-**v1.0 (2025-10-23)**:
-- Extracted from APML PHASE_PROMPTS
-- Documented two-stage process (graph-driven selection + vocabulary-constrained generation)
-- Clarified vocabulary constraints (LEGO #N can only use LEGOs #1 to N-1)
-- Added culminating LEGO rules (E-phrase #1 = complete seed)
-- Documented e-phrase requirements (7-10 words, perfect grammar, bilingual validation)
-- Added d-phrase quality allowance (can be fragments)
-- Included Italian-specific grammar rules (infinitive + preposition requirements)
-- Defined output format matching schema
+**v2.1 (2025-10-27):**
+- Generation-focused, removed validation loops
+
+**v2.0 (2025-10-26):**
+- Vocabulary constraint as absolute gate
+
+**v1.0 (2025-10-23):**
+- Initial extraction from APML
 
 ---
 
-**Next Update**: Refine based on real-world generation results with v2.0 vocabulary-first approach
+**Bottom line:** Generate natural phrases respecting GATE constraint. Extract fragments mechanically. Done.

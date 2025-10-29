@@ -2766,16 +2766,20 @@ app.get('/api/courses', async (req, res) => {
 
         // Check if this is a valid course (has both required files)
         if (await fs.pathExists(seedPairsPath) && await fs.pathExists(legoPairsPath)) {
-          // Parse course code (e.g., spa_for_eng_30seeds)
-          const match = dir.match(/^([a-z]{3})_for_([a-z]{3})_(\d+)seeds$/);
-          if (!match) {
+          // Parse course code - support both patterns:
+          // - xxx_for_yyy (intelligent, no suffix)
+          // - xxx_for_yyy_NNseeds (legacy with suffix)
+          const matchWithSeeds = dir.match(/^([a-z]{3})_for_([a-z]{3})_(\d+)seeds$/);
+          const matchWithoutSeeds = dir.match(/^([a-z]{3})_for_([a-z]{3})$/);
+
+          if (!matchWithSeeds && !matchWithoutSeeds) {
             console.log(`[API] Skipping directory ${dir} - doesn't match course code pattern`);
             continue;
           }
 
-          const targetLang = match[1];
-          const knownLang = match[2];
-          const seedCount = parseInt(match[3]);
+          const targetLang = matchWithSeeds ? matchWithSeeds[1] : matchWithoutSeeds[1];
+          const knownLang = matchWithSeeds ? matchWithSeeds[2] : matchWithoutSeeds[2];
+          // Seed count will be read from actual file, not directory name
 
           // Load seed_pairs.json to get actual count
           const seedPairsData = await fs.readJson(seedPairsPath);
@@ -2799,7 +2803,7 @@ app.get('/api/courses', async (req, res) => {
             course_code: dir,
             source_language: knownLang.toUpperCase(),
             target_language: targetLang.toUpperCase(),
-            total_seeds: seedCount,
+            total_seeds: translationCount, // Always use actual count from file
             version: '1.0',
             created_at: stats.birthtime.toISOString(),
             status: status,
@@ -2911,15 +2915,18 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       }
     }
 
-    // Generate course metadata
-    const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\d+)seeds$/);
+    // Generate course metadata - support both patterns
+    const matchWithSeeds = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\d+)seeds$/);
+    const matchWithoutSeeds = courseCode.match(/^([a-z]{3})_for_([a-z]{3})$/);
+    const match = matchWithSeeds || matchWithoutSeeds;
+
     const stats = await fs.stat(coursePath);
 
     const course = {
       course_code: courseCode,
       source_language: match ? match[2].toUpperCase() : 'UNK',
       target_language: match ? match[1].toUpperCase() : 'UNK',
-      total_seeds: match ? parseInt(match[3]) : 0,
+      total_seeds: translations.length, // Always use actual count from file
       version: '1.0',
       created_at: stats.birthtime.toISOString(),
       status: 'phase_3_complete',
