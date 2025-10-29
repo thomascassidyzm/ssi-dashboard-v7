@@ -402,12 +402,15 @@ Phase 1 involves:
 
 **One concept in known language = ONE translation in target language, even if less natural.**
 
+**Implementation**: Phase 1 processes ALL 668 seeds in a single agent session to maintain vocabulary registry continuity naturally. No batch splits that could introduce variation.
+
 ### Why This Works
 
 1. **Eliminates decision paralysis** ("Which word do I use?")
 2. **Builds automatic retrieval** (no thinking required)
 3. **Creates cognitive fluency** before expanding vocabulary
 4. **Reduces cognitive load** (one mapping to memorize, not three)
+5. **Single-session processing** ensures registry consistency without explicit tracking
 
 ### Implementation
 
@@ -587,19 +590,32 @@ S0008: "intentar" = to try (use claimed word)
 
 **The First-Come-First-Served Principle:**
 
-The first time a concept appears determines its canonical translation for the next ~100 SEEDs.
+**CRITICAL**: The first time a concept appears determines its canonical translation **for ALL 668 SEEDs** (at least for core concepts established in seeds 1-100).
 
 ```
-SEED 30: "I wanted to ask you something"
-Translation chosen: "I wanted" → "quería" (imperfect)
+SEED 2: "I'm trying to learn"
+Translation chosen: "to try" → "intentar" (cognate with "intent")
 
-This locks in imperfect aspect for "wanted"
+This locks in "intentar" for ALL occurrences of "try" across entire course
 
-SEED 150: "I wanted to see you"
-Must also use: "I wanted" → "quería"
+SEED 7, 15, 50, 150, 300: Must ALL use "intentar"
+NEVER introduce variation: "tratar", "procurar", etc. in seeds 1-100
 
-Only later (SEED 300+) can you introduce:
-"I wanted" → "quise" (preterite, different context)
+Only after SEED 300+ can you introduce:
+"to try" → "tratar" (in specific contexts with explicit contrast)
+```
+
+**Common Violation Example (NEVER DO THIS):**
+```
+❌ BAD:
+SEED 2: "tratando de aprender" (trying to learn)
+SEED 7: "intentar tan duro" (to try as hard)
+→ Learner confused: "Which word for 'try'?"
+
+✅ GOOD:
+SEED 2: "intentando aprender" (trying to learn)
+SEED 7: "intentar tan duro" (to try as hard)
+→ Learner confident: "'intentar' is THE word for try!"
 ```
 
 **EXCEPTION - Grammatically Required Variation:**

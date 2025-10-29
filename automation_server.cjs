@@ -931,12 +931,12 @@ async function spawnCourseOrchestrator(courseCode, params) {
 
   try {
     // Calculate batch counts
-    const phase1Batches = Math.ceil(seeds / 100);
+    const phase1Batches = 1; // Single batch for all seeds (maintains vocabulary registry)
     const phase3Batches = Math.ceil(seeds / 50);
     const phase5Batches = Math.ceil(seeds / 20);
 
-    console.log(`[Orchestrator] Phase 1: ${phase1Batches} batches (100 seeds each)`);
-    console.log(`[Orchestrator] Phase 3: ${phase3Batches} batches (50 seeds each)`);
+    console.log(`[Orchestrator] Phase 1: Single batch (all ${seeds} seeds - vocabulary registry consistency)`);
+    console.log(`[Orchestrator] Phase 3: ${phase3Batches} batches (50 seeds each, parallel)`);
     console.log(`[Orchestrator] Phase 5: ${phase5Batches} batches (20 seeds each, sequential)`);
 
     // PHASE 1: Translation (can spawn in parallel)
@@ -963,24 +963,13 @@ async function spawnCourseOrchestrator(courseCode, params) {
     if (!phase1AlreadyComplete) {
       job.phase = 'phase_1';
       job.progress = 0;
-      console.log(`\n[Phase 1] Starting ${phase1Batches} translation batches...`);
+      console.log(`\n[Phase 1] Spawning single agent for all ${seeds} seeds (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})...`);
 
-      for (let i = 0; i < phase1Batches; i++) {
-        const batchStartSeed = startSeed + (i * 100);
-        const batchEndSeed = Math.min(startSeed + ((i + 1) * 100) - 1, endSeed);
-        const batchNum = i + 1;
+      const brief = generatePhase1Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
+      await spawnPhaseAgent(`1-complete`, brief, courseDir, courseCode);
 
-        console.log(`[Phase 1] Spawning batch ${batchNum}/${phase1Batches}: S${String(batchStartSeed).padStart(4, '0')}-S${String(batchEndSeed).padStart(4, '0')}`);
-
-        const brief = generatePhase1Brief(courseCode, { target, known, startSeed: batchStartSeed, endSeed: batchEndSeed, batchNum, totalBatches: phase1Batches }, courseDir);
-        await spawnPhaseAgent(`1-batch${batchNum}`, brief, courseDir, courseCode);
-
-        // Small delay between spawns to avoid overwhelming iTerm2
-        await new Promise(resolve => setTimeout(resolve, 2000));
-      }
-
-      console.log(`[Phase 1] All ${phase1Batches} batches spawned. Agents running in parallel.`);
-      console.log(`[Phase 1] ⏳ Waiting for all Phase 1 batches to complete before Phase 3...`);
+      console.log(`[Phase 1] Agent spawned. Translating all ${seeds} seeds in single session for vocabulary registry consistency.`);
+      console.log(`[Phase 1] ⏳ Waiting for Phase 1 completion before Phase 3...`);
       console.log(`[Phase 1] 📍 Polling seed_pairs.json for completion...`);
 
       job.phase = 'phase_1_waiting';
@@ -1179,6 +1168,12 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
     console.log(`\n[Polling] ✅ Phase 1 COMPLETE! All ${seeds} seed pairs generated.\n`);
     job.progress = 30;
 
+    // Close Phase 1 windows to free RAM before Phase 3
+    if (job.windowIds && job.windowIds.length > 0) {
+      await closeAgentWindows(job.windowIds);
+      job.windowIds = []; // Reset for Phase 3
+    }
+
     // START PHASE 3
     // CHECK FOR INTELLIGENT RESUME
     const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
@@ -1212,10 +1207,14 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
 
         const brief = generatePhase3Brief(courseCode, { target, known, startSeed: batchStartSeed, endSeed: batchEndSeed, batchNum, totalBatches: phase3Batches }, courseDir);
         await spawnPhaseAgent(`3-batch${batchNum}`, brief, courseDir, courseCode);
-        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        // 30-second stagger to ensure Claude Code is ready before next window spawns
+        if (i < phase3Batches - 1) {
+          await new Promise(resolve => setTimeout(resolve, 30000));
+        }
       }
 
-      console.log(`[Phase 3] All ${phase3Batches} batches spawned. Waiting for completion...`);
+      console.log(`[Phase 3] All ${phase3Batches} batches spawned. Running in parallel...`);
       job.progress = 40;
     }
 
@@ -1273,6 +1272,12 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
     }
 
     job.progress = 60;
+
+    // Close Phase 3 windows to free RAM before Phase 5
+    if (job.windowIds && job.windowIds.length > 0) {
+      await closeAgentWindows(job.windowIds);
+      job.windowIds = []; // Reset for Phase 5
+    }
 
     // START PHASE 5 (SEQUENTIAL with validators)
     // CHECK FOR INTELLIGENT RESUME
