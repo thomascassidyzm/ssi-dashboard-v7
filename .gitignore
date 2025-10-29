@@ -34,12 +34,5 @@ logs/
 # Server logs
 server.log
 
-# Course data directory - only track course JSON files
-vfs/courses/**/*.cjs
-vfs/courses/**/*.js
-vfs/courses/**/*.md
-vfs/courses/**/regeneration_prompts/
-vfs/courses/**/phase_outputs/
-vfs/courses/**/*_report.json
-vfs/courses/**/gate_violations.json
-vfs/courses/**/.prompt-*.txt
+# Course data directory (generated, stored in AWS)
+vfs/courses/*/
