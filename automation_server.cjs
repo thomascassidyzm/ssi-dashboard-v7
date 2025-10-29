@@ -930,11 +930,11 @@ async function spawnCourseOrchestrator(courseCode, params) {
   try {
     // Calculate batch counts
     const phase1Batches = 1; // Single batch for all seeds (maintains vocabulary registry)
-    const phase3Batches = Math.ceil(seeds / 50);
+    const phase3Batches = Math.ceil(seeds / 70); // 70 seeds = ~10 windows (manageable for iTerm2)
     const phase5Batches = Math.ceil(seeds / 20);
 
     console.log(`[Orchestrator] Phase 1: Single batch (all ${seeds} seeds - vocabulary registry consistency)`);
-    console.log(`[Orchestrator] Phase 3: ${phase3Batches} batches (50 seeds each, parallel)`);
+    console.log(`[Orchestrator] Phase 3: ${phase3Batches} batches (70 seeds each, parallel)`);
     console.log(`[Orchestrator] Phase 5: ${phase5Batches} batches (20 seeds each, sequential)`);
 
     // PHASE 1: Translation (can spawn in parallel)
@@ -1145,11 +1145,77 @@ NOTE: File remains .tmp.json until all validation passes, then will be renamed t
 }
 
 /**
+ * Run Phase 5.5: LEGO and Basket Deduplication
+ */
+async function runPhase5_5Deduplication(courseCode, courseDir) {
+  const script = path.join(__dirname, 'scripts', 'phase5.5-deduplicate-baskets.cjs');
+
+  console.log(`[Phase 5.5] Running deduplication script...`);
+
+  return new Promise((resolve, reject) => {
+    const child = exec(`node "${script}" "${courseCode}"`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`[Phase 5.5] Script error:`, stderr);
+        reject(new Error(stderr || error.message));
+        return;
+      }
+
+      console.log(stdout);
+      resolve();
+    });
+  });
+}
+
+/**
+ * Run Phase 6: Introduction Generation
+ */
+async function runPhase6Introductions(courseCode, courseDir) {
+  const script = path.join(__dirname, 'scripts', 'phase6-generate-introductions.cjs');
+
+  console.log(`[Phase 6] Running introduction generation script...`);
+
+  return new Promise((resolve, reject) => {
+    const child = exec(`node "${script}" "${courseCode}"`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`[Phase 6] Script error:`, stderr);
+        reject(new Error(stderr || error.message));
+        return;
+      }
+
+      console.log(stdout);
+      resolve();
+    });
+  });
+}
+
+/**
+ * Run Phase 7: Course Manifest Compilation
+ */
+async function runPhase7Compilation(courseCode, courseDir) {
+  const script = path.join(__dirname, 'scripts', 'phase7-compile-manifest.cjs');
+
+  console.log(`[Phase 7] Running compilation script...`);
+
+  return new Promise((resolve, reject) => {
+    const child = exec(`node "${script}" "${courseCode}"`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`[Phase 7] Script error:`, stderr);
+        reject(new Error(stderr || error.message));
+        return;
+      }
+
+      console.log(stdout);
+      resolve();
+    });
+  });
+}
+
+/**
  * Poll for phase completion and auto-progress through pipeline
  */
 async function pollAndContinue(courseCode, params, courseDir, phase1Batches, phase3Batches, phase5Batches) {
   const job = STATE.jobs.get(courseCode);
-  const { target, known, seeds } = params;
+  const { target, known, seeds, startSeed, endSeed } = params;
 
   try {
     // WAIT FOR PHASE 1 COMPLETION
@@ -1197,8 +1263,8 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
       console.log(`[Phase 3] Starting ${phase3Batches} LEGO extraction batches...`);
 
       for (let i = 0; i < phase3Batches; i++) {
-        const batchStartSeed = startSeed + (i * 50);
-        const batchEndSeed = Math.min(startSeed + ((i + 1) * 50) - 1, endSeed);
+        const batchStartSeed = startSeed + (i * 70);
+        const batchEndSeed = Math.min(startSeed + ((i + 1) * 70) - 1, endSeed);
         const batchNum = i + 1;
 
         console.log(`[Phase 3] Spawning batch ${batchNum}/${phase3Batches}: S${String(batchStartSeed).padStart(4, '0')}-S${String(batchEndSeed).padStart(4, '0')}`);
@@ -1228,6 +1294,13 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
     }
 
     console.log(`\n[Polling] ✅ Phase 3 GENERATION COMPLETE! LEGOs extracted for all ${seeds} seeds.\n`);
+
+    // Close Phase 3 windows to free RAM before validation
+    if (job.windowIds && job.windowIds.length > 0) {
+      console.log(`[Cleanup] Closing ${job.windowIds.length} Phase 3 windows to free RAM...`);
+      await closeAgentWindows(job.windowIds);
+      job.windowIds = []; // Reset for Phase 5
+    }
 
     // PHASE 3.5: INTELLIGENT VALIDATION LOOP
     console.log(`\n[Phase 3.5] Starting intelligent validation loop...\n`);
@@ -1344,6 +1417,61 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
     }
 
     console.log(`\n[Phase 5] ✅ ALL BATCHES COMPLETE!\n`);
+    job.progress = 95;
+
+    // Close Phase 5 windows to free RAM before Phase 5.5
+    if (job.windowIds && job.windowIds.length > 0) {
+      console.log(`[Cleanup] Closing ${job.windowIds.length} Phase 5 windows to free RAM...`);
+      await closeAgentWindows(job.windowIds);
+      job.windowIds = [];
+    }
+
+    // PHASE 5.5: DEDUPLICATION
+    console.log(`\n[Phase 5.5] Starting LEGO and basket deduplication...\n`);
+    job.phase = 'phase_5.5';
+
+    try {
+      await runPhase5_5Deduplication(courseCode, courseDir);
+      console.log(`[Phase 5.5] ✅ Deduplication complete\n`);
+    } catch (error) {
+      console.error(`[Phase 5.5] ❌ Deduplication failed:`, error.message);
+      job.status = 'failed';
+      job.error = `Phase 5.5 deduplication failed: ${error.message}`;
+      return;
+    }
+
+    job.progress = 96;
+
+    // PHASE 6: INTRODUCTION GENERATION
+    console.log(`\n[Phase 6] Starting introduction generation...\n`);
+    job.phase = 'phase_6';
+
+    try {
+      await runPhase6Introductions(courseCode, courseDir);
+      console.log(`[Phase 6] ✅ Introductions generated\n`);
+    } catch (error) {
+      console.error(`[Phase 6] ❌ Introduction generation failed:`, error.message);
+      job.status = 'failed';
+      job.error = `Phase 6 introduction generation failed: ${error.message}`;
+      return;
+    }
+
+    job.progress = 98;
+
+    // PHASE 7: COURSE MANIFEST COMPILATION
+    console.log(`\n[Phase 7] Starting course manifest compilation...\n`);
+    job.phase = 'phase_7';
+
+    try {
+      await runPhase7Compilation(courseCode, courseDir);
+      console.log(`[Phase 7] ✅ Course manifest compiled\n`);
+    } catch (error) {
+      console.error(`[Phase 7] ❌ Compilation failed:`, error.message);
+      job.status = 'failed';
+      job.error = `Phase 7 compilation failed: ${error.message}`;
+      return;
+    }
+
     job.progress = 100;
     job.phase = 'completed';
     job.status = 'completed';

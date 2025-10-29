@@ -30,8 +30,9 @@ if (!courseCode) {
 
 const courseDir = path.join(__dirname, '..', 'vfs', 'courses', courseCode);
 const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
-const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
-const legoBasketsPath = path.join(courseDir, 'lego_baskets.json');
+// Use deduplicated files (output of Phase 5.5)
+const legoPairsPath = path.join(courseDir, 'lego_pairs_deduplicated.json');
+const legoBasketsPath = path.join(courseDir, 'lego_baskets_deduplicated.json');
 const introductionsPath = path.join(courseDir, 'introductions.json');
 const outputPath = path.join(courseDir, 'course_manifest.json');
 
@@ -103,21 +104,26 @@ async function compileManifest() {
   // Load all input files
   console.log('📖 Reading input files...');
   const seedPairs = await fs.readJson(seedPairsPath);
-  const legoPairs = await fs.readJson(legoPairsPath);
-  const legoBaskets = await fs.readJson(legoBasketsPath);
+  const legoPairsData = await fs.readJson(legoPairsPath);
+  const legoBasketsData = await fs.readJson(legoBasketsPath);
   const introductions = await fs.readJson(introductionsPath);
+
+  // Handle both formats: array (from Phase 5.5) or object with seeds property
+  const seeds = Array.isArray(legoPairsData) ? legoPairsData : legoPairsData.seeds;
+  const baskets = legoBasketsData.baskets || legoBasketsData;
+  const version = legoPairsData.version || introductions.version || '7.8.0';
 
   // Extract course metadata
   const [targetCode, , knownCode] = courseCode.split('_');
   const courseId = `${targetCode}-${knownCode}`;
 
   console.log(`📊 Course ID: ${courseId}`);
-  console.log(`📊 Seeds: ${legoPairs.seeds.length}`);
+  console.log(`📊 Seeds: ${seeds.length}`);
   console.log(`📊 LEGOs: ${Object.keys(introductions.introductions).length}\n`);
 
   // Create LEGO lookup for quick access
   const legoLookup = {};
-  for (const seed of legoPairs.seeds) {
+  for (const seed of seeds) {
     const [seedId, [targetSeed, knownSeed], legos] = seed;
     for (const lego of legos) {
       const [legoId, type, targetLego, knownLego, components] = lego;
@@ -134,7 +140,7 @@ async function compileManifest() {
   }
 
   // Create basket lookup (baskets is an object, not array)
-  const basketLookup = legoBaskets.baskets;
+  const basketLookup = baskets;
 
   // Track all audio samples
   const samples = {};
@@ -158,11 +164,11 @@ async function compileManifest() {
   }
 
   // Build all seeds (all seeds go in a single slice)
-  const seeds = [];
+  const manifestSeeds = [];
   let totalIntroductionItems = 0;
   let totalPracticeNodes = 0;
 
-  for (const seed of legoPairs.seeds) {
+  for (const seed of seeds) {
     const [seedId, [targetSeed, knownSeed], legos] = seed;
 
     // Register seed sentence samples
@@ -253,27 +259,29 @@ async function compileManifest() {
         target: createLanguageNode(targetSeed),
         known: createLanguageNode(knownSeed)
       },
-      seedSentence: {
+      seed_sentence: {
         canonical: knownSeed
       },
-      introductionItems: introductionItems
+      introduction_items: introductionItems
     };
 
-    seeds.push(seedObj);
+    manifestSeeds.push(seedObj);
   }
 
   // Create single slice with all seeds
   const slices = [{
     id: uuidv4(),
-    version: seedPairs.version,
-    seeds: seeds,
+    version: version,
+    seeds: manifestSeeds,
+    pooledEncouragements: [],
+    orderedEncouragements: [],
     samples: samples // Audio sample metadata (Phase 8 will generate actual audio files)
   }];
 
   // Build final manifest
   const manifest = {
     id: courseId,
-    version: seedPairs.version,
+    version: version,
     target: targetCode,
     known: knownCode,
     slices: slices
@@ -287,15 +295,15 @@ async function compileManifest() {
   const totalSampleVariants = Object.values(samples).reduce((sum, arr) => sum + arr.length, 0);
 
   console.log(`✅ Compiled course manifest:`);
-  console.log(`   - Seeds: ${seeds.length}`);
+  console.log(`   - Seeds: ${manifestSeeds.length}`);
   console.log(`   - Introduction Items: ${totalIntroductionItems}`);
   console.log(`   - Practice Nodes: ${totalPracticeNodes}`);
   console.log(`   - Audio Samples: ${totalSamples} unique phrases, ${totalSampleVariants} total variants`);
   console.log(`\n💾 Output: ${outputPath}\n`);
 
   // Show sample structure
-  if (seeds.length > 0) {
-    const firstSeed = seeds[0];
+  if (manifestSeeds.length > 0) {
+    const firstSeed = manifestSeeds[0];
     console.log(`📝 Sample structure:\n`);
     console.log(`Seed: "${firstSeed.node.known.text}"`);
     console.log(`  → LEGOs: ${firstSeed.introductionItems.length}`);
