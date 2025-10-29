@@ -400,6 +400,68 @@ Phase 5 requires:
 
 ---
 
+## ABSOLUTE GATE: Verification Protocol (CRITICAL)
+
+**The constraint**: A phrase at LEGO index N can ONLY use vocabulary from LEGOs 0 to N-1.
+
+**Why this matters**: Learners at LEGO #50 have not yet learned LEGOs #51-275. Using unauthorized vocabulary breaks progressive revelation.
+
+**How to verify EACH phrase**:
+
+### STEP 1: Identify Current LEGO Index
+- You are processing LEGOs sequentially from lego_pairs.json
+- Track your position: "Currently at S0027L01 = global index 117"
+
+### STEP 2: Build Allowed Vocabulary
+- Read lego_pairs.json LEGOs with indices 0 to (current - 1)
+- Extract all target words from these LEGOs
+- Example at index 117: ["Quiero", "hablar", "español", "contigo", "ahora", "Estoy", "tratando", "de", "aprender", ...]
+
+### STEP 3: Generate Candidate Phrase
+- Write a natural, grammatical phrase in BOTH languages
+- Example: ["Quiero hablar español", "I want to speak Spanish"]
+
+### STEP 4: Verify Target Language Tiling
+- Split target phrase into words: ["Quiero", "hablar", "español"]
+- For EACH word, check if it exists in allowed vocabulary (LEGOs 0 to current-1)
+- If ANY word is not in allowed vocabulary → DISCARD PHRASE, generate different one
+
+### STEP 5: Verify Known Language Tiling (same process)
+- Ensure known phrase also tiles with allowed LEGO translations
+
+**Examples at S0027L01 (index 117)**:
+
+✅ VALID:
+- "Quiero hablar español contigo" | "I want to speak Spanish with you"
+  - "Quiero" → S0001L01 [idx=0] ✅
+  - "hablar" → S0001L02 [idx=1] ✅
+  - "español" → S0001L03 [idx=2] ✅
+  - "contigo" → S0001L04 [idx=3] ✅
+  - All indices < 117 ✅
+
+❌ INVALID:
+- "No me gusta cuando estoy cansado" | "I don't like it when I'm tired"
+  - "cansado" → S0039L04 [idx=175] ❌ (175 > 117)
+  - VIOLATION: Uses LEGO not yet introduced
+  - DISCARD and generate different phrase
+
+❌ INVALID:
+- "Quiero estar listo" | "I want to be ready"
+  - "estar" → S0034L03 [idx=148] ❌ (148 > 117)
+  - VIOLATION: Uses LEGO 31 positions ahead
+  - DISCARD and generate different phrase
+
+**Systematic checking**:
+Before writing EACH phrase to lego_baskets.json:
+1. Split into words
+2. Lookup each word in lego_pairs.json
+3. Check: word's LEGO index < current basket index?
+4. If ANY word fails → discard phrase, try again
+
+**This is non-negotiable**: A single unauthorized word makes the entire phrase invalid for learners.
+
+---
+
 ## Output Format
 
 ${batchNum === 1 ? 'Create' : 'APPEND to existing'} lego_baskets.json:
@@ -431,15 +493,22 @@ ${batchNum === 1 ? 'Create' : 'APPEND to existing'} lego_baskets.json:
 
 ## After Generation
 
-Run validators to measure pattern coverage:
+Run validators (GATE compliance is MANDATORY):
 
 \`\`\`bash
 cd ${courseDir}
+
+# GATE compliance (MUST PASS - no violations allowed)
+node ../../../validators/validate-gate-compliance.cjs ${courseCode} --output ${courseDir}/gate_violations.json
+
+# Pattern coverage metrics
 node ../../../validators/analyze-pattern-coverage.cjs ${courseCode} --output ${courseDir}/pattern_coverage_report.json
 node ../../../validators/analyze-completeness.cjs ${courseCode} --output ${courseDir}/completeness_report.json
 \`\`\`
 
-Report pattern density and completeness score!
+**CRITICAL**: If GATE validator fails, you MUST fix violations before continuing. Read gate_violations.json for specific phrases that violate GATE.
+
+Report: GATE compliance status, pattern density, and completeness score!
 
 ---
 
@@ -448,11 +517,13 @@ Report pattern density and completeness score!
 ✅ Baskets for ~${(endSeed - startSeed + 1) * 3} LEGOs
 ✅ Merged with existing lego_baskets.json (if not batch 1)
 ✅ Perfect grammar in BOTH languages
-✅ ABSOLUTE GATE enforced
-✅ Validators run, reports generated
+✅ **ABSOLUTE GATE: 0 violations** (validate-gate-compliance.cjs MUST pass)
+✅ Pattern coverage validators run, reports generated
 ${batchNum > 1 ? '✅ Pattern gaps from batch ' + (batchNum - 1) + ' addressed' : ''}
 
-When done, report completion, LEGO count, and pattern density!
+**MANDATORY**: GATE compliance = 100%. Any violations = failed batch, must regenerate.
+
+When done, report: GATE compliance (0 violations), LEGO count, and pattern density!
 `;
 }
 
