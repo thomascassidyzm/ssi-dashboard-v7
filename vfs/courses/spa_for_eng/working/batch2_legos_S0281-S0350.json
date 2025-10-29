@@ -1,0 +1,505 @@
+{
+  "version": "7.7",
+  "seeds": [
+    ["S0281", ["¿Te importa si termino mi café antes de que empieces?", "Do you mind if I finish my coffee before you start?"], [
+      ["S0281L01", "C", "Te importa", "Do you mind", [["Te", "you"], ["importa", "it matters"]]],
+      ["S0281L02", "B", "si", "if"],
+      ["S0281L03", "B", "termino", "I finish"],
+      ["S0281L04", "C", "mi café", "my coffee", [["mi", "my"], ["café", "coffee"]]],
+      ["S0281L05", "C", "antes de que", "before", [["antes de", "before"], ["que", "that"]]],
+      ["S0281L06", "B", "empieces", "you start"]
+    ]],
+    ["S0282", ["No, eso no es un problema.", "No that's not a problem."], [
+      ["S0282L01", "B", "No", "No"],
+      ["S0282L02", "B", "eso", "that"],
+      ["S0282L03", "C", "no es", "is not", [["no", "not"], ["es", "is"]]],
+      ["S0282L04", "C", "un problema", "a problem", [["un", "a"], ["problema", "problem"]]]
+    ]],
+    ["S0283", ["¿Cuáles de tus amigos hablan español?", "Which of your friends speak Spanish?"], [
+      ["S0283L01", "C", "Cuáles de", "Which of", [["Cuáles", "Which"], ["de", "of"]]],
+      ["S0283L02", "C", "tus amigos", "your friends", [["tus", "your"], ["amigos", "friends"]]],
+      ["S0283L03", "B", "hablan", "speak"],
+      ["S0283L04", "B", "español", "Spanish"]
+    ]],
+    ["S0284", ["¿Conoces a la amiga de mi hermana?", "Do you know my sister's friend?"], [
+      ["S0284L01", "B", "Conoces", "Do you know"],
+      ["S0284L02", "B", "a", "to"],
+      ["S0284L03", "C", "la amiga", "the friend", [["la", "the"], ["amiga", "friend"]]],
+      ["S0284L04", "C", "de mi hermana", "of my sister", [["de", "of"], ["mi", "my"], ["hermana", "sister"]]]
+    ]],
+    ["S0285", ["Ella habla español.", "She speaks Spanish."], [
+      ["S0285L01", "B", "Ella", "She"],
+      ["S0285L02", "B", "habla", "speaks"],
+      ["S0285L03", "B", "español", "Spanish"]
+    ]],
+    ["S0286", ["Personas que les gusta hablar español.", "People who like speaking Spanish."], [
+      ["S0286L01", "B", "Personas", "People"],
+      ["S0286L02", "B", "que", "who"],
+      ["S0286L03", "C", "les gusta", "like", [["les", "them"], ["gusta", "pleases"]]],
+      ["S0286L04", "B", "hablar", "speaking"],
+      ["S0286L05", "B", "español", "Spanish"]
+    ]],
+    ["S0287", ["¿Cuántas personas conoces que les gusta ver televisión?", "How many people do you know who like watching television?"], [
+      ["S0287L01", "C", "Cuántas personas", "How many people", [["Cuántas", "How many"], ["personas", "people"]]],
+      ["S0287L02", "B", "conoces", "do you know"],
+      ["S0287L03", "B", "que", "who"],
+      ["S0287L04", "C", "les gusta", "like", [["les", "them"], ["gusta", "pleases"]]],
+      ["S0287L05", "B", "ver", "watching"],
+      ["S0287L06", "B", "televisión", "television"]
+    ]],
+    ["S0288", ["La mayoría de las personas que conozco les gusta ver televisión.", "Most people I know like watching television."], [
+      ["S0288L01", "C", "La mayoría de", "Most", [["La", "The"], ["mayoría", "majority"], ["de", "of"]]],
+      ["S0288L02", "C", "las personas", "people", [["las", "the"], ["personas", "people"]]],
+      ["S0288L03", "B", "que", "that"],
+      ["S0288L04", "B", "conozco", "I know"],
+      ["S0288L05", "C", "les gusta", "like", [["les", "them"], ["gusta", "pleases"]]],
+      ["S0288L06", "B", "ver", "watching"],
+      ["S0288L07", "B", "televisión", "television"]
+    ]],
+    ["S0289", ["Me pregunto si ella va a estar ahí esta tarde.", "I wonder if she's going to be there this afternoon."], [
+      ["S0289L01", "C", "Me pregunto", "I wonder", [["Me", "myself"], ["pregunto", "I ask"]]],
+      ["S0289L02", "B", "si", "if"],
+      ["S0289L03", "B", "ella", "she"],
+      ["S0289L04", "C", "va a", "is going to", [["va", "goes"], ["a", "to"]]],
+      ["S0289L05", "B", "estar", "to be"],
+      ["S0289L06", "B", "ahí", "there"],
+      ["S0289L07", "C", "esta tarde", "this afternoon", [["esta", "this"], ["tarde", "afternoon"]]]
+    ]],
+    ["S0290", ["Me pregunto si él sabe la respuesta.", "I wonder if he knows the answer."], [
+      ["S0290L01", "C", "Me pregunto", "I wonder", [["Me", "myself"], ["pregunto", "I ask"]]],
+      ["S0290L02", "B", "si", "if"],
+      ["S0290L03", "B", "él", "he"],
+      ["S0290L04", "B", "sabe", "knows"],
+      ["S0290L05", "C", "la respuesta", "the answer", [["la", "the"], ["respuesta", "answer"]]]
+    ]],
+    ["S0291", ["Espero que pueda hablar mejor pronto.", "I hope I'll be able to speak better soon."], [
+      ["S0291L01", "C", "Espero que", "I hope", [["Espero", "I hope"], ["que", "that"]]],
+      ["S0291L02", "B", "pueda", "I'll be able"],
+      ["S0291L03", "B", "hablar", "to speak"],
+      ["S0291L04", "B", "mejor", "better"],
+      ["S0291L05", "B", "pronto", "soon"]
+    ]],
+    ["S0292", ["Espero que puedas venir a la fiesta.", "I hope you'll be able to come to the party."], [
+      ["S0292L01", "C", "Espero que", "I hope", [["Espero", "I hope"], ["que", "that"]]],
+      ["S0292L02", "B", "puedas", "you'll be able"],
+      ["S0292L03", "B", "venir", "to come"],
+      ["S0292L04", "C", "a la fiesta", "to the party", [["a", "to"], ["la", "the"], ["fiesta", "party"]]]
+    ]],
+    ["S0293", ["Tengo que averiguar dónde va a encontrarme.", "I have to find out where he's going to meet me."], [
+      ["S0293L01", "C", "Tengo que", "I have to", [["Tengo", "I have"], ["que", "that"]]],
+      ["S0293L02", "B", "averiguar", "to find out"],
+      ["S0293L03", "B", "dónde", "where"],
+      ["S0293L04", "C", "va a", "is going to", [["va", "goes"], ["a", "to"]]],
+      ["S0293L05", "B", "encontrarme", "meet me"]
+    ]],
+    ["S0294", ["No tengo suficiente tiempo para llamarte esta noche.", "I don't have enough time to call you tonight."], [
+      ["S0294L01", "C", "No tengo", "I don't have", [["No", "not"], ["tengo", "I have"]]],
+      ["S0294L02", "C", "suficiente tiempo", "enough time", [["suficiente", "enough"], ["tiempo", "time"]]],
+      ["S0294L03", "B", "para", "to"],
+      ["S0294L04", "B", "llamarte", "call you"],
+      ["S0294L05", "C", "esta noche", "tonight", [["esta", "this"], ["noche", "night"]]]
+    ]],
+    ["S0295", ["No dije que quería terminar en un día.", "I didn't say that I wanted to finish in a day."], [
+      ["S0295L01", "C", "No dije", "I didn't say", [["No", "not"], ["dije", "I said"]]],
+      ["S0295L02", "B", "que", "that"],
+      ["S0295L03", "B", "quería", "I wanted"],
+      ["S0295L04", "B", "terminar", "to finish"],
+      ["S0295L05", "C", "en un día", "in a day", [["en", "in"], ["un", "a"], ["día", "day"]]]
+    ]],
+    ["S0296", ["Dije que necesitaba un poco más de tiempo.", "I said that I needed a little more time."], [
+      ["S0296L01", "B", "Dije", "I said"],
+      ["S0296L02", "B", "que", "that"],
+      ["S0296L03", "B", "necesitaba", "I needed"],
+      ["S0296L04", "C", "un poco más de", "a little more", [["un poco", "a little"], ["más", "more"], ["de", "of"]]],
+      ["S0296L05", "B", "tiempo", "time"]
+    ]],
+    ["S0297", ["No conozco a muchas personas que hablan español.", "I don't know many people who speak Spanish."], [
+      ["S0297L01", "C", "No conozco", "I don't know", [["No", "not"], ["conozco", "I know"]]],
+      ["S0297L02", "B", "a", "to"],
+      ["S0297L03", "C", "muchas personas", "many people", [["muchas", "many"], ["personas", "people"]]],
+      ["S0297L04", "B", "que", "who"],
+      ["S0297L05", "B", "hablan", "speak"],
+      ["S0297L06", "B", "español", "Spanish"]
+    ]],
+    ["S0298", ["No me queda nada que decir.", "I've got nothing left to say."], [
+      ["S0298L01", "C", "No me queda", "I've got nothing left", [["No", "not"], ["me", "me"], ["queda", "remains"]]],
+      ["S0298L02", "B", "nada", "nothing"],
+      ["S0298L03", "C", "que decir", "to say", [["que", "that"], ["decir", "to say"]]]
+    ]],
+    ["S0299", ["Él quiere pagar la mitad.", "He wants to pay half."], [
+      ["S0299L01", "B", "Él", "He"],
+      ["S0299L02", "B", "quiere", "wants"],
+      ["S0299L03", "B", "pagar", "to pay"],
+      ["S0299L04", "C", "la mitad", "half", [["la", "the"], ["mitad", "half"]]]
+    ]],
+    ["S0300", ["Ella no quiere parecer poco amigable.", "She doesn't want to seem unfriendly."], [
+      ["S0300L01", "B", "Ella", "She"],
+      ["S0300L02", "C", "no quiere", "doesn't want", [["no", "not"], ["quiere", "wants"]]],
+      ["S0300L03", "B", "parecer", "to seem"],
+      ["S0300L04", "C", "poco amigable", "unfriendly", [["poco", "little"], ["amigable", "friendly"]]]
+    ]],
+    ["S0301", ["Él dijo que quiere mostrarte algo.", "He said that he wants to show you something."], [
+      ["S0301L01", "B", "Él", "He"],
+      ["S0301L02", "B", "dijo", "said"],
+      ["S0301L03", "B", "que", "that"],
+      ["S0301L04", "B", "quiere", "he wants"],
+      ["S0301L05", "B", "mostrarte", "to show you"],
+      ["S0301L06", "B", "algo", "something"]
+    ]],
+    ["S0302", ["Ella dijo que no quiere vivir en una ciudad.", "She said that she doesn't want to live in a city."], [
+      ["S0302L01", "B", "Ella", "She"],
+      ["S0302L02", "B", "dijo", "said"],
+      ["S0302L03", "B", "que", "that"],
+      ["S0302L04", "C", "no quiere", "doesn't want", [["no", "not"], ["quiere", "wants"]]],
+      ["S0302L05", "B", "vivir", "to live"],
+      ["S0302L06", "C", "en una ciudad", "in a city", [["en", "in"], ["una", "a"], ["ciudad", "city"]]]
+    ]],
+    ["S0303", ["Pienso que él quiere sentarse.", "I think that he wants to sit down."], [
+      ["S0303L01", "B", "Pienso", "I think"],
+      ["S0303L02", "B", "que", "that"],
+      ["S0303L03", "B", "él", "he"],
+      ["S0303L04", "B", "quiere", "wants"],
+      ["S0303L05", "B", "sentarse", "to sit down"]
+    ]],
+    ["S0304", ["Pienso que ella no quiere trabajar desde casa.", "I think that she doesn't want to work from home."], [
+      ["S0304L01", "B", "Pienso", "I think"],
+      ["S0304L02", "B", "que", "that"],
+      ["S0304L03", "B", "ella", "she"],
+      ["S0304L04", "C", "no quiere", "doesn't want", [["no", "not"], ["quiere", "wants"]]],
+      ["S0304L05", "B", "trabajar", "to work"],
+      ["S0304L06", "C", "desde casa", "from home", [["desde", "from"], ["casa", "home"]]]
+    ]],
+    ["S0305", ["Mujer.", "Woman."], [
+      ["S0305L01", "B", "Mujer", "Woman"]
+    ]],
+    ["S0306", ["Conozco a esa mujer joven que está hablando con tu amigo.", "I know that young woman who's talking to your friend."], [
+      ["S0306L01", "B", "Conozco", "I know"],
+      ["S0306L02", "B", "a", "to"],
+      ["S0306L03", "C", "esa mujer joven", "that young woman", [["esa", "that"], ["mujer", "woman"], ["joven", "young"]]],
+      ["S0306L04", "B", "que", "who"],
+      ["S0306L05", "C", "está hablando", "is talking", [["está", "is"], ["hablando", "talking"]]],
+      ["S0306L06", "B", "con", "to"],
+      ["S0306L07", "C", "tu amigo", "your friend", [["tu", "your"], ["amigo", "friend"]]]
+    ]],
+    ["S0307", ["Conozco a ese hombre joven que está sentado allá.", "I know that young man who's sitting over there."], [
+      ["S0307L01", "B", "Conozco", "I know"],
+      ["S0307L02", "B", "a", "to"],
+      ["S0307L03", "C", "ese hombre joven", "that young man", [["ese", "that"], ["hombre", "man"], ["joven", "young"]]],
+      ["S0307L04", "B", "que", "who"],
+      ["S0307L05", "C", "está sentado", "is sitting", [["está", "is"], ["sentado", "sitting"]]],
+      ["S0307L06", "B", "allá", "over there"]
+    ]],
+    ["S0308", ["Sí, es una amiga de mi madre.", "Yes she's a friend of my mother."], [
+      ["S0308L01", "B", "Sí", "Yes"],
+      ["S0308L02", "B", "es", "she is"],
+      ["S0308L03", "C", "una amiga", "a friend", [["una", "a"], ["amiga", "friend"]]],
+      ["S0308L04", "C", "de mi madre", "of my mother", [["de", "of"], ["mi", "my"], ["madre", "mother"]]]
+    ]],
+    ["S0309", ["No, nunca la he visto antes.", "No I've never seen her before."], [
+      ["S0309L01", "B", "No", "No"],
+      ["S0309L02", "B", "nunca", "never"],
+      ["S0309L03", "C", "la he visto", "I've seen her", [["la", "her"], ["he", "I have"], ["visto", "seen"]]],
+      ["S0309L04", "B", "antes", "before"]
+    ]],
+    ["S0310", ["Ella podría escribir una historia sobre ese hombre.", "She could write a story about that man."], [
+      ["S0310L01", "B", "Ella", "She"],
+      ["S0310L02", "B", "podría", "could"],
+      ["S0310L03", "B", "escribir", "write"],
+      ["S0310L04", "C", "una historia", "a story", [["una", "a"], ["historia", "story"]]],
+      ["S0310L05", "B", "sobre", "about"],
+      ["S0310L06", "C", "ese hombre", "that man", [["ese", "that"], ["hombre", "man"]]]
+    ]],
+    ["S0311", ["Él no podía creer los tres hechos más importantes.", "He couldn't believe the three most important facts."], [
+      ["S0311L01", "B", "Él", "He"],
+      ["S0311L02", "C", "no podía", "couldn't", [["no", "not"], ["podía", "could"]]],
+      ["S0311L03", "B", "creer", "believe"],
+      ["S0311L04", "C", "los tres hechos", "the three facts", [["los", "the"], ["tres", "three"], ["hechos", "facts"]]],
+      ["S0311L05", "C", "más importantes", "most important", [["más", "most"], ["importantes", "important"]]]
+    ]],
+    ["S0312", ["Ella dijo que podría usar la otra habitación mañana por la noche.", "She said that she could use the other room tomorrow night."], [
+      ["S0312L01", "B", "Ella", "She"],
+      ["S0312L02", "B", "dijo", "said"],
+      ["S0312L03", "B", "que", "that"],
+      ["S0312L04", "B", "podría", "she could"],
+      ["S0312L05", "B", "usar", "use"],
+      ["S0312L06", "C", "la otra habitación", "the other room", [["la", "the"], ["otra", "other"], ["habitación", "room"]]],
+      ["S0312L07", "C", "mañana por la noche", "tomorrow night", [["mañana", "tomorrow"], ["por la noche", "at night"]]]
+    ]],
+    ["S0313", ["Él dijo que no podía ver los cinco juegos.", "He said that he couldn't watch all five games."], [
+      ["S0313L01", "B", "Él", "He"],
+      ["S0313L02", "B", "dijo", "said"],
+      ["S0313L03", "B", "que", "that"],
+      ["S0313L04", "C", "no podía", "couldn't", [["no", "not"], ["podía", "could"]]],
+      ["S0313L05", "B", "ver", "watch"],
+      ["S0313L06", "C", "los cinco juegos", "all five games", [["los", "the"], ["cinco", "five"], ["juegos", "games"]]]
+    ]],
+    ["S0314", ["Pienso que ella podría ponerlo en la mesa.", "I think that she could put it on the table."], [
+      ["S0314L01", "B", "Pienso", "I think"],
+      ["S0314L02", "B", "que", "that"],
+      ["S0314L03", "B", "ella", "she"],
+      ["S0314L04", "B", "podría", "could"],
+      ["S0314L05", "B", "ponerlo", "put it"],
+      ["S0314L06", "C", "en la mesa", "on the table", [["en", "on"], ["la", "the"], ["mesa", "table"]]]
+    ]],
+    ["S0315", ["Pienso que él no podía permitirse el coche que quería.", "I think that he couldn't afford the car that he wanted."], [
+      ["S0315L01", "B", "Pienso", "I think"],
+      ["S0315L02", "B", "que", "that"],
+      ["S0315L03", "B", "él", "he"],
+      ["S0315L04", "C", "no podía", "couldn't", [["no", "not"], ["podía", "could"]]],
+      ["S0315L05", "B", "permitirse", "afford"],
+      ["S0315L06", "C", "el coche", "the car", [["el", "the"], ["coche", "car"]]],
+      ["S0315L07", "B", "que", "that"],
+      ["S0315L08", "B", "quería", "he wanted"]
+    ]],
+    ["S0316", ["¿Piensas que ella podría traer a su hermano el lunes?", "Do you think that she could bring her brother on Monday?"], [
+      ["S0316L01", "B", "Piensas", "Do you think"],
+      ["S0316L02", "B", "que", "that"],
+      ["S0316L03", "B", "ella", "she"],
+      ["S0316L04", "B", "podría", "could"],
+      ["S0316L05", "B", "traer", "bring"],
+      ["S0316L06", "C", "a su hermano", "her brother", [["a", "to"], ["su", "her"], ["hermano", "brother"]]],
+      ["S0316L07", "C", "el lunes", "on Monday", [["el", "the"], ["lunes", "Monday"]]]
+    ]],
+    ["S0317", ["Sí, pienso que podría si quisiera.", "Yes I think she could if she wanted to."], [
+      ["S0317L01", "B", "Sí", "Yes"],
+      ["S0317L02", "B", "pienso", "I think"],
+      ["S0317L03", "B", "que", "that"],
+      ["S0317L04", "B", "podría", "she could"],
+      ["S0317L05", "B", "si", "if"],
+      ["S0317L06", "B", "quisiera", "she wanted to"]
+    ]],
+    ["S0318", ["No, no pienso que podría esta vez.", "No I don't think she could this time."], [
+      ["S0318L01", "B", "No", "No"],
+      ["S0318L02", "C", "no pienso", "I don't think", [["no", "not"], ["pienso", "I think"]]],
+      ["S0318L03", "B", "que", "that"],
+      ["S0318L04", "B", "podría", "she could"],
+      ["S0318L05", "C", "esta vez", "this time", [["esta", "this"], ["vez", "time"]]]
+    ]],
+    ["S0319", ["Ella necesita mudarse a un país diferente.", "She needs to move to a different country."], [
+      ["S0319L01", "B", "Ella", "She"],
+      ["S0319L02", "B", "necesita", "needs"],
+      ["S0319L03", "B", "mudarse", "to move"],
+      ["S0319L04", "C", "a un país diferente", "to a different country", [["a", "to"], ["un", "a"], ["país", "country"], ["diferente", "different"]]]
+    ]],
+    ["S0320", ["Él no necesita comprar otra televisión este año.", "He doesn't need to buy another television this year."], [
+      ["S0320L01", "B", "Él", "He"],
+      ["S0320L02", "C", "no necesita", "doesn't need", [["no", "not"], ["necesita", "needs"]]],
+      ["S0320L03", "B", "comprar", "to buy"],
+      ["S0320L04", "C", "otra televisión", "another television", [["otra", "another"], ["televisión", "television"]]],
+      ["S0320L05", "C", "este año", "this year", [["este", "this"], ["año", "year"]]]
+    ]],
+    ["S0321", ["Un libro.", "A book."], [
+      ["S0321L01", "C", "Un libro", "A book", [["Un", "A"], ["libro", "book"]]]
+    ]],
+    ["S0322", ["Ella dijo que necesita leer el mismo libro.", "She said that she needs to read the same book."], [
+      ["S0322L01", "B", "Ella", "She"],
+      ["S0322L02", "B", "dijo", "said"],
+      ["S0322L03", "B", "que", "that"],
+      ["S0322L04", "B", "necesita", "she needs"],
+      ["S0322L05", "B", "leer", "to read"],
+      ["S0322L06", "C", "el mismo libro", "the same book", [["el", "the"], ["mismo", "same"], ["libro", "book"]]]
+    ]],
+    ["S0323", ["Él dijo que no necesita caminar a la escuela.", "He said that he doesn't need to walk to school."], [
+      ["S0323L01", "B", "Él", "He"],
+      ["S0323L02", "B", "dijo", "said"],
+      ["S0323L03", "B", "que", "that"],
+      ["S0323L04", "C", "no necesita", "doesn't need", [["no", "not"], ["necesita", "needs"]]],
+      ["S0323L05", "B", "caminar", "to walk"],
+      ["S0323L06", "C", "a la escuela", "to school", [["a", "to"], ["la", "the"], ["escuela", "school"]]]
+    ]],
+    ["S0324", ["Ese estudiante tiene ambas manos arriba.", "That student has both of her hands up."], [
+      ["S0324L01", "C", "Ese estudiante", "That student", [["Ese", "That"], ["estudiante", "student"]]],
+      ["S0324L02", "B", "tiene", "has"],
+      ["S0324L03", "C", "ambas manos", "both hands", [["ambas", "both"], ["manos", "hands"]]],
+      ["S0324L04", "B", "arriba", "up"]
+    ]],
+    ["S0325", ["Pienso que él necesita considerar diez problemas posibles.", "I think that he needs to consider ten possible problems."], [
+      ["S0325L01", "B", "Pienso", "I think"],
+      ["S0325L02", "B", "que", "that"],
+      ["S0325L03", "B", "él", "he"],
+      ["S0325L04", "B", "necesita", "needs"],
+      ["S0325L05", "B", "considerar", "to consider"],
+      ["S0325L06", "C", "diez problemas posibles", "ten possible problems", [["diez", "ten"], ["problemas", "problems"], ["posibles", "possible"]]]
+    ]],
+    ["S0326", ["No pienso que ella necesite vender la compañía.", "I don't think that she needs to sell the company."], [
+      ["S0326L01", "C", "No pienso", "I don't think", [["No", "not"], ["pienso", "I think"]]],
+      ["S0326L02", "B", "que", "that"],
+      ["S0326L03", "B", "ella", "she"],
+      ["S0326L04", "B", "necesite", "needs"],
+      ["S0326L05", "B", "vender", "to sell"],
+      ["S0326L06", "C", "la compañía", "the company", [["la", "the"], ["compañía", "company"]]]
+    ]],
+    ["S0327", ["¿Piensas que ella necesita ofrecer otra manera?", "Do you think that she needs to offer another way?"], [
+      ["S0327L01", "B", "Piensas", "Do you think"],
+      ["S0327L02", "B", "que", "that"],
+      ["S0327L03", "B", "ella", "she"],
+      ["S0327L04", "B", "necesita", "needs"],
+      ["S0327L05", "B", "ofrecer", "to offer"],
+      ["S0327L06", "C", "otra manera", "another way", [["otra", "another"], ["manera", "way"]]]
+    ]],
+    ["S0328", ["Sí, pienso que debería.", "Yes I think she ought to."], [
+      ["S0328L01", "B", "Sí", "Yes"],
+      ["S0328L02", "B", "pienso", "I think"],
+      ["S0328L03", "B", "que", "that"],
+      ["S0328L04", "B", "debería", "she ought to"]
+    ]],
+    ["S0329", ["Es importante.", "It's important."], [
+      ["S0329L01", "B", "Es", "It is"],
+      ["S0329L02", "B", "importante", "important"]
+    ]],
+    ["S0330", ["No, no pienso que sea muy importante.", "No I don't think it's very important."], [
+      ["S0330L01", "B", "No", "No"],
+      ["S0330L02", "C", "no pienso", "I don't think", [["no", "not"], ["pienso", "I think"]]],
+      ["S0330L03", "B", "que", "that"],
+      ["S0330L04", "B", "sea", "it is"],
+      ["S0330L05", "B", "muy", "very"],
+      ["S0330L06", "B", "importante", "important"]
+    ]],
+    ["S0331", ["Ella no puede proporcionar todas las respuestas.", "She can't provide all the answers."], [
+      ["S0331L01", "B", "Ella", "She"],
+      ["S0331L02", "C", "no puede", "can't", [["no", "not"], ["puede", "can"]]],
+      ["S0331L03", "B", "proporcionar", "provide"],
+      ["S0331L04", "C", "todas las respuestas", "all the answers", [["todas", "all"], ["las", "the"], ["respuestas", "answers"]]]
+    ]],
+    ["S0332", ["Él puede construir una nueva vida para su hermana.", "He can build a new life for his sister."], [
+      ["S0332L01", "B", "Él", "He"],
+      ["S0332L02", "B", "puede", "can"],
+      ["S0332L03", "B", "construir", "build"],
+      ["S0332L04", "C", "una nueva vida", "a new life", [["una", "a"], ["nueva", "new"], ["vida", "life"]]],
+      ["S0332L05", "B", "para", "for"],
+      ["S0332L06", "C", "su hermana", "his sister", [["su", "his"], ["hermana", "sister"]]]
+    ]],
+    ["S0333", ["Ella dijo que no puede pasar mucho tiempo con el grupo.", "She said that she can't spend much time with the group."], [
+      ["S0333L01", "B", "Ella", "She"],
+      ["S0333L02", "B", "dijo", "said"],
+      ["S0333L03", "B", "que", "that"],
+      ["S0333L04", "C", "no puede", "can't", [["no", "not"], ["puede", "can"]]],
+      ["S0333L05", "B", "pasar", "spend"],
+      ["S0333L06", "C", "mucho tiempo", "much time", [["mucho", "much"], ["tiempo", "time"]]],
+      ["S0333L07", "B", "con", "with"],
+      ["S0333L08", "C", "el grupo", "the group", [["el", "the"], ["grupo", "group"]]]
+    ]],
+    ["S0334", ["Él dijo que puede dejarte sostener al gatito", "He said that he can let you hold the kitten"], [
+      ["S0334L01", "B", "Él", "He"],
+      ["S0334L02", "B", "dijo", "said"],
+      ["S0334L03", "B", "que", "that"],
+      ["S0334L04", "B", "puede", "he can"],
+      ["S0334L05", "B", "dejarte", "let you"],
+      ["S0334L06", "B", "sostener", "hold"],
+      ["S0334L07", "C", "al gatito", "the kitten", [["al", "at the"], ["gatito", "kitten"]]]
+    ]],
+    ["S0335", ["Pienso que él puede agregar algunas ideas valiosas.", "I think that he can add some valuable ideas."], [
+      ["S0335L01", "B", "Pienso", "I think"],
+      ["S0335L02", "B", "que", "that"],
+      ["S0335L03", "B", "él", "he"],
+      ["S0335L04", "B", "puede", "can"],
+      ["S0335L05", "B", "agregar", "add"],
+      ["S0335L06", "C", "algunas ideas valiosas", "some valuable ideas", [["algunas", "some"], ["ideas", "ideas"], ["valiosas", "valuable"]]]
+    ]],
+    ["S0336", ["No pienso que ella pueda abrir la puerta.", "I don't think that she can open the door."], [
+      ["S0336L01", "C", "No pienso", "I don't think", [["No", "not"], ["pienso", "I think"]]],
+      ["S0336L02", "B", "que", "that"],
+      ["S0336L03", "B", "ella", "she"],
+      ["S0336L04", "B", "pueda", "can"],
+      ["S0336L05", "B", "abrir", "open"],
+      ["S0336L06", "C", "la puerta", "the door", [["la", "the"], ["puerta", "door"]]]
+    ]],
+    ["S0337", ["¿Piensas que él puede continuar jugando?", "Do you think that he can continue to play?"], [
+      ["S0337L01", "B", "Piensas", "Do you think"],
+      ["S0337L02", "B", "que", "that"],
+      ["S0337L03", "B", "él", "he"],
+      ["S0337L04", "B", "puede", "can"],
+      ["S0337L05", "C", "continuar jugando", "continue to play", [["continuar", "to continue"], ["jugando", "playing"]]]
+    ]],
+    ["S0338", ["Mal.", "Badly."], [
+      ["S0338L01", "B", "Mal", "Badly"]
+    ]],
+    ["S0339", ["No, pienso que se lastimó bastante mal.", "No I think he's hurt himself quite badly."], [
+      ["S0339L01", "B", "No", "No"],
+      ["S0339L02", "B", "pienso", "I think"],
+      ["S0339L03", "B", "que", "that"],
+      ["S0339L04", "C", "se lastimó", "he's hurt himself", [["se", "himself"], ["lastimó", "hurt"]]],
+      ["S0339L05", "C", "bastante mal", "quite badly", [["bastante", "quite"], ["mal", "badly"]]]
+    ]],
+    ["S0340", ["Sí, estoy seguro de que va a estar bien.", "Yes I'm sure he's going to be okay."], [
+      ["S0340L01", "B", "Sí", "Yes"],
+      ["S0340L02", "C", "estoy seguro de", "I'm sure", [["estoy", "I am"], ["seguro", "sure"], ["de", "of"]]],
+      ["S0340L03", "B", "que", "that"],
+      ["S0340L04", "C", "va a", "is going to", [["va", "goes"], ["a", "to"]]],
+      ["S0340L05", "C", "estar bien", "be okay", [["estar", "to be"], ["bien", "well"]]]
+    ]],
+    ["S0341", ["Conocí a alguien hace unos días.", "I met someone a few days ago."], [
+      ["S0341L01", "B", "Conocí", "I met"],
+      ["S0341L02", "B", "a", "to"],
+      ["S0341L03", "B", "alguien", "someone"],
+      ["S0341L04", "C", "hace unos días", "a few days ago", [["hace", "ago"], ["unos", "some"], ["días", "days"]]]
+    ]],
+    ["S0342", ["Conocí a alguien que dijo algo.", "I met someone who said something."], [
+      ["S0342L01", "B", "Conocí", "I met"],
+      ["S0342L02", "B", "a", "to"],
+      ["S0342L03", "B", "alguien", "someone"],
+      ["S0342L04", "B", "que", "who"],
+      ["S0342L05", "B", "dijo", "said"],
+      ["S0342L06", "B", "algo", "something"]
+    ]],
+    ["S0343", ["Que dijo que está preocupada por la economía.", "Who said that she's worried about the economy."], [
+      ["S0343L01", "B", "Que", "Who"],
+      ["S0343L02", "B", "dijo", "said"],
+      ["S0343L03", "B", "que", "that"],
+      ["S0343L04", "C", "está preocupada", "she's worried", [["está", "is"], ["preocupada", "worried"]]],
+      ["S0343L05", "B", "por", "about"],
+      ["S0343L06", "C", "la economía", "the economy", [["la", "the"], ["economía", "economy"]]]
+    ]],
+    ["S0344", ["Que dijo que está feliz de ayudarte.", "Who said that he's happy to help you."], [
+      ["S0344L01", "B", "Que", "Who"],
+      ["S0344L02", "B", "dijo", "said"],
+      ["S0344L03", "B", "que", "that"],
+      ["S0344L04", "C", "está feliz de", "he's happy to", [["está", "is"], ["feliz", "happy"], ["de", "of"]]],
+      ["S0344L05", "B", "ayudarte", "help you"]
+    ]],
+    ["S0345", ["Que dijo que no está listo para irse todavía.", "Who said that he's not ready to leave yet."], [
+      ["S0345L01", "B", "Que", "Who"],
+      ["S0345L02", "B", "dijo", "said"],
+      ["S0345L03", "B", "que", "that"],
+      ["S0345L04", "C", "no está listo", "he's not ready", [["no", "not"], ["está", "is"], ["listo", "ready"]]],
+      ["S0345L05", "B", "para", "to"],
+      ["S0345L06", "B", "irse", "to leave"],
+      ["S0345L07", "B", "todavía", "yet"]
+    ]],
+    ["S0346", ["Quería que ella supiera que me gustó su libro.", "I wanted her to know that I liked her book."], [
+      ["S0346L01", "B", "Quería", "I wanted"],
+      ["S0346L02", "C", "que ella supiera", "her to know", [["que", "that"], ["ella", "she"], ["supiera", "knew"]]],
+      ["S0346L03", "B", "que", "that"],
+      ["S0346L04", "C", "me gustó", "I liked", [["me", "me"], ["gustó", "pleased"]]],
+      ["S0346L05", "C", "su libro", "her book", [["su", "her"], ["libro", "book"]]]
+    ]],
+    ["S0347", ["Él quería saber lo que estaba pasando hace una semana.", "He wanted to know what was happening a week ago."], [
+      ["S0347L01", "B", "Él", "He"],
+      ["S0347L02", "B", "quería", "wanted"],
+      ["S0347L03", "B", "saber", "to know"],
+      ["S0347L04", "C", "lo que", "what", [["lo", "it"], ["que", "that"]]],
+      ["S0347L05", "C", "estaba pasando", "was happening", [["estaba", "was"], ["pasando", "happening"]]],
+      ["S0347L06", "C", "hace una semana", "a week ago", [["hace", "ago"], ["una", "a"], ["semana", "week"]]]
+    ]],
+    ["S0348", ["Ella no quería saber lo que iba a pasar.", "She didn't want to know what was going to happen."], [
+      ["S0348L01", "B", "Ella", "She"],
+      ["S0348L02", "C", "no quería", "didn't want", [["no", "not"], ["quería", "wanted"]]],
+      ["S0348L03", "B", "saber", "to know"],
+      ["S0348L04", "C", "lo que", "what", [["lo", "it"], ["que", "that"]]],
+      ["S0348L05", "C", "iba a", "was going to", [["iba", "was going"], ["a", "to"]]],
+      ["S0348L06", "B", "pasar", "to happen"]
+    ]],
+    ["S0349", ["¿Quería él salir el viernes por la noche?", "Did he want to go out on Friday night?"], [
+      ["S0349L01", "B", "Quería", "Did want"],
+      ["S0349L02", "B", "él", "he"],
+      ["S0349L03", "B", "salir", "to go out"],
+      ["S0349L04", "C", "el viernes por la noche", "on Friday night", [["el", "the"], ["viernes", "Friday"], ["por la noche", "at night"]]]
+    ]],
+    ["S0350", ["Sí, quería ver algunos viejos amigos.", "Yes he wanted to see some old friends."], [
+      ["S0350L01", "B", "Sí", "Yes"],
+      ["S0350L02", "B", "quería", "he wanted"],
+      ["S0350L03", "B", "ver", "to see"],
+      ["S0350L04", "C", "algunos viejos amigos", "some old friends", [["algunos", "some"], ["viejos", "old"], ["amigos", "friends"]]]
+    ]]
+  ]
+}

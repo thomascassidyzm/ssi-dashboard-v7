@@ -1,0 +1,37 @@
+{
+  "orchestrator_id": "phase1_orch_01",
+  "chunk_number": 1,
+  "total_chunks": 2,
+  "course_code": "test_for_eng_5seeds",
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "canonical": "I want to speak {target} with you now."
+    },
+    {
+      "seed_id": "S0002",
+      "canonical": "I'm trying to learn."
+    },
+    {
+      "seed_id": "S0003",
+      "canonical": "I went to the shop yesterday."
+    }
+  ],
+  "metadata": {
+    "total_seeds": 3,
+    "seed_range": "S0001 - S0003",
+    "agents_to_spawn": 10,
+    "seeds_per_agent": 1
+  },
+  "instructions": {
+    "task": "Translate canonical seeds using Phase 1 intelligence",
+    "intelligence_url": "GET /api/phase-intelligence/1",
+    "output_file": "chunk_01.json",
+    "validation": [
+      "Apply TWO ABSOLUTE RULES (never change meaning, prefer cognates)",
+      "Maintain Zero Variation in seeds 1-100",
+      "Ensure grammatical perfection in both languages",
+      "Validate tiling and functional determinism"
+    ]
+  }
+}

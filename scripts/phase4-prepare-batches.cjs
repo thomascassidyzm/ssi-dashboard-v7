@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 /**
- * Phase 5: Prepare Batches with Smart Deduplication
+ * Phase 4: Prepare Batches with Smart Deduplication
+ *
+ * Supports two modes:
+ * 1. ORCHESTRATOR MODE (--orchestrator): Creates 5 mega-batches, each for 1 orchestrator × 10 agents
+ * 2. DIRECT MODE (default): Creates N batches for direct parallel agents
  *
  * Strategy:
  * 1. Identify duplicate LEGOs (same target + known, ignoring case/punctuation)
@@ -8,33 +12,51 @@
  * 3. Keep ALL LEGOs (including duplicates) in vocabulary context
  * 4. Map duplicates to their canonical (first occurrence) ID
  *
- * Result: Generate 1,808 baskets instead of 2,838 (36% time savings)
+ * Result: Generate ~1,808 baskets instead of ~2,838 (36% time savings)
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const courseCode = process.argv[2] || 'spa_for_eng';
-const parallelism = parseInt(process.argv[3]) || 8;
+const args = process.argv.slice(2);
+const orchestratorMode = args.includes('--orchestrator');
+const courseCode = args.find(a => !a.startsWith('--')) || 'spa_for_eng';
+const parallelism = orchestratorMode ? 5 : (parseInt(args.find(a => !isNaN(a))) || 8);
+
+// Extract startSeed and endSeed if provided
+const startSeedArg = args.find(a => a.startsWith('--startSeed='));
+const endSeedArg = args.find(a => a.startsWith('--endSeed='));
+const startSeed = startSeedArg ? parseInt(startSeedArg.split('=')[1]) : 1;
+const endSeed = endSeedArg ? parseInt(endSeedArg.split('=')[1]) : null; // null means "all seeds"
 
 const courseDir = path.join(__dirname, '../vfs/courses', courseCode);
 const legoFile = path.join(courseDir, 'lego_pairs.json');
 const seedFile = path.join(courseDir, 'seed_pairs.json');
 
-console.log('🔧 Phase 5: Preparing Batches with Smart Deduplication\n');
+console.log(`🔧 Phase 4: Preparing Batches with Smart Deduplication\n`);
 console.log(`Course: ${courseCode}`);
-console.log(`Parallelism: ${parallelism} agents\n`);
+console.log(`Mode: ${orchestratorMode ? 'ORCHESTRATOR (5×10 agents)' : 'DIRECT'}`);
+console.log(`${orchestratorMode ? 'Orchestrators' : 'Agents'}: ${parallelism}\n`);
 
 // Read data
 const legoPairs = JSON.parse(fs.readFileSync(legoFile, 'utf8'));
 const seedPairs = JSON.parse(fs.readFileSync(seedFile, 'utf8'));
 
-// Extract all LEGOs with positions
+// Extract all LEGOs with positions (filter by seed range if specified)
 const allLegos = [];
 let position = 0;
 
+// Determine final end seed
+const finalEndSeed = endSeed || legoPairs.seeds.length;
+
 for (const seed of legoPairs.seeds) {
   const [seedId, [seedTarget, seedKnown], legos] = seed;
+
+  // Filter by seed range
+  const seedNum = parseInt(seedId.substring(1));
+  if (seedNum < startSeed || seedNum > finalEndSeed) {
+    continue;
+  }
 
   for (let i = 0; i < legos.length; i++) {
     const lego = legos[i];
@@ -57,6 +79,8 @@ for (const seed of legoPairs.seeds) {
   }
 }
 
+console.log(`Total seeds in lego_pairs.json: ${legoPairs.seeds.length}`);
+console.log(`Seed range: ${startSeed}-${finalEndSeed}`);
 console.log(`Total LEGOs extracted: ${allLegos.length}`);
 
 // Normalize for deduplication
@@ -176,15 +200,19 @@ for (let i = 0; i < legosToGenerate.length; i += batchSize) {
   batches.push(batch);
 
   // Write batch file
-  const batchDir = path.join(courseDir, 'batches');
+  const batchDir = orchestratorMode
+    ? path.join(courseDir, 'orchestrator_batches', 'phase5')
+    : path.join(courseDir, 'batches');
+
   if (!fs.existsSync(batchDir)) {
     fs.mkdirSync(batchDir, { recursive: true });
   }
 
-  const batchFile = path.join(
-    batchDir,
-    `batch_${String(batch.batch_number).padStart(2, '0')}.json`
-  );
+  const fileName = orchestratorMode
+    ? `orchestrator_batch_${String(batch.batch_number).padStart(2, '0')}.json`
+    : `batch_${String(batch.batch_number).padStart(2, '0')}.json`;
+
+  const batchFile = path.join(batchDir, fileName);
 
   fs.writeFileSync(batchFile, JSON.stringify(batch, null, 2));
   console.log(`✓ Created ${path.basename(batchFile)}: ${batchLegos.length} LEGOs`);
@@ -212,16 +240,27 @@ const manifest = {
   }
 };
 
-const manifestFile = path.join(courseDir, 'batches', 'manifest.json');
+const manifestDir = orchestratorMode
+  ? path.join(courseDir, 'orchestrator_batches', 'phase5')
+  : path.join(courseDir, 'batches');
+
+const manifestFile = path.join(manifestDir, 'manifest.json');
 fs.writeFileSync(manifestFile, JSON.stringify(manifest, null, 2));
 
 console.log(`\n✓ Created manifest.json`);
 console.log(`\n${'='.repeat(60)}`);
 console.log('BATCH PREPARATION COMPLETE');
 console.log('='.repeat(60));
-console.log(`\nBatches: ${batches.length}`);
+console.log(`\n${orchestratorMode ? 'Orchestrators' : 'Batches'}: ${batches.length}`);
 console.log(`LEGOs per batch: ~${batchSize}`);
 console.log(`Total baskets to generate: ${legosToGenerate.length} (saved ${duplicateMap.size})`);
-console.log(`Estimated time: ~${manifest.estimated_time.total_minutes} minutes (${parallelism} agents in parallel)`);
-console.log(`\nNext step: Run parallel generation`);
-console.log(`  node phase5_generate_parallel.cjs ${courseCode} ${parallelism}\n`);
+console.log(`Estimated time: ~${manifest.estimated_time.total_minutes} minutes (${parallelism} ${orchestratorMode ? 'orchestrators' : 'agents'} in parallel)`);
+
+if (orchestratorMode) {
+  console.log(`\nNext step: Dashboard spawns 5 Phase 5 orchestrators`);
+  console.log(`  Each orchestrator will spawn 10 agents for basket generation`);
+  console.log(`  Total concurrent agents: 50\n`);
+} else {
+  console.log(`\nNext step: Run parallel generation`);
+  console.log(`  node phase5_generate_parallel.cjs ${courseCode} ${parallelism}\n`);
+}

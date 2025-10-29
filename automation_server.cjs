@@ -4850,6 +4850,410 @@ app.post('/api/validate/phase/:phase', (req, res) => {
 });
 
 // =============================================================================
+// PHASE 1 ORCHESTRATION ENDPOINTS (v7.9 - Parallel Orchestration Architecture)
+// =============================================================================
+
+/**
+ * POST /api/courses/:courseCode/phase/1/prepare
+ * Prepare orchestrator batches for Phase 1 parallel execution
+ *
+ * Runs phase1-prepare-orchestrator-batches.cjs to divide 668 seeds into 5 chunks
+ * Each chunk will be processed by one orchestrator spawning 10 sub-agents
+ */
+app.post('/api/courses/:courseCode/phase/1/prepare', async (req, res) => {
+  const { courseCode } = req.params;
+  const { numOrchestrators = 5 } = req.body;
+
+  try {
+    console.log(`[Phase 1 Prepare] Creating orchestrator batches for ${courseCode}...`);
+
+    const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+
+    // Check if course exists and has translations.json
+    if (!await fs.pathExists(courseDir)) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    const translationsFile = path.join(courseDir, 'translations.json');
+    if (!await fs.pathExists(translationsFile)) {
+      return res.status(404).json({ error: 'translations.json not found. Run translation fetch first.' });
+    }
+
+    // Run preparation script
+    const scriptPath = path.join(__dirname, 'scripts', 'phase1-prepare-orchestrator-batches.cjs');
+    const { stdout, stderr } = await execAsync(`node "${scriptPath}" ${courseCode} ${numOrchestrators}`);
+
+    console.log(stdout);
+    if (stderr) console.error(stderr);
+
+    // Read manifest to return info
+    const manifestPath = path.join(courseDir, 'orchestrator_batches', 'phase1', 'manifest.json');
+    const manifest = await fs.readJSON(manifestPath);
+
+    res.json({
+      success: true,
+      message: `Phase 1 orchestrator batches prepared successfully`,
+      courseCode,
+      manifest: {
+        orchestrator_count: manifest.orchestrator_count,
+        total_seeds: manifest.total_seeds,
+        seeds_per_orchestrator: manifest.seeds_per_orchestrator,
+        agents_per_orchestrator: manifest.agents_per_orchestrator,
+        total_concurrent_agents: manifest.total_concurrent_agents,
+        batches: manifest.batches
+      }
+    });
+  } catch (err) {
+    console.error('[Phase 1 Prepare] Error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/phase/1/orchestrate
+ * Spawn orchestrator agents for parallel Phase 1 execution
+ *
+ * Spawns N orchestrators (default 5) with 30-second delays
+ * Each orchestrator spawns 10 sub-agents for translation work
+ */
+app.post('/api/courses/:courseCode/phase/1/orchestrate', async (req, res) => {
+  const { courseCode } = req.params;
+  const { numOrchestrators = 5, delayBetweenSpawns = 30000 } = req.body;
+
+  try {
+    console.log(`[Phase 1 Orchestrate] Spawning ${numOrchestrators} orchestrators for ${courseCode}...`);
+
+    const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+    const orchestratorDir = path.join(courseDir, 'orchestrator_batches', 'phase1');
+
+    // Check if batches are prepared
+    const manifestPath = path.join(orchestratorDir, 'manifest.json');
+    if (!await fs.pathExists(manifestPath)) {
+      return res.status(400).json({
+        error: 'Orchestrator batches not prepared. Run /phase/1/prepare first.'
+      });
+    }
+
+    const manifest = await fs.readJSON(manifestPath);
+
+    // Get or create job
+    let job = STATE.jobs.get(courseCode);
+    if (!job) {
+      job = {
+        courseCode,
+        status: 'in_progress',
+        phase: 'phase_1_orchestration',
+        progress: 0,
+        startTime: new Date(),
+        orchestrators: {
+          total: numOrchestrators,
+          spawned: 0,
+          completed: 0
+        }
+      };
+      STATE.jobs.set(courseCode, job);
+    }
+
+    // Load orchestrator intelligence
+    const orchestratorIntelligencePath = path.join(__dirname, 'docs', 'phase_intelligence', 'phase_1_orchestrator.md');
+    const orchestratorIntelligence = await fs.readFile(orchestratorIntelligencePath, 'utf8');
+
+    // Spawn orchestrators with delays
+    res.json({
+      success: true,
+      message: `Starting to spawn ${numOrchestrators} orchestrators`,
+      courseCode,
+      orchestrators_spawned: numOrchestrators,
+      eta_minutes: Math.ceil((numOrchestrators * 13) / numOrchestrators), // ~13 min per orchestrator
+      status: job
+    });
+
+    // Spawn orchestrators asynchronously (don't block response)
+    (async () => {
+      for (let i = 0; i < numOrchestrators; i++) {
+        const orchestratorNum = String(i + 1).padStart(2, '0');
+        const batchFile = path.join(orchestratorDir, `orchestrator_batch_${orchestratorNum}.json`);
+
+        console.log(`[Phase 1 Orchestrate] Spawning orchestrator ${i + 1}/${numOrchestrators}...`);
+
+        // Read batch file to get metadata
+        const batch = await fs.readJSON(batchFile);
+
+        // Create prompt for orchestrator
+        const orchestratorPrompt = `# Phase 1 Orchestrator ${orchestratorNum}
+
+**Course**: ${courseCode}
+**Your Batch**: orchestrator_batch_${orchestratorNum}.json
+**Seeds to Translate**: ${batch.metadata.total_seeds} seeds (${batch.metadata.seed_range})
+**Sub-Agents to Spawn**: ${batch.metadata.agents_to_spawn}
+**Seeds per Sub-Agent**: ~${batch.metadata.seeds_per_agent}
+
+---
+
+## Your Task
+
+You are Orchestrator ${orchestratorNum} of ${numOrchestrators}. Follow the Phase 1 Orchestrator Intelligence to:
+
+1. Read your batch file from: ${batchFile}
+2. Spawn ${batch.metadata.agents_to_spawn} sub-agents in parallel (use Task tool in single message)
+3. Each sub-agent translates ~${batch.metadata.seeds_per_agent} seeds
+4. Validate all outputs
+5. Merge into chunk_${orchestratorNum}.json
+6. Report completion
+
+---
+
+## Phase 1 Orchestrator Intelligence
+
+${orchestratorIntelligence}
+
+---
+
+## Output Location
+
+Write your chunk to: ${path.join(orchestratorDir, `chunk_${orchestratorNum}.json`)}
+
+---
+
+Begin orchestration now!`;
+
+        // Spawn orchestrator agent
+        await spawnPhaseAgent(`1-orch${orchestratorNum}`, orchestratorPrompt, courseDir, courseCode);
+
+        job.orchestrators.spawned++;
+        console.log(`[Phase 1 Orchestrate] Orchestrator ${i + 1} spawned (${job.orchestrators.spawned}/${numOrchestrators})`);
+
+        // Delay before next spawn (except for last one)
+        if (i < numOrchestrators - 1) {
+          console.log(`[Phase 1 Orchestrate] Waiting ${delayBetweenSpawns/1000}s before next spawn...`);
+          await new Promise(resolve => setTimeout(resolve, delayBetweenSpawns));
+        }
+      }
+
+      console.log(`[Phase 1 Orchestrate] All ${numOrchestrators} orchestrators spawned!`);
+      job.phase = 'phase_1_orchestration_running';
+      job.progress = 50;
+    })().catch(err => {
+      console.error('[Phase 1 Orchestrate] Error during spawning:', err);
+      if (job) {
+        job.status = 'failed';
+        job.error = err.message;
+      }
+    });
+
+  } catch (err) {
+    console.error('[Phase 1 Orchestrate] Error:', err);
+    if (STATE.jobs.has(courseCode)) {
+      const job = STATE.jobs.get(courseCode);
+      job.status = 'failed';
+      job.error = err.message;
+    }
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/phase/1/orchestrators/status
+ * Check which orchestrators have completed their chunks
+ */
+app.get('/api/courses/:courseCode/phase/1/orchestrators/status', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+    const orchestratorDir = path.join(courseDir, 'orchestrator_batches', 'phase1');
+
+    // Check if orchestrator directory exists
+    if (!await fs.pathExists(orchestratorDir)) {
+      return res.status(404).json({
+        error: 'Orchestrator batches not found. Run /phase/1/prepare first.'
+      });
+    }
+
+    // Read manifest
+    const manifestPath = path.join(orchestratorDir, 'manifest.json');
+    const manifest = await fs.readJSON(manifestPath);
+
+    // Check which chunks exist
+    const completed = [];
+    const pending = [];
+
+    for (let i = 1; i <= manifest.orchestrator_count; i++) {
+      const chunkNum = String(i).padStart(2, '0');
+      const chunkPath = path.join(orchestratorDir, `chunk_${chunkNum}.json`);
+
+      if (await fs.pathExists(chunkPath)) {
+        // Validate chunk has content
+        try {
+          const chunk = await fs.readJSON(chunkPath);
+          if (chunk.translations && Object.keys(chunk.translations).length > 0) {
+            completed.push(i);
+          } else {
+            pending.push(i);
+          }
+        } catch {
+          pending.push(i);
+        }
+      } else {
+        pending.push(i);
+      }
+    }
+
+    const allComplete = pending.length === 0;
+    const chunksReady = completed.length;
+
+    res.json({
+      success: true,
+      courseCode,
+      total_orchestrators: manifest.orchestrator_count,
+      completed,
+      pending,
+      chunks_ready: chunksReady,
+      all_complete: allComplete,
+      ready_for_validation: allComplete
+    });
+  } catch (err) {
+    console.error('[Phase 1 Orchestrators Status] Error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/phase/1/validate
+ * Spawn validator agent to check consistency and merge all chunks
+ *
+ * Reads all 5 chunks, detects conflicts, auto-fixes using Phase 1 rules
+ * Outputs final seed_pairs.json
+ */
+app.post('/api/courses/:courseCode/phase/1/validate', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    console.log(`[Phase 1 Validate] Starting validation for ${courseCode}...`);
+
+    const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+    const orchestratorDir = path.join(courseDir, 'orchestrator_batches', 'phase1');
+
+    // Check if all chunks are ready
+    const manifestPath = path.join(orchestratorDir, 'manifest.json');
+    if (!await fs.pathExists(manifestPath)) {
+      return res.status(400).json({
+        error: 'Orchestrator batches not found. Run /phase/1/prepare first.'
+      });
+    }
+
+    const manifest = await fs.readJSON(manifestPath);
+
+    // Verify all chunks exist
+    const missingChunks = [];
+    for (let i = 1; i <= manifest.orchestrator_count; i++) {
+      const chunkNum = String(i).padStart(2, '0');
+      const chunkPath = path.join(orchestratorDir, `chunk_${chunkNum}.json`);
+      if (!await fs.pathExists(chunkPath)) {
+        missingChunks.push(i);
+      }
+    }
+
+    if (missingChunks.length > 0) {
+      return res.status(400).json({
+        error: `Missing chunks: ${missingChunks.join(', ')}. Wait for all orchestrators to complete.`
+      });
+    }
+
+    // Load validator intelligence
+    const validatorIntelligencePath = path.join(__dirname, 'docs', 'phase_intelligence', 'phase_1_validator.md');
+    const validatorIntelligence = await fs.readFile(validatorIntelligencePath, 'utf8');
+
+    // Create validator prompt
+    const validatorPrompt = `# Phase 1 Validator
+
+**Course**: ${courseCode}
+**Chunks to Validate**: ${manifest.orchestrator_count} chunks
+**Total Seeds**: ${manifest.total_seeds}
+**Chunks Location**: ${orchestratorDir}
+
+---
+
+## Your Task
+
+All ${manifest.orchestrator_count} orchestrators have completed. You are the validator. Your job is to:
+
+1. Read all ${manifest.orchestrator_count} chunk files from: ${orchestratorDir}
+2. Detect vocabulary conflicts across chunks
+3. Auto-fix conflicts using Phase 1 rules (First Word Wins, Prefer Cognate, Zero Variation)
+4. Flag subjective conflicts (if any)
+5. Output final validated seed_pairs.json
+
+---
+
+## Phase 1 Validator Intelligence
+
+${validatorIntelligence}
+
+---
+
+## Chunk Files to Read
+
+${manifest.batches.map(b => `- ${b.output_file}`).join('\n')}
+
+---
+
+## Output Location
+
+Write final seed_pairs.json to: ${path.join(courseDir, 'seed_pairs.json')}
+
+---
+
+## Success Criteria
+
+- All ${manifest.total_seeds} seeds validated
+- >90% conflicts auto-fixed
+- Zero variation enforced (seeds 1-100)
+- Cognate preference applied
+- Final seed_pairs.json in v7.7 format
+
+Begin validation now!`;
+
+    // Get or update job
+    let job = STATE.jobs.get(courseCode);
+    if (!job) {
+      job = {
+        courseCode,
+        status: 'in_progress',
+        phase: 'phase_1_validation',
+        progress: 90,
+        startTime: new Date()
+      };
+      STATE.jobs.set(courseCode, job);
+    } else {
+      job.phase = 'phase_1_validation';
+      job.progress = 90;
+    }
+
+    // Spawn validator agent
+    console.log(`[Phase 1 Validate] Spawning validator agent...`);
+    await spawnPhaseAgent('1-validator', validatorPrompt, courseDir, courseCode);
+
+    res.json({
+      success: true,
+      message: 'Phase 1 validator spawned successfully',
+      courseCode,
+      phase: 'phase_1_validation',
+      chunks_to_validate: manifest.orchestrator_count,
+      status: job
+    });
+  } catch (err) {
+    console.error('[Phase 1 Validate] Error:', err);
+    if (STATE.jobs.has(courseCode)) {
+      const job = STATE.jobs.get(courseCode);
+      job.status = 'failed';
+      job.error = err.message;
+    }
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// =============================================================================
 // PHASE EXECUTION ENDPOINTS (Phase 2, 4, 5, 6, 7, 8 - APML v7.8.4)
 // =============================================================================
 

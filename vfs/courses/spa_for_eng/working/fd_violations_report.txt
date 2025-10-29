@@ -1,0 +1,2948 @@
+====================================================================================================
+FD VIOLATIONS WITH FULL SEED CONTEXT
+====================================================================================================
+
+Total FD violations: 109
+
+CATEGORIZATION:
+  Trivial (capitalization only): 18
+  Infinitive variations: 23
+  Gerund variations: 9
+  Real problems (polysemy, inconsistency): 59
+
+====================================================================================================
+SECTION 1: TRIVIAL VIOLATIONS (CAPITALIZATION ONLY)
+====================================================================================================
+Count: 18
+These are NOT real problems - validator is wrong to flag these!
+
+  - '¿Hablas': ['Do you speak', 'do you speak']
+  - 'Y': ['And', 'and']
+  - 'Él': ['he', 'He']
+  - 'Ella': ['She', 'she']
+  - 'Pero': ['But', 'but']
+  - 'Quieres': ['you want', 'You want']
+  - 'Porque': ['Because', 'because']
+  - 'Cómo': ['how', 'How']
+  - 'Queríamos': ['We wanted', 'we wanted']
+  - '¿Podrías': ['Could you', 'could you']
+  - '¿Cuándo': ['when', 'When']
+  - 'Si': ['if', 'If']
+  - 'Sí,': ['yes', 'Yes']
+  - 'Cuando': ['when', 'When']
+  - 'Hay': ['There are', 'there are']
+  - 'Nada': ['nothing', 'Nothing']
+  - 'Eso': ['that', 'That']
+  - '¿Qué': ['what', 'What']
+
+====================================================================================================
+SECTION 2: INFINITIVE VARIATIONS
+====================================================================================================
+Count: 23
+These might be real issues - need to check if infinitive is actually required in context
+
+====================================================================================================
+TARGET WORD: 'hablar'
+====================================================================================================
+Translations: ['speaking', 'to talk', 'talking', 'to speak', 'speak', 'talk']
+Occurrences: 16
+
+  Translation: 'to speak' (6 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0001]
+    Target:  Quiero hablar español contigo ahora.
+    Known:   I want to speak Spanish with you now.
+    LEGO:    'hablar' → 'to speak'
+
+    [S0003]
+    Target:  como hablar tan frecuentemente como sea posible.
+    Known:   how to speak as often as possible.
+    LEGO:    'hablar' → 'to speak'
+
+    [S0005]
+    Target:  Voy a practicar hablar con otra persona.
+    Known:   I'm going to practise speaking with someone else.
+    LEGO:    'hablar' → 'to speak'
+
+    ... and 3 more
+
+  Translation: 'talking' (4 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0019]
+    Target:  Pero no quiero dejar de hablar.
+    Known:   But I don't want to stop talking.
+    LEGO:    'hablar' → 'talking'
+
+    [S0023]
+    Target:  Voy a empezar a hablar más pronto.
+    Known:   I'm going to start talking more soon.
+    LEGO:    'hablar' → 'talking'
+
+    [S0028]
+    Target:  Es útil empezar a hablar tan pronto como puedas.
+    Known:   It's useful to start talking as soon as you can.
+    LEGO:    'hablar' → 'talking'
+
+    ... and 1 more
+
+  Translation: 'speaking' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0029]
+    Target:  Tengo ganas de hablar mejor tan pronto como pueda.
+    Known:   I'm looking forward to speaking better as soon as I can.
+    LEGO:    'hablar' → 'speaking'
+
+    [S0286]
+    Target:  Personas que les gusta hablar español.
+    Known:   People who like speaking Spanish.
+    LEGO:    'hablar' → 'speaking'
+
+  Translation: 'talk' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0088]
+    Target:  No estoy listo para hablar con personas que no conozco todavía.
+    Known:   I'm not ready to talk to people I don't know yet.
+    LEGO:    'hablar' → 'talk'
+
+    [S0355]
+    Target:  ¿Necesitaba ella hablar con esa mujer que conoces?
+    Known:   Did she need to talk to that woman you know?
+    LEGO:    'hablar' → 'talk'
+
+  Translation: 'speak' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0090]
+    Target:  Si puedes hablar más despacio eso sería genial.
+    Known:   If you can speak more slowly that would be great.
+    LEGO:    'hablar' → 'speak'
+
+  Translation: 'to talk' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0137]
+    Target:  Es más importante hablar frecuentemente que ser perfecto.
+    Known:   It's more important to talk often than to be perfect.
+    LEGO:    'hablar' → 'to talk'
+
+
+====================================================================================================
+TARGET WORD: 'pasar'
+====================================================================================================
+Translations: ['spending', 'spend', 'to happen', 'to spend']
+Occurrences: 5
+
+  Translation: 'to happen' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0012]
+    Target:  No me gustaría adivinar lo que va a pasar mañana.
+    Known:   I wouldn't like to guess what's going to happen tomorrow.
+    LEGO:    'pasar' → 'to happen'
+
+    [S0348]
+    Target:  Ella no quería saber lo que iba a pasar.
+    Known:   She didn't want to know what was going to happen.
+    LEGO:    'pasar' → 'to happen'
+
+  Translation: 'to spend' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0209]
+    Target:  Quieren pasar más tiempo encontrándose como grupo.
+    Known:   They want to spend more time meeting as a group.
+    LEGO:    'pasar' → 'to spend'
+
+  Translation: 'spend' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0333]
+    Target:  Ella dijo que no puede pasar mucho tiempo con el grupo.
+    Known:   She said that she can't spend much time with the group.
+    LEGO:    'pasar' → 'spend'
+
+  Translation: 'spending' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0567]
+    Target:  Ha sido encantador pasar tiempo al aire libre viendo a los niños jugar.
+    Known:   It's been lovely spending time outdoors watching the children play.
+    LEGO:    'pasar' → 'spending'
+
+
+====================================================================================================
+TARGET WORD: 'ver'
+====================================================================================================
+Translations: ['watching', 'watch', 'to see', 'see']
+Occurrences: 9
+
+  Translation: 'to see' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0107]
+    Target:  Esperábamos ver lo que estabas haciendo.
+    Known:   We hoped to see what you were doing.
+    LEGO:    'ver' → 'to see'
+
+    [S0350]
+    Target:  Sí, quería ver algunos viejos amigos.
+    Known:   Yes he wanted to see some old friends.
+    LEGO:    'ver' → 'to see'
+
+    [S0568]
+    Target:  Estoy esperando ver una mejora la próxima vez que nos encontremos.
+    Known:   I'm expecting to see an improvement next time we meet.
+    LEGO:    'ver' → 'to see'
+
+  Translation: 'see' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0140]
+    Target:  Lo siento que no puedo ver lo que estás intentando mostrarme.
+    Known:   I'm sorry that I can't see what you're trying to show me.
+    LEGO:    'ver' → 'see'
+
+    [S0584]
+    Target:  ¿Cómo es despertarse cada mañana y ver las montañas?
+    Known:   What's it like to wake up every morning and see the mountains?
+    LEGO:    'ver' → 'see'
+
+    [S0585]
+    Target:  Puedo ver las montañas desde la ventana de mi habitación.
+    Known:   I can see the mountains out of my bedroom window.
+    LEGO:    'ver' → 'see'
+
+  Translation: 'watching' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0287]
+    Target:  ¿Cuántas personas conoces que les gusta ver televisión?
+    Known:   How many people do you know who like watching television?
+    LEGO:    'ver' → 'watching'
+
+    [S0288]
+    Target:  La mayoría de las personas que conozco les gusta ver televisión.
+    Known:   Most people I know like watching television.
+    LEGO:    'ver' → 'watching'
+
+  Translation: 'watch' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0313]
+    Target:  Él dijo que no podía ver los cinco juegos.
+    Known:   He said that he couldn't watch all five games.
+    LEGO:    'ver' → 'watch'
+
+
+====================================================================================================
+TARGET WORD: 'irme'
+====================================================================================================
+Translations: ['to leave', 'go', 'to go']
+Occurrences: 3
+
+  Translation: 'to go' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0025]
+    Target:  ¿Vas a ayudarme antes de que tenga que irme?
+    Known:   Are you going to help me before I have to go?
+    LEGO:    'irme' → 'to go'
+
+  Translation: 'go' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0097]
+    Target:  Sí, estoy listo para irme tan pronto como quieras.
+    Known:   Yes I'm ready to go as soon as you want.
+    LEGO:    'irme' → 'go'
+
+  Translation: 'to leave' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0139]
+    Target:  Lo siento que necesito irme tan temprano.
+    Known:   I'm sorry that I need to leave so early.
+    LEGO:    'irme' → 'to leave'
+
+
+====================================================================================================
+TARGET WORD: 'hacer'
+====================================================================================================
+Translations: ['to do', 'make', 'doing']
+Occurrences: 10
+
+  Translation: 'doing' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0051]
+    Target:  Disfruto hacer cosas interesantes con mis amigos.
+    Known:   I enjoy doing interesting things with my friends.
+    LEGO:    'hacer' → 'doing'
+
+    [S0100]
+    Target:  No deberías preocuparte por hacer algo similar.
+    Known:   You shouldn't worry about doing something similar.
+    LEGO:    'hacer' → 'doing'
+
+    [S0661]
+    Target:  Disfruto hacer señora
+    Known:   I enjoy doing madam
+    LEGO:    'hacer' → 'doing'
+
+  Translation: 'to do' (5 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0059]
+    Target:  Sé cómo hacer lo que necesito hacer la próxima semana.
+    Known:   I know how to do what I need to do next week.
+    LEGO:    'hacer' → 'to do'
+
+    [S0059]
+    Target:  Sé cómo hacer lo que necesito hacer la próxima semana.
+    Known:   I know how to do what I need to do next week.
+    LEGO:    'hacer' → 'to do'
+
+    [S0167]
+    Target:  ¿Qué necesitas hacer mañana por la tarde?
+    Known:   What do you need to do tomorrow afternoon?
+    LEGO:    'hacer' → 'to do'
+
+    ... and 2 more
+
+  Translation: 'make' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0116]
+    Target:  Esta no es la mejor opción que podría hacer.
+    Known:   This isn't the best choice I could make.
+    LEGO:    'hacer' → 'make'
+
+    [S0408]
+    Target:  Sí, esa es la mejor manera de hacer una familia feliz.
+    Known:   Yes that's the best way to make a happy family.
+    LEGO:    'hacer' → 'make'
+
+
+====================================================================================================
+TARGET WORD: 'aprender'
+====================================================================================================
+Translations: ['to learn', 'learn']
+Occurrences: 3
+
+  Translation: 'to learn' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0002]
+    Target:  Estoy intentando aprender.
+    Known:   I'm trying to learn.
+    LEGO:    'aprender' → 'to learn'
+
+    [S0020]
+    Target:  Quieres aprender su nombre rápidamente.
+    Known:   You want to learn his name quickly.
+    LEGO:    'aprender' → 'to learn'
+
+  Translation: 'learn' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0109]
+    Target:  Debemos trabajar duro para aprender muchas palabras nuevas.
+    Known:   We must work hard to learn a lot of new words.
+    LEGO:    'aprender' → 'learn'
+
+
+====================================================================================================
+TARGET WORD: 'decir'
+====================================================================================================
+Translations: ['to say', 'say']
+Occurrences: 11
+
+  Translation: 'to say' (9 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0004]
+    Target:  como decir algo en español
+    Known:   how to say something in Spanish
+    LEGO:    'decir' → 'to say'
+
+    [S0008]
+    Target:  Voy a intentar explicar lo que quiero decir.
+    Known:   I'm going to try to explain what I mean.
+    LEGO:    'decir' → 'to say'
+
+    [S0049]
+    Target:  Es así, si sabes lo que quiero decir.
+    Known:   It's like this, if you know what I mean.
+    LEGO:    'decir' → 'to say'
+
+    ... and 6 more
+
+  Translation: 'say' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0061]
+    Target:  ¿Podrías decir eso otra vez un poco más despacio?
+    Known:   Could you say that again a little more slowly?
+    LEGO:    'decir' → 'say'
+
+    [S0644]
+    Target:  ¿Podrías decir eso señor?
+    Known:   Could you say that sir?
+    LEGO:    'decir' → 'say'
+
+
+====================================================================================================
+TARGET WORD: 'recordar'
+====================================================================================================
+Translations: ['remember', 'to remember']
+Occurrences: 6
+
+  Translation: 'to remember' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0006]
+    Target:  Estoy intentando recordar una palabra.
+    Known:   I'm trying to remember a word.
+    LEGO:    'recordar' → 'to remember'
+
+    [S0010]
+    Target:  No estoy seguro si puedo recordar la frase completa.
+    Known:   I'm not sure if I can remember the whole sentence.
+    LEGO:    'recordar' → 'to remember'
+
+    [S0024]
+    Target:  No voy a poder recordar fácilmente.
+    Known:   I'm not going to be able to remember easily.
+    LEGO:    'recordar' → 'to remember'
+
+  Translation: 'remember' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0056]
+    Target:  Entonces puedo recordar cómo decir algunas palabras.
+    Known:   So I can remember how to say a few words.
+    LEGO:    'recordar' → 'remember'
+
+    [S0057]
+    Target:  No puedo recordar cómo decir lo que quería decir.
+    Known:   I can't remember how to say what I wanted to say.
+    LEGO:    'recordar' → 'remember'
+
+    [S0113]
+    Target:  ¿Por qué no puedo recordar lo que dijiste?
+    Known:   Why can't I remember what you said?
+    LEGO:    'recordar' → 'remember'
+
+
+====================================================================================================
+TARGET WORD: 'intentar'
+====================================================================================================
+Translations: ['to try', 'try to']
+Occurrences: 3
+
+  Translation: 'to try' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0007]
+    Target:  Quiero intentar tan duro como puedo hoy.
+    Known:   I want to try as hard as I can today.
+    LEGO:    'intentar' → 'to try'
+
+    [S0008]
+    Target:  Voy a intentar explicar lo que quiero decir.
+    Known:   I'm going to try to explain what I mean.
+    LEGO:    'intentar' → 'to try'
+
+  Translation: 'try to' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0407]
+    Target:  ¿No deberíamos intentar dar un buen ejemplo?
+    Known:   Shouldn't we try to set a good example?
+    LEGO:    'intentar' → 'try to'
+
+
+====================================================================================================
+TARGET WORD: 'averiguar'
+====================================================================================================
+Translations: ['to find out', 'finding out']
+Occurrences: 3
+
+  Translation: 'to find out' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0017]
+    Target:  Ella quiere averiguar cuál es la respuesta.
+    Known:   She wants to find out what the answer is.
+    LEGO:    'averiguar' → 'to find out'
+
+    [S0293]
+    Target:  Tengo que averiguar dónde va a encontrarme.
+    Known:   I have to find out where he's going to meet me.
+    LEGO:    'averiguar' → 'to find out'
+
+  Translation: 'finding out' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0101]
+    Target:  Estoy disfrutando averiguar más sobre este idioma.
+    Known:   I'm enjoying finding out more about this language.
+    LEGO:    'averiguar' → 'finding out'
+
+
+... and 13 more infinitive issues
+
+====================================================================================================
+SECTION 3: GERUND VARIATIONS
+====================================================================================================
+Count: 9
+These might be real issues - need to check if gerund/infinitive distinction matters
+
+====================================================================================================
+TARGET WORD: 'cometer'
+====================================================================================================
+Translations: ['to make', 'making', 'about making']
+Occurrences: 3
+
+  Translation: 'making' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0046]
+    Target:  Pero no me preocupo por cometer errores.
+    Known:   But I don't worry about making mistakes.
+    LEGO:    'cometer' → 'making'
+
+  Translation: 'to make' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0047]
+    Target:  Porque pienso que es algo bueno cometer errores.
+    Known:   Because I think that it's a good thing to make mistakes.
+    LEGO:    'cometer' → 'to make'
+
+  Translation: 'about making' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0048]
+    Target:  No me importa cometer errores.
+    Known:   I don't care about making mistakes.
+    LEGO:    'cometer' → 'about making'
+
+
+====================================================================================================
+TARGET WORD: 'algo'
+====================================================================================================
+Translations: ['something', 'anything']
+Occurrences: 14
+
+  Translation: 'something' (13 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0004]
+    Target:  como decir algo en español
+    Known:   how to say something in Spanish
+    LEGO:    'algo' → 'something'
+
+    [S0030]
+    Target:  Quería preguntarte algo ayer.
+    Known:   I wanted to ask you something yesterday.
+    LEGO:    'algo' → 'something'
+
+    [S0032]
+    Target:  ¿Querías mostrarme algo?
+    Known:   Did you want to show me something?
+    LEGO:    'algo' → 'something'
+
+    ... and 10 more
+
+  Translation: 'anything' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0360]
+    Target:  ¿Dijo tu amigo algo más?
+    Known:   Did your friend say anything else?
+    LEGO:    'algo' → 'anything'
+
+
+====================================================================================================
+TARGET WORD: 'mañana'
+====================================================================================================
+Translations: ['tomorrow', 'morning']
+Occurrences: 7
+
+  Translation: 'tomorrow' (6 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0012]
+    Target:  No me gustaría adivinar lo que va a pasar mañana.
+    Known:   I wouldn't like to guess what's going to happen tomorrow.
+    LEGO:    'mañana' → 'tomorrow'
+
+    [S0015]
+    Target:  Y quiero que hables español conmigo mañana.
+    Known:   And I want you to speak Spanish with me tomorrow.
+    LEGO:    'mañana' → 'tomorrow'
+
+    [S0155]
+    Target:  No me importa esperar unos minutos mañana por la mañana.
+    Known:   I don't mind waiting for a few minutes tomorrow morning.
+    LEGO:    'mañana' → 'tomorrow'
+
+    ... and 3 more
+
+  Translation: 'morning' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0144]
+    Target:  Desperté más temprano de lo que quería esta mañana.
+    Known:   I woke earlier than I wanted to this morning.
+    LEGO:    'mañana' → 'morning'
+
+
+====================================================================================================
+TARGET WORD: 'tomar'
+====================================================================================================
+Translations: ['taking', 'to take']
+Occurrences: 2
+
+  Translation: 'taking' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0027]
+    Target:  No me gusta tomar demasiado tiempo para responder.
+    Known:   I don't like taking too much time to answer.
+    LEGO:    'tomar' → 'taking'
+
+  Translation: 'to take' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0065]
+    Target:  Es importante tomar tiempo para probarte a ti mismo.
+    Known:   It's important to take time to test yourself.
+    LEGO:    'tomar' → 'to take'
+
+
+====================================================================================================
+TARGET WORD: 'nada'
+====================================================================================================
+Translations: ['nothing', 'anything']
+Occurrences: 2
+
+  Translation: 'anything' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0035]
+    Target:  Ella no quiere leer nada esta tarde.
+    Known:   She doesn't want to read anything this afternoon.
+    LEGO:    'nada' → 'anything'
+
+  Translation: 'nothing' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0298]
+    Target:  No me queda nada que decir.
+    Known:   I've got nothing left to say.
+    LEGO:    'nada' → 'nothing'
+
+
+====================================================================================================
+TARGET WORD: 'jugar'
+====================================================================================================
+Translations: ['play', 'playing']
+Occurrences: 2
+
+  Translation: 'playing' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0098]
+    Target:  Debería considerar jugar algo más.
+    Known:   I should consider playing something else.
+    LEGO:    'jugar' → 'playing'
+
+  Translation: 'play' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0567]
+    Target:  Ha sido encantador pasar tiempo al aire libre viendo a los niños jugar.
+    Known:   It's been lovely spending time outdoors watching the children play.
+    LEGO:    'jugar' → 'play'
+
+
+====================================================================================================
+TARGET WORD: 'Todo'
+====================================================================================================
+Translations: ['everything', 'It was all']
+Occurrences: 2
+
+  Translation: 'everything' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0141]
+    Target:  No hay problema. Todo está bien.
+    Known:   No problem. Everything is okay.
+    LEGO:    'Todo' → 'everything'
+
+  Translation: 'It was all' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0458]
+    Target:  Todo era mucho más fácil en el pasado.
+    Known:   It was all much easier in the past.
+    LEGO:    'Todo' → 'It was all'
+
+
+====================================================================================================
+TARGET WORD: 'ayudar'
+====================================================================================================
+Translations: ['help', 'helping']
+Occurrences: 2
+
+  Translation: 'helping' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0142]
+    Target:  Eso es muy amable de tu parte y estoy agradecido contigo por ayudar.
+    Known:   That's very kind of you and I'm grateful to you for helping.
+    LEGO:    'ayudar' → 'helping'
+
+  Translation: 'help' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0168]
+    Target:  Y entonces podré venir y ayudar más tarde.
+    Known:   And then I'll be able to come and help later on.
+    LEGO:    'ayudar' → 'help'
+
+
+====================================================================================================
+TARGET WORD: 'esperar'
+====================================================================================================
+Translations: ['expect to', 'waiting']
+Occurrences: 3
+
+  Translation: 'waiting' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0155]
+    Target:  No me importa esperar unos minutos mañana por la mañana.
+    Known:   I don't mind waiting for a few minutes tomorrow morning.
+    LEGO:    'esperar' → 'waiting'
+
+    [S0576]
+    Target:  Ha sido muy perturbador esperar.
+    Known:   It has been very upsetting waiting.
+    LEGO:    'esperar' → 'waiting'
+
+  Translation: 'expect to' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0404]
+    Target:  No deberíamos esperar terminar antes del jueves.
+    Known:   We shouldn't expect to finish before Thursday.
+    LEGO:    'esperar' → 'expect to'
+
+
+====================================================================================================
+SECTION 4: REAL PROBLEMS (POLYSEMY, INCONSISTENCY)
+====================================================================================================
+Count: 59
+These are likely ACTUAL issues that need fixing
+
+====================================================================================================
+TARGET WORD: 'que'
+====================================================================================================
+Translations: ['than', '~', '∅', 'you', 'who', 'he', 'it', 'that', 'to', 'she']
+Occurrences: 109
+
+  Translation: 'than' (6 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0042]
+    Target:  Estaba empezando a sentirme mejor que anoche.
+    Known:   I was starting to feel better than last night.
+    LEGO:    'que' → 'than'
+
+    [S0114]
+    Target:  Siento como si estuviera haciéndolo peor hoy que ayer.
+    Known:   I feel as if I'm doing worse today than yesterday.
+    LEGO:    'que' → 'than'
+
+    [S0117]
+    Target:  Definitivamente estoy haciéndolo mejor que la última vez que hablamos entre nosotros.
+    Known:   I'm definitely doing better than I was last time we talked to each other.
+    LEGO:    'que' → 'than'
+
+    [S0118]
+    Target:  Me siento mejor que me sentí cuando estábamos en el pub.
+    Known:   I feel better than I felt when we were in the pub.
+    LEGO:    'que' → 'than'
+
+    [S0132]
+    Target:  Eso es menos emocionante que lo que ella estaba diciendo.
+    Known:   That's less exciting than what she was saying.
+    LEGO:    'que' → 'than'
+
+    ... and 1 more
+
+  Translation: 'that' (71 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0047]
+    Target:  Porque pienso que es algo bueno cometer errores.
+    Known:   Because I think that it's a good thing to make mistakes.
+    LEGO:    'que' → 'that'
+
+    [S0063]
+    Target:  ¿Estás seguro que no te importa ayudarme?
+    Known:   Are you sure you don't mind helping me?
+    LEGO:    'que' → 'that'
+
+    [S0120]
+    Target:  Es interesante que te guste ir en autobús.
+    Known:   It's interesting that you like to go by bus.
+    LEGO:    'que' → 'that'
+
+    [S0121]
+    Target:  Es inusual que no te guste usar tu coche.
+    Known:   It's unusual that you don't like to use your car.
+    LEGO:    'que' → 'that'
+
+    [S0135]
+    Target:  No sé por qué piensas que es tan bueno.
+    Known:   I don't know why you think that it's so good.
+    LEGO:    'que' → 'that'
+
+    ... and 66 more
+
+  Translation: '∅' (10 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0087]
+    Target:  Son personas que no conozco.
+    Known:   They are people I don't know.
+    LEGO:    'que' → '∅'
+
+    [S0088]
+    Target:  No estoy listo para hablar con personas que no conozco todavía.
+    Known:   I'm not ready to talk to people I don't know yet.
+    LEGO:    'que' → '∅'
+
+    [S0116]
+    Target:  Esta no es la mejor opción que podría hacer.
+    Known:   This isn't the best choice I could make.
+    LEGO:    'que' → '∅'
+
+    [S0117]
+    Target:  Definitivamente estoy haciéndolo mejor que la última vez que hablamos entre nosotros.
+    Known:   I'm definitely doing better than I was last time we talked to each other.
+    LEGO:    'que' → '∅'
+
+    [S0128]
+    Target:  Eres como alguien que solía conocer.
+    Known:   You're like someone I used to know.
+    LEGO:    'que' → '∅'
+
+    ... and 5 more
+
+  Translation: 'who' (13 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0230]
+    Target:  Conozco a un hombre joven que quiere trabajar contigo.
+    Known:   I know a young man who wants to work with you.
+    LEGO:    'que' → 'who'
+
+    [S0231]
+    Target:  Conozco a un hombre viejo que quería pedir ayuda.
+    Known:   I know an old man who wanted to ask for help.
+    LEGO:    'que' → 'who'
+
+    [S0232]
+    Target:  Conozco a una mujer vieja que puede recordar la respuesta.
+    Known:   I know an old woman who can remember the answer.
+    LEGO:    'que' → 'who'
+
+    [S0233]
+    Target:  Conozco a una mujer joven que conoce a tu hermana.
+    Known:   I know a young woman who knows your sister.
+    LEGO:    'que' → 'who'
+
+    [S0234]
+    Target:  Conocí a alguien anoche que trabaja con tu hermano.
+    Known:   I met someone last night who works with your brother.
+    LEGO:    'que' → 'who'
+
+    ... and 8 more
+
+  Translation: 'you' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0355]
+    Target:  ¿Necesitaba ella hablar con esa mujer que conoces?
+    Known:   Did she need to talk to that woman you know?
+    LEGO:    'que' → 'you'
+
+  Translation: 'to' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0356]
+    Target:  Sí, tenían algo importante que discutir.
+    Known:   Yes they had something important to discuss.
+    LEGO:    'que' → 'to'
+
+  Translation: 'it' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0374]
+    Target:  Sí, pensé que era muy hermoso.
+    Known:   Yes I thought it was very beautiful.
+    LEGO:    'que' → 'it'
+
+  Translation: 'he' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0383]
+    Target:  Sí, dijo que quería ponerlo en el jardín.
+    Known:   Yes he said he wanted to put it in the garden.
+    LEGO:    'que' → 'he'
+
+  Translation: 'she' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0387]
+    Target:  No, no pensé que tenía razón.
+    Known:   No I didn't think she was right.
+    LEGO:    'que' → 'she'
+
+  Translation: '~' (4 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0533]
+    Target:  Ella no escuchará cada palabra que digas.
+    Known:   She won't listen to every word you say.
+    LEGO:    'que' → '~'
+
+    [S0544]
+    Target:  Quien sea que dijo que sería difícil tenía absolutamente razón.
+    Known:   Whoever said it would be difficult was absolutely right.
+    LEGO:    'que' → '~'
+
+    [S0553]
+    Target:  Pienso que la iglesia pequeña es muy fea.
+    Known:   I think the small church is very ugly.
+    LEGO:    'que' → '~'
+
+    [S0557]
+    Target:  Desearía que no tocaran música tan fuerte.
+    Known:   I wish they wouldn't play such loud music.
+    LEGO:    'que' → '~'
+
+
+====================================================================================================
+TARGET WORD: 'quería'
+====================================================================================================
+Translations: ['he wanted to', 'he wanted', 'wanted', 'wanted to', 'I wanted']
+Occurrences: 19
+
+  Translation: 'wanted' (4 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0052]
+    Target:  Él quería escribir una carta a su amigo la semana pasada.
+    Known:   He wanted to write a letter to his friend last week.
+    LEGO:    'quería' → 'wanted'
+
+    [S0053]
+    Target:  Ella quería poner su carta en su bolsa.
+    Known:   She wanted to put his letter in her bag.
+    LEGO:    'quería' → 'wanted'
+
+    [S0138]
+    Target:  Aquí era donde mi amigo quería encontrarnos.
+    Known:   This was where my friend wanted to meet us.
+    LEGO:    'quería' → 'wanted'
+
+    [S0347]
+    Target:  Él quería saber lo que estaba pasando hace una semana.
+    Known:   He wanted to know what was happening a week ago.
+    LEGO:    'quería' → 'wanted'
+
+  Translation: 'I wanted' (6 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0057]
+    Target:  No puedo recordar cómo decir lo que quería decir.
+    Known:   I can't remember how to say what I wanted to say.
+    LEGO:    'quería' → 'I wanted'
+
+    [S0127]
+    Target:  Esa no es la razón por la que quería verte.
+    Known:   That isn't why I wanted to see you.
+    LEGO:    'quería' → 'I wanted'
+
+    [S0144]
+    Target:  Desperté más temprano de lo que quería esta mañana.
+    Known:   I woke earlier than I wanted to this morning.
+    LEGO:    'quería' → 'I wanted'
+
+    [S0178]
+    Target:  No tuve tiempo, aunque quería verte.
+    Known:   I didn't have time, although I wanted to see you.
+    LEGO:    'quería' → 'I wanted'
+
+    [S0295]
+    Target:  No dije que quería terminar en un día.
+    Known:   I didn't say that I wanted to finish in a day.
+    LEGO:    'quería' → 'I wanted'
+
+    ... and 1 more
+
+  Translation: 'he wanted' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0315]
+    Target:  Pienso que él no podía permitirse el coche que quería.
+    Known:   I think that he couldn't afford the car that he wanted.
+    LEGO:    'quería' → 'he wanted'
+
+    [S0350]
+    Target:  Sí, quería ver algunos viejos amigos.
+    Known:   Yes he wanted to see some old friends.
+    LEGO:    'quería' → 'he wanted'
+
+  Translation: 'wanted to' (5 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0357]
+    Target:  No, solo quería enviarle un mensaje.
+    Known:   No she just wanted to send her a message.
+    LEGO:    'quería' → 'wanted to'
+
+    [S0366]
+    Target:  ¿Escuchaste lo que él quería cultivar?
+    Known:   Did you hear what he wanted to grow?
+    LEGO:    'quería' → 'wanted to'
+
+    [S0380]
+    Target:  Pregunté lo que ella quería incluir.
+    Known:   I asked what she wanted to include.
+    LEGO:    'quería' → 'wanted to'
+
+    [S0381]
+    Target:  No pregunté si él quería seguirnos.
+    Known:   I didn't ask if he wanted to follow us.
+    LEGO:    'quería' → 'wanted to'
+
+    [S0383]
+    Target:  Sí, dijo que quería ponerlo en el jardín.
+    Known:   Yes he said he wanted to put it in the garden.
+    LEGO:    'quería' → 'wanted to'
+
+  Translation: 'he wanted to' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0368]
+    Target:  Sí, escuché que quería cultivar tomates.
+    Known:   Yes I heard that he wanted to grow tomatoes.
+    LEGO:    'quería' → 'he wanted to'
+
+    [S0382]
+    Target:  ¿Preguntaste dónde quería ponerlo?
+    Known:   Did you ask where he wanted to put it?
+    LEGO:    'quería' → 'he wanted to'
+
+
+====================================================================================================
+TARGET WORD: 'es'
+====================================================================================================
+Translations: ["it's", 'it is', 'is', 'she is']
+Occurrences: 12
+
+  Translation: 'is' (5 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0017]
+    Target:  Ella quiere averiguar cuál es la respuesta.
+    Known:   She wants to find out what the answer is.
+    LEGO:    'es' → 'is'
+
+    [S0408]
+    Target:  Sí, esa es la mejor manera de hacer una familia feliz.
+    Known:   Yes that's the best way to make a happy family.
+    LEGO:    'es' → 'is'
+
+    [S0551]
+    Target:  La iglesia es fea.
+    Known:   The church is ugly.
+    LEGO:    'es' → 'is'
+
+    [S0552]
+    Target:  La iglesia en el otro extremo del pueblo es fea.
+    Known:   The church at the other end of the village is ugly.
+    LEGO:    'es' → 'is'
+
+    [S0553]
+    Target:  Pienso que la iglesia pequeña es muy fea.
+    Known:   I think the small church is very ugly.
+    LEGO:    'es' → 'is'
+
+  Translation: 'it is' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0047]
+    Target:  Porque pienso que es algo bueno cometer errores.
+    Known:   Because I think that it's a good thing to make mistakes.
+    LEGO:    'es' → 'it is'
+
+    [S0064]
+    Target:  Aprender español no es fácil pero es divertido.
+    Known:   Learning Spanish isn't easy but it is fun.
+    LEGO:    'es' → 'it is'
+
+  Translation: 'it's' (4 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0163]
+    Target:  Pienso que es interesante.
+    Known:   I think that it's interesting.
+    LEGO:    'es' → 'it's'
+
+    [S0165]
+    Target:  Pero no estoy seguro si es verdad.
+    Known:   But I'm not sure if it's true.
+    LEGO:    'es' → 'it's'
+
+    [S0561]
+    Target:  No me importa si es un coche rápido.
+    Known:   I don't care if it's a fast car.
+    LEGO:    'es' → 'it's'
+
+    [S0641]
+    Target:  Pienso que es la roja en esa silla.
+    Known:   I think that it's the red one on that chair.
+    LEGO:    'es' → 'it's'
+
+  Translation: 'she is' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0308]
+    Target:  Sí, es una amiga de mi madre.
+    Known:   Yes she's a friend of my mother.
+    LEGO:    'es' → 'she is'
+
+
+====================================================================================================
+TARGET WORD: 'estaba'
+====================================================================================================
+Translations: ['he was', 'was', 'it was', 'she was']
+Occurrences: 4
+
+  Translation: 'it was' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0070]
+    Target:  Ella no quería decirme dónde estaba.
+    Known:   She didn't want to tell me where it was.
+    LEGO:    'estaba' → 'it was'
+
+  Translation: 'he was' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0362]
+    Target:  No, estaba bastante callado después de que te fuiste.
+    Known:   No he was rather quiet after you left.
+    LEGO:    'estaba' → 'he was'
+
+  Translation: 'was' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0372]
+    Target:  ¿Viste lo que ella estaba intentando crear?
+    Known:   Did you see what she was trying to create?
+    LEGO:    'estaba' → 'was'
+
+  Translation: 'she was' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0375]
+    Target:  No, no sabía lo que estaba haciendo.
+    Known:   No I didn't know what she was doing.
+    LEGO:    'estaba' → 'she was'
+
+
+====================================================================================================
+TARGET WORD: 'de'
+====================================================================================================
+Translations: ['about', 'at', 'of', 'to']
+Occurrences: 14
+
+  Translation: 'at' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0077]
+    Target:  Estoy sorprendido de cuán rápidamente estoy empezando a entender.
+    Known:   I'm surprised at how quickly I'm starting to understand.
+    LEGO:    'de' → 'at'
+
+  Translation: 'of' (9 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0126]
+    Target:  Este trabajo está cambiando la forma de mi cerebro.
+    Known:   This work is changing the shape of my brain.
+    LEGO:    'de' → 'of'
+
+    [S0202]
+    Target:  Nadie estaba seguro de cómo responder la pregunta.
+    Known:   Nobody was sure how to answer the question.
+    LEGO:    'de' → 'of'
+
+    [S0414]
+    Target:  ¿Podríamos tener una botella de vino tinto por favor?
+    Known:   Could we have a bottle of red wine please?
+    LEGO:    'de' → 'of'
+
+    [S0623]
+    Target:  ¿Quieres una taza de café o té?
+    Known:   Do you want a cup of coffee or tea?
+    LEGO:    'de' → 'of'
+
+    [S0632]
+    Target:  Un vaso de agua.
+    Known:   A glass of water.
+    LEGO:    'de' → 'of'
+
+    ... and 4 more
+
+  Translation: 'about' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0158]
+    Target:  Hablemos de algo más.
+    Known:   Let's talk about something else.
+    LEGO:    'de' → 'about'
+
+  Translation: 'to' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0206]
+    Target:  Disfruto la oportunidad de practicar hablar contigo.
+    Known:   I enjoy the chance to practise speaking with you.
+    LEGO:    'de' → 'to'
+
+    [S0408]
+    Target:  Sí, esa es la mejor manera de hacer una familia feliz.
+    Known:   Yes that's the best way to make a happy family.
+    LEGO:    'de' → 'to'
+
+    [S0545]
+    Target:  Es tu turno de llevar la ropa limpia arriba.
+    Known:   It's your turn to take the clean clothes upstairs.
+    LEGO:    'de' → 'to'
+
+
+====================================================================================================
+TARGET WORD: 'solo'
+====================================================================================================
+Translations: ['only', 'just', 'alone', 'on my own']
+Occurrences: 6
+
+  Translation: 'only' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0106]
+    Target:  No necesitamos sentirnos felices, solo necesitamos trabajar duro.
+    Known:   We don't need to feel happy, we just need to work hard.
+    LEGO:    'solo' → 'only'
+
+    [S0280]
+    Target:  No, solo tuve que hacer el trabajo más importante.
+    Known:   No I only had to do the most important job.
+    LEGO:    'solo' → 'only'
+
+    [S0501]
+    Target:  Si solo pudiera confiar en ustedes para jugar juntos sin discutir.
+    Known:   If only I could trust you to play together without arguing.
+    LEGO:    'solo' → 'only'
+
+  Translation: 'on my own' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0351]
+    Target:  No, no quería dejarme solo.
+    Known:   No he didn't want to leave me on my own.
+    LEGO:    'solo' → 'on my own'
+
+  Translation: 'just' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0357]
+    Target:  No, solo quería enviarle un mensaje.
+    Known:   No she just wanted to send her a message.
+    LEGO:    'solo' → 'just'
+
+  Translation: 'alone' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0498]
+    Target:  Está parado solo allá dentro de la entrada.
+    Known:   He's standing alone over there inside the entrance.
+    LEGO:    'solo' → 'alone'
+
+
+====================================================================================================
+TARGET WORD: 'como'
+====================================================================================================
+Translations: ['how', 'like', 'as']
+Occurrences: 7
+
+  Translation: 'how' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0003]
+    Target:  como hablar tan frecuentemente como sea posible.
+    Known:   how to speak as often as possible.
+    LEGO:    'como' → 'how'
+
+    [S0004]
+    Target:  como decir algo en español
+    Known:   how to say something in Spanish
+    LEGO:    'como' → 'how'
+
+  Translation: 'like' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0128]
+    Target:  Eres como alguien que solía conocer.
+    Known:   You're like someone I used to know.
+    LEGO:    'como' → 'like'
+
+    [S0272]
+    Target:  Sí, eso suena como una gran idea.
+    Known:   Yes that sounds like a great idea.
+    LEGO:    'como' → 'like'
+
+    [S0618]
+    Target:  No se siente como mucho tiempo.
+    Known:   It doesn't feel like a long time.
+    LEGO:    'como' → 'like'
+
+  Translation: 'as' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0197]
+    Target:  Mi hijo trabaja como profesor.
+    Known:   My son works as a teacher.
+    LEGO:    'como' → 'as'
+
+    [S0403]
+    Target:  Deberíamos permanecer callados tanto tiempo como sea posible.
+    Known:   We should remain quiet for as long as possible.
+    LEGO:    'como' → 'as'
+
+
+====================================================================================================
+TARGET WORD: 'bien'
+====================================================================================================
+Translations: ['okay', 'well', 'fine']
+Occurrences: 6
+
+  Translation: 'well' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0013]
+    Target:  Hablas español muy bien.
+    Known:   You speak Spanish very well.
+    LEGO:    'bien' → 'well'
+
+    [S0055]
+    Target:  No disfruto despertarme cuando no dormí muy bien.
+    Known:   I don't enjoy waking up when I didn't sleep very well.
+    LEGO:    'bien' → 'well'
+
+    [S0072]
+    Target:  Pienso que estás haciéndolo muy bien.
+    Known:   I think that you're doing very well.
+    LEGO:    'bien' → 'well'
+
+  Translation: 'okay' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0141]
+    Target:  No hay problema. Todo está bien.
+    Known:   No problem. Everything is okay.
+    LEGO:    'bien' → 'okay'
+
+    [S0406]
+    Target:  No, estoy seguro de que estará bien.
+    Known:   No I'm sure it will be okay.
+    LEGO:    'bien' → 'okay'
+
+  Translation: 'fine' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0633]
+    Target:  Un vaso grande de agua estaría bien.
+    Known:   A large glass of water would be fine.
+    LEGO:    'bien' → 'fine'
+
+
+====================================================================================================
+TARGET WORD: 'Queremos'
+====================================================================================================
+Translations: ['we want', 'We want to', 'We want']
+Occurrences: 3
+
+  Translation: 'We want' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0018]
+    Target:  Queremos encontrarnos a las seis esta tarde.
+    Known:   We want to meet at six o'clock this evening.
+    LEGO:    'Queremos' → 'We want'
+
+  Translation: 'We want to' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0398]
+    Target:  Queremos volvernos más pacientes con nuestros hijos.
+    Known:   We want to become more patient with our children.
+    LEGO:    'Queremos' → 'We want to'
+
+  Translation: 'we want' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0666]
+    Target:  Queremos señor
+    Known:   We want sir
+    LEGO:    'Queremos' → 'we want'
+
+
+====================================================================================================
+TARGET WORD: 'Es'
+====================================================================================================
+Translations: ["It's", 'It is', "it's"]
+Occurrences: 9
+
+  Translation: 'It is' (4 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0028]
+    Target:  Es útil empezar a hablar tan pronto como puedas.
+    Known:   It's useful to start talking as soon as you can.
+    LEGO:    'Es' → 'It is'
+
+    [S0058]
+    Target:  Es interesante cuando entiendes suficientes palabras.
+    Known:   It's interesting when you understand enough words.
+    LEGO:    'Es' → 'It is'
+
+    [S0065]
+    Target:  Es importante tomar tiempo para probarte a ti mismo.
+    Known:   It's important to take time to test yourself.
+    LEGO:    'Es' → 'It is'
+
+    [S0329]
+    Target:  Es importante.
+    Known:   It's important.
+    LEGO:    'Es' → 'It is'
+
+  Translation: 'it's' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0143]
+    Target:  Es lo mismo de lo que estábamos hablando más temprano.
+    Known:   It's the same thing as we were talking about earlier.
+    LEGO:    'Es' → 'it's'
+
+    [S0640]
+    Target:  Es la roja.
+    Known:   It's the red one.
+    LEGO:    'Es' → 'it's'
+
+  Translation: 'It's' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0541]
+    Target:  Es una buena idea intentar respirar despacio.
+    Known:   It's a good idea to try and breathe slowly.
+    LEGO:    'Es' → 'It's'
+
+    [S0545]
+    Target:  Es tu turno de llevar la ropa limpia arriba.
+    Known:   It's your turn to take the clean clothes upstairs.
+    LEGO:    'Es' → 'It's'
+
+    [S0558]
+    Target:  Es tan tarde en la noche.
+    Known:   It's so late at night.
+    LEGO:    'Es' → 'It's'
+
+
+====================================================================================================
+TARGET WORD: 'pueda'
+====================================================================================================
+Translations: ["I'll be able", 'I can', 'can']
+Occurrences: 3
+
+  Translation: 'I can' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0029]
+    Target:  Tengo ganas de hablar mejor tan pronto como pueda.
+    Known:   I'm looking forward to speaking better as soon as I can.
+    LEGO:    'pueda' → 'I can'
+
+  Translation: 'I'll be able' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0291]
+    Target:  Espero que pueda hablar mejor pronto.
+    Known:   I hope I'll be able to speak better soon.
+    LEGO:    'pueda' → 'I'll be able'
+
+  Translation: 'can' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0336]
+    Target:  No pienso que ella pueda abrir la puerta.
+    Known:   I don't think that she can open the door.
+    LEGO:    'pueda' → 'can'
+
+
+====================================================================================================
+TARGET WORD: 'a'
+====================================================================================================
+Translations: ['~', '∅', 'to']
+Occurrences: 15
+
+  Translation: 'to' (11 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0052]
+    Target:  Él quería escribir una carta a su amigo la semana pasada.
+    Known:   He wanted to write a letter to his friend last week.
+    LEGO:    'a' → 'to'
+
+    [S0284]
+    Target:  ¿Conoces a la amiga de mi hermana?
+    Known:   Do you know my sister's friend?
+    LEGO:    'a' → 'to'
+
+    [S0297]
+    Target:  No conozco a muchas personas que hablan español.
+    Known:   I don't know many people who speak Spanish.
+    LEGO:    'a' → 'to'
+
+    [S0306]
+    Target:  Conozco a esa mujer joven que está hablando con tu amigo.
+    Known:   I know that young woman who's talking to your friend.
+    LEGO:    'a' → 'to'
+
+    [S0307]
+    Target:  Conozco a ese hombre joven que está sentado allá.
+    Known:   I know that young man who's sitting over there.
+    LEGO:    'a' → 'to'
+
+    ... and 6 more
+
+  Translation: '∅' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0085]
+    Target:  No conozco a esas personas.
+    Known:   I don't know those people.
+    LEGO:    'a' → '∅'
+
+    [S0133]
+    Target:  Llegas a conocer a alguien muy bien cuando trabajas juntos.
+    Known:   You get to know someone very well when you work together.
+    LEGO:    'a' → '∅'
+
+  Translation: '~' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0511]
+    Target:  Las noticias tardaron varias horas en llegar a todos en la oficina.
+    Known:   The news took several hours to reach everyone in the office.
+    LEGO:    'a' → '~'
+
+    [S0519]
+    Target:  No he visto a su nuevo bebé todavía.
+    Known:   I haven't seen their new baby yet.
+    LEGO:    'a' → '~'
+
+
+====================================================================================================
+TARGET WORD: 'en'
+====================================================================================================
+Translations: ['at', 'in', 'on']
+Occurrences: 9
+
+  Translation: 'in' (5 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0053]
+    Target:  Ella quería poner su carta en su bolsa.
+    Known:   She wanted to put his letter in her bag.
+    LEGO:    'en' → 'in'
+
+    [S0524]
+    Target:  Te llamaré de vuelta en tres o cuatro minutos.
+    Known:   I'll call you back in three or four minutes.
+    LEGO:    'en' → 'in'
+
+    [S0528]
+    Target:  Probablemente se supone que guarde esas cosas en otra habitación.
+    Known:   I'm probably supposed to keep those things in another room.
+    LEGO:    'en' → 'in'
+
+    [S0534]
+    Target:  No salgamos afuera en este clima terrible.
+    Known:   Let's not go outside in this dreadful weather.
+    LEGO:    'en' → 'in'
+
+    [S0547]
+    Target:  Porque ha estado jugando en el barro.
+    Known:   Because he has been playing in the mud.
+    LEGO:    'en' → 'in'
+
+  Translation: 'on' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0095]
+    Target:  ¿Estás listo para ir a casa en el próximo autobús?
+    Known:   Are you ready to go home on the next bus?
+    LEGO:    'en' → 'on'
+
+    [S0641]
+    Target:  Pienso que es la roja en esa silla.
+    Known:   I think that it's the red one on that chair.
+    LEGO:    'en' → 'on'
+
+  Translation: 'at' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0134]
+    Target:  No es un problema cuando trabajas en algo difícil con ellos.
+    Known:   It's not a problem when you work at something difficult with them.
+    LEGO:    'en' → 'at'
+
+    [S0552]
+    Target:  La iglesia en el otro extremo del pueblo es fea.
+    Known:   The church at the other end of the village is ugly.
+    LEGO:    'en' → 'at'
+
+
+====================================================================================================
+TARGET WORD: 'Entonces'
+====================================================================================================
+Translations: ['so', 'So', 'Then']
+Occurrences: 4
+
+  Translation: 'So' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0056]
+    Target:  Entonces puedo recordar cómo decir algunas palabras.
+    Known:   So I can remember how to say a few words.
+    LEGO:    'Entonces' → 'So'
+
+  Translation: 'so' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0188]
+    Target:  Entonces no necesito cambiar.
+    Known:   So I don't need to change.
+    LEGO:    'Entonces' → 'so'
+
+    [S0588]
+    Target:  Entonces quería crecer y dejar la casa.
+    Known:   So I wanted to grow up and leave home.
+    LEGO:    'Entonces' → 'so'
+
+  Translation: 'Then' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0490]
+    Target:  Entonces nunca confiaré en nadie jamás.
+    Known:   Then I will never trust anyone ever again.
+    LEGO:    'Entonces' → 'Then'
+
+
+====================================================================================================
+TARGET WORD: 'No,'
+====================================================================================================
+Translations: ['no', 'No', 'No,']
+Occurrences: 27
+
+  Translation: 'No,' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0096]
+    Target:  No, no estoy listo todavía, necesito un poco más de tiempo.
+    Known:   No I'm not ready yet, I need a little more time.
+    LEGO:    'No,' → 'No,'
+
+  Translation: 'no' (4 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0183]
+    Target:  No, me temo que no las he visto.
+    Known:   No I'm afraid I haven't seen them.
+    LEGO:    'No,' → 'no'
+
+    [S0191]
+    Target:  No, no me importa en absoluto.
+    Known:   No I don't mind at all.
+    LEGO:    'No,' → 'no'
+
+    [S0351]
+    Target:  No, no quería dejarme solo.
+    Known:   No he didn't want to leave me on my own.
+    LEGO:    'No,' → 'no'
+
+    [S0626]
+    Target:  No, no tengo sed, gracias.
+    Known:   No, I'm not thirsty, thank you.
+    LEGO:    'No,' → 'no'
+
+  Translation: 'No' (22 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0273]
+    Target:  No, desafortunadamente tengo demasiado trabajo.
+    Known:   No unfortunately I've got too much work.
+    LEGO:    'No,' → 'No'
+
+    [S0276]
+    Target:  No, puedo quedarme aquí un poco más de tiempo.
+    Known:   No I can stay here for a little longer.
+    LEGO:    'No,' → 'No'
+
+    [S0280]
+    Target:  No, solo tuve que hacer el trabajo más importante.
+    Known:   No I only had to do the most important job.
+    LEGO:    'No,' → 'No'
+
+    [S0282]
+    Target:  No, eso no es un problema.
+    Known:   No that's not a problem.
+    LEGO:    'No,' → 'No'
+
+    [S0309]
+    Target:  No, nunca la he visto antes.
+    Known:   No I've never seen her before.
+    LEGO:    'No,' → 'No'
+
+    ... and 17 more
+
+
+====================================================================================================
+TARGET WORD: 'podría'
+====================================================================================================
+Translations: ['I could', 'could', 'she could']
+Occurrences: 7
+
+  Translation: 'I could' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0116]
+    Target:  Esta no es la mejor opción que podría hacer.
+    Known:   This isn't the best choice I could make.
+    LEGO:    'podría' → 'I could'
+
+  Translation: 'could' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0310]
+    Target:  Ella podría escribir una historia sobre ese hombre.
+    Known:   She could write a story about that man.
+    LEGO:    'podría' → 'could'
+
+    [S0314]
+    Target:  Pienso que ella podría ponerlo en la mesa.
+    Known:   I think that she could put it on the table.
+    LEGO:    'podría' → 'could'
+
+    [S0316]
+    Target:  ¿Piensas que ella podría traer a su hermano el lunes?
+    Known:   Do you think that she could bring her brother on Monday?
+    LEGO:    'podría' → 'could'
+
+  Translation: 'she could' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0312]
+    Target:  Ella dijo que podría usar la otra habitación mañana por la noche.
+    Known:   She said that she could use the other room tomorrow night.
+    LEGO:    'podría' → 'she could'
+
+    [S0317]
+    Target:  Sí, pienso que podría si quisiera.
+    Known:   Yes I think she could if she wanted to.
+    LEGO:    'podría' → 'she could'
+
+    [S0318]
+    Target:  No, no pienso que podría esta vez.
+    Known:   No I don't think she could this time.
+    LEGO:    'podría' → 'she could'
+
+
+====================================================================================================
+TARGET WORD: 'ahora'
+====================================================================================================
+Translations: ['ahead now', 'now']
+Occurrences: 4
+
+  Translation: 'now' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0001]
+    Target:  Quiero hablar español contigo ahora.
+    Known:   I want to speak Spanish with you now.
+    LEGO:    'ahora' → 'now'
+
+    [S0009]
+    Target:  Hablo un poco de español ahora.
+    Known:   I speak a little Spanish now.
+    LEGO:    'ahora' → 'now'
+
+    [S0093]
+    Target:  Es tiempo de irse ahora.
+    Known:   It's time to go now.
+    LEGO:    'ahora' → 'now'
+
+  Translation: 'ahead now' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0480]
+    Target:  Lo que sea que diga no está lejos ahora.
+    Known:   Whatever he says it's not far ahead now.
+    LEGO:    'ahora' → 'ahead now'
+
+
+====================================================================================================
+TARGET WORD: 'con'
+====================================================================================================
+Translations: ['with', 'to']
+Occurrences: 23
+
+  Translation: 'with' (20 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0005]
+    Target:  Voy a practicar hablar con otra persona.
+    Known:   I'm going to practise speaking with someone else.
+    LEGO:    'con' → 'with'
+
+    [S0016]
+    Target:  Él quiere volver con todos los demás más tarde.
+    Known:   He wants to come back with everyone else later on.
+    LEGO:    'con' → 'with'
+
+    [S0051]
+    Target:  Disfruto hacer cosas interesantes con mis amigos.
+    Known:   I enjoy doing interesting things with my friends.
+    LEGO:    'con' → 'with'
+
+    [S0076]
+    Target:  Estoy muy feliz con cuánto he aprendido ya.
+    Known:   I'm very happy with how much I've learnt already.
+    LEGO:    'con' → 'with'
+
+    [S0083]
+    Target:  Estoy de acuerdo con lo que dijiste sobre tu amigo.
+    Known:   I agree with what you said about your friend.
+    LEGO:    'con' → 'with'
+
+    ... and 15 more
+
+  Translation: 'to' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0088]
+    Target:  No estoy listo para hablar con personas que no conozco todavía.
+    Known:   I'm not ready to talk to people I don't know yet.
+    LEGO:    'con' → 'to'
+
+    [S0306]
+    Target:  Conozco a esa mujer joven que está hablando con tu amigo.
+    Known:   I know that young woman who's talking to your friend.
+    LEGO:    'con' → 'to'
+
+    [S0355]
+    Target:  ¿Necesitaba ella hablar con esa mujer que conoces?
+    Known:   Did she need to talk to that woman you know?
+    LEGO:    'con' → 'to'
+
+
+====================================================================================================
+TARGET WORD: 'termines'
+====================================================================================================
+Translations: ['you finish', "you'll finish"]
+Occurrences: 2
+
+  Translation: 'you finish' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0011]
+    Target:  Me gustaría poder hablar después de que termines.
+    Known:   I'd like to be able to speak after you finish.
+    LEGO:    'termines' → 'you finish'
+
+  Translation: 'you'll finish' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0149]
+    Target:  Esto no es muy difícil, entonces espero que termines pronto.
+    Known:   This isn't very difficult, so I hope you'll finish soon.
+    LEGO:    'termines' → 'you'll finish'
+
+
+====================================================================================================
+TARGET WORD: 'quiere'
+====================================================================================================
+Translations: ['wants', 'he wants']
+Occurrences: 7
+
+  Translation: 'wants' (6 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0016]
+    Target:  Él quiere volver con todos los demás más tarde.
+    Known:   He wants to come back with everyone else later on.
+    LEGO:    'quiere' → 'wants'
+
+    [S0017]
+    Target:  Ella quiere averiguar cuál es la respuesta.
+    Known:   She wants to find out what the answer is.
+    LEGO:    'quiere' → 'wants'
+
+    [S0299]
+    Target:  Él quiere pagar la mitad.
+    Known:   He wants to pay half.
+    LEGO:    'quiere' → 'wants'
+
+    [S0303]
+    Target:  Pienso que él quiere sentarse.
+    Known:   I think that he wants to sit down.
+    LEGO:    'quiere' → 'wants'
+
+    [S0664]
+    Target:  Él quiere señor
+    Known:   He wants sir
+    LEGO:    'quiere' → 'wants'
+
+    ... and 1 more
+
+  Translation: 'he wants' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0301]
+    Target:  Él dijo que quiere mostrarte algo.
+    Known:   He said that he wants to show you something.
+    LEGO:    'quiere' → 'he wants'
+
+
+====================================================================================================
+TARGET WORD: 'encontrarnos'
+====================================================================================================
+Translations: ['to meet us', 'to meet']
+Occurrences: 2
+
+  Translation: 'to meet' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0018]
+    Target:  Queremos encontrarnos a las seis esta tarde.
+    Known:   We want to meet at six o'clock this evening.
+    LEGO:    'encontrarnos' → 'to meet'
+
+  Translation: 'to meet us' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0138]
+    Target:  Aquí era donde mi amigo quería encontrarnos.
+    Known:   This was where my friend wanted to meet us.
+    LEGO:    'encontrarnos' → 'to meet us'
+
+
+====================================================================================================
+TARGET WORD: 'habla'
+====================================================================================================
+Translations: ['speaks', 'speak']
+Occurrences: 2
+
+  Translation: 'speak' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0022]
+    Target:  Porque quiero conocer gente que habla español.
+    Known:   Because I want to meet people who speak Spanish.
+    LEGO:    'habla' → 'speak'
+
+  Translation: 'speaks' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0285]
+    Target:  Ella habla español.
+    Known:   She speaks Spanish.
+    LEGO:    'habla' → 'speaks'
+
+
+====================================================================================================
+TARGET WORD: 'más'
+====================================================================================================
+Translations: ['most', 'more']
+Occurrences: 12
+
+  Translation: 'more' (11 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0023]
+    Target:  Voy a empezar a hablar más pronto.
+    Known:   I'm going to start talking more soon.
+    LEGO:    'más' → 'more'
+
+    [S0073]
+    Target:  Muchas gracias, pero tengo más que aprender.
+    Known:   Thank you very much, but I've got more to learn.
+    LEGO:    'más' → 'more'
+
+    [S0075]
+    Target:  ¿Tienes más que aprender?
+    Known:   Have you got more to learn?
+    LEGO:    'más' → 'more'
+
+    [S0101]
+    Target:  Estoy disfrutando averiguar más sobre este idioma.
+    Known:   I'm enjoying finding out more about this language.
+    LEGO:    'más' → 'more'
+
+    [S0242]
+    Target:  Quiero darle más tiempo a ella.
+    Known:   I want to give her more time.
+    LEGO:    'más' → 'more'
+
+    ... and 6 more
+
+  Translation: 'most' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0513]
+    Target:  Duele más cuando muevo mi cabeza arriba y abajo.
+    Known:   It hurts most when I move my head up and down.
+    LEGO:    'más' → 'most'
+
+
+====================================================================================================
+TARGET WORD: 'ayudarme'
+====================================================================================================
+Translations: ['helping me', 'help me']
+Occurrences: 3
+
+  Translation: 'help me' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0025]
+    Target:  ¿Vas a ayudarme antes de que tenga que irme?
+    Known:   Are you going to help me before I have to go?
+    LEGO:    'ayudarme' → 'help me'
+
+  Translation: 'helping me' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0063]
+    Target:  ¿Estás seguro que no te importa ayudarme?
+    Known:   Are you sure you don't mind helping me?
+    LEGO:    'ayudarme' → 'helping me'
+
+    [S0074]
+    Target:  Muchas gracias por ayudarme a entender.
+    Known:   Thank you very much for helping me to understand.
+    LEGO:    'ayudarme' → 'helping me'
+
+
+====================================================================================================
+TARGET WORD: 'casi'
+====================================================================================================
+Translations: ['nearly', 'almost']
+Occurrences: 2
+
+  Translation: 'nearly' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0026]
+    Target:  Me gusta sentir como si estuviera casi listo para irme.
+    Known:   I like feeling as if I'm nearly ready to go.
+    LEGO:    'casi' → 'nearly'
+
+  Translation: 'almost' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0449]
+    Target:  Dijeron que estaban casi listos.
+    Known:   They said that they were almost ready.
+    LEGO:    'casi' → 'almost'
+
+
+====================================================================================================
+TARGET WORD: 'para'
+====================================================================================================
+Translations: ['for', 'to']
+Occurrences: 22
+
+  Translation: 'to' (15 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0027]
+    Target:  No me gusta tomar demasiado tiempo para responder.
+    Known:   I don't like taking too much time to answer.
+    LEGO:    'para' → 'to'
+
+    [S0065]
+    Target:  Es importante tomar tiempo para probarte a ti mismo.
+    Known:   It's important to take time to test yourself.
+    LEGO:    'para' → 'to'
+
+    [S0088]
+    Target:  No estoy listo para hablar con personas que no conozco todavía.
+    Known:   I'm not ready to talk to people I don't know yet.
+    LEGO:    'para' → 'to'
+
+    [S0091]
+    Target:  Es difícil pensar suficientemente rápido para responder a tiempo.
+    Known:   It's difficult to think quickly enough to answer in time.
+    LEGO:    'para' → 'to'
+
+    [S0095]
+    Target:  ¿Estás listo para ir a casa en el próximo autobús?
+    Known:   Are you ready to go home on the next bus?
+    LEGO:    'para' → 'to'
+
+    ... and 10 more
+
+  Translation: 'for' (7 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0198]
+    Target:  Mi hija trabaja para el consejo.
+    Known:   My daughter works for the council.
+    LEGO:    'para' → 'for'
+
+    [S0332]
+    Target:  Él puede construir una nueva vida para su hermana.
+    Known:   He can build a new life for his sister.
+    LEGO:    'para' → 'for'
+
+    [S0378]
+    Target:  No, no tenía suficiente dinero para vacaciones.
+    Known:   No I didn't have enough money for holidays.
+    LEGO:    'para' → 'for'
+
+    [S0402]
+    Target:  Sí, sería agradable parar en algún lugar para comer.
+    Known:   Yes it would be nice to stop somewhere for food.
+    LEGO:    'para' → 'for'
+
+    [S0411]
+    Target:  Nos gustaría reservar una mesa para cuatro esta noche.
+    Known:   We would like to reserve a table for four tonight.
+    LEGO:    'para' → 'for'
+
+    ... and 2 more
+
+
+====================================================================================================
+TARGET WORD: 'útil'
+====================================================================================================
+Translations: ['helpful', 'useful']
+Occurrences: 2
+
+  Translation: 'useful' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0028]
+    Target:  Es útil empezar a hablar tan pronto como puedas.
+    Known:   It's useful to start talking as soon as you can.
+    LEGO:    'útil' → 'useful'
+
+  Translation: 'helpful' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0172]
+    Target:  Sí, eso sería muy útil.
+    Known:   Yes that would be very helpful.
+    LEGO:    'útil' → 'helpful'
+
+
+====================================================================================================
+TARGET WORD: 'puedas'
+====================================================================================================
+Translations: ["you'll be able", 'you can']
+Occurrences: 2
+
+  Translation: 'you can' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0028]
+    Target:  Es útil empezar a hablar tan pronto como puedas.
+    Known:   It's useful to start talking as soon as you can.
+    LEGO:    'puedas' → 'you can'
+
+  Translation: 'you'll be able' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0292]
+    Target:  Espero que puedas venir a la fiesta.
+    Known:   I hope you'll be able to come to the party.
+    LEGO:    'puedas' → 'you'll be able'
+
+
+====================================================================================================
+TARGET WORD: 'por'
+====================================================================================================
+Translations: ['for', 'about']
+Occurrences: 8
+
+  Translation: 'for' (5 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0038]
+    Target:  He estado aprendiendo por aproximadamente una semana.
+    Known:   I've been learning for about a week.
+    LEGO:    'por' → 'for'
+
+    [S0074]
+    Target:  Muchas gracias por ayudarme a entender.
+    Known:   Thank you very much for helping me to understand.
+    LEGO:    'por' → 'for'
+
+    [S0142]
+    Target:  Eso es muy amable de tu parte y estoy agradecido contigo por ayudar.
+    Known:   That's very kind of you and I'm grateful to you for helping.
+    LEGO:    'por' → 'for'
+
+    [S0509]
+    Target:  Escuché que vas a pagar por una cama nueva.
+    Known:   I heard that you're going to pay for a new bed.
+    LEGO:    'por' → 'for'
+
+    [S0570]
+    Target:  ¿Cuánto estás dispuesto a pagar por tu boleto?
+    Known:   How much are you willing to pay for your ticket?
+    LEGO:    'por' → 'for'
+
+  Translation: 'about' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0046]
+    Target:  Pero no me preocupo por cometer errores.
+    Known:   But I don't worry about making mistakes.
+    LEGO:    'por' → 'about'
+
+    [S0100]
+    Target:  No deberías preocuparte por hacer algo similar.
+    Known:   You shouldn't worry about doing something similar.
+    LEGO:    'por' → 'about'
+
+    [S0343]
+    Target:  Que dijo que está preocupada por la economía.
+    Known:   Who said that she's worried about the economy.
+    LEGO:    'por' → 'about'
+
+
+====================================================================================================
+TARGET WORD: 'aproximadamente'
+====================================================================================================
+Translations: ['about', 'at about']
+Occurrences: 2
+
+  Translation: 'about' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0038]
+    Target:  He estado aprendiendo por aproximadamente una semana.
+    Known:   I've been learning for about a week.
+    LEGO:    'aproximadamente' → 'about'
+
+  Translation: 'at about' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0454]
+    Target:  Nuestros amigos vinieron aproximadamente a las seis.
+    Known:   Our friends came round at about six o'clock.
+    LEGO:    'aproximadamente' → 'at about'
+
+
+====================================================================================================
+TARGET WORD: 'todavía'
+====================================================================================================
+Translations: ['yet', 'still']
+Occurrences: 7
+
+  Translation: 'yet' (5 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0060]
+    Target:  No sé cómo decir suficientes palabras diferentes todavía.
+    Known:   I don't know how to say enough different words yet.
+    LEGO:    'todavía' → 'yet'
+
+    [S0088]
+    Target:  No estoy listo para hablar con personas que no conozco todavía.
+    Known:   I'm not ready to talk to people I don't know yet.
+    LEGO:    'todavía' → 'yet'
+
+    [S0345]
+    Target:  Que dijo que no está listo para irse todavía.
+    Known:   Who said that he's not ready to leave yet.
+    LEGO:    'todavía' → 'yet'
+
+    [S0431]
+    Target:  No están listos todavía pero estarán listos pronto.
+    Known:   They're not ready yet but they'll be ready soon.
+    LEGO:    'todavía' → 'yet'
+
+    [S0519]
+    Target:  No he visto a su nuevo bebé todavía.
+    Known:   I haven't seen their new baby yet.
+    LEGO:    'todavía' → 'yet'
+
+  Translation: 'still' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0440]
+    Target:  Quieren viajar mientras todavía son jóvenes.
+    Known:   They want to travel while they're still young.
+    LEGO:    'todavía' → 'still'
+
+    [S0593]
+    Target:  Por mucho que argumenté todavía tuve que compartir.
+    Known:   However much I argued I still had to share.
+    LEGO:    'todavía' → 'still'
+
+
+====================================================================================================
+TARGET WORD: 'fácil'
+====================================================================================================
+Translations: ['easy', 'easier']
+Occurrences: 4
+
+  Translation: 'easy' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0064]
+    Target:  Aprender español no es fácil pero es divertido.
+    Known:   Learning Spanish isn't easy but it is fun.
+    LEGO:    'fácil' → 'easy'
+
+    [S0483]
+    Target:  La vida no es fácil pero no se supone que sea fácil.
+    Known:   Life isn't easy but it's not meant to be easy.
+    LEGO:    'fácil' → 'easy'
+
+    [S0483]
+    Target:  La vida no es fácil pero no se supone que sea fácil.
+    Known:   Life isn't easy but it's not meant to be easy.
+    LEGO:    'fácil' → 'easy'
+
+  Translation: 'easier' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0458]
+    Target:  Todo era mucho más fácil en el pasado.
+    Known:   It was all much easier in the past.
+    LEGO:    'fácil' → 'easier'
+
+
+====================================================================================================
+TARGET WORD: 'nadie'
+====================================================================================================
+Translations: ['nobody', 'anyone']
+Occurrences: 2
+
+  Translation: 'anyone' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0071]
+    Target:  No queríamos dejar que nadie escuchara la verdad.
+    Known:   We didn't want to let anyone hear the truth.
+    LEGO:    'nadie' → 'anyone'
+
+  Translation: 'nobody' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0367]
+    Target:  No, nadie me dijo.
+    Known:   No nobody told me.
+    LEGO:    'nadie' → 'nobody'
+
+
+====================================================================================================
+TARGET WORD: 'dijo'
+====================================================================================================
+Translations: ['said', 'he said']
+Occurrences: 17
+
+  Translation: 'said' (15 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0084]
+    Target:  No estoy de acuerdo con lo que él dijo sobre mi amigo.
+    Known:   I don't agree with what he said about my friend.
+    LEGO:    'dijo' → 'said'
+
+    [S0301]
+    Target:  Él dijo que quiere mostrarte algo.
+    Known:   He said that he wants to show you something.
+    LEGO:    'dijo' → 'said'
+
+    [S0302]
+    Target:  Ella dijo que no quiere vivir en una ciudad.
+    Known:   She said that she doesn't want to live in a city.
+    LEGO:    'dijo' → 'said'
+
+    [S0312]
+    Target:  Ella dijo que podría usar la otra habitación mañana por la noche.
+    Known:   She said that she could use the other room tomorrow night.
+    LEGO:    'dijo' → 'said'
+
+    [S0313]
+    Target:  Él dijo que no podía ver los cinco juegos.
+    Known:   He said that he couldn't watch all five games.
+    LEGO:    'dijo' → 'said'
+
+    ... and 10 more
+
+  Translation: 'he said' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0383]
+    Target:  Sí, dijo que quería ponerlo en el jardín.
+    Known:   Yes he said he wanted to put it in the garden.
+    LEGO:    'dijo' → 'he said'
+
+    [S0384]
+    Target:  No pude estar de acuerdo con lo que dijo hace un momento.
+    Known:   I couldn't agree with what he said a moment ago.
+    LEGO:    'dijo' → 'he said'
+
+
+====================================================================================================
+TARGET WORD: 'mucho'
+====================================================================================================
+Translations: ['much', 'a lot']
+Occurrences: 6
+
+  Translation: 'a lot' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0089]
+    Target:  Pienso que he hecho mucho en poco tiempo.
+    Known:   I think that I've done a lot in a short time.
+    LEGO:    'mucho' → 'a lot'
+
+    [S0244]
+    Target:  He aprendido mucho ya
+    Known:   I've learnt a lot already
+    LEGO:    'mucho' → 'a lot'
+
+    [S0363]
+    Target:  Sí, tenía ganas de hablar mucho.
+    Known:   Yes he felt like talking a lot.
+    LEGO:    'mucho' → 'a lot'
+
+  Translation: 'much' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0218]
+    Target:  No hice mucho el domingo.
+    Known:   I didn't do much on Sunday.
+    LEGO:    'mucho' → 'much'
+
+    [S0279]
+    Target:  Sí, porque no quedaba mucho tiempo.
+    Known:   Yes because there wasn't much time left.
+    LEGO:    'mucho' → 'much'
+
+    [S0458]
+    Target:  Todo era mucho más fácil en el pasado.
+    Known:   It was all much easier in the past.
+    LEGO:    'mucho' → 'much'
+
+
+====================================================================================================
+TARGET WORD: 'sería'
+====================================================================================================
+Translations: ['it would be', 'would be']
+Occurrences: 6
+
+  Translation: 'would be' (4 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0090]
+    Target:  Si puedes hablar más despacio eso sería genial.
+    Known:   If you can speak more slowly that would be great.
+    LEGO:    'sería' → 'would be'
+
+    [S0172]
+    Target:  Sí, eso sería muy útil.
+    Known:   Yes that would be very helpful.
+    LEGO:    'sería' → 'would be'
+
+    [S0571]
+    Target:  No estoy convencido de que eso sería una muy buena idea.
+    Known:   I'm not convinced that would be a very good idea.
+    LEGO:    'sería' → 'would be'
+
+    [S0624]
+    Target:  Sí, eso sería genial, por favor.
+    Known:   Yes, that would be great, please.
+    LEGO:    'sería' → 'would be'
+
+  Translation: 'it would be' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0401]
+    Target:  No, sería mejor ir directo a casa.
+    Known:   No it would be better to go straight home.
+    LEGO:    'sería' → 'it would be'
+
+    [S0402]
+    Target:  Sí, sería agradable parar en algún lugar para comer.
+    Known:   Yes it would be nice to stop somewhere for food.
+    LEGO:    'sería' → 'it would be'
+
+
+====================================================================================================
+TARGET WORD: 'Necesitamos'
+====================================================================================================
+Translations: ['we need', 'We need to']
+Occurrences: 2
+
+  Translation: 'we need' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0104]
+    Target:  Necesitamos cambiar lo que estamos haciendo.
+    Known:   We need to change what we're doing.
+    LEGO:    'Necesitamos' → 'we need'
+
+  Translation: 'We need to' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0395]
+    Target:  Necesitamos girar a la izquierda en la próxima esquina.
+    Known:   We need to turn left at the next corner.
+    LEGO:    'Necesitamos' → 'We need to'
+
+
+====================================================================================================
+TARGET WORD: 'fue'
+====================================================================================================
+Translations: ['was', 'it was']
+Occurrences: 3
+
+  Translation: 'was' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0125]
+    Target:  Creo que tu idea fue muy buena.
+    Known:   I believe that your idea was very good.
+    LEGO:    'fue' → 'was'
+
+    [S0147]
+    Target:  Ella fue muy amable cuando me vio sintiéndome nervioso.
+    Known:   She was very kind when she saw me feeling nervous.
+    LEGO:    'fue' → 'was'
+
+  Translation: 'it was' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0617]
+    Target:  Pensaste que fue un error.
+    Known:   You thought that it was a mistake.
+    LEGO:    'fue' → 'it was'
+
+
+====================================================================================================
+TARGET WORD: 'ella'
+====================================================================================================
+Translations: ['her', 'she']
+Occurrences: 15
+
+  Translation: 'she' (14 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0132]
+    Target:  Eso es menos emocionante que lo que ella estaba diciendo.
+    Known:   That's less exciting than what she was saying.
+    LEGO:    'ella' → 'she'
+
+    [S0204]
+    Target:  Quería que ella te ayudara a lidiar con los arreglos.
+    Known:   I wanted her to help you to deal with the arrangements.
+    LEGO:    'ella' → 'she'
+
+    [S0289]
+    Target:  Me pregunto si ella va a estar ahí esta tarde.
+    Known:   I wonder if she's going to be there this afternoon.
+    LEGO:    'ella' → 'she'
+
+    [S0304]
+    Target:  Pienso que ella no quiere trabajar desde casa.
+    Known:   I think that she doesn't want to work from home.
+    LEGO:    'ella' → 'she'
+
+    [S0314]
+    Target:  Pienso que ella podría ponerlo en la mesa.
+    Known:   I think that she could put it on the table.
+    LEGO:    'ella' → 'she'
+
+    ... and 9 more
+
+  Translation: 'her' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0386]
+    Target:  Sí, estuve de acuerdo con ella.
+    Known:   Yes I agreed with her.
+    LEGO:    'ella' → 'her'
+
+
+====================================================================================================
+TARGET WORD: 'piensas'
+====================================================================================================
+Translations: ['do you think', 'you think']
+Occurrences: 2
+
+  Translation: 'you think' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0135]
+    Target:  No sé por qué piensas que es tan bueno.
+    Known:   I don't know why you think that it's so good.
+    LEGO:    'piensas' → 'you think'
+
+  Translation: 'do you think' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0162]
+    Target:  ¿Qué piensas sobre eso?
+    Known:   What do you think about that?
+    LEGO:    'piensas' → 'do you think'
+
+
+====================================================================================================
+TARGET WORD: 'feliz'
+====================================================================================================
+Translations: ['happier', 'happy']
+Occurrences: 4
+
+  Translation: 'happy' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0145]
+    Target:  ¿Por qué no estás feliz ya?
+    Known:   Why are you not happy any more?
+    LEGO:    'feliz' → 'happy'
+
+    [S0408]
+    Target:  Sí, esa es la mejor manera de hacer una familia feliz.
+    Known:   Yes that's the best way to make a happy family.
+    LEGO:    'feliz' → 'happy'
+
+    [S0599]
+    Target:  Habría estado feliz de conducir si me lo hubieras dicho.
+    Known:   I'd have been happy to drive if you'd told me.
+    LEGO:    'feliz' → 'happy'
+
+  Translation: 'happier' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0485]
+    Target:  Nada me haría más feliz que escapar.
+    Known:   Nothing would make me happier than to get away.
+    LEGO:    'feliz' → 'happier'
+
+
+====================================================================================================
+TARGET WORD: 'entonces'
+====================================================================================================
+Translations: ['then', 'so']
+Occurrences: 3
+
+  Translation: 'so' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0149]
+    Target:  Esto no es muy difícil, entonces espero que termines pronto.
+    Known:   This isn't very difficult, so I hope you'll finish soon.
+    LEGO:    'entonces' → 'so'
+
+  Translation: 'then' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0168]
+    Target:  Y entonces podré venir y ayudar más tarde.
+    Known:   And then I'll be able to come and help later on.
+    LEGO:    'entonces' → 'then'
+
+    [S0606]
+    Target:  Si hubiera sabido entonces lo que sé ahora habría esperado.
+    Known:   If I'd known then what I know now I'd have waited.
+    LEGO:    'entonces' → 'then'
+
+
+====================================================================================================
+TARGET WORD: 'necesitas'
+====================================================================================================
+Translations: ['you need', 'do you need']
+Occurrences: 2
+
+  Translation: 'do you need' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0167]
+    Target:  ¿Qué necesitas hacer mañana por la tarde?
+    Known:   What do you need to do tomorrow afternoon?
+    LEGO:    'necesitas' → 'do you need'
+
+  Translation: 'you need' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0170]
+    Target:  Me gustaría que me dijeras lo que necesitas.
+    Known:   I'd like you to tell me what you need.
+    LEGO:    'necesitas' → 'you need'
+
+
+====================================================================================================
+TARGET WORD: 'Le'
+====================================================================================================
+Translations: ['her', 'him']
+Occurrences: 2
+
+  Translation: 'him' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0176]
+    Target:  Le preguntaré si podrá ayudar el próximo año.
+    Known:   I'll ask him if he'll be able to help next year.
+    LEGO:    'Le' → 'him'
+
+  Translation: 'her' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0177]
+    Target:  Le preguntaré dónde quiere ir.
+    Known:   I'll ask her where she wants to go.
+    LEGO:    'Le' → 'her'
+
+
+====================================================================================================
+TARGET WORD: 'Quieren'
+====================================================================================================
+Translations: ['they want', 'They want to']
+Occurrences: 2
+
+  Translation: 'they want' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0209]
+    Target:  Quieren pasar más tiempo encontrándose como grupo.
+    Known:   They want to spend more time meeting as a group.
+    LEGO:    'Quieren' → 'they want'
+
+  Translation: 'They want to' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0416]
+    Target:  Quieren liderar el camino el próximo año.
+    Known:   They want to lead the way next year.
+    LEGO:    'Quieren' → 'They want to'
+
+
+====================================================================================================
+TARGET WORD: 'demasiado'
+====================================================================================================
+Translations: ['too', 'too much']
+Occurrences: 3
+
+  Translation: 'too' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0246]
+    Target:  Quería que ella te ayudara pero estaba demasiado ocupada.
+    Known:   I wanted her to help you but she was too busy.
+    LEGO:    'demasiado' → 'too'
+
+    [S0413]
+    Target:  Podríamos caer si vamos demasiado cerca del borde.
+    Known:   We could fall if we go too close to the edge.
+    LEGO:    'demasiado' → 'too'
+
+  Translation: 'too much' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0273]
+    Target:  No, desafortunadamente tengo demasiado trabajo.
+    Known:   No unfortunately I've got too much work.
+    LEGO:    'demasiado' → 'too much'
+
+
+====================================================================================================
+TARGET WORD: 'bastante'
+====================================================================================================
+Translations: ['fairly', 'rather']
+Occurrences: 2
+
+  Translation: 'fairly' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0247]
+    Target:  Pensé que ese libro era bastante bueno.
+    Known:   I thought that book was fairly good.
+    LEGO:    'bastante' → 'fairly'
+
+  Translation: 'rather' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0362]
+    Target:  No, estaba bastante callado después de que te fuiste.
+    Known:   No he was rather quiet after you left.
+    LEGO:    'bastante' → 'rather'
+
+
+====================================================================================================
+TARGET WORD: 'necesitaba'
+====================================================================================================
+Translations: ['needed to', 'I needed']
+Occurrences: 2
+
+  Translation: 'I needed' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0296]
+    Target:  Dije que necesitaba un poco más de tiempo.
+    Known:   I said that I needed a little more time.
+    LEGO:    'necesitaba' → 'I needed'
+
+  Translation: 'needed to' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0353]
+    Target:  Ella necesitaba correr alrededor del campo.
+    Known:   She needed to run around the field.
+    LEGO:    'necesitaba' → 'needed to'
+
+
+====================================================================================================
+TARGET WORD: 'quisiera'
+====================================================================================================
+Translations: ['he wanted to', 'she wanted to']
+Occurrences: 2
+
+  Translation: 'she wanted to' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0317]
+    Target:  Sí, pienso que podría si quisiera.
+    Known:   Yes I think she could if she wanted to.
+    LEGO:    'quisiera' → 'she wanted to'
+
+  Translation: 'he wanted to' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0352]
+    Target:  Incluso si quisiera no podría.
+    Known:   Even if he wanted to he wouldn't be able to.
+    LEGO:    'quisiera' → 'he wanted to'
+
+
+====================================================================================================
+TARGET WORD: 'necesita'
+====================================================================================================
+Translations: ['she needs', 'needs']
+Occurrences: 5
+
+  Translation: 'needs' (4 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0319]
+    Target:  Ella necesita mudarse a un país diferente.
+    Known:   She needs to move to a different country.
+    LEGO:    'necesita' → 'needs'
+
+    [S0325]
+    Target:  Pienso que él necesita considerar diez problemas posibles.
+    Known:   I think that he needs to consider ten possible problems.
+    LEGO:    'necesita' → 'needs'
+
+    [S0327]
+    Target:  ¿Piensas que ella necesita ofrecer otra manera?
+    Known:   Do you think that she needs to offer another way?
+    LEGO:    'necesita' → 'needs'
+
+    [S0610]
+    Target:  Él necesita buscar trabajo.
+    Known:   He needs to look for work.
+    LEGO:    'necesita' → 'needs'
+
+  Translation: 'she needs' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0322]
+    Target:  Ella dijo que necesita leer el mismo libro.
+    Known:   She said that she needs to read the same book.
+    LEGO:    'necesita' → 'she needs'
+
+
+====================================================================================================
+TARGET WORD: 'tiene'
+====================================================================================================
+Translations: ['he is', 'has']
+Occurrences: 2
+
+  Translation: 'has' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0324]
+    Target:  Ese estudiante tiene ambas manos arriba.
+    Known:   That student has both of her hands up.
+    LEGO:    'tiene' → 'has'
+
+  Translation: 'he is' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0420]
+    Target:  No necesitan preguntar cuántos años tiene.
+    Known:   They don't need to ask how old he is.
+    LEGO:    'tiene' → 'he is'
+
+
+====================================================================================================
+TARGET WORD: 'arriba'
+====================================================================================================
+Translations: ['up', 'upstairs']
+Occurrences: 2
+
+  Translation: 'up' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0324]
+    Target:  Ese estudiante tiene ambas manos arriba.
+    Known:   That student has both of her hands up.
+    LEGO:    'arriba' → 'up'
+
+  Translation: 'upstairs' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0545]
+    Target:  Es tu turno de llevar la ropa limpia arriba.
+    Known:   It's your turn to take the clean clothes upstairs.
+    LEGO:    'arriba' → 'upstairs'
+
+
+====================================================================================================
+TARGET WORD: 'puede'
+====================================================================================================
+Translations: ['he can', 'can']
+Occurrences: 4
+
+  Translation: 'can' (3 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0332]
+    Target:  Él puede construir una nueva vida para su hermana.
+    Known:   He can build a new life for his sister.
+    LEGO:    'puede' → 'can'
+
+    [S0335]
+    Target:  Pienso que él puede agregar algunas ideas valiosas.
+    Known:   I think that he can add some valuable ideas.
+    LEGO:    'puede' → 'can'
+
+    [S0337]
+    Target:  ¿Piensas que él puede continuar jugando?
+    Known:   Do you think that he can continue to play?
+    LEGO:    'puede' → 'can'
+
+  Translation: 'he can' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0334]
+    Target:  Él dijo que puede dejarte sostener al gatito
+    Known:   He said that he can let you hold the kitten
+    LEGO:    'puede' → 'he can'
+
+
+====================================================================================================
+TARGET WORD: 'hace'
+====================================================================================================
+Translations: ['ago', 'makes']
+Occurrences: 2
+
+  Translation: 'ago' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0384]
+    Target:  No pude estar de acuerdo con lo que dijo hace un momento.
+    Known:   I couldn't agree with what he said a moment ago.
+    LEGO:    'hace' → 'ago'
+
+  Translation: 'makes' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0573]
+    Target:  Es el tipo de cosa que hace las vacaciones muy especiales.
+    Known:   It's the kind of thing that makes the holidays very special.
+    LEGO:    'hace' → 'makes'
+
+
+====================================================================================================
+TARGET WORD: 'cerca'
+====================================================================================================
+Translations: ['close', 'near']
+Occurrences: 2
+
+  Translation: 'near' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0390]
+    Target:  El que está parado cerca de la entrada.
+    Known:   The one who is standing near the entrance.
+    LEGO:    'cerca' → 'near'
+
+  Translation: 'close' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0413]
+    Target:  Podríamos caer si vamos demasiado cerca del borde.
+    Known:   We could fall if we go too close to the edge.
+    LEGO:    'cerca' → 'close'
+
+
+====================================================================================================
+TARGET WORD: 'comer'
+====================================================================================================
+Translations: ['food', 'eat']
+Occurrences: 2
+
+  Translation: 'eat' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0400]
+    Target:  ¿Queremos comer algo más tarde?
+    Known:   Do we want to eat something later on?
+    LEGO:    'comer' → 'eat'
+
+  Translation: 'food' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0402]
+    Target:  Sí, sería agradable parar en algún lugar para comer.
+    Known:   Yes it would be nice to stop somewhere for food.
+    LEGO:    'comer' → 'food'
+
+
+====================================================================================================
+TARGET WORD: 'tan'
+====================================================================================================
+Translations: ['so', 'such']
+Occurrences: 3
+
+  Translation: 'such' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0423]
+    Target:  ¿Necesitan hacer una pregunta tan obvia?
+    Known:   Do they need to ask such an obvious question?
+    LEGO:    'tan' → 'such'
+
+    [S0478]
+    Target:  Ella tiene un corazón tan amable.
+    Known:   She has such a kind heart.
+    LEGO:    'tan' → 'such'
+
+  Translation: 'so' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0558]
+    Target:  Es tan tarde en la noche.
+    Known:   It's so late at night.
+    LEGO:    'tan' → 'so'
+
+
+====================================================================================================
+TARGET WORD: 'todos'
+====================================================================================================
+Translations: ['everyone', 'all']
+Occurrences: 3
+
+  Translation: 'everyone' (2 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0511]
+    Target:  Las noticias tardaron varias horas en llegar a todos en la oficina.
+    Known:   The news took several hours to reach everyone in the office.
+    LEGO:    'todos' → 'everyone'
+
+    [S0574]
+    Target:  Las vacaciones son muy especiales para todos.
+    Known:   The holidays are very special for everyone.
+    LEGO:    'todos' → 'everyone'
+
+  Translation: 'all' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0529]
+    Target:  ¿Pueden todos levantar sus manos?
+    Known:   Can you all put your hands up?
+    LEGO:    'todos' → 'all'
+
+
+====================================================================================================
+TARGET WORD: 'comenzó'
+====================================================================================================
+Translations: ['it started', 'started']
+Occurrences: 2
+
+  Translation: 'started' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0601]
+    Target:  Estábamos hablando sobre cómo todo comenzó.
+    Known:   We were talking about how it all started.
+    LEGO:    'comenzó' → 'started'
+
+  Translation: 'it started' (1 occurrences)
+  ------------------------------------------------------------------------------------------------
+    [S0602]
+    Target:  Cómo comenzó en primer lugar.
+    Known:   How it started in the first place.
+    LEGO:    'comenzó' → 'it started'
+
+
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+Total FD violations: 109
+  - Trivial (caps): 18 ← IGNORE THESE
+  - Infinitive: 23 ← REVIEW THESE
+  - Gerund: 9 ← REVIEW THESE
+  - Real problems: 59 ← FIX THESE
+
+Full data saved to: fd_violations_categorized.json

@@ -1,0 +1,4858 @@
+{
+  "trivial_caps": [
+    {
+      "target_word": "¿Hablas",
+      "translations": [
+        "Do you speak",
+        "do you speak"
+      ],
+      "occurrences": 2
+    },
+    {
+      "target_word": "Y",
+      "translations": [
+        "And",
+        "and"
+      ],
+      "occurrences": 6
+    },
+    {
+      "target_word": "Él",
+      "translations": [
+        "he",
+        "He"
+      ],
+      "occurrences": 19
+    },
+    {
+      "target_word": "Ella",
+      "translations": [
+        "She",
+        "she"
+      ],
+      "occurrences": 21
+    },
+    {
+      "target_word": "Pero",
+      "translations": [
+        "But",
+        "but"
+      ],
+      "occurrences": 10
+    },
+    {
+      "target_word": "Quieres",
+      "translations": [
+        "you want",
+        "You want"
+      ],
+      "occurrences": 2
+    },
+    {
+      "target_word": "Porque",
+      "translations": [
+        "Because",
+        "because"
+      ],
+      "occurrences": 9
+    },
+    {
+      "target_word": "Cómo",
+      "translations": [
+        "how",
+        "How"
+      ],
+      "occurrences": 2
+    },
+    {
+      "target_word": "Queríamos",
+      "translations": [
+        "We wanted",
+        "we wanted"
+      ],
+      "occurrences": 2
+    },
+    {
+      "target_word": "¿Podrías",
+      "translations": [
+        "Could you",
+        "could you"
+      ],
+      "occurrences": 2
+    },
+    {
+      "target_word": "¿Cuándo",
+      "translations": [
+        "when",
+        "When"
+      ],
+      "occurrences": 5
+    },
+    {
+      "target_word": "Si",
+      "translations": [
+        "if",
+        "If"
+      ],
+      "occurrences": 3
+    },
+    {
+      "target_word": "Sí,",
+      "translations": [
+        "yes",
+        "Yes"
+      ],
+      "occurrences": 26
+    },
+    {
+      "target_word": "Cuando",
+      "translations": [
+        "when",
+        "When"
+      ],
+      "occurrences": 2
+    },
+    {
+      "target_word": "Hay",
+      "translations": [
+        "There are",
+        "there are"
+      ],
+      "occurrences": 2
+    },
+    {
+      "target_word": "Nada",
+      "translations": [
+        "nothing",
+        "Nothing"
+      ],
+      "occurrences": 2
+    },
+    {
+      "target_word": "Eso",
+      "translations": [
+        "that",
+        "That"
+      ],
+      "occurrences": 4
+    },
+    {
+      "target_word": "¿Qué",
+      "translations": [
+        "what",
+        "What"
+      ],
+      "occurrences": 10
+    }
+  ],
+  "infinitive_issues": [
+    {
+      "target_word": "hablar",
+      "translations": [
+        "speaking",
+        "to talk",
+        "talking",
+        "to speak",
+        "speak",
+        "talk"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0001",
+          "lego_target": "hablar",
+          "lego_known": "to speak",
+          "target_sentence": "Quiero hablar español contigo ahora.",
+          "known_sentence": "I want to speak Spanish with you now."
+        },
+        {
+          "seed_id": "S0003",
+          "lego_target": "hablar",
+          "lego_known": "to speak",
+          "target_sentence": "como hablar tan frecuentemente como sea posible.",
+          "known_sentence": "how to speak as often as possible."
+        },
+        {
+          "seed_id": "S0005",
+          "lego_target": "hablar",
+          "lego_known": "to speak",
+          "target_sentence": "Voy a practicar hablar con otra persona.",
+          "known_sentence": "I'm going to practise speaking with someone else."
+        },
+        {
+          "seed_id": "S0011",
+          "lego_target": "hablar",
+          "lego_known": "to speak",
+          "target_sentence": "Me gustaría poder hablar después de que termines.",
+          "known_sentence": "I'd like to be able to speak after you finish."
+        },
+        {
+          "seed_id": "S0019",
+          "lego_target": "hablar",
+          "lego_known": "talking",
+          "target_sentence": "Pero no quiero dejar de hablar.",
+          "known_sentence": "But I don't want to stop talking."
+        },
+        {
+          "seed_id": "S0023",
+          "lego_target": "hablar",
+          "lego_known": "talking",
+          "target_sentence": "Voy a empezar a hablar más pronto.",
+          "known_sentence": "I'm going to start talking more soon."
+        },
+        {
+          "seed_id": "S0028",
+          "lego_target": "hablar",
+          "lego_known": "talking",
+          "target_sentence": "Es útil empezar a hablar tan pronto como puedas.",
+          "known_sentence": "It's useful to start talking as soon as you can."
+        },
+        {
+          "seed_id": "S0029",
+          "lego_target": "hablar",
+          "lego_known": "speaking",
+          "target_sentence": "Tengo ganas de hablar mejor tan pronto como pueda.",
+          "known_sentence": "I'm looking forward to speaking better as soon as I can."
+        },
+        {
+          "seed_id": "S0031",
+          "lego_target": "hablar",
+          "lego_known": "to speak",
+          "target_sentence": "Querías hablar conmigo esta noche.",
+          "known_sentence": "You wanted to speak with me tonight."
+        },
+        {
+          "seed_id": "S0088",
+          "lego_target": "hablar",
+          "lego_known": "talk",
+          "target_sentence": "No estoy listo para hablar con personas que no conozco todavía.",
+          "known_sentence": "I'm not ready to talk to people I don't know yet."
+        },
+        {
+          "seed_id": "S0090",
+          "lego_target": "hablar",
+          "lego_known": "speak",
+          "target_sentence": "Si puedes hablar más despacio eso sería genial.",
+          "known_sentence": "If you can speak more slowly that would be great."
+        },
+        {
+          "seed_id": "S0137",
+          "lego_target": "hablar",
+          "lego_known": "to talk",
+          "target_sentence": "Es más importante hablar frecuentemente que ser perfecto.",
+          "known_sentence": "It's more important to talk often than to be perfect."
+        },
+        {
+          "seed_id": "S0286",
+          "lego_target": "hablar",
+          "lego_known": "speaking",
+          "target_sentence": "Personas que les gusta hablar español.",
+          "known_sentence": "People who like speaking Spanish."
+        },
+        {
+          "seed_id": "S0291",
+          "lego_target": "hablar",
+          "lego_known": "to speak",
+          "target_sentence": "Espero que pueda hablar mejor pronto.",
+          "known_sentence": "I hope I'll be able to speak better soon."
+        },
+        {
+          "seed_id": "S0355",
+          "lego_target": "hablar",
+          "lego_known": "talk",
+          "target_sentence": "¿Necesitaba ella hablar con esa mujer que conoces?",
+          "known_sentence": "Did she need to talk to that woman you know?"
+        },
+        {
+          "seed_id": "S0363",
+          "lego_target": "hablar",
+          "lego_known": "talking",
+          "target_sentence": "Sí, tenía ganas de hablar mucho.",
+          "known_sentence": "Yes he felt like talking a lot."
+        }
+      ]
+    },
+    {
+      "target_word": "pasar",
+      "translations": [
+        "spending",
+        "spend",
+        "to happen",
+        "to spend"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0012",
+          "lego_target": "pasar",
+          "lego_known": "to happen",
+          "target_sentence": "No me gustaría adivinar lo que va a pasar mañana.",
+          "known_sentence": "I wouldn't like to guess what's going to happen tomorrow."
+        },
+        {
+          "seed_id": "S0209",
+          "lego_target": "pasar",
+          "lego_known": "to spend",
+          "target_sentence": "Quieren pasar más tiempo encontrándose como grupo.",
+          "known_sentence": "They want to spend more time meeting as a group."
+        },
+        {
+          "seed_id": "S0333",
+          "lego_target": "pasar",
+          "lego_known": "spend",
+          "target_sentence": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+          "known_sentence": "She said that she can't spend much time with the group."
+        },
+        {
+          "seed_id": "S0348",
+          "lego_target": "pasar",
+          "lego_known": "to happen",
+          "target_sentence": "Ella no quería saber lo que iba a pasar.",
+          "known_sentence": "She didn't want to know what was going to happen."
+        },
+        {
+          "seed_id": "S0567",
+          "lego_target": "pasar",
+          "lego_known": "spending",
+          "target_sentence": "Ha sido encantador pasar tiempo al aire libre viendo a los niños jugar.",
+          "known_sentence": "It's been lovely spending time outdoors watching the children play."
+        }
+      ]
+    },
+    {
+      "target_word": "ver",
+      "translations": [
+        "watching",
+        "watch",
+        "to see",
+        "see"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0107",
+          "lego_target": "ver",
+          "lego_known": "to see",
+          "target_sentence": "Esperábamos ver lo que estabas haciendo.",
+          "known_sentence": "We hoped to see what you were doing."
+        },
+        {
+          "seed_id": "S0140",
+          "lego_target": "ver",
+          "lego_known": "see",
+          "target_sentence": "Lo siento que no puedo ver lo que estás intentando mostrarme.",
+          "known_sentence": "I'm sorry that I can't see what you're trying to show me."
+        },
+        {
+          "seed_id": "S0287",
+          "lego_target": "ver",
+          "lego_known": "watching",
+          "target_sentence": "¿Cuántas personas conoces que les gusta ver televisión?",
+          "known_sentence": "How many people do you know who like watching television?"
+        },
+        {
+          "seed_id": "S0288",
+          "lego_target": "ver",
+          "lego_known": "watching",
+          "target_sentence": "La mayoría de las personas que conozco les gusta ver televisión.",
+          "known_sentence": "Most people I know like watching television."
+        },
+        {
+          "seed_id": "S0313",
+          "lego_target": "ver",
+          "lego_known": "watch",
+          "target_sentence": "Él dijo que no podía ver los cinco juegos.",
+          "known_sentence": "He said that he couldn't watch all five games."
+        },
+        {
+          "seed_id": "S0350",
+          "lego_target": "ver",
+          "lego_known": "to see",
+          "target_sentence": "Sí, quería ver algunos viejos amigos.",
+          "known_sentence": "Yes he wanted to see some old friends."
+        },
+        {
+          "seed_id": "S0568",
+          "lego_target": "ver",
+          "lego_known": "to see",
+          "target_sentence": "Estoy esperando ver una mejora la próxima vez que nos encontremos.",
+          "known_sentence": "I'm expecting to see an improvement next time we meet."
+        },
+        {
+          "seed_id": "S0584",
+          "lego_target": "ver",
+          "lego_known": "see",
+          "target_sentence": "¿Cómo es despertarse cada mañana y ver las montañas?",
+          "known_sentence": "What's it like to wake up every morning and see the mountains?"
+        },
+        {
+          "seed_id": "S0585",
+          "lego_target": "ver",
+          "lego_known": "see",
+          "target_sentence": "Puedo ver las montañas desde la ventana de mi habitación.",
+          "known_sentence": "I can see the mountains out of my bedroom window."
+        }
+      ]
+    },
+    {
+      "target_word": "irme",
+      "translations": [
+        "to leave",
+        "go",
+        "to go"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0025",
+          "lego_target": "irme",
+          "lego_known": "to go",
+          "target_sentence": "¿Vas a ayudarme antes de que tenga que irme?",
+          "known_sentence": "Are you going to help me before I have to go?"
+        },
+        {
+          "seed_id": "S0097",
+          "lego_target": "irme",
+          "lego_known": "go",
+          "target_sentence": "Sí, estoy listo para irme tan pronto como quieras.",
+          "known_sentence": "Yes I'm ready to go as soon as you want."
+        },
+        {
+          "seed_id": "S0139",
+          "lego_target": "irme",
+          "lego_known": "to leave",
+          "target_sentence": "Lo siento que necesito irme tan temprano.",
+          "known_sentence": "I'm sorry that I need to leave so early."
+        }
+      ]
+    },
+    {
+      "target_word": "hacer",
+      "translations": [
+        "to do",
+        "make",
+        "doing"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0051",
+          "lego_target": "hacer",
+          "lego_known": "doing",
+          "target_sentence": "Disfruto hacer cosas interesantes con mis amigos.",
+          "known_sentence": "I enjoy doing interesting things with my friends."
+        },
+        {
+          "seed_id": "S0059",
+          "lego_target": "hacer",
+          "lego_known": "to do",
+          "target_sentence": "Sé cómo hacer lo que necesito hacer la próxima semana.",
+          "known_sentence": "I know how to do what I need to do next week."
+        },
+        {
+          "seed_id": "S0059",
+          "lego_target": "hacer",
+          "lego_known": "to do",
+          "target_sentence": "Sé cómo hacer lo que necesito hacer la próxima semana.",
+          "known_sentence": "I know how to do what I need to do next week."
+        },
+        {
+          "seed_id": "S0100",
+          "lego_target": "hacer",
+          "lego_known": "doing",
+          "target_sentence": "No deberías preocuparte por hacer algo similar.",
+          "known_sentence": "You shouldn't worry about doing something similar."
+        },
+        {
+          "seed_id": "S0116",
+          "lego_target": "hacer",
+          "lego_known": "make",
+          "target_sentence": "Esta no es la mejor opción que podría hacer.",
+          "known_sentence": "This isn't the best choice I could make."
+        },
+        {
+          "seed_id": "S0167",
+          "lego_target": "hacer",
+          "lego_known": "to do",
+          "target_sentence": "¿Qué necesitas hacer mañana por la tarde?",
+          "known_sentence": "What do you need to do tomorrow afternoon?"
+        },
+        {
+          "seed_id": "S0175",
+          "lego_target": "hacer",
+          "lego_known": "to do",
+          "target_sentence": "¿Qué quieres hacer el domingo por la mañana?",
+          "known_sentence": "What do you want to do on Sunday morning?"
+        },
+        {
+          "seed_id": "S0207",
+          "lego_target": "hacer",
+          "lego_known": "to do",
+          "target_sentence": "Has hecho lo que necesitabas hacer.",
+          "known_sentence": "You've done what you needed to do."
+        },
+        {
+          "seed_id": "S0408",
+          "lego_target": "hacer",
+          "lego_known": "make",
+          "target_sentence": "Sí, esa es la mejor manera de hacer una familia feliz.",
+          "known_sentence": "Yes that's the best way to make a happy family."
+        },
+        {
+          "seed_id": "S0661",
+          "lego_target": "hacer",
+          "lego_known": "doing",
+          "target_sentence": "Disfruto hacer señora",
+          "known_sentence": "I enjoy doing madam"
+        }
+      ]
+    },
+    {
+      "target_word": "aprender",
+      "translations": [
+        "to learn",
+        "learn"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0002",
+          "lego_target": "aprender",
+          "lego_known": "to learn",
+          "target_sentence": "Estoy intentando aprender.",
+          "known_sentence": "I'm trying to learn."
+        },
+        {
+          "seed_id": "S0020",
+          "lego_target": "aprender",
+          "lego_known": "to learn",
+          "target_sentence": "Quieres aprender su nombre rápidamente.",
+          "known_sentence": "You want to learn his name quickly."
+        },
+        {
+          "seed_id": "S0109",
+          "lego_target": "aprender",
+          "lego_known": "learn",
+          "target_sentence": "Debemos trabajar duro para aprender muchas palabras nuevas.",
+          "known_sentence": "We must work hard to learn a lot of new words."
+        }
+      ]
+    },
+    {
+      "target_word": "decir",
+      "translations": [
+        "to say",
+        "say"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0004",
+          "lego_target": "decir",
+          "lego_known": "to say",
+          "target_sentence": "como decir algo en español",
+          "known_sentence": "how to say something in Spanish"
+        },
+        {
+          "seed_id": "S0008",
+          "lego_target": "decir",
+          "lego_known": "to say",
+          "target_sentence": "Voy a intentar explicar lo que quiero decir.",
+          "known_sentence": "I'm going to try to explain what I mean."
+        },
+        {
+          "seed_id": "S0049",
+          "lego_target": "decir",
+          "lego_known": "to say",
+          "target_sentence": "Es así, si sabes lo que quiero decir.",
+          "known_sentence": "It's like this, if you know what I mean."
+        },
+        {
+          "seed_id": "S0056",
+          "lego_target": "decir",
+          "lego_known": "to say",
+          "target_sentence": "Entonces puedo recordar cómo decir algunas palabras.",
+          "known_sentence": "So I can remember how to say a few words."
+        },
+        {
+          "seed_id": "S0057",
+          "lego_target": "decir",
+          "lego_known": "to say",
+          "target_sentence": "No puedo recordar cómo decir lo que quería decir.",
+          "known_sentence": "I can't remember how to say what I wanted to say."
+        },
+        {
+          "seed_id": "S0057",
+          "lego_target": "decir",
+          "lego_known": "to say",
+          "target_sentence": "No puedo recordar cómo decir lo que quería decir.",
+          "known_sentence": "I can't remember how to say what I wanted to say."
+        },
+        {
+          "seed_id": "S0060",
+          "lego_target": "decir",
+          "lego_known": "to say",
+          "target_sentence": "No sé cómo decir suficientes palabras diferentes todavía.",
+          "known_sentence": "I don't know how to say enough different words yet."
+        },
+        {
+          "seed_id": "S0061",
+          "lego_target": "decir",
+          "lego_known": "say",
+          "target_sentence": "¿Podrías decir eso otra vez un poco más despacio?",
+          "known_sentence": "Could you say that again a little more slowly?"
+        },
+        {
+          "seed_id": "S0159",
+          "lego_target": "decir",
+          "lego_known": "to say",
+          "target_sentence": "Eso no es lo que estoy intentando decir.",
+          "known_sentence": "That isn't what I'm trying to say."
+        },
+        {
+          "seed_id": "S0205",
+          "lego_target": "decir",
+          "lego_known": "to say",
+          "target_sentence": "He olvidado la palabra que estaba intentando decir.",
+          "known_sentence": "I've forgotten the word I was trying to say."
+        },
+        {
+          "seed_id": "S0644",
+          "lego_target": "decir",
+          "lego_known": "say",
+          "target_sentence": "¿Podrías decir eso señor?",
+          "known_sentence": "Could you say that sir?"
+        }
+      ]
+    },
+    {
+      "target_word": "recordar",
+      "translations": [
+        "remember",
+        "to remember"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0006",
+          "lego_target": "recordar",
+          "lego_known": "to remember",
+          "target_sentence": "Estoy intentando recordar una palabra.",
+          "known_sentence": "I'm trying to remember a word."
+        },
+        {
+          "seed_id": "S0010",
+          "lego_target": "recordar",
+          "lego_known": "to remember",
+          "target_sentence": "No estoy seguro si puedo recordar la frase completa.",
+          "known_sentence": "I'm not sure if I can remember the whole sentence."
+        },
+        {
+          "seed_id": "S0024",
+          "lego_target": "recordar",
+          "lego_known": "to remember",
+          "target_sentence": "No voy a poder recordar fácilmente.",
+          "known_sentence": "I'm not going to be able to remember easily."
+        },
+        {
+          "seed_id": "S0056",
+          "lego_target": "recordar",
+          "lego_known": "remember",
+          "target_sentence": "Entonces puedo recordar cómo decir algunas palabras.",
+          "known_sentence": "So I can remember how to say a few words."
+        },
+        {
+          "seed_id": "S0057",
+          "lego_target": "recordar",
+          "lego_known": "remember",
+          "target_sentence": "No puedo recordar cómo decir lo que quería decir.",
+          "known_sentence": "I can't remember how to say what I wanted to say."
+        },
+        {
+          "seed_id": "S0113",
+          "lego_target": "recordar",
+          "lego_known": "remember",
+          "target_sentence": "¿Por qué no puedo recordar lo que dijiste?",
+          "known_sentence": "Why can't I remember what you said?"
+        }
+      ]
+    },
+    {
+      "target_word": "intentar",
+      "translations": [
+        "to try",
+        "try to"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0007",
+          "lego_target": "intentar",
+          "lego_known": "to try",
+          "target_sentence": "Quiero intentar tan duro como puedo hoy.",
+          "known_sentence": "I want to try as hard as I can today."
+        },
+        {
+          "seed_id": "S0008",
+          "lego_target": "intentar",
+          "lego_known": "to try",
+          "target_sentence": "Voy a intentar explicar lo que quiero decir.",
+          "known_sentence": "I'm going to try to explain what I mean."
+        },
+        {
+          "seed_id": "S0407",
+          "lego_target": "intentar",
+          "lego_known": "try to",
+          "target_sentence": "¿No deberíamos intentar dar un buen ejemplo?",
+          "known_sentence": "Shouldn't we try to set a good example?"
+        }
+      ]
+    },
+    {
+      "target_word": "averiguar",
+      "translations": [
+        "to find out",
+        "finding out"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0017",
+          "lego_target": "averiguar",
+          "lego_known": "to find out",
+          "target_sentence": "Ella quiere averiguar cuál es la respuesta.",
+          "known_sentence": "She wants to find out what the answer is."
+        },
+        {
+          "seed_id": "S0101",
+          "lego_target": "averiguar",
+          "lego_known": "finding out",
+          "target_sentence": "Estoy disfrutando averiguar más sobre este idioma.",
+          "known_sentence": "I'm enjoying finding out more about this language."
+        },
+        {
+          "seed_id": "S0293",
+          "lego_target": "averiguar",
+          "lego_known": "to find out",
+          "target_sentence": "Tengo que averiguar dónde va a encontrarme.",
+          "known_sentence": "I have to find out where he's going to meet me."
+        }
+      ]
+    }
+  ],
+  "gerund_issues": [
+    {
+      "target_word": "cometer",
+      "translations": [
+        "to make",
+        "making",
+        "about making"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0046",
+          "lego_target": "cometer",
+          "lego_known": "making",
+          "target_sentence": "Pero no me preocupo por cometer errores.",
+          "known_sentence": "But I don't worry about making mistakes."
+        },
+        {
+          "seed_id": "S0047",
+          "lego_target": "cometer",
+          "lego_known": "to make",
+          "target_sentence": "Porque pienso que es algo bueno cometer errores.",
+          "known_sentence": "Because I think that it's a good thing to make mistakes."
+        },
+        {
+          "seed_id": "S0048",
+          "lego_target": "cometer",
+          "lego_known": "about making",
+          "target_sentence": "No me importa cometer errores.",
+          "known_sentence": "I don't care about making mistakes."
+        }
+      ]
+    },
+    {
+      "target_word": "algo",
+      "translations": [
+        "something",
+        "anything"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0004",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "como decir algo en español",
+          "known_sentence": "how to say something in Spanish"
+        },
+        {
+          "seed_id": "S0030",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "Quería preguntarte algo ayer.",
+          "known_sentence": "I wanted to ask you something yesterday."
+        },
+        {
+          "seed_id": "S0032",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "¿Querías mostrarme algo?",
+          "known_sentence": "Did you want to show me something?"
+        },
+        {
+          "seed_id": "S0119",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "¿Puedo preguntarte algo antes de que te vayas?",
+          "known_sentence": "Can I ask you something before you leave?"
+        },
+        {
+          "seed_id": "S0235",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "Conocí a alguien que dijo que quería decirte algo.",
+          "known_sentence": "I met someone who said that he wanted to tell you something."
+        },
+        {
+          "seed_id": "S0301",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "Él dijo que quiere mostrarte algo.",
+          "known_sentence": "He said that he wants to show you something."
+        },
+        {
+          "seed_id": "S0342",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "Conocí a alguien que dijo algo.",
+          "known_sentence": "I met someone who said something."
+        },
+        {
+          "seed_id": "S0356",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "Sí, tenían algo importante que discutir.",
+          "known_sentence": "Yes they had something important to discuss."
+        },
+        {
+          "seed_id": "S0360",
+          "lego_target": "algo",
+          "lego_known": "anything",
+          "target_sentence": "¿Dijo tu amigo algo más?",
+          "known_sentence": "Did your friend say anything else?"
+        },
+        {
+          "seed_id": "S0400",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "¿Queremos comer algo más tarde?",
+          "known_sentence": "Do we want to eat something later on?"
+        },
+        {
+          "seed_id": "S0612",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "Habríamos comprado algo.",
+          "known_sentence": "We would have bought something."
+        },
+        {
+          "seed_id": "S0625",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "¿Quieres algo para beber?",
+          "known_sentence": "Do you want something to drink?"
+        },
+        {
+          "seed_id": "S0630",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "¿Puedo tener algo para beber por favor?",
+          "known_sentence": "Can I have something to drink please?"
+        },
+        {
+          "seed_id": "S0646",
+          "lego_target": "algo",
+          "lego_known": "something",
+          "target_sentence": "Estás haciendo algo señor.",
+          "known_sentence": "You're doing something sir."
+        }
+      ]
+    },
+    {
+      "target_word": "mañana",
+      "translations": [
+        "tomorrow",
+        "morning"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0012",
+          "lego_target": "mañana",
+          "lego_known": "tomorrow",
+          "target_sentence": "No me gustaría adivinar lo que va a pasar mañana.",
+          "known_sentence": "I wouldn't like to guess what's going to happen tomorrow."
+        },
+        {
+          "seed_id": "S0015",
+          "lego_target": "mañana",
+          "lego_known": "tomorrow",
+          "target_sentence": "Y quiero que hables español conmigo mañana.",
+          "known_sentence": "And I want you to speak Spanish with me tomorrow."
+        },
+        {
+          "seed_id": "S0144",
+          "lego_target": "mañana",
+          "lego_known": "morning",
+          "target_sentence": "Desperté más temprano de lo que quería esta mañana.",
+          "known_sentence": "I woke earlier than I wanted to this morning."
+        },
+        {
+          "seed_id": "S0155",
+          "lego_target": "mañana",
+          "lego_known": "tomorrow",
+          "target_sentence": "No me importa esperar unos minutos mañana por la mañana.",
+          "known_sentence": "I don't mind waiting for a few minutes tomorrow morning."
+        },
+        {
+          "seed_id": "S0167",
+          "lego_target": "mañana",
+          "lego_known": "tomorrow",
+          "target_sentence": "¿Qué necesitas hacer mañana por la tarde?",
+          "known_sentence": "What do you need to do tomorrow afternoon?"
+        },
+        {
+          "seed_id": "S0192",
+          "lego_target": "mañana",
+          "lego_known": "tomorrow",
+          "target_sentence": "Estoy ocupado mañana por la noche.",
+          "known_sentence": "I'm busy tomorrow night."
+        },
+        {
+          "seed_id": "S0223",
+          "lego_target": "mañana",
+          "lego_known": "tomorrow",
+          "target_sentence": "Va a preguntarte mañana.",
+          "known_sentence": "He's going to ask you tomorrow."
+        }
+      ]
+    },
+    {
+      "target_word": "tomar",
+      "translations": [
+        "taking",
+        "to take"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0027",
+          "lego_target": "tomar",
+          "lego_known": "taking",
+          "target_sentence": "No me gusta tomar demasiado tiempo para responder.",
+          "known_sentence": "I don't like taking too much time to answer."
+        },
+        {
+          "seed_id": "S0065",
+          "lego_target": "tomar",
+          "lego_known": "to take",
+          "target_sentence": "Es importante tomar tiempo para probarte a ti mismo.",
+          "known_sentence": "It's important to take time to test yourself."
+        }
+      ]
+    },
+    {
+      "target_word": "nada",
+      "translations": [
+        "nothing",
+        "anything"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0035",
+          "lego_target": "nada",
+          "lego_known": "anything",
+          "target_sentence": "Ella no quiere leer nada esta tarde.",
+          "known_sentence": "She doesn't want to read anything this afternoon."
+        },
+        {
+          "seed_id": "S0298",
+          "lego_target": "nada",
+          "lego_known": "nothing",
+          "target_sentence": "No me queda nada que decir.",
+          "known_sentence": "I've got nothing left to say."
+        }
+      ]
+    },
+    {
+      "target_word": "jugar",
+      "translations": [
+        "play",
+        "playing"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0098",
+          "lego_target": "jugar",
+          "lego_known": "playing",
+          "target_sentence": "Debería considerar jugar algo más.",
+          "known_sentence": "I should consider playing something else."
+        },
+        {
+          "seed_id": "S0567",
+          "lego_target": "jugar",
+          "lego_known": "play",
+          "target_sentence": "Ha sido encantador pasar tiempo al aire libre viendo a los niños jugar.",
+          "known_sentence": "It's been lovely spending time outdoors watching the children play."
+        }
+      ]
+    },
+    {
+      "target_word": "Todo",
+      "translations": [
+        "everything",
+        "It was all"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0141",
+          "lego_target": "Todo",
+          "lego_known": "everything",
+          "target_sentence": "No hay problema. Todo está bien.",
+          "known_sentence": "No problem. Everything is okay."
+        },
+        {
+          "seed_id": "S0458",
+          "lego_target": "Todo",
+          "lego_known": "It was all",
+          "target_sentence": "Todo era mucho más fácil en el pasado.",
+          "known_sentence": "It was all much easier in the past."
+        }
+      ]
+    },
+    {
+      "target_word": "ayudar",
+      "translations": [
+        "help",
+        "helping"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0142",
+          "lego_target": "ayudar",
+          "lego_known": "helping",
+          "target_sentence": "Eso es muy amable de tu parte y estoy agradecido contigo por ayudar.",
+          "known_sentence": "That's very kind of you and I'm grateful to you for helping."
+        },
+        {
+          "seed_id": "S0168",
+          "lego_target": "ayudar",
+          "lego_known": "help",
+          "target_sentence": "Y entonces podré venir y ayudar más tarde.",
+          "known_sentence": "And then I'll be able to come and help later on."
+        }
+      ]
+    },
+    {
+      "target_word": "esperar",
+      "translations": [
+        "expect to",
+        "waiting"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0155",
+          "lego_target": "esperar",
+          "lego_known": "waiting",
+          "target_sentence": "No me importa esperar unos minutos mañana por la mañana.",
+          "known_sentence": "I don't mind waiting for a few minutes tomorrow morning."
+        },
+        {
+          "seed_id": "S0404",
+          "lego_target": "esperar",
+          "lego_known": "expect to",
+          "target_sentence": "No deberíamos esperar terminar antes del jueves.",
+          "known_sentence": "We shouldn't expect to finish before Thursday."
+        },
+        {
+          "seed_id": "S0576",
+          "lego_target": "esperar",
+          "lego_known": "waiting",
+          "target_sentence": "Ha sido muy perturbador esperar.",
+          "known_sentence": "It has been very upsetting waiting."
+        }
+      ]
+    }
+  ],
+  "real_problems": [
+    {
+      "target_word": "que",
+      "translations": [
+        "than",
+        "~",
+        "∅",
+        "you",
+        "who",
+        "he",
+        "it",
+        "that",
+        "to",
+        "she"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0042",
+          "lego_target": "que",
+          "lego_known": "than",
+          "target_sentence": "Estaba empezando a sentirme mejor que anoche.",
+          "known_sentence": "I was starting to feel better than last night."
+        },
+        {
+          "seed_id": "S0047",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Porque pienso que es algo bueno cometer errores.",
+          "known_sentence": "Because I think that it's a good thing to make mistakes."
+        },
+        {
+          "seed_id": "S0063",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "¿Estás seguro que no te importa ayudarme?",
+          "known_sentence": "Are you sure you don't mind helping me?"
+        },
+        {
+          "seed_id": "S0087",
+          "lego_target": "que",
+          "lego_known": "∅",
+          "target_sentence": "Son personas que no conozco.",
+          "known_sentence": "They are people I don't know."
+        },
+        {
+          "seed_id": "S0088",
+          "lego_target": "que",
+          "lego_known": "∅",
+          "target_sentence": "No estoy listo para hablar con personas que no conozco todavía.",
+          "known_sentence": "I'm not ready to talk to people I don't know yet."
+        },
+        {
+          "seed_id": "S0114",
+          "lego_target": "que",
+          "lego_known": "than",
+          "target_sentence": "Siento como si estuviera haciéndolo peor hoy que ayer.",
+          "known_sentence": "I feel as if I'm doing worse today than yesterday."
+        },
+        {
+          "seed_id": "S0116",
+          "lego_target": "que",
+          "lego_known": "∅",
+          "target_sentence": "Esta no es la mejor opción que podría hacer.",
+          "known_sentence": "This isn't the best choice I could make."
+        },
+        {
+          "seed_id": "S0117",
+          "lego_target": "que",
+          "lego_known": "than",
+          "target_sentence": "Definitivamente estoy haciéndolo mejor que la última vez que hablamos entre nosotros.",
+          "known_sentence": "I'm definitely doing better than I was last time we talked to each other."
+        },
+        {
+          "seed_id": "S0117",
+          "lego_target": "que",
+          "lego_known": "∅",
+          "target_sentence": "Definitivamente estoy haciéndolo mejor que la última vez que hablamos entre nosotros.",
+          "known_sentence": "I'm definitely doing better than I was last time we talked to each other."
+        },
+        {
+          "seed_id": "S0118",
+          "lego_target": "que",
+          "lego_known": "than",
+          "target_sentence": "Me siento mejor que me sentí cuando estábamos en el pub.",
+          "known_sentence": "I feel better than I felt when we were in the pub."
+        },
+        {
+          "seed_id": "S0120",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Es interesante que te guste ir en autobús.",
+          "known_sentence": "It's interesting that you like to go by bus."
+        },
+        {
+          "seed_id": "S0121",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Es inusual que no te guste usar tu coche.",
+          "known_sentence": "It's unusual that you don't like to use your car."
+        },
+        {
+          "seed_id": "S0128",
+          "lego_target": "que",
+          "lego_known": "∅",
+          "target_sentence": "Eres como alguien que solía conocer.",
+          "known_sentence": "You're like someone I used to know."
+        },
+        {
+          "seed_id": "S0132",
+          "lego_target": "que",
+          "lego_known": "than",
+          "target_sentence": "Eso es menos emocionante que lo que ella estaba diciendo.",
+          "known_sentence": "That's less exciting than what she was saying."
+        },
+        {
+          "seed_id": "S0135",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "No sé por qué piensas que es tan bueno.",
+          "known_sentence": "I don't know why you think that it's so good."
+        },
+        {
+          "seed_id": "S0136",
+          "lego_target": "que",
+          "lego_known": "∅",
+          "target_sentence": "Por supuesto que puedes preguntarle porque es mi amiga.",
+          "known_sentence": "Of course you can ask her because she's my friend."
+        },
+        {
+          "seed_id": "S0137",
+          "lego_target": "que",
+          "lego_known": "than",
+          "target_sentence": "Es más importante hablar frecuentemente que ser perfecto.",
+          "known_sentence": "It's more important to talk often than to be perfect."
+        },
+        {
+          "seed_id": "S0149",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Esto no es muy difícil, entonces espero que termines pronto.",
+          "known_sentence": "This isn't very difficult, so I hope you'll finish soon."
+        },
+        {
+          "seed_id": "S0151",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Eso no era lo que estaba esperando que pasara.",
+          "known_sentence": "That wasn't what I was hoping would happen."
+        },
+        {
+          "seed_id": "S0163",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pienso que es interesante.",
+          "known_sentence": "I think that it's interesting."
+        },
+        {
+          "seed_id": "S0183",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "No, me temo que no las he visto.",
+          "known_sentence": "No I'm afraid I haven't seen them."
+        },
+        {
+          "seed_id": "S0185",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pienso que las dejaste en el trabajo.",
+          "known_sentence": "I think you left them at work."
+        },
+        {
+          "seed_id": "S0195",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Estoy intentando encontrar el dinero que dejé en la mesa.",
+          "known_sentence": "I'm trying to find the money I left on the table."
+        },
+        {
+          "seed_id": "S0200",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+          "known_sentence": "They say they want to make sure that we finish everything in time."
+        },
+        {
+          "seed_id": "S0200",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+          "known_sentence": "They say they want to make sure that we finish everything in time."
+        },
+        {
+          "seed_id": "S0203",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "¿Qué harías si te pidiera que me ayudaras?",
+          "known_sentence": "What would you do if I asked you to help me?"
+        },
+        {
+          "seed_id": "S0204",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Quería que ella te ayudara a lidiar con los arreglos.",
+          "known_sentence": "I wanted her to help you to deal with the arrangements."
+        },
+        {
+          "seed_id": "S0205",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "He olvidado la palabra que estaba intentando decir.",
+          "known_sentence": "I've forgotten the word I was trying to say."
+        },
+        {
+          "seed_id": "S0210",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Piensan que necesitamos discutir el problema.",
+          "known_sentence": "They think that we need to discuss the problem."
+        },
+        {
+          "seed_id": "S0211",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Nos dijeron que no querían explicar.",
+          "known_sentence": "They told us that they didn't want to explain."
+        },
+        {
+          "seed_id": "S0230",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "Conozco a un hombre joven que quiere trabajar contigo.",
+          "known_sentence": "I know a young man who wants to work with you."
+        },
+        {
+          "seed_id": "S0231",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "Conozco a un hombre viejo que quería pedir ayuda.",
+          "known_sentence": "I know an old man who wanted to ask for help."
+        },
+        {
+          "seed_id": "S0232",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "Conozco a una mujer vieja que puede recordar la respuesta.",
+          "known_sentence": "I know an old woman who can remember the answer."
+        },
+        {
+          "seed_id": "S0233",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "Conozco a una mujer joven que conoce a tu hermana.",
+          "known_sentence": "I know a young woman who knows your sister."
+        },
+        {
+          "seed_id": "S0234",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "Conocí a alguien anoche que trabaja con tu hermano.",
+          "known_sentence": "I met someone last night who works with your brother."
+        },
+        {
+          "seed_id": "S0235",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "Conocí a alguien que dijo que quería decirte algo.",
+          "known_sentence": "I met someone who said that he wanted to tell you something."
+        },
+        {
+          "seed_id": "S0235",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Conocí a alguien que dijo que quería decirte algo.",
+          "known_sentence": "I met someone who said that he wanted to tell you something."
+        },
+        {
+          "seed_id": "S0236",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "Conozco a alguien que dijo que iba a intentar ayudar.",
+          "known_sentence": "I know someone who said that she was going to try to help."
+        },
+        {
+          "seed_id": "S0236",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Conozco a alguien que dijo que iba a intentar ayudar.",
+          "known_sentence": "I know someone who said that she was going to try to help."
+        },
+        {
+          "seed_id": "S0247",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pensé que ese libro era bastante bueno.",
+          "known_sentence": "I thought that book was fairly good."
+        },
+        {
+          "seed_id": "S0248",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pensé que la película era basura completa y quiero mi dinero de vuelta.",
+          "known_sentence": "I thought the film was complete rubbish and I want my money back."
+        },
+        {
+          "seed_id": "S0255",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "¿Cuándo piensas que estarás listo para irte?",
+          "known_sentence": "When do you think you'll be ready to leave?"
+        },
+        {
+          "seed_id": "S0256",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pienso que estaré listo en menos de una hora.",
+          "known_sentence": "I think I'll be ready in less than an hour."
+        },
+        {
+          "seed_id": "S0261",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pienso que podría ser algo importante.",
+          "known_sentence": "I think it might be something important."
+        },
+        {
+          "seed_id": "S0286",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "Personas que les gusta hablar español.",
+          "known_sentence": "People who like speaking Spanish."
+        },
+        {
+          "seed_id": "S0287",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "¿Cuántas personas conoces que les gusta ver televisión?",
+          "known_sentence": "How many people do you know who like watching television?"
+        },
+        {
+          "seed_id": "S0288",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "La mayoría de las personas que conozco les gusta ver televisión.",
+          "known_sentence": "Most people I know like watching television."
+        },
+        {
+          "seed_id": "S0295",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "No dije que quería terminar en un día.",
+          "known_sentence": "I didn't say that I wanted to finish in a day."
+        },
+        {
+          "seed_id": "S0296",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Dije que necesitaba un poco más de tiempo.",
+          "known_sentence": "I said that I needed a little more time."
+        },
+        {
+          "seed_id": "S0297",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "No conozco a muchas personas que hablan español.",
+          "known_sentence": "I don't know many people who speak Spanish."
+        },
+        {
+          "seed_id": "S0301",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Él dijo que quiere mostrarte algo.",
+          "known_sentence": "He said that he wants to show you something."
+        },
+        {
+          "seed_id": "S0302",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Ella dijo que no quiere vivir en una ciudad.",
+          "known_sentence": "She said that she doesn't want to live in a city."
+        },
+        {
+          "seed_id": "S0303",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pienso que él quiere sentarse.",
+          "known_sentence": "I think that he wants to sit down."
+        },
+        {
+          "seed_id": "S0304",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pienso que ella no quiere trabajar desde casa.",
+          "known_sentence": "I think that she doesn't want to work from home."
+        },
+        {
+          "seed_id": "S0306",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "Conozco a esa mujer joven que está hablando con tu amigo.",
+          "known_sentence": "I know that young woman who's talking to your friend."
+        },
+        {
+          "seed_id": "S0307",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "Conozco a ese hombre joven que está sentado allá.",
+          "known_sentence": "I know that young man who's sitting over there."
+        },
+        {
+          "seed_id": "S0312",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Ella dijo que podría usar la otra habitación mañana por la noche.",
+          "known_sentence": "She said that she could use the other room tomorrow night."
+        },
+        {
+          "seed_id": "S0313",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Él dijo que no podía ver los cinco juegos.",
+          "known_sentence": "He said that he couldn't watch all five games."
+        },
+        {
+          "seed_id": "S0314",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pienso que ella podría ponerlo en la mesa.",
+          "known_sentence": "I think that she could put it on the table."
+        },
+        {
+          "seed_id": "S0315",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pienso que él no podía permitirse el coche que quería.",
+          "known_sentence": "I think that he couldn't afford the car that he wanted."
+        },
+        {
+          "seed_id": "S0315",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pienso que él no podía permitirse el coche que quería.",
+          "known_sentence": "I think that he couldn't afford the car that he wanted."
+        },
+        {
+          "seed_id": "S0316",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "¿Piensas que ella podría traer a su hermano el lunes?",
+          "known_sentence": "Do you think that she could bring her brother on Monday?"
+        },
+        {
+          "seed_id": "S0317",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Sí, pienso que podría si quisiera.",
+          "known_sentence": "Yes I think she could if she wanted to."
+        },
+        {
+          "seed_id": "S0318",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "No, no pienso que podría esta vez.",
+          "known_sentence": "No I don't think she could this time."
+        },
+        {
+          "seed_id": "S0322",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Ella dijo que necesita leer el mismo libro.",
+          "known_sentence": "She said that she needs to read the same book."
+        },
+        {
+          "seed_id": "S0323",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Él dijo que no necesita caminar a la escuela.",
+          "known_sentence": "He said that he doesn't need to walk to school."
+        },
+        {
+          "seed_id": "S0325",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pienso que él necesita considerar diez problemas posibles.",
+          "known_sentence": "I think that he needs to consider ten possible problems."
+        },
+        {
+          "seed_id": "S0326",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "No pienso que ella necesite vender la compañía.",
+          "known_sentence": "I don't think that she needs to sell the company."
+        },
+        {
+          "seed_id": "S0327",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "¿Piensas que ella necesita ofrecer otra manera?",
+          "known_sentence": "Do you think that she needs to offer another way?"
+        },
+        {
+          "seed_id": "S0328",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Sí, pienso que debería.",
+          "known_sentence": "Yes I think she ought to."
+        },
+        {
+          "seed_id": "S0330",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "No, no pienso que sea muy importante.",
+          "known_sentence": "No I don't think it's very important."
+        },
+        {
+          "seed_id": "S0333",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+          "known_sentence": "She said that she can't spend much time with the group."
+        },
+        {
+          "seed_id": "S0334",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Él dijo que puede dejarte sostener al gatito",
+          "known_sentence": "He said that he can let you hold the kitten"
+        },
+        {
+          "seed_id": "S0335",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Pienso que él puede agregar algunas ideas valiosas.",
+          "known_sentence": "I think that he can add some valuable ideas."
+        },
+        {
+          "seed_id": "S0336",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "No pienso que ella pueda abrir la puerta.",
+          "known_sentence": "I don't think that she can open the door."
+        },
+        {
+          "seed_id": "S0337",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "¿Piensas que él puede continuar jugando?",
+          "known_sentence": "Do you think that he can continue to play?"
+        },
+        {
+          "seed_id": "S0339",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "No, pienso que se lastimó bastante mal.",
+          "known_sentence": "No I think he's hurt himself quite badly."
+        },
+        {
+          "seed_id": "S0340",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Sí, estoy seguro de que va a estar bien.",
+          "known_sentence": "Yes I'm sure he's going to be okay."
+        },
+        {
+          "seed_id": "S0342",
+          "lego_target": "que",
+          "lego_known": "who",
+          "target_sentence": "Conocí a alguien que dijo algo.",
+          "known_sentence": "I met someone who said something."
+        },
+        {
+          "seed_id": "S0343",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Que dijo que está preocupada por la economía.",
+          "known_sentence": "Who said that she's worried about the economy."
+        },
+        {
+          "seed_id": "S0344",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Que dijo que está feliz de ayudarte.",
+          "known_sentence": "Who said that he's happy to help you."
+        },
+        {
+          "seed_id": "S0345",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Que dijo que no está listo para irse todavía.",
+          "known_sentence": "Who said that he's not ready to leave yet."
+        },
+        {
+          "seed_id": "S0346",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Quería que ella supiera que me gustó su libro.",
+          "known_sentence": "I wanted her to know that I liked her book."
+        },
+        {
+          "seed_id": "S0355",
+          "lego_target": "que",
+          "lego_known": "you",
+          "target_sentence": "¿Necesitaba ella hablar con esa mujer que conoces?",
+          "known_sentence": "Did she need to talk to that woman you know?"
+        },
+        {
+          "seed_id": "S0356",
+          "lego_target": "que",
+          "lego_known": "to",
+          "target_sentence": "Sí, tenían algo importante que discutir.",
+          "known_sentence": "Yes they had something important to discuss."
+        },
+        {
+          "seed_id": "S0358",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Tu amiga dijo que no podía alcanzar la cima.",
+          "known_sentence": "Your friend said that she couldn't reach the top."
+        },
+        {
+          "seed_id": "S0359",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Tu amigo dijo que podía girar a la izquierda.",
+          "known_sentence": "Your friend said that he could turn left."
+        },
+        {
+          "seed_id": "S0364",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Escuché que a él no le gustaba ese lugar.",
+          "known_sentence": "I heard that he didn't like that place."
+        },
+        {
+          "seed_id": "S0368",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Sí, escuché que quería cultivar tomates.",
+          "known_sentence": "Yes I heard that he wanted to grow tomatoes."
+        },
+        {
+          "seed_id": "S0370",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "No vi a nadie que conociera.",
+          "known_sentence": "I didn't see anyone that I knew."
+        },
+        {
+          "seed_id": "S0374",
+          "lego_target": "que",
+          "lego_known": "it",
+          "target_sentence": "Sí, pensé que era muy hermoso.",
+          "known_sentence": "Yes I thought it was very beautiful."
+        },
+        {
+          "seed_id": "S0383",
+          "lego_target": "que",
+          "lego_known": "he",
+          "target_sentence": "Sí, dijo que quería ponerlo en el jardín.",
+          "known_sentence": "Yes he said he wanted to put it in the garden."
+        },
+        {
+          "seed_id": "S0387",
+          "lego_target": "que",
+          "lego_known": "she",
+          "target_sentence": "No, no pensé que tenía razón.",
+          "known_sentence": "No I didn't think she was right."
+        },
+        {
+          "seed_id": "S0509",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Escuché que vas a pagar por una cama nueva.",
+          "known_sentence": "I heard that you're going to pay for a new bed."
+        },
+        {
+          "seed_id": "S0521",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Tengo miedo de que olvides por qué necesitábamos quedarnos aquí.",
+          "known_sentence": "I'm afraid that you'll forget why we needed to stay here."
+        },
+        {
+          "seed_id": "S0522",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Acordemos que fue estúpido decir la verdad.",
+          "known_sentence": "Let's agree that it was stupid to tell the truth."
+        },
+        {
+          "seed_id": "S0526",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Me está costando creer que no puedas adivinar.",
+          "known_sentence": "I'm finding it hard to believe that you can't guess."
+        },
+        {
+          "seed_id": "S0531",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "No es verdad que cualquiera pueda ganar el juego.",
+          "known_sentence": "It isn't true that anyone can win the game."
+        },
+        {
+          "seed_id": "S0533",
+          "lego_target": "que",
+          "lego_known": "~",
+          "target_sentence": "Ella no escuchará cada palabra que digas.",
+          "known_sentence": "She won't listen to every word you say."
+        },
+        {
+          "seed_id": "S0536",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Solía pensar que estar loco era malo.",
+          "known_sentence": "I used to think that being crazy was bad."
+        },
+        {
+          "seed_id": "S0544",
+          "lego_target": "que",
+          "lego_known": "~",
+          "target_sentence": "Quien sea que dijo que sería difícil tenía absolutamente razón.",
+          "known_sentence": "Whoever said it would be difficult was absolutely right."
+        },
+        {
+          "seed_id": "S0553",
+          "lego_target": "que",
+          "lego_known": "~",
+          "target_sentence": "Pienso que la iglesia pequeña es muy fea.",
+          "known_sentence": "I think the small church is very ugly."
+        },
+        {
+          "seed_id": "S0557",
+          "lego_target": "que",
+          "lego_known": "~",
+          "target_sentence": "Desearía que no tocaran música tan fuerte.",
+          "known_sentence": "I wish they wouldn't play such loud music."
+        },
+        {
+          "seed_id": "S0568",
+          "lego_target": "que",
+          "lego_known": "∅",
+          "target_sentence": "Estoy esperando ver una mejora la próxima vez que nos encontremos.",
+          "known_sentence": "I'm expecting to see an improvement next time we meet."
+        },
+        {
+          "seed_id": "S0572",
+          "lego_target": "que",
+          "lego_known": "∅",
+          "target_sentence": "¿Has olvidado lo que pasó la última vez que nos visitaron?",
+          "known_sentence": "Have you forgotten what happened the last time they visited us?"
+        },
+        {
+          "seed_id": "S0573",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "Es el tipo de cosa que hace las vacaciones muy especiales.",
+          "known_sentence": "It's the kind of thing that makes the holidays very special."
+        },
+        {
+          "seed_id": "S0589",
+          "lego_target": "que",
+          "lego_known": "∅",
+          "target_sentence": "Me dijo que acababa de ver el último autobús.",
+          "known_sentence": "She told me she'd just seen the last bus."
+        },
+        {
+          "seed_id": "S0616",
+          "lego_target": "que",
+          "lego_known": "∅",
+          "target_sentence": "Fuiste muy valiente al decir que pensaste eso.",
+          "known_sentence": "You were very brave to say you thought that."
+        },
+        {
+          "seed_id": "S0621",
+          "lego_target": "que",
+          "lego_known": "that",
+          "target_sentence": "No me habría atrevido a decirle que estaba roto.",
+          "known_sentence": "I wouldn't have dared to tell her that it was broken."
+        }
+      ]
+    },
+    {
+      "target_word": "quería",
+      "translations": [
+        "he wanted to",
+        "he wanted",
+        "wanted",
+        "wanted to",
+        "I wanted"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0052",
+          "lego_target": "quería",
+          "lego_known": "wanted",
+          "target_sentence": "Él quería escribir una carta a su amigo la semana pasada.",
+          "known_sentence": "He wanted to write a letter to his friend last week."
+        },
+        {
+          "seed_id": "S0053",
+          "lego_target": "quería",
+          "lego_known": "wanted",
+          "target_sentence": "Ella quería poner su carta en su bolsa.",
+          "known_sentence": "She wanted to put his letter in her bag."
+        },
+        {
+          "seed_id": "S0057",
+          "lego_target": "quería",
+          "lego_known": "I wanted",
+          "target_sentence": "No puedo recordar cómo decir lo que quería decir.",
+          "known_sentence": "I can't remember how to say what I wanted to say."
+        },
+        {
+          "seed_id": "S0127",
+          "lego_target": "quería",
+          "lego_known": "I wanted",
+          "target_sentence": "Esa no es la razón por la que quería verte.",
+          "known_sentence": "That isn't why I wanted to see you."
+        },
+        {
+          "seed_id": "S0138",
+          "lego_target": "quería",
+          "lego_known": "wanted",
+          "target_sentence": "Aquí era donde mi amigo quería encontrarnos.",
+          "known_sentence": "This was where my friend wanted to meet us."
+        },
+        {
+          "seed_id": "S0144",
+          "lego_target": "quería",
+          "lego_known": "I wanted",
+          "target_sentence": "Desperté más temprano de lo que quería esta mañana.",
+          "known_sentence": "I woke earlier than I wanted to this morning."
+        },
+        {
+          "seed_id": "S0178",
+          "lego_target": "quería",
+          "lego_known": "I wanted",
+          "target_sentence": "No tuve tiempo, aunque quería verte.",
+          "known_sentence": "I didn't have time, although I wanted to see you."
+        },
+        {
+          "seed_id": "S0295",
+          "lego_target": "quería",
+          "lego_known": "I wanted",
+          "target_sentence": "No dije que quería terminar en un día.",
+          "known_sentence": "I didn't say that I wanted to finish in a day."
+        },
+        {
+          "seed_id": "S0315",
+          "lego_target": "quería",
+          "lego_known": "he wanted",
+          "target_sentence": "Pienso que él no podía permitirse el coche que quería.",
+          "known_sentence": "I think that he couldn't afford the car that he wanted."
+        },
+        {
+          "seed_id": "S0347",
+          "lego_target": "quería",
+          "lego_known": "wanted",
+          "target_sentence": "Él quería saber lo que estaba pasando hace una semana.",
+          "known_sentence": "He wanted to know what was happening a week ago."
+        },
+        {
+          "seed_id": "S0350",
+          "lego_target": "quería",
+          "lego_known": "he wanted",
+          "target_sentence": "Sí, quería ver algunos viejos amigos.",
+          "known_sentence": "Yes he wanted to see some old friends."
+        },
+        {
+          "seed_id": "S0357",
+          "lego_target": "quería",
+          "lego_known": "wanted to",
+          "target_sentence": "No, solo quería enviarle un mensaje.",
+          "known_sentence": "No she just wanted to send her a message."
+        },
+        {
+          "seed_id": "S0366",
+          "lego_target": "quería",
+          "lego_known": "wanted to",
+          "target_sentence": "¿Escuchaste lo que él quería cultivar?",
+          "known_sentence": "Did you hear what he wanted to grow?"
+        },
+        {
+          "seed_id": "S0368",
+          "lego_target": "quería",
+          "lego_known": "he wanted to",
+          "target_sentence": "Sí, escuché que quería cultivar tomates.",
+          "known_sentence": "Yes I heard that he wanted to grow tomatoes."
+        },
+        {
+          "seed_id": "S0380",
+          "lego_target": "quería",
+          "lego_known": "wanted to",
+          "target_sentence": "Pregunté lo que ella quería incluir.",
+          "known_sentence": "I asked what she wanted to include."
+        },
+        {
+          "seed_id": "S0381",
+          "lego_target": "quería",
+          "lego_known": "wanted to",
+          "target_sentence": "No pregunté si él quería seguirnos.",
+          "known_sentence": "I didn't ask if he wanted to follow us."
+        },
+        {
+          "seed_id": "S0382",
+          "lego_target": "quería",
+          "lego_known": "he wanted to",
+          "target_sentence": "¿Preguntaste dónde quería ponerlo?",
+          "known_sentence": "Did you ask where he wanted to put it?"
+        },
+        {
+          "seed_id": "S0383",
+          "lego_target": "quería",
+          "lego_known": "wanted to",
+          "target_sentence": "Sí, dijo que quería ponerlo en el jardín.",
+          "known_sentence": "Yes he said he wanted to put it in the garden."
+        },
+        {
+          "seed_id": "S0588",
+          "lego_target": "quería",
+          "lego_known": "I wanted",
+          "target_sentence": "Entonces quería crecer y dejar la casa.",
+          "known_sentence": "So I wanted to grow up and leave home."
+        }
+      ]
+    },
+    {
+      "target_word": "es",
+      "translations": [
+        "it's",
+        "it is",
+        "is",
+        "she is"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0017",
+          "lego_target": "es",
+          "lego_known": "is",
+          "target_sentence": "Ella quiere averiguar cuál es la respuesta.",
+          "known_sentence": "She wants to find out what the answer is."
+        },
+        {
+          "seed_id": "S0047",
+          "lego_target": "es",
+          "lego_known": "it is",
+          "target_sentence": "Porque pienso que es algo bueno cometer errores.",
+          "known_sentence": "Because I think that it's a good thing to make mistakes."
+        },
+        {
+          "seed_id": "S0064",
+          "lego_target": "es",
+          "lego_known": "it is",
+          "target_sentence": "Aprender español no es fácil pero es divertido.",
+          "known_sentence": "Learning Spanish isn't easy but it is fun."
+        },
+        {
+          "seed_id": "S0163",
+          "lego_target": "es",
+          "lego_known": "it's",
+          "target_sentence": "Pienso que es interesante.",
+          "known_sentence": "I think that it's interesting."
+        },
+        {
+          "seed_id": "S0165",
+          "lego_target": "es",
+          "lego_known": "it's",
+          "target_sentence": "Pero no estoy seguro si es verdad.",
+          "known_sentence": "But I'm not sure if it's true."
+        },
+        {
+          "seed_id": "S0308",
+          "lego_target": "es",
+          "lego_known": "she is",
+          "target_sentence": "Sí, es una amiga de mi madre.",
+          "known_sentence": "Yes she's a friend of my mother."
+        },
+        {
+          "seed_id": "S0408",
+          "lego_target": "es",
+          "lego_known": "is",
+          "target_sentence": "Sí, esa es la mejor manera de hacer una familia feliz.",
+          "known_sentence": "Yes that's the best way to make a happy family."
+        },
+        {
+          "seed_id": "S0551",
+          "lego_target": "es",
+          "lego_known": "is",
+          "target_sentence": "La iglesia es fea.",
+          "known_sentence": "The church is ugly."
+        },
+        {
+          "seed_id": "S0552",
+          "lego_target": "es",
+          "lego_known": "is",
+          "target_sentence": "La iglesia en el otro extremo del pueblo es fea.",
+          "known_sentence": "The church at the other end of the village is ugly."
+        },
+        {
+          "seed_id": "S0553",
+          "lego_target": "es",
+          "lego_known": "is",
+          "target_sentence": "Pienso que la iglesia pequeña es muy fea.",
+          "known_sentence": "I think the small church is very ugly."
+        },
+        {
+          "seed_id": "S0561",
+          "lego_target": "es",
+          "lego_known": "it's",
+          "target_sentence": "No me importa si es un coche rápido.",
+          "known_sentence": "I don't care if it's a fast car."
+        },
+        {
+          "seed_id": "S0641",
+          "lego_target": "es",
+          "lego_known": "it's",
+          "target_sentence": "Pienso que es la roja en esa silla.",
+          "known_sentence": "I think that it's the red one on that chair."
+        }
+      ]
+    },
+    {
+      "target_word": "estaba",
+      "translations": [
+        "he was",
+        "was",
+        "it was",
+        "she was"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0070",
+          "lego_target": "estaba",
+          "lego_known": "it was",
+          "target_sentence": "Ella no quería decirme dónde estaba.",
+          "known_sentence": "She didn't want to tell me where it was."
+        },
+        {
+          "seed_id": "S0362",
+          "lego_target": "estaba",
+          "lego_known": "he was",
+          "target_sentence": "No, estaba bastante callado después de que te fuiste.",
+          "known_sentence": "No he was rather quiet after you left."
+        },
+        {
+          "seed_id": "S0372",
+          "lego_target": "estaba",
+          "lego_known": "was",
+          "target_sentence": "¿Viste lo que ella estaba intentando crear?",
+          "known_sentence": "Did you see what she was trying to create?"
+        },
+        {
+          "seed_id": "S0375",
+          "lego_target": "estaba",
+          "lego_known": "she was",
+          "target_sentence": "No, no sabía lo que estaba haciendo.",
+          "known_sentence": "No I didn't know what she was doing."
+        }
+      ]
+    },
+    {
+      "target_word": "de",
+      "translations": [
+        "about",
+        "at",
+        "of",
+        "to"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0077",
+          "lego_target": "de",
+          "lego_known": "at",
+          "target_sentence": "Estoy sorprendido de cuán rápidamente estoy empezando a entender.",
+          "known_sentence": "I'm surprised at how quickly I'm starting to understand."
+        },
+        {
+          "seed_id": "S0126",
+          "lego_target": "de",
+          "lego_known": "of",
+          "target_sentence": "Este trabajo está cambiando la forma de mi cerebro.",
+          "known_sentence": "This work is changing the shape of my brain."
+        },
+        {
+          "seed_id": "S0158",
+          "lego_target": "de",
+          "lego_known": "about",
+          "target_sentence": "Hablemos de algo más.",
+          "known_sentence": "Let's talk about something else."
+        },
+        {
+          "seed_id": "S0202",
+          "lego_target": "de",
+          "lego_known": "of",
+          "target_sentence": "Nadie estaba seguro de cómo responder la pregunta.",
+          "known_sentence": "Nobody was sure how to answer the question."
+        },
+        {
+          "seed_id": "S0206",
+          "lego_target": "de",
+          "lego_known": "to",
+          "target_sentence": "Disfruto la oportunidad de practicar hablar contigo.",
+          "known_sentence": "I enjoy the chance to practise speaking with you."
+        },
+        {
+          "seed_id": "S0408",
+          "lego_target": "de",
+          "lego_known": "to",
+          "target_sentence": "Sí, esa es la mejor manera de hacer una familia feliz.",
+          "known_sentence": "Yes that's the best way to make a happy family."
+        },
+        {
+          "seed_id": "S0414",
+          "lego_target": "de",
+          "lego_known": "of",
+          "target_sentence": "¿Podríamos tener una botella de vino tinto por favor?",
+          "known_sentence": "Could we have a bottle of red wine please?"
+        },
+        {
+          "seed_id": "S0545",
+          "lego_target": "de",
+          "lego_known": "to",
+          "target_sentence": "Es tu turno de llevar la ropa limpia arriba.",
+          "known_sentence": "It's your turn to take the clean clothes upstairs."
+        },
+        {
+          "seed_id": "S0623",
+          "lego_target": "de",
+          "lego_known": "of",
+          "target_sentence": "¿Quieres una taza de café o té?",
+          "known_sentence": "Do you want a cup of coffee or tea?"
+        },
+        {
+          "seed_id": "S0632",
+          "lego_target": "de",
+          "lego_known": "of",
+          "target_sentence": "Un vaso de agua.",
+          "known_sentence": "A glass of water."
+        },
+        {
+          "seed_id": "S0633",
+          "lego_target": "de",
+          "lego_known": "of",
+          "target_sentence": "Un vaso grande de agua estaría bien.",
+          "known_sentence": "A large glass of water would be fine."
+        },
+        {
+          "seed_id": "S0634",
+          "lego_target": "de",
+          "lego_known": "of",
+          "target_sentence": "Me gustaría uno de esos.",
+          "known_sentence": "I'd like one of those."
+        },
+        {
+          "seed_id": "S0635",
+          "lego_target": "de",
+          "lego_known": "of",
+          "target_sentence": "Esa es la bolsa de Jane.",
+          "known_sentence": "That is Jane's bag."
+        },
+        {
+          "seed_id": "S0636",
+          "lego_target": "de",
+          "lego_known": "of",
+          "target_sentence": "Pienso que esa es la bolsa de Jane.",
+          "known_sentence": "I think that that is Jane's bag."
+        }
+      ]
+    },
+    {
+      "target_word": "solo",
+      "translations": [
+        "only",
+        "just",
+        "alone",
+        "on my own"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0106",
+          "lego_target": "solo",
+          "lego_known": "only",
+          "target_sentence": "No necesitamos sentirnos felices, solo necesitamos trabajar duro.",
+          "known_sentence": "We don't need to feel happy, we just need to work hard."
+        },
+        {
+          "seed_id": "S0280",
+          "lego_target": "solo",
+          "lego_known": "only",
+          "target_sentence": "No, solo tuve que hacer el trabajo más importante.",
+          "known_sentence": "No I only had to do the most important job."
+        },
+        {
+          "seed_id": "S0351",
+          "lego_target": "solo",
+          "lego_known": "on my own",
+          "target_sentence": "No, no quería dejarme solo.",
+          "known_sentence": "No he didn't want to leave me on my own."
+        },
+        {
+          "seed_id": "S0357",
+          "lego_target": "solo",
+          "lego_known": "just",
+          "target_sentence": "No, solo quería enviarle un mensaje.",
+          "known_sentence": "No she just wanted to send her a message."
+        },
+        {
+          "seed_id": "S0498",
+          "lego_target": "solo",
+          "lego_known": "alone",
+          "target_sentence": "Está parado solo allá dentro de la entrada.",
+          "known_sentence": "He's standing alone over there inside the entrance."
+        },
+        {
+          "seed_id": "S0501",
+          "lego_target": "solo",
+          "lego_known": "only",
+          "target_sentence": "Si solo pudiera confiar en ustedes para jugar juntos sin discutir.",
+          "known_sentence": "If only I could trust you to play together without arguing."
+        }
+      ]
+    },
+    {
+      "target_word": "como",
+      "translations": [
+        "how",
+        "like",
+        "as"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0003",
+          "lego_target": "como",
+          "lego_known": "how",
+          "target_sentence": "como hablar tan frecuentemente como sea posible.",
+          "known_sentence": "how to speak as often as possible."
+        },
+        {
+          "seed_id": "S0004",
+          "lego_target": "como",
+          "lego_known": "how",
+          "target_sentence": "como decir algo en español",
+          "known_sentence": "how to say something in Spanish"
+        },
+        {
+          "seed_id": "S0128",
+          "lego_target": "como",
+          "lego_known": "like",
+          "target_sentence": "Eres como alguien que solía conocer.",
+          "known_sentence": "You're like someone I used to know."
+        },
+        {
+          "seed_id": "S0197",
+          "lego_target": "como",
+          "lego_known": "as",
+          "target_sentence": "Mi hijo trabaja como profesor.",
+          "known_sentence": "My son works as a teacher."
+        },
+        {
+          "seed_id": "S0272",
+          "lego_target": "como",
+          "lego_known": "like",
+          "target_sentence": "Sí, eso suena como una gran idea.",
+          "known_sentence": "Yes that sounds like a great idea."
+        },
+        {
+          "seed_id": "S0403",
+          "lego_target": "como",
+          "lego_known": "as",
+          "target_sentence": "Deberíamos permanecer callados tanto tiempo como sea posible.",
+          "known_sentence": "We should remain quiet for as long as possible."
+        },
+        {
+          "seed_id": "S0618",
+          "lego_target": "como",
+          "lego_known": "like",
+          "target_sentence": "No se siente como mucho tiempo.",
+          "known_sentence": "It doesn't feel like a long time."
+        }
+      ]
+    },
+    {
+      "target_word": "bien",
+      "translations": [
+        "okay",
+        "well",
+        "fine"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0013",
+          "lego_target": "bien",
+          "lego_known": "well",
+          "target_sentence": "Hablas español muy bien.",
+          "known_sentence": "You speak Spanish very well."
+        },
+        {
+          "seed_id": "S0055",
+          "lego_target": "bien",
+          "lego_known": "well",
+          "target_sentence": "No disfruto despertarme cuando no dormí muy bien.",
+          "known_sentence": "I don't enjoy waking up when I didn't sleep very well."
+        },
+        {
+          "seed_id": "S0072",
+          "lego_target": "bien",
+          "lego_known": "well",
+          "target_sentence": "Pienso que estás haciéndolo muy bien.",
+          "known_sentence": "I think that you're doing very well."
+        },
+        {
+          "seed_id": "S0141",
+          "lego_target": "bien",
+          "lego_known": "okay",
+          "target_sentence": "No hay problema. Todo está bien.",
+          "known_sentence": "No problem. Everything is okay."
+        },
+        {
+          "seed_id": "S0406",
+          "lego_target": "bien",
+          "lego_known": "okay",
+          "target_sentence": "No, estoy seguro de que estará bien.",
+          "known_sentence": "No I'm sure it will be okay."
+        },
+        {
+          "seed_id": "S0633",
+          "lego_target": "bien",
+          "lego_known": "fine",
+          "target_sentence": "Un vaso grande de agua estaría bien.",
+          "known_sentence": "A large glass of water would be fine."
+        }
+      ]
+    },
+    {
+      "target_word": "Queremos",
+      "translations": [
+        "we want",
+        "We want to",
+        "We want"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0018",
+          "lego_target": "Queremos",
+          "lego_known": "We want",
+          "target_sentence": "Queremos encontrarnos a las seis esta tarde.",
+          "known_sentence": "We want to meet at six o'clock this evening."
+        },
+        {
+          "seed_id": "S0398",
+          "lego_target": "Queremos",
+          "lego_known": "We want to",
+          "target_sentence": "Queremos volvernos más pacientes con nuestros hijos.",
+          "known_sentence": "We want to become more patient with our children."
+        },
+        {
+          "seed_id": "S0666",
+          "lego_target": "Queremos",
+          "lego_known": "we want",
+          "target_sentence": "Queremos señor",
+          "known_sentence": "We want sir"
+        }
+      ]
+    },
+    {
+      "target_word": "Es",
+      "translations": [
+        "It's",
+        "It is",
+        "it's"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0028",
+          "lego_target": "Es",
+          "lego_known": "It is",
+          "target_sentence": "Es útil empezar a hablar tan pronto como puedas.",
+          "known_sentence": "It's useful to start talking as soon as you can."
+        },
+        {
+          "seed_id": "S0058",
+          "lego_target": "Es",
+          "lego_known": "It is",
+          "target_sentence": "Es interesante cuando entiendes suficientes palabras.",
+          "known_sentence": "It's interesting when you understand enough words."
+        },
+        {
+          "seed_id": "S0065",
+          "lego_target": "Es",
+          "lego_known": "It is",
+          "target_sentence": "Es importante tomar tiempo para probarte a ti mismo.",
+          "known_sentence": "It's important to take time to test yourself."
+        },
+        {
+          "seed_id": "S0143",
+          "lego_target": "Es",
+          "lego_known": "it's",
+          "target_sentence": "Es lo mismo de lo que estábamos hablando más temprano.",
+          "known_sentence": "It's the same thing as we were talking about earlier."
+        },
+        {
+          "seed_id": "S0329",
+          "lego_target": "Es",
+          "lego_known": "It is",
+          "target_sentence": "Es importante.",
+          "known_sentence": "It's important."
+        },
+        {
+          "seed_id": "S0541",
+          "lego_target": "Es",
+          "lego_known": "It's",
+          "target_sentence": "Es una buena idea intentar respirar despacio.",
+          "known_sentence": "It's a good idea to try and breathe slowly."
+        },
+        {
+          "seed_id": "S0545",
+          "lego_target": "Es",
+          "lego_known": "It's",
+          "target_sentence": "Es tu turno de llevar la ropa limpia arriba.",
+          "known_sentence": "It's your turn to take the clean clothes upstairs."
+        },
+        {
+          "seed_id": "S0558",
+          "lego_target": "Es",
+          "lego_known": "It's",
+          "target_sentence": "Es tan tarde en la noche.",
+          "known_sentence": "It's so late at night."
+        },
+        {
+          "seed_id": "S0640",
+          "lego_target": "Es",
+          "lego_known": "it's",
+          "target_sentence": "Es la roja.",
+          "known_sentence": "It's the red one."
+        }
+      ]
+    },
+    {
+      "target_word": "pueda",
+      "translations": [
+        "I'll be able",
+        "I can",
+        "can"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0029",
+          "lego_target": "pueda",
+          "lego_known": "I can",
+          "target_sentence": "Tengo ganas de hablar mejor tan pronto como pueda.",
+          "known_sentence": "I'm looking forward to speaking better as soon as I can."
+        },
+        {
+          "seed_id": "S0291",
+          "lego_target": "pueda",
+          "lego_known": "I'll be able",
+          "target_sentence": "Espero que pueda hablar mejor pronto.",
+          "known_sentence": "I hope I'll be able to speak better soon."
+        },
+        {
+          "seed_id": "S0336",
+          "lego_target": "pueda",
+          "lego_known": "can",
+          "target_sentence": "No pienso que ella pueda abrir la puerta.",
+          "known_sentence": "I don't think that she can open the door."
+        }
+      ]
+    },
+    {
+      "target_word": "a",
+      "translations": [
+        "~",
+        "∅",
+        "to"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0052",
+          "lego_target": "a",
+          "lego_known": "to",
+          "target_sentence": "Él quería escribir una carta a su amigo la semana pasada.",
+          "known_sentence": "He wanted to write a letter to his friend last week."
+        },
+        {
+          "seed_id": "S0085",
+          "lego_target": "a",
+          "lego_known": "∅",
+          "target_sentence": "No conozco a esas personas.",
+          "known_sentence": "I don't know those people."
+        },
+        {
+          "seed_id": "S0133",
+          "lego_target": "a",
+          "lego_known": "∅",
+          "target_sentence": "Llegas a conocer a alguien muy bien cuando trabajas juntos.",
+          "known_sentence": "You get to know someone very well when you work together."
+        },
+        {
+          "seed_id": "S0284",
+          "lego_target": "a",
+          "lego_known": "to",
+          "target_sentence": "¿Conoces a la amiga de mi hermana?",
+          "known_sentence": "Do you know my sister's friend?"
+        },
+        {
+          "seed_id": "S0297",
+          "lego_target": "a",
+          "lego_known": "to",
+          "target_sentence": "No conozco a muchas personas que hablan español.",
+          "known_sentence": "I don't know many people who speak Spanish."
+        },
+        {
+          "seed_id": "S0306",
+          "lego_target": "a",
+          "lego_known": "to",
+          "target_sentence": "Conozco a esa mujer joven que está hablando con tu amigo.",
+          "known_sentence": "I know that young woman who's talking to your friend."
+        },
+        {
+          "seed_id": "S0307",
+          "lego_target": "a",
+          "lego_known": "to",
+          "target_sentence": "Conozco a ese hombre joven que está sentado allá.",
+          "known_sentence": "I know that young man who's sitting over there."
+        },
+        {
+          "seed_id": "S0341",
+          "lego_target": "a",
+          "lego_known": "to",
+          "target_sentence": "Conocí a alguien hace unos días.",
+          "known_sentence": "I met someone a few days ago."
+        },
+        {
+          "seed_id": "S0342",
+          "lego_target": "a",
+          "lego_known": "to",
+          "target_sentence": "Conocí a alguien que dijo algo.",
+          "known_sentence": "I met someone who said something."
+        },
+        {
+          "seed_id": "S0379",
+          "lego_target": "a",
+          "lego_known": "to",
+          "target_sentence": "Sí, tuve la suerte de viajar a África.",
+          "known_sentence": "Yes I was lucky enough to travel to Africa."
+        },
+        {
+          "seed_id": "S0507",
+          "lego_target": "a",
+          "lego_known": "to",
+          "target_sentence": "Nos mudamos a la ciudad.",
+          "known_sentence": "We moved to the city."
+        },
+        {
+          "seed_id": "S0511",
+          "lego_target": "a",
+          "lego_known": "~",
+          "target_sentence": "Las noticias tardaron varias horas en llegar a todos en la oficina.",
+          "known_sentence": "The news took several hours to reach everyone in the office."
+        },
+        {
+          "seed_id": "S0519",
+          "lego_target": "a",
+          "lego_known": "~",
+          "target_sentence": "No he visto a su nuevo bebé todavía.",
+          "known_sentence": "I haven't seen their new baby yet."
+        },
+        {
+          "seed_id": "S0520",
+          "lego_target": "a",
+          "lego_known": "to",
+          "target_sentence": "Podría haberle pasado a toda la familia.",
+          "known_sentence": "It might have happened to the whole family."
+        },
+        {
+          "seed_id": "S0560",
+          "lego_target": "a",
+          "lego_known": "to",
+          "target_sentence": "Baja a la playa",
+          "known_sentence": "It goes down to the beach"
+        }
+      ]
+    },
+    {
+      "target_word": "en",
+      "translations": [
+        "at",
+        "in",
+        "on"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0053",
+          "lego_target": "en",
+          "lego_known": "in",
+          "target_sentence": "Ella quería poner su carta en su bolsa.",
+          "known_sentence": "She wanted to put his letter in her bag."
+        },
+        {
+          "seed_id": "S0095",
+          "lego_target": "en",
+          "lego_known": "on",
+          "target_sentence": "¿Estás listo para ir a casa en el próximo autobús?",
+          "known_sentence": "Are you ready to go home on the next bus?"
+        },
+        {
+          "seed_id": "S0134",
+          "lego_target": "en",
+          "lego_known": "at",
+          "target_sentence": "No es un problema cuando trabajas en algo difícil con ellos.",
+          "known_sentence": "It's not a problem when you work at something difficult with them."
+        },
+        {
+          "seed_id": "S0524",
+          "lego_target": "en",
+          "lego_known": "in",
+          "target_sentence": "Te llamaré de vuelta en tres o cuatro minutos.",
+          "known_sentence": "I'll call you back in three or four minutes."
+        },
+        {
+          "seed_id": "S0528",
+          "lego_target": "en",
+          "lego_known": "in",
+          "target_sentence": "Probablemente se supone que guarde esas cosas en otra habitación.",
+          "known_sentence": "I'm probably supposed to keep those things in another room."
+        },
+        {
+          "seed_id": "S0534",
+          "lego_target": "en",
+          "lego_known": "in",
+          "target_sentence": "No salgamos afuera en este clima terrible.",
+          "known_sentence": "Let's not go outside in this dreadful weather."
+        },
+        {
+          "seed_id": "S0547",
+          "lego_target": "en",
+          "lego_known": "in",
+          "target_sentence": "Porque ha estado jugando en el barro.",
+          "known_sentence": "Because he has been playing in the mud."
+        },
+        {
+          "seed_id": "S0552",
+          "lego_target": "en",
+          "lego_known": "at",
+          "target_sentence": "La iglesia en el otro extremo del pueblo es fea.",
+          "known_sentence": "The church at the other end of the village is ugly."
+        },
+        {
+          "seed_id": "S0641",
+          "lego_target": "en",
+          "lego_known": "on",
+          "target_sentence": "Pienso que es la roja en esa silla.",
+          "known_sentence": "I think that it's the red one on that chair."
+        }
+      ]
+    },
+    {
+      "target_word": "Entonces",
+      "translations": [
+        "so",
+        "So",
+        "Then"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0056",
+          "lego_target": "Entonces",
+          "lego_known": "So",
+          "target_sentence": "Entonces puedo recordar cómo decir algunas palabras.",
+          "known_sentence": "So I can remember how to say a few words."
+        },
+        {
+          "seed_id": "S0188",
+          "lego_target": "Entonces",
+          "lego_known": "so",
+          "target_sentence": "Entonces no necesito cambiar.",
+          "known_sentence": "So I don't need to change."
+        },
+        {
+          "seed_id": "S0490",
+          "lego_target": "Entonces",
+          "lego_known": "Then",
+          "target_sentence": "Entonces nunca confiaré en nadie jamás.",
+          "known_sentence": "Then I will never trust anyone ever again."
+        },
+        {
+          "seed_id": "S0588",
+          "lego_target": "Entonces",
+          "lego_known": "so",
+          "target_sentence": "Entonces quería crecer y dejar la casa.",
+          "known_sentence": "So I wanted to grow up and leave home."
+        }
+      ]
+    },
+    {
+      "target_word": "No,",
+      "translations": [
+        "no",
+        "No",
+        "No,"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0096",
+          "lego_target": "No,",
+          "lego_known": "No,",
+          "target_sentence": "No, no estoy listo todavía, necesito un poco más de tiempo.",
+          "known_sentence": "No I'm not ready yet, I need a little more time."
+        },
+        {
+          "seed_id": "S0183",
+          "lego_target": "No,",
+          "lego_known": "no",
+          "target_sentence": "No, me temo que no las he visto.",
+          "known_sentence": "No I'm afraid I haven't seen them."
+        },
+        {
+          "seed_id": "S0191",
+          "lego_target": "No,",
+          "lego_known": "no",
+          "target_sentence": "No, no me importa en absoluto.",
+          "known_sentence": "No I don't mind at all."
+        },
+        {
+          "seed_id": "S0273",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, desafortunadamente tengo demasiado trabajo.",
+          "known_sentence": "No unfortunately I've got too much work."
+        },
+        {
+          "seed_id": "S0276",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, puedo quedarme aquí un poco más de tiempo.",
+          "known_sentence": "No I can stay here for a little longer."
+        },
+        {
+          "seed_id": "S0280",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, solo tuve que hacer el trabajo más importante.",
+          "known_sentence": "No I only had to do the most important job."
+        },
+        {
+          "seed_id": "S0282",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, eso no es un problema.",
+          "known_sentence": "No that's not a problem."
+        },
+        {
+          "seed_id": "S0309",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, nunca la he visto antes.",
+          "known_sentence": "No I've never seen her before."
+        },
+        {
+          "seed_id": "S0318",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, no pienso que podría esta vez.",
+          "known_sentence": "No I don't think she could this time."
+        },
+        {
+          "seed_id": "S0330",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, no pienso que sea muy importante.",
+          "known_sentence": "No I don't think it's very important."
+        },
+        {
+          "seed_id": "S0339",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, pienso que se lastimó bastante mal.",
+          "known_sentence": "No I think he's hurt himself quite badly."
+        },
+        {
+          "seed_id": "S0351",
+          "lego_target": "No,",
+          "lego_known": "no",
+          "target_sentence": "No, no quería dejarme solo.",
+          "known_sentence": "No he didn't want to leave me on my own."
+        },
+        {
+          "seed_id": "S0357",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, solo quería enviarle un mensaje.",
+          "known_sentence": "No she just wanted to send her a message."
+        },
+        {
+          "seed_id": "S0362",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, estaba bastante callado después de que te fuiste.",
+          "known_sentence": "No he was rather quiet after you left."
+        },
+        {
+          "seed_id": "S0367",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, nadie me dijo.",
+          "known_sentence": "No nobody told me."
+        },
+        {
+          "seed_id": "S0375",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, no sabía lo que estaba haciendo.",
+          "known_sentence": "No I didn't know what she was doing."
+        },
+        {
+          "seed_id": "S0378",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, no tenía suficiente dinero para vacaciones.",
+          "known_sentence": "No I didn't have enough money for holidays."
+        },
+        {
+          "seed_id": "S0387",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, no pensé que tenía razón.",
+          "known_sentence": "No I didn't think she was right."
+        },
+        {
+          "seed_id": "S0401",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, sería mejor ir directo a casa.",
+          "known_sentence": "No it would be better to go straight home."
+        },
+        {
+          "seed_id": "S0406",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, estoy seguro de que estará bien.",
+          "known_sentence": "No I'm sure it will be okay."
+        },
+        {
+          "seed_id": "S0409",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, no importa lo que hagamos.",
+          "known_sentence": "No it doesn't matter what we do."
+        },
+        {
+          "seed_id": "S0424",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, están perdiendo el tiempo de todos.",
+          "known_sentence": "No they're wasting everybody's time."
+        },
+        {
+          "seed_id": "S0430",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, eso no sería posible.",
+          "known_sentence": "No that wouldn't be possible."
+        },
+        {
+          "seed_id": "S0436",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, hay un número mínimo que necesitan.",
+          "known_sentence": "No there's a minimum number they need."
+        },
+        {
+          "seed_id": "S0443",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, querían seguir haciéndolo de la misma manera.",
+          "known_sentence": "No they wanted to keep doing it the same way."
+        },
+        {
+          "seed_id": "S0450",
+          "lego_target": "No,",
+          "lego_known": "No",
+          "target_sentence": "No, tienen que tomar el tren ellos mismos.",
+          "known_sentence": "No they have to catch the train themselves."
+        },
+        {
+          "seed_id": "S0626",
+          "lego_target": "No,",
+          "lego_known": "no",
+          "target_sentence": "No, no tengo sed, gracias.",
+          "known_sentence": "No, I'm not thirsty, thank you."
+        }
+      ]
+    },
+    {
+      "target_word": "podría",
+      "translations": [
+        "I could",
+        "could",
+        "she could"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0116",
+          "lego_target": "podría",
+          "lego_known": "I could",
+          "target_sentence": "Esta no es la mejor opción que podría hacer.",
+          "known_sentence": "This isn't the best choice I could make."
+        },
+        {
+          "seed_id": "S0310",
+          "lego_target": "podría",
+          "lego_known": "could",
+          "target_sentence": "Ella podría escribir una historia sobre ese hombre.",
+          "known_sentence": "She could write a story about that man."
+        },
+        {
+          "seed_id": "S0312",
+          "lego_target": "podría",
+          "lego_known": "she could",
+          "target_sentence": "Ella dijo que podría usar la otra habitación mañana por la noche.",
+          "known_sentence": "She said that she could use the other room tomorrow night."
+        },
+        {
+          "seed_id": "S0314",
+          "lego_target": "podría",
+          "lego_known": "could",
+          "target_sentence": "Pienso que ella podría ponerlo en la mesa.",
+          "known_sentence": "I think that she could put it on the table."
+        },
+        {
+          "seed_id": "S0316",
+          "lego_target": "podría",
+          "lego_known": "could",
+          "target_sentence": "¿Piensas que ella podría traer a su hermano el lunes?",
+          "known_sentence": "Do you think that she could bring her brother on Monday?"
+        },
+        {
+          "seed_id": "S0317",
+          "lego_target": "podría",
+          "lego_known": "she could",
+          "target_sentence": "Sí, pienso que podría si quisiera.",
+          "known_sentence": "Yes I think she could if she wanted to."
+        },
+        {
+          "seed_id": "S0318",
+          "lego_target": "podría",
+          "lego_known": "she could",
+          "target_sentence": "No, no pienso que podría esta vez.",
+          "known_sentence": "No I don't think she could this time."
+        }
+      ]
+    },
+    {
+      "target_word": "ahora",
+      "translations": [
+        "ahead now",
+        "now"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0001",
+          "lego_target": "ahora",
+          "lego_known": "now",
+          "target_sentence": "Quiero hablar español contigo ahora.",
+          "known_sentence": "I want to speak Spanish with you now."
+        },
+        {
+          "seed_id": "S0009",
+          "lego_target": "ahora",
+          "lego_known": "now",
+          "target_sentence": "Hablo un poco de español ahora.",
+          "known_sentence": "I speak a little Spanish now."
+        },
+        {
+          "seed_id": "S0093",
+          "lego_target": "ahora",
+          "lego_known": "now",
+          "target_sentence": "Es tiempo de irse ahora.",
+          "known_sentence": "It's time to go now."
+        },
+        {
+          "seed_id": "S0480",
+          "lego_target": "ahora",
+          "lego_known": "ahead now",
+          "target_sentence": "Lo que sea que diga no está lejos ahora.",
+          "known_sentence": "Whatever he says it's not far ahead now."
+        }
+      ]
+    },
+    {
+      "target_word": "con",
+      "translations": [
+        "with",
+        "to"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0005",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Voy a practicar hablar con otra persona.",
+          "known_sentence": "I'm going to practise speaking with someone else."
+        },
+        {
+          "seed_id": "S0016",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Él quiere volver con todos los demás más tarde.",
+          "known_sentence": "He wants to come back with everyone else later on."
+        },
+        {
+          "seed_id": "S0051",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Disfruto hacer cosas interesantes con mis amigos.",
+          "known_sentence": "I enjoy doing interesting things with my friends."
+        },
+        {
+          "seed_id": "S0076",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Estoy muy feliz con cuánto he aprendido ya.",
+          "known_sentence": "I'm very happy with how much I've learnt already."
+        },
+        {
+          "seed_id": "S0083",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Estoy de acuerdo con lo que dijiste sobre tu amigo.",
+          "known_sentence": "I agree with what you said about your friend."
+        },
+        {
+          "seed_id": "S0084",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "No estoy de acuerdo con lo que él dijo sobre mi amigo.",
+          "known_sentence": "I don't agree with what he said about my friend."
+        },
+        {
+          "seed_id": "S0088",
+          "lego_target": "con",
+          "lego_known": "to",
+          "target_sentence": "No estoy listo para hablar con personas que no conozco todavía.",
+          "known_sentence": "I'm not ready to talk to people I don't know yet."
+        },
+        {
+          "seed_id": "S0134",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "No es un problema cuando trabajas en algo difícil con ellos.",
+          "known_sentence": "It's not a problem when you work at something difficult with them."
+        },
+        {
+          "seed_id": "S0204",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Quería que ella te ayudara a lidiar con los arreglos.",
+          "known_sentence": "I wanted her to help you to deal with the arrangements."
+        },
+        {
+          "seed_id": "S0234",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Conocí a alguien anoche que trabaja con tu hermano.",
+          "known_sentence": "I met someone last night who works with your brother."
+        },
+        {
+          "seed_id": "S0245",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Estoy feliz con cuánto he hecho en poco tiempo",
+          "known_sentence": "I'm happy with how much I've done in a short time"
+        },
+        {
+          "seed_id": "S0306",
+          "lego_target": "con",
+          "lego_known": "to",
+          "target_sentence": "Conozco a esa mujer joven que está hablando con tu amigo.",
+          "known_sentence": "I know that young woman who's talking to your friend."
+        },
+        {
+          "seed_id": "S0333",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+          "known_sentence": "She said that she can't spend much time with the group."
+        },
+        {
+          "seed_id": "S0355",
+          "lego_target": "con",
+          "lego_known": "to",
+          "target_sentence": "¿Necesitaba ella hablar con esa mujer que conoces?",
+          "known_sentence": "Did she need to talk to that woman you know?"
+        },
+        {
+          "seed_id": "S0384",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "No pude estar de acuerdo con lo que dijo hace un momento.",
+          "known_sentence": "I couldn't agree with what he said a moment ago."
+        },
+        {
+          "seed_id": "S0385",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "¿Estuviste de acuerdo con ella?",
+          "known_sentence": "Did you agree with her?"
+        },
+        {
+          "seed_id": "S0386",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Sí, estuve de acuerdo con ella.",
+          "known_sentence": "Yes I agreed with her."
+        },
+        {
+          "seed_id": "S0392",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Ese niño con el pelo negro frente a la oficina de correos.",
+          "known_sentence": "That child with the black hair opposite the post office."
+        },
+        {
+          "seed_id": "S0393",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Ese niño con la camisa verde.",
+          "known_sentence": "That boy with the green shirt."
+        },
+        {
+          "seed_id": "S0394",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Esa niña con el vestido amarillo.",
+          "known_sentence": "That girl with the yellow dress."
+        },
+        {
+          "seed_id": "S0398",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Queremos volvernos más pacientes con nuestros hijos.",
+          "known_sentence": "We want to become more patient with our children."
+        },
+        {
+          "seed_id": "S0594",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Tuve que compartir mis juguetes con mi hermana.",
+          "known_sentence": "I had to share my toys with my sister."
+        },
+        {
+          "seed_id": "S0629",
+          "lego_target": "con",
+          "lego_known": "with",
+          "target_sentence": "Me gusta con leche pero sin azúcar.",
+          "known_sentence": "I like it with milk but without sugar."
+        }
+      ]
+    },
+    {
+      "target_word": "termines",
+      "translations": [
+        "you finish",
+        "you'll finish"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0011",
+          "lego_target": "termines",
+          "lego_known": "you finish",
+          "target_sentence": "Me gustaría poder hablar después de que termines.",
+          "known_sentence": "I'd like to be able to speak after you finish."
+        },
+        {
+          "seed_id": "S0149",
+          "lego_target": "termines",
+          "lego_known": "you'll finish",
+          "target_sentence": "Esto no es muy difícil, entonces espero que termines pronto.",
+          "known_sentence": "This isn't very difficult, so I hope you'll finish soon."
+        }
+      ]
+    },
+    {
+      "target_word": "quiere",
+      "translations": [
+        "wants",
+        "he wants"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0016",
+          "lego_target": "quiere",
+          "lego_known": "wants",
+          "target_sentence": "Él quiere volver con todos los demás más tarde.",
+          "known_sentence": "He wants to come back with everyone else later on."
+        },
+        {
+          "seed_id": "S0017",
+          "lego_target": "quiere",
+          "lego_known": "wants",
+          "target_sentence": "Ella quiere averiguar cuál es la respuesta.",
+          "known_sentence": "She wants to find out what the answer is."
+        },
+        {
+          "seed_id": "S0299",
+          "lego_target": "quiere",
+          "lego_known": "wants",
+          "target_sentence": "Él quiere pagar la mitad.",
+          "known_sentence": "He wants to pay half."
+        },
+        {
+          "seed_id": "S0301",
+          "lego_target": "quiere",
+          "lego_known": "he wants",
+          "target_sentence": "Él dijo que quiere mostrarte algo.",
+          "known_sentence": "He said that he wants to show you something."
+        },
+        {
+          "seed_id": "S0303",
+          "lego_target": "quiere",
+          "lego_known": "wants",
+          "target_sentence": "Pienso que él quiere sentarse.",
+          "known_sentence": "I think that he wants to sit down."
+        },
+        {
+          "seed_id": "S0664",
+          "lego_target": "quiere",
+          "lego_known": "wants",
+          "target_sentence": "Él quiere señor",
+          "known_sentence": "He wants sir"
+        },
+        {
+          "seed_id": "S0665",
+          "lego_target": "quiere",
+          "lego_known": "wants",
+          "target_sentence": "Ella quiere señora",
+          "known_sentence": "She wants madam"
+        }
+      ]
+    },
+    {
+      "target_word": "encontrarnos",
+      "translations": [
+        "to meet us",
+        "to meet"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0018",
+          "lego_target": "encontrarnos",
+          "lego_known": "to meet",
+          "target_sentence": "Queremos encontrarnos a las seis esta tarde.",
+          "known_sentence": "We want to meet at six o'clock this evening."
+        },
+        {
+          "seed_id": "S0138",
+          "lego_target": "encontrarnos",
+          "lego_known": "to meet us",
+          "target_sentence": "Aquí era donde mi amigo quería encontrarnos.",
+          "known_sentence": "This was where my friend wanted to meet us."
+        }
+      ]
+    },
+    {
+      "target_word": "habla",
+      "translations": [
+        "speaks",
+        "speak"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0022",
+          "lego_target": "habla",
+          "lego_known": "speak",
+          "target_sentence": "Porque quiero conocer gente que habla español.",
+          "known_sentence": "Because I want to meet people who speak Spanish."
+        },
+        {
+          "seed_id": "S0285",
+          "lego_target": "habla",
+          "lego_known": "speaks",
+          "target_sentence": "Ella habla español.",
+          "known_sentence": "She speaks Spanish."
+        }
+      ]
+    },
+    {
+      "target_word": "más",
+      "translations": [
+        "most",
+        "more"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0023",
+          "lego_target": "más",
+          "lego_known": "more",
+          "target_sentence": "Voy a empezar a hablar más pronto.",
+          "known_sentence": "I'm going to start talking more soon."
+        },
+        {
+          "seed_id": "S0073",
+          "lego_target": "más",
+          "lego_known": "more",
+          "target_sentence": "Muchas gracias, pero tengo más que aprender.",
+          "known_sentence": "Thank you very much, but I've got more to learn."
+        },
+        {
+          "seed_id": "S0075",
+          "lego_target": "más",
+          "lego_known": "more",
+          "target_sentence": "¿Tienes más que aprender?",
+          "known_sentence": "Have you got more to learn?"
+        },
+        {
+          "seed_id": "S0101",
+          "lego_target": "más",
+          "lego_known": "more",
+          "target_sentence": "Estoy disfrutando averiguar más sobre este idioma.",
+          "known_sentence": "I'm enjoying finding out more about this language."
+        },
+        {
+          "seed_id": "S0242",
+          "lego_target": "más",
+          "lego_known": "more",
+          "target_sentence": "Quiero darle más tiempo a ella.",
+          "known_sentence": "I want to give her more time."
+        },
+        {
+          "seed_id": "S0398",
+          "lego_target": "más",
+          "lego_known": "more",
+          "target_sentence": "Queremos volvernos más pacientes con nuestros hijos.",
+          "known_sentence": "We want to become more patient with our children."
+        },
+        {
+          "seed_id": "S0444",
+          "lego_target": "más",
+          "lego_known": "more",
+          "target_sentence": "Sí, pensaron que podría hacerse más eficientemente.",
+          "known_sentence": "Yes they thought it could be done more efficiently."
+        },
+        {
+          "seed_id": "S0458",
+          "lego_target": "más",
+          "lego_known": "more",
+          "target_sentence": "Todo era mucho más fácil en el pasado.",
+          "known_sentence": "It was all much easier in the past."
+        },
+        {
+          "seed_id": "S0485",
+          "lego_target": "más",
+          "lego_known": "more",
+          "target_sentence": "Nada me haría más feliz que escapar.",
+          "known_sentence": "Nothing would make me happier than to get away."
+        },
+        {
+          "seed_id": "S0513",
+          "lego_target": "más",
+          "lego_known": "most",
+          "target_sentence": "Duele más cuando muevo mi cabeza arriba y abajo.",
+          "known_sentence": "It hurts most when I move my head up and down."
+        },
+        {
+          "seed_id": "S0565",
+          "lego_target": "más",
+          "lego_known": "more",
+          "target_sentence": "Habría pensado sobre ello más cuidadosamente.",
+          "known_sentence": "I'd have thought about it more carefully."
+        },
+        {
+          "seed_id": "S0566",
+          "lego_target": "más",
+          "lego_known": "more",
+          "target_sentence": "Habría pensado más si hubiera sido mi elección.",
+          "known_sentence": "I'd have thought more if it had been my choice."
+        }
+      ]
+    },
+    {
+      "target_word": "ayudarme",
+      "translations": [
+        "helping me",
+        "help me"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0025",
+          "lego_target": "ayudarme",
+          "lego_known": "help me",
+          "target_sentence": "¿Vas a ayudarme antes de que tenga que irme?",
+          "known_sentence": "Are you going to help me before I have to go?"
+        },
+        {
+          "seed_id": "S0063",
+          "lego_target": "ayudarme",
+          "lego_known": "helping me",
+          "target_sentence": "¿Estás seguro que no te importa ayudarme?",
+          "known_sentence": "Are you sure you don't mind helping me?"
+        },
+        {
+          "seed_id": "S0074",
+          "lego_target": "ayudarme",
+          "lego_known": "helping me",
+          "target_sentence": "Muchas gracias por ayudarme a entender.",
+          "known_sentence": "Thank you very much for helping me to understand."
+        }
+      ]
+    },
+    {
+      "target_word": "casi",
+      "translations": [
+        "nearly",
+        "almost"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0026",
+          "lego_target": "casi",
+          "lego_known": "nearly",
+          "target_sentence": "Me gusta sentir como si estuviera casi listo para irme.",
+          "known_sentence": "I like feeling as if I'm nearly ready to go."
+        },
+        {
+          "seed_id": "S0449",
+          "lego_target": "casi",
+          "lego_known": "almost",
+          "target_sentence": "Dijeron que estaban casi listos.",
+          "known_sentence": "They said that they were almost ready."
+        }
+      ]
+    },
+    {
+      "target_word": "para",
+      "translations": [
+        "for",
+        "to"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0027",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "No me gusta tomar demasiado tiempo para responder.",
+          "known_sentence": "I don't like taking too much time to answer."
+        },
+        {
+          "seed_id": "S0065",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "Es importante tomar tiempo para probarte a ti mismo.",
+          "known_sentence": "It's important to take time to test yourself."
+        },
+        {
+          "seed_id": "S0088",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "No estoy listo para hablar con personas que no conozco todavía.",
+          "known_sentence": "I'm not ready to talk to people I don't know yet."
+        },
+        {
+          "seed_id": "S0091",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "Es difícil pensar suficientemente rápido para responder a tiempo.",
+          "known_sentence": "It's difficult to think quickly enough to answer in time."
+        },
+        {
+          "seed_id": "S0095",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "¿Estás listo para ir a casa en el próximo autobús?",
+          "known_sentence": "Are you ready to go home on the next bus?"
+        },
+        {
+          "seed_id": "S0097",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "Sí, estoy listo para irme tan pronto como quieras.",
+          "known_sentence": "Yes I'm ready to go as soon as you want."
+        },
+        {
+          "seed_id": "S0109",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "Debemos trabajar duro para aprender muchas palabras nuevas.",
+          "known_sentence": "We must work hard to learn a lot of new words."
+        },
+        {
+          "seed_id": "S0115",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "No siento como si estuviera listo para tener una conversación.",
+          "known_sentence": "I don't feel as if I'm ready to have a conversation."
+        },
+        {
+          "seed_id": "S0198",
+          "lego_target": "para",
+          "lego_known": "for",
+          "target_sentence": "Mi hija trabaja para el consejo.",
+          "known_sentence": "My daughter works for the council."
+        },
+        {
+          "seed_id": "S0294",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "No tengo suficiente tiempo para llamarte esta noche.",
+          "known_sentence": "I don't have enough time to call you tonight."
+        },
+        {
+          "seed_id": "S0332",
+          "lego_target": "para",
+          "lego_known": "for",
+          "target_sentence": "Él puede construir una nueva vida para su hermana.",
+          "known_sentence": "He can build a new life for his sister."
+        },
+        {
+          "seed_id": "S0345",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "Que dijo que no está listo para irse todavía.",
+          "known_sentence": "Who said that he's not ready to leave yet."
+        },
+        {
+          "seed_id": "S0378",
+          "lego_target": "para",
+          "lego_known": "for",
+          "target_sentence": "No, no tenía suficiente dinero para vacaciones.",
+          "known_sentence": "No I didn't have enough money for holidays."
+        },
+        {
+          "seed_id": "S0402",
+          "lego_target": "para",
+          "lego_known": "for",
+          "target_sentence": "Sí, sería agradable parar en algún lugar para comer.",
+          "known_sentence": "Yes it would be nice to stop somewhere for food."
+        },
+        {
+          "seed_id": "S0411",
+          "lego_target": "para",
+          "lego_known": "for",
+          "target_sentence": "Nos gustaría reservar una mesa para cuatro esta noche.",
+          "known_sentence": "We would like to reserve a table for four tonight."
+        },
+        {
+          "seed_id": "S0501",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "Si solo pudiera confiar en ustedes para jugar juntos sin discutir.",
+          "known_sentence": "If only I could trust you to play together without arguing."
+        },
+        {
+          "seed_id": "S0510",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "Se fue a buscar un lugar seguro para estacionar el coche.",
+          "known_sentence": "She's gone to look for somewhere safe to park the car."
+        },
+        {
+          "seed_id": "S0555",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "Y estoy demasiado cansado para traer una nueva.",
+          "known_sentence": "And I'm too tired to fetch a new one."
+        },
+        {
+          "seed_id": "S0574",
+          "lego_target": "para",
+          "lego_known": "for",
+          "target_sentence": "Las vacaciones son muy especiales para todos.",
+          "known_sentence": "The holidays are very special for everyone."
+        },
+        {
+          "seed_id": "S0587",
+          "lego_target": "para",
+          "lego_known": "for",
+          "target_sentence": "Ella solía insistir en que tuviéramos huevos para cenar.",
+          "known_sentence": "She used to insist that we had eggs for supper."
+        },
+        {
+          "seed_id": "S0603",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "No teníamos ningún lugar para vivir en ese momento.",
+          "known_sentence": "We didn't have anywhere to live at the time."
+        },
+        {
+          "seed_id": "S0611",
+          "lego_target": "para",
+          "lego_known": "to",
+          "target_sentence": "Habría estado listo para buscar en otro lugar.",
+          "known_sentence": "I would have been ready to look somewhere else."
+        }
+      ]
+    },
+    {
+      "target_word": "útil",
+      "translations": [
+        "helpful",
+        "useful"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0028",
+          "lego_target": "útil",
+          "lego_known": "useful",
+          "target_sentence": "Es útil empezar a hablar tan pronto como puedas.",
+          "known_sentence": "It's useful to start talking as soon as you can."
+        },
+        {
+          "seed_id": "S0172",
+          "lego_target": "útil",
+          "lego_known": "helpful",
+          "target_sentence": "Sí, eso sería muy útil.",
+          "known_sentence": "Yes that would be very helpful."
+        }
+      ]
+    },
+    {
+      "target_word": "puedas",
+      "translations": [
+        "you'll be able",
+        "you can"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0028",
+          "lego_target": "puedas",
+          "lego_known": "you can",
+          "target_sentence": "Es útil empezar a hablar tan pronto como puedas.",
+          "known_sentence": "It's useful to start talking as soon as you can."
+        },
+        {
+          "seed_id": "S0292",
+          "lego_target": "puedas",
+          "lego_known": "you'll be able",
+          "target_sentence": "Espero que puedas venir a la fiesta.",
+          "known_sentence": "I hope you'll be able to come to the party."
+        }
+      ]
+    },
+    {
+      "target_word": "por",
+      "translations": [
+        "for",
+        "about"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0038",
+          "lego_target": "por",
+          "lego_known": "for",
+          "target_sentence": "He estado aprendiendo por aproximadamente una semana.",
+          "known_sentence": "I've been learning for about a week."
+        },
+        {
+          "seed_id": "S0046",
+          "lego_target": "por",
+          "lego_known": "about",
+          "target_sentence": "Pero no me preocupo por cometer errores.",
+          "known_sentence": "But I don't worry about making mistakes."
+        },
+        {
+          "seed_id": "S0074",
+          "lego_target": "por",
+          "lego_known": "for",
+          "target_sentence": "Muchas gracias por ayudarme a entender.",
+          "known_sentence": "Thank you very much for helping me to understand."
+        },
+        {
+          "seed_id": "S0100",
+          "lego_target": "por",
+          "lego_known": "about",
+          "target_sentence": "No deberías preocuparte por hacer algo similar.",
+          "known_sentence": "You shouldn't worry about doing something similar."
+        },
+        {
+          "seed_id": "S0142",
+          "lego_target": "por",
+          "lego_known": "for",
+          "target_sentence": "Eso es muy amable de tu parte y estoy agradecido contigo por ayudar.",
+          "known_sentence": "That's very kind of you and I'm grateful to you for helping."
+        },
+        {
+          "seed_id": "S0343",
+          "lego_target": "por",
+          "lego_known": "about",
+          "target_sentence": "Que dijo que está preocupada por la economía.",
+          "known_sentence": "Who said that she's worried about the economy."
+        },
+        {
+          "seed_id": "S0509",
+          "lego_target": "por",
+          "lego_known": "for",
+          "target_sentence": "Escuché que vas a pagar por una cama nueva.",
+          "known_sentence": "I heard that you're going to pay for a new bed."
+        },
+        {
+          "seed_id": "S0570",
+          "lego_target": "por",
+          "lego_known": "for",
+          "target_sentence": "¿Cuánto estás dispuesto a pagar por tu boleto?",
+          "known_sentence": "How much are you willing to pay for your ticket?"
+        }
+      ]
+    },
+    {
+      "target_word": "aproximadamente",
+      "translations": [
+        "about",
+        "at about"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0038",
+          "lego_target": "aproximadamente",
+          "lego_known": "about",
+          "target_sentence": "He estado aprendiendo por aproximadamente una semana.",
+          "known_sentence": "I've been learning for about a week."
+        },
+        {
+          "seed_id": "S0454",
+          "lego_target": "aproximadamente",
+          "lego_known": "at about",
+          "target_sentence": "Nuestros amigos vinieron aproximadamente a las seis.",
+          "known_sentence": "Our friends came round at about six o'clock."
+        }
+      ]
+    },
+    {
+      "target_word": "todavía",
+      "translations": [
+        "yet",
+        "still"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0060",
+          "lego_target": "todavía",
+          "lego_known": "yet",
+          "target_sentence": "No sé cómo decir suficientes palabras diferentes todavía.",
+          "known_sentence": "I don't know how to say enough different words yet."
+        },
+        {
+          "seed_id": "S0088",
+          "lego_target": "todavía",
+          "lego_known": "yet",
+          "target_sentence": "No estoy listo para hablar con personas que no conozco todavía.",
+          "known_sentence": "I'm not ready to talk to people I don't know yet."
+        },
+        {
+          "seed_id": "S0345",
+          "lego_target": "todavía",
+          "lego_known": "yet",
+          "target_sentence": "Que dijo que no está listo para irse todavía.",
+          "known_sentence": "Who said that he's not ready to leave yet."
+        },
+        {
+          "seed_id": "S0431",
+          "lego_target": "todavía",
+          "lego_known": "yet",
+          "target_sentence": "No están listos todavía pero estarán listos pronto.",
+          "known_sentence": "They're not ready yet but they'll be ready soon."
+        },
+        {
+          "seed_id": "S0440",
+          "lego_target": "todavía",
+          "lego_known": "still",
+          "target_sentence": "Quieren viajar mientras todavía son jóvenes.",
+          "known_sentence": "They want to travel while they're still young."
+        },
+        {
+          "seed_id": "S0519",
+          "lego_target": "todavía",
+          "lego_known": "yet",
+          "target_sentence": "No he visto a su nuevo bebé todavía.",
+          "known_sentence": "I haven't seen their new baby yet."
+        },
+        {
+          "seed_id": "S0593",
+          "lego_target": "todavía",
+          "lego_known": "still",
+          "target_sentence": "Por mucho que argumenté todavía tuve que compartir.",
+          "known_sentence": "However much I argued I still had to share."
+        }
+      ]
+    },
+    {
+      "target_word": "fácil",
+      "translations": [
+        "easy",
+        "easier"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0064",
+          "lego_target": "fácil",
+          "lego_known": "easy",
+          "target_sentence": "Aprender español no es fácil pero es divertido.",
+          "known_sentence": "Learning Spanish isn't easy but it is fun."
+        },
+        {
+          "seed_id": "S0458",
+          "lego_target": "fácil",
+          "lego_known": "easier",
+          "target_sentence": "Todo era mucho más fácil en el pasado.",
+          "known_sentence": "It was all much easier in the past."
+        },
+        {
+          "seed_id": "S0483",
+          "lego_target": "fácil",
+          "lego_known": "easy",
+          "target_sentence": "La vida no es fácil pero no se supone que sea fácil.",
+          "known_sentence": "Life isn't easy but it's not meant to be easy."
+        },
+        {
+          "seed_id": "S0483",
+          "lego_target": "fácil",
+          "lego_known": "easy",
+          "target_sentence": "La vida no es fácil pero no se supone que sea fácil.",
+          "known_sentence": "Life isn't easy but it's not meant to be easy."
+        }
+      ]
+    },
+    {
+      "target_word": "nadie",
+      "translations": [
+        "nobody",
+        "anyone"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0071",
+          "lego_target": "nadie",
+          "lego_known": "anyone",
+          "target_sentence": "No queríamos dejar que nadie escuchara la verdad.",
+          "known_sentence": "We didn't want to let anyone hear the truth."
+        },
+        {
+          "seed_id": "S0367",
+          "lego_target": "nadie",
+          "lego_known": "nobody",
+          "target_sentence": "No, nadie me dijo.",
+          "known_sentence": "No nobody told me."
+        }
+      ]
+    },
+    {
+      "target_word": "dijo",
+      "translations": [
+        "said",
+        "he said"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0084",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "No estoy de acuerdo con lo que él dijo sobre mi amigo.",
+          "known_sentence": "I don't agree with what he said about my friend."
+        },
+        {
+          "seed_id": "S0301",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Él dijo que quiere mostrarte algo.",
+          "known_sentence": "He said that he wants to show you something."
+        },
+        {
+          "seed_id": "S0302",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Ella dijo que no quiere vivir en una ciudad.",
+          "known_sentence": "She said that she doesn't want to live in a city."
+        },
+        {
+          "seed_id": "S0312",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Ella dijo que podría usar la otra habitación mañana por la noche.",
+          "known_sentence": "She said that she could use the other room tomorrow night."
+        },
+        {
+          "seed_id": "S0313",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Él dijo que no podía ver los cinco juegos.",
+          "known_sentence": "He said that he couldn't watch all five games."
+        },
+        {
+          "seed_id": "S0322",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Ella dijo que necesita leer el mismo libro.",
+          "known_sentence": "She said that she needs to read the same book."
+        },
+        {
+          "seed_id": "S0323",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Él dijo que no necesita caminar a la escuela.",
+          "known_sentence": "He said that he doesn't need to walk to school."
+        },
+        {
+          "seed_id": "S0333",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+          "known_sentence": "She said that she can't spend much time with the group."
+        },
+        {
+          "seed_id": "S0334",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Él dijo que puede dejarte sostener al gatito",
+          "known_sentence": "He said that he can let you hold the kitten"
+        },
+        {
+          "seed_id": "S0342",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Conocí a alguien que dijo algo.",
+          "known_sentence": "I met someone who said something."
+        },
+        {
+          "seed_id": "S0343",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Que dijo que está preocupada por la economía.",
+          "known_sentence": "Who said that she's worried about the economy."
+        },
+        {
+          "seed_id": "S0344",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Que dijo que está feliz de ayudarte.",
+          "known_sentence": "Who said that he's happy to help you."
+        },
+        {
+          "seed_id": "S0345",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Que dijo que no está listo para irse todavía.",
+          "known_sentence": "Who said that he's not ready to leave yet."
+        },
+        {
+          "seed_id": "S0358",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Tu amiga dijo que no podía alcanzar la cima.",
+          "known_sentence": "Your friend said that she couldn't reach the top."
+        },
+        {
+          "seed_id": "S0359",
+          "lego_target": "dijo",
+          "lego_known": "said",
+          "target_sentence": "Tu amigo dijo que podía girar a la izquierda.",
+          "known_sentence": "Your friend said that he could turn left."
+        },
+        {
+          "seed_id": "S0383",
+          "lego_target": "dijo",
+          "lego_known": "he said",
+          "target_sentence": "Sí, dijo que quería ponerlo en el jardín.",
+          "known_sentence": "Yes he said he wanted to put it in the garden."
+        },
+        {
+          "seed_id": "S0384",
+          "lego_target": "dijo",
+          "lego_known": "he said",
+          "target_sentence": "No pude estar de acuerdo con lo que dijo hace un momento.",
+          "known_sentence": "I couldn't agree with what he said a moment ago."
+        }
+      ]
+    },
+    {
+      "target_word": "mucho",
+      "translations": [
+        "much",
+        "a lot"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0089",
+          "lego_target": "mucho",
+          "lego_known": "a lot",
+          "target_sentence": "Pienso que he hecho mucho en poco tiempo.",
+          "known_sentence": "I think that I've done a lot in a short time."
+        },
+        {
+          "seed_id": "S0218",
+          "lego_target": "mucho",
+          "lego_known": "much",
+          "target_sentence": "No hice mucho el domingo.",
+          "known_sentence": "I didn't do much on Sunday."
+        },
+        {
+          "seed_id": "S0244",
+          "lego_target": "mucho",
+          "lego_known": "a lot",
+          "target_sentence": "He aprendido mucho ya",
+          "known_sentence": "I've learnt a lot already"
+        },
+        {
+          "seed_id": "S0279",
+          "lego_target": "mucho",
+          "lego_known": "much",
+          "target_sentence": "Sí, porque no quedaba mucho tiempo.",
+          "known_sentence": "Yes because there wasn't much time left."
+        },
+        {
+          "seed_id": "S0363",
+          "lego_target": "mucho",
+          "lego_known": "a lot",
+          "target_sentence": "Sí, tenía ganas de hablar mucho.",
+          "known_sentence": "Yes he felt like talking a lot."
+        },
+        {
+          "seed_id": "S0458",
+          "lego_target": "mucho",
+          "lego_known": "much",
+          "target_sentence": "Todo era mucho más fácil en el pasado.",
+          "known_sentence": "It was all much easier in the past."
+        }
+      ]
+    },
+    {
+      "target_word": "sería",
+      "translations": [
+        "it would be",
+        "would be"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0090",
+          "lego_target": "sería",
+          "lego_known": "would be",
+          "target_sentence": "Si puedes hablar más despacio eso sería genial.",
+          "known_sentence": "If you can speak more slowly that would be great."
+        },
+        {
+          "seed_id": "S0172",
+          "lego_target": "sería",
+          "lego_known": "would be",
+          "target_sentence": "Sí, eso sería muy útil.",
+          "known_sentence": "Yes that would be very helpful."
+        },
+        {
+          "seed_id": "S0401",
+          "lego_target": "sería",
+          "lego_known": "it would be",
+          "target_sentence": "No, sería mejor ir directo a casa.",
+          "known_sentence": "No it would be better to go straight home."
+        },
+        {
+          "seed_id": "S0402",
+          "lego_target": "sería",
+          "lego_known": "it would be",
+          "target_sentence": "Sí, sería agradable parar en algún lugar para comer.",
+          "known_sentence": "Yes it would be nice to stop somewhere for food."
+        },
+        {
+          "seed_id": "S0571",
+          "lego_target": "sería",
+          "lego_known": "would be",
+          "target_sentence": "No estoy convencido de que eso sería una muy buena idea.",
+          "known_sentence": "I'm not convinced that would be a very good idea."
+        },
+        {
+          "seed_id": "S0624",
+          "lego_target": "sería",
+          "lego_known": "would be",
+          "target_sentence": "Sí, eso sería genial, por favor.",
+          "known_sentence": "Yes, that would be great, please."
+        }
+      ]
+    },
+    {
+      "target_word": "Necesitamos",
+      "translations": [
+        "we need",
+        "We need to"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0104",
+          "lego_target": "Necesitamos",
+          "lego_known": "we need",
+          "target_sentence": "Necesitamos cambiar lo que estamos haciendo.",
+          "known_sentence": "We need to change what we're doing."
+        },
+        {
+          "seed_id": "S0395",
+          "lego_target": "Necesitamos",
+          "lego_known": "We need to",
+          "target_sentence": "Necesitamos girar a la izquierda en la próxima esquina.",
+          "known_sentence": "We need to turn left at the next corner."
+        }
+      ]
+    },
+    {
+      "target_word": "fue",
+      "translations": [
+        "was",
+        "it was"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0125",
+          "lego_target": "fue",
+          "lego_known": "was",
+          "target_sentence": "Creo que tu idea fue muy buena.",
+          "known_sentence": "I believe that your idea was very good."
+        },
+        {
+          "seed_id": "S0147",
+          "lego_target": "fue",
+          "lego_known": "was",
+          "target_sentence": "Ella fue muy amable cuando me vio sintiéndome nervioso.",
+          "known_sentence": "She was very kind when she saw me feeling nervous."
+        },
+        {
+          "seed_id": "S0617",
+          "lego_target": "fue",
+          "lego_known": "it was",
+          "target_sentence": "Pensaste que fue un error.",
+          "known_sentence": "You thought that it was a mistake."
+        }
+      ]
+    },
+    {
+      "target_word": "ella",
+      "translations": [
+        "her",
+        "she"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0132",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "Eso es menos emocionante que lo que ella estaba diciendo.",
+          "known_sentence": "That's less exciting than what she was saying."
+        },
+        {
+          "seed_id": "S0204",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "Quería que ella te ayudara a lidiar con los arreglos.",
+          "known_sentence": "I wanted her to help you to deal with the arrangements."
+        },
+        {
+          "seed_id": "S0289",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "Me pregunto si ella va a estar ahí esta tarde.",
+          "known_sentence": "I wonder if she's going to be there this afternoon."
+        },
+        {
+          "seed_id": "S0304",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "Pienso que ella no quiere trabajar desde casa.",
+          "known_sentence": "I think that she doesn't want to work from home."
+        },
+        {
+          "seed_id": "S0314",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "Pienso que ella podría ponerlo en la mesa.",
+          "known_sentence": "I think that she could put it on the table."
+        },
+        {
+          "seed_id": "S0316",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "¿Piensas que ella podría traer a su hermano el lunes?",
+          "known_sentence": "Do you think that she could bring her brother on Monday?"
+        },
+        {
+          "seed_id": "S0326",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "No pienso que ella necesite vender la compañía.",
+          "known_sentence": "I don't think that she needs to sell the company."
+        },
+        {
+          "seed_id": "S0327",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "¿Piensas que ella necesita ofrecer otra manera?",
+          "known_sentence": "Do you think that she needs to offer another way?"
+        },
+        {
+          "seed_id": "S0336",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "No pienso que ella pueda abrir la puerta.",
+          "known_sentence": "I don't think that she can open the door."
+        },
+        {
+          "seed_id": "S0355",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "¿Necesitaba ella hablar con esa mujer que conoces?",
+          "known_sentence": "Did she need to talk to that woman you know?"
+        },
+        {
+          "seed_id": "S0365",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "No escuché lo que ella le dijo.",
+          "known_sentence": "I didn't hear what she said to him."
+        },
+        {
+          "seed_id": "S0372",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "¿Viste lo que ella estaba intentando crear?",
+          "known_sentence": "Did you see what she was trying to create?"
+        },
+        {
+          "seed_id": "S0380",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "Pregunté lo que ella quería incluir.",
+          "known_sentence": "I asked what she wanted to include."
+        },
+        {
+          "seed_id": "S0386",
+          "lego_target": "ella",
+          "lego_known": "her",
+          "target_sentence": "Sí, estuve de acuerdo con ella.",
+          "known_sentence": "Yes I agreed with her."
+        },
+        {
+          "seed_id": "S0604",
+          "lego_target": "ella",
+          "lego_known": "she",
+          "target_sentence": "Ella se ofreció a dejarnos quedarnos con ella.",
+          "known_sentence": "She offered to let us stay with her."
+        }
+      ]
+    },
+    {
+      "target_word": "piensas",
+      "translations": [
+        "do you think",
+        "you think"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0135",
+          "lego_target": "piensas",
+          "lego_known": "you think",
+          "target_sentence": "No sé por qué piensas que es tan bueno.",
+          "known_sentence": "I don't know why you think that it's so good."
+        },
+        {
+          "seed_id": "S0162",
+          "lego_target": "piensas",
+          "lego_known": "do you think",
+          "target_sentence": "¿Qué piensas sobre eso?",
+          "known_sentence": "What do you think about that?"
+        }
+      ]
+    },
+    {
+      "target_word": "feliz",
+      "translations": [
+        "happier",
+        "happy"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0145",
+          "lego_target": "feliz",
+          "lego_known": "happy",
+          "target_sentence": "¿Por qué no estás feliz ya?",
+          "known_sentence": "Why are you not happy any more?"
+        },
+        {
+          "seed_id": "S0408",
+          "lego_target": "feliz",
+          "lego_known": "happy",
+          "target_sentence": "Sí, esa es la mejor manera de hacer una familia feliz.",
+          "known_sentence": "Yes that's the best way to make a happy family."
+        },
+        {
+          "seed_id": "S0485",
+          "lego_target": "feliz",
+          "lego_known": "happier",
+          "target_sentence": "Nada me haría más feliz que escapar.",
+          "known_sentence": "Nothing would make me happier than to get away."
+        },
+        {
+          "seed_id": "S0599",
+          "lego_target": "feliz",
+          "lego_known": "happy",
+          "target_sentence": "Habría estado feliz de conducir si me lo hubieras dicho.",
+          "known_sentence": "I'd have been happy to drive if you'd told me."
+        }
+      ]
+    },
+    {
+      "target_word": "entonces",
+      "translations": [
+        "then",
+        "so"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0149",
+          "lego_target": "entonces",
+          "lego_known": "so",
+          "target_sentence": "Esto no es muy difícil, entonces espero que termines pronto.",
+          "known_sentence": "This isn't very difficult, so I hope you'll finish soon."
+        },
+        {
+          "seed_id": "S0168",
+          "lego_target": "entonces",
+          "lego_known": "then",
+          "target_sentence": "Y entonces podré venir y ayudar más tarde.",
+          "known_sentence": "And then I'll be able to come and help later on."
+        },
+        {
+          "seed_id": "S0606",
+          "lego_target": "entonces",
+          "lego_known": "then",
+          "target_sentence": "Si hubiera sabido entonces lo que sé ahora habría esperado.",
+          "known_sentence": "If I'd known then what I know now I'd have waited."
+        }
+      ]
+    },
+    {
+      "target_word": "necesitas",
+      "translations": [
+        "you need",
+        "do you need"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0167",
+          "lego_target": "necesitas",
+          "lego_known": "do you need",
+          "target_sentence": "¿Qué necesitas hacer mañana por la tarde?",
+          "known_sentence": "What do you need to do tomorrow afternoon?"
+        },
+        {
+          "seed_id": "S0170",
+          "lego_target": "necesitas",
+          "lego_known": "you need",
+          "target_sentence": "Me gustaría que me dijeras lo que necesitas.",
+          "known_sentence": "I'd like you to tell me what you need."
+        }
+      ]
+    },
+    {
+      "target_word": "Le",
+      "translations": [
+        "her",
+        "him"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0176",
+          "lego_target": "Le",
+          "lego_known": "him",
+          "target_sentence": "Le preguntaré si podrá ayudar el próximo año.",
+          "known_sentence": "I'll ask him if he'll be able to help next year."
+        },
+        {
+          "seed_id": "S0177",
+          "lego_target": "Le",
+          "lego_known": "her",
+          "target_sentence": "Le preguntaré dónde quiere ir.",
+          "known_sentence": "I'll ask her where she wants to go."
+        }
+      ]
+    },
+    {
+      "target_word": "Quieren",
+      "translations": [
+        "they want",
+        "They want to"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0209",
+          "lego_target": "Quieren",
+          "lego_known": "they want",
+          "target_sentence": "Quieren pasar más tiempo encontrándose como grupo.",
+          "known_sentence": "They want to spend more time meeting as a group."
+        },
+        {
+          "seed_id": "S0416",
+          "lego_target": "Quieren",
+          "lego_known": "They want to",
+          "target_sentence": "Quieren liderar el camino el próximo año.",
+          "known_sentence": "They want to lead the way next year."
+        }
+      ]
+    },
+    {
+      "target_word": "demasiado",
+      "translations": [
+        "too",
+        "too much"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0246",
+          "lego_target": "demasiado",
+          "lego_known": "too",
+          "target_sentence": "Quería que ella te ayudara pero estaba demasiado ocupada.",
+          "known_sentence": "I wanted her to help you but she was too busy."
+        },
+        {
+          "seed_id": "S0273",
+          "lego_target": "demasiado",
+          "lego_known": "too much",
+          "target_sentence": "No, desafortunadamente tengo demasiado trabajo.",
+          "known_sentence": "No unfortunately I've got too much work."
+        },
+        {
+          "seed_id": "S0413",
+          "lego_target": "demasiado",
+          "lego_known": "too",
+          "target_sentence": "Podríamos caer si vamos demasiado cerca del borde.",
+          "known_sentence": "We could fall if we go too close to the edge."
+        }
+      ]
+    },
+    {
+      "target_word": "bastante",
+      "translations": [
+        "fairly",
+        "rather"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0247",
+          "lego_target": "bastante",
+          "lego_known": "fairly",
+          "target_sentence": "Pensé que ese libro era bastante bueno.",
+          "known_sentence": "I thought that book was fairly good."
+        },
+        {
+          "seed_id": "S0362",
+          "lego_target": "bastante",
+          "lego_known": "rather",
+          "target_sentence": "No, estaba bastante callado después de que te fuiste.",
+          "known_sentence": "No he was rather quiet after you left."
+        }
+      ]
+    },
+    {
+      "target_word": "necesitaba",
+      "translations": [
+        "needed to",
+        "I needed"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0296",
+          "lego_target": "necesitaba",
+          "lego_known": "I needed",
+          "target_sentence": "Dije que necesitaba un poco más de tiempo.",
+          "known_sentence": "I said that I needed a little more time."
+        },
+        {
+          "seed_id": "S0353",
+          "lego_target": "necesitaba",
+          "lego_known": "needed to",
+          "target_sentence": "Ella necesitaba correr alrededor del campo.",
+          "known_sentence": "She needed to run around the field."
+        }
+      ]
+    },
+    {
+      "target_word": "quisiera",
+      "translations": [
+        "he wanted to",
+        "she wanted to"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0317",
+          "lego_target": "quisiera",
+          "lego_known": "she wanted to",
+          "target_sentence": "Sí, pienso que podría si quisiera.",
+          "known_sentence": "Yes I think she could if she wanted to."
+        },
+        {
+          "seed_id": "S0352",
+          "lego_target": "quisiera",
+          "lego_known": "he wanted to",
+          "target_sentence": "Incluso si quisiera no podría.",
+          "known_sentence": "Even if he wanted to he wouldn't be able to."
+        }
+      ]
+    },
+    {
+      "target_word": "necesita",
+      "translations": [
+        "she needs",
+        "needs"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0319",
+          "lego_target": "necesita",
+          "lego_known": "needs",
+          "target_sentence": "Ella necesita mudarse a un país diferente.",
+          "known_sentence": "She needs to move to a different country."
+        },
+        {
+          "seed_id": "S0322",
+          "lego_target": "necesita",
+          "lego_known": "she needs",
+          "target_sentence": "Ella dijo que necesita leer el mismo libro.",
+          "known_sentence": "She said that she needs to read the same book."
+        },
+        {
+          "seed_id": "S0325",
+          "lego_target": "necesita",
+          "lego_known": "needs",
+          "target_sentence": "Pienso que él necesita considerar diez problemas posibles.",
+          "known_sentence": "I think that he needs to consider ten possible problems."
+        },
+        {
+          "seed_id": "S0327",
+          "lego_target": "necesita",
+          "lego_known": "needs",
+          "target_sentence": "¿Piensas que ella necesita ofrecer otra manera?",
+          "known_sentence": "Do you think that she needs to offer another way?"
+        },
+        {
+          "seed_id": "S0610",
+          "lego_target": "necesita",
+          "lego_known": "needs",
+          "target_sentence": "Él necesita buscar trabajo.",
+          "known_sentence": "He needs to look for work."
+        }
+      ]
+    },
+    {
+      "target_word": "tiene",
+      "translations": [
+        "he is",
+        "has"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0324",
+          "lego_target": "tiene",
+          "lego_known": "has",
+          "target_sentence": "Ese estudiante tiene ambas manos arriba.",
+          "known_sentence": "That student has both of her hands up."
+        },
+        {
+          "seed_id": "S0420",
+          "lego_target": "tiene",
+          "lego_known": "he is",
+          "target_sentence": "No necesitan preguntar cuántos años tiene.",
+          "known_sentence": "They don't need to ask how old he is."
+        }
+      ]
+    },
+    {
+      "target_word": "arriba",
+      "translations": [
+        "up",
+        "upstairs"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0324",
+          "lego_target": "arriba",
+          "lego_known": "up",
+          "target_sentence": "Ese estudiante tiene ambas manos arriba.",
+          "known_sentence": "That student has both of her hands up."
+        },
+        {
+          "seed_id": "S0545",
+          "lego_target": "arriba",
+          "lego_known": "upstairs",
+          "target_sentence": "Es tu turno de llevar la ropa limpia arriba.",
+          "known_sentence": "It's your turn to take the clean clothes upstairs."
+        }
+      ]
+    },
+    {
+      "target_word": "puede",
+      "translations": [
+        "he can",
+        "can"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0332",
+          "lego_target": "puede",
+          "lego_known": "can",
+          "target_sentence": "Él puede construir una nueva vida para su hermana.",
+          "known_sentence": "He can build a new life for his sister."
+        },
+        {
+          "seed_id": "S0334",
+          "lego_target": "puede",
+          "lego_known": "he can",
+          "target_sentence": "Él dijo que puede dejarte sostener al gatito",
+          "known_sentence": "He said that he can let you hold the kitten"
+        },
+        {
+          "seed_id": "S0335",
+          "lego_target": "puede",
+          "lego_known": "can",
+          "target_sentence": "Pienso que él puede agregar algunas ideas valiosas.",
+          "known_sentence": "I think that he can add some valuable ideas."
+        },
+        {
+          "seed_id": "S0337",
+          "lego_target": "puede",
+          "lego_known": "can",
+          "target_sentence": "¿Piensas que él puede continuar jugando?",
+          "known_sentence": "Do you think that he can continue to play?"
+        }
+      ]
+    },
+    {
+      "target_word": "hace",
+      "translations": [
+        "ago",
+        "makes"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0384",
+          "lego_target": "hace",
+          "lego_known": "ago",
+          "target_sentence": "No pude estar de acuerdo con lo que dijo hace un momento.",
+          "known_sentence": "I couldn't agree with what he said a moment ago."
+        },
+        {
+          "seed_id": "S0573",
+          "lego_target": "hace",
+          "lego_known": "makes",
+          "target_sentence": "Es el tipo de cosa que hace las vacaciones muy especiales.",
+          "known_sentence": "It's the kind of thing that makes the holidays very special."
+        }
+      ]
+    },
+    {
+      "target_word": "cerca",
+      "translations": [
+        "close",
+        "near"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0390",
+          "lego_target": "cerca",
+          "lego_known": "near",
+          "target_sentence": "El que está parado cerca de la entrada.",
+          "known_sentence": "The one who is standing near the entrance."
+        },
+        {
+          "seed_id": "S0413",
+          "lego_target": "cerca",
+          "lego_known": "close",
+          "target_sentence": "Podríamos caer si vamos demasiado cerca del borde.",
+          "known_sentence": "We could fall if we go too close to the edge."
+        }
+      ]
+    },
+    {
+      "target_word": "comer",
+      "translations": [
+        "food",
+        "eat"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0400",
+          "lego_target": "comer",
+          "lego_known": "eat",
+          "target_sentence": "¿Queremos comer algo más tarde?",
+          "known_sentence": "Do we want to eat something later on?"
+        },
+        {
+          "seed_id": "S0402",
+          "lego_target": "comer",
+          "lego_known": "food",
+          "target_sentence": "Sí, sería agradable parar en algún lugar para comer.",
+          "known_sentence": "Yes it would be nice to stop somewhere for food."
+        }
+      ]
+    },
+    {
+      "target_word": "tan",
+      "translations": [
+        "so",
+        "such"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0423",
+          "lego_target": "tan",
+          "lego_known": "such",
+          "target_sentence": "¿Necesitan hacer una pregunta tan obvia?",
+          "known_sentence": "Do they need to ask such an obvious question?"
+        },
+        {
+          "seed_id": "S0478",
+          "lego_target": "tan",
+          "lego_known": "such",
+          "target_sentence": "Ella tiene un corazón tan amable.",
+          "known_sentence": "She has such a kind heart."
+        },
+        {
+          "seed_id": "S0558",
+          "lego_target": "tan",
+          "lego_known": "so",
+          "target_sentence": "Es tan tarde en la noche.",
+          "known_sentence": "It's so late at night."
+        }
+      ]
+    },
+    {
+      "target_word": "todos",
+      "translations": [
+        "everyone",
+        "all"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0511",
+          "lego_target": "todos",
+          "lego_known": "everyone",
+          "target_sentence": "Las noticias tardaron varias horas en llegar a todos en la oficina.",
+          "known_sentence": "The news took several hours to reach everyone in the office."
+        },
+        {
+          "seed_id": "S0529",
+          "lego_target": "todos",
+          "lego_known": "all",
+          "target_sentence": "¿Pueden todos levantar sus manos?",
+          "known_sentence": "Can you all put your hands up?"
+        },
+        {
+          "seed_id": "S0574",
+          "lego_target": "todos",
+          "lego_known": "everyone",
+          "target_sentence": "Las vacaciones son muy especiales para todos.",
+          "known_sentence": "The holidays are very special for everyone."
+        }
+      ]
+    },
+    {
+      "target_word": "comenzó",
+      "translations": [
+        "it started",
+        "started"
+      ],
+      "mappings": [
+        {
+          "seed_id": "S0601",
+          "lego_target": "comenzó",
+          "lego_known": "started",
+          "target_sentence": "Estábamos hablando sobre cómo todo comenzó.",
+          "known_sentence": "We were talking about how it all started."
+        },
+        {
+          "seed_id": "S0602",
+          "lego_target": "comenzó",
+          "lego_known": "it started",
+          "target_sentence": "Cómo comenzó en primer lugar.",
+          "known_sentence": "How it started in the first place."
+        }
+      ]
+    }
+  ]
+}

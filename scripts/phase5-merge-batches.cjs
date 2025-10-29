@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 /**
- * Phase 5: Merge Batches with Smart Deduplication
+ * Phase 5: Merge Baskets with Smart Deduplication
  *
- * Merges batch outputs into final lego_baskets.json
+ * Supports two modes:
+ * 1. ORCHESTRATOR MODE (--orchestrator): Merges 5 chunk files from orchestrators
+ * 2. DIRECT MODE (default): Merges N batch output files from direct agents
+ *
  * Handles duplicate LEGOs by referencing canonical baskets
  */
 
@@ -10,40 +13,65 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 
-const courseCode = process.argv[2] || 'spa_for_eng';
+const args = process.argv.slice(2);
+const orchestratorMode = args.includes('--orchestrator');
+const courseCode = args.find(a => !a.startsWith('--')) || 'spa_for_eng';
 const courseDir = path.join(__dirname, '../vfs/courses', courseCode);
 
-console.log('🔗 Phase 5: Merging Batches with Smart Deduplication\n');
-console.log(`Course: ${courseCode}\n`);
+console.log('🔗 Phase 5: Merging Baskets with Smart Deduplication\n');
+console.log(`Course: ${courseCode}`);
+console.log(`Mode: ${orchestratorMode ? 'ORCHESTRATOR (5 chunks)' : 'DIRECT (N batches)'}\n`);
 
 // Read manifest
-const manifestFile = path.join(courseDir, 'batches', 'manifest.json');
+const manifestDir = orchestratorMode
+  ? path.join(courseDir, 'orchestrator_batches', 'phase5')
+  : path.join(courseDir, 'batches');
+
+const manifestFile = path.join(manifestDir, 'manifest.json');
 if (!fs.existsSync(manifestFile)) {
-  console.error('❌ manifest.json not found. Run prepare_batches first.');
+  console.error(`❌ manifest.json not found at: ${manifestFile}`);
+  console.error('Run phase4-prepare-batches.cjs first');
   process.exit(1);
 }
 
 const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
-console.log(`Expected batches: ${manifest.batch_count}`);
+const expectedCount = orchestratorMode ? 5 : manifest.batch_count;
+
+console.log(`Expected ${orchestratorMode ? 'chunks' : 'batches'}: ${expectedCount}`);
 console.log(`Unique LEGOs: ${manifest.unique_legos}`);
 console.log(`Duplicate LEGOs: ${manifest.duplicate_legos}\n`);
 
-// Find all batch output files
-const batchOutputPattern = path.join(courseDir, 'lego_baskets_batch_*.json');
-const batchFiles = glob.sync(batchOutputPattern).sort();
-
-console.log(`Found ${batchFiles.length} batch output files\n`);
-
-if (batchFiles.length !== manifest.batch_count) {
-  console.warn(`⚠️  Expected ${manifest.batch_count} batches, found ${batchFiles.length}`);
+// Find all chunk/batch output files
+let batchFiles;
+if (orchestratorMode) {
+  const chunkPattern = path.join(manifestDir, 'chunk_*.json');
+  batchFiles = glob.sync(chunkPattern).sort();
+  console.log(`Found ${batchFiles.length} chunk files\n`);
+} else {
+  const batchOutputPattern = path.join(courseDir, 'lego_baskets_batch_*.json');
+  batchFiles = glob.sync(batchOutputPattern).sort();
+  console.log(`Found ${batchFiles.length} batch output files\n`);
 }
 
-// Read all batch outputs
+if (batchFiles.length !== expectedCount) {
+  console.warn(`⚠️  Expected ${expectedCount}, found ${batchFiles.length}`);
+}
+
+// Read all chunk/batch outputs
 const allBaskets = {};
 let basketCount = 0;
 
 for (const batchFile of batchFiles) {
-  const batchBaskets = JSON.parse(fs.readFileSync(batchFile, 'utf8'));
+  const fileContent = JSON.parse(fs.readFileSync(batchFile, 'utf8'));
+
+  let batchBaskets;
+  if (orchestratorMode) {
+    // Chunk files have baskets nested under "baskets" key
+    batchBaskets = fileContent.baskets || {};
+  } else {
+    // Direct mode output files are flat basket objects
+    batchBaskets = fileContent;
+  }
 
   console.log(`✓ Reading ${path.basename(batchFile)}: ${Object.keys(batchBaskets).length} baskets`);
 
@@ -54,8 +82,11 @@ for (const batchFile of batchFiles) {
 console.log(`\nTotal baskets merged: ${basketCount}`);
 
 // Read batch data to get duplicate map
-const firstBatchFile = path.join(courseDir, 'batches', 'batch_01.json');
-const firstBatch = JSON.parse(fs.readFileSync(firstBatchFile, 'utf8'));
+const firstBatchPath = orchestratorMode
+  ? path.join(manifestDir, 'orchestrator_batch_01.json')
+  : path.join(courseDir, 'batches', 'batch_01.json');
+
+const firstBatch = JSON.parse(fs.readFileSync(firstBatchPath, 'utf8'));
 const duplicateMap = firstBatch.duplicate_map || {};
 
 console.log(`Duplicate mappings: ${Object.keys(duplicateMap).length}\n`);

@@ -359,11 +359,11 @@ const currentPhaseIndex = computed(() => {
   const phase = currentPhase.value
   if (phase === 'initializing') return -1
   if (phase === 'phase_1' || phase === 'phase_1_waiting' || phase === 'phase_1_complete') return 0
-  if (phase === 'phase_3') return 1
-  if (phase === 'phase_5') return 2
-  if (phase === 'phase_5.5') return 3
-  if (phase === 'phase_6') return 4
-  if (phase === 'phase_7' || phase === 'compilation') return 5
+  if (phase === 'phase_3' || phase === 'phase_3_complete') return 1
+  if (phase === 'phase_4' || phase === 'phase_4_complete') return 2
+  if (phase === 'phase_5' || phase === 'phase_5_complete') return 3
+  if (phase === 'phase_6' || phase === 'phase_6_complete') return 4
+  if (phase === 'phase_7' || phase === 'phase_7_complete' || phase === 'compilation') return 5
   if (phase === 'phase_8') return 6
   if (phase === 'completed') return 7
   return -1
@@ -470,7 +470,7 @@ const startGeneration = async () => {
 }
 
 const startPolling = (code) => {
-  // Poll every 2 seconds
+  // Poll every 30 seconds (phases take minutes, not seconds)
   pollInterval = setInterval(async () => {
     try {
       const status = await api.course.getStatus(code)
@@ -490,7 +490,7 @@ const startPolling = (code) => {
     } catch (error) {
       console.error('Failed to fetch course status:', error)
     }
-  }, 2000)
+  }, 30000)
 }
 
 const stopPolling = () => {
