@@ -162,56 +162,82 @@
           </div>
         </div>
 
-        <!-- Manual Seed Range (fallback) -->
-        <div v-if="!analysis || showManualInput" class="mb-8">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-medium text-slate-300">Manual Seed Range</h3>
+        <!-- Course Size Selection -->
+        <div v-if="!analysis" class="mb-8">
+          <h3 class="text-lg font-medium text-slate-300 mb-4">Select Course Size</h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <!-- Test Course (30 seeds) -->
             <button
-              v-if="analysis && !showManualInput"
-              @click="showManualInput = true"
-              class="text-sm text-slate-400 hover:text-emerald-400 transition"
+              @click="selectCourseSize('test', 1, 30)"
+              :class="[
+                'p-6 rounded-lg border-2 transition text-left',
+                courseSize === 'test'
+                  ? 'border-emerald-500 bg-emerald-500/10'
+                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
+              ]"
             >
-              Show manual input
+              <div class="flex items-start justify-between mb-2">
+                <div class="text-2xl">✨</div>
+                <div
+                  v-if="courseSize === 'test'"
+                  class="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center"
+                >
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+              </div>
+              <h4 class="text-lg font-semibold text-slate-100 mb-1">Test Course</h4>
+              <p class="text-sm text-slate-400 mb-2">30 seeds (S0001-S0030)</p>
+              <p class="text-xs text-slate-500">Quick test run to validate pipeline before full generation</p>
+            </button>
+
+            <!-- Full Course (668 seeds) -->
+            <button
+              @click="selectCourseSize('full', 1, 668)"
+              :class="[
+                'p-6 rounded-lg border-2 transition text-left',
+                courseSize === 'full'
+                  ? 'border-emerald-500 bg-emerald-500/10'
+                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
+              ]"
+            >
+              <div class="flex items-start justify-between mb-2">
+                <div class="text-2xl">🚀</div>
+                <div
+                  v-if="courseSize === 'full'"
+                  class="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center"
+                >
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+              </div>
+              <h4 class="text-lg font-semibold text-slate-100 mb-1">Full Course</h4>
+              <p class="text-sm text-slate-400 mb-2">668 seeds (S0001-S0668)</p>
+              <p class="text-xs text-slate-500">Complete production course generation</p>
             </button>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-sm font-medium text-slate-300 mb-2">
-                Start Seed
-              </label>
-              <input
-                v-model.number="startSeed"
-                type="number"
-                min="1"
-                max="668"
-                class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
-              />
-              <p class="mt-2 text-sm text-slate-400">First seed to generate (default: 1)</p>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-slate-300 mb-2">
-                End Seed
-              </label>
-              <input
-                v-model.number="endSeed"
-                type="number"
-                min="1"
-                max="668"
-                class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
-              />
-              <p class="mt-2 text-sm text-slate-400">Last seed to generate (default: 668)</p>
+
+          <div class="mb-6 p-4 bg-slate-800/50 rounded-lg border border-slate-600">
+            <div class="flex items-start gap-3">
+              <div class="text-blue-400 text-xl">ℹ️</div>
+              <div class="text-sm text-slate-400">
+                <p class="font-medium text-slate-300 mb-1">Orchestrator v2 Architecture</p>
+                <p>5 orchestrators × 10 sub-agents = 50 concurrent agents per phase</p>
+                <p class="mt-1 text-xs text-slate-500">Test: ~10 min | Full: ~45-60 min</p>
+              </div>
             </div>
           </div>
-          <p class="mt-3 text-sm text-slate-400">
-            <span class="font-semibold text-emerald-400">{{ seedCount }} seeds</span> will be generated (S{{ String(startSeed).padStart(4, '0') }}-S{{ String(endSeed).padStart(4, '0') }})
-          </p>
 
           <!-- Generate Button -->
           <button
             @click="startGeneration"
-            class="mt-6 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition hover:-translate-y-0.5"
+            :disabled="!courseSize"
+            class="bg-emerald-500 hover:bg-emerald-600 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition hover:-translate-y-0.5"
           >
-            Generate Course
+            Generate {{ courseSize === 'test' ? 'Test' : courseSize === 'full' ? 'Full' : '' }} Course
           </button>
         </div>
       </div>
@@ -320,6 +346,7 @@ const knownLanguage = ref('eng')
 const targetLanguage = ref('gle')
 const startSeed = ref(1)
 const endSeed = ref(668)
+const courseSize = ref(null) // 'test' or 'full'
 
 const targetLanguages = ref([])
 const knownLanguages = ref([])
@@ -443,6 +470,12 @@ const selectRecommendation = (rec) => {
   startSeed.value = rec.action.startSeed
   endSeed.value = rec.action.endSeed
   startGeneration()
+}
+
+const selectCourseSize = (size, start, end) => {
+  courseSize.value = size
+  startSeed.value = start
+  endSeed.value = end
 }
 
 const startGeneration = async () => {
