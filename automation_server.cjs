@@ -2553,9 +2553,8 @@ app.post('/api/courses/generate', async (req, res) => {
   // Calculate total seeds
   const seeds = endSeed - startSeed + 1;
 
-  // Generate course code with seed range
-  const seedRangeStr = `S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`;
-  const courseCode = `${target}_for_${known}_${seeds}seeds_${seedRangeStr}`;
+  // Generate course code (just language pair - seed range is a processing parameter)
+  const courseCode = `${target}_for_${known}`;
 
   // Check if job already exists
   if (STATE.jobs.has(courseCode)) {
