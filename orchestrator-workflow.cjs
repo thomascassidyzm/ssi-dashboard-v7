@@ -292,9 +292,10 @@ async function runMergeScript(scriptName, courseCode, orchestratorMode = false) 
  * @param {Object} params - Job parameters { target, known, seeds, startSeed, endSeed }
  * @param {Object} job - Job state object from STATE.jobs
  * @param {Function} spawnPhaseAgent - Function to spawn agents in iTerm2
+ * @param {Function} closeAgentWindows - Function to close iTerm2 windows and free RAM
  * @param {string} trainingUrl - Base URL for training documentation
  */
-async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent, trainingUrl) {
+async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent, closeAgentWindows, trainingUrl) {
   const { target, known, seeds, startSeed, endSeed } = params;
   const courseDir = path.join(__dirname, 'vfs/courses', courseCode);
 
@@ -366,6 +367,13 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
 
     if (!phase1Result.success) {
       throw new Error('Phase 1 chunks incomplete after retries');
+    }
+
+    // Close orchestrator windows to free RAM
+    const phase1WindowIds = phase1Orchestrators.map(o => o.windowId).filter(Boolean);
+    if (phase1WindowIds.length > 0) {
+      console.log(`[Phase 1] Closing ${phase1WindowIds.length} orchestrator windows to free RAM...`);
+      await closeAgentWindows(phase1WindowIds);
     }
 
     // Spawn validator
@@ -462,6 +470,13 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
       throw new Error('Phase 3 chunks incomplete after retries');
     }
 
+    // Close orchestrator windows to free RAM
+    const phase3WindowIds = phase3Orchestrators.map(o => o.windowId).filter(Boolean);
+    if (phase3WindowIds.length > 0) {
+      console.log(`[Phase 3] Closing ${phase3WindowIds.length} orchestrator windows to free RAM...`);
+      await closeAgentWindows(phase3WindowIds);
+    }
+
     // Merge chunks
     job.phase = 'phase_3_merge';
     job.progress = 45;
@@ -553,6 +568,13 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
       throw new Error('Phase 5 chunks incomplete after retries');
     }
 
+    // Close orchestrator windows to free RAM
+    const phase5WindowIds = phase5Orchestrators.map(o => o.windowId).filter(Boolean);
+    if (phase5WindowIds.length > 0) {
+      console.log(`[Phase 5] Closing ${phase5WindowIds.length} orchestrator windows to free RAM...`);
+      await closeAgentWindows(phase5WindowIds);
+    }
+
     // Merge chunks
     job.phase = 'phase_5_merge';
     job.progress = 75;
@@ -614,6 +636,13 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
 
     if (!phase6Result.success) {
       throw new Error('Phase 6 chunks incomplete after retries');
+    }
+
+    // Close orchestrator windows to free RAM
+    const phase6WindowIds = phase6Orchestrators.map(o => o.windowId).filter(Boolean);
+    if (phase6WindowIds.length > 0) {
+      console.log(`[Phase 6] Closing ${phase6WindowIds.length} orchestrator windows to free RAM...`);
+      await closeAgentWindows(phase6WindowIds);
     }
 
     // Merge chunks

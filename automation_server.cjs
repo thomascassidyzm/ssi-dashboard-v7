@@ -927,23 +927,52 @@ async function spawnCourseOrchestrator(courseCode, params) {
   const useOrchestratorV2 = process.env.USE_ORCHESTRATOR_V2 === 'true';
 
   if (useOrchestratorV2) {
-    console.log(`[Orchestrator] Using NEW ORCHESTRATOR WORKFLOW (v2)`);
-    console.log(`[Orchestrator] Architecture: 5 orchestrators × 10 agents = 50 concurrent per phase`);
+    console.log(`[Orchestrator] Using MASTER ORCHESTRATOR AGENT (v2)`);
+    console.log(`[Orchestrator] Architecture: Master agent → 5 orchestrators × 10 agents = 50 concurrent per phase`);
 
     try {
-      // Load the new orchestrator workflow module
-      const { runOrchestratorWorkflow } = require('./orchestrator-workflow.cjs');
+      // Load the master orchestrator prompt generator
+      const { generateMasterOrchestratorPrompt } = require('./orchestrator-prompt-helpers.cjs');
 
-      // Run the new workflow (it handles all STATE.jobs updates internally)
-      await runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent, CONFIG.TRAINING_URL);
+      // Extract language names from params
+      const targetLanguage = params.target || 'target language';
+      const knownLanguage = params.known || 'known language';
+      const totalSeeds = params.seeds || params.endSeed - params.startSeed + 1;
+
+      // Generate the master orchestrator prompt
+      const masterPrompt = generateMasterOrchestratorPrompt(
+        courseCode,
+        targetLanguage,
+        knownLanguage,
+        totalSeeds
+      );
+
+      console.log(`[Orchestrator] Spawning master orchestrator agent...`);
+      console.log(`[Orchestrator] Course: ${courseCode}`);
+      console.log(`[Orchestrator] Target: ${targetLanguage}`);
+      console.log(`[Orchestrator] Known: ${knownLanguage}`);
+      console.log(`[Orchestrator] Seeds: ${totalSeeds}`);
+
+      // Spawn the master orchestrator agent
+      const windowId = await spawnPhaseAgent('master', masterPrompt, courseDir, courseCode);
+
+      // Update job status
+      job.status = 'in_progress';
+      job.currentPhase = 'Master Orchestrator Coordinating';
+      job.message = 'Master orchestrator agent is coordinating all phases';
+      job.masterOrchestratorWindowId = windowId;
+
+      console.log(`[Orchestrator] Master orchestrator spawned in iTerm2 window ${windowId}`);
+      console.log(`[Orchestrator] Master orchestrator will coordinate all phases autonomously`);
+      console.log(`[Orchestrator] Estimated completion: 75-85 minutes`);
 
     } catch (error) {
-      console.error(`[Orchestrator] Error in v2 workflow:`, error);
+      console.error(`[Orchestrator] Error spawning master orchestrator:`, error);
       job.status = 'failed';
       job.error = error.message;
     }
 
-    return; // Exit early - new workflow handles everything
+    return; // Exit early - master orchestrator handles everything
   }
 
   // Otherwise, use the original batch orchestrator (v1)
