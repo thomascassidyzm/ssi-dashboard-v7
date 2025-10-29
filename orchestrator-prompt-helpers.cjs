@@ -224,7 +224,30 @@ This document contains:
      * → Failed spawn, retry immediately (don't wait 10-15 min)
    - Example: chunks 1,2,3,5 complete at 21:29-21:32, chunk 4 missing at 21:37 → retry chunk 4 now
    - Continuous 30s polling allows fast detection (within 5-6 minutes of failure vs 10-15 min)
-5. When all chunks complete, run merge scripts via Bash tool
+5. When all chunks complete:
+   - Run merge/validator scripts via Bash tool
+   - **CRITICAL: Close orchestrator iTerm2 windows to free RAM**
+   - When spawning orchestrators, capture window IDs by modifying osascript to return window ID:
+     \`\`\`bash
+     window_id=\$(osascript -e 'tell application "iTerm2"
+         create window with default profile
+         set newWindow to current window
+         tell current session of newWindow
+             write text "cd ..."
+             write text "claude --permission-mode bypassPermissions"
+             delay 15
+             ...
+         end tell
+         return id of newWindow
+     end tell')
+     \`\`\`
+   - Track all window IDs: \`window_ids="id1 id2 id3 id4 id5"\`
+   - After validation completes, close them:
+     \`\`\`bash
+     for win_id in \$window_ids; do
+         osascript -e "tell application \\"iTerm2\\" to close (every window whose id is \$win_id)"
+     done
+     \`\`\`
 6. Provide clear status updates throughout monitoring
 7. Coordinate all phases from start to finish
 
