@@ -1272,9 +1272,9 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
         const brief = generatePhase3Brief(courseCode, { target, known, startSeed: batchStartSeed, endSeed: batchEndSeed, batchNum, totalBatches: phase3Batches }, courseDir);
         await spawnPhaseAgent(`3-batch${batchNum}`, brief, courseDir, courseCode);
 
-        // 30-second stagger to ensure Claude Code is ready before next window spawns
+        // 60-second stagger for stable spawning and RAM breathing room
         if (i < phase3Batches - 1) {
-          await new Promise(resolve => setTimeout(resolve, 30000));
+          await new Promise(resolve => setTimeout(resolve, 60000));
         }
       }
 

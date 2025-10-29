@@ -381,6 +381,8 @@ If ANY issues → regenerate before outputting
 
 ## 📤 OUTPUT FORMAT
 
+**IMPORTANT**: Use **COMPACT JSON formatting** - arrays on single lines, minimal whitespace. Do NOT use pretty-print/vertical formatting.
+
 ```json
 [
   ["S0003", ["cómo hablar lo más frecuentemente posible", "how to speak as frequently as possible"], [
@@ -396,6 +398,12 @@ If ANY issues → regenerate before outputting
   ]]
 ]
 ```
+
+**Format requirements:**
+- **Compact horizontal arrays** - each LEGO on one line
+- **Minimal vertical spacing** - only between seeds
+- **NO deep indentation** of array elements
+- Each seed entry should fit on 3-5 lines total
 
 **Key points:**
 - Seed sentence at top
