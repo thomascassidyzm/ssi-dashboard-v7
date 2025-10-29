@@ -4496,8 +4496,10 @@ app.post('/api/courses/:courseCode/validate/:phase', async (req, res) => {
  * GET /phase-intelligence/:phase
  * Serve phase intelligence markdown files as static content
  *
- * Example: GET /phase-intelligence/3
- *          → Serves docs/phase_intelligence/phase_3_extraction.md
+ * Examples:
+ *   GET /phase-intelligence/3              → phase_3_lego_pairs.md
+ *   GET /phase-intelligence/1-orchestrator → phase_1_orchestrator.md
+ *   GET /phase-intelligence/1-validator    → phase_1_validator.md
  */
 app.get('/phase-intelligence/:phase', async (req, res) => {
   const { phase } = req.params;
@@ -4505,15 +4507,23 @@ app.get('/phase-intelligence/:phase', async (req, res) => {
   try {
     const intelligenceDir = path.join(__dirname, 'docs', 'phase_intelligence');
 
-    // Find matching file: phase_3_*.md
-    const files = await fs.readdir(intelligenceDir);
-    const matchingFile = files.find(f =>
-      f.startsWith(`phase_${phase}_`) && f.endsWith('.md')
-    );
+    // Handle orchestrator/validator routes (e.g., "1-orchestrator" → "phase_1_orchestrator.md")
+    let matchingFile;
+    if (phase.includes('-')) {
+      const exactFile = `phase_${phase.replace('-', '_')}.md`;
+      const files = await fs.readdir(intelligenceDir);
+      matchingFile = files.find(f => f === exactFile);
+    } else {
+      // Find matching file: phase_3_*.md
+      const files = await fs.readdir(intelligenceDir);
+      matchingFile = files.find(f =>
+        f.startsWith(`phase_${phase}_`) && f.endsWith('.md')
+      );
+    }
 
     if (!matchingFile) {
       // Fallback to legacy APML prompts
-      const promptKey = `PHASE_${phase.replace('.', '_')}`;
+      const promptKey = `PHASE_${phase.replace(/[.-]/g, '_')}`;
       const promptData = apmlRegistry.variable_registry.PHASE_PROMPTS[promptKey];
 
       if (promptData) {
