@@ -19,6 +19,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const { v4: uuidv4, v5: uuidv5 } = require('uuid');
 const crypto = require('crypto');
+const Ajv = require('ajv');
+const manifestValidator = require('../services/manifest-validator.cjs');
 
 const courseCode = process.argv[2];
 
@@ -39,7 +41,9 @@ const outputPath = path.join(courseDir, 'course_manifest.json');
 const ROLE_SEGMENTS = {
   'target1': { seg2: '6044', seg3: 'AC07', seg4: '8F4E' },
   'target2': { seg2: '6044', seg3: 'E115', seg4: '8F4E' },
-  'source':  { seg2: '6044', seg3: '36CD', seg4: '31D4' }
+  'source':  { seg2: '6044', seg3: '36CD', seg4: '31D4' },
+  'presentation': { seg2: '9CFE', seg3: '2486', seg4: '8F4E' },  // Presentation voice
+  'presentation_encouragement': { seg2: '9CFE', seg3: '2486', seg4: '8F4E' }  // Encouragement messages (same as presentation)
 };
 
 // Generate deterministic UUID for audio sample using SSi legacy format
@@ -80,6 +84,54 @@ function createLanguageNode(text) {
   };
 }
 
+/**
+ * Load canonical encouragements for source language
+ * Encouragements are shared across courses (e.g., all English courses share English encouragements)
+ *
+ * @param {string} knownLanguageCode - 3-letter ISO language code (e.g., 'eng', 'spa')
+ * @returns {Object|null} - Encouragements object or null if not found
+ */
+async function loadEncouragements(knownLanguageCode) {
+  const canonicalDir = path.join(__dirname, '..', 'vfs', 'canonical');
+  const encouragementPath = path.join(canonicalDir, `${knownLanguageCode}_encouragements.json`);
+
+  if (!await fs.pathExists(encouragementPath)) {
+    const instructionsPath = 'docs/phase_intelligence/translate_encouragements.md';
+    console.error(`\n❌ MISSING ENCOURAGEMENTS FOR ${knownLanguageCode.toUpperCase()}`);
+    console.error(`\nExpected file: ${encouragementPath}`);
+    console.error(`\n📖 TO CREATE ENCOURAGEMENTS:`);
+    console.error(`   1. Read the translation instructions:`);
+    console.error(`      ${instructionsPath}`);
+    console.error(`\n   2. Follow the markdown instructions to translate from English canonical`);
+    console.error(`\n   3. Input:  vfs/canonical/eng_encouragements.json`);
+    console.error(`      Output: vfs/canonical/${knownLanguageCode}_encouragements.json`);
+    console.error(`\n   4. The instructions include:`);
+    console.error(`      - Translation guidelines for ${knownLanguageCode}`);
+    console.error(`      - Tone and style requirements (warm, conversational, informal)`);
+    console.error(`      - UUID preservation rules`);
+    console.error(`      - Validation checklist`);
+    console.error(`      - Example translations`);
+    console.error(`\n💡 TIP: Encouragements are spoken in the SOURCE language (known language).`);
+    console.error(`        For this course, that's ${knownLanguageCode.toUpperCase()}.`);
+    console.error(`\nPhase 7 cannot proceed without encouragements.\n`);
+    throw new Error(`Missing encouragements file: ${encouragementPath}`);
+  }
+
+  try {
+    const encouragements = await fs.readJson(encouragementPath);
+    console.log(`✓ Loaded encouragements for ${knownLanguageCode}`);
+    console.log(`  Pooled: ${encouragements.pooledEncouragements?.length || 0}`);
+    console.log(`  Ordered: ${encouragements.orderedEncouragements?.length || 0}`);
+    return encouragements;
+  } catch (error) {
+    console.error(`\n❌ Failed to parse encouragements file: ${encouragementPath}`);
+    console.error(`   Error: ${error.message}`);
+    console.error(`\n   The file exists but contains invalid JSON.`);
+    console.error(`   Please check the file format and try again.\n`);
+    throw error;
+  }
+}
+
 async function compileManifest() {
   console.log(`\n📦 Phase 7: Compile Course Manifest`);
   console.log(`Course: ${courseCode}\n`);
@@ -114,6 +166,9 @@ async function compileManifest() {
   console.log(`📊 Course ID: ${courseId}`);
   console.log(`📊 Seeds: ${legoPairs.seeds.length}`);
   console.log(`📊 LEGOs: ${Object.keys(introductions.introductions).length}\n`);
+
+  // Load canonical encouragements for source language
+  const encouragements = await loadEncouragements(knownCode);
 
   // Create LEGO lookup for quick access
   const legoLookup = {};
@@ -188,8 +243,8 @@ async function compileManifest() {
       registerSample(targetLego, targetCode, 'target2', 'natural');
       registerSample(knownLego, knownCode, 'source', 'natural');
 
-      // Register presentation text sample (spoken in known language)
-      registerSample(presentation, knownCode, 'source', 'natural');
+      // Register presentation text sample (spoken in known language with presentation voice)
+      registerSample(presentation, knownCode, 'presentation', 'natural');
 
       // Get practice phrases (nodes) from baskets
       const basket = basketLookup[legoId];
@@ -262,11 +317,33 @@ async function compileManifest() {
     seeds.push(seedObj);
   }
 
+  // Register encouragement samples
+  if (encouragements) {
+    const allEncouragements = [
+      ...(encouragements.pooledEncouragements || []),
+      ...(encouragements.orderedEncouragements || [])
+    ];
+
+    for (const enc of allEncouragements) {
+      registerSample(enc.text, knownCode, 'presentation_encouragement', 'natural');
+
+      // Mark this sample as an encouragement
+      if (samples[enc.text]) {
+        const encSample = samples[enc.text].find(s => s.role === 'presentation_encouragement');
+        if (encSample) {
+          encSample.is_encouragement = true;
+        }
+      }
+    }
+  }
+
   // Create single slice with all seeds
   const slices = [{
     id: uuidv4(),
     version: seedPairs.version,
     seeds: seeds,
+    pooledEncouragements: encouragements?.pooledEncouragements || [],
+    orderedEncouragements: encouragements?.orderedEncouragements || [],
     samples: samples // Audio sample metadata (Phase 8 will generate actual audio files)
   }];
 
@@ -278,6 +355,51 @@ async function compileManifest() {
     known: knownCode,
     slices: slices
   };
+
+  // Validate manifest against JSON Schema
+  console.log('🔍 Validating manifest against schema...');
+  const schemaPath = path.join(__dirname, '..', 'schemas', 'course-manifest-schema.json');
+  try {
+    const schema = await fs.readJson(schemaPath);
+    const ajv = new Ajv({ strict: false }); // Disable strict mode for format keywords
+    const validate = ajv.compile(schema);
+    const valid = validate(manifest);
+
+    if (!valid) {
+      console.error('\n❌ Manifest validation failed:');
+      console.error(JSON.stringify(validate.errors, null, 2));
+      console.error('\nPlease fix the errors above before proceeding.\n');
+      process.exit(1);
+    }
+
+    console.log('✅ Manifest validation passed\n');
+  } catch (schemaError) {
+    console.warn(`⚠️  Could not validate schema: ${schemaError.message}`);
+    console.warn('Proceeding without validation...\n');
+  }
+
+  // Validate manifest structure and sample coverage
+  console.log('🔍 Validating manifest structure and samples...\n');
+  const validationReport = manifestValidator.validateManifest(manifest);
+
+  if (!validationReport.valid) {
+    console.error('\n❌ Manifest validation failed:\n');
+    console.error(manifestValidator.formatValidationReport(validationReport));
+    console.error('\n❌ Phase 7 cannot proceed with these errors.');
+    console.error('   Please fix the issues above and re-run Phase 7.\n');
+    process.exit(1);
+  }
+
+  console.log('✅ Manifest structure validation passed');
+
+  // Show warnings if any
+  if (validationReport.warnings.length > 0) {
+    console.log('\n⚠️  Warnings:');
+    for (const warning of validationReport.warnings) {
+      console.log(`   ${warning.message}`);
+    }
+  }
+  console.log('');
 
   // Write manifest
   await fs.writeJson(outputPath, manifest, { spaces: 2 });
@@ -291,6 +413,11 @@ async function compileManifest() {
   console.log(`   - Introduction Items: ${totalIntroductionItems}`);
   console.log(`   - Practice Nodes: ${totalPracticeNodes}`);
   console.log(`   - Audio Samples: ${totalSamples} unique phrases, ${totalSampleVariants} total variants`);
+  if (encouragements) {
+    const pooledCount = encouragements.pooledEncouragements?.length || 0;
+    const orderedCount = encouragements.orderedEncouragements?.length || 0;
+    console.log(`   - Encouragements: ${pooledCount} pooled, ${orderedCount} ordered`);
+  }
   console.log(`\n💾 Output: ${outputPath}\n`);
 
   // Show sample structure

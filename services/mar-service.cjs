@@ -202,6 +202,106 @@ async function getVoiceMetadata(voiceId) {
   return registry.voices[voiceId];
 }
 
+/**
+ * Get a specific sample by UUID
+ *
+ * @param {string} voiceId - Voice ID
+ * @param {string} uuid - Sample UUID
+ * @returns {Promise<object|null>} Sample data or null if not found
+ */
+async function getSample(voiceId, uuid) {
+  const voiceSamples = await loadVoiceSamples(voiceId);
+  return voiceSamples.samples[uuid] || null;
+}
+
+/**
+ * Load encouragement index from registry
+ * Returns empty index if it doesn't exist yet
+ *
+ * @returns {Promise<object>} Encouragement index by language
+ */
+async function loadEncouragementIndex() {
+  const registry = await loadVoiceRegistry();
+
+  if (!registry.encouragement_index) {
+    registry.encouragement_index = {};
+    await saveVoiceRegistry(registry);
+  }
+
+  return registry.encouragement_index;
+}
+
+/**
+ * Check if encouragements exist for a language
+ *
+ * @param {string} language - ISO 639-3 language code
+ * @returns {Promise<object|null>} Encouragement index entry or null
+ */
+async function getEncouragementIndex(language) {
+  const index = await loadEncouragementIndex();
+  return index[language] || null;
+}
+
+/**
+ * Update encouragement index for a language
+ *
+ * @param {string} language - ISO 639-3 language code
+ * @param {string} voiceId - Voice ID used for encouragements
+ * @param {Array<string>} uuids - Array of encouragement UUIDs
+ */
+async function updateEncouragementIndex(language, voiceId, uuids) {
+  const registry = await loadVoiceRegistry();
+
+  if (!registry.encouragement_index) {
+    registry.encouragement_index = {};
+  }
+
+  registry.encouragement_index[language] = {
+    voice: voiceId,
+    count: uuids.length,
+    uuids: uuids,
+    last_updated: new Date().toISOString()
+  };
+
+  await saveVoiceRegistry(registry);
+}
+
+/**
+ * Add encouragement to index
+ * Use this when saving individual encouragements to keep index in sync
+ *
+ * @param {string} language - ISO 639-3 language code
+ * @param {string} voiceId - Voice ID
+ * @param {string} uuid - Encouragement UUID
+ */
+async function addEncouragementToIndex(language, voiceId, uuid) {
+  const registry = await loadVoiceRegistry();
+
+  if (!registry.encouragement_index) {
+    registry.encouragement_index = {};
+  }
+
+  if (!registry.encouragement_index[language]) {
+    registry.encouragement_index[language] = {
+      voice: voiceId,
+      count: 0,
+      uuids: [],
+      last_updated: new Date().toISOString()
+    };
+  }
+
+  const entry = registry.encouragement_index[language];
+
+  // Add UUID if not already in index
+  if (!entry.uuids.includes(uuid)) {
+    entry.uuids.push(uuid);
+    entry.count = entry.uuids.length;
+    entry.last_updated = new Date().toISOString();
+
+    await saveVoiceRegistry(registry);
+  }
+}
+
 module.exports = {
   loadVoiceRegistry,
   saveVoiceRegistry,
@@ -209,8 +309,13 @@ module.exports = {
   saveVoiceSamples,
   findExistingSample,
   saveSample,
+  getSample,
   getVoiceForCourseRole,
   getVoicesForCourse,
   createVoice,
-  getVoiceMetadata
+  getVoiceMetadata,
+  loadEncouragementIndex,
+  getEncouragementIndex,
+  updateEncouragementIndex,
+  addEncouragementToIndex
 };
