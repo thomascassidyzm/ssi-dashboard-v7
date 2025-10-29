@@ -67,9 +67,104 @@
           </div>
         </div>
 
-        <!-- Seed Range -->
-        <div class="mb-8">
-          <h3 class="text-lg font-medium text-slate-300 mb-4">Seed Range</h3>
+        <!-- Smart Resume Options -->
+        <div v-if="!analyzing && !analysis" class="mb-8">
+          <button
+            @click="analyzeCourse"
+            :disabled="!targetLanguage || !knownLanguage"
+            class="bg-blue-500 hover:bg-blue-600 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
+          >
+            🔍 Analyze Course Progress
+          </button>
+          <p class="mt-2 text-sm text-slate-400">
+            See what's already done and get smart suggestions
+          </p>
+        </div>
+
+        <!-- Analysis Loading -->
+        <div v-if="analyzing" class="mb-8 text-center py-8">
+          <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-emerald-500"></div>
+          <p class="text-slate-400 mt-3">Analyzing course progress...</p>
+        </div>
+
+        <!-- Smart Recommendations -->
+        <div v-if="analysis && !isGenerating" class="mb-8">
+          <div class="bg-slate-700/50 rounded-lg border border-slate-400/20 p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-medium text-slate-100">🎯 Smart Options</h3>
+              <button
+                @click="analysis = null"
+                class="text-slate-400 hover:text-slate-300 text-sm"
+              >
+                ✕ Clear
+              </button>
+            </div>
+
+            <!-- Course Status -->
+            <div class="mb-6 p-4 bg-slate-800/50 rounded-lg">
+              <div class="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span class="text-slate-400">Phase 1 (Seeds):</span>
+                  <span class="ml-2 font-semibold" :class="analysis.seed_pairs.exists ? 'text-green-400' : 'text-red-400'">
+                    {{ analysis.seed_pairs.exists ? `✓ ${analysis.seed_pairs.count} seeds` : '✗ Missing' }}
+                  </span>
+                </div>
+                <div>
+                  <span class="text-slate-400">Phase 3 (LEGOs):</span>
+                  <span class="ml-2 font-semibold" :class="analysis.lego_pairs.exists ? 'text-green-400' : 'text-red-400'">
+                    {{ analysis.lego_pairs.exists ? `✓ ${analysis.lego_pairs.count} LEGOs` : '✗ Missing' }}
+                  </span>
+                </div>
+              </div>
+              <div v-if="analysis.lego_pairs.missing.length > 0" class="mt-3 text-sm text-amber-400">
+                ⚠️  {{ analysis.lego_pairs.missing.length }} seeds missing LEGOs
+              </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="space-y-3">
+              <button
+                v-for="rec in analysis.recommendations"
+                :key="rec.title"
+                @click="selectRecommendation(rec)"
+                class="w-full text-left p-4 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-600 hover:border-emerald-500 rounded-lg transition group"
+              >
+                <div class="flex items-start justify-between">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                      <span v-if="rec.type === 'test'" class="text-xl">✨</span>
+                      <span v-else-if="rec.type === 'resume'" class="text-xl">📝</span>
+                      <span v-else-if="rec.type === 'full'" class="text-xl">🚀</span>
+                      <span v-else class="text-xl">➡️</span>
+                      <span class="font-semibold text-slate-100 group-hover:text-emerald-400 transition">
+                        {{ rec.title }}
+                      </span>
+                    </div>
+                    <p class="text-sm text-slate-400 ml-7">{{ rec.description }}</p>
+                    <p class="text-xs text-slate-500 ml-7 mt-1">
+                      Seeds {{ rec.action.startSeed }}-{{ rec.action.endSeed }}
+                      ({{ rec.action.endSeed - rec.action.startSeed + 1 }} seeds)
+                    </p>
+                  </div>
+                  <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manual Seed Range (fallback) -->
+        <div v-if="!analysis || showManualInput" class="mb-8">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-medium text-slate-300">Manual Seed Range</h3>
+            <button
+              v-if="analysis && !showManualInput"
+              @click="showManualInput = true"
+              class="text-sm text-slate-400 hover:text-emerald-400 transition"
+            >
+              Show manual input
+            </button>
+          </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label class="block text-sm font-medium text-slate-300 mb-2">
@@ -101,18 +196,15 @@
           <p class="mt-3 text-sm text-slate-400">
             <span class="font-semibold text-emerald-400">{{ seedCount }} seeds</span> will be generated (S{{ String(startSeed).padStart(4, '0') }}-S{{ String(endSeed).padStart(4, '0') }})
           </p>
-          <p class="mt-1 text-xs text-slate-500">
-            💡 Tip: Generate S0001-S0020 first to test, then extend with S0021-S0060, etc.
-          </p>
-        </div>
 
-        <!-- Generate Button -->
-        <button
-          @click="startGeneration"
-          class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition hover:-translate-y-0.5"
-        >
-          Generate Course
-        </button>
+          <!-- Generate Button -->
+          <button
+            @click="startGeneration"
+            class="mt-6 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition hover:-translate-y-0.5"
+          >
+            Generate Course
+          </button>
+        </div>
       </div>
 
       <!-- Progress Monitor -->
@@ -222,6 +314,11 @@ const currentPhase = ref('initializing')
 const progress = ref(0)
 const errorMessage = ref('')
 
+// Smart Resume
+const analyzing = ref(false)
+const analysis = ref(null)
+const showManualInput = ref(false)
+
 let pollInterval = null
 
 // Phase names for UI
@@ -278,6 +375,56 @@ const loadLanguages = async () => {
   } finally {
     languagesLoading.value = false
   }
+}
+
+const analyzeCourse = async () => {
+  try {
+    analyzing.value = true
+    errorMessage.value = ''
+
+    const code = `${targetLanguage.value}_for_${knownLanguage.value}`
+    const response = await apiClient.get(`/api/courses/${code}/analyze`)
+
+    analysis.value = response.data
+  } catch (error) {
+    console.error('Failed to analyze course:', error)
+
+    // If course doesn't exist, that's okay - show recommendations anyway
+    if (error.response?.status === 404) {
+      analysis.value = {
+        courseCode: `${targetLanguage.value}_for_${knownLanguage.value}`,
+        exists: false,
+        seed_pairs: { exists: false },
+        lego_pairs: { exists: false },
+        recommendations: [
+          {
+            type: 'test',
+            phase: 3,
+            title: 'Test Run: First 50 Seeds',
+            description: 'Test the pipeline on 50 seeds before full run',
+            action: { startSeed: 1, endSeed: 50 }
+          },
+          {
+            type: 'full',
+            phase: 3,
+            title: 'Full Run: All 668 Seeds',
+            description: 'Generate complete course',
+            action: { startSeed: 1, endSeed: 668 }
+          }
+        ]
+      }
+    } else {
+      errorMessage.value = 'Failed to analyze course'
+    }
+  } finally {
+    analyzing.value = false
+  }
+}
+
+const selectRecommendation = (rec) => {
+  startSeed.value = rec.action.startSeed
+  endSeed.value = rec.action.endSeed
+  startGeneration()
 }
 
 const startGeneration = async () => {
@@ -342,6 +489,8 @@ const startNew = () => {
   currentPhase.value = 'initializing'
   progress.value = 0
   errorMessage.value = ''
+  analysis.value = null
+  showManualInput.value = false
 }
 
 const viewCourse = () => {

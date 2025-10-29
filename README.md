@@ -1,10 +1,10 @@
-# SSi Course Production Dashboard v7.8.1
+# SSi Course Production Dashboard v7.8.3
 
-**Production-ready with locked phase intelligence**
+**Production-ready with locked phase intelligence + smart resume**
 
 ## Overview
 
-Clean, minimal dashboard for SSi Course Production with locked phase intelligence (v7.8.1).
+Clean, minimal dashboard for SSi Course Production with locked phase intelligence (v7.8.3).
 
 ### Features
 
@@ -37,7 +37,7 @@ Clean, minimal dashboard for SSi Course Production with locked phase intelligenc
 |-------|------|---------|--------|-------------|
 | 1 | Pedagogical Translation | v2.6 🔒 | ACTIVE | TWO ABSOLUTE RULES, examples over precepts, synonym flexibility |
 | 2 | Corpus Intelligence | v1.0 | Inactive | FCFS mapping + utility (not in current workflow) |
-| 3 | LEGO Extraction | v3.5 🔒 | ACTIVE | TILING FIRST, COMPOSITE with literal componentization |
+| 3 | LEGO Extraction | v4.0.2 🔒 | ACTIVE | ONE RULE: Known → Target 1:1 (zero uncertainty), 3-step protocol (TILE/TEST/FIX) |
 | 3.5 | Graph Construction | v1.0 | Inactive | LEGO adjacency edges (not in current workflow) |
 | 5 | Basket Generation | v2.2 🔒 | ACTIVE | Eternal/debut phrases, batch-aware edge targeting |
 | 5.5 | Deduplication | v2.0 🔒 | ACTIVE | Character-identical matching, first occurrence wins |
@@ -88,9 +88,10 @@ Or connect to GitHub and auto-deploy.
 |--------|----------|-------------|
 | GET | `/api/courses` | List all courses |
 | GET | `/api/courses/:code` | Get full course data |
+| GET | `/api/courses/:code/analyze` | **NEW** Analyze progress + smart resume suggestions |
 | GET | `/api/courses/:code/provenance/:seedId` | Trace provenance chain |
 | PUT | `/api/courses/:code/translations/:uuid` | Update translation |
-| POST | `/api/courses/generate` | Generate new course |
+| POST | `/api/courses/generate` | Generate new course (supports startSeed/endSeed) |
 
 ### VFS Structure
 
@@ -177,9 +178,31 @@ When generating courses in batches (e.g., 20 seeds at a time), validators provid
 - No monolithic phase orchestration (now modular, locked intelligence)
 - Clean v7.0+ architecture with locked SSoT
 
+## Smart Resume (NEW in v7.8.3)
+
+The dashboard now intelligently analyzes course progress and suggests sensible next actions:
+
+```bash
+GET /api/courses/cmn_for_eng/analyze
+```
+
+Returns:
+- What seed_pairs exist (Phase 1 status)
+- What lego_pairs exist (Phase 3 status)
+- Missing seed ranges
+- Smart recommendations:
+  - "Test Run: First 50 Seeds" (always available)
+  - "Resume: Seeds 1-70" (if missing contiguous range)
+  - "Process All Missing" (if partial completion)
+  - "Continue: Phase 4" (if Phase 3 complete)
+
+**No config files needed** - dashboard inspects actual VFS files and figures out what's done.
+
+See: `docs/SMART_RESUME_API.md` for details
+
 ---
 
-**Version:** 7.8.2 (Locked Intelligence + Batch-Aware Generation)
+**Version:** 7.8.3 (Smart Resume + Phase 3 v4.0.2)
 **Build:** Clean
-**Phase Intelligence**: Phase 1 v2.6, Phase 3 v3.5, Phase 5 v2.2 (batch-aware), Phase 5.5 v2.0, Phase 6 v2.0 (🔒 Locked SSoT)
-**Date:** 2025-10-28
+**Phase Intelligence**: Phase 1 v2.6, Phase 3 v4.0.2, Phase 5 v2.2 (batch-aware), Phase 5.5 v2.0, Phase 6 v2.0 (🔒 Locked SSoT)
+**Date:** 2025-10-29

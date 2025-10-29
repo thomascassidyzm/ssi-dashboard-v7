@@ -53,11 +53,11 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">End-to-End Pipeline</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p>The SSi Course Production system uses APML v7.8.2 specification to generate complete language courses from canonical seed pairs through batch-aware, self-healing generation with pattern coverage optimization.</p>
+            <p>The SSi Course Production system uses APML v7.8.3 specification to generate complete language courses from canonical seed pairs through batch-aware, self-healing generation with pattern coverage optimization.</p>
 
             <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-4 my-4">
-              <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">f1e75235</span></p>
-              <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v7.8.2</span> | Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v3.5, 5 v2.2, 5.5 v2.0, 6 v2.0, 7 v1.0</span></p>
+              <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">cb4aa8b9</span></p>
+              <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v7.8.3</span> | Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v4.0.2 🔒, 5 v2.2, 5.5 v2.0, 6 v2.0, 7 v1.0</span></p>
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Architecture Overview</h3>
@@ -70,7 +70,7 @@
               <li><strong>Immutable Contract:</strong> Phase 7 transforms to fixed app manifest format</li>
             </ul>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Active Phase Flow (v7.8.2)</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Active Phase Flow (v7.8.3)</h3>
             <div class="space-y-4 mt-4">
               <router-link to="/phase/1" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
@@ -84,8 +84,8 @@
               <router-link to="/phase/3" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 3: LEGO Extraction <span class="text-xs text-emerald-400">v3.5 🔒</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: seed_pairs.json → Output: lego_pairs.json (BASE/COMPOSITE with literal componentization)</p>
+                    <h4 class="font-semibold text-emerald-300">Phase 3: LEGO Extraction <span class="text-xs text-emerald-400">v4.0.2 🔒</span></h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: seed_pairs.json → Output: lego_pairs.json (ONE RULE: Known→Target 1:1, TILE/TEST/FIX)</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
@@ -128,7 +128,7 @@
               </router-link>
             </div>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Key Features in v7.8.2</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Key Features in v7.8.3</h3>
             <ul class="space-y-2">
               <li><strong>Batch-Aware Generation:</strong> Phase 5 reads validator output from previous batches, targets pattern gaps</li>
               <li><strong>Self-Healing Pattern Coverage:</strong> Each batch improves on previous weaknesses (missing edges, underused LEGOs)</li>
