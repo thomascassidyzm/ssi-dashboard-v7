@@ -67,19 +67,43 @@
           </div>
         </div>
 
-        <!-- Number of Seeds -->
+        <!-- Seed Range -->
         <div class="mb-8">
-          <label class="block text-sm font-medium text-slate-300 mb-2">
-            Number of Seeds
-          </label>
-          <input
-            v-model.number="seedCount"
-            type="number"
-            min="1"
-            max="668"
-            class="w-full md:w-64 bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
-          />
-          <p class="mt-2 text-sm text-slate-400">Default: 668 (full canonical corpus)</p>
+          <h3 class="text-lg font-medium text-slate-300 mb-4">Seed Range</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">
+                Start Seed
+              </label>
+              <input
+                v-model.number="startSeed"
+                type="number"
+                min="1"
+                max="668"
+                class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+              />
+              <p class="mt-2 text-sm text-slate-400">First seed to generate (default: 1)</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">
+                End Seed
+              </label>
+              <input
+                v-model.number="endSeed"
+                type="number"
+                min="1"
+                max="668"
+                class="w-full bg-slate-700 border border-slate-400/20 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+              />
+              <p class="mt-2 text-sm text-slate-400">Last seed to generate (default: 668)</p>
+            </div>
+          </div>
+          <p class="mt-3 text-sm text-slate-400">
+            <span class="font-semibold text-emerald-400">{{ seedCount }} seeds</span> will be generated (S{{ String(startSeed).padStart(4, '0') }}-S{{ String(endSeed).padStart(4, '0') }})
+          </p>
+          <p class="mt-1 text-xs text-slate-500">
+            💡 Tip: Generate S0001-S0020 first to test, then extend with S0021-S0060, etc.
+          </p>
         </div>
 
         <!-- Generate Button -->
@@ -184,7 +208,8 @@ import api, { apiClient } from '../services/api'
 // State
 const knownLanguage = ref('eng')
 const targetLanguage = ref('gle')
-const seedCount = ref(668)
+const startSeed = ref(1)
+const endSeed = ref(668)
 
 const targetLanguages = ref([])
 const knownLanguages = ref([])
@@ -211,6 +236,10 @@ const phaseNames = [
 ]
 
 // Computed
+const seedCount = computed(() => {
+  return endSeed.value - startSeed.value + 1
+})
+
 const currentPhaseIndex = computed(() => {
   const phase = currentPhase.value
   if (phase === 'initializing') return -1
@@ -259,7 +288,8 @@ const startGeneration = async () => {
     const response = await api.course.generate({
       target: targetLanguage.value,
       known: knownLanguage.value,
-      seeds: seedCount.value
+      startSeed: startSeed.value,
+      endSeed: endSeed.value
     })
 
     console.log('Course generation started:', response)

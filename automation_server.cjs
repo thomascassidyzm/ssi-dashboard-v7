@@ -921,11 +921,11 @@ end tell
  */
 async function spawnCourseOrchestrator(courseCode, params) {
   console.log(`[Orchestrator] Starting INTELLIGENT BATCH orchestration: ${courseCode}`);
-  console.log(`[Orchestrator] Total seeds: ${params.seeds}`);
+  console.log(`[Orchestrator] Seed range: S${String(params.startSeed).padStart(4, '0')}-S${String(params.endSeed).padStart(4, '0')} (${params.seeds} seeds)`);
 
   const job = STATE.jobs.get(courseCode);
   const courseDir = await ensureCourseDirectory(courseCode);
-  const { target, known, seeds } = params;
+  const { target, known, seeds, startSeed, endSeed } = params;
 
   try {
     // Calculate batch counts
@@ -964,13 +964,13 @@ async function spawnCourseOrchestrator(courseCode, params) {
       console.log(`\n[Phase 1] Starting ${phase1Batches} translation batches...`);
 
       for (let i = 0; i < phase1Batches; i++) {
-        const startSeed = i * 100 + 1;
-        const endSeed = Math.min((i + 1) * 100, seeds);
+        const batchStartSeed = startSeed + (i * 100);
+        const batchEndSeed = Math.min(startSeed + ((i + 1) * 100) - 1, endSeed);
         const batchNum = i + 1;
 
-        console.log(`[Phase 1] Spawning batch ${batchNum}/${phase1Batches}: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`);
+        console.log(`[Phase 1] Spawning batch ${batchNum}/${phase1Batches}: S${String(batchStartSeed).padStart(4, '0')}-S${String(batchEndSeed).padStart(4, '0')}`);
 
-        const brief = generatePhase1Brief(courseCode, { target, known, startSeed, endSeed, batchNum, totalBatches: phase1Batches }, courseDir);
+        const brief = generatePhase1Brief(courseCode, { target, known, startSeed: batchStartSeed, endSeed: batchEndSeed, batchNum, totalBatches: phase1Batches }, courseDir);
         await spawnPhaseAgent(`1-batch${batchNum}`, brief, courseDir, courseCode);
 
         // Small delay between spawns to avoid overwhelming iTerm2
@@ -1042,13 +1042,13 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
       console.log(`[Phase 3] Starting ${phase3Batches} LEGO extraction batches...`);
 
       for (let i = 0; i < phase3Batches; i++) {
-        const startSeed = i * 50 + 1;
-        const endSeed = Math.min((i + 1) * 50, seeds);
+        const batchStartSeed = startSeed + (i * 50);
+        const batchEndSeed = Math.min(startSeed + ((i + 1) * 50) - 1, endSeed);
         const batchNum = i + 1;
 
-        console.log(`[Phase 3] Spawning batch ${batchNum}/${phase3Batches}: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`);
+        console.log(`[Phase 3] Spawning batch ${batchNum}/${phase3Batches}: S${String(batchStartSeed).padStart(4, '0')}-S${String(batchEndSeed).padStart(4, '0')}`);
 
-        const brief = generatePhase3Brief(courseCode, { target, known, startSeed, endSeed, batchNum, totalBatches: phase3Batches }, courseDir);
+        const brief = generatePhase3Brief(courseCode, { target, known, startSeed: batchStartSeed, endSeed: batchEndSeed, batchNum, totalBatches: phase3Batches }, courseDir);
         await spawnPhaseAgent(`3-batch${batchNum}`, brief, courseDir, courseCode);
         await new Promise(resolve => setTimeout(resolve, 2000));
       }
@@ -1104,20 +1104,20 @@ async function pollAndContinue(courseCode, params, courseDir, phase1Batches, pha
     let validatorOutput = null;
 
     for (let i = 0; i < phase5Batches; i++) {
-      const startSeed = i * 20 + 1;
-      const endSeed = Math.min((i + 1) * 20, seeds);
+      const batchStartSeed = startSeed + (i * 20);
+      const batchEndSeed = Math.min(startSeed + ((i + 1) * 20) - 1, endSeed);
       const batchNum = i + 1;
 
-      console.log(`[Phase 5] === BATCH ${batchNum}/${phase5Batches}: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')} ===`);
+      console.log(`[Phase 5] === BATCH ${batchNum}/${phase5Batches}: S${String(batchStartSeed).padStart(4, '0')}-S${String(batchEndSeed).padStart(4, '0')} ===`);
 
-      const brief = generatePhase5Brief(courseCode, { target, known, startSeed, endSeed, batchNum, totalBatches: phase5Batches }, courseDir, validatorOutput);
+      const brief = generatePhase5Brief(courseCode, { target, known, startSeed: batchStartSeed, endSeed: batchEndSeed, batchNum, totalBatches: phase5Batches }, courseDir, validatorOutput);
       await spawnPhaseAgent(`5-batch${batchNum}`, brief, courseDir, courseCode);
 
       // Wait for batch to complete
       console.log(`[Phase 5] ⏳ Waiting for batch ${batchNum} to complete...`);
       await new Promise(resolve => setTimeout(resolve, 90000)); // 1.5 min initial delay
 
-      const expectedLegoCount = Math.ceil(endSeed * 3);
+      const expectedLegoCount = Math.ceil(batchEndSeed * 3);
       const batchComplete = await pollPhase5BatchCompletion(courseDir, expectedLegoCount, 30000);
 
       if (batchComplete) {
@@ -2336,13 +2336,18 @@ app.get('/api/health', (req, res) => {
  * POST /api/courses/generate
  */
 app.post('/api/courses/generate', async (req, res) => {
-  const { target, known, seeds = 574 } = req.body;
+  const { target, known, startSeed = 1, endSeed = 668 } = req.body;
 
   if (!target || !known) {
     return res.status(400).json({ error: 'Missing target or known language' });
   }
 
-  const courseCode = `${target}_for_${known}_${seeds}seeds`;
+  // Calculate total seeds
+  const seeds = endSeed - startSeed + 1;
+
+  // Generate course code with seed range
+  const seedRangeStr = `S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`;
+  const courseCode = `${target}_for_${known}_${seeds}seeds_${seedRangeStr}`;
 
   // Check if job already exists
   if (STATE.jobs.has(courseCode)) {
@@ -2363,14 +2368,14 @@ app.post('/api/courses/generate', async (req, res) => {
     phase: 'initializing',
     progress: 0,
     startTime: new Date(),
-    params: { target, known, seeds },
+    params: { target, known, seeds, startSeed, endSeed },
     windowIds: [] // Track iTerm2 windows for cleanup
   };
 
   STATE.jobs.set(courseCode, job);
 
   // Start orchestrator in background
-  spawnCourseOrchestrator(courseCode, { target, known, seeds }).catch(err => {
+  spawnCourseOrchestrator(courseCode, { target, known, seeds, startSeed, endSeed }).catch(err => {
     console.error(`[API] Orchestrator error:`, err);
   });
 
