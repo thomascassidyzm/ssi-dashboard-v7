@@ -155,6 +155,9 @@ async function analyzeCompleteness() {
   const basketsData = await fs.readJson(bPath);
   console.log(`📂 Loaded baskets from: ${path.basename(bPath)}\n`);
 
+  // Extract baskets object (handle v7.7 format with wrapper)
+  const baskets = basketsData.baskets || basketsData;
+
   // === 1. VOCABULARY COVERAGE ANALYSIS ===
   console.log(`📚 Analyzing vocabulary coverage...`);
 
@@ -162,7 +165,7 @@ async function analyzeCompleteness() {
   let totalEPhrases = 0;
   let totalDPhrases = 0;
 
-  for (const [legoId, basket] of Object.entries(basketsData)) {
+  for (const [legoId, basket] of Object.entries(baskets)) {
     frequencies[legoId] = {
       e_count: 0,
       d_count: 0,
@@ -204,7 +207,7 @@ async function analyzeCompleteness() {
   const edgeFrequency = {};
   let totalPhrases = 0;
 
-  for (const [legoId, basket] of Object.entries(basketsData)) {
+  for (const [legoId, basket] of Object.entries(baskets)) {
     const allPhrases = [];
 
     if (basket.e) allPhrases.push(...basket.e);

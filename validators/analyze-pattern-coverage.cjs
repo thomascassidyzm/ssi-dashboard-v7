@@ -127,12 +127,15 @@ async function analyzePatternCoverage() {
   const basketsData = await fs.readJson(bPath);
   console.log(`📂 Loaded baskets from: ${path.basename(bPath)}`);
 
+  // Extract baskets object (handle v7.7 format with wrapper)
+  const baskets = basketsData.baskets || basketsData;
+
   // Extract all edges from practice phrases
   const edgeFrequency = {}; // edge → count
   const edgeExamples = {}; // edge → [phrases]
   let totalPhrases = 0;
 
-  for (const [legoId, basket] of Object.entries(basketsData)) {
+  for (const [legoId, basket] of Object.entries(baskets)) {
     // Process e-PHRASES
     if (basket.e && Array.isArray(basket.e)) {
       for (const phrase of basket.e) {

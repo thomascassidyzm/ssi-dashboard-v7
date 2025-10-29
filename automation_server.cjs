@@ -435,8 +435,8 @@ Run validators to measure pattern coverage:
 
 \`\`\`bash
 cd ${courseDir}
-node ../../validators/analyze-pattern-coverage.cjs ${courseCode} --output ${courseDir}/pattern_coverage_report.json
-node ../../validators/analyze-completeness.cjs ${courseCode} --output ${courseDir}/completeness_report.json
+node ../../../validators/analyze-pattern-coverage.cjs ${courseCode} --output ${courseDir}/pattern_coverage_report.json
+node ../../../validators/analyze-completeness.cjs ${courseCode} --output ${courseDir}/completeness_report.json
 \`\`\`
 
 Report pattern density and completeness score!
