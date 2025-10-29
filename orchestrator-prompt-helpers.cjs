@@ -201,6 +201,9 @@ This document contains:
 2. Spawn orchestrators in NEW iTerm2 windows using osascript via Bash tool
 3. Wait 30 seconds between each orchestrator spawn (prevents overload)
 4. Monitor for chunk completion via Read/Glob tools
+   - Check every 60 seconds for new chunks
+   - If 4/5 chunks complete and last chunk is 5+ minutes behind → retry missing orchestrator
+   - Osascript can fail (clipboard paste issues) → missing chunk after 5 min = failed spawn
 5. Run merge scripts via Bash tool
 6. Provide clear status updates
 7. Coordinate all phases from start to finish
