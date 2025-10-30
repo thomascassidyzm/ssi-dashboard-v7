@@ -44,7 +44,7 @@ const ENVIRONMENTS = {
   },
   kai: {
     name: "Kai's Machine",
-    url: 'https://kai-machine-placeholder.ngrok-free.dev'  // Update when Kai provides ngrok URL
+    url: 'https://kai-ssi-automation.ngrok-free.dev'  // UPDATE: Set this to Kai's reserved ngrok domain
   },
   api: {
     name: 'API Server',

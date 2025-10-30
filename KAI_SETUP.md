@@ -66,24 +66,35 @@ pm2 logs dashboard-ui
 ```
 
 ### 6. Set Up ngrok Tunnel
+
+**Tom will provide you with a reserved ngrok domain** (e.g., `kai-ssi-automation.ngrok-free.dev`)
+
 Install ngrok:
 ```bash
 brew install ngrok
 ```
 
-Sign up at https://ngrok.com and get your auth token:
+Get your auth token from Tom (from his paid ngrok account) and configure:
 ```bash
 ngrok config add-authtoken YOUR_AUTH_TOKEN
 ```
 
-Start the tunnel:
-```bash
-ngrok http 3456
+Update `ecosystem.config.cjs` line 63 to use your assigned domain:
+```javascript
+args: 'http --domain=kai-ssi-automation.ngrok-free.dev 3456',
 ```
 
-You'll get a URL like: `https://xyz-abc-123.ngrok-free.dev`
+Then PM2 will automatically start the tunnel with the correct domain:
+```bash
+pm2 restart ngrok-tunnel
+pm2 logs ngrok-tunnel  # Verify it's connected
+```
 
-**Send this URL to Tom** so he can add it to the Environment Switcher!
+**Advantages of Tom's paid account:**
+- Static URL (doesn't change on restart)
+- No browser warning screen
+- Higher bandwidth limits
+- Can run multiple agents simultaneously
 
 ### 7. Access the Dashboard
 
