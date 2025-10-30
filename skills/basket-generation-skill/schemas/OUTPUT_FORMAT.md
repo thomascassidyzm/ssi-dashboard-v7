@@ -1,32 +1,42 @@
 # Output Format
 
-**CRITICAL: Output must be pure JSON with ZERO commentary.**
+**CRITICAL: Write JSON to file, return only confirmation.**
 
 ## The Absolute Rule
 
-**Output ONLY:**
+**When spawned as a Task sub-agent:**
+
+1. **Write** your baskets to the specified file path (orchestrator will provide it)
+2. **Return** ONLY: "✅ Agent N complete: M baskets written"
+
+**DO NOT return the full JSON in your Task response - it exceeds token limits.**
+
+## File Output Format
+
+Your file must contain pure JSON with ZERO commentary:
+
 ```json
 {"S0001L01":{"lego":["target","known"],"e":[["phrase","translation"]],"d":{"2":[],"3":[],"4":[],"5":[]}},"S0001L02":{...}}
 ```
 
-**FORBIDDEN:**
+**In file: FORBIDDEN:**
 - ❌ ANY text before or after JSON
-- ❌ Thinking blocks (keep them internal)
-- ❌ Status updates ("Reading files...", "Processing...")
+- ❌ Thinking blocks
+- ❌ Status updates
 - ❌ Validation commentary
 - ❌ Explanations
 - ❌ Markdown code blocks around JSON
 - ❌ Pretty-printed JSON (no indentation/newlines)
 
-## Why Zero Commentary?
+## Why Write to File?
 
-You are a sub-agent. The orchestrator:
-- Expects pure JSON it can parse immediately
-- Will fail if there's ANY non-JSON text
-- Doesn't need explanations or status updates
-- Processes your output automatically
+You are a sub-agent. When returning via Task tool:
+- Full JSON exceeds 32k token limit
+- Orchestrator reads your file directly
+- Only needs confirmation you're done
+- Saves massive tokens
 
-**Think of yourself as an API endpoint, not a chatbot.**
+**Think of yourself as a worker that writes files, not a chatbot that returns data.**
 
 ## Format Specification
 
