@@ -92,7 +92,7 @@
                     class="px-2 py-0.5 rounded-full text-xs font-medium"
                     :class="getSyncStatusClass(course.syncStatus)"
                   >
-                    {{ course.syncStatus }}
+                    {{ formatSyncStatus(course.syncStatus) }}
                   </span>
                   <span v-if="course.fileCount" class="text-slate-400 text-sm">
                     {{ course.fileCount }} files
@@ -195,11 +195,18 @@ const syncLog = ref([])
 const totalFilesUploaded = ref(0)
 
 const coursesInS3 = computed(() => {
-  return courses.value.filter(c => c.syncStatus === 'in_s3' || c.syncStatus === 'synced').length
+  return courses.value.filter(c =>
+    c.syncStatus === 'in_s3' ||
+    c.syncStatus === 'in_s3_wip' ||
+    c.syncStatus === 'synced'
+  ).length
 })
 
 const coursesNeedingSync = computed(() => {
-  return courses.value.filter(c => c.syncStatus === 'not_synced' && c.hasRequiredFiles).length
+  return courses.value.filter(c =>
+    c.syncStatus === 'not_synced' ||
+    c.syncStatus === 'not_synced_wip'
+  ).length
 })
 
 onMounted(async () => {
@@ -337,12 +344,39 @@ function getSyncStatusClass(status) {
     case 'synced':
     case 'in_s3':
       return 'bg-green-600 text-white'
+    case 'in_s3_wip':
+      return 'bg-blue-600 text-white'
     case 'not_synced':
       return 'bg-yellow-600 text-white'
+    case 'not_synced_wip':
+      return 'bg-orange-600 text-white'
+    case 'empty':
+      return 'bg-slate-600 text-slate-400'
     case 'incomplete':
       return 'bg-red-600 text-white'
     default:
       return 'bg-slate-600 text-slate-300'
+  }
+}
+
+function formatSyncStatus(status) {
+  switch (status) {
+    case 'in_s3':
+      return '✓ In S3'
+    case 'in_s3_wip':
+      return '⚡ In S3 (WIP)'
+    case 'not_synced':
+      return '⬆ Ready to Sync'
+    case 'not_synced_wip':
+      return '⬆ Ready to Sync (WIP)'
+    case 'empty':
+      return '∅ Empty'
+    case 'synced':
+      return '✓ Synced'
+    case 'incomplete':
+      return '⚠ Incomplete'
+    default:
+      return status
   }
 }
 

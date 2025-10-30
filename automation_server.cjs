@@ -4855,22 +4855,20 @@ app.get('/api/storage/courses', async (req, res) => {
       const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
       const hasRequiredFiles = await fs.pathExists(seedPairsPath) && await fs.pathExists(legoPairsPath);
 
-      // Calculate directory size
+      // Calculate directory size (count ALL JSON files, even for WIP courses)
       let size = 0;
       let fileCount = 0;
-      if (hasRequiredFiles) {
-        const files = await fs.readdir(coursePath, { recursive: true });
-        for (const file of files) {
-          try {
-            const filePath = path.join(coursePath, file);
-            const fileStat = await fs.stat(filePath);
-            if (fileStat.isFile() && file.endsWith('.json')) {
-              size += fileStat.size;
-              fileCount++;
-            }
-          } catch (err) {
-            // Skip files that can't be accessed
+      const files = await fs.readdir(coursePath, { recursive: true });
+      for (const file of files) {
+        try {
+          const filePath = path.join(coursePath, file);
+          const fileStat = await fs.stat(filePath);
+          if (fileStat.isFile() && file.endsWith('.json')) {
+            size += fileStat.size;
+            fileCount++;
           }
+        } catch (err) {
+          // Skip files that can't be accessed
         }
       }
 
@@ -4896,12 +4894,12 @@ app.get('/api/storage/courses', async (req, res) => {
 
     // Update sync status
     for (const course of localCourses) {
-      if (!course.hasRequiredFiles) {
-        course.syncStatus = 'incomplete';
-      } else if (s3Courses.includes(course.code)) {
-        course.syncStatus = 'in_s3';
+      if (s3Courses.includes(course.code)) {
+        course.syncStatus = course.hasRequiredFiles ? 'in_s3' : 'in_s3_wip';
+      } else if (course.fileCount > 0) {
+        course.syncStatus = course.hasRequiredFiles ? 'not_synced' : 'not_synced_wip';
       } else {
-        course.syncStatus = 'not_synced';
+        course.syncStatus = 'empty';
       }
     }
 
@@ -4926,18 +4924,14 @@ app.post('/api/storage/sync/:courseCode', async (req, res) => {
       return res.status(404).json({ error: 'Course not found' });
     }
 
-    // Check required files
-    const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
-    const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
-
-    if (!await fs.pathExists(seedPairsPath) || !await fs.pathExists(legoPairsPath)) {
-      return res.status(400).json({ error: 'Course missing required files (seed_pairs.json, lego_pairs.json)' });
-    }
-
-    // Find all JSON files
+    // Find all JSON files (no required files check - sync any course, even WIP)
     const pattern = path.join(coursePath, '**', '*.json');
     const glob = require('glob');
     const files = glob.sync(pattern);
+
+    if (files.length === 0) {
+      return res.status(400).json({ error: 'No JSON files found in course directory' });
+    }
 
     let uploaded = 0;
     const errors = [];
