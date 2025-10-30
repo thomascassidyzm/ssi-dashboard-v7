@@ -7,26 +7,6 @@
 
 ---
 
-## CRITICAL: Atomic Agent Saves
-
-**Each agent MUST:**
-1. Write output to: `vfs/courses/{course}/phase5_segments/segment_0{segment}/orch_0{orch}/agent_{N:02d}_baskets.json`
-2. Return ONLY: "✅ Agent {N} complete: {count} baskets written"
-3. DO NOT return full JSON (exceeds token limits)
-
-**File path format:**
-- segment_01/orch_01/agent_01_baskets.json
-- segment_01/orch_01/agent_02_baskets.json
-- ... etc
-
-**Orchestrator's job:**
-- Spawn 10 agents in parallel
-- Wait for all completions
-- Do NOT merge (dashboard handles that)
-- Exit when done
-
----
-
 ## 🎯 YOUR TASK
 
 You are one of 3 orchestrators processing a segment.

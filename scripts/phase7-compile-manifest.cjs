@@ -3,66 +3,76 @@
 /**
  * Phase 7: Compile Course Manifest
  *
- * Combines all course data from previous phases into a single manifest file
- * compatible with the SSi mobile app legacy format.
+ * Reads v7.7 format files and compiles them into the legacy course manifest
+ * format required by the SSi mobile app.
  *
- * Input files:
- *   - seed_pairs.json (Phase 1)
- *   - lego_pairs.json (Phase 3)
- *   - phase5_segments/segment_01/baskets.json
- *   - phase5_segments/segment_02/baskets.json
- *   - phase5_segments/segment_03/baskets.json
- *   - phase6_segments/segment_01/introductions.json (optional)
- *   - phase6_segments/segment_02/introductions.json (optional)
- *   - phase6_segments/segment_03/introductions.json (optional)
- *
- * Output: course_manifest.json
+ * Input:  vfs/courses/{course_code}/seed_pairs.json
+ *         vfs/courses/{course_code}/lego_pairs.json
+ *         vfs/courses/{course_code}/lego_baskets.json
+ *         vfs/courses/{course_code}/introductions.json
+ * Output: vfs/courses/{course_code}/course_manifest.json
  *
  * Usage: node scripts/phase7-compile-manifest.cjs <course_code>
  */
 
 const fs = require('fs-extra');
 const path = require('path');
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4, v5: uuidv5 } = require('uuid');
 const crypto = require('crypto');
 
 const courseCode = process.argv[2];
 
 if (!courseCode) {
   console.error('❌ Usage: node scripts/phase7-compile-manifest.cjs <course_code>');
-  console.error('   Example: node scripts/phase7-compile-manifest.cjs spa_for_eng');
+  console.error('   Example: node scripts/phase7-compile-manifest.cjs ita_for_eng_10seeds');
   process.exit(1);
 }
 
 const courseDir = path.join(__dirname, '..', 'vfs', 'courses', courseCode);
+const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+// Use deduplicated files (output of Phase 5.5)
+const legoPairsPath = path.join(courseDir, 'lego_pairs_deduplicated.json');
+const legoBasketsPath = path.join(courseDir, 'lego_baskets_deduplicated.json');
+const introductionsPath = path.join(courseDir, 'introductions.json');
+const outputPath = path.join(courseDir, 'course_manifest.json');
 
-// Role-specific UUID segments (SSi legacy format)
+// Role-specific UUID segments (legacy SSi format)
 const ROLE_SEGMENTS = {
-  'target1': { seg3: 'AC07', seg4: '8F4E' },
-  'target2': { seg3: 'E115', seg4: '8F4E' },
-  'source':  { seg3: '36CD', seg4: '31D4' }
+  'target1': { seg2: '6044', seg3: 'AC07', seg4: '8F4E' },
+  'target2': { seg2: '6044', seg3: 'E115', seg4: '8F4E' },
+  'source':  { seg2: '6044', seg3: '36CD', seg4: '31D4' }
 };
 
-/**
- * Generate deterministic UUID for audio samples
- * Format: XXXXXXXX-6044-YYYY-ZZZZ-XXXXXXXXXXXX
- * Same text + language + role + cadence = same UUID every time
- */
+// Generate deterministic UUID for audio sample using SSi legacy format
+// Same text + language + role + cadence = same UUID every time
+// Format: XXXXXXXX-6044-YYYY-ZZZZ-XXXXXXXXXXXX
+// Where YYYY and ZZZZ are role-specific fixed segments
 function generateSampleUUID(text, language, role, cadence) {
-  const input = `${text}|${language}|${role}|${cadence}`;
-  const hash = crypto.createHash('sha1').update(input).digest('hex');
+  const key = `${text}|${language}|${role}|${cadence}`;
 
-  const seg = ROLE_SEGMENTS[role];
-  if (!seg) {
+  // Generate hash
+  const hash = crypto.createHash('sha1').update(key).digest('hex');
+
+  // Get role-specific segments
+  const segments = ROLE_SEGMENTS[role];
+  if (!segments) {
     throw new Error(`Unknown role: ${role}`);
   }
 
-  return `${hash.substr(0,8)}-6044-${seg.seg3}-${seg.seg4}-${hash.substr(8,12)}`.toUpperCase();
+  // Build UUID with role-specific middle sections
+  // seg1 from hash bytes 0-3, seg5 from hash bytes 10-15
+  const uuid = [
+    hash.substring(0, 8),           // segment 1: first 4 bytes of hash
+    segments.seg2,                   // segment 2: always 6044
+    segments.seg3,                   // segment 3: role-specific
+    segments.seg4,                   // segment 4: role-specific
+    hash.substring(20, 32)          // segment 5: last 6 bytes of hash
+  ].join('-').toUpperCase();
+
+  return uuid;
 }
 
-/**
- * Create language node with empty tokens/lemmas (legacy compatibility)
- */
+// Helper to create language node (tokens/lemmas empty per user request)
 function createLanguageNode(text) {
   return {
     tokens: [],
@@ -71,118 +81,66 @@ function createLanguageNode(text) {
   };
 }
 
-/**
- * Generate a simple introduction text for a LEGO when Phase 6 data is not available
- */
-function generateSimpleIntroduction(legoId, targetLego, knownLego, targetSeed, knownSeed, targetLang, knownLang, type) {
-  const targetLangName = targetLang === 'spa' ? 'Spanish' :
-                         targetLang === 'ita' ? 'Italian' :
-                         targetLang === 'fre' ? 'French' : 'target language';
-
-  if (type === 'B') {
-    // BASE LEGO - simple introduction
-    return `Now, the ${targetLangName} for "${knownLego}" as in "${knownSeed}" is "${targetLego}", ${targetLego}.`;
-  } else {
-    // COMPOSITE LEGO - basic introduction without component breakdown
-    return `The ${targetLangName} for "${knownLego}" as in "${knownSeed}" is "${targetLego}".`;
-  }
-}
-
 async function compileManifest() {
   console.log(`\n📦 Phase 7: Compile Course Manifest`);
   console.log(`Course: ${courseCode}\n`);
 
-  // Load required files
-  const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
-  const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+  // Check all required inputs exist
+  const requiredFiles = [
+    { path: seedPairsPath, name: 'seed_pairs.json', phase: 'Phase 1' },
+    { path: legoPairsPath, name: 'lego_pairs.json', phase: 'Phase 3' },
+    { path: legoBasketsPath, name: 'lego_baskets.json', phase: 'Phase 4' },
+    { path: introductionsPath, name: 'introductions.json', phase: 'Phase 6' }
+  ];
 
-  if (!await fs.pathExists(seedPairsPath)) {
-    console.error(`❌ seed_pairs.json not found: ${seedPairsPath}`);
-    console.error('   Run Phase 1 first');
-    process.exit(1);
+  for (const file of requiredFiles) {
+    if (!await fs.pathExists(file.path)) {
+      console.error(`❌ ${file.name} not found: ${file.path}`);
+      console.error(`   Run ${file.phase} first to generate this file`);
+      process.exit(1);
+    }
   }
 
-  if (!await fs.pathExists(legoPairsPath)) {
-    console.error(`❌ lego_pairs.json not found: ${legoPairsPath}`);
-    console.error('   Run Phase 3 first');
-    process.exit(1);
-  }
-
-  console.log('📖 Loading seed_pairs.json...');
+  // Load all input files
+  console.log('📖 Reading input files...');
   const seedPairs = await fs.readJson(seedPairsPath);
-
-  console.log('📖 Loading lego_pairs.json...');
   const legoPairsData = await fs.readJson(legoPairsPath);
+  const legoBasketsData = await fs.readJson(legoBasketsPath);
+  const introductions = await fs.readJson(introductionsPath);
 
-  // Merge baskets from all segments
-  console.log('📖 Loading baskets from segments...');
-  const allBaskets = {};
-  let basketsLoaded = 0;
-  let totalBaskets = 0;
+  // Handle both formats: array (from Phase 5.5) or object with seeds property
+  const seeds = Array.isArray(legoPairsData) ? legoPairsData : legoPairsData.seeds;
+  const baskets = legoBasketsData.baskets || legoBasketsData;
+  const version = legoPairsData.version || introductions.version || '7.8.0';
 
-  for (let i = 1; i <= 3; i++) {
-    const segmentNum = String(i).padStart(2, '0');
-    const basketPath = path.join(courseDir, 'phase5_segments', `segment_${segmentNum}`, 'baskets.json');
-
-    if (await fs.pathExists(basketPath)) {
-      const segmentBaskets = await fs.readJson(basketPath);
-
-      // Convert numeric index to legoId lookup
-      for (const key of Object.keys(segmentBaskets)) {
-        const basket = segmentBaskets[key];
-        if (basket && basket.legoId) {
-          allBaskets[basket.legoId] = basket;
-          totalBaskets++;
-        }
-      }
-
-      basketsLoaded++;
-      console.log(`   ✓ Loaded segment_${segmentNum}: ${totalBaskets} baskets`);
-    } else {
-      console.log(`   ⊘ Segment_${segmentNum} not found (optional)`);
-    }
-  }
-
-  if (basketsLoaded === 0) {
-    console.warn('⚠️  No baskets found in any segment');
-  }
-
-  // Merge introductions from all segments (optional)
-  console.log('📖 Loading introductions from segments...');
-  const allIntroductions = {};
-  let introsLoaded = 0;
-
-  for (let i = 1; i <= 3; i++) {
-    const segmentNum = String(i).padStart(2, '0');
-    const introPath = path.join(courseDir, 'phase6_segments', `segment_${segmentNum}`, 'introductions.json');
-
-    if (await fs.pathExists(introPath)) {
-      const segmentIntros = await fs.readJson(introPath);
-      Object.assign(allIntroductions, segmentIntros.introductions || segmentIntros);
-      introsLoaded++;
-      console.log(`   ✓ Loaded segment_${segmentNum}: ${Object.keys(segmentIntros.introductions || segmentIntros).length} introductions`);
-    }
-  }
-
-  if (introsLoaded === 0) {
-    console.log('   ⊘ No phase6 introductions found - will generate simple ones');
-  }
-
-  // Extract metadata
-  const targetCode = seedPairs.target_language || legoPairsData.target || 'spa';
-  const knownCode = seedPairs.known_language || legoPairsData.known || 'eng';
+  // Extract course metadata
+  const [targetCode, , knownCode] = courseCode.split('_');
   const courseId = `${targetCode}-${knownCode}`;
-  const version = seedPairs.version || legoPairsData.version || '7.7.0';
 
-  console.log(`\n📊 Course ID: ${courseId}`);
-  console.log(`📊 Version: ${version}`);
-  console.log(`📊 Target: ${targetCode}, Known: ${knownCode}`);
+  console.log(`📊 Course ID: ${courseId}`);
+  console.log(`📊 Seeds: ${seeds.length}`);
+  console.log(`📊 LEGOs: ${Object.keys(introductions.introductions).length}\n`);
 
-  // Get seeds array from lego_pairs
-  const seeds = legoPairsData.seeds || [];
-  console.log(`📊 Total seeds: ${seeds.length}`);
-  console.log(`📊 Total baskets: ${Object.keys(allBaskets).length}`);
-  console.log(`📊 Total introductions: ${Object.keys(allIntroductions).length}\n`);
+  // Create LEGO lookup for quick access
+  const legoLookup = {};
+  for (const seed of seeds) {
+    const [seedId, [targetSeed, knownSeed], legos] = seed;
+    for (const lego of legos) {
+      const [legoId, type, targetLego, knownLego, components] = lego;
+      legoLookup[legoId] = {
+        seedId,
+        type,
+        target: targetLego,
+        known: knownLego,
+        seedTarget: targetSeed,
+        seedKnown: knownSeed,
+        components
+      };
+    }
+  }
+
+  // Create basket lookup (baskets is an object, not array)
+  const basketLookup = baskets;
 
   // Track all audio samples
   const samples = {};
@@ -205,13 +163,10 @@ async function compileManifest() {
     }
   }
 
-  // Build all seeds
+  // Build all seeds (all seeds go in a single slice)
   const manifestSeeds = [];
   let totalIntroductionItems = 0;
   let totalPracticeNodes = 0;
-  let generatedIntros = 0;
-
-  console.log('🔨 Building manifest...\n');
 
   for (const seed of seeds) {
     const [seedId, [targetSeed, knownSeed], legos] = seed;
@@ -227,14 +182,11 @@ async function compileManifest() {
     for (const lego of legos) {
       const [legoId, type, targetLego, knownLego, components] = lego;
 
-      // Get presentation text (from Phase 6 or generate simple one)
-      let presentation = allIntroductions[legoId];
+      // Get presentation text from Phase 6
+      const presentation = introductions.introductions[legoId];
       if (!presentation) {
-        presentation = generateSimpleIntroduction(
-          legoId, targetLego, knownLego, targetSeed, knownSeed,
-          targetCode, knownCode, type
-        );
-        generatedIntros++;
+        console.warn(`⚠️  No presentation found for ${legoId}, skipping`);
+        continue;
       }
 
       // Register LEGO pair samples
@@ -245,27 +197,34 @@ async function compileManifest() {
       // Register presentation text sample (spoken in known language)
       registerSample(presentation, knownCode, 'source', 'natural');
 
-      // Get practice phrases from baskets
-      const basketData = allBaskets[legoId];
+      // Get practice phrases (nodes) from baskets
+      const basket = basketLookup[legoId];
       const practiceNodes = [];
 
-      if (basketData) {
-        // Use dPhrases for practice windows (expanding context phrases)
-        // Note: baskets use camelCase (dPhrases, not dphrases)
-        const dPhrases = basketData.dPhrases || [];
+      if (basket) {
+        // Basket structure: [lego_pair, full_sentences, practice_windows]
+        // practice_windows is an array of 4 windows with expanding phrases
+        const practiceWindows = basket[2] || [];
 
-        for (const phrase of dPhrases) {
-          if (phrase.target && phrase.known) {
-            // Register practice phrase samples
-            registerSample(phrase.target, targetCode, 'target1', 'natural');
-            registerSample(phrase.target, targetCode, 'target2', 'natural');
-            registerSample(phrase.known, knownCode, 'source', 'natural');
+        // Flatten all windows into a single list of practice phrases
+        for (const window of practiceWindows) {
+          if (Array.isArray(window)) {
+            for (const phrase of window) {
+              if (Array.isArray(phrase) && phrase.length === 2) {
+                const [targetPhrase, knownPhrase] = phrase;
 
-            practiceNodes.push({
-              id: uuidv4(),
-              target: createLanguageNode(phrase.target),
-              known: createLanguageNode(phrase.known)
-            });
+                // Register practice phrase samples
+                registerSample(targetPhrase, targetCode, 'target1', 'natural');
+                registerSample(targetPhrase, targetCode, 'target2', 'natural');
+                registerSample(knownPhrase, knownCode, 'source', 'natural');
+
+                practiceNodes.push({
+                  id: uuidv4(),
+                  target: createLanguageNode(targetPhrase),
+                  known: createLanguageNode(knownPhrase)
+                });
+              }
+            }
           }
         }
 
@@ -300,10 +259,10 @@ async function compileManifest() {
         target: createLanguageNode(targetSeed),
         known: createLanguageNode(knownSeed)
       },
-      seedSentence: {
+      seed_sentence: {
         canonical: knownSeed
       },
-      introductionItems: introductionItems
+      introduction_items: introductionItems
     };
 
     manifestSeeds.push(seedObj);
@@ -314,7 +273,9 @@ async function compileManifest() {
     id: uuidv4(),
     version: version,
     seeds: manifestSeeds,
-    samples: samples
+    pooledEncouragements: [],
+    orderedEncouragements: [],
+    samples: samples // Audio sample metadata (Phase 8 will generate actual audio files)
   }];
 
   // Build final manifest
@@ -327,37 +288,31 @@ async function compileManifest() {
   };
 
   // Write manifest
-  const outputPath = path.join(courseDir, 'course_manifest.json');
   await fs.writeJson(outputPath, manifest, { spaces: 2 });
 
-  // Count statistics
+  // Count total sample entries
   const totalSamples = Object.keys(samples).length;
   const totalSampleVariants = Object.values(samples).reduce((sum, arr) => sum + arr.length, 0);
 
-  console.log(`✅ Course manifest compiled successfully!\n`);
-  console.log(`📊 Statistics:`);
+  console.log(`✅ Compiled course manifest:`);
   console.log(`   - Seeds: ${manifestSeeds.length}`);
-  console.log(`   - Introduction Items (LEGOs): ${totalIntroductionItems}`);
+  console.log(`   - Introduction Items: ${totalIntroductionItems}`);
   console.log(`   - Practice Nodes: ${totalPracticeNodes}`);
-  console.log(`   - Audio Samples: ${totalSamples} unique phrases`);
-  console.log(`   - Sample Variants: ${totalSampleVariants} (target1, target2, source)`);
-  if (generatedIntros > 0) {
-    console.log(`   - Generated introductions: ${generatedIntros} (Phase 6 not run)`);
-  }
+  console.log(`   - Audio Samples: ${totalSamples} unique phrases, ${totalSampleVariants} total variants`);
   console.log(`\n💾 Output: ${outputPath}\n`);
 
   // Show sample structure
   if (manifestSeeds.length > 0) {
     const firstSeed = manifestSeeds[0];
-    console.log(`📝 Sample structure:`);
-    console.log(`   Seed: "${firstSeed.node.known.text}"`);
-    console.log(`   → LEGOs: ${firstSeed.introductionItems.length}`);
+    console.log(`📝 Sample structure:\n`);
+    console.log(`Seed: "${firstSeed.node.known.text}"`);
+    console.log(`  → LEGOs: ${firstSeed.introductionItems.length}`);
     if (firstSeed.introductionItems.length > 0) {
       const firstLego = firstSeed.introductionItems[0];
-      console.log(`   → First LEGO: "${firstLego.node.known.text}"`);
-      console.log(`   → Presentation: "${firstLego.presentation.substring(0, 80)}..."`);
+      console.log(`  → First LEGO: "${firstLego.node.known.text}"`);
+      console.log(`  → Presentation: "${firstLego.presentation}"`);
       if (firstLego.nodes) {
-        console.log(`   → Practice nodes: ${firstLego.nodes.length}`);
+        console.log(`  → Practice nodes: ${firstLego.nodes.length}`);
       }
     }
     console.log();
