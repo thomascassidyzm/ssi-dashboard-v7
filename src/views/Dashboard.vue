@@ -58,9 +58,95 @@
         </div>
       </section>
 
-      <!-- Skills Architecture Visualization -->
+      <!-- Pipeline Architecture -->
       <section class="mt-12">
-        <SkillsArchitectureVisualizer />
+        <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
+          <h2 class="text-2xl font-semibold text-slate-100 mb-6">Pipeline Architecture</h2>
+
+          <div class="space-y-6">
+            <!-- Architecture Description -->
+            <div class="bg-slate-900/50 rounded-lg p-6">
+              <p class="text-slate-300 mb-4">
+                The SSI Course Production Pipeline uses a streamlined orchestrator-based architecture with inline prompts for each phase.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                    <span class="text-slate-300">Phase orchestrators with embedded methodology</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span class="text-slate-300">Direct API calls - no sub-agent spawning</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    <span class="text-slate-300">Phase Intelligence as single source of truth</span>
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    <span class="text-slate-300">Atomic VFS operations for reliability</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-pink-500 rounded-full"></div>
+                    <span class="text-slate-300">Progressive compilation with validation</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-teal-500 rounded-full"></div>
+                    <span class="text-slate-300">Real-time dashboard editing & preview</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase Flow -->
+            <div class="flex items-center justify-between gap-4 overflow-x-auto pb-4">
+              <div v-for="phase in [
+                { num: '1', name: 'Translation', color: 'blue' },
+                { num: '3', name: 'LEGO Extraction', color: 'purple' },
+                { num: '4', name: 'Deduplication', color: 'indigo' },
+                { num: '5', name: 'Baskets', color: 'pink' },
+                { num: '6', name: 'Introductions', color: 'orange' },
+                { num: '7', name: 'Compilation', color: 'teal' },
+                { num: '8', name: 'Audio', color: 'emerald' }
+              ]" :key="phase.num" class="flex-shrink-0">
+                <div class="text-center">
+                  <div class="w-24 h-24 rounded-lg border-2 flex flex-col items-center justify-center"
+                       :class="`border-${phase.color}-500 bg-${phase.color}-500/10`">
+                    <div :class="`text-${phase.color}-400 font-bold text-xl`">{{ phase.num }}</div>
+                    <div :class="`text-${phase.color}-300 text-xs mt-1`">{{ phase.name }}</div>
+                  </div>
+                </div>
+                <svg v-if="phase.num !== '8'" class="w-8 h-24 inline-block" viewBox="0 0 32 96">
+                  <path d="M 4 48 L 28 48" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                  <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                      <polygon points="0 0, 10 3, 0 6" fill="#475569" />
+                    </marker>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-4 text-center">
+              <div class="bg-slate-900/50 rounded-lg p-4">
+                <div class="text-3xl font-bold text-emerald-400">8</div>
+                <div class="text-sm text-slate-400 mt-1">Pipeline Phases</div>
+              </div>
+              <div class="bg-slate-900/50 rounded-lg p-4">
+                <div class="text-3xl font-bold text-purple-400">0</div>
+                <div class="text-sm text-slate-400 mt-1">Sub-Agents Spawned</div>
+              </div>
+              <div class="bg-slate-900/50 rounded-lg p-4">
+                <div class="text-3xl font-bold text-blue-400">Direct</div>
+                <div class="text-sm text-slate-400 mt-1">API Execution</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Reference Materials -->
@@ -84,16 +170,7 @@
               <div class="text-3xl">🧠</div>
               <div>
                 <h3 class="font-semibold text-emerald-400">Phase Intelligence Modules</h3>
-                <p class="text-sm text-slate-400">Live methodology for each phase - the single source of truth agents read during runtime</p>
-              </div>
-            </router-link>
-
-            <!-- Skills Library -->
-            <router-link to="/skills" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-emerald-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
-              <div class="text-3xl">🛠️</div>
-              <div>
-                <h3 class="font-semibold text-emerald-400">Skills Library</h3>
-                <p class="text-sm text-slate-400">Progressive disclosure methodology modules - agents load only what they need for efficient, consistent execution</p>
+                <p class="text-sm text-slate-400">Live methodology for each phase - the single source of truth with embedded inline prompts</p>
               </div>
             </router-link>
 
@@ -146,7 +223,5 @@
 </template>
 
 <script setup>
-import SkillsArchitectureVisualizer from '../components/SkillsArchitectureVisualizer.vue'
-
 console.log('🚀 Dashboard View Loaded')
 </script>
