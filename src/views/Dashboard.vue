@@ -77,7 +77,7 @@
                   </div>
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span class="text-slate-300">Direct API calls - no sub-agent spawning</span>
+                    <span class="text-slate-300">Claude Code agents - no sub-agent spawning</span>
                   </div>
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
@@ -141,8 +141,8 @@
                 <div class="text-sm text-slate-400 mt-1">Sub-Agents Spawned</div>
               </div>
               <div class="bg-slate-900/50 rounded-lg p-4">
-                <div class="text-3xl font-bold text-blue-400">Direct</div>
-                <div class="text-sm text-slate-400 mt-1">API Execution</div>
+                <div class="text-3xl font-bold text-blue-400">1</div>
+                <div class="text-sm text-slate-400 mt-1">Agent per Phase</div>
               </div>
             </div>
           </div>
