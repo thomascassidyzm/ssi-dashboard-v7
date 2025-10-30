@@ -303,17 +303,40 @@
                       </div>
                     </div>
 
-                    <!-- Edit Mode: Container-Based Editing -->
+                    <!-- Edit Mode: Word Divider Editor (New) or Container Editor (Classic) -->
                     <div v-else class="space-y-6">
-                      <!-- Instructions -->
-                      <div class="p-4 bg-blue-900/20 border border-blue-700/50 rounded">
-                        <div class="text-sm text-blue-200">
-                          <div class="font-semibold mb-2">✏️ Editing Mode</div>
-                          <p class="text-xs text-blue-300">
-                            Edit LEGO containers, merge/split them, toggle BASE/COMPOSITE, edit componentization, and create FEEDERs. LEGOs must tile perfectly to cover the entire sentence.
-                          </p>
+                      <!-- Editor Mode Toggle -->
+                      <div class="flex items-center justify-between mb-4">
+                        <div class="text-sm text-slate-400">
+                          Editing: {{ breakdown.seed_id }}
                         </div>
+                        <button
+                          @click="useNewEditor = !useNewEditor"
+                          class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded transition flex items-center gap-2"
+                        >
+                          <span>{{ useNewEditor ? '📊 Classic Editor' : '✨ New Interactive Editor' }}</span>
+                        </button>
                       </div>
+
+                      <!-- New Word Divider Editor -->
+                      <div v-if="useNewEditor">
+                        <WordDividerEditor
+                          :breakdown="breakdown"
+                          @update-legos="handleLegoUpdate"
+                        />
+                      </div>
+
+                      <!-- Classic Container-Based Editor -->
+                      <div v-else>
+                        <!-- Instructions -->
+                        <div class="p-4 bg-blue-900/20 border border-blue-700/50 rounded">
+                          <div class="text-sm text-blue-200">
+                            <div class="font-semibold mb-2">✏️ Classic Editing Mode</div>
+                            <p class="text-xs text-blue-300">
+                              Edit LEGO containers, merge/split them, toggle BASE/COMPOSITE, edit componentization, and create FEEDERs. LEGOs must tile perfectly to cover the entire sentence.
+                            </p>
+                          </div>
+                        </div>
 
                       <!-- Editable LEGO Containers -->
                       <div class="space-y-4">
@@ -401,13 +424,14 @@
                           <!-- COMPONENTIZATION Editor (for COMPOSITE LEGOs) -->
                           <div v-if="lego.lego_type === 'COMPOSITE'" class="mt-3 pt-3 border-t border-purple-700/50 space-y-3">
                             <div>
-                              <label class="text-xs text-purple-400 mb-1 block">Componentization</label>
+                              <label class="text-xs text-purple-400 mb-1 block">Componentization (Target ⟷ Known pairs, one per line)</label>
                               <textarea
                                 v-model="lego.componentization"
                                 class="w-full bg-purple-900/20 border border-purple-700 rounded px-3 py-2 text-purple-100 focus:outline-none focus:border-purple-500 font-mono text-sm"
-                                rows="2"
-                                placeholder="e.g., I'm trying to = J'essaie d', where J'essaie = I'm trying and d' = to"
+                                rows="4"
+                                placeholder="lo más ⟷ as&#10;frecuentemente ⟷ often&#10;posible ⟷ possible"
                               ></textarea>
+                              <div class="text-xs text-purple-400/60 mt-1">Format: target ⟷ known (one pair per line, or use commas/JSON)</div>
                             </div>
 
                             <!-- FEEDERs for this COMPOSITE LEGO -->
@@ -475,14 +499,6 @@
                           + Add New LEGO Container
                         </button>
                       </div>
-
-                      <!-- Tiling Validation -->
-                      <div class="mt-6 p-4 rounded-lg" :class="validateTiling(breakdown) ? 'bg-emerald-900/20 border border-emerald-700/50' : 'bg-red-900/20 border border-red-700/50'">
-                        <div class="flex items-center gap-2">
-                          <span v-if="validateTiling(breakdown)" class="text-emerald-400">✓ Tiling Valid</span>
-                          <span v-else class="text-red-400">✗ Tiling Invalid</span>
-                          <span class="text-xs text-slate-400">LEGOs must tile to cover entire sentence</span>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -858,6 +874,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import api from '../services/api'
+import WordDividerEditor from '../components/lego-editor/WordDividerEditor.vue'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -874,6 +891,8 @@ const loading = ref(true)
 const error = ref(null)
 const editingBreakdown = ref(null) // Track which seed breakdown is being edited
 const editDividers = ref({}) // Track divider positions for editing
+const useNewEditor = ref(true) // Toggle between new word-divider editor and old container-based editor
+const updatedLegos = ref({}) // Store LEGO updates from WordDividerEditor
 
 const activeTab = ref('translations')
 const searchQuery = ref('')
@@ -1204,6 +1223,7 @@ function validateTiling(breakdown) {
 function cancelEditingBreakdown() {
   if (editingBreakdown.value) {
     delete editDividers.value[editingBreakdown.value]
+    delete updatedLegos.value[editingBreakdown.value]
   }
   editingBreakdown.value = null
 }
@@ -1271,16 +1291,32 @@ function getPreviewLegoPairs(breakdown) {
   return pairs
 }
 
+function handleLegoUpdate(update) {
+  // Store the updated LEGOs from WordDividerEditor
+  updatedLegos.value[update.seed_id] = {
+    lego_pairs: update.lego_pairs,
+    is_valid_tiling: update.is_valid_tiling
+  }
+
+  // Update the breakdown in editDividers for consistency
+  if (editDividers.value[update.seed_id]) {
+    editDividers.value[update.seed_id].lego_pairs = update.lego_pairs
+  }
+}
+
 async function saveBreakdown(breakdown) {
   try {
-    // Validate tiling before saving
-    if (!validateTiling(breakdown)) {
-      alert('Tiling validation failed! LEGOs must tile perfectly to cover the entire sentence.')
-      return
-    }
+    // Use LEGOs from WordDividerEditor if available, otherwise fall back to classic editor
+    let editedLegos
+    let editedFeeders
 
-    const editedLegos = getEditableLegos(breakdown)
-    const editedFeeders = getEditableFeeders(breakdown)
+    if (useNewEditor.value && updatedLegos.value[breakdown.seed_id]) {
+      editedLegos = updatedLegos.value[breakdown.seed_id].lego_pairs
+      editedFeeders = getEditableFeeders(breakdown) // Feeders still from classic editor
+    } else {
+      editedLegos = getEditableLegos(breakdown)
+      editedFeeders = getEditableFeeders(breakdown)
+    }
 
     console.log(`[CourseEditor] Saving breakdown for ${breakdown.seed_id}`)
     console.log('LEGOs:', editedLegos)
