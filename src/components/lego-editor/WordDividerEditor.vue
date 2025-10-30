@@ -64,16 +64,16 @@
       </div>
       <div class="mt-2 flex items-center gap-2">
         <button
-          v-if="currentTargetLego > 0"
+          :disabled="currentTargetLego === 0"
           @click="currentTargetLego--"
-          class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded"
+          class="px-3 py-1 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 disabled:cursor-not-allowed text-slate-300 text-sm rounded transition-colors"
         >
           ← Previous LEGO
         </button>
         <button
-          v-if="currentTargetLego < targetLegoPairs.length - 1"
+          :disabled="currentTargetLego >= targetLegoPairs.length - 1"
           @click="currentTargetLego++"
-          class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded"
+          class="px-3 py-1 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 disabled:cursor-not-allowed text-slate-300 text-sm rounded transition-colors"
         >
           Next LEGO →
         </button>
