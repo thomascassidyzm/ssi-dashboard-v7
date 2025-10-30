@@ -391,9 +391,9 @@ function getLegoPreviewClasses(index) {
   ]
 }
 
-// Build final LEGO pairs with known chunks
+// Build final LEGO pairs with known chunks and colors
 const currentLegoPairs = computed(() => {
-  return targetLegoPairs.value.map((pair, index) => {
+  const pairs = targetLegoPairs.value.map((pair, index) => {
     // Get known words for this LEGO
     const knownWordIndices = Array.from(knownWordAssignments.value[index] || []).sort((a, b) => a - b)
     const knownChunk = knownWordIndices.map(i => knownWords.value[i]).join(' ')
@@ -403,11 +403,9 @@ const currentLegoPairs = computed(() => {
       knownChunk
     }
   })
-})
 
-// Assign colors to final pairs
-const currentLegoWithColors = computed(() => {
-  return assignColors(currentLegoPairs.value)
+  // Assign colors to all pairs
+  return assignColors(pairs)
 })
 
 // Find unmapped known words
