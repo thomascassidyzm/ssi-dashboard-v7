@@ -102,31 +102,79 @@
             </div>
 
             <!-- Phase Flow -->
-            <div class="flex items-center justify-between gap-4 overflow-x-auto pb-4">
-              <div v-for="phase in [
-                { num: '1', name: 'Translation', color: 'blue' },
-                { num: '3', name: 'LEGO Extraction', color: 'purple' },
-                { num: '4', name: 'Deduplication', color: 'indigo' },
-                { num: '5', name: 'Baskets', color: 'pink' },
-                { num: '6', name: 'Introductions', color: 'orange' },
-                { num: '7', name: 'Compilation', color: 'teal' },
-                { num: '8', name: 'Audio', color: 'emerald' }
-              ]" :key="phase.num" class="flex-shrink-0">
-                <div class="text-center">
-                  <div class="w-24 h-24 rounded-lg border-2 flex flex-col items-center justify-center"
-                       :class="`border-${phase.color}-500 bg-${phase.color}-500/10`">
-                    <div :class="`text-${phase.color}-400 font-bold text-xl`">{{ phase.num }}</div>
-                    <div :class="`text-${phase.color}-300 text-xs mt-1`">{{ phase.name }}</div>
-                  </div>
+            <div class="flex items-center gap-2 overflow-x-auto pb-4">
+              <!-- Phase 1 -->
+              <div class="flex items-center flex-shrink-0">
+                <div class="w-28 h-28 rounded-lg border-2 border-blue-500 bg-blue-500/10 flex flex-col items-center justify-center">
+                  <div class="text-blue-400 font-bold text-2xl">1</div>
+                  <div class="text-blue-300 text-xs mt-1 px-2 text-center">Translation</div>
                 </div>
-                <svg v-if="phase.num !== '8'" class="w-8 h-24 inline-block" viewBox="0 0 32 96">
-                  <path d="M 4 48 L 28 48" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                  <defs>
-                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                      <polygon points="0 0, 10 3, 0 6" fill="#475569" />
-                    </marker>
-                  </defs>
+                <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
+              </div>
+
+              <!-- Phase 3 -->
+              <div class="flex items-center flex-shrink-0">
+                <div class="w-28 h-28 rounded-lg border-2 border-purple-500 bg-purple-500/10 flex flex-col items-center justify-center">
+                  <div class="text-purple-400 font-bold text-2xl">3</div>
+                  <div class="text-purple-300 text-xs mt-1 px-2 text-center">LEGO Extraction</div>
+                </div>
+                <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+
+              <!-- Phase 4 -->
+              <div class="flex items-center flex-shrink-0">
+                <div class="w-28 h-28 rounded-lg border-2 border-indigo-500 bg-indigo-500/10 flex flex-col items-center justify-center">
+                  <div class="text-indigo-400 font-bold text-2xl">4</div>
+                  <div class="text-indigo-300 text-xs mt-1 px-2 text-center">Deduplication</div>
+                </div>
+                <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+
+              <!-- Phase 5 -->
+              <div class="flex items-center flex-shrink-0">
+                <div class="w-28 h-28 rounded-lg border-2 border-pink-500 bg-pink-500/10 flex flex-col items-center justify-center">
+                  <div class="text-pink-400 font-bold text-2xl">5</div>
+                  <div class="text-pink-300 text-xs mt-1 px-2 text-center">Baskets</div>
+                </div>
+                <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+
+              <!-- Phase 6 -->
+              <div class="flex items-center flex-shrink-0">
+                <div class="w-28 h-28 rounded-lg border-2 border-orange-500 bg-orange-500/10 flex flex-col items-center justify-center">
+                  <div class="text-orange-400 font-bold text-2xl">6</div>
+                  <div class="text-orange-300 text-xs mt-1 px-2 text-center">Introductions</div>
+                </div>
+                <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+
+              <!-- Phase 7 -->
+              <div class="flex items-center flex-shrink-0">
+                <div class="w-28 h-28 rounded-lg border-2 border-teal-500 bg-teal-500/10 flex flex-col items-center justify-center">
+                  <div class="text-teal-400 font-bold text-2xl">7</div>
+                  <div class="text-teal-300 text-xs mt-1 px-2 text-center">Compilation</div>
+                </div>
+                <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+
+              <!-- Phase 8 -->
+              <div class="flex items-center flex-shrink-0">
+                <div class="w-28 h-28 rounded-lg border-2 border-emerald-500 bg-emerald-500/10 flex flex-col items-center justify-center">
+                  <div class="text-emerald-400 font-bold text-2xl">8</div>
+                  <div class="text-emerald-300 text-xs mt-1 px-2 text-center">Audio</div>
+                </div>
               </div>
             </div>
 
