@@ -120,29 +120,62 @@
         <div
           v-for="(lego, index) in currentLegoPairs"
           :key="index"
-          class="lego-preview-card p-4 rounded-lg border-2 transition-all cursor-pointer"
+          class="lego-preview-card rounded-lg border-2 transition-all"
           :class="getLegoPreviewClasses(index)"
-          @click="currentTargetLego = index"
         >
-          <div class="flex items-start justify-between mb-2">
-            <div class="text-xs font-mono text-slate-400">
-              LEGO #{{ index + 1 }}
-              <span v-if="currentTargetLego === index" class="ml-2 text-purple-400">← Editing</span>
+          <div
+            class="p-4 cursor-pointer"
+            @click="currentTargetLego = index"
+          >
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex items-center gap-2">
+                <div class="text-xs font-mono text-slate-400">
+                  LEGO #{{ index + 1 }}
+                  <span v-if="currentTargetLego === index" class="ml-2 text-purple-400">← Editing</span>
+                </div>
+                <button
+                  @click.stop="toggleLegoType(index)"
+                  class="text-xs px-2 py-0.5 rounded transition-colors"
+                  :class="legoTypes[index] === 'COMPOSITE'
+                    ? 'bg-purple-600 text-purple-100 hover:bg-purple-500'
+                    : 'bg-slate-700 text-slate-400 hover:bg-slate-600'"
+                >
+                  {{ legoTypes[index] === 'COMPOSITE' ? '⚡ COMPOSITE' : 'BASE' }}
+                </button>
+              </div>
+              <div
+                class="w-3 h-3 rounded-full"
+                :style="{ backgroundColor: lego.color.primary }"
+              ></div>
             </div>
-            <div
-              class="w-3 h-3 rounded-full"
-              :style="{ backgroundColor: lego.color.primary }"
-            ></div>
+            <div class="space-y-1">
+              <div :class="lego.color.text" class="font-medium">
+                {{ lego.targetChunk }}
+              </div>
+              <div class="text-slate-300 text-sm">
+                {{ lego.knownChunk || '(no known words mapped yet)' }}
+              </div>
+              <div v-if="!lego.knownChunk" class="text-xs text-yellow-400">
+                ⚠ Click known words above to complete this mapping
+              </div>
+            </div>
           </div>
-          <div class="space-y-1">
-            <div :class="lego.color.text" class="font-medium">
-              {{ lego.targetChunk }}
+
+          <!-- COMPONENTIZATION Section (for COMPOSITE LEGOs) -->
+          <div v-if="legoTypes[index] === 'COMPOSITE'" class="border-t border-purple-700/50 bg-purple-900/20 p-4">
+            <div class="text-xs font-semibold text-purple-300 mb-2">
+              ⚡ COMPONENTIZATION - Explain how this breaks down for learners
             </div>
-            <div class="text-slate-300 text-sm">
-              {{ lego.knownChunk || '(no known words mapped yet)' }}
-            </div>
-            <div v-if="!lego.knownChunk" class="text-xs text-yellow-400">
-              ⚠ Click known words above to complete this mapping
+            <textarea
+              v-model="componentizations[index]"
+              @click.stop
+              class="w-full bg-purple-900/30 border border-purple-700 rounded px-3 py-2 text-purple-100 focus:outline-none focus:border-purple-500 font-mono text-sm"
+              rows="3"
+              placeholder="lo más ⟷ as&#10;frecuentemente ⟷ often&#10;posible ⟷ possible"
+              @input="handleComponentizationChange(index)"
+            ></textarea>
+            <div class="text-xs text-purple-400/60 mt-1">
+              Format: target ⟷ known (one pair per line, or use commas/JSON)
             </div>
           </div>
         </div>
@@ -203,11 +236,19 @@ const knownWordAssignments = ref({})
 // Currently selected target LEGO for mapping
 const currentTargetLego = ref(0)
 
+// LEGO types: Map<legoIndex, 'BASE' | 'COMPOSITE'>
+const legoTypes = ref({})
+
+// Componentizations: Map<legoIndex, string>
+const componentizations = ref({})
+
 // Initialize dividers and mappings from existing LEGO pairs
 function initializeFromLegos() {
   const numTargetWords = targetWords.value.length
   targetDividers.value = new Array(numTargetWords - 1).fill(false)
   knownWordAssignments.value = {}
+  legoTypes.value = {}
+  componentizations.value = {}
 
   if (!props.breakdown.lego_pairs || props.breakdown.lego_pairs.length === 0) {
     currentTargetLego.value = 0
@@ -227,6 +268,10 @@ function initializeFromLegos() {
         targetDividers.value[dividerIndex] = true
       }
     }
+
+    // Initialize LEGO type and componentization
+    legoTypes.value[legoIndex] = pair.lego_type || 'BASE'
+    componentizations.value[legoIndex] = pair.componentization || ''
   })
 
   // Build known word assignments from known chunks
@@ -255,6 +300,24 @@ function isTargetDividerActive(wordIndex) {
 // Toggle target divider at given index
 function toggleTargetDivider(wordIndex) {
   targetDividers.value[wordIndex] = !targetDividers.value[wordIndex]
+
+  // When LEGO count changes, sync legoTypes and componentizations
+  const newLegoCount = targetLegoPairs.value.length
+  const oldLegoCount = Object.keys(legoTypes.value).length
+
+  if (newLegoCount !== oldLegoCount) {
+    // Initialize types for new LEGOs
+    const newLegoTypes = {}
+    const newComponentizations = {}
+
+    for (let i = 0; i < newLegoCount; i++) {
+      newLegoTypes[i] = legoTypes.value[i] || 'BASE'
+      newComponentizations[i] = componentizations.value[i] || ''
+    }
+
+    legoTypes.value = newLegoTypes
+    componentizations.value = newComponentizations
+  }
 
   // Reset current target LEGO to first one
   currentTargetLego.value = 0
@@ -347,6 +410,29 @@ function toggleKnownWord(wordIndex) {
 
   // Trigger reactivity
   knownWordAssignments.value = { ...knownWordAssignments.value }
+}
+
+// Toggle LEGO type between BASE and COMPOSITE
+function toggleLegoType(index) {
+  if (legoTypes.value[index] === 'COMPOSITE') {
+    legoTypes.value[index] = 'BASE'
+    // Clear componentization when switching to BASE
+    componentizations.value[index] = ''
+  } else {
+    legoTypes.value[index] = 'COMPOSITE'
+    // Initialize empty componentization for COMPOSITE
+    if (!componentizations.value[index]) {
+      componentizations.value[index] = ''
+    }
+  }
+  // Trigger reactivity
+  legoTypes.value = { ...legoTypes.value }
+}
+
+// Handle componentization text change
+function handleComponentizationChange(index) {
+  // Trigger reactivity for watch
+  componentizations.value = { ...componentizations.value }
 }
 
 // Get classes for target word
@@ -464,15 +550,27 @@ const validationClass = computed(() => {
 })
 
 // Watch for changes and emit to parent
-watch([currentLegoPairs, knownWordAssignments], () => {
+watch([currentLegoPairs, knownWordAssignments, legoTypes, componentizations], () => {
   // Convert to format expected by parent
-  const legoPairs = currentLegoPairs.value.map((pair, index) => ({
-    lego_id: `${props.breakdown.seed_id}L${String(index + 1).padStart(2, '0')}`,
-    lego_type: 'BASE', // Default to BASE, parent can upgrade to COMPOSITE
-    target_chunk: pair.targetChunk,
-    known_chunk: pair.knownChunk,
-    fd_validated: false
-  }))
+  const legoPairs = currentLegoPairs.value.map((pair, index) => {
+    const legoType = legoTypes.value[index] || 'BASE'
+    const componentization = componentizations.value[index] || ''
+
+    const legoPair = {
+      lego_id: `${props.breakdown.seed_id}L${String(index + 1).padStart(2, '0')}`,
+      lego_type: legoType,
+      target_chunk: pair.targetChunk,
+      known_chunk: pair.knownChunk,
+      fd_validated: false
+    }
+
+    // Only include componentization for COMPOSITE LEGOs
+    if (legoType === 'COMPOSITE' && componentization) {
+      legoPair.componentization = componentization
+    }
+
+    return legoPair
+  })
 
   emit('update-legos', {
     seed_id: props.breakdown.seed_id,
