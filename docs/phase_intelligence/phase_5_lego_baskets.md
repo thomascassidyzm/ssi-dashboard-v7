@@ -23,6 +23,30 @@ Each basket contains:
 
 ---
 
+## 🚨 CRITICAL: ZERO-COMMENTARY OUTPUT
+
+**You are a sub-agent. The orchestrator needs pure data - no commentary.**
+
+**Output ONLY:**
+```json
+{"S0001L01":{"lego":["target","known"],"e":[["phrase","translation"]],"d":{"2":[],"3":[],"4":[],"5":[]}},"S0001L02":{...}}
+```
+
+**FORBIDDEN:**
+- ❌ ANY text before or after JSON
+- ❌ Thinking blocks (keep them internal)
+- ❌ Status updates ("Reading files...", "Processing...")
+- ❌ Validation commentary
+- ❌ Explanations
+- ❌ Markdown code blocks around JSON
+- ❌ Pretty-printed JSON (no indentation/newlines)
+
+**Format: One compact JSON object. Nothing else.**
+
+**Target: 1 line of output total** (compact JSON string)
+
+---
+
 ## 🚨 THE ABSOLUTE CONSTRAINT: GATE
 
 **LEGO #N can ONLY use vocabulary from LEGOs #1 to #(N-1)**
@@ -191,46 +215,21 @@ function extractDPhrases(ePhrases, operativeLegoId) {
 
 ---
 
-## 💭 EXTENDED THINKING (Use This)
+## 💭 EXTENDED THINKING (Keep It Minimal)
+
+**Use thinking blocks INTERNALLY, but keep them concise:**
 
 ```
 <thinking>
-Basket for S0200L01 "reservar"...
-
-STEP 1: Check constraints
-- Available vocabulary: LEGOs #1-199 ✓
-- Is culminating? No ✓
-- Context: Seeds 190-200 about library
-
-STEP 2: Generate e-phrase candidates
-- "Quiero reservar un libro de la biblioteca"
-  → Parse: S0001L01, S0200L01, S0195L02, S0194L03
-  → All < S0200L01? YES ✓
-  → Grammar perfect? YES ✓
-  → Natural? YES ✓
-  → Tiles perfectly? YES ✓
-  → ACCEPT
-
-- "Voy a reservar esto ahora"
-  → Parse: S0012L04, S0200L01, S0197L05, S0005L05
-  → All < S0200L01? YES ✓
-  → Grammar perfect? YES ✓
-  → Natural? YES ✓
-  → Tiles perfectly? YES ✓
-  → ACCEPT
-
-[Generate 2-3 more e-phrases...]
-
-STEP 3: Check recency
-- E1: 50% recent, E2: 25% recent, E3: 40% recent
-- Aggregate: ~35% recent ✓ (within 30-50%)
-
-STEP 4: Extract d-phrases mechanically
-[Extraction is automatic, no validation needed]
+S0200L01 "reservar": available vocab #1-199, not culminating
+Generate 3-5 e-phrases (validate GATE+grammar silently)
+Extract d-phrases mechanically
 </thinking>
-
-[Output basket]
 ```
+
+**Output: basket JSON only. No verbose validation commentary.**
+
+**Total output per basket: ~20 lines** (basket JSON only, minimal thinking)
 
 ---
 

@@ -132,6 +132,15 @@ const batches = [];
 
 console.log(`Batch size: ~${batchSize} LEGOs per agent\n`);
 
+// Determine batch directory
+const batchDir = orchestratorMode
+  ? path.join(courseDir, 'orchestrator_batches', 'phase5')
+  : path.join(courseDir, 'batches');
+
+if (!fs.existsSync(batchDir)) {
+  fs.mkdirSync(batchDir, { recursive: true });
+}
+
 for (let i = 0; i < legosToGenerate.length; i += batchSize) {
   const batchLegos = legosToGenerate.slice(i, i + batchSize);
 
@@ -140,24 +149,12 @@ for (let i = 0; i < legosToGenerate.length; i += batchSize) {
     course_code: courseCode,
 
     // Just LEGO IDs for this batch (agents look up details in lego_pairs.json)
-    lego_ids: batchLegos.map(lego => lego.id),
-
-    // Canonical order: all unique LEGOs in generation order
-    // Agent computes: available_vocab = canonical_order.slice(0, lego_index)
-    canonical_order: canonicalOrder
+    lego_ids: batchLegos.map(lego => lego.id)
   };
 
   batches.push(batch);
 
   // Write batch file
-  const batchDir = orchestratorMode
-    ? path.join(courseDir, 'orchestrator_batches', 'phase5')
-    : path.join(courseDir, 'batches');
-
-  if (!fs.existsSync(batchDir)) {
-    fs.mkdirSync(batchDir, { recursive: true });
-  }
-
   const fileName = orchestratorMode
     ? `orchestrator_batch_${String(batch.batch_number).padStart(2, '0')}.json`
     : `batch_${String(batch.batch_number).padStart(2, '0')}.json`;
@@ -167,6 +164,16 @@ for (let i = 0; i < legosToGenerate.length; i += batchSize) {
   fs.writeFileSync(batchFile, JSON.stringify(batch, null, 2));
   console.log(`✓ Created ${path.basename(batchFile)}: ${batchLegos.length} LEGOs`);
 }
+
+// Write canonical_order to shared file (all agents reference this)
+const canonicalOrderFile = path.join(batchDir, 'canonical_order.json');
+fs.writeFileSync(canonicalOrderFile, JSON.stringify({
+  course_code: courseCode,
+  total_unique_legos: canonicalOrder.length,
+  canonical_order: canonicalOrder,
+  note: "Shared reference for all agents. Agent computes: available_vocab = canonical_order.slice(0, canonical_order.indexOf(lego_id))"
+}, null, 2));
+console.log(`✓ Created canonical_order.json: ${canonicalOrder.length} unique LEGOs`);
 
 // Write batch manifest
 const manifest = {
@@ -190,11 +197,7 @@ const manifest = {
   }
 };
 
-const manifestDir = orchestratorMode
-  ? path.join(courseDir, 'orchestrator_batches', 'phase5')
-  : path.join(courseDir, 'batches');
-
-const manifestFile = path.join(manifestDir, 'manifest.json');
+const manifestFile = path.join(batchDir, 'manifest.json');
 fs.writeFileSync(manifestFile, JSON.stringify(manifest, null, 2));
 
 console.log(`\n✓ Created manifest.json`);

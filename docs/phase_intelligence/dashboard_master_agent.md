@@ -64,11 +64,14 @@ Each phase follows this pattern:
    - Creates 5 orchestrator batch files (~134 seeds each)
    - Output: `vfs/courses/<course>/orchestrator_batches/phase1/orchestrator_batch_*.json`
 
-2. **Spawn 5 Orchestrators** (30s delays):
-   - Use Task tool to spawn 5 orchestrator agents
-   - **CRITICAL**: Use 30-second delays between spawns to prevent iTerm2 overload
-   - Each reads their batch file and spawns 10 sub-agents
-   - Each outputs their chunk file
+2. **Spawn 5 Orchestrators** (staggered for stability):
+   - Spawn orchestrator 1, wait 30s
+   - Spawn orchestrator 2, wait 30s
+   - Spawn orchestrator 3, wait 30s
+   - Spawn orchestrator 4, wait 30s
+   - Spawn orchestrator 5
+   - All 5 run in parallel (each spawns 10 sub-agents internally)
+   - Each outputs chunk file, then auto-exits
 
 3. **Wait for Completion** (~10-15 minutes):
    - Monitor for all 5 chunk files to appear
@@ -102,10 +105,10 @@ Each phase follows this pattern:
    - Creates 5 orchestrator batch files (~134 seeds each)
    - Output: `vfs/courses/<course>/orchestrator_batches/phase3/orchestrator_batch_*.json`
 
-2. **Spawn 5 Orchestrators** (30s delays):
-   - Use Task tool to spawn 5 orchestrator agents
-   - Each spawns 10 sub-agents for LEGO extraction
-   - Each outputs their chunk file
+2. **Spawn 5 Orchestrators** (staggered for stability):
+   - Spawn orchestrators 1-5 with 30s delays between each
+   - All run in parallel, each spawning 10 sub-agents for LEGO extraction
+   - Each outputs chunk file, then auto-exits
 
 3. **Wait for Completion** (~20-25 minutes):
    - Monitor for all 5 chunk files to appear
@@ -156,10 +159,10 @@ Each phase follows this pattern:
 
 **Steps**:
 
-1. **Spawn 5 Orchestrators** (30s delays):
-   - Use Task tool to spawn 5 orchestrator agents
-   - Each spawns 10 sub-agents for basket generation
-   - Each outputs their chunk file
+1. **Spawn 5 Orchestrators** (staggered for stability):
+   - Spawn orchestrators 1-5 with 30s delays between each
+   - All run in parallel, each spawning 10 sub-agents for basket generation
+   - Each outputs chunk file, then auto-exits
 
 2. **Wait for Completion** (~15-20 minutes):
    - Monitor for all 5 chunk files to appear
@@ -195,10 +198,10 @@ Each phase follows this pattern:
    - Creates 5 orchestrator batch files (~568 LEGOs each)
    - Output: `vfs/courses/<course>/orchestrator_batches/phase6/orchestrator_batch_*.json`
 
-2. **Spawn 5 Orchestrators** (30s delays):
-   - Use Task tool to spawn 5 orchestrator agents
-   - Each spawns 10 sub-agents for introduction generation
-   - Each outputs their chunk file
+2. **Spawn 5 Orchestrators** (staggered for stability):
+   - Spawn orchestrators 1-5 with 30s delays between each
+   - All run in parallel, each spawning 10 sub-agents for introduction generation
+   - Each outputs chunk file, then auto-exits
 
 3. **Wait for Completion** (~10-15 minutes):
    - Monitor for all 5 chunk files to appear
@@ -222,24 +225,44 @@ Each phase follows this pattern:
 
 ## 🚨 CRITICAL RULES
 
-### Rule 1: Always Use 30-Second Delays Between Orchestrator Spawns
+### Rule 0: Agent Cleanup (Auto-Exit Pattern)
 
-**WHY**: Prevents iTerm2 window overload and rate limit issues
+**Orchestrators:**
+- Each orchestrator auto-exits after writing chunk file
+- No manual cleanup needed
+- Windows may remain (cosmetic only)
 
-**HOW**:
+**Sub-agents (spawned by orchestrators):**
+- Orchestrators handle cleanup of their 10 sub-agents
+- Each sub-agent closes after returning data to orchestrator
+
+**No KillShell needed** - agents exit automatically when work complete.
+
+### Rule 1: Parallel Orchestrators with Staggered Spawning
+
+**WHY**: Maximum speed with token/RAM limits now under control.
+
+**PATTERN (5 orchestrators in parallel):**
 ```
-Spawn orchestrator 1 for Phase X...
-[wait 30 seconds]
-Spawn orchestrator 2 for Phase X...
-[wait 30 seconds]
-Spawn orchestrator 3 for Phase X...
-[wait 30 seconds]
-Spawn orchestrator 4 for Phase X...
-[wait 30 seconds]
-Spawn orchestrator 5 for Phase X...
+1. Spawn orchestrator 1
+2. Wait 30 seconds (rate limiting, stability)
+3. Spawn orchestrator 2
+4. Wait 30 seconds
+5. Spawn orchestrator 3
+6. Wait 30 seconds
+7. Spawn orchestrator 4
+8. Wait 30 seconds
+9. Spawn orchestrator 5
+10. Wait for all 5 chunks (01-05) to appear
+11. All orchestrators auto-exit after completion
 ```
 
-**Don't spawn all 5 in parallel** - stagger them!
+**Max concurrent processes:**
+- 1 master + 5 orchestrators = 6 main processes
+- Each orchestrator spawns 10 sub-agents internally (50 sub-agents total)
+- Total: ~56 processes
+
+**RAM estimate**: 6 main processes × 2-3GB + 50 sub-agents × lighter weight = ~15-20GB (may use some swap, acceptable)
 
 ### Rule 2: Run Preparation Scripts Before Each Phase
 
@@ -301,29 +324,44 @@ Keep user informed:
 ```
 📊 Course Generation Progress
 
-Phase 1: Seed Pairs ✅ (668 translations, 15 minutes)
-Phase 3: LEGO Pairs ✅ (2,838 LEGOs, 25 minutes)
-Phase 4: Batches ✅ (5 mega-batches prepared, 36% dedup savings)
-Phase 5: Baskets ⏳ (3/5 orchestrators complete...)
+Phase 1: Seed Pairs ✅ (668 translations, 18 min)
+Phase 3: LEGO Pairs ✅ (2,838 LEGOs, 30 min)
+Phase 4: Batches ✅ (5 mega-batches prepared, 30% dedup savings)
+Phase 5: Baskets ⏳
+  - Orchestrator 1: ✅ chunk_01.json written
+  - Orchestrator 2: ✅ chunk_02.json written
+  - Orchestrator 3: 🔄 generating baskets...
+  - Orchestrator 4: 🔄 generating baskets...
+  - Orchestrator 5: 🔄 generating baskets...
 Phase 6: Introductions ⏭ (pending)
 
-Estimated completion: 20 minutes
+Active processes: 56 (1 master + 5 orch + 50 sub-agents)
+Est. completion: 12 minutes
 ```
 
 ---
 
 ## ⏱️ ESTIMATED TIMELINE
 
-**Total time: ~75-85 minutes for 668-seed course**
+**Total time: ~90 minutes for 668-seed course (5 orchestrators in parallel)**
 
 | Phase | Time | Details |
 |-------|------|---------|
-| Phase 1 | ~15 min | 5 orch × 10 agents (translation) + validator |
-| Phase 3 | ~25 min | 5 orch × 10 agents (LEGO extraction) |
+| Phase 1 | ~18 min | 5 orch × 10 agents (translation) + validator |
+| Phase 3 | ~30 min | 5 orch × 10 agents (LEGO extraction) |
 | Phase 4 | ~10 sec | Preparation only (deduplication) |
-| Phase 5 | ~20 min | 5 orch × 10 agents (basket generation) |
-| Phase 6 | ~15 min | 5 orch × 10 agents (introductions) |
-| **Total** | **~75 min** | **vs. ~46 hours sequential (36x speedup)** |
+| Phase 5 | ~24 min | 5 orch × 10 agents (basket generation) |
+| Phase 6 | ~18 min | 5 orch × 10 agents (introductions) |
+| **Total** | **~90 min** | **Full parallelism** |
+
+**Parallelism:**
+- **5 orchestrators** in parallel (30s stagger for stability)
+- 10 sub-agents per orchestrator = 50 concurrent sub-agents
+- Total: 56 processes (1 master + 5 orch + 50 sub-agents)
+
+**RAM usage:**
+- Estimate: ~15-20GB (may use swap, acceptable)
+- Token limits: Now controlled via conciseness directives + canonical_order separation
 
 ---
 
@@ -449,19 +487,16 @@ Use extended thinking. Enforce TILING FIRST. Output chunk file in v7.7 format.
 ### Phase 5 Orchestrator Spawn
 
 ```
-You are Phase 5 Orchestrator #N for <course_code>.
+Phase 5 Orchestrator #N for <course_code>: Generate baskets for ~362 LEGOs.
 
-Your task: Generate baskets for ~362 LEGOs using 10 sub-agents.
+1. Read batch: vfs/courses/<course>/orchestrator_batches/phase5/orchestrator_batch_0N.json
+2. Read Phase 5 orchestrator intelligence
+3. Spawn 10 sub-agents in parallel (one message) with CONCISE prompts
+4. Validate outputs (spot-check only)
+5. Write chunk: vfs/courses/<course>/orchestrator_batches/phase5/chunk_0N.json
+6. Report: "✅ Phase 5 Orchestrator N: chunk_0N.json written (362 baskets)"
 
-1. Read your batch file: vfs/courses/<course>/orchestrator_batches/phase5/orchestrator_batch_0N.json
-2. Read Phase 5 orchestrator intelligence from the dashboard
-3. Divide LEGOs among 10 sub-agents
-4. Spawn all 10 agents in parallel (one message)
-5. Validate outputs (GATE constraint, recency bias, culminating baskets)
-6. Merge into chunk file: vfs/courses/<course>/orchestrator_batches/phase5/chunk_0N.json
-7. Report completion
-
-Use extended thinking. Enforce GATE constraint and recency bias. Output chunk file in v7.7 format.
+CRITICAL: Work SILENTLY. Minimal commentary. <500 lines total output.
 ```
 
 ### Phase 6 Orchestrator Spawn
