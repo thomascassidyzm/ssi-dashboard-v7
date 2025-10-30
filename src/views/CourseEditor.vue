@@ -1043,10 +1043,24 @@ function getWords(text) {
 function startEditingBreakdown(breakdown) {
   editingBreakdown.value = breakdown.seed_id
 
+  console.log(`[CourseEditor] Starting edit for ${breakdown.seed_id}`)
+  console.log('[CourseEditor] Original lego_pairs:', breakdown.lego_pairs)
+
   // Initialize editable copies of LEGOs and FEEDERs
   editDividers.value[breakdown.seed_id] = {
     lego_pairs: JSON.parse(JSON.stringify(breakdown.lego_pairs || [])),
     feeder_pairs: JSON.parse(JSON.stringify(breakdown.feeder_pairs || []))
+  }
+
+  console.log('[CourseEditor] Copied lego_pairs:', editDividers.value[breakdown.seed_id].lego_pairs)
+
+  // Verify componentization is preserved
+  const composites = editDividers.value[breakdown.seed_id].lego_pairs.filter(l => l.lego_type === 'COMPOSITE')
+  if (composites.length > 0) {
+    console.log(`[CourseEditor] Found ${composites.length} COMPOSITE LEGOs:`)
+    composites.forEach(c => {
+      console.log(`  ${c.lego_id}: componentization =`, c.componentization ? 'PRESENT' : 'MISSING')
+    })
   }
 }
 
