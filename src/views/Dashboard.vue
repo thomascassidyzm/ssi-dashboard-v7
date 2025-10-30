@@ -102,7 +102,7 @@
             </div>
 
             <!-- Phase Flow -->
-            <div class="flex items-center gap-2 overflow-x-auto pb-4">
+            <div class="flex items-center justify-center gap-2 overflow-x-auto pb-4">
               <!-- Phase 1 -->
               <div class="flex items-center flex-shrink-0">
                 <div class="w-28 h-28 rounded-lg border-2 border-blue-500 bg-blue-500/10 flex flex-col items-center justify-center">
