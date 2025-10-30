@@ -109,6 +109,34 @@
         </div>
       </div>
 
+      <!-- Skills Used (if any) -->
+      <div v-if="phaseSkills.length > 0" class="mt-8 bg-emerald-900/20 rounded-lg border border-emerald-500/30 p-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🛠️ Skills Used by This Phase</h3>
+        <div v-for="skill in phaseSkills" :key="skill.name" class="mb-4 last:mb-0">
+          <div class="flex items-center gap-3 mb-2">
+            <router-link
+              :to="`/skills?skill=${skill.name}`"
+              class="font-mono text-emerald-300 hover:text-emerald-200 underline"
+            >
+              {{ skill.name }}
+            </router-link>
+            <span class="text-xs text-slate-500">{{ skill.path }}</span>
+          </div>
+          <div v-if="skill.requiredReading.length > 0" class="ml-6 space-y-1">
+            <p class="text-xs text-slate-400 mb-1">Required Reading (in order):</p>
+            <div v-for="(file, index) in skill.requiredReading" :key="file" class="text-xs text-slate-300">
+              <span class="text-slate-500">{{ index + 1 }}.</span>
+              <span class="font-mono">{{ file }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-emerald-500/20">
+          <p class="text-xs text-slate-400">
+            Skills use <strong class="text-emerald-400">progressive disclosure</strong> - agents load only what they need, dramatically reducing context usage and improving adherence.
+          </p>
+        </div>
+      </div>
+
       <!-- Workflow Info -->
       <div class="mt-8 bg-slate-800/30 rounded-lg border border-slate-600/30 p-6">
         <h3 class="text-lg font-semibold text-slate-100 mb-3">Update Workflow</h3>
@@ -142,6 +170,7 @@ const selectedPhase = ref('3')
 const intelligence = ref('')
 const loading = ref(false)
 const error = ref(null)
+const phaseSkills = ref([])
 
 const currentPhase = computed(() => {
   return phases.find(p => p.id === selectedPhase.value)
@@ -161,11 +190,30 @@ async function loadPhase(phase) {
 
     const data = await response.json()
     intelligence.value = data.prompt
+
+    // Load skills used by this phase
+    await loadPhaseSkills(phase)
   } catch (err) {
     error.value = err.message
     intelligence.value = ''
   } finally {
     loading.value = false
+  }
+}
+
+async function loadPhaseSkills(phase) {
+  try {
+    const response = await fetch(`http://localhost:3456/api/skills/used-by/${phase}`)
+
+    if (response.ok) {
+      const data = await response.json()
+      phaseSkills.value = data.skills || []
+    } else {
+      phaseSkills.value = []
+    }
+  } catch (err) {
+    // Skills API might not be available, ignore error
+    phaseSkills.value = []
   }
 }
 

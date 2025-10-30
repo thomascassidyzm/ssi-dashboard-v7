@@ -4456,6 +4456,263 @@ app.get('/api/prompts/:phase/history', async (req, res) => {
 });
 
 // =============================================================================
+// SKILLS API - SKILL LIBRARY & DISCOVERY
+// =============================================================================
+
+/**
+ * GET /api/skills
+ * List all available skills
+ */
+app.get('/api/skills', async (req, res) => {
+  try {
+    const skillsDir = path.join(__dirname, 'skills');
+    const entries = await fs.readdir(skillsDir, { withFileTypes: true });
+
+    const skills = [];
+
+    for (const entry of entries) {
+      if (entry.isDirectory() && !entry.name.startsWith('.')) {
+        const skillPath = path.join(skillsDir, entry.name);
+        const skillMdPath = path.join(skillPath, 'SKILL.md');
+
+        try {
+          const skillContent = await fs.readFile(skillMdPath, 'utf-8');
+
+          // Parse frontmatter
+          const frontmatterMatch = skillContent.match(/^---\n([\s\S]*?)\n---/);
+          const metadata = {};
+
+          if (frontmatterMatch) {
+            const frontmatter = frontmatterMatch[1];
+            frontmatter.split('\n').forEach(line => {
+              const [key, ...valueParts] = line.split(':');
+              if (key && valueParts.length) {
+                metadata[key.trim()] = valueParts.join(':').trim();
+              }
+            });
+          }
+
+          skills.push({
+            id: entry.name,
+            name: metadata.name || entry.name,
+            description: metadata.description || '',
+            version: metadata.version || '1.0.0',
+            path: `skills/${entry.name}`,
+            hasSkillMd: true
+          });
+        } catch (err) {
+          // Skill directory without SKILL.md
+          skills.push({
+            id: entry.name,
+            name: entry.name,
+            description: 'No description available',
+            version: 'unknown',
+            path: `skills/${entry.name}`,
+            hasSkillMd: false
+          });
+        }
+      }
+    }
+
+    res.json({ skills });
+  } catch (error) {
+    console.error('Error listing skills:', error);
+    res.status(500).json({ error: 'Failed to list skills' });
+  }
+});
+
+/**
+ * GET /api/skills/:skillId
+ * Get skill details and structure
+ */
+app.get('/api/skills/:skillId', async (req, res) => {
+  try {
+    const { skillId } = req.params;
+    const skillPath = path.join(__dirname, 'skills', skillId);
+
+    // Check if skill exists
+    const exists = await fs.access(skillPath).then(() => true).catch(() => false);
+    if (!exists) {
+      return res.status(404).json({ error: 'Skill not found' });
+    }
+
+    // Read SKILL.md
+    const skillMdPath = path.join(skillPath, 'SKILL.md');
+    let skillContent = '';
+    let metadata = {};
+
+    try {
+      skillContent = await fs.readFile(skillMdPath, 'utf-8');
+
+      // Parse frontmatter
+      const frontmatterMatch = skillContent.match(/^---\n([\s\S]*?)\n---/);
+      if (frontmatterMatch) {
+        const frontmatter = frontmatterMatch[1];
+        frontmatter.split('\n').forEach(line => {
+          const [key, ...valueParts] = line.split(':');
+          if (key && valueParts.length) {
+            metadata[key.trim()] = valueParts.join(':').trim();
+          }
+        });
+      }
+    } catch (err) {
+      // SKILL.md not found
+    }
+
+    // Get directory structure
+    async function getStructure(dir, relativePath = '') {
+      const entries = await fs.readdir(dir, { withFileTypes: true });
+      const structure = [];
+
+      for (const entry of entries) {
+        if (entry.name.startsWith('.')) continue;
+
+        const fullPath = path.join(dir, entry.name);
+        const relPath = relativePath ? `${relativePath}/${entry.name}` : entry.name;
+
+        if (entry.isDirectory()) {
+          structure.push({
+            name: entry.name,
+            type: 'directory',
+            path: relPath,
+            children: await getStructure(fullPath, relPath)
+          });
+        } else {
+          structure.push({
+            name: entry.name,
+            type: 'file',
+            path: relPath
+          });
+        }
+      }
+
+      return structure;
+    }
+
+    const structure = await getStructure(skillPath);
+
+    res.json({
+      id: skillId,
+      name: metadata.name || skillId,
+      description: metadata.description || '',
+      version: metadata.version || '1.0.0',
+      content: skillContent,
+      structure
+    });
+  } catch (error) {
+    console.error('Error fetching skill:', error);
+    res.status(500).json({ error: 'Failed to fetch skill' });
+  }
+});
+
+/**
+ * GET /api/skills/:skillId/file/*
+ * Get content of a file within a skill
+ */
+app.get('/api/skills/:skillId/file/*', async (req, res) => {
+  try {
+    const { skillId } = req.params;
+    const filePath = req.params[0]; // Everything after /file/
+
+    const fullPath = path.join(__dirname, 'skills', skillId, filePath);
+
+    // Security: Ensure path is within skills directory
+    const normalizedPath = path.normalize(fullPath);
+    const skillsDir = path.normalize(path.join(__dirname, 'skills'));
+    if (!normalizedPath.startsWith(skillsDir)) {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+
+    const content = await fs.readFile(fullPath, 'utf-8');
+
+    res.json({
+      path: filePath,
+      content
+    });
+  } catch (error) {
+    console.error('Error reading skill file:', error);
+    res.status(404).json({ error: 'File not found' });
+  }
+});
+
+/**
+ * GET /api/skills/used-by/:phase
+ * Get skills used by a specific phase
+ */
+app.get('/api/skills/used-by/:phase', async (req, res) => {
+  try {
+    const { phase } = req.params;
+
+    // Check orchestrator intelligence
+    const orchestratorPath = path.join(__dirname, 'docs', 'phase_intelligence', `phase_${phase}_orchestrator.md`);
+
+    let orchestratorContent = '';
+    try {
+      orchestratorContent = await fs.readFile(orchestratorPath, 'utf-8');
+    } catch (err) {
+      // No orchestrator file
+    }
+
+    // Check phase intelligence
+    const phaseFiles = {
+      '1': 'phase_1_seed_pairs.md',
+      '3': 'phase_3_lego_pairs.md',
+      '5': 'phase_5_lego_baskets.md',
+      '6': 'phase_6_introductions.md'
+    };
+
+    let phaseContent = '';
+    if (phaseFiles[phase]) {
+      try {
+        const phasePath = path.join(__dirname, 'docs', 'phase_intelligence', phaseFiles[phase]);
+        phaseContent = await fs.readFile(phasePath, 'utf-8');
+      } catch (err) {
+        // No phase file
+      }
+    }
+
+    const combinedContent = orchestratorContent + '\n' + phaseContent;
+
+    // Detect skill references
+    const skillMatches = combinedContent.matchAll(/SKILL LOCATION:\s*([^\n]+)/g);
+    const requiredReadingMatches = combinedContent.matchAll(/REQUIRED READING.*?:\s*\n((?:.*?\.md.*?\n)+)/g);
+
+    const skills = [];
+
+    for (const match of skillMatches) {
+      const skillPath = match[1].trim();
+      const skillName = skillPath.split('/').pop();
+
+      // Find required reading for this skill
+      const requiredReading = [];
+      for (const readingMatch of requiredReadingMatches) {
+        const lines = readingMatch[1].split('\n').filter(l => l.trim());
+        for (const line of lines) {
+          const fileMatch = line.match(/([^\s]+\.md)/);
+          if (fileMatch) {
+            requiredReading.push(fileMatch[1]);
+          }
+        }
+      }
+
+      skills.push({
+        name: skillName,
+        path: skillPath,
+        requiredReading
+      });
+    }
+
+    res.json({
+      phase,
+      skills
+    });
+  } catch (error) {
+    console.error('Error detecting skills for phase:', error);
+    res.status(500).json({ error: 'Failed to detect skills' });
+  }
+});
+
+// =============================================================================
 // VFS API - CLOUD-NATIVE FILE OPERATIONS (S3)
 // =============================================================================
 

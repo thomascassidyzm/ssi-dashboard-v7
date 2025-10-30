@@ -12,6 +12,7 @@ import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
 import PhaseIntelligence from '../views/PhaseIntelligence.vue'
+import Skills from '../views/Skills.vue'
 
 // Quality Review Components
 import QualityDashboard from '../components/quality/QualityDashboard.vue'
@@ -87,6 +88,12 @@ const routes = [
     name: 'PhaseIntelligence',
     component: PhaseIntelligence,
     meta: { title: 'Phase Intelligence' }
+  },
+  {
+    path: '/skills',
+    name: 'Skills',
+    component: Skills,
+    meta: { title: 'Skills Library' }
   },
 
   // Quality Review Routes

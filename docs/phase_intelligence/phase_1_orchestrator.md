@@ -70,10 +70,33 @@ Task 10: Translate seeds S0127-S0134
 ```
 
 **Each Task prompt should include:**
-1. The specific seeds to translate (seed_id + canonical)
-2. Reference to Phase 1 intelligence: "Read Phase 1 intelligence from the dashboard"
-3. Output format: `{seed_id: [target, known]}`
-4. Instruction: "Use extended thinking, apply TWO ABSOLUTE RULES, prefer cognates"
+
+```markdown
+Translate seeds S0XXX-S0YYY using the translation-skill.
+
+SKILL LOCATION: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/skills/translation-skill
+
+REQUIRED READING (in order):
+1. rules/TWO_ABSOLUTE_RULES.md - NEVER violate these [ABSOLUTE]
+2. rules/ZERO_VARIATION.md - First-come-first-served principle
+3. rules/COGNATE_PREFERENCE.md - Check cognates FIRST (seeds 1-100)
+4. workflow/EXTENDED_THINKING.md - Use for EVERY seed [MANDATORY]
+
+INPUT:
+- Seed list with IDs and canonical text
+- Target language: {target_code}
+- Known language: {known_code}
+
+OUTPUT FORMAT:
+- {"S0001": [target, known], "S0002": [target, known], ...}
+- See schemas/OUTPUT_FORMAT.md for complete spec
+
+CRITICAL:
+- Extended thinking for EVERY seed
+- TWO ABSOLUTE RULES never violated
+- Cognate preference mandatory (seeds 1-100)
+- Maintain vocabulary registry for consistency
+```
 
 ### STEP 4: Receive All 10 Outputs
 

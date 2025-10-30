@@ -83,6 +83,15 @@
               </div>
             </router-link>
 
+            <!-- Skills Library -->
+            <router-link to="/skills" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-emerald-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
+              <div class="text-3xl">🛠️</div>
+              <div>
+                <h3 class="font-semibold text-emerald-400">Skills Library</h3>
+                <p class="text-sm text-slate-400">Progressive disclosure methodology modules - agents load only what they need for efficient, consistent execution</p>
+              </div>
+            </router-link>
+
             <!-- Canonical Seeds -->
             <router-link to="/reference/seeds" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">🌱</div>
