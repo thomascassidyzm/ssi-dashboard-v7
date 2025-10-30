@@ -104,7 +104,7 @@ for (const lego of allLegos) {
 }
 
 // Mark first occurrences and build duplicate map
-const legosToGenerate = []; // First occurrences only
+const legosToGenerate = []; // First occurrences only (canonicals)
 const duplicateMap = new Map(); // Maps duplicate ID → canonical ID
 
 for (const [key, group] of legoGroups.entries()) {
@@ -123,40 +123,10 @@ console.log(`Unique LEGOs (first occurrences): ${legosToGenerate.length}`);
 console.log(`Duplicate LEGOs (skip generation): ${duplicateMap.size}`);
 console.log(`Time savings: ${((duplicateMap.size / allLegos.length) * 100).toFixed(1)}%\n`);
 
-// Build vocabulary context (ALL LEGOs for recency bias)
-const vocabularyContext = allLegos.map(lego => ({
-  id: lego.id,
-  position: lego.position,
-  target: lego.target,
-  known: lego.known,
-  type: lego.type,
-  seedId: lego.seedId,
-  canonical_id: duplicateMap.get(lego.id) || lego.id // Points to canonical if duplicate
-}));
+// Canonical order (just IDs, in generation order)
+const canonicalOrder = legosToGenerate.map(lego => lego.id);
 
-// Calculate seed context for recency bias
-function getSeedNumber(seedId) {
-  return parseInt(seedId.substring(1)); // "S0100" → 100
-}
-
-function getRecentWindow(currentPosition, allLegosList, windowSize = 10) {
-  // Get current seed number
-  const currentLego = allLegosList.find(l => l.position === currentPosition);
-  if (!currentLego) return [];
-
-  const currentSeedNum = getSeedNumber(currentLego.seedId);
-  const startSeedNum = Math.max(1, currentSeedNum - windowSize);
-
-  // Get all LEGOs from recent seeds
-  return allLegosList
-    .filter(l => {
-      const seedNum = getSeedNumber(l.seedId);
-      return seedNum >= startSeedNum && seedNum < currentSeedNum;
-    })
-    .map(l => l.id);
-}
-
-// Prepare batch data
+// Prepare batch data (just IDs, agents read lego_pairs.json for details)
 const batchSize = Math.ceil(legosToGenerate.length / parallelism);
 const batches = [];
 
@@ -168,33 +138,13 @@ for (let i = 0; i < legosToGenerate.length; i += batchSize) {
   const batch = {
     batch_number: batches.length + 1,
     course_code: courseCode,
-    legos_to_generate: batchLegos.map(lego => ({
-      lego_id: lego.id,
-      position: lego.position,
-      target: lego.target,
-      known: lego.known,
-      type: lego.type,
-      seed_id: lego.seedId,
-      is_culminating: lego.isLast,
 
-      // Seed context (for culminating LEGO validation)
-      seed_sentence: legoPairs.seeds
-        .find(s => s[0] === lego.seedId)?.[1] || null,
+    // Just LEGO IDs for this batch (agents look up details in lego_pairs.json)
+    lego_ids: batchLegos.map(lego => lego.id),
 
-      // Available vocabulary (all prior LEGOs, including duplicates)
-      available_vocab: vocabularyContext
-        .filter(v => v.position < lego.position)
-        .map(v => v.id),
-
-      // Recent window (for recency bias)
-      recent_window: getRecentWindow(lego.position, allLegos)
-    })),
-
-    // Full vocabulary context (shared by all LEGOs in this batch)
-    vocabulary_context: vocabularyContext,
-
-    // Duplicate map (for reference resolution)
-    duplicate_map: Object.fromEntries(duplicateMap)
+    // Canonical order: all unique LEGOs in generation order
+    // Agent computes: available_vocab = canonical_order.slice(0, lego_index)
+    canonical_order: canonicalOrder
   };
 
   batches.push(batch);
@@ -230,7 +180,7 @@ const manifest = {
   batch_size: batchSize,
   batches: batches.map(b => ({
     batch_number: b.batch_number,
-    lego_count: b.legos_to_generate.length,
+    lego_count: b.lego_ids.length,
     file: `batch_${String(b.batch_number).padStart(2, '0')}.json`
   })),
   estimated_time: {
