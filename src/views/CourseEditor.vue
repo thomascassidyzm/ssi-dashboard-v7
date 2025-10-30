@@ -1126,9 +1126,13 @@ function mergeLego(breakdown, index) {
   previous.target_chunk = smartConcat(previous.target_chunk, current.target_chunk)
   previous.known_chunk = smartConcat(previous.known_chunk, current.known_chunk)
 
-  // If merging creates COMPOSITE, update type
+  // If merging creates COMPOSITE, update type and initialize componentization
   if (previous.lego_type === 'BASE' && current.lego_type === 'BASE') {
     previous.lego_type = 'COMPOSITE'
+    // Initialize empty componentization for user to fill in
+    if (!previous.componentization) {
+      previous.componentization = ''
+    }
   }
 
   // Remove current LEGO
