@@ -2957,12 +2957,19 @@ app.get('/api/courses', async (req, res) => {
 
         if (!stats.isDirectory() || dir === '.DS_Store') continue;
 
-        // Look for v7.7 format: seed_pairs.json + lego_pairs.json (Oct 22, 2024)
+        // Support both old and new formats:
+        // - Old: seed_pairs.json + lego_pairs.json
+        // - New: translations.json + LEGO_BREAKDOWNS_COMPLETE.json
         const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
         const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
+        const translationsPath = path.join(coursePath, 'translations.json');
+        const legoBreakdownsPath = path.join(coursePath, 'LEGO_BREAKDOWNS_COMPLETE.json');
 
-        // Check if this is a valid course (has both required files)
-        if (await fs.pathExists(seedPairsPath) && await fs.pathExists(legoPairsPath)) {
+        const hasOldFormat = await fs.pathExists(seedPairsPath) && await fs.pathExists(legoPairsPath);
+        const hasNewFormat = await fs.pathExists(translationsPath);
+
+        // Check if this is a valid course (has either format)
+        if (hasOldFormat || hasNewFormat) {
           // Parse course code - support both patterns:
           // - xxx_for_yyy (intelligent, no suffix)
           // - xxx_for_yyy_NNseeds (legacy with suffix)
@@ -2978,18 +2985,35 @@ app.get('/api/courses', async (req, res) => {
           const knownLang = matchWithSeeds ? matchWithSeeds[2] : matchWithoutSeeds[2];
           // Seed count will be read from actual file, not directory name
 
-          // Load seed_pairs.json to get actual count
-          const seedPairsData = await fs.readJson(seedPairsPath);
-          const translationCount = Object.keys(seedPairsData.translations || {}).length;
-
-          // Load lego_pairs.json to get LEGO count
-          const legoPairsData = await fs.readJson(legoPairsPath);
-          const seedsArray = legoPairsData.seeds || [];
-
-          // Count total LEGOs across all seeds
+          let translationCount = 0;
           let legoCount = 0;
-          for (const [seedId, seedPair, legos] of seedsArray) {
-            legoCount += legos.length;
+
+          // Load translations from appropriate format
+          if (hasNewFormat) {
+            // New format: translations.json
+            const translationsData = await fs.readJson(translationsPath);
+            translationCount = Object.keys(translationsData).length;
+
+            // LEGO count from LEGO_BREAKDOWNS_COMPLETE.json
+            if (await fs.pathExists(legoBreakdownsPath)) {
+              const legoData = await fs.readJson(legoBreakdownsPath);
+              const breakdowns = legoData.lego_breakdowns || [];
+              for (const breakdown of breakdowns) {
+                legoCount += (breakdown.lego_pairs || []).length;
+              }
+            }
+          } else {
+            // Old format: seed_pairs.json + lego_pairs.json
+            const seedPairsData = await fs.readJson(seedPairsPath);
+            translationCount = Object.keys(seedPairsData.translations || {}).length;
+
+            const legoPairsData = await fs.readJson(legoPairsPath);
+            const seedsArray = legoPairsData.seeds || [];
+
+            // Count total LEGOs across all seeds
+            for (const [seedId, seedPair, legos] of seedsArray) {
+              legoCount += legos.length;
+            }
           }
 
           // Determine which phases are complete based on file existence
