@@ -31,24 +31,24 @@ It contains:
 {
   "batch_number": 1,
   "course_code": "spa_for_eng",
-  "legos_to_generate": [
-    {
-      "lego_id": "S0001L01",
-      "position": 1,
-      "target": "Quiero",
-      "known": "I want",
-      "type": "B",
-      "seed_id": "S0001",
-      "is_culminating": false,
-      "seed_sentence": ["Quiero hablar español.", "I want to speak Spanish."],
-      "available_vocab": [],
-      "recent_window": []
-    },
-    ... ~362 total
-  ],
-  "vocabulary_context": [...],
-  "duplicate_map": {...}
+  "lego_ids": ["S0001L01", "S0001L02", "S0001L03", ... ~354 IDs],
+  "canonical_order": ["S0001L01", "S0001L02", ... all 1766 unique LEGOs]
 }
+```
+
+**CRITICAL: Reading LEGO details**
+- LEGO details (target, known, type, seed_sentence) are in `vfs/courses/{course_code}/lego_pairs.json`
+- Read `lego_pairs.json` ONCE at the start
+- Look up each LEGO by ID as you process
+
+**Computing available vocabulary (GATE constraint):**
+```javascript
+// For LEGO at position N in canonical_order:
+const legoIndex = batch.canonical_order.indexOf(lego_id);
+const available_vocab = batch.canonical_order.slice(0, legoIndex);
+
+// For recency bias (prefer recent 20 LEGOs):
+const recent_vocab = batch.canonical_order.slice(Math.max(0, legoIndex - 20), legoIndex);
 ```
 
 ### STEP 2: Divide Work Among 10 Agents
@@ -78,10 +78,13 @@ Task 10: Generate baskets for LEGOs #325-362
 ```
 
 **Each Task prompt should include:**
-1. The specific LEGOs to generate baskets for
-2. Reference to Phase 5 intelligence: "Read Phase 5 intelligence from the dashboard"
-3. Output format: `{lego_id: {basket_data}, ...}`
-4. Instruction: "Use extended thinking, apply quality iteration loop, enforce GATE constraint and recency bias"
+1. Path to lego_pairs.json: `vfs/courses/{course_code}/lego_pairs.json`
+2. The specific LEGO IDs to generate baskets for (from lego_ids array)
+3. The canonical_order array (for computing available_vocab)
+4. Instruction on computing available_vocab: `canonical_order.slice(0, canonical_order.indexOf(lego_id))`
+5. Reference to Phase 5 intelligence: "Read Phase 5 intelligence from the dashboard"
+6. Output format: `{lego_id: {basket_data}, ...}`
+7. Instruction: "Use extended thinking, apply quality iteration loop, enforce GATE constraint and recency bias"
 
 ### STEP 4: Receive All 10 Outputs
 
@@ -132,13 +135,11 @@ Combine all 10 outputs into your chunk file using v7.7 format:
       "target": "Quiero",
       "known": "I want",
       "type": "B",
-      "position": 1,
       "focus": {
         "target": "Quiero café.",
         "known": "I want coffee."
       },
-      "available_vocab": [],
-      "recent_vocab_used": []
+      "components_used": ["S0001L01"]
     },
     ... all 362 baskets
   },
@@ -147,10 +148,7 @@ Combine all 10 outputs into your chunk file using v7.7 format:
     "generated_by": "phase5_orch_01",
     "agents_used": 10,
     "validation_passed": true,
-    "total_baskets": 362,
-    "deduplication": {
-      "unique_baskets": 231,
-      "duplicates_mapped": 131
+    "total_baskets": 362
     }
   }
 }
