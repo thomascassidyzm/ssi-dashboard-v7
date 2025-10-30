@@ -1,0 +1,115 @@
+{
+  "version": "7.7.0",
+  "seeds": [
+    ["S0001", ["Voglio parlare italiano con te adesso.", "I want to speak Italian with you now."], [
+      ["S0001L01", "B", "Voglio", "I want"],
+      ["S0001L02", "B", "parlare", "to speak"],
+      ["S0001L03", "B", "italiano", "Italian"],
+      ["S0001L04", "B", "con te", "with you"],
+      ["S0001L05", "B", "adesso", "now"]
+    ]],
+    ["S0002", ["Sto provando a imparare.", "I'm trying to learn."], [
+      ["S0002F01", "F", "Sto", "I'm"],
+      ["S0002F02", "F", "provando", "trying"],
+      ["S0002L01", "C", "Sto provando", "I'm trying", [
+        ["S0002F01", "F", "Sto", "I'm"],
+        ["S0002F02", "F", "provando", "trying"]
+      ]],
+      ["S0002L02", "B", "a", "to"],
+      ["S0002L03", "B", "imparare", "to learn"]
+    ]],
+    ["S0003", ["come parlare il più spesso possibile.", "how to speak as often as possible."], [
+      ["S0003L01", "B", "come", "how"],
+      ["S0003L02", "B", "parlare", "to speak"],
+      ["S0003F01", "F", "il più", "the most"],
+      ["S0003F02", "F", "possibile", "possible"],
+      ["S0003L03", "C", "il più possibile", "as much as possible", [
+        ["S0003F01", "F", "il più", "the most"],
+        ["S0003F02", "F", "possibile", "possible"]
+      ]],
+      ["S0003L04", "B", "spesso", "often"]
+    ]],
+    ["S0004", ["come dire qualcosa in italiano", "how to say something in Italian"], [
+      ["S0004L01", "B", "come", "how"],
+      ["S0004L02", "B", "dire", "to say"],
+      ["S0004L03", "B", "qualcosa", "something"],
+      ["S0004L04", "B", "in italiano", "in Italian"]
+    ]],
+    ["S0005", ["Sto per praticare a parlare con qualcun altro.", "I'm going to practise speaking with someone else."], [
+      ["S0005F01", "F", "Sto", "I'm"],
+      ["S0005F02", "F", "per", "going to"],
+      ["S0005L01", "C", "Sto per", "I'm going to", [
+        ["S0005F01", "F", "Sto", "I'm"],
+        ["S0005F02", "F", "per", "going to"]
+      ]],
+      ["S0005L02", "B", "praticare", "to practise"],
+      ["S0005L03", "B", "a", "to"],
+      ["S0005L04", "B", "parlare", "to speak"],
+      ["S0005L05", "B", "con", "with"],
+      ["S0005L06", "B", "qualcun altro", "someone else"]
+    ]],
+    ["S0006", ["Sto provando a ricordare una parola.", "I'm trying to remember a word."], [
+      ["S0006F01", "F", "Sto", "I'm"],
+      ["S0006F02", "F", "provando", "trying"],
+      ["S0006L01", "C", "Sto provando", "I'm trying", [
+        ["S0006F01", "F", "Sto", "I'm"],
+        ["S0006F02", "F", "provando", "trying"]
+      ]],
+      ["S0006L02", "B", "a", "to"],
+      ["S0006L03", "B", "ricordare", "to remember"],
+      ["S0006L04", "B", "una parola", "a word"]
+    ]],
+    ["S0007", ["Voglio provare il più possibile oggi.", "I want to try as hard as I can today."], [
+      ["S0007L01", "B", "Voglio", "I want"],
+      ["S0007L02", "B", "provare", "to try"],
+      ["S0007F01", "F", "il più", "the most"],
+      ["S0007F02", "F", "possibile", "possible"],
+      ["S0007L03", "C", "il più possibile", "as much as possible", [
+        ["S0007F01", "F", "il più", "the most"],
+        ["S0007F02", "F", "possibile", "possible"]
+      ]],
+      ["S0007L04", "B", "oggi", "today"]
+    ]],
+    ["S0008", ["Sto per provare a spiegare quello che intendo.", "I'm going to try to explain what I mean."], [
+      ["S0008F01", "F", "Sto", "I'm"],
+      ["S0008F02", "F", "per", "going to"],
+      ["S0008L01", "C", "Sto per", "I'm going to", [
+        ["S0008F01", "F", "Sto", "I'm"],
+        ["S0008F02", "F", "per", "going to"]
+      ]],
+      ["S0008L02", "B", "provare", "to try"],
+      ["S0008L03", "B", "a", "to"],
+      ["S0008L04", "B", "spiegare", "to explain"],
+      ["S0008F03", "F", "quello", "that"],
+      ["S0008F04", "F", "che", "which"],
+      ["S0008L05", "C", "quello che", "what", [
+        ["S0008F03", "F", "quello", "that"],
+        ["S0008F04", "F", "che", "which"]
+      ]],
+      ["S0008L06", "B", "intendo", "I mean"]
+    ]],
+    ["S0009", ["Parlo un po' italiano adesso.", "I speak a little Italian now."], [
+      ["S0009L01", "B", "Parlo", "I speak"],
+      ["S0009L02", "B", "un po'", "a little"],
+      ["S0009L03", "B", "italiano", "Italian"],
+      ["S0009L04", "B", "adesso", "now"]
+    ]],
+    ["S0010", ["Non sono sicuro se posso ricordare tutta la frase.", "I'm not sure if I can remember the whole sentence."], [
+      ["S0010F01", "F", "Non", "Not"],
+      ["S0010F02", "F", "sono", "I am"],
+      ["S0010F03", "F", "sicuro", "sure"],
+      ["S0010L01", "C", "Non sono sicuro", "I'm not sure", [
+        ["S0010F01", "F", "Non", "Not"],
+        ["S0010F02", "F", "sono", "I am"],
+        ["S0010F03", "F", "sicuro", "sure"]
+      ]],
+      ["S0010L02", "B", "se", "if"],
+      ["S0010L03", "B", "posso", "I can"],
+      ["S0010L04", "B", "ricordare", "to remember"],
+      ["S0010F06", "F", "frase", "sentence"],
+      ["S0010L05", "C", "tutta la frase", "the whole sentence", [
+        ["S0010F06", "F", "frase", "sentence"]
+      ]]
+    ]]
+  ]
+}

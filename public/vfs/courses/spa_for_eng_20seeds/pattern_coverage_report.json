@@ -1,0 +1,4936 @@
+{
+  "course": "spa_for_eng_20seeds",
+  "generated": "2025-10-28T18:46:47.334Z",
+  "summary": {
+    "total_legos": 64,
+    "total_phrases": 617,
+    "possible_edges": 2016,
+    "actual_edges": 596,
+    "missing_edges": 1420,
+    "pattern_density": 29.56,
+    "mean_edge_count": 4.78,
+    "std_dev": 6.5,
+    "overused_threshold": 24.26,
+    "overused_edges": 8
+  },
+  "missing_edges": [
+    {
+      "edge": "S0001L01|||S0002L01",
+      "legos": [
+        "S0001L01",
+        "S0002L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0002L01",
+        "target": "Estoy intentando",
+        "known": "I'm trying",
+        "index": 5,
+        "lego": [
+          "Estoy intentando",
+          "I'm trying"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L04|||S0002L02",
+      "legos": [
+        "S0001L04",
+        "S0002L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L04",
+        "target": "contigo",
+        "known": "with you",
+        "index": 3,
+        "lego": [
+          "contigo",
+          "with you"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L04|||S0003L01",
+      "legos": [
+        "S0001L04",
+        "S0003L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L04",
+        "target": "contigo",
+        "known": "with you",
+        "index": 3,
+        "lego": [
+          "contigo",
+          "with you"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L05|||S0003L01",
+      "legos": [
+        "S0001L05",
+        "S0003L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L05",
+        "target": "ahora",
+        "known": "now",
+        "index": 4,
+        "lego": [
+          "ahora",
+          "now"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L05|||S0003L02",
+      "legos": [
+        "S0001L05",
+        "S0003L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L05",
+        "target": "ahora",
+        "known": "now",
+        "index": 4,
+        "lego": [
+          "ahora",
+          "now"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0003L02",
+        "target": "lo más a menudo posible",
+        "known": "as often as possible",
+        "index": 8,
+        "lego": [
+          "lo más a menudo posible",
+          "as often as possible"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L02|||S0004L01",
+      "legos": [
+        "S0001L02",
+        "S0004L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L01",
+        "target": "decir",
+        "known": "to say",
+        "index": 9,
+        "lego": [
+          "decir",
+          "to say"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L04|||S0004L01",
+      "legos": [
+        "S0001L04",
+        "S0004L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L04",
+        "target": "contigo",
+        "known": "with you",
+        "index": 3,
+        "lego": [
+          "contigo",
+          "with you"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L01",
+        "target": "decir",
+        "known": "to say",
+        "index": 9,
+        "lego": [
+          "decir",
+          "to say"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L02|||S0004L01",
+      "legos": [
+        "S0003L02",
+        "S0004L01"
+      ],
+      "lego1_data": {
+        "id": "S0003L02",
+        "target": "lo más a menudo posible",
+        "known": "as often as possible",
+        "index": 8,
+        "lego": [
+          "lo más a menudo posible",
+          "as often as possible"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L01",
+        "target": "decir",
+        "known": "to say",
+        "index": 9,
+        "lego": [
+          "decir",
+          "to say"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L02|||S0004L02",
+      "legos": [
+        "S0001L02",
+        "S0004L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L04|||S0004L02",
+      "legos": [
+        "S0001L04",
+        "S0004L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L04",
+        "target": "contigo",
+        "known": "with you",
+        "index": 3,
+        "lego": [
+          "contigo",
+          "with you"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L02|||S0004L02",
+      "legos": [
+        "S0003L02",
+        "S0004L02"
+      ],
+      "lego1_data": {
+        "id": "S0003L02",
+        "target": "lo más a menudo posible",
+        "known": "as often as possible",
+        "index": 8,
+        "lego": [
+          "lo más a menudo posible",
+          "as often as possible"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L02|||S0004L03",
+      "legos": [
+        "S0003L02",
+        "S0004L03"
+      ],
+      "lego1_data": {
+        "id": "S0003L02",
+        "target": "lo más a menudo posible",
+        "known": "as often as possible",
+        "index": 8,
+        "lego": [
+          "lo más a menudo posible",
+          "as often as possible"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L03",
+        "target": "en",
+        "known": "in",
+        "index": 11,
+        "lego": [
+          "en",
+          "in"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L01|||S0005L01",
+      "legos": [
+        "S0001L01",
+        "S0005L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L01",
+        "target": "Voy a",
+        "known": "I'm going to",
+        "index": 12,
+        "lego": [
+          "Voy a",
+          "I'm going to"
+        ]
+      }
+    },
+    {
+      "edge": "S0002L01|||S0005L01",
+      "legos": [
+        "S0002L01",
+        "S0005L01"
+      ],
+      "lego1_data": {
+        "id": "S0002L01",
+        "target": "Estoy intentando",
+        "known": "I'm trying",
+        "index": 5,
+        "lego": [
+          "Estoy intentando",
+          "I'm trying"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L01",
+        "target": "Voy a",
+        "known": "I'm going to",
+        "index": 12,
+        "lego": [
+          "Voy a",
+          "I'm going to"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L02|||S0005L01",
+      "legos": [
+        "S0003L02",
+        "S0005L01"
+      ],
+      "lego1_data": {
+        "id": "S0003L02",
+        "target": "lo más a menudo posible",
+        "known": "as often as possible",
+        "index": 8,
+        "lego": [
+          "lo más a menudo posible",
+          "as often as possible"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L01",
+        "target": "Voy a",
+        "known": "I'm going to",
+        "index": 12,
+        "lego": [
+          "Voy a",
+          "I'm going to"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L02|||S0005L02",
+      "legos": [
+        "S0003L02",
+        "S0005L02"
+      ],
+      "lego1_data": {
+        "id": "S0003L02",
+        "target": "lo más a menudo posible",
+        "known": "as often as possible",
+        "index": 8,
+        "lego": [
+          "lo más a menudo posible",
+          "as often as possible"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L02",
+        "target": "practicar",
+        "known": "to practise",
+        "index": 13,
+        "lego": [
+          "practicar",
+          "to practise"
+        ]
+      }
+    },
+    {
+      "edge": "S0004L02|||S0005L02",
+      "legos": [
+        "S0004L02",
+        "S0005L02"
+      ],
+      "lego1_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L02",
+        "target": "practicar",
+        "known": "to practise",
+        "index": 13,
+        "lego": [
+          "practicar",
+          "to practise"
+        ]
+      }
+    },
+    {
+      "edge": "S0002L02|||S0005L03",
+      "legos": [
+        "S0002L02",
+        "S0005L03"
+      ],
+      "lego1_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L01|||S0005L03",
+      "legos": [
+        "S0003L01",
+        "S0005L03"
+      ],
+      "lego1_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L02|||S0005L03",
+      "legos": [
+        "S0003L02",
+        "S0005L03"
+      ],
+      "lego1_data": {
+        "id": "S0003L02",
+        "target": "lo más a menudo posible",
+        "known": "as often as possible",
+        "index": 8,
+        "lego": [
+          "lo más a menudo posible",
+          "as often as possible"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      }
+    },
+    {
+      "edge": "S0004L01|||S0005L03",
+      "legos": [
+        "S0004L01",
+        "S0005L03"
+      ],
+      "lego1_data": {
+        "id": "S0004L01",
+        "target": "decir",
+        "known": "to say",
+        "index": 9,
+        "lego": [
+          "decir",
+          "to say"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      }
+    },
+    {
+      "edge": "S0004L02|||S0005L03",
+      "legos": [
+        "S0004L02",
+        "S0005L03"
+      ],
+      "lego1_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L04|||S0005L04",
+      "legos": [
+        "S0001L04",
+        "S0005L04"
+      ],
+      "lego1_data": {
+        "id": "S0001L04",
+        "target": "contigo",
+        "known": "with you",
+        "index": 3,
+        "lego": [
+          "contigo",
+          "with you"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L01|||S0005L04",
+      "legos": [
+        "S0003L01",
+        "S0005L04"
+      ],
+      "lego1_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L02|||S0005L04",
+      "legos": [
+        "S0003L02",
+        "S0005L04"
+      ],
+      "lego1_data": {
+        "id": "S0003L02",
+        "target": "lo más a menudo posible",
+        "known": "as often as possible",
+        "index": 8,
+        "lego": [
+          "lo más a menudo posible",
+          "as often as possible"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      }
+    },
+    {
+      "edge": "S0004L01|||S0005L04",
+      "legos": [
+        "S0004L01",
+        "S0005L04"
+      ],
+      "lego1_data": {
+        "id": "S0004L01",
+        "target": "decir",
+        "known": "to say",
+        "index": 9,
+        "lego": [
+          "decir",
+          "to say"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      }
+    },
+    {
+      "edge": "S0004L03|||S0005L04",
+      "legos": [
+        "S0004L03",
+        "S0005L04"
+      ],
+      "lego1_data": {
+        "id": "S0004L03",
+        "target": "en",
+        "known": "in",
+        "index": 11,
+        "lego": [
+          "en",
+          "in"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L04|||S0005L05",
+      "legos": [
+        "S0001L04",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0001L04",
+        "target": "contigo",
+        "known": "with you",
+        "index": 3,
+        "lego": [
+          "contigo",
+          "with you"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      }
+    },
+    {
+      "edge": "S0002L02|||S0005L05",
+      "legos": [
+        "S0002L02",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L01|||S0005L05",
+      "legos": [
+        "S0003L01",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L02|||S0005L05",
+      "legos": [
+        "S0003L02",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0003L02",
+        "target": "lo más a menudo posible",
+        "known": "as often as possible",
+        "index": 8,
+        "lego": [
+          "lo más a menudo posible",
+          "as often as possible"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      }
+    },
+    {
+      "edge": "S0004L01|||S0005L05",
+      "legos": [
+        "S0004L01",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0004L01",
+        "target": "decir",
+        "known": "to say",
+        "index": 9,
+        "lego": [
+          "decir",
+          "to say"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      }
+    },
+    {
+      "edge": "S0004L02|||S0005L05",
+      "legos": [
+        "S0004L02",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      }
+    },
+    {
+      "edge": "S0004L03|||S0005L05",
+      "legos": [
+        "S0004L03",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0004L03",
+        "target": "en",
+        "known": "in",
+        "index": 11,
+        "lego": [
+          "en",
+          "in"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L04|||S0006L01",
+      "legos": [
+        "S0001L04",
+        "S0006L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L04",
+        "target": "contigo",
+        "known": "with you",
+        "index": 3,
+        "lego": [
+          "contigo",
+          "with you"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      }
+    },
+    {
+      "edge": "S0002L02|||S0006L01",
+      "legos": [
+        "S0002L02",
+        "S0006L01"
+      ],
+      "lego1_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L02|||S0006L01",
+      "legos": [
+        "S0003L02",
+        "S0006L01"
+      ],
+      "lego1_data": {
+        "id": "S0003L02",
+        "target": "lo más a menudo posible",
+        "known": "as often as possible",
+        "index": 8,
+        "lego": [
+          "lo más a menudo posible",
+          "as often as possible"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      }
+    },
+    {
+      "edge": "S0004L03|||S0006L01",
+      "legos": [
+        "S0004L03",
+        "S0006L01"
+      ],
+      "lego1_data": {
+        "id": "S0004L03",
+        "target": "en",
+        "known": "in",
+        "index": 11,
+        "lego": [
+          "en",
+          "in"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      }
+    },
+    {
+      "edge": "S0005L02|||S0006L01",
+      "legos": [
+        "S0005L02",
+        "S0006L01"
+      ],
+      "lego1_data": {
+        "id": "S0005L02",
+        "target": "practicar",
+        "known": "to practise",
+        "index": 13,
+        "lego": [
+          "practicar",
+          "to practise"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      }
+    },
+    {
+      "edge": "S0005L03|||S0006L01",
+      "legos": [
+        "S0005L03",
+        "S0006L01"
+      ],
+      "lego1_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      }
+    },
+    {
+      "edge": "S0005L04|||S0006L01",
+      "legos": [
+        "S0005L04",
+        "S0006L01"
+      ],
+      "lego1_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      }
+    },
+    {
+      "edge": "S0005L05|||S0006L01",
+      "legos": [
+        "S0005L05",
+        "S0006L01"
+      ],
+      "lego1_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L02|||S0006L02",
+      "legos": [
+        "S0001L02",
+        "S0006L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L02",
+        "target": "una palabra",
+        "known": "a word",
+        "index": 18,
+        "lego": [
+          "una palabra",
+          "a word"
+        ]
+      }
+    },
+    {
+      "edge": "S0001L04|||S0006L02",
+      "legos": [
+        "S0001L04",
+        "S0006L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L04",
+        "target": "contigo",
+        "known": "with you",
+        "index": 3,
+        "lego": [
+          "contigo",
+          "with you"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L02",
+        "target": "una palabra",
+        "known": "a word",
+        "index": 18,
+        "lego": [
+          "una palabra",
+          "a word"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L01|||S0006L02",
+      "legos": [
+        "S0003L01",
+        "S0006L02"
+      ],
+      "lego1_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L02",
+        "target": "una palabra",
+        "known": "a word",
+        "index": 18,
+        "lego": [
+          "una palabra",
+          "a word"
+        ]
+      }
+    },
+    {
+      "edge": "S0003L02|||S0006L02",
+      "legos": [
+        "S0003L02",
+        "S0006L02"
+      ],
+      "lego1_data": {
+        "id": "S0003L02",
+        "target": "lo más a menudo posible",
+        "known": "as often as possible",
+        "index": 8,
+        "lego": [
+          "lo más a menudo posible",
+          "as often as possible"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L02",
+        "target": "una palabra",
+        "known": "a word",
+        "index": 18,
+        "lego": [
+          "una palabra",
+          "a word"
+        ]
+      }
+    },
+    {
+      "edge": "S0004L02|||S0006L02",
+      "legos": [
+        "S0004L02",
+        "S0006L02"
+      ],
+      "lego1_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L02",
+        "target": "una palabra",
+        "known": "a word",
+        "index": 18,
+        "lego": [
+          "una palabra",
+          "a word"
+        ]
+      }
+    },
+    {
+      "edge": "S0005L03|||S0006L02",
+      "legos": [
+        "S0005L03",
+        "S0006L02"
+      ],
+      "lego1_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L02",
+        "target": "una palabra",
+        "known": "a word",
+        "index": 18,
+        "lego": [
+          "una palabra",
+          "a word"
+        ]
+      }
+    },
+    {
+      "edge": "S0005L04|||S0006L02",
+      "legos": [
+        "S0005L04",
+        "S0006L02"
+      ],
+      "lego1_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L02",
+        "target": "una palabra",
+        "known": "a word",
+        "index": 18,
+        "lego": [
+          "una palabra",
+          "a word"
+        ]
+      }
+    },
+    {
+      "edge": "S0005L05|||S0006L02",
+      "legos": [
+        "S0005L05",
+        "S0006L02"
+      ],
+      "lego1_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L02",
+        "target": "una palabra",
+        "known": "a word",
+        "index": 18,
+        "lego": [
+          "una palabra",
+          "a word"
+        ]
+      }
+    }
+  ],
+  "overused_edges": [
+    {
+      "edge": "S0001L01|||S0001L02",
+      "count": 67,
+      "legos": [
+        "S0001L01",
+        "S0001L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "examples": [
+        "Quiero hablar",
+        "Quiero hablar",
+        "Quiero hablar español"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0001L03",
+      "count": 48,
+      "legos": [
+        "S0001L01",
+        "S0001L03"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "examples": [
+        "Quiero hablar español",
+        "Quiero hablar español",
+        "Quiero hablar español contigo"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0001L03",
+      "count": 83,
+      "legos": [
+        "S0001L02",
+        "S0001L03"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "examples": [
+        "Quiero hablar español",
+        "hablar español",
+        "Quiero hablar español"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0002L02",
+      "count": 25,
+      "legos": [
+        "S0001L01",
+        "S0002L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "examples": [
+        "Quiero aprender español",
+        "Quiero aprender ahora",
+        "Quiero aprender"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0003L01",
+      "count": 27,
+      "legos": [
+        "S0001L02",
+        "S0003L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      },
+      "examples": [
+        "Quiero aprender cómo hablar",
+        "Estoy intentando aprender cómo hablar español",
+        "cómo hablar"
+      ]
+    },
+    {
+      "edge": "S0005L03|||S0005L04",
+      "count": 34,
+      "legos": [
+        "S0005L03",
+        "S0005L04"
+      ],
+      "lego1_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      },
+      "examples": [
+        "Estoy intentando hablar con otra persona",
+        "Voy a practicar con otra persona",
+        "Quiero hablar con otra persona ahora"
+      ]
+    },
+    {
+      "edge": "S0005L03|||S0005L05",
+      "count": 33,
+      "legos": [
+        "S0005L03",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      },
+      "examples": [
+        "Estoy intentando hablar con otra persona",
+        "Voy a practicar con otra persona",
+        "Quiero hablar con otra persona ahora"
+      ]
+    },
+    {
+      "edge": "S0005L04|||S0005L05",
+      "count": 35,
+      "legos": [
+        "S0005L04",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      },
+      "examples": [
+        "Estoy intentando hablar con otra persona",
+        "Voy a practicar con otra persona",
+        "Quiero hablar con otra persona ahora"
+      ]
+    }
+  ],
+  "edge_distribution": [
+    {
+      "edge": "S0001L02|||S0001L03",
+      "legos": [
+        "S0001L02",
+        "S0001L03"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "count": 83,
+      "examples": [
+        "Quiero hablar español",
+        "hablar español",
+        "Quiero hablar español"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0001L02",
+      "legos": [
+        "S0001L01",
+        "S0001L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "count": 67,
+      "examples": [
+        "Quiero hablar",
+        "Quiero hablar",
+        "Quiero hablar español"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0001L03",
+      "legos": [
+        "S0001L01",
+        "S0001L03"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "count": 48,
+      "examples": [
+        "Quiero hablar español",
+        "Quiero hablar español",
+        "Quiero hablar español contigo"
+      ]
+    },
+    {
+      "edge": "S0005L04|||S0005L05",
+      "legos": [
+        "S0005L04",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      },
+      "count": 35,
+      "examples": [
+        "Estoy intentando hablar con otra persona",
+        "Voy a practicar con otra persona",
+        "Quiero hablar con otra persona ahora"
+      ]
+    },
+    {
+      "edge": "S0005L03|||S0005L04",
+      "legos": [
+        "S0005L03",
+        "S0005L04"
+      ],
+      "lego1_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      },
+      "count": 34,
+      "examples": [
+        "Estoy intentando hablar con otra persona",
+        "Voy a practicar con otra persona",
+        "Quiero hablar con otra persona ahora"
+      ]
+    },
+    {
+      "edge": "S0005L03|||S0005L05",
+      "legos": [
+        "S0005L03",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      },
+      "count": 33,
+      "examples": [
+        "Estoy intentando hablar con otra persona",
+        "Voy a practicar con otra persona",
+        "Quiero hablar con otra persona ahora"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0003L01",
+      "legos": [
+        "S0001L02",
+        "S0003L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      },
+      "count": 27,
+      "examples": [
+        "Quiero aprender cómo hablar",
+        "Estoy intentando aprender cómo hablar español",
+        "cómo hablar"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0002L02",
+      "legos": [
+        "S0001L01",
+        "S0002L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "count": 25,
+      "examples": [
+        "Quiero aprender español",
+        "Quiero aprender ahora",
+        "Quiero aprender"
+      ]
+    },
+    {
+      "edge": "S0017L02|||S0017L03",
+      "legos": [
+        "S0017L02",
+        "S0017L03"
+      ],
+      "lego1_data": {
+        "id": "S0017L02",
+        "target": "cuál",
+        "known": "what",
+        "index": 51,
+        "lego": [
+          "cuál",
+          "what"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0017L03",
+        "target": "es",
+        "known": "is",
+        "index": 52,
+        "lego": [
+          "es",
+          "is"
+        ]
+      },
+      "count": 24,
+      "examples": [
+        "Quiere descubrir cuál es la respuesta",
+        "No estoy seguro cuál es la palabra",
+        "Quiero explicar cuál es la frase"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0001L04",
+      "legos": [
+        "S0001L02",
+        "S0001L04"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0001L04",
+        "target": "contigo",
+        "known": "with you",
+        "index": 3,
+        "lego": [
+          "contigo",
+          "with you"
+        ]
+      },
+      "count": 23,
+      "examples": [
+        "Quiero hablar contigo",
+        "Quiero hablar español contigo",
+        "hablar contigo"
+      ]
+    },
+    {
+      "edge": "S0004L01|||S0004L02",
+      "legos": [
+        "S0004L01",
+        "S0004L02"
+      ],
+      "lego1_data": {
+        "id": "S0004L01",
+        "target": "decir",
+        "known": "to say",
+        "index": 9,
+        "lego": [
+          "decir",
+          "to say"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      },
+      "count": 20,
+      "examples": [
+        "Quiero decir algo",
+        "Estoy intentando aprender cómo decir algo",
+        "cómo decir algo"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0005L03",
+      "legos": [
+        "S0001L02",
+        "S0005L03"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "count": 20,
+      "examples": [
+        "Voy a hablar con contigo",
+        "Estoy intentando hablar con otra persona",
+        "hablar con"
+      ]
+    },
+    {
+      "edge": "S0011L01|||S0011L02",
+      "legos": [
+        "S0011L01",
+        "S0011L02"
+      ],
+      "lego1_data": {
+        "id": "S0011L01",
+        "target": "Me gustaría",
+        "known": "I'd like",
+        "index": 31,
+        "lego": [
+          "Me gustaría",
+          "I'd like"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0011L02",
+        "target": "poder",
+        "known": "to be able",
+        "index": 32,
+        "lego": [
+          "poder",
+          "to be able"
+        ]
+      },
+      "count": 20,
+      "examples": [
+        "Me gustaría poder hablar español",
+        "Me gustaría poder",
+        "Me gustaría poder hablar"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0004L03",
+      "legos": [
+        "S0001L03",
+        "S0004L03"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L03",
+        "target": "en",
+        "known": "in",
+        "index": 11,
+        "lego": [
+          "en",
+          "in"
+        ]
+      },
+      "count": 19,
+      "examples": [
+        "Estoy intentando decir algo en español",
+        "Estoy intentando decir algo en español",
+        "cómo decir algo en español"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0005L01",
+      "legos": [
+        "S0001L02",
+        "S0005L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L01",
+        "target": "Voy a",
+        "known": "I'm going to",
+        "index": 12,
+        "lego": [
+          "Voy a",
+          "I'm going to"
+        ]
+      },
+      "count": 19,
+      "examples": [
+        "Voy a hablar español",
+        "Voy a aprender cómo hablar",
+        "Voy a hablar"
+      ]
+    },
+    {
+      "edge": "S0005L02|||S0005L03",
+      "legos": [
+        "S0005L02",
+        "S0005L03"
+      ],
+      "lego1_data": {
+        "id": "S0005L02",
+        "target": "practicar",
+        "known": "to practise",
+        "index": 13,
+        "lego": [
+          "practicar",
+          "to practise"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "count": 19,
+      "examples": [
+        "Quiero practicar español con alguien",
+        "practicar español con",
+        "Voy a practicar con"
+      ]
+    },
+    {
+      "edge": "S0005L01|||S0007L01",
+      "legos": [
+        "S0005L01",
+        "S0007L01"
+      ],
+      "lego1_data": {
+        "id": "S0005L01",
+        "target": "Voy a",
+        "known": "I'm going to",
+        "index": 12,
+        "lego": [
+          "Voy a",
+          "I'm going to"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0007L01",
+        "target": "intentar",
+        "known": "to try",
+        "index": 19,
+        "lego": [
+          "intentar",
+          "to try"
+        ]
+      },
+      "count": 19,
+      "examples": [
+        "Voy a intentar recordar una palabra",
+        "Voy a intentar decir algo en español",
+        "Voy a intentar"
+      ]
+    },
+    {
+      "edge": "S0013L02|||S0013L03",
+      "legos": [
+        "S0013L02",
+        "S0013L03"
+      ],
+      "lego1_data": {
+        "id": "S0013L02",
+        "target": "muy",
+        "known": "very",
+        "index": 40,
+        "lego": [
+          "muy",
+          "very"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0013L03",
+        "target": "bien",
+        "known": "well",
+        "index": 41,
+        "lego": [
+          "bien",
+          "well"
+        ]
+      },
+      "count": 19,
+      "examples": [
+        "Hablas español muy bien",
+        "Hablas español muy bien",
+        "muy bien"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0001L05",
+      "legos": [
+        "S0001L02",
+        "S0001L05"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0001L05",
+        "target": "ahora",
+        "known": "now",
+        "index": 4,
+        "lego": [
+          "ahora",
+          "now"
+        ]
+      },
+      "count": 18,
+      "examples": [
+        "Quiero hablar español contigo ahora",
+        "Quiero hablar español ahora",
+        "Quiero hablar ahora"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0002L01",
+      "legos": [
+        "S0001L02",
+        "S0002L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0002L01",
+        "target": "Estoy intentando",
+        "known": "I'm trying",
+        "index": 5,
+        "lego": [
+          "Estoy intentando",
+          "I'm trying"
+        ]
+      },
+      "count": 17,
+      "examples": [
+        "Estoy intentando hablar",
+        "Estoy intentando hablar español",
+        "Estoy intentando hablar contigo"
+      ]
+    },
+    {
+      "edge": "S0005L01|||S0005L02",
+      "legos": [
+        "S0005L01",
+        "S0005L02"
+      ],
+      "lego1_data": {
+        "id": "S0005L01",
+        "target": "Voy a",
+        "known": "I'm going to",
+        "index": 12,
+        "lego": [
+          "Voy a",
+          "I'm going to"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L02",
+        "target": "practicar",
+        "known": "to practise",
+        "index": 13,
+        "lego": [
+          "practicar",
+          "to practise"
+        ]
+      },
+      "count": 17,
+      "examples": [
+        "Voy a practicar hablar español",
+        "Voy a practicar",
+        "Voy a practicar hablar"
+      ]
+    },
+    {
+      "edge": "S0010L02|||S0010L03",
+      "legos": [
+        "S0010L02",
+        "S0010L03"
+      ],
+      "lego1_data": {
+        "id": "S0010L02",
+        "target": "si",
+        "known": "if",
+        "index": 27,
+        "lego": [
+          "si",
+          "if"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0010L03",
+        "target": "puedo",
+        "known": "I can",
+        "index": 28,
+        "lego": [
+          "puedo",
+          "I can"
+        ]
+      },
+      "count": 17,
+      "examples": [
+        "No estoy seguro si puedo recordar",
+        "Voy a intentar si puedo explicar",
+        "si puedo"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0001L05",
+      "legos": [
+        "S0001L01",
+        "S0001L05"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0001L05",
+        "target": "ahora",
+        "known": "now",
+        "index": 4,
+        "lego": [
+          "ahora",
+          "now"
+        ]
+      },
+      "count": 16,
+      "examples": [
+        "Quiero hablar español contigo ahora",
+        "Quiero hablar español ahora",
+        "Quiero hablar ahora"
+      ]
+    },
+    {
+      "edge": "S0010L01|||S0010L02",
+      "legos": [
+        "S0010L01",
+        "S0010L02"
+      ],
+      "lego1_data": {
+        "id": "S0010L01",
+        "target": "No estoy seguro",
+        "known": "I'm not sure",
+        "index": 26,
+        "lego": [
+          "No estoy seguro",
+          "I'm not sure"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0010L02",
+        "target": "si",
+        "known": "if",
+        "index": 27,
+        "lego": [
+          "si",
+          "if"
+        ]
+      },
+      "count": 16,
+      "examples": [
+        "No estoy seguro si voy a recordar",
+        "No estoy seguro si",
+        "No estoy seguro si puedo recordar"
+      ]
+    },
+    {
+      "edge": "S0002L02|||S0003L01",
+      "legos": [
+        "S0002L02",
+        "S0003L01"
+      ],
+      "lego1_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      },
+      "count": 15,
+      "examples": [
+        "Quiero aprender cómo hablar",
+        "Estoy intentando aprender cómo hablar español",
+        "aprender cómo hablar"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0013L03",
+      "legos": [
+        "S0001L03",
+        "S0013L03"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0013L03",
+        "target": "bien",
+        "known": "well",
+        "index": 41,
+        "lego": [
+          "bien",
+          "well"
+        ]
+      },
+      "count": 15,
+      "examples": [
+        "Hablas español muy bien",
+        "Hablas español muy bien",
+        "español muy bien"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0001L05",
+      "legos": [
+        "S0001L03",
+        "S0001L05"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0001L05",
+        "target": "ahora",
+        "known": "now",
+        "index": 4,
+        "lego": [
+          "ahora",
+          "now"
+        ]
+      },
+      "count": 14,
+      "examples": [
+        "Quiero hablar español contigo ahora",
+        "Quiero hablar español ahora",
+        "hablar español ahora"
+      ]
+    },
+    {
+      "edge": "S0002L02|||S0004L02",
+      "legos": [
+        "S0002L02",
+        "S0004L02"
+      ],
+      "lego1_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      },
+      "count": 14,
+      "examples": [
+        "Estoy intentando aprender cómo decir algo",
+        "aprender cómo decir algo",
+        "Quiero aprender algo ahora"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0005L01",
+      "legos": [
+        "S0001L03",
+        "S0005L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L01",
+        "target": "Voy a",
+        "known": "I'm going to",
+        "index": 12,
+        "lego": [
+          "Voy a",
+          "I'm going to"
+        ]
+      },
+      "count": 14,
+      "examples": [
+        "Voy a hablar español",
+        "Voy a decir algo en español",
+        "Voy a hablar español"
+      ]
+    },
+    {
+      "edge": "S0005L02|||S0005L04",
+      "legos": [
+        "S0005L02",
+        "S0005L04"
+      ],
+      "lego1_data": {
+        "id": "S0005L02",
+        "target": "practicar",
+        "known": "to practise",
+        "index": 13,
+        "lego": [
+          "practicar",
+          "to practise"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      },
+      "count": 14,
+      "examples": [
+        "Voy a practicar con otra persona",
+        "practicar con otra persona",
+        "Voy a practicar con otra"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0007L01",
+      "legos": [
+        "S0001L01",
+        "S0007L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0007L01",
+        "target": "intentar",
+        "known": "to try",
+        "index": 19,
+        "lego": [
+          "intentar",
+          "to try"
+        ]
+      },
+      "count": 14,
+      "examples": [
+        "Quiero intentar hablar español",
+        "Quiero intentar",
+        "Quiero intentar hablar"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0011L02",
+      "legos": [
+        "S0001L02",
+        "S0011L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0011L02",
+        "target": "poder",
+        "known": "to be able",
+        "index": 32,
+        "lego": [
+          "poder",
+          "to be able"
+        ]
+      },
+      "count": 14,
+      "examples": [
+        "Me gustaría poder hablar español",
+        "poder hablar",
+        "Quiero poder hablar"
+      ]
+    },
+    {
+      "edge": "S0011L03|||S0011L04",
+      "legos": [
+        "S0011L03",
+        "S0011L04"
+      ],
+      "lego1_data": {
+        "id": "S0011L03",
+        "target": "después de que",
+        "known": "after",
+        "index": 33,
+        "lego": [
+          "después de que",
+          "after"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0011L04",
+        "target": "termines",
+        "known": "you finish",
+        "index": 34,
+        "lego": [
+          "termines",
+          "you finish"
+        ]
+      },
+      "count": 14,
+      "examples": [
+        "Me gustaría poder hablar después de que termines",
+        "después de que termines",
+        "Me gustaría poder hablar después de que termines"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0013L01",
+      "legos": [
+        "S0001L03",
+        "S0013L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0013L01",
+        "target": "Hablas",
+        "known": "You speak",
+        "index": 39,
+        "lego": [
+          "Hablas",
+          "You speak"
+        ]
+      },
+      "count": 14,
+      "examples": [
+        "Hablas español muy bien",
+        "Hablas un poco de español",
+        "Hablas español"
+      ]
+    },
+    {
+      "edge": "S0005L03|||S0016L03",
+      "legos": [
+        "S0005L03",
+        "S0016L03"
+      ],
+      "lego1_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0016L03",
+        "target": "todos los demás",
+        "known": "everyone else",
+        "index": 48,
+        "lego": [
+          "todos los demás",
+          "everyone else"
+        ]
+      },
+      "count": 14,
+      "examples": [
+        "Quiere volver con todos los demás más tarde",
+        "Quiero hablar con todos los demás",
+        "Me gustaría practicar con todos los demás"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0001L04",
+      "legos": [
+        "S0001L03",
+        "S0001L04"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0001L04",
+        "target": "contigo",
+        "known": "with you",
+        "index": 3,
+        "lego": [
+          "contigo",
+          "with you"
+        ]
+      },
+      "count": 13,
+      "examples": [
+        "Quiero hablar español contigo",
+        "hablar español contigo",
+        "Quiero hablar español contigo"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0003L01",
+      "legos": [
+        "S0001L01",
+        "S0003L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      },
+      "count": 13,
+      "examples": [
+        "Quiero aprender cómo hablar",
+        "Quiero aprender cómo hablar",
+        "Quiero aprender cómo hablar español"
+      ]
+    },
+    {
+      "edge": "S0005L02|||S0005L05",
+      "legos": [
+        "S0005L02",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0005L02",
+        "target": "practicar",
+        "known": "to practise",
+        "index": 13,
+        "lego": [
+          "practicar",
+          "to practise"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      },
+      "count": 13,
+      "examples": [
+        "Voy a practicar con otra persona",
+        "practicar con otra persona",
+        "Voy a practicar hablar con otra persona"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0008L01",
+      "legos": [
+        "S0001L01",
+        "S0008L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0008L01",
+        "target": "explicar",
+        "known": "to explain",
+        "index": 22,
+        "lego": [
+          "explicar",
+          "to explain"
+        ]
+      },
+      "count": 13,
+      "examples": [
+        "Quiero explicar cómo hablar español",
+        "Quiero explicar",
+        "Quiero explicar cómo"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0011L01",
+      "legos": [
+        "S0001L02",
+        "S0011L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0011L01",
+        "target": "Me gustaría",
+        "known": "I'd like",
+        "index": 31,
+        "lego": [
+          "Me gustaría",
+          "I'd like"
+        ]
+      },
+      "count": 13,
+      "examples": [
+        "Me gustaría hablar español",
+        "Me gustaría hablar",
+        "Me gustaría hablar español"
+      ]
+    },
+    {
+      "edge": "S0008L02|||S0012L03",
+      "legos": [
+        "S0008L02",
+        "S0012L03"
+      ],
+      "lego1_data": {
+        "id": "S0008L02",
+        "target": "lo que",
+        "known": "what",
+        "index": 23,
+        "lego": [
+          "lo que",
+          "what"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0012L03",
+        "target": "va a pasar",
+        "known": "is going to happen",
+        "index": 37,
+        "lego": [
+          "va a pasar",
+          "is going to happen"
+        ]
+      },
+      "count": 13,
+      "examples": [
+        "No me gustaría adivinar lo que va a pasar mañana",
+        "No estoy seguro lo que va a pasar",
+        "Quiero explicar lo que va a pasar"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0013L02",
+      "legos": [
+        "S0001L03",
+        "S0013L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0013L02",
+        "target": "muy",
+        "known": "very",
+        "index": 40,
+        "lego": [
+          "muy",
+          "very"
+        ]
+      },
+      "count": 13,
+      "examples": [
+        "Hablas español muy bien",
+        "Hablas español muy bien",
+        "español muy bien"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0001L04",
+      "legos": [
+        "S0001L01",
+        "S0001L04"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0001L04",
+        "target": "contigo",
+        "known": "with you",
+        "index": 3,
+        "lego": [
+          "contigo",
+          "with you"
+        ]
+      },
+      "count": 12,
+      "examples": [
+        "Quiero hablar contigo",
+        "Quiero hablar español contigo",
+        "Quiero hablar contigo"
+      ]
+    },
+    {
+      "edge": "S0002L01|||S0002L02",
+      "legos": [
+        "S0002L01",
+        "S0002L02"
+      ],
+      "lego1_data": {
+        "id": "S0002L01",
+        "target": "Estoy intentando",
+        "known": "I'm trying",
+        "index": 5,
+        "lego": [
+          "Estoy intentando",
+          "I'm trying"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "count": 12,
+      "examples": [
+        "Estoy intentando aprender",
+        "Estoy intentando aprender",
+        "Estoy intentando aprender cómo hablar español"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0002L02",
+      "legos": [
+        "S0001L02",
+        "S0002L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "count": 12,
+      "examples": [
+        "Quiero aprender cómo hablar",
+        "Estoy intentando aprender cómo hablar español",
+        "aprender cómo hablar"
+      ]
+    },
+    {
+      "edge": "S0005L01|||S0005L03",
+      "legos": [
+        "S0005L01",
+        "S0005L03"
+      ],
+      "lego1_data": {
+        "id": "S0005L01",
+        "target": "Voy a",
+        "known": "I'm going to",
+        "index": 12,
+        "lego": [
+          "Voy a",
+          "I'm going to"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "count": 12,
+      "examples": [
+        "Voy a hablar con contigo",
+        "Voy a hablar con",
+        "Voy a practicar con"
+      ]
+    },
+    {
+      "edge": "S0006L01|||S0010L04",
+      "legos": [
+        "S0006L01",
+        "S0010L04"
+      ],
+      "lego1_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0010L04",
+        "target": "la frase",
+        "known": "the sentence",
+        "index": 29,
+        "lego": [
+          "la frase",
+          "the sentence"
+        ]
+      },
+      "count": 12,
+      "examples": [
+        "No estoy seguro si puedo recordar la frase",
+        "recordar la frase",
+        "puedo recordar la frase"
+      ]
+    },
+    {
+      "edge": "S0016L01|||S0016L02",
+      "legos": [
+        "S0016L01",
+        "S0016L02"
+      ],
+      "lego1_data": {
+        "id": "S0016L01",
+        "target": "Quiere",
+        "known": "He wants",
+        "index": 46,
+        "lego": [
+          "Quiere",
+          "He wants"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0016L02",
+        "target": "volver",
+        "known": "to come back",
+        "index": 47,
+        "lego": [
+          "volver",
+          "to come back"
+        ]
+      },
+      "count": 12,
+      "examples": [
+        "Quiere volver mañana",
+        "Quiere volver",
+        "Quiere volver mañana"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0002L02",
+      "legos": [
+        "S0001L03",
+        "S0002L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "Quiero aprender español",
+        "Quiero aprender español",
+        "Quiero aprender español ahora"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0003L01",
+      "legos": [
+        "S0001L03",
+        "S0003L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "Estoy intentando aprender cómo hablar español",
+        "cómo hablar español",
+        "aprender cómo hablar español"
+      ]
+    },
+    {
+      "edge": "S0004L01|||S0005L01",
+      "legos": [
+        "S0004L01",
+        "S0005L01"
+      ],
+      "lego1_data": {
+        "id": "S0004L01",
+        "target": "decir",
+        "known": "to say",
+        "index": 9,
+        "lego": [
+          "decir",
+          "to say"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L01",
+        "target": "Voy a",
+        "known": "I'm going to",
+        "index": 12,
+        "lego": [
+          "Voy a",
+          "I'm going to"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "Voy a decir algo en español",
+        "Voy a decir algo español",
+        "Voy a recordar cómo decir algo"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0005L02",
+      "legos": [
+        "S0001L02",
+        "S0005L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L02",
+        "target": "practicar",
+        "known": "to practise",
+        "index": 13,
+        "lego": [
+          "practicar",
+          "to practise"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "Voy a practicar hablar español",
+        "Quiero practicar cómo hablar",
+        "practicar hablar"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0005L02",
+      "legos": [
+        "S0001L03",
+        "S0005L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L02",
+        "target": "practicar",
+        "known": "to practise",
+        "index": 13,
+        "lego": [
+          "practicar",
+          "to practise"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "Voy a practicar hablar español",
+        "practicar hablar español",
+        "Voy a practicar hablar español"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0005L04",
+      "legos": [
+        "S0001L02",
+        "S0005L04"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "Estoy intentando hablar con otra persona",
+        "Quiero hablar con otra persona ahora",
+        "hablar con otra persona"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0005L05",
+      "legos": [
+        "S0001L02",
+        "S0005L05"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L05",
+        "target": "persona",
+        "known": "person",
+        "index": 16,
+        "lego": [
+          "persona",
+          "person"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "Estoy intentando hablar con otra persona",
+        "Quiero hablar con otra persona ahora",
+        "hablar con otra persona"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0009L02",
+      "legos": [
+        "S0001L03",
+        "S0009L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0009L02",
+        "target": "un poco de",
+        "known": "a little",
+        "index": 25,
+        "lego": [
+          "un poco de",
+          "a little"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "Hablo un poco de español ahora",
+        "Quiero aprender un poco de español",
+        "Voy a practicar un poco de español hoy"
+      ]
+    },
+    {
+      "edge": "S0006L01|||S0010L02",
+      "legos": [
+        "S0006L01",
+        "S0010L02"
+      ],
+      "lego1_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0010L02",
+        "target": "si",
+        "known": "if",
+        "index": 27,
+        "lego": [
+          "si",
+          "if"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "No estoy seguro si voy a recordar",
+        "No estoy seguro si puedo recordar",
+        "si puedo recordar"
+      ]
+    },
+    {
+      "edge": "S0006L01|||S0010L03",
+      "legos": [
+        "S0006L01",
+        "S0010L03"
+      ],
+      "lego1_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0010L03",
+        "target": "puedo",
+        "known": "I can",
+        "index": 28,
+        "lego": [
+          "puedo",
+          "I can"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "No estoy seguro si puedo recordar",
+        "si puedo recordar",
+        "No estoy seguro si puedo recordar"
+      ]
+    },
+    {
+      "edge": "S0010L04|||S0010L05",
+      "legos": [
+        "S0010L04",
+        "S0010L05"
+      ],
+      "lego1_data": {
+        "id": "S0010L04",
+        "target": "la frase",
+        "known": "the sentence",
+        "index": 29,
+        "lego": [
+          "la frase",
+          "the sentence"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0010L05",
+        "target": "completa",
+        "known": "whole",
+        "index": 30,
+        "lego": [
+          "completa",
+          "whole"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "No estoy seguro si puedo recordar la frase completa",
+        "Quiero aprender la frase completa en español",
+        "Voy a intentar decir la frase completa ahora"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0011L03",
+      "legos": [
+        "S0001L02",
+        "S0011L03"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0011L03",
+        "target": "después de que",
+        "known": "after",
+        "index": 33,
+        "lego": [
+          "después de que",
+          "after"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "Me gustaría poder hablar después de que termines",
+        "hablar después de que",
+        "poder hablar después de que"
+      ]
+    },
+    {
+      "edge": "S0008L02|||S0012L02",
+      "legos": [
+        "S0008L02",
+        "S0012L02"
+      ],
+      "lego1_data": {
+        "id": "S0008L02",
+        "target": "lo que",
+        "known": "what",
+        "index": 23,
+        "lego": [
+          "lo que",
+          "what"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0012L02",
+        "target": "adivinar",
+        "known": "to guess",
+        "index": 36,
+        "lego": [
+          "adivinar",
+          "to guess"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "No me gustaría adivinar lo que quiero decir",
+        "adivinar lo que",
+        "adivinar lo que quiero"
+      ]
+    },
+    {
+      "edge": "S0005L03|||S0016L02",
+      "legos": [
+        "S0005L03",
+        "S0016L02"
+      ],
+      "lego1_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0016L02",
+        "target": "volver",
+        "known": "to come back",
+        "index": 47,
+        "lego": [
+          "volver",
+          "to come back"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "Quiere volver con otra persona",
+        "Quiere volver con otra persona mañana",
+        "Quiere volver con todos los demás más tarde"
+      ]
+    },
+    {
+      "edge": "S0018L01|||S0018L02",
+      "legos": [
+        "S0018L01",
+        "S0018L02"
+      ],
+      "lego1_data": {
+        "id": "S0018L01",
+        "target": "Queremos",
+        "known": "We want",
+        "index": 54,
+        "lego": [
+          "Queremos",
+          "We want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0018L02",
+        "target": "encontrarnos",
+        "known": "to meet",
+        "index": 55,
+        "lego": [
+          "encontrarnos",
+          "to meet"
+        ]
+      },
+      "count": 11,
+      "examples": [
+        "Queremos encontrarnos mañana",
+        "Queremos encontrarnos",
+        "Queremos encontrarnos mañana"
+      ]
+    },
+    {
+      "edge": "S0001L05|||S0004L02",
+      "legos": [
+        "S0001L05",
+        "S0004L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L05",
+        "target": "ahora",
+        "known": "now",
+        "index": 4,
+        "lego": [
+          "ahora",
+          "now"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      },
+      "count": 10,
+      "examples": [
+        "Quiero decir algo ahora",
+        "Quiero aprender algo ahora",
+        "aprender algo ahora"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0004L02",
+      "legos": [
+        "S0001L03",
+        "S0004L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      },
+      "count": 10,
+      "examples": [
+        "Estoy intentando decir algo en español",
+        "cómo decir algo español",
+        "Estoy intentando decir algo en español"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0006L01",
+      "legos": [
+        "S0001L01",
+        "S0006L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      },
+      "count": 10,
+      "examples": [
+        "Quiero recordar cómo hablar español",
+        "Quiero recordar cómo",
+        "Quiero recordar cómo hablar"
+      ]
+    },
+    {
+      "edge": "S0007L01|||S0008L01",
+      "legos": [
+        "S0007L01",
+        "S0008L01"
+      ],
+      "lego1_data": {
+        "id": "S0007L01",
+        "target": "intentar",
+        "known": "to try",
+        "index": 19,
+        "lego": [
+          "intentar",
+          "to try"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0008L01",
+        "target": "explicar",
+        "known": "to explain",
+        "index": 22,
+        "lego": [
+          "explicar",
+          "to explain"
+        ]
+      },
+      "count": 10,
+      "examples": [
+        "Voy a intentar explicar algo",
+        "intentar explicar",
+        "Voy a intentar explicar"
+      ]
+    },
+    {
+      "edge": "S0010L01|||S0010L03",
+      "legos": [
+        "S0010L01",
+        "S0010L03"
+      ],
+      "lego1_data": {
+        "id": "S0010L01",
+        "target": "No estoy seguro",
+        "known": "I'm not sure",
+        "index": 26,
+        "lego": [
+          "No estoy seguro",
+          "I'm not sure"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0010L03",
+        "target": "puedo",
+        "known": "I can",
+        "index": 28,
+        "lego": [
+          "puedo",
+          "I can"
+        ]
+      },
+      "count": 10,
+      "examples": [
+        "No estoy seguro si puedo recordar",
+        "No estoy seguro si puedo",
+        "No estoy seguro si puedo recordar"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0010L04",
+      "legos": [
+        "S0001L01",
+        "S0010L04"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0010L04",
+        "target": "la frase",
+        "known": "the sentence",
+        "index": 29,
+        "lego": [
+          "la frase",
+          "the sentence"
+        ]
+      },
+      "count": 10,
+      "examples": [
+        "Quiero aprender la frase en español",
+        "Quiero aprender la frase",
+        "Quiero aprender la frase completa en español"
+      ]
+    },
+    {
+      "edge": "S0016L01|||S0017L01",
+      "legos": [
+        "S0016L01",
+        "S0017L01"
+      ],
+      "lego1_data": {
+        "id": "S0016L01",
+        "target": "Quiere",
+        "known": "He wants",
+        "index": 46,
+        "lego": [
+          "Quiere",
+          "He wants"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0017L01",
+        "target": "descubrir",
+        "known": "to find out",
+        "index": 50,
+        "lego": [
+          "descubrir",
+          "to find out"
+        ]
+      },
+      "count": 10,
+      "examples": [
+        "Quiere descubrir cómo hablar",
+        "Quiere descubrir",
+        "Quiere descubrir cómo"
+      ]
+    },
+    {
+      "edge": "S0017L01|||S0017L02",
+      "legos": [
+        "S0017L01",
+        "S0017L02"
+      ],
+      "lego1_data": {
+        "id": "S0017L01",
+        "target": "descubrir",
+        "known": "to find out",
+        "index": 50,
+        "lego": [
+          "descubrir",
+          "to find out"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0017L02",
+        "target": "cuál",
+        "known": "what",
+        "index": 51,
+        "lego": [
+          "cuál",
+          "what"
+        ]
+      },
+      "count": 10,
+      "examples": [
+        "Quiere descubrir cuál es la respuesta",
+        "descubrir cuál es",
+        "Quiere descubrir cuál es"
+      ]
+    },
+    {
+      "edge": "S0017L01|||S0017L03",
+      "legos": [
+        "S0017L01",
+        "S0017L03"
+      ],
+      "lego1_data": {
+        "id": "S0017L01",
+        "target": "descubrir",
+        "known": "to find out",
+        "index": 50,
+        "lego": [
+          "descubrir",
+          "to find out"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0017L03",
+        "target": "es",
+        "known": "is",
+        "index": 52,
+        "lego": [
+          "es",
+          "is"
+        ]
+      },
+      "count": 10,
+      "examples": [
+        "Quiere descubrir cuál es la respuesta",
+        "descubrir cuál es",
+        "Quiere descubrir cuál es"
+      ]
+    },
+    {
+      "edge": "S0017L03|||S0017L04",
+      "legos": [
+        "S0017L03",
+        "S0017L04"
+      ],
+      "lego1_data": {
+        "id": "S0017L03",
+        "target": "es",
+        "known": "is",
+        "index": 52,
+        "lego": [
+          "es",
+          "is"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0017L04",
+        "target": "la respuesta",
+        "known": "the answer",
+        "index": 53,
+        "lego": [
+          "la respuesta",
+          "the answer"
+        ]
+      },
+      "count": 10,
+      "examples": [
+        "Quiere descubrir cuál es la respuesta",
+        "Quiere descubrir cuál es la respuesta",
+        "cuál es la respuesta"
+      ]
+    },
+    {
+      "edge": "S0001L05|||S0002L02",
+      "legos": [
+        "S0001L05",
+        "S0002L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L05",
+        "target": "ahora",
+        "known": "now",
+        "index": 4,
+        "lego": [
+          "ahora",
+          "now"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "Quiero aprender ahora",
+        "Quiero aprender español ahora",
+        "Quiero aprender algo ahora"
+      ]
+    },
+    {
+      "edge": "S0003L01|||S0004L01",
+      "legos": [
+        "S0003L01",
+        "S0004L01"
+      ],
+      "lego1_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L01",
+        "target": "decir",
+        "known": "to say",
+        "index": 9,
+        "lego": [
+          "decir",
+          "to say"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "Estoy intentando aprender cómo decir algo",
+        "cómo decir algo",
+        "aprender cómo decir algo"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0004L01",
+      "legos": [
+        "S0001L03",
+        "S0004L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L01",
+        "target": "decir",
+        "known": "to say",
+        "index": 9,
+        "lego": [
+          "decir",
+          "to say"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "Estoy intentando decir algo en español",
+        "cómo decir algo español",
+        "Estoy intentando decir algo en español"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0005L03",
+      "legos": [
+        "S0001L01",
+        "S0005L03"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "Quiero practicar español con alguien",
+        "Quiero hablar español con",
+        "Quiero hablar con otra persona ahora"
+      ]
+    },
+    {
+      "edge": "S0007L01|||S0007L02",
+      "legos": [
+        "S0007L01",
+        "S0007L02"
+      ],
+      "lego1_data": {
+        "id": "S0007L01",
+        "target": "intentar",
+        "known": "to try",
+        "index": 19,
+        "lego": [
+          "intentar",
+          "to try"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0007L02",
+        "target": "lo más fuerte que puedo",
+        "known": "as hard as I can",
+        "index": 20,
+        "lego": [
+          "lo más fuerte que puedo",
+          "as hard as I can"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "Quiero intentar lo más fuerte que puedo hoy",
+        "Voy a intentar lo más fuerte que puedo",
+        "intentar lo más fuerte que puedo"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0009L01",
+      "legos": [
+        "S0001L03",
+        "S0009L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0009L01",
+        "target": "Hablo",
+        "known": "I speak",
+        "index": 24,
+        "lego": [
+          "Hablo",
+          "I speak"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "Hablo español ahora",
+        "Hablo español",
+        "Hablo español ahora"
+      ]
+    },
+    {
+      "edge": "S0006L01|||S0010L01",
+      "legos": [
+        "S0006L01",
+        "S0010L01"
+      ],
+      "lego1_data": {
+        "id": "S0006L01",
+        "target": "recordar",
+        "known": "to remember",
+        "index": 17,
+        "lego": [
+          "recordar",
+          "to remember"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0010L01",
+        "target": "No estoy seguro",
+        "known": "I'm not sure",
+        "index": 26,
+        "lego": [
+          "No estoy seguro",
+          "I'm not sure"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "No estoy seguro si voy a recordar",
+        "No estoy seguro si puedo recordar",
+        "No estoy seguro si puedo recordar"
+      ]
+    },
+    {
+      "edge": "S0013L01|||S0013L02",
+      "legos": [
+        "S0013L01",
+        "S0013L02"
+      ],
+      "lego1_data": {
+        "id": "S0013L01",
+        "target": "Hablas",
+        "known": "You speak",
+        "index": 39,
+        "lego": [
+          "Hablas",
+          "You speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0013L02",
+        "target": "muy",
+        "known": "very",
+        "index": 40,
+        "lego": [
+          "muy",
+          "very"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "Hablas español muy bien",
+        "Hablas español muy bien",
+        "Hablas muy bien"
+      ]
+    },
+    {
+      "edge": "S0013L01|||S0013L03",
+      "legos": [
+        "S0013L01",
+        "S0013L03"
+      ],
+      "lego1_data": {
+        "id": "S0013L01",
+        "target": "Hablas",
+        "known": "You speak",
+        "index": 39,
+        "lego": [
+          "Hablas",
+          "You speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0013L03",
+        "target": "bien",
+        "known": "well",
+        "index": 41,
+        "lego": [
+          "bien",
+          "well"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "Hablas español muy bien",
+        "Hablas español muy bien",
+        "Hablas muy bien"
+      ]
+    },
+    {
+      "edge": "S0002L02|||S0020L03",
+      "legos": [
+        "S0002L02",
+        "S0020L03"
+      ],
+      "lego1_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0020L03",
+        "target": "rápidamente",
+        "known": "quickly",
+        "index": 63,
+        "lego": [
+          "rápidamente",
+          "quickly"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "Quiero aprender muy rápidamente",
+        "Quiero aprender muy rápidamente",
+        "Quieres aprender su nombre rápidamente"
+      ]
+    },
+    {
+      "edge": "S0005L03|||S0016L01",
+      "legos": [
+        "S0005L03",
+        "S0016L01"
+      ],
+      "lego1_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0016L01",
+        "target": "Quiere",
+        "known": "He wants",
+        "index": 46,
+        "lego": [
+          "Quiere",
+          "He wants"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "Quiere practicar con otra persona",
+        "Quiere practicar con otra persona",
+        "Quiere volver con otra persona"
+      ]
+    },
+    {
+      "edge": "S0017L02|||S0017L04",
+      "legos": [
+        "S0017L02",
+        "S0017L04"
+      ],
+      "lego1_data": {
+        "id": "S0017L02",
+        "target": "cuál",
+        "known": "what",
+        "index": 51,
+        "lego": [
+          "cuál",
+          "what"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0017L04",
+        "target": "la respuesta",
+        "known": "the answer",
+        "index": 53,
+        "lego": [
+          "la respuesta",
+          "the answer"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "Quiere descubrir cuál es la respuesta",
+        "Quiere descubrir cuál es la respuesta",
+        "cuál es la respuesta"
+      ]
+    },
+    {
+      "edge": "S0010L01|||S0017L03",
+      "legos": [
+        "S0010L01",
+        "S0017L03"
+      ],
+      "lego1_data": {
+        "id": "S0010L01",
+        "target": "No estoy seguro",
+        "known": "I'm not sure",
+        "index": 26,
+        "lego": [
+          "No estoy seguro",
+          "I'm not sure"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0017L03",
+        "target": "es",
+        "known": "is",
+        "index": 52,
+        "lego": [
+          "es",
+          "is"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "No estoy seguro cuál es la palabra",
+        "No estoy seguro cuál es",
+        "No estoy seguro si es la palabra"
+      ]
+    },
+    {
+      "edge": "S0002L02|||S0020L01",
+      "legos": [
+        "S0002L02",
+        "S0020L01"
+      ],
+      "lego1_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0020L01",
+        "target": "Quieres",
+        "known": "You want",
+        "index": 61,
+        "lego": [
+          "Quieres",
+          "You want"
+        ]
+      },
+      "count": 9,
+      "examples": [
+        "Quieres aprender su nombre rápidamente",
+        "Quieres aprender",
+        "Quieres aprender algo"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0003L02",
+      "legos": [
+        "S0001L02",
+        "S0003L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0003L02",
+        "target": "lo más a menudo posible",
+        "known": "as often as possible",
+        "index": 8,
+        "lego": [
+          "lo más a menudo posible",
+          "as often as possible"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "cómo hablar lo más a menudo posible",
+        "Quiero hablar español lo más a menudo posible",
+        "Estoy intentando hablar contigo lo más a menudo posible"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0004L01",
+      "legos": [
+        "S0001L01",
+        "S0004L01"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L01",
+        "target": "decir",
+        "known": "to say",
+        "index": 9,
+        "lego": [
+          "decir",
+          "to say"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "Quiero decir algo",
+        "Quiero decir",
+        "Quiero decir algo ahora"
+      ]
+    },
+    {
+      "edge": "S0002L01|||S0004L02",
+      "legos": [
+        "S0002L01",
+        "S0004L02"
+      ],
+      "lego1_data": {
+        "id": "S0002L01",
+        "target": "Estoy intentando",
+        "known": "I'm trying",
+        "index": 5,
+        "lego": [
+          "Estoy intentando",
+          "I'm trying"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "Estoy intentando aprender cómo decir algo",
+        "Estoy intentando decir algo en español",
+        "Estoy intentando decir algo en español"
+      ]
+    },
+    {
+      "edge": "S0003L01|||S0004L02",
+      "legos": [
+        "S0003L01",
+        "S0004L02"
+      ],
+      "lego1_data": {
+        "id": "S0003L01",
+        "target": "cómo",
+        "known": "how",
+        "index": 7,
+        "lego": [
+          "cómo",
+          "how"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "Estoy intentando aprender cómo decir algo",
+        "cómo decir algo",
+        "aprender cómo decir algo"
+      ]
+    },
+    {
+      "edge": "S0004L02|||S0004L03",
+      "legos": [
+        "S0004L02",
+        "S0004L03"
+      ],
+      "lego1_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L03",
+        "target": "en",
+        "known": "in",
+        "index": 11,
+        "lego": [
+          "en",
+          "in"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "Estoy intentando decir algo en español",
+        "Estoy intentando decir algo en español",
+        "cómo decir algo en español"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0004L03",
+      "legos": [
+        "S0001L01",
+        "S0004L03"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0004L03",
+        "target": "en",
+        "known": "in",
+        "index": 11,
+        "lego": [
+          "en",
+          "in"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "Quiero hablar en español contigo",
+        "Quiero hablar en español",
+        "Quiero hablar en español contigo"
+      ]
+    },
+    {
+      "edge": "S0004L02|||S0005L01",
+      "legos": [
+        "S0004L02",
+        "S0005L01"
+      ],
+      "lego1_data": {
+        "id": "S0004L02",
+        "target": "algo",
+        "known": "something",
+        "index": 10,
+        "lego": [
+          "algo",
+          "something"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L01",
+        "target": "Voy a",
+        "known": "I'm going to",
+        "index": 12,
+        "lego": [
+          "Voy a",
+          "I'm going to"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "Voy a decir algo en español",
+        "Voy a decir algo español",
+        "Voy a recordar cómo decir algo"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0005L03",
+      "legos": [
+        "S0001L03",
+        "S0005L03"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L03",
+        "target": "con",
+        "known": "with",
+        "index": 14,
+        "lego": [
+          "con",
+          "with"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "Quiero practicar español con alguien",
+        "practicar español con",
+        "Quiero hablar español con"
+      ]
+    },
+    {
+      "edge": "S0005L01|||S0005L04",
+      "legos": [
+        "S0005L01",
+        "S0005L04"
+      ],
+      "lego1_data": {
+        "id": "S0005L01",
+        "target": "Voy a",
+        "known": "I'm going to",
+        "index": 12,
+        "lego": [
+          "Voy a",
+          "I'm going to"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0005L04",
+        "target": "otra",
+        "known": "another",
+        "index": 15,
+        "lego": [
+          "otra",
+          "another"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "Voy a practicar con otra persona",
+        "Voy a practicar con otra",
+        "Voy a practicar hablar con otra persona"
+      ]
+    },
+    {
+      "edge": "S0001L03|||S0007L03",
+      "legos": [
+        "S0001L03",
+        "S0007L03"
+      ],
+      "lego1_data": {
+        "id": "S0001L03",
+        "target": "español",
+        "known": "Spanish",
+        "index": 2,
+        "lego": [
+          "español",
+          "Spanish"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0007L03",
+        "target": "hoy",
+        "known": "today",
+        "index": 21,
+        "lego": [
+          "hoy",
+          "today"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "Voy a hablar español contigo hoy",
+        "practicar español hoy",
+        "Voy a hablar español hoy"
+      ]
+    },
+    {
+      "edge": "S0001L01|||S0008L02",
+      "legos": [
+        "S0001L01",
+        "S0008L02"
+      ],
+      "lego1_data": {
+        "id": "S0001L01",
+        "target": "Quiero",
+        "known": "I want",
+        "index": 0,
+        "lego": [
+          "Quiero",
+          "I want"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0008L02",
+        "target": "lo que",
+        "known": "what",
+        "index": 23,
+        "lego": [
+          "lo que",
+          "what"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "Quiero recordar lo que voy a decir",
+        "Quiero decir lo que",
+        "Quiero recordar lo que quiero"
+      ]
+    },
+    {
+      "edge": "S0002L02|||S0010L04",
+      "legos": [
+        "S0002L02",
+        "S0010L04"
+      ],
+      "lego1_data": {
+        "id": "S0002L02",
+        "target": "aprender",
+        "known": "to learn",
+        "index": 6,
+        "lego": [
+          "aprender",
+          "to learn"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0010L04",
+        "target": "la frase",
+        "known": "the sentence",
+        "index": 29,
+        "lego": [
+          "la frase",
+          "the sentence"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "Quiero aprender la frase en español",
+        "aprender la frase",
+        "Quiero aprender la frase"
+      ]
+    },
+    {
+      "edge": "S0001L02|||S0011L04",
+      "legos": [
+        "S0001L02",
+        "S0011L04"
+      ],
+      "lego1_data": {
+        "id": "S0001L02",
+        "target": "hablar",
+        "known": "to speak",
+        "index": 1,
+        "lego": [
+          "hablar",
+          "to speak"
+        ]
+      },
+      "lego2_data": {
+        "id": "S0011L04",
+        "target": "termines",
+        "known": "you finish",
+        "index": 34,
+        "lego": [
+          "termines",
+          "you finish"
+        ]
+      },
+      "count": 8,
+      "examples": [
+        "Me gustaría poder hablar después de que termines",
+        "Me gustaría poder hablar después de que termines",
+        "Quiero hablar español después de que termines"
+      ]
+    }
+  ]
+}

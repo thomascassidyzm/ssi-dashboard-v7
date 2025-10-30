@@ -1,0 +1,62 @@
+[
+  ["S0001", ["我现在想和你说中文", "I want to speak Mandarin Chinese with you now."], [
+    ["S0001L01", "B", "我", "I"],
+    ["S0001L02", "B", "现在", "now"],
+    ["S0001L03", "B", "想", "want"],
+    ["S0001L04", "C", "和你说", "to speak with you", [["和", "with"], ["你", "you"], ["说", "speak"]]],
+    ["S0001L05", "B", "中文", "Mandarin Chinese"]
+  ]],
+  ["S0002", ["我在试着学习", "I'm trying to learn."], [
+    ["S0002L01", "B", "我", "I"],
+    ["S0002L02", "C", "在试着", "am trying", [["在", "am"], ["试着", "trying"]]],
+    ["S0002L03", "B", "学习", "to learn"]
+  ]],
+  ["S0003", ["怎么尽可能经常地说", "how to speak as often as possible."], [
+    ["S0003L01", "B", "怎么", "how to"],
+    ["S0003L02", "C", "尽可能经常地", "as often as possible", [["尽可能", "as possible"], ["经常地", "often"]]],
+    ["S0003L03", "B", "说", "speak"]
+  ]],
+  ["S0004", ["怎么用中文说什么", "how to say something in Mandarin Chinese"], [
+    ["S0004L01", "B", "怎么", "how to"],
+    ["S0004L02", "C", "用中文说", "say in Mandarin Chinese", [["用", "in"], ["中文", "Mandarin Chinese"], ["说", "say"]]],
+    ["S0004L03", "B", "什么", "something"]
+  ]],
+  ["S0005", ["我要和别人练习说", "I'm going to practise speaking with someone else."], [
+    ["S0005L01", "B", "我", "I"],
+    ["S0005L02", "B", "要", "am going to"],
+    ["S0005L03", "C", "和别人", "with someone else", [["和", "with"], ["别人", "someone else"]]],
+    ["S0005L04", "C", "练习说", "practise speaking", [["练习", "practise"], ["说", "speaking"]]]
+  ]],
+  ["S0006", ["我在试着记住一个词", "I'm trying to remember a word."], [
+    ["S0006L01", "B", "我", "I"],
+    ["S0006L02", "C", "在试着", "am trying", [["在", "am"], ["试着", "trying"]]],
+    ["S0006L03", "B", "记住", "to remember"],
+    ["S0006L04", "C", "一个词", "a word", [["一个", "a"], ["词", "word"]]]
+  ]],
+  ["S0007", ["我今天想尽力试试", "I want to try as hard as I can today."], [
+    ["S0007L01", "B", "我", "I"],
+    ["S0007L02", "B", "今天", "today"],
+    ["S0007L03", "B", "想", "want"],
+    ["S0007L04", "C", "尽力试试", "to try as hard as I can", [["尽力", "as hard as I can"], ["试试", "try"]]]
+  ]],
+  ["S0008", ["我要试着解释我的意思", "I'm going to try to explain what I mean."], [
+    ["S0008L01", "B", "我", "I"],
+    ["S0008L02", "C", "要试着", "am going to try", [["要", "am going to"], ["试着", "try"]]],
+    ["S0008L03", "B", "解释", "to explain"],
+    ["S0008L04", "C", "我的意思", "what I mean", [["我的", "my"], ["意思", "meaning"]]]
+  ]],
+  ["S0009", ["我现在会说一点中文", "I speak a little Mandarin Chinese now."], [
+    ["S0009L01", "B", "我", "I"],
+    ["S0009L02", "B", "现在", "now"],
+    ["S0009L03", "B", "会", "can"],
+    ["S0009L04", "B", "说", "speak"],
+    ["S0009L05", "C", "一点中文", "a little Mandarin Chinese", [["一点", "a little"], ["中文", "Mandarin Chinese"]]]
+  ]],
+  ["S0010", ["我不确定我能不能记住整个句子", "I'm not sure if I can remember the whole sentence."], [
+    ["S0010L01", "B", "我", "I"],
+    ["S0010L02", "C", "不确定", "am not sure", [["不", "not"], ["确定", "sure"]]],
+    ["S0010L03", "C", "我能不能", "if I can", [["我", "I"], ["能不能", "can or not"]]],
+    ["S0010L04", "B", "记住", "remember"],
+    ["S0010L05", "C", "整个句子", "the whole sentence", [["整个", "the whole"], ["句子", "sentence"]]]
+  ]]
+]

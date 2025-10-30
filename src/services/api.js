@@ -66,24 +66,16 @@ export default {
         // Fallback to static files if API unavailable
         console.log('[API] Server unavailable, using static files')
 
-        // List all known courses in vfs/courses directory
+        // List courses available in public/vfs (7 uploaded to S3, available as fallback)
         const courseCodes = [
-          'spa_for_eng_30',
-          'spa_for_eng',
-          'pol_for_eng',
-          'spa_for_eng_old',
-          'fra_for_eng',
-          'test_for_eng_5seeds',
-          'spa_for_eng_20seeds',
+          // Uploaded to S3 (have seed_pairs.json + lego_pairs.json)
           'cmn_for_eng',
           'ita_for_eng_10seeds',
-          'eus_for_eng_30seeds',
-          'ita_for_eng_10seeds_sonnet',
           'ita_for_eng_668seeds',
-          'gle_for_eng_30seeds',
-          'ita_for_eng_30seeds',
-          'cmn_for_eng_30seeds',
-          'mkd_for_eng_574seeds'
+          'spa_for_eng',
+          'spa_for_eng_20seeds',
+          'spa_for_eng_old',
+          'test_for_eng_5seeds'
         ]
         const courses = []
 
