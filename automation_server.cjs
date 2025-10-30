@@ -3426,9 +3426,19 @@ app.get('/api/courses/:courseCode/provenance/:seedId', async (req, res) => {
     const { courseCode, seedId } = req.params;
     const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
 
-    // Load translations
+    // Load translations - support both new and old formats
+    let translationsData;
     const translationsPath = path.join(coursePath, 'translations.json');
-    const translationsData = await fs.readJson(translationsPath);
+    const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
+
+    if (await fs.pathExists(translationsPath)) {
+      translationsData = await fs.readJson(translationsPath);
+    } else if (await fs.pathExists(seedPairsPath)) {
+      const seedPairsData = await fs.readJson(seedPairsPath);
+      translationsData = seedPairsData.translations;
+    } else {
+      return res.status(404).json({ error: 'No translation data found' });
+    }
 
     const translationPair = translationsData[seedId];
     if (!translationPair) {
@@ -3575,18 +3585,27 @@ app.put('/api/courses/:courseCode/translations/:uuid', async (req, res) => {
     console.log(`[API] Updating translation ${uuid} in ${courseCode}`);
     console.log(`[API] New values - source: "${source}", target: "${target}"`);
 
-    // NEW FORMAT: Read from translations.json
+    const seedId = uuid;
     const translationsPath = path.join(coursePath, 'translations.json');
+    const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
 
-    if (!await fs.pathExists(translationsPath)) {
-      return res.status(404).json({ error: 'translations.json not found' });
+    // Support both new format (translations.json) and old format (seed_pairs.json)
+    let useOldFormat = false;
+    let translationsData;
+    let fullData;
+
+    if (await fs.pathExists(translationsPath)) {
+      // New format: standalone translations.json
+      translationsData = await fs.readJson(translationsPath);
+    } else if (await fs.pathExists(seedPairsPath)) {
+      // Old format: seed_pairs.json with translations key
+      useOldFormat = true;
+      fullData = await fs.readJson(seedPairsPath);
+      translationsData = fullData.translations;
+    } else {
+      return res.status(404).json({ error: 'No translation data found' });
     }
 
-    // Load all translations
-    const translationsData = await fs.readJson(translationsPath);
-
-    // Find the seed (uuid is actually seed_id in new format)
-    const seedId = uuid;
     if (!translationsData[seedId]) {
       return res.status(404).json({ error: `Seed ${seedId} not found` });
     }
@@ -3595,10 +3614,15 @@ app.put('/api/courses/:courseCode/translations/:uuid', async (req, res) => {
     // Format: { "S0001": [target_phrase, known_phrase] }
     translationsData[seedId] = [target, source];
 
-    // Write back to translations.json
-    await fs.writeJson(translationsPath, translationsData, { spaces: 2 });
-
-    console.log(`[API] Successfully updated ${seedId} in translations.json`);
+    // Write back to appropriate file
+    if (useOldFormat) {
+      fullData.translations = translationsData;
+      await fs.writeJson(seedPairsPath, fullData, { spaces: 2 });
+      console.log(`[API] Successfully updated ${seedId} in seed_pairs.json`);
+    } else {
+      await fs.writeJson(translationsPath, translationsData, { spaces: 2 });
+      console.log(`[API] Successfully updated ${seedId} in translations.json`);
+    }
 
     // TODO: Optionally trigger LEGO regeneration here
     // For now, just mark that translation was edited
