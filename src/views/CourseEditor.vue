@@ -421,6 +421,11 @@
                             <label class="text-xs text-slate-400">FD Validated</label>
                           </div>
 
+                          <!-- DEBUG: Show lego type for verification -->
+                          <div class="text-xs text-slate-500 mb-2">
+                            Type: {{ lego.lego_type }} | Has componentization: {{ !!lego.componentization }}
+                          </div>
+
                           <!-- COMPONENTIZATION Editor (for COMPOSITE LEGOs) -->
                           <div v-if="lego.lego_type === 'COMPOSITE'" class="mt-3 pt-3 border-t border-purple-700/50 space-y-3">
                             <div>
@@ -1060,6 +1065,9 @@ function startEditingBreakdown(breakdown) {
     console.log(`[CourseEditor] Found ${composites.length} COMPOSITE LEGOs:`)
     composites.forEach(c => {
       console.log(`  ${c.lego_id}: componentization =`, c.componentization ? 'PRESENT' : 'MISSING')
+      if (c.componentization) {
+        console.log(`    Value:`, c.componentization)
+      }
     })
   }
 }
