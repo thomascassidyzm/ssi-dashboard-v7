@@ -24,24 +24,67 @@ You are one of 3 orchestrators processing a segment.
 
 ## 📚 BASKET GENERATION RULES
 
-**All basket generation rules are in the basket-generation-skill.**
+**Include this full prompt for each agent:**
 
-**Your agents MUST use the skill:**
-- `skills/basket-generation-skill/SKILL.md`
+### THE TASK
+Generate practice phrase baskets for each LEGO.
 
-**Do NOT repeat rules in agent prompts.** Simply tell them:
-```
-"Use the basket-generation-skill for all basket generation rules."
-```
+Each basket contains:
+- **E-phrases** (eternal): Natural sentences for spaced repetition
+- **D-phrases** (debut): Fragments extracted from e-phrases
 
-The skill covers:
-- GATE constraint (use complete LEGO pairs from prior positions)
-- Phrase length guidelines
-- Culminating LEGOs (seed first)
-- E-phrase generation (read vocab first, then assemble)
-- D-phrase extraction (mechanical)
-- Recency bias (30-50% recent vocab)
-- Output format
+### THE ABSOLUTE CONSTRAINT: GATE
+**LEGO #N can ONLY use vocabulary from LEGOs #1 to #(N-1)**
+
+This is non-negotiable. Everything else is secondary.
+
+Examples:
+- LEGO #1: Empty basket {} (no prior vocabulary)
+- LEGO #5: Max 5-6 word phrases (LEGOs #1-4 available)
+- LEGO #100: Can make 7-10 word phrases (99 LEGOs available)
+
+**If you can't make a good phrase within the vocabulary constraint, make a shorter phrase or leave the basket empty. NEVER use future vocabulary.**
+
+### THE WORKFLOW
+
+**STEP 1: Generate E-Phrases**
+
+Generate 3-5 natural, conversational sentences that:
+- Use ONLY vocabulary from prior LEGOs (GATE)
+- Include the operative LEGO (what's being taught)
+- Have perfect grammar in BOTH languages
+- Are things people actually say
+- Tile perfectly from LEGOs (no extra/missing words)
+
+**Recency bias** (for LEGOs #50+):
+- ~30-50% vocabulary from recent seeds (last 10 seeds)
+- ~50-70% from older seeds (foundational)
+
+**Culminating LEGOs** (last LEGO in seed):
+- E-phrase #1 MUST be the complete seed sentence
+
+**STEP 2: Extract D-Phrases (Mechanical)**
+
+From each e-phrase, extract expanding windows containing the operative LEGO:
+- All 2-LEGO windows containing operative
+- All 3-LEGO windows containing operative
+- All 4-LEGO windows containing operative
+- All 5-LEGO windows containing operative
+
+This is automatic - no thinking needed.
+
+### E-PHRASE QUALITY CHECKLIST
+
+Before accepting an e-phrase, verify:
+1. **GATE**: All LEGOs < current? (ABSOLUTE)
+2. **Grammar**: Perfect in BOTH languages? (ABSOLUTE)
+3. **Tiling**: Composes exactly from LEGOs? (ABSOLUTE)
+4. **Natural**: Something people actually say? (IMPORTANT)
+5. **Operative**: Contains the LEGO being taught? (ABSOLUTE)
+
+If all YES → accept. If any ABSOLUTE fails → reject.
+
+**Bottom line:** Generate natural phrases respecting GATE constraint. Extract fragments mechanically. Done.
 
 ---
 
@@ -91,15 +134,38 @@ You are Agent {N} for Phase 5 Orchestrator #{orch_id}, Segment {segment}.
 Your task: Generate baskets for these LEGOs: {lego_list}
 
 **Instructions:**
-1. Read the basket-generation-skill: skills/basket-generation-skill/SKILL.md
-2. Read lego_pairs.json: vfs/courses/{courseCode}/lego_pairs.json
-3. For each LEGO in your list:
-   - Follow the basket-generation-skill workflow
-   - Use complete LEGO pairs as chunks (never break them apart)
-   - Follow GATE constraint (only use prior LEGO pairs)
-   - Generate 3-5 e-phrases at appropriate length
-   - Extract d-phrases mechanically
-4. Write output: vfs/courses/{courseCode}/segment_{segment}/orch_{orch}/agent_{agent}_baskets.json
+1. Read lego_pairs.json: vfs/courses/{courseCode}/lego_pairs.json
+2. For each LEGO in your list, generate a basket following these rules:
+
+## THE ABSOLUTE CONSTRAINT: GATE
+**LEGO #N can ONLY use vocabulary from LEGOs #1 to #(N-1)**
+
+Never use future vocabulary. If you can't make a good phrase, make a shorter phrase or leave it empty.
+
+## THE WORKFLOW
+
+**Generate E-Phrases:** Create 3-5 natural, conversational sentences that:
+- Use ONLY vocabulary from prior LEGOs (GATE)
+- Include the operative LEGO being taught
+- Have perfect grammar in BOTH languages
+- Are things people actually say
+- Tile perfectly from LEGOs (no extra/missing words)
+
+For LEGOs #50+: Use ~30-50% vocabulary from recent seeds (last 10 seeds)
+
+For culminating LEGOs (last in seed): E-phrase #1 MUST be the complete seed sentence
+
+**Extract D-Phrases (Mechanical):** From each e-phrase, extract all 2-5 LEGO windows containing the operative LEGO.
+
+**Quality Check:**
+1. GATE: All LEGOs < current? (ABSOLUTE)
+2. Grammar: Perfect in BOTH languages? (ABSOLUTE)
+3. Tiling: Composes exactly from LEGOs? (ABSOLUTE)
+4. Natural: Something people actually say? (IMPORTANT)
+
+**Bottom line:** Generate natural phrases respecting GATE. Extract fragments mechanically.
+
+3. Write output to: vfs/courses/{courseCode}/segment_{segment}/orch_{orch}/agent_{agent}_baskets.json
 
 **Output format (compact JSON, one-line per basket):**
 ```json
