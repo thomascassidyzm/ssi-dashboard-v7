@@ -62,7 +62,7 @@ const PHASE_PROMPTS = {};
 
 // Phase intelligence files
 const phaseIntelligenceFiles = {
-  '1': 'docs/phase_intelligence/phase_1_seed_pairs.md',
+  '1': 'docs/phase_intelligence/phase_1_orchestrator.md',  // Use lightweight orchestrator (points to skills/)
   '3': 'docs/phase_intelligence/phase_3_lego_pairs.md',
   '5': 'docs/phase_intelligence/phase_5_lego_baskets.md',
   '5.5': 'docs/phase_intelligence/phase_5.5_basket_deduplication.md',
@@ -3103,16 +3103,16 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       return res.status(404).json({ error: 'Course not found' });
     }
 
-    // Check for required files (v7.7 format)
+    // Check for required files
     const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
-    const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
+    const legoBreakdownsPath = path.join(coursePath, 'LEGO_BREAKDOWNS_COMPLETE.json');
 
     if (!await fs.pathExists(seedPairsPath)) {
       return res.status(404).json({ error: 'seed_pairs.json not found' });
     }
 
-    if (!await fs.pathExists(legoPairsPath)) {
-      return res.status(404).json({ error: 'lego_pairs.json not found' });
+    if (!await fs.pathExists(legoBreakdownsPath)) {
+      return res.status(404).json({ error: 'LEGO_BREAKDOWNS_COMPLETE.json not found' });
     }
 
     // Load seed_pairs.json
@@ -3132,33 +3132,27 @@ app.get('/api/courses/:courseCode', async (req, res) => {
     // Sort by seed_id
     translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id));
 
-    // Load lego_pairs.json
-    const legoPairsData = await fs.readJson(legoPairsPath);
-    const seedsArray = legoPairsData.seeds || [];
+    // Load LEGO_BREAKDOWNS_COMPLETE.json
+    const legoBreakdownsData = await fs.readJson(legoBreakdownsPath);
+    const breakdowns = legoBreakdownsData.lego_breakdowns || [];
 
-    // Flatten seeds array into individual LEGO pairs for frontend
-    // Input: v7.7 format [[seed_id, [target, known], [[lego_id, type, t, k], ...]]]
-    // Output: flat array of individual LEGO pairs in frontend format
+    // Flatten breakdowns into individual LEGO pairs for frontend
     const legos = [];
-    for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
-      for (const legoEntry of legoArray) {
-        const [lego_id, type, target_chunk, known_chunk, feeders] = legoEntry;
-
-        // Convert single-letter type to full name for frontend compatibility
-        const lego_type = type === "B" ? "BASE" : type === "C" ? "COMPOSITE" : type === "F" ? "FEEDER" : type;
-
+    for (const breakdown of breakdowns) {
+      const seed_id = breakdown.seed_id;
+      for (const lego of breakdown.lego_pairs) {
         legos.push({
-          uuid: lego_id,
+          uuid: lego.lego_id,
           seed_id: seed_id,
-          text: `${known_chunk} = ${target_chunk}`,
-          lego_type: lego_type,
-          target_chunk: target_chunk,
-          known_chunk: known_chunk,
-          fd_validated: true, // Assume validated in v7.0
-          componentization: feeders ? `Has ${feeders.length} feeders` : null,
-          provenance: seed_id, // Provenance is the seed that generated this LEGO
-          fcfs_score: null, // Not calculated yet (Phase 4)
-          utility_score: null // Not calculated yet (Phase 4)
+          text: `${lego.known_chunk} = ${lego.target_chunk}`,
+          lego_type: lego.lego_type,
+          target_chunk: lego.target_chunk,
+          known_chunk: lego.known_chunk,
+          fd_validated: lego.fd_validated || false,
+          componentization: lego.componentization || null,
+          provenance: seed_id,
+          fcfs_score: null,
+          utility_score: null
         });
       }
     }
@@ -3191,44 +3185,15 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       known_language_name: getLanguageName(match ? match[2] : 'unk')
     };
 
-    // Transform v7.7 format to CourseEditor breakdown format
-    // Input: [[seed_id, [target, known], [[lego_id, type, t, k], ...]]]
-    // Output: [{ seed_id, original_target, original_known, lego_pairs: [...], feeder_pairs: [...] }]
-    const legoBreakdowns = seedsArray.map(([seed_id, [seed_target, seed_known], legoArray]) => {
-      const lego_pairs = [];
-      const feeder_pairs = [];
-
-      for (const legoEntry of legoArray) {
-        const [lego_id, type, target_chunk, known_chunk, componentization] = legoEntry;
-        const lego_type = type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type;
-
-        if (lego_type === 'FEEDER') {
-          feeder_pairs.push({
-            feeder_id: lego_id,
-            parent_lego_id: null, // Would need to track this in v7.7 format
-            target_chunk,
-            known_chunk
-          });
-        } else {
-          lego_pairs.push({
-            lego_id,
-            lego_type,
-            target_chunk,
-            known_chunk,
-            componentization: componentization || null,
-            fd_validated: true
-          });
-        }
-      }
-
-      return {
-        seed_id,
-        original_target: seed_target,
-        original_known: seed_known,
-        lego_pairs,
-        feeder_pairs
-      };
-    });
+    // Transform LEGO_BREAKDOWNS_COMPLETE.json to CourseEditor format
+    // Map to add original_target and original_known for compatibility
+    const legoBreakdowns = breakdowns.map(breakdown => ({
+      seed_id: breakdown.seed_id,
+      original_target: breakdown.target_sentence,
+      original_known: breakdown.known_sentence,
+      lego_pairs: breakdown.lego_pairs,
+      feeder_pairs: breakdown.feeder_pairs || []
+    }));
 
     console.log(`[API] Loaded course ${courseCode}: ${translations.length} translations, ${legos.length} LEGO pairs, ${legoBreakdowns.length} breakdowns`);
 
