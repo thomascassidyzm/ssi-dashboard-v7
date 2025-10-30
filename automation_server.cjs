@@ -5099,10 +5099,20 @@ app.post('/api/storage/sync/:courseCode', async (req, res) => {
     // Find all JSON files (no required files check - sync any course, even WIP)
     const pattern = path.join(coursePath, '**', '*.json');
     const glob = require('glob');
-    const files = glob.sync(pattern);
+    let files = glob.sync(pattern);
 
+    // If empty directory, create placeholder file
     if (files.length === 0) {
-      return res.status(400).json({ error: 'No JSON files found in course directory' });
+      const placeholderPath = path.join(coursePath, '_course_placeholder.json');
+      const placeholderContent = {
+        course_code: courseCode,
+        created: new Date().toISOString(),
+        status: 'placeholder',
+        note: 'This is a placeholder file for an empty course directory. Delete when adding real content.'
+      };
+      await fs.writeJson(placeholderPath, placeholderContent, { spaces: 2 });
+      files = [placeholderPath];
+      console.log(`📝 Created placeholder for empty course: ${courseCode}`);
     }
 
     let uploaded = 0;

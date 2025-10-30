@@ -112,14 +112,15 @@
               <div class="flex gap-2">
                 <button
                   @click="syncCourse(course.code)"
-                  :disabled="course.syncing || !course.hasRequiredFiles"
+                  :disabled="course.syncing"
                   class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded transition-colors text-sm"
+                  :title="course.fileCount === 0 ? 'Create placeholder directory in S3' : 'Upload ' + course.fileCount + ' files to S3'"
                 >
                   {{ course.syncing ? 'Syncing...' : 'Upload to S3' }}
                 </button>
                 <button
                   @click="downloadFromS3(course.code)"
-                  :disabled="course.downloading || course.syncStatus !== 'in_s3'"
+                  :disabled="course.downloading || !(course.syncStatus === 'in_s3' || course.syncStatus === 'in_s3_wip')"
                   class="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-800 disabled:text-slate-600 text-white rounded transition-colors text-sm"
                 >
                   {{ course.downloading ? 'Downloading...' : 'Download from S3' }}
@@ -147,9 +148,14 @@
               </div>
             </div>
 
-            <!-- Warning if missing required files -->
-            <div v-if="!course.hasRequiredFiles" class="mt-3 text-yellow-400 text-sm">
-              ⚠️ Missing seed_pairs.json or lego_pairs.json - course cannot be synced
+            <!-- Info badge for WIP courses -->
+            <div v-if="!course.hasRequiredFiles && course.fileCount > 0" class="mt-3 text-blue-400 text-sm flex items-center gap-2">
+              <span>📝</span>
+              <span>Work-in-progress course ({{ course.fileCount }} {{ course.fileCount === 1 ? 'file' : 'files' }}) - can sync and collaborate</span>
+            </div>
+            <div v-if="course.fileCount === 0" class="mt-3 text-slate-500 text-sm flex items-center gap-2">
+              <span>📂</span>
+              <span>Empty course directory - ready for initial files</span>
             </div>
           </div>
         </div>
