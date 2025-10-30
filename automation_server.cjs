@@ -4812,6 +4812,229 @@ app.delete('/api/vfs/courses/:code/:file(*)', async (req, res) => {
 });
 
 // =============================================================================
+// STORAGE MANAGEMENT API - S3 Sync Operations
+// =============================================================================
+
+/**
+ * GET /api/storage/test-s3
+ * Test S3 connection and return bucket info
+ */
+app.get('/api/storage/test-s3', async (req, res) => {
+  try {
+    await s3.listObjectsV2({ Bucket: S3_BUCKET, MaxKeys: 1 }).promise();
+    res.json({
+      connected: true,
+      bucket: S3_BUCKET,
+      region: AWS_REGION
+    });
+  } catch (error) {
+    res.status(500).json({
+      connected: false,
+      error: error.message
+    });
+  }
+});
+
+/**
+ * GET /api/storage/courses
+ * List all courses with sync status (local VFS vs S3)
+ */
+app.get('/api/storage/courses', async (req, res) => {
+  try {
+    // Get courses from local VFS
+    const localDirs = await fs.readdir(CONFIG.VFS_ROOT);
+    const localCourses = [];
+
+    for (const dir of localDirs) {
+      const coursePath = path.join(CONFIG.VFS_ROOT, dir);
+      const stats = await fs.stat(coursePath);
+
+      if (!stats.isDirectory() || dir === '.DS_Store') continue;
+
+      const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
+      const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
+      const hasRequiredFiles = await fs.pathExists(seedPairsPath) && await fs.pathExists(legoPairsPath);
+
+      // Calculate directory size
+      let size = 0;
+      let fileCount = 0;
+      if (hasRequiredFiles) {
+        const files = await fs.readdir(coursePath, { recursive: true });
+        for (const file of files) {
+          try {
+            const filePath = path.join(coursePath, file);
+            const fileStat = await fs.stat(filePath);
+            if (fileStat.isFile() && file.endsWith('.json')) {
+              size += fileStat.size;
+              fileCount++;
+            }
+          } catch (err) {
+            // Skip files that can't be accessed
+          }
+        }
+      }
+
+      localCourses.push({
+        code: dir,
+        hasRequiredFiles,
+        fileCount,
+        size,
+        syncStatus: 'unknown'
+      });
+    }
+
+    // Check S3 for each course
+    const s3Result = await s3.listObjectsV2({
+      Bucket: S3_BUCKET,
+      Prefix: 'courses/',
+      Delimiter: '/'
+    }).promise();
+
+    const s3Courses = s3Result.CommonPrefixes
+      ? s3Result.CommonPrefixes.map(p => p.Prefix.replace('courses/', '').replace('/', ''))
+      : [];
+
+    // Update sync status
+    for (const course of localCourses) {
+      if (!course.hasRequiredFiles) {
+        course.syncStatus = 'incomplete';
+      } else if (s3Courses.includes(course.code)) {
+        course.syncStatus = 'in_s3';
+      } else {
+        course.syncStatus = 'not_synced';
+      }
+    }
+
+    res.json({ courses: localCourses });
+  } catch (error) {
+    console.error('❌ Error listing courses:', error.message);
+    res.status(500).json({ error: 'Failed to list courses', detail: error.message });
+  }
+});
+
+/**
+ * POST /api/storage/sync/:courseCode
+ * Upload a course to S3
+ */
+app.post('/api/storage/sync/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+
+    if (!await fs.pathExists(coursePath)) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    // Check required files
+    const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
+    const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
+
+    if (!await fs.pathExists(seedPairsPath) || !await fs.pathExists(legoPairsPath)) {
+      return res.status(400).json({ error: 'Course missing required files (seed_pairs.json, lego_pairs.json)' });
+    }
+
+    // Find all JSON files
+    const pattern = path.join(coursePath, '**', '*.json');
+    const glob = require('glob');
+    const files = glob.sync(pattern);
+
+    let uploaded = 0;
+    const errors = [];
+
+    for (const filePath of files) {
+      const relativePath = path.relative(CONFIG.VFS_ROOT, filePath);
+      const s3Key = `courses/${relativePath.replace(/\\/g, '/')}`;
+
+      try {
+        const content = await fs.readFile(filePath, 'utf8');
+
+        await s3.putObject({
+          Bucket: S3_BUCKET,
+          Key: s3Key,
+          Body: content,
+          ContentType: 'application/json'
+        }).promise();
+
+        uploaded++;
+      } catch (error) {
+        errors.push({ file: relativePath, error: error.message });
+      }
+    }
+
+    console.log(`✅ Synced ${courseCode} to S3: ${uploaded} files`);
+
+    res.json({
+      success: true,
+      courseCode,
+      filesUploaded: uploaded,
+      errors: errors.length > 0 ? errors : undefined
+    });
+  } catch (error) {
+    console.error(`❌ Sync error for ${courseCode}:`, error.message);
+    res.status(500).json({ error: 'Sync failed', detail: error.message });
+  }
+});
+
+/**
+ * POST /api/storage/download/:courseCode
+ * Download a course from S3 to local VFS
+ */
+app.post('/api/storage/download/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+
+    // List all files for this course in S3
+    const s3Objects = await s3.listObjectsV2({
+      Bucket: S3_BUCKET,
+      Prefix: `courses/${courseCode}/`
+    }).promise();
+
+    if (!s3Objects.Contents || s3Objects.Contents.length === 0) {
+      return res.status(404).json({ error: 'Course not found in S3' });
+    }
+
+    await fs.ensureDir(coursePath);
+
+    let downloaded = 0;
+    const errors = [];
+
+    for (const obj of s3Objects.Contents) {
+      const key = obj.Key;
+      const relativePath = key.replace(`courses/${courseCode}/`, '');
+      const localPath = path.join(coursePath, relativePath);
+
+      try {
+        // Ensure directory exists
+        await fs.ensureDir(path.dirname(localPath));
+
+        // Download file
+        const s3Object = await s3.getObject({ Bucket: S3_BUCKET, Key: key }).promise();
+        await fs.writeFile(localPath, s3Object.Body);
+
+        downloaded++;
+      } catch (error) {
+        errors.push({ file: key, error: error.message });
+      }
+    }
+
+    console.log(`✅ Downloaded ${courseCode} from S3: ${downloaded} files`);
+
+    res.json({
+      success: true,
+      courseCode,
+      filesDownloaded: downloaded,
+      errors: errors.length > 0 ? errors : undefined
+    });
+  } catch (error) {
+    console.error(`❌ Download error for ${courseCode}:`, error.message);
+    res.status(500).json({ error: 'Download failed', detail: error.message });
+  }
+});
+
+// =============================================================================
 // VALIDATION API
 // =============================================================================
 

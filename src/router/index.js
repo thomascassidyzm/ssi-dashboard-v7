@@ -8,6 +8,7 @@ import CourseGeneration from '../views/CourseGeneration.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
 import CourseCompilation from '../views/CourseCompilation.vue'
+import CourseStorage from '../views/CourseStorage.vue'
 import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
@@ -36,6 +37,12 @@ const routes = [
     path: '/courses',
     name: 'CourseBrowser',
     component: CourseBrowser
+  },
+  {
+    path: '/storage',
+    name: 'CourseStorage',
+    component: CourseStorage,
+    meta: { title: 'Course Storage Management' }
   },
   {
     path: '/courses/:courseCode',
