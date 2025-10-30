@@ -19,6 +19,9 @@
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
+      <!-- Architecture Visualization -->
+      <SkillsArchitectureVisualizer class="mb-8" />
+
       <!-- Loading State -->
       <div v-if="loading" class="text-center py-12">
         <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
@@ -178,6 +181,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
+import SkillsArchitectureVisualizer from '../components/SkillsArchitectureVisualizer.vue'
 
 const loading = ref(true)
 const error = ref(null)

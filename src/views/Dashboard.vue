@@ -58,6 +58,11 @@
         </div>
       </section>
 
+      <!-- Skills Architecture Visualization -->
+      <section class="mt-12">
+        <SkillsArchitectureVisualizer />
+      </section>
+
       <!-- Reference Materials -->
       <section>
         <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
@@ -141,5 +146,7 @@
 </template>
 
 <script setup>
+import SkillsArchitectureVisualizer from '../components/SkillsArchitectureVisualizer.vue'
+
 console.log('🚀 Dashboard View Loaded')
 </script>
