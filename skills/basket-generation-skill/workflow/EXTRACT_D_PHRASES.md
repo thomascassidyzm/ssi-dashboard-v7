@@ -6,98 +6,105 @@ D-phrases are **debut phrases** - scaffolding fragments extracted from e-phrases
 
 Mechanically extract expanding windows (2-5 LEGOs) containing the operative LEGO from each e-phrase.
 
-**This is automatic. No thinking needed.**
+## Key Insight: You Already Know the LEGO Sequence
 
-## The Algorithm
+**You just assembled the e-phrase from LEGOs. You know exactly which LEGOs you used.**
 
-```javascript
-function extractDPhrases(ePhrases, operativeLegoId) {
-  const dPhrases = { "2": [], "3": [], "4": [], "5": [] };
-
-  for (const ePhrase of ePhrases) {
-    // Parse e-phrase into LEGO sequence
-    const legoSequence = parseIntoLegos(ePhrase);
-
-    // Extract all windows of size 2, 3, 4, 5
-    for (let windowSize = 2; windowSize <= 5; windowSize++) {
-      for (let start = 0; start <= legoSequence.length - windowSize; start++) {
-        const window = legoSequence.slice(start, start + windowSize);
-
-        // Only keep windows containing the operative LEGO
-        if (window.includes(operativeLegoId)) {
-          const phrase = reconstructPhrase(window);
-          dPhrases[windowSize.toString()].push(phrase);
-        }
-      }
-    }
-  }
-
-  // Remove duplicates
-  for (let size = 2; size <= 5; size++) {
-    dPhrases[size.toString()] = deduplicate(dPhrases[size.toString()]);
-  }
-
-  return dPhrases;
-}
+When you created:
+```
+E-phrase: "Si puedes hablar más lentamente eso sería excelente"
 ```
 
-## Example
-
-### E-phrase:
+You assembled it from these LEGOs:
 ```
-"Quería preguntarte algo importante sobre tu trabajo ayer."
-(I wanted to ask you something important about your work yesterday.)
+[Si] [puedes] [hablar] [más] [lentamente] [eso] [sería] [excelente]
 ```
 
-### Operative LEGO:
+**You already have the LEGO sequence. D-phrase extraction is trivial - just take windows from that sequence.**
+
+**This is automatic. No parsing, no greedy search needed.**
+
+## The Process (Trivial)
+
+**Step 1**: For each e-phrase, recall the LEGO sequence you used to build it
+
+**Step 2**: Find the operative LEGO position in that sequence
+
+**Step 3**: Extract all windows (2-5 LEGOs) containing the operative LEGO
+
+**Step 4**: Reconstruct the Spanish/English text for each window
+
+**That's it. You're just taking windows from a sequence you already assembled.**
+
+### E-phrase you just generated:
 ```
-"ayer" (yesterday) - position 7
+"Si puedes hablar más lentamente eso sería excelente"
+(If you can speak more slowly that would be great)
 ```
 
-### LEGO sequence:
+### LEGO sequence you used:
 ```
-1. Quería
-2. preguntarte
-3. algo
-4. importante
-5. sobre
-6. tu trabajo
-7. ayer  ← operative
+Position: 0    1       2       3    4           5    6      7
+LEGO:    [Si] [puedes] [hablar] [más] [lentamente] [eso] [sería] [excelente]
+Spanish: Si    puedes   hablar   más   lentamente   eso   sería   excelente
+English: If    you can  speak    more  slowly       that  would   great
 ```
 
-### Extracted d-phrases:
+### Operative LEGO: "Si" (If) at position 0
 
-**2-LEGO windows containing "ayer":**
-```
-6-7: "tu trabajo ayer" (your work yesterday)
-```
+### Extract windows containing position 0:
 
-**3-LEGO windows containing "ayer":**
-```
-5-6-7: "sobre tu trabajo ayer" (about your work yesterday)
-```
+**2-LEGO windows:**
+- Positions 0-1: `[Si, puedes]` → "Si puedes" / "If you can"
 
-**4-LEGO windows containing "ayer":**
-```
-4-5-6-7: "importante sobre tu trabajo ayer" (important about your work yesterday)
-```
+**3-LEGO windows:**
+- Positions 0-2: `[Si, puedes, hablar]` → "Si puedes hablar" / "If you can speak"
 
-**5-LEGO windows containing "ayer":**
-```
-3-4-5-6-7: "algo importante sobre tu trabajo ayer" (something important about your work yesterday)
-```
+**4-LEGO windows:**
+- Positions 0-3: `[Si, puedes, hablar, más]` → "Si puedes hablar más" / "If you can speak more"
+
+**5-LEGO windows:**
+- Positions 0-4: `[Si, puedes, hablar, más, lentamente]` → "Si puedes hablar más lentamente" / "If you can speak more slowly"
 
 ### Result:
 ```json
 {
   "d": {
-    "2": [["tu trabajo ayer", "your work yesterday"]],
-    "3": [["sobre tu trabajo ayer", "about your work yesterday"]],
-    "4": [["importante sobre tu trabajo ayer", "important about your work yesterday"]],
-    "5": [["algo importante sobre tu trabajo ayer", "something important about your work yesterday"]]
+    "2": [["Si puedes", "If you can"]],
+    "3": [["Si puedes hablar", "If you can speak"]],
+    "4": [["Si puedes hablar más", "If you can speak more"]],
+    "5": [["Si puedes hablar más lentamente", "If you can speak more slowly"]]
   }
 }
 ```
+
+## Another Example (Operative in Middle)
+
+### E-phrase you assembled:
+```
+"Quería preguntarte algo importante sobre tu trabajo ayer"
+```
+
+### LEGO sequence you used:
+```
+Position: 0       1            2    3          4      5         6
+LEGO:    [Quería] [preguntarte] [algo] [importante] [sobre] [tu trabajo] [ayer]
+                                                                          ↑ operative (position 6)
+```
+
+### Extract windows containing position 6:
+
+**2-LEGO windows:**
+- Positions 5-6: `[tu trabajo, ayer]` → "tu trabajo ayer" / "your work yesterday"
+
+**3-LEGO windows:**
+- Positions 4-6: `[sobre, tu trabajo, ayer]` → "sobre tu trabajo ayer" / "about your work yesterday"
+
+**4-LEGO windows:**
+- Positions 3-6: `[importante, sobre, tu trabajo, ayer]` → "importante sobre tu trabajo ayer" / "important about your work yesterday"
+
+**5-LEGO windows:**
+- Positions 2-6: `[algo, importante, sobre, tu trabajo, ayer]` → "algo importante sobre tu trabajo ayer" / "something important about your work yesterday"
 
 ## Complete Example
 

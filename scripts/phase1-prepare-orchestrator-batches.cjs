@@ -2,27 +2,29 @@
 /**
  * Phase 1: Prepare Orchestrator Batches
  *
- * Divides 668 canonical translations into 5 equal chunks for parallel orchestration.
+ * Divides 668 canonical translations into 3 equal chunks for orchestration.
  * Each chunk will be processed by one orchestrator spawning 10 sub-agents.
  *
  * Strategy:
- * - 5 orchestrators × 10 sub-agents = 50 concurrent agents
- * - Each orchestrator handles ~134 seeds
- * - Each sub-agent translates ~13-14 seeds
+ * - 3 orchestrators × 10 sub-agents = 30 concurrent agents (safe concurrency)
+ * - Each orchestrator handles ~223 seeds (668 ÷ 3)
+ * - Each sub-agent translates ~22-23 seeds (223 ÷ 10)
+ * - Total capacity: Can handle up to 750 seeds if needed (3 × 10 × 25)
  */
 
 const fs = require('fs');
 const path = require('path');
 
 const courseCode = process.argv[2];
-const numOrchestrators = parseInt(process.argv[3]) || 5;
+const numOrchestrators = parseInt(process.argv[3]) || 3;  // Default to 3 (max safe concurrency)
 const startSeed = parseInt(process.argv[4]) || 1;
 const endSeed = parseInt(process.argv[5]) || null; // null means "all seeds"
 
 if (!courseCode) {
   console.error('Usage: node phase1-prepare-orchestrator-batches.cjs <course_code> [num_orchestrators] [startSeed] [endSeed]');
-  console.error('Example: node phase1-prepare-orchestrator-batches.cjs spa_for_eng 5 1 668');
-  console.error('Example: node phase1-prepare-orchestrator-batches.cjs spa_for_eng 5 1 30  # Test with 30 seeds');
+  console.error('Example: node phase1-prepare-orchestrator-batches.cjs spa_for_eng 3 1 668  # Default: 3 orchestrators');
+  console.error('Example: node phase1-prepare-orchestrator-batches.cjs spa_for_eng 3 1 30   # Test with 30 seeds');
+  console.error('WARNING: Max 3 orchestrators recommended (30 concurrent agents). More may crash your system.');
   process.exit(1);
 }
 
@@ -61,41 +63,39 @@ if (!fs.existsSync(orchestratorDir)) {
 const chunkSize = Math.ceil(canonicalSeeds.length / numOrchestrators);
 console.log(`Seeds per orchestrator: ~${chunkSize}\n`);
 
-// Divide into chunks
+// Divide into chunks (just ranges, not actual seed data)
 for (let i = 0; i < numOrchestrators; i++) {
   const startIdx = i * chunkSize;
   const endIdx = Math.min((i + 1) * chunkSize, canonicalSeeds.length);
   const chunk = canonicalSeeds.slice(startIdx, endIdx);
 
+  const startSeedNum = parseInt(chunk[0].seed_id.replace('S', '').padStart(4, '0'));
+  const endSeedNum = parseInt(chunk[chunk.length - 1].seed_id.replace('S', '').padStart(4, '0'));
+
+  // Minimal batch file - just the range, not all the seed data!
   const orchestratorBatch = {
     orchestrator_id: `phase1_orch_${String(i + 1).padStart(2, '0')}`,
     chunk_number: i + 1,
     total_chunks: numOrchestrators,
     course_code: courseCode,
 
-    seeds: chunk.map(seed => ({
-      seed_id: seed.seed_id,
-      canonical_id: seed.canonical_id,
-      source: seed.source
-    })),
-
-    metadata: {
-      total_seeds: chunk.length,
-      seed_range: `${chunk[0].seed_id} - ${chunk[chunk.length - 1].seed_id}`,
-      agents_to_spawn: 10,
-      seeds_per_agent: Math.ceil(chunk.length / 10)
+    // Just the range - orchestrator fetches seeds from API
+    seed_range: {
+      start: startSeedNum,
+      end: endSeedNum,
+      total: chunk.length
     },
 
-    instructions: {
-      task: "Translate canonical seeds using Phase 1 intelligence",
-      intelligence_url: "GET /api/phase-intelligence/1",
-      output_file: `chunk_${String(i + 1).padStart(2, '0')}.json`,
-      validation: [
-        "Apply TWO ABSOLUTE RULES (never change meaning, prefer cognates)",
-        "Maintain Zero Variation in seeds 1-100",
-        "Ensure grammatical perfection in both languages",
-        "Validate tiling and functional determinism"
-      ]
+    // Where to fetch seeds from
+    api: {
+      seeds_endpoint: "https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/seeds",
+      fetch_params: `?start=${startSeedNum}&end=${endSeedNum}`
+    },
+
+    config: {
+      agents_to_spawn: 10,
+      seeds_per_agent: Math.ceil(chunk.length / 10),
+      output_file: `chunk_${String(i + 1).padStart(2, '0')}.json`
     }
   };
 
@@ -103,7 +103,7 @@ for (let i = 0; i < numOrchestrators; i++) {
   fs.writeFileSync(batchFile, JSON.stringify(orchestratorBatch, null, 2));
 
   console.log(`✓ Created orchestrator_batch_${String(i + 1).padStart(2, '0')}.json`);
-  console.log(`  Seeds: ${chunk.length} (${chunk[0].seed_id} - ${chunk[chunk.length - 1].seed_id})`);
+  console.log(`  Seed range: ${startSeedNum}-${endSeedNum} (${chunk.length} seeds)`);
 }
 
 // Create manifest

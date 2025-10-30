@@ -108,18 +108,16 @@ function generateValidatorPrompt(courseCode) {
 
   return `You are the Phase 1 Validator for ${courseCode}.
 
-Your task: Ensure vocabulary consistency across all 668 seeds from 5 orchestrator chunks.
+Your task: Ensure vocabulary consistency across all 668 seeds from 3 orchestrator chunks.
 
 **CRITICAL: DO NOT write Python/JavaScript scripts to do validation work.**
 **YOU are the intelligent validator. Use your reasoning + tools (Read, Write) directly.**
 **Scripts delegate intelligence to code - we want agent-native validation.**
 
-1. Read all 5 chunk files:
+1. Read all 3 chunk files:
    - vfs/courses/${courseCode}/orchestrator_batches/phase1/chunk_01.json
    - vfs/courses/${courseCode}/orchestrator_batches/phase1/chunk_02.json
    - vfs/courses/${courseCode}/orchestrator_batches/phase1/chunk_03.json
-   - vfs/courses/${courseCode}/orchestrator_batches/phase1/chunk_04.json
-   - vfs/courses/${courseCode}/orchestrator_batches/phase1/chunk_05.json
 
 2. Read Phase 1 validator intelligence: docs/phase_intelligence/phase_1_validator.md
 
@@ -221,7 +219,7 @@ Before running any phase, check if it's already complete:
 **Start from the first incomplete phase.** Don't regenerate completed work!
 
 **Architecture:**
-- 5 orchestrators × 10 sub-agents = 50 concurrent agents per phase
+- 3 orchestrators × 10 sub-agents = 30 concurrent agents per phase (safe concurrency)
 - 30-second delays between orchestrator spawns (prevents iTerm2 overload)
 - Preparation scripts before each phase
 - Merge scripts after chunk completion
@@ -234,12 +232,12 @@ Before running any phase, check if it's already complete:
 4. **IMMEDIATELY start monitoring** for chunk completion (don't wait for all orchestrators to spawn):
    - Check every 30 seconds using Glob tool: vfs/courses/{course}/orchestrator_batches/phase*/chunk_*.json
    - Track timestamps of each chunk as it appears
-   - Report progress: "Chunks: 1,2 complete (2/5), waiting for 3,4,5..."
+   - Report progress: "Chunks: 1,2 complete (2/3), waiting for 3..."
    - Use DIFFERENTIAL LOGIC for failure detection:
      * If N-1 chunks complete within 3-5 min window
      * And 1 chunk is 5+ min behind the last completion
      * → Failed spawn, retry immediately (don't wait 10-15 min)
-   - Example: chunks 1,2,3,5 complete at 21:29-21:32, chunk 4 missing at 21:37 → retry chunk 4 now
+   - Example: chunks 1,3 complete at 21:29-21:32, chunk 2 missing at 21:37 → retry chunk 2 now
    - Continuous 30s polling allows fast detection (within 5-6 minutes of failure vs 10-15 min)
 5. When all chunks complete:
    - Run merge/validator scripts via Bash tool
@@ -258,7 +256,7 @@ Before running any phase, check if it's already complete:
          return id of newWindow
      end tell')
      \`\`\`
-   - Track all window IDs: \`window_ids="id1 id2 id3 id4 id5"\`
+   - Track all window IDs: \`window_ids="id1 id2 id3"\`
    - After validation completes, **FIRST kill the Claude processes**, then close windows:
      \`\`\`bash
      # Find and kill Claude PIDs in this course directory
@@ -285,9 +283,9 @@ Before running any phase, check if it's already complete:
 \`\`\`
 Loop every 30 seconds:
   1. Count chunks: ls vfs/courses/{course}/orchestrator_batches/phase1/chunk_*.json | wc -l
-  2. If all 5 present → proceed to merge
-  3. If <5 present → check differential timing → retry outliers if needed
-  4. Report: "⏳ Phase 1: 3/5 chunks complete (waiting 2 min)"
+  2. If all 3 present → proceed to merge
+  3. If <3 present → check differential timing → retry outliers if needed
+  4. Report: "⏳ Phase 1: 2/3 chunks complete (waiting 2 min)"
 \`\`\`
 
 **CRITICAL: How to spawn orchestrators in iTerm2:**
@@ -328,15 +326,16 @@ end tell'
 \`\`\`
 You are Phase 1 Orchestrator #N for ${courseCode}.
 
-Your task: Translate ~134 canonical sentences using 10 sub-agents.
+Your task: Translate ~223 canonical sentences using 10 sub-agents.
 
 1. Read batch: vfs/courses/${courseCode}/orchestrator_batches/phase1/orchestrator_batch_0N.json
 2. Read intelligence: docs/phase_intelligence/phase_1_orchestrator.md
-3. Divide work among 10 sub-agents
-4. Spawn all 10 using Task tool in parallel (one message)
-5. Validate outputs
-6. Write chunk: vfs/courses/${courseCode}/orchestrator_batches/phase1/chunk_0N.json
-7. Report completion
+3. Fetch seeds from API (batch contains range, not duplicate data)
+4. Divide work among 10 sub-agents (~22-23 seeds each)
+5. Spawn all 10 using Task tool in parallel (one message)
+6. Validate outputs
+7. Write chunk: vfs/courses/${courseCode}/orchestrator_batches/phase1/chunk_0N.json
+8. Clean up iTerm2 windows (kill sub-agent windows)
 
 Use extended thinking. Follow validation rules.
 \`\`\`

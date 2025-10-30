@@ -14,56 +14,98 @@ Generate 3-5 natural, conversational sentences that:
 
 ## Process
 
-### Step 1: Determine available vocabulary
+### STEP 0: Identify Your Vocabulary Window (MANDATORY FIRST STEP)
 
-```javascript
-const legoId = "S0030L04";
-const position = canonical_order.indexOf(legoId);  // e.g., 126
-const availableLegos = canonical_order.slice(0, position);  // LEGOs #1-125
+Before generating ANY phrases, read what LEGO pairs you have available:
+
+**For current LEGO at position N:**
+
+1. **Read lego_pairs.json** - get ALL LEGO pairs from positions 1 to (N-1)
+2. **Total available**: Complete LEGO pairs (target/known chunks) from LEGOs 1 to (N-1)
+3. **Recency window**: Last 20 LEGO pairs (positions N-20 to N-1)
+4. **Foundational**: Everything before that (positions 1 to N-21)
+
+**Example for S0030L01 (position 123):**
+```
+Total available: LEGO pairs from positions 1-122
+Recency window: LEGO pairs 103-122 (last 20)
+Foundational: LEGO pairs 1-102
+
+Available chunks include:
+- "Quería" / "I wanted" (S0020L01)
+- "preguntarte" / "to ask you" (S0045L02)
+- "algo" / "something" (S0012L03)
+- "importante" / "important" (S0035L01)
+etc.
 ```
 
-### Step 2: Determine target phrase length
+**Critical**: You can ONLY use these complete LEGO pairs as chunks. Don't break them into component words (unless those words are also separate LEGOs).
+
+### STEP 1: Determine Target Phrase Length
 
 Use [PHRASE_LENGTH.md](../rules/PHRASE_LENGTH.md):
 
-- 100+ LEGOs available → 7-10 words
+- 100+ LEGOs available → **7-10 words**
 - 51-100 LEGOs → 6-8 words
 - 21-50 LEGOs → 5-6 words
 - 6-20 LEGOs → 3-4 words
 - 0-5 LEGOs → 0-2 words
 
-### Step 3: Generate candidate phrases
+### STEP 2: Assemble Phrases from Available LEGO Pairs
 
-Create 5-7 candidate phrases:
+**Composition target:**
+- 30-50% from recency window (last 20 LEGO pairs)
+- 50-70% from foundational (earlier LEGO pairs)
+
+**Generate 3-5 natural phrases by ASSEMBLING from complete LEGO pairs:**
 
 ```
-For LEGO "ayer" (yesterday) with 125 available LEGOs:
+For LEGO "ayer" (yesterday) at position 126:
 
-Candidates:
-1. "Quería preguntarte algo ayer." (5 words - TOO SHORT)
-2. "Quería hablar español contigo ayer." (5 words - TOO SHORT)
-3. "Quería preguntarte algo importante sobre tu trabajo ayer." (8 words - GOOD ✓)
-4. "Estaba pensando en hablar contigo sobre esto ayer." (9 words - GOOD ✓)
-5. "Quería aprender más palabras nuevas en español ayer." (8 words - GOOD ✓)
+Available LEGO pairs: positions 1-125
+Recency pairs: positions 106-125
+Target length: 7-10 words (counting individual words in the assembled phrase)
+
+Candidate 1: "Quería preguntarte algo importante sobre tu trabajo ayer"
+             └─ Assembled from LEGO pairs:
+                "Quería" (S0020L01)
+                "preguntarte" (S0045L02)
+                "algo" (S0012L03)
+                "importante" (S0035L01)
+                "sobre" (S0015L04)
+                "tu" (S0003L01)
+                "trabajo" (S0108L02 - recent)
+                "ayer" (S0126L01 - current)
+             └─ 8 words total ✓
+             └─ Uses complete LEGO pairs as chunks ✓
+
+Candidate 2: "Estaba pensando en hablar contigo sobre esto ayer"
+             └─ Assembled from complete LEGO pairs
+             └─ 8 words total ✓
 ```
 
-### Step 4: Validate each candidate
+**Critical**: Each phrase must assemble ONLY from complete LEGO pairs. Don't invent words or break LEGO pairs apart.
 
-Run through quality checklist for each:
+### STEP 3: Validate Each Phrase
 
-1. **GATE**: All LEGOs < current? (ABSOLUTE)
-2. **Grammar**: Perfect in BOTH languages? (ABSOLUTE)
-3. **Phrase length**: Matches target range? (IMPORTANT)
-4. **Tiling**: Composes exactly from LEGOs? (ABSOLUTE)
-5. **Natural**: Something people actually say? (IMPORTANT)
-6. **Operative**: Contains the LEGO being taught? (ABSOLUTE)
+For each candidate phrase:
 
-### Step 5: Select best 3-5 phrases
+✓ **GATE check**: Did I use only complete LEGO pairs from positions 1 to (N-1)? YES → valid
+✓ **Chunk integrity**: Did I use ENTIRE LEGO pairs, not component words? YES → valid
+✓ **Grammar**: Perfect in both languages? YES → valid
+✓ **Natural**: Something people actually say? YES → valid
+✓ **Operative**: Contains the current LEGO being taught? YES → valid
+✓ **Length**: Matches target for available vocabulary? YES → valid
+
+**If you used LEGO pairs from current/future positions → REJECT immediately**
+**If you broke a LEGO pair into component words → REJECT immediately**
+
+### STEP 4: Select Best 3-5 Phrases
 
 Choose phrases that:
-- Pass all ABSOLUTE criteria
-- Are most natural and useful
-- Provide variety (different contexts, different prior LEGOs)
+- Pass all validation checks
+- Provide variety (different contexts)
+- Use good mix of recency + foundational vocabulary
 
 ## Quality Guidelines
 

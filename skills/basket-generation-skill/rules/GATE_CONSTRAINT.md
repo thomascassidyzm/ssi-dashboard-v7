@@ -1,12 +1,21 @@
 # GATE Constraint (Absolute Rule)
 
-**LEGO #N can ONLY use vocabulary from LEGOs #1 to #(N-1)**
+**LEGO #N can ONLY use LEGO pairs from LEGOs #1 to #(N-1)**
 
 This is the **absolute, non-negotiable constraint** in basket generation.
 
 ## What is GATE?
 
-GATE (Guaranteed Available Tokens Enforced) ensures learners only see vocabulary they've already learned. If LEGO #N appears in lesson 100, the basket can only use LEGOs from lessons 1-99.
+GATE (Guaranteed Available Tokens Enforced) ensures learners only see vocabulary they've already learned. If LEGO #N appears in lesson 100, the basket can only use LEGO pairs from lessons 1-99.
+
+## Critical: Use ENTIRE LEGO Pairs
+
+Available vocabulary = **complete LEGO pairs** (target/known chunks), NOT individual words.
+
+**Example:**
+- LEGO S0002L01: "Estoy intentando" / "I'm trying"
+- You use the ENTIRE chunk "Estoy intentando", not "Estoy" or "intentando" separately
+- Unless "Estoy" is also its own LEGO, you cannot use it alone
 
 ## Why is this absolute?
 
@@ -16,24 +25,31 @@ Breaking GATE means:
 - Spaced repetition fails
 - Course becomes unusable
 
-## How to find available vocabulary
+## How to find available LEGO pairs
 
 To generate a basket for LEGO `S0030L04`:
 
-1. Read `canonical_order.json` to get LEGO position in curriculum
+1. Read `lego_pairs.json` to get all LEGO pairs
 2. Find position of `S0030L04` (e.g., position 126)
-3. Available vocabulary = LEGOs at positions 1-125
-4. **NEVER use LEGOs at positions 127+**
+3. Available LEGO pairs = complete chunks from LEGOs at positions 1-125
+4. **NEVER use LEGO pairs from positions 127+**
+5. **NEVER break a LEGO pair into component words** (unless those words are also separate LEGOs)
 
 ## Examples
 
 ### ✅ CORRECT (GATE compliant)
 
 **LEGO #126**: `"ayer"` (yesterday)
-**Available**: LEGOs #1-125 (~500 words)
+**Available**: LEGO pairs from LEGOs #1-125
 **E-phrase**: `"Quería preguntarte algo ayer."` (I wanted to ask you something yesterday.)
 
-All words come from LEGOs #1-125 ✓
+This phrase assembles from complete LEGO pairs:
+- "Quería" (LEGO #20)
+- "preguntarte" (LEGO #45)
+- "algo" (LEGO #12)
+- "ayer" (LEGO #126)
+
+All LEGO pairs used as complete chunks ✓
 
 ### ❌ WRONG (GATE violation)
 

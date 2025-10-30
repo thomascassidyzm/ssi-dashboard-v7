@@ -1,17 +1,17 @@
 # Phase 1 Validator Intelligence
 
-**Version**: 1.0 (2025-10-29)
+**Version**: 1.1 (2025-10-30)
 **Role**: Ensure vocabulary consistency across all 668 seeds
-**Input**: 5 chunk files from orchestrators
+**Input**: 3 chunk files from orchestrators
 **Output**: `seed_pairs.json` (final, validated)
 
 ---
 
 ## 🎯 YOUR TASK
 
-You are the Phase 1 validator. All 5 orchestrators have completed their chunks (~134 seeds each). Your job is to:
+You are the Phase 1 validator. All 3 orchestrators have completed their chunks (~223 seeds each). Your job is to:
 
-1. Read all 5 chunk files (668 total seeds)
+1. Read all 3 chunk files (668 total seeds)
 2. Detect vocabulary conflicts across chunks
 3. Auto-fix conflicts using Phase 1 rules
 4. Flag subjective conflicts (if any)
@@ -23,16 +23,14 @@ You are the Phase 1 validator. All 5 orchestrators have completed their chunks (
 
 ## 📋 WORKFLOW
 
-### STEP 1: Read All 5 Chunks
+### STEP 1: Read All 3 Chunks
 
 Read from: `vfs/courses/{course_code}/orchestrator_batches/phase1/`
 
 ```
-chunk_01.json (seeds S0001-S0134)
-chunk_02.json (seeds S0135-S0268)
-chunk_03.json (seeds S0269-S0402)
-chunk_04.json (seeds S0403-S0536)
-chunk_05.json (seeds S0537-S0668)
+chunk_01.json (seeds S0001-S0223)
+chunk_02.json (seeds S0224-S0446)
+chunk_03.json (seeds S0447-S0668)
 ```
 
 Each contains:

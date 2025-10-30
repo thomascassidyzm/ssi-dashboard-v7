@@ -26,26 +26,26 @@ You are the **master orchestrator** for SSi course generation. Your job is to:
 
 ### Parallelization Strategy
 
-**5 orchestrators × 10 sub-agents = 50 concurrent agents per phase**
+**3 orchestrators × 10 sub-agents = 30 concurrent agents per phase (safe concurrency)**
 
 Each phase follows this pattern:
-1. **Preparation**: Dashboard runs preparation script (divides work into 5 chunks)
-2. **Orchestration**: Dashboard spawns 5 orchestrators (30s delays between spawns)
+1. **Preparation**: Dashboard runs preparation script (divides work into 3 chunks)
+2. **Orchestration**: Dashboard spawns 3 orchestrators (30s delays between spawns)
 3. **Execution**: Each orchestrator spawns 10 sub-agents (parallel work)
-4. **Merge**: Dashboard runs merge script (combines 5 chunks)
+4. **Merge**: Dashboard runs merge script (combines 3 chunks)
 5. **Validation**: Some phases have validators (Phase 1 only)
 
 ### Phase Architecture
 
 | Phase | Input | Output | Orchestrators | Sub-Agents | Validator |
 |-------|-------|--------|--------------|-----------|-----------|
-| Phase 1 | canonical.txt | seed_pairs.json | 5 | 50 total | ✓ Yes |
-| Phase 3 | seed_pairs.json | lego_pairs.json | 5 | 50 total | ✗ No |
-| Phase 4 | lego_pairs.json | 5 mega-batches | (prep only) | - | - |
-| Phase 5 | lego_pairs.json | lego_baskets.json | 5 | 50 total | ✗ No |
-| Phase 6 | lego_pairs.json | lego_intros.json | 5 | 50 total | ✗ No |
+| Phase 1 | canonical.txt | seed_pairs.json | 3 | 30 total | ✓ Yes |
+| Phase 3 | seed_pairs.json | lego_pairs.json | 3 | 30 total | ✗ No |
+| Phase 4 | lego_pairs.json | 3 mega-batches | (prep only) | - | - |
+| Phase 5 | lego_pairs.json | lego_baskets.json | 3 | 30 total | ✗ No |
+| Phase 6 | lego_pairs.json | lego_intros.json | 3 | 30 total | ✗ No |
 
-**Total concurrency**: Up to 50 agents working simultaneously per phase
+**Total concurrency**: Up to 30 agents working simultaneously per phase (prevents system overload)
 
 ---
 
@@ -59,27 +59,26 @@ Each phase follows this pattern:
 
 1. **Preparation** (5s):
    ```bash
-   node scripts/phase1-prepare-orchestrator-batches.cjs <course_code> 5
+   node scripts/phase1-prepare-orchestrator-batches.cjs <course_code> 3
    ```
-   - Creates 5 orchestrator batch files (~134 seeds each)
+   - Creates 3 orchestrator batch files (~223 seeds each)
+   - Batch files contain seed ranges only (no duplicate data)
    - Output: `vfs/courses/<course>/orchestrator_batches/phase1/orchestrator_batch_*.json`
 
-2. **Spawn 5 Orchestrators** (staggered for stability):
+2. **Spawn 3 Orchestrators** (staggered for stability):
    - Spawn orchestrator 1, wait 30s
    - Spawn orchestrator 2, wait 30s
-   - Spawn orchestrator 3, wait 30s
-   - Spawn orchestrator 4, wait 30s
-   - Spawn orchestrator 5
-   - All 5 run in parallel (each spawns 10 sub-agents internally)
-   - Each outputs chunk file, then auto-exits
+   - Spawn orchestrator 3
+   - All 3 run in parallel (each spawns 10 sub-agents internally)
+   - Each fetches seeds from API, outputs chunk file, cleans up windows
 
-3. **Wait for Completion** (~10-15 minutes):
-   - Monitor for all 5 chunk files to appear
+3. **Wait for Completion** (~15-20 minutes):
+   - Monitor for all 3 chunk files to appear
    - Check for errors in outputs
 
 4. **Spawn Validator** (5 minutes):
    - Use Task tool to spawn 1 validator agent
-   - Validator reads all 5 chunks, detects conflicts, auto-fixes
+   - Validator reads all 3 chunks, detects conflicts, auto-fixes
    - Validator outputs final validated seed_pairs.json
 
 5. **Verification**:

@@ -1,56 +1,71 @@
 # Phase 1 Orchestrator Intelligence
 
-**Version**: 1.0 (2025-10-29)
-**Role**: Coordinate parallel translation of ~134 seeds using 10 sub-agents
+**Version**: 1.1 (2025-10-30)
+**Role**: Coordinate parallel translation of ~223 seeds using 10 sub-agents
 **Output**: `chunk_NN.json` (your portion of seed_pairs.json)
 
 ---
 
 ## 🎯 YOUR TASK
 
-You are an orchestrator agent responsible for translating **one chunk** (~134 seeds) of a 668-seed course. Your job is to:
+You are an orchestrator agent responsible for translating **one chunk** (~223 seeds) of a 668-seed course. Your job is to:
 
 1. Read your orchestrator batch file
-2. Spawn 10 sub-agents (each translating ~13-14 seeds)
+2. Spawn 10 sub-agents (each translating ~22-23 seeds)
 3. Validate their outputs
 4. Merge into your chunk file
 5. Report completion
+6. Clean up iTerm2 windows
 
-**After all 5 orchestrators complete, a validator agent will check consistency across chunks.**
+**After all 3 orchestrators complete, a validator agent will check consistency across chunks.**
 
 ---
 
 ## 📋 WORKFLOW
 
-### STEP 1: Read Your Batch File
+### STEP 1: Read Your Batch File & Fetch Seeds
 
-Your batch file is at: `vfs/courses/{course_code}/orchestrator_batches/phase1/orchestrator_batch_NN.json`
+**Read your batch file** at: `vfs/courses/{course_code}/orchestrator_batches/phase1/orchestrator_batch_NN.json`
 
-It contains:
+It contains minimal config (not duplicate seed data):
 ```json
 {
   "orchestrator_id": "phase1_orch_01",
   "chunk_number": 1,
-  "seeds": [
-    {"seed_id": "S0001", "canonical": "I want to speak Spanish with you now."},
-    {"seed_id": "S0002", "canonical": "I'm trying to learn."},
-    ... ~134 total
-  ],
-  "metadata": {
+  "course_code": "pol_for_eng",
+  "seed_range": {
+    "start": 1,
+    "end": 223,
+    "total": 223
+  },
+  "api": {
+    "seeds_endpoint": "https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/seeds",
+    "fetch_params": "?start=1&end=223"
+  },
+  "config": {
     "agents_to_spawn": 10,
-    "seeds_per_agent": 14
+    "seeds_per_agent": 23,
+    "output_file": "chunk_01.json"
   }
 }
 ```
 
+**Fetch your seeds from the API:**
+```bash
+# Use the endpoint + params from batch file
+curl "https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/seeds?start=1&end=223"
+```
+
+Or use WebFetch tool to fetch the seeds for your range.
+
 ### STEP 2: Divide Work Among 10 Agents
 
-Split your ~134 seeds into 10 equal portions:
-- Agent 1: Seeds 1-14
-- Agent 2: Seeds 15-28
-- Agent 3: Seeds 29-42
+Split your ~223 seeds into 10 equal portions:
+- Agent 1: Seeds 1-22
+- Agent 2: Seeds 23-44
+- Agent 3: Seeds 45-66
 - ...
-- Agent 10: Seeds 127-134
+- Agent 10: Seeds 201-223
 
 ### STEP 3: Spawn 10 Sub-Agents IN PARALLEL
 
@@ -63,10 +78,10 @@ I will now spawn 10 translation agents to process seeds {start}-{end}.
 Then use 10 Task tool invocations in one message:
 
 ```
-Task 1: Translate seeds S0001-S0014
-Task 2: Translate seeds S0015-S0028
+Task 1: Translate seeds S0001-S0022
+Task 2: Translate seeds S0023-S0044
 ...
-Task 10: Translate seeds S0127-S0134
+Task 10: Translate seeds S0201-S0223
 ```
 
 **Each Task prompt should include:**
@@ -100,7 +115,7 @@ CRITICAL:
 
 ### STEP 4: Receive All 10 Outputs
 
-Wait for all 10 sub-agents to complete. You will receive 10 outputs, each containing ~13-14 translated seed pairs.
+Wait for all 10 sub-agents to complete. You will receive 10 outputs, each containing ~22-23 translated seed pairs.
 
 ### STEP 5: Validate Outputs
 
@@ -131,11 +146,11 @@ Combine all 10 outputs into your chunk file:
 {
   "orchestrator_id": "phase1_orch_01",
   "chunk_number": 1,
-  "total_seeds": 134,
+  "total_seeds": 223,
   "translations": {
     "S0001": ["Quiero hablar español contigo ahora.", "I want to speak Spanish with you now."],
     "S0002": ["Estoy intentando aprender.", "I'm trying to learn."],
-    ... all 134 seeds
+    ... all 223 seeds
   },
   "metadata": {
     "generated_by": "phase1_orch_01",
@@ -156,7 +171,7 @@ Output a summary:
 ```
 ✅ Phase 1 Orchestrator {NN} Complete
 
-Seeds translated: 134
+Seeds translated: ~223
 Agents spawned: 10
 Output: chunk_{NN}.json
 Validation: PASSED
@@ -164,6 +179,24 @@ Issues: 0
 
 Ready for validator step.
 ```
+
+### STEP 9: Clean Up Agent Windows
+
+**CRITICAL:** Kill the 10 iTerm2 windows spawned for sub-agents.
+
+You spawned 10 agents using the Task tool. Each creates an iTerm2 window running Claude Code. Once they complete, these windows remain open.
+
+**Cleanup command:**
+```bash
+# Get all iTerm2 windows for this orchestrator's agents
+# Close them to free system resources
+osascript -e 'tell application "iTerm2" to close (every window whose name contains "Phase 1")'
+```
+
+**Why this matters:**
+- 3 orchestrators × 10 agents = 30 iTerm2 windows
+- Each window consumes memory
+- Without cleanup, system resources remain locked
 
 ---
 
@@ -244,23 +277,31 @@ Before outputting chunk file, verify:
 - Add metadata
 - Write file
 
-**Total time per orchestrator: ~10-15 minutes for 134 seeds**
+**Total time per orchestrator: ~15-20 minutes for 223 seeds**
 
 ---
 
 ## 🎯 SUCCESS CRITERIA
 
-- ✓ All 134 seeds translated
+- ✓ All ~223 seeds translated
 - ✓ 10 agents spawned in parallel (not sequential)
 - ✓ Validation passed (grammar, cognates, consistency)
 - ✓ Chunk file written correctly
 - ✓ Summary reported
+- ✓ iTerm2 windows cleaned up
 
 **Your chunk is now ready for the validator!**
 
 ---
 
 ## Version History
+
+**v1.1 (2025-10-30)**:
+- **Reduced concurrency**: 3 orchestrators × 10 agents = 30 concurrent agents (safer for system resources)
+- **Increased seeds per orchestrator**: ~223 seeds (was ~134)
+- **Added cleanup step**: STEP 9 kills iTerm2 windows after completion
+- **Updated for skills directory**: Orchestrator points sub-agents to modular translation-skill files
+- **Eliminated data duplication**: Batch files now contain seed ranges only, orchestrator fetches from API
 
 **v1.0 (2025-10-29)**:
 - Initial orchestrator intelligence for Phase 1

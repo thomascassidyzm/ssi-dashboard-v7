@@ -1037,7 +1037,7 @@ async function spawnCourseOrchestrator(courseCode, params) {
 
   if (useOrchestratorV2) {
     console.log(`[Orchestrator] Using MASTER ORCHESTRATOR AGENT (v2)`);
-    console.log(`[Orchestrator] Architecture: Master agent → 5 orchestrators × 10 agents = 50 concurrent per phase`);
+    console.log(`[Orchestrator] Architecture: Master agent → 3 orchestrators × 10 agents = 30 concurrent per phase`);
 
     try {
       // Load the master orchestrator prompt generator
