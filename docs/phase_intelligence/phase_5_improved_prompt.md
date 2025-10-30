@@ -44,7 +44,13 @@ Count how many prior LEGOs you have. This determines your phrase richness potent
 
 ### Step 2: Generate E-Phrases (3-5 natural sentences)
 
-**Key principle:** Use as many LEGOs as naturally fits.
+**Key principle:** Use as many LEGOs as naturally fits to hit the word count target.
+
+**CRITICAL WORD COUNT RULE:**
+- With 51-100 LEGOs available: **TARGET 8-10 words** (don't go under 7, prefer 9-10)
+- With 100+ LEGOs available: **TARGET 9-12 words** (don't go under 8, prefer 10-11)
+- Going 1-2 words over target is BETTER than going 2-3 words under target
+- **NEVER create 5-6 word phrases when 80+ LEGOs are available** - this is too conservative
 
 **Good example for S0006L01 (19 LEGOs available):**
 ```json
@@ -55,15 +61,22 @@ Count how many prior LEGOs you have. This determines your phrase richness potent
 ]
 ```
 
-**Bad example (too conservative):**
+**Bad examples:**
 ```json
+// TOO SHORT (wasted vocabulary):
 "e": [
   ["Estoy intentando hablar", "I'm trying to speak"],  // Only 3 words - wasted opportunity!
-  ["Estoy intentando aprender", "I'm trying to learn"]  // Only 3 words - too short!
+  ["Porque quiero hablar español.", "Because I want to speak Spanish."]  // Only 5 words with 86 LEGOs available - WAY too conservative!
+]
+
+// TOO LONG (exceeds naturalness):
+"e": [
+  ["Quiero intentar recordar su nombre después de que hables con ella mañana", "I want to try to remember her name after you speak with her tomorrow"]  // 13 words - too long, breaks 10-word guideline
 ]
 ```
 
 **Requirements:**
+- **VALIDATE WORD COUNT:** Every e-phrase must hit the target range for available LEGOs
 - Perfect grammar in BOTH languages
 - Natural phrases people actually say
 - Include the operative LEGO
@@ -72,18 +85,26 @@ Count how many prior LEGOs you have. This determines your phrase richness potent
 
 ### Step 3: Extract D-Phrases (Mechanical)
 
-Extract ALL 2-5 LEGO windows containing the operative LEGO using sliding window extraction.
+**Extract 2-5 LEGO windows containing the operative LEGO, MAXIMUM 2 per length.**
+
+- For each window size (2, 3, 4, 5), select the 2 most grammatical fragments
+- Never leave d-phrase arrays empty if vocabulary exists
+- Keep fragments that feel most natural/grammatical
 
 ## QUALITY CHECKLIST
 
-Before accepting each basket:
+**BEFORE WRITING TO FILE, validate EVERY basket:**
 
-1. ✓ **GATE:** All LEGOs from prior positions?
-2. ✓ **Grammar:** Perfect in both Spanish and English?
-3. ✓ **Natural:** Real conversational phrases?
-4. ✓ **Richness:** Using available vocabulary fully? (Not too short?)
-5. ✓ **Operative:** Contains the LEGO being taught?
-6. ✓ **Culminating:** If last in seed, first phrase = seed sentence?
+1. ✓ **GATE:** All LEGOs from prior positions only?
+2. ✓ **Word Count:** E-phrases hit target range for available LEGOs? (Not 5-6 words with 80+ LEGOs!)
+3. ✓ **Grammar:** Perfect in both Spanish and English?
+4. ✓ **Natural:** Real conversational phrases people actually say?
+5. ✓ **Richness:** Using available vocabulary fully? (Not too conservative?)
+6. ✓ **Operative:** Every e-phrase contains the LEGO being taught?
+7. ✓ **Culminating:** If last in seed, first phrase = seed sentence exactly?
+8. ✓ **D-phrases:** Max 2 per length, no empty arrays if vocabulary exists?
+
+**If any basket fails validation, regenerate it before writing to file.**
 
 ## OUTPUT FORMAT
 
