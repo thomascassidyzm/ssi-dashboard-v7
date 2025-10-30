@@ -4825,7 +4825,7 @@ app.get('/api/storage/test-s3', async (req, res) => {
     res.json({
       connected: true,
       bucket: S3_BUCKET,
-      region: AWS_REGION
+      region: process.env.AWS_REGION || 'eu-west-1'
     });
   } catch (error) {
     res.status(500).json({
