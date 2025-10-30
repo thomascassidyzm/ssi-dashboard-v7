@@ -12,6 +12,9 @@
  *   pm2 startup                 # Auto-start on system boot
  */
 
+// Load environment variables from .env file
+require('dotenv').config();
+
 module.exports = {
   apps: [
     {
@@ -24,7 +27,14 @@ module.exports = {
       max_memory_restart: '500M',
       env: {
         NODE_ENV: 'development',
-        PORT: 3456
+        PORT: 3456,
+        // Pass AWS credentials from .env
+        AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
+        AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+        AWS_REGION: process.env.AWS_REGION,
+        S3_BUCKET: process.env.S3_BUCKET,
+        // Pass Anthropic API key for LEGO regeneration
+        ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY
       },
       error_file: 'logs/automation-server-error.log',
       out_file: 'logs/automation-server-out.log',

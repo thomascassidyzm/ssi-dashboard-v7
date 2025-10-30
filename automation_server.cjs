@@ -3573,6 +3573,136 @@ async function triggerRegenerationCascade(courseCode, seedId, translationUuid) {
 }
 
 /**
+ * Regenerate LEGO breakdown for a single seed (lightweight Phase 3)
+ * @param {string} courseCode - Course identifier
+ * @param {string} seedId - Seed ID (e.g., 'S0003')
+ * @param {string} targetPhrase - New target language phrase
+ * @param {string} knownPhrase - New known language phrase
+ * @returns {Promise<Object>} - New LEGO breakdown
+ */
+async function regenerateSingleSeedLego(courseCode, seedId, targetPhrase, knownPhrase) {
+  // Check if API key is configured
+  if (!process.env.ANTHROPIC_API_KEY) {
+    throw new Error('ANTHROPIC_API_KEY not configured - cannot auto-regenerate');
+  }
+
+  const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+
+  // Get language pair from course code
+  const [target, known] = courseCode.split('_for_');
+
+  // Build Phase 3 prompt for single seed
+  const prompt = `
+# Phase 3: LEGO Extraction (Single Seed)
+
+You are regenerating the LEGO breakdown for ONE seed that was just edited.
+
+## Seed Translation
+**Seed ID**: ${seedId}
+**Target phrase (${target})**: ${targetPhrase}
+**Known phrase (${known})**: ${knownPhrase}
+
+## Your Task
+Break this sentence into LEGO blocks following SSI methodology:
+
+1. **BASE LEGOs**: Single atomic meaning units
+2. **COMPOSITE LEGOs**: Multi-word chunks that work as units
+   - MUST include componentization showing internal structure
+   - Format: "word1 ⟷ meaning1\\nword2 ⟷ meaning2"
+
+## Output Format (JSON)
+\`\`\`json
+{
+  "seed_id": "${seedId}",
+  "target_sentence": "${targetPhrase}",
+  "known_sentence": "${knownPhrase}",
+  "lego_pairs": [
+    {
+      "lego_id": "${seedId}L01",
+      "lego_type": "BASE",
+      "target_chunk": "word",
+      "known_chunk": "word",
+      "fd_validated": false
+    },
+    {
+      "lego_id": "${seedId}L02",
+      "lego_type": "COMPOSITE",
+      "target_chunk": "multi word phrase",
+      "known_chunk": "multi word phrase",
+      "fd_validated": false,
+      "componentization": "word1 ⟷ meaning1\\nword2 ⟷ meaning2"
+    }
+  ],
+  "feeder_pairs": [
+    {
+      "feeder_id": "${seedId}L02F01",
+      "parent_lego_id": "${seedId}L02",
+      "target_chunk": "word1",
+      "known_chunk": "meaning1"
+    }
+  ]
+}
+\`\`\`
+
+Generate the breakdown now.
+`;
+
+  console.log(`[Regen] Calling Claude for ${seedId} LEGO breakdown...`);
+
+  // Call Claude API (using Anthropic SDK)
+  const Anthropic = require('@anthropic-ai/sdk');
+  const client = new Anthropic({
+    apiKey: process.env.ANTHROPIC_API_KEY
+  });
+
+  const response = await client.messages.create({
+    model: 'claude-sonnet-4-20250514',
+    max_tokens: 4000,
+    temperature: 0.3,
+    messages: [{
+      role: 'user',
+      content: prompt
+    }]
+  });
+
+  // Extract JSON from response
+  const content = response.content[0].text;
+  const jsonMatch = content.match(/```json\n([\s\S]+?)\n```/);
+
+  if (!jsonMatch) {
+    throw new Error('Failed to extract JSON from Claude response');
+  }
+
+  const breakdown = JSON.parse(jsonMatch[1]);
+
+  // Update LEGO_BREAKDOWNS_COMPLETE.json
+  const legosPath = path.join(coursePath, 'LEGO_BREAKDOWNS_COMPLETE.json');
+  let legoData = { lego_breakdowns: [] };
+
+  if (await fs.pathExists(legosPath)) {
+    legoData = await fs.readJson(legosPath);
+  }
+
+  // Remove old breakdown for this seed
+  legoData.lego_breakdowns = legoData.lego_breakdowns.filter(
+    l => l.seed_id !== seedId
+  );
+
+  // Add new breakdown
+  legoData.lego_breakdowns.push(breakdown);
+
+  // Sort by seed_id for consistency
+  legoData.lego_breakdowns.sort((a, b) => a.seed_id.localeCompare(b.seed_id));
+
+  // Write back
+  await fs.writeJson(legosPath, legoData, { spaces: 2 });
+
+  console.log(`✅ [Regen] Updated LEGO breakdown for ${seedId}`);
+
+  return breakdown;
+}
+
+/**
  * PUT /api/courses/:courseCode/translations/:uuid
  * Update a translation and automatically trigger Phase 3+ regeneration
  */
@@ -3624,18 +3754,36 @@ app.put('/api/courses/:courseCode/translations/:uuid', async (req, res) => {
       console.log(`[API] Successfully updated ${seedId} in translations.json`);
     }
 
-    // TODO: Optionally trigger LEGO regeneration here
-    // For now, just mark that translation was edited
+    // Trigger lightweight LEGO regeneration for this seed
+    console.log(`[API] Triggering LEGO regeneration for ${seedId}...`);
 
-    res.json({
-      success: true,
-      message: 'Translation updated successfully',
-      seed_id: seedId,
-      updated: {
-        target_phrase: target,
-        known_phrase: source
-      }
-    });
+    try {
+      const newBreakdown = await regenerateSingleSeedLego(courseCode, seedId, target, source);
+
+      res.json({
+        success: true,
+        message: 'Translation updated and LEGO breakdown regenerated',
+        seed_id: seedId,
+        updated: {
+          target_phrase: target,
+          known_phrase: source
+        },
+        lego_breakdown: newBreakdown
+      });
+    } catch (regenError) {
+      console.warn(`[API] LEGO regeneration failed, but translation saved:`, regenError.message);
+
+      res.json({
+        success: true,
+        message: 'Translation updated (LEGO regeneration pending)',
+        seed_id: seedId,
+        updated: {
+          target_phrase: target,
+          known_phrase: source
+        },
+        warning: 'LEGO breakdown not regenerated yet'
+      });
+    }
   } catch (error) {
     console.error('[API] Error updating translation:', error);
     res.status(500).json({
