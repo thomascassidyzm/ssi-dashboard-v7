@@ -66,7 +66,25 @@ export default {
         // Fallback to static files if API unavailable
         console.log('[API] Server unavailable, using static files')
 
-        const courseCodes = ['spa_for_eng_30seeds', 'fra_for_eng_30seeds', 'ita_for_eng_30seeds', 'cmn_for_eng_30seeds']
+        // List all known courses in vfs/courses directory
+        const courseCodes = [
+          'spa_for_eng_30',
+          'spa_for_eng',
+          'pol_for_eng',
+          'spa_for_eng_old',
+          'fra_for_eng',
+          'test_for_eng_5seeds',
+          'spa_for_eng_20seeds',
+          'cmn_for_eng',
+          'ita_for_eng_10seeds',
+          'eus_for_eng_30seeds',
+          'ita_for_eng_10seeds_sonnet',
+          'ita_for_eng_668seeds',
+          'gle_for_eng_30seeds',
+          'ita_for_eng_30seeds',
+          'cmn_for_eng_30seeds',
+          'mkd_for_eng_574seeds'
+        ]
         const courses = []
 
         for (const courseCode of courseCodes) {
@@ -78,7 +96,14 @@ export default {
               const seedPairsData = await seedPairsRes.json()
               const legoPairsData = await legoPairsRes.json()
 
-              const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\\d+)seeds$/)
+              // Flexible course code parsing:
+              // - xxx_for_yyy_NNseeds (standard)
+              // - xxx_for_yyy_NN (number without "seeds")
+              // - xxx_for_yyy (no seed count)
+              // - xxx_for_yyy_NNseeds_suffix (with additional suffix)
+              const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
+              const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
+              const match = matchStandard || matchBasic
 
               // Count LEGOs from v7.7 format: seeds array [[seed_id, [t,k], [[lego_id, type, t, k], ...]]]
               let legoCount = 0
@@ -87,15 +112,18 @@ export default {
                 legoCount += legos.length
               }
 
+              // Count actual seeds from data
+              const actualSeedCount = Object.keys(seedPairsData.translations || {}).length
+
               courses.push({
                 course_code: courseCode,
                 source_language: match ? match[2].toUpperCase() : 'UNK',
                 target_language: match ? match[1].toUpperCase() : 'UNK',
-                total_seeds: match ? parseInt(match[3]) : 0,
+                total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : actualSeedCount,
                 version: '1.0',
                 created_at: new Date().toISOString(),
                 status: 'phase_3_complete',
-                seed_pairs: Object.keys(seedPairsData.translations || {}).length,
+                seed_pairs: actualSeedCount,
                 lego_pairs: legoCount,
                 lego_baskets: 0,
                 phases_completed: ['1', '3']
@@ -161,13 +189,16 @@ export default {
             }
           }
 
-          const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\\d+)seeds$/)
+          // Flexible course code parsing (same as list())
+          const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
+          const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
+          const match = matchStandard || matchBasic
 
           const course = {
             course_code: courseCode,
             source_language: match ? match[2].toUpperCase() : 'UNK',
             target_language: match ? match[1].toUpperCase() : 'UNK',
-            total_seeds: match ? parseInt(match[3]) : 0,
+            total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : translations.length,
             version: '1.0',
             created_at: new Date().toISOString(),
             status: 'phase_3_complete',
