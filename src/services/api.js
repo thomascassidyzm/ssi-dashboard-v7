@@ -1,7 +1,18 @@
 import axios from 'axios'
 
-// API Base URL - set this to your ngrok URL when running locally
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+// API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
+function getApiBaseUrl() {
+  // Check localStorage for user-selected environment
+  const storedUrl = localStorage.getItem('api_base_url')
+  if (storedUrl) {
+    return storedUrl
+  }
+
+  // Fall back to environment variable or default
+  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+}
+
+const API_BASE_URL = getApiBaseUrl()
 
 const api = axios.create({
   baseURL: API_BASE_URL,
