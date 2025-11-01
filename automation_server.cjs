@@ -2819,6 +2819,69 @@ app.get('/api/courses/:code/learned-rules', async (req, res) => {
 });
 
 // --------------------------------------------------------------------------
+// BASKET GENERATION ORCHESTRATION
+// --------------------------------------------------------------------------
+
+/**
+ * Spawn basket generation agent for a course
+ */
+async function spawnBasketGenerationAgent(courseCode, params) {
+  const jobId = `${courseCode}_baskets`;
+  const job = STATE.jobs.get(jobId);
+  const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+
+  console.log(`[Baskets] Starting basket generation for ${courseCode}`);
+  if (params.startSeed && params.endSeed) {
+    console.log(`[Baskets] Seed range: ${params.startSeed}-${params.endSeed}`);
+  }
+
+  try {
+    // Build the agent prompt
+    const prompt = `You are generating practice baskets for the SSi course: ${courseCode}
+
+TASK: Run the universal basket generation system
+
+STEPS:
+1. Navigate to course directory:
+   cd ${courseDir}
+
+2. Verify required files exist:
+   - lego_pairs.json (course data)
+   - lego_value_scores.json (vocabulary scores)
+   - course_manifest.json (language config)
+
+3. Run the orchestrator:
+   node orchestrate_basket_generation.cjs
+
+The orchestrator will:
+- Process all LEGOs in the course
+- Generate prompts using rolling top-100 vocabulary
+- Spawn agents for basket generation (Sonnet 4.5)
+- Validate baskets (vocabulary + quality)
+- Save to lego_baskets.json
+
+Report progress and any errors to the user.`;
+
+    // Spawn the agent
+    const windowId = await spawnPhaseAgent('baskets', prompt, courseDir, courseCode);
+
+    // Update job status
+    job.status = 'in_progress';
+    job.phase = 'generating';
+    job.progress = 0;
+    job.windowId = windowId;
+
+    console.log(`[Baskets] Agent spawned in iTerm2 window ${windowId}`);
+
+  } catch (error) {
+    console.error(`[Baskets] Error spawning agent:`, error);
+    job.status = 'error';
+    job.error = error.message;
+    throw error;
+  }
+}
+
+// --------------------------------------------------------------------------
 // EXISTING ENDPOINTS
 // --------------------------------------------------------------------------
 
@@ -2935,6 +2998,63 @@ app.delete('/api/courses/:courseCode/status', (req, res) => {
     message: 'Job cleared successfully',
     courseCode,
     previousStatus: job.status
+  });
+});
+
+/**
+ * POST /api/courses/:code/baskets/generate
+ * Generate practice baskets for a course
+ */
+app.post('/api/courses/:code/baskets/generate', async (req, res) => {
+  const { code: courseCode } = req.params;
+  const { startSeed, endSeed } = req.body;
+
+  // Check if course exists
+  const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+  if (!await fs.pathExists(coursePath)) {
+    return res.status(404).json({ error: 'Course not found', courseCode });
+  }
+
+  // Check if job already exists
+  const jobId = `${courseCode}_baskets`;
+  if (STATE.jobs.has(jobId)) {
+    const job = STATE.jobs.get(jobId);
+    if (job.status === 'in_progress') {
+      return res.status(409).json({
+        error: 'Basket generation already in progress',
+        courseCode,
+        status: job
+      });
+    }
+  }
+
+  // Create new job
+  const job = {
+    courseCode,
+    type: 'basket_generation',
+    status: 'in_progress',
+    phase: 'initializing',
+    progress: 0,
+    startTime: new Date(),
+    params: { startSeed, endSeed },
+    windowIds: []
+  };
+
+  STATE.jobs.set(jobId, job);
+
+  // Spawn basket generation agent
+  spawnBasketGenerationAgent(courseCode, { startSeed, endSeed }).catch(err => {
+    console.error(`[API] Basket generation error:`, err);
+    job.status = 'error';
+    job.error = err.message;
+  });
+
+  res.json({
+    success: true,
+    courseCode,
+    jobId,
+    message: 'Basket generation started',
+    status: job
   });
 });
 

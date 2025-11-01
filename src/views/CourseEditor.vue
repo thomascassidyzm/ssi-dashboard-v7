@@ -515,13 +515,29 @@
             <div v-if="activeTab === 'baskets'">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-semibold text-emerald-400">LEGO_BASKETS (Phase 5)</h3>
-                <div class="text-sm text-slate-400">
-                  {{ Object.keys(basketsData || {}).length }} baskets
+                <div class="flex items-center gap-4">
+                  <div class="text-sm text-slate-400">
+                    {{ Object.keys(basketsData || {}).length }} baskets
+                  </div>
+                  <button
+                    @click="generateBaskets"
+                    :disabled="generatingBaskets"
+                    class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white text-sm font-semibold px-4 py-2 rounded-lg transition"
+                  >
+                    {{ generatingBaskets ? '⏳ Generating...' : '🎯 Generate Baskets' }}
+                  </button>
                 </div>
               </div>
 
-              <div v-if="!basketsData || Object.keys(basketsData).length === 0" class="text-center py-8 text-slate-400">
-                No LEGO_BASKETS found. Run Phase 5 to generate them.
+              <div v-if="!basketsData || Object.keys(basketsData).length === 0" class="text-center py-8">
+                <p class="text-slate-400 mb-4">No LEGO_BASKETS found.</p>
+                <button
+                  @click="generateBaskets"
+                  :disabled="generatingBaskets"
+                  class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-lg transition inline-flex items-center gap-2"
+                >
+                  <span>{{ generatingBaskets ? '⏳ Generating Baskets...' : '🎯 Generate Baskets' }}</span>
+                </button>
               </div>
 
               <div v-else class="space-y-2">
@@ -928,6 +944,9 @@ const regenerationState = ref({
 })
 const pollingInterval = ref(null)
 
+// Basket generation state
+const generatingBaskets = ref(false)
+
 const tabs = [
   { id: 'translations', label: 'SEED_PAIRS' },
   { id: 'legos', label: 'LEGO_PAIRS' },
@@ -1008,6 +1027,45 @@ async function loadCourse() {
     console.error('Failed to load course:', err)
   } finally {
     loading.value = false
+  }
+}
+
+async function generateBaskets() {
+  if (generatingBaskets.value) return
+
+  if (!confirm('Generate practice baskets for all LEGOs in this course?\n\nThis will spawn a Claude Code agent to run the universal basket generation system.')) {
+    return
+  }
+
+  generatingBaskets.value = true
+
+  try {
+    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/baskets/generate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      },
+      body: JSON.stringify({
+        // Optional: specify seed range
+        // startSeed: 1,
+        // endSeed: 30
+      })
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Failed to start basket generation')
+    }
+
+    alert(`✅ Basket generation started!\n\nJob ID: ${data.jobId}\n\nA Claude Code agent has been spawned in iTerm2. Check the terminal window for progress.\n\nRefresh this page when complete to see the generated baskets.`)
+
+  } catch (err) {
+    console.error('Failed to generate baskets:', err)
+    alert(`❌ Failed to generate baskets:\n\n${err.message}`)
+  } finally {
+    generatingBaskets.value = false
   }
 }
 
