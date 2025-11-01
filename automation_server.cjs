@@ -2841,37 +2841,37 @@ async function spawnBasketGenerationAgent(courseCode, params) {
 
 TASK: Run the universal basket generation system
 
-STEPS:
-1. Navigate to course directory:
-   cd ${courseDir}
+The orchestrator is ready at: ${courseDir}/orchestrate_basket_generation.cjs
 
-2. Verify required files exist:
-   - lego_pairs.json (course data)
-   - lego_value_scores.json (vocabulary scores)
-   - course_manifest.json (language config)
-
-3. Run the orchestrator:
-   node orchestrate_basket_generation.cjs
+Run this command to start basket generation:
+node orchestrate_basket_generation.cjs
 
 The orchestrator will:
 - Process all LEGOs in the course
-- Generate prompts using rolling top-100 vocabulary
-- Spawn agents for basket generation (Sonnet 4.5)
+- Generate vocalization-optimized prompts
+- Display prompts for you to generate 8-12 conversational Spanish phrases
+- Resume intelligently (skips LEGOs with existing baskets)
 - Validate baskets (vocabulary + quality)
 - Save to lego_baskets.json
 
-Report progress and any errors to the user.`;
+For each LEGO prompt:
+1. Generate 8-12 speakable phrases combining the target LEGO with available vocabulary
+2. Follow the quality rules (no single words, complete thoughts, natural word order)
+3. Output format: Spanish phrase | English prompt (one per line)
 
-    // Spawn the agent
-    const windowId = await spawnPhaseAgent('baskets', prompt, courseDir, courseCode);
+Continue processing all remaining LEGOs until complete.`;
+
+    // Spawn the agent using the standard spawnPhaseAgent (includes --permission-mode bypassPermissions)
+    const result = await spawnPhaseAgent('baskets', prompt, courseDir, courseCode);
 
     // Update job status
     job.status = 'in_progress';
     job.phase = 'generating';
     job.progress = 0;
-    job.windowId = windowId;
+    job.windowId = result.windowId;
+    job.processId = result.pid;
 
-    console.log(`[Baskets] Agent spawned in iTerm2 window ${windowId}`);
+    console.log(`[Baskets] Agent spawned in iTerm2 window ${result.windowId}`);
 
   } catch (error) {
     console.error(`[Baskets] Error spawning agent:`, error);
