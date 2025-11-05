@@ -7,6 +7,7 @@
   "cumulative_legos_at_seed_start": 42,
   "cumulative_legos_after_seed": 45,
   "patterns_used": ["P01", "P10"],
+  "patterns_available_before_seed": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P18"],
   "legos": [
     {
       "lego_id": "S0015L01",
@@ -14,18 +15,18 @@
       "type": "B",
       "pattern_demonstrated": null,
       "available_legos": 42,
-      "note": "Conjunction for connecting clauses",
+      "note": "Conjunction for connecting clauses - STRICT PATTERN VARIETY ENFORCED",
       "practice_phrases": [
-        ["And", "Y", null, 1],
-        ["Today and tomorrow", "Hoy y mañana", null, 2],
-        ["Spanish and now", "Español y ahora", null, 2],
-        ["Now and all day", "Ahora y todo el día", null, 3],
-        ["I speak and you speak", "Hablo y hablas", "P05", 3],
-        ["I want to speak and learn", "Quiero hablar y aprender", "P01", 4],
-        ["You speak and I speak Spanish", "Hablas y hablo español", "P05", 4],
-        ["I'm trying to speak and learn", "Estoy intentando hablar y aprender", "P02", 5],
-        ["I speak Spanish and you speak Spanish", "Hablo español y hablas español", "P05", 5],
-        ["Very well and with you", "Muy bien y contigo", null, 3]
+        ["and", "Y", null, 1],
+        ["I want to speak and learn", "Quiero hablar y aprender", "P01", 5],
+        ["I'm trying to speak and remember", "Estoy intentando hablar y recordar", "P02", 6],
+        ["I'm going to practise and learn", "Voy a practicar y aprender", "P03", 6],
+        ["I'd like to speak and learn", "Me gustaría hablar y aprender", "P04", 6],
+        ["You speak and I speak", "Hablas y hablo", "P05", 4],
+        ["I'm not sure if you speak Spanish and English", "No estoy seguro si hablas español y inglés", "P06", 8],
+        ["how to speak and learn", "cómo hablar y aprender", "P12", 5],
+        ["I want you to speak and learn", "Quiero que hables y aprendas", "P01+P10", 6],
+        ["I can speak and learn", "Puedo hablar y aprender", "P18", 5]
       ]
     },
     {
@@ -34,18 +35,18 @@
       "type": "C",
       "pattern_demonstrated": "P10",
       "available_legos": 43,
-      "note": "Desire + subjunctive construction - key subjunctive pattern",
+      "note": "Desire + subjunctive construction - STRICT PATTERN VARIETY ENFORCED",
       "practice_phrases": [
-        ["I want you to speak", "Quiero que hables", "P10", 3],
-        ["I want you to speak Spanish", "Quiero que hables español", "P10", 4],
-        ["I want you to speak now", "Quiero que hables ahora", "P10", 4],
-        ["I want you to speak today", "Quiero que hables hoy", "P10", 4],
-        ["I want you to speak tomorrow", "Quiero que hables mañana", "P10", 4],
-        ["I want you to speak Spanish now", "Quiero que hables español ahora", "P10", 5],
-        ["I want you to speak all day", "Quiero que hables todo el día", "P10", 5],
-        ["I want you to speak very well", "Quiero que hables muy bien", "P10", 5],
-        ["I want you to speak Spanish tomorrow", "Quiero que hables español mañana", "P10", 5],
-        ["I want you to speak Spanish very well", "Quiero que hables español muy bien", "P10", 6]
+        ["I want you to speak", "Quiero que hables", "P01+P10", 5],
+        ["I'm trying to ensure you speak", "Estoy intentando asegurar que hables", "P02+P10", 7],
+        ["I'm going to ensure you speak", "Voy a asegurar que hables", "P03+P10", 7],
+        ["I'd like you to speak", "Me gustaría que hables", "P04+P10", 6],
+        ["I want you to speak now", "Quiero que hables ahora", "P01+P10", 6],
+        ["I'm not sure if I want you to speak", "No estoy seguro si quiero que hables", "P06+P01+P10", 9],
+        ["how I want you to speak", "cómo quiero que hables", "P12+P01+P10", 6],
+        ["I can ensure you speak well", "Puedo asegurar que hables bien", "P18+P10", 7],
+        ["I want you to speak Spanish", "Quiero que hables español", "P01+P10", 6],
+        ["I want you to speak tomorrow", "Quiero que hables mañana", "P01+P10", 6]
       ]
     },
     {
@@ -54,24 +55,25 @@
       "type": "C",
       "pattern_demonstrated": null,
       "available_legos": 44,
-      "note": "Prepositional phrase - single word in Spanish (like contigo)",
+      "note": "Prepositional phrase - single word in Spanish - STRICT PATTERN VARIETY ENFORCED",
       "practice_phrases": [
-        ["With me", "Conmigo", null, 1],
+        ["with me", "conmigo", null, 2],
+        ["I want to speak with me", "Quiero hablar conmigo", "P01", 5],
+        ["I'm trying to practise with me", "Estoy intentando practicar conmigo", "P02", 7],
+        ["Are you going to speak with me?", "¿Vas a hablar conmigo?", "P03", 6],
+        ["I'd like to learn with me", "Me gustaría aprender conmigo", "P04", 6],
         ["You speak with me", "Hablas conmigo", "P05", 3],
-        ["Speak Spanish with me", "Hablar español conmigo", null, 3],
-        ["You want to speak with me", "Quieres hablar conmigo", "P01", 4],
-        ["I want you to speak with me", "Quiero que hables conmigo", "P10", 4],
-        ["You speak Spanish with me", "Hablas español conmigo", "P05", 4],
-        ["You speak with me now", "Hablas conmigo ahora", "P05", 4],
-        ["You speak with me tomorrow", "Hablas conmigo mañana", "P05", 4],
-        ["You speak Spanish with me now", "Hablas español conmigo ahora", "P05", 5],
-        ["I want you to speak Spanish with me", "Quiero que hables español conmigo", "P10", 6]
+        ["I'm not sure if you want to speak with me", "No estoy seguro si quieres hablar conmigo", "P06+P01", 9],
+        ["how to speak with me", "cómo hablar conmigo", "P12", 5],
+        ["I want you to speak with me", "Quiero que hables conmigo", "P01+P10", 6],
+        ["You can speak with me", "Puedes hablar conmigo", "P18", 5]
       ]
     }
   ],
   "generation_metadata": {
-    "version": "basket_v1",
+    "version": "basket_v2_pattern_variety_enforced",
     "gate_compliant": true,
+    "pattern_variety_enforced": true,
     "generated_at": "2025-11-05"
   }
 }

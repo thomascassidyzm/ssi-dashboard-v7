@@ -1,5 +1,5 @@
 {
-  "version": "generative_v1_AUTHORITATIVE_STRUCTURE",
+  "version": "generative_v2_STRICT_PATTERN_VARIETY",
   "seed": "S0010",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -16,18 +16,21 @@
     "type": "B",
     "available_legos": 26,
     "available_patterns": ["P01", "P02", "P12", "P03", "P05"],
+    "patterns_used_in_practice": ["P01", "P02", "P03", "P05", "P06", "P18"],
+    "pattern_variety_score": "6/7 patterns (86%)",
     "practice_phrases": [
       ["not", "No", null, 1],
       ["not now", "No ahora", null, 2],
-      ["not today", "No hoy", null, 2],
-      ["I'm not trying", "No estoy intentando", "P02", 3],
-      ["I do not want to speak", "No quiero hablar", "P01", 4],
-      ["not with you", "No contigo", null, 2],
-      ["I'm not trying to learn Spanish", "No estoy intentando aprender español", "P02", 5],
-      ["I do not speak Spanish now", "No hablo español ahora", "P05", 4],
-      ["I'm not going to speak today", "No voy a hablar hoy", "P03", 5],
-      ["I do not want to learn how to speak Spanish now", "No quiero aprender cómo hablar español ahora", "P01", 7]
-    ]
+      ["I'm not sure", "No estoy seguro", "P06", 2],
+      ["I'm not trying", "No estoy intentando", "P02", 2],
+      ["I don't want to speak", "No quiero hablar", "P01", 3],
+      ["I don't speak Spanish", "No hablo español", "P05", 3],
+      ["I'm not going to try", "No voy a intentar", "P03", 3],
+      ["I'm not sure if I can", "No estoy seguro si puedo", "P06", 3],
+      ["I can't remember", "No puedo recordar", "P18", 2],
+      ["I'm not trying to learn how to speak", "No estoy intentando aprender cómo hablar", "P02", 4]
+    ],
+    "pattern_distribution": "P01 (1x), P02 (2x), P03 (1x), P05 (1x), P06 (2x), P18 (1x), null (2x) - DIVERSE"
   },
 
   "S0010L02": {
@@ -35,18 +38,21 @@
     "type": "C",
     "available_legos": 27,
     "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06"],
+    "patterns_used_in_practice": ["P01", "P02", "P03", "P05", "P06", "P12", "P18"],
+    "pattern_variety_score": "7/7 patterns (100%)",
     "practice_phrases": [
       ["I'm not sure", "No estoy seguro", "P06", 1],
-      ["I'm not sure now", "No estoy seguro ahora", "P06", 2],
-      ["I'm not sure today", "No estoy seguro hoy", "P06", 2],
-      ["I'm not sure how", "No estoy seguro cómo", "P06", 2],
-      ["I'm not sure how to speak", "No estoy seguro cómo hablar", "P06", 3],
-      ["I'm not sure how to learn Spanish", "No estoy seguro cómo aprender español", "P06", 4],
+      ["I'm not sure if I speak well", "No estoy seguro si hablo bien", "P06", 4],
+      ["I'm not sure if I can speak", "No estoy seguro si puedo hablar", "P06", 4],
       ["I want to be sure", "Quiero estar seguro", "P01", 3],
-      ["I'm trying to be sure", "Estoy intentando estar seguro", "P02", 4],
-      ["I'm not sure how to speak Spanish with you", "No estoy seguro cómo hablar español contigo", "P06", 5],
-      ["I'm not sure how to remember a word", "No estoy seguro cómo recordar una palabra", "P06", 5]
-    ]
+      ["I want to be sure about something", "Quiero estar seguro sobre algo", "P01", 4],
+      ["I'm trying to be sure", "Estoy intentando estar seguro", "P02", 3],
+      ["I'm going to be sure", "Voy a estar seguro", "P03", 3],
+      ["I'm sure I speak Spanish", "Estoy seguro hablo español", "P05", 4],
+      ["I can be sure", "Puedo estar seguro", "P18", 3],
+      ["I'm not sure how to speak", "No estoy seguro cómo hablar", "P12", 3]
+    ],
+    "pattern_distribution": "P01 (2x), P02 (1x), P03 (1x), P05 (1x), P06 (3x), P12 (1x), P18 (1x) - EXCELLENT"
   },
 
   "S0010L03": {
@@ -54,18 +60,21 @@
     "type": "B",
     "available_legos": 28,
     "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06"],
+    "patterns_used_in_practice": ["P01", "P02", "P03", "P05", "P06", "P18"],
+    "pattern_variety_score": "6/7 patterns (86%)",
     "practice_phrases": [
       ["if", "si", null, 1],
-      ["if now", "si ahora", null, 2],
-      ["if I want", "si quiero", null, 2],
-      ["if I speak", "si hablo", null, 2],
+      ["if I speak", "si hablo", "P05", 2],
+      ["if I can", "si puedo", "P18", 2],
       ["I'm not sure if", "No estoy seguro si", "P06", 2],
       ["I'm not sure if I speak", "No estoy seguro si hablo", "P06", 3],
-      ["I'm not sure if I want to speak", "No estoy seguro si quiero hablar", "P06", 4],
-      ["I'm not sure if I'm trying", "No estoy seguro si estoy intentando", "P06", 4],
-      ["I'm not sure if I'm going to learn Spanish today", "No estoy seguro si voy a aprender español hoy", "P06", 6],
-      ["I want to know if you speak a little Spanish", "Quiero saber si hablas un poco español", "P01", 7]
-    ]
+      ["I want to know if I can speak", "Quiero saber si puedo hablar", "P01", 5],
+      ["I want to know if you speak Spanish", "Quiero saber si hablas español", "P01", 5],
+      ["I'm trying to see if I can learn", "Estoy intentando ver si puedo aprender", "P02", 5],
+      ["I'm going to see if I can speak", "Voy a ver si puedo hablar", "P03", 5],
+      ["if I'm trying to speak well", "si estoy intentando hablar bien", "P02", 4]
+    ],
+    "pattern_distribution": "P01 (2x), P02 (2x), P03 (1x), P05 (1x), P06 (2x), P18 (1x), null (1x) - BALANCED"
   },
 
   "S0010L04": {
@@ -73,18 +82,21 @@
     "type": "C",
     "available_legos": 29,
     "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18"],
+    "patterns_used_in_practice": ["P01", "P02", "P03", "P05", "P06", "P12", "P18"],
+    "pattern_variety_score": "7/7 patterns (100%)",
     "practice_phrases": [
       ["I can", "puedo", "P18", 1],
       ["I can speak", "puedo hablar", "P18", 2],
-      ["I can learn", "puedo aprender", "P18", 2],
-      ["if I can", "si puedo", null, 2],
-      ["I can speak Spanish", "puedo hablar español", "P18", 3],
-      ["I can speak a little", "puedo hablar un poco", "P18", 3],
-      ["I'm not sure if I can", "No estoy seguro si puedo", "P06", 3],
+      ["I can't remember", "no puedo recordar", "P18", 2],
+      ["I want to be able to speak", "Quiero poder hablar", "P01", 3],
+      ["I want to be able to try", "Quiero poder intentar", "P01", 3],
+      ["I'm trying to be able to speak", "Estoy intentando poder hablar", "P02", 3],
+      ["I'm going to be able to speak", "Voy a poder hablar", "P03", 3],
       ["I'm not sure if I can speak", "No estoy seguro si puedo hablar", "P06", 4],
-      ["I'm not sure if I can remember", "No estoy seguro si puedo recordar", "P06", 4],
-      ["I'm not sure if I can speak Spanish with you now", "No estoy seguro si puedo hablar español contigo ahora", "P06", 6]
-    ]
+      ["I speak because I can", "Hablo porque puedo", "P05", 3],
+      ["how I can speak better", "cómo puedo hablar mejor", "P12", 4]
+    ],
+    "pattern_distribution": "P01 (2x), P02 (1x), P03 (1x), P05 (1x), P06 (1x), P12 (1x), P18 (3x) - PERFECT"
   },
 
   "S0010L05": {
@@ -92,17 +104,20 @@
     "type": "C",
     "available_legos": 30,
     "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18"],
+    "patterns_used_in_practice": ["P01", "P02", "P03", "P05", "P06", "P12", "P18"],
+    "pattern_variety_score": "7/7 patterns (100%)",
     "practice_phrases": [
-      ["the whole sentence", "toda la oración", null, 1],
-      ["I want the whole sentence", "Quiero toda la oración", "P01", 2],
-      ["I can remember the whole sentence", "puedo recordar toda la oración", "P18", 3],
+      ["the whole sentence", "toda la oración", null, 2],
+      ["I remember the whole sentence", "Recuerdo toda la oración", "P05", 3],
+      ["I want to remember the whole sentence", "Quiero recordar toda la oración", "P01", 4],
+      ["I want to say the whole sentence", "Quiero decir toda la oración", "P01", 4],
       ["I'm trying to remember the whole sentence", "Estoy intentando recordar toda la oración", "P02", 4],
-      ["I'm going to learn the whole sentence", "Voy a aprender toda la oración", "P03", 4],
+      ["I'm going to remember the whole sentence", "Voy a recordar toda la oración", "P03", 4],
+      ["I can remember the whole sentence", "Puedo recordar toda la oración", "P18", 4],
+      ["I'm not sure if I can remember the whole sentence", "No estoy seguro si puedo recordar toda la oración", "P06", 5],
       ["how to remember the whole sentence", "cómo recordar toda la oración", "P12", 3],
-      ["I'm not sure if I can remember the whole sentence", "No estoy seguro si puedo recordar toda la oración", "P06", 6],
-      ["I want to try to remember the whole sentence", "Quiero intentar recordar toda la oración", "P01", 5],
-      ["I'm trying to learn how to say the whole sentence in Spanish", "Estoy intentando aprender cómo hablar toda la oración en español", "P02", 8],
-      ["I'm not sure if I can remember the whole sentence now", "No estoy seguro si puedo recordar toda la oración ahora", "P06", 7]
-    ]
+      ["I can't remember the whole sentence now", "No puedo recordar toda la oración ahora", "P18", 4]
+    ],
+    "pattern_distribution": "P01 (2x), P02 (1x), P03 (1x), P05 (1x), P06 (1x), P12 (1x), P18 (2x), null (1x) - EXCELLENT"
   }
 }

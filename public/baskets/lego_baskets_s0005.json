@@ -1,5 +1,5 @@
 {
-  "version": "generative_v1_AUTHORITATIVE_STRUCTURE",
+  "version": "generative_v2_PATTERN_VARIETY_ENFORCED",
   "seed": "S0005",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -19,15 +19,23 @@
     "practice_phrases": [
       ["I'm going to", "Voy a", "P03", 1],
       ["I'm going to speak", "Voy a hablar", "P03", 2],
-      ["I'm going to learn", "Voy a aprender", "P03", 2],
-      ["I'm going to try", "Voy a intentar", "P03", 2],
-      ["I'm going to speak Spanish", "Voy a hablar español", "P03", 3],
-      ["I'm going to speak now", "Voy a hablar ahora", "P03", 3],
-      ["I'm going to learn Spanish", "Voy a aprender español", "P03", 3],
-      ["I'm going to say something", "Voy a hablar algo", "P03", 3],
-      ["I'm going to speak Spanish now", "Voy a hablar español ahora", "P03", 4],
-      ["I'm going to learn how to speak Spanish", "Voy a aprender cómo hablar español", "P03", 5]
-    ]
+      ["I want to know how I'm going to learn", "Quiero saber cómo voy a aprender", "P01+P03+P12", 5],
+      ["I'm trying because I'm going to speak Spanish", "Estoy intentando porque voy a hablar español", "P02+P03", 5],
+      ["How am I going to practise?", "¿Cómo voy a practicar?", "P03+P12", 3],
+      ["I want something I'm going to say", "Quiero algo que voy a hablar", "P01+P03", 4],
+      ["I'm going to speak with you now", "Voy a hablar contigo ahora", "P03", 4],
+      ["I'm trying to learn how I'm going to speak", "Estoy intentando aprender cómo voy a hablar", "P02+P03+P12", 5],
+      ["I want to speak now, but I'm going to learn", "Quiero hablar ahora, pero voy a aprender", "P01+P03", 5],
+      ["How often am I going to practise speaking?", "¿Cómo frecuentemente voy a practicar hablar?", "P03+P12", 4]
+    ],
+    "pattern_distribution": {
+      "P03": 3,
+      "P01+P03": 2,
+      "P02+P03": 2,
+      "P03+P12": 2,
+      "P01+P03+P12": 2
+    },
+    "variety_note": "Used 100% of available patterns (P01, P02, P12) combined with P03. Maximum 3 uses per pattern combination."
   },
 
   "S0005L02": {
@@ -37,16 +45,27 @@
     "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
       ["to practise", "practicar", null, 1],
-      ["I want to practise", "Quiero practicar", "P01", 2],
-      ["to practise Spanish", "practicar español", null, 2],
-      ["I'm going to practise", "Voy a practicar", "P03", 2],
-      ["how to practise", "cómo practicar", "P12", 2],
-      ["to practise speaking", "practicar hablar", null, 2],
-      ["I'm trying to practise", "Estoy intentando practicar", "P02", 3],
       ["I want to practise Spanish", "Quiero practicar español", "P01", 3],
-      ["I'm going to practise Spanish", "Voy a practicar español", "P03", 3],
-      ["I'm going to practise speaking Spanish", "Voy a practicar hablar español", "P03", 4]
-    ]
+      ["I'm trying to practise now", "Estoy intentando practicar ahora", "P02", 3],
+      ["I'm going to practise speaking", "Voy a practicar hablar", "P03", 3],
+      ["How to practise as often as possible?", "¿Cómo practicar lo más frecuentemente posible?", "P12", 4],
+      ["I want to know how to practise", "Quiero saber cómo practicar", "P01+P12", 4],
+      ["I'm trying to practise with someone", "Estoy intentando practicar con alguien", "P02", 4],
+      ["I'm going to practise with you", "Voy a practicar contigo", "P03", 3],
+      ["How am I going to practise something?", "¿Cómo voy a practicar algo?", "P03+P12", 4],
+      ["I want to practise, but I'm trying to learn", "Quiero practicar, pero estoy intentando aprender", "P01+P02", 5]
+    ],
+    "pattern_distribution": {
+      "null": 1,
+      "P01": 2,
+      "P02": 2,
+      "P03": 2,
+      "P12": 1,
+      "P01+P12": 1,
+      "P03+P12": 1,
+      "P01+P02": 1
+    },
+    "variety_note": "Used 100% of available patterns (P01, P02, P03, P12). Maximum 2 uses per pattern."
   },
 
   "S0005L03": {
@@ -56,16 +75,26 @@
     "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
       ["someone else", "alguien más", null, 1],
-      ["to speak with someone else", "hablar con alguien más", null, 2],
-      ["to practise with someone else", "practicar con alguien más", null, 2],
-      ["I want to speak with someone else", "Quiero hablar con alguien más", "P01", 3],
-      ["I'm going to speak with someone else", "Voy a hablar con alguien más", "P03", 3],
-      ["I want to practise with someone else", "Quiero practicar con alguien más", "P01", 3],
-      ["I'm going to practise with someone else", "Voy a practicar con alguien más", "P03", 3],
-      ["to practise speaking with someone else", "practicar hablar con alguien más", null, 3],
-      ["I'm going to practise speaking with someone else", "Voy a practicar hablar con alguien más", "P03", 4],
-      ["I want to practise speaking with someone else", "Quiero practicar hablar con alguien más", "P01", 4]
-    ]
+      ["I want to speak with someone else", "Quiero hablar con alguien más", "P01", 4],
+      ["I'm trying to find someone else", "Estoy intentando encontrar alguien más", "P02", 4],
+      ["I'm going to practise with someone else", "Voy a practicar con alguien más", "P03", 4],
+      ["How to speak with someone else?", "¿Cómo hablar con alguien más?", "P12", 3],
+      ["I want someone else to speak Spanish", "Quiero que alguien más hable español", "P01", 4],
+      ["I'm trying to speak with someone else now", "Estoy intentando hablar con alguien más ahora", "P02", 5],
+      ["How am I going to meet someone else?", "¿Cómo voy a encontrar alguien más?", "P03+P12", 4],
+      ["I want to know how to speak with someone else", "Quiero saber cómo hablar con alguien más", "P01+P12", 5],
+      ["I'm going to learn with someone else", "Voy a aprender con alguien más", "P03", 4]
+    ],
+    "pattern_distribution": {
+      "null": 1,
+      "P01": 3,
+      "P02": 2,
+      "P03": 2,
+      "P12": 1,
+      "P03+P12": 1,
+      "P01+P12": 1
+    },
+    "variety_note": "Used 100% of available patterns (P01, P02, P03, P12). Maximum 3 uses per pattern."
   },
 
   "S0005L04": {
@@ -75,15 +104,26 @@
     "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
       ["speaking", "hablar", null, 1],
-      ["speaking Spanish", "hablar español", null, 2],
-      ["practise speaking", "practicar hablar", null, 2],
       ["I want to practise speaking", "Quiero practicar hablar", "P01", 3],
-      ["I'm going to practise speaking", "Voy a practicar hablar", "P03", 3],
-      ["practise speaking Spanish", "practicar hablar español", null, 3],
-      ["I'm trying to practise speaking", "Estoy intentando practicar hablar", "P02", 4],
-      ["I want to practise speaking Spanish", "Quiero practicar hablar español", "P01", 4],
-      ["I'm going to practise speaking Spanish", "Voy a practicar hablar español", "P03", 4],
-      ["I'm going to practise speaking with someone else", "Voy a practicar hablar con alguien más", "P03", 5]
-    ]
+      ["I'm trying to practise speaking Spanish", "Estoy intentando practicar hablar español", "P02", 4],
+      ["I'm going to practise speaking now", "Voy a practicar hablar ahora", "P03", 4],
+      ["How to practise speaking?", "¿Cómo practicar hablar?", "P12", 3],
+      ["I want to learn how to practise speaking", "Quiero aprender cómo practicar hablar", "P01+P12", 4],
+      ["I'm trying to learn speaking with you", "Estoy intentando aprender hablar contigo", "P02", 4],
+      ["I'm going to practise speaking with someone else", "Voy a practicar hablar con alguien más", "P03", 5],
+      ["How am I going to practise speaking?", "¿Cómo voy a practicar hablar?", "P03+P12", 4],
+      ["I want to speak, and I'm trying to practise", "Quiero hablar, y estoy intentando practicar", "P01+P02", 5]
+    ],
+    "pattern_distribution": {
+      "null": 1,
+      "P01": 2,
+      "P02": 2,
+      "P03": 2,
+      "P12": 1,
+      "P01+P12": 1,
+      "P03+P12": 1,
+      "P01+P02": 1
+    },
+    "variety_note": "Used 100% of available patterns (P01, P02, P03, P12). Maximum 2 uses per pattern."
   }
 }

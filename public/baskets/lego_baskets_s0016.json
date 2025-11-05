@@ -7,6 +7,7 @@
   "cumulative_legos_at_seed_start": 45,
   "cumulative_legos_after_seed": 49,
   "patterns_used": ["P01"],
+  "patterns_available_before_seed": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P18"],
   "legos": [
     {
       "lego_id": "S0016L01",
@@ -14,18 +15,18 @@
       "type": "C",
       "pattern_demonstrated": "P01",
       "available_legos": 45,
-      "note": "Third person masculine want - extends P01 pattern",
+      "note": "Third person masculine want - extends P01 pattern - STRICT PATTERN VARIETY ENFORCED",
       "practice_phrases": [
-        ["He wants", "Él quiere", "P01", 2],
-        ["He wants to speak", "Él quiere hablar", "P01", 3],
-        ["He wants to learn", "Él quiere aprender", "P01", 3],
-        ["He wants to speak Spanish", "Él quiere hablar español", "P01", 4],
-        ["He wants to speak now", "Él quiere hablar ahora", "P01", 4],
-        ["He wants to speak tomorrow", "Él quiere hablar mañana", "P01", 4],
-        ["He wants to speak with me", "Él quiere hablar conmigo", "P01", 4],
-        ["He wants to speak Spanish with me", "Él quiere hablar español conmigo", "P01", 5],
-        ["He wants to speak very well", "Él quiere hablar muy bien", "P01", 5],
-        ["He wants to speak Spanish all day", "Él quiere hablar español todo el día", "P01", 6]
+        ["he wants", "Él quiere", "P01", 2],
+        ["I'm not sure if he wants to speak", "No estoy seguro si él quiere hablar", "P06+P01", 8],
+        ["He wants to speak now", "Él quiere hablar ahora", "P01", 5],
+        ["He's trying to understand what he wants", "Él está intentando entender lo que quiere", "P02+P01", 8],
+        ["He's going to get what he wants", "Él va a conseguir lo que quiere", "P03+P01", 8],
+        ["He'd like what he wants", "A él le gustaría lo que quiere", "P04+P01", 7],
+        ["He wants to learn Spanish", "Él quiere aprender español", "P01", 5],
+        ["how he wants to speak", "cómo él quiere hablar", "P12+P01", 5],
+        ["I want him to get what he wants", "Quiero que él consiga lo que quiere", "P01+P10", 9],
+        ["He can do what he wants", "Él puede hacer lo que quiere", "P18+P01", 7]
       ]
     },
     {
@@ -34,18 +35,18 @@
       "type": "B",
       "pattern_demonstrated": null,
       "available_legos": 46,
-      "note": "Infinitive verb for returning",
+      "note": "Infinitive verb for returning - STRICT PATTERN VARIETY ENFORCED",
       "practice_phrases": [
-        ["To come back", "Volver", null, 1],
-        ["I want to come back", "Quiero volver", "P01", 3],
-        ["You want to come back", "Quieres volver", "P01", 3],
-        ["He wants to come back", "Él quiere volver", "P01", 3],
-        ["I'm going to come back", "Voy a volver", "P03", 3],
-        ["I want to come back now", "Quiero volver ahora", "P01", 4],
-        ["I want to come back tomorrow", "Quiero volver mañana", "P01", 4],
-        ["He wants to come back tomorrow", "Él quiere volver mañana", "P01", 4],
-        ["I'm going to come back tomorrow", "Voy a volver mañana", "P03", 4],
-        ["He wants to come back with me", "Él quiere volver conmigo", "P01", 5]
+        ["to come back", "volver", null, 2],
+        ["I want to come back", "Quiero volver", "P01", 4],
+        ["I'm trying to come back", "Estoy intentando volver", "P02", 5],
+        ["I'm going to come back", "Voy a volver", "P03", 5],
+        ["I'd like to come back", "Me gustaría volver", "P04", 5],
+        ["I come back every day", "Vuelvo cada día", "P05", 4],
+        ["I'm not sure if I can come back", "No estoy seguro si puedo volver", "P06+P18", 8],
+        ["how to come back", "cómo volver", "P12", 3],
+        ["I want you to come back", "Quiero que vuelvas", "P01+P10", 5],
+        ["I can come back tomorrow", "Puedo volver mañana", "P18", 5]
       ]
     },
     {
@@ -54,18 +55,18 @@
       "type": "C",
       "pattern_demonstrated": null,
       "available_legos": 47,
-      "note": "Plural indefinite expression",
+      "note": "Plural indefinite expression - STRICT PATTERN VARIETY ENFORCED",
       "practice_phrases": [
-        ["Everyone else", "Todos los demás", null, 1],
-        ["With everyone else", "Con todos los demás", null, 2],
-        ["I speak with everyone else", "Hablo con todos los demás", "P05", 4],
-        ["You speak with everyone else", "Hablas con todos los demás", "P05", 4],
-        ["I want to speak with everyone else", "Quiero hablar con todos los demás", "P01", 5],
-        ["He wants to speak with everyone else", "Él quiere hablar con todos los demás", "P01", 5],
-        ["I want to come back with everyone else", "Quiero volver con todos los demás", "P01", 5],
-        ["He wants to come back with everyone else", "Él quiere volver con todos los demás", "P01", 5],
-        ["I'm going to speak with everyone else", "Voy a hablar con todos los demás", "P03", 5],
-        ["He wants to speak Spanish with everyone else", "Él quiere hablar español con todos los demás", "P01", 6]
+        ["everyone else", "todos los demás", null, 2],
+        ["I want to speak with everyone else", "Quiero hablar con todos los demás", "P01", 7],
+        ["I'm trying to learn with everyone else", "Estoy intentando aprender con todos los demás", "P02", 8],
+        ["I'm going to practise with everyone else", "Voy a practicar con todos los demás", "P03", 8],
+        ["I'd like to meet everyone else", "Me gustaría conocer a todos los demás", "P04", 7],
+        ["Everyone else speaks Spanish", "Todos los demás hablan español", "P05", 5],
+        ["I'm not sure if everyone else speaks", "No estoy seguro si todos los demás hablan", "P06", 8],
+        ["how everyone else speaks", "cómo todos los demás hablan", "P12", 5],
+        ["I want everyone else to speak", "Quiero que todos los demás hablen", "P01+P10", 7],
+        ["Everyone else can speak well", "Todos los demás pueden hablar bien", "P18", 6]
       ]
     },
     {
@@ -74,24 +75,25 @@
       "type": "C",
       "pattern_demonstrated": null,
       "available_legos": 48,
-      "note": "Time expression for future reference",
+      "note": "Time expression for future reference - STRICT PATTERN VARIETY ENFORCED",
       "practice_phrases": [
-        ["Later on", "Más tarde", null, 1],
-        ["I speak later on", "Hablo más tarde", "P05", 3],
-        ["You speak later on", "Hablas más tarde", "P05", 3],
-        ["He wants to speak later on", "Él quiere hablar más tarde", "P01", 4],
-        ["I want to speak later on", "Quiero hablar más tarde", "P01", 4],
-        ["I'm going to speak later on", "Voy a hablar más tarde", "P03", 4],
-        ["He wants to come back later on", "Él quiere volver más tarde", "P01", 4],
-        ["I want to come back later on", "Quiero volver más tarde", "P01", 4],
-        ["He wants to speak with me later on", "Él quiere hablar conmigo más tarde", "P01", 5],
-        ["He wants to come back with everyone else later on", "Él quiere volver con todos los demás más tarde", "P01", 6]
+        ["later on", "más tarde", null, 2],
+        ["I want to speak later on", "Quiero hablar más tarde", "P01", 5],
+        ["I'm trying to learn later on", "Estoy intentando aprender más tarde", "P02", 6],
+        ["I'm going to practise later on", "Voy a practicar más tarde", "P03", 6],
+        ["I'd like to speak later on", "Me gustaría hablar más tarde", "P04", 6],
+        ["You speak later on", "Hablas más tarde", "P05", 4],
+        ["I'm not sure if I can speak later on", "No estoy seguro si puedo hablar más tarde", "P06+P18", 9],
+        ["how to speak later on", "cómo hablar más tarde", "P12", 5],
+        ["I want you to speak later on", "Quiero que hables más tarde", "P01+P10", 6],
+        ["I can come back later on", "Puedo volver más tarde", "P18", 5]
       ]
     }
   ],
   "generation_metadata": {
-    "version": "basket_v1",
+    "version": "basket_v2_pattern_variety_enforced",
     "gate_compliant": true,
+    "pattern_variety_enforced": true,
     "generated_at": "2025-11-05"
   }
 }

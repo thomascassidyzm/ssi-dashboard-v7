@@ -7,6 +7,7 @@
   "cumulative_legos_at_seed_start": 41,
   "cumulative_legos_after_seed": 42,
   "patterns_used": ["P05"],
+  "patterns_available_before_seed": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P18"],
   "legos": [
     {
       "lego_id": "S0014L01",
@@ -14,24 +15,25 @@
       "type": "C",
       "pattern_demonstrated": null,
       "available_legos": 41,
-      "note": "Time expression for duration",
+      "note": "Time expression for duration - STRICT PATTERN VARIETY ENFORCED",
       "practice_phrases": [
-        ["All day", "Todo el día", null, 1],
-        ["I speak all day", "Hablo todo el día", "P05", 3],
-        ["You speak all day", "Hablas todo el día", "P05", 3],
-        ["I speak Spanish all day", "Hablo español todo el día", "P05", 4],
-        ["You speak Spanish all day", "Hablas español todo el día", "P05", 4],
-        ["I want to speak all day", "Quiero hablar todo el día", "P01", 4],
-        ["I'm trying to learn all day", "Estoy intentando aprender todo el día", "P02", 5],
-        ["I'm going to speak all day", "Voy a hablar todo el día", "P03", 4],
-        ["You speak Spanish with me all day", "Hablas español conmigo todo el día", "P05", 6],
-        ["You speak very well all day", "Hablas muy bien todo el día", "P05", 5]
+        ["all day", "todo el día", null, 2],
+        ["I want to speak all day", "Quiero hablar todo el día", "P01", 6],
+        ["I'm trying to learn all day", "Estoy intentando aprender todo el día", "P02", 7],
+        ["I'm going to practise all day", "Voy a practicar todo el día", "P03", 7],
+        ["I'd like to speak all day", "Me gustaría hablar todo el día", "P04", 7],
+        ["You speak all day", "Hablas todo el día", "P05", 4],
+        ["I'm not sure if I can speak all day", "No estoy seguro si puedo hablar todo el día", "P06+P18", 9],
+        ["how to speak all day", "cómo hablar todo el día", "P12", 5],
+        ["I want you to speak all day", "Quiero que hables todo el día", "P01+P10", 7],
+        ["I can practise all day", "Puedo practicar todo el día", "P18", 5]
       ]
     }
   ],
   "generation_metadata": {
-    "version": "basket_v1",
+    "version": "basket_v2_pattern_variety_enforced",
     "gate_compliant": true,
+    "pattern_variety_enforced": true,
     "generated_at": "2025-11-05"
   }
 }

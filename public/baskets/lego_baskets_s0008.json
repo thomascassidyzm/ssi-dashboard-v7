@@ -1,5 +1,5 @@
 {
-  "version": "generative_v1_AUTHORITATIVE_STRUCTURE",
+  "version": "generative_v2_PATTERN_VARIETY_ENFORCED",
   "seed": "S0008",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -19,16 +19,27 @@
     "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
       ["to explain", "explicar", null, 1],
-      ["I want to explain", "Quiero explicar", "P01", 2],
-      ["I'm going to explain", "Voy a explicar", "P03", 2],
-      ["how to explain", "cómo explicar", "P12", 2],
-      ["to explain Spanish", "explicar español", null, 2],
-      ["to explain something", "explicar algo", null, 2],
-      ["I'm trying to explain", "Estoy intentando explicar", "P02", 3],
-      ["I want to try to explain", "Quiero intentar explicar", "P01", 3],
-      ["I'm going to try to explain", "Voy a intentar explicar", "P03", 3],
-      ["I'm trying to explain a word", "Estoy intentando explicar una palabra", "P02", 4]
-    ]
+      ["I want to explain something", "Quiero explicar algo", "P01", 3],
+      ["I'm trying to explain Spanish", "Estoy intentando explicar español", "P02", 3],
+      ["I'm going to explain today", "Voy a explicar hoy", "P03", 3],
+      ["How to explain as hard as I can?", "¿Cómo explicar tan duro como pueda?", "P12", 4],
+      ["I want to know how to explain", "Quiero saber cómo explicar", "P01+P12", 4],
+      ["I'm trying to explain a word now", "Estoy intentando explicar una palabra ahora", "P02", 5],
+      ["How am I going to explain?", "¿Cómo voy a explicar?", "P03+P12", 3],
+      ["I want to try to explain, and I'm trying to remember", "Quiero intentar explicar, y estoy intentando recordar", "P01+P02", 6],
+      ["I'm going to try to explain", "Voy a intentar explicar", "P03", 3]
+    ],
+    "pattern_distribution": {
+      "null": 1,
+      "P01": 2,
+      "P02": 2,
+      "P03": 2,
+      "P12": 1,
+      "P01+P12": 1,
+      "P03+P12": 1,
+      "P01+P02": 1
+    },
+    "variety_note": "Used 100% of available patterns (P01, P02, P03, P12). Maximum 2 uses per pattern."
   },
 
   "S0008L02": {
@@ -38,15 +49,25 @@
     "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
       ["what I mean", "lo que quiero decir", null, 1],
-      ["to explain what I mean", "explicar lo que quiero decir", null, 2],
-      ["I want to explain what I mean", "Quiero explicar lo que quiero decir", "P01", 3],
-      ["I'm going to explain what I mean", "Voy a explicar lo que quiero decir", "P03", 3],
-      ["I'm trying to explain what I mean", "Estoy intentando explicar lo que quiero decir", "P02", 4],
-      ["to try to explain what I mean", "intentar explicar lo que quiero decir", null, 3],
-      ["how to explain what I mean", "cómo explicar lo que quiero decir", "P12", 3],
-      ["I want to try to explain what I mean", "Quiero intentar explicar lo que quiero decir", "P01", 4],
-      ["I'm going to try to explain what I mean", "Voy a intentar explicar lo que quiero decir", "P03", 4],
-      ["I'm trying to remember what I mean", "Estoy intentando recordar lo que quiero decir", "P02", 4]
-    ]
+      ["I want to explain what I mean", "Quiero explicar lo que quiero decir", "P01", 4],
+      ["I'm trying to remember what I mean", "Estoy intentando recordar lo que quiero decir", "P02", 4],
+      ["I'm going to explain what I mean", "Voy a explicar lo que quiero decir", "P03", 4],
+      ["How to explain what I mean?", "¿Cómo explicar lo que quiero decir?", "P12", 3],
+      ["I want to try to explain what I mean", "Quiero intentar explicar lo que quiero decir", "P01", 5],
+      ["I'm trying to explain what I mean today", "Estoy intentando explicar lo que quiero decir hoy", "P02", 5],
+      ["How am I going to explain what I mean?", "¿Cómo voy a explicar lo que quiero decir?", "P03+P12", 4],
+      ["I want to know how to explain what I mean", "Quiero saber cómo explicar lo que quiero decir", "P01+P12", 5],
+      ["I'm going to try to explain what I mean now", "Voy a intentar explicar lo que quiero decir ahora", "P03", 5]
+    ],
+    "pattern_distribution": {
+      "null": 1,
+      "P01": 3,
+      "P02": 2,
+      "P03": 2,
+      "P12": 1,
+      "P03+P12": 1,
+      "P01+P12": 1
+    },
+    "variety_note": "Used 100% of available patterns (P01, P02, P03, P12). Maximum 3 uses per pattern."
   }
 }

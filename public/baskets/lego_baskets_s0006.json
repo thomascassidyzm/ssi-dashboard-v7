@@ -1,5 +1,5 @@
 {
-  "version": "generative_v1_AUTHORITATIVE_STRUCTURE",
+  "version": "generative_v2_PATTERN_VARIETY_ENFORCED",
   "seed": "S0006",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -19,16 +19,27 @@
     "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
       ["to remember", "recordar", null, 1],
-      ["I want to remember", "Quiero recordar", "P01", 2],
-      ["how to remember", "cómo recordar", "P12", 2],
-      ["I'm going to remember", "Voy a recordar", "P03", 2],
-      ["to remember Spanish", "recordar español", null, 2],
-      ["to remember something", "recordar algo", null, 2],
-      ["I'm trying to remember", "Estoy intentando recordar", "P02", 3],
-      ["I want to remember Spanish", "Quiero recordar español", "P01", 3],
-      ["I'm trying to remember something", "Estoy intentando recordar algo", "P02", 4],
+      ["I want to remember something", "Quiero recordar algo", "P01", 3],
+      ["I'm trying to remember Spanish", "Estoy intentando recordar español", "P02", 3],
+      ["I'm going to remember now", "Voy a recordar ahora", "P03", 3],
+      ["How to remember as often as possible?", "¿Cómo recordar lo más frecuentemente posible?", "P12", 4],
+      ["I want to know how to remember", "Quiero saber cómo recordar", "P01+P12", 4],
+      ["I'm trying to remember with someone else", "Estoy intentando recordar con alguien más", "P02", 4],
+      ["How am I going to remember?", "¿Cómo voy a recordar?", "P03+P12", 3],
+      ["I want to remember, but I'm trying to practise", "Quiero recordar, pero estoy intentando practicar", "P01+P02", 5],
       ["I'm going to try to remember", "Voy a intentar recordar", "P03", 3]
-    ]
+    ],
+    "pattern_distribution": {
+      "null": 1,
+      "P01": 2,
+      "P02": 2,
+      "P03": 2,
+      "P12": 1,
+      "P01+P12": 1,
+      "P03+P12": 1,
+      "P01+P02": 1
+    },
+    "variety_note": "Used 100% of available patterns (P01, P02, P03, P12). Maximum 2 uses per pattern."
   },
 
   "S0006L02": {
@@ -38,15 +49,25 @@
     "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
       ["a word", "una palabra", null, 1],
-      ["to remember a word", "recordar una palabra", null, 2],
-      ["I want a word", "Quiero una palabra", "P01", 2],
-      ["to say a word", "hablar una palabra", null, 2],
-      ["I want to remember a word", "Quiero recordar una palabra", "P01", 3],
-      ["how to remember a word", "cómo recordar una palabra", "P12", 3],
-      ["I'm going to remember a word", "Voy a recordar una palabra", "P03", 3],
+      ["I want to remember a word", "Quiero recordar una palabra", "P01", 4],
       ["I'm trying to remember a word", "Estoy intentando recordar una palabra", "P02", 4],
-      ["I want to say a word in Spanish", "Quiero hablar una palabra en español", "P01", 4],
-      ["I'm trying to remember a word now", "Estoy intentando recordar una palabra ahora", "P02", 5]
-    ]
+      ["I'm going to speak a word", "Voy a hablar una palabra", "P03", 4],
+      ["How to say a word in Spanish?", "¿Cómo hablar una palabra en español?", "P12", 4],
+      ["I want to learn a word now", "Quiero aprender una palabra ahora", "P01", 4],
+      ["I'm trying to practise a word", "Estoy intentando practicar una palabra", "P02", 4],
+      ["How am I going to remember a word?", "¿Cómo voy a recordar una palabra?", "P03+P12", 4],
+      ["I want to know how to say a word", "Quiero saber cómo hablar una palabra", "P01+P12", 5],
+      ["I'm going to learn a word with you", "Voy a aprender una palabra contigo", "P03", 5]
+    ],
+    "pattern_distribution": {
+      "null": 1,
+      "P01": 3,
+      "P02": 2,
+      "P03": 2,
+      "P12": 1,
+      "P03+P12": 1,
+      "P01+P12": 1
+    },
+    "variety_note": "Used 100% of available patterns (P01, P02, P03, P12). Maximum 3 uses per pattern."
   }
 }

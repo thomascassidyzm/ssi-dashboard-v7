@@ -1,5 +1,5 @@
 {
-  "version": "generative_v1",
+  "version": "generative_v2_strict_variety",
   "seed": "S0001",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -10,6 +10,7 @@
   "pattern_introduced": "P01: Quiero + infinitive",
   "cumulative_patterns": ["P01"],
   "cumulative_legos": 5,
+  "note": "First seed - only P01 available for pattern practice",
 
   "S0001L01": {
     "lego": ["I want", "Quiero"],
@@ -17,7 +18,16 @@
     "available_legos": 0,
     "available_patterns": [],
     "practice_phrases": [
-      ["I want", "Quiero", null, 1]
+      ["I want", "Quiero", "P01", 1],
+      ["I want more", "Quiero más", "P01", 2],
+      ["I want everything", "Quiero todo", "P01", 2],
+      ["I really want this", "Realmente quiero esto", null, 3],
+      ["I want the answer", "Quiero la respuesta", null, 3],
+      ["I don't want problems", "No quiero problemas", null, 3],
+      ["I want to understand better", "Quiero entender mejor", null, 4],
+      ["Do I really want this now?", "¿Realmente quiero esto ahora?", null, 4],
+      ["I want to improve quickly", "Quiero mejorar rápidamente", null, 4],
+      ["I definitely want to succeed", "Definitivamente quiero tener éxito", null, 5]
     ]
   },
 
@@ -28,7 +38,15 @@
     "available_patterns": ["P01"],
     "practice_phrases": [
       ["to speak", "hablar", null, 1],
-      ["I want to speak", "Quiero hablar", "P01", 2]
+      ["I want to speak", "Quiero hablar", "P01", 2],
+      ["to speak clearly", "hablar claramente", null, 2],
+      ["I want to speak better", "Quiero hablar mejor", "P01", 3],
+      ["to speak without fear", "hablar sin miedo", null, 3],
+      ["learning to speak", "aprendiendo a hablar", null, 3],
+      ["ready to speak", "listo para hablar", null, 3],
+      ["to speak more fluently", "hablar más fluidamente", null, 4],
+      ["beginning to speak confidently", "empezando a hablar con confianza", null, 5],
+      ["to speak naturally and easily", "hablar naturalmente y fácilmente", null, 5]
     ]
   },
 
@@ -39,9 +57,15 @@
     "available_patterns": ["P01"],
     "practice_phrases": [
       ["Spanish", "español", null, 1],
-      ["to speak Spanish", "hablar español", null, 2],
       ["I want Spanish", "Quiero español", "P01", 2],
-      ["I want to speak Spanish", "Quiero hablar español", "P01", 3]
+      ["Spanish is important", "español es importante", null, 3],
+      ["I want more Spanish", "Quiero más español", "P01", 3],
+      ["Spanish every day", "español cada día", null, 3],
+      ["Spanish and English", "español e inglés", null, 3],
+      ["practicing Spanish", "practicando español", null, 2],
+      ["better Spanish skills", "mejores habilidades en español", null, 4],
+      ["Spanish becomes easier", "español se vuelve más fácil", null, 4],
+      ["understanding Spanish naturally", "entendiendo español naturalmente", null, 4]
     ]
   },
 
@@ -52,11 +76,15 @@
     "available_patterns": ["P01"],
     "practice_phrases": [
       ["with you", "contigo", null, 1],
-      ["to speak with you", "hablar contigo", null, 2],
-      ["Spanish with you", "español contigo", null, 2],
-      ["I want to speak with you", "Quiero hablar contigo", "P01", 3],
-      ["to speak Spanish with you", "hablar español contigo", null, 3],
-      ["I want to speak Spanish with you", "Quiero hablar español contigo", "P01", 4]
+      ["I want with you", "Quiero contigo", "P01", 2],
+      ["going with you", "yendo contigo", null, 2],
+      ["I want to stay with you", "Quiero quedarme contigo", "P01", 3],
+      ["practicing with you", "practicando contigo", null, 2],
+      ["studying with you", "estudiando contigo", null, 2],
+      ["with you always", "contigo siempre", null, 2],
+      ["learning better with you", "aprendiendo mejor contigo", null, 4],
+      ["with you and everyone else", "contigo y todos los demás", null, 4],
+      ["comfortable speaking with you", "cómodo hablando contigo", null, 4]
     ]
   },
 
@@ -67,13 +95,23 @@
     "available_patterns": ["P01"],
     "practice_phrases": [
       ["now", "ahora", null, 1],
-      ["to speak now", "hablar ahora", null, 2],
-      ["I want to speak now", "Quiero hablar ahora", "P01", 3],
-      ["Spanish with you now", "español contigo ahora", null, 3],
-      ["I want to speak Spanish now", "Quiero hablar español ahora", "P01", 4],
-      ["to speak Spanish with you now", "hablar español contigo ahora", null, 4],
-      ["I want to speak with you now", "Quiero hablar contigo ahora", "P01", 4],
-      ["I want to speak Spanish with you now", "Quiero hablar español contigo ahora", "P01", 5]
+      ["I want now", "Quiero ahora", "P01", 2],
+      ["starting now", "empezando ahora", null, 2],
+      ["not now", "no ahora", null, 2],
+      ["I want to begin now", "Quiero comenzar ahora", "P01", 3],
+      ["now and later", "ahora y después", null, 3],
+      ["now or never", "ahora o nunca", null, 3],
+      ["right now immediately", "ahora mismo inmediatamente", null, 3],
+      ["from now forward", "de ahora en adelante", null, 4],
+      ["now I finally understand", "ahora finalmente entiendo", null, 4]
     ]
+  },
+
+  "pattern_distribution_summary": {
+    "S0001L01": {"P01": 3, "null": 7, "total_patterns_used": 1, "available_patterns": 0, "variety_score": "N/A"},
+    "S0001L02": {"P01": 2, "null": 8, "total_patterns_used": 1, "available_patterns": 1, "variety_score": "100%"},
+    "S0001L03": {"P01": 2, "null": 8, "total_patterns_used": 1, "available_patterns": 1, "variety_score": "100%"},
+    "S0001L04": {"P01": 2, "null": 8, "total_patterns_used": 1, "available_patterns": 1, "variety_score": "100%"},
+    "S0001L05": {"P01": 2, "null": 8, "total_patterns_used": 1, "available_patterns": 1, "variety_score": "100%"}
   }
 }

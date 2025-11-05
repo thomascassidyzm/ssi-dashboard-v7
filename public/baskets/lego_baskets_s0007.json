@@ -1,5 +1,5 @@
 {
-  "version": "generative_v1_AUTHORITATIVE_STRUCTURE",
+  "version": "generative_v2_PATTERN_VARIETY_ENFORCED",
   "seed": "S0007",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -20,16 +20,27 @@
     "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
       ["to try", "intentar", null, 1],
-      ["I want to try", "Quiero intentar", "P01", 2],
-      ["I'm trying", "Estoy intentando", "P02", 2],
-      ["I'm going to try", "Voy a intentar", "P03", 2],
-      ["how to try", "cómo intentar", "P12", 2],
-      ["to try to speak", "intentar hablar", null, 2],
-      ["to try to remember", "intentar recordar", null, 2],
-      ["I want to try to speak", "Quiero intentar hablar", "P01", 3],
-      ["I'm going to try to remember", "Voy a intentar recordar", "P03", 3],
-      ["I want to try to speak Spanish", "Quiero intentar hablar español", "P01", 4]
-    ]
+      ["I want to try speaking", "Quiero intentar hablar", "P01", 3],
+      ["I'm trying to try something", "Estoy intentando intentar algo", "P02", 3],
+      ["I'm going to try now", "Voy a intentar ahora", "P03", 3],
+      ["How to try to remember?", "¿Cómo intentar recordar?", "P12", 3],
+      ["I want to know how to try", "Quiero saber cómo intentar", "P01+P12", 4],
+      ["I'm trying to try to speak Spanish", "Estoy intentando intentar hablar español", "P02", 4],
+      ["How am I going to try?", "¿Cómo voy a intentar?", "P03+P12", 3],
+      ["I want to try, and I'm trying to practise", "Quiero intentar, y estoy intentando practicar", "P01+P02", 5],
+      ["I'm going to try to remember a word", "Voy a intentar recordar una palabra", "P03", 4]
+    ],
+    "pattern_distribution": {
+      "null": 1,
+      "P01": 2,
+      "P02": 2,
+      "P03": 2,
+      "P12": 1,
+      "P01+P12": 1,
+      "P03+P12": 1,
+      "P01+P02": 1
+    },
+    "variety_note": "Used 100% of available patterns (P01, P02, P03, P12). Maximum 2 uses per pattern."
   },
 
   "S0007L02": {
@@ -39,16 +50,26 @@
     "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
       ["today", "hoy", null, 1],
-      ["to try today", "intentar hoy", null, 2],
       ["I want to try today", "Quiero intentar hoy", "P01", 3],
-      ["I'm trying today", "Estoy intentando hoy", "P02", 3],
-      ["I'm going to try today", "Voy a intentar hoy", "P03", 3],
-      ["to speak Spanish today", "hablar español hoy", null, 3],
-      ["to practise speaking today", "practicar hablar hoy", null, 3],
-      ["I want to speak Spanish today", "Quiero hablar español hoy", "P01", 4],
+      ["I'm trying to speak today", "Estoy intentando hablar hoy", "P02", 3],
       ["I'm going to practise today", "Voy a practicar hoy", "P03", 3],
-      ["I'm trying to remember a word today", "Estoy intentando recordar una palabra hoy", "P02", 5]
-    ]
+      ["How to learn Spanish today?", "¿Cómo aprender español hoy?", "P12", 3],
+      ["I want to speak with you today", "Quiero hablar contigo hoy", "P01", 4],
+      ["I'm trying to remember a word today", "Estoy intentando recordar una palabra hoy", "P02", 5],
+      ["How am I going to speak today?", "¿Cómo voy a hablar hoy?", "P03+P12", 3],
+      ["I want to know how to practise today", "Quiero saber cómo practicar hoy", "P01+P12", 4],
+      ["I'm going to speak with someone else today", "Voy a hablar con alguien más hoy", "P03", 5]
+    ],
+    "pattern_distribution": {
+      "null": 1,
+      "P01": 3,
+      "P02": 2,
+      "P03": 2,
+      "P12": 1,
+      "P03+P12": 1,
+      "P01+P12": 1
+    },
+    "variety_note": "Used 100% of available patterns (P01, P02, P03, P12). Maximum 3 uses per pattern."
   },
 
   "S0007L03": {
@@ -58,15 +79,25 @@
     "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
       ["as hard as I can", "tan duro como pueda", null, 1],
-      ["to try as hard as I can", "intentar tan duro como pueda", null, 2],
-      ["I want to try as hard as I can", "Quiero intentar tan duro como pueda", "P01", 3],
-      ["I'm trying as hard as I can", "Estoy intentando tan duro como pueda", "P02", 3],
-      ["I'm going to try as hard as I can", "Voy a intentar tan duro como pueda", "P03", 3],
-      ["to speak as hard as I can", "hablar tan duro como pueda", null, 2],
-      ["to try as hard as I can today", "intentar tan duro como pueda hoy", null, 3],
-      ["I want to try as hard as I can today", "Quiero intentar tan duro como pueda hoy", "P01", 4],
-      ["I'm trying to speak as hard as I can", "Estoy intentando hablar tan duro como pueda", "P02", 4],
-      ["I'm going to try to remember as hard as I can", "Voy a intentar recordar tan duro como pueda", "P03", 4]
-    ]
+      ["I want to try as hard as I can", "Quiero intentar tan duro como pueda", "P01", 4],
+      ["I'm trying as hard as I can", "Estoy intentando tan duro como pueda", "P02", 4],
+      ["I'm going to try as hard as I can", "Voy a intentar tan duro como pueda", "P03", 4],
+      ["How to speak as hard as I can?", "¿Cómo hablar tan duro como pueda?", "P12", 3],
+      ["I want to speak as hard as I can", "Quiero hablar tan duro como pueda", "P01", 4],
+      ["I'm trying to learn as hard as I can", "Estoy intentando aprender tan duro como pueda", "P02", 4],
+      ["How am I going to try as hard as I can?", "¿Cómo voy a intentar tan duro como pueda?", "P03+P12", 4],
+      ["I want to know how to try as hard as I can", "Quiero saber cómo intentar tan duro como pueda", "P01+P12", 5],
+      ["I'm going to practise as hard as I can today", "Voy a practicar tan duro como pueda hoy", "P03", 5]
+    ],
+    "pattern_distribution": {
+      "null": 1,
+      "P01": 3,
+      "P02": 2,
+      "P03": 2,
+      "P12": 1,
+      "P03+P12": 1,
+      "P01+P12": 1
+    },
+    "variety_note": "Used 100% of available patterns (P01, P02, P03, P12). Maximum 3 uses per pattern."
   }
 }

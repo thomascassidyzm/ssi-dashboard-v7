@@ -7,6 +7,7 @@
   "cumulative_legos_at_seed_start": 39,
   "cumulative_legos_after_seed": 41,
   "patterns_used": ["P05"],
+  "patterns_available_before_seed": ["P01", "P02", "P03", "P04", "P06", "P10", "P12", "P18"],
   "legos": [
     {
       "lego_id": "S0013L01",
@@ -14,18 +15,18 @@
       "type": "C",
       "pattern_demonstrated": "P05",
       "available_legos": 39,
-      "note": "Second person present tense conjugation",
+      "note": "Second person present tense conjugation - STRICT PATTERN VARIETY ENFORCED",
       "practice_phrases": [
-        ["You speak", "Hablas", null, 1],
-        ["You speak Spanish", "Hablas español", "P05", 2],
-        ["You speak now", "Hablas ahora", "P05", 2],
-        ["You speak today", "Hablas hoy", "P05", 2],
-        ["You speak with me", "Hablas conmigo", "P05", 3],
-        ["You speak a little Spanish", "Hablas un poco de español", "P05", 4],
-        ["You speak Spanish now", "Hablas español ahora", "P05", 3],
-        ["You speak Spanish today", "Hablas español hoy", "P05", 3],
-        ["You speak Spanish with me", "Hablas español conmigo", "P05", 4],
-        ["You speak a little Spanish with me", "Hablas un poco de español conmigo", "P05", 5]
+        ["you speak", "Hablas", "P05", 1],
+        ["I want you to speak", "Quiero que hables", "P01+P10", 5],
+        ["I'm not sure if you speak", "No estoy seguro si hablas", "P06", 6],
+        ["Are you going to speak?", "¿Vas a hablar?", "P03", 4],
+        ["how you speak", "cómo hablas", "P12", 3],
+        ["I'd like you to speak", "Me gustaría que hables", "P04+P10", 6],
+        ["Do you speak Spanish?", "¿Hablas español?", "P05", 3],
+        ["I'm trying to understand how you speak", "Estoy intentando entender cómo hablas", "P02+P12", 7],
+        ["I can understand when you speak", "Puedo entender cuando hablas", "P18", 6],
+        ["You speak after I finish", "Hablas después de que termine", "P05+P10", 6]
       ]
     },
     {
@@ -34,24 +35,25 @@
       "type": "C",
       "pattern_demonstrated": null,
       "available_legos": 40,
-      "note": "Adverbial phrase for manner",
+      "note": "Adverbial phrase for manner - STRICT PATTERN VARIETY ENFORCED",
       "practice_phrases": [
-        ["Very well", "Muy bien", null, 1],
-        ["I speak very well", "Hablo muy bien", "P05", 3],
-        ["You speak very well", "Hablas muy bien", "P05", 3],
-        ["I speak Spanish very well", "Hablo español muy bien", "P05", 4],
-        ["You speak Spanish very well", "Hablas español muy bien", "P05", 4],
+        ["very well", "muy bien", null, 2],
         ["I want to speak very well", "Quiero hablar muy bien", "P01", 5],
-        ["I'm trying to speak very well", "Estoy intentando hablar muy bien", "P02", 6],
-        ["I'm going to speak very well", "Voy a hablar muy bien", "P03", 5],
-        ["You speak very well now", "Hablas muy bien ahora", "P05", 4],
-        ["I speak Spanish with you very well", "Hablo español contigo muy bien", "P05", 6]
+        ["I'm trying to learn very well", "Estoy intentando aprender muy bien", "P02", 6],
+        ["I'm going to practise very well", "Voy a practicar muy bien", "P03", 6],
+        ["I'd like to explain very well", "Me gustaría explicar muy bien", "P04", 6],
+        ["I'm not sure if I speak very well", "No estoy seguro si hablo muy bien", "P06", 8],
+        ["how to speak very well", "cómo hablar muy bien", "P12", 5],
+        ["I can remember very well", "Puedo recordar muy bien", "P18", 5],
+        ["You speak very well now", "Hablas muy bien ahora", "P05", 5],
+        ["I want you to speak very well", "Quiero que hables muy bien", "P01+P10", 6]
       ]
     }
   ],
   "generation_metadata": {
-    "version": "basket_v1",
+    "version": "basket_v2_pattern_variety_enforced",
     "gate_compliant": true,
+    "pattern_variety_enforced": true,
     "generated_at": "2025-11-05"
   }
 }

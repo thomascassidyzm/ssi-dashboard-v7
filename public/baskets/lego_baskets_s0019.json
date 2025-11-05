@@ -18,16 +18,17 @@
     "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
     "practice_phrases": [
       ["but", "Pero", null, 1],
-      ["but now", "Pero ahora", null, 2],
-      ["but today", "Pero hoy", null, 2],
-      ["but I want", "Pero quiero", null, 2],
-      ["but not now", "Pero no ahora", null, 2],
       ["but I want to speak", "Pero quiero hablar", "P01", 3],
       ["but I'm trying to learn", "Pero estoy intentando aprender", "P02", 4],
       ["but I'm going to practise tomorrow", "Pero voy a practicar mañana", "P03", 4],
-      ["but we want to meet this evening", "Pero queremos reunirnos esta noche", "P01", 4],
-      ["but she wants to find out the answer now", "Pero ella quiere descubrir la respuesta ahora", "P01", 5]
-    ]
+      ["but I'd like to meet", "Pero me gustaría reunirme", "P04", 3],
+      ["but I think we can learn", "Pero pienso que podemos aprender", "P05", 4],
+      ["but I'm not sure if you want to stop", "Pero no estoy seguro si quieres parar de", "P06", 6],
+      ["but I want you to speak Spanish", "Pero quiero que hables español", "P10", 4],
+      ["but how to learn Spanish", "Pero cómo aprender español", "P12", 3],
+      ["but I can remember the answer", "Pero puedo recordar la respuesta", "P18", 4]
+    ],
+    "pattern_stats": "Used 9/9 patterns (100%): P01 (1x), P02 (1x), P03 (1x), P04 (1x), P05 (1x), P06 (1x), P10 (1x), P12 (1x), P18 (1x)"
   },
 
   "S0019L02": {
@@ -37,15 +38,16 @@
     "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
     "practice_phrases": [
       ["to stop", "parar de", null, 1],
-      ["I want to stop", "Quiero parar de", "P01", 2],
-      ["to stop now", "parar de ahora", null, 2],
-      ["I don't want to stop", "No quiero parar de", "P01", 3],
-      ["to stop speaking", "parar de hablar", null, 2],
-      ["I want to stop learning", "Quiero parar de aprender", "P01", 3],
-      ["I'm going to stop trying", "Voy a parar de intentar", "P03", 4],
-      ["she wants to stop practising", "Ella quiere parar de practicar", "P01", 3],
-      ["but I don't want to stop speaking", "Pero no quiero parar de hablar", "P01", 4],
-      ["we want to stop trying to remember now", "Queremos parar de intentar recordar ahora", "P01", 5]
-    ]
+      ["I want to stop speaking", "Quiero parar de hablar", "P01", 3],
+      ["I'm trying to stop talking", "Estoy intentando parar de hablar", "P02", 4],
+      ["I'm going to stop learning", "Voy a parar de aprender", "P03", 4],
+      ["I'd like to stop trying now", "Me gustaría parar de intentar ahora", "P04", 4],
+      ["do you stop often?", "¿Paras de frecuentemente?", "P05", 2],
+      ["I'm not sure if I want to stop", "No estoy seguro si quiero parar de", "P06", 5],
+      ["I want you to stop talking", "Quiero que pares de hablar", "P10", 4],
+      ["how to stop speaking", "cómo parar de hablar", "P12", 3],
+      ["I can stop practising tomorrow", "Puedo parar de practicar mañana", "P18", 4]
+    ],
+    "pattern_stats": "Used 9/9 patterns (100%): P01 (1x), P02 (1x), P03 (1x), P04 (1x), P05 (1x), P06 (1x), P10 (1x), P12 (1x), P18 (1x)"
   }
 }
