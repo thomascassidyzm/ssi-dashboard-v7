@@ -1,0 +1,191 @@
+{
+  "version": "1.0",
+  "purpose": "Algorithmic selection of ~10 optimal practice phrases from combinatoric space of (new_lego × patterns × vocabulary)",
+  "target_output": "LEGO_BASKET practice_phrases array sorted by complexity",
+
+  "algorithm": {
+    "step_1_generate_minimal_pairs": {
+      "description": "Generate all 2-LEGO combinations (new + 1 previous)",
+      "logic": "new_lego + each_previous_lego",
+      "constraint": "Must be grammatically valid and semantically meaningful",
+      "target_count": "~2-3 phrases",
+      "priority": "REQUIRED",
+      "examples": [
+        "poder hablar (to be able to speak)",
+        "Quiero poder (I want to be able to)"
+      ]
+    },
+
+    "step_2_pattern_coverage": {
+      "description": "Generate phrases systematically covering ALL applicable patterns",
+      "logic": "For each available pattern P: generate new_lego in P with minimal vocabulary",
+      "constraint": "Pattern must be grammatically compatible with new_lego",
+      "target_count": "N phrases where N = number of applicable patterns",
+      "priority": "REQUIRED",
+      "examples": [
+        "P01: Quiero poder hablar (3 LEGOs)",
+        "P03: Voy a poder hablar (4 LEGOs)"
+      ],
+      "note": "This ensures learner practices new LEGO across all known structures"
+    },
+
+    "step_3_high_frequency_expansions": {
+      "description": "Generate longer phrases (5-6 LEGOs) using high-frequency vocabulary",
+      "logic": "Combine new_lego + pattern + high_freq_vocab (español, contigo, ahora, etc.)",
+      "constraint": "Natural phrase formation, 7-10 words",
+      "target_count": "~4-5 phrases",
+      "priority": "REQUIRED",
+      "vocabulary_priority": {
+        "tier_1": ["español", "contigo", "ahora"],
+        "tier_2": ["hablar", "aprender", "practicar"],
+        "tier_3": ["alguien", "algo", "más"]
+      }
+    },
+
+    "step_4_filter_and_rank": {
+      "scoring_criteria": {
+        "grammatical_validity": {
+          "weight": 100,
+          "description": "Phrase must be grammatically correct",
+          "fail_if_false": true
+        },
+        "semantic_naturalness": {
+          "weight": 80,
+          "description": "Phrase should be natural/common in Spanish",
+          "examples_good": ["Quiero poder hablar español"],
+          "examples_bad": ["Quiero poder quiero"]
+        },
+        "frequency": {
+          "weight": 60,
+          "description": "Use high-frequency vocabulary combinations",
+          "logic": "Score based on cumulative vocab frequency"
+        },
+        "pattern_reinforcement": {
+          "weight": 50,
+          "description": "Prioritize weak patterns needing more practice",
+          "logic": "Lower frequency patterns score higher"
+        },
+        "pragmatic_utility": {
+          "weight": 40,
+          "description": "Is this phrase useful in real conversation?",
+          "examples_high": ["Quiero poder hablar español contigo"],
+          "examples_low": ["Quiero poder poder"]
+        },
+        "diversity": {
+          "weight": 30,
+          "description": "Avoid redundant phrase structures",
+          "logic": "Penalize phrases too similar to already-selected"
+        }
+      },
+
+      "filtering_rules": [
+        "Remove duplicates",
+        "Remove phrases with LEGO repetition (e.g., 'Quiero quiero')",
+        "Remove unnatural constructions (e.g., 'estoy pudiendo')",
+        "Remove phrases using LEGOs not yet taught (GATE check)",
+        "Remove phrases exceeding 10 words (cognitive load)"
+      ]
+    },
+
+    "step_5_final_selection": {
+      "description": "Select top-scored phrases ensuring structural requirements met",
+      "requirements": {
+        "minimal_pairs": "≥2 phrases with 2 LEGOs",
+        "pattern_coverage": "100% of applicable patterns covered",
+        "expansive_phrases": "≥4 phrases with 5-6 LEGOs",
+        "total_count": "~10 phrases (8-12 acceptable)"
+      },
+      "sort_order": "LEGO count ascending (shortest → longest)",
+      "note": "If requirements not met after scoring, force-include required phrase types"
+    }
+  },
+
+  "example_execution": {
+    "input": {
+      "new_lego": "poder",
+      "available_patterns": ["P01", "P02", "P03"],
+      "available_vocabulary": 16,
+      "theoretical_space": "~48 valid combinations"
+    },
+
+    "step_1_output": [
+      ["poder hablar", null, 2],
+      ["Quiero poder", "P01", 2]
+    ],
+
+    "step_2_output": [
+      ["Quiero poder hablar", "P01", 3],
+      ["Voy a poder hablar", "P03", 4]
+    ],
+
+    "step_2_note": "P02 (Estoy pudiendo) filtered out as unnatural",
+
+    "step_3_output": [
+      ["Quiero poder aprender", "P01", 3],
+      ["Voy a poder practicar", "P03", 4],
+      ["Quiero poder hablar español", "P01", 4],
+      ["Voy a poder aprender español", "P03", 5],
+      ["Quiero poder hablar español contigo", "P01", 5],
+      ["Voy a poder practicar español contigo ahora", "P03", 6]
+    ],
+
+    "step_4_scoring": {
+      "Voy a poder practicar español contigo ahora": {
+        "grammatical_validity": 100,
+        "semantic_naturalness": 85,
+        "frequency": 70,
+        "pattern_reinforcement": 55,
+        "pragmatic_utility": 90,
+        "diversity": 85,
+        "total_score": 485
+      }
+    },
+
+    "step_5_final_output": [
+      ["poder hablar", "to be able to speak", null, 2],
+      ["Quiero poder", "I want to be able to", "P01", 2],
+      ["Quiero poder hablar", "I want to be able to speak", "P01", 3],
+      ["Voy a poder hablar", "I'm going to be able to speak", "P03", 4],
+      ["Quiero poder aprender", "I want to be able to learn", "P01", 3],
+      ["Voy a poder practicar", "I'm going to be able to practice", "P03", 4],
+      ["Quiero poder hablar español", "I want to be able to speak Spanish", "P01", 4],
+      ["Voy a poder aprender español", "I'm going to be able to learn Spanish", "P03", 5],
+      ["Quiero poder hablar español contigo", "I want to be able to speak Spanish with you", "P01", 5],
+      ["Voy a poder practicar español contigo ahora", "I'm going to be able to practice Spanish with you now", "P03", 6]
+    ]
+  },
+
+  "scalability": {
+    "S0001-S0010": {
+      "patterns": "1-2",
+      "vocabulary": "5-15",
+      "space": "~10-30 combinations",
+      "selection_pressure": "Low - include most valid phrases"
+    },
+    "S0011-S0050": {
+      "patterns": "3-8",
+      "vocabulary": "15-100",
+      "space": "~50-500 combinations",
+      "selection_pressure": "Medium - scoring becomes important"
+    },
+    "S0051-S0200": {
+      "patterns": "10-15",
+      "vocabulary": "100-300",
+      "space": "~1000-4500 combinations",
+      "selection_pressure": "High - strict algorithmic curation required"
+    },
+    "S0201-S0668": {
+      "patterns": "15-20",
+      "vocabulary": "300-500",
+      "space": "~4500-10000+ combinations",
+      "selection_pressure": "Very high - quality over quantity critical"
+    }
+  },
+
+  "implementation_notes": {
+    "phase_1": "S0001-S0050: Hand-validate algorithmic selections",
+    "phase_2": "S0051-S0100: Automated with human spot-checking",
+    "phase_3": "S0101-S0668: Fully automated with quality thresholds",
+    "quality_control": "Native speaker review of edge cases"
+  }
+}
