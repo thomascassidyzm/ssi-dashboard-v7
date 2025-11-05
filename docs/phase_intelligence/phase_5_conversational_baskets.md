@@ -22,13 +22,20 @@ Examples of GOOD conversational phrases:
 ### 2. CONJUNCTION GOLD (★★★★★)
 **Use conjunctions in 40%+ of phrases** (aim for 6+ out of 15)
 
-GOLD conjunctions - use liberally:
-- **pero** (but) - contrasting ideas: "I want to speak pero I'm not sure"
-- **y** (and) - connecting thoughts: "I'm trying to learn y I want to practise"
-- **porque** (because) - explaining reasons: "I'm practising porque I want to learn"
-- **o** (or) - presenting options: "I can speak o I can try"
-- **si** (if) - conditionals: "I'm not sure si I can remember"
-- **cuando** (when) - time connections: "I speak cuando I can"
+**CRITICAL: NEVER MIX LANGUAGES!**
+- KNOWN (English) must use ONLY English: "if", "and", "but", "because"
+- TARGET (Spanish) must use ONLY Spanish: "si", "y", "pero", "porque"
+
+GOLD conjunctions - use liberally in TARGET language:
+
+| Spanish | English | Usage Example |
+|---------|---------|---------------|
+| **pero** | but | English: "I want to speak but I'm not sure"<br>Spanish: "Quiero hablar pero no estoy seguro" |
+| **y** | and | English: "I'm trying to learn and I want to practise"<br>Spanish: "Estoy intentando aprender y quiero practicar" |
+| **porque** | because | English: "I'm practising because I want to learn"<br>Spanish: "Estoy practicando porque quiero aprender" |
+| **o** | or | English: "I can speak or I can try"<br>Spanish: "Puedo hablar o puedo intentar" |
+| **si** | if | English: "I'm not sure if I can remember"<br>Spanish: "No estoy seguro si puedo recordar" |
+| **cuando** | when | English: "I speak when I can"<br>Spanish: "Hablo cuando puedo" |
 
 These are **UNDER-REPRESENTED in seeds** but **CRITICAL for real conversation**!
 
@@ -89,7 +96,9 @@ Each phrase is: `[English, Spanish, Pattern (or null), Number of LEGOs used]`
 ✅ Chain thoughts: "I want to speak and I'm trying to learn" (4 LEGOs)
 
 ❌ No conjunctions: Missing pero, y, porque
-✅ Natural flow: "I want to speak pero I'm not sure porque I'm learning"
+✅ Natural flow:
+  - English: "I want to speak but I'm not sure because I'm learning"
+  - Spanish: "Quiero hablar pero no estoy seguro porque estoy aprendiendo"
 
 ❌ GATE violations: Using words not yet taught
 ✅ Only use vocabulary from the taught LEGOs list provided
