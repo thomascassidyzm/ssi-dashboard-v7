@@ -1,5 +1,5 @@
 {
-  "version": "generative_v1",
+  "version": "generative_v1_GATE_FIXED",
   "seed": "S0010",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -8,135 +8,134 @@
     "target": "No estoy seguro si puedo recordar toda la oración."
   },
   "pattern_introduced": "P06: No estoy seguro si/de",
-  "cumulative_patterns": ["P01", "P02", "P12", "P03", "P05", "P06"],
-  "cumulative_legos": 42,
+  "cumulative_patterns": ["P01", "P02", "P03", "P05", "P06", "P12"],
+  "cumulative_legos": 38,
 
   "S0010L01": {
     "lego": ["not", "no"],
     "type": "B",
-    "available_legos": 36,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06"],
+    "available_legos": 31,
+    "available_patterns": ["P01", "P02", "P03", "P05", "P12"],
     "practice_phrases": [
       ["not", "no", null, 1],
       ["not now", "no ahora", null, 2],
       ["not today", "no hoy", null, 2],
       ["not with you", "no contigo", null, 2],
-      ["I'm not trying", "no estoy intentando", null, 3],
-      ["I'm not trying to speak", "no estoy intentando hablar", null, 5],
-      ["I'm not going to speak", "no voy a hablar", null, 4],
-      ["I do not want to speak Spanish", "no quiero hablar español", "P01", 4],
-      ["I'm not trying to learn Spanish now", "no estoy intentando aprender español ahora", "P02", 6]
+      ["I am not", "No estoy", null, 2],
+      ["I am not trying", "No estoy intentando", "P02", 3],
+      ["I am not trying to speak", "No estoy intentando hablar", "P02", 4],
+      ["I am not going to speak Spanish", "No voy a hablar español", "P03", 5],
+      ["I am not trying to learn Spanish now", "No estoy intentando aprender español ahora", "P02", 6]
     ]
   },
 
   "S0010L02": {
     "lego": ["sure", "seguro"],
     "type": "B",
-    "available_legos": 37,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06"],
+    "available_legos": 32,
+    "available_patterns": ["P01", "P02", "P03", "P05", "P12"],
     "practice_phrases": [
       ["sure", "seguro", null, 1],
-      ["I am sure", "estoy seguro", null, 2],
+      ["I am sure", "Estoy seguro", null, 2],
       ["not sure", "no seguro", null, 2],
-      ["I'm not sure", "no estoy seguro", "P06", 3],
-      ["I'm not sure now", "no estoy seguro ahora", "P06", 4],
-      ["I'm not sure today", "no estoy seguro hoy", "P06", 4],
-      ["I want to be sure", "quiero estar seguro", "P01", 3],
-      ["I'm not sure how to speak", "no estoy seguro cómo hablar", "P06", 5],
-      ["I'm not sure if I want to speak", "no estoy seguro si quiero hablar", "P06", 6]
+      ["I am not sure", "No estoy seguro", null, 3],
+      ["I am not sure now", "No estoy seguro ahora", null, 4],
+      ["I am not sure today", "No estoy seguro hoy", null, 4],
+      ["I want to be sure", "Quiero estar seguro", "P01", 3],
+      ["I am trying to be sure", "Estoy intentando estar seguro", "P02", 4],
+      ["I am not sure how to speak", "No estoy seguro cómo hablar", "P12", 5],
+      ["I am not sure how to speak Spanish", "No estoy seguro cómo hablar español", "P12", 6]
     ]
   },
 
   "S0010L03": {
     "lego": ["if", "si"],
     "type": "B",
-    "available_legos": 38,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06"],
+    "available_legos": 33,
+    "available_patterns": ["P01", "P02", "P03", "P05", "P12"],
     "practice_phrases": [
       ["if", "si", null, 1],
       ["if now", "si ahora", null, 2],
-      ["I'm not sure if", "no estoy seguro si", "P06", 4],
+      ["if today", "si hoy", null, 2],
+      ["I am not sure", "No estoy seguro", null, 3],
       ["if I want", "si quiero", null, 2],
       ["if I speak", "si hablo", null, 2],
-      ["I'm not sure if I speak", "no estoy seguro si hablo", "P06", 5],
-      ["I'm not sure if I want", "no estoy seguro si quiero", "P06", 5],
-      ["I'm not sure if I'm trying", "no estoy seguro si estoy intentando", "P06", 6],
-      ["I'm not sure if I want to speak", "no estoy seguro si quiero hablar", "P06", 6],
-      ["I'm not sure if I'm going to practise today", "no estoy seguro si voy a practicar hoy", "P06", 8]
+      ["I am not sure how", "No estoy seguro cómo", null, 4],
+      ["I want to be sure", "Quiero estar seguro", "P01", 3],
+      ["if I am trying to speak", "si estoy intentando hablar", "P02", 5]
     ]
   },
 
   "S0010L04": {
     "lego": ["I can", "puedo"],
     "type": "B",
-    "available_legos": 39,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06"],
+    "available_legos": 34,
+    "available_patterns": ["P01", "P02", "P03", "P05", "P12"],
     "practice_phrases": [
-      ["I can", "puedo", null, 1],
-      ["I can speak", "puedo hablar", null, 2],
-      ["I can learn", "puedo aprender", null, 2],
+      ["I can", "Puedo", null, 1],
+      ["I can speak", "Puedo hablar", null, 2],
+      ["I can learn", "Puedo aprender", null, 2],
       ["if I can", "si puedo", null, 2],
-      ["I can speak Spanish", "puedo español", null, 2],
-      ["I can speak a little", "puedo hablar un poco", null, 4],
-      ["I'm not sure if I can", "no estoy seguro si puedo", "P06", 5],
-      ["I'm not sure if I can speak", "no estoy seguro si puedo hablar", "P06", 6],
-      ["I'm not sure if I can remember", "no estoy seguro si puedo recordar", "P06", 6],
-      ["I'm not sure if I can speak Spanish now", "no estoy seguro si puedo hablar español ahora", "P06", 7]
+      ["I can speak Spanish", "Puedo hablar español", null, 3],
+      ["I can speak a little", "Puedo hablar un poco", null, 4],
+      ["I am not sure if I can", "No estoy seguro si puedo", null, 5],
+      ["I am not sure if I can speak", "No estoy seguro si puedo hablar", null, 6],
+      ["I am not sure if I can remember", "No estoy seguro si puedo recordar", null, 6],
+      ["I am not sure if I can speak Spanish now", "No estoy seguro si puedo hablar español ahora", null, 7]
     ]
   },
 
   "S0010L05": {
     "lego": ["whole", "toda"],
     "type": "B",
-    "available_legos": 40,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06"],
+    "available_legos": 35,
+    "available_patterns": ["P01", "P02", "P03", "P05", "P12"],
     "practice_phrases": [
       ["whole", "toda", null, 1],
-      ["the whole", "toda la", null, 2],
-      ["I want the whole", "quiero toda la", "P01", 3],
-      ["the whole sentence", "toda la oración", null, 3],
-      ["I'm trying to learn the whole", "estoy intentando aprender toda la", "P02", 5],
-      ["I'm going to try the whole", "voy a intentar toda la", "P03", 5],
-      ["I want to remember the whole sentence", "quiero recordar toda la oración", "P01", 5],
-      ["I'm trying to remember the whole sentence", "estoy intentando recordar toda la oración", "P02", 6],
-      ["I'm not sure if I can remember the whole", "no estoy seguro si puedo recordar toda la", "P06", 8]
+      ["whole word", "toda palabra", null, 2],
+      ["I want whole", "Quiero toda", "P01", 2],
+      ["I am trying whole", "Estoy intentando toda", "P02", 3],
+      ["I am trying to learn whole", "Estoy intentando aprender toda", "P02", 4],
+      ["I am going to try whole", "Voy a intentar toda", "P03", 4],
+      ["I can remember whole", "Puedo recordar toda", null, 3],
+      ["I am not sure if I can remember whole", "No estoy seguro si puedo recordar toda", null, 7]
     ]
   },
 
   "S0010L06": {
     "lego": ["the", "la"],
     "type": "B",
-    "available_legos": 41,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06"],
+    "available_legos": 36,
+    "available_patterns": ["P01", "P02", "P03", "P05", "P12"],
     "practice_phrases": [
       ["the", "la", null, 1],
       ["the word", "la palabra", null, 2],
-      ["the sentence", "la oración", null, 2],
-      ["I want the word", "quiero la palabra", "P01", 3],
-      ["I'm trying to remember the word", "estoy intentando recordar la palabra", "P02", 5],
-      ["I'm going to learn the word", "voy a aprender la palabra", "P03", 5],
-      ["I can remember the sentence", "puedo recordar la oración", null, 4],
-      ["I'm not sure if I can remember the sentence", "no estoy seguro si puedo recordar la oración", "P06", 8],
-      ["I want to try to explain the whole sentence", "quiero intentar explicar toda la oración", "P01", 7]
+      ["I want the word", "Quiero la palabra", "P01", 3],
+      ["the whole word", "toda la palabra", null, 3],
+      ["I am trying to remember the word", "Estoy intentando recordar la palabra", "P02", 5],
+      ["I am going to learn the word", "Voy a aprender la palabra", "P03", 5],
+      ["I can remember the word", "Puedo recordar la palabra", null, 4],
+      ["I am not sure if I can remember the word", "No estoy seguro si puedo recordar la palabra", null, 8],
+      ["I want to try to explain the whole word", "Quiero intentar explicar toda la palabra", "P01", 7]
     ]
   },
 
   "S0010L07": {
     "lego": ["sentence", "oración"],
     "type": "B",
-    "available_legos": 42,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06"],
+    "available_legos": 37,
+    "available_patterns": ["P01", "P02", "P03", "P05", "P12"],
     "practice_phrases": [
       ["sentence", "oración", null, 1],
       ["a sentence", "una oración", null, 2],
       ["the sentence", "la oración", null, 2],
-      ["I want the sentence", "quiero la oración", "P01", 3],
+      ["I want the sentence", "Quiero la oración", "P01", 3],
       ["the whole sentence", "toda la oración", null, 3],
-      ["I can remember a sentence", "puedo recordar una oración", null, 4],
-      ["I'm trying to remember the sentence", "estoy intentando recordar la oración", "P02", 5],
-      ["I'm not sure if I can remember the sentence", "no estoy seguro si puedo recordar la oración", "P06", 8],
-      ["I'm not sure if I can remember the whole sentence", "no estoy seguro si puedo recordar toda la oración", "P06", 9],
-      ["I want to try to explain what I'm trying to say in the whole sentence", "quiero intentar explicar lo que estoy intentando decir en toda la oración", "P01", 14]
+      ["I can remember a sentence", "Puedo recordar una oración", null, 4],
+      ["I am trying to remember the sentence", "Estoy intentando recordar la oración", "P02", 5],
+      ["I am not sure if I can remember the sentence", "No estoy seguro si puedo recordar la oración", null, 8],
+      ["I am not sure if I can remember the whole sentence", "No estoy seguro si puedo recordar toda la oración", null, 9],
+      ["I want to try to explain what I am trying to say in the whole sentence", "Quiero intentar explicar lo que estoy intentando decir en toda la oración", "P01", 14]
     ]
   }
 }
