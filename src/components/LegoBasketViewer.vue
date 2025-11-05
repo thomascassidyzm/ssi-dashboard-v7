@@ -5,15 +5,15 @@
       <h2 class="text-2xl font-bold text-emerald-400 mb-4">LEGO Practice Basket Viewer</h2>
 
       <!-- Seed Selector -->
-      <div class="flex items-center gap-4 mb-4">
-        <label class="text-sm font-medium text-slate-300">Select Seed:</label>
+      <div class="mb-4">
+        <label class="text-sm font-medium text-slate-300 mb-2 block">Select Seed:</label>
         <div class="flex gap-2 flex-wrap">
           <button
-            v-for="n in 10"
+            v-for="n in 20"
             :key="n"
             @click="loadSeed(n)"
             :class="[
-              'px-4 py-2 rounded font-medium transition-colors',
+              'px-3 py-2 rounded font-medium transition-colors text-sm',
               currentSeed === n
                 ? 'bg-emerald-600 text-white'
                 : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
