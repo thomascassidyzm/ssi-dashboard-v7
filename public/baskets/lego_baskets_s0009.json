@@ -1,5 +1,5 @@
 {
-  "version": "generative_v1",
+  "version": "generative_v1_AUTHORITATIVE_STRUCTURE",
   "seed": "S0009",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -9,61 +9,43 @@
   },
   "pattern_introduced": "P05: Simple present tense",
   "cumulative_patterns": ["P01", "P02", "P12", "P03", "P05"],
-  "cumulative_legos": 35,
+  "cumulative_legos": 26,
 
   "S0009L01": {
     "lego": ["I speak", "Hablo"],
-    "type": "B",
-    "available_legos": 33,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05"],
+    "type": "C",
+    "available_legos": 24,
+    "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
       ["I speak", "Hablo", "P05", 1],
-      ["I speak Spanish", "Hablo español", "P05", 2],
       ["I speak now", "Hablo ahora", "P05", 2],
+      ["I speak Spanish", "Hablo español", "P05", 2],
       ["I speak with you", "Hablo contigo", "P05", 2],
-      ["I speak a word", "Hablo una palabra", "P05", 3],
-      ["I speak Spanish with you", "Hablo español contigo", "P05", 3],
       ["I speak Spanish now", "Hablo español ahora", "P05", 3],
-      ["I speak with someone today", "Hablo con alguien hoy", "P05", 4],
+      ["I speak Spanish with you", "Hablo español contigo", "P05", 3],
+      ["I want to speak", "Quiero hablar", "P01", 3],
+      ["I'm trying to speak", "Estoy intentando hablar", "P02", 4],
       ["I speak Spanish with you now", "Hablo español contigo ahora", "P05", 4],
-      ["I want to speak", "Quiero hablar", "P01", 2]
+      ["I'm going to speak Spanish with you", "Voy a hablar español contigo", "P03", 5]
     ]
   },
 
   "S0009L02": {
-    "lego": ["a little", "un poco"],
-    "type": "B",
-    "available_legos": 34,
+    "lego": ["a little Spanish", "un poco de español"],
+    "type": "C",
+    "available_legos": 25,
     "available_patterns": ["P01", "P02", "P12", "P03", "P05"],
     "practice_phrases": [
-      ["a little", "un poco", null, 1],
-      ["I want a little", "Quiero un poco", "P01", 2],
+      ["a little Spanish", "un poco de español", null, 1],
       ["I speak a little", "Hablo un poco", "P05", 2],
-      ["I'm trying to learn a little", "Estoy intentando aprender un poco", "P02", 4],
-      ["I'm going to practise a little", "Voy a practicar un poco", "P03", 4],
-      ["I'm going to speak a little", "Voy a hablar un poco", "P03", 4],
-      ["I want to try a little", "Quiero intentar un poco", "P01", 3],
-      ["I'm trying to speak a little today", "Estoy intentando hablar un poco hoy", "P02", 5],
-      ["I'm going to try to practise a little now", "Voy a intentar practicar un poco ahora", "P03", 6]
-    ]
-  },
-
-  "S0009L03": {
-    "lego": ["of", "de"],
-    "type": "B",
-    "available_legos": 35,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05"],
-    "practice_phrases": [
-      ["of", "de", null, 1],
-      ["a little of", "un poco de", null, 2],
-      ["I speak a little of Spanish", "Hablo un poco de español", "P05", 4],
-      ["a little of Spanish", "un poco de español", null, 3],
-      ["I want a little of Spanish", "Quiero un poco de español", "P01", 4],
-      ["I'm trying to learn a little of Spanish", "Estoy intentando aprender un poco de español", "P02", 6],
-      ["I'm going to practise a little of Spanish", "Voy a practicar un poco de español", "P03", 6],
-      ["I speak a little of Spanish now", "Hablo un poco de español ahora", "P05", 5],
-      ["I'm trying to speak a little of Spanish with you", "Estoy intentando hablar un poco de español contigo", "P02", 7],
-      ["I want to try to explain a little of what I'm trying to say", "Quiero intentar explicar un poco de lo que estoy intentando decir", "P01", 11]
+      ["I want a little", "Quiero un poco", "P01", 2],
+      ["I speak a little Spanish", "Hablo un poco de español", "P05", 3],
+      ["I speak a little Spanish now", "Hablo un poco de español ahora", "P05", 4],
+      ["I want to learn a little Spanish", "Quiero aprender un poco de español", "P01", 5],
+      ["I'm trying to learn a little Spanish", "Estoy intentando aprender un poco de español", "P02", 6],
+      ["I'm going to learn a little Spanish", "Voy a aprender un poco de español", "P03", 6],
+      ["I speak a little Spanish with you", "Hablo un poco de español contigo", "P05", 5],
+      ["I want to speak a little Spanish with you now", "Quiero hablar un poco de español contigo ahora", "P01", 7]
     ]
   }
 }

@@ -1,0 +1,70 @@
+{
+  "version": "generative_v1_AUTHORITATIVE_STRUCTURE",
+  "seed": "S0017",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "She wants to find out what the answer is.",
+    "target": "Ella quiere descubrir cuál es la respuesta."
+  },
+  "pattern_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+  "cumulative_legos": 52,
+
+  "S0017L01": {
+    "lego": ["she wants", "Ella quiere"],
+    "type": "C",
+    "available_legos": 49,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["she wants", "Ella quiere", "P01", 1],
+      ["she wants to speak", "Ella quiere hablar", "P01", 2],
+      ["she wants to learn", "Ella quiere aprender", "P01", 2],
+      ["she wants to try", "Ella quiere intentar", "P01", 2],
+      ["she wants Spanish", "Ella quiere español", "P01", 2],
+      ["she wants to speak Spanish", "Ella quiere hablar español", "P01", 3],
+      ["she wants to learn Spanish now", "Ella quiere aprender español ahora", "P01", 4],
+      ["she wants to come back tomorrow", "Ella quiere volver mañana", "P01", 3],
+      ["she wants to practise with someone else", "Ella quiere practicar con alguien más", "P01", 4],
+      ["she wants to try as hard as she can", "Ella quiere intentar tan duro como pueda", "P01", 5]
+    ]
+  },
+
+  "S0017L02": {
+    "lego": ["to find out", "descubrir"],
+    "type": "B",
+    "available_legos": 50,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["to find out", "descubrir", null, 1],
+      ["I want to find out", "Quiero descubrir", "P01", 2],
+      ["she wants to find out", "Ella quiere descubrir", "P01", 2],
+      ["to find out now", "descubrir ahora", null, 2],
+      ["I'm trying to find out", "Estoy intentando descubrir", "P02", 3],
+      ["we want to find out", "Queremos descubrir", "P01", 2],
+      ["I'm going to find out tomorrow", "Voy a descubrir mañana", "P03", 3],
+      ["he wants to find out later on", "Él quiere descubrir más tarde", "P01", 3],
+      ["I'd like to find out as soon as possible", "Me gustaría descubrir lo más frecuentemente posible", "P04", 4],
+      ["she wants to find out if I can speak Spanish", "Ella quiere descubrir si puedo hablar español", "P01", 5]
+    ]
+  },
+
+  "S0017L03": {
+    "lego": ["the answer", "la respuesta"],
+    "type": "C",
+    "available_legos": 51,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["the answer", "la respuesta", null, 1],
+      ["I want the answer", "Quiero la respuesta", "P01", 2],
+      ["she wants the answer", "Ella quiere la respuesta", "P01", 2],
+      ["I can remember the answer", "Puedo recordar la respuesta", "P18", 3],
+      ["I'm trying to remember the answer", "Estoy intentando recordar la respuesta", "P02", 4],
+      ["I'm not sure if I know the answer", "No estoy seguro si sé la respuesta", "P06", 5],
+      ["I want to find out the answer", "Quiero descubrir la respuesta", "P01", 3],
+      ["she wants to find out the answer", "Ella quiere descubrir la respuesta", "P01", 3],
+      ["I'm going to learn the answer tomorrow", "Voy a aprender la respuesta mañana", "P03", 4],
+      ["he wants to explain the answer to everyone else", "Él quiere explicar la respuesta a todos los demás", "P01", 5]
+    ]
+  }
+}

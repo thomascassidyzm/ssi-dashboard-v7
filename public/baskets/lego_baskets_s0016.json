@@ -1,0 +1,97 @@
+{
+  "seed_id": "S0016",
+  "seed_pair": {
+    "target": "Él quiere volver con todos los demás más tarde.",
+    "known": "He wants to come back with everyone else later on."
+  },
+  "cumulative_legos_at_seed_start": 45,
+  "cumulative_legos_after_seed": 49,
+  "patterns_used": ["P01"],
+  "legos": [
+    {
+      "lego_id": "S0016L01",
+      "lego": ["he wants", "Él quiere"],
+      "type": "C",
+      "pattern_demonstrated": "P01",
+      "available_legos": 45,
+      "note": "Third person masculine want - extends P01 pattern",
+      "practice_phrases": [
+        ["He wants", "Él quiere", "P01", 2],
+        ["He wants to speak", "Él quiere hablar", "P01", 3],
+        ["He wants to learn", "Él quiere aprender", "P01", 3],
+        ["He wants to speak Spanish", "Él quiere hablar español", "P01", 4],
+        ["He wants to speak now", "Él quiere hablar ahora", "P01", 4],
+        ["He wants to speak tomorrow", "Él quiere hablar mañana", "P01", 4],
+        ["He wants to speak with me", "Él quiere hablar conmigo", "P01", 4],
+        ["He wants to speak Spanish with me", "Él quiere hablar español conmigo", "P01", 5],
+        ["He wants to speak very well", "Él quiere hablar muy bien", "P01", 5],
+        ["He wants to speak Spanish all day", "Él quiere hablar español todo el día", "P01", 6]
+      ]
+    },
+    {
+      "lego_id": "S0016L02",
+      "lego": ["to come back", "volver"],
+      "type": "B",
+      "pattern_demonstrated": null,
+      "available_legos": 46,
+      "note": "Infinitive verb for returning",
+      "practice_phrases": [
+        ["To come back", "Volver", null, 1],
+        ["I want to come back", "Quiero volver", "P01", 3],
+        ["You want to come back", "Quieres volver", "P01", 3],
+        ["He wants to come back", "Él quiere volver", "P01", 3],
+        ["I'm going to come back", "Voy a volver", "P03", 3],
+        ["I want to come back now", "Quiero volver ahora", "P01", 4],
+        ["I want to come back tomorrow", "Quiero volver mañana", "P01", 4],
+        ["He wants to come back tomorrow", "Él quiere volver mañana", "P01", 4],
+        ["I'm going to come back tomorrow", "Voy a volver mañana", "P03", 4],
+        ["He wants to come back with me", "Él quiere volver conmigo", "P01", 5]
+      ]
+    },
+    {
+      "lego_id": "S0016L03",
+      "lego": ["everyone else", "todos los demás"],
+      "type": "C",
+      "pattern_demonstrated": null,
+      "available_legos": 47,
+      "note": "Plural indefinite expression",
+      "practice_phrases": [
+        ["Everyone else", "Todos los demás", null, 1],
+        ["With everyone else", "Con todos los demás", null, 2],
+        ["I speak with everyone else", "Hablo con todos los demás", "P05", 4],
+        ["You speak with everyone else", "Hablas con todos los demás", "P05", 4],
+        ["I want to speak with everyone else", "Quiero hablar con todos los demás", "P01", 5],
+        ["He wants to speak with everyone else", "Él quiere hablar con todos los demás", "P01", 5],
+        ["I want to come back with everyone else", "Quiero volver con todos los demás", "P01", 5],
+        ["He wants to come back with everyone else", "Él quiere volver con todos los demás", "P01", 5],
+        ["I'm going to speak with everyone else", "Voy a hablar con todos los demás", "P03", 5],
+        ["He wants to speak Spanish with everyone else", "Él quiere hablar español con todos los demás", "P01", 6]
+      ]
+    },
+    {
+      "lego_id": "S0016L04",
+      "lego": ["later on", "más tarde"],
+      "type": "C",
+      "pattern_demonstrated": null,
+      "available_legos": 48,
+      "note": "Time expression for future reference",
+      "practice_phrases": [
+        ["Later on", "Más tarde", null, 1],
+        ["I speak later on", "Hablo más tarde", "P05", 3],
+        ["You speak later on", "Hablas más tarde", "P05", 3],
+        ["He wants to speak later on", "Él quiere hablar más tarde", "P01", 4],
+        ["I want to speak later on", "Quiero hablar más tarde", "P01", 4],
+        ["I'm going to speak later on", "Voy a hablar más tarde", "P03", 4],
+        ["He wants to come back later on", "Él quiere volver más tarde", "P01", 4],
+        ["I want to come back later on", "Quiero volver más tarde", "P01", 4],
+        ["He wants to speak with me later on", "Él quiere hablar conmigo más tarde", "P01", 5],
+        ["He wants to come back with everyone else later on", "Él quiere volver con todos los demás más tarde", "P01", 6]
+      ]
+    }
+  ],
+  "generation_metadata": {
+    "version": "basket_v1",
+    "gate_compliant": true,
+    "generated_at": "2025-11-05"
+  }
+}

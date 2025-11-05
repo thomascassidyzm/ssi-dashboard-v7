@@ -1,0 +1,89 @@
+{
+  "version": "generative_v1_AUTHORITATIVE_STRUCTURE",
+  "seed": "S0018",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "We want to meet at six o'clock this evening.",
+    "target": "Queremos reunirnos a las seis esta noche."
+  },
+  "pattern_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+  "cumulative_legos": 56,
+
+  "S0018L01": {
+    "lego": ["we want", "Queremos"],
+    "type": "C",
+    "available_legos": 52,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["we want", "Queremos", "P01", 1],
+      ["we want to speak", "Queremos hablar", "P01", 2],
+      ["we want to learn", "Queremos aprender", "P01", 2],
+      ["we want Spanish", "Queremos español", "P01", 2],
+      ["we want to try", "Queremos intentar", "P01", 2],
+      ["we want to speak Spanish", "Queremos hablar español", "P01", 3],
+      ["we want to learn now", "Queremos aprender ahora", "P01", 3],
+      ["we want to come back tomorrow", "Queremos volver mañana", "P01", 3],
+      ["we want to find out the answer", "Queremos descubrir la respuesta", "P01", 3],
+      ["we want to practise speaking Spanish with you", "Queremos practicar hablar español contigo", "P01", 5]
+    ]
+  },
+
+  "S0018L02": {
+    "lego": ["to meet", "reunirnos"],
+    "type": "B",
+    "available_legos": 53,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["to meet", "reunirnos", null, 1],
+      ["I want to meet", "Quiero reunirnos", "P01", 2],
+      ["we want to meet", "Queremos reunirnos", "P01", 2],
+      ["to meet now", "reunirnos ahora", null, 2],
+      ["to meet tomorrow", "reunirnos mañana", null, 2],
+      ["I'm going to meet", "Voy a reunirnos", "P03", 3],
+      ["we want to meet today", "Queremos reunirnos hoy", "P01", 3],
+      ["he wants to meet later on", "Él quiere reunirnos más tarde", "P01", 3],
+      ["I'd like to meet with everyone else", "Me gustaría reunirnos con todos los demás", "P04", 4],
+      ["we want to meet after you finish", "Queremos reunirnos después de que termines", "P01", 4]
+    ]
+  },
+
+  "S0018L03": {
+    "lego": ["at six", "a las seis"],
+    "type": "C",
+    "available_legos": 54,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["at six", "a las seis", null, 1],
+      ["we want to meet at six", "Queremos reunirnos a las seis", "P01", 3],
+      ["I'm going to speak at six", "Voy a hablar a las seis", "P03", 3],
+      ["at six now", "a las seis ahora", null, 2],
+      ["I want to learn at six", "Quiero aprender a las seis", "P01", 3],
+      ["she wants to come back at six", "Ella quiere volver a las seis", "P01", 3],
+      ["I'm trying to remember at six", "Estoy intentando recordar a las seis", "P02", 4],
+      ["we want to speak Spanish at six", "Queremos hablar español a las seis", "P01", 4],
+      ["he wants to find out at six tomorrow", "Él quiere descubrir a las seis mañana", "P01", 4],
+      ["I'm going to meet with you at six this evening", "Voy a reunirnos contigo a las seis esta noche", "P03", 6]
+    ]
+  },
+
+  "S0018L04": {
+    "lego": ["this evening", "esta noche"],
+    "type": "C",
+    "available_legos": 55,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["this evening", "esta noche", null, 1],
+      ["I want to speak this evening", "Quiero hablar esta noche", "P01", 3],
+      ["we want to meet this evening", "Queremos reunirnos esta noche", "P01", 3],
+      ["I'm going to learn this evening", "Voy a aprender esta noche", "P03", 3],
+      ["this evening now", "esta noche ahora", null, 2],
+      ["she wants to find out this evening", "Ella quiere descubrir esta noche", "P01", 3],
+      ["I'm trying to practise this evening", "Estoy intentando practicar esta noche", "P02", 4],
+      ["we want to speak Spanish this evening", "Queremos hablar español esta noche", "P01", 4],
+      ["he wants to come back at six this evening", "Él quiere volver a las seis esta noche", "P01", 5],
+      ["we want to meet at six this evening with everyone else", "Queremos reunirnos a las seis esta noche con todos los demás", "P01", 7]
+    ]
+  }
+}

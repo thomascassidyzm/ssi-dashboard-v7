@@ -1,0 +1,77 @@
+{
+  "seed_id": "S0015",
+  "seed_pair": {
+    "target": "Y quiero que hables español conmigo mañana.",
+    "known": "And I want you to speak Spanish with me tomorrow."
+  },
+  "cumulative_legos_at_seed_start": 42,
+  "cumulative_legos_after_seed": 45,
+  "patterns_used": ["P01", "P10"],
+  "legos": [
+    {
+      "lego_id": "S0015L01",
+      "lego": ["and", "Y"],
+      "type": "B",
+      "pattern_demonstrated": null,
+      "available_legos": 42,
+      "note": "Conjunction for connecting clauses",
+      "practice_phrases": [
+        ["And", "Y", null, 1],
+        ["Today and tomorrow", "Hoy y mañana", null, 2],
+        ["Spanish and now", "Español y ahora", null, 2],
+        ["Now and all day", "Ahora y todo el día", null, 3],
+        ["I speak and you speak", "Hablo y hablas", "P05", 3],
+        ["I want to speak and learn", "Quiero hablar y aprender", "P01", 4],
+        ["You speak and I speak Spanish", "Hablas y hablo español", "P05", 4],
+        ["I'm trying to speak and learn", "Estoy intentando hablar y aprender", "P02", 5],
+        ["I speak Spanish and you speak Spanish", "Hablo español y hablas español", "P05", 5],
+        ["Very well and with you", "Muy bien y contigo", null, 3]
+      ]
+    },
+    {
+      "lego_id": "S0015L02",
+      "lego": ["I want you to speak", "quiero que hables"],
+      "type": "C",
+      "pattern_demonstrated": "P10",
+      "available_legos": 43,
+      "note": "Desire + subjunctive construction - key subjunctive pattern",
+      "practice_phrases": [
+        ["I want you to speak", "Quiero que hables", "P10", 3],
+        ["I want you to speak Spanish", "Quiero que hables español", "P10", 4],
+        ["I want you to speak now", "Quiero que hables ahora", "P10", 4],
+        ["I want you to speak today", "Quiero que hables hoy", "P10", 4],
+        ["I want you to speak tomorrow", "Quiero que hables mañana", "P10", 4],
+        ["I want you to speak Spanish now", "Quiero que hables español ahora", "P10", 5],
+        ["I want you to speak all day", "Quiero que hables todo el día", "P10", 5],
+        ["I want you to speak very well", "Quiero que hables muy bien", "P10", 5],
+        ["I want you to speak Spanish tomorrow", "Quiero que hables español mañana", "P10", 5],
+        ["I want you to speak Spanish very well", "Quiero que hables español muy bien", "P10", 6]
+      ]
+    },
+    {
+      "lego_id": "S0015L03",
+      "lego": ["with me", "conmigo"],
+      "type": "C",
+      "pattern_demonstrated": null,
+      "available_legos": 44,
+      "note": "Prepositional phrase - single word in Spanish (like contigo)",
+      "practice_phrases": [
+        ["With me", "Conmigo", null, 1],
+        ["You speak with me", "Hablas conmigo", "P05", 3],
+        ["Speak Spanish with me", "Hablar español conmigo", null, 3],
+        ["You want to speak with me", "Quieres hablar conmigo", "P01", 4],
+        ["I want you to speak with me", "Quiero que hables conmigo", "P10", 4],
+        ["You speak Spanish with me", "Hablas español conmigo", "P05", 4],
+        ["You speak with me now", "Hablas conmigo ahora", "P05", 4],
+        ["You speak with me tomorrow", "Hablas conmigo mañana", "P05", 4],
+        ["You speak Spanish with me now", "Hablas español conmigo ahora", "P05", 5],
+        ["I want you to speak Spanish with me", "Quiero que hables español conmigo", "P10", 6]
+      ]
+    }
+  ],
+  "generation_metadata": {
+    "version": "basket_v1",
+    "gate_compliant": true,
+    "generated_at": "2025-11-05"
+  }
+}

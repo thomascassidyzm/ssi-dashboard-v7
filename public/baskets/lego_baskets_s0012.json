@@ -1,0 +1,89 @@
+{
+  "version": "generative_v1_AUTHORITATIVE_STRUCTURE",
+  "seed": "S0012",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I wouldn't like to guess what's going to happen tomorrow.",
+    "target": "No me gustaría adivinar lo que va a ocurrir mañana."
+  },
+  "pattern_introduced": "None (uses P04 and P03)",
+  "cumulative_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+  "cumulative_legos": 39,
+
+  "S0012L01": {
+    "lego": ["to guess", "adivinar"],
+    "type": "B",
+    "available_legos": 35,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["to guess", "adivinar", null, 1],
+      ["I want to guess", "Quiero adivinar", "P01", 2],
+      ["I'd like to guess", "Me gustaría adivinar", "P04", 2],
+      ["I'm trying to guess", "Estoy intentando adivinar", "P02", 3],
+      ["I'm going to guess", "Voy a adivinar", "P03", 3],
+      ["I can guess", "puedo adivinar", "P18", 2],
+      ["I don't want to guess", "No quiero adivinar", "P01", 3],
+      ["I'm not sure if I can guess", "No estoy seguro si puedo adivinar", "P06", 5],
+      ["I'd like to try to guess", "Me gustaría intentar adivinar", "P04", 4],
+      ["I want to be able to guess", "Quiero poder adivinar", "P01", 3]
+    ]
+  },
+
+  "S0012L02": {
+    "lego": ["to happen", "ocurrir"],
+    "type": "B",
+    "available_legos": 36,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["to happen", "ocurrir", null, 1],
+      ["I want to guess", "Quiero adivinar", "P01", 2],
+      ["I'm going to guess", "Voy a adivinar", "P03", 3],
+      ["I'd like to guess", "Me gustaría adivinar", "P04", 2],
+      ["I'm trying to guess", "Estoy intentando adivinar", "P02", 3],
+      ["I can guess", "puedo adivinar", "P18", 2],
+      ["I want to remember", "Quiero recordar", "P01", 2],
+      ["I'm not sure if I can guess", "No estoy seguro si puedo adivinar", "P06", 5],
+      ["I'd like to try to guess", "Me gustaría intentar adivinar", "P04", 4],
+      ["I want to be able to guess", "Quiero poder adivinar", "P01", 3]
+    ]
+  },
+
+  "S0012L03": {
+    "lego": ["tomorrow", "mañana"],
+    "type": "B",
+    "available_legos": 37,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["tomorrow", "mañana", null, 1],
+      ["I speak tomorrow", "Hablo mañana", "P05", 2],
+      ["I want to speak tomorrow", "Quiero hablar mañana", "P01", 3],
+      ["I'm going to speak tomorrow", "Voy a hablar mañana", "P03", 4],
+      ["I'd like to speak tomorrow", "Me gustaría hablar mañana", "P04", 3],
+      ["I'm trying to learn tomorrow", "Estoy intentando aprender mañana", "P02", 4],
+      ["I can speak tomorrow", "puedo hablar mañana", "P18", 3],
+      ["I want to guess tomorrow", "Quiero adivinar mañana", "P01", 3],
+      ["I'm not sure if I can speak tomorrow", "No estoy seguro si puedo hablar mañana", "P06", 6],
+      ["I'd like to be able to speak tomorrow", "Me gustaría poder hablar mañana", "P04", 5]
+    ]
+  },
+
+  "S0012L04": {
+    "lego": ["what's going to happen", "lo que va a ocurrir"],
+    "type": "C",
+    "available_legos": 38,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["what's going to happen", "lo que va a ocurrir", "P03", 1],
+      ["I want to guess what's going to happen", "Quiero adivinar lo que va a ocurrir", "P01", 2],
+      ["I'd like to guess what's going to happen", "Me gustaría adivinar lo que va a ocurrir", "P04", 2],
+      ["I'm trying to remember what's going to happen", "Estoy intentando recordar lo que va a ocurrir", "P02", 3],
+      ["I'm not sure what's going to happen", "No estoy seguro lo que va a ocurrir", "P06", 2],
+      ["I want to explain what's going to happen", "Quiero explicar lo que va a ocurrir", "P01", 2],
+      ["I can't remember what's going to happen", "No puedo recordar lo que va a ocurrir", "P18", 3],
+      ["I'd like to guess what's going to happen tomorrow", "Me gustaría adivinar lo que va a ocurrir mañana", "P04", 3],
+      ["I'm not sure if I can remember what's going to happen", "No estoy seguro si puedo recordar lo que va a ocurrir", "P06", 4],
+      ["I don't want to guess what's going to happen tomorrow", "No quiero adivinar lo que va a ocurrir mañana", "P01", 3]
+    ]
+  }
+}

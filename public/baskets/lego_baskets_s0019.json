@@ -1,0 +1,51 @@
+{
+  "version": "generative_v1_AUTHORITATIVE_STRUCTURE",
+  "seed": "S0019",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "But I don't want to stop talking.",
+    "target": "Pero no quiero parar de hablar."
+  },
+  "pattern_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+  "cumulative_legos": 58,
+
+  "S0019L01": {
+    "lego": ["but", "Pero"],
+    "type": "B",
+    "available_legos": 56,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["but", "Pero", null, 1],
+      ["but now", "Pero ahora", null, 2],
+      ["but today", "Pero hoy", null, 2],
+      ["but I want", "Pero quiero", null, 2],
+      ["but not now", "Pero no ahora", null, 2],
+      ["but I want to speak", "Pero quiero hablar", "P01", 3],
+      ["but I'm trying to learn", "Pero estoy intentando aprender", "P02", 4],
+      ["but I'm going to practise tomorrow", "Pero voy a practicar mañana", "P03", 4],
+      ["but we want to meet this evening", "Pero queremos reunirnos esta noche", "P01", 4],
+      ["but she wants to find out the answer now", "Pero ella quiere descubrir la respuesta ahora", "P01", 5]
+    ]
+  },
+
+  "S0019L02": {
+    "lego": ["to stop", "parar de"],
+    "type": "C",
+    "available_legos": 57,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["to stop", "parar de", null, 1],
+      ["I want to stop", "Quiero parar de", "P01", 2],
+      ["to stop now", "parar de ahora", null, 2],
+      ["I don't want to stop", "No quiero parar de", "P01", 3],
+      ["to stop speaking", "parar de hablar", null, 2],
+      ["I want to stop learning", "Quiero parar de aprender", "P01", 3],
+      ["I'm going to stop trying", "Voy a parar de intentar", "P03", 4],
+      ["she wants to stop practising", "Ella quiere parar de practicar", "P01", 3],
+      ["but I don't want to stop speaking", "Pero no quiero parar de hablar", "P01", 4],
+      ["we want to stop trying to remember now", "Queremos parar de intentar recordar ahora", "P01", 5]
+    ]
+  }
+}

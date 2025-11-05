@@ -13,8 +13,8 @@
 
   "S0001L01": {
     "lego": ["I want", "Quiero"],
-    "type": "B",
-    "available_legos": 1,
+    "type": "C",
+    "available_legos": 0,
     "available_patterns": [],
     "practice_phrases": [
       ["I want", "Quiero", null, 1]
@@ -24,7 +24,7 @@
   "S0001L02": {
     "lego": ["to speak", "hablar"],
     "type": "B",
-    "available_legos": 2,
+    "available_legos": 1,
     "available_patterns": ["P01"],
     "practice_phrases": [
       ["to speak", "hablar", null, 1],
@@ -35,7 +35,7 @@
   "S0001L03": {
     "lego": ["Spanish", "español"],
     "type": "B",
-    "available_legos": 3,
+    "available_legos": 2,
     "available_patterns": ["P01"],
     "practice_phrases": [
       ["Spanish", "español", null, 1],
@@ -47,8 +47,8 @@
 
   "S0001L04": {
     "lego": ["with you", "contigo"],
-    "type": "B",
-    "available_legos": 4,
+    "type": "C",
+    "available_legos": 3,
     "available_patterns": ["P01"],
     "practice_phrases": [
       ["with you", "contigo", null, 1],
@@ -63,7 +63,7 @@
   "S0001L05": {
     "lego": ["now", "ahora"],
     "type": "B",
-    "available_legos": 5,
+    "available_legos": 4,
     "available_patterns": ["P01"],
     "practice_phrases": [
       ["now", "ahora", null, 1],
@@ -72,6 +72,7 @@
       ["Spanish with you now", "español contigo ahora", null, 3],
       ["I want to speak Spanish now", "Quiero hablar español ahora", "P01", 4],
       ["to speak Spanish with you now", "hablar español contigo ahora", null, 4],
+      ["I want to speak with you now", "Quiero hablar contigo ahora", "P01", 4],
       ["I want to speak Spanish with you now", "Quiero hablar español contigo ahora", "P01", 5]
     ]
   }

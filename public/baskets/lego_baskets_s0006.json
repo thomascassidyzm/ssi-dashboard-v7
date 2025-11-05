@@ -1,5 +1,5 @@
 {
-  "version": "generative_v1",
+  "version": "generative_v1_AUTHORITATIVE_STRUCTURE",
   "seed": "S0006",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -9,67 +9,44 @@
   },
   "pattern_introduced": null,
   "pattern_reinforced": "P02: Estoy + gerund",
-  "cumulative_patterns": ["P01", "P02", "P03", "P12"],
-  "cumulative_legos": 22,
+  "cumulative_patterns": ["P01", "P02", "P12", "P03"],
+  "cumulative_legos": 19,
 
   "S0006L01": {
     "lego": ["to remember", "recordar"],
     "type": "B",
-    "available_legos": 20,
-    "available_patterns": ["P01", "P02", "P03", "P12"],
+    "available_legos": 17,
+    "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
       ["to remember", "recordar", null, 1],
-      ["to remember now", "recordar ahora", null, 2],
       ["I want to remember", "Quiero recordar", "P01", 2],
       ["how to remember", "cómo recordar", "P12", 2],
+      ["I'm going to remember", "Voy a recordar", "P03", 2],
+      ["to remember Spanish", "recordar español", null, 2],
       ["to remember something", "recordar algo", null, 2],
       ["I'm trying to remember", "Estoy intentando recordar", "P02", 3],
-      ["I'm going to remember", "Voy a recordar", "P03", 3],
-      ["I want to remember something", "Quiero recordar algo", "P01", 3],
+      ["I want to remember Spanish", "Quiero recordar español", "P01", 3],
       ["I'm trying to remember something", "Estoy intentando recordar algo", "P02", 4],
-      ["I'm trying to remember something now", "Estoy intentando recordar algo ahora", "P02", 4],
-      ["I'm going to try to remember", "Voy a intentar recordar", "P03", 4]
+      ["I'm going to try to remember", "Voy a intentar recordar", "P03", 3]
     ]
   },
 
   "S0006L02": {
-    "lego": ["word", "palabra"],
-    "type": "B",
-    "available_legos": 21,
-    "available_patterns": ["P01", "P02", "P03", "P12"],
+    "lego": ["a word", "una palabra"],
+    "type": "C",
+    "available_legos": 18,
+    "available_patterns": ["P01", "P02", "P12", "P03"],
     "practice_phrases": [
-      ["word", "palabra", null, 1],
-      ["to remember word", "recordar palabra", null, 2],
-      ["I want word", "Quiero palabra", "P01", 2],
-      ["word in Spanish", "palabra en español", null, 3],
-      ["to remember word now", "recordar palabra ahora", null, 3],
-      ["I want to remember word", "Quiero recordar palabra", "P01", 3],
-      ["how to remember word", "cómo recordar palabra", "P12", 3],
-      ["word with someone", "palabra con alguien", null, 3],
-      ["I'm trying to remember word", "Estoy intentando recordar palabra", "P02", 4],
-      ["I'm going to remember word", "Voy a recordar palabra", "P03", 4],
-      ["I'm trying to remember word now", "Estoy intentando recordar palabra ahora", "P02", 5],
-      ["I want to speak word in Spanish", "Quiero hablar palabra en español", "P01", 5],
-      ["I'm going to try to remember word", "Voy a intentar recordar palabra", "P03", 5]
-    ]
-  },
-
-  "S0006L03": {
-    "lego": ["a", "una"],
-    "type": "B",
-    "available_legos": 22,
-    "available_patterns": ["P01", "P02", "P03", "P12"],
-    "practice_phrases": [
-      ["a", "una", null, 1],
-      ["a word", "una palabra", null, 2],
-      ["I want a word", "Quiero una palabra", "P01", 3],
-      ["to remember a word", "recordar una palabra", null, 3],
-      ["how to remember a word", "cómo recordar una palabra", "P12", 4],
-      ["a word in Spanish", "una palabra en español", null, 4],
-      ["I'm trying to remember a word", "Estoy intentando recordar una palabra", "P02", 5],
-      ["I'm going to remember a word", "Voy a recordar una palabra", "P03", 5],
-      ["I want to remember a word now", "Quiero recordar una palabra ahora", "P01", 5],
-      ["I'm trying to remember a word now", "Estoy intentando recordar una palabra ahora", "P02", 6]
+      ["a word", "una palabra", null, 1],
+      ["to remember a word", "recordar una palabra", null, 2],
+      ["I want a word", "Quiero una palabra", "P01", 2],
+      ["to say a word", "hablar una palabra", null, 2],
+      ["I want to remember a word", "Quiero recordar una palabra", "P01", 3],
+      ["how to remember a word", "cómo recordar una palabra", "P12", 3],
+      ["I'm going to remember a word", "Voy a recordar una palabra", "P03", 3],
+      ["I'm trying to remember a word", "Estoy intentando recordar una palabra", "P02", 4],
+      ["I want to say a word in Spanish", "Quiero hablar una palabra en español", "P01", 4],
+      ["I'm trying to remember a word now", "Estoy intentando recordar una palabra ahora", "P02", 5]
     ]
   }
 }

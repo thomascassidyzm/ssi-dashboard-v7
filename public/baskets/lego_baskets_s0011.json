@@ -1,0 +1,89 @@
+{
+  "version": "generative_v1_AUTHORITATIVE_STRUCTURE",
+  "seed": "S0011",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'd like to be able to speak after you finish.",
+    "target": "Me gustaría poder hablar después de que termines."
+  },
+  "pattern_introduced": "P04: Me gustaría (conditional/polite); P10: Subjunctive mood",
+  "cumulative_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+  "cumulative_legos": 35,
+
+  "S0011L01": {
+    "lego": ["I'd like", "Me gustaría"],
+    "type": "C",
+    "available_legos": 31,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18"],
+    "practice_phrases": [
+      ["I'd like", "Me gustaría", "P04", 1],
+      ["I'd like to speak", "Me gustaría hablar", "P04", 2],
+      ["I'd like to learn", "Me gustaría aprender", "P04", 2],
+      ["I'd like to try", "Me gustaría intentar", "P04", 2],
+      ["I'd like to learn Spanish", "Me gustaría aprender español", "P04", 3],
+      ["I'd like to speak Spanish", "Me gustaría hablar español", "P04", 3],
+      ["I'd like to speak with you", "Me gustaría hablar contigo", "P04", 3],
+      ["I'd like to speak Spanish with you", "Me gustaría hablar español contigo", "P04", 4],
+      ["I'd like to learn how to speak Spanish", "Me gustaría aprender cómo hablar español", "P04", 5],
+      ["I'd like to speak a little Spanish with you now", "Me gustaría hablar un poco de español contigo ahora", "P04", 6]
+    ]
+  },
+
+  "S0011L02": {
+    "lego": ["to be able to", "poder"],
+    "type": "B",
+    "available_legos": 32,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04"],
+    "practice_phrases": [
+      ["to be able to", "poder", null, 1],
+      ["to be able to speak", "poder hablar", null, 2],
+      ["to be able to learn", "poder aprender", null, 2],
+      ["I want to be able to", "Quiero poder", "P01", 2],
+      ["I want to be able to speak", "Quiero poder hablar", "P01", 3],
+      ["I'd like to be able to", "Me gustaría poder", "P04", 2],
+      ["I'd like to be able to speak", "Me gustaría poder hablar", "P04", 3],
+      ["I'd like to be able to speak Spanish", "Me gustaría poder hablar español", "P04", 4],
+      ["I want to be able to speak a little Spanish", "Quiero poder hablar un poco de español", "P01", 6],
+      ["I'd like to be able to speak Spanish with you", "Me gustaría poder hablar español contigo", "P04", 5]
+    ]
+  },
+
+  "S0011L03": {
+    "lego": ["after", "después de que"],
+    "type": "C",
+    "available_legos": 33,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04"],
+    "practice_phrases": [
+      ["after", "después de que", null, 1],
+      ["after now", "después de ahora", null, 2],
+      ["after today", "después de hoy", null, 2],
+      ["I want to speak after today", "Quiero hablar después de hoy", "P01", 4],
+      ["I'd like to speak after now", "Me gustaría hablar después de ahora", "P04", 4],
+      ["I'm trying to learn after today", "Estoy intentando aprender después de hoy", "P02", 5],
+      ["I'm going to speak after today", "Voy a hablar después de hoy", "P03", 5],
+      ["I'd like to be able to speak after today", "Me gustaría poder hablar después de hoy", "P04", 6],
+      ["I want to learn Spanish after now", "Quiero aprender español después de ahora", "P01", 5],
+      ["I'm not sure if I can speak after today", "No estoy seguro si puedo hablar después de hoy", "P06", 7]
+    ]
+  },
+
+  "S0011L04": {
+    "lego": ["after you finish", "después de que termines"],
+    "type": "C",
+    "available_legos": 34,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "practice_phrases": [
+      ["after you finish", "después de que termines", "P10", 1],
+      ["I'd like to speak after you finish", "Me gustaría hablar después de que termines", "P04", 2],
+      ["I want to speak after you finish", "Quiero hablar después de que termines", "P01", 2],
+      ["I'm going to speak after you finish", "Voy a hablar después de que termines", "P03", 3],
+      ["I can speak after you finish", "puedo hablar después de que termines", "P18", 2],
+      ["I'd like to learn after you finish", "Me gustaría aprender después de que termines", "P04", 2],
+      ["I'd like to speak Spanish after you finish", "Me gustaría hablar español después de que termines", "P04", 3],
+      ["I want to be able to speak after you finish", "Quiero poder hablar después de que termines", "P01", 3],
+      ["I'd like to be able to speak after you finish", "Me gustaría poder hablar después de que termines", "P04", 3],
+      ["I'm not sure if I can speak after you finish", "No estoy seguro si puedo hablar después de que termines", "P06", 4]
+    ]
+  }
+}

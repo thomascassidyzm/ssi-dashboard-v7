@@ -1,0 +1,57 @@
+{
+  "seed_id": "S0013",
+  "seed_pair": {
+    "target": "Hablas español muy bien.",
+    "known": "You speak Spanish very well."
+  },
+  "cumulative_legos_at_seed_start": 39,
+  "cumulative_legos_after_seed": 41,
+  "patterns_used": ["P05"],
+  "legos": [
+    {
+      "lego_id": "S0013L01",
+      "lego": ["you speak", "Hablas"],
+      "type": "C",
+      "pattern_demonstrated": "P05",
+      "available_legos": 39,
+      "note": "Second person present tense conjugation",
+      "practice_phrases": [
+        ["You speak", "Hablas", null, 1],
+        ["You speak Spanish", "Hablas español", "P05", 2],
+        ["You speak now", "Hablas ahora", "P05", 2],
+        ["You speak today", "Hablas hoy", "P05", 2],
+        ["You speak with me", "Hablas conmigo", "P05", 3],
+        ["You speak a little Spanish", "Hablas un poco de español", "P05", 4],
+        ["You speak Spanish now", "Hablas español ahora", "P05", 3],
+        ["You speak Spanish today", "Hablas español hoy", "P05", 3],
+        ["You speak Spanish with me", "Hablas español conmigo", "P05", 4],
+        ["You speak a little Spanish with me", "Hablas un poco de español conmigo", "P05", 5]
+      ]
+    },
+    {
+      "lego_id": "S0013L02",
+      "lego": ["very well", "muy bien"],
+      "type": "C",
+      "pattern_demonstrated": null,
+      "available_legos": 40,
+      "note": "Adverbial phrase for manner",
+      "practice_phrases": [
+        ["Very well", "Muy bien", null, 1],
+        ["I speak very well", "Hablo muy bien", "P05", 3],
+        ["You speak very well", "Hablas muy bien", "P05", 3],
+        ["I speak Spanish very well", "Hablo español muy bien", "P05", 4],
+        ["You speak Spanish very well", "Hablas español muy bien", "P05", 4],
+        ["I want to speak very well", "Quiero hablar muy bien", "P01", 5],
+        ["I'm trying to speak very well", "Estoy intentando hablar muy bien", "P02", 6],
+        ["I'm going to speak very well", "Voy a hablar muy bien", "P03", 5],
+        ["You speak very well now", "Hablas muy bien ahora", "P05", 4],
+        ["I speak Spanish with you very well", "Hablo español contigo muy bien", "P05", 6]
+      ]
+    }
+  ],
+  "generation_metadata": {
+    "version": "basket_v1",
+    "gate_compliant": true,
+    "generated_at": "2025-11-05"
+  }
+}
