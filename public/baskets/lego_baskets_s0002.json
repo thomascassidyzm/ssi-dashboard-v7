@@ -1,5 +1,5 @@
 {
-  "version": "generative_v2_strict_variety",
+  "version": "generative_v3_GATE_strict_full_seed",
   "seed": "S0002",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -10,7 +10,7 @@
   "pattern_introduced": "P02: Estoy + gerund (Present progressive)",
   "cumulative_patterns": ["P01", "P02"],
   "cumulative_legos": 8,
-  "note": "Available patterns: P01 from S0001, P02 introduced here",
+  "note": "Available: S0001 LEGOs (5). STRICT GATE compliance, final LEGO includes full seed",
 
   "S0002L01": {
     "lego": ["trying", "intentando"],
@@ -19,15 +19,7 @@
     "available_patterns": ["P01"],
     "practice_phrases": [
       ["trying", "intentando", null, 1],
-      ["trying hard", "intentando duro", null, 2],
-      ["I want trying", "Quiero intentando", "P01", 2],
-      ["trying everything", "intentando todo", null, 2],
-      ["trying again", "intentando otra vez", null, 2],
-      ["trying something new", "intentando algo nuevo", null, 3],
-      ["not trying enough", "no intentando suficiente", null, 3],
-      ["I want to keep trying", "Quiero seguir intentando", "P01", 4],
-      ["trying without stopping", "intentando sin parar", null, 3],
-      ["really trying my best", "realmente intentando mi mejor esfuerzo", null, 5]
+      ["I want to speak now", "Quiero hablar ahora", "P01", 3]
     ]
   },
 
@@ -38,15 +30,8 @@
     "available_patterns": ["P01", "P02"],
     "practice_phrases": [
       ["I'm trying", "Estoy intentando", "P02", 1],
-      ["I'm trying now", "Estoy intentando ahora", "P02", 2],
-      ["I'm not trying", "No estoy intentando", "P02", 2],
-      ["I want to say I'm trying", "Quiero decir que estoy intentando", "P01", 5],
-      ["I'm trying harder", "Estoy intentando más duro", null, 3],
-      ["I'm trying my best", "Estoy intentando lo mejor que puedo", null, 4],
-      ["Am I really trying?", "¿Realmente estoy intentando?", null, 3],
-      ["I'm trying to improve", "Estoy intentando mejorar", null, 3],
-      ["I'm trying every day", "Estoy intentando cada día", null, 3],
-      ["I'm always trying", "Siempre estoy intentando", null, 3]
+      ["I want to speak Spanish", "Quiero hablar español", "P01", 3],
+      ["I want to speak with you", "Quiero hablar contigo", "P01", 3]
     ]
   },
 
@@ -58,20 +43,14 @@
     "practice_phrases": [
       ["to learn", "aprender", null, 1],
       ["I want to learn", "Quiero aprender", "P01", 2],
-      ["I'm trying to learn", "Estoy intentando aprender", "P02", 2],
-      ["to learn quickly", "aprender rápidamente", null, 2],
-      ["to learn more", "aprender más", null, 2],
-      ["to learn everything", "aprender todo", null, 2],
-      ["learning to learn", "aprendiendo a aprender", null, 3],
-      ["to learn from mistakes", "aprender de los errores", null, 4],
-      ["ready to learn", "listo para aprender", null, 3],
-      ["to learn something useful", "aprender algo útil", null, 3]
+      ["I want to learn Spanish", "Quiero aprender español", "P01", 3],
+      ["I'm trying to learn", "Estoy intentando aprender", "P02", 2]
     ]
   },
 
   "pattern_distribution_summary": {
-    "S0002L01": {"P01": 2, "null": 8, "total_patterns_used": 1, "available_patterns": 1, "variety_score": "100%"},
-    "S0002L02": {"P01": 1, "P02": 3, "null": 6, "total_patterns_used": 2, "available_patterns": 2, "variety_score": "100%"},
-    "S0002L03": {"P01": 1, "P02": 1, "null": 8, "total_patterns_used": 2, "available_patterns": 2, "variety_score": "100%"}
+    "S0002L01": {"P01": 1, "null": 1, "total_patterns_used": 1, "available_patterns": 1, "variety_score": "100%"},
+    "S0002L02": {"P01": 2, "P02": 1, "null": 0, "total_patterns_used": 2, "available_patterns": 2, "variety_score": "100%"},
+    "S0002L03": {"P01": 2, "P02": 1, "null": 1, "total_patterns_used": 2, "available_patterns": 2, "variety_score": "100%", "FULL_SEED_INCLUDED": true}
   }
 }

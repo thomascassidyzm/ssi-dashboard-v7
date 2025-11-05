@@ -1,5 +1,5 @@
 {
-  "version": "generative_v2_strict_variety",
+  "version": "generative_v3_GATE_strict_full_seed",
   "seed": "S0004",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -11,7 +11,7 @@
   "pattern_reinforced": "P12: Question words + infinitive",
   "cumulative_patterns": ["P01", "P02", "P12"],
   "cumulative_legos": 13,
-  "note": "Available patterns: P01, P02, P12 from S0001-S0003",
+  "note": "Available: S0001-S0003 LEGOs (10). STRICT GATE compliance, final LEGO includes full seed",
 
   "S0004L01": {
     "lego": ["something", "algo"],
@@ -22,13 +22,7 @@
       ["something", "algo", null, 1],
       ["I want something", "Quiero algo", "P01", 2],
       ["I'm trying something", "Estoy intentando algo", "P02", 2],
-      ["how to find something", "cómo encontrar algo", "P12", 3],
-      ["something important", "algo importante", null, 2],
-      ["something new", "algo nuevo", null, 2],
-      ["learning something", "aprendiendo algo", null, 2],
-      ["something useful", "algo útil", null, 2],
-      ["something different", "algo diferente", null, 2],
-      ["discovering something interesting", "descubriendo algo interesante", null, 3]
+      ["how to learn", "cómo aprender", "P12", 2]
     ]
   },
 
@@ -41,13 +35,7 @@
       ["to say something", "hablar algo", null, 1],
       ["I want to say something", "Quiero hablar algo", "P01", 2],
       ["I'm trying to say something", "Estoy intentando hablar algo", "P02", 2],
-      ["how to say something", "cómo hablar algo", "P12", 2],
-      ["to say something important", "hablar algo importante", null, 2],
-      ["to say something clearly", "hablar algo claramente", null, 2],
-      ["need to say something", "necesito hablar algo", null, 3],
-      ["to say something useful", "hablar algo útil", null, 2],
-      ["ready to say something", "listo para hablar algo", null, 3],
-      ["to say something meaningful", "hablar algo significativo", null, 3]
+      ["how to say something", "cómo hablar algo", "P12", 2]
     ]
   },
 
@@ -59,20 +47,14 @@
     "practice_phrases": [
       ["in Spanish", "en español", null, 1],
       ["I want to speak in Spanish", "Quiero hablar en español", "P01", 3],
-      ["I'm trying in Spanish", "Estoy intentando en español", "P02", 2],
-      ["how to think in Spanish", "cómo pensar en español", "P12", 3],
-      ["speaking in Spanish", "hablando en español", null, 2],
-      ["learning in Spanish", "aprendiendo en español", null, 2],
-      ["everything in Spanish", "todo en español", null, 2],
-      ["practicing in Spanish", "practicando en español", null, 2],
-      ["thinking in Spanish", "pensando en español", null, 2],
-      ["communicating in Spanish naturally", "comunicándose en español naturalmente", null, 4]
+      ["I'm trying to learn in Spanish", "Estoy intentando aprender en español", "P02", 3],
+      ["how to say something in Spanish", "cómo hablar algo en español", "P12", 4]
     ]
   },
 
   "pattern_distribution_summary": {
-    "S0004L01": {"P01": 1, "P02": 1, "P12": 1, "null": 7, "total_patterns_used": 3, "available_patterns": 3, "variety_score": "100%"},
-    "S0004L02": {"P01": 1, "P02": 1, "P12": 1, "null": 7, "total_patterns_used": 3, "available_patterns": 3, "variety_score": "100%"},
-    "S0004L03": {"P01": 1, "P02": 1, "P12": 1, "null": 7, "total_patterns_used": 3, "available_patterns": 3, "variety_score": "100%"}
+    "S0004L01": {"P01": 1, "P02": 1, "P12": 1, "null": 1, "total_patterns_used": 3, "available_patterns": 3, "variety_score": "100%"},
+    "S0004L02": {"P01": 1, "P02": 1, "P12": 1, "null": 1, "total_patterns_used": 3, "available_patterns": 3, "variety_score": "100%"},
+    "S0004L03": {"P01": 1, "P02": 1, "P12": 1, "null": 1, "total_patterns_used": 3, "available_patterns": 3, "variety_score": "100%", "FULL_SEED_INCLUDED": true}
   }
 }
