@@ -1,0 +1,77 @@
+{
+  "version": "generative_v1",
+  "seed": "S0005",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'm going to practise speaking with someone else.",
+    "target": "Voy a practicar hablar con alguien más."
+  },
+  "pattern_introduced": "P03: Voy a + infinitive",
+  "cumulative_patterns": ["P01", "P02", "P03", "P12"],
+  "cumulative_legos": 13,
+
+  "S0005L01": {
+    "lego": ["I'm going to", "Voy a"],
+    "type": "B",
+    "available_legos": 14,
+    "available_patterns": ["P01", "P02", "P03", "P12"],
+    "practice_phrases": [
+      ["I'm going to", "Voy a", null, 1],
+      ["I'm going to speak", "Voy a hablar", "P03", 2],
+      ["I'm going to learn", "Voy a aprender", "P03", 2],
+      ["I'm going to speak Spanish", "Voy a hablar español", "P03", 3],
+      ["I'm going to learn something", "Voy a aprender algo", "P03", 3],
+      ["I'm going to speak in Spanish", "Voy a hablar en español", "P03", 4],
+      ["I'm going to speak something in Spanish", "Voy a hablar algo en español", "P03", 5],
+      ["I'm going to learn something in Spanish", "Voy a aprender algo en español", "P03", 5],
+      ["I'm going to speak Spanish now", "Voy a hablar español ahora", "P03", 4],
+      ["I'm going to learn something in Spanish now", "Voy a aprender algo en español ahora", "P03", 6]
+    ]
+  },
+
+  "S0005L02": {
+    "lego": ["to practise", "practicar"],
+    "type": "B",
+    "available_legos": 15,
+    "available_patterns": ["P01", "P02", "P03", "P12"],
+    "practice_phrases": [
+      ["to practise", "practicar", null, 1],
+      ["I want to practise", "Quiero practicar", "P01", 2],
+      ["I'm going to practise", "Voy a practicar", "P03", 2],
+      ["how to practise", "cómo practicar", "P12", 2],
+      ["trying to practise", "intentando practicar", null, 2],
+      ["I want to practise Spanish", "Quiero practicar español", "P01", 3],
+      ["I'm going to practise speaking", "Voy a practicar hablar", "P03", 3],
+      ["how to practise frequently", "cómo practicar frecuentemente", "P12", 3],
+      ["I'm trying to practise speaking", "Estoy intentando practicar hablar", "P02", 4],
+      ["I'm going to practise speaking Spanish", "Voy a practicar hablar español", "P03", 4],
+      ["I want to practise speaking in Spanish", "Quiero practicar hablar en español", "P01", 5],
+      ["I'm going to practise speaking something in Spanish", "Voy a practicar hablar algo en español", "P03", 6],
+      ["I want to practise speaking Spanish frequently now", "Quiero practicar hablar español frecuentemente ahora", "P01", 6]
+    ]
+  },
+
+  "S0005L03": {
+    "lego": ["with someone else", "con alguien más"],
+    "type": "B",
+    "available_legos": 16,
+    "available_patterns": ["P01", "P02", "P03", "P12"],
+    "practice_phrases": [
+      ["with someone else", "con alguien más", null, 1],
+      ["to speak with someone else", "hablar con alguien más", null, 2],
+      ["to practise with someone else", "practicar con alguien más", null, 2],
+      ["I want to speak with someone else", "Quiero hablar con alguien más", "P01", 3],
+      ["I'm going to speak with someone else", "Voy a hablar con alguien más", "P03", 3],
+      ["how to speak with someone else", "cómo hablar con alguien más", "P12", 3],
+      ["I'm going to practise with someone else", "Voy a practicar con alguien más", "P03", 3],
+      ["to practise speaking with someone else", "practicar hablar con alguien más", null, 3],
+      ["I'm going to practise speaking with someone else", "Voy a practicar hablar con alguien más", "P03", 4],
+      ["I want to practise speaking with someone else", "Quiero practicar hablar con alguien más", "P01", 4],
+      ["how to practise speaking with someone else", "cómo practicar hablar con alguien más", "P12", 4],
+      ["I'm going to practise speaking Spanish with someone else", "Voy a practicar hablar español con alguien más", "P03", 5],
+      ["I want to practise speaking in Spanish with someone else now", "Quiero practicar hablar en español con alguien más ahora", "P01", 7],
+      ["I'm going to practise speaking in Spanish with someone else now", "Voy a practicar hablar en español con alguien más ahora", "P03", 7]
+    ]
+  }
+}
