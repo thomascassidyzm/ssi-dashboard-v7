@@ -1,0 +1,56 @@
+{
+  "version": "generative_v1",
+  "seed": "S0004",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "how to say something in Spanish",
+    "target": "cómo hablar algo en español"
+  },
+  "pattern_introduced": null,
+  "pattern_reinforced": "P12: Cómo + infinitive",
+  "cumulative_patterns": ["P01", "P02", "P12"],
+  "cumulative_legos": 11,
+
+  "S0004L01": {
+    "lego": ["something", "algo"],
+    "type": "B",
+    "available_legos": 12,
+    "available_patterns": ["P01", "P02", "P12"],
+    "practice_phrases": [
+      ["something", "algo", null, 1],
+      ["I want something", "Quiero algo", "P01", 2],
+      ["to learn something", "aprender algo", null, 2],
+      ["to speak something", "hablar algo", null, 2],
+      ["I want to learn something", "Quiero aprender algo", "P01", 3],
+      ["I want to speak something", "Quiero hablar algo", "P01", 3],
+      ["how to speak something", "cómo hablar algo", "P12", 3],
+      ["how to learn something", "cómo aprender algo", "P12", 3],
+      ["trying to learn something", "intentando aprender algo", null, 3],
+      ["I'm trying to learn something", "Estoy intentando aprender algo", "P02", 4],
+      ["I want to speak something now", "Quiero hablar algo ahora", "P01", 4],
+      ["how to learn something frequently", "cómo aprender algo frecuentemente", "P12", 4],
+      ["I want to learn something Spanish now", "Quiero aprender algo español ahora", "P01", 5]
+    ]
+  },
+
+  "S0004L02": {
+    "lego": ["in", "en"],
+    "type": "B",
+    "available_legos": 13,
+    "available_patterns": ["P01", "P02", "P12"],
+    "practice_phrases": [
+      ["in", "en", null, 1],
+      ["in Spanish", "en español", null, 2],
+      ["to speak in Spanish", "hablar en español", null, 3],
+      ["how to speak in Spanish", "cómo hablar en español", "P12", 4],
+      ["I want to speak in Spanish", "Quiero hablar en español", "P01", 4],
+      ["trying to speak in Spanish", "intentando hablar en español", null, 4],
+      ["I'm trying to speak in Spanish", "Estoy intentando hablar en español", "P02", 5],
+      ["how to speak something in Spanish", "cómo hablar algo en español", "P12", 5],
+      ["I want to learn something in Spanish", "Quiero aprender algo en español", "P01", 5],
+      ["I'm trying to learn something in Spanish", "Estoy intentando aprender algo en español", "P02", 6],
+      ["how to learn something in Spanish now", "cómo aprender algo en español ahora", "P12", 6]
+    ]
+  }
+}

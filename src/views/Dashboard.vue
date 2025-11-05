@@ -255,6 +255,15 @@
               </div>
             </router-link>
 
+            <!-- LEGO Practice Baskets -->
+            <router-link to="/baskets" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-emerald-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
+              <div class="text-3xl">🧱</div>
+              <div>
+                <h3 class="font-semibold text-emerald-400">LEGO Practice Baskets</h3>
+                <p class="text-sm text-slate-400">View generated practice phrase baskets for Spanish S0001-S0010 (Test Generation)</p>
+              </div>
+            </router-link>
+
             <!-- APML v7.6 Specification -->
             <router-link to="/reference/apml" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">📋</div>

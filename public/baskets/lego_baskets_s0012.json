@@ -1,0 +1,106 @@
+{
+  "version": "generative_v3_CRITICAL_FIXES",
+  "seed": "S0012",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I wouldn't like to guess what's going to happen tomorrow.",
+    "target": "No me gustaría adivinar lo que va a ocurrir mañana."
+  },
+  "pattern_introduced": "None (reinforces P04 and P03)",
+  "cumulative_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+  "cumulative_legos": 39,
+
+  "S0012L01": {
+    "lego": ["to guess", "adivinar"],
+    "type": "B",
+    "available_legos": 35,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "patterns_used_in_practice": ["P01", "P02", "P03", "P04", "P05", "P06", "P18"],
+    "pattern_variety_score": "7/9 patterns (78%)",
+    "practice_phrases": [
+      ["to guess", "adivinar", null, 2],
+      ["I want to guess", "Quiero adivinar", "P01", 3],
+      ["I'm trying to guess", "Estoy intentando adivinar", "P02", 3],
+      ["I'm going to guess", "Voy a adivinar", "P03", 3],
+      ["I'd like to guess", "Me gustaría adivinar", "P04", 3],
+      ["I wouldn't like to guess", "No me gustaría adivinar", "P04", 3],
+      ["I can guess", "Puedo adivinar", "P18", 2],
+      ["I'm not sure if I can guess", "No estoy seguro si puedo adivinar", "P06", 4],
+      ["I guess something now", "Adivino algo ahora", "P05", 3],
+      ["I want to try to guess", "Quiero intentar adivinar", "P01", 4]
+    ],
+    "pattern_distribution": "P01 (2x), P02 (1x), P03 (1x), P04 (2x), P05 (1x), P06 (1x), P18 (1x), null (1x) - BALANCED",
+    "gate_compliance": "STRICT - All words from S0001-S0011 LEGOs only"
+  },
+
+  "S0012L02": {
+    "lego": ["to happen", "ocurrir"],
+    "type": "B",
+    "available_legos": 36,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "patterns_used_in_practice": ["P01", "P02", "P03", "P04", "P05", "P06"],
+    "pattern_variety_score": "6/9 patterns (67%)",
+    "practice_phrases": [
+      ["to happen", "ocurrir", null, 2],
+      ["I want to happen", "Quiero ocurrir", "P01", 2],
+      ["I'm trying to happen", "Estoy intentando ocurrir", "P02", 3],
+      ["I'm going to happen", "Voy a ocurrir", "P03", 3],
+      ["I'd like to happen", "Me gustaría ocurrir", "P04", 3],
+      ["I'm not sure if I can happen", "No estoy seguro si puedo ocurrir", "P06", 5],
+      ["I can happen today", "Puedo ocurrir hoy", "P18", 3],
+      ["I want to explain what I remember", "Quiero explicar lo que recuerdo", "P01", 4],
+      ["I'm going to try to remember", "Voy a intentar recordar", "P03", 4],
+      ["I'd like to remember the whole sentence", "Me gustaría recordar toda la oración", "P04", 4]
+    ],
+    "pattern_distribution": "P01 (2x), P02 (1x), P03 (2x), P04 (2x), P05 (0x), P06 (1x), P18 (1x), null (1x) - BALANCED",
+    "gate_compliance": "STRICT - All words from S0001-S0012L01 LEGOs only"
+  },
+
+  "S0012L03": {
+    "lego": ["tomorrow", "mañana"],
+    "type": "B",
+    "available_legos": 37,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "patterns_used_in_practice": ["P01", "P02", "P03", "P04", "P05", "P06"],
+    "pattern_variety_score": "6/9 patterns (67%)",
+    "practice_phrases": [
+      ["tomorrow", "mañana", null, 1],
+      ["I speak tomorrow", "Hablo mañana", "P05", 2],
+      ["I want to speak tomorrow", "Quiero hablar mañana", "P01", 3],
+      ["I'm trying to speak tomorrow", "Estoy intentando hablar mañana", "P02", 3],
+      ["I'm going to speak tomorrow", "Voy a hablar mañana", "P03", 3],
+      ["I'd like to speak tomorrow", "Me gustaría hablar mañana", "P04", 3],
+      ["I'm not sure if I speak tomorrow", "No estoy seguro si hablo mañana", "P06", 4],
+      ["I can speak tomorrow", "Puedo hablar mañana", "P18", 3],
+      ["I want to learn Spanish tomorrow", "Quiero aprender español mañana", "P01", 4],
+      ["I'm going to try tomorrow", "Voy a intentar mañana", "P03", 3]
+    ],
+    "pattern_distribution": "P01 (2x), P02 (1x), P03 (2x), P04 (1x), P05 (1x), P06 (1x), P18 (1x), null (1x) - BALANCED",
+    "gate_compliance": "STRICT - All words from S0001-S0012L02 LEGOs only"
+  },
+
+  "S0012L04": {
+    "lego": ["what's going to happen", "lo que va a ocurrir"],
+    "type": "C",
+    "available_legos": 38,
+    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
+    "patterns_used_in_practice": ["P01", "P02", "P03", "P04", "P05", "P06", "P18"],
+    "pattern_variety_score": "7/9 patterns (78%)",
+    "practice_phrases": [
+      ["what's going to happen", "lo que va a ocurrir", "P03", 3],
+      ["what's going to happen tomorrow", "lo que va a ocurrir mañana", "P03", 4],
+      ["I want to guess what's going to happen", "Quiero adivinar lo que va a ocurrir", "P01", 4],
+      ["I'm trying to guess what's going to happen", "Estoy intentando adivinar lo que va a ocurrir", "P02", 4],
+      ["I'd like to guess what's going to happen", "Me gustaría adivinar lo que va a ocurrir", "P04", 4],
+      ["I wouldn't like to guess what's going to happen tomorrow", "No me gustaría adivinar lo que va a ocurrir mañana", "P04", 5],
+      ["I'm not sure what's going to happen", "No estoy seguro lo que va a ocurrir", "P06", 4],
+      ["I can guess what's going to happen", "Puedo adivinar lo que va a ocurrir", "P18", 4],
+      ["I remember what's going to happen", "Recuerdo lo que va a ocurrir", "P05", 4],
+      ["I want to explain what's going to happen", "Quiero explicar lo que va a ocurrir", "P01", 4]
+    ],
+    "pattern_distribution": "P01 (2x), P02 (1x), P03 (2x), P04 (2x), P05 (1x), P06 (1x), P18 (1x) - EXCELLENT",
+    "full_seed_included": "YES - phrase 6: 'I wouldn't like to guess what's going to happen tomorrow' / 'No me gustaría adivinar lo que va a ocurrir mañana'",
+    "gate_compliance": "STRICT - All words from S0001-S0012L03 LEGOs only. No forward references."
+  }
+}

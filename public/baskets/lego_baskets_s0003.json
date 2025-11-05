@@ -1,0 +1,46 @@
+{
+  "version": "generative_v3_GATE_strict_full_seed",
+  "seed": "S0003",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "how to speak as often as possible",
+    "target": "cómo hablar lo más frecuentemente posible"
+  },
+  "pattern_introduced": "P12: Question words + infinitive",
+  "cumulative_patterns": ["P01", "P02", "P12"],
+  "cumulative_legos": 10,
+  "note": "Available: S0001-S0002 LEGOs (8). STRICT GATE compliance, final LEGO includes full seed",
+
+  "S0003L01": {
+    "lego": ["how", "cómo"],
+    "type": "B",
+    "available_legos": 8,
+    "available_patterns": ["P01", "P02"],
+    "practice_phrases": [
+      ["how", "cómo", "P12", 1],
+      ["how to speak", "cómo hablar", "P12", 2],
+      ["how to learn", "cómo aprender", "P12", 2],
+      ["I want to learn Spanish", "Quiero aprender español", "P01", 3],
+      ["I'm trying to speak", "Estoy intentando hablar", "P02", 2]
+    ]
+  },
+
+  "S0003L02": {
+    "lego": ["as often as possible", "lo más frecuentemente posible"],
+    "type": "C",
+    "available_legos": 9,
+    "available_patterns": ["P01", "P02", "P12"],
+    "practice_phrases": [
+      ["as often as possible", "lo más frecuentemente posible", null, 1],
+      ["I want to speak as often as possible", "Quiero hablar lo más frecuentemente posible", "P01", 4],
+      ["I'm trying to learn as often as possible", "Estoy intentando aprender lo más frecuentemente posible", "P02", 4],
+      ["how to speak as often as possible", "cómo hablar lo más frecuentemente posible", "P12", 3]
+    ]
+  },
+
+  "pattern_distribution_summary": {
+    "S0003L01": {"P01": 1, "P02": 1, "P12": 2, "null": 0, "total_patterns_used": 3, "available_patterns": 2, "variety_score": "150%"},
+    "S0003L02": {"P01": 1, "P02": 1, "P12": 1, "null": 1, "total_patterns_used": 3, "available_patterns": 3, "variety_score": "100%", "FULL_SEED_INCLUDED": true}
+  }
+}

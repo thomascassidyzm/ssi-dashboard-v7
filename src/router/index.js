@@ -14,6 +14,7 @@ import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
 import PhaseIntelligence from '../views/PhaseIntelligence.vue'
 import Skills from '../views/Skills.vue'
+import LegoBasketViewer from '../components/LegoBasketViewer.vue'
 
 // Quality Review Components
 import QualityDashboard from '../components/quality/QualityDashboard.vue'
@@ -101,6 +102,12 @@ const routes = [
     name: 'Skills',
     component: Skills,
     meta: { title: 'Skills Library' }
+  },
+  {
+    path: '/baskets',
+    name: 'LegoBasketViewer',
+    component: LegoBasketViewer,
+    meta: { title: 'LEGO Practice Baskets' }
   },
 
   // Quality Review Routes

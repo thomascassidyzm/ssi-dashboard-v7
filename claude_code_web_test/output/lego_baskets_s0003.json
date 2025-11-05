@@ -1,0 +1,73 @@
+{
+  "version": "generative_v1",
+  "seed": "S0003",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "how to speak as often as possible",
+    "target": "cómo hablar lo más frecuentemente posible"
+  },
+  "pattern_introduced": "P12: Question word constructions (cómo + infinitive; lo más + adverb + posible)",
+  "cumulative_patterns": ["P01", "P02", "P12"],
+  "cumulative_legos": 11,
+
+  "S0003L01": {
+    "lego": ["how", "cómo"],
+    "type": "B",
+    "available_legos": 9,
+    "available_patterns": ["P01", "P02"],
+    "practice_phrases": [
+      ["how", "cómo", null, 1],
+      ["how to speak", "cómo hablar", "P12", 2],
+      ["how to learn", "cómo aprender", "P12", 2],
+      ["how to speak Spanish", "cómo hablar español", "P12", 3],
+      ["how to learn Spanish", "cómo aprender español", "P12", 3],
+      ["I want to learn how to speak", "Quiero aprender cómo hablar", "P01", 4],
+      ["how to speak with you", "cómo hablar contigo", "P12", 3],
+      ["how to speak Spanish with you", "cómo hablar español contigo", "P12", 4],
+      ["I am trying to learn how to speak", "Estoy intentando aprender cómo hablar", "P02", 5],
+      ["how to speak Spanish with you now", "cómo hablar español contigo ahora", "P12", 5],
+      ["I am trying to learn how to speak Spanish", "Estoy intentando aprender cómo hablar español", "P02", 6]
+    ]
+  },
+
+  "S0003L02": {
+    "lego": ["frequently", "frecuentemente"],
+    "type": "B",
+    "available_legos": 10,
+    "available_patterns": ["P01", "P02", "P12"],
+    "practice_phrases": [
+      ["frequently", "frecuentemente", null, 1],
+      ["to speak frequently", "hablar frecuentemente", null, 2],
+      ["to learn frequently", "aprender frecuentemente", null, 2],
+      ["I want to speak frequently", "Quiero hablar frecuentemente", "P01", 3],
+      ["how to speak frequently", "cómo hablar frecuentemente", "P12", 3],
+      ["I am trying to speak frequently", "Estoy intentando hablar frecuentemente", "P02", 3],
+      ["to speak Spanish frequently", "hablar español frecuentemente", null, 3],
+      ["I want to speak Spanish frequently", "Quiero hablar español frecuentemente", "P01", 4],
+      ["to speak Spanish frequently with you", "hablar español frecuentemente contigo", null, 4],
+      ["I want to speak Spanish frequently with you now", "Quiero hablar español frecuentemente contigo ahora", "P01", 6],
+      ["I am trying to learn how to speak frequently", "Estoy intentando aprender cómo hablar frecuentemente", "P02", 6]
+    ]
+  },
+
+  "S0003L03": {
+    "lego": ["possible", "posible"],
+    "type": "B",
+    "available_legos": 11,
+    "available_patterns": ["P01", "P02", "P12"],
+    "practice_phrases": [
+      ["possible", "posible", null, 1],
+      ["as frequently as possible", "lo más frecuentemente posible", "P12", 2],
+      ["to speak as frequently as possible", "hablar lo más frecuentemente posible", "P12", 3],
+      ["how to speak as frequently as possible", "cómo hablar lo más frecuentemente posible", "P12", 4],
+      ["I want to speak as frequently as possible", "Quiero hablar lo más frecuentemente posible", "P01", 4],
+      ["to learn how to speak as frequently as possible", "aprender cómo hablar lo más frecuentemente posible", "P12", 5],
+      ["to speak Spanish as frequently as possible", "hablar español lo más frecuentemente posible", "P12", 4],
+      ["I am trying to speak as frequently as possible", "Estoy intentando hablar lo más frecuentemente posible", "P02", 5],
+      ["I want to speak Spanish as frequently as possible with you", "Quiero hablar español lo más frecuentemente posible contigo", "P01", 6],
+      ["how to speak Spanish as frequently as possible with you now", "cómo hablar español lo más frecuentemente posible contigo ahora", "P12", 7],
+      ["I am trying to learn how to speak Spanish as frequently as possible with you now", "Estoy intentando aprender cómo hablar español lo más frecuentemente posible contigo ahora", "P02", 9]
+    ]
+  }
+}

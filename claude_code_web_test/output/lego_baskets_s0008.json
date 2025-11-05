@@ -1,0 +1,71 @@
+{
+  "version": "generative_v1",
+  "seed": "S0008",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'm going to try to explain what I mean.",
+    "target": "Voy a intentar explicar lo que quiero decir."
+  },
+  "pattern_introduced": null,
+  "pattern_reinforced": "P03: Voy a + infinitive",
+  "cumulative_patterns": ["P01", "P02", "P12", "P03"],
+  "cumulative_legos": 32,
+
+  "S0008L01": {
+    "lego": ["to explain", "explicar"],
+    "type": "B",
+    "available_legos": 30,
+    "available_patterns": ["P01", "P02", "P12", "P03"],
+    "practice_phrases": [
+      ["to explain", "explicar", null, 1],
+      ["I want to explain", "Quiero explicar", "P01", 2],
+      ["how to explain", "cómo explicar", "P12", 2],
+      ["I'm trying to explain", "Estoy intentando explicar", "P02", 3],
+      ["I'm going to explain", "Voy a explicar", "P03", 3],
+      ["I want to explain now", "Quiero explicar ahora", "P01", 3],
+      ["I'm going to try to explain", "Voy a intentar explicar", "P03", 4],
+      ["I want to try to explain", "Quiero intentar explicar", "P01", 3],
+      ["I'm trying to explain a word", "Estoy intentando explicar una palabra", "P02", 5],
+      ["I want to try to explain a word", "Quiero intentar explicar una palabra", "P01", 5],
+      ["I'm going to try to explain a word", "Voy a intentar explicar una palabra", "P03", 6]
+    ]
+  },
+
+  "S0008L02": {
+    "lego": ["what", "lo que"],
+    "type": "B",
+    "available_legos": 31,
+    "available_patterns": ["P01", "P02", "P12", "P03"],
+    "practice_phrases": [
+      ["what", "lo que", null, 1],
+      ["I want what", "Quiero lo que", "P01", 2],
+      ["I'm trying to learn what", "Estoy intentando aprender lo que", "P02", 4],
+      ["I'm going to explain what", "Voy a explicar lo que", "P03", 4],
+      ["I'm trying to remember what", "Estoy intentando recordar lo que", "P02", 4],
+      ["I want to remember what", "Quiero recordar lo que", "P01", 3],
+      ["I'm going to try to explain what", "Voy a intentar explicar lo que", "P03", 5],
+      ["I'm trying to remember what I want", "Estoy intentando recordar lo que quiero", "P02", 5],
+      ["I'm going to practise what I'm trying to learn", "Voy a practicar lo que estoy intentando aprender", "P03", 7]
+    ]
+  },
+
+  "S0008L03": {
+    "lego": ["to say", "decir"],
+    "type": "B",
+    "available_legos": 32,
+    "available_patterns": ["P01", "P02", "P12", "P03"],
+    "practice_phrases": [
+      ["to say", "decir", null, 1],
+      ["I want to say", "Quiero decir", "P01", 2],
+      ["how to say", "cómo decir", "P12", 2],
+      ["I'm trying to say", "Estoy intentando decir", "P02", 3],
+      ["I'm going to say", "Voy a decir", "P03", 3],
+      ["I want to say something", "Quiero decir algo", "P01", 3],
+      ["how to say something in Spanish", "cómo decir algo en español", "P12", 5],
+      ["I'm trying to say a word", "Estoy intentando decir una palabra", "P02", 5],
+      ["I'm going to try to say something", "Voy a intentar decir algo", "P03", 5],
+      ["I want to try to explain what I'm trying to say", "Quiero intentar explicar lo que estoy intentando decir", "P01", 8]
+    ]
+  }
+}

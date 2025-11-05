@@ -1,0 +1,347 @@
+{
+  "version": "extraction_map_v1",
+  "methodology": "Comprehensive LEGO inventory map for S0001-S0010 with GATE tracking",
+  "purpose": "Single source of truth for basket generation - prevents vocabulary GATE violations",
+  "note": "Agents MUST reference this map to know which LEGOs are available when generating practice phrases",
+
+  "S0001": {
+    "seed_pair": {
+      "known": "I want to speak Spanish with you now.",
+      "target": "Quiero hablar español contigo ahora."
+    },
+    "patterns_introduced": ["P01"],
+    "patterns_cumulative": ["P01"],
+    "legos": [
+      {
+        "id": "S0001L01",
+        "lego": ["I want", "Quiero"],
+        "type": "B"
+      },
+      {
+        "id": "S0001L02",
+        "lego": ["to speak", "hablar"],
+        "type": "B"
+      },
+      {
+        "id": "S0001L03",
+        "lego": ["Spanish", "español"],
+        "type": "B"
+      },
+      {
+        "id": "S0001L04",
+        "lego": ["with you", "contigo"],
+        "type": "B"
+      },
+      {
+        "id": "S0001L05",
+        "lego": ["now", "ahora"],
+        "type": "B"
+      }
+    ],
+    "lego_count_new": 5,
+    "lego_count_cumulative": 5
+  },
+
+  "S0002": {
+    "seed_pair": {
+      "known": "I'm trying to learn.",
+      "target": "Estoy intentando aprender."
+    },
+    "patterns_introduced": ["P02"],
+    "patterns_cumulative": ["P01", "P02"],
+    "legos": [
+      {
+        "id": "S0002L01",
+        "lego": ["I am", "Estoy"],
+        "type": "B"
+      },
+      {
+        "id": "S0002L02",
+        "lego": ["trying", "intentando"],
+        "type": "B"
+      },
+      {
+        "id": "S0002L03",
+        "lego": ["to learn", "aprender"],
+        "type": "B"
+      }
+    ],
+    "lego_count_new": 3,
+    "lego_count_cumulative": 8
+  },
+
+  "S0003": {
+    "seed_pair": {
+      "known": "how to speak as often as possible",
+      "target": "cómo hablar lo más frecuentemente posible"
+    },
+    "patterns_introduced": ["P12"],
+    "patterns_cumulative": ["P01", "P02", "P12"],
+    "legos": [
+      {
+        "id": "S0003L01",
+        "lego": ["how", "cómo"],
+        "type": "B"
+      },
+      {
+        "id": "S0003L02",
+        "lego": ["frequently", "frecuentemente"],
+        "type": "B"
+      },
+      {
+        "id": "S0003L03",
+        "lego": ["possible", "posible"],
+        "type": "B"
+      }
+    ],
+    "lego_count_new": 3,
+    "lego_count_cumulative": 11
+  },
+
+  "S0004": {
+    "seed_pair": {
+      "known": "how to say something in Spanish",
+      "target": "cómo hablar algo en español"
+    },
+    "patterns_introduced": [],
+    "patterns_cumulative": ["P01", "P02", "P12"],
+    "legos": [
+      {
+        "id": "S0004L01",
+        "lego": ["something", "algo"],
+        "type": "B"
+      },
+      {
+        "id": "S0004L02",
+        "lego": ["in", "en"],
+        "type": "B"
+      }
+    ],
+    "lego_count_new": 2,
+    "lego_count_cumulative": 13
+  },
+
+  "S0005": {
+    "seed_pair": {
+      "known": "I'm going to practise speaking with someone else.",
+      "target": "Voy a practicar hablar con alguien más."
+    },
+    "patterns_introduced": ["P03"],
+    "patterns_cumulative": ["P01", "P02", "P03", "P12"],
+    "legos": [
+      {
+        "id": "S0005L01",
+        "lego": ["I'm going to", "Voy a"],
+        "type": "B"
+      },
+      {
+        "id": "S0005L02",
+        "lego": ["to practise", "practicar"],
+        "type": "B"
+      },
+      {
+        "id": "S0005L03",
+        "lego": ["with someone else", "con alguien más"],
+        "type": "C",
+        "note": "Composite: con + alguien + más"
+      }
+    ],
+    "lego_count_new": 3,
+    "lego_count_cumulative": 16
+  },
+
+  "S0006": {
+    "seed_pair": {
+      "known": "I'm trying to remember a word.",
+      "target": "Estoy intentando recordar una palabra."
+    },
+    "patterns_introduced": [],
+    "patterns_cumulative": ["P01", "P02", "P03", "P12"],
+    "legos": [
+      {
+        "id": "S0006L01",
+        "lego": ["to remember", "recordar"],
+        "type": "B"
+      },
+      {
+        "id": "S0006L02",
+        "lego": ["word", "palabra"],
+        "type": "B"
+      },
+      {
+        "id": "S0006L03",
+        "lego": ["a", "una"],
+        "type": "B",
+        "note": "Feminine indefinite article"
+      }
+    ],
+    "lego_count_new": 3,
+    "lego_count_cumulative": 19
+  },
+
+  "S0007": {
+    "seed_pair": {
+      "known": "I want to try as hard as I can today.",
+      "target": "Quiero intentar tan duro como pueda hoy."
+    },
+    "patterns_introduced": [],
+    "patterns_cumulative": ["P01", "P02", "P03", "P12"],
+    "legos": [
+      {
+        "id": "S0007L01",
+        "lego": ["to try", "intentar"],
+        "type": "B"
+      },
+      {
+        "id": "S0007L02",
+        "lego": ["so", "tan"],
+        "type": "B"
+      },
+      {
+        "id": "S0007L03",
+        "lego": ["hard", "duro"],
+        "type": "B"
+      },
+      {
+        "id": "S0007L04",
+        "lego": ["as", "como"],
+        "type": "B"
+      },
+      {
+        "id": "S0007L05",
+        "lego": ["I can", "pueda"],
+        "type": "B",
+        "note": "Subjunctive mood - first introduction"
+      },
+      {
+        "id": "S0007L06",
+        "lego": ["today", "hoy"],
+        "type": "B"
+      }
+    ],
+    "lego_count_new": 6,
+    "lego_count_cumulative": 25
+  },
+
+  "S0008": {
+    "seed_pair": {
+      "known": "I'm going to try to explain what I mean.",
+      "target": "Voy a intentar explicar lo que quiero decir."
+    },
+    "patterns_introduced": [],
+    "patterns_cumulative": ["P01", "P02", "P03", "P12"],
+    "legos": [
+      {
+        "id": "S0008L01",
+        "lego": ["to explain", "explicar"],
+        "type": "B"
+      },
+      {
+        "id": "S0008L02",
+        "lego": ["what", "lo que"],
+        "type": "C",
+        "note": "Relative pronoun construction"
+      },
+      {
+        "id": "S0008L03",
+        "lego": ["to say", "decir"],
+        "type": "B"
+      }
+    ],
+    "lego_count_new": 3,
+    "lego_count_cumulative": 28
+  },
+
+  "S0009": {
+    "seed_pair": {
+      "known": "I speak a little Spanish now.",
+      "target": "Hablo un poco de español ahora."
+    },
+    "patterns_introduced": ["P05"],
+    "patterns_cumulative": ["P01", "P02", "P03", "P05", "P12"],
+    "legos": [
+      {
+        "id": "S0009L01",
+        "lego": ["I speak", "Hablo"],
+        "type": "B",
+        "note": "Simple present tense - first introduction"
+      },
+      {
+        "id": "S0009L02",
+        "lego": ["a little", "un poco"],
+        "type": "C",
+        "note": "Quantity expression"
+      },
+      {
+        "id": "S0009L03",
+        "lego": ["of", "de"],
+        "type": "B"
+      }
+    ],
+    "lego_count_new": 3,
+    "lego_count_cumulative": 31
+  },
+
+  "S0010": {
+    "seed_pair": {
+      "known": "I'm not sure if I can remember the whole sentence.",
+      "target": "No estoy seguro si puedo recordar toda la oración."
+    },
+    "patterns_introduced": ["P06"],
+    "patterns_cumulative": ["P01", "P02", "P03", "P05", "P06", "P12"],
+    "legos": [
+      {
+        "id": "S0010L01",
+        "lego": ["not", "no"],
+        "type": "B"
+      },
+      {
+        "id": "S0010L02",
+        "lego": ["sure", "seguro"],
+        "type": "B"
+      },
+      {
+        "id": "S0010L03",
+        "lego": ["if", "si"],
+        "type": "B"
+      },
+      {
+        "id": "S0010L04",
+        "lego": ["I can", "puedo"],
+        "type": "B",
+        "note": "Present indicative of poder"
+      },
+      {
+        "id": "S0010L05",
+        "lego": ["whole", "toda"],
+        "type": "B"
+      },
+      {
+        "id": "S0010L06",
+        "lego": ["the", "la"],
+        "type": "B",
+        "note": "Feminine definite article"
+      },
+      {
+        "id": "S0010L07",
+        "lego": ["sentence", "oración"],
+        "type": "B"
+      }
+    ],
+    "lego_count_new": 7,
+    "lego_count_cumulative": 38
+  },
+
+  "summary": {
+    "total_seeds": 10,
+    "total_legos": 38,
+    "total_patterns": 6,
+    "patterns_list": ["P01", "P02", "P03", "P05", "P06", "P12"]
+  },
+
+  "usage_instructions": {
+    "for_basket_generation": "When generating baskets for S00XXL0Y, use ONLY LEGOs from S0001L01 through S00XX L0(Y-1). Check lego_count_cumulative at seed boundary.",
+    "gate_rule": "LEGO S00XXL0Y can ONLY combine with LEGOs that appear BEFORE it in this list.",
+    "example": "When generating S0010L02 (sure), available LEGOs = S0001L01 through S0010L01 (35 LEGOs total: 31 from S0001-S0009 + S0010L01)"
+  }
+}
