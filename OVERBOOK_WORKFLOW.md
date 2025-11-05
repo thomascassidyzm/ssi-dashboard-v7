@@ -102,7 +102,19 @@ Let's say you're working on **S0015L03** (with me / conmigo):
 
 ## Tools Provided
 
-- **`validate_basket_phrases.cjs`** - Validates phrases for GATE compliance and grammar
+- **`validate_basket_phrases.cjs`** - Single LEGO validator (detailed analysis)
+  ```bash
+  node validate_basket_phrases.cjs public/baskets/lego_baskets_s0010.json S0010L05
+  ```
+
+- **`validate_baskets_batch.cjs`** - Parallel batch validator (all seeds at once)
+  ```bash
+  node validate_baskets_batch.cjs S0001-S0020        # Validate range
+  node validate_baskets_batch.cjs S0010 S0015 S0020  # Specific seeds
+  node validate_baskets_batch.cjs --all              # All seeds
+  node validate_baskets_batch.cjs S0001-S0020 --brief # Quick status
+  ```
+
 - **`example_overbook_s0010l05.json`** - Example showing 15 phrases → filter → 10
 
 ## Next Steps
