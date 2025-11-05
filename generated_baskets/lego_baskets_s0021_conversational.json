@@ -1,0 +1,385 @@
+{
+  "version": "generative_v5_conversational_claude_code",
+  "seed": "S0021",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "¿Por qué estás aprendiendo su nombre?",
+    "known": "Why are you learning her name?"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P12",
+    "P18"
+  ],
+  "cumulative_legos": 66,
+  "note": "Generated with Claude Code Task agents + automated validation: Using 3 conjunctions (si, y, pero)",
+  "generation_metadata": {
+    "generated_at": "2025-11-05T17:54:49.810Z",
+    "generated_by": "Claude Code Web - Task agents",
+    "max_retries": 3,
+    "available_conjunctions": [
+      "si",
+      "y",
+      "pero"
+    ],
+    "requirements": {
+      "min_conversational_phrases": 5,
+      "min_conjunction_percentage": 40
+    }
+  },
+  "S0021L01": {
+    "lego": [
+      "why",
+      "por qué"
+    ],
+    "type": "C",
+    "available_legos": 64,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P12",
+      "P18"
+    ],
+    "practice_phrases": [
+      [
+        "why",
+        "por qué",
+        null,
+        1
+      ],
+      [
+        "but why",
+        "pero por qué",
+        null,
+        2
+      ],
+      [
+        "I can remember why",
+        "Puedo recordar por qué",
+        null,
+        3
+      ],
+      [
+        "I want to guess why tomorrow",
+        "Quiero adivinar por qué mañana",
+        null,
+        4
+      ],
+      [
+        "I want to learn but I'm not sure why",
+        "Quiero aprender pero no estoy seguro por qué",
+        null,
+        5
+      ],
+      [
+        "I'm trying to practise and I can remember why",
+        "Estoy tratando de practicar y puedo recordar por qué",
+        null,
+        6
+      ],
+      [
+        "I want to speak Spanish but I can remember why",
+        "Quiero hablar español pero puedo recordar por qué",
+        null,
+        7
+      ],
+      [
+        "If you can speak now why are you learning",
+        "Si puedes hablar ahora por qué estás aprendiendo",
+        null,
+        7
+      ],
+      [
+        "I'm not sure why but I want to try",
+        "No estoy seguro por qué pero quiero intentar",
+        null,
+        5
+      ],
+      [
+        "I can speak more now and I'm not sure why",
+        "Puedo hablar más ahora y no estoy seguro por qué",
+        null,
+        7
+      ],
+      [
+        "I'd like to forget but I can remember why",
+        "Me gustaría olvidar pero puedo recordar por qué",
+        null,
+        6
+      ],
+      [
+        "If you speak Spanish why are you trying to learn",
+        "Si hablas español por qué estás tratando de aprender",
+        null,
+        7
+      ],
+      [
+        "I want to speak and I'm trying to learn but I'm not sure why",
+        "Quiero hablar y estoy tratando de aprender pero no estoy seguro por qué",
+        null,
+        8
+      ],
+      [
+        "I'm going to try to practise tomorrow but I'm not sure why",
+        "Voy a intentar practicar mañana pero no estoy seguro por qué",
+        null,
+        7
+      ],
+      [
+        "I can speak more than you but I'm not sure why",
+        "Puedo hablar más que tú pero no estoy seguro por qué",
+        null,
+        8
+      ]
+    ],
+    "validation_score": {
+      "conversational": 100,
+      "conjunctions": 60
+    },
+    "attempt": 1,
+    "generated_at": "2025-11-05T17:54:49.811Z"
+  },
+  "S0021L02": {
+    "lego": [
+      "you are learning",
+      "estás aprendiendo"
+    ],
+    "type": "C",
+    "available_legos": 65,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P12",
+      "P18"
+    ],
+    "practice_phrases": [
+      [
+        "you are learning",
+        "estás aprendiendo",
+        "P02",
+        1
+      ],
+      [
+        "you are learning more",
+        "estás aprendiendo más",
+        "P02",
+        2
+      ],
+      [
+        "you are learning tomorrow",
+        "estás aprendiendo mañana",
+        "P02",
+        2
+      ],
+      [
+        "you are learning the word",
+        "estás aprendiendo la palabra",
+        "P02",
+        2
+      ],
+      [
+        "if you are learning",
+        "si estás aprendiendo",
+        "P02",
+        2
+      ],
+      [
+        "you are learning and you speak",
+        "estás aprendiendo y hablas",
+        "P02",
+        3
+      ],
+      [
+        "if you are learning, you speak more than me",
+        "si estás aprendiendo, hablas más que yo",
+        "P02",
+        6
+      ],
+      [
+        "you are learning and you speak more than me",
+        "estás aprendiendo y hablas más que yo",
+        "P02",
+        6
+      ],
+      [
+        "if you are learning tomorrow, you speak more",
+        "si estás aprendiendo mañana, hablas más",
+        "P02",
+        5
+      ],
+      [
+        "you are learning to do my part tomorrow",
+        "estás aprendiendo a hacer mi parte mañana",
+        "P02",
+        5
+      ],
+      [
+        "you are learning to do your part tomorrow",
+        "estás aprendiendo a hacer tu parte mañana",
+        "P02",
+        5
+      ],
+      [
+        "you are learning more but you're not sure why",
+        "estás aprendiendo más pero no estás seguro por qué",
+        "P02",
+        5
+      ],
+      [
+        "if you are learning the word, you speak more",
+        "si estás aprendiendo la palabra, hablas más",
+        "P02",
+        5
+      ],
+      [
+        "you are learning and you speak more tomorrow",
+        "estás aprendiendo y hablas más mañana",
+        "P02",
+        5
+      ],
+      [
+        "you are learning but you're not sure",
+        "estás aprendiendo pero no estás seguro",
+        "P02",
+        3
+      ]
+    ],
+    "validation_score": {
+      "conversational": 100,
+      "conjunctions": 33
+    },
+    "attempt": 1,
+    "generated_at": "2025-11-05T17:54:49.811Z"
+  },
+  "S0021L03": {
+    "lego": [
+      "her name",
+      "su nombre"
+    ],
+    "type": "C",
+    "available_legos": 66,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P12",
+      "P18"
+    ],
+    "practice_phrases": [
+      [
+        "Why are you learning her name?",
+        "¿Por qué estás aprendiendo su nombre?",
+        "P02",
+        3
+      ],
+      [
+        "her name",
+        "su nombre",
+        null,
+        1
+      ],
+      [
+        "her name and yours",
+        "su nombre y el tuyo",
+        "P01",
+        3
+      ],
+      [
+        "I wouldn't like to forget her name",
+        "No me gustaría olvidar su nombre",
+        "P05",
+        3
+      ],
+      [
+        "You speak more, but you don't know her name",
+        "Hablas más, pero no sabes su nombre",
+        "P03",
+        5
+      ],
+      [
+        "You're not sure about her name",
+        "No estás seguro de su nombre",
+        "P02",
+        2
+      ],
+      [
+        "If you learn her name tomorrow, you're going to speak more",
+        "Si aprendes su nombre mañana, vas a hablar más",
+        "P18",
+        7
+      ],
+      [
+        "Do you want to guess her name?",
+        "¿Quieres adivinar su nombre?",
+        "P02",
+        3
+      ],
+      [
+        "her name and the word",
+        "su nombre y la palabra",
+        "P01",
+        3
+      ],
+      [
+        "After you finish, you're going to forget her name",
+        "Después de que termines, vas a olvidar su nombre",
+        "P12",
+        4
+      ],
+      [
+        "Her name is part of what's going to happen",
+        "Su nombre es parte de lo que va a ocurrir",
+        "P05",
+        4
+      ],
+      [
+        "You're learning her name, but you're not sure why",
+        "Estás aprendiendo su nombre, pero no estás seguro por qué",
+        "P04",
+        5
+      ],
+      [
+        "Why do you want to learn her name and not mine?",
+        "¿Por qué quieres aprender su nombre y no el mío?",
+        "P02",
+        6
+      ],
+      [
+        "Her name is more important than mine",
+        "Su nombre es más importante que el mío",
+        "P06",
+        6
+      ],
+      [
+        "You're going to forget her name tomorrow",
+        "Vas a olvidar su nombre mañana",
+        "P01",
+        4
+      ]
+    ],
+    "validation_score": {
+      "conversational": 100,
+      "conjunctions": 33
+    },
+    "attempt": 1,
+    "generated_at": "2025-11-05T17:54:49.811Z"
+  }
+}
