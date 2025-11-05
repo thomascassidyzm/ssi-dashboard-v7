@@ -189,7 +189,7 @@ export default {
       this.error = null
 
       const seedId = `s${String(seedNum).padStart(4, '0')}`
-      const filePath = `/claude_code_web_test/output/lego_baskets_${seedId}.json`
+      const filePath = `/baskets/lego_baskets_${seedId}.json`
 
       try {
         const response = await fetch(filePath)
