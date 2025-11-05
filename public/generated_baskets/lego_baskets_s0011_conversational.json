@@ -13,7 +13,7 @@
     "P10"
   ],
   "cumulative_legos": 35,
-  "note": "Generated with Claude Code Task agents + automated validation: Using si conjunction heavily (only one available at this stage)",
+  "note": "Generated with Claude Code Task agents: LANGUAGE MIXING FIXED - English uses if/and/but/because, Spanish uses si/y/pero/porque",
   "generation_metadata": {
     "generated_at": "2025-11-05T16:00:00.000Z",
     "generated_by": "Claude Code Web - Task agents",
@@ -57,82 +57,82 @@
         2
       ],
       [
-        "I'd like to speak Spanish",
-        "Me gustaría hablar español",
+        "I'd like to learn Spanish",
+        "Me gustaría aprender español",
         "P04",
         3
       ],
       [
-        "I'd like to practise today",
-        "Me gustaría practicar hoy",
-        "P04",
-        3
-      ],
-      [
-        "I'd like to try to speak",
-        "Me gustaría intentar hablar",
-        "P04",
-        3
-      ],
-      [
-        "I'd like to learn how to speak",
-        "Me gustaría aprender cómo hablar",
+        "I'd like to speak if I can",
+        "Me gustaría hablar si puedo",
         "P04",
         4
       ],
       [
-        "I'd like to speak with you now",
-        "Me gustaría hablar contigo ahora",
-        "P04",
-        4
-      ],
-      [
-        "I'd like to remember a word si I can",
-        "Me gustaría recordar una palabra si puedo",
+        "I'd like to speak Spanish with you now",
+        "Me gustaría hablar español contigo ahora",
         "P04",
         5
       ],
       [
-        "I'd like to speak Spanish si I can remember",
-        "Me gustaría hablar español si puedo recordar",
-        "P04",
-        6
-      ],
-      [
-        "I'd like to practise with you si I can",
-        "Me gustaría practicar contigo si puedo",
+        "I'd like to try to speak Spanish with you",
+        "Me gustaría intentar hablar español contigo",
         "P04",
         5
       ],
       [
-        "I'd like to try to explain si I can remember",
-        "Me gustaría intentar explicar si puedo recordar",
+        "I'd like to practise Spanish with you today",
+        "Me gustaría practicar español contigo hoy",
+        "P04",
+        5
+      ],
+      [
+        "I'd like to remember the whole sentence if I can",
+        "Me gustaría recordar toda la oración si puedo",
         "P04",
         6
       ],
       [
-        "I'd like to learn how to speak si I can practise",
-        "Me gustaría aprender cómo hablar si puedo practicar",
-        "P04",
-        7
+        "I want to explain what I'd like to learn",
+        "Quiero explicar lo que me gustaría aprender",
+        "P01",
+        5
       ],
       [
-        "I'm not sure si I'd like to speak now",
+        "I'm trying to explain what I'd like to speak",
+        "Estoy intentando explicar lo que me gustaría hablar",
+        "P02",
+        5
+      ],
+      [
+        "I'm going to try to explain what I'd like",
+        "Voy a intentar explicar lo que me gustaría",
+        "P03",
+        5
+      ],
+      [
+        "I'm not sure if I'd like to speak now",
         "No estoy seguro si me gustaría hablar ahora",
         "P06",
         5
       ],
       [
-        "I'd like to try to remember the whole sentence si I can",
-        "Me gustaría intentar recordar toda la oración si puedo",
-        "P04",
-        6
+        "I can explain what I'd like to learn",
+        "Puedo explicar lo que me gustaría aprender",
+        "P18",
+        5
       ],
       [
-        "I'd like to speak Spanish with you si I can remember how",
-        "Me gustaría hablar español contigo si puedo recordar cómo",
+        "how to explain what I'd like to try",
+        "cómo explicar lo que me gustaría intentar",
+        "P12",
+        5
+      ],
+      [
+        "I'd like to speak a little Spanish if I can",
+        "Me gustaría hablar un poco de español si puedo",
         "P04",
-        8
+        6
       ]
     ],
     "validation_score": {
@@ -140,7 +140,7 @@
       "conjunctions": 53
     },
     "attempt": 1,
-    "generated_at": "2025-11-05T17:46:23.815Z"
+    "generated_at": "2025-11-05T18:27:11.942Z"
   },
   "S0011L02": {
     "lego": [
@@ -173,81 +173,81 @@
         2
       ],
       [
-        "I want to be able to learn",
-        "Quiero poder aprender",
-        "P01",
+        "to be able to speak Spanish",
+        "poder hablar español",
+        null,
         3
       ],
       [
-        "I'm trying to be able to remember",
-        "Estoy intentando poder recordar",
-        "P02",
+        "to be able to remember",
+        "poder recordar",
+        null,
+        2
+      ],
+      [
+        "to be able to practise",
+        "poder practicar",
+        null,
+        2
+      ],
+      [
+        "to be able to speak if I can",
+        "poder hablar si puedo",
+        null,
         4
       ],
       [
-        "I'm going to be able to practise Spanish",
-        "Voy a poder practicar español",
-        "P03",
+        "I'd like to be able to speak",
+        "Me gustaría poder hablar",
+        null,
         4
       ],
       [
-        "I'd like to be able to speak now",
-        "Me gustaría poder hablar ahora",
-        "P04",
-        4
-      ],
-      [
-        "I speak Spanish if I'm able to",
-        "Hablo español si puedo",
-        "P05",
-        4
-      ],
-      [
-        "how to be able to remember something",
-        "cómo poder recordar algo",
-        "P12",
-        4
-      ],
-      [
-        "I can be able to learn Spanish if I try",
-        "Puedo poder aprender español si intento",
-        "P18",
-        6
-      ],
-      [
-        "I'm not sure if I'm able to explain now",
-        "No estoy seguro si puedo explicar ahora",
-        "P06",
+        "I'd like to be able to speak Spanish",
+        "Me gustaría poder hablar español",
+        null,
         5
       ],
       [
-        "I'd like to be able to speak Spanish with you if I can practise",
-        "Me gustaría poder hablar español contigo si puedo practicar",
-        "P04",
-        8
+        "to be able to speak Spanish if I can",
+        "poder hablar español si puedo",
+        null,
+        5
       ],
       [
-        "I'm trying to be able to remember the whole sentence if I can",
-        "Estoy intentando poder recordar toda la oración si puedo",
-        "P02",
+        "I'd like to be able to practise with you",
+        "Me gustaría poder practicar contigo",
+        null,
+        5
+      ],
+      [
+        "to be able to practise with you now",
+        "poder practicar contigo ahora",
+        null,
+        5
+      ],
+      [
+        "to be able to speak with you now",
+        "poder hablar contigo ahora",
+        null,
+        5
+      ],
+      [
+        "I'd like to be able to speak Spanish with you",
+        "Me gustaría poder hablar español contigo",
+        null,
         6
       ],
       [
-        "I'm going to be able to learn Spanish today if I can remember",
-        "Voy a poder aprender español hoy si puedo recordar",
-        "P03",
-        8
+        "I'd like to be able to speak with you now",
+        "Me gustaría poder hablar contigo ahora",
+        null,
+        6
       ],
       [
-        "I want to be able to speak with you now if I can try",
-        "Quiero poder hablar contigo ahora si puedo intentar",
-        "P01",
-        8
-      ],
-      [
-        "I'm not sure if I'm able to practise speaking Spanish today",
-        "No estoy seguro si puedo practicar hablar español hoy",
-        "P06",
+        "I'd like to be able to practise Spanish with you now",
+        "Me gustaría poder practicar español contigo ahora",
+        null,
         7
       ]
     ],
@@ -256,7 +256,7 @@
       "conjunctions": 53
     },
     "attempt": 1,
-    "generated_at": "2025-11-05T17:46:23.816Z"
+    "generated_at": "2025-11-05T18:27:11.943Z"
   },
   "S0011L03": {
     "lego": [
@@ -331,13 +331,13 @@
         5
       ],
       [
-        "I'd like to be able to speak after si I can remember",
+        "I'd like to be able to speak after if I can remember",
         "Me gustaría poder hablar después de que si puedo recordar",
         "P04",
         7
       ],
       [
-        "I want to try to learn after si I can",
+        "I want to try to learn after if I can",
         "Quiero intentar aprender después de que si puedo",
         "P01",
         6
@@ -349,19 +349,19 @@
         6
       ],
       [
-        "I'd like to practise with you after si I can remember",
+        "I'd like to practise with you after if I can remember",
         "Me gustaría practicar contigo después de que si puedo recordar",
         "P04",
         7
       ],
       [
-        "I'm going to try to speak after si I can remember how",
+        "I'm going to try to speak after if I can remember how",
         "Voy a intentar hablar después de que si puedo recordar cómo",
         "P03",
         8
       ],
       [
-        "I want to speak Spanish with you after si I can",
+        "I want to speak Spanish with you after if I can",
         "Quiero hablar español contigo después de que si puedo",
         "P01",
         7
@@ -372,7 +372,7 @@
       "conjunctions": 47
     },
     "attempt": 1,
-    "generated_at": "2025-11-05T17:46:23.816Z"
+    "generated_at": "2025-11-05T18:27:11.943Z"
   },
   "S0011L04": {
     "lego": [
@@ -399,88 +399,88 @@
         1
       ],
       [
-        "I want to speak after you finish",
-        "Quiero hablar después de que termines",
-        "P01",
+        "to speak after you finish",
+        "hablar después de que termines",
+        null,
+        2
+      ],
+      [
+        "I'd like to speak after you finish",
+        "Me gustaría hablar después de que termines",
+        null,
         3
       ],
       [
-        "I'm trying to speak after you finish",
-        "Estoy intentando hablar después de que termines",
-        "P02",
+        "to be able to speak after you finish",
+        "poder hablar después de que termines",
+        null,
         3
       ],
       [
-        "I'm going to speak after you finish",
-        "Voy a hablar después de que termines",
-        "P03",
-        3
-      ],
-      [
-        "I'd like to be able to speak after you finish",
-        "Me gustaría poder hablar después de que termines",
+        "I'd like to be able to speak after you finish.",
+        "Me gustaría poder hablar después de que termines.",
         "P04",
         4
       ],
       [
-        "I want to speak si I can after you finish",
-        "Quiero hablar si puedo después de que termines",
-        "P01",
+        "if I can speak after you finish",
+        "si puedo hablar después de que termines",
+        null,
+        4
+      ],
+      [
+        "I'd like to speak with you after you finish",
+        "Me gustaría hablar contigo después de que termines",
+        null,
+        4
+      ],
+      [
+        "I want to be able to speak after you finish",
+        "Quiero poder hablar después de que termines",
+        null,
+        4
+      ],
+      [
+        "I'd like to be able to speak to you after you finish",
+        "Me gustaría poder hablarte después de que termines",
+        null,
         5
       ],
       [
-        "I'd like to speak si I can after you finish",
-        "Me gustaría hablar si puedo después de que termines",
-        "P04",
+        "I'd like to be able to speak with you after you finish",
+        "Me gustaría poder hablar contigo después de que termines",
+        null,
         5
       ],
       [
-        "I'm not sure si I can remember after you finish",
-        "No estoy seguro si puedo recordar después de que termines",
-        "P06",
+        "I'd like to know if I can speak after you finish",
+        "Me gustaría saber si puedo hablar después de que termines",
+        null,
         6
       ],
       [
-        "I'd like to try to speak si I can after you finish",
-        "Me gustaría intentar hablar si puedo después de que termines",
-        "P04",
-        7
+        "I'd like to be able to speak more after you finish",
+        "Me gustaría poder hablar más después de que termines",
+        null,
+        5
       ],
       [
-        "I'm trying to learn Spanish si I can practise after you finish",
-        "Estoy intentando aprender español si puedo practicar después de que termines",
-        "P02",
-        8
+        "I'd like to be able to speak better after you finish",
+        "Me gustaría poder hablar mejor después de que termines",
+        null,
+        5
       ],
       [
-        "I'm going to try to remember si I can after you finish",
-        "Voy a intentar recordar si puedo después de que termines",
-        "P03",
+        "I'd like to be able to speak Spanish after you finish",
+        "Me gustaría poder hablar español después de que termines",
+        null,
+        5
+      ],
+      [
+        "I'd like to be able to speak if possible after you finish",
+        "Me gustaría poder hablar si es posible después de que termines",
+        null,
         6
-      ],
-      [
-        "I want to be able to explain what I mean after you finish",
-        "Quiero poder explicar lo que quiero decir después de que termines",
-        "P01",
-        6
-      ],
-      [
-        "I'd like to practise with you si I can after you finish",
-        "Me gustaría practicar contigo si puedo después de que termines",
-        "P04",
-        7
-      ],
-      [
-        "I'm going to try to speak Spanish si I can remember after you finish",
-        "Voy a intentar hablar español si puedo recordar después de que termines",
-        "P03",
-        8
-      ],
-      [
-        "I want to try to learn how to speak Spanish si I can after you finish",
-        "Quiero intentar aprender cómo hablar español si puedo después de que termines",
-        "P01",
-        9
       ]
     ],
     "validation_score": {
@@ -488,6 +488,6 @@
       "conjunctions": 60
     },
     "attempt": 1,
-    "generated_at": "2025-11-05T17:46:23.816Z"
+    "generated_at": "2025-11-05T18:27:11.943Z"
   }
 }
