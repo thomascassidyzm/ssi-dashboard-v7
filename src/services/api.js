@@ -160,6 +160,9 @@ export default {
           } else if (firstSeed && typeof firstSeed === 'object' && firstSeed.seed_id) {
             // v5.0.1 format: {seed_id, seed_pair, legos: [{id, type, target, known, new/ref, components?}]}
             for (const seed of seedsArray) {
+              // Skip seeds without legos array
+              if (!seed.legos || !Array.isArray(seed.legos)) continue
+
               // Only include NEW LEGOs in the flat list
               const newLegos = seed.legos.filter(l => l.new === true)
               for (const lego of newLegos) {
