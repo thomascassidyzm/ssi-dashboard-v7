@@ -13,10 +13,10 @@ from typing import Dict, List, Tuple, Set
 import re
 
 # Paths
-LEGOS_DIR = Path("/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/cmn_for_eng_30seeds/amino_acids/legos_deduplicated")
-GRAPH_FILE = Path("/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/cmn_for_eng_30seeds/phase_outputs/phase_3.5_lego_graph.json")
-TRANSLATIONS_DIR = Path("/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/cmn_for_eng_30seeds/amino_acids/translations")
-BASKETS_DIR = Path("/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/vfs/courses/cmn_for_eng_30seeds/amino_acids/baskets")
+LEGOS_DIR = Path("/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/cmn_for_eng_30seeds/amino_acids/legos_deduplicated")
+GRAPH_FILE = Path("/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/cmn_for_eng_30seeds/phase_outputs/phase_3.5_lego_graph.json")
+TRANSLATIONS_DIR = Path("/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/cmn_for_eng_30seeds/amino_acids/translations")
+BASKETS_DIR = Path("/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/cmn_for_eng_30seeds/amino_acids/baskets")
 
 # Ensure output directory exists
 BASKETS_DIR.mkdir(parents=True, exist_ok=True)
