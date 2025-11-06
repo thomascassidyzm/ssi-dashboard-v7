@@ -3,28 +3,77 @@
     <!-- Header -->
     <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
       <h2 class="text-2xl font-bold text-emerald-400 mb-4">LEGO Practice Basket Viewer</h2>
+      <p class="text-slate-400 text-sm mb-4">View LEGO baskets for any course. Select a course below to explore its practice phrases.</p>
 
-      <!-- Course Selector -->
-      <div class="mb-4">
-        <label class="text-sm font-medium text-slate-300 mb-2 block">Select Course:</label>
-        <select
-          v-model="selectedCourseCode"
-          @change="onCourseChange"
+      <!-- Search Bar -->
+      <div class="mb-6">
+        <label class="text-sm font-medium text-slate-300 mb-2 block">Search Courses:</label>
+        <input
+          v-model="searchQuery"
+          type="text"
+          placeholder="Search by language, course code, or seed count..."
           class="w-full px-4 py-2 bg-slate-700 text-slate-200 border border-slate-600 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-          <option value="">-- Select a course --</option>
-          <option
-            v-for="course in availableCourses"
-            :key="course.course_code"
-            :value="course.course_code"
-          >
-            {{ course.target_language }} for {{ course.source_language }} ({{ course.course_code }})
-          </option>
-        </select>
+        />
       </div>
 
-      <!-- Course Context Header -->
+      <!-- Course Cards Grid -->
+      <div v-if="!selectedCourseCode" class="mb-6">
+        <h3 class="text-lg font-semibold text-slate-300 mb-4">Available Courses ({{ filteredCourses.length }})</h3>
+
+        <div v-if="filteredCourses.length === 0" class="text-center py-8 text-slate-400">
+          No courses found matching "{{ searchQuery }}"
+        </div>
+
+        <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div
+            v-for="course in filteredCourses"
+            :key="course.course_code"
+            @click="selectCourse(course.course_code)"
+            class="bg-slate-700/50 border border-slate-600 rounded-lg p-4 hover:border-emerald-500 hover:bg-slate-700 transition-all cursor-pointer group"
+          >
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex-1">
+                <h4 class="text-emerald-400 font-semibold group-hover:text-emerald-300">
+                  {{ course.target_language }} for {{ course.source_language }}
+                </h4>
+                <p class="text-xs text-slate-500 mt-1">{{ course.course_code }}</p>
+              </div>
+              <span
+                :class="[
+                  'px-2 py-1 rounded text-xs font-medium',
+                  course.has_baskets ? 'bg-emerald-600/20 text-emerald-400' : 'bg-slate-600/20 text-slate-400'
+                ]"
+              >
+                {{ course.has_baskets ? '✓ Baskets' : 'No Baskets' }}
+              </span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 text-xs mt-3">
+              <div>
+                <div class="text-slate-500">Seeds</div>
+                <div class="text-slate-300 font-semibold">{{ course.actual_seed_count || course.total_seeds || 0 }}</div>
+              </div>
+              <div>
+                <div class="text-slate-500">LEGOs</div>
+                <div class="text-slate-300 font-semibold">{{ course.lego_count || 0 }}</div>
+              </div>
+              <div>
+                <div class="text-slate-500">Phase</div>
+                <div class="text-slate-300 font-semibold">{{ course.phase?.replace('phase_', '') || '-' }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Context Header with Back Button -->
       <div v-if="currentCourse" class="mb-4 pb-4 border-b border-slate-700">
+        <button
+          @click="deselectCourse"
+          class="text-emerald-400 hover:text-emerald-300 text-sm mb-2 flex items-center gap-1"
+        >
+          ← Back to all courses
+        </button>
         <h2 class="text-xl font-semibold text-slate-200">{{ currentCourse.target_language }} for {{ currentCourse.source_language }}</h2>
         <h3 v-if="currentSeed" class="text-md text-slate-400 mt-1">Viewing: {{ currentSeed }}</h3>
       </div>
@@ -284,10 +333,26 @@ export default {
       selectedCourseCode: '',
       currentCourse: null,
       courseData: null,
-      expandedMolecularLegos: {} // Track which molecular LEGOs are expanded
+      expandedMolecularLegos: {}, // Track which molecular LEGOs are expanded
+      searchQuery: '' // Search filter for courses
     }
   },
   computed: {
+    filteredCourses() {
+      if (!this.searchQuery) {
+        return this.availableCourses
+      }
+
+      const query = this.searchQuery.toLowerCase()
+      return this.availableCourses.filter(course => {
+        return (
+          course.course_code.toLowerCase().includes(query) ||
+          course.target_language.toLowerCase().includes(query) ||
+          course.source_language.toLowerCase().includes(query) ||
+          (course.total_seeds && course.total_seeds.toString().includes(query))
+        )
+      })
+    },
     availableSeeds() {
       // Get available seeds from the loaded course data
       if (!this.courseData || !this.courseData.translations) {
@@ -383,10 +448,24 @@ export default {
       try {
         const response = await api.course.list()
         this.availableCourses = response.courses || []
+        // Sort by course_code
+        this.availableCourses.sort((a, b) => a.course_code.localeCompare(b.course_code))
       } catch (err) {
         console.error('Error loading courses:', err)
         this.error = 'Failed to load courses'
       }
+    },
+    selectCourse(courseCode) {
+      this.selectedCourseCode = courseCode
+      this.onCourseChange()
+    },
+    deselectCourse() {
+      this.selectedCourseCode = ''
+      this.currentCourse = null
+      this.courseData = null
+      this.currentSeed = null
+      this.basketData = null
+      this.searchQuery = ''
     },
     async onCourseChange() {
       if (!this.selectedCourseCode) {
