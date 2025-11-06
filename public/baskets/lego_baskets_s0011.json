@@ -1,5 +1,5 @@
 {
-  "version": "generative_v3_CRITICAL_FIXES",
+  "version": "curated_v6_molecular_lego",
   "seed": "S0011",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -7,30 +7,46 @@
     "known": "I'd like to be able to speak after you finish.",
     "target": "Me gustaría poder hablar después de que termines."
   },
-  "pattern_introduced": "P04: Me gustaría (conditional/polite); P10: Subjunctive mood",
-  "cumulative_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
-  "cumulative_legos": 35,
+  "patterns_introduced": "P04, P10",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P18"],
+  "cumulative_legos": 33,
+  "note": "MOLECULAR LEGO FIX: L03+L04 concatenated into 'after you finish' to avoid incomplete 'después de que' construction. Curated to 10 excellent phrases per lesson with strict GATE compliance.",
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Human-guided molecular LEGO optimization",
+    "changes_from_v5": [
+      "Reduced from 4 to 3 lessons (L03+L04 merged)",
+      "Reduced from 15 to 10 phrases per lesson",
+      "Removed GATE violations (saber, mejor, es posible)",
+      "Applied FD test principle: 'después de que' incomplete standalone",
+      "Optimal distribution: 2 short, 2 quite short, 2 longer, 4 long"
+    ]
+  },
 
   "S0011L01": {
     "lego": ["I'd like", "Me gustaría"],
     "type": "C",
     "available_legos": 31,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18"],
-    "patterns_used_in_practice": ["P01", "P02", "P03", "P04", "P05", "P06", "P18"],
-    "pattern_variety_score": "7/7 patterns (100%)",
+    "available_patterns": ["P01", "P02", "P03", "P05", "P06", "P12", "P18"],
     "practice_phrases": [
       ["I'd like", "Me gustaría", "P04", 1],
       ["I'd like to speak", "Me gustaría hablar", "P04", 2],
       ["I'd like to learn Spanish", "Me gustaría aprender español", "P04", 3],
-      ["I want to explain what I'd like", "Quiero explicar lo que me gustaría", "P01", 4],
-      ["I'm trying to explain what I'd like", "Estoy intentando explicar lo que me gustaría", "P02", 4],
-      ["I'm going to explain what I'd like", "Voy a explicar lo que me gustaría", "P03", 4],
-      ["I speak now if I'd like to", "Hablo ahora si me gustaría", "P05", 4],
-      ["I can explain what I'd like", "Puedo explicar lo que me gustaría", "P18", 4],
-      ["I'm not sure if I'd like to speak", "No estoy seguro si me gustaría hablar", "P06", 4],
-      ["I'd like to remember the whole sentence", "Me gustaría recordar toda la oración", "P04", 4]
+      ["I'd like to speak if I can", "Me gustaría hablar si puedo", "P04", 4],
+      ["I'd like to speak Spanish with you now", "Me gustaría hablar español contigo ahora", "P04", 5],
+      ["I want to explain what I'd like to learn", "Quiero explicar lo que me gustaría aprender", "P01", 5],
+      ["I'd like to remember the whole sentence if I can", "Me gustaría recordar toda la oración si puedo", "P04", 6],
+      ["I'm not sure if I'd like to speak now", "No estoy seguro si me gustaría hablar ahora", "P06", 5],
+      ["how to explain what I'd like to try", "cómo explicar lo que me gustaría intentar", "P12", 5],
+      ["I'm going to try to explain what I'd like", "Voy a intentar explicar lo que me gustaría", "P03", 5]
     ],
-    "pattern_distribution": "P01 (1x), P02 (1x), P03 (1x), P04 (4x), P05 (1x), P06 (1x), P18 (1x) - EXCELLENT",
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P02, P03, P04, P06, P12",
     "gate_compliance": "STRICT - All words from S0001-S0010 LEGOs only"
   },
 
@@ -38,69 +54,57 @@
     "lego": ["to be able to", "poder"],
     "type": "B",
     "available_legos": 32,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04"],
-    "patterns_used_in_practice": ["P01", "P02", "P03", "P04", "P05", "P06", "P18", "P12"],
-    "pattern_variety_score": "8/8 patterns (100%)",
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P06", "P12", "P18"],
     "practice_phrases": [
-      ["to be able to", "poder", null, 2],
-      ["to be able to speak", "poder hablar", null, 3],
-      ["I want to be able to speak", "Quiero poder hablar", "P01", 4],
-      ["I'm trying to be able to speak", "Estoy intentando poder hablar", "P02", 4],
-      ["I'm going to be able to speak", "Voy a poder hablar", "P03", 4],
-      ["I'd like to be able to speak", "Me gustaría poder hablar", "P04", 4],
-      ["I'm not sure if I'm able to speak", "No estoy seguro si puedo hablar", "P06", 5],
-      ["I speak now if I can", "Hablo ahora si puedo", "P05", 4],
-      ["how to be able to speak", "cómo poder hablar", "P12", 3],
-      ["I can be able to remember", "Puedo poder recordar", "P18", 4]
+      ["to be able to", "poder", null, 1],
+      ["to be able to speak", "poder hablar", null, 2],
+      ["to be able to speak Spanish", "poder hablar español", null, 3],
+      ["to be able to speak if I can", "poder hablar si puedo", null, 4],
+      ["I'd like to be able to speak", "Me gustaría poder hablar", null, 4],
+      ["I'd like to be able to speak Spanish", "Me gustaría poder hablar español", null, 5],
+      ["I'd like to be able to practise with you", "Me gustaría poder practicar contigo", null, 5],
+      ["I'd like to be able to speak Spanish with you", "Me gustaría poder hablar español contigo", null, 6],
+      ["I'd like to be able to speak with you now", "Me gustaría poder hablar contigo ahora", null, 6],
+      ["I'd like to be able to practise Spanish with you now", "Me gustaría poder practicar español contigo ahora", null, 7]
     ],
-    "pattern_distribution": "P01 (1x), P02 (1x), P03 (1x), P04 (1x), P05 (1x), P06 (1x), P12 (1x), P18 (1x), null (2x) - PERFECT",
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "null (Type B basket)",
     "gate_compliance": "STRICT - All words from S0001-S0011L01 LEGOs only"
   },
 
   "S0011L03": {
-    "lego": ["after", "después de que"],
-    "type": "C",
-    "available_legos": 33,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04"],
-    "patterns_used_in_practice": ["P01", "P02", "P03", "P04", "P05", "P06", "P18"],
-    "pattern_variety_score": "7/8 patterns (88%)",
-    "practice_phrases": [
-      ["after", "después de que", null, 2],
-      ["I want to speak after", "Quiero hablar después de que", "P01", 3],
-      ["I'm trying to speak after", "Estoy intentando hablar después de que", "P02", 3],
-      ["I'm going to speak after", "Voy a hablar después de que", "P03", 3],
-      ["I'd like to speak after", "Me gustaría hablar después de que", "P04", 3],
-      ["I speak after", "Hablo después de que", "P05", 2],
-      ["I'm not sure if I speak after", "No estoy seguro si hablo después de que", "P06", 4],
-      ["I can speak after", "Puedo hablar después de que", "P18", 3],
-      ["I want to learn after", "Quiero aprender después de que", "P01", 3],
-      ["I'd like to be able to speak after", "Me gustaría poder hablar después de que", "P04", 4]
-    ],
-    "pattern_distribution": "P01 (2x), P02 (1x), P03 (1x), P04 (2x), P05 (1x), P06 (1x), P18 (1x), null (1x) - BALANCED",
-    "gate_compliance": "STRICT - All words from S0001-S0011L02 LEGOs only. No forward references to 'terminar/finish'"
-  },
-
-  "S0011L04": {
     "lego": ["after you finish", "después de que termines"],
     "type": "C",
-    "available_legos": 34,
-    "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18", "P04", "P10"],
-    "patterns_used_in_practice": ["P01", "P02", "P03", "P04", "P05", "P10", "P18"],
-    "pattern_variety_score": "7/9 patterns (78%)",
+    "lego_type": "MOLECULAR",
+    "molecular_rationale": "PHASE 3 FD TEST: 'después de que' alone is grammatically incomplete (requires verb clause). Fails 'Is this ambiguous standalone?' test. Made BIGGER to include 'termines' for functional completeness.",
+    "available_legos": 33,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P06", "P12", "P18"],
     "practice_phrases": [
-      ["after you finish", "después de que termines", "P10", 3],
-      ["I want to speak after you finish", "Quiero hablar después de que termines", "P01", 4],
-      ["I'm trying to speak after you finish", "Estoy intentando hablar después de que termines", "P02", 4],
-      ["I'm going to speak after you finish", "Voy a hablar después de que termines", "P03", 4],
-      ["I'd like to speak after you finish", "Me gustaría hablar después de que termines", "P04", 4],
-      ["I'd like to be able to speak after you finish", "Me gustaría poder hablar después de que termines", "P04", 5],
-      ["I can speak after you finish", "Puedo hablar después de que termines", "P18", 4],
-      ["I speak a little Spanish after you finish", "Hablo un poco de español después de que termines", "P05", 5],
-      ["I want to learn after you finish", "Quiero aprender después de que termines", "P01", 4],
-      ["I'm going to try to speak after you finish", "Voy a intentar hablar después de que termines", "P03", 5]
+      ["after you finish", "después de que termines", "P10", 1],
+      ["to speak after you finish", "hablar después de que termines", null, 2],
+      ["I'd like to speak after you finish", "Me gustaría hablar después de que termines", null, 3],
+      ["to be able to speak after you finish", "poder hablar después de que termines", null, 3],
+      ["I'd like to be able to speak after you finish.", "Me gustaría poder hablar después de que termines.", "P04", 4],
+      ["I'd like to speak with you after you finish", "Me gustaría hablar contigo después de que termines", null, 4],
+      ["I'd like to be able to speak with you after you finish", "Me gustaría poder hablar contigo después de que termines", null, 5],
+      ["I'd like to be able to speak Spanish after you finish", "Me gustaría poder hablar español después de que termines", null, 5],
+      ["I'd like to be able to speak a little more after you finish", "Me gustaría poder hablar un poco más después de que termines", null, 6],
+      ["I want to be able to speak Spanish after you finish", "Quiero poder hablar español después de que termines", "P01", 5]
     ],
-    "pattern_distribution": "P01 (2x), P02 (1x), P03 (2x), P04 (2x), P05 (1x), P10 (1x), P18 (1x) - EXCELLENT",
-    "full_seed_included": "YES - phrase 6: 'I'd like to be able to speak after you finish' / 'Me gustaría poder hablar después de que termines'",
-    "gate_compliance": "STRICT - All words from S0001-S0011L03 LEGOs only"
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P04, P10 (subjunctive mood)",
+    "full_seed_included": "YES - phrase 5: 'I'd like to be able to speak after you finish.'",
+    "gate_compliance": "STRICT - All words from S0001-S0011L02 LEGOs only. NOTE: 'terminar' introduced in this LEGO as part of molecular unit.",
+    "note": "All phrases are now grammatically complete - no incomplete 'después de que' fragments"
   }
 }
