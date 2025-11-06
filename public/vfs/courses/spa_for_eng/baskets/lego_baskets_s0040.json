@@ -7,71 +7,63 @@
     "known": "How do you feel at the moment?",
     "target": "¿Cómo te sientes en este momento?"
   },
-  "patterns_introduced": "P12, P_NEW_REFLEXIVE",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P14", "P15", "P_NEW_REFLEXIVE"],
+  "patterns_introduced": "P_NEW_REFLEXIVE",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
   "cumulative_legos": 118,
-  "curation_metadata": {
-    "curated_at": "2025-11-06T00:00:00.000Z",
-    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
-    "changes_from_previous": [
-      "Generated with strict GATE compliance",
-      "Natural Spanish phrases with proper distribution",
-      "All words verified against whitelist"
-    ]
-  },
 
   "S0040L01": {
     "lego": ["how do you feel", "cómo te sientes"],
     "type": "M",
     "available_legos": 116,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P14", "P15"],
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
     "practice_phrases": [
       ["how do you feel", "cómo te sientes", "P12", 1],
-      ["how do you feel now", "cómo te sientes ahora", "P12", 2],
+      ["how do you feel today", "cómo te sientes hoy", "P12", 2],
+      ["how do you feel about", "cómo te sientes sobre", "P12", 2],
+      ["how do you feel when", "cómo te sientes cuando", "P12", 2],
       ["how do you feel this morning", "cómo te sientes esta mañana", "P12", 3],
-      ["how do you feel at the moment", "cómo te sientes en este momento", "P12", 3],
-      ["I want to know how you feel", "quiero saber cómo te sientes", "P01", 4],
-      ["I wanted to know how you feel now", "quería saber cómo te sientes ahora", "P_NEW_IMPERFECT", 4],
-      ["I don't know how you feel about it", "no sé cómo te sientes sobre eso", "P12", 5],
-      ["I want to know how you feel this morning", "quiero saber cómo te sientes esta mañana", "P01", 5],
-      ["I wanted to ask you how you feel at the moment", "quería preguntarte cómo te sientes en este momento", "P_NEW_IMPERFECT", 5],
-      ["I don't know how you feel about it this morning", "no sé cómo te sientes sobre eso esta mañana", "P12", 6]
+      ["how do you feel about it", "cómo te sientes sobre eso", "P12", 3],
+      ["how do you feel this afternoon", "cómo te sientes esta tarde", "P12", 3],
+      ["how do you feel when other people are here", "cómo te sientes cuando otras personas están aquí", "P12", 5],
+      ["how do you feel about learning Spanish", "cómo te sientes sobre aprender español", "P12", 4],
+      ["how do you feel when you speak Spanish", "cómo te sientes cuando hablas español", "P12", 5]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
+      "really_short_1_2": 4,
+      "quite_short_3": 3,
       "longer_4_5": 2,
-      "long_6_plus": 4
+      "long_6_plus": 1
     },
-    "pattern_coverage": "P01, P12, P_NEW_IMPERFECT",
-    "gate_compliance": "STRICT - All words from S0001-S0039 LEGOs only"
+    "pattern_coverage": "P12",
+    "full_seed_included": "NO - missing 'at the moment'",
+    "gate_compliance": "STRICT - Only S0001-S0039 LEGOs available"
   },
 
   "S0040L02": {
     "lego": ["at the moment", "en este momento"],
     "type": "M",
     "available_legos": 117,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P14", "P15", "P_NEW_REFLEXIVE"],
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
     "practice_phrases": [
       ["at the moment", "en este momento", null, 1],
-      ["how you feel at the moment", "cómo te sientes en este momento", "P12", 2],
-      ["I'm learning at the moment", "estoy aprendiendo en este momento", "P02", 3],
-      ["I'm a little tired at the moment", "estoy un poco cansado en este momento", "P02", 4],
-      ["I don't want to speak at the moment", "no quiero hablar en este momento", "P01", 4],
-      ["I'm trying to learn Spanish at the moment", "estoy intentando aprender español en este momento", "P02", 5],
-      ["I don't know how you feel at the moment", "no sé cómo te sientes en este momento", "P12", 5],
-      ["I'm a little tired but I'm learning at the moment", "estoy un poco cansado pero estoy aprendiendo en este momento", "P02", 6],
-      ["I wanted to ask you how you feel about it at the moment", "quería preguntarte cómo te sientes sobre eso en este momento", "P_NEW_IMPERFECT", 6],
-      ["¿Cómo te sientes en este momento?", "¿Cómo te sientes en este momento?", "P12", 3]
+      ["I want at the moment", "quiero en este momento", "P01", 2],
+      ["how do you feel at the moment", "cómo te sientes en este momento", "P12", 2],
+      ["I'm a little tired at the moment", "estoy un poco cansado en este momento", "P02", 3],
+      ["I don't want at the moment", "no quiero en este momento", "P01", 2],
+      ["I speak Spanish at the moment", "hablo español en este momento", "P05", 3],
+      ["I don't like to speak at the moment", "no me gusta hablar en este momento", "P_NEW_GUSTAR", 3],
+      ["how do you feel about it at the moment", "cómo te sientes sobre eso en este momento", "P12", 4],
+      ["I'm a little tired but I want to speak at the moment", "estoy un poco cansado pero quiero hablar en este momento", "P02", 7],
+      ["how do you feel at the moment?", "cómo te sientes en este momento?", "P12", 2]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
+      "really_short_1_2": 5,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 1
     },
-    "pattern_coverage": "P01, P02, P12, P_NEW_IMPERFECT",
+    "pattern_coverage": "P01, P02, P05, P12, P_NEW_GUSTAR",
     "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - All words from S0001-S0040L01 LEGOs only"
+    "gate_compliance": "STRICT - Only S0001-S0040L01 LEGOs available"
   }
 }
