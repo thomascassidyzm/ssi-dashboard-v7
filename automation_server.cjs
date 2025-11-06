@@ -38,7 +38,7 @@ const ajv = new Ajv({ allErrors: true });
 
 const CONFIG = {
   PORT: process.env.PORT || 3456,
-  VFS_ROOT: path.join(__dirname, 'vfs', 'courses'),
+  VFS_ROOT: path.join(__dirname, 'public', 'vfs', 'courses'),
   TRAINING_URL: 'https://ssi-dashboard-v7.vercel.app',
 
   // Background worker intervals
