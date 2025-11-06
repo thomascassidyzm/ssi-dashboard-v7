@@ -117,16 +117,37 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
           <div>
-            <span class="text-slate-400">Pattern:</span>
-            <span class="ml-2 text-emerald-400">{{ basketData.pattern_introduced || basketData.patterns_introduced || '-' }}</span>
+            <span class="text-slate-400">Pattern Introduced:</span>
+            <span class="ml-2 text-emerald-400">{{ formatPattern(basketData.pattern_introduced || basketData.patterns_introduced) || 'None' }}</span>
           </div>
           <div>
-            <span class="text-slate-400">Cumulative Patterns:</span>
-            <span class="ml-2 text-slate-300">{{ basketData.cumulative_patterns.join(', ') }}</span>
+            <span class="text-slate-400">Pattern Count:</span>
+            <span class="ml-2 text-slate-300">{{ basketData.cumulative_patterns.length }} patterns</span>
+            <button
+              @click="showPatternDetails = !showPatternDetails"
+              class="ml-2 text-xs text-blue-400 hover:text-blue-300"
+            >
+              {{ showPatternDetails ? '▼ Hide' : '▶ Show' }}
+            </button>
           </div>
           <div>
             <span class="text-slate-400">Cumulative LEGOs:</span>
             <span class="ml-2 text-slate-300">{{ basketData.cumulative_legos }}</span>
+          </div>
+        </div>
+
+        <!-- Pattern Details (Collapsible) -->
+        <div v-if="showPatternDetails" class="mt-4 pt-4 border-t border-slate-700">
+          <div class="text-xs text-slate-400 mb-2 uppercase font-semibold">Available Patterns:</div>
+          <div class="flex flex-wrap gap-2">
+            <span
+              v-for="pattern in basketData.cumulative_patterns"
+              :key="pattern"
+              class="px-2 py-1 bg-slate-700 text-slate-300 rounded text-xs font-mono"
+              :title="getPatternDescription(pattern)"
+            >
+              {{ formatPattern(pattern) }}
+            </span>
           </div>
         </div>
       </div>
@@ -324,7 +345,8 @@ export default {
       currentCourse: null,
       courseData: null,
       expandedMolecularLegos: {}, // Track which molecular LEGOs are expanded
-      seedInput: null // For direct seed navigation
+      seedInput: null, // For direct seed navigation
+      showPatternDetails: false // Toggle pattern list visibility
     }
   },
   computed: {
@@ -409,6 +431,31 @@ export default {
     await this.loadCourses()
   },
   methods: {
+    formatPattern(pattern) {
+      if (!pattern) return ''
+      // Format P_NEW_* patterns to be more readable
+      return pattern
+        .replace(/^P_NEW_/, 'P-')
+        .replace(/^P_/, 'P-')
+        .replace(/_/g, ' ')
+        .replace(/\b\w/g, c => c.toUpperCase())
+    },
+    getPatternDescription(pattern) {
+      // Tooltip descriptions for patterns
+      const descriptions = {
+        'P01': 'Basic verb patterns',
+        'P02': 'Question formation',
+        'P_RELATIVE': 'Relative clauses (que, quien)',
+        'P_NEW_GUSTAR': 'Gustar-like verbs',
+        'P_NEW_IMPERSONAL': 'Impersonal constructions (se)',
+        'P_NEW_IMPERFECT': 'Imperfect tense',
+        'P_NEW_REFLEXIVE': 'Reflexive verbs',
+        'P_NEW_CONDITIONAL': 'Conditional tense',
+        'P_NEW_PERFECT': 'Perfect tenses',
+        'P_NEW_FUTURE': 'Future tense'
+      }
+      return descriptions[pattern] || pattern
+    },
     hasConjunction(spanish) {
       const s = spanish.toLowerCase()
       return s.includes(' si ') || s.includes(' pero ') ||
