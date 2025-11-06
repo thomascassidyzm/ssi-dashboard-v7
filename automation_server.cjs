@@ -3132,52 +3132,45 @@ app.get('/api/courses/:courseCode/baskets', async (req, res) => {
 app.get('/api/courses/:courseCode/baskets/:seedId', async (req, res) => {
   try {
     const { courseCode, seedId } = req.params;
-    const basketsPath = path.join(CONFIG.VFS_ROOT, courseCode, 'lego_baskets.json');
+    // New structure: individual basket files in baskets/ directory
+    const basketPath = path.join(CONFIG.VFS_ROOT, courseCode, 'baskets', `lego_baskets_${seedId.toLowerCase()}.json`);
 
-    // Check if baskets file exists
-    if (!await fs.pathExists(basketsPath)) {
-      return res.status(404).json({
-        error: 'Baskets not found for this course',
-        courseCode
-      });
-    }
-
-    // Load baskets
-    const baskets = await fs.readJson(basketsPath);
-
-    // Find specific basket
-    const basket = baskets[seedId];
-    if (!basket) {
+    // Check if basket file exists
+    if (!await fs.pathExists(basketPath)) {
       return res.status(404).json({
         error: `Basket not found for seed ${seedId}`,
         courseCode,
-        seedId
+        seedId,
+        path: basketPath
       });
     }
 
-    // Calculate basket statistics
-    const ePhraseCount = basket.e ? basket.e.length : 0;
-    let dPhraseCount = 0;
-    const difficultyLevels = {};
+    // Load individual basket file
+    const basket = await fs.readJson(basketPath);
 
-    if (basket.d && typeof basket.d === 'object') {
-      Object.entries(basket.d).forEach(([level, phrases]) => {
-        if (Array.isArray(phrases)) {
-          difficultyLevels[level] = phrases.length;
-          dPhraseCount += phrases.length;
-        }
-      });
-    }
+    // Calculate statistics from new basket format
+    // Count all LEGO entries (keys like S0001L01, S0001L02, etc.)
+    let totalPhrases = 0;
+    let totalLegos = 0;
+    const legoKeys = Object.keys(basket).filter(k => k.match(/^S\d{4}L\d{2}$/));
+
+    legoKeys.forEach(legoKey => {
+      const legoData = basket[legoKey];
+      if (legoData.practice_phrases && Array.isArray(legoData.practice_phrases)) {
+        totalPhrases += legoData.practice_phrases.length;
+      }
+    });
+
+    totalLegos = legoKeys.length;
 
     res.json({
       courseCode,
       seedId,
       basket,
       stats: {
-        ePhraseCount,
-        dPhraseCount,
-        totalPhrases: ePhraseCount + dPhraseCount,
-        difficultyLevels
+        totalLegos,
+        totalPhrases,
+        legoKeys
       }
     });
   } catch (err) {
@@ -3649,13 +3642,14 @@ app.get('/api/courses', async (req, res) => {
             phases_completed.push('4');
           }
 
-          // Phase 5: lego_baskets.json exists
-          const legoBasketsPath = path.join(coursePath, 'lego_baskets.json');
+          // Phase 5: baskets/ directory exists (individual basket files)
+          const basketsDir = path.join(coursePath, 'baskets');
           let basketCount = 0;
-          if (await fs.pathExists(legoBasketsPath)) {
+          if (await fs.pathExists(basketsDir)) {
             phases_completed.push('5');
-            const basketsData = await fs.readJson(legoBasketsPath);
-            basketCount = basketsData.baskets?.length || 0;
+            // Count basket files in baskets/ directory
+            const basketFiles = await fs.readdir(basketsDir);
+            basketCount = basketFiles.filter(f => f.startsWith('lego_baskets_') && f.endsWith('.json')).length;
             status = 'phase_5_complete';
           }
 
