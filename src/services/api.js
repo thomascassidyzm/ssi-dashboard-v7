@@ -81,7 +81,7 @@ export default {
         // Fallback to static files if API unavailable
         console.log('[API] Server unavailable, using static files')
 
-        // List courses available in public/vfs (7 uploaded to S3, available as fallback)
+        // List courses available in public/vfs (8 uploaded to S3, available as fallback)
         const courseCodes = [
           // Uploaded to S3 (have seed_pairs.json + lego_pairs.json)
           'cmn_for_eng',
@@ -89,6 +89,7 @@ export default {
           'ita_for_eng_668seeds',
           'spa_for_eng',
           'spa_for_eng_20seeds',
+          'spa_for_eng_30seeds',  // Phase 3 v5.0.1 format (S0001-S0050)
           'spa_for_eng_old',
           'test_for_eng_5seeds'
         ]
