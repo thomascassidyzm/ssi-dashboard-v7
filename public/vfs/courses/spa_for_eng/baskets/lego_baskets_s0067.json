@@ -1,5 +1,5 @@
 {
-  "version": "curated_v7_spanish",
+  "version": "curated_v6_molecular_lego",
   "seed": "S0067",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -7,35 +7,104 @@
     "known": "Why do you want to stop?",
     "target": "¿Por qué quieres parar?"
   },
-  "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
-  "cumulative_legos": 207,
+  "patterns_introduced": "P01",
+  "cumulative_legos": 192,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Agent-generated with strict GATE validation Phase 5 v3.0",
+    "validation": {
+      "whitelist_size_before_s0067": 206,
+      "new_words_s0067": ["parar"],
+      "gate_violations_found": 0,
+      "gate_violations_fixed": 0,
+      "final_gate_compliance": "100%"
+    }
+  },
+
+  "S0067L01": {
+    "lego": ["why", "por qué"],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "ref": "S0021",
+    "components": [["por", "for/by"], ["qué", "what"]],
+    "available_legos": 191,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_NEW_IMPERSONAL"],
+    "practice_phrases": [
+      ["why", "por qué", "P12", 1],
+      ["why now", "por qué ahora", "P12", 2],
+      ["why do you want to learn", "por qué quieres aprender", "P12", 4],
+      ["why do you want to speak Spanish", "por qué quieres hablar español", "P12", 5],
+      ["I don't know why you want to learn", "no sé por qué quieres aprender", "P12", 6],
+      ["I'm not sure why you want to speak", "no estoy seguro por qué quieres hablar", "P12", 6],
+      ["I want to know why you are learning Spanish", "quiero saber por qué estás aprendiendo español", "P01", 7],
+      ["I don't know why it's not difficult to remember", "no sé por qué no es difícil recordar", "P12", 9],
+      ["she wants to know why you want to learn Spanish", "ella quiere saber por qué quieres aprender español", "P01", 8],
+      ["I'm not sure why you want to find the answer", "no estoy seguro por qué quieres encontrar la respuesta", "P12", 9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P12",
+    "gate_compliance": "STRICT - All words from S0001-S0066 (por qué from S0021)"
+  },
+
+  "S0067L02": {
+    "lego": ["you want", "quieres"],
+    "type": "A",
+    "ref": "S0020",
+    "available_legos": 191,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_NEW_IMPERSONAL"],
+    "practice_phrases": [
+      ["you want", "quieres", "P01", 1],
+      ["you want to learn", "quieres aprender", "P01", 2],
+      ["you want to speak Spanish", "quieres hablar español", "P01", 3],
+      ["you want to find the answer", "quieres encontrar la respuesta", "P01", 4],
+      ["why do you want to learn Spanish", "por qué quieres aprender español", "P12", 5],
+      ["I don't know why you want to speak", "no sé por qué quieres hablar", "P12", 6],
+      ["it's not difficult when you want to learn Spanish", "no es difícil cuando quieres aprender español", "P_NEW_IMPERSONAL", 8],
+      ["I'm not sure why you want to find the answer", "no estoy seguro por qué quieres encontrar la respuesta", "P12", 9],
+      ["I think you want to speak Spanish with my friends", "pienso que quieres hablar español con mis amigos", "P01", 9],
+      ["you want to learn how to speak better with other people", "quieres aprender cómo hablar mejor con otras personas", "P01", 9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P12, P_NEW_IMPERSONAL",
+    "gate_compliance": "STRICT - All words from S0001-S0066 (quieres from S0020)"
+  },
 
   "S0067L03": {
     "lego": ["to stop", "parar"],
     "type": "A",
-    "available_legos": 206,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "available_legos": 192,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_NEW_IMPERSONAL"],
     "practice_phrases": [
       ["to stop", "parar", null, 1],
-      ["I want to stop", "quiero parar", "P01", 2],
-      ["you want to stop", "quieres parar", "P01", 2],
-      ["I need to stop", "necesito parar", "P17", 2],
-      ["why you want to stop", "por qué quieres parar", "P01", 3],
-      ["I was able to stop", "pude parar", "P_NEW_PUDE", 2],
-      ["because to stop", "porque parar", null, 2],
-      ["if you want to stop", "si quieres parar", "P01", 3],
-      ["why do you want to stop at the same time", "por qué quieres parar al mismo tiempo", "P01", 6],
-      ["why do you want to stop?", "¿por qué quieres parar?", "P01", 3]
+      ["to stop learning", "parar de aprender", null, 2],
+      ["why do you want to stop", "por qué quieres parar", "P01", 4],
+      ["I don't want to stop learning", "no quiero parar de aprender", "P01", 5],
+      ["you want to stop learning Spanish now", "quieres parar de aprender español ahora", "P01", 6],
+      ["I don't want to stop speaking with you", "no quiero parar de hablar contigo", "P01", 7],
+      ["why do you want to stop learning Spanish today", "por qué quieres parar de aprender español hoy", "P01", 8],
+      ["I'm not sure if I want to stop learning now", "no estoy seguro si quiero parar de aprender ahora", "P01", 9],
+      ["she doesn't want to stop speaking Spanish with other people", "ella no quiere parar de hablar español con otras personas", "P01", 10],
+      ["I don't want to stop learning how to speak better", "no quiero parar de aprender cómo hablar mejor", "P01", 9]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 3,
-      "longer_4_5": 0,
-      "long_6_plus": 1
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 5
     },
-    "pattern_coverage": "P01, P17, P_NEW_PUDE",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0066 LEGOs available"
+    "pattern_coverage": "P01",
+    "full_seed_included": "YES - phrase 3: 'why do you want to stop'",
+    "gate_compliance": "STRICT - All words from S0001-S0067L02 + NEW: parar",
+    "note": "Used 'parar de' construction following pattern from S0019 'parar de hablar'"
   }
 }

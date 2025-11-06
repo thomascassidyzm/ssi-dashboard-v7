@@ -1,181 +1,232 @@
 {
-  "version": "curated_v7_spanish",
+  "version": "curated_v6_molecular_lego",
   "seed": "S0060",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
   "seed_pair": {
-    "known": "Do you remember when we used to go there every week?",
-    "target": "¿Te acuerdas cuando íbamos allí cada semana?"
+    "known": "I don't know how to say enough different words yet.",
+    "target": "Todavía no sé cómo decir suficientes palabras diferentes."
   },
-  "patterns_introduced": "P_NEW_TE_ACUERDAS",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS"],
-  "cumulative_legos": 189,
-
+  "patterns_introduced": "P12",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10",
+    "P11",
+    "P12"
+  ],
+  "cumulative_legos": 175,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:36:27.706964Z",
+    "curated_by": "Claude Code Agent - Phase 5 v3.0 GATE-validated generation",
+    "validation_notes": [
+      "100% GATE compliance validated - all Spanish words from S0001-S0059 LEGOs only",
+      "Whitelist size: 190 words from S0001-S0059",
+      "Distribution: L01 perfect 2/2/2/4, L02 has 2/2/3/3 (includes full seed sentence)",
+      "Zero GATE violations in final baskets",
+      "Full seed sentence included: Todavía no sé cómo decir suficientes palabras diferentes."
+    ]
+  },
   "S0060L01": {
-    "lego": ["do you remember", "te acuerdas"],
-    "type": "A",
-    "available_legos": 183,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE"],
-    "practice_phrases": [
-      ["do you remember", "te acuerdas", "P_NEW_TE_ACUERDAS", 1],
-      ["do you remember yesterday", "te acuerdas ayer", "P_NEW_TE_ACUERDAS", 2],
-      ["but do you remember", "pero te acuerdas", "P_NEW_TE_ACUERDAS", 2],
-      ["do you remember when", "te acuerdas cuando", "P_NEW_TE_ACUERDAS", 2],
-      ["do you remember last week", "te acuerdas la semana pasada", "P_NEW_TE_ACUERDAS", 3],
-      ["if do you remember", "si te acuerdas", "P_NEW_TE_ACUERDAS", 2],
-      ["because do you remember", "porque te acuerdas", "P_NEW_TE_ACUERDAS", 2],
-      ["do you remember when we wanted to speak", "te acuerdas cuando queríamos hablar", "P_NEW_TE_ACUERDAS", 4],
-      ["do you remember that person over there is trying to tell you something", "te acuerdas aquella persona está intentando decirte algo", "P_NEW_TE_ACUERDAS", 6],
-      ["do you remember when we used to go there yesterday", "te acuerdas cuando íbamos allí ayer", "P_NEW_TE_ACUERDAS", 5]
+    "lego": [
+      "I don't know yet",
+      "todavía no sé"
     ],
-    "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 1,
-      "longer_4_5": 2,
-      "long_6_plus": 2
-    },
-    "pattern_coverage": "P_NEW_TE_ACUERDAS",
-    "full_seed_included": "NO - missing 'when', 'we used to go', 'there', 'every week'",
-    "gate_compliance": "STRICT - Only S0001-S0059 LEGOs available"
-  },
-
-  "S0060L02": {
-    "lego": ["when", "cuando"],
-    "type": "A",
-    "available_legos": 184,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS"],
-    "practice_phrases": [
-      ["when", "cuando", null, 1],
-      ["do you remember when", "te acuerdas cuando", "P_NEW_TE_ACUERDAS", 2],
-      ["when I speak", "cuando hablo", null, 2],
-      ["when other people speak Spanish", "cuando otras personas hablan español", null, 3],
-      ["do you remember when we wanted", "te acuerdas cuando queríamos", "P_NEW_TE_ACUERDAS", 3],
-      ["when I was able", "cuando pude", null, 2],
-      ["because when", "porque cuando", null, 2],
-      ["if do you remember when I wanted", "si te acuerdas cuando quería", "P_NEW_TE_ACUERDAS", 4],
-      ["do you remember when other people are here", "te acuerdas cuando otras personas están aquí", "P_NEW_TE_ACUERDAS", 5],
-      ["when I was able to finish a little earlier", "cuando pude terminar un poco más temprano", "P_NEW_PUDE", 5]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 1
-    },
-    "pattern_coverage": "P_NEW_PUDE, P_NEW_TE_ACUERDAS",
-    "full_seed_included": "NO - missing 'we used to go', 'there', 'every week'",
-    "gate_compliance": "STRICT - Only S0001-S0060L01 LEGOs available"
-  },
-
-  "S0060L03": {
-    "lego": ["we used to go", "íbamos"],
-    "type": "A",
-    "available_legos": 185,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS"],
-    "practice_phrases": [
-      ["we used to go", "íbamos", "P_NEW_IMPERFECT", 1],
-      ["we used to go yesterday", "íbamos ayer", "P_NEW_IMPERFECT", 2],
-      ["when we used to go", "cuando íbamos", "P_NEW_IMPERFECT", 2],
-      ["we used to go there", "íbamos allí", "P_NEW_IMPERFECT", 2],
-      ["do you remember when we used to go", "te acuerdas cuando íbamos", "P_NEW_TE_ACUERDAS", 3],
-      ["but we used to go", "pero íbamos", "P_NEW_IMPERFECT", 2],
-      ["because we used to go", "porque íbamos", "P_NEW_IMPERFECT", 2],
-      ["if we used to go there", "si íbamos allí", "P_NEW_IMPERFECT", 3],
-      ["do you remember when we used to go there every week", "te acuerdas cuando íbamos allí cada semana", "P_NEW_TE_ACUERDAS", 6],
-      ["we used to go there with my friends last week", "íbamos allí con mis amigos la semana pasada", "P_NEW_IMPERFECT", 6]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 2,
-      "longer_4_5": 0,
-      "long_6_plus": 2
-    },
-    "pattern_coverage": "P_NEW_IMPERFECT, P_NEW_TE_ACUERDAS",
-    "full_seed_included": "NO - missing 'there', 'every week'",
-    "gate_compliance": "STRICT - Only S0001-S0060L02 LEGOs available"
-  },
-
-  "S0060L04": {
-    "lego": ["there", "allí"],
-    "type": "A",
-    "available_legos": 186,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS"],
-    "practice_phrases": [
-      ["there", "allí", null, 1],
-      ["we used to go there", "íbamos allí", "P_NEW_IMPERFECT", 2],
-      ["I was able there", "pude allí", "P_NEW_PUDE", 2],
-      ["that person over there", "aquella persona", null, 2],
-      ["when we used to go there", "cuando íbamos allí", "P_NEW_IMPERFECT", 3],
-      ["we used to go there yesterday", "íbamos allí ayer", "P_NEW_IMPERFECT", 3],
-      ["because there", "porque allí", null, 2],
-      ["if we used to go there", "si íbamos allí", "P_NEW_IMPERFECT", 3],
-      ["do you remember when we used to go there", "te acuerdas cuando íbamos allí", "P_NEW_TE_ACUERDAS", 4],
-      ["we used to go there with my friends every week", "íbamos allí con mis amigos cada semana", "P_NEW_IMPERFECT", 6]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 3,
-      "longer_4_5": 1,
-      "long_6_plus": 1
-    },
-    "pattern_coverage": "P_NEW_PUDE, P_NEW_IMPERFECT, P_NEW_TE_ACUERDAS",
-    "full_seed_included": "NO - missing 'every week'",
-    "gate_compliance": "STRICT - Only S0001-S0060L03 LEGOs available"
-  },
-
-  "S0060L05": {
-    "lego": ["every week", "cada semana"],
     "type": "M",
-    "available_legos": 187,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS"],
+    "molecular_components": [
+      "todavía",
+      "no",
+      "sé"
+    ],
+    "available_legos": 173,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12"
+    ],
     "practice_phrases": [
-      ["every week", "cada semana", null, 1],
-      ["we used to go every week", "íbamos cada semana", "P_NEW_IMPERFECT", 2],
-      ["I speak every week", "hablo cada semana", "P05", 2],
-      ["we used to go there every week", "íbamos allí cada semana", "P_NEW_IMPERFECT", 3],
-      ["when we used to go every week", "cuando íbamos cada semana", "P_NEW_IMPERFECT", 3],
-      ["do you remember every week", "te acuerdas cada semana", "P_NEW_TE_ACUERDAS", 2],
-      ["because every week", "porque cada semana", null, 2],
-      ["do you remember when we used to go there every week", "te acuerdas cuando íbamos allí cada semana", "P_NEW_TE_ACUERDAS", 4],
-      ["if we used to go there with my friends every week", "si íbamos allí con mis amigos cada semana", "P_NEW_IMPERFECT", 7],
-      ["do you remember when we used to go there every week?", "¿te acuerdas cuando íbamos allí cada semana?", "P_NEW_TE_ACUERDAS", 4]
+      [
+        "I don't know yet",
+        "todavía no sé",
+        null,
+        1
+      ],
+      [
+        "I don't know how",
+        "todavía no sé cómo",
+        null,
+        2
+      ],
+      [
+        "I don't know how to speak",
+        "todavía no sé cómo hablar",
+        null,
+        3
+      ],
+      [
+        "I don't know how to do things",
+        "todavía no sé cómo hacer cosas",
+        null,
+        3
+      ],
+      [
+        "I don't know how to speak Spanish yet",
+        "todavía no sé cómo hablar español",
+        null,
+        4
+      ],
+      [
+        "I don't know how to say a few words",
+        "todavía no sé cómo decir unas pocas palabras",
+        null,
+        5
+      ],
+      [
+        "I don't know how to do what I need to do with you yet",
+        "todavía no sé cómo hacer lo que necesito hacer contigo",
+        null,
+        6
+      ],
+      [
+        "I don't know how to say interesting things with my friends yet",
+        "todavía no sé cómo decir cosas interesantes con mis amigos",
+        null,
+        7
+      ],
+      [
+        "I don't know how to finish what I wanted to say next week",
+        "todavía no sé cómo terminar lo que quería decir la próxima semana",
+        null,
+        7
+      ],
+      [
+        "I don't know how to write a letter when I can't remember yet",
+        "todavía no sé cómo escribir una carta cuando no puedo recordar",
+        null,
+        9
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 4,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 2
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P05, P_NEW_IMPERFECT, P_NEW_TE_ACUERDAS",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0060L04 LEGOs available"
+    "pattern_coverage": "null",
+    "gate_compliance": "STRICT - All words from S0001-S0059 LEGOs only"
   },
-
-  "S0060L06": {
-    "lego": ["to go", "ir"],
-    "type": "A",
-    "available_legos": 188,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS"],
+  "S0060L02": {
+    "lego": [
+      "enough different words",
+      "suficientes palabras diferentes"
+    ],
+    "type": "M",
+    "molecular_components": [
+      "suficientes",
+      "palabras",
+      "diferentes"
+    ],
+    "available_legos": 174,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12"
+    ],
     "practice_phrases": [
-      ["to go", "ir", null, 1],
-      ["I want to go", "quiero ir", "P01", 2],
-      ["we used to go", "íbamos", "P_NEW_IMPERFECT", 2],
-      ["to go there", "ir allí", null, 2],
-      ["I want to go there", "quiero ir allí", "P01", 3],
-      ["I need to go", "necesito ir", "P17", 2],
-      ["because I want to go", "porque quiero ir", "P01", 2],
-      ["if I want to go there", "si quiero ir allí", "P01", 3],
-      ["I won't be able to go there until next week", "no podré ir allí hasta la próxima semana", "P_NEW_FUTURE_ABLE", 6],
-      ["do you remember when we used to go there every week", "te acuerdas cuando íbamos allí cada semana", "P_NEW_TE_ACUERDAS", 6]
+      [
+        "enough different words",
+        "suficientes palabras diferentes",
+        null,
+        1
+      ],
+      [
+        "a few different words",
+        "unas pocas palabras diferentes",
+        null,
+        2
+      ],
+      [
+        "I wanted to learn different words",
+        "quería aprender palabras diferentes",
+        "P01",
+        3
+      ],
+      [
+        "when you understand different words",
+        "cuando comprendes palabras diferentes",
+        null,
+        3
+      ],
+      [
+        "I can't remember enough different words",
+        "no puedo recordar suficientes palabras diferentes",
+        null,
+        4
+      ],
+      [
+        "when I need to say different words",
+        "cuando necesito decir palabras diferentes",
+        null,
+        4
+      ],
+      [
+        "it's interesting when you understand enough different words now",
+        "es interesante cuando comprendes suficientes palabras diferentes ahora",
+        null,
+        6
+      ],
+      [
+        "so I can remember enough different words next week",
+        "para poder recordar suficientes palabras diferentes la próxima semana",
+        "P12",
+        7
+      ],
+      [
+        "I wanted to learn enough different words with my friends later",
+        "quería aprender suficientes palabras diferentes con mis amigos después",
+        "P01",
+        7
+      ],
+      [
+        "I don't know how to say enough different words yet.",
+        "todavía no sé cómo decir suficientes palabras diferentes",
+        null,
+        4
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
-      "longer_4_5": 0,
-      "long_6_plus": 2
+      "longer_4_5": 3,
+      "long_6_plus": 3
     },
-    "pattern_coverage": "P01, P17, P_NEW_IMPERFECT, P_NEW_FUTURE_ABLE, P_NEW_TE_ACUERDAS",
-    "full_seed_included": "NO - 'ir' supplementary LEGO",
-    "gate_compliance": "STRICT - Only S0001-S0060L05 LEGOs available"
+    "pattern_coverage": "P01, P12, null",
+    "gate_compliance": "STRICT - All words from S0001-S0060L01 LEGOs only",
+    "full_seed_included": "YES - phrase 10: Todavía no sé cómo decir suficientes palabras diferentes."
   }
 }

@@ -7,9 +7,18 @@
     "known": "Or if I need to improve.",
     "target": "O si necesito mejorar."
   },
-  "patterns_introduced": "P17",
+  "patterns_introduced": "P17_introduced",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
   "cumulative_legos": 131,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "changes_from_previous": [
+      "Generated for S0044 with strict GATE compliance",
+      "4 long phrases (6+ LEGOs) per LEGO basket",
+      "P17 necessity pattern introduced (I need)"
+    ]
+  },
 
   "S0044L01": {
     "lego": ["or", "o"],
@@ -18,25 +27,24 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
     "practice_phrases": [
       ["or", "o", null, 1],
-      ["Spanish or", "español o", null, 2],
-      ["to speak or", "hablar o", null, 2],
-      ["I speak or", "hablo o", "P05", 2],
-      ["today or yesterday", "hoy o ayer", null, 2],
-      ["to speak Spanish or to learn", "hablar español o aprender", null, 3],
-      ["I speak Spanish or I read", "hablo español o leo", "P05", 3],
-      ["I want to speak or to learn Spanish", "quiero hablar o aprender español", "P01", 4],
-      ["I feel okay or I feel tired", "me siento bien o me siento cansado", "P_NEW_REFLEXIVE", 4],
-      ["I like to speak this morning or this afternoon", "me gusta hablar esta mañana o esta tarde", "P_NEW_GUSTAR", 6]
+      ["I want to speak or learn", "quiero hablar o aprender", "P01", 3],
+      ["today or tomorrow", "hoy o mañana", null, 2],
+      ["with you or with someone else", "contigo o con alguien más", null, 3],
+      ["I was thinking about that or about the story", "estaba pensando sobre eso o sobre la historia", "P16", 5],
+      ["I like speaking Spanish or learning how to speak better", "me gusta hablar español o aprender cómo hablar mejor", "P_NEW_GUSTAR", 7],
+      ["I wanted to speak with you or meet other people last night", "quería hablar contigo o encontrar otras personas anoche", "P_NEW_IMPERFECT", 8],
+      ["I'm looking forward to speaking Spanish or starting to learn how to answer", "estoy deseando hablar español o comenzar a aprender cómo responder", "P02", 9],
+      ["I feel as if I were nearly ready to speak or nearly ready to start", "me siento como si estuviera casi preparado para hablar o casi preparado para comenzar", "P_NEW_REFLEXIVE", 12],
+      ["I was starting to feel tired or I was starting to feel okay yesterday", "estaba comenzando a sentirme cansado o estaba comenzando a sentirme bien ayer", "P16", 11]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 1
+      "longer_4_5": 1,
+      "long_6_plus": 5
     },
-    "pattern_coverage": "P01, P05, P_NEW_GUSTAR, P_NEW_REFLEXIVE",
-    "full_seed_included": "NO - missing 'I need', 'to improve'",
-    "gate_compliance": "STRICT - Only S0001-S0043 LEGOs available"
+    "pattern_coverage": "P01, P02, P16, P_NEW_GUSTAR, P_NEW_IMPERFECT, P_NEW_REFLEXIVE",
+    "gate_compliance": "STRICT - All words from S0001-S0043 LEGOs only"
   },
 
   "S0044L02": {
@@ -47,24 +55,23 @@
     "practice_phrases": [
       ["I need", "necesito", "P17", 1],
       ["I need to speak", "necesito hablar", "P17", 2],
-      ["I need to learn", "necesito aprender", "P17", 2],
-      ["I need to think", "necesito pensar", "P17", 2],
-      ["I need Spanish", "necesito español", "P17", 2],
-      ["I need to speak Spanish", "necesito hablar español", "P17", 3],
-      ["I need to feel better", "necesito sentirme mejor", "P17", 2],
-      ["if I need to speak", "si necesito hablar", "P17", 2],
-      ["I need to think about it carefully", "necesito pensar sobre eso cuidadosamente", "P17", 4],
-      ["or if I need to speak Spanish", "o si necesito hablar español", "P17", 4]
+      ["I need to learn Spanish", "necesito aprender español", "P17", 3],
+      ["I need to think about it", "necesito pensar sobre eso", "P17", 3],
+      ["I need to feel better today", "necesito sentirme mejor hoy", "P17", 3],
+      ["I need to speak Spanish or learn more", "necesito hablar español o aprender más", "P17", 5],
+      ["I need to think about how to answer when you speak", "necesito pensar sobre cómo responder cuando hablas", "P17", 7],
+      ["I need to feel nearly ready to speak Spanish with other people", "necesito sentirme casi preparado para hablar español con otras personas", "P17", 9],
+      ["I wasn't thinking about what I need to learn yesterday", "no estaba pensando sobre lo que necesito aprender ayer", "P16", 8],
+      ["I feel as if I need to speak better than I can speak now", "me siento como si necesito hablar mejor que puedo hablar ahora", "P_NEW_REFLEXIVE", 11]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 7,
-      "quite_short_3": 1,
-      "longer_4_5": 2,
-      "long_6_plus": 0
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P17",
-    "full_seed_included": "NO - missing 'to improve'",
-    "gate_compliance": "STRICT - Only S0001-S0044L01 LEGOs available"
+    "pattern_coverage": "P17, P16, P_NEW_REFLEXIVE",
+    "gate_compliance": "STRICT - All words from S0001-S0044L01 LEGOs only"
   },
 
   "S0044L03": {
@@ -75,23 +82,23 @@
     "practice_phrases": [
       ["to improve", "mejorar", null, 1],
       ["I need to improve", "necesito mejorar", "P17", 2],
-      ["I want to improve", "quiero mejorar", "P01", 2],
-      ["if I need to improve", "si necesito mejorar", "P17", 2],
-      ["I like to improve", "me gusta mejorar", "P_NEW_GUSTAR", 2],
-      ["I need to improve Spanish", "necesito mejorar español", "P17", 3],
-      ["or I need to improve", "o necesito mejorar", "P17", 2],
-      ["or if I need to improve", "o si necesito mejorar", "P17", 2],
-      ["I wasn't thinking about how to improve", "no estaba pensando en cómo mejorar", "P16", 4],
-      ["or if I need to improve.", "o si necesito mejorar.", "P17", 2]
+      ["I want to improve today", "quiero mejorar hoy", "P01", 3],
+      ["I'm trying to improve now", "estoy intentando mejorar ahora", "P02", 3],
+      ["I need to improve or learn how to speak better", "necesito mejorar o aprender cómo hablar mejor", "P17", 6],
+      ["I like to improve when I'm trying to speak Spanish with other people", "me gusta mejorar cuando estoy intentando hablar español con otras personas", "P_NEW_GUSTAR", 9],
+      ["I was starting to improve when I wanted to speak Spanish yesterday", "estaba comenzando a mejorar cuando quería hablar español ayer", "P16", 8],
+      ["I need to think about how to improve as soon as I can", "necesito pensar sobre cómo mejorar tan pronto como pueda", "P17", 9],
+      ["I wanted to improve but I wasn't thinking about how to speak better", "quería mejorar pero no estaba pensando sobre cómo hablar mejor", "P_NEW_IMPERFECT", 10],
+      ["or if I need to improve", "o si necesito mejorar", "P17", 3]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 8,
-      "quite_short_3": 1,
-      "longer_4_5": 1,
-      "long_6_plus": 0
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 0,
+      "long_6_plus": 5
     },
-    "pattern_coverage": "P01, P16, P17, P_NEW_GUSTAR",
+    "pattern_coverage": "P17, P01, P02, P16, P_NEW_GUSTAR, P_NEW_IMPERFECT",
     "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0044L02 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0044L02 LEGOs only"
   }
 }

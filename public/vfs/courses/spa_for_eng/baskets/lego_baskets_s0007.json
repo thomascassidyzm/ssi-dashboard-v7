@@ -20,18 +20,19 @@
       ["to try", "intentar", null, 1],
       ["I want to try", "quiero intentar", "P01", 2],
       ["I'm going to try", "voy a intentar", "P03", 2],
-      ["how to try", "cómo intentar", "P12", 2],
       ["I want to try now", "quiero intentar ahora", "P01", 3],
-      ["I'm going to try something", "voy a intentar algo", "P03", 3],
+      ["how to try to remember something", "cómo intentar recordar algo", "P12", 4],
       ["I want to try to remember a word", "quiero intentar recordar una palabra", "P01", 4],
       ["I'm going to try to say something in Spanish", "voy a intentar decir algo en español", "P03", 5],
-      ["I want to try to practise speaking with someone else", "quiero intentar practicar hablar con alguien más", "P01", 5]
+      ["I want to try to practise speaking with someone else", "quiero intentar practicar hablar con alguien más", "P01", 5],
+      ["I'm going to try to remember how to speak Spanish", "voy a intentar recordar cómo hablar español", "P03", 6],
+      ["I want to try to say something in Spanish as often as possible", "quiero intentar decir algo en español lo más frecuentemente posible", "P01", 7]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 4,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 4
     },
     "pattern_coverage": "P01, P03, P12",
     "full_seed_included": "NO - missing 'as hard as I can' and 'today'",
@@ -48,19 +49,20 @@
       ["to try as hard as I can", "intentar tan duro como pueda", null, 2],
       ["I want to try as hard as I can", "quiero intentar tan duro como pueda", "P01", 3],
       ["I'm going to try as hard as I can", "voy a intentar tan duro como pueda", "P03", 3],
-      ["to speak as hard as I can", "hablar tan duro como pueda", null, 2],
-      ["I want to speak as hard as I can", "quiero hablar tan duro como pueda", "P01", 3],
-      ["I'm going to try as hard as I can now", "voy a intentar tan duro como pueda ahora", "P03", 4],
-      ["I want to remember as hard as I can", "quiero recordar tan duro como pueda", "P01", 3],
-      ["I'm going to practise speaking as hard as I can", "voy a practicar hablar tan duro como pueda", "P03", 3]
+      ["I'm going to learn as hard as I can", "voy a aprender tan duro como pueda", "P03", 4],
+      ["how to speak as hard as I can", "cómo hablar tan duro como pueda", "P12", 4],
+      ["I want to try to remember as hard as I can", "quiero intentar recordar tan duro como pueda", "P01", 5],
+      ["I'm going to try to speak Spanish as hard as I can", "voy a intentar hablar español tan duro como pueda", "P03", 6],
+      ["I want to try to practise speaking as hard as I can", "quiero intentar practicar hablar tan duro como pueda", "P01", 6],
+      ["I'm going to try to say something in Spanish as hard as I can", "voy a intentar decir algo en español tan duro como pueda", "P03", 7]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 3,
-      "quite_short_3": 5,
-      "longer_4_5": 1,
-      "long_6_plus": 0
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P03, P10",
+    "pattern_coverage": "P01, P03, P10, P12",
     "full_seed_included": "NO - missing 'today'",
     "gate_compliance": "STRICT - Only S0001-S0007L01 LEGOs available"
   },
@@ -74,19 +76,19 @@
       ["today", "hoy", null, 1],
       ["I want to try today", "quiero intentar hoy", "P01", 3],
       ["I'm going to try today", "voy a intentar hoy", "P03", 3],
-      ["I want to speak today", "quiero hablar hoy", "P01", 3],
-      ["I'm going to learn something today", "voy a aprender algo hoy", "P03", 4],
+      ["I want to speak Spanish today", "quiero hablar español hoy", "P01", 4],
+      ["I'm going to try to remember today", "voy a intentar recordar hoy", "P03", 4],
       ["I want to try as hard as I can today", "quiero intentar tan duro como pueda hoy", "P01", 4],
-      ["I'm going to practise speaking today", "voy a practicar hablar hoy", "P03", 4],
-      ["I want to say something in Spanish today", "quiero decir algo en español hoy", "P01", 5],
-      ["I'm going to try to remember a word today", "voy a intentar recordar una palabra hoy", "P03", 5],
+      ["I'm going to try to speak Spanish today", "voy a intentar hablar español hoy", "P03", 5],
+      ["I want to try to remember a word as hard as I can today", "quiero intentar recordar una palabra tan duro como pueda hoy", "P01", 6],
+      ["I'm going to try to say something in Spanish as hard as I can today", "voy a intentar decir algo en español tan duro como pueda hoy", "P03", 7],
       ["I want to try as hard as I can today.", "quiero intentar tan duro como pueda hoy.", "P01", 4]
     ],
     "phrase_distribution": {
       "really_short_1_2": 1,
-      "quite_short_3": 3,
-      "longer_4_5": 4,
-      "long_6_plus": 2
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 4
     },
     "pattern_coverage": "P01, P03",
     "full_seed_included": "YES - phrase 10",

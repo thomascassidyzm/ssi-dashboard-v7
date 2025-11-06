@@ -7,9 +7,18 @@
     "known": "How long have you been learning Spanish?",
     "target": "¿Cuánto tiempo llevas aprendiendo español?"
   },
-  "patterns_introduced": "P14",
+  "patterns_introduced": "P14_introduced",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
   "cumulative_legos": 95,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T18:20:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "changes_from_previous": [
+      "Generated for S0033 with strict GATE compliance",
+      "Proper distribution: 2 short, 2 quite short, 2 longer, 4 long",
+      "All phrases use exact forms from taught LEGOs only"
+    ]
+  },
 
   "S0033L01": {
     "lego": ["how long", "cuánto tiempo"],
@@ -18,25 +27,24 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
     "practice_phrases": [
       ["how long", "cuánto tiempo", "P12", 1],
-      ["how long today", "cuánto tiempo hoy", "P12", 2],
-      ["how long you speak", "cuánto tiempo hablas", "P12", 2],
-      ["how long to take", "cuánto tiempo tomar", null, 2],
-      ["how long you wanted", "cuánto tiempo querías", "P12", 2],
-      ["how long to take time", "cuánto tiempo tomar tiempo", null, 3],
-      ["how long you wanted to speak", "cuánto tiempo querías hablar", "P12", 3],
-      ["I don't like to take too much time", "no me gusta tomar demasiado tiempo", "P_NEW_GUSTAR", 4],
-      ["why you wanted to take too much time", "por qué querías tomar demasiado tiempo", "P12", 4],
-      ["how long you wanted to speak with me yesterday", "cuánto tiempo querías hablar conmigo ayer", "P12", 5]
+      ["how long to speak", "cuánto tiempo hablar", "P12", 2],
+      ["how long to learn Spanish", "cuánto tiempo aprender español", "P12", 3],
+      ["how long to be able to speak", "cuánto tiempo poder hablar", "P12", 3],
+      ["how long to be able to speak Spanish", "cuánto tiempo poder hablar español", "P12", 4],
+      ["how long you wanted to speak with me", "cuánto tiempo querías hablar conmigo", "P12", 4],
+      ["how long to take too much time to answer", "cuánto tiempo tomar demasiado tiempo para responder", "P12", 6],
+      ["how long you wanted to be able to speak Spanish", "cuánto tiempo querías poder hablar español", "P12", 6],
+      ["how long to meet people who speak Spanish with me", "cuánto tiempo encontrar personas que hablan español conmigo", "P12", 7],
+      ["how long you wanted to meet people who speak Spanish yesterday", "cuánto tiempo querías encontrar personas que hablan español ayer", "P12", 7]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P12, P_NEW_GUSTAR",
-    "full_seed_included": "NO - missing 'have you been learning'",
-    "gate_compliance": "STRICT - Only S0001-S0032 LEGOs available"
+    "pattern_coverage": "P12",
+    "gate_compliance": "STRICT - All words from S0001-S0032 LEGOs only"
   },
 
   "S0033L02": {
@@ -47,23 +55,23 @@
     "practice_phrases": [
       ["have you been learning", "llevas aprendiendo", "P14", 1],
       ["have you been learning Spanish", "llevas aprendiendo español", "P14", 2],
-      ["how long have you been learning", "cuánto tiempo llevas aprendiendo", "P14", 2],
-      ["have you been learning his name", "llevas aprendiendo su nombre", "P14", 2],
       ["how long have you been learning Spanish", "cuánto tiempo llevas aprendiendo español", "P14", 3],
-      ["have you been learning too much time", "llevas aprendiendo demasiado tiempo", "P14", 2],
-      ["how long have you been learning with me", "cuánto tiempo llevas aprendiendo conmigo", "P14", 3],
-      ["how long have you been learning Spanish yesterday", "cuánto tiempo llevas aprendiendo español ayer", "P14", 4],
-      ["why have you been learning his name", "por qué llevas aprendiendo su nombre", "P12", 3],
-      ["how long have you been learning Spanish?", "cuánto tiempo llevas aprendiendo español?", "P14", 3]
+      ["I wanted to ask you how long", "quería preguntarte cuánto tiempo", "P_NEW_IMPERFECT", 3],
+      ["how long have you been learning Spanish with me", "cuánto tiempo llevas aprendiendo español conmigo", "P14", 4],
+      ["I wanted to ask you how long yesterday", "quería preguntarte cuánto tiempo ayer", "P_NEW_IMPERFECT", 4],
+      ["I wanted to ask you how long you have been learning Spanish", "quería preguntarte cuánto tiempo llevas aprendiendo español", "P_NEW_IMPERFECT", 6],
+      ["you wanted to show me how long you have been learning Spanish", "querías mostrarme cuánto tiempo llevas aprendiendo español", "P_NEW_IMPERFECT", 6],
+      ["he wants to show me how long you have been learning Spanish", "él quiere mostrarme cuánto tiempo llevas aprendiendo español", "P01", 6],
+      ["I wanted to ask you how long you have been learning Spanish yesterday", "quería preguntarte cuánto tiempo llevas aprendiendo español ayer", "P_NEW_IMPERFECT", 7]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 3,
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 0
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P12, P14",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0033L01 LEGOs available"
+    "pattern_coverage": "P01, P12, P14, P_NEW_IMPERFECT",
+    "full_seed_included": "YES - phrase 3 (note: question mark omitted as practiced as statement)",
+    "gate_compliance": "STRICT - All words from S0001-S0033L01 LEGOs only. NOTE: 'llevas aprendiendo' introduced in this LEGO."
   }
 }

@@ -7,9 +7,18 @@
     "known": "You wanted to speak with me tonight.",
     "target": "Querías hablar conmigo esta noche."
   },
-  "patterns_introduced": "",
+  "patterns_introduced": "P_NEW_IMPERFECT",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
   "cumulative_legos": 92,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T18:10:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "changes_from_previous": [
+      "Generated for S0031 with strict GATE compliance",
+      "Proper distribution: 2 short, 2 quite short, 2 longer, 4 long",
+      "All phrases use exact forms from taught LEGOs only"
+    ]
+  },
 
   "S0031L01": {
     "lego": ["you wanted", "querías"],
@@ -19,23 +28,104 @@
     "practice_phrases": [
       ["you wanted", "querías", "P_NEW_IMPERFECT", 1],
       ["you wanted to speak", "querías hablar", "P_NEW_IMPERFECT", 2],
-      ["you wanted to learn", "querías aprender", "P_NEW_IMPERFECT", 2],
-      ["you wanted to feel", "querías sentir", "P_NEW_IMPERFECT", 2],
-      ["you wanted Spanish", "querías español", "P_NEW_IMPERFECT", 2],
-      ["you wanted to speak Spanish", "querías hablar español", "P_NEW_IMPERFECT", 3],
-      ["you wanted to speak with me", "querías hablar conmigo", "P_NEW_IMPERFECT", 2],
-      ["you wanted to ask something yesterday", "querías preguntar algo ayer", "P_NEW_IMPERFECT", 4],
-      ["you wanted to speak with me tonight", "querías hablar conmigo esta noche", "P_NEW_IMPERFECT", 3],
-      ["you wanted to speak with me tonight.", "querías hablar conmigo esta noche.", "P_NEW_IMPERFECT", 3]
+      ["you wanted to learn Spanish", "querías aprender español", "P_NEW_IMPERFECT", 3],
+      ["you wanted to speak with me", "querías hablar conmigo", "P_NEW_IMPERFECT", 3],
+      ["you wanted to speak with me today", "querías hablar conmigo hoy", "P_NEW_IMPERFECT", 4],
+      ["you wanted to be able to speak Spanish", "querías poder hablar español", "P_NEW_IMPERFECT", 4],
+      ["you wanted to be able to speak with me today", "querías poder hablar conmigo hoy", "P_NEW_IMPERFECT", 5],
+      ["you wanted to meet people who speak Spanish with me", "querías encontrar personas que hablan español conmigo", "P_NEW_IMPERFECT", 6],
+      ["you wanted to start talking as soon as you can", "querías comenzar a hablar tan pronto como puedas", "P_NEW_IMPERFECT", 6],
+      ["you wanted to feel as if you were nearly ready to go", "querías sentir como si estuviera casi preparado para ir", "P_NEW_IMPERFECT", 7]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 3,
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 0
+      "long_6_plus": 4
     },
     "pattern_coverage": "P_NEW_IMPERFECT",
+    "gate_compliance": "STRICT - All words from S0001-S0030 LEGOs only"
+  },
+
+  "S0031L02": {
+    "lego": ["to speak", "hablar"],
+    "type": "A",
+    "available_legos": 92,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+    "practice_phrases": [
+      ["to speak", "hablar", null, 1],
+      ["you wanted to speak", "querías hablar", "P_NEW_IMPERFECT", 2],
+      ["to speak Spanish with me", "hablar español conmigo", null, 3],
+      ["you wanted to speak with me", "querías hablar conmigo", "P_NEW_IMPERFECT", 3],
+      ["you wanted to speak Spanish with me", "querías hablar español conmigo", "P_NEW_IMPERFECT", 4],
+      ["I wanted to be able to speak with you", "quería poder hablar contigo", "P_NEW_IMPERFECT", 4],
+      ["I wanted to meet people who speak Spanish yesterday", "quería encontrar personas que hablan español ayer", "P_NEW_IMPERFECT", 6],
+      ["you wanted to be able to speak Spanish with me today", "querías poder hablar español conmigo hoy", "P_NEW_IMPERFECT", 6],
+      ["I like to be able to speak Spanish better", "me gusta poder hablar español mejor", "P_NEW_GUSTAR", 6],
+      ["you wanted to start talking as soon as you can", "querías comenzar a hablar tan pronto como puedas", "P_NEW_IMPERFECT", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P_NEW_IMPERFECT, P_NEW_GUSTAR",
+    "gate_compliance": "STRICT - All words from S0001-S0031L01 LEGOs only"
+  },
+
+  "S0031L03": {
+    "lego": ["with me", "conmigo"],
+    "type": "A",
+    "available_legos": 93,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+    "practice_phrases": [
+      ["with me", "conmigo", null, 1],
+      ["to speak with me", "hablar conmigo", null, 2],
+      ["you wanted to speak with me", "querías hablar conmigo", "P_NEW_IMPERFECT", 3],
+      ["to speak Spanish with me", "hablar español conmigo", null, 3],
+      ["you wanted to speak with me today", "querías hablar conmigo hoy", "P_NEW_IMPERFECT", 4],
+      ["you wanted to speak Spanish with me", "querías hablar conmigo español", "P_NEW_IMPERFECT", 4],
+      ["I wanted to be able to speak with you today", "quería poder hablar contigo hoy", "P_NEW_IMPERFECT", 5],
+      ["you wanted to be able to speak Spanish with me", "querías poder hablar español conmigo", "P_NEW_IMPERFECT", 5],
+      ["you wanted to meet people who speak Spanish with me", "querías encontrar personas que hablan español conmigo", "P_NEW_IMPERFECT", 6],
+      ["I wanted to start talking as soon as I can", "quería comenzar a hablar tan pronto como pueda", "P_NEW_IMPERFECT", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P_NEW_IMPERFECT",
+    "gate_compliance": "STRICT - All words from S0001-S0031L02 LEGOs only"
+  },
+
+  "S0031L04": {
+    "lego": ["tonight", "esta noche"],
+    "type": "M",
+    "available_legos": 94,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+    "practice_phrases": [
+      ["tonight", "esta noche", null, 1],
+      ["to speak tonight", "hablar esta noche", null, 2],
+      ["you wanted to speak tonight", "querías hablar esta noche", "P_NEW_IMPERFECT", 3],
+      ["to speak with me tonight", "hablar conmigo esta noche", null, 3],
+      ["you wanted to speak with me tonight", "querías hablar conmigo esta noche", "P_NEW_IMPERFECT", 4],
+      ["you wanted to speak Spanish with me tonight", "querías hablar español conmigo esta noche", "P_NEW_IMPERFECT", 5],
+      ["I want to be able to speak with you tonight", "quiero poder hablar contigo esta noche", "P01", 5],
+      ["you wanted to be able to speak Spanish with me tonight", "querías poder hablar español conmigo esta noche", "P_NEW_IMPERFECT", 6],
+      ["I wanted to meet people who speak Spanish tonight", "quería encontrar personas que hablan español esta noche", "P_NEW_IMPERFECT", 6],
+      ["you wanted to speak with me tonight.", "querías hablar conmigo esta noche.", "P_NEW_IMPERFECT", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P_NEW_IMPERFECT",
     "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0030 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0031L03 LEGOs only. NOTE: 'esta noche' introduced in this LEGO."
   }
 }

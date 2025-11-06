@@ -8,90 +8,313 @@
     "target": "Quería poner su carta en su bolsa."
   },
   "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P10",
+    "P12",
+    "P18",
+    "P_RELATIVE",
+    "P_NEW_GUSTAR",
+    "P_NEW_IMPERSONAL",
+    "P_NEW_IMPERFECT",
+    "P_NEW_REFLEXIVE",
+    "P_NEW_GUSTAR_LIKE",
+    "P_NEW_DISFRUTO"
+  ],
   "cumulative_legos": 157,
-
+  "curation_metadata": {
+    "curated_at": "2025-11-06T21:04:02.410092Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation"
+  },
   "S0053L01": {
-    "lego": ["to put", "poner"],
+    "lego": [
+      "to put",
+      "poner"
+    ],
     "type": "A",
     "available_legos": 154,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
+      "P_NEW_DISFRUTO"
+    ],
     "practice_phrases": [
-      ["to put", "poner", null, 1],
-      ["I want to put", "quiero poner", "P01", 2],
-      ["I wanted to put", "quería poner", "P_NEW_IMPERFECT", 2],
-      ["I need to put", "necesito poner", "P17", 2],
-      ["but I want to put", "pero quiero poner", "P01", 2],
-      ["I wanted to put a letter", "quería poner una carta", "P_NEW_IMPERFECT", 3],
-      ["because I need to put", "porque necesito poner", "P17", 2],
-      ["I don't know how to put", "no sé poner", "P12", 2],
-      ["or if I need to put something", "o si necesito poner algo", "P17", 4],
-      ["I wanted to put a letter last week", "quería poner una carta la semana pasada", "P_NEW_IMPERFECT", 5]
+      [
+        "to put",
+        "poner",
+        null,
+        1
+      ],
+      [
+        "I wanted to put",
+        "quería poner",
+        "P_NEW_IMPERFECT",
+        2
+      ],
+      [
+        "I want to put something",
+        "quiero poner algo",
+        "P01",
+        3
+      ],
+      [
+        "I'm going to put something here",
+        "voy a poner algo aquí",
+        "P03",
+        4
+      ],
+      [
+        "I wanted to put something here yesterday",
+        "quería poner algo aquí ayer",
+        "P_NEW_IMPERFECT",
+        4
+      ],
+      [
+        "I enjoy doing things but I wanted to put something here",
+        "disfruto hacer cosas pero quería poner algo aquí",
+        "P_NEW_DISFRUTO",
+        9
+      ],
+      [
+        "I think that I want to put something here now",
+        "pienso que quiero poner algo aquí ahora",
+        "P01",
+        7
+      ],
+      [
+        "I wanted to put something here yesterday but I was tired",
+        "quería poner algo aquí ayer pero estaba cansado",
+        "P_NEW_IMPERFECT",
+        9
+      ],
+      [
+        "I'm going to put something here when I have time",
+        "voy a poner algo aquí cuando no estoy cansado",
+        "P03",
+        9
+      ],
+      [
+        "I wanted to put something here last week",
+        "quería poner algo aquí la semana pasada",
+        "P_NEW_IMPERFECT",
+        5
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
+      "really_short_1_2": 2,
       "quite_short_3": 1,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 5
     },
-    "pattern_coverage": "P01, P12, P17, P_NEW_IMPERFECT",
-    "full_seed_included": "NO - missing 'his letter', 'in her bag'",
-    "gate_compliance": "STRICT - Only S0001-S0052 LEGOs available"
+    "pattern_coverage": "P_NEW_IMPERFECT, P01, P03, P_NEW_DISFRUTO",
+    "gate_compliance": "STRICT - All words from S0001-S0052 LEGOs only"
   },
-
   "S0053L02": {
-    "lego": ["his letter", "su carta"],
+    "lego": [
+      "his letter",
+      "su carta"
+    ],
     "type": "M",
     "available_legos": 155,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
+      "P_NEW_DISFRUTO"
+    ],
     "practice_phrases": [
-      ["his letter", "su carta", null, 1],
-      ["I wanted his letter", "quería su carta", "P_NEW_IMPERFECT", 2],
-      ["to put his letter", "poner su carta", null, 2],
-      ["to read his letter", "leer su carta", null, 2],
-      ["I wanted to put his letter", "quería poner su carta", "P_NEW_IMPERFECT", 3],
-      ["I need to read his letter", "necesito leer su carta", "P17", 3],
-      ["because his letter", "porque su carta", null, 2],
-      ["I wanted to write his letter", "quería escribir su carta", "P_NEW_IMPERFECT", 3],
-      ["but I wanted to put his letter", "pero quería poner su carta", "P_NEW_IMPERFECT", 3],
-      ["if I need to read his letter", "si necesito leer su carta", "P17", 4]
+      [
+        "his letter",
+        "su carta",
+        null,
+        1
+      ],
+      [
+        "to put his letter",
+        "poner su carta",
+        null,
+        2
+      ],
+      [
+        "I wanted to put his letter",
+        "quería poner su carta",
+        "P_NEW_IMPERFECT",
+        3
+      ],
+      [
+        "I want to put his letter here",
+        "quiero poner su carta aquí",
+        "P01",
+        3
+      ],
+      [
+        "I'm going to put his letter here",
+        "voy a poner su carta aquí",
+        "P03",
+        4
+      ],
+      [
+        "I wanted to put his letter here yesterday",
+        "quería poner su carta aquí ayer",
+        "P_NEW_IMPERFECT",
+        4
+      ],
+      [
+        "I think that I want to put his letter here now",
+        "pienso que quiero poner su carta aquí ahora",
+        "P01",
+        8
+      ],
+      [
+        "I wanted to put his letter here last week",
+        "quería poner su carta aquí la semana pasada",
+        "P_NEW_IMPERFECT",
+        5
+      ],
+      [
+        "I'm going to put his letter here when I have time",
+        "voy a poner su carta aquí cuando no estoy cansado",
+        "P03",
+        10
+      ],
+      [
+        "I wanted to put his letter here but I was tired",
+        "quería poner su carta aquí pero estaba cansado",
+        "P_NEW_IMPERFECT",
+        9
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 4,
-      "longer_4_5": 1,
-      "long_6_plus": 0
-    },
-    "pattern_coverage": "P17, P_NEW_IMPERFECT",
-    "full_seed_included": "NO - missing 'in her bag'",
-    "gate_compliance": "STRICT - Only S0001-S0053L01 LEGOs available"
-  },
-
-  "S0053L03": {
-    "lego": ["in her bag", "en su bolsa"],
-    "type": "M",
-    "available_legos": 156,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
-    "practice_phrases": [
-      ["in her bag", "en su bolsa", null, 1],
-      ["to put in her bag", "poner en su bolsa", null, 2],
-      ["I wanted in her bag", "quería en su bolsa", "P_NEW_IMPERFECT", 2],
-      ["his letter in her bag", "su carta en su bolsa", null, 2],
-      ["to put his letter in her bag", "poner su carta en su bolsa", null, 3],
-      ["I wanted to put in her bag", "quería poner en su bolsa", "P_NEW_IMPERFECT", 3],
-      ["because in her bag", "porque en su bolsa", null, 2],
-      ["I wanted to put his letter in her bag", "quería poner su carta en su bolsa", "P_NEW_IMPERFECT", 4],
-      ["but I need to put something in her bag", "pero necesito poner algo en su bolsa", "P17", 5],
-      ["she wanted to put his letter in her bag.", "quería poner su carta en su bolsa.", "P_NEW_IMPERFECT", 4]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 5,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P17, P_NEW_IMPERFECT",
+    "pattern_coverage": "P_NEW_IMPERFECT, P01, P03",
+    "gate_compliance": "STRICT - All words from S0001-S0053L01 LEGOs only"
+  },
+  "S0053L03": {
+    "lego": [
+      "in her bag",
+      "en su bolsa"
+    ],
+    "type": "M",
+    "available_legos": 156,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
+      "P_NEW_DISFRUTO"
+    ],
+    "practice_phrases": [
+      [
+        "in her bag",
+        "en su bolsa",
+        null,
+        1
+      ],
+      [
+        "to put in her bag",
+        "poner en su bolsa",
+        null,
+        2
+      ],
+      [
+        "I wanted to put something in her bag",
+        "quería poner algo en su bolsa",
+        "P_NEW_IMPERFECT",
+        3
+      ],
+      [
+        "to put his letter in her bag",
+        "poner su carta en su bolsa",
+        null,
+        3
+      ],
+      [
+        "I wanted to put his letter in her bag",
+        "quería poner su carta en su bolsa",
+        "P_NEW_IMPERFECT",
+        4
+      ],
+      [
+        "I want to put his letter in her bag",
+        "quiero poner su carta en su bolsa",
+        "P01",
+        4
+      ],
+      [
+        "I'm going to put his letter in her bag now",
+        "voy a poner su carta en su bolsa ahora",
+        "P03",
+        6
+      ],
+      [
+        "I think that I want to put his letter in her bag",
+        "pienso que quiero poner su carta en su bolsa",
+        "P01",
+        8
+      ],
+      [
+        "I wanted to put his letter in her bag last week",
+        "quería poner su carta en su bolsa la semana pasada",
+        "P_NEW_IMPERFECT",
+        6
+      ],
+      [
+        "She wanted to put his letter in her bag.",
+        "Quería poner su carta en su bolsa.",
+        "P_NEW_IMPERFECT",
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P_NEW_IMPERFECT, P01, P03",
     "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0053L02 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0053L02 LEGOs only"
   }
 }

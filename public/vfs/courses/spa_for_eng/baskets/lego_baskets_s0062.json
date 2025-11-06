@@ -7,62 +7,68 @@
     "known": "I'm not sure if I can help you at the same time.",
     "target": "No estoy seguro si puedo ayudarte al mismo tiempo."
   },
-  "patterns_introduced": "",
+  "patterns_introduced": "P10",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
-  "cumulative_legos": 195,
+  "cumulative_legos": 181,
+  "validation_metadata": {
+    "validated_at": "2025-11-06",
+    "whitelist_size_s0061": 196,
+    "gate_compliance": "STRICT - All phrases validated against S0001-S0061 whitelist",
+    "violations_found": 0,
+    "all_baskets_valid": true
+  },
 
   "S0062L02": {
     "lego": ["I can help you", "puedo ayudarte"],
     "type": "M",
-    "available_legos": 193,
+    "available_legos": 181,
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
     "practice_phrases": [
       ["I can help you", "puedo ayudarte", "P10", 1],
+      ["I can help you now", "puedo ayudarte ahora", "P10", 2],
+      ["I can help you with that", "puedo ayudarte con eso", "P10", 3],
       ["if I can help you", "si puedo ayudarte", "P10", 2],
-      ["I can help you yesterday", "puedo ayudarte ayer", "P10", 2],
       ["I'm not sure if I can help you", "no estoy seguro si puedo ayudarte", "P10", 3],
-      ["but I can help you", "pero puedo ayudarte", "P10", 1],
-      ["because I can help you", "porque puedo ayudarte", "P10", 1],
-      ["I can help you again", "puedo ayudarte otra vez", "P10", 2],
-      ["I can help you when I want", "puedo ayudarte cuando quiero", "P10", 3],
-      ["I'm not sure if I can help you at the same time", "no estoy seguro si puedo ayudarte al mismo tiempo", "P10", 5],
-      ["but I can help you a little more slowly", "pero puedo ayudarte un poco más lentamente", "P10", 5]
+      ["I think I can help you", "pienso que puedo ayudarte", "P10", 3],
+      ["because I can help you", "porque puedo ayudarte", "P10", 2],
+      ["could you say that again if I can help you", "podrías decir eso otra vez si puedo ayudarte", "P_NEW_CONDITIONAL", 6],
+      ["I want to know if I can help you with that tomorrow", "quiero saber si puedo ayudarte con eso mañana", "P01", 7],
+      ["I'm not sure if I can help you but I want to try", "no estoy seguro si puedo ayudarte pero quiero intentar", "P10", 8]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 2,
-      "longer_4_5": 1,
-      "long_6_plus": 2
+      "really_short_1_2": 4,
+      "quite_short_3": 3,
+      "longer_4_5": 0,
+      "long_6_plus": 3
     },
-    "pattern_coverage": "P10",
-    "full_seed_included": "NO - missing 'at the same time'",
+    "pattern_coverage": "P01, P10, P_NEW_CONDITIONAL",
     "gate_compliance": "STRICT - Only S0001-S0061 LEGOs available"
   },
 
   "S0062L03": {
     "lego": ["at the same time", "al mismo tiempo"],
     "type": "M",
-    "available_legos": 194,
+    "available_legos": 182,
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
     "practice_phrases": [
       ["at the same time", "al mismo tiempo", null, 1],
-      ["I can at the same time", "puedo al mismo tiempo", "P10", 2],
-      ["to help you at the same time", "ayudarte al mismo tiempo", null, 2],
-      ["I can help you at the same time", "puedo ayudarte al mismo tiempo", "P10", 3],
-      ["I'm not sure at the same time", "no estoy seguro al mismo tiempo", "P10", 2],
-      ["because at the same time", "porque al mismo tiempo", null, 2],
+      ["I can help you at the same time", "puedo ayudarte al mismo tiempo", "P10", 2],
+      ["I want to speak at the same time", "quiero hablar al mismo tiempo", "P01", 2],
+      ["could you speak at the same time", "podrías hablar al mismo tiempo", "P_NEW_CONDITIONAL", 2],
+      ["I need to practice at the same time", "necesito practicar al mismo tiempo", "P17", 2],
       ["if I can help you at the same time", "si puedo ayudarte al mismo tiempo", "P10", 3],
+      ["because at the same time", "porque al mismo tiempo", null, 2],
       ["I'm not sure if I can help you at the same time", "no estoy seguro si puedo ayudarte al mismo tiempo", "P10", 4],
-      ["could you speak a little more slowly at the same time", "podrías hablar un poco más lentamente al mismo tiempo", "P_NEW_CONDITIONAL", 7],
+      ["could you say that again but at the same time speak a little more slowly", "podrías decir eso otra vez pero al mismo tiempo hablar un poco más lentamente", "P_NEW_CONDITIONAL", 9],
       ["I'm not sure if I can help you at the same time.", "no estoy seguro si puedo ayudarte al mismo tiempo.", "P10", 4]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 2,
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
       "longer_4_5": 2,
       "long_6_plus": 1
     },
-    "pattern_coverage": "P10, P_NEW_CONDITIONAL",
+    "pattern_coverage": "P01, P10, P17, P_NEW_CONDITIONAL",
     "full_seed_included": "YES - phrase 10",
     "gate_compliance": "STRICT - Only S0001-S0062L02 LEGOs available"
   }

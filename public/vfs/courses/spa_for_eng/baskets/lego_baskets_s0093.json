@@ -7,63 +7,308 @@
     "known": "It's time to go now.",
     "target": "Es hora de ir ahora."
   },
-  "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
-  "cumulative_legos": 273,
-
+  "patterns_introduced": "P_NEW_IMPERSONAL",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P10",
+    "P12",
+    "P18",
+    "P_RELATIVE",
+    "P_NEW_GUSTAR",
+    "P_NEW_IMPERSONAL",
+    "P_NEW_FUTURE"
+  ],
+  "cumulative_legos": 258,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:26:37.401985Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "whitelist_size": 250,
+    "changes_from_previous": [
+      "Generated with strict GATE validation",
+      "100% GATE compliance achieved"
+    ]
+  },
   "S0093L01": {
-    "lego": ["it's time to", "es hora de"],
+    "lego": [
+      "it's time to",
+      "es hora de"
+    ],
     "type": "M",
-    "available_legos": 271,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "lego_type": "MOLECULAR",
+    "molecular_rationale": "Components: es (it is) + hora (time) + de (to/of)",
+    "available_legos": 256,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_FUTURE"
+    ],
     "practice_phrases": [
-      ["it's time to", "es hora de", "P_NEW_IMPERSONAL", 1],
-      ["it's time to go", "es hora de ir", "P_NEW_IMPERSONAL", 2],
-      ["but it's time to", "pero es hora de", "P_NEW_IMPERSONAL", 1],
-      ["I think that it's time to", "pienso que es hora de", "P_NEW_IMPERSONAL", 3],
-      ["it's time to go now", "es hora de ir ahora", "P_NEW_IMPERSONAL", 2],
-      ["if it's time to", "si es hora de", "P_NEW_IMPERSONAL", 1],
-      ["because it's time to", "porque es hora de", "P_NEW_IMPERSONAL", 1],
-      ["I'm not sure if it's time to", "no estoy seguro si es hora de", "P_NEW_IMPERSONAL", 4],
-      ["I think that it's time to go now and I'd like to keep on doing this", "pienso que es hora de ir ahora y me gustaría continuar haciendo esto", "P_NEW_IMPERSONAL", 9],
-      ["it's difficult to think quickly enough but it's time to start", "es difícil pensar lo suficientemente rápido pero es hora de comenzar", "P_NEW_IMPERSONAL", 7]
+      [
+        "it's time to",
+        "es hora de",
+        "P_NEW_IMPERSONAL",
+        1
+      ],
+      [
+        "it's time to speak",
+        "es hora de hablar",
+        "P_NEW_IMPERSONAL",
+        2
+      ],
+      [
+        "it's time to learn Spanish",
+        "es hora de aprender español",
+        "P_NEW_IMPERSONAL",
+        3
+      ],
+      [
+        "it's time to start",
+        "es hora de comenzar",
+        "P_NEW_IMPERSONAL",
+        2
+      ],
+      [
+        "it's time to practice",
+        "es hora de practicar",
+        "P_NEW_IMPERSONAL",
+        2
+      ],
+      [
+        "it's time to start learning Spanish",
+        "es hora de comenzar a aprender español",
+        "P_NEW_IMPERSONAL",
+        4
+      ],
+      [
+        "it's time to do this now",
+        "es hora de hacer esto ahora",
+        "P_NEW_IMPERSONAL",
+        4
+      ],
+      [
+        "it's time to keep on doing what you were doing",
+        "es hora de continuar haciendo lo que estaba haciendo",
+        "P_NEW_IMPERSONAL",
+        7
+      ],
+      [
+        "it's time to start thinking about what you want to learn",
+        "es hora de comenzar a pensar en lo que quieres aprender",
+        "P_NEW_IMPERSONAL",
+        9
+      ],
+      [
+        "it's time to do everything you can to learn Spanish",
+        "es hora de hacer todo lo que puedes para aprender español",
+        "P_NEW_IMPERSONAL",
+        10
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
+      "really_short_1_2": 3,
       "quite_short_3": 1,
-      "longer_4_5": 1,
-      "long_6_plus": 2
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
     "pattern_coverage": "P_NEW_IMPERSONAL",
-    "full_seed_included": "NO - missing 'to go', 'now'",
-    "gate_compliance": "STRICT - Only S0001-S0092 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0092 LEGOs only. NOTE: 'hora' introduced in this LEGO."
   },
-
   "S0093L02": {
-    "lego": ["to go", "ir"],
+    "lego": [
+      "to go",
+      "ir"
+    ],
     "type": "A",
-    "available_legos": 272,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "available_legos": 257,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_FUTURE"
+    ],
     "practice_phrases": [
-      ["to go", "ir", null, 1],
-      ["it's time to go", "es hora de ir", "P_NEW_IMPERSONAL", 2],
-      ["I want to go", "quiero ir", "P01", 2],
-      ["but to go", "pero ir", null, 2],
-      ["it's time to go now", "es hora de ir ahora", "P_NEW_IMPERSONAL", 3],
-      ["if to go", "si ir", null, 2],
-      ["because to go", "porque ir", null, 2],
-      ["I need to go", "necesito ir", "P17", 2],
-      ["I think that it's time to go now and I'd like this for a while", "pienso que es hora de ir ahora y me gustaría esto por un tiempo", "P_NEW_IMPERSONAL", 10],
-      ["it's time to go now.", "es hora de ir ahora.", "P_NEW_IMPERSONAL", 3]
+      [
+        "to go",
+        "ir",
+        null,
+        1
+      ],
+      [
+        "it's time to go",
+        "es hora de ir",
+        "P_NEW_IMPERSONAL",
+        2
+      ],
+      [
+        "I want to go now",
+        "quiero ir ahora",
+        "P01",
+        3
+      ],
+      [
+        "I need to go",
+        "necesito ir",
+        "P01",
+        2
+      ],
+      [
+        "I'm going to go",
+        "voy a ir",
+        "P03",
+        2
+      ],
+      [
+        "it's time to go now",
+        "es hora de ir ahora",
+        "P_NEW_IMPERSONAL",
+        3
+      ],
+      [
+        "I'd like to go with you",
+        "me gustaría ir contigo",
+        "P04",
+        3
+      ],
+      [
+        "it's time to go as soon as you can",
+        "es hora de ir tan pronto como puedas",
+        "P_NEW_IMPERSONAL",
+        7
+      ],
+      [
+        "I want to go now because I don't have time",
+        "quiero ir ahora porque no tengo tiempo",
+        "P01",
+        7
+      ],
+      [
+        "it's time to go and keep on doing what you can",
+        "es hora de ir y continuar haciendo lo que puedes",
+        "P_NEW_IMPERSONAL",
+        9
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 7,
-      "quite_short_3": 2,
+      "really_short_1_2": 3,
+      "quite_short_3": 3,
       "longer_4_5": 0,
-      "long_6_plus": 1
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P17, P_NEW_IMPERSONAL",
+    "pattern_coverage": "P01, P03, P04, P_NEW_IMPERSONAL",
+    "gate_compliance": "STRICT - All words from S0001-S0093L01 LEGOs only. NOTE: 'ir' introduced in this LEGO."
+  },
+  "S0093L03": {
+    "lego": [
+      "now",
+      "ahora"
+    ],
+    "type": "A",
+    "available_legos": 258,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_FUTURE"
+    ],
+    "practice_phrases": [
+      [
+        "now",
+        "ahora",
+        null,
+        1
+      ],
+      [
+        "it's time to go now",
+        "es hora de ir ahora",
+        "P_NEW_IMPERSONAL",
+        3
+      ],
+      [
+        "I want to speak now",
+        "quiero hablar ahora",
+        "P01",
+        3
+      ],
+      [
+        "I need to do this now",
+        "necesito hacer esto ahora",
+        "P01",
+        4
+      ],
+      [
+        "I'm going to start now",
+        "voy a comenzar ahora",
+        "P03",
+        3
+      ],
+      [
+        "it's time to start learning Spanish now",
+        "es hora de comenzar a aprender español ahora",
+        "P_NEW_IMPERSONAL",
+        5
+      ],
+      [
+        "I'd like to keep on doing this now",
+        "me gustaría continuar haciendo esto ahora",
+        "P04",
+        4
+      ],
+      [
+        "it's time to go now because I need to do this",
+        "es hora de ir ahora porque necesito hacer esto",
+        "P_NEW_IMPERSONAL",
+        9
+      ],
+      [
+        "I want to start thinking about what I can do now",
+        "quiero comenzar a pensar en lo que puedo hacer ahora",
+        "P01",
+        9
+      ],
+      [
+        "it's time to go now.",
+        "es hora de ir ahora.",
+        "P_NEW_IMPERSONAL",
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P03, P04, P_NEW_IMPERSONAL",
     "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0093L01 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0093L02 LEGOs only. NOTE: 'ahora' from S0001."
   }
 }

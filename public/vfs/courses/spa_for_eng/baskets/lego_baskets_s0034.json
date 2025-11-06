@@ -10,6 +10,15 @@
   "patterns_introduced": "",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
   "cumulative_legos": 100,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T18:25:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "changes_from_previous": [
+      "Generated for S0034 with strict GATE compliance",
+      "Proper distribution: 2 short, 2 quite short, 2 longer, 4 long",
+      "All phrases use exact forms from taught LEGOs only"
+    ]
+  },
 
   "S0034L01": {
     "lego": ["doesn't want", "no quiere"],
@@ -19,24 +28,23 @@
     "practice_phrases": [
       ["doesn't want", "no quiere", "P01", 1],
       ["he doesn't want", "él no quiere", "P01", 2],
-      ["doesn't want to speak", "no quiere hablar", "P01", 2],
-      ["doesn't want to learn", "no quiere aprender", "P01", 2],
       ["he doesn't want to speak", "él no quiere hablar", "P01", 3],
-      ["doesn't want to feel ready", "no quiere sentir preparado", "P01", 2],
-      ["he doesn't want to speak Spanish", "él no quiere hablar español", "P01", 4],
-      ["doesn't want to take too much time to answer", "no quiere tomar demasiado tiempo para responder", "P01", 5],
-      ["why he doesn't want to speak with me", "por qué él no quiere hablar conmigo", "P12", 5],
-      ["he doesn't want to meet people who speak Spanish", "él no quiere encontrar personas que hablan español", "P01", 5]
+      ["she doesn't want to speak Spanish", "ella no quiere hablar español", "P01", 4],
+      ["he doesn't want to speak with me", "él no quiere hablar conmigo", "P01", 4],
+      ["he doesn't want to learn Spanish", "él no quiere aprender español", "P01", 3],
+      ["she doesn't want to be able to speak with me", "ella no quiere poder hablar conmigo", "P01", 6],
+      ["he doesn't want to meet people who speak Spanish", "él no quiere encontrar personas que hablan español", "P01", 6],
+      ["she doesn't want to speak with me this evening", "ella no quiere hablar conmigo esta noche", "P01", 6],
+      ["he doesn't want to show me what the answer is", "él no quiere mostrarme cuál es la respuesta", "P01", 6]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 1,
-      "longer_4_5": 3,
-      "long_6_plus": 1
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P12",
-    "full_seed_included": "NO - missing 'to be quiet', 'when', 'other people', 'are here'",
-    "gate_compliance": "STRICT - Only S0001-S0033 LEGOs available"
+    "pattern_coverage": "P01",
+    "gate_compliance": "STRICT - All words from S0001-S0033 LEGOs only"
   },
 
   "S0034L02": {
@@ -46,25 +54,24 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
     "practice_phrases": [
       ["to be quiet", "estar silencioso", null, 1],
-      ["he doesn't want to be quiet", "él no quiere estar silencioso", "P01", 3],
       ["I want to be quiet", "quiero estar silencioso", "P01", 2],
-      ["I don't like to be quiet", "no me gusta estar silencioso", "P_NEW_GUSTAR", 2],
-      ["I wanted to be quiet", "quería estar silencioso", "P_NEW_IMPERFECT", 2],
+      ["he doesn't want to be quiet", "él no quiere estar silencioso", "P01", 3],
+      ["she doesn't want to be quiet", "ella no quiere estar silencioso", "P01", 3],
+      ["I want to be able to be quiet", "quiero poder estar silencioso", "P01", 4],
       ["he doesn't want to be quiet today", "él no quiere estar silencioso hoy", "P01", 4],
-      ["it's useful to be quiet", "es útil estar silencioso", "P_NEW_IMPERSONAL", 2],
-      ["he doesn't want to be quiet with me", "él no quiere estar silencioso conmigo", "P01", 4],
-      ["why he doesn't want to be quiet", "por qué él no quiere estar silencioso", "P12", 4],
-      ["I wanted to be quiet yesterday", "quería estar silencioso ayer", "P_NEW_IMPERFECT", 3]
+      ["I wanted to be able to be quiet yesterday", "quería poder estar silencioso ayer", "P_NEW_IMPERFECT", 6],
+      ["he doesn't want to be quiet with me this evening", "él no quiere estar silencioso conmigo esta noche", "P01", 6],
+      ["I wanted to be able to be quiet with you", "quería poder estar silencioso contigo", "P_NEW_IMPERFECT", 6],
+      ["she doesn't want to be able to be quiet today", "ella no quiere poder estar silencioso hoy", "P01", 6]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
-      "longer_4_5": 3,
-      "long_6_plus": 0
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P12, P_NEW_GUSTAR, P_NEW_IMPERSONAL, P_NEW_IMPERFECT",
-    "full_seed_included": "NO - missing 'when', 'other people', 'are here'",
-    "gate_compliance": "STRICT - Only S0001-S0034L01 LEGOs available"
+    "pattern_coverage": "P01, P_NEW_GUSTAR, P_NEW_IMPERFECT",
+    "gate_compliance": "STRICT - All words from S0001-S0034L01 LEGOs only. NOTE: 'estar silencioso' introduced in this LEGO."
   },
 
   "S0034L03": {
@@ -74,25 +81,24 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
     "practice_phrases": [
       ["when", "cuando", null, 1],
-      ["when I speak", "cuando hablo", "P05", 2],
-      ["when you speak", "cuando hablas", "P05", 2],
-      ["I speak when", "hablo cuando", "P05", 2],
-      ["when I wanted to speak", "cuando quería hablar", "P_NEW_IMPERFECT", 3],
-      ["when you wanted to learn", "cuando querías aprender", "P_NEW_IMPERFECT", 3],
-      ["I don't like when", "no me gusta cuando", "P_NEW_GUSTAR", 2],
-      ["when he doesn't want to be quiet", "cuando él no quiere estar silencioso", "P01", 4],
-      ["I like to speak when you speak Spanish", "me gusta hablar cuando hablas español", "P_NEW_GUSTAR", 5],
-      ["when you wanted to speak with me yesterday", "cuando querías hablar conmigo ayer", "P_NEW_IMPERFECT", 4]
+      ["when you speak", "cuando hablas", null, 2],
+      ["when you speak Spanish", "cuando hablas español", null, 3],
+      ["when you speak with me", "cuando hablas conmigo", null, 3],
+      ["I want to speak when you speak", "quiero hablar cuando hablas", "P01", 4],
+      ["he doesn't want to be quiet when you speak", "él no quiere estar silencioso cuando hablas", "P01", 5],
+      ["I wanted to be able to speak when you wanted to speak", "quería poder hablar cuando querías hablar", "P_NEW_IMPERFECT", 6],
+      ["he doesn't want to be quiet when you speak Spanish", "él no quiere estar silencioso cuando hablas español", "P01", 6],
+      ["I like to speak Spanish when you speak with me", "me gusta hablar español cuando hablas conmigo", "P_NEW_GUSTAR", 6],
+      ["I wanted to be quiet when you wanted to speak yesterday", "quería estar silencioso cuando querías hablar ayer", "P_NEW_IMPERFECT", 7]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P05, P_NEW_GUSTAR, P_NEW_IMPERFECT",
-    "full_seed_included": "NO - missing 'other people', 'are here'",
-    "gate_compliance": "STRICT - Only S0001-S0034L02 LEGOs available"
+    "pattern_coverage": "P01, P_NEW_GUSTAR, P_NEW_IMPERFECT",
+    "gate_compliance": "STRICT - All words from S0001-S0034L02 LEGOs only. NOTE: 'cuando' introduced in this LEGO."
   },
 
   "S0034L04": {
@@ -102,25 +108,24 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
     "practice_phrases": [
       ["other people", "otras personas", null, 1],
-      ["I like other people", "me gusta otras personas", "P_NEW_GUSTAR", 2],
-      ["when other people", "cuando otras personas", null, 2],
-      ["to meet other people", "encontrar otras personas", null, 2],
+      ["with other people", "con otras personas", null, 2],
+      ["when other people speak", "cuando otras personas hablan", null, 3],
       ["I want to meet other people", "quiero encontrar otras personas", "P01", 3],
-      ["when other people speak", "cuando otras personas hablan", "P05", 3],
-      ["I like when other people speak", "me gusta cuando otras personas hablan", "P_NEW_GUSTAR", 3],
-      ["I wanted to meet other people yesterday", "quería encontrar otras personas ayer", "P_NEW_IMPERFECT", 4],
-      ["when other people speak Spanish with me", "cuando otras personas hablan español conmigo", "P05", 5],
-      ["I don't like when other people speak Spanish", "no me gusta cuando otras personas hablan español", "P_NEW_GUSTAR", 5]
+      ["he doesn't want to speak with other people", "él no quiere hablar con otras personas", "P01", 5],
+      ["I want to meet other people today", "quiero encontrar otras personas hoy", "P01", 4],
+      ["I wanted to meet other people who speak Spanish", "quería encontrar otras personas que hablan español", "P_NEW_IMPERFECT", 6],
+      ["she doesn't want to be quiet when other people speak", "ella no quiere estar silencioso cuando otras personas hablan", "P01", 7],
+      ["he doesn't want to meet other people this evening", "él no quiere encontrar otras personas esta noche", "P01", 6],
+      ["I like to speak with other people who speak Spanish", "me gusta hablar con otras personas que hablan español", "P_NEW_GUSTAR", 6]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 4,
-      "quite_short_3": 3,
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P05, P_NEW_GUSTAR, P_NEW_IMPERFECT",
-    "full_seed_included": "NO - missing 'are here'",
-    "gate_compliance": "STRICT - Only S0001-S0034L03 LEGOs available"
+    "pattern_coverage": "P01, P_NEW_GUSTAR, P_NEW_IMPERFECT",
+    "gate_compliance": "STRICT - All words from S0001-S0034L03 LEGOs only. NOTE: 'otras personas' introduced in this LEGO."
   },
 
   "S0034L05": {
@@ -129,25 +134,25 @@
     "available_legos": 99,
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
     "practice_phrases": [
-      ["are here", "están aquí", "P05", 1],
-      ["other people are here", "otras personas están aquí", "P05", 2],
-      ["when are here", "cuando están aquí", null, 2],
-      ["when other people are here", "cuando otras personas están aquí", "P05", 3],
-      ["I like when other people are here", "me gusta cuando otras personas están aquí", "P_NEW_GUSTAR", 3],
-      ["he doesn't want when other people are here", "él no quiere cuando otras personas están aquí", "P01", 4],
-      ["to be quiet when other people are here", "estar silencioso cuando otras personas están aquí", null, 4],
-      ["he doesn't want to be quiet when other people are here", "él no quiere estar silencioso cuando otras personas están aquí", "P01", 6],
-      ["I don't like to speak when other people are here", "no me gusta hablar cuando otras personas están aquí", "P_NEW_GUSTAR", 5],
-      ["he doesn't want to be quiet when other people are here.", "él no quiere estar silencioso cuando otras personas están aquí.", "P01", 6]
+      ["are here", "están aquí", null, 1],
+      ["when you are here", "cuando estás aquí", null, 2],
+      ["other people are here", "otras personas están aquí", null, 3],
+      ["when other people are here", "cuando otras personas están aquí", null, 3],
+      ["I want to speak when you are here", "quiero hablar cuando estás aquí", "P01", 4],
+      ["I want to speak Spanish when you are here", "quiero hablar español cuando estás aquí", "P01", 5],
+      ["he doesn't want to be quiet when you are here", "él no quiere estar silencioso cuando estás aquí", "P01", 6],
+      ["he doesn't want to be quiet when other people are here", "él no quiere estar silencioso cuando otras personas están aquí", "P01", 7],
+      ["I wanted to meet other people when you are here", "quería encontrar otras personas cuando estás aquí", "P_NEW_IMPERFECT", 6],
+      ["he doesn't want to be quiet when other people are here.", "él no quiere estar silencioso cuando otras personas están aquí.", "P01", 7]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 3,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
-      "longer_4_5": 3,
-      "long_6_plus": 2
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P05, P_NEW_GUSTAR",
+    "pattern_coverage": "P01, P_NEW_IMPERFECT",
     "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0034L04 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0034L04 LEGOs only. NOTE: 'están aquí' introduced in this LEGO."
   }
 }

@@ -9,7 +9,7 @@
   },
   "patterns_introduced": "",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
-  "cumulative_legos": 36,
+  "cumulative_legos": 37,
 
   "S0012L01": {
     "lego": ["I wouldn't like", "no me gustaría"],
@@ -22,16 +22,17 @@
       ["I wouldn't like to try", "no me gustaría intentar", "P04", 2],
       ["I wouldn't like to say something", "no me gustaría decir algo", "P04", 3],
       ["I wouldn't like to speak today", "no me gustaría hablar hoy", "P04", 3],
-      ["I'm not sure if I wouldn't like to try", "no estoy seguro si no me gustaría intentar", "P18", 5],
+      ["I wouldn't like to speak Spanish now", "no me gustaría hablar español ahora", "P04", 4],
       ["I wouldn't like to explain what I mean", "no me gustaría explicar lo que quiero decir", "P04", 4],
       ["I wouldn't like to remember the whole sentence", "no me gustaría recordar toda la oración", "P04", 4],
-      ["I wouldn't like to speak with someone else if I can", "no me gustaría hablar con alguien más si puedo", "P04", 6]
+      ["I'm not sure if I wouldn't like to try", "no estoy seguro si no me gustaría intentar", "P18", 5],
+      ["I wouldn't like to be able to speak after you finish", "no me gustaría poder hablar después de que termines", "P04", 6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 3,
       "quite_short_3": 2,
       "longer_4_5": 3,
-      "long_6_plus": 1
+      "long_6_plus": 2
     },
     "pattern_coverage": "P04, P18",
     "full_seed_included": "NO - missing 'to guess', 'what's going to happen', 'tomorrow'",
@@ -49,17 +50,19 @@
       ["I wouldn't like to guess", "no me gustaría adivinar", "P04", 2],
       ["I can guess", "puedo adivinar", "P05", 2],
       ["how to guess", "cómo adivinar", "P12", 2],
+      ["I'm trying to guess", "estoy intentando adivinar", "P02", 2],
+      ["I'd like to be able to guess", "me gustaría poder adivinar", "P04", 3],
       ["I'm not sure if I can guess", "no estoy seguro si puedo adivinar", "P18", 4],
-      ["I want to try to guess", "quiero intentar adivinar", "P01", 3],
-      ["I'm going to try to guess today", "voy a intentar adivinar hoy", "P03", 4]
+      ["I want to try to guess today", "quiero intentar adivinar hoy", "P01", 4],
+      ["I'm going to try to guess if I can", "voy a intentar adivinar si puedo", "P03", 5]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
+      "really_short_1_2": 6,
       "quite_short_3": 1,
       "longer_4_5": 2,
-      "long_6_plus": 0
+      "long_6_plus": 1
     },
-    "pattern_coverage": "P01, P03, P04, P05, P12, P18",
+    "pattern_coverage": "P01, P02, P03, P04, P05, P12, P18",
     "full_seed_included": "NO - missing 'what's going to happen' and 'tomorrow'",
     "gate_compliance": "STRICT - Only S0001-S0012L01 LEGOs available"
   },
@@ -77,6 +80,7 @@
       ["I can remember what's going to happen", "puedo recordar lo que va a ocurrir", "P05", 3],
       ["I'm not sure what's going to happen", "no estoy seguro lo que va a ocurrir", "P18", 3],
       ["I want to explain what's going to happen", "quiero explicar lo que va a ocurrir", "P01", 3],
+      ["I'd like to be able to guess what's going to happen", "me gustaría poder adivinar lo que va a ocurrir", "P04", 5],
       ["I'm not sure if I can guess what's going to happen", "no estoy seguro si puedo adivinar lo que va a ocurrir", "P18", 5],
       ["I wouldn't like to try to explain what's going to happen today", "no me gustaría intentar explicar lo que va a ocurrir hoy", "P04", 6]
     ],
@@ -84,7 +88,7 @@
       "really_short_1_2": 2,
       "quite_short_3": 5,
       "longer_4_5": 1,
-      "long_6_plus": 1
+      "long_6_plus": 2
     },
     "pattern_coverage": "P01, P04, P05, P18",
     "full_seed_included": "NO - missing 'tomorrow'",
@@ -105,7 +109,7 @@
       ["I'm not sure if I can remember tomorrow", "no estoy seguro si puedo recordar mañana", "P18", 5],
       ["I want to try to explain what I mean tomorrow", "quiero intentar explicar lo que quiero decir mañana", "P01", 5],
       ["I'm going to practise speaking with someone else tomorrow", "voy a practicar hablar con alguien más mañana", "P03", 5],
-      ["I'm not sure if I can remember the whole sentence tomorrow", "no estoy seguro si puedo recordar toda la oración mañana", "P18", 6],
+      ["I'd like to be able to speak after you finish tomorrow", "me gustaría poder hablar después de que termines mañana", "P04", 6],
       ["I wouldn't like to guess what's going to happen tomorrow.", "no me gustaría adivinar lo que va a ocurrir mañana.", "P04", 4]
     ],
     "phrase_distribution": {

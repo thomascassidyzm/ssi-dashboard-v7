@@ -7,9 +7,18 @@
     "known": "I don't need to know everything.",
     "target": "No necesito saber todo."
   },
-  "patterns_introduced": "",
+  "patterns_introduced": "P17",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
   "cumulative_legos": 134,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "changes_from_previous": [
+      "Generated for S0045 with strict GATE compliance",
+      "4 long phrases (6+ LEGOs) per LEGO basket",
+      "P17 necessity pattern continued (I don't need)"
+    ]
+  },
 
   "S0045L01": {
     "lego": ["I don't need", "no necesito"],
@@ -19,24 +28,23 @@
     "practice_phrases": [
       ["I don't need", "no necesito", "P17", 1],
       ["I don't need to speak", "no necesito hablar", "P17", 2],
-      ["I don't need to learn", "no necesito aprender", "P17", 2],
-      ["I don't need to improve", "no necesito mejorar", "P17", 2],
-      ["I don't need Spanish", "no necesito español", "P17", 2],
-      ["I don't need to speak Spanish", "no necesito hablar español", "P17", 3],
-      ["I don't need to think", "no necesito pensar", "P17", 2],
-      ["I don't need to improve this morning", "no necesito mejorar esta mañana", "P17", 3],
-      ["why I don't need to improve", "por qué no necesito mejorar", "P12", 3],
-      ["I don't need to think about it carefully", "no necesito pensar sobre eso cuidadosamente", "P17", 4]
+      ["I don't need to learn Spanish", "no necesito aprender español", "P17", 3],
+      ["I don't need to think about it", "no necesito pensar sobre eso", "P17", 3],
+      ["I don't need to feel better today", "no necesito sentirme mejor hoy", "P17", 4],
+      ["I don't need to improve or learn more", "no necesito mejorar o aprender más", "P17", 5],
+      ["I don't need to think about how to answer when you speak", "no necesito pensar sobre cómo responder cuando hablas", "P17", 8],
+      ["I don't need to feel nearly ready to speak Spanish with other people", "no necesito sentirme casi preparado para hablar español con otras personas", "P17", 10],
+      ["I wasn't thinking about what I don't need to learn yesterday", "no estaba pensando sobre lo que no necesito aprender ayer", "P16", 10],
+      ["I feel as if I don't need to speak better than I can speak now", "me siento como si no necesito hablar mejor que puedo hablar ahora", "P_NEW_REFLEXIVE", 12]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 3,
-      "longer_4_5": 1,
-      "long_6_plus": 0
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P12, P17",
-    "full_seed_included": "NO - missing 'to know', 'everything'",
-    "gate_compliance": "STRICT - Only S0001-S0044 LEGOs available"
+    "pattern_coverage": "P17, P16, P_NEW_REFLEXIVE",
+    "gate_compliance": "STRICT - All words from S0001-S0044 LEGOs only"
   },
 
   "S0045L02": {
@@ -48,23 +56,22 @@
       ["to know", "saber", null, 1],
       ["I need to know", "necesito saber", "P17", 2],
       ["I don't need to know", "no necesito saber", "P17", 2],
-      ["I want to know", "quiero saber", "P01", 2],
-      ["if I need to know", "si necesito saber", "P17", 2],
-      ["I like to know", "me gusta saber", "P_NEW_GUSTAR", 2],
-      ["I don't need to know Spanish", "no necesito saber español", "P17", 3],
-      ["I need to know how to answer", "necesito saber cómo responder", "P17", 3],
-      ["I don't need to know about it", "no necesito saber sobre eso", "P17", 3],
-      ["or if I need to know something", "o si necesito saber algo", "P17", 4]
+      ["I want to know something", "quiero saber algo", "P01", 3],
+      ["I wanted to know the answer", "quería saber la respuesta", "P_NEW_IMPERFECT", 3],
+      ["I need to know how to speak", "necesito saber cómo hablar", "P17", 4],
+      ["I was starting to know how to answer yesterday", "estaba comenzando a saber cómo responder ayer", "P16", 6],
+      ["I don't need to know what the answer is this morning", "no necesito saber cuál es la respuesta esta mañana", "P17", 8],
+      ["I wanted to know how to speak Spanish better than I can speak now", "quería saber cómo hablar español mejor que puedo hablar ahora", "P_NEW_IMPERFECT", 11],
+      ["I feel as if I need to know how to improve as soon as I can", "me siento como si necesito saber cómo mejorar tan pronto como pueda", "P_NEW_REFLEXIVE", 12]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 3,
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
       "longer_4_5": 1,
-      "long_6_plus": 0
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P17, P_NEW_GUSTAR",
-    "full_seed_included": "NO - missing 'everything'",
-    "gate_compliance": "STRICT - Only S0001-S0045L01 LEGOs available"
+    "pattern_coverage": "P17, P01, P16, P_NEW_IMPERFECT, P_NEW_REFLEXIVE",
+    "gate_compliance": "STRICT - All words from S0001-S0045L01 LEGOs only"
   },
 
   "S0045L03": {
@@ -74,24 +81,24 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
     "practice_phrases": [
       ["everything", "todo", null, 1],
-      ["to know everything", "saber todo", null, 2],
-      ["I need to know everything", "necesito saber todo", "P17", 3],
-      ["I don't need everything", "no necesito todo", "P17", 2],
+      ["I need to know everything", "necesito saber todo", "P17", 2],
       ["I don't need to know everything", "no necesito saber todo", "P17", 3],
-      ["I want to learn everything", "quiero aprender todo", "P01", 3],
-      ["I like everything", "me gusta todo", "P_NEW_GUSTAR", 2],
-      ["I don't need to improve everything", "no necesito mejorar todo", "P17", 3],
-      ["or if I need to know everything", "o si necesito saber todo", "P17", 4],
+      ["I wanted to learn everything yesterday", "quería aprender todo ayer", "P_NEW_IMPERFECT", 3],
+      ["I need to think about everything when I'm trying to learn", "necesito pensar sobre todo cuando estoy intentando aprender", "P17", 7],
+      ["I don't like to think about everything", "no me gusta pensar sobre todo", "P_NEW_GUSTAR", 4],
+      ["I wanted to know everything but I don't need to improve now", "quería saber todo pero no necesito mejorar ahora", "P_NEW_IMPERFECT", 9],
+      ["I was starting to learn everything when I wanted to speak Spanish yesterday", "estaba comenzando a aprender todo cuando quería hablar español ayer", "P16", 9],
+      ["I feel as if I need to know everything before I have to speak", "me siento como si necesito saber todo antes de que tenga que hablar", "P_NEW_REFLEXIVE", 12],
       ["I don't need to know everything.", "no necesito saber todo.", "P17", 3]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 3,
-      "quite_short_3": 5,
-      "longer_4_5": 2,
-      "long_6_plus": 0
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P17, P_NEW_GUSTAR",
+    "pattern_coverage": "P17, P18, P16, P_NEW_GUSTAR, P_NEW_IMPERFECT, P_NEW_REFLEXIVE",
     "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0045L02 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0045L02 LEGOs only"
   }
 }

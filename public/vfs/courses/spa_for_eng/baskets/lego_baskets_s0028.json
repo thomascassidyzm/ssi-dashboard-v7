@@ -10,6 +10,15 @@
   "patterns_introduced": "P_NEW_IMPERSONAL",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL"],
   "cumulative_legos": 85,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "changes_from_previous": [
+      "Fixed completeness violation in S0028L02: removed incomplete 'es útil tan pronto como puedas'",
+      "Improved phrase naturalness and distribution",
+      "Maintained strict GATE compliance"
+    ]
+  },
 
   "S0028L01": {
     "lego": ["it's useful", "es útil"],
@@ -19,24 +28,23 @@
     "practice_phrases": [
       ["it's useful", "es útil", "P_NEW_IMPERSONAL", 1],
       ["it's useful to speak", "es útil hablar", "P_NEW_IMPERSONAL", 2],
-      ["it's useful to learn", "es útil aprender", "P_NEW_IMPERSONAL", 2],
-      ["it's useful to take time", "es útil tomar tiempo", "P_NEW_IMPERSONAL", 2],
+      ["it's useful to learn Spanish", "es útil aprender español", "P_NEW_IMPERSONAL", 3],
       ["it's useful to feel ready", "es útil sentir preparado", "P_NEW_IMPERSONAL", 2],
-      ["it's useful to speak Spanish", "es útil hablar español", "P_NEW_IMPERSONAL", 3],
+      ["it's useful to remember something", "es útil recordar algo", "P_NEW_IMPERSONAL", 2],
       ["it's useful to start talking", "es útil comenzar a hablar", "P_NEW_IMPERSONAL", 2],
-      ["it's useful to take too much time to answer", "es útil tomar demasiado tiempo para responder", "P_NEW_IMPERSONAL", 4],
       ["it's useful to meet people who speak Spanish", "es útil encontrar personas que hablan español", "P_NEW_IMPERSONAL", 4],
-      ["it's useful to feel as if I were nearly ready", "es útil sentir como si estuviera casi preparado", "P_NEW_IMPERSONAL", 6]
+      ["it's useful to take time to answer", "es útil tomar tiempo para responder", "P_NEW_IMPERSONAL", 3],
+      ["it's useful to feel as if I were nearly ready", "es útil sentir como si estuviera casi preparado", "P_NEW_IMPERSONAL", 6],
+      ["it's useful to be able to speak with everyone else", "es útil poder hablar con todos los demás", "P_NEW_IMPERSONAL", 5]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 1,
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
       "longer_4_5": 2,
       "long_6_plus": 1
     },
     "pattern_coverage": "P_NEW_IMPERSONAL",
-    "full_seed_included": "NO - missing 'as soon as you can'",
-    "gate_compliance": "STRICT - Only S0001-S0027 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0027 LEGOs only"
   },
 
   "S0028L02": {
@@ -46,24 +54,24 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL"],
     "practice_phrases": [
       ["as soon as you can", "tan pronto como puedas", "P10", 1],
-      ["to speak as soon as you can", "hablar tan pronto como puedas", null, 2],
-      ["it's useful as soon as you can", "es útil tan pronto como puedas", "P_NEW_IMPERSONAL", 2],
-      ["I want to speak as soon as you can", "quiero hablar tan pronto como puedas", "P01", 3],
+      ["to speak as soon as you can", "hablar tan pronto como puedas", "P10", 2],
       ["it's useful to speak as soon as you can", "es útil hablar tan pronto como puedas", "P_NEW_IMPERSONAL", 3],
+      ["to learn as soon as you can", "aprender tan pronto como puedas", "P10", 2],
       ["it's useful to learn as soon as you can", "es útil aprender tan pronto como puedas", "P_NEW_IMPERSONAL", 3],
-      ["to start talking as soon as you can", "comenzar a hablar tan pronto como puedas", null, 3],
+      ["to start talking as soon as you can", "comenzar a hablar tan pronto como puedas", "P10", 3],
       ["it's useful to start talking as soon as you can", "es útil comenzar a hablar tan pronto como puedas", "P_NEW_IMPERSONAL", 4],
       ["I like to feel ready to speak as soon as you can", "me gusta sentir preparado para hablar tan pronto como puedas", "P_NEW_GUSTAR", 6],
+      ["it's useful to take time to answer as soon as you can", "es útil tomar tiempo para responder tan pronto como puedas", "P_NEW_IMPERSONAL", 5],
       ["it's useful to start talking as soon as you can.", "es útil comenzar a hablar tan pronto como puedas.", "P_NEW_IMPERSONAL", 4]
     ],
     "phrase_distribution": {
       "really_short_1_2": 3,
-      "quite_short_3": 4,
-      "longer_4_5": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
       "long_6_plus": 1
     },
-    "pattern_coverage": "P01, P10, P_NEW_GUSTAR, P_NEW_IMPERSONAL",
+    "pattern_coverage": "P10, P_NEW_GUSTAR, P_NEW_IMPERSONAL",
     "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0028L01 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0028L01 LEGOs only. NOTE: 'tan', 'puedas' introduced in this LEGO."
   }
 }

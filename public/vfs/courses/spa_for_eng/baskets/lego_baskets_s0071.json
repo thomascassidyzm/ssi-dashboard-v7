@@ -7,147 +7,474 @@
     "known": "We didn't want to let anyone hear the truth.",
     "target": "No queríamos permitir que nadie oyera la verdad."
   },
-  "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
-  "cumulative_legos": 220,
-
+  "patterns_introduced": "P01, P08, P10",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P08",
+    "P10",
+    "P12",
+    "P18"
+  ],
+  "cumulative_legos": 205,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation",
+    "gate_validation": {
+      "whitelist_size": 210,
+      "violations_found": 0,
+      "violations_fixed": 0,
+      "compliance_status": "100% GATE compliant - all words validated against S0001-S0070 whitelist"
+    }
+  },
   "S0071L01": {
-    "lego": ["we didn't want", "no queríamos"],
+    "lego": [
+      "we didn't want",
+      "no queríamos"
+    ],
     "type": "M",
-    "available_legos": 215,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "available_legos": 200,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P12",
+      "P18"
+    ],
     "practice_phrases": [
-      ["we didn't want", "no queríamos", "P_NEW_IMPERFECT", 1],
-      ["we didn't want to speak", "no queríamos hablar", "P_NEW_IMPERFECT", 2],
-      ["but we didn't want", "pero no queríamos", "P_NEW_IMPERFECT", 2],
-      ["we didn't want to learn Spanish", "no queríamos aprender español", "P_NEW_IMPERFECT", 3],
-      ["we didn't want to stop", "no queríamos parar", "P_NEW_IMPERFECT", 2],
-      ["because we didn't want", "porque no queríamos", "P_NEW_IMPERFECT", 2],
-      ["if we didn't want to help", "si no queríamos ayudar", "P_NEW_IMPERFECT", 3],
-      ["we didn't want to tell me where it was", "no queríamos decirme dónde estaba", "P_NEW_IMPERFECT", 4],
-      ["we didn't want to give you a little more time yesterday", "no queríamos darte un poco más de tiempo ayer", "P_NEW_IMPERFECT", 6],
-      ["we didn't want to look after the young dog", "no queríamos cuidar el perro joven", "P_NEW_IMPERFECT", 4]
+      [
+        "we didn't want",
+        "no queríamos",
+        "P01",
+        2
+      ],
+      [
+        "we didn't want to speak",
+        "no queríamos hablar",
+        "P01",
+        3
+      ],
+      [
+        "we didn't want to learn",
+        "no queríamos aprender",
+        "P01",
+        3
+      ],
+      [
+        "we didn't want to try",
+        "no queríamos intentar",
+        "P01",
+        3
+      ],
+      [
+        "we didn't want to speak Spanish",
+        "no queríamos hablar español",
+        "P01",
+        4
+      ],
+      [
+        "we didn't want to speak with you",
+        "no queríamos hablar contigo",
+        "P01",
+        4
+      ],
+      [
+        "I think that we didn't want to speak",
+        "pienso que no queríamos hablar",
+        "P05",
+        6
+      ],
+      [
+        "we didn't want to speak Spanish with you yesterday",
+        "no queríamos hablar español contigo ayer",
+        "P01",
+        6
+      ],
+      [
+        "I wanted to speak but we didn't want to practice",
+        "quería hablar pero no queríamos practicar",
+        "P01",
+        8
+      ],
+      [
+        "we didn't want to begin learning Spanish with you today",
+        "no queríamos comenzar aprender español contigo hoy",
+        "P01",
+        7
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P_NEW_IMPERFECT",
-    "full_seed_included": "NO - missing 'to let that', 'no one', 'hear', 'the truth'",
-    "gate_compliance": "STRICT - Only S0001-S0070 LEGOs available"
+    "pattern_coverage": "P01, P05",
+    "gate_compliance": "STRICT - All words from S0001-S0070 LEGOs only"
   },
-
   "S0071L02": {
-    "lego": ["to let/allow that", "permitir que"],
+    "lego": [
+      "to let/allow that",
+      "permitir que"
+    ],
     "type": "M",
-    "available_legos": 216,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "available_legos": 201,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P12",
+      "P18"
+    ],
     "practice_phrases": [
-      ["to let that", "permitir que", null, 1],
-      ["we didn't want to let that", "no queríamos permitir que", "P_NEW_IMPERFECT", 2],
-      ["I want to let that", "quiero permitir que", "P01", 2],
-      ["but to let that", "pero permitir que", null, 2],
-      ["if we didn't want to let that", "si no queríamos permitir que", "P_NEW_IMPERFECT", 3],
-      ["I need to let that", "necesito permitir que", "P17", 2],
-      ["because to let that", "porque permitir que", null, 2],
-      ["we didn't want to let that yesterday", "no queríamos permitir que ayer", "P_NEW_IMPERFECT", 3],
-      ["could you let that again a little more slowly", "podrías permitir que otra vez un poco más lentamente", "P_NEW_CONDITIONAL", 6],
-      ["I'm not sure if we didn't want to let that", "no estoy seguro si no queríamos permitir que", "P_NEW_IMPERFECT", 5]
+      [
+        "to allow",
+        "permitir que",
+        null,
+        2
+      ],
+      [
+        "I want to allow something",
+        "quiero permitir que algo",
+        "P01",
+        4
+      ],
+      [
+        "we didn't want to allow",
+        "no queríamos permitir que",
+        "P01",
+        4
+      ],
+      [
+        "I'm going to allow something today",
+        "voy a permitir que algo hoy",
+        "P03",
+        5
+      ],
+      [
+        "I didn't want to allow that",
+        "no quería permitir que eso",
+        "P01",
+        5
+      ],
+      [
+        "I think that I want to allow something",
+        "pienso que quiero permitir que algo",
+        "P05",
+        6
+      ],
+      [
+        "we didn't want to allow something with you yesterday",
+        "no queríamos permitir que algo contigo ayer",
+        "P01",
+        7
+      ],
+      [
+        "I'm trying to allow something with you when you want",
+        "estoy intentando permitir que algo contigo cuando quieres",
+        "P06",
+        8
+      ],
+      [
+        "I wanted to speak with you but we didn't want to allow",
+        "quería hablar contigo pero no queríamos permitir que",
+        "P01",
+        9
+      ],
+      [
+        "I think we didn't want to allow something interesting yesterday",
+        "pienso que no queríamos permitir que algo interesante ayer",
+        "P05",
+        9
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 2,
-      "longer_4_5": 1,
-      "long_6_plus": 1
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 5
     },
-    "pattern_coverage": "P01, P17, P_NEW_IMPERFECT, P_NEW_CONDITIONAL",
-    "full_seed_included": "NO - missing 'no one', 'hear', 'the truth'",
-    "gate_compliance": "STRICT - Only S0001-S0071L01 LEGOs available"
+    "pattern_coverage": "P01, P03, P05, P06",
+    "gate_compliance": "STRICT - All words from S0001-S0071L01 LEGOs only"
   },
-
   "S0071L03": {
-    "lego": ["no one/nobody", "nadie"],
+    "lego": [
+      "no one/nobody",
+      "nadie"
+    ],
     "type": "A",
-    "available_legos": 217,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "available_legos": 202,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P12",
+      "P18"
+    ],
     "practice_phrases": [
-      ["no one", "nadie", null, 1],
-      ["we didn't want to let that no one", "no queríamos permitir que nadie", "P_NEW_IMPERFECT", 2],
-      ["I want no one", "quiero nadie", "P01", 2],
-      ["but no one", "pero nadie", null, 2],
-      ["if no one", "si nadie", null, 2],
-      ["no one here", "nadie aquí", null, 2],
-      ["because no one", "porque nadie", null, 2],
-      ["we didn't want to let that no one yesterday", "no queríamos permitir que nadie ayer", "P_NEW_IMPERFECT", 3],
-      ["I'm not sure if no one can help you at the same time", "no estoy seguro si nadie puede ayudarte al mismo tiempo", "P10", 8],
-      ["do you remember what no one wanted to do", "te acuerdas qué nadie quería hacer", "P_NEW_TE_ACUERDAS", 4]
+      [
+        "nobody",
+        "nadie",
+        null,
+        1
+      ],
+      [
+        "nobody wanted to speak",
+        "nadie quería hablar",
+        null,
+        3
+      ],
+      [
+        "I didn't want to speak with anyone",
+        "no quería hablar con nadie",
+        "P01",
+        6
+      ],
+      [
+        "nobody wanted to practice Spanish",
+        "nadie quería practicar español",
+        null,
+        4
+      ],
+      [
+        "we didn't want anyone here",
+        "no queríamos nadie aquí",
+        "P01",
+        3
+      ],
+      [
+        "I think that nobody wanted to practice",
+        "pienso que nadie quería practicar",
+        "P05",
+        5
+      ],
+      [
+        "nobody wanted to allow something with you yesterday",
+        "nadie quería permitir que algo contigo ayer",
+        null,
+        7
+      ],
+      [
+        "we didn't want to allow anything with you today",
+        "no queríamos permitir que nada contigo hoy",
+        "P01",
+        7
+      ],
+      [
+        "I'm trying to speak but nobody wants to speak with me",
+        "estoy intentando hablar pero nadie quiere hablar conmigo",
+        "P06",
+        9
+      ],
+      [
+        "I wanted to practice Spanish but nobody wanted to practice with me",
+        "quería practicar español pero nadie quería practicar conmigo",
+        "P01",
+        9
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 2,
-      "longer_4_5": 1,
-      "long_6_plus": 1
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P10, P_NEW_IMPERFECT, P_NEW_TE_ACUERDAS",
-    "full_seed_included": "NO - missing 'hear', 'the truth'",
-    "gate_compliance": "STRICT - Only S0001-S0071L02 LEGOs available"
+    "pattern_coverage": "P01, P05, P06",
+    "gate_compliance": "STRICT - All words from S0001-S0071L02 LEGOs only"
   },
-
   "S0071L04": {
-    "lego": ["hear", "oyera"],
+    "lego": [
+      "hear",
+      "oyera"
+    ],
     "type": "A",
-    "available_legos": 218,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "available_legos": 203,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P08",
+      "P10",
+      "P12",
+      "P18"
+    ],
     "practice_phrases": [
-      ["hear", "oyera", null, 1],
-      ["to let that no one hear", "permitir que nadie oyera", null, 2],
-      ["I want hear", "quiero oyera", "P01", 2],
-      ["but hear", "pero oyera", null, 2],
-      ["we didn't want to let that no one hear", "no queríamos permitir que nadie oyera", "P_NEW_IMPERFECT", 3],
-      ["if hear", "si oyera", null, 2],
-      ["because hear", "porque oyera", null, 2],
-      ["we didn't want to let that no one hear yesterday", "no queríamos permitir que nadie oyera ayer", "P_NEW_IMPERFECT", 4],
-      ["I'm not sure if we didn't want to let that no one hear", "no estoy seguro si no queríamos permitir que nadie oyera", "P_NEW_IMPERFECT", 6],
-      ["could you let that no one hear again a little more slowly", "podrías permitir que nadie oyera otra vez un poco más lentamente", "P_NEW_CONDITIONAL", 8]
+      [
+        "hear",
+        "oyera",
+        null,
+        1
+      ],
+      [
+        "to hear something",
+        "oyera algo",
+        null,
+        2
+      ],
+      [
+        "I didn't want anyone to hear",
+        "no quería nadie oyera",
+        "P01",
+        4
+      ],
+      [
+        "we didn't want someone to hear",
+        "no queríamos alguien oyera",
+        "P01",
+        4
+      ],
+      [
+        "we didn't want anyone to hear Spanish",
+        "no queríamos nadie oyera español",
+        "P01",
+        5
+      ],
+      [
+        "I didn't want to allow someone to hear that",
+        "no quería permitir que alguien oyera eso",
+        "P01",
+        8
+      ],
+      [
+        "I think that we didn't want anyone to hear anything yesterday",
+        "pienso que no queríamos nadie oyera nada ayer",
+        "P05",
+        8
+      ],
+      [
+        "we didn't want to allow anyone to hear what I wanted to say",
+        "no queríamos permitir que nadie oyera lo que quería decir",
+        "P01",
+        11
+      ],
+      [
+        "I'm trying to speak slowly but nobody wants to hear when I speak",
+        "estoy intentando hablar poco a poco pero nadie quiere oyera cuando hablo",
+        "P06",
+        13
+      ],
+      [
+        "we didn't want to allow anyone to hear something important yesterday",
+        "no queríamos permitir que nadie oyera algo importante ayer",
+        "P01",
+        9
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 2,
-      "longer_4_5": 1,
-      "long_6_plus": 1
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 5
     },
-    "pattern_coverage": "P01, P_NEW_IMPERFECT, P_NEW_CONDITIONAL",
-    "full_seed_included": "NO - missing 'the truth'",
-    "gate_compliance": "STRICT - Only S0001-S0071L03 LEGOs available"
+    "pattern_coverage": "P01, P05, P06",
+    "gate_compliance": "STRICT - All words from S0001-S0071L03 LEGOs only"
   },
-
   "S0071L05": {
-    "lego": ["the truth", "la verdad"],
+    "lego": [
+      "the truth",
+      "la verdad"
+    ],
     "type": "M",
-    "available_legos": 219,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "available_legos": 204,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P08",
+      "P10",
+      "P12",
+      "P18"
+    ],
     "practice_phrases": [
-      ["the truth", "la verdad", null, 1],
-      ["to let that no one hear the truth", "permitir que nadie oyera la verdad", null, 2],
-      ["I want the truth", "quiero la verdad", "P01", 2],
-      ["but the truth", "pero la verdad", null, 2],
-      ["we didn't want to let that no one hear the truth", "no queríamos permitir que nadie oyera la verdad", "P_NEW_IMPERFECT", 3],
-      ["if the truth", "si la verdad", null, 2],
-      ["because the truth", "porque la verdad", null, 2],
-      ["she didn't want to tell me where the truth was", "ella no quería decirme dónde la verdad estaba", "P_NEW_IMPERFECT", 5],
-      ["I'm not sure if we didn't want to let that no one hear the truth", "no estoy seguro si no queríamos permitir que nadie oyera la verdad", "P_NEW_IMPERFECT", 7],
-      ["we didn't want to let anyone hear the truth.", "no queríamos permitir que nadie oyera la verdad.", "P_NEW_IMPERFECT", 3]
+      [
+        "the truth",
+        "la verdad",
+        null,
+        2
+      ],
+      [
+        "to hear the truth",
+        "oyera la verdad",
+        null,
+        3
+      ],
+      [
+        "I want to hear the truth",
+        "quiero oyera la verdad",
+        "P01",
+        4
+      ],
+      [
+        "we didn't want to hear the truth",
+        "no queríamos oyera la verdad",
+        "P01",
+        5
+      ],
+      [
+        "nobody wanted to hear the truth yesterday",
+        "nadie quería oyera la verdad ayer",
+        null,
+        6
+      ],
+      [
+        "we didn't want anyone to hear the truth",
+        "no queríamos nadie oyera la verdad",
+        "P01",
+        6
+      ],
+      [
+        "I think that we didn't want to allow anyone to hear the truth",
+        "pienso que no queríamos permitir que nadie oyera la verdad",
+        "P05",
+        10
+      ],
+      [
+        "we didn't want to allow anyone to hear the truth about that yesterday",
+        "no queríamos permitir que nadie oyera la verdad sobre eso ayer",
+        "P01",
+        11
+      ],
+      [
+        "I'm trying to say the truth but nobody wants to hear when I speak",
+        "estoy intentando decir la verdad pero nadie quiere oyera cuando hablo",
+        "P06",
+        13
+      ],
+      [
+        "We didn't want to let anyone hear the truth.",
+        "No queríamos permitir que nadie oyera la verdad.",
+        "P01",
+        8
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 2,
-      "longer_4_5": 1,
-      "long_6_plus": 1
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
     },
-    "pattern_coverage": "P01, P_NEW_IMPERFECT",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0071L04 LEGOs available"
+    "pattern_coverage": "P01, P05, P06",
+    "full_seed_included": "YES - phrase 10 is the complete seed sentence",
+    "gate_compliance": "STRICT - All words from S0001-S0071L04 LEGOs only"
   }
 }

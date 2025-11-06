@@ -16,20 +16,21 @@
     "P05",
     "P10",
     "P12",
-    "P14",
-    "P15",
-    "P16",
-    "P17",
     "P18",
     "P_RELATIVE",
     "P_NEW_GUSTAR",
-    "P_NEW_GUSTAR_LIKE",
     "P_NEW_IMPERSONAL",
     "P_NEW_IMPERFECT",
     "P_NEW_REFLEXIVE",
+    "P_NEW_GUSTAR_LIKE",
     "P_NEW_DISFRUTO"
   ],
   "cumulative_legos": 154,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T21:02:22.402777Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation"
+  },
   "S0052L01": {
     "lego": [
       "to write",
@@ -45,17 +46,13 @@
       "P05",
       "P10",
       "P12",
-      "P14",
-      "P15",
-      "P16",
-      "P17",
       "P18",
       "P_RELATIVE",
       "P_NEW_GUSTAR",
-      "P_NEW_GUSTAR_LIKE",
       "P_NEW_IMPERSONAL",
       "P_NEW_IMPERFECT",
       "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
       "P_NEW_DISFRUTO"
     ],
     "practice_phrases": [
@@ -66,69 +63,68 @@
         1
       ],
       [
-        "I want to write",
-        "quiero escribir",
-        "P01",
-        2
-      ],
-      [
         "I wanted to write",
         "quería escribir",
         "P_NEW_IMPERFECT",
         2
       ],
       [
-        "I need to write",
-        "necesito escribir",
-        "P17",
-        2
-      ],
-      [
-        "I enjoy writing",
-        "disfruto escribir",
-        "P_NEW_DISFRUTO",
-        2
-      ],
-      [
-        "but I want to write",
-        "pero quiero escribir",
+        "I want to write something",
+        "quiero escribir algo",
         "P01",
-        2
+        3
       ],
       [
-        "I wanted to write yesterday",
-        "quería escribir ayer",
+        "I'm going to write today",
+        "voy a escribir hoy",
+        "P03",
+        3
+      ],
+      [
+        "I wanted to write something yesterday",
+        "quería escribir algo ayer",
         "P_NEW_IMPERFECT",
         3
       ],
       [
-        "because I enjoy writing",
-        "porque disfruto escribir",
+        "I enjoy writing when I have time",
+        "disfruto escribir cuando no estoy cansado",
         "P_NEW_DISFRUTO",
-        2
+        6
       ],
       [
-        "I don't enjoy writing or reading",
-        "no disfruto escribir o leer",
-        "P_NEW_DISFRUTO",
-        3
+        "I think that I want to write something now",
+        "pienso que quiero escribir algo ahora",
+        "P01",
+        7
       ],
       [
-        "if I wanted to write something",
-        "si quería escribir algo",
+        "I wanted to write something yesterday but I was tired",
+        "quería escribir algo ayer pero estaba cansado",
         "P_NEW_IMPERFECT",
-        3
+        8
+      ],
+      [
+        "I enjoy writing when I want to practice Spanish",
+        "disfruto escribir cuando quiero practicar español",
+        "P_NEW_DISFRUTO",
+        7
+      ],
+      [
+        "I wanted to write something but I was too tired",
+        "quería escribir algo pero estaba demasiado cansado",
+        "P_NEW_IMPERFECT",
+        7
       ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 7,
+      "really_short_1_2": 2,
       "quite_short_3": 3,
-      "longer_4_5": 0,
-      "long_6_plus": 0
+      "longer_4_5": 1,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P17, P_NEW_IMPERFECT, P_NEW_DISFRUTO",
-    "full_seed_included": "NO - missing 'a letter', 'to his friend', 'last week'",
-    "gate_compliance": "STRICT - Only S0001-S0051 LEGOs available"
+    "pattern_coverage": "P_NEW_IMPERFECT, P01, P03, P_NEW_DISFRUTO",
+    "gate_compliance": "STRICT - All words from S0001-S0051 LEGOs only"
   },
   "S0052L02": {
     "lego": [
@@ -145,17 +141,13 @@
       "P05",
       "P10",
       "P12",
-      "P14",
-      "P15",
-      "P16",
-      "P17",
       "P18",
       "P_RELATIVE",
       "P_NEW_GUSTAR",
-      "P_NEW_GUSTAR_LIKE",
       "P_NEW_IMPERSONAL",
       "P_NEW_IMPERFECT",
       "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
       "P_NEW_DISFRUTO"
     ],
     "practice_phrases": [
@@ -172,40 +164,22 @@
         2
       ],
       [
-        "I want a letter",
-        "quiero una carta",
-        "P01",
-        2
-      ],
-      [
         "I wanted to write a letter",
         "quería escribir una carta",
         "P_NEW_IMPERFECT",
         3
       ],
       [
-        "I need to write a letter",
-        "necesito escribir una carta",
-        "P17",
+        "I want to write a letter",
+        "quiero escribir una carta",
+        "P01",
         3
       ],
       [
-        "to read a letter",
-        "leer una carta",
-        null,
-        2
-      ],
-      [
-        "because I wanted a letter",
-        "porque quería una carta",
-        "P_NEW_IMPERFECT",
-        2
-      ],
-      [
-        "but I enjoy writing a letter",
-        "pero disfruto escribir una carta",
-        "P_NEW_DISFRUTO",
-        3
+        "I'm going to write a letter today",
+        "voy a escribir una carta hoy",
+        "P03",
+        4
       ],
       [
         "I wanted to write a letter yesterday",
@@ -214,21 +188,38 @@
         4
       ],
       [
-        "if I need to write a letter",
-        "si necesito escribir una carta",
-        "P17",
-        3
+        "I think that I want to write a letter now",
+        "pienso que quiero escribir una carta ahora",
+        "P01",
+        7
+      ],
+      [
+        "I enjoy writing a letter when I have time",
+        "disfruto escribir una carta cuando no estoy cansado",
+        "P_NEW_DISFRUTO",
+        8
+      ],
+      [
+        "I wanted to write a letter yesterday but I was tired",
+        "quería escribir una carta ayer pero estaba cansado",
+        "P_NEW_IMPERFECT",
+        9
+      ],
+      [
+        "I wanted to write a letter but I was too tired",
+        "quería escribir una carta pero estaba demasiado cansado",
+        "P_NEW_IMPERFECT",
+        8
       ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 4,
-      "longer_4_5": 1,
-      "long_6_plus": 0
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P17, P_NEW_IMPERFECT, P_NEW_DISFRUTO",
-    "full_seed_included": "NO - missing 'to his friend', 'last week'",
-    "gate_compliance": "STRICT - Only S0001-S0052L01 LEGOs available"
+    "pattern_coverage": "P_NEW_IMPERFECT, P01, P03, P_NEW_DISFRUTO",
+    "gate_compliance": "STRICT - All words from S0001-S0052L01 LEGOs only"
   },
   "S0052L03": {
     "lego": [
@@ -245,17 +236,13 @@
       "P05",
       "P10",
       "P12",
-      "P14",
-      "P15",
-      "P16",
-      "P17",
       "P18",
       "P_RELATIVE",
       "P_NEW_GUSTAR",
-      "P_NEW_GUSTAR_LIKE",
       "P_NEW_IMPERSONAL",
       "P_NEW_IMPERFECT",
       "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
       "P_NEW_DISFRUTO"
     ],
     "practice_phrases": [
@@ -266,28 +253,10 @@
         1
       ],
       [
-        "to write to his friend",
-        "escribir a su amigo",
-        null,
-        2
-      ],
-      [
-        "I wanted to his friend",
-        "quería a su amigo",
-        "P_NEW_IMPERFECT",
-        2
-      ],
-      [
         "a letter to his friend",
         "una carta a su amigo",
         null,
         2
-      ],
-      [
-        "to write a letter to his friend",
-        "escribir una carta a su amigo",
-        null,
-        3
       ],
       [
         "I wanted to write to his friend",
@@ -296,10 +265,10 @@
         3
       ],
       [
-        "because to his friend",
-        "porque a su amigo",
+        "to write a letter to his friend",
+        "escribir una carta a su amigo",
         null,
-        2
+        3
       ],
       [
         "I wanted to write a letter to his friend",
@@ -308,27 +277,44 @@
         4
       ],
       [
-        "but I need to write to his friend",
-        "pero necesito escribir a su amigo",
-        "P17",
+        "I want to write a letter to his friend",
+        "quiero escribir una carta a su amigo",
+        "P01",
         4
       ],
       [
-        "I wanted to give a letter to his friend",
-        "quería dar una carta a su amigo",
+        "I'm going to write a letter to his friend today",
+        "voy a escribir una carta a su amigo hoy",
+        "P03",
+        6
+      ],
+      [
+        "I think that I want to write a letter to his friend",
+        "pienso que quiero escribir una carta a su amigo",
+        "P01",
+        8
+      ],
+      [
+        "I wanted to write a letter to his friend yesterday",
+        "quería escribir una carta a su amigo ayer",
         "P_NEW_IMPERFECT",
-        4
+        6
+      ],
+      [
+        "I wanted to write a letter to his friend but I was tired",
+        "quería escribir una carta a su amigo pero estaba cansado",
+        "P_NEW_IMPERFECT",
+        10
       ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 2,
-      "longer_4_5": 3,
-      "long_6_plus": 0
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 3
     },
-    "pattern_coverage": "P17, P_NEW_IMPERFECT",
-    "full_seed_included": "NO - missing 'last week'",
-    "gate_compliance": "STRICT - Only S0001-S0052L02 LEGOs available"
+    "pattern_coverage": "P_NEW_IMPERFECT, P01, P03",
+    "gate_compliance": "STRICT - All words from S0001-S0052L02 LEGOs only"
   },
   "S0052L04": {
     "lego": [
@@ -345,17 +331,13 @@
       "P05",
       "P10",
       "P12",
-      "P14",
-      "P15",
-      "P16",
-      "P17",
       "P18",
       "P_RELATIVE",
       "P_NEW_GUSTAR",
-      "P_NEW_GUSTAR_LIKE",
       "P_NEW_IMPERSONAL",
       "P_NEW_IMPERFECT",
       "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
       "P_NEW_DISFRUTO"
     ],
     "practice_phrases": [
@@ -366,68 +348,68 @@
         1
       ],
       [
-        "I wanted last week",
-        "quería la semana pasada",
-        "P_NEW_IMPERFECT",
-        2
-      ],
-      [
-        "I spoke last week",
-        "hablé la semana pasada",
-        "P05",
-        2
-      ],
-      [
-        "to write last week",
-        "escribir la semana pasada",
-        null,
-        2
-      ],
-      [
-        "I started to think last week",
-        "comencé a pensar la semana pasada",
-        "P15",
-        3
-      ],
-      [
         "I wanted to write last week",
         "quería escribir la semana pasada",
         "P_NEW_IMPERFECT",
-        3
+        2
       ],
       [
-        "because last week",
-        "porque la semana pasada",
-        null,
+        "I wanted to speak last week",
+        "quería hablar la semana pasada",
+        "P_NEW_IMPERFECT",
         2
+      ],
+      [
+        "I wanted to do something last week",
+        "quería hacer algo la semana pasada",
+        "P_NEW_IMPERFECT",
+        3
       ],
       [
         "I wanted to write a letter last week",
         "quería escribir una carta la semana pasada",
         "P_NEW_IMPERFECT",
-        4
+        3
+      ],
+      [
+        "I wanted to speak with you last week",
+        "quería hablar contigo la semana pasada",
+        "P_NEW_IMPERFECT",
+        3
       ],
       [
         "I wanted to write a letter to his friend last week",
         "quería escribir una carta a su amigo la semana pasada",
         "P_NEW_IMPERFECT",
-        6
+        4
       ],
       [
-        "he wanted to write a letter to his friend last week.",
-        "quería escribir una carta a su amigo la semana pasada.",
+        "I wanted to do something with you last week",
+        "quería hacer algo contigo la semana pasada",
         "P_NEW_IMPERFECT",
-        6
+        5
+      ],
+      [
+        "I wanted to write something last week but I was tired",
+        "quería escribir algo la semana pasada pero estaba cansado",
+        "P_NEW_IMPERFECT",
+        9
+      ],
+      [
+        "He wanted to write a letter to his friend last week.",
+        "Quería escribir una carta a su amigo la semana pasada.",
+        "P_NEW_IMPERFECT",
+        4
       ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 2,
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
       "longer_4_5": 1,
-      "long_6_plus": 2
+      "long_6_plus": 3
     },
-    "pattern_coverage": "P05, P15, P_NEW_IMPERFECT",
+    "pattern_coverage": "P_NEW_IMPERFECT",
     "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0052L03 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0052L03 LEGOs only"
   }
 }

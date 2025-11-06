@@ -7,90 +7,95 @@
     "known": "Learning Spanish isn't easy but it is fun.",
     "target": "Aprender español no es fácil pero es divertido."
   },
-  "patterns_introduced": "",
+  "patterns_introduced": "P_NEW_IMPERSONAL",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
-  "cumulative_legos": 201,
+  "cumulative_legos": 186,
+  "validation_metadata": {
+    "validated_at": "2025-11-06",
+    "whitelist_size_s0063": 203,
+    "gate_compliance": "STRICT - All phrases validated against S0001-S0063 whitelist",
+    "violations_found": 0,
+    "all_baskets_valid": true
+  },
 
   "S0064L01": {
     "lego": ["learning Spanish", "aprender español"],
     "type": "M",
-    "available_legos": 198,
+    "available_legos": 183,
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
     "practice_phrases": [
       ["learning Spanish", "aprender español", null, 1],
-      ["I enjoy learning Spanish", "disfruto aprender español", "P_NEW_DISFRUTO", 2],
-      ["learning Spanish isn't easy", "aprender español no es fácil", "P_NEW_IMPERSONAL", 2],
       ["I want learning Spanish", "quiero aprender español", "P01", 2],
-      ["learning Spanish is important", "aprender español es importante", "P_NEW_IMPERSONAL", 2],
+      ["learning Spanish now", "aprender español ahora", null, 2],
+      ["I'm learning Spanish", "estoy aprendiendo español", null, 2],
+      ["learning Spanish is interesting", "aprender español es interesante", "P_NEW_IMPERSONAL", 3],
+      ["I need learning Spanish", "necesito aprender español", "P17", 2],
       ["because learning Spanish", "porque aprender español", null, 2],
-      ["I was able learning Spanish", "pude aprender español", "P_NEW_PUDE", 2],
-      ["if learning Spanish isn't easy", "si aprender español no es fácil", "P_NEW_IMPERSONAL", 3],
-      ["learning Spanish isn't easy but it is fun", "aprender español no es fácil pero es divertido", "P_NEW_IMPERSONAL", 5],
-      ["I enjoy learning Spanish with my friends at the same time", "disfruto aprender español con mis amigos al mismo tiempo", "P_NEW_DISFRUTO", 7]
+      ["could you help me with learning Spanish", "podrías ayudarme con aprender español", "P_NEW_CONDITIONAL", 5],
+      ["I think learning Spanish at the same time is interesting", "pienso que aprender español al mismo tiempo es interesante", "P_NEW_IMPERSONAL", 7],
+      ["I'm not sure if learning Spanish is interesting but I want to try", "no estoy seguro si aprender español es interesante pero quiero intentar", "P_NEW_IMPERSONAL", 10]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 7,
+      "really_short_1_2": 5,
       "quite_short_3": 1,
       "longer_4_5": 1,
-      "long_6_plus": 1
+      "long_6_plus": 3
     },
-    "pattern_coverage": "P01, P_NEW_PUDE, P_NEW_DISFRUTO, P_NEW_IMPERSONAL",
-    "full_seed_included": "NO - missing 'isn't easy', 'but', 'it is fun'",
+    "pattern_coverage": "P01, P17, P_NEW_CONDITIONAL, P_NEW_IMPERSONAL",
     "gate_compliance": "STRICT - Only S0001-S0063 LEGOs available"
   },
 
   "S0064L02": {
     "lego": ["isn't easy", "no es fácil"],
     "type": "M",
-    "available_legos": 199,
+    "available_legos": 184,
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
     "practice_phrases": [
       ["isn't easy", "no es fácil", "P_NEW_IMPERSONAL", 1],
+      ["that isn't easy", "eso no es fácil", "P_NEW_IMPERSONAL", 2],
       ["learning Spanish isn't easy", "aprender español no es fácil", "P_NEW_IMPERSONAL", 2],
-      ["it isn't easy", "no es fácil", "P_NEW_IMPERSONAL", 1],
-      ["isn't easy but", "no es fácil pero", "P_NEW_IMPERSONAL", 2],
-      ["learning Spanish isn't easy but", "aprender español no es fácil pero", "P_NEW_IMPERSONAL", 2],
-      ["because isn't easy", "porque no es fácil", "P_NEW_IMPERSONAL", 1],
-      ["if isn't easy", "si no es fácil", "P_NEW_IMPERSONAL", 1],
-      ["learning Spanish isn't easy but it is fun", "aprender español no es fácil pero es divertido", "P_NEW_IMPERSONAL", 3],
-      ["I think that learning Spanish isn't easy but it is fun", "pienso que aprender español no es fácil pero es divertido", "P_NEW_IMPERSONAL", 7],
-      ["learning Spanish isn't easy at the same time", "aprender español no es fácil al mismo tiempo", "P_NEW_IMPERSONAL", 4]
+      ["I know that isn't easy", "sé que no es fácil", "P_NEW_IMPERSONAL", 3],
+      ["learning Spanish isn't easy now", "aprender español no es fácil ahora", "P_NEW_IMPERSONAL", 3],
+      ["if that isn't easy", "si eso no es fácil", "P_NEW_IMPERSONAL", 3],
+      ["because isn't easy", "porque no es fácil", "P_NEW_IMPERSONAL", 2],
+      ["I'm not sure if learning Spanish isn't easy", "no estoy seguro si aprender español no es fácil", "P_NEW_IMPERSONAL", 6],
+      ["could you say that again because learning Spanish isn't easy", "podrías decir eso otra vez porque aprender español no es fácil", "P_NEW_CONDITIONAL", 8],
+      ["I want to know if learning Spanish isn't easy at the same time", "quiero saber si aprender español no es fácil al mismo tiempo", "P_NEW_IMPERSONAL", 8]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 1,
-      "longer_4_5": 1,
-      "long_6_plus": 2
+      "really_short_1_2": 4,
+      "quite_short_3": 3,
+      "longer_4_5": 0,
+      "long_6_plus": 3
     },
-    "pattern_coverage": "P_NEW_IMPERSONAL",
-    "full_seed_included": "NO - missing 'it is fun'",
+    "pattern_coverage": "P01, P_NEW_CONDITIONAL, P_NEW_IMPERSONAL",
     "gate_compliance": "STRICT - Only S0001-S0064L01 LEGOs available"
   },
 
   "S0064L03": {
     "lego": ["it is fun", "es divertido"],
     "type": "M",
-    "available_legos": 200,
+    "available_legos": 185,
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
     "practice_phrases": [
       ["it is fun", "es divertido", "P_NEW_IMPERSONAL", 1],
-      ["but it is fun", "pero es divertido", "P_NEW_IMPERSONAL", 2],
-      ["I think it is fun", "pienso es divertido", "P_NEW_IMPERSONAL", 2],
-      ["it is fun when", "es divertido cuando", "P_NEW_IMPERSONAL", 2],
-      ["learning Spanish it is fun", "aprender español es divertido", "P_NEW_IMPERSONAL", 2],
-      ["because it is fun", "porque es divertido", "P_NEW_IMPERSONAL", 2],
+      ["that is fun", "eso es divertido", "P_NEW_IMPERSONAL", 2],
+      ["learning Spanish is fun", "aprender español es divertido", "P_NEW_IMPERSONAL", 2],
+      ["I think it is fun", "pienso que es divertido", "P_NEW_IMPERSONAL", 3],
+      ["learning Spanish is fun now", "aprender español es divertido ahora", "P_NEW_IMPERSONAL", 3],
       ["if it is fun", "si es divertido", "P_NEW_IMPERSONAL", 2],
-      ["learning Spanish isn't easy but it is fun", "aprender español no es fácil pero es divertido", "P_NEW_IMPERSONAL", 4],
-      ["it is fun when I speak with my friends", "es divertido cuando hablo con mis amigos", "P_NEW_IMPERSONAL", 6],
+      ["because it is fun", "porque es divertido", "P_NEW_IMPERSONAL", 2],
+      ["I'm sure learning Spanish is fun but it isn't easy", "estoy seguro aprender español es divertido pero no es fácil", "P_NEW_IMPERSONAL", 8],
+      ["could you say that again because learning Spanish is fun", "podrías decir eso otra vez porque aprender español es divertido", "P_NEW_CONDITIONAL", 8],
       ["learning Spanish isn't easy but it is fun.", "aprender español no es fácil pero es divertido.", "P_NEW_IMPERSONAL", 4]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 7,
-      "quite_short_3": 0,
-      "longer_4_5": 2,
-      "long_6_plus": 1
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 3
     },
-    "pattern_coverage": "P_NEW_IMPERSONAL",
+    "pattern_coverage": "P_NEW_CONDITIONAL, P_NEW_IMPERSONAL",
     "full_seed_included": "YES - phrase 10",
     "gate_compliance": "STRICT - Only S0001-S0064L02 LEGOs available"
   }

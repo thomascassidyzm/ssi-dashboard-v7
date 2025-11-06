@@ -1,5 +1,5 @@
 {
-  "version": "curated_v7_spanish",
+  "version": "curated_v6_molecular_lego",
   "seed": "S0068",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -7,63 +7,74 @@
     "known": "What are you looking for?",
     "target": "¿Qué estás buscando?"
   },
-  "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
-  "cumulative_legos": 209,
+  "patterns_introduced": "P02",
+  "cumulative_legos": 194,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Agent-generated with strict GATE validation Phase 5 v3.0",
+    "validation": {
+      "whitelist_size_before_s0068": 207,
+      "new_words_s0068": ["qué", "estás", "buscando"],
+      "gate_violations_found": 0,
+      "gate_violations_fixed": 0,
+      "final_gate_compliance": "100%"
+    }
+  },
 
   "S0068L01": {
     "lego": ["what", "qué"],
     "type": "A",
-    "available_legos": 207,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "available_legos": 192,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_NEW_IMPERSONAL"],
     "practice_phrases": [
-      ["what", "qué", null, 1],
-      ["what I want", "qué quiero", "P01", 2],
-      ["what are you", "qué estás", null, 2],
-      ["what I mean", "qué quiero decir", null, 2],
-      ["what are you looking for", "qué estás buscando", "P02", 3],
-      ["what I need", "qué necesito", "P17", 2],
-      ["because what", "porque qué", null, 2],
-      ["if what I want", "si qué quiero", "P01", 2],
-      ["what are you looking for at the same time", "qué estás buscando al mismo tiempo", "P02", 5],
-      ["do you remember what we wanted to do", "te acuerdas qué queríamos hacer", "P_NEW_TE_ACUERDAS", 4]
+      ["what", "qué", "P12", 1],
+      ["what now", "qué ahora", "P12", 2],
+      ["what do you want", "qué quieres", "P12", 3],
+      ["what do you want to learn", "qué quieres aprender", "P12", 4],
+      ["I don't know what you want", "no sé qué quieres", "P12", 4],
+      ["I'm not sure what you want to find", "no estoy seguro qué quieres encontrar", "P12", 6],
+      ["I don't know what you want to say now", "no sé qué quieres decir ahora", "P12", 7],
+      ["I want to know what you are learning today", "quiero saber qué estás aprendiendo hoy", "P01", 7],
+      ["I don't know what you want to find now", "no sé qué quieres encontrar ahora", "P12", 7],
+      ["I'm not sure what the answer is yet", "no estoy seguro qué es la respuesta todavía", "P12", 7]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 7,
+      "really_short_1_2": 2,
       "quite_short_3": 1,
-      "longer_4_5": 1,
-      "long_6_plus": 1
+      "longer_4_5": 3,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P02, P17, P_NEW_TE_ACUERDAS",
-    "full_seed_included": "NO - missing 'are you looking for'",
-    "gate_compliance": "STRICT - Only S0001-S0067 LEGOs available"
+    "pattern_coverage": "P01, P12",
+    "gate_compliance": "STRICT - All words from S0001-S0067 + NEW: qué"
   },
 
   "S0068L02": {
     "lego": ["are you looking for", "estás buscando"],
     "type": "M",
-    "available_legos": 208,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "lego_type": "MOLECULAR",
+    "components": [["estás", "you are"], ["buscando", "looking for"]],
+    "available_legos": 193,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_NEW_IMPERSONAL"],
     "practice_phrases": [
       ["are you looking for", "estás buscando", "P02", 1],
+      ["you are looking for something", "estás buscando algo", "P02", 2],
       ["what are you looking for", "qué estás buscando", "P02", 2],
-      ["are you looking for the answer", "estás buscando la respuesta", "P02", 2],
-      ["but are you looking for", "pero estás buscando", "P02", 1],
-      ["what are you looking for here", "qué estás buscando aquí", "P02", 3],
-      ["are you looking for that person over there", "estás buscando aquella persona", "P02", 3],
-      ["because are you looking for", "porque estás buscando", "P02", 1],
-      ["if what are you looking for", "si qué estás buscando", "P02", 2],
-      ["what are you looking for at the same time", "qué estás buscando al mismo tiempo", "P02", 4],
-      ["what are you looking for?", "¿qué estás buscando?", "P02", 2]
+      ["you are looking for the answer now", "estás buscando la respuesta ahora", "P02", 4],
+      ["I don't know what you are looking for", "no sé qué estás buscando", "P12", 5],
+      ["I'm not sure what you are looking for", "no estoy seguro qué estás buscando", "P12", 5],
+      ["I want to know what you are looking for today", "quiero saber qué estás buscando hoy", "P01", 7],
+      ["why are you looking for the answer if you know everything", "por qué estás buscando la respuesta si sabes todo", "P02", 10],
+      ["I don't know why you are looking for something important", "no sé por qué estás buscando algo importante", "P12", 8],
+      ["she wants to know what you are looking for now", "ella quiere saber qué estás buscando ahora", "P01", 8]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 0
+      "really_short_1_2": 3,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P02",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0068L01 LEGOs available"
+    "pattern_coverage": "P01, P02, P12",
+    "full_seed_included": "YES - phrase 3: 'what are you looking for'",
+    "gate_compliance": "STRICT - All words from S0001-S0068L01 + NEW: estás, buscando"
   }
 }

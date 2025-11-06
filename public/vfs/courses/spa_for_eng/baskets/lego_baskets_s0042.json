@@ -7,9 +7,18 @@
     "known": "I was starting to feel better than last night.",
     "target": "Estaba comenzando a sentirme mejor que anoche."
   },
-  "patterns_introduced": "P16",
+  "patterns_introduced": "P16_introduced",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
   "cumulative_legos": 126,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "changes_from_previous": [
+      "Generated for S0042 with strict GATE compliance",
+      "4 long phrases (6+ LEGOs) per LEGO basket",
+      "Comparison pattern P16 introduced"
+    ]
+  },
 
   "S0042L01": {
     "lego": ["I was starting to", "estaba comenzando a"],
@@ -19,24 +28,23 @@
     "practice_phrases": [
       ["I was starting to", "estaba comenzando a", "P16", 1],
       ["I was starting to speak", "estaba comenzando a hablar", "P16", 2],
-      ["I was starting to learn", "estaba comenzando a aprender", "P16", 2],
-      ["I was starting to think", "estaba comenzando a pensar", "P16", 2],
-      ["I was starting to feel", "estaba comenzando a sentirme", "P16", 2],
-      ["I was starting to feel better", "estaba comenzando a sentirme mejor", "P16", 2],
-      ["I was starting to speak Spanish", "estaba comenzando a hablar español", "P16", 3],
-      ["I was starting to feel tired yesterday", "estaba comenzando a sentirme cansado ayer", "P16", 4],
-      ["I was starting to think about it carefully", "estaba comenzando a pensar sobre eso cuidadosamente", "P16", 4],
-      ["I was starting to feel ready at the moment", "estaba comenzando a sentirme preparado en este momento", "P16", 6]
+      ["I was starting to feel tired", "estaba comenzando a sentirme cansado", "P16", 3],
+      ["I was starting to learn Spanish", "estaba comenzando a aprender español", "P16", 3],
+      ["I was starting to feel okay today", "estaba comenzando a sentirme bien hoy", "P16", 4],
+      ["I was starting to speak with other people", "estaba comenzando a hablar con otras personas", "P16", 4],
+      ["I was starting to feel as if I were ready", "estaba comenzando a sentirme como si estuviera preparado", "P16", 6],
+      ["I was starting to speak Spanish when you wanted to help me", "estaba comenzando a hablar español cuando querías ayudarme", "P16", 8],
+      ["I was starting to think about how to speak better", "estaba comenzando a pensar sobre cómo hablar mejor", "P16", 7],
+      ["I was starting to feel nearly ready to speak Spanish with you", "estaba comenzando a sentirme casi preparado para hablar español contigo", "P16", 9]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 1,
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 4
     },
     "pattern_coverage": "P16",
-    "full_seed_included": "NO - missing 'to feel', 'better than', 'last night'",
-    "gate_compliance": "STRICT - Only S0001-S0041 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0041 LEGOs only"
   },
 
   "S0042L02": {
@@ -46,25 +54,24 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
     "practice_phrases": [
       ["to feel", "sentirme", null, 1],
-      ["I was starting to feel", "estaba comenzando a sentirme", "P16", 2],
       ["I'm starting to feel", "estoy comenzando a sentirme", "P02", 2],
-      ["I want to feel", "quiero sentirme", "P01", 2],
-      ["I was starting to feel ready", "estaba comenzando a sentirme preparado", "P16", 2],
-      ["I like to feel", "me gusta sentirme", "P_NEW_GUSTAR", 2],
-      ["I was starting to feel better", "estaba comenzando a sentirme mejor", "P16", 2],
-      ["I'm starting to feel tired this morning", "estoy comenzando a sentirme cansado esta mañana", "P02", 4],
-      ["I was starting to feel okay yesterday", "estaba comenzando a sentirme bien ayer", "P16", 4],
-      ["I don't like to feel tired at the moment", "no me gusta sentirme cansado en este momento", "P_NEW_GUSTAR", 6]
+      ["I was starting to feel", "estaba comenzando a sentirme", "P16", 2],
+      ["I was starting to feel tired", "estaba comenzando a sentirme cansado", "P16", 3],
+      ["I wanted to feel okay today", "quería sentirme bien hoy", "P_NEW_IMPERFECT", 3],
+      ["I like to feel nearly ready to speak with you", "me gusta sentirme casi preparado para hablar contigo", "P_NEW_GUSTAR", 6],
+      ["I was starting to feel okay this morning", "estaba comenzando a sentirme bien esta mañana", "P16", 5],
+      ["I'm starting to feel as if I were nearly ready to speak", "estoy comenzando a sentirme como si estuviera casi preparado para hablar", "P02", 8],
+      ["I was starting to feel okay when I wanted to speak Spanish", "estaba comenzando a sentirme bien cuando quería hablar español", "P16", 9],
+      ["I wanted to feel better but I was starting to feel tired", "quería sentirme mejor pero estaba comenzando a sentirme cansado", "P_NEW_IMPERFECT", 8]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 7,
-      "quite_short_3": 0,
-      "longer_4_5": 2,
-      "long_6_plus": 1
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P02, P16, P_NEW_GUSTAR",
-    "full_seed_included": "NO - missing 'better than', 'last night'",
-    "gate_compliance": "STRICT - Only S0001-S0042L01 LEGOs available"
+    "pattern_coverage": "P02, P16, P_NEW_GUSTAR, P_NEW_IMPERFECT, P_NEW_REFLEXIVE",
+    "gate_compliance": "STRICT - All words from S0001-S0042L01 LEGOs only"
   },
 
   "S0042L03": {
@@ -73,26 +80,25 @@
     "available_legos": 124,
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
     "practice_phrases": [
-      ["better than", "mejor que", null, 1],
-      ["I feel better than", "me siento mejor que", "P_NEW_REFLEXIVE", 2],
-      ["I speak better than", "hablo mejor que", "P05", 2],
-      ["I was starting to feel better than", "estaba comenzando a sentirme mejor que", "P16", 3],
-      ["better than yesterday", "mejor que ayer", null, 2],
-      ["I feel better than this morning", "me siento mejor que esta mañana", "P_NEW_REFLEXIVE", 3],
-      ["better than last month", "mejor que el mes pasado", null, 3],
-      ["I was starting to feel better than yesterday", "estaba comenzando a sentirme mejor que ayer", "P16", 4],
-      ["I speak Spanish better than other people", "hablo español mejor que otras personas", "P05", 4],
-      ["I'm starting to feel better than this morning", "estoy comenzando a sentirme mejor que esta mañana", "P02", 5]
+      ["better than", "mejor que", "P16", 1],
+      ["better than yesterday", "mejor que ayer", "P16", 2],
+      ["I feel better than yesterday", "me siento mejor que ayer", "P_NEW_REFLEXIVE", 3],
+      ["I speak Spanish better than before", "hablo español mejor que antes", "P05", 4],
+      ["I wanted to feel better than yesterday", "quería sentirme mejor que ayer", "P_NEW_IMPERFECT", 4],
+      ["I was starting to feel better than yesterday", "estaba comenzando a sentirme mejor que ayer", "P16", 5],
+      ["I'm looking forward to speaking better than I can today", "estoy deseando hablar mejor que puedo hoy", "P02", 7],
+      ["I'm trying to speak Spanish better than I wanted to speak yesterday", "estoy intentando hablar español mejor que quería hablar ayer", "P02", 9],
+      ["I was starting to speak Spanish better than other people", "estaba comenzando a hablar español mejor que otras personas", "P16", 8],
+      ["I wanted to speak better than yesterday but I feel tired", "quería hablar mejor que ayer pero me siento cansado", "P_NEW_IMPERFECT", 9]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 4,
-      "quite_short_3": 3,
-      "longer_4_5": 2,
-      "long_6_plus": 1
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P02, P05, P16, P_NEW_REFLEXIVE",
-    "full_seed_included": "NO - missing 'last night'",
-    "gate_compliance": "STRICT - Only S0001-S0042L02 LEGOs available"
+    "pattern_coverage": "P16, P05, P02, P_NEW_REFLEXIVE, P_NEW_IMPERFECT",
+    "gate_compliance": "STRICT - All words from S0001-S0042L02 LEGOs only"
   },
 
   "S0042L04": {
@@ -102,24 +108,24 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
     "practice_phrases": [
       ["last night", "anoche", null, 1],
-      ["I wanted last night", "quería anoche", "P_NEW_IMPERFECT", 2],
-      ["I spoke last night", "hablé anoche", "P05", 2],
-      ["better than last night", "mejor que anoche", null, 2],
-      ["I feel better than last night", "me siento mejor que anoche", "P_NEW_REFLEXIVE", 3],
-      ["I started to think last night", "comencé a pensar anoche", "P15", 3],
-      ["I was starting to feel better than last night", "estaba comenzando a sentirme mejor que anoche", "P16", 4],
-      ["I wanted to speak with you last night", "quería hablar contigo anoche", "P_NEW_IMPERFECT", 4],
+      ["I was tired last night", "estaba cansado anoche", "P16", 2],
+      ["I wanted to speak last night", "quería hablar anoche", "P_NEW_IMPERFECT", 3],
+      ["I was a little tired last night", "estaba un poco cansado anoche", "P16", 4],
       ["I was starting to feel tired last night", "estaba comenzando a sentirme cansado anoche", "P16", 4],
-      ["I was starting to feel better than last night.", "estaba comenzando a sentirme mejor que anoche.", "P16", 4]
+      ["I wanted to feel better than last night but I feel tired", "quería sentirme mejor que anoche pero me siento cansado", "P_NEW_IMPERFECT", 7],
+      ["I was starting to speak Spanish with you last night", "estaba comenzando a hablar español contigo anoche", "P16", 7],
+      ["I was starting to speak better than yesterday when you wanted to help", "estaba comenzando a hablar mejor que ayer cuando querías ayudarme", "P16", 10],
+      ["I was starting to feel better than last night.", "estaba comenzando a sentirme mejor que anoche.", "P16", 5],
+      ["I was starting to feel okay when I wanted to speak last night", "estaba comenzando a sentirme bien cuando quería hablar anoche", "P16", 10]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 4,
-      "quite_short_3": 2,
-      "longer_4_5": 4,
-      "long_6_plus": 0
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P05, P15, P16, P_NEW_IMPERFECT, P_NEW_REFLEXIVE",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0042L03 LEGOs available"
+    "pattern_coverage": "P16, P_NEW_IMPERFECT, P_NEW_REFLEXIVE",
+    "full_seed_included": "YES - phrase 9",
+    "gate_compliance": "STRICT - All words from S0001-S0042L03 LEGOs only"
   }
 }

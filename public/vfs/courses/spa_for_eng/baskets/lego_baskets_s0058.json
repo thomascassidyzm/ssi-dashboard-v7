@@ -1,125 +1,322 @@
 {
-  "version": "curated_v7_spanish",
+  "version": "curated_v6_molecular_lego",
   "seed": "S0058",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
   "seed_pair": {
-    "known": "I've just finished reading a really good book.",
-    "target": "Acabo de terminar de leer un libro muy bueno."
+    "known": "It's interesting when you understand enough words.",
+    "target": "Es interesante cuando comprendes suficientes palabras."
   },
-  "patterns_introduced": "P_NEW_ACABO_DE",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE"],
-  "cumulative_legos": 178,
-
+  "patterns_introduced": "P_NEW_IMPERSONAL",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10",
+    "P11",
+    "P12"
+  ],
+  "cumulative_legos": 170,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:27:42.801934Z",
+    "curated_by": "Claude Code Agent - Phase 5 v3.0 GATE-validated generation",
+    "validation_notes": [
+      "100% GATE compliance validated - all Spanish words from S0001-S0057 LEGOs only",
+      "Whitelist size: 185 words from S0001-S0057",
+      "Distribution validated: 2 short, 2 quite short, 2 longer, 4 long per LEGO",
+      "Zero GATE violations in final baskets",
+      "Full seed sentence achievable: Es interesante cuando comprendes suficientes palabras."
+    ]
+  },
   "S0058L01": {
-    "lego": ["I've just finished", "acabo de terminar"],
+    "lego": [
+      "it's interesting",
+      "es interesante"
+    ],
     "type": "M",
-    "available_legos": 174,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS"],
+    "molecular_components": [
+      "es",
+      "interesante"
+    ],
+    "available_legos": 167,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12"
+    ],
     "practice_phrases": [
-      ["I've just finished", "acabo de terminar", "P_NEW_ACABO_DE", 1],
-      ["I've just finished reading", "acabo de terminar de leer", "P_NEW_ACABO_DE", 2],
-      ["I've just finished speaking", "acabo de terminar de hablar", "P_NEW_ACABO_DE", 2],
-      ["but I've just finished", "pero acabo de terminar", "P_NEW_ACABO_DE", 2],
-      ["I've just finished learning Spanish", "acabo de terminar de aprender español", "P_NEW_ACABO_DE", 3],
-      ["I've just finished yesterday", "acabo de terminar ayer", "P_NEW_ACABO_DE", 3],
-      ["because I've just finished", "porque acabo de terminar", "P_NEW_ACABO_DE", 2],
-      ["if I've just finished everything", "si acabo de terminar todo", "P_NEW_ACABO_DE", 3],
-      ["I've just finished reading a really good book at the moment", "acabo de terminar de leer un libro muy bueno en este momento", "P_NEW_ACABO_DE", 9],
-      ["I've just finished doing interesting things with my friends", "acabo de terminar de hacer cosas interesantes con mis amigos", "P_NEW_ACABO_DE", 8]
+      [
+        "it's interesting",
+        "es interesante",
+        null,
+        1
+      ],
+      [
+        "it's interesting when",
+        "es interesante cuando",
+        null,
+        2
+      ],
+      [
+        "it's interesting when I speak",
+        "es interesante cuando hablo",
+        null,
+        3
+      ],
+      [
+        "it's interesting to learn Spanish",
+        "es interesante aprender español",
+        null,
+        3
+      ],
+      [
+        "it's interesting when I speak with you",
+        "es interesante cuando hablo contigo",
+        null,
+        4
+      ],
+      [
+        "it's interesting to do interesting things",
+        "es interesante hacer cosas interesantes",
+        null,
+        4
+      ],
+      [
+        "it's interesting when I can remember a few words",
+        "es interesante cuando puedo recordar unas pocas palabras",
+        null,
+        6
+      ],
+      [
+        "it's interesting to learn how to say interesting things",
+        "es interesante aprender cómo decir cosas interesantes",
+        null,
+        6
+      ],
+      [
+        "it's interesting when I can speak Spanish with my friends",
+        "es interesante cuando puedo hablar español con mis amigos",
+        null,
+        8
+      ],
+      [
+        "it's interesting to finish what I wanted to say later",
+        "es interesante terminar lo que quería decir después",
+        null,
+        6
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 4,
-      "quite_short_3": 3,
-      "longer_4_5": 0,
-      "long_6_plus": 3
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P_NEW_ACABO_DE",
-    "full_seed_included": "NO - missing 'reading', 'a really good book'",
-    "gate_compliance": "STRICT - Only S0001-S0057 LEGOs available"
+    "pattern_coverage": "null",
+    "gate_compliance": "STRICT - All words from S0001-S0057 LEGOs only"
   },
-
   "S0058L02": {
-    "lego": ["reading", "de leer"],
-    "type": "M",
-    "available_legos": 175,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE"],
-    "practice_phrases": [
-      ["reading", "de leer", null, 1],
-      ["I've just finished reading", "acabo de terminar de leer", "P_NEW_ACABO_DE", 2],
-      ["reading a book", "de leer un libro", null, 2],
-      ["I've just finished reading yesterday", "acabo de terminar de leer ayer", "P_NEW_ACABO_DE", 3],
-      ["I enjoy reading", "disfruto leer", "P_NEW_DISFRUTO", 2],
-      ["because reading", "porque de leer", null, 2],
-      ["I've just finished reading a book", "acabo de terminar de leer un libro", "P_NEW_ACABO_DE", 3],
-      ["if I've just finished reading", "si acabo de terminar de leer", "P_NEW_ACABO_DE", 3],
-      ["I've just finished reading a letter to his friend", "acabo de terminar de leer una carta a su amigo", "P_NEW_ACABO_DE", 7],
-      ["I've just finished reading a really good book", "acabo de terminar de leer un libro muy bueno", "P_NEW_ACABO_DE", 6]
+    "lego": [
+      "you understand",
+      "comprendes"
     ],
-    "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 4,
-      "longer_4_5": 0,
-      "long_6_plus": 1
-    },
-    "pattern_coverage": "P_NEW_DISFRUTO, P_NEW_ACABO_DE",
-    "full_seed_included": "NO - missing 'a really good book'",
-    "gate_compliance": "STRICT - Only S0001-S0058L01 LEGOs available"
-  },
-
-  "S0058L03": {
-    "lego": ["a really good book", "un libro muy bueno"],
-    "type": "M",
-    "available_legos": 176,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE"],
-    "practice_phrases": [
-      ["a really good book", "un libro muy bueno", null, 1],
-      ["reading a really good book", "de leer un libro muy bueno", null, 2],
-      ["I want a really good book", "quiero un libro muy bueno", "P01", 2],
-      ["I've just finished reading a really good book", "acabo de terminar de leer un libro muy bueno", "P_NEW_ACABO_DE", 3],
-      ["I was able a really good book", "pude un libro muy bueno", "P_NEW_PUDE", 2],
-      ["because a really good book", "porque un libro muy bueno", null, 2],
-      ["I've just finished a really good book", "acabo de terminar un libro muy bueno", "P_NEW_ACABO_DE", 3],
-      ["if I've just finished reading a really good book", "si acabo de terminar de leer un libro muy bueno", "P_NEW_ACABO_DE", 4],
-      ["I was able to give you a really good book yesterday", "pude darte un libro muy bueno ayer", "P_NEW_PUDE", 6],
-      ["I've just finished reading a really good book.", "acabo de terminar de leer un libro muy bueno.", "P_NEW_ACABO_DE", 3]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 3,
-      "longer_4_5": 1,
-      "long_6_plus": 1
-    },
-    "pattern_coverage": "P01, P_NEW_PUDE, P_NEW_ACABO_DE",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0058L02 LEGOs available"
-  },
-
-  "S0058L04": {
-    "lego": ["a book", "un libro"],
     "type": "A",
-    "available_legos": 177,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE"],
+    "available_legos": 168,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12"
+    ],
     "practice_phrases": [
-      ["a book", "un libro", null, 1],
-      ["reading a book", "de leer un libro", null, 2],
-      ["I want a book", "quiero un libro", "P01", 2],
-      ["a really good book", "un libro muy bueno", null, 2],
-      ["I've just finished reading a book", "acabo de terminar de leer un libro", "P_NEW_ACABO_DE", 3],
-      ["I need a book", "necesito un libro", "P17", 2],
-      ["because a book", "porque un libro", null, 2],
-      ["if I want to give you a book", "si quiero darte un libro", "P01", 4],
-      ["I was able to read a really good book yesterday", "pude leer un libro muy bueno ayer", "P_NEW_PUDE", 6],
-      ["I've just finished reading a really good book", "acabo de terminar de leer un libro muy bueno", "P_NEW_ACABO_DE", 6]
+      [
+        "you understand",
+        "comprendes",
+        null,
+        1
+      ],
+      [
+        "when you understand",
+        "cuando comprendes",
+        null,
+        2
+      ],
+      [
+        "when you understand Spanish",
+        "cuando comprendes español",
+        null,
+        3
+      ],
+      [
+        "it's interesting when you understand",
+        "es interesante cuando comprendes",
+        null,
+        3
+      ],
+      [
+        "when you understand a few words now",
+        "cuando comprendes unas pocas palabras ahora",
+        null,
+        4
+      ],
+      [
+        "when you understand what I wanted to say",
+        "cuando comprendes lo que quería decir",
+        null,
+        4
+      ],
+      [
+        "it's interesting when you understand a few words later",
+        "es interesante cuando comprendes unas pocas palabras después",
+        null,
+        6
+      ],
+      [
+        "it's interesting when you understand what I wanted to say",
+        "es interesante cuando comprendes lo que quería decir",
+        null,
+        6
+      ],
+      [
+        "when you understand how to do interesting things with friends",
+        "cuando comprendes cómo hacer cosas interesantes con amigos",
+        null,
+        6
+      ],
+      [
+        "I can't speak when you understand a few interesting words",
+        "no puedo hablar cuando comprendes unas pocas palabras interesantes",
+        null,
+        7
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 1,
-      "longer_4_5": 1,
-      "long_6_plus": 2
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P17, P_NEW_PUDE, P_NEW_ACABO_DE",
-    "full_seed_included": "NO - 'un libro' supplementary LEGO",
-    "gate_compliance": "STRICT - Only S0001-S0058L03 LEGOs available"
+    "pattern_coverage": "null",
+    "gate_compliance": "STRICT - All words from S0001-S0058L01 LEGOs only"
+  },
+  "S0058L03": {
+    "lego": [
+      "enough words",
+      "suficientes palabras"
+    ],
+    "type": "M",
+    "molecular_components": [
+      "suficientes",
+      "palabras"
+    ],
+    "available_legos": 169,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12"
+    ],
+    "practice_phrases": [
+      [
+        "enough words",
+        "suficientes palabras",
+        null,
+        1
+      ],
+      [
+        "a few words",
+        "unas pocas palabras",
+        null,
+        2
+      ],
+      [
+        "when you understand enough words",
+        "cuando comprendes suficientes palabras",
+        null,
+        3
+      ],
+      [
+        "so I can remember enough words",
+        "para poder recordar suficientes palabras",
+        "P12",
+        3
+      ],
+      [
+        "it's interesting when you understand enough words",
+        "es interesante cuando comprendes suficientes palabras",
+        null,
+        4
+      ],
+      [
+        "I wanted to finish when you understand enough words",
+        "quería terminar cuando comprendes suficientes palabras",
+        "P01",
+        5
+      ],
+      [
+        "I'm trying to learn how to say enough words now",
+        "estoy intentando aprender cómo decir suficientes palabras ahora",
+        "P02",
+        7
+      ],
+      [
+        "it's interesting when I can learn enough words with you",
+        "es interesante cuando puedo aprender suficientes palabras contigo",
+        null,
+        7
+      ],
+      [
+        "so I can learn to say enough interesting words later",
+        "para poder aprender decir suficientes palabras interesantes después",
+        "P12",
+        7
+      ],
+      [
+        "I can't remember how to say enough words when I'm tired",
+        "no puedo recordar cómo decir suficientes palabras cuando estoy cansado",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P02, P12, null",
+    "gate_compliance": "STRICT - All words from S0001-S0058L02 LEGOs only",
+    "full_seed_included": "YES - Full seed achievable: Es interesante cuando comprendes suficientes palabras."
   }
 }

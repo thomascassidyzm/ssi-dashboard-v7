@@ -1,5 +1,5 @@
 {
-  "version": "curated_v7_spanish",
+  "version": "curated_v6_molecular_lego",
   "seed": "S0087",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -7,63 +7,196 @@
     "known": "They are people I don't know.",
     "target": "Son personas que no conozco."
   },
-  "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
-  "cumulative_legos": 255,
-
+  "patterns_introduced": [
+    "P_NEW_RELATIVE"
+  ],
+  "cumulative_legos": 240,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:23:00.559075Z",
+    "curated_by": "Claude Code - Agent-generated with GATE validation",
+    "validation": {
+      "whitelist_size": 239,
+      "base_seeds": "S0001-S0086",
+      "gate_compliance": "100% - All words validated against whitelist",
+      "violations_found": 5,
+      "violations_fixed": 5
+    }
+  },
   "S0087L01": {
-    "lego": ["they are people", "son personas"],
+    "lego": [
+      "they are people",
+      "son personas"
+    ],
     "type": "M",
-    "available_legos": 253,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "lego_type": "MOLECULAR",
+    "components": [
+      [
+        "son",
+        "they are"
+      ],
+      [
+        "personas",
+        "people"
+      ]
+    ],
+    "available_legos": 238,
     "practice_phrases": [
-      ["they are people", "son personas", null, 1],
-      ["they are people here", "son personas aquí", null, 2],
-      ["but they are people", "pero son personas", null, 2],
-      ["I think that they are people", "pienso que son personas", null, 3],
-      ["they are people I don't know", "son personas que no conozco", null, 3],
-      ["if they are people", "si son personas", null, 2],
-      ["because they are people", "porque son personas", null, 2],
-      ["I'm not sure if they are people", "no estoy seguro si son personas", null, 4],
-      ["I don't know those people they are people I don't agree", "no conozco a esas personas son personas no estoy de acuerdo", null, 8],
-      ["it wasn't possible unfortunately they are people", "no fue posible desafortunadamente son personas", "P_NEW_IMPERSONAL", 4]
+      [
+        "they are people",
+        "son personas",
+        null,
+        1
+      ],
+      [
+        "they are people I know",
+        "son personas que conozco",
+        null,
+        2
+      ],
+      [
+        "they are people from yesterday",
+        "son personas de ayer",
+        null,
+        3
+      ],
+      [
+        "I think they are people",
+        "pienso que son personas",
+        null,
+        3
+      ],
+      [
+        "they are people I want to talk to",
+        "son personas con las que quiero hablar",
+        null,
+        5
+      ],
+      [
+        "I don't know if they are people",
+        "no sé si son personas",
+        null,
+        4
+      ],
+      [
+        "those are people I want to talk to about your friend",
+        "esas son personas con las que quiero hablar sobre tu amigo",
+        null,
+        7
+      ],
+      [
+        "I think they are people I was trying to remember",
+        "pienso que son personas que estaba intentando recordar",
+        null,
+        7
+      ],
+      [
+        "they are people I don't agree with",
+        "son personas con las que no estoy de acuerdo",
+        null,
+        7
+      ],
+      [
+        "unfortunately they are people I don't know well",
+        "desafortunadamente son personas que no conozco bien",
+        null,
+        7
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P_NEW_IMPERSONAL",
-    "full_seed_included": "NO - missing 'that I don't know'",
-    "gate_compliance": "STRICT - Only S0001-S0086 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0086 + new LEGO components"
   },
-
   "S0087L02": {
-    "lego": ["that I don't know", "que no conozco"],
+    "lego": [
+      "that I don't know",
+      "que no conozco"
+    ],
     "type": "M",
-    "available_legos": 254,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "lego_type": "MOLECULAR",
+    "components": [
+      [
+        "que",
+        "that"
+      ],
+      [
+        "no conozco",
+        "I don't know"
+      ]
+    ],
+    "available_legos": 239,
     "practice_phrases": [
-      ["that I don't know", "que no conozco", null, 1],
-      ["they are people that I don't know", "son personas que no conozco", null, 2],
-      ["I want that I don't know", "quiero que no conozco", "P01", 2],
-      ["but that I don't know", "pero que no conozco", null, 2],
-      ["those people that I don't know", "a esas personas que no conozco", null, 3],
-      ["if that I don't know", "si que no conozco", null, 2],
-      ["because that I don't know", "porque que no conozco", null, 2],
-      ["I'm not sure that I don't know", "no estoy seguro que no conozco", null, 3],
-      ["I don't agree with what he said about my friend that I don't know", "no estoy de acuerdo con lo que dijo sobre mi amigo que no conozco", null, 9],
-      ["they are people I don't know.", "son personas que no conozco.", null, 2]
+      [
+        "that I don't know",
+        "que no conozco",
+        null,
+        1
+      ],
+      [
+        "people that I don't know",
+        "personas que no conozco",
+        null,
+        2
+      ],
+      [
+        "they are people that I don't know",
+        "son personas que no conozco",
+        null,
+        3
+      ],
+      [
+        "things that I don't know",
+        "cosas que no conozco",
+        null,
+        3
+      ],
+      [
+        "I think they are people that I don't know",
+        "pienso que son personas que no conozco",
+        null,
+        4
+      ],
+      [
+        "unfortunately those are people that I don't know",
+        "desafortunadamente esas son personas que no conozco",
+        null,
+        5
+      ],
+      [
+        "I don't know if they are people that I don't know",
+        "no sé si son personas que no conozco",
+        null,
+        6
+      ],
+      [
+        "those are things that I don't know about your friend",
+        "esas son cosas que no conozco sobre tu amigo",
+        null,
+        7
+      ],
+      [
+        "unfortunately those are people that I don't know well",
+        "desafortunadamente esas son personas que no conozco bien",
+        null,
+        7
+      ],
+      [
+        "They are people I don't know.",
+        "Son personas que no conozco.",
+        null,
+        3
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
-      "longer_4_5": 0,
-      "long_6_plus": 2
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0087L01 LEGOs available"
+    "full_seed_included": "YES - phrase 10: 'Son personas que no conozco.'",
+    "gate_compliance": "STRICT - All words from S0001-S0087L01"
   }
 }

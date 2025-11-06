@@ -1,5 +1,5 @@
 {
-  "version": "curated_v7_spanish",
+  "version": "curated_v6_molecular_lego",
   "seed": "S0077",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -7,119 +7,383 @@
     "known": "I'm surprised at how quickly I'm starting to understand.",
     "target": "Estoy sorprendido de lo rápidamente que estoy comenzando a comprender."
   },
-  "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT"],
-  "cumulative_legos": 234,
-
+  "patterns_introduced": "P02, P03",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P05",
+    "P06",
+    "P12",
+    "P18",
+    "P_NEW_PERFECT"
+  ],
+  "cumulative_legos": 219,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:23:28.156213",
+    "curated_by": "Claude Code - Agent basket generation with GATE validation",
+    "gate_validation": {
+      "whitelist_size_at_start": 224,
+      "validation_protocol": "Every word validated against exact taught forms from S0001-S0076 (case-insensitive)",
+      "violations_found": 2,
+      "violations_fixed": 2,
+      "compliance_status": "100% GATE compliant"
+    }
+  },
   "S0077L01": {
-    "lego": ["I'm surprised", "estoy sorprendido"],
+    "lego": [
+      "I'm surprised",
+      "estoy sorprendido"
+    ],
     "type": "M",
-    "available_legos": 230,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT"],
+    "lego_type": "MOLECULAR",
+    "available_legos": 215,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P05",
+      "P06",
+      "P12",
+      "P18",
+      "P_NEW_PERFECT"
+    ],
     "practice_phrases": [
-      ["I'm surprised", "estoy sorprendido", null, 1],
-      ["I'm surprised here", "estoy sorprendido aquí", null, 2],
-      ["but I'm surprised", "pero estoy sorprendido", null, 2],
-      ["I think that I'm surprised", "pienso que estoy sorprendido", null, 3],
-      ["I'm surprised at how quickly", "estoy sorprendido de lo rápidamente que", null, 3],
-      ["if I'm surprised", "si estoy sorprendido", null, 2],
-      ["because I'm surprised", "porque estoy sorprendido", null, 2],
-      ["I'm not sure if I'm surprised", "no estoy seguro si estoy sorprendido", null, 4],
-      ["I'm very happy with how much I've learnt already but I'm surprised", "estoy muy feliz con cuánto he aprendido ya pero estoy sorprendido", "P_NEW_PERFECT", 9],
-      ["do you remember why I'm surprised yesterday", "te acuerdas por qué estoy sorprendido ayer", "P_NEW_TE_ACUERDAS", 4]
+      [
+        "I'm surprised",
+        "Estoy sorprendido",
+        "P02",
+        1
+      ],
+      [
+        "surprised with you",
+        "sorprendido contigo",
+        null,
+        2
+      ],
+      [
+        "I'm surprised to learn",
+        "Estoy sorprendido de aprender",
+        null,
+        3
+      ],
+      [
+        "I'm surprised with what I'm learning",
+        "Estoy sorprendido con lo que estoy aprendiendo",
+        "P02",
+        5
+      ],
+      [
+        "I'm surprised with how I speak",
+        "Estoy sorprendido con cómo hablo",
+        "P02",
+        4
+      ],
+      [
+        "I'm surprised that I'm very happy",
+        "Estoy sorprendido de que estoy muy feliz",
+        null,
+        6
+      ],
+      [
+        "I'm surprised with how much I've learnt already",
+        "Estoy sorprendido con cuánto he aprendido ya",
+        null,
+        6
+      ],
+      [
+        "I'm surprised because I'm beginning to understand Spanish",
+        "Estoy sorprendido porque estoy comenzando a comprender español",
+        "P03",
+        7
+      ],
+      [
+        "I'm surprised that I can speak a little more now",
+        "Estoy sorprendido de que puedo hablar un poco más ahora",
+        null,
+        9
+      ],
+      [
+        "I'm very happy because I'm surprised with how much I can speak",
+        "Estoy muy feliz porque estoy sorprendido con cuánto puedo hablar",
+        null,
+        11
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P02, P03",
+    "gate_compliance": "STRICT - All words from S0001-S0076 LEGOs + S0077L01"
+  },
+  "S0077L02": {
+    "lego": [
+      "at how quickly",
+      "de lo rápidamente que"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "available_legos": 216,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P05",
+      "P06",
+      "P12",
+      "P18",
+      "P_NEW_PERFECT"
+    ],
+    "practice_phrases": [
+      [
+        "at how quickly",
+        "de lo rápidamente que",
+        null,
+        1
+      ],
+      [
+        "at how quickly I speak",
+        "de lo rápidamente que hablo",
+        null,
+        2
+      ],
+      [
+        "at how quickly I'm learning",
+        "de lo rápidamente que estoy aprendiendo",
+        "P02",
+        3
+      ],
+      [
+        "I'm surprised at how quickly",
+        "Estoy sorprendido de lo rápidamente que",
+        null,
+        4
+      ],
+      [
+        "at how quickly I can speak",
+        "de lo rápidamente que puedo hablar",
+        null,
+        4
+      ],
+      [
+        "I'm surprised at how quickly I speak",
+        "Estoy sorprendido de lo rápidamente que hablo",
+        null,
+        5
+      ],
+      [
+        "I'm very happy at how quickly I'm learning",
+        "Estoy muy feliz de lo rápidamente que estoy aprendiendo",
+        "P02",
+        7
+      ],
+      [
+        "I'm surprised at how quickly I can understand Spanish",
+        "Estoy sorprendido de lo rápidamente que puedo comprender español",
+        null,
+        7
+      ],
+      [
+        "I'm not sure at how quickly I'm beginning to learn",
+        "No estoy seguro de lo rápidamente que estoy comenzando a aprender",
+        "P03,P06",
+        10
+      ],
+      [
+        "I'm very happy at how quickly I've learnt with you already",
+        "Estoy muy feliz de lo rápidamente que he aprendido contigo ya",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P02, P03, P06",
+    "gate_compliance": "STRICT - All words from S0001-S0076 LEGOs + S0077L01-L02"
+  },
+  "S0077L03": {
+    "lego": [
+      "I'm starting to",
+      "estoy comenzando a"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "available_legos": 217,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P05",
+      "P06",
+      "P12",
+      "P18",
+      "P_NEW_PERFECT"
+    ],
+    "practice_phrases": [
+      [
+        "I'm starting to",
+        "Estoy comenzando a",
+        "P03",
+        1
+      ],
+      [
+        "I'm starting to learn",
+        "Estoy comenzando a aprender",
+        "P03",
+        2
+      ],
+      [
+        "I'm starting to understand",
+        "Estoy comenzando a comprender",
+        "P03",
+        2
+      ],
+      [
+        "I'm starting to speak Spanish",
+        "Estoy comenzando a hablar español",
+        "P03",
+        3
+      ],
+      [
+        "I'm starting to understand how much",
+        "Estoy comenzando a comprender cuánto",
+        "P03",
+        4
+      ],
+      [
+        "I'm starting to speak with you now",
+        "Estoy comenzando a hablar contigo ahora",
+        "P03",
+        5
+      ],
+      [
+        "I'm very happy that I'm starting to learn",
+        "Estoy muy feliz de que estoy comenzando a aprender",
+        "P03",
+        8
+      ],
+      [
+        "I'm surprised at how quickly I'm starting to speak",
+        "Estoy sorprendido de lo rápidamente que estoy comenzando a hablar",
+        "P03",
+        9
+      ],
+      [
+        "I think I'm starting to understand what you want to say",
+        "Pienso que estoy comenzando a comprender lo que quieres decir",
+        "P01,P03",
+        10
+      ],
+      [
+        "I'm surprised because I'm starting to speak a little more already",
+        "Estoy sorprendido porque estoy comenzando a hablar un poco más ya",
+        "P03",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P_NEW_PERFECT, P_NEW_TE_ACUERDAS",
-    "full_seed_included": "NO - missing 'at how quickly', 'I'm starting to', 'to understand'",
-    "gate_compliance": "STRICT - Only S0001-S0076 LEGOs available"
+    "pattern_coverage": "P01, P03",
+    "gate_compliance": "STRICT - All words from S0001-S0076 LEGOs + S0077L01-L03"
   },
-
-  "S0077L02": {
-    "lego": ["at how quickly", "de lo rápidamente que"],
-    "type": "M",
-    "available_legos": 231,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT"],
+  "S0077L04": {
+    "lego": [
+      "to understand",
+      "comprender"
+    ],
+    "type": "A",
+    "available_legos": 218,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P05",
+      "P06",
+      "P12",
+      "P18",
+      "P_NEW_PERFECT"
+    ],
     "practice_phrases": [
-      ["at how quickly", "de lo rápidamente que", null, 1],
-      ["I'm surprised at how quickly", "estoy sorprendido de lo rápidamente que", null, 2],
-      ["I want at how quickly", "quiero de lo rápidamente que", "P01", 2],
-      ["but at how quickly", "pero de lo rápidamente que", null, 2],
-      ["I think that at how quickly", "pienso que de lo rápidamente que", null, 3],
-      ["if at how quickly", "si de lo rápidamente que", null, 2],
-      ["because at how quickly", "porque de lo rápidamente que", null, 2],
-      ["I'm not sure if I'm surprised at how quickly", "no estoy seguro si estoy sorprendido de lo rápidamente que", null, 5],
-      ["I'm very happy with how much I've learnt already at how quickly", "estoy muy feliz con cuánto he aprendido ya de lo rápidamente que", "P_NEW_PERFECT", 8],
-      ["thank you very much for helping me to understand at how quickly", "muchas gracias por ayudarme a comprender de lo rápidamente que", null, 7]
+      [
+        "to understand",
+        "comprender",
+        null,
+        1
+      ],
+      [
+        "I'm starting to understand",
+        "Estoy comenzando a comprender",
+        "P03",
+        2
+      ],
+      [
+        "to understand Spanish",
+        "comprender español",
+        null,
+        2
+      ],
+      [
+        "I want to understand",
+        "Quiero comprender",
+        "P01",
+        2
+      ],
+      [
+        "at how quickly I'm starting to understand",
+        "de lo rápidamente que estoy comenzando a comprender",
+        "P03",
+        6
+      ],
+      [
+        "I'm surprised at how quickly I'm starting to understand",
+        "Estoy sorprendido de lo rápidamente que estoy comenzando a comprender",
+        "P03",
+        8
+      ],
+      [
+        "I'm very happy because I'm starting to understand Spanish",
+        "Estoy muy feliz porque estoy comenzando a comprender español",
+        "P03",
+        8
+      ],
+      [
+        "I'm surprised at how quickly I'm starting to understand you",
+        "Estoy sorprendido de lo rápidamente que estoy comenzando a comprender contigo",
+        "P03",
+        9
+      ],
+      [
+        "I think I'm starting to understand what you want to say now",
+        "Pienso que estoy comenzando a comprender lo que quieres decir ahora",
+        "P01,P03",
+        11
+      ],
+      [
+        "I'm surprised at how quickly I'm starting to understand.",
+        "Estoy sorprendido de lo rápidamente que estoy comenzando a comprender.",
+        "P03",
+        8
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
       "longer_4_5": 1,
-      "long_6_plus": 1
+      "long_6_plus": 5
     },
-    "pattern_coverage": "P01, P_NEW_PERFECT",
-    "full_seed_included": "NO - missing 'I'm starting to', 'to understand'",
-    "gate_compliance": "STRICT - Only S0001-S0077L01 LEGOs available"
-  },
-
-  "S0077L03": {
-    "lego": ["I'm starting to", "estoy comenzando a"],
-    "type": "M",
-    "available_legos": 232,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT"],
-    "practice_phrases": [
-      ["I'm starting to", "estoy comenzando a", "P02", 1],
-      ["at how quickly I'm starting to", "de lo rápidamente que estoy comenzando a", "P02", 2],
-      ["I'm starting to speak", "estoy comenzando a hablar", "P02", 2],
-      ["but I'm starting to", "pero estoy comenzando a", "P02", 1],
-      ["I'm surprised at how quickly I'm starting to", "estoy sorprendido de lo rápidamente que estoy comenzando a", "P02", 3],
-      ["I'm starting to learn Spanish", "estoy comenzando a aprender español", "P02", 2],
-      ["because I'm starting to", "porque estoy comenzando a", "P02", 1],
-      ["if I'm starting to learn", "si estoy comenzando a aprender", "P02", 3],
-      ["I think that I'm surprised at how quickly I'm starting to learn Spanish", "pienso que estoy sorprendido de lo rápidamente que estoy comenzando a aprender español", "P02", 11],
-      ["I'm not sure if I'm starting to understand at the same time", "no estoy seguro si estoy comenzando a comprender al mismo tiempo", "P02", 7]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 2,
-      "longer_4_5": 0,
-      "long_6_plus": 2
-    },
-    "pattern_coverage": "P02",
-    "full_seed_included": "NO - missing 'to understand'",
-    "gate_compliance": "STRICT - Only S0001-S0077L02 LEGOs available"
-  },
-
-  "S0077L04": {
-    "lego": ["to understand", "comprender"],
-    "type": "A",
-    "available_legos": 233,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT"],
-    "practice_phrases": [
-      ["to understand", "comprender", null, 1],
-      ["I'm starting to understand", "estoy comenzando a comprender", "P02", 2],
-      ["I want to understand", "quiero comprender", "P01", 2],
-      ["but to understand", "pero comprender", null, 2],
-      ["I'm surprised at how quickly I'm starting to understand", "estoy sorprendido de lo rápidamente que estoy comenzando a comprender", "P02", 3],
-      ["I need to understand", "necesito comprender", "P17", 2],
-      ["because to understand", "porque comprender", null, 2],
-      ["if I'm starting to understand", "si estoy comenzando a comprender", "P02", 3],
-      ["I'm not sure if I'm surprised at how quickly I'm starting to understand", "no estoy seguro si estoy sorprendido de lo rápidamente que estoy comenzando a comprender", "P02", 8],
-      ["I'm surprised at how quickly I'm starting to understand.", "estoy sorprendido de lo rápidamente que estoy comenzando a comprender.", "P02", 3]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 3,
-      "longer_4_5": 0,
-      "long_6_plus": 1
-    },
-    "pattern_coverage": "P01, P02, P17",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0077L03 LEGOs available"
+    "pattern_coverage": "P01, P03",
+    "full_seed_included": "YES - phrase 10: 'I'm surprised at how quickly I'm starting to understand.'",
+    "gate_compliance": "STRICT - All words from S0001-S0076 LEGOs + S0077L01-L04"
   }
 }

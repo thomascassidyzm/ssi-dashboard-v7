@@ -18,19 +18,21 @@
     "available_patterns": ["P01", "P02", "P03", "P05", "P10", "P12"],
     "practice_phrases": [
       ["I'm not sure", "no estoy seguro", "P18", 1],
-      ["I'm not sure today", "no estoy seguro hoy", "P18", 2],
       ["I'm not sure now", "no estoy seguro ahora", "P18", 2],
       ["I'm not sure how to speak", "no estoy seguro cómo hablar", "P18", 3],
-      ["I'm not sure how to say something", "no estoy seguro cómo decir algo", "P18", 4],
       ["I'm not sure how to try", "no estoy seguro cómo intentar", "P18", 3],
+      ["I'm not sure how to say something", "no estoy seguro cómo decir algo", "P18", 4],
+      ["I'm not sure how to remember a word", "no estoy seguro cómo recordar una palabra", "P18", 4],
       ["I'm not sure how to explain what I mean", "no estoy seguro cómo explicar lo que quiero decir", "P18", 5],
-      ["I'm not sure how to remember a word", "no estoy seguro cómo recordar una palabra", "P18", 4]
+      ["I'm not sure how to try as hard as I can today", "no estoy seguro cómo intentar tan duro como pueda hoy", "P18", 6],
+      ["I'm not sure how to speak a little Spanish with someone else", "no estoy seguro cómo hablar un poco de español con alguien más", "P18", 7],
+      ["I'm not sure how to try to remember something as often as possible", "no estoy seguro cómo intentar recordar algo lo más frecuentemente posible", "P18", 7]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 3,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 4
     },
     "pattern_coverage": "P18",
     "full_seed_included": "NO - missing 'if', 'I can', and 'whole sentence'",
@@ -46,19 +48,21 @@
       ["if", "si", null, 1],
       ["I'm not sure if", "no estoy seguro si", "P18", 2],
       ["I want to try if", "quiero intentar si", "P01", 3],
-      ["I speak if", "hablo si", "P05", 2],
       ["I'm going to speak if", "voy a hablar si", "P03", 3],
       ["I'm not sure if I speak", "no estoy seguro si hablo", "P18", 3],
-      ["I want to try to speak if I speak", "quiero intentar hablar si hablo", "P01", 4],
-      ["I'm not sure if I speak a little Spanish", "no estoy seguro si hablo un poco de español", "P18", 4]
+      ["how to explain if", "cómo explicar si", "P12", 3],
+      ["I want to try to speak a little Spanish if", "quiero intentar hablar un poco de español si", "P01", 5],
+      ["I'm not sure if I speak a little Spanish today", "no estoy seguro si hablo un poco de español hoy", "P18", 5],
+      ["I'm not sure if I'm going to try to remember a word", "no estoy seguro si voy a intentar recordar una palabra", "P18", 6],
+      ["I want to try to explain what I mean if I speak", "quiero intentar explicar lo que quiero decir si hablo", "P01", 6]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 3,
-      "quite_short_3": 3,
-      "longer_4_5": 2,
-      "long_6_plus": 0
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
+      "longer_4_5": 0,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P03, P05, P18",
+    "pattern_coverage": "P01, P03, P05, P12, P18",
     "full_seed_included": "NO - missing 'I can' and 'whole sentence'",
     "gate_compliance": "STRICT - Only S0001-S0010L01 LEGOs available",
     "note": "First conjunction available - now can use 'si' naturally"
@@ -71,23 +75,24 @@
     "available_patterns": ["P01", "P02", "P03", "P05", "P10", "P12", "P18"],
     "practice_phrases": [
       ["I can", "puedo", "P05", 1],
-      ["I can speak", "puedo hablar", "P05", 2],
-      ["I can try", "puedo intentar", "P05", 2],
-      ["I'm not sure if I can", "no estoy seguro si puedo", "P18", 3],
-      ["I can speak a little Spanish", "puedo hablar un poco de español", "P05", 3],
+      ["I'm not sure if I can", "no estoy seguro si puedo", "P18", 2],
+      ["I can speak Spanish", "puedo hablar español", "P05", 3],
+      ["I can try today", "puedo intentar hoy", "P05", 3],
       ["I'm not sure if I can speak", "no estoy seguro si puedo hablar", "P18", 4],
-      ["I can try to remember something today", "puedo intentar recordar algo hoy", "P05", 5],
-      ["I'm not sure if I can explain what I mean", "no estoy seguro si puedo explicar lo que quiero decir", "P18", 6],
-      ["I can speak with someone else if I try as hard as I can", "puedo hablar con alguien más si intentar tan duro como pueda", "P05", 7]
+      ["I can try to remember a word", "puedo intentar recordar una palabra", "P05", 4],
+      ["I'm not sure if I can explain what I mean", "no estoy seguro si puedo explicar lo que quiero decir", "P18", 5],
+      ["I can try to speak a little Spanish today", "puedo intentar hablar un poco de español hoy", "P05", 6],
+      ["I'm not sure if I can try to remember something today", "no estoy seguro si puedo intentar recordar algo hoy", "P18", 6],
+      ["I want to try to remember if I can speak a little Spanish", "quiero intentar recordar si puedo hablar un poco de español", "P01", 7]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 3,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 2
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P05, P18",
-    "full_seed_included": "NO - missing 'whole sentence'",
+    "pattern_coverage": "P01, P05, P18",
+    "full_seed_included": "NO - missing 'to remember' and 'the whole sentence'",
     "gate_compliance": "STRICT - Only S0001-S0010L02 LEGOs available"
   },
 
@@ -102,19 +107,19 @@
       ["I can remember the whole sentence", "puedo recordar toda la oración", "P05", 3],
       ["I want to remember the whole sentence", "quiero recordar toda la oración", "P01", 3],
       ["I'm not sure if I can remember the whole sentence", "no estoy seguro si puedo recordar toda la oración", "P18", 4],
-      ["I can say the whole sentence", "puedo decir toda la oración", "P05", 3],
-      ["I'm going to try to remember the whole sentence", "voy a intentar recordar toda la oración", "P03", 4],
-      ["I'm not sure if I can explain the whole sentence today", "no estoy seguro si puedo explicar toda la oración hoy", "P18", 5],
-      ["I can try to remember the whole sentence as hard as I can", "puedo intentar recordar toda la oración tan duro como pueda", "P05", 6],
+      ["how to explain the whole sentence", "cómo explicar toda la oración", "P12", 3],
+      ["I want to try to remember the whole sentence today", "quiero intentar recordar toda la oración hoy", "P01", 5],
+      ["I'm not sure if I can explain the whole sentence in Spanish", "no estoy seguro si puedo explicar toda la oración en español", "P18", 6],
+      ["I'm going to try to remember the whole sentence as hard as I can", "voy a intentar recordar toda la oración tan duro como pueda", "P03", 6],
       ["I'm not sure if I can remember the whole sentence.", "no estoy seguro si puedo recordar toda la oración.", "P18", 4]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
       "quite_short_3": 3,
-      "longer_4_5": 3,
-      "long_6_plus": 2
+      "longer_4_5": 1,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P03, P05, P18",
+    "pattern_coverage": "P01, P03, P05, P12, P18",
     "full_seed_included": "YES - phrase 10",
     "gate_compliance": "STRICT - Only S0001-S0010L03 LEGOs available"
   }

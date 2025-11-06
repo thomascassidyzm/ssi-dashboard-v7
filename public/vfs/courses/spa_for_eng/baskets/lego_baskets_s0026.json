@@ -10,6 +10,17 @@
   "patterns_introduced": "P_NEW_GUSTAR",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR"],
   "cumulative_legos": 79,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "changes_from_previous": [
+      "Fixed GATE violations: removed 'ayudar' (only 'ayudarme' taught)",
+      "Fixed GATE violations: removed 'mejor' (not taught until S0029)",
+      "Fixed GATE violations: removed 'preparado' from LEGOs before S0026L05",
+      "Fixed GATE violations: removed 'para' usage before S0026L06",
+      "Ensured all Spanish words come from exact taught forms only"
+    ]
+  },
 
   "S0026L01": {
     "lego": ["I like", "me gusta"],
@@ -18,25 +29,24 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE"],
     "practice_phrases": [
       ["I like", "me gusta", "P_NEW_GUSTAR", 1],
-      ["I like Spanish", "me gusta español", "P_NEW_GUSTAR", 2],
       ["I like to speak", "me gusta hablar", "P_NEW_GUSTAR", 2],
-      ["I like to learn", "me gusta aprender", "P_NEW_GUSTAR", 2],
-      ["I like his name", "me gusta su nombre", "P_NEW_GUSTAR", 2],
-      ["I like to speak Spanish", "me gusta hablar español", "P_NEW_GUSTAR", 3],
+      ["I like to learn Spanish", "me gusta aprender español", "P_NEW_GUSTAR", 3],
+      ["I like to meet people", "me gusta encontrar personas", "P_NEW_GUSTAR", 3],
+      ["I like to remember something", "me gusta recordar algo", "P_NEW_GUSTAR", 3],
       ["I like to meet people who speak Spanish", "me gusta encontrar personas que hablan español", "P_NEW_GUSTAR", 4],
       ["I like to start talking more soon", "me gusta comenzar a hablar más pronto", "P_NEW_GUSTAR", 4],
-      ["why I like to help people who speak Spanish", "por qué me gusta ayudar personas que hablan español", "P12", 6],
-      ["I like to speak Spanish before I have to go", "me gusta hablar español antes de que tenga que ir", "P_NEW_GUSTAR", 6]
+      ["I like to be able to speak Spanish with you", "me gusta poder hablar español contigo", "P_NEW_GUSTAR", 5],
+      ["I like to speak Spanish with everyone else later on", "me gusta hablar español con todos los demás más tarde", "P_NEW_GUSTAR", 6],
+      ["I like to guess what's going to happen tomorrow", "me gusta adivinar lo que va a ocurrir mañana", "P_NEW_GUSTAR", 5]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 1,
-      "longer_4_5": 2,
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
       "long_6_plus": 2
     },
-    "pattern_coverage": "P_NEW_GUSTAR, P12",
-    "full_seed_included": "NO - missing 'to feel', 'as if I were', 'nearly', 'ready', 'to go'",
-    "gate_compliance": "STRICT - Only S0001-S0025 LEGOs available"
+    "pattern_coverage": "P_NEW_GUSTAR",
+    "gate_compliance": "STRICT - All words from S0001-S0025 LEGOs only"
   },
 
   "S0026L02": {
@@ -48,22 +58,22 @@
       ["to feel", "sentir", null, 1],
       ["I like to feel", "me gusta sentir", "P_NEW_GUSTAR", 2],
       ["I want to feel", "quiero sentir", "P01", 2],
-      ["I can feel", "puedo sentir", "P05", 2],
-      ["I like to feel ready", "me gusta sentir preparado", "P_NEW_GUSTAR", 3],
-      ["I want to feel better", "quiero sentir mejor", "P01", 3],
-      ["I don't like to feel", "no me gusta sentir", "P_NEW_GUSTAR", 2],
-      ["he wants to feel ready soon", "él quiere sentir preparado pronto", "P01", 4],
-      ["why I like to feel ready", "por qué me gusta sentir preparado", "P12", 4]
+      ["I'm trying to feel", "estoy intentando sentir", "P02", 2],
+      ["I'm going to feel", "voy a sentir", "P03", 2],
+      ["I like to be able to feel", "me gusta poder sentir", "P_NEW_GUSTAR", 3],
+      ["I'd like to be able to feel", "me gustaría poder sentir", "P04", 3],
+      ["he wants to be able to feel", "él quiere poder sentir", "P01", 4],
+      ["I'm not going to be able to feel", "no voy a poder sentir", "P03", 4],
+      ["I'd like to be able to feel after you finish", "me gustaría poder sentir después de que termines", "P04", 5]
     ],
     "phrase_distribution": {
       "really_short_1_2": 5,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 0
+      "long_6_plus": 1
     },
-    "pattern_coverage": "P01, P05, P12, P_NEW_GUSTAR",
-    "full_seed_included": "NO - missing 'as if I were', 'nearly', 'ready', 'to go'",
-    "gate_compliance": "STRICT - Only S0001-S0026L01 LEGOs available"
+    "pattern_coverage": "P01, P02, P03, P04, P_NEW_GUSTAR",
+    "gate_compliance": "STRICT - All words from S0001-S0026L01 LEGOs only"
   },
 
   "S0026L03": {
@@ -73,25 +83,24 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR"],
     "practice_phrases": [
       ["as if I were", "como si estuviera", "P10", 1],
-      ["I like as if I were", "me gusta como si estuviera", "P_NEW_GUSTAR", 2],
-      ["I feel as if I were", "sentir como si estuviera", null, 2],
-      ["to feel as if I were ready", "sentir como si estuviera preparado", null, 3],
+      ["to feel as if I were", "sentir como si estuviera", "P10", 2],
       ["I like to feel as if I were", "me gusta sentir como si estuviera", "P_NEW_GUSTAR", 3],
-      ["I like to feel as if I were ready", "me gusta sentir como si estuviera preparado", "P_NEW_GUSTAR", 4],
-      ["I want to feel as if I were ready", "quiero sentir como si estuviera preparado", "P01", 4],
-      ["I like to feel as if I were ready to speak Spanish", "me gusta sentir como si estuviera preparado para hablar español", "P_NEW_GUSTAR", 7],
-      ["why I like to feel as if I were ready", "por qué me gusta sentir como si estuviera preparado", "P12", 5],
-      ["I like to feel as if I were nearly ready", "me gusta sentir como si estuviera casi preparado", "P_NEW_GUSTAR", 5]
+      ["I want to feel as if I were", "quiero sentir como si estuviera", "P01", 3],
+      ["to speak as if I were", "hablar como si estuviera", "P10", 2],
+      ["I'm going to feel as if I were", "voy a sentir como si estuviera", "P03", 3],
+      ["I'd like to feel as if I were", "me gustaría sentir como si estuviera", "P04", 3],
+      ["I like to speak Spanish as if I were", "me gusta hablar español como si estuviera", "P_NEW_GUSTAR", 4],
+      ["I want to be able to feel as if I were", "quiero poder sentir como si estuviera", "P01", 4],
+      ["I'm going to be able to speak as if I were", "voy a poder hablar como si estuviera", "P03", 4]
     ],
     "phrase_distribution": {
       "really_short_1_2": 3,
-      "quite_short_3": 2,
+      "quite_short_3": 4,
       "longer_4_5": 3,
-      "long_6_plus": 2
+      "long_6_plus": 0
     },
-    "pattern_coverage": "P01, P10, P12, P_NEW_GUSTAR",
-    "full_seed_included": "NO - missing 'to go'",
-    "gate_compliance": "STRICT - Only S0001-S0026L02 LEGOs available"
+    "pattern_coverage": "P01, P03, P04, P10, P_NEW_GUSTAR",
+    "gate_compliance": "STRICT - All words from S0001-S0026L02 LEGOs only. NOTE: 'estuviera' introduced in this LEGO."
   },
 
   "S0026L04": {
@@ -101,25 +110,25 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR"],
     "practice_phrases": [
       ["nearly", "casi", null, 1],
-      ["nearly ready", "casi preparado", null, 2],
+      ["I'm nearly", "estoy casi", null, 2],
       ["I like nearly", "me gusta casi", "P_NEW_GUSTAR", 2],
-      ["I feel nearly ready", "sentir casi preparado", null, 2],
-      ["I like to feel nearly ready", "me gusta sentir casi preparado", "P_NEW_GUSTAR", 3],
-      ["I'm nearly ready to speak", "estoy casi preparado para hablar", "P02", 3],
-      ["as if I were nearly ready", "como si estuviera casi preparado", "P10", 3],
-      ["I like to feel as if I were nearly ready", "me gusta sentir como si estuviera casi preparado", "P_NEW_GUSTAR", 5],
-      ["I want to feel as if I were nearly ready to speak Spanish", "quiero sentir como si estuviera casi preparado para hablar español", "P01", 8],
-      ["why I like to feel as if I were nearly ready", "por qué me gusta sentir como si estuviera casi preparado", "P12", 6]
+      ["I feel nearly", "siento casi", null, 2],
+      ["I'm nearly there", "estoy casi", null, 2],
+      ["I like to feel nearly", "me gusta sentir casi", "P_NEW_GUSTAR", 3],
+      ["as if I were nearly", "como si estuviera casi", "P10", 3],
+      ["I like to feel as if I were nearly", "me gusta sentir como si estuviera casi", "P_NEW_GUSTAR", 4],
+      ["I want to be able to feel as if I were nearly", "quiero poder sentir como si estuviera casi", "P01", 5],
+      ["I'm going to try to feel as if I were nearly", "voy a intentar sentir como si estuviera casi", "P03", 5]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 4,
-      "quite_short_3": 3,
-      "longer_4_5": 1,
-      "long_6_plus": 2
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
     },
-    "pattern_coverage": "P01, P02, P10, P12, P_NEW_GUSTAR",
-    "full_seed_included": "NO - missing 'to go'",
-    "gate_compliance": "STRICT - Only S0001-S0026L03 LEGOs available"
+    "pattern_coverage": "P01, P03, P10, P_NEW_GUSTAR",
+    "gate_compliance": "STRICT - All words from S0001-S0026L03 LEGOs only",
+    "note": "Avoiding 'preparado' and 'para' - not taught until L05 and L06"
   },
 
   "S0026L05": {
@@ -130,24 +139,23 @@
     "practice_phrases": [
       ["ready", "preparado", null, 1],
       ["nearly ready", "casi preparado", null, 2],
-      ["I like ready", "me gusta preparado", "P_NEW_GUSTAR", 2],
-      ["ready to speak", "preparado para hablar", null, 2],
-      ["I feel ready", "sentir preparado", null, 2],
-      ["I like to feel ready", "me gusta sentir preparado", "P_NEW_GUSTAR", 3],
+      ["I'm nearly ready", "estoy casi preparado", null, 3],
+      ["I feel nearly ready", "siento casi preparado", null, 3],
+      ["I like feeling nearly ready", "me gusta sentir casi preparado", "P_NEW_GUSTAR", 3],
       ["as if I were nearly ready", "como si estuviera casi preparado", "P10", 3],
-      ["I'm nearly ready to speak Spanish", "estoy casi preparado para hablar español", "P02", 4],
-      ["I like to feel as if I were nearly ready", "me gusta sentir como si estuviera casi preparado", "P_NEW_GUSTAR", 5],
-      ["why I want to feel as if I were nearly ready to speak", "por qué quiero sentir como si estuviera casi preparado para hablar", "P12", 8]
+      ["I want to feel nearly ready", "quiero sentir casi preparado", "P01", 3],
+      ["I like to feel as if I were nearly ready", "me gusta sentir como si estuviera casi preparado", "P_NEW_GUSTAR", 4],
+      ["I'm going to be nearly ready tomorrow", "voy a estar casi preparado mañana", "P03", 4],
+      ["I'd like to feel as if I were nearly ready", "me gustaría sentir como si estuviera casi preparado", "P04", 4]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 2,
-      "longer_4_5": 1,
-      "long_6_plus": 2
+      "really_short_1_2": 2,
+      "quite_short_3": 5,
+      "longer_4_5": 3,
+      "long_6_plus": 0
     },
-    "pattern_coverage": "P02, P10, P12, P_NEW_GUSTAR",
-    "full_seed_included": "NO - missing 'to go'",
-    "gate_compliance": "STRICT - Only S0001-S0026L04 LEGOs available"
+    "pattern_coverage": "P01, P03, P04, P10, P_NEW_GUSTAR",
+    "gate_compliance": "STRICT - All words from S0001-S0026L04 LEGOs only"
   },
 
   "S0026L06": {
@@ -158,23 +166,23 @@
     "practice_phrases": [
       ["to go", "para ir", null, 1],
       ["ready to go", "preparado para ir", null, 2],
-      ["I like to go", "me gusta para ir", "P_NEW_GUSTAR", 2],
       ["nearly ready to go", "casi preparado para ir", null, 3],
-      ["I feel ready to go", "sentir preparado para ir", null, 3],
-      ["I like to feel ready to go", "me gusta sentir preparado para ir", "P_NEW_GUSTAR", 4],
+      ["I'm nearly ready to go", "estoy casi preparado para ir", null, 4],
+      ["I like feeling ready to go", "me gusta sentir preparado para ir", "P_NEW_GUSTAR", 4],
+      ["I like feeling nearly ready to go", "me gusta sentir casi preparado para ir", "P_NEW_GUSTAR", 4],
       ["as if I were nearly ready to go", "como si estuviera casi preparado para ir", "P10", 4],
-      ["I like to feel as if I were nearly ready to go", "me gusta sentir como si estuviera casi preparado para ir", "P_NEW_GUSTAR", 6],
-      ["I want to feel as if I were nearly ready to go tomorrow", "quiero sentir como si estuviera casi preparado para ir mañana", "P01", 7],
-      ["I like feeling as if I'm nearly ready to go.", "me gusta sentir como si estuviera casi preparado para ir.", "P_NEW_GUSTAR", 6]
+      ["I want to feel nearly ready to go", "quiero sentir casi preparado para ir", "P01", 4],
+      ["I like feeling as if I'm nearly ready to go", "me gusta sentir como si estuviera casi preparado para ir", "P_NEW_GUSTAR", 5],
+      ["I like feeling as if I'm nearly ready to go.", "me gusta sentir como si estuviera casi preparado para ir.", "P_NEW_GUSTAR", 5]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 3,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 3
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 6,
+      "long_6_plus": 1
     },
     "pattern_coverage": "P01, P10, P_NEW_GUSTAR",
     "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0026L05 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0026L05 LEGOs only. NOTE: 'para' and 'ir' introduced in this LEGO."
   }
 }

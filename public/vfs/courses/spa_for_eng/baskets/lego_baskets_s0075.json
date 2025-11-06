@@ -8,34 +8,119 @@
     "target": "¿Tienes más que aprender?"
   },
   "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
-  "cumulative_legos": 226,
-
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P08",
+    "P10",
+    "P12",
+    "P18"
+  ],
+  "cumulative_legos": 211,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation",
+    "gate_validation": {
+      "whitelist_size": 233,
+      "violations_found": 0,
+      "violations_fixed": 0,
+      "compliance_status": "100% GATE compliant - all words validated against S0001-S0074 whitelist"
+    }
+  },
   "S0075L01": {
-    "lego": ["have you got more to learn", "tienes más que aprender"],
+    "lego": [
+      "have you got more to learn",
+      "tienes más que aprender"
+    ],
     "type": "M",
-    "available_legos": 225,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "available_legos": 210,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P08",
+      "P10",
+      "P12",
+      "P18"
+    ],
     "practice_phrases": [
-      ["have you got more to learn", "tienes más que aprender", null, 1],
-      ["have you got more to learn here", "tienes más que aprender aquí", null, 2],
-      ["but have you got more to learn", "pero tienes más que aprender", null, 2],
-      ["I think that have you got more to learn", "pienso que tienes más que aprender", null, 3],
-      ["have you got more to learn yesterday", "tienes más que aprender ayer", null, 3],
-      ["if have you got more to learn", "si tienes más que aprender", null, 2],
-      ["because have you got more to learn", "porque tienes más que aprender", null, 2],
-      ["I'm not sure if have you got more to learn", "no estoy seguro si tienes más que aprender", null, 4],
-      ["thank you very much for helping me to understand have you got more to learn", "muchas gracias por ayudarme a comprender tienes más que aprender", null, 8],
-      ["have you got more to learn?", "¿tienes más que aprender?", null, 1]
+      [
+        "have you got more to learn",
+        "tienes más que aprender",
+        null,
+        4
+      ],
+      [
+        "have you got more to practice",
+        "tienes más que practicar",
+        null,
+        4
+      ],
+      [
+        "I think you've got more to learn",
+        "pienso que tienes más que aprender",
+        "P05",
+        6
+      ],
+      [
+        "have you got more to learn today",
+        "tienes más que aprender hoy",
+        null,
+        5
+      ],
+      [
+        "have you got more to understand",
+        "tienes más que comprender",
+        null,
+        4
+      ],
+      [
+        "I think that you've got more to learn with me",
+        "pienso que tienes más que aprender conmigo",
+        "P05",
+        7
+      ],
+      [
+        "you're doing very well but have you got more to learn",
+        "estás haciendo muy bien pero tienes más que aprender",
+        "P02",
+        10
+      ],
+      [
+        "I wanted to speak with you if you've got more to learn about Spanish",
+        "quería hablar contigo si tienes más que aprender sobre español",
+        "P01",
+        11
+      ],
+      [
+        "I think that you're doing well but you've got more to practice with me",
+        "pienso que estás haciendo bien pero tienes más que practicar conmigo",
+        "P05",
+        12
+      ],
+      [
+        "Have you got more to learn?",
+        "¿Tienes más que aprender?",
+        null,
+        4
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 1
+      "really_short_1_2": 0,
+      "quite_short_3": 0,
+      "longer_4_5": 5,
+      "long_6_plus": 5
     },
-    "pattern_coverage": "None",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0074 LEGOs available"
+    "pattern_coverage": "P01, P02, P05, null",
+    "full_seed_included": "YES - phrase 10 is the complete seed sentence",
+    "gate_compliance": "STRICT - All words from S0001-S0074 LEGOs only"
   }
 }

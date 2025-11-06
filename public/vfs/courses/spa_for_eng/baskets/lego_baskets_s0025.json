@@ -24,13 +24,15 @@
       ["are you going to come back", "vas a volver", "P03", 2],
       ["are you going to start talking soon", "vas a comenzar a hablar pronto", "P03", 4],
       ["why are you going to learn his name", "por qué vas a aprender su nombre", "P12", 5],
-      ["are you going to meet people who speak Spanish tomorrow", "vas a encontrar personas que hablan español mañana", "P03", 6]
+      ["are you going to meet people who speak Spanish tomorrow", "vas a encontrar personas que hablan español mañana", "P03", 7],
+      ["are you going to start talking more because you speak very well", "vas a comenzar a hablar más porque hablas muy bien", "P03", 9],
+      ["why are you going to meet people who speak Spanish soon", "por qué vas a encontrar personas que hablan español pronto", "P12", 8]
     ],
     "phrase_distribution": {
       "really_short_1_2": 4,
       "quite_short_3": 1,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 3
     },
     "pattern_coverage": "P03, P12",
     "full_seed_included": "NO - missing 'to help me' and 'before I have to go'",
@@ -49,16 +51,18 @@
       ["he wants to help me", "él quiere ayudarme", "P01", 3],
       ["you want to help me", "quieres ayudarme", "P01", 2],
       ["are you going to help me tomorrow", "vas a ayudarme mañana", "P03", 3],
-      ["I'm going to help me more", "voy a ayudarme más", "P03", 3],
-      ["why are you going to help me soon", "por qué vas a ayudarme pronto", "P12", 4]
+      ["I'm going to help me more soon", "voy a ayudarme más pronto", "P03", 4],
+      ["why are you going to help me soon", "por qué vas a ayudarme pronto", "P12", 4],
+      ["I'd like to be able to help me after you finish", "me gustaría poder ayudarme después de que termines", "P04", 5],
+      ["are you going to help me because you speak Spanish", "vas a ayudarme porque hablas español", "P03", 6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 4,
-      "quite_short_3": 3,
-      "longer_4_5": 1,
-      "long_6_plus": 0
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 2
     },
-    "pattern_coverage": "P01, P03, P12",
+    "pattern_coverage": "P01, P03, P04, P12",
     "full_seed_included": "NO - missing 'before I have to go'",
     "gate_compliance": "STRICT - Only S0001-S0025L01 LEGOs available"
   },
@@ -76,9 +80,9 @@
       ["I'm going to start talking before I have to go", "voy a comenzar a hablar antes de que tenga que ir", "P03", 4],
       ["you want to help me before I have to go", "quieres ayudarme antes de que tenga que ir", "P01", 4],
       ["I can speak Spanish before I have to go", "puedo hablar español antes de que tenga que ir", "P05", 5],
-      ["why are you going to help me before I have to go tomorrow", "por qué vas a ayudarme antes de que tenga que ir mañana", "P12", 7],
-      ["I want to meet people who speak Spanish before I have to go", "quiero encontrar personas que hablan español antes de que tenga que ir", "P01", 7],
-      ["are you going to help me before I have to go?", "vas a ayudarme antes de que tenga que ir?", "P03", 3]
+      ["why are you going to help me before I have to go tomorrow", "por qué vas a ayudarme antes de que tenga que ir mañana", "P12", 8],
+      ["I want to meet people who speak Spanish before I have to go", "quiero encontrar personas que hablan español antes de que tenga que ir", "P01", 8],
+      ["are you going to help me before I have to go?", "¿vas a ayudarme antes de que tenga que ir?", "P03", 3]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,

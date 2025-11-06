@@ -24,15 +24,17 @@
       ["you speak Spanish and I speak Spanish", "hablas español y hablo español", "P05", 4],
       ["I can speak today and I can speak tomorrow", "puedo hablar hoy y puedo hablar mañana", "P05", 5],
       ["I speak a little Spanish and you speak very well", "hablo un poco de español y hablas muy bien", "P05", 6],
-      ["I'm going to try today and I'm going to try tomorrow", "voy a intentar hoy y voy a intentar mañana", "P03", 6]
+      ["I'm going to try today and I'm going to try tomorrow", "voy a intentar hoy y voy a intentar mañana", "P03", 6],
+      ["I'd like to speak Spanish and I'd like to learn very well", "me gustaría hablar español y me gustaría aprender muy bien", "P04", 7],
+      ["I want to speak all day and you speak all day", "quiero hablar todo el día y hablas todo el día", "P01", 7]
     ],
     "phrase_distribution": {
       "really_short_1_2": 3,
       "quite_short_3": 1,
       "longer_4_5": 2,
-      "long_6_plus": 2
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P03, P05",
+    "pattern_coverage": "P01, P03, P04, P05",
     "full_seed_included": "NO - missing 'you to speak' and 'with me'",
     "gate_compliance": "STRICT - Only S0001-S0014 LEGOs available",
     "note": "Second conjunction now available - can combine with 'si'"
@@ -52,15 +54,16 @@
       ["I want you to speak tomorrow", "quiero que hables mañana", "P01", 3],
       ["I want you to speak today and tomorrow", "quiero que hables hoy y mañana", "P01", 4],
       ["I'm not sure if I want you to speak", "no estoy seguro si quiero que hables", "P18", 5],
-      ["I want you to speak Spanish all day", "quiero que hables español todo el día", "P01", 4]
+      ["I want you to speak Spanish all day", "quiero que hables español todo el día", "P01", 4],
+      ["I'd like you to speak very well after you finish", "me gustaría que hables muy bien después de que termines", "P04", 6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
       "quite_short_3": 4,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 2
     },
-    "pattern_coverage": "P01, P18",
+    "pattern_coverage": "P01, P04, P18",
     "full_seed_included": "NO - missing 'with me'",
     "gate_compliance": "STRICT - Only S0001-S0015L01 LEGOs available"
   },

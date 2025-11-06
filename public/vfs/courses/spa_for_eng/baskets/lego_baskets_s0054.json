@@ -7,91 +7,317 @@
     "known": "We wanted to give you a little more time.",
     "target": "Queríamos darte un poco más de tiempo."
   },
-  "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+  "patterns_introduced": "P08",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P08",
+    "P10",
+    "P12",
+    "P18",
+    "P_RELATIVE",
+    "P_NEW_GUSTAR",
+    "P_NEW_IMPERSONAL",
+    "P_NEW_IMPERFECT",
+    "P_NEW_REFLEXIVE",
+    "P_NEW_GUSTAR_LIKE",
+    "P_NEW_DISFRUTO"
+  ],
   "cumulative_legos": 160,
-
+  "curation_metadata": {
+    "curated_at": "2025-11-06T21:04:45.691079Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation"
+  },
   "S0054L01": {
-    "lego": ["we wanted", "queríamos"],
+    "lego": [
+      "we wanted",
+      "queríamos"
+    ],
     "type": "A",
     "available_legos": 157,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
+      "P_NEW_DISFRUTO"
+    ],
     "practice_phrases": [
-      ["we wanted", "queríamos", "P_NEW_IMPERFECT", 1],
-      ["we wanted to speak", "queríamos hablar", "P_NEW_IMPERFECT", 2],
-      ["but we wanted", "pero queríamos", "P_NEW_IMPERFECT", 2],
-      ["we wanted to learn Spanish", "queríamos aprender español", "P_NEW_IMPERFECT", 3],
-      ["we wanted to do something", "queríamos hacer algo", "P_NEW_IMPERFECT", 3],
-      ["because we wanted to improve", "porque queríamos mejorar", "P_NEW_IMPERFECT", 3],
-      ["we wanted or we didn't want", "queríamos o no queríamos", "P_NEW_IMPERFECT", 2],
-      ["if we wanted to put something in her bag", "si queríamos poner algo en su bolsa", "P_NEW_IMPERFECT", 5],
-      ["we wanted to do interesting things with my friends yesterday", "queríamos hacer cosas interesantes con mis amigos ayer", "P_NEW_IMPERFECT", 7],
-      ["we wanted to write a letter to his friend last week", "queríamos escribir una carta a su amigo la semana pasada", "P_NEW_IMPERFECT", 8]
+      [
+        "we wanted",
+        "queríamos",
+        "P08",
+        1
+      ],
+      [
+        "we wanted to speak",
+        "queríamos hablar",
+        "P08",
+        2
+      ],
+      [
+        "we wanted to learn Spanish",
+        "queríamos aprender español",
+        "P08",
+        3
+      ],
+      [
+        "we wanted to speak with you",
+        "queríamos hablar contigo",
+        "P08",
+        3
+      ],
+      [
+        "we wanted to do something yesterday",
+        "queríamos hacer algo ayer",
+        "P08",
+        3
+      ],
+      [
+        "we wanted to write a letter last week",
+        "queríamos escribir una carta la semana pasada",
+        "P08",
+        4
+      ],
+      [
+        "we wanted to speak Spanish with you yesterday",
+        "queríamos hablar español contigo ayer",
+        "P08",
+        4
+      ],
+      [
+        "we wanted to do something with you when you wanted",
+        "queríamos hacer algo contigo cuando querías",
+        "P08",
+        7
+      ],
+      [
+        "we wanted to do something with you last week",
+        "queríamos hacer algo contigo la semana pasada",
+        "P08",
+        5
+      ],
+      [
+        "we wanted to write a letter to his friend yesterday",
+        "queríamos escribir una carta a su amigo ayer",
+        "P08",
+        6
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 4,
+      "really_short_1_2": 2,
       "quite_short_3": 3,
       "longer_4_5": 1,
-      "long_6_plus": 2
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P_NEW_IMPERFECT",
-    "full_seed_included": "NO - missing 'to give you', 'a little more time'",
-    "gate_compliance": "STRICT - Only S0001-S0053 LEGOs available"
+    "pattern_coverage": "P08",
+    "gate_compliance": "STRICT - All words from S0001-S0053 LEGOs only"
   },
-
   "S0054L02": {
-    "lego": ["to give you", "darte"],
+    "lego": [
+      "to give you",
+      "darte"
+    ],
     "type": "A",
     "available_legos": 158,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P08",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
+      "P_NEW_DISFRUTO"
+    ],
     "practice_phrases": [
-      ["to give you", "darte", null, 1],
-      ["we wanted to give you", "queríamos darte", "P_NEW_IMPERFECT", 2],
-      ["to give you something", "darte algo", null, 2],
-      ["I want to give you", "quiero darte", "P01", 2],
-      ["we wanted to give you yesterday", "queríamos darte ayer", "P_NEW_IMPERFECT", 3],
-      ["because we wanted to give you", "porque queríamos darte", "P_NEW_IMPERFECT", 3],
-      ["I need to give you something", "necesito darte algo", "P17", 3],
-      ["if we wanted to give you a letter", "si queríamos darte una carta", "P_NEW_IMPERFECT", 4],
-      ["we wanted to give you something interesting yesterday", "queríamos darte algo interesante ayer", "P_NEW_IMPERFECT", 5],
-      ["but we wanted to give you more time last week", "pero queríamos darte más tiempo la semana pasada", "P_NEW_IMPERFECT", 7]
+      [
+        "to give you",
+        "darte",
+        null,
+        1
+      ],
+      [
+        "we wanted to give you",
+        "queríamos darte",
+        "P08",
+        2
+      ],
+      [
+        "we wanted to give you something",
+        "queríamos darte algo",
+        "P08",
+        3
+      ],
+      [
+        "I want to give you something",
+        "quiero darte algo",
+        "P01",
+        3
+      ],
+      [
+        "we wanted to give you something yesterday",
+        "queríamos darte algo ayer",
+        "P08",
+        3
+      ],
+      [
+        "I'm going to give you something today",
+        "voy a darte algo hoy",
+        "P03",
+        4
+      ],
+      [
+        "we wanted to give you something when you wanted",
+        "queríamos darte algo cuando querías",
+        "P08",
+        6
+      ],
+      [
+        "we wanted to give you something last week",
+        "queríamos darte algo la semana pasada",
+        "P08",
+        4
+      ],
+      [
+        "I think that I want to give you something now",
+        "pienso que quiero darte algo ahora",
+        "P01",
+        7
+      ],
+      [
+        "we wanted to give you something with my friends",
+        "queríamos darte algo con mis amigos",
+        "P08",
+        5
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 4,
+      "really_short_1_2": 2,
       "quite_short_3": 3,
       "longer_4_5": 1,
-      "long_6_plus": 2
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P17, P_NEW_IMPERFECT",
-    "full_seed_included": "NO - missing 'a little more time'",
-    "gate_compliance": "STRICT - Only S0001-S0054L01 LEGOs available"
+    "pattern_coverage": "P08, P01, P03",
+    "gate_compliance": "STRICT - All words from S0001-S0054L01 LEGOs only"
   },
-
   "S0054L03": {
-    "lego": ["a little more time", "un poco más de tiempo"],
+    "lego": [
+      "a little more time",
+      "un poco más de tiempo"
+    ],
     "type": "M",
     "available_legos": 159,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P08",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
+      "P_NEW_DISFRUTO"
+    ],
     "practice_phrases": [
-      ["a little more time", "un poco más de tiempo", null, 1],
-      ["to give you a little more time", "darte un poco más de tiempo", null, 2],
-      ["I need a little more time", "necesito un poco más de tiempo", "P17", 2],
-      ["we wanted a little more time", "queríamos un poco más de tiempo", "P_NEW_IMPERFECT", 2],
-      ["we wanted to give you a little more time", "queríamos darte un poco más de tiempo", "P_NEW_IMPERFECT", 3],
-      ["because we wanted a little more time", "porque queríamos un poco más de tiempo", "P_NEW_IMPERFECT", 2],
-      ["if I need a little more time", "si necesito un poco más de tiempo", "P17", 3],
-      ["we wanted to give you a little more time yesterday", "queríamos darte un poco más de tiempo ayer", "P_NEW_IMPERFECT", 4],
-      ["but I need a little more time to finish everything", "pero necesito un poco más de tiempo para terminar todo", "P17", 7],
-      ["we wanted to give you a little more time.", "queríamos darte un poco más de tiempo.", "P_NEW_IMPERFECT", 3]
+      [
+        "a little more time",
+        "un poco más de tiempo",
+        null,
+        1
+      ],
+      [
+        "to give you a little more time",
+        "darte un poco más de tiempo",
+        null,
+        2
+      ],
+      [
+        "we wanted to give you a little more time",
+        "queríamos darte un poco más de tiempo",
+        "P08",
+        3
+      ],
+      [
+        "I want to give you a little more time",
+        "quiero darte un poco más de tiempo",
+        "P01",
+        3
+      ],
+      [
+        "we wanted to give you a little more time yesterday",
+        "queríamos darte un poco más de tiempo ayer",
+        "P08",
+        4
+      ],
+      [
+        "I'm going to give you a little more time today",
+        "voy a darte un poco más de tiempo hoy",
+        "P03",
+        5
+      ],
+      [
+        "we wanted to give you a little more time when you wanted",
+        "queríamos darte un poco más de tiempo cuando querías",
+        "P08",
+        8
+      ],
+      [
+        "we wanted to give you a little more time last week",
+        "queríamos darte un poco más de tiempo la semana pasada",
+        "P08",
+        6
+      ],
+      [
+        "I think that I want to give you a little more time",
+        "pienso que quiero darte un poco más de tiempo",
+        "P01",
+        8
+      ],
+      [
+        "We wanted to give you a little more time.",
+        "Queríamos darte un poco más de tiempo.",
+        "P08",
+        3
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 3,
-      "longer_4_5": 1,
-      "long_6_plus": 1
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P17, P_NEW_IMPERFECT",
+    "pattern_coverage": "P08, P01, P03",
     "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0054L02 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0054L02 LEGOs only"
   }
 }

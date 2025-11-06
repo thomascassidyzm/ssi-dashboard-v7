@@ -14,66 +14,54 @@
     "P03",
     "P04",
     "P05",
+    "P08",
     "P10",
     "P12",
-    "P14",
-    "P15",
-    "P16",
-    "P17",
     "P18",
     "P_RELATIVE",
     "P_NEW_GUSTAR",
-    "P_NEW_GUSTAR_LIKE",
     "P_NEW_IMPERSONAL",
     "P_NEW_IMPERFECT",
     "P_NEW_REFLEXIVE",
+    "P_NEW_GUSTAR_LIKE",
     "P_NEW_DISFRUTO",
-    "P_NEW_PUDE",
-    "P_NEW_PRESENT_PERFECT_CONTINUOUS",
-    "P_NEW_ACABO_DE",
-    "P_NEW_FUTURE_ABLE",
-    "P_NEW_TE_ACUERDAS",
-    "P_NEW_CONDITIONAL",
-    "P_NEW_PERFECT",
-    "P_NEW_FUTURE",
-    "P_NEW_MODAL"
+    "P_NEW_MODAL",
+    "P_NEW_NEGATION",
+    "P_NEW_TEMPORAL"
   ],
-  "cumulative_legos": 289,
+  "cumulative_legos": 272,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:29:31.532541Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation"
+  },
   "S0098L01": {
     "lego": [
       "I should",
       "debería"
     ],
     "type": "A",
-    "available_legos": 285,
+    "available_legos": 268,
     "available_patterns": [
       "P01",
       "P02",
       "P03",
       "P04",
       "P05",
+      "P08",
       "P10",
       "P12",
-      "P14",
-      "P15",
-      "P16",
-      "P17",
       "P18",
       "P_RELATIVE",
       "P_NEW_GUSTAR",
-      "P_NEW_GUSTAR_LIKE",
       "P_NEW_IMPERSONAL",
       "P_NEW_IMPERFECT",
       "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
       "P_NEW_DISFRUTO",
-      "P_NEW_PUDE",
-      "P_NEW_PRESENT_PERFECT_CONTINUOUS",
-      "P_NEW_ACABO_DE",
-      "P_NEW_FUTURE_ABLE",
-      "P_NEW_TE_ACUERDAS",
-      "P_NEW_CONDITIONAL",
-      "P_NEW_PERFECT",
-      "P_NEW_FUTURE"
+      "P_NEW_MODAL",
+      "P_NEW_NEGATION",
+      "P_NEW_TEMPORAL"
     ],
     "practice_phrases": [
       [
@@ -83,69 +71,68 @@
         1
       ],
       [
-        "I should here",
-        "debería aquí",
+        "I should speak Spanish",
+        "debería hablar español",
         "P_NEW_MODAL",
         2
       ],
       [
-        "but I should",
-        "pero debería",
-        "P_NEW_MODAL",
-        1
-      ],
-      [
-        "I think that I should",
-        "pienso que debería",
-        "P_NEW_MODAL",
-        3
-      ],
-      [
-        "I should consider",
-        "debería considerar",
+        "I should learn more",
+        "debería aprender más",
         "P_NEW_MODAL",
         2
       ],
       [
-        "if I should",
-        "si debería",
+        "I should go now",
+        "debería ir ahora",
         "P_NEW_MODAL",
-        1
+        2
       ],
       [
-        "because I should",
-        "porque debería",
+        "I should wake up soon",
+        "debería despertarme pronto",
         "P_NEW_MODAL",
-        1
+        2
       ],
       [
-        "I'm not sure if I should",
-        "no estoy seguro si debería",
+        "I think that I should speak more",
+        "pienso que debería hablar más",
+        "P05",
+        5
+      ],
+      [
+        "I should go tomorrow",
+        "debería ir mañana",
+        "P_NEW_MODAL",
+        2
+      ],
+      [
+        "I should learn Spanish very well",
+        "debería aprender español muy bien",
         "P_NEW_MODAL",
         4
       ],
       [
-        "I think that I should consider playing something else as soon as you want",
-        "pienso que debería considerar jugar otra cosa tan pronto como quieras",
-        "P_NEW_MODAL",
-        10
+        "I think that I should speak Spanish very well",
+        "pienso que debería hablar español muy bien",
+        "P05",
+        7
       ],
       [
-        "yes I'm ready to go but I should consider this",
-        "sí estoy preparado para ir pero debería considerar esto",
+        "I should learn Spanish when I can",
+        "debería aprender español cuando pueda",
         "P_NEW_MODAL",
-        7
+        5
       ]
     ],
     "phrase_distribution": {
       "really_short_1_2": 6,
-      "quite_short_3": 1,
-      "longer_4_5": 1,
-      "long_6_plus": 2
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 1
     },
-    "pattern_coverage": "P_NEW_MODAL",
-    "full_seed_included": "NO - missing 'to consider', 'to play', 'something else'",
-    "gate_compliance": "STRICT - Only S0001-S0097 LEGOs available"
+    "pattern_coverage": "Mixed patterns",
+    "gate_compliance": "STRICT - All words from S0001-S0098L01 LEGOs only"
   },
   "S0098L02": {
     "lego": [
@@ -153,36 +140,27 @@
       "considerar"
     ],
     "type": "A",
-    "available_legos": 286,
+    "available_legos": 269,
     "available_patterns": [
       "P01",
       "P02",
       "P03",
       "P04",
       "P05",
+      "P08",
       "P10",
       "P12",
-      "P14",
-      "P15",
-      "P16",
-      "P17",
       "P18",
       "P_RELATIVE",
       "P_NEW_GUSTAR",
-      "P_NEW_GUSTAR_LIKE",
       "P_NEW_IMPERSONAL",
       "P_NEW_IMPERFECT",
       "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
       "P_NEW_DISFRUTO",
-      "P_NEW_PUDE",
-      "P_NEW_PRESENT_PERFECT_CONTINUOUS",
-      "P_NEW_ACABO_DE",
-      "P_NEW_FUTURE_ABLE",
-      "P_NEW_TE_ACUERDAS",
-      "P_NEW_CONDITIONAL",
-      "P_NEW_PERFECT",
-      "P_NEW_FUTURE",
-      "P_NEW_MODAL"
+      "P_NEW_MODAL",
+      "P_NEW_NEGATION",
+      "P_NEW_TEMPORAL"
     ],
     "practice_phrases": [
       [
@@ -195,66 +173,65 @@
         "I should consider",
         "debería considerar",
         "P_NEW_MODAL",
-        2
+        1
       ],
       [
-        "I want to consider",
-        "quiero considerar",
+        "I want to consider learning Spanish",
+        "quiero considerar aprender español",
         "P01",
-        2
+        3
       ],
       [
-        "but to consider",
-        "pero considerar",
+        "to consider something else",
+        "considerar otra cosa",
         null,
         2
       ],
       [
-        "I should consider playing",
-        "debería considerar jugar",
+        "I should consider speaking more",
+        "debería considerar hablar más",
         "P_NEW_MODAL",
         3
       ],
       [
-        "if to consider",
-        "si considerar",
+        "I'm going to consider that",
+        "voy a considerar eso",
+        "P03",
+        3
+      ],
+      [
+        "I think that I should consider learning more",
+        "pienso que debería considerar aprender más",
+        "P05",
+        6
+      ],
+      [
+        "I need to consider doing something else",
+        "necesito considerar hacer otra cosa",
         null,
-        2
+        5
       ],
       [
-        "because to consider",
-        "porque considerar",
-        null,
-        2
+        "I want to consider going tomorrow",
+        "quiero considerar ir mañana",
+        "P01",
+        4
       ],
       [
-        "I need to consider",
-        "necesito considerar",
-        "P17",
-        2
-      ],
-      [
-        "I think that I should consider playing something else for a while",
-        "pienso que debería considerar jugar otra cosa por un tiempo",
+        "I should consider learning Spanish very well",
+        "debería considerar aprender español muy bien",
         "P_NEW_MODAL",
-        9
-      ],
-      [
-        "it's time to consider this now",
-        "es hora de considerar esto ahora",
-        "P_NEW_IMPERSONAL",
         5
       ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 7,
-      "quite_short_3": 1,
-      "longer_4_5": 1,
+      "really_short_1_2": 3,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
       "long_6_plus": 1
     },
-    "pattern_coverage": "P01, P17, P_NEW_MODAL, P_NEW_IMPERSONAL",
-    "full_seed_included": "NO - missing 'to play', 'something else'",
-    "gate_compliance": "STRICT - Only S0001-S0098L01 LEGOs available"
+    "pattern_coverage": "Mixed patterns",
+    "gate_compliance": "STRICT - All words from S0001-S0098L02 LEGOs only"
   },
   "S0098L03": {
     "lego": [
@@ -262,36 +239,27 @@
       "jugar"
     ],
     "type": "A",
-    "available_legos": 287,
+    "available_legos": 270,
     "available_patterns": [
       "P01",
       "P02",
       "P03",
       "P04",
       "P05",
+      "P08",
       "P10",
       "P12",
-      "P14",
-      "P15",
-      "P16",
-      "P17",
       "P18",
       "P_RELATIVE",
       "P_NEW_GUSTAR",
-      "P_NEW_GUSTAR_LIKE",
       "P_NEW_IMPERSONAL",
       "P_NEW_IMPERFECT",
       "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
       "P_NEW_DISFRUTO",
-      "P_NEW_PUDE",
-      "P_NEW_PRESENT_PERFECT_CONTINUOUS",
-      "P_NEW_ACABO_DE",
-      "P_NEW_FUTURE_ABLE",
-      "P_NEW_TE_ACUERDAS",
-      "P_NEW_CONDITIONAL",
-      "P_NEW_PERFECT",
-      "P_NEW_FUTURE",
-      "P_NEW_MODAL"
+      "P_NEW_MODAL",
+      "P_NEW_NEGATION",
+      "P_NEW_TEMPORAL"
     ],
     "practice_phrases": [
       [
@@ -301,69 +269,68 @@
         1
       ],
       [
-        "consider playing",
-        "considerar jugar",
-        null,
-        2
-      ],
-      [
         "I want to play",
         "quiero jugar",
         "P01",
         2
       ],
       [
-        "but to play",
-        "pero jugar",
-        null,
-        2
-      ],
-      [
         "I should consider playing",
         "debería considerar jugar",
         "P_NEW_MODAL",
+        2
+      ],
+      [
+        "I like to play",
+        "me gusta jugar",
+        "P_NEW_GUSTAR",
         3
       ],
       [
-        "if to play",
-        "si jugar",
-        null,
-        2
+        "I'm going to play tomorrow",
+        "voy a jugar mañana",
+        "P03",
+        3
       ],
       [
-        "because to play",
-        "porque jugar",
-        null,
-        2
-      ],
-      [
-        "I'd like to play",
-        "me gustaría jugar",
-        "P04",
-        2
-      ],
-      [
-        "I think that I should consider playing something else in a short time",
-        "pienso que debería considerar jugar otra cosa en un breve tiempo",
-        "P_NEW_MODAL",
-        9
-      ],
-      [
-        "it's time to play now",
-        "es hora de jugar ahora",
-        "P_NEW_IMPERSONAL",
+        "I want to play something else",
+        "quiero jugar otra cosa",
+        "P01",
         4
+      ],
+      [
+        "I think that I should play more",
+        "pienso que debería jugar más",
+        "P05",
+        5
+      ],
+      [
+        "I need to consider playing something else",
+        "necesito considerar jugar otra cosa",
+        null,
+        5
+      ],
+      [
+        "I should consider playing something else",
+        "debería considerar jugar otra cosa",
+        "P_NEW_MODAL",
+        4
+      ],
+      [
+        "I wanted to play yesterday but I was tired",
+        "quería jugar ayer pero estaba cansado",
+        "P_NEW_IMPERFECT",
+        7
       ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 7,
-      "quite_short_3": 1,
-      "longer_4_5": 1,
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
       "long_6_plus": 1
     },
-    "pattern_coverage": "P01, P04, P_NEW_MODAL, P_NEW_IMPERSONAL",
-    "full_seed_included": "NO - missing 'something else'",
-    "gate_compliance": "STRICT - Only S0001-S0098L02 LEGOs available"
+    "pattern_coverage": "Mixed patterns",
+    "gate_compliance": "STRICT - All words from S0001-S0098L03 LEGOs only"
   },
   "S0098L04": {
     "lego": [
@@ -371,36 +338,27 @@
       "otra cosa"
     ],
     "type": "M",
-    "available_legos": 288,
+    "available_legos": 271,
     "available_patterns": [
       "P01",
       "P02",
       "P03",
       "P04",
       "P05",
+      "P08",
       "P10",
       "P12",
-      "P14",
-      "P15",
-      "P16",
-      "P17",
       "P18",
       "P_RELATIVE",
       "P_NEW_GUSTAR",
-      "P_NEW_GUSTAR_LIKE",
       "P_NEW_IMPERSONAL",
       "P_NEW_IMPERFECT",
       "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
       "P_NEW_DISFRUTO",
-      "P_NEW_PUDE",
-      "P_NEW_PRESENT_PERFECT_CONTINUOUS",
-      "P_NEW_ACABO_DE",
-      "P_NEW_FUTURE_ABLE",
-      "P_NEW_TE_ACUERDAS",
-      "P_NEW_CONDITIONAL",
-      "P_NEW_PERFECT",
-      "P_NEW_FUTURE",
-      "P_NEW_MODAL"
+      "P_NEW_MODAL",
+      "P_NEW_NEGATION",
+      "P_NEW_TEMPORAL"
     ],
     "practice_phrases": [
       [
@@ -410,68 +368,68 @@
         1
       ],
       [
-        "to play something else",
-        "jugar otra cosa",
-        null,
-        2
-      ],
-      [
         "I want something else",
         "quiero otra cosa",
         "P01",
         2
       ],
       [
-        "but something else",
-        "pero otra cosa",
+        "I should consider something else",
+        "debería considerar otra cosa",
+        "P_NEW_MODAL",
+        2
+      ],
+      [
+        "to play something else",
+        "jugar otra cosa",
         null,
         2
+      ],
+      [
+        "I need to do something else",
+        "necesito hacer otra cosa",
+        null,
+        3
+      ],
+      [
+        "I want to play something else",
+        "quiero jugar otra cosa",
+        "P01",
+        3
+      ],
+      [
+        "I'm going to do something else tomorrow",
+        "voy a hacer otra cosa mañana",
+        "P03",
+        5
+      ],
+      [
+        "I think that I should consider something else",
+        "pienso que debería considerar otra cosa",
+        "P05",
+        6
       ],
       [
         "I should consider playing something else",
         "debería considerar jugar otra cosa",
         "P_NEW_MODAL",
-        3
+        4
       ],
       [
-        "if something else",
-        "si otra cosa",
-        null,
-        2
-      ],
-      [
-        "because something else",
-        "porque otra cosa",
-        null,
-        2
-      ],
-      [
-        "I'm not sure something else",
-        "no estoy seguro otra cosa",
-        null,
-        3
-      ],
-      [
-        "I think that I should consider playing something else in a short time",
-        "pienso que debería considerar jugar otra cosa en un breve tiempo",
+        "I should consider playing something else",
+        "Debería considerar jugar otra cosa",
         "P_NEW_MODAL",
-        9
-      ],
-      [
-        "I should consider playing something else.",
-        "debería considerar jugar otra cosa.",
-        "P_NEW_MODAL",
-        3
+        4
       ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 3,
-      "longer_4_5": 0,
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
       "long_6_plus": 1
     },
-    "pattern_coverage": "P01, P_NEW_MODAL",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0098L03 LEGOs available"
+    "pattern_coverage": "Mixed patterns",
+    "gate_compliance": "STRICT - All words from S0001-S0098L04 LEGOs only",
+    "full_seed_included": "YES - final phrase"
   }
 }

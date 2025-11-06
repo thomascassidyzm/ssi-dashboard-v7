@@ -1,5 +1,5 @@
 {
-  "version": "curated_v7_spanish",
+  "version": "curated_v6_molecular_lego",
   "seed": "S0085",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -8,62 +8,216 @@
     "target": "No conozco a esas personas."
   },
   "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
-  "cumulative_legos": 251,
-
-  "S0085L01": {
-    "lego": ["I don't know", "no conozco"],
-    "type": "M",
-    "available_legos": 249,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
-    "practice_phrases": [
-      ["I don't know", "no conozco", null, 1],
-      ["I don't know here", "no conozco aquí", null, 2],
-      ["but I don't know", "pero no conozco", null, 2],
-      ["I think that I don't know", "pienso que no conozco", null, 3],
-      ["I don't know those people", "no conozco a esas personas", null, 3],
-      ["if I don't know", "si no conozco", null, 2],
-      ["because I don't know", "porque no conozco", null, 2],
-      ["I'm not sure if I don't know", "no estoy seguro si no conozco", null, 4],
-      ["I don't agree with what he said about my friend I don't know", "no estoy de acuerdo con lo que dijo sobre mi amigo no conozco", null, 10],
-      ["when did you start to learn I don't know", "cuándo comenzaste a aprender no conozco", "P03", 3]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 5,
-      "quite_short_3": 3,
-      "longer_4_5": 1,
-      "long_6_plus": 1
-    },
-    "pattern_coverage": "P03",
-    "full_seed_included": "NO - missing 'those people'",
-    "gate_compliance": "STRICT - Only S0001-S0084 LEGOs available"
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10"
+  ],
+  "cumulative_legos": 236,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:24:15.726213Z",
+    "curated_by": "Claude Code - Agent-generated with strict GATE validation v2",
+    "gate_validation": "100% compliant - all words from S0001-S0085 only",
+    "whitelist_size": 237,
+    "validation_method": "word-by-word exact form matching (case-insensitive)"
   },
-
-  "S0085L02": {
-    "lego": ["those people", "a esas personas"],
+  "S0085L01": {
+    "lego": [
+      "I don't know",
+      "no conozco"
+    ],
     "type": "M",
-    "available_legos": 250,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "lego_type": "MOLECULAR",
+    "molecular_components": [
+      "no (not)",
+      "conozco (I know)"
+    ],
+    "available_legos": 234,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10"
+    ],
     "practice_phrases": [
-      ["those people", "a esas personas", null, 1],
-      ["I don't know those people", "no conozco a esas personas", null, 2],
-      ["I want those people", "quiero a esas personas", "P01", 2],
-      ["but those people", "pero a esas personas", null, 2],
-      ["I don't know those people here", "no conozco a esas personas aquí", null, 3],
-      ["if those people", "si a esas personas", null, 2],
-      ["because those people", "porque a esas personas", null, 2],
-      ["I'm not sure if I don't know those people", "no estoy seguro si no conozco a esas personas", null, 4],
-      ["I don't agree with what he said about my friend those people", "no estoy de acuerdo con lo que dijo sobre mi amigo a esas personas", null, 8],
-      ["I don't know those people.", "no conozco a esas personas.", null, 2]
+      [
+        "I don't know",
+        "no conozco",
+        null,
+        2
+      ],
+      [
+        "I don't know those people here",
+        "no conozco a esas personas aquí",
+        null,
+        5
+      ],
+      [
+        "I don't know those people",
+        "no conozco a esas personas",
+        null,
+        5
+      ],
+      [
+        "I'm sorry but I don't know",
+        "lo siento pero no conozco",
+        null,
+        5
+      ],
+      [
+        "I don't know them",
+        "no los conozco",
+        null,
+        3
+      ],
+      [
+        "I don't know them but I want to learn",
+        "no los conozco pero quiero aprender",
+        "P01",
+        7
+      ],
+      [
+        "I don't know anyone here",
+        "no conozco a nadie aquí",
+        null,
+        5
+      ],
+      [
+        "I want to say that I don't know them",
+        "quiero decir que no los conozco",
+        "P01",
+        6
+      ],
+      [
+        "I'm sorry but I don't know those people",
+        "lo siento pero no conozco a esas personas",
+        null,
+        8
+      ],
+      [
+        "I think that I don't know anyone here",
+        "pienso que no conozco a nadie aquí",
+        "P05",
+        7
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 7,
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P05",
+    "gate_compliance": "STRICT - All words from S0001-S0085L01 LEGOs only"
+  },
+  "S0085L02": {
+    "lego": [
+      "those people",
+      "a esas personas"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "molecular_components": [
+      "a (to/personal a)",
+      "esas (those)",
+      "personas (people)"
+    ],
+    "available_legos": 236,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10"
+    ],
+    "practice_phrases": [
+      [
+        "those people",
+        "esas personas",
+        null,
+        2
+      ],
+      [
+        "I don't know those people",
+        "no conozco a esas personas",
+        null,
+        5
+      ],
+      [
+        "those people are here now",
+        "esas personas están aquí ahora",
+        null,
+        4
+      ],
+      [
+        "I don't know those people here",
+        "no conozco a esas personas aquí",
+        null,
+        5
+      ],
+      [
+        "I want to talk to those people",
+        "quiero hablar con esas personas",
+        "P01",
+        6
+      ],
+      [
+        "What do those people want to learn?",
+        "¿Qué quiere aprender esas personas?",
+        null,
+        5
+      ],
+      [
+        "I don't know those people but they're here",
+        "no conozco a esas personas pero están aquí",
+        null,
+        8
+      ],
+      [
+        "I want to know about those people",
+        "quiero saber sobre esas personas",
+        "P01",
+        5
+      ],
+      [
+        "I don't know those people.",
+        "no conozco a esas personas.",
+        null,
+        5
+      ],
+      [
+        "I want to learn about those people",
+        "quiero aprender sobre esas personas",
+        "P01",
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
       "quite_short_3": 1,
-      "longer_4_5": 1,
-      "long_6_plus": 1
+      "longer_4_5": 5,
+      "long_6_plus": 3
     },
     "pattern_coverage": "P01",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0085L01 LEGOs available"
+    "full_seed_included": "YES - phrase 9",
+    "gate_compliance": "STRICT - All words from S0001-S0085L02 LEGOs only"
   }
 }

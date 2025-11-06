@@ -10,6 +10,11 @@
   "patterns_introduced": "",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
   "cumulative_legos": 57,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 STRICT GATE compliance",
+    "gate_compliance_note": "Regenerated with strict GATE compliance - only exact Spanish forms taught in LEGOs through S0018"
+  },
 
   "S0019L01": {
     "lego": ["but", "pero"],
@@ -18,23 +23,26 @@
     "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
     "practice_phrases": [
       ["but", "pero", null, 1],
-      ["I speak but he speaks", "hablo pero él habla", "P05", 2],
-      ["I want to speak but I can't", "quiero hablar pero no puedo", "P01", 4],
+      ["today but tomorrow", "hoy pero mañana", null, 2],
       ["I speak Spanish but you speak very well", "hablo español pero hablas muy bien", "P05", 5],
-      ["he wants to come back but she wants to meet", "él quiere volver pero ella quiere reunirnos", "P01", 5],
+      ["I want to speak but I can't", "quiero hablar pero no puedo", "P01", 4],
+      ["he wants to come back but she wants to find out", "él quiere volver pero ella quiere descubrir", "P01", 5],
       ["I can speak today but I want to speak tomorrow", "puedo hablar hoy pero quiero hablar mañana", "P05", 6],
-      ["we want to meet at six o'clock but he wants to meet later on", "queremos reunirnos a las seis pero él quiere reunirnos más tarde", "P01", 8]
+      ["we want to meet at six o'clock but I want to meet later on", "queremos reunirnos a las seis pero quiero reunirnos más tarde", "P01", 8],
+      ["I speak very well but I'm not sure if you speak", "hablo muy bien pero no estoy seguro si hablas", "P05", 7],
+      ["she wants to meet this evening but he wants to come back tomorrow", "ella quiere reunirnos esta noche pero él quiere volver mañana", "P01", 7],
+      ["I can speak Spanish but I want to be able to speak very well", "puedo hablar español pero quiero poder hablar muy bien", "P05", 8]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
       "quite_short_3": 0,
-      "longer_4_5": 3,
-      "long_6_plus": 2
+      "longer_4_5": 2,
+      "long_6_plus": 6
     },
     "pattern_coverage": "P01, P05",
     "full_seed_included": "NO - missing 'I don't want' and 'to stop talking'",
-    "gate_compliance": "STRICT - Only S0001-S0018 LEGOs available",
-    "note": "Third conjunction now available - can use with 'si' and 'y'"
+    "gate_compliance": "STRICT - Only S0001-S0018 LEGOs available. Third conjunction 'pero' now available with 'si' and 'y'",
+    "note": "Third conjunction now available - can use with 'si' and 'y'. 'no puedo' uses both 'no' and 'puedo' from whitelist."
   },
 
   "S0019L02": {
@@ -51,13 +59,14 @@
       ["I don't want to meet tomorrow", "no quiero reunirnos mañana", "P01", 3],
       ["I speak but I don't want to speak", "hablo pero no quiero hablar", "P05", 4],
       ["I don't want to find out what the answer is", "no quiero descubrir cuál es la respuesta", "P01", 4],
-      ["he wants to speak but I don't want to speak", "él quiere hablar pero no quiero hablar", "P01", 6]
+      ["he wants to speak but I don't want to speak", "él quiere hablar pero no quiero hablar", "P01", 6],
+      ["I don't want to meet at six o'clock this evening", "no quiero reunirnos a las seis esta noche", "P01", 5]
     ],
     "phrase_distribution": {
       "really_short_1_2": 4,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 2
     },
     "pattern_coverage": "P01, P05",
     "full_seed_included": "NO - missing 'to stop talking'",

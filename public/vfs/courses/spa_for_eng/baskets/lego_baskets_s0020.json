@@ -10,6 +10,11 @@
   "patterns_introduced": "",
   "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
   "cumulative_legos": 60,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 STRICT GATE compliance",
+    "gate_compliance_note": "Regenerated with strict GATE compliance - only exact Spanish forms taught in LEGOs through S0019"
+  },
 
   "S0020L01": {
     "lego": ["you want", "quieres"],
@@ -22,16 +27,17 @@
       ["you want to learn", "quieres aprender", "P01", 2],
       ["you want to speak Spanish", "quieres hablar español", "P01", 3],
       ["you want to come back", "quieres volver", "P01", 2],
-      ["you want to meet tomorrow", "quieres reunirnos mañana", "P01", 3],
+      ["you want to find out", "quieres descubrir", "P01", 2],
       ["you want to find out what the answer is", "quieres descubrir cuál es la respuesta", "P01", 4],
       ["you speak but you want to learn", "hablas pero quieres aprender", "P05", 4],
-      ["I speak Spanish and you want to learn", "hablo español y quieres aprender", "P05", 5]
+      ["I speak Spanish and you want to learn", "hablo español y quieres aprender", "P05", 5],
+      ["you want to come back later on but I don't want to meet", "quieres volver más tarde pero no quiero reunirnos", "P01", 7]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 4,
-      "quite_short_3": 2,
-      "longer_4_5": 3,
-      "long_6_plus": 0
+      "really_short_1_2": 5,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 2
     },
     "pattern_coverage": "P01, P05",
     "full_seed_included": "NO - missing 'his name' and 'quickly'",
@@ -48,19 +54,20 @@
       ["to learn his name", "aprender su nombre", null, 2],
       ["you want to learn his name", "quieres aprender su nombre", "P01", 3],
       ["I want to learn his name", "quiero aprender su nombre", "P01", 3],
-      ["he wants to learn his name", "él quiere aprender su nombre", "P01", 4],
       ["to remember his name", "recordar su nombre", null, 2],
+      ["he wants to learn his name", "él quiere aprender su nombre", "P01", 4],
       ["I want to remember his name tomorrow", "quiero recordar su nombre mañana", "P01", 4],
-      ["you want to learn his name but I don't want to learn his name", "quieres aprender su nombre pero no quiero aprender su nombre", "P01", 7],
-      ["she wants to find out his name", "ella quiere descubrir su nombre", "P01", 4]
+      ["you want to learn his name but I don't want to learn", "quieres aprender su nombre pero no quiero aprender", "P01", 6],
+      ["she wants to find out his name", "ella quiere descubrir su nombre", "P01", 4],
+      ["I speak with him but I don't want to learn his name", "hablo con él pero no quiero aprender su nombre", "P05", 7]
     ],
     "phrase_distribution": {
       "really_short_1_2": 3,
       "quite_short_3": 2,
       "longer_4_5": 3,
-      "long_6_plus": 1
+      "long_6_plus": 2
     },
-    "pattern_coverage": "P01",
+    "pattern_coverage": "P01, P05",
     "full_seed_included": "NO - missing 'quickly'",
     "gate_compliance": "STRICT - Only S0001-S0020L01 LEGOs available"
   },

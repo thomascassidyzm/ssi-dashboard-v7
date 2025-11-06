@@ -7,35 +7,131 @@
     "known": "No I'm not ready yet, I need a little more time.",
     "target": "No, no estoy preparado todavía, necesito un poco más de tiempo."
   },
-  "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
-  "cumulative_legos": 281,
-
+  "patterns_introduced": "None",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P08",
+    "P10",
+    "P12",
+    "P18",
+    "P_RELATIVE",
+    "P_NEW_GUSTAR",
+    "P_NEW_IMPERSONAL",
+    "P_NEW_IMPERFECT",
+    "P_NEW_REFLEXIVE",
+    "P_NEW_GUSTAR_LIKE",
+    "P_NEW_DISFRUTO",
+    "P_NEW_MODAL",
+    "P_NEW_NEGATION",
+    "P_NEW_TEMPORAL"
+  ],
+  "cumulative_legos": 265,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:29:31.530705Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation"
+  },
   "S0096L01": {
-    "lego": ["no", "no"],
+    "lego": [
+      "no",
+      "no"
+    ],
     "type": "A",
-    "available_legos": 280,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "available_legos": 260,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P08",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
+      "P_NEW_DISFRUTO",
+      "P_NEW_MODAL",
+      "P_NEW_NEGATION",
+      "P_NEW_TEMPORAL"
+    ],
     "practice_phrases": [
-      ["no", "no", null, 1],
-      ["no here", "no aquí", null, 2],
-      ["but no", "pero no", null, 2],
-      ["I think that no", "pienso que no", null, 3],
-      ["no I'm not ready yet", "no no estoy preparado todavía", null, 3],
-      ["if no", "si no", null, 2],
-      ["because no", "porque no", null, 2],
-      ["I'm not sure no", "no estoy seguro no", null, 3],
-      ["no I'm not ready yet I need a little more time", "no no estoy preparado todavía necesito un poco más de tiempo", null, 8],
-      ["no I'm not ready to go home on the next bus", "no no estoy preparado para ir a casa en el próximo autobús", null, 8]
+      [
+        "no",
+        "no",
+        "P_NEW_NEGATION",
+        1
+      ],
+      [
+        "no I'm not ready",
+        "no no estoy preparado",
+        "P_NEW_NEGATION",
+        2
+      ],
+      [
+        "no I don't want to speak",
+        "no no quiero hablar",
+        "P01",
+        3
+      ],
+      [
+        "no I'm not tired",
+        "no no estoy cansado",
+        null,
+        2
+      ],
+      [
+        "no I don't want to wake up now",
+        "no no quiero despertarme ahora",
+        "P01",
+        4
+      ],
+      [
+        "no I'm not ready to speak Spanish",
+        "no no estoy preparado para hablar español",
+        null,
+        5
+      ],
+      [
+        "no I don't think that I want to speak",
+        "no no pienso que quiero hablar",
+        "P05",
+        6
+      ],
+      [
+        "no I'm not ready yet",
+        "no no estoy preparado todavía",
+        null,
+        3
+      ],
+      [
+        "no I don't enjoy waking up when I didn't sleep well",
+        "no no disfruto despertarme cuando no dormí bien",
+        "P_NEW_DISFRUTO",
+        8
+      ],
+      [
+        "no I'm not ready yet I need more time",
+        "no no estoy preparado todavía necesito más tiempo",
+        null,
+        7
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 3,
-      "longer_4_5": 0,
-      "long_6_plus": 1
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 3
     },
-    "pattern_coverage": "",
-    "full_seed_included": "YES - phrase 9",
-    "gate_compliance": "STRICT - Only S0001-S0095 LEGOs available"
+    "pattern_coverage": "Mixed patterns",
+    "gate_compliance": "STRICT - All words from S0001-S0096L01 LEGOs only"
   }
 }

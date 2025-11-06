@@ -23,17 +23,18 @@
       ["he wants to start talking", "él quiere comenzar a hablar", "P01", 3],
       ["I don't want to start talking", "no quiero comenzar a hablar", "P01", 2],
       ["I'm going to start talking tomorrow", "voy a comenzar a hablar mañana", "P03", 3],
-      ["I want to start talking with you", "quiero comenzar a hablar contigo", "P01", 3],
       ["because I want to start talking", "porque quiero comenzar a hablar", "P01", 3],
-      ["I'm going to start talking but I don't want to stop talking", "voy a comenzar a hablar pero no quiero parar de hablar", "P03", 7]
+      ["I'd like to be able to start talking after you finish", "me gustaría poder comenzar a hablar después de que termines", "P04", 6],
+      ["why you want to start talking with people who speak Spanish", "por qué quieres comenzar a hablar con personas que hablan español", "P12", 8],
+      ["she wants to start talking but I don't want to stop talking", "ella quiere comenzar a hablar pero no quiero parar de hablar", "P01", 9]
     ],
     "phrase_distribution": {
       "really_short_1_2": 4,
-      "quite_short_3": 4,
+      "quite_short_3": 3,
       "longer_4_5": 0,
-      "long_6_plus": 1
+      "long_6_plus": 3
     },
-    "pattern_coverage": "P01, P03",
+    "pattern_coverage": "P01, P03, P04, P12",
     "full_seed_included": "NO - missing 'more' and 'soon'",
     "gate_compliance": "STRICT - Only S0001-S0022 LEGOs available"
   },
@@ -50,17 +51,18 @@
       ["I'm going to start talking more", "voy a comenzar a hablar más", "P03", 3],
       ["to learn more", "aprender más", null, 2],
       ["I want to learn more quickly", "quiero aprender más rápidamente", "P01", 3],
-      ["I speak more", "hablo más", "P05", 2],
       ["he wants to speak more with you tomorrow", "él quiere hablar más contigo mañana", "P01", 5],
-      ["because I want to start talking more", "porque quiero comenzar a hablar más", "P01", 4]
+      ["because I want to start talking more", "porque quiero comenzar a hablar más", "P01", 4],
+      ["I'm going to meet more people who speak Spanish tomorrow", "voy a encontrar más personas que hablan español mañana", "P03", 7],
+      ["why are you learning more because you speak very well", "por qué estás aprendiendo más porque hablas muy bien", "P12", 7]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 4,
+      "really_short_1_2": 3,
       "quite_short_3": 3,
       "longer_4_5": 2,
-      "long_6_plus": 0
+      "long_6_plus": 2
     },
-    "pattern_coverage": "P01, P03, P05",
+    "pattern_coverage": "P01, P03, P12",
     "full_seed_included": "NO - missing 'soon'",
     "gate_compliance": "STRICT - Only S0001-S0023L01 LEGOs available"
   },
@@ -77,8 +79,8 @@
       ["I'm going to start talking more soon", "voy a comenzar a hablar más pronto", "P03", 4],
       ["he wants to come back soon", "él quiere volver pronto", "P01", 3],
       ["we want to meet soon", "queremos reunirnos pronto", "P01", 3],
-      ["I'm going to meet people who speak Spanish soon", "voy a encontrar personas que hablan español pronto", "P03", 5],
-      ["I want to start talking more soon because you speak very well", "quiero comenzar a hablar más pronto porque hablas muy bien", "P01", 8],
+      ["I'm going to meet people who speak Spanish soon", "voy a encontrar personas que hablan español pronto", "P03", 6],
+      ["I want to start talking more soon because you speak very well", "quiero comenzar a hablar más pronto porque hablas muy bien", "P01", 9],
       ["why you want to learn his name soon", "por qué quieres aprender su nombre pronto", "P12", 6],
       ["I'm going to start talking more soon.", "voy a comenzar a hablar más pronto.", "P03", 4]
     ],

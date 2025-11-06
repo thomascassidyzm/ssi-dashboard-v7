@@ -20,18 +20,21 @@
       ["because", "porque", null, 1],
       ["I speak because", "hablo porque", "P05", 2],
       ["because I want to speak", "porque quiero hablar", "P01", 3],
-      ["because you speak Spanish", "porque hablas español", "P05", 3],
-      ["I want to learn because you speak very well", "quiero aprender porque hablas muy bien", "P01", 6],
-      ["why are you learning because I speak Spanish", "por qué estás aprendiendo porque hablo español", "P12", 6],
-      ["I speak Spanish and you speak because you want to learn", "hablo español y hablas porque quieres aprender", "P05", 7]
+      ["because you speak very well", "porque hablas muy bien", "P05", 4],
+      ["I want to learn because you speak Spanish", "quiero aprender porque hablas español", "P01", 5],
+      ["he wants to come back because we want to meet", "él quiere volver porque queremos reunirnos", "P01", 6],
+      ["why are you learning Spanish because I speak very well", "por qué estás aprendiendo español porque hablo muy bien", "P12", 8],
+      ["I speak Spanish and you want to learn because you speak very well", "hablo español y quieres aprender porque hablas muy bien", "P05", 9],
+      ["she wants to find out what the answer is because he wants to come back", "ella quiere descubrir cuál es la respuesta porque él quiere volver", "P01", 10],
+      ["I'm going to try to explain because you speak Spanish", "voy a intentar explicar porque hablas español", "P03", 6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 0,
-      "long_6_plus": 3
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
     },
-    "pattern_coverage": "P01, P05, P12",
+    "pattern_coverage": "P01, P03, P05, P12",
     "full_seed_included": "NO - missing 'to meet' and 'people who speak Spanish'",
     "gate_compliance": "STRICT - Only S0001-S0021 LEGOs available",
     "note": "Fourth conjunction now available - can use with si, y, pero"
@@ -49,16 +52,18 @@
       ["I'm going to meet", "voy a encontrar", "P03", 3],
       ["I want to meet tomorrow", "quiero encontrar mañana", "P01", 3],
       ["because I want to meet", "porque quiero encontrar", "P01", 3],
-      ["I want to meet his name", "quiero encontrar su nombre", "P01", 3],
-      ["he wants to meet quickly but I don't want to meet", "él quiere encontrar rápidamente pero no quiero encontrar", "P01", 7]
+      ["she wants to meet but I don't want to meet", "ella quiere encontrar pero no quiero encontrar", "P01", 7],
+      ["why are you learning his name because you want to meet", "por qué estás aprendiendo su nombre porque quieres encontrar", "P12", 8],
+      ["I'm going to meet at six o'clock this evening", "voy a encontrar a las seis esta noche", "P03", 7],
+      ["I'd like to be able to meet after you finish", "me gustaría poder encontrar después de que termines", "P04", 5]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
       "quite_short_3": 5,
-      "longer_4_5": 0,
-      "long_6_plus": 1
+      "longer_4_5": 1,
+      "long_6_plus": 2
     },
-    "pattern_coverage": "P01, P03",
+    "pattern_coverage": "P01, P03, P04, P12",
     "full_seed_included": "NO - missing 'people who speak Spanish'",
     "gate_compliance": "STRICT - Only S0001-S0022L01 LEGOs available"
   },
@@ -71,20 +76,20 @@
     "practice_phrases": [
       ["people who speak", "personas que hablan", "P_RELATIVE", 1],
       ["to meet people who speak", "encontrar personas que hablan", null, 2],
-      ["I want to meet people who speak", "quiero encontrar personas que hablan", "P01", 3],
       ["people who speak Spanish", "personas que hablan español", "P_RELATIVE", 2],
+      ["I want to meet people who speak", "quiero encontrar personas que hablan", "P01", 3],
       ["I want to meet people who speak Spanish", "quiero encontrar personas que hablan español", "P01", 4],
       ["people who speak very well", "personas que hablan muy bien", "P_RELATIVE", 3],
       ["because I want to meet people who speak Spanish", "porque quiero encontrar personas que hablan español", "P01", 5],
-      ["I'm going to meet people who speak Spanish tomorrow", "voy a encontrar personas que hablan español mañana", "P03", 5],
-      ["why you want to meet people who speak Spanish quickly", "por qué quieres encontrar personas que hablan español rápidamente", "P12", 6],
+      ["I'm going to meet people who speak Spanish tomorrow", "voy a encontrar personas que hablan español mañana", "P03", 6],
+      ["why you want to meet people who speak Spanish quickly", "por qué quieres encontrar personas que hablan español rápidamente", "P12", 7],
       ["because I want to meet people who speak Spanish.", "porque quiero encontrar personas que hablan español.", "P01", 4]
     ],
     "phrase_distribution": {
       "really_short_1_2": 3,
       "quite_short_3": 2,
-      "longer_4_5": 3,
-      "long_6_plus": 2
+      "longer_4_5": 2,
+      "long_6_plus": 3
     },
     "pattern_coverage": "P01, P03, P12, P_RELATIVE",
     "full_seed_included": "YES - phrase 10",

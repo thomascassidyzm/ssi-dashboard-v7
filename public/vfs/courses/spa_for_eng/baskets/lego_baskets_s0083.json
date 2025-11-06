@@ -1,5 +1,5 @@
 {
-  "version": "curated_v7_spanish",
+  "version": "curated_v6_molecular_lego",
   "seed": "S0083",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -8,90 +8,312 @@
     "target": "Estoy de acuerdo con lo que dijiste sobre tu amigo."
   },
   "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
-  "cumulative_legos": 246,
-
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10"
+  ],
+  "cumulative_legos": 232,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:24:15.724681Z",
+    "curated_by": "Claude Code - Agent-generated with strict GATE validation v2",
+    "gate_validation": "100% compliant - all words from S0001-S0083 only",
+    "whitelist_size": 233,
+    "validation_method": "word-by-word exact form matching (case-insensitive)"
+  },
   "S0083L01": {
-    "lego": ["I agree", "estoy de acuerdo"],
+    "lego": [
+      "I agree",
+      "estoy de acuerdo"
+    ],
     "type": "M",
-    "available_legos": 243,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "lego_type": "MOLECULAR",
+    "molecular_components": [
+      "estoy (I am)",
+      "de acuerdo (in agreement)"
+    ],
+    "available_legos": 230,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10"
+    ],
     "practice_phrases": [
-      ["I agree", "estoy de acuerdo", null, 1],
-      ["I agree here", "estoy de acuerdo aquí", null, 2],
-      ["but I agree", "pero estoy de acuerdo", null, 2],
-      ["I think that I agree", "pienso que estoy de acuerdo", null, 3],
-      ["I agree with what you said", "estoy de acuerdo con lo que dijiste", null, 3],
-      ["if I agree", "si estoy de acuerdo", null, 2],
-      ["because I agree", "porque estoy de acuerdo", null, 2],
-      ["I'm not sure if I agree", "no estoy seguro si estoy de acuerdo", null, 4],
-      ["I'm very happy with how much I've learnt already but I agree", "estoy muy feliz con cuánto he aprendido ya pero estoy de acuerdo", "P_NEW_PERFECT", 9],
-      ["do you remember why I agree yesterday", "te acuerdas por qué estoy de acuerdo ayer", "P_NEW_TE_ACUERDAS", 4]
+      [
+        "I agree",
+        "estoy de acuerdo",
+        null,
+        2
+      ],
+      [
+        "I agree with you",
+        "estoy de acuerdo contigo",
+        null,
+        3
+      ],
+      [
+        "I agree now",
+        "estoy de acuerdo ahora",
+        null,
+        3
+      ],
+      [
+        "I think I agree",
+        "pienso que estoy de acuerdo",
+        "P05",
+        5
+      ],
+      [
+        "I agree with you now",
+        "estoy de acuerdo contigo ahora",
+        null,
+        4
+      ],
+      [
+        "I want to say that I agree",
+        "quiero decir que estoy de acuerdo",
+        "P01",
+        6
+      ],
+      [
+        "I'm not sure if I agree with you",
+        "no estoy seguro si estoy de acuerdo contigo",
+        "P06",
+        8
+      ],
+      [
+        "I think that I agree with what you said",
+        "pienso que estoy de acuerdo con lo que dijiste",
+        "P05",
+        10
+      ],
+      [
+        "I agree with you but I'm not sure why",
+        "estoy de acuerdo contigo pero no estoy seguro por qué",
+        "P06",
+        11
+      ],
+      [
+        "I want to learn more but I agree",
+        "quiero aprender más pero estoy de acuerdo",
+        "P01",
+        7
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 5,
+      "really_short_1_2": 1,
       "quite_short_3": 2,
       "longer_4_5": 2,
-      "long_6_plus": 1
+      "long_6_plus": 5
     },
-    "pattern_coverage": "P_NEW_PERFECT, P_NEW_TE_ACUERDAS",
-    "full_seed_included": "NO - missing 'with what you said', 'about your friend'",
-    "gate_compliance": "STRICT - Only S0001-S0082 LEGOs available"
+    "pattern_coverage": "P01, P05, P06",
+    "gate_compliance": "STRICT - All words from S0001-S0083L01 LEGOs only"
   },
-
   "S0083L02": {
-    "lego": ["with what you said", "con lo que dijiste"],
+    "lego": [
+      "with what you said",
+      "con lo que dijiste"
+    ],
     "type": "M",
-    "available_legos": 244,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "lego_type": "MOLECULAR",
+    "molecular_components": [
+      "con (with)",
+      "lo que (what)",
+      "dijiste (you said)"
+    ],
+    "available_legos": 231,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10"
+    ],
     "practice_phrases": [
-      ["with what you said", "con lo que dijiste", null, 1],
-      ["I agree with what you said", "estoy de acuerdo con lo que dijiste", null, 2],
-      ["I want with what you said", "quiero con lo que dijiste", "P01", 2],
-      ["but with what you said", "pero con lo que dijiste", null, 2],
-      ["I agree with what you said here", "estoy de acuerdo con lo que dijiste aquí", null, 3],
-      ["if with what you said", "si con lo que dijiste", null, 2],
-      ["because with what you said", "porque con lo que dijiste", null, 2],
-      ["I'm not sure if I agree with what you said", "no estoy seguro si estoy de acuerdo con lo que dijiste", null, 4],
-      ["I'm surprised at how quickly I'm starting to understand with what you said", "estoy sorprendido de lo rápidamente que estoy comenzando a comprender con lo que dijiste", "P02", 9],
-      ["I don't understand with what you said yesterday", "no comprendo con lo que dijiste ayer", null, 4]
+      [
+        "with what you said",
+        "con lo que dijiste",
+        null,
+        2
+      ],
+      [
+        "I agree with what you said",
+        "estoy de acuerdo con lo que dijiste",
+        null,
+        5
+      ],
+      [
+        "with what you said yesterday",
+        "con lo que dijiste ayer",
+        null,
+        4
+      ],
+      [
+        "with what you said last night",
+        "con lo que dijiste anoche",
+        null,
+        4
+      ],
+      [
+        "I want to talk with you about what you said",
+        "quiero hablar contigo sobre lo que dijiste",
+        "P01",
+        7
+      ],
+      [
+        "I'm not sure about what you said yesterday",
+        "no estoy seguro sobre lo que dijiste ayer",
+        "P06",
+        7
+      ],
+      [
+        "I think I agree with what you said",
+        "pienso que estoy de acuerdo con lo que dijiste",
+        "P05",
+        9
+      ],
+      [
+        "I want to understand what you said to me",
+        "quiero comprender lo que me dijiste",
+        "P01",
+        6
+      ],
+      [
+        "with what you said about that yesterday",
+        "con lo que dijiste sobre eso ayer",
+        null,
+        6
+      ],
+      [
+        "I agree with what you said but I want to learn more",
+        "estoy de acuerdo con lo que dijiste pero quiero aprender más",
+        "P01",
+        12
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 2,
-      "longer_4_5": 1,
-      "long_6_plus": 1
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 5
     },
-    "pattern_coverage": "P01, P02",
-    "full_seed_included": "NO - missing 'about your friend'",
-    "gate_compliance": "STRICT - Only S0001-S0083L01 LEGOs available"
+    "pattern_coverage": "P01, P05, P06",
+    "gate_compliance": "STRICT - All words from S0001-S0083L02 LEGOs only"
   },
-
   "S0083L03": {
-    "lego": ["about your friend", "sobre tu amigo"],
+    "lego": [
+      "about your friend",
+      "sobre tu amigo"
+    ],
     "type": "M",
-    "available_legos": 245,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "lego_type": "MOLECULAR",
+    "molecular_components": [
+      "sobre (about)",
+      "tu (your)",
+      "amigo (friend)"
+    ],
+    "available_legos": 232,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10"
+    ],
     "practice_phrases": [
-      ["about your friend", "sobre tu amigo", null, 1],
-      ["with what you said about your friend", "con lo que dijiste sobre tu amigo", null, 2],
-      ["I want about your friend", "quiero sobre tu amigo", "P01", 2],
-      ["but about your friend", "pero sobre tu amigo", null, 2],
-      ["I agree with what you said about your friend", "estoy de acuerdo con lo que dijiste sobre tu amigo", null, 3],
-      ["if about your friend", "si sobre tu amigo", null, 2],
-      ["because about your friend", "porque sobre tu amigo", null, 2],
-      ["I'm not sure about your friend", "no estoy seguro sobre tu amigo", null, 3],
-      ["I'm surprised at how quickly I'm starting to understand about your friend", "estoy sorprendido de lo rápidamente que estoy comenzando a comprender sobre tu amigo", "P02", 9],
-      ["I agree with what you said about your friend.", "estoy de acuerdo con lo que dijiste sobre tu amigo.", null, 3]
+      [
+        "about your friend",
+        "sobre tu amigo",
+        null,
+        2
+      ],
+      [
+        "I want to learn about your friend",
+        "quiero aprender sobre tu amigo",
+        "P01",
+        5
+      ],
+      [
+        "What did you say about your friend?",
+        "¿Qué dijiste sobre tu amigo?",
+        null,
+        5
+      ],
+      [
+        "I agree with what you said about your friend",
+        "estoy de acuerdo con lo que dijiste sobre tu amigo",
+        null,
+        9
+      ],
+      [
+        "I want to know about your friend",
+        "quiero saber sobre tu amigo",
+        "P01",
+        5
+      ],
+      [
+        "I want to know more about your friend",
+        "quiero saber más sobre tu amigo",
+        "P01",
+        6
+      ],
+      [
+        "I'm not sure about what you said about your friend",
+        "no estoy seguro sobre lo que dijiste sobre tu amigo",
+        "P06",
+        10
+      ],
+      [
+        "I agree with what you said about your friend.",
+        "estoy de acuerdo con lo que dijiste sobre tu amigo.",
+        null,
+        9
+      ],
+      [
+        "I think that what you said about your friend is important",
+        "pienso que lo que dijiste sobre tu amigo es importante",
+        "P05",
+        11
+      ],
+      [
+        "I want to talk with you about your friend",
+        "quiero hablar contigo sobre tu amigo",
+        "P01",
+        6
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 3,
-      "longer_4_5": 0,
-      "long_6_plus": 1
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 6
     },
-    "pattern_coverage": "P01, P02",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0083L02 LEGOs available"
+    "pattern_coverage": "P01, P05, P06",
+    "full_seed_included": "YES - phrase 8",
+    "gate_compliance": "STRICT - All words from S0001-S0083L03 LEGOs only"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "version": "curated_v7_spanish",
+  "version": "curated_v6_molecular_lego",
   "seed": "S0089",
   "course_direction": "Spanish for English speakers",
   "mapping": "KNOWN (English) → TARGET (Spanish)",
@@ -7,91 +7,375 @@
     "known": "I think that I've done a lot in a short time.",
     "target": "Pienso que he hecho mucho en un breve tiempo."
   },
-  "patterns_introduced": "",
-  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
-  "cumulative_legos": 262,
-
-  "S0089L01": {
-    "lego": ["I've done", "he hecho"],
+  "patterns_introduced": [
+    "P_NEW_PERFECT"
+  ],
+  "cumulative_legos": 247,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:27:03.605807Z",
+    "curated_by": "Claude Code - Agent-generated with GATE validation",
+    "validation": {
+      "whitelist_size": 240,
+      "base_seeds": "S0001-S0088",
+      "gate_compliance": "100% - All words validated against whitelist",
+      "violations_found": 4,
+      "violations_fixed": 4,
+      "new_words": [
+        "hecho",
+        "mucho",
+        "breve"
+      ]
+    }
+  },
+  "S0047L01": {
+    "lego": [
+      "I think that",
+      "pienso que"
+    ],
     "type": "M",
-    "available_legos": 259,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "lego_type": "MOLECULAR",
+    "ref": "S0047",
+    "components": [
+      [
+        "pienso",
+        "I think"
+      ],
+      [
+        "que",
+        "that"
+      ]
+    ],
+    "available_legos": 244,
     "practice_phrases": [
-      ["I've done", "he hecho", "P_NEW_PERFECT", 1],
-      ["I think that I've done", "pienso que he hecho", "P_NEW_PERFECT", 2],
-      ["I want I've done", "quiero he hecho", "P_NEW_PERFECT", 2],
-      ["but I've done", "pero he hecho", "P_NEW_PERFECT", 1],
-      ["I think that I've done a lot", "pienso que he hecho mucho", "P_NEW_PERFECT", 3],
-      ["if I've done", "si he hecho", "P_NEW_PERFECT", 1],
-      ["because I've done", "porque he hecho", "P_NEW_PERFECT", 1],
-      ["I'm not sure if I've done", "no estoy seguro si he hecho", "P_NEW_PERFECT", 3],
-      ["I'm very happy with how much I've learnt already I've done", "estoy muy feliz con cuánto he aprendido ya he hecho", "P_NEW_PERFECT", 7],
-      ["I'm not ready to talk to people I don't know yet I've done", "no estoy preparado para hablar con personas que no conozco todavía he hecho", "P_NEW_PERFECT", 8]
+      [
+        "I think that",
+        "pienso que",
+        null,
+        1
+      ],
+      [
+        "I think that it's possible",
+        "pienso que es posible",
+        null,
+        2
+      ],
+      [
+        "I think that they are people",
+        "pienso que son personas",
+        null,
+        3
+      ],
+      [
+        "I think that I'm not ready",
+        "pienso que no estoy preparado",
+        null,
+        3
+      ],
+      [
+        "I think that it wasn't possible yesterday",
+        "pienso que no fue posible ayer",
+        null,
+        4
+      ],
+      [
+        "I think that I don't know those people",
+        "pienso que no conozco a esas personas",
+        null,
+        5
+      ],
+      [
+        "I think that it wasn't possible to talk to your friend",
+        "pienso que no fue posible hablar con tu amigo",
+        null,
+        6
+      ],
+      [
+        "unfortunately I think that I'm not ready to start",
+        "desafortunadamente pienso que no estoy preparado para comenzar",
+        null,
+        7
+      ],
+      [
+        "I think that they are people I don't know yet",
+        "pienso que son personas que no conozco todavía",
+        null,
+        7
+      ],
+      [
+        "I think that it wasn't possible to talk to people I don't know",
+        "pienso que no fue posible hablar con personas que no conozco",
+        null,
+        8
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
+      "really_short_1_2": 2,
       "quite_short_3": 2,
-      "longer_4_5": 0,
-      "long_6_plus": 2
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P_NEW_PERFECT",
-    "full_seed_included": "NO - missing 'a lot', 'in a short time'",
-    "gate_compliance": "STRICT - Only S0001-S0088 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0088"
   },
-
-  "S0089L02": {
-    "lego": ["a lot", "mucho"],
-    "type": "A",
-    "available_legos": 260,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
-    "practice_phrases": [
-      ["a lot", "mucho", null, 1],
-      ["I've done a lot", "he hecho mucho", "P_NEW_PERFECT", 2],
-      ["I want a lot", "quiero mucho", "P01", 2],
-      ["but a lot", "pero mucho", null, 2],
-      ["I think that I've done a lot", "pienso que he hecho mucho", "P_NEW_PERFECT", 3],
-      ["if a lot", "si mucho", null, 2],
-      ["because a lot", "porque mucho", null, 2],
-      ["I'm not sure a lot", "no estoy seguro mucho", null, 2],
-      ["I'm very happy with how much I've learnt already a lot", "estoy muy feliz con cuánto he aprendido ya mucho", "P_NEW_PERFECT", 6],
-      ["they are people that I don't know a lot", "son personas que no conozco mucho", null, 4]
+  "S0089L01": {
+    "lego": [
+      "I've done",
+      "he hecho"
     ],
-    "phrase_distribution": {
-      "really_short_1_2": 7,
-      "quite_short_3": 1,
-      "longer_4_5": 1,
-      "long_6_plus": 1
-    },
-    "pattern_coverage": "P01, P_NEW_PERFECT",
-    "full_seed_included": "NO - missing 'in a short time'",
-    "gate_compliance": "STRICT - Only S0001-S0089L01 LEGOs available"
-  },
-
-  "S0089L03": {
-    "lego": ["in a short time", "en un breve tiempo"],
     "type": "M",
-    "available_legos": 261,
-    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "lego_type": "MOLECULAR",
+    "components": [
+      [
+        "he",
+        "I have"
+      ],
+      [
+        "hecho",
+        "done"
+      ]
+    ],
+    "available_legos": 245,
     "practice_phrases": [
-      ["in a short time", "en un breve tiempo", null, 1],
-      ["I've done a lot in a short time", "he hecho mucho en un breve tiempo", "P_NEW_PERFECT", 2],
-      ["I want in a short time", "quiero en un breve tiempo", "P01", 2],
-      ["but in a short time", "pero en un breve tiempo", null, 2],
-      ["I think that I've done a lot in a short time", "pienso que he hecho mucho en un breve tiempo", "P_NEW_PERFECT", 3],
-      ["if in a short time", "si en un breve tiempo", null, 2],
-      ["because in a short time", "porque en un breve tiempo", null, 2],
-      ["I'm not sure in a short time", "no estoy seguro en un breve tiempo", null, 3],
-      ["I'm very happy with how much I've learnt already in a short time", "estoy muy feliz con cuánto he aprendido ya en un breve tiempo", "P_NEW_PERFECT", 7],
-      ["I think that I've done a lot in a short time.", "pienso que he hecho mucho en un breve tiempo.", "P_NEW_PERFECT", 3]
+      [
+        "I've done",
+        "he hecho",
+        null,
+        1
+      ],
+      [
+        "I think I've done",
+        "pienso que he hecho",
+        null,
+        2
+      ],
+      [
+        "I've done something",
+        "he hecho algo",
+        null,
+        3
+      ],
+      [
+        "I think I've done something",
+        "pienso que he hecho algo",
+        null,
+        3
+      ],
+      [
+        "I've done what you said",
+        "he hecho lo que dijiste",
+        null,
+        4
+      ],
+      [
+        "I don't know if I've done everything",
+        "no sé si he hecho todo",
+        null,
+        5
+      ],
+      [
+        "unfortunately I don't know if I've done everything",
+        "desafortunadamente no sé si he hecho todo",
+        null,
+        6
+      ],
+      [
+        "I don't know if I've done what you wanted",
+        "no sé si he hecho lo que querías",
+        null,
+        7
+      ],
+      [
+        "I think I've done everything I can",
+        "pienso que he hecho todo lo que puedo",
+        null,
+        7
+      ],
+      [
+        "I've done everything I can to talk to those people",
+        "he hecho todo lo que puedo para hablar con esas personas",
+        null,
+        8
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 6,
-      "quite_short_3": 3,
-      "longer_4_5": 0,
-      "long_6_plus": 1
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
     },
-    "pattern_coverage": "P01, P_NEW_PERFECT",
-    "full_seed_included": "YES - phrase 10",
-    "gate_compliance": "STRICT - Only S0001-S0089L02 LEGOs available"
+    "gate_compliance": "STRICT - All words from S0001-S0089 (S0047L01 ref)"
+  },
+  "S0089L02": {
+    "lego": [
+      "a lot",
+      "mucho"
+    ],
+    "type": "A",
+    "available_legos": 246,
+    "practice_phrases": [
+      [
+        "a lot",
+        "mucho",
+        null,
+        1
+      ],
+      [
+        "I've done a lot",
+        "he hecho mucho",
+        null,
+        2
+      ],
+      [
+        "I think I've done a lot",
+        "pienso que he hecho mucho",
+        null,
+        3
+      ],
+      [
+        "I've done a lot yesterday",
+        "he hecho mucho ayer",
+        null,
+        3
+      ],
+      [
+        "I think I've done a lot to start",
+        "pienso que he hecho mucho para comenzar",
+        null,
+        4
+      ],
+      [
+        "unfortunately I've done a lot",
+        "desafortunadamente he hecho mucho",
+        null,
+        4
+      ],
+      [
+        "I don't know if I've done a lot",
+        "no sé si he hecho mucho",
+        null,
+        6
+      ],
+      [
+        "I think I've done a lot to talk to those people",
+        "pienso que he hecho mucho para hablar con esas personas",
+        null,
+        7
+      ],
+      [
+        "unfortunately I think I've done a lot already",
+        "desafortunadamente pienso que he hecho mucho ya",
+        null,
+        7
+      ],
+      [
+        "I've done a lot to be ready to talk to people I don't know",
+        "he hecho mucho para estar preparado para hablar con personas que no conozco",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0089L01"
+  },
+  "S0089L03": {
+    "lego": [
+      "in a short time",
+      "en un breve tiempo"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "components": [
+      [
+        "en",
+        "in"
+      ],
+      [
+        "un",
+        "a"
+      ],
+      [
+        "breve",
+        "short"
+      ],
+      [
+        "tiempo",
+        "time"
+      ]
+    ],
+    "available_legos": 247,
+    "practice_phrases": [
+      [
+        "in a short time",
+        "en un breve tiempo",
+        null,
+        1
+      ],
+      [
+        "I've done a lot in a short time",
+        "he hecho mucho en un breve tiempo",
+        null,
+        2
+      ],
+      [
+        "I think I've done a lot in a short time",
+        "pienso que he hecho mucho en un breve tiempo",
+        null,
+        3
+      ],
+      [
+        "in a short time I can start",
+        "en un breve tiempo puedo comenzar",
+        null,
+        3
+      ],
+      [
+        "I've done everything in a short time",
+        "he hecho todo en un breve tiempo",
+        null,
+        4
+      ],
+      [
+        "I think I can be ready in a short time",
+        "pienso que puedo estar preparado en un breve tiempo",
+        null,
+        5
+      ],
+      [
+        "unfortunately I've done a lot in a short time",
+        "desafortunadamente he hecho mucho en un breve tiempo",
+        null,
+        6
+      ],
+      [
+        "I don't know if I've done everything in a short time",
+        "no sé si he hecho todo en un breve tiempo",
+        null,
+        7
+      ],
+      [
+        "I think I've done everything I can in a short time",
+        "pienso que he hecho todo lo que puedo en un breve tiempo",
+        null,
+        8
+      ],
+      [
+        "I think that I've done a lot in a short time.",
+        "Pienso que he hecho mucho en un breve tiempo.",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "full_seed_included": "YES - phrase 10: 'Pienso que he hecho mucho en un breve tiempo.'",
+    "gate_compliance": "STRICT - All words from S0001-S0089L02"
   }
 }
