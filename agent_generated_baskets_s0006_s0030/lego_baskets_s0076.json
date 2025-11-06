@@ -1,0 +1,388 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "seed": "S0076",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'm very happy with how much I've learnt already.",
+    "target": "Estoy muy feliz con cuánto he aprendido ya."
+  },
+  "patterns_introduced": "P_NEW_PERFECT",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P05",
+    "P06",
+    "P12",
+    "P18",
+    "P_NEW_PERFECT"
+  ],
+  "cumulative_legos": 215,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:21:21.202315",
+    "curated_by": "Claude Code - Agent basket generation with GATE validation",
+    "gate_validation": {
+      "whitelist_size_at_start": 220,
+      "validation_protocol": "Every word validated against exact taught forms from S0001-S0075 (case-insensitive)",
+      "violations_found": 0,
+      "violations_fixed": 0,
+      "compliance_status": "100% GATE compliant"
+    }
+  },
+  "S0076L01": {
+    "lego": [
+      "I'm very happy",
+      "estoy muy feliz"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "available_legos": 211,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P05",
+      "P06",
+      "P12",
+      "P18"
+    ],
+    "practice_phrases": [
+      [
+        "I'm very happy",
+        "Estoy muy feliz",
+        "P_NEW_PERFECT",
+        1
+      ],
+      [
+        "very happy with you",
+        "muy feliz contigo",
+        null,
+        2
+      ],
+      [
+        "I'm very happy to learn",
+        "Estoy muy feliz de aprender",
+        null,
+        3
+      ],
+      [
+        "I'm very happy with this",
+        "Estoy muy feliz con esta cosa",
+        null,
+        4
+      ],
+      [
+        "I'm very happy with how I speak",
+        "Estoy muy feliz con cómo hablo",
+        "P02",
+        4
+      ],
+      [
+        "I'm very happy to be here now",
+        "Estoy muy feliz de estar aquí ahora",
+        null,
+        5
+      ],
+      [
+        "I'm very happy with what I'm learning",
+        "Estoy muy feliz con lo que estoy aprendiendo",
+        "P02",
+        6
+      ],
+      [
+        "I'm very happy that you want to help me",
+        "Estoy muy feliz de que quieres ayudarme",
+        "P01",
+        6
+      ],
+      [
+        "I'm very happy because I'm beginning to understand",
+        "Estoy muy feliz porque estoy comenzando a comprender",
+        "P03",
+        7
+      ],
+      [
+        "I'm very happy because I think I can speak a little more now",
+        "Estoy muy feliz porque pienso que puedo hablar un poco más ahora",
+        "P01",
+        11
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P02, P03, P_NEW_PERFECT",
+    "gate_compliance": "STRICT - All words from S0001-S0075 LEGOs + S0076L01"
+  },
+  "S0076L02": {
+    "lego": [
+      "with how much",
+      "con cuánto"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "available_legos": 212,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P05",
+      "P06",
+      "P12",
+      "P18",
+      "P_NEW_PERFECT"
+    ],
+    "practice_phrases": [
+      [
+        "with how much",
+        "con cuánto",
+        null,
+        1
+      ],
+      [
+        "with how much time",
+        "con cuánto tiempo",
+        null,
+        2
+      ],
+      [
+        "with how much you speak",
+        "con cuánto hablas",
+        null,
+        3
+      ],
+      [
+        "with how much I can learn",
+        "con cuánto puedo aprender",
+        null,
+        3
+      ],
+      [
+        "I'm happy with how much I speak",
+        "Estoy feliz con cuánto hablo",
+        null,
+        5
+      ],
+      [
+        "with how much I want to learn",
+        "con cuánto quiero aprender",
+        "P01",
+        4
+      ],
+      [
+        "I'm very happy with how much I can speak",
+        "Estoy muy feliz con cuánto puedo hablar",
+        null,
+        7
+      ],
+      [
+        "I'm not sure with how much I can help you",
+        "No estoy seguro con cuánto puedo ayudarte",
+        "P06",
+        8
+      ],
+      [
+        "I'm very happy with how much I'm learning now",
+        "Estoy muy feliz con cuánto estoy aprendiendo ahora",
+        "P02",
+        8
+      ],
+      [
+        "I'm very happy with how much I'm beginning to understand",
+        "Estoy muy feliz con cuánto estoy comenzando a comprender",
+        "P02,P03",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P02, P03, P06",
+    "gate_compliance": "STRICT - All words from S0001-S0075 LEGOs + S0076L01-L02"
+  },
+  "S0076L03": {
+    "lego": [
+      "I've learnt",
+      "he aprendido"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "available_legos": 213,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P05",
+      "P06",
+      "P12",
+      "P18",
+      "P_NEW_PERFECT"
+    ],
+    "practice_phrases": [
+      [
+        "I've learnt",
+        "He aprendido",
+        "P_NEW_PERFECT",
+        1
+      ],
+      [
+        "I've learnt Spanish",
+        "He aprendido español",
+        "P_NEW_PERFECT",
+        2
+      ],
+      [
+        "I've learnt with you",
+        "He aprendido contigo",
+        "P_NEW_PERFECT",
+        2
+      ],
+      [
+        "how much I've learnt",
+        "cuánto he aprendido",
+        null,
+        3
+      ],
+      [
+        "I'm happy with how much I've learnt",
+        "Estoy feliz con cuánto he aprendido",
+        null,
+        5
+      ],
+      [
+        "I'm very happy with how much I've learnt",
+        "Estoy muy feliz con cuánto he aprendido",
+        null,
+        6
+      ],
+      [
+        "I'm very happy with how much I've learnt now",
+        "Estoy muy feliz con cuánto he aprendido ahora",
+        null,
+        7
+      ],
+      [
+        "I'm very happy with how much I've learnt with you",
+        "Estoy muy feliz con cuánto he aprendido contigo",
+        null,
+        7
+      ],
+      [
+        "I want to remember how much I've learnt this week",
+        "Quiero recordar cuánto he aprendido esta semana",
+        "P01",
+        7
+      ],
+      [
+        "I'm not sure how much I've learnt but I'm very happy",
+        "No estoy seguro cuánto he aprendido pero estoy muy feliz",
+        "P06",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "pattern_coverage": "P01, P06, P_NEW_PERFECT",
+    "gate_compliance": "STRICT - All words from S0001-S0075 LEGOs + S0076L01-L03"
+  },
+  "S0076L04": {
+    "lego": [
+      "already",
+      "ya"
+    ],
+    "type": "A",
+    "available_legos": 214,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P05",
+      "P06",
+      "P12",
+      "P18",
+      "P_NEW_PERFECT"
+    ],
+    "practice_phrases": [
+      [
+        "already",
+        "ya",
+        null,
+        1
+      ],
+      [
+        "I've learnt already",
+        "He aprendido ya",
+        null,
+        2
+      ],
+      [
+        "I'm very happy already",
+        "Estoy muy feliz ya",
+        null,
+        3
+      ],
+      [
+        "I want to learn already",
+        "Quiero aprender ya",
+        "P01",
+        3
+      ],
+      [
+        "with how much I've learnt already",
+        "con cuánto he aprendido ya",
+        null,
+        4
+      ],
+      [
+        "I'm very happy with how much I've learnt already",
+        "Estoy muy feliz con cuánto he aprendido ya",
+        null,
+        7
+      ],
+      [
+        "I'm very happy with how much I've learnt with you already",
+        "Estoy muy feliz con cuánto he aprendido contigo ya",
+        null,
+        8
+      ],
+      [
+        "I want to speak with you already because I'm very happy",
+        "Quiero hablar contigo ya porque estoy muy feliz",
+        "P01",
+        9
+      ],
+      [
+        "I think I'm beginning to understand how much I've learnt already",
+        "Pienso que estoy comenzando a comprender cuánto he aprendido ya",
+        "P03",
+        9
+      ],
+      [
+        "I'm very happy with how much I've learnt already.",
+        "Estoy muy feliz con cuánto he aprendido ya.",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "pattern_coverage": "P01, P03",
+    "full_seed_included": "YES - phrase 10: 'I'm very happy with how much I've learnt already.'",
+    "gate_compliance": "STRICT - All words from S0001-S0075 LEGOs + S0076L01-L04"
+  }
+}

@@ -1,0 +1,412 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0095",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "Are you ready to go home on the next bus?",
+    "target": "¿Estás preparado para ir a casa en el próximo autobús?"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P10",
+    "P12",
+    "P18",
+    "P_RELATIVE",
+    "P_NEW_GUSTAR",
+    "P_NEW_IMPERSONAL",
+    "P_NEW_FUTURE"
+  ],
+  "cumulative_legos": 264,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:28:06.591637Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "whitelist_size": 254,
+    "changes_from_previous": [
+      "Generated with strict GATE validation",
+      "100% GATE compliance achieved"
+    ]
+  },
+  "S0095L01": {
+    "lego": [
+      "you are ready",
+      "estás preparado"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "molecular_rationale": "Components: estás (you are) + preparado (ready)",
+    "available_legos": 261,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_FUTURE"
+    ],
+    "practice_phrases": [
+      [
+        "you are ready",
+        "estás preparado",
+        null,
+        1
+      ],
+      [
+        "you are ready to go",
+        "estás preparado para ir",
+        null,
+        2
+      ],
+      [
+        "you are ready to learn",
+        "estás preparado para aprender",
+        null,
+        2
+      ],
+      [
+        "you are ready now",
+        "estás preparado ahora",
+        null,
+        2
+      ],
+      [
+        "you are ready to speak Spanish",
+        "estás preparado para hablar español",
+        null,
+        3
+      ],
+      [
+        "you are ready to go now",
+        "estás preparado para ir ahora",
+        null,
+        3
+      ],
+      [
+        "you are ready to keep on doing this",
+        "estás preparado para continuar haciendo esto",
+        null,
+        4
+      ],
+      [
+        "you are ready to go as soon as you can",
+        "estás preparado para ir tan pronto como puedes",
+        null,
+        7
+      ],
+      [
+        "you are ready to learn everything that you want to learn",
+        "estás preparado para aprender todo lo que quieres aprender",
+        null,
+        8
+      ],
+      [
+        "you are ready to start learning Spanish now",
+        "estás preparado para comenzar a aprender español ahora",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "None",
+    "gate_compliance": "STRICT - All words from S0001-S0094 LEGOs only"
+  },
+  "S0095L02": {
+    "lego": [
+      "to go",
+      "para ir"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "molecular_rationale": "Components: para (to/for) + ir (to go) - referenced from S0026",
+    "available_legos": 262,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_FUTURE"
+    ],
+    "practice_phrases": [
+      [
+        "to go",
+        "para ir",
+        null,
+        1
+      ],
+      [
+        "you are ready to go",
+        "estás preparado para ir",
+        null,
+        2
+      ],
+      [
+        "it's time to go",
+        "es hora de ir",
+        "P_NEW_IMPERSONAL",
+        2
+      ],
+      [
+        "I want to go",
+        "quiero ir",
+        "P01",
+        2
+      ],
+      [
+        "I need time to go",
+        "necesito tiempo para ir",
+        "P01",
+        3
+      ],
+      [
+        "you are ready to go now",
+        "estás preparado para ir ahora",
+        null,
+        3
+      ],
+      [
+        "this is the only way to go",
+        "esta es la única manera de ir",
+        null,
+        5
+      ],
+      [
+        "it's time to go now because you are ready",
+        "es hora de ir ahora porque estás preparado",
+        "P_NEW_IMPERSONAL",
+        7
+      ],
+      [
+        "I'd like to go as soon as you are ready",
+        "me gustaría ir tan pronto como estás preparado",
+        "P04",
+        7
+      ],
+      [
+        "you are ready to go and learn Spanish",
+        "estás preparado para ir y aprender español",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P04, P_NEW_IMPERSONAL",
+    "gate_compliance": "STRICT - All words from S0001-S0095L01 LEGOs only"
+  },
+  "S0095L03": {
+    "lego": [
+      "home",
+      "a casa"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "molecular_rationale": "Components: a (to) + casa (home)",
+    "available_legos": 263,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_FUTURE"
+    ],
+    "practice_phrases": [
+      [
+        "home",
+        "a casa",
+        null,
+        1
+      ],
+      [
+        "to go home",
+        "ir a casa",
+        null,
+        2
+      ],
+      [
+        "you are ready to go home",
+        "estás preparado para ir a casa",
+        null,
+        3
+      ],
+      [
+        "I want to go home",
+        "quiero ir a casa",
+        "P01",
+        3
+      ],
+      [
+        "it's time to go home",
+        "es hora de ir a casa",
+        "P_NEW_IMPERSONAL",
+        3
+      ],
+      [
+        "you are ready to go home now",
+        "estás preparado para ir a casa ahora",
+        null,
+        4
+      ],
+      [
+        "I'd like to go home with you",
+        "me gustaría ir a casa contigo",
+        "P04",
+        4
+      ],
+      [
+        "it's time to go home because you are ready",
+        "es hora de ir a casa porque estás preparado",
+        "P_NEW_IMPERSONAL",
+        7
+      ],
+      [
+        "I want to go home as soon as you are ready",
+        "quiero ir a casa tan pronto como estás preparado",
+        "P01",
+        8
+      ],
+      [
+        "you are ready to go home and keep on learning",
+        "estás preparado para ir a casa y continuar aprendiendo",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P04, P_NEW_IMPERSONAL",
+    "gate_compliance": "STRICT - All words from S0001-S0095L02 LEGOs only. NOTE: 'casa' introduced in this LEGO."
+  },
+  "S0095L04": {
+    "lego": [
+      "on the next bus",
+      "en el próximo autobús"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "molecular_rationale": "Components: en (on) + el (the) + próximo (next) + autobús (bus)",
+    "available_legos": 264,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_FUTURE"
+    ],
+    "practice_phrases": [
+      [
+        "on the next bus",
+        "en el próximo autobús",
+        null,
+        1
+      ],
+      [
+        "to go on the next bus",
+        "ir en el próximo autobús",
+        null,
+        2
+      ],
+      [
+        "you are ready to go on the next bus",
+        "estás preparado para ir en el próximo autobús",
+        null,
+        4
+      ],
+      [
+        "I want to go on the next bus",
+        "quiero ir en el próximo autobús",
+        "P01",
+        4
+      ],
+      [
+        "it's time to go on the next bus",
+        "es hora de ir en el próximo autobús",
+        "P_NEW_IMPERSONAL",
+        4
+      ],
+      [
+        "you are ready to go home on the next bus",
+        "estás preparado para ir a casa en el próximo autobús",
+        null,
+        6
+      ],
+      [
+        "I'd like to go home on the next bus",
+        "me gustaría ir a casa en el próximo autobús",
+        "P04",
+        6
+      ],
+      [
+        "it's time to go home on the next bus now",
+        "es hora de ir a casa en el próximo autobús ahora",
+        "P_NEW_IMPERSONAL",
+        7
+      ],
+      [
+        "you are ready to go home on the next bus and learn Spanish",
+        "estás preparado para ir a casa en el próximo autobús y aprender español",
+        null,
+        10
+      ],
+      [
+        "you are ready to go home on the next bus?",
+        "estás preparado para ir a casa en el próximo autobús",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "pattern_coverage": "P01, P04, P_NEW_IMPERSONAL",
+    "full_seed_included": "YES - phrase 10 (question form)",
+    "gate_compliance": "STRICT - All words from S0001-S0095L03 LEGOs only. NOTE: 'próximo' and 'autobús' introduced in this LEGO."
+  }
+}

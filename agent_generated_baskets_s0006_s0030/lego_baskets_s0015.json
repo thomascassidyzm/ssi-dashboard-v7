@@ -1,0 +1,98 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0015",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "And I want you to speak Spanish with me tomorrow.",
+    "target": "Y quiero que hables español conmigo mañana."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+  "cumulative_legos": 42,
+
+  "S0015L01": {
+    "lego": ["and", "y"],
+    "type": "A",
+    "available_legos": 39,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["and", "y", null, 1],
+      ["I speak and you speak", "hablo y hablas", "P05", 2],
+      ["today and tomorrow", "hoy y mañana", null, 2],
+      ["I want to speak and I want to learn", "quiero hablar y quiero aprender", "P01", 3],
+      ["you speak Spanish and I speak Spanish", "hablas español y hablo español", "P05", 4],
+      ["I can speak today and I can speak tomorrow", "puedo hablar hoy y puedo hablar mañana", "P05", 5],
+      ["I speak a little Spanish and you speak very well", "hablo un poco de español y hablas muy bien", "P05", 6],
+      ["I'm going to try today and I'm going to try tomorrow", "voy a intentar hoy y voy a intentar mañana", "P03", 6],
+      ["I'd like to speak Spanish and I'd like to learn very well", "me gustaría hablar español y me gustaría aprender muy bien", "P04", 7],
+      ["I want to speak all day and you speak all day", "quiero hablar todo el día y hablas todo el día", "P01", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P03, P04, P05",
+    "full_seed_included": "NO - missing 'you to speak' and 'with me'",
+    "gate_compliance": "STRICT - Only S0001-S0014 LEGOs available",
+    "note": "Second conjunction now available - can combine with 'si'"
+  },
+
+  "S0015L02": {
+    "lego": ["you to speak", "que hables"],
+    "type": "M",
+    "available_legos": 40,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["you to speak", "que hables", null, 1],
+      ["I want you to speak", "quiero que hables", "P01", 2],
+      ["I want you to speak Spanish", "quiero que hables español", "P01", 3],
+      ["I want you to speak very well", "quiero que hables muy bien", "P01", 3],
+      ["I want you to speak all day", "quiero que hables todo el día", "P01", 3],
+      ["I want you to speak tomorrow", "quiero que hables mañana", "P01", 3],
+      ["I want you to speak today and tomorrow", "quiero que hables hoy y mañana", "P01", 4],
+      ["I'm not sure if I want you to speak", "no estoy seguro si quiero que hables", "P18", 5],
+      ["I want you to speak Spanish all day", "quiero que hables español todo el día", "P01", 4],
+      ["I'd like you to speak very well after you finish", "me gustaría que hables muy bien después de que termines", "P04", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P04, P18",
+    "full_seed_included": "NO - missing 'with me'",
+    "gate_compliance": "STRICT - Only S0001-S0015L01 LEGOs available"
+  },
+
+  "S0015L03": {
+    "lego": ["with me", "conmigo"],
+    "type": "A",
+    "available_legos": 41,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["with me", "conmigo", null, 1],
+      ["to speak with me", "hablar conmigo", null, 2],
+      ["you speak with me", "hablas conmigo", "P05", 2],
+      ["I want you to speak with me", "quiero que hables conmigo", "P01", 3],
+      ["I want you to speak Spanish with me", "quiero que hables español conmigo", "P01", 4],
+      ["you speak very well with me", "hablas muy bien conmigo", "P05", 3],
+      ["I want you to speak with me tomorrow", "quiero que hables conmigo mañana", "P01", 4],
+      ["you speak with me all day", "hablas conmigo todo el día", "P05", 4],
+      ["I want you to speak Spanish with me and I want to learn", "quiero que hables español conmigo y quiero aprender", "P01", 6],
+      ["and I want you to speak Spanish with me tomorrow.", "y quiero que hables español conmigo mañana.", "P01", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P05",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0015L02 LEGOs available"
+  }
+}

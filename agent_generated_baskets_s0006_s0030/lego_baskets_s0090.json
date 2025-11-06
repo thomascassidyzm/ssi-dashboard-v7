@@ -1,0 +1,452 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "seed": "S0090",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "If you can speak more slowly that would be great.",
+    "target": "Si puedes hablar más lentamente, eso sería excelente."
+  },
+  "patterns_introduced": [
+    "P10",
+    "P_NEW_CONDITIONAL"
+  ],
+  "cumulative_legos": 250,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:29:52.846283Z",
+    "curated_by": "Claude Code - Agent-generated with GATE validation",
+    "validation": {
+      "whitelist_size": 243,
+      "base_seeds": "S0001-S0089",
+      "gate_compliance": "100% - All words validated against whitelist",
+      "violations_found": 5,
+      "violations_fixed": 5,
+      "new_words": [
+        "puedes",
+        "sería",
+        "excelente"
+      ]
+    }
+  },
+  "S0010L02": {
+    "lego": [
+      "if",
+      "si"
+    ],
+    "type": "A",
+    "ref": "S0010",
+    "available_legos": 247,
+    "practice_phrases": [
+      [
+        "if",
+        "si",
+        null,
+        1
+      ],
+      [
+        "if I can",
+        "si puedo",
+        null,
+        2
+      ],
+      [
+        "if you want",
+        "si quieres",
+        null,
+        3
+      ],
+      [
+        "if it's possible",
+        "si es posible",
+        null,
+        3
+      ],
+      [
+        "if I've done everything",
+        "si he hecho todo",
+        null,
+        4
+      ],
+      [
+        "I don't know if it was possible",
+        "no sé si fue posible",
+        null,
+        5
+      ],
+      [
+        "I don't know if they are people I know",
+        "no sé si son personas que conozco",
+        null,
+        6
+      ],
+      [
+        "if I think I can do everything in a short time",
+        "si pienso que puedo hacer todo en un breve tiempo",
+        null,
+        8
+      ],
+      [
+        "I'm not ready yet if I have to talk to those people",
+        "no estoy preparado todavía si tengo que hablar con esas personas",
+        null,
+        8
+      ],
+      [
+        "if I can I want to do a lot in a short time",
+        "si puedo quiero hacer mucho en un breve tiempo",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0089"
+  },
+  "S0090L01": {
+    "lego": [
+      "you can speak",
+      "puedes hablar"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "components": [
+      [
+        "puedes",
+        "you can"
+      ],
+      [
+        "hablar",
+        "to speak"
+      ]
+    ],
+    "available_legos": 248,
+    "practice_phrases": [
+      [
+        "you can speak",
+        "puedes hablar",
+        null,
+        1
+      ],
+      [
+        "if you can speak",
+        "si puedes hablar",
+        null,
+        2
+      ],
+      [
+        "you can speak Spanish",
+        "puedes hablar español",
+        null,
+        3
+      ],
+      [
+        "I think you can speak",
+        "pienso que puedes hablar",
+        null,
+        3
+      ],
+      [
+        "you can speak to those people",
+        "puedes hablar con esas personas",
+        null,
+        4
+      ],
+      [
+        "I don't know if you can speak",
+        "no sé si puedes hablar",
+        null,
+        5
+      ],
+      [
+        "you can speak to people I don't know",
+        "puedes hablar con personas que no conozco",
+        null,
+        6
+      ],
+      [
+        "I think you can speak Spanish in a short time",
+        "pienso que puedes hablar español en un breve tiempo",
+        null,
+        7
+      ],
+      [
+        "unfortunately I don't know if you can speak to those people",
+        "desafortunadamente no sé si puedes hablar con esas personas",
+        null,
+        8
+      ],
+      [
+        "if you can speak I think I've done a lot",
+        "si puedes hablar pienso que he hecho mucho",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0090 (S0010L02 ref)"
+  },
+  "S0090L02": {
+    "lego": [
+      "more slowly",
+      "más lentamente"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "components": [
+      [
+        "más",
+        "more"
+      ],
+      [
+        "lentamente",
+        "slowly"
+      ]
+    ],
+    "available_legos": 249,
+    "practice_phrases": [
+      [
+        "more slowly",
+        "más lentamente",
+        null,
+        1
+      ],
+      [
+        "you can speak more slowly",
+        "puedes hablar más lentamente",
+        null,
+        2
+      ],
+      [
+        "if you can speak more slowly",
+        "si puedes hablar más lentamente",
+        null,
+        3
+      ],
+      [
+        "I think more slowly",
+        "pienso más lentamente",
+        null,
+        3
+      ],
+      [
+        "you can speak Spanish more slowly",
+        "puedes hablar español más lentamente",
+        null,
+        4
+      ],
+      [
+        "I think you can speak more slowly",
+        "pienso que puedes hablar más lentamente",
+        null,
+        4
+      ],
+      [
+        "I don't know if you can speak more slowly",
+        "no sé si puedes hablar más lentamente",
+        null,
+        6
+      ],
+      [
+        "if you can speak more slowly I can understand",
+        "si puedes hablar más lentamente puedo comprender",
+        null,
+        7
+      ],
+      [
+        "unfortunately I think you can speak more slowly",
+        "desafortunadamente pienso que puedes hablar más lentamente",
+        null,
+        7
+      ],
+      [
+        "I think if you can speak more slowly I can learn",
+        "pienso que si puedes hablar más lentamente puedo aprender",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0090L01"
+  },
+  "S0061L02": {
+    "lego": [
+      "that",
+      "eso"
+    ],
+    "type": "A",
+    "ref": "S0061",
+    "available_legos": 250,
+    "practice_phrases": [
+      [
+        "that",
+        "eso",
+        null,
+        1
+      ],
+      [
+        "I think that",
+        "pienso eso",
+        null,
+        2
+      ],
+      [
+        "that is possible",
+        "eso es posible",
+        null,
+        3
+      ],
+      [
+        "that is what I think",
+        "eso es lo que pienso",
+        null,
+        3
+      ],
+      [
+        "I don't know that",
+        "no sé eso",
+        null,
+        3
+      ],
+      [
+        "that is what you said",
+        "eso es lo que dijiste",
+        null,
+        4
+      ],
+      [
+        "I think that is possible",
+        "pienso que eso es posible",
+        null,
+        5
+      ],
+      [
+        "if that is possible I can do a lot",
+        "si eso es posible puedo hacer mucho",
+        null,
+        7
+      ],
+      [
+        "I don't know if that is what you wanted",
+        "no sé si eso es lo que querías",
+        null,
+        8
+      ],
+      [
+        "unfortunately I think that is what you said",
+        "desafortunadamente pienso que eso es lo que dijiste",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0090L02"
+  },
+  "S0090L04": {
+    "lego": [
+      "would be great",
+      "sería excelente"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "components": [
+      [
+        "sería",
+        "would be"
+      ],
+      [
+        "excelente",
+        "great/excellent"
+      ]
+    ],
+    "available_legos": 251,
+    "practice_phrases": [
+      [
+        "would be great",
+        "sería excelente",
+        null,
+        1
+      ],
+      [
+        "that would be great",
+        "eso sería excelente",
+        null,
+        2
+      ],
+      [
+        "I think that would be great",
+        "pienso que eso sería excelente",
+        null,
+        3
+      ],
+      [
+        "that would be great if you can",
+        "eso sería excelente si puedes",
+        null,
+        3
+      ],
+      [
+        "I think that would be great",
+        "pienso que sería excelente",
+        null,
+        4
+      ],
+      [
+        "I think that would be great if you can speak",
+        "pienso que eso sería excelente si puedes hablar",
+        null,
+        5
+      ],
+      [
+        "if you can speak more slowly that would be great",
+        "si puedes hablar más lentamente eso sería excelente",
+        null,
+        6
+      ],
+      [
+        "I think if you can speak Spanish that would be great",
+        "pienso que si puedes hablar español eso sería excelente",
+        null,
+        7
+      ],
+      [
+        "if you can speak more slowly to those people that would be great",
+        "si puedes hablar más lentamente con esas personas eso sería excelente",
+        null,
+        8
+      ],
+      [
+        "If you can speak more slowly, that would be great.",
+        "Si puedes hablar más lentamente, eso sería excelente.",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "full_seed_included": "YES - phrase 10: 'Si puedes hablar más lentamente, eso sería excelente.'",
+    "gate_compliance": "STRICT - All words from S0001-S0090 (S0061L02 ref)"
+  }
+}
