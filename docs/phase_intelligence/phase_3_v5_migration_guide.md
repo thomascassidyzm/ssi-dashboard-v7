@@ -1,27 +1,55 @@
-# Phase 3 v5.0 Migration Guide
+# Phase 3 v5.0.1 Migration Guide
 
-**Date**: 2025-01-06
-**Previous Version**: v7.7 (Type A/B/C/D classification)
-**New Version**: v5.0 (Atomic/Molecular + Pattern Collections)
+**Date**: 2025-01-06 (Updated for v5.0.1)
+**Previous Versions**:
+- v7.7 (Type A/B/C/D classification)
+- v5.0.0 (Initial Known Language First - INCOMPLETE)
+**Current Version**: v5.0.1 (Complete Tiling Implementation)
+
+---
+
+## ⚠️ CRITICAL: v5.0.0 → v5.0.1 Breaking Change
+
+**v5.0.0 had a fundamental flaw:** Seeds only showed NEW LEGOs, making them **non-reconstructible**.
+
+**v5.0.1 fixes this with Complete Tiling:**
+- ✅ Seeds show **ALL LEGOs** (new + referenced)
+- ✅ New LEGOs marked with `"new": true`
+- ✅ Referenced LEGOs marked with `"ref": "S000X"`
+- ✅ Cumulative LEGO tracking
+- ✅ Seeds are **perfectly reconstructible**
+
+**Data Structure Changes:**
+- **Seed format:** Array → Object `{seed_id, seed_pair, legos, patterns, cumulative_legos}`
+- **LEGO format:** Array → Object `{id, type, target, known, new/ref, components?}`
 
 ---
 
 ## Overview
 
-Phase 3 v5.0 represents a complete methodological shift in LEGO extraction:
+Phase 3 v5.0.1 represents a complete methodological shift in LEGO extraction:
 
 **Old Approach (v7.7):**
 - Grammar-forward analysis
 - Type A/B/C/D classification (complexity-based)
 - Patterns as LEGO properties
 - Post-extraction pattern identification
+- Array-based data structures
 
-**New Approach (v5.0):**
+**Intermediate (v5.0.0 - FLAWED):**
+- Known Language First methodology
+- Atomic/Molecular classification
+- Array-based structures
+- **CRITICAL FLAW:** Incomplete tiling (seeds not reconstructible)
+
+**Current Approach (v5.0.1):**
 - **Known Language First** - Start from learner's perspective
 - **Atomic (A) / Molecular (M)** classification (structure-based)
 - **Patterns as Collections** - Identified by observing LEGOs across seeds
 - **Componentization** - Molecular LEGOs show internal structure
-- **Pattern Instances** - Marked during extraction
+- **Complete Tiling** - Every seed shows ALL LEGOs needed to reconstruct it
+- **Object-based structures** - More semantic, easier to validate
+- **New/Ref markers** - Track LEGO introduction vs reuse
 
 ---
 
@@ -93,7 +121,74 @@ KNOWN: "as hard as I can" → TARGET: "tan duro como pueda" (deterministic!)
 
 **Pattern identification happens by observing the LEGO collection across all seeds.**
 
-### 4. Componentization (Molecular LEGOs)
+### 4. Complete Tiling (v5.0.1 CRITICAL)
+
+**The Problem in v5.0.0:**
+Seeds only showed NEW LEGOs, making them non-reconstructible:
+
+```json
+// v5.0.0 (WRONG)
+["S0007", ["Quiero intentar hoy.", "I want to try today."], [
+  ["S0007L01", "A", "intentar", "to try"],       // NEW
+  ["S0007L02", "A", "hoy", "today"]               // NEW
+  // Missing "Quiero" - seed CANNOT be reconstructed! ❌
+]]
+```
+
+**The Solution in v5.0.1:**
+Every seed shows ALL LEGOs (new + referenced) needed to reconstruct it:
+
+```json
+// v5.0.1 (CORRECT - Complete Tiling)
+{
+  "seed_id": "S0007",
+  "seed_pair": ["Quiero intentar hoy.", "I want to try today."],
+  "legos": [
+    {"id": "S0001L01", "type": "A", "target": "Quiero", "known": "I want", "ref": "S0001"},
+    {"id": "S0007L01", "type": "A", "target": "intentar", "known": "to try", "new": true},
+    {"id": "S0007L02", "type": "A", "target": "hoy", "known": "today", "new": true}
+  ],
+  "patterns": ["P01"],
+  "cumulative_legos": 22
+}
+// Complete tiling: Quiero + intentar + hoy = full sentence ✓
+```
+
+**Why This Matters:**
+- **Basket generation** needs to see complete LEGO composition
+- **Pattern analysis** requires knowing which LEGOs tile together
+- **Validation** requires proving every seed reconstructs perfectly
+- **Agents** need complete context to generate practice phrases
+
+### 5. Object-Based Format (v5.0.1)
+
+**v5.0.0 used arrays (hard to validate, no semantic meaning):**
+```json
+["S0007", ["target", "known"], [
+  ["S0007L01", "A", "intentar", "to try"]
+]]
+```
+
+**v5.0.1 uses objects (self-documenting, easier to validate):**
+```json
+{
+  "seed_id": "S0007",
+  "seed_pair": ["target", "known"],
+  "legos": [
+    {"id": "S0007L01", "type": "A", "target": "intentar", "known": "to try", "new": true}
+  ],
+  "patterns": ["P01"],
+  "cumulative_legos": 22
+}
+```
+
+**Benefits:**
+- Fields are named (self-documenting)
+- Easier validation (can check for required fields)
+- More maintainable (can add fields without breaking position-based parsing)
+- IDE support (autocomplete, type checking)
+
+### 6. Componentization (Molecular LEGOs)
 
 **New Requirement:** For EVERY molecular LEGO, show ALL WORDS.
 
