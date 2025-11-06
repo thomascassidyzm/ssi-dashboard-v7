@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getCachedCourse, setCachedCourse, clearCourseCache, isCacheValid, clearAllCache, getCacheStats, cleanupExpiredCache } from './courseCache.js'
 
 // API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
 function getApiBaseUrl() {
@@ -27,6 +28,9 @@ export const baseURL = API_BASE_URL
 
 // Export axios instance for direct use
 export const apiClient = api
+
+// Export cache utilities for direct use
+export { clearCourseCache, clearAllCache, getCacheStats, cleanupExpiredCache } from './courseCache.js'
 
 // Add interceptor to suppress 404 errors for non-critical endpoints
 api.interceptors.response.use(
@@ -75,70 +79,34 @@ export default {
         return response.data
       } catch (err) {
         // Fallback to static files if API unavailable
-        console.log('[API] Server unavailable, using static files')
+        console.log('[API] Server unavailable, using static course manifest')
 
-        // List courses available in public/vfs (7 uploaded to S3, available as fallback)
-        const courseCodes = [
-          // Uploaded to S3 (have seed_pairs.json + lego_pairs.json)
-          'cmn_for_eng',
-          'ita_for_eng_10seeds',
-          'ita_for_eng_668seeds',
-          'spa_for_eng',
-          'spa_for_eng_20seeds',
-          'spa_for_eng_old',
-          'test_for_eng_5seeds'
-        ]
-        const courses = []
+        try {
+          // Use pre-generated manifest (created at build time by generate-course-manifest.js)
+          const manifestRes = await fetch('/vfs/courses-manifest.json')
+          if (manifestRes.ok) {
+            const manifest = await manifestRes.json()
+            console.log(`[API] Loaded ${manifest.courses.length} courses from manifest (generated ${manifest.generated_at})`)
 
-        for (const courseCode of courseCodes) {
-          try {
-            const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
-            const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
+            // Transform manifest format to API format
+            const courses = manifest.courses.map(course => ({
+              course_code: course.course_code,
+              source_language: course.source_language,
+              target_language: course.target_language,
+              total_seeds: course.total_seeds,
+              version: course.format,
+              created_at: new Date().toISOString(),
+              status: 'phase_3_complete',
+              seed_pairs: course.actual_seed_count,
+              lego_pairs: course.lego_count,
+              lego_baskets: course.has_baskets ? 1 : 0,
+              phases_completed: ['1', '3']
+            }))
 
-            if (seedPairsRes.ok && legoPairsRes.ok) {
-              const seedPairsData = await seedPairsRes.json()
-              const legoPairsData = await legoPairsRes.json()
-
-              // Flexible course code parsing:
-              // - xxx_for_yyy_NNseeds (standard)
-              // - xxx_for_yyy_NN (number without "seeds")
-              // - xxx_for_yyy (no seed count)
-              // - xxx_for_yyy_NNseeds_suffix (with additional suffix)
-              const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
-              const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
-              const match = matchStandard || matchBasic
-
-              // Count LEGOs from v7.7 format: seeds array [[seed_id, [t,k], [[lego_id, type, t, k], ...]]]
-              let legoCount = 0
-              const seedsArray = legoPairsData.seeds || []
-              for (const [seedId, seedPair, legos] of seedsArray) {
-                legoCount += legos.length
-              }
-
-              // Count actual seeds from data
-              const actualSeedCount = Object.keys(seedPairsData.translations || {}).length
-
-              courses.push({
-                course_code: courseCode,
-                source_language: match ? match[2].toUpperCase() : 'UNK',
-                target_language: match ? match[1].toUpperCase() : 'UNK',
-                total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : actualSeedCount,
-                version: '1.0',
-                created_at: new Date().toISOString(),
-                status: 'phase_3_complete',
-                seed_pairs: actualSeedCount,
-                lego_pairs: legoCount,
-                lego_baskets: 0,
-                phases_completed: ['1', '3']
-              })
-            }
-          } catch (staticErr) {
-            // Skip courses that don't have the required files
+            return { courses }
           }
-        }
-
-        if (courses.length > 0) {
-          return { courses }
+        } catch (manifestErr) {
+          console.error('[API] Failed to load course manifest:', manifestErr)
         }
 
         // If both fail, throw the original API error
@@ -147,10 +115,122 @@ export default {
     },
 
     async get(courseCode) {
+      // Check cache first
+      const cachedData = await getCachedCourse(courseCode)
+      if (cachedData) {
+        console.log(`[API] Using cached data for ${courseCode}`)
+
+        // Reconstruct response from cached raw data
+        const seedPairsData = cachedData.seedPairs
+        const legoPairsData = cachedData.legoPairs
+        const baskets = cachedData.legoBaskets || []
+
+        // Convert v7.7 format translations object to array
+        const translationsObj = seedPairsData.translations || {}
+        const translations = Object.entries(translationsObj).map(([seed_id, [target_phrase, known_phrase]]) => ({
+          seed_id,
+          target_phrase,
+          known_phrase,
+          canonical_seed: null
+        }))
+        translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
+
+        // Convert lego_pairs to flat array - handle both v7.7 and v5.0.1 formats
+        const seedsArray = legoPairsData.seeds || []
+        const legos = []
+
+        // Detect format by checking first seed structure
+        if (seedsArray.length > 0) {
+          const firstSeed = seedsArray[0]
+
+          if (Array.isArray(firstSeed)) {
+            // v7.7 format: [[seed_id, [target, known], [[lego_id, type, t, k], ...]]]
+            for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
+              for (const legoEntry of legoArray) {
+                const [lego_id, type, target_chunk, known_chunk] = legoEntry
+                legos.push({
+                  seed_id,
+                  lego_id,
+                  lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
+                  target_chunk,
+                  known_chunk
+                })
+              }
+            }
+          } else if (firstSeed && typeof firstSeed === 'object' && firstSeed.seed_id) {
+            // v5.0.1 format: {seed_id, seed_pair, legos: [{id, type, target, known, new/ref, components?}]}
+            for (const seed of seedsArray) {
+              // Only include NEW LEGOs in the flat list
+              const newLegos = seed.legos.filter(l => l.new === true)
+              for (const lego of newLegos) {
+                legos.push({
+                  seed_id: seed.seed_id,
+                  lego_id: lego.id,
+                  lego_type: lego.type === 'A' ? 'A' : lego.type === 'M' ? 'M' : lego.type,
+                  target_chunk: lego.target,
+                  known_chunk: lego.known,
+                  components: lego.components
+                })
+              }
+            }
+          }
+        }
+
+        // Flexible course code parsing
+        const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
+        const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
+        const match = matchStandard || matchBasic
+
+        const course = {
+          course_code: courseCode,
+          source_language: match ? match[2].toUpperCase() : 'UNK',
+          target_language: match ? match[1].toUpperCase() : 'UNK',
+          total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : translations.length,
+          version: cachedData.version,
+          created_at: new Date(cachedData.cachedAt).toISOString(),
+          status: 'phase_3_complete',
+          seed_pairs: translations.length,
+          lego_pairs: legos.length,
+          lego_baskets: baskets.length,
+          phases_completed: ['1', '3'],
+          target_language_name: match ? match[1] : 'unknown',
+          known_language_name: match ? match[2] : 'unknown'
+        }
+
+        return {
+          course,
+          translations,
+          legos,
+          lego_breakdowns: seedsArray,
+          baskets
+        }
+      }
+
       try {
         // Try API server first
         const response = await api.get(`/api/courses/${courseCode}`)
-        return response.data
+        const data = response.data
+
+        // Cache the API response
+        if (data.course && data.course.version) {
+          // Convert translations array back to v7.7 format for caching
+          const translationsObj = {}
+          if (data.translations) {
+            for (const trans of data.translations) {
+              translationsObj[trans.seed_id] = [trans.target_phrase, trans.known_phrase]
+            }
+          }
+
+          await setCachedCourse(courseCode, data.course.version, {
+            seedPairs: { translations: translationsObj },
+            legoPairs: { seeds: data.lego_breakdowns || [] },
+            legoBaskets: data.baskets || []
+          }).catch(err => {
+            console.warn('[API] Failed to cache course data:', err)
+          })
+        }
+
+        return data
       } catch (err) {
         // Fallback to static files if API unavailable
         console.log(`[API] Server unavailable, using static files for ${courseCode}`)
@@ -175,20 +255,44 @@ export default {
 
           translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
 
-          // Convert v7.7 format lego_pairs to flat array
-          // Input: { seeds: [[seed_id, [target, known], [[lego_id, type, t, k], ...]]] }
+          // Convert lego_pairs to flat array - handle both v7.7 and v5.0.1 formats
           const seedsArray = legoPairsData.seeds || []
           const legos = []
-          for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
-            for (const legoEntry of legoArray) {
-              const [lego_id, type, target_chunk, known_chunk] = legoEntry
-              legos.push({
-                seed_id,
-                lego_id,
-                lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
-                target_chunk,
-                known_chunk
-              })
+
+          // Detect format by checking first seed structure
+          if (seedsArray.length > 0) {
+            const firstSeed = seedsArray[0]
+
+            if (Array.isArray(firstSeed)) {
+              // v7.7 format: [[seed_id, [target, known], [[lego_id, type, t, k], ...]]]
+              for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
+                for (const legoEntry of legoArray) {
+                  const [lego_id, type, target_chunk, known_chunk] = legoEntry
+                  legos.push({
+                    seed_id,
+                    lego_id,
+                    lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
+                    target_chunk,
+                    known_chunk
+                  })
+                }
+              }
+            } else if (firstSeed && typeof firstSeed === 'object' && firstSeed.seed_id) {
+              // v5.0.1 format: {seed_id, seed_pair, legos: [{id, type, target, known, new/ref, components?}]}
+              for (const seed of seedsArray) {
+                // Only include NEW LEGOs in the flat list (not referenced ones)
+                const newLegos = seed.legos.filter(l => l.new === true)
+                for (const lego of newLegos) {
+                  legos.push({
+                    seed_id: seed.seed_id,
+                    lego_id: lego.id,
+                    lego_type: lego.type === 'A' ? 'A' : lego.type === 'M' ? 'M' : lego.type,
+                    target_chunk: lego.target,
+                    known_chunk: lego.known,
+                    components: lego.components // Include componentization for molecular LEGOs
+                  })
+                }
+              }
             }
           }
 
@@ -213,13 +317,24 @@ export default {
             known_language_name: match ? match[2] : 'unknown'
           }
 
-          return {
+          const result = {
             course,
             translations,
             legos,
             lego_breakdowns: seedsArray, // Raw v7.7 format for visualizer
             baskets: []
           }
+
+          // Cache the static file data
+          await setCachedCourse(courseCode, course.version, {
+            seedPairs: seedPairsData,
+            legoPairs: legoPairsData,
+            legoBaskets: []
+          }).catch(err => {
+            console.warn('[API] Failed to cache course data:', err)
+          })
+
+          return result
         }
 
         throw err
@@ -284,6 +399,8 @@ export default {
 
     async updateTranslation(courseCode, uuid, data) {
       const response = await api.put(`/api/courses/${courseCode}/translations/${uuid}`, data)
+      // Clear cache since translation data changed
+      await clearCourseCache(courseCode)
       return response.data
     },
 
@@ -294,6 +411,8 @@ export default {
 
     async compile(courseCode) {
       const response = await api.post(`/api/courses/${courseCode}/compile`)
+      // Clear cache since course was recompiled
+      await clearCourseCache(courseCode)
       return response.data
     },
 
@@ -301,6 +420,11 @@ export default {
       const response = await api.post(`/api/courses/${courseCode}/deploy`, {
         courseJSON
       })
+      return response.data
+    },
+
+    async getBasket(courseCode, seedId) {
+      const response = await api.get(`/api/courses/${courseCode}/baskets/${seedId}`)
       return response.data
     }
   },
@@ -338,6 +462,8 @@ export default {
       const response = await api.post(`/api/courses/${courseCode}/seeds/${seedId}/accept`, {
         attemptId
       })
+      // Clear cache since LEGO data changed
+      await clearCourseCache(courseCode)
       return response.data
     },
 
@@ -354,6 +480,8 @@ export default {
       const response = await api.post(`/api/courses/${courseCode}/seeds/regenerate`, {
         seed_ids: [seedId]
       })
+      // Clear cache since LEGO data will be regenerated
+      await clearCourseCache(courseCode)
       return response.data
     },
 
@@ -362,6 +490,8 @@ export default {
       const response = await api.post(`/api/courses/${courseCode}/seeds/regenerate`, {
         seed_ids: seedIds
       })
+      // Clear cache since LEGO data will be regenerated
+      await clearCourseCache(courseCode)
       return response.data
     },
 
@@ -370,12 +500,16 @@ export default {
       const response = await api.post(`/api/courses/${courseCode}/seeds/bulk-accept`, {
         seedIds
       })
+      // Clear cache since LEGO data changed
+      await clearCourseCache(courseCode)
       return response.data
     },
 
     // Remove SEED from corpus
     async removeSeed(courseCode, seedId) {
       const response = await api.delete(`/api/courses/${courseCode}/seeds/${seedId}`)
+      // Clear cache since seed was removed
+      await clearCourseCache(courseCode)
       return response.data
     },
 

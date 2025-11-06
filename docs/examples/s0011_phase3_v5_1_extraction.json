@@ -1,0 +1,173 @@
+{
+  "version": "5.0.1",
+  "methodology": "Phase 3 LEGO + Pattern Extraction v5.0.1 - COMPLETE TILING",
+  "extraction_date": "2025-01-06",
+  "note": "Every seed shows ALL LEGOs (new + referenced) needed to reconstruct it.",
+  "extraction_notes": "Example extraction demonstrating Phase 3 v5.0.1 methodology with molecular LEGOs and complete tiling",
+
+  "seeds": [
+    {
+      "seed_id": "S0011",
+      "seed_pair": [
+        "Me gustaría poder hablar después de que termines.",
+        "I'd like to be able to speak after you finish."
+      ],
+      "legos": [
+        {
+          "id": "S0011L01",
+          "type": "M",
+          "target": "Me gustaría",
+          "known": "I'd like",
+          "new": true,
+          "components": [
+            ["Me", "me/to me"],
+            ["gustaría", "would please"]
+          ],
+          "metadata": {
+            "pattern_demonstrated": "P04",
+            "fd_test": "KNOWN: 'I'd like' → TARGET: 'Me gustaría' (deterministic)",
+            "molecular_rationale": "Multi-word unit expressing conditional desire. Cannot be broken down further while maintaining FD mapping.",
+            "notes": "Conditional form of 'gustar' combined with indirect object pronoun. Common in polite requests."
+          }
+        },
+        {
+          "id": "S0011L02",
+          "type": "A",
+          "target": "poder",
+          "known": "to be able to",
+          "new": true,
+          "metadata": {
+            "fd_test": "KNOWN: 'to be able to' → TARGET: 'poder' (deterministic)",
+            "notes": "Modal verb expressing ability/possibility. Frequently used with infinitives."
+          }
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "target": "hablar",
+          "known": "to speak",
+          "ref": "S0001",
+          "metadata": {
+            "fd_test": "KNOWN: 'to speak' → TARGET: 'hablar' (deterministic)",
+            "notes": "Regular -ar infinitive. Reused from S0001."
+          }
+        },
+        {
+          "id": "S0011L03",
+          "type": "M",
+          "target": "después de que termines",
+          "known": "after you finish",
+          "new": true,
+          "components": [
+            ["después de que", "after that"],
+            ["termines", "you finish (subj)"]
+          ],
+          "metadata": {
+            "pattern_demonstrated": "P10",
+            "fd_test": "KNOWN: 'after you finish' → TARGET: 'después de que termines' (deterministic)",
+            "molecular_rationale": "CRITICAL: 'después de que' alone fails FD test (grammatically incomplete, requires verb clause). Must include conjugated verb to form complete FD unit.",
+            "structure_explanation": "Temporal conjunction 'después de que' + subjunctive verb. The subjunctive is required after this conjunction when referring to future/uncertain actions.",
+            "notes": "This demonstrates the molecular LEGO principle: the entire phrase is indivisible for FD purposes."
+          }
+        }
+      ],
+      "patterns": ["P04_introduced", "P10_introduced"],
+      "cumulative_legos": 25
+    }
+  ],
+
+  "pattern_summary": {
+    "P04": {
+      "introduced": "S0011",
+      "structure": "Me gustaría + infinitive",
+      "description": "Expressing conditional desires or polite requests",
+      "grammatical_notes": "Uses conditional form of gustar (to please) with indirect object pronoun",
+      "examples": [
+        "Me gustaría poder (I'd like to be able to)",
+        "Me gustaría hablar (I'd like to speak)",
+        "Me gustaría saber (I'd like to know)"
+      ],
+      "instances": ["S0011"],
+      "difficulty": "intermediate",
+      "teaching_notes": "Emphasize the conditional aspect and polite register"
+    },
+    "P10": {
+      "introduced": "S0011",
+      "structure": "después de que + subjunctive",
+      "description": "Expressing temporal relationships with future/uncertain actions",
+      "grammatical_notes": "Temporal conjunction requiring subjunctive mood when action is future or uncertain",
+      "examples": [
+        "después de que termines (after you finish)",
+        "después de que llegues (after you arrive)",
+        "después de que comas (after you eat)"
+      ],
+      "instances": ["S0011"],
+      "difficulty": "advanced",
+      "teaching_notes": "Key subjunctive trigger. Emphasize that 'después de que' alone is grammatically incomplete."
+    }
+  },
+
+  "lego_summary": {
+    "total_new_legos": 3,
+    "atomic": 1,
+    "molecular": 2,
+    "seeds": 1
+  },
+
+  "extraction_metadata": {
+    "extractor": "Claude (Phase 3 v5.0.1 methodology)",
+    "date": "2025-01-06",
+    "validation_status": "approved",
+    "quality_checks": {
+      "fd_test_passed": true,
+      "all_words_accounted": true,
+      "molecular_legos_justified": true,
+      "patterns_identified": true,
+      "complete_tiling": true,
+      "new_ref_markers_present": true,
+      "cumulative_tracking": true
+    },
+    "learnings": [
+      "Complete Tiling: S0011 shows ALL LEGOs including 'hablar' (ref: S0001)",
+      "Molecular LEGO principle: 'después de que' cannot stand alone grammatically",
+      "FD test prevents incomplete constructions from being isolated as LEGOs",
+      "All molecular LEGOs must include componentization showing internal structure",
+      "Pattern instances marked at LEGO level, summarized at course level",
+      "New/ref markers enable validation and basket generation"
+    ]
+  },
+
+  "comparison_with_v5_0_0": {
+    "v5_0_0_structure": {
+      "seed_format": "array [seedId, seedPair, legos]",
+      "lego_format": "array [id, type, target, known, components?]",
+      "tiling": "incomplete - only NEW LEGOs shown",
+      "tracking": "no new/ref markers, no cumulative counts",
+      "note": "Seeds could NOT be reconstructed - missing referenced LEGOs"
+    },
+    "v5_0_1_improvements": {
+      "seed_format": "object {seed_id, seed_pair, legos, patterns, cumulative_legos}",
+      "lego_format": "object {id, type, target, known, new/ref, components?}",
+      "tiling": "complete - ALL LEGOs shown (new + referenced)",
+      "tracking": "new/ref markers + cumulative counts",
+      "note": "Seeds are perfectly reconstructible by concatenating LEGO targets"
+    },
+    "why_it_matters": {
+      "basket_generation": "Needs to see complete LEGO composition to generate valid practice phrases",
+      "pattern_analysis": "Requires knowing which LEGOs tile together to identify patterns",
+      "validation": "Must prove every seed reconstructs perfectly from its LEGOs",
+      "agent_context": "Agents need complete context to understand seed structure"
+    }
+  },
+
+  "complete_tiling_demonstration": {
+    "s0011_reconstruction": "Me gustaría + poder + hablar + después de que termines",
+    "lego_breakdown": {
+      "Me gustaría": {"source": "S0011L01", "status": "new"},
+      "poder": {"source": "S0011L02", "status": "new"},
+      "hablar": {"source": "S0001L02", "status": "referenced from S0001"},
+      "después de que termines": {"source": "S0011L03", "status": "new"}
+    },
+    "validation": "✓ All words accounted for, seed perfectly reconstructible"
+  }
+}

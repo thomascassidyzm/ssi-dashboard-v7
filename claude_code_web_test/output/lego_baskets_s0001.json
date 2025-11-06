@@ -1,0 +1,78 @@
+{
+  "version": "generative_v1",
+  "seed": "S0001",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I want to speak Spanish with you now.",
+    "target": "Quiero hablar español contigo ahora."
+  },
+  "pattern_introduced": "P01: Quiero + infinitive",
+  "cumulative_patterns": ["P01"],
+  "cumulative_legos": 5,
+
+  "S0001L01": {
+    "lego": ["I want", "Quiero"],
+    "type": "B",
+    "available_legos": 1,
+    "available_patterns": [],
+    "practice_phrases": [
+      ["I want", "Quiero", null, 1]
+    ]
+  },
+
+  "S0001L02": {
+    "lego": ["to speak", "hablar"],
+    "type": "B",
+    "available_legos": 2,
+    "available_patterns": ["P01"],
+    "practice_phrases": [
+      ["to speak", "hablar", null, 1],
+      ["I want to speak", "Quiero hablar", "P01", 2]
+    ]
+  },
+
+  "S0001L03": {
+    "lego": ["Spanish", "español"],
+    "type": "B",
+    "available_legos": 3,
+    "available_patterns": ["P01"],
+    "practice_phrases": [
+      ["Spanish", "español", null, 1],
+      ["to speak Spanish", "hablar español", null, 2],
+      ["I want Spanish", "Quiero español", "P01", 2],
+      ["I want to speak Spanish", "Quiero hablar español", "P01", 3]
+    ]
+  },
+
+  "S0001L04": {
+    "lego": ["with you", "contigo"],
+    "type": "B",
+    "available_legos": 4,
+    "available_patterns": ["P01"],
+    "practice_phrases": [
+      ["with you", "contigo", null, 1],
+      ["to speak with you", "hablar contigo", null, 2],
+      ["Spanish with you", "español contigo", null, 2],
+      ["I want to speak with you", "Quiero hablar contigo", "P01", 3],
+      ["to speak Spanish with you", "hablar español contigo", null, 3],
+      ["I want to speak Spanish with you", "Quiero hablar español contigo", "P01", 4]
+    ]
+  },
+
+  "S0001L05": {
+    "lego": ["now", "ahora"],
+    "type": "B",
+    "available_legos": 5,
+    "available_patterns": ["P01"],
+    "practice_phrases": [
+      ["now", "ahora", null, 1],
+      ["to speak now", "hablar ahora", null, 2],
+      ["I want to speak now", "Quiero hablar ahora", "P01", 3],
+      ["Spanish with you now", "español contigo ahora", null, 3],
+      ["I want to speak Spanish now", "Quiero hablar español ahora", "P01", 4],
+      ["to speak Spanish with you now", "hablar español contigo ahora", null, 4],
+      ["I want to speak Spanish with you now", "Quiero hablar español contigo ahora", "P01", 5]
+    ]
+  }
+}

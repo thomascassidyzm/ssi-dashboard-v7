@@ -1,0 +1,385 @@
+{
+  "version": "generative_v5_conversational_claude_code",
+  "seed": "S0021",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "¿Por qué estás aprendiendo su nombre?",
+    "known": "Why are you learning her name?"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P12",
+    "P18"
+  ],
+  "cumulative_legos": 66,
+  "note": "Generated with Claude Code Task agents: LANGUAGE MIXING FIXED - English uses if/and/but, Spanish uses si/y/pero",
+  "generation_metadata": {
+    "generated_at": "2025-11-05T17:54:49.810Z",
+    "generated_by": "Claude Code Web - Task agents",
+    "max_retries": 3,
+    "available_conjunctions": [
+      "si",
+      "y",
+      "pero"
+    ],
+    "requirements": {
+      "min_conversational_phrases": 5,
+      "min_conjunction_percentage": 40
+    }
+  },
+  "S0021L01": {
+    "lego": [
+      "why",
+      "por qué"
+    ],
+    "type": "C",
+    "available_legos": 64,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P12",
+      "P18"
+    ],
+    "practice_phrases": [
+      [
+        "Why do you know that?",
+        "¿Por qué sabes eso?",
+        "question_why",
+        3
+      ],
+      [
+        "Why are you here and not there?",
+        "¿Por qué estás aquí y no allá?",
+        "question_why_and",
+        5
+      ],
+      [
+        "Why do you want it if it is expensive?",
+        "¿Por qué lo quieres si es caro?",
+        "question_why_if",
+        6
+      ],
+      [
+        "Why is she here but he is not?",
+        "¿Por qué está ella aquí pero él no?",
+        "question_why_but",
+        6
+      ],
+      [
+        "Why do they know her name and her address?",
+        "¿Por qué saben su nombre y su dirección?",
+        "question_why_and",
+        6
+      ],
+      [
+        "Why are you learning if you already know it?",
+        "¿Por qué estás aprendiendo si ya lo sabes?",
+        "question_why_if",
+        7
+      ],
+      [
+        "Why do you want this and that?",
+        "¿Por qué quieres esto y eso?",
+        "question_why_and",
+        5
+      ],
+      [
+        "Why is he here but not working?",
+        "¿Por qué está él aquí pero no trabajando?",
+        "question_why_but",
+        6
+      ],
+      [
+        "Why do you know her but not him?",
+        "¿Por qué la conoces pero no a él?",
+        "question_why_but",
+        6
+      ],
+      [
+        "Why are they learning this if it is difficult?",
+        "¿Por qué están aprendiendo esto si es difícil?",
+        "question_why_if",
+        7
+      ],
+      [
+        "Why do you want it and need it?",
+        "¿Por qué lo quieres y lo necesitas?",
+        "question_why_and",
+        6
+      ],
+      [
+        "Why is she working but he is not?",
+        "¿Por qué está ella trabajando pero él no?",
+        "question_why_but",
+        7
+      ],
+      [
+        "Why do they know this and that?",
+        "¿Por qué saben esto y eso?",
+        "question_why_and",
+        5
+      ],
+      [
+        "Why are you here if you are sick?",
+        "¿Por qué estás aquí si estás enfermo?",
+        "question_why_if",
+        6
+      ],
+      [
+        "Why do you want her address but not her name?",
+        "¿Por qué quieres su dirección pero no su nombre?",
+        "question_why_but",
+        8
+      ]
+    ],
+    "validation_score": {
+      "conversational": 100,
+      "conjunctions": 60
+    },
+    "attempt": 1,
+    "generated_at": "2025-11-05T18:30:32.987Z"
+  },
+  "S0021L02": {
+    "lego": [
+      "you are learning",
+      "estás aprendiendo"
+    ],
+    "type": "C",
+    "available_legos": 65,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P12",
+      "P18"
+    ],
+    "practice_phrases": [
+      [
+        "You are learning now.",
+        "Estás aprendiendo ahora.",
+        "statement",
+        3
+      ],
+      [
+        "You are learning but not practicing.",
+        "Estás aprendiendo pero no practicando.",
+        "statement_but",
+        5
+      ],
+      [
+        "You are learning this and that.",
+        "Estás aprendiendo esto y eso.",
+        "statement_and",
+        5
+      ],
+      [
+        "You are learning if you want to know.",
+        "Estás aprendiendo si quieres saber.",
+        "statement_if",
+        6
+      ],
+      [
+        "You are learning her name and her address.",
+        "Estás aprendiendo su nombre y su dirección.",
+        "statement_and",
+        6
+      ],
+      [
+        "You are learning this but you do not understand it.",
+        "Estás aprendiendo esto pero no lo entiendes.",
+        "statement_but",
+        7
+      ],
+      [
+        "You are learning Spanish and English.",
+        "Estás aprendiendo español y inglés.",
+        "statement_and",
+        5
+      ],
+      [
+        "You are learning if it is important.",
+        "Estás aprendiendo si es importante.",
+        "statement_if",
+        6
+      ],
+      [
+        "You are learning but he is not.",
+        "Estás aprendiendo pero él no.",
+        "statement_but",
+        5
+      ],
+      [
+        "You are learning this and practicing that.",
+        "Estás aprendiendo esto y practicando eso.",
+        "statement_and",
+        6
+      ],
+      [
+        "You are learning her language if you want to talk.",
+        "Estás aprendiendo su idioma si quieres hablar.",
+        "statement_if",
+        8
+      ],
+      [
+        "You are learning here and there.",
+        "Estás aprendiendo aquí y allá.",
+        "statement_and",
+        5
+      ],
+      [
+        "You are learning but not remembering it.",
+        "Estás aprendiendo pero no lo recuerdas.",
+        "statement_but",
+        6
+      ],
+      [
+        "You are learning this if you have time.",
+        "Estás aprendiendo esto si tienes tiempo.",
+        "statement_if",
+        7
+      ],
+      [
+        "You are learning Spanish but not speaking it.",
+        "Estás aprendiendo español pero no lo hablas.",
+        "statement_but",
+        7
+      ]
+    ],
+    "validation_score": {
+      "conversational": 100,
+      "conjunctions": 33
+    },
+    "attempt": 1,
+    "generated_at": "2025-11-05T18:30:32.988Z"
+  },
+  "S0021L03": {
+    "lego": [
+      "her name",
+      "su nombre"
+    ],
+    "type": "C",
+    "available_legos": 66,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P12",
+      "P18"
+    ],
+    "practice_phrases": [
+      [
+        "Why are you learning her name?",
+        "¿Por qué estás aprendiendo su nombre?",
+        "question_why",
+        5
+      ],
+      [
+        "I know her name.",
+        "Conozco su nombre.",
+        "statement",
+        3
+      ],
+      [
+        "Her name is important.",
+        "Su nombre es importante.",
+        "statement",
+        4
+      ],
+      [
+        "Her name and her address.",
+        "Su nombre y su dirección.",
+        "noun_phrase_and",
+        5
+      ],
+      [
+        "Do you know her name if she is here?",
+        "¿Conoces su nombre si está aquí?",
+        "question_do_you_if",
+        7
+      ],
+      [
+        "Her name is long but beautiful.",
+        "Su nombre es largo pero hermoso.",
+        "statement_but",
+        6
+      ],
+      [
+        "I want her name and her number.",
+        "Quiero su nombre y su número.",
+        "statement_and",
+        6
+      ],
+      [
+        "Her name is here but not her address.",
+        "Su nombre está aquí pero no su dirección.",
+        "statement_but",
+        8
+      ],
+      [
+        "Do you know her name and his name?",
+        "¿Conoces su nombre y su nombre?",
+        "question_do_you_and",
+        6
+      ],
+      [
+        "Her name is difficult if you do not practice.",
+        "Su nombre es difícil si no practicas.",
+        "statement_if",
+        8
+      ],
+      [
+        "I have her name but not her number.",
+        "Tengo su nombre pero no su número.",
+        "statement_but",
+        7
+      ],
+      [
+        "Her name and her information.",
+        "Su nombre y su información.",
+        "noun_phrase_and",
+        5
+      ],
+      [
+        "Her name is Spanish but his is English.",
+        "Su nombre es español pero el de él es inglés.",
+        "statement_but",
+        9
+      ],
+      [
+        "I need her name if I want to call.",
+        "Necesito su nombre si quiero llamar.",
+        "statement_if",
+        8
+      ],
+      [
+        "Her name is beautiful and easy.",
+        "Su nombre es hermoso y fácil.",
+        "statement_and",
+        6
+      ]
+    ],
+    "validation_score": {
+      "conversational": 100,
+      "conjunctions": 33
+    },
+    "attempt": 1,
+    "generated_at": "2025-11-05T18:30:32.989Z"
+  }
+}
