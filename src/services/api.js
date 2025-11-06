@@ -1,4 +1,5 @@
 import axios from 'axios'
+import vfsLoader from './vfsLoader'
 
 // API Base URL - set this to your ngrok URL when running locally
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
@@ -58,55 +59,16 @@ export default {
         const response = await api.get('/api/courses')
         return response.data
       } catch (err) {
-        // Fallback to static files if API unavailable
-        console.log('[API] Server unavailable, using static files')
+        // Fallback to VFS loader
+        console.log('[API] Server unavailable, using VFS loader')
 
-        const courseCodes = ['spa_for_eng_30seeds', 'fra_for_eng_30seeds', 'ita_for_eng_30seeds', 'cmn_for_eng_30seeds']
-        const courses = []
-
-        for (const courseCode of courseCodes) {
-          try {
-            const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
-            const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
-
-            if (seedPairsRes.ok && legoPairsRes.ok) {
-              const seedPairsData = await seedPairsRes.json()
-              const legoPairsData = await legoPairsRes.json()
-
-              const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\\d+)seeds$/)
-
-              // Count LEGOs from v7.7 format: seeds array [[seed_id, [t,k], [[lego_id, type, t, k], ...]]]
-              let legoCount = 0
-              const seedsArray = legoPairsData.seeds || []
-              for (const [seedId, seedPair, legos] of seedsArray) {
-                legoCount += legos.length
-              }
-
-              courses.push({
-                course_code: courseCode,
-                source_language: match ? match[2].toUpperCase() : 'UNK',
-                target_language: match ? match[1].toUpperCase() : 'UNK',
-                total_seeds: match ? parseInt(match[3]) : 0,
-                version: '1.0',
-                created_at: new Date().toISOString(),
-                status: 'phase_3_complete',
-                seed_pairs: Object.keys(seedPairsData.translations || {}).length,
-                lego_pairs: legoCount,
-                lego_baskets: 0,
-                phases_completed: ['1', '3']
-              })
-            }
-          } catch (staticErr) {
-            // Skip courses that don't have the required files
-          }
-        }
-
-        if (courses.length > 0) {
+        try {
+          const courses = await vfsLoader.listCourses()
           return { courses }
+        } catch (vfsErr) {
+          console.error('[API] VFS loader failed:', vfsErr)
+          throw err // Throw original API error
         }
-
-        // If both fail, throw the original API error
-        throw err
       }
     },
 
@@ -116,74 +78,16 @@ export default {
         const response = await api.get(`/api/courses/${courseCode}`)
         return response.data
       } catch (err) {
-        // Fallback to static files if API unavailable
-        console.log(`[API] Server unavailable, using static files for ${courseCode}`)
+        // Fallback to VFS loader
+        console.log(`[API] Server unavailable, using VFS loader for ${courseCode}`)
 
-        const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
-        const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
-
-        if (seedPairsRes.ok && legoPairsRes.ok) {
-          const seedPairsData = await seedPairsRes.json()
-          const legoPairsData = await legoPairsRes.json()
-
-          // Convert v7.7 format translations object to array
-          // Input: { translations: { "S0001": ["target", "known"], ... } }
-          // Output: [{ seed_id: "S0001", target_phrase: "...", known_phrase: "..." }, ...]
-          const translationsObj = seedPairsData.translations || {}
-          const translations = Object.entries(translationsObj).map(([seed_id, [target_phrase, known_phrase]]) => ({
-            seed_id,
-            target_phrase,
-            known_phrase,
-            canonical_seed: null
-          }))
-
-          translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
-
-          // Convert v7.7 format lego_pairs to flat array
-          // Input: { seeds: [[seed_id, [target, known], [[lego_id, type, t, k], ...]]] }
-          const seedsArray = legoPairsData.seeds || []
-          const legos = []
-          for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
-            for (const legoEntry of legoArray) {
-              const [lego_id, type, target_chunk, known_chunk] = legoEntry
-              legos.push({
-                seed_id,
-                lego_id,
-                lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
-                target_chunk,
-                known_chunk
-              })
-            }
-          }
-
-          const match = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_(\\d+)seeds$/)
-
-          const course = {
-            course_code: courseCode,
-            source_language: match ? match[2].toUpperCase() : 'UNK',
-            target_language: match ? match[1].toUpperCase() : 'UNK',
-            total_seeds: match ? parseInt(match[3]) : 0,
-            version: '1.0',
-            created_at: new Date().toISOString(),
-            status: 'phase_3_complete',
-            seed_pairs: translations.length,
-            lego_pairs: legos.length,
-            lego_baskets: 0,
-            phases_completed: ['1', '3'],
-            target_language_name: match ? match[1] : 'unknown',
-            known_language_name: match ? match[2] : 'unknown'
-          }
-
-          return {
-            course,
-            translations,
-            legos,
-            lego_breakdowns: seedsArray, // Raw v7.7 format for visualizer
-            baskets: []
-          }
+        try {
+          const courseData = await vfsLoader.loadCourse(courseCode)
+          return courseData
+        } catch (vfsErr) {
+          console.error(`[API] VFS loader failed for ${courseCode}:`, vfsErr)
+          throw err // Throw original API error
         }
-
-        throw err
       }
     },
 
@@ -193,53 +97,35 @@ export default {
         const response = await api.get(`/api/courses/${courseCode}/provenance/${seedId}`)
         return response.data
       } catch (err) {
-        // Fallback to static files if API unavailable
-        console.log(`[API] Server unavailable, using static files for provenance ${courseCode}/${seedId}`)
+        // Fallback to VFS loader
+        console.log(`[API] Server unavailable, using VFS loader for provenance ${courseCode}/${seedId}`)
 
-        const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
-        const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
+        try {
+          const [translations, legoBreakdowns] = await Promise.all([
+            vfsLoader.loadTranslations(courseCode),
+            vfsLoader.loadLegoBreakdowns(courseCode)
+          ])
 
-        if (seedPairsRes.ok && legoPairsRes.ok) {
-          const seedPairsData = await seedPairsRes.json()
-          const legoPairsData = await legoPairsRes.json()
-
-          const translationsObj = seedPairsData.translations || {}
-          const translationPair = translationsObj[seedId]
-          if (!translationPair) {
+          const translation = translations.find(t => t.seed_id === seedId)
+          if (!translation) {
             throw new Error(`Seed ${seedId} not found`)
           }
 
-          const translation = {
-            seed_id: seedId,
-            target_phrase: translationPair[0],
-            known_phrase: translationPair[1]
-          }
+          const legoBreakdown = legoBreakdowns.find(b => b.seed_id === seedId)
 
-          // Find LEGO breakdown in v7.7 format
-          const seedsArray = legoPairsData.seeds || []
-          const legoBreakdown = seedsArray.find(([seed_id]) => seed_id === seedId)
+          // Count LEGOs and baskets affected
+          const legosCount = legoBreakdown ? legoBreakdown.lego_pairs.length : 0
 
           return {
             seed: translation,
-            lego_breakdown: legoBreakdown || null,
-            phase_history: [
-              {
-                phase: '1',
-                name: 'Translation',
-                completed: true,
-                output: translation
-              },
-              {
-                phase: '3',
-                name: 'LEGO Extraction',
-                completed: !!legoBreakdown,
-                output: legoBreakdown
-              }
-            ]
+            legos: legosCount,
+            deduplicated: legosCount, // Simplified for VFS
+            baskets: 0 // Would need basket analysis
           }
+        } catch (vfsErr) {
+          console.error(`[API] VFS loader failed for provenance ${courseCode}/${seedId}:`, vfsErr)
+          throw err // Throw original API error
         }
-
-        throw err
       }
     },
 
