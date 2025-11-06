@@ -1,0 +1,1514 @@
+{
+  "version": "extraction_v1_expansion",
+  "methodology": "Sequential high-quality LEGO extraction for S0051-S0100",
+  "course": "spa_for_eng_30",
+  "seeds": "S0051-S0100",
+  "note": "Continuation from S0050 (139 LEGOs) - expanding vocabulary and complexity",
+
+  "S0051": {
+    "seed_pair": {
+      "target": "Disfruto hacer cosas interesantes con mis amigos.",
+      "known": "I enjoy doing interesting things with my friends."
+    },
+    "patterns_used": ["P05"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0051L01",
+        "lego": ["I enjoy", "Disfruto"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "First person present - new verb"
+      },
+      {
+        "id": "S0051L02",
+        "lego": ["doing", "hacer"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Infinitive - versatile verb"
+      },
+      {
+        "id": "S0051L03",
+        "lego": ["interesting things", "cosas interesantes"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Noun + adjective (adjective follows noun)"
+      },
+      {
+        "id": "S0051L04",
+        "lego": ["my friends", "mis amigos"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Possessive plural"
+      }
+    ],
+    "cumulative_legos": 143
+  },
+
+  "S0052": {
+    "seed_pair": {
+      "target": "Quería escribir una carta a su amigo la semana pasada.",
+      "known": "He wanted to write a letter to his friend last week."
+    },
+    "patterns_used": ["P13"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0052L01",
+        "lego": ["to write", "escribir"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Infinitive verb"
+      },
+      {
+        "id": "S0052L02",
+        "lego": ["a letter", "una carta"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Article + noun"
+      },
+      {
+        "id": "S0052L03",
+        "lego": ["to his friend", "a su amigo"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Prepositional phrase with possessive"
+      },
+      {
+        "id": "S0052L04",
+        "lego": ["last week", "la semana pasada"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Past time expression"
+      }
+    ],
+    "cumulative_legos": 147
+  },
+
+  "S0053": {
+    "seed_pair": {
+      "target": "Quería poner su carta en su bolsa.",
+      "known": "She wanted to put his letter in her bag."
+    },
+    "patterns_used": ["P13"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0053L01",
+        "lego": ["to put", "poner"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Infinitive verb"
+      },
+      {
+        "id": "S0053L02",
+        "lego": ["in her bag", "en su bolsa"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Prepositional phrase - location"
+      }
+    ],
+    "cumulative_legos": 149
+  },
+
+  "S0054": {
+    "seed_pair": {
+      "target": "Queríamos darte un poco más de tiempo.",
+      "known": "We wanted to give you a little more time."
+    },
+    "patterns_used": ["P13"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0054L01",
+        "lego": ["we wanted", "Queríamos"],
+        "type": "C",
+        "pattern_demonstrated": "P13",
+        "note": "First person plural imperfect"
+      },
+      {
+        "id": "S0054L02",
+        "lego": ["to give you", "darte"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Infinitive with attached pronoun"
+      },
+      {
+        "id": "S0054L03",
+        "lego": ["a little more time", "un poco más de tiempo"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Quantity + comparative + noun"
+      }
+    ],
+    "cumulative_legos": 152
+  },
+
+  "S0055": {
+    "seed_pair": {
+      "target": "No disfruto despertarme cuando no dormí muy bien.",
+      "known": "I don't enjoy waking up when I didn't sleep very well."
+    },
+    "patterns_used": ["P05", "P15"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0055L01",
+        "lego": ["waking up", "despertarme"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Reflexive infinitive"
+      },
+      {
+        "id": "S0055L02",
+        "lego": ["I didn't sleep", "no dormí"],
+        "type": "C",
+        "pattern_demonstrated": "P15",
+        "note": "Negative preterite"
+      }
+    ],
+    "cumulative_legos": 154
+  },
+
+  "S0056": {
+    "seed_pair": {
+      "target": "Para poder recordar cómo decir unas pocas palabras.",
+      "known": "So I can remember how to say a few words."
+    },
+    "patterns_used": ["P12"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0056L01",
+        "lego": ["so I can", "Para poder"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Purpose construction"
+      },
+      {
+        "id": "S0056L02",
+        "lego": ["how to say", "cómo decir"],
+        "type": "C",
+        "pattern_demonstrated": "P12",
+        "note": "Question word + infinitive"
+      },
+      {
+        "id": "S0056L03",
+        "lego": ["a few words", "unas pocas palabras"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Quantity + noun plural"
+      }
+    ],
+    "cumulative_legos": 157
+  },
+
+  "S0057": {
+    "seed_pair": {
+      "target": "No puedo recordar cómo decir lo que quería decir.",
+      "known": "I can't remember how to say what I wanted to say."
+    },
+    "patterns_used": ["P18", "P12", "P13"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0057L01",
+        "lego": ["I can't", "No puedo"],
+        "type": "C",
+        "pattern_demonstrated": "P18",
+        "note": "Negative ability"
+      }
+    ],
+    "cumulative_legos": 158
+  },
+
+  "S0058": {
+    "seed_pair": {
+      "target": "Es interesante cuando comprendes suficientes palabras.",
+      "known": "It's interesting when you understand enough words."
+    },
+    "patterns_used": ["P20", "P05"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0058L01",
+        "lego": ["it's interesting", "Es interesante"],
+        "type": "C",
+        "pattern_demonstrated": "P20",
+        "note": "Impersonal evaluation"
+      },
+      {
+        "id": "S0058L02",
+        "lego": ["when", "cuando"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Temporal conjunction - already taught"
+      },
+      {
+        "id": "S0058L03",
+        "lego": ["you understand", "comprendes"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Second person present"
+      },
+      {
+        "id": "S0058L04",
+        "lego": ["enough words", "suficientes palabras"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Quantity + noun"
+      }
+    ],
+    "cumulative_legos": 162
+  },
+
+  "S0059": {
+    "seed_pair": {
+      "target": "Sé hacer lo que necesito hacer la próxima semana.",
+      "known": "I know how to do what I need to do next week."
+    },
+    "patterns_used": ["P17", "P05"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0059L01",
+        "lego": ["I know how to", "Sé hacer"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Knowledge + ability construction"
+      },
+      {
+        "id": "S0059L02",
+        "lego": ["what I need to do", "lo que necesito hacer"],
+        "type": "C",
+        "pattern_demonstrated": "P17",
+        "note": "Relative clause with necessity"
+      },
+      {
+        "id": "S0059L03",
+        "lego": ["next week", "la próxima semana"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Future time expression"
+      }
+    ],
+    "cumulative_legos": 165
+  },
+
+  "S0060": {
+    "seed_pair": {
+      "target": "Todavía no sé cómo decir suficientes palabras diferentes.",
+      "known": "I don't know how to say enough different words yet."
+    },
+    "patterns_used": ["P05", "P12"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0060L01",
+        "lego": ["I don't know", "no sé"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Negative knowledge"
+      },
+      {
+        "id": "S0060L02",
+        "lego": ["yet", "todavía"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Time adverb"
+      },
+      {
+        "id": "S0060L03",
+        "lego": ["different words", "palabras diferentes"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Noun + adjective"
+      }
+    ],
+    "cumulative_legos": 168
+  },
+
+  "S0061": {
+    "seed_pair": {
+      "target": "¿Podrías decir eso otra vez un poco más lentamente?",
+      "known": "Could you say that again a little more slowly?"
+    },
+    "patterns_used": ["P19"],
+    "patterns_introduced": ["P19"],
+    "legos": [
+      {
+        "id": "S0061L01",
+        "lego": ["could you", "Podrías"],
+        "type": "C",
+        "pattern_demonstrated": "P19",
+        "note": "Conditional - polite request, establishes P19"
+      },
+      {
+        "id": "S0061L02",
+        "lego": ["to say", "decir"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Infinitive - already taught"
+      },
+      {
+        "id": "S0061L03",
+        "lego": ["that", "eso"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Demonstrative pronoun"
+      },
+      {
+        "id": "S0061L04",
+        "lego": ["again", "otra vez"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Adverbial phrase"
+      },
+      {
+        "id": "S0061L05",
+        "lego": ["more slowly", "más lentamente"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Comparative manner"
+      }
+    ],
+    "cumulative_legos": 173
+  },
+
+  "S0062": {
+    "seed_pair": {
+      "target": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+      "known": "I'm not sure if I can help you at the same time."
+    },
+    "patterns_used": ["P06", "P18"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0062L01",
+        "lego": ["to help you", "ayudarte"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Infinitive with pronoun - already taught as 'ayudarme'"
+      },
+      {
+        "id": "S0062L02",
+        "lego": ["at the same time", "al mismo tiempo"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Time expression"
+      }
+    ],
+    "cumulative_legos": 175
+  },
+
+  "S0063": {
+    "seed_pair": {
+      "target": "¿Estás seguro de que no te importa ayudarme?",
+      "known": "Are you sure you don't mind helping me?"
+    },
+    "patterns_used": ["P05"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0063L01",
+        "lego": ["are you sure", "Estás seguro"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Question form of certainty"
+      },
+      {
+        "id": "S0063L02",
+        "lego": ["you don't mind", "no te importa"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Negative gustar-like construction"
+      },
+      {
+        "id": "S0063L03",
+        "lego": ["helping me", "ayudarme"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Gerund/infinitive form"
+      }
+    ],
+    "cumulative_legos": 178
+  },
+
+  "S0064": {
+    "seed_pair": {
+      "target": "Aprender español no es fácil pero es divertido.",
+      "known": "Learning Spanish isn't easy but it is fun."
+    },
+    "patterns_used": ["P20"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0064L01",
+        "lego": ["learning Spanish", "Aprender español"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Infinitive as subject"
+      },
+      {
+        "id": "S0064L02",
+        "lego": ["isn't easy", "no es fácil"],
+        "type": "C",
+        "pattern_demonstrated": "P20",
+        "note": "Negative impersonal evaluation"
+      },
+      {
+        "id": "S0064L03",
+        "lego": ["it is fun", "es divertido"],
+        "type": "C",
+        "pattern_demonstrated": "P20",
+        "note": "Impersonal evaluation"
+      }
+    ],
+    "cumulative_legos": 181
+  },
+
+  "S0065": {
+    "seed_pair": {
+      "target": "Es importante tomar tiempo para evaluarte.",
+      "known": "It's important to take time to test yourself."
+    },
+    "patterns_used": ["P20"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0065L01",
+        "lego": ["it's important", "Es importante"],
+        "type": "C",
+        "pattern_demonstrated": "P20",
+        "note": "Impersonal evaluation"
+      },
+      {
+        "id": "S0065L02",
+        "lego": ["to take time", "tomar tiempo"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Verb + noun collocation"
+      },
+      {
+        "id": "S0065L03",
+        "lego": ["to test yourself", "evaluarte"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Reflexive infinitive"
+      }
+    ],
+    "cumulative_legos": 184
+  },
+
+  "S0066": {
+    "seed_pair": {
+      "target": "No es difícil encontrar la respuesta.",
+      "known": "It's not difficult to find the answer."
+    },
+    "patterns_used": ["P20"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0066L01",
+        "lego": ["it's not difficult", "No es difícil"],
+        "type": "C",
+        "pattern_demonstrated": "P20",
+        "note": "Negative impersonal evaluation"
+      },
+      {
+        "id": "S0066L02",
+        "lego": ["to find", "encontrar"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Already taught as 'to meet/find'"
+      }
+    ],
+    "cumulative_legos": 185
+  },
+
+  "S0067": {
+    "seed_pair": {
+      "target": "¿Por qué quieres parar?",
+      "known": "Why do you want to stop?"
+    },
+    "patterns_used": ["P01"],
+    "patterns_introduced": [],
+    "legos": [],
+    "cumulative_legos": 185,
+    "note": "All LEGOs already taught - recombination practice"
+  },
+
+  "S0068": {
+    "seed_pair": {
+      "target": "¿Qué estás buscando?",
+      "known": "What are you looking for?"
+    },
+    "patterns_used": ["P02"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0068L01",
+        "lego": ["what", "Qué"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Question word"
+      },
+      {
+        "id": "S0068L02",
+        "lego": ["you are looking for", "estás buscando"],
+        "type": "C",
+        "pattern_demonstrated": "P02",
+        "note": "Second person progressive"
+      }
+    ],
+    "cumulative_legos": 187
+  },
+
+  "S0069": {
+    "seed_pair": {
+      "target": "No quería cuidar el perro joven toda la tarde.",
+      "known": "He didn't want to look after the young dog all afternoon."
+    },
+    "patterns_used": ["P13"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0069L01",
+        "lego": ["he didn't want", "No quería"],
+        "type": "C",
+        "pattern_demonstrated": "P13",
+        "note": "Third person negative imperfect"
+      },
+      {
+        "id": "S0069L02",
+        "lego": ["to look after", "cuidar"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Infinitive verb"
+      },
+      {
+        "id": "S0069L03",
+        "lego": ["the young dog", "el perro joven"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Article + noun + adjective"
+      },
+      {
+        "id": "S0069L04",
+        "lego": ["all afternoon", "toda la tarde"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Time expression"
+      }
+    ],
+    "cumulative_legos": 191
+  },
+
+  "S0070": {
+    "seed_pair": {
+      "target": "Ella no quería decirme dónde estaba.",
+      "known": "She didn't want to tell me where it was."
+    },
+    "patterns_used": ["P13"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0070L01",
+        "lego": ["she didn't want", "Ella no quería"],
+        "type": "C",
+        "pattern_demonstrated": "P13",
+        "note": "Third person feminine negative imperfect"
+      },
+      {
+        "id": "S0070L02",
+        "lego": ["to tell me", "decirme"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Infinitive with pronoun"
+      },
+      {
+        "id": "S0070L03",
+        "lego": ["where it was", "dónde estaba"],
+        "type": "C",
+        "pattern_demonstrated": "P16",
+        "note": "Question word + past progressive"
+      }
+    ],
+    "cumulative_legos": 194
+  },
+
+  "S0071": {
+    "seed_pair": {
+      "target": "No queríamos permitir que nadie oyera la verdad.",
+      "known": "We didn't want to let anyone hear the truth."
+    },
+    "patterns_used": ["P13", "P10"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0071L01",
+        "lego": ["we didn't want", "No queríamos"],
+        "type": "C",
+        "pattern_demonstrated": "P13",
+        "note": "First person plural negative imperfect"
+      },
+      {
+        "id": "S0071L02",
+        "lego": ["to let", "permitir que"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Verb requiring subjunctive"
+      },
+      {
+        "id": "S0071L03",
+        "lego": ["anyone", "nadie"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Negative pronoun"
+      },
+      {
+        "id": "S0071L04",
+        "lego": ["to hear", "oír"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Infinitive - irregular verb"
+      },
+      {
+        "id": "S0071L05",
+        "lego": ["the truth", "la verdad"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Article + noun"
+      }
+    ],
+    "cumulative_legos": 199
+  },
+
+  "S0072": {
+    "seed_pair": {
+      "target": "Pienso que estás haciendo muy bien.",
+      "known": "I think that you're doing very well."
+    },
+    "patterns_used": ["P05", "P02"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0072L01",
+        "lego": ["you're doing", "estás haciendo"],
+        "type": "C",
+        "pattern_demonstrated": "P02",
+        "note": "Second person progressive with 'hacer'"
+      }
+    ],
+    "cumulative_legos": 200
+  },
+
+  "S0073": {
+    "seed_pair": {
+      "target": "Muchas gracias, pero tengo más que aprender.",
+      "known": "Thank you very much, but I've got more to learn."
+    },
+    "patterns_used": ["P05"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0073L01",
+        "lego": ["thank you very much", "Muchas gracias"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Polite expression"
+      },
+      {
+        "id": "S0073L02",
+        "lego": ["I've got", "tengo"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "First person present of tener"
+      },
+      {
+        "id": "S0073L03",
+        "lego": ["more to learn", "más que aprender"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Comparative + infinitive"
+      }
+    ],
+    "cumulative_legos": 203
+  },
+
+  "S0074": {
+    "seed_pair": {
+      "target": "Muchas gracias por ayudarme a comprender.",
+      "known": "Thank you very much for helping me to understand."
+    },
+    "patterns_used": [],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0074L01",
+        "lego": ["for helping me", "por ayudarme"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Preposition + infinitive"
+      },
+      {
+        "id": "S0074L02",
+        "lego": ["to understand", "a comprender"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "'a' + infinitive construction"
+      }
+    ],
+    "cumulative_legos": 205
+  },
+
+  "S0075": {
+    "seed_pair": {
+      "target": "¿Tienes más que aprender?",
+      "known": "Have you got more to learn?"
+    },
+    "patterns_used": ["P05"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0075L01",
+        "lego": ["have you got", "Tienes"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Second person present of tener"
+      }
+    ],
+    "cumulative_legos": 206
+  },
+
+  "S0076": {
+    "seed_pair": {
+      "target": "Estoy muy feliz con cuánto he aprendido ya.",
+      "known": "I'm very happy with how much I've learnt already."
+    },
+    "patterns_used": ["P05", "P21"],
+    "patterns_introduced": ["P21"],
+    "legos": [
+      {
+        "id": "S0076L01",
+        "lego": ["I'm very happy", "Estoy muy feliz"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Estar + adjective for state"
+      },
+      {
+        "id": "S0076L02",
+        "lego": ["how much", "cuánto"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Question word for quantity"
+      },
+      {
+        "id": "S0076L03",
+        "lego": ["I've learnt", "he aprendido"],
+        "type": "C",
+        "pattern_demonstrated": "P21",
+        "note": "Present perfect - establishes P21"
+      },
+      {
+        "id": "S0076L04",
+        "lego": ["already", "ya"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Time adverb"
+      }
+    ],
+    "cumulative_legos": 210
+  },
+
+  "S0077": {
+    "seed_pair": {
+      "target": "Estoy sorprendido de lo rápidamente que estoy comenzando a comprender.",
+      "known": "I'm surprised at how quickly I'm starting to understand."
+    },
+    "patterns_used": ["P05", "P02"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0077L01",
+        "lego": ["I'm surprised", "Estoy sorprendido"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Estar + past participle as adjective"
+      },
+      {
+        "id": "S0077L02",
+        "lego": ["how quickly", "lo rápidamente que"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Comparative construction"
+      },
+      {
+        "id": "S0077L03",
+        "lego": ["I'm starting to understand", "estoy comenzando a comprender"],
+        "type": "C",
+        "pattern_demonstrated": "P02",
+        "note": "Progressive + infinitive"
+      }
+    ],
+    "cumulative_legos": 213
+  },
+
+  "S0078": {
+    "seed_pair": {
+      "target": "No comprendo lo que dijiste.",
+      "known": "I don't understand what you said."
+    },
+    "patterns_used": ["P05", "P15"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0078L01",
+        "lego": ["I don't understand", "No comprendo"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Negative present"
+      },
+      {
+        "id": "S0078L02",
+        "lego": ["you said", "dijiste"],
+        "type": "C",
+        "pattern_demonstrated": "P15",
+        "note": "Second person preterite"
+      }
+    ],
+    "cumulative_legos": 215
+  },
+
+  "S0079": {
+    "seed_pair": {
+      "target": "¿Cuándo comenzaste a aprender?",
+      "known": "When did you start to learn?"
+    },
+    "patterns_used": ["P15"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0079L01",
+        "lego": ["when", "Cuándo"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Question word - time"
+      },
+      {
+        "id": "S0079L02",
+        "lego": ["did you start", "comenzaste"],
+        "type": "C",
+        "pattern_demonstrated": "P15",
+        "note": "Second person preterite"
+      }
+    ],
+    "cumulative_legos": 217
+  },
+
+  "S0080": {
+    "seed_pair": {
+      "target": "No estoy seguro de cuándo estaré preparado.",
+      "known": "I'm not sure when I'll be ready."
+    },
+    "patterns_used": ["P06", "P22"],
+    "patterns_introduced": ["P22"],
+    "legos": [
+      {
+        "id": "S0080L01",
+        "lego": ["I'll be ready", "estaré preparado"],
+        "type": "C",
+        "pattern_demonstrated": "P22",
+        "note": "Future tense - establishes P22"
+      }
+    ],
+    "cumulative_legos": 218
+  },
+
+  "S0081": {
+    "seed_pair": {
+      "target": "¿Cuándo quieres comenzar?",
+      "known": "When do you want to start?"
+    },
+    "patterns_used": ["P01"],
+    "patterns_introduced": [],
+    "legos": [],
+    "cumulative_legos": 218,
+    "note": "All LEGOs already taught"
+  },
+
+  "S0082": {
+    "seed_pair": {
+      "target": "No voy a esperarte. ¿Por qué no?",
+      "known": "I'm not going to wait for you. Why not?"
+    },
+    "patterns_used": ["P03"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0082L01",
+        "lego": ["to wait for you", "esperarte"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Infinitive with pronoun"
+      },
+      {
+        "id": "S0082L02",
+        "lego": ["why not", "Por qué no"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Question phrase"
+      }
+    ],
+    "cumulative_legos": 220
+  },
+
+  "S0083": {
+    "seed_pair": {
+      "target": "Estoy de acuerdo con lo que dijiste sobre tu amigo.",
+      "known": "I agree with what you said about your friend."
+    },
+    "patterns_used": ["P05", "P15"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0083L01",
+        "lego": ["I agree", "Estoy de acuerdo"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Idiomatic expression with estar"
+      },
+      {
+        "id": "S0083L02",
+        "lego": ["about", "sobre"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Preposition - already taught"
+      },
+      {
+        "id": "S0083L03",
+        "lego": ["your friend", "tu amigo"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Possessive + noun"
+      }
+    ],
+    "cumulative_legos": 223
+  },
+
+  "S0084": {
+    "seed_pair": {
+      "target": "No estoy de acuerdo con lo que dijo sobre mi amigo.",
+      "known": "I don't agree with what he said about my friend."
+    },
+    "patterns_used": ["P05", "P15"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0084L01",
+        "lego": ["I don't agree", "No estoy de acuerdo"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Negative agreement"
+      },
+      {
+        "id": "S0084L02",
+        "lego": ["he said", "dijo"],
+        "type": "C",
+        "pattern_demonstrated": "P15",
+        "note": "Third person preterite"
+      },
+      {
+        "id": "S0084L03",
+        "lego": ["my friend", "mi amigo"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Possessive + noun"
+      }
+    ],
+    "cumulative_legos": 226
+  },
+
+  "S0085": {
+    "seed_pair": {
+      "target": "No conozco a esas personas.",
+      "known": "I don't know those people."
+    },
+    "patterns_used": ["P05"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0085L01",
+        "lego": ["I don't know (people)", "No conozco"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Conocer (know people) vs saber (know facts)"
+      },
+      {
+        "id": "S0085L02",
+        "lego": ["those people", "esas personas"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Demonstrative + noun"
+      }
+    ],
+    "cumulative_legos": 228
+  },
+
+  "S0086": {
+    "seed_pair": {
+      "target": "No fue posible, desafortunadamente.",
+      "known": "It wasn't possible, unfortunately."
+    },
+    "patterns_used": ["P15"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0086L01",
+        "lego": ["it wasn't possible", "No fue posible"],
+        "type": "C",
+        "pattern_demonstrated": "P15",
+        "note": "Negative preterite impersonal"
+      },
+      {
+        "id": "S0086L02",
+        "lego": ["unfortunately", "desafortunadamente"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Adverb"
+      }
+    ],
+    "cumulative_legos": 230
+  },
+
+  "S0087": {
+    "seed_pair": {
+      "target": "Son personas que no conozco.",
+      "known": "They are people I don't know."
+    },
+    "patterns_used": ["P05"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0087L01",
+        "lego": ["they are", "Son"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Third person plural present of ser"
+      }
+    ],
+    "cumulative_legos": 231
+  },
+
+  "S0088": {
+    "seed_pair": {
+      "target": "No estoy preparado para hablar con personas que no conozco todavía.",
+      "known": "I'm not ready to talk to people I don't know yet."
+    },
+    "patterns_used": ["P05"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0088L01",
+        "lego": ["I'm not ready", "No estoy preparado"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Negative state"
+      },
+      {
+        "id": "S0088L02",
+        "lego": ["to talk to", "para hablar con"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Purpose + infinitive + preposition"
+      }
+    ],
+    "cumulative_legos": 233
+  },
+
+  "S0089": {
+    "seed_pair": {
+      "target": "Pienso que he hecho mucho en un breve tiempo.",
+      "known": "I think that I've done a lot in a short time."
+    },
+    "patterns_used": ["P05", "P21"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0089L01",
+        "lego": ["I've done", "he hecho"],
+        "type": "C",
+        "pattern_demonstrated": "P21",
+        "note": "Present perfect of hacer"
+      },
+      {
+        "id": "S0089L02",
+        "lego": ["a lot", "mucho"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Quantity"
+      },
+      {
+        "id": "S0089L03",
+        "lego": ["in a short time", "en un breve tiempo"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Time expression"
+      }
+    ],
+    "cumulative_legos": 236
+  },
+
+  "S0090": {
+    "seed_pair": {
+      "target": "Si puedes hablar más lentamente, eso sería excelente.",
+      "known": "If you can speak more slowly that would be great."
+    },
+    "patterns_used": ["P18", "P19"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0090L01",
+        "lego": ["if you can", "Si puedes"],
+        "type": "C",
+        "pattern_demonstrated": "P18",
+        "note": "Conditional clause"
+      },
+      {
+        "id": "S0090L02",
+        "lego": ["that would be", "eso sería"],
+        "type": "C",
+        "pattern_demonstrated": "P19",
+        "note": "Conditional tense"
+      },
+      {
+        "id": "S0090L03",
+        "lego": ["great", "excelente"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Adjective"
+      }
+    ],
+    "cumulative_legos": 239
+  },
+
+  "S0091": {
+    "seed_pair": {
+      "target": "Es difícil pensar lo suficientemente rápido para responder a tiempo.",
+      "known": "It's difficult to think quickly enough to answer in time."
+    },
+    "patterns_used": ["P20"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0091L01",
+        "lego": ["it's difficult", "Es difícil"],
+        "type": "C",
+        "pattern_demonstrated": "P20",
+        "note": "Impersonal evaluation"
+      },
+      {
+        "id": "S0091L02",
+        "lego": ["quickly enough", "lo suficientemente rápido"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Sufficiency expression"
+      },
+      {
+        "id": "S0091L03",
+        "lego": ["in time", "a tiempo"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Time expression"
+      }
+    ],
+    "cumulative_legos": 242
+  },
+
+  "S0092": {
+    "seed_pair": {
+      "target": "Me gustaría continuar haciendo esto por un tiempo.",
+      "known": "I'd like to keep on doing this for a while."
+    },
+    "patterns_used": ["P04"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0092L01",
+        "lego": ["to keep on", "continuar"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Infinitive verb"
+      },
+      {
+        "id": "S0092L02",
+        "lego": ["for a while", "por un tiempo"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Duration expression"
+      }
+    ],
+    "cumulative_legos": 244
+  },
+
+  "S0093": {
+    "seed_pair": {
+      "target": "Es hora de ir ahora.",
+      "known": "It's time to go now."
+    },
+    "patterns_used": ["P20"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0093L01",
+        "lego": ["it's time", "Es hora"],
+        "type": "C",
+        "pattern_demonstrated": "P20",
+        "note": "Impersonal time expression"
+      }
+    ],
+    "cumulative_legos": 245
+  },
+
+  "S0094": {
+    "seed_pair": {
+      "target": "Esta es la única manera en que funcionará.",
+      "known": "This is the only way it will work."
+    },
+    "patterns_used": ["P05", "P22"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0094L01",
+        "lego": ["this is", "Esta es"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Demonstrative + ser"
+      },
+      {
+        "id": "S0094L02",
+        "lego": ["the only way", "la única manera"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Superlative expression"
+      },
+      {
+        "id": "S0094L03",
+        "lego": ["it will work", "funcionará"],
+        "type": "C",
+        "pattern_demonstrated": "P22",
+        "note": "Third person future"
+      }
+    ],
+    "cumulative_legos": 248
+  },
+
+  "S0095": {
+    "seed_pair": {
+      "target": "¿Estás preparado para ir a casa en el próximo autobús?",
+      "known": "Are you ready to go home on the next bus?"
+    },
+    "patterns_used": ["P05"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0095L01",
+        "lego": ["are you ready", "Estás preparado"],
+        "type": "C",
+        "pattern_demonstrated": "P05",
+        "note": "Question form"
+      },
+      {
+        "id": "S0095L02",
+        "lego": ["to go home", "para ir a casa"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Purpose + infinitive phrase"
+      },
+      {
+        "id": "S0095L03",
+        "lego": ["on the next bus", "en el próximo autobús"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Transportation phrase"
+      }
+    ],
+    "cumulative_legos": 251
+  },
+
+  "S0096": {
+    "seed_pair": {
+      "target": "No, no estoy preparado todavía, necesito un poco más de tiempo.",
+      "known": "No I'm not ready yet, I need a little more time."
+    },
+    "patterns_used": ["P05", "P17"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0096L01",
+        "lego": ["no", "No"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Negative response - already taught"
+      }
+    ],
+    "cumulative_legos": 251,
+    "note": "All LEGOs already taught - conversational practice"
+  },
+
+  "S0097": {
+    "seed_pair": {
+      "target": "Sí, estoy preparado para ir tan pronto como quieras.",
+      "known": "Yes I'm ready to go as soon as you want."
+    },
+    "patterns_used": ["P05", "P01"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0097L01",
+        "lego": ["yes", "Sí"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Affirmative response"
+      },
+      {
+        "id": "S0097L02",
+        "lego": ["as soon as you want", "tan pronto como quieras"],
+        "type": "C",
+        "pattern_demonstrated": "P10",
+        "note": "Temporal clause with subjunctive"
+      }
+    ],
+    "cumulative_legos": 253
+  },
+
+  "S0098": {
+    "seed_pair": {
+      "target": "Debería considerar jugar otra cosa.",
+      "known": "I should consider playing something else."
+    },
+    "patterns_used": ["P23"],
+    "patterns_introduced": ["P23"],
+    "legos": [
+      {
+        "id": "S0098L01",
+        "lego": ["I should", "Debería"],
+        "type": "C",
+        "pattern_demonstrated": "P23",
+        "note": "Conditional obligation - establishes P23"
+      },
+      {
+        "id": "S0098L02",
+        "lego": ["to consider", "considerar"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Infinitive verb"
+      },
+      {
+        "id": "S0098L03",
+        "lego": ["playing", "jugar"],
+        "type": "B",
+        "pattern_demonstrated": null,
+        "note": "Infinitive verb"
+      },
+      {
+        "id": "S0098L04",
+        "lego": ["something else", "otra cosa"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Indefinite phrase"
+      }
+    ],
+    "cumulative_legos": 257
+  },
+
+  "S0099": {
+    "seed_pair": {
+      "target": "Deberías preguntarte por qué no está trabajando",
+      "known": "You should ask yourself why it's not working."
+    },
+    "patterns_used": ["P23", "P02"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0099L01",
+        "lego": ["you should", "Deberías"],
+        "type": "C",
+        "pattern_demonstrated": "P23",
+        "note": "Second person conditional obligation"
+      },
+      {
+        "id": "S0099L02",
+        "lego": ["to ask yourself", "preguntarte"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Reflexive infinitive"
+      },
+      {
+        "id": "S0099L03",
+        "lego": ["it's not working", "no está trabajando"],
+        "type": "C",
+        "pattern_demonstrated": "P02",
+        "note": "Negative progressive"
+      }
+    ],
+    "cumulative_legos": 260
+  },
+
+  "S0100": {
+    "seed_pair": {
+      "target": "No deberías preocuparte por hacer algo similar",
+      "known": "You shouldn't worry about doing something similar."
+    },
+    "patterns_used": ["P23"],
+    "patterns_introduced": [],
+    "legos": [
+      {
+        "id": "S0100L01",
+        "lego": ["you shouldn't", "No deberías"],
+        "type": "C",
+        "pattern_demonstrated": "P23",
+        "note": "Negative conditional obligation"
+      },
+      {
+        "id": "S0100L02",
+        "lego": ["to worry", "preocuparte"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Reflexive infinitive - already taught"
+      },
+      {
+        "id": "S0100L03",
+        "lego": ["something similar", "algo similar"],
+        "type": "C",
+        "pattern_demonstrated": null,
+        "note": "Indefinite + adjective"
+      }
+    ],
+    "cumulative_legos": 263
+  },
+
+  "patterns_summary": {
+    "patterns_used_in_range": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P13", "P15", "P16", "P17", "P18", "P19", "P20", "P21", "P22", "P23"],
+    "patterns_introduced_in_range": [
+      {"code": "P19", "seed": "S0061", "description": "Conditional tense - polite requests"},
+      {"code": "P21", "seed": "S0076", "description": "Present perfect tense"},
+      {"code": "P22", "seed": "S0080", "description": "Future tense"},
+      {"code": "P23", "seed": "S0098", "description": "Conditional obligation (should/shouldn't)"}
+    ],
+    "new_patterns_count": 4,
+    "starting_cumulative_legos": 139,
+    "ending_cumulative_legos": 263,
+    "new_legos_count": 124,
+    "total_seeds": 50
+  },
+
+  "extraction_notes": {
+    "methodology": "Sequential extraction maintaining quality from S0001-S0050",
+    "lego_criteria": "Only FD LEGOs with standalone utility",
+    "type_classification": "B = atomic/simple, C = composite/molecular",
+    "pattern_demonstration": "Marked when LEGO demonstrates grammatical pattern",
+    "usage": "Enables parallel basket generation - workers reference cumulative_legos for GATE compliance",
+    "vocabulary_expansion": "Many new verbs (escribir, poner, dormir, disfrutar, comprender, conocer, considerar, jugar) and complex time/manner expressions"
+  }
+}

@@ -568,10 +568,7 @@
                     <!-- Counts -->
                     <div class="flex items-center gap-4">
                       <div class="text-xs text-slate-400">
-                        <span class="text-emerald-400 font-semibold">{{ basket.e.length }}</span> eternal
-                      </div>
-                      <div class="text-xs text-slate-400">
-                        <span class="text-purple-400 font-semibold">{{ getTotalDebutCount(basket.d) }}</span> debut
+                        <span class="text-emerald-400 font-semibold">{{ basket.phrases?.length || 0 }}</span> phrases
                       </div>
                       <svg class="w-5 h-5 text-slate-500 transition-transform" :class="{ 'rotate-180': expandedBaskets[legoId] }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -581,72 +578,23 @@
 
                   <!-- Expanded Content -->
                   <div v-if="expandedBaskets[legoId]" class="border-t border-slate-700 p-4 bg-slate-900/50">
-                    <!-- Eternal Phrases Section -->
-                    <div class="mb-4">
-                      <div class="text-sm font-semibold text-emerald-400 mb-2 flex items-center gap-2">
-                        <span>Eternal Phrases</span>
-                        <span class="text-xs text-emerald-400/60">({{ basket.e.length }})</span>
-                      </div>
-                      <div class="space-y-2">
-                        <div
-                          v-for="(phrase, idx) in basket.e"
-                          :key="`${legoId}-e-${idx}`"
-                          class="bg-emerald-900/10 border border-emerald-700/30 rounded p-3"
-                        >
-                          <div class="text-xs font-mono text-emerald-500/60 mb-1">{{ legoId }}_E{{ String(idx + 1).padStart(2, '0') }}</div>
-                          <div class="text-sm text-blue-300">{{ phrase[0] }}</div>
-                          <div class="text-sm text-slate-300">{{ phrase[1] }}</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Debut Phrases Section -->
-                    <div v-if="Object.keys(basket.d).length > 0">
-                      <div class="text-sm font-semibold text-purple-400 mb-2 flex items-center gap-2">
-                        <span>Debut Phrases</span>
-                        <span class="text-xs text-purple-400/60">({{ getTotalDebutCount(basket.d) }})</span>
-                      </div>
-                      <div class="space-y-2">
-                        <!-- Each word length section -->
-                        <div
-                          v-for="wordLength in ['2', '3', '4', '5']"
-                          :key="`${legoId}-d-${wordLength}`"
-                          v-show="basket.d[wordLength] && basket.d[wordLength].length > 0"
-                          class="bg-purple-900/10 border border-purple-700/30 rounded overflow-hidden"
-                        >
-                          <!-- Word Length Header -->
-                          <button
-                            @click="toggleDebutLength(legoId, wordLength)"
-                            class="w-full px-3 py-2 hover:bg-purple-900/20 transition-colors flex items-center justify-between"
-                          >
-                            <div class="flex items-center gap-2">
-                              <span class="text-xs font-semibold text-purple-400">{{ wordLength }}-word phrases</span>
-                              <span class="text-xs text-purple-400/60">({{ basket.d[wordLength]?.length || 0 }})</span>
-                            </div>
-                            <svg class="w-4 h-4 text-purple-400 transition-transform" :class="{ 'rotate-180': expandedDebut[`${legoId}-${wordLength}`] }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg>
-                          </button>
-
-                          <!-- Debut Phrases for this word length -->
-                          <div v-if="expandedDebut[`${legoId}-${wordLength}`]" class="px-3 pb-3 space-y-2">
-                            <div
-                              v-for="(phrase, idx) in basket.d[wordLength]"
-                              :key="`${legoId}-d${wordLength}-${idx}`"
-                              class="bg-slate-800 border border-purple-700/20 rounded p-2"
-                            >
-                              <div class="text-xs font-mono text-purple-500/60 mb-1">{{ legoId }}_D{{ wordLength }}_{{ String(idx + 1).padStart(2, '0') }}</div>
-                              <div class="text-sm text-blue-300">{{ phrase[0] }}</div>
-                              <div class="text-sm text-slate-300">{{ phrase[1] }}</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Empty State -->
-                    <div v-if="basket.e.length === 0 && getTotalDebutCount(basket.d) === 0" class="text-center py-4 text-slate-500 text-sm">
+                    <div v-if="!basket.phrases || basket.phrases.length === 0" class="text-center py-4 text-slate-500 text-sm">
                       No phrases in this basket
+                    </div>
+
+                    <div v-else class="space-y-2">
+                      <div
+                        v-for="(phrase, idx) in basket.phrases"
+                        :key="`${legoId}-${idx}`"
+                        class="bg-slate-800 border border-slate-700 rounded p-3 hover:border-slate-600 transition-colors"
+                      >
+                        <div class="flex items-center gap-2 mb-2">
+                          <div class="text-xs font-mono text-cyan-400/60">{{ legoId }}_{{ String(idx + 1).padStart(2, '0') }}</div>
+                          <div class="text-xs text-slate-500">{{ phrase[0].split(/\s+/).length }} words</div>
+                        </div>
+                        <div class="text-sm text-blue-300 mb-1">{{ phrase[0] }}</div>
+                        <div class="text-sm text-slate-300">{{ phrase[1] }}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -907,7 +855,6 @@ const legoBreakdowns = ref([]) // Raw breakdown data for visualizer
 const baskets = ref([])
 const basketsData = ref(null) // LEGO_BASKETS data structure from baskets.json
 const expandedBaskets = ref({}) // Track which baskets are expanded
-const expandedDebut = ref({}) // Track which debut word-length sections are expanded
 const loading = ref(true)
 const error = ref(null)
 const editingBreakdown = ref(null) // Track which seed breakdown is being edited
@@ -1440,16 +1387,6 @@ async function saveBreakdown(breakdown) {
 // Basket Management Functions
 function toggleBasket(legoId) {
   expandedBaskets.value[legoId] = !expandedBaskets.value[legoId]
-}
-
-function toggleDebutLength(legoId, length) {
-  const key = `${legoId}-${length}`
-  expandedDebut.value[key] = !expandedDebut.value[key]
-}
-
-function getTotalDebutCount(debutObj) {
-  if (!debutObj) return 0
-  return Object.values(debutObj).reduce((sum, arr) => sum + arr.length, 0)
 }
 
 async function editTranslation(translation) {
