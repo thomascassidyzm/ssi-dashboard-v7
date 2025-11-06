@@ -1,0 +1,420 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0055",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I don't enjoy waking up when I didn't sleep very well.",
+    "target": "No disfruto despertarme cuando no dormí muy bien."
+  },
+  "patterns_introduced": "P_NEW_REFLEXIVE",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P08",
+    "P10",
+    "P12",
+    "P18",
+    "P_RELATIVE",
+    "P_NEW_GUSTAR",
+    "P_NEW_IMPERSONAL",
+    "P_NEW_IMPERFECT",
+    "P_NEW_REFLEXIVE",
+    "P_NEW_GUSTAR_LIKE",
+    "P_NEW_DISFRUTO"
+  ],
+  "cumulative_legos": 163,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T21:06:30.225089Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation"
+  },
+  "S0055L01": {
+    "lego": [
+      "I don't enjoy",
+      "no disfruto"
+    ],
+    "type": "M",
+    "available_legos": 160,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P08",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
+      "P_NEW_DISFRUTO"
+    ],
+    "practice_phrases": [
+      [
+        "I don't enjoy",
+        "no disfruto",
+        "P_NEW_DISFRUTO",
+        1
+      ],
+      [
+        "I don't enjoy speaking",
+        "no disfruto hablar",
+        "P_NEW_DISFRUTO",
+        2
+      ],
+      [
+        "I don't enjoy learning Spanish",
+        "no disfruto aprender español",
+        "P_NEW_DISFRUTO",
+        3
+      ],
+      [
+        "I don't enjoy writing letters",
+        "no disfruto escribir",
+        "P_NEW_DISFRUTO",
+        2
+      ],
+      [
+        "I don't enjoy speaking Spanish now",
+        "no disfruto hablar español ahora",
+        "P_NEW_DISFRUTO",
+        3
+      ],
+      [
+        "I don't enjoy writing when I'm tired",
+        "no disfruto escribir cuando estoy cansado",
+        "P_NEW_DISFRUTO",
+        5
+      ],
+      [
+        "I think that I don't enjoy doing something",
+        "pienso que no disfruto hacer algo",
+        "P05",
+        6
+      ],
+      [
+        "I wanted to speak yesterday but I don't enjoy speaking",
+        "quería hablar ayer pero no disfruto hablar",
+        "P_NEW_IMPERFECT",
+        8
+      ],
+      [
+        "I don't enjoy doing things when I'm too tired",
+        "no disfruto hacer cosas cuando estoy demasiado cansado",
+        "P_NEW_DISFRUTO",
+        8
+      ],
+      [
+        "I don't enjoy writing letters when I want to speak",
+        "no disfruto escribir cuando quiero hablar",
+        "P_NEW_DISFRUTO",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P_NEW_DISFRUTO, P05, P_NEW_IMPERFECT",
+    "gate_compliance": "STRICT - All words from S0001-S0054 LEGOs only"
+  },
+  "S0055L02": {
+    "lego": [
+      "to wake up/waking up",
+      "despertarme"
+    ],
+    "type": "A",
+    "available_legos": 161,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P08",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
+      "P_NEW_DISFRUTO"
+    ],
+    "practice_phrases": [
+      [
+        "waking up",
+        "despertarme",
+        "P_NEW_REFLEXIVE",
+        1
+      ],
+      [
+        "I don't enjoy waking up",
+        "no disfruto despertarme",
+        "P_NEW_DISFRUTO",
+        2
+      ],
+      [
+        "I wanted to wake up yesterday",
+        "quería despertarme ayer",
+        "P_NEW_IMPERFECT",
+        2
+      ],
+      [
+        "I want to wake up now",
+        "quiero despertarme ahora",
+        "P01",
+        2
+      ],
+      [
+        "I don't enjoy waking up now",
+        "no disfruto despertarme ahora",
+        "P_NEW_DISFRUTO",
+        3
+      ],
+      [
+        "I'm going to wake up soon",
+        "voy a despertarme pronto",
+        "P03",
+        3
+      ],
+      [
+        "I think that I don't enjoy waking up",
+        "pienso que no disfruto despertarme",
+        "P05",
+        5
+      ],
+      [
+        "I wanted to wake up yesterday but I was tired",
+        "quería despertarme ayer pero estaba cansado",
+        "P_NEW_IMPERFECT",
+        7
+      ],
+      [
+        "I don't enjoy waking up when I'm too tired",
+        "no disfruto despertarme cuando estoy demasiado cansado",
+        "P_NEW_DISFRUTO",
+        7
+      ],
+      [
+        "I don't enjoy waking up when I want to speak",
+        "no disfruto despertarme cuando quiero hablar",
+        "P_NEW_DISFRUTO",
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P_NEW_REFLEXIVE, P_NEW_DISFRUTO, P_NEW_IMPERFECT, P01, P03, P05",
+    "gate_compliance": "STRICT - All words from S0001-S0055L01 LEGOs only"
+  },
+  "S0055L03": {
+    "lego": [
+      "I didn't sleep",
+      "no dormí"
+    ],
+    "type": "M",
+    "available_legos": 162,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P08",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
+      "P_NEW_DISFRUTO"
+    ],
+    "practice_phrases": [
+      [
+        "I didn't sleep",
+        "no dormí",
+        null,
+        1
+      ],
+      [
+        "when I didn't sleep",
+        "cuando no dormí",
+        null,
+        2
+      ],
+      [
+        "I don't enjoy waking up when I didn't sleep",
+        "no disfruto despertarme cuando no dormí",
+        "P_NEW_DISFRUTO",
+        3
+      ],
+      [
+        "I wanted to speak but I didn't sleep",
+        "quería hablar pero no dormí",
+        "P_NEW_IMPERFECT",
+        3
+      ],
+      [
+        "I'm tired when I didn't sleep well",
+        "estoy cansado cuando no dormí bien",
+        null,
+        4
+      ],
+      [
+        "I didn't sleep well last week",
+        "no dormí bien la semana pasada",
+        null,
+        3
+      ],
+      [
+        "I think that I didn't sleep well yesterday",
+        "pienso que no dormí bien ayer",
+        "P05",
+        6
+      ],
+      [
+        "I wanted to do something but I didn't sleep well",
+        "quería hacer algo pero no dormí bien",
+        "P_NEW_IMPERFECT",
+        7
+      ],
+      [
+        "I don't enjoy waking up when I didn't sleep well",
+        "no disfruto despertarme cuando no dormí bien",
+        "P_NEW_DISFRUTO",
+        5
+      ],
+      [
+        "I'm tired when I didn't sleep very well",
+        "estoy cansado cuando no dormí muy bien",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P_NEW_DISFRUTO, P_NEW_IMPERFECT, P05",
+    "gate_compliance": "STRICT - All words from S0001-S0055L02 LEGOs only"
+  },
+  "S0055L04": {
+    "lego": [
+      "very well",
+      "muy bien"
+    ],
+    "type": "M",
+    "available_legos": 162,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P08",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE",
+      "P_NEW_DISFRUTO"
+    ],
+    "practice_phrases": [
+      [
+        "very well",
+        "muy bien",
+        null,
+        1
+      ],
+      [
+        "I didn't sleep very well",
+        "no dormí muy bien",
+        null,
+        2
+      ],
+      [
+        "when I didn't sleep very well",
+        "cuando no dormí muy bien",
+        null,
+        3
+      ],
+      [
+        "I speak Spanish very well",
+        "hablo español muy bien",
+        null,
+        3
+      ],
+      [
+        "I don't enjoy waking up when I didn't sleep very well",
+        "no disfruto despertarme cuando no dormí muy bien",
+        "P_NEW_DISFRUTO",
+        4
+      ],
+      [
+        "I'm tired when I didn't sleep very well",
+        "estoy cansado cuando no dormí muy bien",
+        null,
+        5
+      ],
+      [
+        "I think that I speak Spanish very well",
+        "pienso que hablo español muy bien",
+        "P05",
+        6
+      ],
+      [
+        "I wanted to speak yesterday but I didn't sleep very well",
+        "quería hablar ayer pero no dormí muy bien",
+        "P_NEW_IMPERFECT",
+        8
+      ],
+      [
+        "I don't enjoy doing things when I didn't sleep very well",
+        "no disfruto hacer cosas cuando no dormí muy bien",
+        "P_NEW_DISFRUTO",
+        8
+      ],
+      [
+        "I don't enjoy waking up when I didn't sleep very well.",
+        "No disfruto despertarme cuando no dormí muy bien.",
+        "P_NEW_DISFRUTO",
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P_NEW_DISFRUTO, P05, P_NEW_IMPERFECT",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - All words from S0001-S0055L03 LEGOs only (muy bien ref from S0013)"
+  }
+}
