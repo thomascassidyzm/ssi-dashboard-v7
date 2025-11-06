@@ -1,0 +1,99 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0011",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'd like to be able to speak after you finish.",
+    "target": "Me gustaría poder hablar después de que termines."
+  },
+  "patterns_introduced": "P04, P10",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+  "cumulative_legos": 33,
+
+  "S0011L01": {
+    "lego": ["I'd like", "me gustaría"],
+    "type": "M",
+    "available_legos": 31,
+    "available_patterns": ["P01", "P02", "P03", "P05", "P12", "P18"],
+    "practice_phrases": [
+      ["I'd like", "me gustaría", "P04", 1],
+      ["I'd like to speak", "me gustaría hablar", "P04", 2],
+      ["I'd like to learn Spanish", "me gustaría aprender español", "P04", 3],
+      ["I'd like to speak if I can", "me gustaría hablar si puedo", "P04", 4],
+      ["I'd like to speak Spanish with you now", "me gustaría hablar español contigo ahora", "P04", 5],
+      ["I'd like to remember the whole sentence if I can", "me gustaría recordar toda la oración si puedo", "P04", 6],
+      ["I'd like to explain what I mean", "me gustaría explicar lo que quiero decir", "P04", 5],
+      ["I'm not sure if I'd like to speak now", "no estoy seguro si me gustaría hablar ahora", "P18", 5],
+      ["I'm going to try to explain what I'd like", "voy a intentar explicar lo que me gustaría", "P03", 5],
+      ["I'd like to practise speaking with someone else today", "me gustaría practicar hablar con alguien más hoy", "P04", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P03, P04, P18",
+    "full_seed_included": "NO - missing 'poder' and 'después de que termines'",
+    "gate_compliance": "STRICT - Only S0001-S0010 LEGOs available"
+  },
+
+  "S0011L02": {
+    "lego": ["to be able to", "poder"],
+    "type": "A",
+    "available_legos": 32,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P12", "P18"],
+    "practice_phrases": [
+      ["to be able to", "poder", null, 1],
+      ["to be able to speak", "poder hablar", null, 2],
+      ["I'd like to be able to speak", "me gustaría poder hablar", "P04", 3],
+      ["to be able to speak Spanish", "poder hablar español", null, 3],
+      ["I'd like to be able to learn", "me gustaría poder aprender", "P04", 3],
+      ["I'd like to be able to speak Spanish", "me gustaría poder hablar español", "P04", 4],
+      ["I'd like to be able to practise with you", "me gustaría poder practicar contigo", "P04", 4],
+      ["I'd like to be able to speak Spanish with you", "me gustaría poder hablar español contigo", "P04", 5],
+      ["I'd like to be able to speak with you now", "me gustaría poder hablar contigo ahora", "P04", 5],
+      ["I'd like to be able to practise speaking with someone else", "me gustaría poder practicar hablar con alguien más", "P04", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P04",
+    "full_seed_included": "NO - missing 'después de que termines'",
+    "gate_compliance": "STRICT - Only S0001-S0011L01 LEGOs available"
+  },
+
+  "S0011L03": {
+    "lego": ["after you finish", "después de que termines"],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "molecular_rationale": "'después de que' alone is grammatically incomplete (requires verb clause). Made MOLECULAR to include 'termines' for functional completeness.",
+    "available_legos": 33,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["after you finish", "después de que termines", "P10", 1],
+      ["to speak after you finish", "hablar después de que termines", null, 2],
+      ["I'd like to speak after you finish", "me gustaría hablar después de que termines", "P04", 3],
+      ["to be able to speak after you finish", "poder hablar después de que termines", null, 3],
+      ["I'd like to be able to speak after you finish.", "me gustaría poder hablar después de que termines.", "P04", 4],
+      ["I'd like to speak with you after you finish", "me gustaría hablar contigo después de que termines", "P04", 4],
+      ["I want to speak after you finish", "quiero hablar después de que termines", "P01", 3],
+      ["I'd like to be able to speak with you after you finish", "me gustaría poder hablar contigo después de que termines", "P04", 5],
+      ["I'd like to be able to speak Spanish after you finish", "me gustaría poder hablar español después de que termines", "P04", 5],
+      ["I want to be able to speak Spanish after you finish", "quiero poder hablar español después de que termines", "P01", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P04, P10",
+    "full_seed_included": "YES - phrase 5",
+    "gate_compliance": "STRICT - Only S0001-S0011L02 LEGOs available. NOTE: 'terminar' introduced in this LEGO as part of molecular unit."
+  }
+}
