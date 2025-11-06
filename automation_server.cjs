@@ -3613,8 +3613,18 @@ app.get('/api/courses', async (req, res) => {
             const seedsArray = legoPairsData.seeds || [];
 
             // Count total LEGOs across all seeds
-            for (const [seedId, seedPair, legos] of seedsArray) {
-              legoCount += legos.length;
+            // Handle both v7.7 format (array) and v5.0.1 format (object)
+            for (const seed of seedsArray) {
+              if (Array.isArray(seed)) {
+                // v7.7 format: [seedId, seedPair, legos]
+                const legos = seed[2] || [];
+                legoCount += legos.length;
+              } else if (seed && typeof seed === 'object' && seed.legos) {
+                // v5.0.1 format: {seed_id, seed_pair, legos: [{new: true/false}]}
+                // Only count new LEGOs
+                const newLegos = seed.legos.filter(l => l.new === true);
+                legoCount += newLegos.length;
+              }
             }
           }
 
