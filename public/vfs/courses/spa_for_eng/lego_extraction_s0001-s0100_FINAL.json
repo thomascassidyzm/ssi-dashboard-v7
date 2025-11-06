@@ -1,0 +1,6258 @@
+{
+  "version": "5.0.1",
+  "methodology": "Phase 3 LEGO + Pattern Extraction v5.0.1 - COMPLETE TILING",
+  "extraction_date": "2025-11-06",
+  "note": "Every seed shows ALL LEGOs that reconstruct it (new + referenced from earlier seeds)",
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "seed_pair": [
+        "Quiero hablar español contigo ahora.",
+        "I want to speak Spanish with you now."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "new": true
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "target": "hablar",
+          "known": "to speak",
+          "new": true
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "new": true
+        },
+        {
+          "id": "S0001L04",
+          "type": "A",
+          "target": "contigo",
+          "known": "with you",
+          "new": true
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "target": "ahora",
+          "known": "now",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P01_introduced"
+      ],
+      "cumulative_legos": 5
+    },
+    {
+      "seed_id": "S0002",
+      "seed_pair": [
+        "Estoy intentando aprender.",
+        "I'm trying to learn."
+      ],
+      "legos": [
+        {
+          "id": "S0002L01",
+          "type": "M",
+          "target": "estoy intentando",
+          "known": "I'm trying",
+          "new": true,
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "intentando",
+              "trying"
+            ]
+          ]
+        },
+        {
+          "id": "S0002L02",
+          "type": "A",
+          "target": "aprender",
+          "known": "to learn",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P02_introduced"
+      ],
+      "cumulative_legos": 7
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": [
+        "cómo hablar lo más frecuentemente posible",
+        "how to speak as often as possible"
+      ],
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "cómo",
+          "known": "how",
+          "new": true
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "target": "hablar",
+          "known": "to speak",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0003L02",
+          "type": "M",
+          "target": "lo más frecuentemente posible",
+          "known": "as often as possible",
+          "new": true,
+          "components": [
+            [
+              "lo más",
+              "the most"
+            ],
+            [
+              "frecuentemente",
+              "often"
+            ],
+            [
+              "posible",
+              "possible"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P12_introduced"
+      ],
+      "cumulative_legos": 9
+    },
+    {
+      "seed_id": "S0004",
+      "seed_pair": [
+        "cómo decir algo en español",
+        "how to say something in Spanish"
+      ],
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "cómo",
+          "known": "how",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0004L01",
+          "type": "A",
+          "target": "decir",
+          "known": "to say",
+          "new": true
+        },
+        {
+          "id": "S0004L02",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0004L03",
+          "type": "M",
+          "target": "en español",
+          "known": "in Spanish",
+          "new": true,
+          "components": [
+            [
+              "en",
+              "in"
+            ],
+            [
+              "español",
+              "Spanish"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P12"
+      ],
+      "cumulative_legos": 12
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": [
+        "Voy a practicar hablar con alguien más.",
+        "I'm going to practise speaking with someone else."
+      ],
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "M",
+          "target": "voy a",
+          "known": "I'm going to",
+          "new": true,
+          "components": [
+            [
+              "voy",
+              "I go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ]
+        },
+        {
+          "id": "S0005L02",
+          "type": "M",
+          "target": "practicar hablar",
+          "known": "to practise speaking",
+          "new": true,
+          "components": [
+            [
+              "practicar",
+              "to practise"
+            ],
+            [
+              "hablar",
+              "speaking"
+            ]
+          ]
+        },
+        {
+          "id": "S0005L03",
+          "type": "A",
+          "target": "con",
+          "known": "with",
+          "new": true
+        },
+        {
+          "id": "S0005L04",
+          "type": "M",
+          "target": "alguien más",
+          "known": "someone else",
+          "new": true,
+          "components": [
+            [
+              "alguien",
+              "someone"
+            ],
+            [
+              "más",
+              "else/more"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P03_introduced"
+      ],
+      "cumulative_legos": 16
+    },
+    {
+      "seed_id": "S0006",
+      "seed_pair": [
+        "Estoy intentando recordar una palabra.",
+        "I'm trying to remember a word."
+      ],
+      "legos": [
+        {
+          "id": "S0002L01",
+          "type": "M",
+          "target": "estoy intentando",
+          "known": "I'm trying",
+          "ref": "S0002",
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "intentando",
+              "trying"
+            ]
+          ]
+        },
+        {
+          "id": "S0006L01",
+          "type": "A",
+          "target": "recordar",
+          "known": "to remember",
+          "new": true
+        },
+        {
+          "id": "S0006L02",
+          "type": "M",
+          "target": "una palabra",
+          "known": "a word",
+          "new": true,
+          "components": [
+            [
+              "una",
+              "a"
+            ],
+            [
+              "palabra",
+              "word"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P02"
+      ],
+      "cumulative_legos": 18
+    },
+    {
+      "seed_id": "S0007",
+      "seed_pair": [
+        "Quiero intentar tan duro como pueda hoy.",
+        "I want to try as hard as I can today."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0007L01",
+          "type": "A",
+          "target": "intentar",
+          "known": "to try",
+          "new": true
+        },
+        {
+          "id": "S0007L02",
+          "type": "M",
+          "target": "tan duro como pueda",
+          "known": "as hard as I can",
+          "new": true,
+          "components": [
+            [
+              "tan",
+              "as/as much"
+            ],
+            [
+              "duro",
+              "hard"
+            ],
+            [
+              "como",
+              "as/like"
+            ],
+            [
+              "pueda",
+              "I can"
+            ]
+          ]
+        },
+        {
+          "id": "S0007L03",
+          "type": "A",
+          "target": "hoy",
+          "known": "today",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P01",
+        "P10_introduced"
+      ],
+      "cumulative_legos": 21
+    },
+    {
+      "seed_id": "S0008",
+      "seed_pair": [
+        "Voy a intentar explicar lo que quiero decir.",
+        "I'm going to try to explain what I mean."
+      ],
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "M",
+          "target": "voy a",
+          "known": "I'm going to",
+          "ref": "S0005",
+          "components": [
+            [
+              "voy",
+              "I go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ]
+        },
+        {
+          "id": "S0007L01",
+          "type": "A",
+          "target": "intentar",
+          "known": "to try",
+          "ref": "S0007"
+        },
+        {
+          "id": "S0008L01",
+          "type": "A",
+          "target": "explicar",
+          "known": "to explain",
+          "new": true
+        },
+        {
+          "id": "S0008L02",
+          "type": "M",
+          "target": "lo que quiero decir",
+          "known": "what I mean",
+          "new": true,
+          "components": [
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "quiero",
+              "I want"
+            ],
+            [
+              "decir",
+              "to say/mean"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P03",
+        "P01"
+      ],
+      "cumulative_legos": 23
+    },
+    {
+      "seed_id": "S0009",
+      "seed_pair": [
+        "Hablo un poco de español ahora.",
+        "I speak a little Spanish now."
+      ],
+      "legos": [
+        {
+          "id": "S0009L01",
+          "type": "A",
+          "target": "hablo",
+          "known": "I speak",
+          "new": true
+        },
+        {
+          "id": "S0009L02",
+          "type": "M",
+          "target": "un poco de español",
+          "known": "a little Spanish",
+          "new": true,
+          "components": [
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "de",
+              "of"
+            ],
+            [
+              "español",
+              "Spanish"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "target": "ahora",
+          "known": "now",
+          "ref": "S0001"
+        }
+      ],
+      "patterns": [
+        "P05_introduced"
+      ],
+      "cumulative_legos": 25
+    },
+    {
+      "seed_id": "S0010",
+      "seed_pair": [
+        "No estoy seguro si puedo recordar toda la oración.",
+        "I'm not sure if I can remember the whole sentence."
+      ],
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "M",
+          "target": "no estoy seguro",
+          "known": "I'm not sure",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "seguro",
+              "sure"
+            ]
+          ]
+        },
+        {
+          "id": "S0010L02",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0010L03",
+          "type": "A",
+          "target": "puedo",
+          "known": "I can",
+          "new": true
+        },
+        {
+          "id": "S0006L01",
+          "type": "A",
+          "target": "recordar",
+          "known": "to remember",
+          "ref": "S0006"
+        },
+        {
+          "id": "S0010L04",
+          "type": "M",
+          "target": "toda la oración",
+          "known": "the whole sentence",
+          "new": true,
+          "components": [
+            [
+              "toda",
+              "whole/all"
+            ],
+            [
+              "la",
+              "the"
+            ],
+            [
+              "oración",
+              "sentence"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P18_introduced"
+      ],
+      "cumulative_legos": 29
+    },
+    {
+      "seed_id": "S0011",
+      "seed_pair": [
+        "Me gustaría poder hablar después de que termines.",
+        "I'd like to be able to speak after you finish."
+      ],
+      "legos": [
+        {
+          "id": "S0011L01",
+          "type": "M",
+          "target": "me gustaría",
+          "known": "I'd like",
+          "new": true,
+          "components": [
+            [
+              "me",
+              "me/to me"
+            ],
+            [
+              "gustaría",
+              "would please"
+            ]
+          ]
+        },
+        {
+          "id": "S0011L02",
+          "type": "A",
+          "target": "poder",
+          "known": "to be able",
+          "new": true
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "target": "hablar",
+          "known": "to speak",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0011L03",
+          "type": "M",
+          "target": "después de que termines",
+          "known": "after you finish",
+          "new": true,
+          "components": [
+            [
+              "después de que",
+              "after that"
+            ],
+            [
+              "termines",
+              "you finish"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P04_introduced",
+        "P10"
+      ],
+      "cumulative_legos": 32
+    },
+    {
+      "seed_id": "S0012",
+      "seed_pair": [
+        "No me gustaría adivinar lo que va a ocurrir mañana.",
+        "I wouldn't like to guess what's going to happen tomorrow."
+      ],
+      "legos": [
+        {
+          "id": "S0012L01",
+          "type": "M",
+          "target": "no me gustaría",
+          "known": "I wouldn't like",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "me gustaría",
+              "I'd like"
+            ]
+          ]
+        },
+        {
+          "id": "S0012L02",
+          "type": "A",
+          "target": "adivinar",
+          "known": "to guess",
+          "new": true
+        },
+        {
+          "id": "S0012L03",
+          "type": "M",
+          "target": "lo que va a ocurrir",
+          "known": "what's going to happen",
+          "new": true,
+          "components": [
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "va a",
+              "is going to"
+            ],
+            [
+              "ocurrir",
+              "happen"
+            ]
+          ]
+        },
+        {
+          "id": "S0012L04",
+          "type": "A",
+          "target": "mañana",
+          "known": "tomorrow",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P04",
+        "P03"
+      ],
+      "cumulative_legos": 36
+    },
+    {
+      "seed_id": "S0013",
+      "seed_pair": [
+        "Hablas español muy bien.",
+        "You speak Spanish very well."
+      ],
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "hablas",
+          "known": "you speak",
+          "new": true
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0013L02",
+          "type": "M",
+          "target": "muy bien",
+          "known": "very well",
+          "new": true,
+          "components": [
+            [
+              "muy",
+              "very"
+            ],
+            [
+              "bien",
+              "well"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P05"
+      ],
+      "cumulative_legos": 38
+    },
+    {
+      "seed_id": "S0014",
+      "seed_pair": [
+        "¿Hablas español todo el día?",
+        "Do you speak Spanish all day?"
+      ],
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "hablas",
+          "known": "you speak",
+          "ref": "S0013"
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0014L01",
+          "type": "M",
+          "target": "todo el día",
+          "known": "all day",
+          "new": true,
+          "components": [
+            [
+              "todo",
+              "all"
+            ],
+            [
+              "el",
+              "the"
+            ],
+            [
+              "día",
+              "day"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P05"
+      ],
+      "cumulative_legos": 39
+    },
+    {
+      "seed_id": "S0015",
+      "seed_pair": [
+        "Y quiero que hables español conmigo mañana.",
+        "And I want you to speak Spanish with me tomorrow."
+      ],
+      "legos": [
+        {
+          "id": "S0015L01",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0015L02",
+          "type": "M",
+          "target": "que hables",
+          "known": "you to speak",
+          "new": true,
+          "components": [
+            [
+              "que",
+              "that"
+            ],
+            [
+              "hables",
+              "you speak (subj)"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0015L03",
+          "type": "A",
+          "target": "conmigo",
+          "known": "with me",
+          "new": true
+        },
+        {
+          "id": "S0012L04",
+          "type": "A",
+          "target": "mañana",
+          "known": "tomorrow",
+          "ref": "S0012"
+        }
+      ],
+      "patterns": [
+        "P01",
+        "P10"
+      ],
+      "cumulative_legos": 42
+    },
+    {
+      "seed_id": "S0016",
+      "seed_pair": [
+        "Él quiere volver con todos los demás más tarde.",
+        "He wants to come back with everyone else later on."
+      ],
+      "legos": [
+        {
+          "id": "S0016L01",
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0016L02",
+          "type": "A",
+          "target": "quiere",
+          "known": "wants",
+          "new": true
+        },
+        {
+          "id": "S0016L03",
+          "type": "A",
+          "target": "volver",
+          "known": "to come back",
+          "new": true
+        },
+        {
+          "id": "S0016L04",
+          "type": "M",
+          "target": "con todos los demás",
+          "known": "with everyone else",
+          "new": true,
+          "components": [
+            [
+              "con",
+              "with"
+            ],
+            [
+              "todos",
+              "all/everyone"
+            ],
+            [
+              "los demás",
+              "the others/else"
+            ]
+          ]
+        },
+        {
+          "id": "S0016L05",
+          "type": "M",
+          "target": "más tarde",
+          "known": "later on",
+          "new": true,
+          "components": [
+            [
+              "más",
+              "more"
+            ],
+            [
+              "tarde",
+              "late/later"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01"
+      ],
+      "cumulative_legos": 47
+    },
+    {
+      "seed_id": "S0017",
+      "seed_pair": [
+        "Ella quiere descubrir cuál es la respuesta.",
+        "She wants to find out what the answer is."
+      ],
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "new": true
+        },
+        {
+          "id": "S0016L02",
+          "type": "A",
+          "target": "quiere",
+          "known": "wants",
+          "ref": "S0016"
+        },
+        {
+          "id": "S0017L02",
+          "type": "A",
+          "target": "descubrir",
+          "known": "to find out",
+          "new": true
+        },
+        {
+          "id": "S0017L03",
+          "type": "M",
+          "target": "cuál es la respuesta",
+          "known": "what the answer is",
+          "new": true,
+          "components": [
+            [
+              "cuál",
+              "which/what"
+            ],
+            [
+              "es",
+              "is"
+            ],
+            [
+              "la",
+              "the"
+            ],
+            [
+              "respuesta",
+              "answer"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01",
+        "P12"
+      ],
+      "cumulative_legos": 50
+    },
+    {
+      "seed_id": "S0018",
+      "seed_pair": [
+        "Queremos reunirnos a las seis esta noche.",
+        "We want to meet at six o'clock this evening."
+      ],
+      "legos": [
+        {
+          "id": "S0018L01",
+          "type": "A",
+          "target": "queremos",
+          "known": "we want",
+          "new": true
+        },
+        {
+          "id": "S0018L02",
+          "type": "A",
+          "target": "reunirnos",
+          "known": "to meet",
+          "new": true
+        },
+        {
+          "id": "S0018L03",
+          "type": "M",
+          "target": "a las seis",
+          "known": "at six o'clock",
+          "new": true,
+          "components": [
+            [
+              "a",
+              "at"
+            ],
+            [
+              "las",
+              "the"
+            ],
+            [
+              "seis",
+              "six"
+            ]
+          ]
+        },
+        {
+          "id": "S0018L04",
+          "type": "M",
+          "target": "esta noche",
+          "known": "this evening",
+          "new": true,
+          "components": [
+            [
+              "esta",
+              "this"
+            ],
+            [
+              "noche",
+              "evening/night"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01"
+      ],
+      "cumulative_legos": 54
+    },
+    {
+      "seed_id": "S0019",
+      "seed_pair": [
+        "Pero no quiero parar de hablar.",
+        "But I don't want to stop talking."
+      ],
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0019L02",
+          "type": "M",
+          "target": "no quiero",
+          "known": "I don't want",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "quiero",
+              "I want"
+            ]
+          ]
+        },
+        {
+          "id": "S0019L03",
+          "type": "M",
+          "target": "parar de hablar",
+          "known": "to stop talking",
+          "new": true,
+          "components": [
+            [
+              "parar",
+              "to stop"
+            ],
+            [
+              "de",
+              "of/from"
+            ],
+            [
+              "hablar",
+              "talking"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01"
+      ],
+      "cumulative_legos": 57
+    },
+    {
+      "seed_id": "S0020",
+      "seed_pair": [
+        "Quieres aprender su nombre rápidamente.",
+        "You want to learn his name quickly."
+      ],
+      "legos": [
+        {
+          "id": "S0020L01",
+          "type": "A",
+          "target": "quieres",
+          "known": "you want",
+          "new": true
+        },
+        {
+          "id": "S0002L02",
+          "type": "A",
+          "target": "aprender",
+          "known": "to learn",
+          "ref": "S0002"
+        },
+        {
+          "id": "S0020L02",
+          "type": "M",
+          "target": "su nombre",
+          "known": "his name",
+          "new": true,
+          "components": [
+            [
+              "su",
+              "his"
+            ],
+            [
+              "nombre",
+              "name"
+            ]
+          ]
+        },
+        {
+          "id": "S0020L03",
+          "type": "A",
+          "target": "rápidamente",
+          "known": "quickly",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P01"
+      ],
+      "cumulative_legos": 60
+    },
+    {
+      "seed_id": "S0021",
+      "seed_pair": [
+        "¿Por qué estás aprendiendo su nombre?",
+        "Why are you learning her name?"
+      ],
+      "legos": [
+        {
+          "id": "S0021L01",
+          "type": "M",
+          "target": "por qué",
+          "known": "why",
+          "new": true,
+          "components": [
+            [
+              "por",
+              "for"
+            ],
+            [
+              "qué",
+              "what"
+            ]
+          ]
+        },
+        {
+          "id": "S0021L02",
+          "type": "M",
+          "target": "estás aprendiendo",
+          "known": "are you learning",
+          "new": true,
+          "components": [
+            [
+              "estás",
+              "you are"
+            ],
+            [
+              "aprendiendo",
+              "learning"
+            ]
+          ]
+        },
+        {
+          "id": "S0020L02",
+          "type": "M",
+          "target": "su nombre",
+          "known": "her name",
+          "ref": "S0020",
+          "components": [
+            [
+              "su",
+              "his"
+            ],
+            [
+              "nombre",
+              "name"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P12",
+        "P02"
+      ],
+      "cumulative_legos": 62
+    },
+    {
+      "seed_id": "S0022",
+      "seed_pair": [
+        "Porque quiero encontrar personas que hablan español.",
+        "Because I want to meet people who speak Spanish."
+      ],
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "target": "porque",
+          "known": "because",
+          "new": true
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0022L02",
+          "type": "A",
+          "target": "encontrar",
+          "known": "to meet",
+          "new": true
+        },
+        {
+          "id": "S0022L03",
+          "type": "M",
+          "target": "personas que hablan",
+          "known": "people who speak",
+          "new": true,
+          "components": [
+            [
+              "personas",
+              "people"
+            ],
+            [
+              "que",
+              "who"
+            ],
+            [
+              "hablan",
+              "speak"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "ref": "S0001"
+        }
+      ],
+      "patterns": [
+        "P01",
+        "P_NEW_RELATIVE"
+      ],
+      "cumulative_legos": 65
+    },
+    {
+      "seed_id": "S0023",
+      "seed_pair": [
+        "Voy a comenzar a hablar más pronto.",
+        "I'm going to start talking more soon."
+      ],
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "M",
+          "target": "voy a",
+          "known": "I'm going to",
+          "ref": "S0005",
+          "components": [
+            [
+              "voy",
+              "I go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ]
+        },
+        {
+          "id": "S0023L01",
+          "type": "M",
+          "target": "comenzar a hablar",
+          "known": "to start talking",
+          "new": true,
+          "components": [
+            [
+              "comenzar a",
+              "to start to"
+            ],
+            [
+              "hablar",
+              "talk/talking"
+            ]
+          ]
+        },
+        {
+          "id": "S0023L02",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
+        },
+        {
+          "id": "S0023L03",
+          "type": "A",
+          "target": "pronto",
+          "known": "soon",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P03"
+      ],
+      "cumulative_legos": 68
+    },
+    {
+      "seed_id": "S0024",
+      "seed_pair": [
+        "No voy a poder recordar fácilmente.",
+        "I'm not going to be able to remember easily."
+      ],
+      "legos": [
+        {
+          "id": "S0024L01",
+          "type": "M",
+          "target": "no voy a",
+          "known": "I'm not going to",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "voy a",
+              "I'm going to"
+            ]
+          ]
+        },
+        {
+          "id": "S0011L02",
+          "type": "A",
+          "target": "poder",
+          "known": "to be able",
+          "ref": "S0011"
+        },
+        {
+          "id": "S0006L01",
+          "type": "A",
+          "target": "recordar",
+          "known": "to remember",
+          "ref": "S0006"
+        },
+        {
+          "id": "S0024L02",
+          "type": "A",
+          "target": "fácilmente",
+          "known": "easily",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P03"
+      ],
+      "cumulative_legos": 70
+    },
+    {
+      "seed_id": "S0025",
+      "seed_pair": [
+        "¿Vas a ayudarme antes de que tenga que ir?",
+        "Are you going to help me before I have to go?"
+      ],
+      "legos": [
+        {
+          "id": "S0025L01",
+          "type": "M",
+          "target": "vas a",
+          "known": "are you going to",
+          "new": true,
+          "components": [
+            [
+              "vas",
+              "you go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ]
+        },
+        {
+          "id": "S0025L02",
+          "type": "A",
+          "target": "ayudarme",
+          "known": "to help me",
+          "new": true
+        },
+        {
+          "id": "S0025L03",
+          "type": "M",
+          "target": "antes de que tenga que ir",
+          "known": "before I have to go",
+          "new": true,
+          "components": [
+            [
+              "antes de que",
+              "before that"
+            ],
+            [
+              "tenga que",
+              "I have to"
+            ],
+            [
+              "ir",
+              "go"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P03",
+        "P10"
+      ],
+      "cumulative_legos": 73
+    },
+    {
+      "seed_id": "S0026",
+      "seed_pair": [
+        "Me gusta sentir como si estuviera casi preparado para ir.",
+        "I like feeling as if I'm nearly ready to go."
+      ],
+      "legos": [
+        {
+          "id": "S0026L01",
+          "type": "M",
+          "target": "me gusta",
+          "known": "I like",
+          "new": true,
+          "components": [
+            [
+              "me",
+              "me/to me"
+            ],
+            [
+              "gusta",
+              "pleases"
+            ]
+          ]
+        },
+        {
+          "id": "S0026L02",
+          "type": "A",
+          "target": "sentir",
+          "known": "to feel",
+          "new": true
+        },
+        {
+          "id": "S0026L03",
+          "type": "M",
+          "target": "como si estuviera",
+          "known": "as if I were",
+          "new": true,
+          "components": [
+            [
+              "como si",
+              "as if"
+            ],
+            [
+              "estuviera",
+              "I were (subj)"
+            ]
+          ]
+        },
+        {
+          "id": "S0026L04",
+          "type": "A",
+          "target": "casi",
+          "known": "nearly",
+          "new": true
+        },
+        {
+          "id": "S0026L05",
+          "type": "A",
+          "target": "preparado",
+          "known": "ready",
+          "new": true
+        },
+        {
+          "id": "S0026L06",
+          "type": "M",
+          "target": "para ir",
+          "known": "to go",
+          "new": true,
+          "components": [
+            [
+              "para",
+              "for/to"
+            ],
+            [
+              "ir",
+              "go"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_GUSTAR",
+        "P10"
+      ],
+      "cumulative_legos": 79
+    },
+    {
+      "seed_id": "S0027",
+      "seed_pair": [
+        "No me gusta tomar demasiado tiempo para responder.",
+        "I don't like taking too much time to answer."
+      ],
+      "legos": [
+        {
+          "id": "S0027L01",
+          "type": "M",
+          "target": "no me gusta",
+          "known": "I don't like",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "me gusta",
+              "I like"
+            ]
+          ]
+        },
+        {
+          "id": "S0027L02",
+          "type": "A",
+          "target": "tomar",
+          "known": "to take",
+          "new": true
+        },
+        {
+          "id": "S0027L03",
+          "type": "M",
+          "target": "demasiado tiempo",
+          "known": "too much time",
+          "new": true,
+          "components": [
+            [
+              "demasiado",
+              "too much"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        },
+        {
+          "id": "S0027L04",
+          "type": "M",
+          "target": "para responder",
+          "known": "to answer",
+          "new": true,
+          "components": [
+            [
+              "para",
+              "for/to"
+            ],
+            [
+              "responder",
+              "answer"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_GUSTAR"
+      ],
+      "cumulative_legos": 83
+    },
+    {
+      "seed_id": "S0028",
+      "seed_pair": [
+        "Es útil comenzar a hablar tan pronto como puedas.",
+        "It's useful to start talking as soon as you can."
+      ],
+      "legos": [
+        {
+          "id": "S0028L01",
+          "type": "M",
+          "target": "es útil",
+          "known": "it's useful",
+          "new": true,
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "útil",
+              "useful"
+            ]
+          ]
+        },
+        {
+          "id": "S0023L01",
+          "type": "M",
+          "target": "comenzar a hablar",
+          "known": "to start talking",
+          "ref": "S0023",
+          "components": [
+            [
+              "comenzar a",
+              "to start to"
+            ],
+            [
+              "hablar",
+              "talk/talking"
+            ]
+          ]
+        },
+        {
+          "id": "S0028L02",
+          "type": "M",
+          "target": "tan pronto como puedas",
+          "known": "as soon as you can",
+          "new": true,
+          "components": [
+            [
+              "tan pronto como",
+              "as soon as"
+            ],
+            [
+              "puedas",
+              "you can (subj)"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_IMPERSONAL",
+        "P10"
+      ],
+      "cumulative_legos": 85
+    },
+    {
+      "seed_id": "S0029",
+      "seed_pair": [
+        "Estoy deseando hablar mejor tan pronto como pueda.",
+        "I'm looking forward to speaking better as soon as I can."
+      ],
+      "legos": [
+        {
+          "id": "S0029L01",
+          "type": "M",
+          "target": "estoy deseando",
+          "known": "I'm looking forward to",
+          "new": true,
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "deseando",
+              "looking forward to"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "target": "hablar",
+          "known": "to speak",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0029L02",
+          "type": "A",
+          "target": "mejor",
+          "known": "better",
+          "new": true
+        },
+        {
+          "id": "S0029L03",
+          "type": "M",
+          "target": "tan pronto como pueda",
+          "known": "as soon as I can",
+          "new": true,
+          "components": [
+            [
+              "tan pronto como",
+              "as soon as"
+            ],
+            [
+              "pueda",
+              "I can (subj)"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P02",
+        "P10"
+      ],
+      "cumulative_legos": 88
+    },
+    {
+      "seed_id": "S0030",
+      "seed_pair": [
+        "Quería preguntarte algo ayer.",
+        "I wanted to ask you something yesterday."
+      ],
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "target": "quería",
+          "known": "I wanted",
+          "new": true
+        },
+        {
+          "id": "S0030L02",
+          "type": "A",
+          "target": "preguntarte",
+          "known": "to ask you",
+          "new": true
+        },
+        {
+          "id": "S0004L02",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "ref": "S0004"
+        },
+        {
+          "id": "S0030L03",
+          "type": "A",
+          "target": "ayer",
+          "known": "yesterday",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P_NEW_IMPERFECT",
+        "P01"
+      ],
+      "cumulative_legos": 91
+    },
+    {
+      "seed_id": "S0031",
+      "seed_pair": [
+        "Querías hablar conmigo esta noche.",
+        "You wanted to speak with me tonight."
+      ],
+      "legos": [
+        {
+          "id": "S0031L01",
+          "type": "A",
+          "target": "querías",
+          "known": "you wanted",
+          "new": true
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "target": "hablar",
+          "known": "to speak",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0015L03",
+          "type": "A",
+          "target": "conmigo",
+          "known": "with me",
+          "ref": "S0015"
+        },
+        {
+          "id": "S0018L04",
+          "type": "M",
+          "target": "esta noche",
+          "known": "tonight",
+          "ref": "S0018",
+          "components": [
+            [
+              "esta",
+              "this"
+            ],
+            [
+              "noche",
+              "evening/night"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_IMPERFECT",
+        "P01"
+      ],
+      "cumulative_legos": 92
+    },
+    {
+      "seed_id": "S0032",
+      "seed_pair": [
+        "¿Querías mostrarme algo?",
+        "Did you want to show me something?"
+      ],
+      "legos": [
+        {
+          "id": "S0031L01",
+          "type": "A",
+          "target": "querías",
+          "known": "you wanted",
+          "ref": "S0031"
+        },
+        {
+          "id": "S0032L01",
+          "type": "A",
+          "target": "mostrarme",
+          "known": "to show me",
+          "new": true
+        },
+        {
+          "id": "S0004L02",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "ref": "S0004"
+        }
+      ],
+      "patterns": [
+        "P_NEW_IMPERFECT",
+        "P01"
+      ],
+      "cumulative_legos": 93
+    },
+    {
+      "seed_id": "S0033",
+      "seed_pair": [
+        "¿Cuánto tiempo llevas aprendiendo español?",
+        "How long have you been learning Spanish?"
+      ],
+      "legos": [
+        {
+          "id": "S0033L01",
+          "type": "M",
+          "target": "cuánto tiempo",
+          "known": "how long",
+          "new": true,
+          "components": [
+            [
+              "cuánto",
+              "how much"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        },
+        {
+          "id": "S0033L02",
+          "type": "M",
+          "target": "llevas aprendiendo",
+          "known": "have you been learning",
+          "new": true,
+          "components": [
+            [
+              "llevas",
+              "you carry/have been"
+            ],
+            [
+              "aprendiendo",
+              "learning"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "ref": "S0001"
+        }
+      ],
+      "patterns": [
+        "P14_introduced",
+        "P12"
+      ],
+      "cumulative_legos": 95
+    },
+    {
+      "seed_id": "S0034",
+      "seed_pair": [
+        "Él no quiere estar silencioso cuando otras personas están aquí.",
+        "He doesn't want to be quiet when other people are here."
+      ],
+      "legos": [
+        {
+          "id": "S0016L01",
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "ref": "S0016"
+        },
+        {
+          "id": "S0034L01",
+          "type": "M",
+          "target": "no quiere",
+          "known": "doesn't want",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "quiere",
+              "wants"
+            ]
+          ]
+        },
+        {
+          "id": "S0034L02",
+          "type": "M",
+          "target": "estar silencioso",
+          "known": "to be quiet",
+          "new": true,
+          "components": [
+            [
+              "estar",
+              "to be"
+            ],
+            [
+              "silencioso",
+              "quiet"
+            ]
+          ]
+        },
+        {
+          "id": "S0034L03",
+          "type": "A",
+          "target": "cuando",
+          "known": "when",
+          "new": true
+        },
+        {
+          "id": "S0034L04",
+          "type": "M",
+          "target": "otras personas",
+          "known": "other people",
+          "new": true,
+          "components": [
+            [
+              "otras",
+              "other"
+            ],
+            [
+              "personas",
+              "people"
+            ]
+          ]
+        },
+        {
+          "id": "S0034L05",
+          "type": "M",
+          "target": "están aquí",
+          "known": "are here",
+          "new": true,
+          "components": [
+            [
+              "están",
+              "are"
+            ],
+            [
+              "aquí",
+              "here"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01"
+      ],
+      "cumulative_legos": 100
+    },
+    {
+      "seed_id": "S0035",
+      "seed_pair": [
+        "Ella no quiere leer nada esta tarde.",
+        "She doesn't want to read anything this afternoon."
+      ],
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "ref": "S0017"
+        },
+        {
+          "id": "S0034L01",
+          "type": "M",
+          "target": "no quiere",
+          "known": "doesn't want",
+          "ref": "S0034",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "quiere",
+              "wants"
+            ]
+          ]
+        },
+        {
+          "id": "S0035L01",
+          "type": "A",
+          "target": "leer",
+          "known": "to read",
+          "new": true
+        },
+        {
+          "id": "S0035L02",
+          "type": "A",
+          "target": "nada",
+          "known": "anything",
+          "new": true
+        },
+        {
+          "id": "S0035L03",
+          "type": "M",
+          "target": "esta tarde",
+          "known": "this afternoon",
+          "new": true,
+          "components": [
+            [
+              "esta",
+              "this"
+            ],
+            [
+              "tarde",
+              "afternoon"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01"
+      ],
+      "cumulative_legos": 103
+    },
+    {
+      "seed_id": "S0036",
+      "seed_pair": [
+        "No queremos interrumpir la historia.",
+        "We don't want to interrupt the story."
+      ],
+      "legos": [
+        {
+          "id": "S0036L01",
+          "type": "M",
+          "target": "no queremos",
+          "known": "we don't want",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "queremos",
+              "we want"
+            ]
+          ]
+        },
+        {
+          "id": "S0036L02",
+          "type": "A",
+          "target": "interrumpir",
+          "known": "to interrupt",
+          "new": true
+        },
+        {
+          "id": "S0036L03",
+          "type": "M",
+          "target": "la historia",
+          "known": "the story",
+          "new": true,
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "historia",
+              "story"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01"
+      ],
+      "cumulative_legos": 106
+    },
+    {
+      "seed_id": "S0037",
+      "seed_pair": [
+        "Comencé a pensar sobre eso cuidadosamente el mes pasado.",
+        "I started to think about it carefully last month."
+      ],
+      "legos": [
+        {
+          "id": "S0037L01",
+          "type": "M",
+          "target": "comencé a",
+          "known": "I started to",
+          "new": true,
+          "components": [
+            [
+              "comencé",
+              "I started"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ]
+        },
+        {
+          "id": "S0037L02",
+          "type": "A",
+          "target": "pensar",
+          "known": "to think",
+          "new": true
+        },
+        {
+          "id": "S0037L03",
+          "type": "M",
+          "target": "sobre eso",
+          "known": "about it",
+          "new": true,
+          "components": [
+            [
+              "sobre",
+              "about"
+            ],
+            [
+              "eso",
+              "it/that"
+            ]
+          ]
+        },
+        {
+          "id": "S0037L04",
+          "type": "A",
+          "target": "cuidadosamente",
+          "known": "carefully",
+          "new": true
+        },
+        {
+          "id": "S0037L05",
+          "type": "M",
+          "target": "el mes pasado",
+          "known": "last month",
+          "new": true,
+          "components": [
+            [
+              "el",
+              "the"
+            ],
+            [
+              "mes",
+              "month"
+            ],
+            [
+              "pasado",
+              "last/past"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P15_introduced"
+      ],
+      "cumulative_legos": 111
+    },
+    {
+      "seed_id": "S0038",
+      "seed_pair": [
+        "Llevo aprendiendo aproximadamente una semana.",
+        "I've been learning for about a week."
+      ],
+      "legos": [
+        {
+          "id": "S0038L01",
+          "type": "M",
+          "target": "llevo aprendiendo",
+          "known": "I've been learning",
+          "new": true,
+          "components": [
+            [
+              "llevo",
+              "I carry/have been"
+            ],
+            [
+              "aprendiendo",
+              "learning"
+            ]
+          ]
+        },
+        {
+          "id": "S0038L02",
+          "type": "A",
+          "target": "aproximadamente",
+          "known": "about",
+          "new": true
+        },
+        {
+          "id": "S0038L03",
+          "type": "M",
+          "target": "una semana",
+          "known": "a week",
+          "new": true,
+          "components": [
+            [
+              "una",
+              "a/one"
+            ],
+            [
+              "semana",
+              "week"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P14"
+      ],
+      "cumulative_legos": 114
+    },
+    {
+      "seed_id": "S0039",
+      "seed_pair": [
+        "Pero estoy un poco cansado esta mañana.",
+        "But I'm a little tired this morning."
+      ],
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "ref": "S0019"
+        },
+        {
+          "id": "S0039L01",
+          "type": "M",
+          "target": "estoy un poco cansado",
+          "known": "I'm a little tired",
+          "new": true,
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "cansado",
+              "tired"
+            ]
+          ]
+        },
+        {
+          "id": "S0039L02",
+          "type": "M",
+          "target": "esta mañana",
+          "known": "this morning",
+          "new": true,
+          "components": [
+            [
+              "esta",
+              "this"
+            ],
+            [
+              "mañana",
+              "morning"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P02"
+      ],
+      "cumulative_legos": 116
+    },
+    {
+      "seed_id": "S0040",
+      "seed_pair": [
+        "¿Cómo te sientes en este momento?",
+        "How do you feel at the moment?"
+      ],
+      "legos": [
+        {
+          "id": "S0040L01",
+          "type": "M",
+          "target": "cómo te sientes",
+          "known": "how do you feel",
+          "new": true,
+          "components": [
+            [
+              "cómo",
+              "how"
+            ],
+            [
+              "te",
+              "yourself"
+            ],
+            [
+              "sientes",
+              "you feel"
+            ]
+          ]
+        },
+        {
+          "id": "S0040L02",
+          "type": "M",
+          "target": "en este momento",
+          "known": "at the moment",
+          "new": true,
+          "components": [
+            [
+              "en",
+              "in/at"
+            ],
+            [
+              "este",
+              "this"
+            ],
+            [
+              "momento",
+              "moment"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P12",
+        "P_NEW_REFLEXIVE"
+      ],
+      "cumulative_legos": 118
+    },
+    {
+      "seed_id": "S0041",
+      "seed_pair": [
+        "Me siento bien, pero estoy comenzando a sentirme cansado.",
+        "I feel okay, but I'm starting to feel tired."
+      ],
+      "legos": [
+        {
+          "id": "S0041L01",
+          "type": "M",
+          "target": "me siento",
+          "known": "I feel",
+          "new": true,
+          "components": [
+            [
+              "me",
+              "myself"
+            ],
+            [
+              "siento",
+              "I feel"
+            ]
+          ]
+        },
+        {
+          "id": "S0041L02",
+          "type": "A",
+          "target": "bien",
+          "known": "okay",
+          "new": true
+        },
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "ref": "S0019"
+        },
+        {
+          "id": "S0041L03",
+          "type": "M",
+          "target": "estoy comenzando a sentirme",
+          "known": "I'm starting to feel",
+          "new": true,
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "comenzando a",
+              "starting to"
+            ],
+            [
+              "sentirme",
+              "to feel myself"
+            ]
+          ]
+        },
+        {
+          "id": "S0041L04",
+          "type": "A",
+          "target": "cansado",
+          "known": "tired",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P_NEW_REFLEXIVE",
+        "P02"
+      ],
+      "cumulative_legos": 122
+    },
+    {
+      "seed_id": "S0042",
+      "seed_pair": [
+        "Estaba comenzando a sentirme mejor que anoche.",
+        "I was starting to feel better than last night."
+      ],
+      "legos": [
+        {
+          "id": "S0042L01",
+          "type": "M",
+          "target": "estaba comenzando a",
+          "known": "I was starting to",
+          "new": true,
+          "components": [
+            [
+              "estaba",
+              "I was"
+            ],
+            [
+              "comenzando a",
+              "starting to"
+            ]
+          ]
+        },
+        {
+          "id": "S0042L02",
+          "type": "A",
+          "target": "sentirme",
+          "known": "to feel",
+          "new": true
+        },
+        {
+          "id": "S0042L03",
+          "type": "M",
+          "target": "mejor que",
+          "known": "better than",
+          "new": true,
+          "components": [
+            [
+              "mejor",
+              "better"
+            ],
+            [
+              "que",
+              "than"
+            ]
+          ]
+        },
+        {
+          "id": "S0042L04",
+          "type": "A",
+          "target": "anoche",
+          "known": "last night",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P16_introduced"
+      ],
+      "cumulative_legos": 126
+    },
+    {
+      "seed_id": "S0043",
+      "seed_pair": [
+        "No estaba pensando en cómo responder.",
+        "I wasn't thinking about how to answer."
+      ],
+      "legos": [
+        {
+          "id": "S0043L01",
+          "type": "M",
+          "target": "no estaba pensando",
+          "known": "I wasn't thinking",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estaba",
+              "I was"
+            ],
+            [
+              "pensando",
+              "thinking"
+            ]
+          ]
+        },
+        {
+          "id": "S0043L02",
+          "type": "M",
+          "target": "en cómo responder",
+          "known": "about how to answer",
+          "new": true,
+          "components": [
+            [
+              "en",
+              "in/about"
+            ],
+            [
+              "cómo",
+              "how"
+            ],
+            [
+              "responder",
+              "to answer"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P16"
+      ],
+      "cumulative_legos": 128
+    },
+    {
+      "seed_id": "S0044",
+      "seed_pair": [
+        "O si necesito mejorar.",
+        "Or if I need to improve."
+      ],
+      "legos": [
+        {
+          "id": "S0044L01",
+          "type": "A",
+          "target": "o",
+          "known": "or",
+          "new": true
+        },
+        {
+          "id": "S0010L02",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "ref": "S0010"
+        },
+        {
+          "id": "S0044L02",
+          "type": "A",
+          "target": "necesito",
+          "known": "I need",
+          "new": true
+        },
+        {
+          "id": "S0044L03",
+          "type": "A",
+          "target": "mejorar",
+          "known": "to improve",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P17_introduced"
+      ],
+      "cumulative_legos": 131
+    },
+    {
+      "seed_id": "S0045",
+      "seed_pair": [
+        "No necesito saber todo.",
+        "I don't need to know everything."
+      ],
+      "legos": [
+        {
+          "id": "S0045L01",
+          "type": "M",
+          "target": "no necesito",
+          "known": "I don't need",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "necesito",
+              "I need"
+            ]
+          ]
+        },
+        {
+          "id": "S0045L02",
+          "type": "A",
+          "target": "saber",
+          "known": "to know",
+          "new": true
+        },
+        {
+          "id": "S0045L03",
+          "type": "A",
+          "target": "todo",
+          "known": "everything",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P17"
+      ],
+      "cumulative_legos": 134
+    },
+    {
+      "seed_id": "S0046",
+      "seed_pair": [
+        "Pero no me preocupo por hacer errores.",
+        "But I don't worry about making mistakes."
+      ],
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "ref": "S0019"
+        },
+        {
+          "id": "S0046L01",
+          "type": "M",
+          "target": "no me preocupo",
+          "known": "I don't worry",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "me",
+              "myself"
+            ],
+            [
+              "preocupo",
+              "I worry"
+            ]
+          ]
+        },
+        {
+          "id": "S0046L02",
+          "type": "M",
+          "target": "por hacer errores",
+          "known": "about making mistakes",
+          "new": true,
+          "components": [
+            [
+              "por",
+              "about"
+            ],
+            [
+              "hacer",
+              "making"
+            ],
+            [
+              "errores",
+              "mistakes"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_REFLEXIVE"
+      ],
+      "cumulative_legos": 136
+    },
+    {
+      "seed_id": "S0047",
+      "seed_pair": [
+        "Porque pienso que es una cosa buena hacer errores.",
+        "Because I think that it's a good thing to make mistakes."
+      ],
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "target": "porque",
+          "known": "because",
+          "ref": "S0022"
+        },
+        {
+          "id": "S0047L01",
+          "type": "M",
+          "target": "pienso que",
+          "known": "I think that",
+          "new": true,
+          "components": [
+            [
+              "pienso",
+              "I think"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ]
+        },
+        {
+          "id": "S0047L02",
+          "type": "M",
+          "target": "es una cosa buena",
+          "known": "it's a good thing",
+          "new": true,
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "una",
+              "a"
+            ],
+            [
+              "cosa",
+              "thing"
+            ],
+            [
+              "buena",
+              "good"
+            ]
+          ]
+        },
+        {
+          "id": "S0047L03",
+          "type": "M",
+          "target": "hacer errores",
+          "known": "to make mistakes",
+          "new": true,
+          "components": [
+            [
+              "hacer",
+              "to make"
+            ],
+            [
+              "errores",
+              "mistakes"
+            ]
+          ]
+        }
+      ],
+      "patterns": [],
+      "cumulative_legos": 139
+    },
+    {
+      "seed_id": "S0048",
+      "seed_pair": [
+        "No me importa hacer errores.",
+        "I don't care about making mistakes."
+      ],
+      "legos": [
+        {
+          "id": "S0048L01",
+          "type": "M",
+          "target": "no me importa",
+          "known": "I don't care",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "me",
+              "to me"
+            ],
+            [
+              "importa",
+              "it matters"
+            ]
+          ]
+        },
+        {
+          "id": "S0047L03",
+          "type": "M",
+          "target": "hacer errores",
+          "known": "to make mistakes",
+          "ref": "S0047",
+          "components": [
+            [
+              "hacer",
+              "to make"
+            ],
+            [
+              "errores",
+              "mistakes"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_GUSTAR_LIKE"
+      ],
+      "cumulative_legos": 140
+    },
+    {
+      "seed_id": "S0049",
+      "seed_pair": [
+        "Es así, si sabes lo que quiero decir.",
+        "It's like this, if you know what I mean."
+      ],
+      "legos": [
+        {
+          "id": "S0049L01",
+          "type": "M",
+          "target": "es así",
+          "known": "it's like this",
+          "new": true,
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "así",
+              "thus/like this"
+            ]
+          ]
+        },
+        {
+          "id": "S0010L02",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "ref": "S0010"
+        },
+        {
+          "id": "S0049L02",
+          "type": "A",
+          "target": "sabes",
+          "known": "you know",
+          "new": true
+        },
+        {
+          "id": "S0008L02",
+          "type": "M",
+          "target": "lo que quiero decir",
+          "known": "what I mean",
+          "ref": "S0008",
+          "components": [
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "quiero",
+              "I want"
+            ],
+            [
+              "decir",
+              "to say/mean"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01"
+      ],
+      "cumulative_legos": 142
+    },
+    {
+      "seed_id": "S0050",
+      "seed_pair": [
+        "No estoy intentando terminar lo más rápidamente posible.",
+        "I'm not trying to finish as quickly as possible."
+      ],
+      "legos": [
+        {
+          "id": "S0050L01",
+          "type": "M",
+          "target": "no estoy intentando",
+          "known": "I'm not trying",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estoy intentando",
+              "I'm trying"
+            ]
+          ]
+        },
+        {
+          "id": "S0050L02",
+          "type": "A",
+          "target": "terminar",
+          "known": "to finish",
+          "new": true
+        },
+        {
+          "id": "S0050L03",
+          "type": "M",
+          "target": "lo más rápidamente posible",
+          "known": "as quickly as possible",
+          "new": true,
+          "components": [
+            [
+              "lo más",
+              "the most"
+            ],
+            [
+              "rápidamente",
+              "quickly"
+            ],
+            [
+              "posible",
+              "possible"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P02",
+        "P12"
+      ],
+      "cumulative_legos": 145
+    },
+    {
+      "seed_id": "S0051",
+      "seed_pair": [
+        "Disfruto hacer cosas interesantes con mis amigos.",
+        "I enjoy doing interesting things with my friends."
+      ],
+      "legos": [
+        {
+          "id": "S0051L01",
+          "type": "A",
+          "target": "disfruto",
+          "known": "I enjoy",
+          "new": true
+        },
+        {
+          "id": "S0051L02",
+          "type": "A",
+          "target": "hacer",
+          "known": "to do/make",
+          "new": true
+        },
+        {
+          "id": "S0051L03",
+          "type": "A",
+          "target": "cosas",
+          "known": "things",
+          "new": true
+        },
+        {
+          "id": "S0051L04",
+          "type": "A",
+          "target": "interesantes",
+          "known": "interesting",
+          "new": true
+        },
+        {
+          "id": "S0005L03",
+          "type": "A",
+          "target": "con",
+          "known": "with",
+          "ref": "S0005"
+        },
+        {
+          "id": "S0051L05",
+          "type": "M",
+          "target": "mis amigos",
+          "known": "my friends",
+          "new": true,
+          "components": [
+            [
+              "mis",
+              "my"
+            ],
+            [
+              "amigos",
+              "friends"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_DISFRUTO"
+      ],
+      "cumulative_legos": 150
+    },
+    {
+      "seed_id": "S0052",
+      "seed_pair": [
+        "Quería escribir una carta a su amigo la semana pasada.",
+        "He wanted to write a letter to his friend last week."
+      ],
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "target": "quería",
+          "known": "I wanted/he wanted",
+          "ref": "S0030"
+        },
+        {
+          "id": "S0052L01",
+          "type": "A",
+          "target": "escribir",
+          "known": "to write",
+          "new": true
+        },
+        {
+          "id": "S0052L02",
+          "type": "M",
+          "target": "una carta",
+          "known": "a letter",
+          "new": true,
+          "components": [
+            [
+              "una",
+              "a"
+            ],
+            [
+              "carta",
+              "letter"
+            ]
+          ]
+        },
+        {
+          "id": "S0052L03",
+          "type": "M",
+          "target": "a su amigo",
+          "known": "to his friend",
+          "new": true,
+          "components": [
+            [
+              "a",
+              "to"
+            ],
+            [
+              "su",
+              "his"
+            ],
+            [
+              "amigo",
+              "friend"
+            ]
+          ]
+        },
+        {
+          "id": "S0052L04",
+          "type": "M",
+          "target": "la semana pasada",
+          "known": "last week",
+          "new": true,
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "semana",
+              "week"
+            ],
+            [
+              "pasada",
+              "past/last"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01",
+        "P08"
+      ],
+      "cumulative_legos": 154
+    },
+    {
+      "seed_id": "S0053",
+      "seed_pair": [
+        "Quería poner su carta en su bolsa.",
+        "She wanted to put his letter in her bag."
+      ],
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "target": "quería",
+          "known": "I wanted/he wanted/she wanted",
+          "ref": "S0030"
+        },
+        {
+          "id": "S0053L01",
+          "type": "A",
+          "target": "poner",
+          "known": "to put",
+          "new": true
+        },
+        {
+          "id": "S0053L02",
+          "type": "M",
+          "target": "su carta",
+          "known": "his letter",
+          "new": true,
+          "components": [
+            [
+              "su",
+              "his"
+            ],
+            [
+              "carta",
+              "letter"
+            ]
+          ]
+        },
+        {
+          "id": "S0053L03",
+          "type": "M",
+          "target": "en su bolsa",
+          "known": "in her bag",
+          "new": true,
+          "components": [
+            [
+              "en",
+              "in"
+            ],
+            [
+              "su",
+              "her"
+            ],
+            [
+              "bolsa",
+              "bag"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01",
+        "P08"
+      ],
+      "cumulative_legos": 157
+    },
+    {
+      "seed_id": "S0054",
+      "seed_pair": [
+        "Queríamos darte un poco más de tiempo.",
+        "We wanted to give you a little more time."
+      ],
+      "legos": [
+        {
+          "id": "S0054L01",
+          "type": "A",
+          "target": "queríamos",
+          "known": "we wanted",
+          "new": true
+        },
+        {
+          "id": "S0054L02",
+          "type": "A",
+          "target": "darte",
+          "known": "to give you",
+          "new": true
+        },
+        {
+          "id": "S0054L03",
+          "type": "M",
+          "target": "un poco más de tiempo",
+          "known": "a little more time",
+          "new": true,
+          "components": [
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "más",
+              "more"
+            ],
+            [
+              "de",
+              "of"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01",
+        "P08"
+      ],
+      "cumulative_legos": 160
+    },
+    {
+      "seed_id": "S0055",
+      "seed_pair": [
+        "No disfruto despertarme cuando no dormí muy bien.",
+        "I don't enjoy waking up when I didn't sleep very well."
+      ],
+      "legos": [
+        {
+          "id": "S0055L01",
+          "type": "M",
+          "target": "no disfruto",
+          "known": "I don't enjoy",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "disfruto",
+              "I enjoy"
+            ]
+          ]
+        },
+        {
+          "id": "S0055L02",
+          "type": "A",
+          "target": "despertarme",
+          "known": "to wake up/waking up",
+          "new": true
+        },
+        {
+          "id": "S0034L03",
+          "type": "A",
+          "target": "cuando",
+          "known": "when",
+          "ref": "S0034"
+        },
+        {
+          "id": "S0055L03",
+          "type": "M",
+          "target": "no dormí",
+          "known": "I didn't sleep",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "dormí",
+              "I slept"
+            ]
+          ]
+        },
+        {
+          "id": "S0013L02",
+          "type": "M",
+          "target": "muy bien",
+          "known": "very well",
+          "ref": "S0013",
+          "components": [
+            [
+              "muy",
+              "very"
+            ],
+            [
+              "bien",
+              "well"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_DISFRUTO",
+        "P_NEW_REFLEXIVE"
+      ],
+      "cumulative_legos": 163
+    },
+    {
+      "seed_id": "S0056",
+      "seed_pair": [
+        "Para poder recordar cómo decir unas pocas palabras.",
+        "So I can remember how to say a few words."
+      ],
+      "legos": [
+        {
+          "id": "S0056L01",
+          "type": "M",
+          "target": "para poder",
+          "known": "so I can/to be able to",
+          "new": true,
+          "components": [
+            [
+              "para",
+              "for/so"
+            ],
+            [
+              "poder",
+              "to be able to/can"
+            ]
+          ]
+        },
+        {
+          "id": "S0006L01",
+          "type": "A",
+          "target": "recordar",
+          "known": "to remember",
+          "ref": "S0006"
+        },
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "cómo",
+          "known": "how",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0004L01",
+          "type": "A",
+          "target": "decir",
+          "known": "to say",
+          "ref": "S0004"
+        },
+        {
+          "id": "S0056L02",
+          "type": "M",
+          "target": "unas pocas palabras",
+          "known": "a few words",
+          "new": true,
+          "components": [
+            [
+              "unas",
+              "some"
+            ],
+            [
+              "pocas",
+              "few"
+            ],
+            [
+              "palabras",
+              "words"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P12"
+      ],
+      "cumulative_legos": 165
+    },
+    {
+      "seed_id": "S0057",
+      "seed_pair": [
+        "No puedo recordar cómo decir lo que quería decir.",
+        "I can't remember how to say what I wanted to say."
+      ],
+      "legos": [
+        {
+          "id": "S0057L01",
+          "type": "M",
+          "target": "no puedo",
+          "known": "I can't",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "puedo",
+              "I can"
+            ]
+          ]
+        },
+        {
+          "id": "S0006L01",
+          "type": "A",
+          "target": "recordar",
+          "known": "to remember",
+          "ref": "S0006"
+        },
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "cómo",
+          "known": "how",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0004L01",
+          "type": "A",
+          "target": "decir",
+          "known": "to say",
+          "ref": "S0004"
+        },
+        {
+          "id": "S0057L02",
+          "type": "M",
+          "target": "lo que quería decir",
+          "known": "what I wanted to say",
+          "new": true,
+          "components": [
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "quería",
+              "I wanted"
+            ],
+            [
+              "decir",
+              "to say"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P12",
+        "P_NEW_RELATIVE"
+      ],
+      "cumulative_legos": 167
+    },
+    {
+      "seed_id": "S0058",
+      "seed_pair": [
+        "Es interesante cuando comprendes suficientes palabras.",
+        "It's interesting when you understand enough words."
+      ],
+      "legos": [
+        {
+          "id": "S0058L01",
+          "type": "M",
+          "target": "es interesante",
+          "known": "it's interesting",
+          "new": true,
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "interesante",
+              "interesting"
+            ]
+          ]
+        },
+        {
+          "id": "S0034L03",
+          "type": "A",
+          "target": "cuando",
+          "known": "when",
+          "ref": "S0034"
+        },
+        {
+          "id": "S0058L02",
+          "type": "A",
+          "target": "comprendes",
+          "known": "you understand",
+          "new": true
+        },
+        {
+          "id": "S0058L03",
+          "type": "M",
+          "target": "suficientes palabras",
+          "known": "enough words",
+          "new": true,
+          "components": [
+            [
+              "suficientes",
+              "enough"
+            ],
+            [
+              "palabras",
+              "words"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_IMPERSONAL"
+      ],
+      "cumulative_legos": 170
+    },
+    {
+      "seed_id": "S0059",
+      "seed_pair": [
+        "Sé hacer lo que necesito hacer la próxima semana.",
+        "I know how to do what I need to do next week."
+      ],
+      "legos": [
+        {
+          "id": "S0059L01",
+          "type": "M",
+          "target": "sé hacer",
+          "known": "I know how to do",
+          "new": true,
+          "components": [
+            [
+              "sé",
+              "I know"
+            ],
+            [
+              "hacer",
+              "to do"
+            ]
+          ]
+        },
+        {
+          "id": "S0059L02",
+          "type": "M",
+          "target": "lo que necesito hacer",
+          "known": "what I need to do",
+          "new": true,
+          "components": [
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "necesito",
+              "I need"
+            ],
+            [
+              "hacer",
+              "to do"
+            ]
+          ]
+        },
+        {
+          "id": "S0059L03",
+          "type": "M",
+          "target": "la próxima semana",
+          "known": "next week",
+          "new": true,
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "próxima",
+              "next"
+            ],
+            [
+              "semana",
+              "week"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P12",
+        "P_NEW_RELATIVE"
+      ],
+      "cumulative_legos": 173
+    },
+    {
+      "seed_id": "S0060",
+      "seed_pair": [
+        "Todavía no sé cómo decir suficientes palabras diferentes.",
+        "I don't know how to say enough different words yet."
+      ],
+      "legos": [
+        {
+          "id": "S0060L01",
+          "type": "M",
+          "target": "todavía no sé",
+          "known": "I don't know yet",
+          "new": true,
+          "components": [
+            [
+              "todavía",
+              "yet/still"
+            ],
+            [
+              "no",
+              "not"
+            ],
+            [
+              "sé",
+              "I know"
+            ]
+          ]
+        },
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "cómo",
+          "known": "how",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0004L01",
+          "type": "A",
+          "target": "decir",
+          "known": "to say",
+          "ref": "S0004"
+        },
+        {
+          "id": "S0060L02",
+          "type": "M",
+          "target": "suficientes palabras diferentes",
+          "known": "enough different words",
+          "new": true,
+          "components": [
+            [
+              "suficientes",
+              "enough"
+            ],
+            [
+              "palabras",
+              "words"
+            ],
+            [
+              "diferentes",
+              "different"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P12"
+      ],
+      "cumulative_legos": 175
+    },
+    {
+      "seed_id": "S0061",
+      "seed_pair": [
+        "¿Podrías decir eso otra vez un poco más lentamente?",
+        "Could you say that again a little more slowly?"
+      ],
+      "legos": [
+        {
+          "id": "S0061L01",
+          "type": "A",
+          "target": "podrías",
+          "known": "could you/you could",
+          "new": true
+        },
+        {
+          "id": "S0004L01",
+          "type": "A",
+          "target": "decir",
+          "known": "to say",
+          "ref": "S0004"
+        },
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0061L03",
+          "type": "M",
+          "target": "otra vez",
+          "known": "again",
+          "new": true,
+          "components": [
+            [
+              "otra",
+              "another"
+            ],
+            [
+              "vez",
+              "time"
+            ]
+          ]
+        },
+        {
+          "id": "S0061L04",
+          "type": "M",
+          "target": "un poco más lentamente",
+          "known": "a little more slowly",
+          "new": true,
+          "components": [
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "más",
+              "more"
+            ],
+            [
+              "lentamente",
+              "slowly"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_CONDITIONAL"
+      ],
+      "cumulative_legos": 179
+    },
+    {
+      "seed_id": "S0062",
+      "seed_pair": [
+        "No estoy seguro si puedo ayudarte al mismo tiempo.",
+        "I'm not sure if I can help you at the same time."
+      ],
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "M",
+          "target": "no estoy seguro",
+          "known": "I'm not sure",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "seguro",
+              "sure"
+            ]
+          ],
+          "ref": "S0010"
+        },
+        {
+          "id": "S0010L02",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "ref": "S0010"
+        },
+        {
+          "id": "S0062L02",
+          "type": "M",
+          "target": "puedo ayudarte",
+          "known": "I can help you",
+          "new": true,
+          "components": [
+            [
+              "puedo",
+              "I can"
+            ],
+            [
+              "ayudarte",
+              "to help you"
+            ]
+          ]
+        },
+        {
+          "id": "S0062L03",
+          "type": "M",
+          "target": "al mismo tiempo",
+          "known": "at the same time",
+          "new": true,
+          "components": [
+            [
+              "al",
+              "at the"
+            ],
+            [
+              "mismo",
+              "same"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P10"
+      ],
+      "cumulative_legos": 181
+    },
+    {
+      "seed_id": "S0063",
+      "seed_pair": [
+        "¿Estás seguro de que no te importa ayudarme?",
+        "Are you sure you don't mind helping me?"
+      ],
+      "legos": [
+        {
+          "id": "S0063L01",
+          "type": "M",
+          "target": "estás seguro",
+          "known": "you are sure",
+          "new": true,
+          "components": [
+            [
+              "estás",
+              "you are"
+            ],
+            [
+              "seguro",
+              "sure"
+            ]
+          ]
+        },
+        {
+          "id": "S0063L02",
+          "type": "M",
+          "target": "de que no te importa",
+          "known": "that you don't mind",
+          "new": true,
+          "components": [
+            [
+              "de que",
+              "that"
+            ],
+            [
+              "no",
+              "not"
+            ],
+            [
+              "te",
+              "you"
+            ],
+            [
+              "importa",
+              "mind/matters"
+            ]
+          ]
+        },
+        {
+          "id": "S0025L02",
+          "type": "A",
+          "target": "ayudarme",
+          "known": "to help me",
+          "ref": "S0025"
+        }
+      ],
+      "patterns": [
+        "P_NEW_GUSTAR_LIKE"
+      ],
+      "cumulative_legos": 183
+    },
+    {
+      "seed_id": "S0064",
+      "seed_pair": [
+        "Aprender español no es fácil pero es divertido.",
+        "Learning Spanish isn't easy but it is fun."
+      ],
+      "legos": [
+        {
+          "id": "S0064L01",
+          "type": "M",
+          "target": "aprender español",
+          "known": "learning Spanish",
+          "new": true,
+          "components": [
+            [
+              "aprender",
+              "to learn"
+            ],
+            [
+              "español",
+              "Spanish"
+            ]
+          ]
+        },
+        {
+          "id": "S0064L02",
+          "type": "M",
+          "target": "no es fácil",
+          "known": "isn't easy",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "fácil",
+              "easy"
+            ]
+          ]
+        },
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "ref": "S0019"
+        },
+        {
+          "id": "S0064L03",
+          "type": "M",
+          "target": "es divertido",
+          "known": "it is fun",
+          "new": true,
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "divertido",
+              "fun"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_IMPERSONAL"
+      ],
+      "cumulative_legos": 186
+    },
+    {
+      "seed_id": "S0065",
+      "seed_pair": [
+        "Es importante tomar tiempo para evaluarte.",
+        "It's important to take time to test yourself."
+      ],
+      "legos": [
+        {
+          "id": "S0065L01",
+          "type": "M",
+          "target": "es importante",
+          "known": "it's important",
+          "new": true,
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "importante",
+              "important"
+            ]
+          ]
+        },
+        {
+          "id": "S0065L02",
+          "type": "M",
+          "target": "tomar tiempo",
+          "known": "to take time",
+          "new": true,
+          "components": [
+            [
+              "tomar",
+              "to take"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        },
+        {
+          "id": "S0065L03",
+          "type": "M",
+          "target": "para evaluarte",
+          "known": "to test yourself",
+          "new": true,
+          "components": [
+            [
+              "para",
+              "to/for"
+            ],
+            [
+              "evaluarte",
+              "to test yourself"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_IMPERSONAL",
+        "P_NEW_REFLEXIVE"
+      ],
+      "cumulative_legos": 189
+    },
+    {
+      "seed_id": "S0066",
+      "seed_pair": [
+        "No es difícil encontrar la respuesta.",
+        "It's not difficult to find the answer."
+      ],
+      "legos": [
+        {
+          "id": "S0066L01",
+          "type": "M",
+          "target": "no es difícil",
+          "known": "it's not difficult",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "difícil",
+              "difficult"
+            ]
+          ]
+        },
+        {
+          "id": "S0022L02",
+          "type": "A",
+          "target": "encontrar",
+          "known": "to find",
+          "ref": "S0022"
+        },
+        {
+          "id": "S0066L03",
+          "type": "M",
+          "target": "la respuesta",
+          "known": "the answer",
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "respuesta",
+              "answer"
+            ]
+          ],
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P_NEW_IMPERSONAL"
+      ],
+      "cumulative_legos": 191
+    },
+    {
+      "seed_id": "S0067",
+      "seed_pair": [
+        "¿Por qué quieres parar?",
+        "Why do you want to stop?"
+      ],
+      "legos": [
+        {
+          "id": "S0021L01",
+          "type": "M",
+          "target": "por qué",
+          "known": "why",
+          "ref": "S0021",
+          "components": [
+            [
+              "por",
+              "for/by"
+            ],
+            [
+              "qué",
+              "what"
+            ]
+          ]
+        },
+        {
+          "id": "S0020L01",
+          "type": "A",
+          "target": "quieres",
+          "known": "you want",
+          "ref": "S0020"
+        },
+        {
+          "id": "S0067L03",
+          "type": "A",
+          "target": "parar",
+          "known": "to stop",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P01"
+      ],
+      "cumulative_legos": 192
+    },
+    {
+      "seed_id": "S0068",
+      "seed_pair": [
+        "¿Qué estás buscando?",
+        "What are you looking for?"
+      ],
+      "legos": [
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "target": "qué",
+          "known": "what",
+          "new": true
+        },
+        {
+          "id": "S0068L02",
+          "type": "M",
+          "target": "estás buscando",
+          "known": "are you looking for",
+          "new": true,
+          "components": [
+            [
+              "estás",
+              "you are"
+            ],
+            [
+              "buscando",
+              "looking for"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P02"
+      ],
+      "cumulative_legos": 194
+    },
+    {
+      "seed_id": "S0069",
+      "seed_pair": [
+        "No quería cuidar el perro joven toda la tarde.",
+        "He didn't want to look after the young dog all afternoon."
+      ],
+      "legos": [
+        {
+          "id": "S0069L01",
+          "type": "M",
+          "target": "no quería",
+          "known": "I didn't want/he didn't want",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "quería",
+              "I wanted/he wanted"
+            ]
+          ]
+        },
+        {
+          "id": "S0069L02",
+          "type": "A",
+          "target": "cuidar",
+          "known": "to look after",
+          "new": true
+        },
+        {
+          "id": "S0069L03",
+          "type": "M",
+          "target": "el perro joven",
+          "known": "the young dog",
+          "new": true,
+          "components": [
+            [
+              "el",
+              "the"
+            ],
+            [
+              "perro",
+              "dog"
+            ],
+            [
+              "joven",
+              "young"
+            ]
+          ]
+        },
+        {
+          "id": "S0069L04",
+          "type": "M",
+          "target": "toda la tarde",
+          "known": "all afternoon",
+          "new": true,
+          "components": [
+            [
+              "toda",
+              "all"
+            ],
+            [
+              "la",
+              "the"
+            ],
+            [
+              "tarde",
+              "afternoon"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01",
+        "P08"
+      ],
+      "cumulative_legos": 198
+    },
+    {
+      "seed_id": "S0070",
+      "seed_pair": [
+        "Ella no quería decirme dónde estaba.",
+        "She didn't want to tell me where it was."
+      ],
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "ref": "S0017"
+        },
+        {
+          "id": "S0069L01",
+          "type": "M",
+          "target": "no quería",
+          "known": "didn't want",
+          "ref": "S0069",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "quería",
+              "wanted"
+            ]
+          ]
+        },
+        {
+          "id": "S0070L02",
+          "type": "A",
+          "target": "decirme",
+          "known": "to tell me",
+          "new": true
+        },
+        {
+          "id": "S0070L03",
+          "type": "M",
+          "target": "dónde estaba",
+          "known": "where it was",
+          "new": true,
+          "components": [
+            [
+              "dónde",
+              "where"
+            ],
+            [
+              "estaba",
+              "it was"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01",
+        "P08"
+      ],
+      "cumulative_legos": 200
+    },
+    {
+      "seed_id": "S0071",
+      "seed_pair": [
+        "No queríamos permitir que nadie oyera la verdad.",
+        "We didn't want to let anyone hear the truth."
+      ],
+      "legos": [
+        {
+          "id": "S0071L01",
+          "type": "M",
+          "target": "no queríamos",
+          "known": "we didn't want",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "queríamos",
+              "we wanted"
+            ]
+          ]
+        },
+        {
+          "id": "S0071L02",
+          "type": "M",
+          "target": "permitir que",
+          "known": "to let/allow that",
+          "new": true,
+          "components": [
+            [
+              "permitir",
+              "to allow"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ]
+        },
+        {
+          "id": "S0071L03",
+          "type": "A",
+          "target": "nadie",
+          "known": "no one/nobody",
+          "new": true
+        },
+        {
+          "id": "S0071L04",
+          "type": "A",
+          "target": "oyera",
+          "known": "hear",
+          "new": true
+        },
+        {
+          "id": "S0071L05",
+          "type": "M",
+          "target": "la verdad",
+          "known": "the truth",
+          "new": true,
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "verdad",
+              "truth"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01",
+        "P08",
+        "P10"
+      ],
+      "cumulative_legos": 205
+    },
+    {
+      "seed_id": "S0072",
+      "seed_pair": [
+        "Pienso que estás haciendo muy bien.",
+        "I think that you're doing very well."
+      ],
+      "legos": [
+        {
+          "id": "S0047L01",
+          "type": "M",
+          "target": "pienso que",
+          "known": "I think that",
+          "ref": "S0047",
+          "components": [
+            [
+              "pienso",
+              "I think"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ]
+        },
+        {
+          "id": "S0072L01",
+          "type": "M",
+          "target": "estás haciendo",
+          "known": "you're doing",
+          "new": true,
+          "components": [
+            [
+              "estás",
+              "you are"
+            ],
+            [
+              "haciendo",
+              "doing"
+            ]
+          ]
+        },
+        {
+          "id": "S0013L02",
+          "type": "M",
+          "target": "muy bien",
+          "known": "very well",
+          "ref": "S0013",
+          "components": [
+            [
+              "muy",
+              "very"
+            ],
+            [
+              "bien",
+              "well"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P02"
+      ],
+      "cumulative_legos": 206
+    },
+    {
+      "seed_id": "S0073",
+      "seed_pair": [
+        "Muchas gracias, pero tengo más que aprender.",
+        "Thank you very much, but I've got more to learn."
+      ],
+      "legos": [
+        {
+          "id": "S0073L01",
+          "type": "M",
+          "target": "muchas gracias",
+          "known": "thank you very much",
+          "new": true,
+          "components": [
+            [
+              "muchas",
+              "many"
+            ],
+            [
+              "gracias",
+              "thanks"
+            ]
+          ]
+        },
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "ref": "S0019"
+        },
+        {
+          "id": "S0073L02",
+          "type": "M",
+          "target": "tengo más que aprender",
+          "known": "I've got more to learn",
+          "new": true,
+          "components": [
+            [
+              "tengo",
+              "I have"
+            ],
+            [
+              "más",
+              "more"
+            ],
+            [
+              "que",
+              "that/to"
+            ],
+            [
+              "aprender",
+              "to learn"
+            ]
+          ]
+        }
+      ],
+      "patterns": [],
+      "cumulative_legos": 208
+    },
+    {
+      "seed_id": "S0074",
+      "seed_pair": [
+        "Muchas gracias por ayudarme a comprender.",
+        "Thank you very much for helping me to understand."
+      ],
+      "legos": [
+        {
+          "id": "S0073L01",
+          "type": "M",
+          "target": "muchas gracias",
+          "known": "thank you very much",
+          "ref": "S0073",
+          "components": [
+            [
+              "muchas",
+              "many"
+            ],
+            [
+              "gracias",
+              "thanks"
+            ]
+          ]
+        },
+        {
+          "id": "S0074L01",
+          "type": "M",
+          "target": "por ayudarme",
+          "known": "for helping me",
+          "new": true,
+          "components": [
+            [
+              "por",
+              "for"
+            ],
+            [
+              "ayudarme",
+              "helping me"
+            ]
+          ]
+        },
+        {
+          "id": "S0074L02",
+          "type": "M",
+          "target": "a comprender",
+          "known": "to understand",
+          "new": true,
+          "components": [
+            [
+              "a",
+              "to"
+            ],
+            [
+              "comprender",
+              "to understand"
+            ]
+          ]
+        }
+      ],
+      "patterns": [],
+      "cumulative_legos": 210
+    },
+    {
+      "seed_id": "S0075",
+      "seed_pair": [
+        "¿Tienes más que aprender?",
+        "Have you got more to learn?"
+      ],
+      "legos": [
+        {
+          "id": "S0075L01",
+          "type": "M",
+          "target": "tienes más que aprender",
+          "known": "have you got more to learn",
+          "new": true,
+          "components": [
+            [
+              "tienes",
+              "you have"
+            ],
+            [
+              "más",
+              "more"
+            ],
+            [
+              "que",
+              "that/to"
+            ],
+            [
+              "aprender",
+              "to learn"
+            ]
+          ]
+        }
+      ],
+      "patterns": [],
+      "cumulative_legos": 211
+    },
+    {
+      "seed_id": "S0076",
+      "seed_pair": [
+        "Estoy muy feliz con cuánto he aprendido ya.",
+        "I'm very happy with how much I've learnt already."
+      ],
+      "legos": [
+        {
+          "id": "S0076L01",
+          "type": "M",
+          "target": "estoy muy feliz",
+          "known": "I'm very happy",
+          "new": true,
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "muy",
+              "very"
+            ],
+            [
+              "feliz",
+              "happy"
+            ]
+          ]
+        },
+        {
+          "id": "S0076L02",
+          "type": "M",
+          "target": "con cuánto",
+          "known": "with how much",
+          "new": true,
+          "components": [
+            [
+              "con",
+              "with"
+            ],
+            [
+              "cuánto",
+              "how much"
+            ]
+          ]
+        },
+        {
+          "id": "S0076L03",
+          "type": "M",
+          "target": "he aprendido",
+          "known": "I've learnt",
+          "new": true,
+          "components": [
+            [
+              "he",
+              "I have"
+            ],
+            [
+              "aprendido",
+              "learnt"
+            ]
+          ]
+        },
+        {
+          "id": "S0076L04",
+          "type": "A",
+          "target": "ya",
+          "known": "already",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P_NEW_PERFECT"
+      ],
+      "cumulative_legos": 215
+    },
+    {
+      "seed_id": "S0077",
+      "seed_pair": [
+        "Estoy sorprendido de lo rápidamente que estoy comenzando a comprender.",
+        "I'm surprised at how quickly I'm starting to understand."
+      ],
+      "legos": [
+        {
+          "id": "S0077L01",
+          "type": "M",
+          "target": "estoy sorprendido",
+          "known": "I'm surprised",
+          "new": true,
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "sorprendido",
+              "surprised"
+            ]
+          ]
+        },
+        {
+          "id": "S0077L02",
+          "type": "M",
+          "target": "de lo rápidamente que",
+          "known": "at how quickly",
+          "new": true,
+          "components": [
+            [
+              "de",
+              "at/of"
+            ],
+            [
+              "lo",
+              "the"
+            ],
+            [
+              "rápidamente",
+              "quickly"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ]
+        },
+        {
+          "id": "S0077L03",
+          "type": "M",
+          "target": "estoy comenzando a",
+          "known": "I'm starting to",
+          "new": true,
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "comenzando",
+              "starting"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ]
+        },
+        {
+          "id": "S0077L04",
+          "type": "A",
+          "target": "comprender",
+          "known": "to understand",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P02",
+        "P03"
+      ],
+      "cumulative_legos": 219
+    },
+    {
+      "seed_id": "S0078",
+      "seed_pair": [
+        "No comprendo lo que dijiste.",
+        "I don't understand what you said."
+      ],
+      "legos": [
+        {
+          "id": "S0078L01",
+          "type": "M",
+          "target": "no comprendo",
+          "known": "I don't understand",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "comprendo",
+              "I understand"
+            ]
+          ]
+        },
+        {
+          "id": "S0078L02",
+          "type": "M",
+          "target": "lo que dijiste",
+          "known": "what you said",
+          "new": true,
+          "components": [
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "dijiste",
+              "you said"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_RELATIVE"
+      ],
+      "cumulative_legos": 221
+    },
+    {
+      "seed_id": "S0079",
+      "seed_pair": [
+        "¿Cuándo comenzaste a aprender?",
+        "When did you start to learn?"
+      ],
+      "legos": [
+        {
+          "id": "S0079L01",
+          "type": "A",
+          "target": "cuándo",
+          "known": "when",
+          "new": true
+        },
+        {
+          "id": "S0079L02",
+          "type": "M",
+          "target": "comenzaste a aprender",
+          "known": "did you start to learn",
+          "new": true,
+          "components": [
+            [
+              "comenzaste",
+              "you started"
+            ],
+            [
+              "a",
+              "to"
+            ],
+            [
+              "aprender",
+              "to learn"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P03"
+      ],
+      "cumulative_legos": 223
+    },
+    {
+      "seed_id": "S0080",
+      "seed_pair": [
+        "No estoy seguro de cuándo estaré preparado.",
+        "I'm not sure when I'll be ready."
+      ],
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "M",
+          "target": "no estoy seguro",
+          "known": "I'm not sure",
+          "ref": "S0010",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "seguro",
+              "sure"
+            ]
+          ]
+        },
+        {
+          "id": "S0080L01",
+          "type": "M",
+          "target": "de cuándo",
+          "known": "of when",
+          "new": true,
+          "components": [
+            [
+              "de",
+              "of"
+            ],
+            [
+              "cuándo",
+              "when"
+            ]
+          ]
+        },
+        {
+          "id": "S0080L02",
+          "type": "M",
+          "target": "estaré preparado",
+          "known": "I'll be ready",
+          "new": true,
+          "components": [
+            [
+              "estaré",
+              "I will be"
+            ],
+            [
+              "preparado",
+              "ready"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_FUTURE"
+      ],
+      "cumulative_legos": 225
+    },
+    {
+      "seed_id": "S0081",
+      "seed_pair": [
+        "¿Cuándo quieres comenzar?",
+        "When do you want to start?"
+      ],
+      "legos": [
+        {
+          "id": "S0079L01",
+          "type": "A",
+          "target": "cuándo",
+          "known": "when",
+          "ref": "S0079"
+        },
+        {
+          "id": "S0020L01",
+          "type": "A",
+          "target": "quieres",
+          "known": "you want",
+          "ref": "S0020"
+        },
+        {
+          "id": "S0081L01",
+          "type": "A",
+          "target": "comenzar",
+          "known": "to start",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P01"
+      ],
+      "cumulative_legos": 226
+    },
+    {
+      "seed_id": "S0082",
+      "seed_pair": [
+        "No voy a esperarte. ¿Por qué no?",
+        "I'm not going to wait for you. Why not?"
+      ],
+      "legos": [
+        {
+          "id": "S0024L01",
+          "type": "M",
+          "target": "no voy a",
+          "known": "I'm not going to",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "voy a",
+              "I'm going to"
+            ]
+          ],
+          "ref": "S0024"
+        },
+        {
+          "id": "S0082L02",
+          "type": "A",
+          "target": "esperarte",
+          "known": "to wait for you",
+          "new": true
+        },
+        {
+          "id": "S0082L03",
+          "type": "M",
+          "target": "por qué no",
+          "known": "why not",
+          "new": true,
+          "components": [
+            [
+              "por qué",
+              "why"
+            ],
+            [
+              "no",
+              "not"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P03"
+      ],
+      "cumulative_legos": 228
+    },
+    {
+      "seed_id": "S0083",
+      "seed_pair": [
+        "Estoy de acuerdo con lo que dijiste sobre tu amigo.",
+        "I agree with what you said about your friend."
+      ],
+      "legos": [
+        {
+          "id": "S0083L01",
+          "type": "M",
+          "target": "estoy de acuerdo",
+          "known": "I agree",
+          "new": true,
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "de acuerdo",
+              "in agreement"
+            ]
+          ]
+        },
+        {
+          "id": "S0083L02",
+          "type": "M",
+          "target": "con lo que dijiste",
+          "known": "with what you said",
+          "new": true,
+          "components": [
+            [
+              "con",
+              "with"
+            ],
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "dijiste",
+              "you said"
+            ]
+          ]
+        },
+        {
+          "id": "S0083L03",
+          "type": "M",
+          "target": "sobre tu amigo",
+          "known": "about your friend",
+          "new": true,
+          "components": [
+            [
+              "sobre",
+              "about"
+            ],
+            [
+              "tu",
+              "your"
+            ],
+            [
+              "amigo",
+              "friend"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_RELATIVE"
+      ],
+      "cumulative_legos": 231
+    },
+    {
+      "seed_id": "S0084",
+      "seed_pair": [
+        "No estoy de acuerdo con lo que dijo sobre mi amigo.",
+        "I don't agree with what he said about my friend."
+      ],
+      "legos": [
+        {
+          "id": "S0084L01",
+          "type": "M",
+          "target": "no estoy de acuerdo",
+          "known": "I don't agree",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estoy de acuerdo",
+              "I agree"
+            ]
+          ]
+        },
+        {
+          "id": "S0084L02",
+          "type": "M",
+          "target": "con lo que dijo",
+          "known": "with what he said",
+          "new": true,
+          "components": [
+            [
+              "con",
+              "with"
+            ],
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "dijo",
+              "he said"
+            ]
+          ]
+        },
+        {
+          "id": "S0084L03",
+          "type": "M",
+          "target": "sobre mi amigo",
+          "known": "about my friend",
+          "new": true,
+          "components": [
+            [
+              "sobre",
+              "about"
+            ],
+            [
+              "mi",
+              "my"
+            ],
+            [
+              "amigo",
+              "friend"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_RELATIVE"
+      ],
+      "cumulative_legos": 234
+    },
+    {
+      "seed_id": "S0085",
+      "seed_pair": [
+        "No conozco a esas personas.",
+        "I don't know those people."
+      ],
+      "legos": [
+        {
+          "id": "S0085L01",
+          "type": "M",
+          "target": "no conozco",
+          "known": "I don't know",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "conozco",
+              "I know"
+            ]
+          ]
+        },
+        {
+          "id": "S0085L02",
+          "type": "M",
+          "target": "a esas personas",
+          "known": "those people",
+          "new": true,
+          "components": [
+            [
+              "a",
+              "to"
+            ],
+            [
+              "esas",
+              "those"
+            ],
+            [
+              "personas",
+              "people"
+            ]
+          ]
+        }
+      ],
+      "patterns": [],
+      "cumulative_legos": 236
+    },
+    {
+      "seed_id": "S0086",
+      "seed_pair": [
+        "No fue posible, desafortunadamente.",
+        "It wasn't possible, unfortunately."
+      ],
+      "legos": [
+        {
+          "id": "S0086L01",
+          "type": "M",
+          "target": "no fue posible",
+          "known": "it wasn't possible",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "fue",
+              "it was"
+            ],
+            [
+              "posible",
+              "possible"
+            ]
+          ]
+        },
+        {
+          "id": "S0086L02",
+          "type": "A",
+          "target": "desafortunadamente",
+          "known": "unfortunately",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P_NEW_IMPERSONAL"
+      ],
+      "cumulative_legos": 238
+    },
+    {
+      "seed_id": "S0087",
+      "seed_pair": [
+        "Son personas que no conozco.",
+        "They are people I don't know."
+      ],
+      "legos": [
+        {
+          "id": "S0087L01",
+          "type": "M",
+          "target": "son personas",
+          "known": "they are people",
+          "new": true,
+          "components": [
+            [
+              "son",
+              "they are"
+            ],
+            [
+              "personas",
+              "people"
+            ]
+          ]
+        },
+        {
+          "id": "S0087L02",
+          "type": "M",
+          "target": "que no conozco",
+          "known": "that I don't know",
+          "new": true,
+          "components": [
+            [
+              "que",
+              "that"
+            ],
+            [
+              "no conozco",
+              "I don't know"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_RELATIVE"
+      ],
+      "cumulative_legos": 240
+    },
+    {
+      "seed_id": "S0088",
+      "seed_pair": [
+        "No estoy preparado para hablar con personas que no conozco todavía.",
+        "I'm not ready to talk to people I don't know yet."
+      ],
+      "legos": [
+        {
+          "id": "S0088L01",
+          "type": "M",
+          "target": "no estoy preparado",
+          "known": "I'm not ready",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "preparado",
+              "ready"
+            ]
+          ]
+        },
+        {
+          "id": "S0088L02",
+          "type": "M",
+          "target": "para hablar",
+          "known": "to talk",
+          "new": true,
+          "components": [
+            [
+              "para",
+              "to/for"
+            ],
+            [
+              "hablar",
+              "to talk"
+            ]
+          ]
+        },
+        {
+          "id": "S0088L03",
+          "type": "M",
+          "target": "con personas que no conozco",
+          "known": "to people I don't know",
+          "new": true,
+          "components": [
+            [
+              "con",
+              "with"
+            ],
+            [
+              "personas",
+              "people"
+            ],
+            [
+              "que",
+              "that"
+            ],
+            [
+              "no conozco",
+              "I don't know"
+            ]
+          ]
+        },
+        {
+          "id": "S0088L04",
+          "type": "A",
+          "target": "todavía",
+          "known": "yet",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P_NEW_RELATIVE"
+      ],
+      "cumulative_legos": 244
+    },
+    {
+      "seed_id": "S0089",
+      "seed_pair": [
+        "Pienso que he hecho mucho en un breve tiempo.",
+        "I think that I've done a lot in a short time."
+      ],
+      "legos": [
+        {
+          "id": "S0047L01",
+          "type": "M",
+          "target": "pienso que",
+          "known": "I think that",
+          "ref": "S0047",
+          "components": [
+            [
+              "pienso",
+              "I think"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ]
+        },
+        {
+          "id": "S0089L01",
+          "type": "M",
+          "target": "he hecho",
+          "known": "I've done",
+          "new": true,
+          "components": [
+            [
+              "he",
+              "I have"
+            ],
+            [
+              "hecho",
+              "done"
+            ]
+          ]
+        },
+        {
+          "id": "S0089L02",
+          "type": "A",
+          "target": "mucho",
+          "known": "a lot",
+          "new": true
+        },
+        {
+          "id": "S0089L03",
+          "type": "M",
+          "target": "en un breve tiempo",
+          "known": "in a short time",
+          "new": true,
+          "components": [
+            [
+              "en",
+              "in"
+            ],
+            [
+              "un",
+              "a"
+            ],
+            [
+              "breve",
+              "short"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_PERFECT"
+      ],
+      "cumulative_legos": 247
+    },
+    {
+      "seed_id": "S0090",
+      "seed_pair": [
+        "Si puedes hablar más lentamente, eso sería excelente.",
+        "If you can speak more slowly that would be great."
+      ],
+      "legos": [
+        {
+          "id": "S0010L02",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "ref": "S0010"
+        },
+        {
+          "id": "S0090L01",
+          "type": "M",
+          "target": "puedes hablar",
+          "known": "you can speak",
+          "new": true,
+          "components": [
+            [
+              "puedes",
+              "you can"
+            ],
+            [
+              "hablar",
+              "to speak"
+            ]
+          ]
+        },
+        {
+          "id": "S0090L02",
+          "type": "M",
+          "target": "más lentamente",
+          "known": "more slowly",
+          "new": true,
+          "components": [
+            [
+              "más",
+              "more"
+            ],
+            [
+              "lentamente",
+              "slowly"
+            ]
+          ]
+        },
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "ref": "S0061"
+        },
+        {
+          "id": "S0090L04",
+          "type": "M",
+          "target": "sería excelente",
+          "known": "would be great",
+          "new": true,
+          "components": [
+            [
+              "sería",
+              "would be"
+            ],
+            [
+              "excelente",
+              "great/excellent"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P10",
+        "P_NEW_CONDITIONAL"
+      ],
+      "cumulative_legos": 250
+    },
+    {
+      "seed_id": "S0091",
+      "seed_pair": [
+        "Es difícil pensar lo suficientemente rápido para responder a tiempo.",
+        "It's difficult to think quickly enough to answer in time."
+      ],
+      "legos": [
+        {
+          "id": "S0091L01",
+          "type": "M",
+          "target": "es difícil",
+          "known": "it's difficult",
+          "new": true,
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "difícil",
+              "difficult"
+            ]
+          ]
+        },
+        {
+          "id": "S0037L02",
+          "type": "A",
+          "target": "pensar",
+          "known": "to think",
+          "ref": "S0037"
+        },
+        {
+          "id": "S0091L03",
+          "type": "M",
+          "target": "lo suficientemente rápido",
+          "known": "quickly enough",
+          "new": true,
+          "components": [
+            [
+              "lo",
+              "the"
+            ],
+            [
+              "suficientemente",
+              "sufficiently"
+            ],
+            [
+              "rápido",
+              "quickly"
+            ]
+          ]
+        },
+        {
+          "id": "S0027L04",
+          "type": "M",
+          "target": "para responder",
+          "known": "to answer",
+          "components": [
+            [
+              "para",
+              "to/for"
+            ],
+            [
+              "responder",
+              "to answer"
+            ]
+          ],
+          "ref": "S0027"
+        },
+        {
+          "id": "S0091L05",
+          "type": "M",
+          "target": "a tiempo",
+          "known": "in time",
+          "new": true,
+          "components": [
+            [
+              "a",
+              "in/on"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_IMPERSONAL"
+      ],
+      "cumulative_legos": 253
+    },
+    {
+      "seed_id": "S0092",
+      "seed_pair": [
+        "Me gustaría continuar haciendo esto por un tiempo.",
+        "I'd like to keep on doing this for a while."
+      ],
+      "legos": [
+        {
+          "id": "S0011L01",
+          "type": "M",
+          "target": "me gustaría",
+          "known": "I'd like",
+          "ref": "S0011",
+          "components": [
+            [
+              "me",
+              "me"
+            ],
+            [
+              "gustaría",
+              "would like"
+            ]
+          ]
+        },
+        {
+          "id": "S0092L01",
+          "type": "M",
+          "target": "continuar haciendo",
+          "known": "to keep on doing",
+          "new": true,
+          "components": [
+            [
+              "continuar",
+              "to continue"
+            ],
+            [
+              "haciendo",
+              "doing"
+            ]
+          ]
+        },
+        {
+          "id": "S0092L02",
+          "type": "A",
+          "target": "esto",
+          "known": "this",
+          "new": true
+        },
+        {
+          "id": "S0092L03",
+          "type": "M",
+          "target": "por un tiempo",
+          "known": "for a while",
+          "new": true,
+          "components": [
+            [
+              "por",
+              "for"
+            ],
+            [
+              "un",
+              "a"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P04"
+      ],
+      "cumulative_legos": 256
+    },
+    {
+      "seed_id": "S0093",
+      "seed_pair": [
+        "Es hora de ir ahora.",
+        "It's time to go now."
+      ],
+      "legos": [
+        {
+          "id": "S0093L01",
+          "type": "M",
+          "target": "es hora de",
+          "known": "it's time to",
+          "new": true,
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "hora",
+              "time"
+            ],
+            [
+              "de",
+              "to/of"
+            ]
+          ]
+        },
+        {
+          "id": "S0093L02",
+          "type": "A",
+          "target": "ir",
+          "known": "to go",
+          "new": true
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "target": "ahora",
+          "known": "now",
+          "ref": "S0001"
+        }
+      ],
+      "patterns": [
+        "P_NEW_IMPERSONAL"
+      ],
+      "cumulative_legos": 258
+    },
+    {
+      "seed_id": "S0094",
+      "seed_pair": [
+        "Esta es la única manera en que funcionará.",
+        "This is the only way it will work."
+      ],
+      "legos": [
+        {
+          "id": "S0094L01",
+          "type": "M",
+          "target": "esta es",
+          "known": "this is",
+          "new": true,
+          "components": [
+            [
+              "esta",
+              "this"
+            ],
+            [
+              "es",
+              "is"
+            ]
+          ]
+        },
+        {
+          "id": "S0094L02",
+          "type": "M",
+          "target": "la única manera",
+          "known": "the only way",
+          "new": true,
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "única",
+              "only"
+            ],
+            [
+              "manera",
+              "way"
+            ]
+          ]
+        },
+        {
+          "id": "S0094L03",
+          "type": "M",
+          "target": "en que funcionará",
+          "known": "it will work",
+          "new": true,
+          "components": [
+            [
+              "en que",
+              "in which"
+            ],
+            [
+              "funcionará",
+              "it will work"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_RELATIVE",
+        "P_NEW_FUTURE"
+      ],
+      "cumulative_legos": 261
+    },
+    {
+      "seed_id": "S0095",
+      "seed_pair": [
+        "¿Estás preparado para ir a casa en el próximo autobús?",
+        "Are you ready to go home on the next bus?"
+      ],
+      "legos": [
+        {
+          "id": "S0095L01",
+          "type": "M",
+          "target": "estás preparado",
+          "known": "you are ready",
+          "new": true,
+          "components": [
+            [
+              "estás",
+              "you are"
+            ],
+            [
+              "preparado",
+              "ready"
+            ]
+          ]
+        },
+        {
+          "id": "S0026L06",
+          "type": "M",
+          "target": "para ir",
+          "known": "to go",
+          "components": [
+            [
+              "para",
+              "to/for"
+            ],
+            [
+              "ir",
+              "to go"
+            ]
+          ],
+          "ref": "S0026"
+        },
+        {
+          "id": "S0095L03",
+          "type": "M",
+          "target": "a casa",
+          "known": "home",
+          "new": true,
+          "components": [
+            [
+              "a",
+              "to"
+            ],
+            [
+              "casa",
+              "home"
+            ]
+          ]
+        },
+        {
+          "id": "S0095L04",
+          "type": "M",
+          "target": "en el próximo autobús",
+          "known": "on the next bus",
+          "new": true,
+          "components": [
+            [
+              "en",
+              "on"
+            ],
+            [
+              "el",
+              "the"
+            ],
+            [
+              "próximo",
+              "next"
+            ],
+            [
+              "autobús",
+              "bus"
+            ]
+          ]
+        }
+      ],
+      "patterns": [],
+      "cumulative_legos": 264
+    },
+    {
+      "seed_id": "S0096",
+      "seed_pair": [
+        "No, no estoy preparado todavía, necesito un poco más de tiempo.",
+        "No I'm not ready yet, I need a little more time."
+      ],
+      "legos": [
+        {
+          "id": "S0096L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0088L01",
+          "type": "M",
+          "target": "no estoy preparado",
+          "known": "I'm not ready",
+          "ref": "S0088",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "preparado",
+              "ready"
+            ]
+          ]
+        },
+        {
+          "id": "S0088L04",
+          "type": "A",
+          "target": "todavía",
+          "known": "yet",
+          "ref": "S0088"
+        },
+        {
+          "id": "S0044L02",
+          "type": "A",
+          "target": "necesito",
+          "known": "I need",
+          "ref": "S0044"
+        },
+        {
+          "id": "S0054L03",
+          "type": "M",
+          "target": "un poco más de tiempo",
+          "known": "a little more time",
+          "ref": "S0054",
+          "components": [
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "más",
+              "more"
+            ],
+            [
+              "de",
+              "of"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        }
+      ],
+      "patterns": [],
+      "cumulative_legos": 265
+    },
+    {
+      "seed_id": "S0097",
+      "seed_pair": [
+        "Sí, estoy preparado para ir tan pronto como quieras.",
+        "Yes I'm ready to go as soon as you want."
+      ],
+      "legos": [
+        {
+          "id": "S0097L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0097L02",
+          "type": "M",
+          "target": "estoy preparado",
+          "known": "I'm ready",
+          "new": true,
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "preparado",
+              "ready"
+            ]
+          ]
+        },
+        {
+          "id": "S0026L06",
+          "type": "M",
+          "target": "para ir",
+          "known": "to go",
+          "ref": "S0026",
+          "components": [
+            [
+              "para",
+              "to/for"
+            ],
+            [
+              "ir",
+              "to go"
+            ]
+          ]
+        },
+        {
+          "id": "S0097L03",
+          "type": "M",
+          "target": "tan pronto como quieras",
+          "known": "as soon as you want",
+          "new": true,
+          "components": [
+            [
+              "tan",
+              "as"
+            ],
+            [
+              "pronto",
+              "soon"
+            ],
+            [
+              "como",
+              "as"
+            ],
+            [
+              "quieras",
+              "you want"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P10"
+      ],
+      "cumulative_legos": 268
+    },
+    {
+      "seed_id": "S0098",
+      "seed_pair": [
+        "Debería considerar jugar otra cosa.",
+        "I should consider playing something else."
+      ],
+      "legos": [
+        {
+          "id": "S0098L01",
+          "type": "A",
+          "target": "debería",
+          "known": "I should",
+          "new": true
+        },
+        {
+          "id": "S0098L02",
+          "type": "A",
+          "target": "considerar",
+          "known": "to consider",
+          "new": true
+        },
+        {
+          "id": "S0098L03",
+          "type": "A",
+          "target": "jugar",
+          "known": "to play",
+          "new": true
+        },
+        {
+          "id": "S0098L04",
+          "type": "M",
+          "target": "otra cosa",
+          "known": "something else",
+          "new": true,
+          "components": [
+            [
+              "otra",
+              "another"
+            ],
+            [
+              "cosa",
+              "thing"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_MODAL"
+      ],
+      "cumulative_legos": 272
+    },
+    {
+      "seed_id": "S0099",
+      "seed_pair": [
+        "Deberías preguntarte por qué no está trabajando",
+        "You should ask yourself why it's not working."
+      ],
+      "legos": [
+        {
+          "id": "S0099L01",
+          "type": "A",
+          "target": "deberías",
+          "known": "you should",
+          "new": true
+        },
+        {
+          "id": "S0030L02",
+          "type": "A",
+          "target": "preguntarte",
+          "known": "to ask yourself",
+          "ref": "S0030"
+        },
+        {
+          "id": "S0021L01",
+          "type": "M",
+          "target": "por qué",
+          "known": "why",
+          "ref": "S0021",
+          "components": [
+            [
+              "por",
+              "for/by"
+            ],
+            [
+              "qué",
+              "what"
+            ]
+          ]
+        },
+        {
+          "id": "S0099L03",
+          "type": "M",
+          "target": "no está trabajando",
+          "known": "it's not working",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "está",
+              "it is"
+            ],
+            [
+              "trabajando",
+              "working"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_MODAL",
+        "P_NEW_REFLEXIVE",
+        "P02"
+      ],
+      "cumulative_legos": 274
+    },
+    {
+      "seed_id": "S0100",
+      "seed_pair": [
+        "No deberías preocuparte por hacer algo similar.",
+        "You shouldn't worry about doing something similar."
+      ],
+      "legos": [
+        {
+          "id": "S0100L01",
+          "type": "M",
+          "target": "no deberías",
+          "known": "you shouldn't",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "deberías",
+              "you should"
+            ]
+          ]
+        },
+        {
+          "id": "S0100L02",
+          "type": "A",
+          "target": "preocuparte",
+          "known": "to worry",
+          "new": true
+        },
+        {
+          "id": "S0100L03",
+          "type": "M",
+          "target": "por hacer",
+          "known": "about doing",
+          "new": true,
+          "components": [
+            [
+              "por",
+              "about"
+            ],
+            [
+              "hacer",
+              "doing"
+            ]
+          ]
+        },
+        {
+          "id": "S0100L04",
+          "type": "M",
+          "target": "algo similar",
+          "known": "something similar",
+          "new": true,
+          "components": [
+            [
+              "algo",
+              "something"
+            ],
+            [
+              "similar",
+              "similar"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P_NEW_MODAL",
+        "P_NEW_REFLEXIVE"
+      ],
+      "cumulative_legos": 278
+    }
+  ]
+}

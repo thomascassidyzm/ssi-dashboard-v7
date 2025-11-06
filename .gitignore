@@ -34,9 +34,7 @@ logs/
 # Server logs
 server.log
 
-# Local VFS directory (backend server only, not deployed)
-# Public courses are in public/vfs/courses/ (tracked in git)
-vfs/
+# Local VFS directory removed - all courses now in public/vfs/courses/
 
 # Temporary development files (don't commit these)
 temp_*
