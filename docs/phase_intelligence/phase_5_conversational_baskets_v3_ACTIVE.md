@@ -334,6 +334,85 @@ This confirms the full seed is achievable with taught LEGOs only.
 
 ---
 
+## KNOWN Language Grammar Rules
+
+### Critical: Gerund-Requiring Verbs in English
+
+**Some English verbs MUST be followed by gerund (-ing), NOT infinitive (to + verb):**
+
+**Gerund-only verbs:**
+- **enjoy** → "I enjoy speaking" ✅ NOT "I enjoy to speak" ❌
+- **finish** → "I finished speaking" ✅ NOT "I finished to speak" ❌
+- **keep** → "I keep speaking" ✅ NOT "I keep to speak" ❌
+- **mind** → "I don't mind speaking" ✅ NOT "I don't mind to speak" ❌
+- **avoid** → "I avoid speaking" ✅ NOT "I avoid to speak" ❌
+- **consider** → "I consider speaking" ✅ NOT "I consider to speak" ❌
+
+**⚠️ MEANING-CHANGING VERBS (both forms valid but DIFFERENT meanings):**
+- **stop + to + infinitive** = stop (current action) IN ORDER TO do something else
+  - "I stopped to smoke" = I paused what I was doing in order to smoke ✅
+- **stop + gerund** = cease the activity
+  - "I stopped smoking" = I quit the habit of smoking ✅
+- **Other meaning-changers**: remember, forget, regret, try
+  - "I remembered to call" (I didn't forget) vs "I remember calling" (I recall doing it)
+  - "I forgot to call" (I didn't do it) vs "I forgot calling" (I don't recall doing it)
+  - "I tried to open it" (attempted) vs "I tried opening it" (experimented with method)
+
+**Infinitive-or-gerund verbs (both OK):**
+- **like** → "I like speaking" ✅ OR "I like to speak" ✅
+- **love** → "I love speaking" ✅ OR "I love to speak" ✅
+- **hate** → "I hate speaking" ✅ OR "I hate to speak" ✅
+- **prefer** → "I prefer speaking" ✅ OR "I prefer to speak" ✅
+- **start** → "I start speaking" ✅ OR "I start to speak" ✅
+- **begin** → "I begin speaking" ✅ OR "I begin to speak" ✅
+
+**Basket Generation Rule:**
+
+When generating English phrases with gerund-only verbs:
+
+1. **If TARGET uses infinitive** (Spanish: "disfruto hablar")
+2. **Convert KNOWN to gerund** (English: "I enjoy speaking" NOT "I enjoy to speak")
+
+**Implementation:**
+
+```javascript
+// Pseudo-code for basket generation
+if (englishPhrase.includes("I enjoy") && followedByInfinitive) {
+  // Convert: "I enjoy to speak" → "I enjoy speaking"
+  englishPhrase = convertInfinitiveToGerund(englishPhrase, "enjoy");
+}
+```
+
+**Common conversions:**
+- "to speak" → "speaking"
+- "to do" → "doing"
+- "to learn" → "learning"
+- "to write" → "writing"
+- "to make" → "making"
+
+**QA Check:**
+
+After generating baskets, search for these patterns:
+```bash
+# Run automated QA check
+./scripts/qa_check_gerunds.sh
+
+# Manual checks (gerund-only verbs)
+grep "enjoy to" baskets/*.json    # Should return 0 matches
+grep "finish to" baskets/*.json   # Should return 0 matches (unless "trying to finish")
+grep "keep to" baskets/*.json     # Should return 0 matches
+grep "avoid to" baskets/*.json    # Should return 0 matches
+grep "consider to" baskets/*.json # Should return 0 matches
+grep "mind to" baskets/*.json     # Should return 0 matches
+
+# Note: "stop to" and "stopped to" are VALID (meaning: pause in order to)
+# Note: "stop [verb-ing]" and "stopped [verb-ing]" are ALSO VALID (meaning: cease activity)
+```
+
+**Note**: This is a KNOWN language grammar rule, not a TARGET language issue. The Spanish "disfruto hablar" is perfectly correct - the fix is purely on the English side.
+
+---
+
 ## Key Differences from v2.0
 
 ### ❌ v2.0 Error: Conjugations Allowed
