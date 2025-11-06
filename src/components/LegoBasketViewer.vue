@@ -2,6 +2,15 @@
   <div class="lego-basket-viewer">
     <!-- Header -->
     <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <!-- Back to Dashboard -->
+      <router-link
+        to="/"
+        class="inline-flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition-colors mb-4"
+      >
+        <span class="text-xl">←</span>
+        <span class="text-sm">Back to Dashboard</span>
+      </router-link>
+
       <h2 class="text-2xl font-bold text-emerald-400 mb-4">LEGO Practice Basket Viewer</h2>
 
       <!-- Course Selector -->
@@ -25,7 +34,10 @@
 
       <!-- Course Context Header -->
       <div v-if="currentCourse" class="mb-4 pb-4 border-b border-slate-700">
-        <h2 class="text-xl font-semibold text-slate-200">{{ currentCourse.target_language }} for {{ currentCourse.source_language }}</h2>
+        <h2 class="text-xl font-semibold text-slate-200">
+          {{ currentCourse.target_language }} for {{ currentCourse.source_language }}
+          <span class="text-slate-500 text-sm ml-2">({{ currentCourse.course_code }})</span>
+        </h2>
       </div>
 
       <!-- Batch Navigation -->

@@ -54,7 +54,7 @@ Examples:
 ```
 "The Spanish for "I'm trying" as in "I'm trying to learn" is "Estoy intentando" - where "Estoy" means "I am" and "intentando" means "trying"."
 
-"The Spanish for "as often as possible" as in "how to speak as often as possible" is "lo más a menudo posible" - where "lo más" means "as", "a menudo" means "often", and "posible" means "possible"."
+"The Spanish for "as often as possible" as in "how to speak as often as possible" is "lo más frecuentemente posible" - where "lo más" means "the most", "frecuentemente" means "often", and "posible" means "possible"."
 ```
 
 ---
@@ -104,23 +104,7 @@ Component format: `[[targetPart, knownPart], ...]`
 
 ## Implementation Rules
 
-### 1. **Grammar for Component Lists**
-- 1 component: `where X`
-- 2 components: `where X and Y`
-- 3+ components: `where X, Y, and Z`
-
-### 2. **FEEDER Recognition**
-When a component has type "F", add "(which you learned earlier)" to indicate it's a callback to previous learning.
-
-### 3. **Repetition Format**
-End BASE/FEEDER presentations with the target word repeated:
-```
-"...is \"Voglio\", Voglio."
-```
-
-This helps learners hear the pronunciation clearly.
-
-### 4. **Seed Context Requirement**
+### **Seed Context Requirement**
 ALWAYS include `"as in \"{known_seed}\""` to provide context. Learners need to know which meaning/usage is being taught.
 
 ---
@@ -129,9 +113,7 @@ ALWAYS include `"as in \"{known_seed}\""` to provide context. Learners need to k
 
 ✅ Every LEGO ID has exactly one presentation
 ✅ All BASE LEGOs (type B) use simple format
-✅ All FEEDER LEGOs (type F) use simple format
 ✅ All COMPOSITE LEGOs (type C) include component breakdown
-✅ FEEDER components include "(which you learned earlier)"
 ✅ All presentations include seed context ("as in...")
 ✅ Component grammar is correct (and/commas)
 ✅ Target language name matches course metadata
@@ -179,7 +161,7 @@ const LANGUAGE_NAMES = {
 
 **Test Course**: `ita_for_eng_10seeds`
 - 63 total introductions generated
-- 54 BASE/FEEDER LEGOs (simple format)
+- 54 BASE LEGOs (simple format)
 - 9 COMPOSITE LEGOs (component breakdown)
 
 ---
@@ -187,7 +169,7 @@ const LANGUAGE_NAMES = {
 ## Version History
 
 ### v2.0 (2025-10-28) 🔒 **LOCKED**
-- **Simplified to two types**: BASE and COMPOSITE (removed FEEDER type)
+- **Simplified to two types**: BASE and COMPOSITE (ATOMIC and MOLECULAR)
 - **Component wording**: Changed "is" to "means" for clarity
 - **Literal componentization**: Reads literal translations from Phase 3 v3.4
 - **Format simplified**: Components are `[[target, known], ...]` (no feeder IDs)
@@ -199,10 +181,9 @@ const LANGUAGE_NAMES = {
 
 ### v1.0 (2025-10-23)
 - Initial implementation
-- Three presentation types (BASE, FEEDER, COMPOSITE)
+- Three presentation types (BASE, COMPOSITE)
 - Seed context requirement established
 - Component grammar rules defined
-- FEEDER recognition with "learned earlier" text
 
 ---
 

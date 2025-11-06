@@ -14,14 +14,49 @@ Everything below is just ways to check this rule.
 
 ---
 
+## 🧭 THE KNOWN-CENTRIC PRINCIPLE
+
+**START FROM THE KNOWN LANGUAGE** - Always begin by breaking down the KNOWN (learner's native language) into semantic units that make sense to THEM.
+
+### Why This Matters:
+The learner thinks in their native language. They hear "I want to speak with you" as a coherent thought unit. Our LEGOs must respect how THEIR brain chunks meaning.
+
+### Core Rules:
+
+1. **All LEGOs must be valid phrases in KNOWN language**
+   - ✅ "I want" (makes sense)
+   - ✅ "to speak" (makes sense)
+   - ✅ "to speak with you" (makes sense)
+   - ❌ "want speak" (nonsense in English)
+
+2. **Provide BOTH atomic and molecular LEGOs**
+   - **Atomic**: Maximum flexibility (我 = I, 想 = want, 说 = to speak)
+   - **Molecular**: Show TARGET patterns (我想 = I want, 和你说 = to speak with you)
+   - Overlap is GOOD - multiple ways to tile teaches different aspects
+
+3. **Seeds must TILE (but don't need to use ALL LEGOs)**
+   - Multiple valid reconstructions using different LEGO combinations
+   - Example: 我 + 想 + 和你说 OR 我想 + 和你说 (both valid!)
+
+---
+
 ## 📋 HOW TO DECOMPOSE (3 Steps)
 
-### STEP 1: TILE
-Break seed into pieces that reconstruct it perfectly.
+### STEP 0: START FROM KNOWN SEMANTICS
+Break down the KNOWN language first - how does a native speaker chunk this meaning?
 
 ```
-Seed: "Quiero hablar español contigo ahora"
-Pieces: Quiero + hablar + español + contigo + ahora
+KNOWN: "I want to speak Spanish with you now"
+Natural chunks: "I want" | "to speak" | "Spanish" | "with you" | "now"
+```
+
+### STEP 1: MAP TO TARGET & TILE
+Map each KNOWN chunk to TARGET, then verify seed reconstructs perfectly.
+
+```
+TARGET Seed: "Quiero hablar español contigo ahora"
+Mapping: quiero (I want) + hablar (to speak) + español (Spanish) + contigo (with you) + ahora (now)
+Tiles: ✅ YES
 ```
 
 ### STEP 2: TEST (The Uncertainty Checklist)
@@ -307,10 +342,27 @@ Spanish uses grammatical particles that create constructions.
 
 ### What about verb form variations?
 
-**Normalize to ONE canonical form per verb:**
+**CRITICAL CORRECTION - Multiple KNOWN → Same TARGET is FINE:**
+
+**OLD THINKING (WRONG):**
 - "hablar" → ALWAYS "to speak" (not "speaking", "talking", "speak")
-- Even if English context wants different form
-- Prevents uncertainty about which form to use
+
+**NEW THINKING (CORRECT):**
+- "to speak" → hablar ✓
+- "speak" → hablar ✓
+- "speaking" → hablar ✓
+- "talk" → hablar ✓
+
+**WHY THIS IS OK:**
+- LUT tests KNOWN → TARGET direction (what learner HEARS → what they PRODUCE)
+- Multiple English prompts → same Chinese/Spanish = NO COLLISION
+- Learner hears "speak" → produces hablar (certain)
+- Learner hears "to speak" → produces hablar (certain)
+- No uncertainty = PASSES LUT ✅
+
+**The ONLY problem is reverse collisions:**
+❌ BAD: "to speak" → hablar AND "to speak" → a hablar (COLLISION!)
+❌ BAD: "something" → 什么 AND "what" → 什么 (COLLISION!)
 
 ### Multi-word chunks: How big?
 
@@ -322,6 +374,166 @@ Balance:
 - Just right: Passes test + appears in multiple seeds
 
 **Heuristic:** Minimal sufficient context (smallest chunk that makes KNOWN → TARGET deterministic)
+
+---
+
+## Appendix C2: Common LUT Failures & Fixes (From Chinese S0001-S0020 Analysis)
+
+### Failure Pattern 1: Subject Mismatch in Aspect Markers
+
+**WRONG:**
+```json
+{"target": "在试着", "known": "I'm trying to"}
+```
+Problem: KNOWN includes "I" but TARGET doesn't include 我
+
+**FIX:**
+```json
+{"target": "在试着", "known": "am trying to"},
+{"target": "我在试着", "known": "I'm trying to"}
+```
+Always add the molecular subject+aspectMarker LEGO!
+
+---
+
+### Failure Pattern 2: Question Words with Dual Meanings
+
+**COLLISION:**
+```
+"something" → 什么 (S0004)
+"what" → 什么 (will be taught later)
+```
+
+Learner hears "something" → produces 什么 ✓
+Later learns "what" → 什么
+Now learner uncertain: "something" → 什么 or something else?
+
+**FIX OPTIONS:**
+
+Option A - Wrap the ambiguous one:
+```json
+{"target": "什么东西", "known": "something"},
+{"target": "什么", "known": "what"}
+```
+
+Option B - Always wrap the question word:
+```json
+{"target": "说什么", "known": "say something"},
+{"target": "什么", "known": "what"}
+```
+
+**RECOMMENDATION:** Option B - wrap the word when it's NOT being used as question word
+
+---
+
+### Failure Pattern 3: Grammatical Particle Standalone
+
+**WRONG:**
+```json
+{"target": "说得", "known": "speak"}
+```
+Already taught: 说 = "to speak"
+Collision: Learner hears "speak" → 说 or 说得?
+
+**FIX:**
+```json
+{"target": "说得很好", "known": "speak very well"}
+```
+Keep grammatical particles (得) bonded to their complements, NEVER standalone.
+
+**GENERAL RULE:**
+- Aspect markers (着, 了, 过): Always bonded
+- Manner particle (得): Always bonded to complement
+- Result complement markers: Always bonded
+
+---
+
+### Failure Pattern 4: Missing Molecular Subject+Verb Combos
+
+**INCOMPLETE:**
+```
+你 = "you" (atomic)
+想 = "want" (atomic)
+[missing 你想 = "you want" molecular]
+```
+
+**PROBLEM:**
+- Learner practices: "you" + "want" separately
+- Never practices "you want" as a unit
+- Harder to produce fluently
+
+**FIX - Add molecular:**
+```json
+{"target": "你", "known": "you"},
+{"target": "想", "known": "want"},
+{"target": "你想", "known": "you want", "components": [["你", "you"], ["想", "want"]]}
+```
+
+**RULE:** For every pronoun + high-frequency verb combination that appears in seeds, add molecular LEGO.
+
+Common combos to always add:
+- 我想 / 你想 / 他想 / 她想 / 我们想 (pronoun + want)
+- 我要 / 你要 (pronoun + going to)
+- 我不想 / 你不想 (pronoun + don't want)
+
+---
+
+### Failure Pattern 5: Verb+Object Combos Missing
+
+**INCOMPLETE:**
+```
+说 = "speak" (atomic)
+中文 = "Chinese" (atomic)
+[missing 说中文 = "speak Chinese" molecular]
+```
+
+**WHY ADD IT:**
+- "speak Chinese" is a natural English semantic unit
+- Appears in multiple seeds
+- Learner benefit from practicing as a chunk
+
+**FIX:**
+```json
+{"target": "说", "known": "to speak"},
+{"target": "中文", "known": "Chinese"},
+{"target": "说中文", "known": "speak Chinese", "components": [["说", "speak"], ["中文", "Chinese"]]}
+```
+
+**RULE:** If verb+object appears in 2+ seeds, add as molecular LEGO.
+
+---
+
+### Failure Pattern 6: Possessive Incomplete Tiling
+
+**INCOMPLETE:**
+```
+他 = "he" (atomic)
+的 = possessive marker
+名字 = "name" (atomic)
+[has 他的 = "his" molecular] ✓
+[has 他的名字 = "his name" molecular] ✓
+```
+
+**ACTUALLY THIS IS GOOD!** Shows complete tiling with multiple reconstruction options.
+
+**RULE:** Possessive constructions need THREE levels:
+1. Atomic: pronoun, marker, noun
+2. Molecular L1: pronoun+marker (他的 = "his")
+3. Molecular L2: pronoun+marker+noun (他的名字 = "his name")
+
+---
+
+### LUT Checklist for Every Seed:
+
+After extracting LEGOs, check:
+
+1. ✓ Does every aspect marker (在, 了, 着, 过) include its subject molecularly?
+2. ✓ Are question words (什么, 怎么, 为什么) wrapped when NOT used as questions?
+3. ✓ Are grammatical particles (得, 地, 的) NEVER standalone?
+4. ✓ Do all subject+verb combos in the seed have molecular options?
+5. ✓ Do all verb+object combos that appear 2+ times have molecular options?
+6. ✓ Do possessive constructions have 3-level breakdown?
+7. ✓ Are there NO collisions (same KNOWN → different TARGETs)?
 
 ---
 
