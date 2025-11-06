@@ -1,0 +1,164 @@
+{
+  "version": "5.0",
+  "methodology": "Known Language First Mapping",
+  "terminology": "Atomic (A) / Molecular (M)",
+  "course": "spa_for_eng_30seeds",
+  "target_language": "spa",
+  "known_language": "eng",
+  "extracted_date": "2025-01-06",
+  "extraction_notes": "Example extraction demonstrating Phase 3 v5.0 methodology with molecular LEGOs",
+
+  "seeds": [
+    [
+      "S0011",
+      [
+        "Me gustaría poder hablar después de que termines.",
+        "I'd like to be able to speak after you finish."
+      ],
+      [
+        [
+          "S0011L01",
+          "M",
+          "Me gustaría",
+          "I'd like",
+          [
+            ["Me", "me/to me"],
+            ["gustaría", "would please"]
+          ],
+          {
+            "pattern_demonstrated": "P04",
+            "fd_test": "KNOWN: 'I'd like' → TARGET: 'Me gustaría' (deterministic)",
+            "molecular_rationale": "Multi-word unit expressing conditional desire. Cannot be broken down further while maintaining FD mapping.",
+            "notes": "Conditional form of 'gustar' combined with indirect object pronoun. Common in polite requests."
+          }
+        ],
+        [
+          "S0011L02",
+          "A",
+          "poder",
+          "to be able to",
+          null,
+          {
+            "fd_test": "KNOWN: 'to be able to' → TARGET: 'poder' (deterministic)",
+            "notes": "Modal verb expressing ability/possibility. Frequently used with infinitives."
+          }
+        ],
+        [
+          "S0011L03",
+          "A",
+          "hablar",
+          "to speak",
+          null,
+          {
+            "fd_test": "KNOWN: 'to speak' → TARGET: 'hablar' (deterministic)",
+            "notes": "Regular -ar infinitive. Previously introduced LEGO."
+          }
+        ],
+        [
+          "S0011L04",
+          "M",
+          "después de que termines",
+          "after you finish",
+          [
+            ["después de que", "after that"],
+            ["termines", "you finish (subj)"]
+          ],
+          {
+            "pattern_demonstrated": "P10",
+            "fd_test": "KNOWN: 'after you finish' → TARGET: 'después de que termines' (deterministic)",
+            "molecular_rationale": "CRITICAL: 'después de que' alone fails FD test (grammatically incomplete, requires verb clause). Must include conjugated verb to form complete FD unit.",
+            "structure_explanation": "Temporal conjunction 'después de que' + subjunctive verb. The subjunctive is required after this conjunction when referring to future/uncertain actions.",
+            "notes": "This demonstrates the molecular LEGO principle: the entire phrase is indivisible for FD purposes."
+          }
+        ]
+      ]
+    ]
+  ],
+
+  "pattern_summary": {
+    "P04": {
+      "introduced": "S0011",
+      "structure": "Me gustaría + infinitive",
+      "description": "Expressing conditional desires or polite requests",
+      "grammatical_notes": "Uses conditional form of gustar (to please) with indirect object pronoun",
+      "examples": [
+        "Me gustaría poder (I'd like to be able to)",
+        "Me gustaría hablar (I'd like to speak)",
+        "Me gustaría saber (I'd like to know)"
+      ],
+      "instances": ["S0011"],
+      "difficulty": "intermediate",
+      "teaching_notes": "Emphasize the conditional aspect and polite register"
+    },
+    "P10": {
+      "introduced": "S0011",
+      "structure": "después de que + subjunctive",
+      "description": "Expressing temporal relationships with future/uncertain actions",
+      "grammatical_notes": "Temporal conjunction requiring subjunctive mood when action is future or uncertain",
+      "examples": [
+        "después de que termines (after you finish)",
+        "después de que llegues (after you arrive)",
+        "después de que comas (after you eat)"
+      ],
+      "instances": ["S0011"],
+      "difficulty": "advanced",
+      "teaching_notes": "Key subjunctive trigger. Emphasize that 'después de que' alone is grammatically incomplete."
+    }
+  },
+
+  "lego_summary": {
+    "total_legos": 4,
+    "atomic": 2,
+    "molecular": 2,
+    "seeds": 1
+  },
+
+  "extraction_metadata": {
+    "extractor": "Claude (Phase 3 v5.0 methodology)",
+    "date": "2025-01-06",
+    "validation_status": "approved",
+    "quality_checks": {
+      "fd_test_passed": true,
+      "all_words_accounted": true,
+      "molecular_legos_justified": true,
+      "patterns_identified": true
+    },
+    "learnings": [
+      "Molecular LEGO principle: 'después de que' cannot stand alone grammatically",
+      "FD test prevents incomplete constructions from being isolated as LEGOs",
+      "All molecular LEGOs must include componentization showing internal structure",
+      "Pattern instances marked at LEGO level, summarized at course level"
+    ]
+  },
+
+  "comparison_with_v7_7": {
+    "v7_7_structure": {
+      "seed_pair": {
+        "format": "object {target, known}",
+        "types": ["A", "B", "C", "D"],
+        "lego_count": 4,
+        "note": "L03 and L04 were separate: 'después de que' (C) and 'después de que termines' (C)"
+      },
+      "issues": [
+        "'después de que' as standalone LEGO violates FD principle",
+        "No componentization = opaque internal structure",
+        "Patterns as properties not collections",
+        "Grammar-forward approach missed learner perspective"
+      ]
+    },
+    "v5_0_improvements": {
+      "seed_pair": {
+        "format": "array [target, known]",
+        "types": ["A", "M"],
+        "lego_count": 4,
+        "note": "L04 is complete molecular LEGO: 'después de que termines'"
+      },
+      "benefits": [
+        "FD test ensures complete, usable LEGOs",
+        "Componentization reveals structure to learners",
+        "Pattern collections track usage across seeds",
+        "Known Language First ensures learner-friendly mapping"
+      ]
+    }
+  }
+}

@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "node automation_server.cjs"
+    "server": "node automation_server.cjs",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.67.0",
@@ -22,6 +25,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
+    "@vitest/ui": "^4.0.7",
     "autoprefixer": "^10.4.21",
     "body-parser": "^1.20.3",
     "chokidar": "^4.0.3",
@@ -32,6 +36,7 @@
     "node-fetch": "^2.7.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.1",
-    "vite": "^7.1.7"
+    "vite": "^7.1.7",
+    "vitest": "^4.0.7"
   }
 }

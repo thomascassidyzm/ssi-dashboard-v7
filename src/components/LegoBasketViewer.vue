@@ -141,19 +141,60 @@
         class="bg-slate-800 border border-slate-700 rounded-lg p-6"
       >
         <!-- LEGO Header -->
-        <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-700">
-          <div>
-            <div class="text-sm text-slate-400">{{ legoKey }}</div>
-            <div class="text-xl font-bold">
-              <span class="text-slate-300">{{ legoData.lego[0] }}</span>
-              <span class="mx-3 text-slate-600">→</span>
-              <span class="text-emerald-400">{{ legoData.lego[1] }}</span>
+        <div class="mb-4 pb-4 border-b border-slate-700">
+          <div class="flex items-center justify-between">
+            <div class="flex-1">
+              <div class="text-sm text-slate-400">{{ legoKey }}</div>
+              <div class="text-xl font-bold">
+                <span class="text-slate-300">{{ legoData.lego[0] }}</span>
+                <span class="mx-3 text-slate-600">→</span>
+                <span class="text-emerald-400">{{ legoData.lego[1] }}</span>
+              </div>
+            </div>
+            <div class="text-right text-sm">
+              <div class="text-slate-400">
+                Type:
+                <span :class="getLegoType(legoData) === 'M' ? 'text-blue-400 font-bold' : 'text-emerald-400'">
+                  {{ getLegoType(legoData) }}
+                </span>
+                <span v-if="getLegoType(legoData) === 'M'" class="ml-1 text-xs text-blue-300">(Molecular)</span>
+              </div>
+              <div class="text-slate-400">Available LEGOs: <span class="text-slate-300">{{ legoData.available_legos }}</span></div>
+              <div class="text-slate-400">Available Patterns: <span class="text-slate-300">{{ legoData.available_patterns.length }}</span></div>
+              <div v-if="legoData.pattern_demonstrated" class="text-slate-400">
+                Pattern: <span class="text-blue-400">{{ legoData.pattern_demonstrated }}</span>
+              </div>
             </div>
           </div>
-          <div class="text-right text-sm">
-            <div class="text-slate-400">Type: <span class="text-emerald-400">{{ legoData.type }}</span></div>
-            <div class="text-slate-400">Available LEGOs: <span class="text-slate-300">{{ legoData.available_legos }}</span></div>
-            <div class="text-slate-400">Available Patterns: <span class="text-slate-300">{{ legoData.available_patterns.length }}</span></div>
+
+          <!-- Molecular Components (Expandable) -->
+          <div v-if="getLegoType(legoData) === 'M' && getLegoComponentsFromData(legoData).length > 0" class="mt-4">
+            <button
+              @click="toggleMolecularLego(legoKey)"
+              class="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              <span v-if="isMolecularLegoExpanded(legoKey)">▼</span>
+              <span v-else>▶</span>
+              <span>{{ isMolecularLegoExpanded(legoKey) ? 'Hide' : 'Show' }} Components ({{ getLegoComponentsFromData(legoData).length }})</span>
+            </button>
+
+            <div v-if="isMolecularLegoExpanded(legoKey)" class="mt-3 ml-6 space-y-2">
+              <div class="text-xs text-slate-400 uppercase font-semibold mb-2">Molecular Structure:</div>
+              <div
+                v-for="(component, idx) in getLegoComponentsFromData(legoData)"
+                :key="idx"
+                class="flex items-center gap-3 py-2 px-3 bg-slate-700/30 rounded border-l-2 border-blue-500/50"
+              >
+                <div class="text-blue-300 font-mono text-sm">{{ idx + 1 }}.</div>
+                <div class="flex-1">
+                  <div class="text-slate-200 font-medium">{{ component[0] }}</div>
+                </div>
+                <div class="text-slate-600 mx-2">→</div>
+                <div class="flex-1">
+                  <div class="text-emerald-400 text-sm">{{ component[1] }}</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -229,6 +270,7 @@
 
 <script>
 import api from '@/services/api'
+import { isMolecularLego, getLegoComponents } from '@/services/legoFormatAdapter'
 
 export default {
   name: 'LegoBasketViewer',
@@ -241,7 +283,8 @@ export default {
       availableCourses: [],
       selectedCourseCode: '',
       currentCourse: null,
-      courseData: null
+      courseData: null,
+      expandedMolecularLegos: {} // Track which molecular LEGOs are expanded
     }
   },
   computed: {
@@ -318,6 +361,24 @@ export default {
              s.includes(' y ') || s.includes(' porque ') ||
              s.includes(' o ') || s.includes(' cuando ')
     },
+    toggleMolecularLego(legoKey) {
+      this.expandedMolecularLegos[legoKey] = !this.expandedMolecularLegos[legoKey]
+      this.$forceUpdate() // Force Vue to re-render
+    },
+    isMolecularLegoExpanded(legoKey) {
+      return this.expandedMolecularLegos[legoKey] || false
+    },
+    getLegoType(legoData) {
+      // Check if this is a molecular LEGO by checking if it has components
+      if (legoData.components && Array.isArray(legoData.components)) {
+        return 'M'
+      }
+      // Check legacy type field
+      return legoData.type || 'A'
+    },
+    getLegoComponentsFromData(legoData) {
+      return legoData.components || []
+    },
     async loadCourses() {
       try {
         const response = await api.course.list()
@@ -367,6 +428,7 @@ export default {
       this.currentSeed = `S${String(seedNum).padStart(4, '0')}`
       this.loading = true
       this.error = null
+      this.expandedMolecularLegos = {} // Reset expansion state
 
       const seedId = `S${String(seedNum).padStart(4, '0')}`
 
