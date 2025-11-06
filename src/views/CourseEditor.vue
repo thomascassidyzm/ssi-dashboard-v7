@@ -158,7 +158,7 @@
 
               <div v-else class="space-y-6">
                 <div
-                  v-for="breakdown in filteredLegoBreakdowns.slice(0, 20)"
+                  v-for="breakdown in filteredLegoBreakdowns"
                   :key="breakdown.seed_id"
                   class="bg-slate-800 border rounded-lg overflow-hidden"
                   :class="{
@@ -837,9 +837,12 @@ async function loadCourse() {
       target: t.target_phrase || t.target,
       uuid: t.uuid || t.seed_id
     }))
-    legos.value = response.legos || []
-    legoBreakdowns.value = response.lego_breakdowns || []
     baskets.value = response.baskets || []
+
+    // Don't use API data for legos/legoBreakdowns - we'll load directly from VFS below
+    // This ensures we always get the latest data from the files, not from cache
+    legos.value = []
+    legoBreakdowns.value = []
 
     // Load lego_baskets.json from VFS (v7.7+ format)
     try {
@@ -875,6 +878,69 @@ async function loadCourse() {
     } catch (err) {
       console.log('Could not load introductions.json:', err.message)
       introductionsData.value = null
+    }
+
+    // Load lego_pairs.json from VFS (v2 format with nested structure)
+    console.log('🔍 Starting to load lego_pairs.json for course:', courseCode)
+    try {
+      const url = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/vfs/lego_pairs.json`
+      console.log('🔍 Fetching from URL:', url)
+
+      const legoPairsResponse = await fetch(url, {
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
+      })
+
+      console.log('🔍 Response status:', legoPairsResponse.status, legoPairsResponse.ok)
+
+      if (legoPairsResponse.ok) {
+        const legoPairsData = await legoPairsResponse.json()
+        console.log('📦 Loaded lego_pairs.json - seeds count:', legoPairsData.seeds?.length)
+
+        // Parse v2 format: { seeds: [{ seed_id, seed_pair, legos: [...] }] }
+        if (legoPairsData.seeds && Array.isArray(legoPairsData.seeds)) {
+          console.log('🔍 Transforming seeds data...')
+
+          // Transform to legoBreakdowns format for display
+          legoBreakdowns.value = legoPairsData.seeds.map(seed => ({
+            seed_id: seed.seed_id,
+            original_target: seed.seed_pair[0],
+            original_known: seed.seed_pair[1],
+            lego_pairs: seed.legos.map(lego => ({
+              lego_id: lego.id,
+              target_chunk: lego.target,
+              known_chunk: lego.known,
+              lego_type: lego.type === 'M' ? 'COMPOSITE' : 'ATOMIC',
+              componentization: lego.components ?
+                lego.components.map(c => `${c[0]} = ${c[1]}`).join(', ') :
+                null
+            }))
+          }))
+
+          // Also extract flat list of all LEGOs for the count
+          legos.value = legoPairsData.seeds.flatMap(seed =>
+            seed.legos.map(lego => ({
+              id: lego.id,
+              target: lego.target,
+              known: lego.known,
+              type: lego.type,
+              new: lego.new
+            }))
+          )
+
+          console.log(`✅ SUCCESS: Loaded ${legoBreakdowns.value.length} seeds with ${legos.value.length} total LEGOs`)
+          console.log('📊 First 3 seeds:', legoBreakdowns.value.slice(0, 3).map(s => s.seed_id))
+          console.log('📊 Last 3 seeds:', legoBreakdowns.value.slice(-3).map(s => s.seed_id))
+        } else {
+          console.error('❌ ERROR: No seeds array found in lego_pairs.json')
+        }
+      } else {
+        console.error('❌ ERROR: Failed to fetch lego_pairs.json - status:', legoPairsResponse.status)
+      }
+    } catch (err) {
+      console.error('❌ ERROR loading lego_pairs.json:', err)
+      console.error('Stack:', err.stack)
     }
   } catch (err) {
     error.value = err.message || 'Failed to load course'

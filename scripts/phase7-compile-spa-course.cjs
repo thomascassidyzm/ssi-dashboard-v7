@@ -16,7 +16,7 @@ const { v4: uuidv4 } = require('uuid');
 
 // Configuration
 const COURSE_NAME = 'spa_for_eng';
-const NUM_SEEDS = 10;
+const NUM_SEEDS = 100;
 const COURSE_DIR = path.join(__dirname, `../public/vfs/courses/${COURSE_NAME}`);
 const BASKETS_DIR = path.join(COURSE_DIR, 'baskets');
 const OUTPUT_FILE = path.join(COURSE_DIR, `${COURSE_NAME}_${NUM_SEEDS}seeds.json`);
