@@ -31,7 +31,11 @@ const manifest = {
 const entries = fs.readdirSync(COURSES_DIR, { withFileTypes: true })
 
 for (const entry of entries) {
+  // Skip files, only process directories
   if (!entry.isDirectory()) continue
+
+  // Skip system directories
+  if (entry.name.startsWith('.')) continue
 
   const courseCode = entry.name
   const coursePath = path.join(COURSES_DIR, courseCode)
@@ -53,7 +57,7 @@ for (const entry of entries) {
   const actualLegoPairsPath = fs.existsSync(legoPairsPath) ? legoPairsPath : legoPairsAlt
   const actualBasketsPath = fs.existsSync(basketsPath) ? basketsPath : basketsAlt
 
-  // Determine completion phase
+  // Determine completion phase (always create an entry even if empty)
   let phase = 'empty'
   let phasesCompleted = []
   if (hasSeedPairs) {
@@ -68,6 +72,8 @@ for (const entry of entries) {
     phase = 'phase_4'
     phasesCompleted.push('4')
   }
+
+  // Note: We create an entry for EVERY folder, even if empty!
 
   // Default metadata for empty/incomplete courses
   let seedPairsData = null
@@ -138,7 +144,7 @@ for (const entry of entries) {
 
   manifest.courses.push(courseInfo)
 
-  // Log with appropriate badge based on phase
+  // Log with appropriate badge based on phase (ALWAYS log the folder)
   const phaseEmoji = phase === 'empty' ? '📂' :
                      phase === 'phase_1' ? '🌱' :
                      phase === 'phase_3' ? '🧱' :
@@ -150,6 +156,8 @@ for (const entry of entries) {
   if (seedCount > 0 || legoCount > 0) {
     console.log(`  Seeds: ${seedCount}, LEGOs: ${legoCount}, Format: ${format}`)
   }
+
+  // Every folder becomes a course entry
 }
 
 // Sort by course code
