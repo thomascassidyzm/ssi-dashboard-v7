@@ -1,0 +1,97 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0084",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I don't agree with what he said about my friend.",
+    "target": "No estoy de acuerdo con lo que dijo sobre mi amigo."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+  "cumulative_legos": 249,
+
+  "S0084L01": {
+    "lego": ["I don't agree", "no estoy de acuerdo"],
+    "type": "M",
+    "available_legos": 246,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["I don't agree", "no estoy de acuerdo", null, 1],
+      ["I don't agree here", "no estoy de acuerdo aquí", null, 2],
+      ["but I don't agree", "pero no estoy de acuerdo", null, 2],
+      ["I think that I don't agree", "pienso que no estoy de acuerdo", null, 3],
+      ["I don't agree with what he said", "no estoy de acuerdo con lo que dijo", null, 3],
+      ["if I don't agree", "si no estoy de acuerdo", null, 2],
+      ["because I don't agree", "porque no estoy de acuerdo", null, 2],
+      ["I'm not sure if I don't agree", "no estoy seguro si no estoy de acuerdo", null, 4],
+      ["I agree with what you said about your friend but I don't agree", "estoy de acuerdo con lo que dijiste sobre tu amigo pero no estoy de acuerdo", null, 10],
+      ["I'm not ready when I'll be I don't agree", "no estoy preparado cuándo estaré no estoy de acuerdo", "P_NEW_FUTURE", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P_NEW_FUTURE",
+    "full_seed_included": "NO - missing 'with what he said', 'about my friend'",
+    "gate_compliance": "STRICT - Only S0001-S0083 LEGOs available"
+  },
+
+  "S0084L02": {
+    "lego": ["with what he said", "con lo que dijo"],
+    "type": "M",
+    "available_legos": 247,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["with what he said", "con lo que dijo", null, 1],
+      ["I don't agree with what he said", "no estoy de acuerdo con lo que dijo", null, 2],
+      ["I want with what he said", "quiero con lo que dijo", "P01", 2],
+      ["but with what he said", "pero con lo que dijo", null, 2],
+      ["I agree with what he said", "estoy de acuerdo con lo que dijo", null, 3],
+      ["if with what he said", "si con lo que dijo", null, 2],
+      ["because with what he said", "porque con lo que dijo", null, 2],
+      ["I'm not sure if I don't agree with what he said", "no estoy seguro si no estoy de acuerdo con lo que dijo", null, 4],
+      ["I'm surprised at how quickly I'm starting to understand with what he said", "estoy sorprendido de lo rápidamente que estoy comenzando a comprender con lo que dijo", "P02", 9],
+      ["I don't understand with what he said yesterday", "no comprendo con lo que dijo ayer", null, 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P02",
+    "full_seed_included": "NO - missing 'about my friend'",
+    "gate_compliance": "STRICT - Only S0001-S0084L01 LEGOs available"
+  },
+
+  "S0084L03": {
+    "lego": ["about my friend", "sobre mi amigo"],
+    "type": "M",
+    "available_legos": 248,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["about my friend", "sobre mi amigo", null, 1],
+      ["with what he said about my friend", "con lo que dijo sobre mi amigo", null, 2],
+      ["I want about my friend", "quiero sobre mi amigo", "P01", 2],
+      ["but about my friend", "pero sobre mi amigo", null, 2],
+      ["I don't agree with what he said about my friend", "no estoy de acuerdo con lo que dijo sobre mi amigo", null, 3],
+      ["if about my friend", "si sobre mi amigo", null, 2],
+      ["because about my friend", "porque sobre mi amigo", null, 2],
+      ["I'm not sure about my friend", "no estoy seguro sobre mi amigo", null, 3],
+      ["I agree with what you said about your friend but about my friend", "estoy de acuerdo con lo que dijiste sobre tu amigo pero sobre mi amigo", null, 9],
+      ["I don't agree with what he said about my friend.", "no estoy de acuerdo con lo que dijo sobre mi amigo.", null, 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 0,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0084L02 LEGOs available"
+  }
+}

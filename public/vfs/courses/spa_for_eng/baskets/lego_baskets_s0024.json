@@ -1,0 +1,67 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0024",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'm not going to be able to remember easily.",
+    "target": "No voy a poder recordar fácilmente."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE"],
+  "cumulative_legos": 70,
+
+  "S0024L01": {
+    "lego": ["I'm not going to", "no voy a"],
+    "type": "M",
+    "available_legos": 68,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE"],
+    "practice_phrases": [
+      ["I'm not going to", "no voy a", "P03", 1],
+      ["I'm not going to speak", "no voy a hablar", "P03", 2],
+      ["I'm not going to learn", "no voy a aprender", "P03", 2],
+      ["I'm not going to start talking", "no voy a comenzar a hablar", "P03", 2],
+      ["I'm not going to speak Spanish", "no voy a hablar español", "P03", 3],
+      ["I'm not going to meet tomorrow", "no voy a encontrar mañana", "P03", 3],
+      ["I'm not going to start talking more soon", "no voy a comenzar a hablar más pronto", "P03", 4],
+      ["I'm going to speak but I'm not going to learn", "voy a hablar pero no voy a aprender", "P03", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P03",
+    "full_seed_included": "NO - missing 'to be able', 'to remember', 'easily'",
+    "gate_compliance": "STRICT - Only S0001-S0023 LEGOs available"
+  },
+
+  "S0024L02": {
+    "lego": ["easily", "fácilmente"],
+    "type": "A",
+    "available_legos": 69,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE"],
+    "practice_phrases": [
+      ["easily", "fácilmente", null, 1],
+      ["to remember easily", "recordar fácilmente", null, 2],
+      ["I can remember easily", "puedo recordar fácilmente", "P05", 3],
+      ["I want to learn easily", "quiero aprender fácilmente", "P01", 3],
+      ["I'm not going to remember easily", "no voy a recordar fácilmente", "P03", 3],
+      ["you want to learn his name easily", "quieres aprender su nombre fácilmente", "P01", 4],
+      ["I'm not going to be able to remember easily", "no voy a poder recordar fácilmente", "P03", 4],
+      ["I can speak Spanish easily but I don't want to stop talking", "puedo hablar español fácilmente pero no quiero parar de hablar", "P05", 8],
+      ["why you want to learn his name easily", "por qué quieres aprender su nombre fácilmente", "P12", 5],
+      ["I'm not going to be able to remember easily.", "no voy a poder recordar fácilmente.", "P03", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P03, P05, P12",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0024L01 LEGOs available"
+  }
+}

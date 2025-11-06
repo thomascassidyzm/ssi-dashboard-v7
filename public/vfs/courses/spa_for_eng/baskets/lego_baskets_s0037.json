@@ -1,0 +1,153 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0037",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I started to think about it carefully last month.",
+    "target": "Comencé a pensar sobre eso cuidadosamente el mes pasado."
+  },
+  "patterns_introduced": "P15",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+  "cumulative_legos": 111,
+
+  "S0037L01": {
+    "lego": ["I started to", "comencé a"],
+    "type": "M",
+    "available_legos": 106,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+    "practice_phrases": [
+      ["I started to", "comencé a", "P15", 1],
+      ["I started to speak", "comencé a hablar", "P15", 2],
+      ["I started to learn", "comencé a aprender", "P15", 2],
+      ["I started to read", "comencé a leer", "P15", 2],
+      ["I started to feel", "comencé a sentir", "P15", 2],
+      ["I started to speak Spanish", "comencé a hablar español", "P15", 3],
+      ["I started to read the story", "comencé a leer la historia", "P15", 3],
+      ["I started to feel better yesterday", "comencé a sentir mejor ayer", "P15", 4],
+      ["I started to be quiet when other people are here", "comencé a estar silencioso cuando otras personas están aquí", "P15", 6],
+      ["why I started to learn Spanish", "por qué comencé a aprender español", "P12", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P12, P15",
+    "full_seed_included": "NO - missing 'to think', 'about it', 'carefully', 'last month'",
+    "gate_compliance": "STRICT - Only S0001-S0036 LEGOs available"
+  },
+
+  "S0037L02": {
+    "lego": ["to think", "pensar"],
+    "type": "A",
+    "available_legos": 107,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+    "practice_phrases": [
+      ["to think", "pensar", null, 1],
+      ["I started to think", "comencé a pensar", "P15", 2],
+      ["I want to think", "quiero pensar", "P01", 2],
+      ["I like to think", "me gusta pensar", "P_NEW_GUSTAR", 2],
+      ["I don't want to think", "no quiero pensar", "P01", 2],
+      ["I wanted to think", "quería pensar", "P_NEW_IMPERFECT", 2],
+      ["I started to think yesterday", "comencé a pensar ayer", "P15", 3],
+      ["it's useful to think carefully", "es útil pensar cuidadosamente", "P_NEW_IMPERSONAL", 2],
+      ["why I don't want to think", "por qué no quiero pensar", "P12", 3],
+      ["I don't like to think when other people are here", "no me gusta pensar cuando otras personas están aquí", "P_NEW_GUSTAR", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 2,
+      "longer_4_5": 0,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P12, P15, P_NEW_GUSTAR, P_NEW_IMPERSONAL, P_NEW_IMPERFECT",
+    "full_seed_included": "NO - missing 'about it', 'carefully', 'last month'",
+    "gate_compliance": "STRICT - Only S0001-S0037L01 LEGOs available"
+  },
+
+  "S0037L03": {
+    "lego": ["about it", "sobre eso"],
+    "type": "M",
+    "available_legos": 108,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+    "practice_phrases": [
+      ["about it", "sobre eso", null, 1],
+      ["to think about it", "pensar sobre eso", null, 2],
+      ["I started to think about it", "comencé a pensar sobre eso", "P15", 3],
+      ["I want about it", "quiero sobre eso", "P01", 2],
+      ["I like about it", "me gusta sobre eso", "P_NEW_GUSTAR", 2],
+      ["I wanted to think about it", "quería pensar sobre eso", "P_NEW_IMPERFECT", 3],
+      ["to speak about it", "hablar sobre eso", null, 2],
+      ["I don't want to think about it", "no quiero pensar sobre eso", "P01", 3],
+      ["why I started to think about it yesterday", "por qué comencé a pensar sobre eso ayer", "P12", 5],
+      ["I like to speak about it when other people are here", "me gusta hablar sobre eso cuando otras personas están aquí", "P_NEW_GUSTAR", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P12, P15, P_NEW_GUSTAR, P_NEW_IMPERFECT",
+    "full_seed_included": "NO - missing 'carefully', 'last month'",
+    "gate_compliance": "STRICT - Only S0001-S0037L02 LEGOs available"
+  },
+
+  "S0037L04": {
+    "lego": ["carefully", "cuidadosamente"],
+    "type": "A",
+    "available_legos": 109,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+    "practice_phrases": [
+      ["carefully", "cuidadosamente", null, 1],
+      ["to think carefully", "pensar cuidadosamente", null, 2],
+      ["I want to think carefully", "quiero pensar cuidadosamente", "P01", 3],
+      ["I started to think carefully", "comencé a pensar cuidadosamente", "P15", 2],
+      ["to learn carefully", "aprender cuidadosamente", null, 2],
+      ["to think about it carefully", "pensar sobre eso cuidadosamente", null, 3],
+      ["I started to think about it carefully", "comencé a pensar sobre eso cuidadosamente", "P15", 4],
+      ["I like to learn Spanish carefully", "me gusta aprender español cuidadosamente", "P_NEW_GUSTAR", 3],
+      ["why I started to think carefully", "por qué comencé a pensar cuidadosamente", "P12", 3],
+      ["it's useful to think about it carefully when other people are here", "es útil pensar sobre eso cuidadosamente cuando otras personas están aquí", "P_NEW_IMPERSONAL", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 4,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P12, P15, P_NEW_GUSTAR, P_NEW_IMPERSONAL",
+    "full_seed_included": "NO - missing 'last month'",
+    "gate_compliance": "STRICT - Only S0001-S0037L03 LEGOs available"
+  },
+
+  "S0037L05": {
+    "lego": ["last month", "el mes pasado"],
+    "type": "M",
+    "available_legos": 110,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+    "practice_phrases": [
+      ["last month", "el mes pasado", null, 1],
+      ["I wanted last month", "quería el mes pasado", "P_NEW_IMPERFECT", 2],
+      ["I started to think last month", "comencé a pensar el mes pasado", "P15", 3],
+      ["I spoke last month", "hablé el mes pasado", "P05", 2],
+      ["I started to learn Spanish last month", "comencé a aprender español el mes pasado", "P15", 4],
+      ["I wanted to read the story last month", "quería leer la historia el mes pasado", "P_NEW_IMPERFECT", 4],
+      ["I started to think about it last month", "comencé a pensar sobre eso el mes pasado", "P15", 4],
+      ["I started to think about it carefully last month", "comencé a pensar sobre eso cuidadosamente el mes pasado", "P15", 5],
+      ["why I started to speak Spanish last month", "por qué comencé a hablar español el mes pasado", "P12", 5],
+      ["I started to think about it carefully last month.", "comencé a pensar sobre eso cuidadosamente el mes pasado.", "P15", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P05, P12, P15, P_NEW_IMPERFECT",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0037L04 LEGOs available"
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0056",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I was able to finish a little earlier than I'd expected.",
+    "target": "Pude terminar un poco más temprano de lo que esperaba."
+  },
+  "patterns_introduced": "P_NEW_PUDE",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE"],
+  "cumulative_legos": 169,
+
+  "S0056L01": {
+    "lego": ["I was able", "pude"],
+    "type": "A",
+    "available_legos": 163,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "practice_phrases": [
+      ["I was able", "pude", "P_NEW_PUDE", 1],
+      ["I was able to speak", "pude hablar", "P_NEW_PUDE", 2],
+      ["I was able to finish", "pude terminar", "P_NEW_PUDE", 2],
+      ["but I was able", "pero pude", "P_NEW_PUDE", 2],
+      ["I was able to learn Spanish", "pude aprender español", "P_NEW_PUDE", 3],
+      ["I was able to help yesterday", "pude ayudar ayer", "P_NEW_PUDE", 3],
+      ["because I was able to improve", "porque pude mejorar", "P_NEW_PUDE", 2],
+      ["if I was able to give you something", "si pude darte algo", "P_NEW_PUDE", 4],
+      ["I was able to do interesting things with my friends last week", "pude hacer cosas interesantes con mis amigos la semana pasada", "P_NEW_PUDE", 9],
+      ["I was able to write a letter to his friend yesterday", "pude escribir una carta a su amigo ayer", "P_NEW_PUDE", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P_NEW_PUDE",
+    "full_seed_included": "NO - missing 'to finish', 'a little earlier', 'than I'd expected'",
+    "gate_compliance": "STRICT - Only S0001-S0055 LEGOs available"
+  },
+
+  "S0056L02": {
+    "lego": ["a little earlier", "un poco más temprano"],
+    "type": "M",
+    "available_legos": 164,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE"],
+    "practice_phrases": [
+      ["a little earlier", "un poco más temprano", null, 1],
+      ["I was able a little earlier", "pude un poco más temprano", "P_NEW_PUDE", 2],
+      ["to finish a little earlier", "terminar un poco más temprano", null, 2],
+      ["I was able to finish a little earlier", "pude terminar un poco más temprano", "P_NEW_PUDE", 3],
+      ["I want to finish a little earlier", "quiero terminar un poco más temprano", "P01", 3],
+      ["because a little earlier", "porque un poco más temprano", null, 2],
+      ["I was able to speak a little earlier", "pude hablar un poco más temprano", "P_NEW_PUDE", 3],
+      ["if I was able to finish a little earlier", "si pude terminar un poco más temprano", "P_NEW_PUDE", 4],
+      ["I was able to give you a little more time yesterday", "pude darte un poco más de tiempo ayer", "P_NEW_PUDE", 7],
+      ["but I was able to finish a little earlier than I'd expected", "pero pude terminar un poco más temprano de lo que esperaba", "P_NEW_PUDE", 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 4,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P_NEW_PUDE",
+    "full_seed_included": "NO - missing 'than I'd expected'",
+    "gate_compliance": "STRICT - Only S0001-S0056L01 LEGOs available"
+  },
+
+  "S0056L03": {
+    "lego": ["than I'd expected", "de lo que esperaba"],
+    "type": "M",
+    "available_legos": 165,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE"],
+    "practice_phrases": [
+      ["than I'd expected", "de lo que esperaba", null, 1],
+      ["a little earlier than I'd expected", "un poco más temprano de lo que esperaba", null, 2],
+      ["I was able than I'd expected", "pude de lo que esperaba", "P_NEW_PUDE", 2],
+      ["to finish a little earlier than I'd expected", "terminar un poco más temprano de lo que esperaba", null, 3],
+      ["I was able to finish a little earlier than I'd expected", "pude terminar un poco más temprano de lo que esperaba", "P_NEW_PUDE", 4],
+      ["because than I'd expected", "porque de lo que esperaba", null, 2],
+      ["more time than I'd expected", "más tiempo de lo que esperaba", null, 2],
+      ["if I was able to finish a little earlier than I'd expected", "si pude terminar un poco más temprano de lo que esperaba", "P_NEW_PUDE", 5],
+      ["we wanted to give you a little more time than I'd expected", "queríamos darte un poco más de tiempo de lo que esperaba", "P_NEW_IMPERFECT", 7],
+      ["I was able to finish a little earlier than I'd expected.", "pude terminar un poco más temprano de lo que esperaba.", "P_NEW_PUDE", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P_NEW_PUDE, P_NEW_IMPERFECT",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0056L02 LEGOs available"
+  },
+
+  "S0056L04": {
+    "lego": ["more", "más"],
+    "type": "A",
+    "available_legos": 166,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE"],
+    "practice_phrases": [
+      ["more", "más", null, 1],
+      ["a little more time", "un poco más de tiempo", null, 2],
+      ["I want more", "quiero más", "P01", 2],
+      ["more time", "más tiempo", null, 2],
+      ["I need a little more time", "necesito un poco más de tiempo", "P17", 3],
+      ["a little more", "un poco más", null, 2],
+      ["because I want more", "porque quiero más", "P01", 2],
+      ["I was able to give you a little more time", "pude darte un poco más de tiempo", "P_NEW_PUDE", 5],
+      ["if I need a little more time to finish everything", "si necesito un poco más de tiempo para terminar todo", "P17", 8],
+      ["we wanted to give you a little more time yesterday", "queríamos darte un poco más de tiempo ayer", "P_NEW_IMPERFECT", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P17, P_NEW_PUDE, P_NEW_IMPERFECT",
+    "full_seed_included": "NO - 'más' supplementary LEGO",
+    "gate_compliance": "STRICT - Only S0001-S0056L03 LEGOs available"
+  },
+
+  "S0056L05": {
+    "lego": ["earlier", "más temprano"],
+    "type": "A",
+    "available_legos": 167,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE"],
+    "practice_phrases": [
+      ["earlier", "más temprano", null, 1],
+      ["a little earlier", "un poco más temprano", null, 2],
+      ["I was able earlier", "pude más temprano", "P_NEW_PUDE", 2],
+      ["to finish earlier", "terminar más temprano", null, 2],
+      ["I was able to finish earlier", "pude terminar más temprano", "P_NEW_PUDE", 3],
+      ["I want to finish a little earlier", "quiero terminar un poco más temprano", "P01", 3],
+      ["because earlier", "porque más temprano", null, 2],
+      ["if I was able to finish a little earlier", "si pude terminar un poco más temprano", "P_NEW_PUDE", 4],
+      ["I was able to speak with my friends a little earlier yesterday", "pude hablar con mis amigos un poco más temprano ayer", "P_NEW_PUDE", 8],
+      ["I was able to finish a little earlier than I'd expected", "pude terminar un poco más temprano de lo que esperaba", "P_NEW_PUDE", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P_NEW_PUDE",
+    "full_seed_included": "NO - 'más temprano' supplementary LEGO",
+    "gate_compliance": "STRICT - Only S0001-S0056L04 LEGOs available"
+  },
+
+  "S0056L06": {
+    "lego": ["I'd expected", "esperaba"],
+    "type": "A",
+    "available_legos": 168,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE"],
+    "practice_phrases": [
+      ["I'd expected", "esperaba", "P_NEW_IMPERFECT", 1],
+      ["than I'd expected", "de lo que esperaba", null, 2],
+      ["I'd expected yesterday", "esperaba ayer", "P_NEW_IMPERFECT", 2],
+      ["earlier than I'd expected", "más temprano de lo que esperaba", null, 2],
+      ["a little earlier than I'd expected", "un poco más temprano de lo que esperaba", null, 3],
+      ["because I'd expected", "porque esperaba", "P_NEW_IMPERFECT", 2],
+      ["more time than I'd expected", "más tiempo de lo que esperaba", null, 2],
+      ["if I'd expected to finish a little earlier", "si esperaba terminar un poco más temprano", "P_NEW_IMPERFECT", 4],
+      ["I was able to finish a little earlier than I'd expected yesterday", "pude terminar un poco más temprano de lo que esperaba ayer", "P_NEW_PUDE", 8],
+      ["I was able to give you more time than I'd expected", "pude darte más tiempo de lo que esperaba", "P_NEW_PUDE", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P_NEW_IMPERFECT, P_NEW_PUDE",
+    "full_seed_included": "NO - 'esperaba' supplementary LEGO",
+    "gate_compliance": "STRICT - Only S0001-S0056L05 LEGOs available"
+  }
+}

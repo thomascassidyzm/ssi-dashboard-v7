@@ -1,0 +1,67 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0009",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I speak a little Spanish now.",
+    "target": "Hablo un poco de español ahora."
+  },
+  "patterns_introduced": "P05",
+  "cumulative_patterns": ["P01", "P02", "P03", "P05", "P10", "P12"],
+  "cumulative_legos": 25,
+
+  "S0009L01": {
+    "lego": ["I speak", "hablo"],
+    "type": "A",
+    "available_legos": 23,
+    "available_patterns": ["P01", "P02", "P03", "P10", "P12"],
+    "practice_phrases": [
+      ["I speak", "hablo", "P05", 1],
+      ["I speak Spanish", "hablo español", "P05", 2],
+      ["I speak now", "hablo ahora", "P05", 2],
+      ["I speak something", "hablo algo", "P05", 2],
+      ["I speak Spanish now", "hablo español ahora", "P05", 3],
+      ["I speak today", "hablo hoy", "P05", 2],
+      ["I speak with someone else", "hablo con alguien más", "P05", 3],
+      ["I speak something in Spanish today", "hablo algo en español hoy", "P05", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P05",
+    "full_seed_included": "NO - missing 'a little Spanish'",
+    "gate_compliance": "STRICT - Only S0001-S0008 LEGOs available"
+  },
+
+  "S0009L02": {
+    "lego": ["a little Spanish", "un poco de español"],
+    "type": "M",
+    "available_legos": 24,
+    "available_patterns": ["P01", "P02", "P03", "P05", "P10", "P12"],
+    "practice_phrases": [
+      ["a little Spanish", "un poco de español", null, 1],
+      ["I speak a little Spanish", "hablo un poco de español", "P05", 2],
+      ["to speak a little Spanish", "hablar un poco de español", null, 2],
+      ["I want to speak a little Spanish", "quiero hablar un poco de español", "P01", 3],
+      ["I'm going to speak a little Spanish", "voy a hablar un poco de español", "P03", 3],
+      ["I speak a little Spanish now", "hablo un poco de español ahora", "P05", 3],
+      ["how to speak a little Spanish", "cómo hablar un poco de español", "P12", 3],
+      ["I want to try to speak a little Spanish today", "quiero intentar hablar un poco de español hoy", "P01", 5],
+      ["I'm going to practise speaking a little Spanish with someone else", "voy a practicar hablar un poco de español con alguien más", "P03", 5],
+      ["I speak a little Spanish now.", "hablo un poco de español ahora.", "P05", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 4,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P03, P05, P12",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0009L01 LEGOs available"
+  }
+}

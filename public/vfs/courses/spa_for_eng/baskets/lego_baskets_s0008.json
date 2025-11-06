@@ -1,0 +1,68 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0008",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'm going to try to explain what I mean.",
+    "target": "Voy a intentar explicar lo que quiero decir."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P10", "P12"],
+  "cumulative_legos": 23,
+
+  "S0008L01": {
+    "lego": ["to explain", "explicar"],
+    "type": "A",
+    "available_legos": 21,
+    "available_patterns": ["P01", "P02", "P03", "P10", "P12"],
+    "practice_phrases": [
+      ["to explain", "explicar", null, 1],
+      ["I want to explain", "quiero explicar", "P01", 2],
+      ["I'm going to explain", "voy a explicar", "P03", 2],
+      ["how to explain", "cómo explicar", "P12", 2],
+      ["I want to explain something", "quiero explicar algo", "P01", 3],
+      ["I'm going to try to explain", "voy a intentar explicar", "P03", 3],
+      ["I want to explain something today", "quiero explicar algo hoy", "P01", 4],
+      ["I'm going to try to explain a word", "voy a intentar explicar una palabra", "P03", 4],
+      ["how to explain something in Spanish as hard as I can", "cómo explicar algo en español tan duro como pueda", "P12", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P03, P12",
+    "full_seed_included": "NO - missing 'what I mean'",
+    "gate_compliance": "STRICT - Only S0001-S0007 LEGOs available"
+  },
+
+  "S0008L02": {
+    "lego": ["what I mean", "lo que quiero decir"],
+    "type": "M",
+    "available_legos": 22,
+    "available_patterns": ["P01", "P02", "P03", "P10", "P12"],
+    "practice_phrases": [
+      ["what I mean", "lo que quiero decir", null, 1],
+      ["to explain what I mean", "explicar lo que quiero decir", null, 2],
+      ["I want to explain what I mean", "quiero explicar lo que quiero decir", "P01", 3],
+      ["I'm going to explain what I mean", "voy a explicar lo que quiero decir", "P03", 3],
+      ["I'm going to try to explain what I mean", "voy a intentar explicar lo que quiero decir", "P03", 4],
+      ["how to explain what I mean", "cómo explicar lo que quiero decir", "P12", 3],
+      ["I want to remember what I mean", "quiero recordar lo que quiero decir", "P01", 3],
+      ["I'm going to try to explain what I mean today", "voy a intentar explicar lo que quiero decir hoy", "P03", 5],
+      ["I want to try to explain what I mean as hard as I can", "quiero intentar explicar lo que quiero decir tan duro como pueda", "P01", 5],
+      ["I'm going to try to explain what I mean.", "voy a intentar explicar lo que quiero decir.", "P03", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P03, P12",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0008L01 LEGOs available"
+  }
+}

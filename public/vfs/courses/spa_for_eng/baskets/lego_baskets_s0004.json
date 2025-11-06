@@ -1,0 +1,94 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0004",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "how to say something in Spanish",
+    "target": "cómo decir algo en español"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P12"],
+  "cumulative_legos": 12,
+
+  "S0004L01": {
+    "lego": ["to say", "decir"],
+    "type": "A",
+    "available_legos": 9,
+    "available_patterns": ["P01", "P02", "P12"],
+    "practice_phrases": [
+      ["to say", "decir", null, 1],
+      ["I want to say", "quiero decir", "P01", 2],
+      ["how to say", "cómo decir", "P12", 2],
+      ["I'm trying to say", "estoy intentando decir", "P02", 2],
+      ["I want to say Spanish", "quiero decir español", "P01", 3],
+      ["how to say Spanish", "cómo decir español", "P12", 3],
+      ["I'm trying to say Spanish now", "estoy intentando decir español ahora", "P02", 4],
+      ["I want to say Spanish with you as often as possible", "quiero decir español contigo lo más frecuentemente posible", "P01", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P02, P12",
+    "full_seed_included": "NO - missing 'something' and 'in Spanish'",
+    "gate_compliance": "STRICT - Only S0001-S0003 LEGOs available"
+  },
+
+  "S0004L02": {
+    "lego": ["something", "algo"],
+    "type": "A",
+    "available_legos": 10,
+    "available_patterns": ["P01", "P02", "P12"],
+    "practice_phrases": [
+      ["something", "algo", null, 1],
+      ["to say something", "decir algo", null, 2],
+      ["I want to say something", "quiero decir algo", "P01", 3],
+      ["how to say something", "cómo decir algo", "P12", 3],
+      ["I'm trying to say something", "estoy intentando decir algo", "P02", 3],
+      ["I want to say something now", "quiero decir algo ahora", "P01", 4],
+      ["I'm trying to learn something", "estoy intentando aprender algo", "P02", 3],
+      ["how to say something with you", "cómo decir algo contigo", "P12", 4],
+      ["I want to learn something as often as possible", "quiero aprender algo lo más frecuentemente posible", "P01", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
+      "longer_4_5": 3,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P02, P12",
+    "full_seed_included": "NO - missing 'in Spanish'",
+    "gate_compliance": "STRICT - Only S0001-S0004L01 LEGOs available"
+  },
+
+  "S0004L03": {
+    "lego": ["in Spanish", "en español"],
+    "type": "M",
+    "available_legos": 11,
+    "available_patterns": ["P01", "P02", "P12"],
+    "practice_phrases": [
+      ["in Spanish", "en español", null, 1],
+      ["to say in Spanish", "decir en español", null, 2],
+      ["how to say in Spanish", "cómo decir en español", "P12", 3],
+      ["I want to say something in Spanish", "quiero decir algo en español", "P01", 4],
+      ["how to say something in Spanish", "cómo decir algo en español", "P12", 4],
+      ["I'm trying to say something in Spanish", "estoy intentando decir algo en español", "P02", 4],
+      ["I want to say something in Spanish now", "quiero decir algo en español ahora", "P01", 5],
+      ["I want to say something in Spanish with you", "quiero decir algo en español contigo", "P01", 5],
+      ["I'm trying to say something in Spanish as often as possible", "estoy intentando decir algo en español lo más frecuentemente posible", "P02", 5],
+      ["how to say something in Spanish", "cómo decir algo en español", "P12", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P02, P12",
+    "full_seed_included": "YES - phrases 5 and 10",
+    "gate_compliance": "STRICT - Only S0001-S0004L02 LEGOs available"
+  }
+}

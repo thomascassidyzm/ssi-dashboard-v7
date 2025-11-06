@@ -1,0 +1,125 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0076",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'm very happy with how much I've learnt already.",
+    "target": "Estoy muy feliz con cuánto he aprendido ya."
+  },
+  "patterns_introduced": "P_NEW_PERFECT",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT"],
+  "cumulative_legos": 230,
+
+  "S0076L01": {
+    "lego": ["I'm very happy", "estoy muy feliz"],
+    "type": "M",
+    "available_legos": 226,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "practice_phrases": [
+      ["I'm very happy", "estoy muy feliz", null, 1],
+      ["I'm very happy here", "estoy muy feliz aquí", null, 2],
+      ["but I'm very happy", "pero estoy muy feliz", null, 2],
+      ["I think that I'm very happy", "pienso que estoy muy feliz", null, 3],
+      ["I'm very happy with how much", "estoy muy feliz con cuánto", null, 3],
+      ["if I'm very happy", "si estoy muy feliz", null, 2],
+      ["because I'm very happy", "porque estoy muy feliz", null, 2],
+      ["I'm not sure if I'm very happy", "no estoy seguro si estoy muy feliz", null, 4],
+      ["I'm very happy thank you very much for helping me to understand", "estoy muy feliz muchas gracias por ayudarme a comprender", null, 8],
+      ["do you remember why I'm very happy yesterday", "te acuerdas por qué estoy muy feliz ayer", "P_NEW_TE_ACUERDAS", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P_NEW_TE_ACUERDAS",
+    "full_seed_included": "NO - missing 'with how much', 'I've learnt', 'already'",
+    "gate_compliance": "STRICT - Only S0001-S0075 LEGOs available"
+  },
+
+  "S0076L02": {
+    "lego": ["with how much", "con cuánto"],
+    "type": "M",
+    "available_legos": 227,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "practice_phrases": [
+      ["with how much", "con cuánto", null, 1],
+      ["I'm very happy with how much", "estoy muy feliz con cuánto", null, 2],
+      ["I want with how much", "quiero con cuánto", "P01", 2],
+      ["but with how much", "pero con cuánto", null, 2],
+      ["I think that with how much", "pienso que con cuánto", null, 3],
+      ["if with how much", "si con cuánto", null, 2],
+      ["because with how much", "porque con cuánto", null, 2],
+      ["I'm not sure if I'm very happy with how much", "no estoy seguro si estoy muy feliz con cuánto", null, 5],
+      ["thank you very much for helping me to understand with how much", "muchas gracias por ayudarme a comprender con cuánto", null, 7],
+      ["could you say that again with how much a little more slowly", "podrías decir eso otra vez con cuánto un poco más lentamente", "P_NEW_CONDITIONAL", 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P_NEW_CONDITIONAL",
+    "full_seed_included": "NO - missing 'I've learnt', 'already'",
+    "gate_compliance": "STRICT - Only S0001-S0076L01 LEGOs available"
+  },
+
+  "S0076L03": {
+    "lego": ["I've learnt", "he aprendido"],
+    "type": "M",
+    "available_legos": 228,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT"],
+    "practice_phrases": [
+      ["I've learnt", "he aprendido", "P_NEW_PERFECT", 1],
+      ["with how much I've learnt", "con cuánto he aprendido", "P_NEW_PERFECT", 2],
+      ["I want I've learnt", "quiero he aprendido", "P_NEW_PERFECT", 2],
+      ["but I've learnt", "pero he aprendido", "P_NEW_PERFECT", 1],
+      ["I'm very happy with how much I've learnt", "estoy muy feliz con cuánto he aprendido", "P_NEW_PERFECT", 3],
+      ["if I've learnt", "si he aprendido", "P_NEW_PERFECT", 1],
+      ["because I've learnt", "porque he aprendido", "P_NEW_PERFECT", 1],
+      ["I think that I've learnt very well", "pienso que he aprendido muy bien", "P_NEW_PERFECT", 4],
+      ["I'm not sure if I'm very happy with how much I've learnt", "no estoy seguro si estoy muy feliz con cuánto he aprendido", "P_NEW_PERFECT", 7],
+      ["do you remember with how much I've learnt yesterday", "te acuerdas con cuánto he aprendido ayer", "P_NEW_TE_ACUERDAS", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P_NEW_PERFECT, P_NEW_TE_ACUERDAS",
+    "full_seed_included": "NO - missing 'already'",
+    "gate_compliance": "STRICT - Only S0001-S0076L02 LEGOs available"
+  },
+
+  "S0076L04": {
+    "lego": ["already", "ya"],
+    "type": "A",
+    "available_legos": 229,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT"],
+    "practice_phrases": [
+      ["already", "ya", null, 1],
+      ["I've learnt already", "he aprendido ya", "P_NEW_PERFECT", 2],
+      ["I want already", "quiero ya", "P01", 2],
+      ["but already", "pero ya", null, 2],
+      ["I'm very happy with how much I've learnt already", "estoy muy feliz con cuánto he aprendido ya", "P_NEW_PERFECT", 3],
+      ["if already", "si ya", null, 2],
+      ["because already", "porque ya", null, 2],
+      ["I think that I've learnt already very well", "pienso que he aprendido ya muy bien", "P_NEW_PERFECT", 4],
+      ["I'm not sure if I'm very happy with how much I've learnt already", "no estoy seguro si estoy muy feliz con cuánto he aprendido ya", "P_NEW_PERFECT", 8],
+      ["I'm very happy with how much I've learnt already.", "estoy muy feliz con cuánto he aprendido ya.", "P_NEW_PERFECT", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P_NEW_PERFECT",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0076L03 LEGOs available"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0100",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "You shouldn't worry about doing something similar.",
+    "target": "No deberías preocuparte por hacer algo similar."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE", "P_NEW_MODAL"],
+  "cumulative_legos": 295,
+
+  "S0100L01": {
+    "lego": ["you shouldn't", "no deberías"],
+    "type": "M",
+    "available_legos": 291,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE", "P_NEW_MODAL"],
+    "practice_phrases": [
+      ["you shouldn't", "no deberías", "P_NEW_MODAL", 1],
+      ["you shouldn't here", "no deberías aquí", "P_NEW_MODAL", 2],
+      ["but you shouldn't", "pero no deberías", "P_NEW_MODAL", 1],
+      ["I think that you shouldn't", "pienso que no deberías", "P_NEW_MODAL", 3],
+      ["you shouldn't worry", "no deberías preocuparte", "P_NEW_MODAL", 2],
+      ["if you shouldn't", "si no deberías", "P_NEW_MODAL", 1],
+      ["because you shouldn't", "porque no deberías", "P_NEW_MODAL", 1],
+      ["I'm not sure if you shouldn't", "no estoy seguro si no deberías", "P_NEW_MODAL", 4],
+      ["I think that you shouldn't worry about doing something similar as soon as you want", "pienso que no deberías preocuparte por hacer algo similar tan pronto como quieras", "P_NEW_MODAL", 11],
+      ["you should consider playing but you shouldn't worry about this", "deberías considerar jugar pero no deberías preocuparte esto", "P_NEW_MODAL", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P_NEW_MODAL",
+    "full_seed_included": "NO - missing 'to worry', 'about doing', 'something similar'",
+    "gate_compliance": "STRICT - Only S0001-S0099 LEGOs available"
+  },
+
+  "S0100L02": {
+    "lego": ["to worry", "preocuparte"],
+    "type": "A",
+    "available_legos": 292,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE", "P_NEW_MODAL"],
+    "practice_phrases": [
+      ["to worry", "preocuparte", "P_NEW_REFLEXIVE", 1],
+      ["you shouldn't worry", "no deberías preocuparte", "P_NEW_MODAL", 2],
+      ["I want to worry", "quiero preocuparte", "P01", 2],
+      ["but to worry", "pero preocuparte", "P_NEW_REFLEXIVE", 2],
+      ["you shouldn't worry about doing", "no deberías preocuparte por hacer", "P_NEW_MODAL", 3],
+      ["if to worry", "si preocuparte", "P_NEW_REFLEXIVE", 2],
+      ["because to worry", "porque preocuparte", "P_NEW_REFLEXIVE", 2],
+      ["you should to worry", "deberías preocuparte", "P_NEW_MODAL", 2],
+      ["I think that you shouldn't worry about doing something similar in a short time", "pienso que no deberías preocuparte por hacer algo similar en un breve tiempo", "P_NEW_MODAL", 10],
+      ["it's time to worry about this now", "es hora de preocuparte esto ahora", "P_NEW_IMPERSONAL", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P_NEW_MODAL, P_NEW_REFLEXIVE, P_NEW_IMPERSONAL",
+    "full_seed_included": "NO - missing 'about doing', 'something similar'",
+    "gate_compliance": "STRICT - Only S0001-S0100L01 LEGOs available"
+  },
+
+  "S0100L03": {
+    "lego": ["about doing", "por hacer"],
+    "type": "M",
+    "available_legos": 293,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE", "P_NEW_MODAL"],
+    "practice_phrases": [
+      ["about doing", "por hacer", null, 1],
+      ["to worry about doing", "preocuparte por hacer", "P_NEW_REFLEXIVE", 2],
+      ["I want about doing", "quiero por hacer", "P01", 2],
+      ["but about doing", "pero por hacer", null, 2],
+      ["you shouldn't worry about doing", "no deberías preocuparte por hacer", "P_NEW_MODAL", 3],
+      ["if about doing", "si por hacer", null, 2],
+      ["because about doing", "porque por hacer", null, 2],
+      ["I'm not sure about doing", "no estoy seguro por hacer", null, 3],
+      ["I think that you shouldn't worry about doing something similar in time", "pienso que no deberías preocuparte por hacer algo similar a tiempo", "P_NEW_MODAL", 9],
+      ["you should ask yourself about doing this", "deberías preguntarte por hacer esto", "P_NEW_MODAL", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P_NEW_MODAL, P_NEW_REFLEXIVE",
+    "full_seed_included": "NO - missing 'something similar'",
+    "gate_compliance": "STRICT - Only S0001-S0100L02 LEGOs available"
+  },
+
+  "S0100L04": {
+    "lego": ["something similar", "algo similar"],
+    "type": "M",
+    "available_legos": 294,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE", "P_NEW_MODAL"],
+    "practice_phrases": [
+      ["something similar", "algo similar", null, 1],
+      ["about doing something similar", "por hacer algo similar", null, 2],
+      ["I want something similar", "quiero algo similar", "P01", 2],
+      ["but something similar", "pero algo similar", null, 2],
+      ["you shouldn't worry about doing something similar", "no deberías preocuparte por hacer algo similar", "P_NEW_MODAL", 3],
+      ["if something similar", "si algo similar", null, 2],
+      ["because something similar", "porque algo similar", null, 2],
+      ["I'm not sure something similar", "no estoy seguro algo similar", null, 3],
+      ["I think that you shouldn't worry about doing something similar for a while", "pienso que no deberías preocuparte por hacer algo similar por un tiempo", "P_NEW_MODAL", 10],
+      ["you shouldn't worry about doing something similar.", "no deberías preocuparte por hacer algo similar.", "P_NEW_MODAL", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 0,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P_NEW_MODAL",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0100L03 LEGOs available"
+  }
+}

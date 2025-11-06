@@ -1,0 +1,97 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0047",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "Because I think that it's a good thing to make mistakes.",
+    "target": "Porque pienso que es una cosa buena hacer errores."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+  "cumulative_legos": 139,
+
+  "S0047L01": {
+    "lego": ["I think that", "pienso que"],
+    "type": "M",
+    "available_legos": 136,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["I think that", "pienso que", null, 1],
+      ["I think that I want", "pienso que quiero", "P01", 2],
+      ["I think that I need", "pienso que necesito", "P17", 2],
+      ["I think that I feel", "pienso que me siento", "P_NEW_REFLEXIVE", 2],
+      ["I think that I speak", "pienso que hablo", "P05", 2],
+      ["I think that I need to improve", "pienso que necesito mejorar", "P17", 3],
+      ["I think that it's useful", "pienso que es útil", "P_NEW_IMPERSONAL", 2],
+      ["I think that I feel better today", "pienso que me siento mejor hoy", "P_NEW_REFLEXIVE", 4],
+      ["because I think that I need to improve", "porque pienso que necesito mejorar", "P17", 4],
+      ["I think that I don't worry about it", "pienso que no me preocupo por eso", "P_NEW_REFLEXIVE", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P05, P17, P_NEW_IMPERSONAL, P_NEW_REFLEXIVE",
+    "full_seed_included": "NO - missing 'it's a good thing', 'to make mistakes'",
+    "gate_compliance": "STRICT - Only S0001-S0046 LEGOs available"
+  },
+
+  "S0047L02": {
+    "lego": ["it's a good thing", "es una cosa buena"],
+    "type": "M",
+    "available_legos": 137,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["it's a good thing", "es una cosa buena", "P_NEW_IMPERSONAL", 1],
+      ["I think that it's a good thing", "pienso que es una cosa buena", "P_NEW_IMPERSONAL", 2],
+      ["it's a good thing to speak", "es una cosa buena hablar", "P_NEW_IMPERSONAL", 2],
+      ["it's a good thing to learn", "es una cosa buena aprender", "P_NEW_IMPERSONAL", 2],
+      ["I think that it's a good thing", "pienso que es una cosa buena", "P_NEW_IMPERSONAL", 2],
+      ["it's a good thing to improve", "es una cosa buena mejorar", "P_NEW_IMPERSONAL", 2],
+      ["it's a good thing to speak Spanish", "es una cosa buena hablar español", "P_NEW_IMPERSONAL", 3],
+      ["I think that it's a good thing to learn", "pienso que es una cosa buena aprender", "P_NEW_IMPERSONAL", 4],
+      ["it's a good thing to feel better", "es una cosa buena sentirme mejor", "P_NEW_IMPERSONAL", 3],
+      ["because I think that it's a good thing", "porque pienso que es una cosa buena", "P_NEW_IMPERSONAL", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P_NEW_IMPERSONAL",
+    "full_seed_included": "NO - missing 'to make mistakes'",
+    "gate_compliance": "STRICT - Only S0001-S0047L01 LEGOs available"
+  },
+
+  "S0047L03": {
+    "lego": ["to make mistakes", "hacer errores"],
+    "type": "M",
+    "available_legos": 138,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["to make mistakes", "hacer errores", null, 1],
+      ["I like to make mistakes", "me gusta hacer errores", "P_NEW_GUSTAR", 2],
+      ["I don't worry to make mistakes", "no me preocupo hacer errores", "P_NEW_REFLEXIVE", 2],
+      ["it's a good thing to make mistakes", "es una cosa buena hacer errores", "P_NEW_IMPERSONAL", 2],
+      ["I need to make mistakes", "necesito hacer errores", "P17", 2],
+      ["I think that to make mistakes", "pienso que hacer errores", null, 2],
+      ["I don't worry about making mistakes", "no me preocupo por hacer errores", "P_NEW_REFLEXIVE", 3],
+      ["I think that it's a good thing to make mistakes", "pienso que es una cosa buena hacer errores", "P_NEW_IMPERSONAL", 4],
+      ["because I think that it's a good thing to make mistakes", "porque pienso que es una cosa buena hacer errores", "P_NEW_IMPERSONAL", 5],
+      ["because I think that it's a good thing to make mistakes.", "porque pienso que es una cosa buena hacer errores.", "P_NEW_IMPERSONAL", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P17, P_NEW_GUSTAR, P_NEW_IMPERSONAL, P_NEW_REFLEXIVE",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0047L02 LEGOs available"
+  }
+}

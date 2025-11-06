@@ -1,0 +1,125 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0061",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "Could you say that again a little more slowly?",
+    "target": "¿Podrías decir eso otra vez un poco más lentamente?"
+  },
+  "patterns_introduced": "P_NEW_CONDITIONAL",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+  "cumulative_legos": 193,
+
+  "S0061L01": {
+    "lego": ["could you", "podrías"],
+    "type": "A",
+    "available_legos": 189,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS"],
+    "practice_phrases": [
+      ["could you", "podrías", "P_NEW_CONDITIONAL", 1],
+      ["could you speak", "podrías hablar", "P_NEW_CONDITIONAL", 2],
+      ["could you help", "podrías ayudar", "P_NEW_CONDITIONAL", 2],
+      ["but could you", "pero podrías", "P_NEW_CONDITIONAL", 2],
+      ["could you speak Spanish", "podrías hablar español", "P_NEW_CONDITIONAL", 3],
+      ["could you call me", "podrías llamarme", "P_NEW_CONDITIONAL", 2],
+      ["because could you", "porque podrías", "P_NEW_CONDITIONAL", 2],
+      ["if could you help me", "si podrías ayudarme", "P_NEW_CONDITIONAL", 3],
+      ["could you tell me when we used to go there", "podrías decirme cuando íbamos allí", "P_NEW_CONDITIONAL", 5],
+      ["could you give me a little more time yesterday", "podrías darme un poco más de tiempo ayer", "P_NEW_CONDITIONAL", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P_NEW_CONDITIONAL",
+    "full_seed_included": "NO - missing 'to say', 'that', 'again', 'a little more slowly'",
+    "gate_compliance": "STRICT - Only S0001-S0060 LEGOs available"
+  },
+
+  "S0061L02": {
+    "lego": ["that", "eso"],
+    "type": "A",
+    "available_legos": 190,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "practice_phrases": [
+      ["that", "eso", null, 1],
+      ["I want that", "quiero eso", "P01", 2],
+      ["could you that", "podrías eso", "P_NEW_CONDITIONAL", 2],
+      ["I enjoy that", "disfruto eso", "P_NEW_DISFRUTO", 2],
+      ["do you remember that", "te acuerdas eso", "P_NEW_TE_ACUERDAS", 2],
+      ["because that", "porque eso", null, 2],
+      ["I was able that", "pude eso", "P_NEW_PUDE", 2],
+      ["if could you tell me that", "si podrías decirme eso", "P_NEW_CONDITIONAL", 3],
+      ["do you remember when we used to go there every week", "te acuerdas cuando íbamos allí cada semana", "P_NEW_TE_ACUERDAS", 6],
+      ["could you give me that a little more time", "podrías darme eso un poco más de tiempo", "P_NEW_CONDITIONAL", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 0,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P_NEW_DISFRUTO, P_NEW_PUDE, P_NEW_TE_ACUERDAS, P_NEW_CONDITIONAL",
+    "full_seed_included": "NO - missing 'again', 'a little more slowly'",
+    "gate_compliance": "STRICT - Only S0001-S0061L01 LEGOs available"
+  },
+
+  "S0061L03": {
+    "lego": ["again", "otra vez"],
+    "type": "M",
+    "available_legos": 191,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "practice_phrases": [
+      ["again", "otra vez", null, 1],
+      ["could you again", "podrías otra vez", "P_NEW_CONDITIONAL", 2],
+      ["I want again", "quiero otra vez", "P01", 2],
+      ["I speak again", "hablo otra vez", "P05", 2],
+      ["could you speak again", "podrías hablar otra vez", "P_NEW_CONDITIONAL", 3],
+      ["I was able again", "pude otra vez", "P_NEW_PUDE", 2],
+      ["because again", "porque otra vez", null, 2],
+      ["if could you call me again", "si podrías llamarme otra vez", "P_NEW_CONDITIONAL", 4],
+      ["could you tell me that again yesterday", "podrías decirme eso otra vez ayer", "P_NEW_CONDITIONAL", 5],
+      ["I was able to see you again a little earlier", "pude verte otra vez un poco más temprano", "P_NEW_PUDE", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P05, P_NEW_PUDE, P_NEW_CONDITIONAL",
+    "full_seed_included": "NO - missing 'a little more slowly'",
+    "gate_compliance": "STRICT - Only S0001-S0061L02 LEGOs available"
+  },
+
+  "S0061L04": {
+    "lego": ["a little more slowly", "un poco más lentamente"],
+    "type": "M",
+    "available_legos": 192,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "practice_phrases": [
+      ["a little more slowly", "un poco más lentamente", null, 1],
+      ["could you a little more slowly", "podrías un poco más lentamente", "P_NEW_CONDITIONAL", 2],
+      ["to speak a little more slowly", "hablar un poco más lentamente", null, 2],
+      ["could you speak a little more slowly", "podrías hablar un poco más lentamente", "P_NEW_CONDITIONAL", 3],
+      ["I want a little more slowly", "quiero un poco más lentamente", "P01", 2],
+      ["because a little more slowly", "porque un poco más lentamente", null, 2],
+      ["again a little more slowly", "otra vez un poco más lentamente", null, 2],
+      ["could you say that again a little more slowly", "podrías decir eso otra vez un poco más lentamente", "P_NEW_CONDITIONAL", 4],
+      ["if could you speak a little more slowly when we used to go there", "si podrías hablar un poco más lentamente cuando íbamos allí", "P_NEW_CONDITIONAL", 9],
+      ["could you say that again a little more slowly?", "¿podrías decir eso otra vez un poco más lentamente?", "P_NEW_CONDITIONAL", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P_NEW_CONDITIONAL",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0061L03 LEGOs available"
+  }
+}

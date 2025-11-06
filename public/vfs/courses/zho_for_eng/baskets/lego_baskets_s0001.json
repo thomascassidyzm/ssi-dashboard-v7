@@ -1,0 +1,181 @@
+{
+  "version": "curated_v7_chinese",
+  "seed": "S0001",
+  "course_direction": "Chinese for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Chinese)",
+  "seed_pair": {
+    "known": "I want to speak Chinese with you now.",
+    "target": "我现在想和你说中文"
+  },
+  "patterns_introduced": "P01_want_to_verb",
+  "cumulative_patterns": ["P01_want_to_verb"],
+  "cumulative_legos": 6,
+
+  "S0001L01": {
+    "lego": ["I", "我"],
+    "type": "A",
+    "available_legos": 0,
+    "available_patterns": [],
+    "practice_phrases": [
+      ["I", "我", null, 1],
+      ["I now", "我现在", null, 2],
+      ["I want", "我想", "P01_want_to_verb", 2],
+      ["I speak", "我说", null, 2],
+      ["I want speak", "我想说", "P01_want_to_verb", 2],
+      ["I now want", "我现在想", "P01_want_to_verb", 2],
+      ["I speak Chinese", "我说中文", null, 2],
+      ["I want speak Chinese", "我想说中文", "P01_want_to_verb", 3],
+      ["I now want speak Chinese with you", "我现在想和你说中文", "P01_want_to_verb", 4],
+      ["I want speak with you now", "我想和你说现在", "P01_want_to_verb", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01_want_to_verb",
+    "full_seed_included": "NO - missing other LEGOs",
+    "gate_compliance": "STRICT - Only S0001 LEGOs being introduced"
+  },
+
+  "S0001L02": {
+    "lego": ["now", "现在"],
+    "type": "A",
+    "available_legos": 1,
+    "available_patterns": ["P01_want_to_verb"],
+    "practice_phrases": [
+      ["now", "现在", null, 1],
+      ["I now", "我现在", null, 2],
+      ["now I want", "现在我想", "P01_want_to_verb", 2],
+      ["I want now", "我想现在", "P01_want_to_verb", 2],
+      ["I now want", "我现在想", "P01_want_to_verb", 2],
+      ["now I speak", "现在我说", null, 2],
+      ["I now speak", "我现在说", null, 2],
+      ["I now want speak", "我现在想说", "P01_want_to_verb", 3],
+      ["I now want speak Chinese with you", "我现在想和你说中文", "P01_want_to_verb", 4],
+      ["I want speak Chinese now", "我想说中文现在", "P01_want_to_verb", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01_want_to_verb",
+    "full_seed_included": "NO - missing other LEGOs",
+    "gate_compliance": "STRICT - Only S0001L01 + S0001L02 available"
+  },
+
+  "S0001L03": {
+    "lego": ["want", "想"],
+    "type": "A",
+    "available_legos": 2,
+    "available_patterns": ["P01_want_to_verb"],
+    "practice_phrases": [
+      ["want", "想", "P01_want_to_verb", 1],
+      ["I want", "我想", "P01_want_to_verb", 2],
+      ["now want", "现在想", "P01_want_to_verb", 2],
+      ["I now want", "我现在想", "P01_want_to_verb", 2],
+      ["I want speak", "我想说", "P01_want_to_verb", 2],
+      ["want speak", "想说", "P01_want_to_verb", 2],
+      ["I want now", "我想现在", "P01_want_to_verb", 2],
+      ["I now want speak", "我现在想说", "P01_want_to_verb", 3],
+      ["I now want speak Chinese with you", "我现在想和你说中文", "P01_want_to_verb", 4],
+      ["I want speak Chinese now", "我想说中文现在", "P01_want_to_verb", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01_want_to_verb",
+    "full_seed_included": "NO - missing other LEGOs",
+    "gate_compliance": "STRICT - Only S0001L01-L03 available"
+  },
+
+  "S0001L04": {
+    "lego": ["with you", "和你"],
+    "type": "M",
+    "available_legos": 3,
+    "available_patterns": ["P01_want_to_verb"],
+    "practice_phrases": [
+      ["with you", "和你", null, 1],
+      ["I with you", "我和你", null, 2],
+      ["now with you", "现在和你", null, 2],
+      ["I want with you", "我想和你", "P01_want_to_verb", 2],
+      ["with you speak", "和你说", null, 2],
+      ["I want speak with you", "我想和你说", "P01_want_to_verb", 3],
+      ["with you now", "和你现在", null, 2],
+      ["I now want with you", "我现在想和你", "P01_want_to_verb", 3],
+      ["I now want speak Chinese with you", "我现在想和你说中文", "P01_want_to_verb", 4],
+      ["I want speak with you now", "我想和你说现在", "P01_want_to_verb", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01_want_to_verb",
+    "full_seed_included": "NO - missing other LEGOs",
+    "gate_compliance": "STRICT - Only S0001L01-L04 available"
+  },
+
+  "S0001L05": {
+    "lego": ["speak", "说"],
+    "type": "A",
+    "available_legos": 4,
+    "available_patterns": ["P01_want_to_verb"],
+    "practice_phrases": [
+      ["speak", "说", null, 1],
+      ["I speak", "我说", null, 2],
+      ["now speak", "现在说", null, 2],
+      ["want speak", "想说", "P01_want_to_verb", 2],
+      ["I want speak", "我想说", "P01_want_to_verb", 2],
+      ["speak with you", "和你说", null, 2],
+      ["I now speak", "我现在说", null, 2],
+      ["I now want speak", "我现在想说", "P01_want_to_verb", 3],
+      ["I now want speak Chinese with you", "我现在想和你说中文", "P01_want_to_verb", 4],
+      ["I want speak with you now", "我想和你说现在", "P01_want_to_verb", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01_want_to_verb",
+    "full_seed_included": "NO - missing 'Chinese'",
+    "gate_compliance": "STRICT - Only S0001L01-L05 available"
+  },
+
+  "S0001L06": {
+    "lego": ["Chinese", "中文"],
+    "type": "A",
+    "available_legos": 5,
+    "available_patterns": ["P01_want_to_verb"],
+    "practice_phrases": [
+      ["Chinese", "中文", null, 1],
+      ["I Chinese", "我中文", null, 2],
+      ["speak Chinese", "说中文", null, 2],
+      ["I speak Chinese", "我说中文", null, 2],
+      ["I want Chinese", "我想中文", "P01_want_to_verb", 2],
+      ["want speak Chinese", "想说中文", "P01_want_to_verb", 2],
+      ["Chinese with you", "中文和你", null, 2],
+      ["I want speak Chinese", "我想说中文", "P01_want_to_verb", 3],
+      ["I now want speak Chinese with you", "我现在想和你说中文", "P01_want_to_verb", 4],
+      ["I want speak Chinese with you now", "我想和你说中文现在", "P01_want_to_verb", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01_want_to_verb",
+    "full_seed_included": "YES - phrase 9",
+    "gate_compliance": "STRICT - Only S0001L01-L06 available"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0097",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "Yes I'm ready to go as soon as you want.",
+    "target": "Sí, estoy preparado para ir tan pronto como quieras."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+  "cumulative_legos": 285,
+
+  "S0097L01": {
+    "lego": ["yes", "sí"],
+    "type": "A",
+    "available_legos": 281,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["yes", "sí", null, 1],
+      ["yes here", "sí aquí", null, 2],
+      ["but yes", "pero sí", null, 2],
+      ["I think that yes", "pienso que sí", null, 3],
+      ["yes I'm ready", "sí estoy preparado", null, 2],
+      ["if yes", "si sí", null, 2],
+      ["because yes", "porque sí", null, 2],
+      ["I'm not sure yes", "no estoy seguro sí", null, 3],
+      ["yes I'm ready to go as soon as you want", "sí estoy preparado para ir tan pronto como quieras", "P10", 7],
+      ["yes I'm ready to go home on the next bus", "sí estoy preparado para ir a casa en el próximo autobús", null, 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 0,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P10",
+    "full_seed_included": "NO - missing 'I'm ready', 'to go', 'as soon as you want'",
+    "gate_compliance": "STRICT - Only S0001-S0096 LEGOs available"
+  },
+
+  "S0097L02": {
+    "lego": ["I'm ready", "estoy preparado"],
+    "type": "M",
+    "available_legos": 282,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["I'm ready", "estoy preparado", null, 1],
+      ["yes I'm ready", "sí estoy preparado", null, 2],
+      ["I want I'm ready", "quiero estoy preparado", "P01", 2],
+      ["but I'm ready", "pero estoy preparado", null, 2],
+      ["I'm ready to go", "estoy preparado para ir", null, 3],
+      ["if I'm ready", "si estoy preparado", null, 2],
+      ["because I'm ready", "porque estoy preparado", null, 2],
+      ["I think that I'm ready", "pienso que estoy preparado", null, 3],
+      ["yes I'm ready to go as soon as you want", "sí estoy preparado para ir tan pronto como quieras", "P10", 7],
+      ["yes I'm ready to go home on the next bus", "sí estoy preparado para ir a casa en el próximo autobús", null, 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 0,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P10",
+    "full_seed_included": "NO - missing 'to go', 'as soon as you want'",
+    "gate_compliance": "STRICT - Only S0001-S0097L01 LEGOs available"
+  },
+
+  "S0097L03": {
+    "lego": ["as soon as you want", "tan pronto como quieras"],
+    "type": "M",
+    "available_legos": 283,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["as soon as you want", "tan pronto como quieras", "P10", 1],
+      ["to go as soon as you want", "para ir tan pronto como quieras", "P10", 2],
+      ["I want as soon as you want", "quiero tan pronto como quieras", "P10", 2],
+      ["but as soon as you want", "pero tan pronto como quieras", "P10", 2],
+      ["I'm ready to go as soon as you want", "estoy preparado para ir tan pronto como quieras", "P10", 3],
+      ["if as soon as you want", "si tan pronto como quieras", "P10", 2],
+      ["because as soon as you want", "porque tan pronto como quieras", "P10", 2],
+      ["I'm not sure as soon as you want", "no estoy seguro tan pronto como quieras", "P10", 3],
+      ["yes I'm ready to go as soon as you want I need a little more time", "sí estoy preparado para ir tan pronto como quieras necesito un poco más de tiempo", "P10", 10],
+      ["yes I'm ready to go as soon as you want.", "sí estoy preparado para ir tan pronto como quieras.", "P10", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 0,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P10",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0097L02 LEGOs available"
+  }
+}

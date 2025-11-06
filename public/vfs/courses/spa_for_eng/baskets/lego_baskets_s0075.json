@@ -1,0 +1,41 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0075",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "Have you got more to learn?",
+    "target": "¿Tienes más que aprender?"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+  "cumulative_legos": 226,
+
+  "S0075L01": {
+    "lego": ["have you got more to learn", "tienes más que aprender"],
+    "type": "M",
+    "available_legos": 225,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "practice_phrases": [
+      ["have you got more to learn", "tienes más que aprender", null, 1],
+      ["have you got more to learn here", "tienes más que aprender aquí", null, 2],
+      ["but have you got more to learn", "pero tienes más que aprender", null, 2],
+      ["I think that have you got more to learn", "pienso que tienes más que aprender", null, 3],
+      ["have you got more to learn yesterday", "tienes más que aprender ayer", null, 3],
+      ["if have you got more to learn", "si tienes más que aprender", null, 2],
+      ["because have you got more to learn", "porque tienes más que aprender", null, 2],
+      ["I'm not sure if have you got more to learn", "no estoy seguro si tienes más que aprender", null, 4],
+      ["thank you very much for helping me to understand have you got more to learn", "muchas gracias por ayudarme a comprender tienes más que aprender", null, 8],
+      ["have you got more to learn?", "¿tienes más que aprender?", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "None",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0074 LEGOs available"
+  }
+}

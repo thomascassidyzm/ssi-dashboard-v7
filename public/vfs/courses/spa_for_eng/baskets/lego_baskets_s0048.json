@@ -1,0 +1,41 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0048",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I don't care about making mistakes.",
+    "target": "No me importa hacer errores."
+  },
+  "patterns_introduced": "P_NEW_GUSTAR_LIKE",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+  "cumulative_legos": 140,
+
+  "S0048L01": {
+    "lego": ["I don't care", "no me importa"],
+    "type": "M",
+    "available_legos": 139,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["I don't care", "no me importa", "P_NEW_GUSTAR_LIKE", 1],
+      ["I don't care about", "no me importa sobre", "P_NEW_GUSTAR_LIKE", 2],
+      ["I don't care if", "no me importa si", "P_NEW_GUSTAR_LIKE", 2],
+      ["I don't care about it", "no me importa eso", "P_NEW_GUSTAR_LIKE", 2],
+      ["I don't care today", "no me importa hoy", "P_NEW_GUSTAR_LIKE", 2],
+      ["I don't care to make mistakes", "no me importa hacer errores", "P_NEW_GUSTAR_LIKE", 2],
+      ["I don't care if I need to improve", "no me importa si necesito mejorar", "P_NEW_GUSTAR_LIKE", 3],
+      ["I don't care about making mistakes", "no me importa hacer errores", "P_NEW_GUSTAR_LIKE", 2],
+      ["but I don't care if other people are here", "pero no me importa si otras personas están aquí", "P_NEW_GUSTAR_LIKE", 6],
+      ["I don't care about making mistakes.", "no me importa hacer errores.", "P_NEW_GUSTAR_LIKE", 2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P_NEW_GUSTAR_LIKE",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0047 LEGOs available"
+  }
+}

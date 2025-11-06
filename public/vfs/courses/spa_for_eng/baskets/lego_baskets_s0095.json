@@ -1,0 +1,97 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0095",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "Are you ready to go home on the next bus?",
+    "target": "¿Estás preparado para ir a casa en el próximo autobús?"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+  "cumulative_legos": 280,
+
+  "S0095L01": {
+    "lego": ["you are ready", "estás preparado"],
+    "type": "M",
+    "available_legos": 276,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["you are ready", "estás preparado", null, 1],
+      ["you are ready here", "estás preparado aquí", null, 2],
+      ["but you are ready", "pero estás preparado", null, 2],
+      ["I think that you are ready", "pienso que estás preparado", null, 3],
+      ["you are ready to go", "estás preparado para ir", null, 3],
+      ["if you are ready", "si estás preparado", null, 2],
+      ["because you are ready", "porque estás preparado", null, 2],
+      ["I'm not sure if you are ready", "no estoy seguro si estás preparado", null, 4],
+      ["I think that you are ready to go home on the next bus", "pienso que estás preparado para ir a casa en el próximo autobús", null, 9],
+      ["it's time to go now but you are ready", "es hora de ir ahora pero estás preparado", "P_NEW_IMPERSONAL", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P_NEW_IMPERSONAL",
+    "full_seed_included": "NO - missing 'to go', 'home', 'on the next bus'",
+    "gate_compliance": "STRICT - Only S0001-S0094 LEGOs available"
+  },
+
+  "S0095L03": {
+    "lego": ["home", "a casa"],
+    "type": "M",
+    "available_legos": 277,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["home", "a casa", null, 1],
+      ["to go home", "para ir a casa", null, 2],
+      ["I want home", "quiero a casa", "P01", 2],
+      ["but home", "pero a casa", null, 2],
+      ["you are ready to go home", "estás preparado para ir a casa", null, 3],
+      ["if home", "si a casa", null, 2],
+      ["because home", "porque a casa", null, 2],
+      ["I'm not sure home", "no estoy seguro a casa", null, 3],
+      ["I think that you are ready to go home on the next bus", "pienso que estás preparado para ir a casa en el próximo autobús", null, 9],
+      ["it's time to go home now", "es hora de ir a casa ahora", "P_NEW_IMPERSONAL", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P_NEW_IMPERSONAL",
+    "full_seed_included": "NO - missing 'on the next bus'",
+    "gate_compliance": "STRICT - Only S0001-S0095L01 LEGOs available"
+  },
+
+  "S0095L04": {
+    "lego": ["on the next bus", "en el próximo autobús"],
+    "type": "M",
+    "available_legos": 278,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["on the next bus", "en el próximo autobús", null, 1],
+      ["to go home on the next bus", "para ir a casa en el próximo autobús", null, 2],
+      ["I want on the next bus", "quiero en el próximo autobús", "P01", 2],
+      ["but on the next bus", "pero en el próximo autobús", null, 2],
+      ["you are ready to go home on the next bus", "estás preparado para ir a casa en el próximo autobús", null, 3],
+      ["if on the next bus", "si en el próximo autobús", null, 2],
+      ["because on the next bus", "porque en el próximo autobús", null, 2],
+      ["I'm not sure on the next bus", "no estoy seguro en el próximo autobús", null, 3],
+      ["I think that you are ready to go home on the next bus unfortunately", "pienso que estás preparado para ir a casa en el próximo autobús desafortunadamente", null, 9],
+      ["are you ready to go home on the next bus?", "¿estás preparado para ir a casa en el próximo autobús?", null, 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 0,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0095L03 LEGOs available"
+  }
+}

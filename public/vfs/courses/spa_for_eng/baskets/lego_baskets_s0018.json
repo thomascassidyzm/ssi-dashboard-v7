@@ -1,0 +1,121 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0018",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "We want to meet at six o'clock this evening.",
+    "target": "Queremos reunirnos a las seis esta noche."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+  "cumulative_legos": 54,
+
+  "S0018L01": {
+    "lego": ["we want", "queremos"],
+    "type": "A",
+    "available_legos": 50,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["we want", "queremos", "P01", 1],
+      ["we want to speak", "queremos hablar", "P01", 2],
+      ["we want to speak Spanish", "queremos hablar español", "P01", 3],
+      ["we want to learn", "queremos aprender", "P01", 2],
+      ["we want to come back", "queremos volver", "P01", 2],
+      ["we want to find out", "queremos descubrir", "P01", 2],
+      ["we want to speak tomorrow", "queremos hablar mañana", "P01", 3],
+      ["we want to speak Spanish with you", "queremos hablar español contigo", "P01", 4],
+      ["we want to come back later on and speak", "queremos volver más tarde y hablar", "P01", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01",
+    "full_seed_included": "NO - missing 'to meet', 'at six o'clock', 'this evening'",
+    "gate_compliance": "STRICT - Only S0001-S0017 LEGOs available"
+  },
+
+  "S0018L02": {
+    "lego": ["to meet", "reunirnos"],
+    "type": "A",
+    "available_legos": 51,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["to meet", "reunirnos", null, 1],
+      ["we want to meet", "queremos reunirnos", "P01", 2],
+      ["I want to meet", "quiero reunirnos", "P01", 2],
+      ["he wants to meet", "él quiere reunirnos", "P01", 3],
+      ["we want to meet tomorrow", "queremos reunirnos mañana", "P01", 3],
+      ["we want to meet later on", "queremos reunirnos más tarde", "P01", 3],
+      ["I'm going to meet", "voy a reunirnos", "P03", 2],
+      ["we want to meet with everyone else", "queremos reunirnos con todos los demás", "P01", 4],
+      ["she wants to meet today and he wants to meet tomorrow", "ella quiere reunirnos hoy y él quiere reunirnos mañana", "P01", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P03",
+    "full_seed_included": "NO - missing 'at six o'clock' and 'this evening'",
+    "gate_compliance": "STRICT - Only S0001-S0018L01 LEGOs available"
+  },
+
+  "S0018L03": {
+    "lego": ["at six o'clock", "a las seis"],
+    "type": "M",
+    "available_legos": 52,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["at six o'clock", "a las seis", null, 1],
+      ["we want to meet at six o'clock", "queremos reunirnos a las seis", "P01", 3],
+      ["I want to speak at six o'clock", "quiero hablar a las seis", "P01", 3],
+      ["he wants to come back at six o'clock", "él quiere volver a las seis", "P01", 4],
+      ["we want to meet at six o'clock tomorrow", "queremos reunirnos a las seis mañana", "P01", 4],
+      ["I'm going to speak at six o'clock", "voy a hablar a las seis", "P03", 4],
+      ["she wants to find out at six o'clock", "ella quiere descubrir a las seis", "P01", 4],
+      ["we want to speak Spanish at six o'clock", "queremos hablar español a las seis", "P01", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 5,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P03",
+    "full_seed_included": "NO - missing 'this evening'",
+    "gate_compliance": "STRICT - Only S0001-S0018L02 LEGOs available"
+  },
+
+  "S0018L04": {
+    "lego": ["this evening", "esta noche"],
+    "type": "M",
+    "available_legos": 53,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["this evening", "esta noche", null, 1],
+      ["I want to speak this evening", "quiero hablar esta noche", "P01", 3],
+      ["we want to meet this evening", "queremos reunirnos esta noche", "P01", 3],
+      ["we want to meet at six o'clock this evening", "queremos reunirnos a las seis esta noche", "P01", 4],
+      ["he wants to come back this evening", "él quiere volver esta noche", "P01", 4],
+      ["I'm going to speak Spanish this evening", "voy a hablar español esta noche", "P03", 4],
+      ["she wants to find out what the answer is this evening", "ella quiere descubrir cuál es la respuesta esta noche", "P01", 6],
+      ["we want to speak with you at six o'clock this evening", "queremos hablar contigo a las seis esta noche", "P01", 6],
+      ["I can speak Spanish and we want to meet this evening", "puedo hablar español y queremos reunirnos esta noche", "P05", 7],
+      ["we want to meet at six o'clock this evening.", "queremos reunirnos a las seis esta noche.", "P01", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P03, P05",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0018L03 LEGOs available"
+  }
+}

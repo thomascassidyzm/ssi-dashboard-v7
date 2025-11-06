@@ -1,0 +1,153 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0051",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I enjoy doing interesting things with my friends.",
+    "target": "Disfruto hacer cosas interesantes con mis amigos."
+  },
+  "patterns_introduced": "P_NEW_DISFRUTO",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+  "cumulative_legos": 150,
+
+  "S0051L01": {
+    "lego": ["I enjoy", "disfruto"],
+    "type": "A",
+    "available_legos": 145,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["I enjoy", "disfruto", "P_NEW_DISFRUTO", 1],
+      ["I enjoy Spanish", "disfruto español", "P_NEW_DISFRUTO", 2],
+      ["but I enjoy", "pero disfruto", "P_NEW_DISFRUTO", 2],
+      ["I enjoy to speak", "disfruto hablar", "P_NEW_DISFRUTO", 2],
+      ["I enjoy to learn", "disfruto aprender", "P_NEW_DISFRUTO", 2],
+      ["I enjoy to speak Spanish", "disfruto hablar español", "P_NEW_DISFRUTO", 3],
+      ["I enjoy or I don't enjoy", "disfruto o no disfruto", "P_NEW_DISFRUTO", 3],
+      ["because I enjoy to make mistakes", "porque disfruto hacer errores", "P_NEW_DISFRUTO", 3],
+      ["I enjoy when other people speak Spanish", "disfruto cuando otras personas hablan español", "P_NEW_DISFRUTO", 4],
+      ["but I enjoy to think about it", "pero disfruto pensar sobre eso", "P_NEW_DISFRUTO", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 4,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P_NEW_DISFRUTO",
+    "full_seed_included": "NO - missing 'to do/make', 'things', 'interesting', 'my friends'",
+    "gate_compliance": "STRICT - Only S0001-S0050 LEGOs available"
+  },
+
+  "S0051L02": {
+    "lego": ["to do/make", "hacer"],
+    "type": "A",
+    "available_legos": 146,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "practice_phrases": [
+      ["to do", "hacer", null, 1],
+      ["I enjoy to do", "disfruto hacer", "P_NEW_DISFRUTO", 2],
+      ["I want to do", "quiero hacer", "P01", 2],
+      ["I need to do", "necesito hacer", "P17", 2],
+      ["to do or to make", "hacer o hacer", null, 2],
+      ["I like to do everything", "me gusta hacer todo", "P_NEW_GUSTAR", 3],
+      ["because I enjoy to do", "porque disfruto hacer", "P_NEW_DISFRUTO", 2],
+      ["I don't need to do everything", "no necesito hacer todo", "P17", 3],
+      ["if I need to do something", "si necesito hacer algo", "P17", 3],
+      ["but I enjoy to do interesting things", "pero disfruto hacer cosas interesantes", "P_NEW_DISFRUTO", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P17, P_NEW_GUSTAR, P_NEW_DISFRUTO",
+    "full_seed_included": "NO - missing 'things', 'interesting', 'my friends'",
+    "gate_compliance": "STRICT - Only S0001-S0051L01 LEGOs available"
+  },
+
+  "S0051L03": {
+    "lego": ["things", "cosas"],
+    "type": "A",
+    "available_legos": 147,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "practice_phrases": [
+      ["things", "cosas", null, 1],
+      ["to do things", "hacer cosas", null, 2],
+      ["I enjoy things", "disfruto cosas", "P_NEW_DISFRUTO", 2],
+      ["I enjoy to do things", "disfruto hacer cosas", "P_NEW_DISFRUTO", 2],
+      ["interesting things", "cosas interesantes", null, 2],
+      ["I like interesting things", "me gusta cosas interesantes", "P_NEW_GUSTAR", 2],
+      ["but I enjoy to do things", "pero disfruto hacer cosas", "P_NEW_DISFRUTO", 2],
+      ["I enjoy to do interesting things", "disfruto hacer cosas interesantes", "P_NEW_DISFRUTO", 3],
+      ["because I think that it's a good thing", "porque pienso que es una cosa buena", "P_NEW_IMPERSONAL", 5],
+      ["I enjoy to do things or I don't enjoy", "disfruto hacer cosas o no disfruto", "P_NEW_DISFRUTO", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P_NEW_GUSTAR, P_NEW_IMPERSONAL, P_NEW_DISFRUTO",
+    "full_seed_included": "NO - missing 'my friends'",
+    "gate_compliance": "STRICT - Only S0001-S0051L02 LEGOs available"
+  },
+
+  "S0051L04": {
+    "lego": ["interesting", "interesantes"],
+    "type": "A",
+    "available_legos": 148,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "practice_phrases": [
+      ["interesting", "interesantes", null, 1],
+      ["interesting things", "cosas interesantes", null, 2],
+      ["I enjoy interesting", "disfruto interesantes", "P_NEW_DISFRUTO", 2],
+      ["to do interesting things", "hacer cosas interesantes", null, 2],
+      ["I like interesting things", "me gusta cosas interesantes", "P_NEW_GUSTAR", 2],
+      ["I enjoy to do interesting things", "disfruto hacer cosas interesantes", "P_NEW_DISFRUTO", 3],
+      ["because interesting things", "porque cosas interesantes", null, 2],
+      ["I enjoy interesting things with my friends", "disfruto cosas interesantes con mis amigos", "P_NEW_DISFRUTO", 4],
+      ["but I enjoy to do interesting things", "pero disfruto hacer cosas interesantes", "P_NEW_DISFRUTO", 3],
+      ["if I enjoy to do interesting things", "si disfruto hacer cosas interesantes", "P_NEW_DISFRUTO", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P_NEW_GUSTAR, P_NEW_DISFRUTO",
+    "full_seed_included": "NO - missing 'my friends'",
+    "gate_compliance": "STRICT - Only S0001-S0051L03 LEGOs available"
+  },
+
+  "S0051L05": {
+    "lego": ["my friends", "mis amigos"],
+    "type": "M",
+    "available_legos": 149,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "practice_phrases": [
+      ["my friends", "mis amigos", null, 1],
+      ["with my friends", "con mis amigos", null, 2],
+      ["I speak with my friends", "hablo con mis amigos", "P05", 3],
+      ["I enjoy with my friends", "disfruto con mis amigos", "P_NEW_DISFRUTO", 2],
+      ["to do things with my friends", "hacer cosas con mis amigos", null, 3],
+      ["I enjoy to do things with my friends", "disfruto hacer cosas con mis amigos", "P_NEW_DISFRUTO", 4],
+      ["but I enjoy with my friends", "pero disfruto con mis amigos", "P_NEW_DISFRUTO", 2],
+      ["I enjoy to do interesting things with my friends", "disfruto hacer cosas interesantes con mis amigos", "P_NEW_DISFRUTO", 5],
+      ["because I enjoy to speak Spanish with my friends", "porque disfruto hablar español con mis amigos", "P_NEW_DISFRUTO", 5],
+      ["I enjoy doing interesting things with my friends.", "disfruto hacer cosas interesantes con mis amigos.", "P_NEW_DISFRUTO", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P05, P_NEW_DISFRUTO",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0051L04 LEGOs available"
+  }
+}

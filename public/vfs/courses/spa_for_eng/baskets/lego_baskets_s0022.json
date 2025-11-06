@@ -1,0 +1,93 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0022",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "Because I want to meet people who speak Spanish.",
+    "target": "Porque quiero encontrar personas que hablan español."
+  },
+  "patterns_introduced": "P_RELATIVE",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE"],
+  "cumulative_legos": 65,
+
+  "S0022L01": {
+    "lego": ["because", "porque"],
+    "type": "A",
+    "available_legos": 62,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["because", "porque", null, 1],
+      ["I speak because", "hablo porque", "P05", 2],
+      ["because I want to speak", "porque quiero hablar", "P01", 3],
+      ["because you speak Spanish", "porque hablas español", "P05", 3],
+      ["I want to learn because you speak very well", "quiero aprender porque hablas muy bien", "P01", 6],
+      ["why are you learning because I speak Spanish", "por qué estás aprendiendo porque hablo español", "P12", 6],
+      ["I speak Spanish and you speak because you want to learn", "hablo español y hablas porque quieres aprender", "P05", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 0,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P05, P12",
+    "full_seed_included": "NO - missing 'to meet' and 'people who speak Spanish'",
+    "gate_compliance": "STRICT - Only S0001-S0021 LEGOs available",
+    "note": "Fourth conjunction now available - can use with si, y, pero"
+  },
+
+  "S0022L02": {
+    "lego": ["to meet", "encontrar"],
+    "type": "A",
+    "available_legos": 63,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["to meet", "encontrar", null, 1],
+      ["I want to meet", "quiero encontrar", "P01", 2],
+      ["he wants to meet", "él quiere encontrar", "P01", 3],
+      ["I'm going to meet", "voy a encontrar", "P03", 3],
+      ["I want to meet tomorrow", "quiero encontrar mañana", "P01", 3],
+      ["because I want to meet", "porque quiero encontrar", "P01", 3],
+      ["I want to meet his name", "quiero encontrar su nombre", "P01", 3],
+      ["he wants to meet quickly but I don't want to meet", "él quiere encontrar rápidamente pero no quiero encontrar", "P01", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 5,
+      "longer_4_5": 0,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P03",
+    "full_seed_included": "NO - missing 'people who speak Spanish'",
+    "gate_compliance": "STRICT - Only S0001-S0022L01 LEGOs available"
+  },
+
+  "S0022L03": {
+    "lego": ["people who speak", "personas que hablan"],
+    "type": "M",
+    "available_legos": 64,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE"],
+    "practice_phrases": [
+      ["people who speak", "personas que hablan", "P_RELATIVE", 1],
+      ["to meet people who speak", "encontrar personas que hablan", null, 2],
+      ["I want to meet people who speak", "quiero encontrar personas que hablan", "P01", 3],
+      ["people who speak Spanish", "personas que hablan español", "P_RELATIVE", 2],
+      ["I want to meet people who speak Spanish", "quiero encontrar personas que hablan español", "P01", 4],
+      ["people who speak very well", "personas que hablan muy bien", "P_RELATIVE", 3],
+      ["because I want to meet people who speak Spanish", "porque quiero encontrar personas que hablan español", "P01", 5],
+      ["I'm going to meet people who speak Spanish tomorrow", "voy a encontrar personas que hablan español mañana", "P03", 5],
+      ["why you want to meet people who speak Spanish quickly", "por qué quieres encontrar personas que hablan español rápidamente", "P12", 6],
+      ["because I want to meet people who speak Spanish.", "porque quiero encontrar personas que hablan español.", "P01", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P03, P12, P_RELATIVE",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0022L02 LEGOs available"
+  }
+}

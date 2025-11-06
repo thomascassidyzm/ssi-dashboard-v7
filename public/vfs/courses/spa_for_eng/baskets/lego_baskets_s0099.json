@@ -1,0 +1,69 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0099",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "You should ask yourself why it's not working.",
+    "target": "Deberías preguntarte por qué no está trabajando."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE", "P_NEW_MODAL"],
+  "cumulative_legos": 291,
+
+  "S0099L01": {
+    "lego": ["you should", "deberías"],
+    "type": "A",
+    "available_legos": 289,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE", "P_NEW_MODAL"],
+    "practice_phrases": [
+      ["you should", "deberías", "P_NEW_MODAL", 1],
+      ["you should here", "deberías aquí", "P_NEW_MODAL", 2],
+      ["but you should", "pero deberías", "P_NEW_MODAL", 1],
+      ["I think that you should", "pienso que deberías", "P_NEW_MODAL", 3],
+      ["you should ask yourself", "deberías preguntarte", "P_NEW_MODAL", 2],
+      ["if you should", "si deberías", "P_NEW_MODAL", 1],
+      ["because you should", "porque deberías", "P_NEW_MODAL", 1],
+      ["I'm not sure if you should", "no estoy seguro si deberías", "P_NEW_MODAL", 4],
+      ["I think that you should ask yourself why it's not working in time", "pienso que deberías preguntarte por qué no está trabajando a tiempo", "P_NEW_MODAL", 9],
+      ["yes you are ready but you should consider something else", "sí estás preparado pero deberías considerar otra cosa", "P_NEW_MODAL", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P_NEW_MODAL",
+    "full_seed_included": "NO - missing 'to ask yourself', 'why', 'it's not working'",
+    "gate_compliance": "STRICT - Only S0001-S0098 LEGOs available"
+  },
+
+  "S0099L03": {
+    "lego": ["it's not working", "no está trabajando"],
+    "type": "M",
+    "available_legos": 290,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE", "P_NEW_MODAL"],
+    "practice_phrases": [
+      ["it's not working", "no está trabajando", null, 1],
+      ["why it's not working", "por qué no está trabajando", "P02", 2],
+      ["I want it's not working", "quiero no está trabajando", "P01", 2],
+      ["but it's not working", "pero no está trabajando", null, 2],
+      ["you should ask yourself why it's not working", "deberías preguntarte por qué no está trabajando", "P_NEW_MODAL", 3],
+      ["if it's not working", "si no está trabajando", null, 2],
+      ["because it's not working", "porque no está trabajando", null, 2],
+      ["I'm not sure it's not working", "no estoy seguro no está trabajando", null, 3],
+      ["I think that you should ask yourself why it's not working for a while", "pienso que deberías preguntarte por qué no está trabajando por un tiempo", "P_NEW_MODAL", 10],
+      ["you should ask yourself why it's not working.", "deberías preguntarte por qué no está trabajando.", "P_NEW_MODAL", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 0,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P02, P_NEW_MODAL",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0099L01 LEGOs available"
+  }
+}

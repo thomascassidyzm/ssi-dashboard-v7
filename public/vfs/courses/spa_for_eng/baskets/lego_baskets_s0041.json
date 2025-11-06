@@ -1,0 +1,125 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0041",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I feel okay, but I'm starting to feel tired.",
+    "target": "Me siento bien, pero estoy comenzando a sentirme cansado."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+  "cumulative_legos": 122,
+
+  "S0041L01": {
+    "lego": ["I feel", "me siento"],
+    "type": "M",
+    "available_legos": 118,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["I feel", "me siento", "P_NEW_REFLEXIVE", 1],
+      ["I feel ready", "me siento preparado", "P_NEW_REFLEXIVE", 2],
+      ["I feel better", "me siento mejor", "P_NEW_REFLEXIVE", 2],
+      ["I feel tired", "me siento cansado", "P_NEW_REFLEXIVE", 2],
+      ["how I feel", "cómo me siento", "P12", 2],
+      ["I feel ready to speak", "me siento preparado para hablar", "P_NEW_REFLEXIVE", 3],
+      ["I don't feel ready", "no me siento preparado", "P_NEW_REFLEXIVE", 2],
+      ["I feel better this morning", "me siento mejor esta mañana", "P_NEW_REFLEXIVE", 3],
+      ["how I feel at the moment", "cómo me siento en este momento", "P12", 4],
+      ["I feel better when other people are here", "me siento mejor cuando otras personas están aquí", "P_NEW_REFLEXIVE", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P12, P_NEW_REFLEXIVE",
+    "full_seed_included": "NO - missing 'okay', 'I'm starting to feel', 'tired'",
+    "gate_compliance": "STRICT - Only S0001-S0040 LEGOs available"
+  },
+
+  "S0041L02": {
+    "lego": ["okay", "bien"],
+    "type": "A",
+    "available_legos": 119,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["okay", "bien", null, 1],
+      ["I feel okay", "me siento bien", "P_NEW_REFLEXIVE", 2],
+      ["I wanted okay", "quería bien", "P_NEW_IMPERFECT", 2],
+      ["I speak okay", "hablo bien", "P05", 2],
+      ["I feel okay today", "me siento bien hoy", "P_NEW_REFLEXIVE", 3],
+      ["how I feel okay", "cómo me siento bien", "P12", 3],
+      ["I feel okay at the moment", "me siento bien en este momento", "P_NEW_REFLEXIVE", 3],
+      ["I feel okay but I'm a little tired", "me siento bien pero estoy un poco cansado", "P_NEW_REFLEXIVE", 5],
+      ["I speak Spanish okay when I want", "hablo español bien cuando quiero", "P05", 5],
+      ["I feel okay this morning", "me siento bien esta mañana", "P_NEW_REFLEXIVE", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 4,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P05, P12, P_NEW_IMPERFECT, P_NEW_REFLEXIVE",
+    "full_seed_included": "NO - missing 'I'm starting to feel', 'tired'",
+    "gate_compliance": "STRICT - Only S0001-S0041L01 LEGOs available"
+  },
+
+  "S0041L03": {
+    "lego": ["I'm starting to feel", "estoy comenzando a sentirme"],
+    "type": "M",
+    "available_legos": 120,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["I'm starting to feel", "estoy comenzando a sentirme", "P02", 1],
+      ["I'm starting to feel ready", "estoy comenzando a sentirme preparado", "P02", 2],
+      ["I'm starting to feel better", "estoy comenzando a sentirme mejor", "P02", 2],
+      ["I'm starting to feel tired", "estoy comenzando a sentirme cansado", "P02", 2],
+      ["I'm starting to feel okay", "estoy comenzando a sentirme bien", "P02", 2],
+      ["I'm starting to feel better today", "estoy comenzando a sentirme mejor hoy", "P02", 3],
+      ["but I'm starting to feel tired", "pero estoy comenzando a sentirme cansado", "P02", 2],
+      ["I'm starting to feel ready to speak Spanish", "estoy comenzando a sentirme preparado para hablar español", "P02", 5],
+      ["I'm starting to feel better at the moment", "estoy comenzando a sentirme mejor en este momento", "P02", 4],
+      ["I'm starting to feel okay this morning", "estoy comenzando a sentirme bien esta mañana", "P02", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P02",
+    "full_seed_included": "NO - missing 'tired' as separate LEGO",
+    "gate_compliance": "STRICT - Only S0001-S0041L02 LEGOs available"
+  },
+
+  "S0041L04": {
+    "lego": ["tired", "cansado"],
+    "type": "A",
+    "available_legos": 121,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["tired", "cansado", null, 1],
+      ["I feel tired", "me siento cansado", "P_NEW_REFLEXIVE", 2],
+      ["I'm starting to feel tired", "estoy comenzando a sentirme cansado", "P02", 2],
+      ["I'm a little tired", "estoy un poco cansado", "P02", 2],
+      ["I feel tired today", "me siento cansado hoy", "P_NEW_REFLEXIVE", 3],
+      ["but I'm starting to feel tired", "pero estoy comenzando a sentirme cansado", "P02", 2],
+      ["I feel okay but I'm starting to feel tired", "me siento bien pero estoy comenzando a sentirme cansado", "P_NEW_REFLEXIVE", 4],
+      ["I'm a little tired at the moment", "estoy un poco cansado en este momento", "P02", 4],
+      ["I feel tired when other people are here", "me siento cansado cuando otras personas están aquí", "P_NEW_REFLEXIVE", 5],
+      ["I feel okay, but I'm starting to feel tired.", "me siento bien, pero estoy comenzando a sentirme cansado.", "P_NEW_REFLEXIVE", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P02, P_NEW_REFLEXIVE",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0041L03 LEGOs available"
+  }
+}

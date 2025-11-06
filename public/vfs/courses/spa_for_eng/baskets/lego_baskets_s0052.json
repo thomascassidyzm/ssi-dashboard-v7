@@ -1,0 +1,125 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0052",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "He wanted to write a letter to his friend last week.",
+    "target": "Quería escribir una carta a su amigo la semana pasada."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+  "cumulative_legos": 154,
+
+  "S0052L01": {
+    "lego": ["to write", "escribir"],
+    "type": "A",
+    "available_legos": 150,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "practice_phrases": [
+      ["to write", "escribir", null, 1],
+      ["I want to write", "quiero escribir", "P01", 2],
+      ["I wanted to write", "quería escribir", "P_NEW_IMPERFECT", 2],
+      ["I need to write", "necesito escribir", "P17", 2],
+      ["I enjoy to write", "disfruto escribir", "P_NEW_DISFRUTO", 2],
+      ["but I want to write", "pero quiero escribir", "P01", 2],
+      ["I wanted to write yesterday", "quería escribir ayer", "P_NEW_IMPERFECT", 3],
+      ["because I enjoy to write", "porque disfruto escribir", "P_NEW_DISFRUTO", 2],
+      ["I don't enjoy to write or to read", "no disfruto escribir o leer", "P_NEW_DISFRUTO", 3],
+      ["if I wanted to write something", "si quería escribir algo", "P_NEW_IMPERFECT", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 3,
+      "longer_4_5": 0,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P17, P_NEW_IMPERFECT, P_NEW_DISFRUTO",
+    "full_seed_included": "NO - missing 'a letter', 'to his friend', 'last week'",
+    "gate_compliance": "STRICT - Only S0001-S0051 LEGOs available"
+  },
+
+  "S0052L02": {
+    "lego": ["a letter", "una carta"],
+    "type": "M",
+    "available_legos": 151,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "practice_phrases": [
+      ["a letter", "una carta", null, 1],
+      ["to write a letter", "escribir una carta", null, 2],
+      ["I want a letter", "quiero una carta", "P01", 2],
+      ["I wanted to write a letter", "quería escribir una carta", "P_NEW_IMPERFECT", 3],
+      ["I need to write a letter", "necesito escribir una carta", "P17", 3],
+      ["to read a letter", "leer una carta", null, 2],
+      ["because I wanted a letter", "porque quería una carta", "P_NEW_IMPERFECT", 2],
+      ["but I enjoy to write a letter", "pero disfruto escribir una carta", "P_NEW_DISFRUTO", 3],
+      ["I wanted to write a letter yesterday", "quería escribir una carta ayer", "P_NEW_IMPERFECT", 4],
+      ["if I need to write a letter", "si necesito escribir una carta", "P17", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 4,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P17, P_NEW_IMPERFECT, P_NEW_DISFRUTO",
+    "full_seed_included": "NO - missing 'to his friend', 'last week'",
+    "gate_compliance": "STRICT - Only S0001-S0052L01 LEGOs available"
+  },
+
+  "S0052L03": {
+    "lego": ["to his friend", "a su amigo"],
+    "type": "M",
+    "available_legos": 152,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "practice_phrases": [
+      ["to his friend", "a su amigo", null, 1],
+      ["to write to his friend", "escribir a su amigo", null, 2],
+      ["I wanted to his friend", "quería a su amigo", "P_NEW_IMPERFECT", 2],
+      ["a letter to his friend", "una carta a su amigo", null, 2],
+      ["to write a letter to his friend", "escribir una carta a su amigo", null, 3],
+      ["I wanted to write to his friend", "quería escribir a su amigo", "P_NEW_IMPERFECT", 3],
+      ["because to his friend", "porque a su amigo", null, 2],
+      ["I wanted to write a letter to his friend", "quería escribir una carta a su amigo", "P_NEW_IMPERFECT", 4],
+      ["but I need to write to his friend", "pero necesito escribir a su amigo", "P17", 4],
+      ["I wanted to give a letter to his friend", "quería dar una carta a su amigo", "P_NEW_IMPERFECT", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P17, P_NEW_IMPERFECT",
+    "full_seed_included": "NO - missing 'last week'",
+    "gate_compliance": "STRICT - Only S0001-S0052L02 LEGOs available"
+  },
+
+  "S0052L04": {
+    "lego": ["last week", "la semana pasada"],
+    "type": "M",
+    "available_legos": 153,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO"],
+    "practice_phrases": [
+      ["last week", "la semana pasada", null, 1],
+      ["I wanted last week", "quería la semana pasada", "P_NEW_IMPERFECT", 2],
+      ["I spoke last week", "hablé la semana pasada", "P05", 2],
+      ["to write last week", "escribir la semana pasada", null, 2],
+      ["I started to think last week", "comencé a pensar la semana pasada", "P15", 3],
+      ["I wanted to write last week", "quería escribir la semana pasada", "P_NEW_IMPERFECT", 3],
+      ["because last week", "porque la semana pasada", null, 2],
+      ["I wanted to write a letter last week", "quería escribir una carta la semana pasada", "P_NEW_IMPERFECT", 4],
+      ["I wanted to write a letter to his friend last week", "quería escribir una carta a su amigo la semana pasada", "P_NEW_IMPERFECT", 6],
+      ["he wanted to write a letter to his friend last week.", "quería escribir una carta a su amigo la semana pasada.", "P_NEW_IMPERFECT", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P05, P15, P_NEW_IMPERFECT",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0052L03 LEGOs available"
+  }
+}

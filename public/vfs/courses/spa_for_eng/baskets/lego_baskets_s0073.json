@@ -1,0 +1,69 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0073",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "Thank you very much, but I've got more to learn.",
+    "target": "Muchas gracias, pero tengo más que aprender."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+  "cumulative_legos": 223,
+
+  "S0073L01": {
+    "lego": ["thank you very much", "muchas gracias"],
+    "type": "M",
+    "available_legos": 221,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "practice_phrases": [
+      ["thank you very much", "muchas gracias", null, 1],
+      ["thank you very much but", "muchas gracias pero", null, 2],
+      ["I want thank you very much", "quiero muchas gracias", "P01", 2],
+      ["thank you very much here", "muchas gracias aquí", null, 2],
+      ["thank you very much but I've got more to learn", "muchas gracias pero tengo más que aprender", null, 3],
+      ["if thank you very much", "si muchas gracias", null, 2],
+      ["because thank you very much", "porque muchas gracias", null, 2],
+      ["thank you very much but I think that you're doing very well", "muchas gracias pero pienso que estás haciendo muy bien", "P02", 6],
+      ["I'm not sure if thank you very much at the same time", "no estoy seguro si muchas gracias al mismo tiempo", null, 7],
+      ["could you say that again thank you very much a little more slowly", "podrías decir eso otra vez muchas gracias un poco más lentamente", "P_NEW_CONDITIONAL", 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 0,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P02, P_NEW_CONDITIONAL",
+    "full_seed_included": "NO - missing 'I've got more to learn'",
+    "gate_compliance": "STRICT - Only S0001-S0072 LEGOs available"
+  },
+
+  "S0073L02": {
+    "lego": ["I've got more to learn", "tengo más que aprender"],
+    "type": "M",
+    "available_legos": 222,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "practice_phrases": [
+      ["I've got more to learn", "tengo más que aprender", null, 1],
+      ["thank you very much but I've got more to learn", "muchas gracias pero tengo más que aprender", null, 2],
+      ["I want I've got more to learn", "quiero tengo más que aprender", "P01", 2],
+      ["but I've got more to learn", "pero tengo más que aprender", null, 2],
+      ["I've got more to learn here", "tengo más que aprender aquí", null, 3],
+      ["if I've got more to learn", "si tengo más que aprender", null, 2],
+      ["because I've got more to learn", "porque tengo más que aprender", null, 2],
+      ["I think that I've got more to learn very well", "pienso que tengo más que aprender muy bien", null, 5],
+      ["I'm not sure if I've got more to learn at the same time", "no estoy seguro si tengo más que aprender al mismo tiempo", null, 7],
+      ["thank you very much, but I've got more to learn.", "muchas gracias, pero tengo más que aprender.", null, 2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0073L01 LEGOs available"
+  }
+}

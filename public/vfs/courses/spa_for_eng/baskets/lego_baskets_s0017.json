@@ -1,0 +1,94 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0017",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "She wants to find out what the answer is.",
+    "target": "Ella quiere descubrir cuál es la respuesta."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+  "cumulative_legos": 50,
+
+  "S0017L01": {
+    "lego": ["she", "ella"],
+    "type": "A",
+    "available_legos": 47,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["she", "ella", null, 1],
+      ["she speaks", "ella habla", "P05", 2],
+      ["she speaks Spanish", "ella habla español", "P05", 3],
+      ["she speaks very well", "ella habla muy bien", "P05", 3],
+      ["she speaks all day", "ella habla todo el día", "P05", 3],
+      ["she wants to speak", "ella quiere hablar", "P01", 3],
+      ["I'm not sure if she speaks", "no estoy seguro si ella habla", "P18", 4],
+      ["she wants to come back later on", "ella quiere volver más tarde", "P01", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P05, P18",
+    "full_seed_included": "NO - missing 'wants', 'to find out', 'what the answer is'",
+    "gate_compliance": "STRICT - Only S0001-S0016 LEGOs available"
+  },
+
+  "S0017L02": {
+    "lego": ["to find out", "descubrir"],
+    "type": "A",
+    "available_legos": 48,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["to find out", "descubrir", null, 1],
+      ["I want to find out", "quiero descubrir", "P01", 2],
+      ["she wants to find out", "ella quiere descubrir", "P01", 3],
+      ["he wants to find out", "él quiere descubrir", "P01", 3],
+      ["I'm going to find out", "voy a descubrir", "P03", 3],
+      ["how to find out", "cómo descubrir", "P12", 2],
+      ["I want to find out tomorrow", "quiero descubrir mañana", "P01", 3],
+      ["she wants to find out later on", "ella quiere descubrir más tarde", "P01", 4],
+      ["I'm not sure if she wants to find out", "no estoy seguro si ella quiere descubrir", "P18", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 4,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P03, P12, P18",
+    "full_seed_included": "NO - missing 'what the answer is'",
+    "gate_compliance": "STRICT - Only S0001-S0017L01 LEGOs available"
+  },
+
+  "S0017L03": {
+    "lego": ["what the answer is", "cuál es la respuesta"],
+    "type": "M",
+    "available_legos": 49,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["what the answer is", "cuál es la respuesta", null, 1],
+      ["to find out what the answer is", "descubrir cuál es la respuesta", null, 2],
+      ["I want to find out what the answer is", "quiero descubrir cuál es la respuesta", "P01", 3],
+      ["she wants to find out what the answer is", "ella quiere descubrir cuál es la respuesta", "P01", 3],
+      ["he wants to find out what the answer is", "él quiere descubrir cuál es la respuesta", "P01", 3],
+      ["I'm going to find out what the answer is", "voy a descubrir cuál es la respuesta", "P03", 3],
+      ["I'm not sure what the answer is", "no estoy seguro cuál es la respuesta", "P18", 3],
+      ["she wants to find out what the answer is tomorrow", "ella quiere descubrir cuál es la respuesta mañana", "P01", 4],
+      ["I want to find out what the answer is and he wants to guess", "quiero descubrir cuál es la respuesta y él quiere adivinar", "P01", 6],
+      ["she wants to find out what the answer is.", "ella quiere descubrir cuál es la respuesta.", "P01", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 6,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P03, P18",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0017L02 LEGOs available"
+  }
+}

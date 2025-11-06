@@ -429,17 +429,17 @@ export default {
         const response = await api.get(`/api/courses/${courseCode}/baskets/${seedId}`)
         return response.data
       } catch (err) {
-        // Fallback to static basket files in /baskets/
+        // Fallback to static basket files in VFS structure
         console.log(`[API] Server unavailable, using static basket file for ${seedId}`)
 
         try {
-          const basketRes = await fetch(`/baskets/lego_baskets_${seedId.toLowerCase()}.json`)
+          const basketRes = await fetch(`/vfs/courses/${courseCode}/baskets/lego_baskets_${seedId.toLowerCase()}.json`)
           if (basketRes.ok) {
             const basketData = await basketRes.json()
             return basketData
           }
         } catch (basketErr) {
-          console.error('[API] Failed to load basket from static files:', basketErr)
+          console.error('[API] Failed to load basket from VFS:', basketErr)
         }
 
         throw err

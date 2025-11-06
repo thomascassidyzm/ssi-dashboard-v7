@@ -1,0 +1,69 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0049",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "It's like this, if you know what I mean.",
+    "target": "Es así, si sabes lo que quiero decir."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+  "cumulative_legos": 142,
+
+  "S0049L01": {
+    "lego": ["it's like this", "es así"],
+    "type": "M",
+    "available_legos": 140,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["it's like this", "es así", "P_NEW_IMPERSONAL", 1],
+      ["it's like this today", "es así hoy", "P_NEW_IMPERSONAL", 2],
+      ["it's like this if", "es así si", "P_NEW_IMPERSONAL", 2],
+      ["I think that it's like this", "pienso que es así", "P_NEW_IMPERSONAL", 2],
+      ["it's like this or", "es así o", "P_NEW_IMPERSONAL", 2],
+      ["it's like this at the moment", "es así en este momento", "P_NEW_IMPERSONAL", 3],
+      ["but it's like this", "pero es así", "P_NEW_IMPERSONAL", 2],
+      ["I think that it's like this if I need", "pienso que es así si necesito", "P_NEW_IMPERSONAL", 4],
+      ["it's like this when other people are here", "es así cuando otras personas están aquí", "P_NEW_IMPERSONAL", 5],
+      ["it's like this, if you know", "es así, si sabes", "P_NEW_IMPERSONAL", 2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P_NEW_IMPERSONAL",
+    "full_seed_included": "NO - missing 'you know', 'what I mean'",
+    "gate_compliance": "STRICT - Only S0001-S0048 LEGOs available"
+  },
+
+  "S0049L02": {
+    "lego": ["you know", "sabes"],
+    "type": "A",
+    "available_legos": 141,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["you know", "sabes", null, 1],
+      ["if you know", "si sabes", null, 2],
+      ["you know Spanish", "sabes español", "P05", 2],
+      ["you know everything", "sabes todo", null, 2],
+      ["if you know Spanish", "si sabes español", "P05", 3],
+      ["you know what I mean", "sabes lo que quiero decir", null, 3],
+      ["if you know everything", "si sabes todo", null, 3],
+      ["if you know what I mean", "si sabes lo que quiero decir", null, 3],
+      ["it's like this if you know what I mean", "es así si sabes lo que quiero decir", "P_NEW_IMPERSONAL", 4],
+      ["it's like this, if you know what I mean.", "es así, si sabes lo que quiero decir.", "P_NEW_IMPERSONAL", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 4,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P05, P_NEW_IMPERSONAL",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0049L01 LEGOs available"
+  }
+}

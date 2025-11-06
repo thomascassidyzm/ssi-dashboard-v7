@@ -1,0 +1,145 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0016",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "He wants to come back with everyone else later on.",
+    "target": "Él quiere volver con todos los demás más tarde."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+  "cumulative_legos": 47,
+
+  "S0016L01": {
+    "lego": ["he", "él"],
+    "type": "A",
+    "available_legos": 42,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["he", "él", null, 1],
+      ["he speaks", "él habla", "P05", 2],
+      ["he speaks Spanish", "él habla español", "P05", 3],
+      ["he speaks very well", "él habla muy bien", "P05", 3],
+      ["he speaks all day", "él habla todo el día", "P05", 3],
+      ["I'm not sure if he speaks", "no estoy seguro si él habla", "P18", 4],
+      ["he speaks a little Spanish tomorrow", "él habla un poco de español mañana", "P05", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P05, P18",
+    "full_seed_included": "NO - missing 'wants', 'to come back', 'with everyone else', 'later on'",
+    "gate_compliance": "STRICT - Only S0001-S0015 LEGOs available"
+  },
+
+  "S0016L02": {
+    "lego": ["wants", "quiere"],
+    "type": "A",
+    "available_legos": 43,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["wants", "quiere", null, 1],
+      ["he wants", "él quiere", "P01", 2],
+      ["he wants to speak", "él quiere hablar", "P01", 3],
+      ["he wants to speak Spanish", "él quiere hablar español", "P01", 4],
+      ["he wants to try", "él quiere intentar", "P01", 3],
+      ["he wants to speak with me", "él quiere hablar conmigo", "P01", 4],
+      ["he wants to speak all day", "él quiere hablar todo el día", "P01", 4],
+      ["I'm not sure if he wants to speak tomorrow", "no estoy seguro si él quiere hablar mañana", "P18", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P18",
+    "full_seed_included": "NO - missing 'to come back', 'with everyone else', 'later on'",
+    "gate_compliance": "STRICT - Only S0001-S0016L01 LEGOs available"
+  },
+
+  "S0016L03": {
+    "lego": ["to come back", "volver"],
+    "type": "A",
+    "available_legos": 44,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["to come back", "volver", null, 1],
+      ["I want to come back", "quiero volver", "P01", 2],
+      ["he wants to come back", "él quiere volver", "P01", 3],
+      ["I'm going to come back", "voy a volver", "P03", 3],
+      ["I can come back", "puedo volver", "P05", 2],
+      ["he wants to come back tomorrow", "él quiere volver mañana", "P01", 4],
+      ["I want to come back and speak with you", "quiero volver y hablar contigo", "P01", 5],
+      ["I'm not sure if he wants to come back", "no estoy seguro si él quiere volver", "P18", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P03, P05, P18",
+    "full_seed_included": "NO - missing 'with everyone else' and 'later on'",
+    "gate_compliance": "STRICT - Only S0001-S0016L02 LEGOs available"
+  },
+
+  "S0016L04": {
+    "lego": ["with everyone else", "con todos los demás"],
+    "type": "M",
+    "available_legos": 45,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["with everyone else", "con todos los demás", null, 1],
+      ["to speak with everyone else", "hablar con todos los demás", null, 2],
+      ["he wants to come back with everyone else", "él quiere volver con todos los demás", "P01", 3],
+      ["I want to speak with everyone else", "quiero hablar con todos los demás", "P01", 3],
+      ["I'm going to speak with everyone else", "voy a hablar con todos los demás", "P03", 3],
+      ["he wants to speak Spanish with everyone else", "él quiere hablar español con todos los demás", "P01", 4],
+      ["I can speak with everyone else tomorrow", "puedo hablar con todos los demás mañana", "P05", 4],
+      ["I want you to speak with everyone else", "quiero que hables con todos los demás", "P01", 4],
+      ["he wants to come back with everyone else and speak", "él quiere volver con todos los demás y hablar", "P01", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P03, P05",
+    "full_seed_included": "NO - missing 'later on'",
+    "gate_compliance": "STRICT - Only S0001-S0016L03 LEGOs available"
+  },
+
+  "S0016L05": {
+    "lego": ["later on", "más tarde"],
+    "type": "M",
+    "available_legos": 46,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["later on", "más tarde", null, 1],
+      ["I want to speak later on", "quiero hablar más tarde", "P01", 3],
+      ["he wants to come back later on", "él quiere volver más tarde", "P01", 3],
+      ["I'm going to try later on", "voy a intentar más tarde", "P03", 3],
+      ["I can speak with you later on", "puedo hablar contigo más tarde", "P05", 4],
+      ["he wants to come back with everyone else later on", "él quiere volver con todos los demás más tarde", "P01", 4],
+      ["I want to speak Spanish with everyone else later on", "quiero hablar español con todos los demás más tarde", "P01", 5],
+      ["I'm not sure if he wants to come back later on", "no estoy seguro si él quiere volver más tarde", "P18", 6],
+      ["he wants to speak with me tomorrow and come back later on", "él quiere hablar conmigo mañana y volver más tarde", "P01", 7],
+      ["he wants to come back with everyone else later on.", "él quiere volver con todos los demás más tarde.", "P01", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P03, P05, P18",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0016L04 LEGOs available"
+  }
+}

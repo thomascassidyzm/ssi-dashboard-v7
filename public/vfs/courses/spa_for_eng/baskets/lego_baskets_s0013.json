@@ -1,0 +1,67 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0013",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "You speak Spanish very well.",
+    "target": "Hablas español muy bien."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+  "cumulative_legos": 38,
+
+  "S0013L01": {
+    "lego": ["you speak", "hablas"],
+    "type": "A",
+    "available_legos": 36,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["you speak", "hablas", "P05", 1],
+      ["you speak Spanish", "hablas español", "P05", 2],
+      ["you speak now", "hablas ahora", "P05", 2],
+      ["you speak a little Spanish", "hablas un poco de español", "P05", 3],
+      ["you speak today", "hablas hoy", "P05", 2],
+      ["you speak with someone else", "hablas con alguien más", "P05", 3],
+      ["I'm not sure if you speak Spanish", "no estoy seguro si hablas español", "P18", 4],
+      ["you speak a little Spanish tomorrow", "hablas un poco de español mañana", "P05", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P05, P18",
+    "full_seed_included": "NO - missing 'very well'",
+    "gate_compliance": "STRICT - Only S0001-S0012 LEGOs available"
+  },
+
+  "S0013L02": {
+    "lego": ["very well", "muy bien"],
+    "type": "M",
+    "available_legos": 37,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["very well", "muy bien", null, 1],
+      ["you speak very well", "hablas muy bien", "P05", 2],
+      ["you speak Spanish very well", "hablas español muy bien", "P05", 3],
+      ["I speak very well", "hablo muy bien", "P05", 2],
+      ["I speak a little Spanish very well", "hablo un poco de español muy bien", "P05", 4],
+      ["you speak very well today", "hablas muy bien hoy", "P05", 3],
+      ["I can speak very well", "puedo hablar muy bien", "P05", 3],
+      ["I'm not sure if you speak very well", "no estoy seguro si hablas muy bien", "P18", 4],
+      ["I want to speak Spanish very well tomorrow", "quiero hablar español muy bien mañana", "P01", 5],
+      ["you speak Spanish very well.", "hablas español muy bien.", "P05", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 4,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P05, P18",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0013L01 LEGOs available"
+  }
+}

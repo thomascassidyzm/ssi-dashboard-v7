@@ -1,0 +1,125 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0027",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I don't like taking too much time to answer.",
+    "target": "No me gusta tomar demasiado tiempo para responder."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR"],
+  "cumulative_legos": 83,
+
+  "S0027L01": {
+    "lego": ["I don't like", "no me gusta"],
+    "type": "M",
+    "available_legos": 79,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR"],
+    "practice_phrases": [
+      ["I don't like", "no me gusta", "P_NEW_GUSTAR", 1],
+      ["I don't like Spanish", "no me gusta español", "P_NEW_GUSTAR", 2],
+      ["I don't like to speak", "no me gusta hablar", "P_NEW_GUSTAR", 2],
+      ["I don't like to learn", "no me gusta aprender", "P_NEW_GUSTAR", 2],
+      ["I don't like his name", "no me gusta su nombre", "P_NEW_GUSTAR", 2],
+      ["I don't like to feel ready", "no me gusta sentir preparado", "P_NEW_GUSTAR", 3],
+      ["I like Spanish but I don't like to speak", "me gusta español pero no me gusta hablar", "P_NEW_GUSTAR", 5],
+      ["I don't like to start talking before I have to go", "no me gusta comenzar a hablar antes de que tenga que ir", "P_NEW_GUSTAR", 6],
+      ["why I don't like to meet people who speak Spanish", "por qué no me gusta encontrar personas que hablan español", "P12", 6],
+      ["I don't like to feel as if I were nearly ready", "no me gusta sentir como si estuviera casi preparado", "P_NEW_GUSTAR", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P12, P_NEW_GUSTAR",
+    "full_seed_included": "NO - missing 'to take', 'too much time', 'to answer'",
+    "gate_compliance": "STRICT - Only S0001-S0026 LEGOs available"
+  },
+
+  "S0027L02": {
+    "lego": ["to take", "tomar"],
+    "type": "A",
+    "available_legos": 80,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR"],
+    "practice_phrases": [
+      ["to take", "tomar", null, 1],
+      ["I like to take", "me gusta tomar", "P_NEW_GUSTAR", 2],
+      ["I don't like to take", "no me gusta tomar", "P_NEW_GUSTAR", 2],
+      ["I want to take", "quiero tomar", "P01", 2],
+      ["I like to take something", "me gusta tomar algo", "P_NEW_GUSTAR", 3],
+      ["I don't like to take something", "no me gusta tomar algo", "P_NEW_GUSTAR", 3],
+      ["I'm going to take his name", "voy a tomar su nombre", "P03", 3],
+      ["I don't like to take too much time", "no me gusta tomar demasiado tiempo", "P_NEW_GUSTAR", 4],
+      ["why I want to take something tomorrow", "por qué quiero tomar algo mañana", "P12", 4],
+      ["I like to take something before I have to go", "me gusta tomar algo antes de que tenga que ir", "P_NEW_GUSTAR", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P03, P12, P_NEW_GUSTAR",
+    "full_seed_included": "NO - missing 'too much time', 'to answer'",
+    "gate_compliance": "STRICT - Only S0001-S0027L01 LEGOs available"
+  },
+
+  "S0027L03": {
+    "lego": ["too much time", "demasiado tiempo"],
+    "type": "M",
+    "available_legos": 81,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR"],
+    "practice_phrases": [
+      ["too much time", "demasiado tiempo", null, 1],
+      ["I like too much time", "me gusta demasiado tiempo", "P_NEW_GUSTAR", 2],
+      ["to take too much time", "tomar demasiado tiempo", null, 2],
+      ["I don't like too much time", "no me gusta demasiado tiempo", "P_NEW_GUSTAR", 2],
+      ["I like to take too much time", "me gusta tomar demasiado tiempo", "P_NEW_GUSTAR", 3],
+      ["I don't like to take too much time", "no me gusta tomar demasiado tiempo", "P_NEW_GUSTAR", 3],
+      ["I want to take too much time", "quiero tomar demasiado tiempo", "P01", 3],
+      ["I don't like to take too much time to speak", "no me gusta tomar demasiado tiempo para hablar", "P_NEW_GUSTAR", 4],
+      ["why I don't like to take too much time", "por qué no me gusta tomar demasiado tiempo", "P12", 4],
+      ["I don't like to take too much time before I have to go", "no me gusta tomar demasiado tiempo antes de que tenga que ir", "P_NEW_GUSTAR", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P12, P_NEW_GUSTAR",
+    "full_seed_included": "NO - missing 'to answer'",
+    "gate_compliance": "STRICT - Only S0001-S0027L02 LEGOs available"
+  },
+
+  "S0027L04": {
+    "lego": ["to answer", "para responder"],
+    "type": "M",
+    "available_legos": 82,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR"],
+    "practice_phrases": [
+      ["to answer", "para responder", null, 1],
+      ["I like to answer", "me gusta para responder", "P_NEW_GUSTAR", 2],
+      ["I want to answer", "quiero para responder", "P01", 2],
+      ["I don't like to answer", "no me gusta para responder", "P_NEW_GUSTAR", 2],
+      ["ready to answer", "preparado para responder", null, 2],
+      ["I like to take time to answer", "me gusta tomar tiempo para responder", "P_NEW_GUSTAR", 3],
+      ["I don't like to take time to answer", "no me gusta tomar tiempo para responder", "P_NEW_GUSTAR", 3],
+      ["I don't like to take too much time to answer", "no me gusta tomar demasiado tiempo para responder", "P_NEW_GUSTAR", 4],
+      ["I feel as if I were nearly ready to answer", "sentir como si estuviera casi preparado para responder", "P10", 6],
+      ["I don't like taking too much time to answer.", "no me gusta tomar demasiado tiempo para responder.", "P_NEW_GUSTAR", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P10, P_NEW_GUSTAR",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0027L03 LEGOs available"
+  }
+}

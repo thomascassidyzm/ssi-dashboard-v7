@@ -1,0 +1,94 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0019",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "But I don't want to stop talking.",
+    "target": "Pero no quiero parar de hablar."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+  "cumulative_legos": 57,
+
+  "S0019L01": {
+    "lego": ["but", "pero"],
+    "type": "A",
+    "available_legos": 54,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["but", "pero", null, 1],
+      ["I speak but he speaks", "hablo pero él habla", "P05", 2],
+      ["I want to speak but I can't", "quiero hablar pero no puedo", "P01", 4],
+      ["I speak Spanish but you speak very well", "hablo español pero hablas muy bien", "P05", 5],
+      ["he wants to come back but she wants to meet", "él quiere volver pero ella quiere reunirnos", "P01", 5],
+      ["I can speak today but I want to speak tomorrow", "puedo hablar hoy pero quiero hablar mañana", "P05", 6],
+      ["we want to meet at six o'clock but he wants to meet later on", "queremos reunirnos a las seis pero él quiere reunirnos más tarde", "P01", 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P05",
+    "full_seed_included": "NO - missing 'I don't want' and 'to stop talking'",
+    "gate_compliance": "STRICT - Only S0001-S0018 LEGOs available",
+    "note": "Third conjunction now available - can use with 'si' and 'y'"
+  },
+
+  "S0019L02": {
+    "lego": ["I don't want", "no quiero"],
+    "type": "M",
+    "available_legos": 55,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["I don't want", "no quiero", "P01", 1],
+      ["I don't want to speak", "no quiero hablar", "P01", 2],
+      ["I don't want to learn", "no quiero aprender", "P01", 2],
+      ["I don't want to speak Spanish", "no quiero hablar español", "P01", 3],
+      ["I don't want to come back", "no quiero volver", "P01", 2],
+      ["I don't want to meet tomorrow", "no quiero reunirnos mañana", "P01", 3],
+      ["I speak but I don't want to speak", "hablo pero no quiero hablar", "P05", 4],
+      ["I don't want to find out what the answer is", "no quiero descubrir cuál es la respuesta", "P01", 4],
+      ["he wants to speak but I don't want to speak", "él quiere hablar pero no quiero hablar", "P01", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P05",
+    "full_seed_included": "NO - missing 'to stop talking'",
+    "gate_compliance": "STRICT - Only S0001-S0019L01 LEGOs available"
+  },
+
+  "S0019L03": {
+    "lego": ["to stop talking", "parar de hablar"],
+    "type": "M",
+    "available_legos": 56,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18"],
+    "practice_phrases": [
+      ["to stop talking", "parar de hablar", null, 1],
+      ["I want to stop talking", "quiero parar de hablar", "P01", 2],
+      ["I don't want to stop talking", "no quiero parar de hablar", "P01", 2],
+      ["he wants to stop talking", "él quiere parar de hablar", "P01", 3],
+      ["we want to stop talking", "queremos parar de hablar", "P01", 2],
+      ["I don't want to stop talking tomorrow", "no quiero parar de hablar mañana", "P01", 3],
+      ["I speak but I don't want to stop talking", "hablo pero no quiero parar de hablar", "P05", 4],
+      ["he wants to stop talking but I don't want to stop talking", "él quiere parar de hablar pero no quiero parar de hablar", "P01", 6],
+      ["I want to speak at six o'clock but I don't want to stop talking", "quiero hablar a las seis pero no quiero parar de hablar", "P01", 7],
+      ["but I don't want to stop talking.", "pero no quiero parar de hablar.", "P01", 2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P05",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0019L02 LEGOs available"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0006",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'm trying to remember a word.",
+    "target": "Estoy intentando recordar una palabra."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P12"],
+  "cumulative_legos": 18,
+
+  "S0006L01": {
+    "lego": ["to remember", "recordar"],
+    "type": "A",
+    "available_legos": 16,
+    "available_patterns": ["P01", "P02", "P03", "P12"],
+    "practice_phrases": [
+      ["to remember", "recordar", null, 1],
+      ["I want to remember", "quiero recordar", "P01", 2],
+      ["I'm trying to remember", "estoy intentando recordar", "P02", 2],
+      ["I'm going to remember", "voy a recordar", "P03", 2],
+      ["how to remember", "cómo recordar", "P12", 2],
+      ["I want to remember something", "quiero recordar algo", "P01", 3],
+      ["I'm trying to remember something in Spanish", "estoy intentando recordar algo en español", "P02", 4],
+      ["I'm going to remember something with someone else", "voy a recordar algo con alguien más", "P03", 4],
+      ["how to remember something as often as possible", "cómo recordar algo lo más frecuentemente posible", "P12", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P02, P03, P12",
+    "full_seed_included": "NO - missing 'a word'",
+    "gate_compliance": "STRICT - Only S0001-S0005 LEGOs available"
+  },
+
+  "S0006L02": {
+    "lego": ["a word", "una palabra"],
+    "type": "M",
+    "available_legos": 17,
+    "available_patterns": ["P01", "P02", "P03", "P12"],
+    "practice_phrases": [
+      ["a word", "una palabra", null, 1],
+      ["to remember a word", "recordar una palabra", null, 2],
+      ["I want to remember a word", "quiero recordar una palabra", "P01", 3],
+      ["I'm trying to remember a word", "estoy intentando recordar una palabra", "P02", 3],
+      ["I'm going to remember a word", "voy a recordar una palabra", "P03", 3],
+      ["how to say a word", "cómo decir una palabra", "P12", 3],
+      ["I'm trying to remember a word now", "estoy intentando recordar una palabra ahora", "P02", 4],
+      ["I want to say a word in Spanish", "quiero decir una palabra en español", "P01", 4],
+      ["I'm going to remember a word as often as possible", "voy a recordar una palabra lo más frecuentemente posible", "P03", 4],
+      ["I'm trying to remember a word.", "estoy intentando recordar una palabra.", "P02", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 5,
+      "longer_4_5": 3,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P02, P03, P12",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0006L01 LEGOs available"
+  }
+}

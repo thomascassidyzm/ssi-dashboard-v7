@@ -1,0 +1,97 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0091",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "It's difficult to think quickly enough to answer in time.",
+    "target": "Es difícil pensar lo suficientemente rápido para responder a tiempo."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+  "cumulative_legos": 268,
+
+  "S0091L01": {
+    "lego": ["it's difficult", "es difícil"],
+    "type": "M",
+    "available_legos": 265,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["it's difficult", "es difícil", "P_NEW_IMPERSONAL", 1],
+      ["it's difficult here", "es difícil aquí", "P_NEW_IMPERSONAL", 2],
+      ["but it's difficult", "pero es difícil", "P_NEW_IMPERSONAL", 1],
+      ["I think that it's difficult", "pienso que es difícil", "P_NEW_IMPERSONAL", 3],
+      ["it's difficult to think", "es difícil pensar", "P_NEW_IMPERSONAL", 2],
+      ["if it's difficult", "si es difícil", "P_NEW_IMPERSONAL", 1],
+      ["because it's difficult", "porque es difícil", "P_NEW_IMPERSONAL", 1],
+      ["I'm not sure if it's difficult", "no estoy seguro si es difícil", "P_NEW_IMPERSONAL", 4],
+      ["I think that it's difficult to remember the truth at the same time", "pienso que es difícil recordar la verdad al mismo tiempo", "P_NEW_IMPERSONAL", 8],
+      ["it wasn't possible unfortunately but it's difficult to start", "no fue posible desafortunadamente pero es difícil comenzar", "P_NEW_IMPERSONAL", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P_NEW_IMPERSONAL",
+    "full_seed_included": "NO - missing 'to think', 'quickly enough', 'to answer', 'in time'",
+    "gate_compliance": "STRICT - Only S0001-S0090 LEGOs available"
+  },
+
+  "S0091L03": {
+    "lego": ["quickly enough", "lo suficientemente rápido"],
+    "type": "M",
+    "available_legos": 266,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["quickly enough", "lo suficientemente rápido", null, 1],
+      ["to think quickly enough", "pensar lo suficientemente rápido", null, 2],
+      ["I want quickly enough", "quiero lo suficientemente rápido", "P01", 2],
+      ["but quickly enough", "pero lo suficientemente rápido", null, 2],
+      ["it's difficult to think quickly enough", "es difícil pensar lo suficientemente rápido", "P_NEW_IMPERSONAL", 3],
+      ["if quickly enough", "si lo suficientemente rápido", null, 2],
+      ["because quickly enough", "porque lo suficientemente rápido", null, 2],
+      ["I'm not sure quickly enough", "no estoy seguro lo suficientemente rápido", null, 3],
+      ["I think that it's difficult to think quickly enough to answer", "pienso que es difícil pensar lo suficientemente rápido para responder", "P_NEW_IMPERSONAL", 7],
+      ["if you can speak more slowly that would be great quickly enough", "si puedes hablar más lentamente eso sería excelente lo suficientemente rápido", "P10", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 0,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P10, P_NEW_IMPERSONAL",
+    "full_seed_included": "NO - missing 'to answer', 'in time'",
+    "gate_compliance": "STRICT - Only S0001-S0091L01 LEGOs available"
+  },
+
+  "S0091L05": {
+    "lego": ["in time", "a tiempo"],
+    "type": "M",
+    "available_legos": 267,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["in time", "a tiempo", null, 1],
+      ["to answer in time", "para responder a tiempo", null, 2],
+      ["I want in time", "quiero a tiempo", "P01", 2],
+      ["but in time", "pero a tiempo", null, 2],
+      ["it's difficult to answer in time", "es difícil para responder a tiempo", "P_NEW_IMPERSONAL", 3],
+      ["if in time", "si a tiempo", null, 2],
+      ["because in time", "porque a tiempo", null, 2],
+      ["I'm not sure in time", "no estoy seguro a tiempo", null, 3],
+      ["I think that it's difficult to think quickly enough to answer in time", "pienso que es difícil pensar lo suficientemente rápido para responder a tiempo", "P_NEW_IMPERSONAL", 8],
+      ["it's difficult to think quickly enough to answer in time.", "es difícil pensar lo suficientemente rápido para responder a tiempo.", "P_NEW_IMPERSONAL", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 0,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P_NEW_IMPERSONAL",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0091L03 LEGOs available"
+  }
+}

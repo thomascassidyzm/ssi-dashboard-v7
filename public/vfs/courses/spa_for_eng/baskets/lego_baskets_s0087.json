@@ -1,0 +1,69 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0087",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "They are people I don't know.",
+    "target": "Son personas que no conozco."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+  "cumulative_legos": 255,
+
+  "S0087L01": {
+    "lego": ["they are people", "son personas"],
+    "type": "M",
+    "available_legos": 253,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["they are people", "son personas", null, 1],
+      ["they are people here", "son personas aquí", null, 2],
+      ["but they are people", "pero son personas", null, 2],
+      ["I think that they are people", "pienso que son personas", null, 3],
+      ["they are people I don't know", "son personas que no conozco", null, 3],
+      ["if they are people", "si son personas", null, 2],
+      ["because they are people", "porque son personas", null, 2],
+      ["I'm not sure if they are people", "no estoy seguro si son personas", null, 4],
+      ["I don't know those people they are people I don't agree", "no conozco a esas personas son personas no estoy de acuerdo", null, 8],
+      ["it wasn't possible unfortunately they are people", "no fue posible desafortunadamente son personas", "P_NEW_IMPERSONAL", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P_NEW_IMPERSONAL",
+    "full_seed_included": "NO - missing 'that I don't know'",
+    "gate_compliance": "STRICT - Only S0001-S0086 LEGOs available"
+  },
+
+  "S0087L02": {
+    "lego": ["that I don't know", "que no conozco"],
+    "type": "M",
+    "available_legos": 254,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["that I don't know", "que no conozco", null, 1],
+      ["they are people that I don't know", "son personas que no conozco", null, 2],
+      ["I want that I don't know", "quiero que no conozco", "P01", 2],
+      ["but that I don't know", "pero que no conozco", null, 2],
+      ["those people that I don't know", "a esas personas que no conozco", null, 3],
+      ["if that I don't know", "si que no conozco", null, 2],
+      ["because that I don't know", "porque que no conozco", null, 2],
+      ["I'm not sure that I don't know", "no estoy seguro que no conozco", null, 3],
+      ["I don't agree with what he said about my friend that I don't know", "no estoy de acuerdo con lo que dijo sobre mi amigo que no conozco", null, 9],
+      ["they are people I don't know.", "son personas que no conozco.", null, 2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 0,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0087L01 LEGOs available"
+  }
+}

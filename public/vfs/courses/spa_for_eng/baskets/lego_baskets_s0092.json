@@ -1,0 +1,97 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0092",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'd like to keep on doing this for a while.",
+    "target": "Me gustaría continuar haciendo esto por un tiempo."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+  "cumulative_legos": 271,
+
+  "S0092L01": {
+    "lego": ["to keep on doing", "continuar haciendo"],
+    "type": "M",
+    "available_legos": 268,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["to keep on doing", "continuar haciendo", null, 1],
+      ["I'd like to keep on doing", "me gustaría continuar haciendo", "P04", 2],
+      ["I want to keep on doing", "quiero continuar haciendo", "P01", 2],
+      ["but to keep on doing", "pero continuar haciendo", null, 2],
+      ["I'd like to keep on doing this", "me gustaría continuar haciendo esto", "P04", 3],
+      ["if to keep on doing", "si continuar haciendo", null, 2],
+      ["because to keep on doing", "porque continuar haciendo", null, 2],
+      ["I think that to keep on doing", "pienso que continuar haciendo", null, 3],
+      ["I think that I'd like to keep on doing this for a while", "pienso que me gustaría continuar haciendo esto por un tiempo", "P04", 8],
+      ["it's difficult to think quickly enough to keep on doing", "es difícil pensar lo suficientemente rápido continuar haciendo", "P_NEW_IMPERSONAL", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 0,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P04, P_NEW_IMPERSONAL",
+    "full_seed_included": "NO - missing 'this', 'for a while'",
+    "gate_compliance": "STRICT - Only S0001-S0091 LEGOs available"
+  },
+
+  "S0092L02": {
+    "lego": ["this", "esto"],
+    "type": "A",
+    "available_legos": 269,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["this", "esto", null, 1],
+      ["to keep on doing this", "continuar haciendo esto", null, 2],
+      ["I want this", "quiero esto", "P01", 2],
+      ["but this", "pero esto", null, 2],
+      ["I'd like to keep on doing this", "me gustaría continuar haciendo esto", "P04", 3],
+      ["if this", "si esto", null, 2],
+      ["because this", "porque esto", null, 2],
+      ["I think that this", "pienso que esto", null, 3],
+      ["I think that I'd like to keep on doing this for a while", "pienso que me gustaría continuar haciendo esto por un tiempo", "P04", 8],
+      ["I need this to start in a short time", "necesito esto comenzar en un breve tiempo", "P17", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P04, P17",
+    "full_seed_included": "NO - missing 'for a while'",
+    "gate_compliance": "STRICT - Only S0001-S0092L01 LEGOs available"
+  },
+
+  "S0092L03": {
+    "lego": ["for a while", "por un tiempo"],
+    "type": "M",
+    "available_legos": 270,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["for a while", "por un tiempo", null, 1],
+      ["to keep on doing this for a while", "continuar haciendo esto por un tiempo", null, 2],
+      ["I want for a while", "quiero por un tiempo", "P01", 2],
+      ["but for a while", "pero por un tiempo", null, 2],
+      ["I'd like to keep on doing this for a while", "me gustaría continuar haciendo esto por un tiempo", "P04", 3],
+      ["if for a while", "si por un tiempo", null, 2],
+      ["because for a while", "porque por un tiempo", null, 2],
+      ["I'm not sure for a while", "no estoy seguro por un tiempo", null, 3],
+      ["I think that I'd like to keep on doing this for a while yesterday", "pienso que me gustaría continuar haciendo esto por un tiempo ayer", "P04", 8],
+      ["I'd like to keep on doing this for a while.", "me gustaría continuar haciendo esto por un tiempo.", "P04", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 0,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P04",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0092L02 LEGOs available"
+  }
+}

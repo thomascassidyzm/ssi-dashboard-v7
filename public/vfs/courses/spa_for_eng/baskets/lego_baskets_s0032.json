@@ -1,0 +1,41 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0032",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "Did you want to show me something?",
+    "target": "¿Querías mostrarme algo?"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+  "cumulative_legos": 93,
+
+  "S0032L01": {
+    "lego": ["to show me", "mostrarme"],
+    "type": "A",
+    "available_legos": 92,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+    "practice_phrases": [
+      ["to show me", "mostrarme", null, 1],
+      ["you wanted to show me", "querías mostrarme", "P_NEW_IMPERFECT", 2],
+      ["I wanted to show me", "quería mostrarme", "P_NEW_IMPERFECT", 2],
+      ["I want to show me", "quiero mostrarme", "P01", 2],
+      ["you wanted to show me something", "querías mostrarme algo", "P_NEW_IMPERFECT", 3],
+      ["I like to show me", "me gusta mostrarme", "P_NEW_GUSTAR", 2],
+      ["I'm going to show me", "voy a mostrarme", "P03", 2],
+      ["you wanted to show me something yesterday", "querías mostrarme algo ayer", "P_NEW_IMPERFECT", 4],
+      ["why you wanted to show me something", "por qué querías mostrarme algo", "P12", 4],
+      ["you wanted to show me something?", "querías mostrarme algo?", "P_NEW_IMPERFECT", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P03, P12, P_NEW_GUSTAR, P_NEW_IMPERFECT",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0031 LEGOs available"
+  }
+}

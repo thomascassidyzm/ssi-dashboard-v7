@@ -1,0 +1,69 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0066",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "It's not difficult to find the answer.",
+    "target": "No es difícil encontrar la respuesta."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+  "cumulative_legos": 206,
+
+  "S0066L01": {
+    "lego": ["it's not difficult", "no es difícil"],
+    "type": "M",
+    "available_legos": 204,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "practice_phrases": [
+      ["it's not difficult", "no es difícil", "P_NEW_IMPERSONAL", 1],
+      ["it's not difficult to speak", "no es difícil hablar", "P_NEW_IMPERSONAL", 2],
+      ["it's not difficult to learn", "no es difícil aprender", "P_NEW_IMPERSONAL", 2],
+      ["but it's not difficult", "pero no es difícil", "P_NEW_IMPERSONAL", 2],
+      ["it's not difficult to learn Spanish", "no es difícil aprender español", "P_NEW_IMPERSONAL", 3],
+      ["it's not difficult to find", "no es difícil encontrar", "P_NEW_IMPERSONAL", 2],
+      ["because it's not difficult", "porque no es difícil", "P_NEW_IMPERSONAL", 2],
+      ["if it's not difficult to speak", "si no es difícil hablar", "P_NEW_IMPERSONAL", 3],
+      ["it's not difficult to take time to test yourself", "no es difícil tomar tiempo para evaluarte", "P_NEW_IMPERSONAL", 5],
+      ["learning Spanish isn't easy but it's not difficult", "aprender español no es fácil pero no es difícil", "P_NEW_IMPERSONAL", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P_NEW_IMPERSONAL",
+    "full_seed_included": "NO - missing 'to find', 'the answer'",
+    "gate_compliance": "STRICT - Only S0001-S0065 LEGOs available"
+  },
+
+  "S0066L03": {
+    "lego": ["the answer", "la respuesta"],
+    "type": "M",
+    "available_legos": 205,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "practice_phrases": [
+      ["the answer", "la respuesta", null, 1],
+      ["to find the answer", "encontrar la respuesta", null, 2],
+      ["I want the answer", "quiero la respuesta", "P01", 2],
+      ["it's not difficult the answer", "no es difícil la respuesta", "P_NEW_IMPERSONAL", 2],
+      ["it's not difficult to find the answer", "no es difícil encontrar la respuesta", "P_NEW_IMPERSONAL", 3],
+      ["I need the answer", "necesito la respuesta", "P17", 2],
+      ["because the answer", "porque la respuesta", null, 2],
+      ["if it's not difficult to find the answer", "si no es difícil encontrar la respuesta", "P_NEW_IMPERSONAL", 4],
+      ["I was able to find the answer a little earlier", "pude encontrar la respuesta un poco más temprano", "P_NEW_PUDE", 6],
+      ["it's not difficult to find the answer.", "no es difícil encontrar la respuesta.", "P_NEW_IMPERSONAL", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P17, P_NEW_PUDE, P_NEW_IMPERSONAL",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0066L01 LEGOs available"
+  }
+}

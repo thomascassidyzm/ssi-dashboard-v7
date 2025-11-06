@@ -1,0 +1,97 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0035",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "She doesn't want to read anything this afternoon.",
+    "target": "Ella no quiere leer nada esta tarde."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+  "cumulative_legos": 103,
+
+  "S0035L01": {
+    "lego": ["to read", "leer"],
+    "type": "A",
+    "available_legos": 100,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+    "practice_phrases": [
+      ["to read", "leer", null, 1],
+      ["I want to read", "quiero leer", "P01", 2],
+      ["she doesn't want to read", "ella no quiere leer", "P01", 3],
+      ["I like to read", "me gusta leer", "P_NEW_GUSTAR", 2],
+      ["I wanted to read", "quería leer", "P_NEW_IMPERFECT", 2],
+      ["I don't like to read", "no me gusta leer", "P_NEW_GUSTAR", 2],
+      ["she doesn't want to read something", "ella no quiere leer algo", "P01", 3],
+      ["it's useful to read when other people are here", "es útil leer cuando otras personas están aquí", "P_NEW_IMPERSONAL", 5],
+      ["why she doesn't want to read", "por qué ella no quiere leer", "P12", 4],
+      ["I wanted to read the story yesterday", "quería leer la historia ayer", "P_NEW_IMPERFECT", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P12, P_NEW_GUSTAR, P_NEW_IMPERSONAL, P_NEW_IMPERFECT",
+    "full_seed_included": "NO - missing 'anything', 'this afternoon'",
+    "gate_compliance": "STRICT - Only S0001-S0034 LEGOs available"
+  },
+
+  "S0035L02": {
+    "lego": ["anything", "nada"],
+    "type": "A",
+    "available_legos": 101,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+    "practice_phrases": [
+      ["anything", "nada", null, 1],
+      ["to read anything", "leer nada", null, 2],
+      ["I don't want anything", "no quiero nada", "P01", 2],
+      ["she doesn't want anything", "ella no quiere nada", "P01", 2],
+      ["I don't like anything", "no me gusta nada", "P_NEW_GUSTAR", 2],
+      ["she doesn't want to read anything", "ella no quiere leer nada", "P01", 3],
+      ["I don't want to learn anything", "no quiero aprender nada", "P01", 3],
+      ["she doesn't want to show me anything", "ella no quiere mostrarme nada", "P01", 3],
+      ["why she doesn't want to read anything", "por qué ella no quiere leer nada", "P12", 4],
+      ["I don't like to take anything when other people are here", "no me gusta tomar nada cuando otras personas están aquí", "P_NEW_GUSTAR", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P12, P_NEW_GUSTAR",
+    "full_seed_included": "NO - missing 'this afternoon'",
+    "gate_compliance": "STRICT - Only S0001-S0035L01 LEGOs available"
+  },
+
+  "S0035L03": {
+    "lego": ["this afternoon", "esta tarde"],
+    "type": "M",
+    "available_legos": 102,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT"],
+    "practice_phrases": [
+      ["this afternoon", "esta tarde", null, 1],
+      ["I wanted this afternoon", "quería esta tarde", "P_NEW_IMPERFECT", 2],
+      ["to read this afternoon", "leer esta tarde", null, 2],
+      ["I want to read this afternoon", "quiero leer esta tarde", "P01", 3],
+      ["she doesn't want this afternoon", "ella no quiere esta tarde", "P01", 2],
+      ["she doesn't want to read this afternoon", "ella no quiere leer esta tarde", "P01", 3],
+      ["I wanted to speak with you this afternoon", "quería hablar contigo esta tarde", "P_NEW_IMPERFECT", 4],
+      ["she doesn't want to read anything this afternoon", "ella no quiere leer nada esta tarde", "P01", 4],
+      ["I like to feel ready to speak this afternoon", "me gusta sentir preparado para hablar esta tarde", "P_NEW_GUSTAR", 6],
+      ["she doesn't want to read anything this afternoon.", "ella no quiere leer nada esta tarde.", "P01", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P_NEW_GUSTAR, P_NEW_IMPERFECT",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0035L02 LEGOs available"
+  }
+}

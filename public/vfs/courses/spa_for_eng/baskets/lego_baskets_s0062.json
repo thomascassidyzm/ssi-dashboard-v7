@@ -1,0 +1,69 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0062",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'm not sure if I can help you at the same time.",
+    "target": "No estoy seguro si puedo ayudarte al mismo tiempo."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+  "cumulative_legos": 195,
+
+  "S0062L02": {
+    "lego": ["I can help you", "puedo ayudarte"],
+    "type": "M",
+    "available_legos": 193,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "practice_phrases": [
+      ["I can help you", "puedo ayudarte", "P10", 1],
+      ["if I can help you", "si puedo ayudarte", "P10", 2],
+      ["I can help you yesterday", "puedo ayudarte ayer", "P10", 2],
+      ["I'm not sure if I can help you", "no estoy seguro si puedo ayudarte", "P10", 3],
+      ["but I can help you", "pero puedo ayudarte", "P10", 1],
+      ["because I can help you", "porque puedo ayudarte", "P10", 1],
+      ["I can help you again", "puedo ayudarte otra vez", "P10", 2],
+      ["I can help you when I want", "puedo ayudarte cuando quiero", "P10", 3],
+      ["I'm not sure if I can help you at the same time", "no estoy seguro si puedo ayudarte al mismo tiempo", "P10", 5],
+      ["but I can help you a little more slowly", "pero puedo ayudarte un poco más lentamente", "P10", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P10",
+    "full_seed_included": "NO - missing 'at the same time'",
+    "gate_compliance": "STRICT - Only S0001-S0061 LEGOs available"
+  },
+
+  "S0062L03": {
+    "lego": ["at the same time", "al mismo tiempo"],
+    "type": "M",
+    "available_legos": 194,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL"],
+    "practice_phrases": [
+      ["at the same time", "al mismo tiempo", null, 1],
+      ["I can at the same time", "puedo al mismo tiempo", "P10", 2],
+      ["to help you at the same time", "ayudarte al mismo tiempo", null, 2],
+      ["I can help you at the same time", "puedo ayudarte al mismo tiempo", "P10", 3],
+      ["I'm not sure at the same time", "no estoy seguro al mismo tiempo", "P10", 2],
+      ["because at the same time", "porque al mismo tiempo", null, 2],
+      ["if I can help you at the same time", "si puedo ayudarte al mismo tiempo", "P10", 3],
+      ["I'm not sure if I can help you at the same time", "no estoy seguro si puedo ayudarte al mismo tiempo", "P10", 4],
+      ["could you speak a little more slowly at the same time", "podrías hablar un poco más lentamente al mismo tiempo", "P_NEW_CONDITIONAL", 7],
+      ["I'm not sure if I can help you at the same time.", "no estoy seguro si puedo ayudarte al mismo tiempo.", "P10", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P10, P_NEW_CONDITIONAL",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0062L02 LEGOs available"
+  }
+}

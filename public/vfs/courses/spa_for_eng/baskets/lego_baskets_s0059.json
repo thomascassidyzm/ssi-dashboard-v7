@@ -1,0 +1,153 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0059",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I won't be able to see you until next week.",
+    "target": "No podré verte hasta la próxima semana."
+  },
+  "patterns_introduced": "P_NEW_FUTURE_ABLE",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE"],
+  "cumulative_legos": 183,
+
+  "S0059L01": {
+    "lego": ["I won't be able", "no podré"],
+    "type": "A",
+    "available_legos": 178,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE"],
+    "practice_phrases": [
+      ["I won't be able", "no podré", "P_NEW_FUTURE_ABLE", 1],
+      ["I won't be able to speak", "no podré hablar", "P_NEW_FUTURE_ABLE", 2],
+      ["I won't be able to finish", "no podré terminar", "P_NEW_FUTURE_ABLE", 2],
+      ["but I won't be able", "pero no podré", "P_NEW_FUTURE_ABLE", 2],
+      ["I won't be able to help yesterday", "no podré ayudar ayer", "P_NEW_FUTURE_ABLE", 3],
+      ["I won't be able to call you", "no podré llamarte", "P_NEW_FUTURE_ABLE", 2],
+      ["because I won't be able", "porque no podré", "P_NEW_FUTURE_ABLE", 2],
+      ["if I won't be able to finish", "si no podré terminar", "P_NEW_FUTURE_ABLE", 3],
+      ["I won't be able to give you a little more time", "no podré darte un poco más de tiempo", "P_NEW_FUTURE_ABLE", 6],
+      ["I won't be able to do interesting things with my friends", "no podré hacer cosas interesantes con mis amigos", "P_NEW_FUTURE_ABLE", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 0,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P_NEW_FUTURE_ABLE",
+    "full_seed_included": "NO - missing 'to see you', 'until next week'",
+    "gate_compliance": "STRICT - Only S0001-S0058 LEGOs available"
+  },
+
+  "S0059L02": {
+    "lego": ["to see you", "verte"],
+    "type": "A",
+    "available_legos": 179,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE"],
+    "practice_phrases": [
+      ["to see you", "verte", null, 1],
+      ["I won't be able to see you", "no podré verte", "P_NEW_FUTURE_ABLE", 2],
+      ["I want to see you", "quiero verte", "P01", 2],
+      ["to see you yesterday", "verte ayer", null, 2],
+      ["I won't be able to see you yesterday", "no podré verte ayer", "P_NEW_FUTURE_ABLE", 3],
+      ["I was able to see you", "pude verte", "P_NEW_PUDE", 2],
+      ["because I want to see you", "porque quiero verte", "P01", 2],
+      ["if I was able to see you", "si pude verte", "P_NEW_PUDE", 3],
+      ["I won't be able to see you until next week", "no podré verte hasta la próxima semana", "P_NEW_FUTURE_ABLE", 5],
+      ["I was able to see you a little earlier than I'd expected", "pude verte un poco más temprano de lo que esperaba", "P_NEW_PUDE", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P_NEW_PUDE, P_NEW_FUTURE_ABLE",
+    "full_seed_included": "NO - missing 'until next week'",
+    "gate_compliance": "STRICT - Only S0001-S0059L01 LEGOs available"
+  },
+
+  "S0059L03": {
+    "lego": ["until next week", "hasta la próxima semana"],
+    "type": "M",
+    "available_legos": 180,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE"],
+    "practice_phrases": [
+      ["until next week", "hasta la próxima semana", null, 1],
+      ["to see you until next week", "verte hasta la próxima semana", null, 2],
+      ["I won't be able until next week", "no podré hasta la próxima semana", "P_NEW_FUTURE_ABLE", 2],
+      ["I won't be able to see you until next week", "no podré verte hasta la próxima semana", "P_NEW_FUTURE_ABLE", 3],
+      ["I want until next week", "quiero hasta la próxima semana", "P01", 2],
+      ["because until next week", "porque hasta la próxima semana", null, 2],
+      ["I won't be able to call you until next week", "no podré llamarte hasta la próxima semana", "P_NEW_FUTURE_ABLE", 3],
+      ["if I won't be able to see you until next week", "si no podré verte hasta la próxima semana", "P_NEW_FUTURE_ABLE", 4],
+      ["I won't be able to finish everything until next week", "no podré terminar todo hasta la próxima semana", "P_NEW_FUTURE_ABLE", 5],
+      ["I won't be able to see you until next week.", "no podré verte hasta la próxima semana.", "P_NEW_FUTURE_ABLE", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P_NEW_FUTURE_ABLE",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0059L02 LEGOs available"
+  },
+
+  "S0059L04": {
+    "lego": ["to see", "ver"],
+    "type": "A",
+    "available_legos": 181,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE"],
+    "practice_phrases": [
+      ["to see", "ver", null, 1],
+      ["I want to see", "quiero ver", "P01", 2],
+      ["to see you", "verte", null, 2],
+      ["I won't be able to see", "no podré ver", "P_NEW_FUTURE_ABLE", 2],
+      ["I was able to see yesterday", "pude ver ayer", "P_NEW_PUDE", 3],
+      ["I need to see", "necesito ver", "P17", 2],
+      ["because I want to see", "porque quiero ver", "P01", 2],
+      ["if I was able to see you", "si pude verte", "P_NEW_PUDE", 3],
+      ["I won't be able to see you until next week", "no podré verte hasta la próxima semana", "P_NEW_FUTURE_ABLE", 4],
+      ["I was able to see you a little earlier than I'd expected", "pude verte un poco más temprano de lo que esperaba", "P_NEW_PUDE", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P17, P_NEW_PUDE, P_NEW_FUTURE_ABLE",
+    "full_seed_included": "NO - 'ver' supplementary LEGO",
+    "gate_compliance": "STRICT - Only S0001-S0059L03 LEGOs available"
+  },
+
+  "S0059L05": {
+    "lego": ["until", "hasta"],
+    "type": "A",
+    "available_legos": 182,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE"],
+    "practice_phrases": [
+      ["until", "hasta", null, 1],
+      ["until next week", "hasta la próxima semana", null, 2],
+      ["until yesterday", "hasta ayer", null, 2],
+      ["I won't be able until next week", "no podré hasta la próxima semana", "P_NEW_FUTURE_ABLE", 2],
+      ["until today", "hasta hoy", null, 2],
+      ["to see you until next week", "verte hasta la próxima semana", null, 2],
+      ["because until next week", "porque hasta la próxima semana", null, 2],
+      ["if I won't be able until next week", "si no podré hasta la próxima semana", "P_NEW_FUTURE_ABLE", 3],
+      ["I won't be able to see you until next week", "no podré verte hasta la próxima semana", "P_NEW_FUTURE_ABLE", 4],
+      ["I won't be able to call you until yesterday", "no podré llamarte hasta ayer", "P_NEW_FUTURE_ABLE", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P_NEW_FUTURE_ABLE",
+    "full_seed_included": "NO - 'hasta' supplementary LEGO",
+    "gate_compliance": "STRICT - Only S0001-S0059L04 LEGOs available"
+  }
+}

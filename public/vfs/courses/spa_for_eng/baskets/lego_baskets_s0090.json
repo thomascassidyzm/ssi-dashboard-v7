@@ -1,0 +1,97 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0090",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "If you can speak more slowly that would be great.",
+    "target": "Si puedes hablar más lentamente, eso sería excelente."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+  "cumulative_legos": 265,
+
+  "S0090L01": {
+    "lego": ["you can speak", "puedes hablar"],
+    "type": "M",
+    "available_legos": 262,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["you can speak", "puedes hablar", "P10", 1],
+      ["if you can speak", "si puedes hablar", "P10", 2],
+      ["you can speak here", "puedes hablar aquí", "P10", 2],
+      ["but you can speak", "pero puedes hablar", "P10", 1],
+      ["if you can speak more slowly", "si puedes hablar más lentamente", "P10", 3],
+      ["you can speak Spanish", "puedes hablar español", "P10", 2],
+      ["because you can speak", "porque puedes hablar", "P10", 1],
+      ["I think that you can speak", "pienso que puedes hablar", "P10", 3],
+      ["I'm not sure if you can speak more slowly at the same time", "no estoy seguro si puedes hablar más lentamente al mismo tiempo", "P10", 8],
+      ["I'm not ready to talk if you can speak", "no estoy preparado para hablar si puedes hablar", "P10", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P10",
+    "full_seed_included": "NO - missing 'more slowly', 'that', 'would be great'",
+    "gate_compliance": "STRICT - Only S0001-S0089 LEGOs available"
+  },
+
+  "S0090L02": {
+    "lego": ["more slowly", "más lentamente"],
+    "type": "M",
+    "available_legos": 263,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["more slowly", "más lentamente", null, 1],
+      ["you can speak more slowly", "puedes hablar más lentamente", "P10", 2],
+      ["I want more slowly", "quiero más lentamente", "P01", 2],
+      ["but more slowly", "pero más lentamente", null, 2],
+      ["if you can speak more slowly", "si puedes hablar más lentamente", "P10", 3],
+      ["if more slowly", "si más lentamente", null, 2],
+      ["because more slowly", "porque más lentamente", null, 2],
+      ["I'm not sure more slowly", "no estoy seguro más lentamente", null, 2],
+      ["could you say that again more slowly at the same time", "podrías decir eso otra vez más lentamente al mismo tiempo", "P_NEW_CONDITIONAL", 7],
+      ["I think that you can speak more slowly", "pienso que puedes hablar más lentamente", "P10", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P10, P_NEW_CONDITIONAL",
+    "full_seed_included": "NO - missing 'that', 'would be great'",
+    "gate_compliance": "STRICT - Only S0001-S0090L01 LEGOs available"
+  },
+
+  "S0090L04": {
+    "lego": ["would be great", "sería excelente"],
+    "type": "M",
+    "available_legos": 264,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["would be great", "sería excelente", "P_NEW_CONDITIONAL", 1],
+      ["that would be great", "eso sería excelente", "P_NEW_CONDITIONAL", 2],
+      ["I want would be great", "quiero sería excelente", "P_NEW_CONDITIONAL", 2],
+      ["but would be great", "pero sería excelente", "P_NEW_CONDITIONAL", 1],
+      ["if you can speak more slowly that would be great", "si puedes hablar más lentamente eso sería excelente", "P10", 3],
+      ["if would be great", "si sería excelente", "P_NEW_CONDITIONAL", 1],
+      ["because would be great", "porque sería excelente", "P_NEW_CONDITIONAL", 1],
+      ["I think that would be great", "pienso que sería excelente", "P_NEW_CONDITIONAL", 3],
+      ["I'm not sure if you can speak more slowly that would be great", "no estoy seguro si puedes hablar más lentamente eso sería excelente", "P10", 7],
+      ["if you can speak more slowly that would be great.", "si puedes hablar más lentamente, eso sería excelente.", "P10", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 0,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P10, P_NEW_CONDITIONAL",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0090L02 LEGOs available"
+  }
+}

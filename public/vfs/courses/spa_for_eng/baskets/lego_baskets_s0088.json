@@ -1,0 +1,125 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0088",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'm not ready to talk to people I don't know yet.",
+    "target": "No estoy preparado para hablar con personas que no conozco todavía."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+  "cumulative_legos": 259,
+
+  "S0088L01": {
+    "lego": ["I'm not ready", "no estoy preparado"],
+    "type": "M",
+    "available_legos": 255,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["I'm not ready", "no estoy preparado", null, 1],
+      ["I'm not ready here", "no estoy preparado aquí", null, 2],
+      ["but I'm not ready", "pero no estoy preparado", null, 2],
+      ["I think that I'm not ready", "pienso que no estoy preparado", null, 3],
+      ["I'm not ready to talk", "no estoy preparado para hablar", null, 3],
+      ["if I'm not ready", "si no estoy preparado", null, 2],
+      ["because I'm not ready", "porque no estoy preparado", null, 2],
+      ["I'm not sure if I'm not ready", "no estoy seguro si no estoy preparado", null, 4],
+      ["I'm not sure when I'll be ready I'm not ready to start", "no estoy seguro de cuándo estaré preparado no estoy preparado comenzar", "P_NEW_FUTURE", 9],
+      ["they are people I don't know I'm not ready", "son personas que no conozco no estoy preparado", null, 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P_NEW_FUTURE",
+    "full_seed_included": "NO - missing 'to talk', 'to people I don't know', 'yet'",
+    "gate_compliance": "STRICT - Only S0001-S0087 LEGOs available"
+  },
+
+  "S0088L02": {
+    "lego": ["to talk", "para hablar"],
+    "type": "M",
+    "available_legos": 256,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["to talk", "para hablar", null, 1],
+      ["I'm not ready to talk", "no estoy preparado para hablar", null, 2],
+      ["I want to talk", "quiero para hablar", "P01", 2],
+      ["but to talk", "pero para hablar", null, 2],
+      ["I'm not ready to talk here", "no estoy preparado para hablar aquí", null, 3],
+      ["I need to talk", "necesito para hablar", "P17", 2],
+      ["because to talk", "porque para hablar", null, 2],
+      ["if I'm not ready to talk", "si no estoy preparado para hablar", null, 3],
+      ["I'm not sure when I'll be ready to talk to start", "no estoy seguro de cuándo estaré preparado para hablar comenzar", "P_NEW_FUTURE", 7],
+      ["I don't agree with what he said to talk", "no estoy de acuerdo con lo que dijo para hablar", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 0,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P17, P_NEW_FUTURE",
+    "full_seed_included": "NO - missing 'to people I don't know', 'yet'",
+    "gate_compliance": "STRICT - Only S0001-S0088L01 LEGOs available"
+  },
+
+  "S0088L03": {
+    "lego": ["to people I don't know", "con personas que no conozco"],
+    "type": "M",
+    "available_legos": 257,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["to people I don't know", "con personas que no conozco", null, 1],
+      ["to talk to people I don't know", "para hablar con personas que no conozco", null, 2],
+      ["I want to people I don't know", "quiero con personas que no conozco", "P01", 2],
+      ["but to people I don't know", "pero con personas que no conozco", null, 2],
+      ["I'm not ready to talk to people I don't know", "no estoy preparado para hablar con personas que no conozco", null, 3],
+      ["if to people I don't know", "si con personas que no conozco", null, 2],
+      ["because to people I don't know", "porque con personas que no conozco", null, 2],
+      ["I'm not sure to people I don't know", "no estoy seguro con personas que no conozco", null, 3],
+      ["they are people to talk to people I don't know yesterday", "son personas para hablar con personas que no conozco ayer", null, 7],
+      ["I don't agree with what he said to people I don't know", "no estoy de acuerdo con lo que dijo con personas que no conozco", null, 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 2,
+      "longer_4_5": 0,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01",
+    "full_seed_included": "NO - missing 'yet'",
+    "gate_compliance": "STRICT - Only S0001-S0088L02 LEGOs available"
+  },
+
+  "S0088L04": {
+    "lego": ["yet", "todavía"],
+    "type": "A",
+    "available_legos": 258,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE", "P_NEW_DISFRUTO", "P_NEW_PUDE", "P_NEW_PRESENT_PERFECT_CONTINUOUS", "P_NEW_ACABO_DE", "P_NEW_FUTURE_ABLE", "P_NEW_TE_ACUERDAS", "P_NEW_CONDITIONAL", "P_NEW_PERFECT", "P_NEW_FUTURE"],
+    "practice_phrases": [
+      ["yet", "todavía", null, 1],
+      ["to people I don't know yet", "con personas que no conozco todavía", null, 2],
+      ["I want yet", "quiero todavía", "P01", 2],
+      ["but yet", "pero todavía", null, 2],
+      ["I'm not ready to talk to people I don't know yet", "no estoy preparado para hablar con personas que no conozco todavía", null, 3],
+      ["if yet", "si todavía", null, 2],
+      ["because yet", "porque todavía", null, 2],
+      ["I'm not sure yet", "no estoy seguro todavía", null, 2],
+      ["I don't agree with what he said about my friend yet unfortunately", "no estoy de acuerdo con lo que dijo sobre mi amigo todavía desafortunadamente", null, 8],
+      ["I'm not ready to talk to people I don't know yet.", "no estoy preparado para hablar con personas que no conozco todavía.", null, 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 2,
+      "longer_4_5": 0,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0088L03 LEGOs available"
+  }
+}

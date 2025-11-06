@@ -1,0 +1,97 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0050",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'm not trying to finish as quickly as possible.",
+    "target": "No estoy intentando terminar lo más rápidamente posible."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+  "cumulative_legos": 145,
+
+  "S0050L01": {
+    "lego": ["I'm not trying", "no estoy intentando"],
+    "type": "M",
+    "available_legos": 142,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["I'm not trying", "no estoy intentando", "P02", 1],
+      ["I'm not trying to speak", "no estoy intentando hablar", "P02", 2],
+      ["I'm not trying to learn", "no estoy intentando aprender", "P02", 2],
+      ["I'm not trying to improve", "no estoy intentando mejorar", "P02", 2],
+      ["I'm not trying to think", "no estoy intentando pensar", "P02", 2],
+      ["I'm not trying to speak Spanish", "no estoy intentando hablar español", "P02", 3],
+      ["I'm not trying to make mistakes", "no estoy intentando hacer errores", "P02", 2],
+      ["I'm not trying to improve at the moment", "no estoy intentando mejorar en este momento", "P02", 4],
+      ["why I'm not trying to speak", "por qué no estoy intentando hablar", "P12", 3],
+      ["I'm not trying to finish everything", "no estoy intentando terminar todo", "P02", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P02, P12",
+    "full_seed_included": "NO - missing 'to finish', 'as quickly as possible'",
+    "gate_compliance": "STRICT - Only S0001-S0049 LEGOs available"
+  },
+
+  "S0050L02": {
+    "lego": ["to finish", "terminar"],
+    "type": "A",
+    "available_legos": 143,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["to finish", "terminar", null, 1],
+      ["I'm not trying to finish", "no estoy intentando terminar", "P02", 2],
+      ["I want to finish", "quiero terminar", "P01", 2],
+      ["I need to finish", "necesito terminar", "P17", 2],
+      ["I like to finish", "me gusta terminar", "P_NEW_GUSTAR", 2],
+      ["I don't need to finish", "no necesito terminar", "P17", 2],
+      ["I'm not trying to finish today", "no estoy intentando terminar hoy", "P02", 3],
+      ["I need to finish the story", "necesito terminar la historia", "P17", 3],
+      ["I'm not trying to finish everything", "no estoy intentando terminar todo", "P02", 3],
+      ["why I need to finish at the moment", "por qué necesito terminar en este momento", "P12", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P02, P12, P17, P_NEW_GUSTAR",
+    "full_seed_included": "NO - missing 'as quickly as possible'",
+    "gate_compliance": "STRICT - Only S0001-S0050L01 LEGOs available"
+  },
+
+  "S0050L03": {
+    "lego": ["as quickly as possible", "lo más rápidamente posible"],
+    "type": "M",
+    "available_legos": 144,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_GUSTAR_LIKE", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["as quickly as possible", "lo más rápidamente posible", null, 1],
+      ["to finish as quickly as possible", "terminar lo más rápidamente posible", null, 2],
+      ["I want as quickly as possible", "quiero lo más rápidamente posible", "P01", 2],
+      ["I'm not trying as quickly as possible", "no estoy intentando lo más rápidamente posible", "P02", 2],
+      ["I need to finish as quickly as possible", "necesito terminar lo más rápidamente posible", "P17", 3],
+      ["I'm not trying to finish as quickly as possible", "no estoy intentando terminar lo más rápidamente posible", "P02", 3],
+      ["to speak as quickly as possible", "hablar lo más rápidamente posible", null, 2],
+      ["I want to improve as quickly as possible", "quiero mejorar lo más rápidamente posible", "P01", 3],
+      ["I don't need to finish as quickly as possible", "no necesito terminar lo más rápidamente posible", "P17", 4],
+      ["I'm not trying to finish as quickly as possible.", "no estoy intentando terminar lo más rápidamente posible.", "P02", 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 4,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "pattern_coverage": "P01, P02, P17",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0050L02 LEGOs available"
+  }
+}
