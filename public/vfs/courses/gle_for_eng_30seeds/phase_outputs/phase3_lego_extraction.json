@@ -1,0 +1,1028 @@
+{
+  "S0001": {
+    "seed_pair": ["Ba mhaith liom labhairt Gaeilge leat anois.", "I want to speak Irish with you now."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0001L01",
+        "lego_pair": ["Ba mhaith liom", "I want"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0001L02",
+        "lego_pair": ["labhairt", "to speak"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0001L03",
+        "lego_pair": ["Gaeilge", "Irish"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0001L04",
+        "lego_pair": ["leat", "with you"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0001L05",
+        "lego_pair": ["anois", "now"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0002": {
+    "seed_pair": ["Táim ag iarraidh foghlaim.", "I'm trying to learn."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0002L01",
+        "lego_pair": ["Táim ag iarraidh", "I'm trying"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0002L02",
+        "lego_pair": ["foghlaim", "to learn"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0002F01",
+        "lego_pair": ["Táim", "I am"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0002F02",
+        "lego_pair": ["ag iarraidh", "trying"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0002L01": {
+        "explanation": "Progressive construction in Irish uses 'Táim ag' + verbal noun. 'Táim ag iarraidh' (I'm trying) is taught as COMPOSITE because 'ag iarraidh' alone would be ambiguous without the verb 'Táim'.",
+        "feeders": ["S0002F01", "S0002F02"]
+      }
+    }
+  },
+  "S0003": {
+    "seed_pair": ["conas labhairt chomh minic agus is féidir.", "how to speak as often as possible."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0003L01",
+        "lego_pair": ["conas", "how"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0003L02",
+        "lego_pair": ["chomh minic agus is féidir", "as often as possible"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0003F01",
+        "lego_pair": ["chomh", "as"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0003F02",
+        "lego_pair": ["minic", "often"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0003F03",
+        "lego_pair": ["agus is féidir", "as possible"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0003L02": {
+        "explanation": "'Chomh minic agus is féidir' (as often as possible) is a fixed phrase pattern in Irish. Breaking into smaller pieces would lose the comparative + possibility construction.",
+        "feeders": ["S0003F01", "S0003F02", "S0003F03"]
+      }
+    }
+  },
+  "S0004": {
+    "seed_pair": ["conas rud éigin a rá i nGaeilge", "how to say something in Irish"],
+    "lego_pairs": [
+      {
+        "lego_id": "S0004L01",
+        "lego_pair": ["rud éigin", "something"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0004L02",
+        "lego_pair": ["a rá", "to say"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0004L03",
+        "lego_pair": ["i nGaeilge", "in Irish"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0005": {
+    "seed_pair": ["Táim chun cleachtadh a dhéanamh ag labhairt le duine eile.", "I'm going to practise speaking with someone else."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0005L01",
+        "lego_pair": ["Táim chun", "I'm going to"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0005L02",
+        "lego_pair": ["cleachtadh a dhéanamh", "to practise"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0005L03",
+        "lego_pair": ["ag labhairt", "speaking"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0005L04",
+        "lego_pair": ["le duine eile", "with someone else"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0005F01",
+        "lego_pair": ["cleachtadh", "practice"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0005F02",
+        "lego_pair": ["a dhéanamh", "to do"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0005L02": {
+        "explanation": "Irish uses 'verbal noun + a dhéanamh' (to do) for many verbs. 'Cleachtadh a dhéanamh' is the standard way to say 'to practise'.",
+        "feeders": ["S0005F01", "S0005F02"]
+      }
+    }
+  },
+  "S0006": {
+    "seed_pair": ["Táim ag iarraidh focal a mheabhrú.", "I'm trying to remember a word."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0006L01",
+        "lego_pair": ["focal", "a word"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0006L02",
+        "lego_pair": ["a mheabhrú", "to remember"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0007": {
+    "seed_pair": ["Ba mhaith liom iarraidh chomh crua agus is féidir liom inniu.", "I want to try as hard as I can today."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0007L01",
+        "lego_pair": ["iarraidh", "to try"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0007L02",
+        "lego_pair": ["chomh crua agus is féidir liom", "as hard as I can"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0007L03",
+        "lego_pair": ["inniu", "today"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0007F01",
+        "lego_pair": ["crua", "hard"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0007F02",
+        "lego_pair": ["liom", "with me / I can"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0007L02": {
+        "explanation": "'Chomh X agus is féidir liom' is a comparative construction meaning 'as X as I can'. Must be taught together.",
+        "feeders": ["S0007F01", "S0007F02"]
+      }
+    }
+  },
+  "S0008": {
+    "seed_pair": ["Táim chun iarraidh a mhíniú cad atá i gceist agam.", "I'm going to try to explain what I mean."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0008L01",
+        "lego_pair": ["a mhíniú", "to explain"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0008L02",
+        "lego_pair": ["cad atá i gceist agam", "what I mean"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0008F01",
+        "lego_pair": ["cad", "what"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0008F02",
+        "lego_pair": ["atá", "is / that is"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0008F03",
+        "lego_pair": ["i gceist", "meant / in question"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0008F04",
+        "lego_pair": ["agam", "at me / I have"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0008L02": {
+        "explanation": "'Cad atá i gceist agam' is an idiomatic phrase meaning 'what I mean'. Components alone don't convey this meaning clearly.",
+        "feeders": ["S0008F01", "S0008F02", "S0008F03", "S0008F04"]
+      }
+    }
+  },
+  "S0009": {
+    "seed_pair": ["Labhraím beagán Gaeilge anois.", "I speak a little Irish now."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0009L01",
+        "lego_pair": ["Labhraím", "I speak"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0009L02",
+        "lego_pair": ["beagán", "a little"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0010": {
+    "seed_pair": ["Níl mé cinnte an féidir liom an abairt iomlán a mheabhrú.", "I'm not sure if I can remember the whole sentence."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0010L01",
+        "lego_pair": ["Níl mé cinnte", "I'm not sure"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0010L02",
+        "lego_pair": ["an féidir liom", "if I can"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0010L03",
+        "lego_pair": ["an abairt iomlán", "the whole sentence"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0010F01",
+        "lego_pair": ["Níl mé", "I'm not"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0010F02",
+        "lego_pair": ["cinnte", "sure"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0010L01": {
+        "explanation": "'Níl mé cinnte' functions as a unit meaning 'I'm not sure'. Teaching together ensures proper negation pattern.",
+        "feeders": ["S0010F01", "S0010F02"]
+      }
+    }
+  },
+  "S0011": {
+    "seed_pair": ["Ba mhaith liom a bheith in ann labhairt tar éis duit críochnú.", "I'd like to be able to speak after you finish."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0011L01",
+        "lego_pair": ["a bheith in ann", "to be able to"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0011L02",
+        "lego_pair": ["tar éis duit", "after you"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0011L03",
+        "lego_pair": ["críochnú", "finish"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0011F01",
+        "lego_pair": ["a bheith", "to be"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0011F02",
+        "lego_pair": ["in ann", "able"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0011L01": {
+        "explanation": "'A bheith in ann' is the standard Irish construction for 'to be able to'. Must be taught as unit.",
+        "feeders": ["S0011F01", "S0011F02"]
+      }
+    }
+  },
+  "S0012": {
+    "seed_pair": ["Ní mhaith liom buille faoi thuairim a thabhairt cad a bheidh ag tarlú amárach.", "I wouldn't like to guess what's going to happen tomorrow."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0012L01",
+        "lego_pair": ["Ní mhaith liom", "I wouldn't like"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0012L02",
+        "lego_pair": ["buille faoi thuairim a thabhairt", "to guess"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0012L03",
+        "lego_pair": ["cad a bheidh ag tarlú", "what's going to happen"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0012L04",
+        "lego_pair": ["amárach", "tomorrow"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0012F01",
+        "lego_pair": ["buille faoi thuairim", "a guess"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0012F02",
+        "lego_pair": ["a thabhairt", "to give"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0012F03",
+        "lego_pair": ["a bheidh", "that will be"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0012F04",
+        "lego_pair": ["ag tarlú", "happening"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0012L02": {
+        "explanation": "'Buille faoi thuairim a thabhairt' is an Irish idiom meaning 'to guess' (literally 'to give a stab in the dark').",
+        "feeders": ["S0012F01", "S0012F02"]
+      },
+      "S0012L03": {
+        "explanation": "'Cad a bheidh ag tarlú' combines interrogative + future progressive construction.",
+        "feeders": ["S0012F03", "S0012F04"]
+      }
+    }
+  },
+  "S0013": {
+    "seed_pair": ["Labhraíonn tú Gaeilge go han-mhaith.", "You speak Irish very well."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0013L01",
+        "lego_pair": ["Labhraíonn tú", "You speak"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0013L02",
+        "lego_pair": ["go han-mhaith", "very well"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0014": {
+    "seed_pair": ["An labhraíonn tú Gaeilge ar feadh an lae?", "Do you speak Irish all day?"],
+    "lego_pairs": [
+      {
+        "lego_id": "S0014L01",
+        "lego_pair": ["An labhraíonn tú", "Do you speak"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0014L02",
+        "lego_pair": ["ar feadh an lae", "all day"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0015": {
+    "seed_pair": ["Agus ba mhaith liom go labhródh tú Gaeilge liom amárach.", "And I want you to speak Irish with me tomorrow."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0015L01",
+        "lego_pair": ["Agus", "And"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0015L02",
+        "lego_pair": ["go labhródh tú", "you to speak"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0015L03",
+        "lego_pair": ["liom", "with me"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0016": {
+    "seed_pair": ["Ba mhaith leis teacht ar ais le gach duine eile níos déanaí.", "He wants to come back with everyone else later on."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0016L01",
+        "lego_pair": ["Ba mhaith leis", "wants"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0016L02",
+        "lego_pair": ["teacht ar ais", "to come back"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0016L03",
+        "lego_pair": ["le gach duine eile", "with everyone else"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0016L04",
+        "lego_pair": ["níos déanaí", "later on"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0017": {
+    "seed_pair": ["Ba mhaith léi fáil amach cad é an freagra.", "She wants to find out what the answer is."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0017L01",
+        "lego_pair": ["Ba mhaith léi", "wants"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0017L02",
+        "lego_pair": ["fáil amach", "to find out"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0017L03",
+        "lego_pair": ["cad é an freagra", "what the answer is"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0018": {
+    "seed_pair": ["Ba mhaith linn bualadh le chéile ar a sé a chlog tráthnóna.", "We want to meet at six o'clock this evening."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0018L01",
+        "lego_pair": ["Ba mhaith linn", "We want"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0018L02",
+        "lego_pair": ["bualadh le chéile", "to meet"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0018L03",
+        "lego_pair": ["ar a sé a chlog", "at six o'clock"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0018L04",
+        "lego_pair": ["tráthnóna", "this evening"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0019": {
+    "seed_pair": ["Ach ní mhaith liom stopadh ag caint.", "But I don't want to stop talking."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0019L01",
+        "lego_pair": ["Ach", "But"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0019L02",
+        "lego_pair": ["stopadh", "to stop"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0019L03",
+        "lego_pair": ["ag caint", "talking"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0020": {
+    "seed_pair": ["Ba mhaith leat a ainm a fhoghlaim go tapa.", "You want to learn his name quickly."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0020L01",
+        "lego_pair": ["Ba mhaith leat", "You want"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0020L02",
+        "lego_pair": ["a ainm a fhoghlaim", "to learn their name"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0020L03",
+        "lego_pair": ["go tapa", "quickly"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0020F01",
+        "lego_pair": ["a ainm", "their name"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0020L02": {
+        "explanation": "'A ainm a fhoghlaim' combines possessive + verbal noun. Using 'their' avoids gender ambiguity (FD requirement).",
+        "feeders": ["S0020F01"]
+      }
+    }
+  },
+  "S0021": {
+    "seed_pair": ["Cén fáth a bhfuil tú ag foghlaim a hainm?", "Why are you learning her name?"],
+    "lego_pairs": [
+      {
+        "lego_id": "S0021L01",
+        "lego_pair": ["Cén fáth", "Why"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0021L02",
+        "lego_pair": ["a bhfuil tú", "are you"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0021L03",
+        "lego_pair": ["ag foghlaim", "learning"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0021L04",
+        "lego_pair": ["a hainm", "their name"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0022": {
+    "seed_pair": ["Toisc ba mhaith liom bualadh le daoine a labhraíonn Gaeilge.", "Because I want to meet people who speak Irish."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0022L01",
+        "lego_pair": ["Toisc", "Because"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0022L02",
+        "lego_pair": ["bualadh le daoine", "to meet people"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0022L03",
+        "lego_pair": ["a labhraíonn", "who speak"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0023": {
+    "seed_pair": ["Táim chun tosú ag caint níos mó go luath.", "I'm going to start talking more soon."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0023L01",
+        "lego_pair": ["tosú", "to start"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0023L02",
+        "lego_pair": ["níos mó", "more"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0023L03",
+        "lego_pair": ["go luath", "soon"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0024": {
+    "seed_pair": ["Níl mé chun a bheith in ann meabhrú go héasca.", "I'm not going to be able to remember easily."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0024L01",
+        "lego_pair": ["Níl mé chun", "I'm not going to"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0024L02",
+        "lego_pair": ["meabhrú", "remember"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0024L03",
+        "lego_pair": ["go héasca", "easily"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0025": {
+    "seed_pair": ["An bhfuil tú chun cabhrú liom sula mbeidh orm imeacht?", "Are you going to help me before I have to go?"],
+    "lego_pairs": [
+      {
+        "lego_id": "S0025L01",
+        "lego_pair": ["An bhfuil tú chun", "Are you going to"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0025L02",
+        "lego_pair": ["cabhrú liom", "help me"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0025L03",
+        "lego_pair": ["sula mbeidh orm", "before I have to"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0025L04",
+        "lego_pair": ["imeacht", "go"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0025F01",
+        "lego_pair": ["sula", "before"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0025F02",
+        "lego_pair": ["mbeidh orm", "I have to"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0025L03": {
+        "explanation": "'Sula mbeidh orm' combines temporal conjunction + future obligation construction.",
+        "feeders": ["S0025F01", "S0025F02"]
+      }
+    }
+  },
+  "S0026": {
+    "seed_pair": ["Is maith liom mothú amhail is go bhfuil mé beagnach réidh le himeacht.", "I like feeling as if I'm nearly ready to go."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0026L01",
+        "lego_pair": ["Is maith liom", "I like"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0026L02",
+        "lego_pair": ["mothú", "feeling"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0026L03",
+        "lego_pair": ["amhail is go bhfuil", "as if"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0026L04",
+        "lego_pair": ["beagnach réidh", "nearly ready"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0026L05",
+        "lego_pair": ["le himeacht", "to go"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0026F01",
+        "lego_pair": ["amhail is", "as if"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0026F02",
+        "lego_pair": ["go bhfuil", "that"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0026L03": {
+        "explanation": "'Amhail is go bhfuil' is a complex conjunction meaning 'as if'.",
+        "feeders": ["S0026F01", "S0026F02"]
+      }
+    }
+  },
+  "S0027": {
+    "seed_pair": ["Ní maith liom an iomarca ama a thógáil le freagairt.", "I don't like taking too much time to answer."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0027L01",
+        "lego_pair": ["Ní maith liom", "I don't like"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0027L02",
+        "lego_pair": ["an iomarca ama", "too much time"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0027L03",
+        "lego_pair": ["a thógáil", "taking"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0027L04",
+        "lego_pair": ["le freagairt", "to answer"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": []
+  },
+  "S0028": {
+    "seed_pair": ["Tá sé úsáideach tosú ag caint chomh luath agus is féidir leat.", "It's useful to start talking as soon as you can."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0028L01",
+        "lego_pair": ["Tá sé úsáideach", "It's useful"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0028L02",
+        "lego_pair": ["chomh luath agus is féidir leat", "as soon as you can"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0028F01",
+        "lego_pair": ["chomh luath", "as soon"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0028F02",
+        "lego_pair": ["agus is féidir leat", "as you can"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0028L02": {
+        "explanation": "'Chomh luath agus is féidir leat' is a temporal comparative construction.",
+        "feeders": ["S0028F01", "S0028F02"]
+      }
+    }
+  },
+  "S0029": {
+    "seed_pair": ["Táim ag tnúth le labhairt níos fearr chomh luath agus is féidir liom.", "I'm looking forward to speaking better as soon as I can."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0029L01",
+        "lego_pair": ["Táim ag tnúth le", "I'm looking forward to"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0029L02",
+        "lego_pair": ["níos fearr", "better"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0029F01",
+        "lego_pair": ["ag tnúth", "looking forward"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "feeder_id": "S0029F02",
+        "lego_pair": ["le", "to"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0029L01": {
+        "explanation": "'Táim ag tnúth le' is the standard Irish construction for 'looking forward to'.",
+        "feeders": ["S0029F01", "S0029F02"]
+      }
+    }
+  },
+  "S0030": {
+    "seed_pair": ["Bhí mé ag iarraidh rud éigin a fhiafraí díot inné.", "I wanted to ask you something yesterday."],
+    "lego_pairs": [
+      {
+        "lego_id": "S0030L01",
+        "lego_pair": ["Bhí mé ag iarraidh", "I wanted"],
+        "type": "COMPOSITE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0030L02",
+        "lego_pair": ["a fhiafraí", "to ask"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0030L03",
+        "lego_pair": ["díot", "you"],
+        "type": "BASE",
+        "fd_validated": true
+      },
+      {
+        "lego_id": "S0030L04",
+        "lego_pair": ["inné", "yesterday"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "feeder_pairs": [
+      {
+        "feeder_id": "S0030F01",
+        "lego_pair": ["Bhí mé", "I was"],
+        "type": "BASE",
+        "fd_validated": true
+      }
+    ],
+    "componentization": {
+      "S0030L01": {
+        "explanation": "'Bhí mé ag iarraidh' is past progressive construction meaning 'I wanted/was wanting'.",
+        "feeders": ["S0030F01"]
+      }
+    }
+  }
+}

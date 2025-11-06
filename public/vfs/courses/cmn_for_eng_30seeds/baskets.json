@@ -1,0 +1,1479 @@
+{
+  "S0001L01": {
+    "lego": ["我想", "I want"],
+    "e": [],
+    "d": {"2": [], "3": [], "4": [], "5": []}
+  },
+  "S0001L02": {
+    "lego": ["跟你", "with you"],
+    "e": [
+      ["我想跟你说中文。", "I want to speak Chinese with you."]
+    ],
+    "d": {"2": [["我想跟你", "I want with you"]], "3": [], "4": [], "5": []}
+  },
+  "S0001L03": {
+    "lego": ["现在", "now"],
+    "e": [
+      ["我想现在跟你说中文。", "I want to speak Chinese with you now."],
+      ["我现在想说。", "I want to speak now."]
+    ],
+    "d": {
+      "2": [["我现在", "I now"], ["现在说", "now speak"]],
+      "3": [["我想现在说", "I want now speak"], ["现在跟你说", "now with you speak"]],
+      "4": [],
+      "5": []
+    }
+  },
+  "S0001L04": {
+    "lego": ["说", "to speak"],
+    "e": [
+      ["我想跟你现在说中文。", "I want to speak Chinese with you now."],
+      ["我想说。", "I want to speak."],
+      ["我现在想跟你说。", "I want to speak with you now."]
+    ],
+    "d": {
+      "2": [["我想说", "I want speak"], ["跟你说", "with you speak"]],
+      "3": [["我想跟你说", "I want with you speak"], ["我现在想说", "I now want speak"]],
+      "4": [["我想跟你现在说", "I want with you now speak"]],
+      "5": []
+    }
+  },
+  "S0001L05": {
+    "lego": ["中文", "Chinese"],
+    "e": [
+      ["我想跟你现在说中文。", "I want to speak Chinese with you now."],
+      ["我想说中文。", "I want to speak Chinese."],
+      ["我现在说中文。", "I speak Chinese now."]
+    ],
+    "d": {
+      "2": [["说中文", "speak Chinese"], ["中文说", "Chinese speak"]],
+      "3": [["我想说中文", "I want speak Chinese"], ["跟你说中文", "with you speak Chinese"]],
+      "4": [["我想跟你说中文", "I want with you speak Chinese"], ["我现在说中文", "I now speak Chinese"]],
+      "5": [["我想跟你现在说中文", "I want to speak Chinese with you now"]]
+    }
+  },
+  "S0002L01": {
+    "lego": ["我在试着", "I'm trying"],
+    "e": [
+      ["我在试着学。", "I'm trying to learn."],
+      ["我在试着说中文。", "I'm trying to speak Chinese."],
+      ["我在试着跟你说。", "I'm trying to speak with you."],
+      ["我现在在试着说。", "I'm trying to speak now."]
+    ],
+    "d": {
+      "2": [["我在试着", "I'm trying"], ["在试着说", "trying speak"]],
+      "3": [["我在试着说", "I'm trying speak"], ["在试着说中文", "trying speak Chinese"]],
+      "4": [["我在试着说中文", "I'm trying speak Chinese"], ["我在试着跟你说", "I'm trying with you speak"]],
+      "5": []
+    }
+  },
+  "S0002F01": {
+    "lego": ["我在", "I'm (progressive)"],
+    "e": [
+      ["我在说中文。", "I'm speaking Chinese."],
+      ["我在跟你说。", "I'm speaking with you."],
+      ["我在试着学。", "I'm trying to learn."]
+    ],
+    "d": {
+      "2": [["我在说", "I'm speaking"], ["我在学", "I'm learning"]],
+      "3": [["我在说中文", "I'm speaking Chinese"], ["我在跟你说", "I'm with you speaking"]],
+      "4": [],
+      "5": []
+    }
+  },
+  "S0002F02": {
+    "lego": ["试", "to try"],
+    "e": [
+      ["我想试。", "I want to try."],
+      ["我在试着说中文。", "I'm trying to speak Chinese."],
+      ["我现在想试。", "I want to try now."]
+    ],
+    "d": {
+      "2": [["我想试", "I want try"], ["想试说", "want try speak"]],
+      "3": [["我在试着说", "I'm trying speak"], ["想试说中文", "want try speak Chinese"]],
+      "4": [],
+      "5": []
+    }
+  },
+  "S0002L02": {
+    "lego": ["学", "to learn"],
+    "e": [
+      ["我在试着学。", "I'm trying to learn."],
+      ["我想学中文。", "I want to learn Chinese."],
+      ["我现在在试着学。", "I'm trying to learn now."],
+      ["我在跟你学。", "I'm learning with you."]
+    ],
+    "d": {
+      "2": [["我在学", "I'm learning"], ["想学中文", "want learn Chinese"]],
+      "3": [["我在试着学", "I'm trying learn"], ["我想学中文", "I want learn Chinese"]],
+      "4": [["我在跟你学中文", "I'm with you learning Chinese"]],
+      "5": []
+    }
+  },
+  "S0003L01": {
+    "lego": ["怎么", "how"],
+    "e": [
+      ["我在试着学怎么说中文。", "I'm trying to learn how to speak Chinese."],
+      ["我想学怎么说。", "I want to learn how to speak."],
+      ["我想跟你学怎么说。", "I want to learn how to speak with you."]
+    ],
+    "d": {
+      "2": [["学怎么", "learn how"], ["怎么说", "how speak"]],
+      "3": [["学怎么说", "learn how speak"], ["怎么说中文", "how speak Chinese"]],
+      "4": [["我想学怎么说", "I want learn how speak"], ["学怎么说中文", "learn how speak Chinese"]],
+      "5": [["我在试着学怎么说中文", "I'm trying learn how speak Chinese"]]
+    }
+  },
+  "S0003L02": {
+    "lego": ["尽量", "as much as possible"],
+    "e": [
+      ["我想尽量说中文。", "I want to speak Chinese as much as possible."],
+      ["我在试着尽量说。", "I'm trying to speak as much as possible."],
+      ["我想尽量跟你说。", "I want to speak with you as much as possible."],
+      ["我现在在试着尽量学。", "I'm trying to learn as much as possible now."]
+    ],
+    "d": {
+      "2": [["尽量说", "as much speak"], ["想尽量", "want as much"]],
+      "3": [["我想尽量说", "I want as much speak"], ["尽量说中文", "as much speak Chinese"]],
+      "4": [["我想尽量说中文", "I want as much speak Chinese"], ["在试着尽量说", "trying as much speak"]],
+      "5": [["我在试着尽量说中文", "I'm trying as much speak Chinese"]]
+    }
+  },
+  "S0003L03": {
+    "lego": ["常说", "to speak often"],
+    "e": [
+      ["怎么尽量常说。", "how to speak as often as possible."],
+      ["我想尽量常说中文。", "I want to speak Chinese as often as possible."],
+      ["我在试着学怎么尽量常说。", "I'm trying to learn how to speak as often as possible."]
+    ],
+    "d": {
+      "2": [["常说中文", "often speak Chinese"], ["尽量常说", "as much often speak"]],
+      "3": [["怎么尽量常说", "how as much often speak"], ["我想常说", "I want often speak"]],
+      "4": [["我想尽量常说", "I want as much often speak"], ["学怎么尽量常说", "learn how as much often speak"]],
+      "5": [["我在试着学怎么尽量常说", "I'm trying learn how as much often speak"]]
+    }
+  },
+  "S0004L01": {
+    "lego": ["用中文", "in Chinese"],
+    "e": [
+      ["我想学怎么用中文说。", "I want to learn how to speak in Chinese."],
+      ["我在试着用中文说。", "I'm trying to speak in Chinese."],
+      ["我想跟你用中文说。", "I want to speak in Chinese with you."],
+      ["我现在在试着用中文说。", "I'm trying to speak in Chinese now."]
+    ],
+    "d": {
+      "2": [["用中文说", "in Chinese speak"], ["想用中文", "want in Chinese"]],
+      "3": [["怎么用中文说", "how in Chinese speak"], ["我想用中文说", "I want in Chinese speak"]],
+      "4": [["我在试着用中文说", "I'm trying in Chinese speak"], ["我想跟你用中文说", "I want with you in Chinese speak"]],
+      "5": [["我现在在试着用中文说", "I now trying in Chinese speak"]]
+    }
+  },
+  "S0004L02": {
+    "lego": ["什么", "something"],
+    "e": [
+      ["怎么用中文说什么", "how to say something in Chinese"],
+      ["我想说什么。", "I want to say something."],
+      ["我在试着学怎么用中文说什么。", "I'm trying to learn how to say something in Chinese."],
+      ["我想跟你说什么。", "I want to say something to you."]
+    ],
+    "d": {
+      "2": [["说什么", "say something"], ["学什么", "learn something"]],
+      "3": [["怎么说什么", "how say something"], ["用中文说什么", "in Chinese say something"]],
+      "4": [["怎么用中文说什么", "how in Chinese say something"], ["我想说什么", "I want say something"]],
+      "5": [["我在试着学怎么用中文说什么", "I'm trying learn how in Chinese say something"]]
+    }
+  },
+  "S0005L01": {
+    "lego": ["我要", "I'm going to"],
+    "e": [
+      ["我要跟你说中文。", "I'm going to speak Chinese with you."],
+      ["我要学怎么说。", "I'm going to learn how to speak."],
+      ["我要现在说什么。", "I'm going to say something now."],
+      ["我要尽量常说。", "I'm going to speak as often as possible."],
+      ["我要试着用中文说。", "I'm going to try to speak in Chinese."]
+    ],
+    "d": {
+      "2": [["我要说", "I'm going to speak"], ["我要学", "I'm going to learn"]],
+      "3": [["我要说中文", "I'm going to speak Chinese"], ["我要跟你说", "I'm going to with you speak"]],
+      "4": [["我要跟你说中文", "I'm going to with you speak Chinese"], ["我要学怎么说", "I'm going to learn how speak"]],
+      "5": [["我要试着用中文说", "I'm going to try in Chinese speak"]]
+    }
+  },
+  "S0005L02": {
+    "lego": ["跟别人", "with someone else"],
+    "e": [
+      ["我要跟别人练习说。", "I'm going to practice speaking with someone else."],
+      ["我想跟别人说中文。", "I want to speak Chinese with someone else."],
+      ["我在试着学怎么跟别人说。", "I'm trying to learn how to speak with someone else."],
+      ["我现在要跟别人说什么。", "I'm going to say something to someone else now."]
+    ],
+    "d": {
+      "2": [["跟别人说", "with someone else speak"], ["我要跟别人", "I'm going to with someone else"]],
+      "3": [["我想跟别人说", "I want with someone else speak"], ["跟别人说中文", "with someone else speak Chinese"]],
+      "4": [["我要跟别人说中文", "I'm going to with someone else speak Chinese"], ["我在跟别人学", "I'm with someone else learning"]],
+      "5": [["我在试着学怎么跟别人说", "I'm trying learn how with someone else speak"]]
+    }
+  },
+  "S0005L03": {
+    "lego": ["练习说", "practice speaking"],
+    "e": [
+      ["我要跟别人练习说。", "I'm going to practice speaking with someone else."],
+      ["我想尽量练习说中文。", "I want to practice speaking Chinese as much as possible."],
+      ["我在试着练习说。", "I'm trying to practice speaking."],
+      ["我现在要跟你练习说。", "I'm going to practice speaking with you now."]
+    ],
+    "d": {
+      "2": [["练习说中文", "practice speak Chinese"], ["我想练习说", "I want practice speak"]],
+      "3": [["跟别人练习说", "with someone else practice speak"], ["我要练习说", "I'm going to practice speak"]],
+      "4": [["我要跟别人练习说", "I'm going to with someone else practice speak"], ["我在试着练习说", "I'm trying practice speak"]],
+      "5": [["我想尽量练习说中文", "I want as much practice speak Chinese"]]
+    }
+  },
+  "S0006L01": {
+    "lego": ["想起", "to remember"],
+    "e": [
+      ["我在试着想起一个词。", "I'm trying to remember a word."],
+      ["我想想起怎么说。", "I want to remember how to speak."],
+      ["我现在在试着想起什么。", "I'm trying to remember something now."],
+      ["我要跟你说,我想想起用中文怎么说。", "I'm going to tell you, I want to remember how to say it in Chinese."]
+    ],
+    "d": {
+      "2": [["想起什么", "remember something"], ["我想想起", "I want remember"]],
+      "3": [["试着想起", "trying remember"], ["想起怎么说", "remember how speak"]],
+      "4": [["我在试着想起", "I'm trying remember"], ["想起怎么用中文说", "remember how in Chinese speak"]],
+      "5": [["我在试着想起一个词", "I'm trying remember one word"]]
+    }
+  },
+  "S0006L02": {
+    "lego": ["一个词", "a word"],
+    "e": [
+      ["我在试着想起一个词。", "I'm trying to remember a word."],
+      ["我想学一个词。", "I want to learn a word."],
+      ["我要跟你说一个词。", "I'm going to say a word to you."],
+      ["我现在想用中文说一个词。", "I want to say a word in Chinese now."]
+    ],
+    "d": {
+      "2": [["一个词", "a word"], ["说一个词", "say a word"]],
+      "3": [["想起一个词", "remember a word"], ["学一个词", "learn a word"]],
+      "4": [["我在试着想起一个词", "I'm trying remember a word"], ["我想学一个词", "I want learn a word"]],
+      "5": [["我现在想用中文说一个词", "I now want in Chinese say a word"]]
+    }
+  },
+  "S0007L01": {
+    "lego": ["今天", "today"],
+    "e": [
+      ["我今天想尽量试。", "I want to try as hard as I can today."],
+      ["我今天要跟你说中文。", "I'm going to speak Chinese with you today."],
+      ["我今天在试着练习说。", "I'm trying to practice speaking today."],
+      ["我今天想学一个词。", "I want to learn a word today."],
+      ["我今天要跟别人说什么。", "I'm going to say something to someone else today."]
+    ],
+    "d": {
+      "2": [["我今天", "I today"], ["今天说", "today speak"]],
+      "3": [["我今天想说", "I today want speak"], ["今天跟你说", "today with you speak"]],
+      "4": [["我今天要说中文", "I today going to speak Chinese"], ["我今天在试着", "I today am trying"]],
+      "5": [["我今天要跟你说中文", "I today going to with you speak Chinese"]]
+    }
+  },
+  "S0007L02": {
+    "lego": ["试", "to try"],
+    "e": [
+      ["我今天想尽量试。", "I want to try as hard as I can today."],
+      ["我要试着说中文。", "I'm going to try to speak Chinese."],
+      ["我现在想试跟别人练习说。", "I want to try to practice speaking with someone else now."],
+      ["我在试学怎么用中文说一个词。", "I'm trying to learn how to say a word in Chinese."]
+    ],
+    "d": {
+      "2": [["我想试", "I want try"], ["试说中文", "try speak Chinese"]],
+      "3": [["我要试着说", "I'm going to try speak"], ["今天想试", "today want try"]],
+      "4": [["我今天想尽量试", "I today want as much try"], ["我要试着说中文", "I'm going to try speak Chinese"]],
+      "5": [["我在试学怎么用中文说", "I'm trying learn how in Chinese speak"]]
+    }
+  },
+  "S0008L01": {
+    "lego": ["我要试着", "I'm going to try"],
+    "e": [
+      ["我要试着解释我的意思。", "I'm going to try to explain what I mean."],
+      ["我要试着说中文。", "I'm going to try to speak Chinese."],
+      ["我要试着跟别人练习说。", "I'm going to try to practice speaking with someone else."],
+      ["我要试着今天学一个词。", "I'm going to try to learn a word today."],
+      ["我要试着想起怎么用中文说什么。", "I'm going to try to remember how to say something in Chinese."]
+    ],
+    "d": {
+      "2": [["我要试着", "I'm going to try"], ["试着说", "trying speak"]],
+      "3": [["我要试着说", "I'm going to try speak"], ["要试着学", "going to try learn"]],
+      "4": [["我要试着说中文", "I'm going to try speak Chinese"], ["我要试着跟你说", "I'm going to try with you speak"]],
+      "5": [["我要试着跟别人练习说", "I'm going to try with someone else practice speak"]]
+    }
+  },
+  "S0008L02": {
+    "lego": ["解释", "to explain"],
+    "e": [
+      ["我要试着解释我的意思。", "I'm going to try to explain what I mean."],
+      ["我想学怎么解释。", "I want to learn how to explain."],
+      ["我今天要跟你解释什么。", "I'm going to explain something to you today."],
+      ["我在试着用中文解释。", "I'm trying to explain in Chinese."]
+    ],
+    "d": {
+      "2": [["解释什么", "explain something"], ["我要解释", "I'm going to explain"]],
+      "3": [["试着解释", "trying explain"], ["我想解释", "I want explain"]],
+      "4": [["我要试着解释", "I'm going to try explain"], ["用中文解释", "in Chinese explain"]],
+      "5": [["我在试着用中文解释", "I'm trying in Chinese explain"]]
+    }
+  },
+  "S0008L03": {
+    "lego": ["我的意思", "what I mean"],
+    "e": [
+      ["我要试着解释我的意思。", "I'm going to try to explain what I mean."],
+      ["我想跟你说我的意思。", "I want to tell you what I mean."],
+      ["我在试着想起我的意思。", "I'm trying to remember what I mean."],
+      ["我今天要用中文说我的意思。", "I'm going to say what I mean in Chinese today."]
+    ],
+    "d": {
+      "2": [["我的意思", "what I mean"], ["说我的意思", "say what I mean"]],
+      "3": [["解释我的意思", "explain what I mean"], ["我想说我的意思", "I want say what I mean"]],
+      "4": [["试着解释我的意思", "trying explain what I mean"], ["跟你说我的意思", "with you say what I mean"]],
+      "5": [["我要试着解释我的意思", "I'm going to try explain what I mean"]]
+    }
+  },
+  "S0009L01": {
+    "lego": ["我会说", "I speak"],
+    "e": [
+      ["我现在会说一点儿中文。", "I speak a little Chinese now."],
+      ["我会说。", "I speak."],
+      ["我今天会说跟别人练习。", "I speak to practice with someone else today."],
+      ["我会说我的意思。", "I speak what I mean."]
+    ],
+    "d": {
+      "2": [["我会说", "I speak"], ["会说中文", "speak Chinese"]],
+      "3": [["我会说中文", "I speak Chinese"], ["我会说什么", "I speak something"]],
+      "4": [["我现在会说中文", "I now speak Chinese"], ["我会说我的意思", "I speak what I mean"]],
+      "5": []
+    }
+  },
+  "S0009L02": {
+    "lego": ["一点儿", "a little"],
+    "e": [
+      ["我现在会说一点儿中文。", "I speak a little Chinese now."],
+      ["我想学一点儿。", "I want to learn a little."],
+      ["我今天要试着说一点儿。", "I'm going to try to speak a little today."],
+      ["我跟别人练习说一点儿。", "I practice speaking a little with someone else."]
+    ],
+    "d": {
+      "2": [["一点儿中文", "a little Chinese"], ["说一点儿", "speak a little"]],
+      "3": [["会说一点儿", "speak a little"], ["学一点儿", "learn a little"]],
+      "4": [["我会说一点儿中文", "I speak a little Chinese"], ["想学一点儿", "want learn a little"]],
+      "5": [["我现在会说一点儿中文", "I now speak a little Chinese"]]
+    }
+  },
+  "S0010L01": {
+    "lego": ["我不确定", "I'm not sure"],
+    "e": [
+      ["我不确定我能不能记得整个句子。", "I'm not sure if I can remember the whole sentence."],
+      ["我不确定怎么说。", "I'm not sure how to speak."],
+      ["我不确定我会说一点儿中文。", "I'm not sure I speak a little Chinese."],
+      ["我不确定今天要跟别人说什么。", "I'm not sure what to say to someone else today."]
+    ],
+    "d": {
+      "2": [["我不确定", "I'm not sure"], ["不确定怎么", "not sure how"]],
+      "3": [["我不确定怎么说", "I'm not sure how speak"], ["不确定我会说", "not sure I speak"]],
+      "4": [["我不确定怎么说中文", "I'm not sure how speak Chinese"], ["我不确定我要说", "I'm not sure I going to speak"]],
+      "5": []
+    }
+  },
+  "S0010L02": {
+    "lego": ["能不能", "if I can"],
+    "e": [
+      ["我不确定我能不能记得整个句子。", "I'm not sure if I can remember the whole sentence."],
+      ["我想学我能不能说中文。", "I want to learn if I can speak Chinese."],
+      ["我今天要试能不能跟别人练习说。", "I'm going to try if I can practice speaking with someone else today."]
+    ],
+    "d": {
+      "2": [["能不能说", "if can speak"], ["我能不能", "I if can"]],
+      "3": [["能不能说中文", "if can speak Chinese"], ["我能不能学", "I if can learn"]],
+      "4": [["我不确定能不能", "I'm not sure if can"], ["我能不能说中文", "I if can speak Chinese"]],
+      "5": [["我不确定我能不能记得", "I'm not sure I if can remember"]]
+    }
+  },
+  "S0010L03": {
+    "lego": ["记得", "to remember"],
+    "e": [
+      ["我不确定我能不能记得整个句子。", "I'm not sure if I can remember the whole sentence."],
+      ["我想记得怎么说中文。", "I want to remember how to speak Chinese."],
+      ["我今天要试着记得一个词。", "I'm going to try to remember a word today."],
+      ["我在试着记得我的意思。", "I'm trying to remember what I mean."]
+    ],
+    "d": {
+      "2": [["记得怎么", "remember how"], ["我想记得", "I want remember"]],
+      "3": [["能不能记得", "if can remember"], ["记得怎么说", "remember how speak"]],
+      "4": [["我想记得怎么说", "I want remember how speak"], ["我在试着记得", "I'm trying remember"]],
+      "5": [["我不确定我能不能记得", "I'm not sure I if can remember"]]
+    }
+  },
+  "S0010L04": {
+    "lego": ["整个句子", "the whole sentence"],
+    "e": [
+      ["我不确定我能不能记得整个句子。", "I'm not sure if I can remember the whole sentence."],
+      ["我想学怎么说整个句子。", "I want to learn how to say the whole sentence."],
+      ["我今天要试着解释整个句子。", "I'm going to try to explain the whole sentence today."],
+      ["我在跟别人练习说整个句子。", "I'm practicing saying the whole sentence with someone else."]
+    ],
+    "d": {
+      "2": [["整个句子", "the whole sentence"], ["说整个句子", "say the whole sentence"]],
+      "3": [["记得整个句子", "remember the whole sentence"], ["学整个句子", "learn the whole sentence"]],
+      "4": [["能不能记得整个句子", "if can remember the whole sentence"], ["怎么说整个句子", "how say the whole sentence"]],
+      "5": [["我不确定我能不能记得整个句子", "I'm not sure I if can remember the whole sentence"]]
+    }
+  },
+  "S0011L01": {
+    "lego": ["我想", "I'd like"],
+    "e": [
+      ["我想在你说完之后能说。", "I'd like to be able to speak after you finish."],
+      ["我想今天学整个句子。", "I'd like to learn the whole sentence today."],
+      ["我想跟别人练习说一点儿中文。", "I'd like to practice speaking a little Chinese with someone else."],
+      ["我想记得怎么解释我的意思。", "I'd like to remember how to explain what I mean."]
+    ],
+    "d": {
+      "2": [["我想说", "I'd like speak"], ["我想学", "I'd like learn"]],
+      "3": [["我想说中文", "I'd like speak Chinese"], ["我想跟你说", "I'd like with you speak"]],
+      "4": [["我想今天学", "I'd like today learn"], ["我想记得怎么", "I'd like remember how"]],
+      "5": [["我想跟别人练习说", "I'd like with someone else practice speak"]]
+    }
+  },
+  "S0011L02": {
+    "lego": ["在你说完之后", "after you finish"],
+    "e": [
+      ["我想在你说完之后能说。", "I'd like to be able to speak after you finish."],
+      ["我要在你说完之后试着解释。", "I'm going to try to explain after you finish."],
+      ["在你说完之后我会说一点儿。", "After you finish I'll speak a little."],
+      ["我在你说完之后想记得整个句子。", "After you finish I'd like to remember the whole sentence."]
+    ],
+    "d": {
+      "2": [["说完之后", "finish after"], ["你说完", "you finish"]],
+      "3": [["在你说完之后", "after you finish"], ["你说完之后说", "you finish after speak"]],
+      "4": [["在你说完之后能说", "after you finish can speak"], ["我在你说完之后", "I after you finish"]],
+      "5": [["我想在你说完之后能说", "I'd like after you finish can speak"]]
+    }
+  },
+  "S0011F01": {
+    "lego": ["说完", "to finish speaking"],
+    "e": [
+      ["我想说完整个句子。", "I'd like to finish speaking the whole sentence."],
+      ["我今天要试着说完。", "I'm going to try to finish speaking today."],
+      ["我在跟你说完之后要学一点儿。", "After I finish speaking with you I'm going to learn a little."]
+    ],
+    "d": {
+      "2": [["说完", "finish speaking"], ["我想说完", "I'd like finish speaking"]],
+      "3": [["你说完", "you finish speaking"], ["要说完", "going to finish speaking"]],
+      "4": [["我今天要说完", "I today going to finish speaking"], ["说完整个句子", "finish speaking the whole sentence"]],
+      "5": []
+    }
+  },
+  "S0011L03": {
+    "lego": ["能说", "to be able to speak"],
+    "e": [
+      ["我想在你说完之后能说。", "I'd like to be able to speak after you finish."],
+      ["我不确定我今天能说中文。", "I'm not sure I can speak Chinese today."],
+      ["我要试着学怎么能说整个句子。", "I'm going to try to learn how to be able to say the whole sentence."]
+    ],
+    "d": {
+      "2": [["能说中文", "can speak Chinese"], ["我能说", "I can speak"]],
+      "3": [["能不能说", "if can speak"], ["我想能说", "I'd like can speak"]],
+      "4": [["在你说完之后能说", "after you finish can speak"], ["我不确定能说", "I'm not sure can speak"]],
+      "5": [["我想在你说完之后能说", "I'd like after you finish can speak"]]
+    }
+  },
+  "S0012L01": {
+    "lego": ["我不想", "I wouldn't like"],
+    "e": [
+      ["我不想猜明天会发生什么。", "I wouldn't like to guess what's going to happen tomorrow."],
+      ["我不想今天说整个句子。", "I wouldn't like to say the whole sentence today."],
+      ["我不想在你说完之后能说。", "I wouldn't like to be able to speak after you finish."],
+      ["我不想跟别人练习说一点儿中文。", "I wouldn't like to practice speaking a little Chinese with someone else."]
+    ],
+    "d": {
+      "2": [["我不想", "I wouldn't like"], ["不想说", "wouldn't like speak"]],
+      "3": [["我不想说", "I wouldn't like speak"], ["不想学", "wouldn't like learn"]],
+      "4": [["我不想今天说", "I wouldn't like today speak"], ["我不想跟你说", "I wouldn't like with you speak"]],
+      "5": [["我不想在你说完之后能说", "I wouldn't like after you finish can speak"]]
+    }
+  },
+  "S0012L02": {
+    "lego": ["猜", "to guess"],
+    "e": [
+      ["我不想猜明天会发生什么。", "I wouldn't like to guess what's going to happen tomorrow."],
+      ["我要试着猜怎么说。", "I'm going to try to guess how to speak."],
+      ["我今天不想猜整个句子。", "I wouldn't like to guess the whole sentence today."],
+      ["我在试着猜你的意思。", "I'm trying to guess what you mean."]
+    ],
+    "d": {
+      "2": [["猜怎么", "guess how"], ["我不想猜", "I wouldn't like guess"]],
+      "3": [["不想猜", "wouldn't like guess"], ["试着猜", "trying guess"]],
+      "4": [["我不想猜什么", "I wouldn't like guess what"], ["我在试着猜", "I'm trying guess"]],
+      "5": []
+    }
+  },
+  "S0012L03": {
+    "lego": ["明天", "tomorrow"],
+    "e": [
+      ["我不想猜明天会发生什么。", "I wouldn't like to guess what's going to happen tomorrow."],
+      ["我想明天跟你说中文。", "I'd like to speak Chinese with you tomorrow."],
+      ["我明天要试着记得整个句子。", "I'm going to try to remember the whole sentence tomorrow."],
+      ["我明天在你说完之后能说一点儿。", "Tomorrow after you finish I can speak a little."]
+    ],
+    "d": {
+      "2": [["明天说", "tomorrow speak"], ["我明天", "I tomorrow"]],
+      "3": [["明天跟你说", "tomorrow with you speak"], ["我想明天", "I'd like tomorrow"]],
+      "4": [["我明天要说中文", "I tomorrow going to speak Chinese"], ["明天试着说", "tomorrow trying speak"]],
+      "5": [["我明天要试着记得整个句子", "I tomorrow going to try remember the whole sentence"]]
+    }
+  },
+  "S0012L04": {
+    "lego": ["会发生什么", "what's going to happen"],
+    "e": [
+      ["我不想猜明天会发生什么。", "I wouldn't like to guess what's going to happen tomorrow."],
+      ["我不确定今天会发生什么。", "I'm not sure what's going to happen today."],
+      ["我想学会发生什么。", "I'd like to learn what's going to happen."]
+    ],
+    "d": {
+      "2": [["会发生什么", "what's going to happen"], ["发生什么", "happen what"]],
+      "3": [["明天会发生什么", "tomorrow what's going to happen"], ["猜会发生什么", "guess what's going to happen"]],
+      "4": [["不想猜会发生什么", "wouldn't like guess what's going to happen"], ["我不确定会发生什么", "I'm not sure what's going to happen"]],
+      "5": [["我不想猜明天会发生什么", "I wouldn't like guess tomorrow what's going to happen"]]
+    }
+  },
+  "S0012F01": {
+    "lego": ["发生", "to happen"],
+    "e": [
+      ["我不想猜会发生什么。", "I wouldn't like to guess what's going to happen."],
+      ["我想学今天要发生什么。", "I'd like to learn what's going to happen today."],
+      ["我不确定明天能不能发生。", "I'm not sure if it can happen tomorrow."]
+    ],
+    "d": {
+      "2": [["发生什么", "happen what"], ["会发生", "going to happen"]],
+      "3": [["要发生什么", "going to happen what"], ["今天发生", "today happen"]],
+      "4": [["明天会发生什么", "tomorrow going to happen what"], ["不想猜发生", "wouldn't like guess happen"]],
+      "5": []
+    }
+  },
+  "S0013L01": {
+    "lego": ["你说得", "You speak"],
+    "e": [
+      ["你中文说得很好。", "You speak Chinese very well."],
+      ["你说得我能不能记得。", "You speak whether I can remember."],
+      ["我想你今天说得整个句子。", "I'd like you to speak the whole sentence today."]
+    ],
+    "d": {
+      "2": [["你说得", "you speak"], ["说得好", "speak well"]],
+      "3": [["你说得很好", "you speak very well"], ["你说得中文", "you speak Chinese"]],
+      "4": [["你中文说得很好", "you Chinese speak very well"], ["我想你说得", "I'd like you speak"]],
+      "5": []
+    }
+  },
+  "S0013L02": {
+    "lego": ["很好", "very well"],
+    "e": [
+      ["你中文说得很好。", "You speak Chinese very well."],
+      ["我今天学得很好。", "I learn very well today."],
+      ["我想很好地解释我的意思。", "I'd like to explain what I mean very well."],
+      ["我要试着很好地记得整个句子。", "I'm going to try to remember the whole sentence very well."]
+    ],
+    "d": {
+      "2": [["很好", "very well"], ["说得很好", "speak very well"]],
+      "3": [["你说得很好", "you speak very well"], ["学得很好", "learn very well"]],
+      "4": [["你中文说得很好", "you Chinese speak very well"], ["我今天学得很好", "I today learn very well"]],
+      "5": []
+    }
+  },
+  "S0014L01": {
+    "lego": ["整天", "all day"],
+    "e": [
+      ["你整天都说中文吗?", "Do you speak Chinese all day?"],
+      ["我想整天跟别人练习说。", "I'd like to practice speaking with someone else all day."],
+      ["我今天整天在试着学。", "I'm trying to learn all day today."],
+      ["我不想整天猜会发生什么。", "I wouldn't like to guess what's going to happen all day."]
+    ],
+    "d": {
+      "2": [["整天说", "all day speak"], ["我整天", "I all day"]],
+      "3": [["整天说中文", "all day speak Chinese"], ["你整天", "you all day"]],
+      "4": [["你整天说中文", "you all day speak Chinese"], ["我想整天说", "I'd like all day speak"]],
+      "5": [["我今天整天在试着学", "I today all day am trying learn"]]
+    }
+  },
+  "S0014L02": {
+    "lego": ["吗", "(question particle)"],
+    "e": [
+      ["你整天都说中文吗?", "Do you speak Chinese all day?"],
+      ["你今天想跟我说吗?", "Do you want to speak with me today?"],
+      ["你能不能记得整个句子吗?", "Can you remember the whole sentence?"],
+      ["你明天要试着学吗?", "Are you going to try to learn tomorrow?"]
+    ],
+    "d": {
+      "2": [["你说吗", "do you speak"], ["想说吗", "want speak"]],
+      "3": [["你说中文吗", "do you speak Chinese"], ["你想说吗", "do you want speak"]],
+      "4": [["你整天说中文吗", "do you speak Chinese all day"], ["你今天想说吗", "do you today want speak"]],
+      "5": [["你能不能记得整个句子吗", "can you remember the whole sentence"]]
+    }
+  },
+  "S0015L01": {
+    "lego": ["而且", "And"],
+    "e": [
+      ["而且我想让你明天跟我说中文。", "And I want you to speak Chinese with me tomorrow."],
+      ["我今天要学,而且明天要练习说。", "I'm going to learn today, and tomorrow I'm going to practice speaking."],
+      ["你说得很好,而且我想跟你学。", "You speak very well, and I'd like to learn with you."]
+    ],
+    "d": {
+      "2": [["而且我", "and I"], ["而且你", "and you"]],
+      "3": [["而且我想", "and I want"], ["而且明天", "and tomorrow"]],
+      "4": [["而且我想说", "and I want speak"], ["而且今天要", "and today going to"]],
+      "5": [["而且我想让你明天跟我说", "and I want you tomorrow with me speak"]]
+    }
+  },
+  "S0015L02": {
+    "lego": ["我想让你", "I want you to"],
+    "e": [
+      ["而且我想让你明天跟我说中文。", "And I want you to speak Chinese with me tomorrow."],
+      ["我想让你今天解释整个句子。", "I want you to explain the whole sentence today."],
+      ["我想让你在我说完之后能说。", "I want you to be able to speak after I finish."],
+      ["我不想让你整天猜会发生什么。", "I wouldn't want you to guess what's going to happen all day."]
+    ],
+    "d": {
+      "2": [["我想让你", "I want you to"], ["想让你说", "want you speak"]],
+      "3": [["我想让你说", "I want you to speak"], ["想让你学", "want you learn"]],
+      "4": [["我想让你说中文", "I want you to speak Chinese"], ["我想让你今天", "I want you today"]],
+      "5": [["而且我想让你明天跟我说中文", "and I want you tomorrow with me speak Chinese"]]
+    }
+  },
+  "S0015L03": {
+    "lego": ["跟我", "with me"],
+    "e": [
+      ["而且我想让你明天跟我说中文。", "And I want you to speak Chinese with me tomorrow."],
+      ["你今天要跟我练习说吗?", "Are you going to practice speaking with me today?"],
+      ["我想你跟我学整个句子。", "I want you to learn the whole sentence with me."],
+      ["你能不能跟我解释你的意思?", "Can you explain what you mean with me?"]
+    ],
+    "d": {
+      "2": [["跟我说", "with me speak"], ["跟我学", "with me learn"]],
+      "3": [["你跟我说", "you with me speak"], ["跟我说中文", "with me speak Chinese"]],
+      "4": [["想让你跟我说", "want you with me speak"], ["你今天跟我说", "you today with me speak"]],
+      "5": [["而且我想让你明天跟我说中文", "and I want you tomorrow with me speak Chinese"]]
+    }
+  },
+  "S0016L01": {
+    "lego": ["他想", "He wants"],
+    "e": [
+      ["他想晚点儿跟其他人一起回来。", "He wants to come back with everyone else later on."],
+      ["他想今天跟你说中文。", "He wants to speak Chinese with you today."],
+      ["他想学怎么解释他的意思。", "He wants to learn how to explain what he means."],
+      ["他不想整天猜会发生什么。", "He doesn't want to guess what's going to happen all day."]
+    ],
+    "d": {
+      "2": [["他想说", "he wants speak"], ["他想学", "he wants learn"]],
+      "3": [["他想说中文", "he wants speak Chinese"], ["他想跟你", "he wants with you"]],
+      "4": [["他想今天说", "he wants today speak"], ["他不想猜", "he doesn't want guess"]],
+      "5": [["他想学怎么解释他的意思", "he wants learn how explain what he means"]]
+    }
+  },
+  "S0016L02": {
+    "lego": ["晚点儿", "later on"],
+    "e": [
+      ["他想晚点儿跟其他人一起回来。", "He wants to come back with everyone else later on."],
+      ["我想晚点儿跟你说中文。", "I'd like to speak Chinese with you later on."],
+      ["你能不能晚点儿解释整个句子?", "Can you explain the whole sentence later on?"],
+      ["我要晚点儿试着记得。", "I'm going to try to remember later on."]
+    ],
+    "d": {
+      "2": [["晚点儿说", "later on speak"], ["我晚点儿", "I later on"]],
+      "3": [["晚点儿跟你说", "later on with you speak"], ["他想晚点儿", "he wants later on"]],
+      "4": [["我想晚点儿说中文", "I'd like later on speak Chinese"], ["晚点儿试着学", "later on trying learn"]],
+      "5": []
+    }
+  },
+  "S0016L03": {
+    "lego": ["跟其他人一起", "with everyone else"],
+    "e": [
+      ["他想晚点儿跟其他人一起回来。", "He wants to come back with everyone else later on."],
+      ["我今天要跟其他人一起练习说中文。", "I'm going to practice speaking Chinese with everyone else today."],
+      ["我想让你明天跟其他人一起学。", "I want you to learn with everyone else tomorrow."]
+    ],
+    "d": {
+      "2": [["跟其他人一起", "with everyone else"], ["其他人一起", "everyone else together"]],
+      "3": [["跟其他人一起说", "with everyone else speak"], ["跟其他人一起学", "with everyone else learn"]],
+      "4": [["想跟其他人一起", "want with everyone else"], ["今天跟其他人一起", "today with everyone else"]],
+      "5": [["他想晚点儿跟其他人一起回来", "he wants later on with everyone else come back"]]
+    }
+  },
+  "S0016L04": {
+    "lego": ["回来", "to come back"],
+    "e": [
+      ["他想晚点儿跟其他人一起回来。", "He wants to come back with everyone else later on."],
+      ["我要明天回来跟你说中文。", "I'm going to come back tomorrow to speak Chinese with you."],
+      ["你今天能不能回来?", "Can you come back today?"],
+      ["我想让你晚点儿回来解释整个句子。", "I want you to come back later on to explain the whole sentence."]
+    ],
+    "d": {
+      "2": [["回来说", "come back speak"], ["我回来", "I come back"]],
+      "3": [["想回来", "want come back"], ["明天回来", "tomorrow come back"]],
+      "4": [["他想晚点儿回来", "he wants later on come back"], ["我要明天回来", "I'm going to tomorrow come back"]],
+      "5": [["他想晚点儿跟其他人一起回来", "he wants later on with everyone else come back"]]
+    }
+  },
+  "S0017L01": {
+    "lego": ["她想", "She wants"],
+    "e": [
+      ["她想知道答案是什么。", "She wants to find out what the answer is."],
+      ["她想今天跟你说中文。", "She wants to speak Chinese with you today."],
+      ["她想晚点儿回来。", "She wants to come back later on."],
+      ["她不想整天猜会发生什么。", "She doesn't want to guess what's going to happen all day."]
+    ],
+    "d": {
+      "2": [["她想说", "she wants speak"], ["她想学", "she wants learn"]],
+      "3": [["她想说中文", "she wants speak Chinese"], ["她想跟你", "she wants with you"]],
+      "4": [["她想今天说", "she wants today speak"], ["她想晚点儿回来", "she wants later on come back"]],
+      "5": []
+    }
+  },
+  "S0017L02": {
+    "lego": ["知道", "to find out"],
+    "e": [
+      ["她想知道答案是什么。", "She wants to find out what the answer is."],
+      ["我想知道你今天能不能跟我说中文。", "I'd like to find out if you can speak Chinese with me today."],
+      ["他要试着知道明天会发生什么。", "He's going to try to find out what's going to happen tomorrow."],
+      ["我不确定我能不能知道整个句子。", "I'm not sure if I can find out the whole sentence."]
+    ],
+    "d": {
+      "2": [["想知道", "want find out"], ["知道什么", "find out what"]],
+      "3": [["她想知道", "she wants find out"], ["我想知道", "I'd like find out"]],
+      "4": [["想知道会发生什么", "want find out what's going to happen"], ["试着知道", "trying find out"]],
+      "5": []
+    }
+  },
+  "S0017L03": {
+    "lego": ["答案是什么", "what the answer is"],
+    "e": [
+      ["她想知道答案是什么。", "She wants to find out what the answer is."],
+      ["我不确定答案是什么。", "I'm not sure what the answer is."],
+      ["你能不能跟我解释答案是什么?", "Can you explain to me what the answer is?"]
+    ],
+    "d": {
+      "2": [["答案是什么", "what the answer is"], ["知道答案", "find out answer"]],
+      "3": [["知道答案是什么", "find out what the answer is"], ["答案是什么吗", "what is the answer"]],
+      "4": [["想知道答案是什么", "want find out what the answer is"], ["我不确定答案是什么", "I'm not sure what the answer is"]],
+      "5": [["她想知道答案是什么", "she wants find out what the answer is"]]
+    }
+  },
+  "S0017F01": {
+    "lego": ["答案", "answer"],
+    "e": [
+      ["我想知道答案。", "I'd like to find out the answer."],
+      ["你能不能解释答案?", "Can you explain the answer?"],
+      ["他今天要试着学答案。", "He's going to try to learn the answer today."]
+    ],
+    "d": {
+      "2": [["知道答案", "find out answer"], ["学答案", "learn answer"]],
+      "3": [["想知道答案", "want find out answer"], ["解释答案", "explain answer"]],
+      "4": [["我想知道答案", "I'd like find out answer"], ["她想知道答案", "she wants find out answer"]],
+      "5": []
+    }
+  },
+  "S0018L01": {
+    "lego": ["我们想", "We want"],
+    "e": [
+      ["我们想今晚六点见面。", "We want to meet at six o'clock this evening."],
+      ["我们想跟你一起学中文。", "We want to learn Chinese with you."],
+      ["我们想知道明天会发生什么。", "We want to find out what's going to happen tomorrow."],
+      ["我们不想整天猜答案是什么。", "We don't want to guess what the answer is all day."]
+    ],
+    "d": {
+      "2": [["我们想说", "we want speak"], ["我们想学", "we want learn"]],
+      "3": [["我们想说中文", "we want speak Chinese"], ["我们想知道", "we want find out"]],
+      "4": [["我们想跟你说", "we want with you speak"], ["我们想今天说", "we want today speak"]],
+      "5": []
+    }
+  },
+  "S0018L02": {
+    "lego": ["今晚", "this evening"],
+    "e": [
+      ["我们想今晚六点见面。", "We want to meet at six o'clock this evening."],
+      ["我今晚要跟你说中文。", "I'm going to speak Chinese with you this evening."],
+      ["他想今晚回来。", "He wants to come back this evening."],
+      ["你今晚能不能跟我一起练习说?", "Can you practice speaking with me this evening?"]
+    ],
+    "d": {
+      "2": [["今晚说", "this evening speak"], ["我今晚", "I this evening"]],
+      "3": [["今晚跟你说", "this evening with you speak"], ["我们今晚", "we this evening"]],
+      "4": [["我今晚要说中文", "I this evening going to speak Chinese"], ["他想今晚回来", "he wants this evening come back"]],
+      "5": []
+    }
+  },
+  "S0018L03": {
+    "lego": ["六点", "at six o'clock"],
+    "e": [
+      ["我们想今晚六点见面。", "We want to meet at six o'clock this evening."],
+      ["我要六点跟你说中文。", "I'm going to speak Chinese with you at six o'clock."],
+      ["他想六点回来。", "He wants to come back at six o'clock."]
+    ],
+    "d": {
+      "2": [["六点说", "six o'clock speak"], ["今晚六点", "this evening six o'clock"]],
+      "3": [["我们六点", "we six o'clock"], ["六点跟你", "six o'clock with you"]],
+      "4": [["今晚六点见面", "this evening six o'clock meet"], ["我要六点说", "I'm going to six o'clock speak"]],
+      "5": [["我们想今晚六点见面", "we want this evening six o'clock meet"]]
+    }
+  },
+  "S0018L04": {
+    "lego": ["见面", "to meet"],
+    "e": [
+      ["我们想今晚六点见面。", "We want to meet at six o'clock this evening."],
+      ["我明天要跟你见面。", "I'm going to meet you tomorrow."],
+      ["她想晚点儿跟其他人见面。", "She wants to meet everyone else later on."],
+      ["你今天能不能跟我见面?", "Can you meet me today?"]
+    ],
+    "d": {
+      "2": [["跟你见面", "with you meet"], ["我们见面", "we meet"]],
+      "3": [["想见面", "want meet"], ["今天见面", "today meet"]],
+      "4": [["我们想今晚见面", "we want this evening meet"], ["明天跟你见面", "tomorrow with you meet"]],
+      "5": [["我们想今晚六点见面", "we want this evening six o'clock meet"]]
+    }
+  },
+  "S0019L01": {
+    "lego": ["但是", "But"],
+    "e": [
+      ["但是我不想停止说。", "But I don't want to stop talking."],
+      ["我想跟你见面,但是今天不行。", "I want to meet you, but not today."],
+      ["他说得很好,但是我不确定。", "He speaks very well, but I'm not sure."]
+    ],
+    "d": {
+      "2": [["但是我", "but I"], ["但是今天", "but today"]],
+      "3": [["但是我想", "but I want"], ["但是不想", "but don't want"]],
+      "4": [["但是我不想说", "but I don't want speak"], ["但是我今天", "but I today"]],
+      "5": []
+    }
+  },
+  "S0019L02": {
+    "lego": ["停止说", "to stop talking"],
+    "e": [
+      ["但是我不想停止说。", "But I don't want to stop talking."],
+      ["我今天要停止说中文。", "I'm going to stop talking Chinese today."],
+      ["你能不能停止说?", "Can you stop talking?"],
+      ["她想让你停止说。", "She wants you to stop talking."]
+    ],
+    "d": {
+      "2": [["停止说", "stop talking"], ["想停止说", "want stop talking"]],
+      "3": [["不想停止说", "don't want stop talking"], ["停止说中文", "stop talking Chinese"]],
+      "4": [["但是我不想停止说", "but I don't want stop talking"], ["今天要停止说", "today going to stop talking"]],
+      "5": []
+    }
+  },
+  "S0020L01": {
+    "lego": ["你想", "You want"],
+    "e": [
+      ["你想快点儿学会他们的名字。", "You want to learn their name quickly."],
+      ["你想今晚跟我见面吗?", "Do you want to meet me this evening?"],
+      ["你想知道答案是什么。", "You want to find out what the answer is."],
+      ["你想停止说中文吗?", "Do you want to stop speaking Chinese?"]
+    ],
+    "d": {
+      "2": [["你想说", "you want speak"], ["你想学", "you want learn"]],
+      "3": [["你想说中文", "you want speak Chinese"], ["你想知道", "you want find out"]],
+      "4": [["你想今天见面", "you want today meet"], ["你想停止说", "you want stop talking"]],
+      "5": []
+    }
+  },
+  "S0020L02": {
+    "lego": ["快点儿", "quickly"],
+    "e": [
+      ["你想快点儿学会他们的名字。", "You want to learn their name quickly."],
+      ["我要快点儿跟你说中文。", "I'm going to speak Chinese with you quickly."],
+      ["她想快点儿回来。", "She wants to come back quickly."],
+      ["我们今天要快点儿见面。", "We're going to meet quickly today."]
+    ],
+    "d": {
+      "2": [["快点儿说", "quickly speak"], ["快点儿学", "quickly learn"]],
+      "3": [["想快点儿", "want quickly"], ["快点儿学会", "quickly learn"]],
+      "4": [["你想快点儿学", "you want quickly learn"], ["我要快点儿说", "I'm going to quickly speak"]],
+      "5": []
+    }
+  },
+  "S0020L03": {
+    "lego": ["学会", "to learn"],
+    "e": [
+      ["你想快点儿学会他们的名字。", "You want to learn their name quickly."],
+      ["我今天要学会怎么说中文。", "I'm going to learn how to speak Chinese today."],
+      ["他想学会整个句子。", "He wants to learn the whole sentence."],
+      ["我们能不能快点儿学会?", "Can we learn quickly?"]
+    ],
+    "d": {
+      "2": [["学会说", "learn speak"], ["想学会", "want learn"]],
+      "3": [["快点儿学会", "quickly learn"], ["学会中文", "learn Chinese"]],
+      "4": [["我想学会怎么说", "I want learn how speak"], ["你想快点儿学会", "you want quickly learn"]],
+      "5": [["你想快点儿学会他们的名字", "you want quickly learn their name"]]
+    }
+  },
+  "S0020L04": {
+    "lego": ["他们的名字", "their name"],
+    "e": [
+      ["你想快点儿学会他们的名字。", "You want to learn their name quickly."],
+      ["我不确定他们的名字是什么。", "I'm not sure what their name is."],
+      ["她想知道他们的名字。", "She wants to find out their name."]
+    ],
+    "d": {
+      "2": [["他们的名字", "their name"], ["学他们的名字", "learn their name"]],
+      "3": [["学会他们的名字", "learn their name"], ["知道他们的名字", "find out their name"]],
+      "4": [["快点儿学会他们的名字", "quickly learn their name"], ["想知道他们的名字", "want find out their name"]],
+      "5": [["你想快点儿学会他们的名字", "you want quickly learn their name"]]
+    }
+  },
+  "S0021L01": {
+    "lego": ["为什么", "Why"],
+    "e": [
+      ["你为什么在学他们的名字?", "Why are you learning their name?"],
+      ["我不知道为什么他想停止说。", "I don't know why he wants to stop talking."],
+      ["为什么你今晚不能见面?", "Why can't you meet this evening?"],
+      ["她想知道为什么你说得很好。", "She wants to find out why you speak very well."]
+    ],
+    "d": {
+      "2": [["为什么说", "why speak"], ["为什么学", "why learn"]],
+      "3": [["为什么你想", "why you want"], ["为什么不想", "why don't want"]],
+      "4": [["为什么你今天说", "why you today speak"], ["为什么想知道", "why want find out"]],
+      "5": []
+    }
+  },
+  "S0021L02": {
+    "lego": ["你在学", "you are learning"],
+    "e": [
+      ["你为什么在学他们的名字?", "Why are you learning their name?"],
+      ["你在学怎么说中文吗?", "Are you learning how to speak Chinese?"],
+      ["我想知道你在学什么。", "I'd like to find out what you are learning."]
+    ],
+    "d": {
+      "2": [["你在学", "you are learning"], ["在学中文", "are learning Chinese"]],
+      "3": [["你在学什么", "you are learning what"], ["你在学名字", "you are learning name"]],
+      "4": [["为什么你在学", "why you are learning"], ["你在学怎么说", "you are learning how speak"]],
+      "5": [["你为什么在学他们的名字", "why are you learning their name"]]
+    }
+  },
+  "S0021F01": {
+    "lego": ["在", "(progressive marker)"],
+    "e": [
+      ["我在说中文。", "I'm speaking Chinese."],
+      ["你在学吗?", "Are you learning?"],
+      ["他在试着解释。", "He's trying to explain."]
+    ],
+    "d": {
+      "2": [["我在说", "I'm speaking"], ["在学", "are learning"]],
+      "3": [["你在说中文", "you're speaking Chinese"], ["我在试着", "I'm trying"]],
+      "4": [],
+      "5": []
+    }
+  },
+  "S0021F02": {
+    "lego": ["学", "to learn"],
+    "e": [
+      ["我想学中文。", "I want to learn Chinese."],
+      ["你在学吗?", "Are you learning?"],
+      ["他要学怎么说。", "He's going to learn how to speak."]
+    ],
+    "d": {
+      "2": [["我想学", "I want learn"], ["学中文", "learn Chinese"]],
+      "3": [["你在学", "you are learning"], ["想学怎么", "want learn how"]],
+      "4": [],
+      "5": []
+    }
+  },
+  "S0022L01": {
+    "lego": ["因为", "Because"],
+    "e": [
+      ["因为我想认识说中文的人。", "Because I want to meet people who speak Chinese."],
+      ["我今天不能见面,因为我很忙。", "I can't meet today, because I'm very busy."],
+      ["因为你说得很好,我想跟你学。", "Because you speak very well, I'd like to learn with you."]
+    ],
+    "d": {
+      "2": [["因为我", "because I"], ["因为你", "because you"]],
+      "3": [["因为我想", "because I want"], ["因为你说", "because you speak"]],
+      "4": [["因为我想学", "because I want learn"], ["因为今天", "because today"]],
+      "5": []
+    }
+  },
+  "S0022L02": {
+    "lego": ["认识", "to meet"],
+    "e": [
+      ["因为我想认识说中文的人。", "Because I want to meet people who speak Chinese."],
+      ["我今晚要认识其他人。", "I'm going to meet other people this evening."],
+      ["你想认识他们吗?", "Do you want to meet them?"],
+      ["她想快点儿认识你。", "She wants to meet you quickly."]
+    ],
+    "d": {
+      "2": [["认识人", "meet people"], ["想认识", "want meet"]],
+      "3": [["我想认识", "I want meet"], ["认识其他人", "meet other people"]],
+      "4": [["想认识说中文的人", "want meet people who speak Chinese"], ["今晚要认识", "this evening going to meet"]],
+      "5": []
+    }
+  },
+  "S0022L03": {
+    "lego": ["说中文的人", "people who speak Chinese"],
+    "e": [
+      ["因为我想认识说中文的人。", "Because I want to meet people who speak Chinese."],
+      ["我今天见面了说中文的人。", "I met people who speak Chinese today."],
+      ["你知道说中文的人吗?", "Do you know people who speak Chinese?"]
+    ],
+    "d": {
+      "2": [["说中文的人", "people who speak Chinese"], ["认识说中文的人", "meet people who speak Chinese"]],
+      "3": [["想认识说中文的人", "want meet people who speak Chinese"], ["说中文的人很好", "people who speak Chinese very good"]],
+      "4": [["我想认识说中文的人", "I want meet people who speak Chinese"], ["因为说中文的人", "because people who speak Chinese"]],
+      "5": [["因为我想认识说中文的人", "because I want meet people who speak Chinese"]]
+    }
+  },
+  "S0022F01": {
+    "lego": ["人", "people"],
+    "e": [
+      ["我想认识人。", "I want to meet people."],
+      ["说中文的人很好。", "People who speak Chinese are very good."],
+      ["其他人今晚要回来。", "Other people are going to come back this evening."]
+    ],
+    "d": {
+      "2": [["认识人", "meet people"], ["其他人", "other people"]],
+      "3": [["说中文的人", "people who speak Chinese"], ["我想认识人", "I want meet people"]],
+      "4": [],
+      "5": []
+    }
+  },
+  "S0023L01": {
+    "lego": ["我快要", "I'm going to soon"],
+    "e": [
+      ["我快要开始多说了。", "I'm going to start talking more soon."],
+      ["我快要学会他们的名字了。", "I'm going to learn their name soon."],
+      ["我快要认识说中文的人了。", "I'm going to meet people who speak Chinese soon."]
+    ],
+    "d": {
+      "2": [["我快要", "I'm going to soon"], ["快要说", "going to soon speak"]],
+      "3": [["我快要说", "I'm going to soon speak"], ["快要学会", "going to soon learn"]],
+      "4": [["我快要学会", "I'm going to soon learn"], ["我快要认识", "I'm going to soon meet"]],
+      "5": [["我快要开始多说了", "I'm going to soon start talking more"]]
+    }
+  },
+  "S0023L02": {
+    "lego": ["开始", "to start"],
+    "e": [
+      ["我快要开始多说了。", "I'm going to start talking more soon."],
+      ["我今天要开始学他们的名字。", "I'm going to start learning their name today."],
+      ["你想开始说中文吗?", "Do you want to start speaking Chinese?"],
+      ["她明天要开始认识说中文的人。", "She's going to start meeting people who speak Chinese tomorrow."]
+    ],
+    "d": {
+      "2": [["开始说", "start speaking"], ["开始学", "start learning"]],
+      "3": [["快要开始", "going to soon start"], ["我要开始", "I'm going to start"]],
+      "4": [["开始说中文", "start speaking Chinese"], ["今天要开始", "today going to start"]],
+      "5": [["我快要开始多说了", "I'm going to soon start talking more"]]
+    }
+  },
+  "S0023L03": {
+    "lego": ["多说", "talking more"],
+    "e": [
+      ["我快要开始多说了。", "I'm going to start talking more soon."],
+      ["我想尽量多说中文。", "I want to speak Chinese more as much as possible."],
+      ["你为什么不想多说?", "Why don't you want to talk more?"]
+    ],
+    "d": {
+      "2": [["多说", "talking more"], ["开始多说", "start talking more"]],
+      "3": [["想多说", "want talking more"], ["多说中文", "talking more Chinese"]],
+      "4": [["快要开始多说", "going to soon start talking more"], ["我要多说", "I'm going to talking more"]],
+      "5": [["我快要开始多说了", "I'm going to soon start talking more"]]
+    }
+  },
+  "S0023L04": {
+    "lego": ["了", "(change of state particle)"],
+    "e": [
+      ["我快要开始多说了。", "I'm going to start talking more soon."],
+      ["我学会说中文了。", "I've learned to speak Chinese."],
+      ["他回来了。", "He came back."]
+    ],
+    "d": {
+      "2": [["说了", "spoke"], ["学了", "learned"]],
+      "3": [["我说了", "I spoke"], ["回来了", "came back"]],
+      "4": [["开始多说了", "started talking more"], ["学会了", "learned"]],
+      "5": [["我快要开始多说了", "I'm going to start talking more soon"]]
+    }
+  },
+  "S0024L01": {
+    "lego": ["我不会", "I'm not going to be able"],
+    "e": [
+      ["我不会容易地记住。", "I'm not going to be able to remember easily."],
+      ["我不会今天说中文。", "I'm not going to be able to speak Chinese today."],
+      ["我不会快点儿学会他们的名字。", "I'm not going to be able to learn their name quickly."]
+    ],
+    "d": {
+      "2": [["我不会", "I'm not going to be able"], ["不会说", "not going to be able speak"]],
+      "3": [["我不会说", "I'm not going to be able speak"], ["不会学", "not going to be able learn"]],
+      "4": [["我不会说中文", "I'm not going to be able speak Chinese"], ["我不会记住", "I'm not going to be able remember"]],
+      "5": []
+    }
+  },
+  "S0024L02": {
+    "lego": ["容易地", "easily"],
+    "e": [
+      ["我不会容易地记住。", "I'm not going to be able to remember easily."],
+      ["你能容易地学会中文吗?", "Can you learn Chinese easily?"],
+      ["他容易地说得很好。", "He speaks very well easily."]
+    ],
+    "d": {
+      "2": [["容易地说", "easily speak"], ["容易地学", "easily learn"]],
+      "3": [["容易地记住", "easily remember"], ["不会容易地", "not going to be able easily"]],
+      "4": [["我不会容易地记住", "I'm not going to be able easily remember"], ["容易地学会", "easily learn"]],
+      "5": []
+    }
+  },
+  "S0024L03": {
+    "lego": ["记住", "to remember"],
+    "e": [
+      ["我不会容易地记住。", "I'm not going to be able to remember easily."],
+      ["我想记住他们的名字。", "I want to remember their name."],
+      ["你能不能记住整个句子?", "Can you remember the whole sentence?"],
+      ["她快要记住答案了。", "She's going to remember the answer soon."]
+    ],
+    "d": {
+      "2": [["记住名字", "remember name"], ["想记住", "want remember"]],
+      "3": [["容易地记住", "easily remember"], ["不会记住", "not going to be able remember"]],
+      "4": [["我不会容易地记住", "I'm not going to be able easily remember"], ["能不能记住", "can remember"]],
+      "5": []
+    }
+  },
+  "S0025L01": {
+    "lego": ["在我得走之前", "before I have to go"],
+    "e": [
+      ["在我得走之前你会帮我吗?", "Are you going to help me before I have to go?"],
+      ["在我得走之前我想学会整个句子。", "Before I have to go I want to learn the whole sentence."],
+      ["在我得走之前我要认识说中文的人。", "Before I have to go I'm going to meet people who speak Chinese."]
+    ],
+    "d": {
+      "2": [["得走", "have to go"], ["我得走", "I have to go"]],
+      "3": [["在我得走之前", "before I have to go"], ["得走之前", "before have to go"]],
+      "4": [["在我得走之前我想", "before I have to go I want"], ["在我得走之前学", "before I have to go learn"]],
+      "5": [["在我得走之前你会帮我吗", "are you going to help me before I have to go"]]
+    }
+  },
+  "S0025F01": {
+    "lego": ["帮", "to help"],
+    "e": [
+      ["你会帮我吗?", "Are you going to help me?"],
+      ["我想帮你学中文。", "I want to help you learn Chinese."],
+      ["他今天要帮我。", "He's going to help me today."]
+    ],
+    "d": {
+      "2": [["帮我", "help me"], ["会帮", "going to help"]],
+      "3": [["你会帮我", "you going to help me"], ["想帮你", "want help you"]],
+      "4": [["我想帮你学", "I want help you learn"], ["今天要帮", "today going to help"]],
+      "5": []
+    }
+  },
+  "S0025F02": {
+    "lego": ["得", "to have to"],
+    "e": [
+      ["我得走了。", "I have to go."],
+      ["你今天得学中文。", "You have to learn Chinese today."],
+      ["他得快点儿说。", "He has to speak quickly."]
+    ],
+    "d": {
+      "2": [["我得", "I have to"], ["得走", "have to go"]],
+      "3": [["我得走", "I have to go"], ["你得学", "you have to learn"]],
+      "4": [["今天得学", "today have to learn"], ["得快点儿说", "have to quickly speak"]],
+      "5": []
+    }
+  },
+  "S0025L02": {
+    "lego": ["你会帮我", "Are you going to help me"],
+    "e": [
+      ["在我得走之前你会帮我吗?", "Are you going to help me before I have to go?"],
+      ["你会帮我学中文吗?", "Are you going to help me learn Chinese?"],
+      ["你明天会帮我吗?", "Are you going to help me tomorrow?"]
+    ],
+    "d": {
+      "2": [["你会帮我", "you going to help me"], ["会帮我学", "going to help me learn"]],
+      "3": [["你会帮我吗", "are you going to help me"], ["你会帮我说", "you going to help me speak"]],
+      "4": [["你会帮我学中文", "you going to help me learn Chinese"], ["明天会帮我", "tomorrow going to help me"]],
+      "5": [["在我得走之前你会帮我吗", "are you going to help me before I have to go"]]
+    }
+  },
+  "S0026L01": {
+    "lego": ["我喜欢", "I like"],
+    "e": [
+      ["我喜欢感觉好像我快准备好走了。", "I like feeling as if I'm nearly ready to go."],
+      ["我喜欢说中文。", "I like speaking Chinese."],
+      ["我喜欢认识说中文的人。", "I like meeting people who speak Chinese."],
+      ["我喜欢跟你学。", "I like learning with you."]
+    ],
+    "d": {
+      "2": [["我喜欢说", "I like speaking"], ["我喜欢学", "I like learning"]],
+      "3": [["我喜欢说中文", "I like speaking Chinese"], ["我喜欢认识", "I like meeting"]],
+      "4": [["我喜欢跟你学", "I like with you learning"], ["我喜欢认识人", "I like meeting people"]],
+      "5": []
+    }
+  },
+  "S0026L02": {
+    "lego": ["感觉", "feeling"],
+    "e": [
+      ["我喜欢感觉好像我快准备好走了。", "I like feeling as if I'm nearly ready to go."],
+      ["我不喜欢感觉我不会说中文。", "I don't like feeling I can't speak Chinese."],
+      ["你感觉怎么样?", "How do you feel?"]
+    ],
+    "d": {
+      "2": [["感觉好", "feeling good"], ["我感觉", "I feel"]],
+      "3": [["喜欢感觉", "like feeling"], ["感觉好像", "feeling as if"]],
+      "4": [["我喜欢感觉", "I like feeling"], ["不喜欢感觉", "don't like feeling"]],
+      "5": []
+    }
+  },
+  "S0026L03": {
+    "lego": ["好像", "as if"],
+    "e": [
+      ["我喜欢感觉好像我快准备好走了。", "I like feeling as if I'm nearly ready to go."],
+      ["好像你说得很好。", "It's as if you speak very well."],
+      ["我感觉好像我会说中文了。", "I feel as if I can speak Chinese now."]
+    ],
+    "d": {
+      "2": [["好像", "as if"], ["感觉好像", "feeling as if"]],
+      "3": [["好像我", "as if I"], ["好像你说", "as if you speak"]],
+      "4": [["感觉好像我快", "feeling as if I nearly"], ["好像我会说", "as if I can speak"]],
+      "5": []
+    }
+  },
+  "S0026L04": {
+    "lego": ["快", "nearly"],
+    "e": [
+      ["我喜欢感觉好像我快准备好走了。", "I like feeling as if I'm nearly ready to go."],
+      ["我快学会了。", "I've nearly learned."],
+      ["他快要回来了。", "He's nearly going to come back."]
+    ],
+    "d": {
+      "2": [["快准备好", "nearly ready"], ["我快", "I nearly"]],
+      "3": [["好像我快", "as if I nearly"], ["快要说", "nearly going to speak"]],
+      "4": [["我快准备好", "I nearly ready"], ["快要学会", "nearly going to learn"]],
+      "5": []
+    }
+  },
+  "S0026L05": {
+    "lego": ["准备好", "ready"],
+    "e": [
+      ["我喜欢感觉好像我快准备好走了。", "I like feeling as if I'm nearly ready to go."],
+      ["你准备好说中文了吗?", "Are you ready to speak Chinese?"],
+      ["我今天不准备好。", "I'm not ready today."]
+    ],
+    "d": {
+      "2": [["准备好", "ready"], ["快准备好", "nearly ready"]],
+      "3": [["我准备好", "I ready"], ["准备好走", "ready go"]],
+      "4": [["我快准备好走", "I nearly ready go"], ["你准备好吗", "are you ready"]],
+      "5": [["我快准备好走了", "I nearly ready go"]]
+    }
+  },
+  "S0026L06": {
+    "lego": ["走了", "to go"],
+    "e": [
+      ["我喜欢感觉好像我快准备好走了。", "I like feeling as if I'm nearly ready to go."],
+      ["他走了。", "He went."],
+      ["我今天得走了。", "I have to go today."]
+    ],
+    "d": {
+      "2": [["走了", "went"], ["准备好走了", "ready go"]],
+      "3": [["我得走了", "I have to go"], ["快准备好走了", "nearly ready go"]],
+      "4": [["我快准备好走了", "I nearly ready go"], ["他今天走了", "he today went"]],
+      "5": [["我喜欢感觉好像我快准备好走了", "I like feeling as if I'm nearly ready to go"]]
+    }
+  },
+  "S0027L01": {
+    "lego": ["我不喜欢", "I don't like"],
+    "e": [
+      ["我不喜欢花太多时间回答。", "I don't like taking too much time to answer."],
+      ["我不喜欢猜答案。", "I don't like guessing the answer."],
+      ["我不喜欢停止说中文。", "I don't like stopping speaking Chinese."]
+    ],
+    "d": {
+      "2": [["我不喜欢", "I don't like"], ["不喜欢说", "don't like speaking"]],
+      "3": [["我不喜欢说", "I don't like speaking"], ["不喜欢猜", "don't like guessing"]],
+      "4": [["我不喜欢猜答案", "I don't like guessing answer"], ["我不喜欢停止说", "I don't like stopping speaking"]],
+      "5": []
+    }
+  },
+  "S0027L02": {
+    "lego": ["花", "taking"],
+    "e": [
+      ["我不喜欢花太多时间回答。", "I don't like taking too much time to answer."],
+      ["我今天要花时间学中文。", "I'm going to take time to learn Chinese today."],
+      ["你想花时间跟我说吗?", "Do you want to take time to speak with me?"]
+    ],
+    "d": {
+      "2": [["花时间", "taking time"], ["我花", "I take"]],
+      "3": [["不喜欢花", "don't like taking"], ["花时间学", "taking time learn"]],
+      "4": [["花太多时间", "taking too much time"], ["我要花时间", "I'm going to take time"]],
+      "5": []
+    }
+  },
+  "S0027L03": {
+    "lego": ["太多时间", "too much time"],
+    "e": [
+      ["我不喜欢花太多时间回答。", "I don't like taking too much time to answer."],
+      ["你花太多时间学了。", "You took too much time learning."],
+      ["我今天没有太多时间。", "I don't have too much time today."]
+    ],
+    "d": {
+      "2": [["太多时间", "too much time"], ["花太多时间", "taking too much time"]],
+      "3": [["不喜欢花太多时间", "don't like taking too much time"], ["有太多时间", "have too much time"]],
+      "4": [["我不喜欢花太多时间", "I don't like taking too much time"], ["你花太多时间", "you take too much time"]],
+      "5": []
+    }
+  },
+  "S0027L04": {
+    "lego": ["回答", "to answer"],
+    "e": [
+      ["我不喜欢花太多时间回答。", "I don't like taking too much time to answer."],
+      ["我今天要回答他们的问题。", "I'm going to answer their question today."],
+      ["你能不能帮我回答?", "Can you help me answer?"]
+    ],
+    "d": {
+      "2": [["回答问题", "answer question"], ["我回答", "I answer"]],
+      "3": [["花时间回答", "taking time answer"], ["要回答", "going to answer"]],
+      "4": [["花太多时间回答", "taking too much time answer"], ["帮我回答", "help me answer"]],
+      "5": [["我不喜欢花太多时间回答", "I don't like taking too much time to answer"]]
+    }
+  },
+  "S0028L01": {
+    "lego": ["一有机会就", "as soon as you can"],
+    "e": [
+      ["一有机会就开始说是有用的。", "It's useful to start talking as soon as you can."],
+      ["我想一有机会就说中文。", "I want to speak Chinese as soon as I can."],
+      ["你一有机会就要帮我。", "You should help me as soon as you can."]
+    ],
+    "d": {
+      "2": [["一有机会就", "as soon as can"], ["有机会", "have opportunity"]],
+      "3": [["一有机会就说", "as soon as can speak"], ["一有机会就学", "as soon as can learn"]],
+      "4": [["我想一有机会就说", "I want as soon as can speak"], ["一有机会就开始", "as soon as can start"]],
+      "5": [["一有机会就开始说", "as soon as can start talking"]]
+    }
+  },
+  "S0028F01": {
+    "lego": ["机会", "opportunity"],
+    "e": [
+      ["我有机会说中文。", "I have an opportunity to speak Chinese."],
+      ["你今天有机会吗?", "Do you have an opportunity today?"],
+      ["这是好机会。", "This is a good opportunity."]
+    ],
+    "d": {
+      "2": [["有机会", "have opportunity"], ["机会说", "opportunity speak"]],
+      "3": [["我有机会", "I have opportunity"], ["有机会学", "have opportunity learn"]],
+      "4": [["一有机会就", "as soon as have opportunity"], ["今天有机会", "today have opportunity"]],
+      "5": []
+    }
+  },
+  "S0028L02": {
+    "lego": ["开始说", "to start talking"],
+    "e": [
+      ["一有机会就开始说是有用的。", "It's useful to start talking as soon as you can."],
+      ["我明天要开始说中文。", "I'm going to start talking Chinese tomorrow."],
+      ["你想开始说吗?", "Do you want to start talking?"]
+    ],
+    "d": {
+      "2": [["开始说", "start talking"], ["要开始说", "going to start talking"]],
+      "3": [["一有机会就开始说", "as soon as can start talking"], ["想开始说", "want start talking"]],
+      "4": [["我要开始说中文", "I'm going to start talking Chinese"], ["明天开始说", "tomorrow start talking"]],
+      "5": [["一有机会就开始说", "as soon as can start talking"]]
+    }
+  },
+  "S0028L03": {
+    "lego": ["是有用的", "It's useful"],
+    "e": [
+      ["一有机会就开始说是有用的。", "It's useful to start talking as soon as you can."],
+      ["学中文是有用的。", "Learning Chinese is useful."],
+      ["认识说中文的人是有用的。", "Meeting people who speak Chinese is useful."]
+    ],
+    "d": {
+      "2": [["是有用的", "is useful"], ["学是有用的", "learning is useful"]],
+      "3": [["说中文是有用的", "speaking Chinese is useful"], ["这是有用的", "this is useful"]],
+      "4": [["开始说是有用的", "starting talking is useful"], ["学中文是有用的", "learning Chinese is useful"]],
+      "5": [["一有机会就开始说是有用的", "starting talking as soon as can is useful"]]
+    }
+  },
+  "S0029L01": {
+    "lego": ["我期待", "I'm looking forward to"],
+    "e": [
+      ["我期待一有机会就说得更好。", "I'm looking forward to speaking better as soon as I can."],
+      ["我期待明天跟你说中文。", "I'm looking forward to speaking Chinese with you tomorrow."],
+      ["我期待认识说中文的人。", "I'm looking forward to meeting people who speak Chinese."],
+      ["我期待开始学。", "I'm looking forward to starting to learn."]
+    ],
+    "d": {
+      "2": [["我期待", "I'm looking forward to"], ["期待说", "looking forward to speaking"]],
+      "3": [["我期待说中文", "I'm looking forward to speaking Chinese"], ["期待学", "looking forward to learning"]],
+      "4": [["我期待明天说", "I'm looking forward to tomorrow speaking"], ["我期待认识人", "I'm looking forward to meeting people"]],
+      "5": []
+    }
+  },
+  "S0029L02": {
+    "lego": ["说得更好", "speaking better"],
+    "e": [
+      ["我期待一有机会就说得更好。", "I'm looking forward to speaking better as soon as I can."],
+      ["我想说得更好。", "I want to speak better."],
+      ["你说得更好了。", "You speak better now."]
+    ],
+    "d": {
+      "2": [["说得更好", "speaking better"], ["想说得更好", "want speaking better"]],
+      "3": [["我想说得更好", "I want speaking better"], ["你说得更好", "you speak better"]],
+      "4": [["期待说得更好", "looking forward to speaking better"], ["一有机会就说得更好", "as soon as can speaking better"]],
+      "5": [["我期待一有机会就说得更好", "I'm looking forward to speaking better as soon as I can"]]
+    }
+  },
+  "S0030L01": {
+    "lego": ["我想", "I wanted"],
+    "e": [
+      ["我昨天想问你一些事。", "I wanted to ask you something yesterday."],
+      ["我想跟你说中文。", "I wanted to speak Chinese with you."],
+      ["我想帮你学。", "I wanted to help you learn."]
+    ],
+    "d": {
+      "2": [["我想问", "I wanted ask"], ["我想说", "I wanted speak"]],
+      "3": [["我想问你", "I wanted ask you"], ["我想跟你说", "I wanted with you speak"]],
+      "4": [["昨天想问", "yesterday wanted ask"], ["我想帮你学", "I wanted help you learn"]],
+      "5": []
+    }
+  },
+  "S0030L02": {
+    "lego": ["昨天", "yesterday"],
+    "e": [
+      ["我昨天想问你一些事。", "I wanted to ask you something yesterday."],
+      ["我昨天说得更好。", "I spoke better yesterday."],
+      ["你昨天见面了吗?", "Did you meet yesterday?"],
+      ["他昨天回来了。", "He came back yesterday."]
+    ],
+    "d": {
+      "2": [["我昨天", "I yesterday"], ["昨天说", "yesterday spoke"]],
+      "3": [["昨天想问", "yesterday wanted ask"], ["我昨天学", "I yesterday learned"]],
+      "4": [["昨天跟你说", "yesterday with you spoke"], ["我昨天见面", "I yesterday met"]],
+      "5": []
+    }
+  },
+  "S0030L03": {
+    "lego": ["问你", "to ask you"],
+    "e": [
+      ["我昨天想问你一些事。", "I wanted to ask you something yesterday."],
+      ["我今天要问你。", "I'm going to ask you today."],
+      ["我想问你一个问题。", "I want to ask you a question."]
+    ],
+    "d": {
+      "2": [["问你", "ask you"], ["想问你", "want ask you"]],
+      "3": [["我想问你", "I want ask you"], ["要问你", "going to ask you"]],
+      "4": [["昨天想问你", "yesterday wanted ask you"], ["今天要问你", "today going to ask you"]],
+      "5": [["我昨天想问你一些事", "I yesterday wanted ask you something"]]
+    }
+  },
+  "S0030L04": {
+    "lego": ["一些事", "something"],
+    "e": [
+      ["我昨天想问你一些事。", "I wanted to ask you something yesterday."],
+      ["我今天要说一些事。", "I'm going to say something today."],
+      ["你知道一些事吗?", "Do you know something?"]
+    ],
+    "d": {
+      "2": [["一些事", "something"], ["问一些事", "ask something"]],
+      "3": [["说一些事", "say something"], ["知道一些事", "know something"]],
+      "4": [["我想问你一些事", "I want ask you something"], ["今天要说一些事", "today going to say something"]],
+      "5": [["我昨天想问你一些事", "I yesterday wanted ask you something"]]
+    }
+  }
+}
