@@ -112,11 +112,26 @@ export default {
               const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
               const match = matchStandard || matchBasic
 
-              // Count LEGOs from v7.7 format: seeds array [[seed_id, [t,k], [[lego_id, type, t, k], ...]]]
+              // Count LEGOs - handle both v7.7 and v5.0.1 formats
               let legoCount = 0
               const seedsArray = legoPairsData.seeds || []
-              for (const [seedId, seedPair, legos] of seedsArray) {
-                legoCount += legos.length
+
+              // Detect format by checking first seed structure
+              if (seedsArray.length > 0) {
+                const firstSeed = seedsArray[0]
+                if (Array.isArray(firstSeed)) {
+                  // v7.7 format: [seed_id, [t,k], [[lego_id, type, t, k], ...]]
+                  for (const [seedId, seedPair, legos] of seedsArray) {
+                    legoCount += legos.length
+                  }
+                } else if (firstSeed && typeof firstSeed === 'object' && firstSeed.seed_id) {
+                  // v5.0.1 format: {seed_id, seed_pair, legos: [{id, type, target, known, ...}]}
+                  // Count only NEW LEGOs (not referenced ones)
+                  for (const seed of seedsArray) {
+                    const newLegos = seed.legos.filter(l => l.new === true)
+                    legoCount += newLegos.length
+                  }
+                }
               }
 
               // Count actual seeds from data
@@ -171,19 +186,44 @@ export default {
         }))
         translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
 
-        // Convert v7.7 format lego_pairs to flat array
+        // Convert lego_pairs to flat array - handle both v7.7 and v5.0.1 formats
         const seedsArray = legoPairsData.seeds || []
         const legos = []
-        for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
-          for (const legoEntry of legoArray) {
-            const [lego_id, type, target_chunk, known_chunk] = legoEntry
-            legos.push({
-              seed_id,
-              lego_id,
-              lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
-              target_chunk,
-              known_chunk
-            })
+
+        // Detect format by checking first seed structure
+        if (seedsArray.length > 0) {
+          const firstSeed = seedsArray[0]
+
+          if (Array.isArray(firstSeed)) {
+            // v7.7 format: [[seed_id, [target, known], [[lego_id, type, t, k], ...]]]
+            for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
+              for (const legoEntry of legoArray) {
+                const [lego_id, type, target_chunk, known_chunk] = legoEntry
+                legos.push({
+                  seed_id,
+                  lego_id,
+                  lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
+                  target_chunk,
+                  known_chunk
+                })
+              }
+            }
+          } else if (firstSeed && typeof firstSeed === 'object' && firstSeed.seed_id) {
+            // v5.0.1 format: {seed_id, seed_pair, legos: [{id, type, target, known, new/ref, components?}]}
+            for (const seed of seedsArray) {
+              // Only include NEW LEGOs in the flat list
+              const newLegos = seed.legos.filter(l => l.new === true)
+              for (const lego of newLegos) {
+                legos.push({
+                  seed_id: seed.seed_id,
+                  lego_id: lego.id,
+                  lego_type: lego.type === 'A' ? 'A' : lego.type === 'M' ? 'M' : lego.type,
+                  target_chunk: lego.target,
+                  known_chunk: lego.known,
+                  components: lego.components
+                })
+              }
+            }
           }
         }
 
@@ -266,20 +306,44 @@ export default {
 
           translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
 
-          // Convert v7.7 format lego_pairs to flat array
-          // Input: { seeds: [[seed_id, [target, known], [[lego_id, type, t, k], ...]]] }
+          // Convert lego_pairs to flat array - handle both v7.7 and v5.0.1 formats
           const seedsArray = legoPairsData.seeds || []
           const legos = []
-          for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
-            for (const legoEntry of legoArray) {
-              const [lego_id, type, target_chunk, known_chunk] = legoEntry
-              legos.push({
-                seed_id,
-                lego_id,
-                lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
-                target_chunk,
-                known_chunk
-              })
+
+          // Detect format by checking first seed structure
+          if (seedsArray.length > 0) {
+            const firstSeed = seedsArray[0]
+
+            if (Array.isArray(firstSeed)) {
+              // v7.7 format: [[seed_id, [target, known], [[lego_id, type, t, k], ...]]]
+              for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
+                for (const legoEntry of legoArray) {
+                  const [lego_id, type, target_chunk, known_chunk] = legoEntry
+                  legos.push({
+                    seed_id,
+                    lego_id,
+                    lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
+                    target_chunk,
+                    known_chunk
+                  })
+                }
+              }
+            } else if (firstSeed && typeof firstSeed === 'object' && firstSeed.seed_id) {
+              // v5.0.1 format: {seed_id, seed_pair, legos: [{id, type, target, known, new/ref, components?}]}
+              for (const seed of seedsArray) {
+                // Only include NEW LEGOs in the flat list (not referenced ones)
+                const newLegos = seed.legos.filter(l => l.new === true)
+                for (const lego of newLegos) {
+                  legos.push({
+                    seed_id: seed.seed_id,
+                    lego_id: lego.id,
+                    lego_type: lego.type === 'A' ? 'A' : lego.type === 'M' ? 'M' : lego.type,
+                    target_chunk: lego.target,
+                    known_chunk: lego.known,
+                    components: lego.components // Include componentization for molecular LEGOs
+                  })
+                }
+              }
             }
           }
 
