@@ -1,0 +1,77 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0043",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I wasn't thinking about how to answer.",
+    "target": "No estaba pensando en cómo responder."
+  },
+  "patterns_introduced": "P16",
+  "cumulative_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+  "cumulative_legos": 128,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "changes_from_previous": [
+      "Generated for S0043 with strict GATE compliance",
+      "4 long phrases (6+ LEGOs) per LEGO basket",
+      "Imperfect continuous pattern with reflexive thinking"
+    ]
+  },
+
+  "S0043L01": {
+    "lego": ["I wasn't thinking", "no estaba pensando"],
+    "type": "M",
+    "available_legos": 126,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["I wasn't thinking", "no estaba pensando", "P16", 1],
+      ["I wasn't thinking about it", "no estaba pensando sobre eso", "P16", 3],
+      ["I wasn't thinking about how to speak", "no estaba pensando sobre cómo hablar", "P16", 4],
+      ["I wasn't thinking about that last night", "no estaba pensando sobre eso anoche", "P16", 4],
+      ["I wasn't thinking when I wanted to speak", "no estaba pensando cuando quería hablar", "P16", 5],
+      ["I wasn't thinking about how to answer", "no estaba pensando sobre cómo responder", "P16", 4],
+      ["I wasn't thinking about what I wanted to say yesterday", "no estaba pensando sobre lo que quería decir ayer", "P16", 9],
+      ["I wasn't thinking when I was starting to feel tired last night", "no estaba pensando cuando estaba comenzando a sentirme cansado anoche", "P16", 9],
+      ["I wasn't thinking about how to speak Spanish better than yesterday", "no estaba pensando sobre cómo hablar español mejor que ayer", "P16", 9],
+      ["I wasn't thinking about it but I was starting to feel okay", "no estaba pensando sobre eso pero estaba comenzando a sentirme bien", "P16", 10]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P16",
+    "gate_compliance": "STRICT - All words from S0001-S0042 LEGOs only"
+  },
+
+  "S0043L02": {
+    "lego": ["about how to answer", "en cómo responder"],
+    "type": "M",
+    "available_legos": 127,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P10", "P12", "P14", "P15", "P16", "P18", "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT", "P_NEW_REFLEXIVE"],
+    "practice_phrases": [
+      ["about how to answer", "en cómo responder", "P12", 1],
+      ["I wasn't thinking about how to answer", "no estaba pensando en cómo responder", "P16", 2],
+      ["I was thinking about how to answer", "estaba pensando en cómo responder", "P16", 3],
+      ["I wanted to think about how to answer", "quería pensar en cómo responder", "P_NEW_IMPERFECT", 4],
+      ["I'm not sure about how to answer", "no estoy seguro en cómo responder", "P18", 4],
+      ["I don't like taking time to think about how to answer", "no me gusta tomar tiempo para pensar en cómo responder", "P_NEW_GUSTAR", 8],
+      ["I wasn't thinking about how to answer when you wanted to speak", "no estaba pensando en cómo responder cuando querías hablar", "P16", 10],
+      ["I wanted to think carefully about how to answer yesterday", "quería pensar cuidadosamente en cómo responder ayer", "P_NEW_IMPERFECT", 6],
+      ["I was starting to think about how to answer this morning", "estaba comenzando a pensar en cómo responder esta mañana", "P16", 7],
+      ["I wasn't thinking about how to answer.", "no estaba pensando en cómo responder.", "P16", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P16, P12, P18, P_NEW_IMPERFECT, P_NEW_GUSTAR",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - All words from S0001-S0043L01 LEGOs only"
+  }
+}

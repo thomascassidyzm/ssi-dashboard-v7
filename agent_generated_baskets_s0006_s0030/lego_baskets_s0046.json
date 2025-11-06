@@ -1,0 +1,311 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0046",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "But I don't worry about making mistakes.",
+    "target": "Pero no me preocupo por hacer errores."
+  },
+  "patterns_introduced": "P_NEW_REFLEXIVE",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P10",
+    "P12",
+    "P18",
+    "P_RELATIVE",
+    "P_NEW_GUSTAR",
+    "P_NEW_IMPERSONAL",
+    "P_NEW_IMPERFECT",
+    "P_NEW_REFLEXIVE"
+  ],
+  "cumulative_legos": 136,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T18:03:44.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO. Corrected distribution: 2 short (1-2), 2 quite short (3), 2 longer (4-5), 4 long (6+)"
+  },
+  "S0046L01": {
+    "lego": [
+      "but",
+      "pero"
+    ],
+    "type": "A",
+    "available_legos": 133,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT"
+    ],
+    "practice_phrases": [
+      [
+        "but",
+        "pero",
+        null,
+        1
+      ],
+      [
+        "but I speak",
+        "pero hablo",
+        "P05",
+        2
+      ],
+      [
+        "but I want to learn",
+        "pero quiero aprender",
+        "P01",
+        3
+      ],
+      [
+        "but I'm trying to speak",
+        "pero estoy intentando hablar",
+        "P02",
+        3
+      ],
+      [
+        "but I speak a little Spanish",
+        "pero hablo un poco de español",
+        "P05",
+        4
+      ],
+      [
+        "but I'm going to practice speaking",
+        "pero voy a practicar hablar",
+        "P03",
+        4
+      ],
+      [
+        "but I speak Spanish and I want to learn",
+        "pero hablo español y quiero aprender",
+        "P05",
+        6
+      ],
+      [
+        "but I think that I speak very well",
+        "pero pienso que hablo muy bien",
+        "P05",
+        6
+      ],
+      [
+        "but I'm looking forward to speaking as often as possible",
+        "pero estoy deseando hablar lo más frecuentemente posible",
+        "P02",
+        6
+      ],
+      [
+        "but I wanted to learn English before I started speaking",
+        "pero quería aprender inglés antes de que comenzara a hablar",
+        "P_NEW_IMPERFECT",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P02, P03, P05, P_NEW_IMPERFECT",
+    "gate_compliance": "STRICT - All words from S0001-S0045 LEGOs only"
+  },
+  "S0046L02": {
+    "lego": [
+      "I don't worry",
+      "no me preocupo"
+    ],
+    "type": "M",
+    "available_legos": 134,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE"
+    ],
+    "practice_phrases": [
+      [
+        "I don't worry",
+        "no me preocupo",
+        "P_NEW_REFLEXIVE",
+        1
+      ],
+      [
+        "but I don't worry",
+        "pero no me preocupo",
+        "P_NEW_REFLEXIVE",
+        2
+      ],
+      [
+        "I speak but I don't worry",
+        "hablo pero no me preocupo",
+        "P05",
+        3
+      ],
+      [
+        "I don't worry about something now",
+        "no me preocupo por algo ahora",
+        "P_NEW_REFLEXIVE",
+        3
+      ],
+      [
+        "I want to speak but I don't worry",
+        "quiero hablar pero no me preocupo",
+        "P01",
+        4
+      ],
+      [
+        "I'm trying to learn but I don't worry",
+        "estoy intentando aprender pero no me preocupo",
+        "P02",
+        4
+      ],
+      [
+        "I speak a little Spanish but I don't worry about something",
+        "hablo un poco de español pero no me preocupo por algo",
+        "P05",
+        6
+      ],
+      [
+        "I like to speak Spanish but I don't worry about it",
+        "me gusta hablar español pero no me preocupo por eso",
+        "P_NEW_GUSTAR",
+        6
+      ],
+      [
+        "I wanted to learn English yesterday but I don't worry about it",
+        "quería aprender inglés ayer pero no me preocupo por eso",
+        "P_NEW_IMPERFECT",
+        7
+      ],
+      [
+        "I think that I speak well but I don't worry about speaking",
+        "pienso que hablo bien pero no me preocupo por hablar",
+        "P05",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P02, P05, P_NEW_REFLEXIVE, P_NEW_GUSTAR, P_NEW_IMPERFECT",
+    "gate_compliance": "STRICT - All words from S0001-S0046L01 LEGOs only"
+  },
+  "S0046L03": {
+    "lego": [
+      "about making mistakes",
+      "por hacer errores"
+    ],
+    "type": "M",
+    "available_legos": 135,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE"
+    ],
+    "practice_phrases": [
+      [
+        "about making mistakes",
+        "por hacer errores",
+        null,
+        1
+      ],
+      [
+        "I don't worry about making mistakes",
+        "no me preocupo por hacer errores",
+        "P_NEW_REFLEXIVE",
+        2
+      ],
+      [
+        "but I don't worry about making mistakes",
+        "pero no me preocupo por hacer errores",
+        "P_NEW_REFLEXIVE",
+        3
+      ],
+      [
+        "I speak Spanish about making mistakes",
+        "hablo español por hacer errores",
+        "P05",
+        3
+      ],
+      [
+        "I want to speak but I don't worry about making mistakes",
+        "quiero hablar pero no me preocupo por hacer errores",
+        "P01",
+        5
+      ],
+      [
+        "I'm trying to learn but I don't worry about making mistakes",
+        "estoy intentando aprender pero no me preocupo por hacer errores",
+        "P02",
+        5
+      ],
+      [
+        "I speak a little Spanish but I don't worry about making mistakes",
+        "hablo un poco de español pero no me preocupo por hacer errores",
+        "P05",
+        6
+      ],
+      [
+        "I like to speak English but I don't worry about making mistakes",
+        "me gusta hablar inglés pero no me preocupo por hacer errores",
+        "P_NEW_GUSTAR",
+        6
+      ],
+      [
+        "I wanted to learn Spanish yesterday but I don't worry about making mistakes",
+        "quería aprender español ayer pero no me preocupo por hacer errores",
+        "P_NEW_IMPERFECT",
+        7
+      ],
+      [
+        "but I don't worry about making mistakes.",
+        "pero no me preocupo por hacer errores.",
+        "P_NEW_REFLEXIVE",
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P02, P05, P_NEW_REFLEXIVE, P_NEW_GUSTAR, P_NEW_IMPERFECT",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - All words from S0001-S0046L02 LEGOs only"
+  }
+}

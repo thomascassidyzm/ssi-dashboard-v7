@@ -1,0 +1,410 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0049",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "It's like this, if you know what I mean.",
+    "target": "Es así, si sabes lo que quiero decir."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P10",
+    "P12",
+    "P18",
+    "P_RELATIVE",
+    "P_NEW_GUSTAR",
+    "P_NEW_IMPERSONAL",
+    "P_NEW_IMPERFECT",
+    "P_NEW_REFLEXIVE",
+    "P_NEW_GUSTAR_LIKE"
+  ],
+  "cumulative_legos": 142,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T18:06:26.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO"
+  },
+  "S0049L01": {
+    "lego": [
+      "it's like this",
+      "es así"
+    ],
+    "type": "M",
+    "available_legos": 140,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE"
+    ],
+    "practice_phrases": [
+      [
+        "it's like this",
+        "es así",
+        "P_NEW_IMPERSONAL",
+        1
+      ],
+      [
+        "but it's like this",
+        "pero es así",
+        "P_NEW_IMPERSONAL",
+        2
+      ],
+      [
+        "I think that it's like this",
+        "pienso que es así",
+        "P_NEW_IMPERSONAL",
+        3
+      ],
+      [
+        "because it's like this now",
+        "porque es así ahora",
+        "P_NEW_IMPERSONAL",
+        3
+      ],
+      [
+        "I speak Spanish because it's like this",
+        "hablo español porque es así",
+        "P05",
+        4
+      ],
+      [
+        "I wanted to learn but it's like this",
+        "quería aprender pero es así",
+        "P_NEW_IMPERFECT",
+        4
+      ],
+      [
+        "I think that I speak well because it's like this",
+        "pienso que hablo bien porque es así",
+        "P05",
+        6
+      ],
+      [
+        "I like to speak Spanish because it's like this now",
+        "me gusta hablar español porque es así ahora",
+        "P_NEW_GUSTAR",
+        6
+      ],
+      [
+        "I don't worry about making mistakes because it's like this",
+        "no me preocupo por hacer errores porque es así",
+        "P_NEW_REFLEXIVE",
+        6
+      ],
+      [
+        "I wanted to learn English yesterday but it's like this now",
+        "quería aprender inglés ayer pero es así ahora",
+        "P_NEW_IMPERFECT",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P05, P_NEW_GUSTAR, P_NEW_IMPERSONAL, P_NEW_IMPERFECT, P_NEW_REFLEXIVE",
+    "gate_compliance": "STRICT - All words from S0001-S0048 LEGOs only"
+  },
+  "S0049L02": {
+    "lego": [
+      "if",
+      "si"
+    ],
+    "type": "A",
+    "available_legos": 141,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE"
+    ],
+    "practice_phrases": [
+      [
+        "if",
+        "si",
+        null,
+        1
+      ],
+      [
+        "if I speak",
+        "si hablo",
+        "P18",
+        2
+      ],
+      [
+        "if I want to learn",
+        "si quiero aprender",
+        "P18",
+        3
+      ],
+      [
+        "if I can speak Spanish",
+        "si puedo hablar español",
+        "P18",
+        3
+      ],
+      [
+        "I'm not sure if I can speak",
+        "no estoy seguro si puedo hablar",
+        "P18",
+        4
+      ],
+      [
+        "I speak Spanish if I can",
+        "hablo español si puedo",
+        "P05",
+        4
+      ],
+      [
+        "I like to speak Spanish if I can practice",
+        "me gusta hablar español si puedo practicar",
+        "P_NEW_GUSTAR",
+        6
+      ],
+      [
+        "I think that I speak well if I practice",
+        "pienso que hablo bien si practico",
+        "P05",
+        6
+      ],
+      [
+        "I don't worry about making mistakes if I speak Spanish",
+        "no me preocupo por hacer errores si hablo español",
+        "P_NEW_REFLEXIVE",
+        7
+      ],
+      [
+        "I wanted to learn English if I can speak with you",
+        "quería aprender inglés si puedo hablar contigo",
+        "P_NEW_IMPERFECT",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P05, P18, P_NEW_GUSTAR, P_NEW_IMPERFECT, P_NEW_REFLEXIVE",
+    "gate_compliance": "STRICT - All words from S0001-S0049L01 LEGOs only"
+  },
+  "S0049L03": {
+    "lego": [
+      "you know",
+      "sabes"
+    ],
+    "type": "A",
+    "available_legos": 142,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE"
+    ],
+    "practice_phrases": [
+      [
+        "you know",
+        "sabes",
+        "P05",
+        1
+      ],
+      [
+        "if you know",
+        "si sabes",
+        "P18",
+        2
+      ],
+      [
+        "you know what I mean",
+        "sabes lo que quiero decir",
+        "P05",
+        3
+      ],
+      [
+        "if you know something",
+        "si sabes algo",
+        "P18",
+        2
+      ],
+      [
+        "you know what I wanted to say",
+        "sabes lo que quería decir",
+        "P05",
+        4
+      ],
+      [
+        "if you know what I mean",
+        "si sabes lo que quiero decir",
+        "P18",
+        4
+      ],
+      [
+        "I speak Spanish if you know what I mean",
+        "hablo español si sabes lo que quiero decir",
+        "P05",
+        6
+      ],
+      [
+        "I think that you know what I wanted to say",
+        "pienso que sabes lo que quería decir",
+        "P05",
+        6
+      ],
+      [
+        "it's like this if you know what I want to say",
+        "es así si sabes lo que quiero decir",
+        "P_NEW_IMPERSONAL",
+        7
+      ],
+      [
+        "I like to speak with you if you know what I mean",
+        "me gusta hablar contigo si sabes lo que quiero decir",
+        "P_NEW_GUSTAR",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P05, P18, P_NEW_GUSTAR, P_NEW_IMPERSONAL",
+    "gate_compliance": "STRICT - All words from S0001-S0049L02 LEGOs only"
+  },
+  "S0049L04": {
+    "lego": [
+      "what I mean",
+      "lo que quiero decir"
+    ],
+    "type": "M",
+    "available_legos": 142,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE",
+      "P_NEW_GUSTAR_LIKE"
+    ],
+    "practice_phrases": [
+      [
+        "what I mean",
+        "lo que quiero decir",
+        "P01",
+        1
+      ],
+      [
+        "you know what I mean",
+        "sabes lo que quiero decir",
+        "P05",
+        2
+      ],
+      [
+        "if you know what I mean",
+        "si sabes lo que quiero decir",
+        "P18",
+        3
+      ],
+      [
+        "it's like this if you know what I mean",
+        "es así si sabes lo que quiero decir",
+        "P_NEW_IMPERSONAL",
+        4
+      ],
+      [
+        "I'm going to try to explain what I mean",
+        "voy a intentar explicar lo que quiero decir",
+        "P03",
+        4
+      ],
+      [
+        "I wanted to explain what I mean yesterday",
+        "quería explicar lo que quiero decir ayer",
+        "P_NEW_IMPERFECT",
+        4
+      ],
+      [
+        "I speak a little Spanish if you know what I mean",
+        "hablo un poco de español si sabes lo que quiero decir",
+        "P05",
+        7
+      ],
+      [
+        "I think that I speak well if you know what I mean",
+        "pienso que hablo bien si sabes lo que quiero decir",
+        "P05",
+        7
+      ],
+      [
+        "I like to speak English if you know what I mean",
+        "me gusta hablar inglés si sabes lo que quiero decir",
+        "P_NEW_GUSTAR",
+        6
+      ],
+      [
+        "it's like this, if you know what I mean.",
+        "es así, si sabes lo que quiero decir.",
+        "P_NEW_IMPERSONAL",
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P03, P05, P18, P_NEW_GUSTAR, P_NEW_IMPERSONAL, P_NEW_IMPERFECT",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - All words from S0001-S0049L03 LEGOs only"
+  }
+}
