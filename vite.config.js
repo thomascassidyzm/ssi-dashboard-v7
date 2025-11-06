@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { execSync } from 'child_process'
+import path from 'path'
 
 // Get git commit hash at build time
 const gitCommit = execSync('git rev-parse --short HEAD').toString().trim()
@@ -8,6 +9,11 @@ const gitCommit = execSync('git rev-parse --short HEAD').toString().trim()
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    }
+  },
   define: {
     __GIT_COMMIT__: JSON.stringify(gitCommit)
   },
