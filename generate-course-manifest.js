@@ -36,14 +36,22 @@ for (const entry of entries) {
   const courseCode = entry.name
   const coursePath = path.join(COURSES_DIR, courseCode)
 
-  // Check for available files
+  // Check for available files - be flexible with naming
   const seedPairsPath = path.join(coursePath, 'seed_pairs.json')
+  const seedPairsAlt = path.join(coursePath, 'translations.json')
   const legoPairsPath = path.join(coursePath, 'lego_pairs.json')
+  const legoPairsAlt = path.join(coursePath, 'LEGO_BREAKDOWNS_COMPLETE.json')
   const basketsPath = path.join(coursePath, 'baskets_deduplicated.json')
+  const basketsAlt = path.join(coursePath, 'baskets.json')
 
-  const hasSeedPairs = fs.existsSync(seedPairsPath)
-  const hasLegoPairs = fs.existsSync(legoPairsPath)
-  const hasBaskets = fs.existsSync(basketsPath)
+  const hasSeedPairs = fs.existsSync(seedPairsPath) || fs.existsSync(seedPairsAlt)
+  const hasLegoPairs = fs.existsSync(legoPairsPath) || fs.existsSync(legoPairsAlt)
+  const hasBaskets = fs.existsSync(basketsPath) || fs.existsSync(basketsAlt)
+
+  // Get the actual path that exists
+  const actualSeedPairsPath = fs.existsSync(seedPairsPath) ? seedPairsPath : seedPairsAlt
+  const actualLegoPairsPath = fs.existsSync(legoPairsPath) ? legoPairsPath : legoPairsAlt
+  const actualBasketsPath = fs.existsSync(basketsPath) ? basketsPath : basketsAlt
 
   // Determine completion phase
   let phase = 'empty'
@@ -66,11 +74,11 @@ for (const entry of entries) {
   let legoPairsData = null
 
   // Read files if they exist
-  if (hasSeedPairs) {
-    seedPairsData = JSON.parse(fs.readFileSync(seedPairsPath, 'utf8'))
+  if (hasSeedPairs && fs.existsSync(actualSeedPairsPath)) {
+    seedPairsData = JSON.parse(fs.readFileSync(actualSeedPairsPath, 'utf8'))
   }
-  if (hasLegoPairs) {
-    legoPairsData = JSON.parse(fs.readFileSync(legoPairsPath, 'utf8'))
+  if (hasLegoPairs && fs.existsSync(actualLegoPairsPath)) {
+    legoPairsData = JSON.parse(fs.readFileSync(actualLegoPairsPath, 'utf8'))
   }
 
   // Parse course code for language info
