@@ -1,7 +1,7 @@
 <template>
   <div class="lego-basket-viewer">
     <!-- Header -->
-    <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+    <div v-if="!courseCode" class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
       <!-- Back to Dashboard -->
       <router-link
         to="/"
@@ -40,8 +40,11 @@
         </h2>
       </div>
 
-      <!-- Batch Navigation -->
-      <div v-if="selectedCourseCode" class="mb-4 space-y-3">
+    </div>
+
+    <!-- Batch Navigation (Always visible when course is loaded) -->
+    <div v-if="selectedCourseCode" class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+      <div class="mb-4 space-y-3">
         <div class="flex items-center justify-between">
           <div>
             <label class="text-sm font-medium text-slate-300">Viewing Batch:</label>
@@ -404,6 +407,12 @@ import { isMolecularLego, getLegoComponents } from '@/services/legoFormatAdapter
 
 export default {
   name: 'LegoBasketViewer',
+  props: {
+    courseCode: {
+      type: String,
+      default: null
+    }
+  },
   data() {
     return {
       loading: false,
@@ -453,8 +462,15 @@ export default {
     }
   },
   async mounted() {
-    // Load available courses
-    await this.loadCourses()
+    // If courseCode prop is provided, use it directly
+    if (this.courseCode) {
+      this.selectedCourseCode = this.courseCode
+      await this.loadCourses()
+      await this.onCourseChange()
+    } else {
+      // Otherwise load courses for selector
+      await this.loadCourses()
+    }
   },
   methods: {
     formatPattern(pattern) {

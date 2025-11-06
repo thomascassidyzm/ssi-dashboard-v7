@@ -513,142 +513,30 @@
 
             <!-- Baskets Tab -->
             <div v-if="activeTab === 'baskets'">
-              <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-semibold text-emerald-400">LEGO_BASKETS (Phase 5)</h3>
-                <div class="flex items-center gap-4">
-                  <div class="text-sm text-slate-400">
-                    {{ Object.keys(basketsData || {}).length }} baskets
-                  </div>
-                  <button
-                    @click="generateBaskets"
-                    :disabled="generatingBaskets"
-                    class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white text-sm font-semibold px-4 py-2 rounded-lg transition"
-                  >
-                    {{ generatingBaskets ? '⏳ Generating...' : '🎯 Generate Baskets' }}
-                  </button>
-                </div>
-              </div>
-
-              <div v-if="!basketsData || Object.keys(basketsData).length === 0" class="text-center py-8">
-                <p class="text-slate-400 mb-4">No LEGO_BASKETS found.</p>
-                <button
-                  @click="generateBaskets"
-                  :disabled="generatingBaskets"
-                  class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-lg transition inline-flex items-center gap-2"
-                >
-                  <span>{{ generatingBaskets ? '⏳ Generating Baskets...' : '🎯 Generate Baskets' }}</span>
-                </button>
-              </div>
-
-              <div v-else class="space-y-2">
-                <div
-                  v-for="(basket, legoId) in basketsData"
-                  :key="legoId"
-                  class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden hover:border-slate-600 transition-colors"
-                >
-                  <!-- Basket Header (Always Visible) -->
-                  <button
-                    @click="toggleBasket(legoId)"
-                    class="w-full p-4 hover:bg-slate-800/50 transition-colors flex items-center justify-between"
-                  >
-                    <div class="flex items-center gap-4 flex-1">
-                      <!-- LEGO ID Badge -->
-                      <div class="font-mono text-xs text-cyan-400 bg-cyan-900/30 px-2 py-1 rounded">
-                        {{ legoId }}
-                      </div>
-
-                      <!-- LEGO Core Pair -->
-                      <div class="flex items-center gap-2">
-                        <span class="text-blue-300 font-medium">{{ basket.lego[0] }}</span>
-                        <span class="text-slate-500">⟷</span>
-                        <span class="text-slate-300">{{ basket.lego[1] }}</span>
-                      </div>
-                    </div>
-
-                    <!-- Counts -->
-                    <div class="flex items-center gap-4">
-                      <div class="text-xs text-slate-400">
-                        <span class="text-emerald-400 font-semibold">{{ basket.phrases?.length || 0 }}</span> phrases
-                      </div>
-                      <svg class="w-5 h-5 text-slate-500 transition-transform" :class="{ 'rotate-180': expandedBaskets[legoId] }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                      </svg>
-                    </div>
-                  </button>
-
-                  <!-- Expanded Content -->
-                  <div v-if="expandedBaskets[legoId]" class="border-t border-slate-700 p-4 bg-slate-900/50">
-                    <div v-if="!basket.phrases || basket.phrases.length === 0" class="text-center py-4 text-slate-500 text-sm">
-                      No phrases in this basket
-                    </div>
-
-                    <div v-else class="space-y-2">
-                      <div
-                        v-for="(phrase, idx) in basket.phrases"
-                        :key="`${legoId}-${idx}`"
-                        class="bg-slate-800 border border-slate-700 rounded p-3 hover:border-slate-600 transition-colors"
-                      >
-                        <div class="flex items-center gap-2 mb-2">
-                          <div class="text-xs font-mono text-cyan-400/60">{{ legoId }}_{{ String(idx + 1).padStart(2, '0') }}</div>
-                          <div class="text-xs text-slate-500">{{ phrase[0].split(/\s+/).length }} words</div>
-                        </div>
-                        <div class="text-sm text-blue-300 mb-1">{{ phrase[0] }}</div>
-                        <div class="text-sm text-slate-300">{{ phrase[1] }}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <LegoBasketViewer :course-code="courseCode" />
             </div>
 
-            <!-- Provenance Tab -->
-            <div v-if="activeTab === 'provenance'">
-              <h3 class="text-lg font-semibold text-emerald-400 mb-4">Provenance Tracking</h3>
-              <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-6">
-                <p class="text-slate-300 mb-4">
-                  Test the provenance system by selecting a seed to see its complete impact chain.
-                </p>
-                <div class="flex gap-3">
-                  <select
-                    v-model="selectedSeed"
-                    class="bg-slate-800 border border-slate-700 rounded px-4 py-2 text-slate-300 flex-1"
-                  >
-                    <option value="">Select a seed...</option>
-                    <option v-for="t in translations" :key="t.seed_id" :value="t.seed_id">
-                      {{ t.seed_id }}: {{ t.source.substring(0, 50) }}...
-                    </option>
-                  </select>
-                  <button
-                    @click="traceProvenance"
-                    :disabled="!selectedSeed"
-                    class="bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white px-6 py-2 rounded transition-colors"
-                  >
-                    Trace Impact
-                  </button>
-                </div>
+            <!-- Introductions Tab -->
+            <div v-if="activeTab === 'introductions'">
+              <h3 class="text-lg font-semibold text-emerald-400 mb-4">LEGO Introductions (Phase 6)</h3>
 
-                <div v-if="provenanceResult" class="mt-6 space-y-4">
-                  <div class="bg-emerald-900/20 border border-emerald-500/50 rounded-lg p-4">
-                    <div class="text-emerald-400 font-semibold mb-2">Impact Summary</div>
-                    <div class="grid grid-cols-3 gap-4 text-sm">
-                      <div>
-                        <div class="text-slate-400">LEGOs Generated</div>
-                        <div class="text-2xl font-bold text-emerald-400">{{ provenanceResult.legos }}</div>
-                      </div>
-                      <div>
-                        <div class="text-slate-400">Deduplicated LEGOs</div>
-                        <div class="text-2xl font-bold text-emerald-400">{{ provenanceResult.deduplicated }}</div>
-                      </div>
-                      <div>
-                        <div class="text-slate-400">Baskets Affected</div>
-                        <div class="text-2xl font-bold text-emerald-400">{{ provenanceResult.baskets }}</div>
-                      </div>
+              <div v-if="!introductionsData || !introductionsData.introductions" class="text-center py-8 text-slate-400">
+                No introductions found. Phase 6 may not be complete yet.
+              </div>
+
+              <div v-else class="space-y-3">
+                <div
+                  v-for="(intro, legoId) in introductionsData.introductions"
+                  :key="legoId"
+                  class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/50 transition-colors"
+                >
+                  <div class="flex items-start gap-4">
+                    <div class="font-mono text-xs text-cyan-400 bg-cyan-900/30 px-2 py-1 rounded h-fit">
+                      {{ legoId }}
                     </div>
-                  </div>
-                  <div class="text-sm text-slate-400">
-                    <strong class="text-emerald-400">Edit Impact:</strong> If you edit this seed,
-                    {{ provenanceResult.legos }} LEGOs would need regeneration, affecting
-                    {{ provenanceResult.baskets }} basket(s).
+                    <div class="flex-1">
+                      <p class="text-slate-300 text-sm leading-relaxed">{{ intro }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -844,6 +732,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import api from '../services/api'
 import WordDividerEditor from '../components/lego-editor/WordDividerEditor.vue'
+import LegoBasketViewer from '../components/LegoBasketViewer.vue'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -866,7 +755,7 @@ const activeTab = ref('translations')
 const searchQuery = ref('')
 const legoSearchQuery = ref('') // Search for LEGO breakdowns
 const selectedSeed = ref('')
-const provenanceResult = ref(null)
+const introductionsData = ref(null) // Introductions data from introductions.json
 
 // Edit modal state
 const editModal = ref({
@@ -898,7 +787,7 @@ const tabs = [
   { id: 'translations', label: 'SEED_PAIRS' },
   { id: 'legos', label: 'LEGO_PAIRS' },
   { id: 'baskets', label: 'LEGO_BASKETS' },
-  { id: 'provenance', label: 'Provenance Tracking' }
+  { id: 'introductions', label: 'Introductions' }
 ]
 
 const filteredTranslations = computed(() => {
@@ -968,6 +857,24 @@ async function loadCourse() {
     } catch (err) {
       console.log('Could not load lego_baskets.json:', err.message)
       basketsData.value = null
+    }
+
+    // Load introductions.json from VFS (Phase 6)
+    try {
+      const introsResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/vfs/introductions.json`, {
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
+      })
+      if (introsResponse.ok) {
+        introductionsData.value = await introsResponse.json()
+      } else {
+        console.log('introductions.json not found (Phase 6 may not be complete)')
+        introductionsData.value = null
+      }
+    } catch (err) {
+      console.log('Could not load introductions.json:', err.message)
+      introductionsData.value = null
     }
   } catch (err) {
     error.value = err.message || 'Failed to load course'
