@@ -34,5 +34,18 @@ logs/
 # Server logs
 server.log
 
-# Course data directory (generated, stored in AWS)
-vfs/courses/*/
+# Local VFS directory (backend server only, not deployed)
+# Public courses are in public/vfs/courses/ (tracked in git)
+vfs/
+
+# Temporary development files (don't commit these)
+temp_*
+test-*
+test_*
+validate_*.cjs
+validate_*.json
+*_whitelist.json
+
+# Exceptions: Keep useful scripts
+!validate_extraction.js
+!test_v5_1_api.js
