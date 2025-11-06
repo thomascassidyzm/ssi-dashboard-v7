@@ -29,22 +29,61 @@
         <h3 v-if="currentSeed" class="text-md text-slate-400 mt-1">Viewing: {{ currentSeed }}</h3>
       </div>
 
-      <!-- Seed Selector -->
-      <div v-if="selectedCourseCode" class="mb-4">
-        <label class="text-sm font-medium text-slate-300 mb-2 block">Select Seed:</label>
+      <!-- Seed Navigation -->
+      <div v-if="selectedCourseCode" class="mb-4 space-y-3">
+        <div class="flex items-center gap-4">
+          <label class="text-sm font-medium text-slate-300">Navigate to Seed:</label>
+
+          <!-- Direct Input -->
+          <input
+            v-model.number="seedInput"
+            @keyup.enter="goToSeed"
+            type="number"
+            :min="1"
+            :max="availableSeeds.length"
+            placeholder="e.g. 42"
+            class="w-24 px-3 py-2 bg-slate-700 text-slate-200 border border-slate-600 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+          />
+          <button
+            @click="goToSeed"
+            class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-sm font-medium transition-colors"
+          >
+            Go
+          </button>
+
+          <!-- Prev/Next -->
+          <div class="flex gap-2 ml-auto">
+            <button
+              @click="previousSeed"
+              :disabled="!currentSeedNumber || currentSeedNumber <= 1"
+              class="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              ← Previous
+            </button>
+            <button
+              @click="nextSeed"
+              :disabled="!currentSeedNumber || currentSeedNumber >= availableSeeds.length"
+              class="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Jump Buttons (groups of 10) -->
         <div class="flex gap-2 flex-wrap">
           <button
-            v-for="n in availableSeeds"
-            :key="n"
-            @click="loadSeed(n)"
+            v-for="groupStart in quickJumpGroups"
+            :key="groupStart"
+            @click="loadSeed(groupStart)"
             :class="[
-              'px-3 py-2 rounded font-medium transition-colors text-sm',
-              currentSeed === `S${String(n).padStart(4, '0')}`
+              'px-3 py-1 rounded text-xs font-medium transition-colors',
+              currentSeedNumber >= groupStart && currentSeedNumber < groupStart + 10
                 ? 'bg-emerald-600 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
             ]"
           >
-            S{{ String(n).padStart(4, '0') }}
+            {{ groupStart }}-{{ Math.min(groupStart + 9, availableSeeds.length) }}
           </button>
         </div>
       </div>
@@ -284,7 +323,8 @@ export default {
       selectedCourseCode: '',
       currentCourse: null,
       courseData: null,
-      expandedMolecularLegos: {} // Track which molecular LEGOs are expanded
+      expandedMolecularLegos: {}, // Track which molecular LEGOs are expanded
+      seedInput: null // For direct seed navigation
     }
   },
   computed: {
@@ -348,6 +388,20 @@ export default {
         avgLegoCount: (totalLegos / totalPhrases).toFixed(1),
         totalPhrases
       }
+    },
+    currentSeedNumber() {
+      if (!this.currentSeed) return null
+      const match = this.currentSeed.match(/S(\d+)/)
+      return match ? parseInt(match[1]) : null
+    },
+    quickJumpGroups() {
+      // Generate groups of 10 (1-10, 11-20, 21-30, etc.)
+      if (this.availableSeeds.length === 0) return []
+      const groups = []
+      for (let i = 1; i <= this.availableSeeds.length; i += 10) {
+        groups.push(i)
+      }
+      return groups
     }
   },
   async mounted() {
@@ -419,6 +473,23 @@ export default {
         this.error = `Failed to load course: ${err.message}`
       }
     },
+    goToSeed() {
+      if (!this.seedInput || this.seedInput < 1 || this.seedInput > this.availableSeeds.length) {
+        this.error = `Please enter a seed number between 1 and ${this.availableSeeds.length}`
+        return
+      }
+      this.loadSeed(this.seedInput)
+    },
+    nextSeed() {
+      if (this.currentSeedNumber && this.currentSeedNumber < this.availableSeeds.length) {
+        this.loadSeed(this.currentSeedNumber + 1)
+      }
+    },
+    previousSeed() {
+      if (this.currentSeedNumber && this.currentSeedNumber > 1) {
+        this.loadSeed(this.currentSeedNumber - 1)
+      }
+    },
     async loadSeed(seedNum) {
       if (!this.selectedCourseCode) {
         this.error = 'Please select a course first'
@@ -426,6 +497,7 @@ export default {
       }
 
       this.currentSeed = `S${String(seedNum).padStart(4, '0')}`
+      this.seedInput = seedNum // Sync input field
       this.loading = true
       this.error = null
       this.expandedMolecularLegos = {} // Reset expansion state
