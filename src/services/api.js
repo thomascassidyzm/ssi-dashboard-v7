@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getCachedCourse, setCachedCourse, clearCourseCache, isCacheValid, clearAllCache, getCacheStats, cleanupExpiredCache } from './courseCache.js'
 
 // API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
 function getApiBaseUrl() {
@@ -27,6 +28,9 @@ export const baseURL = API_BASE_URL
 
 // Export axios instance for direct use
 export const apiClient = api
+
+// Export cache utilities for direct use
+export { clearCourseCache, clearAllCache, getCacheStats, cleanupExpiredCache } from './courseCache.js'
 
 // Add interceptor to suppress 404 errors for non-critical endpoints
 api.interceptors.response.use(
@@ -147,10 +151,97 @@ export default {
     },
 
     async get(courseCode) {
+      // Check cache first
+      const cachedData = await getCachedCourse(courseCode)
+      if (cachedData) {
+        console.log(`[API] Using cached data for ${courseCode}`)
+
+        // Reconstruct response from cached raw data
+        const seedPairsData = cachedData.seedPairs
+        const legoPairsData = cachedData.legoPairs
+        const baskets = cachedData.legoBaskets || []
+
+        // Convert v7.7 format translations object to array
+        const translationsObj = seedPairsData.translations || {}
+        const translations = Object.entries(translationsObj).map(([seed_id, [target_phrase, known_phrase]]) => ({
+          seed_id,
+          target_phrase,
+          known_phrase,
+          canonical_seed: null
+        }))
+        translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
+
+        // Convert v7.7 format lego_pairs to flat array
+        const seedsArray = legoPairsData.seeds || []
+        const legos = []
+        for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
+          for (const legoEntry of legoArray) {
+            const [lego_id, type, target_chunk, known_chunk] = legoEntry
+            legos.push({
+              seed_id,
+              lego_id,
+              lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
+              target_chunk,
+              known_chunk
+            })
+          }
+        }
+
+        // Flexible course code parsing
+        const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
+        const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
+        const match = matchStandard || matchBasic
+
+        const course = {
+          course_code: courseCode,
+          source_language: match ? match[2].toUpperCase() : 'UNK',
+          target_language: match ? match[1].toUpperCase() : 'UNK',
+          total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : translations.length,
+          version: cachedData.version,
+          created_at: new Date(cachedData.cachedAt).toISOString(),
+          status: 'phase_3_complete',
+          seed_pairs: translations.length,
+          lego_pairs: legos.length,
+          lego_baskets: baskets.length,
+          phases_completed: ['1', '3'],
+          target_language_name: match ? match[1] : 'unknown',
+          known_language_name: match ? match[2] : 'unknown'
+        }
+
+        return {
+          course,
+          translations,
+          legos,
+          lego_breakdowns: seedsArray,
+          baskets
+        }
+      }
+
       try {
         // Try API server first
         const response = await api.get(`/api/courses/${courseCode}`)
-        return response.data
+        const data = response.data
+
+        // Cache the API response
+        if (data.course && data.course.version) {
+          // Convert translations array back to v7.7 format for caching
+          const translationsObj = {}
+          if (data.translations) {
+            for (const trans of data.translations) {
+              translationsObj[trans.seed_id] = [trans.target_phrase, trans.known_phrase]
+            }
+          }
+
+          await setCachedCourse(courseCode, data.course.version, {
+            seedPairs: { translations: translationsObj },
+            legoPairs: { seeds: data.lego_breakdowns || [] },
+            legoBaskets: data.baskets || []
+          }).catch(err => {
+            console.warn('[API] Failed to cache course data:', err)
+          })
+        }
+
+        return data
       } catch (err) {
         // Fallback to static files if API unavailable
         console.log(`[API] Server unavailable, using static files for ${courseCode}`)
@@ -213,13 +304,24 @@ export default {
             known_language_name: match ? match[2] : 'unknown'
           }
 
-          return {
+          const result = {
             course,
             translations,
             legos,
             lego_breakdowns: seedsArray, // Raw v7.7 format for visualizer
             baskets: []
           }
+
+          // Cache the static file data
+          await setCachedCourse(courseCode, course.version, {
+            seedPairs: seedPairsData,
+            legoPairs: legoPairsData,
+            legoBaskets: []
+          }).catch(err => {
+            console.warn('[API] Failed to cache course data:', err)
+          })
+
+          return result
         }
 
         throw err
@@ -284,6 +386,8 @@ export default {
 
     async updateTranslation(courseCode, uuid, data) {
       const response = await api.put(`/api/courses/${courseCode}/translations/${uuid}`, data)
+      // Clear cache since translation data changed
+      await clearCourseCache(courseCode)
       return response.data
     },
 
@@ -294,6 +398,8 @@ export default {
 
     async compile(courseCode) {
       const response = await api.post(`/api/courses/${courseCode}/compile`)
+      // Clear cache since course was recompiled
+      await clearCourseCache(courseCode)
       return response.data
     },
 
@@ -301,6 +407,11 @@ export default {
       const response = await api.post(`/api/courses/${courseCode}/deploy`, {
         courseJSON
       })
+      return response.data
+    },
+
+    async getBasket(courseCode, seedId) {
+      const response = await api.get(`/api/courses/${courseCode}/baskets/${seedId}`)
       return response.data
     }
   },
@@ -338,6 +449,8 @@ export default {
       const response = await api.post(`/api/courses/${courseCode}/seeds/${seedId}/accept`, {
         attemptId
       })
+      // Clear cache since LEGO data changed
+      await clearCourseCache(courseCode)
       return response.data
     },
 
@@ -354,6 +467,8 @@ export default {
       const response = await api.post(`/api/courses/${courseCode}/seeds/regenerate`, {
         seed_ids: [seedId]
       })
+      // Clear cache since LEGO data will be regenerated
+      await clearCourseCache(courseCode)
       return response.data
     },
 
@@ -362,6 +477,8 @@ export default {
       const response = await api.post(`/api/courses/${courseCode}/seeds/regenerate`, {
         seed_ids: seedIds
       })
+      // Clear cache since LEGO data will be regenerated
+      await clearCourseCache(courseCode)
       return response.data
     },
 
@@ -370,12 +487,16 @@ export default {
       const response = await api.post(`/api/courses/${courseCode}/seeds/bulk-accept`, {
         seedIds
       })
+      // Clear cache since LEGO data changed
+      await clearCourseCache(courseCode)
       return response.data
     },
 
     // Remove SEED from corpus
     async removeSeed(courseCode, seedId) {
       const response = await api.delete(`/api/courses/${courseCode}/seeds/${seedId}`)
+      // Clear cache since seed was removed
+      await clearCourseCache(courseCode)
       return response.data
     },
 

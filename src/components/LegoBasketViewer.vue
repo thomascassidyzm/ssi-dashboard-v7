@@ -4,37 +4,33 @@
     <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
       <h2 class="text-2xl font-bold text-emerald-400 mb-4">LEGO Practice Basket Viewer</h2>
 
-      <!-- Source Toggle -->
+      <!-- Course Selector -->
       <div class="mb-4">
-        <label class="text-sm font-medium text-slate-300 mb-2 block">Basket Source:</label>
-        <div class="flex gap-2">
-          <button
-            @click="basketSource = 'public'"
-            :class="[
-              'px-4 py-2 rounded font-medium transition-colors text-sm',
-              basketSource === 'public'
-                ? 'bg-blue-600 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
-            ]"
+        <label class="text-sm font-medium text-slate-300 mb-2 block">Select Course:</label>
+        <select
+          v-model="selectedCourseCode"
+          @change="onCourseChange"
+          class="w-full px-4 py-2 bg-slate-700 text-slate-200 border border-slate-600 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+          <option value="">-- Select a course --</option>
+          <option
+            v-for="course in availableCourses"
+            :key="course.course_code"
+            :value="course.course_code"
           >
-            Hand-Crafted (public/baskets)
-          </button>
-          <button
-            @click="basketSource = 'generated'"
-            :class="[
-              'px-4 py-2 rounded font-medium transition-colors text-sm',
-              basketSource === 'generated'
-                ? 'bg-emerald-600 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
-            ]"
-          >
-            AI-Generated ✨ (generated_baskets)
-          </button>
-        </div>
+            {{ course.target_language }} for {{ course.source_language }} ({{ course.course_code }})
+          </option>
+        </select>
+      </div>
+
+      <!-- Course Context Header -->
+      <div v-if="currentCourse" class="mb-4 pb-4 border-b border-slate-700">
+        <h2 class="text-xl font-semibold text-slate-200">{{ currentCourse.target_language }} for {{ currentCourse.source_language }}</h2>
+        <h3 v-if="currentSeed" class="text-md text-slate-400 mt-1">Viewing: {{ currentSeed }}</h3>
       </div>
 
       <!-- Seed Selector -->
-      <div class="mb-4">
+      <div v-if="selectedCourseCode" class="mb-4">
         <label class="text-sm font-medium text-slate-300 mb-2 block">Select Seed:</label>
         <div class="flex gap-2 flex-wrap">
           <button
@@ -43,7 +39,7 @@
             @click="loadSeed(n)"
             :class="[
               'px-3 py-2 rounded font-medium transition-colors text-sm',
-              currentSeed === n
+              currentSeed === `S${String(n).padStart(4, '0')}`
                 ? 'bg-emerald-600 text-white'
                 : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
             ]"
@@ -232,6 +228,8 @@
 </template>
 
 <script>
+import api from '@/services/api'
+
 export default {
   name: 'LegoBasketViewer',
   data() {
@@ -240,17 +238,26 @@ export default {
       basketData: null,
       loading: false,
       error: null,
-      basketSource: 'generated' // 'public' or 'generated'
+      availableCourses: [],
+      selectedCourseCode: '',
+      currentCourse: null,
+      courseData: null
     }
   },
   computed: {
     availableSeeds() {
-      // For generated baskets, we have S0011, S0021, S0031
-      // For public baskets, we have S0001-S0020
-      if (this.basketSource === 'generated') {
-        return [11, 21, 31]
+      // Get available seeds from the loaded course data
+      if (!this.courseData || !this.courseData.translations) {
+        return []
       }
-      return Array.from({ length: 50 }, (_, i) => i + 1)
+
+      // Extract seed numbers from translations
+      const seedNumbers = this.courseData.translations.map(t => {
+        const match = t.seed_id.match(/S(\d+)/)
+        return match ? parseInt(match[1]) : 0
+      }).filter(n => n > 0).sort((a, b) => a - b)
+
+      return seedNumbers
     },
     legoBaskets() {
       if (!this.basketData) return {}
@@ -300,15 +307,9 @@ export default {
       }
     }
   },
-  watch: {
-    basketSource() {
-      // When source changes, load the first available seed
-      this.loadSeed(this.availableSeeds[0])
-    }
-  },
-  mounted() {
-    // Load first available seed by default
-    this.loadSeed(this.availableSeeds[0])
+  async mounted() {
+    // Load available courses
+    await this.loadCourses()
   },
   methods: {
     hasConjunction(spanish) {
@@ -317,29 +318,63 @@ export default {
              s.includes(' y ') || s.includes(' porque ') ||
              s.includes(' o ') || s.includes(' cuando ')
     },
-    async loadSeed(seedNum) {
-      this.currentSeed = seedNum
-      this.loading = true
-      this.error = null
-
-      const seedId = `s${String(seedNum).padStart(4, '0')}`
-
-      // Determine file path based on source
-      let filePath
-      if (this.basketSource === 'generated') {
-        filePath = `/generated_baskets/lego_baskets_${seedId}_conversational.json`
-      } else {
-        filePath = `/baskets/lego_baskets_${seedId}.json`
+    async loadCourses() {
+      try {
+        const response = await api.course.list()
+        this.availableCourses = response.courses || []
+      } catch (err) {
+        console.error('Error loading courses:', err)
+        this.error = 'Failed to load courses'
+      }
+    },
+    async onCourseChange() {
+      if (!this.selectedCourseCode) {
+        this.currentCourse = null
+        this.courseData = null
+        this.currentSeed = null
+        this.basketData = null
+        return
       }
 
       try {
-        const response = await fetch(filePath)
-        if (!response.ok) {
-          throw new Error(`Failed to load ${seedId}: ${response.statusText}`)
+        // Find the selected course
+        this.currentCourse = this.availableCourses.find(
+          c => c.course_code === this.selectedCourseCode
+        )
+
+        // Load course data to get available seeds
+        this.courseData = await api.course.get(this.selectedCourseCode)
+
+        // Reset current seed
+        this.currentSeed = null
+        this.basketData = null
+
+        // Optionally auto-load first seed
+        if (this.availableSeeds.length > 0) {
+          await this.loadSeed(this.availableSeeds[0])
         }
-        this.basketData = await response.json()
       } catch (err) {
-        this.error = err.message
+        console.error('Error loading course:', err)
+        this.error = `Failed to load course: ${err.message}`
+      }
+    },
+    async loadSeed(seedNum) {
+      if (!this.selectedCourseCode) {
+        this.error = 'Please select a course first'
+        return
+      }
+
+      this.currentSeed = `S${String(seedNum).padStart(4, '0')}`
+      this.loading = true
+      this.error = null
+
+      const seedId = `S${String(seedNum).padStart(4, '0')}`
+
+      try {
+        const response = await api.course.getBasket(this.selectedCourseCode, seedId)
+        this.basketData = response
+      } catch (err) {
+        this.error = err.message || `Failed to load basket for ${seedId}`
         this.basketData = null
       } finally {
         this.loading = false

@@ -3059,6 +3059,488 @@ app.post('/api/courses/:code/baskets/generate', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/:courseCode/baskets
+ * Returns all baskets for a course
+ */
+app.get('/api/courses/:courseCode/baskets', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const basketsPath = path.join(CONFIG.VFS_ROOT, courseCode, 'lego_baskets.json');
+
+    // Check if baskets file exists
+    if (!await fs.pathExists(basketsPath)) {
+      return res.status(404).json({
+        error: 'Baskets not found for this course',
+        courseCode
+      });
+    }
+
+    // Load baskets
+    const baskets = await fs.readJson(basketsPath);
+
+    // Validate JSON structure
+    if (typeof baskets !== 'object' || baskets === null) {
+      return res.status(500).json({
+        error: 'Invalid baskets file format',
+        courseCode
+      });
+    }
+
+    // Calculate statistics
+    const seedIds = Object.keys(baskets);
+    const totalBaskets = seedIds.length;
+    let totalEPhrases = 0;
+    let totalDPhrases = 0;
+
+    seedIds.forEach(seedId => {
+      const basket = baskets[seedId];
+      if (basket.e && Array.isArray(basket.e)) {
+        totalEPhrases += basket.e.length;
+      }
+      if (basket.d && typeof basket.d === 'object') {
+        Object.values(basket.d).forEach(phrases => {
+          if (Array.isArray(phrases)) {
+            totalDPhrases += phrases.length;
+          }
+        });
+      }
+    });
+
+    res.json({
+      courseCode,
+      baskets,
+      stats: {
+        totalBaskets,
+        totalEPhrases,
+        totalDPhrases,
+        totalPhrases: totalEPhrases + totalDPhrases
+      }
+    });
+  } catch (err) {
+    console.error('[API] Error loading baskets:', err);
+    res.status(500).json({
+      error: 'Failed to load baskets',
+      details: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/baskets/:seedId
+ * Returns specific basket
+ */
+app.get('/api/courses/:courseCode/baskets/:seedId', async (req, res) => {
+  try {
+    const { courseCode, seedId } = req.params;
+    const basketsPath = path.join(CONFIG.VFS_ROOT, courseCode, 'lego_baskets.json');
+
+    // Check if baskets file exists
+    if (!await fs.pathExists(basketsPath)) {
+      return res.status(404).json({
+        error: 'Baskets not found for this course',
+        courseCode
+      });
+    }
+
+    // Load baskets
+    const baskets = await fs.readJson(basketsPath);
+
+    // Find specific basket
+    const basket = baskets[seedId];
+    if (!basket) {
+      return res.status(404).json({
+        error: `Basket not found for seed ${seedId}`,
+        courseCode,
+        seedId
+      });
+    }
+
+    // Calculate basket statistics
+    const ePhraseCount = basket.e ? basket.e.length : 0;
+    let dPhraseCount = 0;
+    const difficultyLevels = {};
+
+    if (basket.d && typeof basket.d === 'object') {
+      Object.entries(basket.d).forEach(([level, phrases]) => {
+        if (Array.isArray(phrases)) {
+          difficultyLevels[level] = phrases.length;
+          dPhraseCount += phrases.length;
+        }
+      });
+    }
+
+    res.json({
+      courseCode,
+      seedId,
+      basket,
+      stats: {
+        ePhraseCount,
+        dPhraseCount,
+        totalPhrases: ePhraseCount + dPhraseCount,
+        difficultyLevels
+      }
+    });
+  } catch (err) {
+    console.error('[API] Error loading basket:', err);
+    res.status(500).json({
+      error: 'Failed to load basket',
+      details: err.message
+    });
+  }
+});
+
+/**
+ * PUT /api/courses/:courseCode/baskets/:seedId
+ * Update specific basket (with validation)
+ */
+app.put('/api/courses/:courseCode/baskets/:seedId', async (req, res) => {
+  try {
+    const { courseCode, seedId } = req.params;
+    const { lego, e, d } = req.body;
+    const basketsPath = path.join(CONFIG.VFS_ROOT, courseCode, 'lego_baskets.json');
+
+    console.log(`[API] Updating basket ${seedId} in ${courseCode}`);
+
+    // Check if baskets file exists
+    if (!await fs.pathExists(basketsPath)) {
+      return res.status(404).json({
+        error: 'Baskets not found for this course',
+        courseCode
+      });
+    }
+
+    // Load baskets
+    const baskets = await fs.readJson(basketsPath);
+
+    // Check if basket exists
+    if (!baskets[seedId]) {
+      return res.status(404).json({
+        error: `Basket not found for seed ${seedId}`,
+        courseCode,
+        seedId
+      });
+    }
+
+    // Validate basket structure
+    if (lego && (!Array.isArray(lego) || lego.length !== 2)) {
+      return res.status(400).json({
+        error: 'Invalid lego format - must be array with 2 elements [target, known]'
+      });
+    }
+
+    if (e && !Array.isArray(e)) {
+      return res.status(400).json({
+        error: 'Invalid e_phrases format - must be array'
+      });
+    }
+
+    if (d && typeof d !== 'object') {
+      return res.status(400).json({
+        error: 'Invalid d_phrases format - must be object'
+      });
+    }
+
+    // Validate e phrases structure
+    if (e) {
+      for (let i = 0; i < e.length; i++) {
+        if (!Array.isArray(e[i]) || e[i].length !== 2) {
+          return res.status(400).json({
+            error: `Invalid e_phrase at index ${i} - must be array with 2 elements [target, known]`
+          });
+        }
+      }
+    }
+
+    // Validate d phrases structure
+    if (d) {
+      for (const [level, phrases] of Object.entries(d)) {
+        if (!Array.isArray(phrases)) {
+          return res.status(400).json({
+            error: `Invalid d_phrases for level ${level} - must be array`
+          });
+        }
+        for (let i = 0; i < phrases.length; i++) {
+          if (!Array.isArray(phrases[i]) || phrases[i].length !== 2) {
+            return res.status(400).json({
+              error: `Invalid d_phrase at level ${level}, index ${i} - must be array with 2 elements [target, known]`
+            });
+          }
+        }
+      }
+    }
+
+    // Update basket
+    baskets[seedId] = {
+      lego: lego || baskets[seedId].lego,
+      e: e !== undefined ? e : baskets[seedId].e,
+      d: d !== undefined ? d : baskets[seedId].d
+    };
+
+    // Write back to file
+    await fs.writeJson(basketsPath, baskets, { spaces: 2 });
+
+    console.log(`[API] Successfully updated basket ${seedId}`);
+
+    res.json({
+      success: true,
+      message: 'Basket updated successfully',
+      courseCode,
+      seedId,
+      basket: baskets[seedId]
+    });
+  } catch (err) {
+    console.error('[API] Error updating basket:', err);
+    res.status(500).json({
+      error: 'Failed to update basket',
+      details: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/baskets/:seedId/flag
+ * Flag basket for review
+ */
+app.post('/api/courses/:courseCode/baskets/:seedId/flag', async (req, res) => {
+  try {
+    const { courseCode, seedId } = req.params;
+    const { reason, flaggedBy } = req.body;
+    const basketsPath = path.join(CONFIG.VFS_ROOT, courseCode, 'lego_baskets.json');
+    const flagsPath = path.join(CONFIG.VFS_ROOT, courseCode, 'basket_flags.json');
+
+    console.log(`[API] Flagging basket ${seedId} in ${courseCode}`);
+
+    // Check if baskets file exists
+    if (!await fs.pathExists(basketsPath)) {
+      return res.status(404).json({
+        error: 'Baskets not found for this course',
+        courseCode
+      });
+    }
+
+    // Load baskets to verify seed exists
+    const baskets = await fs.readJson(basketsPath);
+    if (!baskets[seedId]) {
+      return res.status(404).json({
+        error: `Basket not found for seed ${seedId}`,
+        courseCode,
+        seedId
+      });
+    }
+
+    // Load or create flags file
+    let flags = {};
+    if (await fs.pathExists(flagsPath)) {
+      flags = await fs.readJson(flagsPath);
+    }
+
+    // Add flag
+    flags[seedId] = {
+      reason: reason || 'No reason provided',
+      flaggedBy: flaggedBy || 'unknown',
+      flaggedAt: new Date().toISOString(),
+      status: 'flagged'
+    };
+
+    // Write flags file
+    await fs.writeJson(flagsPath, flags, { spaces: 2 });
+
+    console.log(`[API] Successfully flagged basket ${seedId}`);
+
+    res.json({
+      success: true,
+      message: 'Basket flagged for review',
+      courseCode,
+      seedId,
+      flag: flags[seedId]
+    });
+  } catch (err) {
+    console.error('[API] Error flagging basket:', err);
+    res.status(500).json({
+      error: 'Failed to flag basket',
+      details: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/baskets/:seedId/regenerate
+ * Trigger basket regeneration
+ */
+app.post('/api/courses/:courseCode/baskets/:seedId/regenerate', async (req, res) => {
+  try {
+    const { courseCode, seedId } = req.params;
+    const basketsPath = path.join(CONFIG.VFS_ROOT, courseCode, 'lego_baskets.json');
+
+    console.log(`[API] Regeneration requested for basket ${seedId} in ${courseCode}`);
+
+    // Check if baskets file exists
+    if (!await fs.pathExists(basketsPath)) {
+      return res.status(404).json({
+        error: 'Baskets not found for this course',
+        courseCode
+      });
+    }
+
+    // Load baskets to verify seed exists
+    const baskets = await fs.readJson(basketsPath);
+    if (!baskets[seedId]) {
+      return res.status(404).json({
+        error: `Basket not found for seed ${seedId}`,
+        courseCode,
+        seedId
+      });
+    }
+
+    // Create regeneration job
+    const jobId = `regen_${courseCode}_${seedId}_${Date.now()}`;
+    const job = {
+      jobId,
+      courseCode,
+      seedId,
+      type: 'basket_regeneration',
+      status: 'queued',
+      createdAt: new Date().toISOString()
+    };
+
+    // Store in regeneration jobs
+    if (!STATE.regenerationJobs) {
+      STATE.regenerationJobs = new Map();
+    }
+    STATE.regenerationJobs.set(jobId, job);
+
+    console.log(`[API] Created regeneration job ${jobId} for basket ${seedId}`);
+
+    res.json({
+      success: true,
+      message: 'Basket regeneration queued',
+      courseCode,
+      seedId,
+      jobId,
+      status: 'queued',
+      note: 'Regeneration will be processed by the basket generation agent'
+    });
+  } catch (err) {
+    console.error('[API] Error creating regeneration job:', err);
+    res.status(500).json({
+      error: 'Failed to queue basket regeneration',
+      details: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/baskets/validate
+ * Validate basket without saving
+ */
+app.post('/api/courses/:courseCode/baskets/validate', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const { seedId, lego, e, d } = req.body;
+
+    console.log(`[API] Validating basket data for ${seedId || 'unknown'} in ${courseCode}`);
+
+    const errors = [];
+    const warnings = [];
+
+    // Validate seedId
+    if (!seedId) {
+      errors.push('Missing seedId');
+    } else if (!/^S\d{4}L\d{2}$/.test(seedId)) {
+      warnings.push('SeedId does not match expected format S####L##');
+    }
+
+    // Validate lego
+    if (!lego) {
+      errors.push('Missing lego field');
+    } else if (!Array.isArray(lego)) {
+      errors.push('lego must be an array');
+    } else if (lego.length !== 2) {
+      errors.push('lego must have exactly 2 elements [target, known]');
+    } else {
+      if (!lego[0] || typeof lego[0] !== 'string') {
+        errors.push('lego[0] (target) must be a non-empty string');
+      }
+      if (!lego[1] || typeof lego[1] !== 'string') {
+        errors.push('lego[1] (known) must be a non-empty string');
+      }
+    }
+
+    // Validate e phrases
+    if (e !== undefined) {
+      if (!Array.isArray(e)) {
+        errors.push('e_phrases must be an array');
+      } else {
+        e.forEach((phrase, index) => {
+          if (!Array.isArray(phrase)) {
+            errors.push(`e_phrase at index ${index} must be an array`);
+          } else if (phrase.length !== 2) {
+            errors.push(`e_phrase at index ${index} must have exactly 2 elements [target, known]`);
+          } else {
+            if (!phrase[0] || typeof phrase[0] !== 'string') {
+              errors.push(`e_phrase at index ${index}[0] (target) must be a non-empty string`);
+            }
+            if (!phrase[1] || typeof phrase[1] !== 'string') {
+              errors.push(`e_phrase at index ${index}[1] (known) must be a non-empty string`);
+            }
+          }
+        });
+      }
+    }
+
+    // Validate d phrases
+    if (d !== undefined) {
+      if (typeof d !== 'object' || d === null) {
+        errors.push('d_phrases must be an object');
+      } else {
+        Object.entries(d).forEach(([level, phrases]) => {
+          if (!/^\d+$/.test(level)) {
+            warnings.push(`d_phrases level "${level}" is not a number`);
+          }
+          if (!Array.isArray(phrases)) {
+            errors.push(`d_phrases at level ${level} must be an array`);
+          } else {
+            phrases.forEach((phrase, index) => {
+              if (!Array.isArray(phrase)) {
+                errors.push(`d_phrase at level ${level}, index ${index} must be an array`);
+              } else if (phrase.length !== 2) {
+                errors.push(`d_phrase at level ${level}, index ${index} must have exactly 2 elements [target, known]`);
+              } else {
+                if (!phrase[0] || typeof phrase[0] !== 'string') {
+                  errors.push(`d_phrase at level ${level}, index ${index}[0] (target) must be a non-empty string`);
+                }
+                if (!phrase[1] || typeof phrase[1] !== 'string') {
+                  errors.push(`d_phrase at level ${level}, index ${index}[1] (known) must be a non-empty string`);
+                }
+              }
+            });
+          }
+        });
+      }
+    }
+
+    const isValid = errors.length === 0;
+
+    res.json({
+      valid: isValid,
+      errors,
+      warnings,
+      courseCode,
+      seedId: seedId || null,
+      message: isValid
+        ? 'Basket structure is valid'
+        : `Basket validation failed with ${errors.length} error(s)`
+    });
+  } catch (err) {
+    console.error('[API] Error validating basket:', err);
+    res.status(500).json({
+      error: 'Failed to validate basket',
+      details: err.message
+    });
+  }
+});
+
+/**
  * GET /api/courses
  * List all available courses
  *
