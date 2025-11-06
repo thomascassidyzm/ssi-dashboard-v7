@@ -434,7 +434,8 @@ export default {
 
       try {
         const response = await api.course.getBasket(this.selectedCourseCode, seedId)
-        this.basketData = response
+        // API returns {basket, stats, ...} but fallback returns basket directly
+        this.basketData = response.basket || response
       } catch (err) {
         this.error = err.message || `Failed to load basket for ${seedId}`
         this.basketData = null
