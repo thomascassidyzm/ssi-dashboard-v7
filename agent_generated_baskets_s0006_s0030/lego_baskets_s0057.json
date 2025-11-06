@@ -1,0 +1,231 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "seed": "S0057",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I can't remember how to say what I wanted to say.",
+    "target": "No puedo recordar cómo decir lo que quería decir."
+  },
+  "patterns_introduced": "P_NEW_RELATIVE",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10",
+    "P11",
+    "P12"
+  ],
+  "cumulative_legos": 167,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:24:43.081401Z",
+    "curated_by": "Claude Code Agent - Phase 5 v3.0 GATE-validated generation",
+    "validation_notes": [
+      "100% GATE compliance validated - all Spanish words from S0001-S0056 LEGOs only",
+      "Whitelist size: 185 words from S0001-S0056",
+      "Distribution validated: 2 short, 2 quite short, 2 longer, 4 long per LEGO",
+      "Zero GATE violations in final baskets",
+      "Full seed sentence achievable: No puedo recordar cómo decir lo que quería decir."
+    ]
+  },
+  "S0057L01": {
+    "lego": [
+      "I can't",
+      "no puedo"
+    ],
+    "type": "M",
+    "molecular_components": [
+      "no",
+      "puedo"
+    ],
+    "available_legos": 165,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12"
+    ],
+    "practice_phrases": [
+      [
+        "I can't",
+        "no puedo",
+        null,
+        1
+      ],
+      [
+        "I can't speak",
+        "no puedo hablar",
+        null,
+        2
+      ],
+      [
+        "I can't speak Spanish",
+        "no puedo hablar español",
+        null,
+        3
+      ],
+      [
+        "I can't remember how",
+        "no puedo recordar cómo",
+        null,
+        3
+      ],
+      [
+        "I can't remember how to say",
+        "no puedo recordar cómo decir",
+        null,
+        4
+      ],
+      [
+        "I can't speak with you now",
+        "no puedo hablar contigo ahora",
+        null,
+        4
+      ],
+      [
+        "I can't remember how to do interesting things with you",
+        "no puedo recordar cómo hacer cosas interesantes contigo",
+        null,
+        6
+      ],
+      [
+        "I can't speak Spanish with you when I'm tired",
+        "no puedo hablar español contigo cuando estoy cansado",
+        null,
+        7
+      ],
+      [
+        "I can't write a letter to my friends now",
+        "no puedo escribir una carta a mis amigos ahora",
+        null,
+        8
+      ],
+      [
+        "I can't finish what I wanted to say later",
+        "no puedo terminar lo que quería decir después",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "null",
+    "gate_compliance": "STRICT - All words from S0001-S0056 LEGOs only"
+  },
+  "S0057L02": {
+    "lego": [
+      "what I wanted to say",
+      "lo que quería decir"
+    ],
+    "type": "M",
+    "molecular_components": [
+      "lo que",
+      "quería",
+      "decir"
+    ],
+    "available_legos": 166,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12"
+    ],
+    "practice_phrases": [
+      [
+        "what I wanted to say",
+        "lo que quería decir",
+        null,
+        1
+      ],
+      [
+        "what I wanted to learn",
+        "lo que quería aprender",
+        null,
+        2
+      ],
+      [
+        "I can't remember what I wanted to say",
+        "no puedo recordar lo que quería decir",
+        null,
+        3
+      ],
+      [
+        "I wanted to say a few words",
+        "quería decir unas pocas palabras",
+        "P01",
+        3
+      ],
+      [
+        "so I can say what I wanted to say",
+        "para poder decir lo que quería decir",
+        "P12",
+        4
+      ],
+      [
+        "I wanted to finish what I wanted to say",
+        "quería terminar lo que quería decir",
+        "P01",
+        4
+      ],
+      [
+        "I can't remember how to say what I wanted to say later",
+        "no puedo recordar cómo decir lo que quería decir después",
+        null,
+        6
+      ],
+      [
+        "so I can remember how to say what I wanted to say",
+        "para poder recordar cómo decir lo que quería decir",
+        "P12",
+        6
+      ],
+      [
+        "I'm trying to remember what I wanted to say with my friends",
+        "estoy intentando recordar lo que quería decir con mis amigos",
+        "P02",
+        6
+      ],
+      [
+        "I wanted to write what I wanted to say in a letter",
+        "quería escribir lo que quería decir en una carta",
+        "P01",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P02, P12, null",
+    "gate_compliance": "STRICT - All words from S0001-S0057L01 LEGOs only",
+    "full_seed_included": "YES - Full seed achievable: No puedo recordar cómo decir lo que quería decir."
+  }
+}

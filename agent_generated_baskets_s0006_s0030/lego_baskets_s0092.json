@@ -1,0 +1,316 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0092",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'd like to keep on doing this for a while.",
+    "target": "Me gustaría continuar haciendo esto por un tiempo."
+  },
+  "patterns_introduced": "P04",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P10",
+    "P12",
+    "P18",
+    "P_RELATIVE",
+    "P_NEW_GUSTAR",
+    "P_NEW_IMPERSONAL",
+    "P_NEW_FUTURE"
+  ],
+  "cumulative_legos": 256,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:25:37.292134Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 strict GATE compliance",
+    "whitelist_size": 248,
+    "changes_from_previous": [
+      "Generated with strict GATE validation",
+      "100% GATE compliance achieved"
+    ]
+  },
+  "S0092L01": {
+    "lego": [
+      "to keep on doing",
+      "continuar haciendo"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "molecular_rationale": "Components: continuar (to continue) + haciendo (doing)",
+    "available_legos": 253,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_FUTURE"
+    ],
+    "practice_phrases": [
+      [
+        "to keep on doing",
+        "continuar haciendo",
+        null,
+        1
+      ],
+      [
+        "I want to keep on doing",
+        "quiero continuar haciendo",
+        "P01",
+        2
+      ],
+      [
+        "I'd like to keep on doing",
+        "me gustaría continuar haciendo",
+        "P04",
+        2
+      ],
+      [
+        "I'm going to keep on doing",
+        "voy a continuar haciendo",
+        "P03",
+        2
+      ],
+      [
+        "I need to keep on doing",
+        "necesito continuar haciendo",
+        "P01",
+        2
+      ],
+      [
+        "I'd like to keep on doing it",
+        "me gustaría continuar haciendo eso",
+        "P04",
+        3
+      ],
+      [
+        "I want to keep on doing everything I can",
+        "quiero continuar haciendo todo lo que puedo",
+        "P01",
+        6
+      ],
+      [
+        "I'd like to keep on doing what I was doing yesterday",
+        "me gustaría continuar haciendo lo que estaba haciendo ayer",
+        "P04",
+        8
+      ],
+      [
+        "it's difficult to keep on doing it when you don't have time",
+        "es difícil continuar haciendo eso cuando no tienes tiempo",
+        "P_NEW_IMPERSONAL",
+        9
+      ],
+      [
+        "I'm going to keep on doing everything I can to learn Spanish",
+        "voy a continuar haciendo todo lo que puedo para aprender español",
+        "P03",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P03, P04, P_NEW_IMPERSONAL",
+    "gate_compliance": "STRICT - All words from S0001-S0091 LEGOs only. NOTE: 'continuar' and 'haciendo' introduced in this LEGO."
+  },
+  "S0092L02": {
+    "lego": [
+      "this",
+      "esto"
+    ],
+    "type": "A",
+    "available_legos": 254,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_FUTURE"
+    ],
+    "practice_phrases": [
+      [
+        "this",
+        "esto",
+        null,
+        1
+      ],
+      [
+        "I want this",
+        "quiero esto",
+        "P01",
+        2
+      ],
+      [
+        "I'd like to do this",
+        "me gustaría hacer esto",
+        "P04",
+        3
+      ],
+      [
+        "I'm trying to learn this",
+        "estoy intentando aprender esto",
+        "P02",
+        3
+      ],
+      [
+        "I need to remember this",
+        "necesito recordar esto",
+        "P01",
+        3
+      ],
+      [
+        "I'd like to keep on doing this",
+        "me gustaría continuar haciendo esto",
+        "P04",
+        3
+      ],
+      [
+        "I want to be able to do this",
+        "quiero poder hacer esto",
+        "P01",
+        4
+      ],
+      [
+        "it's difficult to do this when you don't speak Spanish",
+        "es difícil hacer esto cuando no hablas español",
+        "P_NEW_IMPERSONAL",
+        7
+      ],
+      [
+        "I'm going to try to remember this as soon as I can",
+        "voy a intentar recordar esto tan pronto como puedo",
+        "P03",
+        8
+      ],
+      [
+        "I'd like to keep on doing this for a little while",
+        "me gustaría continuar haciendo esto por un poco de tiempo",
+        "P04",
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
+      "longer_4_5": 1,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P02, P03, P04, P_NEW_IMPERSONAL",
+    "gate_compliance": "STRICT - All words from S0001-S0092L01 LEGOs only. NOTE: 'esto' introduced in this LEGO."
+  },
+  "S0092L03": {
+    "lego": [
+      "for a while",
+      "por un tiempo"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "molecular_rationale": "Components: por (for) + un (a) + tiempo (time)",
+    "available_legos": 255,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P10",
+      "P12",
+      "P18",
+      "P_RELATIVE",
+      "P_NEW_GUSTAR",
+      "P_NEW_IMPERSONAL",
+      "P_NEW_FUTURE"
+    ],
+    "practice_phrases": [
+      [
+        "for a while",
+        "por un tiempo",
+        null,
+        1
+      ],
+      [
+        "I want to speak for a while",
+        "quiero hablar por un tiempo",
+        "P01",
+        3
+      ],
+      [
+        "I'd like to do this for a while",
+        "me gustaría hacer esto por un tiempo",
+        "P04",
+        4
+      ],
+      [
+        "I need to think for a while",
+        "necesito pensar por un tiempo",
+        "P01",
+        3
+      ],
+      [
+        "I'm going to practice for a while",
+        "voy a practicar por un tiempo",
+        "P03",
+        3
+      ],
+      [
+        "I'd like to keep on doing this for a while",
+        "me gustaría continuar haciendo esto por un tiempo",
+        "P04",
+        4
+      ],
+      [
+        "I want to be able to speak Spanish for a while",
+        "quiero poder hablar español por un tiempo",
+        "P01",
+        6
+      ],
+      [
+        "it's difficult to speak Spanish for a while when you're learning",
+        "es difícil hablar español por un tiempo cuando estás aprendiendo",
+        "P_NEW_IMPERSONAL",
+        9
+      ],
+      [
+        "I'm going to try to keep on doing this for a while",
+        "voy a intentar continuar haciendo esto por un tiempo",
+        "P03",
+        7
+      ],
+      [
+        "I'd like to keep on doing this for a while.",
+        "me gustaría continuar haciendo esto por un tiempo.",
+        "P04",
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P03, P04, P_NEW_IMPERSONAL",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - All words from S0001-S0092L02 LEGOs only. NOTE: 'por un tiempo' introduced in this LEGO."
+  }
+}

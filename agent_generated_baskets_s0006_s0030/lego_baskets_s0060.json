@@ -1,0 +1,232 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "seed": "S0060",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I don't know how to say enough different words yet.",
+    "target": "Todavía no sé cómo decir suficientes palabras diferentes."
+  },
+  "patterns_introduced": "P12",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10",
+    "P11",
+    "P12"
+  ],
+  "cumulative_legos": 175,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:36:27.706964Z",
+    "curated_by": "Claude Code Agent - Phase 5 v3.0 GATE-validated generation",
+    "validation_notes": [
+      "100% GATE compliance validated - all Spanish words from S0001-S0059 LEGOs only",
+      "Whitelist size: 190 words from S0001-S0059",
+      "Distribution: L01 perfect 2/2/2/4, L02 has 2/2/3/3 (includes full seed sentence)",
+      "Zero GATE violations in final baskets",
+      "Full seed sentence included: Todavía no sé cómo decir suficientes palabras diferentes."
+    ]
+  },
+  "S0060L01": {
+    "lego": [
+      "I don't know yet",
+      "todavía no sé"
+    ],
+    "type": "M",
+    "molecular_components": [
+      "todavía",
+      "no",
+      "sé"
+    ],
+    "available_legos": 173,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12"
+    ],
+    "practice_phrases": [
+      [
+        "I don't know yet",
+        "todavía no sé",
+        null,
+        1
+      ],
+      [
+        "I don't know how",
+        "todavía no sé cómo",
+        null,
+        2
+      ],
+      [
+        "I don't know how to speak",
+        "todavía no sé cómo hablar",
+        null,
+        3
+      ],
+      [
+        "I don't know how to do things",
+        "todavía no sé cómo hacer cosas",
+        null,
+        3
+      ],
+      [
+        "I don't know how to speak Spanish yet",
+        "todavía no sé cómo hablar español",
+        null,
+        4
+      ],
+      [
+        "I don't know how to say a few words",
+        "todavía no sé cómo decir unas pocas palabras",
+        null,
+        5
+      ],
+      [
+        "I don't know how to do what I need to do with you yet",
+        "todavía no sé cómo hacer lo que necesito hacer contigo",
+        null,
+        6
+      ],
+      [
+        "I don't know how to say interesting things with my friends yet",
+        "todavía no sé cómo decir cosas interesantes con mis amigos",
+        null,
+        7
+      ],
+      [
+        "I don't know how to finish what I wanted to say next week",
+        "todavía no sé cómo terminar lo que quería decir la próxima semana",
+        null,
+        7
+      ],
+      [
+        "I don't know how to write a letter when I can't remember yet",
+        "todavía no sé cómo escribir una carta cuando no puedo recordar",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "null",
+    "gate_compliance": "STRICT - All words from S0001-S0059 LEGOs only"
+  },
+  "S0060L02": {
+    "lego": [
+      "enough different words",
+      "suficientes palabras diferentes"
+    ],
+    "type": "M",
+    "molecular_components": [
+      "suficientes",
+      "palabras",
+      "diferentes"
+    ],
+    "available_legos": 174,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12"
+    ],
+    "practice_phrases": [
+      [
+        "enough different words",
+        "suficientes palabras diferentes",
+        null,
+        1
+      ],
+      [
+        "a few different words",
+        "unas pocas palabras diferentes",
+        null,
+        2
+      ],
+      [
+        "I wanted to learn different words",
+        "quería aprender palabras diferentes",
+        "P01",
+        3
+      ],
+      [
+        "when you understand different words",
+        "cuando comprendes palabras diferentes",
+        null,
+        3
+      ],
+      [
+        "I can't remember enough different words",
+        "no puedo recordar suficientes palabras diferentes",
+        null,
+        4
+      ],
+      [
+        "when I need to say different words",
+        "cuando necesito decir palabras diferentes",
+        null,
+        4
+      ],
+      [
+        "it's interesting when you understand enough different words now",
+        "es interesante cuando comprendes suficientes palabras diferentes ahora",
+        null,
+        6
+      ],
+      [
+        "so I can remember enough different words next week",
+        "para poder recordar suficientes palabras diferentes la próxima semana",
+        "P12",
+        7
+      ],
+      [
+        "I wanted to learn enough different words with my friends later",
+        "quería aprender suficientes palabras diferentes con mis amigos después",
+        "P01",
+        7
+      ],
+      [
+        "I don't know how to say enough different words yet.",
+        "todavía no sé cómo decir suficientes palabras diferentes",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P12, null",
+    "gate_compliance": "STRICT - All words from S0001-S0060L01 LEGOs only",
+    "full_seed_included": "YES - phrase 10: Todavía no sé cómo decir suficientes palabras diferentes."
+  }
+}

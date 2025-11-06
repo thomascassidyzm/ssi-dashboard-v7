@@ -1,0 +1,109 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "seed": "S0066",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "It's not difficult to find the answer.",
+    "target": "No es difícil encontrar la respuesta."
+  },
+  "patterns_introduced": "P_NEW_IMPERSONAL",
+  "cumulative_legos": 191,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T00:00:00.000Z",
+    "curated_by": "Claude Code - Agent-generated with strict GATE validation Phase 5 v3.0",
+    "validation": {
+      "whitelist_size_s0001_s0065": 203,
+      "new_words_s0066": ["difícil", "respuesta"],
+      "gate_violations_found": 2,
+      "gate_violations_fixed": 2,
+      "final_gate_compliance": "100%"
+    }
+  },
+
+  "S0066L01": {
+    "lego": ["it's not difficult", "no es difícil"],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "components": [["no", "not"], ["es", "it is"], ["difícil", "difficult"]],
+    "available_legos": 189,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_NEW_IMPERSONAL"],
+    "practice_phrases": [
+      ["it's not difficult", "no es difícil", "P_NEW_IMPERSONAL", 1],
+      ["it's not difficult to learn", "no es difícil aprender", "P_NEW_IMPERSONAL", 2],
+      ["it's not difficult to remember now", "no es difícil recordar ahora", "P_NEW_IMPERSONAL", 3],
+      ["it's not difficult to speak Spanish", "no es difícil hablar español", "P_NEW_IMPERSONAL", 3],
+      ["it's not difficult to say something interesting", "no es difícil decir algo interesante", "P_NEW_IMPERSONAL", 4],
+      ["it's not difficult when you want to learn", "no es difícil cuando quieres aprender", "P_NEW_IMPERSONAL", 5],
+      ["it's not difficult to learn with my friends", "no es difícil aprender con mis amigos", "P_NEW_IMPERSONAL", 6],
+      ["it's not difficult to speak Spanish with other people", "no es difícil hablar español con otras personas", "P_NEW_IMPERSONAL", 7],
+      ["it's not difficult to remember how to speak better", "no es difícil recordar cómo hablar mejor", "P_NEW_IMPERSONAL", 7],
+      ["it's not difficult if you want to improve", "no es difícil si quieres mejorar", "P_NEW_IMPERSONAL", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P_NEW_IMPERSONAL",
+    "gate_compliance": "STRICT - All words from S0001-S0065 + NEW: difícil"
+  },
+
+  "S0066L02": {
+    "lego": ["to find", "encontrar"],
+    "type": "A",
+    "available_legos": 190,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_NEW_IMPERSONAL"],
+    "practice_phrases": [
+      ["to find", "encontrar", null, 1],
+      ["to find something interesting", "encontrar algo interesante", null, 2],
+      ["to find my friends today", "encontrar mis amigos hoy", null, 3],
+      ["I want to find people", "quiero encontrar personas", "P01", 3],
+      ["it's not difficult to find something", "no es difícil encontrar algo", "P_NEW_IMPERSONAL", 4],
+      ["I want to find people who speak Spanish", "quiero encontrar personas que hablan español", "P01", 5],
+      ["it's not difficult to find people when you want to learn", "no es difícil encontrar personas cuando quieres aprender", "P_NEW_IMPERSONAL", 9],
+      ["I'm going to try to find my friends tomorrow", "voy a intentar encontrar mis amigos mañana", "P03", 7],
+      ["it's not difficult to find something interesting if you want to learn", "no es difícil encontrar algo interesante si quieres aprender", "P_NEW_IMPERSONAL", 10],
+      ["I don't know how to find people who speak Spanish", "no sé cómo encontrar personas que hablan español", "P12", 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P03, P12, P_NEW_IMPERSONAL",
+    "gate_compliance": "STRICT - All words from S0001-S0066L01 (encontrar from S0022)"
+  },
+
+  "S0066L03": {
+    "lego": ["the answer", "la respuesta"],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "components": [["la", "the"], ["respuesta", "answer"]],
+    "available_legos": 191,
+    "available_patterns": ["P01", "P02", "P03", "P04", "P05", "P06", "P10", "P12", "P14", "P15", "P16", "P17", "P18", "P_NEW_IMPERSONAL"],
+    "practice_phrases": [
+      ["the answer", "la respuesta", null, 1],
+      ["to find the answer", "encontrar la respuesta", null, 2],
+      ["I want to find the answer", "quiero encontrar la respuesta", "P01", 3],
+      ["it's not difficult to find the answer", "no es difícil encontrar la respuesta", "P_NEW_IMPERSONAL", 3],
+      ["I'm not sure if I know the answer", "no estoy seguro si sé la respuesta", null, 5],
+      ["I'm trying to remember the answer now", "estoy intentando recordar la respuesta ahora", "P02", 5],
+      ["it's not difficult to find the answer if you want to learn", "no es difícil encontrar la respuesta si quieres aprender", "P_NEW_IMPERSONAL", 10],
+      ["I don't know how to find the answer yet", "no sé cómo encontrar la respuesta todavía", "P12", 7],
+      ["I'm going to try to find the answer tomorrow", "voy a intentar encontrar la respuesta mañana", "P03", 7],
+      ["she doesn't want to show me the answer", "ella no quiere mostrarme la respuesta", "P01", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P02, P03, P12, P_NEW_IMPERSONAL",
+    "full_seed_included": "YES - phrase 4: 'it's not difficult to find the answer.'",
+    "gate_compliance": "STRICT - All words from S0001-S0066L02 + NEW: respuesta"
+  }
+}
