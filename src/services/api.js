@@ -79,86 +79,34 @@ export default {
         return response.data
       } catch (err) {
         // Fallback to static files if API unavailable
-        console.log('[API] Server unavailable, using static files')
+        console.log('[API] Server unavailable, using static course manifest')
 
-        // List courses available in public/vfs (8 uploaded to S3, available as fallback)
-        const courseCodes = [
-          // Uploaded to S3 (have seed_pairs.json + lego_pairs.json)
-          'cmn_for_eng',
-          'ita_for_eng_10seeds',
-          'ita_for_eng_668seeds',
-          'spa_for_eng',
-          'spa_for_eng_20seeds',
-          'spa_for_eng_30seeds',  // Phase 3 v5.0.1 format (S0001-S0050)
-          'spa_for_eng_old',
-          'test_for_eng_5seeds'
-        ]
-        const courses = []
+        try {
+          // Use pre-generated manifest (created at build time by generate-course-manifest.js)
+          const manifestRes = await fetch('/vfs/courses-manifest.json')
+          if (manifestRes.ok) {
+            const manifest = await manifestRes.json()
+            console.log(`[API] Loaded ${manifest.courses.length} courses from manifest (generated ${manifest.generated_at})`)
 
-        for (const courseCode of courseCodes) {
-          try {
-            const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
-            const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
+            // Transform manifest format to API format
+            const courses = manifest.courses.map(course => ({
+              course_code: course.course_code,
+              source_language: course.source_language,
+              target_language: course.target_language,
+              total_seeds: course.total_seeds,
+              version: course.format,
+              created_at: new Date().toISOString(),
+              status: 'phase_3_complete',
+              seed_pairs: course.actual_seed_count,
+              lego_pairs: course.lego_count,
+              lego_baskets: course.has_baskets ? 1 : 0,
+              phases_completed: ['1', '3']
+            }))
 
-            if (seedPairsRes.ok && legoPairsRes.ok) {
-              const seedPairsData = await seedPairsRes.json()
-              const legoPairsData = await legoPairsRes.json()
-
-              // Flexible course code parsing:
-              // - xxx_for_yyy_NNseeds (standard)
-              // - xxx_for_yyy_NN (number without "seeds")
-              // - xxx_for_yyy (no seed count)
-              // - xxx_for_yyy_NNseeds_suffix (with additional suffix)
-              const matchStandard = courseCode.match(/^([a-z]{3})_for_([a-z]{3})_?(\d+)?seeds?/)
-              const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
-              const match = matchStandard || matchBasic
-
-              // Count LEGOs - handle both v7.7 and v5.0.1 formats
-              let legoCount = 0
-              const seedsArray = legoPairsData.seeds || []
-
-              // Detect format by checking first seed structure
-              if (seedsArray.length > 0) {
-                const firstSeed = seedsArray[0]
-                if (Array.isArray(firstSeed)) {
-                  // v7.7 format: [seed_id, [t,k], [[lego_id, type, t, k], ...]]
-                  for (const [seedId, seedPair, legos] of seedsArray) {
-                    legoCount += legos.length
-                  }
-                } else if (firstSeed && typeof firstSeed === 'object' && firstSeed.seed_id) {
-                  // v5.0.1 format: {seed_id, seed_pair, legos: [{id, type, target, known, ...}]}
-                  // Count only NEW LEGOs (not referenced ones)
-                  for (const seed of seedsArray) {
-                    const newLegos = seed.legos.filter(l => l.new === true)
-                    legoCount += newLegos.length
-                  }
-                }
-              }
-
-              // Count actual seeds from data
-              const actualSeedCount = Object.keys(seedPairsData.translations || {}).length
-
-              courses.push({
-                course_code: courseCode,
-                source_language: match ? match[2].toUpperCase() : 'UNK',
-                target_language: match ? match[1].toUpperCase() : 'UNK',
-                total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : actualSeedCount,
-                version: '1.0',
-                created_at: new Date().toISOString(),
-                status: 'phase_3_complete',
-                seed_pairs: actualSeedCount,
-                lego_pairs: legoCount,
-                lego_baskets: 0,
-                phases_completed: ['1', '3']
-              })
-            }
-          } catch (staticErr) {
-            // Skip courses that don't have the required files
+            return { courses }
           }
-        }
-
-        if (courses.length > 0) {
-          return { courses }
+        } catch (manifestErr) {
+          console.error('[API] Failed to load course manifest:', manifestErr)
         }
 
         // If both fail, throw the original API error

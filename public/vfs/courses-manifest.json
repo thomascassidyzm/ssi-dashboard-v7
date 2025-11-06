@@ -1,0 +1,125 @@
+{
+  "generated_at": "2025-11-06T02:35:52.523Z",
+  "courses": [
+    {
+      "course_code": "cmn_for_eng",
+      "source_language": "ENG",
+      "target_language": "CMN",
+      "total_seeds": 668,
+      "actual_seed_count": 668,
+      "lego_count": 1346,
+      "format": "v7.7",
+      "has_baskets": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
+        "baskets": false
+      }
+    },
+    {
+      "course_code": "ita_for_eng_10seeds",
+      "source_language": "ENG",
+      "target_language": "ITA",
+      "total_seeds": 10,
+      "actual_seed_count": 10,
+      "lego_count": 63,
+      "format": "v7.7",
+      "has_baskets": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
+        "baskets": false
+      }
+    },
+    {
+      "course_code": "ita_for_eng_668seeds",
+      "source_language": "ENG",
+      "target_language": "ITA",
+      "total_seeds": 668,
+      "actual_seed_count": 668,
+      "lego_count": 668,
+      "format": "v7.7",
+      "has_baskets": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
+        "baskets": false
+      }
+    },
+    {
+      "course_code": "spa_for_eng",
+      "source_language": "ENG",
+      "target_language": "SPA",
+      "total_seeds": 668,
+      "actual_seed_count": 668,
+      "lego_count": 2537,
+      "format": "v7.7",
+      "has_baskets": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
+        "baskets": false
+      }
+    },
+    {
+      "course_code": "spa_for_eng_20seeds",
+      "source_language": "ENG",
+      "target_language": "SPA",
+      "total_seeds": 20,
+      "actual_seed_count": 0,
+      "lego_count": 0,
+      "format": "unknown",
+      "has_baskets": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
+        "baskets": false
+      }
+    },
+    {
+      "course_code": "spa_for_eng_30seeds",
+      "source_language": "ENG",
+      "target_language": "SPA",
+      "total_seeds": 30,
+      "actual_seed_count": 50,
+      "lego_count": 145,
+      "format": "5.0.1",
+      "has_baskets": true,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
+        "baskets": true
+      }
+    },
+    {
+      "course_code": "spa_for_eng_old",
+      "source_language": "ENG",
+      "target_language": "SPA",
+      "total_seeds": 668,
+      "actual_seed_count": 668,
+      "lego_count": 2838,
+      "format": "v7.7",
+      "has_baskets": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
+        "baskets": false
+      }
+    },
+    {
+      "course_code": "test_for_eng_5seeds",
+      "source_language": "UNK",
+      "target_language": "UNK",
+      "total_seeds": 5,
+      "actual_seed_count": 5,
+      "lego_count": 17,
+      "format": "v7.7",
+      "has_baskets": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
+        "baskets": false
+      }
+    }
+  ]
+}
