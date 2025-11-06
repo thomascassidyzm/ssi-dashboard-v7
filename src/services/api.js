@@ -447,6 +447,11 @@ export default {
 
         throw err
       }
+    },
+
+    async saveBasket(courseCode, seedId, basketData) {
+      const response = await api.put(`/api/courses/${courseCode}/baskets/${seedId}`, basketData)
+      return response.data
     }
   },
 

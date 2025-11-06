@@ -51,6 +51,13 @@
               {{ allExpanded ? 'Collapse All' : 'Expand All' }}
             </button>
             <button
+              v-if="Object.keys(hasUnsavedChanges).length > 0"
+              @click="saveAllChanges"
+              class="px-3 py-2 bg-green-600 hover:bg-green-500 text-white rounded text-sm font-medium transition-colors"
+            >
+              💾 Save All Changes ({{ Object.keys(hasUnsavedChanges).length }})
+            </button>
+            <button
               @click="previousBatch"
               :disabled="currentBatchStart <= 1"
               class="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
@@ -119,13 +126,37 @@
                 <span class="text-xs px-2 py-1 rounded bg-slate-700 text-slate-400">
                   {{ getTotalPhrases(seedData.basket) }} phrases
                 </span>
+                <span v-if="hasUnsavedChanges[seedData.seedId]" class="text-xs px-2 py-1 rounded bg-orange-600 text-white font-bold">
+                  UNSAVED
+                </span>
               </div>
               <div class="text-sm text-slate-300">{{ seedData.basket?.seed_pair?.known || 'Loading...' }}</div>
               <div class="text-sm text-emerald-400">{{ seedData.basket?.seed_pair?.target || '' }}</div>
             </div>
-            <div class="text-slate-400">
-              <span v-if="expandedSeeds[seedData.seedId]" class="text-2xl">▼</span>
-              <span v-else class="text-2xl">▶</span>
+            <div class="flex items-center gap-3">
+              <button
+                v-if="expandedSeeds[seedData.seedId]"
+                @click.stop="toggleEditMode(seedData.seedId)"
+                :class="[
+                  'px-3 py-1 rounded text-xs font-medium transition-colors',
+                  editMode[seedData.seedId]
+                    ? 'bg-orange-600 text-white hover:bg-orange-500'
+                    : 'bg-blue-600 text-white hover:bg-blue-500'
+                ]"
+              >
+                {{ editMode[seedData.seedId] ? '✓ Done Editing' : '✏️ Edit' }}
+              </button>
+              <button
+                v-if="hasUnsavedChanges[seedData.seedId]"
+                @click.stop="saveSeedChanges(seedData.seedId)"
+                class="px-3 py-1 rounded text-xs font-medium bg-green-600 text-white hover:bg-green-500 transition-colors"
+              >
+                💾 Save
+              </button>
+              <div class="text-slate-400">
+                <span v-if="expandedSeeds[seedData.seedId]" class="text-2xl">▼</span>
+                <span v-else class="text-2xl">▶</span>
+              </div>
             </div>
           </div>
         </div>
@@ -259,20 +290,66 @@
                 <div
                   v-for="(phrase, idx) in legoData.practice_phrases"
                   :key="idx"
+                  v-show="!isDeleted(seedData.seedId, legoKey, idx)"
                   :class="[
-                    'p-2 rounded text-sm',
-                    phrase[3] >= 5 ? 'bg-emerald-900/20 border border-emerald-700/30' : 'bg-slate-800/50'
+                    'p-2 rounded text-sm transition-all',
+                    phrase[3] >= 5 ? 'bg-emerald-900/20 border border-emerald-700/30' : 'bg-slate-800/50',
+                    isFlagged(seedData.seedId, legoKey, idx) ? 'border-2 border-red-500' : '',
+                    editMode[seedData.seedId] ? 'hover:bg-slate-700/50' : ''
                   ]"
                 >
                   <div class="flex items-start justify-between gap-2">
                     <div class="flex-1">
-                      <div class="text-slate-300">
-                        <span class="text-slate-500 text-xs mr-2">{{ idx + 1 }}.</span>
-                        {{ phrase[0] }}
+                      <!-- Editing Mode -->
+                      <div v-if="editMode[seedData.seedId] && isEditing(seedData.seedId, legoKey, idx)">
+                        <input
+                          v-model="getEditedPhrase(seedData.seedId, legoKey, idx).known"
+                          @blur="savePhrase(seedData.seedId, legoKey, idx)"
+                          @keyup.enter="savePhrase(seedData.seedId, legoKey, idx)"
+                          class="w-full px-2 py-1 mb-2 bg-slate-700 text-slate-200 border border-slate-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          placeholder="English"
+                        />
+                        <input
+                          v-model="getEditedPhrase(seedData.seedId, legoKey, idx).target"
+                          @blur="savePhrase(seedData.seedId, legoKey, idx)"
+                          @keyup.enter="savePhrase(seedData.seedId, legoKey, idx)"
+                          class="w-full px-2 py-1 bg-slate-700 text-emerald-400 border border-slate-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          placeholder="Spanish"
+                        />
                       </div>
-                      <div class="text-emerald-400 mt-1">{{ phrase[1] }}</div>
+                      <!-- Display Mode -->
+                      <div v-else @click="editMode[seedData.seedId] && startEditing(seedData.seedId, legoKey, idx, phrase)" :class="editMode[seedData.seedId] ? 'cursor-pointer' : ''">
+                        <div class="text-slate-300">
+                          <span class="text-slate-500 text-xs mr-2">{{ idx + 1 }}.</span>
+                          {{ getDisplayPhrase(seedData.seedId, legoKey, idx, phrase, 0) }}
+                        </div>
+                        <div class="text-emerald-400 mt-1">
+                          {{ getDisplayPhrase(seedData.seedId, legoKey, idx, phrase, 1) }}
+                        </div>
+                      </div>
                     </div>
                     <div class="flex items-center gap-2">
+                      <!-- Edit Mode Actions -->
+                      <button
+                        v-if="editMode[seedData.seedId]"
+                        @click="toggleFlag(seedData.seedId, legoKey, idx)"
+                        :class="[
+                          'text-sm hover:scale-110 transition-transform',
+                          isFlagged(seedData.seedId, legoKey, idx) ? 'text-red-500' : 'text-slate-600'
+                        ]"
+                        :title="isFlagged(seedData.seedId, legoKey, idx) ? 'Unflag' : 'Flag for review'"
+                      >
+                        🚩
+                      </button>
+                      <button
+                        v-if="editMode[seedData.seedId]"
+                        @click="deletePhrase(seedData.seedId, legoKey, idx)"
+                        class="text-sm text-red-400 hover:text-red-300 hover:scale-110 transition-all"
+                        title="Delete phrase"
+                      >
+                        🗑️
+                      </button>
+                      <!-- Quality Indicators -->
                       <span v-if="phrase[3] >= 5" class="text-emerald-500 text-xs" title="Conversational">💬</span>
                       <span v-if="hasConjunction(phrase[1])" class="text-blue-400 text-xs" title="Conjunction">⚡</span>
                       <span
@@ -327,7 +404,13 @@ export default {
       loadedSeeds: [],
       expandedSeeds: {},
       expandedMolecularLegos: {},
-      expandedPatterns: {}
+      expandedPatterns: {},
+      editMode: {}, // Track which seeds are in edit mode {seedId: true/false}
+      editingPhrases: {}, // Track which phrases are being edited {seedId_legoKey_idx: true}
+      editedPhrases: {}, // Track edited phrase text {seedId_legoKey_idx: {known: '', target: ''}}
+      flaggedPhrases: {}, // Track flagged phrases {seedId_legoKey_idx: true}
+      deletedPhrases: {}, // Track deleted phrases {seedId_legoKey_idx: true}
+      hasUnsavedChanges: {} // Track which seeds have unsaved changes {seedId: true}
     }
   },
   computed: {
@@ -584,6 +667,134 @@ export default {
         conjunctionPct: Math.round((conjunctionCount / totalPhrases) * 100),
         avgLegoCount: (totalLegos / totalPhrases).toFixed(1),
         totalPhrases
+      }
+    },
+    // Editing methods
+    toggleEditMode(seedId) {
+      this.editMode[seedId] = !this.editMode[seedId]
+      this.$forceUpdate()
+    },
+    getPhraseKey(seedId, legoKey, idx) {
+      return `${seedId}_${legoKey}_${idx}`
+    },
+    isEditing(seedId, legoKey, idx) {
+      const key = this.getPhraseKey(seedId, legoKey, idx)
+      return this.editingPhrases[key] || false
+    },
+    isDeleted(seedId, legoKey, idx) {
+      const key = this.getPhraseKey(seedId, legoKey, idx)
+      return this.deletedPhrases[key] || false
+    },
+    isFlagged(seedId, legoKey, idx) {
+      const key = this.getPhraseKey(seedId, legoKey, idx)
+      return this.flaggedPhrases[key] || false
+    },
+    startEditing(seedId, legoKey, idx, phrase) {
+      const key = this.getPhraseKey(seedId, legoKey, idx)
+      this.editingPhrases[key] = true
+
+      // Initialize edited phrase if not already set
+      if (!this.editedPhrases[key]) {
+        this.editedPhrases[key] = {
+          known: phrase[0],
+          target: phrase[1]
+        }
+      }
+      this.$forceUpdate()
+    },
+    savePhrase(seedId, legoKey, idx) {
+      const key = this.getPhraseKey(seedId, legoKey, idx)
+      this.editingPhrases[key] = false
+      this.hasUnsavedChanges[seedId] = true
+      this.$forceUpdate()
+    },
+    getEditedPhrase(seedId, legoKey, idx) {
+      const key = this.getPhraseKey(seedId, legoKey, idx)
+      return this.editedPhrases[key] || { known: '', target: '' }
+    },
+    getDisplayPhrase(seedId, legoKey, idx, phrase, langIdx) {
+      const key = this.getPhraseKey(seedId, legoKey, idx)
+      if (this.editedPhrases[key]) {
+        return langIdx === 0 ? this.editedPhrases[key].known : this.editedPhrases[key].target
+      }
+      return phrase[langIdx]
+    },
+    toggleFlag(seedId, legoKey, idx) {
+      const key = this.getPhraseKey(seedId, legoKey, idx)
+      this.flaggedPhrases[key] = !this.flaggedPhrases[key]
+      this.hasUnsavedChanges[seedId] = true
+      this.$forceUpdate()
+    },
+    deletePhrase(seedId, legoKey, idx) {
+      const key = this.getPhraseKey(seedId, legoKey, idx)
+      this.deletedPhrases[key] = true
+      this.hasUnsavedChanges[seedId] = true
+      this.$forceUpdate()
+    },
+    async saveSeedChanges(seedId) {
+      try {
+        // Find the seed data
+        const seedData = this.loadedSeeds.find(s => s.seedId === seedId)
+        if (!seedData || !seedData.basket) {
+          throw new Error('Seed data not found')
+        }
+
+        // Apply all edits to basket
+        const updatedBasket = JSON.parse(JSON.stringify(seedData.basket))
+
+        for (const legoKey in this.getLegoBaskets(updatedBasket)) {
+          const phrases = updatedBasket[legoKey].practice_phrases
+          const newPhrases = []
+
+          for (let idx = 0; idx < phrases.length; idx++) {
+            const key = this.getPhraseKey(seedId, legoKey, idx)
+
+            // Skip deleted phrases
+            if (this.deletedPhrases[key]) continue
+
+            // Apply edited text
+            if (this.editedPhrases[key]) {
+              phrases[idx][0] = this.editedPhrases[key].known
+              phrases[idx][1] = this.editedPhrases[key].target
+            }
+
+            newPhrases.push(phrases[idx])
+          }
+
+          updatedBasket[legoKey].practice_phrases = newPhrases
+        }
+
+        // Save to API
+        const response = await api.course.saveBasket(this.selectedCourseCode, seedId, updatedBasket)
+
+        // Update local data
+        seedData.basket = updatedBasket
+
+        // Clear change tracking for this seed
+        delete this.hasUnsavedChanges[seedId]
+
+        // Clear edit states for this seed
+        Object.keys(this.editedPhrases).forEach(key => {
+          if (key.startsWith(seedId)) delete this.editedPhrases[key]
+        })
+        Object.keys(this.deletedPhrases).forEach(key => {
+          if (key.startsWith(seedId)) delete this.deletedPhrases[key]
+        })
+        Object.keys(this.flaggedPhrases).forEach(key => {
+          if (key.startsWith(seedId)) delete this.flaggedPhrases[key]
+        })
+
+        this.$forceUpdate()
+        console.log('✓ Saved changes for', seedId)
+
+      } catch (err) {
+        console.error('Failed to save changes:', err)
+        this.error = `Failed to save changes: ${err.message}`
+      }
+    },
+    async saveAllChanges() {
+      for (const seedId of Object.keys(this.hasUnsavedChanges)) {
+        await this.saveSeedChanges(seedId)
       }
     }
   }

@@ -3184,29 +3184,20 @@ app.get('/api/courses/:courseCode/baskets/:seedId', async (req, res) => {
 
 /**
  * PUT /api/courses/:courseCode/baskets/:seedId
- * Update specific basket (with validation)
+ * Update specific basket (new format: individual files)
  */
 app.put('/api/courses/:courseCode/baskets/:seedId', async (req, res) => {
   try {
     const { courseCode, seedId } = req.params;
-    const { lego, e, d } = req.body;
-    const basketsPath = path.join(CONFIG.VFS_ROOT, courseCode, 'lego_baskets.json');
+    const basketData = req.body;
+
+    // New structure: individual basket files in baskets/ directory
+    const basketPath = path.join(CONFIG.VFS_ROOT, courseCode, 'baskets', `lego_baskets_${seedId.toLowerCase()}.json`);
 
     console.log(`[API] Updating basket ${seedId} in ${courseCode}`);
 
-    // Check if baskets file exists
-    if (!await fs.pathExists(basketsPath)) {
-      return res.status(404).json({
-        error: 'Baskets not found for this course',
-        courseCode
-      });
-    }
-
-    // Load baskets
-    const baskets = await fs.readJson(basketsPath);
-
-    // Check if basket exists
-    if (!baskets[seedId]) {
+    // Check if basket file exists
+    if (!await fs.pathExists(basketPath)) {
       return res.status(404).json({
         error: `Basket not found for seed ${seedId}`,
         courseCode,
@@ -3214,63 +3205,21 @@ app.put('/api/courses/:courseCode/baskets/:seedId', async (req, res) => {
       });
     }
 
-    // Validate basket structure
-    if (lego && (!Array.isArray(lego) || lego.length !== 2)) {
+    // Basic validation - ensure it's an object with required fields
+    if (!basketData || typeof basketData !== 'object') {
       return res.status(400).json({
-        error: 'Invalid lego format - must be array with 2 elements [target, known]'
+        error: 'Invalid basket data - must be object'
       });
     }
 
-    if (e && !Array.isArray(e)) {
+    if (!basketData.seed || !basketData.seed_pair) {
       return res.status(400).json({
-        error: 'Invalid e_phrases format - must be array'
+        error: 'Invalid basket data - missing required fields (seed, seed_pair)'
       });
     }
 
-    if (d && typeof d !== 'object') {
-      return res.status(400).json({
-        error: 'Invalid d_phrases format - must be object'
-      });
-    }
-
-    // Validate e phrases structure
-    if (e) {
-      for (let i = 0; i < e.length; i++) {
-        if (!Array.isArray(e[i]) || e[i].length !== 2) {
-          return res.status(400).json({
-            error: `Invalid e_phrase at index ${i} - must be array with 2 elements [target, known]`
-          });
-        }
-      }
-    }
-
-    // Validate d phrases structure
-    if (d) {
-      for (const [level, phrases] of Object.entries(d)) {
-        if (!Array.isArray(phrases)) {
-          return res.status(400).json({
-            error: `Invalid d_phrases for level ${level} - must be array`
-          });
-        }
-        for (let i = 0; i < phrases.length; i++) {
-          if (!Array.isArray(phrases[i]) || phrases[i].length !== 2) {
-            return res.status(400).json({
-              error: `Invalid d_phrase at level ${level}, index ${i} - must be array with 2 elements [target, known]`
-            });
-          }
-        }
-      }
-    }
-
-    // Update basket
-    baskets[seedId] = {
-      lego: lego || baskets[seedId].lego,
-      e: e !== undefined ? e : baskets[seedId].e,
-      d: d !== undefined ? d : baskets[seedId].d
-    };
-
-    // Write back to file
-    await fs.writeJson(basketsPath, baskets, { spaces: 2 });
+    // Write updated basket back to individual file
+    await fs.writeJson(basketPath, basketData, { spaces: 2 });
 
     console.log(`[API] Successfully updated basket ${seedId}`);
 
@@ -3279,7 +3228,7 @@ app.put('/api/courses/:courseCode/baskets/:seedId', async (req, res) => {
       message: 'Basket updated successfully',
       courseCode,
       seedId,
-      basket: baskets[seedId]
+      basket: basketData
     });
   } catch (err) {
     console.error('[API] Error updating basket:', err);
