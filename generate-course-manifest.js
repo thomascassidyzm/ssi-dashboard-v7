@@ -36,23 +36,42 @@ for (const entry of entries) {
   const courseCode = entry.name
   const coursePath = path.join(COURSES_DIR, courseCode)
 
-  // Check for required files
+  // Check for available files
   const seedPairsPath = path.join(coursePath, 'seed_pairs.json')
   const legoPairsPath = path.join(coursePath, 'lego_pairs.json')
+  const basketsPath = path.join(coursePath, 'baskets_deduplicated.json')
 
   const hasSeedPairs = fs.existsSync(seedPairsPath)
   const hasLegoPairs = fs.existsSync(legoPairsPath)
+  const hasBaskets = fs.existsSync(basketsPath)
 
-  if (!hasSeedPairs || !hasLegoPairs) {
-    console.log(`⚠️  Skipping ${courseCode} - missing required files`)
-    console.log(`   seed_pairs.json: ${hasSeedPairs ? '✓' : '✗'}`)
-    console.log(`   lego_pairs.json: ${hasLegoPairs ? '✓' : '✗'}`)
-    continue
+  // Determine completion phase
+  let phase = 'empty'
+  let phasesCompleted = []
+  if (hasSeedPairs) {
+    phase = 'phase_1'
+    phasesCompleted.push('1')
+  }
+  if (hasLegoPairs) {
+    phase = 'phase_3'
+    phasesCompleted.push('3')
+  }
+  if (hasBaskets) {
+    phase = 'phase_4'
+    phasesCompleted.push('4')
   }
 
-  // Read the files to extract metadata
-  const seedPairsData = JSON.parse(fs.readFileSync(seedPairsPath, 'utf8'))
-  const legoPairsData = JSON.parse(fs.readFileSync(legoPairsPath, 'utf8'))
+  // Default metadata for empty/incomplete courses
+  let seedPairsData = null
+  let legoPairsData = null
+
+  // Read files if they exist
+  if (hasSeedPairs) {
+    seedPairsData = JSON.parse(fs.readFileSync(seedPairsPath, 'utf8'))
+  }
+  if (hasLegoPairs) {
+    legoPairsData = JSON.parse(fs.readFileSync(legoPairsPath, 'utf8'))
+  }
 
   // Parse course code for language info
   // Formats: xxx_for_yyy, xxx_for_yyy_NNseeds, xxx_for_yyy_suffix
@@ -60,33 +79,36 @@ for (const entry of entries) {
   const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
   const match = matchStandard || matchBasic
 
-  // Detect format (v5.0.1 vs v7.7)
-  const seedsArray = legoPairsData.seeds || []
+  // Detect format and count LEGOs (only if lego_pairs.json exists)
   let format = 'unknown'
   let legoCount = 0
 
-  if (seedsArray.length > 0) {
-    const firstSeed = seedsArray[0]
+  if (legoPairsData) {
+    const seedsArray = legoPairsData.seeds || []
 
-    if (Array.isArray(firstSeed)) {
-      // v7.7 format
-      format = 'v7.7'
-      for (const [seedId, seedPair, legos] of seedsArray) {
-        legoCount += legos.length
-      }
-    } else if (firstSeed && typeof firstSeed === 'object' && firstSeed.seed_id) {
-      // v5.0.1 format
-      format = legoPairsData.version || 'v5.0.1'
-      // Count only NEW LEGOs
-      for (const seed of seedsArray) {
-        const newLegos = seed.legos.filter(l => l.new === true)
-        legoCount += newLegos.length
+    if (seedsArray.length > 0) {
+      const firstSeed = seedsArray[0]
+
+      if (Array.isArray(firstSeed)) {
+        // v7.7 format
+        format = 'v7.7'
+        for (const [seedId, seedPair, legos] of seedsArray) {
+          legoCount += legos.length
+        }
+      } else if (firstSeed && typeof firstSeed === 'object' && firstSeed.seed_id) {
+        // v5.0.1 format
+        format = legoPairsData.version || 'v5.0.1'
+        // Count only NEW LEGOs
+        for (const seed of seedsArray) {
+          const newLegos = seed.legos.filter(l => l.new === true)
+          legoCount += newLegos.length
+        }
       }
     }
   }
 
-  // Count seeds
-  const seedCount = Object.keys(seedPairsData.translations || {}).length
+  // Count seeds (only if seed_pairs.json exists)
+  const seedCount = seedPairsData ? Object.keys(seedPairsData.translations || {}).length : 0
 
   const courseInfo = {
     course_code: courseCode,
@@ -96,18 +118,30 @@ for (const entry of entries) {
     actual_seed_count: seedCount,
     lego_count: legoCount,
     format: format,
-    has_baskets: fs.existsSync(path.join(coursePath, 'baskets_deduplicated.json')),
+    phase: phase,
+    phases_completed: phasesCompleted,
+    has_baskets: hasBaskets,
     files: {
-      seed_pairs: true,
-      lego_pairs: true,
-      baskets: fs.existsSync(path.join(coursePath, 'baskets_deduplicated.json'))
+      seed_pairs: hasSeedPairs,
+      lego_pairs: hasLegoPairs,
+      baskets: hasBaskets
     }
   }
 
   manifest.courses.push(courseInfo)
-  console.log(`✓ ${courseCode}`)
+
+  // Log with appropriate badge based on phase
+  const phaseEmoji = phase === 'empty' ? '📂' :
+                     phase === 'phase_1' ? '🌱' :
+                     phase === 'phase_3' ? '🧱' :
+                     phase === 'phase_4' ? '✅' : '❓'
+
+  console.log(`${phaseEmoji} ${courseCode}`)
   console.log(`  ${courseInfo.target_language} for ${courseInfo.source_language}`)
-  console.log(`  Seeds: ${seedCount}, LEGOs: ${legoCount}, Format: ${format}`)
+  console.log(`  Phase: ${phase} | Files: seed_pairs=${hasSeedPairs ? '✓' : '✗'} lego_pairs=${hasLegoPairs ? '✓' : '✗'} baskets=${hasBaskets ? '✓' : '✗'}`)
+  if (seedCount > 0 || legoCount > 0) {
+    console.log(`  Seeds: ${seedCount}, LEGOs: ${legoCount}, Format: ${format}`)
+  }
 }
 
 // Sort by course code
@@ -124,8 +158,37 @@ console.log('='.repeat(80))
 
 // Print summary
 console.log()
-console.log('Course Summary:')
+console.log('Course Summary by Phase:')
+const byPhase = {
+  'empty': [],
+  'phase_1': [],
+  'phase_3': [],
+  'phase_4': []
+}
+
 manifest.courses.forEach(course => {
-  const badge = course.format === 'v5.0.1' ? '🆕' : '📦'
-  console.log(`  ${badge} ${course.course_code} (${course.total_seeds} seeds, ${course.format})`)
+  byPhase[course.phase].push(course)
 })
+
+if (byPhase.empty.length > 0) {
+  console.log('\n📂 Empty (no data):')
+  byPhase.empty.forEach(c => console.log(`   ${c.course_code}`))
+}
+
+if (byPhase.phase_1.length > 0) {
+  console.log('\n🌱 Phase 1 Complete (translations only):')
+  byPhase.phase_1.forEach(c => console.log(`   ${c.course_code} (${c.actual_seed_count} seeds)`))
+}
+
+if (byPhase.phase_3.length > 0) {
+  console.log('\n🧱 Phase 3 Complete (LEGOs extracted):')
+  byPhase.phase_3.forEach(c => {
+    const formatBadge = c.format === 'v5.0.1' ? '🆕' : c.format === 'v7.7' ? '📦' : '❓'
+    console.log(`   ${formatBadge} ${c.course_code} (${c.actual_seed_count} seeds, ${c.lego_count} LEGOs, ${c.format})`)
+  })
+}
+
+if (byPhase.phase_4.length > 0) {
+  console.log('\n✅ Phase 4 Complete (baskets generated):')
+  byPhase.phase_4.forEach(c => console.log(`   ${c.course_code} (${c.actual_seed_count} seeds, ${c.lego_count} LEGOs, baskets)`))
+}
