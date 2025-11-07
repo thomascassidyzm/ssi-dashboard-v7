@@ -1,0 +1,829 @@
+{
+  "batch_id": "batch2_agent7",
+  "batch_number": 7,
+  "seed_range": "S0481-S0500",
+  "extractor": "Agent 7",
+  "extracted_at": "2025-11-07T03:14:04.006Z",
+  "seeds": [
+    {
+      "seed_id": "S0481",
+      "target": "Es la única esperanza real que nos queda.",
+      "known": "It's the only real hope we have left.",
+      "legos": [
+        {
+          "id": "S0481L01",
+          "type": "A",
+          "target": "Es",
+          "known": "It's"
+        },
+        {
+          "id": "S0481L02",
+          "type": "A",
+          "target": "la",
+          "known": "the",
+          "ref": "S0202L06"
+        },
+        {
+          "id": "S0481L03",
+          "type": "A",
+          "target": "única",
+          "known": "only"
+        },
+        {
+          "id": "S0481L04",
+          "type": "A",
+          "target": "esperanza",
+          "known": "hope"
+        },
+        {
+          "id": "S0481L05",
+          "type": "A",
+          "target": "real",
+          "known": "real"
+        },
+        {
+          "id": "S0481L06",
+          "type": "M",
+          "target": "que nos queda",
+          "known": "we have left",
+          "components": ["que", "nos", "queda"]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0482",
+      "target": "La única esperanza real es que no son serios.",
+      "known": "The only real hope is that they're not serious.",
+      "legos": [
+        {
+          "id": "S0482L01",
+          "type": "A",
+          "target": "La",
+          "known": "The"
+        },
+        {
+          "id": "S0482L02",
+          "type": "A",
+          "target": "única",
+          "known": "only"
+        },
+        {
+          "id": "S0482L03",
+          "type": "A",
+          "target": "esperanza",
+          "known": "hope"
+        },
+        {
+          "id": "S0482L04",
+          "type": "A",
+          "target": "real",
+          "known": "real"
+        },
+        {
+          "id": "S0482L05",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "ref": "S0123L02"
+        },
+        {
+          "id": "S0482L06",
+          "type": "A",
+          "target": "que",
+          "known": "that"
+        },
+        {
+          "id": "S0482L07",
+          "type": "M",
+          "target": "no son",
+          "known": "they're not",
+          "components": ["no", "son"]
+        },
+        {
+          "id": "S0482L08",
+          "type": "A",
+          "target": "serios",
+          "known": "serious"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0483",
+      "target": "La vida no es fácil pero no está destinada a ser fácil.",
+      "known": "Life isn't easy but it's not meant to be easy.",
+      "legos": [
+        {
+          "id": "S0483L01",
+          "type": "M",
+          "target": "La vida",
+          "known": "Life",
+          "components": ["La", "vida"]
+        },
+        {
+          "id": "S0483L02",
+          "type": "M",
+          "target": "no es",
+          "known": "isn't",
+          "components": ["no", "es"],
+          "ref": "S0116L02"
+        },
+        {
+          "id": "S0483L03",
+          "type": "A",
+          "target": "fácil",
+          "known": "easy"
+        },
+        {
+          "id": "S0483L04",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "ref": "S0019L01"
+        },
+        {
+          "id": "S0483L05",
+          "type": "M",
+          "target": "no está",
+          "known": "it's not",
+          "components": ["no", "está"]
+        },
+        {
+          "id": "S0483L06",
+          "type": "M",
+          "target": "destinada a ser",
+          "known": "meant to be",
+          "components": ["destinada", "a", "ser"]
+        },
+        {
+          "id": "S0483L07",
+          "type": "A",
+          "target": "fácil",
+          "known": "easy"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0484",
+      "target": "Está destinada a ser un desafío.",
+      "known": "It's meant to be a challenge.",
+      "legos": [
+        {
+          "id": "S0484L01",
+          "type": "M",
+          "target": "Está destinada a ser",
+          "known": "It's meant to be",
+          "components": ["Está", "destinada", "a", "ser"]
+        },
+        {
+          "id": "S0484L02",
+          "type": "M",
+          "target": "un desafío",
+          "known": "a challenge",
+          "components": ["un", "desafío"]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0485",
+      "target": "Nada me haría más feliz que escapar.",
+      "known": "Nothing would make me happier than to get away.",
+      "legos": [
+        {
+          "id": "S0485L01",
+          "type": "A",
+          "target": "Nada",
+          "known": "Nothing"
+        },
+        {
+          "id": "S0485L02",
+          "type": "M",
+          "target": "me haría",
+          "known": "would make me",
+          "components": ["me", "haría"]
+        },
+        {
+          "id": "S0485L03",
+          "type": "M",
+          "target": "más feliz",
+          "known": "happier",
+          "components": ["más", "feliz"]
+        },
+        {
+          "id": "S0485L04",
+          "type": "A",
+          "target": "que",
+          "known": "than"
+        },
+        {
+          "id": "S0485L05",
+          "type": "A",
+          "target": "escapar",
+          "known": "to get away"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0486",
+      "target": "Creo que tus ojos son hermosos.",
+      "known": "I think your eyes are beautiful.",
+      "legos": [
+        {
+          "id": "S0486L01",
+          "type": "M",
+          "target": "Creo que",
+          "known": "I think",
+          "components": ["Creo", "que"]
+        },
+        {
+          "id": "S0486L02",
+          "type": "A",
+          "target": "tus",
+          "known": "your",
+          "ref": "S0283L03"
+        },
+        {
+          "id": "S0486L03",
+          "type": "A",
+          "target": "ojos",
+          "known": "eyes"
+        },
+        {
+          "id": "S0486L04",
+          "type": "A",
+          "target": "son",
+          "known": "are"
+        },
+        {
+          "id": "S0486L05",
+          "type": "A",
+          "target": "hermosos",
+          "known": "beautiful"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0487",
+      "target": "Está bajo el puente.",
+      "known": "It's under the bridge.",
+      "legos": [
+        {
+          "id": "S0487L01",
+          "type": "A",
+          "target": "Está",
+          "known": "It's"
+        },
+        {
+          "id": "S0487L02",
+          "type": "A",
+          "target": "bajo",
+          "known": "under"
+        },
+        {
+          "id": "S0487L03",
+          "type": "A",
+          "target": "el",
+          "known": "the",
+          "ref": "S0210L05"
+        },
+        {
+          "id": "S0487L04",
+          "type": "A",
+          "target": "puente",
+          "known": "bridge"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0488",
+      "target": "Está al otro lado de esa línea amarilla.",
+      "known": "It's on the other side of that yellow line.",
+      "legos": [
+        {
+          "id": "S0488L01",
+          "type": "A",
+          "target": "Está",
+          "known": "It's"
+        },
+        {
+          "id": "S0488L02",
+          "type": "M",
+          "target": "al otro lado de",
+          "known": "on the other side of",
+          "components": ["al", "otro", "lado", "de"]
+        },
+        {
+          "id": "S0488L03",
+          "type": "A",
+          "target": "esa",
+          "known": "that"
+        },
+        {
+          "id": "S0488L04",
+          "type": "A",
+          "target": "línea",
+          "known": "line"
+        },
+        {
+          "id": "S0488L05",
+          "type": "A",
+          "target": "amarilla",
+          "known": "yellow"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0489",
+      "target": "Si no me haces una taza de café fuerte ahora mismo.",
+      "known": "If you don't make me a strong cup of coffee right now.",
+      "legos": [
+        {
+          "id": "S0489L01",
+          "type": "A",
+          "target": "Si",
+          "known": "If"
+        },
+        {
+          "id": "S0489L02",
+          "type": "M",
+          "target": "no me haces",
+          "known": "you don't make me",
+          "components": ["no", "me", "haces"]
+        },
+        {
+          "id": "S0489L03",
+          "type": "M",
+          "target": "una taza de",
+          "known": "a cup of",
+          "components": ["una", "taza", "de"]
+        },
+        {
+          "id": "S0489L04",
+          "type": "A",
+          "target": "café",
+          "known": "coffee"
+        },
+        {
+          "id": "S0489L05",
+          "type": "A",
+          "target": "fuerte",
+          "known": "strong"
+        },
+        {
+          "id": "S0489L06",
+          "type": "M",
+          "target": "ahora mismo",
+          "known": "right now",
+          "components": ["ahora", "mismo"]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0490",
+      "target": "Entonces nunca confiaré en nadie nunca más.",
+      "known": "Then I will never trust anyone ever again.",
+      "legos": [
+        {
+          "id": "S0490L01",
+          "type": "A",
+          "target": "Entonces",
+          "known": "Then"
+        },
+        {
+          "id": "S0490L02",
+          "type": "M",
+          "target": "nunca confiaré en",
+          "known": "I will never trust",
+          "components": ["nunca", "confiaré", "en"]
+        },
+        {
+          "id": "S0490L03",
+          "type": "A",
+          "target": "nadie",
+          "known": "anyone"
+        },
+        {
+          "id": "S0490L04",
+          "type": "M",
+          "target": "nunca más",
+          "known": "ever again",
+          "components": ["nunca", "más"]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0491",
+      "target": "Me encanta la forma en que intentas ayudar.",
+      "known": "I love the way you try to help.",
+      "legos": [
+        {
+          "id": "S0491L01",
+          "type": "M",
+          "target": "Me encanta",
+          "known": "I love",
+          "components": ["Me", "encanta"]
+        },
+        {
+          "id": "S0491L02",
+          "type": "M",
+          "target": "la forma en que",
+          "known": "the way",
+          "components": ["la", "forma", "en", "que"]
+        },
+        {
+          "id": "S0491L03",
+          "type": "A",
+          "target": "intentas",
+          "known": "you try"
+        },
+        {
+          "id": "S0491L04",
+          "type": "A",
+          "target": "ayudar",
+          "known": "to help",
+          "ref": "S0168L03"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0492",
+      "target": "¿Cuál de esos lugares crees que es el más interesante?",
+      "known": "Which of those places do you think is the most interesting?",
+      "legos": [
+        {
+          "id": "S0492L01",
+          "type": "M",
+          "target": "¿Cuál de",
+          "known": "Which of",
+          "components": ["Cuál", "de"]
+        },
+        {
+          "id": "S0492L02",
+          "type": "A",
+          "target": "esos",
+          "known": "those"
+        },
+        {
+          "id": "S0492L03",
+          "type": "A",
+          "target": "lugares",
+          "known": "places"
+        },
+        {
+          "id": "S0492L04",
+          "type": "M",
+          "target": "crees que",
+          "known": "do you think",
+          "components": ["crees", "que"]
+        },
+        {
+          "id": "S0492L05",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "ref": "S0123L02"
+        },
+        {
+          "id": "S0492L06",
+          "type": "M",
+          "target": "el más",
+          "known": "the most",
+          "components": ["el", "más"]
+        },
+        {
+          "id": "S0492L07",
+          "type": "A",
+          "target": "interesante",
+          "known": "interesting"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0493",
+      "target": "¿Qué va a venir después?",
+      "known": "What's going to come next?",
+      "legos": [
+        {
+          "id": "S0493L01",
+          "type": "M",
+          "target": "¿Qué va a venir",
+          "known": "What's going to come",
+          "components": ["Qué", "va", "a", "venir"]
+        },
+        {
+          "id": "S0493L02",
+          "type": "A",
+          "target": "después",
+          "known": "next"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0494",
+      "target": "¿Qué pasa después de la primera parte del espectáculo?",
+      "known": "What happens after the first part of the show?",
+      "legos": [
+        {
+          "id": "S0494L01",
+          "type": "M",
+          "target": "¿Qué pasa",
+          "known": "What happens",
+          "components": ["Qué", "pasa"]
+        },
+        {
+          "id": "S0494L02",
+          "type": "M",
+          "target": "después de",
+          "known": "after",
+          "components": ["después", "de"]
+        },
+        {
+          "id": "S0494L03",
+          "type": "A",
+          "target": "la",
+          "known": "the",
+          "ref": "S0202L06"
+        },
+        {
+          "id": "S0494L04",
+          "type": "A",
+          "target": "primera",
+          "known": "first"
+        },
+        {
+          "id": "S0494L05",
+          "type": "A",
+          "target": "parte",
+          "known": "part"
+        },
+        {
+          "id": "S0494L06",
+          "type": "A",
+          "target": "del",
+          "known": "of the"
+        },
+        {
+          "id": "S0494L07",
+          "type": "A",
+          "target": "espectáculo",
+          "known": "show"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0495",
+      "target": "Cuando importa.",
+      "known": "When it matters.",
+      "legos": [
+        {
+          "id": "S0495L01",
+          "type": "A",
+          "target": "Cuando",
+          "known": "When",
+          "ref": "S0034L03"
+        },
+        {
+          "id": "S0495L02",
+          "type": "A",
+          "target": "importa",
+          "known": "it matters"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0496",
+      "target": "No estoy planeando perder cuando realmente importa.",
+      "known": "I'm not planning to lose when it really matters.",
+      "legos": [
+        {
+          "id": "S0496L01",
+          "type": "M",
+          "target": "No estoy planeando",
+          "known": "I'm not planning",
+          "components": ["No", "estoy", "planeando"]
+        },
+        {
+          "id": "S0496L02",
+          "type": "A",
+          "target": "perder",
+          "known": "to lose"
+        },
+        {
+          "id": "S0496L03",
+          "type": "A",
+          "target": "cuando",
+          "known": "when",
+          "ref": "S0034L03"
+        },
+        {
+          "id": "S0496L04",
+          "type": "A",
+          "target": "realmente",
+          "known": "really"
+        },
+        {
+          "id": "S0496L05",
+          "type": "A",
+          "target": "importa",
+          "known": "it matters"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0497",
+      "target": "Eso suena como si necesitaras dormir un poco.",
+      "known": "That sounds as though you need to get some sleep.",
+      "legos": [
+        {
+          "id": "S0497L01",
+          "type": "A",
+          "target": "Eso",
+          "known": "That"
+        },
+        {
+          "id": "S0497L02",
+          "type": "M",
+          "target": "suena como si",
+          "known": "sounds as though",
+          "components": ["suena", "como", "si"]
+        },
+        {
+          "id": "S0497L03",
+          "type": "A",
+          "target": "necesitaras",
+          "known": "you need"
+        },
+        {
+          "id": "S0497L04",
+          "type": "M",
+          "target": "dormir un poco",
+          "known": "to get some sleep",
+          "components": ["dormir", "un", "poco"]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0498",
+      "target": "Está de pie solo allá dentro de la entrada.",
+      "known": "He's standing alone over there inside the entrance.",
+      "legos": [
+        {
+          "id": "S0498L01",
+          "type": "M",
+          "target": "Está de pie",
+          "known": "He's standing",
+          "components": ["Está", "de", "pie"]
+        },
+        {
+          "id": "S0498L02",
+          "type": "A",
+          "target": "solo",
+          "known": "alone"
+        },
+        {
+          "id": "S0498L03",
+          "type": "A",
+          "target": "allá",
+          "known": "over there"
+        },
+        {
+          "id": "S0498L04",
+          "type": "M",
+          "target": "dentro de",
+          "known": "inside",
+          "components": ["dentro", "de"]
+        },
+        {
+          "id": "S0498L05",
+          "type": "A",
+          "target": "la",
+          "known": "the",
+          "ref": "S0202L06"
+        },
+        {
+          "id": "S0498L06",
+          "type": "A",
+          "target": "entrada",
+          "known": "entrance"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0499",
+      "target": "Quizás deberíamos abrir la puerta y cerrar la ventana.",
+      "known": "Maybe we should open the door and close the window.",
+      "legos": [
+        {
+          "id": "S0499L01",
+          "type": "A",
+          "target": "Quizás",
+          "known": "Maybe"
+        },
+        {
+          "id": "S0499L02",
+          "type": "A",
+          "target": "deberíamos",
+          "known": "we should"
+        },
+        {
+          "id": "S0499L03",
+          "type": "A",
+          "target": "abrir",
+          "known": "open",
+          "ref": "S0336L04"
+        },
+        {
+          "id": "S0499L04",
+          "type": "A",
+          "target": "la",
+          "known": "the",
+          "ref": "S0202L06"
+        },
+        {
+          "id": "S0499L05",
+          "type": "A",
+          "target": "puerta",
+          "known": "door",
+          "ref": "S0336L06"
+        },
+        {
+          "id": "S0499L06",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "ref": "S0015L01"
+        },
+        {
+          "id": "S0499L07",
+          "type": "A",
+          "target": "cerrar",
+          "known": "close"
+        },
+        {
+          "id": "S0499L08",
+          "type": "A",
+          "target": "la",
+          "known": "the",
+          "ref": "S0202L06"
+        },
+        {
+          "id": "S0499L09",
+          "type": "A",
+          "target": "ventana",
+          "known": "window"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0500",
+      "target": "¿Por qué no quieres sentarte entre las dos chicas?",
+      "known": "Why don't you want to sit between the two girls?",
+      "legos": [
+        {
+          "id": "S0500L01",
+          "type": "M",
+          "target": "¿Por qué",
+          "known": "Why",
+          "components": ["Por", "qué"]
+        },
+        {
+          "id": "S0500L02",
+          "type": "M",
+          "target": "no quieres",
+          "known": "don't you want",
+          "components": ["no", "quieres"]
+        },
+        {
+          "id": "S0500L03",
+          "type": "A",
+          "target": "sentarte",
+          "known": "to sit"
+        },
+        {
+          "id": "S0500L04",
+          "type": "A",
+          "target": "entre",
+          "known": "between"
+        },
+        {
+          "id": "S0500L05",
+          "type": "A",
+          "target": "las",
+          "known": "the"
+        },
+        {
+          "id": "S0500L06",
+          "type": "A",
+          "target": "dos",
+          "known": "two",
+          "ref": "S0217L05"
+        },
+        {
+          "id": "S0500L07",
+          "type": "A",
+          "target": "chicas",
+          "known": "girls"
+        }
+      ]
+    }
+  ]
+}
