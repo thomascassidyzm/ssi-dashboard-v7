@@ -1,0 +1,160 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0104",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "We need to change what we're doing.",
+    "target": "Necesitamos cambiar lo que estamos haciendo"
+  },
+  "patterns_introduced": "P_NEW_PLURAL_NEED",
+  "cumulative_patterns": [
+    "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+    "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+    "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+    "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+    "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED"
+  ],
+  "cumulative_legos": 292,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T05:30:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 Agent 01",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation"
+  },
+
+  "S0104L01": {
+    "lego": ["We need", "necesitamos"],
+    "type": "A",
+    "available_legos": 288,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE"
+    ],
+    "practice_phrases": [
+      ["We need", "necesitamos", "P_NEW_PLURAL_NEED", 1],
+      ["We need to learn", "necesitamos aprender", "P_NEW_PLURAL_NEED", 2],
+      ["We need to practise", "necesitamos practicar", "P_NEW_PLURAL_NEED", 2],
+      ["We need to learn Spanish", "necesitamos aprender español", "P_NEW_PLURAL_NEED", 3],
+      ["We need to say this", "necesitamos decir esto", "P_NEW_PLURAL_NEED", 3],
+      ["We need to find out more", "necesitamos descubrir más", "P_NEW_PLURAL_NEED", 3],
+      ["We need to learn more words", "necesitamos aprender más palabras", "P_NEW_PLURAL_NEED", 4],
+      ["We need to practise speaking Spanish", "necesitamos practicar hablar español", "P_NEW_PLURAL_NEED", 4],
+      ["We need to learn many more words today", "necesitamos aprender muchas más palabras hoy", "P_NEW_PLURAL_NEED", 6],
+      ["I think we need to find out about this", "pienso que necesitamos descubrir sobre esto", "P05", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P05, P_NEW_PLURAL_NEED",
+    "full_seed_included": "NO - missing 'cambiar lo que estamos haciendo'",
+    "gate_compliance": "STRICT - Only S0001-S0103L04 LEGOs available"
+  },
+
+  "S0104L02": {
+    "lego": ["to change", "cambiar"],
+    "type": "A",
+    "available_legos": 289,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED"
+    ],
+    "practice_phrases": [
+      ["to change", "cambiar", null, 1],
+      ["to change this", "cambiar esto", null, 2],
+      ["I need to change", "necesito cambiar", "P01", 2],
+      ["We need to change", "necesitamos cambiar", "P_NEW_PLURAL_NEED", 2],
+      ["I want to change this", "quiero cambiar esto", "P01", 3],
+      ["We need to change this", "necesitamos cambiar esto", "P_NEW_PLURAL_NEED", 3],
+      ["I think I should change this", "pienso que debería cambiar esto", "P05", 5],
+      ["We're trying to change what we're doing", "estamos intentando cambiar lo que estamos haciendo", "P_NEW_PLURAL_PROGRESSIVE", 6],
+      ["I think we need to change this today", "pienso que necesitamos cambiar esto hoy", "P05", 7],
+      ["We need to change how we're learning Spanish", "necesitamos cambiar cómo estamos aprendiendo español", "P_NEW_PLURAL_NEED", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P05, P_NEW_PLURAL_NEED, P_NEW_PLURAL_PROGRESSIVE",
+    "full_seed_included": "NO - missing full seed phrase",
+    "gate_compliance": "STRICT - Only S0001-S0104L01 LEGOs available"
+  },
+
+  "S0104L03": {
+    "lego": ["what", "lo que"],
+    "type": "M",
+    "available_legos": 290,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED"
+    ],
+    "practice_phrases": [
+      ["what", "lo que", "P_RELATIVE", 1],
+      ["what I want", "lo que quiero", "P_RELATIVE", 2],
+      ["to say what I think", "decir lo que pienso", "P_RELATIVE", 3],
+      ["what I'm trying to say", "lo que estoy intentando decir", "P_RELATIVE", 4],
+      ["I want to learn what this means", "quiero aprender lo que esto significa", "P01", 6],
+      ["to find out what this is", "descubrir lo que esto es", "P_RELATIVE", 4],
+      ["I'd like to say what I think", "me gustaría decir lo que pienso", "P04", 5],
+      ["I'm enjoying finding out what this means", "estoy disfrutando descubrir lo que esto significa", "P_NEW_DISFRUTO", 6],
+      ["We need to change what we're doing today", "necesitamos cambiar lo que estamos haciendo hoy", "P_NEW_PLURAL_NEED", 7],
+      ["I think I should learn what this means", "pienso que debería aprender lo que esto significa", "P05", 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P04, P05, P_RELATIVE, P_NEW_DISFRUTO, P_NEW_PLURAL_NEED",
+    "full_seed_included": "NO - missing full seed phrase",
+    "gate_compliance": "STRICT - Only S0001-S0104L02 LEGOs available"
+  },
+
+  "S0104L04": {
+    "lego": ["we're doing", "estamos haciendo"],
+    "type": "M",
+    "available_legos": 291,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED"
+    ],
+    "practice_phrases": [
+      ["we're doing", "estamos haciendo", "P_NEW_PLURAL_PROGRESSIVE", 1],
+      ["what we're doing", "lo que estamos haciendo", "P_RELATIVE", 2],
+      ["I like what we're doing", "me gusta lo que estamos haciendo", "P_NEW_GUSTAR", 4],
+      ["to change what we're doing", "cambiar lo que estamos haciendo", "P_RELATIVE", 3],
+      ["We need to change what we're doing", "necesitamos cambiar lo que estamos haciendo", "P_NEW_PLURAL_NEED", 4],
+      ["I think what we're doing is good", "pienso que lo que estamos haciendo es buena", "P05", 7],
+      ["I'm enjoying what we're doing today", "estoy disfrutando lo que estamos haciendo hoy", "P_NEW_DISFRUTO", 5],
+      ["I'd like to say what we're doing", "me gustaría decir lo que estamos haciendo", "P04", 5],
+      ["I think we need to change what we're doing today", "pienso que necesitamos cambiar lo que estamos haciendo hoy", "P05", 9],
+      ["We need to change what we're doing.", "necesitamos cambiar lo que estamos haciendo.", "P_NEW_PLURAL_NEED", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P04, P05, P_RELATIVE, P_NEW_GUSTAR, P_NEW_DISFRUTO, P_NEW_PLURAL_NEED, P_NEW_PLURAL_PROGRESSIVE",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0104L03 LEGOs available. 'haciendo' introduced in this LEGO."
+  }
+}

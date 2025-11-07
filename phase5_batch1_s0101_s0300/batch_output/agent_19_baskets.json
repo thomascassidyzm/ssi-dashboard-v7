@@ -1,0 +1,1092 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "agent_id": 19,
+  "seed_range": "S0281-S0290",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "generation_metadata": {
+    "generated_at": "2025-11-07T00:00:00.000Z",
+    "generated_by": "Claude Code - Agent 19 - Phase 5 Basket Generation v3",
+    "spec_version": "phase_5_conversational_baskets_v3_ACTIVE",
+    "total_seeds": 10,
+    "notes": "All phrases GATE-compliant. Distribution: 2 short, 2 quite short, 2 longer, 4 long per LEGO."
+  },
+
+  "S0281": {
+    "seed_pair": {
+      "known": "Do you mind if I finish my coffee before you start?",
+      "target": "¿Te importa si termino mi café antes de que empieces?"
+    },
+
+    "S0281L01": {
+      "lego": ["Do you mind", "¿Te importa"],
+      "type": "M",
+      "practice_phrases": [
+        ["Do you mind", "¿Te importa", null, 1],
+        ["Do you mind if I speak", "¿Te importa si hablo", null, 2],
+        ["Do you mind if I speak Spanish", "¿Te importa si hablo español", null, 3],
+        ["Do you mind if I speak with you", "¿Te importa si hablo contigo", null, 4],
+        ["Do you mind if I speak with you now", "¿Te importa si hablo contigo ahora", null, 5],
+        ["I'm not sure if you mind", "No estoy seguro si te importa", null, 4],
+        ["I wonder if you mind", "Me pregunto si te importa", null, 3],
+        ["Do you mind if I try to explain what I mean", "¿Te importa si intento explicar lo que quiero decir", null, 8],
+        ["I wanted to ask if you mind", "Quería preguntarte si te importa", null, 4],
+        ["Do you mind if I speak before I have to go", "¿Te importa si hablo antes de que tenga que ir", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4}
+    },
+
+    "S0010": {
+      "lego": ["if", "si"],
+      "type": "A",
+      "practice_phrases": [
+        ["if", "si", null, 1],
+        ["if you mind", "si te importa", null, 2],
+        ["if I can speak", "si puedo hablar", null, 3],
+        ["if I want to speak", "si quiero hablar", null, 4],
+        ["I'm not sure if I can", "No estoy seguro si puedo", null, 5],
+        ["I'd like to know if you want to speak", "Me gustaría descubrir si quieres hablar", null, 6],
+        ["I wonder if she wants to speak with you", "Me pregunto si ella quiere hablar contigo", null, 7],
+        ["Do you mind if I ask what you mean", "¿Te importa si preguntarte lo que quieres decir", null, 7],
+        ["I'm going to try if I can", "Voy a intentar si puedo", null, 6],
+        ["I want to know if he knows", "Quiero descubrir si él sabe", null, 6]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 5}
+    },
+
+    "S0281L03": {
+      "lego": ["I finish", "termino"],
+      "type": "A",
+      "practice_phrases": [
+        ["I finish", "termino", null, 1],
+        ["if I finish", "si termino", null, 2],
+        ["if I finish now", "si termino ahora", null, 3],
+        ["if I finish speaking", "si termino hablar", null, 3],
+        ["Do you mind if I finish", "¿Te importa si termino", null, 3],
+        ["I'm not sure if I finish today", "No estoy seguro si termino hoy", null, 5],
+        ["I want to speak with you if I finish", "Quiero hablar contigo si termino", null, 6],
+        ["Do you mind if I finish before you start", "¿Te importa si termino antes de que empieces", null, 6],
+        ["I'm going to finish as soon as I can", "Voy a terminar tan pronto como pueda", null, 7],
+        ["I wonder if I can finish before I have to go", "Me pregunto si puedo terminar antes de que tenga que ir", null, 10]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 3, "longer_4_5": 1, "long_6_plus": 4}
+    },
+
+    "S0126": {
+      "lego": ["my", "mi"],
+      "type": "A",
+      "practice_phrases": [
+        ["my", "mi", null, 1],
+        ["my friend", "mi amigo", null, 2],
+        ["with my friend", "con mi amigo", null, 3],
+        ["I want to speak with my friend", "Quiero hablar con mi amigo", null, 5],
+        ["My friend wants to learn Spanish", "Mi amigo quiere aprender español", null, 5],
+        ["I'm trying to learn with my friend", "Estoy intentando aprender con mi amigo", null, 5],
+        ["Do you mind if I speak with my friend", "¿Te importa si hablo con mi amigo", null, 6],
+        ["I'm going to speak with my friend before I finish", "Voy a hablar con mi amigo antes de que termino", null, 9],
+        ["Do you mind if I speak with my friend now", "¿Te importa si hablo con mi amigo ahora", null, 7],
+        ["I wonder if my friend knows the answer", "Me pregunto si mi amigo sabe la respuesta", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 3, "long_6_plus": 4}
+    },
+
+    "S0281L05": {
+      "lego": ["coffee", "café"],
+      "type": "A",
+      "practice_phrases": [
+        ["coffee", "café", null, 1],
+        ["my coffee", "mi café", null, 2],
+        ["I want coffee", "Quiero café", null, 2],
+        ["Do you mind if I finish my coffee", "¿Te importa si termino mi café", null, 5],
+        ["I'd like to finish my coffee now", "Me gustaría terminar mi café ahora", null, 5],
+        ["I'm going to finish my coffee before you start", "Voy a terminar mi café antes de que empieces", null, 8],
+        ["Do you mind if I finish my coffee before you speak", "¿Te importa si termino mi café antes de que hables", null, 9],
+        ["I want to finish my coffee as soon as I can", "Quiero terminar mi café tan pronto como pueda", null, 8],
+        ["I wonder if you mind if I finish my coffee", "Me pregunto si te importa si termino mi café", null, 8],
+        ["I wanted to finish my coffee before I have to go", "Quería terminar mi café antes de que tenga que ir", null, 9]
+      ],
+      "phrase_distribution": {"really_short_1_2": 3, "quite_short_3": 0, "longer_4_5": 2, "long_6_plus": 5}
+    },
+
+    "S0281L06": {
+      "lego": ["before", "antes de que"],
+      "type": "M",
+      "practice_phrases": [
+        ["before you start", "antes de que empieces", null, 2],
+        ["before you finish", "antes de que termines", null, 2],
+        ["I want to speak before you start", "Quiero hablar antes de que empieces", null, 4],
+        ["Do you mind if I speak before you start", "¿Te importa si hablo antes de que empieces", null, 5],
+        ["I'd like to finish before you start", "Me gustaría terminar antes de que empieces", null, 4],
+        ["I'm going to speak with you before you finish", "Voy a hablar contigo antes de que termines", null, 7],
+        ["Do you mind if I finish before I have to go", "¿Te importa si termino antes de que tenga que ir", null, 8],
+        ["I want to speak with my friend before you start", "Quiero hablar con mi amigo antes de que empieces", null, 7],
+        ["I wonder if I can finish before you start", "Me pregunto si puedo terminar antes de que empieces", null, 8],
+        ["I wanted to ask you before I have to go", "Quería preguntarte antes de que tenga que ir", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 0, "longer_4_5": 2, "long_6_plus": 6}
+    },
+
+    "S0281L07": {
+      "lego": ["you start", "empieces"],
+      "type": "A",
+      "practice_phrases": [
+        ["you start", "empieces", null, 1],
+        ["before you start", "antes de que empieces", null, 2],
+        ["I want to speak before you start", "Quiero hablar antes de que empieces", null, 4],
+        ["Do you mind if I speak before you start", "¿Te importa si hablo antes de que empieces", null, 5],
+        ["I'd like to finish before you start", "Me gustaría terminar antes de que empieces", null, 4],
+        ["I'm going to finish my coffee before you start", "Voy a terminar mi café antes de que empieces", null, 7],
+        ["I want to speak with my friend before you start", "Quiero hablar con mi amigo antes de que empieces", null, 7],
+        ["Do you mind if I finish my coffee before you start", "¿Te importa si termino mi café antes de que empieces", null, 8],
+        ["I wonder if I can finish before you start", "Me pregunto si puedo terminar antes de que empieces", null, 8],
+        ["Do you mind if I finish my coffee before you start?", "¿Te importa si termino mi café antes de que empieces?", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 0, "longer_4_5": 2, "long_6_plus": 6}
+    }
+  },
+
+  "S0282": {
+    "seed_pair": {
+      "known": "No that's not a problem.",
+      "target": "No, eso no es un problema."
+    },
+
+    "S0096": {
+      "lego": ["no", "no"],
+      "type": "A",
+      "practice_phrases": [
+        ["no", "no", null, 1],
+        ["No, I don't want", "No, no quiero", null, 2],
+        ["No, I'm not sure", "No, no estoy seguro", null, 3],
+        ["No, I don't mind", "No, no me importa", null, 3],
+        ["No, that's not a problem", "No, eso no es un problema", null, 4],
+        ["No, I'm not going to finish", "No, no voy a terminar", null, 5],
+        ["No, I don't want to speak before you start", "No, no quiero hablar antes de que empieces", null, 7],
+        ["No, I'm not sure if I can finish my coffee", "No, no estoy seguro si puedo terminar mi café", null, 9],
+        ["No, I don't mind if you speak with my friend", "No, no me importa si hablas con mi amigo", null, 9],
+        ["No, I don't want to speak before I have to go", "No, no quiero hablar antes de que tenga que ir", null, 10]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4}
+    },
+
+    "S0061": {
+      "lego": ["that", "eso"],
+      "type": "A",
+      "practice_phrases": [
+        ["that", "eso", null, 1],
+        ["I want that", "Quiero eso", null, 2],
+        ["that's not a problem", "eso no es un problema", null, 4],
+        ["I don't mind that", "No me importa eso", null, 3],
+        ["I like that", "Me gusta eso", null, 2],
+        ["I wanted to know that", "Quería descubrir eso", null, 3],
+        ["I'm trying to remember that", "Estoy intentando recordar eso", null, 4],
+        ["Do you mind if I try to explain that", "¿Te importa si intento explicar eso", null, 7],
+        ["I wonder if you know that", "Me pregunto si sabes eso", null, 5],
+        ["I'm not sure if that's a problem", "No estoy seguro si eso es un problema", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 3, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 3}
+    },
+
+    "S0282L03": {
+      "lego": ["'s not", "no es"],
+      "type": "M",
+      "practice_phrases": [
+        ["that's not", "eso no es", null, 2],
+        ["that's not a problem", "eso no es un problema", null, 4],
+        ["that's not what I mean", "eso no es lo que quiero decir", null, 6],
+        ["I'm not sure if that's not a problem", "No estoy seguro si eso no es un problema", null, 8],
+        ["that's not easy", "eso no es fácil", null, 3],
+        ["I know that's not a problem", "Sé que eso no es un problema", null, 6],
+        ["I wonder if that's not what you mean", "Me pregunto si eso no es lo que quieres decir", null, 10],
+        ["Do you mind if I say that's not a problem", "¿Te importa si digo que eso no es un problema", null, 10],
+        ["that's not useful", "eso no es útil", null, 3],
+        ["I wanted to say that's not what I mean", "Quería decir que eso no es lo que quiero decir", null, 10]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 5}
+    },
+
+    "S0282L04": {
+      "lego": ["a", "un"],
+      "type": "A",
+      "practice_phrases": [
+        ["a problem", "un problema", null, 2],
+        ["a word", "una palabra", null, 2],
+        ["that's a problem", "eso es un problema", null, 3],
+        ["I want to remember a word", "Quiero recordar una palabra", null, 4],
+        ["that's not a problem", "eso no es un problema", null, 4],
+        ["I'm trying to learn a little Spanish", "Estoy intentando aprender un poco de español", null, 6],
+        ["I'm not sure if that's a problem", "No estoy seguro si eso es un problema", null, 7],
+        ["I wonder if that's a problem for you", "Me pregunto si eso es un problema para ti", null, 8],
+        ["Do you mind if I try to remember a word", "¿Te importa si intento recordar una palabra", null, 8],
+        ["I wanted to ask if that's a problem", "Quería preguntarte si eso es un problema", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 3, "long_6_plus": 4}
+    },
+
+    "S0141": {
+      "lego": ["problem", "problema"],
+      "type": "A",
+      "practice_phrases": [
+        ["a problem", "un problema", null, 2],
+        ["that's a problem", "eso es un problema", null, 3],
+        ["that's not a problem", "eso no es un problema", null, 4],
+        ["I don't mind if that's a problem", "No me importa si eso es un problema", null, 7],
+        ["I'm not sure if that's a problem", "No estoy seguro si eso es un problema", null, 7],
+        ["I wonder if that's a problem", "Me pregunto si eso es un problema", null, 6],
+        ["I wanted to know if that's a problem for you", "Quería descubrir si eso es un problema para ti", null, 9],
+        ["Do you mind if that's a problem", "¿Te importa si eso es un problema", null, 6],
+        ["No, that's not a problem", "No, eso no es un problema", null, 4],
+        ["No, that's not a problem.", "No, eso no es un problema.", null, 4]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 1, "longer_4_5": 3, "long_6_plus": 5}
+    }
+  },
+
+  "S0283": {
+    "seed_pair": {
+      "known": "Which of your friends speak Spanish?",
+      "target": "¿Cuáles de tus amigos hablan español?"
+    },
+
+    "S0283L01": {
+      "lego": ["which", "cuáles"],
+      "type": "A",
+      "practice_phrases": [
+        ["which", "cuáles", null, 1],
+        ["which friends", "cuáles amigos", null, 2],
+        ["which of your friends", "cuáles de tus amigos", null, 4],
+        ["which of your friends speak Spanish", "cuáles de tus amigos hablan español", null, 5],
+        ["I wonder which friends speak Spanish", "Me pregunto cuáles amigos hablan español", null, 5],
+        ["I'm not sure which of your friends speak Spanish", "No estoy seguro cuáles de tus amigos hablan español", null, 7],
+        ["I want to know which of your friends speak Spanish", "Quiero descubrir cuáles de tus amigos hablan español", null, 7],
+        ["Do you mind if I ask which friends speak Spanish", "¿Te importa si preguntarte cuáles amigos hablan español", null, 8],
+        ["I wanted to know which of your friends want to speak", "Quería descubrir cuáles de tus amigos quieren hablar", null, 8],
+        ["I wonder which of your friends speak Spanish", "Me pregunto cuáles de tus amigos hablan español", null, 6]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 0, "longer_4_5": 3, "long_6_plus": 5}
+    },
+
+    "S0126": {
+      "lego": ["of", "de"],
+      "type": "A",
+      "practice_phrases": [
+        ["of", "de", null, 1],
+        ["of your friends", "de tus amigos", null, 3],
+        ["which of your friends", "cuáles de tus amigos", null, 4],
+        ["which of your friends speak Spanish", "cuáles de tus amigos hablan español", null, 5],
+        ["a little of that", "un poco de eso", null, 4],
+        ["I'm trying to learn a little of that", "Estoy intentando aprender un poco de eso", null, 8],
+        ["I wonder which of your friends want to speak", "Me pregunto cuáles de tus amigos quieren hablar", null, 7],
+        ["I'm not sure which of your friends speak Spanish", "No estoy seguro cuáles de tus amigos hablan español", null, 7],
+        ["I want to speak with some of your friends", "Quiero hablar con algunos de tus amigos", null, 7],
+        ["Do you mind if I speak with some of your friends", "¿Te importa si hablo con algunos de tus amigos", null, 9]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 6}
+    },
+
+    "S0283L03": {
+      "lego": ["your", "tus"],
+      "type": "A",
+      "practice_phrases": [
+        ["your friends", "tus amigos", null, 2],
+        ["of your friends", "de tus amigos", null, 3],
+        ["which of your friends", "cuáles de tus amigos", null, 4],
+        ["which of your friends speak Spanish", "cuáles de tus amigos hablan español", null, 5],
+        ["I like your friends", "Me gustan tus amigos", null, 3],
+        ["I want to speak with your friends", "Quiero hablar con tus amigos", null, 5],
+        ["Do you mind if I speak with your friends", "¿Te importa si hablo con tus amigos", null, 7],
+        ["I wonder which of your friends speak Spanish", "Me pregunto cuáles de tus amigos hablan español", null, 6],
+        ["I'm not sure which of your friends want to speak", "No estoy seguro cuáles de tus amigos quieren hablar", null, 8],
+        ["I wanted to know which of your friends speak Spanish", "Quería descubrir cuáles de tus amigos hablan español", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 5}
+    },
+
+    "S0110": {
+      "lego": ["friends", "amigos"],
+      "type": "A",
+      "practice_phrases": [
+        ["friends", "amigos", null, 1],
+        ["your friends", "tus amigos", null, 2],
+        ["which of your friends", "cuáles de tus amigos", null, 4],
+        ["I want to speak with your friends", "Quiero hablar con tus amigos", null, 5],
+        ["which of your friends speak Spanish", "cuáles de tus amigos hablan español", null, 5],
+        ["I wonder which friends speak Spanish", "Me pregunto cuáles amigos hablan español", null, 5],
+        ["Do you mind if I speak with your friends", "¿Te importa si hablo con tus amigos", null, 7],
+        ["I'm trying to meet friends who speak Spanish", "Estoy intentando encontrar amigos que hablan español", null, 7],
+        ["I'm not sure which of your friends want to speak", "No estoy seguro cuáles de tus amigos quieren hablar", null, 8],
+        ["I wanted to know which of your friends speak Spanish", "Quería descubrir cuáles de tus amigos hablan español", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 0, "longer_4_5": 3, "long_6_plus": 5}
+    },
+
+    "S0283L05": {
+      "lego": ["speak", "hablan"],
+      "type": "A",
+      "practice_phrases": [
+        ["speak", "hablan", null, 1],
+        ["they speak Spanish", "hablan español", null, 2],
+        ["which friends speak Spanish", "cuáles amigos hablan español", null, 4],
+        ["which of your friends speak Spanish", "cuáles de tus amigos hablan español", null, 5],
+        ["I know people who speak Spanish", "Conozco personas que hablan español", null, 5],
+        ["I want to meet people who speak Spanish", "Quiero encontrar personas que hablan español", null, 6],
+        ["I wonder which of your friends speak Spanish", "Me pregunto cuáles de tus amigos hablan español", null, 6],
+        ["I'm not sure which of your friends speak Spanish", "No estoy seguro cuáles de tus amigos hablan español", null, 7],
+        ["I wanted to know which friends speak Spanish", "Quería descubrir cuáles amigos hablan español", null, 6],
+        ["Which of your friends speak Spanish?", "¿Cuáles de tus amigos hablan español?", null, 5]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 0, "longer_4_5": 3, "long_6_plus": 5}
+    },
+
+    "S0001": {
+      "lego": ["Spanish", "español"],
+      "type": "A",
+      "practice_phrases": [
+        ["Spanish", "español", null, 1],
+        ["I speak Spanish", "Hablo español", null, 2],
+        ["which friends speak Spanish", "cuáles amigos hablan español", null, 4],
+        ["I want to learn Spanish", "Quiero aprender español", null, 3],
+        ["which of your friends speak Spanish", "cuáles de tus amigos hablan español", null, 5],
+        ["I'm trying to speak Spanish as often as possible", "Estoy intentando hablar español lo más frecuentemente posible", null, 7],
+        ["I wonder which of your friends speak Spanish", "Me pregunto cuáles de tus amigos hablan español", null, 6],
+        ["Do you mind if I try to speak Spanish with you", "¿Te importa si intento hablar español contigo", null, 9],
+        ["I'm not sure which of your friends speak Spanish", "No estoy seguro cuáles de tus amigos hablan español", null, 7],
+        ["Which of your friends speak Spanish?", "¿Cuáles de tus amigos hablan español?", null, 5]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 5}
+    }
+  },
+
+  "S0284": {
+    "seed_pair": {
+      "known": "Do you know my sister's friend?",
+      "target": "¿Conoces a la amiga de mi hermana?"
+    },
+
+    "S0284L01": {
+      "lego": ["do you know", "conoces"],
+      "type": "M",
+      "practice_phrases": [
+        ["do you know", "conoces", null, 1],
+        ["Do you know that", "Conoces eso", null, 2],
+        ["Do you know my friend", "Conoces mi amigo", null, 3],
+        ["Do you know my sister's friend", "Conoces la amiga de mi hermana", null, 5],
+        ["Do you know which friends speak Spanish", "Conoces cuáles amigos hablan español", null, 5],
+        ["I wonder if you know that", "Me pregunto si conoces eso", null, 5],
+        ["I'm not sure if you know my friend", "No estoy seguro si conoces mi amigo", null, 7],
+        ["Do you know people who speak Spanish", "Conoces personas que hablan español", null, 5],
+        ["I wanted to know if you know my sister", "Quería descubrir si conoces mi hermana", null, 7],
+        ["Do you know which of your friends speak Spanish", "Conoces cuáles de tus amigos hablan español", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 5}
+    },
+
+    "S0202L06": {
+      "lego": ["the", "la"],
+      "type": "A",
+      "practice_phrases": [
+        ["the", "la", null, 1],
+        ["the answer", "la respuesta", null, 2],
+        ["the friend", "la amiga", null, 2],
+        ["I know the answer", "Sé la respuesta", null, 3],
+        ["I wonder if you know the answer", "Me pregunto si sabes la respuesta", null, 6],
+        ["Do you know the friend of my sister", "Conoces la amiga de mi hermana", null, 6],
+        ["I'm not sure if I know the answer", "No estoy seguro si sé la respuesta", null, 8],
+        ["I want to know what the answer is", "Quiero descubrir cuál es la respuesta", null, 7],
+        ["I wanted to ask if you know the answer", "Quería preguntarte si sabes la respuesta", null, 7],
+        ["Do you mind if I try to find out the answer", "¿Te importa si intento descubrir la respuesta", null, 9]
+      ],
+      "phrase_distribution": {"really_short_1_2": 3, "quite_short_3": 1, "longer_4_5": 1, "long_6_plus": 5}
+    },
+
+    "S0284L03": {
+      "lego": ["friend", "amiga"],
+      "type": "A",
+      "practice_phrases": [
+        ["friend", "amiga", null, 1],
+        ["the friend", "la amiga", null, 2],
+        ["my sister's friend", "la amiga de mi hermana", null, 4],
+        ["Do you know the friend", "Conoces la amiga", null, 3],
+        ["Do you know my sister's friend", "Conoces la amiga de mi hermana", null, 5],
+        ["I wonder if you know the friend", "Me pregunto si conoces la amiga", null, 6],
+        ["I want to speak with the friend of my sister", "Quiero hablar con la amiga de mi hermana", null, 8],
+        ["I'm not sure if you know my sister's friend", "No estoy seguro si conoces la amiga de mi hermana", null, 9],
+        ["Do you mind if I speak with the friend", "¿Te importa si hablo con la amiga", null, 8],
+        ["I wanted to know if you know my sister's friend", "Quería descubrir si conoces la amiga de mi hermana", null, 10]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 5}
+    },
+
+    "S0126": {
+      "lego": ["of", "de"],
+      "type": "A",
+      "practice_phrases": [
+        ["of", "de", null, 1],
+        ["of my sister", "de mi hermana", null, 3],
+        ["the friend of my sister", "la amiga de mi hermana", null, 5],
+        ["which of your friends", "cuáles de tus amigos", null, 4],
+        ["Do you know the friend of my sister", "Conoces la amiga de mi hermana", null, 6],
+        ["I'm not sure which of your friends speak Spanish", "No estoy seguro cuáles de tus amigos hablan español", null, 7],
+        ["I want to speak with the friend of my sister", "Quiero hablar con la amiga de mi hermana", null, 8],
+        ["I wonder which of your friends speak Spanish", "Me pregunto cuáles de tus amigos hablan español", null, 6],
+        ["Do you mind if I speak with the friend of my sister", "¿Te importa si hablo con la amiga de mi hermana", null, 10],
+        ["I wanted to know if you know the friend of my sister", "Quería descubrir si conoces la amiga de mi hermana", null, 11]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 6}
+    },
+
+    "S0126": {
+      "lego": ["my", "mi"],
+      "type": "A",
+      "practice_phrases": [
+        ["my", "mi", null, 1],
+        ["my sister", "mi hermana", null, 2],
+        ["of my sister", "de mi hermana", null, 3],
+        ["the friend of my sister", "la amiga de mi hermana", null, 5],
+        ["Do you know my friend", "Conoces mi amigo", null, 3],
+        ["Do you know my sister's friend", "Conoces la amiga de mi hermana", null, 5],
+        ["I want to speak with my sister", "Quiero hablar con mi hermana", null, 5],
+        ["I wonder if you know my sister's friend", "Me pregunto si conoces la amiga de mi hermana", null, 8],
+        ["Do you mind if I speak with my sister", "¿Te importa si hablo con mi hermana", null, 7],
+        ["I'm not sure if you know my sister's friend", "No estoy seguro si conoces la amiga de mi hermana", null, 9]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4}
+    },
+
+    "S0284L06": {
+      "lego": ["sister", "hermana"],
+      "type": "A",
+      "practice_phrases": [
+        ["sister", "hermana", null, 1],
+        ["my sister", "mi hermana", null, 2],
+        ["of my sister", "de mi hermana", null, 3],
+        ["the friend of my sister", "la amiga de mi hermana", null, 5],
+        ["Do you know my sister", "Conoces mi hermana", null, 3],
+        ["I want to speak with my sister", "Quiero hablar con mi hermana", null, 5],
+        ["Do you know the friend of my sister", "Conoces la amiga de mi hermana", null, 6],
+        ["I wonder if you know my sister's friend", "Me pregunto si conoces la amiga de mi hermana", null, 8],
+        ["I'm not sure if you know my sister", "No estoy seguro si conoces mi hermana", null, 7],
+        ["Do you know my sister's friend?", "¿Conoces a la amiga de mi hermana?", null, 5]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4}
+    }
+  },
+
+  "S0285": {
+    "seed_pair": {
+      "known": "She speaks Spanish.",
+      "target": "Ella habla español."
+    },
+
+    "S0017": {
+      "lego": ["she", "ella"],
+      "type": "A",
+      "practice_phrases": [
+        ["she", "ella", null, 1],
+        ["she speaks", "ella habla", null, 2],
+        ["she speaks Spanish", "ella habla español", null, 3],
+        ["I wonder if she speaks Spanish", "Me pregunto si ella habla español", null, 6],
+        ["I know she speaks Spanish", "Sé que ella habla español", null, 5],
+        ["Do you know if she speaks Spanish", "Conoces si ella habla español", null, 6],
+        ["I'm not sure if she speaks Spanish", "No estoy seguro si ella habla español", null, 7],
+        ["I want to know if she speaks Spanish", "Quiero descubrir si ella habla español", null, 7],
+        ["Do you mind if she speaks with you", "¿Te importa si ella habla contigo", null, 7],
+        ["I wanted to know if she knows my sister's friend", "Quería descubrir si ella conoce la amiga de mi hermana", null, 10]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 1, "long_6_plus": 6}
+    },
+
+    "S0285L02": {
+      "lego": ["speaks", "habla"],
+      "type": "A",
+      "practice_phrases": [
+        ["speaks", "habla", null, 1],
+        ["she speaks", "ella habla", null, 2],
+        ["she speaks Spanish", "ella habla español", null, 3],
+        ["I know she speaks Spanish", "Sé que ella habla español", null, 5],
+        ["Do you know if she speaks Spanish", "Conoces si ella habla español", null, 6],
+        ["I wonder if she speaks Spanish", "Me pregunto si ella habla español", null, 6],
+        ["I'm not sure if she speaks Spanish", "No estoy seguro si ella habla español", null, 7],
+        ["I want to know if she speaks well", "Quiero descubrir si ella habla bien", null, 7],
+        ["Do you mind if she speaks with you now", "¿Te importa si ella habla contigo ahora", null, 8],
+        ["She speaks Spanish.", "Ella habla español.", null, 3]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 1, "long_6_plus": 5}
+    },
+
+    "S0001": {
+      "lego": ["Spanish", "español"],
+      "type": "A",
+      "practice_phrases": [
+        ["Spanish", "español", null, 1],
+        ["she speaks Spanish", "ella habla español", null, 3],
+        ["I speak Spanish", "Hablo español", null, 2],
+        ["I want to learn Spanish", "Quiero aprender español", null, 3],
+        ["which of your friends speak Spanish", "cuáles de tus amigos hablan español", null, 5],
+        ["I'm trying to speak Spanish with you", "Estoy intentando hablar español contigo", null, 5],
+        ["I know she speaks Spanish", "Sé que ella habla español", null, 5],
+        ["Do you know which of your friends speak Spanish", "Conoces cuáles de tus amigos hablan español", null, 7],
+        ["I wonder if she speaks Spanish", "Me pregunto si ella habla español", null, 6],
+        ["She speaks Spanish.", "Ella habla español.", null, 3]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 4, "longer_4_5": 2, "long_6_plus": 3}
+    }
+  },
+
+  "S0286": {
+    "seed_pair": {
+      "known": "People who like speaking Spanish.",
+      "target": "Personas a las que les gusta hablar español."
+    },
+
+    "S0286L01": {
+      "lego": ["people", "personas"],
+      "type": "A",
+      "practice_phrases": [
+        ["people", "personas", null, 1],
+        ["people who speak", "personas que hablan", null, 3],
+        ["people who speak Spanish", "personas que hablan español", null, 4],
+        ["people who like speaking Spanish", "personas a las que les gusta hablar español", null, 6],
+        ["I know people who speak Spanish", "Conozco personas que hablan español", null, 5],
+        ["I want to meet people who speak Spanish", "Quiero encontrar personas que hablan español", null, 6],
+        ["I'm trying to meet people who speak Spanish", "Estoy intentando encontrar personas que hablan español", null, 7],
+        ["Do you know people who like speaking Spanish", "Conoces personas a las que les gusta hablar español", null, 8],
+        ["I wonder which people speak Spanish", "Me pregunto cuáles personas hablan español", null, 5],
+        ["I wanted to meet people who speak Spanish", "Quería encontrar personas que hablan español", null, 6]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 1, "longer_4_5": 3, "long_6_plus": 5}
+    },
+
+    "S0286L02": {
+      "lego": ["who like", "a las que les gusta"],
+      "type": "M",
+      "practice_phrases": [
+        ["who like", "a las que les gusta", null, 2],
+        ["people who like speaking", "personas a las que les gusta hablar", null, 4],
+        ["people who like speaking Spanish", "personas a las que les gusta hablar español", null, 5],
+        ["I know people who like speaking", "Conozco personas a las que les gusta hablar", null, 6],
+        ["Do you know people who like speaking Spanish", "Conoces personas a las que les gusta hablar español", null, 8],
+        ["I want to meet people who like speaking Spanish", "Quiero encontrar personas a las que les gusta hablar español", null, 9],
+        ["I'm trying to meet people who like speaking", "Estoy intentando encontrar personas a las que les gusta hablar", null, 8],
+        ["I wonder which friends like speaking Spanish", "Me pregunto cuáles amigos a las que les gusta hablar español", null, 9],
+        ["I'm not sure which people like speaking Spanish", "No estoy seguro cuáles personas a las que les gusta hablar español", null, 10],
+        ["Do you know which of your friends like speaking Spanish", "Conoces cuáles de tus amigos a las que les gusta hablar español", null, 11]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 0, "longer_4_5": 2, "long_6_plus": 7}
+    },
+
+    "S0286L03": {
+      "lego": ["speaking", "hablar"],
+      "type": "A",
+      "practice_phrases": [
+        ["speaking", "hablar", null, 1],
+        ["speaking Spanish", "hablar español", null, 2],
+        ["who like speaking", "a las que les gusta hablar", null, 3],
+        ["people who like speaking Spanish", "personas a las que les gusta hablar español", null, 5],
+        ["I like speaking Spanish", "Me gusta hablar español", null, 3],
+        ["Do you know people who like speaking Spanish", "Conoces personas a las que les gusta hablar español", null, 8],
+        ["I'm trying to practise speaking Spanish", "Estoy intentando practicar hablar español", null, 5],
+        ["I want to meet people who like speaking Spanish", "Quiero encontrar personas a las que les gusta hablar español", null, 9],
+        ["I wonder if you like speaking Spanish", "Me pregunto si te gusta hablar español", null, 7],
+        ["People who like speaking Spanish.", "Personas a las que les gusta hablar español.", null, 5]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4}
+    },
+
+    "S0001": {
+      "lego": ["Spanish", "español"],
+      "type": "A",
+      "practice_phrases": [
+        ["Spanish", "español", null, 1],
+        ["speaking Spanish", "hablar español", null, 2],
+        ["people who like speaking Spanish", "personas a las que les gusta hablar español", null, 5],
+        ["I like speaking Spanish", "Me gusta hablar español", null, 3],
+        ["which of your friends speak Spanish", "cuáles de tus amigos hablan español", null, 5],
+        ["Do you know people who like speaking Spanish", "Conoces personas a las que les gusta hablar español", null, 8],
+        ["I'm trying to speak Spanish as often as possible", "Estoy intentando hablar español lo más frecuentemente posible", null, 7],
+        ["I want to meet people who like speaking Spanish", "Quiero encontrar personas a las que les gusta hablar español", null, 9],
+        ["I wonder which of your friends speak Spanish", "Me pregunto cuáles de tus amigos hablan español", null, 6],
+        ["People who like speaking Spanish.", "Personas a las que les gusta hablar español.", null, 5]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 5}
+    }
+  },
+
+  "S0287": {
+    "seed_pair": {
+      "known": "How many people do you know who like watching television?",
+      "target": "¿Cuántas personas conoces a las que les gusta ver la televisión?"
+    },
+
+    "S0287L01": {
+      "lego": ["how many", "cuántas"],
+      "type": "M",
+      "practice_phrases": [
+        ["how many", "cuántas", null, 1],
+        ["how many people", "cuántas personas", null, 2],
+        ["how many friends", "cuántas amigos", null, 2],
+        ["how many people speak Spanish", "cuántas personas hablan español", null, 4],
+        ["how many people do you know", "cuántas personas conoces", null, 4],
+        ["I wonder how many people speak Spanish", "Me pregunto cuántas personas hablan español", null, 5],
+        ["I'm not sure how many people speak Spanish", "No estoy seguro cuántas personas hablan español", null, 6],
+        ["I wanted to know how many people speak Spanish", "Quería descubrir cuántas personas hablan español", null, 6],
+        ["Do you mind if I ask how many people speak Spanish", "¿Te importa si preguntarte cuántas personas hablan español", null, 9],
+        ["I wonder how many of your friends speak Spanish", "Me pregunto cuántas de tus amigos hablan español", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 3, "quite_short_3": 0, "longer_4_5": 3, "long_6_plus": 4}
+    },
+
+    "S0286L01": {
+      "lego": ["people", "personas"],
+      "type": "A",
+      "practice_phrases": [
+        ["people", "personas", null, 1],
+        ["how many people", "cuántas personas", null, 2],
+        ["how many people speak Spanish", "cuántas personas hablan español", null, 4],
+        ["people who like speaking Spanish", "personas a las que les gusta hablar español", null, 5],
+        ["how many people do you know", "cuántas personas conoces", null, 4],
+        ["I know people who like speaking Spanish", "Conozco personas a las que les gusta hablar español", null, 7],
+        ["I want to meet people who like watching television", "Quiero encontrar personas a las que les gusta ver la televisión", null, 9],
+        ["I wonder how many people speak Spanish", "Me pregunto cuántas personas hablan español", null, 5],
+        ["Do you know how many people like watching television", "Conoces cuántas personas a las que les gusta ver la televisión", null, 10],
+        ["How many people do you know who like watching television", "Cuántas personas conoces a las que les gusta ver la televisión", null, 10]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 0, "longer_4_5": 3, "long_6_plus": 5}
+    },
+
+    "S0284L01": {
+      "lego": ["do you know", "conoces"],
+      "type": "M",
+      "practice_phrases": [
+        ["do you know", "conoces", null, 1],
+        ["how many people do you know", "cuántas personas conoces", null, 4],
+        ["Do you know my sister", "Conoces mi hermana", null, 3],
+        ["Do you know if she speaks Spanish", "Conoces si ella habla español", null, 6],
+        ["Do you know people who speak Spanish", "Conoces personas que hablan español", null, 5],
+        ["I wonder if you know how many people speak Spanish", "Me pregunto si conoces cuántas personas hablan español", null, 9],
+        ["Do you know how many of your friends speak Spanish", "Conoces cuántas de tus amigos hablan español", null, 7],
+        ["I'm not sure how many people you know", "No estoy seguro cuántas personas conoces", null, 7],
+        ["Do you know which people like watching television", "Conoces cuáles personas a las que les gusta ver la televisión", null, 10],
+        ["How many people do you know who like watching television", "Cuántas personas conoces a las que les gusta ver la televisión", null, 10]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 6}
+    },
+
+    "S0286L02": {
+      "lego": ["who like", "a las que les gusta"],
+      "type": "M",
+      "practice_phrases": [
+        ["who like", "a las que les gusta", null, 2],
+        ["people who like watching", "personas a las que les gusta ver", null, 4],
+        ["people who like watching television", "personas a las que les gusta ver la televisión", null, 5],
+        ["Do you know people who like watching television", "Conoces personas a las que les gusta ver la televisión", null, 8],
+        ["how many people who like watching television", "cuántas personas a las que les gusta ver la televisión", null, 7],
+        ["I know people who like watching television", "Conozco personas a las que les gusta ver la televisión", null, 7],
+        ["I want to meet people who like watching television", "Quiero encontrar personas a las que les gusta ver la televisión", null, 9],
+        ["I wonder which friends like watching television", "Me pregunto cuáles amigos a las que les gusta ver la televisión", null, 9],
+        ["I'm not sure how many people like watching television", "No estoy seguro cuántas personas a las que les gusta ver la televisión", null, 10],
+        ["How many people do you know who like watching television", "Cuántas personas conoces a las que les gusta ver la televisión", null, 10]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 0, "longer_4_5": 2, "long_6_plus": 7}
+    },
+
+    "S0287L05": {
+      "lego": ["watching", "ver"],
+      "type": "A",
+      "practice_phrases": [
+        ["watching", "ver", null, 1],
+        ["watching television", "ver la televisión", null, 2],
+        ["who like watching", "a las que les gusta ver", null, 3],
+        ["people who like watching television", "personas a las que les gusta ver la televisión", null, 5],
+        ["I like watching television", "Me gusta ver la televisión", null, 3],
+        ["Do you know people who like watching television", "Conoces personas a las que les gusta ver la televisión", null, 8],
+        ["I want to meet people who like watching television", "Quiero encontrar personas a las que les gusta ver la televisión", null, 9],
+        ["how many people do you know who like watching television", "cuántas personas conoces a las que les gusta ver la televisión", null, 10],
+        ["I wonder if you like watching television", "Me pregunto si te gusta ver la televisión", null, 7],
+        ["I'm not sure how many people like watching television", "No estoy seguro cuántas personas a las que les gusta ver la televisión", null, 10]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 1, "long_6_plus": 5}
+    },
+
+    "S0287L06": {
+      "lego": ["television", "la televisión"],
+      "type": "M",
+      "practice_phrases": [
+        ["television", "la televisión", null, 1],
+        ["watching television", "ver la televisión", null, 2],
+        ["I like watching television", "Me gusta ver la televisión", null, 3],
+        ["people who like watching television", "personas a las que les gusta ver la televisión", null, 5],
+        ["Do you like watching television", "Te gusta ver la televisión", null, 4],
+        ["Do you know people who like watching television", "Conoces personas a las que les gusta ver la televisión", null, 8],
+        ["I wonder if you like watching television", "Me pregunto si te gusta ver la televisión", null, 7],
+        ["how many people do you know who like watching television", "cuántas personas conoces a las que les gusta ver la televisión", null, 10],
+        ["I'm not sure if you like watching television", "No estoy seguro si te gusta ver la televisión", null, 8],
+        ["How many people do you know who like watching television?", "¿Cuántas personas conoces a las que les gusta ver la televisión?", null, 10]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 5}
+    }
+  },
+
+  "S0288": {
+    "seed_pair": {
+      "known": "Most people I know like watching television.",
+      "target": "A la mayoría de la gente que conozco le gusta ver la televisión."
+    },
+
+    "S0288L01": {
+      "lego": ["most", "a la mayoría de"],
+      "type": "M",
+      "practice_phrases": [
+        ["most", "a la mayoría de", null, 2],
+        ["most people", "a la mayoría de la gente", null, 3],
+        ["most people I know", "a la mayoría de la gente que conozco", null, 5],
+        ["most people like watching television", "a la mayoría de la gente le gusta ver la televisión", null, 7],
+        ["most people I know speak Spanish", "a la mayoría de la gente que conozco hablan español", null, 7],
+        ["I know most people like watching television", "Sé que a la mayoría de la gente le gusta ver la televisión", null, 10],
+        ["I wonder if most people like watching television", "Me pregunto si a la mayoría de la gente le gusta ver la televisión", null, 11],
+        ["I'm not sure if most people speak Spanish", "No estoy seguro si a la mayoría de la gente hablan español", null, 10],
+        ["Do you know if most people like watching television", "Conoces si a la mayoría de la gente le gusta ver la televisión", null, 12],
+        ["most of your friends", "a la mayoría de tus amigos", null, 4]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 6}
+    },
+
+    "S0288L02": {
+      "lego": ["people", "la gente"],
+      "type": "M",
+      "practice_phrases": [
+        ["people", "la gente", null, 1],
+        ["most people", "a la mayoría de la gente", null, 3],
+        ["people I know", "la gente que conozco", null, 3],
+        ["most people I know", "a la mayoría de la gente que conozco", null, 5],
+        ["people like watching television", "la gente le gusta ver la televisión", null, 5],
+        ["I know people like watching television", "Sé que la gente le gusta ver la televisión", null, 7],
+        ["I wonder if people like watching television", "Me pregunto si la gente le gusta ver la televisión", null, 8],
+        ["most people I know like watching television", "a la mayoría de la gente que conozco le gusta ver la televisión", null, 10],
+        ["I'm not sure if people like watching television", "No estoy seguro si la gente le gusta ver la televisión", null, 9],
+        ["Do you know if people like watching television", "Conoces si la gente le gusta ver la televisión", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 5}
+    },
+
+    "S0288L03": {
+      "lego": ["I know", "conozco"],
+      "type": "A",
+      "practice_phrases": [
+        ["I know", "conozco", null, 1],
+        ["people I know", "la gente que conozco", null, 3],
+        ["most people I know", "a la mayoría de la gente que conozco", null, 5],
+        ["I know that", "Conozco eso", null, 2],
+        ["I know she speaks Spanish", "Conozco que ella habla español", null, 5],
+        ["most people I know like watching television", "a la mayoría de la gente que conozco le gusta ver la televisión", null, 10],
+        ["I know people who like watching television", "Conozco personas a las que les gusta ver la televisión", null, 7],
+        ["I know which of your friends speak Spanish", "Conozco cuáles de tus amigos hablan español", null, 6],
+        ["I know how many people speak Spanish", "Conozco cuántas personas hablan español", null, 5],
+        ["I know my sister's friend", "Conozco la amiga de mi hermana", null, 5]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 5}
+    },
+
+    "S0288L04": {
+      "lego": ["like", "le gusta"],
+      "type": "M",
+      "practice_phrases": [
+        ["like", "le gusta", null, 1],
+        ["people like", "la gente le gusta", null, 2],
+        ["people like watching television", "la gente le gusta ver la televisión", null, 4],
+        ["most people like watching television", "a la mayoría de la gente le gusta ver la televisión", null, 6],
+        ["I know people like watching television", "Sé que la gente le gusta ver la televisión", null, 7],
+        ["most people I know like watching television", "a la mayoría de la gente que conozco le gusta ver la televisión", null, 10],
+        ["I wonder if people like watching television", "Me pregunto si la gente le gusta ver la televisión", null, 8],
+        ["I'm not sure if people like watching television", "No estoy seguro si la gente le gusta ver la televisión", null, 9],
+        ["Do you know if people like watching television", "Conoces si la gente le gusta ver la televisión", null, 8],
+        ["I wanted to know if people like watching television", "Quería descubrir si la gente le gusta ver la televisión", null, 9]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 0, "longer_4_5": 2, "long_6_plus": 6}
+    },
+
+    "S0287L05": {
+      "lego": ["watching", "ver"],
+      "type": "A",
+      "practice_phrases": [
+        ["watching", "ver", null, 1],
+        ["watching television", "ver la televisión", null, 2],
+        ["people like watching television", "la gente le gusta ver la televisión", null, 4],
+        ["I like watching television", "Me gusta ver la televisión", null, 3],
+        ["most people like watching television", "a la mayoría de la gente le gusta ver la televisión", null, 6],
+        ["most people I know like watching television", "a la mayoría de la gente que conozco le gusta ver la televisión", null, 10],
+        ["I know people who like watching television", "Conozco personas a las que les gusta ver la televisión", null, 7],
+        ["I wonder if you like watching television", "Me pregunto si te gusta ver la televisión", null, 7],
+        ["Do you know people who like watching television", "Conoces personas a las que les gusta ver la televisión", null, 8],
+        ["I'm not sure if people like watching television", "No estoy seguro si la gente le gusta ver la televisión", null, 9]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 5}
+    },
+
+    "S0287L06": {
+      "lego": ["television", "la televisión"],
+      "type": "M",
+      "practice_phrases": [
+        ["television", "la televisión", null, 1],
+        ["watching television", "ver la televisión", null, 2],
+        ["I like watching television", "Me gusta ver la televisión", null, 3],
+        ["people like watching television", "la gente le gusta ver la televisión", null, 4],
+        ["most people like watching television", "a la mayoría de la gente le gusta ver la televisión", null, 6],
+        ["most people I know like watching television", "a la mayoría de la gente que conozco le gusta ver la televisión", null, 10],
+        ["I wonder if you like watching television", "Me pregunto si te gusta ver la televisión", null, 7],
+        ["I know people who like watching television", "Conozco personas a las que les gusta ver la televisión", null, 7],
+        ["I'm not sure if people like watching television", "No estoy seguro si la gente le gusta ver la televisión", null, 9],
+        ["Most people I know like watching television.", "A la mayoría de la gente que conozco le gusta ver la televisión.", null, 10]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 5}
+    }
+  },
+
+  "S0289": {
+    "seed_pair": {
+      "known": "I wonder if she's going to be there this afternoon.",
+      "target": "Me pregunto si ella va a estar allí esta tarde."
+    },
+
+    "S0289L01": {
+      "lego": ["I wonder", "me pregunto"],
+      "type": "M",
+      "practice_phrases": [
+        ["I wonder", "me pregunto", null, 1],
+        ["I wonder if", "me pregunto si", null, 2],
+        ["I wonder if she speaks Spanish", "Me pregunto si ella habla español", null, 6],
+        ["I wonder if you know", "Me pregunto si sabes", null, 4],
+        ["I wonder if you mind", "Me pregunto si te importa", null, 4],
+        ["I wonder if she's going to be there", "Me pregunto si ella va a estar allí", null, 7],
+        ["I wonder if most people like watching television", "Me pregunto si a la mayoría de la gente le gusta ver la televisión", null, 11],
+        ["I wonder which of your friends speak Spanish", "Me pregunto cuáles de tus amigos hablan español", null, 6],
+        ["I wonder how many people speak Spanish", "Me pregunto cuántas personas hablan español", null, 5],
+        ["I wonder if you like watching television", "Me pregunto si te gusta ver la televisión", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 0, "longer_4_5": 3, "long_6_plus": 5}
+    },
+
+    "S0010": {
+      "lego": ["if", "si"],
+      "type": "A",
+      "practice_phrases": [
+        ["if", "si", null, 1],
+        ["if she speaks", "si ella habla", null, 3],
+        ["I wonder if", "me pregunto si", null, 2],
+        ["if you know", "si sabes", null, 2],
+        ["I'm not sure if she speaks Spanish", "No estoy seguro si ella habla español", null, 7],
+        ["I wonder if she's going to be there", "Me pregunto si ella va a estar allí", null, 7],
+        ["Do you mind if I speak with you", "¿Te importa si hablo contigo", null, 6],
+        ["I wanted to know if you know my sister", "Quería descubrir si conoces mi hermana", null, 8],
+        ["I wonder if most people like watching television", "Me pregunto si a la mayoría de la gente le gusta ver la televisión", null, 11],
+        ["I'm not sure if you like watching television", "No estoy seguro si te gusta ver la televisión", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 3, "quite_short_3": 1, "longer_4_5": 1, "long_6_plus": 5}
+    },
+
+    "S0017": {
+      "lego": ["she", "ella"],
+      "type": "A",
+      "practice_phrases": [
+        ["she", "ella", null, 1],
+        ["she speaks", "ella habla", null, 2],
+        ["if she speaks", "si ella habla", null, 3],
+        ["I wonder if she speaks Spanish", "Me pregunto si ella habla español", null, 6],
+        ["I know she speaks Spanish", "Sé que ella habla español", null, 5],
+        ["I wonder if she's going to be there", "Me pregunto si ella va a estar allí", null, 7],
+        ["I'm not sure if she speaks Spanish", "No estoy seguro si ella habla español", null, 7],
+        ["I wanted to know if she knows my sister", "Quería descubrir si ella conoce mi hermana", null, 9],
+        ["Do you know if she's going to be there", "Conoces si ella va a estar allí", null, 8],
+        ["Do you mind if she speaks with you", "¿Te importa si ella habla contigo", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 1, "long_6_plus": 6}
+    },
+
+    "S0289L04": {
+      "lego": ["'s going to be", "va a estar"],
+      "type": "M",
+      "practice_phrases": [
+        ["'s going to be", "va a estar", null, 2],
+        ["she's going to be there", "ella va a estar allí", null, 4],
+        ["I wonder if she's going to be there", "Me pregunto si ella va a estar allí", null, 7],
+        ["Do you know if she's going to be there", "Conoces si ella va a estar allí", null, 8],
+        ["I'm not sure if she's going to be there", "No estoy seguro si ella va a estar allí", null, 9],
+        ["I wanted to know if she's going to be there", "Quería descubrir si ella va a estar allí", null, 9],
+        ["I wonder if she's going to be there this afternoon", "Me pregunto si ella va a estar allí esta tarde", null, 10],
+        ["Do you mind if she's going to be there", "¿Te importa si ella va a estar allí", null, 8],
+        ["I know she's going to be there", "Sé que ella va a estar allí", null, 7],
+        ["I'm not sure if he's going to be there", "No estoy seguro si él va a estar allí", null, 9]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 0, "longer_4_5": 2, "long_6_plus": 7}
+    },
+
+    "S0289L05": {
+      "lego": ["there", "allí"],
+      "type": "A",
+      "practice_phrases": [
+        ["there", "allí", null, 1],
+        ["she's going to be there", "ella va a estar allí", null, 4],
+        ["I'm going to be there", "Voy a estar allí", null, 4],
+        ["I wonder if she's going to be there", "Me pregunto si ella va a estar allí", null, 7],
+        ["Do you know if she's going to be there", "Conoces si ella va a estar allí", null, 8],
+        ["I'm not sure if she's going to be there", "No estoy seguro si ella va a estar allí", null, 9],
+        ["I wanted to know if you're going to be there", "Quería descubrir si vas a estar allí", null, 8],
+        ["Do you mind if I'm going to be there", "¿Te importa si voy a estar allí", null, 8],
+        ["I wonder if she's going to be there this afternoon", "Me pregunto si ella va a estar allí esta tarde", null, 10],
+        ["I know she's going to be there", "Sé que ella va a estar allí", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 1, "quite_short_3": 0, "longer_4_5": 2, "long_6_plus": 7}
+    },
+
+    "S0116": {
+      "lego": ["this", "esta"],
+      "type": "A",
+      "practice_phrases": [
+        ["this", "esta", null, 1],
+        ["this afternoon", "esta tarde", null, 2],
+        ["I'm going to be there this afternoon", "Voy a estar allí esta tarde", null, 6],
+        ["this evening", "esta noche", null, 2],
+        ["I wonder if she's going to be there this afternoon", "Me pregunto si ella va a estar allí esta tarde", null, 10],
+        ["Do you know if she's going to be there this afternoon", "Conoces si ella va a estar allí esta tarde", null, 10],
+        ["I'm not sure if she's going to be there this afternoon", "No estoy seguro si ella va a estar allí esta tarde", null, 11],
+        ["I wanted to know if you're going to be there this afternoon", "Quería descubrir si vas a estar allí esta tarde", null, 10],
+        ["Do you mind if I speak with you this afternoon", "¿Te importa si hablo contigo esta tarde", null, 8],
+        ["I want to speak with you this evening", "Quiero hablar contigo esta noche", null, 6]
+      ],
+      "phrase_distribution": {"really_short_1_2": 3, "quite_short_3": 0, "longer_4_5": 1, "long_6_plus": 6}
+    },
+
+    "S0289L07": {
+      "lego": ["afternoon", "tarde"],
+      "type": "A",
+      "practice_phrases": [
+        ["afternoon", "tarde", null, 1],
+        ["this afternoon", "esta tarde", null, 2],
+        ["I'm going to be there this afternoon", "Voy a estar allí esta tarde", null, 6],
+        ["Do you mind if I speak with you this afternoon", "¿Te importa si hablo contigo esta tarde", null, 8],
+        ["I wonder if she's going to be there this afternoon", "Me pregunto si ella va a estar allí esta tarde", null, 10],
+        ["Do you know if she's going to be there this afternoon", "Conoces si ella va a estar allí esta tarde", null, 10],
+        ["I'm not sure if she's going to be there this afternoon", "No estoy seguro si ella va a estar allí esta tarde", null, 11],
+        ["I wanted to know if you're going to be there this afternoon", "Quería descubrir si vas a estar allí esta tarde", null, 10],
+        ["I want to speak with my sister this afternoon", "Quiero hablar con mi hermana esta tarde", null, 7],
+        ["I wonder if she's going to be there this afternoon.", "Me pregunto si ella va a estar allí esta tarde.", null, 10]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 0, "longer_4_5": 1, "long_6_plus": 7}
+    }
+  },
+
+  "S0290": {
+    "seed_pair": {
+      "known": "I wonder if he knows the answer.",
+      "target": "Me pregunto si él sabe la respuesta."
+    },
+
+    "S0289L01": {
+      "lego": ["I wonder", "me pregunto"],
+      "type": "M",
+      "practice_phrases": [
+        ["I wonder", "me pregunto", null, 1],
+        ["I wonder if", "me pregunto si", null, 2],
+        ["I wonder if he knows", "Me pregunto si él sabe", null, 5],
+        ["I wonder if she speaks Spanish", "Me pregunto si ella habla español", null, 6],
+        ["I wonder if you know the answer", "Me pregunto si sabes la respuesta", null, 6],
+        ["I wonder if he knows the answer", "Me pregunto si él sabe la respuesta", null, 6],
+        ["I wonder if she's going to be there this afternoon", "Me pregunto si ella va a estar allí esta tarde", null, 10],
+        ["I wonder which of your friends speak Spanish", "Me pregunto cuáles de tus amigos hablan español", null, 6],
+        ["I wonder how many people like watching television", "Me pregunto cuántas personas a las que les gusta ver la televisión", null, 9],
+        ["I wonder if most people like watching television", "Me pregunto si a la mayoría de la gente le gusta ver la televisión", null, 11]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 0, "longer_4_5": 1, "long_6_plus": 7}
+    },
+
+    "S0010": {
+      "lego": ["if", "si"],
+      "type": "A",
+      "practice_phrases": [
+        ["if", "si", null, 1],
+        ["if he knows", "si él sabe", null, 3],
+        ["I wonder if", "me pregunto si", null, 2],
+        ["I wonder if he knows the answer", "Me pregunto si él sabe la respuesta", null, 6],
+        ["I'm not sure if he knows", "No estoy seguro si él sabe", null, 5],
+        ["Do you know if he knows the answer", "Conoces si él sabe la respuesta", null, 7],
+        ["I wanted to know if he knows the answer", "Quería descubrir si él sabe la respuesta", null, 8],
+        ["Do you mind if I ask if he knows", "¿Te importa si preguntarte si él sabe", null, 8],
+        ["I'm not sure if she's going to be there", "No estoy seguro si ella va a estar allí", null, 9],
+        ["I wonder if you know the answer", "Me pregunto si sabes la respuesta", null, 6]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 2, "long_6_plus": 5}
+    },
+
+    "S0016": {
+      "lego": ["he", "él"],
+      "type": "A",
+      "practice_phrases": [
+        ["he", "él", null, 1],
+        ["he knows", "él sabe", null, 2],
+        ["if he knows", "si él sabe", null, 3],
+        ["I wonder if he knows", "Me pregunto si él sabe", null, 5],
+        ["I wonder if he knows the answer", "Me pregunto si él sabe la respuesta", null, 6],
+        ["I'm not sure if he knows the answer", "No estoy seguro si él sabe la respuesta", null, 8],
+        ["Do you know if he knows the answer", "Conoces si él sabe la respuesta", null, 7],
+        ["I wanted to know if he knows the answer", "Quería descubrir si él sabe la respuesta", null, 8],
+        ["Do you mind if he speaks with you", "¿Te importa si él habla contigo", null, 7],
+        ["I wonder if he's going to be there", "Me pregunto si él va a estar allí", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 1, "longer_4_5": 1, "long_6_plus": 6}
+    },
+
+    "S0290L04": {
+      "lego": ["knows", "sabe"],
+      "type": "A",
+      "practice_phrases": [
+        ["knows", "sabe", null, 1],
+        ["he knows", "él sabe", null, 2],
+        ["if he knows", "si él sabe", null, 3],
+        ["I wonder if he knows", "Me pregunto si él sabe", null, 5],
+        ["he knows the answer", "él sabe la respuesta", null, 3],
+        ["I wonder if he knows the answer", "Me pregunto si él sabe la respuesta", null, 6],
+        ["Do you know if he knows the answer", "Conoces si él sabe la respuesta", null, 7],
+        ["I'm not sure if he knows the answer", "No estoy seguro si él sabe la respuesta", null, 8],
+        ["I wanted to know if he knows the answer", "Quería descubrir si él sabe la respuesta", null, 8],
+        ["Do you mind if I ask if he knows", "¿Te importa si preguntarte si él sabe", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 1, "long_6_plus": 5}
+    },
+
+    "S0202L06": {
+      "lego": ["the", "la"],
+      "type": "A",
+      "practice_phrases": [
+        ["the", "la", null, 1],
+        ["the answer", "la respuesta", null, 2],
+        ["he knows the answer", "él sabe la respuesta", null, 3],
+        ["I know the answer", "Sé la respuesta", null, 3],
+        ["I wonder if he knows the answer", "Me pregunto si él sabe la respuesta", null, 6],
+        ["I wonder if you know the answer", "Me pregunto si sabes la respuesta", null, 6],
+        ["I'm not sure if he knows the answer", "No estoy seguro si él sabe la respuesta", null, 8],
+        ["Do you know if he knows the answer", "Conoces si él sabe la respuesta", null, 7],
+        ["I wanted to know if he knows the answer", "Quería descubrir si él sabe la respuesta", null, 8],
+        ["I want to know what the answer is", "Quiero descubrir cuál es la respuesta", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 1, "long_6_plus": 5}
+    },
+
+    "S0290L06": {
+      "lego": ["answer", "respuesta"],
+      "type": "A",
+      "practice_phrases": [
+        ["answer", "respuesta", null, 1],
+        ["the answer", "la respuesta", null, 2],
+        ["he knows the answer", "él sabe la respuesta", null, 3],
+        ["I know the answer", "Sé la respuesta", null, 3],
+        ["I wonder if he knows the answer", "Me pregunto si él sabe la respuesta", null, 6],
+        ["I wonder if you know the answer", "Me pregunto si sabes la respuesta", null, 6],
+        ["Do you know if he knows the answer", "Conoces si él sabe la respuesta", null, 7],
+        ["I'm not sure if he knows the answer", "No estoy seguro si él sabe la respuesta", null, 8],
+        ["I wanted to know if he knows the answer", "Quería descubrir si él sabe la respuesta", null, 8],
+        ["I wonder if he knows the answer.", "Me pregunto si él sabe la respuesta.", null, 6]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 1, "long_6_plus": 5}
+    }
+  }
+}

@@ -1,0 +1,3249 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "agent_id": 20,
+  "seed_range": "S0291-S0300",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "curation_metadata": {
+    "curated_at": "2025-11-07T04:58:19.766295Z",
+    "curated_by": "Agent 20 - Automated basket generation",
+    "spec_version": "phase_5_v3.0"
+  },
+  "S0291L01": {
+    "lego": [
+      "I hope",
+      "espero"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "I hope",
+        "Espero",
+        1
+      ],
+      [
+        "I hope to speak",
+        "Espero hablar",
+        2
+      ],
+      [
+        "I hope I can speak better",
+        "Espero poder hablar mejor",
+        4
+      ],
+      [
+        "I hope to speak Spanish",
+        "Espero hablar español",
+        3
+      ],
+      [
+        "I hope I can speak with you",
+        "Espero poder hablar contigo",
+        5
+      ],
+      [
+        "I hope to learn Spanish soon",
+        "Espero aprender español pronto",
+        4
+      ],
+      [
+        "I hope I can practise speaking with you soon",
+        "Espero poder practicar hablar contigo pronto",
+        7
+      ],
+      [
+        "I hope I can remember every word",
+        "Espero poder recordar toda palabra",
+        6
+      ],
+      [
+        "I hope I can speak Spanish better soon",
+        "Espero poder hablar español mejor pronto",
+        7
+      ],
+      [
+        "I hope to be able to speak with someone today",
+        "Espero poder hablar con alguien hoy",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0291L01 LEGOs only"
+  },
+  "S0291L02": {
+    "lego": [
+      "I'll be able to",
+      "poder"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "I'll be able to",
+        "Poder",
+        1
+      ],
+      [
+        "to be able to speak",
+        "poder hablar",
+        2
+      ],
+      [
+        "I hope I'll be able to speak",
+        "Espero poder hablar",
+        3
+      ],
+      [
+        "I'll be able to speak better",
+        "Poder hablar mejor",
+        3
+      ],
+      [
+        "I hope I'll be able to speak Spanish",
+        "Espero poder hablar español",
+        4
+      ],
+      [
+        "I hope I'll be able to speak with you",
+        "Espero poder hablar contigo",
+        5
+      ],
+      [
+        "I hope I'll be able to speak better soon",
+        "Espero poder hablar mejor pronto",
+        6
+      ],
+      [
+        "I want to be able to practise speaking soon",
+        "Quiero poder practicar hablar pronto",
+        6
+      ],
+      [
+        "I hope I'll be able to speak Spanish with you soon",
+        "Espero poder hablar español contigo pronto",
+        7
+      ],
+      [
+        "I'm trying to be able to speak as often as possible",
+        "Estoy intentando poder hablar lo más frecuentemente posible",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0291L02 LEGOs only"
+  },
+  "S0001": {
+    "lego": [
+      "Spanish",
+      "español"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to speak",
+        "hablar",
+        1
+      ],
+      [
+        "to speak Spanish",
+        "hablar español",
+        2
+      ],
+      [
+        "I hope to speak better",
+        "Espero hablar mejor",
+        3
+      ],
+      [
+        "I want to be able to speak",
+        "Quiero poder hablar",
+        4
+      ],
+      [
+        "I hope I'll be able to speak",
+        "Espero poder hablar",
+        3
+      ],
+      [
+        "I hope to speak Spanish soon",
+        "Espero hablar español pronto",
+        4
+      ],
+      [
+        "I hope I'll be able to speak better",
+        "Espero poder hablar mejor",
+        5
+      ],
+      [
+        "I want to be able to speak Spanish with you",
+        "Quiero poder hablar español contigo",
+        6
+      ],
+      [
+        "I hope I'll be able to speak with you soon",
+        "Espero poder hablar contigo pronto",
+        6
+      ],
+      [
+        "I'm trying to be able to speak Spanish better",
+        "Estoy intentando poder hablar español mejor",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0001 LEGOs only"
+  },
+  "S0029": {
+    "lego": [
+      "better",
+      "mejor"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "better",
+        "mejor",
+        1
+      ],
+      [
+        "to speak better",
+        "hablar mejor",
+        2
+      ],
+      [
+        "I hope to speak better",
+        "Espero hablar mejor",
+        3
+      ],
+      [
+        "I want to speak better",
+        "Quiero hablar mejor",
+        3
+      ],
+      [
+        "I hope I'll be able to speak better",
+        "Espero poder hablar mejor",
+        5
+      ],
+      [
+        "I want to be able to speak better",
+        "Quiero poder hablar mejor",
+        5
+      ],
+      [
+        "I hope to speak Spanish better soon",
+        "Espero hablar español mejor pronto",
+        5
+      ],
+      [
+        "I'm trying to be able to speak better",
+        "Estoy intentando poder hablar mejor",
+        6
+      ],
+      [
+        "I want to learn how to speak Spanish better",
+        "Quiero aprender cómo hablar español mejor",
+        7
+      ],
+      [
+        "I hope I'll be able to speak Spanish better with you",
+        "Espero poder hablar español mejor contigo",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0029 LEGOs only"
+  },
+  "S0023": {
+    "lego": [
+      "soon",
+      "pronto"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "soon",
+        "pronto",
+        1
+      ],
+      [
+        "to speak soon",
+        "hablar pronto",
+        2
+      ],
+      [
+        "I hope to speak soon",
+        "Espero hablar pronto",
+        3
+      ],
+      [
+        "I hope to speak better soon",
+        "Espero hablar mejor pronto",
+        4
+      ],
+      [
+        "I want to be able to speak soon",
+        "Quiero poder hablar pronto",
+        5
+      ],
+      [
+        "I hope I can speak with you soon",
+        "Espero poder hablar contigo pronto",
+        6
+      ],
+      [
+        "I hope I'll be able to speak Spanish soon",
+        "Espero poder hablar español pronto",
+        6
+      ],
+      [
+        "I'm going to try to speak Spanish soon",
+        "Voy a intentar hablar español pronto",
+        7
+      ],
+      [
+        "I want to be able to speak Spanish better soon",
+        "Quiero poder hablar español mejor pronto",
+        7
+      ],
+      [
+        "I hope I'll be able to speak better soon.",
+        "Espero poder hablar mejor pronto.",
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0023 LEGOs only"
+  },
+  "S0149": {
+    "lego": [
+      "I hope",
+      "espero que"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I hope",
+        "Espero que",
+        1
+      ],
+      [
+        "I hope you can",
+        "Espero que puedas",
+        2
+      ],
+      [
+        "I hope you can come",
+        "Espero que puedas venir",
+        3
+      ],
+      [
+        "I hope you can speak Spanish",
+        "Espero que puedas hablar español",
+        4
+      ],
+      [
+        "I hope you'll be able to come",
+        "Espero que puedas venir",
+        3
+      ],
+      [
+        "I hope you can speak with me",
+        "Espero que puedas hablar conmigo",
+        5
+      ],
+      [
+        "I hope you'll be able to speak soon",
+        "Espero que puedas hablar pronto",
+        5
+      ],
+      [
+        "I hope you can come and speak with me",
+        "Espero que puedas venir y hablar conmigo",
+        7
+      ],
+      [
+        "I hope you'll be able to speak Spanish with me",
+        "Espero que puedas hablar español conmigo",
+        6
+      ],
+      [
+        "I hope you can remember everything I want to say",
+        "Espero que puedas recordar todo lo que quiero decir",
+        11
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0149 LEGOs only"
+  },
+  "S0292L02": {
+    "lego": [
+      "you'll be able to",
+      "puedas"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "you'll be able to",
+        "puedas",
+        1
+      ],
+      [
+        "you'll be able to come",
+        "puedas venir",
+        2
+      ],
+      [
+        "I hope you'll be able to",
+        "Espero que puedas",
+        3
+      ],
+      [
+        "I hope you'll be able to speak",
+        "Espero que puedas hablar",
+        4
+      ],
+      [
+        "I hope you'll be able to come",
+        "Espero que puedas venir",
+        4
+      ],
+      [
+        "I hope you'll be able to speak Spanish",
+        "Espero que puedas hablar español",
+        5
+      ],
+      [
+        "I hope you'll be able to speak with me",
+        "Espero que puedas hablar conmigo",
+        6
+      ],
+      [
+        "I hope you'll be able to come and speak",
+        "Espero que puedas venir y hablar",
+        6
+      ],
+      [
+        "I want you to be able to speak Spanish soon",
+        "Quiero que puedas hablar español pronto",
+        7
+      ],
+      [
+        "I hope you'll be able to speak Spanish with me soon",
+        "Espero que puedas hablar español conmigo pronto",
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0292L02 LEGOs only"
+  },
+  "S0168": {
+    "lego": [
+      "to come",
+      "venir"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to come",
+        "venir",
+        1
+      ],
+      [
+        "to come today",
+        "venir hoy",
+        2
+      ],
+      [
+        "I hope you can come",
+        "Espero que puedas venir",
+        4
+      ],
+      [
+        "I want to come",
+        "Quiero venir",
+        2
+      ],
+      [
+        "I hope you'll be able to come",
+        "Espero que puedas venir",
+        4
+      ],
+      [
+        "I want you to come and speak",
+        "Quiero que puedas venir y hablar",
+        6
+      ],
+      [
+        "I hope you can come and speak with me",
+        "Espero que puedas venir y hablar conmigo",
+        8
+      ],
+      [
+        "I'm going to try to come soon",
+        "Voy a intentar venir pronto",
+        6
+      ],
+      [
+        "I hope you'll be able to come and speak Spanish",
+        "Espero que puedas venir y hablar español",
+        7
+      ],
+      [
+        "I want to be able to come and speak with you",
+        "Quiero poder venir y hablar contigo",
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 0,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0168 LEGOs only"
+  },
+  "S0133": {
+    "lego": [
+      "to",
+      "a"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to",
+        "a",
+        1
+      ],
+      [
+        "to the",
+        "a la",
+        2
+      ],
+      [
+        "I'm going to come",
+        "Voy a venir",
+        3
+      ],
+      [
+        "I want to come to",
+        "Quiero venir a",
+        3
+      ],
+      [
+        "I'm going to try to speak",
+        "Voy a intentar hablar",
+        5
+      ],
+      [
+        "I hope you can come to speak",
+        "Espero que puedas venir a hablar",
+        6
+      ],
+      [
+        "I want to be able to come soon",
+        "Quiero poder venir pronto",
+        6
+      ],
+      [
+        "I'm going to try to speak Spanish soon",
+        "Voy a intentar hablar español pronto",
+        7
+      ],
+      [
+        "I hope you'll be able to come to speak with me",
+        "Espero que puedas venir a hablar conmigo",
+        8
+      ],
+      [
+        "I'm trying to be able to speak as often as possible",
+        "Estoy intentando poder hablar lo más frecuentemente posible",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0133 LEGOs only"
+  },
+  "S0202L06": {
+    "lego": [
+      "the",
+      "la"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "the",
+        "la",
+        1
+      ],
+      [
+        "the party",
+        "la fiesta",
+        2
+      ],
+      [
+        "to the party",
+        "a la fiesta",
+        3
+      ],
+      [
+        "I want to come to the party",
+        "Quiero venir a la fiesta",
+        6
+      ],
+      [
+        "to come to the party",
+        "venir a la fiesta",
+        4
+      ],
+      [
+        "I hope you can come to the party",
+        "Espero que puedas venir a la fiesta",
+        7
+      ],
+      [
+        "I hope you'll be able to come to the party",
+        "Espero que puedas venir a la fiesta",
+        7
+      ],
+      [
+        "I'm going to try to come to the party",
+        "Voy a intentar venir a la fiesta",
+        8
+      ],
+      [
+        "I want to be able to speak Spanish at the party",
+        "Quiero poder hablar español a la fiesta",
+        8
+      ],
+      [
+        "I hope you'll be able to come and speak at the party",
+        "Espero que puedas venir y hablar a la fiesta",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0202L06 LEGOs only"
+  },
+  "S0292L06": {
+    "lego": [
+      "party",
+      "fiesta"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "party",
+        "fiesta",
+        1
+      ],
+      [
+        "the party",
+        "la fiesta",
+        2
+      ],
+      [
+        "to come to the party",
+        "venir a la fiesta",
+        4
+      ],
+      [
+        "I want to come to the party",
+        "Quiero venir a la fiesta",
+        6
+      ],
+      [
+        "I'm going to come to the party",
+        "Voy a venir a la fiesta",
+        7
+      ],
+      [
+        "I hope you can come to the party",
+        "Espero que puedas venir a la fiesta",
+        7
+      ],
+      [
+        "I want to be able to speak at the party",
+        "Quiero poder hablar a la fiesta",
+        7
+      ],
+      [
+        "I hope you'll be able to speak Spanish at the party",
+        "Espero que puedas hablar español a la fiesta",
+        9
+      ],
+      [
+        "I'm trying to speak Spanish as often as possible at the party",
+        "Estoy intentando hablar español lo más frecuentemente posible a la fiesta",
+        11
+      ],
+      [
+        "I hope you'll be able to come to the party.",
+        "Espero que puedas venir a la fiesta.",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 1,
+      "long_6_plus": 7
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0292L06 LEGOs only"
+  },
+  "S0181": {
+    "lego": [
+      "I have to",
+      "tengo que"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I have to",
+        "Tengo que",
+        1
+      ],
+      [
+        "I have to speak",
+        "Tengo que hablar",
+        2
+      ],
+      [
+        "I have to find out",
+        "Tengo que descubrir",
+        3
+      ],
+      [
+        "I have to speak Spanish",
+        "Tengo que hablar español",
+        3
+      ],
+      [
+        "I have to learn how to speak",
+        "Tengo que aprender cómo hablar",
+        5
+      ],
+      [
+        "I have to try to speak better",
+        "Tengo que intentar hablar mejor",
+        6
+      ],
+      [
+        "I have to find out how to speak Spanish",
+        "Tengo que descubrir cómo hablar español",
+        6
+      ],
+      [
+        "I have to be able to speak with you soon",
+        "Tengo que poder hablar contigo pronto",
+        7
+      ],
+      [
+        "I have to try to speak Spanish as often as possible",
+        "Tengo que intentar hablar español lo más frecuentemente posible",
+        10
+      ],
+      [
+        "I have to find out where he's going to speak",
+        "Tengo que descubrir dónde va a hablar",
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0181 LEGOs only"
+  },
+  "S0293L02": {
+    "lego": [
+      "find out",
+      "descubrir"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "find out",
+        "descubrir",
+        1
+      ],
+      [
+        "to find out where",
+        "descubrir dónde",
+        2
+      ],
+      [
+        "I have to find out",
+        "Tengo que descubrir",
+        3
+      ],
+      [
+        "I want to find out",
+        "Quiero descubrir",
+        2
+      ],
+      [
+        "I have to find out where",
+        "Tengo que descubrir dónde",
+        4
+      ],
+      [
+        "I'm trying to find out how to speak",
+        "Estoy intentando descubrir cómo hablar",
+        6
+      ],
+      [
+        "I have to find out where he wants to come",
+        "Tengo que descubrir dónde quiere venir",
+        7
+      ],
+      [
+        "I want to find out how to speak Spanish better",
+        "Quiero descubrir cómo hablar español mejor",
+        7
+      ],
+      [
+        "I have to find out where he's going to speak",
+        "Tengo que descubrir dónde va a hablar",
+        8
+      ],
+      [
+        "I'm trying to find out where I can speak Spanish",
+        "Estoy intentando descubrir dónde puedo hablar español",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0293L02 LEGOs only"
+  },
+  "S0154": {
+    "lego": [
+      "where",
+      "dónde"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "where",
+        "dónde",
+        1
+      ],
+      [
+        "where to speak",
+        "dónde hablar",
+        2
+      ],
+      [
+        "I have to find out where",
+        "Tengo que descubrir dónde",
+        4
+      ],
+      [
+        "I want to find out where",
+        "Quiero descubrir dónde",
+        3
+      ],
+      [
+        "I don't know where to speak",
+        "No conozco dónde hablar",
+        4
+      ],
+      [
+        "I have to find out where to speak",
+        "Tengo que descubrir dónde hablar",
+        5
+      ],
+      [
+        "I'm trying to find out where to speak Spanish",
+        "Estoy intentando descubrir dónde hablar español",
+        7
+      ],
+      [
+        "I have to find out where he wants to come",
+        "Tengo que descubrir dónde quiere venir",
+        7
+      ],
+      [
+        "I want to find out where I can speak Spanish better",
+        "Quiero descubrir dónde puedo hablar español mejor",
+        9
+      ],
+      [
+        "I have to find out where he's going to meet me",
+        "Tengo que descubrir dónde va a reunirse conmigo",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0154 LEGOs only"
+  },
+  "S0293L04": {
+    "lego": [
+      "'s going to",
+      "va a"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "'s going to",
+        "va a",
+        1
+      ],
+      [
+        "he's going to speak",
+        "va a hablar",
+        3
+      ],
+      [
+        "he's going to come",
+        "va a venir",
+        3
+      ],
+      [
+        "I have to find out where he's going to",
+        "Tengo que descubrir dónde va a",
+        6
+      ],
+      [
+        "he's going to speak Spanish",
+        "va a hablar español",
+        4
+      ],
+      [
+        "he's going to try to speak",
+        "va a intentar hablar",
+        5
+      ],
+      [
+        "I want to find out where he's going to speak",
+        "Quiero descubrir dónde va a hablar",
+        7
+      ],
+      [
+        "he's going to be able to come soon",
+        "va a poder venir pronto",
+        6
+      ],
+      [
+        "I have to find out where he's going to speak Spanish",
+        "Tengo que descubrir dónde va a hablar español",
+        9
+      ],
+      [
+        "I hope he's going to be able to come to the party",
+        "Espero que va a poder venir a la fiesta",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0293L04 LEGOs only"
+  },
+  "S0138": {
+    "lego": [
+      "to meet",
+      "reunirse"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "to meet",
+        "reunirse",
+        1
+      ],
+      [
+        "to meet me",
+        "reunirse conmigo",
+        2
+      ],
+      [
+        "I want to meet",
+        "Quiero reunirse",
+        2
+      ],
+      [
+        "he's going to meet",
+        "va a reunirse",
+        3
+      ],
+      [
+        "I have to find out where to meet",
+        "Tengo que descubrir dónde reunirse",
+        5
+      ],
+      [
+        "I want to meet with you soon",
+        "Quiero reunirse contigo pronto",
+        5
+      ],
+      [
+        "he's going to meet me today",
+        "va a reunirse conmigo hoy",
+        6
+      ],
+      [
+        "I have to find out where he's going to meet",
+        "Tengo que descubrir dónde va a reunirse",
+        7
+      ],
+      [
+        "I hope he's going to be able to meet with me",
+        "Espero que va a poder reunirse conmigo",
+        8
+      ],
+      [
+        "I have to find out where he's going to meet me.",
+        "Tengo que descubrir dónde va a reunirse conmigo.",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0138 LEGOs only"
+  },
+  "S0015": {
+    "lego": [
+      "with me",
+      "conmigo"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "with me",
+        "conmigo",
+        1
+      ],
+      [
+        "to speak with me",
+        "hablar conmigo",
+        2
+      ],
+      [
+        "he wants to speak with me",
+        "quiere hablar conmigo",
+        4
+      ],
+      [
+        "to meet me",
+        "reunirse conmigo",
+        2
+      ],
+      [
+        "I hope you can speak with me",
+        "Espero que puedas hablar conmigo",
+        6
+      ],
+      [
+        "he's going to meet me",
+        "va a reunirse conmigo",
+        4
+      ],
+      [
+        "I have to find out where to meet me",
+        "Tengo que descubrir dónde reunirse conmigo",
+        6
+      ],
+      [
+        "I want you to be able to speak Spanish with me",
+        "Quiero que puedas hablar español conmigo",
+        8
+      ],
+      [
+        "he's going to try to speak Spanish with me soon",
+        "va a intentar hablar español conmigo pronto",
+        9
+      ],
+      [
+        "I have to find out where he's going to meet me.",
+        "Tengo que descubrir dónde va a reunirse conmigo.",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 0,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0015 LEGOs only"
+  },
+  "S0294L01": {
+    "lego": [
+      "I don't have",
+      "no tengo"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I don't have",
+        "No tengo",
+        1
+      ],
+      [
+        "I don't have time",
+        "No tengo tiempo",
+        2
+      ],
+      [
+        "I don't have enough time",
+        "No tengo suficiente tiempo",
+        3
+      ],
+      [
+        "I don't have to speak",
+        "No tengo que hablar",
+        4
+      ],
+      [
+        "I don't have time to speak",
+        "No tengo tiempo para hablar",
+        5
+      ],
+      [
+        "I don't have enough time to come",
+        "No tengo suficiente tiempo para venir",
+        6
+      ],
+      [
+        "I don't have time to speak with you today",
+        "No tengo tiempo para hablar contigo hoy",
+        8
+      ],
+      [
+        "I don't have enough time to speak Spanish",
+        "No tengo suficiente tiempo para hablar español",
+        7
+      ],
+      [
+        "I don't have time to find out where to meet",
+        "No tengo tiempo para descubrir dónde reunirse",
+        9
+      ],
+      [
+        "I don't have enough time to learn how to speak better",
+        "No tengo suficiente tiempo para aprender cómo hablar mejor",
+        11
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0294L01 LEGOs only"
+  },
+  "S0294L02": {
+    "lego": [
+      "enough",
+      "suficiente"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "enough",
+        "suficiente",
+        1
+      ],
+      [
+        "enough time",
+        "suficiente tiempo",
+        2
+      ],
+      [
+        "I don't have enough",
+        "No tengo suficiente",
+        3
+      ],
+      [
+        "I don't have enough time",
+        "No tengo suficiente tiempo",
+        4
+      ],
+      [
+        "I don't have enough time to speak",
+        "No tengo suficiente tiempo para hablar",
+        6
+      ],
+      [
+        "I want to have enough time",
+        "Quiero tener suficiente tiempo",
+        5
+      ],
+      [
+        "I don't have enough time to come to the party",
+        "No tengo suficiente tiempo para venir a la fiesta",
+        9
+      ],
+      [
+        "I hope I'll have enough time to speak with you",
+        "Espero tener suficiente tiempo para hablar contigo",
+        8
+      ],
+      [
+        "I don't have enough time to learn Spanish today",
+        "No tengo suficiente tiempo para aprender español hoy",
+        9
+      ],
+      [
+        "I'm trying to have enough time to practise speaking",
+        "Estoy intentando tener suficiente tiempo para practicar hablar",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0294L02 LEGOs only"
+  },
+  "S0178": {
+    "lego": [
+      "time",
+      "tiempo"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "time",
+        "tiempo",
+        1
+      ],
+      [
+        "enough time",
+        "suficiente tiempo",
+        2
+      ],
+      [
+        "I don't have time",
+        "No tengo tiempo",
+        3
+      ],
+      [
+        "I don't have enough time",
+        "No tengo suficiente tiempo",
+        4
+      ],
+      [
+        "I have to have time to speak",
+        "Tengo que tener tiempo para hablar",
+        7
+      ],
+      [
+        "I want to have time to learn",
+        "Quiero tener tiempo para aprender",
+        6
+      ],
+      [
+        "I don't have time to speak Spanish today",
+        "No tengo tiempo para hablar español hoy",
+        8
+      ],
+      [
+        "I hope I'll have enough time to come soon",
+        "Espero tener suficiente tiempo para venir pronto",
+        8
+      ],
+      [
+        "I'm trying to find time to practise speaking Spanish",
+        "Estoy intentando descubrir tiempo para practicar hablar español",
+        9
+      ],
+      [
+        "I don't have enough time to speak with you today",
+        "No tengo suficiente tiempo para hablar contigo hoy",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0178 LEGOs only"
+  },
+  "S0109": {
+    "lego": [
+      "to",
+      "para"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to",
+        "para",
+        1
+      ],
+      [
+        "time to speak",
+        "tiempo para hablar",
+        3
+      ],
+      [
+        "enough time to speak",
+        "suficiente tiempo para hablar",
+        4
+      ],
+      [
+        "I don't have time to",
+        "No tengo tiempo para",
+        4
+      ],
+      [
+        "I have to find time to speak",
+        "Tengo que descubrir tiempo para hablar",
+        6
+      ],
+      [
+        "I want to have enough time to learn",
+        "Quiero tener suficiente tiempo para aprender",
+        7
+      ],
+      [
+        "I don't have time to come to the party",
+        "No tengo tiempo para venir a la fiesta",
+        8
+      ],
+      [
+        "I'm trying to find enough time to speak Spanish",
+        "Estoy intentando descubrir suficiente tiempo para hablar español",
+        9
+      ],
+      [
+        "I hope I'll have enough time to speak with you",
+        "Espero tener suficiente tiempo para hablar contigo",
+        9
+      ],
+      [
+        "I don't have enough time to learn how to speak better",
+        "No tengo suficiente tiempo para aprender cómo hablar mejor",
+        11
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0109 LEGOs only"
+  },
+  "S0294L05": {
+    "lego": [
+      "call you",
+      "llamarte"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "call you",
+        "llamarte",
+        1
+      ],
+      [
+        "to call you",
+        "llamarte",
+        1
+      ],
+      [
+        "I want to call you",
+        "Quiero llamarte",
+        2
+      ],
+      [
+        "I have to call you",
+        "Tengo que llamarte",
+        3
+      ],
+      [
+        "I don't have time to call you",
+        "No tengo tiempo para llamarte",
+        6
+      ],
+      [
+        "I'm going to try to call you",
+        "Voy a intentar llamarte",
+        5
+      ],
+      [
+        "I don't have enough time to call you",
+        "No tengo suficiente tiempo para llamarte",
+        7
+      ],
+      [
+        "I want to be able to call you soon",
+        "Quiero poder llamarte pronto",
+        6
+      ],
+      [
+        "I hope I'll have time to call you today",
+        "Espero tener tiempo para llamarte hoy",
+        8
+      ],
+      [
+        "I'm trying to find time to call you and speak",
+        "Estoy intentando descubrir tiempo para llamarte y hablar",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0294L05 LEGOs only"
+  },
+  "S0294L06": {
+    "lego": [
+      "tonight",
+      "esta noche"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "tonight",
+        "esta noche",
+        1
+      ],
+      [
+        "to speak tonight",
+        "hablar esta noche",
+        3
+      ],
+      [
+        "I want to speak tonight",
+        "Quiero hablar esta noche",
+        4
+      ],
+      [
+        "I have to call you tonight",
+        "Tengo que llamarte esta noche",
+        5
+      ],
+      [
+        "I don't have time to call you tonight",
+        "No tengo tiempo para llamarte esta noche",
+        8
+      ],
+      [
+        "I'm going to try to speak Spanish tonight",
+        "Voy a intentar hablar español esta noche",
+        8
+      ],
+      [
+        "I hope I can speak with you tonight",
+        "Espero poder hablar contigo esta noche",
+        7
+      ],
+      [
+        "I want to be able to meet with you tonight",
+        "Quiero poder reunirse contigo esta noche",
+        8
+      ],
+      [
+        "I don't have enough time to come to the party tonight",
+        "No tengo suficiente tiempo para venir a la fiesta esta noche",
+        11
+      ],
+      [
+        "I don't have enough time to call you tonight.",
+        "No tengo suficiente tiempo para llamarte esta noche.",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0294L06 LEGOs only"
+  },
+  "S0295L01": {
+    "lego": [
+      "I didn't say",
+      "no dije"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I didn't say",
+        "No dije",
+        1
+      ],
+      [
+        "I didn't say that",
+        "No dije que",
+        2
+      ],
+      [
+        "I didn't say I wanted",
+        "No dije que quería",
+        4
+      ],
+      [
+        "I didn't say anything",
+        "No dije algo",
+        3
+      ],
+      [
+        "I didn't say I wanted to speak",
+        "No dije que quería hablar",
+        6
+      ],
+      [
+        "I didn't say I wanted to finish",
+        "No dije que quería terminar",
+        6
+      ],
+      [
+        "I didn't say I wanted to come tonight",
+        "No dije que quería venir esta noche",
+        7
+      ],
+      [
+        "I didn't say I have enough time to speak",
+        "No dije que tengo suficiente tiempo para hablar",
+        9
+      ],
+      [
+        "I didn't say that I wanted to finish today",
+        "No dije que quería terminar hoy",
+        7
+      ],
+      [
+        "I didn't say I wanted to be able to come to the party",
+        "No dije que quería poder venir a la fiesta",
+        11
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0295L01 LEGOs only"
+  },
+  "S0102": {
+    "lego": [
+      "that",
+      "que"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "that",
+        "que",
+        1
+      ],
+      [
+        "I said that",
+        "Dije que",
+        2
+      ],
+      [
+        "I didn't say that",
+        "No dije que",
+        3
+      ],
+      [
+        "I hope that you can",
+        "Espero que puedas",
+        4
+      ],
+      [
+        "I said that I wanted",
+        "Dije que quería",
+        4
+      ],
+      [
+        "I didn't say that I wanted to speak",
+        "No dije que quería hablar",
+        7
+      ],
+      [
+        "I have to find out that he's coming",
+        "Tengo que descubrir que va a venir",
+        8
+      ],
+      [
+        "I hope that you'll be able to come tonight",
+        "Espero que puedas venir esta noche",
+        7
+      ],
+      [
+        "I didn't say that I wanted to finish in a day",
+        "No dije que quería terminar en un día",
+        10
+      ],
+      [
+        "I said that I wanted to be able to speak Spanish",
+        "Dije que quería poder hablar español",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0102 LEGOs only"
+  },
+  "S0030": {
+    "lego": [
+      "I wanted",
+      "quería"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "I wanted",
+        "Quería",
+        1
+      ],
+      [
+        "I wanted to speak",
+        "Quería hablar",
+        2
+      ],
+      [
+        "I said I wanted to",
+        "Dije que quería",
+        4
+      ],
+      [
+        "I wanted to learn Spanish",
+        "Quería aprender español",
+        3
+      ],
+      [
+        "I didn't say I wanted to",
+        "No dije que quería",
+        5
+      ],
+      [
+        "I wanted to finish today",
+        "Quería terminar hoy",
+        3
+      ],
+      [
+        "I said that I wanted to speak with you",
+        "Dije que quería hablar contigo",
+        7
+      ],
+      [
+        "I wanted to be able to come to the party",
+        "Quería poder venir a la fiesta",
+        7
+      ],
+      [
+        "I didn't say that I wanted to finish in a day",
+        "No dije que quería terminar en un día",
+        10
+      ],
+      [
+        "I wanted to have enough time to call you tonight",
+        "Quería tener suficiente tiempo para llamarte esta noche",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0030 LEGOs only"
+  },
+  "S0050": {
+    "lego": [
+      "to finish",
+      "terminar"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to finish",
+        "terminar",
+        1
+      ],
+      [
+        "I want to finish",
+        "Quiero terminar",
+        2
+      ],
+      [
+        "I wanted to finish",
+        "Quería terminar",
+        2
+      ],
+      [
+        "I have to finish today",
+        "Tengo que terminar hoy",
+        4
+      ],
+      [
+        "I didn't say I wanted to finish",
+        "No dije que quería terminar",
+        6
+      ],
+      [
+        "I wanted to finish speaking",
+        "Quería terminar hablar",
+        3
+      ],
+      [
+        "I'm trying to finish as soon as possible",
+        "Estoy intentando terminar pronto",
+        5
+      ],
+      [
+        "I don't have enough time to finish tonight",
+        "No tengo suficiente tiempo para terminar esta noche",
+        9
+      ],
+      [
+        "I wanted to be able to finish in a day",
+        "Quería poder terminar en un día",
+        7
+      ],
+      [
+        "I didn't say that I wanted to finish learning Spanish",
+        "No dije que quería terminar aprender español",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0050 LEGOs only"
+  },
+  "S0131": {
+    "lego": [
+      "in",
+      "en"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "in",
+        "en",
+        1
+      ],
+      [
+        "in Spanish",
+        "en español",
+        2
+      ],
+      [
+        "I want to finish in a day",
+        "Quiero terminar en un día",
+        6
+      ],
+      [
+        "I'm trying to speak in Spanish",
+        "Estoy intentando hablar en español",
+        5
+      ],
+      [
+        "I wanted to finish in a day",
+        "Quería terminar en un día",
+        6
+      ],
+      [
+        "I don't have time to finish in a day",
+        "No tengo tiempo para terminar en un día",
+        9
+      ],
+      [
+        "I'm trying to say something in Spanish",
+        "Estoy intentando decir algo en español",
+        7
+      ],
+      [
+        "I didn't say I wanted to finish in a day",
+        "No dije que quería terminar en un día",
+        10
+      ],
+      [
+        "I want to be able to speak in Spanish tonight",
+        "Quiero poder hablar en español esta noche",
+        10
+      ],
+      [
+        "I hope I'll be able to finish in time",
+        "Espero poder terminar en tiempo",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 1,
+      "long_6_plus": 7
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0131 LEGOs only"
+  },
+  "S0282L04": {
+    "lego": [
+      "a",
+      "un"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "a",
+        "un",
+        1
+      ],
+      [
+        "in a day",
+        "en un día",
+        3
+      ],
+      [
+        "I want a word",
+        "Quiero un palabra",
+        3
+      ],
+      [
+        "I wanted to finish in a day",
+        "Quería terminar en un día",
+        6
+      ],
+      [
+        "I have to speak a little Spanish",
+        "Tengo que hablar un poco español",
+        6
+      ],
+      [
+        "I didn't say I wanted to finish in a day",
+        "No dije que quería terminar en un día",
+        10
+      ],
+      [
+        "I don't have time to finish in a day",
+        "No tengo tiempo para terminar en un día",
+        9
+      ],
+      [
+        "I'm trying to learn a little more",
+        "Estoy intentando aprender un poco más",
+        7
+      ],
+      [
+        "I wanted to be able to speak in a day",
+        "Quería poder hablar en un día",
+        8
+      ],
+      [
+        "I hope I can remember a little more Spanish",
+        "Espero poder recordar un poco más español",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 0,
+      "long_6_plus": 7
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0282L04 LEGOs only"
+  },
+  "S0295L07": {
+    "lego": [
+      "day",
+      "día"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "day",
+        "día",
+        1
+      ],
+      [
+        "in a day",
+        "en un día",
+        3
+      ],
+      [
+        "to finish in a day",
+        "terminar en un día",
+        5
+      ],
+      [
+        "I wanted to finish in a day",
+        "Quería terminar en un día",
+        6
+      ],
+      [
+        "I have to finish in a day",
+        "Tengo que terminar en un día",
+        7
+      ],
+      [
+        "I didn't say I wanted to finish in a day",
+        "No dije que quería terminar en un día",
+        10
+      ],
+      [
+        "I don't have enough time to finish in a day",
+        "No tengo suficiente tiempo para terminar en un día",
+        11
+      ],
+      [
+        "I'm going to try to speak Spanish every day",
+        "Voy a intentar hablar español todo día",
+        9
+      ],
+      [
+        "I hope I'll be able to finish in a day",
+        "Espero poder terminar en un día",
+        8
+      ],
+      [
+        "I didn't say that I wanted to finish in a day.",
+        "No dije que quería terminar en un día.",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 7
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0295L07 LEGOs only"
+  },
+  "S0296L01": {
+    "lego": [
+      "I said",
+      "dije"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "I said",
+        "Dije",
+        1
+      ],
+      [
+        "I said that",
+        "Dije que",
+        2
+      ],
+      [
+        "I said I wanted",
+        "Dije que quería",
+        4
+      ],
+      [
+        "I said I needed",
+        "Dije que necesitaba",
+        3
+      ],
+      [
+        "I said that I wanted to speak",
+        "Dije que quería hablar",
+        6
+      ],
+      [
+        "I said I needed more time",
+        "Dije que necesitaba más tiempo",
+        6
+      ],
+      [
+        "I said that I needed a little more",
+        "Dije que necesitaba un poco más",
+        7
+      ],
+      [
+        "I said I wanted to finish in a day",
+        "Dije que quería terminar en un día",
+        9
+      ],
+      [
+        "I said that I needed time to learn Spanish",
+        "Dije que necesitaba tiempo para aprender español",
+        9
+      ],
+      [
+        "I said I wanted to be able to come tonight",
+        "Dije que quería poder venir esta noche",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0296L01 LEGOs only"
+  },
+  "S0296L03": {
+    "lego": [
+      "I needed",
+      "necesitaba"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "I needed",
+        "Necesitaba",
+        1
+      ],
+      [
+        "I needed time",
+        "Necesitaba tiempo",
+        2
+      ],
+      [
+        "I said I needed",
+        "Dije que necesitaba",
+        3
+      ],
+      [
+        "I needed more time",
+        "Necesitaba más tiempo",
+        3
+      ],
+      [
+        "I said I needed a little more",
+        "Dije que necesitaba un poco más",
+        6
+      ],
+      [
+        "I needed time to speak",
+        "Necesitaba tiempo para hablar",
+        5
+      ],
+      [
+        "I said that I needed more time to finish",
+        "Dije que necesitaba más tiempo para terminar",
+        8
+      ],
+      [
+        "I needed a little more time to learn",
+        "Necesitaba un poco más tiempo para aprender",
+        8
+      ],
+      [
+        "I said I needed enough time to speak Spanish",
+        "Dije que necesitaba suficiente tiempo para hablar español",
+        10
+      ],
+      [
+        "I needed to have time to call you tonight",
+        "Necesitaba tener tiempo para llamarte esta noche",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0296L03 LEGOs only"
+  },
+  "S0296L04": {
+    "lego": [
+      "a little more",
+      "un poco más de"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "a little more",
+        "un poco más de",
+        1
+      ],
+      [
+        "I need a little more",
+        "Necesito un poco más de",
+        4
+      ],
+      [
+        "I needed a little more",
+        "Necesitaba un poco más de",
+        4
+      ],
+      [
+        "a little more time",
+        "un poco más de tiempo",
+        4
+      ],
+      [
+        "I said I needed a little more",
+        "Dije que necesitaba un poco más de",
+        7
+      ],
+      [
+        "I want a little more time",
+        "Quiero un poco más de tiempo",
+        6
+      ],
+      [
+        "I needed a little more time to speak",
+        "Necesitaba un poco más de tiempo para hablar",
+        9
+      ],
+      [
+        "I'm trying to speak a little more Spanish",
+        "Estoy intentando hablar un poco más español",
+        8
+      ],
+      [
+        "I said I needed a little more time to finish",
+        "Dije que necesitaba un poco más de tiempo para terminar",
+        11
+      ],
+      [
+        "I hope I'll have a little more time to learn",
+        "Espero tener un poco más de tiempo para aprender",
+        11
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0296L04 LEGOs only"
+  },
+  "S0085": {
+    "lego": [
+      "I don't know",
+      "no conozco"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I don't know",
+        "No conozco",
+        1
+      ],
+      [
+        "I don't know many",
+        "No conozco muchas",
+        2
+      ],
+      [
+        "I don't know many people",
+        "No conozco muchas personas",
+        3
+      ],
+      [
+        "I don't know where",
+        "No conozco dónde",
+        3
+      ],
+      [
+        "I don't know where to speak",
+        "No conozco dónde hablar",
+        5
+      ],
+      [
+        "I don't know many people who speak Spanish",
+        "No conozco muchas personas que hablan español",
+        7
+      ],
+      [
+        "I don't know where to find time",
+        "No conozco dónde descubrir tiempo",
+        6
+      ],
+      [
+        "I don't know many people who want to learn",
+        "No conozco muchas personas que quieren aprender",
+        8
+      ],
+      [
+        "I don't know how to speak Spanish very well",
+        "No conozco cómo hablar español muy bien",
+        9
+      ],
+      [
+        "I said I don't know where to meet you",
+        "Dije que no conozco dónde reunirse contigo",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0085 LEGOs only"
+  },
+  "S0103": {
+    "lego": [
+      "many",
+      "muchas"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "many",
+        "muchas",
+        1
+      ],
+      [
+        "many people",
+        "muchas personas",
+        2
+      ],
+      [
+        "I don't know many",
+        "No conozco muchas",
+        3
+      ],
+      [
+        "I don't know many people",
+        "No conozco muchas personas",
+        4
+      ],
+      [
+        "I don't know many words",
+        "No conozco muchas palabras",
+        4
+      ],
+      [
+        "I want to learn many words",
+        "Quiero aprender muchas palabras",
+        5
+      ],
+      [
+        "I don't know many people who speak Spanish",
+        "No conozco muchas personas que hablan español",
+        7
+      ],
+      [
+        "I'm trying to remember as many words as possible",
+        "Estoy intentando recordar muchas palabras posible",
+        8
+      ],
+      [
+        "I want to be able to speak with many people",
+        "Quiero poder hablar con muchas personas",
+        8
+      ],
+      [
+        "I hope I can learn many words in Spanish",
+        "Espero poder aprender muchas palabras en español",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0103 LEGOs only"
+  },
+  "S0286L01": {
+    "lego": [
+      "people",
+      "personas"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "people",
+        "personas",
+        1
+      ],
+      [
+        "many people",
+        "muchas personas",
+        2
+      ],
+      [
+        "I don't know many people",
+        "No conozco muchas personas",
+        4
+      ],
+      [
+        "people who speak",
+        "personas que hablan",
+        3
+      ],
+      [
+        "I don't know many people who speak",
+        "No conozco muchas personas que hablan",
+        6
+      ],
+      [
+        "I want to meet many people",
+        "Quiero reunirse muchas personas",
+        5
+      ],
+      [
+        "I don't know many people who speak Spanish",
+        "No conozco muchas personas que hablan español",
+        7
+      ],
+      [
+        "I'm trying to find people who want to speak",
+        "Estoy intentando descubrir personas que quieren hablar",
+        9
+      ],
+      [
+        "I hope I can speak Spanish with many people",
+        "Espero poder hablar español con muchas personas",
+        9
+      ],
+      [
+        "I want to meet people who can speak Spanish with me",
+        "Quiero reunirse personas que pueden hablar español conmigo",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0286L01 LEGOs only"
+  },
+  "S0230L03": {
+    "lego": [
+      "who",
+      "que"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "who",
+        "que",
+        1
+      ],
+      [
+        "people who speak",
+        "personas que hablan",
+        3
+      ],
+      [
+        "I know people who",
+        "Conozco personas que",
+        4
+      ],
+      [
+        "people who speak Spanish",
+        "personas que hablan español",
+        4
+      ],
+      [
+        "I don't know many people who speak",
+        "No conozco muchas personas que hablan",
+        6
+      ],
+      [
+        "people who want to learn",
+        "personas que quieren aprender",
+        5
+      ],
+      [
+        "I'm trying to find people who speak Spanish",
+        "Estoy intentando descubrir personas que hablan español",
+        8
+      ],
+      [
+        "I don't know many people who want to speak with me",
+        "No conozco muchas personas que quieren hablar conmigo",
+        10
+      ],
+      [
+        "I hope I can meet people who speak Spanish",
+        "Espero poder reunirse personas que hablan español",
+        9
+      ],
+      [
+        "I want to find people who can speak Spanish with me",
+        "Quiero descubrir personas que pueden hablar español conmigo",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0230L03 LEGOs only"
+  },
+  "S0283L05": {
+    "lego": [
+      "speak",
+      "hablan"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "speak",
+        "hablan",
+        1
+      ],
+      [
+        "they speak",
+        "hablan",
+        1
+      ],
+      [
+        "people who speak",
+        "personas que hablan",
+        3
+      ],
+      [
+        "who speak Spanish",
+        "que hablan español",
+        3
+      ],
+      [
+        "I don't know many people who speak",
+        "No conozco muchas personas que hablan",
+        6
+      ],
+      [
+        "people who speak Spanish",
+        "personas que hablan español",
+        4
+      ],
+      [
+        "I'm trying to find people who speak Spanish",
+        "Estoy intentando descubrir personas que hablan español",
+        8
+      ],
+      [
+        "I want to meet people who speak very well",
+        "Quiero reunirse personas que hablan muy bien",
+        8
+      ],
+      [
+        "I hope I can find people who speak Spanish with me",
+        "Espero poder descubrir personas que hablan español conmigo",
+        10
+      ],
+      [
+        "I don't know many people who speak Spanish very well",
+        "No conozco muchas personas que hablan español muy bien",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0283L05 LEGOs only"
+  },
+  "S0298L01": {
+    "lego": [
+      "I've got",
+      "no me queda"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I've got",
+        "No me queda",
+        1
+      ],
+      [
+        "I've got nothing",
+        "No me queda nada",
+        2
+      ],
+      [
+        "I've got nothing left",
+        "No me queda nada",
+        2
+      ],
+      [
+        "I've got nothing to say",
+        "No me queda nada que decir",
+        5
+      ],
+      [
+        "I've got nothing left to speak",
+        "No me queda nada hablar",
+        4
+      ],
+      [
+        "I've got no time left",
+        "No me queda tiempo",
+        3
+      ],
+      [
+        "I've got nothing left to learn",
+        "No me queda nada aprender",
+        4
+      ],
+      [
+        "I've got nothing left to say to you",
+        "No me queda nada que decir contigo",
+        7
+      ],
+      [
+        "I said I've got nothing left to finish",
+        "Dije que no me queda nada terminar",
+        7
+      ],
+      [
+        "I've got nothing left to say about Spanish",
+        "No me queda nada que decir español",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0298L01 LEGOs only"
+  },
+  "S0298L02": {
+    "lego": [
+      "nothing",
+      "nada"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "nothing",
+        "nada",
+        1
+      ],
+      [
+        "I've got nothing",
+        "No me queda nada",
+        2
+      ],
+      [
+        "nothing to say",
+        "nada que decir",
+        3
+      ],
+      [
+        "I've got nothing left",
+        "No me queda nada",
+        2
+      ],
+      [
+        "I've got nothing to say",
+        "No me queda nada que decir",
+        5
+      ],
+      [
+        "I said nothing",
+        "Dije nada",
+        2
+      ],
+      [
+        "I've got nothing left to speak",
+        "No me queda nada hablar",
+        4
+      ],
+      [
+        "I want to say nothing",
+        "Quiero decir nada",
+        4
+      ],
+      [
+        "I've got nothing left to say to you",
+        "No me queda nada que decir contigo",
+        7
+      ],
+      [
+        "I said I've got nothing left to finish",
+        "Dije que no me queda nada terminar",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0298L02 LEGOs only"
+  },
+  "S0298L03": {
+    "lego": [
+      "to",
+      "que"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to",
+        "que",
+        1
+      ],
+      [
+        "nothing to say",
+        "nada que decir",
+        3
+      ],
+      [
+        "I've got nothing to",
+        "No me queda nada que",
+        4
+      ],
+      [
+        "I've got nothing to say",
+        "No me queda nada que decir",
+        5
+      ],
+      [
+        "I have nothing to speak",
+        "Tengo nada que hablar",
+        5
+      ],
+      [
+        "I've got nothing to learn",
+        "No me queda nada que aprender",
+        5
+      ],
+      [
+        "I've got nothing left to say to you",
+        "No me queda nada que decir contigo",
+        7
+      ],
+      [
+        "I said I have nothing to finish",
+        "Dije que tengo nada que terminar",
+        8
+      ],
+      [
+        "I've got nothing left to say about Spanish",
+        "No me queda nada que decir español",
+        7
+      ],
+      [
+        "I hope I'll have something to say tonight",
+        "Espero tener algo que decir esta noche",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0298L03 LEGOs only"
+  },
+  "S0004": {
+    "lego": [
+      "to say",
+      "decir"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to say",
+        "decir",
+        1
+      ],
+      [
+        "nothing to say",
+        "nada que decir",
+        3
+      ],
+      [
+        "I want to say",
+        "Quiero decir",
+        3
+      ],
+      [
+        "I've got nothing to say",
+        "No me queda nada que decir",
+        5
+      ],
+      [
+        "I have to say something",
+        "Tengo que decir algo",
+        5
+      ],
+      [
+        "I want to say something in Spanish",
+        "Quiero decir algo en español",
+        7
+      ],
+      [
+        "I've got nothing left to say to you",
+        "No me queda nada que decir contigo",
+        7
+      ],
+      [
+        "I'm trying to find something to say",
+        "Estoy intentando descubrir algo que decir",
+        8
+      ],
+      [
+        "I said I wanted to say something in Spanish",
+        "Dije que quería decir algo en español",
+        10
+      ],
+      [
+        "I've got nothing left to say.",
+        "No me queda nada que decir.",
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0004 LEGOs only"
+  },
+  "S0016": {
+    "lego": [
+      "wants",
+      "quiere"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "he",
+        "él",
+        1
+      ],
+      [
+        "he wants",
+        "él quiere",
+        2
+      ],
+      [
+        "he wants to speak",
+        "él quiere hablar",
+        3
+      ],
+      [
+        "he wants to pay",
+        "él quiere pagar",
+        3
+      ],
+      [
+        "he's going to pay",
+        "él va a pagar",
+        4
+      ],
+      [
+        "he wants to pay half",
+        "él quiere pagar la mitad",
+        5
+      ],
+      [
+        "I said he wants to come",
+        "Dije que él quiere venir",
+        6
+      ],
+      [
+        "he's going to try to speak Spanish",
+        "él va a intentar hablar español",
+        8
+      ],
+      [
+        "I hope he'll be able to come tonight",
+        "Espero que él pueda venir esta noche",
+        9
+      ],
+      [
+        "I don't know where he wants to meet me",
+        "No conozco dónde él quiere reunirse conmigo",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0016 LEGOs only"
+  },
+  "S0299L03": {
+    "lego": [
+      "to pay",
+      "pagar"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to pay",
+        "pagar",
+        1
+      ],
+      [
+        "he wants to pay",
+        "quiere pagar",
+        2
+      ],
+      [
+        "I want to pay",
+        "Quiero pagar",
+        2
+      ],
+      [
+        "he wants to pay half",
+        "quiere pagar la mitad",
+        4
+      ],
+      [
+        "I have to pay",
+        "Tengo que pagar",
+        3
+      ],
+      [
+        "he's going to pay",
+        "va a pagar",
+        3
+      ],
+      [
+        "I don't have enough time to pay",
+        "No tengo suficiente tiempo para pagar",
+        7
+      ],
+      [
+        "he wants to be able to pay half",
+        "quiere poder pagar la mitad",
+        6
+      ],
+      [
+        "I said he wants to pay tonight",
+        "Dije que quiere pagar esta noche",
+        7
+      ],
+      [
+        "I hope he'll be able to pay soon",
+        "Espero que pueda pagar pronto",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0299L03 LEGOs only"
+  },
+  "S0299L04": {
+    "lego": [
+      "half",
+      "la mitad"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "half",
+        "la mitad",
+        1
+      ],
+      [
+        "to pay half",
+        "pagar la mitad",
+        3
+      ],
+      [
+        "he wants to pay half",
+        "quiere pagar la mitad",
+        4
+      ],
+      [
+        "I want to pay half",
+        "Quiero pagar la mitad",
+        4
+      ],
+      [
+        "he's going to pay half",
+        "va a pagar la mitad",
+        5
+      ],
+      [
+        "I said he wants to pay half",
+        "Dije que quiere pagar la mitad",
+        7
+      ],
+      [
+        "I have to pay half tonight",
+        "Tengo que pagar la mitad esta noche",
+        7
+      ],
+      [
+        "he wants to be able to pay half",
+        "quiere poder pagar la mitad",
+        6
+      ],
+      [
+        "I hope he'll be able to pay half soon",
+        "Espero que pueda pagar la mitad pronto",
+        8
+      ],
+      [
+        "He wants to pay half.",
+        "Él quiere pagar la mitad.",
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0299L04 LEGOs only"
+  },
+  "S0017": {
+    "lego": [
+      "she",
+      "ella"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "she",
+        "ella",
+        1
+      ],
+      [
+        "she wants",
+        "ella quiere",
+        2
+      ],
+      [
+        "she doesn't want",
+        "ella no quiere",
+        3
+      ],
+      [
+        "she wants to speak",
+        "ella quiere hablar",
+        3
+      ],
+      [
+        "she doesn't want to seem",
+        "ella no quiere parecer",
+        5
+      ],
+      [
+        "she wants to learn Spanish",
+        "ella quiere aprender español",
+        5
+      ],
+      [
+        "she's going to speak with me",
+        "ella va a hablar conmigo",
+        6
+      ],
+      [
+        "I said she doesn't want to pay",
+        "Dije que ella no quiere pagar",
+        7
+      ],
+      [
+        "she wants to be able to come to the party",
+        "ella quiere poder venir a la fiesta",
+        9
+      ],
+      [
+        "I hope she'll be able to speak Spanish soon",
+        "Espero que ella pueda hablar español pronto",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0017 LEGOs only"
+  },
+  "S0034": {
+    "lego": [
+      "doesn't want",
+      "no quiere"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "doesn't want",
+        "no quiere",
+        1
+      ],
+      [
+        "she doesn't want",
+        "no quiere",
+        1
+      ],
+      [
+        "she doesn't want to",
+        "no quiere",
+        2
+      ],
+      [
+        "she doesn't want to speak",
+        "no quiere hablar",
+        3
+      ],
+      [
+        "she doesn't want to seem",
+        "no quiere parecer",
+        3
+      ],
+      [
+        "he doesn't want to pay",
+        "no quiere pagar",
+        4
+      ],
+      [
+        "she doesn't want to seem unfriendly",
+        "no quiere parecer antipática",
+        4
+      ],
+      [
+        "I said she doesn't want to come",
+        "Dije que no quiere venir",
+        6
+      ],
+      [
+        "she doesn't want to be able to speak",
+        "no quiere poder hablar",
+        6
+      ],
+      [
+        "he doesn't want to pay half tonight",
+        "no quiere pagar la mitad esta noche",
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0034 LEGOs only"
+  },
+  "S0300L03": {
+    "lego": [
+      "to seem",
+      "parecer"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to seem",
+        "parecer",
+        1
+      ],
+      [
+        "she doesn't want to seem",
+        "no quiere parecer",
+        3
+      ],
+      [
+        "I don't want to seem",
+        "No quiero parecer",
+        3
+      ],
+      [
+        "to seem unfriendly",
+        "parecer antipática",
+        2
+      ],
+      [
+        "she doesn't want to seem unfriendly",
+        "no quiere parecer antipática",
+        4
+      ],
+      [
+        "I want to seem friendly",
+        "Quiero parecer antipática",
+        3
+      ],
+      [
+        "she doesn't want to seem unfriendly to people",
+        "no quiere parecer antipática personas",
+        6
+      ],
+      [
+        "I'm trying not to seem unfriendly",
+        "Estoy intentando no parecer antipática",
+        6
+      ],
+      [
+        "she said she doesn't want to seem unfriendly",
+        "Dije que no quiere parecer antipática",
+        7
+      ],
+      [
+        "I hope I don't seem unfriendly when I speak",
+        "Espero no parecer antipática quiero hablar",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0300L03 LEGOs only"
+  },
+  "S0300L04": {
+    "lego": [
+      "unfriendly",
+      "antipática"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "unfriendly",
+        "antipática",
+        1
+      ],
+      [
+        "to seem unfriendly",
+        "parecer antipática",
+        2
+      ],
+      [
+        "she doesn't want to seem unfriendly",
+        "no quiere parecer antipática",
+        4
+      ],
+      [
+        "I don't want to seem unfriendly",
+        "No quiero parecer antipática",
+        4
+      ],
+      [
+        "she doesn't want to seem unfriendly to people",
+        "no quiere parecer antipática personas",
+        6
+      ],
+      [
+        "I'm trying not to seem unfriendly",
+        "Estoy intentando no parecer antipática",
+        6
+      ],
+      [
+        "she said she doesn't want to seem unfriendly",
+        "Dije que no quiere parecer antipática",
+        7
+      ],
+      [
+        "I don't want to seem unfriendly when I speak Spanish",
+        "No quiero parecer antipática quiero hablar español",
+        10
+      ],
+      [
+        "she doesn't want to seem unfriendly to many people",
+        "no quiere parecer antipática muchas personas",
+        7
+      ],
+      [
+        "She doesn't want to seem unfriendly.",
+        "Ella no quiere parecer antipática.",
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0300L04 LEGOs only"
+  },
+  "total_seeds": 10,
+  "total_legos": 53,
+  "total_phrases": 530
+}

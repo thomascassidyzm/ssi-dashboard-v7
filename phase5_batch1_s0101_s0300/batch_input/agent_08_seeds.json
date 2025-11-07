@@ -1,0 +1,593 @@
+{
+  "agent_id": 8,
+  "agent_name": "agent_08",
+  "seed_range": "S0171-S0180",
+  "total_seeds": 10,
+  "registry_path": "../registry/lego_registry_s0001_s0300.json",
+  "spec_path": "../docs/phase_intelligence/phase_5_conversational_baskets_v3_ACTIVE.md",
+  "seeds": [
+    {
+      "seed_id": "S0171",
+      "seed_pair": {
+        "target": "¿Quieres que te ayude a buscarlo?",
+        "known": "Do you want me to help you look for it?"
+      },
+      "legos": [
+        {
+          "id": "S0020L01",
+          "type": "A",
+          "target": "quieres",
+          "known": "you want",
+          "ref": "S0020"
+        },
+        {
+          "id": "S0171L01",
+          "type": "M",
+          "target": "que te ayude",
+          "known": "me to help you",
+          "new": true,
+          "components": [
+            [
+              "que",
+              "that"
+            ],
+            [
+              "te",
+              "you"
+            ],
+            [
+              "ayude",
+              "I help (subj)"
+            ]
+          ]
+        },
+        {
+          "id": "S0171L02",
+          "type": "M",
+          "target": "a buscarlo",
+          "known": "to look for it",
+          "new": true,
+          "components": [
+            [
+              "a",
+              "to"
+            ],
+            [
+              "buscar",
+              "to look for"
+            ],
+            [
+              "lo",
+              "it"
+            ]
+          ]
+        }
+      ],
+      "cumulative_legos": 490
+    },
+    {
+      "seed_id": "S0172",
+      "seed_pair": {
+        "target": "Sí, eso sería muy útil.",
+        "known": "Yes that would be very helpful."
+      },
+      "legos": [
+        {
+          "id": "S0097L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "ref": "S0097"
+        },
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "ref": "S0061"
+        },
+        {
+          "id": "S0172L01",
+          "type": "M",
+          "target": "sería muy útil",
+          "known": "would be very helpful",
+          "new": true,
+          "components": [
+            [
+              "sería",
+              "would be"
+            ],
+            [
+              "muy",
+              "very"
+            ],
+            [
+              "útil",
+              "helpful"
+            ]
+          ]
+        }
+      ],
+      "cumulative_legos": 491
+    },
+    {
+      "seed_id": "S0173",
+      "seed_pair": {
+        "target": "No gracias, puedo manejarlo por mi cuenta.",
+        "known": "No thank you I can manage on my own."
+      },
+      "legos": [
+        {
+          "id": "S0096L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "ref": "S0096"
+        },
+        {
+          "id": "S0173L01",
+          "type": "A",
+          "target": "gracias",
+          "known": "thank you",
+          "new": true
+        },
+        {
+          "id": "S0010L03",
+          "type": "A",
+          "target": "puedo",
+          "known": "I can",
+          "ref": "S0010"
+        },
+        {
+          "id": "S0173L02",
+          "type": "A",
+          "target": "manejarlo",
+          "known": "to manage it",
+          "new": true
+        },
+        {
+          "id": "S0173L03",
+          "type": "M",
+          "target": "por mi cuenta",
+          "known": "on my own",
+          "new": true,
+          "components": [
+            [
+              "por",
+              "by"
+            ],
+            [
+              "mi",
+              "my"
+            ],
+            [
+              "cuenta",
+              "account"
+            ]
+          ]
+        }
+      ],
+      "cumulative_legos": 494
+    },
+    {
+      "seed_id": "S0174",
+      "seed_pair": {
+        "target": "¿Puedes entender lo que estoy diciendo?",
+        "known": "Can you understand what I'm saying?"
+      },
+      "legos": [
+        {
+          "id": "S0136L02",
+          "type": "A",
+          "target": "puedes",
+          "known": "you can",
+          "ref": "S0136"
+        },
+        {
+          "id": "S0174L01",
+          "type": "A",
+          "target": "entender",
+          "known": "to understand",
+          "new": true
+        },
+        {
+          "id": "S0174L02",
+          "type": "M",
+          "target": "lo que estoy diciendo",
+          "known": "what I'm saying",
+          "new": true,
+          "components": [
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "diciendo",
+              "saying"
+            ]
+          ]
+        }
+      ],
+      "cumulative_legos": 496
+    },
+    {
+      "seed_id": "S0175",
+      "seed_pair": {
+        "target": "¿Qué quieres hacer el domingo por la mañana?",
+        "known": "What do you want to do on Sunday morning?"
+      },
+      "legos": [
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "target": "qué",
+          "known": "what",
+          "ref": "S0068"
+        },
+        {
+          "id": "S0020L01",
+          "type": "A",
+          "target": "quieres",
+          "known": "you want",
+          "ref": "S0020"
+        },
+        {
+          "id": "S0051L02",
+          "type": "A",
+          "target": "hacer",
+          "known": "to do/make",
+          "ref": "S0051"
+        },
+        {
+          "id": "S0161L04",
+          "type": "M",
+          "target": "el domingo",
+          "known": "on Sunday",
+          "ref": "S0161",
+          "components": [
+            [
+              "el",
+              "the"
+            ],
+            [
+              "domingo",
+              "Sunday"
+            ]
+          ]
+        },
+        {
+          "id": "S0155L03",
+          "type": "M",
+          "target": "por la mañana",
+          "known": "in the morning",
+          "ref": "S0155",
+          "components": [
+            [
+              "por",
+              "by"
+            ],
+            [
+              "la",
+              "the"
+            ],
+            [
+              "mañana",
+              "morning"
+            ]
+          ]
+        }
+      ],
+      "cumulative_legos": 496
+    },
+    {
+      "seed_id": "S0176",
+      "seed_pair": {
+        "target": "Le preguntaré si podrá ayudar el año próximo.",
+        "known": "I'll ask him if he'll be able to help next year."
+      },
+      "legos": [
+        {
+          "id": "S0176L01",
+          "type": "M",
+          "target": "le preguntaré",
+          "known": "I'll ask him",
+          "new": true,
+          "components": [
+            [
+              "le",
+              "him"
+            ],
+            [
+              "preguntaré",
+              "I'll ask"
+            ]
+          ]
+        },
+        {
+          "id": "S0010L02",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "ref": "S0010"
+        },
+        {
+          "id": "S0176L02",
+          "type": "A",
+          "target": "podrá",
+          "known": "he'll be able to",
+          "new": true
+        },
+        {
+          "id": "S0168L03",
+          "type": "A",
+          "target": "ayudar",
+          "known": "to help",
+          "ref": "S0168"
+        },
+        {
+          "id": "S0176L03",
+          "type": "M",
+          "target": "el año próximo",
+          "known": "next year",
+          "new": true,
+          "components": [
+            [
+              "el",
+              "the"
+            ],
+            [
+              "año",
+              "year"
+            ],
+            [
+              "próximo",
+              "next"
+            ]
+          ]
+        }
+      ],
+      "cumulative_legos": 499
+    },
+    {
+      "seed_id": "S0177",
+      "seed_pair": {
+        "target": "Le preguntaré dónde quiere ir.",
+        "known": "I'll ask her where she wants to go."
+      },
+      "legos": [
+        {
+          "id": "S0176L01",
+          "type": "M",
+          "target": "le preguntaré",
+          "known": "I'll ask her",
+          "ref": "S0176",
+          "components": [
+            [
+              "le",
+              "her"
+            ],
+            [
+              "preguntaré",
+              "I'll ask"
+            ]
+          ]
+        },
+        {
+          "id": "S0154L01",
+          "type": "A",
+          "target": "dónde",
+          "known": "where",
+          "ref": "S0154"
+        },
+        {
+          "id": "S0016L02",
+          "type": "A",
+          "target": "quiere",
+          "known": "wants",
+          "ref": "S0016"
+        },
+        {
+          "id": "S0093L02",
+          "type": "A",
+          "target": "ir",
+          "known": "to go",
+          "ref": "S0093"
+        }
+      ],
+      "cumulative_legos": 499
+    },
+    {
+      "seed_id": "S0178",
+      "seed_pair": {
+        "target": "No tuve tiempo, aunque quería verte.",
+        "known": "I didn't have time, although I wanted to see you."
+      },
+      "legos": [
+        {
+          "id": "S0096L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "ref": "S0096"
+        },
+        {
+          "id": "S0178L01",
+          "type": "A",
+          "target": "tuve",
+          "known": "I had",
+          "new": true
+        },
+        {
+          "id": "S0178L02",
+          "type": "A",
+          "target": "tiempo",
+          "known": "time",
+          "new": true
+        },
+        {
+          "id": "S0178L03",
+          "type": "A",
+          "target": "aunque",
+          "known": "although",
+          "new": true
+        },
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "target": "quería",
+          "known": "I wanted",
+          "ref": "S0030"
+        },
+        {
+          "id": "S0127L01",
+          "type": "A",
+          "target": "verte",
+          "known": "to see you",
+          "ref": "S0127"
+        }
+      ],
+      "cumulative_legos": 502
+    },
+    {
+      "seed_id": "S0179",
+      "seed_pair": {
+        "target": "¿Qué vas a hacer el domingo por la tarde?",
+        "known": "What are you going to do on Sunday afternoon?"
+      },
+      "legos": [
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "target": "qué",
+          "known": "what",
+          "ref": "S0068"
+        },
+        {
+          "id": "S0025L01",
+          "type": "M",
+          "target": "vas a",
+          "known": "are you going to",
+          "ref": "S0025",
+          "components": [
+            [
+              "vas",
+              "you go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ]
+        },
+        {
+          "id": "S0051L02",
+          "type": "A",
+          "target": "hacer",
+          "known": "to do/make",
+          "ref": "S0051"
+        },
+        {
+          "id": "S0161L04",
+          "type": "M",
+          "target": "el domingo",
+          "known": "on Sunday",
+          "ref": "S0161",
+          "components": [
+            [
+              "el",
+              "the"
+            ],
+            [
+              "domingo",
+              "Sunday"
+            ]
+          ]
+        },
+        {
+          "id": "S0167L02",
+          "type": "M",
+          "target": "por la tarde",
+          "known": "in the afternoon",
+          "ref": "S0167",
+          "components": [
+            [
+              "por",
+              "by"
+            ],
+            [
+              "la",
+              "the"
+            ],
+            [
+              "tarde",
+              "afternoon"
+            ]
+          ]
+        }
+      ],
+      "cumulative_legos": 502
+    },
+    {
+      "seed_id": "S0180",
+      "seed_pair": {
+        "target": "Me gustaría leer mi libro por un rato.",
+        "known": "I'd like to read my book for a while."
+      },
+      "legos": [
+        {
+          "id": "S0011L01",
+          "type": "M",
+          "target": "me gustaría",
+          "known": "I'd like",
+          "ref": "S0011",
+          "components": [
+            [
+              "me",
+              "me/to me"
+            ],
+            [
+              "gustaría",
+              "would please"
+            ]
+          ]
+        },
+        {
+          "id": "S0035L01",
+          "type": "A",
+          "target": "leer",
+          "known": "to read",
+          "ref": "S0035"
+        },
+        {
+          "id": "S0180L01",
+          "type": "M",
+          "target": "mi libro",
+          "known": "my book",
+          "new": true,
+          "components": [
+            [
+              "mi",
+              "my"
+            ],
+            [
+              "libro",
+              "book"
+            ]
+          ]
+        },
+        {
+          "id": "S0180L02",
+          "type": "M",
+          "target": "por un rato",
+          "known": "for a while",
+          "new": true
+        }
+      ],
+      "cumulative_legos": 504
+    }
+  ]
+}

@@ -1,0 +1,976 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "agent_id": 8,
+  "seed_range": "S0171-S0180",
+  "total_seeds": 10,
+  "total_legos": 38,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T00:00:00.000Z",
+    "curated_by": "Claude Code - Agent 08 basket generation",
+    "gate_compliance": "STRICT - All words from taught LEGOs only",
+    "completeness": "First 2 phrases fragments OK, remaining 8 complete thoughts",
+    "naturalness": "Would-say test applied to all phrases"
+  },
+
+  "S0171": {
+    "seed": "S0171",
+    "seed_pair": {
+      "known": "Do you want me to help you look for it?",
+      "target": "¿Quieres que te ayude a buscarlo?"
+    },
+    "cumulative_legos": 490,
+
+    "S0020L01": {
+      "lego": ["you want", "quieres"],
+      "type": "A",
+      "available_legos": 489,
+      "practice_phrases": [
+        ["you want", "quieres", null, 1],
+        ["you want to speak", "quieres hablar", null, 2],
+        ["you want to help me", "quieres ayudarme", null, 3],
+        ["you want to learn Spanish", "quieres aprender español", null, 3],
+        ["you want to speak with me", "quieres hablar conmigo", null, 3],
+        ["Do you want to help me today?", "¿Quieres ayudarme hoy?", null, 4],
+        ["you want to read my book later on", "quieres leer mi libro más tarde", null, 6],
+        ["Do you want to speak Spanish with your friends?", "¿Quieres hablar español con tus amigos?", null, 5],
+        ["you want to practise speaking with someone else this afternoon", "quieres practicar hablar con alguien más esta tarde", null, 7],
+        ["Do you want to help me look for it now?", "¿Quieres ayudarme a buscarlo ahora?", null, 5]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 3, "longer_4_5": 3, "long_6_plus": 2},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0171L01": {
+      "lego": ["me to help you", "que te ayude"],
+      "type": "M",
+      "available_legos": 490,
+      "practice_phrases": [
+        ["me to help you", "que te ayude", null, 1],
+        ["you want me to help you", "quieres que te ayude", null, 2],
+        ["you want me to help", "quieres que te ayude", null, 2],
+        ["you want me to help you today", "quieres que te ayude hoy", null, 3],
+        ["you want me to help you speak Spanish", "quieres que te ayude a hablar español", null, 4],
+        ["Do you want me to help you learn Spanish?", "¿Quieres que te ayude a aprender español?", null, 5],
+        ["Do you want me to help you look for your book?", "¿Quieres que te ayude a buscar tu libro?", null, 6],
+        ["you want me to help you practise speaking this afternoon", "quieres que te ayude a practicar hablar esta tarde", null, 7],
+        ["I wanted to ask if you want me to help you", "Quería preguntarte si quieres que te ayude", null, 7],
+        ["Do you want me to help you with this now?", "¿Quieres que te ayude con esto ahora?", null, 5]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0171L02": {
+      "lego": ["to look for it", "a buscarlo"],
+      "type": "M",
+      "available_legos": 490,
+      "practice_phrases": [
+        ["to look for it", "a buscarlo", null, 1],
+        ["I want to look for it", "quiero buscarlo", null, 2],
+        ["to help you look for it", "a ayudarte a buscarlo", null, 2],
+        ["I'm going to look for it today", "Voy a buscarlo hoy", null, 3],
+        ["you want me to help you look for it", "quieres que te ayude a buscarlo", null, 4],
+        ["I'd like to help you look for it this afternoon", "Me gustaría ayudarte a buscarlo esta tarde", null, 6],
+        ["I'm going to help you look for it in your bag", "Voy a ayudarte a buscarlo en tu bolsa", null, 7],
+        ["I was looking for it last week but I couldn't find it", "Estaba buscándolo la semana pasada pero no pude encontrarlo", null, 10],
+        ["Do you want me to help you look for it later on?", "¿Quieres que te ayude a buscarlo más tarde?", null, 7],
+        ["Do you want me to help you look for it?", "¿Quieres que te ayude a buscarlo?", null, 4]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "full_seed_included": "YES - phrase 10",
+      "gate_compliance": "STRICT"
+    }
+  },
+
+  "S0172": {
+    "seed": "S0172",
+    "seed_pair": {
+      "known": "Yes that would be very helpful.",
+      "target": "Sí, eso sería muy útil."
+    },
+    "cumulative_legos": 491,
+
+    "S0097L01": {
+      "lego": ["yes", "sí"],
+      "type": "A",
+      "available_legos": 490,
+      "practice_phrases": [
+        ["yes", "sí", null, 1],
+        ["yes I want to speak", "sí quiero hablar", null, 2],
+        ["yes I can help you", "sí puedo ayudarte", null, 2],
+        ["yes I'd like to learn", "sí me gustaría aprender", null, 3],
+        ["yes I want to help you today", "sí quiero ayudarte hoy", null, 4],
+        ["yes I'm going to help you look for it", "sí voy a ayudarte a buscarlo", null, 5],
+        ["Yes, I'd like to practise speaking Spanish with you.", "Sí, me gustaría practicar hablar español contigo.", null, 6],
+        ["Yes, I want to help you look for it this afternoon.", "Sí, quiero ayudarte a buscarlo esta tarde.", null, 6],
+        ["Yes, I'm going to help you with this now.", "Sí, voy a ayudarte con esto ahora.", null, 6],
+        ["Yes, that would be very helpful for me.", "Sí, eso sería muy útil para mí.", null, 5]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0061L02": {
+      "lego": ["that", "eso"],
+      "type": "A",
+      "available_legos": 490,
+      "practice_phrases": [
+        ["that", "eso", null, 1],
+        ["I want that", "quiero eso", null, 1],
+        ["I like that", "me gusta eso", null, 2],
+        ["I'm thinking about that", "estoy pensando sobre eso", null, 2],
+        ["that would be very helpful", "eso sería muy útil", null, 3],
+        ["I started to think about that last month", "Comencé a pensar sobre eso el mes pasado", null, 6],
+        ["I don't know how to do that yet", "Todavía no sé cómo hacer eso", null, 6],
+        ["I was starting to feel better than that last night", "Estaba comenzando a sentirme mejor que eso anoche", null, 8],
+        ["I wanted to ask you about that yesterday", "Quería preguntarte sobre eso ayer", null, 6],
+        ["Could you say that again a little more slowly?", "¿Podrías decir eso otra vez un poco más lentamente?", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0172L01": {
+      "lego": ["would be very helpful", "sería muy útil"],
+      "type": "M",
+      "available_legos": 491,
+      "practice_phrases": [
+        ["would be very helpful", "sería muy útil", null, 1],
+        ["that would be very helpful", "eso sería muy útil", null, 2],
+        ["that would be helpful", "eso sería útil", null, 2],
+        ["that would be very helpful for me", "eso sería muy útil para mí", null, 3],
+        ["I think that would be very helpful", "Pienso que eso sería muy útil", null, 4],
+        ["Yes, that would be very helpful for learning Spanish.", "Sí, eso sería muy útil para aprender español.", null, 6],
+        ["that would be very helpful if you could help me", "eso sería muy útil si pudieras ayudarme", null, 7],
+        ["I'm not sure but I think that would be very helpful", "No estoy seguro pero pienso que eso sería muy útil", null, 9],
+        ["that would be very helpful for me to practise speaking", "eso sería muy útil para mí para practicar hablar", null, 8],
+        ["Yes, that would be very helpful.", "Sí, eso sería muy útil.", null, 3]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 3, "longer_4_5": 1, "long_6_plus": 4},
+      "full_seed_included": "YES - phrase 10",
+      "gate_compliance": "STRICT"
+    }
+  },
+
+  "S0173": {
+    "seed": "S0173",
+    "seed_pair": {
+      "known": "No thank you I can manage on my own.",
+      "target": "No gracias, puedo manejarlo por mi cuenta."
+    },
+    "cumulative_legos": 494,
+
+    "S0096L01": {
+      "lego": ["no", "no"],
+      "type": "A",
+      "available_legos": 491,
+      "practice_phrases": [
+        ["no", "no", null, 1],
+        ["no I don't want to", "no no quiero", null, 2],
+        ["no I can't help you", "no no puedo ayudarte", null, 2],
+        ["no I don't think so", "no no pienso que sí", null, 3],
+        ["no I'm not sure about that", "no no estoy seguro sobre eso", null, 4],
+        ["No, I don't want to speak now.", "No, no quiero hablar ahora.", null, 5],
+        ["No thank you, I can manage on my own.", "No gracias, puedo manejarlo por mi cuenta.", null, 6],
+        ["No, I wasn't thinking about how to answer yesterday.", "No, no estaba pensando en cómo responder ayer.", null, 8],
+        ["No, I don't like to take too much time to answer.", "No, no me gusta tomar demasiado tiempo para responder.", null, 9],
+        ["No, I didn't sleep last night.", "No, no dormí anoche.", null, 4]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0173L01": {
+      "lego": ["thank you", "gracias"],
+      "type": "A",
+      "available_legos": 492,
+      "practice_phrases": [
+        ["thank you", "gracias", null, 1],
+        ["thank you very much", "gracias muy bien", null, 2],
+        ["thank you for your help", "gracias por tu ayuda", null, 2],
+        ["No thank you I can help myself", "No gracias puedo ayudarme", null, 3],
+        ["thank you for helping me look for it", "gracias por ayudarme a buscarlo", null, 4],
+        ["Thank you, that would be very helpful for me.", "Gracias, eso sería muy útil para mí.", null, 6],
+        ["Thank you for wanting to help me with this today.", "Gracias por querer ayudarme con esto hoy.", null, 7],
+        ["No thank you, I don't need to speak with anyone now.", "No gracias, no necesito hablar con nadie ahora.", null, 8],
+        ["Thank you, I was looking for it this morning.", "Gracias, estaba buscándolo esta mañana.", null, 6],
+        ["Thank you for asking me about that yesterday.", "Gracias por preguntarme sobre eso ayer.", null, 6]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0010L03": {
+      "lego": ["I can", "puedo"],
+      "type": "A",
+      "available_legos": 492,
+      "practice_phrases": [
+        ["I can", "puedo", null, 1],
+        ["I can speak Spanish", "puedo hablar español", null, 2],
+        ["I can help you today", "puedo ayudarte hoy", null, 2],
+        ["I can manage on my own", "puedo manejarlo por mi cuenta", null, 3],
+        ["I can help you look for it", "puedo ayudarte a buscarlo", null, 3],
+        ["I can speak Spanish with you this afternoon.", "Puedo hablar español contigo esta tarde.", null, 5],
+        ["I can help you practise speaking if you want.", "Puedo ayudarte a practicar hablar si quieres.", null, 7],
+        ["I'm not sure if I can remember the whole sentence.", "No estoy seguro si puedo recordar toda la oración.", null, 9],
+        ["I can help you with this as soon as I can.", "Puedo ayudarte con esto tan pronto como pueda.", null, 8],
+        ["I can try to speak as often as possible.", "Puedo intentar hablar lo más frecuentemente posible.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0173L02": {
+      "lego": ["to manage it", "manejarlo"],
+      "type": "A",
+      "available_legos": 493,
+      "practice_phrases": [
+        ["to manage it", "manejarlo", null, 1],
+        ["I can manage it", "puedo manejarlo", null, 1],
+        ["to manage it on my own", "manejarlo por mi cuenta", null, 2],
+        ["I want to manage it myself", "quiero manejarlo por mi cuenta", null, 3],
+        ["I can manage it thank you", "puedo manejarlo gracias", null, 2],
+        ["I think I can manage it on my own now.", "Pienso que puedo manejarlo por mi cuenta ahora.", null, 7],
+        ["I'm going to try to manage it by myself today.", "Voy a intentar manejarlo por mi cuenta hoy.", null, 8],
+        ["No thank you, I can manage it on my own.", "No gracias, puedo manejarlo por mi cuenta.", null, 6],
+        ["I'd like to manage it without help if I can.", "Me gustaría manejarlo sin ayuda si puedo.", null, 8],
+        ["I'm not sure if I can manage it alone.", "No estoy seguro si puedo manejarlo solo.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0173L03": {
+      "lego": ["on my own", "por mi cuenta"],
+      "type": "M",
+      "available_legos": 494,
+      "practice_phrases": [
+        ["on my own", "por mi cuenta", null, 1],
+        ["I can do it on my own", "puedo hacerlo por mi cuenta", null, 2],
+        ["to manage on my own", "manejarlo por mi cuenta", null, 2],
+        ["I want to try on my own", "quiero intentar por mi cuenta", null, 3],
+        ["I can manage it on my own", "puedo manejarlo por mi cuenta", null, 3],
+        ["I'd like to learn Spanish on my own.", "Me gustaría aprender español por mi cuenta.", null, 6],
+        ["I'm going to try to speak on my own now.", "Voy a intentar hablar por mi cuenta ahora.", null, 7],
+        ["I don't want to practise speaking on my own today.", "No quiero practicar hablar por mi cuenta hoy.", null, 8],
+        ["I was trying to learn on my own last week.", "Estaba intentando aprender por mi cuenta la semana pasada.", null, 8],
+        ["No thank you, I can manage on my own.", "No gracias, puedo manejarlo por mi cuenta.", null, 4]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "full_seed_included": "YES - phrase 10",
+      "gate_compliance": "STRICT"
+    }
+  },
+
+  "S0174": {
+    "seed": "S0174",
+    "seed_pair": {
+      "known": "Can you understand what I'm saying?",
+      "target": "¿Puedes entender lo que estoy diciendo?"
+    },
+    "cumulative_legos": 496,
+
+    "S0136L02": {
+      "lego": ["you can", "puedes"],
+      "type": "A",
+      "available_legos": 494,
+      "practice_phrases": [
+        ["you can", "puedes", null, 1],
+        ["you can speak Spanish", "puedes hablar español", null, 2],
+        ["you can help me today", "puedes ayudarme hoy", null, 2],
+        ["you can understand what I'm saying", "puedes entender lo que estoy diciendo", null, 3],
+        ["you can manage on your own", "puedes manejarlo por tu cuenta", null, 3],
+        ["Can you help me look for it this afternoon?", "¿Puedes ayudarme a buscarlo esta tarde?", null, 5],
+        ["you can practise speaking Spanish with your friends later on", "puedes practicar hablar español con tus amigos más tarde", null, 8],
+        ["I'm not sure if you can understand what I mean.", "No estoy seguro si puedes entender lo que quiero decir.", null, 10],
+        ["Can you say that again a little more slowly?", "¿Puedes decir eso otra vez un poco más lentamente?", null, 7],
+        ["you can help me as soon as you can", "puedes ayudarme tan pronto como puedas", null, 6]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0174L01": {
+      "lego": ["to understand", "entender"],
+      "type": "A",
+      "available_legos": 495,
+      "practice_phrases": [
+        ["to understand", "entender", null, 1],
+        ["I want to understand", "quiero entender", null, 2],
+        ["to understand what I'm saying", "entender lo que estoy diciendo", null, 2],
+        ["I'm trying to understand Spanish", "estoy intentando entender español", null, 3],
+        ["you can understand what I mean", "puedes entender lo que quiero decir", null, 3],
+        ["I'd like to understand what you're saying.", "Me gustaría entender lo que estás diciendo.", null, 6],
+        ["I'm starting to understand a little more now.", "Estoy comenzando a entender un poco más ahora.", null, 7],
+        ["I don't think I can understand everything yet.", "No pienso que pueda entender todo todavía.", null, 8],
+        ["Can you help me understand what this means?", "¿Puedes ayudarme a entender lo que esto significa?", null, 7],
+        ["I was trying to understand what you wanted yesterday.", "Estaba intentando entender lo que querías ayer.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0174L02": {
+      "lego": ["what I'm saying", "lo que estoy diciendo"],
+      "type": "M",
+      "available_legos": 496,
+      "practice_phrases": [
+        ["what I'm saying", "lo que estoy diciendo", null, 1],
+        ["you understand what I'm saying", "entiendes lo que estoy diciendo", null, 2],
+        ["to understand what I'm saying", "entender lo que estoy diciendo", null, 2],
+        ["Can you understand what I'm saying?", "¿Puedes entender lo que estoy diciendo?", null, 3],
+        ["I don't think you understand what I'm saying", "No pienso que entiendas lo que estoy diciendo", null, 4],
+        ["I'm not sure if you can understand what I'm saying.", "No estoy seguro si puedes entender lo que estoy diciendo.", null, 8],
+        ["I want to know if you understand what I'm saying now.", "Quiero saber si entiendes lo que estoy diciendo ahora.", null, 9],
+        ["Can you help me understand what I'm saying in Spanish?", "¿Puedes ayudarme a entender lo que estoy diciendo en español?", null, 9],
+        ["I'd like to explain what I'm saying a little more slowly.", "Me gustaría explicar lo que estoy diciendo un poco más lentamente.", null, 10],
+        ["I wanted to ask if you understand what I'm saying.", "Quería preguntar si entiendes lo que estoy diciendo.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "full_seed_included": "YES - phrase 4",
+      "gate_compliance": "STRICT"
+    }
+  },
+
+  "S0175": {
+    "seed": "S0175",
+    "seed_pair": {
+      "known": "What do you want to do on Sunday morning?",
+      "target": "¿Qué quieres hacer el domingo por la mañana?"
+    },
+    "cumulative_legos": 496,
+
+    "S0068L01": {
+      "lego": ["what", "qué"],
+      "type": "A",
+      "available_legos": 496,
+      "practice_phrases": [
+        ["what", "qué", null, 1],
+        ["what you want", "qué quieres", null, 1],
+        ["what I mean", "lo que quiero decir", null, 2],
+        ["what you want to do", "qué quieres hacer", null, 2],
+        ["what I'm saying now", "lo que estoy diciendo ahora", null, 3],
+        ["I want to know what you think about this.", "Quiero saber qué piensas sobre esto.", null, 7],
+        ["What do you want to do on Sunday morning?", "¿Qué quieres hacer el domingo por la mañana?", null, 6],
+        ["I'm not sure what I need to do next week.", "No estoy seguro qué necesito hacer la próxima semana.", null, 9],
+        ["Can you explain what this means in Spanish?", "¿Puedes explicar qué significa esto en español?", null, 6],
+        ["I'd like to understand what you're trying to say.", "Me gustaría entender lo que estás intentando decir.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0020L01": {
+      "lego": ["you want", "quieres"],
+      "type": "A",
+      "available_legos": 496,
+      "practice_phrases": [
+        ["you want", "quieres", null, 1],
+        ["what you want", "qué quieres", null, 1],
+        ["you want to speak", "quieres hablar", null, 2],
+        ["you want to do something", "quieres hacer algo", null, 2],
+        ["what you want to do today", "qué quieres hacer hoy", null, 3],
+        ["I want to know what you want to do.", "Quiero saber qué quieres hacer.", null, 6],
+        ["you want to help me understand what this means", "quieres ayudarme a entender lo que esto significa", null, 8],
+        ["I'm not sure what you want me to do now.", "No estoy seguro qué quieres que haga ahora.", null, 7],
+        ["What do you want to do on Sunday afternoon?", "¿Qué quieres hacer el domingo por la tarde?", null, 6],
+        ["you want to practise speaking Spanish with your friends", "quieres practicar hablar español con tus amigos", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0051L02": {
+      "lego": ["to do/make", "hacer"],
+      "type": "A",
+      "available_legos": 496,
+      "practice_phrases": [
+        ["to do", "hacer", null, 1],
+        ["what to do", "qué hacer", null, 1],
+        ["I want to do something", "quiero hacer algo", null, 2],
+        ["to do interesting things", "hacer cosas interesantes", null, 2],
+        ["what you want to do today", "qué quieres hacer hoy", null, 3],
+        ["I don't know what I need to do next week.", "No sé qué necesito hacer la próxima semana.", null, 8],
+        ["I enjoy doing interesting things with my friends.", "Disfruto hacer cosas interesantes con mis amigos.", null, 6],
+        ["What do you want to do on Sunday morning?", "¿Qué quieres hacer el domingo por la mañana?", null, 6],
+        ["I'd like to do something different this afternoon.", "Me gustaría hacer algo diferente esta tarde.", null, 7],
+        ["I'm trying to do this as carefully as I can.", "Estoy intentando hacer esto tan cuidadosamente como pueda.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0161L04": {
+      "lego": ["on Sunday", "el domingo"],
+      "type": "M",
+      "available_legos": 496,
+      "practice_phrases": [
+        ["on Sunday", "el domingo", null, 1],
+        ["on Sunday morning", "el domingo por la mañana", null, 2],
+        ["what you want to do on Sunday", "qué quieres hacer el domingo", null, 3],
+        ["I'm going to help you on Sunday", "voy a ayudarte el domingo", null, 3],
+        ["I want to speak with you on Sunday", "quiero hablar contigo el domingo", null, 4],
+        ["I'm going to meet my friends on Sunday afternoon.", "Voy a reunirme con mis amigos el domingo por la tarde.", null, 8],
+        ["What do you want to do on Sunday morning?", "¿Qué quieres hacer el domingo por la mañana?", null, 6],
+        ["I'd like to practise speaking Spanish on Sunday if I can.", "Me gustaría practicar hablar español el domingo si puedo.", null, 10],
+        ["I was thinking about what to do on Sunday last night.", "Estaba pensando sobre qué hacer el domingo anoche.", null, 8],
+        ["I wanted to ask you what you want to do on Sunday.", "Quería preguntarte qué quieres hacer el domingo.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0155L03": {
+      "lego": ["in the morning", "por la mañana"],
+      "type": "M",
+      "available_legos": 496,
+      "practice_phrases": [
+        ["in the morning", "por la mañana", null, 1],
+        ["on Sunday morning", "el domingo por la mañana", null, 2],
+        ["I want to speak in the morning", "quiero hablar por la mañana", null, 2],
+        ["what you want to do in the morning", "qué quieres hacer por la mañana", null, 3],
+        ["I'm going to help you in the morning", "voy a ayudarte por la mañana", null, 4],
+        ["I enjoy reading my book in the morning.", "Disfruto leer mi libro por la mañana.", null, 6],
+        ["What do you want to do on Sunday morning?", "¿Qué quieres hacer el domingo por la mañana?", null, 6],
+        ["I was looking for it in the morning but I couldn't find it.", "Estaba buscándolo por la mañana pero no pude encontrarlo.", null, 10],
+        ["I'd like to practise speaking Spanish in the morning.", "Me gustaría practicar hablar español por la mañana.", null, 7],
+        ["I'm a little tired this morning.", "Estoy un poco cansado esta mañana.", null, 4]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "full_seed_included": "YES - phrase 7",
+      "gate_compliance": "STRICT"
+    }
+  },
+
+  "S0176": {
+    "seed": "S0176",
+    "seed_pair": {
+      "known": "I'll ask him if he'll be able to help next year.",
+      "target": "Le preguntaré si podrá ayudar el año próximo."
+    },
+    "cumulative_legos": 499,
+
+    "S0176L01": {
+      "lego": ["I'll ask him", "le preguntaré"],
+      "type": "M",
+      "available_legos": 497,
+      "practice_phrases": [
+        ["I'll ask him", "le preguntaré", null, 1],
+        ["I'll ask him to help", "le preguntaré que ayude", null, 2],
+        ["I'll ask him to help me", "le preguntaré si me ayuda", null, 2],
+        ["I'll ask him what he wants", "le preguntaré qué quiere", null, 3],
+        ["I'll ask him if he can help", "le preguntaré si puede ayudar", null, 3],
+        ["I'll ask him if he wants to speak with you.", "Le preguntaré si quiere hablar contigo.", null, 6],
+        ["I'll ask him what he wants to do on Sunday morning.", "Le preguntaré qué quiere hacer el domingo por la mañana.", null, 7],
+        ["I'll ask him if he can help me look for it this afternoon.", "Le preguntaré si puede ayudarme a buscarlo esta tarde.", null, 9],
+        ["I'll ask him if he'll be able to help next year.", "Le preguntaré si podrá ayudar el año próximo.", null, 6],
+        ["I wanted to ask him but I didn't have time yesterday.", "Quería preguntarle pero no tuve tiempo ayer.", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0010L02": {
+      "lego": ["if", "si"],
+      "type": "A",
+      "available_legos": 497,
+      "practice_phrases": [
+        ["if", "si", null, 1],
+        ["if I can", "si puedo", null, 1],
+        ["if you want", "si quieres", null, 1],
+        ["if you can help me", "si puedes ayudarme", null, 2],
+        ["I'm not sure if I can", "no estoy seguro si puedo", null, 3],
+        ["I want to know if you can understand me.", "Quiero saber si puedes entenderme.", null, 7],
+        ["I'd like to speak Spanish if I can.", "Me gustaría hablar español si puedo.", null, 6],
+        ["I'm going to help you if you want me to.", "Voy a ayudarte si quieres que te ayude.", null, 7],
+        ["I'll ask him if he'll be able to help next year.", "Le preguntaré si podrá ayudar el año próximo.", null, 8],
+        ["I wanted to ask if you understand what I'm saying.", "Quería preguntar si entiendes lo que estoy diciendo.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0176L02": {
+      "lego": ["he'll be able to", "podrá"],
+      "type": "A",
+      "available_legos": 498,
+      "practice_phrases": [
+        ["he'll be able to", "podrá", null, 1],
+        ["he'll be able to help", "podrá ayudar", null, 2],
+        ["if he'll be able to help", "si podrá ayudar", null, 2],
+        ["he'll be able to speak Spanish", "podrá hablar español", null, 3],
+        ["I think he'll be able to help", "pienso que podrá ayudar", null, 3],
+        ["I'm not sure if he'll be able to help you.", "No estoy seguro si podrá ayudarte.", null, 7],
+        ["I'll ask him if he'll be able to help next year.", "Le preguntaré si podrá ayudar el año próximo.", null, 6],
+        ["I don't know if he'll be able to understand what I'm saying.", "No sé si podrá entender lo que estoy diciendo.", null, 10],
+        ["I think he'll be able to manage on his own.", "Pienso que podrá manejarlo por su cuenta.", null, 7],
+        ["he'll be able to speak with you on Sunday morning", "podrá hablar contigo el domingo por la mañana", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0168L03": {
+      "lego": ["to help", "ayudar"],
+      "type": "A",
+      "available_legos": 498,
+      "practice_phrases": [
+        ["to help", "ayudar", null, 1],
+        ["I want to help", "quiero ayudar", null, 2],
+        ["to help you speak Spanish", "ayudarte a hablar español", null, 2],
+        ["he'll be able to help me", "podrá ayudarme", null, 2],
+        ["I'm going to help you today", "voy a ayudarte hoy", null, 3],
+        ["I'd like to help you understand what this means.", "Me gustaría ayudarte a entender lo que esto significa.", null, 7],
+        ["Do you want me to help you look for it?", "¿Quieres que te ayude a buscarlo?", null, 5],
+        ["I was trying to help you but I didn't have time.", "Estaba intentando ayudarte pero no tuve tiempo.", null, 9],
+        ["I'll ask him if he'll be able to help next year.", "Le preguntaré si podrá ayudar el año próximo.", null, 6],
+        ["Thank you for wanting to help me with this today.", "Gracias por querer ayudarme con esto hoy.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0176L03": {
+      "lego": ["next year", "el año próximo"],
+      "type": "M",
+      "available_legos": 499,
+      "practice_phrases": [
+        ["next year", "el año próximo", null, 1],
+        ["I'm going to help next year", "voy a ayudar el año próximo", null, 2],
+        ["if he can help next year", "si puede ayudar el año próximo", null, 2],
+        ["I want to speak Spanish next year", "quiero hablar español el año próximo", null, 3],
+        ["I'll be able to help next year", "podré ayudar el año próximo", null, 3],
+        ["I'd like to learn Spanish next year if I can.", "Me gustaría aprender español el año próximo si puedo.", null, 9],
+        ["I'll ask him if he'll be able to help next year.", "Le preguntaré si podrá ayudar el año próximo.", null, 6],
+        ["I'm going to start learning Spanish next year.", "Voy a comenzar a aprender español el año próximo.", null, 6],
+        ["I think I'll be able to speak better next year.", "Pienso que podré hablar mejor el año próximo.", null, 7],
+        ["I wanted to ask if you'll be able to help next year.", "Quería preguntar si podrás ayudar el año próximo.", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "full_seed_included": "YES - phrase 7",
+      "gate_compliance": "STRICT"
+    }
+  },
+
+  "S0177": {
+    "seed": "S0177",
+    "seed_pair": {
+      "known": "I'll ask her where she wants to go.",
+      "target": "Le preguntaré dónde quiere ir."
+    },
+    "cumulative_legos": 499,
+
+    "S0176L01": {
+      "lego": ["I'll ask her", "le preguntaré"],
+      "type": "M",
+      "available_legos": 499,
+      "practice_phrases": [
+        ["I'll ask her", "le preguntaré", null, 1],
+        ["I'll ask her to help", "le preguntaré que ayude", null, 2],
+        ["I'll ask her if she wants", "le preguntaré si quiere", null, 2],
+        ["I'll ask her where she wants to go", "le preguntaré dónde quiere ir", null, 3],
+        ["I'll ask her what she wants to do", "le preguntaré qué quiere hacer", null, 3],
+        ["I'll ask her if she can help me this afternoon.", "Le preguntaré si puede ayudarme esta tarde.", null, 7],
+        ["I'll ask her where she wants to go on Sunday morning.", "Le preguntaré dónde quiere ir el domingo por la mañana.", null, 8],
+        ["I wanted to ask her but I didn't have time yesterday.", "Quería preguntarle pero no tuve tiempo ayer.", null, 8],
+        ["I'll ask her if she understands what I'm saying now.", "Le preguntaré si entiende lo que estoy diciendo ahora.", null, 7],
+        ["I'll ask her what she wants to do next week.", "Le preguntaré qué quiere hacer la próxima semana.", null, 6]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0154L01": {
+      "lego": ["where", "dónde"],
+      "type": "A",
+      "available_legos": 499,
+      "practice_phrases": [
+        ["where", "dónde", null, 1],
+        ["where you want to go", "dónde quieres ir", null, 2],
+        ["I don't know where", "no sé dónde", null, 2],
+        ["where she wants to go today", "dónde quiere ir hoy", null, 3],
+        ["I'm not sure where to go", "no estoy seguro dónde ir", null, 3],
+        ["I want to know where you want to go.", "Quiero saber dónde quieres ir.", null, 6],
+        ["I'll ask her where she wants to go on Sunday.", "Le preguntaré dónde quiere ir el domingo.", null, 6],
+        ["I don't know where I put my book this morning.", "No sé dónde puse mi libro esta mañana.", null, 8],
+        ["Can you tell me where you want to go next week?", "¿Puedes decirme dónde quieres ir la próxima semana?", null, 7],
+        ["I wanted to ask where you want to meet this evening.", "Quería preguntar dónde quieres reunirte esta noche.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0016L02": {
+      "lego": ["wants", "quiere"],
+      "type": "A",
+      "available_legos": 499,
+      "practice_phrases": [
+        ["wants", "quiere", null, 1],
+        ["she wants to go", "quiere ir", null, 1],
+        ["he wants to help", "quiere ayudar", null, 2],
+        ["where she wants to go", "dónde quiere ir", null, 2],
+        ["what she wants to do today", "qué quiere hacer hoy", null, 3],
+        ["I don't know what she wants to do next week.", "No sé qué quiere hacer la próxima semana.", null, 8],
+        ["He wants to come back with everyone else later on.", "Quiere volver con todos los demás más tarde.", null, 7],
+        ["I'm not sure if she wants to speak with you now.", "No estoy seguro si quiere hablar contigo ahora.", null, 8],
+        ["I'll ask her where she wants to go on Sunday.", "Le preguntaré dónde quiere ir el domingo.", null, 6],
+        ["She wants to learn Spanish as often as possible.", "Quiere aprender español lo más frecuentemente posible.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0093L02": {
+      "lego": ["to go", "ir"],
+      "type": "A",
+      "available_legos": 499,
+      "practice_phrases": [
+        ["to go", "ir", null, 1],
+        ["I want to go", "quiero ir", null, 1],
+        ["where to go", "dónde ir", null, 1],
+        ["she wants to go today", "quiere ir hoy", null, 2],
+        ["I'm going to go with you", "voy a ir contigo", null, 3],
+        ["I'd like to go with my friends on Sunday.", "Me gustaría ir con mis amigos el domingo.", null, 7],
+        ["I'll ask her where she wants to go this afternoon.", "Le preguntaré dónde quiere ir esta tarde.", null, 6],
+        ["I'm nearly ready to go but I'm a little tired.", "Estoy casi preparado para ir pero estoy un poco cansado.", null, 10],
+        ["I don't know where I want to go next week yet.", "Todavía no sé dónde quiero ir la próxima semana.", null, 8],
+        ["He wants to come back before I have to go.", "Quiere volver antes de que tenga que ir.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "full_seed_included": "YES - phrase 7 (embedded)",
+      "gate_compliance": "STRICT"
+    }
+  },
+
+  "S0178": {
+    "seed": "S0178",
+    "seed_pair": {
+      "known": "I didn't have time, although I wanted to see you.",
+      "target": "No tuve tiempo, aunque quería verte."
+    },
+    "cumulative_legos": 502,
+
+    "S0096L01": {
+      "lego": ["no", "no"],
+      "type": "A",
+      "available_legos": 499,
+      "practice_phrases": [
+        ["no", "no", null, 1],
+        ["no I don't want to", "no no quiero", null, 2],
+        ["no I didn't have time", "no no tuve tiempo", null, 2],
+        ["no I can't help you today", "no no puedo ayudarte hoy", null, 3],
+        ["no I'm not sure about that", "no no estoy seguro sobre eso", null, 4],
+        ["No, I don't think I can manage on my own.", "No, no pienso que pueda manejarlo por mi cuenta.", null, 8],
+        ["No thank you, I can manage it on my own.", "No gracias, puedo manejarlo por mi cuenta.", null, 6],
+        ["No, I didn't have time although I wanted to help.", "No, no tuve tiempo aunque quería ayudar.", null, 8],
+        ["No, I'm not going to speak with anyone this afternoon.", "No, no voy a hablar con nadie esta tarde.", null, 9],
+        ["No, I don't understand what you're saying.", "No, no entiendo lo que estás diciendo.", null, 6]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0178L01": {
+      "lego": ["I had", "tuve"],
+      "type": "A",
+      "available_legos": 500,
+      "practice_phrases": [
+        ["I had", "tuve", null, 1],
+        ["I didn't have", "no tuve", null, 1],
+        ["I had time", "tuve tiempo", null, 1],
+        ["I didn't have time yesterday", "no tuve tiempo ayer", null, 2],
+        ["I had to go last week", "tuve que ir la semana pasada", null, 3],
+        ["I didn't have time to help you this morning.", "No tuve tiempo para ayudarte esta mañana.", null, 7],
+        ["I had to ask her if she wanted to go.", "Tuve que preguntarle si quería ir.", null, 7],
+        ["I didn't have time although I wanted to see you.", "No tuve tiempo aunque quería verte.", null, 7],
+        ["I'm sorry but I didn't have time to speak with you yesterday.", "Lo siento pero no tuve tiempo para hablar contigo ayer.", null, 11],
+        ["I had to stop talking because I was too tired.", "Tuve que parar de hablar porque estaba demasiado cansado.", null, 9]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0178L02": {
+      "lego": ["time", "tiempo"],
+      "type": "A",
+      "available_legos": 501,
+      "practice_phrases": [
+        ["time", "tiempo", null, 1],
+        ["I had time", "tuve tiempo", null, 1],
+        ["I didn't have time", "no tuve tiempo", null, 2],
+        ["I need more time", "necesito más tiempo", null, 2],
+        ["a little more time", "un poco más de tiempo", null, 3],
+        ["I didn't have time to help you yesterday.", "No tuve tiempo para ayudarte ayer.", null, 6],
+        ["I don't like to take too much time to answer.", "No me gusta tomar demasiado tiempo para responder.", null, 8],
+        ["I wanted to give you a little more time to think.", "Quería darte un poco más de tiempo para pensar.", null, 9],
+        ["I didn't have time although I wanted to see you.", "No tuve tiempo aunque quería verte.", null, 7],
+        ["I need to have more time to practise speaking Spanish.", "Necesito tener más tiempo para practicar hablar español.", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0178L03": {
+      "lego": ["although", "aunque"],
+      "type": "A",
+      "available_legos": 502,
+      "practice_phrases": [
+        ["although", "aunque", null, 1],
+        ["although I wanted to", "aunque quería", null, 1],
+        ["although I tried", "aunque intenté", null, 1],
+        ["although I wanted to help you", "aunque quería ayudarte", null, 2],
+        ["I can't help you although I want to", "no puedo ayudarte aunque quiero", null, 3],
+        ["I didn't have time although I wanted to see you.", "No tuve tiempo aunque quería verte.", null, 7],
+        ["I couldn't understand although I tried very hard.", "No pude entender aunque intenté muy duro.", null, 7],
+        ["I'm going to help you although I don't have much time.", "Voy a ayudarte aunque no tengo mucho tiempo.", null, 9],
+        ["I wanted to speak with you although I was very tired.", "Quería hablar contigo aunque estaba muy cansado.", null, 8],
+        ["I enjoy learning Spanish although it's difficult sometimes.", "Disfruto aprender español aunque es difícil a veces.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0030L01": {
+      "lego": ["I wanted", "quería"],
+      "type": "A",
+      "available_legos": 502,
+      "practice_phrases": [
+        ["I wanted", "quería", null, 1],
+        ["I wanted to help", "quería ayudar", null, 1],
+        ["I wanted to see you", "quería verte", null, 2],
+        ["I wanted to ask you something", "quería preguntarte algo", null, 2],
+        ["although I wanted to help you", "aunque quería ayudarte", null, 3],
+        ["I wanted to speak with you this morning.", "Quería hablar contigo esta mañana.", null, 5],
+        ["I wanted to ask you what you want to do.", "Quería preguntarte qué quieres hacer.", null, 6],
+        ["I didn't have time although I wanted to see you.", "No tuve tiempo aunque quería verte.", null, 7],
+        ["I wanted to help you look for it yesterday afternoon.", "Quería ayudarte a buscarlo ayer por la tarde.", null, 7],
+        ["I wanted to show you something but I couldn't find it.", "Quería mostrarte algo pero no pude encontrarlo.", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0127L01": {
+      "lego": ["to see you", "verte"],
+      "type": "A",
+      "available_legos": 502,
+      "practice_phrases": [
+        ["to see you", "verte", null, 1],
+        ["I wanted to see you", "quería verte", null, 2],
+        ["I'm looking forward to seeing you", "estoy deseando verte", null, 2],
+        ["I'd like to see you today", "me gustaría verte hoy", null, 3],
+        ["although I wanted to see you", "aunque quería verte", null, 2],
+        ["I'm going to see you on Sunday morning.", "Voy a verte el domingo por la mañana.", null, 6],
+        ["I didn't have time to see you yesterday.", "No tuve tiempo para verte ayer.", null, 6],
+        ["I didn't have time although I wanted to see you.", "No tuve tiempo aunque quería verte.", null, 6],
+        ["I was looking forward to seeing you this afternoon.", "Estaba deseando verte esta tarde.", null, 6],
+        ["I'd like to see you if you have time next week.", "Me gustaría verte si tienes tiempo la próxima semana.", null, 9]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "full_seed_included": "YES - phrase 8",
+      "gate_compliance": "STRICT"
+    }
+  },
+
+  "S0179": {
+    "seed": "S0179",
+    "seed_pair": {
+      "known": "What are you going to do on Sunday afternoon?",
+      "target": "¿Qué vas a hacer el domingo por la tarde?"
+    },
+    "cumulative_legos": 502,
+
+    "S0068L01": {
+      "lego": ["what", "qué"],
+      "type": "A",
+      "available_legos": 502,
+      "practice_phrases": [
+        ["what", "qué", null, 1],
+        ["what you're going to do", "qué vas a hacer", null, 2],
+        ["what I wanted to say", "lo que quería decir", null, 2],
+        ["what you want to do today", "qué quieres hacer hoy", null, 3],
+        ["I don't know what to do", "no sé qué hacer", null, 3],
+        ["What are you going to do on Sunday afternoon?", "¿Qué vas a hacer el domingo por la tarde?", null, 6],
+        ["I want to understand what you're trying to say.", "Quiero entender lo que estás intentando decir.", null, 7],
+        ["I'm not sure what I'm going to do next week yet.", "No estoy seguro qué voy a hacer la próxima semana todavía.", null, 10],
+        ["Can you explain what this means in Spanish?", "¿Puedes explicar qué significa esto en español?", null, 6],
+        ["I'll ask her what she wants to do this evening.", "Le preguntaré qué quiere hacer esta noche.", null, 6]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0025L01": {
+      "lego": ["are you going to", "vas a"],
+      "type": "M",
+      "available_legos": 502,
+      "practice_phrases": [
+        ["are you going to", "vas a", null, 1],
+        ["are you going to help", "vas a ayudar", null, 2],
+        ["what are you going to do", "qué vas a hacer", null, 2],
+        ["are you going to speak Spanish", "vas a hablar español", null, 3],
+        ["are you going to help me today", "vas a ayudarme hoy", null, 3],
+        ["Are you going to see your friends on Sunday?", "¿Vas a ver a tus amigos el domingo?", null, 6],
+        ["What are you going to do on Sunday afternoon?", "¿Qué vas a hacer el domingo por la tarde?", null, 6],
+        ["Are you going to help me look for it this afternoon?", "¿Vas a ayudarme a buscarlo esta tarde?", null, 7],
+        ["I wanted to ask if you're going to help me next week.", "Quería preguntar si vas a ayudarme la próxima semana.", null, 9],
+        ["Are you going to be able to understand what I'm saying?", "¿Vas a poder entender lo que estoy diciendo?", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0051L02": {
+      "lego": ["to do/make", "hacer"],
+      "type": "A",
+      "available_legos": 502,
+      "practice_phrases": [
+        ["to do", "hacer", null, 1],
+        ["what to do", "qué hacer", null, 1],
+        ["to do something interesting", "hacer algo interesante", null, 2],
+        ["what you're going to do", "qué vas a hacer", null, 2],
+        ["I don't know what to do", "no sé qué hacer", null, 3],
+        ["I enjoy doing interesting things with my friends.", "Disfruto hacer cosas interesantes con mis amigos.", null, 6],
+        ["What are you going to do on Sunday afternoon?", "¿Qué vas a hacer el domingo por la tarde?", null, 6],
+        ["I don't know what I need to do next week yet.", "No sé qué necesito hacer la próxima semana todavía.", null, 8],
+        ["I'd like to do something different with you this evening.", "Me gustaría hacer algo diferente contigo esta noche.", null, 8],
+        ["I wanted to ask what you're going to do today.", "Quería preguntar qué vas a hacer hoy.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0161L04": {
+      "lego": ["on Sunday", "el domingo"],
+      "type": "M",
+      "available_legos": 502,
+      "practice_phrases": [
+        ["on Sunday", "el domingo", null, 1],
+        ["on Sunday afternoon", "el domingo por la tarde", null, 2],
+        ["what you're going to do on Sunday", "qué vas a hacer el domingo", null, 3],
+        ["I want to see you on Sunday", "quiero verte el domingo", null, 3],
+        ["I'm going to help you on Sunday", "voy a ayudarte el domingo", null, 3],
+        ["What are you going to do on Sunday afternoon?", "¿Qué vas a hacer el domingo por la tarde?", null, 6],
+        ["I'm going to meet my friends on Sunday morning.", "Voy a reunirme con mis amigos el domingo por la mañana.", null, 8],
+        ["I'd like to practise speaking Spanish on Sunday if I can.", "Me gustaría practicar hablar español el domingo si puedo.", null, 10],
+        ["I'll ask her where she wants to go on Sunday.", "Le preguntaré dónde quiere ir el domingo.", null, 6],
+        ["I was thinking about what to do on Sunday last night.", "Estaba pensando sobre qué hacer el domingo anoche.", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0167L02": {
+      "lego": ["in the afternoon", "por la tarde"],
+      "type": "M",
+      "available_legos": 502,
+      "practice_phrases": [
+        ["in the afternoon", "por la tarde", null, 1],
+        ["on Sunday afternoon", "el domingo por la tarde", null, 2],
+        ["this afternoon", "esta tarde", null, 1],
+        ["what you're going to do in the afternoon", "qué vas a hacer por la tarde", null, 3],
+        ["I'm going to help you in the afternoon", "voy a ayudarte por la tarde", null, 3],
+        ["I want to read my book for a while this afternoon.", "Quiero leer mi libro por un rato esta tarde.", null, 9],
+        ["What are you going to do on Sunday afternoon?", "¿Qué vas a hacer el domingo por la tarde?", null, 6],
+        ["I was looking for it in the afternoon but I couldn't find it.", "Estaba buscándolo por la tarde pero no pude encontrarlo.", null, 10],
+        ["I'd like to practise speaking Spanish in the afternoon.", "Me gustaría practicar hablar español por la tarde.", null, 7],
+        ["I wanted to see you this afternoon although I didn't have time.", "Quería verte esta tarde aunque no tuve tiempo.", null, 9]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "full_seed_included": "YES - phrase 7",
+      "gate_compliance": "STRICT"
+    }
+  },
+
+  "S0180": {
+    "seed": "S0180",
+    "seed_pair": {
+      "known": "I'd like to read my book for a while.",
+      "target": "Me gustaría leer mi libro por un rato."
+    },
+    "cumulative_legos": 504,
+
+    "S0011L01": {
+      "lego": ["I'd like", "me gustaría"],
+      "type": "M",
+      "available_legos": 502,
+      "practice_phrases": [
+        ["I'd like", "me gustaría", null, 1],
+        ["I'd like to help", "me gustaría ayudar", null, 2],
+        ["I'd like to read", "me gustaría leer", null, 2],
+        ["I'd like to speak Spanish", "me gustaría hablar español", null, 3],
+        ["I'd like to read my book", "me gustaría leer mi libro", null, 3],
+        ["I'd like to help you with this if I can.", "Me gustaría ayudarte con esto si puedo.", null, 7],
+        ["I'd like to read my book for a while this afternoon.", "Me gustaría leer mi libro por un rato esta tarde.", null, 8],
+        ["I'd like to practise speaking Spanish with you on Sunday.", "Me gustaría practicar hablar español contigo el domingo.", null, 7],
+        ["I'd like to understand what you're trying to say.", "Me gustaría entender lo que estás intentando decir.", null, 7],
+        ["I'd like to see you next week if you have time.", "Me gustaría verte la próxima semana si tienes tiempo.", null, 9]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0035L01": {
+      "lego": ["to read", "leer"],
+      "type": "A",
+      "available_legos": 502,
+      "practice_phrases": [
+        ["to read", "leer", null, 1],
+        ["I want to read", "quiero leer", null, 1],
+        ["to read my book", "leer mi libro", null, 2],
+        ["I'd like to read something", "me gustaría leer algo", null, 2],
+        ["to read for a while", "leer por un rato", null, 2],
+        ["I enjoy reading my book in the morning.", "Disfruto leer mi libro por la mañana.", null, 6],
+        ["I'd like to read my book for a while this afternoon.", "Me gustaría leer mi libro por un rato esta tarde.", null, 8],
+        ["I want to read something interesting in Spanish next week.", "Quiero leer algo interesante en español la próxima semana.", null, 8],
+        ["I didn't have time to read anything yesterday.", "No tuve tiempo para leer nada ayer.", null, 6],
+        ["I'm going to read my book on Sunday afternoon.", "Voy a leer mi libro el domingo por la tarde.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0180L01": {
+      "lego": ["my book", "mi libro"],
+      "type": "M",
+      "available_legos": 503,
+      "practice_phrases": [
+        ["my book", "mi libro", null, 1],
+        ["to read my book", "leer mi libro", null, 2],
+        ["I want to read my book", "quiero leer mi libro", null, 2],
+        ["I'm reading my book now", "estoy leyendo mi libro ahora", null, 2],
+        ["I'd like to read my book today", "me gustaría leer mi libro hoy", null, 3],
+        ["I enjoy reading my book in the morning.", "Disfruto leer mi libro por la mañana.", null, 6],
+        ["I'd like to read my book for a while this afternoon.", "Me gustaría leer mi libro por un rato esta tarde.", null, 8],
+        ["I was looking for my book this morning but I couldn't find it.", "Estaba buscando mi libro esta mañana pero no pude encontrarlo.", null, 11],
+        ["I'm going to read my book on Sunday afternoon.", "Voy a leer mi libro el domingo por la tarde.", null, 7],
+        ["I don't know where I put my book yesterday.", "No sé dónde puse mi libro ayer.", null, 7]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "gate_compliance": "STRICT"
+    },
+
+    "S0180L02": {
+      "lego": ["for a while", "por un rato"],
+      "type": "M",
+      "available_legos": 504,
+      "practice_phrases": [
+        ["for a while", "por un rato", null, 1],
+        ["to read for a while", "leer por un rato", null, 2],
+        ["I want to rest for a while", "quiero descansar por un rato", null, 2],
+        ["to speak with you for a while", "hablar contigo por un rato", null, 3],
+        ["I'd like to read for a while", "me gustaría leer por un rato", null, 3],
+        ["I'm going to rest for a while this afternoon.", "Voy a descansar por un rato esta tarde.", null, 7],
+        ["I'd like to read my book for a while.", "Me gustaría leer mi libro por un rato.", null, 5],
+        ["I wanted to speak with you for a while yesterday.", "Quería hablar contigo por un rato ayer.", null, 7],
+        ["Can I help you for a while before I have to go?", "¿Puedo ayudarte por un rato antes de que tenga que ir?", null, 10],
+        ["I was thinking about this for a while last night.", "Estaba pensando sobre esto por un rato anoche.", null, 8]
+      ],
+      "phrase_distribution": {"really_short_1_2": 2, "quite_short_3": 2, "longer_4_5": 2, "long_6_plus": 4},
+      "full_seed_included": "YES - phrase 7",
+      "gate_compliance": "STRICT"
+    }
+  }
+}

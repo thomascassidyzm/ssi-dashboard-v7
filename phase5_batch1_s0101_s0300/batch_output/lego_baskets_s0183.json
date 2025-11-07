@@ -1,0 +1,248 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0183",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "No, me temo que no las he visto.",
+    "known": "No I'm afraid I haven't seen them."
+  },
+  "cumulative_legos": 515,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T04:50:02.108989Z",
+    "curated_by": "Agent 09 - Automated generation with strict GATE compliance",
+    "spec_version": "phase_5_conversational_baskets_v3_ACTIVE"
+  },
+  "S0096L01": {
+    "lego": [
+      "no",
+      "no"
+    ],
+    "type": "A",
+    "available_legos": 512,
+    "practice_phrases": [
+      [
+        "no",
+        "no",
+        null,
+        1
+      ],
+      [
+        "no I don't",
+        "no no",
+        null,
+        1
+      ],
+      [
+        "no I'm not ready",
+        "no no estoy preparado",
+        null,
+        2
+      ],
+      [
+        "no I can't go",
+        "no no puedo ir",
+        null,
+        2
+      ],
+      [
+        "no I don't have to",
+        "no no tengo que",
+        null,
+        2
+      ],
+      [
+        "no I haven't seen this",
+        "no no he visto esto",
+        null,
+        3
+      ],
+      [
+        "no I don't want to speak now",
+        "no no quiero hablar ahora",
+        null,
+        4
+      ],
+      [
+        "no I'm not ready to go yet",
+        "no no estoy preparado para ir todavía",
+        null,
+        5
+      ],
+      [
+        "no I haven't seen my keys anywhere",
+        "no no he visto mis llaves en algún lugar",
+        null,
+        5
+      ],
+      [
+        "no I'm afraid I can't help you with this",
+        "no me temo que no puedo ayudar te con esto",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 1
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0096L01 LEGOs only"
+  },
+  "S0183L01": {
+    "lego": [
+      "I'm afraid",
+      "me temo que"
+    ],
+    "type": "M",
+    "available_legos": 513,
+    "practice_phrases": [
+      [
+        "I'm afraid",
+        "me temo que",
+        null,
+        1
+      ],
+      [
+        "I'm afraid I can't",
+        "me temo que no puedo",
+        null,
+        2
+      ],
+      [
+        "I'm afraid I have to go",
+        "me temo que tengo que ir",
+        null,
+        3
+      ],
+      [
+        "I'm afraid I don't know",
+        "me temo que no sé",
+        null,
+        2
+      ],
+      [
+        "I'm afraid I'm not ready",
+        "me temo que no estoy preparado",
+        null,
+        3
+      ],
+      [
+        "I'm afraid I can't speak Spanish yet",
+        "me temo que no puedo hablar español todavía",
+        null,
+        5
+      ],
+      [
+        "I'm afraid I have to go home now",
+        "me temo que tengo que ir a casa ahora",
+        null,
+        6
+      ],
+      [
+        "I'm afraid I haven't seen your keys anywhere",
+        "me temo que no he visto tus llaves en algún lugar",
+        null,
+        6
+      ],
+      [
+        "I'm afraid I'm not ready to speak with the doctor",
+        "me temo que no estoy preparado para hablar con el doctor",
+        null,
+        9
+      ],
+      [
+        "I'm afraid I can't help you find what you're looking for",
+        "me temo que no puedo ayudar te a encontrar lo que estás buscando",
+        null,
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0183L01 LEGOs only"
+  },
+  "S0183L02": {
+    "lego": [
+      "I haven't seen them",
+      "no las he visto"
+    ],
+    "type": "M",
+    "available_legos": 514,
+    "practice_phrases": [
+      [
+        "I haven't seen them",
+        "no las he visto",
+        null,
+        1
+      ],
+      [
+        "I haven't seen them today",
+        "no las he visto hoy",
+        null,
+        2
+      ],
+      [
+        "I haven't seen them anywhere",
+        "no las he visto en algún lugar",
+        null,
+        2
+      ],
+      [
+        "I'm afraid I haven't seen them",
+        "me temo que no las he visto",
+        null,
+        3
+      ],
+      [
+        "I haven't seen them at work",
+        "no las he visto en el trabajo",
+        null,
+        3
+      ],
+      [
+        "I haven't seen them recently",
+        "no las he visto recientemente",
+        null,
+        2
+      ],
+      [
+        "I'm afraid I haven't seen them anywhere",
+        "me temo que no las he visto en algún lugar",
+        null,
+        3
+      ],
+      [
+        "I haven't seen them but I can help you look",
+        "no las he visto pero puedo ayudar te a buscar",
+        null,
+        8
+      ],
+      [
+        "I haven't seen them but I think they're at home",
+        "no las he visto pero creo que están en casa",
+        null,
+        9
+      ],
+      [
+        "No I'm afraid I haven't seen them.",
+        "No, me temo que no las he visto.",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 4,
+      "longer_4_5": 0,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0183L02 LEGOs only",
+    "full_seed_included": "YES - phrase 10"
+  }
+}
