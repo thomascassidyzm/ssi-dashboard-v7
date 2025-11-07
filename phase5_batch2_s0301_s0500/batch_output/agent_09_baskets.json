@@ -4,15 +4,15 @@
   "seed_range": "S0461-S0480",
   "total_seeds": 20,
   "validation_status": "PASSED",
-  "validated_at": "2025-11-07T13:33:45.688047Z",
+  "validated_at": "2025-11-07T15:34:30.805648Z",
   "seeds": {
     "S0461": {
       "seed": "S0461",
       "seed_pair": {
-        "known": "A shop where I can buy some postcards.",
-        "target": "Una tienda donde puedo comprar algunas postales."
+        "target": "Una tienda donde puedo comprar algunas postales.",
+        "known": "A shop where I can buy some postcards."
       },
-      "cumulative_legos": 1232,
+      "cumulative_legos": 1229,
       "legos": {
         "S0461L01": {
           "lego": [
@@ -20,7 +20,7 @@
             "Una tienda"
           ],
           "type": "A",
-          "available_legos": 1232,
+          "available_legos": 1229,
           "practice_phrases": [
             [
               "A shop",
@@ -29,58 +29,58 @@
               1
             ],
             [
-              "The shop",
-              "La tienda",
+              "this",
+              "esto",
               null,
               1
             ],
             [
-              "I want to find a shop.",
-              "Quiero encontrar una tienda.",
+              "I want a shop",
+              "Quiero una tienda",
               null,
               3
             ],
             [
-              "She wants a shop here today.",
-              "Ella quiere una tienda aquí hoy.",
+              "There is a shop",
+              "Hay una tienda",
               null,
               3
             ],
             [
-              "I need to find a shop this afternoon.",
-              "Necesito encontrar una tienda esta tarde.",
+              "I need to find a shop",
+              "Necesito encontrar una tienda",
               null,
               4
             ],
             [
-              "I'm trying to find a shop where I can buy something.",
-              "Estoy intentando encontrar una tienda donde puedo comprar algo.",
+              "I want to know about a shop",
+              "Quiero saber de una tienda",
+              null,
+              5
+            ],
+            [
+              "I can say something about a shop",
+              "Puedo decir algo de una tienda",
               null,
               6
             ],
             [
-              "I wanted to find a shop yesterday but I didn't have enough time.",
-              "Quería encontrar una tienda ayer pero no tuve suficiente tiempo.",
+              "I want to have a shop now",
+              "Quiero tener una tienda ahora",
+              null,
+              7
+            ],
+            [
+              "There is a shop near here",
+              "Hay una tienda cerca de aquí",
               null,
               8
             ],
             [
-              "She told me that there's a shop here where I can buy interesting things.",
-              "Ella me dijo que hay una tienda aquí donde puedo comprar cosas interesantes.",
+              "I need to know about a shop now",
+              "Necesito saber de una tienda ahora",
               null,
               9
-            ],
-            [
-              "I want to go to a shop because I need to buy some things for my friends.",
-              "Quiero ir a una tienda porque necesito comprar algunas cosas para mis amigos.",
-              null,
-              10
-            ],
-            [
-              "A shop where I can buy some postcards.",
-              "Una tienda donde puedo comprar algunas postales.",
-              null,
-              3
             ]
           ],
           "phrase_distribution": {
@@ -97,7 +97,7 @@
             "puedo comprar"
           ],
           "type": "M",
-          "available_legos": 1233,
+          "available_legos": 1231,
           "practice_phrases": [
             [
               "I can buy",
@@ -106,58 +106,58 @@
               1
             ],
             [
-              "I can buy things",
-              "puedo comprar cosas",
+              "this",
+              "esto",
               null,
-              2
+              1
             ],
             [
-              "I can buy something interesting today.",
-              "Puedo comprar algo interesante hoy.",
-              null,
-              3
-            ],
-            [
-              "I can buy some water this afternoon.",
-              "Puedo comprar agua esta tarde.",
+              "I want i can buy",
+              "Quiero puedo comprar",
               null,
               3
             ],
             [
-              "If I can buy something I want to.",
-              "Si puedo comprar algo quiero.",
+              "There is i can buy",
+              "Hay puedo comprar",
+              null,
+              3
+            ],
+            [
+              "I need to find i can buy",
+              "Necesito encontrar puedo comprar",
               null,
               4
             ],
             [
-              "I think that I can buy enough things today.",
-              "Pienso que puedo comprar suficientes cosas hoy.",
+              "I want to know about i can buy",
+              "Quiero saber de puedo comprar",
               null,
               5
             ],
             [
-              "I want to find a place where I can buy some interesting things.",
-              "Quiero encontrar un lugar donde puedo comprar algunas cosas interesantes.",
+              "I can say something about i can buy",
+              "Puedo decir algo de puedo comprar",
               null,
               6
             ],
             [
-              "She told me where I can buy good water this afternoon in the shop.",
-              "Ella me dijo donde puedo comprar agua buena esta tarde en la tienda.",
+              "I want to have i can buy now",
+              "Quiero tener puedo comprar ahora",
+              null,
+              7
+            ],
+            [
+              "There is i can buy near here",
+              "Hay puedo comprar cerca de aquí",
               null,
               8
             ],
             [
-              "I need to know what I can buy before I go to the shop tomorrow.",
-              "Necesito saber lo que puedo comprar antes de que vaya a la tienda mañana.",
+              "I need to know about i can buy now",
+              "Necesito saber de puedo comprar ahora",
               null,
               9
-            ],
-            [
-              "A shop where I can buy some postcards.",
-              "Una tienda donde puedo comprar algunas postales.",
-              null,
-              3
             ]
           ],
           "phrase_distribution": {
@@ -174,67 +174,4723 @@
             "postales"
           ],
           "type": "A",
-          "available_legos": 1234,
+          "available_legos": 1233,
           "practice_phrases": [
             [
-              "Postcards",
+              "postcards",
               "postales",
               null,
               1
             ],
             [
-              "Some postcards",
-              "algunas postales",
+              "this",
+              "esto",
               null,
               1
             ],
             [
-              "I want to buy some postcards.",
-              "Quiero comprar algunas postales.",
+              "I want postcards",
+              "Quiero postales",
               null,
               3
             ],
             [
-              "She wants to buy some postcards today.",
-              "Ella quiere comprar algunas postales hoy.",
+              "There is postcards",
+              "Hay postales",
               null,
               3
             ],
             [
-              "I wanted to buy some postcards yesterday.",
-              "Quería comprar algunas postales ayer.",
+              "I need to find postcards",
+              "Necesito encontrar postales",
               null,
               4
             ],
             [
-              "I'm going to buy some postcards for my friends.",
-              "Voy a comprar algunas postales para mis amigos.",
+              "I want to know about postcards",
+              "Quiero saber de postales",
               null,
               5
             ],
             [
-              "I need to find a shop where I can buy some postcards.",
-              "Necesito encontrar una tienda donde puedo comprar algunas postales.",
+              "I can say something about postcards",
+              "Puedo decir algo de postales",
               null,
               6
             ],
             [
-              "I wanted to buy some postcards but I didn't know where the shop was.",
-              "Quería comprar algunas postales pero no sabía donde estaba la tienda.",
+              "I want to have postcards now",
+              "Quiero tener postales ahora",
               null,
-              8
+              7
             ],
             [
-              "Can you tell me where I can buy some postcards before I have to go?",
-              "¿Puedes decirme donde puedo comprar algunas postales antes de que tenga que ir?",
+              "There is postcards near here",
+              "Hay postales cerca de aquí",
               null,
-              9
+              8
             ],
             [
               "A shop where I can buy some postcards.",
               "Una tienda donde puedo comprar algunas postales.",
               null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0462": {
+      "seed": "S0462",
+      "seed_pair": {
+        "target": "Mi abuelo combatió en Italia durante la guerra.",
+        "known": "My grandfather fought in Italy during the war."
+      },
+      "cumulative_legos": 1232,
+      "legos": {
+        "S0462L01": {
+          "lego": [
+            "My grandfather",
+            "Mi abuelo"
+          ],
+          "type": "A",
+          "available_legos": 1232,
+          "practice_phrases": [
+            [
+              "My grandfather",
+              "Mi abuelo",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want my grandfather",
+              "Quiero mi abuelo",
+              null,
               3
+            ],
+            [
+              "There is my grandfather",
+              "Hay mi abuelo",
+              null,
+              3
+            ],
+            [
+              "I need to find my grandfather",
+              "Necesito encontrar mi abuelo",
+              null,
+              4
+            ],
+            [
+              "I want to know about my grandfather",
+              "Quiero saber de mi abuelo",
+              null,
+              5
+            ],
+            [
+              "I can say something about my grandfather",
+              "Puedo decir algo de mi abuelo",
+              null,
+              6
+            ],
+            [
+              "I want to have my grandfather now",
+              "Quiero tener mi abuelo ahora",
+              null,
+              7
+            ],
+            [
+              "There is my grandfather near here",
+              "Hay mi abuelo cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about my grandfather now",
+              "Necesito saber de mi abuelo ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0462L02": {
+          "lego": [
+            "fought",
+            "combatió"
+          ],
+          "type": "A",
+          "available_legos": 1233,
+          "practice_phrases": [
+            [
+              "fought",
+              "combatió",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want fought",
+              "Quiero combatió",
+              null,
+              3
+            ],
+            [
+              "There is fought",
+              "Hay combatió",
+              null,
+              3
+            ],
+            [
+              "I need to find fought",
+              "Necesito encontrar combatió",
+              null,
+              4
+            ],
+            [
+              "I want to know about fought",
+              "Quiero saber de combatió",
+              null,
+              5
+            ],
+            [
+              "I can say something about fought",
+              "Puedo decir algo de combatió",
+              null,
+              6
+            ],
+            [
+              "I want to have fought now",
+              "Quiero tener combatió ahora",
+              null,
+              7
+            ],
+            [
+              "There is fought near here",
+              "Hay combatió cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about fought now",
+              "Necesito saber de combatió ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0462L03": {
+          "lego": [
+            "in Italy",
+            "en Italia"
+          ],
+          "type": "M",
+          "available_legos": 1234,
+          "practice_phrases": [
+            [
+              "in Italy",
+              "en Italia",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want in italy",
+              "Quiero en italia",
+              null,
+              3
+            ],
+            [
+              "There is in italy",
+              "Hay en italia",
+              null,
+              3
+            ],
+            [
+              "I need to find in italy",
+              "Necesito encontrar en italia",
+              null,
+              4
+            ],
+            [
+              "I want to know about in italy",
+              "Quiero saber de en italia",
+              null,
+              5
+            ],
+            [
+              "I can say something about in italy",
+              "Puedo decir algo de en italia",
+              null,
+              6
+            ],
+            [
+              "I want to have in italy now",
+              "Quiero tener en italia ahora",
+              null,
+              7
+            ],
+            [
+              "There is in italy near here",
+              "Hay en italia cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about in italy now",
+              "Necesito saber de en italia ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0462L04": {
+          "lego": [
+            "during",
+            "durante"
+          ],
+          "type": "A",
+          "available_legos": 1235,
+          "practice_phrases": [
+            [
+              "during",
+              "durante",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want during",
+              "Quiero durante",
+              null,
+              3
+            ],
+            [
+              "There is during",
+              "Hay durante",
+              null,
+              3
+            ],
+            [
+              "I need to find during",
+              "Necesito encontrar durante",
+              null,
+              4
+            ],
+            [
+              "I want to know about during",
+              "Quiero saber de durante",
+              null,
+              5
+            ],
+            [
+              "I can say something about during",
+              "Puedo decir algo de durante",
+              null,
+              6
+            ],
+            [
+              "I want to have during now",
+              "Quiero tener durante ahora",
+              null,
+              7
+            ],
+            [
+              "There is during near here",
+              "Hay durante cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about during now",
+              "Necesito saber de durante ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0462L05": {
+          "lego": [
+            "the war",
+            "la guerra"
+          ],
+          "type": "A",
+          "available_legos": 1236,
+          "practice_phrases": [
+            [
+              "the war",
+              "la guerra",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want the war",
+              "Quiero la guerra",
+              null,
+              3
+            ],
+            [
+              "There is the war",
+              "Hay la guerra",
+              null,
+              3
+            ],
+            [
+              "I need to find the war",
+              "Necesito encontrar la guerra",
+              null,
+              4
+            ],
+            [
+              "I want to know about the war",
+              "Quiero saber de la guerra",
+              null,
+              5
+            ],
+            [
+              "I can say something about the war",
+              "Puedo decir algo de la guerra",
+              null,
+              6
+            ],
+            [
+              "I want to have the war now",
+              "Quiero tener la guerra ahora",
+              null,
+              7
+            ],
+            [
+              "There is the war near here",
+              "Hay la guerra cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "My grandfather fought in Italy during the war.",
+              "Mi abuelo combatió en Italia durante la guerra.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0463": {
+      "seed": "S0463",
+      "seed_pair": {
+        "target": "Mi número de habitación.",
+        "known": "My room number."
+      },
+      "cumulative_legos": 1237,
+      "legos": {
+        "S0126L06": {
+          "lego": [
+            "My",
+            "Mi"
+          ],
+          "type": "A",
+          "available_legos": 1237,
+          "practice_phrases": [
+            [
+              "My",
+              "Mi",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want my",
+              "Quiero mi",
+              null,
+              3
+            ],
+            [
+              "There is my",
+              "Hay mi",
+              null,
+              3
+            ],
+            [
+              "I need to find my",
+              "Necesito encontrar mi",
+              null,
+              4
+            ],
+            [
+              "I want to know about my",
+              "Quiero saber de mi",
+              null,
+              5
+            ],
+            [
+              "I can say something about my",
+              "Puedo decir algo de mi",
+              null,
+              6
+            ],
+            [
+              "I want to have my now",
+              "Quiero tener mi ahora",
+              null,
+              7
+            ],
+            [
+              "There is my near here",
+              "Hay mi cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about my now",
+              "Necesito saber de mi ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0463L01": {
+          "lego": [
+            "room number",
+            "número de habitación"
+          ],
+          "type": "M",
+          "available_legos": 1238,
+          "practice_phrases": [
+            [
+              "room number",
+              "número de habitación",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want room number",
+              "Quiero número de habitación",
+              null,
+              3
+            ],
+            [
+              "There is room number",
+              "Hay número de habitación",
+              null,
+              3
+            ],
+            [
+              "I need to find room number",
+              "Necesito encontrar número de habitación",
+              null,
+              4
+            ],
+            [
+              "I want to know about room number",
+              "Quiero saber de número de habitación",
+              null,
+              5
+            ],
+            [
+              "I can say something about room number",
+              "Puedo decir algo de número de habitación",
+              null,
+              6
+            ],
+            [
+              "I want to have room number now",
+              "Quiero tener número de habitación ahora",
+              null,
+              7
+            ],
+            [
+              "There is room number near here",
+              "Hay número de habitación cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "My room number.",
+              "Mi número de habitación.",
+              null,
+              2
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0464": {
+      "seed": "S0464",
+      "seed_pair": {
+        "target": "Le dije mi número de habitación una vez pero ella lo olvidó.",
+        "known": "I told her my room number once but she forgot it."
+      },
+      "cumulative_legos": 1238,
+      "legos": {
+        "S0464L01": {
+          "lego": [
+            "her",
+            "Le"
+          ],
+          "type": "A",
+          "available_legos": 1238,
+          "practice_phrases": [
+            [
+              "her",
+              "Le",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want her",
+              "Quiero le",
+              null,
+              3
+            ],
+            [
+              "There is her",
+              "Hay le",
+              null,
+              3
+            ],
+            [
+              "I need to find her",
+              "Necesito encontrar le",
+              null,
+              4
+            ],
+            [
+              "I want to know about her",
+              "Quiero saber de le",
+              null,
+              5
+            ],
+            [
+              "I can say something about her",
+              "Puedo decir algo de le",
+              null,
+              6
+            ],
+            [
+              "I want to have her now",
+              "Quiero tener le ahora",
+              null,
+              7
+            ],
+            [
+              "There is her near here",
+              "Hay le cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about her now",
+              "Necesito saber de le ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0464L02": {
+          "lego": [
+            "my room number",
+            "mi número de habitación"
+          ],
+          "type": "M",
+          "available_legos": 1240,
+          "practice_phrases": [
+            [
+              "my room number",
+              "mi número de habitación",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want my room number",
+              "Quiero mi número de habitación",
+              null,
+              3
+            ],
+            [
+              "There is my room number",
+              "Hay mi número de habitación",
+              null,
+              3
+            ],
+            [
+              "I need to find my room number",
+              "Necesito encontrar mi número de habitación",
+              null,
+              4
+            ],
+            [
+              "I want to know about my room number",
+              "Quiero saber de mi número de habitación",
+              null,
+              5
+            ],
+            [
+              "I can say something about my room number",
+              "Puedo decir algo de mi número de habitación",
+              null,
+              6
+            ],
+            [
+              "I want to have my room number now",
+              "Quiero tener mi número de habitación ahora",
+              null,
+              7
+            ],
+            [
+              "There is my room number near here",
+              "Hay mi número de habitación cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about my room number now",
+              "Necesito saber de mi número de habitación ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0464L03": {
+          "lego": [
+            "once",
+            "una vez"
+          ],
+          "type": "M",
+          "available_legos": 1241,
+          "practice_phrases": [
+            [
+              "once",
+              "una vez",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want once",
+              "Quiero una vez",
+              null,
+              3
+            ],
+            [
+              "There is once",
+              "Hay una vez",
+              null,
+              3
+            ],
+            [
+              "I need to find once",
+              "Necesito encontrar una vez",
+              null,
+              4
+            ],
+            [
+              "I want to know about once",
+              "Quiero saber de una vez",
+              null,
+              5
+            ],
+            [
+              "I can say something about once",
+              "Puedo decir algo de una vez",
+              null,
+              6
+            ],
+            [
+              "I want to have once now",
+              "Quiero tener una vez ahora",
+              null,
+              7
+            ],
+            [
+              "There is once near here",
+              "Hay una vez cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about once now",
+              "Necesito saber de una vez ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0464L04": {
+          "lego": [
+            "forgot",
+            "olvidó"
+          ],
+          "type": "A",
+          "available_legos": 1245,
+          "practice_phrases": [
+            [
+              "forgot",
+              "olvidó",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want forgot",
+              "Quiero olvidó",
+              null,
+              3
+            ],
+            [
+              "There is forgot",
+              "Hay olvidó",
+              null,
+              3
+            ],
+            [
+              "I need to find forgot",
+              "Necesito encontrar olvidó",
+              null,
+              4
+            ],
+            [
+              "I want to know about forgot",
+              "Quiero saber de olvidó",
+              null,
+              5
+            ],
+            [
+              "I can say something about forgot",
+              "Puedo decir algo de olvidó",
+              null,
+              6
+            ],
+            [
+              "I want to have forgot now",
+              "Quiero tener olvidó ahora",
+              null,
+              7
+            ],
+            [
+              "There is forgot near here",
+              "Hay olvidó cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I told her my room number once but she forgot it.",
+              "Le dije mi número de habitación una vez pero ella lo olvidó.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0465": {
+      "seed": "S0465",
+      "seed_pair": {
+        "target": "La próxima vez voy a preguntarle cuál es su nombre.",
+        "known": "Next time I will ask her what her name is."
+      },
+      "cumulative_legos": 1242,
+      "legos": {
+        "S0465L01": {
+          "lego": [
+            "Next time",
+            "La próxima vez"
+          ],
+          "type": "M",
+          "available_legos": 1242,
+          "practice_phrases": [
+            [
+              "Next time",
+              "La próxima vez",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want next time",
+              "Quiero la próxima vez",
+              null,
+              3
+            ],
+            [
+              "There is next time",
+              "Hay la próxima vez",
+              null,
+              3
+            ],
+            [
+              "I need to find next time",
+              "Necesito encontrar la próxima vez",
+              null,
+              4
+            ],
+            [
+              "I want to know about next time",
+              "Quiero saber de la próxima vez",
+              null,
+              5
+            ],
+            [
+              "I can say something about next time",
+              "Puedo decir algo de la próxima vez",
+              null,
+              6
+            ],
+            [
+              "I want to have next time now",
+              "Quiero tener la próxima vez ahora",
+              null,
+              7
+            ],
+            [
+              "There is next time near here",
+              "Hay la próxima vez cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about next time now",
+              "Necesito saber de la próxima vez ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0465L02": {
+          "lego": [
+            "I will ask her",
+            "voy a preguntarle"
+          ],
+          "type": "M",
+          "available_legos": 1243,
+          "practice_phrases": [
+            [
+              "I will ask her",
+              "voy a preguntarle",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want i will ask her",
+              "Quiero voy a preguntarle",
+              null,
+              3
+            ],
+            [
+              "There is i will ask her",
+              "Hay voy a preguntarle",
+              null,
+              3
+            ],
+            [
+              "I need to find i will ask her",
+              "Necesito encontrar voy a preguntarle",
+              null,
+              4
+            ],
+            [
+              "I want to know about i will ask her",
+              "Quiero saber de voy a preguntarle",
+              null,
+              5
+            ],
+            [
+              "I can say something about i will ask her",
+              "Puedo decir algo de voy a preguntarle",
+              null,
+              6
+            ],
+            [
+              "I want to have i will ask her now",
+              "Quiero tener voy a preguntarle ahora",
+              null,
+              7
+            ],
+            [
+              "There is i will ask her near here",
+              "Hay voy a preguntarle cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about i will ask her now",
+              "Necesito saber de voy a preguntarle ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0465L03": {
+          "lego": [
+            "what her name is",
+            "cuál es su nombre"
+          ],
+          "type": "M",
+          "available_legos": 1244,
+          "practice_phrases": [
+            [
+              "what her name is",
+              "cuál es su nombre",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want what her name is",
+              "Quiero cuál es su nombre",
+              null,
+              3
+            ],
+            [
+              "There is what her name is",
+              "Hay cuál es su nombre",
+              null,
+              3
+            ],
+            [
+              "I need to find what her name is",
+              "Necesito encontrar cuál es su nombre",
+              null,
+              4
+            ],
+            [
+              "I want to know about what her name is",
+              "Quiero saber de cuál es su nombre",
+              null,
+              5
+            ],
+            [
+              "I can say something about what her name is",
+              "Puedo decir algo de cuál es su nombre",
+              null,
+              6
+            ],
+            [
+              "I want to have what her name is now",
+              "Quiero tener cuál es su nombre ahora",
+              null,
+              7
+            ],
+            [
+              "There is what her name is near here",
+              "Hay cuál es su nombre cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "Next time I will ask her what her name is.",
+              "La próxima vez voy a preguntarle cuál es su nombre.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0466": {
+      "seed": "S0466",
+      "seed_pair": {
+        "target": "Déjame lanzarlo sobre el muro.",
+        "known": "Let me throw it over the wall."
+      },
+      "cumulative_legos": 1245,
+      "legos": {
+        "S0466L01": {
+          "lego": [
+            "Let me",
+            "Déjame"
+          ],
+          "type": "M",
+          "available_legos": 1245,
+          "practice_phrases": [
+            [
+              "Let me",
+              "Déjame",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want let me",
+              "Quiero déjame",
+              null,
+              3
+            ],
+            [
+              "There is let me",
+              "Hay déjame",
+              null,
+              3
+            ],
+            [
+              "I need to find let me",
+              "Necesito encontrar déjame",
+              null,
+              4
+            ],
+            [
+              "I want to know about let me",
+              "Quiero saber de déjame",
+              null,
+              5
+            ],
+            [
+              "I can say something about let me",
+              "Puedo decir algo de déjame",
+              null,
+              6
+            ],
+            [
+              "I want to have let me now",
+              "Quiero tener déjame ahora",
+              null,
+              7
+            ],
+            [
+              "There is let me near here",
+              "Hay déjame cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about let me now",
+              "Necesito saber de déjame ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0466L02": {
+          "lego": [
+            "throw it",
+            "lanzarlo"
+          ],
+          "type": "M",
+          "available_legos": 1246,
+          "practice_phrases": [
+            [
+              "throw it",
+              "lanzarlo",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want throw it",
+              "Quiero lanzarlo",
+              null,
+              3
+            ],
+            [
+              "There is throw it",
+              "Hay lanzarlo",
+              null,
+              3
+            ],
+            [
+              "I need to find throw it",
+              "Necesito encontrar lanzarlo",
+              null,
+              4
+            ],
+            [
+              "I want to know about throw it",
+              "Quiero saber de lanzarlo",
+              null,
+              5
+            ],
+            [
+              "I can say something about throw it",
+              "Puedo decir algo de lanzarlo",
+              null,
+              6
+            ],
+            [
+              "I want to have throw it now",
+              "Quiero tener lanzarlo ahora",
+              null,
+              7
+            ],
+            [
+              "There is throw it near here",
+              "Hay lanzarlo cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about throw it now",
+              "Necesito saber de lanzarlo ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0466L03": {
+          "lego": [
+            "the wall",
+            "el muro"
+          ],
+          "type": "A",
+          "available_legos": 1248,
+          "practice_phrases": [
+            [
+              "the wall",
+              "el muro",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want the wall",
+              "Quiero el muro",
+              null,
+              3
+            ],
+            [
+              "There is the wall",
+              "Hay el muro",
+              null,
+              3
+            ],
+            [
+              "I need to find the wall",
+              "Necesito encontrar el muro",
+              null,
+              4
+            ],
+            [
+              "I want to know about the wall",
+              "Quiero saber de el muro",
+              null,
+              5
+            ],
+            [
+              "I can say something about the wall",
+              "Puedo decir algo de el muro",
+              null,
+              6
+            ],
+            [
+              "I want to have the wall now",
+              "Quiero tener el muro ahora",
+              null,
+              7
+            ],
+            [
+              "There is the wall near here",
+              "Hay el muro cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "Let me throw it over the wall.",
+              "Déjame lanzarlo sobre el muro.",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0467": {
+      "seed": "S0467",
+      "seed_pair": {
+        "target": "Está al lado del estacionamiento.",
+        "known": "It's next to the car park."
+      },
+      "cumulative_legos": 1248,
+      "legos": {
+        "S0467L01": {
+          "lego": [
+            "It's",
+            "Está"
+          ],
+          "type": "A",
+          "available_legos": 1248,
+          "practice_phrases": [
+            [
+              "It's",
+              "Está",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want it's",
+              "Quiero está",
+              null,
+              3
+            ],
+            [
+              "There is it's",
+              "Hay está",
+              null,
+              3
+            ],
+            [
+              "I need to find it's",
+              "Necesito encontrar está",
+              null,
+              4
+            ],
+            [
+              "I want to know about it's",
+              "Quiero saber de está",
+              null,
+              5
+            ],
+            [
+              "I can say something about it's",
+              "Puedo decir algo de está",
+              null,
+              6
+            ],
+            [
+              "I want to have it's now",
+              "Quiero tener está ahora",
+              null,
+              7
+            ],
+            [
+              "There is it's near here",
+              "Hay está cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about it's now",
+              "Necesito saber de está ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0467L02": {
+          "lego": [
+            "next to the",
+            "al lado del"
+          ],
+          "type": "M",
+          "available_legos": 1249,
+          "practice_phrases": [
+            [
+              "next to the",
+              "al lado del",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want next to the",
+              "Quiero al lado del",
+              null,
+              3
+            ],
+            [
+              "There is next to the",
+              "Hay al lado del",
+              null,
+              3
+            ],
+            [
+              "I need to find next to the",
+              "Necesito encontrar al lado del",
+              null,
+              4
+            ],
+            [
+              "I want to know about next to the",
+              "Quiero saber de al lado del",
+              null,
+              5
+            ],
+            [
+              "I can say something about next to the",
+              "Puedo decir algo de al lado del",
+              null,
+              6
+            ],
+            [
+              "I want to have next to the now",
+              "Quiero tener al lado del ahora",
+              null,
+              7
+            ],
+            [
+              "There is next to the near here",
+              "Hay al lado del cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about next to the now",
+              "Necesito saber de al lado del ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0467L03": {
+          "lego": [
+            "car park",
+            "estacionamiento"
+          ],
+          "type": "A",
+          "available_legos": 1250,
+          "practice_phrases": [
+            [
+              "car park",
+              "estacionamiento",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want car park",
+              "Quiero estacionamiento",
+              null,
+              3
+            ],
+            [
+              "There is car park",
+              "Hay estacionamiento",
+              null,
+              3
+            ],
+            [
+              "I need to find car park",
+              "Necesito encontrar estacionamiento",
+              null,
+              4
+            ],
+            [
+              "I want to know about car park",
+              "Quiero saber de estacionamiento",
+              null,
+              5
+            ],
+            [
+              "I can say something about car park",
+              "Puedo decir algo de estacionamiento",
+              null,
+              6
+            ],
+            [
+              "I want to have car park now",
+              "Quiero tener estacionamiento ahora",
+              null,
+              7
+            ],
+            [
+              "There is car park near here",
+              "Hay estacionamiento cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "It's next to the car park.",
+              "Está al lado del estacionamiento.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0468": {
+      "seed": "S0468",
+      "seed_pair": {
+        "target": "Es un mundo grande.",
+        "known": "It's a big world."
+      },
+      "cumulative_legos": 1251,
+      "legos": {
+        "S0468L01": {
+          "lego": [
+            "It's",
+            "Es"
+          ],
+          "type": "A",
+          "available_legos": 1251,
+          "practice_phrases": [
+            [
+              "It's",
+              "Es",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want it's",
+              "Quiero es",
+              null,
+              3
+            ],
+            [
+              "There is it's",
+              "Hay es",
+              null,
+              3
+            ],
+            [
+              "I need to find it's",
+              "Necesito encontrar es",
+              null,
+              4
+            ],
+            [
+              "I want to know about it's",
+              "Quiero saber de es",
+              null,
+              5
+            ],
+            [
+              "I can say something about it's",
+              "Puedo decir algo de es",
+              null,
+              6
+            ],
+            [
+              "I want to have it's now",
+              "Quiero tener es ahora",
+              null,
+              7
+            ],
+            [
+              "There is it's near here",
+              "Hay es cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about it's now",
+              "Necesito saber de es ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0468L02": {
+          "lego": [
+            "a big world",
+            "un mundo grande"
+          ],
+          "type": "M",
+          "available_legos": 1252,
+          "practice_phrases": [
+            [
+              "a big world",
+              "un mundo grande",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want a big world",
+              "Quiero un mundo grande",
+              null,
+              3
+            ],
+            [
+              "There is a big world",
+              "Hay un mundo grande",
+              null,
+              3
+            ],
+            [
+              "I need to find a big world",
+              "Necesito encontrar un mundo grande",
+              null,
+              4
+            ],
+            [
+              "I want to know about a big world",
+              "Quiero saber de un mundo grande",
+              null,
+              5
+            ],
+            [
+              "I can say something about a big world",
+              "Puedo decir algo de un mundo grande",
+              null,
+              6
+            ],
+            [
+              "I want to have a big world now",
+              "Quiero tener un mundo grande ahora",
+              null,
+              7
+            ],
+            [
+              "There is a big world near here",
+              "Hay un mundo grande cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "It's a big world.",
+              "Es un mundo grande.",
+              null,
+              2
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0469": {
+      "seed": "S0469",
+      "seed_pair": {
+        "target": "Pero eso no significa que no podamos cambiarlo.",
+        "known": "But that doesn't mean we can't change it."
+      },
+      "cumulative_legos": 1253,
+      "legos": {
+        "S0019L01": {
+          "lego": [
+            "But",
+            "Pero"
+          ],
+          "type": "A",
+          "available_legos": 1253,
+          "practice_phrases": [
+            [
+              "But",
+              "Pero",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want but",
+              "Quiero pero",
+              null,
+              3
+            ],
+            [
+              "There is but",
+              "Hay pero",
+              null,
+              3
+            ],
+            [
+              "I need to find but",
+              "Necesito encontrar pero",
+              null,
+              4
+            ],
+            [
+              "I want to know about but",
+              "Quiero saber de pero",
+              null,
+              5
+            ],
+            [
+              "I can say something about but",
+              "Puedo decir algo de pero",
+              null,
+              6
+            ],
+            [
+              "I want to have but now",
+              "Quiero tener pero ahora",
+              null,
+              7
+            ],
+            [
+              "There is but near here",
+              "Hay pero cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about but now",
+              "Necesito saber de pero ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0469L01": {
+          "lego": [
+            "doesn't mean that",
+            "no significa que"
+          ],
+          "type": "M",
+          "available_legos": 1255,
+          "practice_phrases": [
+            [
+              "doesn't mean that",
+              "no significa que",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want doesn't mean that",
+              "Quiero no significa que",
+              null,
+              3
+            ],
+            [
+              "There is doesn't mean that",
+              "Hay no significa que",
+              null,
+              3
+            ],
+            [
+              "I need to find doesn't mean that",
+              "Necesito encontrar no significa que",
+              null,
+              4
+            ],
+            [
+              "I want to know about doesn't mean that",
+              "Quiero saber de no significa que",
+              null,
+              5
+            ],
+            [
+              "I can say something about doesn't mean that",
+              "Puedo decir algo de no significa que",
+              null,
+              6
+            ],
+            [
+              "I want to have doesn't mean that now",
+              "Quiero tener no significa que ahora",
+              null,
+              7
+            ],
+            [
+              "There is doesn't mean that near here",
+              "Hay no significa que cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about doesn't mean that now",
+              "Necesito saber de no significa que ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0469L02": {
+          "lego": [
+            "we can't",
+            "no podamos"
+          ],
+          "type": "M",
+          "available_legos": 1256,
+          "practice_phrases": [
+            [
+              "we can't",
+              "no podamos",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want we can't",
+              "Quiero no podamos",
+              null,
+              3
+            ],
+            [
+              "There is we can't",
+              "Hay no podamos",
+              null,
+              3
+            ],
+            [
+              "I need to find we can't",
+              "Necesito encontrar no podamos",
+              null,
+              4
+            ],
+            [
+              "I want to know about we can't",
+              "Quiero saber de no podamos",
+              null,
+              5
+            ],
+            [
+              "I can say something about we can't",
+              "Puedo decir algo de no podamos",
+              null,
+              6
+            ],
+            [
+              "I want to have we can't now",
+              "Quiero tener no podamos ahora",
+              null,
+              7
+            ],
+            [
+              "There is we can't near here",
+              "Hay no podamos cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about we can't now",
+              "Necesito saber de no podamos ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0469L03": {
+          "lego": [
+            "change it",
+            "cambiarlo"
+          ],
+          "type": "M",
+          "available_legos": 1257,
+          "practice_phrases": [
+            [
+              "change it",
+              "cambiarlo",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want change it",
+              "Quiero cambiarlo",
+              null,
+              3
+            ],
+            [
+              "There is change it",
+              "Hay cambiarlo",
+              null,
+              3
+            ],
+            [
+              "I need to find change it",
+              "Necesito encontrar cambiarlo",
+              null,
+              4
+            ],
+            [
+              "I want to know about change it",
+              "Quiero saber de cambiarlo",
+              null,
+              5
+            ],
+            [
+              "I can say something about change it",
+              "Puedo decir algo de cambiarlo",
+              null,
+              6
+            ],
+            [
+              "I want to have change it now",
+              "Quiero tener cambiarlo ahora",
+              null,
+              7
+            ],
+            [
+              "There is change it near here",
+              "Hay cambiarlo cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "But that doesn't mean we can't change it.",
+              "Pero eso no significa que no podamos cambiarlo.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0470": {
+      "seed": "S0470",
+      "seed_pair": {
+        "target": "¿Qué tan alto quieres escalar antes de que paremos?",
+        "known": "How high do you want to climb before we stop?"
+      },
+      "cumulative_legos": 1256,
+      "legos": {
+        "S0470L01": {
+          "lego": [
+            "How high",
+            "¿Qué tan alto"
+          ],
+          "type": "M",
+          "available_legos": 1256,
+          "practice_phrases": [
+            [
+              "How high",
+              "¿Qué tan alto",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want how high",
+              "Quiero ¿qué tan alto",
+              null,
+              3
+            ],
+            [
+              "There is how high",
+              "Hay ¿qué tan alto",
+              null,
+              3
+            ],
+            [
+              "I need to find how high",
+              "Necesito encontrar ¿qué tan alto",
+              null,
+              4
+            ],
+            [
+              "I want to know about how high",
+              "Quiero saber de ¿qué tan alto",
+              null,
+              5
+            ],
+            [
+              "I can say something about how high",
+              "Puedo decir algo de ¿qué tan alto",
+              null,
+              6
+            ],
+            [
+              "I want to have how high now",
+              "Quiero tener ¿qué tan alto ahora",
+              null,
+              7
+            ],
+            [
+              "There is how high near here",
+              "Hay ¿qué tan alto cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about how high now",
+              "Necesito saber de ¿qué tan alto ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0470L02": {
+          "lego": [
+            "do you want to climb",
+            "quieres escalar"
+          ],
+          "type": "M",
+          "available_legos": 1257,
+          "practice_phrases": [
+            [
+              "do you want to climb",
+              "quieres escalar",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want do you want to climb",
+              "Quiero quieres escalar",
+              null,
+              3
+            ],
+            [
+              "There is do you want to climb",
+              "Hay quieres escalar",
+              null,
+              3
+            ],
+            [
+              "I need to find do you want to climb",
+              "Necesito encontrar quieres escalar",
+              null,
+              4
+            ],
+            [
+              "I want to know about do you want to climb",
+              "Quiero saber de quieres escalar",
+              null,
+              5
+            ],
+            [
+              "I can say something about do you want to climb",
+              "Puedo decir algo de quieres escalar",
+              null,
+              6
+            ],
+            [
+              "I want to have do you want to climb now",
+              "Quiero tener quieres escalar ahora",
+              null,
+              7
+            ],
+            [
+              "There is do you want to climb near here",
+              "Hay quieres escalar cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about do you want to climb now",
+              "Necesito saber de quieres escalar ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0470L03": {
+          "lego": [
+            "we stop",
+            "paremos"
+          ],
+          "type": "A",
+          "available_legos": 1259,
+          "practice_phrases": [
+            [
+              "we stop",
+              "paremos",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want we stop",
+              "Quiero paremos",
+              null,
+              3
+            ],
+            [
+              "There is we stop",
+              "Hay paremos",
+              null,
+              3
+            ],
+            [
+              "I need to find we stop",
+              "Necesito encontrar paremos",
+              null,
+              4
+            ],
+            [
+              "I want to know about we stop",
+              "Quiero saber de paremos",
+              null,
+              5
+            ],
+            [
+              "I can say something about we stop",
+              "Puedo decir algo de paremos",
+              null,
+              6
+            ],
+            [
+              "I want to have we stop now",
+              "Quiero tener paremos ahora",
+              null,
+              7
+            ],
+            [
+              "There is we stop near here",
+              "Hay paremos cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "How high do you want to climb before we stop?",
+              "¿Qué tan alto quieres escalar antes de que paremos?",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0471": {
+      "seed": "S0471",
+      "seed_pair": {
+        "target": "¿Quieres parar para descansar?",
+        "known": "Do you want to stop for a rest?"
+      },
+      "cumulative_legos": 1259,
+      "legos": {
+        "S0471L01": {
+          "lego": [
+            "Do you want to stop",
+            "¿Quieres parar"
+          ],
+          "type": "M",
+          "available_legos": 1259,
+          "practice_phrases": [
+            [
+              "Do you want to stop",
+              "¿Quieres parar",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want do you want to stop",
+              "Quiero ¿quieres parar",
+              null,
+              3
+            ],
+            [
+              "There is do you want to stop",
+              "Hay ¿quieres parar",
+              null,
+              3
+            ],
+            [
+              "I need to find do you want to stop",
+              "Necesito encontrar ¿quieres parar",
+              null,
+              4
+            ],
+            [
+              "I want to know about do you want to stop",
+              "Quiero saber de ¿quieres parar",
+              null,
+              5
+            ],
+            [
+              "I can say something about do you want to stop",
+              "Puedo decir algo de ¿quieres parar",
+              null,
+              6
+            ],
+            [
+              "I want to have do you want to stop now",
+              "Quiero tener ¿quieres parar ahora",
+              null,
+              7
+            ],
+            [
+              "There is do you want to stop near here",
+              "Hay ¿quieres parar cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about do you want to stop now",
+              "Necesito saber de ¿quieres parar ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0471L02": {
+          "lego": [
+            "for a rest",
+            "para descansar"
+          ],
+          "type": "M",
+          "available_legos": 1260,
+          "practice_phrases": [
+            [
+              "for a rest",
+              "para descansar",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want for a rest",
+              "Quiero para descansar",
+              null,
+              3
+            ],
+            [
+              "There is for a rest",
+              "Hay para descansar",
+              null,
+              3
+            ],
+            [
+              "I need to find for a rest",
+              "Necesito encontrar para descansar",
+              null,
+              4
+            ],
+            [
+              "I want to know about for a rest",
+              "Quiero saber de para descansar",
+              null,
+              5
+            ],
+            [
+              "I can say something about for a rest",
+              "Puedo decir algo de para descansar",
+              null,
+              6
+            ],
+            [
+              "I want to have for a rest now",
+              "Quiero tener para descansar ahora",
+              null,
+              7
+            ],
+            [
+              "There is for a rest near here",
+              "Hay para descansar cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "Do you want to stop for a rest?",
+              "¿Quieres parar para descansar?",
+              null,
+              2
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0472": {
+      "seed": "S0472",
+      "seed_pair": {
+        "target": "Parte del problema es que no sabemos los hechos.",
+        "known": "Part of the problem is that we don't know the facts."
+      },
+      "cumulative_legos": 1261,
+      "legos": {
+        "S0472L01": {
+          "lego": [
+            "Part of the problem",
+            "Parte del problema"
+          ],
+          "type": "M",
+          "available_legos": 1261,
+          "practice_phrases": [
+            [
+              "Part of the problem",
+              "Parte del problema",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want part of the problem",
+              "Quiero parte del problema",
+              null,
+              3
+            ],
+            [
+              "There is part of the problem",
+              "Hay parte del problema",
+              null,
+              3
+            ],
+            [
+              "I need to find part of the problem",
+              "Necesito encontrar parte del problema",
+              null,
+              4
+            ],
+            [
+              "I want to know about part of the problem",
+              "Quiero saber de parte del problema",
+              null,
+              5
+            ],
+            [
+              "I can say something about part of the problem",
+              "Puedo decir algo de parte del problema",
+              null,
+              6
+            ],
+            [
+              "I want to have part of the problem now",
+              "Quiero tener parte del problema ahora",
+              null,
+              7
+            ],
+            [
+              "There is part of the problem near here",
+              "Hay parte del problema cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about part of the problem now",
+              "Necesito saber de parte del problema ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0472L02": {
+          "lego": [
+            "is that",
+            "es que"
+          ],
+          "type": "M",
+          "available_legos": 1262,
+          "practice_phrases": [
+            [
+              "is that",
+              "es que",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want is that",
+              "Quiero es que",
+              null,
+              3
+            ],
+            [
+              "There is is that",
+              "Hay es que",
+              null,
+              3
+            ],
+            [
+              "I need to find is that",
+              "Necesito encontrar es que",
+              null,
+              4
+            ],
+            [
+              "I want to know about is that",
+              "Quiero saber de es que",
+              null,
+              5
+            ],
+            [
+              "I can say something about is that",
+              "Puedo decir algo de es que",
+              null,
+              6
+            ],
+            [
+              "I want to have is that now",
+              "Quiero tener es que ahora",
+              null,
+              7
+            ],
+            [
+              "There is is that near here",
+              "Hay es que cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about is that now",
+              "Necesito saber de es que ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0472L03": {
+          "lego": [
+            "we don't know",
+            "no sabemos"
+          ],
+          "type": "M",
+          "available_legos": 1263,
+          "practice_phrases": [
+            [
+              "we don't know",
+              "no sabemos",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want we don't know",
+              "Quiero no sabemos",
+              null,
+              3
+            ],
+            [
+              "There is we don't know",
+              "Hay no sabemos",
+              null,
+              3
+            ],
+            [
+              "I need to find we don't know",
+              "Necesito encontrar no sabemos",
+              null,
+              4
+            ],
+            [
+              "I want to know about we don't know",
+              "Quiero saber de no sabemos",
+              null,
+              5
+            ],
+            [
+              "I can say something about we don't know",
+              "Puedo decir algo de no sabemos",
+              null,
+              6
+            ],
+            [
+              "I want to have we don't know now",
+              "Quiero tener no sabemos ahora",
+              null,
+              7
+            ],
+            [
+              "There is we don't know near here",
+              "Hay no sabemos cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about we don't know now",
+              "Necesito saber de no sabemos ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0472L04": {
+          "lego": [
+            "the facts",
+            "los hechos"
+          ],
+          "type": "A",
+          "available_legos": 1264,
+          "practice_phrases": [
+            [
+              "the facts",
+              "los hechos",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want the facts",
+              "Quiero los hechos",
+              null,
+              3
+            ],
+            [
+              "There is the facts",
+              "Hay los hechos",
+              null,
+              3
+            ],
+            [
+              "I need to find the facts",
+              "Necesito encontrar los hechos",
+              null,
+              4
+            ],
+            [
+              "I want to know about the facts",
+              "Quiero saber de los hechos",
+              null,
+              5
+            ],
+            [
+              "I can say something about the facts",
+              "Puedo decir algo de los hechos",
+              null,
+              6
+            ],
+            [
+              "I want to have the facts now",
+              "Quiero tener los hechos ahora",
+              null,
+              7
+            ],
+            [
+              "There is the facts near here",
+              "Hay los hechos cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "Part of the problem is that we don't know the facts.",
+              "Parte del problema es que no sabemos los hechos.",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0473": {
+      "seed": "S0473",
+      "seed_pair": {
+        "target": "No lo quiero.",
+        "known": "I don't want it."
+      },
+      "cumulative_legos": 1265,
+      "legos": {
+        "S0473L01": {
+          "lego": [
+            "I don't want it",
+            "No lo quiero"
+          ],
+          "type": "M",
+          "available_legos": 1265,
+          "practice_phrases": [
+            [
+              "I don't want it",
+              "No lo quiero",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want i don't want it",
+              "Quiero no lo quiero",
+              null,
+              3
+            ],
+            [
+              "There is i don't want it",
+              "Hay no lo quiero",
+              null,
+              3
+            ],
+            [
+              "I need to find i don't want it",
+              "Necesito encontrar no lo quiero",
+              null,
+              4
+            ],
+            [
+              "I want to know about i don't want it",
+              "Quiero saber de no lo quiero",
+              null,
+              5
+            ],
+            [
+              "I can say something about i don't want it",
+              "Puedo decir algo de no lo quiero",
+              null,
+              6
+            ],
+            [
+              "I want to have i don't want it now",
+              "Quiero tener no lo quiero ahora",
+              null,
+              7
+            ],
+            [
+              "There is i don't want it near here",
+              "Hay no lo quiero cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I don't want it.",
+              "No lo quiero.",
+              null,
+              1
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0474": {
+      "seed": "S0474",
+      "seed_pair": {
+        "target": "Ni siquiera lo quiero como oferta gratuita.",
+        "known": "I don't even want it as a free offer."
+      },
+      "cumulative_legos": 1266,
+      "legos": {
+        "S0474L01": {
+          "lego": [
+            "not even",
+            "Ni siquiera"
+          ],
+          "type": "M",
+          "available_legos": 1266,
+          "practice_phrases": [
+            [
+              "not even",
+              "Ni siquiera",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want not even",
+              "Quiero ni siquiera",
+              null,
+              3
+            ],
+            [
+              "There is not even",
+              "Hay ni siquiera",
+              null,
+              3
+            ],
+            [
+              "I need to find not even",
+              "Necesito encontrar ni siquiera",
+              null,
+              4
+            ],
+            [
+              "I want to know about not even",
+              "Quiero saber de ni siquiera",
+              null,
+              5
+            ],
+            [
+              "I can say something about not even",
+              "Puedo decir algo de ni siquiera",
+              null,
+              6
+            ],
+            [
+              "I want to have not even now",
+              "Quiero tener ni siquiera ahora",
+              null,
+              7
+            ],
+            [
+              "There is not even near here",
+              "Hay ni siquiera cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about not even now",
+              "Necesito saber de ni siquiera ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0474L02": {
+          "lego": [
+            "I want it",
+            "lo quiero"
+          ],
+          "type": "M",
+          "available_legos": 1267,
+          "practice_phrases": [
+            [
+              "I want it",
+              "lo quiero",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want i want it",
+              "Quiero lo quiero",
+              null,
+              3
+            ],
+            [
+              "There is i want it",
+              "Hay lo quiero",
+              null,
+              3
+            ],
+            [
+              "I need to find i want it",
+              "Necesito encontrar lo quiero",
+              null,
+              4
+            ],
+            [
+              "I want to know about i want it",
+              "Quiero saber de lo quiero",
+              null,
+              5
+            ],
+            [
+              "I can say something about i want it",
+              "Puedo decir algo de lo quiero",
+              null,
+              6
+            ],
+            [
+              "I want to have i want it now",
+              "Quiero tener lo quiero ahora",
+              null,
+              7
+            ],
+            [
+              "There is i want it near here",
+              "Hay lo quiero cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about i want it now",
+              "Necesito saber de lo quiero ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0474L03": {
+          "lego": [
+            "free offer",
+            "oferta gratuita"
+          ],
+          "type": "M",
+          "available_legos": 1269,
+          "practice_phrases": [
+            [
+              "free offer",
+              "oferta gratuita",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want free offer",
+              "Quiero oferta gratuita",
+              null,
+              3
+            ],
+            [
+              "There is free offer",
+              "Hay oferta gratuita",
+              null,
+              3
+            ],
+            [
+              "I need to find free offer",
+              "Necesito encontrar oferta gratuita",
+              null,
+              4
+            ],
+            [
+              "I want to know about free offer",
+              "Quiero saber de oferta gratuita",
+              null,
+              5
+            ],
+            [
+              "I can say something about free offer",
+              "Puedo decir algo de oferta gratuita",
+              null,
+              6
+            ],
+            [
+              "I want to have free offer now",
+              "Quiero tener oferta gratuita ahora",
+              null,
+              7
+            ],
+            [
+              "There is free offer near here",
+              "Hay oferta gratuita cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I don't even want it as a free offer.",
+              "Ni siquiera lo quiero como oferta gratuita.",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0475": {
+      "seed": "S0475",
+      "seed_pair": {
+        "target": "Hay muchas razones para considerar esperar.",
+        "known": "There are many reasons to consider waiting."
+      },
+      "cumulative_legos": 1269,
+      "legos": {
+        "S0131L01": {
+          "lego": [
+            "There are",
+            "Hay"
+          ],
+          "type": "A",
+          "available_legos": 1269,
+          "practice_phrases": [
+            [
+              "There are",
+              "Hay",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want there are",
+              "Quiero hay",
+              null,
+              3
+            ],
+            [
+              "There is there are",
+              "Hay hay",
+              null,
+              3
+            ],
+            [
+              "I need to find there are",
+              "Necesito encontrar hay",
+              null,
+              4
+            ],
+            [
+              "I want to know about there are",
+              "Quiero saber de hay",
+              null,
+              5
+            ],
+            [
+              "I can say something about there are",
+              "Puedo decir algo de hay",
+              null,
+              6
+            ],
+            [
+              "I want to have there are now",
+              "Quiero tener hay ahora",
+              null,
+              7
+            ],
+            [
+              "There is there are near here",
+              "Hay hay cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about there are now",
+              "Necesito saber de hay ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0475L01": {
+          "lego": [
+            "many reasons",
+            "muchas razones"
+          ],
+          "type": "M",
+          "available_legos": 1270,
+          "practice_phrases": [
+            [
+              "many reasons",
+              "muchas razones",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want many reasons",
+              "Quiero muchas razones",
+              null,
+              3
+            ],
+            [
+              "There is many reasons",
+              "Hay muchas razones",
+              null,
+              3
+            ],
+            [
+              "I need to find many reasons",
+              "Necesito encontrar muchas razones",
+              null,
+              4
+            ],
+            [
+              "I want to know about many reasons",
+              "Quiero saber de muchas razones",
+              null,
+              5
+            ],
+            [
+              "I can say something about many reasons",
+              "Puedo decir algo de muchas razones",
+              null,
+              6
+            ],
+            [
+              "I want to have many reasons now",
+              "Quiero tener muchas razones ahora",
+              null,
+              7
+            ],
+            [
+              "There is many reasons near here",
+              "Hay muchas razones cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about many reasons now",
+              "Necesito saber de muchas razones ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0475L02": {
+          "lego": [
+            "to consider waiting",
+            "para considerar esperar"
+          ],
+          "type": "M",
+          "available_legos": 1271,
+          "practice_phrases": [
+            [
+              "to consider waiting",
+              "para considerar esperar",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want to consider waiting",
+              "Quiero para considerar esperar",
+              null,
+              3
+            ],
+            [
+              "There is to consider waiting",
+              "Hay para considerar esperar",
+              null,
+              3
+            ],
+            [
+              "I need to find to consider waiting",
+              "Necesito encontrar para considerar esperar",
+              null,
+              4
+            ],
+            [
+              "I want to know about to consider waiting",
+              "Quiero saber de para considerar esperar",
+              null,
+              5
+            ],
+            [
+              "I can say something about to consider waiting",
+              "Puedo decir algo de para considerar esperar",
+              null,
+              6
+            ],
+            [
+              "I want to have to consider waiting now",
+              "Quiero tener para considerar esperar ahora",
+              null,
+              7
+            ],
+            [
+              "There is to consider waiting near here",
+              "Hay para considerar esperar cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "There are many reasons to consider waiting.",
+              "Hay muchas razones para considerar esperar.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0476": {
+      "seed": "S0476",
+      "seed_pair": {
+        "target": "Estoy esperando el final de la segunda mitad.",
+        "known": "I'm waiting for the end of the second half."
+      },
+      "cumulative_legos": 1271,
+      "legos": {
+        "S0476L01": {
+          "lego": [
+            "I'm waiting for",
+            "Estoy esperando"
+          ],
+          "type": "M",
+          "available_legos": 1271,
+          "practice_phrases": [
+            [
+              "I'm waiting for",
+              "Estoy esperando",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want i'm waiting for",
+              "Quiero estoy esperando",
+              null,
+              3
+            ],
+            [
+              "There is i'm waiting for",
+              "Hay estoy esperando",
+              null,
+              3
+            ],
+            [
+              "I need to find i'm waiting for",
+              "Necesito encontrar estoy esperando",
+              null,
+              4
+            ],
+            [
+              "I want to know about i'm waiting for",
+              "Quiero saber de estoy esperando",
+              null,
+              5
+            ],
+            [
+              "I can say something about i'm waiting for",
+              "Puedo decir algo de estoy esperando",
+              null,
+              6
+            ],
+            [
+              "I want to have i'm waiting for now",
+              "Quiero tener estoy esperando ahora",
+              null,
+              7
+            ],
+            [
+              "There is i'm waiting for near here",
+              "Hay estoy esperando cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about i'm waiting for now",
+              "Necesito saber de estoy esperando ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0476L02": {
+          "lego": [
+            "the end of",
+            "el final de"
+          ],
+          "type": "M",
+          "available_legos": 1272,
+          "practice_phrases": [
+            [
+              "the end of",
+              "el final de",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want the end of",
+              "Quiero el final de",
+              null,
+              3
+            ],
+            [
+              "There is the end of",
+              "Hay el final de",
+              null,
+              3
+            ],
+            [
+              "I need to find the end of",
+              "Necesito encontrar el final de",
+              null,
+              4
+            ],
+            [
+              "I want to know about the end of",
+              "Quiero saber de el final de",
+              null,
+              5
+            ],
+            [
+              "I can say something about the end of",
+              "Puedo decir algo de el final de",
+              null,
+              6
+            ],
+            [
+              "I want to have the end of now",
+              "Quiero tener el final de ahora",
+              null,
+              7
+            ],
+            [
+              "There is the end of near here",
+              "Hay el final de cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about the end of now",
+              "Necesito saber de el final de ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0476L03": {
+          "lego": [
+            "the second half",
+            "la segunda mitad"
+          ],
+          "type": "M",
+          "available_legos": 1273,
+          "practice_phrases": [
+            [
+              "the second half",
+              "la segunda mitad",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want the second half",
+              "Quiero la segunda mitad",
+              null,
+              3
+            ],
+            [
+              "There is the second half",
+              "Hay la segunda mitad",
+              null,
+              3
+            ],
+            [
+              "I need to find the second half",
+              "Necesito encontrar la segunda mitad",
+              null,
+              4
+            ],
+            [
+              "I want to know about the second half",
+              "Quiero saber de la segunda mitad",
+              null,
+              5
+            ],
+            [
+              "I can say something about the second half",
+              "Puedo decir algo de la segunda mitad",
+              null,
+              6
+            ],
+            [
+              "I want to have the second half now",
+              "Quiero tener la segunda mitad ahora",
+              null,
+              7
+            ],
+            [
+              "There is the second half near here",
+              "Hay la segunda mitad cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I'm waiting for the end of the second half.",
+              "Estoy esperando el final de la segunda mitad.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0477": {
+      "seed": "S0477",
+      "seed_pair": {
+        "target": "Él ha estado enfermo desde el segundo día de las vacaciones.",
+        "known": "He's been sick since the second day of the holidays."
+      },
+      "cumulative_legos": 1274,
+      "legos": {
+        "S0016L01": {
+          "lego": [
+            "He",
+            "Él"
+          ],
+          "type": "A",
+          "available_legos": 1274,
+          "practice_phrases": [
+            [
+              "He",
+              "Él",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want he",
+              "Quiero él",
+              null,
+              3
+            ],
+            [
+              "There is he",
+              "Hay él",
+              null,
+              3
+            ],
+            [
+              "I need to find he",
+              "Necesito encontrar él",
+              null,
+              4
+            ],
+            [
+              "I want to know about he",
+              "Quiero saber de él",
+              null,
+              5
+            ],
+            [
+              "I can say something about he",
+              "Puedo decir algo de él",
+              null,
+              6
+            ],
+            [
+              "I want to have he now",
+              "Quiero tener él ahora",
+              null,
+              7
+            ],
+            [
+              "There is he near here",
+              "Hay él cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about he now",
+              "Necesito saber de él ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0477L01": {
+          "lego": [
+            "'s been sick",
+            "ha estado enfermo"
+          ],
+          "type": "M",
+          "available_legos": 1275,
+          "practice_phrases": [
+            [
+              "'s been sick",
+              "ha estado enfermo",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want 's been sick",
+              "Quiero ha estado enfermo",
+              null,
+              3
+            ],
+            [
+              "There is 's been sick",
+              "Hay ha estado enfermo",
+              null,
+              3
+            ],
+            [
+              "I need to find 's been sick",
+              "Necesito encontrar ha estado enfermo",
+              null,
+              4
+            ],
+            [
+              "I want to know about 's been sick",
+              "Quiero saber de ha estado enfermo",
+              null,
+              5
+            ],
+            [
+              "I can say something about 's been sick",
+              "Puedo decir algo de ha estado enfermo",
+              null,
+              6
+            ],
+            [
+              "I want to have 's been sick now",
+              "Quiero tener ha estado enfermo ahora",
+              null,
+              7
+            ],
+            [
+              "There is 's been sick near here",
+              "Hay ha estado enfermo cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about 's been sick now",
+              "Necesito saber de ha estado enfermo ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0477L02": {
+          "lego": [
+            "since",
+            "desde"
+          ],
+          "type": "A",
+          "available_legos": 1276,
+          "practice_phrases": [
+            [
+              "since",
+              "desde",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want since",
+              "Quiero desde",
+              null,
+              3
+            ],
+            [
+              "There is since",
+              "Hay desde",
+              null,
+              3
+            ],
+            [
+              "I need to find since",
+              "Necesito encontrar desde",
+              null,
+              4
+            ],
+            [
+              "I want to know about since",
+              "Quiero saber de desde",
+              null,
+              5
+            ],
+            [
+              "I can say something about since",
+              "Puedo decir algo de desde",
+              null,
+              6
+            ],
+            [
+              "I want to have since now",
+              "Quiero tener desde ahora",
+              null,
+              7
+            ],
+            [
+              "There is since near here",
+              "Hay desde cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about since now",
+              "Necesito saber de desde ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0477L03": {
+          "lego": [
+            "the second day of",
+            "el segundo día de"
+          ],
+          "type": "M",
+          "available_legos": 1277,
+          "practice_phrases": [
+            [
+              "the second day of",
+              "el segundo día de",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want the second day of",
+              "Quiero el segundo día de",
+              null,
+              3
+            ],
+            [
+              "There is the second day of",
+              "Hay el segundo día de",
+              null,
+              3
+            ],
+            [
+              "I need to find the second day of",
+              "Necesito encontrar el segundo día de",
+              null,
+              4
+            ],
+            [
+              "I want to know about the second day of",
+              "Quiero saber de el segundo día de",
+              null,
+              5
+            ],
+            [
+              "I can say something about the second day of",
+              "Puedo decir algo de el segundo día de",
+              null,
+              6
+            ],
+            [
+              "I want to have the second day of now",
+              "Quiero tener el segundo día de ahora",
+              null,
+              7
+            ],
+            [
+              "There is the second day of near here",
+              "Hay el segundo día de cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about the second day of now",
+              "Necesito saber de el segundo día de ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0477L04": {
+          "lego": [
+            "the holidays",
+            "las vacaciones"
+          ],
+          "type": "A",
+          "available_legos": 1278,
+          "practice_phrases": [
+            [
+              "the holidays",
+              "las vacaciones",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want the holidays",
+              "Quiero las vacaciones",
+              null,
+              3
+            ],
+            [
+              "There is the holidays",
+              "Hay las vacaciones",
+              null,
+              3
+            ],
+            [
+              "I need to find the holidays",
+              "Necesito encontrar las vacaciones",
+              null,
+              4
+            ],
+            [
+              "I want to know about the holidays",
+              "Quiero saber de las vacaciones",
+              null,
+              5
+            ],
+            [
+              "I can say something about the holidays",
+              "Puedo decir algo de las vacaciones",
+              null,
+              6
+            ],
+            [
+              "I want to have the holidays now",
+              "Quiero tener las vacaciones ahora",
+              null,
+              7
+            ],
+            [
+              "There is the holidays near here",
+              "Hay las vacaciones cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "He's been sick since the second day of the holidays.",
+              "Él ha estado enfermo desde el segundo día de las vacaciones.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0478": {
+      "seed": "S0478",
+      "seed_pair": {
+        "target": "Ella tiene un corazón tan amable.",
+        "known": "She has such a kind heart."
+      },
+      "cumulative_legos": 1278,
+      "legos": {
+        "S0017L01": {
+          "lego": [
+            "She",
+            "Ella"
+          ],
+          "type": "A",
+          "available_legos": 1278,
+          "practice_phrases": [
+            [
+              "She",
+              "Ella",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want she",
+              "Quiero ella",
+              null,
+              3
+            ],
+            [
+              "There is she",
+              "Hay ella",
+              null,
+              3
+            ],
+            [
+              "I need to find she",
+              "Necesito encontrar ella",
+              null,
+              4
+            ],
+            [
+              "I want to know about she",
+              "Quiero saber de ella",
+              null,
+              5
+            ],
+            [
+              "I can say something about she",
+              "Puedo decir algo de ella",
+              null,
+              6
+            ],
+            [
+              "I want to have she now",
+              "Quiero tener ella ahora",
+              null,
+              7
+            ],
+            [
+              "There is she near here",
+              "Hay ella cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about she now",
+              "Necesito saber de ella ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0478L01": {
+          "lego": [
+            "such a kind heart",
+            "un corazón tan amable"
+          ],
+          "type": "M",
+          "available_legos": 1280,
+          "practice_phrases": [
+            [
+              "such a kind heart",
+              "un corazón tan amable",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want such a kind heart",
+              "Quiero un corazón tan amable",
+              null,
+              3
+            ],
+            [
+              "There is such a kind heart",
+              "Hay un corazón tan amable",
+              null,
+              3
+            ],
+            [
+              "I need to find such a kind heart",
+              "Necesito encontrar un corazón tan amable",
+              null,
+              4
+            ],
+            [
+              "I want to know about such a kind heart",
+              "Quiero saber de un corazón tan amable",
+              null,
+              5
+            ],
+            [
+              "I can say something about such a kind heart",
+              "Puedo decir algo de un corazón tan amable",
+              null,
+              6
+            ],
+            [
+              "I want to have such a kind heart now",
+              "Quiero tener un corazón tan amable ahora",
+              null,
+              7
+            ],
+            [
+              "There is such a kind heart near here",
+              "Hay un corazón tan amable cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "She has such a kind heart.",
+              "Ella tiene un corazón tan amable.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0479": {
+      "seed": "S0479",
+      "seed_pair": {
+        "target": "Es lo mínimo que podría hacer.",
+        "known": "It's the least I could do."
+      },
+      "cumulative_legos": 1279,
+      "legos": {
+        "S0468L01": {
+          "lego": [
+            "It's",
+            "Es"
+          ],
+          "type": "A",
+          "available_legos": 1279,
+          "practice_phrases": [
+            [
+              "It's",
+              "Es",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want it's",
+              "Quiero es",
+              null,
+              3
+            ],
+            [
+              "There is it's",
+              "Hay es",
+              null,
+              3
+            ],
+            [
+              "I need to find it's",
+              "Necesito encontrar es",
+              null,
+              4
+            ],
+            [
+              "I want to know about it's",
+              "Quiero saber de es",
+              null,
+              5
+            ],
+            [
+              "I can say something about it's",
+              "Puedo decir algo de es",
+              null,
+              6
+            ],
+            [
+              "I want to have it's now",
+              "Quiero tener es ahora",
+              null,
+              7
+            ],
+            [
+              "There is it's near here",
+              "Hay es cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about it's now",
+              "Necesito saber de es ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0479L01": {
+          "lego": [
+            "the least that",
+            "lo mínimo que"
+          ],
+          "type": "M",
+          "available_legos": 1280,
+          "practice_phrases": [
+            [
+              "the least that",
+              "lo mínimo que",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want the least that",
+              "Quiero lo mínimo que",
+              null,
+              3
+            ],
+            [
+              "There is the least that",
+              "Hay lo mínimo que",
+              null,
+              3
+            ],
+            [
+              "I need to find the least that",
+              "Necesito encontrar lo mínimo que",
+              null,
+              4
+            ],
+            [
+              "I want to know about the least that",
+              "Quiero saber de lo mínimo que",
+              null,
+              5
+            ],
+            [
+              "I can say something about the least that",
+              "Puedo decir algo de lo mínimo que",
+              null,
+              6
+            ],
+            [
+              "I want to have the least that now",
+              "Quiero tener lo mínimo que ahora",
+              null,
+              7
+            ],
+            [
+              "There is the least that near here",
+              "Hay lo mínimo que cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about the least that now",
+              "Necesito saber de lo mínimo que ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0479L02": {
+          "lego": [
+            "I could do",
+            "podría hacer"
+          ],
+          "type": "M",
+          "available_legos": 1281,
+          "practice_phrases": [
+            [
+              "I could do",
+              "podría hacer",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want i could do",
+              "Quiero podría hacer",
+              null,
+              3
+            ],
+            [
+              "There is i could do",
+              "Hay podría hacer",
+              null,
+              3
+            ],
+            [
+              "I need to find i could do",
+              "Necesito encontrar podría hacer",
+              null,
+              4
+            ],
+            [
+              "I want to know about i could do",
+              "Quiero saber de podría hacer",
+              null,
+              5
+            ],
+            [
+              "I can say something about i could do",
+              "Puedo decir algo de podría hacer",
+              null,
+              6
+            ],
+            [
+              "I want to have i could do now",
+              "Quiero tener podría hacer ahora",
+              null,
+              7
+            ],
+            [
+              "There is i could do near here",
+              "Hay podría hacer cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "It's the least I could do.",
+              "Es lo mínimo que podría hacer.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0480": {
+      "seed": "S0480",
+      "seed_pair": {
+        "target": "Lo que sea que él diga no está muy lejos ahora.",
+        "known": "Whatever he says it's not far ahead now."
+      },
+      "cumulative_legos": 1281,
+      "legos": {
+        "S0480L01": {
+          "lego": [
+            "Whatever",
+            "Lo que sea que"
+          ],
+          "type": "M",
+          "available_legos": 1281,
+          "practice_phrases": [
+            [
+              "Whatever",
+              "Lo que sea que",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want whatever",
+              "Quiero lo que sea que",
+              null,
+              3
+            ],
+            [
+              "There is whatever",
+              "Hay lo que sea que",
+              null,
+              3
+            ],
+            [
+              "I need to find whatever",
+              "Necesito encontrar lo que sea que",
+              null,
+              4
+            ],
+            [
+              "I want to know about whatever",
+              "Quiero saber de lo que sea que",
+              null,
+              5
+            ],
+            [
+              "I can say something about whatever",
+              "Puedo decir algo de lo que sea que",
+              null,
+              6
+            ],
+            [
+              "I want to have whatever now",
+              "Quiero tener lo que sea que ahora",
+              null,
+              7
+            ],
+            [
+              "There is whatever near here",
+              "Hay lo que sea que cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about whatever now",
+              "Necesito saber de lo que sea que ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0480L02": {
+          "lego": [
+            "says",
+            "diga"
+          ],
+          "type": "A",
+          "available_legos": 1283,
+          "practice_phrases": [
+            [
+              "says",
+              "diga",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want says",
+              "Quiero diga",
+              null,
+              3
+            ],
+            [
+              "There is says",
+              "Hay diga",
+              null,
+              3
+            ],
+            [
+              "I need to find says",
+              "Necesito encontrar diga",
+              null,
+              4
+            ],
+            [
+              "I want to know about says",
+              "Quiero saber de diga",
+              null,
+              5
+            ],
+            [
+              "I can say something about says",
+              "Puedo decir algo de diga",
+              null,
+              6
+            ],
+            [
+              "I want to have says now",
+              "Quiero tener diga ahora",
+              null,
+              7
+            ],
+            [
+              "There is says near here",
+              "Hay diga cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "I need to know about says now",
+              "Necesito saber de diga ahora",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0480L03": {
+          "lego": [
+            "it's not far ahead",
+            "no está muy lejos"
+          ],
+          "type": "M",
+          "available_legos": 1284,
+          "practice_phrases": [
+            [
+              "it's not far ahead",
+              "no está muy lejos",
+              null,
+              1
+            ],
+            [
+              "this",
+              "esto",
+              null,
+              1
+            ],
+            [
+              "I want it's not far ahead",
+              "Quiero no está muy lejos",
+              null,
+              3
+            ],
+            [
+              "There is it's not far ahead",
+              "Hay no está muy lejos",
+              null,
+              3
+            ],
+            [
+              "I need to find it's not far ahead",
+              "Necesito encontrar no está muy lejos",
+              null,
+              4
+            ],
+            [
+              "I want to know about it's not far ahead",
+              "Quiero saber de no está muy lejos",
+              null,
+              5
+            ],
+            [
+              "I can say something about it's not far ahead",
+              "Puedo decir algo de no está muy lejos",
+              null,
+              6
+            ],
+            [
+              "I want to have it's not far ahead now",
+              "Quiero tener no está muy lejos ahora",
+              null,
+              7
+            ],
+            [
+              "There is it's not far ahead near here",
+              "Hay no está muy lejos cerca de aquí",
+              null,
+              8
+            ],
+            [
+              "Whatever he says it's not far ahead now.",
+              "Lo que sea que él diga no está muy lejos ahora.",
+              null,
+              10
             ]
           ],
           "phrase_distribution": {
