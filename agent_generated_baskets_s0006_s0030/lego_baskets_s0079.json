@@ -1,0 +1,214 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "seed": "S0079",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "When did you start to learn?",
+    "target": "¿Cuándo comenzaste a aprender?"
+  },
+  "patterns_introduced": "P03",
+  "cumulative_patterns": [
+    "P01",
+    "P02",
+    "P03",
+    "P05",
+    "P06",
+    "P12",
+    "P18",
+    "P_NEW_PERFECT",
+    "P_NEW_RELATIVE"
+  ],
+  "cumulative_legos": 223,
+  "curation_metadata": {
+    "curated_at": "2025-11-06T22:26:29.309627",
+    "curated_by": "Claude Code - Agent basket generation with GATE validation",
+    "gate_validation": {
+      "whitelist_size_at_start": 227,
+      "validation_protocol": "Every word validated against exact taught forms from S0001-S0078 (case-insensitive)",
+      "violations_found": 1,
+      "violations_fixed": 1,
+      "compliance_status": "100% GATE compliant"
+    }
+  },
+  "S0079L01": {
+    "lego": [
+      "when",
+      "cuándo"
+    ],
+    "type": "A",
+    "available_legos": 221,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P05",
+      "P06",
+      "P12",
+      "P18",
+      "P_NEW_PERFECT",
+      "P_NEW_RELATIVE"
+    ],
+    "practice_phrases": [
+      [
+        "when",
+        "cuándo",
+        null,
+        1
+      ],
+      [
+        "when I speak",
+        "cuándo hablo",
+        null,
+        2
+      ],
+      [
+        "I don't understand when",
+        "No comprendo cuándo",
+        null,
+        3
+      ],
+      [
+        "when I want to speak",
+        "cuándo quiero hablar",
+        "P01",
+        3
+      ],
+      [
+        "I'm not sure when",
+        "No estoy seguro cuándo",
+        "P06",
+        4
+      ],
+      [
+        "I don't understand when you want to speak",
+        "No comprendo cuándo quieres hablar",
+        "P01",
+        5
+      ],
+      [
+        "I'm very happy when I'm starting to understand",
+        "Estoy muy feliz cuándo estoy comenzando a comprender",
+        "P03",
+        7
+      ],
+      [
+        "I want to understand when I can speak with you",
+        "Quiero comprender cuándo puedo hablar contigo",
+        "P01",
+        6
+      ],
+      [
+        "I'm not sure when I'm going to be able to speak Spanish",
+        "No estoy seguro cuándo voy a poder hablar español",
+        "P06",
+        9
+      ],
+      [
+        "I'm surprised at how quickly I'm learning when I'm starting to speak",
+        "Estoy sorprendido de lo rápidamente que estoy aprendiendo cuándo estoy comenzando a hablar",
+        "P02,P03",
+        12
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P02, P03, P06",
+    "gate_compliance": "STRICT - All words from S0001-S0078 LEGOs + S0079L01"
+  },
+  "S0079L02": {
+    "lego": [
+      "did you start to learn",
+      "comenzaste a aprender"
+    ],
+    "type": "M",
+    "lego_type": "MOLECULAR",
+    "available_legos": 222,
+    "available_patterns": [
+      "P01",
+      "P02",
+      "P03",
+      "P05",
+      "P06",
+      "P12",
+      "P18",
+      "P_NEW_PERFECT",
+      "P_NEW_RELATIVE"
+    ],
+    "practice_phrases": [
+      [
+        "did you start to learn",
+        "comenzaste a aprender",
+        "P03",
+        1
+      ],
+      [
+        "when did you start to learn",
+        "cuándo comenzaste a aprender",
+        null,
+        2
+      ],
+      [
+        "when did you start to speak",
+        "cuándo comenzaste a hablar",
+        null,
+        3
+      ],
+      [
+        "When did you start to learn?",
+        "¿Cuándo comenzaste a aprender?",
+        null,
+        3
+      ],
+      [
+        "when did you start to understand",
+        "cuándo comenzaste a comprender",
+        null,
+        3
+      ],
+      [
+        "when did you start to learn Spanish",
+        "cuándo comenzaste a aprender español",
+        null,
+        4
+      ],
+      [
+        "I don't understand when you started to learn Spanish",
+        "No comprendo cuándo comenzaste a aprender español",
+        null,
+        6
+      ],
+      [
+        "I'm surprised at when you started to learn with how quickly you speak",
+        "Estoy sorprendido de cuándo comenzaste a aprender con lo rápidamente que hablas",
+        null,
+        11
+      ],
+      [
+        "I want to understand when you started to learn because I'm very happy",
+        "Quiero comprender cuándo comenzaste a aprender porque estoy muy feliz",
+        "P01",
+        10
+      ],
+      [
+        "I'm not sure when you started to learn but I'm very happy with what you said",
+        "No estoy seguro cuándo comenzaste a aprender pero estoy muy feliz con lo que dijiste",
+        "P06",
+        14
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
+      "longer_4_5": 1,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P03, P06",
+    "full_seed_included": "YES - phrase 4: 'When did you start to learn?'",
+    "gate_compliance": "STRICT - All words from S0001-S0078 LEGOs + S0079L01-L02"
+  }
+}

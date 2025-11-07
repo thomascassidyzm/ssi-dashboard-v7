@@ -1,0 +1,23 @@
+Generate baskets for S0101-S0668 in 3 sequential batches with 20 parallel agents per batch.
+
+Read the launch plan: PHASE5_BASKET_GENERATION_LAUNCH.md
+Read the specification: docs/phase_intelligence/phase_5_conversational_baskets_v3_ACTIVE.md
+
+Execute autonomously overnight:
+- Batch 1: S0101-S0300 (200 seeds, 20 agents × 10 seeds)
+- Batch 2: S0301-S0500 (200 seeds, 20 agents × 10 seeds)
+- Batch 3: S0501-S0668 (168 seeds, adjust distribution)
+
+For each batch:
+1. Prepare: Create directories, extract LEGOs, build registry, split into 20 agent files
+2. Launch: 20 parallel agents generating 10 baskets per seed
+3. Merge: Combine 20 agent outputs
+4. Validate: Check GATE, distribution, completeness, naturalness, speakability
+5. Fix: Re-run agents for any failed seeds
+6. Commit: Push validated batch to remote
+
+Move to next batch ONLY when current batch 100% validated.
+
+Branch: claude/extract-legos-batch-1-011CUsmApVGdYx3pqs26DAaK
+
+Track progress and report completion status after each batch.

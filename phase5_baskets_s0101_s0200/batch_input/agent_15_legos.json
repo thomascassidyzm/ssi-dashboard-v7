@@ -1,0 +1,194 @@
+{
+  "agent_number": 15,
+  "total_agents": 20,
+  "lego_range": {
+    "start": "S0164L01",
+    "end": "S0170L02"
+  },
+  "seed_range": {
+    "start": "S0164",
+    "end": "S0170"
+  },
+  "total_legos": 14,
+  "legos": [
+    {
+      "lego_id": "S0164L01",
+      "seed_id": "S0164",
+      "type": "A",
+      "target": "un",
+      "known": "an",
+      "components": null,
+      "cumulative_legos": 476
+    },
+    {
+      "lego_id": "S0164L02",
+      "seed_id": "S0164",
+      "type": "A",
+      "target": "interesante",
+      "known": "interesting",
+      "components": null,
+      "cumulative_legos": 476
+    },
+    {
+      "lego_id": "S0165L01",
+      "seed_id": "S0165",
+      "type": "M",
+      "target": "es verdad",
+      "known": "it's true",
+      "components": [
+        [
+          "es",
+          "it's"
+        ],
+        [
+          "verdad",
+          "true"
+        ]
+      ],
+      "cumulative_legos": 477
+    },
+    {
+      "lego_id": "S0166L01",
+      "seed_id": "S0166",
+      "type": "A",
+      "target": "nombre",
+      "known": "name",
+      "components": null,
+      "cumulative_legos": 480
+    },
+    {
+      "lego_id": "S0166L02",
+      "seed_id": "S0166",
+      "type": "A",
+      "target": "muy",
+      "known": "very",
+      "components": null,
+      "cumulative_legos": 480
+    },
+    {
+      "lego_id": "S0166L03",
+      "seed_id": "S0166",
+      "type": "A",
+      "target": "inusual",
+      "known": "unusual",
+      "components": null,
+      "cumulative_legos": 480
+    },
+    {
+      "lego_id": "S0167L01",
+      "seed_id": "S0167",
+      "type": "A",
+      "target": "necesitas",
+      "known": "do you need",
+      "components": null,
+      "cumulative_legos": 482
+    },
+    {
+      "lego_id": "S0167L02",
+      "seed_id": "S0167",
+      "type": "M",
+      "target": "por la tarde",
+      "known": "in the afternoon",
+      "components": [
+        [
+          "por",
+          "in"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "tarde",
+          "afternoon"
+        ]
+      ],
+      "cumulative_legos": 482
+    },
+    {
+      "lego_id": "S0168L01",
+      "seed_id": "S0168",
+      "type": "A",
+      "target": "podré",
+      "known": "I'll be able to",
+      "components": null,
+      "cumulative_legos": 485
+    },
+    {
+      "lego_id": "S0168L02",
+      "seed_id": "S0168",
+      "type": "A",
+      "target": "venir",
+      "known": "to come",
+      "components": null,
+      "cumulative_legos": 485
+    },
+    {
+      "lego_id": "S0168L03",
+      "seed_id": "S0168",
+      "type": "A",
+      "target": "ayudar",
+      "known": "to help",
+      "components": null,
+      "cumulative_legos": 485
+    },
+    {
+      "lego_id": "S0169L01",
+      "seed_id": "S0169",
+      "type": "M",
+      "target": "que haga",
+      "known": "me to do",
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "haga",
+          "[I] do"
+        ]
+      ],
+      "cumulative_legos": 486
+    },
+    {
+      "lego_id": "S0170L01",
+      "seed_id": "S0170",
+      "type": "M",
+      "target": "que me dijeras",
+      "known": "you to tell me",
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "me",
+          "me"
+        ],
+        [
+          "dijeras",
+          "[you] tell"
+        ]
+      ],
+      "cumulative_legos": 488
+    },
+    {
+      "lego_id": "S0170L02",
+      "seed_id": "S0170",
+      "type": "M",
+      "target": "lo que necesitas",
+      "known": "what you need",
+      "components": [
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "necesitas",
+          "you need"
+        ]
+      ],
+      "cumulative_legos": 488
+    }
+  ]
+}

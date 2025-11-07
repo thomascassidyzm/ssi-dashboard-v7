@@ -1,0 +1,834 @@
+{
+  "batch_id": "batch1_agent3",
+  "batch_number": 3,
+  "seed_range": "S0241-S0260",
+  "extractor": "Agent 3",
+  "extracted_at": "2025-11-07T02:55:12Z",
+  "seeds": [
+    {
+      "seed_id": "S0241",
+      "seed_pair": {
+        "target": "No quiero dárselo.",
+        "known": "I don't want to give it to him."
+      },
+      "legos": [
+        {
+          "id": "S0241L01",
+          "type": "M",
+          "target": "no quiero",
+          "known": "I don't want",
+          "new": false,
+          "ref": "S0019L02"
+        },
+        {
+          "provisional_id": "PROV_S0241_01",
+          "type": "M",
+          "target": "dárselo",
+          "known": "to give it to him",
+          "new": true,
+          "components": [
+            ["dar", "to give"],
+            ["se", "to him"],
+            ["lo", "it"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0242",
+      "seed_pair": {
+        "target": "Quiero darle más tiempo.",
+        "known": "I want to give her more time."
+      },
+      "legos": [
+        {
+          "id": "S0242L01",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "new": false,
+          "ref": "S0001L01"
+        },
+        {
+          "provisional_id": "PROV_S0242_01",
+          "type": "M",
+          "target": "darle",
+          "known": "to give her",
+          "new": true,
+          "components": [
+            ["dar", "to give"],
+            ["le", "to her"]
+          ]
+        },
+        {
+          "id": "S0242L02",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": false,
+          "ref": "S0023L02"
+        },
+        {
+          "id": "S0242L03",
+          "type": "A",
+          "target": "tiempo",
+          "known": "time",
+          "new": false,
+          "ref": "S0178L02"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0243",
+      "seed_pair": {
+        "target": "Voy a pedir la misma cosa para comer.",
+        "known": "I'm going to ask for the same thing to eat."
+      },
+      "legos": [
+        {
+          "id": "S0243L01",
+          "type": "M",
+          "target": "voy a",
+          "known": "I'm going to",
+          "new": false,
+          "ref": "S0005L01"
+        },
+        {
+          "provisional_id": "PROV_S0243_01",
+          "type": "A",
+          "target": "pedir",
+          "known": "to ask for",
+          "new": true
+        },
+        {
+          "id": "S0243L02",
+          "type": "M",
+          "target": "la misma cosa",
+          "known": "the same thing",
+          "new": false,
+          "ref": "S0143L01"
+        },
+        {
+          "provisional_id": "PROV_S0243_02",
+          "type": "M",
+          "target": "para comer",
+          "known": "to eat",
+          "new": true,
+          "components": [
+            ["para", "to/for"],
+            ["comer", "to eat"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0244",
+      "seed_pair": {
+        "target": "Ya he aprendido mucho.",
+        "known": "I've learnt a lot already"
+      },
+      "legos": [
+        {
+          "id": "S0244L01",
+          "type": "A",
+          "target": "ya",
+          "known": "already",
+          "new": false,
+          "ref": "S0076L04"
+        },
+        {
+          "id": "S0244L02",
+          "type": "M",
+          "target": "he aprendido",
+          "known": "I've learnt",
+          "new": false,
+          "ref": "S0076L03"
+        },
+        {
+          "id": "S0244L03",
+          "type": "A",
+          "target": "mucho",
+          "known": "a lot",
+          "new": false,
+          "ref": "S0089L02"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0245",
+      "seed_pair": {
+        "target": "Estoy contento con cuánto he hecho en poco tiempo.",
+        "known": "I'm happy with how much I've done in a short time"
+      },
+      "legos": [
+        {
+          "id": "S0245L01",
+          "type": "M",
+          "target": "estoy contento",
+          "known": "I'm happy",
+          "new": false,
+          "ref": "S0187L01"
+        },
+        {
+          "id": "S0245L02",
+          "type": "M",
+          "target": "con cuánto",
+          "known": "with how much",
+          "new": false,
+          "ref": "S0076L02"
+        },
+        {
+          "id": "S0245L03",
+          "type": "M",
+          "target": "he hecho",
+          "known": "I've done",
+          "new": false,
+          "ref": "S0089L01"
+        },
+        {
+          "provisional_id": "PROV_S0245_01",
+          "type": "M",
+          "target": "en poco tiempo",
+          "known": "in a short time",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["poco tiempo", "a short time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0246",
+      "seed_pair": {
+        "target": "Quería que ella te ayudara pero estaba demasiado ocupada.",
+        "known": "I wanted her to help you but she was too busy."
+      },
+      "legos": [
+        {
+          "id": "S0246L01",
+          "type": "A",
+          "target": "quería",
+          "known": "I wanted",
+          "new": false,
+          "ref": "S0030L01"
+        },
+        {
+          "provisional_id": "PROV_S0246_01",
+          "type": "M",
+          "target": "que ella te ayudara",
+          "known": "her to help you",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["ella", "she"],
+            ["te", "you"],
+            ["ayudara", "help (subj.)"]
+          ]
+        },
+        {
+          "id": "S0246L02",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": false,
+          "ref": "S0019L01"
+        },
+        {
+          "provisional_id": "PROV_S0246_02",
+          "type": "M",
+          "target": "estaba demasiado ocupada",
+          "known": "was too busy",
+          "new": true,
+          "components": [
+            ["estaba", "was"],
+            ["demasiado", "too"],
+            ["ocupada", "busy"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0247",
+      "seed_pair": {
+        "target": "Pensé que ese libro era bastante bueno.",
+        "known": "I thought that book was fairly good."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0247_01",
+          "type": "M",
+          "target": "pensé que",
+          "known": "I thought that",
+          "new": true,
+          "components": [
+            ["pensé", "I thought"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0247_02",
+          "type": "A",
+          "target": "ese",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0247L01",
+          "type": "A",
+          "target": "libro",
+          "known": "book",
+          "new": false,
+          "ref": "S0161L03"
+        },
+        {
+          "id": "S0247L02",
+          "type": "A",
+          "target": "era",
+          "known": "was",
+          "new": false,
+          "ref": "S0124L02"
+        },
+        {
+          "provisional_id": "PROV_S0247_03",
+          "type": "M",
+          "target": "bastante bueno",
+          "known": "fairly good",
+          "new": true,
+          "components": [
+            ["bastante", "fairly"],
+            ["bueno", "good"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0248",
+      "seed_pair": {
+        "target": "Pensé que la película era basura completa y quiero mi dinero de vuelta.",
+        "known": "I thought the film was complete rubbish and I want my money back."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0248_01",
+          "type": "M",
+          "target": "pensé que",
+          "known": "I thought that",
+          "new": false,
+          "ref": "PROV_S0247_01"
+        },
+        {
+          "provisional_id": "PROV_S0248_02",
+          "type": "M",
+          "target": "la película",
+          "known": "the film",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["película", "film"]
+          ]
+        },
+        {
+          "id": "S0248L01",
+          "type": "A",
+          "target": "era",
+          "known": "was",
+          "new": false,
+          "ref": "S0124L02"
+        },
+        {
+          "provisional_id": "PROV_S0248_03",
+          "type": "M",
+          "target": "basura completa",
+          "known": "complete rubbish",
+          "new": true,
+          "components": [
+            ["basura", "rubbish"],
+            ["completa", "complete"]
+          ]
+        },
+        {
+          "id": "S0248L02",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": false,
+          "ref": "S0015L01"
+        },
+        {
+          "id": "S0248L03",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "new": false,
+          "ref": "S0001L01"
+        },
+        {
+          "provisional_id": "PROV_S0248_04",
+          "type": "M",
+          "target": "mi dinero",
+          "known": "my money",
+          "new": true,
+          "components": [
+            ["mi", "my"],
+            ["dinero", "money"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0248_05",
+          "type": "M",
+          "target": "de vuelta",
+          "known": "back",
+          "new": true,
+          "components": [
+            ["de", "of"],
+            ["vuelta", "return"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0249",
+      "seed_pair": {
+        "target": "Quiero que me ayudes antes de que te vayas.",
+        "known": "I want you to help me before you go."
+      },
+      "legos": [
+        {
+          "id": "S0249L01",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "new": false,
+          "ref": "S0001L01"
+        },
+        {
+          "provisional_id": "PROV_S0249_01",
+          "type": "M",
+          "target": "que me ayudes",
+          "known": "you to help me",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["me", "me"],
+            ["ayudes", "help (subj.)"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0249_02",
+          "type": "M",
+          "target": "antes de que te vayas",
+          "known": "before you go",
+          "new": true,
+          "components": [
+            ["antes de que", "before"],
+            ["te vayas", "you go"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0250",
+      "seed_pair": {
+        "target": "¿Puedes decirme algo más antes de que responda?",
+        "known": "Can you tell me something else before I answer?"
+      },
+      "legos": [
+        {
+          "id": "S0250L01",
+          "type": "A",
+          "target": "puedes",
+          "known": "can you",
+          "new": false,
+          "ref": "S0136L02"
+        },
+        {
+          "provisional_id": "PROV_S0250_01",
+          "type": "A",
+          "target": "decirme",
+          "known": "to tell me",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0250_02",
+          "type": "M",
+          "target": "algo más",
+          "known": "something else",
+          "new": true,
+          "components": [
+            ["algo", "something"],
+            ["más", "else/more"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0250_03",
+          "type": "M",
+          "target": "antes de que responda",
+          "known": "before I answer",
+          "new": true,
+          "components": [
+            ["antes de que", "before"],
+            ["responda", "I answer"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0251",
+      "seed_pair": {
+        "target": "No quiero descubrir hasta después de que terminemos.",
+        "known": "I don't want to find out until after we finish."
+      },
+      "legos": [
+        {
+          "id": "S0251L01",
+          "type": "M",
+          "target": "no quiero",
+          "known": "I don't want",
+          "new": false,
+          "ref": "S0019L02"
+        },
+        {
+          "id": "S0251L02",
+          "type": "A",
+          "target": "descubrir",
+          "known": "to find out",
+          "new": false,
+          "ref": "S0017L02"
+        },
+        {
+          "provisional_id": "PROV_S0251_01",
+          "type": "M",
+          "target": "hasta después de que terminemos",
+          "known": "until after we finish",
+          "new": true,
+          "components": [
+            ["hasta", "until"],
+            ["después de que", "after"],
+            ["terminemos", "we finish"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0252",
+      "seed_pair": {
+        "target": "¿Cuándo estarás preparado para empezar?",
+        "known": "When will you be ready to start?"
+      },
+      "legos": [
+        {
+          "id": "S0252L01",
+          "type": "A",
+          "target": "cuándo",
+          "known": "when",
+          "new": false,
+          "ref": "S0079L01"
+        },
+        {
+          "provisional_id": "PROV_S0252_01",
+          "type": "M",
+          "target": "estarás preparado",
+          "known": "will you be ready",
+          "new": true,
+          "components": [
+            ["estarás", "you will be"],
+            ["preparado", "ready"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0252_02",
+          "type": "M",
+          "target": "para empezar",
+          "known": "to start",
+          "new": true,
+          "components": [
+            ["para", "to"],
+            ["empezar", "to start"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0253",
+      "seed_pair": {
+        "target": "Debo estar preparado en unos pocos minutos.",
+        "known": "I should be ready in a few minutes."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0253_01",
+          "type": "M",
+          "target": "debo estar preparado",
+          "known": "I should be ready",
+          "new": true,
+          "components": [
+            ["debo", "I should/must"],
+            ["estar", "to be"],
+            ["preparado", "ready"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0253_02",
+          "type": "M",
+          "target": "en unos pocos minutos",
+          "known": "in a few minutes",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["unos pocos", "a few"],
+            ["minutos", "minutes"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0254",
+      "seed_pair": {
+        "target": "He estado preparado desde esta mañana.",
+        "known": "I've been ready since this morning."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0254_01",
+          "type": "M",
+          "target": "he estado preparado",
+          "known": "I've been ready",
+          "new": true,
+          "components": [
+            ["he estado", "I've been"],
+            ["preparado", "ready"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0254_02",
+          "type": "M",
+          "target": "desde esta mañana",
+          "known": "since this morning",
+          "new": true,
+          "components": [
+            ["desde", "since"],
+            ["esta mañana", "this morning"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0255",
+      "seed_pair": {
+        "target": "¿Cuándo crees que estarás preparado para salir?",
+        "known": "When do you think you'll be ready to leave?"
+      },
+      "legos": [
+        {
+          "id": "S0255L01",
+          "type": "A",
+          "target": "cuándo",
+          "known": "when",
+          "new": false,
+          "ref": "S0079L01"
+        },
+        {
+          "provisional_id": "PROV_S0255_01",
+          "type": "M",
+          "target": "crees que",
+          "known": "do you think",
+          "new": true,
+          "components": [
+            ["crees", "you think"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0255_02",
+          "type": "M",
+          "target": "estarás preparado",
+          "known": "you'll be ready",
+          "new": false,
+          "ref": "PROV_S0252_01"
+        },
+        {
+          "provisional_id": "PROV_S0255_03",
+          "type": "M",
+          "target": "para salir",
+          "known": "to leave",
+          "new": true,
+          "components": [
+            ["para", "to"],
+            ["salir", "to leave"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0256",
+      "seed_pair": {
+        "target": "Creo que estaré listo en menos de una hora.",
+        "known": "I think I'll be ready in less than an hour."
+      },
+      "legos": [
+        {
+          "id": "S0256L01",
+          "type": "M",
+          "target": "creo que",
+          "known": "I think that",
+          "new": false,
+          "ref": "S0123L01"
+        },
+        {
+          "provisional_id": "PROV_S0256_01",
+          "type": "M",
+          "target": "estaré listo",
+          "known": "I'll be ready",
+          "new": true,
+          "components": [
+            ["estaré", "I'll be"],
+            ["listo", "ready"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0256_02",
+          "type": "M",
+          "target": "en menos de una hora",
+          "known": "in less than an hour",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["menos de", "less than"],
+            ["una hora", "an hour"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0257",
+      "seed_pair": {
+        "target": "Me gusta esa cosa azul.",
+        "known": "I like that blue thing."
+      },
+      "legos": [
+        {
+          "id": "S0257L01",
+          "type": "M",
+          "target": "me gusta",
+          "known": "I like",
+          "new": false,
+          "ref": "S0026L01"
+        },
+        {
+          "id": "S0257L02",
+          "type": "A",
+          "target": "esa",
+          "known": "that",
+          "new": false,
+          "ref": "S0189L01"
+        },
+        {
+          "provisional_id": "PROV_S0257_01",
+          "type": "M",
+          "target": "cosa azul",
+          "known": "blue thing",
+          "new": true,
+          "components": [
+            ["cosa", "thing"],
+            ["azul", "blue"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0258",
+      "seed_pair": {
+        "target": "¿Qué es esa cosa azul de allí?",
+        "known": "What's that blue thing over there?"
+      },
+      "legos": [
+        {
+          "id": "S0258L01",
+          "type": "A",
+          "target": "qué",
+          "known": "what",
+          "new": false,
+          "ref": "S0068L01"
+        },
+        {
+          "id": "S0258L02",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "new": false,
+          "ref": "S0123L02"
+        },
+        {
+          "id": "S0258L03",
+          "type": "A",
+          "target": "esa",
+          "known": "that",
+          "new": false,
+          "ref": "S0189L01"
+        },
+        {
+          "provisional_id": "PROV_S0258_01",
+          "type": "M",
+          "target": "cosa azul",
+          "known": "blue thing",
+          "new": false,
+          "ref": "PROV_S0257_01"
+        },
+        {
+          "provisional_id": "PROV_S0258_02",
+          "type": "M",
+          "target": "de allí",
+          "known": "over there",
+          "new": true,
+          "components": [
+            ["de", "of/from"],
+            ["allí", "there"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0259",
+      "seed_pair": {
+        "target": "Una idea.",
+        "known": "An idea."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0259_01",
+          "type": "M",
+          "target": "una idea",
+          "known": "an idea",
+          "new": true,
+          "components": [
+            ["una", "an"],
+            ["idea", "idea"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0260",
+      "seed_pair": {
+        "target": "No tengo ni la más mínima idea.",
+        "known": "I don't have the faintest idea."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0260_01",
+          "type": "M",
+          "target": "no tengo ni la más mínima idea",
+          "known": "I don't have the faintest idea",
+          "new": true,
+          "components": [
+            ["no tengo", "I don't have"],
+            ["ni", "not even"],
+            ["la más mínima", "the faintest/slightest"],
+            ["idea", "idea"]
+          ]
+        }
+      ]
+    }
+  ]
+}
