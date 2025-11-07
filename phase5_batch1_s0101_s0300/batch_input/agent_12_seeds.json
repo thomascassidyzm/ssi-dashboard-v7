@@ -1,0 +1,516 @@
+{
+  "agent_id": 12,
+  "agent_name": "agent_12",
+  "seed_range": "S0211-S0220",
+  "total_seeds": 10,
+  "registry_path": "../registry/lego_registry_s0001_s0300.json",
+  "spec_path": "../docs/phase_intelligence/phase_5_conversational_baskets_v3_ACTIVE.md",
+  "seeds": [
+    {
+      "seed_id": "S0211",
+      "seed_pair": {
+        "target": "Nos dijeron que no querían explicar.",
+        "known": "They told us that they didn't want to explain."
+      },
+      "legos": [
+        {
+          "id": "S0211L01",
+          "type": "A",
+          "target": "nos",
+          "known": "us",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0211L02",
+          "type": "A",
+          "target": "dijeron",
+          "known": "they told",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0102L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0096L01",
+          "type": "A",
+          "target": "no",
+          "known": "not",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0211L05",
+          "type": "A",
+          "target": "querían",
+          "known": "they wanted",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0008L01",
+          "type": "A",
+          "target": "explicar",
+          "known": "to explain",
+          "new": false,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0212",
+      "seed_pair": {
+        "target": "Querían pedir ayuda.",
+        "known": "They wanted to ask for help."
+      },
+      "legos": [
+        {
+          "id": "S0211L05",
+          "type": "A",
+          "target": "querían",
+          "known": "they wanted",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0212L02",
+          "type": "A",
+          "target": "pedir",
+          "known": "to ask for",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0212L03",
+          "type": "A",
+          "target": "ayuda",
+          "known": "help",
+          "new": true,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0213",
+      "seed_pair": {
+        "target": "No sabemos qué están intentando lograr.",
+        "known": "We don't know what they're trying to achieve."
+      },
+      "legos": [
+        {
+          "id": "S0096L01",
+          "type": "A",
+          "target": "no",
+          "known": "not",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0213L02",
+          "type": "A",
+          "target": "sabemos",
+          "known": "we know",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "target": "qué",
+          "known": "what",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0213L04",
+          "type": "M",
+          "target": "están intentando",
+          "known": "they're trying",
+          "new": true,
+          "components": [
+            [
+              "están",
+              "they're"
+            ],
+            [
+              "intentando",
+              "trying"
+            ]
+          ]
+        },
+        {
+          "id": "S0213L05",
+          "type": "A",
+          "target": "lograr",
+          "known": "to achieve",
+          "new": true,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0214",
+      "seed_pair": {
+        "target": "¿Pasaste un buen tiempo el fin de semana?",
+        "known": "Did you have a good time at the weekend?"
+      },
+      "legos": [
+        {
+          "id": "S0214L01",
+          "type": "A",
+          "target": "pasaste",
+          "known": "did you have",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0164L01",
+          "type": "A",
+          "target": "un",
+          "known": "a",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0214L03",
+          "type": "A",
+          "target": "buen",
+          "known": "good",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0178L02",
+          "type": "A",
+          "target": "tiempo",
+          "known": "time",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0214L05",
+          "type": "M",
+          "target": "el fin de semana",
+          "known": "the weekend",
+          "new": true,
+          "components": [
+            [
+              "el",
+              "the"
+            ],
+            [
+              "fin de semana",
+              "weekend"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0215",
+      "seed_pair": {
+        "target": "Salí el sábado por la noche.",
+        "known": "I went out on Saturday night."
+      },
+      "legos": [
+        {
+          "id": "S0215L01",
+          "type": "A",
+          "target": "salí",
+          "known": "I went out",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0215L02",
+          "type": "A",
+          "target": "el",
+          "known": "on",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0215L03",
+          "type": "A",
+          "target": "sábado",
+          "known": "Saturday",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0154L04",
+          "type": "M",
+          "target": "por la noche",
+          "known": "at night",
+          "new": false,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0216",
+      "seed_pair": {
+        "target": "Vi a algunos amigos.",
+        "known": "I saw a few friends."
+      },
+      "legos": [
+        {
+          "id": "S0184L02",
+          "type": "A",
+          "target": "vi",
+          "known": "I saw",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0133L02",
+          "type": "A",
+          "target": "a",
+          "known": "to",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0216L03",
+          "type": "A",
+          "target": "algunos",
+          "known": "a few",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0110L02",
+          "type": "A",
+          "target": "amigos",
+          "known": "friends",
+          "new": false,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0217",
+      "seed_pair": {
+        "target": "Tuve un vaso o dos de agua.",
+        "known": "I had a glass or two of water."
+      },
+      "legos": [
+        {
+          "id": "S0178L01",
+          "type": "A",
+          "target": "tuve",
+          "known": "I had",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0164L01",
+          "type": "A",
+          "target": "un",
+          "known": "a",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0217L03",
+          "type": "A",
+          "target": "vaso",
+          "known": "glass",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0044L01",
+          "type": "A",
+          "target": "o",
+          "known": "or",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0217L05",
+          "type": "A",
+          "target": "dos",
+          "known": "two",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0126L05",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0217L07",
+          "type": "A",
+          "target": "agua",
+          "known": "water",
+          "new": true,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0218",
+      "seed_pair": {
+        "target": "No hice mucho el domingo.",
+        "known": "I didn't do much on Sunday."
+      },
+      "legos": [
+        {
+          "id": "S0096L01",
+          "type": "A",
+          "target": "no",
+          "known": "not",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0218L02",
+          "type": "A",
+          "target": "hice",
+          "known": "I did",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0089L02",
+          "type": "A",
+          "target": "mucho",
+          "known": "much",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0215L02",
+          "type": "A",
+          "target": "el",
+          "known": "on",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0218L05",
+          "type": "A",
+          "target": "domingo",
+          "known": "Sunday",
+          "new": true,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0219",
+      "seed_pair": {
+        "target": "Fue agradable relajarse por un rato.",
+        "known": "It was nice to relax for a while."
+      },
+      "legos": [
+        {
+          "id": "S0112L01",
+          "type": "A",
+          "target": "fue",
+          "known": "it was",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0219L02",
+          "type": "A",
+          "target": "agradable",
+          "known": "nice",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0219L03",
+          "type": "A",
+          "target": "relajarse",
+          "known": "to relax",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0122L05",
+          "type": "A",
+          "target": "por",
+          "known": "for",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0219L05",
+          "type": "M",
+          "target": "un rato",
+          "known": "a while",
+          "new": true,
+          "components": [
+            [
+              "un",
+              "a"
+            ],
+            [
+              "rato",
+              "while"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0220",
+      "seed_pair": {
+        "target": "¿Viste un poco de televisión?",
+        "known": "Did you watch a bit of television?"
+      },
+      "legos": [
+        {
+          "id": "S0220L01",
+          "type": "A",
+          "target": "viste",
+          "known": "did you watch",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0220L02",
+          "type": "M",
+          "target": "un poco de",
+          "known": "a bit of",
+          "new": true,
+          "components": [
+            [
+              "un",
+              "a"
+            ],
+            [
+              "poco",
+              "bit"
+            ],
+            [
+              "de",
+              "of"
+            ]
+          ]
+        },
+        {
+          "id": "S0220L03",
+          "type": "A",
+          "target": "televisión",
+          "known": "television",
+          "new": true,
+          "components": null
+        }
+      ]
+    }
+  ]
+}

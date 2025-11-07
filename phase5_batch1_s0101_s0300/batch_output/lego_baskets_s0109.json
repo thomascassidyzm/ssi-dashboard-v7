@@ -1,0 +1,277 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0109",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "We must work hard to learn a lot of new words.",
+    "target": "Debemos trabajar duro para aprender muchas palabras nuevas"
+  },
+  "patterns_introduced": "P_NEW_MODAL_PLURAL_MUST",
+  "cumulative_patterns": [
+    "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+    "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+    "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+    "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+    "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+    "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+    "P_NEW_MODAL_PLURAL_MUST"
+  ],
+  "cumulative_legos": 309,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T06:20:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 Agent 01",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation"
+  },
+
+  "S0109L01": {
+    "lego": ["We must", "debemos"],
+    "type": "A",
+    "available_legos": 306,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL"
+    ],
+    "practice_phrases": [
+      ["We must", "debemos", "P_NEW_MODAL_PLURAL_MUST", 1],
+      ["We must learn", "debemos aprender", "P_NEW_MODAL_PLURAL_MUST", 2],
+      ["We must practise", "debemos practicar", "P_NEW_MODAL_PLURAL_MUST", 2],
+      ["We must learn Spanish", "debemos aprender español", "P_NEW_MODAL_PLURAL_MUST", 3],
+      ["We must work hard", "debemos trabajar duro", "P_NEW_MODAL_PLURAL_MUST", 3],
+      ["We must find out more", "debemos descubrir más", "P_NEW_MODAL_PLURAL_MUST", 3],
+      ["We must learn many more words", "debemos aprender muchas más palabras", "P_NEW_MODAL_PLURAL_MUST", 5],
+      ["We must work hard to learn this", "debemos trabajar duro para aprender esto", "P_NEW_MODAL_PLURAL_MUST", 6],
+      ["I think we must change what we're doing", "pienso que debemos cambiar lo que estamos haciendo", "P05", 8],
+      ["We must work hard to learn about this language", "debemos trabajar duro para aprender sobre este lenguaje", "P_NEW_MODAL_PLURAL_MUST", 9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P05, P_NEW_MODAL_PLURAL_MUST",
+    "full_seed_included": "NO - missing 'para aprender muchas palabras nuevas'",
+    "gate_compliance": "STRICT - Only S0001-S0108L04 LEGOs available"
+  },
+
+  "S0106L05": {
+    "lego": ["work hard", "trabajar duro"],
+    "type": "M",
+    "available_legos": 307,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+      "P_NEW_MODAL_PLURAL_MUST"
+    ],
+    "practice_phrases": [
+      ["work hard", "trabajar duro", null, 2],
+      ["to work hard", "trabajar duro", null, 2],
+      ["We must work hard", "debemos trabajar duro", "P_NEW_MODAL_PLURAL_MUST", 3],
+      ["We need to work hard", "necesitamos trabajar duro", "P_NEW_PLURAL_NEED", 3],
+      ["I want to work hard", "quiero trabajar duro", "P01", 3],
+      ["We're trying to work hard", "estamos intentando trabajar duro", "P_NEW_PLURAL_PROGRESSIVE", 3],
+      ["We must work hard to learn", "debemos trabajar duro para aprender", "P_NEW_MODAL_PLURAL_MUST", 4],
+      ["I think we must work hard today", "pienso que debemos trabajar duro hoy", "P05", 6],
+      ["We must work hard to learn many words", "debemos trabajar duro para aprender muchas palabras", "P_NEW_MODAL_PLURAL_MUST", 7],
+      ["That is why we need to work hard", "por eso necesitamos trabajar duro", "P_NEW_CAUSAL", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P05, P_NEW_CAUSAL, P_NEW_PLURAL_NEED, P_NEW_PLURAL_PROGRESSIVE, P_NEW_MODAL_PLURAL_MUST",
+    "full_seed_included": "NO - missing full seed phrase",
+    "gate_compliance": "STRICT - Only S0001-S0109L01 LEGOs available"
+  },
+
+  "S0109L02": {
+    "lego": ["to", "para"],
+    "type": "A",
+    "available_legos": 308,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+      "P_NEW_MODAL_PLURAL_MUST"
+    ],
+    "practice_phrases": [
+      ["to", "para", null, 1],
+      ["to learn", "para aprender", null, 2],
+      ["to learn Spanish", "para aprender español", null, 3],
+      ["I'm working to learn", "estoy trabajando para aprender", "P02", 3],
+      ["We need this to learn", "necesitamos esto para aprender", "P_NEW_PLURAL_NEED", 3],
+      ["We must work hard to learn", "debemos trabajar duro para aprender", "P_NEW_MODAL_PLURAL_MUST", 4],
+      ["I'm working hard to learn Spanish", "estoy trabajando duro para aprender español", "P02", 5],
+      ["We must work hard to learn many words", "debemos trabajar duro para aprender muchas palabras", "P_NEW_MODAL_PLURAL_MUST", 7],
+      ["I think we need to work hard to learn this", "pienso que necesitamos trabajar duro para aprender esto", "P05", 9],
+      ["We're trying to work hard to learn more", "estamos intentando trabajar duro para aprender más", "P_NEW_PLURAL_PROGRESSIVE", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P02, P05, P_NEW_PLURAL_NEED, P_NEW_PLURAL_PROGRESSIVE, P_NEW_MODAL_PLURAL_MUST",
+    "full_seed_included": "NO - missing full seed phrase",
+    "gate_compliance": "STRICT - Only S0001-S0106L05 LEGOs available"
+  },
+
+  "S0002L02": {
+    "lego": ["to learn", "aprender"],
+    "type": "A",
+    "available_legos": 308,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+      "P_NEW_MODAL_PLURAL_MUST"
+    ],
+    "practice_phrases": [
+      ["to learn", "aprender", null, 1],
+      ["to learn Spanish", "aprender español", null, 2],
+      ["I want to learn", "quiero aprender", "P01", 2],
+      ["We must learn", "debemos aprender", "P_NEW_MODAL_PLURAL_MUST", 2],
+      ["to learn many words", "aprender muchas palabras", null, 3],
+      ["We need to learn more", "necesitamos aprender más", "P_NEW_PLURAL_NEED", 3],
+      ["We must work hard to learn", "debemos trabajar duro para aprender", "P_NEW_MODAL_PLURAL_MUST", 4],
+      ["I'm enjoying learning about this language", "estoy disfrutando aprender sobre este lenguaje", "P_NEW_DISFRUTO", 5],
+      ["We must work hard to learn many new words", "debemos trabajar duro para aprender muchas palabras nuevas", "P_NEW_MODAL_PLURAL_MUST", 8],
+      ["I think we should work hard to learn Spanish", "pienso que debería trabajar duro para aprender español", "P05", 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P05, P_NEW_DISFRUTO, P_NEW_PLURAL_NEED, P_NEW_MODAL_PLURAL_MUST",
+    "full_seed_included": "NO - missing full seed phrase",
+    "gate_compliance": "STRICT - Only S0001-S0109L02 LEGOs available"
+  },
+
+  "S0103L03": {
+    "lego": ["many", "muchas"],
+    "type": "A",
+    "available_legos": 308,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+      "P_NEW_MODAL_PLURAL_MUST"
+    ],
+    "practice_phrases": [
+      ["many", "muchas", null, 1],
+      ["many words", "muchas palabras", null, 2],
+      ["many new words", "muchas palabras nuevas", null, 3],
+      ["to learn many words", "aprender muchas palabras", null, 3],
+      ["We must learn many words", "debemos aprender muchas palabras", "P_NEW_MODAL_PLURAL_MUST", 4],
+      ["to learn many new words", "aprender muchas palabras nuevas", null, 4],
+      ["We need to learn many words", "necesitamos aprender muchas palabras", "P_NEW_PLURAL_NEED", 4],
+      ["We must work hard to learn many words", "debemos trabajar duro para aprender muchas palabras", "P_NEW_MODAL_PLURAL_MUST", 7],
+      ["We must learn many new words to speak Spanish", "debemos aprender muchas palabras nuevas para hablar español", "P_NEW_MODAL_PLURAL_MUST", 8],
+      ["I think we should learn many more new words", "pienso que debería aprender muchas más palabras nuevas", "P05", 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P05, P_NEW_PLURAL_NEED, P_NEW_MODAL_PLURAL_MUST",
+    "full_seed_included": "NO - missing full seed phrase",
+    "gate_compliance": "STRICT - Only S0001-S0002L02 LEGOs available"
+  },
+
+  "S0103L04": {
+    "lego": ["words", "palabras"],
+    "type": "A",
+    "available_legos": 308,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+      "P_NEW_MODAL_PLURAL_MUST"
+    ],
+    "practice_phrases": [
+      ["words", "palabras", null, 1],
+      ["new words", "palabras nuevas", null, 2],
+      ["many new words", "muchas palabras nuevas", null, 3],
+      ["to learn new words", "aprender palabras nuevas", null, 3],
+      ["I want to learn new words", "quiero aprender palabras nuevas", "P01", 4],
+      ["We must learn many new words", "debemos aprender muchas palabras nuevas", "P_NEW_MODAL_PLURAL_MUST", 5],
+      ["to learn many new words", "aprender muchas palabras nuevas", null, 4],
+      ["We must work hard to learn new words", "debemos trabajar duro para aprender palabras nuevas", "P_NEW_MODAL_PLURAL_MUST", 7],
+      ["I think we need to learn many new words today", "pienso que necesitamos aprender muchas palabras nuevas hoy", "P05", 9],
+      ["We must work hard to learn a lot of new words.", "debemos trabajar duro para aprender muchas palabras nuevas.", "P_NEW_MODAL_PLURAL_MUST", 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P05, P_NEW_MODAL_PLURAL_MUST",
+    "full_seed_included": "YES - phrase 10 (note: 'a lot of' = 'muchas')",
+    "gate_compliance": "STRICT - Only S0001-S0103L03 LEGOs available"
+  },
+
+  "S0109L03": {
+    "lego": ["new", "nuevas"],
+    "type": "A",
+    "available_legos": 308,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+      "P_NEW_MODAL_PLURAL_MUST"
+    ],
+    "practice_phrases": [
+      ["new", "nuevas", null, 1],
+      ["new words", "palabras nuevas", null, 2],
+      ["to learn new words", "aprender palabras nuevas", null, 3],
+      ["many new words", "muchas palabras nuevas", null, 3],
+      ["I want to learn new words", "quiero aprender palabras nuevas", "P01", 4],
+      ["We need to learn new words", "necesitamos aprender palabras nuevas", "P_NEW_PLURAL_NEED", 4],
+      ["We must learn many new words", "debemos aprender muchas palabras nuevas", "P_NEW_MODAL_PLURAL_MUST", 5],
+      ["We're trying to learn many new words today", "estamos intentando aprender muchas palabras nuevas hoy", "P_NEW_PLURAL_PROGRESSIVE", 7],
+      ["We must work hard to learn many new words", "debemos trabajar duro para aprender muchas palabras nuevas", "P_NEW_MODAL_PLURAL_MUST", 8],
+      ["We must work hard to learn a lot of new words.", "debemos trabajar duro para aprender muchas palabras nuevas.", "P_NEW_MODAL_PLURAL_MUST", 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P_NEW_PLURAL_NEED, P_NEW_PLURAL_PROGRESSIVE, P_NEW_MODAL_PLURAL_MUST",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0103L04 LEGOs available. 'nuevas' introduced in this LEGO."
+  }
+}

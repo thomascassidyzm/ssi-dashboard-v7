@@ -1,0 +1,325 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0189",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "Sí, esa es una buena idea.",
+    "known": "Yes that's a good idea."
+  },
+  "cumulative_legos": 527,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T04:50:02.124434Z",
+    "curated_by": "Agent 09 - Automated generation with strict GATE compliance",
+    "spec_version": "phase_5_conversational_baskets_v3_ACTIVE"
+  },
+  "S0097L01": {
+    "lego": [
+      "yes",
+      "sí"
+    ],
+    "type": "A",
+    "available_legos": 523,
+    "practice_phrases": [
+      [
+        "yes",
+        "sí",
+        null,
+        1
+      ],
+      [
+        "yes I do",
+        "sí sí",
+        null,
+        1
+      ],
+      [
+        "yes I'm ready",
+        "sí estoy preparado",
+        null,
+        2
+      ],
+      [
+        "yes I can go",
+        "sí puedo ir",
+        null,
+        2
+      ],
+      [
+        "yes I have to",
+        "sí tengo que",
+        null,
+        2
+      ],
+      [
+        "yes I have seen them",
+        "sí las he visto",
+        null,
+        2
+      ],
+      [
+        "yes I want to speak now",
+        "sí quiero hablar ahora",
+        null,
+        3
+      ],
+      [
+        "yes I'm ready to go now",
+        "sí estoy preparado para ir ahora",
+        null,
+        4
+      ],
+      [
+        "yes I have seen my keys somewhere",
+        "sí he visto mis llaves en algún lugar",
+        null,
+        4
+      ],
+      [
+        "yes I think I can help you with this",
+        "sí creo que puedo ayudar te con esto",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0097L01 LEGOs only"
+  },
+  "S0189L01": {
+    "lego": [
+      "that",
+      "esa"
+    ],
+    "type": "A",
+    "available_legos": 524,
+    "practice_phrases": [
+      [
+        "that",
+        "esa",
+        null,
+        1
+      ],
+      [
+        "that is good",
+        "esa es buena",
+        null,
+        2
+      ],
+      [
+        "I like that",
+        "me gusta esa",
+        null,
+        1
+      ],
+      [
+        "that is a good idea",
+        "esa es una buena idea",
+        null,
+        3
+      ],
+      [
+        "I think that is important",
+        "creo que esa es importante",
+        null,
+        3
+      ],
+      [
+        "I wanted that yesterday",
+        "quería esa ayer",
+        null,
+        2
+      ],
+      [
+        "I think that is what I need",
+        "creo que esa es lo que necesito",
+        null,
+        5
+      ],
+      [
+        "that is something different",
+        "esa es algo diferente",
+        null,
+        2
+      ],
+      [
+        "I'm happy that you want to speak with me",
+        "estoy contento de que quieras hablar conmigo",
+        null,
+        7
+      ],
+      [
+        "I think that is a good idea for next week",
+        "creo que esa es una buena idea para la semana próxima",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0189L01 LEGOs only"
+  },
+  "S0123L02": {
+    "lego": [
+      "is",
+      "es"
+    ],
+    "type": "A",
+    "available_legos": 525,
+    "practice_phrases": [
+      [
+        "is",
+        "es",
+        null,
+        1
+      ],
+      [
+        "that is",
+        "esa es",
+        null,
+        1
+      ],
+      [
+        "this is",
+        "esto es",
+        null,
+        1
+      ],
+      [
+        "it is good",
+        "es bueno",
+        null,
+        1
+      ],
+      [
+        "this is important",
+        "esto es importante",
+        null,
+        2
+      ],
+      [
+        "that is what I need",
+        "esa es lo que necesito",
+        null,
+        4
+      ],
+      [
+        "that is a good idea",
+        "esa es una buena idea",
+        null,
+        3
+      ],
+      [
+        "I think this is what you're looking for",
+        "creo que esto es lo que estás buscando",
+        null,
+        7
+      ],
+      [
+        "this is something I have to talk about",
+        "esto es algo de que tengo que hablar",
+        null,
+        7
+      ],
+      [
+        "I'm happy this is working so far",
+        "estoy contento de que esto está funcionando hasta ahora",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0123L02 LEGOs only"
+  },
+  "S0123L03": {
+    "lego": [
+      "a good idea",
+      "una buena idea"
+    ],
+    "type": "M",
+    "available_legos": 526,
+    "practice_phrases": [
+      [
+        "a good idea",
+        "una buena idea",
+        null,
+        1
+      ],
+      [
+        "that's a good idea",
+        "esa es una buena idea",
+        null,
+        2
+      ],
+      [
+        "I think it's a good idea",
+        "creo que es una buena idea",
+        null,
+        3
+      ],
+      [
+        "this is a good idea",
+        "esto es una buena idea",
+        null,
+        2
+      ],
+      [
+        "I think that's a good idea",
+        "creo que esa es una buena idea",
+        null,
+        3
+      ],
+      [
+        "that's a good idea for tomorrow",
+        "esa es una buena idea para mañana",
+        null,
+        4
+      ],
+      [
+        "I think this is a good idea so far",
+        "creo que esto es una buena idea hasta ahora",
+        null,
+        6
+      ],
+      [
+        "that's a good idea but I don't have time",
+        "esa es una buena idea pero no tengo tiempo",
+        null,
+        7
+      ],
+      [
+        "I'm happy you think that's a good idea",
+        "estoy contento de que crees que esa es una buena idea",
+        null,
+        8
+      ],
+      [
+        "Yes that's a good idea.",
+        "Sí, esa es una buena idea.",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0123L03 LEGOs only",
+    "full_seed_included": "YES - phrase 10"
+  }
+}

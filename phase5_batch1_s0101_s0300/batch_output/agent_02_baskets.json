@@ -1,0 +1,3911 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "agent_id": 2,
+  "agent_name": "agent_02",
+  "seed_range": "S0111-S0120",
+  "generation_metadata": {
+    "curated_at": "2025-11-07T04:43:52.847306+00:00",
+    "curated_by": "Claude Code - Agent 02 basket generation + Final supplement round + Final supplement round + Seed sentences added to final LEGOs",
+    "specification": "phase_5_conversational_baskets_v3_ACTIVE.md",
+    "total_seeds": 10,
+    "total_legos": 47,
+    "total_phrases": 501
+  },
+  "S0111": {
+    "seed_pair": {
+      "target": "Cuando aprendemos algo nuevo cambia nuestro cerebro",
+      "known": "When we learn something new it changes our brain."
+    },
+    "cumulative_legos": 317,
+    "legos": {
+      "S0034L03": {
+        "lego": [
+          "when",
+          "cuando"
+        ],
+        "type": "A",
+        "available_legos": 98,
+        "practice_phrases": [
+          [
+            "when",
+            "cuando",
+            null,
+            1
+          ],
+          [
+            "when I speak",
+            "cuando hablar",
+            null,
+            2
+          ],
+          [
+            "when I want to speak",
+            "cuando quiero hablar",
+            null,
+            3
+          ],
+          [
+            "when I can learn something",
+            "cuando puedo aprender algo",
+            null,
+            4
+          ],
+          [
+            "when I'm trying to speak with you",
+            "cuando estoy intentando hablar contigo",
+            null,
+            5
+          ],
+          [
+            "when I want to be able to speak with you",
+            "cuando quiero poder hablar contigo",
+            null,
+            6
+          ],
+          [
+            "when I'm trying to learn how to speak Spanish",
+            "cuando estoy intentando aprender cómo hablar español",
+            null,
+            7
+          ],
+          [
+            "when I'm not sure if I can remember something",
+            "cuando no estoy seguro si puedo recordar algo",
+            null,
+            8
+          ],
+          [
+            "when I want to be able to speak Spanish",
+            "cuando quiero poder hablar español",
+            null,
+            6
+          ],
+          [
+            "when I can",
+            "cuando puedo",
+            null,
+            2
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 3,
+          "quite_short_3": 1,
+          "longer_4_5": 2,
+          "long_6_plus": 4
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0111 LEGOs only"
+      },
+      "S0111L01": {
+        "lego": [
+          "we learn",
+          "aprendemos"
+        ],
+        "type": "A",
+        "available_legos": 314,
+        "practice_phrases": [
+          [
+            "we learn",
+            "aprendemos",
+            null,
+            1
+          ],
+          [
+            "we learn Spanish",
+            "aprendemos español",
+            null,
+            2
+          ],
+          [
+            "when we learn",
+            "cuando aprendemos",
+            null,
+            2
+          ],
+          [
+            "when we learn something",
+            "cuando aprendemos algo",
+            null,
+            3
+          ],
+          [
+            "we learn how to speak",
+            "aprendemos cómo hablar",
+            null,
+            3
+          ],
+          [
+            "when we learn to speak with you",
+            "cuando aprendemos hablar contigo",
+            null,
+            4
+          ],
+          [
+            "I want to explain what we learn",
+            "quiero explicar lo que aprendemos",
+            null,
+            4
+          ],
+          [
+            "I'm trying to understand what we learn",
+            "estoy intentando comprender lo que aprendemos",
+            null,
+            5
+          ],
+          [
+            "when we learn Spanish",
+            "cuando aprendemos español",
+            null,
+            3
+          ],
+          [
+            "we learn how to speak",
+            "aprendemos cómo hablar",
+            null,
+            4
+          ],
+          [
+            "when we learn Spanish",
+            "cuando aprendemos español",
+            null,
+            3
+          ],
+          [
+            "we learn how to speak",
+            "aprendemos cómo hablar",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 3,
+          "quite_short_3": 4,
+          "longer_4_5": 5,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0111 LEGOs only"
+      },
+      "S0004L02": {
+        "lego": [
+          "something",
+          "algo"
+        ],
+        "type": "A",
+        "available_legos": 11,
+        "practice_phrases": [
+          [
+            "something",
+            "algo",
+            null,
+            1
+          ],
+          [
+            "I want something",
+            "quiero algo",
+            null,
+            2
+          ],
+          [
+            "I'm learning something",
+            "estoy aprender algo",
+            null,
+            3
+          ],
+          [
+            "I'm learning something",
+            "estoy aprender algo",
+            null,
+            3
+          ],
+          [
+            "I'm trying to learn something",
+            "estoy intentando aprender algo",
+            null,
+            4
+          ],
+          [
+            "I learn something",
+            "aprender algo",
+            null,
+            2
+          ],
+          [
+            "I want to learn something",
+            "quiero aprender algo",
+            null,
+            4
+          ],
+          [
+            "I learn something",
+            "aprender algo",
+            null,
+            2
+          ],
+          [
+            "I want to learn something",
+            "quiero aprender algo",
+            null,
+            4
+          ],
+          [
+            "I need something",
+            "necesito algo",
+            null,
+            3
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 4,
+          "quite_short_3": 3,
+          "longer_4_5": 3,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0111 LEGOs only"
+      },
+      "S0111L02": {
+        "lego": [
+          "new",
+          "nuevo"
+        ],
+        "type": "A",
+        "available_legos": 315,
+        "practice_phrases": [
+          [
+            "new",
+            "nuevo",
+            null,
+            1
+          ],
+          [
+            "something new",
+            "algo nuevo",
+            null,
+            2
+          ],
+          [
+            "when we learn something new",
+            "cuando aprendemos algo nuevo",
+            null,
+            4
+          ],
+          [
+            "I want to learn something new",
+            "quiero aprender algo nuevo",
+            null,
+            4
+          ],
+          [
+            "I want something new",
+            "quiero algo nuevo",
+            null,
+            3
+          ],
+          [
+            "I'm trying to learn something new",
+            "estoy intentando aprender algo nuevo",
+            null,
+            4
+          ],
+          [
+            "I'm not sure if we learn something new",
+            "no estoy seguro si aprendemos algo nuevo",
+            null,
+            6
+          ],
+          [
+            "when I want to try something new",
+            "cuando quiero intentar algo nuevo",
+            null,
+            5
+          ],
+          [
+            "I want to be able to learn something new",
+            "quiero poder aprender algo nuevo",
+            null,
+            6
+          ],
+          [
+            "to learn something new",
+            "aprender algo nuevo",
+            null,
+            3
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 2,
+          "longer_4_5": 4,
+          "long_6_plus": 2
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0111 LEGOs only"
+      },
+      "S0111L03": {
+        "lego": [
+          "it changes",
+          "cambia"
+        ],
+        "type": "A",
+        "available_legos": 316,
+        "practice_phrases": [
+          [
+            "it changes",
+            "cambia",
+            null,
+            1
+          ],
+          [
+            "something changes",
+            "algo cambia",
+            null,
+            2
+          ],
+          [
+            "when something changes",
+            "cuando algo cambia",
+            null,
+            3
+          ],
+          [
+            "when we learn it changes",
+            "cuando aprendemos cambia",
+            null,
+            3
+          ],
+          [
+            "when we learn something it changes",
+            "cuando aprendemos algo cambia",
+            null,
+            4
+          ],
+          [
+            "I'm not sure if it changes",
+            "no estoy seguro si cambia",
+            null,
+            4
+          ],
+          [
+            "I want to learn when something changes",
+            "quiero aprender cuando algo cambia",
+            null,
+            5
+          ],
+          [
+            "I want to understand when something changes",
+            "quiero comprender cuando algo cambia",
+            null,
+            5
+          ],
+          [
+            "when we learn something new it changes",
+            "cuando aprendemos algo nuevo cambia",
+            null,
+            5
+          ],
+          [
+            "something new changes",
+            "algo nuevo cambia",
+            null,
+            3
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 3,
+          "longer_4_5": 5,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0111 LEGOs only"
+      },
+      "S0111L04": {
+        "lego": [
+          "our brain",
+          "nuestro cerebro"
+        ],
+        "type": "M",
+        "available_legos": 317,
+        "practice_phrases": [
+          [
+            "our brain",
+            "nuestro cerebro",
+            null,
+            1
+          ],
+          [
+            "it changes our brain",
+            "cambia nuestro cerebro",
+            null,
+            2
+          ],
+          [
+            "our brain changes",
+            "nuestro cerebro cambia",
+            null,
+            2
+          ],
+          [
+            "something changes our brain",
+            "algo cambia nuestro cerebro",
+            null,
+            3
+          ],
+          [
+            "something new changes our brain",
+            "algo nuevo cambia nuestro cerebro",
+            null,
+            4
+          ],
+          [
+            "when we learn our brain changes",
+            "cuando aprendemos nuestro cerebro cambia",
+            null,
+            4
+          ],
+          [
+            "learning something new changes our brain",
+            "aprender algo nuevo cambia nuestro cerebro",
+            null,
+            4
+          ],
+          [
+            "I'm trying to understand how our brain changes",
+            "estoy intentando comprender cómo nuestro cerebro cambia",
+            null,
+            6
+          ],
+          [
+            "I want to explain how our brain changes",
+            "quiero explicar cómo nuestro cerebro cambia",
+            null,
+            5
+          ],
+          [
+            "I want to learn how our brain changes",
+            "quiero aprender cómo nuestro cerebro cambia",
+            null,
+            5
+          ],
+          [
+            "When we learn something new it changes our brain.",
+            "Cuando aprendemos algo nuevo cambia nuestro cerebro",
+            null,
+            6
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 3,
+          "quite_short_3": 1,
+          "longer_4_5": 5,
+          "long_6_plus": 2
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0111 LEGOs only"
+      }
+    }
+  },
+  "S0112": {
+    "seed_pair": {
+      "target": "Eso fue muy interesante, y no estaba esperándolo",
+      "known": "That was very interesting, and I wasn't expecting it."
+    },
+    "cumulative_legos": 320,
+    "legos": {
+      "S0061L02": {
+        "lego": [
+          "that",
+          "eso"
+        ],
+        "type": "A",
+        "available_legos": 177,
+        "practice_phrases": [
+          [
+            "that",
+            "eso",
+            null,
+            1
+          ],
+          [
+            "I want that",
+            "quiero eso",
+            null,
+            2
+          ],
+          [
+            "I'm trying to remember that",
+            "estoy intentando recordar eso",
+            null,
+            4
+          ],
+          [
+            "I'm not sure about that",
+            "no estoy seguro de eso",
+            null,
+            4
+          ],
+          [
+            "I want to learn that",
+            "quiero aprender eso",
+            null,
+            3
+          ],
+          [
+            "I want to be able to explain that",
+            "quiero poder explicar eso",
+            null,
+            6
+          ],
+          [
+            "I'm trying to remember that now",
+            "estoy intentando recordar eso ahora",
+            null,
+            5
+          ],
+          [
+            "I remember that",
+            "recordar eso",
+            null,
+            2
+          ],
+          [
+            "I want that",
+            "quiero eso",
+            null,
+            2
+          ],
+          [
+            "I'm learning that",
+            "estoy aprender eso",
+            null,
+            3
+          ],
+          [
+            "I remember that",
+            "recordar eso",
+            null,
+            2
+          ],
+          [
+            "I want that",
+            "quiero eso",
+            null,
+            2
+          ],
+          [
+            "I'm learning that",
+            "estoy aprender eso",
+            null,
+            3
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 6,
+          "quite_short_3": 3,
+          "longer_4_5": 3,
+          "long_6_plus": 1
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0112 LEGOs only"
+      },
+      "S0112L01": {
+        "lego": [
+          "was",
+          "fue"
+        ],
+        "type": "A",
+        "available_legos": 318,
+        "practice_phrases": [
+          [
+            "was",
+            "fue",
+            null,
+            1
+          ],
+          [
+            "that was",
+            "eso fue",
+            null,
+            2
+          ],
+          [
+            "that was very interesting",
+            "eso fue muy interesante",
+            null,
+            4
+          ],
+          [
+            "that was something new",
+            "eso fue algo nuevo",
+            null,
+            4
+          ],
+          [
+            "that was very interesting and new",
+            "eso fue muy interesante y nuevo",
+            null,
+            6
+          ],
+          [
+            "I want to explain what that was",
+            "quiero explicar lo que eso fue",
+            null,
+            6
+          ],
+          [
+            "I'm not sure what that was",
+            "no estoy seguro lo que eso fue",
+            null,
+            6
+          ],
+          [
+            "that was interesting",
+            "eso fue interesante",
+            null,
+            3
+          ],
+          [
+            "I'm not sure what that was",
+            "no estoy seguro lo que eso fue",
+            null,
+            7
+          ],
+          [
+            "that was something new and interesting",
+            "eso fue algo nuevo y interesante",
+            null,
+            6
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 1,
+          "longer_4_5": 2,
+          "long_6_plus": 5
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0112 LEGOs only"
+      },
+      "S0112L02": {
+        "lego": [
+          "very interesting",
+          "muy interesante"
+        ],
+        "type": "M",
+        "available_legos": 319,
+        "practice_phrases": [
+          [
+            "very interesting",
+            "muy interesante",
+            null,
+            1
+          ],
+          [
+            "that was very interesting",
+            "eso fue muy interesante",
+            null,
+            3
+          ],
+          [
+            "something very interesting",
+            "algo muy interesante",
+            null,
+            2
+          ],
+          [
+            "I want to learn something very interesting",
+            "quiero aprender algo muy interesante",
+            null,
+            5
+          ],
+          [
+            "that was very interesting and new",
+            "eso fue muy interesante y nuevo",
+            null,
+            5
+          ],
+          [
+            "I'm trying to remember something very interesting",
+            "estoy intentando recordar algo muy interesante",
+            null,
+            5
+          ],
+          [
+            "when we learn something very interesting",
+            "cuando aprendemos algo muy interesante",
+            null,
+            5
+          ],
+          [
+            "I want to explain something very interesting",
+            "quiero explicar algo muy interesante",
+            null,
+            4
+          ],
+          [
+            "it's very interesting when our brain changes",
+            "es muy interesante cuando nuestro cerebro cambia",
+            null,
+            6
+          ],
+          [
+            "when we learn something new that's very interesting",
+            "cuando aprendemos algo nuevo eso es muy interesante",
+            null,
+            7
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 1,
+          "longer_4_5": 5,
+          "long_6_plus": 2
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0112 LEGOs only"
+      },
+      "S0015L01": {
+        "lego": [
+          "and",
+          "y"
+        ],
+        "type": "A",
+        "available_legos": 40,
+        "practice_phrases": [
+          [
+            "and",
+            "y",
+            null,
+            1
+          ],
+          [
+            "I want to learn and speak",
+            "quiero aprender y hablar",
+            null,
+            4
+          ],
+          [
+            "I want to speak Spanish and learn",
+            "quiero hablar español y aprender",
+            null,
+            5
+          ],
+          [
+            "I'm trying to learn and remember",
+            "estoy intentando aprender y recordar",
+            null,
+            4
+          ],
+          [
+            "I'm trying to learn Spanish and speak with you",
+            "estoy intentando aprender español y hablar contigo",
+            null,
+            7
+          ],
+          [
+            "I want to speak and learn",
+            "quiero hablar y aprender",
+            null,
+            4
+          ],
+          [
+            "I'm learning and speaking",
+            "estoy aprender y hablar",
+            null,
+            3
+          ],
+          [
+            "I want to learn Spanish and speak with you",
+            "quiero aprender español y hablar contigo",
+            null,
+            7
+          ],
+          [
+            "today and tomorrow",
+            "hoy y mañana",
+            null,
+            3
+          ],
+          [
+            "today and tomorrow",
+            "hoy y mañana",
+            null,
+            3
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 3,
+          "longer_4_5": 4,
+          "long_6_plus": 2
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0112 LEGOs only"
+      },
+      "S0112L03": {
+        "lego": [
+          "I wasn't expecting it",
+          "no estaba esperándolo"
+        ],
+        "type": "M",
+        "available_legos": 320,
+        "practice_phrases": [
+          [
+            "I wasn't expecting it",
+            "no estaba esperándolo",
+            null,
+            1
+          ],
+          [
+            "I wasn't expecting it today",
+            "no estaba esperándolo hoy",
+            null,
+            3
+          ],
+          [
+            "that was interesting and I wasn't expecting it",
+            "eso fue interesante y no estaba esperándolo",
+            null,
+            6
+          ],
+          [
+            "I wasn't expecting it when you said that",
+            "no estaba esperándolo cuando dijiste eso",
+            null,
+            6
+          ],
+          [
+            "that was very interesting and I wasn't expecting it",
+            "eso fue muy interesante y no estaba esperándolo",
+            null,
+            7
+          ],
+          [
+            "I want to explain that I wasn't expecting it",
+            "quiero explicar que no estaba esperándolo",
+            null,
+            6
+          ],
+          [
+            "I'm not sure why I wasn't expecting it",
+            "no estoy seguro por qué no estaba esperándolo",
+            null,
+            7
+          ],
+          [
+            "I wasn't expecting that today",
+            "no estaba esperándolo hoy",
+            null,
+            4
+          ],
+          [
+            "I wasn't expecting it when I was learning",
+            "no estaba esperándolo cuando estaba aprender",
+            null,
+            6
+          ],
+          [
+            "I wasn't expecting that",
+            "no estaba esperándolo",
+            null,
+            3
+          ],
+          [
+            "That was very interesting, and I wasn't expecting it.",
+            "Eso fue muy interesante, y no estaba esperándolo",
+            null,
+            5
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 2,
+          "longer_4_5": 2,
+          "long_6_plus": 6
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0112 LEGOs only"
+      }
+    }
+  },
+  "S0113": {
+    "seed_pair": {
+      "target": "¿Por qué no puedo recordar lo que dijiste?",
+      "known": "Why can't I remember what you said?"
+    },
+    "cumulative_legos": 320,
+    "legos": {
+      "S0021L01": {
+        "lego": [
+          "why",
+          "por qué"
+        ],
+        "type": "M",
+        "available_legos": 61,
+        "practice_phrases": [
+          [
+            "why",
+            "por qué",
+            null,
+            1
+          ],
+          [
+            "why now",
+            "por qué ahora",
+            null,
+            2
+          ],
+          [
+            "I'm not sure why",
+            "no estoy seguro por qué",
+            null,
+            4
+          ],
+          [
+            "why can't I speak",
+            "por qué no puedo hablar",
+            null,
+            4
+          ],
+          [
+            "why do I want to learn",
+            "por qué quiero aprender",
+            null,
+            5
+          ],
+          [
+            "why can't I remember something",
+            "por qué no puedo recordar algo",
+            null,
+            5
+          ],
+          [
+            "why not",
+            "por qué no",
+            null,
+            2
+          ],
+          [
+            "why do I want to learn",
+            "por qué quiero aprender",
+            null,
+            5
+          ],
+          [
+            "I'm not sure why",
+            "no estoy seguro por qué",
+            null,
+            5
+          ],
+          [
+            "why not",
+            "por qué no",
+            null,
+            2
+          ],
+          [
+            "why do I want to learn",
+            "por qué quiero aprender",
+            null,
+            5
+          ],
+          [
+            "I'm not sure why",
+            "no estoy seguro por qué",
+            null,
+            5
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 4,
+          "quite_short_3": 0,
+          "longer_4_5": 8,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0113 LEGOs only"
+      },
+      "S0057L01": {
+        "lego": [
+          "I can't",
+          "no puedo"
+        ],
+        "type": "M",
+        "available_legos": 166,
+        "practice_phrases": [
+          [
+            "I can't",
+            "no puedo",
+            null,
+            1
+          ],
+          [
+            "I can't speak",
+            "no puedo hablar",
+            null,
+            2
+          ],
+          [
+            "I can't remember",
+            "no puedo recordar",
+            null,
+            2
+          ],
+          [
+            "I can't speak Spanish",
+            "no puedo hablar español",
+            null,
+            3
+          ],
+          [
+            "why can't I remember",
+            "por qué no puedo recordar",
+            null,
+            4
+          ],
+          [
+            "I can't remember something",
+            "no puedo recordar algo",
+            null,
+            3
+          ],
+          [
+            "I'm not sure why I can't speak",
+            "no estoy seguro por qué no puedo hablar",
+            null,
+            6
+          ],
+          [
+            "I can't remember that very well",
+            "no puedo recordar eso muy bien",
+            null,
+            5
+          ],
+          [
+            "I can't speak now",
+            "no puedo hablar ahora",
+            null,
+            4
+          ],
+          [
+            "I can't learn that",
+            "no puedo aprender eso",
+            null,
+            4
+          ],
+          [
+            "I can't speak now",
+            "no puedo hablar ahora",
+            null,
+            4
+          ],
+          [
+            "I can't learn that",
+            "no puedo aprender eso",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 3,
+          "quite_short_3": 2,
+          "longer_4_5": 6,
+          "long_6_plus": 1
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0113 LEGOs only"
+      },
+      "S0006L01": {
+        "lego": [
+          "to remember",
+          "recordar"
+        ],
+        "type": "A",
+        "available_legos": 17,
+        "practice_phrases": [
+          [
+            "to remember",
+            "recordar",
+            null,
+            1
+          ],
+          [
+            "I want to remember",
+            "quiero recordar",
+            null,
+            2
+          ],
+          [
+            "I'm trying to remember",
+            "estoy intentando recordar",
+            null,
+            3
+          ],
+          [
+            "I want to remember something",
+            "quiero recordar algo",
+            null,
+            3
+          ],
+          [
+            "I want to remember",
+            "quiero recordar",
+            null,
+            3
+          ],
+          [
+            "I want to remember",
+            "quiero recordar",
+            null,
+            3
+          ],
+          [
+            "I want to remember",
+            "quiero recordar",
+            null,
+            3
+          ],
+          [
+            "I can remember",
+            "puedo recordar",
+            null,
+            3
+          ],
+          [
+            "I'm trying to remember",
+            "estoy intentando recordar",
+            null,
+            3
+          ],
+          [
+            "to remember now",
+            "recordar ahora",
+            null,
+            2
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 3,
+          "quite_short_3": 7,
+          "longer_4_5": 0,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0113 LEGOs only"
+      },
+      "S0078L02": {
+        "lego": [
+          "what you said",
+          "lo que dijiste"
+        ],
+        "type": "M",
+        "available_legos": 221,
+        "practice_phrases": [
+          [
+            "what you said",
+            "lo que dijiste",
+            null,
+            1
+          ],
+          [
+            "I remember what you said",
+            "recordar lo que dijiste",
+            null,
+            3
+          ],
+          [
+            "I can't remember what you said",
+            "no puedo recordar lo que dijiste",
+            null,
+            4
+          ],
+          [
+            "I'm trying to remember what you said",
+            "estoy intentando recordar lo que dijiste",
+            null,
+            5
+          ],
+          [
+            "I want to understand what you said",
+            "quiero comprender lo que dijiste",
+            null,
+            4
+          ],
+          [
+            "why can't I remember what you said",
+            "por qué no puedo recordar lo que dijiste",
+            null,
+            6
+          ],
+          [
+            "I'm not sure if I remember what you said",
+            "no estoy seguro si recordar lo que dijiste",
+            null,
+            7
+          ],
+          [
+            "I want to explain what you said",
+            "quiero explicar lo que dijiste",
+            null,
+            4
+          ],
+          [
+            "I'm trying to understand what you said",
+            "estoy intentando comprender lo que dijiste",
+            null,
+            5
+          ],
+          [
+            "I want to remember what you said yesterday",
+            "quiero recordar lo que dijiste ayer",
+            null,
+            6
+          ],
+          [
+            "Why can't I remember what you said?",
+            "¿Por qué no puedo recordar lo que dijiste?",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 1,
+          "longer_4_5": 6,
+          "long_6_plus": 3
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0113 LEGOs only"
+      }
+    }
+  },
+  "S0114": {
+    "seed_pair": {
+      "target": "Siento como si estuviera haciendo peor hoy que ayer.",
+      "known": "I feel as if I'm doing worse today than yesterday."
+    },
+    "cumulative_legos": 324,
+    "legos": {
+      "S0114L01": {
+        "lego": [
+          "I feel as if I were",
+          "siento como si estuviera"
+        ],
+        "type": "M",
+        "available_legos": 321,
+        "practice_phrases": [
+          [
+            "I feel as if I were",
+            "siento como si estuviera",
+            null,
+            1
+          ],
+          [
+            "I feel as if I were learning",
+            "siento como si estuviera aprender",
+            null,
+            3
+          ],
+          [
+            "I feel as if I were ready",
+            "siento como si estuviera preparado",
+            null,
+            3
+          ],
+          [
+            "I feel as if I were doing better",
+            "siento como si estuviera haciendo mejor",
+            null,
+            4
+          ],
+          [
+            "I don't feel as if I were ready",
+            "no siento como si estuviera preparado",
+            null,
+            4
+          ],
+          [
+            "I feel as if I were trying to learn",
+            "siento como si estuviera intentar aprender",
+            null,
+            4
+          ],
+          [
+            "I feel as if I were learning something new",
+            "siento como si estuviera aprender algo nuevo",
+            null,
+            5
+          ],
+          [
+            "I feel as if I were speaking Spanish with you",
+            "siento como si estuviera hablar español contigo",
+            null,
+            5
+          ],
+          [
+            "I feel as if I were trying to remember something",
+            "siento como si estuviera intentar recordar algo",
+            null,
+            7
+          ],
+          [
+            "I feel as if I were ready",
+            "siento como si estuviera preparado",
+            null,
+            5
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 2,
+          "longer_4_5": 6,
+          "long_6_plus": 1
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0114 LEGOs only"
+      },
+      "S0114L02": {
+        "lego": [
+          "doing",
+          "haciendo"
+        ],
+        "type": "A",
+        "available_legos": 322,
+        "practice_phrases": [
+          [
+            "doing",
+            "haciendo",
+            null,
+            1
+          ],
+          [
+            "I'm doing",
+            "estoy haciendo",
+            null,
+            2
+          ],
+          [
+            "I'm doing better",
+            "estoy haciendo mejor",
+            null,
+            3
+          ],
+          [
+            "I feel as if I were doing better",
+            "siento como si estuviera haciendo mejor",
+            null,
+            4
+          ],
+          [
+            "I'm doing something new",
+            "estoy haciendo algo nuevo",
+            null,
+            4
+          ],
+          [
+            "I'm doing better than yesterday",
+            "estoy haciendo mejor que ayer",
+            null,
+            5
+          ],
+          [
+            "I feel as if I were doing better today",
+            "siento como si estuviera haciendo mejor hoy",
+            null,
+            5
+          ],
+          [
+            "I'm not sure what I'm doing",
+            "no estoy seguro lo que estoy haciendo",
+            null,
+            6
+          ],
+          [
+            "I'm doing something new today",
+            "estoy haciendo algo nuevo hoy",
+            null,
+            5
+          ],
+          [
+            "I'm doing it",
+            "lo estoy haciendo",
+            null,
+            3
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 2,
+          "longer_4_5": 5,
+          "long_6_plus": 1
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0114 LEGOs only"
+      },
+      "S0114L03": {
+        "lego": [
+          "worse",
+          "peor"
+        ],
+        "type": "A",
+        "available_legos": 323,
+        "practice_phrases": [
+          [
+            "worse",
+            "peor",
+            null,
+            1
+          ],
+          [
+            "doing worse",
+            "haciendo peor",
+            null,
+            2
+          ],
+          [
+            "I'm doing worse",
+            "estoy haciendo peor",
+            null,
+            3
+          ],
+          [
+            "I'm doing worse today",
+            "estoy haciendo peor hoy",
+            null,
+            4
+          ],
+          [
+            "I feel as if I were doing worse",
+            "siento como si estuviera haciendo peor",
+            null,
+            4
+          ],
+          [
+            "I'm doing worse than yesterday",
+            "estoy haciendo peor que ayer",
+            null,
+            5
+          ],
+          [
+            "I feel as if I were doing worse today",
+            "siento como si estuviera haciendo peor hoy",
+            null,
+            5
+          ],
+          [
+            "I'm not sure if I'm doing worse",
+            "no estoy seguro si estoy haciendo peor",
+            null,
+            6
+          ],
+          [
+            "why am I doing worse today",
+            "por qué estoy haciendo peor hoy",
+            null,
+            6
+          ],
+          [
+            "I don't feel as if I were doing worse",
+            "no siento como si estuviera haciendo peor",
+            null,
+            6
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 1,
+          "longer_4_5": 4,
+          "long_6_plus": 3
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0114 LEGOs only"
+      },
+      "S0007L03": {
+        "lego": [
+          "today",
+          "hoy"
+        ],
+        "type": "A",
+        "available_legos": 21,
+        "practice_phrases": [
+          [
+            "today",
+            "hoy",
+            null,
+            1
+          ],
+          [
+            "I'm trying to learn something today",
+            "estoy intentando aprender algo hoy",
+            null,
+            5
+          ],
+          [
+            "I want to learn today",
+            "quiero aprender hoy",
+            null,
+            3
+          ],
+          [
+            "I'm learning today",
+            "estoy aprender hoy",
+            null,
+            3
+          ],
+          [
+            "I want to speak today",
+            "quiero hablar hoy",
+            null,
+            4
+          ],
+          [
+            "I'm trying today",
+            "estoy intentar hoy",
+            null,
+            3
+          ],
+          [
+            "I want to learn today",
+            "quiero aprender hoy",
+            null,
+            4
+          ],
+          [
+            "I'm learning today",
+            "estoy aprender hoy",
+            null,
+            3
+          ],
+          [
+            "I want to speak today",
+            "quiero hablar hoy",
+            null,
+            4
+          ],
+          [
+            "I'm trying today",
+            "estoy intentar hoy",
+            null,
+            3
+          ],
+          [
+            "I want to learn today",
+            "quiero aprender hoy",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 5,
+          "longer_4_5": 5,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0114 LEGOs only"
+      },
+      "S0114L04": {
+        "lego": [
+          "than yesterday",
+          "que ayer"
+        ],
+        "type": "M",
+        "available_legos": 324,
+        "practice_phrases": [
+          [
+            "than yesterday",
+            "que ayer",
+            null,
+            1
+          ],
+          [
+            "better than yesterday",
+            "mejor que ayer",
+            null,
+            2
+          ],
+          [
+            "worse than yesterday",
+            "peor que ayer",
+            null,
+            2
+          ],
+          [
+            "I'm doing better than yesterday",
+            "estoy haciendo mejor que ayer",
+            null,
+            4
+          ],
+          [
+            "I'm doing worse than yesterday",
+            "estoy haciendo peor que ayer",
+            null,
+            4
+          ],
+          [
+            "I feel better today than yesterday",
+            "me siento mejor hoy que ayer",
+            null,
+            5
+          ],
+          [
+            "I feel as if I were doing better than yesterday",
+            "siento como si estuviera haciendo mejor que ayer",
+            null,
+            6
+          ],
+          [
+            "I'm speaking better today than yesterday",
+            "estoy hablar mejor hoy que ayer",
+            null,
+            6
+          ],
+          [
+            "I'm learning more today than yesterday",
+            "estoy aprender más hoy que ayer",
+            null,
+            6
+          ],
+          [
+            "much better than yesterday",
+            "mucho mejor que ayer",
+            null,
+            4
+          ],
+          [
+            "I feel as if I'm doing worse today than yesterday.",
+            "Siento como si estuviera haciendo peor hoy que ayer.",
+            null,
+            5
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 3,
+          "quite_short_3": 0,
+          "longer_4_5": 5,
+          "long_6_plus": 3
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0114 LEGOs only"
+      }
+    }
+  },
+  "S0115": {
+    "seed_pair": {
+      "target": "No siento como si estuviera preparado para tener una conversación.",
+      "known": "I don't feel as if I'm ready to have a conversation."
+    },
+    "cumulative_legos": 327,
+    "legos": {
+      "S0115L01": {
+        "lego": [
+          "I don't feel as if I were",
+          "no siento como si estuviera"
+        ],
+        "type": "M",
+        "available_legos": 325,
+        "practice_phrases": [
+          [
+            "I don't feel as if I were",
+            "no siento como si estuviera",
+            null,
+            1
+          ],
+          [
+            "I don't feel as if I were ready",
+            "no siento como si estuviera preparado",
+            null,
+            3
+          ],
+          [
+            "I don't feel as if I were learning",
+            "no siento como si estuviera aprender",
+            null,
+            3
+          ],
+          [
+            "I don't feel as if I were doing better",
+            "no siento como si estuviera haciendo mejor",
+            null,
+            4
+          ],
+          [
+            "I don't feel as if I were speaking well",
+            "no siento como si estuviera hablar bien",
+            null,
+            4
+          ],
+          [
+            "I don't feel as if I were ready to speak",
+            "no siento como si estuviera preparado hablar",
+            null,
+            4
+          ],
+          [
+            "I don't feel as if I were doing worse today",
+            "no siento como si estuviera haciendo peor hoy",
+            null,
+            5
+          ],
+          [
+            "I don't feel as if I were ready for that",
+            "no siento como si estuviera preparado para eso",
+            null,
+            5
+          ],
+          [
+            "I don't feel as if I were learning something new",
+            "no siento como si estuviera aprender algo nuevo",
+            null,
+            5
+          ],
+          [
+            "I don't feel as if I were doing better today than yesterday",
+            "no siento como si estuviera haciendo mejor hoy que ayer",
+            null,
+            9
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 2,
+          "longer_4_5": 6,
+          "long_6_plus": 1
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0115 LEGOs only"
+      },
+      "S0026L05": {
+        "lego": [
+          "ready",
+          "preparado"
+        ],
+        "type": "A",
+        "available_legos": 78,
+        "practice_phrases": [
+          [
+            "ready",
+            "preparado",
+            null,
+            1
+          ],
+          [
+            "I'm ready",
+            "estoy preparado",
+            null,
+            2
+          ],
+          [
+            "I'm not ready",
+            "no estoy preparado",
+            null,
+            3
+          ],
+          [
+            "I'm ready to learn",
+            "estoy preparado aprender",
+            null,
+            3
+          ],
+          [
+            "I'm not ready to speak",
+            "no estoy preparado hablar",
+            null,
+            4
+          ],
+          [
+            "I'm not ready to speak Spanish with you",
+            "no estoy preparado hablar español contigo",
+            null,
+            6
+          ],
+          [
+            "I'm ready to speak Spanish",
+            "estoy preparado hablar español",
+            null,
+            4
+          ],
+          [
+            "I'm not ready",
+            "no estoy preparado",
+            null,
+            3
+          ],
+          [
+            "I'm not ready",
+            "no estoy preparado",
+            null,
+            3
+          ],
+          [
+            "when I'm ready",
+            "cuando estoy preparado",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 4,
+          "longer_4_5": 3,
+          "long_6_plus": 1
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0115 LEGOs only"
+      },
+      "S0115L02": {
+        "lego": [
+          "to have",
+          "para tener"
+        ],
+        "type": "M",
+        "available_legos": 326,
+        "practice_phrases": [
+          [
+            "to have",
+            "para tener",
+            null,
+            1
+          ],
+          [
+            "I want to have",
+            "quiero para tener",
+            null,
+            3
+          ],
+          [
+            "I'm ready to have",
+            "estoy preparado para tener",
+            null,
+            3
+          ],
+          [
+            "I'm ready to have",
+            "estoy preparado para tener",
+            null,
+            4
+          ],
+          [
+            "I want to be ready to have",
+            "quiero estar preparado para tener",
+            null,
+            5
+          ],
+          [
+            "I don't want to have",
+            "no quiero para tener",
+            null,
+            4
+          ],
+          [
+            "to have something new",
+            "para tener algo nuevo",
+            null,
+            4
+          ],
+          [
+            "I'm not ready to have",
+            "no estoy preparado para tener",
+            null,
+            5
+          ],
+          [
+            "I want to be able to have",
+            "quiero poder para tener",
+            null,
+            5
+          ],
+          [
+            "when I'm ready to have",
+            "cuando estoy preparado para tener",
+            null,
+            5
+          ],
+          [
+            "I'm not ready to have",
+            "no estoy preparado para tener",
+            null,
+            5
+          ],
+          [
+            "I want to be able to have",
+            "quiero poder para tener",
+            null,
+            5
+          ],
+          [
+            "when I'm ready to have",
+            "cuando estoy preparado para tener",
+            null,
+            5
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 2,
+          "longer_4_5": 10,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0115 LEGOs only"
+      },
+      "S0115L03": {
+        "lego": [
+          "a conversation",
+          "una conversación"
+        ],
+        "type": "M",
+        "available_legos": 327,
+        "practice_phrases": [
+          [
+            "a conversation",
+            "una conversación",
+            null,
+            1
+          ],
+          [
+            "to have a conversation",
+            "para tener una conversación",
+            null,
+            2
+          ],
+          [
+            "I want a conversation",
+            "quiero una conversación",
+            null,
+            3
+          ],
+          [
+            "I'm ready to have a conversation",
+            "estoy preparado para tener una conversación",
+            null,
+            4
+          ],
+          [
+            "I want to have a conversation",
+            "quiero para tener una conversación",
+            null,
+            4
+          ],
+          [
+            "I'm not ready to have a conversation",
+            "no estoy preparado para tener una conversación",
+            null,
+            5
+          ],
+          [
+            "I don't feel ready to have a conversation",
+            "no siento preparado para tener una conversación",
+            null,
+            5
+          ],
+          [
+            "I want to have a conversation with you",
+            "quiero para tener una conversación contigo",
+            null,
+            5
+          ],
+          [
+            "I'm trying to have a conversation in Spanish",
+            "estoy intentando para tener una conversación en español",
+            null,
+            6
+          ],
+          [
+            "I want to be able to have a conversation with you",
+            "quiero poder para tener una conversación contigo",
+            null,
+            7
+          ],
+          [
+            "I don't feel as if I'm ready to have a conversation.",
+            "No siento como si estuviera preparado para tener una conversación.",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 1,
+          "longer_4_5": 6,
+          "long_6_plus": 2
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0115 LEGOs only"
+      }
+    }
+  },
+  "S0116": {
+    "seed_pair": {
+      "target": "Esta no es la mejor opción que podría hacer.",
+      "known": "This isn't the best choice I could make."
+    },
+    "cumulative_legos": 331,
+    "legos": {
+      "S0116L01": {
+        "lego": [
+          "this",
+          "esta"
+        ],
+        "type": "A",
+        "available_legos": 328,
+        "practice_phrases": [
+          [
+            "this",
+            "esta",
+            null,
+            1
+          ],
+          [
+            "this is",
+            "esta es",
+            null,
+            2
+          ],
+          [
+            "this is something new",
+            "esta es algo nuevo",
+            null,
+            4
+          ],
+          [
+            "I want this",
+            "quiero esta",
+            null,
+            2
+          ],
+          [
+            "I'm trying to learn this",
+            "estoy intentando aprender esta",
+            null,
+            4
+          ],
+          [
+            "this is very interesting and new",
+            "esta es muy interesante y nuevo",
+            null,
+            6
+          ],
+          [
+            "I'm learning this",
+            "estoy aprender esta",
+            null,
+            3
+          ],
+          [
+            "this is very interesting",
+            "esta es muy interesante",
+            null,
+            4
+          ],
+          [
+            "I want to understand this",
+            "quiero comprender esta",
+            null,
+            4
+          ],
+          [
+            "I'm learning this",
+            "estoy aprendiendo esta",
+            null,
+            3
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 3,
+          "quite_short_3": 2,
+          "longer_4_5": 4,
+          "long_6_plus": 1
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0116 LEGOs only"
+      },
+      "S0116L02": {
+        "lego": [
+          "isn't",
+          "no es"
+        ],
+        "type": "M",
+        "available_legos": 329,
+        "practice_phrases": [
+          [
+            "isn't",
+            "no es",
+            null,
+            1
+          ],
+          [
+            "this isn't",
+            "esta no es",
+            null,
+            2
+          ],
+          [
+            "this isn't the best",
+            "esta no es la mejor",
+            null,
+            5
+          ],
+          [
+            "that isn't very interesting",
+            "eso no es muy interesante",
+            null,
+            5
+          ],
+          [
+            "this isn't something new",
+            "esta no es algo nuevo",
+            null,
+            5
+          ],
+          [
+            "that isn't what I want",
+            "eso no es lo que quiero",
+            null,
+            6
+          ],
+          [
+            "this isn't ready",
+            "esta no es preparado",
+            null,
+            3
+          ],
+          [
+            "that isn't what you said",
+            "eso no es lo que dijiste",
+            null,
+            6
+          ],
+          [
+            "this isn't something new",
+            "esta no es algo nuevo",
+            null,
+            5
+          ],
+          [
+            "that isn't ready",
+            "eso no es preparado",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 1,
+          "longer_4_5": 5,
+          "long_6_plus": 2
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0116 LEGOs only"
+      },
+      "S0116L03": {
+        "lego": [
+          "the best choice",
+          "la mejor opción"
+        ],
+        "type": "M",
+        "available_legos": 330,
+        "practice_phrases": [
+          [
+            "the best choice",
+            "la mejor opción",
+            null,
+            1
+          ],
+          [
+            "this is the best choice",
+            "esta es la mejor opción",
+            null,
+            4
+          ],
+          [
+            "that isn't the best choice",
+            "eso no es la mejor opción",
+            null,
+            5
+          ],
+          [
+            "this isn't the best choice",
+            "esta no es la mejor opción",
+            null,
+            5
+          ],
+          [
+            "I want the best choice",
+            "quiero la mejor opción",
+            null,
+            4
+          ],
+          [
+            "I'm trying to find the best choice",
+            "estoy intentando encontrar la mejor opción",
+            null,
+            5
+          ],
+          [
+            "that was the best choice",
+            "eso fue la mejor opción",
+            null,
+            5
+          ],
+          [
+            "I'm not sure if this is the best choice",
+            "no estoy seguro si esta es la mejor opción",
+            null,
+            8
+          ],
+          [
+            "I want to make the best choice",
+            "quiero hacer la mejor opción",
+            null,
+            5
+          ],
+          [
+            "I'm not sure what the best choice is",
+            "no estoy seguro lo que es la mejor opción",
+            null,
+            9
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 0,
+          "longer_4_5": 7,
+          "long_6_plus": 2
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0116 LEGOs only"
+      },
+      "S0116L04": {
+        "lego": [
+          "I could make",
+          "que podría hacer"
+        ],
+        "type": "M",
+        "available_legos": 331,
+        "practice_phrases": [
+          [
+            "I could make",
+            "que podría hacer",
+            null,
+            1
+          ],
+          [
+            "something I could make",
+            "algo que podría hacer",
+            null,
+            3
+          ],
+          [
+            "the choice I could make",
+            "la opción que podría hacer",
+            null,
+            4
+          ],
+          [
+            "the best choice I could make",
+            "la mejor opción que podría hacer",
+            null,
+            5
+          ],
+          [
+            "this is something I could make",
+            "esta es algo que podría hacer",
+            null,
+            6
+          ],
+          [
+            "this isn't the best choice I could make",
+            "esta no es la mejor opción que podría hacer",
+            null,
+            7
+          ],
+          [
+            "I want the best choice I could make",
+            "quiero la mejor opción que podría hacer",
+            null,
+            6
+          ],
+          [
+            "that was the best choice I could make",
+            "eso fue la mejor opción que podría hacer",
+            null,
+            7
+          ],
+          [
+            "I'm trying to make the best choice I could make",
+            "estoy intentando hacer la mejor opción que podría hacer",
+            null,
+            8
+          ],
+          [
+            "I'm not sure what I could make",
+            "no estoy seguro lo que podría hacer",
+            null,
+            7
+          ],
+          [
+            "This isn't the best choice I could make.",
+            "Esta no es la mejor opción que podría hacer.",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 1,
+          "longer_4_5": 3,
+          "long_6_plus": 6
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0116 LEGOs only"
+      }
+    }
+  },
+  "S0117": {
+    "seed_pair": {
+      "target": "Definitivamente lo estoy haciendo mejor que la última vez que hablamos.",
+      "known": "I'm definitely doing better than I was last time we talked to each other."
+    },
+    "cumulative_legos": 335,
+    "legos": {
+      "S0117L01": {
+        "lego": [
+          "definitely",
+          "definitivamente"
+        ],
+        "type": "A",
+        "available_legos": 332,
+        "practice_phrases": [
+          [
+            "definitely",
+            "definitivamente",
+            null,
+            1
+          ],
+          [
+            "definitely better",
+            "definitivamente mejor",
+            null,
+            2
+          ],
+          [
+            "I'm definitely ready",
+            "estoy definitivamente preparado",
+            null,
+            3
+          ],
+          [
+            "I definitely want to learn",
+            "definitivamente quiero aprender",
+            null,
+            4
+          ],
+          [
+            "I'm definitely doing better",
+            "estoy definitivamente haciendo mejor",
+            null,
+            4
+          ],
+          [
+            "that was definitely interesting",
+            "eso fue definitivamente interesante",
+            null,
+            4
+          ],
+          [
+            "I'm definitely doing better today",
+            "estoy definitivamente haciendo mejor hoy",
+            null,
+            5
+          ],
+          [
+            "I definitely feel as if I were ready",
+            "definitivamente siento como si estuviera preparado",
+            null,
+            5
+          ],
+          [
+            "that was definitely the best choice",
+            "eso fue definitivamente la mejor opción",
+            null,
+            6
+          ],
+          [
+            "I definitely want to have a conversation",
+            "definitivamente quiero para tener una conversación",
+            null,
+            5
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 1,
+          "longer_4_5": 6,
+          "long_6_plus": 1
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0117 LEGOs only"
+      },
+      "S0117L02": {
+        "lego": [
+          "I'm doing it",
+          "lo estoy haciendo"
+        ],
+        "type": "M",
+        "available_legos": 333,
+        "practice_phrases": [
+          [
+            "I'm doing it",
+            "lo estoy haciendo",
+            null,
+            1
+          ],
+          [
+            "I'm doing it better",
+            "lo estoy haciendo mejor",
+            null,
+            3
+          ],
+          [
+            "I'm definitely doing it",
+            "definitivamente lo estoy haciendo",
+            null,
+            3
+          ],
+          [
+            "I'm doing it today",
+            "lo estoy haciendo hoy",
+            null,
+            3
+          ],
+          [
+            "I'm doing it better than yesterday",
+            "lo estoy haciendo mejor que ayer",
+            null,
+            5
+          ],
+          [
+            "I'm definitely doing it better",
+            "definitivamente lo estoy haciendo mejor",
+            null,
+            4
+          ],
+          [
+            "I'm doing it worse than before",
+            "lo estoy haciendo peor que antes",
+            null,
+            5
+          ],
+          [
+            "I feel as if I were doing it better",
+            "siento como si estuviera lo haciendo mejor",
+            null,
+            6
+          ],
+          [
+            "I'm not sure if I'm doing it well",
+            "no estoy seguro si lo estoy haciendo bien",
+            null,
+            7
+          ],
+          [
+            "I'm definitely doing it better than yesterday",
+            "definitivamente lo estoy haciendo mejor que ayer",
+            null,
+            7
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 3,
+          "longer_4_5": 3,
+          "long_6_plus": 3
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0117 LEGOs only"
+      },
+      "S0029L02": {
+        "lego": [
+          "better",
+          "mejor"
+        ],
+        "type": "A",
+        "available_legos": 87,
+        "practice_phrases": [
+          [
+            "better",
+            "mejor",
+            null,
+            1
+          ],
+          [
+            "better",
+            "mejor",
+            null,
+            1
+          ],
+          [
+            "better today",
+            "mejor hoy",
+            null,
+            2
+          ],
+          [
+            "better",
+            "mejor",
+            null,
+            1
+          ],
+          [
+            "better today",
+            "mejor hoy",
+            null,
+            2
+          ],
+          [
+            "I feel better",
+            "me siento mejor",
+            null,
+            3
+          ],
+          [
+            "doing better",
+            "haciendo mejor",
+            null,
+            2
+          ],
+          [
+            "I'm doing better",
+            "lo estoy haciendo mejor",
+            null,
+            4
+          ],
+          [
+            "much better",
+            "mucho mejor",
+            null,
+            2
+          ],
+          [
+            "I feel much better",
+            "me siento mucho mejor",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 7,
+          "quite_short_3": 1,
+          "longer_4_5": 2,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0117 LEGOs only"
+      },
+      "S0117L03": {
+        "lego": [
+          "than last time",
+          "que la última vez"
+        ],
+        "type": "M",
+        "available_legos": 334,
+        "practice_phrases": [
+          [
+            "than last time",
+            "que la última vez",
+            null,
+            1
+          ],
+          [
+            "better than last time",
+            "mejor que la última vez",
+            null,
+            3
+          ],
+          [
+            "I'm doing better than last time",
+            "estoy haciendo mejor que la última vez",
+            null,
+            5
+          ],
+          [
+            "I'm definitely doing better than last time",
+            "estoy definitivamente haciendo mejor que la última vez",
+            null,
+            6
+          ],
+          [
+            "I'm doing it better than last time",
+            "lo estoy haciendo mejor que la última vez",
+            null,
+            5
+          ],
+          [
+            "that was better than last time",
+            "eso fue mejor que la última vez",
+            null,
+            6
+          ],
+          [
+            "I feel better than last time",
+            "me siento mejor que la última vez",
+            null,
+            5
+          ],
+          [
+            "I'm speaking better than last time",
+            "estoy hablar mejor que la última vez",
+            null,
+            5
+          ],
+          [
+            "this is definitely better than last time",
+            "esta es definitivamente mejor que la última vez",
+            null,
+            7
+          ],
+          [
+            "I wasn't expecting it last time",
+            "no estaba esperándolo la última vez",
+            null,
+            5
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 1,
+          "longer_4_5": 5,
+          "long_6_plus": 3
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0117 LEGOs only"
+      },
+      "S0117L04": {
+        "lego": [
+          "we talked",
+          "que hablamos"
+        ],
+        "type": "M",
+        "available_legos": 335,
+        "practice_phrases": [
+          [
+            "we talked",
+            "que hablamos",
+            null,
+            1
+          ],
+          [
+            "when we talked",
+            "cuando que hablamos",
+            null,
+            2
+          ],
+          [
+            "last time we talked",
+            "la última vez que hablamos",
+            null,
+            4
+          ],
+          [
+            "better than last time we talked",
+            "mejor que la última vez que hablamos",
+            null,
+            6
+          ],
+          [
+            "I remember when we talked",
+            "recordar cuando que hablamos",
+            null,
+            3
+          ],
+          [
+            "I'm doing better than last time we talked",
+            "estoy haciendo mejor que la última vez que hablamos",
+            null,
+            7
+          ],
+          [
+            "that was interesting when we talked",
+            "eso fue interesante cuando que hablamos",
+            null,
+            5
+          ],
+          [
+            "I wasn't expecting it when we talked",
+            "no estaba esperándolo cuando que hablamos",
+            null,
+            5
+          ],
+          [
+            "I was doing worse last time we talked",
+            "estaba haciendo peor la última vez que hablamos",
+            null,
+            7
+          ],
+          [
+            "I feel better than when we talked",
+            "me siento mejor que cuando hablamos",
+            null,
+            6
+          ],
+          [
+            "I'm definitely doing better than I was last time we talked to each other.",
+            "Definitivamente lo estoy haciendo mejor que la última vez que hablamos.",
+            null,
+            5
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 1,
+          "longer_4_5": 4,
+          "long_6_plus": 4
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0117 LEGOs only"
+      }
+    }
+  },
+  "S0118": {
+    "seed_pair": {
+      "target": "Me siento mejor que como me sentía cuando estábamos en el pub.",
+      "known": "I feel better than I felt when we were in the pub."
+    },
+    "cumulative_legos": 338,
+    "legos": {
+      "S0041L01": {
+        "lego": [
+          "I feel",
+          "me siento"
+        ],
+        "type": "M",
+        "available_legos": 119,
+        "practice_phrases": [
+          [
+            "I feel",
+            "me siento",
+            null,
+            1
+          ],
+          [
+            "I feel better",
+            "me siento mejor",
+            null,
+            2
+          ],
+          [
+            "I feel ready",
+            "me siento preparado",
+            null,
+            2
+          ],
+          [
+            "I feel better today",
+            "me siento mejor hoy",
+            null,
+            3
+          ],
+          [
+            "I don't feel ready",
+            "no me siento preparado",
+            null,
+            3
+          ],
+          [
+            "I feel better than yesterday",
+            "me siento mejor que ayer",
+            null,
+            4
+          ],
+          [
+            "I don't feel as if I were ready",
+            "no me siento como si estuviera preparado",
+            null,
+            5
+          ],
+          [
+            "I feel better today than yesterday",
+            "me siento mejor hoy que ayer",
+            null,
+            6
+          ],
+          [
+            "I feel ready",
+            "me siento preparado",
+            null,
+            3
+          ],
+          [
+            "I don't feel ready",
+            "no me siento preparado",
+            null,
+            4
+          ],
+          [
+            "I feel ready",
+            "me siento preparado",
+            null,
+            3
+          ],
+          [
+            "I don't feel ready",
+            "no me siento preparado",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 3,
+          "quite_short_3": 4,
+          "longer_4_5": 4,
+          "long_6_plus": 1
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0118 LEGOs only"
+      },
+      "S0029L02": {
+        "lego": [
+          "better",
+          "mejor"
+        ],
+        "type": "A",
+        "available_legos": 87,
+        "practice_phrases": [
+          [
+            "better",
+            "mejor",
+            null,
+            1
+          ],
+          [
+            "I feel better",
+            "me siento mejor",
+            null,
+            3
+          ],
+          [
+            "doing better",
+            "haciendo mejor",
+            null,
+            2
+          ],
+          [
+            "I'm doing better",
+            "lo estoy haciendo mejor",
+            null,
+            4
+          ],
+          [
+            "much better",
+            "mucho mejor",
+            null,
+            2
+          ],
+          [
+            "I feel much better",
+            "me siento mucho mejor",
+            null,
+            4
+          ],
+          [
+            "better today",
+            "mejor hoy",
+            null,
+            2
+          ],
+          [
+            "better than yesterday",
+            "mejor que ayer",
+            null,
+            3
+          ],
+          [
+            "I feel better today",
+            "me siento mejor hoy",
+            null,
+            4
+          ],
+          [
+            "I'm doing much better",
+            "estoy haciendo mucho mejor",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 4,
+          "quite_short_3": 2,
+          "longer_4_5": 4,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0118 LEGOs only"
+      },
+      "S0118L01": {
+        "lego": [
+          "than I felt",
+          "que como me sentía"
+        ],
+        "type": "M",
+        "available_legos": 336,
+        "practice_phrases": [
+          [
+            "than I felt",
+            "que como me sentía",
+            null,
+            1
+          ],
+          [
+            "better than I felt",
+            "mejor que como me sentía",
+            null,
+            3
+          ],
+          [
+            "I feel better than I felt",
+            "me siento mejor que como me sentía",
+            null,
+            4
+          ],
+          [
+            "much better than I felt",
+            "mucho mejor que como me sentía",
+            null,
+            4
+          ],
+          [
+            "I feel better than I felt yesterday",
+            "me siento mejor que como me sentía ayer",
+            null,
+            5
+          ],
+          [
+            "I'm doing better than I felt before",
+            "estoy haciendo mejor que como me sentía antes",
+            null,
+            6
+          ],
+          [
+            "I definitely feel better than I felt",
+            "definitivamente me siento mejor que como me sentía",
+            null,
+            5
+          ],
+          [
+            "I feel better than I felt last time",
+            "me siento mejor que como me sentía la última vez",
+            null,
+            7
+          ],
+          [
+            "I feel much better than I felt",
+            "me siento mucho mejor que como me sentía",
+            null,
+            5
+          ],
+          [
+            "I feel better now",
+            "me siento mejor ahora",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 1,
+          "longer_4_5": 6,
+          "long_6_plus": 2
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0118 LEGOs only"
+      },
+      "S0034L03": {
+        "lego": [
+          "when",
+          "cuando"
+        ],
+        "type": "A",
+        "available_legos": 98,
+        "practice_phrases": [
+          [
+            "when",
+            "cuando",
+            null,
+            1
+          ],
+          [
+            "when I learn",
+            "cuando aprender",
+            null,
+            2
+          ],
+          [
+            "when I speak",
+            "cuando hablar",
+            null,
+            2
+          ],
+          [
+            "when I'm ready",
+            "cuando estoy preparado",
+            null,
+            3
+          ],
+          [
+            "when I want to learn",
+            "cuando quiero aprender",
+            null,
+            4
+          ],
+          [
+            "when I'm trying to speak",
+            "cuando estoy intentar hablar",
+            null,
+            4
+          ],
+          [
+            "when I speak",
+            "cuando hablar",
+            null,
+            2
+          ],
+          [
+            "when I'm ready",
+            "cuando estoy preparado",
+            null,
+            3
+          ],
+          [
+            "when I want to learn",
+            "cuando quiero aprender",
+            null,
+            4
+          ],
+          [
+            "when I'm trying to speak",
+            "cuando estoy intentar hablar",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 4,
+          "quite_short_3": 2,
+          "longer_4_5": 4,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0118 LEGOs only"
+      },
+      "S0118L02": {
+        "lego": [
+          "we were",
+          "estábamos"
+        ],
+        "type": "A",
+        "available_legos": 337,
+        "practice_phrases": [
+          [
+            "we were",
+            "estábamos",
+            null,
+            1
+          ],
+          [
+            "when we were",
+            "cuando estábamos",
+            null,
+            2
+          ],
+          [
+            "we were learning",
+            "estábamos aprender",
+            null,
+            2
+          ],
+          [
+            "when we were learning",
+            "cuando estábamos aprender",
+            null,
+            3
+          ],
+          [
+            "we were talking about something",
+            "estábamos hablar de algo",
+            null,
+            4
+          ],
+          [
+            "we were learning something new",
+            "estábamos aprender algo nuevo",
+            null,
+            4
+          ],
+          [
+            "when we were speaking",
+            "cuando estábamos hablar",
+            null,
+            3
+          ],
+          [
+            "we were doing something",
+            "estábamos haciendo algo",
+            null,
+            3
+          ],
+          [
+            "we were speaking",
+            "estábamos hablar",
+            null,
+            2
+          ],
+          [
+            "when we were speaking",
+            "cuando estábamos hablar",
+            null,
+            3
+          ],
+          [
+            "we were speaking",
+            "estábamos hablar",
+            null,
+            2
+          ],
+          [
+            "when we were speaking",
+            "cuando estábamos hablar",
+            null,
+            3
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 5,
+          "quite_short_3": 5,
+          "longer_4_5": 2,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0118 LEGOs only"
+      },
+      "S0118L03": {
+        "lego": [
+          "in the pub",
+          "en el pub"
+        ],
+        "type": "M",
+        "available_legos": 338,
+        "practice_phrases": [
+          [
+            "in the pub",
+            "en el pub",
+            null,
+            1
+          ],
+          [
+            "we were in the pub",
+            "estábamos en el pub",
+            null,
+            3
+          ],
+          [
+            "when we were in the pub",
+            "cuando estábamos en el pub",
+            null,
+            4
+          ],
+          [
+            "I was ready in the pub",
+            "estaba preparado en el pub",
+            null,
+            5
+          ],
+          [
+            "I felt better in the pub",
+            "me sentía mejor en el pub",
+            null,
+            5
+          ],
+          [
+            "we were talking in the pub",
+            "estábamos hablar en el pub",
+            null,
+            5
+          ],
+          [
+            "I remember when we were in the pub",
+            "recordar cuando estábamos en el pub",
+            null,
+            6
+          ],
+          [
+            "that was interesting when we were in the pub",
+            "eso fue interesante cuando estábamos en el pub",
+            null,
+            7
+          ],
+          [
+            "I feel better than I felt when we were in the pub",
+            "me siento mejor que como me sentía cuando estábamos en el pub",
+            null,
+            9
+          ],
+          [
+            "talking in the pub",
+            "hablar en el pub",
+            null,
+            4
+          ],
+          [
+            "I feel better than I felt when we were in the pub.",
+            "Me siento mejor que como me sentía cuando estábamos en el pub.",
+            null,
+            6
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 1,
+          "longer_4_5": 5,
+          "long_6_plus": 4
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0118 LEGOs only"
+      }
+    }
+  },
+  "S0119": {
+    "seed_pair": {
+      "target": "¿Puedo preguntarte algo antes de que te vayas?",
+      "known": "Can I ask you something before you leave?"
+    },
+    "cumulative_legos": 339,
+    "legos": {
+      "S0010L03": {
+        "lego": [
+          "I can",
+          "puedo"
+        ],
+        "type": "A",
+        "available_legos": 28,
+        "practice_phrases": [
+          [
+            "I can",
+            "puedo",
+            null,
+            1
+          ],
+          [
+            "I can speak",
+            "puedo hablar",
+            null,
+            2
+          ],
+          [
+            "I can learn",
+            "puedo aprender",
+            null,
+            2
+          ],
+          [
+            "I can speak Spanish",
+            "puedo hablar español",
+            null,
+            3
+          ],
+          [
+            "I can speak with you now",
+            "puedo hablar contigo ahora",
+            null,
+            4
+          ],
+          [
+            "I can remember",
+            "puedo recordar",
+            null,
+            2
+          ],
+          [
+            "I can try",
+            "puedo intentar",
+            null,
+            2
+          ],
+          [
+            "I can try",
+            "puedo intentar",
+            null,
+            2
+          ],
+          [
+            "I can learn",
+            "puedo aprender",
+            null,
+            2
+          ],
+          [
+            "I can try",
+            "puedo intentar",
+            null,
+            2
+          ],
+          [
+            "I can learn",
+            "puedo aprender",
+            null,
+            2
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 9,
+          "quite_short_3": 1,
+          "longer_4_5": 1,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0119 LEGOs only"
+      },
+      "S0030L02": {
+        "lego": [
+          "to ask you",
+          "preguntarte"
+        ],
+        "type": "A",
+        "available_legos": 90,
+        "practice_phrases": [
+          [
+            "to ask you",
+            "preguntarte",
+            null,
+            1
+          ],
+          [
+            "I want to ask you",
+            "quiero preguntarte",
+            null,
+            3
+          ],
+          [
+            "I can ask you",
+            "puedo preguntarte",
+            null,
+            2
+          ],
+          [
+            "I want to ask you something",
+            "quiero preguntarte algo",
+            null,
+            4
+          ],
+          [
+            "I can ask you something",
+            "puedo preguntarte algo",
+            null,
+            3
+          ],
+          [
+            "I'm trying to ask you",
+            "estoy intentando preguntarte",
+            null,
+            3
+          ],
+          [
+            "Can I ask you something now",
+            "puedo preguntarte algo ahora",
+            null,
+            4
+          ],
+          [
+            "I want to ask you now",
+            "quiero preguntarte ahora",
+            null,
+            4
+          ],
+          [
+            "I'm trying to ask you something",
+            "estoy intentando preguntarte algo",
+            null,
+            4
+          ],
+          [
+            "I need to ask you",
+            "necesito preguntarte",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 3,
+          "longer_4_5": 5,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0119 LEGOs only"
+      },
+      "S0004L02": {
+        "lego": [
+          "something",
+          "algo"
+        ],
+        "type": "A",
+        "available_legos": 11,
+        "practice_phrases": [
+          [
+            "something",
+            "algo",
+            null,
+            1
+          ],
+          [
+            "I want something",
+            "quiero algo",
+            null,
+            2
+          ],
+          [
+            "I'm learning something",
+            "estoy aprender algo",
+            null,
+            3
+          ],
+          [
+            "I'm learning something",
+            "estoy aprender algo",
+            null,
+            3
+          ],
+          [
+            "I'm learning something",
+            "estoy aprender algo",
+            null,
+            3
+          ],
+          [
+            "I can ask something",
+            "puedo preguntar algo",
+            null,
+            3
+          ],
+          [
+            "I want to ask something",
+            "quiero preguntar algo",
+            null,
+            4
+          ],
+          [
+            "I need something",
+            "necesito algo",
+            null,
+            3
+          ],
+          [
+            "to ask something",
+            "preguntar algo",
+            null,
+            2
+          ],
+          [
+            "I can say something",
+            "puedo decir algo",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 3,
+          "quite_short_3": 5,
+          "longer_4_5": 2,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0119 LEGOs only"
+      },
+      "S0119L01": {
+        "lego": [
+          "before you leave",
+          "antes de que te vayas"
+        ],
+        "type": "M",
+        "available_legos": 339,
+        "practice_phrases": [
+          [
+            "before you leave",
+            "antes de que te vayas",
+            null,
+            1
+          ],
+          [
+            "Can I speak before you leave",
+            "puedo hablar antes de que te vayas",
+            null,
+            5
+          ],
+          [
+            "I want to speak with you before you leave",
+            "quiero hablar contigo antes de que te vayas",
+            null,
+            6
+          ],
+          [
+            "Can I ask you something before you leave",
+            "puedo preguntarte algo antes de que te vayas",
+            null,
+            5
+          ],
+          [
+            "I want to explain something before you leave",
+            "quiero explicar algo antes de que te vayas",
+            null,
+            6
+          ],
+          [
+            "I'm trying to remember before you leave",
+            "estoy intentando recordar antes de que te vayas",
+            null,
+            5
+          ],
+          [
+            "I feel as if I need to speak before you leave",
+            "siento como si necesito hablar antes de que te vayas",
+            null,
+            9
+          ],
+          [
+            "I want to remember this before you leave",
+            "quiero recordar esto antes de que te vayas",
+            null,
+            7
+          ],
+          [
+            "I feel as if I need to say something before you leave",
+            "siento como si necesito decir algo antes de que te vayas",
+            null,
+            11
+          ],
+          [
+            "I can ask before you leave",
+            "puedo preguntar antes de que te vayas",
+            null,
+            6
+          ],
+          [
+            "Can I ask you something before you leave?",
+            "¿Puedo preguntarte algo antes de que te vayas?",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 0,
+          "longer_4_5": 4,
+          "long_6_plus": 6
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0119 LEGOs only"
+      }
+    }
+  },
+  "S0120": {
+    "seed_pair": {
+      "target": "Es interesante que te guste ir en autobús.",
+      "known": "It's interesting that you like to go by bus."
+    },
+    "cumulative_legos": 341,
+    "legos": {
+      "S0058L01": {
+        "lego": [
+          "it's interesting",
+          "es interesante"
+        ],
+        "type": "M",
+        "available_legos": 168,
+        "practice_phrases": [
+          [
+            "it's interesting",
+            "es interesante",
+            null,
+            1
+          ],
+          [
+            "it's very interesting",
+            "es muy interesante",
+            null,
+            2
+          ],
+          [
+            "that's interesting",
+            "eso es interesante",
+            null,
+            2
+          ],
+          [
+            "it's interesting that",
+            "es interesante que",
+            null,
+            2
+          ],
+          [
+            "it's interesting to learn",
+            "es interesante aprender",
+            null,
+            3
+          ],
+          [
+            "that's very interesting",
+            "eso es muy interesante",
+            null,
+            4
+          ],
+          [
+            "it's interesting when I learn something",
+            "es interesante cuando aprender algo",
+            null,
+            5
+          ],
+          [
+            "it's very interesting",
+            "es muy interesante",
+            null,
+            3
+          ],
+          [
+            "that's interesting",
+            "eso es interesante",
+            null,
+            3
+          ],
+          [
+            "it's interesting to learn",
+            "es interesante aprender",
+            null,
+            3
+          ],
+          [
+            "it's very interesting",
+            "es muy interesante",
+            null,
+            3
+          ],
+          [
+            "that's interesting",
+            "eso es interesante",
+            null,
+            3
+          ],
+          [
+            "it's interesting to learn",
+            "es interesante aprender",
+            null,
+            3
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 4,
+          "quite_short_3": 7,
+          "longer_4_5": 2,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0120 LEGOs only"
+      },
+      "S0120L01": {
+        "lego": [
+          "that you like",
+          "que te guste"
+        ],
+        "type": "M",
+        "available_legos": 340,
+        "practice_phrases": [
+          [
+            "that you like",
+            "que te guste",
+            null,
+            1
+          ],
+          [
+            "it's interesting that you like",
+            "es interesante que te guste",
+            null,
+            3
+          ],
+          [
+            "I know that you like",
+            "sé que te guste",
+            null,
+            3
+          ],
+          [
+            "that you like something",
+            "que te guste algo",
+            null,
+            3
+          ],
+          [
+            "it's interesting that you like that",
+            "es interesante que te guste eso",
+            null,
+            4
+          ],
+          [
+            "it's interesting that you like to go",
+            "es interesante que te guste ir",
+            null,
+            5
+          ],
+          [
+            "it's very interesting that you like speaking Spanish",
+            "es muy interesante que te guste hablar español",
+            null,
+            7
+          ],
+          [
+            "it's interesting that you like learning",
+            "es interesante que te guste aprender",
+            null,
+            5
+          ],
+          [
+            "it's interesting that you like it",
+            "es interesante que te guste",
+            null,
+            4
+          ],
+          [
+            "it's interesting that you like it",
+            "es interesante que te guste",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 3,
+          "longer_4_5": 5,
+          "long_6_plus": 1
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0120 LEGOs only"
+      },
+      "S0093L02": {
+        "lego": [
+          "to go",
+          "ir"
+        ],
+        "type": "A",
+        "available_legos": 258,
+        "practice_phrases": [
+          [
+            "to go",
+            "ir",
+            null,
+            1
+          ],
+          [
+            "I want to go",
+            "quiero ir",
+            null,
+            3
+          ],
+          [
+            "I'm trying to go",
+            "estoy intentando ir",
+            null,
+            3
+          ],
+          [
+            "I can go now",
+            "puedo ir ahora",
+            null,
+            3
+          ],
+          [
+            "I need to go",
+            "necesito ir",
+            null,
+            3
+          ],
+          [
+            "I'm ready to go with you",
+            "estoy preparado ir contigo",
+            null,
+            4
+          ],
+          [
+            "I can go with you",
+            "puedo ir contigo",
+            null,
+            3
+          ],
+          [
+            "I want to go now",
+            "quiero ir ahora",
+            null,
+            3
+          ],
+          [
+            "I'm ready to go",
+            "estoy preparado ir",
+            null,
+            3
+          ],
+          [
+            "I'm ready to go",
+            "estoy preparado ir",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 1,
+          "quite_short_3": 7,
+          "longer_4_5": 2,
+          "long_6_plus": 0
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0120 LEGOs only"
+      },
+      "S0120L02": {
+        "lego": [
+          "by bus",
+          "en autobús"
+        ],
+        "type": "M",
+        "available_legos": 341,
+        "practice_phrases": [
+          [
+            "by bus",
+            "en autobús",
+            null,
+            1
+          ],
+          [
+            "to go by bus",
+            "ir en autobús",
+            null,
+            2
+          ],
+          [
+            "I want to go by bus",
+            "quiero ir en autobús",
+            null,
+            4
+          ],
+          [
+            "you like to go by bus",
+            "te guste ir en autobús",
+            null,
+            4
+          ],
+          [
+            "I'm going by bus today",
+            "estoy ir en autobús hoy",
+            null,
+            5
+          ],
+          [
+            "it's interesting to go by bus",
+            "es interesante ir en autobús",
+            null,
+            4
+          ],
+          [
+            "I can go by bus with you",
+            "puedo ir en autobús contigo",
+            null,
+            5
+          ],
+          [
+            "it's interesting that you like to go by bus",
+            "es interesante que te guste ir en autobús",
+            null,
+            6
+          ],
+          [
+            "I need to go by bus",
+            "necesito ir en autobús",
+            null,
+            4
+          ],
+          [
+            "when I go by bus I feel better",
+            "cuando ir en autobús me siento mejor",
+            null,
+            7
+          ],
+          [
+            "It's interesting that you like to go by bus.",
+            "Es interesante que te guste ir en autobús.",
+            null,
+            4
+          ]
+        ],
+        "phrase_distribution": {
+          "really_short_1_2": 2,
+          "quite_short_3": 0,
+          "longer_4_5": 7,
+          "long_6_plus": 2
+        },
+        "gate_compliance": "STRICT - All words from S0001-S0120 LEGOs only"
+      }
+    }
+  }
+}

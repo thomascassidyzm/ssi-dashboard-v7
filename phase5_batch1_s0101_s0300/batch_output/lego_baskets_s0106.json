@@ -1,0 +1,234 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0106",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "We don't need to feel happy, we just need to work hard.",
+    "target": "No necesitamos sentirnos felices, solo necesitamos trabajar duro"
+  },
+  "patterns_introduced": "P_NEW_NEGATIVE_PLURAL_NEED",
+  "cumulative_patterns": [
+    "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+    "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+    "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+    "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+    "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+    "P_NEW_NEGATIVE_PLURAL_NEED"
+  ],
+  "cumulative_legos": 299,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T05:50:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 Agent 01",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation"
+  },
+
+  "S0106L01": {
+    "lego": ["We don't need", "no necesitamos"],
+    "type": "M",
+    "available_legos": 293,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL"
+    ],
+    "practice_phrases": [
+      ["We don't need", "no necesitamos", "P_NEW_NEGATIVE_PLURAL_NEED", 2],
+      ["We don't need this", "no necesitamos esto", "P_NEW_NEGATIVE_PLURAL_NEED", 3],
+      ["We don't need to learn", "no necesitamos aprender", "P_NEW_NEGATIVE_PLURAL_NEED", 3],
+      ["We don't need to say that", "no necesitamos decir eso", "P_NEW_NEGATIVE_PLURAL_NEED", 4],
+      ["We don't need to change this", "no necesitamos cambiar esto", "P_NEW_NEGATIVE_PLURAL_NEED", 4],
+      ["We don't need to hear more words", "no necesitamos oír más palabras", "P_NEW_NEGATIVE_PLURAL_NEED", 5],
+      ["I think we don't need to change this", "pienso que no necesitamos cambiar esto", "P05", 6],
+      ["We don't need to learn many more words today", "no necesitamos aprender muchas más palabras hoy", "P_NEW_NEGATIVE_PLURAL_NEED", 7],
+      ["I think we don't need to say that now", "pienso que no necesitamos decir eso ahora", "P05", 8],
+      ["We don't need to find out more about this language", "no necesitamos descubrir más sobre este lenguaje", "P_NEW_NEGATIVE_PLURAL_NEED", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P05, P_NEW_NEGATIVE_PLURAL_NEED",
+    "full_seed_included": "NO - missing 'sentirnos felices, solo necesitamos trabajar duro'",
+    "gate_compliance": "STRICT - Only S0001-S0066L03 LEGOs available"
+  },
+
+  "S0106L02": {
+    "lego": ["to feel", "sentirnos"],
+    "type": "A",
+    "available_legos": 294,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED"
+    ],
+    "practice_phrases": [
+      ["to feel", "sentirnos", null, 1],
+      ["to feel happy", "sentirnos felices", null, 2],
+      ["We need to feel", "necesitamos sentirnos", "P_NEW_PLURAL_NEED", 2],
+      ["to feel happy about this", "sentirnos felices sobre esto", null, 3],
+      ["We don't need to feel", "no necesitamos sentirnos", "P_NEW_NEGATIVE_PLURAL_NEED", 3],
+      ["We need to feel happy", "necesitamos sentirnos felices", "P_NEW_PLURAL_NEED", 3],
+      ["We don't need to feel happy", "no necesitamos sentirnos felices", "P_NEW_NEGATIVE_PLURAL_NEED", 4],
+      ["I think we need to feel happy today", "pienso que necesitamos sentirnos felices hoy", "P05", 7],
+      ["We don't need to feel happy about this", "no necesitamos sentirnos felices sobre esto", "P_NEW_NEGATIVE_PLURAL_NEED", 6],
+      ["I think we should try to feel happy", "pienso que debería intentar sentirnos felices", "P05", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
+      "longer_4_5": 1,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P05, P_NEW_PLURAL_NEED, P_NEW_NEGATIVE_PLURAL_NEED",
+    "full_seed_included": "NO - missing full seed phrase",
+    "gate_compliance": "STRICT - Only S0001-S0106L01 LEGOs available"
+  },
+
+  "S0106L03": {
+    "lego": ["happy", "felices"],
+    "type": "A",
+    "available_legos": 295,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED"
+    ],
+    "practice_phrases": [
+      ["happy", "felices", null, 1],
+      ["to feel happy", "sentirnos felices", null, 2],
+      ["We're happy", "estamos felices", "P_NEW_PLURAL_PROGRESSIVE", 2],
+      ["We don't need to feel happy", "no necesitamos sentirnos felices", "P_NEW_NEGATIVE_PLURAL_NEED", 4],
+      ["I think we're happy today", "pienso que estamos felices hoy", "P05", 5],
+      ["We need to feel happy", "necesitamos sentirnos felices", "P_NEW_PLURAL_NEED", 3],
+      ["I'm happy about this", "estoy feliz sobre esto", "P02", 4],
+      ["That is why we're happy today", "por eso estamos felices hoy", "P_NEW_CAUSAL", 5],
+      ["We don't need to feel happy about what we're doing", "no necesitamos sentirnos felices sobre lo que estamos haciendo", "P_NEW_NEGATIVE_PLURAL_NEED", 9],
+      ["I think that is why we're happy", "pienso que por eso estamos felices", "P05", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P02, P05, P_NEW_CAUSAL, P_NEW_PLURAL_NEED, P_NEW_NEGATIVE_PLURAL_NEED, P_NEW_PLURAL_PROGRESSIVE",
+    "full_seed_included": "NO - missing full seed phrase",
+    "gate_compliance": "STRICT - Only S0001-S0106L02 LEGOs available"
+  },
+
+  "S0106L04": {
+    "lego": ["just", "solo"],
+    "type": "A",
+    "available_legos": 296,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED"
+    ],
+    "practice_phrases": [
+      ["just", "solo", null, 1],
+      ["just today", "solo hoy", null, 2],
+      ["I just want to learn", "solo quiero aprender", "P01", 3],
+      ["We just need to learn", "solo necesitamos aprender", "P_NEW_PLURAL_NEED", 3],
+      ["I just want to say this", "solo quiero decir esto", "P01", 4],
+      ["We just need to practise", "solo necesitamos practicar", "P_NEW_PLURAL_NEED", 3],
+      ["I just want to find out more", "solo quiero descubrir más", "P01", 4],
+      ["We just need to learn many more words", "solo necesitamos aprender muchas más palabras", "P_NEW_PLURAL_NEED", 6],
+      ["I think we just need to practise more today", "pienso que solo necesitamos practicar más hoy", "P05", 8],
+      ["We don't need to feel happy, we just need this", "no necesitamos sentirnos felices, solo necesitamos esto", "P_NEW_NEGATIVE_PLURAL_NEED", 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P05, P_NEW_PLURAL_NEED, P_NEW_NEGATIVE_PLURAL_NEED",
+    "full_seed_included": "NO - missing 'trabajar duro'",
+    "gate_compliance": "STRICT - Only S0001-S0106L03 LEGOs available"
+  },
+
+  "S0104L01": {
+    "lego": ["we need", "necesitamos"],
+    "type": "A",
+    "available_legos": 297,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED"
+    ],
+    "practice_phrases": [
+      ["we need", "necesitamos", "P_NEW_PLURAL_NEED", 1],
+      ["we need to learn", "necesitamos aprender", "P_NEW_PLURAL_NEED", 2],
+      ["we just need to learn", "solo necesitamos aprender", "P_NEW_PLURAL_NEED", 3],
+      ["we need to practise", "necesitamos practicar", "P_NEW_PLURAL_NEED", 2],
+      ["we just need this", "solo necesitamos esto", "P_NEW_PLURAL_NEED", 3],
+      ["we need to change this", "necesitamos cambiar esto", "P_NEW_PLURAL_NEED", 3],
+      ["we just need to practise more", "solo necesitamos practicar más", "P_NEW_PLURAL_NEED", 4],
+      ["I think we need to find out more", "pienso que necesitamos descubrir más", "P05", 6],
+      ["we just need to learn many more words", "solo necesitamos aprender muchas más palabras", "P_NEW_PLURAL_NEED", 6],
+      ["That is why we need to change what we're doing", "por eso necesitamos cambiar lo que estamos haciendo", "P_NEW_CAUSAL", 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P05, P_NEW_CAUSAL, P_NEW_PLURAL_NEED",
+    "full_seed_included": "NO - missing 'trabajar duro'",
+    "gate_compliance": "STRICT - Only S0001-S0106L04 LEGOs available"
+  },
+
+  "S0106L05": {
+    "lego": ["to work hard", "trabajar duro"],
+    "type": "M",
+    "available_legos": 298,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED"
+    ],
+    "practice_phrases": [
+      ["to work hard", "trabajar duro", null, 2],
+      ["I need to work hard", "necesito trabajar duro", "P01", 3],
+      ["We need to work hard", "necesitamos trabajar duro", "P_NEW_PLURAL_NEED", 3],
+      ["We just need to work hard", "solo necesitamos trabajar duro", "P_NEW_PLURAL_NEED", 4],
+      ["I want to work hard today", "quiero trabajar duro hoy", "P01", 4],
+      ["We're trying to work hard", "estamos intentando trabajar duro", "P_NEW_PLURAL_PROGRESSIVE", 3],
+      ["I think we need to work hard", "pienso que necesitamos trabajar duro", "P05", 5],
+      ["We just need to work hard to learn this", "solo necesitamos trabajar duro para aprender esto", "P_NEW_PLURAL_NEED", 7],
+      ["I think we should work hard to learn Spanish", "pienso que debería trabajar duro para aprender español", "P05", 8],
+      ["We don't need to feel happy, we just need to work hard.", "no necesitamos sentirnos felices, solo necesitamos trabajar duro.", "P_NEW_NEGATIVE_PLURAL_NEED", 9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P05, P_NEW_PLURAL_NEED, P_NEW_NEGATIVE_PLURAL_NEED, P_NEW_PLURAL_PROGRESSIVE",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0104L01 LEGOs available. 'trabajar' and 'duro' introduced in this LEGO."
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0110",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "We're friends, and after we finish I'd like to relax.",
+    "target": "Somos amigos, y después de que terminemos me gustaría relajarme"
+  },
+  "patterns_introduced": "P_NEW_SER_PLURAL, P_NEW_SUBJUNCTIVE_FINISH",
+  "cumulative_patterns": [
+    "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+    "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+    "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+    "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+    "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+    "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+    "P_NEW_MODAL_PLURAL_MUST", "P_NEW_SER_PLURAL", "P_NEW_SUBJUNCTIVE_FINISH"
+  ],
+  "cumulative_legos": 313,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T06:30:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 Agent 01",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation"
+  },
+
+  "S0110L01": {
+    "lego": ["We're", "somos"],
+    "type": "A",
+    "available_legos": 309,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+      "P_NEW_MODAL_PLURAL_MUST"
+    ],
+    "practice_phrases": [
+      ["We're", "somos", "P_NEW_SER_PLURAL", 1],
+      ["We're friends", "somos amigos", "P_NEW_SER_PLURAL", 2],
+      ["We're happy", "somos felices", "P_NEW_SER_PLURAL", 2],
+      ["I think we're friends", "pienso que somos amigos", "P05", 4],
+      ["We're friends today", "somos amigos hoy", "P_NEW_SER_PLURAL", 3],
+      ["That is why we're friends", "por eso somos amigos", "P_NEW_CAUSAL", 4],
+      ["I think that is why we're happy", "pienso que por eso somos felices", "P05", 6],
+      ["We're friends and we need to work hard", "somos amigos y necesitamos trabajar duro", "P_NEW_SER_PLURAL", 7],
+      ["I think we're happy because we're friends", "pienso que somos felices porque somos amigos", "P05", 7],
+      ["We're friends and I'm enjoying learning with you", "somos amigos y estoy disfrutando aprender contigo", "P_NEW_SER_PLURAL", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "pattern_coverage": "P05, P_NEW_CAUSAL, P_NEW_SER_PLURAL",
+    "full_seed_included": "NO - missing 'y después de que terminemos me gustaría relajarme'",
+    "gate_compliance": "STRICT - Only S0001-S0109L03 LEGOs available"
+  },
+
+  "S0110L02": {
+    "lego": ["friends", "amigos"],
+    "type": "A",
+    "available_legos": 310,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+      "P_NEW_MODAL_PLURAL_MUST", "P_NEW_SER_PLURAL"
+    ],
+    "practice_phrases": [
+      ["friends", "amigos", null, 1],
+      ["We're friends", "somos amigos", "P_NEW_SER_PLURAL", 2],
+      ["I think we're friends", "pienso que somos amigos", "P05", 4],
+      ["with friends", "con amigos", null, 2],
+      ["to learn with friends", "aprender con amigos", null, 3],
+      ["I'm learning with friends", "estoy aprendiendo con amigos", "P02", 3],
+      ["I'm enjoying learning with friends", "estoy disfrutando aprender con amigos", "P_NEW_DISFRUTO", 4],
+      ["We're friends and we're learning together", "somos amigos y estamos aprendiendo", "P_NEW_SER_PLURAL", 5],
+      ["That is why we're friends today", "por eso somos amigos hoy", "P_NEW_CAUSAL", 5],
+      ["I think we're friends because we're learning together", "pienso que somos amigos porque estamos aprendiendo", "P05", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P02, P05, P_NEW_CAUSAL, P_NEW_DISFRUTO, P_NEW_SER_PLURAL",
+    "full_seed_included": "NO - missing full seed phrase",
+    "gate_compliance": "STRICT - Only S0001-S0110L01 LEGOs available"
+  },
+
+  "S0015L01": {
+    "lego": ["and", "y"],
+    "type": "A",
+    "available_legos": 311,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+      "P_NEW_MODAL_PLURAL_MUST", "P_NEW_SER_PLURAL"
+    ],
+    "practice_phrases": [
+      ["and", "y", null, 1],
+      ["you and I", "tú y yo", null, 3],
+      ["We're friends and we're learning", "somos amigos y estamos aprendiendo", "P_NEW_SER_PLURAL", 4],
+      ["I want to learn and practise", "quiero aprender y practicar", "P01", 4],
+      ["We're learning and working hard", "estamos aprendiendo y trabajando duro", "P_NEW_PLURAL_PROGRESSIVE", 4],
+      ["I'm enjoying learning and practising Spanish", "estoy disfrutando aprender y practicar español", "P_NEW_DISFRUTO", 5],
+      ["We must learn and practise many new words", "debemos aprender y practicar muchas palabras nuevas", "P_NEW_MODAL_PLURAL_MUST", 6],
+      ["We're friends and we work hard together", "somos amigos y trabajar duro", "P_NEW_SER_PLURAL", 5],
+      ["We're trying to learn and we're enjoying this", "estamos intentando aprender y estamos disfrutando esto", "P_NEW_PLURAL_PROGRESSIVE", 7],
+      ["I think we're friends and we should learn more", "pienso que somos amigos y debería aprender más", "P05", 9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P05, P_NEW_DISFRUTO, P_NEW_PLURAL_PROGRESSIVE, P_NEW_MODAL_PLURAL_MUST, P_NEW_SER_PLURAL",
+    "full_seed_included": "NO - missing full seed phrase",
+    "gate_compliance": "STRICT - Only S0001-S0110L02 LEGOs available"
+  },
+
+  "S0110L03": {
+    "lego": ["after we finish", "después de que terminemos"],
+    "type": "M",
+    "available_legos": 312,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+      "P_NEW_MODAL_PLURAL_MUST", "P_NEW_SER_PLURAL"
+    ],
+    "practice_phrases": [
+      ["after we finish", "después de que terminemos", "P_NEW_SUBJUNCTIVE_FINISH", 2],
+      ["to speak after we finish", "hablar después de que terminemos", "P_NEW_SUBJUNCTIVE_FINISH", 3],
+      ["I want to speak after we finish", "quiero hablar después de que terminemos", "P01", 5],
+      ["I'd like to speak after we finish", "me gustaría hablar después de que terminemos", "P04", 5],
+      ["to see you after we finish", "ver después de que terminemos", "P_NEW_SUBJUNCTIVE_FINISH", 4],
+      ["We can speak after we finish", "podemos hablar después de que terminemos", null, 5],
+      ["I'd like to learn more after we finish", "me gustaría aprender más después de que terminemos", "P04", 6],
+      ["We should work hard and after we finish we can speak", "debería trabajar duro y después de que terminemos podemos hablar", null, 11],
+      ["I think we should speak after we finish today", "pienso que debería hablar después de que terminemos hoy", "P05", 8],
+      ["After we finish I want to see what we learned", "después de que terminemos quiero ver lo que aprendido", "P01", 9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "pattern_coverage": "P01, P04, P05, P_NEW_SUBJUNCTIVE_FINISH",
+    "full_seed_included": "NO - missing 'me gustaría relajarme'",
+    "gate_compliance": "STRICT - Only S0001-S0015L01 LEGOs available. 'terminemos' introduced in this LEGO."
+  },
+
+  "S0011L01": {
+    "lego": ["I'd like", "me gustaría"],
+    "type": "M",
+    "available_legos": 312,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+      "P_NEW_MODAL_PLURAL_MUST", "P_NEW_SER_PLURAL", "P_NEW_SUBJUNCTIVE_FINISH"
+    ],
+    "practice_phrases": [
+      ["I'd like", "me gustaría", "P04", 1],
+      ["I'd like to learn", "me gustaría aprender", "P04", 2],
+      ["I'd like to learn more", "me gustaría aprender más", "P04", 3],
+      ["I'd like to speak after we finish", "me gustaría hablar después de que terminemos", "P04", 5],
+      ["I'd like to learn many new words", "me gustaría aprender muchas palabras nuevas", "P04", 5],
+      ["I'd like to see what you're doing", "me gustaría ver lo que estás haciendo", "P04", 5],
+      ["I'd like to find out more about this language", "me gustaría descubrir más sobre este lenguaje", "P04", 6],
+      ["After we finish I'd like to speak with you", "después de que terminemos me gustaría hablar contigo", "P04", 7],
+      ["We're friends and I'd like to learn with you", "somos amigos y me gustaría aprender contigo", "P04", 7],
+      ["I'd like to work hard to learn many new words", "me gustaría trabajar duro para aprender muchas palabras nuevas", "P04", 9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 0,
+      "long_6_plus": 7
+    },
+    "pattern_coverage": "P04",
+    "full_seed_included": "NO - missing 'relajarme'",
+    "gate_compliance": "STRICT - Only S0001-S0110L03 LEGOs available"
+  },
+
+  "S0110L04": {
+    "lego": ["to relax", "relajarme"],
+    "type": "A",
+    "available_legos": 312,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL",
+      "P_NEW_NEGATIVE_PLURAL_NEED", "P_NEW_IMPERFECT_PLURAL", "P_NEW_NEGATIVE_IMPERFECT_PLURAL",
+      "P_NEW_MODAL_PLURAL_MUST", "P_NEW_SER_PLURAL", "P_NEW_SUBJUNCTIVE_FINISH"
+    ],
+    "practice_phrases": [
+      ["to relax", "relajarme", null, 1],
+      ["I want to relax", "quiero relajarme", "P01", 2],
+      ["I'd like to relax", "me gustaría relajarme", "P04", 2],
+      ["I need to relax today", "necesito relajarme hoy", "P01", 3],
+      ["I'd like to relax after we finish", "me gustaría relajarme después de que terminemos", "P04", 5],
+      ["I want to relax after we finish", "quiero relajarme después de que terminemos", "P01", 5],
+      ["I think I should relax today", "pienso que debería relajarme hoy", "P05", 5],
+      ["After we finish I'd like to relax", "después de que terminemos me gustaría relajarme", "P04", 6],
+      ["We're friends and after we finish I'd like to relax", "somos amigos y después de que terminemos me gustaría relajarme", "P04", 10],
+      ["We're friends, and after we finish I'd like to relax.", "somos amigos, y después de que terminemos me gustaría relajarme.", "P04", 10]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "pattern_coverage": "P01, P04, P05",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0011L01 LEGOs available. 'relajarme' introduced in this LEGO."
+  }
+}

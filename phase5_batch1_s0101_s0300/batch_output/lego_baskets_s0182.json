@@ -1,0 +1,325 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0182",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "¿Has visto mis llaves en algún lugar?",
+    "known": "Have you seen my keys anywhere?"
+  },
+  "cumulative_legos": 513,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T04:50:02.106586Z",
+    "curated_by": "Agent 09 - Automated generation with strict GATE compliance",
+    "spec_version": "phase_5_conversational_baskets_v3_ACTIVE"
+  },
+  "S0182L01": {
+    "lego": [
+      "have you seen",
+      "has visto"
+    ],
+    "type": "M",
+    "available_legos": 509,
+    "practice_phrases": [
+      [
+        "have you seen",
+        "has visto",
+        null,
+        1
+      ],
+      [
+        "have you seen this",
+        "has visto esto",
+        null,
+        2
+      ],
+      [
+        "have you seen something",
+        "has visto algo",
+        null,
+        2
+      ],
+      [
+        "have you seen my friend",
+        "has visto a mi amigo",
+        null,
+        3
+      ],
+      [
+        "have you seen the doctor today",
+        "has visto al doctor hoy",
+        null,
+        3
+      ],
+      [
+        "have you seen my mother",
+        "has visto a mi madre",
+        null,
+        2
+      ],
+      [
+        "have you seen someone who speaks Spanish",
+        "has visto a alguien que habla español",
+        null,
+        5
+      ],
+      [
+        "have you seen my friend at work recently",
+        "has visto a mi amigo en el trabajo recientemente",
+        null,
+        5
+      ],
+      [
+        "have you seen the person I wanted to meet",
+        "has visto a la persona que quería encontrar",
+        null,
+        7
+      ],
+      [
+        "have you seen anyone who can speak as slowly as I need",
+        "has visto a alguien que pueda hablar tan lentamente como necesito",
+        null,
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0182L01 LEGOs only"
+  },
+  "S0182L02": {
+    "lego": [
+      "my",
+      "mis"
+    ],
+    "type": "A",
+    "available_legos": 510,
+    "practice_phrases": [
+      [
+        "my",
+        "mis",
+        null,
+        1
+      ],
+      [
+        "my keys",
+        "mis llaves",
+        null,
+        2
+      ],
+      [
+        "with my friends",
+        "con mis amigos",
+        null,
+        2
+      ],
+      [
+        "I want to speak with my friends",
+        "quiero hablar con mis amigos",
+        null,
+        4
+      ],
+      [
+        "I have to go with my friends",
+        "tengo que ir con mis amigos",
+        null,
+        4
+      ],
+      [
+        "I'm trying to learn Spanish with my friends",
+        "estoy intentando aprender español con mis amigos",
+        null,
+        5
+      ],
+      [
+        "I wanted to speak with my friends yesterday",
+        "quería hablar con mis amigos ayer",
+        null,
+        5
+      ],
+      [
+        "I think I have to speak with my friends soon",
+        "creo que tengo que hablar con mis amigos pronto",
+        null,
+        8
+      ],
+      [
+        "I'm not sure if I have my keys with me",
+        "no estoy seguro si tengo mis llaves conmigo",
+        null,
+        7
+      ],
+      [
+        "I wanted to meet my friends before I go to work",
+        "quería encontrar a mis amigos antes de que vaya al trabajo",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0182L02 LEGOs only"
+  },
+  "S0182L03": {
+    "lego": [
+      "keys",
+      "llaves"
+    ],
+    "type": "A",
+    "available_legos": 511,
+    "practice_phrases": [
+      [
+        "keys",
+        "llaves",
+        null,
+        1
+      ],
+      [
+        "my keys",
+        "mis llaves",
+        null,
+        2
+      ],
+      [
+        "the keys",
+        "las llaves",
+        null,
+        2
+      ],
+      [
+        "I have my keys",
+        "tengo mis llaves",
+        null,
+        2
+      ],
+      [
+        "have you seen my keys",
+        "has visto mis llaves",
+        null,
+        2
+      ],
+      [
+        "I think I have my keys",
+        "creo que tengo mis llaves",
+        null,
+        3
+      ],
+      [
+        "I'm not sure if I have my keys",
+        "no estoy seguro si tengo mis llaves",
+        null,
+        5
+      ],
+      [
+        "I wanted to take my keys to work yesterday",
+        "quería llevar mis llaves al trabajo ayer",
+        null,
+        6
+      ],
+      [
+        "I think I have to find my keys before I go",
+        "creo que tengo que encontrar mis llaves antes de que vaya",
+        null,
+        9
+      ],
+      [
+        "I'm not sure if I have my keys but I think so",
+        "no estoy seguro si tengo mis llaves pero creo que sí",
+        null,
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0182L03 LEGOs only"
+  },
+  "S0182L04": {
+    "lego": [
+      "anywhere",
+      "en algún lugar"
+    ],
+    "type": "M",
+    "available_legos": 512,
+    "practice_phrases": [
+      [
+        "anywhere",
+        "en algún lugar",
+        null,
+        1
+      ],
+      [
+        "have you seen this anywhere",
+        "has visto esto en algún lugar",
+        null,
+        3
+      ],
+      [
+        "I can't find this anywhere",
+        "no puedo encontrar esto en algún lugar",
+        null,
+        4
+      ],
+      [
+        "have you seen my keys anywhere",
+        "has visto mis llaves en algún lugar",
+        null,
+        3
+      ],
+      [
+        "I wanted to go anywhere yesterday",
+        "quería ir en algún lugar ayer",
+        null,
+        3
+      ],
+      [
+        "have you seen my friend anywhere",
+        "has visto a mi amigo en algún lugar",
+        null,
+        4
+      ],
+      [
+        "I can't find my keys anywhere at home",
+        "no puedo encontrar mis llaves en algún lugar en casa",
+        null,
+        7
+      ],
+      [
+        "I'm trying to find someone who speaks Spanish anywhere",
+        "estoy intentando encontrar a alguien que habla español en algún lugar",
+        null,
+        7
+      ],
+      [
+        "I can't find the person I'm looking for anywhere",
+        "no puedo encontrar a la persona que estoy buscando en algún lugar",
+        null,
+        9
+      ],
+      [
+        "Have you seen my keys anywhere?",
+        "¿Has visto mis llaves en algún lugar?",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 4,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0182L04 LEGOs only",
+    "full_seed_included": "YES - phrase 10"
+  }
+}
