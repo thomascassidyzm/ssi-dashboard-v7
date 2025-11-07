@@ -94,16 +94,23 @@ for (const batchFile of batchFiles) {
     for (const lego of seed.legos) {
       const targetKey = lego.target.toLowerCase();
 
+      // Normalize type (some agents may use B/C instead of A/M)
+      const normalizedType = lego.type === 'B' ? 'A' : lego.type === 'C' ? 'M' : lego.type;
+
       if (masterLEGOs.has(targetKey)) {
         // DUPLICATE - mark as reference
         const existing = masterLEGOs.get(targetKey);
+
+        // For M-type LEGOs, ensure components are included (pull from registry if needed)
+        const components = lego.components || existing.components || null;
+
         processedSeed.legos.push({
           id: existing.id,
-          type: lego.type,
+          type: normalizedType,
           target: lego.target,
           known: lego.known,
           ref: existing.seed_id,
-          ...(lego.components && { components: lego.components })
+          ...(normalizedType === 'M' && components && { components })
         });
         referencesMarked++;
       } else {
@@ -114,7 +121,7 @@ for (const batchFile of batchFiles) {
 
         processedSeed.legos.push({
           id: finalId,
-          type: lego.type,
+          type: normalizedType,
           target: lego.target,
           known: lego.known,
           new: true,
@@ -125,7 +132,7 @@ for (const batchFile of batchFiles) {
         masterLEGOs.set(targetKey, {
           id: finalId,
           seed_id: seed.seed_id,
-          type: lego.type,
+          type: normalizedType,
           known: lego.known,
           components: lego.components || null
         });
