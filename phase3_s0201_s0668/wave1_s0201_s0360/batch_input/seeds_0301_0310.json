@@ -1,0 +1,81 @@
+{
+  "batch_id": "S0301_S0310",
+  "batch_number": 11,
+  "wave": "wave1_s0201_s0360",
+  "seed_range": {
+    "start": "S0301",
+    "end": "S0310"
+  },
+  "seeds": [
+    {
+      "seed_id": "S0301",
+      "seed_pair": {
+        "target": "Él dijo que quiere mostrarte algo.",
+        "known": "He said that he wants to show you something."
+      }
+    },
+    {
+      "seed_id": "S0302",
+      "seed_pair": {
+        "target": "Ella dijo que no quiere vivir en una ciudad.",
+        "known": "She said that she doesn't want to live in a city."
+      }
+    },
+    {
+      "seed_id": "S0303",
+      "seed_pair": {
+        "target": "Creo que él quiere sentarse.",
+        "known": "I think that he wants to sit down."
+      }
+    },
+    {
+      "seed_id": "S0304",
+      "seed_pair": {
+        "target": "Creo que ella no quiere trabajar desde casa.",
+        "known": "I think that she doesn't want to work from home."
+      }
+    },
+    {
+      "seed_id": "S0305",
+      "seed_pair": {
+        "target": "Mujer.",
+        "known": "Woman."
+      }
+    },
+    {
+      "seed_id": "S0306",
+      "seed_pair": {
+        "target": "Conozco a esa mujer joven que está hablando con tu amigo.",
+        "known": "I know that young woman who's talking to your friend."
+      }
+    },
+    {
+      "seed_id": "S0307",
+      "seed_pair": {
+        "target": "Conozco a ese hombre joven que está sentado allí.",
+        "known": "I know that young man who's sitting over there."
+      }
+    },
+    {
+      "seed_id": "S0308",
+      "seed_pair": {
+        "target": "Sí ella es una amiga de mi madre.",
+        "known": "Yes she's a friend of my mother."
+      }
+    },
+    {
+      "seed_id": "S0309",
+      "seed_pair": {
+        "target": "No nunca la he visto antes.",
+        "known": "No I've never seen her before."
+      }
+    },
+    {
+      "seed_id": "S0310",
+      "seed_pair": {
+        "target": "Ella podría escribir una historia sobre ese hombre.",
+        "known": "She could write a story about that man."
+      }
+    }
+  ]
+}
