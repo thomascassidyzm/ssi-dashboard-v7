@@ -1,0 +1,1090 @@
+{
+  "batch_id": "batch2_agent4",
+  "batch_number": 4,
+  "seed_range": "S0421-S0440",
+  "extractor": "Agent 4",
+  "extracted_at": "2025-11-07T00:00:00Z",
+  "seeds": [
+    {
+      "seed_id": "S0421",
+      "target": "Porque ya saben que se está poniendo débil.",
+      "known": "Because they already know he's getting weak.",
+      "lego_pairs": [
+        {
+          "id": "S0421L01",
+          "type": "A",
+          "target": "Porque",
+          "known": "Because",
+          "source_seed": "S0421",
+          "components": null,
+          "ref": "S0022L01"
+        },
+        {
+          "id": "S0421L02",
+          "type": "A",
+          "target": "ya",
+          "known": "already",
+          "source_seed": "S0421",
+          "components": null,
+          "ref": "S0076L04"
+        },
+        {
+          "id": "S0421L03",
+          "type": "A",
+          "target": "saben",
+          "known": "they know",
+          "source_seed": "S0421",
+          "components": null
+        },
+        {
+          "id": "S0421L04",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "source_seed": "S0421",
+          "components": null,
+          "ref": "S0102L02"
+        },
+        {
+          "id": "S0421L05",
+          "type": "M",
+          "target": "se está poniendo",
+          "known": "he's getting",
+          "source_seed": "S0421",
+          "components": [
+            ["se", "he"],
+            ["está", "is"],
+            ["poniendo", "getting"]
+          ]
+        },
+        {
+          "id": "S0421L06",
+          "type": "A",
+          "target": "débil",
+          "known": "weak",
+          "source_seed": "S0421",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0422",
+      "target": "Una pregunta.",
+      "known": "A question.",
+      "lego_pairs": [
+        {
+          "id": "S0422L01",
+          "type": "A",
+          "target": "Una",
+          "known": "A",
+          "source_seed": "S0422",
+          "components": null,
+          "ref": "S0272L04"
+        },
+        {
+          "id": "S0422L02",
+          "type": "A",
+          "target": "pregunta",
+          "known": "question",
+          "source_seed": "S0422",
+          "components": null,
+          "ref": "S0202L07"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0423",
+      "target": "¿Necesitan preguntar una pregunta tan obvia?",
+      "known": "Do they need to ask such an obvious question?",
+      "lego_pairs": [
+        {
+          "id": "S0423L01",
+          "type": "A",
+          "target": "Necesitan",
+          "known": "Do they need",
+          "source_seed": "S0423",
+          "components": null
+        },
+        {
+          "id": "S0423L02",
+          "type": "A",
+          "target": "preguntar",
+          "known": "to ask",
+          "source_seed": "S0423",
+          "components": null
+        },
+        {
+          "id": "S0423L03",
+          "type": "A",
+          "target": "una",
+          "known": "a",
+          "source_seed": "S0423",
+          "components": null,
+          "ref": "S0272L04"
+        },
+        {
+          "id": "S0423L04",
+          "type": "A",
+          "target": "pregunta",
+          "known": "question",
+          "source_seed": "S0423",
+          "components": null,
+          "ref": "S0202L07"
+        },
+        {
+          "id": "S0423L05",
+          "type": "A",
+          "target": "tan",
+          "known": "such",
+          "source_seed": "S0423",
+          "components": null
+        },
+        {
+          "id": "S0423L06",
+          "type": "A",
+          "target": "obvia",
+          "known": "obvious",
+          "source_seed": "S0423",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0424",
+      "target": "No están perdiendo el tiempo de todos.",
+      "known": "No they're wasting everybody's time.",
+      "lego_pairs": [
+        {
+          "id": "S0424L01",
+          "type": "A",
+          "target": "No",
+          "known": "No",
+          "source_seed": "S0424",
+          "components": null,
+          "ref": "S0096L01"
+        },
+        {
+          "id": "S0424L02",
+          "type": "A",
+          "target": "están",
+          "known": "they're",
+          "source_seed": "S0424",
+          "components": null
+        },
+        {
+          "id": "S0424L03",
+          "type": "A",
+          "target": "perdiendo",
+          "known": "wasting",
+          "source_seed": "S0424",
+          "components": null
+        },
+        {
+          "id": "S0424L04",
+          "type": "M",
+          "target": "el tiempo",
+          "known": "time",
+          "source_seed": "S0424",
+          "components": [
+            ["el", "the"],
+            ["tiempo", "time"]
+          ],
+          "ref": "S0178L02"
+        },
+        {
+          "id": "S0424L05",
+          "type": "M",
+          "target": "de todos",
+          "known": "everybody's",
+          "source_seed": "S0424",
+          "components": [
+            ["de", "of"],
+            ["todos", "everybody"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0425",
+      "target": "Sí necesitan asegurarse de que entienden.",
+      "known": "Yes they need to make sure they understand.",
+      "lego_pairs": [
+        {
+          "id": "S0425L01",
+          "type": "A",
+          "target": "Sí",
+          "known": "Yes",
+          "source_seed": "S0425",
+          "components": null,
+          "ref": "S0097L01"
+        },
+        {
+          "id": "S0425L02",
+          "type": "A",
+          "target": "necesitan",
+          "known": "they need",
+          "source_seed": "S0425",
+          "components": null
+        },
+        {
+          "id": "S0425L03",
+          "type": "M",
+          "target": "asegurarse de",
+          "known": "to make sure",
+          "source_seed": "S0425",
+          "components": [
+            ["asegurarse", "to make sure"],
+            ["de", "of"]
+          ]
+        },
+        {
+          "id": "S0425L04",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "source_seed": "S0425",
+          "components": null,
+          "ref": "S0102L02"
+        },
+        {
+          "id": "S0425L05",
+          "type": "A",
+          "target": "entienden",
+          "known": "they understand",
+          "source_seed": "S0425",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0426",
+      "target": "Les gustaría amarse pero están infelices.",
+      "known": "They would like to love each other but they're unhappy.",
+      "lego_pairs": [
+        {
+          "id": "S0426L01",
+          "type": "M",
+          "target": "Les gustaría",
+          "known": "They would like",
+          "source_seed": "S0426",
+          "components": [
+            ["Les", "They"],
+            ["gustaría", "would like"]
+          ]
+        },
+        {
+          "id": "S0426L02",
+          "type": "A",
+          "target": "amarse",
+          "known": "to love each other",
+          "source_seed": "S0426",
+          "components": null
+        },
+        {
+          "id": "S0426L03",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "source_seed": "S0426",
+          "components": null
+        },
+        {
+          "id": "S0426L04",
+          "type": "A",
+          "target": "están",
+          "known": "they're",
+          "source_seed": "S0426",
+          "components": null
+        },
+        {
+          "id": "S0426L05",
+          "type": "A",
+          "target": "infelices",
+          "known": "unhappy",
+          "source_seed": "S0426",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0427",
+      "target": "No les gustaría que pienses que están aburridos.",
+      "known": "They wouldn't like you to think that they're bored.",
+      "lego_pairs": [
+        {
+          "id": "S0427L01",
+          "type": "A",
+          "target": "No",
+          "known": "not",
+          "source_seed": "S0427",
+          "components": null,
+          "ref": "S0345L04"
+        },
+        {
+          "id": "S0427L02",
+          "type": "M",
+          "target": "les gustaría",
+          "known": "they would like",
+          "source_seed": "S0427",
+          "components": [
+            ["les", "they"],
+            ["gustaría", "would like"]
+          ]
+        },
+        {
+          "id": "S0427L03",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "source_seed": "S0427",
+          "components": null,
+          "ref": "S0102L02"
+        },
+        {
+          "id": "S0427L04",
+          "type": "A",
+          "target": "pienses",
+          "known": "you think",
+          "source_seed": "S0427",
+          "components": null
+        },
+        {
+          "id": "S0427L05",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "source_seed": "S0427",
+          "components": null,
+          "ref": "S0102L02"
+        },
+        {
+          "id": "S0427L06",
+          "type": "A",
+          "target": "están",
+          "known": "they're",
+          "source_seed": "S0427",
+          "components": null
+        },
+        {
+          "id": "S0427L07",
+          "type": "A",
+          "target": "aburridos",
+          "known": "bored",
+          "source_seed": "S0427",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0428",
+      "target": "¿Les gustaría visitarnos el martes?",
+      "known": "Would they like to visit us on Tuesday?",
+      "lego_pairs": [
+        {
+          "id": "S0428L01",
+          "type": "M",
+          "target": "Les gustaría",
+          "known": "Would they like",
+          "source_seed": "S0428",
+          "components": [
+            ["Les", "they"],
+            ["gustaría", "would like"]
+          ]
+        },
+        {
+          "id": "S0428L02",
+          "type": "A",
+          "target": "visitarnos",
+          "known": "to visit us",
+          "source_seed": "S0428",
+          "components": null
+        },
+        {
+          "id": "S0428L03",
+          "type": "M",
+          "target": "el martes",
+          "known": "on Tuesday",
+          "source_seed": "S0428",
+          "components": [
+            ["el", "on"],
+            ["martes", "Tuesday"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0429",
+      "target": "Sí eso sería perfecto para ellos.",
+      "known": "Yes that would be perfect for them.",
+      "lego_pairs": [
+        {
+          "id": "S0429L01",
+          "type": "A",
+          "target": "Sí",
+          "known": "Yes",
+          "source_seed": "S0429",
+          "components": null,
+          "ref": "S0097L01"
+        },
+        {
+          "id": "S0429L02",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "source_seed": "S0429",
+          "components": null,
+          "ref": "S0061L02"
+        },
+        {
+          "id": "S0429L03",
+          "type": "A",
+          "target": "sería",
+          "known": "would be",
+          "source_seed": "S0429",
+          "components": null
+        },
+        {
+          "id": "S0429L04",
+          "type": "A",
+          "target": "perfecto",
+          "known": "perfect",
+          "source_seed": "S0429",
+          "components": null,
+          "ref": "S0137L04"
+        },
+        {
+          "id": "S0429L05",
+          "type": "A",
+          "target": "para",
+          "known": "for",
+          "source_seed": "S0429",
+          "components": null,
+          "ref": "S0109L02"
+        },
+        {
+          "id": "S0429L06",
+          "type": "A",
+          "target": "ellos",
+          "known": "them",
+          "source_seed": "S0429",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0430",
+      "target": "No eso no sería posible.",
+      "known": "No that wouldn't be possible.",
+      "lego_pairs": [
+        {
+          "id": "S0430L01",
+          "type": "A",
+          "target": "No",
+          "known": "No",
+          "source_seed": "S0430",
+          "components": null,
+          "ref": "S0096L01"
+        },
+        {
+          "id": "S0430L02",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "source_seed": "S0430",
+          "components": null,
+          "ref": "S0061L02"
+        },
+        {
+          "id": "S0430L03",
+          "type": "A",
+          "target": "no",
+          "known": "not",
+          "source_seed": "S0430",
+          "components": null,
+          "ref": "S0345L04"
+        },
+        {
+          "id": "S0430L04",
+          "type": "A",
+          "target": "sería",
+          "known": "would be",
+          "source_seed": "S0430",
+          "components": null
+        },
+        {
+          "id": "S0430L05",
+          "type": "A",
+          "target": "posible",
+          "known": "possible",
+          "source_seed": "S0430",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0431",
+      "target": "Todavía no están preparados pero van a estar preparados pronto.",
+      "known": "They're not ready yet but they'll be ready soon.",
+      "lego_pairs": [
+        {
+          "id": "S0431L01",
+          "type": "M",
+          "target": "Todavía no",
+          "known": "not yet",
+          "source_seed": "S0431",
+          "components": [
+            ["Todavía", "yet"],
+            ["no", "not"]
+          ],
+          "ref": "S0088L04"
+        },
+        {
+          "id": "S0431L02",
+          "type": "A",
+          "target": "están",
+          "known": "they're",
+          "source_seed": "S0431",
+          "components": null
+        },
+        {
+          "id": "S0431L03",
+          "type": "A",
+          "target": "preparados",
+          "known": "ready",
+          "source_seed": "S0431",
+          "components": null
+        },
+        {
+          "id": "S0431L04",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "source_seed": "S0431",
+          "components": null
+        },
+        {
+          "id": "S0431L05",
+          "type": "M",
+          "target": "van a estar",
+          "known": "they'll be",
+          "source_seed": "S0431",
+          "components": [
+            ["van a", "will"],
+            ["estar", "be"]
+          ]
+        },
+        {
+          "id": "S0431L06",
+          "type": "A",
+          "target": "preparados",
+          "known": "ready",
+          "source_seed": "S0431",
+          "components": null
+        },
+        {
+          "id": "S0431L07",
+          "type": "A",
+          "target": "pronto",
+          "known": "soon",
+          "source_seed": "S0431",
+          "components": null,
+          "ref": "S0023L03"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0432",
+      "target": "Podrían significar que quieren que preguntes.",
+      "known": "They could mean that they want you to ask.",
+      "lego_pairs": [
+        {
+          "id": "S0432L01",
+          "type": "A",
+          "target": "Podrían",
+          "known": "They could",
+          "source_seed": "S0432",
+          "components": null
+        },
+        {
+          "id": "S0432L02",
+          "type": "A",
+          "target": "significar",
+          "known": "mean",
+          "source_seed": "S0432",
+          "components": null
+        },
+        {
+          "id": "S0432L03",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "source_seed": "S0432",
+          "components": null,
+          "ref": "S0102L02"
+        },
+        {
+          "id": "S0432L04",
+          "type": "A",
+          "target": "quieren",
+          "known": "they want",
+          "source_seed": "S0432",
+          "components": null,
+          "ref": "S0209L01"
+        },
+        {
+          "id": "S0432L05",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "source_seed": "S0432",
+          "components": null,
+          "ref": "S0298L03"
+        },
+        {
+          "id": "S0432L06",
+          "type": "A",
+          "target": "preguntes",
+          "known": "you ask",
+          "source_seed": "S0432",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0433",
+      "target": "No pudieron descubrir cuándo empezó la película.",
+      "known": "They couldn't find out when the film started.",
+      "lego_pairs": [
+        {
+          "id": "S0433L01",
+          "type": "A",
+          "target": "No",
+          "known": "not",
+          "source_seed": "S0433",
+          "components": null,
+          "ref": "S0345L04"
+        },
+        {
+          "id": "S0433L02",
+          "type": "A",
+          "target": "pudieron",
+          "known": "they could",
+          "source_seed": "S0433",
+          "components": null
+        },
+        {
+          "id": "S0433L03",
+          "type": "A",
+          "target": "descubrir",
+          "known": "find out",
+          "source_seed": "S0433",
+          "components": null,
+          "ref": "S0017L02"
+        },
+        {
+          "id": "S0433L04",
+          "type": "A",
+          "target": "cuándo",
+          "known": "when",
+          "source_seed": "S0433",
+          "components": null,
+          "ref": "S0079L01"
+        },
+        {
+          "id": "S0433L05",
+          "type": "A",
+          "target": "empezó",
+          "known": "started",
+          "source_seed": "S0433",
+          "components": null
+        },
+        {
+          "id": "S0433L06",
+          "type": "M",
+          "target": "la película",
+          "known": "the film",
+          "source_seed": "S0433",
+          "components": [
+            ["la", "the"],
+            ["película", "film"]
+          ],
+          "ref": "S0248L02"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0434",
+      "target": "¿Podrían reducir el número de estudiantes que toman?",
+      "known": "Could they cut the number of students they take?",
+      "lego_pairs": [
+        {
+          "id": "S0434L01",
+          "type": "A",
+          "target": "Podrían",
+          "known": "Could they",
+          "source_seed": "S0434",
+          "components": null
+        },
+        {
+          "id": "S0434L02",
+          "type": "A",
+          "target": "reducir",
+          "known": "cut",
+          "source_seed": "S0434",
+          "components": null
+        },
+        {
+          "id": "S0434L03",
+          "type": "M",
+          "target": "el número",
+          "known": "the number",
+          "source_seed": "S0434",
+          "components": [
+            ["el", "the"],
+            ["número", "number"]
+          ]
+        },
+        {
+          "id": "S0434L04",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "source_seed": "S0434",
+          "components": null,
+          "ref": "S0126L05"
+        },
+        {
+          "id": "S0434L05",
+          "type": "A",
+          "target": "estudiantes",
+          "known": "students",
+          "source_seed": "S0434",
+          "components": null
+        },
+        {
+          "id": "S0434L06",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "source_seed": "S0434",
+          "components": null,
+          "ref": "S0102L02"
+        },
+        {
+          "id": "S0434L07",
+          "type": "A",
+          "target": "toman",
+          "known": "they take",
+          "source_seed": "S0434",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0435",
+      "target": "Sí podrían si quisieran.",
+      "known": "Yes they could if they wanted to.",
+      "lego_pairs": [
+        {
+          "id": "S0435L01",
+          "type": "A",
+          "target": "Sí",
+          "known": "Yes",
+          "source_seed": "S0435",
+          "components": null,
+          "ref": "S0097L01"
+        },
+        {
+          "id": "S0435L02",
+          "type": "A",
+          "target": "podrían",
+          "known": "they could",
+          "source_seed": "S0435",
+          "components": null
+        },
+        {
+          "id": "S0435L03",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "source_seed": "S0435",
+          "components": null,
+          "ref": "S0010L02"
+        },
+        {
+          "id": "S0435L04",
+          "type": "A",
+          "target": "quisieran",
+          "known": "they wanted to",
+          "source_seed": "S0435",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0436",
+      "target": "No hay un número mínimo que necesitan.",
+      "known": "No there's a minimum number they need.",
+      "lego_pairs": [
+        {
+          "id": "S0436L01",
+          "type": "A",
+          "target": "No",
+          "known": "No",
+          "source_seed": "S0436",
+          "components": null,
+          "ref": "S0096L01"
+        },
+        {
+          "id": "S0436L02",
+          "type": "A",
+          "target": "hay",
+          "known": "there's",
+          "source_seed": "S0436",
+          "components": null
+        },
+        {
+          "id": "S0436L03",
+          "type": "M",
+          "target": "un número",
+          "known": "a number",
+          "source_seed": "S0436",
+          "components": [
+            ["un", "a"],
+            ["número", "number"]
+          ]
+        },
+        {
+          "id": "S0436L04",
+          "type": "A",
+          "target": "mínimo",
+          "known": "minimum",
+          "source_seed": "S0436",
+          "components": null
+        },
+        {
+          "id": "S0436L05",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "source_seed": "S0436",
+          "components": null,
+          "ref": "S0102L02"
+        },
+        {
+          "id": "S0436L06",
+          "type": "A",
+          "target": "necesitan",
+          "known": "they need",
+          "source_seed": "S0436",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0437",
+      "target": "Querían recaudar tanto como posible para caridad.",
+      "known": "They wanted to raise as much as possible for charity.",
+      "lego_pairs": [
+        {
+          "id": "S0437L01",
+          "type": "A",
+          "target": "Querían",
+          "known": "They wanted",
+          "source_seed": "S0437",
+          "components": null,
+          "ref": "S0211L05"
+        },
+        {
+          "id": "S0437L02",
+          "type": "A",
+          "target": "recaudar",
+          "known": "to raise",
+          "source_seed": "S0437",
+          "components": null
+        },
+        {
+          "id": "S0437L03",
+          "type": "M",
+          "target": "tanto como posible",
+          "known": "as much as possible",
+          "source_seed": "S0437",
+          "components": [
+            ["tanto", "as much"],
+            ["como", "as"],
+            ["posible", "possible"]
+          ]
+        },
+        {
+          "id": "S0437L04",
+          "type": "A",
+          "target": "para",
+          "known": "for",
+          "source_seed": "S0437",
+          "components": null,
+          "ref": "S0109L02"
+        },
+        {
+          "id": "S0437L05",
+          "type": "A",
+          "target": "caridad",
+          "known": "charity",
+          "source_seed": "S0437",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0438",
+      "target": "No querían decidir lo que debería hacer.",
+      "known": "They didn't want to decide what he should do.",
+      "lego_pairs": [
+        {
+          "id": "S0438L01",
+          "type": "A",
+          "target": "No",
+          "known": "not",
+          "source_seed": "S0438",
+          "components": null,
+          "ref": "S0345L04"
+        },
+        {
+          "id": "S0438L02",
+          "type": "A",
+          "target": "querían",
+          "known": "they wanted",
+          "source_seed": "S0438",
+          "components": null,
+          "ref": "S0211L05"
+        },
+        {
+          "id": "S0438L03",
+          "type": "A",
+          "target": "decidir",
+          "known": "to decide",
+          "source_seed": "S0438",
+          "components": null
+        },
+        {
+          "id": "S0438L04",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "source_seed": "S0438",
+          "components": [
+            ["lo", "it"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0438L05",
+          "type": "A",
+          "target": "debería",
+          "known": "he should",
+          "source_seed": "S0438",
+          "components": null,
+          "ref": "S0098L01"
+        },
+        {
+          "id": "S0438L06",
+          "type": "A",
+          "target": "hacer",
+          "known": "do",
+          "source_seed": "S0438",
+          "components": null,
+          "ref": "S0051L02"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0439",
+      "target": "No quieren morir.",
+      "known": "They don't want to die.",
+      "lego_pairs": [
+        {
+          "id": "S0439L01",
+          "type": "A",
+          "target": "No",
+          "known": "not",
+          "source_seed": "S0439",
+          "components": null,
+          "ref": "S0345L04"
+        },
+        {
+          "id": "S0439L02",
+          "type": "A",
+          "target": "quieren",
+          "known": "they want",
+          "source_seed": "S0439",
+          "components": null,
+          "ref": "S0209L01"
+        },
+        {
+          "id": "S0439L03",
+          "type": "A",
+          "target": "morir",
+          "known": "to die",
+          "source_seed": "S0439",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0440",
+      "target": "Quieren viajar mientras todavía son jóvenes.",
+      "known": "They want to travel while they're still young.",
+      "lego_pairs": [
+        {
+          "id": "S0440L01",
+          "type": "A",
+          "target": "Quieren",
+          "known": "They want",
+          "source_seed": "S0440",
+          "components": null,
+          "ref": "S0209L01"
+        },
+        {
+          "id": "S0440L02",
+          "type": "A",
+          "target": "viajar",
+          "known": "to travel",
+          "source_seed": "S0440",
+          "components": null
+        },
+        {
+          "id": "S0440L03",
+          "type": "A",
+          "target": "mientras",
+          "known": "while",
+          "source_seed": "S0440",
+          "components": null
+        },
+        {
+          "id": "S0440L04",
+          "type": "A",
+          "target": "todavía",
+          "known": "still",
+          "source_seed": "S0440",
+          "components": null,
+          "ref": "S0088L04"
+        },
+        {
+          "id": "S0440L05",
+          "type": "A",
+          "target": "son",
+          "known": "they're",
+          "source_seed": "S0440",
+          "components": null
+        },
+        {
+          "id": "S0440L06",
+          "type": "A",
+          "target": "jóvenes",
+          "known": "young",
+          "source_seed": "S0440",
+          "components": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "batch_id": "batch3_agent8",
+  "batch_number": 8,
+  "seed_range": "S0661-S0668",
+  "total_seeds": 8,
+  "seeds": [
+    {
+      "seed_id": "S0661",
+      "target": "todos ustedes están haciendo algo",
+      "known": "you're all doing something",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all",
+          "components": ["todos", "ustedes"]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "están haciendo",
+          "known": "are doing",
+          "components": ["están", "haciendo"]
+        },
+        {
+          "ref": "S0004L02",
+          "type": "A",
+          "target": "algo",
+          "known": "something"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0662",
+      "target": "todos ustedes lo hablan",
+      "known": "you all speak it",
+      "legos": [
+        {
+          "ref": "S0661L01",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all"
+        },
+        {
+          "ref": "S0207L02",
+          "type": "A",
+          "target": "lo",
+          "known": "it"
+        },
+        {
+          "ref": "S0283L05",
+          "type": "A",
+          "target": "hablan",
+          "known": "speak"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0663",
+      "target": "lo que todos ustedes dijeron",
+      "known": "what you all said",
+      "legos": [
+        {
+          "ref": "S0104L03",
+          "type": "M",
+          "target": "lo que",
+          "known": "what"
+        },
+        {
+          "ref": "S0661L01",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all"
+        },
+        {
+          "ref": "S0449L01",
+          "type": "A",
+          "target": "dijeron",
+          "known": "said"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0664",
+      "target": "¿Están todos ustedes preparados?",
+      "known": "Are you all ready?",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "¿Están",
+          "known": "Are",
+          "components": ["Están"]
+        },
+        {
+          "ref": "S0661L01",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all"
+        },
+        {
+          "ref": "S0396L05",
+          "type": "A",
+          "target": "preparados",
+          "known": "ready"
+        },
+        {
+          "ref": "S0366L04",
+          "type": "A",
+          "target": "?",
+          "known": "?"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0665",
+      "target": "¿Quieren todos ustedes ir?",
+      "known": "Do you all want to go?",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "¿Quieren",
+          "known": "Do (you) want",
+          "components": ["Quieren"]
+        },
+        {
+          "ref": "S0661L01",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all"
+        },
+        {
+          "ref": "S0093L02",
+          "type": "A",
+          "target": "ir",
+          "known": "to go"
+        },
+        {
+          "ref": "S0366L04",
+          "type": "A",
+          "target": "?",
+          "known": "?"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0666",
+      "target": "¿Qué piensan todos ustedes?",
+      "known": "What do you all think?",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "¿Qué piensan",
+          "known": "What do (you) think",
+          "components": ["Qué", "piensan"]
+        },
+        {
+          "ref": "S0661L01",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all"
+        },
+        {
+          "ref": "S0366L04",
+          "type": "A",
+          "target": "?",
+          "known": "?"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0667",
+      "target": "¿Les importa a todos ustedes?",
+      "known": "Do you all mind?",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "¿Les importa",
+          "known": "Do (you) mind",
+          "components": ["Les", "importa"]
+        },
+        {
+          "ref": "S0133L02",
+          "type": "A",
+          "target": "a",
+          "known": "to"
+        },
+        {
+          "ref": "S0661L01",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all"
+        },
+        {
+          "ref": "S0366L04",
+          "type": "A",
+          "target": "?",
+          "known": "?"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0668",
+      "target": "Espero que todos ustedes puedan ir",
+      "known": "I hope you'll all be able to go",
+      "legos": [
+        {
+          "ref": "S0291L01",
+          "type": "A",
+          "target": "Espero",
+          "known": "I hope"
+        },
+        {
+          "ref": "S0102L02",
+          "type": "A",
+          "target": "que",
+          "known": "that"
+        },
+        {
+          "ref": "S0661L01",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "puedan",
+          "known": "be able to"
+        },
+        {
+          "ref": "S0093L02",
+          "type": "A",
+          "target": "ir",
+          "known": "to go"
+        }
+      ]
+    }
+  ]
+}

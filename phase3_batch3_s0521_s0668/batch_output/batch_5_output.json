@@ -1,0 +1,882 @@
+{
+  "batch_id": "batch3_agent5",
+  "batch_number": 5,
+  "seed_range": "S0601-S0620",
+  "total_seeds": 20,
+  "seeds": [
+    {
+      "seed_id": "S0601",
+      "target": "Estábamos hablando sobre cómo empezó todo.",
+      "known": "We were talking about how it all started.",
+      "legos": [
+        {
+          "ref": "S0143L03",
+          "type": "M",
+          "target": "Estábamos hablando",
+          "known": "We were talking"
+        },
+        {
+          "ref": "S0101L02",
+          "type": "A",
+          "target": "sobre",
+          "known": "about"
+        },
+        {
+          "ref": "S0003L01",
+          "type": "A",
+          "target": "cómo",
+          "known": "how"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "empezó",
+          "known": "it started"
+        },
+        {
+          "ref": "S0458L01",
+          "type": "A",
+          "target": "todo",
+          "known": "all"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0602",
+      "target": "Cómo empezó en primer lugar.",
+      "known": "How it started in the first place.",
+      "legos": [
+        {
+          "ref": "S0003L01",
+          "type": "A",
+          "target": "Cómo",
+          "known": "How"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "empezó",
+          "known": "it started"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "en primer lugar",
+          "known": "in the first place",
+          "components": [
+            "en",
+            "primer",
+            "lugar"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0603",
+      "target": "No teníamos ningún lugar donde vivir en ese momento.",
+      "known": "We didn't have anywhere to live at the time.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "No teníamos",
+          "known": "We didn't have",
+          "components": [
+            "No",
+            "teníamos"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "ningún lugar",
+          "known": "anywhere",
+          "components": [
+            "ningún",
+            "lugar"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "donde vivir",
+          "known": "to live",
+          "components": [
+            "donde",
+            "vivir"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "en ese momento",
+          "known": "at the time",
+          "components": [
+            "en",
+            "ese",
+            "momento"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0604",
+      "target": "Ella se ofreció a dejarnos quedarnos con ella.",
+      "known": "She offered to let us stay with her.",
+      "legos": [
+        {
+          "ref": "S0017L01",
+          "type": "A",
+          "target": "Ella",
+          "known": "She"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "se ofreció a",
+          "known": "offered to",
+          "components": [
+            "se",
+            "ofreció",
+            "a"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "dejarnos",
+          "known": "let us"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "quedarnos",
+          "known": "stay"
+        },
+        {
+          "ref": "S0005L03",
+          "type": "A",
+          "target": "con",
+          "known": "with"
+        },
+        {
+          "ref": "S0346L03",
+          "type": "A",
+          "target": "ella",
+          "known": "her"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0605",
+      "target": "Porque necesitábamos ayuda.",
+      "known": "Because we needed help.",
+      "legos": [
+        {
+          "ref": "S0022L01",
+          "type": "A",
+          "target": "Porque",
+          "known": "Because"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "necesitábamos",
+          "known": "we needed"
+        },
+        {
+          "ref": "S0212L03",
+          "type": "A",
+          "target": "ayuda",
+          "known": "help"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0606",
+      "target": "Si hubiera sabido entonces lo que sé ahora habría esperado.",
+      "known": "If I'd known then what I know now I'd have waited.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "Si hubiera sabido",
+          "known": "If I'd known",
+          "components": [
+            "Si",
+            "hubiera",
+            "sabido"
+          ]
+        },
+        {
+          "ref": "S0490L01",
+          "type": "A",
+          "target": "entonces",
+          "known": "then"
+        },
+        {
+          "ref": "S0104L03",
+          "type": "M",
+          "target": "lo que",
+          "known": "what"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "sé",
+          "known": "I know"
+        },
+        {
+          "ref": "S0001L05",
+          "type": "A",
+          "target": "ahora",
+          "known": "now"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "habría esperado",
+          "known": "I'd have waited",
+          "components": [
+            "habría",
+            "esperado"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0607",
+      "target": "Si hubiera sabido habría hecho las cosas de manera diferente.",
+      "known": "If I'd known I'd have done things differently.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "Si hubiera sabido",
+          "known": "If I'd known",
+          "components": [
+            "Si",
+            "hubiera",
+            "sabido"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "habría hecho",
+          "known": "I'd have done",
+          "components": [
+            "habría",
+            "hecho"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "las cosas",
+          "known": "things",
+          "components": [
+            "las",
+            "cosas"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "de manera diferente",
+          "known": "differently",
+          "components": [
+            "de",
+            "manera",
+            "diferente"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0608",
+      "target": "Habría sido lo sensato que hacer.",
+      "known": "It would have been the sensible thing to do.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "Habría sido",
+          "known": "It would have been",
+          "components": [
+            "Habría",
+            "sido"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "lo sensato",
+          "known": "the sensible thing",
+          "components": [
+            "lo",
+            "sensato"
+          ]
+        },
+        {
+          "ref": "S0298L03",
+          "type": "A",
+          "target": "que",
+          "known": "to"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "hacer",
+          "known": "do"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0609",
+      "target": "Lo sensato que hacer habría sido preguntar.",
+      "known": "The sensible thing to do would have been to ask.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "Lo sensato",
+          "known": "The sensible thing",
+          "components": [
+            "Lo",
+            "sensato"
+          ]
+        },
+        {
+          "ref": "S0298L03",
+          "type": "A",
+          "target": "que",
+          "known": "to"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "hacer",
+          "known": "do"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "habría sido",
+          "known": "would have been",
+          "components": [
+            "habría",
+            "sido"
+          ]
+        },
+        {
+          "ref": "S0420L01",
+          "type": "A",
+          "target": "preguntar",
+          "known": "to ask"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0610",
+      "target": "Él necesita buscar trabajo.",
+      "known": "He needs to look for work.",
+      "legos": [
+        {
+          "ref": "S0016L01",
+          "type": "A",
+          "target": "Él",
+          "known": "He"
+        },
+        {
+          "ref": "S0319L02",
+          "type": "A",
+          "target": "necesita",
+          "known": "needs"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "buscar",
+          "known": "to look for"
+        },
+        {
+          "ref": "S0126L02",
+          "type": "A",
+          "target": "trabajo",
+          "known": "work"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0611",
+      "target": "Yo habría estado preparado para buscar en otro lugar.",
+      "known": "I would have been ready to look somewhere else.",
+      "legos": [
+        {
+          "ref": "S0370L03",
+          "type": "A",
+          "target": "Yo",
+          "known": "I"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "habría estado",
+          "known": "would have been",
+          "components": [
+            "habría",
+            "estado"
+          ]
+        },
+        {
+          "ref": "S0026L05",
+          "type": "A",
+          "target": "preparado",
+          "known": "ready"
+        },
+        {
+          "ref": "S0109L02",
+          "type": "A",
+          "target": "para",
+          "known": "to"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "buscar",
+          "known": "look"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "en otro lugar",
+          "known": "somewhere else",
+          "components": [
+            "en",
+            "otro",
+            "lugar"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0612",
+      "target": "Habríamos comprado algo.",
+      "known": "We would have bought something.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "Habríamos comprado",
+          "known": "We would have bought",
+          "components": [
+            "Habríamos",
+            "comprado"
+          ]
+        },
+        {
+          "ref": "S0004L02",
+          "type": "A",
+          "target": "algo",
+          "known": "something"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0613",
+      "target": "Probablemente habríamos comprado una casa allí.",
+      "known": "We probably would have bought a house there.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "Probablemente",
+          "known": "probably"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "habríamos comprado",
+          "known": "We would have bought",
+          "components": [
+            "habríamos",
+            "comprado"
+          ]
+        },
+        {
+          "ref": "S0272L04",
+          "type": "A",
+          "target": "una",
+          "known": "a"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "casa",
+          "known": "house"
+        },
+        {
+          "ref": "S0289L05",
+          "type": "A",
+          "target": "allí",
+          "known": "there"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0614",
+      "target": "Está cerca de donde vive tu familia.",
+      "known": "It's near where your family live.",
+      "legos": [
+        {
+          "ref": "S0467L01",
+          "type": "A",
+          "target": "Está",
+          "known": "It's"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "cerca de",
+          "known": "near",
+          "components": [
+            "cerca",
+            "de"
+          ]
+        },
+        {
+          "ref": "S0138L01",
+          "type": "A",
+          "target": "donde",
+          "known": "where"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "vive",
+          "known": "live"
+        },
+        {
+          "ref": "S0121L04",
+          "type": "A",
+          "target": "tu",
+          "known": "your"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "familia",
+          "known": "family"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0615",
+      "target": "Pensé que fuiste muy valiente al decir eso.",
+      "known": "I thought you were very brave to say that.",
+      "legos": [
+        {
+          "ref": "S0374L01",
+          "type": "M",
+          "target": "Pensé que",
+          "known": "I thought"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "fuiste",
+          "known": "you were"
+        },
+        {
+          "ref": "S0166L02",
+          "type": "A",
+          "target": "muy",
+          "known": "very"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "valiente",
+          "known": "brave"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "al decir",
+          "known": "to say",
+          "components": [
+            "al",
+            "decir"
+          ]
+        },
+        {
+          "ref": "S0061L02",
+          "type": "A",
+          "target": "eso",
+          "known": "that"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0616",
+      "target": "Fuiste muy valiente al decir que pensabas eso.",
+      "known": "You were very brave to say you thought that.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "Fuiste",
+          "known": "You were"
+        },
+        {
+          "ref": "S0166L02",
+          "type": "A",
+          "target": "muy",
+          "known": "very"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "valiente",
+          "known": "brave"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "al decir",
+          "known": "to say",
+          "components": [
+            "al",
+            "decir"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "que",
+          "known": "you"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "pensabas",
+          "known": "thought"
+        },
+        {
+          "ref": "S0061L02",
+          "type": "A",
+          "target": "eso",
+          "known": "that"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0617",
+      "target": "Pensaste que era un error.",
+      "known": "You thought that it was a mistake.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "Pensaste",
+          "known": "You thought"
+        },
+        {
+          "ref": "S0102L02",
+          "type": "A",
+          "target": "que",
+          "known": "that"
+        },
+        {
+          "ref": "S0374L02",
+          "type": "A",
+          "target": "era",
+          "known": "it was"
+        },
+        {
+          "ref": "S0282L04",
+          "type": "A",
+          "target": "un",
+          "known": "a"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "error",
+          "known": "mistake"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0618",
+      "target": "No parece mucho tiempo.",
+      "known": "It doesn't feel like a long time.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "No parece",
+          "known": "It doesn't feel like",
+          "components": [
+            "No",
+            "parece"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "mucho tiempo",
+          "known": "a long time",
+          "components": [
+            "mucho",
+            "tiempo"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0619",
+      "target": "Hace mucho tiempo desde que nos vimos.",
+      "known": "It's a long time since we saw each other.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "Hace",
+          "known": "It's"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "mucho tiempo",
+          "known": "a long time",
+          "components": [
+            "mucho",
+            "tiempo"
+          ]
+        },
+        {
+          "ref": "S0146L03",
+          "type": "M",
+          "target": "desde que",
+          "known": "since"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "nos vimos",
+          "known": "we saw each other",
+          "components": [
+            "nos",
+            "vimos"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0620",
+      "target": "Hace muchísimo tiempo desde que nos vimos por última vez.",
+      "known": "It's a very long time since we last saw each other.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "Hace",
+          "known": "It's"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "muchísimo tiempo",
+          "known": "a very long time",
+          "components": [
+            "muchísimo",
+            "tiempo"
+          ]
+        },
+        {
+          "ref": "S0146L03",
+          "type": "M",
+          "target": "desde que",
+          "known": "since"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "nos vimos",
+          "known": "we saw each other",
+          "components": [
+            "nos",
+            "vimos"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "por última vez",
+          "known": "last",
+          "components": [
+            "por",
+            "última",
+            "vez"
+          ]
+        }
+      ]
+    }
+  ]
+}
