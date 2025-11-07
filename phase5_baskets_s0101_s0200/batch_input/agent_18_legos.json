@@ -1,0 +1,221 @@
+{
+  "agent_number": 18,
+  "total_agents": 20,
+  "lego_range": {
+    "start": "S0184L02",
+    "end": "S0190L03"
+  },
+  "seed_range": {
+    "start": "S0184",
+    "end": "S0190"
+  },
+  "total_legos": 14,
+  "legos": [
+    {
+      "lego_id": "S0184L02",
+      "seed_id": "S0184",
+      "type": "A",
+      "target": "vi",
+      "known": "I saw",
+      "components": null,
+      "cumulative_legos": 519
+    },
+    {
+      "lego_id": "S0184L03",
+      "seed_id": "S0184",
+      "type": "M",
+      "target": "la oficina",
+      "known": "the office",
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "oficina",
+          "office"
+        ]
+      ],
+      "cumulative_legos": 519
+    },
+    {
+      "lego_id": "S0184L04",
+      "seed_id": "S0184",
+      "type": "M",
+      "target": "hace un rato",
+      "known": "a while ago",
+      "components": [
+        [
+          "hace",
+          "ago/makes"
+        ],
+        [
+          "un",
+          "a"
+        ],
+        [
+          "rato",
+          "while/moment"
+        ]
+      ],
+      "cumulative_legos": 519
+    },
+    {
+      "lego_id": "S0185L01",
+      "seed_id": "S0185",
+      "type": "A",
+      "target": "dejaste",
+      "known": "you left",
+      "components": null,
+      "cumulative_legos": 521
+    },
+    {
+      "lego_id": "S0185L02",
+      "seed_id": "S0185",
+      "type": "M",
+      "target": "el trabajo",
+      "known": "work",
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "trabajo",
+          "work"
+        ]
+      ],
+      "cumulative_legos": 521
+    },
+    {
+      "lego_id": "S0186L01",
+      "seed_id": "S0186",
+      "type": "A",
+      "target": "diferente",
+      "known": "different",
+      "components": null,
+      "cumulative_legos": 523
+    },
+    {
+      "lego_id": "S0186L02",
+      "seed_id": "S0186",
+      "type": "M",
+      "target": "la semana próxima",
+      "known": "next week",
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "semana",
+          "week"
+        ],
+        [
+          "próxima",
+          "next"
+        ]
+      ],
+      "cumulative_legos": 523
+    },
+    {
+      "lego_id": "S0187L01",
+      "seed_id": "S0187",
+      "type": "M",
+      "target": "estoy contento",
+      "known": "I'm happy",
+      "components": [
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "contento",
+          "happy"
+        ]
+      ],
+      "cumulative_legos": 525
+    },
+    {
+      "lego_id": "S0187L02",
+      "seed_id": "S0187",
+      "type": "M",
+      "target": "hasta ahora",
+      "known": "so far",
+      "components": [
+        [
+          "hasta",
+          "until"
+        ],
+        [
+          "ahora",
+          "now"
+        ]
+      ],
+      "cumulative_legos": 525
+    },
+    {
+      "lego_id": "S0188L01",
+      "seed_id": "S0188",
+      "type": "M",
+      "target": "así que",
+      "known": "so",
+      "components": [
+        [
+          "así",
+          "thus/like this"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ],
+      "cumulative_legos": 526
+    },
+    {
+      "lego_id": "S0189L01",
+      "seed_id": "S0189",
+      "type": "A",
+      "target": "esa",
+      "known": "that",
+      "components": null,
+      "cumulative_legos": 527
+    },
+    {
+      "lego_id": "S0190L01",
+      "seed_id": "S0190",
+      "type": "M",
+      "target": "te importa",
+      "known": "you mind",
+      "components": [
+        [
+          "te",
+          "to you"
+        ],
+        [
+          "importa",
+          "it matters"
+        ]
+      ],
+      "cumulative_legos": 532
+    },
+    {
+      "lego_id": "S0190L02",
+      "seed_id": "S0190",
+      "type": "A",
+      "target": "te",
+      "known": "you",
+      "components": null,
+      "cumulative_legos": 532
+    },
+    {
+      "lego_id": "S0190L03",
+      "seed_id": "S0190",
+      "type": "A",
+      "target": "hago",
+      "known": "I ask",
+      "components": null,
+      "cumulative_legos": 532
+    }
+  ]
+}

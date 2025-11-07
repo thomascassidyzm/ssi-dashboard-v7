@@ -1,0 +1,234 @@
+{
+  "agent_number": 11,
+  "total_agents": 20,
+  "lego_range": {
+    "start": "S0143L01",
+    "end": "S0146L05"
+  },
+  "seed_range": {
+    "start": "S0143",
+    "end": "S0146"
+  },
+  "total_legos": 14,
+  "legos": [
+    {
+      "lego_id": "S0143L01",
+      "seed_id": "S0143",
+      "type": "M",
+      "target": "la misma cosa",
+      "known": "the same thing",
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "misma",
+          "same"
+        ],
+        [
+          "cosa",
+          "thing"
+        ]
+      ],
+      "cumulative_legos": 422
+    },
+    {
+      "lego_id": "S0143L02",
+      "seed_id": "S0143",
+      "type": "M",
+      "target": "de la que",
+      "known": "as",
+      "components": [
+        [
+          "de",
+          "of"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ],
+      "cumulative_legos": 422
+    },
+    {
+      "lego_id": "S0143L03",
+      "seed_id": "S0143",
+      "type": "M",
+      "target": "estábamos hablando",
+      "known": "we were talking",
+      "components": [
+        [
+          "estábamos",
+          "we were"
+        ],
+        [
+          "hablando",
+          "talking"
+        ]
+      ],
+      "cumulative_legos": 422
+    },
+    {
+      "lego_id": "S0143L04",
+      "seed_id": "S0143",
+      "type": "A",
+      "target": "antes",
+      "known": "earlier",
+      "components": null,
+      "cumulative_legos": 422
+    },
+    {
+      "lego_id": "S0144L01",
+      "seed_id": "S0144",
+      "type": "M",
+      "target": "me desperté",
+      "known": "I woke",
+      "components": [
+        [
+          "me",
+          "myself"
+        ],
+        [
+          "desperté",
+          "woke"
+        ]
+      ],
+      "cumulative_legos": 425
+    },
+    {
+      "lego_id": "S0144L02",
+      "seed_id": "S0144",
+      "type": "M",
+      "target": "más temprano",
+      "known": "earlier",
+      "components": [
+        [
+          "más",
+          "more"
+        ],
+        [
+          "temprano",
+          "early"
+        ]
+      ],
+      "cumulative_legos": 425
+    },
+    {
+      "lego_id": "S0144L03",
+      "seed_id": "S0144",
+      "type": "M",
+      "target": "de lo que",
+      "known": "than",
+      "components": [
+        [
+          "de",
+          "of"
+        ],
+        [
+          "lo",
+          "the"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ],
+      "cumulative_legos": 425
+    },
+    {
+      "lego_id": "S0145L01",
+      "seed_id": "S0145",
+      "type": "A",
+      "target": "estás",
+      "known": "you are",
+      "components": null,
+      "cumulative_legos": 427
+    },
+    {
+      "lego_id": "S0145L02",
+      "seed_id": "S0145",
+      "type": "A",
+      "target": "feliz",
+      "known": "happy",
+      "components": null,
+      "cumulative_legos": 427
+    },
+    {
+      "lego_id": "S0146L01",
+      "seed_id": "S0146",
+      "type": "A",
+      "target": "parece",
+      "known": "seems",
+      "components": null,
+      "cumulative_legos": 432
+    },
+    {
+      "lego_id": "S0146L02",
+      "seed_id": "S0146",
+      "type": "M",
+      "target": "estar funcionando",
+      "known": "to be working",
+      "components": [
+        [
+          "estar",
+          "to be"
+        ],
+        [
+          "funcionando",
+          "working"
+        ]
+      ],
+      "cumulative_legos": 432
+    },
+    {
+      "lego_id": "S0146L03",
+      "seed_id": "S0146",
+      "type": "M",
+      "target": "desde que",
+      "known": "since",
+      "components": [
+        [
+          "desde",
+          "from"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ],
+      "cumulative_legos": 432
+    },
+    {
+      "lego_id": "S0146L04",
+      "seed_id": "S0146",
+      "type": "A",
+      "target": "intentamos",
+      "known": "we tried",
+      "components": null,
+      "cumulative_legos": 432
+    },
+    {
+      "lego_id": "S0146L05",
+      "seed_id": "S0146",
+      "type": "M",
+      "target": "arreglarlo",
+      "known": "to fix it",
+      "components": [
+        [
+          "arreglar",
+          "to fix"
+        ],
+        [
+          "lo",
+          "it"
+        ]
+      ],
+      "cumulative_legos": 432
+    }
+  ]
+}

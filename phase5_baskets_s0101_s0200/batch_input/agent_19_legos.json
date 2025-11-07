@@ -1,0 +1,243 @@
+{
+  "agent_number": 19,
+  "total_agents": 20,
+  "lego_range": {
+    "start": "S0190L04",
+    "end": "S0198L01"
+  },
+  "seed_range": {
+    "start": "S0190",
+    "end": "S0198"
+  },
+  "total_legos": 14,
+  "legos": [
+    {
+      "lego_id": "S0190L04",
+      "seed_id": "S0190",
+      "type": "A",
+      "target": "algunas",
+      "known": "some",
+      "components": null,
+      "cumulative_legos": 532
+    },
+    {
+      "lego_id": "S0190L05",
+      "seed_id": "S0190",
+      "type": "A",
+      "target": "preguntas",
+      "known": "questions",
+      "components": null,
+      "cumulative_legos": 532
+    },
+    {
+      "lego_id": "S0191L01",
+      "seed_id": "S0191",
+      "type": "M",
+      "target": "en absoluto",
+      "known": "at all",
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "absoluto",
+          "absolute"
+        ]
+      ],
+      "cumulative_legos": 533
+    },
+    {
+      "lego_id": "S0192L01",
+      "seed_id": "S0192",
+      "type": "M",
+      "target": "estoy ocupado",
+      "known": "I'm busy",
+      "components": [
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "ocupado",
+          "busy"
+        ]
+      ],
+      "cumulative_legos": 534
+    },
+    {
+      "lego_id": "S0193L01",
+      "seed_id": "S0193",
+      "type": "M",
+      "target": "estoy demasiado ocupado",
+      "known": "I'm too busy",
+      "components": [
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "demasiado",
+          "too much"
+        ],
+        [
+          "ocupado",
+          "busy"
+        ]
+      ],
+      "cumulative_legos": 535
+    },
+    {
+      "lego_id": "S0195L01",
+      "seed_id": "S0195",
+      "type": "M",
+      "target": "el dinero",
+      "known": "the money",
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "dinero",
+          "money"
+        ]
+      ],
+      "cumulative_legos": 538
+    },
+    {
+      "lego_id": "S0195L02",
+      "seed_id": "S0195",
+      "type": "A",
+      "target": "dejé",
+      "known": "I left",
+      "components": null,
+      "cumulative_legos": 538
+    },
+    {
+      "lego_id": "S0195L03",
+      "seed_id": "S0195",
+      "type": "M",
+      "target": "en la mesa",
+      "known": "on the table",
+      "components": [
+        [
+          "en",
+          "on"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "mesa",
+          "table"
+        ]
+      ],
+      "cumulative_legos": 538
+    },
+    {
+      "lego_id": "S0196L01",
+      "seed_id": "S0196",
+      "type": "M",
+      "target": "has oído",
+      "known": "have you heard",
+      "components": [
+        [
+          "has",
+          "have"
+        ],
+        [
+          "oído",
+          "heard"
+        ]
+      ],
+      "cumulative_legos": 540
+    },
+    {
+      "lego_id": "S0196L02",
+      "seed_id": "S0196",
+      "type": "M",
+      "target": "la última idea",
+      "known": "the latest idea",
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "última",
+          "latest"
+        ],
+        [
+          "idea",
+          "idea"
+        ]
+      ],
+      "cumulative_legos": 540
+    },
+    {
+      "lego_id": "S0197L01",
+      "seed_id": "S0197",
+      "type": "M",
+      "target": "mi hijo",
+      "known": "my son",
+      "components": [
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "hijo",
+          "son"
+        ]
+      ],
+      "cumulative_legos": 543
+    },
+    {
+      "lego_id": "S0197L02",
+      "seed_id": "S0197",
+      "type": "A",
+      "target": "trabaja",
+      "known": "works",
+      "components": null,
+      "cumulative_legos": 543
+    },
+    {
+      "lego_id": "S0197L03",
+      "seed_id": "S0197",
+      "type": "M",
+      "target": "como profesor",
+      "known": "as a teacher",
+      "components": [
+        [
+          "como",
+          "as"
+        ],
+        [
+          "profesor",
+          "teacher"
+        ]
+      ],
+      "cumulative_legos": 543
+    },
+    {
+      "lego_id": "S0198L01",
+      "seed_id": "S0198",
+      "type": "M",
+      "target": "mi hija",
+      "known": "my daughter",
+      "components": [
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "hija",
+          "daughter"
+        ]
+      ],
+      "cumulative_legos": 545
+    }
+  ]
+}
