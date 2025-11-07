@@ -1,0 +1,32 @@
+{
+  "timestamp": "2025-11-07T16:51:37.196Z",
+  "agent_id": 1,
+  "seed_range": "S0301-S0320",
+  "format_valid": true,
+  "format_errors": [],
+  "gate_violations": [],
+  "distribution_errors": [
+    {
+      "lego": "S0305L01",
+      "actual": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 3
+      },
+      "errors": [
+        "Expected 2 really_short_1_2 phrases, got 3",
+        "Expected 4 long_6_plus phrases, got 3"
+      ]
+    }
+  ],
+  "final_phrase_errors": [],
+  "total_legos_checked": 102,
+  "total_phrases_checked": 1020,
+  "summary": {
+    "gate_compliance": "PASS",
+    "distribution_compliance": "WARN",
+    "final_phrase_compliance": "PASS",
+    "overall_status": "PASS_WITH_WARNINGS"
+  }
+}

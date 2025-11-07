@@ -1,0 +1,251 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "agent_id": 4,
+  "seed_range": "S0361-S0380",
+  "total_seeds": 20,
+  "validation_status": "PENDING",
+  "validated_at": "2025-11-07T12:58:49.189Z",
+  "seeds": {
+    "S0361": {
+      "seed": "S0361",
+      "seed_pair": {
+        "known": "He was quiet.",
+        "target": "Él estaba callado."
+      },
+      "cumulative_legos": 989,
+      "legos": {
+        "S0016L01": {
+          "lego": [
+            "He",
+            "Él"
+          ],
+          "type": "A",
+          "available_legos": 986,
+          "practice_phrases": [
+            [
+              "He",
+              "Él",
+              null,
+              1
+            ],
+            [
+              "He was",
+              "Él estaba",
+              null,
+              2
+            ],
+            [
+              "He was quiet",
+              "Él estaba callado",
+              null,
+              3
+            ],
+            [
+              "He was there",
+              "Él estaba allí",
+              null,
+              3
+            ],
+            [
+              "He was rather quiet",
+              "Él estaba bastante callado",
+              null,
+              4
+            ],
+            [
+              "He was very quiet yesterday",
+              "Él estaba muy callado ayer",
+              null,
+              5
+            ],
+            [
+              "I heard that he was quiet",
+              "Escuché que él estaba callado",
+              null,
+              6
+            ],
+            [
+              "No he was rather quiet after you left",
+              "No él estaba bastante callado después de que te fuiste",
+              null,
+              10
+            ],
+            [
+              "He was very quiet after you left yesterday",
+              "Él estaba muy callado después de que te fuiste ayer",
+              null,
+              9
+            ],
+            [
+              "I heard that he was rather quiet yesterday",
+              "Escuché que él estaba bastante callado ayer",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0361L01": {
+          "lego": [
+            "was",
+            "estaba"
+          ],
+          "type": "A",
+          "available_legos": 987,
+          "practice_phrases": [
+            [
+              "was",
+              "estaba",
+              null,
+              1
+            ],
+            [
+              "was quiet",
+              "estaba callado",
+              null,
+              2
+            ],
+            [
+              "He was quiet",
+              "Él estaba callado",
+              null,
+              3
+            ],
+            [
+              "She was quiet",
+              "Ella estaba callada",
+              null,
+              3
+            ],
+            [
+              "It was good",
+              "Estaba bien",
+              null,
+              3
+            ],
+            [
+              "She was very good yesterday",
+              "Ella estaba muy bien ayer",
+              null,
+              5
+            ],
+            [
+              "He was rather quiet after you left",
+              "Él estaba bastante callado después de que te fuiste",
+              null,
+              8
+            ],
+            [
+              "I heard that she was trying to create something",
+              "Escuché que ella estaba intentando crear algo",
+              null,
+              8
+            ],
+            [
+              "No I did not know what she was doing",
+              "No no sabía qué estaba haciendo",
+              null,
+              7
+            ],
+            [
+              "He was quiet.",
+              "Él estaba callado.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 4,
+            "longer_4_5": 1,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0361L02": {
+          "lego": [
+            "quiet",
+            "callado"
+          ],
+          "type": "A",
+          "available_legos": 988,
+          "practice_phrases": [
+            [
+              "quiet",
+              "callado",
+              null,
+              1
+            ],
+            [
+              "rather quiet",
+              "bastante callado",
+              null,
+              2
+            ],
+            [
+              "He was quiet",
+              "Él estaba callado",
+              null,
+              3
+            ],
+            [
+              "She was quiet",
+              "Ella estaba callada",
+              null,
+              3
+            ],
+            [
+              "He was rather quiet",
+              "Él estaba bastante callado",
+              null,
+              4
+            ],
+            [
+              "He was very quiet yesterday",
+              "Él estaba muy callado ayer",
+              null,
+              5
+            ],
+            [
+              "No he was rather quiet yesterday",
+              "No él estaba bastante callado ayer",
+              null,
+              6
+            ],
+            [
+              "I heard that he was rather quiet",
+              "Escuché que él estaba bastante callado",
+              null,
+              7
+            ],
+            [
+              "She was very quiet after you left",
+              "Ella estaba muy callada después de que te fuiste",
+              null,
+              8
+            ],
+            [
+              "He was quiet.",
+              "Él estaba callado.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 2,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    }
+  }
+}
