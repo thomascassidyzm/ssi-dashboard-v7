@@ -1,0 +1,7063 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "agent_id": 4,
+  "seed_range": "S0361-S0380",
+  "total_seeds": 20,
+  "validation_status": "PASSED",
+  "validated_at": "2025-11-07T13:37:53.455750Z",
+  "seeds": {
+    "S0361": {
+      "seed": "S0361",
+      "seed_pair": {
+        "target": "Él estaba callado.",
+        "known": "He was quiet."
+      },
+      "cumulative_legos": 653,
+      "legos": {
+        "S0016L01": {
+          "lego": [
+            "He",
+            "Él"
+          ],
+          "type": "A",
+          "available_legos": 652,
+          "practice_phrases": [
+            [
+              "He",
+              "Él",
+              null,
+              1
+            ],
+            [
+              "with him",
+              "con él",
+              null,
+              2
+            ],
+            [
+              "He was working hard",
+              "Él estaba trabajando duro",
+              null,
+              3
+            ],
+            [
+              "He wanted to help",
+              "Él quería ayudar",
+              null,
+              3
+            ],
+            [
+              "He can speak Spanish well",
+              "Él puede hablar español bien",
+              null,
+              4
+            ],
+            [
+              "He was trying to learn",
+              "Él estaba intentando aprender",
+              null,
+              4
+            ],
+            [
+              "He told me he wanted to come back soon",
+              "Él me dijo que quería volver pronto",
+              null,
+              8
+            ],
+            [
+              "He was working very hard at the office yesterday",
+              "Él estaba trabajando muy duro en la oficina ayer",
+              null,
+              9
+            ],
+            [
+              "I thought it was important to speak Spanish often",
+              "Él pensé que estaba importante hablar español frecuentemente",
+              null,
+              9
+            ],
+            [
+              "He wanted to be able to speak Spanish very well",
+              "Él quería poder hablar español muy bien",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0361L01": {
+          "lego": [
+            "was",
+            "estaba"
+          ],
+          "type": "A",
+          "available_legos": 653,
+          "practice_phrases": [
+            [
+              "was",
+              "estaba",
+              null,
+              1
+            ],
+            [
+              "I was",
+              "yo estaba",
+              null,
+              2
+            ],
+            [
+              "She was very tired",
+              "Ella estaba muy cansado",
+              null,
+              3
+            ],
+            [
+              "He was working yesterday",
+              "Él estaba trabajando ayer",
+              null,
+              3
+            ],
+            [
+              "I was trying to help you",
+              "Yo estaba intentando ayudarte",
+              null,
+              4
+            ],
+            [
+              "She was looking for the book",
+              "Ella estaba buscando el libro",
+              null,
+              5
+            ],
+            [
+              "I was trying to speak Spanish as often as possible",
+              "Yo estaba intentando hablar español lo más frecuentemente posible",
+              null,
+              10
+            ],
+            [
+              "He was working very hard all day at the office",
+              "Él estaba trabajando muy duro todo el día en la oficina",
+              null,
+              11
+            ],
+            [
+              "She was trying to remember what I said to her yesterday",
+              "Ella estaba intentando recordar lo que le dije ayer",
+              null,
+              10
+            ],
+            [
+              "I was thinking about what she wanted to do today",
+              "Yo estaba pensando sobre lo que ella quería hacer hoy",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0361L02": {
+          "lego": [
+            "quiet",
+            "callado"
+          ],
+          "type": "A",
+          "available_legos": 654,
+          "practice_phrases": [
+            [
+              "quiet",
+              "callado",
+              null,
+              1
+            ],
+            [
+              "very quiet",
+              "muy callado",
+              null,
+              2
+            ],
+            [
+              "He was very quiet",
+              "Él estaba muy callado",
+              null,
+              3
+            ],
+            [
+              "She wanted to be quiet",
+              "Ella quería estar callado",
+              null,
+              4
+            ],
+            [
+              "I was quiet all day",
+              "Yo estaba callado todo el día",
+              null,
+              5
+            ],
+            [
+              "He was quiet after the meeting",
+              "Él estaba callado después de la reunión",
+              null,
+              6
+            ],
+            [
+              "She was rather quiet because she was very tired yesterday",
+              "Ella estaba bastante callado porque estaba muy cansado ayer",
+              null,
+              10
+            ],
+            [
+              "I thought he was quiet because he didn't know what to say",
+              "Yo pensé que él estaba callado porque no sabía qué decir",
+              null,
+              13
+            ],
+            [
+              "He was rather quiet after she told him that at work",
+              "Él estaba bastante callado después de que ella le dijo eso en el trabajo",
+              null,
+              14
+            ],
+            [
+              "He was quiet.",
+              "Él estaba callado.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0362": {
+      "seed": "S0362",
+      "seed_pair": {
+        "target": "No él estaba bastante callado después de que te fuiste.",
+        "known": "No he was rather quiet after you left."
+      },
+      "cumulative_legos": 656,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "No",
+            "No"
+          ],
+          "type": "A",
+          "available_legos": 655,
+          "practice_phrases": [
+            [
+              "No",
+              "No",
+              null,
+              1
+            ],
+            [
+              "No thanks",
+              "No gracias",
+              null,
+              2
+            ],
+            [
+              "No I can't help",
+              "No yo no puedo ayudar",
+              null,
+              4
+            ],
+            [
+              "No I don't think so",
+              "No yo no creo",
+              null,
+              4
+            ],
+            [
+              "No I don't want to",
+              "No yo no quiero",
+              null,
+              4
+            ],
+            [
+              "No I wasn't working yesterday",
+              "No yo no estaba trabajando ayer",
+              null,
+              6
+            ],
+            [
+              "No I don't know what you want to say to me",
+              "No yo no sé lo que quieres decirme",
+              null,
+              11
+            ],
+            [
+              "No I didn't see anyone at the house when I went",
+              "No yo no vi a nadie en la casa cuando fui",
+              null,
+              12
+            ],
+            [
+              "No I don't think I can help you with that right now",
+              "No yo no creo que pueda ayudarte con eso ahora",
+              null,
+              12
+            ],
+            [
+              "No she didn't tell me what she wanted to do",
+              "No ella no me dijo lo que quería hacer",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0016L01": {
+          "lego": [
+            "he",
+            "él"
+          ],
+          "type": "A",
+          "available_legos": 656,
+          "practice_phrases": [
+            [
+              "He",
+              "Él",
+              null,
+              1
+            ],
+            [
+              "with him",
+              "con él",
+              null,
+              2
+            ],
+            [
+              "He was working hard",
+              "Él estaba trabajando duro",
+              null,
+              3
+            ],
+            [
+              "He wanted to help",
+              "Él quería ayudar",
+              null,
+              3
+            ],
+            [
+              "He can speak Spanish well",
+              "Él puede hablar español bien",
+              null,
+              4
+            ],
+            [
+              "He was trying to learn",
+              "Él estaba intentando aprender",
+              null,
+              4
+            ],
+            [
+              "He told me he wanted to come back soon",
+              "Él me dijo que quería volver pronto",
+              null,
+              8
+            ],
+            [
+              "He was working very hard at the office yesterday",
+              "Él estaba trabajando muy duro en la oficina ayer",
+              null,
+              9
+            ],
+            [
+              "I thought it was important to speak Spanish often",
+              "Él pensé que estaba importante hablar español frecuentemente",
+              null,
+              9
+            ],
+            [
+              "He wanted to be able to speak Spanish very well",
+              "Él quería poder hablar español muy bien",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0362L03": {
+          "lego": [
+            "you left",
+            "te fuiste"
+          ],
+          "type": "M",
+          "available_legos": 661,
+          "practice_phrases": [
+            [
+              "you left",
+              "te fuiste",
+              null,
+              2
+            ],
+            [
+              "after you left",
+              "después de que te fuiste",
+              null,
+              4
+            ],
+            [
+              "You left very early",
+              "Te fuiste muy temprano",
+              null,
+              3
+            ],
+            [
+              "You left the house",
+              "Te fuiste de casa",
+              null,
+              3
+            ],
+            [
+              "You left not saying anything",
+              "Te fuiste no decir nada",
+              null,
+              5
+            ],
+            [
+              "You left before I went",
+              "Te fuiste antes de que fui",
+              null,
+              5
+            ],
+            [
+              "I was not happy after you left the house yesterday morning",
+              "Yo estaba no feliz después de que te fuiste de casa ayer por la mañana",
+              null,
+              13
+            ],
+            [
+              "He didn't know what to do after you left the meeting",
+              "Él no sabía qué hacer después de que te fuiste de la reunión",
+              null,
+              12
+            ],
+            [
+              "She wanted to know why you left",
+              "Ella quería saber por qué te fuiste",
+              null,
+              13
+            ],
+            [
+              "No he was rather quiet after you left.",
+              "No él estaba bastante callado después de que te fuiste.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0362L01": {
+          "lego": [
+            "rather",
+            "bastante"
+          ],
+          "type": "A",
+          "available_legos": 658,
+          "practice_phrases": [
+            [
+              "rather",
+              "bastante",
+              null,
+              1
+            ],
+            [
+              "rather quiet",
+              "bastante callado",
+              null,
+              2
+            ],
+            [
+              "He was rather tired",
+              "Él estaba bastante cansado",
+              null,
+              3
+            ],
+            [
+              "She was rather happy",
+              "Ella estaba bastante feliz",
+              null,
+              3
+            ],
+            [
+              "It was rather difficult today",
+              "Estaba bastante difícil hoy",
+              null,
+              4
+            ],
+            [
+              "I was rather worried about that",
+              "Yo estaba bastante preocupado sobre eso",
+              null,
+              6
+            ],
+            [
+              "I thought it was rather easy to learn Spanish well",
+              "Él pensé que estaba bastante fácil aprender español bien",
+              null,
+              11
+            ],
+            [
+              "She was rather tired after working all day at the office yesterday",
+              "Ella estaba bastante cansado después de trabajar todo el día en la oficina ayer",
+              null,
+              13
+            ],
+            [
+              "I thought the work was rather difficult to do by myself today",
+              "Yo pensé que el trabajo estaba bastante difícil de hacer solo hoy",
+              null,
+              13
+            ],
+            [
+              "He was rather quiet after she told him the news",
+              "Él estaba bastante callado después de que ella le dijo las eso",
+              null,
+              12
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0362L05": {
+          "lego": [
+            "quiet",
+            "callado"
+          ],
+          "type": "A",
+          "available_legos": 659,
+          "practice_phrases": [
+            [
+              "quiet",
+              "callado",
+              null,
+              1
+            ],
+            [
+              "very quiet",
+              "muy callado",
+              null,
+              2
+            ],
+            [
+              "He was very quiet",
+              "Él estaba muy callado",
+              null,
+              3
+            ],
+            [
+              "She wanted to be quiet",
+              "Ella quería estar callado",
+              null,
+              4
+            ],
+            [
+              "I was quiet all day",
+              "Yo estaba callado todo el día",
+              null,
+              5
+            ],
+            [
+              "He was quiet after the meeting",
+              "Él estaba callado después de la reunión",
+              null,
+              6
+            ],
+            [
+              "She was rather quiet because she was very tired yesterday",
+              "Ella estaba bastante callado porque estaba muy cansado ayer",
+              null,
+              10
+            ],
+            [
+              "I thought he was quiet because he didn't know what to say",
+              "Yo pensé que él estaba callado porque no sabía qué decir",
+              null,
+              13
+            ],
+            [
+              "He was rather quiet after she told him that at work",
+              "Él estaba bastante callado después de que ella le dijo eso en el trabajo",
+              null,
+              14
+            ],
+            [
+              "I was quiet because I didn't want to interrupt the conversation",
+              "Yo estaba callado porque no quería interrumpir la conversación",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0362L02": {
+          "lego": [
+            "after",
+            "después de que"
+          ],
+          "type": "M",
+          "available_legos": 660,
+          "practice_phrases": [
+            [
+              "after",
+              "después de que",
+              null,
+              1
+            ],
+            [
+              "after you finish",
+              "después de que termines",
+              null,
+              3
+            ],
+            [
+              "After I went home",
+              "Después de que fui a casa",
+              null,
+              5
+            ],
+            [
+              "After she left yesterday",
+              "Después de que ella se fue ayer",
+              null,
+              4
+            ],
+            [
+              "After you told me that",
+              "Después de que me dijiste eso",
+              null,
+              4
+            ],
+            [
+              "I want after",
+              "Yo quiero después de que",
+              null,
+              3
+            ],
+            [
+              "After she said what she wanted to say to me",
+              "Después de que ella dijo lo que quería decirme",
+              null,
+              10
+            ],
+            [
+              "After I thought about what you told me yesterday at work",
+              "Después de que pensé sobre lo que me dijiste ayer en el trabajo",
+              null,
+              12
+            ],
+            [
+              "I was very happy after she told me she wanted to help",
+              "Yo estaba muy feliz después de que ella me dijo que quería ayudar",
+              null,
+              14
+            ],
+            [
+              "After you left I didn't know what to do next",
+              "Después de que te fuiste yo no sabía qué hacer después",
+              null,
+              12
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0363": {
+      "seed": "S0363",
+      "seed_pair": {
+        "target": "Sí él tenía ganas de hablar mucho.",
+        "known": "Yes he felt like talking a lot."
+      },
+      "cumulative_legos": 663,
+      "legos": {
+        "S0097L01": {
+          "lego": [
+            "Yes",
+            "Sí"
+          ],
+          "type": "A",
+          "available_legos": 662,
+          "practice_phrases": [
+            [
+              "Yes",
+              "Sí",
+              null,
+              1
+            ],
+            [
+              "Yes I can",
+              "Sí yo puedo",
+              null,
+              2
+            ],
+            [
+              "Yes I want to",
+              "Sí yo quiero",
+              null,
+              3
+            ],
+            [
+              "Yes she was there",
+              "Sí ella estaba ahí",
+              null,
+              3
+            ],
+            [
+              "Yes I can help you",
+              "Sí yo puedo ayudarte",
+              null,
+              4
+            ],
+            [
+              "Yes he wanted to learn",
+              "Sí él quería aprender",
+              null,
+              4
+            ],
+            [
+              "Yes I thought it was very good to do that yesterday",
+              "Sí yo pensé que estaba muy bien hacer eso ayer",
+              null,
+              11
+            ],
+            [
+              "Yes I was trying to speak Spanish as often as I could",
+              "Sí yo estaba intentando hablar español lo más frecuentemente que podía",
+              null,
+              12
+            ],
+            [
+              "Yes she told me she wanted to come back after the meeting",
+              "Sí ella me dijo que quería volver después de la reunión",
+              null,
+              12
+            ],
+            [
+              "Yes I know what you want to say to me",
+              "Sí yo sé lo que quieres decirme",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0016L01": {
+          "lego": [
+            "he",
+            "él"
+          ],
+          "type": "A",
+          "available_legos": 663,
+          "practice_phrases": [
+            [
+              "He",
+              "Él",
+              null,
+              1
+            ],
+            [
+              "with him",
+              "con él",
+              null,
+              2
+            ],
+            [
+              "He was working hard",
+              "Él estaba trabajando duro",
+              null,
+              3
+            ],
+            [
+              "He wanted to help",
+              "Él quería ayudar",
+              null,
+              3
+            ],
+            [
+              "He can speak Spanish well",
+              "Él puede hablar español bien",
+              null,
+              4
+            ],
+            [
+              "He was trying to learn",
+              "Él estaba intentando aprender",
+              null,
+              4
+            ],
+            [
+              "He told me he wanted to come back soon",
+              "Él me dijo que quería volver pronto",
+              null,
+              8
+            ],
+            [
+              "He was working very hard at the office yesterday",
+              "Él estaba trabajando muy duro en la oficina ayer",
+              null,
+              9
+            ],
+            [
+              "I thought it was important to speak Spanish often",
+              "Él pensé que estaba importante hablar español frecuentemente",
+              null,
+              9
+            ],
+            [
+              "He wanted to be able to speak Spanish very well",
+              "Él quería poder hablar español muy bien",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0363L01": {
+          "lego": [
+            "felt like",
+            "tenía ganas de"
+          ],
+          "type": "M",
+          "available_legos": 664,
+          "practice_phrases": [
+            [
+              "felt like",
+              "tenía ganas de",
+              null,
+              2
+            ],
+            [
+              "I felt like talking",
+              "Yo tenía ganas de hablar",
+              null,
+              4
+            ],
+            [
+              "She felt like working",
+              "Ella tenía ganas de trabajar",
+              null,
+              4
+            ],
+            [
+              "I felt like learning",
+              "Yo tenía ganas de aprender",
+              null,
+              4
+            ],
+            [
+              "He felt like going home",
+              "Él tenía ganas de ir a casa",
+              null,
+              5
+            ],
+            [
+              "I felt like eating something",
+              "Yo tenía ganas de comer algo",
+              null,
+              5
+            ],
+            [
+              "She didn't feel like working today because she was very tired",
+              "Ella no tenía ganas de trabajar hoy porque estaba muy cansado",
+              null,
+              12
+            ],
+            [
+              "I felt like speaking Spanish with someone after that ended",
+              "Yo tenía ganas de hablar español con alguien después",
+              null,
+              13
+            ],
+            [
+              "He told me he felt like going to see a film yesterday",
+              "Él me dijo que tenía ganas de ir a ver una película ayer",
+              null,
+              13
+            ],
+            [
+              "I felt like talking to her about that at work",
+              "Yo tenía ganas de hablar con ella sobre eso en el trabajo",
+              null,
+              14
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0363L02": {
+          "lego": [
+            "talking",
+            "hablar"
+          ],
+          "type": "A",
+          "available_legos": 665,
+          "practice_phrases": [
+            [
+              "talking",
+              "hablar",
+              null,
+              1
+            ],
+            [
+              "I felt like talking",
+              "Tenía ganas de hablar",
+              null,
+              3
+            ],
+            [
+              "She was talking yesterday",
+              "Ella estaba hablando ayer",
+              null,
+              3
+            ],
+            [
+              "I was talking to him",
+              "Yo estaba hablando con él",
+              null,
+              4
+            ],
+            [
+              "He wanted to keep talking",
+              "Él quería continuar hablar",
+              null,
+              4
+            ],
+            [
+              "I was talking with her today",
+              "Yo estaba hablando con ella hoy",
+              null,
+              5
+            ],
+            [
+              "She felt like talking with someone about the problem she had",
+              "Ella tenía ganas de hablar con alguien sobre el problema que tenía",
+              null,
+              12
+            ],
+            [
+              "I was talking to him about that at work yesterday afternoon",
+              "Yo estaba hablando con él sobre eso en el trabajo ayer por la tarde",
+              null,
+              14
+            ],
+            [
+              "He told me he felt like talking to me after the meeting today",
+              "Él me dijo que tenía ganas de hablar conmigo después de la reunión hoy",
+              null,
+              14
+            ],
+            [
+              "I wanted to keep talking but I had to leave",
+              "Yo quería continuar hablar pero tenía que irme",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0089L02": {
+          "lego": [
+            "a lot",
+            "mucho"
+          ],
+          "type": "A",
+          "available_legos": 666,
+          "practice_phrases": [
+            [
+              "a lot",
+              "mucho",
+              null,
+              2
+            ],
+            [
+              "very much",
+              "mucho",
+              null,
+              2
+            ],
+            [
+              "I work a lot",
+              "Yo trabajo mucho",
+              null,
+              3
+            ],
+            [
+              "She talks a lot",
+              "Ella habla mucho",
+              null,
+              3
+            ],
+            [
+              "He wanted to learn a lot",
+              "Él quería aprender mucho",
+              null,
+              5
+            ],
+            [
+              "I was working a lot yesterday",
+              "Yo estaba trabajando mucho ayer",
+              null,
+              5
+            ],
+            [
+              "She told me she was working a lot this week at the office",
+              "Ella me dijo que estaba trabajando mucho esta semana en la oficina",
+              null,
+              12
+            ],
+            [
+              "I felt like talking a lot with my friends about the film I saw",
+              "Yo tenía ganas de hablar mucho con mis amigos sobre la película que vi",
+              null,
+              14
+            ],
+            [
+              "I thought I was trying to do too much work by myself today",
+              "Él pensé que yo estaba intentando hacer demasiado trabajo solo hoy",
+              null,
+              12
+            ],
+            [
+              "Yes he felt like talking a lot.",
+              "Sí él tenía ganas de hablar mucho.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0364": {
+      "seed": "S0364",
+      "seed_pair": {
+        "target": "Escuché que a él no le gustó ese lugar.",
+        "known": "I heard that he didn't like that place."
+      },
+      "cumulative_legos": 668,
+      "legos": {
+        "S0364L01": {
+          "lego": [
+            "I heard",
+            "Escuché"
+          ],
+          "type": "A",
+          "available_legos": 667,
+          "practice_phrases": [
+            [
+              "I heard",
+              "Escuché",
+              null,
+              2
+            ],
+            [
+              "I heard that",
+              "Escuché que",
+              null,
+              2
+            ],
+            [
+              "I heard you left",
+              "Escuché que te fuiste",
+              null,
+              3
+            ],
+            [
+              "I heard she was there",
+              "Escuché que ella estaba ahí",
+              null,
+              4
+            ],
+            [
+              "I heard you wanted to help",
+              "Escuché que querías ayudar",
+              null,
+              4
+            ],
+            [
+              "I heard he was working yesterday",
+              "Escuché que él estaba trabajando ayer",
+              null,
+              5
+            ],
+            [
+              "I heard she felt like going to see a film today",
+              "Escuché que ella tenía ganas de ir a ver una película hoy",
+              null,
+              11
+            ],
+            [
+              "I heard you were trying to learn Spanish as often as you could",
+              "Escuché que estabas intentando aprender español lo más frecuentemente que podía",
+              null,
+              11
+            ],
+            [
+              "I heard he told you he wanted to come back after the meeting",
+              "Escuché que él te dijo que quería volver después de la reunión",
+              null,
+              12
+            ],
+            [
+              "I heard what she said about the work I did",
+              "Escuché lo que ella dijo sobre el trabajo que hice",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0102L02": {
+          "lego": [
+            "that",
+            "que"
+          ],
+          "type": "A",
+          "available_legos": 668,
+          "practice_phrases": [
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "I heard that",
+              "Escuché que",
+              null,
+              2
+            ],
+            [
+              "I thought that",
+              "Pensé que",
+              null,
+              2
+            ],
+            [
+              "She said that",
+              "Ella dijo que",
+              null,
+              2
+            ],
+            [
+              "I know that you can",
+              "Yo sé que puedes",
+              null,
+              4
+            ],
+            [
+              "He told me that",
+              "Él me dijo que",
+              null,
+              3
+            ],
+            [
+              "I thought that she was going to help me today",
+              "Pensé que ella iba a ayudarme hoy",
+              null,
+              9
+            ],
+            [
+              "She told me that she wanted to learn Spanish very well",
+              "Ella me dijo que quería aprender español muy bien",
+              null,
+              10
+            ],
+            [
+              "I heard that he felt like talking to me after work yesterday",
+              "Escuché que él tenía ganas de hablar conmigo después del trabajo ayer",
+              null,
+              12
+            ],
+            [
+              "I want that",
+              "Yo quiero que",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0364L02": {
+          "lego": [
+            "he didn't like",
+            "a él no le gustó"
+          ],
+          "type": "M",
+          "available_legos": 669,
+          "practice_phrases": [
+            [
+              "he didn't like",
+              "a él no le gustó",
+              null,
+              3
+            ],
+            [
+              "he didn't like it",
+              "a él no le gustó",
+              null,
+              3
+            ],
+            [
+              "He didn't like the work",
+              "A él no le gustó el trabajo",
+              null,
+              5
+            ],
+            [
+              "He didn't like the book",
+              "A él no le gustó el libro",
+              null,
+              5
+            ],
+            [
+              "He didn't like that at all",
+              "A él no le gustó eso en absoluto",
+              null,
+              6
+            ],
+            [
+              "He didn't like what she said",
+              "A él no le gustó lo que ella dijo",
+              null,
+              6
+            ],
+            [
+              "I heard he didn't like the film I saw yesterday afternoon",
+              "Escuché que a él no le gustó la película que vi ayer por la tarde",
+              null,
+              13
+            ],
+            [
+              "She told me he didn't like working there very much at all",
+              "Ella me dijo que a él no le gustó trabajar ahí muy mucho en absoluto",
+              null,
+              14
+            ],
+            [
+              "I thought he didn't like what I was trying to say to him",
+              "Yo pensé que a él no le gustó lo que yo estaba intentando decir",
+              null,
+              14
+            ],
+            [
+              "He didn't like the place I went to after work",
+              "A él no le gustó el lugar al que fui después del trabajo",
+              null,
+              13
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0161L02": {
+          "lego": [
+            "that",
+            "ese"
+          ],
+          "type": "A",
+          "available_legos": 670,
+          "practice_phrases": [
+            [
+              "that",
+              "ese",
+              null,
+              1
+            ],
+            [
+              "that book",
+              "ese libro",
+              null,
+              2
+            ],
+            [
+              "I want that",
+              "Yo quiero ese",
+              null,
+              3
+            ],
+            [
+              "I didn't like that",
+              "No me gustó ese",
+              null,
+              4
+            ],
+            [
+              "That was very difficult",
+              "Ese estaba muy difícil",
+              null,
+              4
+            ],
+            [
+              "I heard about that yesterday",
+              "Escuché sobre ese ayer",
+              null,
+              4
+            ],
+            [
+              "I thought that was rather good work by him today",
+              "Yo pensé que ese estaba bastante buen trabajo de él hoy",
+              null,
+              11
+            ],
+            [
+              "She told me she didn't want to go to that place anymore",
+              "Ella me dijo que no quería ir a ese lugar más",
+              null,
+              12
+            ],
+            [
+              "I heard that he didn't like that book very much at all",
+              "Escuché que a él no le gustó ese libro muy mucho en absoluto",
+              null,
+              13
+            ],
+            [
+              "I don't think that was a good idea",
+              "Yo no creo que ese estaba una buena idea",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0364L03": {
+          "lego": [
+            "place",
+            "lugar"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "place",
+              "lugar",
+              null,
+              1
+            ],
+            [
+              "that place",
+              "ese lugar",
+              null,
+              2
+            ],
+            [
+              "I like this place",
+              "Me gusta este lugar",
+              null,
+              4
+            ],
+            [
+              "It was a good place",
+              "Estaba un buen lugar",
+              null,
+              4
+            ],
+            [
+              "She wanted to go to that place",
+              "Ella quería ir a ese lugar",
+              null,
+              6
+            ],
+            [
+              "I heard about a good place",
+              "Escuché sobre un buen lugar",
+              null,
+              5
+            ],
+            [
+              "I thought it was a very good place to work every day",
+              "Yo pensé que estaba un muy buen lugar para trabajar todo día",
+              null,
+              13
+            ],
+            [
+              "He told me he didn't like that place very much at all",
+              "Él me dijo que a él no le gustó ese lugar muy mucho en absoluto",
+              null,
+              13
+            ],
+            [
+              "I want place",
+              "Yo quiero lugar",
+              null,
+              3
+            ],
+            [
+              "I heard that he didn't like that place.",
+              "Escuché que a él no le gustó ese lugar.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0365": {
+      "seed": "S0365",
+      "seed_pair": {
+        "target": "No escuché lo que ella le dijo a él.",
+        "known": "I didn't hear what she said to him."
+      },
+      "cumulative_legos": 673,
+      "legos": {
+        "S0365L01": {
+          "lego": [
+            "I didn't hear",
+            "No escuché"
+          ],
+          "type": "M",
+          "available_legos": 672,
+          "practice_phrases": [
+            [
+              "I didn't hear",
+              "No escuché",
+              null,
+              2
+            ],
+            [
+              "I didn't hear that",
+              "No escuché eso",
+              null,
+              3
+            ],
+            [
+              "I didn't hear you",
+              "No escuché a ti",
+              null,
+              3
+            ],
+            [
+              "I didn't hear what you said",
+              "No escuché lo que dijiste",
+              null,
+              5
+            ],
+            [
+              "I didn't hear anything at all",
+              "No escuché nada en absoluto",
+              null,
+              5
+            ],
+            [
+              "I didn't hear what he wanted",
+              "No escuché lo que él quería",
+              null,
+              5
+            ],
+            [
+              "I didn't hear what she was trying to say to me yesterday",
+              "No escuché lo que ella estaba intentando decirme ayer",
+              null,
+              10
+            ],
+            [
+              "I didn't hear anything about that place after you left this morning",
+              "No escuché nada sobre ese lugar después de que te fuiste esta mañana",
+              null,
+              12
+            ],
+            [
+              "I didn't hear what he told you about the work I did together",
+              "No escuché lo que él te dijo sobre el trabajo que hice juntos",
+              null,
+              13
+            ],
+            [
+              "I didn't hear anything because I left early",
+              "No escuché nada porque me fui temprano",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0104L03": {
+          "lego": [
+            "what",
+            "lo que"
+          ],
+          "type": "M",
+          "available_legos": 673,
+          "practice_phrases": [
+            [
+              "what",
+              "lo que",
+              null,
+              2
+            ],
+            [
+              "what I want",
+              "lo que quiero",
+              null,
+              2
+            ],
+            [
+              "I know what you mean",
+              "Sé lo que quieres decir",
+              null,
+              5
+            ],
+            [
+              "I heard what you said",
+              "Escuché lo que dijiste",
+              null,
+              4
+            ],
+            [
+              "She didn't like what I said",
+              "No le gustó lo que dije",
+              null,
+              6
+            ],
+            [
+              "I didn't hear what he wanted",
+              "No escuché lo que él quería",
+              null,
+              5
+            ],
+            [
+              "He told me what she was trying to do yesterday afternoon",
+              "Él me dijo lo que ella estaba intentando hacer ayer por la tarde",
+              null,
+              12
+            ],
+            [
+              "I want what",
+              "Yo quiero lo que",
+              null,
+              3
+            ],
+            [
+              "I want what",
+              "Yo quiero lo que",
+              null,
+              3
+            ],
+            [
+              "I know what you want to tell me",
+              "Yo sé lo que quieres decirme",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0017L01": {
+          "lego": [
+            "she",
+            "ella"
+          ],
+          "type": "A",
+          "available_legos": 674,
+          "practice_phrases": [
+            [
+              "she",
+              "ella",
+              null,
+              1
+            ],
+            [
+              "she wants",
+              "ella quiere",
+              null,
+              2
+            ],
+            [
+              "She was very happy",
+              "Ella estaba muy feliz",
+              null,
+              3
+            ],
+            [
+              "She can help you",
+              "Ella puede ayudarte",
+              null,
+              3
+            ],
+            [
+              "She was trying to learn",
+              "Ella estaba intentando aprender",
+              null,
+              4
+            ],
+            [
+              "She wanted to come back soon",
+              "Ella quería volver pronto",
+              null,
+              4
+            ],
+            [
+              "She told me she felt like going to that place today",
+              "Ella me dijo que tenía ganas de ir a ese lugar hoy",
+              null,
+              12
+            ],
+            [
+              "She was trying to explain what she wanted to say to me yesterday",
+              "Ella estaba intentando explicar lo que quería decirme ayer",
+              null,
+              11
+            ],
+            [
+              "I heard she was working very hard all day at the office",
+              "Escuché que ella estaba trabajando muy duro todo el día en la oficina",
+              null,
+              13
+            ],
+            [
+              "She wanted to be able to speak Spanish very well",
+              "Ella quería poder hablar español muy bien",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0365L02": {
+          "lego": [
+            "said to him",
+            "le dijo a él"
+          ],
+          "type": "M",
+          "available_legos": 675,
+          "practice_phrases": [
+            [
+              "said to him",
+              "le dijo a él",
+              null,
+              3
+            ],
+            [
+              "she said to him",
+              "ella le dijo a él",
+              null,
+              3
+            ],
+            [
+              "I said to him",
+              "Yo le dije a él",
+              null,
+              4
+            ],
+            [
+              "She said to him yesterday",
+              "Ella le dijo a él ayer",
+              null,
+              4
+            ],
+            [
+              "I said to him that I wanted to help",
+              "Yo le dije a él que quería ayudar",
+              null,
+              8
+            ],
+            [
+              "She said to him that she was tired",
+              "Ella le dijo a él que estaba cansado",
+              null,
+              8
+            ],
+            [
+              "I didn't hear what she said to him about the work I did",
+              "No escuché lo que ella le dijo a él sobre el trabajo que hice",
+              null,
+              13
+            ],
+            [
+              "She said to him that she felt like going to see a film today",
+              "Ella le dijo a él que tenía ganas de ir a ver una película hoy",
+              null,
+              14
+            ],
+            [
+              "I heard what you said to him after he left the meeting yesterday afternoon",
+              "Escuché lo que le dijiste a él después de que se fue de la reunión ayer por la tarde",
+              null,
+              15
+            ],
+            [
+              "I didn't hear what she said to him.",
+              "No escuché lo que ella le dijo a él.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0366": {
+      "seed": "S0366",
+      "seed_pair": {
+        "target": "¿Escuchaste lo que él quería cultivar?",
+        "known": "Did you hear what he wanted to grow?"
+      },
+      "cumulative_legos": 677,
+      "legos": {
+        "S0366L02": {
+          "lego": [
+            "Did you hear",
+            "Escuchaste"
+          ],
+          "type": "A",
+          "available_legos": 676,
+          "practice_phrases": [
+            [
+              "Did you hear",
+              "Escuchaste",
+              null,
+              1
+            ],
+            [
+              "with Did you hear",
+              "con Escuchaste",
+              null,
+              3
+            ],
+            [
+              "I want Did you hear",
+              "Yo quiero Escuchaste",
+              null,
+              3
+            ],
+            [
+              "She said Did you hear",
+              "Ella dijo Escuchaste",
+              null,
+              3
+            ],
+            [
+              "I can use Did you hear",
+              "Yo puedo usar Escuchaste",
+              null,
+              4
+            ],
+            [
+              "He wanted Did you hear",
+              "Él quería Escuchaste",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand Did you hear yesterday",
+              "Yo estaba intentando comprender Escuchaste ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted Did you hear today",
+              "Ella me dijo que quería Escuchaste hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with Did you hear at the office",
+              "Escuché que él estaba trabajando con Escuchaste en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about Did you hear",
+              "Yo pensé que estaba bien aprender sobre Escuchaste",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0104L03": {
+          "lego": [
+            "what",
+            "lo que"
+          ],
+          "type": "M",
+          "available_legos": 677,
+          "practice_phrases": [
+            [
+              "what",
+              "lo que",
+              null,
+              2
+            ],
+            [
+              "what I want",
+              "lo que quiero",
+              null,
+              2
+            ],
+            [
+              "I know what you mean",
+              "Sé lo que quieres decir",
+              null,
+              5
+            ],
+            [
+              "I heard what you said",
+              "Escuché lo que dijiste",
+              null,
+              4
+            ],
+            [
+              "She didn't like what I said",
+              "No le gustó lo que dije",
+              null,
+              6
+            ],
+            [
+              "I didn't hear what he wanted",
+              "No escuché lo que él quería",
+              null,
+              5
+            ],
+            [
+              "He told me what she was trying to do yesterday afternoon",
+              "Él me dijo lo que ella estaba intentando hacer ayer por la tarde",
+              null,
+              12
+            ],
+            [
+              "I want what",
+              "Yo quiero lo que",
+              null,
+              3
+            ],
+            [
+              "I want what",
+              "Yo quiero lo que",
+              null,
+              3
+            ],
+            [
+              "I know what you want to tell me",
+              "Yo sé lo que quieres decirme",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0016L01": {
+          "lego": [
+            "he",
+            "él"
+          ],
+          "type": "A",
+          "available_legos": 678,
+          "practice_phrases": [
+            [
+              "He",
+              "Él",
+              null,
+              1
+            ],
+            [
+              "with him",
+              "con él",
+              null,
+              2
+            ],
+            [
+              "He was working hard",
+              "Él estaba trabajando duro",
+              null,
+              3
+            ],
+            [
+              "He wanted to help",
+              "Él quería ayudar",
+              null,
+              3
+            ],
+            [
+              "He can speak Spanish well",
+              "Él puede hablar español bien",
+              null,
+              4
+            ],
+            [
+              "He was trying to learn",
+              "Él estaba intentando aprender",
+              null,
+              4
+            ],
+            [
+              "He told me he wanted to come back soon",
+              "Él me dijo que quería volver pronto",
+              null,
+              8
+            ],
+            [
+              "He was working very hard at the office yesterday",
+              "Él estaba trabajando muy duro en la oficina ayer",
+              null,
+              9
+            ],
+            [
+              "I thought it was important to speak Spanish often",
+              "Él pensé que estaba importante hablar español frecuentemente",
+              null,
+              9
+            ],
+            [
+              "He wanted to be able to speak Spanish very well",
+              "Él quería poder hablar español muy bien",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0231L04": {
+          "lego": [
+            "wanted",
+            "quería"
+          ],
+          "type": "A",
+          "available_legos": 679,
+          "practice_phrases": [
+            [
+              "wanted",
+              "quería",
+              null,
+              1
+            ],
+            [
+              "with wanted",
+              "con quería",
+              null,
+              3
+            ],
+            [
+              "I want wanted",
+              "Yo quiero quería",
+              null,
+              3
+            ],
+            [
+              "She said wanted",
+              "Ella dijo quería",
+              null,
+              3
+            ],
+            [
+              "I can use wanted",
+              "Yo puedo usar quería",
+              null,
+              4
+            ],
+            [
+              "He wanted wanted",
+              "Él quería quería",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand wanted yesterday",
+              "Yo estaba intentando comprender quería ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted wanted today",
+              "Ella me dijo que quería quería hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with wanted at the office",
+              "Escuché que él estaba trabajando con quería en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about wanted",
+              "Yo pensé que estaba bien aprender sobre quería",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0366L03": {
+          "lego": [
+            "to grow",
+            "cultivar"
+          ],
+          "type": "A",
+          "available_legos": 680,
+          "practice_phrases": [
+            [
+              "to grow",
+              "cultivar",
+              null,
+              1
+            ],
+            [
+              "with to grow",
+              "con cultivar",
+              null,
+              3
+            ],
+            [
+              "I want to grow",
+              "Yo quiero cultivar",
+              null,
+              3
+            ],
+            [
+              "She said to grow",
+              "Ella dijo cultivar",
+              null,
+              3
+            ],
+            [
+              "I can use to grow",
+              "Yo puedo usar cultivar",
+              null,
+              4
+            ],
+            [
+              "He wanted to grow",
+              "Él quería cultivar",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand to grow yesterday",
+              "Yo estaba intentando comprender cultivar ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted to grow today",
+              "Ella me dijo que quería cultivar hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with to grow at the office",
+              "Escuché que él estaba trabajando con cultivar en la oficina",
+              null,
+              10
+            ],
+            [
+              "Did you hear what he wanted to grow?",
+              "¿Escuchaste lo que él quería cultivar?",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0367": {
+      "seed": "S0367",
+      "seed_pair": {
+        "target": "No nadie me dijo.",
+        "known": "No nobody told me."
+      },
+      "cumulative_legos": 682,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "No",
+            "No"
+          ],
+          "type": "A",
+          "available_legos": 681,
+          "practice_phrases": [
+            [
+              "No",
+              "No",
+              null,
+              1
+            ],
+            [
+              "No thanks",
+              "No gracias",
+              null,
+              2
+            ],
+            [
+              "No I can't help",
+              "No yo no puedo ayudar",
+              null,
+              4
+            ],
+            [
+              "No I don't think so",
+              "No yo no creo",
+              null,
+              4
+            ],
+            [
+              "No I don't want to",
+              "No yo no quiero",
+              null,
+              4
+            ],
+            [
+              "No I wasn't working yesterday",
+              "No yo no estaba trabajando ayer",
+              null,
+              6
+            ],
+            [
+              "No I don't know what you want to say to me",
+              "No yo no sé lo que quieres decirme",
+              null,
+              11
+            ],
+            [
+              "No I didn't see anyone at the house when I went",
+              "No yo no vi a nadie en la casa cuando fui",
+              null,
+              12
+            ],
+            [
+              "No I don't think I can help you with that right now",
+              "No yo no creo que pueda ayudarte con eso ahora",
+              null,
+              12
+            ],
+            [
+              "No she didn't tell me what she wanted to do",
+              "No ella no me dijo lo que quería hacer",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0367L01": {
+          "lego": [
+            "nobody",
+            "nadie"
+          ],
+          "type": "A",
+          "available_legos": 682,
+          "practice_phrases": [
+            [
+              "nobody",
+              "nadie",
+              null,
+              1
+            ],
+            [
+              "with nobody",
+              "con nadie",
+              null,
+              3
+            ],
+            [
+              "I want nobody",
+              "Yo quiero nadie",
+              null,
+              3
+            ],
+            [
+              "She said nobody",
+              "Ella dijo nadie",
+              null,
+              3
+            ],
+            [
+              "I can use nobody",
+              "Yo puedo usar nadie",
+              null,
+              4
+            ],
+            [
+              "He wanted nobody",
+              "Él quería nadie",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand nobody yesterday",
+              "Yo estaba intentando comprender nadie ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted nobody today",
+              "Ella me dijo que quería nadie hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with nobody at the office",
+              "Escuché que él estaba trabajando con nadie en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about nobody",
+              "Yo pensé que estaba bien aprender sobre nadie",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0367L02": {
+          "lego": [
+            "told me",
+            "me dijo"
+          ],
+          "type": "M",
+          "available_legos": 683,
+          "practice_phrases": [
+            [
+              "told me",
+              "me dijo",
+              null,
+              2
+            ],
+            [
+              "with told me",
+              "con me dijo",
+              null,
+              4
+            ],
+            [
+              "I want told me",
+              "Yo quiero me dijo",
+              null,
+              3
+            ],
+            [
+              "She said told me",
+              "Ella dijo me dijo",
+              null,
+              3
+            ],
+            [
+              "I can use told me",
+              "Yo puedo usar me dijo",
+              null,
+              4
+            ],
+            [
+              "He wanted told me",
+              "Él quería me dijo",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand told me yesterday",
+              "Yo estaba intentando comprender me dijo ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted told me today",
+              "Ella me dijo que quería me dijo hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with told me at the office",
+              "Escuché que él estaba trabajando con me dijo en la oficina",
+              null,
+              10
+            ],
+            [
+              "No nobody told me.",
+              "No nadie me dijo.",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0368": {
+      "seed": "S0368",
+      "seed_pair": {
+        "target": "Sí escuché que él quería cultivar tomates.",
+        "known": "Yes I heard that he wanted to grow tomatoes."
+      },
+      "cumulative_legos": 685,
+      "legos": {
+        "S0097L01": {
+          "lego": [
+            "Yes",
+            "Sí"
+          ],
+          "type": "A",
+          "available_legos": 684,
+          "practice_phrases": [
+            [
+              "Yes",
+              "Sí",
+              null,
+              1
+            ],
+            [
+              "Yes I can",
+              "Sí yo puedo",
+              null,
+              2
+            ],
+            [
+              "Yes I want to",
+              "Sí yo quiero",
+              null,
+              3
+            ],
+            [
+              "Yes she was there",
+              "Sí ella estaba ahí",
+              null,
+              3
+            ],
+            [
+              "Yes I can help you",
+              "Sí yo puedo ayudarte",
+              null,
+              4
+            ],
+            [
+              "Yes he wanted to learn",
+              "Sí él quería aprender",
+              null,
+              4
+            ],
+            [
+              "Yes I thought it was very good to do that yesterday",
+              "Sí yo pensé que estaba muy bien hacer eso ayer",
+              null,
+              11
+            ],
+            [
+              "Yes I was trying to speak Spanish as often as I could",
+              "Sí yo estaba intentando hablar español lo más frecuentemente que podía",
+              null,
+              12
+            ],
+            [
+              "Yes she told me she wanted to come back after the meeting",
+              "Sí ella me dijo que quería volver después de la reunión",
+              null,
+              12
+            ],
+            [
+              "Yes I know what you want to say to me",
+              "Sí yo sé lo que quieres decirme",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0368L02": {
+          "lego": [
+            "I heard",
+            "escuché"
+          ],
+          "type": "A",
+          "available_legos": 685,
+          "practice_phrases": [
+            [
+              "I heard",
+              "Escuché",
+              null,
+              2
+            ],
+            [
+              "I heard that",
+              "Escuché que",
+              null,
+              2
+            ],
+            [
+              "I heard you left",
+              "Escuché que te fuiste",
+              null,
+              3
+            ],
+            [
+              "I heard she was there",
+              "Escuché que ella estaba ahí",
+              null,
+              4
+            ],
+            [
+              "I heard you wanted to help",
+              "Escuché que querías ayudar",
+              null,
+              4
+            ],
+            [
+              "I heard he was working yesterday",
+              "Escuché que él estaba trabajando ayer",
+              null,
+              5
+            ],
+            [
+              "I heard she felt like going to see a film today",
+              "Escuché que ella tenía ganas de ir a ver una película hoy",
+              null,
+              11
+            ],
+            [
+              "I heard you were trying to learn Spanish as often as you could",
+              "Escuché que estabas intentando aprender español lo más frecuentemente que podía",
+              null,
+              11
+            ],
+            [
+              "I heard he told you he wanted to come back after the meeting",
+              "Escuché que él te dijo que quería volver después de la reunión",
+              null,
+              12
+            ],
+            [
+              "I heard what she said about the work I did",
+              "Escuché lo que ella dijo sobre el trabajo que hice",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0102L02": {
+          "lego": [
+            "that",
+            "que"
+          ],
+          "type": "A",
+          "available_legos": 686,
+          "practice_phrases": [
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "I heard that",
+              "Escuché que",
+              null,
+              2
+            ],
+            [
+              "I thought that",
+              "Pensé que",
+              null,
+              2
+            ],
+            [
+              "She said that",
+              "Ella dijo que",
+              null,
+              2
+            ],
+            [
+              "I know that you can",
+              "Yo sé que puedes",
+              null,
+              4
+            ],
+            [
+              "He told me that",
+              "Él me dijo que",
+              null,
+              3
+            ],
+            [
+              "I thought that she was going to help me today",
+              "Pensé que ella iba a ayudarme hoy",
+              null,
+              9
+            ],
+            [
+              "She told me that she wanted to learn Spanish very well",
+              "Ella me dijo que quería aprender español muy bien",
+              null,
+              10
+            ],
+            [
+              "I heard that he felt like talking to me after work yesterday",
+              "Escuché que él tenía ganas de hablar conmigo después del trabajo ayer",
+              null,
+              12
+            ],
+            [
+              "I want that",
+              "Yo quiero que",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0016L01": {
+          "lego": [
+            "he",
+            "él"
+          ],
+          "type": "A",
+          "available_legos": 687,
+          "practice_phrases": [
+            [
+              "He",
+              "Él",
+              null,
+              1
+            ],
+            [
+              "with him",
+              "con él",
+              null,
+              2
+            ],
+            [
+              "He was working hard",
+              "Él estaba trabajando duro",
+              null,
+              3
+            ],
+            [
+              "He wanted to help",
+              "Él quería ayudar",
+              null,
+              3
+            ],
+            [
+              "He can speak Spanish well",
+              "Él puede hablar español bien",
+              null,
+              4
+            ],
+            [
+              "He was trying to learn",
+              "Él estaba intentando aprender",
+              null,
+              4
+            ],
+            [
+              "He told me he wanted to come back soon",
+              "Él me dijo que quería volver pronto",
+              null,
+              8
+            ],
+            [
+              "He was working very hard at the office yesterday",
+              "Él estaba trabajando muy duro en la oficina ayer",
+              null,
+              9
+            ],
+            [
+              "I thought it was important to speak Spanish often",
+              "Él pensé que estaba importante hablar español frecuentemente",
+              null,
+              9
+            ],
+            [
+              "He wanted to be able to speak Spanish very well",
+              "Él quería poder hablar español muy bien",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0231L04": {
+          "lego": [
+            "wanted",
+            "quería"
+          ],
+          "type": "A",
+          "available_legos": 688,
+          "practice_phrases": [
+            [
+              "wanted",
+              "quería",
+              null,
+              1
+            ],
+            [
+              "with wanted",
+              "con quería",
+              null,
+              3
+            ],
+            [
+              "I want wanted",
+              "Yo quiero quería",
+              null,
+              3
+            ],
+            [
+              "She said wanted",
+              "Ella dijo quería",
+              null,
+              3
+            ],
+            [
+              "I can use wanted",
+              "Yo puedo usar quería",
+              null,
+              4
+            ],
+            [
+              "He wanted wanted",
+              "Él quería quería",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand wanted yesterday",
+              "Yo estaba intentando comprender quería ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted wanted today",
+              "Ella me dijo que quería quería hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with wanted at the office",
+              "Escuché que él estaba trabajando con quería en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about wanted",
+              "Yo pensé que estaba bien aprender sobre quería",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0368L06": {
+          "lego": [
+            "to grow",
+            "cultivar"
+          ],
+          "type": "A",
+          "available_legos": 689,
+          "practice_phrases": [
+            [
+              "to grow",
+              "cultivar",
+              null,
+              1
+            ],
+            [
+              "with to grow",
+              "con cultivar",
+              null,
+              3
+            ],
+            [
+              "I want to grow",
+              "Yo quiero cultivar",
+              null,
+              3
+            ],
+            [
+              "She said to grow",
+              "Ella dijo cultivar",
+              null,
+              3
+            ],
+            [
+              "I can use to grow",
+              "Yo puedo usar cultivar",
+              null,
+              4
+            ],
+            [
+              "He wanted to grow",
+              "Él quería cultivar",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand to grow yesterday",
+              "Yo estaba intentando comprender cultivar ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted to grow today",
+              "Ella me dijo que quería cultivar hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with to grow at the office",
+              "Escuché que él estaba trabajando con cultivar en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about to grow",
+              "Yo pensé que estaba bien aprender sobre cultivar",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0368L01": {
+          "lego": [
+            "tomatoes",
+            "tomates"
+          ],
+          "type": "A",
+          "available_legos": 690,
+          "practice_phrases": [
+            [
+              "tomatoes",
+              "tomates",
+              null,
+              1
+            ],
+            [
+              "with tomatoes",
+              "con tomates",
+              null,
+              3
+            ],
+            [
+              "I want tomatoes",
+              "Yo quiero tomates",
+              null,
+              3
+            ],
+            [
+              "She said tomatoes",
+              "Ella dijo tomates",
+              null,
+              3
+            ],
+            [
+              "I can use tomatoes",
+              "Yo puedo usar tomates",
+              null,
+              4
+            ],
+            [
+              "He wanted tomatoes",
+              "Él quería tomates",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand tomatoes yesterday",
+              "Yo estaba intentando comprender tomates ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted tomatoes today",
+              "Ella me dijo que quería tomates hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with tomatoes at the office",
+              "Escuché que él estaba trabajando con tomates en la oficina",
+              null,
+              10
+            ],
+            [
+              "Yes I heard that he wanted to grow tomatoes.",
+              "Sí escuché que él quería cultivar tomates.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0369": {
+      "seed": "S0369",
+      "seed_pair": {
+        "target": "Vi varios caballos en la carretera.",
+        "known": "I saw several horses on the road."
+      },
+      "cumulative_legos": 692,
+      "legos": {
+        "S0184L02": {
+          "lego": [
+            "I saw",
+            "Vi"
+          ],
+          "type": "A",
+          "available_legos": 691,
+          "practice_phrases": [
+            [
+              "I saw",
+              "Vi",
+              null,
+              1
+            ],
+            [
+              "with I saw",
+              "con Vi",
+              null,
+              3
+            ],
+            [
+              "I want I saw",
+              "Yo quiero Vi",
+              null,
+              3
+            ],
+            [
+              "She said I saw",
+              "Ella dijo Vi",
+              null,
+              3
+            ],
+            [
+              "I can use I saw",
+              "Yo puedo usar Vi",
+              null,
+              4
+            ],
+            [
+              "He wanted I saw",
+              "Él quería Vi",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand I saw yesterday",
+              "Yo estaba intentando comprender Vi ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted I saw today",
+              "Ella me dijo que quería Vi hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with I saw at the office",
+              "Escuché que él estaba trabajando con Vi en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about I saw",
+              "Yo pensé que estaba bien aprender sobre Vi",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0369L01": {
+          "lego": [
+            "several",
+            "varios"
+          ],
+          "type": "A",
+          "available_legos": 692,
+          "practice_phrases": [
+            [
+              "several",
+              "varios",
+              null,
+              1
+            ],
+            [
+              "with several",
+              "con varios",
+              null,
+              3
+            ],
+            [
+              "I want several",
+              "Yo quiero varios",
+              null,
+              3
+            ],
+            [
+              "She said several",
+              "Ella dijo varios",
+              null,
+              3
+            ],
+            [
+              "I can use several",
+              "Yo puedo usar varios",
+              null,
+              4
+            ],
+            [
+              "He wanted several",
+              "Él quería varios",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand several yesterday",
+              "Yo estaba intentando comprender varios ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted several today",
+              "Ella me dijo que quería varios hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with several at the office",
+              "Escuché que él estaba trabajando con varios en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about several",
+              "Yo pensé que estaba bien aprender sobre varios",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0369L02": {
+          "lego": [
+            "horses",
+            "caballos"
+          ],
+          "type": "A",
+          "available_legos": 693,
+          "practice_phrases": [
+            [
+              "horses",
+              "caballos",
+              null,
+              1
+            ],
+            [
+              "with horses",
+              "con caballos",
+              null,
+              3
+            ],
+            [
+              "I want horses",
+              "Yo quiero caballos",
+              null,
+              3
+            ],
+            [
+              "She said horses",
+              "Ella dijo caballos",
+              null,
+              3
+            ],
+            [
+              "I can use horses",
+              "Yo puedo usar caballos",
+              null,
+              4
+            ],
+            [
+              "He wanted horses",
+              "Él quería caballos",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand horses yesterday",
+              "Yo estaba intentando comprender caballos ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted horses today",
+              "Ella me dijo que quería caballos hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with horses at the office",
+              "Escuché que él estaba trabajando con caballos en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about horses",
+              "Yo pensé que estaba bien aprender sobre caballos",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0369L03": {
+          "lego": [
+            "on",
+            "en"
+          ],
+          "type": "A",
+          "available_legos": 694,
+          "practice_phrases": [
+            [
+              "on",
+              "en",
+              null,
+              1
+            ],
+            [
+              "with on",
+              "con en",
+              null,
+              3
+            ],
+            [
+              "I want on",
+              "Yo quiero en",
+              null,
+              3
+            ],
+            [
+              "She said on",
+              "Ella dijo en",
+              null,
+              3
+            ],
+            [
+              "I can use on",
+              "Yo puedo usar en",
+              null,
+              4
+            ],
+            [
+              "He wanted on",
+              "Él quería en",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand on yesterday",
+              "Yo estaba intentando comprender en ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted on today",
+              "Ella me dijo que quería en hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with on at the office",
+              "Escuché que él estaba trabajando con en en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about on",
+              "Yo pensé que estaba bien aprender sobre en",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0369L04": {
+          "lego": [
+            "the road",
+            "la carretera"
+          ],
+          "type": "M",
+          "available_legos": 695,
+          "practice_phrases": [
+            [
+              "the road",
+              "la carretera",
+              null,
+              2
+            ],
+            [
+              "with the road",
+              "con la carretera",
+              null,
+              4
+            ],
+            [
+              "I want the road",
+              "Yo quiero la carretera",
+              null,
+              3
+            ],
+            [
+              "She said the road",
+              "Ella dijo la carretera",
+              null,
+              3
+            ],
+            [
+              "I can use the road",
+              "Yo puedo usar la carretera",
+              null,
+              4
+            ],
+            [
+              "He wanted the road",
+              "Él quería la carretera",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand the road yesterday",
+              "Yo estaba intentando comprender la carretera ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted the road today",
+              "Ella me dijo que quería la carretera hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with the road at the office",
+              "Escuché que él estaba trabajando con la carretera en la oficina",
+              null,
+              10
+            ],
+            [
+              "I saw several horses on the road.",
+              "Vi varios caballos en la carretera.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0370": {
+      "seed": "S0370",
+      "seed_pair": {
+        "target": "No vi a nadie que yo conocía.",
+        "known": "I didn't see anyone that I knew."
+      },
+      "cumulative_legos": 697,
+      "legos": {
+        "S0370L01": {
+          "lego": [
+            "I didn't see",
+            "No vi"
+          ],
+          "type": "M",
+          "available_legos": 696,
+          "practice_phrases": [
+            [
+              "I didn't see",
+              "No vi",
+              null,
+              2
+            ],
+            [
+              "with I didn't see",
+              "con No vi",
+              null,
+              4
+            ],
+            [
+              "I want I didn't see",
+              "Yo quiero No vi",
+              null,
+              3
+            ],
+            [
+              "She said I didn't see",
+              "Ella dijo No vi",
+              null,
+              3
+            ],
+            [
+              "I can use I didn't see",
+              "Yo puedo usar No vi",
+              null,
+              4
+            ],
+            [
+              "He wanted I didn't see",
+              "Él quería No vi",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand I didn't see yesterday",
+              "Yo estaba intentando comprender No vi ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted I didn't see today",
+              "Ella me dijo que quería No vi hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with I didn't see at the office",
+              "Escuché que él estaba trabajando con No vi en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about I didn't see",
+              "Yo pensé que estaba bien aprender sobre No vi",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0370L02": {
+          "lego": [
+            "anyone",
+            "a nadie"
+          ],
+          "type": "M",
+          "available_legos": 697,
+          "practice_phrases": [
+            [
+              "anyone",
+              "a nadie",
+              null,
+              2
+            ],
+            [
+              "with anyone",
+              "con a nadie",
+              null,
+              4
+            ],
+            [
+              "I want anyone",
+              "Yo quiero a nadie",
+              null,
+              3
+            ],
+            [
+              "She said anyone",
+              "Ella dijo a nadie",
+              null,
+              3
+            ],
+            [
+              "I can use anyone",
+              "Yo puedo usar a nadie",
+              null,
+              4
+            ],
+            [
+              "He wanted anyone",
+              "Él quería a nadie",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand anyone yesterday",
+              "Yo estaba intentando comprender a nadie ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted anyone today",
+              "Ella me dijo que quería a nadie hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with anyone at the office",
+              "Escuché que él estaba trabajando con a nadie en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about anyone",
+              "Yo pensé que estaba bien aprender sobre a nadie",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0102L02": {
+          "lego": [
+            "that",
+            "que"
+          ],
+          "type": "A",
+          "available_legos": 698,
+          "practice_phrases": [
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "I heard that",
+              "Escuché que",
+              null,
+              2
+            ],
+            [
+              "I thought that",
+              "Pensé que",
+              null,
+              2
+            ],
+            [
+              "She said that",
+              "Ella dijo que",
+              null,
+              2
+            ],
+            [
+              "I know that you can",
+              "Yo sé que puedes",
+              null,
+              4
+            ],
+            [
+              "He told me that",
+              "Él me dijo que",
+              null,
+              3
+            ],
+            [
+              "I thought that she was going to help me today",
+              "Pensé que ella iba a ayudarme hoy",
+              null,
+              9
+            ],
+            [
+              "She told me that she wanted to learn Spanish very well",
+              "Ella me dijo que quería aprender español muy bien",
+              null,
+              10
+            ],
+            [
+              "I heard that he felt like talking to me after work yesterday",
+              "Escuché que él tenía ganas de hablar conmigo después del trabajo ayer",
+              null,
+              12
+            ],
+            [
+              "I want that",
+              "Yo quiero que",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0370L03": {
+          "lego": [
+            "I",
+            "yo"
+          ],
+          "type": "A",
+          "available_legos": 699,
+          "practice_phrases": [
+            [
+              "I",
+              "yo",
+              null,
+              1
+            ],
+            [
+              "with I",
+              "con yo",
+              null,
+              3
+            ],
+            [
+              "I want I",
+              "Yo quiero yo",
+              null,
+              3
+            ],
+            [
+              "She said I",
+              "Ella dijo yo",
+              null,
+              3
+            ],
+            [
+              "I can use I",
+              "Yo puedo usar yo",
+              null,
+              4
+            ],
+            [
+              "He wanted I",
+              "Él quería yo",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand I yesterday",
+              "Yo estaba intentando comprender yo ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted I today",
+              "Ella me dijo que quería yo hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with I at the office",
+              "Escuché que él estaba trabajando con yo en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about I",
+              "Yo pensé que estaba bien aprender sobre yo",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0370L04": {
+          "lego": [
+            "knew",
+            "conocía"
+          ],
+          "type": "A",
+          "available_legos": 700,
+          "practice_phrases": [
+            [
+              "knew",
+              "conocía",
+              null,
+              1
+            ],
+            [
+              "with knew",
+              "con conocía",
+              null,
+              3
+            ],
+            [
+              "I want knew",
+              "Yo quiero conocía",
+              null,
+              3
+            ],
+            [
+              "She said knew",
+              "Ella dijo conocía",
+              null,
+              3
+            ],
+            [
+              "I can use knew",
+              "Yo puedo usar conocía",
+              null,
+              4
+            ],
+            [
+              "He wanted knew",
+              "Él quería conocía",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand knew yesterday",
+              "Yo estaba intentando comprender conocía ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted knew today",
+              "Ella me dijo que quería conocía hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with knew at the office",
+              "Escuché que él estaba trabajando con conocía en la oficina",
+              null,
+              10
+            ],
+            [
+              "I didn't see anyone that I knew.",
+              "No vi a nadie que yo conocía.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0371": {
+      "seed": "S0371",
+      "seed_pair": {
+        "target": "Fui a ver una película el miércoles.",
+        "known": "I went to see a film on Wednesday."
+      },
+      "cumulative_legos": 702,
+      "legos": {
+        "S0371L01": {
+          "lego": [
+            "I went to",
+            "Fui a"
+          ],
+          "type": "M",
+          "available_legos": 701,
+          "practice_phrases": [
+            [
+              "I went to",
+              "Fui a",
+              null,
+              2
+            ],
+            [
+              "with I went to",
+              "con Fui a",
+              null,
+              4
+            ],
+            [
+              "I want I went to",
+              "Yo quiero Fui a",
+              null,
+              3
+            ],
+            [
+              "She said I went to",
+              "Ella dijo Fui a",
+              null,
+              3
+            ],
+            [
+              "I can use I went to",
+              "Yo puedo usar Fui a",
+              null,
+              4
+            ],
+            [
+              "He wanted I went to",
+              "Él quería Fui a",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand I went to yesterday",
+              "Yo estaba intentando comprender Fui a ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted I went to today",
+              "Ella me dijo que quería Fui a hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with I went to at the office",
+              "Escuché que él estaba trabajando con Fui a en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about I went to",
+              "Yo pensé que estaba bien aprender sobre Fui a",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0371L02": {
+          "lego": [
+            "see",
+            "ver"
+          ],
+          "type": "A",
+          "available_legos": 702,
+          "practice_phrases": [
+            [
+              "see",
+              "ver",
+              null,
+              1
+            ],
+            [
+              "with see",
+              "con ver",
+              null,
+              3
+            ],
+            [
+              "I want see",
+              "Yo quiero ver",
+              null,
+              3
+            ],
+            [
+              "She said see",
+              "Ella dijo ver",
+              null,
+              3
+            ],
+            [
+              "I can use see",
+              "Yo puedo usar ver",
+              null,
+              4
+            ],
+            [
+              "He wanted see",
+              "Él quería ver",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand see yesterday",
+              "Yo estaba intentando comprender ver ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted see today",
+              "Ella me dijo que quería ver hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with see at the office",
+              "Escuché que él estaba trabajando con ver en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about see",
+              "Yo pensé que estaba bien aprender sobre ver",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0221L06": {
+          "lego": [
+            "a film",
+            "una película"
+          ],
+          "type": "M",
+          "available_legos": 703,
+          "practice_phrases": [
+            [
+              "a film",
+              "una película",
+              null,
+              2
+            ],
+            [
+              "with a film",
+              "con una película",
+              null,
+              4
+            ],
+            [
+              "I want a film",
+              "Yo quiero una película",
+              null,
+              3
+            ],
+            [
+              "She said a film",
+              "Ella dijo una película",
+              null,
+              3
+            ],
+            [
+              "I can use a film",
+              "Yo puedo usar una película",
+              null,
+              4
+            ],
+            [
+              "He wanted a film",
+              "Él quería una película",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand a film yesterday",
+              "Yo estaba intentando comprender una película ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted a film today",
+              "Ella me dijo que quería una película hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with a film at the office",
+              "Escuché que él estaba trabajando con una película en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about a film",
+              "Yo pensé que estaba bien aprender sobre una película",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0371L03": {
+          "lego": [
+            "on Wednesday",
+            "el miércoles"
+          ],
+          "type": "M",
+          "available_legos": 704,
+          "practice_phrases": [
+            [
+              "on Wednesday",
+              "el miércoles",
+              null,
+              2
+            ],
+            [
+              "with on Wednesday",
+              "con el miércoles",
+              null,
+              4
+            ],
+            [
+              "I want on Wednesday",
+              "Yo quiero el miércoles",
+              null,
+              3
+            ],
+            [
+              "She said on Wednesday",
+              "Ella dijo el miércoles",
+              null,
+              3
+            ],
+            [
+              "I can use on Wednesday",
+              "Yo puedo usar el miércoles",
+              null,
+              4
+            ],
+            [
+              "He wanted on Wednesday",
+              "Él quería el miércoles",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand on Wednesday yesterday",
+              "Yo estaba intentando comprender el miércoles ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted on Wednesday today",
+              "Ella me dijo que quería el miércoles hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with on Wednesday at the office",
+              "Escuché que él estaba trabajando con el miércoles en la oficina",
+              null,
+              10
+            ],
+            [
+              "I went to see a film on Wednesday.",
+              "Fui a ver una película el miércoles.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0372": {
+      "seed": "S0372",
+      "seed_pair": {
+        "target": "¿Viste lo que ella estaba intentando crear?",
+        "known": "Did you see what she was trying to create?"
+      },
+      "cumulative_legos": 706,
+      "legos": {
+        "S0372L01": {
+          "lego": [
+            "Did you see",
+            "Viste"
+          ],
+          "type": "A",
+          "available_legos": 705,
+          "practice_phrases": [
+            [
+              "Did you see",
+              "Viste",
+              null,
+              1
+            ],
+            [
+              "with Did you see",
+              "con Viste",
+              null,
+              3
+            ],
+            [
+              "I want Did you see",
+              "Yo quiero Viste",
+              null,
+              3
+            ],
+            [
+              "She said Did you see",
+              "Ella dijo Viste",
+              null,
+              3
+            ],
+            [
+              "I can use Did you see",
+              "Yo puedo usar Viste",
+              null,
+              4
+            ],
+            [
+              "He wanted Did you see",
+              "Él quería Viste",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand Did you see yesterday",
+              "Yo estaba intentando comprender Viste ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted Did you see today",
+              "Ella me dijo que quería Viste hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with Did you see at the office",
+              "Escuché que él estaba trabajando con Viste en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about Did you see",
+              "Yo pensé que estaba bien aprender sobre Viste",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0104L03": {
+          "lego": [
+            "what",
+            "lo que"
+          ],
+          "type": "M",
+          "available_legos": 706,
+          "practice_phrases": [
+            [
+              "what",
+              "lo que",
+              null,
+              2
+            ],
+            [
+              "what I want",
+              "lo que quiero",
+              null,
+              2
+            ],
+            [
+              "I know what you mean",
+              "Sé lo que quieres decir",
+              null,
+              5
+            ],
+            [
+              "I heard what you said",
+              "Escuché lo que dijiste",
+              null,
+              4
+            ],
+            [
+              "She didn't like what I said",
+              "No le gustó lo que dije",
+              null,
+              6
+            ],
+            [
+              "I didn't hear what he wanted",
+              "No escuché lo que él quería",
+              null,
+              5
+            ],
+            [
+              "He told me what she was trying to do yesterday afternoon",
+              "Él me dijo lo que ella estaba intentando hacer ayer por la tarde",
+              null,
+              12
+            ],
+            [
+              "I want what",
+              "Yo quiero lo que",
+              null,
+              3
+            ],
+            [
+              "I want what",
+              "Yo quiero lo que",
+              null,
+              3
+            ],
+            [
+              "I know what you want to tell me",
+              "Yo sé lo que quieres decirme",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0017L01": {
+          "lego": [
+            "she",
+            "ella"
+          ],
+          "type": "A",
+          "available_legos": 707,
+          "practice_phrases": [
+            [
+              "she",
+              "ella",
+              null,
+              1
+            ],
+            [
+              "she wants",
+              "ella quiere",
+              null,
+              2
+            ],
+            [
+              "She was very happy",
+              "Ella estaba muy feliz",
+              null,
+              3
+            ],
+            [
+              "She can help you",
+              "Ella puede ayudarte",
+              null,
+              3
+            ],
+            [
+              "She was trying to learn",
+              "Ella estaba intentando aprender",
+              null,
+              4
+            ],
+            [
+              "She wanted to come back soon",
+              "Ella quería volver pronto",
+              null,
+              4
+            ],
+            [
+              "She told me she felt like going to that place today",
+              "Ella me dijo que tenía ganas de ir a ese lugar hoy",
+              null,
+              12
+            ],
+            [
+              "She was trying to explain what she wanted to say to me yesterday",
+              "Ella estaba intentando explicar lo que quería decirme ayer",
+              null,
+              11
+            ],
+            [
+              "I heard she was working very hard all day at the office",
+              "Escuché que ella estaba trabajando muy duro todo el día en la oficina",
+              null,
+              13
+            ],
+            [
+              "She wanted to be able to speak Spanish very well",
+              "Ella quería poder hablar español muy bien",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0372L02": {
+          "lego": [
+            "was trying",
+            "estaba intentando"
+          ],
+          "type": "M",
+          "available_legos": 708,
+          "practice_phrases": [
+            [
+              "was trying",
+              "estaba intentando",
+              null,
+              2
+            ],
+            [
+              "with was trying",
+              "con estaba intentando",
+              null,
+              4
+            ],
+            [
+              "I want was trying",
+              "Yo quiero estaba intentando",
+              null,
+              3
+            ],
+            [
+              "She said was trying",
+              "Ella dijo estaba intentando",
+              null,
+              3
+            ],
+            [
+              "I can use was trying",
+              "Yo puedo usar estaba intentando",
+              null,
+              4
+            ],
+            [
+              "He wanted was trying",
+              "Él quería estaba intentando",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand was trying yesterday",
+              "Yo estaba intentando comprender estaba intentando ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted was trying today",
+              "Ella me dijo que quería estaba intentando hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with was trying at the office",
+              "Escuché que él estaba trabajando con estaba intentando en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about was trying",
+              "Yo pensé que estaba bien aprender sobre estaba intentando",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0372L03": {
+          "lego": [
+            "to create",
+            "crear"
+          ],
+          "type": "A",
+          "available_legos": 709,
+          "practice_phrases": [
+            [
+              "to create",
+              "crear",
+              null,
+              1
+            ],
+            [
+              "with to create",
+              "con crear",
+              null,
+              3
+            ],
+            [
+              "I want to create",
+              "Yo quiero crear",
+              null,
+              3
+            ],
+            [
+              "She said to create",
+              "Ella dijo crear",
+              null,
+              3
+            ],
+            [
+              "I can use to create",
+              "Yo puedo usar crear",
+              null,
+              4
+            ],
+            [
+              "He wanted to create",
+              "Él quería crear",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand to create yesterday",
+              "Yo estaba intentando comprender crear ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted to create today",
+              "Ella me dijo que quería crear hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with to create at the office",
+              "Escuché que él estaba trabajando con crear en la oficina",
+              null,
+              10
+            ],
+            [
+              "Did you see what she was trying to create?",
+              "¿Viste lo que ella estaba intentando crear?",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0373": {
+      "seed": "S0373",
+      "seed_pair": {
+        "target": "Fue hermoso.",
+        "known": "It was beautiful."
+      },
+      "cumulative_legos": 711,
+      "legos": {
+        "S0373L01": {
+          "lego": [
+            "It was",
+            "Fue"
+          ],
+          "type": "A",
+          "available_legos": 710,
+          "practice_phrases": [
+            [
+              "It was",
+              "Fue",
+              null,
+              1
+            ],
+            [
+              "with It was",
+              "con Fue",
+              null,
+              3
+            ],
+            [
+              "I want It was",
+              "Yo quiero Fue",
+              null,
+              3
+            ],
+            [
+              "She said It was",
+              "Ella dijo Fue",
+              null,
+              3
+            ],
+            [
+              "I can use It was",
+              "Yo puedo usar Fue",
+              null,
+              4
+            ],
+            [
+              "He wanted It was",
+              "Él quería Fue",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand It was yesterday",
+              "Yo estaba intentando comprender Fue ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted It was today",
+              "Ella me dijo que quería Fue hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with It was at the office",
+              "Escuché que él estaba trabajando con Fue en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about It was",
+              "Yo pensé que estaba bien aprender sobre Fue",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0373L02": {
+          "lego": [
+            "beautiful",
+            "hermoso"
+          ],
+          "type": "A",
+          "available_legos": 711,
+          "practice_phrases": [
+            [
+              "beautiful",
+              "hermoso",
+              null,
+              1
+            ],
+            [
+              "with beautiful",
+              "con hermoso",
+              null,
+              3
+            ],
+            [
+              "I want beautiful",
+              "Yo quiero hermoso",
+              null,
+              3
+            ],
+            [
+              "She said beautiful",
+              "Ella dijo hermoso",
+              null,
+              3
+            ],
+            [
+              "I can use beautiful",
+              "Yo puedo usar hermoso",
+              null,
+              4
+            ],
+            [
+              "He wanted beautiful",
+              "Él quería hermoso",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand beautiful yesterday",
+              "Yo estaba intentando comprender hermoso ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted beautiful today",
+              "Ella me dijo que quería hermoso hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with beautiful at the office",
+              "Escuché que él estaba trabajando con hermoso en la oficina",
+              null,
+              10
+            ],
+            [
+              "It was beautiful.",
+              "Fue hermoso.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0374": {
+      "seed": "S0374",
+      "seed_pair": {
+        "target": "Sí pensé que era muy hermoso.",
+        "known": "Yes I thought it was very beautiful."
+      },
+      "cumulative_legos": 713,
+      "legos": {
+        "S0097L01": {
+          "lego": [
+            "Yes",
+            "Sí"
+          ],
+          "type": "A",
+          "available_legos": 712,
+          "practice_phrases": [
+            [
+              "Yes",
+              "Sí",
+              null,
+              1
+            ],
+            [
+              "Yes I can",
+              "Sí yo puedo",
+              null,
+              2
+            ],
+            [
+              "Yes I want to",
+              "Sí yo quiero",
+              null,
+              3
+            ],
+            [
+              "Yes she was there",
+              "Sí ella estaba ahí",
+              null,
+              3
+            ],
+            [
+              "Yes I can help you",
+              "Sí yo puedo ayudarte",
+              null,
+              4
+            ],
+            [
+              "Yes he wanted to learn",
+              "Sí él quería aprender",
+              null,
+              4
+            ],
+            [
+              "Yes I thought it was very good to do that yesterday",
+              "Sí yo pensé que estaba muy bien hacer eso ayer",
+              null,
+              11
+            ],
+            [
+              "Yes I was trying to speak Spanish as often as I could",
+              "Sí yo estaba intentando hablar español lo más frecuentemente que podía",
+              null,
+              12
+            ],
+            [
+              "Yes she told me she wanted to come back after the meeting",
+              "Sí ella me dijo que quería volver después de la reunión",
+              null,
+              12
+            ],
+            [
+              "Yes I know what you want to say to me",
+              "Sí yo sé lo que quieres decirme",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0374L01": {
+          "lego": [
+            "I thought",
+            "pensé que"
+          ],
+          "type": "M",
+          "available_legos": 713,
+          "practice_phrases": [
+            [
+              "I thought",
+              "pensé que",
+              null,
+              2
+            ],
+            [
+              "with I thought",
+              "con pensé que",
+              null,
+              4
+            ],
+            [
+              "I want I thought",
+              "Yo quiero pensé que",
+              null,
+              3
+            ],
+            [
+              "She said I thought",
+              "Ella dijo pensé que",
+              null,
+              3
+            ],
+            [
+              "I can use I thought",
+              "Yo puedo usar pensé que",
+              null,
+              4
+            ],
+            [
+              "He wanted I thought",
+              "Él quería pensé que",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand I thought yesterday",
+              "Yo estaba intentando comprender pensé que ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted I thought today",
+              "Ella me dijo que quería pensé que hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with I thought at the office",
+              "Escuché que él estaba trabajando con pensé que en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about I thought",
+              "Yo pensé que estaba bien aprender sobre pensé que",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0374L02": {
+          "lego": [
+            "it was",
+            "era"
+          ],
+          "type": "A",
+          "available_legos": 714,
+          "practice_phrases": [
+            [
+              "it was",
+              "era",
+              null,
+              1
+            ],
+            [
+              "with it was",
+              "con era",
+              null,
+              3
+            ],
+            [
+              "I want it was",
+              "Yo quiero era",
+              null,
+              3
+            ],
+            [
+              "She said it was",
+              "Ella dijo era",
+              null,
+              3
+            ],
+            [
+              "I can use it was",
+              "Yo puedo usar era",
+              null,
+              4
+            ],
+            [
+              "He wanted it was",
+              "Él quería era",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand it was yesterday",
+              "Yo estaba intentando comprender era ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted it was today",
+              "Ella me dijo que quería era hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with it was at the office",
+              "Escuché que él estaba trabajando con era en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about it was",
+              "Yo pensé que estaba bien aprender sobre era",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0166L02": {
+          "lego": [
+            "very",
+            "muy"
+          ],
+          "type": "A",
+          "available_legos": 715,
+          "practice_phrases": [
+            [
+              "very",
+              "muy",
+              null,
+              1
+            ],
+            [
+              "with very",
+              "con muy",
+              null,
+              3
+            ],
+            [
+              "I want very",
+              "Yo quiero muy",
+              null,
+              3
+            ],
+            [
+              "She said very",
+              "Ella dijo muy",
+              null,
+              3
+            ],
+            [
+              "I can use very",
+              "Yo puedo usar muy",
+              null,
+              4
+            ],
+            [
+              "He wanted very",
+              "Él quería muy",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand very yesterday",
+              "Yo estaba intentando comprender muy ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted very today",
+              "Ella me dijo que quería muy hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with very at the office",
+              "Escuché que él estaba trabajando con muy en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about very",
+              "Yo pensé que estaba bien aprender sobre muy",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0374L05": {
+          "lego": [
+            "beautiful",
+            "hermoso"
+          ],
+          "type": "A",
+          "available_legos": 716,
+          "practice_phrases": [
+            [
+              "beautiful",
+              "hermoso",
+              null,
+              1
+            ],
+            [
+              "with beautiful",
+              "con hermoso",
+              null,
+              3
+            ],
+            [
+              "I want beautiful",
+              "Yo quiero hermoso",
+              null,
+              3
+            ],
+            [
+              "She said beautiful",
+              "Ella dijo hermoso",
+              null,
+              3
+            ],
+            [
+              "I can use beautiful",
+              "Yo puedo usar hermoso",
+              null,
+              4
+            ],
+            [
+              "He wanted beautiful",
+              "Él quería hermoso",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand beautiful yesterday",
+              "Yo estaba intentando comprender hermoso ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted beautiful today",
+              "Ella me dijo que quería hermoso hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with beautiful at the office",
+              "Escuché que él estaba trabajando con hermoso en la oficina",
+              null,
+              10
+            ],
+            [
+              "Yes I thought it was very beautiful.",
+              "Sí pensé que era muy hermoso.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0375": {
+      "seed": "S0375",
+      "seed_pair": {
+        "target": "No no sabía qué estaba haciendo.",
+        "known": "No I didn't know what she was doing."
+      },
+      "cumulative_legos": 718,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "No",
+            "No"
+          ],
+          "type": "A",
+          "available_legos": 717,
+          "practice_phrases": [
+            [
+              "No",
+              "No",
+              null,
+              1
+            ],
+            [
+              "No thanks",
+              "No gracias",
+              null,
+              2
+            ],
+            [
+              "No I can't help",
+              "No yo no puedo ayudar",
+              null,
+              4
+            ],
+            [
+              "No I don't think so",
+              "No yo no creo",
+              null,
+              4
+            ],
+            [
+              "No I don't want to",
+              "No yo no quiero",
+              null,
+              4
+            ],
+            [
+              "No I wasn't working yesterday",
+              "No yo no estaba trabajando ayer",
+              null,
+              6
+            ],
+            [
+              "No I don't know what you want to say to me",
+              "No yo no sé lo que quieres decirme",
+              null,
+              11
+            ],
+            [
+              "No I didn't see anyone at the house when I went",
+              "No yo no vi a nadie en la casa cuando fui",
+              null,
+              12
+            ],
+            [
+              "No I don't think I can help you with that right now",
+              "No yo no creo que pueda ayudarte con eso ahora",
+              null,
+              12
+            ],
+            [
+              "No she didn't tell me what she wanted to do",
+              "No ella no me dijo lo que quería hacer",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0375L01": {
+          "lego": [
+            "I didn't know",
+            "no sabía"
+          ],
+          "type": "M",
+          "available_legos": 718,
+          "practice_phrases": [
+            [
+              "I didn't know",
+              "no sabía",
+              null,
+              2
+            ],
+            [
+              "with I didn't know",
+              "con no sabía",
+              null,
+              4
+            ],
+            [
+              "I want I didn't know",
+              "Yo quiero no sabía",
+              null,
+              3
+            ],
+            [
+              "She said I didn't know",
+              "Ella dijo no sabía",
+              null,
+              3
+            ],
+            [
+              "I can use I didn't know",
+              "Yo puedo usar no sabía",
+              null,
+              4
+            ],
+            [
+              "He wanted I didn't know",
+              "Él quería no sabía",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand I didn't know yesterday",
+              "Yo estaba intentando comprender no sabía ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted I didn't know today",
+              "Ella me dijo que quería no sabía hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with I didn't know at the office",
+              "Escuché que él estaba trabajando con no sabía en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about I didn't know",
+              "Yo pensé que estaba bien aprender sobre no sabía",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0068L01": {
+          "lego": [
+            "what",
+            "qué"
+          ],
+          "type": "A",
+          "available_legos": 719,
+          "practice_phrases": [
+            [
+              "what",
+              "qué",
+              null,
+              1
+            ],
+            [
+              "with what",
+              "con qué",
+              null,
+              3
+            ],
+            [
+              "I want what",
+              "Yo quiero qué",
+              null,
+              3
+            ],
+            [
+              "She said what",
+              "Ella dijo qué",
+              null,
+              3
+            ],
+            [
+              "I can use what",
+              "Yo puedo usar qué",
+              null,
+              4
+            ],
+            [
+              "He wanted what",
+              "Él quería qué",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand what yesterday",
+              "Yo estaba intentando comprender qué ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted what today",
+              "Ella me dijo que quería qué hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with what at the office",
+              "Escuché que él estaba trabajando con qué en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about what",
+              "Yo pensé que estaba bien aprender sobre qué",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0375L02": {
+          "lego": [
+            "she was doing",
+            "estaba haciendo"
+          ],
+          "type": "M",
+          "available_legos": 720,
+          "practice_phrases": [
+            [
+              "she was doing",
+              "estaba haciendo",
+              null,
+              2
+            ],
+            [
+              "with she was doing",
+              "con estaba haciendo",
+              null,
+              4
+            ],
+            [
+              "I want she was doing",
+              "Yo quiero estaba haciendo",
+              null,
+              3
+            ],
+            [
+              "She said she was doing",
+              "Ella dijo estaba haciendo",
+              null,
+              3
+            ],
+            [
+              "I can use she was doing",
+              "Yo puedo usar estaba haciendo",
+              null,
+              4
+            ],
+            [
+              "He wanted she was doing",
+              "Él quería estaba haciendo",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand she was doing yesterday",
+              "Yo estaba intentando comprender estaba haciendo ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted she was doing today",
+              "Ella me dijo que quería estaba haciendo hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with she was doing at the office",
+              "Escuché que él estaba trabajando con estaba haciendo en la oficina",
+              null,
+              10
+            ],
+            [
+              "No I didn't know what she was doing.",
+              "No no sabía qué estaba haciendo.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0376": {
+      "seed": "S0376",
+      "seed_pair": {
+        "target": "No fui a ninguna parte el mes pasado.",
+        "known": "I didn't go anywhere last month."
+      },
+      "cumulative_legos": 722,
+      "legos": {
+        "S0376L01": {
+          "lego": [
+            "I didn't go",
+            "No fui"
+          ],
+          "type": "M",
+          "available_legos": 721,
+          "practice_phrases": [
+            [
+              "I didn't go",
+              "No fui",
+              null,
+              2
+            ],
+            [
+              "with I didn't go",
+              "con No fui",
+              null,
+              4
+            ],
+            [
+              "I want I didn't go",
+              "Yo quiero No fui",
+              null,
+              3
+            ],
+            [
+              "She said I didn't go",
+              "Ella dijo No fui",
+              null,
+              3
+            ],
+            [
+              "I can use I didn't go",
+              "Yo puedo usar No fui",
+              null,
+              4
+            ],
+            [
+              "He wanted I didn't go",
+              "Él quería No fui",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand I didn't go yesterday",
+              "Yo estaba intentando comprender No fui ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted I didn't go today",
+              "Ella me dijo que quería No fui hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with I didn't go at the office",
+              "Escuché que él estaba trabajando con No fui en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about I didn't go",
+              "Yo pensé que estaba bien aprender sobre No fui",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0376L02": {
+          "lego": [
+            "anywhere",
+            "a ninguna parte"
+          ],
+          "type": "M",
+          "available_legos": 722,
+          "practice_phrases": [
+            [
+              "anywhere",
+              "a ninguna parte",
+              null,
+              3
+            ],
+            [
+              "with anywhere",
+              "con a ninguna parte",
+              null,
+              5
+            ],
+            [
+              "I want anywhere",
+              "Yo quiero a ninguna parte",
+              null,
+              3
+            ],
+            [
+              "She said anywhere",
+              "Ella dijo a ninguna parte",
+              null,
+              3
+            ],
+            [
+              "I can use anywhere",
+              "Yo puedo usar a ninguna parte",
+              null,
+              4
+            ],
+            [
+              "He wanted anywhere",
+              "Él quería a ninguna parte",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand anywhere yesterday",
+              "Yo estaba intentando comprender a ninguna parte ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted anywhere today",
+              "Ella me dijo que quería a ninguna parte hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with anywhere at the office",
+              "Escuché que él estaba trabajando con a ninguna parte en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about anywhere",
+              "Yo pensé que estaba bien aprender sobre a ninguna parte",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0037L05": {
+          "lego": [
+            "last month",
+            "el mes pasado"
+          ],
+          "type": "M",
+          "available_legos": 723,
+          "practice_phrases": [
+            [
+              "last month",
+              "el mes pasado",
+              null,
+              3
+            ],
+            [
+              "with last month",
+              "con el mes pasado",
+              null,
+              5
+            ],
+            [
+              "I want last month",
+              "Yo quiero el mes pasado",
+              null,
+              3
+            ],
+            [
+              "She said last month",
+              "Ella dijo el mes pasado",
+              null,
+              3
+            ],
+            [
+              "I can use last month",
+              "Yo puedo usar el mes pasado",
+              null,
+              4
+            ],
+            [
+              "He wanted last month",
+              "Él quería el mes pasado",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand last month yesterday",
+              "Yo estaba intentando comprender el mes pasado ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted last month today",
+              "Ella me dijo que quería el mes pasado hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with last month at the office",
+              "Escuché que él estaba trabajando con el mes pasado en la oficina",
+              null,
+              10
+            ],
+            [
+              "I didn't go anywhere last month.",
+              "No fui a ninguna parte el mes pasado.",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0377": {
+      "seed": "S0377",
+      "seed_pair": {
+        "target": "¿Fuiste a alguna parte en el mundo el año pasado?",
+        "known": "Did you go anywhere in the world last year?"
+      },
+      "cumulative_legos": 725,
+      "legos": {
+        "S0377L01": {
+          "lego": [
+            "Did you go",
+            "Fuiste"
+          ],
+          "type": "A",
+          "available_legos": 724,
+          "practice_phrases": [
+            [
+              "Did you go",
+              "Fuiste",
+              null,
+              1
+            ],
+            [
+              "with Did you go",
+              "con Fuiste",
+              null,
+              3
+            ],
+            [
+              "I want Did you go",
+              "Yo quiero Fuiste",
+              null,
+              3
+            ],
+            [
+              "She said Did you go",
+              "Ella dijo Fuiste",
+              null,
+              3
+            ],
+            [
+              "I can use Did you go",
+              "Yo puedo usar Fuiste",
+              null,
+              4
+            ],
+            [
+              "He wanted Did you go",
+              "Él quería Fuiste",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand Did you go yesterday",
+              "Yo estaba intentando comprender Fuiste ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted Did you go today",
+              "Ella me dijo que quería Fuiste hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with Did you go at the office",
+              "Escuché que él estaba trabajando con Fuiste en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about Did you go",
+              "Yo pensé que estaba bien aprender sobre Fuiste",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0377L02": {
+          "lego": [
+            "anywhere",
+            "a alguna parte"
+          ],
+          "type": "M",
+          "available_legos": 725,
+          "practice_phrases": [
+            [
+              "anywhere",
+              "a alguna parte",
+              null,
+              3
+            ],
+            [
+              "with anywhere",
+              "con a alguna parte",
+              null,
+              5
+            ],
+            [
+              "I want anywhere",
+              "Yo quiero a alguna parte",
+              null,
+              3
+            ],
+            [
+              "She said anywhere",
+              "Ella dijo a alguna parte",
+              null,
+              3
+            ],
+            [
+              "I can use anywhere",
+              "Yo puedo usar a alguna parte",
+              null,
+              4
+            ],
+            [
+              "He wanted anywhere",
+              "Él quería a alguna parte",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand anywhere yesterday",
+              "Yo estaba intentando comprender a alguna parte ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted anywhere today",
+              "Ella me dijo que quería a alguna parte hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with anywhere at the office",
+              "Escuché que él estaba trabajando con a alguna parte en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about anywhere",
+              "Yo pensé que estaba bien aprender sobre a alguna parte",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0377L03": {
+          "lego": [
+            "in the world",
+            "en el mundo"
+          ],
+          "type": "M",
+          "available_legos": 726,
+          "practice_phrases": [
+            [
+              "in the world",
+              "en el mundo",
+              null,
+              3
+            ],
+            [
+              "with in the world",
+              "con en el mundo",
+              null,
+              5
+            ],
+            [
+              "I want in the world",
+              "Yo quiero en el mundo",
+              null,
+              3
+            ],
+            [
+              "She said in the world",
+              "Ella dijo en el mundo",
+              null,
+              3
+            ],
+            [
+              "I can use in the world",
+              "Yo puedo usar en el mundo",
+              null,
+              4
+            ],
+            [
+              "He wanted in the world",
+              "Él quería en el mundo",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand in the world yesterday",
+              "Yo estaba intentando comprender en el mundo ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted in the world today",
+              "Ella me dijo que quería en el mundo hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with in the world at the office",
+              "Escuché que él estaba trabajando con en el mundo en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about in the world",
+              "Yo pensé que estaba bien aprender sobre en el mundo",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0377L04": {
+          "lego": [
+            "last year",
+            "el año pasado"
+          ],
+          "type": "M",
+          "available_legos": 727,
+          "practice_phrases": [
+            [
+              "last year",
+              "el año pasado",
+              null,
+              3
+            ],
+            [
+              "with last year",
+              "con el año pasado",
+              null,
+              5
+            ],
+            [
+              "I want last year",
+              "Yo quiero el año pasado",
+              null,
+              3
+            ],
+            [
+              "She said last year",
+              "Ella dijo el año pasado",
+              null,
+              3
+            ],
+            [
+              "I can use last year",
+              "Yo puedo usar el año pasado",
+              null,
+              4
+            ],
+            [
+              "He wanted last year",
+              "Él quería el año pasado",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand last year yesterday",
+              "Yo estaba intentando comprender el año pasado ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted last year today",
+              "Ella me dijo que quería el año pasado hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with last year at the office",
+              "Escuché que él estaba trabajando con el año pasado en la oficina",
+              null,
+              10
+            ],
+            [
+              "Did you go anywhere in the world last year?",
+              "¿Fuiste a alguna parte en el mundo el año pasado?",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0378": {
+      "seed": "S0378",
+      "seed_pair": {
+        "target": "No no tenía suficiente dinero para vacaciones.",
+        "known": "No I didn't have enough money for holidays."
+      },
+      "cumulative_legos": 729,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "No",
+            "No"
+          ],
+          "type": "A",
+          "available_legos": 728,
+          "practice_phrases": [
+            [
+              "No",
+              "No",
+              null,
+              1
+            ],
+            [
+              "No thanks",
+              "No gracias",
+              null,
+              2
+            ],
+            [
+              "No I can't help",
+              "No yo no puedo ayudar",
+              null,
+              4
+            ],
+            [
+              "No I don't think so",
+              "No yo no creo",
+              null,
+              4
+            ],
+            [
+              "No I don't want to",
+              "No yo no quiero",
+              null,
+              4
+            ],
+            [
+              "No I wasn't working yesterday",
+              "No yo no estaba trabajando ayer",
+              null,
+              6
+            ],
+            [
+              "No I don't know what you want to say to me",
+              "No yo no sé lo que quieres decirme",
+              null,
+              11
+            ],
+            [
+              "No I didn't see anyone at the house when I went",
+              "No yo no vi a nadie en la casa cuando fui",
+              null,
+              12
+            ],
+            [
+              "No I don't think I can help you with that right now",
+              "No yo no creo que pueda ayudarte con eso ahora",
+              null,
+              12
+            ],
+            [
+              "No she didn't tell me what she wanted to do",
+              "No ella no me dijo lo que quería hacer",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0378L01": {
+          "lego": [
+            "I didn't have",
+            "no tenía"
+          ],
+          "type": "M",
+          "available_legos": 729,
+          "practice_phrases": [
+            [
+              "I didn't have",
+              "no tenía",
+              null,
+              2
+            ],
+            [
+              "with I didn't have",
+              "con no tenía",
+              null,
+              4
+            ],
+            [
+              "I want I didn't have",
+              "Yo quiero no tenía",
+              null,
+              3
+            ],
+            [
+              "She said I didn't have",
+              "Ella dijo no tenía",
+              null,
+              3
+            ],
+            [
+              "I can use I didn't have",
+              "Yo puedo usar no tenía",
+              null,
+              4
+            ],
+            [
+              "He wanted I didn't have",
+              "Él quería no tenía",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand I didn't have yesterday",
+              "Yo estaba intentando comprender no tenía ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted I didn't have today",
+              "Ella me dijo que quería no tenía hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with I didn't have at the office",
+              "Escuché que él estaba trabajando con no tenía en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about I didn't have",
+              "Yo pensé que estaba bien aprender sobre no tenía",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0294L02": {
+          "lego": [
+            "enough",
+            "suficiente"
+          ],
+          "type": "A",
+          "available_legos": 730,
+          "practice_phrases": [
+            [
+              "enough",
+              "suficiente",
+              null,
+              1
+            ],
+            [
+              "with enough",
+              "con suficiente",
+              null,
+              3
+            ],
+            [
+              "I want enough",
+              "Yo quiero suficiente",
+              null,
+              3
+            ],
+            [
+              "She said enough",
+              "Ella dijo suficiente",
+              null,
+              3
+            ],
+            [
+              "I can use enough",
+              "Yo puedo usar suficiente",
+              null,
+              4
+            ],
+            [
+              "He wanted enough",
+              "Él quería suficiente",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand enough yesterday",
+              "Yo estaba intentando comprender suficiente ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted enough today",
+              "Ella me dijo que quería suficiente hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with enough at the office",
+              "Escuché que él estaba trabajando con suficiente en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about enough",
+              "Yo pensé que estaba bien aprender sobre suficiente",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0378L02": {
+          "lego": [
+            "money",
+            "dinero"
+          ],
+          "type": "A",
+          "available_legos": 731,
+          "practice_phrases": [
+            [
+              "money",
+              "dinero",
+              null,
+              1
+            ],
+            [
+              "with money",
+              "con dinero",
+              null,
+              3
+            ],
+            [
+              "I want money",
+              "Yo quiero dinero",
+              null,
+              3
+            ],
+            [
+              "She said money",
+              "Ella dijo dinero",
+              null,
+              3
+            ],
+            [
+              "I can use money",
+              "Yo puedo usar dinero",
+              null,
+              4
+            ],
+            [
+              "He wanted money",
+              "Él quería dinero",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand money yesterday",
+              "Yo estaba intentando comprender dinero ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted money today",
+              "Ella me dijo que quería dinero hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with money at the office",
+              "Escuché que él estaba trabajando con dinero en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about money",
+              "Yo pensé que estaba bien aprender sobre dinero",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0332L07": {
+          "lego": [
+            "for",
+            "para"
+          ],
+          "type": "A",
+          "available_legos": 732,
+          "practice_phrases": [
+            [
+              "for",
+              "para",
+              null,
+              1
+            ],
+            [
+              "with for",
+              "con para",
+              null,
+              3
+            ],
+            [
+              "I want for",
+              "Yo quiero para",
+              null,
+              3
+            ],
+            [
+              "She said for",
+              "Ella dijo para",
+              null,
+              3
+            ],
+            [
+              "I can use for",
+              "Yo puedo usar para",
+              null,
+              4
+            ],
+            [
+              "He wanted for",
+              "Él quería para",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand for yesterday",
+              "Yo estaba intentando comprender para ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted for today",
+              "Ella me dijo que quería para hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with for at the office",
+              "Escuché que él estaba trabajando con para en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about for",
+              "Yo pensé que estaba bien aprender sobre para",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0378L03": {
+          "lego": [
+            "holidays",
+            "vacaciones"
+          ],
+          "type": "A",
+          "available_legos": 733,
+          "practice_phrases": [
+            [
+              "holidays",
+              "vacaciones",
+              null,
+              1
+            ],
+            [
+              "with holidays",
+              "con vacaciones",
+              null,
+              3
+            ],
+            [
+              "I want holidays",
+              "Yo quiero vacaciones",
+              null,
+              3
+            ],
+            [
+              "She said holidays",
+              "Ella dijo vacaciones",
+              null,
+              3
+            ],
+            [
+              "I can use holidays",
+              "Yo puedo usar vacaciones",
+              null,
+              4
+            ],
+            [
+              "He wanted holidays",
+              "Él quería vacaciones",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand holidays yesterday",
+              "Yo estaba intentando comprender vacaciones ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted holidays today",
+              "Ella me dijo que quería vacaciones hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with holidays at the office",
+              "Escuché que él estaba trabajando con vacaciones en la oficina",
+              null,
+              10
+            ],
+            [
+              "No I didn't have enough money for holidays.",
+              "No no tenía suficiente dinero para vacaciones.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0379": {
+      "seed": "S0379",
+      "seed_pair": {
+        "target": "Sí tuve suficiente suerte para viajar a África.",
+        "known": "Yes I was lucky enough to travel to Africa."
+      },
+      "cumulative_legos": 735,
+      "legos": {
+        "S0097L01": {
+          "lego": [
+            "Yes",
+            "Sí"
+          ],
+          "type": "A",
+          "available_legos": 734,
+          "practice_phrases": [
+            [
+              "Yes",
+              "Sí",
+              null,
+              1
+            ],
+            [
+              "Yes I can",
+              "Sí yo puedo",
+              null,
+              2
+            ],
+            [
+              "Yes I want to",
+              "Sí yo quiero",
+              null,
+              3
+            ],
+            [
+              "Yes she was there",
+              "Sí ella estaba ahí",
+              null,
+              3
+            ],
+            [
+              "Yes I can help you",
+              "Sí yo puedo ayudarte",
+              null,
+              4
+            ],
+            [
+              "Yes he wanted to learn",
+              "Sí él quería aprender",
+              null,
+              4
+            ],
+            [
+              "Yes I thought it was very good to do that yesterday",
+              "Sí yo pensé que estaba muy bien hacer eso ayer",
+              null,
+              11
+            ],
+            [
+              "Yes I was trying to speak Spanish as often as I could",
+              "Sí yo estaba intentando hablar español lo más frecuentemente que podía",
+              null,
+              12
+            ],
+            [
+              "Yes she told me she wanted to come back after the meeting",
+              "Sí ella me dijo que quería volver después de la reunión",
+              null,
+              12
+            ],
+            [
+              "Yes I know what you want to say to me",
+              "Sí yo sé lo que quieres decirme",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0379L01": {
+          "lego": [
+            "I was lucky enough to",
+            "tuve suficiente suerte para"
+          ],
+          "type": "M",
+          "available_legos": 735,
+          "practice_phrases": [
+            [
+              "I was lucky enough to",
+              "tuve suficiente suerte para",
+              null,
+              4
+            ],
+            [
+              "with I was lucky enough to",
+              "con tuve suficiente suerte para",
+              null,
+              6
+            ],
+            [
+              "I want I was lucky enough to",
+              "Yo quiero tuve suficiente suerte para",
+              null,
+              3
+            ],
+            [
+              "She said I was lucky enough to",
+              "Ella dijo tuve suficiente suerte para",
+              null,
+              3
+            ],
+            [
+              "I can use I was lucky enough to",
+              "Yo puedo usar tuve suficiente suerte para",
+              null,
+              4
+            ],
+            [
+              "He wanted I was lucky enough to",
+              "Él quería tuve suficiente suerte para",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand I was lucky enough to yesterday",
+              "Yo estaba intentando comprender tuve suficiente suerte para ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted I was lucky enough to today",
+              "Ella me dijo que quería tuve suficiente suerte para hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with I was lucky enough to at the office",
+              "Escuché que él estaba trabajando con tuve suficiente suerte para en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about I was lucky enough to",
+              "Yo pensé que estaba bien aprender sobre tuve suficiente suerte para",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0379L02": {
+          "lego": [
+            "travel to",
+            "viajar a"
+          ],
+          "type": "M",
+          "available_legos": 736,
+          "practice_phrases": [
+            [
+              "travel to",
+              "viajar a",
+              null,
+              2
+            ],
+            [
+              "with travel to",
+              "con viajar a",
+              null,
+              4
+            ],
+            [
+              "I want travel to",
+              "Yo quiero viajar a",
+              null,
+              3
+            ],
+            [
+              "She said travel to",
+              "Ella dijo viajar a",
+              null,
+              3
+            ],
+            [
+              "I can use travel to",
+              "Yo puedo usar viajar a",
+              null,
+              4
+            ],
+            [
+              "He wanted travel to",
+              "Él quería viajar a",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand travel to yesterday",
+              "Yo estaba intentando comprender viajar a ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted travel to today",
+              "Ella me dijo que quería viajar a hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with travel to at the office",
+              "Escuché que él estaba trabajando con viajar a en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about travel to",
+              "Yo pensé que estaba bien aprender sobre viajar a",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0379L03": {
+          "lego": [
+            "Africa",
+            "África"
+          ],
+          "type": "A",
+          "available_legos": 737,
+          "practice_phrases": [
+            [
+              "Africa",
+              "África",
+              null,
+              1
+            ],
+            [
+              "with Africa",
+              "con África",
+              null,
+              3
+            ],
+            [
+              "I want Africa",
+              "Yo quiero África",
+              null,
+              3
+            ],
+            [
+              "She said Africa",
+              "Ella dijo África",
+              null,
+              3
+            ],
+            [
+              "I can use Africa",
+              "Yo puedo usar África",
+              null,
+              4
+            ],
+            [
+              "He wanted Africa",
+              "Él quería África",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand Africa yesterday",
+              "Yo estaba intentando comprender África ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted Africa today",
+              "Ella me dijo que quería África hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with Africa at the office",
+              "Escuché que él estaba trabajando con África en la oficina",
+              null,
+              10
+            ],
+            [
+              "Yes I was lucky enough to travel to Africa.",
+              "Sí tuve suficiente suerte para viajar a África.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0380": {
+      "seed": "S0380",
+      "seed_pair": {
+        "target": "Pregunté qué quería incluir.",
+        "known": "I asked what she wanted to include."
+      },
+      "cumulative_legos": 739,
+      "legos": {
+        "S0380L01": {
+          "lego": [
+            "I asked",
+            "Pregunté"
+          ],
+          "type": "A",
+          "available_legos": 738,
+          "practice_phrases": [
+            [
+              "I asked",
+              "Pregunté",
+              null,
+              1
+            ],
+            [
+              "with I asked",
+              "con Pregunté",
+              null,
+              3
+            ],
+            [
+              "I want I asked",
+              "Yo quiero Pregunté",
+              null,
+              3
+            ],
+            [
+              "She said I asked",
+              "Ella dijo Pregunté",
+              null,
+              3
+            ],
+            [
+              "I can use I asked",
+              "Yo puedo usar Pregunté",
+              null,
+              4
+            ],
+            [
+              "He wanted I asked",
+              "Él quería Pregunté",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand I asked yesterday",
+              "Yo estaba intentando comprender Pregunté ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted I asked today",
+              "Ella me dijo que quería Pregunté hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with I asked at the office",
+              "Escuché que él estaba trabajando con Pregunté en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about I asked",
+              "Yo pensé que estaba bien aprender sobre Pregunté",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0068L01": {
+          "lego": [
+            "what",
+            "qué"
+          ],
+          "type": "A",
+          "available_legos": 739,
+          "practice_phrases": [
+            [
+              "what",
+              "qué",
+              null,
+              1
+            ],
+            [
+              "with what",
+              "con qué",
+              null,
+              3
+            ],
+            [
+              "I want what",
+              "Yo quiero qué",
+              null,
+              3
+            ],
+            [
+              "She said what",
+              "Ella dijo qué",
+              null,
+              3
+            ],
+            [
+              "I can use what",
+              "Yo puedo usar qué",
+              null,
+              4
+            ],
+            [
+              "He wanted what",
+              "Él quería qué",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand what yesterday",
+              "Yo estaba intentando comprender qué ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted what today",
+              "Ella me dijo que quería qué hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with what at the office",
+              "Escuché que él estaba trabajando con qué en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about what",
+              "Yo pensé que estaba bien aprender sobre qué",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0380L02": {
+          "lego": [
+            "she wanted",
+            "quería"
+          ],
+          "type": "A",
+          "available_legos": 740,
+          "practice_phrases": [
+            [
+              "she wanted",
+              "quería",
+              null,
+              1
+            ],
+            [
+              "with she wanted",
+              "con quería",
+              null,
+              3
+            ],
+            [
+              "I want she wanted",
+              "Yo quiero quería",
+              null,
+              3
+            ],
+            [
+              "She said she wanted",
+              "Ella dijo quería",
+              null,
+              3
+            ],
+            [
+              "I can use she wanted",
+              "Yo puedo usar quería",
+              null,
+              4
+            ],
+            [
+              "He wanted she wanted",
+              "Él quería quería",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand she wanted yesterday",
+              "Yo estaba intentando comprender quería ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted she wanted today",
+              "Ella me dijo que quería quería hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with she wanted at the office",
+              "Escuché que él estaba trabajando con quería en la oficina",
+              null,
+              10
+            ],
+            [
+              "I thought it was good to learn about she wanted",
+              "Yo pensé que estaba bien aprender sobre quería",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0380L03": {
+          "lego": [
+            "to include",
+            "incluir"
+          ],
+          "type": "A",
+          "available_legos": 741,
+          "practice_phrases": [
+            [
+              "to include",
+              "incluir",
+              null,
+              1
+            ],
+            [
+              "with to include",
+              "con incluir",
+              null,
+              3
+            ],
+            [
+              "I want to include",
+              "Yo quiero incluir",
+              null,
+              3
+            ],
+            [
+              "She said to include",
+              "Ella dijo incluir",
+              null,
+              3
+            ],
+            [
+              "I can use to include",
+              "Yo puedo usar incluir",
+              null,
+              4
+            ],
+            [
+              "He wanted to include",
+              "Él quería incluir",
+              null,
+              4
+            ],
+            [
+              "I was trying to understand to include yesterday",
+              "Yo estaba intentando comprender incluir ayer",
+              null,
+              7
+            ],
+            [
+              "She told me she wanted to include today",
+              "Ella me dijo que quería incluir hoy",
+              null,
+              8
+            ],
+            [
+              "I heard he was working with to include at the office",
+              "Escuché que él estaba trabajando con incluir en la oficina",
+              null,
+              10
+            ],
+            [
+              "I asked what she wanted to include.",
+              "Pregunté qué quería incluir.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    }
+  }
+}

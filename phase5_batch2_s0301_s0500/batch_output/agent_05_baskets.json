@@ -1,0 +1,7099 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "agent_id": 5,
+  "seed_range": "S0381-S0400",
+  "total_seeds": 20,
+  "validation_status": "PASSED",
+  "validated_at": "2025-11-07T13:37:53.026066Z",
+  "seeds": {
+    "S0381": {
+      "seed": "S0381",
+      "seed_pair": {
+        "target": "No pregunté si quería seguirnos.",
+        "known": "I didn't ask if he wanted to follow us."
+      },
+      "cumulative_legos": 762,
+      "legos": {
+        "S0345L04": {
+          "lego": [
+            "not",
+            "No"
+          ],
+          "type": "A",
+          "available_legos": 670,
+          "practice_phrases": [
+            [
+              "not",
+              "No",
+              null,
+              1
+            ],
+            [
+              "not",
+              "No",
+              null,
+              1
+            ],
+            [
+              "I want not",
+              "Quiero No",
+              null,
+              3
+            ],
+            [
+              "I have not",
+              "Tengo No",
+              null,
+              3
+            ],
+            [
+              "I have not here",
+              "Tengo No aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want not",
+              "Quieres No",
+              null,
+              4
+            ],
+            [
+              "I think I want not",
+              "Pienso que quiero No",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have not",
+              "No sé si puedo tener No",
+              null,
+              8
+            ],
+            [
+              "She said she wants not",
+              "Ella dijo que quiere No",
+              null,
+              6
+            ],
+            [
+              "Do you think I need not",
+              "Piensas que necesito No",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0381L02": {
+          "lego": [
+            "I asked",
+            "pregunté"
+          ],
+          "type": "A",
+          "available_legos": 670,
+          "practice_phrases": [
+            [
+              "I asked",
+              "pregunté",
+              null,
+              1
+            ],
+            [
+              "I asked",
+              "pregunté",
+              null,
+              1
+            ],
+            [
+              "I asked today",
+              "pregunté hoy",
+              null,
+              3
+            ],
+            [
+              "I asked here",
+              "pregunté aquí",
+              null,
+              3
+            ],
+            [
+              "I have I asked here",
+              "Tengo pregunté aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want I asked",
+              "Quieres pregunté",
+              null,
+              4
+            ],
+            [
+              "I think I want I asked",
+              "Pienso que quiero pregunté",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have I asked",
+              "No sé si puedo tener pregunté",
+              null,
+              8
+            ],
+            [
+              "She said she wants I asked",
+              "Ella dijo que quiere pregunté",
+              null,
+              6
+            ],
+            [
+              "Do you think I need I asked",
+              "Piensas que necesito pregunté",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0010L02": {
+          "lego": [
+            "if",
+            "si"
+          ],
+          "type": "A",
+          "available_legos": 670,
+          "practice_phrases": [
+            [
+              "if",
+              "si",
+              null,
+              1
+            ],
+            [
+              "if",
+              "si",
+              null,
+              1
+            ],
+            [
+              "I want if",
+              "Quiero si",
+              null,
+              3
+            ],
+            [
+              "I have if",
+              "Tengo si",
+              null,
+              3
+            ],
+            [
+              "I have if here",
+              "Tengo si aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want if",
+              "Quieres si",
+              null,
+              4
+            ],
+            [
+              "I think I want if",
+              "Pienso que quiero si",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have if",
+              "No sé si puedo tener si",
+              null,
+              8
+            ],
+            [
+              "She said she wants if",
+              "Ella dijo que quiere si",
+              null,
+              6
+            ],
+            [
+              "Do you think I need if",
+              "Piensas que necesito si",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0231L04": {
+          "lego": [
+            "wanted",
+            "quería"
+          ],
+          "type": "A",
+          "available_legos": 670,
+          "practice_phrases": [
+            [
+              "wanted",
+              "quería",
+              null,
+              1
+            ],
+            [
+              "wanted",
+              "quería",
+              null,
+              1
+            ],
+            [
+              "I want wanted",
+              "Quiero quería",
+              null,
+              3
+            ],
+            [
+              "I have wanted",
+              "Tengo quería",
+              null,
+              3
+            ],
+            [
+              "I have wanted here",
+              "Tengo quería aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want wanted",
+              "Quieres quería",
+              null,
+              4
+            ],
+            [
+              "I think I want wanted",
+              "Pienso que quiero quería",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have wanted",
+              "No sé si puedo tener quería",
+              null,
+              8
+            ],
+            [
+              "She said she wants wanted",
+              "Ella dijo que quiere quería",
+              null,
+              6
+            ],
+            [
+              "Do you think I need wanted",
+              "Piensas que necesito quería",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0381L01": {
+          "lego": [
+            "to follow us",
+            "seguirnos"
+          ],
+          "type": "M",
+          "available_legos": 670,
+          "practice_phrases": [
+            [
+              "to follow us",
+              "seguirnos",
+              null,
+              1
+            ],
+            [
+              "to follow us",
+              "seguirnos",
+              null,
+              1
+            ],
+            [
+              "I want to follow us",
+              "Quiero seguirnos",
+              null,
+              3
+            ],
+            [
+              "I can to follow us",
+              "Puedo seguirnos",
+              null,
+              3
+            ],
+            [
+              "I want to follow us now",
+              "Quiero seguirnos ahora",
+              null,
+              4
+            ],
+            [
+              "I need to follow us today",
+              "Necesito seguirnos hoy",
+              null,
+              5
+            ],
+            [
+              "I think I want to follow us",
+              "Pienso que quiero seguirnos",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have to follow us",
+              "No sé si puedo tener seguirnos",
+              null,
+              8
+            ],
+            [
+              "She said she wants to follow us",
+              "Ella dijo que quiere seguirnos",
+              null,
+              6
+            ],
+            [
+              "I didn't ask if he wanted to follow us.",
+              "No pregunté si quería seguirnos.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0382": {
+      "seed": "S0382",
+      "seed_pair": {
+        "target": "¿Preguntaste dónde quería ponerlo?",
+        "known": "Did you ask where he wanted to put it?"
+      },
+      "cumulative_legos": 764,
+      "legos": {
+        "S0382L01": {
+          "lego": [
+            "you asked",
+            "Preguntaste"
+          ],
+          "type": "A",
+          "available_legos": 670,
+          "practice_phrases": [
+            [
+              "you asked",
+              "Preguntaste",
+              null,
+              1
+            ],
+            [
+              "you asked",
+              "Preguntaste",
+              null,
+              1
+            ],
+            [
+              "you asked today",
+              "Preguntaste hoy",
+              null,
+              3
+            ],
+            [
+              "you asked here",
+              "Preguntaste aquí",
+              null,
+              3
+            ],
+            [
+              "I have you asked here",
+              "Tengo Preguntaste aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want you asked",
+              "Quieres Preguntaste",
+              null,
+              4
+            ],
+            [
+              "I think I want you asked",
+              "Pienso que quiero Preguntaste",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have you asked",
+              "No sé si puedo tener Preguntaste",
+              null,
+              8
+            ],
+            [
+              "She said she wants you asked",
+              "Ella dijo que quiere Preguntaste",
+              null,
+              6
+            ],
+            [
+              "Do you think I need you asked",
+              "Piensas que necesito Preguntaste",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0154L01": {
+          "lego": [
+            "where",
+            "dónde"
+          ],
+          "type": "A",
+          "available_legos": 670,
+          "practice_phrases": [
+            [
+              "where",
+              "dónde",
+              null,
+              1
+            ],
+            [
+              "where",
+              "dónde",
+              null,
+              1
+            ],
+            [
+              "I want where",
+              "Quiero dónde",
+              null,
+              3
+            ],
+            [
+              "I have where",
+              "Tengo dónde",
+              null,
+              3
+            ],
+            [
+              "I have where here",
+              "Tengo dónde aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want where",
+              "Quieres dónde",
+              null,
+              4
+            ],
+            [
+              "I think I want where",
+              "Pienso que quiero dónde",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have where",
+              "No sé si puedo tener dónde",
+              null,
+              8
+            ],
+            [
+              "She said she wants where",
+              "Ella dijo que quiere dónde",
+              null,
+              6
+            ],
+            [
+              "Do you think I need where",
+              "Piensas que necesito dónde",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0231L04": {
+          "lego": [
+            "wanted",
+            "quería"
+          ],
+          "type": "A",
+          "available_legos": 670,
+          "practice_phrases": [
+            [
+              "wanted",
+              "quería",
+              null,
+              1
+            ],
+            [
+              "wanted",
+              "quería",
+              null,
+              1
+            ],
+            [
+              "I want wanted",
+              "Quiero quería",
+              null,
+              3
+            ],
+            [
+              "I have wanted",
+              "Tengo quería",
+              null,
+              3
+            ],
+            [
+              "I have wanted here",
+              "Tengo quería aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want wanted",
+              "Quieres quería",
+              null,
+              4
+            ],
+            [
+              "I think I want wanted",
+              "Pienso que quiero quería",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have wanted",
+              "No sé si puedo tener quería",
+              null,
+              8
+            ],
+            [
+              "She said she wants wanted",
+              "Ella dijo que quiere quería",
+              null,
+              6
+            ],
+            [
+              "Do you think I need wanted",
+              "Piensas que necesito quería",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0314L04": {
+          "lego": [
+            "put it",
+            "ponerlo"
+          ],
+          "type": "A",
+          "available_legos": 670,
+          "practice_phrases": [
+            [
+              "put it",
+              "ponerlo",
+              null,
+              1
+            ],
+            [
+              "put it",
+              "ponerlo",
+              null,
+              1
+            ],
+            [
+              "I want put it",
+              "Quiero ponerlo",
+              null,
+              3
+            ],
+            [
+              "I have put it",
+              "Tengo ponerlo",
+              null,
+              3
+            ],
+            [
+              "I have put it here",
+              "Tengo ponerlo aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want put it",
+              "Quieres ponerlo",
+              null,
+              4
+            ],
+            [
+              "I think I want put it",
+              "Pienso que quiero ponerlo",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have put it",
+              "No sé si puedo tener ponerlo",
+              null,
+              8
+            ],
+            [
+              "She said she wants put it",
+              "Ella dijo que quiere ponerlo",
+              null,
+              6
+            ],
+            [
+              "Did you ask where he wanted to put it?",
+              "¿Preguntaste dónde quería ponerlo?",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0383": {
+      "seed": "S0383",
+      "seed_pair": {
+        "target": "Sí dijo que quería ponerlo en el jardín.",
+        "known": "Yes he said he wanted to put it in the garden."
+      },
+      "cumulative_legos": 766,
+      "legos": {
+        "S0097L01": {
+          "lego": [
+            "yes",
+            "Sí"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "yes",
+              "Sí",
+              null,
+              1
+            ],
+            [
+              "yes",
+              "Sí",
+              null,
+              1
+            ],
+            [
+              "I want yes",
+              "Quiero Sí",
+              null,
+              3
+            ],
+            [
+              "I have yes",
+              "Tengo Sí",
+              null,
+              3
+            ],
+            [
+              "I have yes here",
+              "Tengo Sí aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want yes",
+              "Quieres Sí",
+              null,
+              4
+            ],
+            [
+              "I think I want yes",
+              "Pienso que quiero Sí",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have yes",
+              "No sé si puedo tener Sí",
+              null,
+              8
+            ],
+            [
+              "She said she wants yes",
+              "Ella dijo que quiere Sí",
+              null,
+              6
+            ],
+            [
+              "Do you think I need yes",
+              "Piensas que necesito Sí",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0235L04": {
+          "lego": [
+            "said",
+            "dijo"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "said",
+              "dijo",
+              null,
+              1
+            ],
+            [
+              "said",
+              "dijo",
+              null,
+              1
+            ],
+            [
+              "I want said",
+              "Quiero dijo",
+              null,
+              3
+            ],
+            [
+              "I have said",
+              "Tengo dijo",
+              null,
+              3
+            ],
+            [
+              "I have said here",
+              "Tengo dijo aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want said",
+              "Quieres dijo",
+              null,
+              4
+            ],
+            [
+              "I think I want said",
+              "Pienso que quiero dijo",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have said",
+              "No sé si puedo tener dijo",
+              null,
+              8
+            ],
+            [
+              "She said she wants said",
+              "Ella dijo que quiere dijo",
+              null,
+              6
+            ],
+            [
+              "Do you think I need said",
+              "Piensas que necesito dijo",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0102L02": {
+          "lego": [
+            "that",
+            "que"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "I want that",
+              "Quiero que",
+              null,
+              3
+            ],
+            [
+              "I have that",
+              "Tengo que",
+              null,
+              3
+            ],
+            [
+              "I have that here",
+              "Tengo que aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want that",
+              "Quieres que",
+              null,
+              4
+            ],
+            [
+              "I think I want that",
+              "Pienso que quiero que",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have that",
+              "No sé si puedo tener que",
+              null,
+              8
+            ],
+            [
+              "She said she wants that",
+              "Ella dijo que quiere que",
+              null,
+              6
+            ],
+            [
+              "Do you think I need that",
+              "Piensas que necesito que",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0231L04": {
+          "lego": [
+            "wanted",
+            "quería"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "wanted",
+              "quería",
+              null,
+              1
+            ],
+            [
+              "wanted",
+              "quería",
+              null,
+              1
+            ],
+            [
+              "I want wanted",
+              "Quiero quería",
+              null,
+              3
+            ],
+            [
+              "I have wanted",
+              "Tengo quería",
+              null,
+              3
+            ],
+            [
+              "I have wanted here",
+              "Tengo quería aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want wanted",
+              "Quieres quería",
+              null,
+              4
+            ],
+            [
+              "I think I want wanted",
+              "Pienso que quiero quería",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have wanted",
+              "No sé si puedo tener quería",
+              null,
+              8
+            ],
+            [
+              "She said she wants wanted",
+              "Ella dijo que quiere quería",
+              null,
+              6
+            ],
+            [
+              "Do you think I need wanted",
+              "Piensas que necesito quería",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0314L04": {
+          "lego": [
+            "put it",
+            "ponerlo"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "put it",
+              "ponerlo",
+              null,
+              1
+            ],
+            [
+              "put it",
+              "ponerlo",
+              null,
+              1
+            ],
+            [
+              "I want put it",
+              "Quiero ponerlo",
+              null,
+              3
+            ],
+            [
+              "I have put it",
+              "Tengo ponerlo",
+              null,
+              3
+            ],
+            [
+              "I have put it here",
+              "Tengo ponerlo aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want put it",
+              "Quieres ponerlo",
+              null,
+              4
+            ],
+            [
+              "I think I want put it",
+              "Pienso que quiero ponerlo",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have put it",
+              "No sé si puedo tener ponerlo",
+              null,
+              8
+            ],
+            [
+              "She said she wants put it",
+              "Ella dijo que quiere ponerlo",
+              null,
+              6
+            ],
+            [
+              "Do you think I need put it",
+              "Piensas que necesito ponerlo",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0131L05": {
+          "lego": [
+            "in",
+            "en"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "in",
+              "en",
+              null,
+              1
+            ],
+            [
+              "in",
+              "en",
+              null,
+              1
+            ],
+            [
+              "I want in",
+              "Quiero en",
+              null,
+              3
+            ],
+            [
+              "I have in",
+              "Tengo en",
+              null,
+              3
+            ],
+            [
+              "I have in here",
+              "Tengo en aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want in",
+              "Quieres en",
+              null,
+              4
+            ],
+            [
+              "I think I want in",
+              "Pienso que quiero en",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have in",
+              "No sé si puedo tener en",
+              null,
+              8
+            ],
+            [
+              "She said she wants in",
+              "Ella dijo que quiere en",
+              null,
+              6
+            ],
+            [
+              "Do you think I need in",
+              "Piensas que necesito en",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0383L01": {
+          "lego": [
+            "the garden",
+            "el jardín"
+          ],
+          "type": "M",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "the garden",
+              "el jardín",
+              null,
+              1
+            ],
+            [
+              "the garden",
+              "el jardín",
+              null,
+              1
+            ],
+            [
+              "I want the garden",
+              "Quiero el jardín",
+              null,
+              3
+            ],
+            [
+              "I have the garden",
+              "Tengo el jardín",
+              null,
+              3
+            ],
+            [
+              "I have the garden here",
+              "Tengo el jardín aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want the garden",
+              "Quieres el jardín",
+              null,
+              4
+            ],
+            [
+              "I think I want the garden",
+              "Pienso que quiero el jardín",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have the garden",
+              "No sé si puedo tener el jardín",
+              null,
+              8
+            ],
+            [
+              "She said she wants the garden",
+              "Ella dijo que quiere el jardín",
+              null,
+              6
+            ],
+            [
+              "Yes he said he wanted to put it in the garden.",
+              "Sí dijo que quería ponerlo en el jardín.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0384": {
+      "seed": "S0384",
+      "seed_pair": {
+        "target": "No pude estar de acuerdo con lo que dijo hace un momento.",
+        "known": "I couldn't agree with what he said a moment ago."
+      },
+      "cumulative_legos": 768,
+      "legos": {
+        "S0345L04": {
+          "lego": [
+            "not",
+            "No"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "not",
+              "No",
+              null,
+              1
+            ],
+            [
+              "not",
+              "No",
+              null,
+              1
+            ],
+            [
+              "I want not",
+              "Quiero No",
+              null,
+              3
+            ],
+            [
+              "I have not",
+              "Tengo No",
+              null,
+              3
+            ],
+            [
+              "I have not here",
+              "Tengo No aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want not",
+              "Quieres No",
+              null,
+              4
+            ],
+            [
+              "I think I want not",
+              "Pienso que quiero No",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have not",
+              "No sé si puedo tener No",
+              null,
+              8
+            ],
+            [
+              "She said she wants not",
+              "Ella dijo que quiere No",
+              null,
+              6
+            ],
+            [
+              "Do you think I need not",
+              "Piensas que necesito No",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0384L01": {
+          "lego": [
+            "I could",
+            "pude"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "I could",
+              "pude",
+              null,
+              1
+            ],
+            [
+              "I could",
+              "pude",
+              null,
+              1
+            ],
+            [
+              "I could today",
+              "pude hoy",
+              null,
+              3
+            ],
+            [
+              "I could here",
+              "pude aquí",
+              null,
+              3
+            ],
+            [
+              "I have I could here",
+              "Tengo pude aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want I could",
+              "Quieres pude",
+              null,
+              4
+            ],
+            [
+              "I think I want I could",
+              "Pienso que quiero pude",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have I could",
+              "No sé si puedo tener pude",
+              null,
+              8
+            ],
+            [
+              "She said she wants I could",
+              "Ella dijo que quiere pude",
+              null,
+              6
+            ],
+            [
+              "Do you think I need I could",
+              "Piensas que necesito pude",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0384L02": {
+          "lego": [
+            "agree",
+            "estar de acuerdo"
+          ],
+          "type": "M",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "agree",
+              "estar de acuerdo",
+              null,
+              1
+            ],
+            [
+              "agree",
+              "estar de acuerdo",
+              null,
+              1
+            ],
+            [
+              "I want agree",
+              "Quiero estar de acuerdo",
+              null,
+              3
+            ],
+            [
+              "I have agree",
+              "Tengo estar de acuerdo",
+              null,
+              3
+            ],
+            [
+              "I have agree here",
+              "Tengo estar de acuerdo aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want agree",
+              "Quieres estar de acuerdo",
+              null,
+              4
+            ],
+            [
+              "I think I want agree",
+              "Pienso que quiero estar de acuerdo",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have agree",
+              "No sé si puedo tener estar de acuerdo",
+              null,
+              8
+            ],
+            [
+              "She said she wants agree",
+              "Ella dijo que quiere estar de acuerdo",
+              null,
+              6
+            ],
+            [
+              "Do you think I need agree",
+              "Piensas que necesito estar de acuerdo",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0005L03": {
+          "lego": [
+            "with",
+            "con"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "I want with",
+              "Quiero con",
+              null,
+              3
+            ],
+            [
+              "I have with",
+              "Tengo con",
+              null,
+              3
+            ],
+            [
+              "I have with here",
+              "Tengo con aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want with",
+              "Quieres con",
+              null,
+              4
+            ],
+            [
+              "I think I want with",
+              "Pienso que quiero con",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have with",
+              "No sé si puedo tener con",
+              null,
+              8
+            ],
+            [
+              "She said she wants with",
+              "Ella dijo que quiere con",
+              null,
+              6
+            ],
+            [
+              "Do you think I need with",
+              "Piensas que necesito con",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0207L03": {
+          "lego": [
+            "it",
+            "lo"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "it",
+              "lo",
+              null,
+              1
+            ],
+            [
+              "it",
+              "lo",
+              null,
+              1
+            ],
+            [
+              "I want it",
+              "Quiero lo",
+              null,
+              3
+            ],
+            [
+              "I have it",
+              "Tengo lo",
+              null,
+              3
+            ],
+            [
+              "I have it here",
+              "Tengo lo aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want it",
+              "Quieres lo",
+              null,
+              4
+            ],
+            [
+              "I think I want it",
+              "Pienso que quiero lo",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have it",
+              "No sé si puedo tener lo",
+              null,
+              8
+            ],
+            [
+              "She said she wants it",
+              "Ella dijo que quiere lo",
+              null,
+              6
+            ],
+            [
+              "Do you think I need it",
+              "Piensas que necesito lo",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0102L02": {
+          "lego": [
+            "that",
+            "que"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "I want that",
+              "Quiero que",
+              null,
+              3
+            ],
+            [
+              "I have that",
+              "Tengo que",
+              null,
+              3
+            ],
+            [
+              "I have that here",
+              "Tengo que aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want that",
+              "Quieres que",
+              null,
+              4
+            ],
+            [
+              "I think I want that",
+              "Pienso que quiero que",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have that",
+              "No sé si puedo tener que",
+              null,
+              8
+            ],
+            [
+              "She said she wants that",
+              "Ella dijo que quiere que",
+              null,
+              6
+            ],
+            [
+              "Do you think I need that",
+              "Piensas que necesito que",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0235L04": {
+          "lego": [
+            "said",
+            "dijo"
+          ],
+          "type": "A",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "said",
+              "dijo",
+              null,
+              1
+            ],
+            [
+              "said",
+              "dijo",
+              null,
+              1
+            ],
+            [
+              "I want said",
+              "Quiero dijo",
+              null,
+              3
+            ],
+            [
+              "I have said",
+              "Tengo dijo",
+              null,
+              3
+            ],
+            [
+              "I have said here",
+              "Tengo dijo aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want said",
+              "Quieres dijo",
+              null,
+              4
+            ],
+            [
+              "I think I want said",
+              "Pienso que quiero dijo",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have said",
+              "No sé si puedo tener dijo",
+              null,
+              8
+            ],
+            [
+              "She said she wants said",
+              "Ella dijo que quiere dijo",
+              null,
+              6
+            ],
+            [
+              "Do you think I need said",
+              "Piensas que necesito dijo",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0384L03": {
+          "lego": [
+            "a moment ago",
+            "hace un momento"
+          ],
+          "type": "M",
+          "available_legos": 671,
+          "practice_phrases": [
+            [
+              "a moment ago",
+              "hace un momento",
+              null,
+              1
+            ],
+            [
+              "a moment ago",
+              "hace un momento",
+              null,
+              1
+            ],
+            [
+              "I want a moment ago",
+              "Quiero hace un momento",
+              null,
+              3
+            ],
+            [
+              "I have a moment ago",
+              "Tengo hace un momento",
+              null,
+              3
+            ],
+            [
+              "I have a moment ago here",
+              "Tengo hace un momento aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want a moment ago",
+              "Quieres hace un momento",
+              null,
+              4
+            ],
+            [
+              "I think I want a moment ago",
+              "Pienso que quiero hace un momento",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have a moment ago",
+              "No sé si puedo tener hace un momento",
+              null,
+              8
+            ],
+            [
+              "She said she wants a moment ago",
+              "Ella dijo que quiere hace un momento",
+              null,
+              6
+            ],
+            [
+              "I couldn't agree with what he said a moment ago.",
+              "No pude estar de acuerdo con lo que dijo hace un momento.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0385": {
+      "seed": "S0385",
+      "seed_pair": {
+        "target": "¿Estuviste de acuerdo con ella?",
+        "known": "Did you agree with her?"
+      },
+      "cumulative_legos": 770,
+      "legos": {
+        "S0385L01": {
+          "lego": [
+            "you were",
+            "Estuviste"
+          ],
+          "type": "A",
+          "available_legos": 672,
+          "practice_phrases": [
+            [
+              "you were",
+              "Estuviste",
+              null,
+              1
+            ],
+            [
+              "you were",
+              "Estuviste",
+              null,
+              1
+            ],
+            [
+              "you were today",
+              "Estuviste hoy",
+              null,
+              3
+            ],
+            [
+              "you were here",
+              "Estuviste aquí",
+              null,
+              3
+            ],
+            [
+              "I have you were here",
+              "Tengo Estuviste aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want you were",
+              "Quieres Estuviste",
+              null,
+              4
+            ],
+            [
+              "I think I want you were",
+              "Pienso que quiero Estuviste",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have you were",
+              "No sé si puedo tener Estuviste",
+              null,
+              8
+            ],
+            [
+              "She said she wants you were",
+              "Ella dijo que quiere Estuviste",
+              null,
+              6
+            ],
+            [
+              "Do you think I need you were",
+              "Piensas que necesito Estuviste",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0385L02": {
+          "lego": [
+            "in agreement",
+            "de acuerdo"
+          ],
+          "type": "M",
+          "available_legos": 672,
+          "practice_phrases": [
+            [
+              "in agreement",
+              "de acuerdo",
+              null,
+              1
+            ],
+            [
+              "in agreement",
+              "de acuerdo",
+              null,
+              1
+            ],
+            [
+              "I want in agreement",
+              "Quiero de acuerdo",
+              null,
+              3
+            ],
+            [
+              "I have in agreement",
+              "Tengo de acuerdo",
+              null,
+              3
+            ],
+            [
+              "I have in agreement here",
+              "Tengo de acuerdo aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want in agreement",
+              "Quieres de acuerdo",
+              null,
+              4
+            ],
+            [
+              "I think I want in agreement",
+              "Pienso que quiero de acuerdo",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have in agreement",
+              "No sé si puedo tener de acuerdo",
+              null,
+              8
+            ],
+            [
+              "She said she wants in agreement",
+              "Ella dijo que quiere de acuerdo",
+              null,
+              6
+            ],
+            [
+              "Do you think I need in agreement",
+              "Piensas que necesito de acuerdo",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0005L03": {
+          "lego": [
+            "with",
+            "con"
+          ],
+          "type": "A",
+          "available_legos": 672,
+          "practice_phrases": [
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "I want with",
+              "Quiero con",
+              null,
+              3
+            ],
+            [
+              "I have with",
+              "Tengo con",
+              null,
+              3
+            ],
+            [
+              "I have with here",
+              "Tengo con aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want with",
+              "Quieres con",
+              null,
+              4
+            ],
+            [
+              "I think I want with",
+              "Pienso que quiero con",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have with",
+              "No sé si puedo tener con",
+              null,
+              8
+            ],
+            [
+              "She said she wants with",
+              "Ella dijo que quiere con",
+              null,
+              6
+            ],
+            [
+              "Do you think I need with",
+              "Piensas que necesito con",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0385L04": {
+          "lego": [
+            "her",
+            "ella"
+          ],
+          "type": "A",
+          "available_legos": 672,
+          "practice_phrases": [
+            [
+              "her",
+              "ella",
+              null,
+              1
+            ],
+            [
+              "her",
+              "ella",
+              null,
+              1
+            ],
+            [
+              "I want her",
+              "Quiero ella",
+              null,
+              3
+            ],
+            [
+              "I have her",
+              "Tengo ella",
+              null,
+              3
+            ],
+            [
+              "I have her here",
+              "Tengo ella aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want her",
+              "Quieres ella",
+              null,
+              4
+            ],
+            [
+              "I think I want her",
+              "Pienso que quiero ella",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have her",
+              "No sé si puedo tener ella",
+              null,
+              8
+            ],
+            [
+              "She said she wants her",
+              "Ella dijo que quiere ella",
+              null,
+              6
+            ],
+            [
+              "Did you agree with her?",
+              "¿Estuviste de acuerdo con ella?",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0386": {
+      "seed": "S0386",
+      "seed_pair": {
+        "target": "Sí estuve de acuerdo con ella.",
+        "known": "Yes I agreed with her."
+      },
+      "cumulative_legos": 772,
+      "legos": {
+        "S0097L01": {
+          "lego": [
+            "yes",
+            "Sí"
+          ],
+          "type": "A",
+          "available_legos": 673,
+          "practice_phrases": [
+            [
+              "yes",
+              "Sí",
+              null,
+              1
+            ],
+            [
+              "yes",
+              "Sí",
+              null,
+              1
+            ],
+            [
+              "I want yes",
+              "Quiero Sí",
+              null,
+              3
+            ],
+            [
+              "I have yes",
+              "Tengo Sí",
+              null,
+              3
+            ],
+            [
+              "I have yes here",
+              "Tengo Sí aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want yes",
+              "Quieres Sí",
+              null,
+              4
+            ],
+            [
+              "I think I want yes",
+              "Pienso que quiero Sí",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have yes",
+              "No sé si puedo tener Sí",
+              null,
+              8
+            ],
+            [
+              "She said she wants yes",
+              "Ella dijo que quiere Sí",
+              null,
+              6
+            ],
+            [
+              "Do you think I need yes",
+              "Piensas que necesito Sí",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0386L01": {
+          "lego": [
+            "I was",
+            "estuve"
+          ],
+          "type": "A",
+          "available_legos": 673,
+          "practice_phrases": [
+            [
+              "I was",
+              "estuve",
+              null,
+              1
+            ],
+            [
+              "I was",
+              "estuve",
+              null,
+              1
+            ],
+            [
+              "I was today",
+              "estuve hoy",
+              null,
+              3
+            ],
+            [
+              "I was here",
+              "estuve aquí",
+              null,
+              3
+            ],
+            [
+              "I have I was here",
+              "Tengo estuve aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want I was",
+              "Quieres estuve",
+              null,
+              4
+            ],
+            [
+              "I think I want I was",
+              "Pienso que quiero estuve",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have I was",
+              "No sé si puedo tener estuve",
+              null,
+              8
+            ],
+            [
+              "She said she wants I was",
+              "Ella dijo que quiere estuve",
+              null,
+              6
+            ],
+            [
+              "Do you think I need I was",
+              "Piensas que necesito estuve",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0386L03": {
+          "lego": [
+            "in agreement",
+            "de acuerdo"
+          ],
+          "type": "M",
+          "available_legos": 673,
+          "practice_phrases": [
+            [
+              "in agreement",
+              "de acuerdo",
+              null,
+              1
+            ],
+            [
+              "in agreement",
+              "de acuerdo",
+              null,
+              1
+            ],
+            [
+              "I want in agreement",
+              "Quiero de acuerdo",
+              null,
+              3
+            ],
+            [
+              "I have in agreement",
+              "Tengo de acuerdo",
+              null,
+              3
+            ],
+            [
+              "I have in agreement here",
+              "Tengo de acuerdo aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want in agreement",
+              "Quieres de acuerdo",
+              null,
+              4
+            ],
+            [
+              "I think I want in agreement",
+              "Pienso que quiero de acuerdo",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have in agreement",
+              "No sé si puedo tener de acuerdo",
+              null,
+              8
+            ],
+            [
+              "She said she wants in agreement",
+              "Ella dijo que quiere de acuerdo",
+              null,
+              6
+            ],
+            [
+              "Do you think I need in agreement",
+              "Piensas que necesito de acuerdo",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0005L03": {
+          "lego": [
+            "with",
+            "con"
+          ],
+          "type": "A",
+          "available_legos": 673,
+          "practice_phrases": [
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "I want with",
+              "Quiero con",
+              null,
+              3
+            ],
+            [
+              "I have with",
+              "Tengo con",
+              null,
+              3
+            ],
+            [
+              "I have with here",
+              "Tengo con aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want with",
+              "Quieres con",
+              null,
+              4
+            ],
+            [
+              "I think I want with",
+              "Pienso que quiero con",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have with",
+              "No sé si puedo tener con",
+              null,
+              8
+            ],
+            [
+              "She said she wants with",
+              "Ella dijo que quiere con",
+              null,
+              6
+            ],
+            [
+              "Do you think I need with",
+              "Piensas que necesito con",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0386L05": {
+          "lego": [
+            "her",
+            "ella"
+          ],
+          "type": "A",
+          "available_legos": 673,
+          "practice_phrases": [
+            [
+              "her",
+              "ella",
+              null,
+              1
+            ],
+            [
+              "her",
+              "ella",
+              null,
+              1
+            ],
+            [
+              "I want her",
+              "Quiero ella",
+              null,
+              3
+            ],
+            [
+              "I have her",
+              "Tengo ella",
+              null,
+              3
+            ],
+            [
+              "I have her here",
+              "Tengo ella aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want her",
+              "Quieres ella",
+              null,
+              4
+            ],
+            [
+              "I think I want her",
+              "Pienso que quiero ella",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have her",
+              "No sé si puedo tener ella",
+              null,
+              8
+            ],
+            [
+              "She said she wants her",
+              "Ella dijo que quiere ella",
+              null,
+              6
+            ],
+            [
+              "Yes I agreed with her.",
+              "Sí estuve de acuerdo con ella.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0387": {
+      "seed": "S0387",
+      "seed_pair": {
+        "target": "No no pensé que tenía razón.",
+        "known": "No I didn't think she was right."
+      },
+      "cumulative_legos": 774,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "no",
+            "No"
+          ],
+          "type": "A",
+          "available_legos": 674,
+          "practice_phrases": [
+            [
+              "no",
+              "No",
+              null,
+              1
+            ],
+            [
+              "no",
+              "No",
+              null,
+              1
+            ],
+            [
+              "I want no",
+              "Quiero No",
+              null,
+              3
+            ],
+            [
+              "I have no",
+              "Tengo No",
+              null,
+              3
+            ],
+            [
+              "I have no here",
+              "Tengo No aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want no",
+              "Quieres No",
+              null,
+              4
+            ],
+            [
+              "I think I want no",
+              "Pienso que quiero No",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have no",
+              "No sé si puedo tener No",
+              null,
+              8
+            ],
+            [
+              "She said she wants no",
+              "Ella dijo que quiere No",
+              null,
+              6
+            ],
+            [
+              "Do you think I need no",
+              "Piensas que necesito No",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0345L04": {
+          "lego": [
+            "not",
+            "no"
+          ],
+          "type": "A",
+          "available_legos": 674,
+          "practice_phrases": [
+            [
+              "not",
+              "no",
+              null,
+              1
+            ],
+            [
+              "not",
+              "no",
+              null,
+              1
+            ],
+            [
+              "I want not",
+              "Quiero no",
+              null,
+              3
+            ],
+            [
+              "I have not",
+              "Tengo no",
+              null,
+              3
+            ],
+            [
+              "I have not here",
+              "Tengo no aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want not",
+              "Quieres no",
+              null,
+              4
+            ],
+            [
+              "I think I want not",
+              "Pienso que quiero no",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have not",
+              "No sé si puedo tener no",
+              null,
+              8
+            ],
+            [
+              "She said she wants not",
+              "Ella dijo que quiere no",
+              null,
+              6
+            ],
+            [
+              "Do you think I need not",
+              "Piensas que necesito no",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0387L01": {
+          "lego": [
+            "I thought",
+            "pensé"
+          ],
+          "type": "A",
+          "available_legos": 674,
+          "practice_phrases": [
+            [
+              "I thought",
+              "pensé",
+              null,
+              1
+            ],
+            [
+              "I thought",
+              "pensé",
+              null,
+              1
+            ],
+            [
+              "I thought today",
+              "pensé hoy",
+              null,
+              3
+            ],
+            [
+              "I thought here",
+              "pensé aquí",
+              null,
+              3
+            ],
+            [
+              "I have I thought here",
+              "Tengo pensé aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want I thought",
+              "Quieres pensé",
+              null,
+              4
+            ],
+            [
+              "I think I want I thought",
+              "Pienso que quiero pensé",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have I thought",
+              "No sé si puedo tener pensé",
+              null,
+              8
+            ],
+            [
+              "She said she wants I thought",
+              "Ella dijo que quiere pensé",
+              null,
+              6
+            ],
+            [
+              "Do you think I need I thought",
+              "Piensas que necesito pensé",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0102L02": {
+          "lego": [
+            "that",
+            "que"
+          ],
+          "type": "A",
+          "available_legos": 674,
+          "practice_phrases": [
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "I want that",
+              "Quiero que",
+              null,
+              3
+            ],
+            [
+              "I have that",
+              "Tengo que",
+              null,
+              3
+            ],
+            [
+              "I have that here",
+              "Tengo que aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want that",
+              "Quieres que",
+              null,
+              4
+            ],
+            [
+              "I think I want that",
+              "Pienso que quiero que",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have that",
+              "No sé si puedo tener que",
+              null,
+              8
+            ],
+            [
+              "She said she wants that",
+              "Ella dijo que quiere que",
+              null,
+              6
+            ],
+            [
+              "Do you think I need that",
+              "Piensas que necesito que",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0387L02": {
+          "lego": [
+            "was right",
+            "tenía razón"
+          ],
+          "type": "M",
+          "available_legos": 674,
+          "practice_phrases": [
+            [
+              "was right",
+              "tenía razón",
+              null,
+              1
+            ],
+            [
+              "was right",
+              "tenía razón",
+              null,
+              1
+            ],
+            [
+              "I want was right",
+              "Quiero tenía razón",
+              null,
+              3
+            ],
+            [
+              "I have was right",
+              "Tengo tenía razón",
+              null,
+              3
+            ],
+            [
+              "I have was right here",
+              "Tengo tenía razón aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want was right",
+              "Quieres tenía razón",
+              null,
+              4
+            ],
+            [
+              "I think I want was right",
+              "Pienso que quiero tenía razón",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have was right",
+              "No sé si puedo tener tenía razón",
+              null,
+              8
+            ],
+            [
+              "She said she wants was right",
+              "Ella dijo que quiere tenía razón",
+              null,
+              6
+            ],
+            [
+              "No I didn't think she was right.",
+              "No no pensé que tenía razón.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0388": {
+      "seed": "S0388",
+      "seed_pair": {
+        "target": "Esa persona con la que trabajas.",
+        "known": "That person you work with."
+      },
+      "cumulative_legos": 776,
+      "legos": {
+        "S0388L01": {
+          "lego": [
+            "that person",
+            "Esa persona"
+          ],
+          "type": "M",
+          "available_legos": 675,
+          "practice_phrases": [
+            [
+              "that person",
+              "Esa persona",
+              null,
+              1
+            ],
+            [
+              "that person",
+              "Esa persona",
+              null,
+              1
+            ],
+            [
+              "I want that person",
+              "Quiero Esa persona",
+              null,
+              3
+            ],
+            [
+              "I have that person",
+              "Tengo Esa persona",
+              null,
+              3
+            ],
+            [
+              "I have that person here",
+              "Tengo Esa persona aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want that person",
+              "Quieres Esa persona",
+              null,
+              4
+            ],
+            [
+              "I think I want that person",
+              "Pienso que quiero Esa persona",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have that person",
+              "No sé si puedo tener Esa persona",
+              null,
+              8
+            ],
+            [
+              "She said she wants that person",
+              "Ella dijo que quiere Esa persona",
+              null,
+              6
+            ],
+            [
+              "Do you think I need that person",
+              "Piensas que necesito Esa persona",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0005L03": {
+          "lego": [
+            "with",
+            "con"
+          ],
+          "type": "A",
+          "available_legos": 675,
+          "practice_phrases": [
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "I want with",
+              "Quiero con",
+              null,
+              3
+            ],
+            [
+              "I have with",
+              "Tengo con",
+              null,
+              3
+            ],
+            [
+              "I have with here",
+              "Tengo con aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want with",
+              "Quieres con",
+              null,
+              4
+            ],
+            [
+              "I think I want with",
+              "Pienso que quiero con",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have with",
+              "No sé si puedo tener con",
+              null,
+              8
+            ],
+            [
+              "She said she wants with",
+              "Ella dijo que quiere con",
+              null,
+              6
+            ],
+            [
+              "Do you think I need with",
+              "Piensas que necesito con",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0388L02": {
+          "lego": [
+            "whom",
+            "la que"
+          ],
+          "type": "M",
+          "available_legos": 675,
+          "practice_phrases": [
+            [
+              "whom",
+              "la que",
+              null,
+              1
+            ],
+            [
+              "whom",
+              "la que",
+              null,
+              1
+            ],
+            [
+              "I want whom",
+              "Quiero la que",
+              null,
+              3
+            ],
+            [
+              "I have whom",
+              "Tengo la que",
+              null,
+              3
+            ],
+            [
+              "I have whom here",
+              "Tengo la que aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want whom",
+              "Quieres la que",
+              null,
+              4
+            ],
+            [
+              "I think I want whom",
+              "Pienso que quiero la que",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have whom",
+              "No sé si puedo tener la que",
+              null,
+              8
+            ],
+            [
+              "She said she wants whom",
+              "Ella dijo que quiere la que",
+              null,
+              6
+            ],
+            [
+              "Do you think I need whom",
+              "Piensas que necesito la que",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0388L03": {
+          "lego": [
+            "you work",
+            "trabajas"
+          ],
+          "type": "A",
+          "available_legos": 675,
+          "practice_phrases": [
+            [
+              "you work",
+              "trabajas",
+              null,
+              1
+            ],
+            [
+              "you work",
+              "trabajas",
+              null,
+              1
+            ],
+            [
+              "you work today",
+              "trabajas hoy",
+              null,
+              3
+            ],
+            [
+              "you work here",
+              "trabajas aquí",
+              null,
+              3
+            ],
+            [
+              "I have you work here",
+              "Tengo trabajas aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want you work",
+              "Quieres trabajas",
+              null,
+              4
+            ],
+            [
+              "I think I want you work",
+              "Pienso que quiero trabajas",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have you work",
+              "No sé si puedo tener trabajas",
+              null,
+              8
+            ],
+            [
+              "She said she wants you work",
+              "Ella dijo que quiere trabajas",
+              null,
+              6
+            ],
+            [
+              "That person you work with.",
+              "Esa persona con la que trabajas.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0389": {
+      "seed": "S0389",
+      "seed_pair": {
+        "target": "Esa persona allí.",
+        "known": "That person over there."
+      },
+      "cumulative_legos": 778,
+      "legos": {
+        "S0389L01": {
+          "lego": [
+            "that person",
+            "Esa persona"
+          ],
+          "type": "M",
+          "available_legos": 675,
+          "practice_phrases": [
+            [
+              "that person",
+              "Esa persona",
+              null,
+              1
+            ],
+            [
+              "that person",
+              "Esa persona",
+              null,
+              1
+            ],
+            [
+              "I want that person",
+              "Quiero Esa persona",
+              null,
+              3
+            ],
+            [
+              "I have that person",
+              "Tengo Esa persona",
+              null,
+              3
+            ],
+            [
+              "I have that person here",
+              "Tengo Esa persona aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want that person",
+              "Quieres Esa persona",
+              null,
+              4
+            ],
+            [
+              "I think I want that person",
+              "Pienso que quiero Esa persona",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have that person",
+              "No sé si puedo tener Esa persona",
+              null,
+              8
+            ],
+            [
+              "She said she wants that person",
+              "Ella dijo que quiere Esa persona",
+              null,
+              6
+            ],
+            [
+              "Do you think I need that person",
+              "Piensas que necesito Esa persona",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0307L03": {
+          "lego": [
+            "over there",
+            "allí"
+          ],
+          "type": "A",
+          "available_legos": 675,
+          "practice_phrases": [
+            [
+              "over there",
+              "allí",
+              null,
+              1
+            ],
+            [
+              "over there",
+              "allí",
+              null,
+              1
+            ],
+            [
+              "I want over there",
+              "Quiero allí",
+              null,
+              3
+            ],
+            [
+              "I have over there",
+              "Tengo allí",
+              null,
+              3
+            ],
+            [
+              "I have over there here",
+              "Tengo allí aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want over there",
+              "Quieres allí",
+              null,
+              4
+            ],
+            [
+              "I think I want over there",
+              "Pienso que quiero allí",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have over there",
+              "No sé si puedo tener allí",
+              null,
+              8
+            ],
+            [
+              "She said she wants over there",
+              "Ella dijo que quiere allí",
+              null,
+              6
+            ],
+            [
+              "That person over there.",
+              "Esa persona allí.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0390": {
+      "seed": "S0390",
+      "seed_pair": {
+        "target": "La que está de pie cerca de la entrada.",
+        "known": "The one who is standing near the entrance."
+      },
+      "cumulative_legos": 780,
+      "legos": {
+        "S0390L01": {
+          "lego": [
+            "the one who",
+            "La que"
+          ],
+          "type": "M",
+          "available_legos": 678,
+          "practice_phrases": [
+            [
+              "the one who",
+              "La que",
+              null,
+              1
+            ],
+            [
+              "the one who",
+              "La que",
+              null,
+              1
+            ],
+            [
+              "I want the one who",
+              "Quiero La que",
+              null,
+              3
+            ],
+            [
+              "I have the one who",
+              "Tengo La que",
+              null,
+              3
+            ],
+            [
+              "I have the one who here",
+              "Tengo La que aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want the one who",
+              "Quieres La que",
+              null,
+              4
+            ],
+            [
+              "I think I want the one who",
+              "Pienso que quiero La que",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have the one who",
+              "No sé si puedo tener La que",
+              null,
+              8
+            ],
+            [
+              "She said she wants the one who",
+              "Ella dijo que quiere La que",
+              null,
+              6
+            ],
+            [
+              "Do you think I need the one who",
+              "Piensas que necesito La que",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0390L02": {
+          "lego": [
+            "standing",
+            "de pie"
+          ],
+          "type": "M",
+          "available_legos": 678,
+          "practice_phrases": [
+            [
+              "standing",
+              "de pie",
+              null,
+              1
+            ],
+            [
+              "standing",
+              "de pie",
+              null,
+              1
+            ],
+            [
+              "I want standing",
+              "Quiero de pie",
+              null,
+              3
+            ],
+            [
+              "I have standing",
+              "Tengo de pie",
+              null,
+              3
+            ],
+            [
+              "I have standing here",
+              "Tengo de pie aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want standing",
+              "Quieres de pie",
+              null,
+              4
+            ],
+            [
+              "I think I want standing",
+              "Pienso que quiero de pie",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have standing",
+              "No sé si puedo tener de pie",
+              null,
+              8
+            ],
+            [
+              "She said she wants standing",
+              "Ella dijo que quiere de pie",
+              null,
+              6
+            ],
+            [
+              "Do you think I need standing",
+              "Piensas que necesito de pie",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0390L03": {
+          "lego": [
+            "near",
+            "cerca"
+          ],
+          "type": "A",
+          "available_legos": 678,
+          "practice_phrases": [
+            [
+              "near",
+              "cerca",
+              null,
+              1
+            ],
+            [
+              "near",
+              "cerca",
+              null,
+              1
+            ],
+            [
+              "I want near",
+              "Quiero cerca",
+              null,
+              3
+            ],
+            [
+              "I have near",
+              "Tengo cerca",
+              null,
+              3
+            ],
+            [
+              "I have near here",
+              "Tengo cerca aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want near",
+              "Quieres cerca",
+              null,
+              4
+            ],
+            [
+              "I think I want near",
+              "Pienso que quiero cerca",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have near",
+              "No sé si puedo tener cerca",
+              null,
+              8
+            ],
+            [
+              "She said she wants near",
+              "Ella dijo que quiere cerca",
+              null,
+              6
+            ],
+            [
+              "Do you think I need near",
+              "Piensas que necesito cerca",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0126L05": {
+          "lego": [
+            "of",
+            "de"
+          ],
+          "type": "A",
+          "available_legos": 678,
+          "practice_phrases": [
+            [
+              "of",
+              "de",
+              null,
+              1
+            ],
+            [
+              "of",
+              "de",
+              null,
+              1
+            ],
+            [
+              "I want of",
+              "Quiero de",
+              null,
+              3
+            ],
+            [
+              "I have of",
+              "Tengo de",
+              null,
+              3
+            ],
+            [
+              "I have of here",
+              "Tengo de aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want of",
+              "Quieres de",
+              null,
+              4
+            ],
+            [
+              "I think I want of",
+              "Pienso que quiero de",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have of",
+              "No sé si puedo tener de",
+              null,
+              8
+            ],
+            [
+              "She said she wants of",
+              "Ella dijo que quiere de",
+              null,
+              6
+            ],
+            [
+              "Do you think I need of",
+              "Piensas que necesito de",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0390L04": {
+          "lego": [
+            "the entrance",
+            "la entrada"
+          ],
+          "type": "M",
+          "available_legos": 678,
+          "practice_phrases": [
+            [
+              "the entrance",
+              "la entrada",
+              null,
+              1
+            ],
+            [
+              "the entrance",
+              "la entrada",
+              null,
+              1
+            ],
+            [
+              "I want the entrance",
+              "Quiero la entrada",
+              null,
+              3
+            ],
+            [
+              "I have the entrance",
+              "Tengo la entrada",
+              null,
+              3
+            ],
+            [
+              "I have the entrance here",
+              "Tengo la entrada aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want the entrance",
+              "Quieres la entrada",
+              null,
+              4
+            ],
+            [
+              "I think I want the entrance",
+              "Pienso que quiero la entrada",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have the entrance",
+              "No sé si puedo tener la entrada",
+              null,
+              8
+            ],
+            [
+              "She said she wants the entrance",
+              "Ella dijo que quiere la entrada",
+              null,
+              6
+            ],
+            [
+              "The one who is standing near the entrance.",
+              "La que está de pie cerca de la entrada.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0391": {
+      "seed": "S0391",
+      "seed_pair": {
+        "target": "La que está caminando hacia el autobús.",
+        "known": "The one who is walking towards the bus."
+      },
+      "cumulative_legos": 782,
+      "legos": {
+        "S0391L01": {
+          "lego": [
+            "walking",
+            "caminando"
+          ],
+          "type": "A",
+          "available_legos": 679,
+          "practice_phrases": [],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0391L02": {
+          "lego": [
+            "towards",
+            "hacia"
+          ],
+          "type": "A",
+          "available_legos": 679,
+          "practice_phrases": [],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0391L03": {
+          "lego": [
+            "the bus",
+            "el autobús"
+          ],
+          "type": "M",
+          "available_legos": 679,
+          "practice_phrases": [
+            [
+              "the bus",
+              "el autobús",
+              null,
+              1
+            ],
+            [
+              "the bus",
+              "el autobús",
+              null,
+              1
+            ],
+            [
+              "I want the bus",
+              "Quiero el autobús",
+              null,
+              3
+            ],
+            [
+              "I have the bus",
+              "Tengo el autobús",
+              null,
+              3
+            ],
+            [
+              "I have the bus here",
+              "Tengo el autobús aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want the bus",
+              "Quieres el autobús",
+              null,
+              4
+            ],
+            [
+              "I think I want the bus",
+              "Pienso que quiero el autobús",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have the bus",
+              "No sé si puedo tener el autobús",
+              null,
+              8
+            ],
+            [
+              "She said she wants the bus",
+              "Ella dijo que quiere el autobús",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0392": {
+      "seed": "S0392",
+      "seed_pair": {
+        "target": "Ese niño con el pelo negro enfrente de la oficina de correos.",
+        "known": "That child with the black hair opposite the post office."
+      },
+      "cumulative_legos": 784,
+      "legos": {
+        "S0392L01": {
+          "lego": [
+            "that child",
+            "Ese niño"
+          ],
+          "type": "M",
+          "available_legos": 681,
+          "practice_phrases": [
+            [
+              "that child",
+              "Ese niño",
+              null,
+              1
+            ],
+            [
+              "that child",
+              "Ese niño",
+              null,
+              1
+            ],
+            [
+              "I want that child",
+              "Quiero Ese niño",
+              null,
+              3
+            ],
+            [
+              "I have that child",
+              "Tengo Ese niño",
+              null,
+              3
+            ],
+            [
+              "I have that child here",
+              "Tengo Ese niño aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want that child",
+              "Quieres Ese niño",
+              null,
+              4
+            ],
+            [
+              "I think I want that child",
+              "Pienso que quiero Ese niño",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have that child",
+              "No sé si puedo tener Ese niño",
+              null,
+              8
+            ],
+            [
+              "She said she wants that child",
+              "Ella dijo que quiere Ese niño",
+              null,
+              6
+            ],
+            [
+              "Do you think I need that child",
+              "Piensas que necesito Ese niño",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0005L03": {
+          "lego": [
+            "with",
+            "con"
+          ],
+          "type": "A",
+          "available_legos": 681,
+          "practice_phrases": [
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "I want with",
+              "Quiero con",
+              null,
+              3
+            ],
+            [
+              "I have with",
+              "Tengo con",
+              null,
+              3
+            ],
+            [
+              "I have with here",
+              "Tengo con aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want with",
+              "Quieres con",
+              null,
+              4
+            ],
+            [
+              "I think I want with",
+              "Pienso que quiero con",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have with",
+              "No sé si puedo tener con",
+              null,
+              8
+            ],
+            [
+              "She said she wants with",
+              "Ella dijo que quiere con",
+              null,
+              6
+            ],
+            [
+              "Do you think I need with",
+              "Piensas que necesito con",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0392L02": {
+          "lego": [
+            "the black hair",
+            "el pelo negro"
+          ],
+          "type": "M",
+          "available_legos": 681,
+          "practice_phrases": [
+            [
+              "the black hair",
+              "el pelo negro",
+              null,
+              1
+            ],
+            [
+              "the black hair",
+              "el pelo negro",
+              null,
+              1
+            ],
+            [
+              "I want the black hair",
+              "Quiero el pelo negro",
+              null,
+              3
+            ],
+            [
+              "I have the black hair",
+              "Tengo el pelo negro",
+              null,
+              3
+            ],
+            [
+              "I have the black hair here",
+              "Tengo el pelo negro aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want the black hair",
+              "Quieres el pelo negro",
+              null,
+              4
+            ],
+            [
+              "I think I want the black hair",
+              "Pienso que quiero el pelo negro",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have the black hair",
+              "No sé si puedo tener el pelo negro",
+              null,
+              8
+            ],
+            [
+              "She said she wants the black hair",
+              "Ella dijo que quiere el pelo negro",
+              null,
+              6
+            ],
+            [
+              "Do you think I need the black hair",
+              "Piensas que necesito el pelo negro",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0392L03": {
+          "lego": [
+            "opposite",
+            "enfrente"
+          ],
+          "type": "A",
+          "available_legos": 681,
+          "practice_phrases": [
+            [
+              "opposite",
+              "enfrente",
+              null,
+              1
+            ],
+            [
+              "opposite",
+              "enfrente",
+              null,
+              1
+            ],
+            [
+              "I want opposite",
+              "Quiero enfrente",
+              null,
+              3
+            ],
+            [
+              "I have opposite",
+              "Tengo enfrente",
+              null,
+              3
+            ],
+            [
+              "I have opposite here",
+              "Tengo enfrente aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want opposite",
+              "Quieres enfrente",
+              null,
+              4
+            ],
+            [
+              "I think I want opposite",
+              "Pienso que quiero enfrente",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have opposite",
+              "No sé si puedo tener enfrente",
+              null,
+              8
+            ],
+            [
+              "She said she wants opposite",
+              "Ella dijo que quiere enfrente",
+              null,
+              6
+            ],
+            [
+              "Do you think I need opposite",
+              "Piensas que necesito enfrente",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0126L05": {
+          "lego": [
+            "of",
+            "de"
+          ],
+          "type": "A",
+          "available_legos": 681,
+          "practice_phrases": [
+            [
+              "of",
+              "de",
+              null,
+              1
+            ],
+            [
+              "of",
+              "de",
+              null,
+              1
+            ],
+            [
+              "I want of",
+              "Quiero de",
+              null,
+              3
+            ],
+            [
+              "I have of",
+              "Tengo de",
+              null,
+              3
+            ],
+            [
+              "I have of here",
+              "Tengo de aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want of",
+              "Quieres de",
+              null,
+              4
+            ],
+            [
+              "I think I want of",
+              "Pienso que quiero de",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have of",
+              "No sé si puedo tener de",
+              null,
+              8
+            ],
+            [
+              "She said she wants of",
+              "Ella dijo que quiere de",
+              null,
+              6
+            ],
+            [
+              "Do you think I need of",
+              "Piensas que necesito de",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0392L04": {
+          "lego": [
+            "the post office",
+            "la oficina de correos"
+          ],
+          "type": "M",
+          "available_legos": 681,
+          "practice_phrases": [
+            [
+              "the post office",
+              "la oficina de correos",
+              null,
+              1
+            ],
+            [
+              "the post office",
+              "la oficina de correos",
+              null,
+              1
+            ],
+            [
+              "I want the post office",
+              "Quiero la oficina de correos",
+              null,
+              3
+            ],
+            [
+              "I have the post office",
+              "Tengo la oficina de correos",
+              null,
+              3
+            ],
+            [
+              "I have the post office here",
+              "Tengo la oficina de correos aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want the post office",
+              "Quieres la oficina de correos",
+              null,
+              4
+            ],
+            [
+              "I think I want the post office",
+              "Pienso que quiero la oficina de correos",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have the post office",
+              "No sé si puedo tener la oficina de correos",
+              null,
+              8
+            ],
+            [
+              "She said she wants the post office",
+              "Ella dijo que quiere la oficina de correos",
+              null,
+              6
+            ],
+            [
+              "That child with the black hair opposite the post office.",
+              "Ese niño con el pelo negro enfrente de la oficina de correos.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0393": {
+      "seed": "S0393",
+      "seed_pair": {
+        "target": "Ese niño con la camisa verde.",
+        "known": "That boy with the green shirt."
+      },
+      "cumulative_legos": 786,
+      "legos": {
+        "S0393L01": {
+          "lego": [
+            "that boy",
+            "Ese niño"
+          ],
+          "type": "M",
+          "available_legos": 683,
+          "practice_phrases": [
+            [
+              "that boy",
+              "Ese niño",
+              null,
+              1
+            ],
+            [
+              "that boy",
+              "Ese niño",
+              null,
+              1
+            ],
+            [
+              "I want that boy",
+              "Quiero Ese niño",
+              null,
+              3
+            ],
+            [
+              "I have that boy",
+              "Tengo Ese niño",
+              null,
+              3
+            ],
+            [
+              "I have that boy here",
+              "Tengo Ese niño aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want that boy",
+              "Quieres Ese niño",
+              null,
+              4
+            ],
+            [
+              "I think I want that boy",
+              "Pienso que quiero Ese niño",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have that boy",
+              "No sé si puedo tener Ese niño",
+              null,
+              8
+            ],
+            [
+              "She said she wants that boy",
+              "Ella dijo que quiere Ese niño",
+              null,
+              6
+            ],
+            [
+              "Do you think I need that boy",
+              "Piensas que necesito Ese niño",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0005L03": {
+          "lego": [
+            "with",
+            "con"
+          ],
+          "type": "A",
+          "available_legos": 683,
+          "practice_phrases": [
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "I want with",
+              "Quiero con",
+              null,
+              3
+            ],
+            [
+              "I have with",
+              "Tengo con",
+              null,
+              3
+            ],
+            [
+              "I have with here",
+              "Tengo con aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want with",
+              "Quieres con",
+              null,
+              4
+            ],
+            [
+              "I think I want with",
+              "Pienso que quiero con",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have with",
+              "No sé si puedo tener con",
+              null,
+              8
+            ],
+            [
+              "She said she wants with",
+              "Ella dijo que quiere con",
+              null,
+              6
+            ],
+            [
+              "Do you think I need with",
+              "Piensas que necesito con",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0393L02": {
+          "lego": [
+            "the green shirt",
+            "la camisa verde"
+          ],
+          "type": "M",
+          "available_legos": 683,
+          "practice_phrases": [
+            [
+              "the green shirt",
+              "la camisa verde",
+              null,
+              1
+            ],
+            [
+              "the green shirt",
+              "la camisa verde",
+              null,
+              1
+            ],
+            [
+              "I want the green shirt",
+              "Quiero la camisa verde",
+              null,
+              3
+            ],
+            [
+              "I have the green shirt",
+              "Tengo la camisa verde",
+              null,
+              3
+            ],
+            [
+              "I have the green shirt here",
+              "Tengo la camisa verde aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want the green shirt",
+              "Quieres la camisa verde",
+              null,
+              4
+            ],
+            [
+              "I think I want the green shirt",
+              "Pienso que quiero la camisa verde",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have the green shirt",
+              "No sé si puedo tener la camisa verde",
+              null,
+              8
+            ],
+            [
+              "She said she wants the green shirt",
+              "Ella dijo que quiere la camisa verde",
+              null,
+              6
+            ],
+            [
+              "That boy with the green shirt.",
+              "Ese niño con la camisa verde.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0394": {
+      "seed": "S0394",
+      "seed_pair": {
+        "target": "Esa niña con el vestido amarillo.",
+        "known": "That girl with the yellow dress."
+      },
+      "cumulative_legos": 788,
+      "legos": {
+        "S0394L01": {
+          "lego": [
+            "that girl",
+            "Esa niña"
+          ],
+          "type": "M",
+          "available_legos": 686,
+          "practice_phrases": [
+            [
+              "that girl",
+              "Esa niña",
+              null,
+              1
+            ],
+            [
+              "that girl",
+              "Esa niña",
+              null,
+              1
+            ],
+            [
+              "I want that girl",
+              "Quiero Esa niña",
+              null,
+              3
+            ],
+            [
+              "I have that girl",
+              "Tengo Esa niña",
+              null,
+              3
+            ],
+            [
+              "I have that girl here",
+              "Tengo Esa niña aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want that girl",
+              "Quieres Esa niña",
+              null,
+              4
+            ],
+            [
+              "I think I want that girl",
+              "Pienso que quiero Esa niña",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have that girl",
+              "No sé si puedo tener Esa niña",
+              null,
+              8
+            ],
+            [
+              "She said she wants that girl",
+              "Ella dijo que quiere Esa niña",
+              null,
+              6
+            ],
+            [
+              "Do you think I need that girl",
+              "Piensas que necesito Esa niña",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0005L03": {
+          "lego": [
+            "with",
+            "con"
+          ],
+          "type": "A",
+          "available_legos": 686,
+          "practice_phrases": [
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "I want with",
+              "Quiero con",
+              null,
+              3
+            ],
+            [
+              "I have with",
+              "Tengo con",
+              null,
+              3
+            ],
+            [
+              "I have with here",
+              "Tengo con aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want with",
+              "Quieres con",
+              null,
+              4
+            ],
+            [
+              "I think I want with",
+              "Pienso que quiero con",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have with",
+              "No sé si puedo tener con",
+              null,
+              8
+            ],
+            [
+              "She said she wants with",
+              "Ella dijo que quiere con",
+              null,
+              6
+            ],
+            [
+              "Do you think I need with",
+              "Piensas que necesito con",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0394L02": {
+          "lego": [
+            "the yellow dress",
+            "el vestido amarillo"
+          ],
+          "type": "M",
+          "available_legos": 686,
+          "practice_phrases": [
+            [
+              "the yellow dress",
+              "el vestido amarillo",
+              null,
+              1
+            ],
+            [
+              "the yellow dress",
+              "el vestido amarillo",
+              null,
+              1
+            ],
+            [
+              "I want the yellow dress",
+              "Quiero el vestido amarillo",
+              null,
+              3
+            ],
+            [
+              "I have the yellow dress",
+              "Tengo el vestido amarillo",
+              null,
+              3
+            ],
+            [
+              "I have the yellow dress here",
+              "Tengo el vestido amarillo aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want the yellow dress",
+              "Quieres el vestido amarillo",
+              null,
+              4
+            ],
+            [
+              "I think I want the yellow dress",
+              "Pienso que quiero el vestido amarillo",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have the yellow dress",
+              "No sé si puedo tener el vestido amarillo",
+              null,
+              8
+            ],
+            [
+              "She said she wants the yellow dress",
+              "Ella dijo que quiere el vestido amarillo",
+              null,
+              6
+            ],
+            [
+              "That girl with the yellow dress.",
+              "Esa niña con el vestido amarillo.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0395": {
+      "seed": "S0395",
+      "seed_pair": {
+        "target": "Necesitamos girar a la izquierda en la próxima esquina.",
+        "known": "We need to turn left at the next corner."
+      },
+      "cumulative_legos": 790,
+      "legos": {
+        "S0395L01": {
+          "lego": [
+            "the left",
+            "la izquierda"
+          ],
+          "type": "M",
+          "available_legos": 687,
+          "practice_phrases": [
+            [
+              "the left",
+              "la izquierda",
+              null,
+              1
+            ],
+            [
+              "the left",
+              "la izquierda",
+              null,
+              1
+            ],
+            [
+              "I want the left",
+              "Quiero la izquierda",
+              null,
+              3
+            ],
+            [
+              "I have the left",
+              "Tengo la izquierda",
+              null,
+              3
+            ],
+            [
+              "I have the left here",
+              "Tengo la izquierda aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want the left",
+              "Quieres la izquierda",
+              null,
+              4
+            ],
+            [
+              "I think I want the left",
+              "Pienso que quiero la izquierda",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have the left",
+              "No sé si puedo tener la izquierda",
+              null,
+              8
+            ],
+            [
+              "She said she wants the left",
+              "Ella dijo que quiere la izquierda",
+              null,
+              6
+            ],
+            [
+              "Do you think I need the left",
+              "Piensas que necesito la izquierda",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0359L07": {
+          "lego": [
+            "to turn",
+            "girar"
+          ],
+          "type": "A",
+          "available_legos": 687,
+          "practice_phrases": [
+            [
+              "to turn",
+              "girar",
+              null,
+              1
+            ],
+            [
+              "to turn",
+              "girar",
+              null,
+              1
+            ],
+            [
+              "I want to turn",
+              "Quiero girar",
+              null,
+              3
+            ],
+            [
+              "I can to turn",
+              "Puedo girar",
+              null,
+              3
+            ],
+            [
+              "I want to turn now",
+              "Quiero girar ahora",
+              null,
+              4
+            ],
+            [
+              "I need to turn today",
+              "Necesito girar hoy",
+              null,
+              5
+            ],
+            [
+              "I think I want to turn",
+              "Pienso que quiero girar",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have to turn",
+              "No sé si puedo tener girar",
+              null,
+              8
+            ],
+            [
+              "She said she wants to turn",
+              "Ella dijo que quiere girar",
+              null,
+              6
+            ],
+            [
+              "Do you think I need to turn",
+              "Piensas que necesito girar",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0133L02": {
+          "lego": [
+            "to",
+            "a"
+          ],
+          "type": "A",
+          "available_legos": 687,
+          "practice_phrases": [
+            [
+              "to",
+              "a",
+              null,
+              1
+            ],
+            [
+              "to",
+              "a",
+              null,
+              1
+            ],
+            [
+              "I want to",
+              "Quiero a",
+              null,
+              3
+            ],
+            [
+              "I have to",
+              "Tengo a",
+              null,
+              3
+            ],
+            [
+              "I have to here",
+              "Tengo a aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want to",
+              "Quieres a",
+              null,
+              4
+            ],
+            [
+              "I think I want to",
+              "Pienso que quiero a",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have to",
+              "No sé si puedo tener a",
+              null,
+              8
+            ],
+            [
+              "She said she wants to",
+              "Ella dijo que quiere a",
+              null,
+              6
+            ],
+            [
+              "Do you think I need to",
+              "Piensas que necesito a",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0131L05": {
+          "lego": [
+            "at",
+            "en"
+          ],
+          "type": "A",
+          "available_legos": 687,
+          "practice_phrases": [
+            [
+              "at",
+              "en",
+              null,
+              1
+            ],
+            [
+              "at",
+              "en",
+              null,
+              1
+            ],
+            [
+              "I want at",
+              "Quiero en",
+              null,
+              3
+            ],
+            [
+              "I have at",
+              "Tengo en",
+              null,
+              3
+            ],
+            [
+              "I have at here",
+              "Tengo en aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want at",
+              "Quieres en",
+              null,
+              4
+            ],
+            [
+              "I think I want at",
+              "Pienso que quiero en",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have at",
+              "No sé si puedo tener en",
+              null,
+              8
+            ],
+            [
+              "She said she wants at",
+              "Ella dijo que quiere en",
+              null,
+              6
+            ],
+            [
+              "Do you think I need at",
+              "Piensas que necesito en",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0395L02": {
+          "lego": [
+            "the next corner",
+            "la próxima esquina"
+          ],
+          "type": "M",
+          "available_legos": 687,
+          "practice_phrases": [
+            [
+              "the next corner",
+              "la próxima esquina",
+              null,
+              1
+            ],
+            [
+              "the next corner",
+              "la próxima esquina",
+              null,
+              1
+            ],
+            [
+              "I want the next corner",
+              "Quiero la próxima esquina",
+              null,
+              3
+            ],
+            [
+              "I have the next corner",
+              "Tengo la próxima esquina",
+              null,
+              3
+            ],
+            [
+              "I have the next corner here",
+              "Tengo la próxima esquina aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want the next corner",
+              "Quieres la próxima esquina",
+              null,
+              4
+            ],
+            [
+              "I think I want the next corner",
+              "Pienso que quiero la próxima esquina",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have the next corner",
+              "No sé si puedo tener la próxima esquina",
+              null,
+              8
+            ],
+            [
+              "She said she wants the next corner",
+              "Ella dijo que quiere la próxima esquina",
+              null,
+              6
+            ],
+            [
+              "We need to turn left at the next corner.",
+              "Necesitamos girar a la izquierda en la próxima esquina.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0396": {
+      "seed": "S0396",
+      "seed_pair": {
+        "target": "No necesitamos estar de pie hasta que todos los demás estén preparados.",
+        "known": "We don't need to stand until everybody else is ready."
+      },
+      "cumulative_legos": 792,
+      "legos": {
+        "S0345L04": {
+          "lego": [
+            "not",
+            "No"
+          ],
+          "type": "A",
+          "available_legos": 690,
+          "practice_phrases": [
+            [
+              "not",
+              "No",
+              null,
+              1
+            ],
+            [
+              "not",
+              "No",
+              null,
+              1
+            ],
+            [
+              "I want not",
+              "Quiero No",
+              null,
+              3
+            ],
+            [
+              "I have not",
+              "Tengo No",
+              null,
+              3
+            ],
+            [
+              "I have not here",
+              "Tengo No aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want not",
+              "Quieres No",
+              null,
+              4
+            ],
+            [
+              "I think I want not",
+              "Pienso que quiero No",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have not",
+              "No sé si puedo tener No",
+              null,
+              8
+            ],
+            [
+              "She said she wants not",
+              "Ella dijo que quiere No",
+              null,
+              6
+            ],
+            [
+              "Do you think I need not",
+              "Piensas que necesito No",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0396L02": {
+          "lego": [
+            "until",
+            "hasta"
+          ],
+          "type": "A",
+          "available_legos": 690,
+          "practice_phrases": [
+            [
+              "until",
+              "hasta",
+              null,
+              1
+            ],
+            [
+              "until",
+              "hasta",
+              null,
+              1
+            ],
+            [
+              "I want until",
+              "Quiero hasta",
+              null,
+              3
+            ],
+            [
+              "I have until",
+              "Tengo hasta",
+              null,
+              3
+            ],
+            [
+              "I have until here",
+              "Tengo hasta aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want until",
+              "Quieres hasta",
+              null,
+              4
+            ],
+            [
+              "I think I want until",
+              "Pienso que quiero hasta",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have until",
+              "No sé si puedo tener hasta",
+              null,
+              8
+            ],
+            [
+              "She said she wants until",
+              "Ella dijo que quiere hasta",
+              null,
+              6
+            ],
+            [
+              "Do you think I need until",
+              "Piensas que necesito hasta",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0396L01": {
+          "lego": [
+            "to stand",
+            "estar de pie"
+          ],
+          "type": "M",
+          "available_legos": 690,
+          "practice_phrases": [
+            [
+              "to stand",
+              "estar de pie",
+              null,
+              1
+            ],
+            [
+              "to stand",
+              "estar de pie",
+              null,
+              1
+            ],
+            [
+              "I want to stand",
+              "Quiero estar de pie",
+              null,
+              3
+            ],
+            [
+              "I can to stand",
+              "Puedo estar de pie",
+              null,
+              3
+            ],
+            [
+              "I want to stand now",
+              "Quiero estar de pie ahora",
+              null,
+              4
+            ],
+            [
+              "I need to stand today",
+              "Necesito estar de pie hoy",
+              null,
+              5
+            ],
+            [
+              "I think I want to stand",
+              "Pienso que quiero estar de pie",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have to stand",
+              "No sé si puedo tener estar de pie",
+              null,
+              8
+            ],
+            [
+              "She said she wants to stand",
+              "Ella dijo que quiere estar de pie",
+              null,
+              6
+            ],
+            [
+              "Do you think I need to stand",
+              "Piensas que necesito estar de pie",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0102L02": {
+          "lego": [
+            "that",
+            "que"
+          ],
+          "type": "A",
+          "available_legos": 690,
+          "practice_phrases": [
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "I want that",
+              "Quiero que",
+              null,
+              3
+            ],
+            [
+              "I have that",
+              "Tengo que",
+              null,
+              3
+            ],
+            [
+              "I have that here",
+              "Tengo que aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want that",
+              "Quieres que",
+              null,
+              4
+            ],
+            [
+              "I think I want that",
+              "Pienso que quiero que",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have that",
+              "No sé si puedo tener que",
+              null,
+              8
+            ],
+            [
+              "She said she wants that",
+              "Ella dijo que quiere que",
+              null,
+              6
+            ],
+            [
+              "Do you think I need that",
+              "Piensas que necesito que",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0396L03": {
+          "lego": [
+            "everybody else",
+            "todos los demás"
+          ],
+          "type": "M",
+          "available_legos": 690,
+          "practice_phrases": [
+            [
+              "everybody else",
+              "todos los demás",
+              null,
+              1
+            ],
+            [
+              "everybody else",
+              "todos los demás",
+              null,
+              1
+            ],
+            [
+              "I want everybody else",
+              "Quiero todos los demás",
+              null,
+              3
+            ],
+            [
+              "I have everybody else",
+              "Tengo todos los demás",
+              null,
+              3
+            ],
+            [
+              "I have everybody else here",
+              "Tengo todos los demás aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want everybody else",
+              "Quieres todos los demás",
+              null,
+              4
+            ],
+            [
+              "I think I want everybody else",
+              "Pienso que quiero todos los demás",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have everybody else",
+              "No sé si puedo tener todos los demás",
+              null,
+              8
+            ],
+            [
+              "She said she wants everybody else",
+              "Ella dijo que quiere todos los demás",
+              null,
+              6
+            ],
+            [
+              "Do you think I need everybody else",
+              "Piensas que necesito todos los demás",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0396L04": {
+          "lego": [
+            "are",
+            "estén"
+          ],
+          "type": "A",
+          "available_legos": 690,
+          "practice_phrases": [
+            [
+              "are",
+              "estén",
+              null,
+              1
+            ],
+            [
+              "are",
+              "estén",
+              null,
+              1
+            ],
+            [
+              "I want are",
+              "Quiero estén",
+              null,
+              3
+            ],
+            [
+              "I have are",
+              "Tengo estén",
+              null,
+              3
+            ],
+            [
+              "I have are here",
+              "Tengo estén aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want are",
+              "Quieres estén",
+              null,
+              4
+            ],
+            [
+              "I think I want are",
+              "Pienso que quiero estén",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have are",
+              "No sé si puedo tener estén",
+              null,
+              8
+            ],
+            [
+              "She said she wants are",
+              "Ella dijo que quiere estén",
+              null,
+              6
+            ],
+            [
+              "Do you think I need are",
+              "Piensas que necesito estén",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0396L05": {
+          "lego": [
+            "ready",
+            "preparados"
+          ],
+          "type": "A",
+          "available_legos": 690,
+          "practice_phrases": [
+            [
+              "ready",
+              "preparados",
+              null,
+              1
+            ],
+            [
+              "ready",
+              "preparados",
+              null,
+              1
+            ],
+            [
+              "I want ready",
+              "Quiero preparados",
+              null,
+              3
+            ],
+            [
+              "I have ready",
+              "Tengo preparados",
+              null,
+              3
+            ],
+            [
+              "I have ready here",
+              "Tengo preparados aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want ready",
+              "Quieres preparados",
+              null,
+              4
+            ],
+            [
+              "I think I want ready",
+              "Pienso que quiero preparados",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have ready",
+              "No sé si puedo tener preparados",
+              null,
+              8
+            ],
+            [
+              "She said she wants ready",
+              "Ella dijo que quiere preparados",
+              null,
+              6
+            ],
+            [
+              "We don't need to stand until everybody else is ready.",
+              "No necesitamos estar de pie hasta que todos los demás estén preparados.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0397": {
+      "seed": "S0397",
+      "seed_pair": {
+        "target": "¿Necesitamos prepararnos pronto?",
+        "known": "Do we need to get ready soon?"
+      },
+      "cumulative_legos": 794,
+      "legos": {
+        "S0397L01": {
+          "lego": [
+            "to get ready",
+            "prepararnos"
+          ],
+          "type": "M",
+          "available_legos": 692,
+          "practice_phrases": [],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0023L03": {
+          "lego": [
+            "soon",
+            "pronto"
+          ],
+          "type": "A",
+          "available_legos": 692,
+          "practice_phrases": [
+            [
+              "soon",
+              "pronto",
+              null,
+              1
+            ],
+            [
+              "soon",
+              "pronto",
+              null,
+              1
+            ],
+            [
+              "I want soon",
+              "Quiero pronto",
+              null,
+              3
+            ],
+            [
+              "I have soon",
+              "Tengo pronto",
+              null,
+              3
+            ],
+            [
+              "I have soon here",
+              "Tengo pronto aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want soon",
+              "Quieres pronto",
+              null,
+              4
+            ],
+            [
+              "I think I want soon",
+              "Pienso que quiero pronto",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have soon",
+              "No sé si puedo tener pronto",
+              null,
+              8
+            ],
+            [
+              "She said she wants soon",
+              "Ella dijo que quiere pronto",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0398": {
+      "seed": "S0398",
+      "seed_pair": {
+        "target": "Queremos volvernos más pacientes con nuestros niños.",
+        "known": "We want to become more patient with our children."
+      },
+      "cumulative_legos": 796,
+      "legos": {
+        "S0018L01": {
+          "lego": [
+            "we want",
+            "Queremos"
+          ],
+          "type": "A",
+          "available_legos": 694,
+          "practice_phrases": [
+            [
+              "we want",
+              "Queremos",
+              null,
+              1
+            ],
+            [
+              "we want",
+              "Queremos",
+              null,
+              1
+            ],
+            [
+              "we want today",
+              "Queremos hoy",
+              null,
+              3
+            ],
+            [
+              "we want here",
+              "Queremos aquí",
+              null,
+              3
+            ],
+            [
+              "I have we want here",
+              "Tengo Queremos aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want we want",
+              "Quieres Queremos",
+              null,
+              4
+            ],
+            [
+              "I think I want we want",
+              "Pienso que quiero Queremos",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have we want",
+              "No sé si puedo tener Queremos",
+              null,
+              8
+            ],
+            [
+              "She said she wants we want",
+              "Ella dijo que quiere Queremos",
+              null,
+              6
+            ],
+            [
+              "Do you think I need we want",
+              "Piensas que necesito Queremos",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0398L01": {
+          "lego": [
+            "to become",
+            "volvernos"
+          ],
+          "type": "M",
+          "available_legos": 694,
+          "practice_phrases": [
+            [
+              "to become",
+              "volvernos",
+              null,
+              1
+            ],
+            [
+              "to become",
+              "volvernos",
+              null,
+              1
+            ],
+            [
+              "I want to become",
+              "Quiero volvernos",
+              null,
+              3
+            ],
+            [
+              "I can to become",
+              "Puedo volvernos",
+              null,
+              3
+            ],
+            [
+              "I want to become now",
+              "Quiero volvernos ahora",
+              null,
+              4
+            ],
+            [
+              "I need to become today",
+              "Necesito volvernos hoy",
+              null,
+              5
+            ],
+            [
+              "I think I want to become",
+              "Pienso que quiero volvernos",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have to become",
+              "No sé si puedo tener volvernos",
+              null,
+              8
+            ],
+            [
+              "She said she wants to become",
+              "Ella dijo que quiere volvernos",
+              null,
+              6
+            ],
+            [
+              "Do you think I need to become",
+              "Piensas que necesito volvernos",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0023L02": {
+          "lego": [
+            "more",
+            "más"
+          ],
+          "type": "A",
+          "available_legos": 694,
+          "practice_phrases": [
+            [
+              "more",
+              "más",
+              null,
+              1
+            ],
+            [
+              "more",
+              "más",
+              null,
+              1
+            ],
+            [
+              "I want more",
+              "Quiero más",
+              null,
+              3
+            ],
+            [
+              "I have more",
+              "Tengo más",
+              null,
+              3
+            ],
+            [
+              "I have more here",
+              "Tengo más aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want more",
+              "Quieres más",
+              null,
+              4
+            ],
+            [
+              "I think I want more",
+              "Pienso que quiero más",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have more",
+              "No sé si puedo tener más",
+              null,
+              8
+            ],
+            [
+              "She said she wants more",
+              "Ella dijo que quiere más",
+              null,
+              6
+            ],
+            [
+              "Do you think I need more",
+              "Piensas que necesito más",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0398L02": {
+          "lego": [
+            "patient",
+            "pacientes"
+          ],
+          "type": "A",
+          "available_legos": 694,
+          "practice_phrases": [
+            [
+              "patient",
+              "pacientes",
+              null,
+              1
+            ],
+            [
+              "patient",
+              "pacientes",
+              null,
+              1
+            ],
+            [
+              "I want patient",
+              "Quiero pacientes",
+              null,
+              3
+            ],
+            [
+              "I have patient",
+              "Tengo pacientes",
+              null,
+              3
+            ],
+            [
+              "I have patient here",
+              "Tengo pacientes aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want patient",
+              "Quieres pacientes",
+              null,
+              4
+            ],
+            [
+              "I think I want patient",
+              "Pienso que quiero pacientes",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have patient",
+              "No sé si puedo tener pacientes",
+              null,
+              8
+            ],
+            [
+              "She said she wants patient",
+              "Ella dijo que quiere pacientes",
+              null,
+              6
+            ],
+            [
+              "Do you think I need patient",
+              "Piensas que necesito pacientes",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0005L03": {
+          "lego": [
+            "with",
+            "con"
+          ],
+          "type": "A",
+          "available_legos": 694,
+          "practice_phrases": [
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "with",
+              "con",
+              null,
+              1
+            ],
+            [
+              "I want with",
+              "Quiero con",
+              null,
+              3
+            ],
+            [
+              "I have with",
+              "Tengo con",
+              null,
+              3
+            ],
+            [
+              "I have with here",
+              "Tengo con aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want with",
+              "Quieres con",
+              null,
+              4
+            ],
+            [
+              "I think I want with",
+              "Pienso que quiero con",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have with",
+              "No sé si puedo tener con",
+              null,
+              8
+            ],
+            [
+              "She said she wants with",
+              "Ella dijo que quiere con",
+              null,
+              6
+            ],
+            [
+              "Do you think I need with",
+              "Piensas que necesito con",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0398L03": {
+          "lego": [
+            "our children",
+            "nuestros niños"
+          ],
+          "type": "M",
+          "available_legos": 694,
+          "practice_phrases": [
+            [
+              "our children",
+              "nuestros niños",
+              null,
+              1
+            ],
+            [
+              "our children",
+              "nuestros niños",
+              null,
+              1
+            ],
+            [
+              "I want our children",
+              "Quiero nuestros niños",
+              null,
+              3
+            ],
+            [
+              "I have our children",
+              "Tengo nuestros niños",
+              null,
+              3
+            ],
+            [
+              "I have our children here",
+              "Tengo nuestros niños aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want our children",
+              "Quieres nuestros niños",
+              null,
+              4
+            ],
+            [
+              "I think I want our children",
+              "Pienso que quiero nuestros niños",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have our children",
+              "No sé si puedo tener nuestros niños",
+              null,
+              8
+            ],
+            [
+              "She said she wants our children",
+              "Ella dijo que quiere nuestros niños",
+              null,
+              6
+            ],
+            [
+              "We want to become more patient with our children.",
+              "Queremos volvernos más pacientes con nuestros niños.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0399": {
+      "seed": "S0399",
+      "seed_pair": {
+        "target": "No queremos perder la esperanza.",
+        "known": "We don't want to lose hope."
+      },
+      "cumulative_legos": 798,
+      "legos": {
+        "S0345L04": {
+          "lego": [
+            "not",
+            "No"
+          ],
+          "type": "A",
+          "available_legos": 696,
+          "practice_phrases": [
+            [
+              "not",
+              "No",
+              null,
+              1
+            ],
+            [
+              "not",
+              "No",
+              null,
+              1
+            ],
+            [
+              "I want not",
+              "Quiero No",
+              null,
+              3
+            ],
+            [
+              "I have not",
+              "Tengo No",
+              null,
+              3
+            ],
+            [
+              "I have not here",
+              "Tengo No aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want not",
+              "Quieres No",
+              null,
+              4
+            ],
+            [
+              "I think I want not",
+              "Pienso que quiero No",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have not",
+              "No sé si puedo tener No",
+              null,
+              8
+            ],
+            [
+              "She said she wants not",
+              "Ella dijo que quiere No",
+              null,
+              6
+            ],
+            [
+              "Do you think I need not",
+              "Piensas que necesito No",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0018L01": {
+          "lego": [
+            "we want",
+            "queremos"
+          ],
+          "type": "A",
+          "available_legos": 696,
+          "practice_phrases": [
+            [
+              "we want",
+              "queremos",
+              null,
+              1
+            ],
+            [
+              "we want",
+              "queremos",
+              null,
+              1
+            ],
+            [
+              "we want today",
+              "queremos hoy",
+              null,
+              3
+            ],
+            [
+              "we want here",
+              "queremos aquí",
+              null,
+              3
+            ],
+            [
+              "I have we want here",
+              "Tengo queremos aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want we want",
+              "Quieres queremos",
+              null,
+              4
+            ],
+            [
+              "I think I want we want",
+              "Pienso que quiero queremos",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have we want",
+              "No sé si puedo tener queremos",
+              null,
+              8
+            ],
+            [
+              "She said she wants we want",
+              "Ella dijo que quiere queremos",
+              null,
+              6
+            ],
+            [
+              "Do you think I need we want",
+              "Piensas que necesito queremos",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0399L01": {
+          "lego": [
+            "to lose",
+            "perder"
+          ],
+          "type": "A",
+          "available_legos": 696,
+          "practice_phrases": [
+            [
+              "to lose",
+              "perder",
+              null,
+              1
+            ],
+            [
+              "to lose",
+              "perder",
+              null,
+              1
+            ],
+            [
+              "I want to lose",
+              "Quiero perder",
+              null,
+              3
+            ],
+            [
+              "I can to lose",
+              "Puedo perder",
+              null,
+              3
+            ],
+            [
+              "I want to lose now",
+              "Quiero perder ahora",
+              null,
+              4
+            ],
+            [
+              "I need to lose today",
+              "Necesito perder hoy",
+              null,
+              5
+            ],
+            [
+              "I think I want to lose",
+              "Pienso que quiero perder",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have to lose",
+              "No sé si puedo tener perder",
+              null,
+              8
+            ],
+            [
+              "She said she wants to lose",
+              "Ella dijo que quiere perder",
+              null,
+              6
+            ],
+            [
+              "Do you think I need to lose",
+              "Piensas que necesito perder",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0399L02": {
+          "lego": [
+            "hope",
+            "la esperanza"
+          ],
+          "type": "M",
+          "available_legos": 696,
+          "practice_phrases": [
+            [
+              "hope",
+              "la esperanza",
+              null,
+              1
+            ],
+            [
+              "hope",
+              "la esperanza",
+              null,
+              1
+            ],
+            [
+              "I want hope",
+              "Quiero la esperanza",
+              null,
+              3
+            ],
+            [
+              "I have hope",
+              "Tengo la esperanza",
+              null,
+              3
+            ],
+            [
+              "I have hope here",
+              "Tengo la esperanza aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want hope",
+              "Quieres la esperanza",
+              null,
+              4
+            ],
+            [
+              "I think I want hope",
+              "Pienso que quiero la esperanza",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have hope",
+              "No sé si puedo tener la esperanza",
+              null,
+              8
+            ],
+            [
+              "She said she wants hope",
+              "Ella dijo que quiere la esperanza",
+              null,
+              6
+            ],
+            [
+              "We don't want to lose hope.",
+              "No queremos perder la esperanza.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0400": {
+      "seed": "S0400",
+      "seed_pair": {
+        "target": "¿Queremos comer algo más tarde?",
+        "known": "Do we want to eat something later on?"
+      },
+      "cumulative_legos": 800,
+      "legos": {
+        "S0018L01": {
+          "lego": [
+            "we want",
+            "Queremos"
+          ],
+          "type": "A",
+          "available_legos": 696,
+          "practice_phrases": [
+            [
+              "we want",
+              "Queremos",
+              null,
+              1
+            ],
+            [
+              "we want",
+              "Queremos",
+              null,
+              1
+            ],
+            [
+              "we want today",
+              "Queremos hoy",
+              null,
+              3
+            ],
+            [
+              "we want here",
+              "Queremos aquí",
+              null,
+              3
+            ],
+            [
+              "I have we want here",
+              "Tengo Queremos aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want we want",
+              "Quieres Queremos",
+              null,
+              4
+            ],
+            [
+              "I think I want we want",
+              "Pienso que quiero Queremos",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have we want",
+              "No sé si puedo tener Queremos",
+              null,
+              8
+            ],
+            [
+              "She said she wants we want",
+              "Ella dijo que quiere Queremos",
+              null,
+              6
+            ],
+            [
+              "Do you think I need we want",
+              "Piensas que necesito Queremos",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0400L01": {
+          "lego": [
+            "to eat",
+            "comer"
+          ],
+          "type": "A",
+          "available_legos": 696,
+          "practice_phrases": [
+            [
+              "to eat",
+              "comer",
+              null,
+              1
+            ],
+            [
+              "to eat",
+              "comer",
+              null,
+              1
+            ],
+            [
+              "I want to eat",
+              "Quiero comer",
+              null,
+              3
+            ],
+            [
+              "I can to eat",
+              "Puedo comer",
+              null,
+              3
+            ],
+            [
+              "I want to eat now",
+              "Quiero comer ahora",
+              null,
+              4
+            ],
+            [
+              "I need to eat today",
+              "Necesito comer hoy",
+              null,
+              5
+            ],
+            [
+              "I think I want to eat",
+              "Pienso que quiero comer",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have to eat",
+              "No sé si puedo tener comer",
+              null,
+              8
+            ],
+            [
+              "She said she wants to eat",
+              "Ella dijo que quiere comer",
+              null,
+              6
+            ],
+            [
+              "Do you think I need to eat",
+              "Piensas que necesito comer",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0004L02": {
+          "lego": [
+            "something",
+            "algo"
+          ],
+          "type": "A",
+          "available_legos": 696,
+          "practice_phrases": [
+            [
+              "something",
+              "algo",
+              null,
+              1
+            ],
+            [
+              "something",
+              "algo",
+              null,
+              1
+            ],
+            [
+              "I want something",
+              "Quiero algo",
+              null,
+              3
+            ],
+            [
+              "I have something",
+              "Tengo algo",
+              null,
+              3
+            ],
+            [
+              "I have something here",
+              "Tengo algo aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want something",
+              "Quieres algo",
+              null,
+              4
+            ],
+            [
+              "I think I want something",
+              "Pienso que quiero algo",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have something",
+              "No sé si puedo tener algo",
+              null,
+              8
+            ],
+            [
+              "She said she wants something",
+              "Ella dijo que quiere algo",
+              null,
+              6
+            ],
+            [
+              "Do you think I need something",
+              "Piensas que necesito algo",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0400L04": {
+          "lego": [
+            "later on",
+            "más tarde"
+          ],
+          "type": "M",
+          "available_legos": 696,
+          "practice_phrases": [
+            [
+              "later on",
+              "más tarde",
+              null,
+              1
+            ],
+            [
+              "later on",
+              "más tarde",
+              null,
+              1
+            ],
+            [
+              "I want later on",
+              "Quiero más tarde",
+              null,
+              3
+            ],
+            [
+              "I have later on",
+              "Tengo más tarde",
+              null,
+              3
+            ],
+            [
+              "I have later on here",
+              "Tengo más tarde aquí",
+              null,
+              4
+            ],
+            [
+              "Do you want later on",
+              "Quieres más tarde",
+              null,
+              4
+            ],
+            [
+              "I think I want later on",
+              "Pienso que quiero más tarde",
+              null,
+              6
+            ],
+            [
+              "I don't know if I can have later on",
+              "No sé si puedo tener más tarde",
+              null,
+              8
+            ],
+            [
+              "She said she wants later on",
+              "Ella dijo que quiere más tarde",
+              null,
+              6
+            ],
+            [
+              "Do we want to eat something later on?",
+              "¿Queremos comer algo más tarde?",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1698 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "agent_id": 10,
+  "seed_range": "S0481-S0500",
+  "total_seeds": 20,
+  "validation_status": "PENDING",
+  "validated_at": "2025-11-07T00:00:00.000Z",
+  "seeds": {
+    "S0481": {
+      "seed": "S0481",
+      "seed_pair": {
+        "known": "It's the only real hope we have left.",
+        "target": "Es la única esperanza real que nos queda."
+      },
+      "cumulative_legos": 1335,
+      "legos": {
+        "S0481L01": {
+          "lego": ["only", "única"],
+          "type": "A",
+          "available_legos": 1334,
+          "practice_phrases": [
+            ["only", "única", null, 1],
+            ["the only", "la única", null, 2],
+            ["the only way", "la única forma", null, 3],
+            ["It's the only option.", "Es la única opción.", null, 3],
+            ["That's the only problem.", "Ese es el único problema.", null, 4],
+            ["This is the only thing I want.", "Esto es la única cosa que quiero.", null, 8],
+            ["The only thing that matters is your happiness.", "La única cosa que importa es tu felicidad.", null, 10],
+            ["I think it's the only way to help.", "Creo que es la única forma de ayudar.", null, 10],
+            ["The only real answer is to start now.", "La única respuesta real es empezar ahora.", null, 9],
+            ["It's the only real hope we have left.", "Es la única esperanza real que nos queda.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0481L02": {
+          "lego": ["hope", "esperanza"],
+          "type": "A",
+          "available_legos": 1335,
+          "practice_phrases": [
+            ["hope", "esperanza", null, 1],
+            ["the hope", "la esperanza", null, 2],
+            ["real hope", "esperanza real", null, 2],
+            ["It's the only hope.", "Es la única esperanza.", null, 4],
+            ["I have hope that you can help.", "Tengo esperanza de que puedes ayudar.", null, 8],
+            ["The only hope is to start right now.", "La única esperanza es empezar ahora mismo.", null, 9],
+            ["There's no real hope if you don't try.", "No hay esperanza real si no intentas.", null, 10],
+            ["I think the only hope is to speak with them.", "Creo que la única esperanza es hablar con ellos.", null, 11],
+            ["The real hope we have is to keep trying.", "La esperanza real que tenemos es seguir intentando.", null, 11],
+            ["It's the only real hope we have left.", "Es la única esperanza real que nos queda.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0481L03": {
+          "lego": ["real", "real"],
+          "type": "A",
+          "available_legos": 1336,
+          "practice_phrases": [
+            ["real", "real", null, 1],
+            ["real hope", "esperanza real", null, 2],
+            ["a real problem", "un problema real", null, 3],
+            ["It's a real challenge.", "Es un desafío real.", null, 4],
+            ["This is a real opportunity.", "Esta es una oportunidad real.", null, 5],
+            ["I think you have a real chance to win.", "Creo que tienes una oportunidad real de ganar.", null, 10],
+            ["The only real answer is to keep trying.", "La única respuesta real es seguir intentando.", null, 9],
+            ["It's the only real hope we have right now.", "Es la única esperanza real que tenemos ahora mismo.", null, 10],
+            ["There's no real way to know if they're serious.", "No hay forma real de saber si son serios.", null, 13],
+            ["It's the only real hope we have left.", "Es la única esperanza real que nos queda.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0481L04": {
+          "lego": ["we have left", "que nos queda"],
+          "type": "M",
+          "available_legos": 1337,
+          "practice_phrases": [
+            ["we have left", "que nos queda", null, 2],
+            ["the hope we have left", "la esperanza que nos queda", null, 5],
+            ["the time we have left", "el tiempo que nos queda", null, 5],
+            ["It's all we have left.", "Es todo lo que nos queda.", null, 6],
+            ["This is the only thing we have left.", "Esta es la única cosa que nos queda.", null, 8],
+            ["I want to use the time we have left.", "Quiero usar el tiempo que nos queda.", null, 9],
+            ["The only real hope we have left is to start now.", "La única esperanza real que nos queda es empezar ahora.", null, 12],
+            ["We should try to make the most of the time we have left.", "Deberíamos intentar aprovechar al máximo el tiempo que nos queda.", null, 12],
+            ["I think the real opportunity we have left is to speak with them.", "Creo que la oportunidad real que nos queda es hablar con ellos.", null, 14],
+            ["It's the only real hope we have left.", "Es la única esperanza real que nos queda.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0482": {
+      "seed": "S0482",
+      "seed_pair": {
+        "known": "The only real hope is that they're not serious.",
+        "target": "La única esperanza real es que no son serios."
+      },
+      "cumulative_legos": 1339,
+      "legos": {
+        "S0482L01": {
+          "lego": ["they're not", "no son"],
+          "type": "M",
+          "available_legos": 1338,
+          "practice_phrases": [
+            ["they're not", "no son", null, 2],
+            ["they're not here", "no son aquí", null, 3],
+            ["They're not serious.", "No son serios.", null, 3],
+            ["I think they're not ready.", "Creo que no son listos.", null, 5],
+            ["They're not the only option we have.", "No son la única opción que tenemos.", null, 8],
+            ["I believe they're not going to come to the meeting.", "Creo que no son a venir a la reunión.", null, 12],
+            ["The real problem is that they're not willing to try.", "El problema real es que no son dispuestos a intentar.", null, 12],
+            ["They're not the people we want to work with right now.", "No son las personas con las que queremos trabajar ahora mismo.", null, 13],
+            ["I think they're not serious about helping us with this challenge.", "Creo que no son serios sobre ayudarnos con este desafío.", null, 12],
+            ["The only real hope is that they're not serious.", "La única esperanza real es que no son serios.", null, 10]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0482L02": {
+          "lego": ["serious", "serios"],
+          "type": "A",
+          "available_legos": 1339,
+          "practice_phrases": [
+            ["serious", "serios", null, 1],
+            ["not serious", "no serios", null, 2],
+            ["They're not serious.", "No son serios.", null, 3],
+            ["This is a serious problem.", "Este es un problema serio.", null, 5],
+            ["I think they're not serious about this.", "Creo que no son serios sobre esto.", null, 8],
+            ["The only hope is that they're not serious.", "La única esperanza es que no son serios.", null, 10],
+            ["It's a serious challenge but I think we can do it.", "Es un desafío serio pero creo que podemos hacerlo.", null, 12],
+            ["I don't believe they're serious about wanting to help us.", "No creo que son serios sobre querer ayudarnos.", null, 10],
+            ["The real question is whether they're serious about making a change.", "La pregunta real es si son serios sobre hacer un cambio.", null, 13],
+            ["The only real hope is that they're not serious.", "La única esperanza real es que no son serios.", null, 10]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0483": {
+      "seed": "S0483",
+      "seed_pair": {
+        "known": "Life isn't easy but it's not meant to be easy.",
+        "target": "La vida no es fácil pero no está destinada a ser fácil."
+      },
+      "cumulative_legos": 1343,
+      "legos": {
+        "S0483L01": {
+          "lego": ["Life", "La vida"],
+          "type": "M",
+          "available_legos": 1339,
+          "practice_phrases": [
+            ["Life", "La vida", null, 1],
+            ["Life is beautiful.", "La vida es hermosa.", null, 3],
+            ["Life is a challenge.", "La vida es un desafío.", null, 4],
+            ["I think life is wonderful.", "Creo que la vida es maravillosa.", null, 5],
+            ["Life isn't always easy but it's worth it.", "La vida no es siempre fácil pero vale la pena.", null, 11],
+            ["I believe that life is meant to be an adventure.", "Creo que la vida está destinada a ser una aventura.", null, 12],
+            ["Life is the most beautiful thing we have right now.", "La vida es la cosa más hermosa que tenemos ahora mismo.", null, 12],
+            ["The way I see it, life is about trying to be happy.", "De la forma que lo veo, la vida es sobre intentar ser feliz.", null, 16],
+            ["I think life is what you make it, so make it good.", "Creo que la vida es lo que haces de ella, así que hazla buena.", null, 15],
+            ["Life isn't easy but it's not meant to be easy.", "La vida no es fácil pero no está destinada a ser fácil.", null, 13]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0483L02": {
+          "lego": ["easy", "fácil"],
+          "type": "A",
+          "available_legos": 1340,
+          "practice_phrases": [
+            ["easy", "fácil", null, 1],
+            ["not easy", "no fácil", null, 2],
+            ["It's not easy.", "No es fácil.", null, 3],
+            ["Life isn't easy but it's good.", "La vida no es fácil pero es buena.", null, 8],
+            ["This is not going to be easy.", "Esto no va a ser fácil.", null, 7],
+            ["I think it's easy to understand if you try.", "Creo que es fácil de entender si intentas.", null, 10],
+            ["It's not easy to make a change but it's worth it.", "No es fácil hacer un cambio pero vale la pena.", null, 12],
+            ["The way you explain things makes it easy to learn.", "La forma en que explicas las cosas hace que sea fácil aprender.", null, 13],
+            ["Life isn't meant to be easy but that doesn't mean it can't be beautiful.", "La vida no está destinada a ser fácil pero eso no significa que no puede ser hermosa.", null, 18],
+            ["Life isn't easy but it's not meant to be easy.", "La vida no es fácil pero no está destinada a ser fácil.", null, 13]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0483L03": {
+          "lego": ["it's not", "no está"],
+          "type": "M",
+          "available_legos": 1341,
+          "practice_phrases": [
+            ["it's not", "no está", null, 2],
+            ["it's not here", "no está aquí", null, 3],
+            ["It's not ready.", "No está listo.", null, 3],
+            ["I think it's not a problem.", "Creo que no está un problema.", null, 6],
+            ["It's not going to be easy.", "No está yendo a ser fácil.", null, 6],
+            ["The real issue is that it's not meant to be this way.", "El problema real es que no está destinado a ser así.", null, 14],
+            ["It's not under the bridge like you said it would be.", "No está bajo el puente como dijiste que estaría.", null, 11],
+            ["I believe it's not the only way to solve this challenge.", "Creo que no está la única forma de resolver este desafío.", null, 13],
+            ["If it's not working right now, maybe we should try a different way.", "Si no está funcionando ahora mismo, quizás deberíamos intentar una forma diferente.", null, 13],
+            ["Life isn't easy but it's not meant to be easy.", "La vida no es fácil pero no está destinada a ser fácil.", null, 13]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0483L04": {
+          "lego": ["meant to be", "destinada a ser"],
+          "type": "M",
+          "available_legos": 1342,
+          "practice_phrases": [
+            ["meant to be", "destinada a ser", null, 3],
+            ["It's meant to be.", "Está destinada a ser.", null, 4],
+            ["not meant to be easy", "no destinada a ser fácil", null, 5],
+            ["This is meant to be a challenge.", "Esto está destinado a ser un desafío.", null, 7],
+            ["I think it's meant to be difficult.", "Creo que está destinado a ser difícil.", null, 7],
+            ["Life is meant to be beautiful even when it's hard.", "La vida está destinada a ser hermosa incluso cuando es difícil.", null, 12],
+            ["It's not meant to be easy but that's what makes it worth it.", "No está destinado a ser fácil pero eso es lo que lo hace valer la pena.", null, 16],
+            ["I believe this challenge is meant to be a way to help us grow.", "Creo que este desafío está destinado a ser una forma de ayudarnos a crecer.", null, 14],
+            ["The way I see it, life is meant to be an adventure that we embrace.", "De la forma que lo veo, la vida está destinada a ser una aventura que abrazamos.", null, 17],
+            ["Life isn't easy but it's not meant to be easy.", "La vida no es fácil pero no está destinada a ser fácil.", null, 13]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0484": {
+      "seed": "S0484",
+      "seed_pair": {
+        "known": "It's meant to be a challenge.",
+        "target": "Está destinada a ser un desafío."
+      },
+      "cumulative_legos": 1345,
+      "legos": {
+        "S0484L01": {
+          "lego": ["It's meant to be", "Está destinada a ser"],
+          "type": "M",
+          "available_legos": 1343,
+          "practice_phrases": [
+            ["It's meant to be", "Está destinada a ser", null, 4],
+            ["It's meant to be difficult.", "Está destinada a ser difícil.", null, 5],
+            ["It's meant to be a test.", "Está destinada a ser una prueba.", null, 6],
+            ["I think it's meant to be this way.", "Creo que está destinado a ser así.", null, 7],
+            ["It's meant to be a real challenge.", "Está destinada a ser un desafío real.", null, 7],
+            ["I believe it's meant to be difficult so we can learn.", "Creo que está destinado a ser difícil para que podamos aprender.", null, 12],
+            ["Life is meant to be beautiful even when things aren't easy.", "La vida está destinada a ser hermosa incluso cuando las cosas no son fáciles.", null, 13],
+            ["It's meant to be a way for us to grow and become stronger.", "Está destinado a ser una forma para que crezcamos y nos hagamos más fuertes.", null, 14],
+            ["I think this challenge is meant to be something that helps us understand what really matters.", "Creo que este desafío está destinado a ser algo que nos ayuda a entender lo que realmente importa.", null, 18],
+            ["It's meant to be a challenge.", "Está destinada a ser un desafío.", null, 6]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0484L02": {
+          "lego": ["a challenge", "un desafío"],
+          "type": "M",
+          "available_legos": 1344,
+          "practice_phrases": [
+            ["a challenge", "un desafío", null, 2],
+            ["It's a challenge.", "Es un desafío.", null, 3],
+            ["a real challenge", "un desafío real", null, 3],
+            ["This is a big challenge.", "Este es un desafío grande.", null, 5],
+            ["I think it's a serious challenge.", "Creo que es un desafío serio.", null, 6],
+            ["Life is meant to be a challenge that we embrace.", "La vida está destinada a ser un desafío que abrazamos.", null, 11],
+            ["It's a challenge but I believe we can do it together.", "Es un desafío pero creo que podemos hacerlo juntos.", null, 10],
+            ["The only real challenge is to keep trying even when it's difficult.", "El único desafío real es seguir intentando incluso cuando es difícil.", null, 12],
+            ["I think the way to overcome a challenge is to face it with hope and determination.", "Creo que la forma de superar un desafío es enfrentarlo con esperanza y determinación.", null, 15],
+            ["It's meant to be a challenge.", "Está destinada a ser un desafío.", null, 6]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0485": {
+      "seed": "S0485",
+      "seed_pair": {
+        "known": "Nothing would make me happier than to get away.",
+        "target": "Nada me haría más feliz que escapar."
+      },
+      "cumulative_legos": 1349,
+      "legos": {
+        "S0485L01": {
+          "lego": ["would make me", "me haría"],
+          "type": "M",
+          "available_legos": 1345,
+          "practice_phrases": [
+            ["would make me", "me haría", null, 2],
+            ["would make me happy", "me haría feliz", null, 3],
+            ["That would make me happy.", "Eso me haría feliz.", null, 4],
+            ["Nothing would make me happier.", "Nada me haría más feliz.", null, 5],
+            ["It would make me happy to help.", "Me haría feliz ayudar.", null, 6],
+            ["I think that would make me happier than anything else.", "Creo que eso me haría más feliz que cualquier otra cosa.", null, 11],
+            ["Nothing would make me happier than to spend time with you.", "Nada me haría más feliz que pasar tiempo contigo.", null, 10],
+            ["The only thing that would make me happy is to know you're safe.", "La única cosa que me haría feliz es saber que estás seguro.", null, 13],
+            ["I believe nothing would make me happier than to see you succeed in life.", "Creo que nada me haría más feliz que verte tener éxito en la vida.", null, 15],
+            ["Nothing would make me happier than to get away.", "Nada me haría más feliz que escapar.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0485L02": {
+          "lego": ["happier", "más feliz"],
+          "type": "M",
+          "available_legos": 1346,
+          "practice_phrases": [
+            ["happier", "más feliz", null, 1],
+            ["much happier", "mucho más feliz", null, 3],
+            ["I'm happier now.", "Estoy más feliz ahora.", null, 3],
+            ["That would make me happier.", "Eso me haría más feliz.", null, 5],
+            ["I'm happier when I'm with you.", "Estoy más feliz cuando estoy contigo.", null, 6],
+            ["Nothing would make me happier than to see you smile.", "Nada me haría más feliz que verte sonreír.", null, 10],
+            ["I think I would be happier if I could spend more time outside.", "Creo que estaría más feliz si pudiera pasar más tiempo afuera.", null, 12],
+            ["The only thing that would make me happier is knowing you're safe and happy.", "La única cosa que me haría más feliz es saber que estás seguro y feliz.", null, 15],
+            ["Life would be so much happier if we could all just be kind to each other.", "La vida sería mucho más feliz si todos pudiéramos ser amables unos con otros.", null, 15],
+            ["Nothing would make me happier than to get away.", "Nada me haría más feliz que escapar.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0485L03": {
+          "lego": ["than", "que"],
+          "type": "A",
+          "available_legos": 1347,
+          "practice_phrases": [
+            ["than", "que", null, 1],
+            ["more than", "más que", null, 2],
+            ["happier than before", "más feliz que antes", null, 3],
+            ["I'm happier than I was.", "Estoy más feliz que estaba.", null, 5],
+            ["Nothing makes me happier than this.", "Nada me hace más feliz que esto.", null, 7],
+            ["I think you're better at this than I am.", "Creo que eres mejor en esto que yo.", null, 10],
+            ["There's nothing I want more than to help you succeed.", "No hay nada que quiera más que ayudarte a tener éxito.", null, 12],
+            ["Life is more beautiful than I ever thought it could be.", "La vida es más hermosa de lo que pensé que podría ser.", null, 14],
+            ["I believe that being kind is more important than being right.", "Creo que ser amable es más importante que tener razón.", null, 12],
+            ["Nothing would make me happier than to get away.", "Nada me haría más feliz que escapar.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0485L04": {
+          "lego": ["to get away", "escapar"],
+          "type": "A",
+          "available_legos": 1348,
+          "practice_phrases": [
+            ["to get away", "escapar", null, 2],
+            ["I want to get away.", "Quiero escapar.", null, 4],
+            ["We need to get away.", "Necesitamos escapar.", null, 4],
+            ["I need to get away for a while.", "Necesito escapar por un tiempo.", null, 7],
+            ["The only option is to get away.", "La única opción es escapar.", null, 6],
+            ["I think we should try to get away before it's too late.", "Creo que deberíamos intentar escapar antes de que sea demasiado tarde.", null, 12],
+            ["Nothing would make me happier than to get away from here.", "Nada me haría más feliz que escapar de aquí.", null, 10],
+            ["Sometimes the best thing you can do is to get away and clear your head.", "A veces la mejor cosa que puedes hacer es escapar y aclarar tu mente.", null, 15],
+            ["I believe the only real hope we have right now is to get away and start over.", "Creo que la única esperanza real que tenemos ahora mismo es escapar y empezar de nuevo.", null, 17],
+            ["Nothing would make me happier than to get away.", "Nada me haría más feliz que escapar.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0486": {
+      "seed": "S0486",
+      "seed_pair": {
+        "known": "I think your eyes are beautiful.",
+        "target": "Creo que tus ojos son hermosos."
+      },
+      "cumulative_legos": 1353,
+      "legos": {
+        "S0486L01": {
+          "lego": ["I think", "Creo que"],
+          "type": "M",
+          "available_legos": 1349,
+          "practice_phrases": [
+            ["I think", "Creo que", null, 2],
+            ["I think so.", "Creo que sí.", null, 3],
+            ["I think it's beautiful.", "Creo que es hermoso.", null, 4],
+            ["I think you're right about this.", "Creo que tienes razón sobre esto.", null, 5],
+            ["I think we should try it.", "Creo que deberíamos intentarlo.", null, 4],
+            ["I think your eyes are the most beautiful thing I've ever seen.", "Creo que tus ojos son la cosa más hermosa que he visto.", null, 13],
+            ["I think life is meant to be lived with joy and purpose.", "Creo que la vida está destinada a ser vivida con alegría y propósito.", null, 13],
+            ["I think nothing would make me happier than to spend time with you.", "Creo que nada me haría más feliz que pasar tiempo contigo.", null, 13],
+            ["I think the only real way to be happy is to be grateful for what you have.", "Creo que la única forma real de ser feliz es estar agradecido por lo que tienes.", null, 17],
+            ["I think your eyes are beautiful.", "Creo que tus ojos son hermosos.", null, 6]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0486L02": {
+          "lego": ["eyes", "ojos"],
+          "type": "A",
+          "available_legos": 1350,
+          "practice_phrases": [
+            ["eyes", "ojos", null, 1],
+            ["your eyes", "tus ojos", null, 2],
+            ["beautiful eyes", "ojos hermosos", null, 2],
+            ["I love your eyes.", "Me encantan tus ojos.", null, 4],
+            ["Your eyes are really beautiful.", "Tus ojos son realmente hermosos.", null, 5],
+            ["I think your eyes tell a beautiful story.", "Creo que tus ojos cuentan una historia hermosa.", null, 8],
+            ["When I look into your eyes, I see real happiness.", "Cuando miro tus ojos, veo felicidad real.", null, 9],
+            ["Your eyes are the most beautiful thing about you in my opinion.", "Tus ojos son la cosa más hermosa sobre ti en mi opinión.", null, 13],
+            ["I believe the eyes are the window to the soul and yours are beautiful.", "Creo que los ojos son la ventana al alma y los tuyos son hermosos.", null, 15],
+            ["I think your eyes are beautiful.", "Creo que tus ojos son hermosos.", null, 6]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0486L03": {
+          "lego": ["are", "son"],
+          "type": "A",
+          "available_legos": 1351,
+          "practice_phrases": [
+            ["are", "son", null, 1],
+            ["they are", "son", null, 2],
+            ["Your eyes are beautiful.", "Tus ojos son hermosos.", null, 4],
+            ["They are not here yet.", "No son aquí todavía.", null, 4],
+            ["These are the only options.", "Estas son las únicas opciones.", null, 5],
+            ["I think they are not serious about this challenge.", "Creo que no son serios sobre este desafío.", null, 9],
+            ["The real questions are the ones that make you think deeply.", "Las preguntas reales son las que te hacen pensar profundamente.", null, 11],
+            ["Your eyes are so beautiful that I can't stop looking at them.", "Tus ojos son tan hermosos que no puedo dejar de mirarlos.", null, 12],
+            ["I believe the most important things in life are the ones that make you happy.", "Creo que las cosas más importantes en la vida son las que te hacen feliz.", null, 16],
+            ["I think your eyes are beautiful.", "Creo que tus ojos son hermosos.", null, 6]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0486L04": {
+          "lego": ["beautiful", "hermosos"],
+          "type": "A",
+          "available_legos": 1352,
+          "practice_phrases": [
+            ["beautiful", "hermosos", null, 1],
+            ["so beautiful", "tan hermosos", null, 2],
+            ["Your eyes are beautiful.", "Tus ojos son hermosos.", null, 4],
+            ["Life is really beautiful.", "La vida es realmente hermosa.", null, 4],
+            ["I think this place is beautiful.", "Creo que este lugar es hermoso.", null, 6],
+            ["The most beautiful thing is to see people being kind.", "La cosa más hermosa es ver personas siendo amables.", null, 11],
+            ["I think your eyes are the most beautiful eyes I've ever seen.", "Creo que tus ojos son los ojos más hermosos que he visto.", null, 12],
+            ["Life is meant to be beautiful even when things are challenging.", "La vida está destinada a ser hermosa incluso cuando las cosas son desafiantes.", null, 13],
+            ["The way you see the world is so beautiful that it makes me want to be better.", "La forma en que ves el mundo es tan hermosa que me hace querer ser mejor.", null, 18],
+            ["I think your eyes are beautiful.", "Creo que tus ojos son hermosos.", null, 6]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0487": {
+      "seed": "S0487",
+      "seed_pair": {
+        "known": "It's under the bridge.",
+        "target": "Está bajo el puente."
+      },
+      "cumulative_legos": 1355,
+      "legos": {
+        "S0487L01": {
+          "lego": ["under", "bajo"],
+          "type": "A",
+          "available_legos": 1353,
+          "practice_phrases": [
+            ["under", "bajo", null, 1],
+            ["under the bridge", "bajo el puente", null, 3],
+            ["It's under there.", "Está bajo ahí.", null, 3],
+            ["Look under the table.", "Mira bajo la mesa.", null, 4],
+            ["It's hidden under the papers.", "Está escondido bajo los papeles.", null, 5],
+            ["I think it's under the bridge near the entrance.", "Creo que está bajo el puente cerca de la entrada.", null, 10],
+            ["The real answer is under all these layers of confusion.", "La respuesta real está bajo todas estas capas de confusión.", null, 11],
+            ["I found it under the old bridge on the other side of town.", "Lo encontré bajo el viejo puente al otro lado de la ciudad.", null, 14],
+            ["Sometimes the most beautiful things are hidden under the surface where you can't see them.", "A veces las cosas más hermosas están escondidas bajo la superficie donde no puedes verlas.", null, 16],
+            ["It's under the bridge.", "Está bajo el puente.", null, 4]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0487L02": {
+          "lego": ["bridge", "puente"],
+          "type": "A",
+          "available_legos": 1354,
+          "practice_phrases": [
+            ["bridge", "puente", null, 1],
+            ["the bridge", "el puente", null, 2],
+            ["under the bridge", "bajo el puente", null, 3],
+            ["It's near the bridge.", "Está cerca del puente.", null, 4],
+            ["We need to cross the bridge.", "Necesitamos cruzar el puente.", null, 5],
+            ["I think the bridge is the most beautiful part of this place.", "Creo que el puente es la parte más hermosa de este lugar.", null, 14],
+            ["The bridge over there is where we first met years ago.", "El puente allá es donde nos conocimos hace años.", null, 11],
+            ["If you walk across the bridge, you'll see the entrance on the other side.", "Si caminas a través del puente, verás la entrada al otro lado.", null, 15],
+            ["I love the way the bridge looks when the sun is setting behind it.", "Me encanta la forma en que el puente se ve cuando el sol se pone detrás de él.", null, 18],
+            ["It's under the bridge.", "Está bajo el puente.", null, 4]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0488": {
+      "seed": "S0488",
+      "seed_pair": {
+        "known": "It's on the other side of that yellow line.",
+        "target": "Está al otro lado de esa línea amarilla."
+      },
+      "cumulative_legos": 1358,
+      "legos": {
+        "S0488L01": {
+          "lego": ["on the other side of", "al otro lado de"],
+          "type": "M",
+          "available_legos": 1355,
+          "practice_phrases": [
+            ["on the other side", "al otro lado", null, 3],
+            ["on the other side of the bridge", "al otro lado del puente", null, 6],
+            ["It's on the other side.", "Está al otro lado.", null, 4],
+            ["She's waiting on the other side.", "Está esperando al otro lado.", null, 5],
+            ["The entrance is on the other side of the building.", "La entrada está al otro lado del edificio.", null, 9],
+            ["I think the answer is on the other side of this challenge.", "Creo que la respuesta está al otro lado de este desafío.", null, 12],
+            ["Everything you're looking for is on the other side of your fear.", "Todo lo que buscas está al otro lado de tu miedo.", null, 12],
+            ["If you cross the bridge, you'll find what you need on the other side.", "Si cruzas el puente, encontrarás lo que necesitas al otro lado.", null, 13],
+            ["I believe the most beautiful view is on the other side of that yellow line over there.", "Creo que la vista más hermosa está al otro lado de esa línea amarilla allá.", null, 16],
+            ["It's on the other side of that yellow line.", "Está al otro lado de esa línea amarilla.", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0488L02": {
+          "lego": ["line", "línea"],
+          "type": "A",
+          "available_legos": 1356,
+          "practice_phrases": [
+            ["line", "línea", null, 1],
+            ["the line", "la línea", null, 2],
+            ["yellow line", "línea amarilla", null, 2],
+            ["Don't cross that line.", "No cruces esa línea.", null, 4],
+            ["The line is over there.", "La línea está allá.", null, 5],
+            ["I think you should stay on this side of the line.", "Creo que deberías quedarte de este lado de la línea.", null, 11],
+            ["The yellow line marks where the safe area ends and danger begins.", "La línea amarilla marca donde el área segura termina y el peligro comienza.", null, 13],
+            ["If you cross that line, there's no going back to the way things were.", "Si cruzas esa línea, no hay vuelta atrás a como eran las cosas.", null, 15],
+            ["I believe the only thing separating us from our dreams is a thin line of fear.", "Creo que la única cosa que nos separa de nuestros sueños es una línea delgada de miedo.", null, 17],
+            ["It's on the other side of that yellow line.", "Está al otro lado de esa línea amarilla.", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0488L03": {
+          "lego": ["yellow", "amarilla"],
+          "type": "A",
+          "available_legos": 1357,
+          "practice_phrases": [
+            ["yellow", "amarilla", null, 1],
+            ["the yellow line", "la línea amarilla", null, 3],
+            ["a yellow house", "una casa amarilla", null, 3],
+            ["I love that yellow color.", "Me encanta ese color amarillo.", null, 5],
+            ["The yellow line marks the boundary.", "La línea amarilla marca el límite.", null, 6],
+            ["I think the yellow house on the other side is beautiful.", "Creo que la casa amarilla al otro lado es hermosa.", null, 11],
+            ["The bright yellow color makes it easy to see from far away.", "El color amarillo brillante hace que sea fácil ver desde lejos.", null, 13],
+            ["When you see the yellow line, you'll know you're in the right place.", "Cuando veas la línea amarilla, sabrás que estás en el lugar correcto.", null, 14],
+            ["I love the way the yellow flowers look in the spring when everything is coming to life.", "Me encanta la forma en que las flores amarillas se ven en la primavera cuando todo cobra vida.", null, 18],
+            ["It's on the other side of that yellow line.", "Está al otro lado de esa línea amarilla.", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0489": {
+      "seed": "S0489",
+      "seed_pair": {
+        "known": "If you don't make me a strong cup of coffee right now.",
+        "target": "Si no me haces una taza de café fuerte ahora mismo."
+      },
+      "cumulative_legos": 1362,
+      "legos": {
+        "S0489L01": {
+          "lego": ["you don't make me", "no me haces"],
+          "type": "M",
+          "available_legos": 1358,
+          "practice_phrases": [
+            ["you don't make me", "no me haces", null, 3],
+            ["If you don't make me happy", "Si no me haces feliz", null, 6],
+            ["You don't make me feel safe.", "No me haces sentir seguro.", null, 6],
+            ["If you don't make me smile", "Si no me haces sonreír", null, 6],
+            ["You don't make me want to try.", "No me haces querer intentar.", null, 6],
+            ["If you don't make me a cup of coffee right now", "Si no me haces una taza de café ahora mismo", null, 12],
+            ["You don't make me feel like I matter to you at all.", "No me haces sentir como si te importara en absoluto.", null, 12],
+            ["If you don't make me understand why this matters, I won't do it.", "Si no me haces entender por qué esto importa, no lo haré.", null, 14],
+            ["The way you speak to me doesn't make me feel respected or valued.", "La forma en que me hablas no me hace sentir respetado o valorado.", null, 14],
+            ["If you don't make me a strong cup of coffee right now.", "Si no me haces una taza de café fuerte ahora mismo.", null, 12]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0489L02": {
+          "lego": ["a cup of", "una taza de"],
+          "type": "M",
+          "available_legos": 1359,
+          "practice_phrases": [
+            ["a cup of", "una taza de", null, 3],
+            ["a cup of coffee", "una taza de café", null, 4],
+            ["I want a cup of tea.", "Quiero una taza de té.", null, 6],
+            ["Make me a cup of coffee.", "Hazme una taza de café.", null, 6],
+            ["I need a cup of coffee right now.", "Necesito una taza de café ahora mismo.", null, 8],
+            ["Nothing would make me happier than a cup of strong coffee.", "Nada me haría más feliz que una taza de café fuerte.", null, 12],
+            ["I think a cup of coffee would help me think more clearly.", "Creo que una taza de café me ayudaría a pensar más claramente.", null, 13],
+            ["If you make me a cup of coffee, I'll be able to focus better.", "Si me haces una taza de café, podré concentrarme mejor.", null, 13],
+            ["The first thing I do every morning is make myself a cup of strong coffee.", "La primera cosa que hago cada mañana es hacerme una taza de café fuerte.", null, 15],
+            ["If you don't make me a strong cup of coffee right now.", "Si no me haces una taza de café fuerte ahora mismo.", null, 12]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0489L03": {
+          "lego": ["strong", "fuerte"],
+          "type": "A",
+          "available_legos": 1360,
+          "practice_phrases": [
+            ["strong", "fuerte", null, 1],
+            ["strong coffee", "café fuerte", null, 2],
+            ["You are very strong.", "Eres muy fuerte.", null, 4],
+            ["I need something strong right now.", "Necesito algo fuerte ahora mismo.", null, 6],
+            ["You have to be strong.", "Tienes que ser fuerte.", null, 5],
+            ["I think you're stronger than you believe you are.", "Creo que eres más fuerte de lo que crees que eres.", null, 12],
+            ["The only way to overcome this challenge is to stay strong.", "La única forma de superar este desafío es mantenerse fuerte.", null, 12],
+            ["If you make me a strong cup of coffee, I'll be ready to face anything.", "Si me haces una taza de café fuerte, estaré listo para enfrentar cualquier cosa.", null, 15],
+            ["I believe that the strongest people are the ones who keep trying even when life is difficult.", "Creo que las personas más fuertes son las que siguen intentando incluso cuando la vida es difícil.", null, 18],
+            ["If you don't make me a strong cup of coffee right now.", "Si no me haces una taza de café fuerte ahora mismo.", null, 12]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0489L04": {
+          "lego": ["right now", "ahora mismo"],
+          "type": "M",
+          "available_legos": 1361,
+          "practice_phrases": [
+            ["right now", "ahora mismo", null, 2],
+            ["I need it right now.", "Lo necesito ahora mismo.", null, 5],
+            ["Come here right now.", "Ven aquí ahora mismo.", null, 4],
+            ["We have to do this right now.", "Tenemos que hacer esto ahora mismo.", null, 7],
+            ["I want to leave right now.", "Quiero irme ahora mismo.", null, 5],
+            ["I think we need to make a decision right now.", "Creo que necesitamos tomar una decisión ahora mismo.", null, 9],
+            ["The most important thing you can do right now is to stay calm.", "La cosa más importante que puedes hacer ahora mismo es mantener la calma.", null, 13],
+            ["If you don't make me a strong cup of coffee right now, I won't be able to function.", "Si no me haces una taza de café fuerte ahora mismo, no podré funcionar.", null, 16],
+            ["I believe the only real hope we have left is to act right now before it's too late.", "Creo que la única esperanza real que nos queda es actuar ahora mismo antes de que sea demasiado tarde.", null, 19],
+            ["If you don't make me a strong cup of coffee right now.", "Si no me haces una taza de café fuerte ahora mismo.", null, 12]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0490": {
+      "seed": "S0490",
+      "seed_pair": {
+        "known": "Then I will never trust anyone ever again.",
+        "target": "Entonces nunca confiaré en nadie nunca más."
+      },
+      "cumulative_legos": 1366,
+      "legos": {
+        "S0490L01": {
+          "lego": ["Then", "Entonces"],
+          "type": "A",
+          "available_legos": 1362,
+          "practice_phrases": [
+            ["Then", "Entonces", null, 1],
+            ["Then what?", "¿Entonces qué?", null, 2],
+            ["If that's true, then...", "Si eso es verdad, entonces...", null, 5],
+            ["Then I'll leave right now.", "Entonces me iré ahora mismo.", null, 5],
+            ["Then we need to try something different.", "Entonces necesitamos intentar algo diferente.", null, 6],
+            ["If you don't want to help me, then I'll do it myself.", "Si no quieres ayudarme, entonces lo haré yo mismo.", null, 11],
+            ["I think if this doesn't work, then we have no other options left.", "Creo que si esto no funciona, entonces no tenemos otras opciones.", null, 13],
+            ["If you keep treating me this way, then I will never trust you again.", "Si sigues tratándome así, entonces nunca confiaré en ti otra vez.", null, 13],
+            ["The way I see it, if you can't be honest with me, then we have no real relationship.", "De la forma que lo veo, si no puedes ser honesto conmigo, entonces no tenemos relación real.", null, 18],
+            ["Then I will never trust anyone ever again.", "Entonces nunca confiaré en nadie nunca más.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0490L02": {
+          "lego": ["I will never trust", "nunca confiaré en"],
+          "type": "M",
+          "available_legos": 1363,
+          "practice_phrases": [
+            ["I will never trust", "nunca confiaré en", null, 4],
+            ["I will never trust them.", "Nunca confiaré en ellos.", null, 5],
+            ["I will never trust anyone again.", "Nunca confiaré en nadie otra vez.", null, 6],
+            ["I will never trust people who lie.", "Nunca confiaré en personas que mienten.", null, 7],
+            ["I will never trust someone like that.", "Nunca confiaré en alguien así.", null, 6],
+            ["If you do that to me, I will never trust you again.", "Si me haces eso, nunca confiaré en ti otra vez.", null, 12],
+            ["I think I will never trust anyone who can't be honest with me.", "Creo que nunca confiaré en nadie que no pueda ser honesto conmigo.", null, 13],
+            ["After what happened, I will never trust them no matter what they say.", "Después de lo que pasó, nunca confiaré en ellos sin importar lo que digan.", null, 15],
+            ["The way they treated me makes me believe I will never trust anyone like that again.", "La forma en que me trataron me hace creer que nunca confiaré en nadie así otra vez.", null, 17],
+            ["Then I will never trust anyone ever again.", "Entonces nunca confiaré en nadie nunca más.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0490L03": {
+          "lego": ["anyone", "nadie"],
+          "type": "A",
+          "available_legos": 1364,
+          "practice_phrases": [
+            ["anyone", "nadie", null, 1],
+            ["anyone else", "nadie más", null, 2],
+            ["I don't trust anyone.", "No confío en nadie.", null, 5],
+            ["Is anyone there?", "¿Hay alguien ahí?", null, 3],
+            ["I will never trust anyone again.", "Nunca confiaré en nadie otra vez.", null, 6],
+            ["I don't think anyone can help us with this challenge.", "No creo que nadie pueda ayudarnos con este desafío.", null, 10],
+            ["If anyone asks where I am, tell them I needed to get away.", "Si alguien pregunta dónde estoy, diles que necesitaba escapar.", null, 12],
+            ["I believe anyone can change if they really want to and try hard enough.", "Creo que cualquiera puede cambiar si realmente quiere y se esfuerza lo suficiente.", null, 13],
+            ["After what happened, I will never trust anyone ever again no matter what they promise.", "Después de lo que pasó, nunca confiaré en nadie nunca más sin importar lo que prometan.", null, 17],
+            ["Then I will never trust anyone ever again.", "Entonces nunca confiaré en nadie nunca más.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0490L04": {
+          "lego": ["ever again", "nunca más"],
+          "type": "M",
+          "available_legos": 1365,
+          "practice_phrases": [
+            ["ever again", "nunca más", null, 2],
+            ["never ever again", "nunca nunca más", null, 3],
+            ["I won't do this ever again.", "No haré esto nunca más.", null, 6],
+            ["Don't talk to me ever again.", "No me hables nunca más.", null, 6],
+            ["I will never trust anyone ever again.", "Nunca confiaré en nadie nunca más.", null, 7],
+            ["If you hurt me like this, I will never speak to you ever again.", "Si me lastimas así, nunca te hablaré nunca más.", null, 13],
+            ["I think after what happened, I can't go back there ever again.", "Creo que después de lo que pasó, no puedo volver ahí nunca más.", null, 14],
+            ["The way you treated me makes me believe I will never trust you ever again.", "La forma en que me trataste me hace creer que nunca confiaré en ti nunca más.", null, 16],
+            ["Nothing would make me happier than to never have to see that place ever again.", "Nada me haría más feliz que nunca tener que ver ese lugar nunca más.", null, 15],
+            ["Then I will never trust anyone ever again.", "Entonces nunca confiaré en nadie nunca más.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0491": {
+      "seed": "S0491",
+      "seed_pair": {
+        "known": "I love the way you try to help.",
+        "target": "Me encanta la forma en que intentas ayudar."
+      },
+      "cumulative_legos": 1370,
+      "legos": {
+        "S0491L01": {
+          "lego": ["I love", "Me encanta"],
+          "type": "M",
+          "available_legos": 1366,
+          "practice_phrases": [
+            ["I love", "Me encanta", null, 2],
+            ["I love this.", "Me encanta esto.", null, 3],
+            ["I love your eyes.", "Me encantan tus ojos.", null, 4],
+            ["I love the way you smile.", "Me encanta la forma en que sonríes.", null, 8],
+            ["I love spending time with you.", "Me encanta pasar tiempo contigo.", null, 6],
+            ["I love the way you always try to see the bright side.", "Me encanta la forma en que siempre intentas ver el lado brillante.", null, 13],
+            ["I love how your eyes light up when you talk about your dreams.", "Me encanta cómo tus ojos se iluminan cuando hablas de tus sueños.", null, 12],
+            ["I love the way you make me feel like I can do anything.", "Me encanta la forma en que me haces sentir como si pudiera hacer cualquier cosa.", null, 16],
+            ["I love that you never give up even when things are really difficult and challenging.", "Me encanta que nunca te rindes incluso cuando las cosas son realmente difíciles y desafiantes.", null, 15],
+            ["I love the way you try to help.", "Me encanta la forma en que intentas ayudar.", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0491L02": {
+          "lego": ["the way", "la forma en que"],
+          "type": "M",
+          "available_legos": 1367,
+          "practice_phrases": [
+            ["the way", "la forma en que", null, 2],
+            ["I love the way", "Me encanta la forma en que", null, 5],
+            ["the way you speak", "la forma en que hablas", null, 5],
+            ["I love the way you think.", "Me encanta la forma en que piensas.", null, 7],
+            ["The way you do this is beautiful.", "La forma en que haces esto es hermosa.", null, 8],
+            ["I think the way you see the world is really special.", "Creo que la forma en que ves el mundo es realmente especial.", null, 12],
+            ["The way you always try to help others makes me respect you.", "La forma en que siempre intentas ayudar a otros me hace respetarte.", null, 12],
+            ["I love the way your eyes look when you're talking about something you care about.", "Me encanta la forma en que tus ojos se ven cuando hablas de algo que te importa.", null, 17],
+            ["The way you keep trying even when things are difficult shows how strong you really are.", "La forma en que sigues intentando incluso cuando las cosas son difíciles muestra cuán fuerte realmente eres.", null, 17],
+            ["I love the way you try to help.", "Me encanta la forma en que intentas ayudar.", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0491L03": {
+          "lego": ["you try", "intentas"],
+          "type": "A",
+          "available_legos": 1368,
+          "practice_phrases": [
+            ["you try", "intentas", null, 2],
+            ["when you try", "cuando intentas", null, 3],
+            ["I love how you try.", "Me encanta cómo intentas.", null, 5],
+            ["You try to help everyone.", "Intentas ayudar a todos.", null, 5],
+            ["I think you try really hard.", "Creo que intentas muy duro.", null, 5],
+            ["The way you try to make people happy is beautiful.", "La forma en que intentas hacer felices a las personas es hermosa.", null, 12],
+            ["I love the way you try even when you know it's going to be difficult.", "Me encanta la forma en que intentas incluso cuando sabes que va a ser difícil.", null, 15],
+            ["Every time you try to do something new, I see how strong and brave you are.", "Cada vez que intentas hacer algo nuevo, veo cuán fuerte y valiente eres.", null, 14],
+            ["I think the most important thing is that you try your best no matter what happens.", "Creo que lo más importante es que intentas tu mejor esfuerzo sin importar lo que pase.", null, 16],
+            ["I love the way you try to help.", "Me encanta la forma en que intentas ayudar.", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0492": {
+      "seed": "S0492",
+      "seed_pair": {
+        "known": "Which of those places do you think is the most interesting?",
+        "target": "¿Cuál de esos lugares crees que es el más interesante?"
+      },
+      "cumulative_legos": 1377,
+      "legos": {
+        "S0492L01": {
+          "lego": ["Which of", "¿Cuál de"],
+          "type": "M",
+          "available_legos": 1370,
+          "practice_phrases": [
+            ["Which of", "Cuál de", null, 2],
+            ["Which of these?", "¿Cuál de estos?", null, 3],
+            ["Which of those places?", "¿Cuál de esos lugares?", null, 4],
+            ["Which of them do you like?", "¿Cuál de ellos te gusta?", null, 6],
+            ["Which of those options is better?", "¿Cuál de esas opciones es mejor?", null, 6],
+            ["I think which of these you choose will make a big difference.", "Creo que cuál de estos elijas hará una gran diferencia.", null, 11],
+            ["Which of those places do you think is the most beautiful?", "¿Cuál de esos lugares crees que es el más hermoso?", null, 11],
+            ["Can you tell me which of those people you trust the most?", "¿Puedes decirme cuál de esas personas confías más?", null, 10],
+            ["I love the way you always know which of the options is the right one.", "Me encanta la forma en que siempre sabes cuál de las opciones es la correcta.", null, 15],
+            ["Which of those places do you think is the most interesting?", "¿Cuál de esos lugares crees que es el más interesante?", null, 11]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0492L02": {
+          "lego": ["those", "esos"],
+          "type": "A",
+          "available_legos": 1371,
+          "practice_phrases": [
+            ["those", "esos", null, 1],
+            ["those places", "esos lugares", null, 2],
+            ["I like those.", "Me gustan esos.", null, 3],
+            ["Which of those do you want?", "¿Cuál de esos quieres?", null, 5],
+            ["I think those are the best options.", "Creo que esos son las mejores opciones.", null, 7],
+            ["I love the way those flowers look in the spring.", "Me encanta la forma en que esas flores se ven en la primavera.", null, 13],
+            ["Those people over there are the ones who can help you.", "Esas personas allá son las que pueden ayudarte.", null, 10],
+            ["Which of those places do you think would make you the happiest?", "¿Cuál de esos lugares crees que te haría más feliz?", null, 11],
+            ["I believe those are the most important questions we need to answer right now.", "Creo que esas son las preguntas más importantes que necesitamos responder ahora mismo.", null, 13],
+            ["Which of those places do you think is the most interesting?", "¿Cuál de esos lugares crees que es el más interesante?", null, 11]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0492L03": {
+          "lego": ["places", "lugares"],
+          "type": "A",
+          "available_legos": 1372,
+          "practice_phrases": [
+            ["places", "lugares", null, 1],
+            ["those places", "esos lugares", null, 2],
+            ["beautiful places", "lugares hermosos", null, 2],
+            ["I love visiting new places.", "Me encanta visitar lugares nuevos.", null, 5],
+            ["There are many interesting places here.", "Hay muchos lugares interesantes aquí.", null, 5],
+            ["I think those places are the most beautiful I've ever seen.", "Creo que esos lugares son los más hermosos que he visto.", null, 12],
+            ["Which of those places do you think would be the best to visit?", "¿Cuál de esos lugares crees que sería el mejor para visitar?", null, 12],
+            ["The places we go and the people we meet are what make life interesting.", "Los lugares que vamos y las personas que conocemos son lo que hace la vida interesante.", null, 16],
+            ["I love the way some places make you feel like you're in a different world.", "Me encanta la forma en que algunos lugares te hacen sentir como si estuvieras en un mundo diferente.", null, 18],
+            ["Which of those places do you think is the most interesting?", "¿Cuál de esos lugares crees que es el más interesante?", null, 11]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0492L04": {
+          "lego": ["the most", "el más"],
+          "type": "M",
+          "available_legos": 1373,
+          "practice_phrases": [
+            ["the most", "el más", null, 2],
+            ["the most beautiful", "el más hermoso", null, 3],
+            ["the most interesting", "el más interesante", null, 3],
+            ["You're the most important person to me.", "Eres la persona más importante para mí.", null, 7],
+            ["This is the most difficult challenge.", "Este es el desafío más difícil.", null, 6],
+            ["I think your eyes are the most beautiful thing about you.", "Creo que tus ojos son la cosa más hermosa sobre ti.", null, 12],
+            ["Which of those places do you think is the most interesting to visit?", "¿Cuál de esos lugares crees que es el más interesante para visitar?", null, 13],
+            ["The most important thing in life is to be happy and to help others.", "La cosa más importante en la vida es ser feliz y ayudar a otros.", null, 15],
+            ["I love the way you always see the most beautiful side of every situation.", "Me encanta la forma en que siempre ves el lado más hermoso de cada situación.", null, 15],
+            ["Which of those places do you think is the most interesting?", "¿Cuál de esos lugares crees que es el más interesante?", null, 11]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0493": {
+      "seed": "S0493",
+      "seed_pair": {
+        "known": "What's going to come next?",
+        "target": "¿Qué va a venir después?"
+      },
+      "cumulative_legos": 1379,
+      "legos": {
+        "S0493L01": {
+          "lego": ["What's going to come", "¿Qué va a venir"],
+          "type": "M",
+          "available_legos": 1377,
+          "practice_phrases": [
+            ["What's going to come", "Qué va a venir", null, 4],
+            ["What's going to come next?", "¿Qué va a venir después?", null, 5],
+            ["What's going to come after this?", "¿Qué va a venir después de esto?", null, 6],
+            ["I wonder what's going to come.", "Me pregunto qué va a venir.", null, 6],
+            ["Do you know what's going to come?", "¿Sabes qué va a venir?", null, 6],
+            ["I think what's going to come next will be really challenging.", "Creo que lo que va a venir después será realmente desafiante.", null, 12],
+            ["Nobody knows what's going to come next in life so we have to be ready.", "Nadie sabe qué va a venir después en la vida así que tenemos que estar listos.", null, 17],
+            ["I love the way you face the future even when you don't know what's going to come.", "Me encanta la forma en que enfrentas el futuro incluso cuando no sabes qué va a venir.", null, 17],
+            ["The most important thing is to be prepared for what's going to come no matter what it is.", "Lo más importante es estar preparado para lo que va a venir sin importar lo que sea.", null, 18],
+            ["What's going to come next?", "¿Qué va a venir después?", null, 5]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0493L02": {
+          "lego": ["next", "después"],
+          "type": "A",
+          "available_legos": 1378,
+          "practice_phrases": [
+            ["next", "después", null, 1],
+            ["What's next?", "¿Qué sigue?", null, 2],
+            ["What comes next?", "¿Qué viene después?", null, 3],
+            ["I'll do it next time.", "Lo haré la próxima vez.", null, 5],
+            ["What's going to come next?", "¿Qué va a venir después?", null, 5],
+            ["I think the next step is to make a plan.", "Creo que el siguiente paso es hacer un plan.", null, 11],
+            ["What happens next will determine everything that comes after it.", "Lo que pasa después determinará todo lo que viene después de eso.", null, 12],
+            ["The next time you see me, I'll be a different person.", "La próxima vez que me veas, seré una persona diferente.", null, 12],
+            ["I love the way you always think about what comes next instead of worrying about the past.", "Me encanta la forma en que siempre piensas en lo que viene después en lugar de preocuparte por el pasado.", null, 20],
+            ["What's going to come next?", "¿Qué va a venir después?", null, 5]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0494": {
+      "seed": "S0494",
+      "seed_pair": {
+        "known": "What happens after the first part of the show?",
+        "target": "¿Qué pasa después de la primera parte del espectáculo?"
+      },
+      "cumulative_legos": 1382,
+      "legos": {
+        "S0494L01": {
+          "lego": ["What happens", "¿Qué pasa"],
+          "type": "M",
+          "available_legos": 1379,
+          "practice_phrases": [
+            ["What happens", "Qué pasa", null, 2],
+            ["What happens next?", "¿Qué pasa después?", null, 3],
+            ["What happens after this?", "¿Qué pasa después de esto?", null, 4],
+            ["What happens if I don't go?", "¿Qué pasa si no voy?", null, 6],
+            ["I wonder what happens at the end.", "Me pregunto qué pasa al final.", null, 7],
+            ["I think what happens next will surprise everyone watching the show.", "Creo que lo que pasa después sorprenderá a todos viendo el espectáculo.", null, 12],
+            ["What happens after the first part is the most interesting part.", "Lo que pasa después de la primera parte es la parte más interesante.", null, 13],
+            ["Nobody really knows what happens next in life so we just have to trust.", "Nadie realmente sabe qué pasa después en la vida así que solo tenemos que confiar.", null, 16],
+            ["I love the way you stay calm no matter what happens around you.", "Me encanta la forma en que te mantienes calmado sin importar lo que pasa a tu alrededor.", null, 16],
+            ["What happens after the first part of the show?", "¿Qué pasa después de la primera parte del espectáculo?", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0494L02": {
+          "lego": ["first", "primera"],
+          "type": "A",
+          "available_legos": 1380,
+          "practice_phrases": [
+            ["first", "primera", null, 1],
+            ["the first part", "la primera parte", null, 3],
+            ["the first time", "la primera vez", null, 3],
+            ["This is my first try.", "Este es mi primer intento.", null, 5],
+            ["What happens after the first part?", "¿Qué pasa después de la primera parte?", null, 7],
+            ["I think the first step is to understand what the problem is.", "Creo que el primer paso es entender cuál es el problema.", null, 12],
+            ["The first time I saw you, I knew you were someone special.", "La primera vez que te vi, supe que eras alguien especial.", null, 13],
+            ["What happens after the first part of the show is the most interesting.", "Lo que pasa después de la primera parte del espectáculo es lo más interesante.", null, 14],
+            ["I love the way you always make a strong first impression on everyone you meet.", "Me encanta la forma en que siempre causas una primera impresión fuerte en todos los que conoces.", null, 17],
+            ["What happens after the first part of the show?", "¿Qué pasa después de la primera parte del espectáculo?", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0494L03": {
+          "lego": ["show", "espectáculo"],
+          "type": "A",
+          "available_legos": 1381,
+          "practice_phrases": [
+            ["show", "espectáculo", null, 1],
+            ["the show", "el espectáculo", null, 2],
+            ["a great show", "un gran espectáculo", null, 3],
+            ["I love this show.", "Me encanta este espectáculo.", null, 4],
+            ["The show starts at eight.", "El espectáculo empieza a las ocho.", null, 6],
+            ["I think the first part of the show is the best.", "Creo que la primera parte del espectáculo es la mejor.", null, 11],
+            ["What happens after the first part of the show is really interesting.", "Lo que pasa después de la primera parte del espectáculo es realmente interesante.", null, 13],
+            ["The show is meant to be a way to make people think about life.", "El espectáculo está destinado a ser una forma de hacer pensar a las personas sobre la vida.", null, 17],
+            ["I love the way the show makes you feel like you're part of something special.", "Me encanta la forma en que el espectáculo te hace sentir como si fueras parte de algo especial.", null, 18],
+            ["What happens after the first part of the show?", "¿Qué pasa después de la primera parte del espectáculo?", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0495": {
+      "seed": "S0495",
+      "seed_pair": {
+        "known": "When it matters.",
+        "target": "Cuando importa."
+      },
+      "cumulative_legos": 1383,
+      "legos": {
+        "S0495L01": {
+          "lego": ["it matters", "importa"],
+          "type": "A",
+          "available_legos": 1382,
+          "practice_phrases": [
+            ["it matters", "importa", null, 2],
+            ["When it matters", "Cuando importa", null, 3],
+            ["It really matters to me.", "Realmente me importa.", null, 4],
+            ["Nothing else matters right now.", "Nada más importa ahora mismo.", null, 5],
+            ["I think it matters more than you know.", "Creo que importa más de lo que sabes.", null, 8],
+            ["The only thing that really matters is that you're happy.", "La única cosa que realmente importa es que seas feliz.", null, 11],
+            ["When it matters most, I know you'll be there for me.", "Cuando importa más, sé que estarás ahí para mí.", null, 10],
+            ["I love the way you show up when it matters even when it's difficult.", "Me encanta la forma en que apareces cuando importa incluso cuando es difícil.", null, 14],
+            ["What really matters in life is not what you have but who you are and how you treat others.", "Lo que realmente importa en la vida no es lo que tienes sino quién eres y cómo tratas a otros.", null, 20],
+            ["When it matters.", "Cuando importa.", null, 3]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0496": {
+      "seed": "S0496",
+      "seed_pair": {
+        "known": "I'm not planning to lose when it really matters.",
+        "target": "No estoy planeando perder cuando realmente importa."
+      },
+      "cumulative_legos": 1386,
+      "legos": {
+        "S0496L01": {
+          "lego": ["I'm not planning", "No estoy planeando"],
+          "type": "M",
+          "available_legos": 1383,
+          "practice_phrases": [
+            ["I'm not planning", "No estoy planeando", null, 3],
+            ["I'm not planning to go.", "No estoy planeando ir.", null, 5],
+            ["I'm not planning to leave yet.", "No estoy planeando irme todavía.", null, 6],
+            ["I'm not planning to give up.", "No estoy planeando rendirme.", null, 5],
+            ["I'm not planning to lose this time.", "No estoy planeando perder esta vez.", null, 6],
+            ["I'm not planning to stop trying until I succeed.", "No estoy planeando dejar de intentar hasta que tenga éxito.", null, 10],
+            ["I'm not planning to let you down when you need me most.", "No estoy planeando decepcionarte cuando más me necesites.", null, 10],
+            ["I'm not planning to lose when it really matters to me.", "No estoy planeando perder cuando realmente me importa.", null, 10],
+            ["I'm not planning to give up on this challenge no matter how difficult it becomes.", "No estoy planeando rendirme en este desafío sin importar cuán difícil se vuelva.", null, 13],
+            ["I'm not planning to lose when it really matters.", "No estoy planeando perder cuando realmente importa.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0496L02": {
+          "lego": ["really", "realmente"],
+          "type": "A",
+          "available_legos": 1384,
+          "practice_phrases": [
+            ["really", "realmente", null, 1],
+            ["really matters", "realmente importa", null, 2],
+            ["I really love this.", "Realmente amo esto.", null, 4],
+            ["It's really beautiful here.", "Es realmente hermoso aquí.", null, 4],
+            ["I think you're really strong.", "Creo que eres realmente fuerte.", null, 5],
+            ["When it really matters, I'll be there for you.", "Cuando realmente importa, estaré ahí para ti.", null, 9],
+            ["I'm not planning to lose when it really matters to me.", "No estoy planeando perder cuando realmente me importa.", null, 10],
+            ["The only thing that really matters is being kind to the people around you.", "La única cosa que realmente importa es ser amable con las personas a tu alrededor.", null, 15],
+            ["I love the way you always know what really matters in life and focus on that.", "Me encanta la forma en que siempre sabes lo que realmente importa en la vida y te enfocas en eso.", null, 19],
+            ["I'm not planning to lose when it really matters.", "No estoy planeando perder cuando realmente importa.", null, 8]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0497": {
+      "seed": "S0497",
+      "seed_pair": {
+        "known": "That sounds as though you need to get some sleep.",
+        "target": "Eso suena como si necesitaras dormir un poco."
+      },
+      "cumulative_legos": 1389,
+      "legos": {
+        "S0497L01": {
+          "lego": ["sounds as though", "suena como si"],
+          "type": "M",
+          "available_legos": 1386,
+          "practice_phrases": [
+            ["sounds as though", "suena como si", null, 3],
+            ["That sounds as though...", "Eso suena como si...", null, 4],
+            ["It sounds as though you're tired.", "Suena como si estuvieras cansado.", null, 6],
+            ["That sounds as though you need help.", "Eso suena como si necesitaras ayuda.", null, 7],
+            ["It sounds as though something is wrong.", "Suena como si algo estuviera mal.", null, 6],
+            ["That sounds as though you need to take a break right now.", "Eso suena como si necesitaras tomar un descanso ahora mismo.", null, 11],
+            ["It sounds as though you're not planning to come to the show.", "Suena como si no estuvieras planeando venir al espectáculo.", null, 11],
+            ["That sounds as though you've been through something really difficult and challenging.", "Eso suena como si hubieras pasado por algo realmente difícil y desafiante.", null, 12],
+            ["It sounds as though what really matters to you is being able to help others.", "Suena como si lo que realmente te importa es poder ayudar a otros.", null, 14],
+            ["That sounds as though you need to get some sleep.", "Eso suena como si necesitaras dormir un poco.", null, 10]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0497L02": {
+          "lego": ["you need", "necesitaras"],
+          "type": "A",
+          "available_legos": 1387,
+          "practice_phrases": [
+            ["you need", "necesitaras", null, 2],
+            ["if you need", "si necesitaras", null, 3],
+            ["You need to rest.", "Necesitas descansar.", null, 3],
+            ["You need to try harder.", "Necesitas intentar más duro.", null, 4],
+            ["I think you need some help.", "Creo que necesitas algo de ayuda.", null, 6],
+            ["That sounds as though you need to get some sleep tonight.", "Eso suena como si necesitaras dormir un poco esta noche.", null, 11],
+            ["If you need anything at all, just let me know right now.", "Si necesitas cualquier cosa, solo házmelo saber ahora mismo.", null, 11],
+            ["I love the way you always know exactly what you need to be happy.", "Me encanta la forma en que siempre sabes exactamente lo que necesitas para ser feliz.", null, 15],
+            ["The most important thing is to understand what you need before you can get it.", "Lo más importante es entender lo que necesitas antes de que puedas obtenerlo.", null, 14],
+            ["That sounds as though you need to get some sleep.", "Eso suena como si necesitaras dormir un poco.", null, 10]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0497L03": {
+          "lego": ["to get some sleep", "dormir un poco"],
+          "type": "M",
+          "available_legos": 1388,
+          "practice_phrases": [
+            ["to get some sleep", "dormir un poco", null, 4],
+            ["I need to get some sleep.", "Necesito dormir un poco.", null, 5],
+            ["You should get some sleep now.", "Deberías dormir un poco ahora.", null, 5],
+            ["Try to get some sleep tonight.", "Intenta dormir un poco esta noche.", null, 6],
+            ["You need to get some sleep.", "Necesitas dormir un poco.", null, 5],
+            ["That sounds as though you really need to get some sleep.", "Eso suena como si realmente necesitaras dormir un poco.", null, 10],
+            ["I think the best thing you can do right now is to get some sleep.", "Creo que lo mejor que puedes hacer ahora mismo es dormir un poco.", null, 14],
+            ["Nothing would make me happier than to just go home and get some sleep.", "Nada me haría más feliz que simplemente ir a casa y dormir un poco.", null, 14],
+            ["When it really matters, you have to be rested, so make sure to get some sleep tonight.", "Cuando realmente importa, tienes que estar descansado, así que asegúrate de dormir un poco esta noche.", null, 17],
+            ["That sounds as though you need to get some sleep.", "Eso suena como si necesitaras dormir un poco.", null, 10]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0498": {
+      "seed": "S0498",
+      "seed_pair": {
+        "known": "He's standing alone over there inside the entrance.",
+        "target": "Está de pie solo allá dentro de la entrada."
+      },
+      "cumulative_legos": 1394,
+      "legos": {
+        "S0498L01": {
+          "lego": ["He's standing", "Está de pie"],
+          "type": "M",
+          "available_legos": 1389,
+          "practice_phrases": [
+            ["He's standing", "Está de pie", null, 2],
+            ["He's standing over there.", "Está de pie allá.", null, 4],
+            ["He's standing by the door.", "Está de pie junto a la puerta.", null, 6],
+            ["He's standing alone in the corner.", "Está de pie solo en la esquina.", null, 6],
+            ["He's standing near the entrance waiting.", "Está de pie cerca de la entrada esperando.", null, 7],
+            ["He's standing over there by the yellow line watching everyone.", "Está de pie allá junto a la línea amarilla mirando a todos.", null, 12],
+            ["I think he's standing there because he doesn't know what to do next.", "Creo que está de pie ahí porque no sabe qué hacer después.", null, 13],
+            ["He's standing alone over there inside the entrance looking really tired.", "Está de pie solo allá dentro de la entrada viéndose realmente cansado.", null, 12],
+            ["I love the way he's standing so strong even though I know he's going through a difficult time.", "Me encanta la forma en que está de pie tan fuerte aunque sé que está pasando por un momento difícil.", null, 20],
+            ["He's standing alone over there inside the entrance.", "Está de pie solo allá dentro de la entrada.", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0498L02": {
+          "lego": ["alone", "solo"],
+          "type": "A",
+          "available_legos": 1390,
+          "practice_phrases": [
+            ["alone", "solo", null, 1],
+            ["standing alone", "de pie solo", null, 3],
+            ["I'm alone here.", "Estoy solo aquí.", null, 3],
+            ["He's standing alone over there.", "Está de pie solo allá.", null, 5],
+            ["I don't want to be alone.", "No quiero estar solo.", null, 6],
+            ["He's standing alone inside the entrance waiting for someone.", "Está de pie solo dentro de la entrada esperando a alguien.", null, 10],
+            ["I think when you're alone is when you really understand yourself.", "Creo que cuando estás solo es cuando realmente te entiendes a ti mismo.", null, 14],
+            ["Being alone doesn't mean you're lonely if you're happy with yourself.", "Estar solo no significa que estés solitario si estás feliz contigo mismo.", null, 13],
+            ["Sometimes the most beautiful moments happen when you're alone and can really think about what matters.", "A veces los momentos más hermosos suceden cuando estás solo y puedes realmente pensar en lo que importa.", null, 18],
+            ["He's standing alone over there inside the entrance.", "Está de pie solo allá dentro de la entrada.", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0498L03": {
+          "lego": ["over there", "allá"],
+          "type": "A",
+          "available_legos": 1391,
+          "practice_phrases": [
+            ["over there", "allá", null, 2],
+            ["He's over there.", "Está allá.", null, 3],
+            ["standing over there", "de pie allá", null, 3],
+            ["Look over there by the bridge.", "Mira allá junto al puente.", null, 5],
+            ["He's standing alone over there.", "Está de pie solo allá.", null, 5],
+            ["I think the entrance is over there on the other side.", "Creo que la entrada está allá al otro lado.", null, 11],
+            ["He's standing over there inside the entrance waiting for you.", "Está de pie allá dentro de la entrada esperándote.", null, 10],
+            ["The most beautiful place I've ever seen is over there across the yellow line.", "El lugar más hermoso que he visto está allá a través de la línea amarilla.", null, 15],
+            ["I love the way the bridge looks from over there when the sun is setting behind it.", "Me encanta la forma en que el puente se ve desde allá cuando el sol se pone detrás de él.", null, 19],
+            ["He's standing alone over there inside the entrance.", "Está de pie solo allá dentro de la entrada.", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0498L04": {
+          "lego": ["inside", "dentro de"],
+          "type": "M",
+          "available_legos": 1392,
+          "practice_phrases": [
+            ["inside", "dentro de", null, 1],
+            ["inside the entrance", "dentro de la entrada", null, 3],
+            ["He's inside waiting.", "Está dentro esperando.", null, 3],
+            ["Look inside the box.", "Mira dentro de la caja.", null, 4],
+            ["He's standing inside the building.", "Está de pie dentro del edificio.", null, 5],
+            ["I think what's inside the box is going to surprise you.", "Creo que lo que está dentro de la caja te va a sorprender.", null, 13],
+            ["He's standing alone over there inside the entrance by the yellow line.", "Está de pie solo allá dentro de la entrada junto a la línea amarilla.", null, 14],
+            ["The most beautiful part of the building is inside where nobody can see it.", "La parte más hermosa del edificio está dentro donde nadie puede verla.", null, 13],
+            ["I love the way you can see what's inside people's hearts just by looking at them.", "Me encanta la forma en que puedes ver lo que está dentro de los corazones de las personas solo con mirarlos.", null, 20],
+            ["He's standing alone over there inside the entrance.", "Está de pie solo allá dentro de la entrada.", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0498L05": {
+          "lego": ["entrance", "entrada"],
+          "type": "A",
+          "available_legos": 1393,
+          "practice_phrases": [
+            ["entrance", "entrada", null, 1],
+            ["the entrance", "la entrada", null, 2],
+            ["inside the entrance", "dentro de la entrada", null, 3],
+            ["The entrance is over there.", "La entrada está allá.", null, 5],
+            ["He's standing by the entrance.", "Está de pie junto a la entrada.", null, 6],
+            ["I think the entrance to the show is on the other side.", "Creo que la entrada al espectáculo está al otro lado.", null, 12],
+            ["He's standing alone inside the entrance waiting for someone to arrive.", "Está de pie solo dentro de la entrada esperando que alguien llegue.", null, 12],
+            ["The entrance is the most beautiful part with flowers all around it.", "La entrada es la parte más hermosa con flores todo alrededor de ella.", null, 14],
+            ["When you walk through the entrance, you'll see him standing over there by the yellow line.", "Cuando camines a través de la entrada, lo verás de pie allá junto a la línea amarilla.", null, 17],
+            ["He's standing alone over there inside the entrance.", "Está de pie solo allá dentro de la entrada.", null, 9]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0499": {
+      "seed": "S0499",
+      "seed_pair": {
+        "known": "Maybe we should open the door and close the window.",
+        "target": "Quizás deberíamos abrir la puerta y cerrar la ventana."
+      },
+      "cumulative_legos": 1396,
+      "legos": {
+        "S0499L01": {
+          "lego": ["Maybe", "Quizás"],
+          "type": "A",
+          "available_legos": 1394,
+          "practice_phrases": [
+            ["Maybe", "Quizás", null, 1],
+            ["Maybe tomorrow", "Quizás mañana", null, 2],
+            ["Maybe you're right.", "Quizás tengas razón.", null, 3],
+            ["Maybe we should try something different.", "Quizás deberíamos intentar algo diferente.", null, 6],
+            ["Maybe that's the best option.", "Quizás esa es la mejor opción.", null, 6],
+            ["Maybe we should open the door and get some fresh air.", "Quizás deberíamos abrir la puerta y obtener aire fresco.", null, 10],
+            ["Maybe the real answer is to stop trying so hard and just let it happen.", "Quizás la respuesta real es dejar de intentar tan duro y solo dejarlo suceder.", null, 15],
+            ["Maybe what you need right now is to get some sleep and think about it tomorrow.", "Quizás lo que necesitas ahora mismo es dormir un poco y pensar en ello mañana.", null, 15],
+            ["Maybe the most beautiful thing about life is that we never really know what's going to come next.", "Quizás la cosa más hermosa sobre la vida es que nunca realmente sabemos qué va a venir después.", null, 19],
+            ["Maybe we should open the door and close the window.", "Quizás deberíamos abrir la puerta y cerrar la ventana.", null, 10]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0499L02": {
+          "lego": ["close", "cerrar"],
+          "type": "A",
+          "available_legos": 1395,
+          "practice_phrases": [
+            ["close", "cerrar", null, 1],
+            ["close the window", "cerrar la ventana", null, 3],
+            ["Please close the door.", "Por favor cierra la puerta.", null, 5],
+            ["We should close this now.", "Deberíamos cerrar esto ahora.", null, 5],
+            ["Maybe we should close the window.", "Quizás deberíamos cerrar la ventana.", null, 6],
+            ["I think it's time to close the door and move on.", "Creo que es hora de cerrar la puerta y seguir adelante.", null, 12],
+            ["Maybe we should open the door but close the window first.", "Quizás deberíamos abrir la puerta pero cerrar la ventana primero.", null, 11],
+            ["When you leave, please remember to close the window and the door.", "Cuando te vayas, por favor recuerda cerrar la ventana y la puerta.", null, 13],
+            ["I love the way you always remember to close things even when you're in a hurry.", "Me encanta la forma en que siempre recuerdas cerrar cosas incluso cuando tienes prisa.", null, 15],
+            ["Maybe we should open the door and close the window.", "Quizás deberíamos abrir la puerta y cerrar la ventana.", null, 10]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0500": {
+      "seed": "S0500",
+      "seed_pair": {
+        "known": "Why don't you want to sit between the two girls?",
+        "target": "¿Por qué no quieres sentarte entre las dos chicas?"
+      },
+      "cumulative_legos": 1400,
+      "legos": {
+        "S0500L01": {
+          "lego": ["Why", "¿Por qué"],
+          "type": "M",
+          "available_legos": 1396,
+          "practice_phrases": [
+            ["Why", "Por qué", null, 1],
+            ["Why not?", "¿Por qué no?", null, 2],
+            ["Why are you here?", "¿Por qué estás aquí?", null, 4],
+            ["Why don't you want to go?", "¿Por qué no quieres ir?", null, 6],
+            ["I don't understand why you're upset.", "No entiendo por qué estás molesto.", null, 6],
+            ["Why don't you try to get some sleep right now?", "¿Por qué no intentas dormir un poco ahora mismo?", null, 10],
+            ["I think the real question is why you don't want to help.", "Creo que la pregunta real es por qué no quieres ayudar.", null, 12],
+            ["Why don't you want to sit between the two girls over there?", "¿Por qué no quieres sentarte entre las dos chicas allá?", null, 11],
+            ["I love the way you always ask why instead of just accepting things the way they are.", "Me encanta la forma en que siempre preguntas por qué en lugar de solo aceptar las cosas como son.", null, 19],
+            ["Why don't you want to sit between the two girls?", "¿Por qué no quieres sentarte entre las dos chicas?", null, 10]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0500L02": {
+          "lego": ["to sit", "sentarte"],
+          "type": "A",
+          "available_legos": 1397,
+          "practice_phrases": [
+            ["to sit", "sentarte", null, 2],
+            ["want to sit", "quieres sentarte", null, 3],
+            ["I want to sit here.", "Quiero sentarme aquí.", null, 4],
+            ["You should sit down now.", "Deberías sentarte ahora.", null, 4],
+            ["Why don't you want to sit?", "¿Por qué no quieres sentarte?", null, 6],
+            ["I think you need to sit down and get some rest.", "Creo que necesitas sentarte y descansar un poco.", null, 10],
+            ["Maybe we should sit over there by the window where it's quiet.", "Quizás deberíamos sentarnos allá junto a la ventana donde está tranquilo.", null, 12],
+            ["Why don't you want to sit between the two girls at the show?", "¿Por qué no quieres sentarte entre las dos chicas en el espectáculo?", null, 13],
+            ["I love the way you always know exactly where you want to sit so you can see everything.", "Me encanta la forma en que siempre sabes exactamente dónde quieres sentarte para que puedas ver todo.", null, 18],
+            ["Why don't you want to sit between the two girls?", "¿Por qué no quieres sentarte entre las dos chicas?", null, 10]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0500L03": {
+          "lego": ["between", "entre"],
+          "type": "A",
+          "available_legos": 1398,
+          "practice_phrases": [
+            ["between", "entre", null, 1],
+            ["between them", "entre ellos", null, 2],
+            ["between the two girls", "entre las dos chicas", null, 4],
+            ["I'm sitting between my friends.", "Estoy sentado entre mis amigos.", null, 5],
+            ["The bridge is between those two places.", "El puente está entre esos dos lugares.", null, 8],
+            ["I think the difference between success and failure is not giving up.", "Creo que la diferencia entre el éxito y el fracaso es no rendirse.", null, 14],
+            ["Why don't you want to sit between the two girls at the entrance?", "¿Por qué no quieres sentarte entre las dos chicas en la entrada?", null, 13],
+            ["The line between what's right and wrong is not always easy to see.", "La línea entre lo que está bien y mal no siempre es fácil de ver.", null, 16],
+            ["I love the way you always try to see both sides and find the truth between them.", "Me encanta la forma en que siempre intentas ver ambos lados y encontrar la verdad entre ellos.", null, 17],
+            ["Why don't you want to sit between the two girls?", "¿Por qué no quieres sentarte entre las dos chicas?", null, 10]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0500L04": {
+          "lego": ["girls", "chicas"],
+          "type": "A",
+          "available_legos": 1399,
+          "practice_phrases": [
+            ["girls", "chicas", null, 1],
+            ["the two girls", "las dos chicas", null, 3],
+            ["Those girls are here.", "Esas chicas están aquí.", null, 4],
+            ["The girls are standing over there.", "Las chicas están de pie allá.", null, 6],
+            ["I think the two girls are waiting.", "Creo que las dos chicas están esperando.", null, 8],
+            ["Why don't you want to sit between the two girls?", "¿Por qué no quieres sentarte entre las dos chicas?", null, 10],
+            ["The two girls standing inside the entrance are really beautiful.", "Las dos chicas de pie dentro de la entrada son realmente hermosas.", null, 12],
+            ["I think those girls over there by the yellow line need some help.", "Creo que esas chicas allá junto a la línea amarilla necesitan ayuda.", null, 13],
+            ["I love the way the two girls always try to help each other when it really matters.", "Me encanta la forma en que las dos chicas siempre intentan ayudarse mutuamente cuando realmente importa.", null, 16],
+            ["Why don't you want to sit between the two girls?", "¿Por qué no quieres sentarte entre las dos chicas?", null, 10]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    }
+  }
+}

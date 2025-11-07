@@ -1,0 +1,251 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "agent_id": 9,
+  "seed_range": "S0461-S0480",
+  "total_seeds": 20,
+  "validation_status": "PASSED",
+  "validated_at": "2025-11-07T13:33:45.688047Z",
+  "seeds": {
+    "S0461": {
+      "seed": "S0461",
+      "seed_pair": {
+        "known": "A shop where I can buy some postcards.",
+        "target": "Una tienda donde puedo comprar algunas postales."
+      },
+      "cumulative_legos": 1232,
+      "legos": {
+        "S0461L01": {
+          "lego": [
+            "A shop",
+            "Una tienda"
+          ],
+          "type": "A",
+          "available_legos": 1232,
+          "practice_phrases": [
+            [
+              "A shop",
+              "Una tienda",
+              null,
+              1
+            ],
+            [
+              "The shop",
+              "La tienda",
+              null,
+              1
+            ],
+            [
+              "I want to find a shop.",
+              "Quiero encontrar una tienda.",
+              null,
+              3
+            ],
+            [
+              "She wants a shop here today.",
+              "Ella quiere una tienda aquí hoy.",
+              null,
+              3
+            ],
+            [
+              "I need to find a shop this afternoon.",
+              "Necesito encontrar una tienda esta tarde.",
+              null,
+              4
+            ],
+            [
+              "I'm trying to find a shop where I can buy something.",
+              "Estoy intentando encontrar una tienda donde puedo comprar algo.",
+              null,
+              6
+            ],
+            [
+              "I wanted to find a shop yesterday but I didn't have enough time.",
+              "Quería encontrar una tienda ayer pero no tuve suficiente tiempo.",
+              null,
+              8
+            ],
+            [
+              "She told me that there's a shop here where I can buy interesting things.",
+              "Ella me dijo que hay una tienda aquí donde puedo comprar cosas interesantes.",
+              null,
+              9
+            ],
+            [
+              "I want to go to a shop because I need to buy some things for my friends.",
+              "Quiero ir a una tienda porque necesito comprar algunas cosas para mis amigos.",
+              null,
+              10
+            ],
+            [
+              "A shop where I can buy some postcards.",
+              "Una tienda donde puedo comprar algunas postales.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0461L02": {
+          "lego": [
+            "I can buy",
+            "puedo comprar"
+          ],
+          "type": "M",
+          "available_legos": 1233,
+          "practice_phrases": [
+            [
+              "I can buy",
+              "puedo comprar",
+              null,
+              1
+            ],
+            [
+              "I can buy things",
+              "puedo comprar cosas",
+              null,
+              2
+            ],
+            [
+              "I can buy something interesting today.",
+              "Puedo comprar algo interesante hoy.",
+              null,
+              3
+            ],
+            [
+              "I can buy some water this afternoon.",
+              "Puedo comprar agua esta tarde.",
+              null,
+              3
+            ],
+            [
+              "If I can buy something I want to.",
+              "Si puedo comprar algo quiero.",
+              null,
+              4
+            ],
+            [
+              "I think that I can buy enough things today.",
+              "Pienso que puedo comprar suficientes cosas hoy.",
+              null,
+              5
+            ],
+            [
+              "I want to find a place where I can buy some interesting things.",
+              "Quiero encontrar un lugar donde puedo comprar algunas cosas interesantes.",
+              null,
+              6
+            ],
+            [
+              "She told me where I can buy good water this afternoon in the shop.",
+              "Ella me dijo donde puedo comprar agua buena esta tarde en la tienda.",
+              null,
+              8
+            ],
+            [
+              "I need to know what I can buy before I go to the shop tomorrow.",
+              "Necesito saber lo que puedo comprar antes de que vaya a la tienda mañana.",
+              null,
+              9
+            ],
+            [
+              "A shop where I can buy some postcards.",
+              "Una tienda donde puedo comprar algunas postales.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0461L03": {
+          "lego": [
+            "postcards",
+            "postales"
+          ],
+          "type": "A",
+          "available_legos": 1234,
+          "practice_phrases": [
+            [
+              "Postcards",
+              "postales",
+              null,
+              1
+            ],
+            [
+              "Some postcards",
+              "algunas postales",
+              null,
+              1
+            ],
+            [
+              "I want to buy some postcards.",
+              "Quiero comprar algunas postales.",
+              null,
+              3
+            ],
+            [
+              "She wants to buy some postcards today.",
+              "Ella quiere comprar algunas postales hoy.",
+              null,
+              3
+            ],
+            [
+              "I wanted to buy some postcards yesterday.",
+              "Quería comprar algunas postales ayer.",
+              null,
+              4
+            ],
+            [
+              "I'm going to buy some postcards for my friends.",
+              "Voy a comprar algunas postales para mis amigos.",
+              null,
+              5
+            ],
+            [
+              "I need to find a shop where I can buy some postcards.",
+              "Necesito encontrar una tienda donde puedo comprar algunas postales.",
+              null,
+              6
+            ],
+            [
+              "I wanted to buy some postcards but I didn't know where the shop was.",
+              "Quería comprar algunas postales pero no sabía donde estaba la tienda.",
+              null,
+              8
+            ],
+            [
+              "Can you tell me where I can buy some postcards before I have to go?",
+              "¿Puedes decirme donde puedo comprar algunas postales antes de que tenga que ir?",
+              null,
+              9
+            ],
+            [
+              "A shop where I can buy some postcards.",
+              "Una tienda donde puedo comprar algunas postales.",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    }
+  }
+}

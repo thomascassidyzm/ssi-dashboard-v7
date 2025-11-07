@@ -1,0 +1,5292 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "agent_id": 8,
+  "seed_range": "S0441-S0460",
+  "total_seeds": 20,
+  "validation_status": "PENDING",
+  "validated_at": "2025-11-07T13:00:18.280Z",
+  "seeds": {
+    "S0441": {
+      "seed": "S0441",
+      "seed_pair": {
+        "target": "Un acercamiento.",
+        "known": "An approach."
+      },
+      "cumulative_legos": 1225,
+      "legos": {
+        "S0441L01": {
+          "lego": [
+            "approach",
+            "acercamiento"
+          ],
+          "type": "A",
+          "available_legos": 1225,
+          "practice_phrases": [
+            [
+              "approach",
+              "acercamiento",
+              null,
+              1
+            ],
+            [
+              "an approach",
+              "un acercamiento",
+              null,
+              2
+            ],
+            [
+              "a new approach",
+              "un acercamiento nuevo",
+              null,
+              3
+            ],
+            [
+              "a different approach",
+              "un acercamiento diferente",
+              null,
+              3
+            ],
+            [
+              "I want this approach",
+              "quiero este acercamiento",
+              null,
+              3
+            ],
+            [
+              "We need a better approach to the problem",
+              "necesitamos un acercamiento mejor al problema",
+              null,
+              7
+            ],
+            [
+              "I think this approach could be very useful for us",
+              "pienso que este acercamiento podría ser muy útil para nosotros",
+              null,
+              11
+            ],
+            [
+              "They wanted to develop a completely new approach to learning",
+              "querían hacer un acercamiento muy nuevo para aprender",
+              null,
+              9
+            ],
+            [
+              "We're going to need a much more efficient approach",
+              "vamos a necesito un acercamiento mucho más bueno",
+              null,
+              9
+            ],
+            [
+              "An approach",
+              "un acercamiento",
+              null,
+              2
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0442": {
+      "seed": "S0442",
+      "seed_pair": {
+        "target": "¿Querían desarrollar un acercamiento nuevo?",
+        "known": "Did they want to develop a new approach?"
+      },
+      "cumulative_legos": 1226,
+      "legos": {
+        "S0442L01": {
+          "lego": [
+            "did they want",
+            "querían"
+          ],
+          "type": "A",
+          "available_legos": 1226,
+          "practice_phrases": [
+            [
+              "did they want",
+              "querían",
+              null,
+              2
+            ],
+            [
+              "they wanted",
+              "querían",
+              null,
+              2
+            ],
+            [
+              "Did they want that",
+              "querían eso",
+              null,
+              3
+            ],
+            [
+              "They wanted to go",
+              "querían ir",
+              null,
+              3
+            ],
+            [
+              "Did they want to come",
+              "querían venir",
+              null,
+              4
+            ],
+            [
+              "They wanted to be here",
+              "querían estar aquí",
+              null,
+              4
+            ],
+            [
+              "Did they want to be able to speak Spanish",
+              "querían poder hablar español",
+              null,
+              8
+            ],
+            [
+              "They wanted to learn how to do it much better",
+              "querían aprender cómo hacer eso mucho mejor",
+              null,
+              8
+            ],
+            [
+              "Did they want to find a new place to stay",
+              "querían encontrar un lugar nuevo para quedarse",
+              null,
+              10
+            ],
+            [
+              "Did they want to develop a new approach",
+              "querían hacer un acercamiento nuevo",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0442L02": {
+          "lego": [
+            "to develop",
+            "desarrollar"
+          ],
+          "type": "A",
+          "available_legos": 1227,
+          "practice_phrases": [
+            [
+              "to develop",
+              "desarrollar",
+              null,
+              2
+            ],
+            [
+              "develop",
+              "desarrollar",
+              null,
+              1
+            ],
+            [
+              "to develop that",
+              "desarrollar eso",
+              null,
+              3
+            ],
+            [
+              "I want to develop",
+              "quiero desarrollar",
+              null,
+              3
+            ],
+            [
+              "We need to develop something",
+              "necesitamos desarrollar algo",
+              null,
+              4
+            ],
+            [
+              "They want to develop a new method",
+              "quieren desarrollar un manera nuevo",
+              null,
+              6
+            ],
+            [
+              "I'm trying to develop a much better way to learn",
+              "estoy intentando desarrollar una manera mucho mejor para aprender",
+              null,
+              10
+            ],
+            [
+              "We need to develop this idea with all our friends",
+              "necesitamos desarrollar esta idea con todos nuestros amigos",
+              null,
+              10
+            ],
+            [
+              "They wanted to develop something completely different from this",
+              "querían desarrollar algo muy diferente de esto",
+              null,
+              9
+            ],
+            [
+              "Did they want to develop a new approach",
+              "querían desarrollar un acercamiento nuevo",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0441L01": {
+          "lego": [
+            "approach",
+            "acercamiento"
+          ],
+          "type": "A",
+          "available_legos": 1225,
+          "practice_phrases": [
+            [
+              "approach",
+              "acercamiento",
+              null,
+              1
+            ],
+            [
+              "an approach",
+              "un acercamiento",
+              null,
+              2
+            ],
+            [
+              "a new approach",
+              "un acercamiento nuevo",
+              null,
+              3
+            ],
+            [
+              "a different approach",
+              "un acercamiento diferente",
+              null,
+              3
+            ],
+            [
+              "I want this approach",
+              "quiero este acercamiento",
+              null,
+              3
+            ],
+            [
+              "We need a better approach to the problem",
+              "necesitamos un acercamiento mejor al problema",
+              null,
+              7
+            ],
+            [
+              "I think this approach could be very useful for us",
+              "pienso que este acercamiento podría ser muy útil para nosotros",
+              null,
+              11
+            ],
+            [
+              "They wanted to develop a completely new approach to learning",
+              "querían hacer un acercamiento muy nuevo para aprender",
+              null,
+              9
+            ],
+            [
+              "We're going to need a much more efficient approach",
+              "vamos a necesito un acercamiento mucho más bueno",
+              null,
+              9
+            ],
+            [
+              "An approach",
+              "un acercamiento",
+              null,
+              2
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0443": {
+      "seed": "S0443",
+      "seed_pair": {
+        "target": "No querían continuar haciéndolo de la misma manera.",
+        "known": "No they wanted to keep doing it the same way."
+      },
+      "cumulative_legos": 1228,
+      "legos": {
+        "S0443L01": {
+          "lego": [
+            "to keep",
+            "continuar"
+          ],
+          "type": "A",
+          "available_legos": 1228,
+          "practice_phrases": [
+            [
+              "to keep",
+              "continuar",
+              null,
+              2
+            ],
+            [
+              "keep",
+              "continuar",
+              null,
+              1
+            ],
+            [
+              "to keep going",
+              "continuar ir",
+              null,
+              3
+            ],
+            [
+              "I want to keep",
+              "quiero continuar",
+              null,
+              3
+            ],
+            [
+              "We need to keep working",
+              "necesitamos continuar trabajando",
+              null,
+              4
+            ],
+            [
+              "They want to keep learning Spanish",
+              "quieren continuar aprendiendo español",
+              null,
+              5
+            ],
+            [
+              "I want to keep trying to do this better",
+              "quiero continuar intentando hacer esto mejor",
+              null,
+              8
+            ],
+            [
+              "We need to keep working on this very important project",
+              "necesitamos continuar trabajando en este trabajo muy importante",
+              null,
+              10
+            ],
+            [
+              "They wanted to keep doing it the same way",
+              "querían continuar haciéndolo de la misma manera",
+              null,
+              9
+            ],
+            [
+              "No they wanted to keep doing it the same way",
+              "no querían continuar haciéndolo de la misma manera",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0443L02": {
+          "lego": [
+            "doing it",
+            "haciéndolo"
+          ],
+          "type": "M",
+          "available_legos": 1229,
+          "practice_phrases": [
+            [
+              "doing it",
+              "haciéndolo",
+              null,
+              2
+            ],
+            [
+              "doing",
+              "haciendo",
+              null,
+              1
+            ],
+            [
+              "I'm doing it",
+              "estoy haciéndolo",
+              null,
+              3
+            ],
+            [
+              "We're doing it now",
+              "estamos haciéndolo ahora",
+              null,
+              4
+            ],
+            [
+              "They're doing it very well",
+              "están haciéndolo muy bien",
+              null,
+              5
+            ],
+            [
+              "I want to keep doing it this way",
+              "quiero continuar haciéndolo de esta manera",
+              null,
+              7
+            ],
+            [
+              "We're doing it much better than we were before",
+              "estamos haciéndolo mucho mejor que estábamos antes",
+              null,
+              9
+            ],
+            [
+              "They thought they could keep doing it the same way",
+              "pensaban que podían continuar haciéndolo de la misma manera",
+              null,
+              11
+            ],
+            [
+              "I'm trying to keep doing it as often as possible",
+              "estoy intentando continuar haciéndolo lo más frecuentemente posible",
+              null,
+              10
+            ],
+            [
+              "No they wanted to keep doing it the same way",
+              "no querían continuar haciéndolo de la misma manera",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0443L03": {
+          "lego": [
+            "the same way",
+            "de la misma manera"
+          ],
+          "type": "M",
+          "available_legos": 1230,
+          "practice_phrases": [
+            [
+              "the same way",
+              "de la misma manera",
+              null,
+              3
+            ],
+            [
+              "same way",
+              "misma manera",
+              null,
+              2
+            ],
+            [
+              "in the same way",
+              "de la misma manera",
+              null,
+              4
+            ],
+            [
+              "Do it the same way",
+              "hazlo de la misma manera",
+              null,
+              5
+            ],
+            [
+              "I want to do it the same way",
+              "quiero hacer eso de la misma manera",
+              null,
+              7
+            ],
+            [
+              "We're going to do it the same way as before",
+              "vamos a hacer eso de la misma manera que antes",
+              null,
+              10
+            ],
+            [
+              "They thought they could keep doing it the same way",
+              "pensaban que podían continuar haciéndolo de la misma manera",
+              null,
+              11
+            ],
+            [
+              "I don't want to keep doing it the same way anymore",
+              "no quiero continuar haciéndolo de la misma manera más",
+              null,
+              11
+            ],
+            [
+              "We can't keep doing it the same way as last time",
+              "no podemos continuar haciéndolo de la misma manera que la última vez",
+              null,
+              13
+            ],
+            [
+              "No they wanted to keep doing it the same way",
+              "no querían continuar haciéndolo de la misma manera",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0444": {
+      "seed": "S0444",
+      "seed_pair": {
+        "target": "Sí pensaban que podría hacerse más eficientemente.",
+        "known": "Yes they thought it could be done more efficiently."
+      },
+      "cumulative_legos": 1231,
+      "legos": {
+        "S0444L01": {
+          "lego": [
+            "they thought",
+            "pensaban"
+          ],
+          "type": "A",
+          "available_legos": 1231,
+          "practice_phrases": [
+            [
+              "they thought",
+              "pensaban",
+              null,
+              2
+            ],
+            [
+              "they were thinking",
+              "pensaban",
+              null,
+              3
+            ],
+            [
+              "They thought that",
+              "pensaban que",
+              null,
+              3
+            ],
+            [
+              "They thought it was good",
+              "pensaban que era bueno",
+              null,
+              5
+            ],
+            [
+              "They thought we could do it",
+              "pensaban que podíamos hacerlo",
+              null,
+              5
+            ],
+            [
+              "They thought it would be much easier",
+              "pensaban que sería mucho más fácil",
+              null,
+              7
+            ],
+            [
+              "They thought we were going to be able to finish",
+              "pensaban que íbamos a poder terminar",
+              null,
+              10
+            ],
+            [
+              "They thought the approach could be developed very quickly",
+              "pensaban que el acercamiento podría desarrollarse muy rápidamente",
+              null,
+              10
+            ],
+            [
+              "They thought it could be done more efficiently than before",
+              "pensaban que podría hacerse más eficientemente que antes",
+              null,
+              9
+            ],
+            [
+              "Yes they thought it could be done more efficiently",
+              "sí pensaban que podría hacerse más eficientemente",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0444L02": {
+          "lego": [
+            "it could",
+            "podría"
+          ],
+          "type": "A",
+          "available_legos": 1232,
+          "practice_phrases": [
+            [
+              "it could",
+              "podría",
+              null,
+              2
+            ],
+            [
+              "could",
+              "podría",
+              null,
+              1
+            ],
+            [
+              "It could be good",
+              "podría ser bueno",
+              null,
+              4
+            ],
+            [
+              "It could be done",
+              "podría hacerse",
+              null,
+              3
+            ],
+            [
+              "It could be very useful",
+              "podría ser muy útil",
+              null,
+              5
+            ],
+            [
+              "I think it could be done better",
+              "pienso que podría hacerse mejor",
+              null,
+              6
+            ],
+            [
+              "They thought it could be done much more efficiently",
+              "pensaban que podría hacerse mucho más eficientemente",
+              null,
+              9
+            ],
+            [
+              "It could be developed as a completely new approach",
+              "podría desarrollarse como un acercamiento completamente nuevo",
+              null,
+              9
+            ],
+            [
+              "I think it could be done in a very different way",
+              "pienso que podría hacerse de una manera muy diferente",
+              null,
+              11
+            ],
+            [
+              "Yes they thought it could be done more efficiently",
+              "sí pensaban que podría hacerse más eficientemente",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0444L03": {
+          "lego": [
+            "be done",
+            "hacerse"
+          ],
+          "type": "A",
+          "available_legos": 1233,
+          "practice_phrases": [
+            [
+              "be done",
+              "hacerse",
+              null,
+              2
+            ],
+            [
+              "done",
+              "hacerse",
+              null,
+              1
+            ],
+            [
+              "It can be done",
+              "puede hacerse",
+              null,
+              4
+            ],
+            [
+              "It needs to be done",
+              "necesita hacerse",
+              null,
+              4
+            ],
+            [
+              "It should be done now",
+              "debería hacerse ahora",
+              null,
+              4
+            ],
+            [
+              "I think it could be done better",
+              "pienso que podría hacerse mejor",
+              null,
+              6
+            ],
+            [
+              "They thought it could be done much more efficiently",
+              "pensaban que podría hacerse mucho más eficientemente",
+              null,
+              9
+            ],
+            [
+              "It needs to be done in a completely different way",
+              "necesita hacerse de una manera muy diferente",
+              null,
+              9
+            ],
+            [
+              "I think it could be done before the end of the week",
+              "pienso que podría hacerse antes del fin de la semana",
+              null,
+              12
+            ],
+            [
+              "Yes they thought it could be done more efficiently",
+              "sí pensaban que podría hacerse más eficientemente",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0444L04": {
+          "lego": [
+            "more efficiently",
+            "más eficientemente"
+          ],
+          "type": "M",
+          "available_legos": 1234,
+          "practice_phrases": [
+            [
+              "more efficiently",
+              "más eficientemente",
+              null,
+              2
+            ],
+            [
+              "efficiently",
+              "eficientemente",
+              null,
+              1
+            ],
+            [
+              "much more efficiently",
+              "mucho más eficientemente",
+              null,
+              3
+            ],
+            [
+              "We need to work more efficiently",
+              "necesitamos trabajar más eficientemente",
+              null,
+              5
+            ],
+            [
+              "I want to do this more efficiently",
+              "quiero hacer esto más eficientemente",
+              null,
+              6
+            ],
+            [
+              "They thought it could be done much more efficiently",
+              "pensaban que podría hacerse mucho más eficientemente",
+              null,
+              9
+            ],
+            [
+              "We're trying to develop a way to do it more efficiently",
+              "estamos intentando desarrollar una manera de hacer eso más eficientemente",
+              null,
+              11
+            ],
+            [
+              "I think we could keep working more efficiently if we tried",
+              "pienso que podríamos continuar trabajando más eficientemente si intentáramos",
+              null,
+              11
+            ],
+            [
+              "They wanted to find an approach that would work more efficiently",
+              "querían encontrar un acercamiento que funcionaría más eficientemente",
+              null,
+              10
+            ],
+            [
+              "Yes they thought it could be done more efficiently",
+              "sí pensaban que podría hacerse más eficientemente",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0445": {
+      "seed": "S0445",
+      "seed_pair": {
+        "target": "Ellos van a poder llevar esa maleta.",
+        "known": "They will be able to carry that suitcase."
+      },
+      "cumulative_legos": 1235,
+      "legos": {
+        "S0445L01": {
+          "lego": [
+            "will be able to",
+            "van a poder"
+          ],
+          "type": "M",
+          "available_legos": 1235,
+          "practice_phrases": [
+            [
+              "will be able to",
+              "van a poder",
+              null,
+              4
+            ],
+            [
+              "going to be able to",
+              "van a poder",
+              null,
+              5
+            ],
+            [
+              "They will be able to",
+              "ellos van a poder",
+              null,
+              5
+            ],
+            [
+              "They're going to be able to come",
+              "van a poder venir",
+              null,
+              6
+            ],
+            [
+              "We're going to be able to do it",
+              "vamos a poder hacer eso",
+              null,
+              6
+            ],
+            [
+              "I think they will be able to help us",
+              "pienso que van a poder ayudarnos",
+              null,
+              8
+            ],
+            [
+              "They're going to be able to finish it before tomorrow",
+              "van a poder terminarlo antes de mañana",
+              null,
+              9
+            ],
+            [
+              "We're going to be able to learn Spanish much more easily",
+              "vamos a poder aprender español mucho más fácilmente",
+              null,
+              10
+            ],
+            [
+              "They will be able to develop a new approach very quickly",
+              "van a poder desarrollar un acercamiento nuevo muy rápidamente",
+              null,
+              11
+            ],
+            [
+              "They will be able to carry that suitcase",
+              "ellos van a poder llevar esa maleta",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0445L02": {
+          "lego": [
+            "carry",
+            "llevar"
+          ],
+          "type": "A",
+          "available_legos": 1236,
+          "practice_phrases": [
+            [
+              "carry",
+              "llevar",
+              null,
+              1
+            ],
+            [
+              "to carry",
+              "llevar",
+              null,
+              2
+            ],
+            [
+              "carry that",
+              "llevar eso",
+              null,
+              2
+            ],
+            [
+              "I can carry it",
+              "puedo llevarlo",
+              null,
+              3
+            ],
+            [
+              "We need to carry this",
+              "necesitamos llevar esto",
+              null,
+              4
+            ],
+            [
+              "They're going to carry the bags",
+              "van a llevar las maletas",
+              null,
+              6
+            ],
+            [
+              "I think we can carry everything in one trip",
+              "pienso que podemos llevar todo en un viaje",
+              null,
+              10
+            ],
+            [
+              "They're going to be able to carry it all",
+              "van a poder llevarlo todo",
+              null,
+              7
+            ],
+            [
+              "We're going to need help to carry all these things",
+              "vamos a necesitar ayuda para llevar todas estas cosas",
+              null,
+              10
+            ],
+            [
+              "They will be able to carry that suitcase",
+              "ellos van a poder llevar esa maleta",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0445L03": {
+          "lego": [
+            "suitcase",
+            "maleta"
+          ],
+          "type": "A",
+          "available_legos": 1237,
+          "practice_phrases": [
+            [
+              "suitcase",
+              "maleta",
+              null,
+              1
+            ],
+            [
+              "a suitcase",
+              "una maleta",
+              null,
+              2
+            ],
+            [
+              "that suitcase",
+              "esa maleta",
+              null,
+              2
+            ],
+            [
+              "I have a suitcase",
+              "tengo una maleta",
+              null,
+              3
+            ],
+            [
+              "This is my suitcase",
+              "esta es mi maleta",
+              null,
+              4
+            ],
+            [
+              "I need to carry this heavy suitcase",
+              "necesito llevar esta maleta pesada",
+              null,
+              6
+            ],
+            [
+              "They're going to take the suitcase to the hotel",
+              "van a llevar la maleta al hotel",
+              null,
+              9
+            ],
+            [
+              "I think this suitcase is too heavy for me",
+              "pienso que esta maleta es demasiado pesada para mí",
+              null,
+              10
+            ],
+            [
+              "We're going to need a much bigger suitcase for all this",
+              "vamos a necesitar una maleta mucho más grande para todo esto",
+              null,
+              12
+            ],
+            [
+              "They will be able to carry that suitcase",
+              "ellos van a poder llevar esa maleta",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0446": {
+      "seed": "S0446",
+      "seed_pair": {
+        "target": "Ellos no van a poder romper esa ventana.",
+        "known": "They won't be able to break that window."
+      },
+      "cumulative_legos": 1238,
+      "legos": {
+        "S0446L01": {
+          "lego": [
+            "won't be able to",
+            "no van a poder"
+          ],
+          "type": "M",
+          "available_legos": 1238,
+          "practice_phrases": [
+            [
+              "won't be able to",
+              "no van a poder",
+              null,
+              4
+            ],
+            [
+              "not going to be able to",
+              "no van a poder",
+              null,
+              6
+            ],
+            [
+              "They won't be able to",
+              "ellos no van a poder",
+              null,
+              5
+            ],
+            [
+              "They're not going to be able to come",
+              "no van a poder venir",
+              null,
+              7
+            ],
+            [
+              "We won't be able to do it",
+              "no vamos a poder hacer eso",
+              null,
+              6
+            ],
+            [
+              "I think they won't be able to finish today",
+              "pienso que no van a poder terminar hoy",
+              null,
+              10
+            ],
+            [
+              "They're not going to be able to carry everything themselves",
+              "no van a poder llevar todo ellos mismos",
+              null,
+              10
+            ],
+            [
+              "We won't be able to develop this without more help",
+              "no vamos a poder desarrollar esto sin más ayuda",
+              null,
+              10
+            ],
+            [
+              "They're not going to be able to be here before six",
+              "no van a poder estar aquí antes de las seis",
+              null,
+              11
+            ],
+            [
+              "They won't be able to break that window",
+              "ellos no van a poder romper esa ventana",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0446L02": {
+          "lego": [
+            "break",
+            "romper"
+          ],
+          "type": "A",
+          "available_legos": 1239,
+          "practice_phrases": [
+            [
+              "break",
+              "romper",
+              null,
+              1
+            ],
+            [
+              "to break",
+              "romper",
+              null,
+              2
+            ],
+            [
+              "break that",
+              "romper eso",
+              null,
+              2
+            ],
+            [
+              "I can't break it",
+              "no puedo romperlo",
+              null,
+              4
+            ],
+            [
+              "Don't break the window",
+              "no rompas la ventana",
+              null,
+              4
+            ],
+            [
+              "They're trying to break the door",
+              "están intentando romper la puerta",
+              null,
+              6
+            ],
+            [
+              "I think we're going to break this if we try",
+              "pienso que vamos a romper esto si intentamos",
+              null,
+              10
+            ],
+            [
+              "They won't be able to break it without help",
+              "no van a poder romperlo sin ayuda",
+              null,
+              9
+            ],
+            [
+              "We need to be very careful not to break anything",
+              "necesitamos tener mucho cuidado de no romper nada",
+              null,
+              9
+            ],
+            [
+              "They won't be able to break that window",
+              "ellos no van a poder romper esa ventana",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0446L03": {
+          "lego": [
+            "window",
+            "ventana"
+          ],
+          "type": "A",
+          "available_legos": 1240,
+          "practice_phrases": [
+            [
+              "window",
+              "ventana",
+              null,
+              1
+            ],
+            [
+              "a window",
+              "una ventana",
+              null,
+              2
+            ],
+            [
+              "the window",
+              "la ventana",
+              null,
+              2
+            ],
+            [
+              "Open the window please",
+              "abre la ventana por favor",
+              null,
+              5
+            ],
+            [
+              "I'm going to close the window",
+              "voy a cerrar la ventana",
+              null,
+              6
+            ],
+            [
+              "The window is broken and needs fixing",
+              "la ventana está rota y necesita arreglarse",
+              null,
+              8
+            ],
+            [
+              "I think we should open all the windows in here",
+              "pienso que deberíamos abrir todas las ventanas aquí",
+              null,
+              9
+            ],
+            [
+              "They're going to clean the windows before they leave",
+              "van a limpiar las ventanas antes de irse",
+              null,
+              9
+            ],
+            [
+              "I want to sit near the window so I can see outside",
+              "quiero sentarme cerca de la ventana para poder ver afuera",
+              null,
+              12
+            ],
+            [
+              "They won't be able to break that window",
+              "ellos no van a poder romper esa ventana",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0447": {
+      "seed": "S0447",
+      "seed_pair": {
+        "target": "¿Van a poder llevarnos a casa después de la comida?",
+        "known": "Will they be able to drive us home after the meal?"
+      },
+      "cumulative_legos": 1241,
+      "legos": {
+        "S0447L01": {
+          "lego": [
+            "will they be able to",
+            "van a poder"
+          ],
+          "type": "M",
+          "available_legos": 1241,
+          "practice_phrases": [
+            [
+              "will they be able to",
+              "van a poder",
+              null,
+              4
+            ],
+            [
+              "going to be able to",
+              "van a poder",
+              null,
+              5
+            ],
+            [
+              "Will they be able to come",
+              "van a poder venir",
+              null,
+              5
+            ],
+            [
+              "Are they going to be able to help",
+              "van a poder ayudar",
+              null,
+              6
+            ],
+            [
+              "Will they be able to do this",
+              "van a poder hacer esto",
+              null,
+              6
+            ],
+            [
+              "I don't know if they'll be able to finish",
+              "no sé si van a poder terminar",
+              null,
+              9
+            ],
+            [
+              "Will they be able to take us to the station tomorrow",
+              "van a poder llevarnos a la estación mañana",
+              null,
+              9
+            ],
+            [
+              "I'm not sure if they're going to be able to come today",
+              "no estoy seguro si van a poder venir hoy",
+              null,
+              11
+            ],
+            [
+              "Will they be able to drive us home after the meeting",
+              "van a poder llevarnos a casa después de la reunión",
+              null,
+              11
+            ],
+            [
+              "Will they be able to drive us home after the meal",
+              "van a poder llevarnos a casa después de la comida",
+              null,
+              12
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0447L02": {
+          "lego": [
+            "drive us",
+            "llevarnos"
+          ],
+          "type": "M",
+          "available_legos": 1242,
+          "practice_phrases": [
+            [
+              "drive us",
+              "llevarnos",
+              null,
+              2
+            ],
+            [
+              "take us",
+              "llevarnos",
+              null,
+              2
+            ],
+            [
+              "Can they drive us",
+              "pueden llevarnos",
+              null,
+              3
+            ],
+            [
+              "They're going to take us",
+              "van a llevarnos",
+              null,
+              4
+            ],
+            [
+              "Will they be able to drive us",
+              "van a poder llevarnos",
+              null,
+              6
+            ],
+            [
+              "They said they could drive us to the station",
+              "dijeron que podían llevarnos a la estación",
+              null,
+              9
+            ],
+            [
+              "I think they'll be able to take us home tonight",
+              "pienso que van a poder llevarnos a casa esta noche",
+              null,
+              11
+            ],
+            [
+              "Will they be able to drive us there tomorrow morning",
+              "van a poder llevarnos allí mañana por la mañana",
+              null,
+              10
+            ],
+            [
+              "They're going to drive us to the airport after breakfast",
+              "van a llevarnos al aeropuerto después del desayuno",
+              null,
+              10
+            ],
+            [
+              "Will they be able to drive us home after the meal",
+              "van a poder llevarnos a casa después de la comida",
+              null,
+              12
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0447L03": {
+          "lego": [
+            "after",
+            "después de"
+          ],
+          "type": "M",
+          "available_legos": 1243,
+          "practice_phrases": [
+            [
+              "after",
+              "después de",
+              null,
+              2
+            ],
+            [
+              "after that",
+              "después de eso",
+              null,
+              3
+            ],
+            [
+              "after the meeting",
+              "después de la reunión",
+              null,
+              4
+            ],
+            [
+              "We'll go after dinner",
+              "iremos después de la cena",
+              null,
+              5
+            ],
+            [
+              "I want to rest after work",
+              "quiero descansar después del trabajo",
+              null,
+              6
+            ],
+            [
+              "They're going to arrive after lunch",
+              "van a llegar después del almuerzo",
+              null,
+              7
+            ],
+            [
+              "We need to leave immediately after the meal is finished",
+              "necesitamos irnos inmediatamente después de que termine la comida",
+              null,
+              11
+            ],
+            [
+              "I think we should go home after we finish this",
+              "pienso que deberíamos ir a casa después de terminar esto",
+              null,
+              11
+            ],
+            [
+              "They said they could drive us after the meeting ends",
+              "dijeron que podían llevarnos después de que termine la reunión",
+              null,
+              11
+            ],
+            [
+              "Will they be able to drive us home after the meal",
+              "van a poder llevarnos a casa después de la comida",
+              null,
+              12
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0447L04": {
+          "lego": [
+            "meal",
+            "comida"
+          ],
+          "type": "A",
+          "available_legos": 1244,
+          "practice_phrases": [
+            [
+              "meal",
+              "comida",
+              null,
+              1
+            ],
+            [
+              "a meal",
+              "una comida",
+              null,
+              2
+            ],
+            [
+              "the meal",
+              "la comida",
+              null,
+              2
+            ],
+            [
+              "We had a good meal",
+              "tuvimos una comida buena",
+              null,
+              5
+            ],
+            [
+              "The meal was delicious",
+              "la comida estaba deliciosa",
+              null,
+              4
+            ],
+            [
+              "I want to have a meal with my friends",
+              "quiero tener una comida con mis amigos",
+              null,
+              10
+            ],
+            [
+              "We're going to prepare a special meal for the guests",
+              "vamos a preparar una comida especial para los invitados",
+              null,
+              11
+            ],
+            [
+              "The meal is going to be ready at about seven",
+              "la comida va a estar lista como a las siete",
+              null,
+              12
+            ],
+            [
+              "I think we should leave immediately after the meal finishes",
+              "pienso que deberíamos irnos inmediatamente después de que termine la comida",
+              null,
+              12
+            ],
+            [
+              "Will they be able to drive us home after the meal",
+              "van a poder llevarnos a casa después de la comida",
+              null,
+              12
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0448": {
+      "seed": "S0448",
+      "seed_pair": {
+        "target": "Sí van a estar contentos de ayudar.",
+        "known": "Yes they'll be happy to help."
+      },
+      "cumulative_legos": 1245,
+      "legos": {
+        "S0448L01": {
+          "lego": [
+            "happy",
+            "contentos"
+          ],
+          "type": "A",
+          "available_legos": 1245,
+          "practice_phrases": [
+            [
+              "happy",
+              "contentos",
+              null,
+              1
+            ],
+            [
+              "very happy",
+              "muy contentos",
+              null,
+              2
+            ],
+            [
+              "They are happy",
+              "están contentos",
+              null,
+              3
+            ],
+            [
+              "We're going to be happy",
+              "vamos a estar contentos",
+              null,
+              5
+            ],
+            [
+              "They'll be happy to help",
+              "van a estar contentos de ayudar",
+              null,
+              6
+            ],
+            [
+              "I think they're going to be very happy with this",
+              "pienso que van a estar muy contentos con esto",
+              null,
+              11
+            ],
+            [
+              "We're all going to be really happy when this finishes",
+              "todos vamos a estar muy contentos cuando esto termine",
+              null,
+              11
+            ],
+            [
+              "They said they would be happy to drive us to the station",
+              "dijeron que estarían contentos de llevarnos a la estación",
+              null,
+              12
+            ],
+            [
+              "I think they'll be very happy to help us with the project",
+              "pienso que van a estar muy contentos de ayudarnos con el proyecto",
+              null,
+              13
+            ],
+            [
+              "Yes they'll be happy to help",
+              "sí van a estar contentos de ayudar",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0448L02": {
+          "lego": [
+            "help",
+            "ayudar"
+          ],
+          "type": "A",
+          "available_legos": 1246,
+          "practice_phrases": [
+            [
+              "help",
+              "ayudar",
+              null,
+              1
+            ],
+            [
+              "to help",
+              "ayudar",
+              null,
+              2
+            ],
+            [
+              "to help us",
+              "ayudarnos",
+              null,
+              2
+            ],
+            [
+              "I want to help",
+              "quiero ayudar",
+              null,
+              3
+            ],
+            [
+              "Can you help me please",
+              "puedes ayudarme por favor",
+              null,
+              5
+            ],
+            [
+              "They're going to help us with this",
+              "van a ayudarnos con esto",
+              null,
+              6
+            ],
+            [
+              "I think we need to find someone to help us",
+              "pienso que necesitamos encontrar a alguien para ayudarnos",
+              null,
+              10
+            ],
+            [
+              "They said they would be happy to help with the work",
+              "dijeron que estarían contentos de ayudar con el trabajo",
+              null,
+              11
+            ],
+            [
+              "We're going to need a lot of help to finish this",
+              "vamos a necesitar mucha ayuda para terminar esto",
+              null,
+              10
+            ],
+            [
+              "Yes they'll be happy to help",
+              "sí van a estar contentos de ayudar",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0449": {
+      "seed": "S0449",
+      "seed_pair": {
+        "target": "Ellos dijeron que estaban casi preparados.",
+        "known": "They said that they were almost ready."
+      },
+      "cumulative_legos": 1247,
+      "legos": {
+        "S0449L01": {
+          "lego": [
+            "said",
+            "dijeron"
+          ],
+          "type": "A",
+          "available_legos": 1247,
+          "practice_phrases": [
+            [
+              "said",
+              "dijeron",
+              null,
+              1
+            ],
+            [
+              "they said",
+              "dijeron",
+              null,
+              2
+            ],
+            [
+              "They said that",
+              "dijeron que",
+              null,
+              3
+            ],
+            [
+              "They said yes",
+              "dijeron que sí",
+              null,
+              3
+            ],
+            [
+              "What did they say",
+              "qué dijeron",
+              null,
+              3
+            ],
+            [
+              "They said they were almost ready",
+              "dijeron que estaban casi preparados",
+              null,
+              6
+            ],
+            [
+              "I don't remember what they said about the meeting",
+              "no recuerdo qué dijeron sobre la reunión",
+              null,
+              9
+            ],
+            [
+              "They said they would be able to help us tomorrow",
+              "dijeron que podrían ayudarnos mañana",
+              null,
+              8
+            ],
+            [
+              "They said that they were going to arrive at about six",
+              "dijeron que iban a llegar como a las seis",
+              null,
+              11
+            ],
+            [
+              "They said that they were almost ready",
+              "ellos dijeron que estaban casi preparados",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0449L02": {
+          "lego": [
+            "they were",
+            "estaban"
+          ],
+          "type": "A",
+          "available_legos": 1248,
+          "practice_phrases": [
+            [
+              "they were",
+              "estaban",
+              null,
+              2
+            ],
+            [
+              "were",
+              "estaban",
+              null,
+              1
+            ],
+            [
+              "They were here",
+              "estaban aquí",
+              null,
+              3
+            ],
+            [
+              "They were very tired",
+              "estaban muy cansados",
+              null,
+              4
+            ],
+            [
+              "They were working on it",
+              "estaban trabajando en eso",
+              null,
+              5
+            ],
+            [
+              "They said they were almost ready to leave",
+              "dijeron que estaban casi preparados para irse",
+              null,
+              9
+            ],
+            [
+              "I think they were trying to finish before the deadline",
+              "pienso que estaban intentando terminar antes de la fecha límite",
+              null,
+              12
+            ],
+            [
+              "They were working very hard on the new project",
+              "estaban trabajando muy duro en el trabajo nuevo",
+              null,
+              9
+            ],
+            [
+              "They said they were going to be here at six",
+              "dijeron que iban a estar aquí a las seis",
+              null,
+              11
+            ],
+            [
+              "They said that they were almost ready",
+              "ellos dijeron que estaban casi preparados",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0449L03": {
+          "lego": [
+            "almost",
+            "casi"
+          ],
+          "type": "A",
+          "available_legos": 1249,
+          "practice_phrases": [
+            [
+              "almost",
+              "casi",
+              null,
+              1
+            ],
+            [
+              "almost ready",
+              "casi preparados",
+              null,
+              2
+            ],
+            [
+              "It's almost done",
+              "está casi hecho",
+              null,
+              4
+            ],
+            [
+              "We're almost there",
+              "estamos casi allí",
+              null,
+              3
+            ],
+            [
+              "They're almost finished with the work",
+              "están casi terminados con el trabajo",
+              null,
+              7
+            ],
+            [
+              "I think we're almost ready to start the meeting",
+              "pienso que estamos casi preparados para empezar la reunión",
+              null,
+              10
+            ],
+            [
+              "They said they were almost finished with the project",
+              "dijeron que estaban casi terminados con el proyecto",
+              null,
+              10
+            ],
+            [
+              "We're almost ready to leave but need a few more minutes",
+              "estamos casi preparados para irnos pero necesitamos unos minutos más",
+              null,
+              12
+            ],
+            [
+              "I think they're almost done with all the preparations",
+              "pienso que están casi terminados con todas las preparaciones",
+              null,
+              10
+            ],
+            [
+              "They said that they were almost ready",
+              "ellos dijeron que estaban casi preparados",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0450": {
+      "seed": "S0450",
+      "seed_pair": {
+        "target": "No ellos tienen que tomar el tren ellos mismos.",
+        "known": "No they have to catch the train themselves."
+      },
+      "cumulative_legos": 1250,
+      "legos": {
+        "S0450L01": {
+          "lego": [
+            "have to",
+            "tienen que"
+          ],
+          "type": "M",
+          "available_legos": 1250,
+          "practice_phrases": [
+            [
+              "have to",
+              "tienen que",
+              null,
+              2
+            ],
+            [
+              "they have to",
+              "tienen que",
+              null,
+              3
+            ],
+            [
+              "They have to go",
+              "tienen que ir",
+              null,
+              4
+            ],
+            [
+              "They have to work today",
+              "tienen que trabajar hoy",
+              null,
+              4
+            ],
+            [
+              "Do they have to leave now",
+              "tienen que irse ahora",
+              null,
+              5
+            ],
+            [
+              "They have to finish this before tomorrow",
+              "tienen que terminar esto antes de mañana",
+              null,
+              7
+            ],
+            [
+              "I think they have to catch the train very early",
+              "pienso que tienen que tomar el tren muy temprano",
+              null,
+              10
+            ],
+            [
+              "They have to be at the station before eight o'clock",
+              "tienen que estar en la estación antes de las ocho",
+              null,
+              11
+            ],
+            [
+              "They said they have to leave immediately after breakfast",
+              "dijeron que tienen que irse inmediatamente después del desayuno",
+              null,
+              10
+            ],
+            [
+              "No they have to catch the train themselves",
+              "no ellos tienen que tomar el tren ellos mismos",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0450L02": {
+          "lego": [
+            "catch",
+            "tomar"
+          ],
+          "type": "A",
+          "available_legos": 1251,
+          "practice_phrases": [
+            [
+              "catch",
+              "tomar",
+              null,
+              1
+            ],
+            [
+              "take",
+              "tomar",
+              null,
+              1
+            ],
+            [
+              "catch the train",
+              "tomar el tren",
+              null,
+              3
+            ],
+            [
+              "I need to take this",
+              "necesito tomar esto",
+              null,
+              4
+            ],
+            [
+              "We have to catch the bus",
+              "tenemos que tomar el autobús",
+              null,
+              6
+            ],
+            [
+              "They're going to take the early train tomorrow",
+              "van a tomar el tren temprano mañana",
+              null,
+              8
+            ],
+            [
+              "I think we need to catch the next train to the city",
+              "pienso que necesitamos tomar el próximo tren a la ciudad",
+              null,
+              11
+            ],
+            [
+              "They have to take the train because there's no other way",
+              "tienen que tomar el tren porque no hay otra manera",
+              null,
+              11
+            ],
+            [
+              "We're going to take the bus to the station this morning",
+              "vamos a tomar el autobús a la estación esta mañana",
+              null,
+              11
+            ],
+            [
+              "No they have to catch the train themselves",
+              "no ellos tienen que tomar el tren ellos mismos",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0450L03": {
+          "lego": [
+            "train",
+            "tren"
+          ],
+          "type": "A",
+          "available_legos": 1252,
+          "practice_phrases": [
+            [
+              "train",
+              "tren",
+              null,
+              1
+            ],
+            [
+              "the train",
+              "el tren",
+              null,
+              2
+            ],
+            [
+              "a train",
+              "un tren",
+              null,
+              2
+            ],
+            [
+              "The train is coming",
+              "el tren está viniendo",
+              null,
+              4
+            ],
+            [
+              "We missed the train",
+              "perdimos el tren",
+              null,
+              3
+            ],
+            [
+              "They're going to catch the early morning train",
+              "van a tomar el tren temprano por la mañana",
+              null,
+              9
+            ],
+            [
+              "I think the train is going to arrive at about six",
+              "pienso que el tren va a llegar como a las seis",
+              null,
+              12
+            ],
+            [
+              "We have to catch the train before it leaves the station",
+              "tenemos que tomar el tren antes de que salga de la estación",
+              null,
+              12
+            ],
+            [
+              "The train to the city leaves every hour from this platform",
+              "el tren a la ciudad sale cada hora de esta plataforma",
+              null,
+              12
+            ],
+            [
+              "No they have to catch the train themselves",
+              "no ellos tienen que tomar el tren ellos mismos",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0450L04": {
+          "lego": [
+            "themselves",
+            "ellos mismos"
+          ],
+          "type": "M",
+          "available_legos": 1253,
+          "practice_phrases": [
+            [
+              "themselves",
+              "ellos mismos",
+              null,
+              2
+            ],
+            [
+              "by themselves",
+              "ellos mismos",
+              null,
+              3
+            ],
+            [
+              "They did it themselves",
+              "lo hicieron ellos mismos",
+              null,
+              4
+            ],
+            [
+              "They want to do it themselves",
+              "quieren hacer eso ellos mismos",
+              null,
+              5
+            ],
+            [
+              "They're going to do it themselves",
+              "van a hacer eso ellos mismos",
+              null,
+              6
+            ],
+            [
+              "They said they wanted to do it themselves",
+              "dijeron que querían hacer eso ellos mismos",
+              null,
+              8
+            ],
+            [
+              "I think they have to do it themselves this time",
+              "pienso que tienen que hacer eso ellos mismos esta vez",
+              null,
+              10
+            ],
+            [
+              "They're going to catch the train themselves without any help",
+              "van a tomar el tren ellos mismos sin ayuda",
+              null,
+              10
+            ],
+            [
+              "They said they wanted to develop the approach themselves",
+              "dijeron que querían desarrollar el acercamiento ellos mismos",
+              null,
+              10
+            ],
+            [
+              "No they have to catch the train themselves",
+              "no ellos tienen que tomar el tren ellos mismos",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0451": {
+      "seed": "S0451",
+      "seed_pair": {
+        "target": "Ellos dijeron lo que querían hacer.",
+        "known": "They said what they wanted to do."
+      },
+      "cumulative_legos": 1254,
+      "legos": {
+        "S0449L01": {
+          "lego": [
+            "said",
+            "dijeron"
+          ],
+          "type": "A",
+          "available_legos": 1247,
+          "practice_phrases": [
+            [
+              "said",
+              "dijeron",
+              null,
+              1
+            ],
+            [
+              "they said",
+              "dijeron",
+              null,
+              2
+            ],
+            [
+              "They said that",
+              "dijeron que",
+              null,
+              3
+            ],
+            [
+              "They said yes",
+              "dijeron que sí",
+              null,
+              3
+            ],
+            [
+              "What did they say",
+              "qué dijeron",
+              null,
+              3
+            ],
+            [
+              "They said they were almost ready",
+              "dijeron que estaban casi preparados",
+              null,
+              6
+            ],
+            [
+              "I don't remember what they said about the meeting",
+              "no recuerdo qué dijeron sobre la reunión",
+              null,
+              9
+            ],
+            [
+              "They said they would be able to help us tomorrow",
+              "dijeron que podrían ayudarnos mañana",
+              null,
+              8
+            ],
+            [
+              "They said that they were going to arrive at about six",
+              "dijeron que iban a llegar como a las seis",
+              null,
+              11
+            ],
+            [
+              "They said that they were almost ready",
+              "ellos dijeron que estaban casi preparados",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0451L01": {
+          "lego": [
+            "to do",
+            "hacer"
+          ],
+          "type": "A",
+          "available_legos": 1254,
+          "practice_phrases": [
+            [
+              "to do",
+              "hacer",
+              null,
+              2
+            ],
+            [
+              "do",
+              "hacer",
+              null,
+              1
+            ],
+            [
+              "to do it",
+              "hacer eso",
+              null,
+              3
+            ],
+            [
+              "I want to do that",
+              "quiero hacer eso",
+              null,
+              4
+            ],
+            [
+              "What do they want to do",
+              "qué quieren hacer",
+              null,
+              5
+            ],
+            [
+              "They said what they wanted to do",
+              "dijeron lo que querían hacer",
+              null,
+              7
+            ],
+            [
+              "I don't know what we're going to do about this",
+              "no sé qué vamos a hacer sobre esto",
+              null,
+              10
+            ],
+            [
+              "They didn't say what they wanted to do tomorrow",
+              "no dijeron lo que querían hacer mañana",
+              null,
+              9
+            ],
+            [
+              "We need to decide what we're going to do next",
+              "necesitamos decidir qué vamos a hacer después",
+              null,
+              9
+            ],
+            [
+              "They said what they wanted to do",
+              "ellos dijeron lo que querían hacer",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0452": {
+      "seed": "S0452",
+      "seed_pair": {
+        "target": "Ellos no dijeron lo que querían hacer.",
+        "known": "They didn't say what they wanted to do."
+      },
+      "cumulative_legos": 1255,
+      "legos": {
+        "S0452L01": {
+          "lego": [
+            "didn't say",
+            "no dijeron"
+          ],
+          "type": "M",
+          "available_legos": 1255,
+          "practice_phrases": [
+            [
+              "didn't say",
+              "no dijeron",
+              null,
+              2
+            ],
+            [
+              "they didn't say",
+              "no dijeron",
+              null,
+              3
+            ],
+            [
+              "They didn't say that",
+              "no dijeron eso",
+              null,
+              4
+            ],
+            [
+              "They didn't say anything",
+              "no dijeron nada",
+              null,
+              4
+            ],
+            [
+              "They didn't say when",
+              "no dijeron cuándo",
+              null,
+              4
+            ],
+            [
+              "They didn't say what they wanted",
+              "no dijeron lo que querían",
+              null,
+              6
+            ],
+            [
+              "I think they didn't say anything about the meeting",
+              "pienso que no dijeron nada sobre la reunión",
+              null,
+              9
+            ],
+            [
+              "They didn't say what time they were going to arrive",
+              "no dijeron a qué hora iban a llegar",
+              null,
+              10
+            ],
+            [
+              "They didn't say where they wanted to go after dinner",
+              "no dijeron dónde querían ir después de la cena",
+              null,
+              10
+            ],
+            [
+              "They didn't say what they wanted to do",
+              "ellos no dijeron lo que querían hacer",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0451L01": {
+          "lego": [
+            "to do",
+            "hacer"
+          ],
+          "type": "A",
+          "available_legos": 1254,
+          "practice_phrases": [
+            [
+              "to do",
+              "hacer",
+              null,
+              2
+            ],
+            [
+              "do",
+              "hacer",
+              null,
+              1
+            ],
+            [
+              "to do it",
+              "hacer eso",
+              null,
+              3
+            ],
+            [
+              "I want to do that",
+              "quiero hacer eso",
+              null,
+              4
+            ],
+            [
+              "What do they want to do",
+              "qué quieren hacer",
+              null,
+              5
+            ],
+            [
+              "They said what they wanted to do",
+              "dijeron lo que querían hacer",
+              null,
+              7
+            ],
+            [
+              "I don't know what we're going to do about this",
+              "no sé qué vamos a hacer sobre esto",
+              null,
+              10
+            ],
+            [
+              "They didn't say what they wanted to do tomorrow",
+              "no dijeron lo que querían hacer mañana",
+              null,
+              9
+            ],
+            [
+              "We need to decide what we're going to do next",
+              "necesitamos decidir qué vamos a hacer después",
+              null,
+              9
+            ],
+            [
+              "They said what they wanted to do",
+              "ellos dijeron lo que querían hacer",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0453": {
+      "seed": "S0453",
+      "seed_pair": {
+        "target": "¿Dijeron quién vieron anoche?",
+        "known": "Did they say who they saw last night?"
+      },
+      "cumulative_legos": 1256,
+      "legos": {
+        "S0453L01": {
+          "lego": [
+            "did they say",
+            "dijeron"
+          ],
+          "type": "A",
+          "available_legos": 1256,
+          "practice_phrases": [
+            [
+              "did they say",
+              "dijeron",
+              null,
+              3
+            ],
+            [
+              "what did they say",
+              "qué dijeron",
+              null,
+              3
+            ],
+            [
+              "Did they say yes",
+              "dijeron que sí",
+              null,
+              4
+            ],
+            [
+              "Did they say when",
+              "dijeron cuándo",
+              null,
+              3
+            ],
+            [
+              "What did they say about it",
+              "qué dijeron sobre eso",
+              null,
+              5
+            ],
+            [
+              "Did they say who was coming to the meeting",
+              "dijeron quién venía a la reunión",
+              null,
+              7
+            ],
+            [
+              "I don't know what they said about the new approach",
+              "no sé qué dijeron sobre el acercamiento nuevo",
+              null,
+              10
+            ],
+            [
+              "Did they say when they were going to arrive here",
+              "dijeron cuándo iban a llegar aquí",
+              null,
+              8
+            ],
+            [
+              "What did they say about the train to the city",
+              "qué dijeron sobre el tren a la ciudad",
+              null,
+              10
+            ],
+            [
+              "Did they say who they saw last night",
+              "dijeron quién vieron anoche",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0453L02": {
+          "lego": [
+            "they saw",
+            "vieron"
+          ],
+          "type": "A",
+          "available_legos": 1257,
+          "practice_phrases": [
+            [
+              "they saw",
+              "vieron",
+              null,
+              2
+            ],
+            [
+              "saw",
+              "vieron",
+              null,
+              1
+            ],
+            [
+              "They saw me",
+              "me vieron",
+              null,
+              3
+            ],
+            [
+              "They saw the problem",
+              "vieron el problema",
+              null,
+              4
+            ],
+            [
+              "They saw what happened",
+              "vieron lo que pasó",
+              null,
+              4
+            ],
+            [
+              "Did they say who they saw",
+              "dijeron quién vieron",
+              null,
+              5
+            ],
+            [
+              "I think they saw us at the station yesterday",
+              "pienso que nos vieron en la estación ayer",
+              null,
+              9
+            ],
+            [
+              "They saw all the problems with the old approach",
+              "vieron todos los problemas con el acercamiento viejo",
+              null,
+              9
+            ],
+            [
+              "Did they say what they saw when they arrived there",
+              "dijeron qué vieron cuando llegaron allí",
+              null,
+              9
+            ],
+            [
+              "Did they say who they saw last night",
+              "dijeron quién vieron anoche",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0454": {
+      "seed": "S0454",
+      "seed_pair": {
+        "target": "Nuestros amigos vinieron como a las seis.",
+        "known": "Our friends came round at about six o'clock."
+      },
+      "cumulative_legos": 1258,
+      "legos": {
+        "S0454L01": {
+          "lego": [
+            "our",
+            "nuestros"
+          ],
+          "type": "A",
+          "available_legos": 1258,
+          "practice_phrases": [
+            [
+              "our",
+              "nuestros",
+              null,
+              1
+            ],
+            [
+              "our friends",
+              "nuestros amigos",
+              null,
+              2
+            ],
+            [
+              "our children",
+              "nuestros hijos",
+              null,
+              2
+            ],
+            [
+              "These are our friends",
+              "estos son nuestros amigos",
+              null,
+              5
+            ],
+            [
+              "Our friends are coming today",
+              "nuestros amigos vienen hoy",
+              null,
+              4
+            ],
+            [
+              "I want to see our friends this weekend",
+              "quiero ver a nuestros amigos este fin de semana",
+              null,
+              10
+            ],
+            [
+              "Our friends are going to arrive at about six o'clock",
+              "nuestros amigos van a llegar como a las seis",
+              null,
+              10
+            ],
+            [
+              "I think our friends said they would be happy to help",
+              "pienso que nuestros amigos dijeron que estarían contentos de ayudar",
+              null,
+              12
+            ],
+            [
+              "Our friends came round to see us last night",
+              "nuestros amigos vinieron a vernos anoche",
+              null,
+              8
+            ],
+            [
+              "Our friends came round at about six o'clock",
+              "nuestros amigos vinieron como a las seis",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0454L02": {
+          "lego": [
+            "came round",
+            "vinieron"
+          ],
+          "type": "A",
+          "available_legos": 1259,
+          "practice_phrases": [
+            [
+              "came round",
+              "vinieron",
+              null,
+              2
+            ],
+            [
+              "came",
+              "vinieron",
+              null,
+              1
+            ],
+            [
+              "They came round",
+              "vinieron",
+              null,
+              2
+            ],
+            [
+              "They came to see us",
+              "vinieron a vernos",
+              null,
+              4
+            ],
+            [
+              "Our friends came round yesterday",
+              "nuestros amigos vinieron ayer",
+              null,
+              4
+            ],
+            [
+              "They came round for dinner last weekend",
+              "vinieron a cenar el fin de semana pasado",
+              null,
+              8
+            ],
+            [
+              "I think they came round to talk about the project",
+              "pienso que vinieron para hablar sobre el trabajo",
+              null,
+              10
+            ],
+            [
+              "Our friends came round to help us with the work",
+              "nuestros amigos vinieron para ayudarnos con el trabajo",
+              null,
+              10
+            ],
+            [
+              "They came round very early in the morning yesterday",
+              "vinieron muy temprano por la mañana ayer",
+              null,
+              9
+            ],
+            [
+              "Our friends came round at about six o'clock",
+              "nuestros amigos vinieron como a las seis",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0454L03": {
+          "lego": [
+            "at about",
+            "como"
+          ],
+          "type": "A",
+          "available_legos": 1260,
+          "practice_phrases": [
+            [
+              "at about",
+              "como",
+              null,
+              2
+            ],
+            [
+              "about",
+              "como",
+              null,
+              1
+            ],
+            [
+              "at about six",
+              "como a las seis",
+              null,
+              4
+            ],
+            [
+              "It's about three o'clock",
+              "es como las tres",
+              null,
+              5
+            ],
+            [
+              "They're coming at about seven",
+              "vienen como a las siete",
+              null,
+              6
+            ],
+            [
+              "I think they'll arrive at about six in the evening",
+              "pienso que llegarán como a las seis de la tarde",
+              null,
+              11
+            ],
+            [
+              "Our friends said they would come round at about eight",
+              "nuestros amigos dijeron que vendrían como a las ocho",
+              null,
+              10
+            ],
+            [
+              "The train is going to leave at about half past seven",
+              "el tren va a salir como a las siete y media",
+              null,
+              12
+            ],
+            [
+              "They said they would be ready at about ten o'clock",
+              "dijeron que estarían preparados como a las diez",
+              null,
+              10
+            ],
+            [
+              "Our friends came round at about six o'clock",
+              "nuestros amigos vinieron como a las seis",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0454L04": {
+          "lego": [
+            "at",
+            "a las"
+          ],
+          "type": "M",
+          "available_legos": 1261,
+          "practice_phrases": [
+            [
+              "at",
+              "a las",
+              null,
+              2
+            ],
+            [
+              "at the",
+              "a las",
+              null,
+              2
+            ],
+            [
+              "at six",
+              "a las seis",
+              null,
+              3
+            ],
+            [
+              "at seven o'clock",
+              "a las siete",
+              null,
+              4
+            ],
+            [
+              "We're leaving at eight",
+              "salimos a las ocho",
+              null,
+              4
+            ],
+            [
+              "The meeting is at three this afternoon",
+              "la reunión es a las tres esta tarde",
+              null,
+              8
+            ],
+            [
+              "I think the train arrives at six in the morning",
+              "pienso que el tren llega a las seis de la mañana",
+              null,
+              11
+            ],
+            [
+              "They said they would come round at about seven o'clock",
+              "dijeron que vendrían como a las siete",
+              null,
+              10
+            ],
+            [
+              "Our friends are going to arrive at the station at nine",
+              "nuestros amigos van a llegar a la estación a las nueve",
+              null,
+              12
+            ],
+            [
+              "Our friends came round at about six o'clock",
+              "nuestros amigos vinieron como a las seis",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0454L05": {
+          "lego": [
+            "six o'clock",
+            "seis"
+          ],
+          "type": "A",
+          "available_legos": 1262,
+          "practice_phrases": [
+            [
+              "six o'clock",
+              "seis",
+              null,
+              2
+            ],
+            [
+              "six",
+              "seis",
+              null,
+              1
+            ],
+            [
+              "at six",
+              "a las seis",
+              null,
+              3
+            ],
+            [
+              "It's six o'clock now",
+              "son las seis ahora",
+              null,
+              4
+            ],
+            [
+              "We're leaving at six",
+              "salimos a las seis",
+              null,
+              4
+            ],
+            [
+              "The meeting is at six this evening",
+              "la reunión es a las seis esta tarde",
+              null,
+              8
+            ],
+            [
+              "I think they're going to arrive at about six o'clock",
+              "pienso que van a llegar como a las seis",
+              null,
+              10
+            ],
+            [
+              "They said they would be here before six in the morning",
+              "dijeron que estarían aquí antes de las seis de la mañana",
+              null,
+              12
+            ],
+            [
+              "Our friends are going to come round at six this evening",
+              "nuestros amigos van a venir como a las seis esta tarde",
+              null,
+              11
+            ],
+            [
+              "Our friends came round at about six o'clock",
+              "nuestros amigos vinieron como a las seis",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0455": {
+      "seed": "S0455",
+      "seed_pair": {
+        "target": "Tuvimos que irnos porque los niños estaban cansados.",
+        "known": "We had to leave because the children were tired."
+      },
+      "cumulative_legos": 1263,
+      "legos": {
+        "S0455L01": {
+          "lego": [
+            "we had to",
+            "tuvimos que"
+          ],
+          "type": "M",
+          "available_legos": 1263,
+          "practice_phrases": [
+            [
+              "we had to",
+              "tuvimos que",
+              null,
+              3
+            ],
+            [
+              "had to",
+              "tuvimos que",
+              null,
+              2
+            ],
+            [
+              "We had to go",
+              "tuvimos que ir",
+              null,
+              4
+            ],
+            [
+              "We had to leave early",
+              "tuvimos que irnos temprano",
+              null,
+              4
+            ],
+            [
+              "We had to do it ourselves",
+              "tuvimos que hacer eso nosotros mismos",
+              null,
+              5
+            ],
+            [
+              "We had to catch the early train yesterday",
+              "tuvimos que tomar el tren temprano ayer",
+              null,
+              7
+            ],
+            [
+              "I think we had to leave because of the weather",
+              "pienso que tuvimos que irnos por el tiempo",
+              null,
+              9
+            ],
+            [
+              "We had to say no because we didn't have time",
+              "tuvimos que decir no porque no teníamos tiempo",
+              null,
+              10
+            ],
+            [
+              "We had to work very late last night to finish it",
+              "tuvimos que trabajar muy tarde anoche para terminarlo",
+              null,
+              10
+            ],
+            [
+              "We had to leave because the children were tired",
+              "tuvimos que irnos porque los niños estaban cansados",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0455L02": {
+          "lego": [
+            "leave",
+            "irnos"
+          ],
+          "type": "A",
+          "available_legos": 1264,
+          "practice_phrases": [
+            [
+              "leave",
+              "irnos",
+              null,
+              1
+            ],
+            [
+              "to leave",
+              "irnos",
+              null,
+              2
+            ],
+            [
+              "We have to leave",
+              "tenemos que irnos",
+              null,
+              4
+            ],
+            [
+              "We're going to leave now",
+              "vamos a irnos ahora",
+              null,
+              5
+            ],
+            [
+              "We had to leave early yesterday",
+              "tuvimos que irnos temprano ayer",
+              null,
+              5
+            ],
+            [
+              "I think we need to leave before it gets dark",
+              "pienso que necesitamos irnos antes de que oscurezca",
+              null,
+              10
+            ],
+            [
+              "We had to leave immediately because of the bad weather",
+              "tuvimos que irnos inmediatamente por el mal tiempo",
+              null,
+              9
+            ],
+            [
+              "We're going to have to leave very soon to catch the train",
+              "vamos a tener que irnos muy pronto para tomar el tren",
+              null,
+              12
+            ],
+            [
+              "We had to leave the party early because we were tired",
+              "tuvimos que irnos de la fiesta temprano porque estábamos cansados",
+              null,
+              12
+            ],
+            [
+              "We had to leave because the children were tired",
+              "tuvimos que irnos porque los niños estaban cansados",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0455L03": {
+          "lego": [
+            "children",
+            "niños"
+          ],
+          "type": "A",
+          "available_legos": 1265,
+          "practice_phrases": [
+            [
+              "children",
+              "niños",
+              null,
+              1
+            ],
+            [
+              "the children",
+              "los niños",
+              null,
+              2
+            ],
+            [
+              "our children",
+              "nuestros hijos",
+              null,
+              2
+            ],
+            [
+              "The children are playing",
+              "los niños están jugando",
+              null,
+              4
+            ],
+            [
+              "The children were very tired",
+              "los niños estaban muy cansados",
+              null,
+              5
+            ],
+            [
+              "I think the children want to go home now",
+              "pienso que los niños quieren ir a casa ahora",
+              null,
+              10
+            ],
+            [
+              "The children are going to be happy to see their friends",
+              "los niños van a estar contentos de ver a sus amigos",
+              null,
+              13
+            ],
+            [
+              "We had to leave early because the children were tired",
+              "tuvimos que irnos temprano porque los niños estaban cansados",
+              null,
+              10
+            ],
+            [
+              "The children said they wanted to stay longer at the park",
+              "los niños dijeron que querían quedarse más tiempo en el parque",
+              null,
+              12
+            ],
+            [
+              "We had to leave because the children were tired",
+              "tuvimos que irnos porque los niños estaban cansados",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0455L04": {
+          "lego": [
+            "were",
+            "estaban"
+          ],
+          "type": "A",
+          "available_legos": 1266,
+          "practice_phrases": [
+            [
+              "were",
+              "estaban",
+              null,
+              1
+            ],
+            [
+              "they were",
+              "estaban",
+              null,
+              2
+            ],
+            [
+              "The children were tired",
+              "los niños estaban cansados",
+              null,
+              4
+            ],
+            [
+              "They were at home",
+              "estaban en casa",
+              null,
+              4
+            ],
+            [
+              "Our friends were here yesterday",
+              "nuestros amigos estaban aquí ayer",
+              null,
+              5
+            ],
+            [
+              "They said they were almost ready to leave",
+              "dijeron que estaban casi preparados para irse",
+              null,
+              9
+            ],
+            [
+              "I think the children were very happy at the party",
+              "pienso que los niños estaban muy contentos en la fiesta",
+              null,
+              11
+            ],
+            [
+              "They were working on the new approach all morning",
+              "estaban trabajando en el acercamiento nuevo toda la mañana",
+              null,
+              10
+            ],
+            [
+              "Our friends were waiting for us at the station yesterday",
+              "nuestros amigos estaban esperándonos en la estación ayer",
+              null,
+              10
+            ],
+            [
+              "We had to leave because the children were tired",
+              "tuvimos que irnos porque los niños estaban cansados",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0455L05": {
+          "lego": [
+            "tired",
+            "cansados"
+          ],
+          "type": "A",
+          "available_legos": 1267,
+          "practice_phrases": [
+            [
+              "tired",
+              "cansados",
+              null,
+              1
+            ],
+            [
+              "very tired",
+              "muy cansados",
+              null,
+              2
+            ],
+            [
+              "They were tired",
+              "estaban cansados",
+              null,
+              3
+            ],
+            [
+              "The children are tired now",
+              "los niños están cansados ahora",
+              null,
+              5
+            ],
+            [
+              "I think we're all very tired",
+              "pienso que todos estamos muy cansados",
+              null,
+              7
+            ],
+            [
+              "They were tired after working all day yesterday",
+              "estaban cansados después de trabajar todo el día ayer",
+              null,
+              10
+            ],
+            [
+              "The children were so tired they fell asleep immediately",
+              "los niños estaban tan cansados que se durmieron inmediatamente",
+              null,
+              10
+            ],
+            [
+              "I think we're too tired to keep working on this tonight",
+              "pienso que estamos demasiado cansados para continuar trabajando en esto esta noche",
+              null,
+              13
+            ],
+            [
+              "They said they were tired and wanted to go home early",
+              "dijeron que estaban cansados y querían irse a casa temprano",
+              null,
+              11
+            ],
+            [
+              "We had to leave because the children were tired",
+              "tuvimos que irnos porque los niños estaban cansados",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0456": {
+      "seed": "S0456",
+      "seed_pair": {
+        "target": "Puede que esté allí pero no es muy probable.",
+        "known": "He might be there but it's not very likely."
+      },
+      "cumulative_legos": 1268,
+      "legos": {
+        "S0456L01": {
+          "lego": [
+            "might",
+            "puede que"
+          ],
+          "type": "M",
+          "available_legos": 1268,
+          "practice_phrases": [
+            [
+              "might",
+              "puede que",
+              null,
+              2
+            ],
+            [
+              "he might",
+              "puede que",
+              null,
+              2
+            ],
+            [
+              "Might be",
+              "puede que sea",
+              null,
+              3
+            ],
+            [
+              "He might come",
+              "puede que venga",
+              null,
+              3
+            ],
+            [
+              "He might be there",
+              "puede que esté allí",
+              null,
+              4
+            ],
+            [
+              "I think he might want to help us",
+              "pienso que puede que quiera ayudarnos",
+              null,
+              8
+            ],
+            [
+              "He might be able to come to the meeting tomorrow",
+              "puede que pueda venir a la reunión mañana",
+              null,
+              9
+            ],
+            [
+              "He might be at home but I'm not completely sure",
+              "puede que esté en casa pero no estoy completamente seguro",
+              null,
+              12
+            ],
+            [
+              "He might be there but it's not very likely at all",
+              "puede que esté allí pero no es muy probable en absoluto",
+              null,
+              13
+            ],
+            [
+              "He might be there but it's not very likely",
+              "puede que esté allí pero no es muy probable",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0456L02": {
+          "lego": [
+            "he be",
+            "esté"
+          ],
+          "type": "A",
+          "available_legos": 1269,
+          "practice_phrases": [
+            [
+              "he be",
+              "esté",
+              null,
+              2
+            ],
+            [
+              "be",
+              "esté",
+              null,
+              1
+            ],
+            [
+              "He might be there",
+              "puede que esté allí",
+              null,
+              4
+            ],
+            [
+              "I hope he's there",
+              "espero que esté allí",
+              null,
+              5
+            ],
+            [
+              "I don't think he's ready",
+              "no pienso que esté preparado",
+              null,
+              6
+            ],
+            [
+              "I hope he is at the meeting tomorrow",
+              "espero que esté en la reunión mañana",
+              null,
+              8
+            ],
+            [
+              "I don't think he is going to be happy about this",
+              "no pienso que esté contento sobre esto",
+              null,
+              10
+            ],
+            [
+              "He might be there but we're not completely sure yet",
+              "puede que esté allí pero no estamos completamente seguros todavía",
+              null,
+              12
+            ],
+            [
+              "I hope he is ready to start work on the new approach",
+              "espero que esté preparado para empezar a trabajar en el acercamiento nuevo",
+              null,
+              13
+            ],
+            [
+              "He might be there but it's not very likely",
+              "puede que esté allí pero no es muy probable",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0456L03": {
+          "lego": [
+            "it's not",
+            "no es"
+          ],
+          "type": "M",
+          "available_legos": 1270,
+          "practice_phrases": [
+            [
+              "it's not",
+              "no es",
+              null,
+              3
+            ],
+            [
+              "is not",
+              "no es",
+              null,
+              2
+            ],
+            [
+              "It's not ready",
+              "no es preparado",
+              null,
+              3
+            ],
+            [
+              "It's not very good",
+              "no es muy bueno",
+              null,
+              5
+            ],
+            [
+              "It's not what I wanted",
+              "no es lo que quería",
+              null,
+              6
+            ],
+            [
+              "I think it's not going to be easy to do",
+              "pienso que no es fácil de hacer",
+              null,
+              9
+            ],
+            [
+              "It's not very likely that they'll arrive before tomorrow",
+              "no es muy probable que lleguen antes de mañana",
+              null,
+              10
+            ],
+            [
+              "It's not the same approach we tried to develop last time",
+              "no es el mismo acercamiento que intentamos desarrollar la última vez",
+              null,
+              13
+            ],
+            [
+              "It's not very probable that he'll be able to help us",
+              "no es muy probable que pueda ayudarnos",
+              null,
+              11
+            ],
+            [
+              "He might be there but it's not very likely",
+              "puede que esté allí pero no es muy probable",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0456L04": {
+          "lego": [
+            "likely",
+            "probable"
+          ],
+          "type": "A",
+          "available_legos": 1271,
+          "practice_phrases": [
+            [
+              "likely",
+              "probable",
+              null,
+              1
+            ],
+            [
+              "probable",
+              "probable",
+              null,
+              1
+            ],
+            [
+              "very likely",
+              "muy probable",
+              null,
+              2
+            ],
+            [
+              "It's very likely",
+              "es muy probable",
+              null,
+              4
+            ],
+            [
+              "It's not very likely",
+              "no es muy probable",
+              null,
+              5
+            ],
+            [
+              "I think it's very likely they'll come tomorrow",
+              "pienso que es muy probable que vengan mañana",
+              null,
+              10
+            ],
+            [
+              "It's not very likely that we'll finish before the deadline",
+              "no es muy probable que terminemos antes de la fecha límite",
+              null,
+              12
+            ],
+            [
+              "It's very likely that our friends will be able to help",
+              "es muy probable que nuestros amigos puedan ayudar",
+              null,
+              11
+            ],
+            [
+              "It's not very probable that the train will arrive on time",
+              "no es muy probable que el tren llegue a tiempo",
+              null,
+              12
+            ],
+            [
+              "He might be there but it's not very likely",
+              "puede que esté allí pero no es muy probable",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0457": {
+      "seed": "S0457",
+      "seed_pair": {
+        "target": "Parte del problema es el número de áreas diferentes.",
+        "known": "Part of the problem is the number of different areas."
+      },
+      "cumulative_legos": 1272,
+      "legos": {
+        "S0457L01": {
+          "lego": [
+            "part",
+            "parte"
+          ],
+          "type": "A",
+          "available_legos": 1272,
+          "practice_phrases": [
+            [
+              "part",
+              "parte",
+              null,
+              1
+            ],
+            [
+              "a part",
+              "una parte",
+              null,
+              2
+            ],
+            [
+              "part of",
+              "parte de",
+              null,
+              2
+            ],
+            [
+              "This is part of it",
+              "esto es parte de eso",
+              null,
+              6
+            ],
+            [
+              "Part of the problem is this",
+              "parte del problema es esto",
+              null,
+              6
+            ],
+            [
+              "I think this is an important part of the approach",
+              "pienso que esto es una parte importante del acercamiento",
+              null,
+              11
+            ],
+            [
+              "Part of the work has to be done before tomorrow",
+              "parte del trabajo tiene que hacerse antes de mañana",
+              null,
+              10
+            ],
+            [
+              "I think part of what they said was not completely true",
+              "pienso que parte de lo que dijeron no era completamente cierto",
+              null,
+              12
+            ],
+            [
+              "Part of the reason we had to leave was the weather",
+              "parte de la razón que tuvimos que irnos era el tiempo",
+              null,
+              12
+            ],
+            [
+              "Part of the problem is the number of different areas",
+              "parte del problema es el número de áreas diferentes",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0457L02": {
+          "lego": [
+            "of the",
+            "del"
+          ],
+          "type": "M",
+          "available_legos": 1273,
+          "practice_phrases": [
+            [
+              "of the",
+              "del",
+              null,
+              2
+            ],
+            [
+              "from the",
+              "del",
+              null,
+              2
+            ],
+            [
+              "part of the",
+              "parte del",
+              null,
+              3
+            ],
+            [
+              "one of the problems",
+              "uno de los problemas",
+              null,
+              5
+            ],
+            [
+              "The end of the day",
+              "el fin del día",
+              null,
+              6
+            ],
+            [
+              "I think one of the main issues is time",
+              "pienso que uno de los problemas principales es el tiempo",
+              null,
+              12
+            ],
+            [
+              "Part of the work needs to be finished by tomorrow",
+              "parte del trabajo necesita terminarse para mañana",
+              null,
+              9
+            ],
+            [
+              "At the end of the meeting we'll need to decide",
+              "al fin de la reunión necesitaremos decidir",
+              null,
+              10
+            ],
+            [
+              "One of the children said they wanted to stay longer",
+              "uno de los niños dijo que quería quedarse más tiempo",
+              null,
+              11
+            ],
+            [
+              "Part of the problem is the number of different areas",
+              "parte del problema es el número de áreas diferentes",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0457L03": {
+          "lego": [
+            "number",
+            "número"
+          ],
+          "type": "A",
+          "available_legos": 1274,
+          "practice_phrases": [
+            [
+              "number",
+              "número",
+              null,
+              1
+            ],
+            [
+              "a number",
+              "un número",
+              null,
+              2
+            ],
+            [
+              "the number",
+              "el número",
+              null,
+              2
+            ],
+            [
+              "A large number of people",
+              "un número grande de personas",
+              null,
+              6
+            ],
+            [
+              "The number of problems is increasing",
+              "el número de problemas está aumentando",
+              null,
+              7
+            ],
+            [
+              "I think the number of areas is too high",
+              "pienso que el número de áreas es demasiado alto",
+              null,
+              11
+            ],
+            [
+              "The number of people who came was much higher than expected",
+              "el número de personas que vinieron era mucho más alto que esperado",
+              null,
+              13
+            ],
+            [
+              "Part of the problem is the very large number of different approaches",
+              "parte del problema es el número muy grande de acercamientos diferentes",
+              null,
+              12
+            ],
+            [
+              "I think the number of children at the party was about twenty",
+              "pienso que el número de niños en la fiesta era como veinte",
+              null,
+              13
+            ],
+            [
+              "Part of the problem is the number of different areas",
+              "parte del problema es el número de áreas diferentes",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0457L04": {
+          "lego": [
+            "areas",
+            "áreas"
+          ],
+          "type": "A",
+          "available_legos": 1275,
+          "practice_phrases": [
+            [
+              "areas",
+              "áreas",
+              null,
+              1
+            ],
+            [
+              "different areas",
+              "áreas diferentes",
+              null,
+              2
+            ],
+            [
+              "many areas",
+              "muchas áreas",
+              null,
+              2
+            ],
+            [
+              "We need to cover many areas",
+              "necesitamos cubrir muchas áreas",
+              null,
+              6
+            ],
+            [
+              "There are several different areas to consider",
+              "hay varias áreas diferentes para considerar",
+              null,
+              7
+            ],
+            [
+              "I think we need to work on several different areas",
+              "pienso que necesitamos trabajar en varias áreas diferentes",
+              null,
+              10
+            ],
+            [
+              "The number of different areas makes this very complicated",
+              "el número de áreas diferentes hace esto muy complicado",
+              null,
+              10
+            ],
+            [
+              "Part of the problem is that there are too many different areas",
+              "parte del problema es que hay demasiadas áreas diferentes",
+              null,
+              12
+            ],
+            [
+              "I think the number of areas we need to cover is too high",
+              "pienso que el número de áreas que necesitamos cubrir es demasiado alto",
+              null,
+              13
+            ],
+            [
+              "Part of the problem is the number of different areas",
+              "parte del problema es el número de áreas diferentes",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0457L05": {
+          "lego": [
+            "different",
+            "diferentes"
+          ],
+          "type": "A",
+          "available_legos": 1276,
+          "practice_phrases": [
+            [
+              "different",
+              "diferentes",
+              null,
+              1
+            ],
+            [
+              "very different",
+              "muy diferentes",
+              null,
+              2
+            ],
+            [
+              "many different",
+              "muchos diferentes",
+              null,
+              2
+            ],
+            [
+              "They are very different",
+              "son muy diferentes",
+              null,
+              4
+            ],
+            [
+              "We need many different approaches",
+              "necesitamos muchos acercamientos diferentes",
+              null,
+              5
+            ],
+            [
+              "I think we should try several different methods",
+              "pienso que deberíamos intentar varios métodos diferentes",
+              null,
+              9
+            ],
+            [
+              "There are many different ways to approach this problem",
+              "hay muchas maneras diferentes de acercarse a este problema",
+              null,
+              10
+            ],
+            [
+              "The number of different areas makes the work more difficult",
+              "el número de áreas diferentes hace el trabajo más difícil",
+              null,
+              11
+            ],
+            [
+              "I think part of the problem is the many different approaches",
+              "pienso que parte del problema es los muchos acercamientos diferentes",
+              null,
+              12
+            ],
+            [
+              "Part of the problem is the number of different areas",
+              "parte del problema es el número de áreas diferentes",
+              null,
+              10
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0458": {
+      "seed": "S0458",
+      "seed_pair": {
+        "target": "Todo era mucho más fácil en el pasado.",
+        "known": "It was all much easier in the past."
+      },
+      "cumulative_legos": 1277,
+      "legos": {
+        "S0458L01": {
+          "lego": [
+            "all",
+            "todo"
+          ],
+          "type": "A",
+          "available_legos": 1277,
+          "practice_phrases": [
+            [
+              "all",
+              "todo",
+              null,
+              1
+            ],
+            [
+              "everything",
+              "todo",
+              null,
+              1
+            ],
+            [
+              "all of it",
+              "todo",
+              null,
+              3
+            ],
+            [
+              "All the children",
+              "todos los niños",
+              null,
+              3
+            ],
+            [
+              "We need to do it all",
+              "necesitamos hacer eso todo",
+              null,
+              5
+            ],
+            [
+              "I think we can finish all the work today",
+              "pienso que podemos terminar todo el trabajo hoy",
+              null,
+              10
+            ],
+            [
+              "They said they wanted to see all the different areas",
+              "dijeron que querían ver todas las áreas diferentes",
+              null,
+              10
+            ],
+            [
+              "All the friends who came were very happy to be there",
+              "todos los amigos que vinieron estaban muy contentos de estar allí",
+              null,
+              13
+            ],
+            [
+              "I think all of this was much easier in the past",
+              "pienso que todo esto era mucho más fácil en el pasado",
+              null,
+              12
+            ],
+            [
+              "It was all much easier in the past",
+              "todo era mucho más fácil en el pasado",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0458L02": {
+          "lego": [
+            "much easier",
+            "mucho más fácil"
+          ],
+          "type": "M",
+          "available_legos": 1278,
+          "practice_phrases": [
+            [
+              "much easier",
+              "mucho más fácil",
+              null,
+              3
+            ],
+            [
+              "easier",
+              "más fácil",
+              null,
+              2
+            ],
+            [
+              "It's much easier now",
+              "es mucho más fácil ahora",
+              null,
+              5
+            ],
+            [
+              "This is much easier than that",
+              "esto es mucho más fácil que eso",
+              null,
+              7
+            ],
+            [
+              "I think this approach is much easier to understand",
+              "pienso que este acercamiento es mucho más fácil de entender",
+              null,
+              11
+            ],
+            [
+              "It was much easier when we had more time to prepare",
+              "era mucho más fácil cuando teníamos más tiempo para preparar",
+              null,
+              11
+            ],
+            [
+              "Everything would be much easier if we had more help",
+              "todo sería mucho más fácil si tuviéramos más ayuda",
+              null,
+              10
+            ],
+            [
+              "I think it was all much easier in the past than now",
+              "pienso que todo era mucho más fácil en el pasado que ahora",
+              null,
+              13
+            ],
+            [
+              "It was much easier before they developed the new approach",
+              "era mucho más fácil antes de que desarrollaran el acercamiento nuevo",
+              null,
+              12
+            ],
+            [
+              "It was all much easier in the past",
+              "todo era mucho más fácil en el pasado",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0458L03": {
+          "lego": [
+            "past",
+            "pasado"
+          ],
+          "type": "A",
+          "available_legos": 1279,
+          "practice_phrases": [
+            [
+              "past",
+              "pasado",
+              null,
+              1
+            ],
+            [
+              "the past",
+              "el pasado",
+              null,
+              2
+            ],
+            [
+              "in the past",
+              "en el pasado",
+              null,
+              3
+            ],
+            [
+              "That's all in the past now",
+              "eso es todo en el pasado ahora",
+              null,
+              7
+            ],
+            [
+              "In the past we did it differently",
+              "en el pasado lo hacíamos diferente",
+              null,
+              7
+            ],
+            [
+              "I think things were easier in the past",
+              "pienso que las cosas eran más fáciles en el pasado",
+              null,
+              10
+            ],
+            [
+              "In the past they didn't have to worry about so many areas",
+              "en el pasado no tenían que preocuparse por tantas áreas",
+              null,
+              12
+            ],
+            [
+              "I think in the past all of this was much simpler",
+              "pienso que en el pasado todo esto era mucho más simple",
+              null,
+              12
+            ],
+            [
+              "Everything was much easier in the past than it is now",
+              "todo era mucho más fácil en el pasado que es ahora",
+              null,
+              12
+            ],
+            [
+              "It was all much easier in the past",
+              "todo era mucho más fácil en el pasado",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0459": {
+      "seed": "S0459",
+      "seed_pair": {
+        "target": "No estaba enfrente de la señal azul.",
+        "known": "It wasn't in front of the blue sign."
+      },
+      "cumulative_legos": 1280,
+      "legos": {
+        "S0459L01": {
+          "lego": [
+            "it wasn't",
+            "no estaba"
+          ],
+          "type": "M",
+          "available_legos": 1280,
+          "practice_phrases": [
+            [
+              "it wasn't",
+              "no estaba",
+              null,
+              2
+            ],
+            [
+              "wasn't",
+              "no estaba",
+              null,
+              1
+            ],
+            [
+              "It wasn't there",
+              "no estaba allí",
+              null,
+              3
+            ],
+            [
+              "It wasn't ready",
+              "no estaba preparado",
+              null,
+              3
+            ],
+            [
+              "It wasn't very good",
+              "no estaba muy bueno",
+              null,
+              4
+            ],
+            [
+              "It wasn't where we thought it would be",
+              "no estaba dónde pensábamos que estaría",
+              null,
+              8
+            ],
+            [
+              "I think it wasn't in front of the blue sign yesterday",
+              "pienso que no estaba enfrente de la señal azul ayer",
+              null,
+              11
+            ],
+            [
+              "It wasn't ready when we arrived so we had to wait",
+              "no estaba preparado cuando llegamos entonces tuvimos que esperar",
+              null,
+              12
+            ],
+            [
+              "It wasn't very easy to find because it was so dark",
+              "no estaba muy fácil de encontrar porque estaba tan oscuro",
+              null,
+              12
+            ],
+            [
+              "It wasn't in front of the blue sign",
+              "no estaba enfrente de la señal azul",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0459L02": {
+          "lego": [
+            "in front of",
+            "enfrente de"
+          ],
+          "type": "M",
+          "available_legos": 1281,
+          "practice_phrases": [
+            [
+              "in front of",
+              "enfrente de",
+              null,
+              3
+            ],
+            [
+              "front of",
+              "enfrente de",
+              null,
+              2
+            ],
+            [
+              "In front of the house",
+              "enfrente de la casa",
+              null,
+              5
+            ],
+            [
+              "It's in front of the station",
+              "está enfrente de la estación",
+              null,
+              6
+            ],
+            [
+              "I'm waiting in front of the hotel",
+              "estoy esperando enfrente del hotel",
+              null,
+              6
+            ],
+            [
+              "The shop is in front of the train station",
+              "la tienda está enfrente de la estación de tren",
+              null,
+              10
+            ],
+            [
+              "I think it was in front of the blue sign yesterday",
+              "pienso que estaba enfrente de la señal azul ayer",
+              null,
+              10
+            ],
+            [
+              "They said they would wait in front of the hotel entrance",
+              "dijeron que esperarían enfrente de la entrada del hotel",
+              null,
+              11
+            ],
+            [
+              "It wasn't in front of the window but behind it instead",
+              "no estaba enfrente de la ventana sino detrás de ella en su lugar",
+              null,
+              13
+            ],
+            [
+              "It wasn't in front of the blue sign",
+              "no estaba enfrente de la señal azul",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0459L03": {
+          "lego": [
+            "sign",
+            "señal"
+          ],
+          "type": "A",
+          "available_legos": 1282,
+          "practice_phrases": [
+            [
+              "sign",
+              "señal",
+              null,
+              1
+            ],
+            [
+              "a sign",
+              "una señal",
+              null,
+              2
+            ],
+            [
+              "the sign",
+              "la señal",
+              null,
+              2
+            ],
+            [
+              "I saw a sign",
+              "vi una señal",
+              null,
+              4
+            ],
+            [
+              "The sign says to turn left",
+              "la señal dice girar a la izquierda",
+              null,
+              7
+            ],
+            [
+              "I think the sign was in front of the building",
+              "pienso que la señal estaba enfrente del edificio",
+              null,
+              10
+            ],
+            [
+              "The blue sign is on the wall next to the window",
+              "la señal azul está en la pared al lado de la ventana",
+              null,
+              12
+            ],
+            [
+              "I couldn't find it because the sign wasn't there anymore",
+              "no pude encontrarlo porque la señal no estaba allí más",
+              null,
+              11
+            ],
+            [
+              "They said the shop was near the large blue sign",
+              "dijeron que la tienda estaba cerca de la señal azul grande",
+              null,
+              12
+            ],
+            [
+              "It wasn't in front of the blue sign",
+              "no estaba enfrente de la señal azul",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0459L04": {
+          "lego": [
+            "blue",
+            "azul"
+          ],
+          "type": "A",
+          "available_legos": 1283,
+          "practice_phrases": [
+            [
+              "blue",
+              "azul",
+              null,
+              1
+            ],
+            [
+              "the blue",
+              "el azul",
+              null,
+              2
+            ],
+            [
+              "a blue sign",
+              "una señal azul",
+              null,
+              3
+            ],
+            [
+              "The blue window",
+              "la ventana azul",
+              null,
+              3
+            ],
+            [
+              "I like the blue one",
+              "me gusta el azul",
+              null,
+              5
+            ],
+            [
+              "The shop has a large blue sign outside",
+              "la tienda tiene una señal azul grande afuera",
+              null,
+              9
+            ],
+            [
+              "I think it was in front of the blue sign yesterday",
+              "pienso que estaba enfrente de la señal azul ayer",
+              null,
+              10
+            ],
+            [
+              "They said we should look for the building with blue windows",
+              "dijeron que deberíamos buscar el edificio con ventanas azules",
+              null,
+              11
+            ],
+            [
+              "The blue sign wasn't there so we couldn't find the place",
+              "la señal azul no estaba allí entonces no pudimos encontrar el lugar",
+              null,
+              13
+            ],
+            [
+              "It wasn't in front of the blue sign",
+              "no estaba enfrente de la señal azul",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0460": {
+      "seed": "S0460",
+      "seed_pair": {
+        "target": "Quiero encontrar una tienda cerca del hotel.",
+        "known": "I want to find a shop near the hotel."
+      },
+      "cumulative_legos": 1284,
+      "legos": {
+        "S0460L01": {
+          "lego": [
+            "to find",
+            "encontrar"
+          ],
+          "type": "A",
+          "available_legos": 1284,
+          "practice_phrases": [
+            [
+              "to find",
+              "encontrar",
+              null,
+              2
+            ],
+            [
+              "find",
+              "encontrar",
+              null,
+              1
+            ],
+            [
+              "to find it",
+              "encontrarlo",
+              null,
+              3
+            ],
+            [
+              "I want to find",
+              "quiero encontrar",
+              null,
+              3
+            ],
+            [
+              "We need to find a shop",
+              "necesitamos encontrar una tienda",
+              null,
+              6
+            ],
+            [
+              "I want to find a good place to stay",
+              "quiero encontrar un buen lugar para quedarse",
+              null,
+              9
+            ],
+            [
+              "I think we're going to be able to find it easily",
+              "pienso que vamos a poder encontrarlo fácilmente",
+              null,
+              10
+            ],
+            [
+              "They said they wanted to find a shop near the hotel",
+              "dijeron que querían encontrar una tienda cerca del hotel",
+              null,
+              11
+            ],
+            [
+              "We had to find a different approach to the problem",
+              "tuvimos que encontrar un acercamiento diferente al problema",
+              null,
+              10
+            ],
+            [
+              "I want to find a shop near the hotel",
+              "quiero encontrar una tienda cerca del hotel",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0460L02": {
+          "lego": [
+            "shop",
+            "tienda"
+          ],
+          "type": "A",
+          "available_legos": 1285,
+          "practice_phrases": [
+            [
+              "shop",
+              "tienda",
+              null,
+              1
+            ],
+            [
+              "a shop",
+              "una tienda",
+              null,
+              2
+            ],
+            [
+              "the shop",
+              "la tienda",
+              null,
+              2
+            ],
+            [
+              "I'm going to the shop",
+              "voy a la tienda",
+              null,
+              5
+            ],
+            [
+              "The shop is near here",
+              "la tienda está cerca de aquí",
+              null,
+              6
+            ],
+            [
+              "I want to find a shop that sells fresh food",
+              "quiero encontrar una tienda que venda comida fresca",
+              null,
+              10
+            ],
+            [
+              "The shop is in front of the train station",
+              "la tienda está enfrente de la estación de tren",
+              null,
+              10
+            ],
+            [
+              "I think there's a shop near the hotel where we can buy things",
+              "pienso que hay una tienda cerca del hotel donde podemos comprar cosas",
+              null,
+              13
+            ],
+            [
+              "They said the shop was open until about six o'clock",
+              "dijeron que la tienda estaba abierta hasta como las seis",
+              null,
+              11
+            ],
+            [
+              "I want to find a shop near the hotel",
+              "quiero encontrar una tienda cerca del hotel",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0460L03": {
+          "lego": [
+            "the",
+            "del"
+          ],
+          "type": "M",
+          "available_legos": 1286,
+          "practice_phrases": [
+            [
+              "the",
+              "del",
+              null,
+              1
+            ],
+            [
+              "of the",
+              "del",
+              null,
+              2
+            ],
+            [
+              "from the",
+              "del",
+              null,
+              2
+            ],
+            [
+              "near the hotel",
+              "cerca del hotel",
+              null,
+              3
+            ],
+            [
+              "at the end of the day",
+              "al fin del día",
+              null,
+              7
+            ],
+            [
+              "I think the shop is near the center of the city",
+              "pienso que la tienda está cerca del centro de la ciudad",
+              null,
+              12
+            ],
+            [
+              "Part of the problem is the number of different areas",
+              "parte del problema es el número de áreas diferentes",
+              null,
+              10
+            ],
+            [
+              "We're going to meet at the entrance of the hotel tomorrow",
+              "vamos a encontrarnos en la entrada del hotel mañana",
+              null,
+              11
+            ],
+            [
+              "The sign was in front of the blue door of the building",
+              "la señal estaba enfrente de la puerta azul del edificio",
+              null,
+              12
+            ],
+            [
+              "I want to find a shop near the hotel",
+              "quiero encontrar una tienda cerca del hotel",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0460L04": {
+          "lego": [
+            "hotel",
+            "hotel"
+          ],
+          "type": "A",
+          "available_legos": 1287,
+          "practice_phrases": [
+            [
+              "hotel",
+              "hotel",
+              null,
+              1
+            ],
+            [
+              "a hotel",
+              "un hotel",
+              null,
+              2
+            ],
+            [
+              "the hotel",
+              "el hotel",
+              null,
+              2
+            ],
+            [
+              "We're staying at a hotel",
+              "estamos quedándonos en un hotel",
+              null,
+              6
+            ],
+            [
+              "The hotel is near the station",
+              "el hotel está cerca de la estación",
+              null,
+              7
+            ],
+            [
+              "I think the hotel is very close to the city center",
+              "pienso que el hotel está muy cerca del centro de la ciudad",
+              null,
+              13
+            ],
+            [
+              "We're going to meet in front of the hotel at six",
+              "vamos a encontrarnos enfrente del hotel a las seis",
+              null,
+              10
+            ],
+            [
+              "They said the hotel was near a large shop and restaurant",
+              "dijeron que el hotel estaba cerca de una tienda grande y restaurante",
+              null,
+              13
+            ],
+            [
+              "I want to find a shop that's close to the hotel",
+              "quiero encontrar una tienda que esté cerca del hotel",
+              null,
+              11
+            ],
+            [
+              "I want to find a shop near the hotel",
+              "quiero encontrar una tienda cerca del hotel",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    }
+  }
+}
