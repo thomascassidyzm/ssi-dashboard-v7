@@ -1,0 +1,4268 @@
+{
+  "version": "1.0",
+  "purpose": "Complete seed corpus for prompt caching and pattern mining",
+  "total_seeds": 100,
+  "extraction_date": "2025-11-08",
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "target": "Quiero hablar español contigo ahora.",
+      "known": "I want to speak Spanish with you now.",
+      "new_legos": [
+        {
+          "target": "quiero",
+          "known": "I want",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "hablar",
+          "known": "to speak",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "español",
+          "known": "Spanish",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "contigo",
+          "known": "with you",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "ahora",
+          "known": "now",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0002",
+      "target": "Estoy intentando aprender.",
+      "known": "I'm trying to learn.",
+      "new_legos": [
+        {
+          "target": "estoy intentando",
+          "known": "I'm trying",
+          "type": "M",
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "intentando",
+              "trying"
+            ]
+          ]
+        },
+        {
+          "target": "aprender",
+          "known": "to learn",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "target": "cómo hablar lo más frecuentemente posible",
+      "known": "how to speak as often as possible",
+      "new_legos": [
+        {
+          "target": "cómo",
+          "known": "how",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "lo más frecuentemente posible",
+          "known": "as often as possible",
+          "type": "M",
+          "components": [
+            [
+              "lo más",
+              "the most"
+            ],
+            [
+              "frecuentemente",
+              "often"
+            ],
+            [
+              "posible",
+              "possible"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0004",
+      "target": "cómo decir algo en español",
+      "known": "how to say something in Spanish",
+      "new_legos": [
+        {
+          "target": "decir",
+          "known": "to say",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "algo",
+          "known": "something",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "en español",
+          "known": "in Spanish",
+          "type": "M",
+          "components": [
+            [
+              "en",
+              "in"
+            ],
+            [
+              "español",
+              "Spanish"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "target": "Voy a practicar hablar con alguien más.",
+      "known": "I'm going to practise speaking with someone else.",
+      "new_legos": [
+        {
+          "target": "voy a",
+          "known": "I'm going to",
+          "type": "M",
+          "components": [
+            [
+              "voy",
+              "I go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ]
+        },
+        {
+          "target": "practicar hablar",
+          "known": "to practise speaking",
+          "type": "M",
+          "components": [
+            [
+              "practicar",
+              "to practise"
+            ],
+            [
+              "hablar",
+              "speaking"
+            ]
+          ]
+        },
+        {
+          "target": "con",
+          "known": "with",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "alguien más",
+          "known": "someone else",
+          "type": "M",
+          "components": [
+            [
+              "alguien",
+              "someone"
+            ],
+            [
+              "más",
+              "else/more"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "target": "Estoy intentando recordar una palabra.",
+      "known": "I'm trying to remember a word.",
+      "new_legos": [
+        {
+          "target": "recordar",
+          "known": "to remember",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "una palabra",
+          "known": "a word",
+          "type": "M",
+          "components": [
+            [
+              "una",
+              "a"
+            ],
+            [
+              "palabra",
+              "word"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0007",
+      "target": "Quiero intentar tan duro como pueda hoy.",
+      "known": "I want to try as hard as I can today.",
+      "new_legos": [
+        {
+          "target": "intentar",
+          "known": "to try",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "tan duro como pueda",
+          "known": "as hard as I can",
+          "type": "M",
+          "components": [
+            [
+              "tan",
+              "as/as much"
+            ],
+            [
+              "duro",
+              "hard"
+            ],
+            [
+              "como",
+              "as/like"
+            ],
+            [
+              "pueda",
+              "I can"
+            ]
+          ]
+        },
+        {
+          "target": "hoy",
+          "known": "today",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0008",
+      "target": "Voy a intentar explicar lo que quiero decir.",
+      "known": "I'm going to try to explain what I mean.",
+      "new_legos": [
+        {
+          "target": "explicar",
+          "known": "to explain",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "lo que quiero decir",
+          "known": "what I mean",
+          "type": "M",
+          "components": [
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "quiero",
+              "I want"
+            ],
+            [
+              "decir",
+              "to say/mean"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "target": "Hablo un poco de español ahora.",
+      "known": "I speak a little Spanish now.",
+      "new_legos": [
+        {
+          "target": "hablo",
+          "known": "I speak",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "un poco de español",
+          "known": "a little Spanish",
+          "type": "M",
+          "components": [
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "de",
+              "of"
+            ],
+            [
+              "español",
+              "Spanish"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0010",
+      "target": "No estoy seguro si puedo recordar toda la oración.",
+      "known": "I'm not sure if I can remember the whole sentence.",
+      "new_legos": [
+        {
+          "target": "no estoy seguro",
+          "known": "I'm not sure",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "seguro",
+              "sure"
+            ]
+          ]
+        },
+        {
+          "target": "si",
+          "known": "if",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "puedo",
+          "known": "I can",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "toda la oración",
+          "known": "the whole sentence",
+          "type": "M",
+          "components": [
+            [
+              "toda",
+              "whole/all"
+            ],
+            [
+              "la",
+              "the"
+            ],
+            [
+              "oración",
+              "sentence"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0011",
+      "target": "Me gustaría poder hablar después de que termines.",
+      "known": "I'd like to be able to speak after you finish.",
+      "new_legos": [
+        {
+          "target": "me gustaría",
+          "known": "I'd like",
+          "type": "M",
+          "components": [
+            [
+              "me",
+              "me/to me"
+            ],
+            [
+              "gustaría",
+              "would please"
+            ]
+          ]
+        },
+        {
+          "target": "poder",
+          "known": "to be able",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "después de que termines",
+          "known": "after you finish",
+          "type": "M",
+          "components": [
+            [
+              "después de que",
+              "after that"
+            ],
+            [
+              "termines",
+              "you finish"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0012",
+      "target": "No me gustaría adivinar lo que va a ocurrir mañana.",
+      "known": "I wouldn't like to guess what's going to happen tomorrow.",
+      "new_legos": [
+        {
+          "target": "no me gustaría",
+          "known": "I wouldn't like",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "me gustaría",
+              "I'd like"
+            ]
+          ]
+        },
+        {
+          "target": "adivinar",
+          "known": "to guess",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "lo que va a ocurrir",
+          "known": "what's going to happen",
+          "type": "M",
+          "components": [
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "va a",
+              "is going to"
+            ],
+            [
+              "ocurrir",
+              "happen"
+            ]
+          ]
+        },
+        {
+          "target": "mañana",
+          "known": "tomorrow",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0013",
+      "target": "Hablas español muy bien.",
+      "known": "You speak Spanish very well.",
+      "new_legos": [
+        {
+          "target": "hablas",
+          "known": "you speak",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "muy bien",
+          "known": "very well",
+          "type": "M",
+          "components": [
+            [
+              "muy",
+              "very"
+            ],
+            [
+              "bien",
+              "well"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0014",
+      "target": "¿Hablas español todo el día?",
+      "known": "Do you speak Spanish all day?",
+      "new_legos": [
+        {
+          "target": "todo el día",
+          "known": "all day",
+          "type": "M",
+          "components": [
+            [
+              "todo",
+              "all"
+            ],
+            [
+              "el",
+              "the"
+            ],
+            [
+              "día",
+              "day"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0015",
+      "target": "Y quiero que hables español conmigo mañana.",
+      "known": "And I want you to speak Spanish with me tomorrow.",
+      "new_legos": [
+        {
+          "target": "y",
+          "known": "and",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "que hables",
+          "known": "you to speak",
+          "type": "M",
+          "components": [
+            [
+              "que",
+              "that"
+            ],
+            [
+              "hables",
+              "you speak (subj)"
+            ]
+          ]
+        },
+        {
+          "target": "conmigo",
+          "known": "with me",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0016",
+      "target": "Él quiere volver con todos los demás más tarde.",
+      "known": "He wants to come back with everyone else later on.",
+      "new_legos": [
+        {
+          "target": "él",
+          "known": "he",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "quiere",
+          "known": "wants",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "volver",
+          "known": "to come back",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "con todos los demás",
+          "known": "with everyone else",
+          "type": "M",
+          "components": [
+            [
+              "con",
+              "with"
+            ],
+            [
+              "todos",
+              "all/everyone"
+            ],
+            [
+              "los demás",
+              "the others/else"
+            ]
+          ]
+        },
+        {
+          "target": "más tarde",
+          "known": "later on",
+          "type": "M",
+          "components": [
+            [
+              "más",
+              "more"
+            ],
+            [
+              "tarde",
+              "late/later"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0017",
+      "target": "Ella quiere descubrir cuál es la respuesta.",
+      "known": "She wants to find out what the answer is.",
+      "new_legos": [
+        {
+          "target": "ella",
+          "known": "she",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "descubrir",
+          "known": "to find out",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "cuál es la respuesta",
+          "known": "what the answer is",
+          "type": "M",
+          "components": [
+            [
+              "cuál",
+              "which/what"
+            ],
+            [
+              "es",
+              "is"
+            ],
+            [
+              "la",
+              "the"
+            ],
+            [
+              "respuesta",
+              "answer"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0018",
+      "target": "Queremos reunirnos a las seis esta noche.",
+      "known": "We want to meet at six o'clock this evening.",
+      "new_legos": [
+        {
+          "target": "queremos",
+          "known": "we want",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "reunirnos",
+          "known": "to meet",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "a las seis",
+          "known": "at six o'clock",
+          "type": "M",
+          "components": [
+            [
+              "a",
+              "at"
+            ],
+            [
+              "las",
+              "the"
+            ],
+            [
+              "seis",
+              "six"
+            ]
+          ]
+        },
+        {
+          "target": "esta noche",
+          "known": "this evening",
+          "type": "M",
+          "components": [
+            [
+              "esta",
+              "this"
+            ],
+            [
+              "noche",
+              "evening/night"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0019",
+      "target": "Pero no quiero parar de hablar.",
+      "known": "But I don't want to stop talking.",
+      "new_legos": [
+        {
+          "target": "pero",
+          "known": "but",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "no quiero",
+          "known": "I don't want",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "quiero",
+              "I want"
+            ]
+          ]
+        },
+        {
+          "target": "parar de hablar",
+          "known": "to stop talking",
+          "type": "M",
+          "components": [
+            [
+              "parar",
+              "to stop"
+            ],
+            [
+              "de",
+              "of/from"
+            ],
+            [
+              "hablar",
+              "talking"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0020",
+      "target": "Quieres aprender su nombre rápidamente.",
+      "known": "You want to learn his name quickly.",
+      "new_legos": [
+        {
+          "target": "quieres",
+          "known": "you want",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "su nombre",
+          "known": "his name",
+          "type": "M",
+          "components": [
+            [
+              "su",
+              "his"
+            ],
+            [
+              "nombre",
+              "name"
+            ]
+          ]
+        },
+        {
+          "target": "rápidamente",
+          "known": "quickly",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0021",
+      "target": "¿Por qué estás aprendiendo su nombre?",
+      "known": "Why are you learning her name?",
+      "new_legos": [
+        {
+          "target": "por qué",
+          "known": "why",
+          "type": "M",
+          "components": [
+            [
+              "por",
+              "for"
+            ],
+            [
+              "qué",
+              "what"
+            ]
+          ]
+        },
+        {
+          "target": "estás aprendiendo",
+          "known": "are you learning",
+          "type": "M",
+          "components": [
+            [
+              "estás",
+              "you are"
+            ],
+            [
+              "aprendiendo",
+              "learning"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0022",
+      "target": "Porque quiero encontrar personas que hablan español.",
+      "known": "Because I want to meet people who speak Spanish.",
+      "new_legos": [
+        {
+          "target": "porque",
+          "known": "because",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "encontrar",
+          "known": "to meet",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "personas que hablan",
+          "known": "people who speak",
+          "type": "M",
+          "components": [
+            [
+              "personas",
+              "people"
+            ],
+            [
+              "que",
+              "who"
+            ],
+            [
+              "hablan",
+              "speak"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0023",
+      "target": "Voy a comenzar a hablar más pronto.",
+      "known": "I'm going to start talking more soon.",
+      "new_legos": [
+        {
+          "target": "comenzar a hablar",
+          "known": "to start talking",
+          "type": "M",
+          "components": [
+            [
+              "comenzar a",
+              "to start to"
+            ],
+            [
+              "hablar",
+              "talk/talking"
+            ]
+          ]
+        },
+        {
+          "target": "más",
+          "known": "more",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "pronto",
+          "known": "soon",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0024",
+      "target": "No voy a poder recordar fácilmente.",
+      "known": "I'm not going to be able to remember easily.",
+      "new_legos": [
+        {
+          "target": "no voy a",
+          "known": "I'm not going to",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "voy a",
+              "I'm going to"
+            ]
+          ]
+        },
+        {
+          "target": "fácilmente",
+          "known": "easily",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0025",
+      "target": "¿Vas a ayudarme antes de que tenga que ir?",
+      "known": "Are you going to help me before I have to go?",
+      "new_legos": [
+        {
+          "target": "vas a",
+          "known": "are you going to",
+          "type": "M",
+          "components": [
+            [
+              "vas",
+              "you go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ]
+        },
+        {
+          "target": "ayudarme",
+          "known": "to help me",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "antes de que tenga que ir",
+          "known": "before I have to go",
+          "type": "M",
+          "components": [
+            [
+              "antes de que",
+              "before that"
+            ],
+            [
+              "tenga que",
+              "I have to"
+            ],
+            [
+              "ir",
+              "go"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0026",
+      "target": "Me gusta sentir como si estuviera casi preparado para ir.",
+      "known": "I like feeling as if I'm nearly ready to go.",
+      "new_legos": [
+        {
+          "target": "me gusta",
+          "known": "I like",
+          "type": "M",
+          "components": [
+            [
+              "me",
+              "me/to me"
+            ],
+            [
+              "gusta",
+              "pleases"
+            ]
+          ]
+        },
+        {
+          "target": "sentir",
+          "known": "to feel",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "como si estuviera",
+          "known": "as if I were",
+          "type": "M",
+          "components": [
+            [
+              "como si",
+              "as if"
+            ],
+            [
+              "estuviera",
+              "I were (subj)"
+            ]
+          ]
+        },
+        {
+          "target": "casi",
+          "known": "nearly",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "preparado",
+          "known": "ready",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "para ir",
+          "known": "to go",
+          "type": "M",
+          "components": [
+            [
+              "para",
+              "for/to"
+            ],
+            [
+              "ir",
+              "go"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0027",
+      "target": "No me gusta tomar demasiado tiempo para responder.",
+      "known": "I don't like taking too much time to answer.",
+      "new_legos": [
+        {
+          "target": "no me gusta",
+          "known": "I don't like",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "me gusta",
+              "I like"
+            ]
+          ]
+        },
+        {
+          "target": "tomar",
+          "known": "to take",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "demasiado tiempo",
+          "known": "too much time",
+          "type": "M",
+          "components": [
+            [
+              "demasiado",
+              "too much"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        },
+        {
+          "target": "para responder",
+          "known": "to answer",
+          "type": "M",
+          "components": [
+            [
+              "para",
+              "for/to"
+            ],
+            [
+              "responder",
+              "answer"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0028",
+      "target": "Es útil comenzar a hablar tan pronto como puedas.",
+      "known": "It's useful to start talking as soon as you can.",
+      "new_legos": [
+        {
+          "target": "es útil",
+          "known": "it's useful",
+          "type": "M",
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "útil",
+              "useful"
+            ]
+          ]
+        },
+        {
+          "target": "tan pronto como puedas",
+          "known": "as soon as you can",
+          "type": "M",
+          "components": [
+            [
+              "tan pronto como",
+              "as soon as"
+            ],
+            [
+              "puedas",
+              "you can (subj)"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "target": "Estoy deseando hablar mejor tan pronto como pueda.",
+      "known": "I'm looking forward to speaking better as soon as I can.",
+      "new_legos": [
+        {
+          "target": "estoy deseando",
+          "known": "I'm looking forward to",
+          "type": "M",
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "deseando",
+              "looking forward to"
+            ]
+          ]
+        },
+        {
+          "target": "mejor",
+          "known": "better",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "tan pronto como pueda",
+          "known": "as soon as I can",
+          "type": "M",
+          "components": [
+            [
+              "tan pronto como",
+              "as soon as"
+            ],
+            [
+              "pueda",
+              "I can (subj)"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "target": "Quería preguntarte algo ayer.",
+      "known": "I wanted to ask you something yesterday.",
+      "new_legos": [
+        {
+          "target": "quería",
+          "known": "I wanted",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "preguntarte",
+          "known": "to ask you",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "ayer",
+          "known": "yesterday",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0031",
+      "target": "Querías hablar conmigo esta noche.",
+      "known": "You wanted to speak with me tonight.",
+      "new_legos": [
+        {
+          "target": "querías",
+          "known": "you wanted",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0032",
+      "target": "¿Querías mostrarme algo?",
+      "known": "Did you want to show me something?",
+      "new_legos": [
+        {
+          "target": "mostrarme",
+          "known": "to show me",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0033",
+      "target": "¿Cuánto tiempo llevas aprendiendo español?",
+      "known": "How long have you been learning Spanish?",
+      "new_legos": [
+        {
+          "target": "cuánto tiempo",
+          "known": "how long",
+          "type": "M",
+          "components": [
+            [
+              "cuánto",
+              "how much"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        },
+        {
+          "target": "llevas aprendiendo",
+          "known": "have you been learning",
+          "type": "M",
+          "components": [
+            [
+              "llevas",
+              "you carry/have been"
+            ],
+            [
+              "aprendiendo",
+              "learning"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0034",
+      "target": "Él no quiere estar silencioso cuando otras personas están aquí.",
+      "known": "He doesn't want to be quiet when other people are here.",
+      "new_legos": [
+        {
+          "target": "no quiere",
+          "known": "doesn't want",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "quiere",
+              "wants"
+            ]
+          ]
+        },
+        {
+          "target": "estar silencioso",
+          "known": "to be quiet",
+          "type": "M",
+          "components": [
+            [
+              "estar",
+              "to be"
+            ],
+            [
+              "silencioso",
+              "quiet"
+            ]
+          ]
+        },
+        {
+          "target": "cuando",
+          "known": "when",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "otras personas",
+          "known": "other people",
+          "type": "M",
+          "components": [
+            [
+              "otras",
+              "other"
+            ],
+            [
+              "personas",
+              "people"
+            ]
+          ]
+        },
+        {
+          "target": "están aquí",
+          "known": "are here",
+          "type": "M",
+          "components": [
+            [
+              "están",
+              "are"
+            ],
+            [
+              "aquí",
+              "here"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0035",
+      "target": "Ella no quiere leer nada esta tarde.",
+      "known": "She doesn't want to read anything this afternoon.",
+      "new_legos": [
+        {
+          "target": "leer",
+          "known": "to read",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "nada",
+          "known": "anything",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "esta tarde",
+          "known": "this afternoon",
+          "type": "M",
+          "components": [
+            [
+              "esta",
+              "this"
+            ],
+            [
+              "tarde",
+              "afternoon"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0036",
+      "target": "No queremos interrumpir la historia.",
+      "known": "We don't want to interrupt the story.",
+      "new_legos": [
+        {
+          "target": "no queremos",
+          "known": "we don't want",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "queremos",
+              "we want"
+            ]
+          ]
+        },
+        {
+          "target": "interrumpir",
+          "known": "to interrupt",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "la historia",
+          "known": "the story",
+          "type": "M",
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "historia",
+              "story"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0037",
+      "target": "Comencé a pensar sobre eso cuidadosamente el mes pasado.",
+      "known": "I started to think about it carefully last month.",
+      "new_legos": [
+        {
+          "target": "comencé a",
+          "known": "I started to",
+          "type": "M",
+          "components": [
+            [
+              "comencé",
+              "I started"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ]
+        },
+        {
+          "target": "pensar",
+          "known": "to think",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "sobre eso",
+          "known": "about it",
+          "type": "M",
+          "components": [
+            [
+              "sobre",
+              "about"
+            ],
+            [
+              "eso",
+              "it/that"
+            ]
+          ]
+        },
+        {
+          "target": "cuidadosamente",
+          "known": "carefully",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "el mes pasado",
+          "known": "last month",
+          "type": "M",
+          "components": [
+            [
+              "el",
+              "the"
+            ],
+            [
+              "mes",
+              "month"
+            ],
+            [
+              "pasado",
+              "last/past"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0038",
+      "target": "Llevo aprendiendo aproximadamente una semana.",
+      "known": "I've been learning for about a week.",
+      "new_legos": [
+        {
+          "target": "llevo aprendiendo",
+          "known": "I've been learning",
+          "type": "M",
+          "components": [
+            [
+              "llevo",
+              "I carry/have been"
+            ],
+            [
+              "aprendiendo",
+              "learning"
+            ]
+          ]
+        },
+        {
+          "target": "aproximadamente",
+          "known": "about",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "una semana",
+          "known": "a week",
+          "type": "M",
+          "components": [
+            [
+              "una",
+              "a/one"
+            ],
+            [
+              "semana",
+              "week"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0039",
+      "target": "Pero estoy un poco cansado esta mañana.",
+      "known": "But I'm a little tired this morning.",
+      "new_legos": [
+        {
+          "target": "estoy un poco cansado",
+          "known": "I'm a little tired",
+          "type": "M",
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "cansado",
+              "tired"
+            ]
+          ]
+        },
+        {
+          "target": "esta mañana",
+          "known": "this morning",
+          "type": "M",
+          "components": [
+            [
+              "esta",
+              "this"
+            ],
+            [
+              "mañana",
+              "morning"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0040",
+      "target": "¿Cómo te sientes en este momento?",
+      "known": "How do you feel at the moment?",
+      "new_legos": [
+        {
+          "target": "cómo te sientes",
+          "known": "how do you feel",
+          "type": "M",
+          "components": [
+            [
+              "cómo",
+              "how"
+            ],
+            [
+              "te",
+              "yourself"
+            ],
+            [
+              "sientes",
+              "you feel"
+            ]
+          ]
+        },
+        {
+          "target": "en este momento",
+          "known": "at the moment",
+          "type": "M",
+          "components": [
+            [
+              "en",
+              "in/at"
+            ],
+            [
+              "este",
+              "this"
+            ],
+            [
+              "momento",
+              "moment"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0041",
+      "target": "Me siento bien, pero estoy comenzando a sentirme cansado.",
+      "known": "I feel okay, but I'm starting to feel tired.",
+      "new_legos": [
+        {
+          "target": "me siento",
+          "known": "I feel",
+          "type": "M",
+          "components": [
+            [
+              "me",
+              "myself"
+            ],
+            [
+              "siento",
+              "I feel"
+            ]
+          ]
+        },
+        {
+          "target": "bien",
+          "known": "okay",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "estoy comenzando a sentirme",
+          "known": "I'm starting to feel",
+          "type": "M",
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "comenzando a",
+              "starting to"
+            ],
+            [
+              "sentirme",
+              "to feel myself"
+            ]
+          ]
+        },
+        {
+          "target": "cansado",
+          "known": "tired",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0042",
+      "target": "Estaba comenzando a sentirme mejor que anoche.",
+      "known": "I was starting to feel better than last night.",
+      "new_legos": [
+        {
+          "target": "estaba comenzando a",
+          "known": "I was starting to",
+          "type": "M",
+          "components": [
+            [
+              "estaba",
+              "I was"
+            ],
+            [
+              "comenzando a",
+              "starting to"
+            ]
+          ]
+        },
+        {
+          "target": "sentirme",
+          "known": "to feel",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "mejor que",
+          "known": "better than",
+          "type": "M",
+          "components": [
+            [
+              "mejor",
+              "better"
+            ],
+            [
+              "que",
+              "than"
+            ]
+          ]
+        },
+        {
+          "target": "anoche",
+          "known": "last night",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0043",
+      "target": "No estaba pensando en cómo responder.",
+      "known": "I wasn't thinking about how to answer.",
+      "new_legos": [
+        {
+          "target": "no estaba pensando",
+          "known": "I wasn't thinking",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estaba",
+              "I was"
+            ],
+            [
+              "pensando",
+              "thinking"
+            ]
+          ]
+        },
+        {
+          "target": "en cómo responder",
+          "known": "about how to answer",
+          "type": "M",
+          "components": [
+            [
+              "en",
+              "in/about"
+            ],
+            [
+              "cómo",
+              "how"
+            ],
+            [
+              "responder",
+              "to answer"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0044",
+      "target": "O si necesito mejorar.",
+      "known": "Or if I need to improve.",
+      "new_legos": [
+        {
+          "target": "o",
+          "known": "or",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "necesito",
+          "known": "I need",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "mejorar",
+          "known": "to improve",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0045",
+      "target": "No necesito saber todo.",
+      "known": "I don't need to know everything.",
+      "new_legos": [
+        {
+          "target": "no necesito",
+          "known": "I don't need",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "necesito",
+              "I need"
+            ]
+          ]
+        },
+        {
+          "target": "saber",
+          "known": "to know",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "todo",
+          "known": "everything",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0046",
+      "target": "Pero no me preocupo por hacer errores.",
+      "known": "But I don't worry about making mistakes.",
+      "new_legos": [
+        {
+          "target": "no me preocupo",
+          "known": "I don't worry",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "me",
+              "myself"
+            ],
+            [
+              "preocupo",
+              "I worry"
+            ]
+          ]
+        },
+        {
+          "target": "por hacer errores",
+          "known": "about making mistakes",
+          "type": "M",
+          "components": [
+            [
+              "por",
+              "about"
+            ],
+            [
+              "hacer",
+              "making"
+            ],
+            [
+              "errores",
+              "mistakes"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0047",
+      "target": "Porque pienso que es una cosa buena hacer errores.",
+      "known": "Because I think that it's a good thing to make mistakes.",
+      "new_legos": [
+        {
+          "target": "pienso que",
+          "known": "I think that",
+          "type": "M",
+          "components": [
+            [
+              "pienso",
+              "I think"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ]
+        },
+        {
+          "target": "es una cosa buena",
+          "known": "it's a good thing",
+          "type": "M",
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "una",
+              "a"
+            ],
+            [
+              "cosa",
+              "thing"
+            ],
+            [
+              "buena",
+              "good"
+            ]
+          ]
+        },
+        {
+          "target": "hacer errores",
+          "known": "to make mistakes",
+          "type": "M",
+          "components": [
+            [
+              "hacer",
+              "to make"
+            ],
+            [
+              "errores",
+              "mistakes"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0048",
+      "target": "No me importa hacer errores.",
+      "known": "I don't care about making mistakes.",
+      "new_legos": [
+        {
+          "target": "no me importa",
+          "known": "I don't care",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "me",
+              "to me"
+            ],
+            [
+              "importa",
+              "it matters"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0049",
+      "target": "Es así, si sabes lo que quiero decir.",
+      "known": "It's like this, if you know what I mean.",
+      "new_legos": [
+        {
+          "target": "es así",
+          "known": "it's like this",
+          "type": "M",
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "así",
+              "thus/like this"
+            ]
+          ]
+        },
+        {
+          "target": "sabes",
+          "known": "you know",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0050",
+      "target": "No estoy intentando terminar lo más rápidamente posible.",
+      "known": "I'm not trying to finish as quickly as possible.",
+      "new_legos": [
+        {
+          "target": "no estoy intentando",
+          "known": "I'm not trying",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estoy intentando",
+              "I'm trying"
+            ]
+          ]
+        },
+        {
+          "target": "terminar",
+          "known": "to finish",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "lo más rápidamente posible",
+          "known": "as quickly as possible",
+          "type": "M",
+          "components": [
+            [
+              "lo más",
+              "the most"
+            ],
+            [
+              "rápidamente",
+              "quickly"
+            ],
+            [
+              "posible",
+              "possible"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0051",
+      "target": "Disfruto hacer cosas interesantes con mis amigos.",
+      "known": "I enjoy doing interesting things with my friends.",
+      "new_legos": [
+        {
+          "target": "disfruto",
+          "known": "I enjoy",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "hacer",
+          "known": "to do/make",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "cosas",
+          "known": "things",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "interesantes",
+          "known": "interesting",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "mis amigos",
+          "known": "my friends",
+          "type": "M",
+          "components": [
+            [
+              "mis",
+              "my"
+            ],
+            [
+              "amigos",
+              "friends"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0052",
+      "target": "Quería escribir una carta a su amigo la semana pasada.",
+      "known": "He wanted to write a letter to his friend last week.",
+      "new_legos": [
+        {
+          "target": "escribir",
+          "known": "to write",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "una carta",
+          "known": "a letter",
+          "type": "M",
+          "components": [
+            [
+              "una",
+              "a"
+            ],
+            [
+              "carta",
+              "letter"
+            ]
+          ]
+        },
+        {
+          "target": "a su amigo",
+          "known": "to his friend",
+          "type": "M",
+          "components": [
+            [
+              "a",
+              "to"
+            ],
+            [
+              "su",
+              "his"
+            ],
+            [
+              "amigo",
+              "friend"
+            ]
+          ]
+        },
+        {
+          "target": "la semana pasada",
+          "known": "last week",
+          "type": "M",
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "semana",
+              "week"
+            ],
+            [
+              "pasada",
+              "past/last"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0053",
+      "target": "Quería poner su carta en su bolsa.",
+      "known": "She wanted to put his letter in her bag.",
+      "new_legos": [
+        {
+          "target": "poner",
+          "known": "to put",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "su carta",
+          "known": "his letter",
+          "type": "M",
+          "components": [
+            [
+              "su",
+              "his"
+            ],
+            [
+              "carta",
+              "letter"
+            ]
+          ]
+        },
+        {
+          "target": "en su bolsa",
+          "known": "in her bag",
+          "type": "M",
+          "components": [
+            [
+              "en",
+              "in"
+            ],
+            [
+              "su",
+              "her"
+            ],
+            [
+              "bolsa",
+              "bag"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0054",
+      "target": "Queríamos darte un poco más de tiempo.",
+      "known": "We wanted to give you a little more time.",
+      "new_legos": [
+        {
+          "target": "queríamos",
+          "known": "we wanted",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "darte",
+          "known": "to give you",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "un poco más de tiempo",
+          "known": "a little more time",
+          "type": "M",
+          "components": [
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "más",
+              "more"
+            ],
+            [
+              "de",
+              "of"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0055",
+      "target": "No disfruto despertarme cuando no dormí muy bien.",
+      "known": "I don't enjoy waking up when I didn't sleep very well.",
+      "new_legos": [
+        {
+          "target": "no disfruto",
+          "known": "I don't enjoy",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "disfruto",
+              "I enjoy"
+            ]
+          ]
+        },
+        {
+          "target": "despertarme",
+          "known": "to wake up/waking up",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "no dormí",
+          "known": "I didn't sleep",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "dormí",
+              "I slept"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0056",
+      "target": "Para poder recordar cómo decir unas pocas palabras.",
+      "known": "So I can remember how to say a few words.",
+      "new_legos": [
+        {
+          "target": "para poder",
+          "known": "so I can/to be able to",
+          "type": "M",
+          "components": [
+            [
+              "para",
+              "for/so"
+            ],
+            [
+              "poder",
+              "to be able to/can"
+            ]
+          ]
+        },
+        {
+          "target": "unas pocas palabras",
+          "known": "a few words",
+          "type": "M",
+          "components": [
+            [
+              "unas",
+              "some"
+            ],
+            [
+              "pocas",
+              "few"
+            ],
+            [
+              "palabras",
+              "words"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0057",
+      "target": "No puedo recordar cómo decir lo que quería decir.",
+      "known": "I can't remember how to say what I wanted to say.",
+      "new_legos": [
+        {
+          "target": "no puedo",
+          "known": "I can't",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "puedo",
+              "I can"
+            ]
+          ]
+        },
+        {
+          "target": "lo que quería decir",
+          "known": "what I wanted to say",
+          "type": "M",
+          "components": [
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "quería",
+              "I wanted"
+            ],
+            [
+              "decir",
+              "to say"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0058",
+      "target": "Es interesante cuando comprendes suficientes palabras.",
+      "known": "It's interesting when you understand enough words.",
+      "new_legos": [
+        {
+          "target": "es interesante",
+          "known": "it's interesting",
+          "type": "M",
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "interesante",
+              "interesting"
+            ]
+          ]
+        },
+        {
+          "target": "comprendes",
+          "known": "you understand",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "suficientes palabras",
+          "known": "enough words",
+          "type": "M",
+          "components": [
+            [
+              "suficientes",
+              "enough"
+            ],
+            [
+              "palabras",
+              "words"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0059",
+      "target": "Sé hacer lo que necesito hacer la próxima semana.",
+      "known": "I know how to do what I need to do next week.",
+      "new_legos": [
+        {
+          "target": "sé hacer",
+          "known": "I know how to do",
+          "type": "M",
+          "components": [
+            [
+              "sé",
+              "I know"
+            ],
+            [
+              "hacer",
+              "to do"
+            ]
+          ]
+        },
+        {
+          "target": "lo que necesito hacer",
+          "known": "what I need to do",
+          "type": "M",
+          "components": [
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "necesito",
+              "I need"
+            ],
+            [
+              "hacer",
+              "to do"
+            ]
+          ]
+        },
+        {
+          "target": "la próxima semana",
+          "known": "next week",
+          "type": "M",
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "próxima",
+              "next"
+            ],
+            [
+              "semana",
+              "week"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0060",
+      "target": "Todavía no sé cómo decir suficientes palabras diferentes.",
+      "known": "I don't know how to say enough different words yet.",
+      "new_legos": [
+        {
+          "target": "todavía no sé",
+          "known": "I don't know yet",
+          "type": "M",
+          "components": [
+            [
+              "todavía",
+              "yet/still"
+            ],
+            [
+              "no",
+              "not"
+            ],
+            [
+              "sé",
+              "I know"
+            ]
+          ]
+        },
+        {
+          "target": "suficientes palabras diferentes",
+          "known": "enough different words",
+          "type": "M",
+          "components": [
+            [
+              "suficientes",
+              "enough"
+            ],
+            [
+              "palabras",
+              "words"
+            ],
+            [
+              "diferentes",
+              "different"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0061",
+      "target": "¿Podrías decir eso otra vez un poco más lentamente?",
+      "known": "Could you say that again a little more slowly?",
+      "new_legos": [
+        {
+          "target": "podrías",
+          "known": "could you/you could",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "eso",
+          "known": "that",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "otra vez",
+          "known": "again",
+          "type": "M",
+          "components": [
+            [
+              "otra",
+              "another"
+            ],
+            [
+              "vez",
+              "time"
+            ]
+          ]
+        },
+        {
+          "target": "un poco más lentamente",
+          "known": "a little more slowly",
+          "type": "M",
+          "components": [
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "más",
+              "more"
+            ],
+            [
+              "lentamente",
+              "slowly"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0062",
+      "target": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+      "known": "I'm not sure if I can help you at the same time.",
+      "new_legos": [
+        {
+          "target": "puedo ayudarte",
+          "known": "I can help you",
+          "type": "M",
+          "components": [
+            [
+              "puedo",
+              "I can"
+            ],
+            [
+              "ayudarte",
+              "to help you"
+            ]
+          ]
+        },
+        {
+          "target": "al mismo tiempo",
+          "known": "at the same time",
+          "type": "M",
+          "components": [
+            [
+              "al",
+              "at the"
+            ],
+            [
+              "mismo",
+              "same"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0063",
+      "target": "¿Estás seguro de que no te importa ayudarme?",
+      "known": "Are you sure you don't mind helping me?",
+      "new_legos": [
+        {
+          "target": "estás seguro",
+          "known": "you are sure",
+          "type": "M",
+          "components": [
+            [
+              "estás",
+              "you are"
+            ],
+            [
+              "seguro",
+              "sure"
+            ]
+          ]
+        },
+        {
+          "target": "de que no te importa",
+          "known": "that you don't mind",
+          "type": "M",
+          "components": [
+            [
+              "de que",
+              "that"
+            ],
+            [
+              "no",
+              "not"
+            ],
+            [
+              "te",
+              "you"
+            ],
+            [
+              "importa",
+              "mind/matters"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0064",
+      "target": "Aprender español no es fácil pero es divertido.",
+      "known": "Learning Spanish isn't easy but it is fun.",
+      "new_legos": [
+        {
+          "target": "aprender español",
+          "known": "learning Spanish",
+          "type": "M",
+          "components": [
+            [
+              "aprender",
+              "to learn"
+            ],
+            [
+              "español",
+              "Spanish"
+            ]
+          ]
+        },
+        {
+          "target": "no es fácil",
+          "known": "isn't easy",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "fácil",
+              "easy"
+            ]
+          ]
+        },
+        {
+          "target": "es divertido",
+          "known": "it is fun",
+          "type": "M",
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "divertido",
+              "fun"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0065",
+      "target": "Es importante tomar tiempo para evaluarte.",
+      "known": "It's important to take time to test yourself.",
+      "new_legos": [
+        {
+          "target": "es importante",
+          "known": "it's important",
+          "type": "M",
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "importante",
+              "important"
+            ]
+          ]
+        },
+        {
+          "target": "tomar tiempo",
+          "known": "to take time",
+          "type": "M",
+          "components": [
+            [
+              "tomar",
+              "to take"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        },
+        {
+          "target": "para evaluarte",
+          "known": "to test yourself",
+          "type": "M",
+          "components": [
+            [
+              "para",
+              "to/for"
+            ],
+            [
+              "evaluarte",
+              "to test yourself"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0066",
+      "target": "No es difícil encontrar la respuesta.",
+      "known": "It's not difficult to find the answer.",
+      "new_legos": [
+        {
+          "target": "no es difícil",
+          "known": "it's not difficult",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "difícil",
+              "difficult"
+            ]
+          ]
+        },
+        {
+          "target": "la respuesta",
+          "known": "the answer",
+          "type": "M",
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "respuesta",
+              "answer"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0067",
+      "target": "¿Por qué quieres parar?",
+      "known": "Why do you want to stop?",
+      "new_legos": [
+        {
+          "target": "parar",
+          "known": "to stop",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0068",
+      "target": "¿Qué estás buscando?",
+      "known": "What are you looking for?",
+      "new_legos": [
+        {
+          "target": "qué",
+          "known": "what",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "estás buscando",
+          "known": "are you looking for",
+          "type": "M",
+          "components": [
+            [
+              "estás",
+              "you are"
+            ],
+            [
+              "buscando",
+              "looking for"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0069",
+      "target": "No quería cuidar el perro joven toda la tarde.",
+      "known": "He didn't want to look after the young dog all afternoon.",
+      "new_legos": [
+        {
+          "target": "no quería",
+          "known": "I didn't want/he didn't want",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "quería",
+              "I wanted/he wanted"
+            ]
+          ]
+        },
+        {
+          "target": "cuidar",
+          "known": "to look after",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "el perro joven",
+          "known": "the young dog",
+          "type": "M",
+          "components": [
+            [
+              "el",
+              "the"
+            ],
+            [
+              "perro",
+              "dog"
+            ],
+            [
+              "joven",
+              "young"
+            ]
+          ]
+        },
+        {
+          "target": "toda la tarde",
+          "known": "all afternoon",
+          "type": "M",
+          "components": [
+            [
+              "toda",
+              "all"
+            ],
+            [
+              "la",
+              "the"
+            ],
+            [
+              "tarde",
+              "afternoon"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0070",
+      "target": "Ella no quería decirme dónde estaba.",
+      "known": "She didn't want to tell me where it was.",
+      "new_legos": [
+        {
+          "target": "decirme",
+          "known": "to tell me",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "dónde estaba",
+          "known": "where it was",
+          "type": "M",
+          "components": [
+            [
+              "dónde",
+              "where"
+            ],
+            [
+              "estaba",
+              "it was"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0071",
+      "target": "No queríamos permitir que nadie oyera la verdad.",
+      "known": "We didn't want to let anyone hear the truth.",
+      "new_legos": [
+        {
+          "target": "no queríamos",
+          "known": "we didn't want",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "queríamos",
+              "we wanted"
+            ]
+          ]
+        },
+        {
+          "target": "permitir que",
+          "known": "to let/allow that",
+          "type": "M",
+          "components": [
+            [
+              "permitir",
+              "to allow"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ]
+        },
+        {
+          "target": "nadie",
+          "known": "no one/nobody",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "oyera",
+          "known": "hear",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "la verdad",
+          "known": "the truth",
+          "type": "M",
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "verdad",
+              "truth"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0072",
+      "target": "Pienso que estás haciendo muy bien.",
+      "known": "I think that you're doing very well.",
+      "new_legos": [
+        {
+          "target": "estás haciendo",
+          "known": "you're doing",
+          "type": "M",
+          "components": [
+            [
+              "estás",
+              "you are"
+            ],
+            [
+              "haciendo",
+              "doing"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0073",
+      "target": "Muchas gracias, pero tengo más que aprender.",
+      "known": "Thank you very much, but I've got more to learn.",
+      "new_legos": [
+        {
+          "target": "muchas gracias",
+          "known": "thank you very much",
+          "type": "M",
+          "components": [
+            [
+              "muchas",
+              "many"
+            ],
+            [
+              "gracias",
+              "thanks"
+            ]
+          ]
+        },
+        {
+          "target": "tengo más que aprender",
+          "known": "I've got more to learn",
+          "type": "M",
+          "components": [
+            [
+              "tengo",
+              "I have"
+            ],
+            [
+              "más",
+              "more"
+            ],
+            [
+              "que",
+              "that/to"
+            ],
+            [
+              "aprender",
+              "to learn"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0074",
+      "target": "Muchas gracias por ayudarme a comprender.",
+      "known": "Thank you very much for helping me to understand.",
+      "new_legos": [
+        {
+          "target": "por ayudarme",
+          "known": "for helping me",
+          "type": "M",
+          "components": [
+            [
+              "por",
+              "for"
+            ],
+            [
+              "ayudarme",
+              "helping me"
+            ]
+          ]
+        },
+        {
+          "target": "a comprender",
+          "known": "to understand",
+          "type": "M",
+          "components": [
+            [
+              "a",
+              "to"
+            ],
+            [
+              "comprender",
+              "to understand"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0075",
+      "target": "¿Tienes más que aprender?",
+      "known": "Have you got more to learn?",
+      "new_legos": [
+        {
+          "target": "tienes más que aprender",
+          "known": "have you got more to learn",
+          "type": "M",
+          "components": [
+            [
+              "tienes",
+              "you have"
+            ],
+            [
+              "más",
+              "more"
+            ],
+            [
+              "que",
+              "that/to"
+            ],
+            [
+              "aprender",
+              "to learn"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0076",
+      "target": "Estoy muy feliz con cuánto he aprendido ya.",
+      "known": "I'm very happy with how much I've learnt already.",
+      "new_legos": [
+        {
+          "target": "estoy muy feliz",
+          "known": "I'm very happy",
+          "type": "M",
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "muy",
+              "very"
+            ],
+            [
+              "feliz",
+              "happy"
+            ]
+          ]
+        },
+        {
+          "target": "con cuánto",
+          "known": "with how much",
+          "type": "M",
+          "components": [
+            [
+              "con",
+              "with"
+            ],
+            [
+              "cuánto",
+              "how much"
+            ]
+          ]
+        },
+        {
+          "target": "he aprendido",
+          "known": "I've learnt",
+          "type": "M",
+          "components": [
+            [
+              "he",
+              "I have"
+            ],
+            [
+              "aprendido",
+              "learnt"
+            ]
+          ]
+        },
+        {
+          "target": "ya",
+          "known": "already",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0077",
+      "target": "Estoy sorprendido de lo rápidamente que estoy comenzando a comprender.",
+      "known": "I'm surprised at how quickly I'm starting to understand.",
+      "new_legos": [
+        {
+          "target": "estoy sorprendido",
+          "known": "I'm surprised",
+          "type": "M",
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "sorprendido",
+              "surprised"
+            ]
+          ]
+        },
+        {
+          "target": "de lo rápidamente que",
+          "known": "at how quickly",
+          "type": "M",
+          "components": [
+            [
+              "de",
+              "at/of"
+            ],
+            [
+              "lo",
+              "the"
+            ],
+            [
+              "rápidamente",
+              "quickly"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ]
+        },
+        {
+          "target": "estoy comenzando a",
+          "known": "I'm starting to",
+          "type": "M",
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "comenzando",
+              "starting"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ]
+        },
+        {
+          "target": "comprender",
+          "known": "to understand",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0078",
+      "target": "No comprendo lo que dijiste.",
+      "known": "I don't understand what you said.",
+      "new_legos": [
+        {
+          "target": "no comprendo",
+          "known": "I don't understand",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "comprendo",
+              "I understand"
+            ]
+          ]
+        },
+        {
+          "target": "lo que dijiste",
+          "known": "what you said",
+          "type": "M",
+          "components": [
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "dijiste",
+              "you said"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0079",
+      "target": "¿Cuándo comenzaste a aprender?",
+      "known": "When did you start to learn?",
+      "new_legos": [
+        {
+          "target": "cuándo",
+          "known": "when",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "comenzaste a aprender",
+          "known": "did you start to learn",
+          "type": "M",
+          "components": [
+            [
+              "comenzaste",
+              "you started"
+            ],
+            [
+              "a",
+              "to"
+            ],
+            [
+              "aprender",
+              "to learn"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0080",
+      "target": "No estoy seguro de cuándo estaré preparado.",
+      "known": "I'm not sure when I'll be ready.",
+      "new_legos": [
+        {
+          "target": "de cuándo",
+          "known": "of when",
+          "type": "M",
+          "components": [
+            [
+              "de",
+              "of"
+            ],
+            [
+              "cuándo",
+              "when"
+            ]
+          ]
+        },
+        {
+          "target": "estaré preparado",
+          "known": "I'll be ready",
+          "type": "M",
+          "components": [
+            [
+              "estaré",
+              "I will be"
+            ],
+            [
+              "preparado",
+              "ready"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0081",
+      "target": "¿Cuándo quieres comenzar?",
+      "known": "When do you want to start?",
+      "new_legos": [
+        {
+          "target": "comenzar",
+          "known": "to start",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0082",
+      "target": "No voy a esperarte. ¿Por qué no?",
+      "known": "I'm not going to wait for you. Why not?",
+      "new_legos": [
+        {
+          "target": "esperarte",
+          "known": "to wait for you",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "por qué no",
+          "known": "why not",
+          "type": "M",
+          "components": [
+            [
+              "por qué",
+              "why"
+            ],
+            [
+              "no",
+              "not"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0083",
+      "target": "Estoy de acuerdo con lo que dijiste sobre tu amigo.",
+      "known": "I agree with what you said about your friend.",
+      "new_legos": [
+        {
+          "target": "estoy de acuerdo",
+          "known": "I agree",
+          "type": "M",
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "de acuerdo",
+              "in agreement"
+            ]
+          ]
+        },
+        {
+          "target": "con lo que dijiste",
+          "known": "with what you said",
+          "type": "M",
+          "components": [
+            [
+              "con",
+              "with"
+            ],
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "dijiste",
+              "you said"
+            ]
+          ]
+        },
+        {
+          "target": "sobre tu amigo",
+          "known": "about your friend",
+          "type": "M",
+          "components": [
+            [
+              "sobre",
+              "about"
+            ],
+            [
+              "tu",
+              "your"
+            ],
+            [
+              "amigo",
+              "friend"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0084",
+      "target": "No estoy de acuerdo con lo que dijo sobre mi amigo.",
+      "known": "I don't agree with what he said about my friend.",
+      "new_legos": [
+        {
+          "target": "no estoy de acuerdo",
+          "known": "I don't agree",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estoy de acuerdo",
+              "I agree"
+            ]
+          ]
+        },
+        {
+          "target": "con lo que dijo",
+          "known": "with what he said",
+          "type": "M",
+          "components": [
+            [
+              "con",
+              "with"
+            ],
+            [
+              "lo que",
+              "what"
+            ],
+            [
+              "dijo",
+              "he said"
+            ]
+          ]
+        },
+        {
+          "target": "sobre mi amigo",
+          "known": "about my friend",
+          "type": "M",
+          "components": [
+            [
+              "sobre",
+              "about"
+            ],
+            [
+              "mi",
+              "my"
+            ],
+            [
+              "amigo",
+              "friend"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0085",
+      "target": "No conozco a esas personas.",
+      "known": "I don't know those people.",
+      "new_legos": [
+        {
+          "target": "no conozco",
+          "known": "I don't know",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "conozco",
+              "I know"
+            ]
+          ]
+        },
+        {
+          "target": "a esas personas",
+          "known": "those people",
+          "type": "M",
+          "components": [
+            [
+              "a",
+              "to"
+            ],
+            [
+              "esas",
+              "those"
+            ],
+            [
+              "personas",
+              "people"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0086",
+      "target": "No fue posible, desafortunadamente.",
+      "known": "It wasn't possible, unfortunately.",
+      "new_legos": [
+        {
+          "target": "no fue posible",
+          "known": "it wasn't possible",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "fue",
+              "it was"
+            ],
+            [
+              "posible",
+              "possible"
+            ]
+          ]
+        },
+        {
+          "target": "desafortunadamente",
+          "known": "unfortunately",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0087",
+      "target": "Son personas que no conozco.",
+      "known": "They are people I don't know.",
+      "new_legos": [
+        {
+          "target": "son personas",
+          "known": "they are people",
+          "type": "M",
+          "components": [
+            [
+              "son",
+              "they are"
+            ],
+            [
+              "personas",
+              "people"
+            ]
+          ]
+        },
+        {
+          "target": "que no conozco",
+          "known": "that I don't know",
+          "type": "M",
+          "components": [
+            [
+              "que",
+              "that"
+            ],
+            [
+              "no conozco",
+              "I don't know"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0088",
+      "target": "No estoy preparado para hablar con personas que no conozco todavía.",
+      "known": "I'm not ready to talk to people I don't know yet.",
+      "new_legos": [
+        {
+          "target": "no estoy preparado",
+          "known": "I'm not ready",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "preparado",
+              "ready"
+            ]
+          ]
+        },
+        {
+          "target": "para hablar",
+          "known": "to talk",
+          "type": "M",
+          "components": [
+            [
+              "para",
+              "to/for"
+            ],
+            [
+              "hablar",
+              "to talk"
+            ]
+          ]
+        },
+        {
+          "target": "con personas que no conozco",
+          "known": "to people I don't know",
+          "type": "M",
+          "components": [
+            [
+              "con",
+              "with"
+            ],
+            [
+              "personas",
+              "people"
+            ],
+            [
+              "que",
+              "that"
+            ],
+            [
+              "no conozco",
+              "I don't know"
+            ]
+          ]
+        },
+        {
+          "target": "todavía",
+          "known": "yet",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0089",
+      "target": "Pienso que he hecho mucho en un breve tiempo.",
+      "known": "I think that I've done a lot in a short time.",
+      "new_legos": [
+        {
+          "target": "he hecho",
+          "known": "I've done",
+          "type": "M",
+          "components": [
+            [
+              "he",
+              "I have"
+            ],
+            [
+              "hecho",
+              "done"
+            ]
+          ]
+        },
+        {
+          "target": "mucho",
+          "known": "a lot",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "en un breve tiempo",
+          "known": "in a short time",
+          "type": "M",
+          "components": [
+            [
+              "en",
+              "in"
+            ],
+            [
+              "un",
+              "a"
+            ],
+            [
+              "breve",
+              "short"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0090",
+      "target": "Si puedes hablar más lentamente, eso sería excelente.",
+      "known": "If you can speak more slowly that would be great.",
+      "new_legos": [
+        {
+          "target": "puedes hablar",
+          "known": "you can speak",
+          "type": "M",
+          "components": [
+            [
+              "puedes",
+              "you can"
+            ],
+            [
+              "hablar",
+              "to speak"
+            ]
+          ]
+        },
+        {
+          "target": "más lentamente",
+          "known": "more slowly",
+          "type": "M",
+          "components": [
+            [
+              "más",
+              "more"
+            ],
+            [
+              "lentamente",
+              "slowly"
+            ]
+          ]
+        },
+        {
+          "target": "sería excelente",
+          "known": "would be great",
+          "type": "M",
+          "components": [
+            [
+              "sería",
+              "would be"
+            ],
+            [
+              "excelente",
+              "great/excellent"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0091",
+      "target": "Es difícil pensar lo suficientemente rápido para responder a tiempo.",
+      "known": "It's difficult to think quickly enough to answer in time.",
+      "new_legos": [
+        {
+          "target": "es difícil",
+          "known": "it's difficult",
+          "type": "M",
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "difícil",
+              "difficult"
+            ]
+          ]
+        },
+        {
+          "target": "lo suficientemente rápido",
+          "known": "quickly enough",
+          "type": "M",
+          "components": [
+            [
+              "lo",
+              "the"
+            ],
+            [
+              "suficientemente",
+              "sufficiently"
+            ],
+            [
+              "rápido",
+              "quickly"
+            ]
+          ]
+        },
+        {
+          "target": "a tiempo",
+          "known": "in time",
+          "type": "M",
+          "components": [
+            [
+              "a",
+              "in/on"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0092",
+      "target": "Me gustaría continuar haciendo esto por un tiempo.",
+      "known": "I'd like to keep on doing this for a while.",
+      "new_legos": [
+        {
+          "target": "continuar haciendo",
+          "known": "to keep on doing",
+          "type": "M",
+          "components": [
+            [
+              "continuar",
+              "to continue"
+            ],
+            [
+              "haciendo",
+              "doing"
+            ]
+          ]
+        },
+        {
+          "target": "esto",
+          "known": "this",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "por un tiempo",
+          "known": "for a while",
+          "type": "M",
+          "components": [
+            [
+              "por",
+              "for"
+            ],
+            [
+              "un",
+              "a"
+            ],
+            [
+              "tiempo",
+              "time"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0093",
+      "target": "Es hora de ir ahora.",
+      "known": "It's time to go now.",
+      "new_legos": [
+        {
+          "target": "es hora de",
+          "known": "it's time to",
+          "type": "M",
+          "components": [
+            [
+              "es",
+              "it is"
+            ],
+            [
+              "hora",
+              "time"
+            ],
+            [
+              "de",
+              "to/of"
+            ]
+          ]
+        },
+        {
+          "target": "ir",
+          "known": "to go",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0094",
+      "target": "Esta es la única manera en que funcionará.",
+      "known": "This is the only way it will work.",
+      "new_legos": [
+        {
+          "target": "esta es",
+          "known": "this is",
+          "type": "M",
+          "components": [
+            [
+              "esta",
+              "this"
+            ],
+            [
+              "es",
+              "is"
+            ]
+          ]
+        },
+        {
+          "target": "la única manera",
+          "known": "the only way",
+          "type": "M",
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "única",
+              "only"
+            ],
+            [
+              "manera",
+              "way"
+            ]
+          ]
+        },
+        {
+          "target": "en que funcionará",
+          "known": "it will work",
+          "type": "M",
+          "components": [
+            [
+              "en que",
+              "in which"
+            ],
+            [
+              "funcionará",
+              "it will work"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0095",
+      "target": "¿Estás preparado para ir a casa en el próximo autobús?",
+      "known": "Are you ready to go home on the next bus?",
+      "new_legos": [
+        {
+          "target": "estás preparado",
+          "known": "you are ready",
+          "type": "M",
+          "components": [
+            [
+              "estás",
+              "you are"
+            ],
+            [
+              "preparado",
+              "ready"
+            ]
+          ]
+        },
+        {
+          "target": "a casa",
+          "known": "home",
+          "type": "M",
+          "components": [
+            [
+              "a",
+              "to"
+            ],
+            [
+              "casa",
+              "home"
+            ]
+          ]
+        },
+        {
+          "target": "en el próximo autobús",
+          "known": "on the next bus",
+          "type": "M",
+          "components": [
+            [
+              "en",
+              "on"
+            ],
+            [
+              "el",
+              "the"
+            ],
+            [
+              "próximo",
+              "next"
+            ],
+            [
+              "autobús",
+              "bus"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0096",
+      "target": "No, no estoy preparado todavía, necesito un poco más de tiempo.",
+      "known": "No I'm not ready yet, I need a little more time.",
+      "new_legos": [
+        {
+          "target": "no",
+          "known": "no",
+          "type": "A",
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0097",
+      "target": "Sí, estoy preparado para ir tan pronto como quieras.",
+      "known": "Yes I'm ready to go as soon as you want.",
+      "new_legos": [
+        {
+          "target": "sí",
+          "known": "yes",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "estoy preparado",
+          "known": "I'm ready",
+          "type": "M",
+          "components": [
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "preparado",
+              "ready"
+            ]
+          ]
+        },
+        {
+          "target": "tan pronto como quieras",
+          "known": "as soon as you want",
+          "type": "M",
+          "components": [
+            [
+              "tan",
+              "as"
+            ],
+            [
+              "pronto",
+              "soon"
+            ],
+            [
+              "como",
+              "as"
+            ],
+            [
+              "quieras",
+              "you want"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0098",
+      "target": "Debería considerar jugar otra cosa.",
+      "known": "I should consider playing something else.",
+      "new_legos": [
+        {
+          "target": "debería",
+          "known": "I should",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "considerar",
+          "known": "to consider",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "jugar",
+          "known": "to play",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "otra cosa",
+          "known": "something else",
+          "type": "M",
+          "components": [
+            [
+              "otra",
+              "another"
+            ],
+            [
+              "cosa",
+              "thing"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0099",
+      "target": "Deberías preguntarte por qué no está trabajando",
+      "known": "You should ask yourself why it's not working.",
+      "new_legos": [
+        {
+          "target": "deberías",
+          "known": "you should",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "no está trabajando",
+          "known": "it's not working",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "está",
+              "it is"
+            ],
+            [
+              "trabajando",
+              "working"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0100",
+      "target": "No deberías preocuparte por hacer algo similar.",
+      "known": "You shouldn't worry about doing something similar.",
+      "new_legos": [
+        {
+          "target": "no deberías",
+          "known": "you shouldn't",
+          "type": "M",
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "deberías",
+              "you should"
+            ]
+          ]
+        },
+        {
+          "target": "preocuparte",
+          "known": "to worry",
+          "type": "A",
+          "components": null
+        },
+        {
+          "target": "por hacer",
+          "known": "about doing",
+          "type": "M",
+          "components": [
+            [
+              "por",
+              "about"
+            ],
+            [
+              "hacer",
+              "doing"
+            ]
+          ]
+        },
+        {
+          "target": "algo similar",
+          "known": "something similar",
+          "type": "M",
+          "components": [
+            [
+              "algo",
+              "something"
+            ],
+            [
+              "similar",
+              "similar"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
