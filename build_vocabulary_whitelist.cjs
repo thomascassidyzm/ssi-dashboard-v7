@@ -1,116 +1,142 @@
 #!/usr/bin/env node
 
 /**
- * Build vocabulary whitelist from extraction map
- * Extracts all Spanish words from taught LEGOs through a given seed
+ * Build vocabulary whitelist (registry) from lego_pairs.json
+ * Extracts Spanish → English mappings for all taught LEGOs through a given seed
+ *
+ * Registry includes:
+ * - All target → known mappings from new LEGOs
+ * - All component → meaning mappings from Molecular LEGOs
  */
 
 const fs = require('fs');
-
-// Load extraction map
-const extractionMap = JSON.parse(
-  fs.readFileSync('./claude_code_web_test/LEGO_EXTRACTION_MAP_S0001-S0050_AUTHORITATIVE.json', 'utf8')
-);
+const path = require('path');
 
 /**
- * Extract Spanish vocabulary from all seeds up to and including targetSeed
+ * Extract vocabulary registry from all seeds up to and including targetSeed
  */
-function buildWhitelist(targetSeed) {
-  const whitelist = new Set();
+function buildVocabularyRegistry(legoPairsPath, targetSeed) {
+  // Load lego_pairs.json
+  const legoPairs = JSON.parse(fs.readFileSync(legoPairsPath, 'utf8'));
+
+  const registry = {};
 
   // Parse seed number (e.g., "S0011" -> 11)
   const targetNum = parseInt(targetSeed.substring(1));
 
   // Iterate through all seeds up to target
-  for (let i = 1; i <= targetNum; i++) {
-    const seedKey = `S${String(i).padStart(4, '0')}`;
-    const seed = extractionMap[seedKey];
+  for (const seed of legoPairs.seeds) {
+    const seedNum = parseInt(seed.seed_id.substring(1));
 
-    if (!seed) {
-      console.error(`Warning: Seed ${seedKey} not found in extraction map`);
-      continue;
+    // Stop when we reach seeds beyond our target
+    if (seedNum > targetNum) {
+      break;
     }
 
-    // Extract Spanish words from each LEGO
+    // Process each LEGO in this seed
     for (const lego of seed.legos) {
-      const spanish = lego.lego[1]; // [known, target] -> target
+      // Only process NEW LEGOs (skip references)
+      if (!lego.new) {
+        continue;
+      }
 
-      // Add base word
-      whitelist.add(spanish);
+      // Add the main target → known mapping
+      registry[lego.target] = lego.known;
 
-      // Tokenize multi-word expressions
-      const words = spanish.split(/\s+/);
-      words.forEach(word => whitelist.add(word));
+      // For Molecular LEGOs, add component mappings
+      if (lego.type === 'M' && lego.components) {
+        for (const [spanish, english] of lego.components) {
+          registry[spanish] = english;
+        }
+      }
     }
   }
 
-  return Array.from(whitelist).sort();
+  return registry;
 }
 
 /**
- * Generate conjugation variants for common verbs
+ * Generate statistics about the registry
  */
-function addConjugations(whitelist) {
-  const verbConjugations = {
-    // Infinitives
-    'hablar': ['hablo', 'hablas', 'habla', 'hablamos', 'hablan', 'hablando', 'hablado'],
-    'aprender': ['aprendo', 'aprendes', 'aprende', 'aprendemos', 'aprenden', 'aprendiendo', 'aprendido'],
-    'intentar': ['intento', 'intentas', 'intenta', 'intentamos', 'intentan', 'intentando', 'intentado'],
-    'practicar': ['practico', 'practicas', 'practica', 'practicamos', 'practican', 'practicando', 'practicado'],
-    'recordar': ['recuerdo', 'recuerdas', 'recuerda', 'recordamos', 'recuerdan', 'recordando', 'recordado'],
-    'explicar': ['explico', 'explicas', 'explica', 'explicamos', 'explican', 'explicando', 'explicado'],
+function getRegistryStats(registry) {
+  const entries = Object.keys(registry);
 
-    // Estar
-    'estar': ['estoy', 'estás', 'está', 'estamos', 'están', 'estando', 'estado'],
-
-    // Querer
-    'querer': ['quiero', 'quieres', 'quiere', 'queremos', 'quieren', 'queriendo', 'querido'],
-
-    // Poder
-    'poder': ['puedo', 'puedes', 'puede', 'podemos', 'pueden', 'pudiendo', 'podido'],
-
-    // Ir
-    'ir': ['voy', 'vas', 'va', 'vamos', 'van', 'yendo', 'ido'],
+  const stats = {
+    total_entries: entries.length,
+    single_word_entries: 0,
+    multi_word_entries: 0,
+    sample_entries: {}
   };
 
-  const expanded = new Set(whitelist);
-
-  whitelist.forEach(word => {
-    if (verbConjugations[word]) {
-      verbConjugations[word].forEach(conjugation => expanded.add(conjugation));
+  entries.forEach(key => {
+    if (key.includes(' ')) {
+      stats.multi_word_entries++;
+    } else {
+      stats.single_word_entries++;
     }
   });
 
-  return Array.from(expanded).sort();
+  // Get first 10 entries as samples
+  const sampleKeys = entries.slice(0, 10);
+  sampleKeys.forEach(key => {
+    stats.sample_entries[key] = registry[key];
+  });
+
+  return stats;
 }
 
 // Main execution
 if (require.main === module) {
   const targetSeed = process.argv[2] || 'S0011';
+  const courseCode = process.argv[3] || 'spa_for_eng';
 
-  console.log(`Building vocabulary whitelist for ${targetSeed}...`);
+  const legoPairsPath = path.join(
+    __dirname,
+    'public/vfs/courses',
+    courseCode,
+    'lego_pairs.json'
+  );
 
-  let whitelist = buildWhitelist(targetSeed);
-  console.log(`Base vocabulary: ${whitelist.length} words`);
+  console.log(`Building vocabulary registry for ${targetSeed}...`);
+  console.log(`Reading from: ${legoPairsPath}`);
 
-  whitelist = addConjugations(whitelist);
-  console.log(`With conjugations: ${whitelist.length} words`);
+  // Check if file exists
+  if (!fs.existsSync(legoPairsPath)) {
+    console.error(`ERROR: lego_pairs.json not found at ${legoPairsPath}`);
+    process.exit(1);
+  }
 
-  // Output
+  const registry = buildVocabularyRegistry(legoPairsPath, targetSeed);
+  const stats = getRegistryStats(registry);
+
+  console.log(`\n✅ Registry built successfully!`);
+  console.log(`   Total entries: ${stats.total_entries}`);
+  console.log(`   Single words: ${stats.single_word_entries}`);
+  console.log(`   Multi-word expressions: ${stats.multi_word_entries}`);
+
+  // Output to file
   const output = {
+    course: courseCode,
     seed: targetSeed,
-    vocabulary_count: whitelist.length,
-    vocabulary: whitelist,
-    generated_at: new Date().toISOString()
+    vocabulary_count: stats.total_entries,
+    vocabulary_registry: registry,
+    statistics: {
+      single_word_entries: stats.single_word_entries,
+      multi_word_entries: stats.multi_word_entries
+    },
+    generated_at: new Date().toISOString(),
+    note: "This registry contains Spanish → English mappings for all taught vocabulary through the specified seed, including molecular LEGO components"
   };
 
   const outputPath = `./vocabulary_whitelist_${targetSeed.toLowerCase()}.json`;
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
-  console.log(`\nWhitelist saved to: ${outputPath}`);
+  console.log(`\n📄 Registry saved to: ${outputPath}`);
 
-  // Also output first 20 words for verification
-  console.log(`\nFirst 20 words:`);
-  console.log(whitelist.slice(0, 20).join(', '));
+  // Display sample entries for verification
+  console.log(`\n📋 Sample entries (first 10):`);
+  Object.entries(stats.sample_entries).forEach(([spanish, english]) => {
+    console.log(`   "${spanish}" → "${english}"`);
+  });
 }
 
-module.exports = { buildWhitelist, addConjugations };
+module.exports = { buildVocabularyRegistry, getRegistryStats };
