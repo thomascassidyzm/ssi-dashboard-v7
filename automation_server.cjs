@@ -3607,6 +3607,37 @@ app.post('/api/courses/generate', async (req, res) => {
 
   console.log(`[API] Course generation requested: ${courseCode} (mode: ${executionMode}, seeds: ${startSeed}-${endSeed})`);
 
+  // Safety check: Warn if course directory already exists with data
+  const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
+  if (await fs.pathExists(courseDir)) {
+    const existingFiles = [];
+
+    // Check for existing phase outputs
+    if (await fs.pathExists(path.join(courseDir, 'seed_pairs.json'))) existingFiles.push('seed_pairs.json');
+    if (await fs.pathExists(path.join(courseDir, 'lego_pairs.json'))) existingFiles.push('lego_pairs.json');
+    if (await fs.pathExists(path.join(courseDir, 'lego_baskets.json'))) existingFiles.push('lego_baskets.json');
+    if (await fs.pathExists(path.join(courseDir, 'introductions.json'))) existingFiles.push('introductions.json');
+    if (await fs.pathExists(path.join(courseDir, 'compilation.json'))) existingFiles.push('compilation.json');
+
+    if (existingFiles.length > 0) {
+      console.log(`[API] ⚠️  WARNING: Course ${courseCode} already exists with data`);
+      console.log(`[API] Existing files: ${existingFiles.join(', ')}`);
+
+      // Check if client sent force=true flag
+      if (!req.body.force) {
+        return res.status(409).json({
+          error: 'Course already exists with data',
+          courseCode,
+          existingFiles,
+          message: 'This will overwrite existing course data. Send force=true to proceed.',
+          suggestion: 'Use a different seed range or delete the existing course first.'
+        });
+      } else {
+        console.log(`[API] ✓ force=true provided, proceeding with overwrite`);
+      }
+    }
+  }
+
   // Check if job already exists
   if (STATE.jobs.has(courseCode)) {
     const job = STATE.jobs.get(courseCode);

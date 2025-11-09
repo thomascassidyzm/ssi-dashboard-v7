@@ -569,7 +569,7 @@ const selectCourseSize = (size, start, end) => {
   endSeed.value = end
 }
 
-const startGeneration = async () => {
+const startGeneration = async (force = false) => {
   try {
     errorMessage.value = ''
     isGenerating.value = true
@@ -579,7 +579,8 @@ const startGeneration = async () => {
       known: knownLanguage.value,
       startSeed: startSeed.value,
       endSeed: endSeed.value,
-      executionMode: executionMode.value
+      executionMode: executionMode.value,
+      force: force
     })
 
     console.log('Course generation started:', response)
@@ -589,6 +590,30 @@ const startGeneration = async () => {
     startPolling(response.courseCode)
   } catch (error) {
     console.error('Failed to start course generation:', error)
+
+    // Handle "course already exists" warning
+    if (error.response?.status === 409 && error.response?.data?.existingFiles) {
+      const data = error.response.data
+      const filesList = data.existingFiles.join(', ')
+
+      const confirmed = confirm(
+        `⚠️  Course "${data.courseCode}" already exists!\n\n` +
+        `Existing files: ${filesList}\n\n` +
+        `This will OVERWRITE all existing data.\n\n` +
+        `Are you sure you want to proceed?`
+      )
+
+      if (confirmed) {
+        // Retry with force=true
+        startGeneration(true)
+        return
+      } else {
+        errorMessage.value = 'Generation cancelled - course already exists'
+        isGenerating.value = false
+        return
+      }
+    }
+
     errorMessage.value = error.response?.data?.error || 'Failed to start course generation. Check console for details.'
     isGenerating.value = false
   }
