@@ -4578,7 +4578,8 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
       analysis.lego_pairs.count = seedsWithLegos.length;
 
       if (seedsWithLegos.length > 0) {
-        const legoSeedIds = seedsWithLegos.map(s => s[0]).sort();
+        // Extract seed_id from objects (v5.0.1+ format: { seed_id: "S0001", ... })
+        const legoSeedIds = seedsWithLegos.map(s => s.seed_id).sort();
         analysis.lego_pairs.range = {
           first: legoSeedIds[0],
           last: legoSeedIds[legoSeedIds.length - 1]
