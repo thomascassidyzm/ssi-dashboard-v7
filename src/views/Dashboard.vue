@@ -61,25 +61,6 @@
             </div>
           </router-link>
         </div>
-
-        <!-- Storage Management -->
-        <div class="mt-6">
-          <router-link to="/storage" class="block bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-600 hover:to-blue-700 border border-blue-500/30 rounded-lg p-6 transition hover:-translate-y-1 shadow-lg hover:shadow-blue-500/20">
-            <div class="flex items-center justify-between">
-              <div>
-                <h3 class="text-xl font-bold text-white mb-2">☁️ Course Storage Management</h3>
-                <p class="text-blue-100 text-sm">
-                  Sync courses between local VFS and S3 cloud storage - Dashboard is SSoT
-                </p>
-              </div>
-              <div class="text-white">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                </svg>
-              </div>
-            </div>
-          </router-link>
-        </div>
       </section>
 
       <!-- Pipeline Architecture -->
@@ -252,15 +233,6 @@
               <div>
                 <h3 class="font-semibold text-slate-100">Canonical Seeds</h3>
                 <p class="text-sm text-slate-400">All 668 canonical seeds (16 years empirical optimization)</p>
-              </div>
-            </router-link>
-
-            <!-- LEGO Practice Baskets -->
-            <router-link to="/baskets" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-emerald-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
-              <div class="text-3xl">🧱</div>
-              <div>
-                <h3 class="font-semibold text-emerald-400">LEGO Practice Baskets</h3>
-                <p class="text-sm text-slate-400">View generated practice phrase baskets for Spanish S0001-S0010 (Test Generation)</p>
               </div>
             </router-link>
 

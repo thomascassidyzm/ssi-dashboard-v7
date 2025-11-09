@@ -8,13 +8,11 @@ import CourseGeneration from '../views/CourseGeneration.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
 import CourseCompilation from '../views/CourseCompilation.vue'
-import CourseStorage from '../views/CourseStorage.vue'
 import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
 import PhaseIntelligence from '../views/PhaseIntelligence.vue'
 import Skills from '../views/Skills.vue'
-import LegoBasketViewer from '../components/LegoBasketViewer.vue'
 
 // Quality Review Components
 import QualityDashboard from '../components/quality/QualityDashboard.vue'
@@ -38,12 +36,6 @@ const routes = [
     path: '/courses',
     name: 'CourseBrowser',
     component: CourseBrowser
-  },
-  {
-    path: '/storage',
-    name: 'CourseStorage',
-    component: CourseStorage,
-    meta: { title: 'Course Storage Management' }
   },
   {
     path: '/courses/:courseCode',
@@ -102,12 +94,6 @@ const routes = [
     name: 'Skills',
     component: Skills,
     meta: { title: 'Skills Library' }
-  },
-  {
-    path: '/baskets',
-    name: 'LegoBasketViewer',
-    component: LegoBasketViewer,
-    meta: { title: 'LEGO Practice Baskets' }
   },
 
   // Quality Review Routes
