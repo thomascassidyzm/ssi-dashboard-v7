@@ -53,7 +53,7 @@ export default {
 
   // Course generation
   course: {
-    async generate({ target, known, seeds, startSeed, endSeed, executionMode = 'local', force = false }) {
+    async generate({ target, known, seeds, startSeed, endSeed, executionMode = 'web', force = false }) {
       const response = await api.post('/api/courses/generate', {
         target,
         known,

@@ -3596,8 +3596,8 @@ app.post('/api/courses/generate', async (req, res) => {
     return res.status(400).json({ error: 'Missing target or known language' });
   }
 
-  // Extract execution mode
-  const executionMode = req.body.executionMode || 'local';
+  // Extract execution mode (default to 'web' - recommended mode)
+  const executionMode = req.body.executionMode || 'web';
 
   // Calculate total seeds
   const seeds = endSeed - startSeed + 1;
