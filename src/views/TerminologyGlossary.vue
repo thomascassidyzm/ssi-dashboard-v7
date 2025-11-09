@@ -241,10 +241,20 @@
       <section class="mb-12">
         <h2 class="text-2xl font-semibold text-emerald-400 mb-6">LEGO Types (Critical Distinction)</h2>
 
+        <!-- Alternative Terminology -->
+        <div class="bg-blue-900/20 border border-blue-500/50 rounded-lg p-4 mb-6">
+          <p class="text-sm text-blue-300 mb-2"><strong>📚 Alternative Terminology (Chemistry Metaphor):</strong></p>
+          <ul class="text-slate-200 text-sm space-y-1">
+            <li><strong>ATOMIC</strong> = BASE LEGO (fundamental, cannot be decomposed)</li>
+            <li><strong>MOLECULAR</strong> = COMPOSITE LEGO (made from atoms + bonds)</li>
+          </ul>
+          <p class="text-xs text-slate-400 mt-2">Both terms are valid - use whichever is clearer in context</p>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- BASE LEGO -->
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <h3 class="text-lg font-semibold text-emerald-300 mb-3">BASE LEGO</h3>
+            <h3 class="text-lg font-semibold text-emerald-300 mb-3">BASE LEGO (Atomic)</h3>
             <ul class="list-disc list-inside text-slate-200 space-y-2">
               <li>Fundamental FD unit</li>
               <li>Cannot be decomposed further</li>
@@ -259,7 +269,7 @@
 
           <!-- COMPOSITE LEGO -->
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <h3 class="text-lg font-semibold text-emerald-300 mb-3">COMPOSITE LEGO</h3>
+            <h3 class="text-lg font-semibold text-emerald-300 mb-3">COMPOSITE LEGO (Molecular)</h3>
             <ul class="list-disc list-inside text-slate-200 space-y-2">
               <li>FD unit comprising BASE LEGOs + glue words</li>
               <li>BASE LEGOs within DO NOT TILE (can't concatenate cleanly)</li>
@@ -286,6 +296,103 @@
             </li>
             <li>Referenced with F## suffix in COMPOSITE context (e.g., S0041F01)</li>
           </ul>
+        </div>
+      </section>
+
+      <!-- Componentization Section (CRITICAL PEDAGOGY) -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Componentization: The Core Pedagogical Insight 🎓</h2>
+
+        <div class="bg-gradient-to-r from-emerald-900/30 to-blue-900/30 border-2 border-emerald-500/50 rounded-lg p-6 mb-6">
+          <h3 class="text-xl font-semibold text-emerald-300 mb-4">🔬 Why Literal Translations Matter</h3>
+
+          <p class="text-slate-200 mb-4"><strong>Core Principle:</strong> Components are explained in their <strong>LITERAL meanings</strong> so learners can SEE HOW the target language builds patterns from parts.</p>
+
+          <div class="bg-slate-900 p-4 rounded-lg mb-4">
+            <p class="text-emerald-400 font-semibold mb-3">Example: "as often as possible"</p>
+
+            <div class="space-y-3">
+              <div>
+                <p class="text-blue-300 text-sm font-medium">Target (Spanish):</p>
+                <p class="text-white text-lg font-mono">"lo más frecuentemente posible"</p>
+              </div>
+
+              <div>
+                <p class="text-amber-300 text-sm font-medium">Literal Breakdown (MOLECULAR/COMPOSITE):</p>
+                <div class="ml-4 space-y-1 text-slate-200">
+                  <p><span class="text-emerald-400">lo más</span> = <span class="text-slate-300">the most</span> <span class="text-xs text-slate-500">(ATOMIC component)</span></p>
+                  <p><span class="text-emerald-400">frecuentemente</span> = <span class="text-slate-300">often</span> <span class="text-xs text-slate-500">(ATOMIC component)</span></p>
+                  <p><span class="text-emerald-400">posible</span> = <span class="text-slate-300">possible</span> <span class="text-xs text-slate-500">(ATOMIC component)</span></p>
+                </div>
+              </div>
+
+              <div class="bg-emerald-900/30 border border-emerald-700 p-3 rounded mt-3">
+                <p class="text-emerald-300 text-sm font-semibold mb-2">✨ The Magic: Learners Discover Grammar Patterns</p>
+                <ul class="text-slate-200 text-sm space-y-2">
+                  <li>📍 Because they know: <strong>"lo más"</strong> = "the most"</li>
+                  <li>📍 And they know: <strong>"posible"</strong> = "possible"</li>
+                  <li>🎯 <strong>They can now use</strong>: <strong>"lo más posible"</strong> = "the most possible"</li>
+                  <li>🎯 <strong>They understand</strong>: Spanish uses "the most" + adjective/adverb pattern</li>
+                </ul>
+                <p class="text-amber-200 text-xs mt-3 italic">↑ No grammar rules explained! They SEE the pattern through literal meanings.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-800 border border-slate-600 p-4 rounded-lg">
+            <h4 class="text-emerald-300 font-semibold mb-3">Why This Works (No Grammar Explanations Needed)</h4>
+
+            <div class="space-y-3 text-slate-200 text-sm">
+              <div>
+                <p class="text-blue-300 font-medium mb-1">Traditional Approach:</p>
+                <p class="text-slate-400 italic">"In Spanish, superlative constructions use 'lo más' + adverb/adjective + 'posible' to express 'as [X] as possible'..."</p>
+                <p class="text-red-400 text-xs mt-1">❌ Requires metalinguistic explanation, explicit rule learning</p>
+              </div>
+
+              <div>
+                <p class="text-emerald-300 font-medium mb-1">SSI LEGO Approach:</p>
+                <p class="text-slate-200">Learner sees: "lo más" = "the most", "posible" = "possible"</p>
+                <p class="text-slate-200">Learner thinks: <em>"Oh! They literally say 'the most possible' - I can use that!"</em></p>
+                <p class="text-emerald-400 text-xs mt-1">✅ Grammar pattern acquired through transparent literal meanings</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Examples -->
+        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-emerald-300 mb-4">More Examples of Literal-Driven Learning</h3>
+
+          <div class="space-y-4">
+            <div class="bg-slate-900 p-4 rounded">
+              <p class="text-slate-300 font-medium mb-2">Italian: "sto per esercitarmi"</p>
+              <div class="ml-4 space-y-1 text-sm">
+                <p><span class="text-blue-300">Literal:</span> <span class="text-slate-200">"sto" = I am, "per" = for/to, "esercitarmi" = practice myself</span></p>
+                <p><span class="text-emerald-300">Pattern Learned:</span> <span class="text-slate-200">Italian uses "I am for [verb]" to mean "I'm about to [verb]"</span></p>
+                <p><span class="text-amber-300">Generative:</span> <span class="text-slate-200">Learner can now say "sto per mangiare" (I'm about to eat)</span></p>
+              </div>
+            </div>
+
+            <div class="bg-slate-900 p-4 rounded">
+              <p class="text-slate-300 font-medium mb-2">Spanish: "voy a decir"</p>
+              <div class="ml-4 space-y-1 text-sm">
+                <p><span class="text-blue-300">Literal:</span> <span class="text-slate-200">"voy" = I go, "a" = to, "decir" = say</span></p>
+                <p><span class="text-emerald-300">Pattern Learned:</span> <span class="text-slate-200">Spanish uses "I go to [verb]" for immediate future</span></p>
+                <p><span class="text-amber-300">Generative:</span> <span class="text-slate-200">Learner can now say "voy a comer" (I'm going to eat)</span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-blue-900/20 border border-blue-600 p-3 rounded mt-4">
+            <p class="text-blue-300 text-sm font-semibold mb-1">🧠 Cognitive Principle</p>
+            <p class="text-slate-300 text-xs">When learners know the literal meaning of each component, they can:</p>
+            <ul class="text-slate-300 text-xs mt-2 space-y-1 ml-4">
+              <li>✓ Recombine components creatively</li>
+              <li>✓ Understand how the target language "thinks"</li>
+              <li>✓ Acquire grammar patterns implicitly (without rules)</li>
+              <li>✓ Generate novel correct sentences they've never seen</li>
+            </ul>
+          </div>
         </div>
       </section>
 
