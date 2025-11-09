@@ -1,0 +1,394 @@
+# APML v1.1.0 - Master Specification
+# SSI Course Production Dashboard v8.0.0
+# Single Source of Truth (SSoT) for entire project
+
+app SSiDashboard:
+  title: "SSI Course Production Dashboard"
+  version: "8.0.0"
+  apml_version: "1.1.0"
+
+  description: |
+    Complete course generation system for SSI language learning methodology.
+    Automates the 8-phase process from canonical seeds to compiled courses.
+
+  compilation_method: "reverse-compilation"
+  extracted_from: "Clean v8.0.0 codebase (2025-11-09)"
+
+  ## ==========================================================================
+  ## CORE SPECIFICATIONS (Extracted - Complete)
+  ## ==========================================================================
+
+  import core/variable-registry:
+    status: "extracted"
+    date: "2025-11-09"
+    source: "automation_server.cjs, Vue components, API endpoints"
+    coverage: "100% of identifiers, functions, and data structures"
+
+  import core/course-structure:
+    status: "extracted"
+    date: "2025-11-09"
+    source: "COURSE_FILE_PROTOCOLS.md, VFS implementation"
+    coverage: "Complete file formats, directory structure, validation rules"
+
+  import core/execution-modes:
+    status: "extracted"
+    date: "2025-11-09"
+    source: "Orchestrators, browser automation, API integration"
+    coverage: "Web Mode, API Mode, Legacy Local Mode"
+
+  ## ==========================================================================
+  ## PHASE INTELLIGENCE (Pending - After Master Prompt Complete)
+  ## ==========================================================================
+
+  # import phases/phase-1-translation:
+  #   status: "pending"
+  #   waiting_for: "Master prompt completion"
+  #   will_extract_from: "docs/phase_intelligence/phase_1_orchestrator.md"
+  #   includes: "Pedagogical translation methodology, examples, quality criteria"
+
+  # import phases/phase-3-lego-extraction:
+  #   status: "pending"
+  #   waiting_for: "Master prompt completion"
+  #   will_extract_from: "docs/phase_intelligence/phase_3_lego_pairs.md"
+  #   includes: "LEGO extraction rules, Type A/B/C, componentization, tiling"
+
+  # import phases/phase-5-baskets:
+  #   status: "pending"
+  #   waiting_for: "Master prompt completion"
+  #   will_extract_from: "docs/phase_intelligence/phase_5_lego_baskets.md"
+  #   includes: "Basket generation, ABSOLUTE GATE, diversity requirements"
+
+  # import phases/phase-orchestration:
+  #   status: "pending"
+  #   will_extract_from: "Orchestrator functions in automation_server.cjs"
+  #   includes: "Sequential execution flow, phase dependencies, polling"
+
+  ## ==========================================================================
+  ## INTERFACES (To Be Extracted)
+  ## ==========================================================================
+
+  # import interfaces/dashboard-ui:
+  #   status: "to_be_extracted"
+  #   source: "src/views/Dashboard.vue"
+  #   includes: "Main navigation, course overview, quick actions"
+
+  # import interfaces/course-generation-ui:
+  #   status: "to_be_extracted"
+  #   source: "src/views/CourseGeneration.vue"
+  #   includes: "Language selection, seed range, execution mode, progress monitor"
+
+  # import interfaces/course-editor-ui:
+  #   status: "to_be_extracted"
+  #   source: "src/views/CourseEditor.vue"
+  #   includes: "Seed editing, LEGO editing, basket editing"
+
+  # import interfaces/quality-review-ui:
+  #   status: "to_be_extracted"
+  #   source: "src/components/quality/*.vue"
+  #   includes: "GATE validation, pattern coverage, completeness"
+
+  ## ==========================================================================
+  ## SERVICES (To Be Extracted)
+  ## ==========================================================================
+
+  # import services/automation-server:
+  #   status: "to_be_extracted"
+  #   source: "automation_server.cjs"
+  #   includes: "Express API, orchestrators, VFS management"
+
+  # import services/browser-automation:
+  #   status: "to_be_extracted"
+  #   source: "spawn_claude_web_agent.cjs"
+  #   includes: "AppleScript automation, clipboard, browser control"
+
+  # import services/vfs-management:
+  #   status: "to_be_extracted"
+  #   source: "VFS utilities in automation_server.cjs"
+  #   includes: "Directory creation, file operations, polling"
+
+  ## ==========================================================================
+  ## VALIDATION (To Be Extracted)
+  ## ==========================================================================
+
+  # import validation/gate-compliance:
+  #   status: "to_be_extracted"
+  #   source: "validators/validate-gate-compliance.cjs"
+  #   includes: "ABSOLUTE GATE verification, violation detection"
+
+  # import validation/pattern-coverage:
+  #   status: "to_be_extracted"
+  #   source: "validators/analyze-pattern-coverage.cjs"
+  #   includes: "Pattern density metrics, edge detection"
+
+  # import validation/completeness:
+  #   status: "to_be_extracted"
+  #   source: "validators/analyze-completeness.cjs"
+  #   includes: "Course completeness metrics, missing elements"
+
+  ## ==========================================================================
+  ## PSS COMPLIANCE (Project Structure Standard)
+  ## ==========================================================================
+
+  pss_compliance:
+    structure_standard: "APML-PSS v1.0.0"
+    self_documentation: enabled
+
+    directory_mapping:
+      apml/core/: "Core specifications (variable registry, course structure, execution modes)"
+      apml/phases/: "Phase intelligence specifications (pending)"
+      apml/interfaces/: "UI specifications (to be extracted)"
+      apml/services/: "Backend service specifications (to be extracted)"
+      apml/validation/: "Validator specifications (to be extracted)"
+
+    current_structure:
+      compliant: false
+      reason: "Not yet migrated to PSS directory layout"
+      migration_plan: "After APML extraction complete"
+
+  ## ==========================================================================
+  ## COMPILATION TARGETS
+  ## ==========================================================================
+
+  deterministic_compilation:
+    target_platform: "Vue 3 + Express + Node.js"
+    frontend_framework: "Vue 3 Composition API"
+    backend_framework: "Express.js"
+    styling: "Tailwind CSS"
+    compilation_guarantee: "Specification-driven development"
+
+  build_configuration:
+    frontend:
+      entry: "src/main.js"
+      output: "dist/"
+      dev_server: "http://localhost:5173"
+
+    backend:
+      entry: "automation_server.cjs"
+      port: 3456
+      vfs_root: "./public/vfs/courses"
+
+    browser_automation:
+      module: "spawn_claude_web_agent.cjs"
+      default_browser: "chrome"
+      target_url: "https://claude.ai/code"
+
+  ## ==========================================================================
+  ## VALIDATION AND QUALITY GATES
+  ## ==========================================================================
+
+  validate trinity_completeness:
+    system_to_user:
+      status: "partial"
+      coverage: "UI components, progress monitors, error messages"
+      missing: "Complete UI state machine specification"
+
+    user_to_system:
+      status: "complete"
+      coverage: "All API endpoints, form submissions, user actions"
+      documented_in: "core/variable-registry.apml (API Endpoints section)"
+
+    system_to_system:
+      status: "complete"
+      coverage: "Phase orchestration, file operations, validation"
+      documented_in: "core/execution-modes.apml, core/course-structure.apml"
+
+  validate pss_compliance:
+    check directory_structure_complete:
+      status: "partial"
+      existing: ["apml/core/", "apml/phases/", "apml/interfaces/", "apml/services/", "apml/validation/"]
+      missing: ["PSS-compliant src/ reorganization"]
+
+    check self_documentation_generated:
+      status: "pending"
+      required: ["PROJECT-DASHBOARD.html", "APML-VIEWER.html", "ARCHITECTURE-DIAGRAMS.html"]
+      current: []
+
+    check interface_mapping:
+      status: "pending"
+      reason: "Phase intelligence not yet extracted"
+
+  ## ==========================================================================
+  ## VERSION HISTORY AND BREAKING CHANGES
+  ## ==========================================================================
+
+  version_history:
+    v8.0.0:
+      date: "2025-11-09"
+      breaking_changes:
+        - "Execution mode defaults to 'web' (was 'local')"
+        - "Removed Course Storage Management page"
+        - "Removed LEGO Practice Baskets viewer"
+        - "Git push to main from session branches (Web Mode)"
+
+      new_features:
+        - "Web Mode fully automated (auto-paste + auto-submit)"
+        - "Git workflow embedded in phase prompts"
+        - "Smart Resume analysis for course continuation"
+        - "Safety checks for overwriting existing courses"
+        - "Segmented APML SSoT architecture"
+
+      improvements:
+        - "Clean repo (84 files archived)"
+        - "Consistent 4-digit seed ID padding"
+        - "Improved error handling (409 conflicts)"
+        - "PM2 process management"
+        - "Reverse-compiled APML specification"
+
+    v7.8.4:
+      date: "2025-11-08"
+      features:
+        - "Web Mode introduced as alternative to Local Mode"
+        - "Browser automation via AppleScript"
+
+    v7.7.0:
+      date: "2025-11-05"
+      features:
+        - "Phase Intelligence loaded from markdown files"
+        - "Course structure protocols documented"
+
+  ## ==========================================================================
+  ## EXTRACTION STATUS
+  ## ==========================================================================
+
+  extraction_progress:
+    completed:
+      - "core/variable-registry.apml (100%)"
+      - "core/course-structure.apml (100%)"
+      - "core/execution-modes.apml (100%)"
+
+    pending_master_prompt:
+      - "phases/phase-1-translation.apml"
+      - "phases/phase-3-lego-extraction.apml"
+      - "phases/phase-5-baskets.apml"
+      - "phases/phase-orchestration.apml"
+
+    to_be_extracted:
+      - "interfaces/dashboard-ui.apml"
+      - "interfaces/course-generation-ui.apml"
+      - "interfaces/course-editor-ui.apml"
+      - "interfaces/quality-review-ui.apml"
+      - "services/automation-server.apml"
+      - "services/browser-automation.apml"
+      - "services/vfs-management.apml"
+      - "validation/gate-compliance.apml"
+      - "validation/pattern-coverage.apml"
+      - "validation/completeness.apml"
+
+  ## ==========================================================================
+  ## MAINTENANCE STRATEGY
+  ## ==========================================================================
+
+  living_documentation:
+    principle: "APML evolves WITH code, not after it"
+
+    workflow:
+      when_code_changes:
+        1: "Update relevant APML segment(s)"
+        2: "Update variable registry if new identifiers added"
+        3: "Commit code + APML changes together"
+        4: "APML stays current with reality"
+
+    benefits:
+      - "Specification never gets stale"
+      - "Always reflects working codebase"
+      - "Small focused files easy to update"
+      - "Single source of truth maintained"
+
+    file_size_target:
+      max_lines_per_file: 500
+      reason: "Maintainability and comprehension"
+
+    segmentation_strategy:
+      by_domain: true
+      by_phase: true
+      by_interface: true
+
+  ## ==========================================================================
+  ## PROJECT METADATA
+  ## ==========================================================================
+
+  project:
+    repository: "ssi-dashboard-v7"
+    deployment:
+      production: "https://ssi-dashboard-v7.vercel.app"
+      local: "http://localhost:5173" # Frontend
+      backend: "http://localhost:3456" # Automation server
+
+    technology_stack:
+      frontend:
+        - "Vue 3 (Composition API)"
+        - "Vue Router"
+        - "Tailwind CSS"
+        - "Vite"
+
+      backend:
+        - "Node.js"
+        - "Express.js"
+        - "fs-extra"
+        - "PM2 (process management)"
+
+      automation:
+        - "AppleScript (macOS)"
+        - "pbcopy (clipboard)"
+        - "Anthropic Claude API"
+        - "Browser automation"
+
+    authors:
+      - "Tom Cassidy (Human)"
+      - "Claude Sonnet 4.5 (AI Assistant)"
+
+    license: "Proprietary"
+
+    contact:
+      project_lead: "Tom Cassidy"
+      methodology: "SSI Pedagogy"
+
+  ## ==========================================================================
+  ## APML SPECIFICATION METADATA
+  ## ==========================================================================
+
+  apml_metadata:
+    specification_version: "1.1.0"
+    compliance:
+      variable_registry_standard: true
+      pss_standard: partial
+      intent_capture_methodology: "reverse-compilation variant"
+
+    generation_method:
+      approach: "Reverse-compilation from clean v8.0.0 codebase"
+      reason: "Code is clean and working - capture reality, not theory"
+      date: "2025-11-09"
+
+    quality_metrics:
+      variable_registry_coverage: "100%"
+      course_structure_coverage: "100%"
+      execution_modes_coverage: "100%"
+      phase_intelligence_coverage: "0% (pending)"
+      interface_coverage: "0% (to be extracted)"
+      service_coverage: "0% (to be extracted)"
+      validation_coverage: "0% (to be extracted)"
+
+    next_steps:
+      immediate:
+        - "Wait for master prompt completion"
+        - "Extract phase intelligence specifications"
+        - "Test Web Mode end-to-end"
+
+      medium_term:
+        - "Extract interface specifications"
+        - "Extract service specifications"
+        - "Extract validation specifications"
+        - "Create PROJECT-DASHBOARD.html"
+
+      long_term:
+        - "PSS directory migration"
+        - "Deterministic compilation tooling"
+        - "APML-VIEWER.html generation"
+        - "Full Trinity Principle validation"
+
+## ============================================================================
+## MASTER SPECIFICATION v8.0.0
+## Generated: 2025-11-09 via reverse-compilation
+## Status: Core complete, phases pending, interfaces/services to be extracted
+## Method: Extract from reality (working code) not theory (assumptions)
+## ============================================================================

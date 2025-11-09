@@ -1,0 +1,788 @@
+# APML v1.1.0 - Variable Registry
+# SSI Course Production Dashboard v8.0.0
+# Complete registry of all identifiers, functions, and data structures
+
+## ============================================================================
+## BACKEND CONFIGURATION (automation_server.cjs)
+## ============================================================================
+
+CONFIGURATION_CONSTANTS:
+  - CONFIG.PORT: number
+    VALUE: process.env.PORT || 3456
+    PURPOSE: HTTP server port
+    ENVIRONMENT_OVERRIDE: PORT
+
+  - CONFIG.VFS_ROOT: string
+    VALUE: "./public/vfs/courses"
+    PURPOSE: Virtual file system root directory for course data
+    ABSOLUTE_PATH: path.join(__dirname, 'public', 'vfs', 'courses')
+
+  - CONFIG.TRAINING_URL: string
+    VALUE: "https://ssi-dashboard-v7.vercel.app"
+    PURPOSE: Production dashboard URL for links
+
+  - CONFIG.VFS_MONITOR_INTERVAL: number
+    VALUE: 2000
+    UNIT: milliseconds
+    PURPOSE: File watcher polling interval
+
+  - CONFIG.CORS_ORIGINS: Array<string | RegExp>
+    VALUES:
+      - "http://localhost:5173"    # Vite dev server
+      - "http://localhost:3000"    # Alternative dev port
+      - "https://ssi-dashboard-v7.vercel.app"  # Production
+      - /\.vercel\.app$/           # All Vercel preview deployments
+    PURPOSE: Allowed CORS origins for API requests
+
+## ============================================================================
+## GLOBAL STATE MANAGEMENT
+## ============================================================================
+
+STATE_MANAGEMENT:
+  - STATE.jobs: Map<courseCode: string, JobStatus>
+    PURPOSE: Track active course generation jobs
+    LIFECYCLE: Created on /api/courses/generate, deleted on completion or clear
+
+    JobStatus SCHEMA:
+      courseCode: string
+        FORMAT: "{target}_for_{known}" OR "{target}_for_{known}_s{start}-{end}"
+        EXAMPLES:
+          - "spa_for_eng"              # Full course (1-668)
+          - "spa_for_eng_s0001-0030"   # 30 seed test
+          - "gle_for_eng_s0001-0100"   # 100 seed medium
+
+      status: 'in_progress' | 'completed' | 'failed' | 'web_mode_automated'
+        PURPOSE: Overall job status
+
+      phase: string
+        VALUES:
+          - 'initializing'
+          - 'phase_1' | 'phase_1_web' | 'phase_1_complete'
+          - 'phase_3' | 'phase_3_web' | 'phase_3_complete'
+          - 'phase_5' | 'phase_5_web' | 'phase_5_complete'
+          - 'completed'
+        PURPOSE: Current phase identifier
+
+      progress: number
+        RANGE: 0-100
+        PURPOSE: Completion percentage
+
+      executionMode: 'web' | 'local' | 'api'
+        DEFAULT: 'web'
+        PURPOSE: How job is being executed
+
+      startTime: Date
+        PURPOSE: Job creation timestamp
+
+      error?: string
+        PURPOSE: Error message if status is 'failed'
+
+      message?: string
+        PURPOSE: Human-readable status message
+
+      windowIds: Array<string>
+        PURPOSE: Track iTerm2/browser window IDs for cleanup
+        USED_IN: Local Mode only
+
+  - PHASE_PROMPTS: Record<string, string>
+    PURPOSE: Loaded phase intelligence markdown files
+    KEYS: '1' | '3' | '5' | '5.5' | '6' | '7' | '8'
+    VALUES: Markdown content from docs/phase_intelligence/
+    LOADING: Synchronous at server startup
+    FILES:
+      '1': 'docs/phase_intelligence/phase_1_orchestrator.md'
+      '3': 'docs/phase_intelligence/phase_3_lego_pairs.md'
+      '5': 'docs/phase_intelligence/phase_5_lego_baskets.md'
+      '5.5': 'docs/phase_intelligence/phase_5.5_basket_deduplication.md'
+      '6': 'docs/phase_intelligence/phase_6_introductions.md'
+      '7': 'docs/phase_intelligence/phase_7_compilation.md'
+      '8': 'docs/phase_intelligence/phase_8_audio_generation.md'
+
+## ============================================================================
+## CORE BACKEND FUNCTIONS
+## ============================================================================
+
+COURSE_CODE_GENERATION:
+  - generateCourseCode: function
+    LOCATION: automation_server.cjs:179-193
+    PURPOSE: Creates standardized course code with optional seed range suffix
+
+    SIGNATURE:
+      function generateCourseCode(
+        target: string,      # ISO 639-3 language code
+        known: string,       # ISO 639-3 language code
+        startSeed: number,   # Starting seed number (1-668)
+        endSeed: number      # Ending seed number (1-668)
+      ): string
+
+    LOGIC:
+      - If full course (startSeed=1, endSeed=668): return "{target}_for_{known}"
+      - Otherwise: return "{target}_for_{known}_s{start}-{end}"
+      - Start/end are zero-padded to 4 digits
+
+    EXAMPLES:
+      generateCourseCode('spa', 'eng', 1, 668)
+        → "spa_for_eng"
+
+      generateCourseCode('spa', 'eng', 1, 30)
+        → "spa_for_eng_s0001-0030"
+
+      generateCourseCode('gle', 'eng', 100, 200)
+        → "gle_for_eng_s0100-0200"
+
+    VALIDATION:
+      - Target and known MUST be 3-letter ISO codes
+      - startSeed MUST be >= 1
+      - endSeed MUST be <= 668
+      - startSeed MUST be <= endSeed
+
+  - getLanguageName: function
+    LOCATION: automation_server.cjs:195-205
+    PURPOSE: Maps ISO 639-3 code to language name
+
+    SIGNATURE:
+      function getLanguageName(code: string): string
+
+    MAPPINGS:
+      'spa' → 'Spanish'
+      'eng' → 'English'
+      'ita' → 'Italian'
+      'fra' → 'French'
+      'cym' → 'Welsh'
+      'gle' → 'Irish'
+      'por' → 'Portuguese'
+
+    DEFAULT: Returns code unchanged if not in mapping
+
+PHASE_BRIEF_GENERATORS:
+  - generatePhase1Brief: function
+    LOCATION: automation_server.cjs:212-318
+    PURPOSE: Creates Phase 1 translation prompt with embedded intelligence
+
+    SIGNATURE:
+      function generatePhase1Brief(
+        courseCode: string,
+        params: {
+          target: string,
+          known: string,
+          startSeed: number,
+          endSeed: number,
+          batchNum: number,
+          totalBatches: number
+        },
+        courseDir: string
+      ): string  # Returns markdown prompt
+
+    OUTPUT_SECTIONS:
+      - Course metadata (code, languages, seed range)
+      - Task description
+      - {target} placeholder replacement rules
+      - Output format (seed_pairs.json schema)
+      - Formatting instructions (compact-json-formatter.cjs)
+      - Git workflow (push to main)
+      - Success criteria checklist
+
+    CRITICAL_FEATURES:
+      - Embeds target language name for {target} replacement
+      - Includes git push instructions for Web Mode
+      - References compact-json-formatter.cjs for JSON formatting
+
+  - generatePhase3Brief: function
+    LOCATION: automation_server.cjs:324-402
+    PURPOSE: Creates Phase 3 LEGO extraction prompt
+
+    SIGNATURE:
+      function generatePhase3Brief(
+        courseCode: string,
+        params: { target, known, startSeed, endSeed, batchNum, totalBatches },
+        courseDir: string
+      ): string
+
+    OUTPUT_SECTIONS:
+      - Course metadata
+      - Input file reference (seed_pairs.json)
+      - Output format (lego_pairs.tmp.json - note: temporary)
+      - Componentization rules (2-element arrays)
+      - Formatting and git workflow
+      - Success criteria
+
+    CRITICAL_FEATURES:
+      - Outputs to .tmp.json (validated in Phase 3.5)
+      - Emphasizes COMPOSITE LEGOs with componentization
+      - Includes git push to main
+
+  - generatePhase5Brief: function
+    LOCATION: automation_server.cjs:408-622
+    PURPOSE: Creates Phase 5 basket generation prompt
+
+    SIGNATURE:
+      function generatePhase5Brief(
+        courseCode: string,
+        params: { target, known, startSeed, endSeed, batchNum, totalBatches },
+        courseDir: string,
+        validatorOutput?: ValidatorOutput
+      ): string
+
+    OUTPUT_SECTIONS:
+      - Course metadata
+      - Validator feedback (if batch > 1)
+      - ABSOLUTE GATE verification protocol
+      - Output format (lego_baskets.json)
+      - Validation commands
+      - Git workflow
+      - Success criteria (0 GATE violations mandatory)
+
+    CRITICAL_FEATURES:
+      - Extensive ABSOLUTE GATE documentation
+      - Warns against scripting approach
+      - Requires linguistic judgment
+      - Includes validator commands for GATE compliance
+      - Validator feedback integration for self-healing
+
+ORCHESTRATOR_FUNCTIONS:
+  - spawnCourseOrchestratorWeb: async function
+    LOCATION: automation_server.cjs:1200-1332
+    PURPOSE: Orchestrates Web Mode course generation (browser automation)
+
+    SIGNATURE:
+      async function spawnCourseOrchestratorWeb(
+        courseCode: string,
+        params: {
+          target: string,
+          known: string,
+          seeds: number,
+          startSeed: number,
+          endSeed: number
+        }
+      ): Promise<void>
+
+    WORKFLOW:
+      1. Generate Phase 1 brief
+      2. Write brief to prompts/phase_1_translation.md
+      3. Call spawnClaudeWebAgent (opens browser, pastes, submits)
+      4. Poll for seed_pairs.json (60s intervals, infinite retries)
+      5. Repeat for Phase 3 (lego_pairs.json)
+      6. Repeat for Phase 5 (lego_baskets.json)
+      7. Update job.status = 'completed'
+
+    SEQUENTIAL: true
+      REASON: Phase 3 needs Phase 1 output, Phase 5 needs Phase 3 output
+
+    ERROR_HANDLING:
+      - Catches and sets job.status = 'failed'
+      - Sets job.error to error message
+
+  - spawnCourseOrchestratorAPI: async function
+    LOCATION: automation_server.cjs:1338+
+    PURPOSE: Orchestrates API Mode course generation (direct Anthropic API)
+
+    SIGNATURE:
+      async function spawnCourseOrchestratorAPI(
+        courseCode: string,
+        params: { target, known, seeds, startSeed, endSeed }
+      ): Promise<void>
+
+    WORKFLOW:
+      1. Check for ANTHROPIC_API_KEY in environment
+      2. Make direct Anthropic API calls for each phase
+      3. Sequential execution (not parallel)
+      4. Write outputs to VFS
+      5. Update job status
+
+    REQUIREMENTS:
+      - ANTHROPIC_API_KEY environment variable
+      - Sufficient server resources
+
+  - pollForFile: async function
+    LOCATION: automation_server.cjs:1186-1194
+    PURPOSE: Waits for file to appear with exponential backoff
+
+    SIGNATURE:
+      async function pollForFile(
+        filePath: string,
+        pollInterval: number = 10000  # milliseconds
+      ): Promise<boolean>
+
+    BEHAVIOR:
+      - Polls indefinitely until file exists
+      - Logs every check
+      - Used by Web Mode orchestrator
+
+BROWSER_AUTOMATION:
+  - spawnClaudeWebAgent: async function
+    LOCATION: spawn_claude_web_agent.cjs:29-97
+    PURPOSE: Opens browser tab, pastes prompt, auto-submits
+
+    SIGNATURE:
+      async function spawnClaudeWebAgent(
+        prompt: string,
+        agentId: number = 1,
+        browser: string = 'chrome'
+      ): Promise<{ success: boolean, tabId: string }>
+
+    WORKFLOW:
+      1. Write prompt to /tmp/claude_prompt_{agentId}_{timestamp}.txt
+      2. Copy prompt to clipboard via pbcopy
+      3. Use AppleScript to:
+         - Open browser (Chrome/Safari/Brave/Arc)
+         - Navigate to https://claude.ai/code
+         - Wait 3 seconds for page load
+         - Paste with Cmd+V
+         - Submit with Enter
+      4. Return success/failure
+
+    DEPENDENCIES:
+      - macOS (uses AppleScript)
+      - pbcopy command
+      - Browser installed
+
+  - getBrowserAppName: function
+    LOCATION: spawn_claude_web_agent.cjs:102-110
+    PURPOSE: Maps browser string to macOS application name
+
+    MAPPINGS:
+      'safari' → 'Safari'
+      'chrome' → 'Google Chrome'
+      'brave' → 'Brave Browser'
+      'arc' → 'Arc'
+
+    DEFAULT: 'Google Chrome'
+
+## ============================================================================
+## API ENDPOINTS
+## ============================================================================
+
+HTTP_ENDPOINTS:
+  - POST /api/courses/generate
+    HANDLER: automation_server.cjs:3586-3692
+    PURPOSE: Start course generation job
+
+    REQUEST_BODY:
+      target: string          # ISO 639-3 code
+      known: string           # ISO 639-3 code
+      startSeed?: number      # Default: 1
+      endSeed?: number        # Default: 668
+      executionMode?: string  # Default: 'web'
+      force?: boolean         # Default: false
+
+    RESPONSES:
+      200 OK:
+        courseCode: string
+        message: string
+        executionMode: string
+
+      409 CONFLICT (course exists with data):
+        error: "Course already exists with data"
+        courseCode: string
+        existingFiles: string[]
+        message: "This will overwrite existing course data. Send force=true to proceed."
+
+      409 CONFLICT (job in progress):
+        error: "Course generation already in progress"
+        courseCode: string
+        status: JobStatus
+
+      400 BAD REQUEST:
+        error: string
+
+    VALIDATION:
+      - target and known MUST be provided
+      - startSeed MUST be <= endSeed
+      - Checks for existing course files (unless force=true)
+      - Checks for active job (409 if exists)
+
+    SIDE_EFFECTS:
+      - Creates STATE.jobs entry
+      - Spawns orchestrator based on executionMode
+      - Creates course directory in VFS
+
+  - GET /api/courses/:courseCode/status
+    HANDLER: automation_server.cjs:3694-3714
+    PURPOSE: Poll generation progress
+
+    PATH_PARAMS:
+      courseCode: string
+
+    RESPONSES:
+      200 OK:
+        status: 'in_progress' | 'completed' | 'failed'
+        phase: string
+        progress: number
+        message?: string
+        error?: string
+        params: { target, known, seeds, startSeed, endSeed }
+
+      404 NOT FOUND:
+        error: "Job not found"
+        courseCode: string
+
+    POLLING:
+      - Frontend polls every 30 seconds
+      - Used by ProgressMonitor component
+
+  - GET /api/courses/:courseCode/analyze
+    HANDLER: automation_server.cjs:4541-4635
+    PURPOSE: Smart Resume - analyze existing course progress
+
+    PATH_PARAMS:
+      courseCode: string
+
+    RESPONSES:
+      200 OK:
+        courseCode: string
+        exists: boolean
+        seed_pairs: {
+          exists: boolean
+          count: number
+        }
+        lego_pairs: {
+          exists: boolean
+          count: number
+          missing: string[]    # Seed IDs without LEGOs
+        }
+        recommendations: Recommendation[]
+
+      404 NOT FOUND:
+        error: "Course directory not found"
+
+    Recommendation SCHEMA:
+      type: 'test' | 'resume' | 'full' | 'next_phase'
+      phase: number
+      title: string
+      description: string
+      action: {
+        startSeed: number
+        endSeed: number
+      }
+
+    LOGIC:
+      - Checks for seed_pairs.json and lego_pairs.json
+      - Identifies seeds with missing LEGOs
+      - Generates smart recommendations based on state
+
+  - DELETE /api/courses/:courseCode/job
+    HANDLER: automation_server.cjs:3716-3738
+    PURPOSE: Clear stuck job
+
+    PATH_PARAMS:
+      courseCode: string
+
+    RESPONSES:
+      200 OK:
+        success: true
+        message: "Job cleared successfully"
+
+      404 NOT FOUND:
+        error: "No active job found"
+        courseCode: string
+
+    SIDE_EFFECTS:
+      - Deletes STATE.jobs entry
+      - Allows new generation to start
+
+  - GET /api/languages
+    HANDLER: automation_server.cjs:3740-3780
+    PURPOSE: Fetch available language pairs
+
+    RESPONSES:
+      200 OK: Array<Language>
+
+    Language SCHEMA:
+      code: string       # ISO 639-3
+      name: string       # English name
+      native: string     # Native name
+
+    LANGUAGES:
+      - { code: 'eng', name: 'English', native: 'English' }
+      - { code: 'spa', name: 'Spanish', native: 'Español' }
+      - { code: 'ita', name: 'Italian', native: 'Italiano' }
+      - { code: 'fra', name: 'French', native: 'Français' }
+      - { code: 'cym', name: 'Welsh', native: 'Cymraeg' }
+      - { code: 'gle', name: 'Irish', native: 'Gaeilge' }
+      - { code: 'por', name: 'Portuguese', native: 'Português' }
+
+## ============================================================================
+## FRONTEND COMPONENTS (Vue 3 Composition API)
+## ============================================================================
+
+COMPONENT: CourseGeneration
+  FILE: src/views/CourseGeneration.vue
+  ROUTE: /generate
+
+  REACTIVE_VARIABLES:
+    - knownLanguage: ref<string>
+      DEFAULT: 'eng'
+      PURPOSE: User's known language selection
+      UI_BINDING: Language dropdown
+
+    - targetLanguage: ref<string>
+      DEFAULT: 'gle'
+      PURPOSE: Language user wants to learn
+      UI_BINDING: Language dropdown
+
+    - startSeed: ref<number>
+      DEFAULT: 1
+      VALIDATION: 1 <= value <= 668
+      UI_BINDING: Custom range input
+
+    - endSeed: ref<number>
+      DEFAULT: 668
+      VALIDATION: startSeed <= value <= 668
+      UI_BINDING: Custom range input
+
+    - courseSize: ref<string | null>
+      VALUES: 'test' | 'medium' | 'full' | 'custom' | null
+      PURPOSE: Preset seed range selection
+      UI_BINDING: Preset buttons
+
+    - executionMode: ref<string>
+      DEFAULT: 'web'
+      VALUES: 'web' | 'local' | 'api'
+      PURPOSE: How to execute course generation
+      UI_BINDING: ExecutionModeSelector component
+
+    - isGenerating: ref<boolean>
+      DEFAULT: false
+      PURPOSE: Show/hide progress monitor
+
+    - isCompleted: ref<boolean>
+      DEFAULT: false
+      PURPOSE: Show completion state
+
+    - courseCode: ref<string | null>
+      FORMAT: Generated by backend
+      PURPOSE: Track current generation job
+
+    - currentPhase: ref<string>
+      VALUES: 'initializing' | 'phase_1' | 'phase_3' | 'phase_5' | 'completed'
+      PURPOSE: Display current phase in progress UI
+
+    - progress: ref<number>
+      RANGE: 0-100
+      PURPOSE: Progress bar percentage
+
+    - errorMessage: ref<string>
+      PURPOSE: Display error messages to user
+
+    - analyzing: ref<boolean>
+      DEFAULT: false
+      PURPOSE: Show analyzing spinner
+
+    - analysis: ref<CourseAnalysis | null>
+      PURPOSE: Smart resume analysis results
+
+    - targetLanguages: ref<Language[]>
+      PURPOSE: Available target languages from API
+
+    - knownLanguages: ref<Language[]>
+      PURPOSE: Available known languages from API
+
+    - languagesLoading: ref<boolean>
+      PURPOSE: Loading state for languages API call
+
+  COMPUTED_VARIABLES:
+    - seedCount: computed<number>
+      FORMULA: endSeed.value - startSeed.value + 1
+      PURPOSE: Display total seeds in UI
+
+    - currentPhaseIndex: computed<number>
+      MAPPING:
+        'initializing' → -1
+        'phase_1' → 0
+        'phase_3' → 1
+        'phase_5' → 3
+        'completed' → 7
+      PURPOSE: Map phase string to numeric index for UI rendering
+
+  METHODS:
+    - loadLanguages: async function
+      PURPOSE: Fetch languages from API on mount
+      SIDE_EFFECTS: Updates targetLanguages, knownLanguages
+
+    - analyzeCourse: async function
+      PURPOSE: Smart Resume - analyze existing course
+      API_CALL: GET /api/courses/:courseCode/analyze
+      SIDE_EFFECTS: Sets analysis.value
+
+    - selectRecommendation: function
+      PURPOSE: Apply Smart Resume recommendation
+      PARAMETERS: rec: Recommendation
+      SIDE_EFFECTS:
+        - Sets startSeed, endSeed
+        - Calls startGeneration()
+
+    - selectCourseSize: function
+      PURPOSE: Apply preset seed range
+      PARAMETERS: size: string, start: number, end: number
+      SIDE_EFFECTS: Sets courseSize, startSeed, endSeed
+
+    - startGeneration: async function
+      PURPOSE: Initiate course generation
+      PARAMETERS: force: boolean = false
+      API_CALL: POST /api/courses/generate
+      SIDE_EFFECTS:
+        - Sets isGenerating = true
+        - Sets courseCode
+        - Starts polling
+        - Handles 409 conflicts with confirmation dialog
+
+    - startPolling: function
+      PURPOSE: Poll job status every 30 seconds
+      PARAMETERS: code: string
+      SIDE_EFFECTS:
+        - Creates setInterval
+        - Calls GET /api/courses/:code/status
+        - Updates currentPhase, progress
+        - Stops on completion/failure
+
+    - stopPolling: function
+      PURPOSE: Clear polling interval
+      SIDE_EFFECTS: Clears interval
+
+    - clearStuckJob: async function
+      PURPOSE: Reset stuck job
+      API_CALL: DELETE /api/courses/:courseCode/job
+      SIDE_EFFECTS:
+        - Resets state
+        - Stops polling
+
+  LIFECYCLE_HOOKS:
+    - onMounted: async function
+      CALLS: loadLanguages()
+
+    - onUnmounted: function
+      CALLS: stopPolling()
+
+COMPONENT: ExecutionModeSelector
+  FILE: src/components/ExecutionModeSelector.vue
+
+  PROPS:
+    - modelValue: string
+      DEFAULT: 'web'
+      VALIDATOR: ['local', 'api', 'web'].includes(value)
+
+  EMITS:
+    - update:modelValue: string
+      PURPOSE: Two-way binding with v-model
+
+  METHODS:
+    - selectMode: function
+      PURPOSE: Emit mode selection
+      PARAMETERS: mode: string
+      SIDE_EFFECTS: Emits update:modelValue
+
+## ============================================================================
+## FILE FORMAT SCHEMAS
+## ============================================================================
+
+FILE: seed_pairs.json
+  LOCATION: public/vfs/courses/{courseCode}/seed_pairs.json
+  GENERATED_BY: Phase 1
+
+  SCHEMA:
+    version: "8.0.0"
+    course: string                 # Course code
+    target_language: string        # ISO 639-3
+    known_language: string         # ISO 639-3
+    seed_range: {
+      start: number
+      end: number
+    }
+    generated: string              # ISO 8601 timestamp
+    total_seeds: number
+    actual_seeds: number
+    translations: Record<SeedID, [target: string, known: string]>
+
+  SeedID_FORMAT: "S0001", "S0002", etc. (4-digit zero-padded)
+
+  EXAMPLE:
+    {
+      "version": "8.0.0",
+      "course": "spa_for_eng_s0001-0030",
+      "target_language": "spa",
+      "known_language": "eng",
+      "seed_range": { "start": 1, "end": 30 },
+      "generated": "2025-11-09T21:00:00.000Z",
+      "total_seeds": 30,
+      "actual_seeds": 30,
+      "translations": {
+        "S0001": ["Quiero hablar español contigo ahora", "I want to speak Spanish with you now"],
+        "S0002": ["Estoy tratando de aprender", "I'm trying to learn"]
+      }
+    }
+
+FILE: lego_pairs.json (or .tmp.json)
+  LOCATION: public/vfs/courses/{courseCode}/lego_pairs.json
+  GENERATED_BY: Phase 3 (writes .tmp.json, Phase 3.5 validates and renames)
+
+  SCHEMA:
+    version: "7.7"                 # Legacy version (TODO: update to 8.0.0)
+    seeds: Array<[SeedID, SeedPair, LEGOs]>
+
+  Seed_FORMAT:
+    [
+      "S0001",                     # Seed ID
+      ["target phrase", "known phrase"],  # Seed pair
+      [                            # LEGOs array
+        ["S0001L01", "B", "target", "known"],  # Type B (Basic)
+        ["S0001L02", "C", "target", "known", Componentization]  # Type C (Composite)
+      ]
+    ]
+
+  LEGO_TYPES:
+    - Type B (Basic): ["LegoID", "B", "target", "known"]
+    - Type C (Composite): ["LegoID", "C", "target", "known", componentization]
+
+  Componentization_FORMAT:
+    [
+      ["target_part1", "literal_known1"],
+      ["target_part2", "literal_known2"]
+    ]
+    CRITICAL: TWO elements only - NO third element
+
+FILE: lego_baskets.json
+  LOCATION: public/vfs/courses/{courseCode}/lego_baskets.json
+  GENERATED_BY: Phase 5
+
+  SCHEMA:
+    version: "7.7"
+    baskets: Record<LegoID, Basket>
+
+  Basket_FORMAT:
+    {
+      "lego": ["target", "known"],
+      "e": [                       # Eternal phrases
+        ["target sentence", "known sentence"],
+        ...
+      ],
+      "d": {                       # Derived phrases by word count
+        "2": [["2-word phrase", "translation"], ...],
+        "3": [["3-word phrase", "translation"], ...],
+        ...
+      }
+    }
+
+  VALIDATION:
+    - ABSOLUTE GATE: All phrases must tile with LEGOs 0 to current-1
+    - No unauthorized vocabulary
+    - Perfect grammar in both languages
+
+## ============================================================================
+## VERSION INFORMATION
+## ============================================================================
+
+PROJECT_VERSION: "8.0.0"
+  BREAKING_CHANGES:
+    - Execution mode defaults to 'web' (was 'local')
+    - Removed Course Storage Management page
+    - Removed LEGO Practice Baskets viewer
+    - Git push to main from session branches
+
+APML_VERSION: "1.1.0"
+  COMPLIANCE: Variable Registry Standard
+  GENERATED: 2025-11-09
+  METHOD: Reverse-compilation from clean v8.0.0 codebase
+
+## ============================================================================
+## END VARIABLE REGISTRY
+## ============================================================================

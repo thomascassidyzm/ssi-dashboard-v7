@@ -1,0 +1,543 @@
+# APML v1.1.0 - Course Structure Specification
+# SSI Course Production Dashboard v8.0.0
+# VFS organization, file formats, and naming protocols
+
+## ============================================================================
+## COURSE NAMING CONVENTIONS
+## ============================================================================
+
+COURSE_CODE_FORMAT:
+  PATTERN: "{target}_for_{known}" OR "{target}_for_{known}_s{start}-{end}"
+
+  RULES:
+    - target: ISO 639-3 three-letter code (lowercase)
+    - known: ISO 639-3 three-letter code (lowercase)
+    - separator: "_for_" (fixed)
+    - seed_range_suffix: "_s{start}-{end}" (4-digit zero-padded)
+    - full_course: NO suffix if seeds 1-668
+
+  EXAMPLES:
+    spa_for_eng                  # Full course (1-668)
+    spa_for_eng_s0001-0030       # Test course (30 seeds)
+    spa_for_eng_s0001-0100       # Medium course (100 seeds)
+    gle_for_eng_s0100-0200       # Custom range (seeds 100-200)
+
+  LANGUAGE_CODES:
+    eng: English
+    spa: Spanish (Español)
+    ita: Italian (Italiano)
+    fra: French (Français)
+    cym: Welsh (Cymraeg)
+    gle: Irish (Gaeilge)
+    por: Portuguese (Português)
+    zho: Chinese (Mandarin)
+
+SEED_ID_FORMAT:
+  PATTERN: "S{number}"
+  PADDING: 4 digits (zero-padded)
+  RANGE: S0001 to S0668
+
+  EXAMPLES:
+    S0001    # Seed 1
+    S0030    # Seed 30
+    S0100    # Seed 100
+    S0668    # Seed 668 (maximum)
+
+  VALIDATION:
+    - MUST start with capital 'S'
+    - MUST be exactly 5 characters (S + 4 digits)
+    - Number MUST be between 1 and 668
+
+LEGO_ID_FORMAT:
+  PATTERN: "{SeedID}L{number}"
+  PADDING: 2 digits for LEGO number
+  EXAMPLES:
+    S0001L01    # First LEGO from seed 1
+    S0001L02    # Second LEGO from seed 1
+    S0668L03    # Third LEGO from seed 668
+
+  VALIDATION:
+    - MUST start with valid Seed ID
+    - MUST have 'L' separator
+    - MUST have 2-digit zero-padded LEGO number
+    - Total length: 8 characters (S0001L01)
+
+## ============================================================================
+## VFS DIRECTORY STRUCTURE
+## ============================================================================
+
+VFS_ROOT:
+  PATH: "./public/vfs/courses"
+  PURPOSE: Virtual file system root for all course data
+  ABSOLUTE_PATH: path.join(__dirname, 'public', 'vfs', 'courses')
+
+COURSE_DIRECTORY:
+  PATTERN: "{VFS_ROOT}/{courseCode}/"
+
+  STRUCTURE:
+    ROOT_FILES:
+      - seed_pairs.json          # Phase 1 output
+        GENERATED_BY: Phase 1 (Pedagogical Translation)
+        REQUIRED: true
+
+      - lego_pairs.tmp.json      # Phase 3 temporary output
+        GENERATED_BY: Phase 3 (LEGO Extraction)
+        STATUS: Temporary (before validation)
+
+      - lego_pairs.json          # Phase 3 validated output
+        GENERATED_BY: Phase 3.5 (Validation)
+        REQUIRED: true
+
+      - lego_baskets.json        # Phase 5 consolidated output
+        GENERATED_BY: Phase 5 (Basket Generation)
+        REQUIRED: true
+
+      - gate_violations.json     # GATE validator output
+        GENERATED_BY: validate-gate-compliance.cjs
+        PURPOSE: List all ABSOLUTE GATE violations
+
+      - pattern_coverage_report.json
+        GENERATED_BY: analyze-pattern-coverage.cjs
+        PURPOSE: Pattern density metrics
+
+      - completeness_report.json
+        GENERATED_BY: analyze-completeness.cjs
+        PURPOSE: Course completeness metrics
+
+      - introductions.json       # Phase 6 output
+        GENERATED_BY: Phase 6 (Introductions)
+        STATUS: Future implementation
+
+      - compilation.json         # Phase 7 output
+        GENERATED_BY: Phase 7 (Compilation)
+        STATUS: Future implementation
+
+    SUBDIRECTORIES:
+      prompts/:
+        PURPOSE: Generated phase prompts (reference)
+        CREATED_BY: Web Mode and API Mode orchestrators
+        FILES:
+          - phase_1_translation.md
+          - phase_3_lego_extraction.md
+          - phase_5_baskets.md
+        FORMAT: Markdown
+
+      baskets/:
+        PURPOSE: Individual basket files (alternative to consolidated)
+        CREATED_BY: Phase 5 (if using individual file strategy)
+        FILES:
+          - lego_baskets_s0001.json
+          - lego_baskets_s0002.json
+          - ...
+        NAMING: lego_baskets_s{id}.json (4-digit zero-padded)
+        STATUS: Optional (can use consolidated lego_baskets.json instead)
+
+      compiled/:
+        PURPOSE: Compiled course outputs for different seed counts
+        CREATED_BY: Phase 7 (Compilation)
+        FILES:
+          - {courseCode}_30seeds.json
+          - {courseCode}_100seeds.json
+          - {courseCode}_668seeds.json
+        STATUS: Future implementation
+
+DIRECTORY_CREATION:
+  AUTOMATIC:
+    - Course directory created by ensureCourseDirectory(courseCode)
+    - Prompts subdirectory created when generating prompts
+    - Baskets subdirectory created if using individual files
+
+  MANUAL:
+    - Compiled subdirectory (Phase 7)
+
+## ============================================================================
+## FILE FORMAT SPECIFICATIONS
+## ============================================================================
+
+FILE_FORMAT: seed_pairs.json
+  LOCATION: {courseDir}/seed_pairs.json
+  PHASE: 1 (Pedagogical Translation)
+  FORMAT: JSON
+  ENCODING: UTF-8
+
+  SCHEMA:
+    version: string              # "8.0.0"
+    course: string               # Course code
+    target_language: string      # ISO 639-3
+    known_language: string       # ISO 639-3
+    seed_range: {
+      start: number              # Starting seed number
+      end: number                # Ending seed number
+    }
+    generated: string            # ISO 8601 timestamp
+    total_seeds: number          # Expected seeds
+    actual_seeds: number         # Actual seeds in translations object
+    translations: Record<SeedID, [target: string, known: string]>
+
+  VALIDATION_RULES:
+    - total_seeds MUST equal seed_range.end - seed_range.start + 1
+    - actual_seeds MUST equal Object.keys(translations).length
+    - All seed IDs MUST be within seed_range
+    - Each translation MUST be [target, known] (exactly 2 elements)
+    - Seed IDs MUST use 4-digit zero-padding (S0001, not S1)
+
+  EXAMPLE:
+    {
+      "version": "8.0.0",
+      "course": "spa_for_eng_s0001-0030",
+      "target_language": "spa",
+      "known_language": "eng",
+      "seed_range": { "start": 1, "end": 30 },
+      "generated": "2025-11-09T21:00:00.000Z",
+      "total_seeds": 30,
+      "actual_seeds": 30,
+      "translations": {
+        "S0001": ["Quiero hablar español contigo ahora", "I want to speak Spanish with you now"],
+        "S0002": ["Estoy tratando de aprender", "I'm trying to learn"]
+      }
+    }
+
+FILE_FORMAT: lego_pairs.json
+  LOCATION: {courseDir}/lego_pairs.json
+  PHASE: 3 (LEGO Extraction) → 3.5 (Validation)
+  FORMAT: JSON
+  ENCODING: UTF-8
+  NOTE: Phase 3 writes .tmp.json, Phase 3.5 validates and renames to .json
+
+  SCHEMA:
+    version: string              # "7.7" (TODO: update to 8.0.0)
+    seeds: Array<Seed>
+
+    Seed FORMAT:
+      [
+        SeedID: string,          # e.g., "S0001"
+        SeedPair: [target: string, known: string],
+        LEGOs: Array<LEGO>
+      ]
+
+    LEGO FORMAT (Type B - Basic):
+      [
+        LegoID: string,          # e.g., "S0001L01"
+        Type: "B",
+        target: string,
+        known: string
+      ]
+
+    LEGO FORMAT (Type C - Composite):
+      [
+        LegoID: string,          # e.g., "S0001L02"
+        Type: "C",
+        target: string,
+        known: string,
+        componentization: Array<[targetPart: string, knownLiteral: string]>
+      ]
+
+  COMPONENTIZATION_RULES:
+    - MUST have exactly 2 elements per component
+    - NO third element allowed
+    - Format: [["targetPart", "literalKnown"], ["targetPart2", "literalKnown2"]]
+
+  VALIDATION_RULES:
+    - Each seed MUST have at least 1 LEGO
+    - LEGOs MUST have unique IDs within seed
+    - Componentization arrays MUST have 2 elements only
+    - All multi-word target phrases MUST be Type C with componentization
+
+  EXAMPLE:
+    {
+      "version": "7.7",
+      "seeds": [
+        [
+          "S0001",
+          ["Quiero hablar español", "I want to speak Spanish"],
+          [
+            ["S0001L01", "B", "Quiero", "I want"],
+            ["S0001L02", "C", "hablar español", "speak Spanish", [
+              ["hablar", "speak"],
+              ["español", "Spanish"]
+            ]]
+          ]
+        ]
+      ]
+    }
+
+FILE_FORMAT: lego_baskets.json
+  LOCATION: {courseDir}/lego_baskets.json
+  PHASE: 5 (Practice Baskets)
+  FORMAT: JSON
+  ENCODING: UTF-8
+
+  SCHEMA:
+    version: string              # "7.7" (TODO: update to 8.0.0)
+    baskets: Record<LegoID, Basket>
+
+    Basket FORMAT:
+      {
+        lego: [target: string, known: string],    # LEGO pair
+        e: Array<[target: string, known: string]>, # Eternal phrases
+        d: {                                       # Derived phrases by word count
+          "2": Array<[target: string, known: string]>,
+          "3": Array<[target: string, known: string]>,
+          "4": Array<[target: string, known: string]>,
+          ...
+        }
+      }
+
+  VALIDATION_RULES:
+    - Each basket corresponds to one LEGO
+    - ABSOLUTE GATE: All phrases MUST tile with LEGOs 0 to current-1
+    - Perfect grammar required in BOTH languages
+    - Minimum 5 eternal phrases recommended
+    - Derived phrases MUST match word count category
+
+  GATE_COMPLIANCE:
+    CRITICAL: A phrase at LEGO index N can ONLY use vocabulary from LEGOs 0 to N-1
+    VALIDATOR: validate-gate-compliance.cjs
+    MANDATORY: 0 violations (100% compliance)
+
+  EXAMPLE:
+    {
+      "version": "7.7",
+      "baskets": {
+        "S0001L01": {
+          "lego": ["Quiero", "I want"],
+          "e": [
+            ["Quiero agua", "I want water"],
+            ["Quiero café", "I want coffee"]
+          ],
+          "d": {
+            "2": [["Quiero más", "I want more"]],
+            "3": [["Quiero hablar ahora", "I want to speak now"]]
+          }
+        }
+      }
+    }
+
+FILE_FORMAT: gate_violations.json
+  LOCATION: {courseDir}/gate_violations.json
+  PHASE: 5.5 (Validation)
+  FORMAT: JSON
+  PURPOSE: Report ABSOLUTE GATE violations
+
+  SCHEMA:
+    violations: Array<Violation>
+
+    Violation FORMAT:
+      {
+        legoId: string,
+        legoIndex: number,
+        phrase: [target: string, known: string],
+        unauthorizedWords: Array<{
+          word: string,
+          sourceLegoId: string,
+          sourceLegoIndex: number
+        }>
+      }
+
+  INTERPRETATION:
+    - Empty array = PERFECT (0 violations)
+    - Non-empty = FAILED (must fix before proceeding)
+
+## ============================================================================
+## SEED RANGE MANAGEMENT
+## ============================================================================
+
+SEED_RANGE_PRESETS:
+  test:
+    START: 1
+    END: 30
+    DESCRIPTION: "Quick test: Validate pipeline structure ~5-10 min"
+    PURPOSE: Development, debugging, structural validation
+    TESTS: Course generation logic, file structure, phase dependencies
+    TIME: 5-10 minutes
+
+  medium:
+    START: 1
+    END: 100
+    DESCRIPTION: "LEGO patterns & quality check ~20-30 min"
+    PURPOSE: Quality checking, methodology refinement
+    TESTS: LEGO diversity, basket quality, pattern recognition
+    TIME: 20-30 minutes
+
+  full:
+    START: 1
+    END: 668
+    DESCRIPTION: "Production course + automation test ~2-3 hrs"
+    PURPOSE: Final production courses, automation stress testing
+    TESTS: Automation robustness, resource management, parallel processing
+    TIME: 2-3 hours
+
+  custom:
+    START: user_defined (1-668)
+    END: user_defined (1-668)
+    DESCRIPTION: "Custom seed range"
+    VALIDATION:
+      - start MUST be >= 1
+      - end MUST be <= 668
+      - start MUST be <= end
+
+TESTING_PHILOSOPHY:
+  "Different ranges test different things"
+
+  30_SEEDS:
+    TESTS:
+      - Course structure creation
+      - Phase logic correctness
+      - File creation protocols
+      - Phase dependency handling
+    NOT_SUFFICIENT_FOR:
+      - LEGO pattern quality
+      - Basket diversity
+      - Resource management
+
+  100_SEEDS:
+    TESTS:
+      - LEGO extraction patterns
+      - Basket generation quality
+      - Pattern recognition accuracy
+      - Moderate scale validation
+    NOT_SUFFICIENT_FOR:
+      - Automation robustness at full scale
+      - Resource limits testing
+
+  668_SEEDS:
+    TESTS:
+      - Complete production course
+      - Automation robustness
+      - Resource management
+      - Parallel processing limits
+      - Full integration testing
+    PRODUCES:
+      - Deployable production courses
+
+## ============================================================================
+## FILE SIZE GUIDELINES
+## ============================================================================
+
+EXPECTED_FILE_SIZES:
+  seed_pairs.json:
+    PER_100_SEEDS: ~125KB
+    FULL_668_SEEDS: ~835KB
+
+  lego_pairs.json:
+    PER_100_LEGOS: ~200KB
+    FULL_COURSE: ~1.3MB (estimated ~650 LEGOs)
+
+  lego_baskets.json:
+    PER_100_BASKETS: ~300KB
+    FULL_COURSE: ~2MB (estimated ~650 baskets)
+
+  INDIVIDUAL_BASKET_FILES:
+    PER_FILE: 3-5KB
+    TOTAL_668_FILES: ~2-3MB combined
+
+## ============================================================================
+## METADATA STANDARDS
+## ============================================================================
+
+REQUIRED_METADATA:
+  ALL_JSON_FILES_MUST_INCLUDE:
+    version: string              # APML version (e.g., "8.0.0")
+    course: string               # Course code
+    generated: string            # ISO 8601 timestamp
+
+  OPTIONAL_BUT_RECOMMENDED:
+    target_language: string      # ISO 639-3
+    known_language: string       # ISO 639-3
+    seed_range: {                # If applicable
+      start: number
+      end: number
+    }
+
+VERSION_NUMBERING:
+  CURRENT: "8.0.0"
+  FORMAT: MAJOR.MINOR.PATCH
+
+  MAJOR:
+    WHEN: Breaking changes to file structure
+    EXAMPLES:
+      - Changing JSON schema structure
+      - Removing required fields
+      - Changing file naming conventions
+
+  MINOR:
+    WHEN: New fields or phase outputs
+    EXAMPLES:
+      - Adding new phase outputs
+      - Adding new optional fields
+      - New validation outputs
+
+  PATCH:
+    WHEN: Bug fixes, metadata updates
+    EXAMPLES:
+      - Fixing data quality
+      - Updating timestamps
+      - Documentation changes
+
+ENCODING_STANDARDS:
+  CHARACTER_ENCODING: UTF-8
+  LINE_ENDINGS: LF (Unix-style)
+  JSON_FORMATTING:
+    INDENTATION: 2 spaces
+    TRAILING_COMMAS: false
+    UNICODE_ESCAPING: false (use native UTF-8)
+
+## ============================================================================
+## MIGRATION AND COMPATIBILITY
+## ============================================================================
+
+EXISTING_COURSES:
+  IMPLICIT_FULL_RANGE:
+    - spa_for_eng (implicitly 1-668)
+    - zho_for_eng (implicitly 1-668)
+
+  MIGRATION_NOT_REQUIRED:
+    REASON: Backward compatible with no-suffix format
+
+  OPTIONAL_CLARIFICATION:
+    spa_for_eng → spa_for_eng_s0001-0668 (explicit)
+    RECOMMENDATION: Keep existing as-is, use new naming for new courses only
+
+BACKWARD_COMPATIBILITY:
+  v7.7_FILES:
+    STATUS: Fully compatible
+    NOTE: Version fields may show "7.7" or "7.7.0"
+    ACTION: No migration required
+
+  v8.0_CHANGES:
+    - Execution mode defaults changed (web vs local)
+    - Git push workflow added to prompts
+    - No breaking file format changes
+
+## ============================================================================
+## VALIDATION AND QUALITY RULES
+## ============================================================================
+
+STRUCTURAL_VALIDATION:
+  REQUIRED_FOR_ALL_COURSES:
+    - All phases complete successfully
+    - Files created in correct locations
+    - JSON validates against schema
+    - No missing dependencies
+    - Proper seed ID formatting (4-digit zero-padding)
+
+CONTENT_QUALITY_VALIDATION:
+  REQUIRED_FOR_PRODUCTION:
+    - LEGO extraction patterns consistent
+    - Practice phrases diverse and pedagogically sound
+    - No duplicate or redundant content
+    - ABSOLUTE GATE compliance (0 violations)
+    - Pattern coverage metrics acceptable
+
+GATE_VALIDATION:
+  MANDATORY: 100% compliance
+  VALIDATOR: validate-gate-compliance.cjs
+  OUTPUT: gate_violations.json
+  SUCCESS_CRITERIA: violations array MUST be empty
+
+## ============================================================================
+## COURSE STRUCTURE SPECIFICATION v8.0.0
+## Generated: 2025-11-09
+## Method: Reverse-compilation from COURSE_FILE_PROTOCOLS.md
+## Status: Official specification
+## ============================================================================

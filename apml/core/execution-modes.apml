@@ -1,0 +1,474 @@
+# APML v1.1.0 - Execution Modes Specification
+# SSI Course Production Dashboard v8.0.0
+# Web Mode, Local Mode, and API Mode orchestration
+
+## ============================================================================
+## EXECUTION MODES OVERVIEW
+## ============================================================================
+
+EXECUTION_MODES:
+  AVAILABLE: ['web', 'local', 'api']
+  DEFAULT: 'web'
+  CHANGED_IN_V8: Default changed from 'local' to 'web' (BREAKING CHANGE)
+
+SELECTION:
+  FRONTEND_COMPONENT: ExecutionModeSelector.vue
+  BACKEND_PARAMETER: executionMode
+  USER_OVERRIDE: true (user can select any mode)
+
+ORCHESTRATION_ROUTING:
+  LOCATION: automation_server.cjs:3669-3691
+  LOGIC:
+    if executionMode === 'web':
+      call spawnCourseOrchestratorWeb()
+    else if executionMode === 'api':
+      call spawnCourseOrchestratorAPI()
+    else:
+      call spawnCourseOrchestratorLocal()  # Legacy
+
+## ============================================================================
+## WEB MODE (Recommended)
+## ============================================================================
+
+MODE: web
+  NAME: "Claude Code on the Web"
+  DESCRIPTION: "Browser automation to claude.ai/code"
+  STATUS: Recommended (default)
+  VERSION_INTRODUCED: v7.8.0
+  MADE_DEFAULT: v8.0.0
+
+REQUIREMENTS:
+  BROWSER:
+    SUPPORTED: ['chrome', 'safari', 'brave', 'arc']
+    DEFAULT: 'chrome'
+    MACOS_REQUIRED: true (uses AppleScript)
+
+  ACCOUNT:
+    TYPE: Claude Pro subscription
+    REQUIRED: true
+    URL: https://claude.ai/code
+
+  SYSTEM:
+    OS: macOS
+    COMMANDS:
+      - pbcopy (clipboard)
+      - osascript (AppleScript)
+
+COST_ANALYSIS:
+  API_COST: $0 (uses Claude Pro subscription)
+  SUBSCRIPTION: ~$20/month (Claude Pro)
+  PER_COURSE: $0
+  ADVANTAGE: "Unlimited generations within Pro limits"
+
+RESOURCE_USAGE:
+  LOCAL_RAM: ~0GB (runs on Anthropic servers)
+  LOCAL_CPU: Minimal (browser only)
+  NETWORK: Moderate (clipboard + browser automation)
+  ADVANTAGE: "No local AI processing required"
+
+WORKFLOW:
+  IMPLEMENTATION: spawnCourseOrchestratorWeb()
+  LOCATION: automation_server.cjs:1200-1332
+
+  STEPS:
+    1_INITIALIZATION:
+      ACTION: Create job in STATE.jobs
+      STATUS: 'web_mode_automated'
+      PHASE: 'web_mode_spawning'
+
+    2_PHASE_1_TRANSLATION:
+      GENERATE_BRIEF:
+        FUNCTION: generatePhase1Brief()
+        OUTPUT: prompts/phase_1_translation.md
+
+      BROWSER_AUTOMATION:
+        FUNCTION: spawnClaudeWebAgent()
+        MODULE: spawn_claude_web_agent.cjs
+        WORKFLOW:
+          - Write prompt to /tmp/claude_prompt_{agentId}_{timestamp}.txt
+          - Copy to clipboard via pbcopy
+          - Open browser tab to claude.ai/code
+          - Paste with Cmd+V
+          - Submit with Enter (automated)
+
+      POLLING:
+        TARGET_FILE: seed_pairs.json
+        INTERVAL: 60 seconds
+        TIMEOUT: infinite (until file appears)
+        FUNCTION: pollForFile()
+
+      GIT_WORKFLOW:
+        INSTRUCTION_IN_PROMPT: true
+        COMMANDS:
+          - git add public/vfs/courses/{courseCode}/seed_pairs.json
+          - git commit -m "Phase 1: Translations for {courseCode}"
+          - git push origin HEAD:main --force
+        WHY_FORCE_PUSH: "Ensures changes reach main even from session branch"
+
+    3_PHASE_3_LEGO_EXTRACTION:
+      SAME_AS: Phase 1
+      INPUT_FILE: seed_pairs.json
+      OUTPUT_FILE: lego_pairs.tmp.json (later lego_pairs.json)
+
+    4_PHASE_5_BASKETS:
+      SAME_AS: Phase 1
+      INPUT_FILE: lego_pairs.json
+      OUTPUT_FILE: lego_baskets.json
+      ADDITIONAL: Runs validators (GATE, pattern, completeness)
+
+    5_COMPLETION:
+      JOB_STATUS: 'completed'
+      JOB_PROGRESS: 100
+      NOTIFICATION: Dashboard shows completion
+
+SEQUENTIAL_EXECUTION:
+  REQUIRED: true
+  REASON: "Phase 3 needs Phase 1 output, Phase 5 needs Phase 3 output"
+  BLOCKING: Each phase waits for previous to complete
+
+BROWSER_AUTOMATION_DETAILS:
+  MODULE: spawn_claude_web_agent.cjs
+  FUNCTION: spawnClaudeWebAgent()
+  LOCATION: spawn_claude_web_agent.cjs:29-97
+
+  PARAMETERS:
+    prompt: string              # Phase brief markdown
+    agentId: number = 1         # Agent identifier
+    browser: string = 'chrome'  # Browser to use
+
+  APPLE_SCRIPT_WORKFLOW:
+    STEP_1: Copy prompt to clipboard
+      COMMAND: pbcopy
+      METHOD: spawn('pbcopy') with prompt as stdin
+
+    STEP_2: Open browser and navigate
+      APPLICATION: getBrowserAppName(browser)
+      URL: "https://claude.ai/code"
+      METHOD: AppleScript via osascript
+
+    STEP_3: Wait for page load
+      DELAY: 3 seconds
+
+    STEP_4: Paste and submit
+      PASTE: Cmd+V (keystroke "v" using command down)
+      SUBMIT: Enter (keystroke return)
+      DELAY: 0.5 seconds between paste and submit
+
+  BROWSER_MAPPING:
+    safari: 'Safari'
+    chrome: 'Google Chrome'
+    brave: 'Brave Browser'
+    arc: 'Arc'
+
+ERROR_HANDLING:
+  BROWSER_FAILURE:
+    CAPTURE: osascript exit code
+    LOG: stderr output
+    RETURN: { success: false, error: message }
+
+  CLIPBOARD_FAILURE:
+    CAPTURE: pbcopy exit code
+    THROW: Error("pbcopy failed with code {code}")
+
+  FILE_POLLING_TIMEOUT:
+    BEHAVIOR: Poll indefinitely
+    LOGGING: Log every check
+    NO_TIMEOUT: true (waits until file appears)
+
+ADVANTAGES:
+  ✅ Zero API cost (uses Claude Pro subscription)
+  ✅ Minimal local resources (no AI processing)
+  ✅ Auto-paste and auto-submit (fully automated)
+  ✅ Works on Anthropic infrastructure (reliable)
+  ✅ Dashboard can poll for progress
+
+DISADVANTAGES:
+  ⚠️  Requires macOS (AppleScript dependency)
+  ⚠️  Requires Claude Pro account
+  ⚠️  Sequential only (not parallel)
+  ⚠️  Browser must remain open
+  ⚠️  Dependent on claude.ai/code availability
+
+SESSION_BRANCH_HANDLING:
+  CLAUDE_BEHAVIOR: Creates session branches (e.g., claude/phase1-abc123)
+  PROBLEM: Dashboard reads from main branch
+  SOLUTION: Force push to main in phase prompts
+  COMMAND: git push origin HEAD:main --force
+  RESULT: Outputs immediately available on main
+
+## ============================================================================
+## API MODE
+## ============================================================================
+
+MODE: api
+  NAME: "Direct API"
+  DESCRIPTION: "Server-side Anthropic API calls"
+  STATUS: Alternative (fully automated)
+  VERSION_INTRODUCED: v7.5.0
+
+REQUIREMENTS:
+  API_KEY:
+    ENVIRONMENT_VARIABLE: ANTHROPIC_API_KEY
+    REQUIRED: true
+    LOCATION: .env file
+    VALIDATION: Checked at runtime
+
+  SERVER_RESOURCES:
+    RAM: Sufficient for sequential processing
+    CPU: Moderate
+    NETWORK: Required (Anthropic API)
+
+COST_ANALYSIS:
+  API_COST: ~$0.34 per 30-seed batch
+  ESTIMATE_668_SEEDS: ~$7.50 (rough estimate)
+  BILLING: Pay-per-use (Anthropic API)
+  ADVANTAGE: "No subscription required"
+
+RESOURCE_USAGE:
+  LOCAL_RAM: Moderate (server-side only)
+  LOCAL_CPU: Moderate
+  NETWORK: Heavy (all processing via API)
+
+WORKFLOW:
+  IMPLEMENTATION: spawnCourseOrchestratorAPI()
+  LOCATION: automation_server.cjs:1338+
+
+  STEPS:
+    1_API_KEY_CHECK:
+      VALIDATION: process.env.ANTHROPIC_API_KEY
+      ERROR_IF_MISSING: "ANTHROPIC_API_KEY not found"
+
+    2_SEQUENTIAL_PHASES:
+      METHOD: Direct Anthropic SDK calls
+      PHASES: 1, 3, 5 (sequential)
+      BLOCKING: Each phase waits for previous
+
+    3_OUTPUT_WRITING:
+      LOCATION: VFS directly
+      FORMAT: JSON files
+      VALIDATION: Server-side
+
+ADVANTAGES:
+  ✅ Fully automated (no browser needed)
+  ✅ No local resources needed
+  ✅ Works on any OS (not macOS-specific)
+  ✅ Server-side execution (reliable)
+
+DISADVANTAGES:
+  ⚠️  API costs (~$0.34/batch)
+  ⚠️  Requires API key setup
+  ⚠️  Sequential only (not parallel)
+  ⚠️  Dependent on Anthropic API availability
+
+## ============================================================================
+## LOCAL MODE (Legacy)
+## ============================================================================
+
+MODE: local
+  NAME: "Local Machine (iTerm2)"
+  DESCRIPTION: "Parallel agent spawning with Claude CLI"
+  STATUS: Legacy (being phased out)
+  VERSION_INTRODUCED: v6.0.0
+  DEPRECATED_IN: v8.0.0 (no longer default)
+
+REQUIREMENTS:
+  TERMINAL:
+    APPLICATION: iTerm2
+    REQUIRED: true
+    MACOS_REQUIRED: true (AppleScript)
+
+  CLI:
+    TOOL: Claude CLI
+    CONFIGURATION: Required
+    API_KEY: Required (ANTHROPIC_API_KEY)
+
+  SYSTEM:
+    OS: macOS
+    RAM: ~10GB for 34 parallel agents
+    CPU: High (parallel processing)
+
+COST_ANALYSIS:
+  API_COST: ~$0.34 per 30-seed batch
+  RESOURCE_COST: High (RAM/CPU)
+  ADVANTAGE: "Parallel processing (faster)"
+
+RESOURCE_USAGE:
+  LOCAL_RAM: ~10GB (34 parallel agents)
+  LOCAL_CPU: High (many Claude instances)
+  NETWORK: Heavy (API calls)
+
+WORKFLOW:
+  IMPLEMENTATION: spawnCourseOrchestratorLocal()
+  METHOD: Spawn multiple iTerm2 windows with Claude CLI
+
+  PARALLEL_EXECUTION:
+    AGENTS_PER_BATCH: 34
+    BATCHING: Divides seeds into batches
+    SPAWNING: Opens iTerm2 windows
+    TRACKING: windowIds in job status
+
+DEPRECATION_RATIONALE:
+  REASONS:
+    - High RAM usage (~10GB)
+    - macOS-only (iTerm2 dependency)
+    - Complex window management
+    - Web Mode is more efficient (uses Pro subscription)
+
+  MIGRATION_PATH:
+    FROM: local
+    TO: web (recommended) or api (if automation needed)
+
+MAINTENANCE_STATUS:
+  CURRENT: Still supported
+  FUTURE: May be removed in v9.0.0
+  RECOMMENDATION: Migrate to Web Mode
+
+## ============================================================================
+## MODE COMPARISON
+## ============================================================================
+
+FEATURE_MATRIX:
+
+  COST:
+    web: $0 (uses Pro subscription)
+    api: ~$0.34/batch (pay-per-use)
+    local: ~$0.34/batch + high resource cost
+
+  AUTOMATION:
+    web: Fully automated (browser + auto-submit)
+    api: Fully automated (server-side)
+    local: Fully automated (CLI + iTerm2)
+
+  RESOURCES:
+    web: Minimal (browser only)
+    api: Server-side (moderate)
+    local: High (~10GB RAM, high CPU)
+
+  EXECUTION:
+    web: Sequential (phases depend on each other)
+    api: Sequential (phases depend on each other)
+    local: Parallel (batched)
+
+  OS_SUPPORT:
+    web: macOS only (AppleScript)
+    api: Any OS
+    local: macOS only (iTerm2)
+
+  SPEED:
+    web: Moderate (sequential, ~5-10 min for 30 seeds)
+    api: Moderate (sequential)
+    local: Fast (parallel, ~3-5 min for 30 seeds)
+
+  RECOMMENDED_FOR:
+    web: Development, testing, production (default)
+    api: Automation, CI/CD, headless environments
+    local: Legacy (not recommended)
+
+## ============================================================================
+## DEFAULT MODE CHANGE HISTORY
+## ============================================================================
+
+VERSION_HISTORY:
+  v6.0 - v7.7:
+    DEFAULT: 'local'
+    REASON: Parallel processing was priority
+
+  v7.8 - v7.9:
+    DEFAULT: 'local'
+    WEB_INTRODUCED: Web Mode added as alternative
+
+  v8.0:
+    DEFAULT: 'web'
+    REASON: Cost efficiency (uses Pro subscription)
+    BREAKING_CHANGE: true
+
+MIGRATION_GUIDE:
+  IF_YOU_USED_DEFAULT:
+    BEFORE: Local Mode (iTerm2) spawned automatically
+    NOW: Web Mode (browser) spawns automatically
+    ACTION: No change needed (Web Mode recommended)
+
+  IF_YOU_WANT_LOCAL:
+    ACTION: Explicitly select Local Mode in UI
+    FUTURE: Consider migrating to Web Mode
+
+  IF_YOU_WANT_API:
+    SETUP: Add ANTHROPIC_API_KEY to .env
+    ACTION: Select API Mode in UI
+
+## ============================================================================
+## POLLING AND STATUS TRACKING
+## ============================================================================
+
+POLLING_MECHANISM:
+  FUNCTION: pollForFile()
+  LOCATION: automation_server.cjs:1186-1194
+
+  BEHAVIOR:
+    INTERVAL: Configurable (default 10 seconds, Web Mode uses 60s)
+    TIMEOUT: None (infinite polling)
+    SUCCESS: Returns true when file exists
+    LOGGING: Logs every check attempt
+
+  USED_BY:
+    - Web Mode orchestrator
+    - Local Mode orchestrator (deprecated)
+    - Any mode waiting for file outputs
+
+STATUS_UPDATES:
+  STATE_MANAGEMENT:
+    LOCATION: STATE.jobs Map
+    KEY: courseCode
+    VALUE: JobStatus object
+
+  PROGRESS_TRACKING:
+    phase: Current phase identifier
+    progress: 0-100 percentage
+    status: 'in_progress' | 'completed' | 'failed'
+    message: Human-readable status
+
+  FRONTEND_POLLING:
+    ENDPOINT: GET /api/courses/:courseCode/status
+    INTERVAL: 30 seconds
+    COMPONENT: ProgressMonitor.vue
+
+## ============================================================================
+## ERROR HANDLING
+## ============================================================================
+
+ERROR_SCENARIOS:
+
+  BROWSER_FAILURE (Web Mode):
+    DETECTION: osascript exit code != 0
+    HANDLING:
+      - Set job.status = 'failed'
+      - Set job.error = stderr message
+      - Log error details
+    USER_ACTION: Check browser installation, try different browser
+
+  API_KEY_MISSING (API Mode):
+    DETECTION: !process.env.ANTHROPIC_API_KEY
+    HANDLING:
+      - Return early with error
+      - Set job.status = 'failed'
+      - Set job.error = "ANTHROPIC_API_KEY not found"
+    USER_ACTION: Add API key to .env file
+
+  FILE_POLLING_TIMEOUT (All Modes):
+    DETECTION: None (polls indefinitely)
+    HANDLING: Logs every attempt
+    USER_ACTION: Check if Claude is processing, check for errors
+
+  JOB_ALREADY_IN_PROGRESS:
+    DETECTION: STATE.jobs.has(courseCode)
+    HANDLING:
+      - Return 409 Conflict
+      - Provide "Clear Stuck Job" option
+    USER_ACTION: Clear stuck job or wait for completion
+
+## ============================================================================
+## EXECUTION MODES SPECIFICATION v8.0.0
+## Generated: 2025-11-09
+## Method: Reverse-compilation from automation_server.cjs and spawn_claude_web_agent.cjs
+## Status: Official specification
+## ============================================================================
