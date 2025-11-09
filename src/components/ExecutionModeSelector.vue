@@ -37,11 +37,11 @@
           </div>
           <div class="flex items-start gap-2 text-xs">
             <span class="text-green-400 mt-0.5">✓</span>
-            <span class="text-slate-300">34 parallel agents in 20-30 minutes</span>
+            <span class="text-slate-300">Auto-pastes prompts (just hit Enter!)</span>
           </div>
           <div class="flex items-start gap-2 text-xs">
             <span class="text-green-400 mt-0.5">✓</span>
-            <span class="text-slate-300">Manual prompt pasting (better control)</span>
+            <span class="text-slate-300">3 phases in browser tabs</span>
           </div>
         </div>
 

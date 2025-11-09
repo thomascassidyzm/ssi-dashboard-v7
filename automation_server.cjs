@@ -1162,82 +1162,79 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
 
   try {
     // Import the browser automation module
-    const { spawnAgentsWithPromptFiles } = require('./spawn_claude_web_agent.cjs');
+    const { spawnClaudeWebAgent } = require('./spawn_claude_web_agent.cjs');
 
-    job.status = 'web_mode_manual';
-    job.phase = 'web_mode_instructions';
+    job.status = 'web_mode_automated';
+    job.phase = 'web_mode_spawning';
     job.progress = 0;
-    job.message = 'Browser tabs will open with prompts. Please paste into each Claude Code tab and run.';
+    job.message = 'Opening browser tabs and pasting prompts automatically';
 
     console.log(`[Web Orchestrator] ============================================`);
-    console.log(`[Web Orchestrator] WEB MODE - MANUAL PROMPT EXECUTION`);
+    console.log(`[Web Orchestrator] WEB MODE - AUTOMATED PROMPT PASTING`);
     console.log(`[Web Orchestrator] ============================================`);
     console.log(`[Web Orchestrator] `);
-    console.log(`[Web Orchestrator] Browser tabs will open for each phase.`);
-    console.log(`[Web Orchestrator] Prompt files will be created in:`);
-    console.log(`[Web Orchestrator]   ${courseDir}/prompts/`);
+    console.log(`[Web Orchestrator] Browser tabs will open and prompts will be`);
+    console.log(`[Web Orchestrator] pasted automatically using osascript.`);
     console.log(`[Web Orchestrator] `);
-    console.log(`[Web Orchestrator] MANUAL STEPS REQUIRED:`);
-    console.log(`[Web Orchestrator]   1. Browser tabs will open automatically`);
-    console.log(`[Web Orchestrator]   2. Copy prompt from prompt files`);
-    console.log(`[Web Orchestrator]   3. Paste into each Claude Code tab`);
-    console.log(`[Web Orchestrator]   4. Hit Enter to run`);
-    console.log(`[Web Orchestrator]   5. Wait for completion`);
-    console.log(`[Web Orchestrator]   6. Commit outputs to VFS`);
+    console.log(`[Web Orchestrator] YOU JUST NEED TO:`);
+    console.log(`[Web Orchestrator]   1. Wait for tabs to load (~3 seconds each)`);
+    console.log(`[Web Orchestrator]   2. Hit Enter in each tab to execute`);
+    console.log(`[Web Orchestrator]   3. Monitor outputs in VFS`);
     console.log(`[Web Orchestrator] `);
     console.log(`[Web Orchestrator] ============================================`);
 
-    // Phase 1: Translation
-    console.log(`\n[Web Orchestrator] Preparing Phase 1 prompt...`);
+    // Generate prompts for all 3 phases
+    console.log(`\n[Web Orchestrator] Generating phase prompts...`);
     const phase1Brief = generatePhase1Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
-
-    const phase1PromptFile = path.join(courseDir, 'prompts', 'phase_1_translation.md');
-    await fs.ensureDir(path.join(courseDir, 'prompts'));
-    await fs.writeFile(phase1PromptFile, phase1Brief, 'utf8');
-
-    console.log(`[Web Orchestrator] ✅ Phase 1 prompt: ${phase1PromptFile}`);
-
-    // Phase 3: LEGO Extraction
-    console.log(`[Web Orchestrator] Preparing Phase 3 prompt...`);
     const phase3Brief = generatePhase3Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
-
-    const phase3PromptFile = path.join(courseDir, 'prompts', 'phase_3_lego_extraction.md');
-    await fs.writeFile(phase3PromptFile, phase3Brief, 'utf8');
-
-    console.log(`[Web Orchestrator] ✅ Phase 3 prompt: ${phase3PromptFile}`);
-
-    // Phase 5: Baskets (if needed)
-    console.log(`[Web Orchestrator] Preparing Phase 5 prompt...`);
     const phase5Brief = generatePhase5Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
 
-    const phase5PromptFile = path.join(courseDir, 'prompts', 'phase_5_baskets.md');
-    await fs.writeFile(phase5PromptFile, phase5Brief, 'utf8');
+    // Also save to files for reference
+    await fs.ensureDir(path.join(courseDir, 'prompts'));
+    await fs.writeFile(path.join(courseDir, 'prompts', 'phase_1_translation.md'), phase1Brief, 'utf8');
+    await fs.writeFile(path.join(courseDir, 'prompts', 'phase_3_lego_extraction.md'), phase3Brief, 'utf8');
+    await fs.writeFile(path.join(courseDir, 'prompts', 'phase_5_baskets.md'), phase5Brief, 'utf8');
 
-    console.log(`[Web Orchestrator] ✅ Phase 5 prompt: ${phase5PromptFile}`);
+    console.log(`[Web Orchestrator] ✅ Prompts saved to ${courseDir}/prompts/`);
 
-    // Open browser tabs
-    console.log(`\n[Web Orchestrator] Opening 3 Claude Code browser tabs...`);
-    const prompts = [
-      `Phase 1: Pedagogical Translation\n\nSee prompt file: ${phase1PromptFile}`,
-      `Phase 3: LEGO Extraction\n\nSee prompt file: ${phase3PromptFile}`,
-      `Phase 5: Practice Baskets\n\nSee prompt file: ${phase5PromptFile}`
-    ];
+    // Spawn browser tabs with automatic prompt pasting
+    console.log(`\n[Web Orchestrator] Opening browser tabs with auto-paste...`);
 
-    const promptDir = path.join(courseDir, 'web_prompts');
-    const result = await spawnAgentsWithPromptFiles(prompts, promptDir);
+    // Phase 1
+    console.log(`[Web Orchestrator] Phase 1: Opening tab and pasting prompt...`);
+    await spawnClaudeWebAgent(phase1Brief, 1, 'chrome');
+    console.log(`[Web Orchestrator] ✅ Phase 1 tab ready (prompt pasted)`);
 
-    console.log(`\n[Web Orchestrator] ✅ ${result.tabCount} browser tabs opened`);
-    console.log(`[Web Orchestrator] ✅ Prompt files created: ${result.promptFiles.length}`);
-    console.log(`\n[Web Orchestrator] NEXT STEPS:`);
-    console.log(`[Web Orchestrator]   1. Switch to browser tabs`);
-    console.log(`[Web Orchestrator]   2. Copy prompts from:\n[Web Orchestrator]      - ${phase1PromptFile}\n[Web Orchestrator]      - ${phase3PromptFile}\n[Web Orchestrator]      - ${phase5PromptFile}`);
-    console.log(`[Web Orchestrator]   3. Paste into respective Claude Code tabs`);
-    console.log(`[Web Orchestrator]   4. Hit Enter to execute`);
-    console.log(`[Web Orchestrator]   5. Monitor outputs in VFS`);
+    // Small delay between tabs to avoid overwhelming browser
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    // Phase 3
+    console.log(`[Web Orchestrator] Phase 3: Opening tab and pasting prompt...`);
+    await spawnClaudeWebAgent(phase3Brief, 2, 'chrome');
+    console.log(`[Web Orchestrator] ✅ Phase 3 tab ready (prompt pasted)`);
+
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    // Phase 5
+    console.log(`[Web Orchestrator] Phase 5: Opening tab and pasting prompt...`);
+    await spawnClaudeWebAgent(phase5Brief, 3, 'chrome');
+    console.log(`[Web Orchestrator] ✅ Phase 5 tab ready (prompt pasted)`);
+
+    console.log(`\n[Web Orchestrator] ============================================`);
+    console.log(`[Web Orchestrator] ✅ ALL TABS OPENED WITH PROMPTS PASTED`);
+    console.log(`[Web Orchestrator] ============================================`);
+    console.log(`[Web Orchestrator] `);
+    console.log(`[Web Orchestrator] Switch to your browser and you'll see:`);
+    console.log(`[Web Orchestrator]   - Tab 1: Phase 1 (Translation) - prompt ready`);
+    console.log(`[Web Orchestrator]   - Tab 2: Phase 3 (LEGO Extraction) - prompt ready`);
+    console.log(`[Web Orchestrator]   - Tab 3: Phase 5 (Practice Baskets) - prompt ready`);
+    console.log(`[Web Orchestrator] `);
+    console.log(`[Web Orchestrator] Just hit Enter in each tab to execute!`);
+    console.log(`[Web Orchestrator] ============================================`);
 
     job.phase = 'web_mode_waiting';
     job.progress = 10;
-    job.message = 'Waiting for manual execution in browser tabs';
+    job.message = 'Browser tabs opened with prompts pasted - hit Enter to execute';
 
   } catch (error) {
     console.error(`[Web Orchestrator] Error:`, error);

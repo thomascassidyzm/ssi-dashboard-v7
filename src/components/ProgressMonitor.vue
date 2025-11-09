@@ -70,14 +70,13 @@
     <!-- Web Mode Instructions -->
     <div v-if="executionMode === 'web' && status === 'web_mode_waiting'" class="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
       <div class="flex items-start gap-3">
-        <div class="text-blue-400 text-xl">📋</div>
+        <div class="text-blue-400 text-xl">✨</div>
         <div class="text-sm">
-          <p class="font-medium text-blue-400 mb-2">Manual Steps Required</p>
+          <p class="font-medium text-blue-400 mb-2">Prompts Auto-Pasted!</p>
           <ol class="list-decimal list-inside space-y-1 text-slate-300">
-            <li>Browser tabs have been opened with claude.ai/code</li>
-            <li>Copy prompts from the prompt files in your course directory</li>
-            <li>Paste into respective Claude Code tabs</li>
-            <li>Hit Enter to execute each phase</li>
+            <li>Browser tabs opened automatically</li>
+            <li>Prompts pasted into each tab via osascript</li>
+            <li><strong>Just hit Enter in each tab to execute!</strong></li>
             <li>Outputs will appear in VFS when complete</li>
           </ol>
         </div>
