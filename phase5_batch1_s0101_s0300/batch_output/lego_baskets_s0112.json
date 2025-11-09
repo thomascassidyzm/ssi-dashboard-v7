@@ -1,0 +1,428 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0112",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "Eso fue muy interesante, y no estaba esperándolo",
+    "known": "That was very interesting, and I wasn't expecting it."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 320,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.412Z",
+    "curated_by": "Claude Code - Agent 2 (converted from SEED_GROUPED format)",
+    "original_file": "agent_02_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.412Z"
+  },
+  "S0061L02": {
+    "lego": [
+      "that",
+      "eso"
+    ],
+    "type": "A",
+    "available_legos": 177,
+    "practice_phrases": [
+      [
+        "that",
+        "eso",
+        null,
+        1
+      ],
+      [
+        "I want that",
+        "quiero eso",
+        null,
+        2
+      ],
+      [
+        "I'm trying to remember that",
+        "estoy intentando recordar eso",
+        null,
+        4
+      ],
+      [
+        "I'm not sure about that",
+        "no estoy seguro de eso",
+        null,
+        4
+      ],
+      [
+        "I want to learn that",
+        "quiero aprender eso",
+        null,
+        3
+      ],
+      [
+        "I want to be able to explain that",
+        "quiero poder explicar eso",
+        null,
+        6
+      ],
+      [
+        "I'm trying to remember that now",
+        "estoy intentando recordar eso ahora",
+        null,
+        5
+      ],
+      [
+        "I remember that",
+        "recordar eso",
+        null,
+        2
+      ],
+      [
+        "I want that",
+        "quiero eso",
+        null,
+        2
+      ],
+      [
+        "I'm learning that",
+        "estoy aprender eso",
+        null,
+        3
+      ],
+      [
+        "I remember that",
+        "recordar eso",
+        null,
+        2
+      ],
+      [
+        "I want that",
+        "quiero eso",
+        null,
+        2
+      ],
+      [
+        "I'm learning that",
+        "estoy aprender eso",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 1
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0112 LEGOs only"
+  },
+  "S0112L01": {
+    "lego": [
+      "was",
+      "fue"
+    ],
+    "type": "A",
+    "available_legos": 318,
+    "practice_phrases": [
+      [
+        "was",
+        "fue",
+        null,
+        1
+      ],
+      [
+        "that was",
+        "eso fue",
+        null,
+        2
+      ],
+      [
+        "that was very interesting",
+        "eso fue muy interesante",
+        null,
+        4
+      ],
+      [
+        "that was something new",
+        "eso fue algo nuevo",
+        null,
+        4
+      ],
+      [
+        "that was very interesting and new",
+        "eso fue muy interesante y nuevo",
+        null,
+        6
+      ],
+      [
+        "I want to explain what that was",
+        "quiero explicar lo que eso fue",
+        null,
+        6
+      ],
+      [
+        "I'm not sure what that was",
+        "no estoy seguro lo que eso fue",
+        null,
+        6
+      ],
+      [
+        "that was interesting",
+        "eso fue interesante",
+        null,
+        3
+      ],
+      [
+        "I'm not sure what that was",
+        "no estoy seguro lo que eso fue",
+        null,
+        7
+      ],
+      [
+        "that was something new and interesting",
+        "eso fue algo nuevo y interesante",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0112 LEGOs only"
+  },
+  "S0112L02": {
+    "lego": [
+      "very interesting",
+      "muy interesante"
+    ],
+    "type": "M",
+    "available_legos": 319,
+    "practice_phrases": [
+      [
+        "very interesting",
+        "muy interesante",
+        null,
+        1
+      ],
+      [
+        "that was very interesting",
+        "eso fue muy interesante",
+        null,
+        3
+      ],
+      [
+        "something very interesting",
+        "algo muy interesante",
+        null,
+        2
+      ],
+      [
+        "I want to learn something very interesting",
+        "quiero aprender algo muy interesante",
+        null,
+        5
+      ],
+      [
+        "that was very interesting and new",
+        "eso fue muy interesante y nuevo",
+        null,
+        5
+      ],
+      [
+        "I'm trying to remember something very interesting",
+        "estoy intentando recordar algo muy interesante",
+        null,
+        5
+      ],
+      [
+        "when we learn something very interesting",
+        "cuando aprendemos algo muy interesante",
+        null,
+        5
+      ],
+      [
+        "I want to explain something very interesting",
+        "quiero explicar algo muy interesante",
+        null,
+        4
+      ],
+      [
+        "it's very interesting when our brain changes",
+        "es muy interesante cuando nuestro cerebro cambia",
+        null,
+        6
+      ],
+      [
+        "when we learn something new that's very interesting",
+        "cuando aprendemos algo nuevo eso es muy interesante",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 5,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0112 LEGOs only"
+  },
+  "S0015L01": {
+    "lego": [
+      "and",
+      "y"
+    ],
+    "type": "A",
+    "available_legos": 40,
+    "practice_phrases": [
+      [
+        "and",
+        "y",
+        null,
+        1
+      ],
+      [
+        "I want to learn and speak",
+        "quiero aprender y hablar",
+        null,
+        4
+      ],
+      [
+        "I want to speak Spanish and learn",
+        "quiero hablar español y aprender",
+        null,
+        5
+      ],
+      [
+        "I'm trying to learn and remember",
+        "estoy intentando aprender y recordar",
+        null,
+        4
+      ],
+      [
+        "I'm trying to learn Spanish and speak with you",
+        "estoy intentando aprender español y hablar contigo",
+        null,
+        7
+      ],
+      [
+        "I want to speak and learn",
+        "quiero hablar y aprender",
+        null,
+        4
+      ],
+      [
+        "I'm learning and speaking",
+        "estoy aprender y hablar",
+        null,
+        3
+      ],
+      [
+        "I want to learn Spanish and speak with you",
+        "quiero aprender español y hablar contigo",
+        null,
+        7
+      ],
+      [
+        "today and tomorrow",
+        "hoy y mañana",
+        null,
+        3
+      ],
+      [
+        "today and tomorrow",
+        "hoy y mañana",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 3,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0112 LEGOs only"
+  },
+  "S0112L03": {
+    "lego": [
+      "I wasn't expecting it",
+      "no estaba esperándolo"
+    ],
+    "type": "M",
+    "available_legos": 320,
+    "practice_phrases": [
+      [
+        "I wasn't expecting it",
+        "no estaba esperándolo",
+        null,
+        1
+      ],
+      [
+        "I wasn't expecting it today",
+        "no estaba esperándolo hoy",
+        null,
+        3
+      ],
+      [
+        "that was interesting and I wasn't expecting it",
+        "eso fue interesante y no estaba esperándolo",
+        null,
+        6
+      ],
+      [
+        "I wasn't expecting it when you said that",
+        "no estaba esperándolo cuando dijiste eso",
+        null,
+        6
+      ],
+      [
+        "that was very interesting and I wasn't expecting it",
+        "eso fue muy interesante y no estaba esperándolo",
+        null,
+        7
+      ],
+      [
+        "I want to explain that I wasn't expecting it",
+        "quiero explicar que no estaba esperándolo",
+        null,
+        6
+      ],
+      [
+        "I'm not sure why I wasn't expecting it",
+        "no estoy seguro por qué no estaba esperándolo",
+        null,
+        7
+      ],
+      [
+        "I wasn't expecting that today",
+        "no estaba esperándolo hoy",
+        null,
+        4
+      ],
+      [
+        "I wasn't expecting it when I was learning",
+        "no estaba esperándolo cuando estaba aprender",
+        null,
+        6
+      ],
+      [
+        "I wasn't expecting that",
+        "no estaba esperándolo",
+        null,
+        3
+      ],
+      [
+        "That was very interesting, and I wasn't expecting it.",
+        "Eso fue muy interesante, y no estaba esperándolo",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0112 LEGOs only"
+  }
+}

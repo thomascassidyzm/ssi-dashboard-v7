@@ -1,0 +1,252 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0192",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'm busy tomorrow night.",
+    "target": "Estoy ocupado mañana por la noche."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 534,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.589Z",
+    "curated_by": "Claude Code - Agent 10 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_10_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.589Z"
+  },
+  "S0192L01": {
+    "lego": [
+      "I'm busy",
+      "estoy ocupado"
+    ],
+    "type": "M",
+    "new": true,
+    "available_legos": 534,
+    "practice_phrases": [
+      [
+        "I'm busy",
+        "estoy ocupado",
+        null,
+        1
+      ],
+      [
+        "I'm busy today",
+        "estoy ocupado hoy",
+        null,
+        2
+      ],
+      [
+        "I'm busy this morning you know",
+        "estoy ocupado esta mañana sabes",
+        null,
+        5
+      ],
+      [
+        "I'm busy at the moment I'm sorry",
+        "estoy ocupado en este momento lo siento",
+        null,
+        7
+      ],
+      [
+        "I'm busy tomorrow but I can help you later on",
+        "estoy ocupado mañana pero puedo ayudarte más tarde",
+        null,
+        9
+      ],
+      [
+        "I'm busy this afternoon but I'd like to speak with you",
+        "estoy ocupado esta tarde pero me gustaría hablar contigo",
+        null,
+        10
+      ],
+      [
+        "I'm sorry but I'm busy this evening",
+        "lo siento pero estoy ocupado esta noche",
+        null,
+        7
+      ],
+      [
+        "I think that I'm going to be busy tomorrow",
+        "pienso que voy a estar ocupado mañana",
+        null,
+        8
+      ],
+      [
+        "I'm busy trying to finish everything before I have to go",
+        "estoy ocupado intentando terminar todo antes de que tenga que ir",
+        null,
+        11
+      ],
+      [
+        "I'm busy tomorrow night",
+        "estoy ocupado mañana por la noche",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0012L04": {
+    "lego": [
+      "tomorrow",
+      "mañana"
+    ],
+    "type": "A",
+    "available_legos": 534,
+    "practice_phrases": [
+      [
+        "tomorrow",
+        "mañana",
+        null,
+        1
+      ],
+      [
+        "I'm busy tomorrow",
+        "estoy ocupado mañana",
+        null,
+        2
+      ],
+      [
+        "I want to speak tomorrow",
+        "quiero hablar mañana",
+        null,
+        3
+      ],
+      [
+        "I'm going to try tomorrow morning",
+        "voy a intentar mañana por la mañana",
+        null,
+        6
+      ],
+      [
+        "I'd like to meet at six o'clock tomorrow",
+        "me gustaría reunirnos a las seis mañana",
+        null,
+        7
+      ],
+      [
+        "I don't know what's going to happen tomorrow",
+        "no sé lo que va a ocurrir mañana",
+        null,
+        8
+      ],
+      [
+        "I'm going to be busy all day tomorrow",
+        "voy a estar ocupado todo el día mañana",
+        null,
+        8
+      ],
+      [
+        "I wanted to ask you if you can help me tomorrow",
+        "quería preguntarte si puedes ayudarme mañana",
+        null,
+        9
+      ],
+      [
+        "I think that I need to improve before tomorrow",
+        "pienso que necesito mejorar antes de mañana",
+        null,
+        9
+      ],
+      [
+        "I'm busy tomorrow night",
+        "estoy ocupado mañana por la noche",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 0,
+      "long_6_plus": 7
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0154L04": {
+    "lego": [
+      "at night",
+      "por la noche"
+    ],
+    "type": "M",
+    "available_legos": 534,
+    "practice_phrases": [
+      [
+        "at night",
+        "por la noche",
+        null,
+        1
+      ],
+      [
+        "I'm busy at night",
+        "estoy ocupado por la noche",
+        null,
+        3
+      ],
+      [
+        "I feel tired at night",
+        "me siento cansado por la noche",
+        null,
+        5
+      ],
+      [
+        "I enjoy speaking Spanish at night",
+        "disfruto hablar español por la noche",
+        null,
+        5
+      ],
+      [
+        "I'm going to practise speaking at night",
+        "voy a practicar hablar por la noche",
+        null,
+        6
+      ],
+      [
+        "I like to read interesting things with my friends at night",
+        "me gusta leer cosas interesantes con mis amigos por la noche",
+        null,
+        11
+      ],
+      [
+        "I want to be able to speak with you at night",
+        "quiero poder hablar contigo por la noche",
+        null,
+        9
+      ],
+      [
+        "I started to think about it carefully at night last month",
+        "comencé a pensar sobre eso cuidadosamente por la noche el mes pasado",
+        null,
+        11
+      ],
+      [
+        "I don't like to take too much time to answer at night",
+        "no me gusta tomar demasiado tiempo para responder por la noche",
+        null,
+        12
+      ],
+      [
+        "I'm busy tomorrow night.",
+        "Estoy ocupado mañana por la noche.",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT"
+  }
+}

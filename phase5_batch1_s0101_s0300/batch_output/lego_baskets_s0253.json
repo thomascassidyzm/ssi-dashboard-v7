@@ -1,0 +1,169 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0253",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "Debo estar preparado en unos pocos minutos.",
+    "known": "I should be ready in a few minutes."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.631Z",
+    "curated_by": "Claude Code - Agent 16 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_16_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.631Z"
+  },
+  "S0253L01": {
+    "lego": [
+      "I should be ready",
+      "debo estar preparado"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I should be ready",
+        "Debo estar preparado",
+        null,
+        1
+      ],
+      [
+        "I should be ready to start",
+        "Debo estar preparado para empezar",
+        null,
+        2
+      ],
+      [
+        "I should be ready to speak Spanish",
+        "Debo estar preparado para hablar español",
+        null,
+        3
+      ],
+      [
+        "I should be ready to start today",
+        "Debo estar preparado para empezar hoy",
+        null,
+        4
+      ],
+      [
+        "I should be ready to speak with you",
+        "Debo estar preparado para hablar contigo",
+        null,
+        5
+      ],
+      [
+        "I should be ready to start learning Spanish soon",
+        "Debo estar preparado para empezar aprender español pronto",
+        null,
+        7
+      ],
+      [
+        "I think I should be ready to speak Spanish with you tomorrow",
+        "Pienso que debo estar preparado para hablar español contigo mañana",
+        null,
+        10
+      ],
+      [
+        "I should be ready to start speaking Spanish with my friends this afternoon",
+        "Debo estar preparado para empezar hablar español con mis amigos esta tarde",
+        null,
+        11
+      ],
+      [
+        "I should be ready to practise speaking Spanish with you as soon as I can",
+        "Debo estar preparado para practicar hablar español contigo tan pronto como pueda",
+        null,
+        11
+      ],
+      [
+        "I think I should be ready to speak Spanish with you when you want",
+        "Pienso que debo estar preparado para hablar español contigo cuándo quieres",
+        null,
+        11
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0253L02": {
+    "lego": [
+      "in a few minutes",
+      "en unos pocos minutos"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "in a few minutes",
+        "en unos pocos minutos",
+        null,
+        1
+      ],
+      [
+        "I'm going to start in a few minutes",
+        "Voy a comenzar en unos pocos minutos",
+        null,
+        2
+      ],
+      [
+        "I should be ready in a few minutes",
+        "Debo estar preparado en unos pocos minutos",
+        null,
+        3
+      ],
+      [
+        "I'll be ready to speak in a few minutes",
+        "Estaré preparado para hablar en unos pocos minutos",
+        null,
+        4
+      ],
+      [
+        "I'm going to start learning Spanish in a few minutes",
+        "Voy a comenzar aprender español en unos pocos minutos",
+        null,
+        6
+      ],
+      [
+        "I should be ready to start speaking in a few minutes",
+        "Debo estar preparado para empezar hablar en unos pocos minutos",
+        null,
+        7
+      ],
+      [
+        "I'm going to be ready to speak Spanish with you in a few minutes",
+        "Voy a estar preparado para hablar español contigo en unos pocos minutos",
+        null,
+        10
+      ],
+      [
+        "I think I should be ready to start practising Spanish in a few minutes",
+        "Pienso que debo estar preparado para empezar practicar español en unos pocos minutos",
+        null,
+        11
+      ],
+      [
+        "I'm going to help you learn Spanish as soon as I can in a few minutes",
+        "Voy a ayudarte aprender español tan pronto como pueda en unos pocos minutos",
+        null,
+        12
+      ],
+      [
+        "I should be ready in a few minutes.",
+        "Debo estar preparado en unos pocos minutos.",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0295",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "",
+    "target": ""
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.676Z",
+    "curated_by": "Claude Code - Agent 20 (converted from special format)",
+    "original_file": "agent_20_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.676Z",
+    "notes": "Agent 20 GATE violations fixed per report (2 violations corrected)"
+  },
+  "S0295L01": {
+    "lego": [
+      "I didn't say",
+      "no dije"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I didn't say",
+        "No dije",
+        1
+      ],
+      [
+        "I didn't say that",
+        "No dije que",
+        2
+      ],
+      [
+        "I didn't say I wanted",
+        "No dije que quería",
+        4
+      ],
+      [
+        "I didn't say anything",
+        "No dije algo",
+        3
+      ],
+      [
+        "I didn't say I wanted to speak",
+        "No dije que quería hablar",
+        6
+      ],
+      [
+        "I didn't say I wanted to finish",
+        "No dije que quería terminar",
+        6
+      ],
+      [
+        "I didn't say I wanted to come tonight",
+        "No dije que quería venir esta noche",
+        7
+      ],
+      [
+        "I didn't say I have enough time to speak",
+        "No dije que tengo suficiente tiempo para hablar",
+        9
+      ],
+      [
+        "I didn't say that I wanted to finish today",
+        "No dije que quería terminar hoy",
+        7
+      ],
+      [
+        "I didn't say I wanted to be able to come to the party",
+        "No dije que quería poder venir a la fiesta",
+        11
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0295L01 LEGOs only"
+  },
+  "S0295L07": {
+    "lego": [
+      "day",
+      "día"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "day",
+        "día",
+        1
+      ],
+      [
+        "in a day",
+        "en un día",
+        3
+      ],
+      [
+        "to finish in a day",
+        "terminar en un día",
+        5
+      ],
+      [
+        "I wanted to finish in a day",
+        "Quería terminar en un día",
+        6
+      ],
+      [
+        "I have to finish in a day",
+        "Tengo que terminar en un día",
+        7
+      ],
+      [
+        "I didn't say I wanted to finish in a day",
+        "No dije que quería terminar en un día",
+        10
+      ],
+      [
+        "I don't have enough time to finish in a day",
+        "No tengo suficiente tiempo para terminar en un día",
+        11
+      ],
+      [
+        "I'm going to try to speak Spanish every day",
+        "Voy a intentar hablar español todo día",
+        9
+      ],
+      [
+        "I hope I'll be able to finish in a day",
+        "Espero poder terminar en un día",
+        8
+      ],
+      [
+        "I didn't say that I wanted to finish in a day.",
+        "No dije que quería terminar en un día.",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 7
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0295L07 LEGOs only"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0236",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I know someone who said that she was going to try to help.",
+    "target": "Conozco a alguien que dijo que iba a intentar ayudar."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.611Z",
+    "curated_by": "Claude Code - Agent 14 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_14_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.611Z"
+  },
+  "S0236L06": {
+    "lego": [
+      "she was going to try to help",
+      "iba a intentar ayudar"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "was going to try to help",
+        "iba a intentar ayudar",
+        null,
+        3
+      ],
+      [
+        "she was going to try to help",
+        "iba a intentar ayudar",
+        null,
+        3
+      ],
+      [
+        "I was going to try to help",
+        "Iba a intentar ayudar",
+        null,
+        4
+      ],
+      [
+        "someone who was going to try to help",
+        "alguien que iba a intentar ayudar",
+        null,
+        5
+      ],
+      [
+        "He said that she was going to try to help",
+        "Dijo que iba a intentar ayudar",
+        null,
+        5
+      ],
+      [
+        "I know someone who was going to try to help",
+        "Conozco a alguien que iba a intentar ayudar",
+        null,
+        6
+      ],
+      [
+        "I met someone who was going to try to help",
+        "Conocí a alguien que iba a intentar ayudar",
+        null,
+        6
+      ],
+      [
+        "I know someone who said that she was going to try to help.",
+        "Conozco a alguien que dijo que iba a intentar ayudar.",
+        null,
+        8
+      ],
+      [
+        "I know someone who said that she was going to try to help.",
+        "Conozco a alguien que dijo que iba a intentar ayudar.",
+        null,
+        8
+      ],
+      [
+        "I know someone who said that she was going to try to help.",
+        "Conozco a alguien que dijo que iba a intentar ayudar.",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "full_seed_included": "YES"
+  }
+}

@@ -32,14 +32,14 @@ Examples:
 
 **Option 1: Separate Directory** (Recommended)
 ```
-spa_for_eng_s001-030/    (Test course: seeds 1-30)
-spa_for_eng_s001-668/    (Full course: seeds 1-668)
+spa_for_eng_s0001-0030/    (Test course: seeds 1-30)
+spa_for_eng_s0001-0668/    (Full course: seeds 1-668)
 ```
 
 **Option 2: Metadata Only** (Alternative)
 ```
-spa_for_eng/             (Course code same, metadata differs)
-├── seed_pairs.json      (contains seed_range metadata)
+spa_for_eng/               (Course code same, metadata differs)
+├── seed_pairs.json        (contains seed_range metadata)
 ```
 
 **Decision**: Use **Option 1** for clarity and separation of test vs production data.
@@ -54,10 +54,10 @@ spa_for_eng/             (Course code same, metadata differs)
 
 2. **Separator**: Use `_for_` to indicate learning direction
 
-3. **Seed range notation**: `s{start}-{end}` (zero-padded to 3 digits)
-   - `s001-030` = Seeds 1 to 30
-   - `s001-668` = Full course (all seeds)
-   - `s100-200` = Seeds 100 to 200
+3. **Seed range notation**: `s{start}-{end}` (zero-padded to 4 digits, matching seed ID format)
+   - `s0001-0030` = Seeds 1 to 30 (S0001-S0030)
+   - `s0001-0668` = Full course (all seeds)
+   - `s0100-0200` = Seeds 100 to 200 (S0100-S0200)
 
 4. **No spaces or special characters** in course codes
 
@@ -128,7 +128,7 @@ public/vfs/courses/
 ```json
 {
   "version": "7.7.0",
-  "course": "spa_for_eng_s001-030",
+  "course": "spa_for_eng_s0001-0030",
   "target_language": "spa",
   "known_language": "eng",
   "seed_range": {
@@ -167,7 +167,7 @@ public/vfs/courses/
 ```json
 {
   "version": "7.7.0",
-  "course": "spa_for_eng_s001-030",
+  "course": "spa_for_eng_s0001-0030",
   "target_language": "spa",
   "known_language": "eng",
   "generated": "2025-11-09T20:30:12.456Z",
@@ -198,7 +198,7 @@ public/vfs/courses/
 ```json
 {
   "version": "7.7.0",
-  "course": "spa_for_eng_s001-030",
+  "course": "spa_for_eng_s0001-0030",
   "generated": "2025-11-09T21:45:33.789Z",
   "total_baskets": 30,
   "baskets": {
@@ -219,7 +219,7 @@ public/vfs/courses/
 {
   "version": "7.7.0",
   "seed_id": "S0001",
-  "course": "spa_for_eng_s001-030",
+  "course": "spa_for_eng_s0001-0030",
   "generated": "2025-11-09T21:45:33.789Z",
   "legos_used": ["L0001", "L0003", "L0012"],
   "practice_phrases": [
@@ -245,7 +245,7 @@ public/vfs/courses/
 ```json
 {
   "version": "7.7.0",
-  "course": "spa_for_eng_s001-030",
+  "course": "spa_for_eng_s0001-0030",
   "generated": "2025-11-09T22:00:00.000Z",
   "introductions": [
     {
@@ -269,7 +269,7 @@ public/vfs/courses/
 ```json
 {
   "version": "7.7.0",
-  "course": "spa_for_eng_s001-030",
+  "course": "spa_for_eng_s0001-0030",
   "compiled_at": "2025-11-09T22:30:00.000Z",
   "seed_count": 30,
   "lego_count": 87,
@@ -357,8 +357,8 @@ function generateCourseCode(target, known, startSeed, endSeed) {
 
 **Examples**:
 - `spa_for_eng` (full 1-668)
-- `spa_for_eng_s001-030` (test range)
-- `spa_for_eng_s100-200` (custom range)
+- `spa_for_eng_s0001-0030` (test range)
+- `spa_for_eng_s0100-0200` (custom range)
 
 ---
 
@@ -415,7 +415,7 @@ All JSON output files must include:
 - Sufficient for structure validation
 - NOT sufficient for LEGO pattern quality
 
-**Directory**: `{course_code}_s001-030/`
+**Directory**: `{course_code}_s0001-0030/`
 
 ### Production Courses (1-668 seeds)
 
@@ -431,7 +431,7 @@ All JSON output files must include:
 - Tests automation robustness
 - Produces complete, deployable courses
 
-**Directory**: `{course_code}/` or `{course_code}_s001-668/`
+**Directory**: `{course_code}/` or `{course_code}_s0001-0668/`
 
 ### Quality Validation Rules
 
@@ -461,8 +461,8 @@ Current courses (`spa_for_eng`, `zho_for_eng`) are implicitly full-range (1-668)
 
 If seed range clarity desired:
 ```
-spa_for_eng/           →  spa_for_eng_s001-668/  (or keep as is)
-zho_for_eng/           →  zho_for_eng_s001-668/  (or keep as is)
+spa_for_eng/           →  spa_for_eng_s0001-0668/  (or keep as is)
+zho_for_eng/           →  zho_for_eng_s0001-0668/  (or keep as is)
 ```
 
 **Recommendation**: Keep existing courses as-is, apply new naming only to new courses.
@@ -471,7 +471,7 @@ zho_for_eng/           →  zho_for_eng_s001-668/  (or keep as is)
 
 ## Summary of Key Decisions
 
-1. ✅ **Course naming**: `{target}_for_{known}_s{start}-{end}` (suffix only if not full range)
+1. ✅ **Course naming**: `{target}_for_{known}_s{start}-{end}` (4-digit zero-padding, suffix only if not full range)
 2. ✅ **Directory structure**: Separate directories for different seed ranges
 3. ✅ **Phase outputs**: Clearly defined file names and formats
 4. ✅ **Seed range presets**: Test (1-30), Medium (1-100), Full (1-668), Custom

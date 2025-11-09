@@ -1,0 +1,174 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0194",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "What are you looking for?",
+    "target": "¿Qué estás buscando?"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 535,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.589Z",
+    "curated_by": "Claude Code - Agent 10 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_10_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.589Z"
+  },
+  "S0068L01": {
+    "lego": [
+      "what",
+      "qué"
+    ],
+    "type": "A",
+    "available_legos": 535,
+    "practice_phrases": [
+      [
+        "what",
+        "qué",
+        null,
+        1
+      ],
+      [
+        "what I mean",
+        "lo que quiero decir",
+        null,
+        4
+      ],
+      [
+        "what are you doing today",
+        "qué estás haciendo hoy",
+        null,
+        4
+      ],
+      [
+        "what do you want",
+        "qué quieres",
+        null,
+        3
+      ],
+      [
+        "what's going to happen tomorrow",
+        "qué va a ocurrir mañana",
+        null,
+        4
+      ],
+      [
+        "what I need to do this afternoon",
+        "lo que necesito hacer esta tarde",
+        null,
+        6
+      ],
+      [
+        "what I wanted to say at the moment",
+        "lo que quería decir en este momento",
+        null,
+        8
+      ],
+      [
+        "I don't know what you're looking for at all",
+        "no sé qué estás buscando en absoluto",
+        null,
+        8
+      ],
+      [
+        "I'm sorry but I don't understand what you want",
+        "lo siento pero no comprendo qué quieres",
+        null,
+        9
+      ],
+      [
+        "what are you looking for",
+        "qué estás buscando",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0068L02": {
+    "lego": [
+      "are you looking for",
+      "estás buscando"
+    ],
+    "type": "M",
+    "available_legos": 535,
+    "practice_phrases": [
+      [
+        "are you looking for",
+        "estás buscando",
+        null,
+        1
+      ],
+      [
+        "what are you looking for",
+        "qué estás buscando",
+        null,
+        3
+      ],
+      [
+        "are you looking for something interesting",
+        "estás buscando algo interesante",
+        null,
+        4
+      ],
+      [
+        "are you looking for my friend",
+        "estás buscando a mi amigo",
+        null,
+        5
+      ],
+      [
+        "I think you're looking for the answer",
+        "pienso que estás buscando la respuesta",
+        null,
+        6
+      ],
+      [
+        "are you looking for someone who can help you today",
+        "estás buscando a alguien que pueda ayudarte hoy",
+        null,
+        9
+      ],
+      [
+        "I don't know what you're looking for at all",
+        "no sé qué estás buscando en absoluto",
+        null,
+        8
+      ],
+      [
+        "are you looking for something to do this evening",
+        "estás buscando algo que hacer esta noche",
+        null,
+        8
+      ],
+      [
+        "I'm sorry but I don't know what you're looking for",
+        "lo siento pero no sé qué estás buscando",
+        null,
+        10
+      ],
+      [
+        "What are you looking for?",
+        "¿Qué estás buscando?",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT"
+  }
+}

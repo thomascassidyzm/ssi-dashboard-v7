@@ -1,0 +1,511 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0118",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "Me siento mejor que como me sentía cuando estábamos en el pub.",
+    "known": "I feel better than I felt when we were in the pub."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 338,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.414Z",
+    "curated_by": "Claude Code - Agent 2 (converted from SEED_GROUPED format)",
+    "original_file": "agent_02_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.414Z"
+  },
+  "S0041L01": {
+    "lego": [
+      "I feel",
+      "me siento"
+    ],
+    "type": "M",
+    "available_legos": 119,
+    "practice_phrases": [
+      [
+        "I feel",
+        "me siento",
+        null,
+        1
+      ],
+      [
+        "I feel better",
+        "me siento mejor",
+        null,
+        2
+      ],
+      [
+        "I feel ready",
+        "me siento preparado",
+        null,
+        2
+      ],
+      [
+        "I feel better today",
+        "me siento mejor hoy",
+        null,
+        3
+      ],
+      [
+        "I don't feel ready",
+        "no me siento preparado",
+        null,
+        3
+      ],
+      [
+        "I feel better than yesterday",
+        "me siento mejor que ayer",
+        null,
+        4
+      ],
+      [
+        "I don't feel as if I were ready",
+        "no me siento como si estuviera preparado",
+        null,
+        5
+      ],
+      [
+        "I feel better today than yesterday",
+        "me siento mejor hoy que ayer",
+        null,
+        6
+      ],
+      [
+        "I feel ready",
+        "me siento preparado",
+        null,
+        3
+      ],
+      [
+        "I don't feel ready",
+        "no me siento preparado",
+        null,
+        4
+      ],
+      [
+        "I feel ready",
+        "me siento preparado",
+        null,
+        3
+      ],
+      [
+        "I don't feel ready",
+        "no me siento preparado",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 4,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0118 LEGOs only"
+  },
+  "S0029L02": {
+    "lego": [
+      "better",
+      "mejor"
+    ],
+    "type": "A",
+    "available_legos": 87,
+    "practice_phrases": [
+      [
+        "better",
+        "mejor",
+        null,
+        1
+      ],
+      [
+        "I feel better",
+        "me siento mejor",
+        null,
+        3
+      ],
+      [
+        "doing better",
+        "haciendo mejor",
+        null,
+        2
+      ],
+      [
+        "I'm doing better",
+        "lo estoy haciendo mejor",
+        null,
+        4
+      ],
+      [
+        "much better",
+        "mucho mejor",
+        null,
+        2
+      ],
+      [
+        "I feel much better",
+        "me siento mucho mejor",
+        null,
+        4
+      ],
+      [
+        "better today",
+        "mejor hoy",
+        null,
+        2
+      ],
+      [
+        "better than yesterday",
+        "mejor que ayer",
+        null,
+        3
+      ],
+      [
+        "I feel better today",
+        "me siento mejor hoy",
+        null,
+        4
+      ],
+      [
+        "I'm doing much better",
+        "estoy haciendo mucho mejor",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 0
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0118 LEGOs only"
+  },
+  "S0118L01": {
+    "lego": [
+      "than I felt",
+      "que como me sentía"
+    ],
+    "type": "M",
+    "available_legos": 336,
+    "practice_phrases": [
+      [
+        "than I felt",
+        "que como me sentía",
+        null,
+        1
+      ],
+      [
+        "better than I felt",
+        "mejor que como me sentía",
+        null,
+        3
+      ],
+      [
+        "I feel better than I felt",
+        "me siento mejor que como me sentía",
+        null,
+        4
+      ],
+      [
+        "much better than I felt",
+        "mucho mejor que como me sentía",
+        null,
+        4
+      ],
+      [
+        "I feel better than I felt yesterday",
+        "me siento mejor que como me sentía ayer",
+        null,
+        5
+      ],
+      [
+        "I'm doing better than I felt before",
+        "estoy haciendo mejor que como me sentía antes",
+        null,
+        6
+      ],
+      [
+        "I definitely feel better than I felt",
+        "definitivamente me siento mejor que como me sentía",
+        null,
+        5
+      ],
+      [
+        "I feel better than I felt last time",
+        "me siento mejor que como me sentía la última vez",
+        null,
+        7
+      ],
+      [
+        "I feel much better than I felt",
+        "me siento mucho mejor que como me sentía",
+        null,
+        5
+      ],
+      [
+        "I feel better now",
+        "me siento mejor ahora",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 6,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0118 LEGOs only"
+  },
+  "S0034L03": {
+    "lego": [
+      "when",
+      "cuando"
+    ],
+    "type": "A",
+    "available_legos": 98,
+    "practice_phrases": [
+      [
+        "when",
+        "cuando",
+        null,
+        1
+      ],
+      [
+        "when I learn",
+        "cuando aprender",
+        null,
+        2
+      ],
+      [
+        "when I speak",
+        "cuando hablar",
+        null,
+        2
+      ],
+      [
+        "when I'm ready",
+        "cuando estoy preparado",
+        null,
+        3
+      ],
+      [
+        "when I want to learn",
+        "cuando quiero aprender",
+        null,
+        4
+      ],
+      [
+        "when I'm trying to speak",
+        "cuando estoy intentar hablar",
+        null,
+        4
+      ],
+      [
+        "when I speak",
+        "cuando hablar",
+        null,
+        2
+      ],
+      [
+        "when I'm ready",
+        "cuando estoy preparado",
+        null,
+        3
+      ],
+      [
+        "when I want to learn",
+        "cuando quiero aprender",
+        null,
+        4
+      ],
+      [
+        "when I'm trying to speak",
+        "cuando estoy intentar hablar",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 0
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0118 LEGOs only"
+  },
+  "S0118L02": {
+    "lego": [
+      "we were",
+      "estábamos"
+    ],
+    "type": "A",
+    "available_legos": 337,
+    "practice_phrases": [
+      [
+        "we were",
+        "estábamos",
+        null,
+        1
+      ],
+      [
+        "when we were",
+        "cuando estábamos",
+        null,
+        2
+      ],
+      [
+        "we were learning",
+        "estábamos aprender",
+        null,
+        2
+      ],
+      [
+        "when we were learning",
+        "cuando estábamos aprender",
+        null,
+        3
+      ],
+      [
+        "we were talking about something",
+        "estábamos hablar de algo",
+        null,
+        4
+      ],
+      [
+        "we were learning something new",
+        "estábamos aprender algo nuevo",
+        null,
+        4
+      ],
+      [
+        "when we were speaking",
+        "cuando estábamos hablar",
+        null,
+        3
+      ],
+      [
+        "we were doing something",
+        "estábamos haciendo algo",
+        null,
+        3
+      ],
+      [
+        "we were speaking",
+        "estábamos hablar",
+        null,
+        2
+      ],
+      [
+        "when we were speaking",
+        "cuando estábamos hablar",
+        null,
+        3
+      ],
+      [
+        "we were speaking",
+        "estábamos hablar",
+        null,
+        2
+      ],
+      [
+        "when we were speaking",
+        "cuando estábamos hablar",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 5,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0118 LEGOs only"
+  },
+  "S0118L03": {
+    "lego": [
+      "in the pub",
+      "en el pub"
+    ],
+    "type": "M",
+    "available_legos": 338,
+    "practice_phrases": [
+      [
+        "in the pub",
+        "en el pub",
+        null,
+        1
+      ],
+      [
+        "we were in the pub",
+        "estábamos en el pub",
+        null,
+        3
+      ],
+      [
+        "when we were in the pub",
+        "cuando estábamos en el pub",
+        null,
+        4
+      ],
+      [
+        "I was ready in the pub",
+        "estaba preparado en el pub",
+        null,
+        5
+      ],
+      [
+        "I felt better in the pub",
+        "me sentía mejor en el pub",
+        null,
+        5
+      ],
+      [
+        "we were talking in the pub",
+        "estábamos hablar en el pub",
+        null,
+        5
+      ],
+      [
+        "I remember when we were in the pub",
+        "recordar cuando estábamos en el pub",
+        null,
+        6
+      ],
+      [
+        "that was interesting when we were in the pub",
+        "eso fue interesante cuando estábamos en el pub",
+        null,
+        7
+      ],
+      [
+        "I feel better than I felt when we were in the pub",
+        "me siento mejor que como me sentía cuando estábamos en el pub",
+        null,
+        9
+      ],
+      [
+        "talking in the pub",
+        "hablar en el pub",
+        null,
+        4
+      ],
+      [
+        "I feel better than I felt when we were in the pub.",
+        "Me siento mejor que como me sentía cuando estábamos en el pub.",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 5,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0118 LEGOs only"
+  }
+}

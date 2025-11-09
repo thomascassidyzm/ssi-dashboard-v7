@@ -1,0 +1,245 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0240",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "My father doesn't like to stop talking.",
+    "target": "A mi padre no le gusta dejar de hablar."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.611Z",
+    "curated_by": "Claude Code - Agent 14 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_14_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.611Z"
+  },
+  "S0240L01": {
+    "lego": [
+      "my father",
+      "a mi padre"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "my father",
+        "a mi padre",
+        null,
+        1
+      ],
+      [
+        "I know my father",
+        "Conozco a mi padre",
+        null,
+        3
+      ],
+      [
+        "My father works here",
+        "Mi padre trabaja aquí",
+        null,
+        3
+      ],
+      [
+        "My father can speak Spanish",
+        "Mi padre puede hablar español",
+        null,
+        4
+      ],
+      [
+        "My father wanted to help",
+        "Mi padre quería ayudar",
+        null,
+        4
+      ],
+      [
+        "My father can speak Spanish very well",
+        "Mi padre puede hablar español muy bien",
+        null,
+        6
+      ],
+      [
+        "My father wanted to help before the weekend",
+        "Mi padre quería ayudar antes del fin de semana",
+        null,
+        7
+      ],
+      [
+        "My father was going to try to help",
+        "Mi padre iba a intentar ayudar",
+        null,
+        6
+      ],
+      [
+        "My father wanted to speak with you yesterday",
+        "Mi padre quería hablar contigo ayer",
+        null,
+        6
+      ],
+      [
+        "I met someone who knows my father",
+        "Conocí a alguien que conoce a mi padre",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    }
+  },
+  "S0240L02": {
+    "lego": [
+      "doesn't like",
+      "no le gusta"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "doesn't like",
+        "no le gusta",
+        null,
+        2
+      ],
+      [
+        "My father doesn't like",
+        "A mi padre no le gusta",
+        null,
+        4
+      ],
+      [
+        "He doesn't like to speak",
+        "No le gusta hablar",
+        null,
+        4
+      ],
+      [
+        "My father doesn't like to help",
+        "A mi padre no le gusta ayudar",
+        null,
+        5
+      ],
+      [
+        "She doesn't like to learn",
+        "No le gusta aprender",
+        null,
+        4
+      ],
+      [
+        "My father doesn't like to speak Spanish",
+        "A mi padre no le gusta hablar español",
+        null,
+        6
+      ],
+      [
+        "He doesn't like to work",
+        "No le gusta trabajar",
+        null,
+        4
+      ],
+      [
+        "My father doesn't like to speak with you",
+        "A mi padre no le gusta hablar contigo",
+        null,
+        6
+      ],
+      [
+        "My father doesn't like to ask for help",
+        "A mi padre no le gusta pedir ayuda",
+        null,
+        6
+      ],
+      [
+        "I know someone who doesn't like to speak Spanish",
+        "Conozco a alguien que no le gusta hablar español",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 5,
+      "long_6_plus": 4
+    }
+  },
+  "S0240L03": {
+    "lego": [
+      "to stop talking",
+      "dejar de hablar"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "to stop talking",
+        "dejar de hablar",
+        null,
+        2
+      ],
+      [
+        "I don't like to stop talking",
+        "No me gusta dejar de hablar",
+        null,
+        5
+      ],
+      [
+        "My father doesn't like to stop talking",
+        "A mi padre no le gusta dejar de hablar",
+        null,
+        6
+      ],
+      [
+        "I wanted to stop talking",
+        "Quería dejar de hablar",
+        null,
+        3
+      ],
+      [
+        "My father doesn't like to stop talking.",
+        "A mi padre no le gusta dejar de hablar.",
+        null,
+        6
+      ],
+      [
+        "I'm not going to stop talking",
+        "No voy a dejar de hablar",
+        null,
+        5
+      ],
+      [
+        "He doesn't like to stop talking",
+        "No le gusta dejar de hablar",
+        null,
+        5
+      ],
+      [
+        "I don't want to stop talking",
+        "No quiero dejar de hablar",
+        null,
+        5
+      ],
+      [
+        "I wanted to stop talking before the weekend",
+        "Quería dejar de hablar antes del fin de semana",
+        null,
+        7
+      ],
+      [
+        "My father doesn't like to stop talking.",
+        "A mi padre no le gusta dejar de hablar.",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "full_seed_included": "YES"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0232",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I know an old woman who can remember the answer.",
+    "target": "Conozco a una mujer vieja que puede recordar la respuesta."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.610Z",
+    "curated_by": "Claude Code - Agent 14 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_14_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.610Z"
+  },
+  "S0232L02": {
+    "lego": [
+      "an old woman",
+      "una mujer vieja"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "an old woman",
+        "Una mujer vieja",
+        null,
+        1
+      ],
+      [
+        "I know an old woman",
+        "Conozco a una mujer vieja",
+        null,
+        2
+      ],
+      [
+        "an old woman who works",
+        "una mujer vieja que trabaja",
+        null,
+        3
+      ],
+      [
+        "I know an old woman who works",
+        "Conozco a una mujer vieja que trabaja",
+        null,
+        4
+      ],
+      [
+        "an old woman who can remember",
+        "una mujer vieja que puede recordar",
+        null,
+        4
+      ],
+      [
+        "I know an old woman who can help",
+        "Conozco a una mujer vieja que puede ayudar",
+        null,
+        5
+      ],
+      [
+        "I know an old woman who speaks Spanish",
+        "Conozco a una mujer vieja que habla español",
+        null,
+        6
+      ],
+      [
+        "I know an old woman who wanted to learn Spanish",
+        "Conozco a una mujer vieja que quería aprender español",
+        null,
+        7
+      ],
+      [
+        "I know an old woman who can speak Spanish very well",
+        "Conozco a una mujer vieja que puede hablar español muy bien",
+        null,
+        8
+      ],
+      [
+        "I know an old woman who wanted to ask for help",
+        "Conozco a una mujer vieja que quería pedir ayuda",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    }
+  },
+  "S0232L04": {
+    "lego": [
+      "can remember",
+      "puede recordar"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "can remember",
+        "puede recordar",
+        null,
+        1
+      ],
+      [
+        "I can remember",
+        "Puedo recordar",
+        null,
+        2
+      ],
+      [
+        "I can remember the answer",
+        "Puedo recordar la respuesta",
+        null,
+        3
+      ],
+      [
+        "someone who can remember",
+        "alguien que puede recordar",
+        null,
+        3
+      ],
+      [
+        "I can remember the whole sentence",
+        "Puedo recordar toda la oración",
+        null,
+        4
+      ],
+      [
+        "someone who can remember the answer",
+        "alguien que puede recordar la respuesta",
+        null,
+        4
+      ],
+      [
+        "I know someone who can remember the answer",
+        "Conozco a alguien que puede recordar la respuesta",
+        null,
+        6
+      ],
+      [
+        "an old woman who can remember the answer",
+        "una mujer vieja que puede recordar la respuesta",
+        null,
+        6
+      ],
+      [
+        "I wanted to be able to remember the answer",
+        "Quería poder recordar la respuesta",
+        null,
+        6
+      ],
+      [
+        "I know an old woman who can remember the answer.",
+        "Conozco a una mujer vieja que puede recordar la respuesta.",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "full_seed_included": "YES"
+  }
+}

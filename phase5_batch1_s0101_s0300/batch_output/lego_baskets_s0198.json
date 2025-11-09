@@ -1,0 +1,253 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0198",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "My daughter works for the council.",
+    "target": "Mi hija trabaja para el consejo."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 545,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.590Z",
+    "curated_by": "Claude Code - Agent 10 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_10_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.590Z"
+  },
+  "S0198L01": {
+    "lego": [
+      "my daughter",
+      "mi hija"
+    ],
+    "type": "M",
+    "new": true,
+    "available_legos": 544,
+    "practice_phrases": [
+      [
+        "my daughter",
+        "mi hija",
+        null,
+        1
+      ],
+      [
+        "my daughter works here",
+        "mi hija trabaja aquí",
+        null,
+        3
+      ],
+      [
+        "I think my daughter wants to learn",
+        "pienso que mi hija quiere aprender",
+        null,
+        6
+      ],
+      [
+        "I think my daughter wants to help",
+        "pienso que mi hija quiere ayudar",
+        null,
+        7
+      ],
+      [
+        "my daughter works for the council",
+        "mi hija trabaja para el consejo",
+        null,
+        5
+      ],
+      [
+        "my daughter is trying to learn Spanish at night",
+        "mi hija está intentando aprender español por la noche",
+        null,
+        9
+      ],
+      [
+        "I want to know if my daughter wants to speak with you",
+        "quiero saber si mi hija quiere hablar contigo",
+        null,
+        10
+      ],
+      [
+        "my daughter doesn't mind working all day at the moment",
+        "a mi hija no le importa trabajar todo el día en este momento",
+        null,
+        12
+      ],
+      [
+        "I think my daughter wants to speak with you",
+        "pienso que mi hija quiere hablar contigo",
+        null,
+        7
+      ],
+      [
+        "my daughter works for the council",
+        "mi hija trabaja para el consejo",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0197L02": {
+    "lego": [
+      "works",
+      "trabaja"
+    ],
+    "type": "A",
+    "available_legos": 544,
+    "practice_phrases": [
+      [
+        "works",
+        "trabaja",
+        null,
+        1
+      ],
+      [
+        "my daughter works",
+        "mi hija trabaja",
+        null,
+        2
+      ],
+      [
+        "she works here",
+        "ella trabaja aquí",
+        null,
+        3
+      ],
+      [
+        "he works at night",
+        "él trabaja por la noche",
+        null,
+        4
+      ],
+      [
+        "my daughter works for the council",
+        "mi hija trabaja para el consejo",
+        null,
+        5
+      ],
+      [
+        "my friend works in an office every day",
+        "mi amigo trabaja en una oficina todo el día",
+        null,
+        8
+      ],
+      [
+        "I think she works too much this week",
+        "pienso que trabaja demasiado esta semana",
+        null,
+        7
+      ],
+      [
+        "he works for the council but he wants something else",
+        "trabaja para el consejo pero quiere algo más",
+        null,
+        10
+      ],
+      [
+        "I don't know if she works tomorrow at all",
+        "no sé si trabaja mañana en absoluto",
+        null,
+        8
+      ],
+      [
+        "my daughter works for the council",
+        "mi hija trabaja para el consejo",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0198L02": {
+    "lego": [
+      "for the council",
+      "para el consejo"
+    ],
+    "type": "M",
+    "new": true,
+    "available_legos": 545,
+    "practice_phrases": [
+      [
+        "for the council",
+        "para el consejo",
+        null,
+        1
+      ],
+      [
+        "I work for the council",
+        "trabajo para el consejo",
+        null,
+        4
+      ],
+      [
+        "my daughter works for the council",
+        "mi hija trabaja para el consejo",
+        null,
+        5
+      ],
+      [
+        "he wants to work for the council",
+        "quiere trabajar para el consejo",
+        null,
+        6
+      ],
+      [
+        "I used to work for the council",
+        "solía trabajar para el consejo",
+        null,
+        5
+      ],
+      [
+        "my friend is trying to work for the council",
+        "mi amigo está intentando trabajar para el consejo",
+        null,
+        9
+      ],
+      [
+        "I think that working for the council is interesting",
+        "pienso que trabajar para el consejo es interesante",
+        null,
+        9
+      ],
+      [
+        "I'd like to be able to work for the council",
+        "me gustaría poder trabajar para el consejo",
+        null,
+        10
+      ],
+      [
+        "my daughter works for the council but she wants something else",
+        "mi hija trabaja para el consejo pero quiere algo más",
+        null,
+        9
+      ],
+      [
+        "My daughter works for the council.",
+        "Mi hija trabaja para el consejo.",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 6
+    },
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT"
+  }
+}

@@ -1,0 +1,470 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0231",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I know an old man who wanted to ask for help.",
+    "target": "Conozco a un hombre viejo que quería pedir ayuda."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.609Z",
+    "curated_by": "Claude Code - Agent 14 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_14_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.610Z"
+  },
+  "S0230L01": {
+    "lego": [
+      "I know",
+      "conozco a"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I know",
+        "Conozco a",
+        null,
+        1
+      ],
+      [
+        "I know someone",
+        "Conozco a alguien",
+        null,
+        2
+      ],
+      [
+        "I know someone who works",
+        "Conozco a alguien que trabaja",
+        null,
+        4
+      ],
+      [
+        "I know someone who wants to help",
+        "Conozco a alguien que quiere ayudar",
+        null,
+        5
+      ],
+      [
+        "I know someone who can speak Spanish",
+        "Conozco a alguien que puede hablar español",
+        null,
+        6
+      ],
+      [
+        "I know someone who wanted to learn Spanish",
+        "Conozco a alguien que quería aprender español",
+        null,
+        6
+      ],
+      [
+        "I know someone who can help you today",
+        "Conozco a alguien que puede ayudarte hoy",
+        null,
+        6
+      ],
+      [
+        "I know someone who was going to try to help",
+        "Conozco a alguien que iba a intentar ayudar",
+        null,
+        7
+      ],
+      [
+        "I know someone who wanted to speak with you",
+        "Conozco a alguien que quería hablar contigo",
+        null,
+        6
+      ],
+      [
+        "I know someone who can speak Spanish very well",
+        "Conozco a alguien que puede hablar español muy bien",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    }
+  },
+  "S0231L02": {
+    "lego": [
+      "an old man",
+      "un hombre viejo"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "an old man",
+        "Un hombre viejo",
+        null,
+        1
+      ],
+      [
+        "I know an old man",
+        "Conozco a un hombre viejo",
+        null,
+        2
+      ],
+      [
+        "an old man who works",
+        "un hombre viejo que trabaja",
+        null,
+        3
+      ],
+      [
+        "I know an old man who works",
+        "Conozco a un hombre viejo que trabaja",
+        null,
+        4
+      ],
+      [
+        "I know an old man who can help",
+        "Conozco a un hombre viejo que puede ayudar",
+        null,
+        5
+      ],
+      [
+        "an old man who wanted to learn Spanish",
+        "un hombre viejo que quería aprender español",
+        null,
+        5
+      ],
+      [
+        "I know an old man who speaks Spanish very well",
+        "Conozco a un hombre viejo que habla español muy bien",
+        null,
+        6
+      ],
+      [
+        "I know an old man who wanted to learn",
+        "Conozco a un hombre viejo que quería aprender",
+        null,
+        6
+      ],
+      [
+        "I know an old man who can speak Spanish with you",
+        "Conozco a un hombre viejo que puede hablar español contigo",
+        null,
+        7
+      ],
+      [
+        "I know an old man who wanted to help",
+        "Conozco a un hombre viejo que quería ayudar",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    }
+  },
+  "S0230L03": {
+    "lego": [
+      "who",
+      "que"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "who",
+        "que",
+        null,
+        1
+      ],
+      [
+        "someone who works",
+        "alguien que trabaja",
+        null,
+        2
+      ],
+      [
+        "someone who can help",
+        "alguien que puede ayudar",
+        null,
+        3
+      ],
+      [
+        "I know someone who works here",
+        "Conozco a alguien que trabaja aquí",
+        null,
+        4
+      ],
+      [
+        "an old man who wanted to learn",
+        "un hombre viejo que quería aprender",
+        null,
+        5
+      ],
+      [
+        "I know someone who can speak Spanish",
+        "Conozco a alguien que puede hablar español",
+        null,
+        6
+      ],
+      [
+        "I know an old man who wanted to help",
+        "Conozco a un hombre viejo que quería ayudar",
+        null,
+        6
+      ],
+      [
+        "I know someone who was going to try to help",
+        "Conozco a alguien que iba a intentar ayudar",
+        null,
+        7
+      ],
+      [
+        "I know an old man who wanted to learn Spanish",
+        "Conozco a un hombre viejo que quería aprender español",
+        null,
+        7
+      ],
+      [
+        "I know someone who can speak Spanish very well",
+        "Conozco a alguien que puede hablar español muy bien",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    }
+  },
+  "S0231L04": {
+    "lego": [
+      "wanted",
+      "quería"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "wanted",
+        "quería",
+        null,
+        1
+      ],
+      [
+        "I wanted to help",
+        "Quería ayudar",
+        null,
+        2
+      ],
+      [
+        "I wanted to learn Spanish",
+        "Quería aprender español",
+        null,
+        3
+      ],
+      [
+        "I wanted to speak with you",
+        "Quería hablar contigo",
+        null,
+        4
+      ],
+      [
+        "I wanted to be able to help",
+        "Quería poder ayudar",
+        null,
+        5
+      ],
+      [
+        "someone who wanted to learn Spanish",
+        "alguien que quería aprender español",
+        null,
+        5
+      ],
+      [
+        "I know an old man who wanted to learn",
+        "Conozco a un hombre viejo que quería aprender",
+        null,
+        6
+      ],
+      [
+        "I wanted to be able to speak Spanish",
+        "Quería poder hablar español",
+        null,
+        6
+      ],
+      [
+        "I know someone who wanted to learn Spanish",
+        "Conozco a alguien que quería aprender español",
+        null,
+        6
+      ],
+      [
+        "I know an old man who wanted to speak Spanish with you",
+        "Conozco a un hombre viejo que quería hablar español contigo",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    }
+  },
+  "S0231L05": {
+    "lego": [
+      "to ask",
+      "pedir"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to ask",
+        "pedir",
+        null,
+        1
+      ],
+      [
+        "to ask for help",
+        "pedir ayuda",
+        null,
+        2
+      ],
+      [
+        "I wanted to ask",
+        "Quería pedir",
+        null,
+        2
+      ],
+      [
+        "I wanted to ask for help",
+        "Quería pedir ayuda",
+        null,
+        3
+      ],
+      [
+        "I'm going to ask for help",
+        "Voy a pedir ayuda",
+        null,
+        4
+      ],
+      [
+        "someone who wanted to ask for help",
+        "alguien que quería pedir ayuda",
+        null,
+        5
+      ],
+      [
+        "I know someone who wanted to ask for help",
+        "Conozco a alguien que quería pedir ayuda",
+        null,
+        6
+      ],
+      [
+        "I wanted to ask for help before I had to go",
+        "Quería pedir ayuda antes de que tenga que ir",
+        null,
+        8
+      ],
+      [
+        "I know an old man who wanted to ask for help",
+        "Conozco a un hombre viejo que quería pedir ayuda",
+        null,
+        7
+      ],
+      [
+        "I wanted to be able to ask for help in Spanish",
+        "Quería poder pedir ayuda en español",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0212L03": {
+    "lego": [
+      "help",
+      "ayuda"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "help",
+        "ayuda",
+        null,
+        1
+      ],
+      [
+        "to ask for help",
+        "pedir ayuda",
+        null,
+        2
+      ],
+      [
+        "I wanted to ask for help",
+        "Quería pedir ayuda",
+        null,
+        3
+      ],
+      [
+        "I'm going to ask for help",
+        "Voy a pedir ayuda",
+        null,
+        4
+      ],
+      [
+        "someone who wanted to ask for help",
+        "alguien que quería pedir ayuda",
+        null,
+        5
+      ],
+      [
+        "I know someone who wanted to ask for help",
+        "Conozco a alguien que quería pedir ayuda",
+        null,
+        6
+      ],
+      [
+        "an old man who wanted to ask for help",
+        "un hombre viejo que quería pedir ayuda",
+        null,
+        6
+      ],
+      [
+        "I wanted to be able to ask for help",
+        "Quería poder pedir ayuda",
+        null,
+        6
+      ],
+      [
+        "I wanted to ask for help before I had to go",
+        "Quería pedir ayuda antes de que tenga que ir",
+        null,
+        8
+      ],
+      [
+        "I know an old man who wanted to ask for help.",
+        "Conozco a un hombre viejo que quería pedir ayuda.",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "full_seed_included": "YES"
+  }
+}

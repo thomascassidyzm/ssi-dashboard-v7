@@ -1,0 +1,410 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0117",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "Definitivamente lo estoy haciendo mejor que la última vez que hablamos.",
+    "known": "I'm definitely doing better than I was last time we talked to each other."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 335,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.413Z",
+    "curated_by": "Claude Code - Agent 2 (converted from SEED_GROUPED format)",
+    "original_file": "agent_02_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.413Z"
+  },
+  "S0117L01": {
+    "lego": [
+      "definitely",
+      "definitivamente"
+    ],
+    "type": "A",
+    "available_legos": 332,
+    "practice_phrases": [
+      [
+        "definitely",
+        "definitivamente",
+        null,
+        1
+      ],
+      [
+        "definitely better",
+        "definitivamente mejor",
+        null,
+        2
+      ],
+      [
+        "I'm definitely ready",
+        "estoy definitivamente preparado",
+        null,
+        3
+      ],
+      [
+        "I definitely want to learn",
+        "definitivamente quiero aprender",
+        null,
+        4
+      ],
+      [
+        "I'm definitely doing better",
+        "estoy definitivamente haciendo mejor",
+        null,
+        4
+      ],
+      [
+        "that was definitely interesting",
+        "eso fue definitivamente interesante",
+        null,
+        4
+      ],
+      [
+        "I'm definitely doing better today",
+        "estoy definitivamente haciendo mejor hoy",
+        null,
+        5
+      ],
+      [
+        "I definitely feel as if I were ready",
+        "definitivamente siento como si estuviera preparado",
+        null,
+        5
+      ],
+      [
+        "that was definitely the best choice",
+        "eso fue definitivamente la mejor opción",
+        null,
+        6
+      ],
+      [
+        "I definitely want to have a conversation",
+        "definitivamente quiero para tener una conversación",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 6,
+      "long_6_plus": 1
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0117 LEGOs only"
+  },
+  "S0117L02": {
+    "lego": [
+      "I'm doing it",
+      "lo estoy haciendo"
+    ],
+    "type": "M",
+    "available_legos": 333,
+    "practice_phrases": [
+      [
+        "I'm doing it",
+        "lo estoy haciendo",
+        null,
+        1
+      ],
+      [
+        "I'm doing it better",
+        "lo estoy haciendo mejor",
+        null,
+        3
+      ],
+      [
+        "I'm definitely doing it",
+        "definitivamente lo estoy haciendo",
+        null,
+        3
+      ],
+      [
+        "I'm doing it today",
+        "lo estoy haciendo hoy",
+        null,
+        3
+      ],
+      [
+        "I'm doing it better than yesterday",
+        "lo estoy haciendo mejor que ayer",
+        null,
+        5
+      ],
+      [
+        "I'm definitely doing it better",
+        "definitivamente lo estoy haciendo mejor",
+        null,
+        4
+      ],
+      [
+        "I'm doing it worse than before",
+        "lo estoy haciendo peor que antes",
+        null,
+        5
+      ],
+      [
+        "I feel as if I were doing it better",
+        "siento como si estuviera lo haciendo mejor",
+        null,
+        6
+      ],
+      [
+        "I'm not sure if I'm doing it well",
+        "no estoy seguro si lo estoy haciendo bien",
+        null,
+        7
+      ],
+      [
+        "I'm definitely doing it better than yesterday",
+        "definitivamente lo estoy haciendo mejor que ayer",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0117 LEGOs only"
+  },
+  "S0029L02": {
+    "lego": [
+      "better",
+      "mejor"
+    ],
+    "type": "A",
+    "available_legos": 87,
+    "practice_phrases": [
+      [
+        "better",
+        "mejor",
+        null,
+        1
+      ],
+      [
+        "better",
+        "mejor",
+        null,
+        1
+      ],
+      [
+        "better today",
+        "mejor hoy",
+        null,
+        2
+      ],
+      [
+        "better",
+        "mejor",
+        null,
+        1
+      ],
+      [
+        "better today",
+        "mejor hoy",
+        null,
+        2
+      ],
+      [
+        "I feel better",
+        "me siento mejor",
+        null,
+        3
+      ],
+      [
+        "doing better",
+        "haciendo mejor",
+        null,
+        2
+      ],
+      [
+        "I'm doing better",
+        "lo estoy haciendo mejor",
+        null,
+        4
+      ],
+      [
+        "much better",
+        "mucho mejor",
+        null,
+        2
+      ],
+      [
+        "I feel much better",
+        "me siento mucho mejor",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0117 LEGOs only"
+  },
+  "S0117L03": {
+    "lego": [
+      "than last time",
+      "que la última vez"
+    ],
+    "type": "M",
+    "available_legos": 334,
+    "practice_phrases": [
+      [
+        "than last time",
+        "que la última vez",
+        null,
+        1
+      ],
+      [
+        "better than last time",
+        "mejor que la última vez",
+        null,
+        3
+      ],
+      [
+        "I'm doing better than last time",
+        "estoy haciendo mejor que la última vez",
+        null,
+        5
+      ],
+      [
+        "I'm definitely doing better than last time",
+        "estoy definitivamente haciendo mejor que la última vez",
+        null,
+        6
+      ],
+      [
+        "I'm doing it better than last time",
+        "lo estoy haciendo mejor que la última vez",
+        null,
+        5
+      ],
+      [
+        "that was better than last time",
+        "eso fue mejor que la última vez",
+        null,
+        6
+      ],
+      [
+        "I feel better than last time",
+        "me siento mejor que la última vez",
+        null,
+        5
+      ],
+      [
+        "I'm speaking better than last time",
+        "estoy hablar mejor que la última vez",
+        null,
+        5
+      ],
+      [
+        "this is definitely better than last time",
+        "esta es definitivamente mejor que la última vez",
+        null,
+        7
+      ],
+      [
+        "I wasn't expecting it last time",
+        "no estaba esperándolo la última vez",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 5,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0117 LEGOs only"
+  },
+  "S0117L04": {
+    "lego": [
+      "we talked",
+      "que hablamos"
+    ],
+    "type": "M",
+    "available_legos": 335,
+    "practice_phrases": [
+      [
+        "we talked",
+        "que hablamos",
+        null,
+        1
+      ],
+      [
+        "when we talked",
+        "cuando que hablamos",
+        null,
+        2
+      ],
+      [
+        "last time we talked",
+        "la última vez que hablamos",
+        null,
+        4
+      ],
+      [
+        "better than last time we talked",
+        "mejor que la última vez que hablamos",
+        null,
+        6
+      ],
+      [
+        "I remember when we talked",
+        "recordar cuando que hablamos",
+        null,
+        3
+      ],
+      [
+        "I'm doing better than last time we talked",
+        "estoy haciendo mejor que la última vez que hablamos",
+        null,
+        7
+      ],
+      [
+        "that was interesting when we talked",
+        "eso fue interesante cuando que hablamos",
+        null,
+        5
+      ],
+      [
+        "I wasn't expecting it when we talked",
+        "no estaba esperándolo cuando que hablamos",
+        null,
+        5
+      ],
+      [
+        "I was doing worse last time we talked",
+        "estaba haciendo peor la última vez que hablamos",
+        null,
+        7
+      ],
+      [
+        "I feel better than when we talked",
+        "me siento mejor que cuando hablamos",
+        null,
+        6
+      ],
+      [
+        "I'm definitely doing better than I was last time we talked to each other.",
+        "Definitivamente lo estoy haciendo mejor que la última vez que hablamos.",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0117 LEGOs only"
+  }
+}

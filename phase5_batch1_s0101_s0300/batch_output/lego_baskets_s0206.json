@@ -1,0 +1,551 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0206",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "Disfruto la oportunidad de practicar hablar contigo.",
+    "known": "I enjoy the chance to practise speaking with you."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.532Z",
+    "curated_by": "Claude Code - Agent 11 (converted from SEED_GROUPED format)",
+    "original_file": "agent_11_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.532Z"
+  },
+  "S0051L01": {
+    "lego": [
+      "I enjoy",
+      "disfruto"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "I enjoy",
+        "disfruto",
+        null,
+        1
+      ],
+      [
+        "I enjoy speaking",
+        "disfruto hablar",
+        null,
+        2
+      ],
+      [
+        "I enjoy learning Spanish",
+        "disfruto aprender español",
+        null,
+        3
+      ],
+      [
+        "I enjoy speaking with you",
+        "disfruto hablar contigo",
+        null,
+        3
+      ],
+      [
+        "I enjoy speaking Spanish with you",
+        "disfruto hablar español contigo",
+        null,
+        4
+      ],
+      [
+        "I enjoy the chance to practise",
+        "disfruto la oportunidad de practicar",
+        null,
+        5
+      ],
+      [
+        "I enjoy the chance to speak with you",
+        "disfruto la oportunidad de hablar contigo",
+        null,
+        6
+      ],
+      [
+        "I enjoy practising Spanish as often as possible",
+        "disfruto practicar español lo más frecuentemente posible",
+        null,
+        6
+      ],
+      [
+        "I enjoy the chance to practise speaking with you",
+        "disfruto la oportunidad de practicar hablar contigo",
+        null,
+        7
+      ],
+      [
+        "I enjoy having the chance to speak Spanish now",
+        "disfruto tener la oportunidad de hablar español ahora",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0051L01 LEGOs only"
+  },
+  "S0202L06": {
+    "lego": [
+      "the",
+      "la"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "speaking",
+        "hablar",
+        null,
+        1
+      ],
+      [
+        "speaking Spanish",
+        "hablar español",
+        null,
+        2
+      ],
+      [
+        "I enjoy speaking with you",
+        "disfruto hablar contigo",
+        null,
+        3
+      ],
+      [
+        "I want to practise speaking Spanish",
+        "quiero practicar hablar español",
+        null,
+        4
+      ],
+      [
+        "I enjoy the chance to practise speaking",
+        "disfruto la oportunidad de practicar hablar",
+        null,
+        5
+      ],
+      [
+        "I was trying to practise speaking as often as possible",
+        "estaba intentando practicar hablar lo más frecuentemente posible",
+        null,
+        7
+      ],
+      [
+        "I enjoy the chance to practise speaking with you",
+        "disfruto la oportunidad de practicar hablar contigo",
+        null,
+        7
+      ],
+      [
+        "I enjoy speaking",
+        "disfruto hablar",
+        null,
+        2
+      ],
+      [
+        "practising speaking",
+        "practicar hablar",
+        null,
+        2
+      ],
+      [
+        "I enjoy practising speaking Spanish with you",
+        "disfruto practicar hablar español contigo",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0202L06 LEGOs only"
+  },
+  "S0206L03": {
+    "lego": [
+      "chance",
+      "oportunidad"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "chance",
+        "oportunidad",
+        null,
+        1
+      ],
+      [
+        "the chance",
+        "la oportunidad",
+        null,
+        2
+      ],
+      [
+        "I enjoy the chance",
+        "disfruto la oportunidad",
+        null,
+        3
+      ],
+      [
+        "the chance to practise",
+        "la oportunidad de practicar",
+        null,
+        3
+      ],
+      [
+        "I enjoy the chance to speak",
+        "disfruto la oportunidad de hablar",
+        null,
+        4
+      ],
+      [
+        "I want the chance to help you",
+        "quiero la oportunidad de ayudarte",
+        null,
+        5
+      ],
+      [
+        "I enjoy having the chance to learn Spanish",
+        "disfruto tener la oportunidad de aprender español",
+        null,
+        6
+      ],
+      [
+        "I enjoy the chance to practise speaking with you",
+        "disfruto la oportunidad de practicar hablar contigo",
+        null,
+        7
+      ],
+      [
+        "I wanted to have the chance to speak with you",
+        "quería tener la oportunidad de hablar contigo",
+        null,
+        8
+      ],
+      [
+        "I enjoy the chance to practise Spanish",
+        "disfruto la oportunidad de practicar español",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0206L03 LEGOs only"
+  },
+  "S0126L05": {
+    "lego": [
+      "to",
+      "de"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to practise",
+        "practicar",
+        null,
+        1
+      ],
+      [
+        "practising Spanish",
+        "practicar español",
+        null,
+        2
+      ],
+      [
+        "the chance to practise",
+        "la oportunidad de practicar",
+        null,
+        3
+      ],
+      [
+        "I enjoy practising with you",
+        "disfruto practicar contigo",
+        null,
+        3
+      ],
+      [
+        "I enjoy the chance to practise",
+        "disfruto la oportunidad de practicar",
+        null,
+        4
+      ],
+      [
+        "I want to practise speaking Spanish",
+        "quiero practicar hablar español",
+        null,
+        4
+      ],
+      [
+        "I enjoy practising Spanish as often as possible",
+        "disfruto practicar español lo más frecuentemente posible",
+        null,
+        6
+      ],
+      [
+        "we want to spend more time practising Spanish",
+        "queremos pasar más tiempo practicando español",
+        null,
+        6
+      ],
+      [
+        "I enjoy the chance to practise speaking with you",
+        "disfruto la oportunidad de practicar hablar contigo",
+        null,
+        7
+      ],
+      [
+        "I enjoy the chance to practise speaking",
+        "disfruto la oportunidad de practicar hablar",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0126L05 LEGOs only"
+  },
+  "S0206L05": {
+    "lego": [
+      "to practise",
+      "practicar"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to practise",
+        "practicar",
+        null,
+        1
+      ],
+      [
+        "practising Spanish",
+        "practicar español",
+        null,
+        2
+      ],
+      [
+        "the chance to practise",
+        "la oportunidad de practicar",
+        null,
+        3
+      ],
+      [
+        "I enjoy practising with you",
+        "disfruto practicar contigo",
+        null,
+        3
+      ],
+      [
+        "I enjoy the chance to practise",
+        "disfruto la oportunidad de practicar",
+        null,
+        4
+      ],
+      [
+        "I want to practise speaking Spanish",
+        "quiero practicar hablar español",
+        null,
+        4
+      ],
+      [
+        "I enjoy practising Spanish as often as possible",
+        "disfruto practicar español lo más frecuentemente posible",
+        null,
+        6
+      ],
+      [
+        "we want to spend more time practising Spanish",
+        "queremos pasar más tiempo practicando español",
+        null,
+        6
+      ],
+      [
+        "I enjoy the chance to practise speaking with you",
+        "disfruto la oportunidad de practicar hablar contigo",
+        null,
+        7
+      ],
+      [
+        "I enjoy the chance to practise speaking",
+        "disfruto la oportunidad de practicar hablar",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0206L05 LEGOs only"
+  },
+  "S0001L02": {
+    "lego": [
+      "speaking",
+      "hablar"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "the",
+        "la",
+        null,
+        1
+      ],
+      [
+        "the chance",
+        "la oportunidad",
+        null,
+        2
+      ],
+      [
+        "I enjoy the chance",
+        "disfruto la oportunidad",
+        null,
+        3
+      ],
+      [
+        "I want the chance to help",
+        "quiero la oportunidad de ayudar",
+        null,
+        5
+      ],
+      [
+        "I enjoy the chance to practise",
+        "disfruto la oportunidad de practicar",
+        null,
+        5
+      ],
+      [
+        "I enjoy the chance to speak with you",
+        "disfruto la oportunidad de hablar contigo",
+        null,
+        6
+      ],
+      [
+        "I wasn't sure how to answer the question",
+        "no estaba seguro cómo responder la pregunta",
+        null,
+        6
+      ],
+      [
+        "I wanted to have the chance to help you",
+        "quería tener la oportunidad de ayudarte",
+        null,
+        7
+      ],
+      [
+        "I enjoy the chance to practise speaking Spanish",
+        "disfruto la oportunidad de practicar hablar español",
+        null,
+        7
+      ],
+      [
+        "I've forgotten the word I wanted",
+        "he olvidado la palabra que quería",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0001L02 LEGOs only"
+  },
+  "S0001L04": {
+    "lego": [
+      "with you",
+      "contigo"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to",
+        "de",
+        null,
+        1
+      ],
+      [
+        "the chance to",
+        "la oportunidad de",
+        null,
+        3
+      ],
+      [
+        "the chance to practise",
+        "la oportunidad de practicar",
+        null,
+        3
+      ],
+      [
+        "I'm sure of that",
+        "estoy seguro de eso",
+        null,
+        4
+      ],
+      [
+        "I enjoy the chance to speak",
+        "disfruto la oportunidad de hablar",
+        null,
+        4
+      ],
+      [
+        "I wasn't sure of how to help",
+        "no estaba seguro de cómo ayudar",
+        null,
+        6
+      ],
+      [
+        "I want to know more of what happened",
+        "quiero saber más de qué pasó",
+        null,
+        6
+      ],
+      [
+        "I enjoy the chance to practise speaking with you",
+        "disfruto la oportunidad de practicar hablar contigo",
+        null,
+        7
+      ],
+      [
+        "I wasn't sure of how to answer the question",
+        "no estaba seguro de cómo responder la pregunta",
+        null,
+        8
+      ],
+      [
+        "I enjoy the chance to practise speaking with you.",
+        "Disfruto la oportunidad de practicar hablar contigo.",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0001L04 LEGOs only"
+  }
+}

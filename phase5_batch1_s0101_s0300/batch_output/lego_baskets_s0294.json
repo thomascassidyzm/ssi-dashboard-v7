@@ -1,0 +1,284 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0294",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "",
+    "target": ""
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.676Z",
+    "curated_by": "Claude Code - Agent 20 (converted from special format)",
+    "original_file": "agent_20_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.676Z",
+    "notes": "Agent 20 GATE violations fixed per report (2 violations corrected)"
+  },
+  "S0294L01": {
+    "lego": [
+      "I don't have",
+      "no tengo"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I don't have",
+        "No tengo",
+        1
+      ],
+      [
+        "I don't have time",
+        "No tengo tiempo",
+        2
+      ],
+      [
+        "I don't have enough time",
+        "No tengo suficiente tiempo",
+        3
+      ],
+      [
+        "I don't have to speak",
+        "No tengo que hablar",
+        4
+      ],
+      [
+        "I don't have time to speak",
+        "No tengo tiempo para hablar",
+        5
+      ],
+      [
+        "I don't have enough time to come",
+        "No tengo suficiente tiempo para venir",
+        6
+      ],
+      [
+        "I don't have time to speak with you today",
+        "No tengo tiempo para hablar contigo hoy",
+        8
+      ],
+      [
+        "I don't have enough time to speak Spanish",
+        "No tengo suficiente tiempo para hablar español",
+        7
+      ],
+      [
+        "I don't have time to find out where to meet",
+        "No tengo tiempo para descubrir dónde reunirse",
+        9
+      ],
+      [
+        "I don't have enough time to learn how to speak better",
+        "No tengo suficiente tiempo para aprender cómo hablar mejor",
+        11
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0294L01 LEGOs only"
+  },
+  "S0294L02": {
+    "lego": [
+      "enough",
+      "suficiente"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "enough",
+        "suficiente",
+        1
+      ],
+      [
+        "enough time",
+        "suficiente tiempo",
+        2
+      ],
+      [
+        "I don't have enough",
+        "No tengo suficiente",
+        3
+      ],
+      [
+        "I don't have enough time",
+        "No tengo suficiente tiempo",
+        4
+      ],
+      [
+        "I don't have enough time to speak",
+        "No tengo suficiente tiempo para hablar",
+        6
+      ],
+      [
+        "I want to have enough time",
+        "Quiero tener suficiente tiempo",
+        5
+      ],
+      [
+        "I don't have enough time to come to the party",
+        "No tengo suficiente tiempo para venir a la fiesta",
+        9
+      ],
+      [
+        "I hope I'll have enough time to speak with you",
+        "Espero tener suficiente tiempo para hablar contigo",
+        8
+      ],
+      [
+        "I don't have enough time to learn Spanish today",
+        "No tengo suficiente tiempo para aprender español hoy",
+        9
+      ],
+      [
+        "I'm trying to have enough time to practise speaking",
+        "Estoy intentando tener suficiente tiempo para practicar hablar",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0294L02 LEGOs only"
+  },
+  "S0294L05": {
+    "lego": [
+      "call you",
+      "llamarte"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "call you",
+        "llamarte",
+        1
+      ],
+      [
+        "to call you",
+        "llamarte",
+        1
+      ],
+      [
+        "I want to call you",
+        "Quiero llamarte",
+        2
+      ],
+      [
+        "I have to call you",
+        "Tengo que llamarte",
+        3
+      ],
+      [
+        "I don't have time to call you",
+        "No tengo tiempo para llamarte",
+        6
+      ],
+      [
+        "I'm going to try to call you",
+        "Voy a intentar llamarte",
+        5
+      ],
+      [
+        "I don't have enough time to call you",
+        "No tengo suficiente tiempo para llamarte",
+        7
+      ],
+      [
+        "I want to be able to call you soon",
+        "Quiero poder llamarte pronto",
+        6
+      ],
+      [
+        "I hope I'll have time to call you today",
+        "Espero tener tiempo para llamarte hoy",
+        8
+      ],
+      [
+        "I'm trying to find time to call you and speak",
+        "Estoy intentando descubrir tiempo para llamarte y hablar",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0294L05 LEGOs only"
+  },
+  "S0294L06": {
+    "lego": [
+      "tonight",
+      "esta noche"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "tonight",
+        "esta noche",
+        1
+      ],
+      [
+        "to speak tonight",
+        "hablar esta noche",
+        3
+      ],
+      [
+        "I want to speak tonight",
+        "Quiero hablar esta noche",
+        4
+      ],
+      [
+        "I have to call you tonight",
+        "Tengo que llamarte esta noche",
+        5
+      ],
+      [
+        "I don't have time to call you tonight",
+        "No tengo tiempo para llamarte esta noche",
+        8
+      ],
+      [
+        "I'm going to try to speak Spanish tonight",
+        "Voy a intentar hablar español esta noche",
+        8
+      ],
+      [
+        "I hope I can speak with you tonight",
+        "Espero poder hablar contigo esta noche",
+        7
+      ],
+      [
+        "I want to be able to meet with you tonight",
+        "Quiero poder reunirse contigo esta noche",
+        8
+      ],
+      [
+        "I don't have enough time to come to the party tonight",
+        "No tengo suficiente tiempo para venir a la fiesta esta noche",
+        11
+      ],
+      [
+        "I don't have enough time to call you tonight.",
+        "No tengo suficiente tiempo para llamarte esta noche.",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0294L06 LEGOs only"
+  }
+}

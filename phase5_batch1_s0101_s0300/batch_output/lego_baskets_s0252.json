@@ -1,0 +1,244 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0252",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "¿Cuándo estarás preparado para empezar?",
+    "known": "When will you be ready to start?"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.631Z",
+    "curated_by": "Claude Code - Agent 16 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_16_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.631Z"
+  },
+  "S0079L01": {
+    "lego": [
+      "when",
+      "cuándo"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "when",
+        "cuándo",
+        null,
+        1
+      ],
+      [
+        "when you want",
+        "cuándo quieres",
+        null,
+        2
+      ],
+      [
+        "When do you want to speak?",
+        "¿Cuándo quieres hablar?",
+        null,
+        3
+      ],
+      [
+        "When are you going to start?",
+        "¿Cuándo vas a comenzar?",
+        null,
+        4
+      ],
+      [
+        "When did you start to learn Spanish?",
+        "¿Cuándo comenzaste a aprender español?",
+        null,
+        5
+      ],
+      [
+        "When are you going to speak with your friend?",
+        "¿Cuándo vas a hablar con tu amigo?",
+        null,
+        7
+      ],
+      [
+        "I don't know when I'm going to be ready to start",
+        "No sé cuándo voy a estar preparado para comenzar",
+        null,
+        9
+      ],
+      [
+        "When are you going to help me learn Spanish?",
+        "¿Cuándo vas a ayudarme aprender español?",
+        null,
+        7
+      ],
+      [
+        "I'm not sure when I'm going to be ready",
+        "No estoy seguro cuándo voy a estar preparado",
+        null,
+        8
+      ],
+      [
+        "When are you going to be ready to speak Spanish with me?",
+        "¿Cuándo vas a estar preparado para hablar español conmigo?",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0252L02": {
+    "lego": [
+      "will you be ready",
+      "estarás preparado"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "will you be ready",
+        "estarás preparado",
+        null,
+        1
+      ],
+      [
+        "When will you be ready?",
+        "¿Cuándo estarás preparado?",
+        null,
+        2
+      ],
+      [
+        "Will you be ready to speak?",
+        "¿Estarás preparado para hablar?",
+        null,
+        3
+      ],
+      [
+        "Will you be ready to start today?",
+        "¿Estarás preparado para comenzar hoy?",
+        null,
+        4
+      ],
+      [
+        "When will you be ready to start learning?",
+        "¿Cuándo estarás preparado para comenzar aprender?",
+        null,
+        5
+      ],
+      [
+        "Will you be ready to speak with me soon?",
+        "¿Estarás preparado para hablar conmigo pronto?",
+        null,
+        6
+      ],
+      [
+        "When will you be ready to speak Spanish with your friend?",
+        "¿Cuándo estarás preparado para hablar español con tu amigo?",
+        null,
+        8
+      ],
+      [
+        "I don't know when you'll be ready to start learning Spanish",
+        "No sé cuándo estarás preparado para comenzar aprender español",
+        null,
+        9
+      ],
+      [
+        "Will you be ready to speak Spanish with me tomorrow?",
+        "¿Estarás preparado para hablar español conmigo mañana?",
+        null,
+        8
+      ],
+      [
+        "Will you be ready to practise speaking Spanish with me this afternoon?",
+        "¿Estarás preparado para practicar hablar español conmigo esta tarde?",
+        null,
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0252L03": {
+    "lego": [
+      "to start",
+      "para empezar"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "to start",
+        "para empezar",
+        null,
+        1
+      ],
+      [
+        "I'm ready to start",
+        "Estoy preparado para empezar",
+        null,
+        2
+      ],
+      [
+        "When will you be ready to start?",
+        "¿Cuándo estarás preparado para empezar?",
+        null,
+        3
+      ],
+      [
+        "I want to be ready to start",
+        "Quiero estar preparado para empezar",
+        null,
+        4
+      ],
+      [
+        "I'm not ready to start learning Spanish",
+        "No estoy preparado para empezar aprender español",
+        null,
+        5
+      ],
+      [
+        "When will you be ready to start speaking Spanish?",
+        "¿Cuándo estarás preparado para empezar hablar español?",
+        null,
+        6
+      ],
+      [
+        "I want to be ready to start speaking with you soon",
+        "Quiero estar preparado para empezar hablar contigo pronto",
+        null,
+        8
+      ],
+      [
+        "I'm going to be ready to start learning Spanish tomorrow",
+        "Voy a estar preparado para empezar aprender español mañana",
+        null,
+        9
+      ],
+      [
+        "I'm going to be ready to start practising Spanish soon",
+        "Voy a estar preparado para empezar practicar español pronto",
+        null,
+        9
+      ],
+      [
+        "When will you be ready to start?",
+        "¿Cuándo estarás preparado para empezar?",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  }
+}

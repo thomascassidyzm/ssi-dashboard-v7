@@ -1,0 +1,176 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0196",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "Have you heard the latest idea?",
+    "target": "¿Has oído la última idea?"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 540,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.590Z",
+    "curated_by": "Claude Code - Agent 10 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_10_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.590Z"
+  },
+  "S0196L01": {
+    "lego": [
+      "have you heard",
+      "has oído"
+    ],
+    "type": "M",
+    "new": true,
+    "available_legos": 539,
+    "practice_phrases": [
+      [
+        "have you heard",
+        "has oído",
+        null,
+        1
+      ],
+      [
+        "have you heard the idea",
+        "has oído la idea",
+        null,
+        4
+      ],
+      [
+        "have you heard about that",
+        "has oído sobre eso",
+        null,
+        4
+      ],
+      [
+        "have you heard the latest idea",
+        "has oído la última idea",
+        null,
+        4
+      ],
+      [
+        "have you heard about this today",
+        "has oído sobre esto hoy",
+        null,
+        5
+      ],
+      [
+        "have you heard what I wanted to say",
+        "has oído lo que quería decir",
+        null,
+        7
+      ],
+      [
+        "have you heard the story that everyone is talking about",
+        "has oído la historia que todos están hablando",
+        null,
+        10
+      ],
+      [
+        "I don't know if you've heard the latest idea",
+        "no sé si has oído la última idea",
+        null,
+        9
+      ],
+      [
+        "have you heard what's going to happen tomorrow night",
+        "has oído lo que va a ocurrir mañana por la noche",
+        null,
+        10
+      ],
+      [
+        "have you heard the latest idea",
+        "has oído la última idea",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 5,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0196L02": {
+    "lego": [
+      "the latest idea",
+      "la última idea"
+    ],
+    "type": "M",
+    "new": true,
+    "available_legos": 540,
+    "practice_phrases": [
+      [
+        "the latest idea",
+        "la última idea",
+        null,
+        1
+      ],
+      [
+        "have you heard the latest idea",
+        "has oído la última idea",
+        null,
+        4
+      ],
+      [
+        "I like the latest idea",
+        "me gusta la última idea",
+        null,
+        4
+      ],
+      [
+        "what's the latest idea",
+        "cuál es la última idea",
+        null,
+        4
+      ],
+      [
+        "I think the latest idea is good",
+        "pienso que la última idea es buena",
+        null,
+        7
+      ],
+      [
+        "I don't understand the latest idea at all",
+        "no comprendo la última idea en absoluto",
+        null,
+        7
+      ],
+      [
+        "I want to know what the latest idea is",
+        "quiero saber cuál es la última idea",
+        null,
+        8
+      ],
+      [
+        "I'm trying to explain the latest idea to everyone else",
+        "estoy intentando explicar la última idea a todos los demás",
+        null,
+        10
+      ],
+      [
+        "have you heard the latest idea about what we need to do",
+        "has oído la última idea sobre lo que necesitamos hacer",
+        null,
+        12
+      ],
+      [
+        "Have you heard the latest idea?",
+        "¿Has oído la última idea?",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 5
+    },
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT"
+  }
+}

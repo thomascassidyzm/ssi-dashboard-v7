@@ -173,8 +173,8 @@ function getLanguageName(code) {
  *
  * Examples:
  *   spa_for_eng (full 1-668)
- *   spa_for_eng_s001-030 (test range)
- *   spa_for_eng_s100-200 (custom range)
+ *   spa_for_eng_s0001-0030 (test range)
+ *   spa_for_eng_s0100-0200 (custom range)
  */
 function generateCourseCode(target, known, startSeed, endSeed) {
   const baseCode = `${target}_for_${known}`;
@@ -184,9 +184,9 @@ function generateCourseCode(target, known, startSeed, endSeed) {
     return baseCode;
   }
 
-  // Custom range: add suffix
-  const start = String(startSeed).padStart(3, '0');
-  const end = String(endSeed).padStart(3, '0');
+  // Custom range: add suffix with 4-digit zero-padding (matches seed ID format S0001-S0668)
+  const start = String(startSeed).padStart(4, '0');
+  const end = String(endSeed).padStart(4, '0');
   return `${baseCode}_s${start}-${end}`;
 }
 

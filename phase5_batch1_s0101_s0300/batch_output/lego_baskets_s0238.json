@@ -1,0 +1,95 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0238",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "He wanted you to tell me yesterday.",
+    "target": "Quería que me dijeras ayer."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.611Z",
+    "curated_by": "Claude Code - Agent 14 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_14_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.611Z"
+  },
+  "S0238L02": {
+    "lego": [
+      "you to tell me",
+      "me dijeras"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "you to tell me",
+        "me dijeras",
+        null,
+        2
+      ],
+      [
+        "I wanted you to help me",
+        "Quería que me ayudaras",
+        null,
+        4
+      ],
+      [
+        "wanted you to tell me",
+        "quería que me dijeras",
+        null,
+        4
+      ],
+      [
+        "He wanted you to tell me",
+        "Quería que me dijeras",
+        null,
+        5
+      ],
+      [
+        "I wanted you to help me yesterday",
+        "Quería que me ayudaras ayer",
+        null,
+        5
+      ],
+      [
+        "He wanted you to tell me something",
+        "Quería que me dijeras algo",
+        null,
+        6
+      ],
+      [
+        "I wanted you to tell me yesterday",
+        "Quería que me dijeras ayer",
+        null,
+        5
+      ],
+      [
+        "He wanted you to tell me yesterday.",
+        "Quería que me dijeras ayer.",
+        null,
+        5
+      ],
+      [
+        "I wanted you to help me before the weekend",
+        "Quería que me ayudaras antes del fin de semana",
+        null,
+        7
+      ],
+      [
+        "He wanted you to tell me yesterday.",
+        "Quería que me dijeras ayer.",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 5
+    },
+    "full_seed_included": "YES"
+  }
+}

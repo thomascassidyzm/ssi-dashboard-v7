@@ -1,0 +1,218 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0296",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "",
+    "target": ""
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.676Z",
+    "curated_by": "Claude Code - Agent 20 (converted from special format)",
+    "original_file": "agent_20_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.676Z",
+    "notes": "Agent 20 GATE violations fixed per report (2 violations corrected)"
+  },
+  "S0296L01": {
+    "lego": [
+      "I said",
+      "dije"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "I said",
+        "Dije",
+        1
+      ],
+      [
+        "I said that",
+        "Dije que",
+        2
+      ],
+      [
+        "I said I wanted",
+        "Dije que quería",
+        4
+      ],
+      [
+        "I said I needed",
+        "Dije que necesitaba",
+        3
+      ],
+      [
+        "I said that I wanted to speak",
+        "Dije que quería hablar",
+        6
+      ],
+      [
+        "I said I needed more time",
+        "Dije que necesitaba más tiempo",
+        6
+      ],
+      [
+        "I said that I needed a little more",
+        "Dije que necesitaba un poco más",
+        7
+      ],
+      [
+        "I said I wanted to finish in a day",
+        "Dije que quería terminar en un día",
+        9
+      ],
+      [
+        "I said that I needed time to learn Spanish",
+        "Dije que necesitaba tiempo para aprender español",
+        9
+      ],
+      [
+        "I said I wanted to be able to come tonight",
+        "Dije que quería poder venir esta noche",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0296L01 LEGOs only"
+  },
+  "S0296L03": {
+    "lego": [
+      "I needed",
+      "necesitaba"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "I needed",
+        "Necesitaba",
+        1
+      ],
+      [
+        "I needed time",
+        "Necesitaba tiempo",
+        2
+      ],
+      [
+        "I said I needed",
+        "Dije que necesitaba",
+        3
+      ],
+      [
+        "I needed more time",
+        "Necesitaba más tiempo",
+        3
+      ],
+      [
+        "I said I needed a little more",
+        "Dije que necesitaba un poco más",
+        6
+      ],
+      [
+        "I needed time to speak",
+        "Necesitaba tiempo para hablar",
+        5
+      ],
+      [
+        "I said that I needed more time to finish",
+        "Dije que necesitaba más tiempo para terminar",
+        8
+      ],
+      [
+        "I needed a little more time to learn",
+        "Necesitaba un poco más tiempo para aprender",
+        8
+      ],
+      [
+        "I said I needed enough time to speak Spanish",
+        "Dije que necesitaba suficiente tiempo para hablar español",
+        10
+      ],
+      [
+        "I needed to have time to call you tonight",
+        "Necesitaba tener tiempo para llamarte esta noche",
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0296L03 LEGOs only"
+  },
+  "S0296L04": {
+    "lego": [
+      "a little more",
+      "un poco más de"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "a little more",
+        "un poco más de",
+        1
+      ],
+      [
+        "I need a little more",
+        "Necesito un poco más de",
+        4
+      ],
+      [
+        "I needed a little more",
+        "Necesitaba un poco más de",
+        4
+      ],
+      [
+        "a little more time",
+        "un poco más de tiempo",
+        4
+      ],
+      [
+        "I said I needed a little more",
+        "Dije que necesitaba un poco más de",
+        7
+      ],
+      [
+        "I want a little more time",
+        "Quiero un poco más de tiempo",
+        6
+      ],
+      [
+        "I needed a little more time to speak",
+        "Necesitaba un poco más de tiempo para hablar",
+        9
+      ],
+      [
+        "I'm trying to speak a little more Spanish",
+        "Estoy intentando hablar un poco más español",
+        8
+      ],
+      [
+        "I said I needed a little more time to finish",
+        "Dije que necesitaba un poco más de tiempo para terminar",
+        11
+      ],
+      [
+        "I hope I'll have a little more time to learn",
+        "Espero tener un poco más de tiempo para aprender",
+        11
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0296L04 LEGOs only"
+  }
+}

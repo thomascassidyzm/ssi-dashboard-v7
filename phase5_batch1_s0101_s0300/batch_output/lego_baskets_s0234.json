@@ -1,0 +1,170 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0234",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I met someone last night who works with your brother.",
+    "target": "Conocí a alguien anoche que trabaja con tu hermano."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.610Z",
+    "curated_by": "Claude Code - Agent 14 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_14_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.610Z"
+  },
+  "S0234L01": {
+    "lego": [
+      "I met",
+      "conocí a"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I met",
+        "Conocí a",
+        null,
+        1
+      ],
+      [
+        "I met someone",
+        "Conocí a alguien",
+        null,
+        2
+      ],
+      [
+        "I met someone yesterday",
+        "Conocí a alguien ayer",
+        null,
+        3
+      ],
+      [
+        "I met someone who works",
+        "Conocí a alguien que trabaja",
+        null,
+        4
+      ],
+      [
+        "I met someone last night",
+        "Conocí a alguien anoche",
+        null,
+        4
+      ],
+      [
+        "I met someone who can speak Spanish",
+        "Conocí a alguien que puede hablar español",
+        null,
+        6
+      ],
+      [
+        "I met someone who wanted to help",
+        "Conocí a alguien que quería ayudar",
+        null,
+        5
+      ],
+      [
+        "I met someone who wanted to ask for help",
+        "Conocí a alguien que quería pedir ayuda",
+        null,
+        6
+      ],
+      [
+        "I met someone last night who can speak Spanish very well",
+        "Conocí a alguien anoche que puede hablar español muy bien",
+        null,
+        9
+      ],
+      [
+        "I met someone who works with your brother",
+        "Conocí a alguien que trabaja con tu hermano",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    }
+  },
+  "S0234L07": {
+    "lego": [
+      "your brother",
+      "tu hermano"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "your brother",
+        "tu hermano",
+        null,
+        1
+      ],
+      [
+        "I know your brother",
+        "Conozco a tu hermano",
+        null,
+        2
+      ],
+      [
+        "someone who knows your brother",
+        "alguien que conoce a tu hermano",
+        null,
+        3
+      ],
+      [
+        "I met someone who knows your brother",
+        "Conocí a alguien que conoce a tu hermano",
+        null,
+        5
+      ],
+      [
+        "works with your brother",
+        "trabaja con tu hermano",
+        null,
+        3
+      ],
+      [
+        "I know someone who works with your brother",
+        "Conozco a alguien que trabaja con tu hermano",
+        null,
+        5
+      ],
+      [
+        "I met someone last night who knows your brother",
+        "Conocí a alguien anoche que conoce a tu hermano",
+        null,
+        6
+      ],
+      [
+        "I wanted to speak with your brother",
+        "Quería hablar con tu hermano",
+        null,
+        4
+      ],
+      [
+        "I met someone last night who works with your brother.",
+        "Conocí a alguien anoche que trabaja con tu hermano.",
+        null,
+        6
+      ],
+      [
+        "I met someone last night who works with your brother.",
+        "Conocí a alguien anoche que trabaja con tu hermano.",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "full_seed_included": "YES"
+  }
+}

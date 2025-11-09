@@ -1,0 +1,551 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0209",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "Quieren pasar más tiempo reuniéndose como grupo.",
+    "known": "They want to spend more time meeting as a group."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.532Z",
+    "curated_by": "Claude Code - Agent 11 (converted from SEED_GROUPED format)",
+    "original_file": "agent_11_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.532Z"
+  },
+  "S0209L01": {
+    "lego": [
+      "they want",
+      "quieren"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "they want",
+        "quieren",
+        null,
+        1
+      ],
+      [
+        "they want to know",
+        "quieren saber",
+        null,
+        2
+      ],
+      [
+        "they want to help you",
+        "quieren ayudarte",
+        null,
+        3
+      ],
+      [
+        "they want to spend more time",
+        "quieren pasar más tiempo",
+        null,
+        4
+      ],
+      [
+        "they want to know what happened",
+        "quieren saber qué pasó",
+        null,
+        4
+      ],
+      [
+        "they want to know how to answer the question",
+        "quieren saber cómo responder la pregunta",
+        null,
+        6
+      ],
+      [
+        "they want to know what we need to do",
+        "quieren saber qué necesitamos hacer",
+        null,
+        6
+      ],
+      [
+        "they want to spend more time meeting as a group",
+        "quieren pasar más tiempo reuniéndose como grupo",
+        null,
+        7
+      ],
+      [
+        "they want to help you with that",
+        "quieren ayudarte con eso",
+        null,
+        5
+      ],
+      [
+        "they want to spend more time practising",
+        "quieren pasar más tiempo practicando",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0209L01 LEGOs only"
+  },
+  "S0209L02": {
+    "lego": [
+      "to spend",
+      "pasar"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to spend",
+        "pasar",
+        null,
+        1
+      ],
+      [
+        "to spend time",
+        "pasar tiempo",
+        null,
+        2
+      ],
+      [
+        "they want to spend time",
+        "quieren pasar tiempo",
+        null,
+        3
+      ],
+      [
+        "to spend more time",
+        "pasar más tiempo",
+        null,
+        3
+      ],
+      [
+        "they want to spend more time",
+        "quieren pasar más tiempo",
+        null,
+        4
+      ],
+      [
+        "they want to spend more time practising",
+        "quieren pasar más tiempo practicando",
+        null,
+        5
+      ],
+      [
+        "I want to spend more time with you",
+        "quiero pasar más tiempo contigo",
+        null,
+        6
+      ],
+      [
+        "we need to spend more time on that",
+        "necesitamos pasar más tiempo en eso",
+        null,
+        6
+      ],
+      [
+        "I enjoy spending time practising Spanish with you",
+        "disfruto pasar tiempo practicando español contigo",
+        null,
+        6
+      ],
+      [
+        "they want to spend more time meeting as a group",
+        "quieren pasar más tiempo reuniéndose como grupo",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0209L02 LEGOs only"
+  },
+  "S0023L02": {
+    "lego": [
+      "more",
+      "más"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to spend",
+        "pasar",
+        null,
+        1
+      ],
+      [
+        "to spend time",
+        "pasar tiempo",
+        null,
+        2
+      ],
+      [
+        "they want to spend time",
+        "quieren pasar tiempo",
+        null,
+        3
+      ],
+      [
+        "to spend more time",
+        "pasar más tiempo",
+        null,
+        3
+      ],
+      [
+        "they want to spend more time",
+        "quieren pasar más tiempo",
+        null,
+        4
+      ],
+      [
+        "they want to spend more time practising",
+        "quieren pasar más tiempo practicando",
+        null,
+        5
+      ],
+      [
+        "I want to spend more time with you",
+        "quiero pasar más tiempo contigo",
+        null,
+        6
+      ],
+      [
+        "we need to spend more time on that",
+        "necesitamos pasar más tiempo en eso",
+        null,
+        6
+      ],
+      [
+        "I enjoy spending time practising Spanish with you",
+        "disfruto pasar tiempo practicando español contigo",
+        null,
+        6
+      ],
+      [
+        "they want to spend more time meeting as a group",
+        "quieren pasar más tiempo reuniéndose como grupo",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0023L02 LEGOs only"
+  },
+  "S0178L02": {
+    "lego": [
+      "time",
+      "tiempo"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to spend",
+        "pasar",
+        null,
+        1
+      ],
+      [
+        "to spend time",
+        "pasar tiempo",
+        null,
+        2
+      ],
+      [
+        "they want to spend time",
+        "quieren pasar tiempo",
+        null,
+        3
+      ],
+      [
+        "to spend more time",
+        "pasar más tiempo",
+        null,
+        3
+      ],
+      [
+        "they want to spend more time",
+        "quieren pasar más tiempo",
+        null,
+        4
+      ],
+      [
+        "they want to spend more time practising",
+        "quieren pasar más tiempo practicando",
+        null,
+        5
+      ],
+      [
+        "I want to spend more time with you",
+        "quiero pasar más tiempo contigo",
+        null,
+        6
+      ],
+      [
+        "we need to spend more time on that",
+        "necesitamos pasar más tiempo en eso",
+        null,
+        6
+      ],
+      [
+        "I enjoy spending time practising Spanish with you",
+        "disfruto pasar tiempo practicando español contigo",
+        null,
+        6
+      ],
+      [
+        "they want to spend more time meeting as a group",
+        "quieren pasar más tiempo reuniéndose como grupo",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0178L02 LEGOs only"
+  },
+  "S0209L05": {
+    "lego": [
+      "meeting",
+      "reuniéndose"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "meeting",
+        "reuniéndose",
+        null,
+        1
+      ],
+      [
+        "meeting as a group",
+        "reuniéndose como grupo",
+        null,
+        3
+      ],
+      [
+        "they're meeting now",
+        "están reuniéndose ahora",
+        null,
+        3
+      ],
+      [
+        "they want to spend time meeting",
+        "quieren pasar tiempo reuniéndose",
+        null,
+        5
+      ],
+      [
+        "they want to spend more time meeting",
+        "quieren pasar más tiempo reuniéndose",
+        null,
+        5
+      ],
+      [
+        "they want to spend more time meeting as a group",
+        "quieren pasar más tiempo reuniéndose como grupo",
+        null,
+        7
+      ],
+      [
+        "I think they want to spend time meeting with us",
+        "pienso que quieren pasar tiempo reuniéndose con nosotros",
+        null,
+        8
+      ],
+      [
+        "spending time meeting",
+        "pasar tiempo reuniéndose",
+        null,
+        3
+      ],
+      [
+        "I enjoy meeting with you",
+        "disfruto reuniéndose contigo",
+        null,
+        3
+      ],
+      [
+        "we need to spend more time meeting",
+        "necesitamos pasar más tiempo reuniéndose",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 4,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0209L05 LEGOs only"
+  },
+  "S0128L02": {
+    "lego": [
+      "as",
+      "como"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to spend",
+        "pasar",
+        null,
+        1
+      ],
+      [
+        "to spend time",
+        "pasar tiempo",
+        null,
+        2
+      ],
+      [
+        "they want to spend time",
+        "quieren pasar tiempo",
+        null,
+        3
+      ],
+      [
+        "to spend more time",
+        "pasar más tiempo",
+        null,
+        3
+      ],
+      [
+        "they want to spend more time",
+        "quieren pasar más tiempo",
+        null,
+        4
+      ],
+      [
+        "they want to spend more time practising",
+        "quieren pasar más tiempo practicando",
+        null,
+        5
+      ],
+      [
+        "I want to spend more time with you",
+        "quiero pasar más tiempo contigo",
+        null,
+        6
+      ],
+      [
+        "we need to spend more time on that",
+        "necesitamos pasar más tiempo en eso",
+        null,
+        6
+      ],
+      [
+        "I enjoy spending time practising Spanish with you",
+        "disfruto pasar tiempo practicando español contigo",
+        null,
+        6
+      ],
+      [
+        "they want to spend more time meeting as a group",
+        "quieren pasar más tiempo reuniéndose como grupo",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0128L02 LEGOs only"
+  },
+  "S0209L07": {
+    "lego": [
+      "a group",
+      "grupo"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "a group",
+        "grupo",
+        null,
+        1
+      ],
+      [
+        "as a group",
+        "como grupo",
+        null,
+        2
+      ],
+      [
+        "meeting as a group",
+        "reuniéndose como grupo",
+        null,
+        3
+      ],
+      [
+        "they're working as a group",
+        "están trabajando como grupo",
+        null,
+        4
+      ],
+      [
+        "they want to meet as a group",
+        "quieren reunirse como grupo",
+        null,
+        5
+      ],
+      [
+        "they want to spend time meeting as a group",
+        "quieren pasar tiempo reuniéndose como grupo",
+        null,
+        6
+      ],
+      [
+        "we need to spend more time as a group",
+        "necesitamos pasar más tiempo como grupo",
+        null,
+        6
+      ],
+      [
+        "I think we need to work as a group",
+        "pienso que necesitamos trabajar como grupo",
+        null,
+        7
+      ],
+      [
+        "they want to spend more time meeting as a group",
+        "quieren pasar más tiempo reuniéndose como grupo",
+        null,
+        7
+      ],
+      [
+        "They want to spend more time meeting as a group.",
+        "Quieren pasar más tiempo reuniéndose como grupo.",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0209L07 LEGOs only"
+  }
+}

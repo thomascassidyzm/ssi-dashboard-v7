@@ -1,0 +1,475 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0205",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "He olvidado la palabra que estaba intentando decir.",
+    "known": "I've forgotten the word I was trying to say."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.531Z",
+    "curated_by": "Claude Code - Agent 11 (converted from SEED_GROUPED format)",
+    "original_file": "agent_11_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.531Z"
+  },
+  "S0205L01": {
+    "lego": [
+      "I've forgotten",
+      "he olvidado"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I've forgotten",
+        "he olvidado",
+        null,
+        1
+      ],
+      [
+        "I've forgotten how",
+        "he olvidado cómo",
+        null,
+        2
+      ],
+      [
+        "I've forgotten what you said",
+        "he olvidado qué dijiste",
+        null,
+        4
+      ],
+      [
+        "I've forgotten how to say it",
+        "he olvidado cómo decirlo",
+        null,
+        4
+      ],
+      [
+        "I've forgotten what I was trying to say",
+        "he olvidado qué estaba intentando decir",
+        null,
+        6
+      ],
+      [
+        "I've forgotten how to deal with the arrangements",
+        "he olvidado cómo tratar con los arreglos",
+        null,
+        6
+      ],
+      [
+        "I've forgotten the word I was trying to remember",
+        "he olvidado la palabra que estaba intentando recordar",
+        null,
+        7
+      ],
+      [
+        "I've forgotten what I was going to ask you",
+        "he olvidado qué iba a preguntarte",
+        null,
+        7
+      ],
+      [
+        "I've forgotten the word I wanted",
+        "he olvidado la palabra que quería",
+        null,
+        5
+      ],
+      [
+        "I've forgotten how to answer the question",
+        "he olvidado cómo responder la pregunta",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0205L01 LEGOs only"
+  },
+  "S0202L06": {
+    "lego": [
+      "the",
+      "la"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to say",
+        "decir",
+        null,
+        1
+      ],
+      [
+        "to say it",
+        "decirlo",
+        null,
+        2
+      ],
+      [
+        "I was trying to say",
+        "estaba intentando decir",
+        null,
+        3
+      ],
+      [
+        "I've forgotten how to say it",
+        "he olvidado cómo decirlo",
+        null,
+        4
+      ],
+      [
+        "the word I was trying to say",
+        "la palabra que estaba intentando decir",
+        null,
+        5
+      ],
+      [
+        "I want to know how to say that",
+        "quiero saber cómo decir eso",
+        null,
+        6
+      ],
+      [
+        "I wanted to know how to say the word",
+        "quería saber cómo decir la palabra",
+        null,
+        6
+      ],
+      [
+        "I've forgotten the word I was trying to say.",
+        "He olvidado la palabra que estaba intentando decir.",
+        null,
+        6
+      ],
+      [
+        "I wasn't sure how to say what I wanted",
+        "no estaba seguro cómo decir lo que quería",
+        null,
+        8
+      ],
+      [
+        "I've forgotten what I was trying to say",
+        "he olvidado qué estaba intentando decir",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0202L06 LEGOs only"
+  },
+  "S0205L03": {
+    "lego": [
+      "word",
+      "palabra"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "word",
+        "palabra",
+        null,
+        1
+      ],
+      [
+        "the word",
+        "la palabra",
+        null,
+        2
+      ],
+      [
+        "I've forgotten the word",
+        "he olvidado la palabra",
+        null,
+        3
+      ],
+      [
+        "I need to know that word",
+        "necesito saber esa palabra",
+        null,
+        5
+      ],
+      [
+        "I've forgotten the word I wanted",
+        "he olvidado la palabra que quería",
+        null,
+        5
+      ],
+      [
+        "I've forgotten the word I was trying to say",
+        "he olvidado la palabra que estaba intentando decir",
+        null,
+        7
+      ],
+      [
+        "I want to know how to say that word",
+        "quiero saber cómo decir esa palabra",
+        null,
+        7
+      ],
+      [
+        "I've forgotten the word I was trying to remember",
+        "he olvidado la palabra que estaba intentando recordar",
+        null,
+        7
+      ],
+      [
+        "I wasn't sure how to say the word I wanted",
+        "no estaba seguro cómo decir la palabra que quería",
+        null,
+        9
+      ],
+      [
+        "I was trying to remember the word",
+        "estaba intentando recordar la palabra",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0205L03 LEGOs only"
+  },
+  "S0102L02": {
+    "lego": [
+      "that",
+      "que"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "the",
+        "la",
+        null,
+        1
+      ],
+      [
+        "the word",
+        "la palabra",
+        null,
+        2
+      ],
+      [
+        "I've forgotten the word",
+        "he olvidado la palabra",
+        null,
+        3
+      ],
+      [
+        "I know the answer",
+        "sé la respuesta",
+        null,
+        3
+      ],
+      [
+        "I wanted to answer the question",
+        "quería responder la pregunta",
+        null,
+        4
+      ],
+      [
+        "I've forgotten the word I wanted",
+        "he olvidado la palabra que quería",
+        null,
+        5
+      ],
+      [
+        "I wasn't sure how to answer the question",
+        "no estaba seguro cómo responder la pregunta",
+        null,
+        6
+      ],
+      [
+        "I've forgotten the word I was trying to say",
+        "he olvidado la palabra que estaba intentando decir",
+        null,
+        7
+      ],
+      [
+        "I've forgotten the word I was trying to remember",
+        "he olvidado la palabra que estaba intentando recordar",
+        null,
+        7
+      ],
+      [
+        "we need to answer the question now",
+        "necesitamos responder la pregunta ahora",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0102L02 LEGOs only"
+  },
+  "S0205L05": {
+    "lego": [
+      "I was trying",
+      "estaba intentando"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I was trying",
+        "estaba intentando",
+        null,
+        1
+      ],
+      [
+        "I was trying to help",
+        "estaba intentando ayudar",
+        null,
+        3
+      ],
+      [
+        "I was trying to say it",
+        "estaba intentando decirlo",
+        null,
+        3
+      ],
+      [
+        "what I was trying to do",
+        "qué estaba intentando hacer",
+        null,
+        4
+      ],
+      [
+        "I was trying to speak Spanish with you",
+        "estaba intentando hablar español contigo",
+        null,
+        5
+      ],
+      [
+        "I was trying to answer the question you asked",
+        "estaba intentando responder la pregunta que preguntaste",
+        null,
+        7
+      ],
+      [
+        "I was trying to remember the word I wanted to use",
+        "estaba intentando recordar la palabra que quería usar",
+        null,
+        9
+      ],
+      [
+        "I was trying to help you with that",
+        "estaba intentando ayudarte con eso",
+        null,
+        5
+      ],
+      [
+        "the word I was trying to say",
+        "la palabra que estaba intentando decir",
+        null,
+        5
+      ],
+      [
+        "I've forgotten what I was trying to say",
+        "he olvidado qué estaba intentando decir",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 5,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0205L05 LEGOs only"
+  },
+  "S0004L01": {
+    "lego": [
+      "to say",
+      "decir"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "I've forgotten",
+        "he olvidado",
+        null,
+        1
+      ],
+      [
+        "I've forgotten how",
+        "he olvidado cómo",
+        null,
+        2
+      ],
+      [
+        "I've forgotten what you said",
+        "he olvidado qué dijiste",
+        null,
+        4
+      ],
+      [
+        "I've forgotten how to say it",
+        "he olvidado cómo decirlo",
+        null,
+        4
+      ],
+      [
+        "I've forgotten what I was trying to say",
+        "he olvidado qué estaba intentando decir",
+        null,
+        6
+      ],
+      [
+        "I've forgotten how to deal with the arrangements",
+        "he olvidado cómo tratar con los arreglos",
+        null,
+        6
+      ],
+      [
+        "I've forgotten the word I was trying to remember",
+        "he olvidado la palabra que estaba intentando recordar",
+        null,
+        7
+      ],
+      [
+        "I've forgotten what I was going to ask you",
+        "he olvidado qué iba a preguntarte",
+        null,
+        7
+      ],
+      [
+        "I've forgotten the word I wanted",
+        "he olvidado la palabra que quería",
+        null,
+        5
+      ],
+      [
+        "I've forgotten the word I was trying to say.",
+        "He olvidado la palabra que estaba intentando decir.",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0004L01 LEGOs only"
+  }
+}

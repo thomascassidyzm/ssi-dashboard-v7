@@ -1,0 +1,351 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0115",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "No siento como si estuviera preparado para tener una conversación.",
+    "known": "I don't feel as if I'm ready to have a conversation."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 327,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.413Z",
+    "curated_by": "Claude Code - Agent 2 (converted from SEED_GROUPED format)",
+    "original_file": "agent_02_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.413Z"
+  },
+  "S0115L01": {
+    "lego": [
+      "I don't feel as if I were",
+      "no siento como si estuviera"
+    ],
+    "type": "M",
+    "available_legos": 325,
+    "practice_phrases": [
+      [
+        "I don't feel as if I were",
+        "no siento como si estuviera",
+        null,
+        1
+      ],
+      [
+        "I don't feel as if I were ready",
+        "no siento como si estuviera preparado",
+        null,
+        3
+      ],
+      [
+        "I don't feel as if I were learning",
+        "no siento como si estuviera aprender",
+        null,
+        3
+      ],
+      [
+        "I don't feel as if I were doing better",
+        "no siento como si estuviera haciendo mejor",
+        null,
+        4
+      ],
+      [
+        "I don't feel as if I were speaking well",
+        "no siento como si estuviera hablar bien",
+        null,
+        4
+      ],
+      [
+        "I don't feel as if I were ready to speak",
+        "no siento como si estuviera preparado hablar",
+        null,
+        4
+      ],
+      [
+        "I don't feel as if I were doing worse today",
+        "no siento como si estuviera haciendo peor hoy",
+        null,
+        5
+      ],
+      [
+        "I don't feel as if I were ready for that",
+        "no siento como si estuviera preparado para eso",
+        null,
+        5
+      ],
+      [
+        "I don't feel as if I were learning something new",
+        "no siento como si estuviera aprender algo nuevo",
+        null,
+        5
+      ],
+      [
+        "I don't feel as if I were doing better today than yesterday",
+        "no siento como si estuviera haciendo mejor hoy que ayer",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 6,
+      "long_6_plus": 1
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0115 LEGOs only"
+  },
+  "S0026L05": {
+    "lego": [
+      "ready",
+      "preparado"
+    ],
+    "type": "A",
+    "available_legos": 78,
+    "practice_phrases": [
+      [
+        "ready",
+        "preparado",
+        null,
+        1
+      ],
+      [
+        "I'm ready",
+        "estoy preparado",
+        null,
+        2
+      ],
+      [
+        "I'm not ready",
+        "no estoy preparado",
+        null,
+        3
+      ],
+      [
+        "I'm ready to learn",
+        "estoy preparado aprender",
+        null,
+        3
+      ],
+      [
+        "I'm not ready to speak",
+        "no estoy preparado hablar",
+        null,
+        4
+      ],
+      [
+        "I'm not ready to speak Spanish with you",
+        "no estoy preparado hablar español contigo",
+        null,
+        6
+      ],
+      [
+        "I'm ready to speak Spanish",
+        "estoy preparado hablar español",
+        null,
+        4
+      ],
+      [
+        "I'm not ready",
+        "no estoy preparado",
+        null,
+        3
+      ],
+      [
+        "I'm not ready",
+        "no estoy preparado",
+        null,
+        3
+      ],
+      [
+        "when I'm ready",
+        "cuando estoy preparado",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
+      "longer_4_5": 3,
+      "long_6_plus": 1
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0115 LEGOs only"
+  },
+  "S0115L02": {
+    "lego": [
+      "to have",
+      "para tener"
+    ],
+    "type": "M",
+    "available_legos": 326,
+    "practice_phrases": [
+      [
+        "to have",
+        "para tener",
+        null,
+        1
+      ],
+      [
+        "I want to have",
+        "quiero para tener",
+        null,
+        3
+      ],
+      [
+        "I'm ready to have",
+        "estoy preparado para tener",
+        null,
+        3
+      ],
+      [
+        "I'm ready to have",
+        "estoy preparado para tener",
+        null,
+        4
+      ],
+      [
+        "I want to be ready to have",
+        "quiero estar preparado para tener",
+        null,
+        5
+      ],
+      [
+        "I don't want to have",
+        "no quiero para tener",
+        null,
+        4
+      ],
+      [
+        "to have something new",
+        "para tener algo nuevo",
+        null,
+        4
+      ],
+      [
+        "I'm not ready to have",
+        "no estoy preparado para tener",
+        null,
+        5
+      ],
+      [
+        "I want to be able to have",
+        "quiero poder para tener",
+        null,
+        5
+      ],
+      [
+        "when I'm ready to have",
+        "cuando estoy preparado para tener",
+        null,
+        5
+      ],
+      [
+        "I'm not ready to have",
+        "no estoy preparado para tener",
+        null,
+        5
+      ],
+      [
+        "I want to be able to have",
+        "quiero poder para tener",
+        null,
+        5
+      ],
+      [
+        "when I'm ready to have",
+        "cuando estoy preparado para tener",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 10,
+      "long_6_plus": 0
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0115 LEGOs only"
+  },
+  "S0115L03": {
+    "lego": [
+      "a conversation",
+      "una conversación"
+    ],
+    "type": "M",
+    "available_legos": 327,
+    "practice_phrases": [
+      [
+        "a conversation",
+        "una conversación",
+        null,
+        1
+      ],
+      [
+        "to have a conversation",
+        "para tener una conversación",
+        null,
+        2
+      ],
+      [
+        "I want a conversation",
+        "quiero una conversación",
+        null,
+        3
+      ],
+      [
+        "I'm ready to have a conversation",
+        "estoy preparado para tener una conversación",
+        null,
+        4
+      ],
+      [
+        "I want to have a conversation",
+        "quiero para tener una conversación",
+        null,
+        4
+      ],
+      [
+        "I'm not ready to have a conversation",
+        "no estoy preparado para tener una conversación",
+        null,
+        5
+      ],
+      [
+        "I don't feel ready to have a conversation",
+        "no siento preparado para tener una conversación",
+        null,
+        5
+      ],
+      [
+        "I want to have a conversation with you",
+        "quiero para tener una conversación contigo",
+        null,
+        5
+      ],
+      [
+        "I'm trying to have a conversation in Spanish",
+        "estoy intentando para tener una conversación en español",
+        null,
+        6
+      ],
+      [
+        "I want to be able to have a conversation with you",
+        "quiero poder para tener una conversación contigo",
+        null,
+        7
+      ],
+      [
+        "I don't feel as if I'm ready to have a conversation.",
+        "No siento como si estuviera preparado para tener una conversación.",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 6,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0115 LEGOs only"
+  }
+}

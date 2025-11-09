@@ -1,0 +1,245 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0237",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "He wanted me to tell you before the weekend.",
+    "target": "Quería que te dijera antes del fin de semana."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.611Z",
+    "curated_by": "Claude Code - Agent 14 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_14_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.611Z"
+  },
+  "S0237L01": {
+    "lego": [
+      "he wanted",
+      "quería que"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "he wanted",
+        "quería que",
+        null,
+        1
+      ],
+      [
+        "he wanted me to",
+        "quería que",
+        null,
+        2
+      ],
+      [
+        "He wanted to help",
+        "Quería ayudar",
+        null,
+        2
+      ],
+      [
+        "He wanted to help",
+        "Quería ayudar",
+        null,
+        2
+      ],
+      [
+        "He wanted someone to help",
+        "Quería que alguien ayudara",
+        null,
+        3
+      ],
+      [
+        "I wanted to be able to help",
+        "Quería poder ayudar",
+        null,
+        4
+      ],
+      [
+        "I met someone who wanted to help",
+        "Conocí a alguien que quería ayudar",
+        null,
+        6
+      ],
+      [
+        "I know someone who wanted to speak with you",
+        "Conozco a alguien que quería hablar contigo",
+        null,
+        6
+      ],
+      [
+        "I wanted to speak with you before the weekend",
+        "Quería hablar contigo antes del fin de semana",
+        null,
+        6
+      ],
+      [
+        "I know someone who wanted to speak with your sister",
+        "Conozco a alguien que quería hablar con tu hermana",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 4
+    }
+  },
+  "S0237L02": {
+    "lego": [
+      "me to tell you",
+      "te dijera"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "me to tell you",
+        "te dijera",
+        null,
+        2
+      ],
+      [
+        "wanted me to tell you",
+        "quería que te dijera",
+        null,
+        3
+      ],
+      [
+        "He wanted me to tell you",
+        "Quería que te dijera",
+        null,
+        4
+      ],
+      [
+        "I wanted to tell you",
+        "Quería decirte",
+        null,
+        3
+      ],
+      [
+        "I wanted to tell you something",
+        "Quería decirte algo",
+        null,
+        4
+      ],
+      [
+        "I met someone who wanted to tell you",
+        "Conocí a alguien que quería decirte",
+        null,
+        6
+      ],
+      [
+        "He wanted me to tell you something",
+        "Quería que te dijera algo",
+        null,
+        5
+      ],
+      [
+        "I wanted to tell you yesterday",
+        "Quería decirte ayer",
+        null,
+        3
+      ],
+      [
+        "He wanted me to tell you before the weekend",
+        "Quería que te dijera antes del fin de semana",
+        null,
+        7
+      ],
+      [
+        "I wanted to tell you before I had to go",
+        "Quería decirte antes de que tenga que ir",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0237L03": {
+    "lego": [
+      "before the weekend",
+      "antes del fin de semana"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "before the weekend",
+        "antes del fin de semana",
+        null,
+        2
+      ],
+      [
+        "I wanted to help before the weekend",
+        "Quería ayudar antes del fin de semana",
+        null,
+        5
+      ],
+      [
+        "I'm going to speak before the weekend",
+        "Voy a hablar antes del fin de semana",
+        null,
+        5
+      ],
+      [
+        "I wanted to speak with you before the weekend",
+        "Quería hablar contigo antes del fin de semana",
+        null,
+        6
+      ],
+      [
+        "I wanted to speak before the weekend",
+        "Quería hablar antes del fin de semana",
+        null,
+        4
+      ],
+      [
+        "I'm going to try to help before the weekend",
+        "Voy a intentar ayudar antes del fin de semana",
+        null,
+        6
+      ],
+      [
+        "He wanted me to tell you before the weekend.",
+        "Quería que te dijera antes del fin de semana.",
+        null,
+        6
+      ],
+      [
+        "I wanted to be able to speak with you before the weekend",
+        "Quería poder hablar contigo antes del fin de semana",
+        null,
+        8
+      ],
+      [
+        "I know someone who wanted to help before the weekend",
+        "Conozco a alguien que quería ayudar antes del fin de semana",
+        null,
+        8
+      ],
+      [
+        "He wanted me to tell you before the weekend.",
+        "Quería que te dijera antes del fin de semana.",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 6
+    },
+    "full_seed_included": "YES"
+  }
+}

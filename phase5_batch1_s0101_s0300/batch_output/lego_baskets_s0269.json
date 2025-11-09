@@ -1,0 +1,99 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0269",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "¿Por qué no quieres esperar a tu padre?",
+    "known": "Why don't you want to wait for your father?"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.653Z",
+    "curated_by": "Claude Code - Agent 17 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_17_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.653Z"
+  },
+  "S0021": {
+    "lego": [
+      "why",
+      "por qué"
+    ],
+    "type": "M",
+    "available_legos": "Count of LEGOs up to S0021",
+    "practice_phrases": [],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0021 only"
+  },
+  "S0269L02": {
+    "lego": [
+      "don't you want",
+      "no quieres"
+    ],
+    "type": "M",
+    "available_legos": "Count of LEGOs up to S0269L02",
+    "practice_phrases": [],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0269L02 only"
+  },
+  "S0269L03": {
+    "lego": [
+      "to wait for",
+      "esperar a"
+    ],
+    "type": "M",
+    "available_legos": "Count of LEGOs up to S0269L03",
+    "practice_phrases": [],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0269L03 only"
+  },
+  "S0267": {
+    "lego": [
+      "your",
+      "tu"
+    ],
+    "type": "A",
+    "available_legos": "Count of LEGOs up to S0267",
+    "practice_phrases": [],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0267 only"
+  },
+  "S0266": {
+    "lego": [
+      "father",
+      "padre"
+    ],
+    "type": "A",
+    "available_legos": "Count of LEGOs up to S0266",
+    "practice_phrases": [],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0266 only"
+  }
+}

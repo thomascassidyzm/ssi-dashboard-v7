@@ -1,0 +1,4535 @@
+{
+  "generated_at": "2025-11-07T12:56:18.010Z",
+  "registry_file": "lego_registry_s0001_s0300.json",
+  "baskets_directory": "batch_output",
+  "summary": {
+    "total_legos": 775,
+    "legos_with_baskets": 286,
+    "legos_without_baskets": 489,
+    "coverage_percent": 36.9,
+    "completely_missing_seeds": 149,
+    "partially_missing_seeds": 50
+  },
+  "completely_missing_seeds": [
+    "S0008",
+    "S0009",
+    "S0013",
+    "S0014",
+    "S0016",
+    "S0018",
+    "S0024",
+    "S0025",
+    "S0027",
+    "S0028",
+    "S0031",
+    "S0032",
+    "S0033",
+    "S0036",
+    "S0037",
+    "S0038",
+    "S0039",
+    "S0040",
+    "S0042",
+    "S0043",
+    "S0044",
+    "S0046",
+    "S0047",
+    "S0049",
+    "S0050",
+    "S0052",
+    "S0053",
+    "S0055",
+    "S0056",
+    "S0059",
+    "S0060",
+    "S0062",
+    "S0063",
+    "S0064",
+    "S0065",
+    "S0067",
+    "S0069",
+    "S0070",
+    "S0071",
+    "S0072",
+    "S0073",
+    "S0074",
+    "S0075",
+    "S0076",
+    "S0077",
+    "S0080",
+    "S0081",
+    "S0082",
+    "S0083",
+    "S0084",
+    "S0085",
+    "S0086",
+    "S0087",
+    "S0088",
+    "S0089",
+    "S0090",
+    "S0092",
+    "S0094",
+    "S0095",
+    "S0098",
+    "S0099",
+    "S0100",
+    "S0122",
+    "S0124",
+    "S0125",
+    "S0127",
+    "S0129",
+    "S0132",
+    "S0134",
+    "S0135",
+    "S0136",
+    "S0137",
+    "S0138",
+    "S0140",
+    "S0142",
+    "S0143",
+    "S0144",
+    "S0145",
+    "S0146",
+    "S0147",
+    "S0148",
+    "S0149",
+    "S0150",
+    "S0151",
+    "S0152",
+    "S0153",
+    "S0155",
+    "S0156",
+    "S0157",
+    "S0158",
+    "S0160",
+    "S0161",
+    "S0162",
+    "S0164",
+    "S0165",
+    "S0166",
+    "S0167",
+    "S0168",
+    "S0169",
+    "S0170",
+    "S0171",
+    "S0172",
+    "S0173",
+    "S0174",
+    "S0176",
+    "S0180",
+    "S0211",
+    "S0213",
+    "S0214",
+    "S0215",
+    "S0216",
+    "S0218",
+    "S0219",
+    "S0220",
+    "S0221",
+    "S0222",
+    "S0223",
+    "S0224",
+    "S0225",
+    "S0226",
+    "S0227",
+    "S0228",
+    "S0229",
+    "S0241",
+    "S0242",
+    "S0243",
+    "S0245",
+    "S0246",
+    "S0247",
+    "S0248",
+    "S0249",
+    "S0250",
+    "S0271",
+    "S0272",
+    "S0273",
+    "S0274",
+    "S0275",
+    "S0276",
+    "S0277",
+    "S0278",
+    "S0279",
+    "S0280",
+    "S0281",
+    "S0284",
+    "S0285",
+    "S0287",
+    "S0288",
+    "S0289",
+    "S0290"
+  ],
+  "partially_missing_seeds": [
+    {
+      "seed": "S0001",
+      "missing_legos": [
+        "S0001L01",
+        "S0001L03",
+        "S0001L05"
+      ],
+      "missing_count": 3,
+      "total_count": 5
+    },
+    {
+      "seed": "S0003",
+      "missing_legos": [
+        "S0003L02"
+      ],
+      "missing_count": 1,
+      "total_count": 2
+    },
+    {
+      "seed": "S0004",
+      "missing_legos": [
+        "S0004L03"
+      ],
+      "missing_count": 1,
+      "total_count": 3
+    },
+    {
+      "seed": "S0005",
+      "missing_legos": [
+        "S0005L01",
+        "S0005L02",
+        "S0005L04"
+      ],
+      "missing_count": 3,
+      "total_count": 4
+    },
+    {
+      "seed": "S0006",
+      "missing_legos": [
+        "S0006L02"
+      ],
+      "missing_count": 1,
+      "total_count": 2
+    },
+    {
+      "seed": "S0007",
+      "missing_legos": [
+        "S0007L01",
+        "S0007L02"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0010",
+      "missing_legos": [
+        "S0010L01",
+        "S0010L04"
+      ],
+      "missing_count": 2,
+      "total_count": 4
+    },
+    {
+      "seed": "S0011",
+      "missing_legos": [
+        "S0011L02",
+        "S0011L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0012",
+      "missing_legos": [
+        "S0012L01",
+        "S0012L02",
+        "S0012L03"
+      ],
+      "missing_count": 3,
+      "total_count": 4
+    },
+    {
+      "seed": "S0015",
+      "missing_legos": [
+        "S0015L02",
+        "S0015L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0017",
+      "missing_legos": [
+        "S0017L03"
+      ],
+      "missing_count": 1,
+      "total_count": 3
+    },
+    {
+      "seed": "S0019",
+      "missing_legos": [
+        "S0019L03"
+      ],
+      "missing_count": 1,
+      "total_count": 3
+    },
+    {
+      "seed": "S0020",
+      "missing_legos": [
+        "S0020L02",
+        "S0020L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0021",
+      "missing_legos": [
+        "S0021L02"
+      ],
+      "missing_count": 1,
+      "total_count": 2
+    },
+    {
+      "seed": "S0022",
+      "missing_legos": [
+        "S0022L01",
+        "S0022L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0023",
+      "missing_legos": [
+        "S0023L01",
+        "S0023L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0026",
+      "missing_legos": [
+        "S0026L02",
+        "S0026L03",
+        "S0026L04",
+        "S0026L06"
+      ],
+      "missing_count": 4,
+      "total_count": 6
+    },
+    {
+      "seed": "S0029",
+      "missing_legos": [
+        "S0029L01",
+        "S0029L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0030",
+      "missing_legos": [
+        "S0030L03"
+      ],
+      "missing_count": 1,
+      "total_count": 3
+    },
+    {
+      "seed": "S0034",
+      "missing_legos": [
+        "S0034L01",
+        "S0034L02",
+        "S0034L04",
+        "S0034L05"
+      ],
+      "missing_count": 4,
+      "total_count": 5
+    },
+    {
+      "seed": "S0035",
+      "missing_legos": [
+        "S0035L02",
+        "S0035L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0041",
+      "missing_legos": [
+        "S0041L02",
+        "S0041L03",
+        "S0041L04"
+      ],
+      "missing_count": 3,
+      "total_count": 4
+    },
+    {
+      "seed": "S0051",
+      "missing_legos": [
+        "S0051L03",
+        "S0051L04",
+        "S0051L05"
+      ],
+      "missing_count": 3,
+      "total_count": 5
+    },
+    {
+      "seed": "S0054",
+      "missing_legos": [
+        "S0054L02",
+        "S0054L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0057",
+      "missing_legos": [
+        "S0057L02"
+      ],
+      "missing_count": 1,
+      "total_count": 2
+    },
+    {
+      "seed": "S0058",
+      "missing_legos": [
+        "S0058L02",
+        "S0058L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0061",
+      "missing_legos": [
+        "S0061L01",
+        "S0061L03",
+        "S0061L04"
+      ],
+      "missing_count": 3,
+      "total_count": 4
+    },
+    {
+      "seed": "S0066",
+      "missing_legos": [
+        "S0066L01"
+      ],
+      "missing_count": 1,
+      "total_count": 2
+    },
+    {
+      "seed": "S0078",
+      "missing_legos": [
+        "S0078L01"
+      ],
+      "missing_count": 1,
+      "total_count": 2
+    },
+    {
+      "seed": "S0079",
+      "missing_legos": [
+        "S0079L02"
+      ],
+      "missing_count": 1,
+      "total_count": 2
+    },
+    {
+      "seed": "S0091",
+      "missing_legos": [
+        "S0091L01",
+        "S0091L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0093",
+      "missing_legos": [
+        "S0093L01"
+      ],
+      "missing_count": 1,
+      "total_count": 2
+    },
+    {
+      "seed": "S0097",
+      "missing_legos": [
+        "S0097L02",
+        "S0097L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0121",
+      "missing_legos": [
+        "S0121L01",
+        "S0121L02",
+        "S0121L03",
+        "S0121L05"
+      ],
+      "missing_count": 4,
+      "total_count": 5
+    },
+    {
+      "seed": "S0126",
+      "missing_legos": [
+        "S0126L01",
+        "S0126L02",
+        "S0126L03",
+        "S0126L04",
+        "S0126L07"
+      ],
+      "missing_count": 5,
+      "total_count": 7
+    },
+    {
+      "seed": "S0128",
+      "missing_legos": [
+        "S0128L01",
+        "S0128L03",
+        "S0128L04"
+      ],
+      "missing_count": 3,
+      "total_count": 4
+    },
+    {
+      "seed": "S0130",
+      "missing_legos": [
+        "S0130L01"
+      ],
+      "missing_count": 1,
+      "total_count": 2
+    },
+    {
+      "seed": "S0131",
+      "missing_legos": [
+        "S0131L01",
+        "S0131L02",
+        "S0131L03",
+        "S0131L04",
+        "S0131L06"
+      ],
+      "missing_count": 5,
+      "total_count": 6
+    },
+    {
+      "seed": "S0133",
+      "missing_legos": [
+        "S0133L01",
+        "S0133L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0139",
+      "missing_legos": [
+        "S0139L02",
+        "S0139L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0141",
+      "missing_legos": [
+        "S0141L01",
+        "S0141L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0154",
+      "missing_legos": [
+        "S0154L01",
+        "S0154L02",
+        "S0154L03"
+      ],
+      "missing_count": 3,
+      "total_count": 4
+    },
+    {
+      "seed": "S0178",
+      "missing_legos": [
+        "S0178L01",
+        "S0178L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0202",
+      "missing_legos": [
+        "S0202L02",
+        "S0202L07"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0212",
+      "missing_legos": [
+        "S0212L02"
+      ],
+      "missing_count": 1,
+      "total_count": 2
+    },
+    {
+      "seed": "S0217",
+      "missing_legos": [
+        "S0217L03",
+        "S0217L07"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0230",
+      "missing_legos": [
+        "S0230L02",
+        "S0230L05"
+      ],
+      "missing_count": 2,
+      "total_count": 4
+    },
+    {
+      "seed": "S0282",
+      "missing_legos": [
+        "S0282L03"
+      ],
+      "missing_count": 1,
+      "total_count": 2
+    },
+    {
+      "seed": "S0283",
+      "missing_legos": [
+        "S0283L01",
+        "S0283L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    },
+    {
+      "seed": "S0286",
+      "missing_legos": [
+        "S0286L02",
+        "S0286L03"
+      ],
+      "missing_count": 2,
+      "total_count": 3
+    }
+  ],
+  "missing_legos": [
+    {
+      "lego_id": "S0001L01",
+      "seed": "S0001",
+      "target": "quiero",
+      "known": "I want",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0001L03",
+      "seed": "S0001",
+      "target": "español",
+      "known": "Spanish",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0001L05",
+      "seed": "S0001",
+      "target": "ahora",
+      "known": "now",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0003L02",
+      "seed": "S0003",
+      "target": "lo más frecuentemente posible",
+      "known": "as often as possible",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0004L03",
+      "seed": "S0004",
+      "target": "en español",
+      "known": "in Spanish",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0005L01",
+      "seed": "S0005",
+      "target": "voy a",
+      "known": "I'm going to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0005L02",
+      "seed": "S0005",
+      "target": "practicar hablar",
+      "known": "to practise speaking",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0005L04",
+      "seed": "S0005",
+      "target": "alguien más",
+      "known": "someone else",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0006L02",
+      "seed": "S0006",
+      "target": "una palabra",
+      "known": "a word",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0007L01",
+      "seed": "S0007",
+      "target": "intentar",
+      "known": "to try",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0007L02",
+      "seed": "S0007",
+      "target": "tan duro como pueda",
+      "known": "as hard as I can",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0008L01",
+      "seed": "S0008",
+      "target": "explicar",
+      "known": "to explain",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0008L02",
+      "seed": "S0008",
+      "target": "lo que quiero decir",
+      "known": "what I mean",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0009L01",
+      "seed": "S0009",
+      "target": "hablo",
+      "known": "I speak",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0009L02",
+      "seed": "S0009",
+      "target": "un poco de español",
+      "known": "a little Spanish",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0010L01",
+      "seed": "S0010",
+      "target": "no estoy seguro",
+      "known": "I'm not sure",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0010L04",
+      "seed": "S0010",
+      "target": "toda la oración",
+      "known": "the whole sentence",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0011L02",
+      "seed": "S0011",
+      "target": "poder",
+      "known": "to be able",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0011L03",
+      "seed": "S0011",
+      "target": "después de que termines",
+      "known": "after you finish",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0012L01",
+      "seed": "S0012",
+      "target": "no me gustaría",
+      "known": "I wouldn't like",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0012L02",
+      "seed": "S0012",
+      "target": "adivinar",
+      "known": "to guess",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0012L03",
+      "seed": "S0012",
+      "target": "lo que va a ocurrir",
+      "known": "what's going to happen",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0013L01",
+      "seed": "S0013",
+      "target": "hablas",
+      "known": "you speak",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0013L02",
+      "seed": "S0013",
+      "target": "muy bien",
+      "known": "very well",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0014L01",
+      "seed": "S0014",
+      "target": "todo el día",
+      "known": "all day",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0015L02",
+      "seed": "S0015",
+      "target": "que hables",
+      "known": "you to speak",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0015L03",
+      "seed": "S0015",
+      "target": "conmigo",
+      "known": "with me",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0016L01",
+      "seed": "S0016",
+      "target": "él",
+      "known": "he",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0016L02",
+      "seed": "S0016",
+      "target": "quiere",
+      "known": "wants",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0016L03",
+      "seed": "S0016",
+      "target": "volver",
+      "known": "to come back",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0016L04",
+      "seed": "S0016",
+      "target": "con todos los demás",
+      "known": "with everyone else",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0016L05",
+      "seed": "S0016",
+      "target": "más tarde",
+      "known": "later on",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0017L03",
+      "seed": "S0017",
+      "target": "cuál es la respuesta",
+      "known": "what the answer is",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0018L01",
+      "seed": "S0018",
+      "target": "queremos",
+      "known": "we want",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0018L02",
+      "seed": "S0018",
+      "target": "reunirnos",
+      "known": "to meet",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0018L03",
+      "seed": "S0018",
+      "target": "a las seis",
+      "known": "at six o'clock",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0018L04",
+      "seed": "S0018",
+      "target": "esta noche",
+      "known": "this evening",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0019L03",
+      "seed": "S0019",
+      "target": "parar de hablar",
+      "known": "to stop talking",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0020L02",
+      "seed": "S0020",
+      "target": "su nombre",
+      "known": "his name",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0020L03",
+      "seed": "S0020",
+      "target": "rápidamente",
+      "known": "quickly",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0021L02",
+      "seed": "S0021",
+      "target": "estás aprendiendo",
+      "known": "are you learning",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0022L01",
+      "seed": "S0022",
+      "target": "porque",
+      "known": "because",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0022L03",
+      "seed": "S0022",
+      "target": "personas que hablan",
+      "known": "people who speak",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0023L01",
+      "seed": "S0023",
+      "target": "comenzar a hablar",
+      "known": "to start talking",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0023L03",
+      "seed": "S0023",
+      "target": "pronto",
+      "known": "soon",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0024L01",
+      "seed": "S0024",
+      "target": "no voy a",
+      "known": "I'm not going to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0024L02",
+      "seed": "S0024",
+      "target": "fácilmente",
+      "known": "easily",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0025L01",
+      "seed": "S0025",
+      "target": "vas a",
+      "known": "are you going to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0025L02",
+      "seed": "S0025",
+      "target": "ayudarme",
+      "known": "to help me",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0025L03",
+      "seed": "S0025",
+      "target": "antes de que tenga que ir",
+      "known": "before I have to go",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0026L02",
+      "seed": "S0026",
+      "target": "sentir",
+      "known": "to feel",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0026L03",
+      "seed": "S0026",
+      "target": "como si estuviera",
+      "known": "as if I were",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0026L04",
+      "seed": "S0026",
+      "target": "casi",
+      "known": "nearly",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0026L06",
+      "seed": "S0026",
+      "target": "para ir",
+      "known": "to go",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0027L01",
+      "seed": "S0027",
+      "target": "no me gusta",
+      "known": "I don't like",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0027L02",
+      "seed": "S0027",
+      "target": "tomar",
+      "known": "to take",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0027L03",
+      "seed": "S0027",
+      "target": "demasiado tiempo",
+      "known": "too much time",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0027L04",
+      "seed": "S0027",
+      "target": "para responder",
+      "known": "to answer",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0028L01",
+      "seed": "S0028",
+      "target": "es útil",
+      "known": "it's useful",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0028L02",
+      "seed": "S0028",
+      "target": "tan pronto como puedas",
+      "known": "as soon as you can",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0029L01",
+      "seed": "S0029",
+      "target": "estoy deseando",
+      "known": "I'm looking forward to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0029L03",
+      "seed": "S0029",
+      "target": "tan pronto como pueda",
+      "known": "as soon as I can",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0030L03",
+      "seed": "S0030",
+      "target": "ayer",
+      "known": "yesterday",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0031L01",
+      "seed": "S0031",
+      "target": "querías",
+      "known": "you wanted",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0032L01",
+      "seed": "S0032",
+      "target": "mostrarme",
+      "known": "to show me",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0033L01",
+      "seed": "S0033",
+      "target": "cuánto tiempo",
+      "known": "how long",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0033L02",
+      "seed": "S0033",
+      "target": "llevas aprendiendo",
+      "known": "have you been learning",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0034L01",
+      "seed": "S0034",
+      "target": "no quiere",
+      "known": "doesn't want",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0034L02",
+      "seed": "S0034",
+      "target": "estar silencioso",
+      "known": "to be quiet",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0034L04",
+      "seed": "S0034",
+      "target": "otras personas",
+      "known": "other people",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0034L05",
+      "seed": "S0034",
+      "target": "están aquí",
+      "known": "are here",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0035L02",
+      "seed": "S0035",
+      "target": "nada",
+      "known": "anything",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0035L03",
+      "seed": "S0035",
+      "target": "esta tarde",
+      "known": "this afternoon",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0036L01",
+      "seed": "S0036",
+      "target": "no queremos",
+      "known": "we don't want",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0036L02",
+      "seed": "S0036",
+      "target": "interrumpir",
+      "known": "to interrupt",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0036L03",
+      "seed": "S0036",
+      "target": "la historia",
+      "known": "the story",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0037L01",
+      "seed": "S0037",
+      "target": "comencé a",
+      "known": "I started to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0037L02",
+      "seed": "S0037",
+      "target": "pensar",
+      "known": "to think",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0037L03",
+      "seed": "S0037",
+      "target": "sobre eso",
+      "known": "about it",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0037L04",
+      "seed": "S0037",
+      "target": "cuidadosamente",
+      "known": "carefully",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0037L05",
+      "seed": "S0037",
+      "target": "el mes pasado",
+      "known": "last month",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0038L01",
+      "seed": "S0038",
+      "target": "llevo aprendiendo",
+      "known": "I've been learning",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0038L02",
+      "seed": "S0038",
+      "target": "aproximadamente",
+      "known": "about",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0038L03",
+      "seed": "S0038",
+      "target": "una semana",
+      "known": "a week",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0039L01",
+      "seed": "S0039",
+      "target": "estoy un poco cansado",
+      "known": "I'm a little tired",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0039L02",
+      "seed": "S0039",
+      "target": "esta mañana",
+      "known": "this morning",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0040L01",
+      "seed": "S0040",
+      "target": "cómo te sientes",
+      "known": "how do you feel",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0040L02",
+      "seed": "S0040",
+      "target": "en este momento",
+      "known": "at the moment",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0041L02",
+      "seed": "S0041",
+      "target": "bien",
+      "known": "okay",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0041L03",
+      "seed": "S0041",
+      "target": "estoy comenzando a sentirme",
+      "known": "I'm starting to feel",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0041L04",
+      "seed": "S0041",
+      "target": "cansado",
+      "known": "tired",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0042L01",
+      "seed": "S0042",
+      "target": "estaba comenzando a",
+      "known": "I was starting to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0042L02",
+      "seed": "S0042",
+      "target": "sentirme",
+      "known": "to feel",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0042L03",
+      "seed": "S0042",
+      "target": "mejor que",
+      "known": "better than",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0042L04",
+      "seed": "S0042",
+      "target": "anoche",
+      "known": "last night",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0043L01",
+      "seed": "S0043",
+      "target": "no estaba pensando",
+      "known": "I wasn't thinking",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0043L02",
+      "seed": "S0043",
+      "target": "en cómo responder",
+      "known": "about how to answer",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0044L01",
+      "seed": "S0044",
+      "target": "o",
+      "known": "or",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0044L02",
+      "seed": "S0044",
+      "target": "necesito",
+      "known": "I need",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0044L03",
+      "seed": "S0044",
+      "target": "mejorar",
+      "known": "to improve",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0046L01",
+      "seed": "S0046",
+      "target": "no me preocupo",
+      "known": "I don't worry",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0046L02",
+      "seed": "S0046",
+      "target": "por hacer errores",
+      "known": "about making mistakes",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0047L01",
+      "seed": "S0047",
+      "target": "pienso que",
+      "known": "I think that",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0047L02",
+      "seed": "S0047",
+      "target": "es una cosa buena",
+      "known": "it's a good thing",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0047L03",
+      "seed": "S0047",
+      "target": "hacer errores",
+      "known": "to make mistakes",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0049L01",
+      "seed": "S0049",
+      "target": "es así",
+      "known": "it's like this",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0049L02",
+      "seed": "S0049",
+      "target": "sabes",
+      "known": "you know",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0050L01",
+      "seed": "S0050",
+      "target": "no estoy intentando",
+      "known": "I'm not trying",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0050L02",
+      "seed": "S0050",
+      "target": "terminar",
+      "known": "to finish",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0050L03",
+      "seed": "S0050",
+      "target": "lo más rápidamente posible",
+      "known": "as quickly as possible",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0051L03",
+      "seed": "S0051",
+      "target": "cosas",
+      "known": "things",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0051L04",
+      "seed": "S0051",
+      "target": "interesantes",
+      "known": "interesting",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0051L05",
+      "seed": "S0051",
+      "target": "mis amigos",
+      "known": "my friends",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0052L01",
+      "seed": "S0052",
+      "target": "escribir",
+      "known": "to write",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0052L02",
+      "seed": "S0052",
+      "target": "una carta",
+      "known": "a letter",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0052L03",
+      "seed": "S0052",
+      "target": "a su amigo",
+      "known": "to his friend",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0052L04",
+      "seed": "S0052",
+      "target": "la semana pasada",
+      "known": "last week",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0053L01",
+      "seed": "S0053",
+      "target": "poner",
+      "known": "to put",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0053L02",
+      "seed": "S0053",
+      "target": "su carta",
+      "known": "his letter",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0053L03",
+      "seed": "S0053",
+      "target": "en su bolsa",
+      "known": "in her bag",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0054L02",
+      "seed": "S0054",
+      "target": "darte",
+      "known": "to give you",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0054L03",
+      "seed": "S0054",
+      "target": "un poco más de tiempo",
+      "known": "a little more time",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0055L01",
+      "seed": "S0055",
+      "target": "no disfruto",
+      "known": "I don't enjoy",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0055L02",
+      "seed": "S0055",
+      "target": "despertarme",
+      "known": "to wake up/waking up",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0055L03",
+      "seed": "S0055",
+      "target": "no dormí",
+      "known": "I didn't sleep",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0056L01",
+      "seed": "S0056",
+      "target": "para poder",
+      "known": "so I can/to be able to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0056L02",
+      "seed": "S0056",
+      "target": "unas pocas palabras",
+      "known": "a few words",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0057L02",
+      "seed": "S0057",
+      "target": "lo que quería decir",
+      "known": "what I wanted to say",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0058L02",
+      "seed": "S0058",
+      "target": "comprendes",
+      "known": "you understand",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0058L03",
+      "seed": "S0058",
+      "target": "suficientes palabras",
+      "known": "enough words",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0059L01",
+      "seed": "S0059",
+      "target": "sé hacer",
+      "known": "I know how to do",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0059L02",
+      "seed": "S0059",
+      "target": "lo que necesito hacer",
+      "known": "what I need to do",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0059L03",
+      "seed": "S0059",
+      "target": "la próxima semana",
+      "known": "next week",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0060L01",
+      "seed": "S0060",
+      "target": "todavía no sé",
+      "known": "I don't know yet",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0060L02",
+      "seed": "S0060",
+      "target": "suficientes palabras diferentes",
+      "known": "enough different words",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0061L01",
+      "seed": "S0061",
+      "target": "podrías",
+      "known": "could you/you could",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0061L03",
+      "seed": "S0061",
+      "target": "otra vez",
+      "known": "again",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0061L04",
+      "seed": "S0061",
+      "target": "un poco más lentamente",
+      "known": "a little more slowly",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0062L02",
+      "seed": "S0062",
+      "target": "puedo ayudarte",
+      "known": "I can help you",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0062L03",
+      "seed": "S0062",
+      "target": "al mismo tiempo",
+      "known": "at the same time",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0063L01",
+      "seed": "S0063",
+      "target": "estás seguro",
+      "known": "you are sure",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0063L02",
+      "seed": "S0063",
+      "target": "de que no te importa",
+      "known": "that you don't mind",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0064L01",
+      "seed": "S0064",
+      "target": "aprender español",
+      "known": "learning Spanish",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0064L02",
+      "seed": "S0064",
+      "target": "no es fácil",
+      "known": "isn't easy",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0064L03",
+      "seed": "S0064",
+      "target": "es divertido",
+      "known": "it is fun",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0065L01",
+      "seed": "S0065",
+      "target": "es importante",
+      "known": "it's important",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0065L02",
+      "seed": "S0065",
+      "target": "tomar tiempo",
+      "known": "to take time",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0065L03",
+      "seed": "S0065",
+      "target": "para evaluarte",
+      "known": "to test yourself",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0066L01",
+      "seed": "S0066",
+      "target": "no es difícil",
+      "known": "it's not difficult",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0067L03",
+      "seed": "S0067",
+      "target": "parar",
+      "known": "to stop",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0069L01",
+      "seed": "S0069",
+      "target": "no quería",
+      "known": "I didn't want/he didn't want",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0069L02",
+      "seed": "S0069",
+      "target": "cuidar",
+      "known": "to look after",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0069L03",
+      "seed": "S0069",
+      "target": "el perro joven",
+      "known": "the young dog",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0069L04",
+      "seed": "S0069",
+      "target": "toda la tarde",
+      "known": "all afternoon",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0070L02",
+      "seed": "S0070",
+      "target": "decirme",
+      "known": "to tell me",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0070L03",
+      "seed": "S0070",
+      "target": "dónde estaba",
+      "known": "where it was",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0071L01",
+      "seed": "S0071",
+      "target": "no queríamos",
+      "known": "we didn't want",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0071L02",
+      "seed": "S0071",
+      "target": "permitir que",
+      "known": "to let/allow that",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0071L03",
+      "seed": "S0071",
+      "target": "nadie",
+      "known": "no one/nobody",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0071L04",
+      "seed": "S0071",
+      "target": "oyera",
+      "known": "hear",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0071L05",
+      "seed": "S0071",
+      "target": "la verdad",
+      "known": "the truth",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0072L01",
+      "seed": "S0072",
+      "target": "estás haciendo",
+      "known": "you're doing",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0073L01",
+      "seed": "S0073",
+      "target": "muchas gracias",
+      "known": "thank you very much",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0073L02",
+      "seed": "S0073",
+      "target": "tengo más que aprender",
+      "known": "I've got more to learn",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0074L01",
+      "seed": "S0074",
+      "target": "por ayudarme",
+      "known": "for helping me",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0074L02",
+      "seed": "S0074",
+      "target": "a comprender",
+      "known": "to understand",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0075L01",
+      "seed": "S0075",
+      "target": "tienes más que aprender",
+      "known": "have you got more to learn",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0076L01",
+      "seed": "S0076",
+      "target": "estoy muy feliz",
+      "known": "I'm very happy",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0076L02",
+      "seed": "S0076",
+      "target": "con cuánto",
+      "known": "with how much",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0076L03",
+      "seed": "S0076",
+      "target": "he aprendido",
+      "known": "I've learnt",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0076L04",
+      "seed": "S0076",
+      "target": "ya",
+      "known": "already",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0077L01",
+      "seed": "S0077",
+      "target": "estoy sorprendido",
+      "known": "I'm surprised",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0077L02",
+      "seed": "S0077",
+      "target": "de lo rápidamente que",
+      "known": "at how quickly",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0077L03",
+      "seed": "S0077",
+      "target": "estoy comenzando a",
+      "known": "I'm starting to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0077L04",
+      "seed": "S0077",
+      "target": "comprender",
+      "known": "to understand",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0078L01",
+      "seed": "S0078",
+      "target": "no comprendo",
+      "known": "I don't understand",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0079L02",
+      "seed": "S0079",
+      "target": "comenzaste a aprender",
+      "known": "did you start to learn",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0080L01",
+      "seed": "S0080",
+      "target": "de cuándo",
+      "known": "of when",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0080L02",
+      "seed": "S0080",
+      "target": "estaré preparado",
+      "known": "I'll be ready",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0081L01",
+      "seed": "S0081",
+      "target": "comenzar",
+      "known": "to start",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0082L02",
+      "seed": "S0082",
+      "target": "esperarte",
+      "known": "to wait for you",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0082L03",
+      "seed": "S0082",
+      "target": "por qué no",
+      "known": "why not",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0083L01",
+      "seed": "S0083",
+      "target": "estoy de acuerdo",
+      "known": "I agree",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0083L02",
+      "seed": "S0083",
+      "target": "con lo que dijiste",
+      "known": "with what you said",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0083L03",
+      "seed": "S0083",
+      "target": "sobre tu amigo",
+      "known": "about your friend",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0084L01",
+      "seed": "S0084",
+      "target": "no estoy de acuerdo",
+      "known": "I don't agree",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0084L02",
+      "seed": "S0084",
+      "target": "con lo que dijo",
+      "known": "with what he said",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0084L03",
+      "seed": "S0084",
+      "target": "sobre mi amigo",
+      "known": "about my friend",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0085L01",
+      "seed": "S0085",
+      "target": "no conozco",
+      "known": "I don't know",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0085L02",
+      "seed": "S0085",
+      "target": "a esas personas",
+      "known": "those people",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0086L01",
+      "seed": "S0086",
+      "target": "no fue posible",
+      "known": "it wasn't possible",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0086L02",
+      "seed": "S0086",
+      "target": "desafortunadamente",
+      "known": "unfortunately",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0087L01",
+      "seed": "S0087",
+      "target": "son personas",
+      "known": "they are people",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0087L02",
+      "seed": "S0087",
+      "target": "que no conozco",
+      "known": "that I don't know",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0088L01",
+      "seed": "S0088",
+      "target": "no estoy preparado",
+      "known": "I'm not ready",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0088L02",
+      "seed": "S0088",
+      "target": "para hablar",
+      "known": "to talk",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0088L03",
+      "seed": "S0088",
+      "target": "con personas que no conozco",
+      "known": "to people I don't know",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0088L04",
+      "seed": "S0088",
+      "target": "todavía",
+      "known": "yet",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0089L01",
+      "seed": "S0089",
+      "target": "he hecho",
+      "known": "I've done",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0089L02",
+      "seed": "S0089",
+      "target": "mucho",
+      "known": "a lot",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0089L03",
+      "seed": "S0089",
+      "target": "en un breve tiempo",
+      "known": "in a short time",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0090L01",
+      "seed": "S0090",
+      "target": "puedes hablar",
+      "known": "you can speak",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0090L02",
+      "seed": "S0090",
+      "target": "más lentamente",
+      "known": "more slowly",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0090L04",
+      "seed": "S0090",
+      "target": "sería excelente",
+      "known": "would be great",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0091L01",
+      "seed": "S0091",
+      "target": "es difícil",
+      "known": "it's difficult",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0091L03",
+      "seed": "S0091",
+      "target": "lo suficientemente rápido",
+      "known": "quickly enough",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0092L01",
+      "seed": "S0092",
+      "target": "continuar haciendo",
+      "known": "to keep on doing",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0092L02",
+      "seed": "S0092",
+      "target": "esto",
+      "known": "this",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0092L03",
+      "seed": "S0092",
+      "target": "por un tiempo",
+      "known": "for a while",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0093L01",
+      "seed": "S0093",
+      "target": "es hora de",
+      "known": "it's time to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0094L01",
+      "seed": "S0094",
+      "target": "esta es",
+      "known": "this is",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0094L02",
+      "seed": "S0094",
+      "target": "la única manera",
+      "known": "the only way",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0094L03",
+      "seed": "S0094",
+      "target": "en que funcionará",
+      "known": "it will work",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0095L01",
+      "seed": "S0095",
+      "target": "estás preparado",
+      "known": "you are ready",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0095L03",
+      "seed": "S0095",
+      "target": "a casa",
+      "known": "home",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0095L04",
+      "seed": "S0095",
+      "target": "en el próximo autobús",
+      "known": "on the next bus",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0097L02",
+      "seed": "S0097",
+      "target": "estoy preparado",
+      "known": "I'm ready",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0097L03",
+      "seed": "S0097",
+      "target": "tan pronto como quieras",
+      "known": "as soon as you want",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0098L01",
+      "seed": "S0098",
+      "target": "debería",
+      "known": "I should",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0098L02",
+      "seed": "S0098",
+      "target": "considerar",
+      "known": "to consider",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0098L03",
+      "seed": "S0098",
+      "target": "jugar",
+      "known": "to play",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0098L04",
+      "seed": "S0098",
+      "target": "otra cosa",
+      "known": "something else",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0099L01",
+      "seed": "S0099",
+      "target": "deberías",
+      "known": "you should",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0099L03",
+      "seed": "S0099",
+      "target": "no está trabajando",
+      "known": "it's not working",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0100L01",
+      "seed": "S0100",
+      "target": "no deberías",
+      "known": "you shouldn't",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0100L02",
+      "seed": "S0100",
+      "target": "preocuparte",
+      "known": "to worry",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0100L03",
+      "seed": "S0100",
+      "target": "por hacer",
+      "known": "about doing",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0100L04",
+      "seed": "S0100",
+      "target": "algo similar",
+      "known": "something similar",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0121L01",
+      "seed": "S0121",
+      "target": "es inusual",
+      "known": "it's unusual",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0121L02",
+      "seed": "S0121",
+      "target": "no te guste",
+      "known": "you don't like",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0121L03",
+      "seed": "S0121",
+      "target": "usar",
+      "known": "to use",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0121L05",
+      "seed": "S0121",
+      "target": "auto",
+      "known": "car",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0122L01",
+      "seed": "S0122",
+      "target": "está empezando a",
+      "known": "it's starting to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0122L02",
+      "seed": "S0122",
+      "target": "sentirse",
+      "known": "to feel",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0122L03",
+      "seed": "S0122",
+      "target": "más fácil",
+      "known": "easier",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0122L04",
+      "seed": "S0122",
+      "target": "estoy entusiasmado",
+      "known": "I'm excited",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0122L05",
+      "seed": "S0122",
+      "target": "por",
+      "known": "about",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0122L06",
+      "seed": "S0122",
+      "target": "va",
+      "known": "it's going",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0124L01",
+      "seed": "S0124",
+      "target": "creí que",
+      "known": "I thought that",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0124L02",
+      "seed": "S0124",
+      "target": "era",
+      "known": "was",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0125L01",
+      "seed": "S0125",
+      "target": "idea",
+      "known": "idea",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0125L02",
+      "seed": "S0125",
+      "target": "muy buena",
+      "known": "very good",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0126L01",
+      "seed": "S0126",
+      "target": "este",
+      "known": "this",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0126L02",
+      "seed": "S0126",
+      "target": "trabajo",
+      "known": "work",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0126L03",
+      "seed": "S0126",
+      "target": "está cambiando",
+      "known": "is changing",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0126L04",
+      "seed": "S0126",
+      "target": "la forma",
+      "known": "the shape",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0126L07",
+      "seed": "S0126",
+      "target": "cerebro",
+      "known": "brain",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0127L01",
+      "seed": "S0127",
+      "target": "verte",
+      "known": "to see you",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0128L01",
+      "seed": "S0128",
+      "target": "eres",
+      "known": "you're",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0128L03",
+      "seed": "S0128",
+      "target": "alguien",
+      "known": "someone",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0128L04",
+      "seed": "S0128",
+      "target": "conocía",
+      "known": "I used to know",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0129L01",
+      "seed": "S0129",
+      "target": "estoy tan feliz",
+      "known": "I'm so happy",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0129L02",
+      "seed": "S0129",
+      "target": "de que",
+      "known": "that",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0129L03",
+      "seed": "S0129",
+      "target": "te vaya",
+      "known": "you're doing",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0129L04",
+      "seed": "S0129",
+      "target": "tan bien",
+      "known": "so well",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0130L01",
+      "seed": "S0130",
+      "target": "una sorpresa",
+      "known": "a surprise",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0131L01",
+      "seed": "S0131",
+      "target": "hay",
+      "known": "there are",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0131L02",
+      "seed": "S0131",
+      "target": "demasiadas",
+      "known": "too many",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0131L03",
+      "seed": "S0131",
+      "target": "ideas",
+      "known": "ideas",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0131L04",
+      "seed": "S0131",
+      "target": "dando vueltas",
+      "known": "going around",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0131L06",
+      "seed": "S0131",
+      "target": "cabeza",
+      "known": "head",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0132L01",
+      "seed": "S0132",
+      "target": "menos emocionante",
+      "known": "less exciting",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0132L02",
+      "seed": "S0132",
+      "target": "lo que decía",
+      "known": "what she was saying",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0133L01",
+      "seed": "S0133",
+      "target": "llegas a conocer",
+      "known": "you get to know",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0133L03",
+      "seed": "S0133",
+      "target": "trabajan juntos",
+      "known": "you work together",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0134L01",
+      "seed": "S0134",
+      "target": "un problema",
+      "known": "a problem",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0134L02",
+      "seed": "S0134",
+      "target": "trabajas en",
+      "known": "you work at",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0134L03",
+      "seed": "S0134",
+      "target": "difícil",
+      "known": "difficult",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0134L04",
+      "seed": "S0134",
+      "target": "ellos",
+      "known": "them",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0135L01",
+      "seed": "S0135",
+      "target": "no sé",
+      "known": "I don't know",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0135L02",
+      "seed": "S0135",
+      "target": "piensas",
+      "known": "you think",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0135L03",
+      "seed": "S0135",
+      "target": "tan bueno",
+      "known": "so good",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0136L01",
+      "seed": "S0136",
+      "target": "por supuesto",
+      "known": "of course",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0136L02",
+      "seed": "S0136",
+      "target": "puedes",
+      "known": "you can",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0136L03",
+      "seed": "S0136",
+      "target": "preguntarle",
+      "known": "to ask her",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0136L04",
+      "seed": "S0136",
+      "target": "mi amiga",
+      "known": "my friend",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0137L01",
+      "seed": "S0137",
+      "target": "más importante",
+      "known": "more important",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0137L02",
+      "seed": "S0137",
+      "target": "frecuentemente",
+      "known": "often",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0137L03",
+      "seed": "S0137",
+      "target": "ser",
+      "known": "to be",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0137L04",
+      "seed": "S0137",
+      "target": "perfecto",
+      "known": "perfect",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0138L01",
+      "seed": "S0138",
+      "target": "donde",
+      "known": "where",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0138L02",
+      "seed": "S0138",
+      "target": "reunirse",
+      "known": "to meet",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0138L03",
+      "seed": "S0138",
+      "target": "nosotros",
+      "known": "us",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0139L02",
+      "seed": "S0139",
+      "target": "irme",
+      "known": "to leave",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0139L03",
+      "seed": "S0139",
+      "target": "tan temprano",
+      "known": "so early",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0140L01",
+      "seed": "S0140",
+      "target": "estás intentando",
+      "known": "you're trying",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0141L01",
+      "seed": "S0141",
+      "target": "no hay",
+      "known": "there is no",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0141L03",
+      "seed": "S0141",
+      "target": "está",
+      "known": "is",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0142L01",
+      "seed": "S0142",
+      "target": "muy amable",
+      "known": "very kind",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0142L02",
+      "seed": "S0142",
+      "target": "de tu parte",
+      "known": "of you",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0142L03",
+      "seed": "S0142",
+      "target": "estoy agradecido",
+      "known": "I'm grateful",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0142L04",
+      "seed": "S0142",
+      "target": "a ti",
+      "known": "to you",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0142L05",
+      "seed": "S0142",
+      "target": "por ayudar",
+      "known": "for helping",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0143L01",
+      "seed": "S0143",
+      "target": "la misma cosa",
+      "known": "the same thing",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0143L02",
+      "seed": "S0143",
+      "target": "de la que",
+      "known": "as",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0143L03",
+      "seed": "S0143",
+      "target": "estábamos hablando",
+      "known": "we were talking",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0143L04",
+      "seed": "S0143",
+      "target": "antes",
+      "known": "earlier",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0144L01",
+      "seed": "S0144",
+      "target": "me desperté",
+      "known": "I woke",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0144L02",
+      "seed": "S0144",
+      "target": "más temprano",
+      "known": "earlier",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0144L03",
+      "seed": "S0144",
+      "target": "de lo que",
+      "known": "than",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0145L01",
+      "seed": "S0145",
+      "target": "estás",
+      "known": "you are",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0145L02",
+      "seed": "S0145",
+      "target": "feliz",
+      "known": "happy",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0146L01",
+      "seed": "S0146",
+      "target": "parece",
+      "known": "seems",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0146L02",
+      "seed": "S0146",
+      "target": "estar funcionando",
+      "known": "to be working",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0146L03",
+      "seed": "S0146",
+      "target": "desde que",
+      "known": "since",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0146L04",
+      "seed": "S0146",
+      "target": "intentamos",
+      "known": "we tried",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0146L05",
+      "seed": "S0146",
+      "target": "arreglarlo",
+      "known": "to fix it",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0147L01",
+      "seed": "S0147",
+      "target": "me vio",
+      "known": "she saw me",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0147L02",
+      "seed": "S0147",
+      "target": "sintiéndome",
+      "known": "feeling",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0147L03",
+      "seed": "S0147",
+      "target": "nervioso",
+      "known": "nervous",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0148L01",
+      "seed": "S0148",
+      "target": "no era",
+      "known": "wasn't",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0148L02",
+      "seed": "S0148",
+      "target": "muy paciente",
+      "known": "very patient",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0148L03",
+      "seed": "S0148",
+      "target": "no pude",
+      "known": "I couldn't",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0148L04",
+      "seed": "S0148",
+      "target": "responder",
+      "known": "answer",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0149L01",
+      "seed": "S0149",
+      "target": "muy difícil",
+      "known": "very difficult",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0149L02",
+      "seed": "S0149",
+      "target": "entonces",
+      "known": "so",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0149L03",
+      "seed": "S0149",
+      "target": "espero que",
+      "known": "I hope",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0149L04",
+      "seed": "S0149",
+      "target": "termines",
+      "known": "you'll finish",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0150L01",
+      "seed": "S0150",
+      "target": "cuál es",
+      "known": "what is",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0150L02",
+      "seed": "S0150",
+      "target": "tu nombre",
+      "known": "your name",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0151L01",
+      "seed": "S0151",
+      "target": "estaba esperando",
+      "known": "I was hoping",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0151L02",
+      "seed": "S0151",
+      "target": "que pasara",
+      "known": "would happen",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0152L01",
+      "seed": "S0152",
+      "target": "lo habría hecho",
+      "known": "I would have done it",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0152L02",
+      "seed": "S0152",
+      "target": "diferentemente",
+      "known": "differently",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0152L03",
+      "seed": "S0152",
+      "target": "hubiera sabido",
+      "known": "I had known",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0153L01",
+      "seed": "S0153",
+      "target": "lo habría dicho",
+      "known": "I would have said it",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0153L02",
+      "seed": "S0153",
+      "target": "exactamente",
+      "known": "exactly",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0153L03",
+      "seed": "S0153",
+      "target": "de la misma manera",
+      "known": "in the same way",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0154L01",
+      "seed": "S0154",
+      "target": "dónde",
+      "known": "where",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0154L02",
+      "seed": "S0154",
+      "target": "encontrarte",
+      "known": "to meet",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0154L03",
+      "seed": "S0154",
+      "target": "el sábado",
+      "known": "on Saturday",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0155L01",
+      "seed": "S0155",
+      "target": "esperar",
+      "known": "to wait",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0155L02",
+      "seed": "S0155",
+      "target": "unos minutos",
+      "known": "a few minutes",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0155L03",
+      "seed": "S0155",
+      "target": "por la mañana",
+      "known": "in the morning",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0156L01",
+      "seed": "S0156",
+      "target": "a un restaurante",
+      "known": "to a restaurant",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0157L01",
+      "seed": "S0157",
+      "target": "no podré",
+      "known": "I won't be able",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0157L02",
+      "seed": "S0157",
+      "target": "estar",
+      "known": "to be",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0157L03",
+      "seed": "S0157",
+      "target": "ahí",
+      "known": "there",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0157L04",
+      "seed": "S0157",
+      "target": "el próximo mes",
+      "known": "next month",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0158L01",
+      "seed": "S0158",
+      "target": "hablemos",
+      "known": "let's talk",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0158L02",
+      "seed": "S0158",
+      "target": "algo más",
+      "known": "something else",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0160L01",
+      "seed": "S0160",
+      "target": "dices",
+      "known": "you say",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0160L02",
+      "seed": "S0160",
+      "target": "esta palabra",
+      "known": "this word",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0161L01",
+      "seed": "S0161",
+      "target": "darme",
+      "known": "give me",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0161L02",
+      "seed": "S0161",
+      "target": "ese",
+      "known": "that",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0161L03",
+      "seed": "S0161",
+      "target": "libro",
+      "known": "book",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0161L04",
+      "seed": "S0161",
+      "target": "el domingo",
+      "known": "on Sunday",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0162L01",
+      "seed": "S0162",
+      "target": "de eso",
+      "known": "about that",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0164L01",
+      "seed": "S0164",
+      "target": "un",
+      "known": "an",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0164L02",
+      "seed": "S0164",
+      "target": "interesante",
+      "known": "interesting",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0165L01",
+      "seed": "S0165",
+      "target": "es verdad",
+      "known": "it's true",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0166L01",
+      "seed": "S0166",
+      "target": "nombre",
+      "known": "name",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0166L02",
+      "seed": "S0166",
+      "target": "muy",
+      "known": "very",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0166L03",
+      "seed": "S0166",
+      "target": "inusual",
+      "known": "unusual",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0167L01",
+      "seed": "S0167",
+      "target": "necesitas",
+      "known": "do you need",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0167L02",
+      "seed": "S0167",
+      "target": "por la tarde",
+      "known": "in the afternoon",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0168L01",
+      "seed": "S0168",
+      "target": "podré",
+      "known": "I'll be able to",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0168L02",
+      "seed": "S0168",
+      "target": "venir",
+      "known": "to come",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0168L03",
+      "seed": "S0168",
+      "target": "ayudar",
+      "known": "to help",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0169L01",
+      "seed": "S0169",
+      "target": "que haga",
+      "known": "me to do",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0170L01",
+      "seed": "S0170",
+      "target": "que me dijeras",
+      "known": "you to tell me",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0170L02",
+      "seed": "S0170",
+      "target": "lo que necesitas",
+      "known": "what you need",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0171L01",
+      "seed": "S0171",
+      "target": "que te ayude",
+      "known": "me to help you",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0171L02",
+      "seed": "S0171",
+      "target": "a buscarlo",
+      "known": "to look for it",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0172L01",
+      "seed": "S0172",
+      "target": "sería muy útil",
+      "known": "would be very helpful",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0173L01",
+      "seed": "S0173",
+      "target": "gracias",
+      "known": "thank you",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0173L02",
+      "seed": "S0173",
+      "target": "manejarlo",
+      "known": "to manage it",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0173L03",
+      "seed": "S0173",
+      "target": "por mi cuenta",
+      "known": "on my own",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0174L01",
+      "seed": "S0174",
+      "target": "entender",
+      "known": "to understand",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0174L02",
+      "seed": "S0174",
+      "target": "lo que estoy diciendo",
+      "known": "what I'm saying",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0176L01",
+      "seed": "S0176",
+      "target": "le preguntaré",
+      "known": "I'll ask him",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0176L02",
+      "seed": "S0176",
+      "target": "podrá",
+      "known": "he'll be able to",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0176L03",
+      "seed": "S0176",
+      "target": "el año próximo",
+      "known": "next year",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0178L01",
+      "seed": "S0178",
+      "target": "tuve",
+      "known": "I had",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0178L03",
+      "seed": "S0178",
+      "target": "aunque",
+      "known": "although",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0180L01",
+      "seed": "S0180",
+      "target": "mi libro",
+      "known": "my book",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0180L02",
+      "seed": "S0180",
+      "target": "por un rato",
+      "known": "for a while",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0202L02",
+      "seed": "S0202",
+      "target": "estaba seguro",
+      "known": "was sure",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0202L07",
+      "seed": "S0202",
+      "target": "pregunta",
+      "known": "question",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0211L01",
+      "seed": "S0211",
+      "target": "nos",
+      "known": "us",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0211L02",
+      "seed": "S0211",
+      "target": "dijeron",
+      "known": "they told",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0211L05",
+      "seed": "S0211",
+      "target": "querían",
+      "known": "they wanted",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0212L02",
+      "seed": "S0212",
+      "target": "pedir",
+      "known": "to ask for",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0213L02",
+      "seed": "S0213",
+      "target": "sabemos",
+      "known": "we know",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0213L04",
+      "seed": "S0213",
+      "target": "están intentando",
+      "known": "they're trying",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0213L05",
+      "seed": "S0213",
+      "target": "lograr",
+      "known": "to achieve",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0214L01",
+      "seed": "S0214",
+      "target": "pasaste",
+      "known": "did you have",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0214L03",
+      "seed": "S0214",
+      "target": "buen",
+      "known": "good",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0214L05",
+      "seed": "S0214",
+      "target": "el fin de semana",
+      "known": "the weekend",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0215L01",
+      "seed": "S0215",
+      "target": "salí",
+      "known": "I went out",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0215L02",
+      "seed": "S0215",
+      "target": "el",
+      "known": "on",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0215L03",
+      "seed": "S0215",
+      "target": "sábado",
+      "known": "Saturday",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0216L03",
+      "seed": "S0216",
+      "target": "algunos",
+      "known": "a few",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0217L03",
+      "seed": "S0217",
+      "target": "vaso",
+      "known": "glass",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0217L07",
+      "seed": "S0217",
+      "target": "agua",
+      "known": "water",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0218L02",
+      "seed": "S0218",
+      "target": "hice",
+      "known": "I did",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0218L05",
+      "seed": "S0218",
+      "target": "domingo",
+      "known": "Sunday",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0219L02",
+      "seed": "S0219",
+      "target": "agradable",
+      "known": "nice",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0219L03",
+      "seed": "S0219",
+      "target": "relajarse",
+      "known": "to relax",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0219L05",
+      "seed": "S0219",
+      "target": "un rato",
+      "known": "a while",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0220L01",
+      "seed": "S0220",
+      "target": "viste",
+      "known": "did you watch",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0220L02",
+      "seed": "S0220",
+      "target": "un poco de",
+      "known": "a bit of",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0220L03",
+      "seed": "S0220",
+      "target": "televisión",
+      "known": "television",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0221L01",
+      "seed": "S0221",
+      "target": "vi",
+      "known": "I watched",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0221L02",
+      "seed": "S0221",
+      "target": "el fútbol",
+      "known": "the football",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0221L04",
+      "seed": "S0221",
+      "target": "luego",
+      "known": "then",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0221L06",
+      "seed": "S0221",
+      "target": "una película",
+      "known": "a film",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0222L01",
+      "seed": "S0222",
+      "target": "está intentando",
+      "known": "he's trying",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0222L04",
+      "seed": "S0222",
+      "target": "quiere",
+      "known": "he wants",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0223L01",
+      "seed": "S0223",
+      "target": "va a",
+      "known": "he's going to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0224L01",
+      "seed": "S0224",
+      "target": "acaba de",
+      "known": "he's just",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0224L02",
+      "seed": "S0224",
+      "target": "empezar a aprender",
+      "known": "started to learn",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0225L01",
+      "seed": "S0225",
+      "target": "te daría",
+      "known": "he would give you",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0225L02",
+      "seed": "S0225",
+      "target": "una respuesta",
+      "known": "an answer",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0225L03",
+      "seed": "S0225",
+      "target": "si pudiera",
+      "known": "if he could",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0226L01",
+      "seed": "S0226",
+      "target": "el hombre",
+      "known": "the man",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0226L02",
+      "seed": "S0226",
+      "target": "está intentando",
+      "known": "is trying",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0227L01",
+      "seed": "S0227",
+      "target": "ese hombre",
+      "known": "that man",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0227L02",
+      "seed": "S0227",
+      "target": "va a",
+      "known": "is going to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0228L02",
+      "seed": "S0228",
+      "target": "acaba de",
+      "known": "has just",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0228L03",
+      "seed": "S0228",
+      "target": "empezar a practicar el habla",
+      "known": "started to practise speaking",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0229L01",
+      "seed": "S0229",
+      "target": "esa mujer",
+      "known": "that woman",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0229L02",
+      "seed": "S0229",
+      "target": "te ayudaría",
+      "known": "would help you",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0229L03",
+      "seed": "S0229",
+      "target": "si pudiera",
+      "known": "if she could",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0230L02",
+      "seed": "S0230",
+      "target": "un hombre joven",
+      "known": "a young man",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0230L05",
+      "seed": "S0230",
+      "target": "trabajar",
+      "known": "to work",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0241L02",
+      "seed": "S0241",
+      "target": "dárselo",
+      "known": "to give it to him",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0242L02",
+      "seed": "S0242",
+      "target": "darle",
+      "known": "to give her",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0243L04",
+      "seed": "S0243",
+      "target": "para comer",
+      "known": "to eat",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0245L04",
+      "seed": "S0245",
+      "target": "en poco tiempo",
+      "known": "in a short time",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0246L02",
+      "seed": "S0246",
+      "target": "que ella te ayudara",
+      "known": "her to help you",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0246L04",
+      "seed": "S0246",
+      "target": "estaba demasiado ocupada",
+      "known": "was too busy",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0247L01",
+      "seed": "S0247",
+      "target": "pensé que",
+      "known": "I thought that",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0247L05",
+      "seed": "S0247",
+      "target": "bastante bueno",
+      "known": "fairly good",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0248L02",
+      "seed": "S0248",
+      "target": "la película",
+      "known": "the film",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0248L04",
+      "seed": "S0248",
+      "target": "basura completa",
+      "known": "complete rubbish",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0248L07",
+      "seed": "S0248",
+      "target": "mi dinero",
+      "known": "my money",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0248L08",
+      "seed": "S0248",
+      "target": "de vuelta",
+      "known": "back",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0249L02",
+      "seed": "S0249",
+      "target": "que me ayudes",
+      "known": "you to help me",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0249L03",
+      "seed": "S0249",
+      "target": "antes de que te vayas",
+      "known": "before you go",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0250L04",
+      "seed": "S0250",
+      "target": "antes de que responda",
+      "known": "before I answer",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0271L01",
+      "seed": "S0271",
+      "target": "te gustaría",
+      "known": "would you like",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0272L03",
+      "seed": "S0272",
+      "target": "suena como",
+      "known": "sounds like",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0272L04",
+      "seed": "S0272",
+      "target": "una",
+      "known": "a",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0272L05",
+      "seed": "S0272",
+      "target": "gran",
+      "known": "great",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0273L03",
+      "seed": "S0273",
+      "target": "tengo",
+      "known": "I've got",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0273L04",
+      "seed": "S0273",
+      "target": "demasiado",
+      "known": "too much",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0274L01",
+      "seed": "S0274",
+      "target": "tienes que",
+      "known": "do you have to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0274L02",
+      "seed": "S0274",
+      "target": "salir",
+      "known": "to leave",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0274L04",
+      "seed": "S0274",
+      "target": "unos pocos días",
+      "known": "a few days",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0275L01",
+      "seed": "S0275",
+      "target": "más tiempo",
+      "known": "longer",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0276L03",
+      "seed": "S0276",
+      "target": "quedarme",
+      "known": "stay",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0276L04",
+      "seed": "S0276",
+      "target": "aquí",
+      "known": "here",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0276L05",
+      "seed": "S0276",
+      "target": "un poco más de tiempo",
+      "known": "for a little longer",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0277L04",
+      "seed": "S0277",
+      "target": "reunión",
+      "known": "meeting",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0277L06",
+      "seed": "S0277",
+      "target": "a principios de",
+      "known": "early",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0278L01",
+      "seed": "S0278",
+      "target": "tuviste que",
+      "known": "did you have to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0279L03",
+      "seed": "S0279",
+      "target": "no quedaba",
+      "known": "there wasn't... left",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0279L04",
+      "seed": "S0279",
+      "target": "mucho",
+      "known": "much",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0280L02",
+      "seed": "S0280",
+      "target": "solo",
+      "known": "only",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0280L03",
+      "seed": "S0280",
+      "target": "tuve que",
+      "known": "had to",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0280L07",
+      "seed": "S0280",
+      "target": "más importante",
+      "known": "most important",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0281L01",
+      "seed": "S0281",
+      "target": "¿Te importa",
+      "known": "Do you mind",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0281L03",
+      "seed": "S0281",
+      "target": "termino",
+      "known": "I finish",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0281L05",
+      "seed": "S0281",
+      "target": "café",
+      "known": "coffee",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0281L06",
+      "seed": "S0281",
+      "target": "antes de que",
+      "known": "before",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0281L07",
+      "seed": "S0281",
+      "target": "empieces",
+      "known": "you start",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0282L03",
+      "seed": "S0282",
+      "target": "no es",
+      "known": "'s not",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0283L01",
+      "seed": "S0283",
+      "target": "cuáles",
+      "known": "which",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0283L03",
+      "seed": "S0283",
+      "target": "tus",
+      "known": "your",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0284L01",
+      "seed": "S0284",
+      "target": "conoces",
+      "known": "do you know",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0284L03",
+      "seed": "S0284",
+      "target": "amiga",
+      "known": "friend",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0284L06",
+      "seed": "S0284",
+      "target": "hermana",
+      "known": "sister",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0285L02",
+      "seed": "S0285",
+      "target": "habla",
+      "known": "speaks",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0286L02",
+      "seed": "S0286",
+      "target": "a las que les gusta",
+      "known": "who like",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0286L03",
+      "seed": "S0286",
+      "target": "hablar",
+      "known": "speaking",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0287L01",
+      "seed": "S0287",
+      "target": "cuántas",
+      "known": "how many",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0287L05",
+      "seed": "S0287",
+      "target": "ver",
+      "known": "watching",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0287L06",
+      "seed": "S0287",
+      "target": "la televisión",
+      "known": "television",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0288L01",
+      "seed": "S0288",
+      "target": "a la mayoría de",
+      "known": "most",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0288L02",
+      "seed": "S0288",
+      "target": "la gente",
+      "known": "people",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0288L03",
+      "seed": "S0288",
+      "target": "conozco",
+      "known": "I know",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0288L04",
+      "seed": "S0288",
+      "target": "le gusta",
+      "known": "like",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0289L01",
+      "seed": "S0289",
+      "target": "me pregunto",
+      "known": "I wonder",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0289L04",
+      "seed": "S0289",
+      "target": "va a estar",
+      "known": "'s going to be",
+      "type": "M",
+      "new": false
+    },
+    {
+      "lego_id": "S0289L05",
+      "seed": "S0289",
+      "target": "allí",
+      "known": "there",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0289L07",
+      "seed": "S0289",
+      "target": "tarde",
+      "known": "afternoon",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0290L04",
+      "seed": "S0290",
+      "target": "sabe",
+      "known": "knows",
+      "type": "A",
+      "new": false
+    },
+    {
+      "lego_id": "S0290L06",
+      "seed": "S0290",
+      "target": "respuesta",
+      "known": "answer",
+      "type": "A",
+      "new": false
+    }
+  ]
+}

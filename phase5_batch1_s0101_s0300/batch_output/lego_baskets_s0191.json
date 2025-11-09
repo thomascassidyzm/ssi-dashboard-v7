@@ -1,0 +1,252 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0191",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "No I don't mind at all.",
+    "target": "No, no me importa en absoluto."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 533,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.588Z",
+    "curated_by": "Claude Code - Agent 10 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_10_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.589Z"
+  },
+  "S0096L01": {
+    "lego": [
+      "no",
+      "no"
+    ],
+    "type": "A",
+    "available_legos": 532,
+    "practice_phrases": [
+      [
+        "no",
+        "no",
+        null,
+        1
+      ],
+      [
+        "no I don't want",
+        "no quiero",
+        null,
+        2
+      ],
+      [
+        "no I don't like that",
+        "no me gusta eso",
+        null,
+        4
+      ],
+      [
+        "no I can't do that today",
+        "no puedo hacer eso hoy",
+        null,
+        5
+      ],
+      [
+        "no I'm not going to speak with you",
+        "no voy a hablar contigo",
+        null,
+        6
+      ],
+      [
+        "no I don't want to go with everyone else",
+        "no quiero ir con todos los demás",
+        null,
+        7
+      ],
+      [
+        "no I don't think that it's a good thing",
+        "no pienso que es una cosa buena",
+        null,
+        8
+      ],
+      [
+        "no I don't enjoy making mistakes when other people are here",
+        "no disfruto hacer errores cuando otras personas están aquí",
+        null,
+        10
+      ],
+      [
+        "no I'm not trying to finish as quickly as possible",
+        "no estoy intentando terminar lo más rápidamente posible",
+        null,
+        8
+      ],
+      [
+        "no I wasn't thinking about how to answer",
+        "no estaba pensando en cómo responder",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0048L01": {
+    "lego": [
+      "I don't mind",
+      "no me importa"
+    ],
+    "type": "M",
+    "available_legos": 532,
+    "practice_phrases": [
+      [
+        "I don't mind",
+        "no me importa",
+        null,
+        1
+      ],
+      [
+        "I don't mind if I can",
+        "no me importa si puedo",
+        null,
+        4
+      ],
+      [
+        "I don't mind speaking with you",
+        "no me importa hablar contigo",
+        null,
+        4
+      ],
+      [
+        "I don't mind trying to help you",
+        "no me importa intentar ayudarte",
+        null,
+        5
+      ],
+      [
+        "I don't mind speaking with you this evening",
+        "no me importa hablar contigo esta noche",
+        null,
+        6
+      ],
+      [
+        "I don't mind waiting before I have to go",
+        "no me importa esperar antes de que tenga que ir",
+        null,
+        9
+      ],
+      [
+        "I don't mind making mistakes when I'm learning Spanish",
+        "no me importa hacer errores cuando estoy aprendiendo español",
+        null,
+        9
+      ],
+      [
+        "I don't mind if you want to speak with me",
+        "no me importa si quieres hablar conmigo",
+        null,
+        8
+      ],
+      [
+        "I don't mind trying to learn as often as possible",
+        "no me importa intentar aprender lo más frecuentemente posible",
+        null,
+        9
+      ],
+      [
+        "I don't mind at all",
+        "no me importa en absoluto",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0191L01": {
+    "lego": [
+      "at all",
+      "en absoluto"
+    ],
+    "type": "M",
+    "new": true,
+    "available_legos": 533,
+    "practice_phrases": [
+      [
+        "at all",
+        "en absoluto",
+        null,
+        1
+      ],
+      [
+        "I don't mind at all",
+        "no me importa en absoluto",
+        null,
+        3
+      ],
+      [
+        "I don't like that at all",
+        "no me gusta eso en absoluto",
+        null,
+        5
+      ],
+      [
+        "I don't want to wait at all",
+        "no quiero esperar en absoluto",
+        null,
+        5
+      ],
+      [
+        "I don't understand that at all this morning",
+        "no comprendo eso en absoluto esta mañana",
+        null,
+        7
+      ],
+      [
+        "I'm not tired at all at the moment",
+        "no estoy cansado en absoluto en este momento",
+        null,
+        8
+      ],
+      [
+        "I don't enjoy waking up at all when I didn't sleep",
+        "no disfruto despertarme en absoluto cuando no dormí",
+        null,
+        9
+      ],
+      [
+        "I don't worry about making mistakes at all you know",
+        "no me preocupo por hacer errores en absoluto sabes",
+        null,
+        9
+      ],
+      [
+        "I'm not trying to finish as quickly as possible at all",
+        "no estoy intentando terminar lo más rápidamente posible en absoluto",
+        null,
+        10
+      ],
+      [
+        "No I don't mind at all.",
+        "No, no me importa en absoluto.",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT"
+  }
+}

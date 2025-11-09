@@ -1,0 +1,475 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0210",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "Piensan que necesitamos discutir el problema.",
+    "known": "They think that we need to discuss the problem."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.532Z",
+    "curated_by": "Claude Code - Agent 11 (converted from SEED_GROUPED format)",
+    "original_file": "agent_11_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.532Z"
+  },
+  "S0210L01": {
+    "lego": [
+      "they think",
+      "piensan"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "they think",
+        "piensan",
+        null,
+        1
+      ],
+      [
+        "they think so",
+        "piensan así",
+        null,
+        2
+      ],
+      [
+        "they think we need help",
+        "piensan que necesitamos ayuda",
+        null,
+        4
+      ],
+      [
+        "I know what they think",
+        "sé lo que piensan",
+        null,
+        4
+      ],
+      [
+        "I want to know what they think about that",
+        "quiero saber qué piensan sobre eso",
+        null,
+        7
+      ],
+      [
+        "they think we need more time to practise",
+        "piensan que necesitamos más tiempo para practicar",
+        null,
+        7
+      ],
+      [
+        "they think that we need to discuss the problem",
+        "piensan que necesitamos discutir el problema",
+        null,
+        7
+      ],
+      [
+        "I wasn't sure what they think we need to do",
+        "no estaba seguro qué piensan que necesitamos hacer",
+        null,
+        9
+      ],
+      [
+        "they think that you can help",
+        "piensan que puedes ayudar",
+        null,
+        5
+      ],
+      [
+        "they think we need to discuss this",
+        "piensan que necesitamos discutir esto",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0210L01 LEGOs only"
+  },
+  "S0102L02": {
+    "lego": [
+      "that",
+      "que"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "that",
+        "que",
+        null,
+        1
+      ],
+      [
+        "I think that",
+        "pienso que",
+        null,
+        2
+      ],
+      [
+        "they think that we need",
+        "piensan que necesitamos",
+        null,
+        4
+      ],
+      [
+        "they think that you're right",
+        "piensan que tienes razón",
+        null,
+        4
+      ],
+      [
+        "I think that we need to discuss this",
+        "pienso que necesitamos discutir esto",
+        null,
+        6
+      ],
+      [
+        "I know that you've done what you needed",
+        "sé que has hecho lo que necesitabas",
+        null,
+        7
+      ],
+      [
+        "they think that we need to discuss the problem",
+        "piensan que necesitamos discutir el problema",
+        null,
+        7
+      ],
+      [
+        "I wasn't sure that you were going to help me",
+        "no estaba seguro que ibas a ayudarme",
+        null,
+        8
+      ],
+      [
+        "I know that you can help",
+        "sé que puedes ayudar",
+        null,
+        5
+      ],
+      [
+        "they think that we need help",
+        "piensan que necesitamos ayuda",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0102L02 LEGOs only"
+  },
+  "S0104L01": {
+    "lego": [
+      "we need",
+      "necesitamos"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "they think",
+        "piensan",
+        null,
+        1
+      ],
+      [
+        "they think so",
+        "piensan así",
+        null,
+        2
+      ],
+      [
+        "they think we need help",
+        "piensan que necesitamos ayuda",
+        null,
+        4
+      ],
+      [
+        "I know what they think",
+        "sé lo que piensan",
+        null,
+        4
+      ],
+      [
+        "I want to know what they think about that",
+        "quiero saber qué piensan sobre eso",
+        null,
+        7
+      ],
+      [
+        "they think we need more time to practise",
+        "piensan que necesitamos más tiempo para practicar",
+        null,
+        7
+      ],
+      [
+        "they think that we need to discuss the problem",
+        "piensan que necesitamos discutir el problema",
+        null,
+        7
+      ],
+      [
+        "I wasn't sure what they think we need to do",
+        "no estaba seguro qué piensan que necesitamos hacer",
+        null,
+        9
+      ],
+      [
+        "they think that you can help",
+        "piensan que puedes ayudar",
+        null,
+        5
+      ],
+      [
+        "they think we need to discuss this",
+        "piensan que necesitamos discutir esto",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0104L01 LEGOs only"
+  },
+  "S0210L04": {
+    "lego": [
+      "to discuss",
+      "discutir"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to discuss",
+        "discutir",
+        null,
+        1
+      ],
+      [
+        "to discuss this",
+        "discutir esto",
+        null,
+        2
+      ],
+      [
+        "we need to discuss",
+        "necesitamos discutir",
+        null,
+        3
+      ],
+      [
+        "to discuss the problem",
+        "discutir el problema",
+        null,
+        3
+      ],
+      [
+        "we need to discuss that",
+        "necesitamos discutir eso",
+        null,
+        4
+      ],
+      [
+        "they think we need to discuss this",
+        "piensan que necesitamos discutir esto",
+        null,
+        5
+      ],
+      [
+        "I want to discuss the problem with you",
+        "quiero discutir el problema contigo",
+        null,
+        6
+      ],
+      [
+        "they think that we need to discuss the problem",
+        "piensan que necesitamos discutir el problema",
+        null,
+        7
+      ],
+      [
+        "I think we need to spend time discussing this",
+        "pienso que necesitamos pasar tiempo discutiendo esto",
+        null,
+        7
+      ],
+      [
+        "we need to discuss the problem now",
+        "necesitamos discutir el problema ahora",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0210L04 LEGOs only"
+  },
+  "S0210L05": {
+    "lego": [
+      "the",
+      "el"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "the",
+        "el",
+        null,
+        1
+      ],
+      [
+        "the problem",
+        "el problema",
+        null,
+        2
+      ],
+      [
+        "to discuss the problem",
+        "discutir el problema",
+        null,
+        3
+      ],
+      [
+        "we need to solve the problem",
+        "necesitamos resolver el problema",
+        null,
+        4
+      ],
+      [
+        "I want to know about the problem",
+        "quiero saber sobre el problema",
+        null,
+        5
+      ],
+      [
+        "they think we need to discuss the problem",
+        "piensan que necesitamos discutir el problema",
+        null,
+        6
+      ],
+      [
+        "I wasn't sure how to solve the problem",
+        "no estaba seguro cómo resolver el problema",
+        null,
+        6
+      ],
+      [
+        "I want to help you deal with the problem",
+        "quiero ayudarte a tratar con el problema",
+        null,
+        7
+      ],
+      [
+        "they think that we need to discuss the problem",
+        "piensan que necesitamos discutir el problema",
+        null,
+        7
+      ],
+      [
+        "we need to discuss the problem now",
+        "necesitamos discutir el problema ahora",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0210L05 LEGOs only"
+  },
+  "S0141L02": {
+    "lego": [
+      "problem",
+      "problema"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "that",
+        "que",
+        null,
+        1
+      ],
+      [
+        "I think that",
+        "pienso que",
+        null,
+        2
+      ],
+      [
+        "they think that we need",
+        "piensan que necesitamos",
+        null,
+        4
+      ],
+      [
+        "they think that you're right",
+        "piensan que tienes razón",
+        null,
+        4
+      ],
+      [
+        "I think that we need to discuss this",
+        "pienso que necesitamos discutir esto",
+        null,
+        6
+      ],
+      [
+        "I know that you've done what you needed",
+        "sé que has hecho lo que necesitabas",
+        null,
+        7
+      ],
+      [
+        "they think that we need to discuss the problem",
+        "piensan que necesitamos discutir el problema",
+        null,
+        7
+      ],
+      [
+        "I wasn't sure that you were going to help me",
+        "no estaba seguro que ibas a ayudarme",
+        null,
+        8
+      ],
+      [
+        "I know that you can help",
+        "sé que puedes ayudar",
+        null,
+        5
+      ],
+      [
+        "They think that we need to discuss the problem.",
+        "Piensan que necesitamos discutir el problema.",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0141L02 LEGOs only"
+  }
+}

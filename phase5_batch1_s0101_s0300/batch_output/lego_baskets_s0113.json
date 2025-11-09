@@ -1,0 +1,357 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0113",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "¿Por qué no puedo recordar lo que dijiste?",
+    "known": "Why can't I remember what you said?"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 320,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.413Z",
+    "curated_by": "Claude Code - Agent 2 (converted from SEED_GROUPED format)",
+    "original_file": "agent_02_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.413Z"
+  },
+  "S0021L01": {
+    "lego": [
+      "why",
+      "por qué"
+    ],
+    "type": "M",
+    "available_legos": 61,
+    "practice_phrases": [
+      [
+        "why",
+        "por qué",
+        null,
+        1
+      ],
+      [
+        "why now",
+        "por qué ahora",
+        null,
+        2
+      ],
+      [
+        "I'm not sure why",
+        "no estoy seguro por qué",
+        null,
+        4
+      ],
+      [
+        "why can't I speak",
+        "por qué no puedo hablar",
+        null,
+        4
+      ],
+      [
+        "why do I want to learn",
+        "por qué quiero aprender",
+        null,
+        5
+      ],
+      [
+        "why can't I remember something",
+        "por qué no puedo recordar algo",
+        null,
+        5
+      ],
+      [
+        "why not",
+        "por qué no",
+        null,
+        2
+      ],
+      [
+        "why do I want to learn",
+        "por qué quiero aprender",
+        null,
+        5
+      ],
+      [
+        "I'm not sure why",
+        "no estoy seguro por qué",
+        null,
+        5
+      ],
+      [
+        "why not",
+        "por qué no",
+        null,
+        2
+      ],
+      [
+        "why do I want to learn",
+        "por qué quiero aprender",
+        null,
+        5
+      ],
+      [
+        "I'm not sure why",
+        "no estoy seguro por qué",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 0,
+      "longer_4_5": 8,
+      "long_6_plus": 0
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0113 LEGOs only"
+  },
+  "S0057L01": {
+    "lego": [
+      "I can't",
+      "no puedo"
+    ],
+    "type": "M",
+    "available_legos": 166,
+    "practice_phrases": [
+      [
+        "I can't",
+        "no puedo",
+        null,
+        1
+      ],
+      [
+        "I can't speak",
+        "no puedo hablar",
+        null,
+        2
+      ],
+      [
+        "I can't remember",
+        "no puedo recordar",
+        null,
+        2
+      ],
+      [
+        "I can't speak Spanish",
+        "no puedo hablar español",
+        null,
+        3
+      ],
+      [
+        "why can't I remember",
+        "por qué no puedo recordar",
+        null,
+        4
+      ],
+      [
+        "I can't remember something",
+        "no puedo recordar algo",
+        null,
+        3
+      ],
+      [
+        "I'm not sure why I can't speak",
+        "no estoy seguro por qué no puedo hablar",
+        null,
+        6
+      ],
+      [
+        "I can't remember that very well",
+        "no puedo recordar eso muy bien",
+        null,
+        5
+      ],
+      [
+        "I can't speak now",
+        "no puedo hablar ahora",
+        null,
+        4
+      ],
+      [
+        "I can't learn that",
+        "no puedo aprender eso",
+        null,
+        4
+      ],
+      [
+        "I can't speak now",
+        "no puedo hablar ahora",
+        null,
+        4
+      ],
+      [
+        "I can't learn that",
+        "no puedo aprender eso",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 6,
+      "long_6_plus": 1
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0113 LEGOs only"
+  },
+  "S0006L01": {
+    "lego": [
+      "to remember",
+      "recordar"
+    ],
+    "type": "A",
+    "available_legos": 17,
+    "practice_phrases": [
+      [
+        "to remember",
+        "recordar",
+        null,
+        1
+      ],
+      [
+        "I want to remember",
+        "quiero recordar",
+        null,
+        2
+      ],
+      [
+        "I'm trying to remember",
+        "estoy intentando recordar",
+        null,
+        3
+      ],
+      [
+        "I want to remember something",
+        "quiero recordar algo",
+        null,
+        3
+      ],
+      [
+        "I want to remember",
+        "quiero recordar",
+        null,
+        3
+      ],
+      [
+        "I want to remember",
+        "quiero recordar",
+        null,
+        3
+      ],
+      [
+        "I want to remember",
+        "quiero recordar",
+        null,
+        3
+      ],
+      [
+        "I can remember",
+        "puedo recordar",
+        null,
+        3
+      ],
+      [
+        "I'm trying to remember",
+        "estoy intentando recordar",
+        null,
+        3
+      ],
+      [
+        "to remember now",
+        "recordar ahora",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 7,
+      "longer_4_5": 0,
+      "long_6_plus": 0
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0113 LEGOs only"
+  },
+  "S0078L02": {
+    "lego": [
+      "what you said",
+      "lo que dijiste"
+    ],
+    "type": "M",
+    "available_legos": 221,
+    "practice_phrases": [
+      [
+        "what you said",
+        "lo que dijiste",
+        null,
+        1
+      ],
+      [
+        "I remember what you said",
+        "recordar lo que dijiste",
+        null,
+        3
+      ],
+      [
+        "I can't remember what you said",
+        "no puedo recordar lo que dijiste",
+        null,
+        4
+      ],
+      [
+        "I'm trying to remember what you said",
+        "estoy intentando recordar lo que dijiste",
+        null,
+        5
+      ],
+      [
+        "I want to understand what you said",
+        "quiero comprender lo que dijiste",
+        null,
+        4
+      ],
+      [
+        "why can't I remember what you said",
+        "por qué no puedo recordar lo que dijiste",
+        null,
+        6
+      ],
+      [
+        "I'm not sure if I remember what you said",
+        "no estoy seguro si recordar lo que dijiste",
+        null,
+        7
+      ],
+      [
+        "I want to explain what you said",
+        "quiero explicar lo que dijiste",
+        null,
+        4
+      ],
+      [
+        "I'm trying to understand what you said",
+        "estoy intentando comprender lo que dijiste",
+        null,
+        5
+      ],
+      [
+        "I want to remember what you said yesterday",
+        "quiero recordar lo que dijiste ayer",
+        null,
+        6
+      ],
+      [
+        "Why can't I remember what you said?",
+        "¿Por qué no puedo recordar lo que dijiste?",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 6,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0113 LEGOs only"
+  }
+}

@@ -1,0 +1,486 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0200",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "They say they want to make sure that we finish everything in time.",
+    "target": "Dicen que quieren asegurarse de que terminemos todo a tiempo."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 551,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.590Z",
+    "curated_by": "Claude Code - Agent 10 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_10_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.590Z"
+  },
+  "S0200L01": {
+    "lego": [
+      "they say",
+      "dicen"
+    ],
+    "type": "A",
+    "new": true,
+    "available_legos": 548,
+    "practice_phrases": [
+      [
+        "they say",
+        "dicen",
+        null,
+        1
+      ],
+      [
+        "they say it's good",
+        "dicen que es bueno",
+        null,
+        4
+      ],
+      [
+        "they say I work too much",
+        "dicen que trabajo demasiado",
+        null,
+        5
+      ],
+      [
+        "they say they want to help",
+        "dicen que quieren ayudar",
+        null,
+        5
+      ],
+      [
+        "they say it's a good idea",
+        "dicen que es una buena idea",
+        null,
+        6
+      ],
+      [
+        "they say they're trying to finish in time",
+        "dicen que están intentando terminar a tiempo",
+        null,
+        8
+      ],
+      [
+        "they say they're trying to finish in time",
+        "dicen que están intentando terminar a tiempo",
+        null,
+        7
+      ],
+      [
+        "I don't know what they say about the latest idea",
+        "no sé qué dicen sobre la última idea",
+        null,
+        9
+      ],
+      [
+        "they say they want to make sure we finish everything",
+        "dicen que quieren asegurarse de que terminemos todo",
+        null,
+        9
+      ],
+      [
+        "they say they want to make sure",
+        "dicen que quieren asegurarse",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0200L02": {
+    "lego": [
+      "that they want",
+      "que quieren"
+    ],
+    "type": "M",
+    "new": true,
+    "available_legos": 549,
+    "practice_phrases": [
+      [
+        "that they want",
+        "que quieren",
+        null,
+        1
+      ],
+      [
+        "I think that they want to help",
+        "pienso que quieren ayudar",
+        null,
+        6
+      ],
+      [
+        "they say that they want to learn",
+        "dicen que quieren aprender",
+        null,
+        6
+      ],
+      [
+        "I know that they want to finish",
+        "sé que quieren terminar",
+        null,
+        5
+      ],
+      [
+        "they say that they want to speak",
+        "dicen que quieren hablar",
+        null,
+        6
+      ],
+      [
+        "I don't know if they want to work tomorrow",
+        "no sé si quieren trabajar mañana",
+        null,
+        8
+      ],
+      [
+        "they say they want to make sure everything is ready",
+        "dicen que quieren asegurarse de que todo está preparado",
+        null,
+        9
+      ],
+      [
+        "I think that they want to be able to help you",
+        "pienso que quieren poder ayudarte",
+        null,
+        9
+      ],
+      [
+        "they say that they want to finish everything before tomorrow night",
+        "dicen que quieren terminar todo antes de mañana por la noche",
+        null,
+        11
+      ],
+      [
+        "they say that they want to make sure",
+        "dicen que quieren asegurarse",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0200L03": {
+    "lego": [
+      "to make sure",
+      "asegurarse de"
+    ],
+    "type": "M",
+    "new": true,
+    "available_legos": 550,
+    "practice_phrases": [
+      [
+        "to make sure",
+        "asegurarse de",
+        null,
+        1
+      ],
+      [
+        "they want to make sure",
+        "quieren asegurarse de",
+        null,
+        4
+      ],
+      [
+        "they're trying to make sure",
+        "están intentando asegurarse de",
+        null,
+        4
+      ],
+      [
+        "he wants to make sure it's ready",
+        "quiere asegurarse de que está preparado",
+        null,
+        7
+      ],
+      [
+        "they want to make sure we finish",
+        "quieren asegurarse de que terminemos",
+        null,
+        6
+      ],
+      [
+        "they want to make sure we can speak Spanish",
+        "quieren asegurarse de que hablamos español",
+        null,
+        7
+      ],
+      [
+        "they say they want to make sure we finish in time",
+        "dicen que quieren asegurarse de que terminemos a tiempo",
+        null,
+        10
+      ],
+      [
+        "he wants to make sure you understand what he wants to say",
+        "quiere asegurarse de que comprendes lo que quiere decir",
+        null,
+        11
+      ],
+      [
+        "they want to make sure we finish everything before tomorrow",
+        "quieren asegurarse de que terminemos todo antes de mañana",
+        null,
+        9
+      ],
+      [
+        "they want to make sure we finish",
+        "quieren asegurarse de que terminemos",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0200L04": {
+    "lego": [
+      "that we finish",
+      "que terminemos"
+    ],
+    "type": "M",
+    "new": true,
+    "available_legos": 551,
+    "practice_phrases": [
+      [
+        "that we finish",
+        "que terminemos",
+        null,
+        1
+      ],
+      [
+        "they want that we finish",
+        "quieren que terminemos",
+        null,
+        4
+      ],
+      [
+        "I hope that we finish today",
+        "espero que terminemos hoy",
+        null,
+        5
+      ],
+      [
+        "I think that we finish in time",
+        "pienso que terminemos a tiempo",
+        null,
+        6
+      ],
+      [
+        "they want to make sure that we finish",
+        "quieren asegurarse de que terminemos",
+        null,
+        6
+      ],
+      [
+        "they want to make sure that we finish everything",
+        "quieren asegurarse de que terminemos todo",
+        null,
+        7
+      ],
+      [
+        "they say they want to make sure that we finish everything",
+        "dicen que quieren asegurarse de que terminemos todo",
+        null,
+        10
+      ],
+      [
+        "I don't know if they want us to finish in time",
+        "no sé si quieren que terminemos a tiempo",
+        null,
+        9
+      ],
+      [
+        "they want to make sure that we finish before tomorrow night",
+        "quieren asegurarse de que terminemos antes de mañana por la noche",
+        null,
+        11
+      ],
+      [
+        "they want to make sure that we finish everything",
+        "quieren asegurarse de que terminemos todo",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0045L03": {
+    "lego": [
+      "everything",
+      "todo"
+    ],
+    "type": "A",
+    "available_legos": 551,
+    "practice_phrases": [
+      [
+        "everything",
+        "todo",
+        null,
+        1
+      ],
+      [
+        "I know everything",
+        "sé todo",
+        null,
+        2
+      ],
+      [
+        "I want to finish everything today",
+        "quiero terminar todo hoy",
+        null,
+        4
+      ],
+      [
+        "they want to finish everything",
+        "quieren terminar todo",
+        null,
+        4
+      ],
+      [
+        "I'm trying to remember everything",
+        "estoy intentando recordar todo",
+        null,
+        4
+      ],
+      [
+        "I don't need to know everything at all",
+        "no necesito saber todo en absoluto",
+        null,
+        7
+      ],
+      [
+        "they want to make sure that we finish everything",
+        "quieren asegurarse de que terminemos todo",
+        null,
+        7
+      ],
+      [
+        "I'm trying to finish everything before I have to go",
+        "estoy intentando terminar todo antes de que tenga que ir",
+        null,
+        11
+      ],
+      [
+        "I think that I need to understand everything before tomorrow",
+        "pienso que necesito comprender todo antes de mañana",
+        null,
+        9
+      ],
+      [
+        "we finish everything in time",
+        "terminemos todo a tiempo",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0091L05": {
+    "lego": [
+      "in time",
+      "a tiempo"
+    ],
+    "type": "M",
+    "available_legos": 551,
+    "practice_phrases": [
+      [
+        "in time",
+        "a tiempo",
+        null,
+        1
+      ],
+      [
+        "I want to finish in time",
+        "quiero terminar a tiempo",
+        null,
+        5
+      ],
+      [
+        "we need to finish in time",
+        "necesitamos terminar a tiempo",
+        null,
+        5
+      ],
+      [
+        "I want to finish in time",
+        "quiero terminar a tiempo",
+        null,
+        4
+      ],
+      [
+        "they want to finish everything in time",
+        "quieren terminar todo a tiempo",
+        null,
+        6
+      ],
+      [
+        "they want to make sure we finish in time",
+        "quieren asegurarse de que terminemos a tiempo",
+        null,
+        8
+      ],
+      [
+        "they say they want to make sure we finish in time",
+        "dicen que quieren asegurarse de que terminemos a tiempo",
+        null,
+        10
+      ],
+      [
+        "I don't know if I want to finish everything in time today",
+        "no sé si quiero terminar todo a tiempo hoy",
+        null,
+        10
+      ],
+      [
+        "they're trying to finish everything in time before tomorrow night",
+        "están intentando terminar todo a tiempo antes de mañana por la noche",
+        null,
+        10
+      ],
+      [
+        "They say they want to make sure that we finish everything in time.",
+        "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+        null,
+        11
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 6
+    },
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT"
+  }
+}

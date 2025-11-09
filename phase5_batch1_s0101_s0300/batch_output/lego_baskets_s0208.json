@@ -1,0 +1,399 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0208",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "No quería preguntarte cómo decirlo.",
+    "known": "I didn't want to ask you how to say it."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.532Z",
+    "curated_by": "Claude Code - Agent 11 (converted from SEED_GROUPED format)",
+    "original_file": "agent_11_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.532Z"
+  },
+  "S0096L01": {
+    "lego": [
+      "not",
+      "no"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "not",
+        "no",
+        null,
+        1
+      ],
+      [
+        "not now",
+        "no ahora",
+        null,
+        2
+      ],
+      [
+        "I'm not sure",
+        "no estoy seguro",
+        null,
+        3
+      ],
+      [
+        "I didn't want to ask",
+        "no quería preguntar",
+        null,
+        4
+      ],
+      [
+        "I'm not sure how to help",
+        "no estoy seguro cómo ayudar",
+        null,
+        5
+      ],
+      [
+        "I didn't want to ask you about that",
+        "no quería preguntarte sobre eso",
+        null,
+        6
+      ],
+      [
+        "I didn't want to ask you about the arrangements",
+        "no quería preguntarte sobre los arreglos",
+        null,
+        6
+      ],
+      [
+        "I'm not sure what you need me to do",
+        "no estoy seguro qué necesitas que haga",
+        null,
+        7
+      ],
+      [
+        "I didn't want to ask you how to say it",
+        "no quería preguntarte cómo decirlo",
+        null,
+        7
+      ],
+      [
+        "I wasn't sure if you were going to help me",
+        "no estaba seguro si ibas a ayudarme",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0096L01 LEGOs only"
+  },
+  "S0030L01": {
+    "lego": [
+      "I wanted",
+      "quería"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "not",
+        "no",
+        null,
+        1
+      ],
+      [
+        "not now",
+        "no ahora",
+        null,
+        2
+      ],
+      [
+        "I'm not sure",
+        "no estoy seguro",
+        null,
+        3
+      ],
+      [
+        "I didn't want to ask",
+        "no quería preguntar",
+        null,
+        4
+      ],
+      [
+        "I'm not sure how to help",
+        "no estoy seguro cómo ayudar",
+        null,
+        5
+      ],
+      [
+        "I didn't want to ask you about that",
+        "no quería preguntarte sobre eso",
+        null,
+        6
+      ],
+      [
+        "I didn't want to ask you about the arrangements",
+        "no quería preguntarte sobre los arreglos",
+        null,
+        6
+      ],
+      [
+        "I'm not sure what you need me to do",
+        "no estoy seguro qué necesitas que haga",
+        null,
+        7
+      ],
+      [
+        "I didn't want to ask you how to say it",
+        "no quería preguntarte cómo decirlo",
+        null,
+        7
+      ],
+      [
+        "I wasn't sure if you were going to help me",
+        "no estaba seguro si ibas a ayudarme",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0030L01 LEGOs only"
+  },
+  "S0030L02": {
+    "lego": [
+      "to ask you",
+      "preguntarte"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "I wanted",
+        "quería",
+        null,
+        1
+      ],
+      [
+        "I wanted to know",
+        "quería saber",
+        null,
+        2
+      ],
+      [
+        "I didn't want to ask",
+        "no quería preguntar",
+        null,
+        3
+      ],
+      [
+        "I wanted to help you",
+        "quería ayudarte",
+        null,
+        3
+      ],
+      [
+        "I didn't want to ask you",
+        "no quería preguntarte",
+        null,
+        4
+      ],
+      [
+        "I wanted to know how to say it",
+        "quería saber cómo decirlo",
+        null,
+        5
+      ],
+      [
+        "I didn't want to ask you about that",
+        "no quería preguntarte sobre eso",
+        null,
+        6
+      ],
+      [
+        "I wanted her to help you with that",
+        "quería que ella te ayudara con eso",
+        null,
+        6
+      ],
+      [
+        "I didn't want to ask you how to say it",
+        "no quería preguntarte cómo decirlo",
+        null,
+        7
+      ],
+      [
+        "I wanted to know what you were going to do",
+        "quería saber qué ibas a hacer",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0030L02 LEGOs only"
+  },
+  "S0003L01": {
+    "lego": [
+      "how",
+      "cómo"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "not",
+        "no",
+        null,
+        1
+      ],
+      [
+        "not now",
+        "no ahora",
+        null,
+        2
+      ],
+      [
+        "I'm not sure",
+        "no estoy seguro",
+        null,
+        3
+      ],
+      [
+        "I didn't want to ask",
+        "no quería preguntar",
+        null,
+        4
+      ],
+      [
+        "I'm not sure how to help",
+        "no estoy seguro cómo ayudar",
+        null,
+        5
+      ],
+      [
+        "I didn't want to ask you about that",
+        "no quería preguntarte sobre eso",
+        null,
+        6
+      ],
+      [
+        "I didn't want to ask you about the arrangements",
+        "no quería preguntarte sobre los arreglos",
+        null,
+        6
+      ],
+      [
+        "I'm not sure what you need me to do",
+        "no estoy seguro qué necesitas que haga",
+        null,
+        7
+      ],
+      [
+        "I didn't want to ask you how to say it",
+        "no quería preguntarte cómo decirlo",
+        null,
+        7
+      ],
+      [
+        "I wasn't sure if you were going to help me",
+        "no estaba seguro si ibas a ayudarme",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0003L01 LEGOs only"
+  },
+  "S0208L05": {
+    "lego": [
+      "to say it",
+      "decirlo"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "to say it",
+        "decirlo",
+        null,
+        1
+      ],
+      [
+        "how to say it",
+        "cómo decirlo",
+        null,
+        2
+      ],
+      [
+        "I've forgotten how to say it",
+        "he olvidado cómo decirlo",
+        null,
+        4
+      ],
+      [
+        "I want to know how to say it",
+        "quiero saber cómo decirlo",
+        null,
+        5
+      ],
+      [
+        "I didn't want to ask how to say it",
+        "no quería preguntar cómo decirlo",
+        null,
+        6
+      ],
+      [
+        "I was trying to learn how to say it",
+        "estaba intentando aprender cómo decirlo",
+        null,
+        6
+      ],
+      [
+        "I didn't want to ask you how to say it",
+        "no quería preguntarte cómo decirlo",
+        null,
+        7
+      ],
+      [
+        "I wanted to know how to say it in Spanish",
+        "quería saber cómo decirlo en español",
+        null,
+        7
+      ],
+      [
+        "I wasn't sure how to say it to you",
+        "no estaba seguro cómo decirlo a ti",
+        null,
+        7
+      ],
+      [
+        "I didn't want to ask you how to say it.",
+        "No quería preguntarte cómo decirlo.",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0208L05 LEGOs only"
+  }
+}

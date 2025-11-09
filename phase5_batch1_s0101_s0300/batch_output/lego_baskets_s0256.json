@@ -1,0 +1,244 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0256",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "Creo que estaré listo en menos de una hora.",
+    "known": "I think I'll be ready in less than an hour."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.631Z",
+    "curated_by": "Claude Code - Agent 16 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_16_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.631Z"
+  },
+  "S0123L01": {
+    "lego": [
+      "I think that",
+      "creo que"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I think",
+        "Creo que",
+        null,
+        1
+      ],
+      [
+        "I think I'm ready",
+        "Creo que estoy preparado",
+        null,
+        2
+      ],
+      [
+        "I think I'll be ready soon",
+        "Creo que estaré preparado pronto",
+        null,
+        3
+      ],
+      [
+        "I think you'll be ready to start",
+        "Creo que estarás preparado para empezar",
+        null,
+        4
+      ],
+      [
+        "I think I'll be ready to leave today",
+        "Creo que estaré preparado para salir hoy",
+        null,
+        5
+      ],
+      [
+        "I think I should be ready to speak Spanish",
+        "Creo que debo estar preparado para hablar español",
+        null,
+        6
+      ],
+      [
+        "I think I've been ready to start learning Spanish since this morning",
+        "Creo que he estado preparado para empezar aprender español desde esta mañana",
+        null,
+        11
+      ],
+      [
+        "I think I'll be ready to speak Spanish with you in a few minutes",
+        "Creo que estaré preparado para hablar español contigo en unos pocos minutos",
+        null,
+        11
+      ],
+      [
+        "I think you'll be ready to leave when you want to go home",
+        "Creo que estarás preparado para salir cuándo quieres ir a casa",
+        null,
+        10
+      ],
+      [
+        "I think I should be ready to practise speaking Spanish with my friends soon",
+        "Creo que debo estar preparado para practicar hablar español con mis amigos pronto",
+        null,
+        12
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0256L02": {
+    "lego": [
+      "I'll be ready",
+      "estaré listo"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I'll be ready",
+        "Estaré listo",
+        null,
+        1
+      ],
+      [
+        "I'll be ready to start",
+        "Estaré listo para empezar",
+        null,
+        2
+      ],
+      [
+        "I think I'll be ready soon",
+        "Creo que estaré listo pronto",
+        null,
+        3
+      ],
+      [
+        "I'll be ready to leave this afternoon",
+        "Estaré listo para salir esta tarde",
+        null,
+        4
+      ],
+      [
+        "I think I'll be ready to speak Spanish",
+        "Creo que estaré listo para hablar español",
+        null,
+        5
+      ],
+      [
+        "I'll be ready to start learning Spanish in a few minutes",
+        "Estaré listo para empezar aprender español en unos pocos minutos",
+        null,
+        7
+      ],
+      [
+        "I think I'll be ready to speak Spanish with you when you want",
+        "Creo que estaré listo para hablar español contigo cuándo quieres",
+        null,
+        10
+      ],
+      [
+        "I'll be ready to leave to go home as soon as I can",
+        "Estaré listo para salir para ir a casa tan pronto como pueda",
+        null,
+        10
+      ],
+      [
+        "I think I'll be ready to practise speaking Spanish with my friends soon",
+        "Creo que estaré listo para practicar hablar español con mis amigos pronto",
+        null,
+        11
+      ],
+      [
+        "I don't know when I'll be ready to start learning Spanish with you",
+        "No sé cuándo estaré listo para empezar aprender español contigo",
+        null,
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0256L03": {
+    "lego": [
+      "in less than an hour",
+      "en menos de una hora"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "in less than an hour",
+        "en menos de una hora",
+        null,
+        1
+      ],
+      [
+        "I'll be ready in less than an hour",
+        "Estaré listo en menos de una hora",
+        null,
+        2
+      ],
+      [
+        "I think I'll be ready in less than an hour",
+        "Creo que estaré listo en menos de una hora",
+        null,
+        3
+      ],
+      [
+        "I should be ready to leave in less than an hour",
+        "Debo estar preparado para salir en menos de una hora",
+        null,
+        4
+      ],
+      [
+        "I'll be ready to start learning Spanish in less than an hour",
+        "Estaré listo para empezar aprender español en menos de una hora",
+        null,
+        6
+      ],
+      [
+        "I think I'll be ready to speak with you in less than an hour",
+        "Creo que estaré listo para hablar contigo en menos de una hora",
+        null,
+        8
+      ],
+      [
+        "I should be ready to leave to go home in less than an hour",
+        "Debo estar preparado para salir para ir a casa en menos de una hora",
+        null,
+        10
+      ],
+      [
+        "I think I'll be ready to start practising Spanish with you in less than an hour",
+        "Creo que estaré listo para empezar practicar español contigo en menos de una hora",
+        null,
+        12
+      ],
+      [
+        "I'm going to be ready to speak Spanish with my friends in less than an hour",
+        "Voy a estar preparado para hablar español con mis amigos en menos de una hora",
+        null,
+        13
+      ],
+      [
+        "I think I'll be ready in less than an hour.",
+        "Creo que estaré listo en menos de una hora.",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  }
+}

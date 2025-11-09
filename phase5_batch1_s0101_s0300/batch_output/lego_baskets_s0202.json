@@ -1,0 +1,86 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0202",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "",
+    "target": ""
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.674Z",
+    "curated_by": "Claude Code - Agent 20 (converted from special format)",
+    "original_file": "agent_20_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.674Z",
+    "notes": "Agent 20 GATE violations fixed per report (2 violations corrected)"
+  },
+  "S0202L06": {
+    "lego": [
+      "the",
+      "la"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "the",
+        "la",
+        1
+      ],
+      [
+        "the party",
+        "la fiesta",
+        2
+      ],
+      [
+        "to the party",
+        "a la fiesta",
+        3
+      ],
+      [
+        "I want to come to the party",
+        "Quiero venir a la fiesta",
+        6
+      ],
+      [
+        "to come to the party",
+        "venir a la fiesta",
+        4
+      ],
+      [
+        "I hope you can come to the party",
+        "Espero que puedas venir a la fiesta",
+        7
+      ],
+      [
+        "I hope you'll be able to come to the party",
+        "Espero que puedas venir a la fiesta",
+        7
+      ],
+      [
+        "I'm going to try to come to the party",
+        "Voy a intentar venir a la fiesta",
+        8
+      ],
+      [
+        "I want to be able to speak Spanish at the party",
+        "Quiero poder hablar español a la fiesta",
+        8
+      ],
+      [
+        "I hope you'll be able to come and speak at the party",
+        "Espero que puedas venir y hablar a la fiesta",
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0202L06 LEGOs only"
+  }
+}

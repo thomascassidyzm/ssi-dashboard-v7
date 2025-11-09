@@ -1,0 +1,152 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0299",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "",
+    "target": ""
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.676Z",
+    "curated_by": "Claude Code - Agent 20 (converted from special format)",
+    "original_file": "agent_20_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.676Z",
+    "notes": "Agent 20 GATE violations fixed per report (2 violations corrected)"
+  },
+  "S0299L03": {
+    "lego": [
+      "to pay",
+      "pagar"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "to pay",
+        "pagar",
+        1
+      ],
+      [
+        "he wants to pay",
+        "quiere pagar",
+        2
+      ],
+      [
+        "I want to pay",
+        "Quiero pagar",
+        2
+      ],
+      [
+        "he wants to pay half",
+        "quiere pagar la mitad",
+        4
+      ],
+      [
+        "I have to pay",
+        "Tengo que pagar",
+        3
+      ],
+      [
+        "he's going to pay",
+        "va a pagar",
+        3
+      ],
+      [
+        "I don't have enough time to pay",
+        "No tengo suficiente tiempo para pagar",
+        7
+      ],
+      [
+        "he wants to be able to pay half",
+        "quiere poder pagar la mitad",
+        6
+      ],
+      [
+        "I said he wants to pay tonight",
+        "Dije que quiere pagar esta noche",
+        7
+      ],
+      [
+        "I hope he'll be able to pay soon",
+        "Espero que pueda pagar pronto",
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0299L03 LEGOs only"
+  },
+  "S0299L04": {
+    "lego": [
+      "half",
+      "la mitad"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "half",
+        "la mitad",
+        1
+      ],
+      [
+        "to pay half",
+        "pagar la mitad",
+        3
+      ],
+      [
+        "he wants to pay half",
+        "quiere pagar la mitad",
+        4
+      ],
+      [
+        "I want to pay half",
+        "Quiero pagar la mitad",
+        4
+      ],
+      [
+        "he's going to pay half",
+        "va a pagar la mitad",
+        5
+      ],
+      [
+        "I said he wants to pay half",
+        "Dije que quiere pagar la mitad",
+        7
+      ],
+      [
+        "I have to pay half tonight",
+        "Tengo que pagar la mitad esta noche",
+        7
+      ],
+      [
+        "he wants to be able to pay half",
+        "quiere poder pagar la mitad",
+        6
+      ],
+      [
+        "I hope he'll be able to pay half soon",
+        "Espero que pueda pagar la mitad pronto",
+        8
+      ],
+      [
+        "He wants to pay half.",
+        "Él quiere pagar la mitad.",
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0299L04 LEGOs only"
+  }
+}

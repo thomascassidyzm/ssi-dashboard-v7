@@ -1,0 +1,253 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0199",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "My friend used to work in an office.",
+    "target": "Mi amigo solía trabajar en una oficina."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 547,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.590Z",
+    "curated_by": "Claude Code - Agent 10 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_10_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.590Z"
+  },
+  "S0130L02": {
+    "lego": [
+      "my friend",
+      "mi amigo"
+    ],
+    "type": "M",
+    "available_legos": 545,
+    "practice_phrases": [
+      [
+        "my friend",
+        "mi amigo",
+        null,
+        1
+      ],
+      [
+        "my friend works here",
+        "mi amigo trabaja aquí",
+        null,
+        3
+      ],
+      [
+        "my friend is busy today",
+        "mi amigo está ocupado hoy",
+        null,
+        5
+      ],
+      [
+        "I think my friend wants to help",
+        "pienso que mi amigo quiere ayudar",
+        null,
+        6
+      ],
+      [
+        "my friend used to work here",
+        "mi amigo solía trabajar aquí",
+        null,
+        5
+      ],
+      [
+        "my friend is trying to find the money",
+        "mi amigo está intentando encontrar el dinero",
+        null,
+        8
+      ],
+      [
+        "I want to know if my friend wants to speak with you",
+        "quiero saber si mi amigo quiere hablar contigo",
+        null,
+        9
+      ],
+      [
+        "my friend doesn't mind working at night at all",
+        "a mi amigo no le importa trabajar por la noche en absoluto",
+        null,
+        10
+      ],
+      [
+        "I think that my friend is too busy to help you tomorrow",
+        "pienso que mi amigo está demasiado ocupado para ayudarte mañana",
+        null,
+        11
+      ],
+      [
+        "my friend used to work in an office",
+        "mi amigo solía trabajar en una oficina",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0199L01": {
+    "lego": [
+      "used to work",
+      "solía trabajar"
+    ],
+    "type": "M",
+    "new": true,
+    "available_legos": 546,
+    "practice_phrases": [
+      [
+        "used to work",
+        "solía trabajar",
+        null,
+        1
+      ],
+      [
+        "I used to work here",
+        "solía trabajar aquí",
+        null,
+        3
+      ],
+      [
+        "my friend used to work here",
+        "mi amigo solía trabajar aquí",
+        null,
+        5
+      ],
+      [
+        "he used to work at night",
+        "solía trabajar por la noche",
+        null,
+        5
+      ],
+      [
+        "I used to work for the council",
+        "solía trabajar para el consejo",
+        null,
+        5
+      ],
+      [
+        "my daughter used to work in an office",
+        "mi hija solía trabajar en una oficina",
+        null,
+        6
+      ],
+      [
+        "I used to work as a teacher but I'm too busy now",
+        "solía trabajar como profesor pero estoy demasiado ocupado ahora",
+        null,
+        10
+      ],
+      [
+        "my friend used to work here but he's too busy now",
+        "mi amigo solía trabajar aquí pero está demasiado ocupado ahora",
+        null,
+        11
+      ],
+      [
+        "I think that I used to work too much every day",
+        "pienso que solía trabajar demasiado todo el día",
+        null,
+        9
+      ],
+      [
+        "my friend used to work in an office",
+        "mi amigo solía trabajar en una oficina",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "gate_compliance": "STRICT"
+  },
+  "S0199L02": {
+    "lego": [
+      "in an office",
+      "en una oficina"
+    ],
+    "type": "M",
+    "new": true,
+    "available_legos": 547,
+    "practice_phrases": [
+      [
+        "in an office",
+        "en una oficina",
+        null,
+        1
+      ],
+      [
+        "I work in an office",
+        "trabajo en una oficina",
+        null,
+        4
+      ],
+      [
+        "my friend works in an office",
+        "mi amigo trabaja en una oficina",
+        null,
+        6
+      ],
+      [
+        "I used to work in an office",
+        "solía trabajar en una oficina",
+        null,
+        5
+      ],
+      [
+        "he wants to work in an office",
+        "quiere trabajar en una oficina",
+        null,
+        6
+      ],
+      [
+        "I'm trying to find work in an office",
+        "estoy intentando encontrar trabajo en una oficina",
+        null,
+        8
+      ],
+      [
+        "my friend used to work in an office every day",
+        "mi amigo solía trabajar en una oficina todo el día",
+        null,
+        9
+      ],
+      [
+        "I think that working in an office is interesting",
+        "pienso que trabajar en una oficina es interesante",
+        null,
+        9
+      ],
+      [
+        "I'd like to be able to work in an office tomorrow",
+        "me gustaría poder trabajar en una oficina mañana",
+        null,
+        10
+      ],
+      [
+        "My friend used to work in an office.",
+        "Mi amigo solía trabajar en una oficina.",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 6
+    },
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT"
+  }
+}

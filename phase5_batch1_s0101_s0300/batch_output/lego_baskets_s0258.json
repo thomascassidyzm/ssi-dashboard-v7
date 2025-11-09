@@ -1,0 +1,394 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0258",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "¿Qué es esa cosa azul de allí?",
+    "known": "What's that blue thing over there?"
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.632Z",
+    "curated_by": "Claude Code - Agent 16 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_16_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.632Z"
+  },
+  "S0068L01": {
+    "lego": [
+      "what",
+      "qué"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "what",
+        "qué",
+        null,
+        1
+      ],
+      [
+        "What is that?",
+        "¿Qué es esa?",
+        null,
+        2
+      ],
+      [
+        "What do you want?",
+        "¿Qué quieres?",
+        null,
+        3
+      ],
+      [
+        "What are you looking for?",
+        "¿Qué estás buscando?",
+        null,
+        3
+      ],
+      [
+        "What is that blue thing?",
+        "¿Qué es esa cosa azul?",
+        null,
+        4
+      ],
+      [
+        "What do you think about that?",
+        "¿Qué piensas sobre esa?",
+        null,
+        4
+      ],
+      [
+        "I don't know what I want to say in Spanish",
+        "No sé qué quiero decir en español",
+        null,
+        8
+      ],
+      [
+        "What is that blue thing in your bag?",
+        "¿Qué es esa cosa azul en tu bolsa?",
+        null,
+        7
+      ],
+      [
+        "I want to find out what you said about that blue thing",
+        "Quiero descubrir qué dijiste sobre esa cosa azul",
+        null,
+        9
+      ],
+      [
+        "What do you think I should do when I'm ready?",
+        "¿Qué piensas debo hacer cuándo estoy preparado?",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0123L02": {
+    "lego": [
+      "is",
+      "es"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "is",
+        "es",
+        null,
+        1
+      ],
+      [
+        "What is that?",
+        "¿Qué es esa?",
+        null,
+        2
+      ],
+      [
+        "That is interesting",
+        "Esa es interesante",
+        null,
+        3
+      ],
+      [
+        "What is that blue thing?",
+        "¿Qué es esa cosa azul?",
+        null,
+        4
+      ],
+      [
+        "This is the only way",
+        "Esta es la única manera",
+        null,
+        4
+      ],
+      [
+        "That friend is ready to speak Spanish",
+        "Ese amigo es preparado para hablar español",
+        null,
+        6
+      ],
+      [
+        "I think it's important to learn Spanish as often as possible",
+        "Pienso que es importante aprender español lo más frecuentemente posible",
+        null,
+        10
+      ],
+      [
+        "What is that blue thing you want me to see?",
+        "¿Qué es esa cosa azul que quieres mostrarme?",
+        null,
+        9
+      ],
+      [
+        "I don't know what the answer is but I want to find out",
+        "No sé cuál es la respuesta pero quiero descubrir",
+        null,
+        11
+      ],
+      [
+        "It's interesting when you speak Spanish with me",
+        "Es interesante cuándo hablas español conmigo",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0189L01": {
+    "lego": [
+      "that",
+      "esa"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "that",
+        "esa",
+        null,
+        1
+      ],
+      [
+        "What's that?",
+        "¿Qué es esa?",
+        null,
+        2
+      ],
+      [
+        "I like that",
+        "Me gusta esa",
+        null,
+        2
+      ],
+      [
+        "What is that blue thing?",
+        "¿Qué es esa cosa azul?",
+        null,
+        3
+      ],
+      [
+        "I want to learn about that",
+        "Quiero aprender sobre esa",
+        null,
+        4
+      ],
+      [
+        "I think that is very interesting",
+        "Pienso que esa es muy interesante",
+        null,
+        5
+      ],
+      [
+        "I think that friend is ready to speak Spanish with you",
+        "Pienso que ese amigo está preparado para hablar español contigo",
+        null,
+        9
+      ],
+      [
+        "I want to find out what that blue thing is in your bag",
+        "Quiero descubrir qué es esa cosa azul en tu bolsa",
+        null,
+        10
+      ],
+      [
+        "I don't know what that is but I'd like to find out",
+        "No sé qué es esa pero me gustaría descubrir",
+        null,
+        10
+      ],
+      [
+        "What do you think that is in your bag?",
+        "¿Qué piensas esa es en tu bolsa?",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "PROV_S0257_01": {
+    "lego": [
+      "blue thing",
+      "cosa azul"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "blue thing",
+        "cosa azul",
+        null,
+        1
+      ],
+      [
+        "What's that blue thing?",
+        "¿Qué es esa cosa azul?",
+        null,
+        2
+      ],
+      [
+        "I like that blue thing",
+        "Me gusta esa cosa azul",
+        null,
+        3
+      ],
+      [
+        "I want that blue thing",
+        "Quiero esa cosa azul",
+        null,
+        3
+      ],
+      [
+        "I want to see that blue thing",
+        "Quiero ver esa cosa azul",
+        null,
+        4
+      ],
+      [
+        "What is that blue thing in your bag?",
+        "¿Qué es esa cosa azul en tu bolsa?",
+        null,
+        6
+      ],
+      [
+        "I'd like to know what that blue thing is",
+        "Me gustaría saber qué es esa cosa azul",
+        null,
+        7
+      ],
+      [
+        "I think that blue thing is interesting to learn about today",
+        "Pienso que esa cosa azul es interesante aprender sobre hoy",
+        null,
+        10
+      ],
+      [
+        "I want to find out what that blue thing is soon",
+        "Quiero descubrir qué es esa cosa azul pronto",
+        null,
+        7
+      ],
+      [
+        "What do you think that blue thing is in your bag?",
+        "¿Qué piensas esa cosa azul es en tu bolsa?",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0258L05": {
+    "lego": [
+      "over there",
+      "de allí"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "over there",
+        "de allí",
+        null,
+        1
+      ],
+      [
+        "What's that over there?",
+        "¿Qué es esa de allí?",
+        null,
+        2
+      ],
+      [
+        "What's that blue thing over there?",
+        "¿Qué es esa cosa azul de allí?",
+        null,
+        3
+      ],
+      [
+        "I want to see that over there",
+        "Quiero ver esa de allí",
+        null,
+        4
+      ],
+      [
+        "What is that thing over there today?",
+        "¿Qué es esa cosa de allí hoy?",
+        null,
+        5
+      ],
+      [
+        "I'd like to find out what's over there",
+        "Me gustaría descubrir qué es de allí",
+        null,
+        6
+      ],
+      [
+        "What is that blue thing over there in your bag?",
+        "¿Qué es esa cosa azul de allí en tu bolsa?",
+        null,
+        9
+      ],
+      [
+        "I want to know what that interesting thing is over there",
+        "Quiero saber qué es esa cosa interesante de allí",
+        null,
+        9
+      ],
+      [
+        "I think that blue thing over there is what you wanted to show me",
+        "Pienso que esa cosa azul de allí es lo que querías mostrarme",
+        null,
+        12
+      ],
+      [
+        "What's that blue thing over there?",
+        "¿Qué es esa cosa azul de allí?",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  }
+}

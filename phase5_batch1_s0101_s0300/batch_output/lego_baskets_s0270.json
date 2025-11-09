@@ -1,0 +1,99 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0270",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "Porque estoy preocupado de que voy a llegar tarde.",
+    "known": "Because I'm worried that I'm going to be late."
+  },
+  "patterns_introduced": "",
+  "cumulative_patterns": [],
+  "cumulative_legos": 0,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T12:51:49.653Z",
+    "curated_by": "Claude Code - Agent 17 (converted from SEEDS_WRAPPER format)",
+    "original_file": "agent_17_baskets.json",
+    "conversion_date": "2025-11-07T12:51:49.653Z"
+  },
+  "S0022": {
+    "lego": [
+      "because",
+      "porque"
+    ],
+    "type": "A",
+    "available_legos": "Count of LEGOs up to S0022",
+    "practice_phrases": [],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0022 only"
+  },
+  "S0270L02": {
+    "lego": [
+      "I'm worried",
+      "estoy preocupado"
+    ],
+    "type": "M",
+    "available_legos": "Count of LEGOs up to S0270L02",
+    "practice_phrases": [],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0270L02 only"
+  },
+  "S0129": {
+    "lego": [
+      "that",
+      "de que"
+    ],
+    "type": "M",
+    "available_legos": "Count of LEGOs up to S0129",
+    "practice_phrases": [],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0129 only"
+  },
+  "S0005": {
+    "lego": [
+      "I'm going to",
+      "voy a"
+    ],
+    "type": "M",
+    "available_legos": "Count of LEGOs up to S0005",
+    "practice_phrases": [],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0005 only"
+  },
+  "S0270L05": {
+    "lego": [
+      "to be late",
+      "llegar tarde"
+    ],
+    "type": "M",
+    "available_legos": "Count of LEGOs up to S0270L05",
+    "practice_phrases": [],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0270L05 only"
+  }
+}
