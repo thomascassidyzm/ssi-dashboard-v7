@@ -591,7 +591,7 @@ const startGeneration = async (force = false) => {
   } catch (error) {
     console.error('Failed to start course generation:', error)
 
-    // Handle "course already exists" warning
+    // Handle "course already exists with data" warning (409 with existingFiles)
     if (error.response?.status === 409 && error.response?.data?.existingFiles) {
       const data = error.response.data
       const filesList = data.existingFiles.join(', ')
@@ -612,6 +612,14 @@ const startGeneration = async (force = false) => {
         isGenerating.value = false
         return
       }
+    }
+
+    // Handle "job already in progress" error (409 with status)
+    if (error.response?.status === 409 && error.response?.data?.courseCode) {
+      courseCode.value = error.response.data.courseCode
+      errorMessage.value = `Course generation already in progress for ${error.response.data.courseCode}. Click "Clear Stuck Job" to reset.`
+      isGenerating.value = false
+      return
     }
 
     errorMessage.value = error.response?.data?.error || 'Failed to start course generation. Check console for details.'
