@@ -169,6 +169,28 @@ function getLanguageName(code) {
 }
 
 /**
+ * Generates course code with optional seed range suffix
+ *
+ * Examples:
+ *   spa_for_eng (full 1-668)
+ *   spa_for_eng_s001-030 (test range)
+ *   spa_for_eng_s100-200 (custom range)
+ */
+function generateCourseCode(target, known, startSeed, endSeed) {
+  const baseCode = `${target}_for_${known}`;
+
+  // Full range (1-668): no suffix
+  if (startSeed === 1 && endSeed === 668) {
+    return baseCode;
+  }
+
+  // Custom range: add suffix
+  const start = String(startSeed).padStart(3, '0');
+  const end = String(endSeed).padStart(3, '0');
+  return `${baseCode}_s${start}-${end}`;
+}
+
+/**
  * Ensures a course directory exists in VFS
  */
 async function ensureCourseDirectory(courseCode) {
@@ -241,7 +263,17 @@ Append to existing seed_pairs.json (or create if batch 1):
 
 \`\`\`json
 {
-  "version": "7.7",
+  "version": "7.7.0",
+  "course": "${courseCode}",
+  "target_language": "${target}",
+  "known_language": "${known}",
+  "seed_range": {
+    "start": ${startSeed},
+    "end": ${endSeed}
+  },
+  "generated": "2025-11-09T19:15:55.094Z",
+  "total_seeds": ${endSeed - startSeed + 1},
+  "actual_seeds": ${endSeed - startSeed + 1},
   "translations": {
     "S${String(startSeed).padStart(4, '0')}": ["target phrase", "known phrase"],
     "S${String(startSeed + 1).padStart(4, '0')}": ["target phrase", "known phrase"],
@@ -3570,8 +3602,8 @@ app.post('/api/courses/generate', async (req, res) => {
   // Calculate total seeds
   const seeds = endSeed - startSeed + 1;
 
-  // Generate course code (just language pair - seed range is a processing parameter)
-  const courseCode = `${target}_for_${known}`;
+  // Generate course code with seed range suffix (follows COURSE_FILE_PROTOCOLS.md)
+  const courseCode = generateCourseCode(target, known, startSeed, endSeed);
 
   console.log(`[API] Course generation requested: ${courseCode} (mode: ${executionMode}, seeds: ${startSeed}-${endSeed})`);
 

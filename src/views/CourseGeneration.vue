@@ -165,11 +165,11 @@
         <!-- Execution Mode Selection -->
         <ExecutionModeSelector v-model="executionMode" />
 
-        <!-- Course Size Selection -->
+        <!-- Seed Range Selection -->
         <div v-if="!analysis" class="mb-8">
-          <h3 class="text-lg font-medium text-slate-300 mb-4">Select Course Size</h3>
+          <h3 class="text-lg font-medium text-slate-300 mb-4">Select Seed Range</h3>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <!-- Test Course (30 seeds) -->
             <button
               @click="selectCourseSize('test', 1, 30)"
@@ -191,9 +191,35 @@
                   </svg>
                 </div>
               </div>
-              <h4 class="text-lg font-semibold text-slate-100 mb-1">Test Course</h4>
-              <p class="text-sm text-slate-400 mb-2">30 seeds (S0001-S0030)</p>
-              <p class="text-xs text-slate-500">Quick test run to validate pipeline before full generation</p>
+              <h4 class="text-lg font-semibold text-slate-100 mb-1">Test (30 seeds)</h4>
+              <p class="text-sm text-slate-400 mb-2">Seeds 1-30</p>
+              <p class="text-xs text-slate-500">Quick test: Validate pipeline structure ~5-10 min</p>
+            </button>
+
+            <!-- Medium Course (100 seeds) -->
+            <button
+              @click="selectCourseSize('medium', 1, 100)"
+              :class="[
+                'p-6 rounded-lg border-2 transition text-left',
+                courseSize === 'medium'
+                  ? 'border-emerald-500 bg-emerald-500/10'
+                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
+              ]"
+            >
+              <div class="flex items-start justify-between mb-2">
+                <div class="text-2xl">🔬</div>
+                <div
+                  v-if="courseSize === 'medium'"
+                  class="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center"
+                >
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+              </div>
+              <h4 class="text-lg font-semibold text-slate-100 mb-1">Medium (100 seeds)</h4>
+              <p class="text-sm text-slate-400 mb-2">Seeds 1-100</p>
+              <p class="text-xs text-slate-500">LEGO patterns & quality check ~20-30 min</p>
             </button>
 
             <!-- Full Course (668 seeds) -->
@@ -217,19 +243,63 @@
                   </svg>
                 </div>
               </div>
-              <h4 class="text-lg font-semibold text-slate-100 mb-1">Full Course</h4>
-              <p class="text-sm text-slate-400 mb-2">668 seeds (S0001-S0668)</p>
-              <p class="text-xs text-slate-500">Complete production course generation</p>
+              <h4 class="text-lg font-semibold text-slate-100 mb-1">Full (668 seeds)</h4>
+              <p class="text-sm text-slate-400 mb-2">Seeds 1-668</p>
+              <p class="text-xs text-slate-500">Production course + automation test ~2-3 hrs</p>
             </button>
           </div>
 
+          <!-- Custom Range -->
           <div class="mb-6 p-4 bg-slate-800/50 rounded-lg border border-slate-600">
+            <div class="flex items-start gap-3 mb-3">
+              <div class="text-blue-400 text-xl">⚙️</div>
+              <div class="flex-1">
+                <p class="font-medium text-slate-300 mb-1">Custom Seed Range</p>
+                <p class="text-sm text-slate-400 mb-3">Specify your own start and end seeds</p>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1">Start Seed</label>
+                    <input
+                      v-model.number="startSeed"
+                      type="number"
+                      min="1"
+                      max="668"
+                      @input="courseSize = 'custom'"
+                      class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1">End Seed</label>
+                    <input
+                      v-model.number="endSeed"
+                      type="number"
+                      min="1"
+                      max="668"
+                      @input="courseSize = 'custom'"
+                      class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                    />
+                  </div>
+                </div>
+
+                <div v-if="courseSize === 'custom' && startSeed && endSeed" class="mt-3 text-xs text-emerald-400">
+                  ✓ Custom range: {{ seedCount }} seeds (S{{ String(startSeed).padStart(4, '0') }}-S{{ String(endSeed).padStart(4, '0') }})
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info Box -->
+          <div class="mb-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
             <div class="flex items-start gap-3">
               <div class="text-blue-400 text-xl">ℹ️</div>
-              <div class="text-sm text-slate-400">
-                <p class="font-medium text-slate-300 mb-1">Orchestrator v2 Architecture</p>
-                <p>5 orchestrators × 10 sub-agents = 50 concurrent agents per phase</p>
-                <p class="mt-1 text-xs text-slate-500">Test: ~10 min | Full: ~45-60 min</p>
+              <div class="text-sm text-slate-300">
+                <p class="font-medium mb-1">Different ranges test different things:</p>
+                <ul class="list-disc list-inside space-y-1 text-slate-400 text-xs">
+                  <li><strong>30 seeds:</strong> Tests course structure, phase logic, file creation</li>
+                  <li><strong>100 seeds:</strong> Tests LEGO diversity, basket quality, pattern recognition</li>
+                  <li><strong>668 seeds:</strong> Tests automation robustness, resource management, parallel processing</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -237,10 +307,14 @@
           <!-- Generate Button -->
           <button
             @click="startGeneration"
-            :disabled="!courseSize"
+            :disabled="!courseSize || !startSeed || !endSeed || startSeed > endSeed"
             class="bg-emerald-500 hover:bg-emerald-600 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition hover:-translate-y-0.5"
           >
-            Generate {{ courseSize === 'test' ? 'Test' : courseSize === 'full' ? 'Full' : '' }} Course
+            <span v-if="courseSize === 'test'">Generate Test Course (30 seeds)</span>
+            <span v-else-if="courseSize === 'medium'">Generate Medium Course (100 seeds)</span>
+            <span v-else-if="courseSize === 'full'">Generate Full Course (668 seeds)</span>
+            <span v-else-if="courseSize === 'custom'">Generate Custom Course ({{ seedCount }} seeds)</span>
+            <span v-else>Select Seed Range</span>
           </button>
         </div>
       </div>
