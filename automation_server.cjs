@@ -330,6 +330,189 @@ git push origin HEAD:main
 }
 
 /**
+ * Phase 3 Master Prompt: Parallel LEGO extraction using 34 agents
+ * For Web + API modes - AI manages parallelization and rate limiting
+ */
+function generatePhase3MasterPrompt(courseCode, params, courseDir) {
+  const { target, known, startSeed, endSeed } = params;
+  const totalSeeds = endSeed - startSeed + 1;
+  const seedsPerAgent = 20;
+  const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
+
+  return `# Phase 3 Master Prompt: LEGO Extraction with Self-Managing Parallelization
+
+**Course**: ${courseCode}
+**Total Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
+**Target Agents**: ${agentCount} parallel agents
+**Seeds per agent**: ~${seedsPerAgent}
+
+---
+
+## 🎯 YOUR MISSION
+
+You are the **LEGO Extraction Orchestrator**. Your job is to:
+
+1. **Spawn ${agentCount} parallel agents** to extract LEGOs from all ${totalSeeds} seeds
+2. **Monitor rate limits and adjust pacing** if needed
+3. **Handle errors gracefully** and retry failed agents
+4. **Report progress** as agents complete
+
+You have full autonomy to manage the parallelization strategy based on your rate limit observations.
+
+---
+
+## 📚 PHASE 3 INTELLIGENCE (Single Source of Truth)
+
+**READ**: \`docs/phase_intelligence/phase_3_lego_pairs.md\` (v5.0)
+
+This is the **ONLY authoritative source** for Phase 3 extraction methodology.
+
+**Key sections to review**:
+- THE THREE ABSOLUTES (Start from Known, Provide Both Levels, Verify Tiling)
+- THE EXTRACTION PROCESS (7-step protocol)
+- FD TEST (3 questions to check determinism)
+- FCFS REGISTRY (collision detection)
+- EXAMPLES FROM PRODUCTION (S0101-S0200 learnings)
+- EXTENDED THINKING PROTOCOL
+
+**Critical principles** (from SSoT):
+- START FROM KNOWN semantics first
+- FD test: IF IN DOUBT → CHUNK UP
+- Provide BOTH atomic AND molecular LEGOs
+- Complete tiling mandatory
+- Componentize ALL M-types (ALL WORDS!)
+- Check FCFS registry for collisions
+
+---
+
+## 📂 PREPARED SCAFFOLDS
+
+Mechanical prep has been done! Each agent has a scaffold ready:
+
+\`${courseDir}/phase3_scaffolds/agent_01.json\` through \`agent_${String(agentCount).padStart(2, '0')}.json\`
+
+Each scaffold contains:
+- **seeds**: The 20 seed pairs to process
+- **fcfs_registry**: LEGOs from prior seeds (for collision detection)
+- **legos**: Empty array (agent fills this)
+
+---
+
+## 🚀 EXECUTION STRATEGY
+
+You decide the best approach! Options:
+
+### Option A: Full Parallelization (Fastest - if rate limits allow)
+Spawn all ${agentCount} agents at once using Task tool in a single message.
+
+### Option B: Staggered Waves (Safer - if you detect rate pressure)
+Split into 4-5 waves of 7-9 agents each, with 30-second delays between waves.
+
+### Option C: Adaptive (Recommended)
+- Start with full parallelization
+- Monitor for rate limit errors
+- If errors occur, switch to waves automatically
+- Retry failed agents at reduced pace
+
+**Your call!** Use your judgment based on what you observe.
+
+---
+
+## 📋 AGENT TASK TEMPLATE
+
+For each agent, the task is:
+
+\`\`\`markdown
+You are LEGO Extraction Agent ${agentCount}.
+
+## Your Data
+**Scaffold**: Read \`${courseDir}/phase3_scaffolds/agent_XX.json\`
+
+This contains:
+- Your 20 seeds to process
+- FCFS registry (check for collisions!)
+- Empty legos arrays (you fill these)
+
+## Your Process
+1. For each seed, use extended thinking:
+   - STEP 1: Chunk KNOWN semantically
+   - STEP 2: Map to TARGET
+   - STEP 3: Apply FD test (3 questions)
+   - STEP 4: Fix failures (chunk up)
+   - STEP 5: Check FCFS registry for collisions
+   - STEP 6: Add both atomic AND molecular LEGOs
+   - STEP 7: Componentize all M-types (ALL WORDS!)
+
+2. Extract LEGOs following Phase 3 Ultimate Intelligence
+3. Use extended thinking for EVERY seed (1-2 min per seed)
+4. Verify complete tiling (seed reconstructs from LEGOs)
+
+## Output
+Write to: \`${courseDir}/phase3_outputs/agent_XX_provisional.json\`
+
+Format:
+\`\`\`json
+{
+  "agent_id": XX,
+  "seed_range": "S0XXX-S0YYY",
+  "extracted_at": "ISO timestamp",
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "seed_pair": {"target": "...", "known": "..."},
+      "legos": [
+        {
+          "provisional_id": "PROV_S0001_01" or "id": "S0023L02" if reference,
+          "type": "A" or "M",
+          "target": "Spanish text",
+          "known": "English text",
+          "new": true or false,
+          "ref": "S0023" (if reference),
+          "components": [[...]] (if M-type - ALL WORDS!)
+        }
+      ]
+    }
+  ]
+}
+\`\`\`
+
+**Quality over speed!** Take time to think through each seed.
+\`\`\`
+
+---
+
+## 🎬 EXECUTE NOW
+
+Spawn your agents using whichever strategy you choose (full parallel, waves, or adaptive).
+
+**Monitor and adjust** based on what you observe.
+
+**Report progress** as agents complete.
+
+When all ${agentCount} agents finish, instruct the user to run the merge script:
+
+\`\`\`bash
+node scripts/phase3_merge_legos.cjs ${courseDir}
+\`\`\`
+
+---
+
+## ✅ SUCCESS CRITERIA
+
+- All ${totalSeeds} seeds processed
+- 100% complete tiling (all seeds reconstruct)
+- FD compliance (no ambiguous chunks)
+- Complete componentization (ALL WORDS in M-types)
+- FCFS registry checked (no collisions)
+- ~40-60% atomic, ~40-60% molecular
+
+**Target time**: 15-25 minutes with adaptive parallelization
+
+**You've got this!** Manage it however you think best given rate limits and system load.
+`;
+}
+
+/**
  * Phase 1 Brief: Translation batch (DEPRECATED - for Local mode only)
  * Use generatePhase1MasterPrompt() for Web/API modes instead
  */
@@ -1429,6 +1612,12 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
     job.phase = 'phase_1_complete';
     job.progress = 30;
 
+    // Prep Phase 3 scaffolds (mechanical work)
+    console.log(`[Web Orchestrator] Running Phase 3 scaffold prep script...`);
+    const { preparePhase3Scaffolds } = require('./scripts/phase3_prep_scaffolds.cjs');
+    await preparePhase3Scaffolds(courseDir);
+    console.log(`[Web Orchestrator] ✅ Phase 3 scaffolds ready`);
+
     // PHASE 3: LEGO Extraction
     job.phase = 'phase_3_web';
     job.progress = 35;
@@ -1438,22 +1627,41 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
     console.log(`[Web Orchestrator] PHASE 3: LEGO EXTRACTION`);
     console.log(`[Web Orchestrator] ====================================`);
 
-    const phase3Brief = generatePhase3Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
-    await fs.writeFile(path.join(courseDir, 'prompts', 'phase_3_lego_extraction.md'), phase3Brief, 'utf8');
+    const phase3MasterPrompt = generatePhase3MasterPrompt(courseCode, { target, known, startSeed, endSeed }, courseDir);
+    await fs.writeFile(path.join(courseDir, 'prompts', 'phase_3_master_prompt.md'), phase3MasterPrompt, 'utf8');
 
-    console.log(`[Web Orchestrator] Opening Phase 3 tab and pasting prompt...`);
-    await spawnClaudeWebAgent(phase3Brief, 2, 'chrome');
-    console.log(`[Web Orchestrator] ✅ Phase 3 tab ready - HIT ENTER to execute!`);
+    console.log(`[Web Orchestrator] Opening Phase 3 tab and pasting master prompt...`);
+    console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 20)} parallel agents`);
+    await spawnClaudeWebAgent(phase3MasterPrompt, 2, 'chrome');
+    console.log(`[Web Orchestrator] ✅ Phase 3 master prompt pasted - HIT ENTER to spawn agents!`);
 
     job.progress = 40;
     job.message = 'Phase 3 tab opened - waiting for execution';
 
-    // Poll for lego_pairs.json
-    console.log(`[Web Orchestrator] Waiting for lego_pairs.json...`);
-    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
-    await pollForFile(legoPairsPath, 60000);
+    // Poll for all agent provisional outputs
+    console.log(`[Web Orchestrator] Waiting for all Phase 3 agent outputs...`);
+    const expectedAgents = Math.ceil((endSeed - startSeed + 1) / 20);
+    const outputsDir = path.join(courseDir, 'phase3_outputs');
 
-    console.log(`[Web Orchestrator] ✅ Phase 3 complete! Found lego_pairs.json`);
+    // Wait for all provisional files
+    let agentsComplete = 0;
+    while (agentsComplete < expectedAgents) {
+      await new Promise(resolve => setTimeout(resolve, 10000)); // Check every 10 seconds
+
+      if (await fs.pathExists(outputsDir)) {
+        const files = await fs.readdir(outputsDir);
+        agentsComplete = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
+        console.log(`[Web Orchestrator] Phase 3 agents complete: ${agentsComplete}/${expectedAgents}`);
+      }
+    }
+
+    console.log(`[Web Orchestrator] ✅ All Phase 3 agents complete! Running merge script...`);
+
+    // Run Phase 3 merge script
+    const { mergePhase3Legos } = require('./scripts/phase3_merge_legos.cjs');
+    await mergePhase3Legos(courseDir);
+
+    console.log(`[Web Orchestrator] ✅ Phase 3 merge complete! Created lego_pairs.json`);
     job.phase = 'phase_3_complete';
     job.progress = 60;
 
