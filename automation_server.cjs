@@ -291,6 +291,20 @@ node compact-json-formatter.cjs ${path.join(courseDir, 'seed_pairs.json')}
 
 ---
 
+## CRITICAL: Git Workflow (Web Mode Only)
+
+**IMPORTANT**: Push directly to main branch (DO NOT use session branches):
+
+\`\`\`bash
+git add public/vfs/courses/${courseCode}/seed_pairs.json
+git commit -m "Phase 1: Translations for ${courseCode} (${seedRange})"
+git push origin HEAD:main --force
+\`\`\`
+
+**Why force push**: Ensures your changes reach main even if on a session branch
+
+---
+
 ## Success Criteria
 
 ✅ ${endSeed - startSeed + 1} translations completed
@@ -298,6 +312,7 @@ node compact-json-formatter.cjs ${path.join(courseDir, 'seed_pairs.json')}
 ✅ Natural translations with cognate preference (seeds 1-100)
 ✅ Zero variation ("First Word Wins")
 ✅ JSON formatted with compact-json-formatter.cjs
+✅ **Committed and pushed to main branch**
 
 When done, report completion and stats.
 `;
@@ -359,6 +374,20 @@ node compact-json-formatter.cjs ${path.join(courseDir, 'lego_pairs.tmp.json')}
 
 ---
 
+## CRITICAL: Git Workflow (Web Mode Only)
+
+**IMPORTANT**: Push directly to main branch (DO NOT use session branches):
+
+\`\`\`bash
+git add public/vfs/courses/${courseCode}/lego_pairs.tmp.json
+git commit -m "Phase 3: LEGO extraction for ${courseCode} (${seedRange})"
+git push origin HEAD:main --force
+\`\`\`
+
+**Why force push**: Ensures your changes reach main even if on a session branch
+
+---
+
 ## Success Criteria
 
 ✅ LEGOs extracted for all ${endSeed - startSeed + 1} seeds
@@ -366,6 +395,7 @@ node compact-json-formatter.cjs ${path.join(courseDir, 'lego_pairs.tmp.json')}
 ✅ COMPOSITE LEGOs with 2-element componentization arrays
 ✅ FD-compliant, TILING verified
 ✅ JSON formatted with compact-json-formatter.cjs
+✅ **Committed and pushed to main branch**
 
 When done, report completion and LEGO count.
 NOTE: File will remain .tmp.json until Phase 3.5 validation passes.
@@ -561,6 +591,20 @@ Report: GATE compliance status, pattern density, and completeness score!
 
 ---
 
+## CRITICAL: Git Workflow (Web Mode Only)
+
+**IMPORTANT**: Push directly to main branch (DO NOT use session branches):
+
+\`\`\`bash
+git add public/vfs/courses/${courseCode}/lego_baskets.json
+git commit -m "Phase 5: Practice baskets for ${courseCode} (${seedRange})"
+git push origin HEAD:main --force
+\`\`\`
+
+**Why force push**: Ensures your changes reach main even if on a session branch
+
+---
+
 ## Success Criteria
 
 ✅ Baskets for ~${(endSeed - startSeed + 1) * 3} LEGOs
@@ -569,6 +613,7 @@ Report: GATE compliance status, pattern density, and completeness score!
 ✅ **ABSOLUTE GATE: 0 violations** (validate-gate-compliance.cjs MUST pass)
 ✅ Pattern coverage validators run, reports generated
 ✅ JSON formatted with compact-json-formatter.cjs
+✅ **Committed and pushed to main branch**
 ${batchNum > 1 ? '✅ Pattern gaps from batch ' + (batchNum - 1) + ' addressed' : ''}
 
 **MANDATORY**: GATE compliance = 100%. Any violations = failed batch, must regenerate.
