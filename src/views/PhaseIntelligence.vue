@@ -26,7 +26,7 @@
           <button
             v-for="phase in phases"
             :key="phase.id"
-            @click="loadPhase(phase.id)"
+            @click="selectPhase(phase.id)"
             :class="[
               'p-4 rounded-lg border transition hover:-translate-y-0.5',
               selectedPhase === phase.id
@@ -65,14 +65,8 @@
 
       <!-- Intelligence Content -->
       <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-6">
-        <div v-if="loading" class="text-center py-12">
-          <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
-          <p class="text-slate-400 mt-4">Loading phase {{ selectedPhase }} intelligence...</p>
-        </div>
-
-        <div v-else-if="error" class="text-center py-12">
-          <p class="text-red-400 mb-2">{{ error }}</p>
-          <p class="text-slate-400 text-sm">Phase {{ selectedPhase }} intelligence not available</p>
+        <div v-if="!currentPhase">
+          <p class="text-slate-400 text-center py-12">Select a phase to view its intelligence</p>
         </div>
 
         <div v-else>
@@ -81,25 +75,34 @@
             <div class="flex items-center justify-between">
               <div>
                 <h3 class="text-xl font-semibold text-slate-100">
-                  Phase {{ selectedPhase }}: {{ currentPhase?.name }}
+                  Phase {{ selectedPhase }}: {{ currentPhase.name }}
                 </h3>
                 <p class="text-sm text-slate-400 mt-1">
-                  <span v-if="currentPhase?.status === 'active'" class="text-green-400">
+                  <span v-if="currentPhase.status === 'active'" class="text-green-400">
                     ✅ Active module
                   </span>
-                  <span v-else-if="currentPhase?.status === 'pending'" class="text-yellow-400">
-                    ⏳ Pending creation (showing legacy APML prompt)
+                  <span v-else-if="currentPhase.status === 'inactive'" class="text-gray-400">
+                    ❌ Deprecated
+                  </span>
+                  <span v-else-if="currentPhase.status === 'complete'" class="text-blue-400">
+                    ✅ Complete
+                  </span>
+                  <span v-else-if="currentPhase.status === 'documented'" class="text-purple-400">
+                    📚 Documented
                   </span>
                   <span v-else class="text-gray-400">
                     🔮 Future phase
                   </span>
-                  <span v-if="currentPhase?.version" class="ml-2">
+                  <span v-if="currentPhase.version" class="ml-2">
                     • Version {{ currentPhase.version }}
+                  </span>
+                  <span v-if="currentPhase.locked" class="ml-2 text-amber-400">
+                    🔒 Locked
                   </span>
                 </p>
               </div>
               <div class="text-sm text-slate-400">
-                <span class="font-mono">GET /phase-intelligence/{{ selectedPhase }}</span>
+                <span class="font-mono">docs/phase_intelligence/phase_{{ selectedPhase }}.md</span>
               </div>
             </div>
           </div>
@@ -109,42 +112,14 @@
         </div>
       </div>
 
-      <!-- Skills Used (if any) -->
-      <div v-if="phaseSkills.length > 0" class="mt-8 bg-emerald-900/20 rounded-lg border border-emerald-500/30 p-6">
-        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🛠️ Skills Used by This Phase</h3>
-        <div v-for="skill in phaseSkills" :key="skill.name" class="mb-4 last:mb-0">
-          <div class="flex items-center gap-3 mb-2">
-            <router-link
-              :to="`/skills?skill=${skill.name}`"
-              class="font-mono text-emerald-300 hover:text-emerald-200 underline"
-            >
-              {{ skill.name }}
-            </router-link>
-            <span class="text-xs text-slate-500">{{ skill.path }}</span>
-          </div>
-          <div v-if="skill.requiredReading.length > 0" class="ml-6 space-y-1">
-            <p class="text-xs text-slate-400 mb-1">Required Reading (in order):</p>
-            <div v-for="(file, index) in skill.requiredReading" :key="file" class="text-xs text-slate-300">
-              <span class="text-slate-500">{{ index + 1 }}.</span>
-              <span class="font-mono">{{ file }}</span>
-            </div>
-          </div>
-        </div>
-        <div class="mt-4 pt-4 border-t border-emerald-500/20">
-          <p class="text-xs text-slate-400">
-            Skills use <strong class="text-emerald-400">progressive disclosure</strong> - agents load only what they need, dramatically reducing context usage and improving adherence.
-          </p>
-        </div>
-      </div>
-
       <!-- Workflow Info -->
       <div class="mt-8 bg-slate-800/30 rounded-lg border border-slate-600/30 p-6">
         <h3 class="text-lg font-semibold text-slate-100 mb-3">Update Workflow</h3>
         <ol class="text-slate-400 space-y-2 text-sm">
-          <li>1. Edit: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">docs/phase_intelligence/phase_X.md</code></li>
-          <li>2. Commit: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">git commit -m "Update phase X"</code></li>
-          <li>3. Restart: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">pm2 restart automation-server</code></li>
-          <li>4. Done: Agents fetch latest from <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">/phase-intelligence/X</code></li>
+          <li>1. Edit: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">docs/phase_intelligence/phase_X_*.md</code></li>
+          <li>2. Rebuild app: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">npm run build</code></li>
+          <li>3. Deploy: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">git push</code> (auto-deploys to Vercel)</li>
+          <li>4. Done: Intelligence files are embedded in the app bundle</li>
         </ol>
       </div>
 
@@ -153,7 +128,27 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
+
+// Import phase intelligence files directly
+import phase1Raw from '../../docs/phase_intelligence/phase_1_seed_pairs.md?raw'
+import phase3Raw from '../../docs/phase_intelligence/phase_3_lego_pairs.md?raw'
+import phase5Raw from '../../docs/phase_intelligence/phase_5_lego_baskets.md?raw'
+import phase5_5Raw from '../../docs/phase_intelligence/phase_5.5_basket_deduplication.md?raw'
+import phase6Raw from '../../docs/phase_intelligence/phase_6_introductions.md?raw'
+import phase7Raw from '../../docs/phase_intelligence/phase_7_compilation.md?raw'
+import phase8Raw from '../../docs/phase_intelligence/phase_8_audio_generation.md?raw'
+
+const phaseContent = {
+  '1': phase1Raw,
+  '3': phase3Raw,
+  '4': `# Phase 4: Batch Preparation\n\n**Version**: 1.0\n**Status**: Active\n\n## Overview\n\nPhase 4 prepares batches of seeds for parallel processing in Phase 3.\n\n## Responsibilities\n\n- Split seed ranges into manageable batches\n- Generate batch-specific prompts\n- Coordinate parallel LEGO extraction\n- Merge batch results into consolidated lego_pairs.json\n\n## Implementation\n\nHandled by automation_server.cjs orchestration logic.\n\nSee APML specification for full details.`,
+  '5': phase5Raw,
+  '5.5': phase5_5Raw,
+  '6': phase6Raw,
+  '7': phase7Raw,
+  '8': phase8Raw
+}
 
 const phases = [
   { id: '1', name: 'Translation', status: 'active', version: '2.6', locked: true },
@@ -168,55 +163,16 @@ const phases = [
 
 const selectedPhase = ref('3')
 const intelligence = ref('')
-const loading = ref(false)
-const error = ref(null)
-const phaseSkills = ref([])
 
 const currentPhase = computed(() => {
   return phases.find(p => p.id === selectedPhase.value)
 })
 
-async function loadPhase(phase) {
-  loading.value = true
-  error.value = null
+function selectPhase(phase) {
   selectedPhase.value = phase
-
-  try {
-    const response = await fetch(`http://localhost:3456/api/prompts/${phase}`)
-
-    if (!response.ok) {
-      throw new Error(`Phase ${phase} not found`)
-    }
-
-    const data = await response.json()
-    intelligence.value = data.prompt
-
-    // Load skills used by this phase
-    await loadPhaseSkills(phase)
-  } catch (err) {
-    error.value = err.message
-    intelligence.value = ''
-  } finally {
-    loading.value = false
-  }
-}
-
-async function loadPhaseSkills(phase) {
-  try {
-    const response = await fetch(`http://localhost:3456/api/skills/used-by/${phase}`)
-
-    if (response.ok) {
-      const data = await response.json()
-      phaseSkills.value = data.skills || []
-    } else {
-      phaseSkills.value = []
-    }
-  } catch (err) {
-    // Skills API might not be available, ignore error
-    phaseSkills.value = []
-  }
+  intelligence.value = phaseContent[phase] || `# Phase ${phase}\n\nIntelligence file not yet created.`
 }
 
 // Load Phase 3 by default
-onMounted(() => loadPhase('3'))
+selectPhase('3')
 </script>
