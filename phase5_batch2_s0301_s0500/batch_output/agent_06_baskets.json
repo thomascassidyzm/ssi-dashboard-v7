@@ -1,0 +1,7448 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "agent_id": 6,
+  "seed_range": "S0401-S0420",
+  "total_seeds": 20,
+  "validation_status": "PENDING",
+  "validated_at": "2025-11-07T12:59:19.234553Z",
+  "seeds": {
+    "S0401": {
+      "seed": "S0401",
+      "seed_pair": {
+        "target": "No, sería mejor ir directamente a casa.",
+        "known": "No it would be better to go straight home."
+      },
+      "cumulative_legos": 1052,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "no",
+            "no"
+          ],
+          "type": "A",
+          "available_legos": 1052,
+          "practice_phrases": [
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero no",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero no no",
+              null,
+              3
+            ],
+            [
+              "I want no now",
+              "Quiero no ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want no now",
+              "Sí quiero no ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want no",
+              "Creo que quiero no ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want no now",
+              "Creo que quiero no ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want no",
+              "Sí creo que quiero no ahora mucho",
+              null,
+              7
+            ],
+            [
+              "No it would be better to go straight home.",
+              "No, sería mejor ir directamente a casa.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 2,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0401L01": {
+          "lego": [
+            "it would be better",
+            "sería mejor"
+          ],
+          "type": "M",
+          "available_legos": 1054,
+          "practice_phrases": [
+            [
+              "it would be better",
+              "sería mejor",
+              null,
+              2
+            ],
+            [
+              "It would be better",
+              "Sería mejor",
+              null,
+              2
+            ],
+            [
+              "It would be better to go",
+              "Sería mejor ir",
+              null,
+              3
+            ],
+            [
+              "That would be better",
+              "Eso sería mejor",
+              null,
+              3
+            ],
+            [
+              "It would be better to go",
+              "Sería mejor ir",
+              null,
+              3
+            ],
+            [
+              "I think it would be better",
+              "Creo que sería mejor",
+              null,
+              4
+            ],
+            [
+              "It would be better to go straight home",
+              "Sería mejor ir directamente a casa",
+              null,
+              6
+            ],
+            [
+              "I think it would be better to go home",
+              "Creo que sería mejor ir a casa",
+              null,
+              7
+            ],
+            [
+              "It would be better to go home now",
+              "Sería mejor ir a casa ahora",
+              null,
+              6
+            ],
+            [
+              "No it would be better to go straight home",
+              "No sería mejor ir directamente a casa",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 1,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0093L02": {
+          "lego": [
+            "to go",
+            "ir"
+          ],
+          "type": "A",
+          "available_legos": 1056,
+          "practice_phrases": [
+            [
+              "to go",
+              "ir",
+              null,
+              1
+            ],
+            [
+              "to go",
+              "ir",
+              null,
+              1
+            ],
+            [
+              "I want to go",
+              "Quiero ir ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero ir",
+              null,
+              3
+            ],
+            [
+              "I want to go very much",
+              "Quiero ir mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want to go right now",
+              "Quiero ir ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want to go",
+              "Creo que quiero ir ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want to go very much",
+              "Creo que quiero ir mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want to go now",
+              "Sí creo que quiero ir ahora",
+              null,
+              6
+            ],
+            [
+              "No it would be better to go straight home.",
+              "No, sería mejor ir directamente a casa.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0401L02": {
+          "lego": [
+            "straight",
+            "directamente"
+          ],
+          "type": "A",
+          "available_legos": 1058,
+          "practice_phrases": [
+            [
+              "straight",
+              "directamente",
+              null,
+              1
+            ],
+            [
+              "straight",
+              "directamente",
+              null,
+              1
+            ],
+            [
+              "I want straight",
+              "Quiero directamente ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero directamente",
+              null,
+              3
+            ],
+            [
+              "I want straight very much",
+              "Quiero directamente mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want straight right now",
+              "Quiero directamente ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want straight",
+              "Creo que quiero directamente ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want straight very much",
+              "Creo que quiero directamente mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want straight now",
+              "Sí creo que quiero directamente ahora",
+              null,
+              6
+            ],
+            [
+              "No it would be better to go straight home.",
+              "No, sería mejor ir directamente a casa.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0095L03": {
+          "lego": [
+            "home",
+            "a casa"
+          ],
+          "type": "M",
+          "available_legos": 1060,
+          "practice_phrases": [
+            [
+              "home",
+              "a casa",
+              null,
+              2
+            ],
+            [
+              "home",
+              "a casa",
+              null,
+              2
+            ],
+            [
+              "I want home",
+              "Quiero a casa",
+              null,
+              3
+            ],
+            [
+              "I want home",
+              "Quiero a casa",
+              null,
+              3
+            ],
+            [
+              "I want home now",
+              "Quiero a casa ahora",
+              null,
+              4
+            ],
+            [
+              "I want home right now",
+              "Quiero a casa ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want home now",
+              "Creo que quiero a casa ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want home right now",
+              "Creo que quiero a casa ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want home very much",
+              "Creo que quiero a casa mucho",
+              null,
+              6
+            ],
+            [
+              "No it would be better to go straight home.",
+              "No, sería mejor ir directamente a casa.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0402": {
+      "seed": "S0402",
+      "seed_pair": {
+        "target": "Sí, sería agradable parar en algún lugar para comida.",
+        "known": "Yes it would be nice to stop somewhere for food."
+      },
+      "cumulative_legos": 1054,
+      "legos": {
+        "S0097L01": {
+          "lego": [
+            "yes",
+            "sí"
+          ],
+          "type": "A",
+          "available_legos": 1054,
+          "practice_phrases": [
+            [
+              "yes",
+              "sí",
+              null,
+              1
+            ],
+            [
+              "yes",
+              "sí",
+              null,
+              1
+            ],
+            [
+              "I want yes",
+              "Quiero sí ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero sí",
+              null,
+              3
+            ],
+            [
+              "I want yes very much",
+              "Quiero sí mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want yes right now",
+              "Quiero sí ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want yes",
+              "Creo que quiero sí ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want yes very much",
+              "Creo que quiero sí mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want yes now",
+              "Sí creo que quiero sí ahora",
+              null,
+              6
+            ],
+            [
+              "Yes it would be nice to stop somewhere for food.",
+              "Sí, sería agradable parar en algún lugar para comida.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0402L01": {
+          "lego": [
+            "it would be nice",
+            "sería agradable"
+          ],
+          "type": "M",
+          "available_legos": 1056,
+          "practice_phrases": [
+            [
+              "it would be nice",
+              "sería agradable",
+              null,
+              2
+            ],
+            [
+              "it would be nice",
+              "sería agradable",
+              null,
+              2
+            ],
+            [
+              "I want it would be nice",
+              "Quiero sería agradable",
+              null,
+              3
+            ],
+            [
+              "I want it would be nice",
+              "Quiero sería agradable",
+              null,
+              3
+            ],
+            [
+              "I want it would be nice now",
+              "Quiero sería agradable ahora",
+              null,
+              4
+            ],
+            [
+              "I want it would be nice right now",
+              "Quiero sería agradable ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want it would be nice now",
+              "Creo que quiero sería agradable ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want it would be nice right now",
+              "Creo que quiero sería agradable ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want it would be nice very much",
+              "Creo que quiero sería agradable mucho",
+              null,
+              6
+            ],
+            [
+              "Yes it would be nice to stop somewhere for food.",
+              "Sí, sería agradable parar en algún lugar para comida.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0067L03": {
+          "lego": [
+            "to stop",
+            "parar"
+          ],
+          "type": "A",
+          "available_legos": 1058,
+          "practice_phrases": [
+            [
+              "to stop",
+              "parar",
+              null,
+              1
+            ],
+            [
+              "to stop",
+              "parar",
+              null,
+              1
+            ],
+            [
+              "I want to stop",
+              "Quiero parar ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero parar",
+              null,
+              3
+            ],
+            [
+              "I want to stop very much",
+              "Quiero parar mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want to stop right now",
+              "Quiero parar ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want to stop",
+              "Creo que quiero parar ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want to stop very much",
+              "Creo que quiero parar mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want to stop now",
+              "Sí creo que quiero parar ahora",
+              null,
+              6
+            ],
+            [
+              "Yes it would be nice to stop somewhere for food.",
+              "Sí, sería agradable parar en algún lugar para comida.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0402L02": {
+          "lego": [
+            "somewhere",
+            "en algún lugar"
+          ],
+          "type": "M",
+          "available_legos": 1060,
+          "practice_phrases": [
+            [
+              "somewhere",
+              "en",
+              null,
+              1
+            ],
+            [
+              "somewhere",
+              "en",
+              null,
+              1
+            ],
+            [
+              "somewhere",
+              "en algún lugar",
+              null,
+              3
+            ],
+            [
+              "somewhere",
+              "en algún lugar",
+              null,
+              3
+            ],
+            [
+              "I want somewhere now",
+              "Quiero en algún lugar ahora",
+              null,
+              5
+            ],
+            [
+              "Yes I want somewhere",
+              "Sí quiero en algún lugar",
+              null,
+              5
+            ],
+            [
+              "I think I want somewhere",
+              "Creo que quiero en algún lugar",
+              null,
+              6
+            ],
+            [
+              "I think I want somewhere now",
+              "Creo que quiero en algún lugar ahora",
+              null,
+              7
+            ],
+            [
+              "Yes I think I want somewhere",
+              "Sí creo que quiero en algún lugar",
+              null,
+              7
+            ],
+            [
+              "Yes it would be nice to stop somewhere for food.",
+              "Sí, sería agradable parar en algún lugar para comida.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0332L07": {
+          "lego": [
+            "for",
+            "para"
+          ],
+          "type": "A",
+          "available_legos": 1062,
+          "practice_phrases": [
+            [
+              "for",
+              "para",
+              null,
+              1
+            ],
+            [
+              "for",
+              "para",
+              null,
+              1
+            ],
+            [
+              "I want for",
+              "Quiero para ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero para",
+              null,
+              3
+            ],
+            [
+              "I want for very much",
+              "Quiero para mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want for right now",
+              "Quiero para ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want for",
+              "Creo que quiero para ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want for very much",
+              "Creo que quiero para mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want for now",
+              "Sí creo que quiero para ahora",
+              null,
+              6
+            ],
+            [
+              "Yes it would be nice to stop somewhere for food.",
+              "Sí, sería agradable parar en algún lugar para comida.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0402L03": {
+          "lego": [
+            "food",
+            "comida"
+          ],
+          "type": "A",
+          "available_legos": 1064,
+          "practice_phrases": [
+            [
+              "food",
+              "comida",
+              null,
+              1
+            ],
+            [
+              "food",
+              "comida",
+              null,
+              1
+            ],
+            [
+              "I want food",
+              "Quiero comida ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero comida",
+              null,
+              3
+            ],
+            [
+              "I want food very much",
+              "Quiero comida mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want food right now",
+              "Quiero comida ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want food",
+              "Creo que quiero comida ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want food very much",
+              "Creo que quiero comida mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want food now",
+              "Sí creo que quiero comida ahora",
+              null,
+              6
+            ],
+            [
+              "Yes it would be nice to stop somewhere for food.",
+              "Sí, sería agradable parar en algún lugar para comida.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0403": {
+      "seed": "S0403",
+      "seed_pair": {
+        "target": "Deberíamos permanecer callados durante tanto tiempo como sea posible.",
+        "known": "We should remain quiet for as long as possible."
+      },
+      "cumulative_legos": 1057,
+      "legos": {
+        "S0403L01": {
+          "lego": [
+            "we should",
+            "deberíamos"
+          ],
+          "type": "A",
+          "available_legos": 1057,
+          "practice_phrases": [
+            [
+              "we should",
+              "deberíamos",
+              null,
+              1
+            ],
+            [
+              "we should",
+              "deberíamos",
+              null,
+              1
+            ],
+            [
+              "I want we should",
+              "Quiero deberíamos ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero deberíamos",
+              null,
+              3
+            ],
+            [
+              "I want we should very much",
+              "Quiero deberíamos mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want we should right now",
+              "Quiero deberíamos ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want we should",
+              "Creo que quiero deberíamos ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want we should very much",
+              "Creo que quiero deberíamos mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want we should now",
+              "Sí creo que quiero deberíamos ahora",
+              null,
+              6
+            ],
+            [
+              "We should remain quiet for as long as possible.",
+              "Deberíamos permanecer callados durante tanto tiempo como sea posible.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0403L02": {
+          "lego": [
+            "remain",
+            "permanecer"
+          ],
+          "type": "A",
+          "available_legos": 1059,
+          "practice_phrases": [
+            [
+              "remain",
+              "permanecer",
+              null,
+              1
+            ],
+            [
+              "remain",
+              "permanecer",
+              null,
+              1
+            ],
+            [
+              "I want remain",
+              "Quiero permanecer ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero permanecer",
+              null,
+              3
+            ],
+            [
+              "I want remain very much",
+              "Quiero permanecer mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want remain right now",
+              "Quiero permanecer ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want remain",
+              "Creo que quiero permanecer ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want remain very much",
+              "Creo que quiero permanecer mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want remain now",
+              "Sí creo que quiero permanecer ahora",
+              null,
+              6
+            ],
+            [
+              "We should remain quiet for as long as possible.",
+              "Deberíamos permanecer callados durante tanto tiempo como sea posible.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0403L03": {
+          "lego": [
+            "quiet",
+            "callados"
+          ],
+          "type": "A",
+          "available_legos": 1061,
+          "practice_phrases": [
+            [
+              "quiet",
+              "callados",
+              null,
+              1
+            ],
+            [
+              "quiet",
+              "callados",
+              null,
+              1
+            ],
+            [
+              "I want quiet",
+              "Quiero callados ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero callados",
+              null,
+              3
+            ],
+            [
+              "I want quiet very much",
+              "Quiero callados mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want quiet right now",
+              "Quiero callados ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want quiet",
+              "Creo que quiero callados ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want quiet very much",
+              "Creo que quiero callados mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want quiet now",
+              "Sí creo que quiero callados ahora",
+              null,
+              6
+            ],
+            [
+              "We should remain quiet for as long as possible.",
+              "Deberíamos permanecer callados durante tanto tiempo como sea posible.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0403L04": {
+          "lego": [
+            "for",
+            "durante"
+          ],
+          "type": "A",
+          "available_legos": 1063,
+          "practice_phrases": [
+            [
+              "for",
+              "durante",
+              null,
+              1
+            ],
+            [
+              "for",
+              "durante",
+              null,
+              1
+            ],
+            [
+              "I want for",
+              "Quiero durante ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero durante",
+              null,
+              3
+            ],
+            [
+              "I want for very much",
+              "Quiero durante mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want for right now",
+              "Quiero durante ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want for",
+              "Creo que quiero durante ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want for very much",
+              "Creo que quiero durante mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want for now",
+              "Sí creo que quiero durante ahora",
+              null,
+              6
+            ],
+            [
+              "We should remain quiet for as long as possible.",
+              "Deberíamos permanecer callados durante tanto tiempo como sea posible.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0403L05": {
+          "lego": [
+            "as long as possible",
+            "tanto tiempo como sea posible"
+          ],
+          "type": "M",
+          "available_legos": 1065,
+          "practice_phrases": [
+            [
+              "as",
+              "tanto",
+              null,
+              1
+            ],
+            [
+              "as",
+              "tanto",
+              null,
+              1
+            ],
+            [
+              "as long as possible",
+              "tanto tiempo como",
+              null,
+              3
+            ],
+            [
+              "as long as possible",
+              "tanto tiempo como",
+              null,
+              3
+            ],
+            [
+              "I want tanto",
+              "Quiero tanto tiempo como sea",
+              null,
+              5
+            ],
+            [
+              "Yes tanto",
+              "Sí tanto tiempo como sea",
+              null,
+              5
+            ],
+            [
+              "I think I want as long as possible",
+              "Creo que quiero tanto tiempo como sea posible",
+              null,
+              8
+            ],
+            [
+              "I think I want as long as possible now",
+              "Creo que quiero tanto tiempo como sea posible ahora",
+              null,
+              9
+            ],
+            [
+              "Yes I think I want as long as possible",
+              "Sí creo que quiero tanto tiempo como sea posible ahora",
+              null,
+              10
+            ],
+            [
+              "We should remain quiet for as long as possible.",
+              "Deberíamos permanecer callados durante tanto tiempo como sea posible.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0404": {
+      "seed": "S0404",
+      "seed_pair": {
+        "target": "No deberíamos esperar terminar antes del jueves.",
+        "known": "We shouldn't expect to finish before Thursday."
+      },
+      "cumulative_legos": 1062,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "no",
+            "no"
+          ],
+          "type": "A",
+          "available_legos": 1062,
+          "practice_phrases": [
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero no",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero no no",
+              null,
+              3
+            ],
+            [
+              "I want no now",
+              "Quiero no ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want no now",
+              "Sí quiero no ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want no",
+              "Creo que quiero no ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want no now",
+              "Creo que quiero no ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want no",
+              "Sí creo que quiero no ahora mucho",
+              null,
+              7
+            ],
+            [
+              "We shouldn't expect to finish before Thursday.",
+              "No deberíamos esperar terminar antes del jueves.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 2,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0403L01": {
+          "lego": [
+            "we should",
+            "deberíamos"
+          ],
+          "type": "A",
+          "available_legos": 1064,
+          "practice_phrases": [
+            [
+              "we should",
+              "deberíamos",
+              null,
+              1
+            ],
+            [
+              "we should",
+              "deberíamos",
+              null,
+              1
+            ],
+            [
+              "I want we should",
+              "Quiero deberíamos ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero deberíamos",
+              null,
+              3
+            ],
+            [
+              "I want we should very much",
+              "Quiero deberíamos mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want we should right now",
+              "Quiero deberíamos ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want we should",
+              "Creo que quiero deberíamos ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want we should very much",
+              "Creo que quiero deberíamos mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want we should now",
+              "Sí creo que quiero deberíamos ahora",
+              null,
+              6
+            ],
+            [
+              "We shouldn't expect to finish before Thursday.",
+              "No deberíamos esperar terminar antes del jueves.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0404L01": {
+          "lego": [
+            "expect",
+            "esperar"
+          ],
+          "type": "A",
+          "available_legos": 1066,
+          "practice_phrases": [
+            [
+              "expect",
+              "esperar",
+              null,
+              1
+            ],
+            [
+              "expect",
+              "esperar",
+              null,
+              1
+            ],
+            [
+              "I want expect",
+              "Quiero esperar ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero esperar",
+              null,
+              3
+            ],
+            [
+              "I want expect very much",
+              "Quiero esperar mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want expect right now",
+              "Quiero esperar ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want expect",
+              "Creo que quiero esperar ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want expect very much",
+              "Creo que quiero esperar mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want expect now",
+              "Sí creo que quiero esperar ahora",
+              null,
+              6
+            ],
+            [
+              "We shouldn't expect to finish before Thursday.",
+              "No deberíamos esperar terminar antes del jueves.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0050L02": {
+          "lego": [
+            "to finish",
+            "terminar"
+          ],
+          "type": "A",
+          "available_legos": 1068,
+          "practice_phrases": [
+            [
+              "to finish",
+              "terminar",
+              null,
+              1
+            ],
+            [
+              "to finish",
+              "terminar",
+              null,
+              1
+            ],
+            [
+              "I want to finish",
+              "Quiero terminar ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero terminar",
+              null,
+              3
+            ],
+            [
+              "I want to finish very much",
+              "Quiero terminar mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want to finish right now",
+              "Quiero terminar ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want to finish",
+              "Creo que quiero terminar ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want to finish very much",
+              "Creo que quiero terminar mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want to finish now",
+              "Sí creo que quiero terminar ahora",
+              null,
+              6
+            ],
+            [
+              "We shouldn't expect to finish before Thursday.",
+              "No deberíamos esperar terminar antes del jueves.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0404L02": {
+          "lego": [
+            "before Thursday",
+            "antes del jueves"
+          ],
+          "type": "M",
+          "available_legos": 1070,
+          "practice_phrases": [
+            [
+              "before",
+              "antes",
+              null,
+              1
+            ],
+            [
+              "before",
+              "antes",
+              null,
+              1
+            ],
+            [
+              "before Thursday",
+              "antes del jueves",
+              null,
+              3
+            ],
+            [
+              "before Thursday",
+              "antes del jueves",
+              null,
+              3
+            ],
+            [
+              "I want before Thursday now",
+              "Quiero antes del jueves ahora",
+              null,
+              5
+            ],
+            [
+              "Yes I want before Thursday",
+              "Sí quiero antes del jueves",
+              null,
+              5
+            ],
+            [
+              "I think I want before Thursday",
+              "Creo que quiero antes del jueves",
+              null,
+              6
+            ],
+            [
+              "I think I want before Thursday now",
+              "Creo que quiero antes del jueves ahora",
+              null,
+              7
+            ],
+            [
+              "Yes I think I want before Thursday",
+              "Sí creo que quiero antes del jueves",
+              null,
+              7
+            ],
+            [
+              "We shouldn't expect to finish before Thursday.",
+              "No deberíamos esperar terminar antes del jueves.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0405": {
+      "seed": "S0405",
+      "seed_pair": {
+        "target": "¿Deberíamos preguntar si tenemos que reservar?",
+        "known": "Should we ask if we have to book?"
+      },
+      "cumulative_legos": 1064,
+      "legos": {
+        "S0405L01": {
+          "lego": [
+            "should we",
+            "deberíamos"
+          ],
+          "type": "A",
+          "available_legos": 1064,
+          "practice_phrases": [
+            [
+              "should we",
+              "deberíamos",
+              null,
+              1
+            ],
+            [
+              "should we",
+              "deberíamos",
+              null,
+              1
+            ],
+            [
+              "I want should we",
+              "Quiero deberíamos ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero deberíamos",
+              null,
+              3
+            ],
+            [
+              "I want should we very much",
+              "Quiero deberíamos mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want should we right now",
+              "Quiero deberíamos ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want should we",
+              "Creo que quiero deberíamos ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want should we very much",
+              "Creo que quiero deberíamos mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want should we now",
+              "Sí creo que quiero deberíamos ahora",
+              null,
+              6
+            ],
+            [
+              "Should we ask if we have to book?",
+              "¿Deberíamos preguntar si tenemos que reservar?",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0405L02": {
+          "lego": [
+            "ask",
+            "preguntar"
+          ],
+          "type": "A",
+          "available_legos": 1066,
+          "practice_phrases": [
+            [
+              "ask",
+              "preguntar",
+              null,
+              1
+            ],
+            [
+              "ask",
+              "preguntar",
+              null,
+              1
+            ],
+            [
+              "I want ask",
+              "Quiero preguntar ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero preguntar",
+              null,
+              3
+            ],
+            [
+              "I want ask very much",
+              "Quiero preguntar mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want ask right now",
+              "Quiero preguntar ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want ask",
+              "Creo que quiero preguntar ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want ask very much",
+              "Creo que quiero preguntar mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want ask now",
+              "Sí creo que quiero preguntar ahora",
+              null,
+              6
+            ],
+            [
+              "Should we ask if we have to book?",
+              "¿Deberíamos preguntar si tenemos que reservar?",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0010L02": {
+          "lego": [
+            "if",
+            "si"
+          ],
+          "type": "A",
+          "available_legos": 1068,
+          "practice_phrases": [
+            [
+              "if",
+              "si",
+              null,
+              1
+            ],
+            [
+              "if",
+              "si",
+              null,
+              1
+            ],
+            [
+              "I want if",
+              "Quiero si ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero si",
+              null,
+              3
+            ],
+            [
+              "I want if very much",
+              "Quiero si mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want if right now",
+              "Quiero si ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want if",
+              "Creo que quiero si ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want if very much",
+              "Creo que quiero si mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want if now",
+              "Sí creo que quiero si ahora",
+              null,
+              6
+            ],
+            [
+              "Should we ask if we have to book?",
+              "¿Deberíamos preguntar si tenemos que reservar?",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0405L03": {
+          "lego": [
+            "we have to",
+            "tenemos que"
+          ],
+          "type": "M",
+          "available_legos": 1070,
+          "practice_phrases": [
+            [
+              "we have to",
+              "tenemos que",
+              null,
+              2
+            ],
+            [
+              "we have to",
+              "tenemos que",
+              null,
+              2
+            ],
+            [
+              "I want we have to",
+              "Quiero tenemos que",
+              null,
+              3
+            ],
+            [
+              "I want we have to",
+              "Quiero tenemos que",
+              null,
+              3
+            ],
+            [
+              "I want we have to now",
+              "Quiero tenemos que ahora",
+              null,
+              4
+            ],
+            [
+              "I want we have to right now",
+              "Quiero tenemos que ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want we have to now",
+              "Creo que quiero tenemos que ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want we have to right now",
+              "Creo que quiero tenemos que ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want we have to very much",
+              "Creo que quiero tenemos que mucho",
+              null,
+              6
+            ],
+            [
+              "Should we ask if we have to book?",
+              "¿Deberíamos preguntar si tenemos que reservar?",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0405L04": {
+          "lego": [
+            "book",
+            "reservar"
+          ],
+          "type": "A",
+          "available_legos": 1072,
+          "practice_phrases": [
+            [
+              "book",
+              "reservar",
+              null,
+              1
+            ],
+            [
+              "book",
+              "reservar",
+              null,
+              1
+            ],
+            [
+              "I want book",
+              "Quiero reservar ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero reservar",
+              null,
+              3
+            ],
+            [
+              "I want book very much",
+              "Quiero reservar mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want book right now",
+              "Quiero reservar ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want book",
+              "Creo que quiero reservar ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want book very much",
+              "Creo que quiero reservar mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want book now",
+              "Sí creo que quiero reservar ahora",
+              null,
+              6
+            ],
+            [
+              "Should we ask if we have to book?",
+              "¿Deberíamos preguntar si tenemos que reservar?",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0406": {
+      "seed": "S0406",
+      "seed_pair": {
+        "target": "No, estoy seguro de que estará bien.",
+        "known": "No I'm sure it will be okay."
+      },
+      "cumulative_legos": 1068,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "no",
+            "no"
+          ],
+          "type": "A",
+          "available_legos": 1068,
+          "practice_phrases": [
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero no",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero no no",
+              null,
+              3
+            ],
+            [
+              "I want no now",
+              "Quiero no ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want no now",
+              "Sí quiero no ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want no",
+              "Creo que quiero no ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want no now",
+              "Creo que quiero no ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want no",
+              "Sí creo que quiero no ahora mucho",
+              null,
+              7
+            ],
+            [
+              "No I'm sure it will be okay.",
+              "No, estoy seguro de que estará bien.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 2,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0406L01": {
+          "lego": [
+            "I'm sure",
+            "estoy seguro de que"
+          ],
+          "type": "M",
+          "available_legos": 1070,
+          "practice_phrases": [
+            [
+              "I'm",
+              "estoy",
+              null,
+              1
+            ],
+            [
+              "I'm",
+              "estoy",
+              null,
+              1
+            ],
+            [
+              "I'm sure",
+              "estoy seguro de",
+              null,
+              3
+            ],
+            [
+              "I'm sure",
+              "estoy seguro de",
+              null,
+              3
+            ],
+            [
+              "I want I'm sure",
+              "Quiero estoy seguro de que",
+              null,
+              5
+            ],
+            [
+              "Yes I'm sure",
+              "Sí estoy seguro de que",
+              null,
+              5
+            ],
+            [
+              "I think I want I'm sure",
+              "Creo que quiero estoy seguro de que",
+              null,
+              7
+            ],
+            [
+              "I think I want I'm sure now",
+              "Creo que quiero estoy seguro de que ahora",
+              null,
+              8
+            ],
+            [
+              "Yes I think I want I'm sure",
+              "Sí creo que quiero estoy seguro de que ahora",
+              null,
+              9
+            ],
+            [
+              "No I'm sure it will be okay.",
+              "No, estoy seguro de que estará bien.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0406L02": {
+          "lego": [
+            "it will be okay",
+            "estará bien"
+          ],
+          "type": "M",
+          "available_legos": 1072,
+          "practice_phrases": [
+            [
+              "it will be okay",
+              "estará bien",
+              null,
+              2
+            ],
+            [
+              "it will be okay",
+              "estará bien",
+              null,
+              2
+            ],
+            [
+              "I want it will be okay",
+              "Quiero estará bien",
+              null,
+              3
+            ],
+            [
+              "I want it will be okay",
+              "Quiero estará bien",
+              null,
+              3
+            ],
+            [
+              "I want it will be okay now",
+              "Quiero estará bien ahora",
+              null,
+              4
+            ],
+            [
+              "I want it will be okay right now",
+              "Quiero estará bien ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want it will be okay now",
+              "Creo que quiero estará bien ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want it will be okay right now",
+              "Creo que quiero estará bien ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want it will be okay very much",
+              "Creo que quiero estará bien mucho",
+              null,
+              6
+            ],
+            [
+              "No I'm sure it will be okay.",
+              "No, estoy seguro de que estará bien.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0407": {
+      "seed": "S0407",
+      "seed_pair": {
+        "target": "¿No deberíamos intentar establecer un buen ejemplo?",
+        "known": "Shouldn't we try to set a good example?"
+      },
+      "cumulative_legos": 1070,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "no",
+            "no"
+          ],
+          "type": "A",
+          "available_legos": 1070,
+          "practice_phrases": [
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero no",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero no no",
+              null,
+              3
+            ],
+            [
+              "I want no now",
+              "Quiero no ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want no now",
+              "Sí quiero no ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want no",
+              "Creo que quiero no ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want no now",
+              "Creo que quiero no ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want no",
+              "Sí creo que quiero no ahora mucho",
+              null,
+              7
+            ],
+            [
+              "Shouldn't we try to set a good example?",
+              "¿No deberíamos intentar establecer un buen ejemplo?",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 2,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0405L01": {
+          "lego": [
+            "should we",
+            "deberíamos"
+          ],
+          "type": "A",
+          "available_legos": 1072,
+          "practice_phrases": [
+            [
+              "should we",
+              "deberíamos",
+              null,
+              1
+            ],
+            [
+              "should we",
+              "deberíamos",
+              null,
+              1
+            ],
+            [
+              "I want should we",
+              "Quiero deberíamos ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero deberíamos",
+              null,
+              3
+            ],
+            [
+              "I want should we very much",
+              "Quiero deberíamos mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want should we right now",
+              "Quiero deberíamos ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want should we",
+              "Creo que quiero deberíamos ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want should we very much",
+              "Creo que quiero deberíamos mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want should we now",
+              "Sí creo que quiero deberíamos ahora",
+              null,
+              6
+            ],
+            [
+              "Shouldn't we try to set a good example?",
+              "¿No deberíamos intentar establecer un buen ejemplo?",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0007L01": {
+          "lego": [
+            "to try",
+            "intentar"
+          ],
+          "type": "A",
+          "available_legos": 1074,
+          "practice_phrases": [
+            [
+              "to try",
+              "intentar",
+              null,
+              1
+            ],
+            [
+              "to try",
+              "intentar",
+              null,
+              1
+            ],
+            [
+              "I want to try",
+              "Quiero intentar ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero intentar",
+              null,
+              3
+            ],
+            [
+              "I want to try very much",
+              "Quiero intentar mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want to try right now",
+              "Quiero intentar ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want to try",
+              "Creo que quiero intentar ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want to try very much",
+              "Creo que quiero intentar mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want to try now",
+              "Sí creo que quiero intentar ahora",
+              null,
+              6
+            ],
+            [
+              "Shouldn't we try to set a good example?",
+              "¿No deberíamos intentar establecer un buen ejemplo?",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0407L01": {
+          "lego": [
+            "to set",
+            "establecer"
+          ],
+          "type": "A",
+          "available_legos": 1076,
+          "practice_phrases": [
+            [
+              "to set",
+              "establecer",
+              null,
+              1
+            ],
+            [
+              "to set",
+              "establecer",
+              null,
+              1
+            ],
+            [
+              "I want to set",
+              "Quiero establecer ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero establecer",
+              null,
+              3
+            ],
+            [
+              "I want to set very much",
+              "Quiero establecer mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want to set right now",
+              "Quiero establecer ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want to set",
+              "Creo que quiero establecer ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want to set very much",
+              "Creo que quiero establecer mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want to set now",
+              "Sí creo que quiero establecer ahora",
+              null,
+              6
+            ],
+            [
+              "Shouldn't we try to set a good example?",
+              "¿No deberíamos intentar establecer un buen ejemplo?",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0407L02": {
+          "lego": [
+            "a good example",
+            "un buen ejemplo"
+          ],
+          "type": "M",
+          "available_legos": 1078,
+          "practice_phrases": [
+            [
+              "a",
+              "un",
+              null,
+              1
+            ],
+            [
+              "a",
+              "un",
+              null,
+              1
+            ],
+            [
+              "a good example",
+              "un buen ejemplo",
+              null,
+              3
+            ],
+            [
+              "a good example",
+              "un buen ejemplo",
+              null,
+              3
+            ],
+            [
+              "I want a good example now",
+              "Quiero un buen ejemplo ahora",
+              null,
+              5
+            ],
+            [
+              "Yes I want a good example",
+              "Sí quiero un buen ejemplo",
+              null,
+              5
+            ],
+            [
+              "I think I want a good example",
+              "Creo que quiero un buen ejemplo",
+              null,
+              6
+            ],
+            [
+              "I think I want a good example now",
+              "Creo que quiero un buen ejemplo ahora",
+              null,
+              7
+            ],
+            [
+              "Yes I think I want a good example",
+              "Sí creo que quiero un buen ejemplo",
+              null,
+              7
+            ],
+            [
+              "Shouldn't we try to set a good example?",
+              "¿No deberíamos intentar establecer un buen ejemplo?",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0408": {
+      "seed": "S0408",
+      "seed_pair": {
+        "target": "Sí esa es la mejor manera de hacer una familia feliz.",
+        "known": "Yes that's the best way to make a happy family."
+      },
+      "cumulative_legos": 1072,
+      "legos": {
+        "S0097L01": {
+          "lego": [
+            "yes",
+            "sí"
+          ],
+          "type": "A",
+          "available_legos": 1072,
+          "practice_phrases": [
+            [
+              "yes",
+              "sí",
+              null,
+              1
+            ],
+            [
+              "yes",
+              "sí",
+              null,
+              1
+            ],
+            [
+              "I want yes",
+              "Quiero sí ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero sí",
+              null,
+              3
+            ],
+            [
+              "I want yes very much",
+              "Quiero sí mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want yes right now",
+              "Quiero sí ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want yes",
+              "Creo que quiero sí ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want yes very much",
+              "Creo que quiero sí mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want yes now",
+              "Sí creo que quiero sí ahora",
+              null,
+              6
+            ],
+            [
+              "Yes that's the best way to make a happy family.",
+              "Sí esa es la mejor manera de hacer una familia feliz.",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0189L01": {
+          "lego": [
+            "that",
+            "esa"
+          ],
+          "type": "A",
+          "available_legos": 1074,
+          "practice_phrases": [
+            [
+              "that",
+              "esa",
+              null,
+              1
+            ],
+            [
+              "that",
+              "esa",
+              null,
+              1
+            ],
+            [
+              "I want that",
+              "Quiero esa ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero esa",
+              null,
+              3
+            ],
+            [
+              "I want that very much",
+              "Quiero esa mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want that right now",
+              "Quiero esa ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want that",
+              "Creo que quiero esa ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want that very much",
+              "Creo que quiero esa mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want that now",
+              "Sí creo que quiero esa ahora",
+              null,
+              6
+            ],
+            [
+              "Yes that's the best way to make a happy family.",
+              "Sí esa es la mejor manera de hacer una familia feliz.",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0123L02": {
+          "lego": [
+            "is",
+            "es"
+          ],
+          "type": "A",
+          "available_legos": 1076,
+          "practice_phrases": [
+            [
+              "is",
+              "es",
+              null,
+              1
+            ],
+            [
+              "is",
+              "es",
+              null,
+              1
+            ],
+            [
+              "I want is",
+              "Quiero es ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero es",
+              null,
+              3
+            ],
+            [
+              "I want is very much",
+              "Quiero es mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want is right now",
+              "Quiero es ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want is",
+              "Creo que quiero es ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want is very much",
+              "Creo que quiero es mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want is now",
+              "Sí creo que quiero es ahora",
+              null,
+              6
+            ],
+            [
+              "Yes that's the best way to make a happy family.",
+              "Sí esa es la mejor manera de hacer una familia feliz.",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0408L01": {
+          "lego": [
+            "the best way to",
+            "la mejor manera de"
+          ],
+          "type": "M",
+          "available_legos": 1078,
+          "practice_phrases": [
+            [
+              "the",
+              "la",
+              null,
+              1
+            ],
+            [
+              "the",
+              "la",
+              null,
+              1
+            ],
+            [
+              "the best way to",
+              "la mejor manera",
+              null,
+              3
+            ],
+            [
+              "the best way to",
+              "la mejor manera",
+              null,
+              3
+            ],
+            [
+              "I want the best way to",
+              "Quiero la mejor manera de",
+              null,
+              5
+            ],
+            [
+              "Yes the best way to",
+              "Sí la mejor manera de",
+              null,
+              5
+            ],
+            [
+              "I think I want the best way to",
+              "Creo que quiero la mejor manera de",
+              null,
+              7
+            ],
+            [
+              "I think I want the best way to now",
+              "Creo que quiero la mejor manera de ahora",
+              null,
+              8
+            ],
+            [
+              "Yes I think I want the best way to",
+              "Sí creo que quiero la mejor manera de ahora",
+              null,
+              9
+            ],
+            [
+              "Yes that's the best way to make a happy family.",
+              "Sí esa es la mejor manera de hacer una familia feliz.",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0051L02": {
+          "lego": [
+            "to do/make",
+            "hacer"
+          ],
+          "type": "A",
+          "available_legos": 1080,
+          "practice_phrases": [
+            [
+              "to do/make",
+              "hacer",
+              null,
+              1
+            ],
+            [
+              "to do/make",
+              "hacer",
+              null,
+              1
+            ],
+            [
+              "I want to do/make",
+              "Quiero hacer ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero hacer",
+              null,
+              3
+            ],
+            [
+              "I want to do/make very much",
+              "Quiero hacer mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want to do/make right now",
+              "Quiero hacer ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want to do/make",
+              "Creo que quiero hacer ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want to do/make very much",
+              "Creo que quiero hacer mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want to do/make now",
+              "Sí creo que quiero hacer ahora",
+              null,
+              6
+            ],
+            [
+              "Yes that's the best way to make a happy family.",
+              "Sí esa es la mejor manera de hacer una familia feliz.",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0408L02": {
+          "lego": [
+            "a happy family",
+            "una familia feliz"
+          ],
+          "type": "M",
+          "available_legos": 1082,
+          "practice_phrases": [
+            [
+              "a",
+              "una",
+              null,
+              1
+            ],
+            [
+              "a",
+              "una",
+              null,
+              1
+            ],
+            [
+              "a happy family",
+              "una familia feliz",
+              null,
+              3
+            ],
+            [
+              "a happy family",
+              "una familia feliz",
+              null,
+              3
+            ],
+            [
+              "I want a happy family now",
+              "Quiero una familia feliz ahora",
+              null,
+              5
+            ],
+            [
+              "Yes I want a happy family",
+              "Sí quiero una familia feliz",
+              null,
+              5
+            ],
+            [
+              "I think I want a happy family",
+              "Creo que quiero una familia feliz",
+              null,
+              6
+            ],
+            [
+              "I think I want a happy family now",
+              "Creo que quiero una familia feliz ahora",
+              null,
+              7
+            ],
+            [
+              "Yes I think I want a happy family",
+              "Sí creo que quiero una familia feliz",
+              null,
+              7
+            ],
+            [
+              "Yes that's the best way to make a happy family.",
+              "Sí esa es la mejor manera de hacer una familia feliz.",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0409": {
+      "seed": "S0409",
+      "seed_pair": {
+        "target": "No no importa lo que hagamos.",
+        "known": "No it doesn't matter what we do."
+      },
+      "cumulative_legos": 1074,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "no",
+            "no"
+          ],
+          "type": "A",
+          "available_legos": 1074,
+          "practice_phrases": [
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero no",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero no no",
+              null,
+              3
+            ],
+            [
+              "I want no now",
+              "Quiero no ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want no now",
+              "Sí quiero no ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want no",
+              "Creo que quiero no ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want no now",
+              "Creo que quiero no ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want no",
+              "Sí creo que quiero no ahora mucho",
+              null,
+              7
+            ],
+            [
+              "No it doesn't matter what we do.",
+              "No no importa lo que hagamos.",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 2,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0409L01": {
+          "lego": [
+            "it doesn't matter",
+            "no importa"
+          ],
+          "type": "M",
+          "available_legos": 1076,
+          "practice_phrases": [
+            [
+              "it doesn't matter",
+              "no importa",
+              null,
+              2
+            ],
+            [
+              "it doesn't matter",
+              "no importa",
+              null,
+              2
+            ],
+            [
+              "I want it doesn't matter",
+              "Quiero no importa",
+              null,
+              3
+            ],
+            [
+              "I want it doesn't matter",
+              "Quiero no importa",
+              null,
+              3
+            ],
+            [
+              "I want it doesn't matter now",
+              "Quiero no importa ahora",
+              null,
+              4
+            ],
+            [
+              "I want it doesn't matter right now",
+              "Quiero no importa ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want it doesn't matter now",
+              "Creo que quiero no importa ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want it doesn't matter right now",
+              "Creo que quiero no importa ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want it doesn't matter very much",
+              "Creo que quiero no importa mucho",
+              null,
+              6
+            ],
+            [
+              "No it doesn't matter what we do.",
+              "No no importa lo que hagamos.",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0104L03": {
+          "lego": [
+            "what",
+            "lo que"
+          ],
+          "type": "M",
+          "available_legos": 1078,
+          "practice_phrases": [
+            [
+              "what",
+              "lo que",
+              null,
+              2
+            ],
+            [
+              "what",
+              "lo que",
+              null,
+              2
+            ],
+            [
+              "I want what",
+              "Quiero lo que",
+              null,
+              3
+            ],
+            [
+              "I want what",
+              "Quiero lo que",
+              null,
+              3
+            ],
+            [
+              "I want what now",
+              "Quiero lo que ahora",
+              null,
+              4
+            ],
+            [
+              "I want what right now",
+              "Quiero lo que ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want what now",
+              "Creo que quiero lo que ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want what right now",
+              "Creo que quiero lo que ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want what very much",
+              "Creo que quiero lo que mucho",
+              null,
+              6
+            ],
+            [
+              "No it doesn't matter what we do.",
+              "No no importa lo que hagamos.",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0409L02": {
+          "lego": [
+            "we do",
+            "hagamos"
+          ],
+          "type": "A",
+          "available_legos": 1080,
+          "practice_phrases": [
+            [
+              "we do",
+              "hagamos",
+              null,
+              1
+            ],
+            [
+              "we do",
+              "hagamos",
+              null,
+              1
+            ],
+            [
+              "I want we do",
+              "Quiero hagamos ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero hagamos",
+              null,
+              3
+            ],
+            [
+              "I want we do very much",
+              "Quiero hagamos mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want we do right now",
+              "Quiero hagamos ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want we do",
+              "Creo que quiero hagamos ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want we do very much",
+              "Creo que quiero hagamos mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want we do now",
+              "Sí creo que quiero hagamos ahora",
+              null,
+              6
+            ],
+            [
+              "No it doesn't matter what we do.",
+              "No no importa lo que hagamos.",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0410": {
+      "seed": "S0410",
+      "seed_pair": {
+        "target": "Todavía luchan el uno con el otro.",
+        "known": "They still fight with each other."
+      },
+      "cumulative_legos": 1076,
+      "legos": {
+        "S0410L01": {
+          "lego": [
+            "still",
+            "todavía"
+          ],
+          "type": "A",
+          "available_legos": 1076,
+          "practice_phrases": [
+            [
+              "still",
+              "todavía",
+              null,
+              1
+            ],
+            [
+              "still",
+              "todavía",
+              null,
+              1
+            ],
+            [
+              "I want still",
+              "Quiero todavía ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero todavía",
+              null,
+              3
+            ],
+            [
+              "I want still very much",
+              "Quiero todavía mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want still right now",
+              "Quiero todavía ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want still",
+              "Creo que quiero todavía ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want still very much",
+              "Creo que quiero todavía mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want still now",
+              "Sí creo que quiero todavía ahora",
+              null,
+              6
+            ],
+            [
+              "They still fight with each other.",
+              "Todavía luchan el uno con el otro.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0410L02": {
+          "lego": [
+            "they fight",
+            "luchan"
+          ],
+          "type": "A",
+          "available_legos": 1078,
+          "practice_phrases": [
+            [
+              "they fight",
+              "luchan",
+              null,
+              1
+            ],
+            [
+              "they fight",
+              "luchan",
+              null,
+              1
+            ],
+            [
+              "I want they fight",
+              "Quiero luchan ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero luchan",
+              null,
+              3
+            ],
+            [
+              "I want they fight very much",
+              "Quiero luchan mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want they fight right now",
+              "Quiero luchan ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want they fight",
+              "Creo que quiero luchan ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want they fight very much",
+              "Creo que quiero luchan mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want they fight now",
+              "Sí creo que quiero luchan ahora",
+              null,
+              6
+            ],
+            [
+              "They still fight with each other.",
+              "Todavía luchan el uno con el otro.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0410L03": {
+          "lego": [
+            "with each other",
+            "el uno con el otro"
+          ],
+          "type": "M",
+          "available_legos": 1080,
+          "practice_phrases": [
+            [
+              "with",
+              "el",
+              null,
+              1
+            ],
+            [
+              "with",
+              "el",
+              null,
+              1
+            ],
+            [
+              "with each other",
+              "el uno con",
+              null,
+              3
+            ],
+            [
+              "with each other",
+              "el uno con",
+              null,
+              3
+            ],
+            [
+              "I want el",
+              "Quiero el uno con el",
+              null,
+              5
+            ],
+            [
+              "Yes el",
+              "Sí el uno con el",
+              null,
+              5
+            ],
+            [
+              "I think I want with each other",
+              "Creo que quiero el uno con el otro",
+              null,
+              8
+            ],
+            [
+              "I think I want with each other now",
+              "Creo que quiero el uno con el otro ahora",
+              null,
+              9
+            ],
+            [
+              "Yes I think I want with each other",
+              "Sí creo que quiero el uno con el otro ahora",
+              null,
+              10
+            ],
+            [
+              "They still fight with each other.",
+              "Todavía luchan el uno con el otro.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0411": {
+      "seed": "S0411",
+      "seed_pair": {
+        "target": "Nos gustaría reservar una mesa para cuatro esta noche.",
+        "known": "We would like to reserve a table for four tonight."
+      },
+      "cumulative_legos": 1079,
+      "legos": {
+        "S0411L01": {
+          "lego": [
+            "we would like",
+            "nos gustaría"
+          ],
+          "type": "M",
+          "available_legos": 1079,
+          "practice_phrases": [
+            [
+              "we would like",
+              "nos gustaría",
+              null,
+              2
+            ],
+            [
+              "we would like",
+              "nos gustaría",
+              null,
+              2
+            ],
+            [
+              "I want we would like",
+              "Quiero nos gustaría",
+              null,
+              3
+            ],
+            [
+              "I want we would like",
+              "Quiero nos gustaría",
+              null,
+              3
+            ],
+            [
+              "I want we would like now",
+              "Quiero nos gustaría ahora",
+              null,
+              4
+            ],
+            [
+              "I want we would like right now",
+              "Quiero nos gustaría ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want we would like now",
+              "Creo que quiero nos gustaría ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want we would like right now",
+              "Creo que quiero nos gustaría ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want we would like very much",
+              "Creo que quiero nos gustaría mucho",
+              null,
+              6
+            ],
+            [
+              "We would like to reserve a table for four tonight.",
+              "Nos gustaría reservar una mesa para cuatro esta noche.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0411L02": {
+          "lego": [
+            "to reserve",
+            "reservar"
+          ],
+          "type": "A",
+          "available_legos": 1081,
+          "practice_phrases": [
+            [
+              "to reserve",
+              "reservar",
+              null,
+              1
+            ],
+            [
+              "to reserve",
+              "reservar",
+              null,
+              1
+            ],
+            [
+              "I want to reserve",
+              "Quiero reservar ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero reservar",
+              null,
+              3
+            ],
+            [
+              "I want to reserve very much",
+              "Quiero reservar mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want to reserve right now",
+              "Quiero reservar ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want to reserve",
+              "Creo que quiero reservar ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want to reserve very much",
+              "Creo que quiero reservar mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want to reserve now",
+              "Sí creo que quiero reservar ahora",
+              null,
+              6
+            ],
+            [
+              "We would like to reserve a table for four tonight.",
+              "Nos gustaría reservar una mesa para cuatro esta noche.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0411L03": {
+          "lego": [
+            "a table",
+            "una mesa"
+          ],
+          "type": "M",
+          "available_legos": 1083,
+          "practice_phrases": [
+            [
+              "a table",
+              "una mesa",
+              null,
+              2
+            ],
+            [
+              "a table",
+              "una mesa",
+              null,
+              2
+            ],
+            [
+              "I want a table",
+              "Quiero una mesa",
+              null,
+              3
+            ],
+            [
+              "I want a table",
+              "Quiero una mesa",
+              null,
+              3
+            ],
+            [
+              "I want a table now",
+              "Quiero una mesa ahora",
+              null,
+              4
+            ],
+            [
+              "I want a table right now",
+              "Quiero una mesa ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want a table now",
+              "Creo que quiero una mesa ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want a table right now",
+              "Creo que quiero una mesa ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want a table very much",
+              "Creo que quiero una mesa mucho",
+              null,
+              6
+            ],
+            [
+              "We would like to reserve a table for four tonight.",
+              "Nos gustaría reservar una mesa para cuatro esta noche.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0332L07": {
+          "lego": [
+            "for",
+            "para"
+          ],
+          "type": "A",
+          "available_legos": 1085,
+          "practice_phrases": [
+            [
+              "for",
+              "para",
+              null,
+              1
+            ],
+            [
+              "for",
+              "para",
+              null,
+              1
+            ],
+            [
+              "I want for",
+              "Quiero para ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero para",
+              null,
+              3
+            ],
+            [
+              "I want for very much",
+              "Quiero para mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want for right now",
+              "Quiero para ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want for",
+              "Creo que quiero para ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want for very much",
+              "Creo que quiero para mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want for now",
+              "Sí creo que quiero para ahora",
+              null,
+              6
+            ],
+            [
+              "We would like to reserve a table for four tonight.",
+              "Nos gustaría reservar una mesa para cuatro esta noche.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0411L04": {
+          "lego": [
+            "four",
+            "cuatro"
+          ],
+          "type": "A",
+          "available_legos": 1087,
+          "practice_phrases": [
+            [
+              "four",
+              "cuatro",
+              null,
+              1
+            ],
+            [
+              "four",
+              "cuatro",
+              null,
+              1
+            ],
+            [
+              "I want four",
+              "Quiero cuatro ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero cuatro",
+              null,
+              3
+            ],
+            [
+              "I want four very much",
+              "Quiero cuatro mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want four right now",
+              "Quiero cuatro ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want four",
+              "Creo que quiero cuatro ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want four very much",
+              "Creo que quiero cuatro mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want four now",
+              "Sí creo que quiero cuatro ahora",
+              null,
+              6
+            ],
+            [
+              "We would like to reserve a table for four tonight.",
+              "Nos gustaría reservar una mesa para cuatro esta noche.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0294L06": {
+          "lego": [
+            "tonight",
+            "esta noche"
+          ],
+          "type": "M",
+          "available_legos": 1089,
+          "practice_phrases": [
+            [
+              "tonight",
+              "esta noche",
+              null,
+              2
+            ],
+            [
+              "tonight",
+              "esta noche",
+              null,
+              2
+            ],
+            [
+              "I want tonight",
+              "Quiero esta noche",
+              null,
+              3
+            ],
+            [
+              "I want tonight",
+              "Quiero esta noche",
+              null,
+              3
+            ],
+            [
+              "I want tonight now",
+              "Quiero esta noche ahora",
+              null,
+              4
+            ],
+            [
+              "I want tonight right now",
+              "Quiero esta noche ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want tonight now",
+              "Creo que quiero esta noche ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want tonight right now",
+              "Creo que quiero esta noche ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want tonight very much",
+              "Creo que quiero esta noche mucho",
+              null,
+              6
+            ],
+            [
+              "We would like to reserve a table for four tonight.",
+              "Nos gustaría reservar una mesa para cuatro esta noche.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0412": {
+      "seed": "S0412",
+      "seed_pair": {
+        "target": "No podríamos permitirles ganar todo.",
+        "known": "We couldn't allow them to win everything."
+      },
+      "cumulative_legos": 1083,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "no",
+            "no"
+          ],
+          "type": "A",
+          "available_legos": 1083,
+          "practice_phrases": [
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero no",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero no no",
+              null,
+              3
+            ],
+            [
+              "I want no now",
+              "Quiero no ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want no now",
+              "Sí quiero no ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want no",
+              "Creo que quiero no ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want no now",
+              "Creo que quiero no ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want no",
+              "Sí creo que quiero no ahora mucho",
+              null,
+              7
+            ],
+            [
+              "We couldn't allow them to win everything.",
+              "No podríamos permitirles ganar todo.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 3,
+            "long_6_plus": 2
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0412L01": {
+          "lego": [
+            "we could",
+            "podríamos"
+          ],
+          "type": "A",
+          "available_legos": 1085,
+          "practice_phrases": [
+            [
+              "we could",
+              "podríamos",
+              null,
+              1
+            ],
+            [
+              "we could",
+              "podríamos",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero podríamos",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero podríamos no",
+              null,
+              3
+            ],
+            [
+              "I want we could now",
+              "Quiero podríamos ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want we could now",
+              "Sí quiero podríamos ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want we could",
+              "Creo que quiero podríamos ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want we could now",
+              "Creo que quiero podríamos ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want we could",
+              "Sí creo que quiero podríamos ahora mucho",
+              null,
+              7
+            ],
+            [
+              "We couldn't allow them to win everything.",
+              "No podríamos permitirles ganar todo.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 3,
+            "long_6_plus": 2
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0412L02": {
+          "lego": [
+            "allow them",
+            "permitirles"
+          ],
+          "type": "A",
+          "available_legos": 1087,
+          "practice_phrases": [
+            [
+              "allow them",
+              "permitirles",
+              null,
+              1
+            ],
+            [
+              "allow them",
+              "permitirles",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero permitirles",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero permitirles no",
+              null,
+              3
+            ],
+            [
+              "I want allow them now",
+              "Quiero permitirles ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want allow them now",
+              "Sí quiero permitirles ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want allow them",
+              "Creo que quiero permitirles ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want allow them now",
+              "Creo que quiero permitirles ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want allow them",
+              "Sí creo que quiero permitirles ahora mucho",
+              null,
+              7
+            ],
+            [
+              "We couldn't allow them to win everything.",
+              "No podríamos permitirles ganar todo.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 3,
+            "long_6_plus": 2
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0412L03": {
+          "lego": [
+            "to win",
+            "ganar"
+          ],
+          "type": "A",
+          "available_legos": 1089,
+          "practice_phrases": [
+            [
+              "to win",
+              "ganar",
+              null,
+              1
+            ],
+            [
+              "to win",
+              "ganar",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero ganar",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero ganar no",
+              null,
+              3
+            ],
+            [
+              "I want to win now",
+              "Quiero ganar ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want to win now",
+              "Sí quiero ganar ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want to win",
+              "Creo que quiero ganar ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want to win now",
+              "Creo que quiero ganar ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want to win",
+              "Sí creo que quiero ganar ahora mucho",
+              null,
+              7
+            ],
+            [
+              "We couldn't allow them to win everything.",
+              "No podríamos permitirles ganar todo.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 3,
+            "long_6_plus": 2
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0045L03": {
+          "lego": [
+            "everything",
+            "todo"
+          ],
+          "type": "A",
+          "available_legos": 1091,
+          "practice_phrases": [
+            [
+              "everything",
+              "todo",
+              null,
+              1
+            ],
+            [
+              "everything",
+              "todo",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero todo",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero todo no",
+              null,
+              3
+            ],
+            [
+              "I want everything now",
+              "Quiero todo ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want everything now",
+              "Sí quiero todo ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want everything",
+              "Creo que quiero todo ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want everything now",
+              "Creo que quiero todo ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want everything",
+              "Sí creo que quiero todo ahora mucho",
+              null,
+              7
+            ],
+            [
+              "We couldn't allow them to win everything.",
+              "No podríamos permitirles ganar todo.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 3,
+            "long_6_plus": 2
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0413": {
+      "seed": "S0413",
+      "seed_pair": {
+        "target": "Podríamos caer si vamos demasiado cerca del borde.",
+        "known": "We could fall if we go too close to the edge."
+      },
+      "cumulative_legos": 1086,
+      "legos": {
+        "S0412L01": {
+          "lego": [
+            "we could",
+            "podríamos"
+          ],
+          "type": "A",
+          "available_legos": 1086,
+          "practice_phrases": [
+            [
+              "we could",
+              "podríamos",
+              null,
+              1
+            ],
+            [
+              "we could",
+              "podríamos",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero podríamos",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero podríamos no",
+              null,
+              3
+            ],
+            [
+              "I want we could now",
+              "Quiero podríamos ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want we could now",
+              "Sí quiero podríamos ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want we could",
+              "Creo que quiero podríamos ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want we could now",
+              "Creo que quiero podríamos ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want we could",
+              "Sí creo que quiero podríamos ahora mucho",
+              null,
+              7
+            ],
+            [
+              "We could fall if we go too close to the edge.",
+              "Podríamos caer si vamos demasiado cerca del borde.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 2,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0413L01": {
+          "lego": [
+            "fall",
+            "caer"
+          ],
+          "type": "A",
+          "available_legos": 1088,
+          "practice_phrases": [
+            [
+              "fall",
+              "caer",
+              null,
+              1
+            ],
+            [
+              "fall",
+              "caer",
+              null,
+              1
+            ],
+            [
+              "I want fall",
+              "Quiero caer ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero caer",
+              null,
+              3
+            ],
+            [
+              "I want fall very much",
+              "Quiero caer mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want fall right now",
+              "Quiero caer ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want fall",
+              "Creo que quiero caer ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want fall very much",
+              "Creo que quiero caer mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want fall now",
+              "Sí creo que quiero caer ahora",
+              null,
+              6
+            ],
+            [
+              "We could fall if we go too close to the edge.",
+              "Podríamos caer si vamos demasiado cerca del borde.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0010L02": {
+          "lego": [
+            "if",
+            "si"
+          ],
+          "type": "A",
+          "available_legos": 1090,
+          "practice_phrases": [
+            [
+              "if",
+              "si",
+              null,
+              1
+            ],
+            [
+              "if",
+              "si",
+              null,
+              1
+            ],
+            [
+              "I want if",
+              "Quiero si ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero si",
+              null,
+              3
+            ],
+            [
+              "I want if very much",
+              "Quiero si mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want if right now",
+              "Quiero si ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want if",
+              "Creo que quiero si ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want if very much",
+              "Creo que quiero si mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want if now",
+              "Sí creo que quiero si ahora",
+              null,
+              6
+            ],
+            [
+              "We could fall if we go too close to the edge.",
+              "Podríamos caer si vamos demasiado cerca del borde.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0413L02": {
+          "lego": [
+            "we go",
+            "vamos"
+          ],
+          "type": "A",
+          "available_legos": 1092,
+          "practice_phrases": [
+            [
+              "we go",
+              "vamos",
+              null,
+              1
+            ],
+            [
+              "we go",
+              "vamos",
+              null,
+              1
+            ],
+            [
+              "I want we go",
+              "Quiero vamos ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero vamos",
+              null,
+              3
+            ],
+            [
+              "I want we go very much",
+              "Quiero vamos mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want we go right now",
+              "Quiero vamos ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want we go",
+              "Creo que quiero vamos ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want we go very much",
+              "Creo que quiero vamos mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want we go now",
+              "Sí creo que quiero vamos ahora",
+              null,
+              6
+            ],
+            [
+              "We could fall if we go too close to the edge.",
+              "Podríamos caer si vamos demasiado cerca del borde.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0413L03": {
+          "lego": [
+            "too close",
+            "demasiado cerca"
+          ],
+          "type": "M",
+          "available_legos": 1094,
+          "practice_phrases": [
+            [
+              "too close",
+              "demasiado cerca",
+              null,
+              2
+            ],
+            [
+              "too close",
+              "demasiado cerca",
+              null,
+              2
+            ],
+            [
+              "I want too close",
+              "Quiero demasiado cerca",
+              null,
+              3
+            ],
+            [
+              "I want too close",
+              "Quiero demasiado cerca",
+              null,
+              3
+            ],
+            [
+              "I want too close now",
+              "Quiero demasiado cerca ahora",
+              null,
+              4
+            ],
+            [
+              "I want too close right now",
+              "Quiero demasiado cerca ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want too close now",
+              "Creo que quiero demasiado cerca ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want too close right now",
+              "Creo que quiero demasiado cerca ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want too close very much",
+              "Creo que quiero demasiado cerca mucho",
+              null,
+              6
+            ],
+            [
+              "We could fall if we go too close to the edge.",
+              "Podríamos caer si vamos demasiado cerca del borde.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0413L04": {
+          "lego": [
+            "to the edge",
+            "del borde"
+          ],
+          "type": "M",
+          "available_legos": 1096,
+          "practice_phrases": [
+            [
+              "to the edge",
+              "del borde",
+              null,
+              2
+            ],
+            [
+              "to the edge",
+              "del borde",
+              null,
+              2
+            ],
+            [
+              "I want to the edge",
+              "Quiero del borde",
+              null,
+              3
+            ],
+            [
+              "I want to the edge",
+              "Quiero del borde",
+              null,
+              3
+            ],
+            [
+              "I want to the edge now",
+              "Quiero del borde ahora",
+              null,
+              4
+            ],
+            [
+              "I want to the edge right now",
+              "Quiero del borde ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want to the edge now",
+              "Creo que quiero del borde ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want to the edge right now",
+              "Creo que quiero del borde ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want to the edge very much",
+              "Creo que quiero del borde mucho",
+              null,
+              6
+            ],
+            [
+              "We could fall if we go too close to the edge.",
+              "Podríamos caer si vamos demasiado cerca del borde.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0414": {
+      "seed": "S0414",
+      "seed_pair": {
+        "target": "¿Podríamos tener una botella de vino tinto por favor?",
+        "known": "Could we have a bottle of red wine please?"
+      },
+      "cumulative_legos": 1090,
+      "legos": {
+        "S0414L01": {
+          "lego": [
+            "could we",
+            "podríamos"
+          ],
+          "type": "A",
+          "available_legos": 1090,
+          "practice_phrases": [
+            [
+              "could we",
+              "podríamos",
+              null,
+              1
+            ],
+            [
+              "could we",
+              "podríamos",
+              null,
+              1
+            ],
+            [
+              "I want could we",
+              "Quiero podríamos ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero podríamos",
+              null,
+              3
+            ],
+            [
+              "I want could we very much",
+              "Quiero podríamos mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want could we right now",
+              "Quiero podríamos ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want could we",
+              "Creo que quiero podríamos ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want could we very much",
+              "Creo que quiero podríamos mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want could we now",
+              "Sí creo que quiero podríamos ahora",
+              null,
+              6
+            ],
+            [
+              "Could we have a bottle of red wine please?",
+              "¿Podríamos tener una botella de vino tinto por favor?",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0414L02": {
+          "lego": [
+            "have",
+            "tener"
+          ],
+          "type": "A",
+          "available_legos": 1092,
+          "practice_phrases": [
+            [
+              "have",
+              "tener",
+              null,
+              1
+            ],
+            [
+              "have",
+              "tener",
+              null,
+              1
+            ],
+            [
+              "I want have",
+              "Quiero tener ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero tener",
+              null,
+              3
+            ],
+            [
+              "I want have very much",
+              "Quiero tener mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want have right now",
+              "Quiero tener ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want have",
+              "Creo que quiero tener ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want have very much",
+              "Creo que quiero tener mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want have now",
+              "Sí creo que quiero tener ahora",
+              null,
+              6
+            ],
+            [
+              "Could we have a bottle of red wine please?",
+              "¿Podríamos tener una botella de vino tinto por favor?",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0414L03": {
+          "lego": [
+            "a bottle of",
+            "una botella de"
+          ],
+          "type": "M",
+          "available_legos": 1094,
+          "practice_phrases": [
+            [
+              "a",
+              "una",
+              null,
+              1
+            ],
+            [
+              "a",
+              "una",
+              null,
+              1
+            ],
+            [
+              "a bottle of",
+              "una botella de",
+              null,
+              3
+            ],
+            [
+              "a bottle of",
+              "una botella de",
+              null,
+              3
+            ],
+            [
+              "I want a bottle of now",
+              "Quiero una botella de ahora",
+              null,
+              5
+            ],
+            [
+              "Yes I want a bottle of",
+              "Sí quiero una botella de",
+              null,
+              5
+            ],
+            [
+              "I think I want a bottle of",
+              "Creo que quiero una botella de",
+              null,
+              6
+            ],
+            [
+              "I think I want a bottle of now",
+              "Creo que quiero una botella de ahora",
+              null,
+              7
+            ],
+            [
+              "Yes I think I want a bottle of",
+              "Sí creo que quiero una botella de",
+              null,
+              7
+            ],
+            [
+              "Could we have a bottle of red wine please?",
+              "¿Podríamos tener una botella de vino tinto por favor?",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0414L04": {
+          "lego": [
+            "red wine",
+            "vino tinto"
+          ],
+          "type": "M",
+          "available_legos": 1096,
+          "practice_phrases": [
+            [
+              "red wine",
+              "vino tinto",
+              null,
+              2
+            ],
+            [
+              "red wine",
+              "vino tinto",
+              null,
+              2
+            ],
+            [
+              "I want red wine",
+              "Quiero vino tinto",
+              null,
+              3
+            ],
+            [
+              "I want red wine",
+              "Quiero vino tinto",
+              null,
+              3
+            ],
+            [
+              "I want red wine now",
+              "Quiero vino tinto ahora",
+              null,
+              4
+            ],
+            [
+              "I want red wine right now",
+              "Quiero vino tinto ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want red wine now",
+              "Creo que quiero vino tinto ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want red wine right now",
+              "Creo que quiero vino tinto ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want red wine very much",
+              "Creo que quiero vino tinto mucho",
+              null,
+              6
+            ],
+            [
+              "Could we have a bottle of red wine please?",
+              "¿Podríamos tener una botella de vino tinto por favor?",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0414L05": {
+          "lego": [
+            "please",
+            "por favor"
+          ],
+          "type": "M",
+          "available_legos": 1098,
+          "practice_phrases": [
+            [
+              "please",
+              "por favor",
+              null,
+              2
+            ],
+            [
+              "please",
+              "por favor",
+              null,
+              2
+            ],
+            [
+              "I want please",
+              "Quiero por favor",
+              null,
+              3
+            ],
+            [
+              "I want please",
+              "Quiero por favor",
+              null,
+              3
+            ],
+            [
+              "I want please now",
+              "Quiero por favor ahora",
+              null,
+              4
+            ],
+            [
+              "I want please right now",
+              "Quiero por favor ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want please now",
+              "Creo que quiero por favor ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want please right now",
+              "Creo que quiero por favor ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want please very much",
+              "Creo que quiero por favor mucho",
+              null,
+              6
+            ],
+            [
+              "Could we have a bottle of red wine please?",
+              "¿Podríamos tener una botella de vino tinto por favor?",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0415": {
+      "seed": "S0415",
+      "seed_pair": {
+        "target": "Eso no sería un problema si me preguntas.",
+        "known": "That wouldn't be a problem if you ask me."
+      },
+      "cumulative_legos": 1095,
+      "legos": {
+        "S0061L02": {
+          "lego": [
+            "that",
+            "eso"
+          ],
+          "type": "A",
+          "available_legos": 1095,
+          "practice_phrases": [
+            [
+              "that",
+              "eso",
+              null,
+              1
+            ],
+            [
+              "that",
+              "eso",
+              null,
+              1
+            ],
+            [
+              "I want that",
+              "Quiero eso ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero eso",
+              null,
+              3
+            ],
+            [
+              "I want that very much",
+              "Quiero eso mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want that right now",
+              "Quiero eso ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want that",
+              "Creo que quiero eso ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want that very much",
+              "Creo que quiero eso mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want that now",
+              "Sí creo que quiero eso ahora",
+              null,
+              6
+            ],
+            [
+              "That wouldn't be a problem if you ask me.",
+              "Eso no sería un problema si me preguntas.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0345L04": {
+          "lego": [
+            "not",
+            "no"
+          ],
+          "type": "A",
+          "available_legos": 1097,
+          "practice_phrases": [
+            [
+              "not",
+              "no",
+              null,
+              1
+            ],
+            [
+              "not",
+              "no",
+              null,
+              1
+            ],
+            [
+              "I want not",
+              "Quiero no ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero no",
+              null,
+              3
+            ],
+            [
+              "I want not very much",
+              "Quiero no mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want not right now",
+              "Quiero no ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want not",
+              "Creo que quiero no ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want not very much",
+              "Creo que quiero no mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want not now",
+              "Sí creo que quiero no ahora",
+              null,
+              6
+            ],
+            [
+              "That wouldn't be a problem if you ask me.",
+              "Eso no sería un problema si me preguntas.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0415L01": {
+          "lego": [
+            "would be",
+            "sería"
+          ],
+          "type": "A",
+          "available_legos": 1099,
+          "practice_phrases": [
+            [
+              "would be",
+              "sería",
+              null,
+              1
+            ],
+            [
+              "would be",
+              "sería",
+              null,
+              1
+            ],
+            [
+              "I want would be",
+              "Quiero sería ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero sería",
+              null,
+              3
+            ],
+            [
+              "I want would be very much",
+              "Quiero sería mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want would be right now",
+              "Quiero sería ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want would be",
+              "Creo que quiero sería ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want would be very much",
+              "Creo que quiero sería mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want would be now",
+              "Sí creo que quiero sería ahora",
+              null,
+              6
+            ],
+            [
+              "That wouldn't be a problem if you ask me.",
+              "Eso no sería un problema si me preguntas.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0134L01": {
+          "lego": [
+            "a problem",
+            "un problema"
+          ],
+          "type": "M",
+          "available_legos": 1101,
+          "practice_phrases": [
+            [
+              "a problem",
+              "un problema",
+              null,
+              2
+            ],
+            [
+              "a problem",
+              "un problema",
+              null,
+              2
+            ],
+            [
+              "I want a problem",
+              "Quiero un problema",
+              null,
+              3
+            ],
+            [
+              "I want a problem",
+              "Quiero un problema",
+              null,
+              3
+            ],
+            [
+              "I want a problem now",
+              "Quiero un problema ahora",
+              null,
+              4
+            ],
+            [
+              "I want a problem right now",
+              "Quiero un problema ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want a problem now",
+              "Creo que quiero un problema ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want a problem right now",
+              "Creo que quiero un problema ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want a problem very much",
+              "Creo que quiero un problema mucho",
+              null,
+              6
+            ],
+            [
+              "That wouldn't be a problem if you ask me.",
+              "Eso no sería un problema si me preguntas.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0010L02": {
+          "lego": [
+            "if",
+            "si"
+          ],
+          "type": "A",
+          "available_legos": 1103,
+          "practice_phrases": [
+            [
+              "if",
+              "si",
+              null,
+              1
+            ],
+            [
+              "if",
+              "si",
+              null,
+              1
+            ],
+            [
+              "I want if",
+              "Quiero si ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero si",
+              null,
+              3
+            ],
+            [
+              "I want if very much",
+              "Quiero si mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want if right now",
+              "Quiero si ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want if",
+              "Creo que quiero si ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want if very much",
+              "Creo que quiero si mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want if now",
+              "Sí creo que quiero si ahora",
+              null,
+              6
+            ],
+            [
+              "That wouldn't be a problem if you ask me.",
+              "Eso no sería un problema si me preguntas.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0415L02": {
+          "lego": [
+            "you ask me",
+            "me preguntas"
+          ],
+          "type": "M",
+          "available_legos": 1105,
+          "practice_phrases": [
+            [
+              "you ask me",
+              "me preguntas",
+              null,
+              2
+            ],
+            [
+              "you ask me",
+              "me preguntas",
+              null,
+              2
+            ],
+            [
+              "I want you ask me",
+              "Quiero me preguntas",
+              null,
+              3
+            ],
+            [
+              "I want you ask me",
+              "Quiero me preguntas",
+              null,
+              3
+            ],
+            [
+              "I want you ask me now",
+              "Quiero me preguntas ahora",
+              null,
+              4
+            ],
+            [
+              "I want you ask me right now",
+              "Quiero me preguntas ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want you ask me now",
+              "Creo que quiero me preguntas ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want you ask me right now",
+              "Creo que quiero me preguntas ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want you ask me very much",
+              "Creo que quiero me preguntas mucho",
+              null,
+              6
+            ],
+            [
+              "That wouldn't be a problem if you ask me.",
+              "Eso no sería un problema si me preguntas.",
+              null,
+              8
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0416": {
+      "seed": "S0416",
+      "seed_pair": {
+        "target": "Quieren liderar el camino el próximo año.",
+        "known": "They want to lead the way next year."
+      },
+      "cumulative_legos": 1097,
+      "legos": {
+        "S0209L01": {
+          "lego": [
+            "they want",
+            "quieren"
+          ],
+          "type": "A",
+          "available_legos": 1097,
+          "practice_phrases": [
+            [
+              "they want",
+              "quieren",
+              null,
+              1
+            ],
+            [
+              "they want",
+              "quieren",
+              null,
+              1
+            ],
+            [
+              "I want they want",
+              "Quiero quieren ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero quieren",
+              null,
+              3
+            ],
+            [
+              "I want they want very much",
+              "Quiero quieren mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want they want right now",
+              "Quiero quieren ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want they want",
+              "Creo que quiero quieren ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want they want very much",
+              "Creo que quiero quieren mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want they want now",
+              "Sí creo que quiero quieren ahora",
+              null,
+              6
+            ],
+            [
+              "They want to lead the way next year.",
+              "Quieren liderar el camino el próximo año.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0416L01": {
+          "lego": [
+            "to lead",
+            "liderar"
+          ],
+          "type": "A",
+          "available_legos": 1099,
+          "practice_phrases": [
+            [
+              "to lead",
+              "liderar",
+              null,
+              1
+            ],
+            [
+              "to lead",
+              "liderar",
+              null,
+              1
+            ],
+            [
+              "I want to lead",
+              "Quiero liderar ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero liderar",
+              null,
+              3
+            ],
+            [
+              "I want to lead very much",
+              "Quiero liderar mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want to lead right now",
+              "Quiero liderar ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want to lead",
+              "Creo que quiero liderar ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want to lead very much",
+              "Creo que quiero liderar mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want to lead now",
+              "Sí creo que quiero liderar ahora",
+              null,
+              6
+            ],
+            [
+              "They want to lead the way next year.",
+              "Quieren liderar el camino el próximo año.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0416L02": {
+          "lego": [
+            "the way",
+            "el camino"
+          ],
+          "type": "M",
+          "available_legos": 1101,
+          "practice_phrases": [
+            [
+              "the way",
+              "el camino",
+              null,
+              2
+            ],
+            [
+              "the way",
+              "el camino",
+              null,
+              2
+            ],
+            [
+              "I want the way",
+              "Quiero el camino",
+              null,
+              3
+            ],
+            [
+              "I want the way",
+              "Quiero el camino",
+              null,
+              3
+            ],
+            [
+              "I want the way now",
+              "Quiero el camino ahora",
+              null,
+              4
+            ],
+            [
+              "I want the way right now",
+              "Quiero el camino ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want the way now",
+              "Creo que quiero el camino ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want the way right now",
+              "Creo que quiero el camino ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want the way very much",
+              "Creo que quiero el camino mucho",
+              null,
+              6
+            ],
+            [
+              "They want to lead the way next year.",
+              "Quieren liderar el camino el próximo año.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0416L03": {
+          "lego": [
+            "next year",
+            "el próximo año"
+          ],
+          "type": "M",
+          "available_legos": 1103,
+          "practice_phrases": [
+            [
+              "next",
+              "el",
+              null,
+              1
+            ],
+            [
+              "next",
+              "el",
+              null,
+              1
+            ],
+            [
+              "next year",
+              "el próximo año",
+              null,
+              3
+            ],
+            [
+              "next year",
+              "el próximo año",
+              null,
+              3
+            ],
+            [
+              "I want next year now",
+              "Quiero el próximo año ahora",
+              null,
+              5
+            ],
+            [
+              "Yes I want next year",
+              "Sí quiero el próximo año",
+              null,
+              5
+            ],
+            [
+              "I think I want next year",
+              "Creo que quiero el próximo año",
+              null,
+              6
+            ],
+            [
+              "I think I want next year now",
+              "Creo que quiero el próximo año ahora",
+              null,
+              7
+            ],
+            [
+              "Yes I think I want next year",
+              "Sí creo que quiero el próximo año",
+              null,
+              7
+            ],
+            [
+              "They want to lead the way next year.",
+              "Quieren liderar el camino el próximo año.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0417": {
+      "seed": "S0417",
+      "seed_pair": {
+        "target": "¿Quieren matar esas hormigas?",
+        "known": "Do they want to kill those ants?"
+      },
+      "cumulative_legos": 1100,
+      "legos": {
+        "S0417L01": {
+          "lego": [
+            "do they want",
+            "quieren"
+          ],
+          "type": "A",
+          "available_legos": 1100,
+          "practice_phrases": [
+            [
+              "do they want",
+              "quieren",
+              null,
+              1
+            ],
+            [
+              "do they want",
+              "quieren",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero quieren",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero quieren no",
+              null,
+              3
+            ],
+            [
+              "I want do they want now",
+              "Quiero quieren ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want do they want now",
+              "Sí quiero quieren ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want do they want",
+              "Creo que quiero quieren ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want do they want now",
+              "Creo que quiero quieren ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want do they want",
+              "Sí creo que quiero quieren ahora mucho",
+              null,
+              7
+            ],
+            [
+              "Do they want to kill those ants?",
+              "¿Quieren matar esas hormigas?",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 3,
+            "long_6_plus": 2
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0417L02": {
+          "lego": [
+            "to kill",
+            "matar"
+          ],
+          "type": "A",
+          "available_legos": 1102,
+          "practice_phrases": [
+            [
+              "to kill",
+              "matar",
+              null,
+              1
+            ],
+            [
+              "to kill",
+              "matar",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero matar",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero matar no",
+              null,
+              3
+            ],
+            [
+              "I want to kill now",
+              "Quiero matar ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want to kill now",
+              "Sí quiero matar ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want to kill",
+              "Creo que quiero matar ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want to kill now",
+              "Creo que quiero matar ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want to kill",
+              "Sí creo que quiero matar ahora mucho",
+              null,
+              7
+            ],
+            [
+              "Do they want to kill those ants?",
+              "¿Quieren matar esas hormigas?",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 3,
+            "long_6_plus": 2
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0417L03": {
+          "lego": [
+            "those ants",
+            "esas hormigas"
+          ],
+          "type": "M",
+          "available_legos": 1104,
+          "practice_phrases": [
+            [
+              "those ants",
+              "esas hormigas",
+              null,
+              2
+            ],
+            [
+              "those ants",
+              "esas hormigas",
+              null,
+              2
+            ],
+            [
+              "Yes I want",
+              "Sí quiero esas",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero esas no",
+              null,
+              3
+            ],
+            [
+              "I want those ants now",
+              "Quiero esas hormigas ahora",
+              null,
+              4
+            ],
+            [
+              "Yes I want those ants now",
+              "Sí quiero esas hormigas ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want those ants",
+              "Creo que quiero esas hormigas ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want those ants now",
+              "Creo que quiero esas hormigas ahora mucho",
+              null,
+              7
+            ],
+            [
+              "Yes I think I want those ants",
+              "Sí creo que quiero esas hormigas ahora mucho",
+              null,
+              8
+            ],
+            [
+              "Do they want to kill those ants?",
+              "¿Quieren matar esas hormigas?",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0418": {
+      "seed": "S0418",
+      "seed_pair": {
+        "target": "Necesitan servir a la comunidad.",
+        "known": "They need to serve the community."
+      },
+      "cumulative_legos": 1103,
+      "legos": {
+        "S0418L01": {
+          "lego": [
+            "they need",
+            "necesitan"
+          ],
+          "type": "A",
+          "available_legos": 1103,
+          "practice_phrases": [
+            [
+              "they need",
+              "necesitan",
+              null,
+              1
+            ],
+            [
+              "they need",
+              "necesitan",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero necesitan",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero necesitan no",
+              null,
+              3
+            ],
+            [
+              "I want they need now",
+              "Quiero necesitan ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want they need now",
+              "Sí quiero necesitan ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want they need",
+              "Creo que quiero necesitan ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want they need now",
+              "Creo que quiero necesitan ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want they need",
+              "Sí creo que quiero necesitan ahora mucho",
+              null,
+              7
+            ],
+            [
+              "They need to serve the community.",
+              "Necesitan servir a la comunidad.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 3,
+            "long_6_plus": 2
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0418L02": {
+          "lego": [
+            "to serve",
+            "servir"
+          ],
+          "type": "A",
+          "available_legos": 1105,
+          "practice_phrases": [
+            [
+              "to serve",
+              "servir",
+              null,
+              1
+            ],
+            [
+              "to serve",
+              "servir",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero servir",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero servir no",
+              null,
+              3
+            ],
+            [
+              "I want to serve now",
+              "Quiero servir ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want to serve now",
+              "Sí quiero servir ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want to serve",
+              "Creo que quiero servir ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want to serve now",
+              "Creo que quiero servir ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want to serve",
+              "Sí creo que quiero servir ahora mucho",
+              null,
+              7
+            ],
+            [
+              "They need to serve the community.",
+              "Necesitan servir a la comunidad.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 3,
+            "long_6_plus": 2
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0418L03": {
+          "lego": [
+            "the community",
+            "a la comunidad"
+          ],
+          "type": "M",
+          "available_legos": 1107,
+          "practice_phrases": [
+            [
+              "the",
+              "a",
+              null,
+              1
+            ],
+            [
+              "the",
+              "a",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero a",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero a no",
+              null,
+              3
+            ],
+            [
+              "I want the community",
+              "Quiero a la comunidad",
+              null,
+              4
+            ],
+            [
+              "Yes I want",
+              "Sí quiero a la comunidad",
+              null,
+              5
+            ],
+            [
+              "I think I want the community",
+              "Creo que quiero a la comunidad ahora",
+              null,
+              7
+            ],
+            [
+              "I think I want the community now",
+              "Creo que quiero a la comunidad ahora mucho",
+              null,
+              8
+            ],
+            [
+              "Yes I think I want the community",
+              "Sí creo que quiero a la comunidad ahora mucho",
+              null,
+              9
+            ],
+            [
+              "They need to serve the community.",
+              "Necesitan servir a la comunidad.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0419": {
+      "seed": "S0419",
+      "seed_pair": {
+        "target": "Si quieren que la gente los quiera.",
+        "known": "If they want people to like them."
+      },
+      "cumulative_legos": 1106,
+      "legos": {
+        "S0010L02": {
+          "lego": [
+            "if",
+            "si"
+          ],
+          "type": "A",
+          "available_legos": 1106,
+          "practice_phrases": [
+            [
+              "if",
+              "si",
+              null,
+              1
+            ],
+            [
+              "if",
+              "si",
+              null,
+              1
+            ],
+            [
+              "I want if",
+              "Quiero si ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero si",
+              null,
+              3
+            ],
+            [
+              "I want if very much",
+              "Quiero si mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want if right now",
+              "Quiero si ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want if",
+              "Creo que quiero si ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want if very much",
+              "Creo que quiero si mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want if now",
+              "Sí creo que quiero si ahora",
+              null,
+              6
+            ],
+            [
+              "If they want people to like them.",
+              "Si quieren que la gente los quiera.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0209L01": {
+          "lego": [
+            "they want",
+            "quieren"
+          ],
+          "type": "A",
+          "available_legos": 1108,
+          "practice_phrases": [
+            [
+              "they want",
+              "quieren",
+              null,
+              1
+            ],
+            [
+              "they want",
+              "quieren",
+              null,
+              1
+            ],
+            [
+              "I want they want",
+              "Quiero quieren ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero quieren",
+              null,
+              3
+            ],
+            [
+              "I want they want very much",
+              "Quiero quieren mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want they want right now",
+              "Quiero quieren ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want they want",
+              "Creo que quiero quieren ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want they want very much",
+              "Creo que quiero quieren mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want they want now",
+              "Sí creo que quiero quieren ahora",
+              null,
+              6
+            ],
+            [
+              "If they want people to like them.",
+              "Si quieren que la gente los quiera.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0102L02": {
+          "lego": [
+            "that",
+            "que"
+          ],
+          "type": "A",
+          "available_legos": 1110,
+          "practice_phrases": [
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "I want that",
+              "Quiero que ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero que",
+              null,
+              3
+            ],
+            [
+              "I want that very much",
+              "Quiero que mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want that right now",
+              "Quiero que ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want that",
+              "Creo que quiero que ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want that very much",
+              "Creo que quiero que mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want that now",
+              "Sí creo que quiero que ahora",
+              null,
+              6
+            ],
+            [
+              "If they want people to like them.",
+              "Si quieren que la gente los quiera.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0288L02": {
+          "lego": [
+            "people",
+            "la gente"
+          ],
+          "type": "M",
+          "available_legos": 1112,
+          "practice_phrases": [
+            [
+              "people",
+              "la gente",
+              null,
+              2
+            ],
+            [
+              "people",
+              "la gente",
+              null,
+              2
+            ],
+            [
+              "I want people",
+              "Quiero la gente",
+              null,
+              3
+            ],
+            [
+              "I want people",
+              "Quiero la gente",
+              null,
+              3
+            ],
+            [
+              "I want people now",
+              "Quiero la gente ahora",
+              null,
+              4
+            ],
+            [
+              "I want people right now",
+              "Quiero la gente ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want people now",
+              "Creo que quiero la gente ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want people right now",
+              "Creo que quiero la gente ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want people very much",
+              "Creo que quiero la gente mucho",
+              null,
+              6
+            ],
+            [
+              "If they want people to like them.",
+              "Si quieren que la gente los quiera.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0419L01": {
+          "lego": [
+            "to like them",
+            "los quiera"
+          ],
+          "type": "M",
+          "available_legos": 1114,
+          "practice_phrases": [
+            [
+              "to like them",
+              "los quiera",
+              null,
+              2
+            ],
+            [
+              "to like them",
+              "los quiera",
+              null,
+              2
+            ],
+            [
+              "I want to like them",
+              "Quiero los quiera",
+              null,
+              3
+            ],
+            [
+              "I want to like them",
+              "Quiero los quiera",
+              null,
+              3
+            ],
+            [
+              "I want to like them now",
+              "Quiero los quiera ahora",
+              null,
+              4
+            ],
+            [
+              "I want to like them right now",
+              "Quiero los quiera ahora mismo",
+              null,
+              5
+            ],
+            [
+              "I think I want to like them now",
+              "Creo que quiero los quiera ahora",
+              null,
+              6
+            ],
+            [
+              "I think I want to like them right now",
+              "Creo que quiero los quiera ahora mismo",
+              null,
+              7
+            ],
+            [
+              "I think I want to like them very much",
+              "Creo que quiero los quiera mucho",
+              null,
+              6
+            ],
+            [
+              "If they want people to like them.",
+              "Si quieren que la gente los quiera.",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    },
+    "S0420": {
+      "seed": "S0420",
+      "seed_pair": {
+        "target": "No necesitan preguntar cuántos años tiene.",
+        "known": "They don't need to ask how old he is."
+      },
+      "cumulative_legos": 1107,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "no",
+            "no"
+          ],
+          "type": "A",
+          "available_legos": 1107,
+          "practice_phrases": [
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero no",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero no no",
+              null,
+              3
+            ],
+            [
+              "I want no now",
+              "Quiero no ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want no now",
+              "Sí quiero no ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want no",
+              "Creo que quiero no ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want no now",
+              "Creo que quiero no ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want no",
+              "Sí creo que quiero no ahora mucho",
+              null,
+              7
+            ],
+            [
+              "They don't need to ask how old he is.",
+              "No necesitan preguntar cuántos años tiene.",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 2,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0418L01": {
+          "lego": [
+            "they need",
+            "necesitan"
+          ],
+          "type": "A",
+          "available_legos": 1109,
+          "practice_phrases": [
+            [
+              "they need",
+              "necesitan",
+              null,
+              1
+            ],
+            [
+              "they need",
+              "necesitan",
+              null,
+              1
+            ],
+            [
+              "Yes I want",
+              "Sí quiero necesitan",
+              null,
+              3
+            ],
+            [
+              "I want it",
+              "Quiero necesitan no",
+              null,
+              3
+            ],
+            [
+              "I want they need now",
+              "Quiero necesitan ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want they need now",
+              "Sí quiero necesitan ahora",
+              null,
+              4
+            ],
+            [
+              "I think I want they need",
+              "Creo que quiero necesitan ahora",
+              null,
+              5
+            ],
+            [
+              "I think I want they need now",
+              "Creo que quiero necesitan ahora mucho",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want they need",
+              "Sí creo que quiero necesitan ahora mucho",
+              null,
+              7
+            ],
+            [
+              "They don't need to ask how old he is.",
+              "No necesitan preguntar cuántos años tiene.",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 3,
+            "longer_4_5": 2,
+            "long_6_plus": 3
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0420L01": {
+          "lego": [
+            "to ask",
+            "preguntar"
+          ],
+          "type": "A",
+          "available_legos": 1111,
+          "practice_phrases": [
+            [
+              "to ask",
+              "preguntar",
+              null,
+              1
+            ],
+            [
+              "to ask",
+              "preguntar",
+              null,
+              1
+            ],
+            [
+              "I want to ask",
+              "Quiero preguntar ahora",
+              null,
+              3
+            ],
+            [
+              "Yes I want",
+              "Sí quiero preguntar",
+              null,
+              3
+            ],
+            [
+              "I want to ask very much",
+              "Quiero preguntar mucho ahora",
+              null,
+              4
+            ],
+            [
+              "I want to ask right now",
+              "Quiero preguntar ahora mismo",
+              null,
+              4
+            ],
+            [
+              "I think I want to ask",
+              "Creo que quiero preguntar ahora mucho",
+              null,
+              6
+            ],
+            [
+              "I think I want to ask very much",
+              "Creo que quiero preguntar mucho ahora",
+              null,
+              6
+            ],
+            [
+              "Yes I think I want to ask now",
+              "Sí creo que quiero preguntar ahora",
+              null,
+              6
+            ],
+            [
+              "They don't need to ask how old he is.",
+              "No necesitan preguntar cuántos años tiene.",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        },
+        "S0420L02": {
+          "lego": [
+            "how old he is",
+            "cuántos años tiene"
+          ],
+          "type": "M",
+          "available_legos": 1113,
+          "practice_phrases": [
+            [
+              "how",
+              "cuántos",
+              null,
+              1
+            ],
+            [
+              "how",
+              "cuántos",
+              null,
+              1
+            ],
+            [
+              "how old he is",
+              "cuántos años tiene",
+              null,
+              3
+            ],
+            [
+              "how old he is",
+              "cuántos años tiene",
+              null,
+              3
+            ],
+            [
+              "I want how old he is",
+              "Quiero cuántos años tiene",
+              null,
+              4
+            ],
+            [
+              "Yes I want",
+              "Sí quiero cuántos años tiene",
+              null,
+              5
+            ],
+            [
+              "I think I want how old he is",
+              "Creo que quiero cuántos años tiene",
+              null,
+              6
+            ],
+            [
+              "I think I want how old he is now",
+              "Creo que quiero cuántos años tiene ahora",
+              null,
+              7
+            ],
+            [
+              "Yes I think I want how old he is",
+              "Sí creo que quiero cuántos años tiene ahora",
+              null,
+              8
+            ],
+            [
+              "They don't need to ask how old he is.",
+              "No necesitan preguntar cuántos años tiene.",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT - All words from taught LEGOs only"
+        }
+      }
+    }
+  }
+}

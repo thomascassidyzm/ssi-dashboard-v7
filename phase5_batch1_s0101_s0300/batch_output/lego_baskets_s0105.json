@@ -1,0 +1,126 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0105",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "That is why he didn't know the answer.",
+    "target": "Por eso no sabía la respuesta"
+  },
+  "patterns_introduced": "P_NEW_CAUSAL",
+  "cumulative_patterns": [
+    "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+    "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+    "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+    "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+    "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL"
+  ],
+  "cumulative_legos": 294,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T05:40:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 Agent 01",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation"
+  },
+
+  "S0105L01": {
+    "lego": ["That is why", "por eso"],
+    "type": "M",
+    "available_legos": 291,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED"
+    ],
+    "practice_phrases": [
+      ["That is why", "por eso", "P_NEW_CAUSAL", 2],
+      ["That is why I'm learning", "por eso estoy aprendiendo", "P_NEW_CAUSAL", 3],
+      ["That is why I want this", "por eso quiero esto", "P_NEW_CAUSAL", 4],
+      ["That is why we need this", "por eso necesitamos esto", "P_NEW_CAUSAL", 4],
+      ["That is why I'm trying to learn", "por eso estoy intentando aprender", "P_NEW_CAUSAL", 4],
+      ["That is why I said that", "por eso dije eso", "P_NEW_CAUSAL", 4],
+      ["That is why we're trying to change this", "por eso estamos intentando cambiar esto", "P_NEW_CAUSAL", 5],
+      ["That is why I'm enjoying learning Spanish", "por eso estoy disfrutando aprender español", "P_NEW_CAUSAL", 5],
+      ["That is why we need to learn more words", "por eso necesitamos aprender más palabras", "P_NEW_CAUSAL", 6],
+      ["That is why I think we should practise more", "por eso pienso que debería practicar más", "P_NEW_CAUSAL", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 5,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P_NEW_CAUSAL",
+    "full_seed_included": "NO - missing 'no sabía la respuesta'",
+    "gate_compliance": "STRICT - Only S0001-S0104L04 LEGOs available"
+  },
+
+  "S0105L02": {
+    "lego": ["he didn't know", "no sabía"],
+    "type": "M",
+    "available_legos": 292,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL"
+    ],
+    "practice_phrases": [
+      ["he didn't know", "no sabía", "P_NEW_IMPERFECT", 2],
+      ["he didn't know this", "no sabía esto", "P_NEW_IMPERFECT", 3],
+      ["he didn't know that", "no sabía eso", "P_NEW_IMPERFECT", 3],
+      ["That is why he didn't know", "por eso no sabía", "P_NEW_CAUSAL", 3],
+      ["he didn't know what to say", "no sabía lo que decir", "P_NEW_IMPERFECT", 4],
+      ["That is why he didn't know this", "por eso no sabía esto", "P_NEW_CAUSAL", 4],
+      ["I think he didn't know that", "pienso que no sabía eso", "P05", 5],
+      ["That is why he didn't know what to say", "por eso no sabía lo que decir", "P_NEW_CAUSAL", 6],
+      ["I think that is why he didn't know this", "pienso que por eso no sabía esto", "P05", 7],
+      ["he didn't know how to say that", "no sabía cómo decir eso", "P_NEW_IMPERFECT", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P05, P_NEW_CAUSAL, P_NEW_IMPERFECT",
+    "full_seed_included": "NO - missing 'la respuesta'",
+    "gate_compliance": "STRICT - Only S0001-S0105L01 LEGOs available"
+  },
+
+  "S0066L03": {
+    "lego": ["the answer", "la respuesta"],
+    "type": "M",
+    "available_legos": 293,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL", "P_NEW_PLURAL_PROGRESSIVE",
+      "P_NEW_NEGATIVE_PLURAL_PROGRESSIVE", "P_NEW_PLURAL_NEED", "P_NEW_CAUSAL"
+    ],
+    "practice_phrases": [
+      ["the answer", "la respuesta", null, 1],
+      ["to find out the answer", "descubrir la respuesta", null, 2],
+      ["I want to find out the answer", "quiero descubrir la respuesta", "P01", 4],
+      ["he didn't know the answer", "no sabía la respuesta", "P_NEW_IMPERFECT", 3],
+      ["I need to find the answer", "necesito encontrar la respuesta", "P01", 4],
+      ["That is why he didn't know the answer", "por eso no sabía la respuesta", "P_NEW_CAUSAL", 4],
+      ["We're trying to find out the answer", "estamos intentando descubrir la respuesta", "P_NEW_PLURAL_PROGRESSIVE", 4],
+      ["I think he didn't know the answer", "pienso que no sabía la respuesta", "P05", 5],
+      ["I'd like to find out what the answer is", "me gustaría descubrir lo que la respuesta es", "P04", 7],
+      ["That is why he didn't know the answer.", "por eso no sabía la respuesta.", "P_NEW_CAUSAL", 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 6,
+      "long_6_plus": 1
+    },
+    "pattern_coverage": "P01, P04, P05, P_NEW_CAUSAL, P_NEW_IMPERFECT, P_NEW_PLURAL_PROGRESSIVE",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0105L02 LEGOs available"
+  }
+}

@@ -1,0 +1,921 @@
+{
+  "agent_id": 9,
+  "agent_name": "agent_09",
+  "seed_range": "S0461-S0480",
+  "total_seeds": 20,
+  "registry_path": "../registry/lego_registry_s0001_s0500.json",
+  "spec_path": "../docs/phase_intelligence/AGENT_PROMPT_phase5_basket_generation_v4_VALIDATED.md",
+  "seeds": [
+    {
+      "seed_id": "S0461",
+      "seed_pair": {
+        "target": "Una tienda donde puedo comprar algunas postales.",
+        "known": "A shop where I can buy some postcards."
+      },
+      "legos": [
+        {
+          "id": "S0461L01",
+          "type": "A",
+          "target": "Una tienda",
+          "known": "A shop",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": true,
+          "type": "A",
+          "target": "donde",
+          "known": "where",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0461L02",
+          "type": "M",
+          "target": "puedo comprar",
+          "known": "I can buy",
+          "new": true,
+          "components": [
+            "puedo",
+            "comprar"
+          ]
+        },
+        {
+          "id": true,
+          "type": "A",
+          "target": "algunas",
+          "known": "some",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0461L03",
+          "type": "A",
+          "target": "postales",
+          "known": "postcards",
+          "new": true,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0462",
+      "seed_pair": {
+        "target": "Mi abuelo combatió en Italia durante la guerra.",
+        "known": "My grandfather fought in Italy during the war."
+      },
+      "legos": [
+        {
+          "id": "S0462L01",
+          "type": "A",
+          "target": "Mi abuelo",
+          "known": "My grandfather",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0462L02",
+          "type": "A",
+          "target": "combatió",
+          "known": "fought",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0462L03",
+          "type": "M",
+          "target": "en Italia",
+          "known": "in Italy",
+          "new": true,
+          "components": [
+            "en",
+            "Italia"
+          ]
+        },
+        {
+          "id": "S0462L04",
+          "type": "A",
+          "target": "durante",
+          "known": "during",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0462L05",
+          "type": "A",
+          "target": "la guerra",
+          "known": "the war",
+          "new": true,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0463",
+      "seed_pair": {
+        "target": "Mi número de habitación.",
+        "known": "My room number."
+      },
+      "legos": [
+        {
+          "id": "S0126L06",
+          "type": "A",
+          "target": "Mi",
+          "known": "My",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0463L01",
+          "type": "M",
+          "target": "número de habitación",
+          "known": "room number",
+          "new": true,
+          "components": [
+            "número",
+            "de",
+            "habitación"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0464",
+      "seed_pair": {
+        "target": "Le dije mi número de habitación una vez pero ella lo olvidó.",
+        "known": "I told her my room number once but she forgot it."
+      },
+      "legos": [
+        {
+          "id": "S0464L01",
+          "type": "A",
+          "target": "Le",
+          "known": "her",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": true,
+          "type": "A",
+          "target": "dije",
+          "known": "I told",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0464L02",
+          "type": "M",
+          "target": "mi número de habitación",
+          "known": "my room number",
+          "new": true,
+          "components": [
+            "mi",
+            "número de habitación"
+          ]
+        },
+        {
+          "id": "S0464L03",
+          "type": "M",
+          "target": "una vez",
+          "known": "once",
+          "new": true,
+          "components": [
+            "una",
+            "vez"
+          ]
+        },
+        {
+          "id": true,
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": true,
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": true,
+          "type": "A",
+          "target": "lo",
+          "known": "it",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0464L04",
+          "type": "A",
+          "target": "olvidó",
+          "known": "forgot",
+          "new": true,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0465",
+      "seed_pair": {
+        "target": "La próxima vez voy a preguntarle cuál es su nombre.",
+        "known": "Next time I will ask her what her name is."
+      },
+      "legos": [
+        {
+          "id": "S0465L01",
+          "type": "M",
+          "target": "La próxima vez",
+          "known": "Next time",
+          "new": true,
+          "components": [
+            "La",
+            "próxima",
+            "vez"
+          ]
+        },
+        {
+          "id": "S0465L02",
+          "type": "M",
+          "target": "voy a preguntarle",
+          "known": "I will ask her",
+          "new": true,
+          "components": [
+            "voy a",
+            "preguntarle"
+          ]
+        },
+        {
+          "id": "S0465L03",
+          "type": "M",
+          "target": "cuál es su nombre",
+          "known": "what her name is",
+          "new": true,
+          "components": [
+            "cuál",
+            "es",
+            "su nombre"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0466",
+      "seed_pair": {
+        "target": "Déjame lanzarlo sobre el muro.",
+        "known": "Let me throw it over the wall."
+      },
+      "legos": [
+        {
+          "id": "S0466L01",
+          "type": "M",
+          "target": "Déjame",
+          "known": "Let me",
+          "new": true,
+          "components": [
+            "Deja",
+            "me"
+          ]
+        },
+        {
+          "id": "S0466L02",
+          "type": "M",
+          "target": "lanzarlo",
+          "known": "throw it",
+          "new": true,
+          "components": [
+            "lanzar",
+            "lo"
+          ]
+        },
+        {
+          "id": true,
+          "type": "A",
+          "target": "sobre",
+          "known": "over",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0466L03",
+          "type": "A",
+          "target": "el muro",
+          "known": "the wall",
+          "new": true,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0467",
+      "seed_pair": {
+        "target": "Está al lado del estacionamiento.",
+        "known": "It's next to the car park."
+      },
+      "legos": [
+        {
+          "id": "S0467L01",
+          "type": "A",
+          "target": "Está",
+          "known": "It's",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0467L02",
+          "type": "M",
+          "target": "al lado del",
+          "known": "next to the",
+          "new": true,
+          "components": [
+            "al lado de",
+            "el"
+          ]
+        },
+        {
+          "id": "S0467L03",
+          "type": "A",
+          "target": "estacionamiento",
+          "known": "car park",
+          "new": true,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0468",
+      "seed_pair": {
+        "target": "Es un mundo grande.",
+        "known": "It's a big world."
+      },
+      "legos": [
+        {
+          "id": "S0468L01",
+          "type": "A",
+          "target": "Es",
+          "known": "It's",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0468L02",
+          "type": "M",
+          "target": "un mundo grande",
+          "known": "a big world",
+          "new": true,
+          "components": [
+            "un",
+            "mundo",
+            "grande"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0469",
+      "seed_pair": {
+        "target": "Pero eso no significa que no podamos cambiarlo.",
+        "known": "But that doesn't mean we can't change it."
+      },
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "Pero",
+          "known": "But",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": true,
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0469L01",
+          "type": "M",
+          "target": "no significa que",
+          "known": "doesn't mean that",
+          "new": true,
+          "components": [
+            "no",
+            "significa",
+            "que"
+          ]
+        },
+        {
+          "id": "S0469L02",
+          "type": "M",
+          "target": "no podamos",
+          "known": "we can't",
+          "new": true,
+          "components": [
+            "no",
+            "podamos"
+          ]
+        },
+        {
+          "id": "S0469L03",
+          "type": "M",
+          "target": "cambiarlo",
+          "known": "change it",
+          "new": true,
+          "components": [
+            "cambiar",
+            "lo"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0470",
+      "seed_pair": {
+        "target": "¿Qué tan alto quieres escalar antes de que paremos?",
+        "known": "How high do you want to climb before we stop?"
+      },
+      "legos": [
+        {
+          "id": "S0470L01",
+          "type": "M",
+          "target": "¿Qué tan alto",
+          "known": "How high",
+          "new": true,
+          "components": [
+            "Qué tan",
+            "alto"
+          ]
+        },
+        {
+          "id": "S0470L02",
+          "type": "M",
+          "target": "quieres escalar",
+          "known": "do you want to climb",
+          "new": true,
+          "components": [
+            "quieres",
+            "escalar"
+          ]
+        },
+        {
+          "id": true,
+          "type": "M",
+          "target": "antes de que",
+          "known": "before",
+          "new": false,
+          "components": [
+            [
+              "antes",
+              "before"
+            ],
+            [
+              "de que",
+              ""
+            ]
+          ]
+        },
+        {
+          "id": "S0470L03",
+          "type": "A",
+          "target": "paremos",
+          "known": "we stop",
+          "new": true,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0471",
+      "seed_pair": {
+        "target": "¿Quieres parar para descansar?",
+        "known": "Do you want to stop for a rest?"
+      },
+      "legos": [
+        {
+          "id": "S0471L01",
+          "type": "M",
+          "target": "¿Quieres parar",
+          "known": "Do you want to stop",
+          "new": true,
+          "components": [
+            "Quieres",
+            "parar"
+          ]
+        },
+        {
+          "id": "S0471L02",
+          "type": "M",
+          "target": "para descansar",
+          "known": "for a rest",
+          "new": true,
+          "components": [
+            "para",
+            "descansar"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0472",
+      "seed_pair": {
+        "target": "Parte del problema es que no sabemos los hechos.",
+        "known": "Part of the problem is that we don't know the facts."
+      },
+      "legos": [
+        {
+          "id": "S0472L01",
+          "type": "M",
+          "target": "Parte del problema",
+          "known": "Part of the problem",
+          "new": true,
+          "components": [
+            "Parte",
+            "del",
+            "problema"
+          ]
+        },
+        {
+          "id": "S0472L02",
+          "type": "M",
+          "target": "es que",
+          "known": "is that",
+          "new": true,
+          "components": [
+            "es",
+            "que"
+          ]
+        },
+        {
+          "id": "S0472L03",
+          "type": "M",
+          "target": "no sabemos",
+          "known": "we don't know",
+          "new": true,
+          "components": [
+            "no",
+            "sabemos"
+          ]
+        },
+        {
+          "id": "S0472L04",
+          "type": "A",
+          "target": "los hechos",
+          "known": "the facts",
+          "new": true,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0473",
+      "seed_pair": {
+        "target": "No lo quiero.",
+        "known": "I don't want it."
+      },
+      "legos": [
+        {
+          "id": "S0473L01",
+          "type": "M",
+          "target": "No lo quiero",
+          "known": "I don't want it",
+          "new": true,
+          "components": [
+            "No",
+            "lo",
+            "quiero"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0474",
+      "seed_pair": {
+        "target": "Ni siquiera lo quiero como oferta gratuita.",
+        "known": "I don't even want it as a free offer."
+      },
+      "legos": [
+        {
+          "id": "S0474L01",
+          "type": "M",
+          "target": "Ni siquiera",
+          "known": "not even",
+          "new": true,
+          "components": [
+            "Ni",
+            "siquiera"
+          ]
+        },
+        {
+          "id": "S0474L02",
+          "type": "M",
+          "target": "lo quiero",
+          "known": "I want it",
+          "new": true,
+          "components": [
+            "lo",
+            "quiero"
+          ]
+        },
+        {
+          "id": true,
+          "type": "A",
+          "target": "como",
+          "known": "as",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0474L03",
+          "type": "M",
+          "target": "oferta gratuita",
+          "known": "free offer",
+          "new": true,
+          "components": [
+            "oferta",
+            "gratuita"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0475",
+      "seed_pair": {
+        "target": "Hay muchas razones para considerar esperar.",
+        "known": "There are many reasons to consider waiting."
+      },
+      "legos": [
+        {
+          "id": "S0131L01",
+          "type": "A",
+          "target": "Hay",
+          "known": "There are",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0475L01",
+          "type": "M",
+          "target": "muchas razones",
+          "known": "many reasons",
+          "new": true,
+          "components": [
+            "muchas",
+            "razones"
+          ]
+        },
+        {
+          "id": "S0475L02",
+          "type": "M",
+          "target": "para considerar esperar",
+          "known": "to consider waiting",
+          "new": true,
+          "components": [
+            "para",
+            "considerar",
+            "esperar"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0476",
+      "seed_pair": {
+        "target": "Estoy esperando el final de la segunda mitad.",
+        "known": "I'm waiting for the end of the second half."
+      },
+      "legos": [
+        {
+          "id": "S0476L01",
+          "type": "M",
+          "target": "Estoy esperando",
+          "known": "I'm waiting for",
+          "new": true,
+          "components": [
+            "Estoy",
+            "esperando"
+          ]
+        },
+        {
+          "id": "S0476L02",
+          "type": "M",
+          "target": "el final de",
+          "known": "the end of",
+          "new": true,
+          "components": [
+            "el",
+            "final",
+            "de"
+          ]
+        },
+        {
+          "id": "S0476L03",
+          "type": "M",
+          "target": "la segunda mitad",
+          "known": "the second half",
+          "new": true,
+          "components": [
+            "la",
+            "segunda",
+            "mitad"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0477",
+      "seed_pair": {
+        "target": "Él ha estado enfermo desde el segundo día de las vacaciones.",
+        "known": "He's been sick since the second day of the holidays."
+      },
+      "legos": [
+        {
+          "id": "S0016L01",
+          "type": "A",
+          "target": "Él",
+          "known": "He",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0477L01",
+          "type": "M",
+          "target": "ha estado enfermo",
+          "known": "'s been sick",
+          "new": true,
+          "components": [
+            "ha estado",
+            "enfermo"
+          ]
+        },
+        {
+          "id": "S0477L02",
+          "type": "A",
+          "target": "desde",
+          "known": "since",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0477L03",
+          "type": "M",
+          "target": "el segundo día de",
+          "known": "the second day of",
+          "new": true,
+          "components": [
+            "el",
+            "segundo",
+            "día",
+            "de"
+          ]
+        },
+        {
+          "id": "S0477L04",
+          "type": "A",
+          "target": "las vacaciones",
+          "known": "the holidays",
+          "new": true,
+          "components": null
+        }
+      ]
+    },
+    {
+      "seed_id": "S0478",
+      "seed_pair": {
+        "target": "Ella tiene un corazón tan amable.",
+        "known": "She has such a kind heart."
+      },
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "A",
+          "target": "Ella",
+          "known": "She",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": true,
+          "type": "A",
+          "target": "tiene",
+          "known": "has",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0478L01",
+          "type": "M",
+          "target": "un corazón tan amable",
+          "known": "such a kind heart",
+          "new": true,
+          "components": [
+            "un",
+            "corazón",
+            "tan",
+            "amable"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0479",
+      "seed_pair": {
+        "target": "Es lo mínimo que podría hacer.",
+        "known": "It's the least I could do."
+      },
+      "legos": [
+        {
+          "id": "S0468L01",
+          "type": "A",
+          "target": "Es",
+          "known": "It's",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0479L01",
+          "type": "M",
+          "target": "lo mínimo que",
+          "known": "the least that",
+          "new": true,
+          "components": [
+            "lo",
+            "mínimo",
+            "que"
+          ]
+        },
+        {
+          "id": "S0479L02",
+          "type": "M",
+          "target": "podría hacer",
+          "known": "I could do",
+          "new": true,
+          "components": [
+            "podría",
+            "hacer"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0480",
+      "seed_pair": {
+        "target": "Lo que sea que él diga no está muy lejos ahora.",
+        "known": "Whatever he says it's not far ahead now."
+      },
+      "legos": [
+        {
+          "id": "S0480L01",
+          "type": "M",
+          "target": "Lo que sea que",
+          "known": "Whatever",
+          "new": true,
+          "components": [
+            "Lo que sea",
+            "que"
+          ]
+        },
+        {
+          "id": true,
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0480L02",
+          "type": "A",
+          "target": "diga",
+          "known": "says",
+          "new": true,
+          "components": null
+        },
+        {
+          "id": "S0480L03",
+          "type": "M",
+          "target": "no está muy lejos",
+          "known": "it's not far ahead",
+          "new": true,
+          "components": [
+            "no",
+            "está",
+            "muy lejos"
+          ]
+        },
+        {
+          "id": true,
+          "type": "A",
+          "target": "ahora",
+          "known": "now",
+          "new": false,
+          "components": null
+        }
+      ]
+    }
+  ]
+}

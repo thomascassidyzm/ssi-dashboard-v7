@@ -2882,6 +2882,339 @@ Continue processing all remaining LEGOs until complete.`;
 }
 
 // --------------------------------------------------------------------------
+// PHASE 5 WEB-BASED AGENTS (Claude Code on the Web via Browser)
+// --------------------------------------------------------------------------
+
+/**
+ * Build Phase 5 agent prompt with scaffold data
+ */
+function buildPhase5AgentPrompt(agentNum, scaffold, batchName) {
+  return `# Phase 5 Basket Generation - Agent ${agentNum}
+
+## Your Task
+
+You are Agent ${agentNum}. Generate practice phrases for ${scaffold.length} LEGOs using the Phase 5 v4.1 protocol.
+
+## Batch Information
+
+- **Batch**: ${batchName}
+- **Agent**: ${agentNum}
+- **LEGOs**: ${scaffold.length}
+
+## Scaffold Data
+
+The scaffold below contains:
+- Pre-built whitelist of allowed Spanish words (from previously taught LEGOs)
+- Empty practice_phrases arrays (you will fill these)
+- Metadata for each LEGO
+
+<scaffold>
+${JSON.stringify(scaffold, null, 2)}
+</scaffold>
+
+## Instructions
+
+For each LEGO in the scaffold:
+
+1. **Generate 10 natural English phrases** using this LEGO
+   - Vary length: 1-2 words, 3-5 words, 6+ words
+   - Natural, speakable phrases (not templates)
+   - Complete thoughts (avoid single words)
+
+2. **Translate to Spanish** using ONLY words from the whitelist
+   - CRITICAL: Only use words in the whitelist array
+   - Do not invent new words
+   - Ensure natural Spanish word order
+
+3. **Format**: Each phrase as:
+   \`\`\`json
+   ["English phrase", "Spanish phrase", null, word_count]
+   \`\`\`
+
+4. **Validate**:
+   - All Spanish words are in whitelist ✅
+   - Phrases are natural and speakable ✅
+   - Variety in length and structure ✅
+
+## Quality Standards
+
+✅ **DO**:
+- Use natural, conversational phrases
+- Vary sentence structure
+- Combine multiple LEGOs creatively
+- Ensure phrases are speakable aloud
+
+❌ **DON'T**:
+- Use template patterns like "I think that {lego} is good"
+- Create single-word phrases
+- Invent Spanish words not in whitelist
+- Use awkward or unnatural constructions
+
+## Output Format
+
+Complete basket JSON with practice_phrases filled in:
+
+\`\`\`json
+[
+  {
+    "lego": ["to show you", "mostrarte"],
+    "practice_phrases": [
+      ["to show you", "mostrarte", null, 1],
+      ["he wants to show you", "él quiere mostrarte", null, 3],
+      ...10 total phrases
+    ],
+    "whitelist": [...],
+    ...metadata
+  },
+  ...all LEGOs
+]
+\`\`\`
+
+## How to Save
+
+Use Claude Code's commit feature to save directly to GitHub:
+
+**File path**: \`${batchName}/batch_output/agent_${agentNum}_baskets.json\`
+
+**Commit message**: \`Phase 5: Agent ${agentNum} baskets complete (${scaffold.length} LEGOs)\`
+
+---
+
+**Start with the first LEGO and work through all ${scaffold.length} systematically. Good luck!**
+`;
+}
+
+/**
+ * POST /api/phase5/spawn-web-agents
+ * Spawn Phase 5 agents in browser (Claude Code on the Web)
+ */
+app.post('/api/phase5/spawn-web-agents', async (req, res) => {
+  try {
+    const { batchName, agentCount = 34, browser = 'chrome' } = req.body;
+
+    console.log(`[Phase 5 Web] Spawning ${agentCount} web agents for ${batchName}...`);
+
+    // 1. Load scaffolds
+    const scaffoldsDir = path.join(__dirname, batchName, 'scaffolds');
+
+    if (!await fs.pathExists(scaffoldsDir)) {
+      throw new Error(`Scaffolds directory not found: ${scaffoldsDir}`);
+    }
+
+    const scaffoldFiles = await fs.readdir(scaffoldsDir);
+    const agentScaffolds = scaffoldFiles
+      .filter(f => f.startsWith('agent_') && f.endsWith('_scaffold.json'))
+      .sort();
+
+    if (agentScaffolds.length === 0) {
+      throw new Error(`No scaffold files found in ${scaffoldsDir}`);
+    }
+
+    console.log(`[Phase 5 Web] Found ${agentScaffolds.length} scaffold files`);
+
+    // 2. Build prompts for each agent
+    const prompts = await Promise.all(
+      agentScaffolds.map(async (file, idx) => {
+        const agentNum = String(idx + 1).padStart(2, '0');
+        const scaffoldPath = path.join(scaffoldsDir, file);
+        const scaffold = await fs.readJson(scaffoldPath);
+
+        return {
+          agentNum,
+          prompt: buildPhase5AgentPrompt(agentNum, scaffold, batchName),
+          scaffoldFile: file,
+          legoCount: scaffold.length
+        };
+      })
+    );
+
+    // 3. Save prompts to files
+    const promptsDir = path.join(__dirname, batchName, 'prompts');
+    await fs.ensureDir(promptsDir);
+
+    await Promise.all(
+      prompts.map(async ({ agentNum, prompt }) => {
+        const promptPath = path.join(promptsDir, `agent_${agentNum}_prompt.md`);
+        await fs.writeFile(promptPath, prompt, 'utf8');
+      })
+    );
+
+    console.log(`[Phase 5 Web] Created ${prompts.length} prompt files in ${promptsDir}`);
+
+    // 4. Open browser tabs using spawn_claude_web_agent.cjs
+    const { spawnAgentsWithPromptFiles } = require('./spawn_claude_web_agent.cjs');
+
+    const result = await spawnAgentsWithPromptFiles(
+      prompts.map(p => p.prompt),
+      promptsDir
+    );
+
+    console.log(`[Phase 5 Web] ✅ Spawned ${result.tabCount} browser tabs`);
+
+    // 5. Return success with instructions
+    res.json({
+      success: true,
+      message: `Opened ${result.tabCount} Claude Code tabs`,
+      batchName,
+      promptsDir,
+      agentCount: prompts.length,
+      agents: prompts.map(p => ({
+        agentNum: p.agentNum,
+        legoCount: p.legoCount,
+        promptFile: `agent_${p.agentNum}_prompt.md`
+      })),
+      instructions: [
+        '1. Switch to each browser tab (claude.ai/code should be loaded)',
+        '2. Open the corresponding prompt file from prompts directory',
+        '3. Copy the entire prompt',
+        '4. Paste into Claude Code',
+        '5. Hit Enter to run',
+        '6. Once complete, use Claude\'s commit feature to save output',
+        '7. Dashboard will monitor GitHub for completed baskets'
+      ],
+      nextSteps: {
+        monitorUrl: `/api/phase5/progress/${encodeURIComponent(batchName)}`,
+        outputDir: `${batchName}/batch_output/`
+      }
+    });
+
+  } catch (error) {
+    console.error('[Phase 5 Web] Error spawning agents:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+  }
+});
+
+/**
+ * GET /api/phase5/progress/:batchName
+ * Monitor completion progress of web agents
+ */
+app.get('/api/phase5/progress/:batchName', async (req, res) => {
+  try {
+    const { batchName } = req.params;
+    const { agentCount = 34 } = req.query;
+
+    console.log(`[Phase 5 Web] Checking progress for ${batchName}...`);
+
+    const outputDir = path.join(__dirname, batchName, 'batch_output');
+
+    // Check if output directory exists
+    if (!await fs.pathExists(outputDir)) {
+      return res.json({
+        batchName,
+        progress: {
+          completed: 0,
+          total: parseInt(agentCount),
+          percentage: 0
+        },
+        agents: Array.from({ length: parseInt(agentCount) }, (_, i) => ({
+          agentId: i + 1,
+          agentNum: String(i + 1).padStart(2, '0'),
+          status: 'pending',
+          outputPath: `${batchName}/batch_output/agent_${String(i + 1).padStart(2, '0')}_baskets.json`
+        }))
+      });
+    }
+
+    // Check each agent's output file
+    const agentStatuses = await Promise.all(
+      Array.from({ length: parseInt(agentCount) }, async (_, i) => {
+        const agentId = i + 1;
+        const agentNum = String(agentId).padStart(2, '0');
+        const outputPath = path.join(outputDir, `agent_${agentNum}_baskets.json`);
+
+        if (!await fs.pathExists(outputPath)) {
+          return {
+            agentId,
+            agentNum,
+            status: 'pending',
+            outputPath: `${batchName}/batch_output/agent_${agentNum}_baskets.json`
+          };
+        }
+
+        // File exists - check if valid
+        try {
+          const basket = await fs.readJson(outputPath);
+
+          if (!Array.isArray(basket)) {
+            return {
+              agentId,
+              agentNum,
+              status: 'invalid',
+              error: 'Output is not an array',
+              outputPath: `${batchName}/batch_output/agent_${agentNum}_baskets.json`
+            };
+          }
+
+          // Quick validation: all LEGOs should have practice_phrases
+          const hasAllPhrases = basket.every(lego =>
+            lego.practice_phrases &&
+            Array.isArray(lego.practice_phrases) &&
+            lego.practice_phrases.length === 10
+          );
+
+          const stats = await fs.stat(outputPath);
+
+          return {
+            agentId,
+            agentNum,
+            status: hasAllPhrases ? 'completed' : 'incomplete',
+            legoCount: basket.length,
+            totalPhrases: basket.reduce((sum, lego) =>
+              sum + (lego.practice_phrases?.length || 0), 0
+            ),
+            fileSize: stats.size,
+            lastModified: stats.mtime,
+            outputPath: `${batchName}/batch_output/agent_${agentNum}_baskets.json`,
+            issues: hasAllPhrases ? [] : ['Some LEGOs missing practice_phrases']
+          };
+
+        } catch (error) {
+          return {
+            agentId,
+            agentNum,
+            status: 'error',
+            error: error.message,
+            outputPath: `${batchName}/batch_output/agent_${agentNum}_baskets.json`
+          };
+        }
+      })
+    );
+
+    const completed = agentStatuses.filter(a => a.status === 'completed').length;
+    const total = parseInt(agentCount);
+
+    res.json({
+      batchName,
+      progress: {
+        completed,
+        total,
+        percentage: Math.round((completed / total) * 100),
+        pending: agentStatuses.filter(a => a.status === 'pending').length,
+        incomplete: agentStatuses.filter(a => a.status === 'incomplete').length,
+        errors: agentStatuses.filter(a => a.status === 'error').length,
+        invalid: agentStatuses.filter(a => a.status === 'invalid').length
+      },
+      agents: agentStatuses,
+      summary: {
+        totalLegos: agentStatuses.reduce((sum, a) => sum + (a.legoCount || 0), 0),
+        totalPhrases: agentStatuses.reduce((sum, a) => sum + (a.totalPhrases || 0), 0)
+      }
+    });
+
+  } catch (error) {
+    console.error('[Phase 5 Web] Error checking progress:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// --------------------------------------------------------------------------
 // EXISTING ENDPOINTS
 // --------------------------------------------------------------------------
 

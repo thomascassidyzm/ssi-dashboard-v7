@@ -1,0 +1,59 @@
+{
+  "lego_breakdowns": [
+    {
+      "seed_id": "S0003",
+      "target_sentence": "cómo hablar lo más a menudo posible",
+      "known_sentence": "how to speak as often as possible",
+      "lego_pairs": [
+        {
+          "lego_id": "S0003L01",
+          "lego_type": "BASE",
+          "target_chunk": "cómo",
+          "known_chunk": "how",
+          "fd_validated": false
+        },
+        {
+          "lego_id": "S0003L02",
+          "lego_type": "BASE",
+          "target_chunk": "hablar",
+          "known_chunk": "to speak",
+          "fd_validated": false
+        },
+        {
+          "lego_id": "S0003L03",
+          "lego_type": "COMPOSITE",
+          "target_chunk": "lo más a menudo posible",
+          "known_chunk": "as often as possible",
+          "fd_validated": false,
+          "componentization": "lo ⟷ (intensifier particle)\nmás ⟷ more\na menudo ⟷ often\nposible ⟷ possible"
+        }
+      ],
+      "feeder_pairs": [
+        {
+          "feeder_id": "S0003L03F01",
+          "parent_lego_id": "S0003L03",
+          "target_chunk": "lo",
+          "known_chunk": "(intensifier particle)"
+        },
+        {
+          "feeder_id": "S0003L03F02",
+          "parent_lego_id": "S0003L03",
+          "target_chunk": "más",
+          "known_chunk": "more"
+        },
+        {
+          "feeder_id": "S0003L03F03",
+          "parent_lego_id": "S0003L03",
+          "target_chunk": "a menudo",
+          "known_chunk": "often"
+        },
+        {
+          "feeder_id": "S0003L03F04",
+          "parent_lego_id": "S0003L03",
+          "target_chunk": "posible",
+          "known_chunk": "possible"
+        }
+      ]
+    }
+  ]
+}

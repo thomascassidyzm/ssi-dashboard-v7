@@ -1,0 +1,475 @@
+{
+  "agent_id": 16,
+  "agent_name": "agent_16",
+  "seed_range": "S0251-S0260",
+  "total_seeds": 10,
+  "registry_path": "../registry/lego_registry_s0001_s0300.json",
+  "spec_path": "../docs/phase_intelligence/phase_5_conversational_baskets_v3_ACTIVE.md",
+  "seeds": [
+    {
+      "seed_id": "S0251",
+      "seed_pair": {
+        "target": "No quiero descubrir hasta después de que terminemos.",
+        "known": "I don't want to find out until after we finish."
+      },
+      "legos": [
+        {
+          "id": "S0019L02",
+          "type": "M",
+          "target": "no quiero",
+          "known": "I don't want",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0017L02",
+          "type": "A",
+          "target": "descubrir",
+          "known": "to find out",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0251L03",
+          "type": "M",
+          "target": "hasta después de que terminemos",
+          "known": "until after we finish",
+          "new": true,
+          "components": [
+            [
+              "hasta",
+              "until"
+            ],
+            [
+              "después de que",
+              "after"
+            ],
+            [
+              "terminemos",
+              "we finish"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0252",
+      "seed_pair": {
+        "target": "¿Cuándo estarás preparado para empezar?",
+        "known": "When will you be ready to start?"
+      },
+      "legos": [
+        {
+          "id": "S0079L01",
+          "type": "A",
+          "target": "cuándo",
+          "known": "when",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0252L02",
+          "type": "M",
+          "target": "estarás preparado",
+          "known": "will you be ready",
+          "new": true,
+          "components": [
+            [
+              "estarás",
+              "you will be"
+            ],
+            [
+              "preparado",
+              "ready"
+            ]
+          ]
+        },
+        {
+          "id": "S0252L03",
+          "type": "M",
+          "target": "para empezar",
+          "known": "to start",
+          "new": true,
+          "components": [
+            [
+              "para",
+              "to"
+            ],
+            [
+              "empezar",
+              "to start"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0253",
+      "seed_pair": {
+        "target": "Debo estar preparado en unos pocos minutos.",
+        "known": "I should be ready in a few minutes."
+      },
+      "legos": [
+        {
+          "id": "S0253L01",
+          "type": "M",
+          "target": "debo estar preparado",
+          "known": "I should be ready",
+          "new": true,
+          "components": [
+            [
+              "debo",
+              "I should/must"
+            ],
+            [
+              "estar",
+              "to be"
+            ],
+            [
+              "preparado",
+              "ready"
+            ]
+          ]
+        },
+        {
+          "id": "S0253L02",
+          "type": "M",
+          "target": "en unos pocos minutos",
+          "known": "in a few minutes",
+          "new": true,
+          "components": [
+            [
+              "en",
+              "in"
+            ],
+            [
+              "unos pocos",
+              "a few"
+            ],
+            [
+              "minutos",
+              "minutes"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0254",
+      "seed_pair": {
+        "target": "He estado preparado desde esta mañana.",
+        "known": "I've been ready since this morning."
+      },
+      "legos": [
+        {
+          "id": "S0254L01",
+          "type": "M",
+          "target": "he estado preparado",
+          "known": "I've been ready",
+          "new": true,
+          "components": [
+            [
+              "he estado",
+              "I've been"
+            ],
+            [
+              "preparado",
+              "ready"
+            ]
+          ]
+        },
+        {
+          "id": "S0254L02",
+          "type": "M",
+          "target": "desde esta mañana",
+          "known": "since this morning",
+          "new": true,
+          "components": [
+            [
+              "desde",
+              "since"
+            ],
+            [
+              "esta mañana",
+              "this morning"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0255",
+      "seed_pair": {
+        "target": "¿Cuándo crees que estarás preparado para salir?",
+        "known": "When do you think you'll be ready to leave?"
+      },
+      "legos": [
+        {
+          "id": "S0079L01",
+          "type": "A",
+          "target": "cuándo",
+          "known": "when",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0255L02",
+          "type": "M",
+          "target": "crees que",
+          "known": "do you think",
+          "new": true,
+          "components": [
+            [
+              "crees",
+              "you think"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ]
+        },
+        {
+          "id": "PROV_S0252_01",
+          "type": "M",
+          "target": "estarás preparado",
+          "known": "you'll be ready",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0255L04",
+          "type": "M",
+          "target": "para salir",
+          "known": "to leave",
+          "new": true,
+          "components": [
+            [
+              "para",
+              "to"
+            ],
+            [
+              "salir",
+              "to leave"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0256",
+      "seed_pair": {
+        "target": "Creo que estaré listo en menos de una hora.",
+        "known": "I think I'll be ready in less than an hour."
+      },
+      "legos": [
+        {
+          "id": "S0123L01",
+          "type": "M",
+          "target": "creo que",
+          "known": "I think that",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0256L02",
+          "type": "M",
+          "target": "estaré listo",
+          "known": "I'll be ready",
+          "new": true,
+          "components": [
+            [
+              "estaré",
+              "I'll be"
+            ],
+            [
+              "listo",
+              "ready"
+            ]
+          ]
+        },
+        {
+          "id": "S0256L03",
+          "type": "M",
+          "target": "en menos de una hora",
+          "known": "in less than an hour",
+          "new": true,
+          "components": [
+            [
+              "en",
+              "in"
+            ],
+            [
+              "menos de",
+              "less than"
+            ],
+            [
+              "una hora",
+              "an hour"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0257",
+      "seed_pair": {
+        "target": "Me gusta esa cosa azul.",
+        "known": "I like that blue thing."
+      },
+      "legos": [
+        {
+          "id": "S0026L01",
+          "type": "M",
+          "target": "me gusta",
+          "known": "I like",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0189L01",
+          "type": "A",
+          "target": "esa",
+          "known": "that",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0257L03",
+          "type": "M",
+          "target": "cosa azul",
+          "known": "blue thing",
+          "new": true,
+          "components": [
+            [
+              "cosa",
+              "thing"
+            ],
+            [
+              "azul",
+              "blue"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0258",
+      "seed_pair": {
+        "target": "¿Qué es esa cosa azul de allí?",
+        "known": "What's that blue thing over there?"
+      },
+      "legos": [
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "target": "qué",
+          "known": "what",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0123L02",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0189L01",
+          "type": "A",
+          "target": "esa",
+          "known": "that",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "PROV_S0257_01",
+          "type": "M",
+          "target": "cosa azul",
+          "known": "blue thing",
+          "new": false,
+          "components": null
+        },
+        {
+          "id": "S0258L05",
+          "type": "M",
+          "target": "de allí",
+          "known": "over there",
+          "new": true,
+          "components": [
+            [
+              "de",
+              "of/from"
+            ],
+            [
+              "allí",
+              "there"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0259",
+      "seed_pair": {
+        "target": "Una idea.",
+        "known": "An idea."
+      },
+      "legos": [
+        {
+          "id": "S0259L01",
+          "type": "M",
+          "target": "una idea",
+          "known": "an idea",
+          "new": true,
+          "components": [
+            [
+              "una",
+              "an"
+            ],
+            [
+              "idea",
+              "idea"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0260",
+      "seed_pair": {
+        "target": "No tengo ni la más mínima idea.",
+        "known": "I don't have the faintest idea."
+      },
+      "legos": [
+        {
+          "id": "S0260L01",
+          "type": "M",
+          "target": "no tengo ni la más mínima idea",
+          "known": "I don't have the faintest idea",
+          "new": true,
+          "components": [
+            [
+              "no tengo",
+              "I don't have"
+            ],
+            [
+              "ni",
+              "not even"
+            ],
+            [
+              "la más mínima",
+              "the faintest/slightest"
+            ],
+            [
+              "idea",
+              "idea"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

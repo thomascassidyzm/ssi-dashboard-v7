@@ -1,0 +1,221 @@
+{
+  "agent_number": 2,
+  "total_agents": 20,
+  "lego_range": {
+    "start": "S0105L01",
+    "end": "S0108L04"
+  },
+  "seed_range": {
+    "start": "S0105",
+    "end": "S0108"
+  },
+  "total_legos": 14,
+  "legos": [
+    {
+      "lego_id": "S0105L01",
+      "seed_id": "S0105",
+      "type": "M",
+      "target": "Por eso",
+      "known": "That is why",
+      "components": [
+        [
+          "Por",
+          "That is"
+        ],
+        [
+          "eso",
+          "why"
+        ]
+      ],
+      "cumulative_legos": 294
+    },
+    {
+      "lego_id": "S0105L02",
+      "seed_id": "S0105",
+      "type": "M",
+      "target": "no sabía",
+      "known": "he didn't know",
+      "components": [
+        [
+          "no",
+          "didn't"
+        ],
+        [
+          "sabía",
+          "he know"
+        ]
+      ],
+      "cumulative_legos": 294
+    },
+    {
+      "lego_id": "S0106L01",
+      "seed_id": "S0106",
+      "type": "M",
+      "target": "No necesitamos",
+      "known": "We don't need",
+      "components": [
+        [
+          "No",
+          "don't"
+        ],
+        [
+          "necesitamos",
+          "We need"
+        ]
+      ],
+      "cumulative_legos": 299
+    },
+    {
+      "lego_id": "S0106L02",
+      "seed_id": "S0106",
+      "type": "A",
+      "target": "sentirnos",
+      "known": "to feel",
+      "components": null,
+      "cumulative_legos": 299
+    },
+    {
+      "lego_id": "S0106L03",
+      "seed_id": "S0106",
+      "type": "A",
+      "target": "felices",
+      "known": "happy",
+      "components": null,
+      "cumulative_legos": 299
+    },
+    {
+      "lego_id": "S0106L04",
+      "seed_id": "S0106",
+      "type": "A",
+      "target": "solo",
+      "known": "just",
+      "components": null,
+      "cumulative_legos": 299
+    },
+    {
+      "lego_id": "S0106L05",
+      "seed_id": "S0106",
+      "type": "M",
+      "target": "trabajar duro",
+      "known": "to work hard",
+      "components": [
+        [
+          "trabajar",
+          "to work"
+        ],
+        [
+          "duro",
+          "hard"
+        ]
+      ],
+      "cumulative_legos": 299
+    },
+    {
+      "lego_id": "S0107L01",
+      "seed_id": "S0107",
+      "type": "A",
+      "target": "Esperábamos",
+      "known": "We hoped",
+      "components": null,
+      "cumulative_legos": 302
+    },
+    {
+      "lego_id": "S0107L02",
+      "seed_id": "S0107",
+      "type": "A",
+      "target": "ver",
+      "known": "to see",
+      "components": null,
+      "cumulative_legos": 302
+    },
+    {
+      "lego_id": "S0107L03",
+      "seed_id": "S0107",
+      "type": "M",
+      "target": "estabas haciendo",
+      "known": "you were doing",
+      "components": [
+        [
+          "estabas",
+          "you were"
+        ],
+        [
+          "haciendo",
+          "doing"
+        ]
+      ],
+      "cumulative_legos": 302
+    },
+    {
+      "lego_id": "S0108L01",
+      "seed_id": "S0108",
+      "type": "M",
+      "target": "No esperábamos",
+      "known": "We didn't hope",
+      "components": [
+        [
+          "No",
+          "didn't"
+        ],
+        [
+          "esperábamos",
+          "We hope"
+        ]
+      ],
+      "cumulative_legos": 306
+    },
+    {
+      "lego_id": "S0108L02",
+      "seed_id": "S0108",
+      "type": "A",
+      "target": "despertar",
+      "known": "to wake",
+      "components": null,
+      "cumulative_legos": 306
+    },
+    {
+      "lego_id": "S0108L03",
+      "seed_id": "S0108",
+      "type": "M",
+      "target": "en el medio de",
+      "known": "in the middle of",
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "medio",
+          "middle"
+        ],
+        [
+          "de",
+          "of"
+        ]
+      ],
+      "cumulative_legos": 306
+    },
+    {
+      "lego_id": "S0108L04",
+      "seed_id": "S0108",
+      "type": "M",
+      "target": "la noche",
+      "known": "the night",
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "noche",
+          "night"
+        ]
+      ],
+      "cumulative_legos": 306
+    }
+  ]
+}

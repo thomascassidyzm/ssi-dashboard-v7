@@ -1,0 +1,188 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0101",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "I'm enjoying finding out more about this language.",
+    "target": "Estoy disfrutando descubrir más sobre este lenguaje"
+  },
+  "patterns_introduced": "P_NEW_DISFRUTO",
+  "cumulative_patterns": [
+    "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+    "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+    "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+    "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL"
+  ],
+  "cumulative_legos": 281,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T05:00:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3.0 Agent 01",
+    "notes": "Agent-generated basket with 10 practice phrases per LEGO, full GATE validation"
+  },
+
+  "S0101L01": {
+    "lego": ["I'm enjoying", "estoy disfrutando"],
+    "type": "M",
+    "available_legos": 276,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL"
+    ],
+    "practice_phrases": [
+      ["I'm enjoying", "estoy disfrutando", "P_NEW_DISFRUTO", 1],
+      ["I'm enjoying learning", "estoy disfrutando aprender", "P_NEW_DISFRUTO", 2],
+      ["I'm enjoying this", "estoy disfrutando esto", "P_NEW_DISFRUTO", 2],
+      ["I'm enjoying learning Spanish", "estoy disfrutando aprender español", "P_NEW_DISFRUTO", 3],
+      ["I'm enjoying writing this", "estoy disfrutando escribir esto", "P_NEW_DISFRUTO", 3],
+      ["I'm enjoying learning how to speak", "estoy disfrutando aprender cómo hablar", "P_NEW_DISFRUTO", 4],
+      ["I'm enjoying reading this story", "estoy disfrutando leer esta historia", "P_NEW_DISFRUTO", 4],
+      ["I'm enjoying learning more about this", "estoy disfrutando aprender más sobre esto", "P_NEW_DISFRUTO", 5],
+      ["I'm enjoying practising with you today", "estoy disfrutando practicar contigo hoy", "P_NEW_DISFRUTO", 5],
+      ["I'm enjoying learning Spanish because it's interesting", "estoy disfrutando aprender español porque es interesante", "P_NEW_DISFRUTO", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P_NEW_DISFRUTO",
+    "full_seed_included": "NO - missing 'descubrir', 'sobre', 'este lenguaje'",
+    "gate_compliance": "STRICT - Only S0001-S0100 LEGOs available"
+  },
+
+  "S0017L02": {
+    "lego": ["to find out", "descubrir"],
+    "type": "A",
+    "available_legos": 277,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL"
+    ],
+    "practice_phrases": [
+      ["to find out", "descubrir", null, 1],
+      ["to find out more", "descubrir más", null, 2],
+      ["I'm enjoying finding out", "estoy disfrutando descubrir", "P_NEW_DISFRUTO", 2],
+      ["I want to find out", "quiero descubrir", "P01", 3],
+      ["to find out more about this", "descubrir más sobre esto", null, 4],
+      ["I'm enjoying finding out more", "estoy disfrutando descubrir más", "P_NEW_DISFRUTO", 3],
+      ["I want to find out what happened", "quiero descubrir lo que ocurrir", "P01", 5],
+      ["I'm trying to find out how", "estoy intentando descubrir cómo", "P02", 4],
+      ["I'd like to find out more about this", "me gustaría descubrir más sobre esto", "P04", 5],
+      ["I'm enjoying finding out more about Spanish", "estoy disfrutando descubrir más sobre español", "P_NEW_DISFRUTO", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P02, P04, P_NEW_DISFRUTO",
+    "full_seed_included": "NO - missing 'este lenguaje'",
+    "gate_compliance": "STRICT - Only S0001-S0101L01 LEGOs available"
+  },
+
+  "S0023L02": {
+    "lego": ["more", "más"],
+    "type": "A",
+    "available_legos": 278,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL"
+    ],
+    "practice_phrases": [
+      ["more", "más", null, 1],
+      ["to learn more", "aprender más", null, 2],
+      ["more about this", "más sobre esto", null, 2],
+      ["to find out more", "descubrir más", null, 2],
+      ["I want to learn more", "quiero aprender más", "P01", 3],
+      ["I need to practise more", "necesito practicar más", "P01", 3],
+      ["I'm enjoying learning more", "estoy disfrutando aprender más", "P_NEW_DISFRUTO", 3],
+      ["I'd like to find out more about this", "me gustaría descubrir más sobre esto", "P04", 5],
+      ["I think I should learn more words", "pienso que debería aprender más palabras", "P05", 6],
+      ["I'm enjoying finding out more about how to speak", "estoy disfrutando descubrir más sobre cómo hablar", "P_NEW_DISFRUTO", 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P04, P05, P_NEW_DISFRUTO",
+    "full_seed_included": "NO - missing 'este lenguaje'",
+    "gate_compliance": "STRICT - Only S0001-S0017L02 LEGOs available"
+  },
+
+  "S0101L02": {
+    "lego": ["about", "sobre"],
+    "type": "A",
+    "available_legos": 279,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL"
+    ],
+    "practice_phrases": [
+      ["about", "sobre", null, 1],
+      ["about this", "sobre esto", null, 2],
+      ["more about this", "más sobre esto", null, 2],
+      ["to find out about this", "descubrir sobre esto", null, 3],
+      ["to learn more about Spanish", "aprender más sobre español", null, 3],
+      ["I want to learn about this", "quiero aprender sobre esto", "P01", 4],
+      ["I'm enjoying learning about Spanish", "estoy disfrutando aprender sobre español", "P_NEW_DISFRUTO", 4],
+      ["I'd like to find out more about this", "me gustaría descubrir más sobre esto", "P04", 5],
+      ["I'm enjoying finding out about how to speak", "estoy disfrutando descubrir sobre cómo hablar", "P_NEW_DISFRUTO", 5],
+      ["I think you should learn more about this language", "pienso que deberías aprender más sobre este lenguaje", "P05", 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "pattern_coverage": "P01, P04, P05, P_NEW_DISFRUTO",
+    "full_seed_included": "NO - missing 'este lenguaje' as complete unit",
+    "gate_compliance": "STRICT - Only S0001-S0023L02 LEGOs available"
+  },
+
+  "S0101L03": {
+    "lego": ["this language", "este lenguaje"],
+    "type": "M",
+    "available_legos": 280,
+    "available_patterns": [
+      "P01", "P02", "P03", "P04", "P05", "P08", "P10", "P12", "P18",
+      "P_RELATIVE", "P_NEW_GUSTAR", "P_NEW_IMPERSONAL", "P_NEW_IMPERFECT",
+      "P_NEW_REFLEXIVE", "P_NEW_GUSTAR_LIKE", "P_NEW_DISFRUTO",
+      "P_NEW_MODAL", "P_NEW_NEGATION", "P_NEW_TEMPORAL"
+    ],
+    "practice_phrases": [
+      ["this language", "este lenguaje", null, 1],
+      ["to learn this language", "aprender este lenguaje", null, 2],
+      ["I want to learn this language", "quiero aprender este lenguaje", "P01", 4],
+      ["more about this language", "más sobre este lenguaje", null, 3],
+      ["I'm enjoying this language", "estoy disfrutando este lenguaje", "P_NEW_DISFRUTO", 2],
+      ["I'm enjoying learning this language", "estoy disfrutando aprender este lenguaje", "P_NEW_DISFRUTO", 3],
+      ["to find out more about this language", "descubrir más sobre este lenguaje", null, 4],
+      ["I'm enjoying finding out about this language", "estoy disfrutando descubrir sobre este lenguaje", "P_NEW_DISFRUTO", 4],
+      ["I'm enjoying finding out more about this language", "estoy disfrutando descubrir más sobre este lenguaje", "P_NEW_DISFRUTO", 5],
+      ["I'm enjoying finding out more about this language.", "estoy disfrutando descubrir más sobre este lenguaje.", "P_NEW_DISFRUTO", 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "pattern_coverage": "P01, P_NEW_DISFRUTO",
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Only S0001-S0101L02 LEGOs available. 'lenguaje' introduced in this LEGO."
+  }
+}

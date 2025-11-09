@@ -1,0 +1,633 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0181",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "target": "Pero tengo que llevar a mi madre al doctor.",
+    "known": "But I have to take my mother to the doctor."
+  },
+  "cumulative_legos": 509,
+  "curation_metadata": {
+    "curated_at": "2025-11-07T04:50:02.101190Z",
+    "curated_by": "Agent 09 - Automated generation with strict GATE compliance",
+    "spec_version": "phase_5_conversational_baskets_v3_ACTIVE"
+  },
+  "S0019L01": {
+    "lego": [
+      "but",
+      "pero"
+    ],
+    "type": "A",
+    "available_legos": 501,
+    "practice_phrases": [
+      [
+        "but",
+        "pero",
+        null,
+        1
+      ],
+      [
+        "but I want",
+        "pero quiero",
+        null,
+        2
+      ],
+      [
+        "but I have to go",
+        "pero tengo que ir",
+        null,
+        3
+      ],
+      [
+        "but I'm trying to speak",
+        "pero estoy intentando hablar",
+        null,
+        3
+      ],
+      [
+        "but I'm not ready yet",
+        "pero no estoy preparado todavía",
+        null,
+        3
+      ],
+      [
+        "but I have to go home now",
+        "pero tengo que ir a casa ahora",
+        null,
+        5
+      ],
+      [
+        "but I wanted to speak with you yesterday",
+        "pero quería hablar contigo ayer",
+        null,
+        5
+      ],
+      [
+        "but I think I have to go soon",
+        "pero creo que tengo que ir pronto",
+        null,
+        6
+      ],
+      [
+        "but I'm not ready to speak with people I don't know",
+        "pero no estoy preparado para hablar con personas que no conozco",
+        null,
+        10
+      ],
+      [
+        "but I wanted to ask you something as soon as I can",
+        "pero quería preguntarte algo tan pronto como pueda",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0019L01 LEGOs only"
+  },
+  "S0181L01": {
+    "lego": [
+      "I have to",
+      "tengo que"
+    ],
+    "type": "M",
+    "available_legos": 502,
+    "practice_phrases": [
+      [
+        "I have to",
+        "tengo que",
+        null,
+        1
+      ],
+      [
+        "I have to go",
+        "tengo que ir",
+        null,
+        2
+      ],
+      [
+        "I have to speak Spanish",
+        "tengo que hablar español",
+        null,
+        3
+      ],
+      [
+        "I have to learn this now",
+        "tengo que aprender esto ahora",
+        null,
+        3
+      ],
+      [
+        "I have to go home soon",
+        "tengo que ir a casa pronto",
+        null,
+        4
+      ],
+      [
+        "I think I have to go",
+        "creo que tengo que ir",
+        null,
+        4
+      ],
+      [
+        "I have to speak with you today",
+        "tengo que hablar contigo hoy",
+        null,
+        4
+      ],
+      [
+        "I have to be able to speak Spanish",
+        "tengo que poder hablar español",
+        null,
+        5
+      ],
+      [
+        "I have to go to the office before I go home",
+        "tengo que ir a la oficina antes de que vaya a casa",
+        null,
+        10
+      ],
+      [
+        "I think I have to start talking as soon as I can",
+        "creo que tengo que comenzar a hablar tan pronto como pueda",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0181L01 LEGOs only"
+  },
+  "S0181L02": {
+    "lego": [
+      "to take",
+      "llevar"
+    ],
+    "type": "A",
+    "available_legos": 503,
+    "practice_phrases": [
+      [
+        "to take",
+        "llevar",
+        null,
+        1
+      ],
+      [
+        "I want to take this",
+        "quiero llevar esto",
+        null,
+        2
+      ],
+      [
+        "I have to take this home",
+        "tengo que llevar esto a casa",
+        null,
+        4
+      ],
+      [
+        "I'm going to take this",
+        "voy a llevar esto",
+        null,
+        3
+      ],
+      [
+        "I have to take something",
+        "tengo que llevar algo",
+        null,
+        2
+      ],
+      [
+        "I wanted to take something yesterday",
+        "quería llevar algo ayer",
+        null,
+        3
+      ],
+      [
+        "I have to take this to the office",
+        "tengo que llevar esto a la oficina",
+        null,
+        5
+      ],
+      [
+        "I think I have to take something important",
+        "creo que tengo que llevar algo importante",
+        null,
+        5
+      ],
+      [
+        "I'm not sure if I have to take this now",
+        "no estoy seguro si tengo que llevar esto ahora",
+        null,
+        7
+      ],
+      [
+        "I wanted to take this to work yesterday but I was too busy",
+        "quería llevar esto al trabajo ayer pero estaba demasiado ocupado",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0181L02 LEGOs only"
+  },
+  "S0133L02": {
+    "lego": [
+      "to",
+      "a"
+    ],
+    "type": "A",
+    "available_legos": 504,
+    "practice_phrases": [
+      [
+        "to",
+        "a",
+        null,
+        1
+      ],
+      [
+        "to the office",
+        "a la oficina",
+        null,
+        2
+      ],
+      [
+        "I have to go to work",
+        "tengo que ir al trabajo",
+        null,
+        4
+      ],
+      [
+        "I want to go to the office",
+        "quiero ir a la oficina",
+        null,
+        4
+      ],
+      [
+        "I'm going to the office now",
+        "voy a la oficina ahora",
+        null,
+        3
+      ],
+      [
+        "I wanted to go to work yesterday",
+        "quería ir al trabajo ayer",
+        null,
+        4
+      ],
+      [
+        "I'm trying to go to the office more often",
+        "estoy intentando ir a la oficina más frecuentemente",
+        null,
+        6
+      ],
+      [
+        "I think I have to go to the office today",
+        "creo que tengo que ir a la oficina hoy",
+        null,
+        7
+      ],
+      [
+        "I'm not ready to speak to people I don't know yet",
+        "no estoy preparado para hablar a personas que no conozco todavía",
+        null,
+        10
+      ],
+      [
+        "I wanted to go to the office before I go home",
+        "quería ir a la oficina antes de que vaya a casa",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0133L02 LEGOs only"
+  },
+  "S0126L06": {
+    "lego": [
+      "my",
+      "mi"
+    ],
+    "type": "A",
+    "available_legos": 505,
+    "practice_phrases": [
+      [
+        "my",
+        "mi",
+        null,
+        1
+      ],
+      [
+        "my friend",
+        "mi amigo",
+        null,
+        2
+      ],
+      [
+        "with my friend",
+        "con mi amigo",
+        null,
+        2
+      ],
+      [
+        "I have to speak with my friend",
+        "tengo que hablar con mi amigo",
+        null,
+        4
+      ],
+      [
+        "I want to go with my friend",
+        "quiero ir con mi amigo",
+        null,
+        4
+      ],
+      [
+        "I'm going with my friend today",
+        "voy con mi amigo hoy",
+        null,
+        3
+      ],
+      [
+        "I wanted to speak with my friend yesterday",
+        "quería hablar con mi amigo ayer",
+        null,
+        5
+      ],
+      [
+        "I'm trying to learn Spanish with my friend",
+        "estoy intentando aprender español con mi amigo",
+        null,
+        6
+      ],
+      [
+        "I think I have to speak with my friend about this",
+        "creo que tengo que hablar con mi amigo sobre esto",
+        null,
+        8
+      ],
+      [
+        "I wanted to speak with my friend before I have to go",
+        "quería hablar con mi amigo antes de que tenga que ir",
+        null,
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0126L06 LEGOs only"
+  },
+  "S0181L03": {
+    "lego": [
+      "mother",
+      "madre"
+    ],
+    "type": "A",
+    "available_legos": 506,
+    "practice_phrases": [
+      [
+        "mother",
+        "madre",
+        null,
+        1
+      ],
+      [
+        "my mother",
+        "mi madre",
+        null,
+        2
+      ],
+      [
+        "with my mother",
+        "con mi madre",
+        null,
+        2
+      ],
+      [
+        "I have to speak with my mother",
+        "tengo que hablar con mi madre",
+        null,
+        4
+      ],
+      [
+        "I want to go with my mother",
+        "quiero ir con mi madre",
+        null,
+        4
+      ],
+      [
+        "I'm going with my mother today",
+        "voy con mi madre hoy",
+        null,
+        3
+      ],
+      [
+        "I wanted to speak with my mother yesterday",
+        "quería hablar con mi madre ayer",
+        null,
+        5
+      ],
+      [
+        "I'm trying to learn Spanish with my mother",
+        "estoy intentando aprender español con mi madre",
+        null,
+        6
+      ],
+      [
+        "I think I have to speak with my mother soon",
+        "creo que tengo que hablar con mi madre pronto",
+        null,
+        7
+      ],
+      [
+        "I wanted to speak with my mother before I go",
+        "quería hablar con mi madre antes de que vaya",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0181L03 LEGOs only"
+  },
+  "S0181L04": {
+    "lego": [
+      "to the",
+      "al"
+    ],
+    "type": "M",
+    "available_legos": 507,
+    "practice_phrases": [
+      [
+        "to the",
+        "al",
+        null,
+        1
+      ],
+      [
+        "to the doctor",
+        "al doctor",
+        null,
+        2
+      ],
+      [
+        "I have to go to the doctor",
+        "tengo que ir al doctor",
+        null,
+        4
+      ],
+      [
+        "I'm going to the doctor",
+        "voy al doctor",
+        null,
+        2
+      ],
+      [
+        "I want to go to the doctor",
+        "quiero ir al doctor",
+        null,
+        4
+      ],
+      [
+        "I'm going to the doctor today",
+        "voy al doctor hoy",
+        null,
+        3
+      ],
+      [
+        "I wanted to go to the doctor yesterday",
+        "quería ir al doctor ayer",
+        null,
+        4
+      ],
+      [
+        "I think I have to go to the doctor soon",
+        "creo que tengo que ir al doctor pronto",
+        null,
+        6
+      ],
+      [
+        "I'm not sure if I have to go to the doctor",
+        "no estoy seguro si tengo que ir al doctor",
+        null,
+        8
+      ],
+      [
+        "I wanted to go to the doctor before I go to work",
+        "quería ir al doctor antes de que vaya al trabajo",
+        null,
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0181L04 LEGOs only"
+  },
+  "S0181L05": {
+    "lego": [
+      "doctor",
+      "doctor"
+    ],
+    "type": "A",
+    "available_legos": 508,
+    "practice_phrases": [
+      [
+        "doctor",
+        "doctor",
+        null,
+        1
+      ],
+      [
+        "the doctor",
+        "el doctor",
+        null,
+        2
+      ],
+      [
+        "to the doctor",
+        "al doctor",
+        null,
+        2
+      ],
+      [
+        "I want to speak with the doctor",
+        "quiero hablar con el doctor",
+        null,
+        5
+      ],
+      [
+        "I'm going to the doctor today",
+        "voy al doctor hoy",
+        null,
+        3
+      ],
+      [
+        "I have to go to the doctor now",
+        "tengo que ir al doctor ahora",
+        null,
+        5
+      ],
+      [
+        "I wanted to speak with the doctor yesterday",
+        "quería hablar con el doctor ayer",
+        null,
+        6
+      ],
+      [
+        "I'm not ready to speak with the doctor about this",
+        "no estoy preparado para hablar con el doctor sobre esto",
+        null,
+        9
+      ],
+      [
+        "I think I have to speak with the doctor soon",
+        "creo que tengo que hablar con el doctor pronto",
+        null,
+        8
+      ],
+      [
+        "But I have to take my mother to the doctor.",
+        "Pero tengo que llevar a mi madre al doctor.",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "gate_compliance": "STRICT - All words from S0001-S0181L05 LEGOs only",
+    "full_seed_included": "YES - phrase 10"
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "agent_number": 12,
+  "total_agents": 20,
+  "lego_range": {
+    "start": "S0147L01",
+    "end": "S0151L01"
+  },
+  "seed_range": {
+    "start": "S0147",
+    "end": "S0151"
+  },
+  "total_legos": 14,
+  "legos": [
+    {
+      "lego_id": "S0147L01",
+      "seed_id": "S0147",
+      "type": "M",
+      "target": "me vio",
+      "known": "she saw me",
+      "components": [
+        [
+          "me",
+          "me"
+        ],
+        [
+          "vio",
+          "saw"
+        ]
+      ],
+      "cumulative_legos": 435
+    },
+    {
+      "lego_id": "S0147L02",
+      "seed_id": "S0147",
+      "type": "M",
+      "target": "sintiéndome",
+      "known": "feeling",
+      "components": [
+        [
+          "sintiendo",
+          "feeling"
+        ],
+        [
+          "me",
+          "myself"
+        ]
+      ],
+      "cumulative_legos": 435
+    },
+    {
+      "lego_id": "S0147L03",
+      "seed_id": "S0147",
+      "type": "A",
+      "target": "nervioso",
+      "known": "nervous",
+      "components": null,
+      "cumulative_legos": 435
+    },
+    {
+      "lego_id": "S0148L01",
+      "seed_id": "S0148",
+      "type": "M",
+      "target": "no era",
+      "known": "wasn't",
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "era",
+          "was"
+        ]
+      ],
+      "cumulative_legos": 439
+    },
+    {
+      "lego_id": "S0148L02",
+      "seed_id": "S0148",
+      "type": "M",
+      "target": "muy paciente",
+      "known": "very patient",
+      "components": [
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "paciente",
+          "patient"
+        ]
+      ],
+      "cumulative_legos": 439
+    },
+    {
+      "lego_id": "S0148L03",
+      "seed_id": "S0148",
+      "type": "M",
+      "target": "no pude",
+      "known": "I couldn't",
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "pude",
+          "could"
+        ]
+      ],
+      "cumulative_legos": 439
+    },
+    {
+      "lego_id": "S0148L04",
+      "seed_id": "S0148",
+      "type": "A",
+      "target": "responder",
+      "known": "answer",
+      "components": null,
+      "cumulative_legos": 439
+    },
+    {
+      "lego_id": "S0149L01",
+      "seed_id": "S0149",
+      "type": "M",
+      "target": "muy difícil",
+      "known": "very difficult",
+      "components": [
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "difícil",
+          "difficult"
+        ]
+      ],
+      "cumulative_legos": 443
+    },
+    {
+      "lego_id": "S0149L02",
+      "seed_id": "S0149",
+      "type": "A",
+      "target": "entonces",
+      "known": "so",
+      "components": null,
+      "cumulative_legos": 443
+    },
+    {
+      "lego_id": "S0149L03",
+      "seed_id": "S0149",
+      "type": "M",
+      "target": "espero que",
+      "known": "I hope",
+      "components": [
+        [
+          "espero",
+          "I hope"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ],
+      "cumulative_legos": 443
+    },
+    {
+      "lego_id": "S0149L04",
+      "seed_id": "S0149",
+      "type": "A",
+      "target": "termines",
+      "known": "you'll finish",
+      "components": null,
+      "cumulative_legos": 443
+    },
+    {
+      "lego_id": "S0150L01",
+      "seed_id": "S0150",
+      "type": "M",
+      "target": "cuál es",
+      "known": "what is",
+      "components": [
+        [
+          "cuál",
+          "what"
+        ],
+        [
+          "es",
+          "is"
+        ]
+      ],
+      "cumulative_legos": 445
+    },
+    {
+      "lego_id": "S0150L02",
+      "seed_id": "S0150",
+      "type": "M",
+      "target": "tu nombre",
+      "known": "your name",
+      "components": [
+        [
+          "tu",
+          "your"
+        ],
+        [
+          "nombre",
+          "name"
+        ]
+      ],
+      "cumulative_legos": 445
+    },
+    {
+      "lego_id": "S0151L01",
+      "seed_id": "S0151",
+      "type": "M",
+      "target": "estaba esperando",
+      "known": "I was hoping",
+      "components": [
+        [
+          "estaba",
+          "I was"
+        ],
+        [
+          "esperando",
+          "hoping/waiting"
+        ]
+      ],
+      "cumulative_legos": 447
+    }
+  ]
+}

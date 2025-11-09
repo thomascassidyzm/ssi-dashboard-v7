@@ -1,0 +1,217 @@
+{
+  "agent_number": 8,
+  "total_agents": 20,
+  "lego_range": {
+    "start": "S0130L02",
+    "end": "S0134L02"
+  },
+  "seed_range": {
+    "start": "S0130",
+    "end": "S0134"
+  },
+  "total_legos": 14,
+  "legos": [
+    {
+      "lego_id": "S0130L02",
+      "seed_id": "S0130",
+      "type": "M",
+      "target": "mi amigo",
+      "known": "my friend",
+      "components": [
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "amigo",
+          "friend"
+        ]
+      ],
+      "cumulative_legos": 377
+    },
+    {
+      "lego_id": "S0131L01",
+      "seed_id": "S0131",
+      "type": "A",
+      "target": "hay",
+      "known": "there are",
+      "components": null,
+      "cumulative_legos": 383
+    },
+    {
+      "lego_id": "S0131L02",
+      "seed_id": "S0131",
+      "type": "A",
+      "target": "demasiadas",
+      "known": "too many",
+      "components": null,
+      "cumulative_legos": 383
+    },
+    {
+      "lego_id": "S0131L03",
+      "seed_id": "S0131",
+      "type": "A",
+      "target": "ideas",
+      "known": "ideas",
+      "components": null,
+      "cumulative_legos": 383
+    },
+    {
+      "lego_id": "S0131L04",
+      "seed_id": "S0131",
+      "type": "M",
+      "target": "dando vueltas",
+      "known": "going around",
+      "components": [
+        [
+          "dando",
+          "giving/going"
+        ],
+        [
+          "vueltas",
+          "turns/around"
+        ]
+      ],
+      "cumulative_legos": 383
+    },
+    {
+      "lego_id": "S0131L05",
+      "seed_id": "S0131",
+      "type": "A",
+      "target": "en",
+      "known": "in",
+      "components": null,
+      "cumulative_legos": 383
+    },
+    {
+      "lego_id": "S0131L06",
+      "seed_id": "S0131",
+      "type": "A",
+      "target": "cabeza",
+      "known": "head",
+      "components": null,
+      "cumulative_legos": 383
+    },
+    {
+      "lego_id": "S0132L01",
+      "seed_id": "S0132",
+      "type": "M",
+      "target": "menos emocionante",
+      "known": "less exciting",
+      "components": [
+        [
+          "menos",
+          "less"
+        ],
+        [
+          "emocionante",
+          "exciting"
+        ]
+      ],
+      "cumulative_legos": 385
+    },
+    {
+      "lego_id": "S0132L02",
+      "seed_id": "S0132",
+      "type": "M",
+      "target": "lo que decía",
+      "known": "what she was saying",
+      "components": [
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "decía",
+          "she was saying"
+        ]
+      ],
+      "cumulative_legos": 385
+    },
+    {
+      "lego_id": "S0133L01",
+      "seed_id": "S0133",
+      "type": "M",
+      "target": "llegas a conocer",
+      "known": "you get to know",
+      "components": [
+        [
+          "llegas",
+          "you arrive/get"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "conocer",
+          "to know"
+        ]
+      ],
+      "cumulative_legos": 388
+    },
+    {
+      "lego_id": "S0133L02",
+      "seed_id": "S0133",
+      "type": "A",
+      "target": "a",
+      "known": "to",
+      "components": null,
+      "cumulative_legos": 388
+    },
+    {
+      "lego_id": "S0133L03",
+      "seed_id": "S0133",
+      "type": "M",
+      "target": "trabajan juntos",
+      "known": "you work together",
+      "components": [
+        [
+          "trabajan",
+          "you work/they work"
+        ],
+        [
+          "juntos",
+          "together"
+        ]
+      ],
+      "cumulative_legos": 388
+    },
+    {
+      "lego_id": "S0134L01",
+      "seed_id": "S0134",
+      "type": "M",
+      "target": "un problema",
+      "known": "a problem",
+      "components": [
+        [
+          "un",
+          "a"
+        ],
+        [
+          "problema",
+          "problem"
+        ]
+      ],
+      "cumulative_legos": 392
+    },
+    {
+      "lego_id": "S0134L02",
+      "seed_id": "S0134",
+      "type": "M",
+      "target": "trabajas en",
+      "known": "you work at",
+      "components": [
+        [
+          "trabajas",
+          "you work"
+        ],
+        [
+          "en",
+          "at/in"
+        ]
+      ],
+      "cumulative_legos": 392
+    }
+  ]
+}

@@ -1,0 +1,966 @@
+{
+  "batch_id": "batch3_agent2",
+  "batch_number": 2,
+  "seed_range": "S0541-S0560",
+  "total_seeds": 20,
+  "seeds": [
+    {
+      "seed_id": "S0541",
+      "target": "Es una buena idea intentar respirar despacio.",
+      "known": "It's a good idea to try and breathe slowly.",
+      "legos": [
+        {
+          "ref": "S0468L01",
+          "type": "A",
+          "target": "es",
+          "known": "it's"
+        },
+        {
+          "ref": "S0272L04",
+          "type": "A",
+          "target": "una",
+          "known": "a"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "buena",
+          "known": "good"
+        },
+        {
+          "ref": "S0125L01",
+          "type": "A",
+          "target": "idea",
+          "known": "idea"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "intentar",
+          "known": "to try and"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "respirar",
+          "known": "breathe"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "despacio",
+          "known": "slowly"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0542",
+      "target": "Cuando sea que te sientas enojado.",
+      "known": "Whenever you feel angry.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "cuando sea que",
+          "known": "whenever",
+          "components": [
+            "cuando",
+            "sea",
+            "que"
+          ]
+        },
+        {
+          "ref": "S0190L02",
+          "type": "A",
+          "target": "te",
+          "known": "you"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "sientas",
+          "known": "feel"
+        },
+        {
+          "ref": "S0354L05",
+          "type": "A",
+          "target": "enojado",
+          "known": "angry"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0543",
+      "target": "Ella tenía razón.",
+      "known": "She was right.",
+      "legos": [
+        {
+          "ref": "S0017L01",
+          "type": "A",
+          "target": "ella",
+          "known": "she"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "tenía",
+          "known": "was"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "razón",
+          "known": "right"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0544",
+      "target": "Quien sea que dijo que sería difícil tenía absolutamente razón.",
+      "known": "Whoever said it would be difficult was absolutely right.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "quien sea que",
+          "known": "whoever",
+          "components": [
+            "quien",
+            "sea",
+            "que"
+          ]
+        },
+        {
+          "ref": "S0235L04",
+          "type": "A",
+          "target": "dijo",
+          "known": "said"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "que",
+          "known": "it"
+        },
+        {
+          "ref": "S0415L01",
+          "type": "A",
+          "target": "sería",
+          "known": "would be"
+        },
+        {
+          "ref": "S0134L03",
+          "type": "A",
+          "target": "difícil",
+          "known": "difficult"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "tenía",
+          "known": "was"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "absolutamente",
+          "known": "absolutely"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "razón",
+          "known": "right"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0545",
+      "target": "Es tu turno de llevar la ropa limpia arriba.",
+      "known": "It's your turn to take the clean clothes upstairs.",
+      "legos": [
+        {
+          "ref": "S0468L01",
+          "type": "A",
+          "target": "es",
+          "known": "it's"
+        },
+        {
+          "ref": "S0121L04",
+          "type": "A",
+          "target": "tu",
+          "known": "your"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "turno",
+          "known": "turn"
+        },
+        {
+          "ref": "S0344L06",
+          "type": "A",
+          "target": "de",
+          "known": "to"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "llevar",
+          "known": "take"
+        },
+        {
+          "ref": "S0202L06",
+          "type": "A",
+          "target": "la",
+          "known": "the"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "ropa",
+          "known": "clothes"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "limpia",
+          "known": "clean"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "arriba",
+          "known": "upstairs"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0546",
+      "target": "El perro está sucio y mojado.",
+      "known": "The dog is dirty and wet.",
+      "legos": [
+        {
+          "ref": "S0210L05",
+          "type": "A",
+          "target": "el",
+          "known": "the"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "perro",
+          "known": "dog"
+        },
+        {
+          "ref": "S0141L03",
+          "type": "A",
+          "target": "está",
+          "known": "is"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "sucio",
+          "known": "dirty"
+        },
+        {
+          "ref": "S0015L01",
+          "type": "A",
+          "target": "y",
+          "known": "and"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "mojado",
+          "known": "wet"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0547",
+      "target": "Porque ha estado jugando en el barro.",
+      "known": "Because he has been playing in the mud.",
+      "legos": [
+        {
+          "ref": "S0022L01",
+          "type": "A",
+          "target": "porque",
+          "known": "because"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "ha estado",
+          "known": "has been",
+          "components": [
+            "ha",
+            "estado"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "jugando",
+          "known": "playing"
+        },
+        {
+          "ref": "S0131L05",
+          "type": "A",
+          "target": "en",
+          "known": "in"
+        },
+        {
+          "ref": "S0210L05",
+          "type": "A",
+          "target": "el",
+          "known": "the"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "barro",
+          "known": "mud"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0548",
+      "target": "Me estoy sintiendo triste en este momento.",
+      "known": "I am feeling sad at the moment.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "me estoy sintiendo",
+          "known": "i am feeling",
+          "components": [
+            "me",
+            "estoy",
+            "sintiendo"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "triste",
+          "known": "sad"
+        },
+        {
+          "ref": "S0040L02",
+          "type": "M",
+          "target": "en este momento",
+          "known": "at the moment",
+          "components": [
+            [
+              "en",
+              "in/at"
+            ],
+            [
+              "este",
+              "this"
+            ],
+            [
+              "momento",
+              "moment"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0549",
+      "target": "Porque tengo que estar callado.",
+      "known": "Because I have got to be quiet.",
+      "legos": [
+        {
+          "ref": "S0022L01",
+          "type": "A",
+          "target": "porque",
+          "known": "because"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "tengo que",
+          "known": "i have got to",
+          "components": [
+            "tengo",
+            "que"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "estar",
+          "known": "be"
+        },
+        {
+          "ref": "S0361L02",
+          "type": "A",
+          "target": "callado",
+          "known": "quiet"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0550",
+      "target": "El final del pueblo.",
+      "known": "The end of the village.",
+      "legos": [
+        {
+          "ref": "S0210L05",
+          "type": "A",
+          "target": "el",
+          "known": "the"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "final",
+          "known": "end"
+        },
+        {
+          "ref": "S0457L02",
+          "type": "M",
+          "target": "del",
+          "known": "of the",
+          "components": [
+            [
+              "de",
+              "of"
+            ],
+            [
+              "el",
+              "the"
+            ]
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "pueblo",
+          "known": "village"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0551",
+      "target": "La iglesia es fea.",
+      "known": "The church is ugly.",
+      "legos": [
+        {
+          "ref": "S0202L06",
+          "type": "A",
+          "target": "la",
+          "known": "the"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "iglesia",
+          "known": "church"
+        },
+        {
+          "ref": "S0123L02",
+          "type": "A",
+          "target": "es",
+          "known": "is"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "fea",
+          "known": "ugly"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0552",
+      "target": "La iglesia al otro final del pueblo es fea.",
+      "known": "The church at the other end of the village is ugly.",
+      "legos": [
+        {
+          "ref": "S0202L06",
+          "type": "A",
+          "target": "la",
+          "known": "the"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "iglesia",
+          "known": "church"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "al",
+          "known": "at the",
+          "components": [
+            "a",
+            "el"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "otro",
+          "known": "other"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "final",
+          "known": "end"
+        },
+        {
+          "ref": "S0457L02",
+          "type": "M",
+          "target": "del",
+          "known": "of the",
+          "components": [
+            [
+              "de",
+              "of"
+            ],
+            [
+              "el",
+              "the"
+            ]
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "pueblo",
+          "known": "village"
+        },
+        {
+          "ref": "S0123L02",
+          "type": "A",
+          "target": "es",
+          "known": "is"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "fea",
+          "known": "ugly"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0553",
+      "target": "Creo que la iglesia pequeña es muy fea.",
+      "known": "I think the small church is very ugly.",
+      "legos": [
+        {
+          "ref": "S0486L01",
+          "type": "M",
+          "target": "creo que",
+          "known": "i think",
+          "components": [
+            "Creo",
+            "que"
+          ]
+        },
+        {
+          "ref": "S0202L06",
+          "type": "A",
+          "target": "la",
+          "known": "the"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "iglesia",
+          "known": "church"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "pequeña",
+          "known": "small"
+        },
+        {
+          "ref": "S0123L02",
+          "type": "A",
+          "target": "es",
+          "known": "is"
+        },
+        {
+          "ref": "S0166L02",
+          "type": "A",
+          "target": "muy",
+          "known": "very"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "fea",
+          "known": "ugly"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0554",
+      "target": "Esta toalla no está seca.",
+      "known": "This towel isn't dry.",
+      "legos": [
+        {
+          "ref": "S0116L01",
+          "type": "A",
+          "target": "esta",
+          "known": "this"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "toalla",
+          "known": "towel"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "no está",
+          "known": "isn't",
+          "components": [
+            "no",
+            "está"
+          ]
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "seca",
+          "known": "dry"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0555",
+      "target": "Y estoy demasiado cansado para traer una nueva.",
+      "known": "And I'm too tired to fetch a new one.",
+      "legos": [
+        {
+          "ref": "S0015L01",
+          "type": "A",
+          "target": "y",
+          "known": "and"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "estoy",
+          "known": "i'm"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "demasiado",
+          "known": "too"
+        },
+        {
+          "ref": "S0041L04",
+          "type": "A",
+          "target": "cansado",
+          "known": "tired"
+        },
+        {
+          "ref": "S0109L02",
+          "type": "A",
+          "target": "para",
+          "known": "to"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "traer",
+          "known": "fetch"
+        },
+        {
+          "ref": "S0272L04",
+          "type": "A",
+          "target": "una",
+          "known": "a"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "nueva",
+          "known": "new one"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0556",
+      "target": "Tocan música tarde en la noche.",
+      "known": "They play music late at night.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "tocan",
+          "known": "they play"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "música",
+          "known": "music"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "tarde",
+          "known": "late"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "en la noche",
+          "known": "at night",
+          "components": [
+            "en",
+            "la",
+            "noche"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0557",
+      "target": "Desearía que no tocaran música tan alta.",
+      "known": "I wish they wouldn't play such loud music.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "desearía que",
+          "known": "i wish",
+          "components": [
+            "desearía",
+            "que"
+          ]
+        },
+        {
+          "ref": "S0352L04",
+          "type": "A",
+          "target": "no",
+          "known": "wouldn't"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "tocaran",
+          "known": "play"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "música tan alta",
+          "known": "such loud music",
+          "components": [
+            "música",
+            "tan",
+            "alta"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0558",
+      "target": "Es tan tarde en la noche.",
+      "known": "It's so late at night.",
+      "legos": [
+        {
+          "ref": "S0468L01",
+          "type": "A",
+          "target": "es",
+          "known": "it's"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "tan",
+          "known": "so"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "tarde",
+          "known": "late"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "en la noche",
+          "known": "at night",
+          "components": [
+            "en",
+            "la",
+            "noche"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0559",
+      "target": "¿Has encontrado el camino por el bosque?",
+      "known": "Have you found the path through the wood?",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "has",
+          "known": "have"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "encontrado",
+          "known": "you found"
+        },
+        {
+          "ref": "S0210L05",
+          "type": "A",
+          "target": "el",
+          "known": "the"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "camino",
+          "known": "path"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "por",
+          "known": "through"
+        },
+        {
+          "ref": "S0210L05",
+          "type": "A",
+          "target": "el",
+          "known": "the"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "bosque",
+          "known": "wood"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0560",
+      "target": "Va hacia abajo a la playa.",
+      "known": "It goes down to the beach.",
+      "legos": [
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "va",
+          "known": "it goes"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "M",
+          "target": "hacia abajo",
+          "known": "down",
+          "components": [
+            "hacia",
+            "abajo"
+          ]
+        },
+        {
+          "ref": "S0133L02",
+          "type": "A",
+          "target": "a",
+          "known": "to"
+        },
+        {
+          "ref": "S0202L06",
+          "type": "A",
+          "target": "la",
+          "known": "the"
+        },
+        {
+          "new": true,
+          "id": "TEMP",
+          "type": "A",
+          "target": "playa",
+          "known": "beach"
+        }
+      ]
+    }
+  ]
+}

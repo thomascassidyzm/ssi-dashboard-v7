@@ -1,0 +1,210 @@
+{
+  "agent_number": 6,
+  "total_agents": 20,
+  "lego_range": {
+    "start": "S0122L03",
+    "end": "S0126L03"
+  },
+  "seed_range": {
+    "start": "S0122",
+    "end": "S0126"
+  },
+  "total_legos": 14,
+  "legos": [
+    {
+      "lego_id": "S0122L03",
+      "seed_id": "S0122",
+      "type": "M",
+      "target": "más fácil",
+      "known": "easier",
+      "components": [
+        [
+          "más",
+          {
+            "ref": "S0023L02"
+          }
+        ],
+        [
+          "fácil",
+          "easy"
+        ]
+      ],
+      "cumulative_legos": 352
+    },
+    {
+      "lego_id": "S0122L04",
+      "seed_id": "S0122",
+      "type": "M",
+      "target": "estoy entusiasmado",
+      "known": "I'm excited",
+      "components": [
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "entusiasmado",
+          "excited"
+        ]
+      ],
+      "cumulative_legos": 352
+    },
+    {
+      "lego_id": "S0122L05",
+      "seed_id": "S0122",
+      "type": "A",
+      "target": "por",
+      "known": "about",
+      "components": null,
+      "cumulative_legos": 352
+    },
+    {
+      "lego_id": "S0122L06",
+      "seed_id": "S0122",
+      "type": "A",
+      "target": "va",
+      "known": "it's going",
+      "components": null,
+      "cumulative_legos": 352
+    },
+    {
+      "lego_id": "S0123L01",
+      "seed_id": "S0123",
+      "type": "M",
+      "target": "creo que",
+      "known": "I think that",
+      "components": [
+        [
+          "creo",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ],
+      "cumulative_legos": 355
+    },
+    {
+      "lego_id": "S0123L02",
+      "seed_id": "S0123",
+      "type": "A",
+      "target": "es",
+      "known": "is",
+      "components": null,
+      "cumulative_legos": 355
+    },
+    {
+      "lego_id": "S0123L03",
+      "seed_id": "S0123",
+      "type": "M",
+      "target": "una buena idea",
+      "known": "a good idea",
+      "components": [
+        [
+          "una",
+          "a"
+        ],
+        [
+          "buena",
+          "good"
+        ],
+        [
+          "idea",
+          "idea"
+        ]
+      ],
+      "cumulative_legos": 355
+    },
+    {
+      "lego_id": "S0124L01",
+      "seed_id": "S0124",
+      "type": "M",
+      "target": "creí que",
+      "known": "I thought that",
+      "components": [
+        [
+          "creí",
+          "I thought"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ],
+      "cumulative_legos": 357
+    },
+    {
+      "lego_id": "S0124L02",
+      "seed_id": "S0124",
+      "type": "A",
+      "target": "era",
+      "known": "was",
+      "components": null,
+      "cumulative_legos": 357
+    },
+    {
+      "lego_id": "S0125L01",
+      "seed_id": "S0125",
+      "type": "A",
+      "target": "idea",
+      "known": "idea",
+      "components": null,
+      "cumulative_legos": 359
+    },
+    {
+      "lego_id": "S0125L02",
+      "seed_id": "S0125",
+      "type": "M",
+      "target": "muy buena",
+      "known": "very good",
+      "components": [
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "buena",
+          "good"
+        ]
+      ],
+      "cumulative_legos": 359
+    },
+    {
+      "lego_id": "S0126L01",
+      "seed_id": "S0126",
+      "type": "A",
+      "target": "este",
+      "known": "this",
+      "components": null,
+      "cumulative_legos": 366
+    },
+    {
+      "lego_id": "S0126L02",
+      "seed_id": "S0126",
+      "type": "A",
+      "target": "trabajo",
+      "known": "work",
+      "components": null,
+      "cumulative_legos": 366
+    },
+    {
+      "lego_id": "S0126L03",
+      "seed_id": "S0126",
+      "type": "M",
+      "target": "está cambiando",
+      "known": "is changing",
+      "components": [
+        [
+          "está",
+          "is"
+        ],
+        [
+          "cambiando",
+          "changing"
+        ]
+      ],
+      "cumulative_legos": 366
+    }
+  ]
+}

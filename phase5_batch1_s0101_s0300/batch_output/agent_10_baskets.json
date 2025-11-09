@@ -1,0 +1,2853 @@
+{
+  "version": "curated_v6_molecular_lego",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "batch_info": {
+    "agent_id": 10,
+    "agent_name": "agent_10",
+    "seed_range": "S0191-S0200",
+    "total_seeds": 10,
+    "total_legos": 35,
+    "total_phrases": 350,
+    "completion_date": "2025-11-07T05:30:00.000Z"
+  },
+  "curation_metadata": {
+    "curated_at": "2025-11-07T05:00:00.000Z",
+    "curated_by": "Claude Code - Phase 5 v3 GATE-compliant basket generation",
+    "spec_version": "phase_5_conversational_baskets_v3_ACTIVE",
+    "notes": [
+      "Strict GATE compliance - all Spanish words from taught LEGOs only",
+      "Distribution per basket: 2 short (1-2), 2 quite short (3), 2 longer (4-5), 4 long (6+)",
+      "First 2 phrases can be fragments, remaining 8 must be complete thoughts",
+      "Final phrase of final LEGO includes complete seed sentence",
+      "Prioritized recency: vocab from 5 previous seeds",
+      "English gerund grammar: 'enjoy speaking' not 'enjoy to speak'"
+    ]
+  },
+  "seeds": {
+    "S0191": {
+      "seed": "S0191",
+      "seed_pair": {
+        "known": "No I don't mind at all.",
+        "target": "No, no me importa en absoluto."
+      },
+      "cumulative_legos": 533,
+      "legos": {
+        "S0096L01": {
+          "lego": [
+            "no",
+            "no"
+          ],
+          "type": "A",
+          "available_legos": 532,
+          "practice_phrases": [
+            [
+              "no",
+              "no",
+              null,
+              1
+            ],
+            [
+              "no I don't want",
+              "no quiero",
+              null,
+              2
+            ],
+            [
+              "no I don't like that",
+              "no me gusta eso",
+              null,
+              4
+            ],
+            [
+              "no I can't do that today",
+              "no puedo hacer eso hoy",
+              null,
+              5
+            ],
+            [
+              "no I'm not going to speak with you",
+              "no voy a hablar contigo",
+              null,
+              6
+            ],
+            [
+              "no I don't want to go with everyone else",
+              "no quiero ir con todos los demás",
+              null,
+              7
+            ],
+            [
+              "no I don't think that it's a good thing",
+              "no pienso que es una cosa buena",
+              null,
+              8
+            ],
+            [
+              "no I don't enjoy making mistakes when other people are here",
+              "no disfruto hacer errores cuando otras personas están aquí",
+              null,
+              10
+            ],
+            [
+              "no I'm not trying to finish as quickly as possible",
+              "no estoy intentando terminar lo más rápidamente posible",
+              null,
+              8
+            ],
+            [
+              "no I wasn't thinking about how to answer",
+              "no estaba pensando en cómo responder",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 0,
+            "longer_4_5": 2,
+            "long_6_plus": 6
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0048L01": {
+          "lego": [
+            "I don't mind",
+            "no me importa"
+          ],
+          "type": "M",
+          "available_legos": 532,
+          "practice_phrases": [
+            [
+              "I don't mind",
+              "no me importa",
+              null,
+              1
+            ],
+            [
+              "I don't mind if I can",
+              "no me importa si puedo",
+              null,
+              4
+            ],
+            [
+              "I don't mind speaking with you",
+              "no me importa hablar contigo",
+              null,
+              4
+            ],
+            [
+              "I don't mind trying to help you",
+              "no me importa intentar ayudarte",
+              null,
+              5
+            ],
+            [
+              "I don't mind speaking with you this evening",
+              "no me importa hablar contigo esta noche",
+              null,
+              6
+            ],
+            [
+              "I don't mind waiting before I have to go",
+              "no me importa esperar antes de que tenga que ir",
+              null,
+              9
+            ],
+            [
+              "I don't mind making mistakes when I'm learning Spanish",
+              "no me importa hacer errores cuando estoy aprendiendo español",
+              null,
+              9
+            ],
+            [
+              "I don't mind if you want to speak with me",
+              "no me importa si quieres hablar conmigo",
+              null,
+              8
+            ],
+            [
+              "I don't mind trying to learn as often as possible",
+              "no me importa intentar aprender lo más frecuentemente posible",
+              null,
+              9
+            ],
+            [
+              "I don't mind at all",
+              "no me importa en absoluto",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 2,
+            "longer_4_5": 3,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0191L01": {
+          "lego": [
+            "at all",
+            "en absoluto"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 533,
+          "practice_phrases": [
+            [
+              "at all",
+              "en absoluto",
+              null,
+              1
+            ],
+            [
+              "I don't mind at all",
+              "no me importa en absoluto",
+              null,
+              3
+            ],
+            [
+              "I don't like that at all",
+              "no me gusta eso en absoluto",
+              null,
+              5
+            ],
+            [
+              "I don't want to wait at all",
+              "no quiero esperar en absoluto",
+              null,
+              5
+            ],
+            [
+              "I don't understand that at all this morning",
+              "no comprendo eso en absoluto esta mañana",
+              null,
+              7
+            ],
+            [
+              "I'm not tired at all at the moment",
+              "no estoy cansado en absoluto en este momento",
+              null,
+              8
+            ],
+            [
+              "I don't enjoy waking up at all when I didn't sleep",
+              "no disfruto despertarme en absoluto cuando no dormí",
+              null,
+              9
+            ],
+            [
+              "I don't worry about making mistakes at all you know",
+              "no me preocupo por hacer errores en absoluto sabes",
+              null,
+              9
+            ],
+            [
+              "I'm not trying to finish as quickly as possible at all",
+              "no estoy intentando terminar lo más rápidamente posible en absoluto",
+              null,
+              10
+            ],
+            [
+              "No I don't mind at all.",
+              "No, no me importa en absoluto.",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 1,
+            "longer_4_5": 2,
+            "long_6_plus": 6
+          },
+          "full_seed_included": "YES - phrase 10",
+          "gate_compliance": "STRICT"
+        }
+      }
+    },
+    "S0192": {
+      "seed": "S0192",
+      "seed_pair": {
+        "known": "I'm busy tomorrow night.",
+        "target": "Estoy ocupado mañana por la noche."
+      },
+      "cumulative_legos": 534,
+      "legos": {
+        "S0192L01": {
+          "lego": [
+            "I'm busy",
+            "estoy ocupado"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 534,
+          "practice_phrases": [
+            [
+              "I'm busy",
+              "estoy ocupado",
+              null,
+              1
+            ],
+            [
+              "I'm busy today",
+              "estoy ocupado hoy",
+              null,
+              2
+            ],
+            [
+              "I'm busy this morning you know",
+              "estoy ocupado esta mañana sabes",
+              null,
+              5
+            ],
+            [
+              "I'm busy at the moment I'm sorry",
+              "estoy ocupado en este momento lo siento",
+              null,
+              7
+            ],
+            [
+              "I'm busy tomorrow but I can help you later on",
+              "estoy ocupado mañana pero puedo ayudarte más tarde",
+              null,
+              9
+            ],
+            [
+              "I'm busy this afternoon but I'd like to speak with you",
+              "estoy ocupado esta tarde pero me gustaría hablar contigo",
+              null,
+              10
+            ],
+            [
+              "I'm sorry but I'm busy this evening",
+              "lo siento pero estoy ocupado esta noche",
+              null,
+              7
+            ],
+            [
+              "I think that I'm going to be busy tomorrow",
+              "pienso que voy a estar ocupado mañana",
+              null,
+              8
+            ],
+            [
+              "I'm busy trying to finish everything before I have to go",
+              "estoy ocupado intentando terminar todo antes de que tenga que ir",
+              null,
+              11
+            ],
+            [
+              "I'm busy tomorrow night",
+              "estoy ocupado mañana por la noche",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 0,
+            "longer_4_5": 2,
+            "long_6_plus": 6
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0012L04": {
+          "lego": [
+            "tomorrow",
+            "mañana"
+          ],
+          "type": "A",
+          "available_legos": 534,
+          "practice_phrases": [
+            [
+              "tomorrow",
+              "mañana",
+              null,
+              1
+            ],
+            [
+              "I'm busy tomorrow",
+              "estoy ocupado mañana",
+              null,
+              2
+            ],
+            [
+              "I want to speak tomorrow",
+              "quiero hablar mañana",
+              null,
+              3
+            ],
+            [
+              "I'm going to try tomorrow morning",
+              "voy a intentar mañana por la mañana",
+              null,
+              6
+            ],
+            [
+              "I'd like to meet at six o'clock tomorrow",
+              "me gustaría reunirnos a las seis mañana",
+              null,
+              7
+            ],
+            [
+              "I don't know what's going to happen tomorrow",
+              "no sé lo que va a ocurrir mañana",
+              null,
+              8
+            ],
+            [
+              "I'm going to be busy all day tomorrow",
+              "voy a estar ocupado todo el día mañana",
+              null,
+              8
+            ],
+            [
+              "I wanted to ask you if you can help me tomorrow",
+              "quería preguntarte si puedes ayudarme mañana",
+              null,
+              9
+            ],
+            [
+              "I think that I need to improve before tomorrow",
+              "pienso que necesito mejorar antes de mañana",
+              null,
+              9
+            ],
+            [
+              "I'm busy tomorrow night",
+              "estoy ocupado mañana por la noche",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 1,
+            "longer_4_5": 0,
+            "long_6_plus": 7
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0154L04": {
+          "lego": [
+            "at night",
+            "por la noche"
+          ],
+          "type": "M",
+          "available_legos": 534,
+          "practice_phrases": [
+            [
+              "at night",
+              "por la noche",
+              null,
+              1
+            ],
+            [
+              "I'm busy at night",
+              "estoy ocupado por la noche",
+              null,
+              3
+            ],
+            [
+              "I feel tired at night",
+              "me siento cansado por la noche",
+              null,
+              5
+            ],
+            [
+              "I enjoy speaking Spanish at night",
+              "disfruto hablar español por la noche",
+              null,
+              5
+            ],
+            [
+              "I'm going to practise speaking at night",
+              "voy a practicar hablar por la noche",
+              null,
+              6
+            ],
+            [
+              "I like to read interesting things with my friends at night",
+              "me gusta leer cosas interesantes con mis amigos por la noche",
+              null,
+              11
+            ],
+            [
+              "I want to be able to speak with you at night",
+              "quiero poder hablar contigo por la noche",
+              null,
+              9
+            ],
+            [
+              "I started to think about it carefully at night last month",
+              "comencé a pensar sobre eso cuidadosamente por la noche el mes pasado",
+              null,
+              11
+            ],
+            [
+              "I don't like to take too much time to answer at night",
+              "no me gusta tomar demasiado tiempo para responder por la noche",
+              null,
+              12
+            ],
+            [
+              "I'm busy tomorrow night.",
+              "Estoy ocupado mañana por la noche.",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 1,
+            "longer_4_5": 2,
+            "long_6_plus": 6
+          },
+          "full_seed_included": "YES - phrase 10",
+          "gate_compliance": "STRICT"
+        }
+      }
+    },
+    "S0193": {
+      "seed": "S0193",
+      "seed_pair": {
+        "known": "I'm sorry but I'm too busy today.",
+        "target": "Lo siento pero estoy demasiado ocupado hoy."
+      },
+      "cumulative_legos": 535,
+      "legos": {
+        "S0139L01": {
+          "lego": [
+            "I'm sorry",
+            "lo siento"
+          ],
+          "type": "M",
+          "available_legos": 534,
+          "practice_phrases": [
+            [
+              "I'm sorry",
+              "lo siento",
+              null,
+              1
+            ],
+            [
+              "I'm sorry I can't",
+              "lo siento no puedo",
+              null,
+              3
+            ],
+            [
+              "I'm sorry but I'm busy",
+              "lo siento pero estoy ocupado",
+              null,
+              5
+            ],
+            [
+              "I'm sorry I don't understand that",
+              "lo siento no comprendo eso",
+              null,
+              4
+            ],
+            [
+              "I'm sorry I can't help you today",
+              "lo siento no puedo ayudarte hoy",
+              null,
+              6
+            ],
+            [
+              "I'm sorry but I'm a little tired this morning",
+              "lo siento pero estoy un poco cansado esta mañana",
+              null,
+              9
+            ],
+            [
+              "I'm sorry I don't know what the answer is",
+              "lo siento no sé cuál es la respuesta",
+              null,
+              9
+            ],
+            [
+              "I'm sorry but I don't want to stop talking with you",
+              "lo siento pero no quiero parar de hablar contigo",
+              null,
+              11
+            ],
+            [
+              "I'm sorry I didn't sleep last night at all",
+              "lo siento no dormí anoche en absoluto",
+              null,
+              8
+            ],
+            [
+              "I'm sorry but I'm too busy today",
+              "lo siento pero estoy demasiado ocupado hoy",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 1,
+            "longer_4_5": 2,
+            "long_6_plus": 6
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0019L01": {
+          "lego": [
+            "but",
+            "pero"
+          ],
+          "type": "A",
+          "available_legos": 534,
+          "practice_phrases": [
+            [
+              "but",
+              "pero",
+              null,
+              1
+            ],
+            [
+              "but I can't",
+              "pero no puedo",
+              null,
+              2
+            ],
+            [
+              "but I'm too busy today",
+              "pero estoy demasiado ocupado hoy",
+              null,
+              5
+            ],
+            [
+              "but I want to learn",
+              "pero quiero aprender",
+              null,
+              4
+            ],
+            [
+              "but I'm trying as hard as I can",
+              "pero estoy intentando tan duro como pueda",
+              null,
+              7
+            ],
+            [
+              "but I don't mind if you want to speak",
+              "pero no me importa si quieres hablar",
+              null,
+              9
+            ],
+            [
+              "but I was starting to feel better than last night",
+              "pero estaba comenzando a sentirme mejor que anoche",
+              null,
+              9
+            ],
+            [
+              "but I'm sorry I can't help you at the moment",
+              "pero lo siento no puedo ayudarte en este momento",
+              null,
+              10
+            ],
+            [
+              "but I enjoy doing interesting things with my friends at night",
+              "pero disfruto hacer cosas interesantes con mis amigos por la noche",
+              null,
+              11
+            ],
+            [
+              "but I'm not going to stop talking at all",
+              "pero no voy a parar de hablar en absoluto",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 0,
+            "longer_4_5": 2,
+            "long_6_plus": 6
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0193L01": {
+          "lego": [
+            "I'm too busy",
+            "estoy demasiado ocupado"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 535,
+          "practice_phrases": [
+            [
+              "I'm too busy",
+              "estoy demasiado ocupado",
+              null,
+              2
+            ],
+            [
+              "I'm too busy today",
+              "estoy demasiado ocupado hoy",
+              null,
+              3
+            ],
+            [
+              "I think I'm too busy tomorrow",
+              "pienso que estoy demasiado ocupado mañana",
+              null,
+              6
+            ],
+            [
+              "I'm sorry I'm too busy tonight",
+              "lo siento estoy demasiado ocupado esta noche",
+              null,
+              6
+            ],
+            [
+              "I'm too busy to help you at the moment",
+              "estoy demasiado ocupado para ayudarte en este momento",
+              null,
+              8
+            ],
+            [
+              "I'm too busy trying to finish everything before I have to go",
+              "estoy demasiado ocupado intentando terminar todo antes de que tenga que ir",
+              null,
+              12
+            ],
+            [
+              "I feel like I'm too busy all day",
+              "me siento como si estoy demasiado ocupado todo el día",
+              null,
+              10
+            ],
+            [
+              "I'm too busy to be able to speak with you this afternoon",
+              "estoy demasiado ocupado para poder hablar contigo esta tarde",
+              null,
+              11
+            ],
+            [
+              "I think that I'm too busy to meet at six o'clock",
+              "pienso que estoy demasiado ocupado para reunirnos a las seis",
+              null,
+              11
+            ],
+            [
+              "I'm sorry but I'm too busy today",
+              "lo siento pero estoy demasiado ocupado hoy",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 1,
+            "longer_4_5": 0,
+            "long_6_plus": 8
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0007L03": {
+          "lego": [
+            "today",
+            "hoy"
+          ],
+          "type": "A",
+          "available_legos": 535,
+          "practice_phrases": [
+            [
+              "today",
+              "hoy",
+              null,
+              1
+            ],
+            [
+              "I'm too busy today",
+              "estoy demasiado ocupado hoy",
+              null,
+              3
+            ],
+            [
+              "I can't help you today",
+              "no puedo ayudarte hoy",
+              null,
+              4
+            ],
+            [
+              "I'm going to try today",
+              "voy a intentar hoy",
+              null,
+              4
+            ],
+            [
+              "I want to practise speaking with you today",
+              "quiero practicar hablar contigo hoy",
+              null,
+              6
+            ],
+            [
+              "I'm trying to learn as often as possible today",
+              "estoy intentando aprender lo más frecuentemente posible hoy",
+              null,
+              9
+            ],
+            [
+              "I'm a little tired today but I can speak",
+              "estoy un poco cansado hoy pero puedo hablar",
+              null,
+              9
+            ],
+            [
+              "I need to be able to remember everything today",
+              "necesito poder recordar todo hoy",
+              null,
+              7
+            ],
+            [
+              "I don't know what I need to do today",
+              "no sé lo que necesito hacer hoy",
+              null,
+              8
+            ],
+            [
+              "I'm sorry but I'm too busy today.",
+              "Lo siento pero estoy demasiado ocupado hoy.",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 1,
+            "longer_4_5": 3,
+            "long_6_plus": 5
+          },
+          "full_seed_included": "YES - phrase 10",
+          "gate_compliance": "STRICT"
+        }
+      }
+    },
+    "S0194": {
+      "seed": "S0194",
+      "seed_pair": {
+        "known": "What are you looking for?",
+        "target": "¿Qué estás buscando?"
+      },
+      "cumulative_legos": 535,
+      "legos": {
+        "S0068L01": {
+          "lego": [
+            "what",
+            "qué"
+          ],
+          "type": "A",
+          "available_legos": 535,
+          "practice_phrases": [
+            [
+              "what",
+              "qué",
+              null,
+              1
+            ],
+            [
+              "what I mean",
+              "lo que quiero decir",
+              null,
+              4
+            ],
+            [
+              "what are you doing today",
+              "qué estás haciendo hoy",
+              null,
+              4
+            ],
+            [
+              "what do you want",
+              "qué quieres",
+              null,
+              3
+            ],
+            [
+              "what's going to happen tomorrow",
+              "qué va a ocurrir mañana",
+              null,
+              4
+            ],
+            [
+              "what I need to do this afternoon",
+              "lo que necesito hacer esta tarde",
+              null,
+              6
+            ],
+            [
+              "what I wanted to say at the moment",
+              "lo que quería decir en este momento",
+              null,
+              8
+            ],
+            [
+              "I don't know what you're looking for at all",
+              "no sé qué estás buscando en absoluto",
+              null,
+              8
+            ],
+            [
+              "I'm sorry but I don't understand what you want",
+              "lo siento pero no comprendo qué quieres",
+              null,
+              9
+            ],
+            [
+              "what are you looking for",
+              "qué estás buscando",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 3,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0068L02": {
+          "lego": [
+            "are you looking for",
+            "estás buscando"
+          ],
+          "type": "M",
+          "available_legos": 535,
+          "practice_phrases": [
+            [
+              "are you looking for",
+              "estás buscando",
+              null,
+              1
+            ],
+            [
+              "what are you looking for",
+              "qué estás buscando",
+              null,
+              3
+            ],
+            [
+              "are you looking for something interesting",
+              "estás buscando algo interesante",
+              null,
+              4
+            ],
+            [
+              "are you looking for my friend",
+              "estás buscando a mi amigo",
+              null,
+              5
+            ],
+            [
+              "I think you're looking for the answer",
+              "pienso que estás buscando la respuesta",
+              null,
+              6
+            ],
+            [
+              "are you looking for someone who can help you today",
+              "estás buscando a alguien que pueda ayudarte hoy",
+              null,
+              9
+            ],
+            [
+              "I don't know what you're looking for at all",
+              "no sé qué estás buscando en absoluto",
+              null,
+              8
+            ],
+            [
+              "are you looking for something to do this evening",
+              "estás buscando algo que hacer esta noche",
+              null,
+              8
+            ],
+            [
+              "I'm sorry but I don't know what you're looking for",
+              "lo siento pero no sé qué estás buscando",
+              null,
+              10
+            ],
+            [
+              "What are you looking for?",
+              "¿Qué estás buscando?",
+              null,
+              3
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 5
+          },
+          "full_seed_included": "YES - phrase 10",
+          "gate_compliance": "STRICT"
+        }
+      }
+    },
+    "S0195": {
+      "seed": "S0195",
+      "seed_pair": {
+        "known": "I'm trying to find the money I left on the table.",
+        "target": "Estoy intentando encontrar el dinero que dejé en la mesa."
+      },
+      "cumulative_legos": 538,
+      "legos": {
+        "S0002L01": {
+          "lego": [
+            "I'm trying",
+            "estoy intentando"
+          ],
+          "type": "M",
+          "available_legos": 535,
+          "practice_phrases": [
+            [
+              "I'm trying",
+              "estoy intentando",
+              null,
+              1
+            ],
+            [
+              "I'm trying to learn",
+              "estoy intentando aprender",
+              null,
+              2
+            ],
+            [
+              "I'm trying to help you",
+              "estoy intentando ayudarte",
+              null,
+              3
+            ],
+            [
+              "I'm trying to find the money",
+              "estoy intentando encontrar el dinero",
+              null,
+              4
+            ],
+            [
+              "I'm trying to speak as often as possible",
+              "estoy intentando hablar lo más frecuentemente posible",
+              null,
+              7
+            ],
+            [
+              "I'm trying to remember what you wanted to say",
+              "estoy intentando recordar lo que querías decir",
+              null,
+              8
+            ],
+            [
+              "I'm trying to finish everything before I have to go",
+              "estoy intentando terminar todo antes de que tenga que ir",
+              null,
+              10
+            ],
+            [
+              "I'm trying to explain what I mean but I'm too busy",
+              "estoy intentando explicar lo que quiero decir pero estoy demasiado ocupado",
+              null,
+              12
+            ],
+            [
+              "I'm sorry but I'm trying as hard as I can",
+              "lo siento pero estoy intentando tan duro como pueda",
+              null,
+              9
+            ],
+            [
+              "I'm trying to find the money",
+              "estoy intentando encontrar el dinero",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 1,
+            "longer_4_5": 2,
+            "long_6_plus": 5
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0022L02": {
+          "lego": [
+            "to find",
+            "encontrar"
+          ],
+          "type": "A",
+          "available_legos": 535,
+          "practice_phrases": [
+            [
+              "to find",
+              "encontrar",
+              null,
+              1
+            ],
+            [
+              "to find the money",
+              "encontrar el dinero",
+              null,
+              2
+            ],
+            [
+              "I'm trying to find",
+              "estoy intentando encontrar",
+              null,
+              3
+            ],
+            [
+              "I want to find my friend",
+              "quiero encontrar a mi amigo",
+              null,
+              5
+            ],
+            [
+              "I'm trying to find what I'm looking for",
+              "estoy intentando encontrar lo que estoy buscando",
+              null,
+              7
+            ],
+            [
+              "I need to find people who speak Spanish",
+              "necesito encontrar personas que hablan español",
+              null,
+              7
+            ],
+            [
+              "I'd like to be able to find the answer",
+              "me gustaría poder encontrar la respuesta",
+              null,
+              8
+            ],
+            [
+              "I'm going to try to find someone else later on",
+              "voy a intentar encontrar a alguien más más tarde",
+              null,
+              10
+            ],
+            [
+              "I don't think I can find what you're looking for",
+              "no pienso que puedo encontrar lo que estás buscando",
+              null,
+              10
+            ],
+            [
+              "I'm trying to find the money",
+              "estoy intentando encontrar el dinero",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 1,
+            "longer_4_5": 2,
+            "long_6_plus": 5
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0195L01": {
+          "lego": [
+            "the money",
+            "el dinero"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 536,
+          "practice_phrases": [
+            [
+              "the money",
+              "el dinero",
+              null,
+              1
+            ],
+            [
+              "I'm looking for the money",
+              "estoy buscando el dinero",
+              null,
+              3
+            ],
+            [
+              "I can't find the money",
+              "no puedo encontrar el dinero",
+              null,
+              4
+            ],
+            [
+              "I left the money here",
+              "dejé el dinero aquí",
+              null,
+              4
+            ],
+            [
+              "I'm trying to find the money",
+              "estoy intentando encontrar el dinero",
+              null,
+              4
+            ],
+            [
+              "I don't know where the money is",
+              "no sé dónde está el dinero",
+              null,
+              6
+            ],
+            [
+              "I think I left the money on the table",
+              "pienso que dejé el dinero en la mesa",
+              null,
+              9
+            ],
+            [
+              "I'm looking for the money that I left here yesterday",
+              "estoy buscando el dinero que dejé aquí ayer",
+              null,
+              9
+            ],
+            [
+              "I'm sorry but I can't find the money at all",
+              "lo siento pero no puedo encontrar el dinero en absoluto",
+              null,
+              10
+            ],
+            [
+              "I'm trying to find the money I left",
+              "estoy intentando encontrar el dinero que dejé",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 1,
+            "longer_4_5": 4,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0102L02": {
+          "lego": [
+            "that",
+            "que"
+          ],
+          "type": "A",
+          "available_legos": 536,
+          "practice_phrases": [
+            [
+              "that",
+              "que",
+              null,
+              1
+            ],
+            [
+              "I think that",
+              "pienso que",
+              null,
+              2
+            ],
+            [
+              "the money that I left",
+              "el dinero que dejé",
+              null,
+              4
+            ],
+            [
+              "I know that you can",
+              "sé que puedes",
+              null,
+              4
+            ],
+            [
+              "I think that I'm too busy today",
+              "pienso que estoy demasiado ocupado hoy",
+              null,
+              6
+            ],
+            [
+              "I don't mind that you want to speak with me",
+              "no me importa que quieras hablar conmigo",
+              null,
+              9
+            ],
+            [
+              "I think that it's a good thing to make mistakes",
+              "pienso que es una cosa buena hacer errores",
+              null,
+              10
+            ],
+            [
+              "I'm sorry that I can't help you at the moment",
+              "lo siento que no puedo ayudarte en este momento",
+              null,
+              10
+            ],
+            [
+              "I want to find people who speak Spanish",
+              "quiero encontrar personas que hablan español",
+              null,
+              7
+            ],
+            [
+              "the money that I left",
+              "el dinero que dejé",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 0,
+            "longer_4_5": 3,
+            "long_6_plus": 5
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0195L02": {
+          "lego": [
+            "I left",
+            "dejé"
+          ],
+          "type": "A",
+          "new": true,
+          "available_legos": 537,
+          "practice_phrases": [
+            [
+              "I left",
+              "dejé",
+              null,
+              1
+            ],
+            [
+              "I left the money",
+              "dejé el dinero",
+              null,
+              2
+            ],
+            [
+              "I left it here",
+              "lo dejé aquí",
+              null,
+              3
+            ],
+            [
+              "I left my friend yesterday",
+              "dejé a mi amigo ayer",
+              null,
+              5
+            ],
+            [
+              "I think I left it here",
+              "pienso que lo dejé aquí",
+              null,
+              5
+            ],
+            [
+              "I left the money on the table",
+              "dejé el dinero en la mesa",
+              null,
+              5
+            ],
+            [
+              "I left my friend here yesterday",
+              "dejé a mi amigo aquí ayer",
+              null,
+              6
+            ],
+            [
+              "I left the letter in her bag last week",
+              "dejé la carta en su bolsa la semana pasada",
+              null,
+              9
+            ],
+            [
+              "I don't know where I left the money",
+              "no sé dónde dejé el dinero",
+              null,
+              7
+            ],
+            [
+              "the money I left on the table",
+              "el dinero que dejé en la mesa",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 1,
+            "longer_4_5": 3,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0195L03": {
+          "lego": [
+            "on the table",
+            "en la mesa"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 538,
+          "practice_phrases": [
+            [
+              "on the table",
+              "en la mesa",
+              null,
+              1
+            ],
+            [
+              "I left it on the table",
+              "lo dejé en la mesa",
+              null,
+              4
+            ],
+            [
+              "the money on the table",
+              "el dinero en la mesa",
+              null,
+              3
+            ],
+            [
+              "I left the money on the table",
+              "dejé el dinero en la mesa",
+              null,
+              5
+            ],
+            [
+              "I think it's on the table",
+              "pienso que está en la mesa",
+              null,
+              5
+            ],
+            [
+              "I'm looking for what I left on the table",
+              "estoy buscando lo que dejé en la mesa",
+              null,
+              8
+            ],
+            [
+              "I can't find the letter that I left on the table",
+              "no puedo encontrar la carta que dejé en la mesa",
+              null,
+              11
+            ],
+            [
+              "I'm trying to find the money I left on the table yesterday",
+              "estoy intentando encontrar el dinero que dejé en la mesa ayer",
+              null,
+              11
+            ],
+            [
+              "I'm looking for what I left on the table yesterday",
+              "estoy buscando lo que dejé en la mesa ayer",
+              null,
+              9
+            ],
+            [
+              "I'm trying to find the money I left on the table.",
+              "Estoy intentando encontrar el dinero que dejé en la mesa.",
+              null,
+              9
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 1,
+            "longer_4_5": 3,
+            "long_6_plus": 5
+          },
+          "full_seed_included": "YES - phrase 10",
+          "gate_compliance": "STRICT"
+        }
+      }
+    },
+    "S0196": {
+      "seed": "S0196",
+      "seed_pair": {
+        "known": "Have you heard the latest idea?",
+        "target": "¿Has oído la última idea?"
+      },
+      "cumulative_legos": 540,
+      "legos": {
+        "S0196L01": {
+          "lego": [
+            "have you heard",
+            "has oído"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 539,
+          "practice_phrases": [
+            [
+              "have you heard",
+              "has oído",
+              null,
+              1
+            ],
+            [
+              "have you heard the idea",
+              "has oído la idea",
+              null,
+              4
+            ],
+            [
+              "have you heard about that",
+              "has oído sobre eso",
+              null,
+              4
+            ],
+            [
+              "have you heard the latest idea",
+              "has oído la última idea",
+              null,
+              4
+            ],
+            [
+              "have you heard about this today",
+              "has oído sobre esto hoy",
+              null,
+              5
+            ],
+            [
+              "have you heard what I wanted to say",
+              "has oído lo que quería decir",
+              null,
+              7
+            ],
+            [
+              "have you heard the story that everyone is talking about",
+              "has oído la historia que todos están hablando",
+              null,
+              10
+            ],
+            [
+              "I don't know if you've heard the latest idea",
+              "no sé si has oído la última idea",
+              null,
+              9
+            ],
+            [
+              "have you heard what's going to happen tomorrow night",
+              "has oído lo que va a ocurrir mañana por la noche",
+              null,
+              10
+            ],
+            [
+              "have you heard the latest idea",
+              "has oído la última idea",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 0,
+            "longer_4_5": 5,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0196L02": {
+          "lego": [
+            "the latest idea",
+            "la última idea"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 540,
+          "practice_phrases": [
+            [
+              "the latest idea",
+              "la última idea",
+              null,
+              1
+            ],
+            [
+              "have you heard the latest idea",
+              "has oído la última idea",
+              null,
+              4
+            ],
+            [
+              "I like the latest idea",
+              "me gusta la última idea",
+              null,
+              4
+            ],
+            [
+              "what's the latest idea",
+              "cuál es la última idea",
+              null,
+              4
+            ],
+            [
+              "I think the latest idea is good",
+              "pienso que la última idea es buena",
+              null,
+              7
+            ],
+            [
+              "I don't understand the latest idea at all",
+              "no comprendo la última idea en absoluto",
+              null,
+              7
+            ],
+            [
+              "I want to know what the latest idea is",
+              "quiero saber cuál es la última idea",
+              null,
+              8
+            ],
+            [
+              "I'm trying to explain the latest idea to everyone else",
+              "estoy intentando explicar la última idea a todos los demás",
+              null,
+              10
+            ],
+            [
+              "have you heard the latest idea about what we need to do",
+              "has oído la última idea sobre lo que necesitamos hacer",
+              null,
+              12
+            ],
+            [
+              "Have you heard the latest idea?",
+              "¿Has oído la última idea?",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 0,
+            "longer_4_5": 4,
+            "long_6_plus": 5
+          },
+          "full_seed_included": "YES - phrase 10",
+          "gate_compliance": "STRICT"
+        }
+      }
+    },
+    "S0197": {
+      "seed": "S0197",
+      "seed_pair": {
+        "known": "My son works as a teacher.",
+        "target": "Mi hijo trabaja como profesor."
+      },
+      "cumulative_legos": 543,
+      "legos": {
+        "S0197L01": {
+          "lego": [
+            "my son",
+            "mi hijo"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 541,
+          "practice_phrases": [
+            [
+              "my son",
+              "mi hijo",
+              null,
+              1
+            ],
+            [
+              "my son works here",
+              "mi hijo trabaja aquí",
+              null,
+              3
+            ],
+            [
+              "my son wants to learn",
+              "mi hijo quiere aprender",
+              null,
+              4
+            ],
+            [
+              "I think my son is busy",
+              "pienso que mi hijo está ocupado",
+              null,
+              6
+            ],
+            [
+              "my son works as a teacher",
+              "mi hijo trabaja como profesor",
+              null,
+              5
+            ],
+            [
+              "my son is trying to speak Spanish",
+              "mi hijo está intentando hablar español",
+              null,
+              6
+            ],
+            [
+              "I think my son wants to help you tomorrow",
+              "pienso que mi hijo quiere ayudarte mañana",
+              null,
+              8
+            ],
+            [
+              "my son doesn't want to be quiet when I'm busy",
+              "mi hijo no quiere estar silencioso cuando estoy ocupado",
+              null,
+              10
+            ],
+            [
+              "I think that my son works too much at night",
+              "pienso que mi hijo trabaja demasiado por la noche",
+              null,
+              9
+            ],
+            [
+              "my son works as a teacher",
+              "mi hijo trabaja como profesor",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 1,
+            "longer_4_5": 3,
+            "long_6_plus": 5
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0197L02": {
+          "lego": [
+            "works",
+            "trabaja"
+          ],
+          "type": "A",
+          "new": true,
+          "available_legos": 542,
+          "practice_phrases": [
+            [
+              "works",
+              "trabaja",
+              null,
+              1
+            ],
+            [
+              "my son works",
+              "mi hijo trabaja",
+              null,
+              2
+            ],
+            [
+              "he works here",
+              "él trabaja aquí",
+              null,
+              3
+            ],
+            [
+              "she works at night",
+              "ella trabaja por la noche",
+              null,
+              4
+            ],
+            [
+              "my son works as a teacher",
+              "mi hijo trabaja como profesor",
+              null,
+              5
+            ],
+            [
+              "my friend works in an office tomorrow",
+              "mi amigo trabaja en una oficina mañana",
+              null,
+              7
+            ],
+            [
+              "I think he works too much every day",
+              "pienso que trabaja demasiado todo el día",
+              null,
+              7
+            ],
+            [
+              "she works for the council but she's looking for something else",
+              "trabaja para el consejo pero está buscando algo más",
+              null,
+              11
+            ],
+            [
+              "I don't know where he works at the moment",
+              "no sé dónde trabaja en este momento",
+              null,
+              8
+            ],
+            [
+              "my son works as a teacher",
+              "mi hijo trabaja como profesor",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 1,
+            "longer_4_5": 2,
+            "long_6_plus": 5
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0197L03": {
+          "lego": [
+            "as a teacher",
+            "como profesor"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 543,
+          "practice_phrases": [
+            [
+              "as a teacher",
+              "como profesor",
+              null,
+              1
+            ],
+            [
+              "I work as a teacher",
+              "trabajo como profesor",
+              null,
+              4
+            ],
+            [
+              "my son works as a teacher",
+              "mi hijo trabaja como profesor",
+              null,
+              5
+            ],
+            [
+              "he wants to work as a teacher",
+              "quiere trabajar como profesor",
+              null,
+              6
+            ],
+            [
+              "I used to work as a teacher",
+              "solía trabajar como profesor",
+              null,
+              5
+            ],
+            [
+              "my friend is trying to work as a teacher",
+              "mi amigo está intentando trabajar como profesor",
+              null,
+              9
+            ],
+            [
+              "I think that working as a teacher is interesting",
+              "pienso que trabajar como profesor es interesante",
+              null,
+              8
+            ],
+            [
+              "I'd like to be able to work as a teacher",
+              "me gustaría poder trabajar como profesor",
+              null,
+              9
+            ],
+            [
+              "my son works as a teacher but he's too busy",
+              "mi hijo trabaja como profesor pero está demasiado ocupado",
+              null,
+              10
+            ],
+            [
+              "My son works as a teacher.",
+              "Mi hijo trabaja como profesor.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 0,
+            "longer_4_5": 3,
+            "long_6_plus": 6
+          },
+          "full_seed_included": "YES - phrase 10",
+          "gate_compliance": "STRICT"
+        }
+      }
+    },
+    "S0198": {
+      "seed": "S0198",
+      "seed_pair": {
+        "known": "My daughter works for the council.",
+        "target": "Mi hija trabaja para el consejo."
+      },
+      "cumulative_legos": 545,
+      "legos": {
+        "S0198L01": {
+          "lego": [
+            "my daughter",
+            "mi hija"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 544,
+          "practice_phrases": [
+            [
+              "my daughter",
+              "mi hija",
+              null,
+              1
+            ],
+            [
+              "my daughter works here",
+              "mi hija trabaja aquí",
+              null,
+              3
+            ],
+            [
+              "I think my daughter wants to learn",
+              "pienso que mi hija quiere aprender",
+              null,
+              6
+            ],
+            [
+              "I think my daughter wants to help",
+              "pienso que mi hija quiere ayudar",
+              null,
+              7
+            ],
+            [
+              "my daughter works for the council",
+              "mi hija trabaja para el consejo",
+              null,
+              5
+            ],
+            [
+              "my daughter is trying to learn Spanish at night",
+              "mi hija está intentando aprender español por la noche",
+              null,
+              9
+            ],
+            [
+              "I want to know if my daughter wants to speak with you",
+              "quiero saber si mi hija quiere hablar contigo",
+              null,
+              10
+            ],
+            [
+              "my daughter doesn't mind working all day at the moment",
+              "a mi hija no le importa trabajar todo el día en este momento",
+              null,
+              12
+            ],
+            [
+              "I think my daughter wants to speak with you",
+              "pienso que mi hija quiere hablar contigo",
+              null,
+              7
+            ],
+            [
+              "my daughter works for the council",
+              "mi hija trabaja para el consejo",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 1,
+            "longer_4_5": 2,
+            "long_6_plus": 6
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0197L02": {
+          "lego": [
+            "works",
+            "trabaja"
+          ],
+          "type": "A",
+          "available_legos": 544,
+          "practice_phrases": [
+            [
+              "works",
+              "trabaja",
+              null,
+              1
+            ],
+            [
+              "my daughter works",
+              "mi hija trabaja",
+              null,
+              2
+            ],
+            [
+              "she works here",
+              "ella trabaja aquí",
+              null,
+              3
+            ],
+            [
+              "he works at night",
+              "él trabaja por la noche",
+              null,
+              4
+            ],
+            [
+              "my daughter works for the council",
+              "mi hija trabaja para el consejo",
+              null,
+              5
+            ],
+            [
+              "my friend works in an office every day",
+              "mi amigo trabaja en una oficina todo el día",
+              null,
+              8
+            ],
+            [
+              "I think she works too much this week",
+              "pienso que trabaja demasiado esta semana",
+              null,
+              7
+            ],
+            [
+              "he works for the council but he wants something else",
+              "trabaja para el consejo pero quiere algo más",
+              null,
+              10
+            ],
+            [
+              "I don't know if she works tomorrow at all",
+              "no sé si trabaja mañana en absoluto",
+              null,
+              8
+            ],
+            [
+              "my daughter works for the council",
+              "mi hija trabaja para el consejo",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 1,
+            "longer_4_5": 2,
+            "long_6_plus": 5
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0198L02": {
+          "lego": [
+            "for the council",
+            "para el consejo"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 545,
+          "practice_phrases": [
+            [
+              "for the council",
+              "para el consejo",
+              null,
+              1
+            ],
+            [
+              "I work for the council",
+              "trabajo para el consejo",
+              null,
+              4
+            ],
+            [
+              "my daughter works for the council",
+              "mi hija trabaja para el consejo",
+              null,
+              5
+            ],
+            [
+              "he wants to work for the council",
+              "quiere trabajar para el consejo",
+              null,
+              6
+            ],
+            [
+              "I used to work for the council",
+              "solía trabajar para el consejo",
+              null,
+              5
+            ],
+            [
+              "my friend is trying to work for the council",
+              "mi amigo está intentando trabajar para el consejo",
+              null,
+              9
+            ],
+            [
+              "I think that working for the council is interesting",
+              "pienso que trabajar para el consejo es interesante",
+              null,
+              9
+            ],
+            [
+              "I'd like to be able to work for the council",
+              "me gustaría poder trabajar para el consejo",
+              null,
+              10
+            ],
+            [
+              "my daughter works for the council but she wants something else",
+              "mi hija trabaja para el consejo pero quiere algo más",
+              null,
+              9
+            ],
+            [
+              "My daughter works for the council.",
+              "Mi hija trabaja para el consejo.",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 0,
+            "longer_4_5": 3,
+            "long_6_plus": 6
+          },
+          "full_seed_included": "YES - phrase 10",
+          "gate_compliance": "STRICT"
+        }
+      }
+    },
+    "S0199": {
+      "seed": "S0199",
+      "seed_pair": {
+        "known": "My friend used to work in an office.",
+        "target": "Mi amigo solía trabajar en una oficina."
+      },
+      "cumulative_legos": 547,
+      "legos": {
+        "S0130L02": {
+          "lego": [
+            "my friend",
+            "mi amigo"
+          ],
+          "type": "M",
+          "available_legos": 545,
+          "practice_phrases": [
+            [
+              "my friend",
+              "mi amigo",
+              null,
+              1
+            ],
+            [
+              "my friend works here",
+              "mi amigo trabaja aquí",
+              null,
+              3
+            ],
+            [
+              "my friend is busy today",
+              "mi amigo está ocupado hoy",
+              null,
+              5
+            ],
+            [
+              "I think my friend wants to help",
+              "pienso que mi amigo quiere ayudar",
+              null,
+              6
+            ],
+            [
+              "my friend used to work here",
+              "mi amigo solía trabajar aquí",
+              null,
+              5
+            ],
+            [
+              "my friend is trying to find the money",
+              "mi amigo está intentando encontrar el dinero",
+              null,
+              8
+            ],
+            [
+              "I want to know if my friend wants to speak with you",
+              "quiero saber si mi amigo quiere hablar contigo",
+              null,
+              9
+            ],
+            [
+              "my friend doesn't mind working at night at all",
+              "a mi amigo no le importa trabajar por la noche en absoluto",
+              null,
+              10
+            ],
+            [
+              "I think that my friend is too busy to help you tomorrow",
+              "pienso que mi amigo está demasiado ocupado para ayudarte mañana",
+              null,
+              11
+            ],
+            [
+              "my friend used to work in an office",
+              "mi amigo solía trabajar en una oficina",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 1,
+            "longer_4_5": 2,
+            "long_6_plus": 6
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0199L01": {
+          "lego": [
+            "used to work",
+            "solía trabajar"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 546,
+          "practice_phrases": [
+            [
+              "used to work",
+              "solía trabajar",
+              null,
+              1
+            ],
+            [
+              "I used to work here",
+              "solía trabajar aquí",
+              null,
+              3
+            ],
+            [
+              "my friend used to work here",
+              "mi amigo solía trabajar aquí",
+              null,
+              5
+            ],
+            [
+              "he used to work at night",
+              "solía trabajar por la noche",
+              null,
+              5
+            ],
+            [
+              "I used to work for the council",
+              "solía trabajar para el consejo",
+              null,
+              5
+            ],
+            [
+              "my daughter used to work in an office",
+              "mi hija solía trabajar en una oficina",
+              null,
+              6
+            ],
+            [
+              "I used to work as a teacher but I'm too busy now",
+              "solía trabajar como profesor pero estoy demasiado ocupado ahora",
+              null,
+              10
+            ],
+            [
+              "my friend used to work here but he's too busy now",
+              "mi amigo solía trabajar aquí pero está demasiado ocupado ahora",
+              null,
+              11
+            ],
+            [
+              "I think that I used to work too much every day",
+              "pienso que solía trabajar demasiado todo el día",
+              null,
+              9
+            ],
+            [
+              "my friend used to work in an office",
+              "mi amigo solía trabajar en una oficina",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 1,
+            "longer_4_5": 3,
+            "long_6_plus": 5
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0199L02": {
+          "lego": [
+            "in an office",
+            "en una oficina"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 547,
+          "practice_phrases": [
+            [
+              "in an office",
+              "en una oficina",
+              null,
+              1
+            ],
+            [
+              "I work in an office",
+              "trabajo en una oficina",
+              null,
+              4
+            ],
+            [
+              "my friend works in an office",
+              "mi amigo trabaja en una oficina",
+              null,
+              6
+            ],
+            [
+              "I used to work in an office",
+              "solía trabajar en una oficina",
+              null,
+              5
+            ],
+            [
+              "he wants to work in an office",
+              "quiere trabajar en una oficina",
+              null,
+              6
+            ],
+            [
+              "I'm trying to find work in an office",
+              "estoy intentando encontrar trabajo en una oficina",
+              null,
+              8
+            ],
+            [
+              "my friend used to work in an office every day",
+              "mi amigo solía trabajar en una oficina todo el día",
+              null,
+              9
+            ],
+            [
+              "I think that working in an office is interesting",
+              "pienso que trabajar en una oficina es interesante",
+              null,
+              9
+            ],
+            [
+              "I'd like to be able to work in an office tomorrow",
+              "me gustaría poder trabajar en una oficina mañana",
+              null,
+              10
+            ],
+            [
+              "My friend used to work in an office.",
+              "Mi amigo solía trabajar en una oficina.",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 0,
+            "longer_4_5": 3,
+            "long_6_plus": 6
+          },
+          "full_seed_included": "YES - phrase 10",
+          "gate_compliance": "STRICT"
+        }
+      }
+    },
+    "S0200": {
+      "seed": "S0200",
+      "seed_pair": {
+        "known": "They say they want to make sure that we finish everything in time.",
+        "target": "Dicen que quieren asegurarse de que terminemos todo a tiempo."
+      },
+      "cumulative_legos": 551,
+      "legos": {
+        "S0200L01": {
+          "lego": [
+            "they say",
+            "dicen"
+          ],
+          "type": "A",
+          "new": true,
+          "available_legos": 548,
+          "practice_phrases": [
+            [
+              "they say",
+              "dicen",
+              null,
+              1
+            ],
+            [
+              "they say it's good",
+              "dicen que es bueno",
+              null,
+              4
+            ],
+            [
+              "they say I work too much",
+              "dicen que trabajo demasiado",
+              null,
+              5
+            ],
+            [
+              "they say they want to help",
+              "dicen que quieren ayudar",
+              null,
+              5
+            ],
+            [
+              "they say it's a good idea",
+              "dicen que es una buena idea",
+              null,
+              6
+            ],
+            [
+              "they say they're trying to finish in time",
+              "dicen que están intentando terminar a tiempo",
+              null,
+              8
+            ],
+            [
+              "they say they're trying to finish in time",
+              "dicen que están intentando terminar a tiempo",
+              null,
+              7
+            ],
+            [
+              "I don't know what they say about the latest idea",
+              "no sé qué dicen sobre la última idea",
+              null,
+              9
+            ],
+            [
+              "they say they want to make sure we finish everything",
+              "dicen que quieren asegurarse de que terminemos todo",
+              null,
+              9
+            ],
+            [
+              "they say they want to make sure",
+              "dicen que quieren asegurarse",
+              null,
+              5
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 0,
+            "longer_4_5": 4,
+            "long_6_plus": 5
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0200L02": {
+          "lego": [
+            "that they want",
+            "que quieren"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 549,
+          "practice_phrases": [
+            [
+              "that they want",
+              "que quieren",
+              null,
+              1
+            ],
+            [
+              "I think that they want to help",
+              "pienso que quieren ayudar",
+              null,
+              6
+            ],
+            [
+              "they say that they want to learn",
+              "dicen que quieren aprender",
+              null,
+              6
+            ],
+            [
+              "I know that they want to finish",
+              "sé que quieren terminar",
+              null,
+              5
+            ],
+            [
+              "they say that they want to speak",
+              "dicen que quieren hablar",
+              null,
+              6
+            ],
+            [
+              "I don't know if they want to work tomorrow",
+              "no sé si quieren trabajar mañana",
+              null,
+              8
+            ],
+            [
+              "they say they want to make sure everything is ready",
+              "dicen que quieren asegurarse de que todo está preparado",
+              null,
+              9
+            ],
+            [
+              "I think that they want to be able to help you",
+              "pienso que quieren poder ayudarte",
+              null,
+              9
+            ],
+            [
+              "they say that they want to finish everything before tomorrow night",
+              "dicen que quieren terminar todo antes de mañana por la noche",
+              null,
+              11
+            ],
+            [
+              "they say that they want to make sure",
+              "dicen que quieren asegurarse",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 0,
+            "longer_4_5": 3,
+            "long_6_plus": 6
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0200L03": {
+          "lego": [
+            "to make sure",
+            "asegurarse de"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 550,
+          "practice_phrases": [
+            [
+              "to make sure",
+              "asegurarse de",
+              null,
+              1
+            ],
+            [
+              "they want to make sure",
+              "quieren asegurarse de",
+              null,
+              4
+            ],
+            [
+              "they're trying to make sure",
+              "están intentando asegurarse de",
+              null,
+              4
+            ],
+            [
+              "he wants to make sure it's ready",
+              "quiere asegurarse de que está preparado",
+              null,
+              7
+            ],
+            [
+              "they want to make sure we finish",
+              "quieren asegurarse de que terminemos",
+              null,
+              6
+            ],
+            [
+              "they want to make sure we can speak Spanish",
+              "quieren asegurarse de que hablamos español",
+              null,
+              7
+            ],
+            [
+              "they say they want to make sure we finish in time",
+              "dicen que quieren asegurarse de que terminemos a tiempo",
+              null,
+              10
+            ],
+            [
+              "he wants to make sure you understand what he wants to say",
+              "quiere asegurarse de que comprendes lo que quiere decir",
+              null,
+              11
+            ],
+            [
+              "they want to make sure we finish everything before tomorrow",
+              "quieren asegurarse de que terminemos todo antes de mañana",
+              null,
+              9
+            ],
+            [
+              "they want to make sure we finish",
+              "quieren asegurarse de que terminemos",
+              null,
+              6
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 0,
+            "longer_4_5": 4,
+            "long_6_plus": 5
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0200L04": {
+          "lego": [
+            "that we finish",
+            "que terminemos"
+          ],
+          "type": "M",
+          "new": true,
+          "available_legos": 551,
+          "practice_phrases": [
+            [
+              "that we finish",
+              "que terminemos",
+              null,
+              1
+            ],
+            [
+              "they want that we finish",
+              "quieren que terminemos",
+              null,
+              4
+            ],
+            [
+              "I hope that we finish today",
+              "espero que terminemos hoy",
+              null,
+              5
+            ],
+            [
+              "I think that we finish in time",
+              "pienso que terminemos a tiempo",
+              null,
+              6
+            ],
+            [
+              "they want to make sure that we finish",
+              "quieren asegurarse de que terminemos",
+              null,
+              6
+            ],
+            [
+              "they want to make sure that we finish everything",
+              "quieren asegurarse de que terminemos todo",
+              null,
+              7
+            ],
+            [
+              "they say they want to make sure that we finish everything",
+              "dicen que quieren asegurarse de que terminemos todo",
+              null,
+              10
+            ],
+            [
+              "I don't know if they want us to finish in time",
+              "no sé si quieren que terminemos a tiempo",
+              null,
+              9
+            ],
+            [
+              "they want to make sure that we finish before tomorrow night",
+              "quieren asegurarse de que terminemos antes de mañana por la noche",
+              null,
+              11
+            ],
+            [
+              "they want to make sure that we finish everything",
+              "quieren asegurarse de que terminemos todo",
+              null,
+              7
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 0,
+            "longer_4_5": 3,
+            "long_6_plus": 6
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0045L03": {
+          "lego": [
+            "everything",
+            "todo"
+          ],
+          "type": "A",
+          "available_legos": 551,
+          "practice_phrases": [
+            [
+              "everything",
+              "todo",
+              null,
+              1
+            ],
+            [
+              "I know everything",
+              "sé todo",
+              null,
+              2
+            ],
+            [
+              "I want to finish everything today",
+              "quiero terminar todo hoy",
+              null,
+              4
+            ],
+            [
+              "they want to finish everything",
+              "quieren terminar todo",
+              null,
+              4
+            ],
+            [
+              "I'm trying to remember everything",
+              "estoy intentando recordar todo",
+              null,
+              4
+            ],
+            [
+              "I don't need to know everything at all",
+              "no necesito saber todo en absoluto",
+              null,
+              7
+            ],
+            [
+              "they want to make sure that we finish everything",
+              "quieren asegurarse de que terminemos todo",
+              null,
+              7
+            ],
+            [
+              "I'm trying to finish everything before I have to go",
+              "estoy intentando terminar todo antes de que tenga que ir",
+              null,
+              11
+            ],
+            [
+              "I think that I need to understand everything before tomorrow",
+              "pienso que necesito comprender todo antes de mañana",
+              null,
+              9
+            ],
+            [
+              "we finish everything in time",
+              "terminemos todo a tiempo",
+              null,
+              4
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 1,
+            "longer_4_5": 3,
+            "long_6_plus": 4
+          },
+          "gate_compliance": "STRICT"
+        },
+        "S0091L05": {
+          "lego": [
+            "in time",
+            "a tiempo"
+          ],
+          "type": "M",
+          "available_legos": 551,
+          "practice_phrases": [
+            [
+              "in time",
+              "a tiempo",
+              null,
+              1
+            ],
+            [
+              "I want to finish in time",
+              "quiero terminar a tiempo",
+              null,
+              5
+            ],
+            [
+              "we need to finish in time",
+              "necesitamos terminar a tiempo",
+              null,
+              5
+            ],
+            [
+              "I want to finish in time",
+              "quiero terminar a tiempo",
+              null,
+              4
+            ],
+            [
+              "they want to finish everything in time",
+              "quieren terminar todo a tiempo",
+              null,
+              6
+            ],
+            [
+              "they want to make sure we finish in time",
+              "quieren asegurarse de que terminemos a tiempo",
+              null,
+              8
+            ],
+            [
+              "they say they want to make sure we finish in time",
+              "dicen que quieren asegurarse de que terminemos a tiempo",
+              null,
+              10
+            ],
+            [
+              "I don't know if I want to finish everything in time today",
+              "no sé si quiero terminar todo a tiempo hoy",
+              null,
+              10
+            ],
+            [
+              "they're trying to finish everything in time before tomorrow night",
+              "están intentando terminar todo a tiempo antes de mañana por la noche",
+              null,
+              10
+            ],
+            [
+              "They say they want to make sure that we finish everything in time.",
+              "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+              null,
+              11
+            ]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 1,
+            "quite_short_3": 0,
+            "longer_4_5": 3,
+            "long_6_plus": 6
+          },
+          "full_seed_included": "YES - phrase 10",
+          "gate_compliance": "STRICT"
+        }
+      }
+    }
+  }
+}

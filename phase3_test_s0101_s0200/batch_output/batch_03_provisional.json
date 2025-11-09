@@ -1,0 +1,577 @@
+{
+  "batch_id": "S0121_S0130",
+  "batch_number": 3,
+  "extractor": "Agent 3",
+  "extracted_at": "2025-11-07T00:00:00Z",
+  "seeds": [
+    {
+      "seed_id": "S0121",
+      "seed_pair": {
+        "target": "Es inusual que no te guste usar tu auto.",
+        "known": "It's unusual that you don't like to use your car."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0121_01",
+          "type": "M",
+          "target": "es inusual",
+          "known": "it's unusual",
+          "new": true,
+          "components": [
+            ["es", "it is"],
+            ["inusual", "unusual"]
+          ]
+        },
+        {
+          "id": "S0010L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "ref": "S0010",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0121_02",
+          "type": "M",
+          "target": "no te guste",
+          "known": "you don't like",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["te", "you"],
+            ["guste", "like (subjunctive)"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0121_03",
+          "type": "A",
+          "target": "usar",
+          "known": "to use",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0121_04",
+          "type": "A",
+          "target": "tu",
+          "known": "your",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0121_05",
+          "type": "A",
+          "target": "auto",
+          "known": "car",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0122",
+      "seed_pair": {
+        "target": "Está empezando a sentirse más fácil y estoy entusiasmado por cómo va.",
+        "known": "It's starting to feel easier and I'm excited about how it's going."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0122_01",
+          "type": "M",
+          "target": "está empezando a",
+          "known": "it's starting to",
+          "new": true,
+          "components": [
+            ["está", "it is"],
+            ["empezando", "starting"],
+            ["a", "to"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0122_02",
+          "type": "A",
+          "target": "sentirse",
+          "known": "to feel",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0122_03",
+          "type": "M",
+          "target": "más fácil",
+          "known": "easier",
+          "new": true,
+          "components": [
+            ["más", {"ref": "S0023L02"}],
+            ["fácil", "easy"]
+          ]
+        },
+        {
+          "id": "S0015L01",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "ref": "S0015",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0122_04",
+          "type": "M",
+          "target": "estoy entusiasmado",
+          "known": "I'm excited",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["entusiasmado", "excited"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0122_05",
+          "type": "A",
+          "target": "por",
+          "known": "about",
+          "new": true
+        },
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "cómo",
+          "known": "how",
+          "ref": "S0003",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0122_06",
+          "type": "A",
+          "target": "va",
+          "known": "it's going",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0123",
+      "seed_pair": {
+        "target": "Creo que eso es una buena idea.",
+        "known": "I think that's a good idea."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0123_01",
+          "type": "M",
+          "target": "creo que",
+          "known": "I think that",
+          "new": true,
+          "components": [
+            ["creo", "I think"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "ref": "S0061",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0123_02",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0123_03",
+          "type": "M",
+          "target": "una buena idea",
+          "known": "a good idea",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["buena", "good"],
+            ["idea", "idea"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0124",
+      "seed_pair": {
+        "target": "Creí que eso era una buena idea.",
+        "known": "I thought that was a good idea."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0124_01",
+          "type": "M",
+          "target": "creí que",
+          "known": "I thought that",
+          "new": true,
+          "components": [
+            ["creí", "I thought"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "ref": "S0061",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0124_02",
+          "type": "A",
+          "target": "era",
+          "known": "was",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0124_03",
+          "type": "M",
+          "target": "una buena idea",
+          "known": "a good idea",
+          "ref": "S0123",
+          "new": false,
+          "components": [
+            ["una", "a"],
+            ["buena", "good"],
+            ["idea", "idea"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0125",
+      "seed_pair": {
+        "target": "Creo que tu idea era muy buena.",
+        "known": "I believe that your idea was very good."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0125_01",
+          "type": "M",
+          "target": "creo que",
+          "known": "I believe that",
+          "ref": "S0123",
+          "new": false,
+          "components": [
+            ["creo", "I believe"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0125_02",
+          "type": "A",
+          "target": "tu",
+          "known": "your",
+          "ref": "S0121",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0125_03",
+          "type": "A",
+          "target": "idea",
+          "known": "idea",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0125_04",
+          "type": "A",
+          "target": "era",
+          "known": "was",
+          "ref": "S0124",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0125_05",
+          "type": "M",
+          "target": "muy buena",
+          "known": "very good",
+          "new": true,
+          "components": [
+            ["muy", "very"],
+            ["buena", "good"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0126",
+      "seed_pair": {
+        "target": "Este trabajo está cambiando la forma de mi cerebro.",
+        "known": "This work is changing the shape of my brain."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0126_01",
+          "type": "A",
+          "target": "este",
+          "known": "this",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0126_02",
+          "type": "A",
+          "target": "trabajo",
+          "known": "work",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0126_03",
+          "type": "M",
+          "target": "está cambiando",
+          "known": "is changing",
+          "new": true,
+          "components": [
+            ["está", "is"],
+            ["cambiando", "changing"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0126_04",
+          "type": "M",
+          "target": "la forma",
+          "known": "the shape",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["forma", "shape"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0126_05",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0126_06",
+          "type": "A",
+          "target": "mi",
+          "known": "my",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0126_07",
+          "type": "A",
+          "target": "cerebro",
+          "known": "brain",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0127",
+      "seed_pair": {
+        "target": "Eso no es por qué quería verte.",
+        "known": "That isn't why I wanted to see you."
+      },
+      "legos": [
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "ref": "S0061",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0127_01",
+          "type": "M",
+          "target": "no es",
+          "known": "isn't",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["es", "is"]
+          ]
+        },
+        {
+          "id": "S0021L01",
+          "type": "M",
+          "target": "por qué",
+          "known": "why",
+          "ref": "S0021",
+          "new": false
+        },
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "target": "quería",
+          "known": "I wanted",
+          "ref": "S0030",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0127_02",
+          "type": "A",
+          "target": "verte",
+          "known": "to see you",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0128",
+      "seed_pair": {
+        "target": "Eres como alguien que conocía.",
+        "known": "You're like someone I used to know."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0128_01",
+          "type": "A",
+          "target": "eres",
+          "known": "you're",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0128_02",
+          "type": "A",
+          "target": "como",
+          "known": "like",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0128_03",
+          "type": "A",
+          "target": "alguien",
+          "known": "someone",
+          "new": true
+        },
+        {
+          "id": "S0010L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "ref": "S0010",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0128_04",
+          "type": "A",
+          "target": "conocía",
+          "known": "I used to know",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0129",
+      "seed_pair": {
+        "target": "Estoy tan feliz de que te vaya tan bien.",
+        "known": "I'm so happy that you're doing so well."
+      },
+      "legos": [
+        {
+          "provisional_id": "PROV_S0129_01",
+          "type": "M",
+          "target": "estoy tan feliz",
+          "known": "I'm so happy",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["tan", "so"],
+            ["feliz", "happy"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0129_02",
+          "type": "M",
+          "target": "de que",
+          "known": "that",
+          "new": true,
+          "components": [
+            ["de", "of"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0129_03",
+          "type": "M",
+          "target": "te vaya",
+          "known": "you're doing",
+          "new": true,
+          "components": [
+            ["te", "you"],
+            ["vaya", "are going (subjunctive)"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0129_04",
+          "type": "M",
+          "target": "tan bien",
+          "known": "so well",
+          "new": true,
+          "components": [
+            ["tan", "so"],
+            ["bien", "well"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0130",
+      "seed_pair": {
+        "target": "Eso fue una sorpresa, porque es mi amigo.",
+        "known": "That was a surprise, because he's my friend."
+      },
+      "legos": [
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "ref": "S0061",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0130_01",
+          "type": "A",
+          "target": "fue",
+          "known": "was",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0130_02",
+          "type": "M",
+          "target": "una sorpresa",
+          "known": "a surprise",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["sorpresa", "surprise"]
+          ]
+        },
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "target": "porque",
+          "known": "because",
+          "ref": "S0022",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0130_03",
+          "type": "A",
+          "target": "es",
+          "known": "he's",
+          "ref": "S0123",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0130_04",
+          "type": "M",
+          "target": "mi amigo",
+          "known": "my friend",
+          "new": true,
+          "components": [
+            ["mi", "my"],
+            ["amigo", "friend"]
+          ]
+        }
+      ]
+    }
+  ]
+}
