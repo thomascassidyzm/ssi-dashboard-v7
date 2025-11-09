@@ -1148,6 +1148,125 @@ async function spawnCourseOrchestrator(courseCode, params) {
 }
 
 /**
+ * Web Mode Orchestrator - Uses browser automation to claude.ai/code
+ * Opens browser tabs with phase prompts, user manually pastes and runs
+ */
+async function spawnCourseOrchestratorWeb(courseCode, params) {
+  const job = STATE.jobs.get(courseCode);
+  const courseDir = await ensureCourseDirectory(courseCode);
+
+  console.log(`[Web Orchestrator] Starting browser-based course generation: ${courseCode}`);
+  console.log(`[Web Orchestrator] Mode: Claude Code on the Web (manual prompt execution)`);
+
+  const { target, known, seeds, startSeed, endSeed } = params;
+
+  try {
+    // Import the browser automation module
+    const { spawnAgentsWithPromptFiles } = require('./spawn_claude_web_agent.cjs');
+
+    job.status = 'web_mode_manual';
+    job.phase = 'web_mode_instructions';
+    job.progress = 0;
+    job.message = 'Browser tabs will open with prompts. Please paste into each Claude Code tab and run.';
+
+    console.log(`[Web Orchestrator] ============================================`);
+    console.log(`[Web Orchestrator] WEB MODE - MANUAL PROMPT EXECUTION`);
+    console.log(`[Web Orchestrator] ============================================`);
+    console.log(`[Web Orchestrator] `);
+    console.log(`[Web Orchestrator] Browser tabs will open for each phase.`);
+    console.log(`[Web Orchestrator] Prompt files will be created in:`);
+    console.log(`[Web Orchestrator]   ${courseDir}/prompts/`);
+    console.log(`[Web Orchestrator] `);
+    console.log(`[Web Orchestrator] MANUAL STEPS REQUIRED:`);
+    console.log(`[Web Orchestrator]   1. Browser tabs will open automatically`);
+    console.log(`[Web Orchestrator]   2. Copy prompt from prompt files`);
+    console.log(`[Web Orchestrator]   3. Paste into each Claude Code tab`);
+    console.log(`[Web Orchestrator]   4. Hit Enter to run`);
+    console.log(`[Web Orchestrator]   5. Wait for completion`);
+    console.log(`[Web Orchestrator]   6. Commit outputs to VFS`);
+    console.log(`[Web Orchestrator] `);
+    console.log(`[Web Orchestrator] ============================================`);
+
+    // Phase 1: Translation
+    console.log(`\n[Web Orchestrator] Preparing Phase 1 prompt...`);
+    const phase1Brief = generatePhase1Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
+
+    const phase1PromptFile = path.join(courseDir, 'prompts', 'phase_1_translation.md');
+    await fs.ensureDir(path.join(courseDir, 'prompts'));
+    await fs.writeFile(phase1PromptFile, phase1Brief, 'utf8');
+
+    console.log(`[Web Orchestrator] ✅ Phase 1 prompt: ${phase1PromptFile}`);
+
+    // Phase 3: LEGO Extraction
+    console.log(`[Web Orchestrator] Preparing Phase 3 prompt...`);
+    const phase3Brief = generatePhase3Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
+
+    const phase3PromptFile = path.join(courseDir, 'prompts', 'phase_3_lego_extraction.md');
+    await fs.writeFile(phase3PromptFile, phase3Brief, 'utf8');
+
+    console.log(`[Web Orchestrator] ✅ Phase 3 prompt: ${phase3PromptFile}`);
+
+    // Phase 5: Baskets (if needed)
+    console.log(`[Web Orchestrator] Preparing Phase 5 prompt...`);
+    const phase5Brief = generatePhase5Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
+
+    const phase5PromptFile = path.join(courseDir, 'prompts', 'phase_5_baskets.md');
+    await fs.writeFile(phase5PromptFile, phase5Brief, 'utf8');
+
+    console.log(`[Web Orchestrator] ✅ Phase 5 prompt: ${phase5PromptFile}`);
+
+    // Open browser tabs
+    console.log(`\n[Web Orchestrator] Opening 3 Claude Code browser tabs...`);
+    const prompts = [
+      `Phase 1: Pedagogical Translation\n\nSee prompt file: ${phase1PromptFile}`,
+      `Phase 3: LEGO Extraction\n\nSee prompt file: ${phase3PromptFile}`,
+      `Phase 5: Practice Baskets\n\nSee prompt file: ${phase5PromptFile}`
+    ];
+
+    const promptDir = path.join(courseDir, 'web_prompts');
+    const result = await spawnAgentsWithPromptFiles(prompts, promptDir);
+
+    console.log(`\n[Web Orchestrator] ✅ ${result.tabCount} browser tabs opened`);
+    console.log(`[Web Orchestrator] ✅ Prompt files created: ${result.promptFiles.length}`);
+    console.log(`\n[Web Orchestrator] NEXT STEPS:`);
+    console.log(`[Web Orchestrator]   1. Switch to browser tabs`);
+    console.log(`[Web Orchestrator]   2. Copy prompts from:\n[Web Orchestrator]      - ${phase1PromptFile}\n[Web Orchestrator]      - ${phase3PromptFile}\n[Web Orchestrator]      - ${phase5PromptFile}`);
+    console.log(`[Web Orchestrator]   3. Paste into respective Claude Code tabs`);
+    console.log(`[Web Orchestrator]   4. Hit Enter to execute`);
+    console.log(`[Web Orchestrator]   5. Monitor outputs in VFS`);
+
+    job.phase = 'web_mode_waiting';
+    job.progress = 10;
+    job.message = 'Waiting for manual execution in browser tabs';
+
+  } catch (error) {
+    console.error(`[Web Orchestrator] Error:`, error);
+    job.status = 'failed';
+    job.error = error.message;
+  }
+}
+
+/**
+ * API Mode Orchestrator - Direct Anthropic API calls (STUB - NOT IMPLEMENTED YET)
+ */
+async function spawnCourseOrchestratorAPI(courseCode, params) {
+  const job = STATE.jobs.get(courseCode);
+
+  console.log(`[API Orchestrator] API mode requested for: ${courseCode}`);
+  console.log(`[API Orchestrator] ⚠️  API mode is not yet implemented`);
+
+  job.status = 'failed';
+  job.phase = 'api_mode_not_implemented';
+  job.progress = 0;
+  job.error = 'API mode not yet implemented. Please use Web Mode or Local Mode instead.';
+  job.message = 'API execution mode is coming soon. Use Web Mode for cost-effective generation or Local Mode for full automation.';
+
+  console.log(`[API Orchestrator] Please use one of these modes instead:`);
+  console.log(`[API Orchestrator]   - Web Mode: Browser automation (recommended, $0 cost)`);
+  console.log(`[API Orchestrator]   - Local Mode: iTerm2 + Claude CLI (fully automated)`);
+}
+
+/**
  * Run intelligent validator on Phase 3 output
  * Temporarily renames .tmp.json to .json for validation, then renames back if validation fails
  */
@@ -3241,11 +3360,16 @@ app.post('/api/courses/generate', async (req, res) => {
     return res.status(400).json({ error: 'Missing target or known language' });
   }
 
+  // Extract execution mode
+  const executionMode = req.body.executionMode || 'local';
+
   // Calculate total seeds
   const seeds = endSeed - startSeed + 1;
 
   // Generate course code (just language pair - seed range is a processing parameter)
   const courseCode = `${target}_for_${known}`;
+
+  console.log(`[API] Course generation requested: ${courseCode} (mode: ${executionMode}, seeds: ${startSeed}-${endSeed})`);
 
   // Check if job already exists
   if (STATE.jobs.has(courseCode)) {
@@ -3266,23 +3390,55 @@ app.post('/api/courses/generate', async (req, res) => {
     phase: 'initializing',
     progress: 0,
     startTime: new Date(),
+    executionMode,
     params: { target, known, seeds, startSeed, endSeed },
     windowIds: [] // Track iTerm2 windows for cleanup
   };
 
   STATE.jobs.set(courseCode, job);
 
-  // Start orchestrator in background
-  spawnCourseOrchestrator(courseCode, { target, known, seeds, startSeed, endSeed }).catch(err => {
-    console.error(`[API] Orchestrator error:`, err);
-  });
+  // Route to appropriate orchestrator based on execution mode
+  try {
+    if (executionMode === 'web') {
+      console.log(`[API] Using Web Mode - Browser automation`);
+      spawnCourseOrchestratorWeb(courseCode, { target, known, seeds, startSeed, endSeed }).catch(err => {
+        console.error(`[API] Web orchestrator error:`, err);
+        job.status = 'failed';
+        job.error = err.message;
+      });
+    } else if (executionMode === 'api') {
+      console.log(`[API] Using API Mode - Direct Anthropic API`);
+      spawnCourseOrchestratorAPI(courseCode, { target, known, seeds, startSeed, endSeed }).catch(err => {
+        console.error(`[API] API orchestrator error:`, err);
+        job.status = 'failed';
+        job.error = err.message;
+      });
+    } else {
+      // Default to local mode (iTerm2 + Claude CLI)
+      console.log(`[API] Using Local Mode - iTerm2 + Claude CLI`);
+      spawnCourseOrchestrator(courseCode, { target, known, seeds, startSeed, endSeed }).catch(err => {
+        console.error(`[API] Local orchestrator error:`, err);
+        job.status = 'failed';
+        job.error = err.message;
+      });
+    }
 
-  res.json({
-    success: true,
-    courseCode,
-    message: 'Course generation started with orchestrator pattern',
-    status: job
-  });
+    res.json({
+      success: true,
+      courseCode,
+      executionMode,
+      message: `Course generation started with ${executionMode} execution mode`,
+      status: job
+    });
+  } catch (err) {
+    console.error(`[API] Error starting orchestrator:`, err);
+    job.status = 'failed';
+    job.error = err.message;
+    res.status(500).json({
+      error: 'Failed to start course generation',
+      details: err.message
+    });
+  }
 });
 
 /**

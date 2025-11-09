@@ -162,6 +162,9 @@
           </div>
         </div>
 
+        <!-- Execution Mode Selection -->
+        <ExecutionModeSelector v-model="executionMode" />
+
         <!-- Course Size Selection -->
         <div v-if="!analysis" class="mb-8">
           <h3 class="text-lg font-medium text-slate-300 mb-4">Select Course Size</h3>
@@ -243,11 +246,21 @@
       </div>
 
       <!-- Progress Monitor -->
-      <div v-if="isGenerating || isCompleted" class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
-        <div class="flex items-center justify-between mb-6">
-          <h2 class="text-2xl font-semibold text-slate-100">
-            {{ courseCode || 'Generating...' }}
-          </h2>
+      <div v-if="isGenerating || isCompleted" class="space-y-6">
+        <!-- Real-time Progress Monitor -->
+        <ProgressMonitor
+          v-if="courseCode"
+          :courseCode="courseCode"
+          :executionMode="executionMode"
+          :seedCount="seedCount"
+        />
+
+        <!-- Traditional Progress Display -->
+        <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-semibold text-slate-100">
+              {{ courseCode || 'Generating...' }}
+            </h2>
           <span v-if="isCompleted" class="flex items-center text-green-400 font-semibold">
             <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
@@ -331,6 +344,7 @@
             </button>
           </div>
         </div>
+        </div>
       </div>
 
     </main>
@@ -340,6 +354,8 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import api, { apiClient } from '../services/api'
+import ExecutionModeSelector from '../components/ExecutionModeSelector.vue'
+import ProgressMonitor from '../components/ProgressMonitor.vue'
 
 // State
 const knownLanguage = ref('eng')
@@ -347,6 +363,7 @@ const targetLanguage = ref('gle')
 const startSeed = ref(1)
 const endSeed = ref(668)
 const courseSize = ref(null) // 'test' or 'full'
+const executionMode = ref('web') // 'local', 'api', or 'web'
 
 const targetLanguages = ref([])
 const knownLanguages = ref([])
@@ -487,7 +504,8 @@ const startGeneration = async () => {
       target: targetLanguage.value,
       known: knownLanguage.value,
       startSeed: startSeed.value,
-      endSeed: endSeed.value
+      endSeed: endSeed.value,
+      executionMode: executionMode.value
     })
 
     console.log('Course generation started:', response)
