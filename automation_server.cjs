@@ -1148,6 +1148,20 @@ async function spawnCourseOrchestrator(courseCode, params) {
 }
 
 /**
+ * Poll for file existence with timeout between checks
+ * Polls indefinitely until file appears
+ */
+async function pollForFile(filePath, pollInterval = 10000) {
+  while (true) {
+    if (await fs.pathExists(filePath)) {
+      return true;
+    }
+    console.log(`[Poll] File not found yet: ${filePath}, checking again in ${pollInterval/1000}s...`);
+    await new Promise(resolve => setTimeout(resolve, pollInterval));
+  }
+}
+
+/**
  * Web Mode Orchestrator - Uses browser automation to claude.ai/code
  * Opens browser tabs with phase prompts, user manually pastes and runs
  */
@@ -1170,71 +1184,113 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
     job.message = 'Opening browser tabs and pasting prompts automatically';
 
     console.log(`[Web Orchestrator] ============================================`);
-    console.log(`[Web Orchestrator] WEB MODE - AUTOMATED PROMPT PASTING`);
+    console.log(`[Web Orchestrator] WEB MODE - SEQUENTIAL PHASE EXECUTION`);
     console.log(`[Web Orchestrator] ============================================`);
     console.log(`[Web Orchestrator] `);
-    console.log(`[Web Orchestrator] Browser tabs will open and prompts will be`);
-    console.log(`[Web Orchestrator] pasted automatically using osascript.`);
+    console.log(`[Web Orchestrator] Phases will open ONE AT A TIME as previous`);
+    console.log(`[Web Orchestrator] phases complete (Phase 3 needs Phase 1 output,`);
+    console.log(`[Web Orchestrator] Phase 5 needs Phase 3 output).`);
     console.log(`[Web Orchestrator] `);
-    console.log(`[Web Orchestrator] YOU JUST NEED TO:`);
-    console.log(`[Web Orchestrator]   1. Wait for tabs to load (~3 seconds each)`);
-    console.log(`[Web Orchestrator]   2. Hit Enter in each tab to execute`);
-    console.log(`[Web Orchestrator]   3. Monitor outputs in VFS`);
+    console.log(`[Web Orchestrator] WORKFLOW:`);
+    console.log(`[Web Orchestrator]   1. Phase 1 tab opens → Execute → Wait for output`);
+    console.log(`[Web Orchestrator]   2. Phase 3 tab opens → Execute → Wait for output`);
+    console.log(`[Web Orchestrator]   3. Phase 5 tab opens → Execute → Complete!`);
     console.log(`[Web Orchestrator] `);
     console.log(`[Web Orchestrator] ============================================`);
 
-    // Generate prompts for all 3 phases
-    console.log(`\n[Web Orchestrator] Generating phase prompts...`);
+    // PHASE 1: Pedagogical Translation
+    job.phase = 'phase_1_web';
+    job.progress = 0;
+    job.message = 'Phase 1: Opening browser tab for translation';
+
+    console.log(`\n[Web Orchestrator] ====================================`);
+    console.log(`[Web Orchestrator] PHASE 1: PEDAGOGICAL TRANSLATION`);
+    console.log(`[Web Orchestrator] ====================================`);
+
     const phase1Brief = generatePhase1Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
-    const phase3Brief = generatePhase3Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
-    const phase5Brief = generatePhase5Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
-
-    // Also save to files for reference
     await fs.ensureDir(path.join(courseDir, 'prompts'));
     await fs.writeFile(path.join(courseDir, 'prompts', 'phase_1_translation.md'), phase1Brief, 'utf8');
+
+    console.log(`[Web Orchestrator] Opening Phase 1 tab and pasting prompt...`);
+    await spawnClaudeWebAgent(phase1Brief, 1, 'chrome');
+    console.log(`[Web Orchestrator] ✅ Phase 1 tab ready - HIT ENTER to execute!`);
+
+    job.progress = 5;
+    job.message = 'Phase 1 tab opened - waiting for execution';
+
+    // Poll for seed_pairs.json
+    console.log(`[Web Orchestrator] Waiting for seed_pairs.json...`);
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+    await pollForFile(seedPairsPath, 60000); // 60 second max wait per check, infinite checks
+
+    console.log(`[Web Orchestrator] ✅ Phase 1 complete! Found seed_pairs.json`);
+    job.phase = 'phase_1_complete';
+    job.progress = 30;
+
+    // PHASE 3: LEGO Extraction
+    job.phase = 'phase_3_web';
+    job.progress = 35;
+    job.message = 'Phase 3: Opening browser tab for LEGO extraction';
+
+    console.log(`\n[Web Orchestrator] ====================================`);
+    console.log(`[Web Orchestrator] PHASE 3: LEGO EXTRACTION`);
+    console.log(`[Web Orchestrator] ====================================`);
+
+    const phase3Brief = generatePhase3Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
     await fs.writeFile(path.join(courseDir, 'prompts', 'phase_3_lego_extraction.md'), phase3Brief, 'utf8');
+
+    console.log(`[Web Orchestrator] Opening Phase 3 tab and pasting prompt...`);
+    await spawnClaudeWebAgent(phase3Brief, 2, 'chrome');
+    console.log(`[Web Orchestrator] ✅ Phase 3 tab ready - HIT ENTER to execute!`);
+
+    job.progress = 40;
+    job.message = 'Phase 3 tab opened - waiting for execution';
+
+    // Poll for lego_pairs.json
+    console.log(`[Web Orchestrator] Waiting for lego_pairs.json...`);
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    await pollForFile(legoPairsPath, 60000);
+
+    console.log(`[Web Orchestrator] ✅ Phase 3 complete! Found lego_pairs.json`);
+    job.phase = 'phase_3_complete';
+    job.progress = 60;
+
+    // PHASE 5: Practice Baskets
+    job.phase = 'phase_5_web';
+    job.progress = 65;
+    job.message = 'Phase 5: Opening browser tab for practice baskets';
+
+    console.log(`\n[Web Orchestrator] ====================================`);
+    console.log(`[Web Orchestrator] PHASE 5: PRACTICE BASKETS`);
+    console.log(`[Web Orchestrator] ====================================`);
+
+    const phase5Brief = generatePhase5Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
     await fs.writeFile(path.join(courseDir, 'prompts', 'phase_5_baskets.md'), phase5Brief, 'utf8');
 
-    console.log(`[Web Orchestrator] ✅ Prompts saved to ${courseDir}/prompts/`);
-
-    // Spawn browser tabs with automatic prompt pasting
-    console.log(`\n[Web Orchestrator] Opening browser tabs with auto-paste...`);
-
-    // Phase 1
-    console.log(`[Web Orchestrator] Phase 1: Opening tab and pasting prompt...`);
-    await spawnClaudeWebAgent(phase1Brief, 1, 'chrome');
-    console.log(`[Web Orchestrator] ✅ Phase 1 tab ready (prompt pasted)`);
-
-    // Small delay between tabs to avoid overwhelming browser
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    // Phase 3
-    console.log(`[Web Orchestrator] Phase 3: Opening tab and pasting prompt...`);
-    await spawnClaudeWebAgent(phase3Brief, 2, 'chrome');
-    console.log(`[Web Orchestrator] ✅ Phase 3 tab ready (prompt pasted)`);
-
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    // Phase 5
-    console.log(`[Web Orchestrator] Phase 5: Opening tab and pasting prompt...`);
+    console.log(`[Web Orchestrator] Opening Phase 5 tab and pasting prompt...`);
     await spawnClaudeWebAgent(phase5Brief, 3, 'chrome');
-    console.log(`[Web Orchestrator] ✅ Phase 5 tab ready (prompt pasted)`);
+    console.log(`[Web Orchestrator] ✅ Phase 5 tab ready - HIT ENTER to execute!`);
 
-    console.log(`\n[Web Orchestrator] ============================================`);
-    console.log(`[Web Orchestrator] ✅ ALL TABS OPENED WITH PROMPTS PASTED`);
-    console.log(`[Web Orchestrator] ============================================`);
-    console.log(`[Web Orchestrator] `);
-    console.log(`[Web Orchestrator] Switch to your browser and you'll see:`);
-    console.log(`[Web Orchestrator]   - Tab 1: Phase 1 (Translation) - prompt ready`);
-    console.log(`[Web Orchestrator]   - Tab 2: Phase 3 (LEGO Extraction) - prompt ready`);
-    console.log(`[Web Orchestrator]   - Tab 3: Phase 5 (Practice Baskets) - prompt ready`);
-    console.log(`[Web Orchestrator] `);
-    console.log(`[Web Orchestrator] Just hit Enter in each tab to execute!`);
-    console.log(`[Web Orchestrator] ============================================`);
+    job.progress = 70;
+    job.message = 'Phase 5 tab opened - waiting for execution';
 
-    job.phase = 'web_mode_waiting';
-    job.progress = 10;
-    job.message = 'Browser tabs opened with prompts pasted - hit Enter to execute';
+    // Poll for lego_baskets.json
+    console.log(`[Web Orchestrator] Waiting for lego_baskets.json...`);
+    const basketsPath = path.join(courseDir, 'lego_baskets.json');
+    await pollForFile(basketsPath, 60000);
+
+    console.log(`[Web Orchestrator] ✅ Phase 5 complete! Found lego_baskets.json`);
+    job.phase = 'phase_5_complete';
+    job.progress = 100;
+    job.status = 'completed';
+    job.message = 'All phases completed successfully';
+
+    console.log(`\n[Web Orchestrator] ====================================`);
+    console.log(`[Web Orchestrator] ✅ COURSE GENERATION COMPLETE`);
+    console.log(`[Web Orchestrator] ====================================`);
+    console.log(`[Web Orchestrator] Course: ${courseCode}`);
+    console.log(`[Web Orchestrator] Output: ${courseDir}`);
+    console.log(`[Web Orchestrator] ====================================`);
 
   } catch (error) {
     console.error(`[Web Orchestrator] Error:`, error);
