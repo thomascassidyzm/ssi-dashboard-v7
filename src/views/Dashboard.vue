@@ -6,13 +6,13 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-3xl font-bold text-emerald-400">
-              SSI Course Production Dashboard v7.8.4
+              SSI Course Production Dashboard v8.0.0
             </h1>
             <p class="mt-2 text-slate-400">
               Phase 4 Architecture + Intelligent Course Detection + Dynamic Phase Tracking
             </p>
             <p class="mt-1 text-xs text-slate-500">
-              Build: 9a332af7 | APML v7.8.4 | Phases: 1 v2.6, 3 v4.0.2, 4 v1.0, 5 v3.0, 6 v2.0, 7 v1.0
+              Build: 9a332af7 | APML v8.0.0 | Phases: 1 v2.6, 3 v4.0.2, 4 v1.0, 5 v3.0, 6 v2.0, 7 v1.0
             </p>
           </div>
           <EnvironmentSwitcher />
@@ -236,11 +236,11 @@
               </div>
             </router-link>
 
-            <!-- APML v7.6 Specification -->
+            <!-- APML v8.0.0 Specification -->
             <router-link to="/reference/apml" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">📋</div>
               <div>
-                <h3 class="font-semibold text-slate-100">APML v7.6 Specification</h3>
+                <h3 class="font-semibold text-slate-100">APML v8.0.0 Specification</h3>
                 <p class="text-sm text-slate-400">Complete architectural specification with streamlined 5-phase pipeline</p>
               </div>
             </router-link>
@@ -268,7 +268,7 @@
 
       <!-- Footer Note -->
       <div class="mt-12 text-center text-slate-400 text-sm">
-        <p>SSi Course Production Dashboard v7.6 • Complete 8-Phase Pipeline</p>
+        <p>SSi Course Production Dashboard v8.0.0 • Complete 8-Phase Pipeline</p>
         <p class="mt-1">Translation → LEGOs → Baskets → Introductions → Compilation → Audio → Deploy</p>
       </div>
     </main>

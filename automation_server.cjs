@@ -207,13 +207,137 @@ async function ensureCourseDirectory(courseCode) {
 }
 
 /**
- * Phase 1 Brief: Translation batch
+ * Phase 1 Master Prompt: Parallel translation using 10 agents
+ * For Web + API modes (deprecating Local mode)
+ */
+function generatePhase1MasterPrompt(courseCode, params, courseDir) {
+  const { target, known, startSeed, endSeed } = params;
+  const totalSeeds = endSeed - startSeed + 1;
+  const seedsPerAgent = 70;
+  const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
+
+  // Calculate agent assignments
+  const agentAssignments = [];
+  for (let i = 0; i < agentCount; i++) {
+    const agentStart = startSeed + (i * seedsPerAgent);
+    const agentEnd = Math.min(agentStart + seedsPerAgent - 1, endSeed);
+    agentAssignments.push({
+      agentNum: i + 1,
+      startSeed: agentStart,
+      endSeed: agentEnd,
+      totalSeeds: agentEnd - agentStart + 1
+    });
+  }
+
+  return `# Phase 1 Master Prompt: Pedagogical Translation
+
+**Course**: ${courseCode}
+**Target Language**: ${target} (${getLanguageName(target)})
+**Known Language**: ${known} (${getLanguageName(known)})
+**Total Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
+**Parallel Agents**: ${agentCount}
+**Seeds per agent**: ~${seedsPerAgent}
+
+---
+
+## Your Mission
+
+Translate all ${totalSeeds} canonical seeds into ${getLanguageName(target)} and ${getLanguageName(known)} using ${agentCount} parallel agents.
+
+**Phase Intelligence**: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase-intelligence/1
+
+**Canonical Seeds**: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/seeds?limit=${endSeed}
+
+---
+
+## Execute: Spawn ${agentCount} Parallel Agents
+
+Use the Task tool to spawn all ${agentCount} agents **in a single message** for parallel execution:
+
+${agentAssignments.map(agent => `
+**Task ${agent.agentNum}**: Translate seeds S${String(agent.startSeed).padStart(4, '0')}-S${String(agent.endSeed).padStart(4, '0')} (${agent.totalSeeds} seeds)
+
+\`\`\`markdown
+You are Translation Agent ${agent.agentNum}.
+
+## Your Task
+Translate seeds ${agent.startSeed} through ${agent.endSeed} (${agent.totalSeeds} seeds total).
+
+## Instructions
+1. Fetch Phase 1 intelligence: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase-intelligence/1
+2. Fetch canonical seeds: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/seeds?limit=${endSeed}
+3. Filter to seeds ${agent.startSeed}-${agent.endSeed}
+4. For each canonical seed:
+   - Replace {target} placeholder with "${getLanguageName(target)}"
+   - Translate to ${getLanguageName(target)} (target language)
+   - Translate to ${getLanguageName(known)} (known language - usually English)
+   - Follow Phase 1 intelligence rules (cognate preference, zero variation, etc.)
+
+## CRITICAL: {target} Placeholder
+- Canonical: "I want to speak {target}"
+- Replace with: "I want to speak ${getLanguageName(target)}"
+
+## Output
+Write to: \`${courseDir}/translations/agent_${String(agent.agentNum).padStart(2, '0')}_translations.json\`
+
+Format:
+\`\`\`json
+{
+  "agent_id": ${agent.agentNum},
+  "seed_range": {
+    "start": ${agent.startSeed},
+    "end": ${agent.endSeed}
+  },
+  "translations": {
+    "S${String(agent.startSeed).padStart(4, '0')}": ["${target} translation", "${known} translation"],
+    "S${String(agent.startSeed + 1).padStart(4, '0')}": ["${target} translation", "${known} translation"]
+  }
+}
+\`\`\`
+
+IMPORTANT: Use compact JSON formatting (no unnecessary whitespace).
+\`\`\`
+`).join('\n---\n')}
+
+---
+
+## After All ${agentCount} Agents Complete
+
+Merge all agent outputs into final seed_pairs.json:
+
+\`\`\`bash
+node scripts/merge_phase1_translations.cjs ${courseDir}
+\`\`\`
+
+Expected output: \`${courseDir}/seed_pairs.json\` with all ${totalSeeds} translations.
+
+---
+
+## Git Workflow
+
+Push completed file to main branch:
+
+\`\`\`bash
+git add ${courseDir}/seed_pairs.json
+git commit -m "Phase 1: ${totalSeeds} translations for ${courseCode}"
+git push origin HEAD:main
+\`\`\`
+
+---
+
+**Target completion time**: ~10-15 minutes with ${agentCount} parallel agents
+`;
+}
+
+/**
+ * Phase 1 Brief: Translation batch (DEPRECATED - for Local mode only)
+ * Use generatePhase1MasterPrompt() for Web/API modes instead
  */
 function generatePhase1Brief(courseCode, params, courseDir) {
   const { target, known, startSeed, endSeed, batchNum, totalBatches } = params;
   const seedRange = `S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`;
 
-  return `# Phase 1: Pedagogical Translation (Batch ${batchNum}/${totalBatches})
+  return `# Phase 1: Pedagogical Translation (Batch ${batchNum}/${totalBatches}) [LOCAL MODE - DEPRECATED]
 
 **Course**: ${courseCode}
 **Target Language**: ${target} (learning language)
@@ -628,7 +752,7 @@ When done, report: GATE compliance (0 violations), LEGO count, and pattern densi
 function generateOrchestratorBrief(courseCode, params, courseDir) {
   const { target, known, seeds } = params;
 
-  return `# Course Generation Orchestrator Brief (v7.7.1)
+  return `# Course Generation Orchestrator Brief (v8.0.0)
 
 ## Mission
 Generate complete SSi language course using cloud-native phase intelligence.
@@ -665,7 +789,7 @@ Use WebFetch to get the latest methodology before executing each phase.
 
 **Course Directory**: \`${courseDir}\`
 
-**Output Files** (NEW v7.7.1 naming):
+**Output Files** (v8.0.0 naming):
 - Phase 1: \`${courseDir}/seed_pairs.json\`
 - Phase 3: \`${courseDir}/lego_pairs.json\`
 - Phase 5: \`${courseDir}/lego_baskets.json\`
@@ -1284,13 +1408,14 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
     console.log(`[Web Orchestrator] PHASE 1: PEDAGOGICAL TRANSLATION`);
     console.log(`[Web Orchestrator] ====================================`);
 
-    const phase1Brief = generatePhase1Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
+    const phase1MasterPrompt = generatePhase1MasterPrompt(courseCode, { target, known, startSeed, endSeed }, courseDir);
     await fs.ensureDir(path.join(courseDir, 'prompts'));
-    await fs.writeFile(path.join(courseDir, 'prompts', 'phase_1_translation.md'), phase1Brief, 'utf8');
+    await fs.writeFile(path.join(courseDir, 'prompts', 'phase_1_master_prompt.md'), phase1MasterPrompt, 'utf8');
 
-    console.log(`[Web Orchestrator] Opening Phase 1 tab and pasting prompt...`);
-    await spawnClaudeWebAgent(phase1Brief, 1, 'chrome');
-    console.log(`[Web Orchestrator] ✅ Phase 1 tab ready - HIT ENTER to execute!`);
+    console.log(`[Web Orchestrator] Opening Phase 1 tab and pasting master prompt...`);
+    console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 70)} parallel agents`);
+    await spawnClaudeWebAgent(phase1MasterPrompt, 1, 'chrome');
+    console.log(`[Web Orchestrator] ✅ Phase 1 master prompt pasted - HIT ENTER to spawn agents!`);
 
     job.progress = 5;
     job.message = 'Phase 1 tab opened - waiting for execution';
