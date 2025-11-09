@@ -98,20 +98,19 @@
         </div>
       </button>
 
-      <!-- API Mode (Coming Soon) -->
+      <!-- API Mode -->
       <button
         @click="selectMode('api')"
-        :disabled="true"
         :class="[
-          'p-6 rounded-lg border-2 transition text-left relative opacity-60 cursor-not-allowed',
+          'p-6 rounded-lg border-2 transition text-left relative',
           modelValue === 'api'
             ? 'border-emerald-500 bg-emerald-500/10'
-            : 'border-slate-600 bg-slate-800/50'
+            : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
         ]"
       >
         <div class="absolute top-3 right-3">
-          <span class="px-2 py-1 text-xs font-semibold bg-slate-600 text-slate-300 rounded">
-            Coming Soon
+          <span v-if="modelValue === 'api'" class="px-2 py-1 text-xs font-semibold bg-emerald-500 text-white rounded">
+            Selected
           </span>
         </div>
 
@@ -121,26 +120,26 @@
 
         <div class="space-y-2 mb-4">
           <div class="flex items-start gap-2 text-xs">
-            <span class="text-slate-500 mt-0.5">○</span>
-            <span class="text-slate-400">Fully automated server-side execution</span>
+            <span class="text-green-400 mt-0.5">✓</span>
+            <span class="text-slate-300">Fully automated server-side execution</span>
           </div>
           <div class="flex items-start gap-2 text-xs">
-            <span class="text-slate-500 mt-0.5">○</span>
-            <span class="text-slate-400">No local resources needed</span>
+            <span class="text-green-400 mt-0.5">✓</span>
+            <span class="text-slate-300">No local resources needed</span>
           </div>
           <div class="flex items-start gap-2 text-xs">
-            <span class="text-slate-500 mt-0.5">○</span>
-            <span class="text-slate-400">API costs (~$0.34/batch)</span>
+            <span class="text-amber-400 mt-0.5">⚠</span>
+            <span class="text-slate-300">API costs (~$0.34/batch)</span>
           </div>
           <div class="flex items-start gap-2 text-xs">
-            <span class="text-slate-500 mt-0.5">○</span>
-            <span class="text-slate-400">Run multiple courses in parallel</span>
+            <span class="text-green-400 mt-0.5">✓</span>
+            <span class="text-slate-300">Sequential phase execution</span>
           </div>
         </div>
 
         <div class="pt-3 border-t border-slate-600/50">
           <div class="text-xs text-slate-500">
-            <span class="font-semibold text-slate-400">Requirements:</span> API key, server deployment
+            <span class="font-semibold text-slate-400">Requirements:</span> API key in .env file
           </div>
         </div>
       </button>
@@ -154,8 +153,8 @@
           <p class="font-medium mb-1">Execution Mode Comparison</p>
           <p class="text-slate-400">
             <span class="font-semibold text-emerald-400">Web Mode</span> is recommended for cost-effective generation using your Claude Pro subscription.
-            <span class="font-semibold text-slate-300">Local Mode</span> offers full automation but uses API credits.
-            <span class="font-semibold text-slate-400">API Mode</span> (future) will enable server-side generation.
+            <span class="font-semibold text-slate-300">Local Mode</span> offers full automation with iTerm2 but uses API credits.
+            <span class="font-semibold text-purple-400">API Mode</span> provides fully automated server-side execution (no local resources needed).
           </p>
         </div>
       </div>
@@ -177,9 +176,6 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 const selectMode = (mode) => {
-  // Don't allow selecting API mode (not implemented yet)
-  if (mode === 'api') return
-
   emit('update:modelValue', mode)
 }
 </script>

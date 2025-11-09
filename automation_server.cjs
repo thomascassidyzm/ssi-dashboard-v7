@@ -1247,23 +1247,174 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
 }
 
 /**
- * API Mode Orchestrator - Direct Anthropic API calls (STUB - NOT IMPLEMENTED YET)
+ * API Mode Orchestrator - Direct Anthropic API calls (server-side execution)
+ * Uses existing Anthropic SDK integration for fully automated course generation
  */
 async function spawnCourseOrchestratorAPI(courseCode, params) {
   const job = STATE.jobs.get(courseCode);
+  const courseDir = await ensureCourseDirectory(courseCode);
 
-  console.log(`[API Orchestrator] API mode requested for: ${courseCode}`);
-  console.log(`[API Orchestrator] ⚠️  API mode is not yet implemented`);
+  console.log(`[API Orchestrator] Starting server-side course generation: ${courseCode}`);
+  console.log(`[API Orchestrator] Mode: Direct Anthropic API (fully automated)`);
 
-  job.status = 'failed';
-  job.phase = 'api_mode_not_implemented';
-  job.progress = 0;
-  job.error = 'API mode not yet implemented. Please use Web Mode or Local Mode instead.';
-  job.message = 'API execution mode is coming soon. Use Web Mode for cost-effective generation or Local Mode for full automation.';
+  const { target, known, seeds, startSeed, endSeed } = params;
 
-  console.log(`[API Orchestrator] Please use one of these modes instead:`);
-  console.log(`[API Orchestrator]   - Web Mode: Browser automation (recommended, $0 cost)`);
-  console.log(`[API Orchestrator]   - Local Mode: iTerm2 + Claude CLI (fully automated)`);
+  // Check for API key
+  if (!process.env.ANTHROPIC_API_KEY) {
+    console.error(`[API Orchestrator] ❌ ANTHROPIC_API_KEY not found in environment`);
+    job.status = 'failed';
+    job.error = 'ANTHROPIC_API_KEY not configured. Please set API key in .env file.';
+    return;
+  }
+
+  try {
+    const Anthropic = require('@anthropic-ai/sdk');
+    const client = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY
+    });
+
+    console.log(`[API Orchestrator] ✅ Anthropic client initialized`);
+    console.log(`[API Orchestrator] Processing ${seeds} seeds (${startSeed}-${endSeed})`);
+
+    // Phase 1: Pedagogical Translation
+    job.phase = 'phase_1_api';
+    job.progress = 0;
+    job.message = 'Phase 1: Translating seeds via API';
+
+    console.log(`\n[API Orchestrator] ====================================`);
+    console.log(`[API Orchestrator] PHASE 1: PEDAGOGICAL TRANSLATION`);
+    console.log(`[API Orchestrator] ====================================`);
+
+    const phase1Brief = generatePhase1Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
+
+    const phase1Response = await client.messages.create({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 16000,
+      temperature: 0.3,
+      messages: [{
+        role: 'user',
+        content: phase1Brief
+      }]
+    });
+
+    console.log(`[API Orchestrator] ✅ Phase 1 API call complete`);
+    console.log(`[API Orchestrator] Processing response...`);
+
+    // Extract seed_pairs.json from response
+    const phase1Content = phase1Response.content[0].text;
+    const phase1JsonMatch = phase1Content.match(/```json\n([\s\S]+?)\n```/);
+
+    if (!phase1JsonMatch) {
+      throw new Error('Failed to extract seed_pairs.json from Phase 1 response');
+    }
+
+    const seedPairs = JSON.parse(phase1JsonMatch[1]);
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+    await fs.writeJson(seedPairsPath, seedPairs, { spaces: 2 });
+
+    console.log(`[API Orchestrator] ✅ Saved seed_pairs.json (${Object.keys(seedPairs.translations || {}).length} seeds)`);
+
+    job.phase = 'phase_1_complete';
+    job.progress = 30;
+
+    // Phase 3: LEGO Extraction
+    job.phase = 'phase_3_api';
+    job.progress = 35;
+    job.message = 'Phase 3: Extracting LEGOs via API';
+
+    console.log(`\n[API Orchestrator] ====================================`);
+    console.log(`[API Orchestrator] PHASE 3: LEGO EXTRACTION`);
+    console.log(`[API Orchestrator] ====================================`);
+
+    const phase3Brief = generatePhase3Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
+
+    const phase3Response = await client.messages.create({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 32000,
+      temperature: 0.3,
+      messages: [{
+        role: 'user',
+        content: phase3Brief
+      }]
+    });
+
+    console.log(`[API Orchestrator] ✅ Phase 3 API call complete`);
+    console.log(`[API Orchestrator] Processing response...`);
+
+    // Extract lego_pairs.json from response
+    const phase3Content = phase3Response.content[0].text;
+    const phase3JsonMatch = phase3Content.match(/```json\n([\s\S]+?)\n```/);
+
+    if (!phase3JsonMatch) {
+      throw new Error('Failed to extract lego_pairs.json from Phase 3 response');
+    }
+
+    const legoPairs = JSON.parse(phase3JsonMatch[1]);
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    await fs.writeJson(legoPairsPath, legoPairs, { spaces: 2 });
+
+    console.log(`[API Orchestrator] ✅ Saved lego_pairs.json (${legoPairs.seeds?.length || 0} seeds)`);
+
+    job.phase = 'phase_3_complete';
+    job.progress = 60;
+
+    // Phase 5: Practice Baskets
+    job.phase = 'phase_5_api';
+    job.progress = 65;
+    job.message = 'Phase 5: Generating practice baskets via API';
+
+    console.log(`\n[API Orchestrator] ====================================`);
+    console.log(`[API Orchestrator] PHASE 5: PRACTICE BASKETS`);
+    console.log(`[API Orchestrator] ====================================`);
+
+    const phase5Brief = generatePhase5Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
+
+    const phase5Response = await client.messages.create({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 64000,
+      temperature: 0.5,
+      messages: [{
+        role: 'user',
+        content: phase5Brief
+      }]
+    });
+
+    console.log(`[API Orchestrator] ✅ Phase 5 API call complete`);
+    console.log(`[API Orchestrator] Processing response...`);
+
+    // Extract lego_baskets.json from response
+    const phase5Content = phase5Response.content[0].text;
+    const phase5JsonMatch = phase5Content.match(/```json\n([\s\S]+?)\n```/);
+
+    if (!phase5JsonMatch) {
+      throw new Error('Failed to extract lego_baskets.json from Phase 5 response');
+    }
+
+    const baskets = JSON.parse(phase5JsonMatch[1]);
+    const basketsPath = path.join(courseDir, 'lego_baskets.json');
+    await fs.writeJson(basketsPath, baskets, { spaces: 2 });
+
+    console.log(`[API Orchestrator] ✅ Saved lego_baskets.json`);
+
+    job.phase = 'phase_5_complete';
+    job.progress = 100;
+    job.status = 'completed';
+    job.message = 'All phases completed successfully via API';
+
+    console.log(`\n[API Orchestrator] ====================================`);
+    console.log(`[API Orchestrator] ✅ COURSE GENERATION COMPLETE`);
+    console.log(`[API Orchestrator] ====================================`);
+    console.log(`[API Orchestrator] Course: ${courseCode}`);
+    console.log(`[API Orchestrator] Seeds: ${seeds} (${startSeed}-${endSeed})`);
+    console.log(`[API Orchestrator] Output: ${courseDir}`);
+    console.log(`[API Orchestrator] ====================================`);
+
+  } catch (error) {
+    console.error(`[API Orchestrator] Error:`, error);
+    job.status = 'failed';
+    job.error = error.message;
+    job.message = `API orchestration failed: ${error.message}`;
+  }
 }
 
 /**
