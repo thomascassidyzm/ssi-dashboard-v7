@@ -29,14 +29,25 @@ const { spawn } = require('child_process');
 async function spawnClaudeWebAgent(prompt, agentId = 1, browser = 'chrome') {
   console.log(`[Web Agent ${agentId}] Opening Claude Code on the Web in ${browser}...`);
 
-  // Strategy: Copy prompt to clipboard, open claude.ai/code, then paste
-  // (More reliable than URL parameters which have length limits)
+  // Strategy: Write prompt to temp file, copy to clipboard via pbcopy, open claude.ai/code, then paste
+  // (More reliable than embedding in AppleScript which has escaping issues)
+
+  const tmpFile = `/tmp/claude_prompt_${agentId}_${Date.now()}.txt`;
+  await fs.writeFile(tmpFile, prompt, 'utf8');
+
+  // Copy to clipboard using pbcopy (avoids AppleScript escaping issues)
+  await new Promise((resolve, reject) => {
+    const pbcopy = spawn('pbcopy', [], { stdio: ['pipe', 'inherit', 'inherit'] });
+    pbcopy.stdin.write(prompt);
+    pbcopy.stdin.end();
+    pbcopy.on('close', (code) => {
+      if (code === 0) resolve();
+      else reject(new Error(`pbcopy failed with code ${code}`));
+    });
+  });
 
   const appleScript = `
--- Step 1: Copy prompt to clipboard
-set the clipboard to "${prompt.replace(/"/g, '\\"').replace(/\n/g, '\\n')}"
-
--- Step 2: Open Claude Code on the Web
+-- Open Claude Code on the Web
 tell application "${getBrowserAppName(browser)}"
     activate
 
@@ -52,8 +63,8 @@ tell application "${getBrowserAppName(browser)}"
     tell application "System Events"
         keystroke "v" using command down
         delay 0.5
-        -- Optionally auto-submit with Enter (commented out for manual review)
-        -- keystroke return
+        -- Auto-submit with Enter for fully automated execution
+        keystroke return
     end tell
 end tell
 
