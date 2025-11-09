@@ -161,7 +161,7 @@ FILE_FORMAT: seed_pairs.json
   ENCODING: UTF-8
 
   SCHEMA:
-    version: string              # "8.0.0"
+    version: string              # "7.7.0"
     course: string               # Course code
     target_language: string      # ISO 639-3
     known_language: string       # ISO 639-3
@@ -183,7 +183,7 @@ FILE_FORMAT: seed_pairs.json
 
   EXAMPLE:
     {
-      "version": "8.0.0",
+      "version": "7.7.0",
       "course": "spa_for_eng_s0001-0030",
       "target_language": "spa",
       "known_language": "eng",
@@ -205,7 +205,7 @@ FILE_FORMAT: lego_pairs.json
   NOTE: Phase 3 writes .tmp.json, Phase 3.5 validates and renames to .json
 
   SCHEMA:
-    version: string              # "7.7" (TODO: update to 8.0.0)
+    version: string              # "7.7"
     seeds: Array<Seed>
 
     Seed FORMAT:
@@ -268,7 +268,7 @@ FILE_FORMAT: lego_baskets.json
   ENCODING: UTF-8
 
   SCHEMA:
-    version: string              # "7.7" (TODO: update to 8.0.0)
+    version: string              # "7.7"
     baskets: Record<LegoID, Basket>
 
     Basket FORMAT:

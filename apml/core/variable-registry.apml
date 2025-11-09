@@ -680,7 +680,7 @@ FILE: seed_pairs.json
   GENERATED_BY: Phase 1
 
   SCHEMA:
-    version: "8.0.0"
+    version: "7.7.0"
     course: string                 # Course code
     target_language: string        # ISO 639-3
     known_language: string         # ISO 639-3
@@ -697,7 +697,7 @@ FILE: seed_pairs.json
 
   EXAMPLE:
     {
-      "version": "8.0.0",
+      "version": "7.7.0",
       "course": "spa_for_eng_s0001-0030",
       "target_language": "spa",
       "known_language": "eng",
@@ -777,6 +777,15 @@ PROJECT_VERSION: "8.0.0"
     - Removed Course Storage Management page
     - Removed LEGO Practice Baskets viewer
     - Git push to main from session branches
+
+DATA_FORMAT_VERSION: "7.7.0"
+  APPLIES_TO:
+    - seed_pairs.json
+    - lego_pairs.json
+    - lego_baskets.json
+  NOTE: "Data format version (7.7.0) is SEPARATE from app version (8.0.0)"
+  REASON: "Backward compatibility - existing courses use 7.7.0 format"
+  FUTURE: "May bump to 8.0.0 when breaking data changes needed"
 
 APML_VERSION: "1.1.0"
   COMPLIANCE: Variable Registry Standard
