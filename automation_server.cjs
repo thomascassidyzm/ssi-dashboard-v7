@@ -1738,9 +1738,21 @@ async function spawnCourseOrchestrator(courseCode, params) {
 /**
  * Poll for file existence with timeout between checks
  * Polls indefinitely until file appears
+ * In Web mode, pulls from git before checking (Claude Code on Web pushes to GitHub)
  */
-async function pollForFile(filePath, pollInterval = 10000) {
+async function pollForFile(filePath, pollInterval = 10000, pullFromGit = false) {
   while (true) {
+    // In Web mode, pull from git to get files pushed by Claude Code on the Web
+    if (pullFromGit) {
+      try {
+        console.log(`[Poll] Pulling latest changes from git...`);
+        await execCommand('git pull origin main', { cwd: VFS_ROOT });
+        console.log(`[Poll] ✅ Git pull complete`);
+      } catch (err) {
+        console.log(`[Poll] ⚠️  Git pull failed (may be normal if no changes):`, err.message);
+      }
+    }
+
     if (await fs.pathExists(filePath)) {
       return true;
     }
@@ -1849,9 +1861,9 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       job.progress = 5;
       job.message = 'Phase 1 tab opened - waiting for execution';
 
-      // Poll for seed_pairs.json
+      // Poll for seed_pairs.json (pull from git in Web mode)
       console.log(`[Web Orchestrator] Waiting for seed_pairs.json...`);
-      await pollForFile(seedPairsPath, 60000); // 60 second max wait per check, infinite checks
+      await pollForFile(seedPairsPath, 60000, true); // Pull from git before each check
 
       console.log(`[Web Orchestrator] ✅ Phase 1 complete! Found seed_pairs.json`);
       job.phase = 'phase_1_complete';
