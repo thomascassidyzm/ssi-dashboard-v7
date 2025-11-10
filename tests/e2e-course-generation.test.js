@@ -21,7 +21,7 @@ const TEST_COURSE = {
   known: 'eng',
   startSeed: 1,
   endSeed: 3, // Minimal test: just 3 seeds
-  executionMode: 'api' // Use API mode for automated testing (no browser)
+  executionMode: 'web' // Use Web mode (browser automation) - no API key needed
 }
 const TEST_COURSE_CODE = 'spa_for_eng_s0001-0003'
 const VFS_ROOT = path.join(__dirname, '..', 'public', 'vfs', 'courses')
@@ -83,16 +83,8 @@ describe('E2E Course Generation Workflow', () => {
       throw new Error('Server not available at http://localhost:3456')
     }
 
-    // 2. Check API key is configured (for API mode)
-    if (TEST_COURSE.executionMode === 'api') {
-      const hasApiKey = process.env.ANTHROPIC_API_KEY || false
-      if (!hasApiKey) {
-        console.warn('⚠️  ANTHROPIC_API_KEY not set - API mode will fail')
-        console.warn('   Set in .env file or switch test to web/local mode')
-      } else {
-        console.log('✓ ANTHROPIC_API_KEY configured')
-      }
-    }
+    // 2. Log execution mode
+    console.log(`✓ Using ${TEST_COURSE.executionMode} mode for tests`)
 
     // 3. Cleanup any existing test course
     await cleanupTestCourse()
@@ -125,7 +117,9 @@ describe('E2E Course Generation Workflow', () => {
     expect(generateResponse.status).toBe(200)
     expect(generateResponse.data.success).toBe(true)
     expect(generateResponse.data.courseCode).toBe(TEST_COURSE_CODE)
-    expect(generateResponse.data.status).toBe('started')
+    expect(generateResponse.data.executionMode).toBe('web')
+    expect(generateResponse.data.status.status).toBe('in_progress')
+    expect(generateResponse.data.status.phase).toBe('initializing')
 
     console.log('✓ Course generation started')
 
@@ -253,64 +247,54 @@ describe('E2E Course Generation Workflow', () => {
     // STEP 6: Validate Phase 5 output (baskets)
     console.log('\n[Step 6] Validating Phase 5 output...')
 
-    // Check for either consolidated or individual basket files
-    const consolidatedPath = path.join(courseDir, 'lego_baskets.json')
+    // Check for individual basket files (new format)
     const basketsDir = path.join(courseDir, 'baskets')
+    expect(await fs.pathExists(basketsDir)).toBe(true)
 
-    const hasConsolidated = await fs.pathExists(consolidatedPath)
-    const hasIndividual = await fs.pathExists(basketsDir)
+    const basketFiles = await fs.readdir(basketsDir)
+    const jsonFiles = basketFiles.filter(f => f.match(/^lego_baskets_s\d+\.json$/))
+    expect(jsonFiles.length).toBeGreaterThan(0)
+    expect(jsonFiles.length).toBe(3) // One file per seed
 
-    expect(hasConsolidated || hasIndividual).toBe(true)
+    let totalBaskets = 0
 
-    let basketCount = 0
+    // Validate each basket file
+    for (const file of jsonFiles) {
+      const basketPath = path.join(basketsDir, file)
+      const basketData = await fs.readJson(basketPath)
 
-    if (hasConsolidated) {
-      const baskets = await fs.readJson(consolidatedPath)
-      expect(baskets.version).toBe('7.7')
-      expect(typeof baskets.baskets).toBe('object')
+      // Validate seed ID
+      expect(basketData.seed).toMatch(/^S\d{4}$/)
 
-      basketCount = Object.keys(baskets.baskets).length
-      expect(basketCount).toBeGreaterThan(0)
+      // Count LEGOs in this basket
+      const legoIds = Object.keys(basketData).filter(key => key.match(/^S\d{4}L\d{2}$/))
+      totalBaskets += legoIds.length
 
-      // Validate basket structure for each LEGO
-      for (const [legoId, basket] of Object.entries(baskets.baskets)) {
-        expect(legoId).toMatch(/^S\d{4}L\d{2}$/)
+      // Validate each LEGO basket structure
+      for (const legoId of legoIds) {
+        const basket = basketData[legoId]
 
-        // Basket must have: lego, e (eternal), d (derived)
-        expect(basket.lego).toBeDefined()
-        expect(Array.isArray(basket.lego)).toBe(true)
-        expect(basket.lego).toHaveLength(2)
+        // Must have practice_phrases array
+        expect(Array.isArray(basket.practice_phrases)).toBe(true)
+        expect(basket.practice_phrases.length).toBeGreaterThan(0)
 
-        expect(Array.isArray(basket.e)).toBe(true) // Eternal phrases
-        expect(typeof basket.d).toBe('object') // Derived by word count
-
-        // Each eternal phrase is [target, known]
-        for (const phrase of basket.e) {
+        // Each practice phrase is [known, target] tuple
+        for (const phrase of basket.practice_phrases) {
           expect(Array.isArray(phrase)).toBe(true)
           expect(phrase).toHaveLength(2)
-        }
-
-        // Each derived category has phrases
-        for (const [wordCount, phrases] of Object.entries(basket.d)) {
-          expect(Array.isArray(phrases)).toBe(true)
-          for (const phrase of phrases) {
-            expect(Array.isArray(phrase)).toBe(true)
-            expect(phrase).toHaveLength(2)
-          }
+          expect(typeof phrase[0]).toBe('string') // known
+          expect(typeof phrase[1]).toBe('string') // target
+          expect(phrase[0].length).toBeGreaterThan(0)
+          expect(phrase[1].length).toBeGreaterThan(0)
         }
       }
-
-      console.log('✓ Phase 5: lego_baskets.json valid (consolidated)')
-      console.log(`  - ${basketCount} baskets generated`)
-    } else {
-      // Individual basket files
-      const basketFiles = await fs.readdir(basketsDir)
-      basketCount = basketFiles.filter(f => f.endsWith('.json')).length
-      expect(basketCount).toBeGreaterThan(0)
-
-      console.log('✓ Phase 5: Individual basket files valid')
-      console.log(`  - ${basketCount} basket files`)
     }
+
+    console.log('✓ Phase 5: Individual basket files valid')
+    console.log(`  - ${jsonFiles.length} seed files`)
+    console.log(`  - ${totalBaskets} total baskets`)
+
+    const basketCount = totalBaskets
 
     // STEP 7: Validate Phase 6 output (introductions.json)
     console.log('\n[Step 7] Validating Phase 6 output...')
@@ -337,16 +321,21 @@ describe('E2E Course Generation Workflow', () => {
     expect(await fs.pathExists(manifestPath)).toBe(true)
 
     const manifest = await fs.readJson(manifestPath)
+    expect(manifest.version).toBe('7.9.0')
     expect(manifest.course).toBe(TEST_COURSE_CODE)
-    expect(manifest.target_language).toBe(TEST_COURSE.target)
-    expect(manifest.known_language).toBe(TEST_COURSE.known)
-    expect(manifest.total_seeds).toBe(3)
-    expect(manifest.total_legos).toBe(totalLegos)
+    expect(manifest.targetLanguage).toBe(TEST_COURSE.target)
+    expect(manifest.sourceLanguage).toBe(TEST_COURSE.known)
+    expect(manifest.generated).toBeDefined()
+    expect(Array.isArray(manifest.slices)).toBe(true)
+    expect(manifest.slices).toHaveLength(1)
+    expect(manifest.slices[0].seeds).toHaveLength(3)
+    expect(typeof manifest.samples).toBe('object')
+    expect(Object.keys(manifest.samples).length).toBeGreaterThan(0)
 
     console.log('✓ Phase 7: course_manifest.json valid')
     console.log(`  - Course: ${manifest.course}`)
-    console.log(`  - Seeds: ${manifest.total_seeds}`)
-    console.log(`  - LEGOs: ${manifest.total_legos}`)
+    console.log(`  - Seeds: ${manifest.slices[0].seeds.length}`)
+    console.log(`  - Audio samples: ${Object.keys(manifest.samples).length}`)
 
     // STEP 9: Final summary
     console.log('\n=== E2E Test Summary ===')
@@ -399,20 +388,26 @@ describe('Smart Resume Detection', () => {
   test('Detects existing course and prevents overwrite without force flag', async () => {
     // Assuming test course from previous suite still exists
 
-    const response = await axios.post(`${BASE_URL}/api/courses/generate`, {
-      target: TEST_COURSE.target,
-      known: TEST_COURSE.known,
-      seeds: TEST_COURSE.endSeed - TEST_COURSE.startSeed + 1,
-      startSeed: TEST_COURSE.startSeed,
-      endSeed: TEST_COURSE.endSeed,
-      executionMode: TEST_COURSE.executionMode,
-      force: false // Don't overwrite
-    })
+    try {
+      await axios.post(`${BASE_URL}/api/courses/generate`, {
+        target: TEST_COURSE.target,
+        known: TEST_COURSE.known,
+        seeds: TEST_COURSE.endSeed - TEST_COURSE.startSeed + 1,
+        startSeed: TEST_COURSE.startSeed,
+        endSeed: TEST_COURSE.endSeed,
+        executionMode: TEST_COURSE.executionMode,
+        force: false // Don't overwrite
+      })
 
-    // Should return 409 Conflict
-    expect(response.status).toBe(409)
-    expect(response.data.conflict).toBe(true)
-    expect(response.data.courseCode).toBe(TEST_COURSE_CODE)
+      // If we get here, test should fail - expected 409
+      expect.fail('Expected 409 Conflict, but request succeeded')
+    } catch (error) {
+      // Should throw 409 Conflict with "already in progress" error
+      expect(error.response.status).toBe(409)
+      expect(error.response.data.error).toBeDefined()
+      expect(error.response.data.courseCode).toBe(TEST_COURSE_CODE)
+      expect(error.response.data.status).toBeDefined() // Job status object
+    }
   })
 })
 
