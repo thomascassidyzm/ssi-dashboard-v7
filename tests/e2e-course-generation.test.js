@@ -20,10 +20,10 @@ const TEST_COURSE = {
   target: 'spa',
   known: 'eng',
   startSeed: 1,
-  endSeed: 3, // Minimal test: just 3 seeds
+  endSeed: 30, // Full 30-seed test
   executionMode: 'web' // Use Web mode (browser automation) - no API key needed
 }
-const TEST_COURSE_CODE = 'spa_for_eng_s0001-0003'
+const TEST_COURSE_CODE = 'spa_for_eng_s0001-0030'
 const VFS_ROOT = path.join(__dirname, '..', 'public', 'vfs', 'courses')
 const TEST_COURSE_DIR = path.join(VFS_ROOT, TEST_COURSE_CODE)
 
@@ -156,9 +156,9 @@ describe('E2E Course Generation Workflow', () => {
     expect(seedPairs.course).toBe(TEST_COURSE_CODE)
     expect(seedPairs.target_language).toBe(TEST_COURSE.target)
     expect(seedPairs.known_language).toBe(TEST_COURSE.known)
-    expect(seedPairs.total_seeds).toBe(3)
-    expect(seedPairs.actual_seeds).toBe(3)
-    expect(Object.keys(seedPairs.translations)).toHaveLength(3)
+    expect(seedPairs.total_seeds).toBe(30)
+    expect(seedPairs.actual_seeds).toBe(30)
+    expect(Object.keys(seedPairs.translations)).toHaveLength(30)
 
     // Check seed IDs are correctly formatted (4-digit padding)
     const seedIds = Object.keys(seedPairs.translations)
@@ -254,7 +254,7 @@ describe('E2E Course Generation Workflow', () => {
     const basketFiles = await fs.readdir(basketsDir)
     const jsonFiles = basketFiles.filter(f => f.match(/^lego_baskets_s\d+\.json$/))
     expect(jsonFiles.length).toBeGreaterThan(0)
-    expect(jsonFiles.length).toBe(3) // One file per seed
+    expect(jsonFiles.length).toBe(30) // One file per seed
 
     let totalBaskets = 0
 
