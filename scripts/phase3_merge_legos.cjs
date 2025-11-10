@@ -232,7 +232,7 @@ async function mergePhase3Legos(courseDir) {
       tilingErrors.push(validation);
       console.error(`  ❌ ${validation.error}`);
       console.error(`     Expected: "${validation.expected}"`);
-      console.error(`     Got:      "${validation.got}"`);
+      console.error(`     Details:  ${validation.details}`);
     } else {
       totalLegos += seed.legos.length;
     }
