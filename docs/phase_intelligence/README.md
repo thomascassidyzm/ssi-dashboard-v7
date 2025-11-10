@@ -137,23 +137,24 @@ Each phase intelligence module contains:
 ### Phase 4: Batch Preparation with Smart Deduplication → batches/*.json
 **File**: `phase_4_batch_preparation.md`
 **Version**: 1.0 (2025-10-29)
-**Status**: ✅ **ACTIVE**
+**Status**: ⚠️ **DEPRECATED** (not used in Web orchestrator)
 **Output**: `batches/batch_*.json`, `batches/manifest.json`
 
-**Focus**:
-- **Smart deduplication**: Generate only FIRST occurrences (36% time savings)
+**Note**: This phase was designed for API-based orchestration but is NOT used in the current Web orchestrator workflow. Deduplication is handled more elegantly by Phase 3's `"new": true` flag + Phase 5 prep script filtering.
+
+**Why deprecated**:
+- Web orchestrator goes directly: Phase 1 → Phase 3 → Phase 5
+- Phase 3 merge script marks duplicates with `"new": null`
+- Phase 5 prep script only scaffolds LEGOs with `"new": true`
+- Achieves same deduplication without separate batching step
+- Script exists (`phase4-prepare-batches.cjs`) but only used in old API workflow
+
+**Original design** (for reference):
+- Smart deduplication: Generate only FIRST occurrences
 - Identify duplicate LEGOs (same target + known, normalized)
 - Keep ALL LEGOs in vocabulary context (preserves recency bias)
-- Calculate recency windows (last 10 seeds)
 - Prepare balanced batches for parallel Phase 5 execution
-- Map duplicates to canonical IDs (for merge step)
-
-**Why it's Phase 4**: This MUST happen BEFORE basket generation (Phase 5) to enable parallelization and deduplication. Replaces old Phase 5.5 post-generation deduplication.
-
-**Time savings example (Spanish course)**:
-- Without dedup: 2.9 hours (8 agents) or 5.9 hours (4 agents)
-- With smart dedup: 1.9 hours (8 agents) or 3.8 hours (4 agents)
-- Saved: 1-2 hours per run
+- Time savings: ~36% (1-2 hours for Spanish course)
 
 ---
 
@@ -193,12 +194,13 @@ Each phase intelligence module contains:
 **Status**: ⚠️ **OBSOLETE** (replaced by Phase 4 smart deduplication)
 **Output**: `lego_pairs_deduplicated.json`, `lego_baskets_deduplicated.json`
 
-**Note**: This post-generation deduplication phase has been replaced by Phase 4's smart deduplication strategy, which deduplicates BEFORE generation (saving 36% time). Phase 5.5 is kept for reference only.
+**Note**: This post-generation deduplication phase is OBSOLETE. Deduplication now happens in Phase 3 merge script (marks duplicates with `"new": null`) and Phase 5 prep script (only scaffolds `"new": true` LEGOs). Phase 5.5 kept for reference only.
 
 **Why obsolete**:
-- Phase 4 deduplicates before generation (1-2 hour time savings)
-- Smart dedup preserves recency bias (keeps duplicates in vocabulary context)
-- Duplicate references created during merge (no separate dedup step needed)
+- Phase 3 merge script marks duplicates during LEGO extraction
+- Phase 5 prep script filters to only new LEGOs (achieves same time savings)
+- No separate deduplication step needed
+- Simpler architecture: Phase 1 → 3 → 5 (no intermediate batching)
 
 **Old focus** (for reference):
 - Character-identical deduplication (trim + lowercase, preserve punctuation)
@@ -280,7 +282,14 @@ Each phase intelligence module contains:
 
 ## Locked Intelligence Status
 
-**Active Workflow**: Phase 1 → 3 → 4 → 5 (seed_pairs → lego_pairs → batches → lego_baskets)
+**Active Workflow (Web Orchestrator)**: Phase 1 → 3 → 5 → 6 → 7
+
+**Output Pipeline**:
+- Phase 1: `seed_pairs.json` (pedagogical translations)
+- Phase 3: `lego_pairs.json` (LEGO extraction + deduplication)
+- Phase 5: `baskets/lego_baskets_s*.json` (practice phrases)
+- Phase 6: `introductions.json` (LEGO presentations)
+- Phase 7: `course_manifest.json` (legacy format, ready for app)
 
 | Phase | Status | File | Version | Locked | Notes |
 |-------|--------|------|---------|--------|-------|
@@ -288,11 +297,11 @@ Each phase intelligence module contains:
 | 2 | ⚠️ Inactive | phase_2_corpus_intelligence.md | 1.0 | - | Not in current workflow |
 | 3 | ✅ ACTIVE | phase_3_lego_pairs.md | 4.0.2 | 🔒 | TILING FIRST, generation-focused |
 | 3.5 | ⚠️ Inactive | phase_3.5_lego_graph.md | 1.0 | - | Not in current workflow |
-| 4 | ✅ ACTIVE | phase_4_batch_preparation.md | 1.0 | 🔒 | Smart dedup, 36% time savings |
-| 5 | ✅ ACTIVE | phase_5_lego_baskets.md | 3.0 | 🔒 | Simplified, GATE + Grammar + Recency |
-| 5.5 | ⚠️ Obsolete | phase_5.5_basket_deduplication.md | 2.0 | - | Replaced by Phase 4 |
-| 6 | 🔨 TODO | phase_6_introductions.md | 1.0 | - | After basket generation |
-| 7 | ✅ Complete | phase_7_compilation.md | 1.0 | - | Legacy format compilation |
+| 4 | ⚠️ Deprecated | phase_4_batch_preparation.md | 1.0 | - | Web orchestrator uses Phase 3 "new" flag instead |
+| 5 | ✅ ACTIVE | phase_5_lego_baskets.md | 5.0 | 🔒 | 3-category whitelist, staged pipeline |
+| 5.5 | ⚠️ Obsolete | phase_5.5_basket_deduplication.md | 2.0 | - | Replaced by Phase 3 merge deduplication |
+| 6 | ✅ ACTIVE | phase_6_introductions.md | 2.0 | 🔒 | Scriptable, runs after Phase 5 |
+| 7 | ✅ ACTIVE | phase_7_compilation.md | 1.0 | 🔒 | Scriptable, generates final manifest |
 | 8 | 📋 Documented | phase_8_audio_generation.md | 1.0 | - | Assigned to Kai |
 
 **Locked versions** (🔒) represent tested, production-ready intelligence serving as SSoT for course generation.

@@ -3,32 +3,18 @@
 /**
  * Phase 6: Generate Introduction Presentations
  *
- * Reads lego_pairs_deduplicated.json (or lego_pairs.json) and generates
- * natural language presentation text for each LEGO that will be spoken
- * to introduce the LEGO to learners.
+ * Reads lego_pairs.json and generates natural language presentation text
+ * for each LEGO that will be spoken to introduce the LEGO to learners.
  *
- * Input:  vfs/courses/{course_code}/lego_pairs_deduplicated.json (preferred)
- *         vfs/courses/{course_code}/lego_pairs.json (fallback)
- * Output: vfs/courses/{course_code}/introductions.json
+ * Input:  {courseDir}/lego_pairs.json
+ * Output: {courseDir}/introductions.json
  *
- * Usage: node scripts/phase6-generate-introductions.cjs <course_code>
+ * Usage: node scripts/phase6-generate-introductions.cjs <courseDir>
+ * Example: node scripts/phase6-generate-introductions.cjs public/vfs/courses/spa_for_eng
  */
 
 const fs = require('fs-extra');
 const path = require('path');
-
-const courseCode = process.argv[2];
-
-if (!courseCode) {
-  console.error('❌ Usage: node scripts/phase6-generate-introductions.cjs <course_code>');
-  console.error('   Example: node scripts/phase6-generate-introductions.cjs spa_for_eng_20seeds');
-  process.exit(1);
-}
-
-const courseDir = path.join(__dirname, '..', 'vfs', 'courses', courseCode);
-const deduplicatedPath = path.join(courseDir, 'lego_pairs_deduplicated.json');
-const legoPath = path.join(courseDir, 'lego_pairs.json');
-const outputPath = path.join(courseDir, 'introductions.json');
 
 // Language name mapping
 const LANGUAGE_NAMES = {
@@ -74,45 +60,44 @@ function generateCompositePresentation(targetLang, knownLego, targetLego, knownS
   return `The ${targetLang} for "${knownLego}" as in "${knownSeed}" is "${targetLego}" - where ${explanation}.`;
 }
 
-async function generateIntroductions() {
-  console.log(`\n🎙️  Phase 6: Generate Introduction Presentations`);
-  console.log(`Course: ${courseCode}\n`);
+async function generateIntroductions(courseDir) {
+  console.log(`\n[Phase 6] Generate Introduction Presentations`);
+  console.log(`[Phase 6] Course directory: ${courseDir}\n`);
 
-  // Check for deduplicated file first, fallback to regular
-  let inputPath;
-  if (await fs.pathExists(deduplicatedPath)) {
-    inputPath = deduplicatedPath;
-    console.log(`📂 Using deduplicated LEGOs\n`);
-  } else if (await fs.pathExists(legoPath)) {
-    inputPath = legoPath;
-    console.log(`📂 Using original LEGOs (deduplicated not found)\n`);
-  } else {
-    console.error(`❌ LEGO pairs not found`);
-    console.error(`   Tried: ${deduplicatedPath}`);
-    console.error(`   Tried: ${legoPath}`);
-    console.error(`   Run Phase 3 (and optionally Phase 5.5) first`);
-    process.exit(1);
+  const legoPath = path.join(courseDir, 'lego_pairs.json');
+  const outputPath = path.join(courseDir, 'introductions.json');
+
+  // Check for lego_pairs.json
+  if (!await fs.pathExists(legoPath)) {
+    throw new Error(`lego_pairs.json not found at: ${legoPath}`);
   }
 
   // Read LEGO pairs
-  const legoData = await fs.readJson(inputPath);
+  const legoData = await fs.readJson(legoPath);
 
   // Handle both formats: array or object with seeds property
   const seeds = Array.isArray(legoData) ? legoData : legoData.seeds;
 
   if (!Array.isArray(seeds)) {
-    console.error(`❌ Invalid lego_pairs.json format`);
-    process.exit(1);
+    throw new Error('Invalid lego_pairs.json format - seeds should be an array');
   }
 
-  // Extract target language from course code
-  const [targetCode, , knownCode] = courseCode.split('_');
+  // Infer language codes from course directory name
+  const courseCode = path.basename(path.resolve(courseDir));
+  const parts = courseCode.split('_');
+  const targetCode = parts[0];
+  const knownCode = parts.length >= 3 ? parts[2] : parts[1];
+
+  if (!targetCode || !knownCode) {
+    throw new Error(`Cannot extract language codes from directory: ${courseCode}`);
+  }
+
   const targetLang = getLanguageName(targetCode);
   const knownLang = getLanguageName(knownCode);
 
-  console.log(`📖 Target: ${targetLang} (${targetCode})`);
-  console.log(`📖 Known: ${knownLang} (${knownCode})`);
-  console.log(`📊 Seeds: ${seeds.length}\n`);
+  console.log(`[Phase 6] Target: ${targetLang} (${targetCode})`);
+  console.log(`[Phase 6] Known: ${knownLang} (${knownCode})`);
+  console.log(`[Phase 6] Seeds: ${seeds.length}\n`);
 
   const introductions = {};
   let totalLegos = 0;
@@ -121,28 +106,43 @@ async function generateIntroductions() {
 
   // Process each seed
   for (const seed of seeds) {
-    const [seedId, [targetSeed, knownSeed], legos] = seed;
+    // Handle both array format [seedId, [targetSeed, knownSeed], legos]
+    // and object format {seed_id, seed_pair, legos}
+    const seedId = seed.seed_id || seed[0];
+    const seedPair = seed.seed_pair || seed[1];
+    const legos = seed.legos || seed[2];
+
+    if (!legos || !Array.isArray(legos)) continue;
+
+    const [targetSeed, knownSeed] = Array.isArray(seedPair) ? seedPair : [seedPair.target, seedPair.known];
 
     // Process each LEGO in this seed
     for (const lego of legos) {
-      const legoId = lego[0];
-      const type = lego[1];
-      const targetLego = lego[2];
-      const knownLego = lego[3];
-      const components = lego[4]; // Only for COMPOSITE
+      // Handle both array and object formats
+      const legoId = lego.id || lego[0];
+      const type = lego.type || lego[1];
+      const targetLego = lego.target || lego[2];
+      const knownLego = lego.known || lego[3];
+      const components = lego.components || lego[4]; // Only for COMPOSITE/M-type
 
       let presentation;
 
-      if (type === 'B') {
-        // BASE LEGO - simple introduction
+      if (type === 'A' || type === 'B') {
+        // ATOMIC/BASE LEGO - simple introduction
         presentation = generateBasePresentation(targetLang, knownLego, targetLego, knownSeed);
         baseLegos++;
-      } else if (type === 'C') {
-        // COMPOSITE LEGO - explain components
-        presentation = generateCompositePresentation(targetLang, knownLego, targetLego, knownSeed, components);
-        compositeLegos++;
+      } else if (type === 'M' || type === 'C') {
+        // MOLECULAR/COMPOSITE LEGO - explain components (if available)
+        if (components && Array.isArray(components) && components.length > 0) {
+          presentation = generateCompositePresentation(targetLang, knownLego, targetLego, knownSeed, components);
+          compositeLegos++;
+        } else {
+          // No components provided, treat as simple intro
+          presentation = generateBasePresentation(targetLang, knownLego, targetLego, knownSeed);
+          baseLegos++;
+        }
       } else {
-        console.warn(`⚠️  Unknown LEGO type "${type}" for ${legoId}, skipping`);
+        console.warn(`[Phase 6] Unknown LEGO type "${type}" for ${legoId}, skipping`);
         continue;
       }
 
@@ -164,21 +164,40 @@ async function generateIntroductions() {
   // Write to file
   await fs.writeJson(outputPath, output, { spaces: 2 });
 
-  console.log(`✅ Generated ${totalLegos} introduction presentations:`);
-  console.log(`   - BASE LEGOs: ${baseLegos}`);
-  console.log(`   - COMPOSITE LEGOs: ${compositeLegos}`);
-  console.log(`\n💾 Output: ${outputPath}\n`);
+  console.log(`[Phase 6] ✅ Generated ${totalLegos} introduction presentations:`);
+  console.log(`[Phase 6]    - BASE LEGOs: ${baseLegos}`);
+  console.log(`[Phase 6]    - COMPOSITE LEGOs: ${compositeLegos}`);
+  console.log(`[Phase 6] Output: ${outputPath}\n`);
 
-  // Show a few examples
-  console.log(`📝 Sample presentations:\n`);
-  const sampleIds = Object.keys(introductions).slice(0, 3);
-  for (const id of sampleIds) {
-    console.log(`${id}:`);
-    console.log(`  "${introductions[id]}"\n`);
-  }
+  return {
+    success: true,
+    totalIntroductions: totalLegos,
+    baseLegos,
+    compositeLegos,
+    outputPath
+  };
 }
 
-generateIntroductions().catch(err => {
-  console.error('\n❌ Phase 6 failed:', err.message);
-  process.exit(1);
-});
+// CLI usage
+if (require.main === module) {
+  const courseDir = process.argv[2];
+
+  if (!courseDir) {
+    console.error('Usage: node scripts/phase6-generate-introductions.cjs <courseDir>');
+    console.error('Example: node scripts/phase6-generate-introductions.cjs public/vfs/courses/spa_for_eng');
+    process.exit(1);
+  }
+
+  generateIntroductions(courseDir)
+    .then(result => {
+      console.log(`[Phase 6] ✅ Introduction generation complete!`);
+      console.log(`[Phase 6]    Total introductions: ${result.totalIntroductions}`);
+      process.exit(0);
+    })
+    .catch(error => {
+      console.error('[Phase 6] ❌ Introduction generation failed:', error.message);
+      process.exit(1);
+    });
+}
+
+module.exports = { generateIntroductions };

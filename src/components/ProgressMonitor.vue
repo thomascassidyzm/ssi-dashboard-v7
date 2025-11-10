@@ -48,6 +48,15 @@
         <div v-if="phase3Active || phase3Complete" class="text-xs text-slate-400 ml-10">
           Extracting linguistic building blocks from seed pairs
         </div>
+        <div v-if="phase3Active && subProgress && subProgress.phase === 'phase_3'" class="ml-10 mt-2">
+          <div class="flex items-center gap-2 text-xs">
+            <span class="text-emerald-400 font-medium">{{ subProgress.completed }}/{{ subProgress.total }} agents</span>
+            <div class="flex-1 bg-slate-700 rounded-full h-1.5">
+              <div class="bg-emerald-500 h-1.5 rounded-full transition-all" :style="{ width: `${subProgress.percentage}%` }"></div>
+            </div>
+            <span class="text-slate-500">{{ subProgress.percentage }}%</span>
+          </div>
+        </div>
       </div>
 
       <!-- Phase 5: Practice Baskets -->
@@ -59,10 +68,51 @@
             <div v-else class="text-slate-600">○</div>
             <span class="text-sm font-medium text-slate-300">Phase 5: Practice Baskets</span>
           </div>
-          <span v-if="phase5FileExists" class="text-xs text-green-400">lego_baskets.json ✓</span>
+          <span v-if="phase5FileExists" class="text-xs text-green-400">baskets/ ✓</span>
         </div>
         <div v-if="phase5Active || phase5Complete" class="text-xs text-slate-400 ml-10">
           Generating practice phrases for each LEGO
+        </div>
+        <div v-if="phase5Active && subProgress && subProgress.phase === 'phase_5'" class="ml-10 mt-2">
+          <div class="flex items-center gap-2 text-xs">
+            <span class="text-emerald-400 font-medium">{{ subProgress.completed }}/{{ subProgress.total }} agents</span>
+            <div class="flex-1 bg-slate-700 rounded-full h-1.5">
+              <div class="bg-emerald-500 h-1.5 rounded-full transition-all" :style="{ width: `${subProgress.percentage}%` }"></div>
+            </div>
+            <span class="text-slate-500">{{ subProgress.percentage }}%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 6: Introductions -->
+      <div class="bg-slate-900/50 rounded-lg p-4">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-3">
+            <div v-if="phase6Complete" class="text-green-400">✓</div>
+            <div v-else-if="phase6Active" class="text-yellow-400 animate-pulse">●</div>
+            <div v-else class="text-slate-600">○</div>
+            <span class="text-sm font-medium text-slate-300">Phase 6: Introductions</span>
+          </div>
+          <span v-if="phase6FileExists" class="text-xs text-green-400">introductions.json ✓</span>
+        </div>
+        <div v-if="phase6Active || phase6Complete" class="text-xs text-slate-400 ml-10">
+          Generating LEGO presentation text (~2 seconds)
+        </div>
+      </div>
+
+      <!-- Phase 7: Course Manifest -->
+      <div class="bg-slate-900/50 rounded-lg p-4">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-3">
+            <div v-if="phase7Complete" class="text-green-400">✓</div>
+            <div v-else-if="phase7Active" class="text-yellow-400 animate-pulse">●</div>
+            <div v-else class="text-slate-600">○</div>
+            <span class="text-sm font-medium text-slate-300">Phase 7: Course Manifest</span>
+          </div>
+          <span v-if="phase7FileExists" class="text-xs text-green-400">course_manifest.json ✓</span>
+        </div>
+        <div v-if="phase7Active || phase7Complete" class="text-xs text-slate-400 ml-10">
+          Compiling final manifest for app deployment (~5 seconds)
         </div>
       </div>
     </div>
@@ -116,9 +166,13 @@ const props = defineProps({
 // State
 const status = ref('initializing')
 const currentPhase = ref('')
+const currentMessage = ref('')
+const subProgress = ref(null)
 const phase1FileExists = ref(false)
 const phase3FileExists = ref(false)
 const phase5FileExists = ref(false)
+const phase6FileExists = ref(false)
+const phase7FileExists = ref(false)
 
 let pollTimer = null
 
@@ -154,6 +208,22 @@ const phase5Complete = computed(() => {
   return phase5FileExists.value || currentPhase.value.includes('phase_5_complete')
 })
 
+const phase6Active = computed(() => {
+  return currentPhase.value.includes('phase_6') && !phase6Complete.value
+})
+
+const phase6Complete = computed(() => {
+  return phase6FileExists.value || currentPhase.value.includes('phase_6_complete') || phase7Active.value || phase7Complete.value
+})
+
+const phase7Active = computed(() => {
+  return currentPhase.value.includes('phase_7') && !phase7Complete.value
+})
+
+const phase7Complete = computed(() => {
+  return phase7FileExists.value || status.value === 'completed'
+})
+
 // Methods
 const checkProgress = async () => {
   try {
@@ -162,6 +232,8 @@ const checkProgress = async () => {
     if (jobResponse.data) {
       status.value = jobResponse.data.status
       currentPhase.value = jobResponse.data.phase || ''
+      currentMessage.value = jobResponse.data.message || ''
+      subProgress.value = jobResponse.data.subProgress || null
     }
 
     // Check for output files (VFS-based detection)
@@ -180,10 +252,24 @@ const checkProgress = async () => {
     }
 
     try {
-      const basketsCheck = await fetch(`/vfs/courses/${props.courseCode}/lego_baskets.json`, { method: 'HEAD' })
+      const basketsCheck = await fetch(`/vfs/courses/${props.courseCode}/baskets/`, { method: 'HEAD' })
       phase5FileExists.value = basketsCheck.ok
     } catch (err) {
       phase5FileExists.value = false
+    }
+
+    try {
+      const introductionsCheck = await fetch(`/vfs/courses/${props.courseCode}/introductions.json`, { method: 'HEAD' })
+      phase6FileExists.value = introductionsCheck.ok
+    } catch (err) {
+      phase6FileExists.value = false
+    }
+
+    try {
+      const manifestCheck = await fetch(`/vfs/courses/${props.courseCode}/course_manifest.json`, { method: 'HEAD' })
+      phase7FileExists.value = manifestCheck.ok
+    } catch (err) {
+      phase7FileExists.value = false
     }
 
   } catch (error) {

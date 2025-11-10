@@ -8944,6 +8944,80 @@ function initializeVFSWatcher() {
 }
 
 // =============================================================================
+// TEST/UTILITY ENDPOINTS
+// =============================================================================
+
+/**
+ * GET /api/health
+ * Health check endpoint for tests
+ */
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    version: '8.0.0',
+    timestamp: new Date().toISOString()
+  });
+});
+
+/**
+ * POST /api/courses/generate-code
+ * Generate course code from parameters (utility for tests)
+ */
+app.post('/api/courses/generate-code', (req, res) => {
+  const { target, known, startSeed, endSeed } = req.body;
+  const courseCode = generateCourseCode(target, known, startSeed, endSeed);
+
+  res.json({
+    courseCode,
+    target,
+    known,
+    startSeed,
+    endSeed
+  });
+});
+
+/**
+ * GET /api/phase-prompts/status
+ * Check if all phase prompts loaded successfully (for tests)
+ */
+app.get('/api/phase-prompts/status', (req, res) => {
+  const loadedPhases = Object.keys(PHASE_PROMPTS);
+  const allLoaded = loadedPhases.length === 7; // Expect 7 phases
+
+  res.json({
+    loaded: allLoaded,
+    count: loadedPhases.length,
+    expected: 7,
+    phases: PHASE_PROMPTS // Include full prompts for validation
+  });
+});
+
+/**
+ * DELETE /api/courses/:courseCode/job
+ * Clear job state (for test cleanup)
+ */
+app.delete('/api/courses/:courseCode/job', (req, res) => {
+  const { courseCode } = req.params;
+
+  if (STATE.jobs.has(courseCode)) {
+    const job = STATE.jobs.get(courseCode);
+    STATE.jobs.delete(courseCode);
+
+    res.json({
+      success: true,
+      message: 'Job cleared successfully',
+      courseCode,
+      previousStatus: job.status
+    });
+  } else {
+    res.status(404).json({
+      error: 'Job not found',
+      courseCode
+    });
+  }
+});
+
+// =============================================================================
 // SERVER START
 // =============================================================================
 

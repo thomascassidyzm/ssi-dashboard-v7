@@ -390,19 +390,41 @@
         </div>
 
         <!-- Actions -->
-        <div v-if="isCompleted" class="mt-8 flex gap-4">
-          <button
-            @click="startNew"
-            class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
-          >
-            Generate Another Course
-          </button>
-          <button
-            @click="viewCourse"
-            class="bg-slate-600 hover:bg-slate-700 text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
-          >
-            View Course Files
-          </button>
+        <div v-if="isCompleted" class="mt-8 space-y-4">
+          <!-- Extend Button (if applicable) -->
+          <div v-if="canExtendCourse" class="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+            <div class="flex items-start gap-3">
+              <div class="text-blue-400 text-xl">🚀</div>
+              <div class="flex-1">
+                <p class="font-medium text-blue-400 mb-1">Ready to Extend?</p>
+                <p class="text-sm text-slate-300 mb-3">
+                  Your {{ endSeed }} seed course is complete! Extend it to the full 668 seeds without regenerating existing work.
+                </p>
+                <button
+                  @click="extendToFullCourse"
+                  class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
+                >
+                  🎯 Extend to Full Course (668 Seeds)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Standard Actions -->
+          <div class="flex gap-4">
+            <button
+              @click="startNew"
+              class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
+            >
+              Generate Another Course
+            </button>
+            <button
+              @click="viewCourse"
+              class="bg-slate-600 hover:bg-slate-700 text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
+            >
+              View Course Files
+            </button>
+          </div>
         </div>
 
         <!-- Error Message -->
@@ -461,11 +483,9 @@ let pollInterval = null
 const phaseNames = [
   { id: 0, name: 'Phase 1: Pedagogical Translation' },
   { id: 1, name: 'Phase 3: LEGO Extraction' },
-  { id: 2, name: 'Phase 4: Batch Preparation' },
-  { id: 3, name: 'Phase 5: Basket Generation' },
-  { id: 4, name: 'Phase 6: Introduction Generation' },
-  { id: 5, name: 'Phase 7: Compilation' },
-  { id: 6, name: 'Phase 8: Audio Generation (Kai)' }
+  { id: 2, name: 'Phase 5: Practice Baskets' },
+  { id: 3, name: 'Phase 6: Introductions' },
+  { id: 4, name: 'Phase 7: Course Manifest' }
 ]
 
 // Computed
@@ -476,15 +496,21 @@ const seedCount = computed(() => {
 const currentPhaseIndex = computed(() => {
   const phase = currentPhase.value
   if (phase === 'initializing') return -1
-  if (phase === 'phase_1' || phase === 'phase_1_waiting' || phase === 'phase_1_complete') return 0
-  if (phase === 'phase_3' || phase === 'phase_3_complete') return 1
-  if (phase === 'phase_4' || phase === 'phase_4_complete') return 2
-  if (phase === 'phase_5' || phase === 'phase_5_complete') return 3
-  if (phase === 'phase_6' || phase === 'phase_6_complete') return 4
-  if (phase === 'phase_7' || phase === 'phase_7_complete' || phase === 'compilation') return 5
-  if (phase === 'phase_8') return 6
-  if (phase === 'completed') return 7
+  if (phase.includes('phase_1')) return 0
+  if (phase.includes('phase_3')) return 1
+  if (phase.includes('phase_5')) return 2
+  if (phase.includes('phase_6')) return 3
+  if (phase.includes('phase_7') || phase === 'compilation') return 4
+  if (phase === 'completed') return 5
   return -1
+})
+
+const canExtendCourse = computed(() => {
+  // Show extend button if:
+  // 1. Course is completed
+  // 2. End seed is less than 668 (full course)
+  // 3. Start seed was 1 (started from beginning)
+  return isCompleted.value && endSeed.value < 668 && startSeed.value === 1
 })
 
 // Methods
@@ -567,6 +593,37 @@ const selectCourseSize = (size, start, end) => {
   courseSize.value = size
   startSeed.value = start
   endSeed.value = end
+}
+
+const extendToFullCourse = async () => {
+  // Confirm with user
+  const confirmed = confirm(
+    `🚀 Extend to Full Course?\n\n` +
+    `This will extend your existing ${endSeed.value}-seed course to 668 seeds.\n\n` +
+    `✅ Keeps existing work (seeds 1-${endSeed.value})\n` +
+    `✅ Only generates new content (seeds ${endSeed.value + 1}-668)\n` +
+    `⏱️  Estimated time: ~2-3 hours\n\n` +
+    `Continue?`
+  )
+
+  if (!confirmed) {
+    return
+  }
+
+  // Update seed range to full course
+  startSeed.value = 1
+  endSeed.value = 668
+  courseSize.value = 'full'
+
+  // Reset state and restart generation
+  isCompleted.value = false
+  isGenerating.value = true
+  currentPhase.value = 'initializing'
+  progress.value = 0
+  errorMessage.value = ''
+
+  // Start generation (backend will detect existing work and extend)
+  await startGeneration()
 }
 
 const startGeneration = async (force = false) => {
