@@ -56,20 +56,14 @@ tell application "${getBrowserAppName(browser)}"
         set newTab to make new tab with properties {URL:"https://claude.ai/code"}
     end tell
 
-    -- Wait for page to load (6 seconds - page + input field)
-    delay 6
+    -- Wait for page to load (3 seconds)
+    delay 3
 
-    -- Click in the center of the window to focus input field
+    -- Simulate Cmd+V to paste prompt into input field
     tell application "System Events"
-        -- Click to focus the textarea (center of window)
-        click at {700, 400}
-        delay 0.5
-
-        -- Paste prompt with Cmd+V
         keystroke "v" using command down
-        delay 1
-
-        -- Auto-submit with Enter
+        delay 0.5
+        -- Auto-submit with Enter for fully automated execution
         keystroke return
     end tell
 end tell
