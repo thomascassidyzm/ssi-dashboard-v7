@@ -411,9 +411,9 @@ Each scaffold contains:
 ## 🚀 EXECUTION STRATEGY
 
 ${agentCount <= 10 ? `
-### Strategy: FULL PARALLELIZATION (Small Job - ${totalSeeds} seeds, ${agentCount} agents)
+### Strategy: FULL PARALLELIZATION (${totalSeeds} seeds, ${agentCount} agents)
 
-Spawn all ${agentCount} agents in parallel - no need for waves with small job size.
+Spawn all ${agentCount} agents in parallel - maximize speed!
 
 **After EACH agent completes → PUSH IMMEDIATELY:**
 
@@ -423,15 +423,14 @@ git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
 git push origin main
 \`\`\`
 
-**Critical**: Push each file immediately (don't wait for all agents) so automation can track progress in real-time!
+**Critical**: Push each file immediately so automation tracks progress and can detect stuck jobs!
 ` : `
-### Strategy: WAVE-BASED EXECUTION (Large Job - ${totalSeeds} seeds, ${agentCount} agents)
+### Strategy: 2-WAVE EXECUTION (${totalSeeds} seeds, ${agentCount} agents)
 
-With ${agentCount} agents, use **3 waves** to prevent Claude Code on Web timeouts:
+Minimize waves, maximize speed. Use **2 waves** to balance speed vs timeout risk:
 
-- **Wave 1**: Agents 1-${Math.ceil(agentCount / 3)} (${Math.ceil(agentCount / 3)} agents)
-- **Wave 2**: Agents ${Math.ceil(agentCount / 3) + 1}-${Math.ceil(2 * agentCount / 3)} (${Math.ceil(agentCount / 3)} agents)
-- **Wave 3**: Agents ${Math.ceil(2 * agentCount / 3) + 1}-${agentCount} (${agentCount - Math.ceil(2 * agentCount / 3)} agents)
+- **Wave 1**: Agents 1-${Math.ceil(agentCount / 2)} (${Math.ceil(agentCount / 2)} agents)
+- **Wave 2**: Agents ${Math.ceil(agentCount / 2) + 1}-${agentCount} (${agentCount - Math.ceil(agentCount / 2)} agents)
 
 **After EACH agent completes → PUSH IMMEDIATELY:**
 
@@ -441,11 +440,10 @@ git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
 git push origin main
 \`\`\`
 
-**Why waves + immediate push:**
-- Prevents Claude Code on Web from getting stuck (20+ min timeout)
-- If connection drops mid-wave, completed files are already pushed
-- Automation sees files appearing and updates dashboard in real-time
-- Smart resume: Only redo missing agents, not entire wave
+**Why immediate push:**
+- Automation sees files appearing in real-time
+- Easy to detect stuck jobs (no new file in 10+ min = problem)
+- Smart resume: Only redo missing agents if connection drops
 `}
 
 ---
@@ -661,9 +659,9 @@ This lets learners **reconstruct and recombine** - seeing grammar without explan
 ## 🚀 EXECUTION STRATEGY
 
 ${agentCount <= 10 ? `
-### Strategy: FULL PARALLELIZATION (Small Job - ${totalSeeds} seeds, ${agentCount} agents)
+### Strategy: FULL PARALLELIZATION (${totalSeeds} seeds, ${agentCount} agents)
 
-Spawn all ${agentCount} agents in parallel - no need for waves with small job size.
+Spawn all ${agentCount} agents in parallel - maximize speed!
 
 **After EACH agent completes → PUSH IMMEDIATELY:**
 
@@ -673,15 +671,14 @@ git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
 git push origin main
 \`\`\`
 
-**Critical**: Push each file immediately (don't wait for all agents) so automation can track progress in real-time!
+**Critical**: Push each file immediately so automation tracks progress and can detect stuck jobs!
 ` : `
-### Strategy: WAVE-BASED EXECUTION (Large Job - ${totalSeeds} seeds, ${agentCount} agents)
+### Strategy: 2-WAVE EXECUTION (${totalSeeds} seeds, ${agentCount} agents)
 
-With ${agentCount} agents, use **3 waves** to prevent Claude Code on Web timeouts:
+Minimize waves, maximize speed. Use **2 waves** to balance speed vs timeout risk:
 
-- **Wave 1**: Agents 1-${Math.ceil(agentCount / 3)} (${Math.ceil(agentCount / 3)} agents)
-- **Wave 2**: Agents ${Math.ceil(agentCount / 3) + 1}-${Math.ceil(2 * agentCount / 3)} (${Math.ceil(agentCount / 3)} agents)
-- **Wave 3**: Agents ${Math.ceil(2 * agentCount / 3) + 1}-${agentCount} (${agentCount - Math.ceil(2 * agentCount / 3)} agents)
+- **Wave 1**: Agents 1-${Math.ceil(agentCount / 2)} (${Math.ceil(agentCount / 2)} agents)
+- **Wave 2**: Agents ${Math.ceil(agentCount / 2) + 1}-${agentCount} (${agentCount - Math.ceil(agentCount / 2)} agents)
 
 **After EACH agent completes → PUSH IMMEDIATELY:**
 
@@ -691,11 +688,10 @@ git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
 git push origin main
 \`\`\`
 
-**Why waves + immediate push:**
-- Prevents Claude Code on Web from getting stuck (20+ min timeout)
-- If connection drops mid-wave, completed files are already pushed
-- Automation sees files appearing and updates dashboard in real-time
-- Smart resume: Only redo missing agents, not entire wave
+**Why immediate push:**
+- Automation sees files appearing in real-time
+- Easy to detect stuck jobs (no new file in 10+ min = problem)
+- Smart resume: Only redo missing agents if connection drops
 `}
 
 ---
