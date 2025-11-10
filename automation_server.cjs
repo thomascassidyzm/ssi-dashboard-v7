@@ -303,7 +303,7 @@ IMPORTANT: Use compact JSON formatting (no unnecessary whitespace).
 
 ## After All ${agentCount} Agents Complete
 
-Merge all agent outputs into final seed_pairs.json:
+1. Merge all agent outputs into final seed_pairs.json:
 
 \`\`\`bash
 node scripts/merge_phase1_translations.cjs ${courseDir}
@@ -311,17 +311,27 @@ node scripts/merge_phase1_translations.cjs ${courseDir}
 
 Expected output: \`${courseDir}/seed_pairs.json\` with all ${totalSeeds} translations.
 
----
-
-## Git Workflow
-
-Push completed file to main branch:
+2. **PUSH TO GITHUB IMMEDIATELY** (critical for automation):
 
 \`\`\`bash
-git add ${courseDir}/seed_pairs.json
-git commit -m "Phase 1: ${totalSeeds} translations for ${courseCode}"
-git push origin HEAD:main
+git add .
+git commit -m "Phase 1: Translations complete for ${courseCode}
+
+- Translated ${totalSeeds} seeds
+- ${agentCount} parallel agents
+- Ready for Phase 3"
+
+git push origin HEAD:claude/phase1-${courseCode}-$(date +%s)
 \`\`\`
+
+3. Report completion with the branch name
+
+The automation server will automatically:
+- Detect your pushed branch
+- Pull and merge your changes
+- Continue to Phase 3
+
+**DO NOT wait for user confirmation - push immediately when merge completes!**
 
 ---
 
@@ -489,11 +499,30 @@ Spawn your agents using whichever strategy you choose (full parallel, waves, or 
 
 **Report progress** as agents complete.
 
-When all ${agentCount} agents finish, instruct the user to run the merge script:
+When all ${agentCount} agents finish:
+
+1. **PUSH TO GITHUB IMMEDIATELY** (critical for automation):
 
 \`\`\`bash
-node scripts/phase3_merge_legos.cjs ${courseDir}
+git add .
+git commit -m "Phase 3: LEGO extraction complete for ${courseCode}
+
+- Extracted LEGOs for ${totalSeeds} seeds
+- ${agentCount} parallel agents
+- Ready for merge and validation"
+
+git push origin HEAD:claude/phase3-${courseCode}-$(date +%s)
 \`\`\`
+
+2. Report completion with the branch name
+
+The automation server will automatically:
+- Detect your pushed branch
+- Pull and merge your changes
+- Run the merge script: \`node scripts/phase3_merge_legos.cjs ${courseDir}\`
+- Continue to Phase 5
+
+**DO NOT wait for user confirmation - push immediately when agents complete!**
 
 ---
 
@@ -1898,7 +1927,15 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
     if (await fs.pathExists(legoPairsPath)) {
       try {
         const legoPairsData = await fs.readJson(legoPairsPath);
-        const actualSeeds = legoPairsData.seeds ? legoPairsData.seeds.length : (legoPairsData.total_seeds || 0);
+        // Handle both array format {seeds: [...]} and object format {seeds: {S0001: {...}, ...}}
+        let actualSeeds = 0;
+        if (legoPairsData.seeds) {
+          actualSeeds = Array.isArray(legoPairsData.seeds)
+            ? legoPairsData.seeds.length
+            : Object.keys(legoPairsData.seeds).length;
+        } else {
+          actualSeeds = legoPairsData.total_seeds || 0;
+        }
 
         console.log(`[Resume] Found existing lego_pairs.json with ${actualSeeds} seeds`);
 
