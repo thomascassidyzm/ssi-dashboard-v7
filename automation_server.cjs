@@ -1837,8 +1837,14 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
 
       console.log(`[Web Orchestrator] Opening Phase 1 tab and pasting master prompt...`);
       console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 70)} parallel agents`);
-      await spawnClaudeWebAgent(phase1MasterPrompt, 1, 'safari');
-      console.log(`[Web Orchestrator] ✅ Phase 1 master prompt pasted - HIT ENTER to spawn agents!`);
+
+      try {
+        await spawnClaudeWebAgent(phase1MasterPrompt, 1, 'safari');
+        console.log(`[Web Orchestrator] ✅ Phase 1 master prompt pasted and auto-submitted!`);
+      } catch (spawnError) {
+        console.error(`[Web Orchestrator] ❌ Failed to spawn Phase 1 agent:`, spawnError);
+        throw spawnError;
+      }
 
       job.progress = 5;
       job.message = 'Phase 1 tab opened - waiting for execution';
