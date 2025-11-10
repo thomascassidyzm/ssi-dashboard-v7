@@ -29,17 +29,44 @@ Why? The learner THINKS in their native language. Respect how their brain chunks
 
 ### 2. PROVIDE BOTH ATOMIC AND MOLECULAR
 
-**Overlap is GOOD** - multiple reconstruction paths teach better:
+**Overlap is REQUIRED** - extract words BOTH ways:
 
-- **Atomic**: Maximum flexibility (individual semantic units)
-- **Molecular**: Show target language patterns (common combinations)
+**Why Both?**
+- **Atomic**: Reusable building blocks (flexibility across many contexts)
+- **Molecular**: Target language patterns (word order, idioms, constructions)
+
+**The Pattern**: If a word appears in an M-LEGO AND is FD on its own → Extract BOTH
 
 ```
-Example:
-Atomic: 我 (I), 想 (want), 说 (to speak)
-Molecular: 我想 (I want)
-Both valid: (我 + 想 + 说) OR (我想 + 说) ✓
+Example: "tan frecuentemente como sea posible" = "as often as possible"
+
+Extract ALL:
+1. "frecuentemente" (A) - often [reusable!]
+2. "posible" (A) - possible [reusable!]
+3. "tan frecuentemente como sea posible" (M) - as often as possible [word order!]
+
+Components: [["tan", "as"], ["frecuentemente", "often"], ["como", "as"], ["sea", "be"], ["posible", "possible"]]
+
+Why extract atomic "frecuentemente" AND include it in M-LEGO?
+- Atomic: Learner can use "frecuentemente" in other contexts ("hablo frecuentemente")
+- Molecular: Learner learns the PATTERN "tan X como sea posible" with correct word order
+- Both teach different things!
 ```
+
+**Another Example**: "lo más frecuentemente posible" = "as often as possible"
+
+```
+Extract ALL:
+1. "frecuentemente" (A) - often
+2. "posible" (A) - possible
+3. "más" (A) - more
+4. "lo más frecuentemente posible" (M) - as often as possible
+
+Why? "más" is useful alone ("más tarde"), but the CONSTRUCTION needs all parts together for word order!
+```
+
+**Rule**: A-LEGOs teach vocabulary flexibility, M-LEGOs teach target language syntax/idioms.
+**Both are needed** - not redundant!
 
 ### 3. VERIFY COMPLETE TILING
 
@@ -143,23 +170,34 @@ Now processing S0150: "Soy profesor" = "I am a teacher"
 
 ### STEP 6: ADD BOTH ATOMIC AND MOLECULAR
 
-Don't just extract the minimum - provide learning flexibility:
+**Extract overlapping coverage** - same words appear in both A and M LEGOs:
 
 ```
-Seed: "Quiero hablar español"
+Seed: "Quiero hablar español contigo ahora"
 
-Extract:
-1. "quiero" (A) - I want
-2. "hablar" (A) - to speak
-3. "español" (A) - Spanish
-4. "quiero hablar" (M) - I want to speak [BONUS - common verb phrase]
-5. "hablar español" (M) - speak Spanish [BONUS - common object phrase]
+Extract BOTH atomic AND molecular:
+1. "quiero" (A) - I want [reusable verb]
+2. "hablar" (A) - to speak [reusable verb]
+3. "español" (A) - Spanish [reusable noun]
+4. "contigo" (A) - with you [reusable]
+5. "ahora" (A) - now [reusable]
+6. "quiero hablar" (M) - I want to speak [verb pattern]
+7. "hablar español" (M) - speak Spanish [object phrase]
 
-All valid tilings:
-- quiero + hablar + español
-- quiero hablar + español
-- quiero + hablar español
+Why both?
+- Atomic "hablar" → Learner can use in "voy a hablar", "puedo hablar", etc.
+- Molecular "quiero hablar" → Learner learns verb + infinitive pattern
+- Molecular "hablar español" → Learner learns verb + direct object order
+
+Different teaching purposes:
+- A-LEGOs = vocabulary building blocks (reusable across contexts)
+- M-LEGOs = syntax patterns (word order, constructions, idioms)
 ```
+
+**Critical**: If word is FD on its own → Extract as A-LEGO even if also in M-LEGO
+- "frecuentemente" works alone → A-LEGO ✅
+- Also part of "tan frecuentemente como sea posible" → M-LEGO ✅
+- **Both teach different skills!**
 
 ### STEP 7: COMPONENTIZE ALL M-TYPES
 
