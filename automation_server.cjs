@@ -408,34 +408,45 @@ Each scaffold contains:
 
 ---
 
-## 🚀 EXECUTION STRATEGY (REQUIRED: WAVE-BASED WITH IMMEDIATE PUSH)
+## 🚀 EXECUTION STRATEGY
 
-**CRITICAL**: Use wave-based execution with immediate file pushes for resilience.
+${agentCount <= 10 ? `
+### Strategy: FULL PARALLELIZATION (Small Job - ${totalSeeds} seeds, ${agentCount} agents)
 
-### Wave Strategy (MANDATORY for Web Mode)
+Spawn all ${agentCount} agents in parallel - no need for waves with small job size.
 
-Process ${agentCount} agents in **3 waves** to prevent timeouts and enable smart resume:
-
-- **Wave 1**: Agents 1-${Math.ceil(agentCount / 3)}
-- **Wave 2**: Agents ${Math.ceil(agentCount / 3) + 1}-${Math.ceil(2 * agentCount / 3)}
-- **Wave 3**: Agents ${Math.ceil(2 * agentCount / 3) + 1}-${agentCount}
-
-### After EACH Agent Completes → PUSH IMMEDIATELY
-
-**DO NOT wait for wave to finish!** Push each file as soon as it's ready:
+**After EACH agent completes → PUSH IMMEDIATELY:**
 
 \`\`\`bash
-# Agent completes → Write file → Push immediately
 git add public/vfs/courses/${courseCode}/phase3_outputs/agent_XX_provisional.json
 git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
 git push origin main
 \`\`\`
 
-**Why this matters:**
-- If connection drops mid-wave, completed files are safe
-- Automation can resume from last successful push
-- Dashboard shows real-time progress (1/${agentCount}, 2/${agentCount}, etc.)
-- No work is lost!
+**Critical**: Push each file immediately (don't wait for all agents) so automation can track progress in real-time!
+` : `
+### Strategy: WAVE-BASED EXECUTION (Large Job - ${totalSeeds} seeds, ${agentCount} agents)
+
+With ${agentCount} agents, use **3 waves** to prevent Claude Code on Web timeouts:
+
+- **Wave 1**: Agents 1-${Math.ceil(agentCount / 3)} (${Math.ceil(agentCount / 3)} agents)
+- **Wave 2**: Agents ${Math.ceil(agentCount / 3) + 1}-${Math.ceil(2 * agentCount / 3)} (${Math.ceil(agentCount / 3)} agents)
+- **Wave 3**: Agents ${Math.ceil(2 * agentCount / 3) + 1}-${agentCount} (${agentCount - Math.ceil(2 * agentCount / 3)} agents)
+
+**After EACH agent completes → PUSH IMMEDIATELY:**
+
+\`\`\`bash
+git add public/vfs/courses/${courseCode}/phase3_outputs/agent_XX_provisional.json
+git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
+git push origin main
+\`\`\`
+
+**Why waves + immediate push:**
+- Prevents Claude Code on Web from getting stuck (20+ min timeout)
+- If connection drops mid-wave, completed files are already pushed
+- Automation sees files appearing and updates dashboard in real-time
+- Smart resume: Only redo missing agents, not entire wave
+`}
 
 ---
 
@@ -647,34 +658,45 @@ This lets learners **reconstruct and recombine** - seeing grammar without explan
 
 ---
 
-## 🚀 EXECUTION STRATEGY (REQUIRED: WAVE-BASED WITH IMMEDIATE PUSH)
+## 🚀 EXECUTION STRATEGY
 
-**CRITICAL**: Use wave-based execution with immediate file pushes for resilience.
+${agentCount <= 10 ? `
+### Strategy: FULL PARALLELIZATION (Small Job - ${totalSeeds} seeds, ${agentCount} agents)
 
-### Wave Strategy (MANDATORY for Web Mode)
+Spawn all ${agentCount} agents in parallel - no need for waves with small job size.
 
-Process ${agentCount} agents in **3 waves** to prevent timeouts and enable smart resume:
-
-- **Wave 1**: Agents 1-${Math.ceil(agentCount / 3)}
-- **Wave 2**: Agents ${Math.ceil(agentCount / 3) + 1}-${Math.ceil(2 * agentCount / 3)}
-- **Wave 3**: Agents ${Math.ceil(2 * agentCount / 3) + 1}-${agentCount}
-
-### After EACH Agent Completes → PUSH IMMEDIATELY
-
-**DO NOT wait for wave to finish!** Push each file as soon as it's ready:
+**After EACH agent completes → PUSH IMMEDIATELY:**
 
 \`\`\`bash
-# Agent completes → Write file → Push immediately
 git add public/vfs/courses/${courseCode}/phase3_outputs/agent_XX_provisional.json
 git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
 git push origin main
 \`\`\`
 
-**Why this matters:**
-- If connection drops mid-wave, completed files are safe
-- Automation can resume from last successful push
-- Dashboard shows real-time progress (1/${agentCount}, 2/${agentCount}, etc.)
-- No work is lost!
+**Critical**: Push each file immediately (don't wait for all agents) so automation can track progress in real-time!
+` : `
+### Strategy: WAVE-BASED EXECUTION (Large Job - ${totalSeeds} seeds, ${agentCount} agents)
+
+With ${agentCount} agents, use **3 waves** to prevent Claude Code on Web timeouts:
+
+- **Wave 1**: Agents 1-${Math.ceil(agentCount / 3)} (${Math.ceil(agentCount / 3)} agents)
+- **Wave 2**: Agents ${Math.ceil(agentCount / 3) + 1}-${Math.ceil(2 * agentCount / 3)} (${Math.ceil(agentCount / 3)} agents)
+- **Wave 3**: Agents ${Math.ceil(2 * agentCount / 3) + 1}-${agentCount} (${agentCount - Math.ceil(2 * agentCount / 3)} agents)
+
+**After EACH agent completes → PUSH IMMEDIATELY:**
+
+\`\`\`bash
+git add public/vfs/courses/${courseCode}/phase3_outputs/agent_XX_provisional.json
+git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
+git push origin main
+\`\`\`
+
+**Why waves + immediate push:**
+- Prevents Claude Code on Web from getting stuck (20+ min timeout)
+- If connection drops mid-wave, completed files are already pushed
+- Automation sees files appearing and updates dashboard in real-time
+- Smart resume: Only redo missing agents, not entire wave
+`}
 
 ---
 
