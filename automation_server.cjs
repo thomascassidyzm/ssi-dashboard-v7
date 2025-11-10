@@ -513,6 +513,210 @@ node scripts/phase3_merge_legos.cjs ${courseDir}
 }
 
 /**
+ * Generate Phase 5 Master Prompt - Self-Managing Practice Basket Generation
+ */
+function generatePhase5MasterPrompt(courseCode, params, courseDir) {
+  const { target, known, startSeed, endSeed } = params;
+  const totalSeeds = endSeed - startSeed + 1;
+  const seedsPerAgent = 20;
+  const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
+
+  return `# Phase 5 Master Prompt: Practice Basket Generation with Self-Managing Parallelization
+
+**Course**: ${courseCode}
+**Total Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
+**Target Agents**: ${agentCount} parallel agents
+**Seeds per agent**: ~${seedsPerAgent}
+
+---
+
+## 🎯 YOUR MISSION
+
+You are the **Practice Basket Orchestrator**. Your job is to:
+
+1. **Spawn ${agentCount} parallel agents** to generate practice baskets for all ${totalSeeds} seeds
+2. **Monitor rate limits and adjust pacing** if needed
+3. **Handle errors gracefully** and retry failed agents
+4. **Report progress** as agents complete
+
+You have full autonomy to manage the parallelization strategy based on your rate limit observations.
+
+---
+
+## 📚 PHASE 5 INTELLIGENCE (Single Source of Truth)
+
+**READ**: \`docs/phase_intelligence/phase_5_lego_baskets.md\` (v5.0)
+
+This is the **ONLY authoritative source** for Phase 5 basket generation methodology.
+
+**Key sections to review**:
+- 🚨 CRITICAL: THIS IS A LINGUISTIC TASK, NOT A CODING TASK
+- 🔑 UNDERSTANDING THE WHITELIST (3-Category Rule)
+- 🎨 PHRASE GENERATION PROCESS (Per LEGO)
+- WORD CLASS RECOGNITION (verb/noun/adjective/phrase)
+- 🛡️ GATE COMPLIANCE (Zero Tolerance)
+- EXTENDED THINKING PROTOCOL
+
+**Critical principles** (from SSoT):
+- NO scripts, NO templates, NO automation
+- Use extended thinking for EVERY LEGO
+- Understand word class before generating
+- GATE compliance: Every Spanish word in whitelist
+- 2-2-2-4 distribution mandatory
+- Final LEGO phrase #10 = complete seed sentence
+
+---
+
+## 📂 PREPARED SCAFFOLDS
+
+Mechanical prep has been done! Each agent has a scaffold ready:
+
+\`${courseDir}/phase5_scaffolds/agent_01.json\` through \`agent_${String(agentCount).padStart(2, '0')}.json\`
+
+Each scaffold contains:
+- **whitelist**: Available Spanish vocabulary (3-category rule applied)
+- **seeds**: The seed pairs with LEGOs
+- **legos**: Empty practice_phrases arrays (agent fills these)
+- **is_final_lego**: Flag marking final LEGO in each seed
+
+**Whitelist was built using 3-category rule:**
+1. Atomic LEGOs (A-type) - complete words
+2. Molecular LEGOs (M-type) - complete phrases split into words
+3. Component words from M-types - literal translations
+
+This lets learners **reconstruct and recombine** - seeing grammar without explanation!
+
+---
+
+## 🚀 EXECUTION STRATEGY
+
+You decide the best approach! Options:
+
+### Option A: Full Parallelization (Fastest - if rate limits allow)
+Spawn all ${agentCount} agents at once using Task tool in a single message.
+
+### Option B: Staggered Waves (Safer - if you detect rate pressure)
+Split into 4-5 waves of 7-9 agents each, with 30-second delays between waves.
+
+### Option C: Adaptive (Recommended)
+- Start with full parallelization
+- Monitor for rate limit errors
+- If errors occur, switch to waves automatically
+- Retry failed agents at reduced pace
+
+**Your call!** Use your judgment based on what you observe.
+
+---
+
+## 📋 AGENT TASK TEMPLATE
+
+For each agent, the task is:
+
+\`\`\`markdown
+You are Practice Basket Generation Agent XX.
+
+## Your Data
+**Scaffold**: Read \`${courseDir}/phase5_scaffolds/agent_XX.json\`
+
+This contains:
+- Seeds with empty practice_phrases arrays (you fill these)
+- Whitelist (3-category rule applied)
+- is_final_lego flags (phrase #10 must be seed sentence)
+
+## Your Process
+1. Read Phase 5 Ultimate Intelligence v5.0
+2. For each NEW LEGO, use extended thinking:
+   - STEP 1: Understand the LEGO (word class, natural usage, seed theme)
+   - STEP 2: Identify grammatical role (verb/noun/adjective/phrase)
+   - STEP 3: Generate 10 natural phrases (2-2-2-4 distribution)
+   - STEP 4: Validate EVERY Spanish word against whitelist
+   - STEP 5: If is_final_lego: true, phrase #10 = complete seed sentence
+   - STEP 6: Check phrases sound natural in BOTH languages
+
+3. Fill practice_phrases arrays following Phase 5 v5.0
+4. Use extended thinking for EVERY LEGO (quality over speed!)
+5. Update phrase_distribution to match actual counts
+
+## Output
+Write to: \`${courseDir}/phase5_outputs/agent_XX_provisional.json\`
+
+Format: Same scaffold structure with practice_phrases filled:
+
+\`\`\`json
+{
+  "version": "curated_v7_spanish",
+  "agent_id": XX,
+  "seed_range": "S0XXX-S0YYY",
+  "generation_stage": "PHRASES_GENERATED",
+  "seeds": {
+    "S0001": {
+      "seed": "S0001",
+      "legos": {
+        "S0001L01": {
+          "lego": ["I want", "quiero"],
+          "practice_phrases": [
+            ["I want", "quiero", null, 1],
+            ["I want coffee", "quiero café", null, 2],
+            ...
+            ["I want to speak Spanish with you now", "quiero hablar español contigo ahora", null, 7]
+          ],
+          "phrase_distribution": {
+            "really_short_1_2": 2,
+            "quite_short_3": 2,
+            "longer_4_5": 2,
+            "long_6_plus": 4
+          }
+        }
+      }
+    }
+  }
+}
+\`\`\`
+
+**Quality over speed!** Think linguistically, not mechanically.
+\`\`\`
+
+---
+
+## 🎬 EXECUTE NOW
+
+Spawn your agents using whichever strategy you choose (full parallel, waves, or adaptive).
+
+**Monitor and adjust** based on what you observe.
+
+**Report progress** as agents complete.
+
+When all ${agentCount} agents finish, instruct the user to run the validation/merge script:
+
+\`\`\`bash
+node scripts/phase5_merge_baskets.cjs ${courseDir}
+\`\`\`
+
+---
+
+## ✅ SUCCESS CRITERIA
+
+**Per Agent:**
+- All LEGOs have exactly 10 practice_phrases
+- 2-2-2-4 distribution maintained
+- 100% GATE compliance (all Spanish words in whitelist)
+- Natural language in both English and Spanish
+- Final LEGO phrase #10 = complete seed sentence
+- No template patterns detected
+
+**Overall:**
+- All ${totalSeeds} seeds processed
+- All baskets validated and formatted
+- Zero GATE violations
+- "Top dollar content" quality achieved
+
+**Target time**: 20-30 minutes with adaptive parallelization
+
+**You've got this!** Manage it however you think best given rate limits and system load.
+`;
+}
+
+/**
  * Phase 1 Brief: Translation batch (DEPRECATED - for Local mode only)
  * Use generatePhase1MasterPrompt() for Web/API modes instead
  */
@@ -1582,124 +1786,323 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
     console.log(`[Web Orchestrator] `);
     console.log(`[Web Orchestrator] ============================================`);
 
-    // PHASE 1: Pedagogical Translation
+    // PHASE 1: Pedagogical Translation (with intelligent resume)
     job.phase = 'phase_1_web';
     job.progress = 0;
-    job.message = 'Phase 1: Opening browser tab for translation';
+    job.message = 'Phase 1: Checking for existing translations';
 
     console.log(`\n[Web Orchestrator] ====================================`);
     console.log(`[Web Orchestrator] PHASE 1: PEDAGOGICAL TRANSLATION`);
     console.log(`[Web Orchestrator] ====================================`);
 
-    const phase1MasterPrompt = generatePhase1MasterPrompt(courseCode, { target, known, startSeed, endSeed }, courseDir);
-    await fs.ensureDir(path.join(courseDir, 'prompts'));
-    await fs.writeFile(path.join(courseDir, 'prompts', 'phase_1_master_prompt.md'), phase1MasterPrompt, 'utf8');
-
-    console.log(`[Web Orchestrator] Opening Phase 1 tab and pasting master prompt...`);
-    console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 70)} parallel agents`);
-    await spawnClaudeWebAgent(phase1MasterPrompt, 1, 'chrome');
-    console.log(`[Web Orchestrator] ✅ Phase 1 master prompt pasted - HIT ENTER to spawn agents!`);
-
-    job.progress = 5;
-    job.message = 'Phase 1 tab opened - waiting for execution';
-
-    // Poll for seed_pairs.json
-    console.log(`[Web Orchestrator] Waiting for seed_pairs.json...`);
     const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
-    await pollForFile(seedPairsPath, 60000); // 60 second max wait per check, infinite checks
+    let phase1AlreadyComplete = false;
+    let phase1NeedsExtension = false;
+    let actualStartSeed = startSeed;
 
-    console.log(`[Web Orchestrator] ✅ Phase 1 complete! Found seed_pairs.json`);
-    job.phase = 'phase_1_complete';
-    job.progress = 30;
+    // Check if seed_pairs.json exists with translations
+    if (await fs.pathExists(seedPairsPath)) {
+      try {
+        const seedPairsData = await fs.readJson(seedPairsPath);
+        const translations = seedPairsData.translations || {};
+        const existingSeedIds = Object.keys(translations).map(id => parseInt(id.substring(1))).sort((a, b) => a - b);
+        const maxExistingSeed = existingSeedIds.length > 0 ? Math.max(...existingSeedIds) : 0;
 
-    // Prep Phase 3 scaffolds (mechanical work)
-    console.log(`[Web Orchestrator] Running Phase 3 scaffold prep script...`);
-    const { preparePhase3Scaffolds } = require('./scripts/phase3_prep_scaffolds.cjs');
-    await preparePhase3Scaffolds(courseDir);
-    console.log(`[Web Orchestrator] ✅ Phase 3 scaffolds ready`);
+        console.log(`[Resume] Found existing seed_pairs.json with ${existingSeedIds.length} translations (S0001-S${String(maxExistingSeed).padStart(4, '0')})`);
 
-    // PHASE 3: LEGO Extraction
+        if (maxExistingSeed >= endSeed) {
+          // Already have all requested seeds
+          phase1AlreadyComplete = true;
+          console.log(`[Resume] ✅ Phase 1 already complete! Found ${maxExistingSeed}/${endSeed} translations`);
+          console.log(`[Resume] Skipping Phase 1, proceeding to Phase 3...`);
+          console.log(`[Resume] (To regenerate: delete ${seedPairsPath})\n`);
+          job.phase = 'phase_1_complete';
+          job.progress = 30;
+        } else if (maxExistingSeed >= startSeed) {
+          // Need to extend from where we left off
+          phase1NeedsExtension = true;
+          actualStartSeed = maxExistingSeed + 1;
+          console.log(`[Resume] 🔄 Phase 1 needs extension! Existing: S${String(maxExistingSeed).padStart(4, '0')}, will generate S${String(actualStartSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`);
+          console.log(`[Resume] New translations will be merged with existing seed_pairs.json\n`);
+        }
+      } catch (err) {
+        console.log(`[Resume] seed_pairs.json exists but invalid, will regenerate`);
+      }
+    }
+
+    if (!phase1AlreadyComplete) {
+      const phase1MasterPrompt = generatePhase1MasterPrompt(courseCode, { target, known, startSeed: actualStartSeed, endSeed }, courseDir);
+      await fs.ensureDir(path.join(courseDir, 'prompts'));
+      await fs.writeFile(path.join(courseDir, 'prompts', 'phase_1_master_prompt.md'), phase1MasterPrompt, 'utf8');
+
+      console.log(`[Web Orchestrator] Opening Phase 1 tab and pasting master prompt...`);
+      console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 70)} parallel agents`);
+      await spawnClaudeWebAgent(phase1MasterPrompt, 1, 'safari');
+      console.log(`[Web Orchestrator] ✅ Phase 1 master prompt pasted - HIT ENTER to spawn agents!`);
+
+      job.progress = 5;
+      job.message = 'Phase 1 tab opened - waiting for execution';
+
+      // Poll for seed_pairs.json
+      console.log(`[Web Orchestrator] Waiting for seed_pairs.json...`);
+      await pollForFile(seedPairsPath, 60000); // 60 second max wait per check, infinite checks
+
+      console.log(`[Web Orchestrator] ✅ Phase 1 complete! Found seed_pairs.json`);
+      job.phase = 'phase_1_complete';
+      job.progress = 30;
+    }
+
+    // PHASE 3: LEGO Extraction (with intelligent resume)
     job.phase = 'phase_3_web';
     job.progress = 35;
-    job.message = 'Phase 3: Opening browser tab for LEGO extraction';
+    job.message = 'Phase 3: Checking for existing LEGO pairs';
 
     console.log(`\n[Web Orchestrator] ====================================`);
     console.log(`[Web Orchestrator] PHASE 3: LEGO EXTRACTION`);
     console.log(`[Web Orchestrator] ====================================`);
 
-    const phase3MasterPrompt = generatePhase3MasterPrompt(courseCode, { target, known, startSeed, endSeed }, courseDir);
-    await fs.writeFile(path.join(courseDir, 'prompts', 'phase_3_master_prompt.md'), phase3MasterPrompt, 'utf8');
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    let phase3AlreadyComplete = false;
 
-    console.log(`[Web Orchestrator] Opening Phase 3 tab and pasting master prompt...`);
-    console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 20)} parallel agents`);
-    await spawnClaudeWebAgent(phase3MasterPrompt, 2, 'chrome');
-    console.log(`[Web Orchestrator] ✅ Phase 3 master prompt pasted - HIT ENTER to spawn agents!`);
+    // Check if lego_pairs.json exists
+    if (await fs.pathExists(legoPairsPath)) {
+      try {
+        const legoPairsData = await fs.readJson(legoPairsPath);
+        const actualSeeds = legoPairsData.seeds ? legoPairsData.seeds.length : (legoPairsData.total_seeds || 0);
 
-    job.progress = 40;
-    job.message = 'Phase 3 tab opened - waiting for execution';
+        console.log(`[Resume] Found existing lego_pairs.json with ${actualSeeds} seeds`);
 
-    // Poll for all agent provisional outputs
-    console.log(`[Web Orchestrator] Waiting for all Phase 3 agent outputs...`);
-    const expectedAgents = Math.ceil((endSeed - startSeed + 1) / 20);
-    const outputsDir = path.join(courseDir, 'phase3_outputs');
-
-    // Wait for all provisional files
-    let agentsComplete = 0;
-    while (agentsComplete < expectedAgents) {
-      await new Promise(resolve => setTimeout(resolve, 10000)); // Check every 10 seconds
-
-      if (await fs.pathExists(outputsDir)) {
-        const files = await fs.readdir(outputsDir);
-        agentsComplete = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
-        console.log(`[Web Orchestrator] Phase 3 agents complete: ${agentsComplete}/${expectedAgents}`);
+        if (actualSeeds >= seeds) {
+          phase3AlreadyComplete = true;
+          console.log(`[Resume] ✅ Phase 3 already complete! Found ${actualSeeds}/${seeds} seeds with LEGOs`);
+          console.log(`[Resume] Skipping Phase 3, proceeding to Phase 5...`);
+          console.log(`[Resume] (To regenerate: delete ${legoPairsPath})\n`);
+          job.phase = 'phase_3_complete';
+          job.progress = 60;
+        } else {
+          console.log(`[Resume] 🔄 Phase 3 needs extension! Existing: ${actualSeeds} seeds, will process seed_pairs.json to extract LEGOs for all ${seeds} seeds`);
+          console.log(`[Resume] New LEGOs will be merged with existing lego_pairs.json\n`);
+        }
+      } catch (err) {
+        console.log(`[Resume] lego_pairs.json exists but invalid, will regenerate`);
       }
     }
 
-    console.log(`[Web Orchestrator] ✅ All Phase 3 agents complete! Running merge script...`);
+    if (!phase3AlreadyComplete) {
+      // Prep Phase 3 scaffolds (mechanical work)
+      console.log(`[Web Orchestrator] Running Phase 3 scaffold prep script...`);
+      const { preparePhase3Scaffolds } = require('./scripts/phase3_prep_scaffolds.cjs');
+      await preparePhase3Scaffolds(courseDir);
+      console.log(`[Web Orchestrator] ✅ Phase 3 scaffolds ready`);
 
-    // Run Phase 3 merge script
-    const { mergePhase3Legos } = require('./scripts/phase3_merge_legos.cjs');
-    await mergePhase3Legos(courseDir);
+      const phase3MasterPrompt = generatePhase3MasterPrompt(courseCode, { target, known, startSeed, endSeed }, courseDir);
+      await fs.writeFile(path.join(courseDir, 'prompts', 'phase_3_master_prompt.md'), phase3MasterPrompt, 'utf8');
 
-    console.log(`[Web Orchestrator] ✅ Phase 3 merge complete! Created lego_pairs.json`);
-    job.phase = 'phase_3_complete';
-    job.progress = 60;
+      console.log(`[Web Orchestrator] Opening Phase 3 tab and pasting master prompt...`);
+      console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 20)} parallel agents`);
+      await spawnClaudeWebAgent(phase3MasterPrompt, 2, 'safari');
+      console.log(`[Web Orchestrator] ✅ Phase 3 master prompt pasted - HIT ENTER to spawn agents!`);
 
-    // PHASE 5: Practice Baskets
+      job.progress = 40;
+      job.message = 'Phase 3 tab opened - waiting for execution';
+
+      // Poll for all agent provisional outputs
+      console.log(`[Web Orchestrator] Waiting for all Phase 3 agent outputs...`);
+      const expectedAgents = Math.ceil((endSeed - startSeed + 1) / 20);
+      const outputsDir = path.join(courseDir, 'phase3_outputs');
+
+      // Wait for all provisional files
+      let agentsComplete = 0;
+      while (agentsComplete < expectedAgents) {
+        await new Promise(resolve => setTimeout(resolve, 10000)); // Check every 10 seconds
+
+        if (await fs.pathExists(outputsDir)) {
+          const files = await fs.readdir(outputsDir);
+          agentsComplete = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
+
+          // Update job with detailed progress
+          job.message = `Phase 3: ${agentsComplete}/${expectedAgents} agents complete`;
+          job.subProgress = {
+            phase: 'phase_3',
+            completed: agentsComplete,
+            total: expectedAgents,
+            percentage: Math.round((agentsComplete / expectedAgents) * 100)
+          };
+
+          console.log(`[Web Orchestrator] Phase 3 agents complete: ${agentsComplete}/${expectedAgents}`);
+        }
+      }
+
+      console.log(`[Web Orchestrator] ✅ All Phase 3 agents complete! Running merge script...`);
+
+      // Run Phase 3 merge script
+      const { mergePhase3Legos } = require('./scripts/phase3_merge_legos.cjs');
+      await mergePhase3Legos(courseDir);
+
+      console.log(`[Web Orchestrator] ✅ Phase 3 merge complete! Created lego_pairs.json`);
+      job.phase = 'phase_3_complete';
+      job.progress = 60;
+    }
+
+    // PHASE 5: Practice Baskets (with intelligent resume)
     job.phase = 'phase_5_web';
     job.progress = 65;
-    job.message = 'Phase 5: Opening browser tab for practice baskets';
+    job.message = 'Phase 5: Checking for existing baskets';
 
     console.log(`\n[Web Orchestrator] ====================================`);
     console.log(`[Web Orchestrator] PHASE 5: PRACTICE BASKETS`);
     console.log(`[Web Orchestrator] ====================================`);
 
-    const phase5Brief = generatePhase5Brief(courseCode, { target, known, startSeed, endSeed, batchNum: 1, totalBatches: 1 }, courseDir);
-    await fs.writeFile(path.join(courseDir, 'prompts', 'phase_5_baskets.md'), phase5Brief, 'utf8');
+    const basketsDir = path.join(courseDir, 'baskets');
+    let phase5AlreadyComplete = false;
 
-    console.log(`[Web Orchestrator] Opening Phase 5 tab and pasting prompt...`);
-    await spawnClaudeWebAgent(phase5Brief, 3, 'chrome');
-    console.log(`[Web Orchestrator] ✅ Phase 5 tab ready - HIT ENTER to execute!`);
+    // Check if baskets directory exists with correct number of basket files
+    if (await fs.pathExists(basketsDir)) {
+      try {
+        const basketFiles = await fs.readdir(basketsDir);
+        const basketCount = basketFiles.filter(f => f.match(/^lego_baskets_s\d+\.json$/)).length;
 
-    job.progress = 70;
-    job.message = 'Phase 5 tab opened - waiting for execution';
+        console.log(`\n[Resume] Found existing baskets directory with ${basketCount} basket files`);
 
-    // Poll for lego_baskets.json
-    console.log(`[Web Orchestrator] Waiting for lego_baskets.json...`);
-    const basketsPath = path.join(courseDir, 'lego_baskets.json');
-    await pollForFile(basketsPath, 60000);
+        if (basketCount >= seeds) {
+          phase5AlreadyComplete = true;
+          console.log(`[Resume] ✅ Phase 5 already complete! Found ${basketCount}/${seeds} basket files`);
+          console.log(`[Resume] Skipping Phase 5, all phases complete!`);
+          console.log(`[Resume] (To regenerate: delete ${basketsDir})\n`);
+          job.phase = 'phase_5_complete';
+          job.progress = 100;
+          job.status = 'completed';
+          job.message = 'All phases completed successfully';
+        } else {
+          console.log(`[Resume] 🔄 Phase 5 needs extension! Existing: ${basketCount} baskets, will process lego_pairs.json for all ${seeds} seeds\n`);
+        }
+      } catch (err) {
+        console.log(`[Resume] baskets directory exists but invalid, will regenerate`);
+      }
+    }
 
-    console.log(`[Web Orchestrator] ✅ Phase 5 complete! Found lego_baskets.json`);
-    job.phase = 'phase_5_complete';
-    job.progress = 100;
-    job.status = 'completed';
-    job.message = 'All phases completed successfully';
+    if (!phase5AlreadyComplete) {
+      // Prep Phase 5 scaffolds (mechanical work)
+      console.log(`[Web Orchestrator] Running Phase 5 scaffold prep script...`);
+      const { preparePhase5Scaffolds } = require('./scripts/phase5_prep_scaffolds.cjs');
+      await preparePhase5Scaffolds(courseDir);
+      console.log(`[Web Orchestrator] ✅ Phase 5 scaffolds ready`);
+
+      const phase5MasterPrompt = generatePhase5MasterPrompt(courseCode, { target, known, startSeed, endSeed }, courseDir);
+      await fs.writeFile(path.join(courseDir, 'prompts', 'phase_5_master_prompt.md'), phase5MasterPrompt, 'utf8');
+
+      console.log(`[Web Orchestrator] Opening Phase 5 tab and pasting master prompt...`);
+      console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 20)} parallel agents`);
+      await spawnClaudeWebAgent(phase5MasterPrompt, 3, 'safari');
+      console.log(`[Web Orchestrator] ✅ Phase 5 master prompt pasted - HIT ENTER to spawn agents!`);
+
+      job.progress = 70;
+      job.message = 'Phase 5 tab opened - waiting for execution';
+
+      // Poll for all agent provisional outputs
+      console.log(`[Web Orchestrator] Waiting for all Phase 5 agent outputs...`);
+      const expectedAgents = Math.ceil((endSeed - startSeed + 1) / 20);
+      const phase5OutputsDir = path.join(courseDir, 'phase5_outputs');
+
+      // Wait for all provisional files
+      let agentsComplete = 0;
+      while (agentsComplete < expectedAgents) {
+        await new Promise(resolve => setTimeout(resolve, 10000)); // Check every 10 seconds
+
+        if (await fs.pathExists(phase5OutputsDir)) {
+          const files = await fs.readdir(phase5OutputsDir);
+          agentsComplete = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
+
+          // Update job with detailed progress
+          job.message = `Phase 5: ${agentsComplete}/${expectedAgents} agents complete`;
+          job.subProgress = {
+            phase: 'phase_5',
+            completed: agentsComplete,
+            total: expectedAgents,
+            percentage: Math.round((agentsComplete / expectedAgents) * 100)
+          };
+
+          console.log(`[Web Orchestrator] Phase 5 agents complete: ${agentsComplete}/${expectedAgents}`);
+        }
+      }
+
+      console.log(`[Web Orchestrator] ✅ All Phase 5 agents complete! Running merge script...`);
+
+      // Run Phase 5 merge script
+      const { mergePhase5Baskets } = require('./scripts/phase5_merge_baskets.cjs');
+      await mergePhase5Baskets(courseDir);
+
+      console.log(`[Web Orchestrator] ✅ Phase 5 merge complete! Created basket files`);
+      job.phase = 'phase_5_complete';
+      job.progress = 90;
+    }
+
+    // PHASE 6: Introduction Generation
+    job.phase = 'phase_6';
+    job.progress = 92;
+    job.message = 'Phase 6: Generating introductions';
 
     console.log(`\n[Web Orchestrator] ====================================`);
-    console.log(`[Web Orchestrator] ✅ COURSE GENERATION COMPLETE`);
+    console.log(`[Web Orchestrator] PHASE 6: INTRODUCTION GENERATION`);
+    console.log(`[Web Orchestrator] ====================================`);
+
+    const introductionsPath = path.join(courseDir, 'introductions.json');
+    let phase6AlreadyComplete = false;
+
+    if (await fs.pathExists(introductionsPath)) {
+      phase6AlreadyComplete = true;
+      console.log(`\n[Resume] ✅ Phase 6 already complete! Found introductions.json`);
+      console.log(`[Resume] Skipping Phase 6, proceeding to Phase 7...`);
+      console.log(`[Resume] (To regenerate: delete ${introductionsPath})\n`);
+      job.progress = 94;
+    }
+
+    if (!phase6AlreadyComplete) {
+      console.log(`[Web Orchestrator] Running Phase 6 introduction generation script...`);
+      const { generateIntroductions } = require('./scripts/phase6-generate-introductions.cjs');
+      await generateIntroductions(courseDir);
+      console.log(`[Web Orchestrator] ✅ Phase 6 complete! Generated introductions`);
+      job.progress = 94;
+    }
+
+    // PHASE 7: Course Manifest Compilation
+    job.phase = 'phase_7';
+    job.progress = 96;
+    job.message = 'Phase 7: Compiling course manifest';
+
+    console.log(`\n[Web Orchestrator] ====================================`);
+    console.log(`[Web Orchestrator] PHASE 7: COURSE MANIFEST COMPILATION`);
+    console.log(`[Web Orchestrator] ====================================`);
+
+    const manifestPath = path.join(courseDir, 'course_manifest.json');
+    let phase7AlreadyComplete = false;
+
+    if (await fs.pathExists(manifestPath)) {
+      phase7AlreadyComplete = true;
+      console.log(`\n[Resume] ✅ Phase 7 already complete! Found course_manifest.json`);
+      console.log(`[Resume] Skipping Phase 7, all phases complete!`);
+      console.log(`[Resume] (To regenerate: delete ${manifestPath})\n`);
+      job.progress = 100;
+      job.status = 'completed';
+      job.message = 'All phases completed successfully';
+    }
+
+    if (!phase7AlreadyComplete) {
+      console.log(`[Web Orchestrator] Running Phase 7 manifest compilation script...`);
+      const { compileManifest } = require('./scripts/phase7_compile_manifest.cjs');
+      await compileManifest(courseDir);
+      console.log(`[Web Orchestrator] ✅ Phase 7 complete! Generated course_manifest.json`);
+      job.progress = 100;
+      job.status = 'completed';
+      job.message = 'All phases completed successfully';
+    }
+
+    console.log(`\n[Web Orchestrator] ====================================`);
+    console.log(`[Web Orchestrator] ✅ COMPLETE COURSE GENERATION FINISHED`);
     console.log(`[Web Orchestrator] ====================================`);
     console.log(`[Web Orchestrator] Course: ${courseCode}`);
     console.log(`[Web Orchestrator] Output: ${courseDir}`);
+    console.log(`[Web Orchestrator] Final manifest: ${manifestPath}`);
     console.log(`[Web Orchestrator] ====================================`);
 
   } catch (error) {
