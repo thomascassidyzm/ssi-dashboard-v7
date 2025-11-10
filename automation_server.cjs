@@ -408,23 +408,34 @@ Each scaffold contains:
 
 ---
 
-## 🚀 EXECUTION STRATEGY
+## 🚀 EXECUTION STRATEGY (REQUIRED: WAVE-BASED WITH IMMEDIATE PUSH)
 
-You decide the best approach! Options:
+**CRITICAL**: Use wave-based execution with immediate file pushes for resilience.
 
-### Option A: Full Parallelization (Fastest - if rate limits allow)
-Spawn all ${agentCount} agents at once using Task tool in a single message.
+### Wave Strategy (MANDATORY for Web Mode)
 
-### Option B: Staggered Waves (Safer - if you detect rate pressure)
-Split into 4-5 waves of 7-9 agents each, with 30-second delays between waves.
+Process ${agentCount} agents in **3 waves** to prevent timeouts and enable smart resume:
 
-### Option C: Adaptive (Recommended)
-- Start with full parallelization
-- Monitor for rate limit errors
-- If errors occur, switch to waves automatically
-- Retry failed agents at reduced pace
+- **Wave 1**: Agents 1-${Math.ceil(agentCount / 3)}
+- **Wave 2**: Agents ${Math.ceil(agentCount / 3) + 1}-${Math.ceil(2 * agentCount / 3)}
+- **Wave 3**: Agents ${Math.ceil(2 * agentCount / 3) + 1}-${agentCount}
 
-**Your call!** Use your judgment based on what you observe.
+### After EACH Agent Completes → PUSH IMMEDIATELY
+
+**DO NOT wait for wave to finish!** Push each file as soon as it's ready:
+
+\`\`\`bash
+# Agent completes → Write file → Push immediately
+git add public/vfs/courses/${courseCode}/phase3_outputs/agent_XX_provisional.json
+git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
+git push origin main
+\`\`\`
+
+**Why this matters:**
+- If connection drops mid-wave, completed files are safe
+- Automation can resume from last successful push
+- Dashboard shows real-time progress (1/${agentCount}, 2/${agentCount}, etc.)
+- No work is lost!
 
 ---
 
@@ -636,23 +647,34 @@ This lets learners **reconstruct and recombine** - seeing grammar without explan
 
 ---
 
-## 🚀 EXECUTION STRATEGY
+## 🚀 EXECUTION STRATEGY (REQUIRED: WAVE-BASED WITH IMMEDIATE PUSH)
 
-You decide the best approach! Options:
+**CRITICAL**: Use wave-based execution with immediate file pushes for resilience.
 
-### Option A: Full Parallelization (Fastest - if rate limits allow)
-Spawn all ${agentCount} agents at once using Task tool in a single message.
+### Wave Strategy (MANDATORY for Web Mode)
 
-### Option B: Staggered Waves (Safer - if you detect rate pressure)
-Split into 4-5 waves of 7-9 agents each, with 30-second delays between waves.
+Process ${agentCount} agents in **3 waves** to prevent timeouts and enable smart resume:
 
-### Option C: Adaptive (Recommended)
-- Start with full parallelization
-- Monitor for rate limit errors
-- If errors occur, switch to waves automatically
-- Retry failed agents at reduced pace
+- **Wave 1**: Agents 1-${Math.ceil(agentCount / 3)}
+- **Wave 2**: Agents ${Math.ceil(agentCount / 3) + 1}-${Math.ceil(2 * agentCount / 3)}
+- **Wave 3**: Agents ${Math.ceil(2 * agentCount / 3) + 1}-${agentCount}
 
-**Your call!** Use your judgment based on what you observe.
+### After EACH Agent Completes → PUSH IMMEDIATELY
+
+**DO NOT wait for wave to finish!** Push each file as soon as it's ready:
+
+\`\`\`bash
+# Agent completes → Write file → Push immediately
+git add public/vfs/courses/${courseCode}/phase3_outputs/agent_XX_provisional.json
+git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
+git push origin main
+\`\`\`
+
+**Why this matters:**
+- If connection drops mid-wave, completed files are safe
+- Automation can resume from last successful push
+- Dashboard shows real-time progress (1/${agentCount}, 2/${agentCount}, etc.)
+- No work is lost!
 
 ---
 
