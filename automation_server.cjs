@@ -1745,11 +1745,23 @@ async function pollForFile(filePath, pollInterval = 10000, pullFromGit = false) 
     // In Web mode, pull from git to get files pushed by Claude Code on the Web
     if (pullFromGit) {
       try {
-        console.log(`[Poll] Pulling latest changes from git...`);
-        await execCommand('git pull origin main', { cwd: VFS_ROOT });
-        console.log(`[Poll] ✅ Git pull complete`);
+        console.log(`[Poll] Fetching all remote branches...`);
+        await execCommand('git fetch --all', { cwd: VFS_ROOT });
+
+        // Find Claude feature branches (claude/*)
+        const branches = await execCommand('git branch -r | grep "origin/claude/"', { cwd: VFS_ROOT });
+        if (branches.stdout.trim()) {
+          const latestBranch = branches.stdout.trim().split('\n')[0].trim().replace('origin/', '');
+          console.log(`[Poll] Found Claude branch: ${latestBranch}, merging...`);
+          await execCommand(`git merge origin/${latestBranch} --no-edit`, { cwd: VFS_ROOT });
+          console.log(`[Poll] ✅ Merged ${latestBranch}`);
+        } else {
+          // Fallback to main branch pull
+          await execCommand('git pull origin main', { cwd: VFS_ROOT });
+          console.log(`[Poll] ✅ Pulled from main`);
+        }
       } catch (err) {
-        console.log(`[Poll] ⚠️  Git pull failed (may be normal if no changes):`, err.message);
+        console.log(`[Poll] ⚠️  Git sync failed (may be normal if no changes):`, err.message);
       }
     }
 
