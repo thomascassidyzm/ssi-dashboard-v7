@@ -189,14 +189,28 @@ async function mergePhase3Legos(courseDir) {
     })
   );
 
-  // Merge all seeds
+  // Merge all seeds (fixing seed IDs if they're plain integers)
   const allSeeds = {};
   let totalSeeds = 0;
   let totalLegos = 0;
 
   for (const agent of agentData) {
-    Object.assign(allSeeds, agent.seeds);
-    totalSeeds += Object.keys(agent.seeds).length;
+    for (const [seedKey, seedData] of Object.entries(agent.seeds)) {
+      // If the seed_id field exists and looks like S0001, use it as the key
+      // Otherwise use the key from the agent output
+      const properSeedId = seedData.seed_id || seedKey;
+
+      // Ensure seed ID is formatted correctly (S0001 not just "0")
+      const normalizedSeedId = properSeedId.match(/^S\d+$/)
+        ? properSeedId
+        : `S${String(properSeedId).padStart(4, '0')}`;
+
+      // Update seed_id field to match
+      seedData.seed_id = normalizedSeedId;
+
+      allSeeds[normalizedSeedId] = seedData;
+      totalSeeds++;
+    }
   }
 
   console.log(`[Phase 3 Merge] Total seeds collected: ${totalSeeds}`);
