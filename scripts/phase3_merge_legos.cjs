@@ -19,7 +19,21 @@ const fs = require('fs-extra');
 const path = require('path');
 
 /**
- * Normalize whitespace for comparison (collapse multiple spaces, trim)
+ * Normalize text for tiling comparison
+ * - Collapse whitespace
+ * - Convert to lowercase
+ * - Remove punctuation (but keep Spanish accents/ñ)
+ */
+function normalizeForTiling(str) {
+  return str
+    .toLowerCase()
+    .replace(/[.,;:!?¿¡"'()—]/g, '') // Remove common punctuation
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Normalize whitespace for display (collapse multiple spaces, trim)
  */
 function normalizeWhitespace(str) {
   return str.replace(/\s+/g, ' ').trim();
@@ -27,19 +41,67 @@ function normalizeWhitespace(str) {
 
 /**
  * Validate that seed reconstructs perfectly from LEGOs
+ *
+ * Since atomic and molecular LEGOs can overlap, we need to find
+ * SOME COMBINATION that tiles, not just concatenate ALL LEGOs.
+ *
+ * Strategy: Greedy left-to-right tiling using longest-match-first
  */
 function validateTiling(seedId, targetSentence, legos) {
-  const reconstructed = legos.map(l => l.target).join(' ');
-  const normalizedTarget = normalizeWhitespace(targetSentence);
-  const normalizedReconstructed = normalizeWhitespace(reconstructed);
+  const normalizedTarget = normalizeForTiling(targetSentence);
 
-  if (normalizedTarget !== normalizedReconstructed) {
-    return {
-      valid: false,
-      error: `Tiling mismatch for ${seedId}`,
-      expected: normalizedTarget,
-      got: normalizedReconstructed
-    };
+  // Extract just the target texts for tiling (normalized for comparison)
+  const legoTexts = legos.map(l => normalizeForTiling(l.target));
+
+  // Try to reconstruct using greedy longest-match-first
+  const tokens = normalizedTarget.split(' ');
+  let position = 0;
+  const usedLegos = [];
+
+  while (position < tokens.length) {
+    // Find longest matching LEGO starting at current position
+    let bestMatch = null;
+    let bestLength = 0;
+
+    for (let i = 0; i < legoTexts.length; i++) {
+      const legoTokens = legoTexts[i].split(' ');
+
+      // Check if this LEGO matches at current position
+      let matches = true;
+      if (position + legoTokens.length > tokens.length) {
+        continue; // LEGO too long
+      }
+
+      for (let j = 0; j < legoTokens.length; j++) {
+        if (tokens[position + j] !== legoTokens[j]) {
+          matches = false;
+          break;
+        }
+      }
+
+      // If matches and is longer than previous best, use it
+      if (matches && legoTokens.length > bestLength) {
+        bestMatch = i;
+        bestLength = legoTokens.length;
+      }
+    }
+
+    if (bestMatch === null) {
+      // No LEGO matches at current position - tiling failed
+      const reconstructed = usedLegos.map(idx => legoTexts[idx]).join(' ');
+      const remaining = tokens.slice(position).join(' ');
+
+      return {
+        valid: false,
+        error: `Tiling mismatch for ${seedId}`,
+        expected: normalizedTarget,
+        got: reconstructed,
+        details: `No LEGO found for: "${remaining}"`
+      };
+    }
+
+    usedLegos.push(bestMatch);
+    position += bestLength;
   }
 
   return { valid: true };
