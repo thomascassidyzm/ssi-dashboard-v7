@@ -1,0 +1,103 @@
+{
+  "example_seed": "S0011",
+  "whitelist_size": 50,
+  "sample_words": [
+    "a",
+    "ahora",
+    "algo",
+    "aprender",
+    "como",
+    "completa",
+    "con",
+    "contigo",
+    "cómo",
+    "de",
+    "decir",
+    "después",
+    "en",
+    "esfuerzo",
+    "español",
+    "estoy",
+    "explicar",
+    "frecuentemente",
+    "gustaría",
+    "hablar",
+    "hablo",
+    "hoy",
+    "intentando",
+    "intentar",
+    "la",
+    "lo",
+    "me",
+    "mi",
+    "no",
+    "oración",
+    "otra",
+    "palabra",
+    "persona",
+    "poco",
+    "poder",
+    "posible",
+    "practicar",
+    "puedo",
+    "que",
+    "quiero",
+    "recordar",
+    "sea",
+    "seguro",
+    "si",
+    "tan",
+    "termines",
+    "todo",
+    "un",
+    "una",
+    "voy"
+  ],
+  "sample_sources": {
+    "quiero": [
+      "S0001L01:target",
+      "S0001L06:target",
+      "S0001L06:component[I want]"
+    ],
+    "hablar": [
+      "S0001L02:target",
+      "S0001L06:target",
+      "S0001L06:component[to speak]"
+    ],
+    "español": [
+      "S0001L03:target",
+      "S0001L07:target",
+      "S0001L07:component[Spanish]"
+    ],
+    "contigo": [
+      "S0001L04:target"
+    ],
+    "ahora": [
+      "S0001L05:target",
+      "S0001L05:target"
+    ],
+    "estoy": [
+      "S0002L01:target",
+      "S0002L03:target",
+      "S0002L03:component[I am]"
+    ],
+    "intentando": [
+      "S0002L02:target",
+      "S0002L03:target",
+      "S0002L03:component[trying]"
+    ],
+    "aprender": [
+      "S0002L04:target"
+    ],
+    "cómo": [
+      "S0003L01:target",
+      "S0003L01:target"
+    ],
+    "frecuentemente": [
+      "S0003L02:target",
+      "S0003L03:target",
+      "S0003L03:component[often]"
+    ]
+  },
+  "note": "This shows how whitelist is built using 3-category rule"
+}
