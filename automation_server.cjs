@@ -497,7 +497,26 @@ Spawn your agents using whichever strategy you choose (full parallel, waves, or 
 
 **Monitor and adjust** based on what you observe.
 
-**Report progress** as agents complete.
+**Report progress** as agents complete - and **WRITE STATUS UPDATES** so the dashboard can track progress:
+
+\`\`\`bash
+# After each agent completes, update status file
+cat > public/vfs/courses/${courseCode}/phase3_outputs/.progress.json << 'EOF'
+{
+  "phase": "phase3",
+  "status": "in_progress",
+  "completed_agents": 1,
+  "total_agents": ${agentCount},
+  "updated_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+}
+EOF
+
+git add public/vfs/courses/${courseCode}/phase3_outputs/.progress.json
+git commit -m "Phase 3 progress: 1/${agentCount} agents complete"
+git push origin main
+\`\`\`
+
+**Update this file each time an agent completes** so users can see real-time progress!
 
 When all ${agentCount} agents finish:
 
