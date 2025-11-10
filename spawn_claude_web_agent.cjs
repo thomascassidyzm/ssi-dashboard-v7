@@ -54,6 +54,7 @@ tell application "${getBrowserAppName(browser)}"
     -- Open new tab with claude.ai/code
     tell window 1
         set newTab to make new tab with properties {URL:"https://claude.ai/code"}
+        set current tab to newTab
     end tell
 
     -- Wait for page to load (3 seconds)
