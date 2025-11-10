@@ -13,6 +13,7 @@ app SSiDashboard:
 
   compilation_method: "reverse-compilation"
   extracted_from: "Clean v8.0.0 codebase (2025-11-09)"
+  last_updated: "2025-11-10"
 
   ## ==========================================================================
   ## CORE SPECIFICATIONS (Extracted - Complete)
@@ -37,31 +38,29 @@ app SSiDashboard:
     coverage: "Web Mode, API Mode, Legacy Local Mode"
 
   ## ==========================================================================
-  ## PHASE INTELLIGENCE (Pending - After Master Prompt Complete)
+  ## PHASE INTELLIGENCE (Extracted - Complete)
   ## ==========================================================================
 
-  # import phases/phase-1-translation:
-  #   status: "pending"
-  #   waiting_for: "Master prompt completion"
-  #   will_extract_from: "docs/phase_intelligence/phase_1_orchestrator.md"
-  #   includes: "Pedagogical translation methodology, examples, quality criteria"
+  import phases/phase-1-translation:
+    status: "extracted"
+    date: "2025-11-10"
+    source: "docs/phase_intelligence/phase_1_orchestrator.md"
+    version: "1.1"
+    coverage: "Orchestrator pattern, 3×10 agent architecture, validation, workflow"
 
-  # import phases/phase-3-lego-extraction:
-  #   status: "pending"
-  #   waiting_for: "Master prompt completion"
-  #   will_extract_from: "docs/phase_intelligence/phase_3_lego_pairs.md"
-  #   includes: "LEGO extraction rules, Type A/B/C, componentization, tiling"
+  import phases/phase-3-lego-extraction:
+    status: "extracted"
+    date: "2025-11-10"
+    source: "docs/phase_intelligence/phase_3_lego_pairs.md"
+    version: "5.0"
+    coverage: "Three Absolutes, FD test, Atomic/Molecular classification, componentization"
 
-  # import phases/phase-5-baskets:
-  #   status: "pending"
-  #   waiting_for: "Master prompt completion"
-  #   will_extract_from: "docs/phase_intelligence/phase_5_lego_baskets.md"
-  #   includes: "Basket generation, ABSOLUTE GATE, diversity requirements"
-
-  # import phases/phase-orchestration:
-  #   status: "pending"
-  #   will_extract_from: "Orchestrator functions in automation_server.cjs"
-  #   includes: "Sequential execution flow, phase dependencies, polling"
+  import phases/phase-5-basket-generation:
+    status: "extracted"
+    date: "2025-11-10"
+    source: "docs/phase_intelligence/phase_5_lego_baskets.md"
+    version: "5.0"
+    coverage: "Staged pipeline, 3-category whitelist, linguistic reasoning, GATE compliance"
 
   ## ==========================================================================
   ## INTERFACES (To Be Extracted)

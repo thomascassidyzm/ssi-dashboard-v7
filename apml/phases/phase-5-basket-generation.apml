@@ -1,0 +1,390 @@
+# APML Phase 5: Practice Basket Generation
+# Extracted from: docs/phase_intelligence/phase_5_lego_baskets.md
+# Version: 5.0 - Ultimate Edition (2025-11-09)
+# Status: Production-ready (Staged Pipeline with Correct Whitelist Logic)
+# Last updated: 2025-11-10
+
+phase Phase5BasketGeneration:
+  name: "Phase 5: Practice Basket Generation"
+  purpose: "Generate high-quality practice phrase baskets using linguistic reasoning"
+  version: "5.0"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    Generate 10 practice phrases per LEGO using ONLY linguistic intelligence.
+    Receives pre-built scaffold JSON with whitelist and metadata.
+    Agent fills practice_phrases arrays using extended thinking for each LEGO.
+
+  pipeline_architecture: "Staged Pipeline"
+    stage_1: "Mechanical preparation (done before agent)"
+      - "Build whitelist (3-category rule)"
+      - "Create JSON scaffold"
+      - "Mark is_final_lego flags"
+
+    stage_2: "Linguistic generation (agent task)"
+      - "Fill practice_phrases arrays"
+      - "Use extended thinking per LEGO"
+      - "Ensure GATE compliance"
+
+  core_principle: "This is a LINGUISTIC task, not a CODING task"
+
+  ## ==========================================================================
+  ## CRITICAL: PROHIBITED APPROACHES
+  ## ==========================================================================
+
+  prohibited:
+    description: "Agent MAY NOT use automation or templates"
+
+    forbidden_methods:
+      - "Write Python/JavaScript/any scripts to generate phrases"
+      - "Use template-based generation (f-strings, string interpolation)"
+      - "Mechanically substitute LEGO text into fixed patterns"
+      - "Automate phrase creation through loops or functions"
+
+    rationale: |
+      Automated generation cannot understand:
+      - Word class (verb vs noun vs adjective)
+      - Semantic appropriateness
+      - Natural usage patterns
+      - Contextual fit
+
+  ## ==========================================================================
+  ## REQUIRED APPROACH
+  ## ==========================================================================
+
+  required_approach:
+    description: "Agent MUST use linguistic intelligence for every phrase"
+
+    mandatory_methods:
+      - "Think through each phrase individually"
+      - "Use extended thinking (<thinking> tags) for every LEGO"
+      - "Understand the LEGO's grammatical role"
+      - "Create natural, conversational usage"
+      - "Validate semantic correctness"
+
+    quality_standard: "Top dollar content quality (slower but higher quality)"
+
+  ## ==========================================================================
+  ## INPUT: SCAFFOLD STRUCTURE
+  ## ==========================================================================
+
+  input_scaffold:
+    description: "Pre-built JSON with ALL mechanical work complete"
+
+    what_is_done:
+      - "✅ JSON structure"
+      - "✅ Whitelist arrays (3-category rule applied)"
+      - "✅ Metadata (available_legos, cumulative_legos, is_final_lego)"
+      - "✅ Seed context for thematic guidance"
+
+    what_agent_must_do:
+      - "Fill the practice_phrases arrays ONLY"
+      - "Update phrase_distribution to match actual phrase counts"
+      - "DO NOT modify any other fields"
+
+    scaffold_schema:
+      version: "curated_v7_spanish"
+      agent_id: integer
+      seed_range: string                 # "S0001-S0020"
+      seeds:
+        seed_id:
+          seed: string                   # "S0001"
+          seed_pair:
+            known: string
+            target: string
+          whitelist: array               # Available Spanish vocabulary
+          cumulative_legos: integer
+          legos:
+            lego_id:
+              lego: [known, target]
+              type: "A" | "M"
+              available_legos: integer
+              is_final_lego: boolean
+              practice_phrases: array    # ← AGENT FILLS THIS
+              phrase_distribution:
+                really_short_1_2: integer
+                quite_short_3: integer
+                longer_4_5: integer
+                long_6_plus: integer
+
+  ## ==========================================================================
+  ## WHITELIST: THE 3-CATEGORY RULE
+  ## ==========================================================================
+
+  whitelist_logic:
+    description: "Whitelist built mechanically using 'learned already' philosophy"
+    philosophy: "Learner can use any vocabulary they've already encountered"
+
+    three_sources:
+      category_1_atomic_legos:
+        description: "Single words from A-type LEGOs"
+        example:
+          lego:
+            type: "A"
+            target: "quiero"
+            known: "I want"
+          whitelist_entry: "quiero"
+          learner_knows: "quiero = I want"
+
+      category_2_molecular_legos_complete:
+        description: "All words from M-type LEGOs (split into words)"
+        example:
+          lego:
+            type: "M"
+            target: "estoy intentando"
+            known: "I'm trying"
+          whitelist_entries: ["estoy", "intentando"]
+          learner_knows: "estoy intentando = I'm trying (as phrase)"
+
+      category_3_component_words:
+        description: "Component words from M-type LEGOs (literal translations)"
+        example:
+          lego:
+            type: "M"
+            target: "estoy intentando"
+            known: "I'm trying"
+            components:
+              - ["estoy", "I am"]         # Literal translation
+              - ["intentando", "trying"]  # Literal translation
+          whitelist_entries: ["estoy", "intentando"]
+          learner_knows:
+            - "estoy = I am (literal)"
+            - "intentando = trying (literal)"
+
+    pedagogical_benefit: |
+      Component words let learners RECONSTRUCT and RECOMBINE.
+      They see grammar without explanation!
+
+      Example:
+        LEGO: "lo más posible" = "as much as possible" (M-type)
+        Components:
+          - "lo más" = "the most" (literal)
+          - "posible" = "possible" (literal)
+
+        Learner can now use:
+          ✅ "lo más posible" (the whole phrase)
+          ✅ "lo más" alone (knows it means "the most")
+          ✅ "posible" alone (knows it means "possible")
+
+  ## ==========================================================================
+  ## PHRASE GENERATION PROCESS
+  ## ==========================================================================
+
+  generation_workflow:
+    STEP_1_UNDERSTAND_LEGO:
+      description: "Use extended thinking to analyze the LEGO"
+
+      analysis_questions:
+        - "What is it? (Verb? Noun? Adjective? Adverb? Phrase?)"
+        - "How is it naturally used?"
+        - "What contexts make sense?"
+        - "What are typical sentence patterns?"
+        - "Would a native speaker say this?"
+        - "What is the seed theme?"
+
+      example_thinking:
+        lego: "quiero / I want"
+        thinking: |
+          <thinking>
+          LEGO: "quiero" / "I want"
+          - Type: Verb (first person singular, present)
+          - Natural usage: Followed by infinitive or noun
+          - Seed theme: "I want to speak Spanish with you now"
+
+          Phrase ideas:
+          1. Start bare: "I want" (show the LEGO)
+          2. Add object: "I want coffee"
+          3. Add infinitive: "I want to speak"
+          4. Build complexity: "I want to speak Spanish"
+          5. Toward seed: "I want to speak Spanish with you now"
+          </thinking>
+
+    STEP_2_WORD_CLASS_RECOGNITION:
+      description: "CRITICAL: Identify LEGO's grammatical class before generating"
+
+      verb_legos:
+        examples: ["wants", "said", "met", "to show"]
+        correct_usage:
+          - "She wants coffee"
+          - "He said something important"
+          - "I met someone yesterday"
+          - "I want to show you something"
+        incorrect_usage:
+          - "❌ I think that wants is good"
+          - "❌ This is said"
+          - "❌ I know met"
+          - "❌ Do you have to show?"
+
+      noun_legos:
+        examples: ["coffee", "something", "woman"]
+        correct_usage:
+          - "Coffee is good (subject)"
+          - "I want coffee (object)"
+          - "The woman arrived (subject)"
+          - "I met the woman (object)"
+
+      adjective_legos:
+        examples: ["new", "important", "young"]
+        correct_usage:
+          - "something new"
+          - "an important fact"
+          - "a young woman"
+          - "This is important"
+
+      phrase_legos:
+        examples: ["to show you", "from home", "I'm trying"]
+        correct_usage:
+          - "I want to show you something"
+          - "I work from home"
+          - "I'm trying to learn Spanish"
+
+    STEP_3_GENERATE_10_PHRASES:
+      description: "Create exactly 10 phrases per LEGO"
+
+      mandatory_distribution:
+        really_short_1_2_words: 2       # Fragments OK, show bare LEGO
+        quite_short_3_words: 2          # Complete thoughts
+        longer_4_5_words: 2             # Complete thoughts
+        long_6_plus_words: 4            # Conversational gold ⭐
+
+      phrase_format: "[english, spanish, pattern_code_or_null, word_count]"
+
+      requirements_for_all_phrases:
+        - "GATE Compliance: Every Spanish word must be in whitelist"
+        - "Natural Language: Would a native speaker say this?"
+        - "Semantic Correctness: Does it make logical sense?"
+        - "Progressive Complexity: Build from simple to complex"
+        - "Thematic Coherence: Relate to seed sentence theme"
+
+    STEP_4_SPECIAL_RULES:
+      final_lego_rule:
+        condition: "is_final_lego: true"
+        requirement: "Phrase #10 MUST be the complete seed sentence"
+        example: "[\"I want to speak Spanish with you now.\", \"Quiero hablar español contigo ahora.\", null, 7]"
+
+      recency_priority:
+        principle: "Prioritize vocabulary from 5 previous seeds"
+        benefit: "Makes content feel fresh and reinforces recent learning"
+
+      conjunction_usage:
+        condition: "Only if conjunctions (si, y, pero, porque, cuando) are in whitelist"
+        usage_rate: "20-40% of phrases (2-4 out of 10)"
+
+  ## ==========================================================================
+  ## GATE COMPLIANCE (Zero Tolerance)
+  ## ==========================================================================
+
+  gate_compliance:
+    principle: "Every Spanish word must be in the whitelist"
+    tolerance: "ZERO violations allowed"
+
+    validation_process:
+      STEP_1_EXTRACT:
+        description: "Extract words from Spanish phrase"
+        method: "Split on spaces and punctuation, lowercase all"
+        example:
+          phrase: "Quiero hablar español."
+          extracted: ["quiero", "hablar", "español"]
+
+      STEP_2_CHECK:
+        description: "Check each word against whitelist"
+        checks:
+          - "Is 'quiero' in whitelist? ✅"
+          - "Is 'hablar' in whitelist? ✅"
+          - "Is 'español' in whitelist? ✅"
+
+      STEP_3_REJECT:
+        condition: "If ANY word is missing"
+        action: "REJECT phrase, generate replacement"
+
+    common_mistakes:
+      mistake_1:
+        whitelist_has: "quiero (I want)"
+        wrong: "Quiere hablar español (quiere not in whitelist)"
+        correct: "Quiero hablar español (quiero is in whitelist)"
+
+      mistake_2:
+        whitelist_has: "estoy (I am)"
+        wrong: "Ella está aquí (está not in whitelist)"
+        correct: "Estoy aquí (estoy is in whitelist)"
+
+    critical_rule: "NO conjugations, NO variations - exact forms only"
+
+  ## ==========================================================================
+  ## OUTPUT FORMAT
+  ## ==========================================================================
+
+  output:
+    description: "Return SAME scaffold JSON with practice_phrases filled"
+
+    do_not_modify:
+      - "version, agent_id, seed_range"
+      - "whitelist arrays"
+      - "is_final_lego flags"
+      - "seed_pair data"
+
+    must_modify:
+      - "practice_phrases arrays (fill them in)"
+      - "phrase_distribution (update to match actual counts)"
+      - "generation_stage (change to 'PHRASES_GENERATED')"
+
+    example_output:
+      seed_id: "S0001"
+      lego_id: "S0001L01"
+      lego: ["I want", "quiero"]
+      type: "A"
+      practice_phrases:
+        - ["I want", "quiero", null, 1]
+        - ["I want coffee", "quiero café", null, 2]
+        - ["I want to speak", "quiero hablar", null, 3]
+        - ["I want to learn Spanish", "quiero aprender español", null, 4]
+        - ["I want to speak Spanish now", "quiero hablar español ahora", null, 5]
+        - ["I want to speak Spanish with you", "quiero hablar español contigo", null, 6]
+        - ["I want to speak with you now", "quiero hablar contigo ahora", null, 6]
+        - ["I want to learn Spanish with you", "quiero aprender español contigo", null, 6]
+        - ["I want to speak Spanish with someone", "quiero hablar español con alguien", null, 7]
+        - ["I want to speak Spanish with you now", "quiero hablar español contigo ahora", null, 7]
+      phrase_distribution:
+        really_short_1_2: 2
+        quite_short_3: 2
+        longer_4_5: 2
+        long_6_plus: 4
+
+  ## ==========================================================================
+  ## QUALITY CHECKLIST (Per LEGO)
+  ## ==========================================================================
+
+  quality_checklist:
+    description: "Verify before moving to next LEGO"
+
+    checks:
+      - "10 phrases generated (exactly 10)"
+      - "Distribution: 2-2-2-4 (short-quite short-longer-long)"
+      - "ALL Spanish words in whitelist (zero violations)"
+      - "All phrases sound natural in BOTH languages"
+      - "Word class used correctly (verb as verb, noun as noun)"
+      - "Progressive complexity (simple → complex)"
+      - "Thematic coherence (relates to seed theme)"
+      - "If final LEGO: phrase 10 is complete seed sentence"
+      - "No template patterns detected"
+      - "Extended thinking used for challenging LEGOs"
+
+  ## ==========================================================================
+  ## VERSION HISTORY
+  ## ==========================================================================
+
+  version_history:
+    v5_0:
+      date: "2025-11-09"
+      status: "Production Ready"
+      title: "Staged Pipeline with Correct Whitelist Logic"
+      changes:
+        - "Separated mechanical (whitelist) from linguistic (phrases)"
+        - "Clarified 3-category whitelist rule"
+        - "Emphasized linguistic reasoning over automation"
+        - "Added word class recognition step"
+        - "Mandatory extended thinking for each LEGO"
+        - "GATE compliance zero tolerance"

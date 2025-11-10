@@ -1,0 +1,329 @@
+# APML Phase 1: Pedagogical Translation
+# Extracted from: docs/phase_intelligence/phase_1_orchestrator.md
+# Version: 1.1 (2025-10-30)
+# Status: Production-ready
+# Last updated: 2025-11-10
+
+phase Phase1Translation:
+  name: "Phase 1: Pedagogical Translation"
+  purpose: "Translate canonical seeds into target/known language pairs"
+  version: "1.1"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    Coordinate parallel translation of ~668 seeds using orchestrator pattern.
+    3 orchestrator agents × 10 sub-agents = 30 concurrent translation agents.
+    Each seed becomes a [target, known] pedagogical pair.
+
+  orchestration_pattern: "hierarchical"
+    levels:
+      - name: "orchestrator"
+        count: 3
+        responsibility: "Coordinate 10 sub-agents, validate chunk, merge outputs"
+        seeds_per_orchestrator: 223
+
+      - name: "sub-agent"
+        count: 10 per orchestrator
+        responsibility: "Translate ~22-23 seeds following translation skill"
+        seeds_per_agent: 23
+
+  total_concurrent_agents: 30
+  total_orchestrators: 3
+
+  ## ==========================================================================
+  ## INPUT SPECIFICATION
+  ## ==========================================================================
+
+  input:
+    orchestrator_batch_file:
+      location: "vfs/courses/{course_code}/orchestrator_batches/phase1/orchestrator_batch_{NN}.json"
+      schema:
+        orchestrator_id: string         # "phase1_orch_01"
+        chunk_number: integer           # 1-3
+        course_code: string             # e.g. "pol_for_eng"
+        seed_range:
+          start: integer                # e.g. 1
+          end: integer                  # e.g. 223
+          total: integer                # e.g. 223
+        api:
+          seeds_endpoint: string        # ngrok tunnel URL
+          fetch_params: string          # "?start=1&end=223"
+        config:
+          agents_to_spawn: integer      # 10
+          seeds_per_agent: integer      # 23
+          output_file: string           # "chunk_01.json"
+
+    canonical_seeds:
+      source: "API endpoint specified in batch file"
+      format: "Array of {id, canonical_text}"
+      fetch_method: "WebFetch or curl"
+
+  ## ==========================================================================
+  ## WORKFLOW
+  ## ==========================================================================
+
+  workflow:
+    STEP_1_READ_BATCH:
+      description: "Read orchestrator batch file"
+      actions:
+        - Read batch file from VFS
+        - Extract seed range (start, end)
+        - Note API endpoint for fetching seeds
+        - Identify output file path
+
+    STEP_2_FETCH_SEEDS:
+      description: "Fetch canonical seeds from API"
+      method: "WebFetch or curl to seeds_endpoint + fetch_params"
+      example: "curl https://xxx.ngrok-free.dev/api/seeds?start=1&end=223"
+
+    STEP_3_DIVIDE_WORK:
+      description: "Split seeds into 10 equal portions"
+      algorithm: |
+        total_seeds = end - start + 1
+        seeds_per_agent = ceil(total_seeds / 10)
+
+        Agent 1: seeds[0:23]
+        Agent 2: seeds[23:46]
+        ...
+        Agent 10: seeds[207:total_seeds]
+
+    STEP_4_SPAWN_AGENTS:
+      description: "Spawn 10 sub-agents in PARALLEL"
+      critical: "ALL 10 agents must be spawned in a SINGLE message using Task tool"
+      reason: "Parallel execution is 10x faster than sequential"
+
+      agent_prompt_template: |
+        Translate seeds S{start_id}-S{end_id} using the translation-skill.
+
+        SKILL LOCATION: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/skills/translation-skill
+
+        REQUIRED READING (in order):
+        1. rules/TWO_ABSOLUTE_RULES.md - NEVER violate these [ABSOLUTE]
+        2. rules/ZERO_VARIATION.md - First-come-first-served principle
+        3. rules/COGNATE_PREFERENCE.md - Check cognates FIRST (seeds 1-100)
+        4. workflow/EXTENDED_THINKING.md - Use for EVERY seed [MANDATORY]
+
+        INPUT:
+        - Seed list with IDs and canonical text
+        - Target language: {target_code}
+        - Known language: {known_code}
+
+        OUTPUT FORMAT:
+        - {"S0001": [target, known], "S0002": [target, known], ...}
+        - See schemas/OUTPUT_FORMAT.md for complete spec
+
+        CRITICAL:
+        - Extended thinking for EVERY seed
+        - TWO ABSOLUTE RULES never violated
+        - Cognate preference mandatory (seeds 1-100)
+        - Maintain vocabulary registry for consistency
+
+    STEP_5_RECEIVE_OUTPUTS:
+      description: "Wait for all 10 sub-agents to complete"
+      expected_outputs: 10
+      format: "Each agent returns JSON with ~23 translations"
+
+    STEP_6_VALIDATE:
+      description: "Validate all translations within chunk"
+
+      validation_checks:
+        grammar:
+          - "Target language grammatically correct?"
+          - "Known language grammatically correct?"
+          - "Meaning preserved from canonical?"
+
+        cognate_preference:
+          applies_to: "Seeds 1-100 only"
+          checks:
+            - "Did agent check for cognate synonyms?"
+            - "Is cognate used when available?"
+
+        consistency_within_chunk:
+          - "Same English word → same Spanish translation?"
+          - "Zero variation enforced (seeds 1-100)?"
+
+      error_handling:
+        minor_issues:
+          threshold: "<5 seeds"
+          action: "Fix manually"
+
+        systematic_issues:
+          threshold: ">5 seeds or misunderstood rules"
+          action: "Re-spawn specific agent with clarification"
+
+    STEP_7_MERGE:
+      description: "Combine all 10 outputs into chunk file"
+      output_schema:
+        orchestrator_id: string
+        chunk_number: integer
+        total_seeds: integer
+        translations:
+          type: "object"
+          structure: "{seed_id: [target, known]}"
+        metadata:
+          generated_by: string
+          agents_used: integer
+          validation_passed: boolean
+          issues_found: integer
+          manual_fixes: integer (optional)
+
+    STEP_8_WRITE_OUTPUT:
+      description: "Write chunk file to VFS"
+      location: "vfs/courses/{course_code}/orchestrator_batches/phase1/chunk_{NN}.json"
+
+    STEP_9_REPORT:
+      description: "Output completion summary"
+      format: |
+        ✅ Phase 1 Orchestrator {NN} Complete
+
+        Seeds translated: ~223
+        Agents spawned: 10
+        Output: chunk_{NN}.json
+        Validation: PASSED
+        Issues: {count}
+
+        Ready for validator step.
+
+    STEP_10_CLEANUP:
+      description: "Kill iTerm2 windows for sub-agents"
+      critical: "30 agents × iTerm2 windows = significant memory usage"
+      command: |
+        osascript -e 'tell application "iTerm2" to close (every window whose name contains "Phase 1")'
+
+  ## ==========================================================================
+  ## CRITICAL RULES
+  ## ==========================================================================
+
+  rules:
+    RULE_1_PARALLEL_SPAWNING:
+      requirement: "Spawn all 10 agents in a SINGLE message"
+      correct_approach: |
+        I'll spawn 10 agents now.
+        [Task tool × 10 in this single message]
+
+      incorrect_approach: |
+        I'll spawn agent 1... [waits] ...now agent 2... [waits] ...
+
+      reason: "Parallel spawning is 10x faster than sequential"
+
+    RULE_2_CHUNK_SCOPE:
+      responsibility: "Validate consistency WITHIN chunk only"
+      not_responsible_for: "Cross-chunk consistency (validator handles this)"
+
+      example:
+        orchestrator_checks: "Does seed 50 use same translation as seed 100 in MY chunk?"
+        validator_checks: "Does chunk 1's translation match chunk 3's translation?"
+
+    RULE_3_INTELLIGENT_RETRY:
+      when_one_agent_fails:
+        action: "Re-spawn JUST that agent with specific corrections"
+        dont: "Re-run all 10 agents"
+
+      when_multiple_agents_fail:
+        check: "Were Task prompts clear enough?"
+        action: "Re-spawn problem agents with better instructions"
+
+    RULE_4_MANUAL_FIXES:
+      threshold: "<5 small errors"
+      action: "Fix manually (faster than re-spawn)"
+      tracking: "Note in metadata: 'manual_fixes': 2"
+
+      re_spawn_threshold: ">5 errors, systematic issues, or misunderstood rules"
+
+  ## ==========================================================================
+  ## OUTPUT SPECIFICATION
+  ## ==========================================================================
+
+  output:
+    chunk_file:
+      location: "vfs/courses/{course_code}/orchestrator_batches/phase1/chunk_{NN}.json"
+      format: "JSON"
+      schema:
+        orchestrator_id: "phase1_orch_{NN}"
+        chunk_number: 1-3
+        total_seeds: integer
+        translations:
+          type: "object with seed_id keys"
+          value_format: "[target_string, known_string]"
+        metadata:
+          generated_by: string
+          agents_used: 10
+          validation_passed: boolean
+          issues_found: integer
+          manual_fixes: integer (optional)
+
+  ## ==========================================================================
+  ## VALIDATION CHECKLIST
+  ## ==========================================================================
+
+  validation_checklist:
+    - "All seeds translated (no missing IDs)"
+    - "Format correct: {seed_id: [target, known]}"
+    - "Grammar correct in BOTH languages"
+    - "Cognates used when available (seeds 1-100)"
+    - "Same English word → same translation (within chunk)"
+    - "Zero variation (seeds 1-100, within chunk)"
+    - "Meaning preserved from canonical"
+
+  ## ==========================================================================
+  ## EFFICIENCY METRICS
+  ## ==========================================================================
+
+  performance:
+    total_time_per_orchestrator: "15-20 minutes for 223 seeds"
+    parallel_speedup: "10x faster than sequential"
+    resource_usage: "30 concurrent agents maximum (system-safe)"
+
+  efficiency_tips:
+    spawn_fast:
+      - "Read batch file"
+      - "Divide seeds (simple math)"
+      - "Spawn 10 agents immediately (one message)"
+      - "Don't overthink division - just split evenly"
+
+    validate_efficiently:
+      - "Scan for obvious errors first (missing fields, broken JSON)"
+      - "Then check grammar/cognates"
+      - "Only deep-dive if you spot patterns"
+
+    merge_quickly:
+      - "Simple concatenation of 10 outputs"
+      - "Add metadata"
+      - "Write file"
+
+  ## ==========================================================================
+  ## SUCCESS CRITERIA
+  ## ==========================================================================
+
+  success_criteria:
+    - "All ~223 seeds translated"
+    - "10 agents spawned in parallel (not sequential)"
+    - "Validation passed (grammar, cognates, consistency)"
+    - "Chunk file written correctly"
+    - "Summary reported"
+    - "iTerm2 windows cleaned up"
+
+  ## ==========================================================================
+  ## VERSION HISTORY
+  ## ==========================================================================
+
+  version_history:
+    v1_1:
+      date: "2025-10-30"
+      changes:
+        - "Reduced concurrency: 3 orchestrators × 10 agents = 30 concurrent agents"
+        - "Increased seeds per orchestrator: ~223 seeds (was ~134)"
+        - "Added cleanup step: STEP 9 kills iTerm2 windows"
+        - "Updated for skills directory: Orchestrator points to modular translation-skill"
+        - "Eliminated data duplication: Batch files contain ranges only, fetch from API"
+
+    v1_0:
+      date: "2025-10-29"
+      changes:
+        - "Initial orchestrator intelligence"
+        - "5 orchestrators × 10 agents = 50 concurrent agents"
+        - "Focus: Speed + quality within chunk"
+        - "Validator handles cross-chunk consistency"

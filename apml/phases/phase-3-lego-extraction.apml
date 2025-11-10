@@ -1,0 +1,436 @@
+# APML Phase 3: LEGO Extraction
+# Extracted from: docs/phase_intelligence/phase_3_lego_pairs.md
+# Version: 5.0 - Ultimate Edition (2025-11-09)
+# Status: Production-ready (Incorporates S0101-S0200 Test Learnings)
+# Last updated: 2025-11-10
+
+phase Phase3LegoExtraction:
+  name: "Phase 3: LEGO Extraction"
+  purpose: "Extract pedagogically-sound LEGO vocabulary units from translated seed pairs"
+  version: "5.0"
+
+  ## ==========================================================================
+  ## OVERVIEW
+  ## ==========================================================================
+
+  description: |
+    LEGOs are atomic and molecular building blocks that learners will practice.
+    Core Principle: When a learner hears KNOWN → they produce exactly ONE TARGET (zero uncertainty)
+
+  core_principle: "Functional Determinism (FD)"
+    definition: "Known stimulus → Exactly one target response (zero uncertainty)"
+
+  ## ==========================================================================
+  ## THE THREE ABSOLUTES
+  ## ==========================================================================
+
+  absolutes:
+    ABSOLUTE_1_KNOWN_FIRST:
+      title: "START FROM KNOWN SEMANTICS"
+      principle: "Break down the KNOWN language first - respect how learners chunk meaning"
+
+      rationale: "The learner THINKS in their native language"
+
+      example:
+        known: "I want to speak Spanish with you now"
+        natural_chunks: ["I want", "to speak", "Spanish", "with you", "now"]
+        reason: "Native speaker semantic boundaries"
+
+    ABSOLUTE_2_BOTH_TYPES:
+      title: "PROVIDE BOTH ATOMIC AND MOLECULAR"
+      principle: "Overlap is REQUIRED - extract words BOTH ways"
+
+      why_both:
+        atomic:
+          purpose: "Reusable building blocks (flexibility across many contexts)"
+          example: "frecuentemente" alone → use in "hablo frecuentemente"
+
+        molecular:
+          purpose: "Target language patterns (word order, idioms, constructions)"
+          example: "tan frecuentemente como sea posible" → teaches construction
+
+      the_pattern: "If a word appears in M-LEGO AND is FD on its own → Extract BOTH"
+
+      example:
+        seed: "tan frecuentemente como sea posible" = "as often as possible"
+        extract_all:
+          - type: "A"
+            target: "frecuentemente"
+            known: "often"
+            reason: "Reusable across contexts"
+
+          - type: "A"
+            target: "posible"
+            known: "possible"
+            reason: "Reusable across contexts"
+
+          - type: "M"
+            target: "tan frecuentemente como sea posible"
+            known: "as often as possible"
+            reason: "Teaches word order pattern"
+            components: [["tan", "as"], ["frecuentemente", "often"], ["como", "as"], ["sea", "be"], ["posible", "possible"]]
+
+      critical: "A-LEGOs teach vocabulary flexibility, M-LEGOs teach syntax/idioms. BOTH needed - not redundant!"
+
+    ABSOLUTE_3_COMPLETE_TILING:
+      title: "VERIFY COMPLETE TILING"
+      principle: "The seed MUST reconstruct perfectly from LEGOs"
+
+      example:
+        target: "Quiero hablar español"
+        legos: ["quiero", "hablar", "español"]
+        reconstruction: "Quiero hablar español"
+        result: "✅ Perfect tiling"
+
+      requirements:
+        - "No gaps"
+        - "No extra words"
+        - "Perfect reconstruction"
+
+  ## ==========================================================================
+  ## EXTRACTION PROCESS
+  ## ==========================================================================
+
+  workflow:
+    STEP_1_CHUNK_KNOWN:
+      description: "Chunk the KNOWN language semantically (Bidirectional Sweep)"
+      method: "Start from KNOWN language, chunk by native speaker intuition"
+
+      example:
+        known: "I'm enjoying finding out more about this language"
+        forward_sweep: ["I'm enjoying", "finding out", "more", "about", "this", "language"]
+        verification: "Do these chunks make sense to a native speaker? ✅"
+
+    STEP_2_MAP_TO_TARGET:
+      description: "Map each KNOWN chunk to TARGET language"
+
+      example:
+        mappings:
+          - known: "I'm enjoying"
+            target: "estoy disfrutando"
+          - known: "finding out"
+            target: "descubrir"
+          - known: "more"
+            target: "más"
+          - known: "about"
+            target: "sobre"
+
+    STEP_3_FD_TEST:
+      description: "Apply Functional Determinism test"
+      the_one_question: "When learner hears KNOWN → is there ANY uncertainty about expected response?"
+
+      fail_conditions:
+        semantic_uncertainty:
+          description: "Multiple possible TARGETs"
+          examples:
+            - known: "that"
+              targets: ["que", "ese", "eso"]
+              result: "❌ FAIL - ambiguous"
+
+            - known: "to"
+              targets: ["a", "para", "infinitive"]
+              result: "❌ FAIL - context-dependent"
+
+        fcfs_collision:
+          description: "Already learned a simpler TARGET"
+          examples:
+            - conflict: "a entender" = "to understand" BUT "entender" = "to understand"
+              result: "❌ FAIL - First Come First Served violation"
+              solution: "CHECK REGISTRY FIRST!"
+
+            - conflict: "soy" = "I am" BUT "estoy" = "I am" (learned first)
+              result: "❌ FAIL - FCFS collision"
+
+        syntactic_uncertainty:
+          description: "Can't produce correct form/syntax without context"
+          examples:
+            - lego: "que" alone
+              uncertainty: "that/which/than/what?"
+              result: "❌ FAIL - needs context"
+
+            - lego: "hables" alone
+              uncertainty: "hablas or hables? (mood depends on 'que')"
+              result: "❌ FAIL - grammatical dependency"
+
+            - lego: "estado" alone
+              uncertainty: "estoy or he estado? (tense depends on 'he')"
+              result: "❌ FAIL - grammatical dependency"
+
+            - lego: "pensar" alone
+              uncertainty: "pensar en or pensar de? (preposition varies)"
+              result: "❌ FAIL - grammatical dependency"
+
+      pass_condition: "✅ ZERO uncertainty → LEGO is Functionally Deterministic"
+
+      correct_examples:
+        - lego: "quiero" + "que hables"
+          result: "✅ PASS - zero uncertainty, valid reconstruction"
+
+        - lego: "he estado"
+          result: "✅ PASS - zero uncertainty, atomic for tense"
+
+      why_uncertainty_fails: |
+        - Learner can't reliably reconstruct valid syntax from LEGO recombination
+        - Multiple possible responses → Creates hesitation/errors
+        - If context determines form/meaning → Keep context together
+
+    STEP_4_FIX_FAILURES:
+      description: "If FD test fails → CHUNK UP (make it bigger)"
+
+      examples:
+        - failed: "que" = "that"
+          reason: "Ambiguous - fails FD test"
+          solution: "que es" = "that it is"
+          result: "✅ Context makes it deterministic"
+
+        - failed: "a entender" = "to understand"
+          reason: "Collision with 'entender'"
+          solution: "empezar a entender" = "to start to understand"
+          result: "✅ No collision"
+
+    STEP_5_CHECK_REGISTRY:
+      description: "Check existing LEGO registry for FCFS collisions"
+      critical: "Before marking any LEGO as NEW, check the registry!"
+
+      example:
+        registry_shows:
+          - known: "I am"
+            target: "estoy"
+            seed: "S0002"
+            status: "FCFS LOCK"
+
+        now_processing:
+          seed: "S0150"
+          target: "Soy profesor"
+          known: "I am a teacher"
+
+        decision:
+          - attempt: "soy" = "I am"
+            result: "❌ COLLISION with estoy"
+
+          - solution: "soy profesor" = "I am a teacher"
+            result: "✅ No collision - wrapped larger"
+
+    STEP_6_ADD_BOTH_TYPES:
+      description: "Extract overlapping coverage - same words in both A and M LEGOs"
+
+      example:
+        seed:
+          target: "Quiero hablar español contigo ahora"
+          known: "I want to speak Spanish with you now"
+
+        extract_atomic:
+          - target: "quiero"
+            known: "I want"
+            type: "A"
+            reason: "Reusable verb"
+
+          - target: "hablar"
+            known: "to speak"
+            type: "A"
+            reason: "Reusable verb"
+
+          - target: "español"
+            known: "Spanish"
+            type: "A"
+            reason: "Reusable noun"
+
+          - target: "contigo"
+            known: "with you"
+            type: "A"
+            reason: "Reusable"
+
+          - target: "ahora"
+            known: "now"
+            type: "A"
+            reason: "Reusable"
+
+        extract_molecular:
+          - target: "quiero hablar"
+            known: "I want to speak"
+            type: "M"
+            reason: "Verb + infinitive pattern"
+
+          - target: "hablar español"
+            known: "speak Spanish"
+            type: "M"
+            reason: "Verb + direct object order"
+
+        why_both:
+          atomic_purpose: "Vocabulary building blocks (reusable: 'voy a hablar', 'puedo hablar')"
+          molecular_purpose: "Syntax patterns (word order, constructions)"
+          teaching_difference: "A-LEGOs = flexibility, M-LEGOs = target language structure"
+
+    STEP_7_COMPONENTIZE_M_TYPES:
+      description: "Every molecular LEGO MUST show ALL WORDS in components"
+
+      schema:
+        type: "M"
+        target: "estoy intentando"
+        known: "I'm trying"
+        components: [["estoy", "I am"], ["intentando", "trying"]]
+
+      critical: "Components use LITERAL translations, not semantic roles"
+
+      examples:
+        correct:
+          component: ["para", "in order to"]
+          reason: "Shows purpose construction"
+
+        wrong:
+          component: ["para", "to"]
+          reason: "Hides the construction"
+
+  ## ==========================================================================
+  ## CLASSIFICATION RULES
+  ## ==========================================================================
+
+  lego_types:
+    atomic:
+      symbol: "A"
+      characteristics:
+        - "Single word"
+        - "Unambiguous standalone"
+        - "1:1 mapping"
+        - "Reusable across many seeds"
+
+      example:
+        type: "A"
+        target: "quiero"
+        known: "I want"
+
+    molecular:
+      symbol: "M"
+      characteristics:
+        - "Multi-word OR"
+        - "Pattern/construction OR"
+        - "Would be ambiguous if split"
+
+      example:
+        type: "M"
+        target: "estoy intentando"
+        known: "I'm trying"
+
+    rule: "When in doubt → M (better to over-chunk than under-chunk)"
+
+  ## ==========================================================================
+  ## OUTPUT FORMAT
+  ## ==========================================================================
+
+  output_schema:
+    structure:
+      agent_id: integer
+      seed_range: string                # "S0001-S0070"
+      extracted_at: timestamp
+      seeds:
+        - seed_id: string               # "S0001"
+          seed_pair:
+            target: string
+            known: string
+          legos:
+            - provisional_id: string    # "PROV_S0001_01" (for new)
+              OR
+              id: string                # "S0023L02" (for reference)
+              type: "A" | "M"
+              target: string
+              known: string
+              new: boolean
+              ref: string               # Seed ID if reference (e.g., "S0023")
+              components: array         # Required for M-types only
+                - [target_word, known_word]
+
+    field_requirements:
+      - "provisional_id OR id (if reference)"
+      - "type: 'A' or 'M'"
+      - "target: Target language text"
+      - "known: Known language text"
+      - "new: true (new LEGO) or false (reference)"
+      - "ref: Seed ID if reference"
+      - "components: Array of [target, known] pairs for M-types (ALL WORDS)"
+
+  ## ==========================================================================
+  ## QUALITY CHECKLIST
+  ## ==========================================================================
+
+  quality_checklist:
+    complete_tiling:
+      - "Every seed reconstructs perfectly from LEGOs"
+      - "No gaps, no extra words"
+
+    fd_compliance:
+      - "No ambiguous standalone words (que, de, a, en alone)"
+      - "No FCFS collisions (checked registry)"
+      - "All chunks deterministic (Known → exactly ONE Target)"
+
+    componentization:
+      - "ALL M-type LEGOs have components"
+      - "Components account for ALL WORDS"
+      - "Components use literal translations"
+
+    registry_check:
+      - "Checked existing LEGOs before marking new"
+      - "Referenced LEGOs have proper 'id' and 'ref'"
+      - "No duplicates"
+
+    am_balance:
+      - "Atomic: ~40-60% (single words, unambiguous)"
+      - "Molecular: ~40-60% (multi-word, patterns)"
+
+  ## ==========================================================================
+  ## PRODUCTION EXAMPLES
+  ## ==========================================================================
+
+  examples:
+    example_1_overlap_coverage:
+      name: "S0101 - Overlapping A and M extraction"
+      seed:
+        target: "tan frecuentemente como sea posible"
+        known: "as often as possible"
+
+      extract:
+        - type: "A"
+          target: "frecuentemente"
+          known: "often"
+          new: true
+
+        - type: "A"
+          target: "posible"
+          known: "possible"
+          new: true
+
+        - type: "M"
+          target: "tan frecuentemente como sea posible"
+          known: "as often as possible"
+          new: true
+          components: [["tan", "as"], ["frecuentemente", "often"], ["como", "as"], ["sea", "be"], ["posible", "possible"]]
+
+      teaching_distinction:
+        atomic_teaches: "Vocabulary reusability ('frecuentemente' in other contexts)"
+        molecular_teaches: "Construction pattern ('tan X como sea posible')"
+
+    example_2_grammatical_dependency:
+      name: "Grammatical dependencies require chunking up"
+
+      fails:
+        - lego: "que hables"
+          without_context: "hables" mood depends on "que"
+          solution: "Keep together: 'que hables'"
+
+        - lego: "he estado"
+          without_context: "estado" tense depends on "he"
+          solution: "Keep together: 'he estado'"
+
+  ## ==========================================================================
+  ## VERSION HISTORY
+  ## ==========================================================================
+
+  version_history:
+    v5_0:
+      date: "2025-11-09"
+      status: "Production Ready"
+      changes:
+        - "Added grammatical dependency rule (syntactic uncertainty)"
+        - "Clarified overlapping coverage (A+M both required)"
+        - "Simplified FD test to single core question"
+        - "Incorporated S0101-S0200 test learnings"
+        - "Added atomic/molecular teaching distinction"
