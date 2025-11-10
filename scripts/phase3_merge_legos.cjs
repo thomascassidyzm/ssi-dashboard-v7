@@ -45,33 +45,35 @@ function normalizeWhitespace(str) {
  * Since atomic and molecular LEGOs can overlap, we need to find
  * SOME COMBINATION that tiles, not just concatenate ALL LEGOs.
  *
- * Strategy: Greedy left-to-right tiling using longest-match-first
+ * Strategy: Backtracking search to find ANY valid tiling combination
  */
 function validateTiling(seedId, targetSentence, legos) {
   const normalizedTarget = normalizeForTiling(targetSentence);
-
-  // Extract just the target texts for tiling (normalized for comparison)
   const legoTexts = legos.map(l => normalizeForTiling(l.target));
-
-  // Try to reconstruct using greedy longest-match-first
   const tokens = normalizedTarget.split(' ');
-  let position = 0;
-  const usedLegos = [];
 
-  while (position < tokens.length) {
-    // Find longest matching LEGO starting at current position
-    let bestMatch = null;
-    let bestLength = 0;
+  /**
+   * Recursive backtracking function
+   * @param {number} position - Current position in tokens array
+   * @param {number[]} usedLegos - Indices of LEGOs used so far
+   * @returns {boolean} - True if valid tiling found
+   */
+  function tryTiling(position, usedLegos) {
+    // Base case: reached end of sentence
+    if (position === tokens.length) {
+      return true;
+    }
 
+    // Try all LEGOs that match at current position
     for (let i = 0; i < legoTexts.length; i++) {
       const legoTokens = legoTexts[i].split(' ');
 
       // Check if this LEGO matches at current position
-      let matches = true;
       if (position + legoTokens.length > tokens.length) {
         continue; // LEGO too long
       }
 
+      let matches = true;
       for (let j = 0; j < legoTokens.length; j++) {
         if (tokens[position + j] !== legoTokens[j]) {
           matches = false;
@@ -79,32 +81,31 @@ function validateTiling(seedId, targetSentence, legos) {
         }
       }
 
-      // If matches and is longer than previous best, use it
-      if (matches && legoTokens.length > bestLength) {
-        bestMatch = i;
-        bestLength = legoTokens.length;
+      if (matches) {
+        // Try using this LEGO and recursively tile the rest
+        usedLegos.push(i);
+        if (tryTiling(position + legoTokens.length, usedLegos)) {
+          return true; // Found valid tiling!
+        }
+        usedLegos.pop(); // Backtrack
       }
     }
 
-    if (bestMatch === null) {
-      // No LEGO matches at current position - tiling failed
-      const reconstructed = usedLegos.map(idx => legoTexts[idx]).join(' ');
-      const remaining = tokens.slice(position).join(' ');
-
-      return {
-        valid: false,
-        error: `Tiling mismatch for ${seedId}`,
-        expected: normalizedTarget,
-        got: reconstructed,
-        details: `No LEGO found for: "${remaining}"`
-      };
-    }
-
-    usedLegos.push(bestMatch);
-    position += bestLength;
+    return false; // No valid tiling found from this position
   }
 
-  return { valid: true };
+  const usedLegos = [];
+  if (tryTiling(0, usedLegos)) {
+    return { valid: true };
+  }
+
+  // No valid tiling found - report error
+  return {
+    valid: false,
+    error: `Tiling mismatch for ${seedId}`,
+    expected: normalizedTarget,
+    details: `No combination of LEGOs can reconstruct the sentence`
+  };
 }
 
 /**
