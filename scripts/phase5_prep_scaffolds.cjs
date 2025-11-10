@@ -153,11 +153,24 @@ async function preparePhase5Scaffolds(courseDir) {
   // Load LEGO pairs
   const legoPairs = await fs.readJson(legoPairsPath);
 
-  // Handle both formats: {seeds: [...]} and {version, seeds: [...]}
-  const seeds = legoPairs.seeds || legoPairs;
+  // Handle both array and object formats
+  // Array format: {seeds: [{seed_id: "S0001", ...}, ...]}
+  // Object format: {seeds: {"S0001": {...}, "S0002": {...}, ...}}
+  let seeds = legoPairs.seeds || legoPairs;
 
   if (!Array.isArray(seeds)) {
-    throw new Error('Invalid lego_pairs.json format: seeds should be an array');
+    // Convert object format to array
+    if (typeof seeds === 'object' && seeds !== null) {
+      seeds = Object.keys(seeds)
+        .sort()
+        .map(seedId => ({
+          seed_id: seedId,
+          ...seeds[seedId]
+        }));
+      console.log(`[Phase 5 Prep] Converted object format to array (${seeds.length} seeds)`);
+    } else {
+      throw new Error('Invalid lego_pairs.json format: seeds should be an array or object');
+    }
   }
 
   console.log(`[Phase 5 Prep] Loaded ${seeds.length} seeds from lego_pairs.json`);
