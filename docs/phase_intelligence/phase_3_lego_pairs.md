@@ -83,44 +83,37 @@ Map each KNOWN chunk to TARGET language:
 
 ### STEP 3: APPLY FD TEST (Functional Determinism)
 
-**Core Question**: When learner hears KNOWN → can they produce exactly ONE valid TARGET?
+**The ONE Question**: When learner hears KNOWN → is there ANY uncertainty about expected response?
 
-❌ **FAIL if ANY are true:**
+❌ **FAIL (has uncertainty) if ANY are true:**
 
-**Type 1: Semantic Ambiguity**
-- **"Can this KNOWN produce multiple different TARGETs?"**
-  - "that" → "que" (subordinate) OR "ese" (demonstrative) ❌
-  - "to" → "a" OR "para" OR infinitive marker ❌
-  - Creates uncertainty which TARGET to produce
+1. **Semantic uncertainty** - Multiple possible TARGETs:
+   - "that" → "que" OR "ese" OR "eso"? ❌
+   - "to" → "a" OR "para" OR infinitive? ❌
 
-**Type 2: FCFS Collision**
-- **"Does learner already know a simpler TARGET for this KNOWN?"**
-  - "a entender" = "to understand" but learner already knows "entender" = "to understand" ❌
-  - "soy" = "I am" but learner already knows "estoy" = "I am" (FCFS) ❌
-  - Creates uncertainty which one to use
-  - **CHECK FCFS REGISTRY!**
+2. **FCFS collision** - Already learned a simpler TARGET:
+   - "a entender" = "to understand" but already knows "entender" = "to understand" ❌
+   - "soy" = "I am" but already knows "estoy" = "I am" (FCFS!) ❌
+   - **CHECK REGISTRY FIRST!**
 
-**Type 3: Incomplete Context (Syntactic Ambiguity)**
-- **"Does this word need surrounding context to produce correct TARGET form/syntax?"**
+3. **Syntactic uncertainty** - Can't produce correct form/syntax:
+   - "que" alone → "that/which/than/what"? ❌
+   - "hables" alone → "hablas" or "hables"? (wrong mood without "que") ❌
+   - "estado" alone → "estoy" or "he estado"? (wrong tense without "he") ❌
+   - "pensar" alone → "pensar en" or "pensar de"? (wrong preposition) ❌
 
-  Standalone particles are ALWAYS ambiguous:
-  - "que" alone → could be "that/which/than/what" ❌
-  - "de" alone → could mean "of/from/about" ❌
-  - "a" alone → could be "to/at/for" ❌
-  - "en" alone → could be "in/on/at" ❌
+**Why uncertainty = FD violation:**
+- Learner can't reliably reconstruct valid syntax from LEGO recombination
+- Multiple possible responses → Creates hesitation/errors
+- If context determines form/meaning → Keep context together
 
-  Grammatical dependencies (form depends on context):
-  - "hables" without "que" → learner produces wrong mood (hablas vs hables) ❌
-  - "estado" without "he" → learner produces wrong tense (estoy vs he estado) ❌
-  - "pensar" without "en" → learner produces wrong preposition (pensar de?) ❌
+✅ **PASS (zero uncertainty)** → LEGO is Functionally Deterministic
 
-  **Why this violates FD**: When you recombine LEGOs, you can't reconstruct valid syntax
-  - "quiero" + "que" + "hables" → learner might produce "quiero que hablas" (wrong mood) ❌
-  - "quiero" + "que hables" → learner produces "quiero que hables" (correct) ✅
-
-  **Rule**: If a word's form/meaning depends on grammatical context → keep them together
-
-✅ **PASS if NONE are true** → LEGO is Functionally Deterministic
+**Examples:**
+- ✅ "quiero" + "que hables" → Zero uncertainty, valid reconstruction
+- ❌ "quiero que" + "hables" → Uncertainty about mood, breaks reconstruction
+- ✅ "he estado" → Zero uncertainty, atomic for tense
+- ❌ "he" + "estado" → Uncertainty about tense construction
 
 ### STEP 4: FIX FAILURES → CHUNK UP
 
