@@ -83,32 +83,44 @@ Map each KNOWN chunk to TARGET language:
 
 ### STEP 3: APPLY FD TEST (Functional Determinism)
 
-**For EVERY LEGO, ask these 4 questions:**
+**Core Question**: When learner hears KNOWN → can they produce exactly ONE valid TARGET?
 
 ❌ **FAIL if ANY are true:**
 
-1. **"Does learner already know a simpler TARGET for this KNOWN?"**
-   - Example: "a entender" = "to understand" ← learner knows "entender" = "to understand"
-   - Creates uncertainty which one to use
-   - **CHECK FCFS REGISTRY!**
+**Type 1: Semantic Ambiguity**
+- **"Can this KNOWN produce multiple different TARGETs?"**
+  - "that" → "que" (subordinate) OR "ese" (demonstrative) ❌
+  - "to" → "a" OR "para" OR infinitive marker ❌
+  - Creates uncertainty which TARGET to produce
 
-2. **"Is this an ambiguous standalone word?"**
-   - que, de, a, en (alone) ← always ambiguous
-   - Articles, auxiliaries, negations (alone) ← need context
+**Type 2: FCFS Collision**
+- **"Does learner already know a simpler TARGET for this KNOWN?"**
+  - "a entender" = "to understand" but learner already knows "entender" = "to understand" ❌
+  - "soy" = "I am" but learner already knows "estoy" = "I am" (FCFS) ❌
+  - Creates uncertainty which one to use
+  - **CHECK FCFS REGISTRY!**
 
-3. **"Can this word mean multiple things in KNOWN language?"**
-   - Example: "that" could be "que" (subordinate) or "ese" (demonstrative)
-   - Creates uncertainty which TARGET to produce
+**Type 3: Incomplete Context (Syntactic Ambiguity)**
+- **"Does this word need surrounding context to produce correct TARGET form/syntax?"**
 
-4. **"Does this break a grammatical dependency?"** (NEW - CRITICAL!)
-   - Subjunctive trigger split: "quiero que" breaks "que + hables" dependency ❌
-   - Verb conjugation depends on context: "hables" (subjunctive) vs "hablas" (indicative)
-   - Auxiliary split: "he" breaks "he + estado" dependency ❌
-   - Verb + preposition: "pensar" breaks "pensar + en" idiom ❌
+  Standalone particles are ALWAYS ambiguous:
+  - "que" alone → could be "that/which/than/what" ❌
+  - "de" alone → could mean "of/from/about" ❌
+  - "a" alone → could be "to/at/for" ❌
+  - "en" alone → could be "in/on/at" ❌
 
-   **Rule**: If a word's form/meaning depends on its grammatical context, keep them together!
+  Grammatical dependencies (form depends on context):
+  - "hables" without "que" → learner produces wrong mood (hablas vs hables) ❌
+  - "estado" without "he" → learner produces wrong tense (estoy vs he estado) ❌
+  - "pensar" without "en" → learner produces wrong preposition (pensar de?) ❌
 
-✅ **PASS if NONE are true**
+  **Why this violates FD**: When you recombine LEGOs, you can't reconstruct valid syntax
+  - "quiero" + "que" + "hables" → learner might produce "quiero que hablas" (wrong mood) ❌
+  - "quiero" + "que hables" → learner produces "quiero que hables" (correct) ✅
+
+  **Rule**: If a word's form/meaning depends on grammatical context → keep them together
+
+✅ **PASS if NONE are true** → LEGO is Functionally Deterministic
 
 ### STEP 4: FIX FAILURES → CHUNK UP
 
@@ -443,39 +455,33 @@ GOOD:
 {"target": "después de que", "known": "after", "type": "M"}
 ```
 
-### ❌ Mistake 1.5: Invalid Molecular Chunks (CRITICAL!)
+### ❌ Mistake 1.5: Violating FD Type 3 - Incomplete Context
 
-**Problem**: Creating molecular LEGOs that split grammatical dependencies
+**Problem**: Creating LEGOs that can't reconstruct valid syntax when recombined
 
 ```json
-BAD - Subjunctive Split:
+BAD - Breaks grammatical dependency (FD Type 3 violation):
 Seed: "Quiero que hables español" = "I want you to speak Spanish"
 
-{"target": "quiero que", "known": "I want that"} ← WRONG!
-{"target": "hables", "known": "you speak"} ← Can't stand alone (subjunctive)
+{"target": "quiero que", "known": "I want that"} ← FD VIOLATION!
+{"target": "hables", "known": "you speak"} ← FD VIOLATION!
 
-WHY WRONG: "que" is a subjunctive trigger - it belongs with "hables", not "quiero"
-"hables" is not FD without "que" (it's subjunctive, not indicative)
+WHY WRONG:
+- "que" needs "hables" to determine subjunctive mood
+- "hables" needs "que" to know it's subjunctive not indicative
+- When learner recombines: "quiero" + "que" + "hables" → might produce "quiero que hablas" ❌
 
-GOOD Option 1 (split at subjunctive boundary):
+GOOD Option 1 (respect grammatical boundary):
 {"target": "quiero", "known": "I want", "type": "A"}
-{"target": "que hables", "known": "you to speak", "type": "M",
- "components": [["que", "that"], ["hables", "you speak"]]}
+{"target": "que hables", "known": "you to speak", "type": "M"}
 
 GOOD Option 2 (entire construction):
-{"target": "quiero que hables", "known": "I want you to speak", "type": "M",
- "components": [["quiero", "I want"], ["que", "that"], ["hables", "you speak"]]}
+{"target": "quiero que hables", "known": "I want you to speak", "type": "M"}
 ```
 
-**Rule**: For subjunctive triggers (que, para que, aunque, etc.), keep "que + verb" together:
-- ✅ "quiero" + "que hables"
-- ✅ "quiero que hables" (whole construction)
-- ❌ "quiero que" + "hables" (breaks dependency)
-
-**Other grammatical dependencies to respect:**
-- Auxiliary + verb: "he estado" not "he" + "estado"
-- Verb + preposition: "pensar en" not "pensar" + "en"
-- Idiomatic expressions: "tener que" not "tener" + "que"
+**Remember**: These aren't "grammar rules" - they're FD violations (Type 3: Incomplete Context)
+- If form/syntax depends on context → Keep context together
+- If you can't reliably reconstruct from LEGOs → You violated FD
 
 ### ❌ Mistake 2: Missing Components
 
