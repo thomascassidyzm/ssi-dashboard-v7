@@ -83,7 +83,7 @@ Map each KNOWN chunk to TARGET language:
 
 ### STEP 3: APPLY FD TEST (Functional Determinism)
 
-**For EVERY LEGO, ask these 3 questions:**
+**For EVERY LEGO, ask these 4 questions:**
 
 ❌ **FAIL if ANY are true:**
 
@@ -99,6 +99,14 @@ Map each KNOWN chunk to TARGET language:
 3. **"Can this word mean multiple things in KNOWN language?"**
    - Example: "that" could be "que" (subordinate) or "ese" (demonstrative)
    - Creates uncertainty which TARGET to produce
+
+4. **"Does this break a grammatical dependency?"** (NEW - CRITICAL!)
+   - Subjunctive trigger split: "quiero que" breaks "que + hables" dependency ❌
+   - Verb conjugation depends on context: "hables" (subjunctive) vs "hablas" (indicative)
+   - Auxiliary split: "he" breaks "he + estado" dependency ❌
+   - Verb + preposition: "pensar" breaks "pensar + en" idiom ❌
+
+   **Rule**: If a word's form/meaning depends on its grammatical context, keep them together!
 
 ✅ **PASS if NONE are true**
 
@@ -434,6 +442,40 @@ BAD:
 GOOD:
 {"target": "después de que", "known": "after", "type": "M"}
 ```
+
+### ❌ Mistake 1.5: Invalid Molecular Chunks (CRITICAL!)
+
+**Problem**: Creating molecular LEGOs that split grammatical dependencies
+
+```json
+BAD - Subjunctive Split:
+Seed: "Quiero que hables español" = "I want you to speak Spanish"
+
+{"target": "quiero que", "known": "I want that"} ← WRONG!
+{"target": "hables", "known": "you speak"} ← Can't stand alone (subjunctive)
+
+WHY WRONG: "que" is a subjunctive trigger - it belongs with "hables", not "quiero"
+"hables" is not FD without "que" (it's subjunctive, not indicative)
+
+GOOD Option 1 (split at subjunctive boundary):
+{"target": "quiero", "known": "I want", "type": "A"}
+{"target": "que hables", "known": "you to speak", "type": "M",
+ "components": [["que", "that"], ["hables", "you speak"]]}
+
+GOOD Option 2 (entire construction):
+{"target": "quiero que hables", "known": "I want you to speak", "type": "M",
+ "components": [["quiero", "I want"], ["que", "that"], ["hables", "you speak"]]}
+```
+
+**Rule**: For subjunctive triggers (que, para que, aunque, etc.), keep "que + verb" together:
+- ✅ "quiero" + "que hables"
+- ✅ "quiero que hables" (whole construction)
+- ❌ "quiero que" + "hables" (breaks dependency)
+
+**Other grammatical dependencies to respect:**
+- Auxiliary + verb: "he estado" not "he" + "estado"
+- Verb + preposition: "pensar en" not "pensar" + "en"
+- Idiomatic expressions: "tener que" not "tener" + "que"
 
 ### ❌ Mistake 2: Missing Components
 
