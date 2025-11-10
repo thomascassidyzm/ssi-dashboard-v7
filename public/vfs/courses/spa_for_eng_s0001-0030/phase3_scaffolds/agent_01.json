@@ -1,83 +1,234 @@
 {
   "agent_id": 1,
-  "seed_range": "S0001-S0015",
-  "seeds": [
-    {
-      "seed_id": "S0001",
-      "target": "Quiero hablar español contigo ahora.",
-      "known": "I want to speak Spanish with you now."
-    },
-    {
-      "seed_id": "S0002",
-      "target": "Estoy intentando aprender.",
-      "known": "I'm trying to learn."
-    },
-    {
-      "seed_id": "S0003",
-      "target": "cómo hablar tan frecuentemente como sea posible.",
-      "known": "how to speak as often as possible."
-    },
-    {
-      "seed_id": "S0004",
-      "target": "cómo decir algo en español.",
-      "known": "how to say something in Spanish"
-    },
-    {
-      "seed_id": "S0005",
-      "target": "Voy a practicar hablar con otra persona.",
-      "known": "I'm going to practise speaking with someone else."
-    },
-    {
-      "seed_id": "S0006",
-      "target": "Estoy intentando recordar una palabra.",
-      "known": "I'm trying to remember a word."
-    },
-    {
-      "seed_id": "S0007",
-      "target": "Quiero intentar con todo mi esfuerzo hoy.",
-      "known": "I want to try as hard as I can today."
-    },
-    {
-      "seed_id": "S0008",
-      "target": "Voy a intentar explicar lo que quiero decir.",
-      "known": "I'm going to try to explain what I mean."
-    },
-    {
-      "seed_id": "S0009",
-      "target": "Hablo un poco de español ahora.",
-      "known": "I speak a little Spanish now."
-    },
-    {
-      "seed_id": "S0010",
-      "target": "No estoy seguro si puedo recordar la oración completa.",
-      "known": "I'm not sure if I can remember the whole sentence."
-    },
-    {
-      "seed_id": "S0011",
-      "target": "Me gustaría poder hablar después de que termines.",
-      "known": "I'd like to be able to speak after you finish."
-    },
-    {
-      "seed_id": "S0012",
-      "target": "No me gustaría adivinar qué va a pasar mañana.",
-      "known": "I wouldn't like to guess what's going to happen tomorrow."
-    },
-    {
-      "seed_id": "S0013",
-      "target": "Hablas español muy bien.",
-      "known": "You speak Spanish very well."
-    },
-    {
-      "seed_id": "S0014",
-      "target": "¿Hablas español todo el día?",
-      "known": "Do you speak Spanish all day?"
-    },
-    {
-      "seed_id": "S0015",
-      "target": "Y quiero que hables español conmigo mañana.",
-      "known": "And I want you to speak Spanish with me tomorrow."
-    }
-  ],
+  "seed_range": "S0001-S0020",
+  "seeds_count": 20,
   "fcfs_registry": [],
-  "legos": []
+  "fcfs_registry_size": 0,
+  "seeds": {
+    "S0001": {
+      "seed_pair": {
+        "target": "Quiero hablar español contigo ahora.",
+        "known": "I want to speak Spanish with you now."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0001",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0002": {
+      "seed_pair": {
+        "target": "Estoy intentando aprender.",
+        "known": "I'm trying to learn."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0002",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0003": {
+      "seed_pair": {
+        "target": "cómo hablar tan frecuentemente como sea posible.",
+        "known": "how to speak as often as possible."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0003",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0004": {
+      "seed_pair": {
+        "target": "cómo decir algo en español.",
+        "known": "how to say something in Spanish"
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0004",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0005": {
+      "seed_pair": {
+        "target": "Voy a practicar hablar con otra persona.",
+        "known": "I'm going to practise speaking with someone else."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0005",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0006": {
+      "seed_pair": {
+        "target": "Estoy intentando recordar una palabra.",
+        "known": "I'm trying to remember a word."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0006",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0007": {
+      "seed_pair": {
+        "target": "Quiero intentar con todo mi esfuerzo hoy.",
+        "known": "I want to try as hard as I can today."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0007",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0008": {
+      "seed_pair": {
+        "target": "Voy a intentar explicar lo que quiero decir.",
+        "known": "I'm going to try to explain what I mean."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0008",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0009": {
+      "seed_pair": {
+        "target": "Hablo un poco de español ahora.",
+        "known": "I speak a little Spanish now."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0009",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0010": {
+      "seed_pair": {
+        "target": "No estoy seguro si puedo recordar la oración completa.",
+        "known": "I'm not sure if I can remember the whole sentence."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0010",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0011": {
+      "seed_pair": {
+        "target": "Me gustaría poder hablar después de que termines.",
+        "known": "I'd like to be able to speak after you finish."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0011",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0012": {
+      "seed_pair": {
+        "target": "No me gustaría adivinar qué va a pasar mañana.",
+        "known": "I wouldn't like to guess what's going to happen tomorrow."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0012",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0013": {
+      "seed_pair": {
+        "target": "Hablas español muy bien.",
+        "known": "You speak Spanish very well."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0013",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0014": {
+      "seed_pair": {
+        "target": "¿Hablas español todo el día?",
+        "known": "Do you speak Spanish all day?"
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0014",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0015": {
+      "seed_pair": {
+        "target": "Y quiero que hables español conmigo mañana.",
+        "known": "And I want you to speak Spanish with me tomorrow."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0015",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0016": {
+      "seed_pair": {
+        "target": "Él quiere volver con todos los demás más tarde.",
+        "known": "He wants to come back with everyone else later on."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0016",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0017": {
+      "seed_pair": {
+        "target": "Ella quiere descubrir cuál es la respuesta.",
+        "known": "She wants to find out what the answer is."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0017",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0018": {
+      "seed_pair": {
+        "target": "Queremos encontrarnos a las seis de la tarde.",
+        "known": "We want to meet at six o'clock this evening."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0018",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0019": {
+      "seed_pair": {
+        "target": "Pero no quiero parar de hablar.",
+        "known": "But I don't want to stop talking."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0019",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0020": {
+      "seed_pair": {
+        "target": "Quieres aprender su nombre rápidamente.",
+        "known": "You want to learn his name quickly."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0020",
+        "cumulative_lego_count_before": 0
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Extract LEGOs from these seeds using Phase 3 Ultimate Intelligence",
+    "fcfs_note": "Check fcfs_registry for collisions before marking any LEGO as new",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng_s0001-0030/phase3_outputs/agent_01_provisional.json"
+  }
 }

@@ -1,83 +1,124 @@
 {
   "agent_id": 2,
-  "seed_range": "S0016-S0030",
-  "seeds": [
-    {
-      "seed_id": "S0016",
-      "target": "Él quiere volver con todos los demás más tarde.",
-      "known": "He wants to come back with everyone else later on."
-    },
-    {
-      "seed_id": "S0017",
-      "target": "Ella quiere descubrir cuál es la respuesta.",
-      "known": "She wants to find out what the answer is."
-    },
-    {
-      "seed_id": "S0018",
-      "target": "Queremos encontrarnos a las seis de la tarde.",
-      "known": "We want to meet at six o'clock this evening."
-    },
-    {
-      "seed_id": "S0019",
-      "target": "Pero no quiero parar de hablar.",
-      "known": "But I don't want to stop talking."
-    },
-    {
-      "seed_id": "S0020",
-      "target": "Quieres aprender su nombre rápidamente.",
-      "known": "You want to learn his name quickly."
-    },
-    {
-      "seed_id": "S0021",
-      "target": "¿Por qué estás aprendiendo su nombre?",
-      "known": "Why are you learning her name?"
-    },
-    {
-      "seed_id": "S0022",
-      "target": "Porque quiero conocer personas que hablen español.",
-      "known": "Because I want to meet people who speak Spanish."
-    },
-    {
-      "seed_id": "S0023",
-      "target": "Voy a empezar a hablar más pronto.",
-      "known": "I'm going to start talking more soon."
-    },
-    {
-      "seed_id": "S0024",
-      "target": "No voy a poder recordar fácilmente.",
-      "known": "I'm not going to be able to remember easily."
-    },
-    {
-      "seed_id": "S0025",
-      "target": "¿Vas a ayudarme antes de que tenga que irme?",
-      "known": "Are you going to help me before I have to go?"
-    },
-    {
-      "seed_id": "S0026",
-      "target": "Me gusta sentir como si estuviera casi preparado para irme.",
-      "known": "I like feeling as if I'm nearly ready to go."
-    },
-    {
-      "seed_id": "S0027",
-      "target": "No me gusta tomar demasiado tiempo para responder.",
-      "known": "I don't like taking too much time to answer."
-    },
-    {
-      "seed_id": "S0028",
-      "target": "Es útil empezar a hablar tan pronto como puedas.",
-      "known": "It's useful to start talking as soon as you can."
-    },
-    {
-      "seed_id": "S0029",
-      "target": "Espero con ansias hablar mejor tan pronto como pueda.",
-      "known": "I'm looking forward to speaking better as soon as I can."
-    },
-    {
-      "seed_id": "S0030",
-      "target": "Quería preguntarte algo ayer.",
-      "known": "I wanted to ask you something yesterday."
-    }
-  ],
+  "seed_range": "S0021-S0030",
+  "seeds_count": 10,
   "fcfs_registry": [],
-  "legos": []
+  "fcfs_registry_size": 0,
+  "seeds": {
+    "S0021": {
+      "seed_pair": {
+        "target": "¿Por qué estás aprendiendo su nombre?",
+        "known": "Why are you learning her name?"
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0021",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0022": {
+      "seed_pair": {
+        "target": "Porque quiero conocer personas que hablen español.",
+        "known": "Because I want to meet people who speak Spanish."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0022",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0023": {
+      "seed_pair": {
+        "target": "Voy a empezar a hablar más pronto.",
+        "known": "I'm going to start talking more soon."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0023",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0024": {
+      "seed_pair": {
+        "target": "No voy a poder recordar fácilmente.",
+        "known": "I'm not going to be able to remember easily."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0024",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0025": {
+      "seed_pair": {
+        "target": "¿Vas a ayudarme antes de que tenga que irme?",
+        "known": "Are you going to help me before I have to go?"
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0025",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0026": {
+      "seed_pair": {
+        "target": "Me gusta sentir como si estuviera casi preparado para irme.",
+        "known": "I like feeling as if I'm nearly ready to go."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0026",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0027": {
+      "seed_pair": {
+        "target": "No me gusta tomar demasiado tiempo para responder.",
+        "known": "I don't like taking too much time to answer."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0027",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0028": {
+      "seed_pair": {
+        "target": "Es útil empezar a hablar tan pronto como puedas.",
+        "known": "It's useful to start talking as soon as you can."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0028",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0029": {
+      "seed_pair": {
+        "target": "Espero con ansias hablar mejor tan pronto como pueda.",
+        "known": "I'm looking forward to speaking better as soon as I can."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0029",
+        "cumulative_lego_count_before": 0
+      }
+    },
+    "S0030": {
+      "seed_pair": {
+        "target": "Quería preguntarte algo ayer.",
+        "known": "I wanted to ask you something yesterday."
+      },
+      "legos": [],
+      "_metadata": {
+        "seed_id": "S0030",
+        "cumulative_lego_count_before": 0
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Extract LEGOs from these seeds using Phase 3 Ultimate Intelligence",
+    "fcfs_note": "Check fcfs_registry for collisions before marking any LEGO as new",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng_s0001-0030/phase3_outputs/agent_02_provisional.json"
+  }
 }
