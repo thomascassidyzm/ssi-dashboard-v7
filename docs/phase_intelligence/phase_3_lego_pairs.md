@@ -41,7 +41,24 @@ Overlapping coverage provides multiple learning entry points!
 
 **4. Never skip words during the sweep**
 
-Process EVERY word sequentially. If a word doesn't need extraction (collision), mark it as covered by referencing the existing LEGO. But NEVER jump over words!
+Process EVERY word sequentially. If a word doesn't need extraction (collision), mark it as covered by **referencing the existing LEGO**. But NEVER jump over words!
+
+**CRITICAL: How to reference existing LEGOs**:
+
+When you encounter a collision (BOTH target AND known match an existing LEGO), you MUST include it as a reference:
+
+```json
+{
+  "id": "S0001L03",
+  "ref": "S0001",
+  "type": "A",
+  "target": "español",
+  "known": "Spanish",
+  "new": false
+}
+```
+
+This ensures complete tiling! Without the reference, the seed cannot reconstruct.
 
 ---
 
