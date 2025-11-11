@@ -310,6 +310,34 @@ Different teaching purposes:
 - M-LEGOs = syntax patterns (word order, constructions, idioms)
 ```
 
+**CRITICAL PATTERN: Modal Verbs + Infinitives**
+
+When modal verbs appear with infinitives, extract **ALL THREE**:
+
+```
+Sentence: "I can remember the whole sentence"
+
+Extract:
+1. "puedo" (A) - I can [reusable modal]
+2. "recordar" (A) - to remember [reusable infinitive]
+3. "puedo recordar" (M) - I can remember [modal + infinitive construction]
+
+Components for M-type:
+[["puedo", "I can"], ["recordar", "remember"]] ← Note: bare infinitive in English!
+```
+
+**Why all three?**
+- "puedo" alone → Use in "puedo hablar", "puedo ir", etc.
+- "recordar" alone → Use in "quiero recordar", "voy a recordar", etc.
+- "puedo recordar" → Bridges structural difference (Spanish infinitive vs English bare form)
+
+**Modal verbs to watch for**: can, could, should, must, might, would, will, shall, may
+
+**The tiling principle**: Both languages must tile grammatically. Without the M-type, you get:
+- ❌ "I can | to remember" (broken English)
+- ✅ "I can remember" (correct with M-type)
+```
+
 **Critical**: If word is FD on its own → Extract as A-LEGO even if also in M-LEGO
 - "frecuentemente" works alone → A-LEGO ✅
 - Also part of "tan frecuentemente como sea posible" → M-LEGO ✅

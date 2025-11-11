@@ -32,15 +32,26 @@ function extractSpanishWords(text) {
 }
 
 /**
- * Validate GATE compliance (all Spanish words in whitelist)
+ * Validate GATE compliance (all Spanish words in whitelist pairs)
  */
-function validateGateCompliance(phrase, whitelist, legoId, phraseIndex) {
+function validateGateCompliance(phrase, whitelistPairs, currentLego, legoId, phraseIndex) {
   const [english, spanish] = phrase;
   const words = extractSpanishWords(spanish);
   const violations = [];
 
+  // Build a set of available Spanish words from whitelist pairs
+  const availableWords = new Set(
+    whitelistPairs.map(pair => pair[0].toLowerCase())
+  );
+
+  // Add the current LEGO being taught (always available)
+  if (currentLego && currentLego.lego && currentLego.lego[1]) {
+    const legoWords = extractSpanishWords(currentLego.lego[1]);
+    legoWords.forEach(word => availableWords.add(word));
+  }
+
   for (const word of words) {
-    if (!whitelist.includes(word)) {
+    if (!availableWords.has(word)) {
       violations.push({
         lego: legoId,
         phrase: phraseIndex + 1,
@@ -87,7 +98,7 @@ function validateFinalLego(lego, seedPair, legoId) {
     return `${legoId}: Missing phrase #10 (final LEGO)`;
   }
 
-  const [englishPhrase] = finalPhrase;
+  const [englishPhrase, spanishPhrase] = finalPhrase;
   const expectedSeed = seedPair.known;
 
   // Normalize for comparison (remove punctuation, lowercase, trim)
@@ -198,11 +209,12 @@ async function mergePhase5Baskets(courseDir) {
       }
 
       // Validate GATE compliance
-      if (seed.whitelist) {
+      if (lego._metadata && lego._metadata.whitelist_pairs) {
         for (let i = 0; i < lego.practice_phrases.length; i++) {
           const violations = validateGateCompliance(
             lego.practice_phrases[i],
-            seed.whitelist,
+            lego._metadata.whitelist_pairs,
+            lego,
             legoId,
             i
           );
@@ -298,8 +310,7 @@ async function mergePhase5Baskets(courseDir) {
       seed: seedId,
       course_direction: "Spanish for English speakers",
       mapping: "KNOWN (English) → TARGET (Spanish)",
-      seed_pair: seed.seed_pair,
-      cumulative_legos: seed.cumulative_legos
+      seed_pair: seed.seed_pair
     };
 
     // Add each LEGO at root level (matching existing format)

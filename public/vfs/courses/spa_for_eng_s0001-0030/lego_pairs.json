@@ -7,17 +7,17 @@
     "start": 1,
     "end": 30
   },
-  "generated": "2025-11-11T01:03:42.619Z",
+  "generated": "2025-11-11T03:31:02.081Z",
   "total_seeds": 30,
   "total_legos": 138,
   "unique_legos": 113,
-  "seeds": {
-    "S0001": {
+  "seeds": [
+    {
       "seed_id": "S0001",
-      "seed_pair": {
-        "target": "Quiero hablar español contigo ahora.",
-        "known": "I want to speak Spanish with you now."
-      },
+      "seed_pair": [
+        "Quiero hablar español contigo ahora.",
+        "I want to speak Spanish with you now."
+      ],
       "legos": [
         {
           "type": "A",
@@ -56,12 +56,12 @@
         }
       ]
     },
-    "S0002": {
+    {
       "seed_id": "S0002",
-      "seed_pair": {
-        "target": "Estoy intentando aprender.",
-        "known": "I'm trying to learn."
-      },
+      "seed_pair": [
+        "Estoy intentando aprender.",
+        "I'm trying to learn."
+      ],
       "legos": [
         {
           "type": "M",
@@ -89,12 +89,12 @@
         }
       ]
     },
-    "S0003": {
+    {
       "seed_id": "S0003",
-      "seed_pair": {
-        "target": "cómo hablar tan frecuentemente como sea posible.",
-        "known": "how to speak as often as possible."
-      },
+      "seed_pair": [
+        "cómo hablar tan frecuentemente como sea posible.",
+        "how to speak as often as possible."
+      ],
       "legos": [
         {
           "type": "A",
@@ -104,7 +104,7 @@
           "id": "S0003L01"
         },
         {
-          "id": "PROV_S0001_02",
+          "id": "S0001L02",
           "type": "A",
           "target": "hablar",
           "known": "to speak",
@@ -156,15 +156,15 @@
         }
       ]
     },
-    "S0004": {
+    {
       "seed_id": "S0004",
-      "seed_pair": {
-        "target": "cómo decir algo en español.",
-        "known": "how to say something in Spanish"
-      },
+      "seed_pair": [
+        "cómo decir algo en español.",
+        "how to say something in Spanish"
+      ],
       "legos": [
         {
-          "id": "PROV_S0003_01",
+          "id": "S0003L01",
           "type": "A",
           "target": "cómo",
           "known": "how",
@@ -204,12 +204,12 @@
         }
       ]
     },
-    "S0005": {
+    {
       "seed_id": "S0005",
-      "seed_pair": {
-        "target": "Voy a practicar hablar con otra persona.",
-        "known": "I'm going to practise speaking with someone else."
-      },
+      "seed_pair": [
+        "Voy a practicar hablar con otra persona.",
+        "I'm going to practise speaking with someone else."
+      ],
       "legos": [
         {
           "type": "M",
@@ -268,15 +268,15 @@
         }
       ]
     },
-    "S0006": {
+    {
       "seed_id": "S0006",
-      "seed_pair": {
-        "target": "Estoy intentando recordar una palabra.",
-        "known": "I'm trying to remember a word."
-      },
+      "seed_pair": [
+        "Estoy intentando recordar una palabra.",
+        "I'm trying to remember a word."
+      ],
       "legos": [
         {
-          "id": "PROV_S0002_01",
+          "id": "S0002L01",
           "type": "M",
           "target": "estoy intentando",
           "known": "I'm trying",
@@ -309,15 +309,15 @@
         }
       ]
     },
-    "S0007": {
+    {
       "seed_id": "S0007",
-      "seed_pair": {
-        "target": "Quiero intentar con todo mi esfuerzo hoy.",
-        "known": "I want to try as hard as I can today."
-      },
+      "seed_pair": [
+        "Quiero intentar con todo mi esfuerzo hoy.",
+        "I want to try as hard as I can today."
+      ],
       "legos": [
         {
-          "id": "PROV_S0001_01",
+          "id": "S0001L01",
           "type": "A",
           "target": "quiero",
           "known": "I want",
@@ -362,15 +362,15 @@
         }
       ]
     },
-    "S0008": {
+    {
       "seed_id": "S0008",
-      "seed_pair": {
-        "target": "Voy a intentar explicar lo que quiero decir.",
-        "known": "I'm going to try to explain what I mean."
-      },
+      "seed_pair": [
+        "Voy a intentar explicar lo que quiero decir.",
+        "I'm going to try to explain what I mean."
+      ],
       "legos": [
         {
-          "id": "PROV_S0005_01",
+          "id": "S0005L01",
           "type": "M",
           "target": "voy a",
           "known": "I'm going to",
@@ -418,12 +418,12 @@
         }
       ]
     },
-    "S0009": {
+    {
       "seed_id": "S0009",
-      "seed_pair": {
-        "target": "Hablo un poco de español ahora.",
-        "known": "I speak a little Spanish now."
-      },
+      "seed_pair": [
+        "Hablo un poco de español ahora.",
+        "I speak a little Spanish now."
+      ],
       "legos": [
         {
           "type": "A",
@@ -454,7 +454,7 @@
           "id": "S0009L02"
         },
         {
-          "id": "PROV_S0001_03",
+          "id": "S0001L03",
           "type": "A",
           "target": "español",
           "known": "Spanish",
@@ -462,7 +462,7 @@
           "new": false
         },
         {
-          "id": "PROV_S0001_05",
+          "id": "S0001L05",
           "type": "A",
           "target": "ahora",
           "known": "now",
@@ -471,12 +471,12 @@
         }
       ]
     },
-    "S0010": {
+    {
       "seed_id": "S0010",
-      "seed_pair": {
-        "target": "No estoy seguro si puedo recordar la oración completa.",
-        "known": "I'm not sure if I can remember the whole sentence."
-      },
+      "seed_pair": [
+        "No estoy seguro si puedo recordar la oración completa.",
+        "I'm not sure if I can remember the whole sentence."
+      ],
       "legos": [
         {
           "type": "M",
@@ -514,7 +514,24 @@
           "id": "S0010L03"
         },
         {
-          "id": "PROV_S0006_01",
+          "type": "M",
+          "target": "puedo recordar",
+          "known": "I can remember",
+          "new": true,
+          "components": [
+            [
+              "puedo",
+              "I can"
+            ],
+            [
+              "recordar",
+              "remember"
+            ]
+          ],
+          "id": "S0010L04"
+        },
+        {
+          "id": "S0006L01",
           "type": "A",
           "target": "recordar",
           "known": "to remember",
@@ -540,16 +557,16 @@
               "whole"
             ]
           ],
-          "id": "S0010L04"
+          "id": "S0010L05"
         }
       ]
     },
-    "S0011": {
+    {
       "seed_id": "S0011",
-      "seed_pair": {
-        "target": "Me gustaría poder hablar después de que termines.",
-        "known": "I'd like to be able to speak after you finish."
-      },
+      "seed_pair": [
+        "Me gustaría poder hablar después de que termines.",
+        "I'd like to be able to speak after you finish."
+      ],
       "legos": [
         {
           "type": "M",
@@ -615,12 +632,12 @@
         }
       ]
     },
-    "S0012": {
+    {
       "seed_id": "S0012",
-      "seed_pair": {
-        "target": "No me gustaría adivinar qué va a pasar mañana.",
-        "known": "I wouldn't like to guess what's going to happen tomorrow."
-      },
+      "seed_pair": [
+        "No me gustaría adivinar qué va a pasar mañana.",
+        "I wouldn't like to guess what's going to happen tomorrow."
+      ],
       "legos": [
         {
           "type": "M",
@@ -684,12 +701,12 @@
         }
       ]
     },
-    "S0013": {
+    {
       "seed_id": "S0013",
-      "seed_pair": {
-        "target": "Hablas español muy bien.",
-        "known": "You speak Spanish very well."
-      },
+      "seed_pair": [
+        "Hablas español muy bien.",
+        "You speak Spanish very well."
+      ],
       "legos": [
         {
           "type": "A",
@@ -699,7 +716,7 @@
           "id": "S0013L01"
         },
         {
-          "id": "PROV_S0001_03",
+          "id": "S0001L03",
           "type": "A",
           "target": "español",
           "known": "Spanish",
@@ -725,15 +742,15 @@
         }
       ]
     },
-    "S0014": {
+    {
       "seed_id": "S0014",
-      "seed_pair": {
-        "target": "¿Hablas español todo el día?",
-        "known": "Do you speak Spanish all day?"
-      },
+      "seed_pair": [
+        "¿Hablas español todo el día?",
+        "Do you speak Spanish all day?"
+      ],
       "legos": [
         {
-          "id": "PROV_S0013_01",
+          "id": "S0013L01",
           "type": "A",
           "target": "hablas",
           "known": "you speak",
@@ -741,7 +758,7 @@
           "new": false
         },
         {
-          "id": "PROV_S0001_03",
+          "id": "S0001L03",
           "type": "A",
           "target": "español",
           "known": "Spanish",
@@ -771,12 +788,12 @@
         }
       ]
     },
-    "S0015": {
+    {
       "seed_id": "S0015",
-      "seed_pair": {
-        "target": "Y quiero que hables español conmigo mañana.",
-        "known": "And I want you to speak Spanish with me tomorrow."
-      },
+      "seed_pair": [
+        "Y quiero que hables español conmigo mañana.",
+        "And I want you to speak Spanish with me tomorrow."
+      ],
       "legos": [
         {
           "type": "A",
@@ -786,7 +803,7 @@
           "id": "S0015L01"
         },
         {
-          "id": "PROV_S0001_01",
+          "id": "S0001L01",
           "type": "A",
           "target": "quiero",
           "known": "I want",
@@ -811,7 +828,7 @@
           "id": "S0015L02"
         },
         {
-          "id": "PROV_S0001_03",
+          "id": "S0001L03",
           "type": "A",
           "target": "español",
           "known": "Spanish",
@@ -826,7 +843,7 @@
           "id": "S0015L03"
         },
         {
-          "id": "PROV_S0012_04",
+          "id": "S0012L04",
           "type": "A",
           "target": "mañana",
           "known": "tomorrow",
@@ -835,12 +852,12 @@
         }
       ]
     },
-    "S0016": {
+    {
       "seed_id": "S0016",
-      "seed_pair": {
-        "target": "Él quiere volver con todos los demás más tarde.",
-        "known": "He wants to come back with everyone else later on."
-      },
+      "seed_pair": [
+        "Él quiere volver con todos los demás más tarde.",
+        "He wants to come back with everyone else later on."
+      ],
       "legos": [
         {
           "type": "A",
@@ -864,7 +881,7 @@
           "id": "S0016L03"
         },
         {
-          "id": "PROV_S0005_04",
+          "id": "S0005L04",
           "type": "A",
           "target": "con",
           "known": "with",
@@ -911,12 +928,12 @@
         }
       ]
     },
-    "S0017": {
+    {
       "seed_id": "S0017",
-      "seed_pair": {
-        "target": "Ella quiere descubrir cuál es la respuesta.",
-        "known": "She wants to find out what the answer is."
-      },
+      "seed_pair": [
+        "Ella quiere descubrir cuál es la respuesta.",
+        "She wants to find out what the answer is."
+      ],
       "legos": [
         {
           "type": "A",
@@ -926,7 +943,7 @@
           "id": "S0017L01"
         },
         {
-          "id": "PROV_S0016_02",
+          "id": "S0016L02",
           "type": "A",
           "target": "quiere",
           "known": "wants",
@@ -967,12 +984,12 @@
         }
       ]
     },
-    "S0018": {
+    {
       "seed_id": "S0018",
-      "seed_pair": {
-        "target": "Queremos encontrarnos a las seis de la tarde.",
-        "known": "We want to meet at six o'clock this evening."
-      },
+      "seed_pair": [
+        "Queremos encontrarnos a las seis de la tarde.",
+        "We want to meet at six o'clock this evening."
+      ],
       "legos": [
         {
           "type": "A",
@@ -1032,12 +1049,12 @@
         }
       ]
     },
-    "S0019": {
+    {
       "seed_id": "S0019",
-      "seed_pair": {
-        "target": "Pero no quiero parar de hablar.",
-        "known": "But I don't want to stop talking."
-      },
+      "seed_pair": [
+        "Pero no quiero parar de hablar.",
+        "But I don't want to stop talking."
+      ],
       "legos": [
         {
           "type": "A",
@@ -1089,12 +1106,12 @@
         }
       ]
     },
-    "S0020": {
+    {
       "seed_id": "S0020",
-      "seed_pair": {
-        "target": "Quieres aprender su nombre rápidamente.",
-        "known": "You want to learn his name quickly."
-      },
+      "seed_pair": [
+        "Quieres aprender su nombre rápidamente.",
+        "You want to learn his name quickly."
+      ],
       "legos": [
         {
           "type": "A",
@@ -1104,7 +1121,7 @@
           "id": "S0020L01"
         },
         {
-          "id": "PROV_S0002_02",
+          "id": "S0002L02",
           "type": "A",
           "target": "aprender",
           "known": "to learn",
@@ -1137,12 +1154,12 @@
         }
       ]
     },
-    "S0021": {
+    {
       "seed_id": "S0021",
-      "seed_pair": {
-        "target": "¿Por qué estás aprendiendo su nombre?",
-        "known": "Why are you learning her name?"
-      },
+      "seed_pair": [
+        "¿Por qué estás aprendiendo su nombre?",
+        "Why are you learning her name?"
+      ],
       "legos": [
         {
           "type": "M",
@@ -1194,12 +1211,12 @@
         }
       ]
     },
-    "S0022": {
+    {
       "seed_id": "S0022",
-      "seed_pair": {
-        "target": "Porque quiero conocer personas que hablen español.",
-        "known": "Because I want to meet people who speak Spanish."
-      },
+      "seed_pair": [
+        "Porque quiero conocer personas que hablen español.",
+        "Because I want to meet people who speak Spanish."
+      ],
       "legos": [
         {
           "type": "A",
@@ -1255,12 +1272,12 @@
         }
       ]
     },
-    "S0023": {
+    {
       "seed_id": "S0023",
-      "seed_pair": {
-        "target": "Voy a empezar a hablar más pronto.",
-        "known": "I'm going to start talking more soon."
-      },
+      "seed_pair": [
+        "Voy a empezar a hablar más pronto.",
+        "I'm going to start talking more soon."
+      ],
       "legos": [
         {
           "type": "M",
@@ -1330,12 +1347,12 @@
         }
       ]
     },
-    "S0024": {
+    {
       "seed_id": "S0024",
-      "seed_pair": {
-        "target": "No voy a poder recordar fácilmente.",
-        "known": "I'm not going to be able to remember easily."
-      },
+      "seed_pair": [
+        "No voy a poder recordar fácilmente.",
+        "I'm not going to be able to remember easily."
+      ],
       "legos": [
         {
           "type": "M",
@@ -1381,12 +1398,12 @@
         }
       ]
     },
-    "S0025": {
+    {
       "seed_id": "S0025",
-      "seed_pair": {
-        "target": "¿Vas a ayudarme antes de que tenga que irme?",
-        "known": "Are you going to help me before I have to go?"
-      },
+      "seed_pair": [
+        "¿Vas a ayudarme antes de que tenga que irme?",
+        "Are you going to help me before I have to go?"
+      ],
       "legos": [
         {
           "type": "M",
@@ -1476,12 +1493,12 @@
         }
       ]
     },
-    "S0026": {
+    {
       "seed_id": "S0026",
-      "seed_pair": {
-        "target": "Me gusta sentir como si estuviera casi preparado para irme.",
-        "known": "I like feeling as if I'm nearly ready to go."
-      },
+      "seed_pair": [
+        "Me gusta sentir como si estuviera casi preparado para irme.",
+        "I like feeling as if I'm nearly ready to go."
+      ],
       "legos": [
         {
           "type": "M",
@@ -1572,12 +1589,12 @@
         }
       ]
     },
-    "S0027": {
+    {
       "seed_id": "S0027",
-      "seed_pair": {
-        "target": "No me gusta tomar demasiado tiempo para responder.",
-        "known": "I don't like taking too much time to answer."
-      },
+      "seed_pair": [
+        "No me gusta tomar demasiado tiempo para responder.",
+        "I don't like taking too much time to answer."
+      ],
       "legos": [
         {
           "type": "M",
@@ -1647,12 +1664,12 @@
         }
       ]
     },
-    "S0028": {
+    {
       "seed_id": "S0028",
-      "seed_pair": {
-        "target": "Es útil empezar a hablar tan pronto como puedas.",
-        "known": "It's useful to start talking as soon as you can."
-      },
+      "seed_pair": [
+        "Es útil empezar a hablar tan pronto como puedas.",
+        "It's useful to start talking as soon as you can."
+      ],
       "legos": [
         {
           "type": "A",
@@ -1724,12 +1741,12 @@
         }
       ]
     },
-    "S0029": {
+    {
       "seed_id": "S0029",
-      "seed_pair": {
-        "target": "Espero con ansias hablar mejor tan pronto como pueda.",
-        "known": "I'm looking forward to speaking better as soon as I can."
-      },
+      "seed_pair": [
+        "Espero con ansias hablar mejor tan pronto como pueda.",
+        "I'm looking forward to speaking better as soon as I can."
+      ],
       "legos": [
         {
           "type": "M",
@@ -1784,12 +1801,12 @@
         }
       ]
     },
-    "S0030": {
+    {
       "seed_id": "S0030",
-      "seed_pair": {
-        "target": "Quería preguntarte algo ayer.",
-        "known": "I wanted to ask you something yesterday."
-      },
+      "seed_pair": [
+        "Quería preguntarte algo ayer.",
+        "I wanted to ask you something yesterday."
+      ],
       "legos": [
         {
           "type": "A",
@@ -1838,7 +1855,7 @@
         }
       ]
     }
-  },
+  ],
   "_metadata": {
     "extraction_agents": 2,
     "tiling_validated": true,

@@ -115,18 +115,14 @@ function assignLegoIds(seeds) {
   const idMap = new Map(); // provisional_id -> final_id
   const seenLegos = new Map(); // target+known -> first final_id (for deduplication)
 
+  // First pass: Assign IDs to new LEGOs and build lookup maps
   for (const seedId of Object.keys(seeds).sort()) {
     const seed = seeds[seedId];
     let legoIndex = 1;
 
     for (const lego of seed.legos) {
-      // Skip if this is a reference (already has id)
-      if (lego.id && lego.ref) {
-        continue;
-      }
-
-      // Skip if already assigned
-      if (lego.id && !lego.provisional_id) {
+      // Skip references on first pass
+      if (lego.ref) {
         continue;
       }
 
@@ -134,8 +130,8 @@ function assignLegoIds(seeds) {
       const finalId = `${seedId}L${String(legoIndex).padStart(2, '0')}`;
 
       // Track mapping
-      if (lego.provisional_id) {
-        idMap.set(lego.provisional_id, finalId);
+      if (lego.id && lego.id.startsWith('PROV_')) {
+        idMap.set(lego.id, finalId);
       }
 
       // Assign ID
@@ -149,6 +145,23 @@ function assignLegoIds(seeds) {
       }
 
       legoIndex++;
+    }
+  }
+
+  // Second pass: Resolve reference IDs
+  for (const seedId of Object.keys(seeds).sort()) {
+    const seed = seeds[seedId];
+
+    for (const lego of seed.legos) {
+      if (lego.ref) {
+        // Look up the correct final ID
+        const key = `${lego.target}|${lego.known}`;
+        const finalId = seenLegos.get(key);
+
+        if (finalId) {
+          lego.id = finalId;
+        }
+      }
     }
   }
 
@@ -256,6 +269,19 @@ async function mergePhase3Legos(courseDir) {
   const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
   const seedPairs = await fs.readJson(seedPairsPath);
 
+  // Convert to array format for Phase 5 compatibility
+  const seedsArray = [];
+
+  for (const seedId of Object.keys(allSeeds).sort()) {
+    const seed = allSeeds[seedId];
+
+    seedsArray.push({
+      seed_id: seedId,
+      seed_pair: [seed.seed_pair.target, seed.seed_pair.known],
+      legos: seed.legos
+    });
+  }
+
   // Build final lego_pairs.json
   const legoPairs = {
     version: '7.7.0',
@@ -267,7 +293,7 @@ async function mergePhase3Legos(courseDir) {
     total_seeds: totalSeeds,
     total_legos: totalLegos,
     unique_legos: seenLegos.size,
-    seeds: allSeeds,
+    seeds: seedsArray,
     _metadata: {
       extraction_agents: agentFiles.length,
       tiling_validated: true,

@@ -32,66 +32,56 @@ function extractSpanishWords(text) {
 }
 
 /**
- * Build whitelist using 3-category rule
+ * Build whitelist using 3-category rule up to a specific LEGO count
  *
- * Category 1: Atomic LEGOs (A-type) - complete word(s)
- * Category 2: Molecular LEGOs (M-type) - complete phrase split into words
- * Category 3: Component words from M-type LEGOs (literal translations)
+ * Returns pairs of [target, known] for:
+ * Category 1: Atomic LEGOs (A-type) - complete LEGO pair
+ * Category 2: Molecular LEGOs (M-type) - complete LEGO pair
+ * Category 3: Component pairs from M-type LEGOs (literal translations)
  */
-function buildWhitelistUpToSeed(legoPairsData, upToSeedId) {
-  const whitelist = new Set();
-  const wordSources = {}; // Track where each word came from (for debugging)
+function buildWhitelistUpToLegoCount(legoPairsData, availableLegos) {
+  const whitelistPairs = new Map(); // target -> known
+  let legoCount = 0;
 
   for (const seed of legoPairsData.seeds) {
-    const seedNum = parseInt(seed.seed_id.substring(1));
-    const upToSeedNum = parseInt(upToSeedId.substring(1));
-
-    if (seedNum > upToSeedNum) break;
-
     for (const lego of seed.legos) {
-      // Category 1 & 2: Extract words from target (works for both A and M types)
-      const targetWords = extractSpanishWords(lego.target);
-      for (const word of targetWords) {
-        whitelist.add(word);
-        if (!wordSources[word]) wordSources[word] = [];
-        wordSources[word].push(`${lego.id}:target`);
+      // Only include new LEGOs in the count
+      if (lego.new) {
+        if (legoCount >= availableLegos) {
+          // Convert Map to array of pairs and sort by target
+          return Array.from(whitelistPairs.entries())
+            .sort((a, b) => a[0].localeCompare(b[0]));
+        }
+        legoCount++;
       }
 
-      // Category 3: If M-type, ALSO extract component words (literal translations)
-      if (lego.type === 'M' && lego.components) {
-        for (const [targetComponent, knownComponent] of lego.components) {
-          const componentWords = extractSpanishWords(targetComponent);
-          for (const word of componentWords) {
-            whitelist.add(word);
-            if (!wordSources[word]) wordSources[word] = [];
-            wordSources[word].push(`${lego.id}:component[${knownComponent}]`);
+      // Add all LEGOs (new and references) to whitelist if within count
+      if (legoCount <= availableLegos) {
+        // Category 1 & 2: Add the complete LEGO pair (works for both A and M types)
+        whitelistPairs.set(lego.target, lego.known);
+
+        // Category 3: If M-type, ALSO add component pairs (literal translations)
+        if (lego.type === 'M' && lego.components) {
+          for (const [targetComponent, knownComponent] of lego.components) {
+            whitelistPairs.set(targetComponent, knownComponent);
           }
         }
       }
     }
   }
 
-  return {
-    words: Array.from(whitelist).sort(),
-    sources: wordSources
-  };
-}
-
-/**
- * Calculate available_legos for a LEGO
- * (Total cumulative LEGOs before this seed, minus future LEGOs in the same seed)
- */
-function calculateAvailableLegos(seed, legoIndex) {
-  const cumulativeBeforeSeed = seed.cumulative_legos - seed.legos.length;
-  return cumulativeBeforeSeed + legoIndex;
+  // Convert Map to array of pairs and sort by target
+  return Array.from(whitelistPairs.entries())
+    .sort((a, b) => a[0].localeCompare(b[0]));
 }
 
 /**
  * Generate scaffold for a single seed
  */
-function generateSeedScaffold(seed, legoPairsData) {
+function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
   const legos = {};
   const finalLegoIndex = seed.legos.length - 1;
+  let legoCount = cumulativeBeforeSeed;
 
   for (let i = 0; i < seed.legos.length; i++) {
     const lego = seed.legos[i];
@@ -100,12 +90,14 @@ function generateSeedScaffold(seed, legoPairsData) {
     if (!lego.new) continue;
 
     const isFinalLego = (i === finalLegoIndex);
-    const availableLegos = calculateAvailableLegos(seed, i);
+    const availableLegos = legoCount; // LEGOs available BEFORE this one
 
-    // Build whitelist up to this LEGO
-    const { words, sources } = buildWhitelistUpToSeed(legoPairsData, seed.seed_id);
+    // Build whitelist up to this LEGO (not including current LEGO)
+    const whitelistPairs = buildWhitelistUpToLegoCount(legoPairsData, availableLegos);
 
-    legos[lego.id] = {
+    legoCount++; // Increment for next LEGO
+
+    const legoData = {
       lego: [lego.known, lego.target],
       type: lego.type,
       available_legos: availableLegos,
@@ -123,9 +115,34 @@ function generateSeedScaffold(seed, legoPairsData) {
           target: seed.seed_pair[0],
           known: seed.seed_pair[1]
         },
-        whitelist_size: words.length
+        whitelist_pairs: whitelistPairs
       }
     };
+
+    // Add components for M-type LEGOs
+    if (lego.type === 'M' && lego.components) {
+      legoData.components = lego.components;
+    }
+
+    legos[lego.id] = legoData;
+  }
+
+  // Build recent context (last 5 seeds before this one) with LEGO tiling
+  const recentSeeds = {};
+  const allSeedsArray = legoPairsData.seeds;
+  const currentIndex = allSeedsArray.findIndex(s => s.seed_id === seed.seed_id);
+
+  if (currentIndex > 0) {
+    const startIndex = Math.max(0, currentIndex - 5);
+    for (let i = startIndex; i < currentIndex; i++) {
+      const recentSeed = allSeedsArray[i];
+
+      // Build tiled sentence with pipes separating LEGOs
+      const targetTiled = recentSeed.legos.map(l => l.target).join(' | ');
+      const knownTiled = recentSeed.legos.map(l => l.known).join(' | ');
+
+      recentSeeds[recentSeed.seed_id] = [targetTiled, knownTiled];
+    }
   }
 
   return {
@@ -134,8 +151,7 @@ function generateSeedScaffold(seed, legoPairsData) {
       target: seed.seed_pair[0],
       known: seed.seed_pair[1]
     },
-    whitelist: buildWhitelistUpToSeed(legoPairsData, seed.seed_id).words,
-    cumulative_legos: seed.cumulative_legos,
+    recent_context: recentSeeds,
     legos: legos
   };
 }
@@ -176,7 +192,7 @@ async function preparePhase5Scaffolds(courseDir) {
   console.log(`[Phase 5 Prep] Loaded ${seeds.length} seeds from lego_pairs.json`);
 
   // Configuration
-  const SEEDS_PER_AGENT = 20;
+  const SEEDS_PER_AGENT = 10; // Production standard: 10 seeds per agent
   const totalAgents = Math.ceil(seeds.length / SEEDS_PER_AGENT);
 
   console.log(`[Phase 5 Prep] Splitting into ${totalAgents} agents (${SEEDS_PER_AGENT} seeds each)`);
@@ -201,15 +217,25 @@ async function preparePhase5Scaffolds(courseDir) {
     // Build seeds object for this agent
     const seedsScaffold = {};
     let totalNewLegos = 0;
+    let cumulativeCount = 0;
+
+    // Calculate cumulative count up to this agent's first seed
+    for (const s of seeds) {
+      if (s.seed_id === firstSeed.seed_id) break;
+      cumulativeCount += s.legos.filter(l => l.new).length;
+    }
 
     for (const seed of agentSeeds) {
-      const seedScaffold = generateSeedScaffold(seed, { seeds });
+      const seedScaffold = generateSeedScaffold(seed, { seeds }, cumulativeCount);
 
       // Only include seeds that have new LEGOs
       if (Object.keys(seedScaffold.legos).length > 0) {
         seedsScaffold[seed.seed_id] = seedScaffold;
         totalNewLegos += Object.keys(seedScaffold.legos).length;
       }
+
+      // Update cumulative count for next seed
+      cumulativeCount += seed.legos.filter(l => l.new).length;
     }
 
     // Create scaffold
@@ -251,18 +277,19 @@ async function preparePhase5Scaffolds(courseDir) {
   // Generate whitelist validation file (for debugging)
   const exampleSeed = seeds[10]; // Use seed 11 as example
   if (exampleSeed) {
-    const { words, sources } = buildWhitelistUpToSeed({ seeds }, exampleSeed.seed_id);
+    // Calculate cumulative before seed 11
+    let cumulative = 0;
+    for (let i = 0; i < 10; i++) {
+      cumulative += seeds[i].legos.filter(l => l.new).length;
+    }
+
+    const whitelistPairs = buildWhitelistUpToLegoCount({ seeds }, cumulative);
     const whitelistDebug = {
       example_seed: exampleSeed.seed_id,
-      whitelist_size: words.length,
-      sample_words: words.slice(0, 50),
-      sample_sources: Object.fromEntries(
-        Object.entries(sources).slice(0, 10).map(([word, srcs]) => [
-          word,
-          srcs.slice(0, 3) // First 3 sources
-        ])
-      ),
-      note: "This shows how whitelist is built using 3-category rule"
+      cumulative_before_seed: cumulative,
+      whitelist_size: whitelistPairs.length,
+      sample_pairs: whitelistPairs.slice(0, 20),
+      note: "This shows how whitelist is built using 3-category rule (LEGO pairs + component pairs)"
     };
 
     await fs.writeJson(
