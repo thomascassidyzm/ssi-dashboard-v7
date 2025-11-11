@@ -32,6 +32,10 @@ const chokidar = require('chokidar');
 const execAsync = promisify(exec);
 const ajv = new Ajv({ allErrors: true });
 
+// Phase 8: Audio generation services
+const ttsService = require('./services/tts-service.cjs');
+const s3AudioService = require('./services/s3-audio-service.cjs');
+
 // =============================================================================
 // CONFIGURATION
 // =============================================================================
@@ -138,6 +142,7 @@ const STATE = {
   jobs: new Map(), // courseCode -> { status, phase, progress, startTime }
   regenerationJobs: new Map(), // jobId -> { status, courseCode, seedIds, startTime, results }
   promptVersions: new Map(), // courseCode -> version history
+  audioJobs: new Map(), // jobId -> { status, courseCode, completed, total, successful, failed, skipped, errors, currentFile, startTime }
 };
 
 // =============================================================================
@@ -8850,36 +8855,266 @@ app.post('/api/courses/:courseCode/compile', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/:code/manifest
+ * Load course manifest (Phase 7 output)
+ */
+app.get('/api/courses/:code/manifest', async (req, res) => {
+  const { code } = req.params;
+
+  try {
+    const manifestPath = path.join(CONFIG.VFS_ROOT, code, 'course_manifest.json');
+
+    if (!await fs.pathExists(manifestPath)) {
+      return res.status(404).json({
+        error: 'Course manifest not found',
+        message: `Run Phase 7 compilation first for course: ${code}`
+      });
+    }
+
+    const manifest = await fs.readJson(manifestPath);
+
+    console.log(`[Manifest] Loaded manifest for ${code}: ${manifest.slices?.length || 0} slices`);
+
+    res.json(manifest);
+  } catch (err) {
+    console.error('[Manifest] Load error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/courses/list
+ * List all available courses
+ */
+app.get('/api/courses/list', async (req, res) => {
+  try {
+    const coursesDirs = await fs.readdir(CONFIG.VFS_ROOT);
+
+    const courses = [];
+    for (const dir of coursesDirs) {
+      const dirPath = path.join(CONFIG.VFS_ROOT, dir);
+      const stat = await fs.stat(dirPath);
+
+      if (stat.isDirectory()) {
+        courses.push(dir);
+      }
+    }
+
+    res.json({ courses });
+  } catch (err) {
+    console.error('[Courses] List error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
  * POST /api/audio/check-s3
  * Check which audio files exist in AWS S3
  */
 app.post('/api/audio/check-s3', async (req, res) => {
-  const { sampleIds } = req.body;
+  const { sampleIds, courseCode } = req.body;
 
   try {
     console.log(`[Audio] Checking S3 status for ${sampleIds?.length || 0} samples...`);
 
-    // TODO: Implement S3 check logic tomorrow
-    // - Query AWS S3 bucket for existing audio files
-    // - Compare with requested sample IDs
-    // - Return available/missing counts and ID lists
+    if (!sampleIds || sampleIds.length === 0) {
+      return res.json({
+        available: 0,
+        missing: 0,
+        total: 0,
+        availableIds: [],
+        missingIds: []
+      });
+    }
 
-    res.status(501).json({
-      error: 'Audio S3 check not yet implemented',
-      message: 'Phase 8: Audio S3 check endpoint stub - implementation pending',
-      sampleCount: sampleIds?.length || 0,
-      nextSteps: [
-        'Configure AWS S3 credentials',
-        'Query S3 bucket for existing {uuid}.mp3 files',
-        'Compare with requested sample IDs',
-        'Return {available, missing, total, availableIds}'
-      ]
-    });
+    // Extract courseCode from first course selection if not provided
+    const code = courseCode || req.body.courseCode;
+
+    if (!code) {
+      return res.status(400).json({ error: 'Course code is required' });
+    }
+
+    const status = await s3AudioService.checkMultipleAudio(code, sampleIds);
+
+    console.log(`[Audio] S3 Status: ${status.available} available, ${status.missing} missing`);
+
+    res.json(status);
   } catch (err) {
     console.error('[Audio] S3 check error:', err);
     res.status(500).json({ error: err.message });
   }
 });
+
+/**
+ * POST /api/audio/generate
+ * Generate audio files with full configuration control
+ */
+app.post('/api/audio/generate', async (req, res) => {
+  const { courseCode, manifest, config, s3Status } = req.body;
+
+  try {
+    console.log(`\n[Audio] Starting audio generation for ${courseCode}`);
+    console.log(`[Audio] TTS Provider: ${config.ttsProvider}`);
+    console.log(`[Audio] Skip existing: ${config.skipExisting}`);
+
+    if (!manifest || !manifest.slices) {
+      return res.status(400).json({ error: 'Invalid manifest structure' });
+    }
+
+    // Create job ID
+    const jobId = `audio_gen_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
+    // Collect all audio samples to generate
+    const samplesToGenerate = [];
+    manifest.slices.forEach(slice => {
+      if (slice.samples) {
+        Object.entries(slice.samples).forEach(([text, variants]) => {
+          variants.forEach(variant => {
+            // Skip if exists in S3 and skipExisting is true
+            if (config.skipExisting && s3Status?.availableIds?.includes(variant.id)) {
+              return;
+            }
+
+            samplesToGenerate.push({
+              uuid: variant.id,
+              text: text,
+              role: variant.role,
+              cadence: variant.cadence
+            });
+          });
+        });
+      }
+    });
+
+    console.log(`[Audio] Total samples to generate: ${samplesToGenerate.length}`);
+
+    if (samplesToGenerate.length === 0) {
+      return res.json({
+        success: true,
+        message: 'No audio files to generate',
+        jobId: null,
+        total: 0
+      });
+    }
+
+    // Initialize job state
+    STATE.audioJobs.set(jobId, {
+      status: 'running',
+      courseCode,
+      completed: 0,
+      total: samplesToGenerate.length,
+      successful: 0,
+      failed: 0,
+      skipped: 0,
+      errors: [],
+      currentFile: '',
+      startTime: Date.now()
+    });
+
+    // Start generation in background
+    generateAudioInBackground(jobId, courseCode, samplesToGenerate, config, manifest);
+
+    res.json({
+      success: true,
+      jobId,
+      total: samplesToGenerate.length,
+      message: 'Audio generation started'
+    });
+
+  } catch (err) {
+    console.error('[Audio] Generation start error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * Background audio generation worker
+ */
+async function generateAudioInBackground(jobId, courseCode, samples, config, manifest) {
+  const job = STATE.audioJobs.get(jobId);
+
+  console.log(`\n[Audio] Background worker started for job ${jobId}`);
+  console.log(`[Audio] Samples: ${samples.length}`);
+  console.log(`[Audio] Batch size: ${config.batchSize}`);
+  console.log(`[Audio] Concurrency: ${config.concurrency}`);
+
+  try {
+    // Get TTS provider config
+    const ttsProvider = config.ttsProvider;
+    const providerConfig = config[ttsProvider];
+
+    // Process in batches
+    for (let i = 0; i < samples.length; i += config.batchSize) {
+      const batch = samples.slice(i, i + config.batchSize);
+
+      console.log(`[Audio] Processing batch ${Math.floor(i / config.batchSize) + 1}/${Math.ceil(samples.length / config.batchSize)}`);
+
+      // Process batch with concurrency limit
+      const batchPromises = [];
+      for (let j = 0; j < batch.length; j += config.concurrency) {
+        const concurrentGroup = batch.slice(j, j + config.concurrency);
+
+        const groupPromises = concurrentGroup.map(async sample => {
+          job.currentFile = `${sample.uuid}.mp3`;
+
+          try {
+            // Get voice for role
+            const voiceId = ttsService.getVoiceForRole(sample.role, providerConfig.voiceMapping);
+
+            // Get cadence speed
+            const speed = ttsService.getCadenceSpeed(sample.cadence);
+
+            // Generate TTS config
+            const ttsConfig = {
+              ...providerConfig,
+              voiceId: voiceId,
+              voiceName: voiceId,
+              speed: speed
+            };
+
+            // Generate audio with retry
+            const audioBuffer = await ttsService.generateWithRetry(
+              sample.text,
+              ttsProvider,
+              ttsConfig,
+              config.maxRetries
+            );
+
+            // Upload to S3
+            await s3AudioService.uploadAudio(courseCode, sample.uuid, audioBuffer);
+
+            job.successful++;
+            console.log(`✅ [Audio] ${sample.uuid}.mp3 - "${sample.text.substring(0, 40)}..." (${sample.role})`);
+
+          } catch (error) {
+            job.failed++;
+            const errorMsg = `${sample.uuid}: ${error.message}`;
+            job.errors.push(errorMsg);
+            console.error(`❌ [Audio] Failed: ${errorMsg}`);
+          }
+
+          job.completed++;
+        });
+
+        await Promise.all(groupPromises);
+      }
+    }
+
+    // Job complete
+    job.status = 'completed';
+    job.currentFile = '';
+
+    console.log(`\n[Audio] Job ${jobId} completed`);
+    console.log(`[Audio] Successful: ${job.successful}`);
+    console.log(`[Audio] Failed: ${job.failed}`);
+    console.log(`[Audio] Total time: ${((Date.now() - job.startTime) / 1000).toFixed(1)}s`);
+
+  } catch (error) {
+    console.error(`[Audio] Job ${jobId} failed:`, error);
+    job.status = 'failed';
+    job.error = error.message;
+  }
+}
 
 /**
  * POST /api/audio/generate-missing
@@ -8926,21 +9161,23 @@ app.get('/api/audio/generation-status/:jobId', async (req, res) => {
   const { jobId } = req.params;
 
   try {
-    console.log(`[Audio] Checking status for job ${jobId}...`);
+    const job = STATE.audioJobs.get(jobId);
 
-    // TODO: Implement job status tracking tomorrow
-    // - Query job status from database or in-memory store
-    // - Return progress, completed count, status
+    if (!job) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
 
-    res.status(501).json({
-      error: 'Audio generation status not yet implemented',
-      message: 'Phase 8: Audio status endpoint stub - implementation pending',
-      jobId,
-      nextSteps: [
-        'Implement job tracking system',
-        'Store job progress in database',
-        'Return {status, completed, total, errors}'
-      ]
+    res.json({
+      status: job.status,
+      completed: job.completed,
+      total: job.total,
+      successful: job.successful,
+      failed: job.failed,
+      skipped: job.skipped,
+      currentFile: job.currentFile,
+      errors: job.errors,
+      error: job.error,
+      startTime: job.startTime
     });
   } catch (err) {
     console.error('[Audio] Status check error:', err);
