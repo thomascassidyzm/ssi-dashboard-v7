@@ -1,10 +1,11 @@
 {
   "agent_id": 1,
   "seed_range": "S0001-S0020",
-  "extracted_at": "2025-11-11T00:00:00Z",
-  "seeds": [
-    {
-      "seed_id": "S0001",
+  "seeds_count": 20,
+  "extracted_at": "2025-11-11T00:00:00.000Z",
+  "fcfs_registry": [],
+  "seeds": {
+    "S0001": {
       "seed_pair": {
         "target": "Quiero hablar español contigo ahora.",
         "known": "I want to speak Spanish with you now."
@@ -44,11 +45,36 @@
           "target": "ahora",
           "known": "now",
           "new": true
+        },
+        {
+          "provisional_id": "PROV_S0001_06",
+          "type": "M",
+          "target": "quiero hablar",
+          "known": "I want to speak",
+          "new": true,
+          "components": [
+            ["quiero", "I want"],
+            ["hablar", "to speak"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0001_07",
+          "type": "M",
+          "target": "hablar español",
+          "known": "speak Spanish",
+          "new": true,
+          "components": [
+            ["hablar", "speak"],
+            ["español", "Spanish"]
+          ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0001",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0002",
+    "S0002": {
       "seed_pair": {
         "target": "Estoy intentando aprender.",
         "known": "I'm trying to learn."
@@ -71,11 +97,26 @@
           "target": "aprender",
           "known": "to learn",
           "new": true
+        },
+        {
+          "provisional_id": "PROV_S0002_03",
+          "type": "M",
+          "target": "estoy intentando aprender",
+          "known": "I'm trying to learn",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["intentando", "trying"],
+            ["aprender", "to learn"]
+          ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0002",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0003",
+    "S0003": {
       "seed_pair": {
         "target": "cómo hablar tan frecuentemente como sea posible.",
         "known": "how to speak as often as possible."
@@ -89,7 +130,7 @@
           "new": true
         },
         {
-          "id": "PROV_S0001_02",
+          "id": "S0001L02",
           "type": "A",
           "target": "hablar",
           "known": "to speak",
@@ -99,15 +140,12 @@
         {
           "provisional_id": "PROV_S0003_02",
           "type": "M",
-          "target": "tan frecuentemente como sea posible",
-          "known": "as often as possible",
+          "target": "cómo hablar",
+          "known": "how to speak",
           "new": true,
           "components": [
-            ["tan", "as"],
-            ["frecuentemente", "often"],
-            ["como", "as"],
-            ["sea", "be"],
-            ["posible", "possible"]
+            ["cómo", "how"],
+            ["hablar", "to speak"]
           ]
         },
         {
@@ -123,18 +161,35 @@
           "target": "posible",
           "known": "possible",
           "new": true
+        },
+        {
+          "provisional_id": "PROV_S0003_05",
+          "type": "M",
+          "target": "tan frecuentemente como sea posible",
+          "known": "as often as possible",
+          "new": true,
+          "components": [
+            ["tan", "as"],
+            ["frecuentemente", "often"],
+            ["como", "as"],
+            ["sea", "be"],
+            ["posible", "possible"]
+          ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0003",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0004",
+    "S0004": {
       "seed_pair": {
         "target": "cómo decir algo en español.",
         "known": "how to say something in Spanish"
       },
       "legos": [
         {
-          "id": "PROV_S0003_01",
+          "id": "S0003L01",
           "type": "A",
           "target": "cómo",
           "known": "how",
@@ -150,13 +205,32 @@
         },
         {
           "provisional_id": "PROV_S0004_02",
+          "type": "M",
+          "target": "cómo decir",
+          "known": "how to say",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["decir", "to say"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0004_03",
           "type": "A",
           "target": "algo",
           "known": "something",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0004_03",
+          "id": "S0001L03",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "ref": "S0001",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0004_04",
           "type": "M",
           "target": "en español",
           "known": "in Spanish",
@@ -166,10 +240,13 @@
             ["español", "Spanish"]
           ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0004",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0005",
+    "S0005": {
       "seed_pair": {
         "target": "Voy a practicar hablar con otra persona.",
         "known": "I'm going to practise speaking with someone else."
@@ -203,12 +280,35 @@
         {
           "provisional_id": "PROV_S0005_04",
           "type": "A",
-          "target": "con",
-          "known": "with",
+          "target": "persona",
+          "known": "person",
           "new": true
         },
         {
           "provisional_id": "PROV_S0005_05",
+          "type": "M",
+          "target": "voy a practicar",
+          "known": "I'm going to practise",
+          "new": true,
+          "components": [
+            ["voy", "I go"],
+            ["a", "to"],
+            ["practicar", "practise"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0005_06",
+          "type": "M",
+          "target": "practicar hablar",
+          "known": "practise speaking",
+          "new": true,
+          "components": [
+            ["practicar", "practise"],
+            ["hablar", "speaking"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0005_07",
           "type": "M",
           "target": "otra persona",
           "known": "someone else",
@@ -217,18 +317,33 @@
             ["otra", "another"],
             ["persona", "person"]
           ]
+        },
+        {
+          "provisional_id": "PROV_S0005_08",
+          "type": "M",
+          "target": "con otra persona",
+          "known": "with someone else",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["otra", "another"],
+            ["persona", "person"]
+          ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0005",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0006",
+    "S0006": {
       "seed_pair": {
         "target": "Estoy intentando recordar una palabra.",
         "known": "I'm trying to remember a word."
       },
       "legos": [
         {
-          "id": "PROV_S0002_01",
+          "id": "S0002L01",
           "type": "M",
           "target": "estoy intentando",
           "known": "I'm trying",
@@ -244,6 +359,13 @@
         },
         {
           "provisional_id": "PROV_S0006_02",
+          "type": "A",
+          "target": "palabra",
+          "known": "word",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0006_03",
           "type": "M",
           "target": "una palabra",
           "known": "a word",
@@ -252,18 +374,33 @@
             ["una", "a"],
             ["palabra", "word"]
           ]
+        },
+        {
+          "provisional_id": "PROV_S0006_04",
+          "type": "M",
+          "target": "estoy intentando recordar",
+          "known": "I'm trying to remember",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["intentando", "trying"],
+            ["recordar", "to remember"]
+          ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0006",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0007",
+    "S0007": {
       "seed_pair": {
         "target": "Quiero intentar con todo mi esfuerzo hoy.",
         "known": "I want to try as hard as I can today."
       },
       "legos": [
         {
-          "id": "PROV_S0001_01",
+          "id": "S0001L01",
           "type": "A",
           "target": "quiero",
           "known": "I want",
@@ -272,12 +409,18 @@
         },
         {
           "provisional_id": "PROV_S0007_01",
+          "type": "A",
+          "target": "intentar",
+          "known": "to try",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0007_02",
           "type": "M",
-          "target": "intentar con todo mi esfuerzo",
-          "known": "to try as hard as I can",
+          "target": "con todo mi esfuerzo",
+          "known": "as hard as I can",
           "new": true,
           "components": [
-            ["intentar", "to try"],
             ["con", "with"],
             ["todo", "all"],
             ["mi", "my"],
@@ -285,23 +428,37 @@
           ]
         },
         {
-          "provisional_id": "PROV_S0007_02",
+          "provisional_id": "PROV_S0007_03",
           "type": "A",
           "target": "hoy",
           "known": "today",
           "new": true
+        },
+        {
+          "provisional_id": "PROV_S0007_04",
+          "type": "M",
+          "target": "quiero intentar",
+          "known": "I want to try",
+          "new": true,
+          "components": [
+            ["quiero", "I want"],
+            ["intentar", "to try"]
+          ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0007",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0008",
+    "S0008": {
       "seed_pair": {
         "target": "Voy a intentar explicar lo que quiero decir.",
         "known": "I'm going to try to explain what I mean."
       },
       "legos": [
         {
-          "id": "PROV_S0005_01",
+          "id": "S0005L01",
           "type": "M",
           "target": "voy a",
           "known": "I'm going to",
@@ -309,36 +466,89 @@
           "new": false
         },
         {
-          "provisional_id": "PROV_S0008_01",
+          "id": "S0007L01",
           "type": "A",
           "target": "intentar",
           "known": "to try",
-          "new": true
+          "ref": "S0007",
+          "new": false
         },
         {
-          "provisional_id": "PROV_S0008_02",
+          "provisional_id": "PROV_S0008_01",
           "type": "A",
           "target": "explicar",
           "known": "to explain",
           "new": true
         },
         {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "ref": "S0001",
+          "new": false
+        },
+        {
+          "id": "S0004L01",
+          "type": "A",
+          "target": "decir",
+          "known": "to say",
+          "ref": "S0004",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0008_02",
+          "type": "M",
+          "target": "voy a intentar",
+          "known": "I'm going to try",
+          "new": true,
+          "components": [
+            ["voy", "I go"],
+            ["a", "to"],
+            ["intentar", "to try"]
+          ]
+        },
+        {
           "provisional_id": "PROV_S0008_03",
+          "type": "M",
+          "target": "intentar explicar",
+          "known": "try to explain",
+          "new": true,
+          "components": [
+            ["intentar", "try"],
+            ["explicar", "to explain"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0008_04",
+          "type": "M",
+          "target": "quiero decir",
+          "known": "I mean",
+          "new": true,
+          "components": [
+            ["quiero", "I want"],
+            ["decir", "to say"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0008_05",
           "type": "M",
           "target": "lo que quiero decir",
           "known": "what I mean",
           "new": true,
           "components": [
-            ["lo", "the"],
-            ["que", "that"],
+            ["lo que", "what"],
             ["quiero", "I want"],
             ["decir", "to say"]
           ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0008",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0009",
+    "S0009": {
       "seed_pair": {
         "target": "Hablo un poco de español ahora.",
         "known": "I speak a little Spanish now."
@@ -364,7 +574,7 @@
           ]
         },
         {
-          "id": "PROV_S0001_03",
+          "id": "S0001L03",
           "type": "A",
           "target": "español",
           "known": "Spanish",
@@ -372,17 +582,20 @@
           "new": false
         },
         {
-          "id": "PROV_S0001_05",
+          "id": "S0001L05",
           "type": "A",
           "target": "ahora",
           "known": "now",
           "ref": "S0001",
           "new": false
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0009",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0010",
+    "S0010": {
       "seed_pair": {
         "target": "No estoy seguro si puedo recordar la oración completa.",
         "known": "I'm not sure if I can remember the whole sentence."
@@ -415,7 +628,7 @@
           "new": true
         },
         {
-          "id": "PROV_S0006_01",
+          "id": "S0006L01",
           "type": "A",
           "target": "recordar",
           "known": "to remember",
@@ -425,6 +638,31 @@
         {
           "provisional_id": "PROV_S0010_04",
           "type": "M",
+          "target": "puedo recordar",
+          "known": "I can remember",
+          "new": true,
+          "components": [
+            ["puedo", "I can"],
+            ["recordar", "remember"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0010_05",
+          "type": "A",
+          "target": "oración",
+          "known": "sentence",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0010_06",
+          "type": "A",
+          "target": "completa",
+          "known": "whole",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0010_07",
+          "type": "M",
           "target": "la oración completa",
           "known": "the whole sentence",
           "new": true,
@@ -433,11 +671,26 @@
             ["oración", "sentence"],
             ["completa", "whole"]
           ]
+        },
+        {
+          "provisional_id": "PROV_S0010_08",
+          "type": "M",
+          "target": "si puedo recordar",
+          "known": "if I can remember",
+          "new": true,
+          "components": [
+            ["si", "if"],
+            ["puedo", "I can"],
+            ["recordar", "remember"]
+          ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0010",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0011",
+    "S0011": {
       "seed_pair": {
         "target": "Me gustaría poder hablar después de que termines.",
         "known": "I'd like to be able to speak after you finish."
@@ -456,38 +709,60 @@
         },
         {
           "provisional_id": "PROV_S0011_02",
+          "type": "A",
+          "target": "poder",
+          "known": "to be able to",
+          "new": true
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "target": "hablar",
+          "known": "to speak",
+          "ref": "S0001",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0011_03",
+          "type": "M",
+          "target": "me gustaría poder",
+          "known": "I'd like to be able to",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["gustaría", "would like"],
+            ["poder", "to be able to"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0011_04",
           "type": "M",
           "target": "poder hablar",
           "known": "to be able to speak",
           "new": true,
           "components": [
-            ["poder", "to be able"],
-            ["hablar", "to speak"]
+            ["poder", "to be able to"],
+            ["hablar", "speak"]
           ]
         },
         {
-          "provisional_id": "PROV_S0011_03",
+          "provisional_id": "PROV_S0011_05",
           "type": "M",
-          "target": "después de que",
-          "known": "after",
+          "target": "después de que termines",
+          "known": "after you finish",
           "new": true,
           "components": [
-            ["después", "after"],
-            ["de", "of"],
-            ["que", "that"]
+            ["después de que", "after"],
+            ["termines", "you finish"]
           ]
-        },
-        {
-          "provisional_id": "PROV_S0011_04",
-          "type": "A",
-          "target": "termines",
-          "known": "you finish",
-          "new": true
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0011",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0012",
+    "S0012": {
       "seed_pair": {
         "target": "No me gustaría adivinar qué va a pasar mañana.",
         "known": "I wouldn't like to guess what's going to happen tomorrow."
@@ -514,16 +789,10 @@
         },
         {
           "provisional_id": "PROV_S0012_03",
-          "type": "M",
-          "target": "qué va a pasar",
-          "known": "what's going to happen",
-          "new": true,
-          "components": [
-            ["qué", "what"],
-            ["va", "is going"],
-            ["a", "to"],
-            ["pasar", "to happen"]
-          ]
+          "type": "A",
+          "target": "pasar",
+          "known": "to happen",
+          "new": true
         },
         {
           "provisional_id": "PROV_S0012_04",
@@ -531,11 +800,63 @@
           "target": "mañana",
           "known": "tomorrow",
           "new": true
+        },
+        {
+          "provisional_id": "PROV_S0012_05",
+          "type": "M",
+          "target": "va a",
+          "known": "is going to",
+          "new": true,
+          "components": [
+            ["va", "goes"],
+            ["a", "to"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0012_06",
+          "type": "M",
+          "target": "va a pasar",
+          "known": "is going to happen",
+          "new": true,
+          "components": [
+            ["va", "goes"],
+            ["a", "to"],
+            ["pasar", "happen"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0012_07",
+          "type": "M",
+          "target": "qué va a pasar",
+          "known": "what's going to happen",
+          "new": true,
+          "components": [
+            ["qué", "what"],
+            ["va", "goes"],
+            ["a", "to"],
+            ["pasar", "happen"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0012_08",
+          "type": "M",
+          "target": "no me gustaría adivinar",
+          "known": "I wouldn't like to guess",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["me", "me"],
+            ["gustaría", "would like"],
+            ["adivinar", "to guess"]
+          ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0012",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0013",
+    "S0013": {
       "seed_pair": {
         "target": "Hablas español muy bien.",
         "known": "You speak Spanish very well."
@@ -549,7 +870,7 @@
           "new": true
         },
         {
-          "id": "PROV_S0001_03",
+          "id": "S0001L03",
           "type": "A",
           "target": "español",
           "known": "Spanish",
@@ -558,6 +879,31 @@
         },
         {
           "provisional_id": "PROV_S0013_02",
+          "type": "A",
+          "target": "muy",
+          "known": "very",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0013_03",
+          "type": "A",
+          "target": "bien",
+          "known": "well",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0013_04",
+          "type": "M",
+          "target": "hablas español",
+          "known": "you speak Spanish",
+          "new": true,
+          "components": [
+            ["hablas", "you speak"],
+            ["español", "Spanish"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0013_05",
           "type": "M",
           "target": "muy bien",
           "known": "very well",
@@ -567,17 +913,20 @@
             ["bien", "well"]
           ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0013",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0014",
+    "S0014": {
       "seed_pair": {
         "target": "¿Hablas español todo el día?",
         "known": "Do you speak Spanish all day?"
       },
       "legos": [
         {
-          "id": "PROV_S0013_01",
+          "id": "S0013L01",
           "type": "A",
           "target": "hablas",
           "known": "you speak",
@@ -585,7 +934,7 @@
           "new": false
         },
         {
-          "id": "PROV_S0001_03",
+          "id": "S0001L03",
           "type": "A",
           "target": "español",
           "known": "Spanish",
@@ -593,7 +942,29 @@
           "new": false
         },
         {
+          "id": "S0013L04",
+          "type": "M",
+          "target": "hablas español",
+          "known": "you speak Spanish",
+          "ref": "S0013",
+          "new": false
+        },
+        {
           "provisional_id": "PROV_S0014_01",
+          "type": "A",
+          "target": "todo",
+          "known": "all",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0014_02",
+          "type": "A",
+          "target": "día",
+          "known": "day",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0014_03",
           "type": "M",
           "target": "todo el día",
           "known": "all day",
@@ -604,10 +975,13 @@
             ["día", "day"]
           ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0014",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0015",
+    "S0015": {
       "seed_pair": {
         "target": "Y quiero que hables español conmigo mañana.",
         "known": "And I want you to speak Spanish with me tomorrow."
@@ -621,7 +995,7 @@
           "new": true
         },
         {
-          "id": "PROV_S0001_01",
+          "id": "S0001L01",
           "type": "A",
           "target": "quiero",
           "known": "I want",
@@ -629,7 +1003,30 @@
           "new": false
         },
         {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "ref": "S0001",
+          "new": false
+        },
+        {
           "provisional_id": "PROV_S0015_02",
+          "type": "A",
+          "target": "conmigo",
+          "known": "with me",
+          "new": true
+        },
+        {
+          "id": "S0012L04",
+          "type": "A",
+          "target": "mañana",
+          "known": "tomorrow",
+          "ref": "S0012",
+          "new": false
+        },
+        {
+          "provisional_id": "PROV_S0015_03",
           "type": "M",
           "target": "que hables",
           "known": "you to speak",
@@ -640,32 +1037,24 @@
           ]
         },
         {
-          "id": "PROV_S0001_03",
-          "type": "A",
-          "target": "español",
-          "known": "Spanish",
-          "ref": "S0001",
-          "new": false
-        },
-        {
-          "provisional_id": "PROV_S0015_03",
-          "type": "A",
-          "target": "conmigo",
-          "known": "with me",
-          "new": true
-        },
-        {
-          "id": "PROV_S0012_04",
-          "type": "A",
-          "target": "mañana",
-          "known": "tomorrow",
-          "ref": "S0012",
-          "new": false
+          "provisional_id": "PROV_S0015_04",
+          "type": "M",
+          "target": "quiero que hables",
+          "known": "I want you to speak",
+          "new": true,
+          "components": [
+            ["quiero", "I want"],
+            ["que", "that"],
+            ["hables", "you speak"]
+          ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0015",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0016",
+    "S0016": {
       "seed_pair": {
         "target": "Él quiere volver con todos los demás más tarde.",
         "known": "He wants to come back with everyone else later on."
@@ -687,21 +1076,38 @@
         },
         {
           "provisional_id": "PROV_S0016_03",
+          "type": "M",
+          "target": "él quiere",
+          "known": "he wants",
+          "new": true,
+          "components": [
+            ["él", "he"],
+            ["quiere", "wants"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0016_04",
           "type": "A",
           "target": "volver",
           "known": "to come back",
           "new": true
         },
         {
-          "id": "PROV_S0005_04",
+          "provisional_id": "PROV_S0016_05",
           "type": "A",
-          "target": "con",
-          "known": "with",
-          "ref": "S0005",
-          "new": false
+          "target": "todos",
+          "known": "everyone",
+          "new": true
         },
         {
-          "provisional_id": "PROV_S0016_04",
+          "provisional_id": "PROV_S0016_06",
+          "type": "A",
+          "target": "demás",
+          "known": "else",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0016_07",
           "type": "M",
           "target": "todos los demás",
           "known": "everyone else",
@@ -709,11 +1115,38 @@
           "components": [
             ["todos", "everyone"],
             ["los", "the"],
-            ["demás", "others"]
+            ["demás", "else"]
           ]
         },
         {
-          "provisional_id": "PROV_S0016_05",
+          "provisional_id": "PROV_S0016_08",
+          "type": "M",
+          "target": "con todos los demás",
+          "known": "with everyone else",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["todos", "everyone"],
+            ["los", "the"],
+            ["demás", "else"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0016_09",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0016_10",
+          "type": "A",
+          "target": "tarde",
+          "known": "late",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0016_11",
           "type": "M",
           "target": "más tarde",
           "known": "later on",
@@ -723,10 +1156,13 @@
             ["tarde", "late"]
           ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0016",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0017",
+    "S0017": {
       "seed_pair": {
         "target": "Ella quiere descubrir cuál es la respuesta.",
         "known": "She wants to find out what the answer is."
@@ -740,22 +1176,57 @@
           "new": true
         },
         {
-          "id": "PROV_S0016_02",
-          "type": "A",
-          "target": "quiere",
-          "known": "wants",
-          "ref": "S0016",
-          "new": false
+          "provisional_id": "PROV_S0017_02",
+          "type": "M",
+          "target": "ella quiere",
+          "known": "she wants",
+          "new": true,
+          "components": [
+            ["ella", "she"],
+            ["quiere", "wants"]
+          ]
         },
         {
-          "provisional_id": "PROV_S0017_02",
+          "provisional_id": "PROV_S0017_03",
           "type": "A",
           "target": "descubrir",
           "known": "to find out",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0017_03",
+          "provisional_id": "PROV_S0017_04",
+          "type": "A",
+          "target": "cuál",
+          "known": "what",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0017_05",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0017_06",
+          "type": "A",
+          "target": "respuesta",
+          "known": "answer",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0017_07",
+          "type": "M",
+          "target": "la respuesta",
+          "known": "the answer",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["respuesta", "answer"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0017_08",
           "type": "M",
           "target": "cuál es la respuesta",
           "known": "what the answer is",
@@ -767,10 +1238,13 @@
             ["respuesta", "answer"]
           ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0017",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0018",
+    "S0018": {
       "seed_pair": {
         "target": "Queremos encontrarnos a las seis de la tarde.",
         "known": "We want to meet at six o'clock this evening."
@@ -793,31 +1267,50 @@
         {
           "provisional_id": "PROV_S0018_03",
           "type": "M",
-          "target": "a las seis",
-          "known": "at six o'clock",
+          "target": "queremos encontrarnos",
+          "known": "we want to meet",
           "new": true,
           "components": [
-            ["a", "at"],
-            ["las", "the"],
-            ["seis", "six"]
+            ["queremos", "we want"],
+            ["encontrarnos", "to meet"]
           ]
         },
         {
           "provisional_id": "PROV_S0018_04",
+          "type": "A",
+          "target": "seis",
+          "known": "six",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0018_05",
+          "type": "A",
+          "target": "tarde",
+          "known": "evening",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0018_06",
           "type": "M",
-          "target": "de la tarde",
-          "known": "this evening",
+          "target": "a las seis de la tarde",
+          "known": "at six o'clock this evening",
           "new": true,
           "components": [
+            ["a", "at"],
+            ["las", "the"],
+            ["seis", "six"],
             ["de", "of"],
             ["la", "the"],
             ["tarde", "evening"]
           ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0018",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0019",
+    "S0019": {
       "seed_pair": {
         "target": "Pero no quiero parar de hablar.",
         "known": "But I don't want to stop talking."
@@ -843,26 +1336,38 @@
         },
         {
           "provisional_id": "PROV_S0019_03",
-          "type": "M",
-          "target": "parar de",
+          "type": "A",
+          "target": "parar",
           "known": "to stop",
-          "new": true,
-          "components": [
-            ["parar", "to stop"],
-            ["de", "of"]
-          ]
+          "new": true
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "target": "hablar",
+          "known": "to speak",
+          "ref": "S0001",
+          "new": false
         },
         {
           "provisional_id": "PROV_S0019_04",
-          "type": "A",
-          "target": "hablar",
-          "known": "talking",
-          "new": true
+          "type": "M",
+          "target": "parar de hablar",
+          "known": "to stop talking",
+          "new": true,
+          "components": [
+            ["parar", "to stop"],
+            ["de", "of"],
+            ["hablar", "talking"]
+          ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0019",
+        "cumulative_lego_count_before": 0
+      }
     },
-    {
-      "seed_id": "S0020",
+    "S0020": {
       "seed_pair": {
         "target": "Quieres aprender su nombre rápidamente.",
         "known": "You want to learn his name quickly."
@@ -876,7 +1381,7 @@
           "new": true
         },
         {
-          "id": "PROV_S0002_02",
+          "id": "S0002L02",
           "type": "A",
           "target": "aprender",
           "known": "to learn",
@@ -885,6 +1390,20 @@
         },
         {
           "provisional_id": "PROV_S0020_02",
+          "type": "A",
+          "target": "su",
+          "known": "his",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0020_03",
+          "type": "A",
+          "target": "nombre",
+          "known": "name",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0020_04",
           "type": "M",
           "target": "su nombre",
           "known": "his name",
@@ -895,13 +1414,28 @@
           ]
         },
         {
-          "provisional_id": "PROV_S0020_03",
+          "provisional_id": "PROV_S0020_05",
           "type": "A",
           "target": "rápidamente",
           "known": "quickly",
           "new": true
+        },
+        {
+          "provisional_id": "PROV_S0020_06",
+          "type": "M",
+          "target": "quieres aprender",
+          "known": "you want to learn",
+          "new": true,
+          "components": [
+            ["quieres", "you want"],
+            ["aprender", "to learn"]
+          ]
         }
-      ]
+      ],
+      "_metadata": {
+        "seed_id": "S0020",
+        "cumulative_lego_count_before": 0
+      }
     }
-  ]
+  }
 }
