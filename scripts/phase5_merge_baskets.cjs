@@ -4,16 +4,16 @@
  * Phase 5 Basket Merge - Validate and Merge Practice Baskets
  *
  * This script does ALL the mechanical post-generation work:
- * 1. Reads 34 agent provisional outputs
+ * 1. Reads per-seed outputs from phase5_outputs
  * 2. Validates format (10 phrases per LEGO, 2-2-2-4 distribution)
  * 3. Validates GATE compliance (all Spanish words in whitelist)
  * 4. Validates final LEGO phrase #10 = complete seed sentence
- * 5. Merges into individual basket files per seed
+ * 5. Writes final basket files per seed
  *
  * Usage: node scripts/phase5_merge_baskets.cjs <courseDir>
  *
- * Reads: <courseDir>/phase5_outputs/agent_XX_provisional.json (34 files)
- * Writes: <courseDir>/baskets/lego_baskets_s0XXX.json (one per seed)
+ * Reads: <courseDir>/phase5_outputs/seed_sXXXX.json (one per seed)
+ * Writes: <courseDir>/baskets/lego_baskets_sXXXX.json (one per seed)
  */
 
 const fs = require('fs-extra');
@@ -118,10 +118,10 @@ function validateFinalLego(lego, seedPair, legoId) {
 }
 
 /**
- * Merge all agent provisional outputs
+ * Merge all seed outputs
  */
 async function mergePhase5Baskets(courseDir) {
-  console.log(`[Phase 5 Merge] Starting merge for: ${courseDir}`);
+  console.log(`[Phase 5 Merge] Starting validation and merge for: ${courseDir}`);
 
   const outputsDir = path.join(courseDir, 'phase5_outputs');
 
@@ -130,56 +130,48 @@ async function mergePhase5Baskets(courseDir) {
     throw new Error(`Phase 5 outputs directory not found: ${outputsDir}`);
   }
 
-  // Read all agent provisional files
+  // Read all seed output files
   const files = await fs.readdir(outputsDir);
-  const agentFiles = files
-    .filter(f => f.match(/^agent_\d+_provisional\.json$/))
+  const seedFiles = files
+    .filter(f => f.match(/^seed_s\d+\.json$/))
     .sort();
 
-  if (agentFiles.length === 0) {
-    throw new Error(`No agent provisional files found in ${outputsDir}`);
+  if (seedFiles.length === 0) {
+    throw new Error(`No seed output files found in ${outputsDir}`);
   }
 
-  console.log(`[Phase 5 Merge] Found ${agentFiles.length} agent outputs`);
+  console.log(`[Phase 5 Merge] Found ${seedFiles.length} seed outputs`);
 
-  // Load all agent outputs
-  const agentData = await Promise.all(
-    agentFiles.map(async (file) => {
+  // Load all seed outputs
+  const seedData = await Promise.all(
+    seedFiles.map(async (file) => {
       const filePath = path.join(outputsDir, file);
       const data = await fs.readJson(filePath);
-      const seedCount = Object.keys(data.seeds || {}).length;
-      console.log(`[Phase 5 Merge] Loaded agent ${data.agent_id}: ${seedCount} seeds`);
+      const legoCount = Object.keys(data.legos || {}).length;
+      console.log(`[Phase 5 Merge] Loaded ${data.seed_id}: ${legoCount} LEGOs`);
       return data;
     })
   );
 
-  // Collect all seeds
-  const allSeeds = {};
-  let totalSeeds = 0;
+  // Collect statistics
+  let totalSeeds = seedData.length;
   let totalLegos = 0;
   let totalPhrases = 0;
 
-  for (const agent of agentData) {
-    if (!agent.seeds) continue;
+  for (const seed of seedData) {
+    if (seed.legos) {
+      const legoCount = Object.keys(seed.legos).length;
+      totalLegos += legoCount;
 
-    for (const [seedId, seed] of Object.entries(agent.seeds)) {
-      allSeeds[seedId] = seed;
-      totalSeeds++;
-
-      if (seed.legos) {
-        const legoCount = Object.keys(seed.legos).length;
-        totalLegos += legoCount;
-
-        for (const lego of Object.values(seed.legos)) {
-          if (lego.practice_phrases) {
-            totalPhrases += lego.practice_phrases.length;
-          }
+      for (const lego of Object.values(seed.legos)) {
+        if (lego.practice_phrases) {
+          totalPhrases += lego.practice_phrases.length;
         }
       }
     }
   }
 
-  console.log(`[Phase 5 Merge] Total seeds collected: ${totalSeeds}`);
+  console.log(`[Phase 5 Merge] Total seeds: ${totalSeeds}`);
   console.log(`[Phase 5 Merge] Total LEGOs: ${totalLegos}`);
   console.log(`[Phase 5 Merge] Total phrases: ${totalPhrases}`);
 
@@ -191,7 +183,9 @@ async function mergePhase5Baskets(courseDir) {
   const finalLegoErrors = [];
   const formatErrors = [];
 
-  for (const [seedId, seed] of Object.entries(allSeeds).sort()) {
+  for (const seed of seedData) {
+    const seedId = seed.seed_id;
+
     if (!seed.legos) {
       formatErrors.push(`${seedId}: Missing legos object`);
       continue;
@@ -303,7 +297,8 @@ async function mergePhase5Baskets(courseDir) {
 
   let filesWritten = 0;
 
-  for (const [seedId, seed] of Object.entries(allSeeds).sort()) {
+  for (const seed of seedData) {
+    const seedId = seed.seed_id;
     // Build basket file structure (matching existing format)
     const basket = {
       version: "curated_v7_spanish",

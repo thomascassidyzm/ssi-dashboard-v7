@@ -268,9 +268,34 @@ Before generating ANY phrase, identify the LEGO's grammatical class:
 ["I want to speak Spanish with you now.", "Quiero hablar español contigo ahora.", null, 7]
 ```
 
-#### Recency Priority
-- Prioritize vocabulary from 5 previous seeds (more recent = more usage)
-- Makes content feel fresh and reinforces recent learning
+#### 🎯 Recency Reinforcement (HIGH PRIORITY)
+
+**Your scaffold includes `recent_context`** - the last 5 seeds with LEGO tiling.
+
+**CRITICAL**: Use these patterns extensively in practice phrases:
+
+- **Target**: 50-70% of phrases should incorporate LEGOs from `recent_context`
+- **Why**: Spaced repetition - learners see recent vocabulary in new combinations
+- **How**: For each practice phrase, scan `recent_context` and preferentially combine with those LEGOs
+
+**Example**: Teaching "recordar" (to remember) with `recent_context`:
+```json
+"recent_context": {
+  "S0002": ["estoy intentando | aprender", "I'm trying | to learn"],
+  "S0005": ["Voy a | practicar | hablar", "I'm going to | to practise | speaking"]
+}
+```
+
+✅ GOOD phrases (use recent patterns):
+- "Estoy intentando recordar" (uses S0002's "estoy intentando")
+- "Voy a recordar" (uses S0005's "Voy a")
+- "Quiero practicar recordar" (uses S0005's "practicar")
+
+❌ MISSED OPPORTUNITY (generic, no recent reinforcement):
+- "Recordar algo"
+- "Recordar ahora"
+
+**The recent_context shows you EXACTLY which LEGOs to prioritize** - use them!
 
 #### Conjunction Usage
 - Only use conjunctions (si, y, pero, porque, cuando) if they're in the whitelist
@@ -510,6 +535,59 @@ is_final_lego: true
 
 ---
 
+## ✅ SELF-VALIDATION CHECKLIST (CRITICAL)
+
+**Before writing your output JSON, you MUST validate your baskets:**
+
+### Format Validation
+- [ ] Output is valid JSON
+- [ ] All `practice_phrases` arrays have exactly 10 phrases
+- [ ] Each phrase is `[known, target]` format (English first, Spanish second)
+- [ ] `phrase_distribution` counts updated to match actual phrases
+
+### Distribution Validation (2-2-2-4 Rule)
+- [ ] 2 phrases with 1-2 Spanish words (really short)
+- [ ] 2 phrases with 3 Spanish words (quite short)
+- [ ] 2 phrases with 4-5 Spanish words (longer)
+- [ ] 4 phrases with 6+ Spanish words (long)
+- [ ] **Count Spanish words by splitting on spaces** (e.g., "Quiero hablar" = 2 words)
+
+### GATE Compliance (CRITICAL)
+- [ ] **Every Spanish word** in every phrase must be in the whitelist
+- [ ] Check each word by splitting Spanish phrase on spaces
+- [ ] Whitelist includes: A-type LEGOs, M-type LEGOs, M-type components, current LEGO being taught
+- [ ] No words outside available vocabulary
+- [ ] **If word not in whitelist → REMOVE THE PHRASE and create a different one**
+
+### Final LEGO Validation
+- [ ] If `is_final_lego: true`, phrase #10 MUST be the complete seed sentence
+- [ ] English phrase #10 must EXACTLY match `seed_pair.known`
+- [ ] Spanish phrase #10 must EXACTLY match `seed_pair.target`
+- [ ] Remove any punctuation before comparing if needed
+
+### Recency Reinforcement (50-70% target)
+- [ ] Check `recent_context` field in scaffold
+- [ ] Count how many phrases use LEGOs from recent_context
+- [ ] Target: At least 5-7 out of 10 phrases should incorporate recent vocabulary
+- [ ] Prioritize combining current LEGO with patterns from last 5 seeds
+
+### Natural Language Validation
+- [ ] Each phrase sounds natural in both English and Spanish
+- [ ] No nonsensical combinations (e.g., "I want table" - grammatical but unnatural)
+- [ ] Phrases use LEGO in contextually appropriate way
+- [ ] Word class respected (verbs as verbs, nouns as nouns, etc.)
+
+**If ANY check fails → FIX IT before writing output**
+
+**Common fixes:**
+- GATE violation → Replace phrase with one using only whitelist words
+- Distribution wrong → Adjust phrase lengths (add/remove words)
+- Final phrase mismatch → Use exact seed sentence for phrase #10
+- Low recency → Scan recent_context and rewrite phrases to incorporate those LEGOs
+- Unnatural phrase → Rethink the usage context
+
+---
+
 ## 📝 SUMMARY
 
 **Your task in 3 steps**:
@@ -521,11 +599,13 @@ is_final_lego: true
    - Generate 10 natural phrases (2-2-2-4 distribution)
    - Validate ALL Spanish words against whitelist
    - Check phrases sound natural in both languages
+   - **Run self-validation checklist above**
 3. **Save the completed JSON** (same structure, practice_phrases filled)
 
 **Remember**:
 - ❌ NO scripts, NO templates, NO automation
 - ✅ Linguistic reasoning, extended thinking, natural language
+- ✅ **SELF-VALIDATE before writing output**
 - 🎯 Quality over speed - "top dollar content"
 
 ---

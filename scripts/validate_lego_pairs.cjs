@@ -177,15 +177,52 @@ for (const seed of data.seeds) {
       });
     }
 
-    // Check 6: FD compliance (spot-check for common issues)
-    const ambiguousWords = ['que', 'de', 'a', 'en', 'el', 'la', 'los', 'las'];
-    if (lego.type === 'A' && ambiguousWords.includes(lego.target.toLowerCase())) {
-      warnings.push({
-        seed: seedId,
-        type: 'POTENTIALLY_AMBIGUOUS',
-        message: `Atomic LEGO "${lego.target}" may be ambiguous without context (consider chunking up)`,
-        id: lego.id
-      });
+    // Check 6: LEARNER UNCERTAINTY - FD compliance
+    // Question: "If learner hears KNOWN, is there ANY ambiguity about TARGET?"
+    // If YES → FAIL - LEGO too small, must chunk up
+
+    const thisLegoTarget = lego.target.toLowerCase().trim();
+    const thisLegoKnown = lego.known.toLowerCase().trim();
+
+    // Check if this LEGO appears as part of OR adjacent to a larger M-type
+    for (const otherLego of seed.legos) {
+      if (otherLego.id === lego.id) continue;
+      if (otherLego.type !== 'M') continue;
+
+      const mTarget = otherLego.target.toLowerCase().trim();
+      const mKnown = otherLego.known.toLowerCase().trim();
+
+      // Case 1: A-type appears INSIDE M-type
+      if (mTarget.includes(thisLegoTarget) && mKnown.includes(thisLegoKnown)) {
+        errors.push({
+          seed: seedId,
+          type: 'LEARNER_UNCERTAINTY',
+          message: `LEGO "${lego.known}" = "${lego.target}" creates ambiguity - it appears inside M-type "${otherLego.known}" = "${otherLego.target}". Consider extracting only the larger M-type.`,
+          id: lego.id,
+          conflictsWith: otherLego.id
+        });
+      }
+
+      // Case 2: Check if they're adjacent in the sentence and form incomplete phrase
+      // Get the full sentence to check adjacency
+      const fullTarget = seed.seed_pair[0].toLowerCase();
+      const fullKnown = seed.seed_pair[1].toLowerCase();
+
+      // Are M-type and A-type consecutive in the sentence?
+      const mThenA_target = fullTarget.includes(`${mTarget} ${thisLegoTarget}`);
+      const mThenA_known = fullKnown.includes(`${mKnown} ${thisLegoKnown}`);
+      const aThenM_target = fullTarget.includes(`${thisLegoTarget} ${mTarget}`);
+      const aThenM_known = fullKnown.includes(`${thisLegoKnown} ${mKnown}`);
+
+      if ((mThenA_target && mThenA_known) || (aThenM_target && aThenM_known)) {
+        warnings.push({
+          seed: seedId,
+          type: 'POSSIBLE_LEARNER_UNCERTAINTY',
+          message: `LEGOs "${lego.known}" and "${otherLego.known}" are adjacent in sentence. Verify they shouldn't be ONE M-type: "${mThenA_known ? mKnown + ' ' + thisLegoKnown : thisLegoKnown + ' ' + mKnown}" = "${mThenA_target ? mTarget + ' ' + thisLegoTarget : thisLegoTarget + ' ' + mTarget}"`,
+          id: lego.id,
+          adjacentTo: otherLego.id
+        });
+      }
     }
   }
 

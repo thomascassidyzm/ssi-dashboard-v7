@@ -80,7 +80,16 @@ function buildWhitelistUpToLegoCount(legoPairsData, availableLegos) {
  */
 function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
   const legos = {};
-  const finalLegoIndex = seed.legos.length - 1;
+
+  // Find index of the LAST NEW LEGO (not just last lego in array)
+  let finalNewLegoIndex = -1;
+  for (let i = seed.legos.length - 1; i >= 0; i--) {
+    if (seed.legos[i].new) {
+      finalNewLegoIndex = i;
+      break;
+    }
+  }
+
   let legoCount = cumulativeBeforeSeed;
 
   for (let i = 0; i < seed.legos.length; i++) {
@@ -89,7 +98,7 @@ function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
     // Only generate baskets for NEW LEGOs
     if (!lego.new) continue;
 
-    const isFinalLego = (i === finalLegoIndex);
+    const isFinalLego = (i === finalNewLegoIndex);
     const availableLegos = legoCount; // LEGOs available BEFORE this one
 
     // Build whitelist up to this LEGO (not including current LEGO)
@@ -115,7 +124,8 @@ function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
           target: seed.seed_pair[0],
           known: seed.seed_pair[1]
         },
-        whitelist_pairs: whitelistPairs
+        whitelist_pairs: whitelistPairs,
+        available_whitelist_size: whitelistPairs.length
       }
     };
 
@@ -191,82 +201,73 @@ async function preparePhase5Scaffolds(courseDir) {
 
   console.log(`[Phase 5 Prep] Loaded ${seeds.length} seeds from lego_pairs.json`);
 
-  // Configuration
-  const SEEDS_PER_AGENT = 10; // Production standard: 10 seeds per agent
-  const totalAgents = Math.ceil(seeds.length / SEEDS_PER_AGENT);
-
-  console.log(`[Phase 5 Prep] Splitting into ${totalAgents} agents (${SEEDS_PER_AGENT} seeds each)`);
+  console.log(`[Phase 5 Prep] Generating one scaffold per seed for incremental progress tracking`);
 
   // Create output directory
   const scaffoldsDir = path.join(courseDir, 'phase5_scaffolds');
   await fs.ensureDir(scaffoldsDir);
 
-  // Generate scaffold for each agent
-  for (let agentNum = 1; agentNum <= totalAgents; agentNum++) {
-    const startIdx = (agentNum - 1) * SEEDS_PER_AGENT;
-    const endIdx = Math.min(startIdx + SEEDS_PER_AGENT, seeds.length);
-    const agentSeeds = seeds.slice(startIdx, endIdx);
+  // Generate scaffold for each seed individually
+  let cumulativeCount = 0;
+  let totalNewLegos = 0;
 
-    const firstSeed = agentSeeds[0];
-    const lastSeed = agentSeeds[agentSeeds.length - 1];
-    const startSeedNum = parseInt(firstSeed.seed_id.substring(1));
-    const endSeedNum = parseInt(lastSeed.seed_id.substring(1));
+  for (const seed of seeds) {
+    const seedScaffold = generateSeedScaffold(seed, { seeds }, cumulativeCount);
 
-    console.log(`[Phase 5 Prep] Agent ${agentNum}: S${String(startSeedNum).padStart(4, '0')}-S${String(endSeedNum).padStart(4, '0')} (${agentSeeds.length} seeds)`);
-
-    // Build seeds object for this agent
-    const seedsScaffold = {};
-    let totalNewLegos = 0;
-    let cumulativeCount = 0;
-
-    // Calculate cumulative count up to this agent's first seed
-    for (const s of seeds) {
-      if (s.seed_id === firstSeed.seed_id) break;
-      cumulativeCount += s.legos.filter(l => l.new).length;
-    }
-
-    for (const seed of agentSeeds) {
-      const seedScaffold = generateSeedScaffold(seed, { seeds }, cumulativeCount);
-
-      // Only include seeds that have new LEGOs
-      if (Object.keys(seedScaffold.legos).length > 0) {
-        seedsScaffold[seed.seed_id] = seedScaffold;
-        totalNewLegos += Object.keys(seedScaffold.legos).length;
-      }
-
-      // Update cumulative count for next seed
+    // Only create scaffold if seed has new LEGOs
+    if (Object.keys(seedScaffold.legos).length === 0) {
+      // Update cumulative count even for seeds with no new LEGOs
       cumulativeCount += seed.legos.filter(l => l.new).length;
+      continue;
     }
+
+    const seedNum = parseInt(seed.seed_id.substring(1));
+    const newLegosCount = Object.keys(seedScaffold.legos).length;
+    totalNewLegos += newLegosCount;
+
+    console.log(`[Phase 5 Prep] ${seed.seed_id}: ${newLegosCount} LEGOs → ${newLegosCount * 10} phrases`);
 
     // Create scaffold
     const scaffold = {
       version: "curated_v7_spanish",
-      agent_id: agentNum,
-      seed_range: `S${String(startSeedNum).padStart(4, '0')}-S${String(endSeedNum).padStart(4, '0')}`,
+      seed_id: seed.seed_id,
       generation_stage: "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
-      seeds: seedsScaffold,
+      seed_pair: seedScaffold.seed_pair,
+      recent_context: seedScaffold.recent_context,
+      legos: seedScaffold.legos,
       _instructions: {
         task: "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
         methodology: "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
-        output: `Write to: ${courseDir}/phase5_outputs/agent_${String(agentNum).padStart(2, '0')}_provisional.json`,
+        output: `Write to: ${courseDir}/phase5_outputs/seed_${seed.seed_id.toLowerCase()}.json`,
         whitelist_note: "3-category rule applied: A-types, M-types, M-components with literal translations"
       },
       _stats: {
-        seeds_in_range: agentSeeds.length,
-        seeds_with_new_legos: Object.keys(seedsScaffold).length,
-        new_legos_to_generate: totalNewLegos,
-        estimated_phrases: totalNewLegos * 10
+        new_legos_in_seed: newLegosCount,
+        phrases_to_generate: newLegosCount * 10,
+        cumulative_legos_before: cumulativeCount
       }
     };
 
-    // Write scaffold
-    const scaffoldPath = path.join(scaffoldsDir, `agent_${String(agentNum).padStart(2, '0')}.json`);
-    await fs.writeJson(scaffoldPath, scaffold, { spaces: 2 });
+    // Write full scaffold with whitelist (for validation later)
+    const scaffoldPathFull = path.join(scaffoldsDir, `seed_${seed.seed_id.toLowerCase()}_full.json`);
+    await fs.writeJson(scaffoldPathFull, scaffold);
 
-    console.log(`[Phase 5 Prep]   → ${totalNewLegos} new LEGOs, ${totalNewLegos * 10} phrases to generate`);
+    // Write compact scaffold without whitelist (for AI agent)
+    const scaffoldCompact = JSON.parse(JSON.stringify(scaffold));
+    for (const legoId in scaffoldCompact.legos) {
+      if (scaffoldCompact.legos[legoId]._metadata) {
+        delete scaffoldCompact.legos[legoId]._metadata.whitelist_pairs;
+      }
+    }
+    const scaffoldPath = path.join(scaffoldsDir, `seed_${seed.seed_id.toLowerCase()}.json`);
+    await fs.writeJson(scaffoldPath, scaffoldCompact);
+
+    // Update cumulative count for next seed
+    cumulativeCount += seed.legos.filter(l => l.new).length;
   }
 
-  console.log(`[Phase 5 Prep] ✅ Generated ${totalAgents} scaffold files`);
+  console.log(`[Phase 5 Prep] ✅ Generated ${seeds.length} scaffold files`);
+  console.log(`[Phase 5 Prep] Total new LEGOs: ${totalNewLegos} (${totalNewLegos * 10} phrases)`);
   console.log(`[Phase 5 Prep] Output directory: ${scaffoldsDir}`);
 
   // Create outputs directory
@@ -302,7 +303,8 @@ async function preparePhase5Scaffolds(courseDir) {
 
   return {
     success: true,
-    totalAgents,
+    totalSeeds: seeds.length,
+    totalNewLegos,
     scaffoldsDir,
     outputsDir
   };
@@ -321,8 +323,9 @@ if (require.main === module) {
   preparePhase5Scaffolds(courseDir)
     .then(result => {
       console.log(`\n✅ Phase 5 scaffolds ready!`);
-      console.log(`   Total agents: ${result.totalAgents}`);
-      console.log(`   Next step: Run master prompt to spawn agents`);
+      console.log(`   Total seeds: ${result.totalSeeds}`);
+      console.log(`   Total LEGOs: ${result.totalNewLegos}`);
+      console.log(`   Next step: Process each seed scaffold to generate baskets`);
       process.exit(0);
     })
     .catch(error => {

@@ -757,6 +757,48 @@ OUTPUT READY
 
 ---
 
+## ✅ SELF-VALIDATION CHECKLIST (CRITICAL)
+
+**Before writing your output JSON, you MUST validate your extraction:**
+
+### Format Validation
+- [ ] Output is valid JSON
+- [ ] All required fields present: `seed_id`, `seed_pair`, `legos`
+- [ ] Each LEGO has: `type`, `target`, `known`, `new`, `id`
+- [ ] M-type LEGOs have `components` array with `[target, known]` pairs
+
+### Reference Validation
+- [ ] All `ref` fields point to existing seed IDs
+- [ ] Referenced LEGOs exist in the referenced seed
+- [ ] No self-references (LEGO can't reference itself)
+
+### LEARNER UNCERTAINTY Validation (CRITICAL)
+- [ ] **Test each LEGO**: "If learner hears KNOWN, do they say TARGET with ZERO uncertainty?"
+- [ ] No A-type LEGOs that are substrings of M-type LEGOs in same seed (indicates insufficient chunking)
+- [ ] No adjacent LEGOs that should be ONE M-type (e.g., "tan pronto como" + "puedas" should be ONE M-type)
+- [ ] Modal verbs + infinitives: Extract BOTH atomic parts AND molecular combination
+- [ ] Subordinate clauses with subjunctive: Must include full context (can't split)
+
+### Tiling Validation
+- [ ] All target words covered by LEGOs
+- [ ] All known words covered by LEGOs
+- [ ] Reconstruction test: LEGOs rebuild seed sentence perfectly
+
+### Component Validation (M-type LEGOs)
+- [ ] Each component is `[target_word, literal_known]` format
+- [ ] Components use literal/word-by-word translations
+- [ ] All words from M-type target appear in components
+
+**If ANY check fails → FIX IT before writing output**
+
+**Common fixes:**
+- A-type inside M-type → Remove A-type, keep only M-type
+- Adjacent LEGOs feel incomplete → Combine into single M-type
+- Tiling fails → Missing LEGO or incorrect extraction
+- Missing components → Add literal translations for each word in M-type
+
+---
+
 **Target Time per Seed**: 1-2 minutes with extended thinking
 **Quality over Speed**: Better to take time and get it right!
 
