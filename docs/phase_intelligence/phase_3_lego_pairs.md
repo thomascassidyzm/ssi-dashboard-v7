@@ -84,47 +84,114 @@ Reconstruction: "Quiero hablar español" ✅
 
 ### STEP 1: CHUNK THE KNOWN (Forward Sweep)
 
-Start from KNOWN language and chunk semantically:
+**Algorithm**: Process KNOWN word-by-word, left to right, finding minimum FD-compliant chunks.
 
 ```
-Known: "I'm enjoying finding out more about this language"
+Position 0 → end of KNOWN sentence:
 
-Forward sweep (KNOWN order):
-"I'm enjoying" | "finding out" | "more" | "about" | "this" | "language"
+1. Test word[pos] for FD compliance
+   - Does this KNOWN chunk map to TARGET with zero uncertainty?
+   - Check: Semantic uncertainty? FCFS collision? Syntactic uncertainty?
 
-Check: Do these chunks make sense to a native speaker? ✅
+2. If FD FAILS:
+   - Extend: word[pos..pos+1], word[pos..pos+2], etc.
+   - Keep extending until FD PASSES
+
+3. When FD PASSES:
+   - LOCK this chunk (don't keep extending - we want minimum granularity!)
+   - Classify as A or M
+   - Map to TARGET
+   - Move to next unmatched position in KNOWN
+
+4. Repeat until all KNOWN words processed
+```
+
+**Example**: "I'm trying to remember a word"
+
+```
+Position 0:
+  "I'm" → FAIL (estoy/soy ambiguous)
+  "I'm trying" → "Estoy intentando" ✅ FD PASS (M) LOCK
+
+Position 2 (after "I'm trying"):
+  "to remember" → "recordar" ✅ FD PASS (A) LOCK
+
+Position 3:
+  "a" → FAIL (una/un ambiguous)
+  "a word" → "una palabra" ✅ FD PASS (M) LOCK
+
+Result: [Estoy intentando] + [recordar] + [una palabra]
 ```
 
 **Why forward sweep?** Respects how learner thinks/chunks meaning in their native language.
 
 ### STEP 1.5: BACKWARD SWEEP (Target Language Check)
 
-After forward sweep, do a backward check through TARGET language to catch particles/markers:
+**Algorithm**: Process TARGET word-by-word, right to left, catching particles/markers missed by forward sweep.
 
 ```
-Target: "Estoy disfrutando descubrir más sobre este lenguaje"
+Position END → 0 of TARGET sentence:
 
-Backward check (TARGET order):
-- Start from end, work backward
-- Look for particles that might be missed: de, que, a, etc.
-- Ensure ALL words covered (no orphans)
+1. Test word[pos] for FD compliance
+   - Does this TARGET chunk map to KNOWN with zero uncertainty?
+   - Already covered by forward sweep? Skip it.
+
+2. If FD FAILS:
+   - Extend leftward: word[pos-1..pos], word[pos-2..pos], etc.
+   - Keep extending until FD PASSES
+
+3. When FD PASSES:
+   - LOCK this chunk
+   - Classify as A or M
+   - Map to KNOWN
+   - Move to previous unmatched position in TARGET
+
+4. Repeat until start of sentence
 ```
 
-**Why backward sweep?** Catches target language grammatical elements that don't map cleanly to KNOWN chunks (like Chinese 得, Spanish subjunctive que, etc.)
+**Example**: Chinese S0008 "我要试着解释我的意思"
+
+```
+Forward sweep captures: 我要试着 + 解释 + 意思
+
+Backward sweep (right to left):
+Position END (意思): Already covered ✓
+Position (我的):
+  "的" → FAIL (possessive particle, ambiguous alone)
+  "我的" → "my" ✅ FD PASS (M) LOCK
+Position (试着):
+  "着" → FAIL (aspect marker, meaningless alone)
+  "试着" → "try" (progressive) ✅ FD PASS (M) LOCK
+
+Backward sweep adds: [我的] + [试着]
+```
+
+**Why backward sweep?** Catches target language grammatical elements that don't map cleanly to KNOWN chunks (like Chinese 得/着, Spanish subjunctive que, particles de/a/en).
 
 ### STEP 1.6: MAINTAIN YOUR REGISTRY
 
-**Critical**: As you process each seed, track what you extract:
+**Critical**: As you process each seed, track what you extract AND check for collisions.
+
+**Collision Detection Rule**: A collision requires **BOTH target AND known to match**.
 
 ```
 Internal registry (build as you go):
 S0001: "español" = "Spanish" (S0001L03)
 S0001: "ahora" = "now" (S0001L05)
+S0001: "hablar" = "to speak" (S0001L02)
 ...
 
+When processing S0005: "Voy a practicar hablar con otra persona"
+- "hablar" appears in seed
+- Check registry: "hablar" = "to speak" exists (S0001L02)
+- But S0005 has "hablar" = "speaking" (different KNOWN!)
+- **NOT a collision** → Extract as NEW LEGO!
+
 When processing S0009: "Hablo un poco de español ahora"
-- Check registry: "español" = "Spanish" exists! → REFERENCE IT
-- Check registry: "ahora" = "now" exists! → REFERENCE IT
+- Check registry: "español" = "Spanish" exists (S0001L03)
+- BOTH target AND known match → **IS a collision** → REFERENCE IT
+- Check registry: "ahora" = "now" exists (S0001L05)
+- BOTH target AND known match → **IS a collision** → REFERENCE IT
 ```
 
 **Format for references**:
@@ -139,7 +206,10 @@ When processing S0009: "Hablo un poco de español ahora"
 }
 ```
 
-**Without references, tiling will fail!** Every word must be in the LEGOs array (new OR reference).
+**Critical**:
+- Same TARGET + different KNOWN = NEW LEGO (not a collision)
+- Same TARGET + same KNOWN = REFERENCE (is a collision)
+- **Without references, tiling will fail!** Every word must be in the LEGOs array (new OR reference)
 
 ### STEP 2: MAP TO TARGET
 
