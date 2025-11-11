@@ -1,0 +1,6218 @@
+{
+  "version": "5.0.1",
+  "methodology": "Phase 3 LEGO + Pattern Extraction v5.0.1 - COMPLETE TILING",
+  "extraction_date": "2025-11-06",
+  "note": "Every seed shows ALL LEGOs that reconstruct it (new + referenced from earlier seeds). FD principle: zero learner confusion.",
+  "language_pair": "zho_for_eng",
+  "script": "Simplified Chinese",
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "seed_pair": [
+        "我现在想和你说中文",
+        "I want to speak Chinese with you now."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "new": true
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "target": "现在",
+          "known": "now",
+          "new": true
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "想",
+          "known": "want",
+          "new": true
+        },
+        {
+          "id": "S0001L04",
+          "type": "M",
+          "target": "和你",
+          "known": "with you",
+          "new": true,
+          "components": [
+            [
+              "和",
+              "with"
+            ],
+            [
+              "你",
+              "you"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "target": "说",
+          "known": "speak",
+          "new": true
+        },
+        {
+          "id": "S0001L06",
+          "type": "A",
+          "target": "中文",
+          "known": "Chinese",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P01_want_to_verb"
+      ],
+      "cumulative_legos": 6
+    },
+    {
+      "seed_id": "S0002",
+      "seed_pair": [
+        "我在试着学习",
+        "I'm trying to learn."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0002L01",
+          "type": "M",
+          "target": "在试着",
+          "known": "I'm trying to",
+          "new": true,
+          "components": [
+            [
+              "在",
+              "currently"
+            ],
+            [
+              "试着",
+              "trying to"
+            ]
+          ]
+        },
+        {
+          "id": "S0002L02",
+          "type": "A",
+          "target": "学习",
+          "known": "learn",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P02_progressive_aspect"
+      ],
+      "cumulative_legos": 8
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": [
+        "怎么尽可能经常地说",
+        "how to speak as often as possible."
+      ],
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "怎么",
+          "known": "how to",
+          "new": true
+        },
+        {
+          "id": "S0003L02",
+          "type": "M",
+          "target": "尽可能",
+          "known": "as possible",
+          "new": true,
+          "components": [
+            [
+              "尽",
+              "as much as"
+            ],
+            [
+              "可能",
+              "possible"
+            ]
+          ]
+        },
+        {
+          "id": "S0003L03",
+          "type": "A",
+          "target": "经常",
+          "known": "often",
+          "new": true
+        },
+        {
+          "id": "S0003L04",
+          "type": "A",
+          "target": "地",
+          "known": "adverbially",
+          "new": true
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "target": "说",
+          "known": "speak",
+          "ref": "S0001"
+        }
+      ],
+      "patterns": [
+        "P03_adverbial_de"
+      ],
+      "cumulative_legos": 12
+    },
+    {
+      "seed_id": "S0004",
+      "seed_pair": [
+        "怎么用中文说什么",
+        "how to say something in Chinese"
+      ],
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "怎么",
+          "known": "how to",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0004L01",
+          "type": "A",
+          "target": "用",
+          "known": "use",
+          "new": true
+        },
+        {
+          "id": "S0001L06",
+          "type": "A",
+          "target": "中文",
+          "known": "Chinese",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0004L01",
+          "type": "M",
+          "target": "说什么",
+          "known": "say something",
+          "new": true,
+          "components": [
+            [
+              "说",
+              "say"
+            ],
+            [
+              "什么",
+              "something"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01_want_to_verb"
+      ],
+      "cumulative_legos": 13
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": [
+        "我要和别人练习说",
+        "I'm going to practise speaking with someone else."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0005L01",
+          "type": "A",
+          "target": "要",
+          "known": "I'm going to",
+          "new": true
+        },
+        {
+          "id": "S0005L02",
+          "type": "M",
+          "target": "和别人",
+          "known": "with someone else",
+          "new": true,
+          "components": [
+            [
+              "和",
+              "with"
+            ],
+            [
+              "别人",
+              "someone else"
+            ]
+          ]
+        },
+        {
+          "id": "S0005L03",
+          "type": "A",
+          "target": "练习",
+          "known": "practise",
+          "new": true
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "target": "说",
+          "known": "speaking",
+          "ref": "S0001"
+        }
+      ],
+      "patterns": [
+        "P04_future_yao"
+      ],
+      "cumulative_legos": 16
+    },
+    {
+      "seed_id": "S0006",
+      "seed_pair": [
+        "我在试着记住一个词",
+        "I'm trying to remember a word."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0002L01",
+          "type": "M",
+          "target": "在试着",
+          "known": "I'm trying to",
+          "ref": "S0002",
+          "components": [
+            [
+              "在",
+              "currently"
+            ],
+            [
+              "试着",
+              "trying to"
+            ]
+          ]
+        },
+        {
+          "id": "S0006L01",
+          "type": "A",
+          "target": "记住",
+          "known": "remember",
+          "new": true
+        },
+        {
+          "id": "S0006L02",
+          "type": "M",
+          "target": "一个词",
+          "known": "a word",
+          "new": true,
+          "components": [
+            [
+              "一个",
+              "a"
+            ],
+            [
+              "词",
+              "word"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P02_progressive_aspect"
+      ],
+      "cumulative_legos": 18
+    },
+    {
+      "seed_id": "S0007",
+      "seed_pair": [
+        "我今天想尽力试试",
+        "I want to try as hard as I can today."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0007L01",
+          "type": "A",
+          "target": "今天",
+          "known": "today",
+          "new": true
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "想",
+          "known": "want",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0007L02",
+          "type": "M",
+          "target": "尽力",
+          "known": "as hard as I can",
+          "new": true,
+          "components": [
+            [
+              "尽",
+              "utmost"
+            ],
+            [
+              "力",
+              "strength"
+            ]
+          ]
+        },
+        {
+          "id": "S0007L03",
+          "type": "A",
+          "target": "试试",
+          "known": "try",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P01_want_to_verb"
+      ],
+      "cumulative_legos": 21
+    },
+    {
+      "seed_id": "S0008",
+      "seed_pair": [
+        "我要试着解释我的意思",
+        "I'm going to try to explain what I mean."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0005L01",
+          "type": "A",
+          "target": "要",
+          "known": "I'm going to",
+          "ref": "S0005"
+        },
+        {
+          "id": "S0008L01",
+          "type": "A",
+          "target": "试着",
+          "known": "try to",
+          "new": true
+        },
+        {
+          "id": "S0008L02",
+          "type": "A",
+          "target": "解释",
+          "known": "explain",
+          "new": true
+        },
+        {
+          "id": "S0008L03",
+          "type": "M",
+          "target": "我的意思",
+          "known": "what I mean",
+          "new": true,
+          "components": [
+            [
+              "我的",
+              "my"
+            ],
+            [
+              "意思",
+              "meaning"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P04_future_yao"
+      ],
+      "cumulative_legos": 24
+    },
+    {
+      "seed_id": "S0009",
+      "seed_pair": [
+        "我现在会说一点中文",
+        "I speak a little Chinese now."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "target": "现在",
+          "known": "now",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0009L01",
+          "type": "A",
+          "target": "会",
+          "known": "can",
+          "new": true
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "target": "说",
+          "known": "speak",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0009L02",
+          "type": "M",
+          "target": "一点",
+          "known": "a little",
+          "new": true,
+          "components": [
+            [
+              "一",
+              "one"
+            ],
+            [
+              "点",
+              "bit"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L06",
+          "type": "A",
+          "target": "中文",
+          "known": "Chinese",
+          "ref": "S0001"
+        }
+      ],
+      "patterns": [
+        "P05_hui_ability"
+      ],
+      "cumulative_legos": 26
+    },
+    {
+      "seed_id": "S0010",
+      "seed_pair": [
+        "我不确定我能不能记住整个句子",
+        "I'm not sure if I can remember the whole sentence."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0010L01",
+          "type": "M",
+          "target": "不确定",
+          "known": "I'm not sure",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "确定",
+              "sure"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0010L02",
+          "type": "M",
+          "target": "能不能",
+          "known": "if I can",
+          "new": true,
+          "components": [
+            [
+              "能",
+              "can"
+            ],
+            [
+              "不",
+              "not"
+            ],
+            [
+              "能",
+              "can"
+            ]
+          ]
+        },
+        {
+          "id": "S0006L01",
+          "type": "A",
+          "target": "记住",
+          "known": "remember",
+          "ref": "S0006"
+        },
+        {
+          "id": "S0010L03",
+          "type": "M",
+          "target": "整个句子",
+          "known": "the whole sentence",
+          "new": true,
+          "components": [
+            [
+              "整个",
+              "whole"
+            ],
+            [
+              "句子",
+              "sentence"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P06_A_not_A_question"
+      ],
+      "cumulative_legos": 29
+    },
+    {
+      "seed_id": "S0011",
+      "seed_pair": [
+        "我想在你说完之后能说",
+        "I'd like to be able to speak after you finish."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "想",
+          "known": "would like",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0011L01",
+          "type": "M",
+          "target": "在你说完之后",
+          "known": "after you finish",
+          "new": true,
+          "components": [
+            [
+              "在",
+              "at"
+            ],
+            [
+              "你",
+              "you"
+            ],
+            [
+              "说完",
+              "finish speaking"
+            ],
+            [
+              "之后",
+              "after"
+            ]
+          ]
+        },
+        {
+          "id": "S0011L02",
+          "type": "A",
+          "target": "能",
+          "known": "be able to",
+          "new": true
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "target": "说",
+          "known": "speak",
+          "ref": "S0001"
+        }
+      ],
+      "patterns": [
+        "P07_zai_after"
+      ],
+      "cumulative_legos": 31
+    },
+    {
+      "seed_id": "S0012",
+      "seed_pair": [
+        "我不想猜明天会发生什么",
+        "I wouldn't like to guess what's going to happen tomorrow."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0012L01",
+          "type": "M",
+          "target": "不想",
+          "known": "I wouldn't like",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "想",
+              "want"
+            ]
+          ]
+        },
+        {
+          "id": "S0012L02",
+          "type": "A",
+          "target": "猜",
+          "known": "guess",
+          "new": true
+        },
+        {
+          "id": "S0012L03",
+          "type": "A",
+          "target": "明天",
+          "known": "tomorrow",
+          "new": true
+        },
+        {
+          "id": "S0012L04",
+          "type": "A",
+          "target": "会",
+          "known": "will",
+          "new": true
+        },
+        {
+          "id": "S0012L05",
+          "type": "A",
+          "target": "发生",
+          "known": "happen",
+          "new": true
+        },
+        {
+          "id": "S0004L02",
+          "type": "A",
+          "target": "什么",
+          "known": "what",
+          "ref": "S0004"
+        }
+      ],
+      "patterns": [
+        "P08_hui_future"
+      ],
+      "cumulative_legos": 36
+    },
+    {
+      "seed_id": "S0013",
+      "seed_pair": [
+        "你中文说得很好",
+        "You speak Chinese very well."
+      ],
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "new": true
+        },
+        {
+          "id": "S0001L06",
+          "type": "A",
+          "target": "中文",
+          "known": "Chinese",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0013L02",
+          "type": "M",
+          "target": "说得很好",
+          "known": "speak very well",
+          "new": true,
+          "components": [
+            [
+              "说",
+              "speak"
+            ],
+            [
+              "得",
+              "complement marker"
+            ],
+            [
+              "很好",
+              "very well"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P09_de_complement"
+      ],
+      "cumulative_legos": 38
+    },
+    {
+      "seed_id": "S0014",
+      "seed_pair": [
+        "你整天说中文吗？",
+        "Do you speak Chinese all day?"
+      ],
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0013"
+        },
+        {
+          "id": "S0014L01",
+          "type": "A",
+          "target": "整天",
+          "known": "all day",
+          "new": true
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "target": "说",
+          "known": "speak",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0001L06",
+          "type": "A",
+          "target": "中文",
+          "known": "Chinese",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0014L02",
+          "type": "A",
+          "target": "吗",
+          "known": "(question)",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P10_ma_question"
+      ],
+      "cumulative_legos": 40
+    },
+    {
+      "seed_id": "S0015",
+      "seed_pair": [
+        "而且我想让你明天和我说中文",
+        "And I want you to speak Chinese with me tomorrow."
+      ],
+      "legos": [
+        {
+          "id": "S0015L01",
+          "type": "A",
+          "target": "而且",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "想",
+          "known": "want",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0015L02",
+          "type": "A",
+          "target": "让",
+          "known": "let/make",
+          "new": true
+        },
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0013"
+        },
+        {
+          "id": "S0012L03",
+          "type": "A",
+          "target": "明天",
+          "known": "tomorrow",
+          "ref": "S0012"
+        },
+        {
+          "id": "S0001L04",
+          "type": "M",
+          "target": "和我",
+          "known": "with me",
+          "new": true,
+          "components": [
+            [
+              "和",
+              "with"
+            ],
+            [
+              "我",
+              "me"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "target": "说",
+          "known": "speak",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0001L06",
+          "type": "A",
+          "target": "中文",
+          "known": "Chinese",
+          "ref": "S0001"
+        }
+      ],
+      "patterns": [
+        "P11_rang_causative"
+      ],
+      "cumulative_legos": 42
+    },
+    {
+      "seed_id": "S0016",
+      "seed_pair": [
+        "他想晚一点和其他人一起回来",
+        "He wants to come back with everyone else later on."
+      ],
+      "legos": [
+        {
+          "id": "S0016L01",
+          "type": "A",
+          "target": "他",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "想",
+          "known": "wants",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0016L02",
+          "type": "A",
+          "target": "晚一点",
+          "known": "later on",
+          "new": true
+        },
+        {
+          "id": "S0016L03",
+          "type": "M",
+          "target": "和其他人",
+          "known": "with everyone else",
+          "new": true,
+          "components": [
+            [
+              "和",
+              "with"
+            ],
+            [
+              "其他人",
+              "everyone else"
+            ]
+          ]
+        },
+        {
+          "id": "S0016L04",
+          "type": "A",
+          "target": "一起",
+          "known": "together",
+          "new": true
+        },
+        {
+          "id": "S0016L05",
+          "type": "A",
+          "target": "回来",
+          "known": "come back",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P12_yiqi"
+      ],
+      "cumulative_legos": 47
+    },
+    {
+      "seed_id": "S0017",
+      "seed_pair": [
+        "她想找出答案是什么",
+        "She wants to find out what the answer is."
+      ],
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "A",
+          "target": "她",
+          "known": "she",
+          "new": true
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "想",
+          "known": "wants",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0017L02",
+          "type": "A",
+          "target": "找出",
+          "known": "find out",
+          "new": true
+        },
+        {
+          "id": "S0017L03",
+          "type": "M",
+          "target": "答案是什么",
+          "known": "what the answer is",
+          "new": true,
+          "components": [
+            [
+              "答案",
+              "answer"
+            ],
+            [
+              "是",
+              "is"
+            ],
+            [
+              "什么",
+              "what"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01_want_to_verb"
+      ],
+      "cumulative_legos": 50
+    },
+    {
+      "seed_id": "S0018",
+      "seed_pair": [
+        "我们想今天晚上六点见面",
+        "We want to meet at six o'clock this evening."
+      ],
+      "legos": [
+        {
+          "id": "S0018L01",
+          "type": "A",
+          "target": "我们",
+          "known": "we",
+          "new": true
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "想",
+          "known": "want",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0018L02",
+          "type": "A",
+          "target": "今天晚上",
+          "known": "this evening",
+          "new": true
+        },
+        {
+          "id": "S0018L03",
+          "type": "A",
+          "target": "六点",
+          "known": "six o'clock",
+          "new": true
+        },
+        {
+          "id": "S0018L04",
+          "type": "A",
+          "target": "见面",
+          "known": "meet",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P01_want_to_verb"
+      ],
+      "cumulative_legos": 54
+    },
+    {
+      "seed_id": "S0019",
+      "seed_pair": [
+        "但我不想停止说话",
+        "But I don't want to stop talking."
+      ],
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "但",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0012L01",
+          "type": "M",
+          "target": "不想",
+          "known": "I don't want",
+          "ref": "S0012",
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "想",
+              "want"
+            ]
+          ]
+        },
+        {
+          "id": "S0019L02",
+          "type": "A",
+          "target": "停止",
+          "known": "stop",
+          "new": true
+        },
+        {
+          "id": "S0019L03",
+          "type": "A",
+          "target": "说话",
+          "known": "talking",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P13_but"
+      ],
+      "cumulative_legos": 57
+    },
+    {
+      "seed_id": "S0020",
+      "seed_pair": [
+        "你想快点学他的名字",
+        "You want to learn his name quickly."
+      ],
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0013"
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "想",
+          "known": "want",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0020L01",
+          "type": "A",
+          "target": "快点",
+          "known": "quickly",
+          "new": true
+        },
+        {
+          "id": "S0002L02",
+          "type": "A",
+          "target": "学习",
+          "known": "learn",
+          "ref": "S0002"
+        },
+        {
+          "id": "S0020L03",
+          "type": "M",
+          "target": "他的名字",
+          "known": "his name",
+          "new": true,
+          "components": [
+            [
+              "他的",
+              "his"
+            ],
+            [
+              "名字",
+              "name"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01_want_to_verb"
+      ],
+      "cumulative_legos": 59
+    },
+    {
+      "seed_id": "S0021",
+      "seed_pair": [
+        "你为什么在学她的名字？",
+        "Why are you learning her name?"
+      ],
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0013"
+        },
+        {
+          "id": "S0021L01",
+          "type": "A",
+          "target": "为什么",
+          "known": "why",
+          "new": true
+        },
+        {
+          "id": "S0021L02",
+          "type": "A",
+          "target": "在学",
+          "known": "are learning",
+          "new": true
+        },
+        {
+          "id": "S0021L03",
+          "type": "M",
+          "target": "她的名字",
+          "known": "her name",
+          "new": true,
+          "components": [
+            [
+              "她的",
+              "her"
+            ],
+            [
+              "名字",
+              "name"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P14_progressive_zai"
+      ],
+      "cumulative_legos": 62
+    },
+    {
+      "seed_id": "S0022",
+      "seed_pair": [
+        "因为我想认识说中文的人",
+        "Because I want to meet people who speak Chinese."
+      ],
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "target": "因为",
+          "known": "because",
+          "new": true
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "想",
+          "known": "want",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0022L02",
+          "type": "A",
+          "target": "认识",
+          "known": "get to know",
+          "new": true
+        },
+        {
+          "id": "S0022L03",
+          "type": "M",
+          "target": "说中文的人",
+          "known": "people who speak Chinese",
+          "new": true,
+          "components": [
+            [
+              "说",
+              "speak"
+            ],
+            [
+              "中文",
+              "Chinese"
+            ],
+            [
+              "的",
+              "that"
+            ],
+            [
+              "人",
+              "people"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P15_de_relative_clause"
+      ],
+      "cumulative_legos": 65
+    },
+    {
+      "seed_id": "S0023",
+      "seed_pair": [
+        "我很快要开始多说一点",
+        "I'm going to start talking more soon."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0023L01",
+          "type": "A",
+          "target": "很快",
+          "known": "soon",
+          "new": true
+        },
+        {
+          "id": "S0005L01",
+          "type": "A",
+          "target": "要",
+          "known": "going to",
+          "ref": "S0005"
+        },
+        {
+          "id": "S0023L02",
+          "type": "A",
+          "target": "开始",
+          "known": "start",
+          "new": true
+        },
+        {
+          "id": "S0023L03",
+          "type": "M",
+          "target": "多说一点",
+          "known": "talking more",
+          "new": true,
+          "components": [
+            [
+              "多",
+              "more"
+            ],
+            [
+              "说",
+              "speak"
+            ],
+            [
+              "一点",
+              "a little"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P04_future_yao"
+      ],
+      "cumulative_legos": 68
+    },
+    {
+      "seed_id": "S0024",
+      "seed_pair": [
+        "我不会能够容易地记住",
+        "I'm not going to be able to remember easily."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0024L01",
+          "type": "M",
+          "target": "不会",
+          "known": "not going to",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "会",
+              "will"
+            ]
+          ]
+        },
+        {
+          "id": "S0011L02",
+          "type": "A",
+          "target": "能够",
+          "known": "be able to",
+          "ref": "S0011"
+        },
+        {
+          "id": "S0024L02",
+          "type": "A",
+          "target": "容易地",
+          "known": "easily",
+          "new": true
+        },
+        {
+          "id": "S0006L01",
+          "type": "A",
+          "target": "记住",
+          "known": "remember",
+          "ref": "S0006"
+        }
+      ],
+      "patterns": [
+        "P16_bu_hui_negative_future"
+      ],
+      "cumulative_legos": 70
+    },
+    {
+      "seed_id": "S0025",
+      "seed_pair": [
+        "在我要走之前你能帮我吗？",
+        "Are you going to help me before I have to go?"
+      ],
+      "legos": [
+        {
+          "id": "S0025L01",
+          "type": "M",
+          "target": "在我要走之前",
+          "known": "before I have to go",
+          "new": true,
+          "components": [
+            [
+              "在",
+              "at"
+            ],
+            [
+              "我",
+              "I"
+            ],
+            [
+              "要",
+              "have to"
+            ],
+            [
+              "走",
+              "go"
+            ],
+            [
+              "之前",
+              "before"
+            ]
+          ]
+        },
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0013"
+        },
+        {
+          "id": "S0011L02",
+          "type": "A",
+          "target": "能",
+          "known": "can",
+          "ref": "S0011"
+        },
+        {
+          "id": "S0025L02",
+          "type": "A",
+          "target": "帮",
+          "known": "help",
+          "new": true
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "me",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0014L02",
+          "type": "A",
+          "target": "吗",
+          "known": "?",
+          "ref": "S0014"
+        }
+      ],
+      "patterns": [
+        "P17_zai_before"
+      ],
+      "cumulative_legos": 72
+    },
+    {
+      "seed_id": "S0026",
+      "seed_pair": [
+        "我喜欢感觉好像我快准备好走了",
+        "I like feeling as if I'm nearly ready to go."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0026L01",
+          "type": "A",
+          "target": "喜欢",
+          "known": "like",
+          "new": true
+        },
+        {
+          "id": "S0026L02",
+          "type": "A",
+          "target": "感觉",
+          "known": "feeling",
+          "new": true
+        },
+        {
+          "id": "S0026L03",
+          "type": "M",
+          "target": "好像",
+          "known": "as if",
+          "new": true,
+          "components": [
+            [
+              "好",
+              "good"
+            ],
+            [
+              "像",
+              "seem"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0026L04",
+          "type": "A",
+          "target": "快",
+          "known": "nearly",
+          "new": true
+        },
+        {
+          "id": "S0026L05",
+          "type": "A",
+          "target": "准备好",
+          "known": "ready",
+          "new": true
+        },
+        {
+          "id": "S0026L06",
+          "type": "A",
+          "target": "走了",
+          "known": "to go",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P18_hao_xiang"
+      ],
+      "cumulative_legos": 78
+    },
+    {
+      "seed_id": "S0027",
+      "seed_pair": [
+        "我不喜欢花太多时间回答",
+        "I don't like taking too much time to answer."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0027L01",
+          "type": "M",
+          "target": "不喜欢",
+          "known": "I don't like",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "喜欢",
+              "like"
+            ]
+          ]
+        },
+        {
+          "id": "S0027L02",
+          "type": "A",
+          "target": "花",
+          "known": "taking",
+          "new": true
+        },
+        {
+          "id": "S0027L03",
+          "type": "M",
+          "target": "太多时间",
+          "known": "too much time",
+          "new": true,
+          "components": [
+            [
+              "太多",
+              "too much"
+            ],
+            [
+              "时间",
+              "time"
+            ]
+          ]
+        },
+        {
+          "id": "S0027L04",
+          "type": "A",
+          "target": "回答",
+          "known": "to answer",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P19_hua_take_time"
+      ],
+      "cumulative_legos": 82
+    },
+    {
+      "seed_id": "S0028",
+      "seed_pair": [
+        "尽快开始说话是有用的",
+        "It's useful to start talking as soon as you can."
+      ],
+      "legos": [
+        {
+          "id": "S0028L01",
+          "type": "A",
+          "target": "尽快",
+          "known": "as soon as you can",
+          "new": true
+        },
+        {
+          "id": "S0023L02",
+          "type": "A",
+          "target": "开始",
+          "known": "start",
+          "ref": "S0023"
+        },
+        {
+          "id": "S0019L03",
+          "type": "A",
+          "target": "说话",
+          "known": "talking",
+          "ref": "S0019"
+        },
+        {
+          "id": "S0028L02",
+          "type": "M",
+          "target": "是有用的",
+          "known": "it's useful",
+          "new": true,
+          "components": [
+            [
+              "是",
+              "is"
+            ],
+            [
+              "有用",
+              "useful"
+            ],
+            [
+              "的",
+              "marker"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P20_shi_de_predicate"
+      ],
+      "cumulative_legos": 84
+    },
+    {
+      "seed_id": "S0029",
+      "seed_pair": [
+        "我期待尽快说得更好",
+        "I'm looking forward to speaking better as soon as I can."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0029L01",
+          "type": "A",
+          "target": "期待",
+          "known": "looking forward to",
+          "new": true
+        },
+        {
+          "id": "S0028L01",
+          "type": "A",
+          "target": "尽快",
+          "known": "as soon as I can",
+          "ref": "S0028"
+        },
+        {
+          "id": "S0013L02",
+          "type": "M",
+          "target": "说得很好",
+          "known": "speak very well",
+          "ref": "S0013",
+          "components": [
+            [
+              "说",
+              "speak"
+            ],
+            [
+              "得",
+              "complement"
+            ]
+          ]
+        },
+        {
+          "id": "S0029L02",
+          "type": "A",
+          "target": "更好",
+          "known": "better",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P21_qidai"
+      ],
+      "cumulative_legos": 86
+    },
+    {
+      "seed_id": "S0030",
+      "seed_pair": [
+        "我昨天想问你一些事",
+        "I wanted to ask you something yesterday."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "target": "昨天",
+          "known": "yesterday",
+          "new": true
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "想",
+          "known": "wanted",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0030L01",
+          "type": "M",
+          "target": "问你一些事",
+          "known": "ask you something",
+          "new": true,
+          "components": [
+            [
+              "问",
+              "ask"
+            ],
+            [
+              "你",
+              "you"
+            ],
+            [
+              "一些事",
+              "something"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P22_past_context"
+      ],
+      "cumulative_legos": 87
+    },
+    {
+      "id": "S0031",
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0013"
+        },
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "target": "昨天",
+          "known": "yesterday",
+          "ref": "S0030"
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "想",
+          "known": "wanted",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0031L01",
+          "type": "M",
+          "target": "和我说话",
+          "known": "to speak with me",
+          "new": true,
+          "components": [
+            [
+              "和我",
+              "with me"
+            ],
+            [
+              "说话",
+              "speak"
+            ]
+          ]
+        },
+        {
+          "id": "S0031L02",
+          "type": "A",
+          "target": "今晚",
+          "known": "tonight",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P22_past_context"
+      ],
+      "seed_pair": [
+        "你今晚想和我说话",
+        "You wanted to speak with me tonight."
+      ],
+      "cumulative_legos": 89
+    },
+    {
+      "id": "S0032",
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0013"
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "想",
+          "known": "wanted",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0032L01",
+          "type": "A",
+          "target": "给",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "me",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0032L02",
+          "type": "A",
+          "target": "看",
+          "known": "show",
+          "new": true
+        },
+        {
+          "id": "S0032L03",
+          "type": "A",
+          "target": "什么东西",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0014L02",
+          "type": "A",
+          "target": "吗",
+          "known": "?",
+          "ref": "S0014"
+        }
+      ],
+      "patterns": [
+        "P23_past_question"
+      ],
+      "seed_pair": [
+        "你想给我看什么东西吗？",
+        "Did you want to show me something?"
+      ],
+      "cumulative_legos": 92
+    },
+    {
+      "id": "S0033",
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0013"
+        },
+        {
+          "id": "S0002L02",
+          "type": "A",
+          "target": "学习",
+          "known": "learn",
+          "ref": "S0002"
+        },
+        {
+          "id": "S0001L06",
+          "type": "A",
+          "target": "中文",
+          "known": "Chinese",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0033L01",
+          "type": "M",
+          "target": "学了多久",
+          "known": "for how long",
+          "new": true,
+          "components": [
+            [
+              "学了",
+              "have learned"
+            ],
+            [
+              "多久",
+              "how long"
+            ]
+          ]
+        },
+        {
+          "id": "S0014L02",
+          "type": "A",
+          "target": "吗",
+          "known": "?",
+          "ref": "S0014"
+        }
+      ],
+      "patterns": [
+        "P24_duration_question"
+      ],
+      "seed_pair": [
+        "你学中文学了多久？",
+        "How long have you been learning Chinese?"
+      ],
+      "cumulative_legos": 93
+    },
+    {
+      "id": "S0034",
+      "legos": [
+        {
+          "id": "S0016L01",
+          "type": "A",
+          "target": "他",
+          "known": "he",
+          "ref": "S0016"
+        },
+        {
+          "id": "S0012L01",
+          "type": "M",
+          "target": "不想",
+          "known": "doesn't want",
+          "ref": "S0012",
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "想",
+              "want"
+            ]
+          ]
+        },
+        {
+          "id": "S0034L01",
+          "type": "A",
+          "target": "安静",
+          "known": "to be quiet",
+          "new": true
+        },
+        {
+          "id": "S0034L02",
+          "type": "M",
+          "target": "当别人在这里的时候",
+          "known": "when other people are here",
+          "new": true,
+          "components": [
+            [
+              "当",
+              "when"
+            ],
+            [
+              "别人",
+              "other people"
+            ],
+            [
+              "在这里",
+              "are here"
+            ],
+            [
+              "的时候",
+              "time"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P25_dang_when"
+      ],
+      "seed_pair": [
+        "当别人在这里的时候他不想安静",
+        "He doesn't want to be quiet when other people are here."
+      ],
+      "cumulative_legos": 95
+    },
+    {
+      "id": "S0035",
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "A",
+          "target": "她",
+          "known": "she",
+          "ref": "S0017"
+        },
+        {
+          "id": "S0012L01",
+          "type": "M",
+          "target": "不想",
+          "known": "doesn't want",
+          "ref": "S0012",
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "想",
+              "want"
+            ]
+          ]
+        },
+        {
+          "id": "S0032L02",
+          "type": "A",
+          "target": "看",
+          "known": "read",
+          "ref": "S0032"
+        },
+        {
+          "id": "S0035L01",
+          "type": "M",
+          "target": "任何东西",
+          "known": "anything",
+          "new": true,
+          "components": [
+            [
+              "任何",
+              "any"
+            ],
+            [
+              "东西",
+              "thing"
+            ]
+          ]
+        },
+        {
+          "id": "S0035L02",
+          "type": "A",
+          "target": "今天下午",
+          "known": "this afternoon",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P01_want_to_verb"
+      ],
+      "seed_pair": [
+        "她今天下午不想看任何东西",
+        "She doesn't want to read anything this afternoon."
+      ],
+      "cumulative_legos": 97
+    },
+    {
+      "id": "S0036",
+      "legos": [
+        {
+          "id": "S0018L01",
+          "type": "A",
+          "target": "我们",
+          "known": "we",
+          "ref": "S0018"
+        },
+        {
+          "id": "S0012L01",
+          "type": "M",
+          "target": "不想",
+          "known": "don't want",
+          "ref": "S0012",
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "想",
+              "want"
+            ]
+          ]
+        },
+        {
+          "id": "S0036L01",
+          "type": "A",
+          "target": "打断",
+          "known": "interrupt",
+          "new": true
+        },
+        {
+          "id": "S0036L02",
+          "type": "M",
+          "target": "这个故事",
+          "known": "the story",
+          "new": true,
+          "components": [
+            [
+              "这个",
+              "this"
+            ],
+            [
+              "故事",
+              "story"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P01_want_to_verb"
+      ],
+      "seed_pair": [
+        "我们不想打断这个故事",
+        "We don't want to interrupt the story."
+      ],
+      "cumulative_legos": 99
+    },
+    {
+      "id": "S0037",
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0037L01",
+          "type": "A",
+          "target": "上个月",
+          "known": "last month",
+          "new": true
+        },
+        {
+          "id": "S0023L02",
+          "type": "A",
+          "target": "开始",
+          "known": "started",
+          "ref": "S0023"
+        },
+        {
+          "id": "S0037L02",
+          "type": "M",
+          "target": "仔细考虑这件事",
+          "known": "think about it carefully",
+          "new": true,
+          "components": [
+            [
+              "仔细",
+              "carefully"
+            ],
+            [
+              "考虑",
+              "think about"
+            ],
+            [
+              "这件事",
+              "this matter"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P26_past_completion"
+      ],
+      "seed_pair": [
+        "我上个月开始仔细考虑这件事",
+        "I started to think about it carefully last month."
+      ],
+      "cumulative_legos": 101
+    },
+    {
+      "id": "S0038",
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0038L01",
+          "type": "M",
+          "target": "学了",
+          "known": "I've been learning",
+          "new": true,
+          "components": [
+            [
+              "学",
+              "learn"
+            ],
+            [
+              "了",
+              "aspect"
+            ]
+          ]
+        },
+        {
+          "id": "S0038L02",
+          "type": "M",
+          "target": "大约一个星期",
+          "known": "for about a week",
+          "new": true,
+          "components": [
+            [
+              "大约",
+              "about"
+            ],
+            [
+              "一个星期",
+              "one week"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P27_le_duration"
+      ],
+      "seed_pair": [
+        "我学了大约一个星期",
+        "I've been learning for about a week."
+      ],
+      "cumulative_legos": 103
+    },
+    {
+      "id": "S0039",
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "但",
+          "known": "but",
+          "ref": "S0019"
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0039L01",
+          "type": "A",
+          "target": "今天早上",
+          "known": "this morning",
+          "new": true
+        },
+        {
+          "id": "S0039L02",
+          "type": "M",
+          "target": "有点累",
+          "known": "a little tired",
+          "new": true,
+          "components": [
+            [
+              "有点",
+              "a little"
+            ],
+            [
+              "累",
+              "tired"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P28_youdian"
+      ],
+      "seed_pair": [
+        "但我今天早上有点累",
+        "But I'm a little tired this morning."
+      ],
+      "cumulative_legos": 105
+    },
+    {
+      "id": "S0040",
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0013"
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "target": "现在",
+          "known": "at the moment",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0026L02",
+          "type": "A",
+          "target": "感觉",
+          "known": "feel",
+          "ref": "S0026"
+        },
+        {
+          "id": "S0040L01",
+          "type": "A",
+          "target": "怎么样",
+          "known": "how",
+          "new": true
+        },
+        {
+          "id": "S0014L02",
+          "type": "A",
+          "target": "吗",
+          "known": "?",
+          "ref": "S0014"
+        }
+      ],
+      "patterns": [
+        "P29_zenmeyang"
+      ],
+      "seed_pair": [
+        "你现在感觉怎么样？",
+        "How do you feel at the moment?"
+      ],
+      "cumulative_legos": 106
+    },
+    {
+      "id": "S0041",
+      "seed_pair": [
+        "我感觉还好，但我开始感到累",
+        "I feel okay, but I'm starting to feel tired."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0026L02",
+          "type": "A",
+          "target": "感觉",
+          "known": "feel",
+          "ref": "S0026"
+        },
+        {
+          "id": "S0041L01",
+          "type": "A",
+          "target": "还好",
+          "known": "okay",
+          "new": true
+        },
+        {
+          "id": "S0041L02",
+          "type": "M",
+          "target": "但我开始感到累",
+          "known": "but I'm starting to feel tired",
+          "new": true,
+          "components": [
+            [
+              "但我",
+              "but I"
+            ],
+            [
+              "开始",
+              "starting"
+            ],
+            [
+              "感到",
+              "feel"
+            ],
+            [
+              "累",
+              "tired"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P30_kaishi_start"
+      ],
+      "cumulative_legos": 108
+    },
+    {
+      "id": "S0042",
+      "seed_pair": [
+        "我开始感觉比昨晚好",
+        "I was starting to feel better than last night."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0042L01",
+          "type": "M",
+          "target": "开始感觉",
+          "known": "was starting to feel",
+          "new": true,
+          "components": [
+            [
+              "开始",
+              "starting"
+            ],
+            [
+              "感觉",
+              "feel"
+            ]
+          ]
+        },
+        {
+          "id": "S0042L02",
+          "type": "M",
+          "target": "比昨晚好",
+          "known": "better than last night",
+          "new": true,
+          "components": [
+            [
+              "比",
+              "than"
+            ],
+            [
+              "昨晚",
+              "last night"
+            ],
+            [
+              "好",
+              "better"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P31_past_progressive"
+      ],
+      "cumulative_legos": 110
+    },
+    {
+      "id": "S0043",
+      "seed_pair": [
+        "我没在想怎么回答",
+        "I wasn't thinking about how to answer."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0043L01",
+          "type": "M",
+          "target": "没在想",
+          "known": "I wasn't thinking",
+          "new": true,
+          "components": [
+            [
+              "没",
+              "not"
+            ],
+            [
+              "在",
+              "progressive"
+            ],
+            [
+              "想",
+              "think"
+            ]
+          ]
+        },
+        {
+          "id": "S0043L02",
+          "type": "M",
+          "target": "怎么回答",
+          "known": "how to answer",
+          "new": true,
+          "components": [
+            [
+              "怎么",
+              "how to"
+            ],
+            [
+              "回答",
+              "answer"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P32_mei_negative_progressive"
+      ],
+      "cumulative_legos": 112
+    },
+    {
+      "id": "S0044",
+      "seed_pair": [
+        "或者我是不是需要提高",
+        "Or if I need to improve."
+      ],
+      "legos": [
+        {
+          "id": "S0044L01",
+          "type": "A",
+          "target": "或者",
+          "known": "or",
+          "new": true
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0044L02",
+          "type": "M",
+          "target": "是不是",
+          "known": "if",
+          "new": true,
+          "components": [
+            [
+              "是",
+              "is"
+            ],
+            [
+              "不是",
+              "not is"
+            ]
+          ]
+        },
+        {
+          "id": "S0044L03",
+          "type": "A",
+          "target": "需要",
+          "known": "need",
+          "new": true
+        },
+        {
+          "id": "S0044L04",
+          "type": "A",
+          "target": "提高",
+          "known": "to improve",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P33_shi_bu_shi"
+      ],
+      "cumulative_legos": 116
+    },
+    {
+      "id": "S0045",
+      "seed_pair": [
+        "我不需要知道所有事",
+        "I don't need to know everything."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0045L01",
+          "type": "M",
+          "target": "不需要",
+          "known": "I don't need",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "需要",
+              "need"
+            ]
+          ]
+        },
+        {
+          "id": "S0045L02",
+          "type": "A",
+          "target": "知道",
+          "known": "know",
+          "new": true
+        },
+        {
+          "id": "S0045L03",
+          "type": "M",
+          "target": "所有事",
+          "known": "everything",
+          "new": true,
+          "components": [
+            [
+              "所有",
+              "all"
+            ],
+            [
+              "事",
+              "things"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P34_buyao_negative"
+      ],
+      "cumulative_legos": 119
+    },
+    {
+      "id": "S0046",
+      "seed_pair": [
+        "但我不担心犯错",
+        "But I don't worry about making mistakes."
+      ],
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "但",
+          "known": "but",
+          "ref": "S0019"
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0046L01",
+          "type": "M",
+          "target": "不担心",
+          "known": "I don't worry",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "担心",
+              "worry"
+            ]
+          ]
+        },
+        {
+          "id": "S0046L02",
+          "type": "A",
+          "target": "犯错",
+          "known": "making mistakes",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P35_danxin_worry"
+      ],
+      "cumulative_legos": 121
+    },
+    {
+      "id": "S0047",
+      "seed_pair": [
+        "因为我觉得犯错是好事",
+        "Because I think that it's a good thing to make mistakes."
+      ],
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "target": "因为",
+          "known": "because",
+          "ref": "S0022"
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0047L01",
+          "type": "A",
+          "target": "觉得",
+          "known": "think",
+          "new": true
+        },
+        {
+          "id": "S0047L02",
+          "type": "M",
+          "target": "犯错是好事",
+          "known": "that it's a good thing to make mistakes",
+          "new": true,
+          "components": [
+            [
+              "犯错",
+              "make mistakes"
+            ],
+            [
+              "是",
+              "is"
+            ],
+            [
+              "好事",
+              "good thing"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P36_juede_think"
+      ],
+      "cumulative_legos": 123
+    },
+    {
+      "id": "S0048",
+      "seed_pair": [
+        "我不在乎犯错",
+        "I don't care about making mistakes."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0048L01",
+          "type": "M",
+          "target": "不在乎",
+          "known": "I don't care",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "在乎",
+              "care"
+            ]
+          ]
+        },
+        {
+          "id": "S0046L02",
+          "type": "A",
+          "target": "犯错",
+          "known": "making mistakes",
+          "ref": "S0046"
+        }
+      ],
+      "patterns": [
+        "P37_zaihu_care"
+      ],
+      "cumulative_legos": 124
+    },
+    {
+      "id": "S0049",
+      "seed_pair": [
+        "是这样的，如果你明白我的意思",
+        "It's like this, if you know what I mean."
+      ],
+      "legos": [
+        {
+          "id": "S0049L01",
+          "type": "M",
+          "target": "是这样的",
+          "known": "it's like this",
+          "new": true,
+          "components": [
+            [
+              "是",
+              "is"
+            ],
+            [
+              "这样",
+              "this way"
+            ],
+            [
+              "的",
+              "marker"
+            ]
+          ]
+        },
+        {
+          "id": "S0049L02",
+          "type": "M",
+          "target": "如果你明白我的意思",
+          "known": "if you know what I mean",
+          "new": true,
+          "components": [
+            [
+              "如果",
+              "if"
+            ],
+            [
+              "你",
+              "you"
+            ],
+            [
+              "明白",
+              "know"
+            ],
+            [
+              "我的意思",
+              "what I mean"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P38_ruguo_if"
+      ],
+      "cumulative_legos": 126
+    },
+    {
+      "id": "S0050",
+      "seed_pair": [
+        "我不是想尽快结束",
+        "I'm not trying to finish as quickly as possible."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0050L01",
+          "type": "M",
+          "target": "不是想",
+          "known": "I'm not trying",
+          "new": true,
+          "components": [
+            [
+              "不是",
+              "not"
+            ],
+            [
+              "想",
+              "trying"
+            ]
+          ]
+        },
+        {
+          "id": "S0050L02",
+          "type": "A",
+          "target": "尽快",
+          "known": "as quickly as possible",
+          "new": true
+        },
+        {
+          "id": "S0050L03",
+          "type": "A",
+          "target": "结束",
+          "known": "finish",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P39_bu_shi_trying"
+      ],
+      "cumulative_legos": 129
+    },
+    {
+      "id": "S0051",
+      "seed_pair": [
+        "我喜欢和朋友做有趣的事",
+        "I enjoy doing interesting things with my friends."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0026L01",
+          "type": "A",
+          "target": "喜欢",
+          "known": "enjoy",
+          "ref": "S0026"
+        },
+        {
+          "id": "S0051L01",
+          "type": "M",
+          "target": "和朋友",
+          "known": "with my friends",
+          "new": true,
+          "components": [
+            [
+              "和",
+              "with"
+            ],
+            [
+              "朋友",
+              "friends"
+            ]
+          ]
+        },
+        {
+          "id": "S0051L02",
+          "type": "A",
+          "target": "做",
+          "known": "doing",
+          "new": true
+        },
+        {
+          "id": "S0051L03",
+          "type": "M",
+          "target": "有趣的事",
+          "known": "interesting things",
+          "new": true,
+          "components": [
+            [
+              "有趣",
+              "interesting"
+            ],
+            [
+              "的",
+              "marker"
+            ],
+            [
+              "事",
+              "things"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P40_enjoy_doing"
+      ],
+      "cumulative_legos": 132
+    },
+    {
+      "id": "S0052",
+      "seed_pair": [
+        "他上星期想给他朋友写封信",
+        "He wanted to write a letter to his friend last week."
+      ],
+      "legos": [
+        {
+          "id": "S0052L01",
+          "type": "A",
+          "target": "他",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0052L02",
+          "type": "A",
+          "target": "上星期",
+          "known": "last week",
+          "new": true
+        },
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "想",
+          "known": "wanted",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0052L03",
+          "type": "M",
+          "target": "给他朋友",
+          "known": "to his friend",
+          "new": true,
+          "components": [
+            [
+              "给",
+              "to/give"
+            ],
+            [
+              "他",
+              "his"
+            ],
+            [
+              "朋友",
+              "friend"
+            ]
+          ]
+        },
+        {
+          "id": "S0052L04",
+          "type": "M",
+          "target": "写封信",
+          "known": "write a letter",
+          "new": true,
+          "components": [
+            [
+              "写",
+              "write"
+            ],
+            [
+              "封",
+              "measure word"
+            ],
+            [
+              "信",
+              "letter"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P41_gei_to_someone"
+      ],
+      "cumulative_legos": 136
+    },
+    {
+      "id": "S0053",
+      "seed_pair": [
+        "她想把他的信放在她包里",
+        "She wanted to put his letter in her bag."
+      ],
+      "legos": [
+        {
+          "id": "S0053L01",
+          "type": "A",
+          "target": "她",
+          "known": "she",
+          "new": true
+        },
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "想",
+          "known": "wanted",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0053L02",
+          "type": "M",
+          "target": "把他的信",
+          "known": "his letter",
+          "new": true,
+          "components": [
+            [
+              "把",
+              "marker"
+            ],
+            [
+              "他的",
+              "his"
+            ],
+            [
+              "信",
+              "letter"
+            ]
+          ]
+        },
+        {
+          "id": "S0053L03",
+          "type": "M",
+          "target": "放在她包里",
+          "known": "put in her bag",
+          "new": true,
+          "components": [
+            [
+              "放在",
+              "put in"
+            ],
+            [
+              "她",
+              "her"
+            ],
+            [
+              "包",
+              "bag"
+            ],
+            [
+              "里",
+              "inside"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P42_ba_construction"
+      ],
+      "cumulative_legos": 139
+    },
+    {
+      "id": "S0054",
+      "seed_pair": [
+        "我们想再给你一点时间",
+        "We wanted to give you a little more time."
+      ],
+      "legos": [
+        {
+          "id": "S0054L01",
+          "type": "A",
+          "target": "我们",
+          "known": "we",
+          "new": true
+        },
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "想",
+          "known": "wanted",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0054L02",
+          "type": "A",
+          "target": "再",
+          "known": "again",
+          "new": true
+        },
+        {
+          "id": "S0054L03",
+          "type": "M",
+          "target": "给你",
+          "known": "give you",
+          "new": true,
+          "components": [
+            [
+              "给",
+              "give"
+            ],
+            [
+              "你",
+              "you"
+            ]
+          ]
+        },
+        {
+          "id": "S0009L02",
+          "type": "A",
+          "target": "一点",
+          "known": "a little",
+          "ref": "S0009"
+        },
+        {
+          "id": "S0054L04",
+          "type": "A",
+          "target": "时间",
+          "known": "time",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P43_zai_again"
+      ],
+      "cumulative_legos": 143
+    },
+    {
+      "id": "S0055",
+      "seed_pair": [
+        "当我没睡好的时候我不喜欢醒来",
+        "I don't enjoy waking up when I didn't sleep very well."
+      ],
+      "legos": [
+        {
+          "id": "S0055L01",
+          "type": "M",
+          "target": "当我没睡好的时候",
+          "known": "when I didn't sleep very well",
+          "new": true,
+          "components": [
+            [
+              "当",
+              "when"
+            ],
+            [
+              "我",
+              "I"
+            ],
+            [
+              "没",
+              "didn't"
+            ],
+            [
+              "睡好",
+              "sleep well"
+            ],
+            [
+              "的时候",
+              "marker"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0003L03",
+          "type": "M",
+          "target": "不喜欢",
+          "known": "I don't enjoy",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0055L02",
+          "type": "A",
+          "target": "醒来",
+          "known": "waking up",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P44_dang_when"
+      ],
+      "cumulative_legos": 145
+    },
+    {
+      "id": "S0056",
+      "seed_pair": [
+        "这样我能记住怎么说几个词",
+        "So I can remember how to say a few words."
+      ],
+      "legos": [
+        {
+          "id": "S0056L01",
+          "type": "M",
+          "target": "这样我能",
+          "known": "so I can",
+          "new": true,
+          "components": [
+            [
+              "这样",
+              "this way"
+            ],
+            [
+              "我",
+              "I"
+            ],
+            [
+              "能",
+              "can"
+            ]
+          ]
+        },
+        {
+          "id": "S0010L03",
+          "type": "A",
+          "target": "记住",
+          "known": "remember",
+          "ref": "S0010"
+        },
+        {
+          "id": "S0004L03",
+          "type": "M",
+          "target": "怎么说",
+          "known": "how to say",
+          "ref": "S0004"
+        },
+        {
+          "id": "S0056L02",
+          "type": "M",
+          "target": "几个词",
+          "known": "a few words",
+          "new": true,
+          "components": [
+            [
+              "几个",
+              "a few"
+            ],
+            [
+              "词",
+              "words"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P45_zheyang_so"
+      ],
+      "cumulative_legos": 147
+    },
+    {
+      "id": "S0057",
+      "seed_pair": [
+        "我记不住怎么说我想说的",
+        "I can't remember how to say what I wanted to say."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0057L01",
+          "type": "M",
+          "target": "记不住",
+          "known": "can't remember",
+          "new": true,
+          "components": [
+            [
+              "记",
+              "remember"
+            ],
+            [
+              "不",
+              "not"
+            ],
+            [
+              "住",
+              "complement"
+            ]
+          ]
+        },
+        {
+          "id": "S0004L03",
+          "type": "M",
+          "target": "怎么说",
+          "known": "how to say",
+          "ref": "S0004"
+        },
+        {
+          "id": "S0057L02",
+          "type": "M",
+          "target": "我想说的",
+          "known": "what I wanted to say",
+          "new": true,
+          "components": [
+            [
+              "我",
+              "I"
+            ],
+            [
+              "想",
+              "wanted"
+            ],
+            [
+              "说",
+              "say"
+            ],
+            [
+              "的",
+              "marker"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P46_bu_potential_complement"
+      ],
+      "cumulative_legos": 149
+    },
+    {
+      "id": "S0058",
+      "seed_pair": [
+        "当你懂足够的词的时候很有趣",
+        "It's interesting when you understand enough words."
+      ],
+      "legos": [
+        {
+          "id": "S0058L01",
+          "type": "M",
+          "target": "当你懂",
+          "known": "when you understand",
+          "new": true,
+          "components": [
+            [
+              "当",
+              "when"
+            ],
+            [
+              "你",
+              "you"
+            ],
+            [
+              "懂",
+              "understand"
+            ]
+          ]
+        },
+        {
+          "id": "S0058L02",
+          "type": "M",
+          "target": "足够的词的时候",
+          "known": "enough words",
+          "new": true,
+          "components": [
+            [
+              "足够",
+              "enough"
+            ],
+            [
+              "的",
+              "marker"
+            ],
+            [
+              "词",
+              "words"
+            ],
+            [
+              "的时候",
+              "marker"
+            ]
+          ]
+        },
+        {
+          "id": "S0027L02",
+          "type": "A",
+          "target": "很有趣",
+          "known": "interesting",
+          "ref": "S0027"
+        }
+      ],
+      "patterns": [
+        "P47_donng_understand"
+      ],
+      "cumulative_legos": 151
+    },
+    {
+      "id": "S0059",
+      "seed_pair": [
+        "我知道下星期怎么做我需要做的",
+        "I know how to do what I need to do next week."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0005L01",
+          "type": "A",
+          "target": "知道",
+          "known": "know",
+          "ref": "S0005"
+        },
+        {
+          "id": "S0059L01",
+          "type": "M",
+          "target": "下星期怎么做",
+          "known": "how to do next week",
+          "new": true,
+          "components": [
+            [
+              "下星期",
+              "next week"
+            ],
+            [
+              "怎么",
+              "how to"
+            ],
+            [
+              "做",
+              "do"
+            ]
+          ]
+        },
+        {
+          "id": "S0059L02",
+          "type": "M",
+          "target": "我需要做的",
+          "known": "what I need to do",
+          "new": true,
+          "components": [
+            [
+              "我",
+              "I"
+            ],
+            [
+              "需要",
+              "need"
+            ],
+            [
+              "做",
+              "do"
+            ],
+            [
+              "的",
+              "marker"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P48_need_to_do"
+      ],
+      "cumulative_legos": 153
+    },
+    {
+      "id": "S0060",
+      "seed_pair": [
+        "我还不知道怎么说足够不同的词",
+        "I don't know how to say enough different words yet."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0060L01",
+          "type": "A",
+          "target": "还",
+          "known": "yet",
+          "new": true
+        },
+        {
+          "id": "S0005L03",
+          "type": "M",
+          "target": "不知道",
+          "known": "I don't know",
+          "ref": "S0005"
+        },
+        {
+          "id": "S0004L03",
+          "type": "M",
+          "target": "怎么说",
+          "known": "how to say",
+          "ref": "S0004"
+        },
+        {
+          "id": "S0060L02",
+          "type": "M",
+          "target": "足够不同的词",
+          "known": "enough different words",
+          "new": true,
+          "components": [
+            [
+              "足够",
+              "enough"
+            ],
+            [
+              "不同",
+              "different"
+            ],
+            [
+              "的",
+              "marker"
+            ],
+            [
+              "词",
+              "words"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P49_hai_yet"
+      ],
+      "cumulative_legos": 155
+    },
+    {
+      "seed_id": "S0061",
+      "seed_pair": [
+        "你能再说一遍慢一点吗？",
+        "Could you say that again a little more slowly?"
+      ],
+      "legos": [
+        {
+          "id": "S0061L01",
+          "type": "M",
+          "target": "你能",
+          "known": "could you",
+          "new": true,
+          "components": [
+            [
+              "你",
+              "you"
+            ],
+            [
+              "能",
+              "could"
+            ]
+          ]
+        },
+        {
+          "id": "S0061L02",
+          "type": "M",
+          "target": "再说一遍",
+          "known": "say that again",
+          "new": true,
+          "components": [
+            [
+              "再",
+              "again"
+            ],
+            [
+              "说",
+              "say"
+            ],
+            [
+              "一遍",
+              "one time"
+            ]
+          ]
+        },
+        {
+          "id": "S0061L03",
+          "type": "M",
+          "target": "慢一点",
+          "known": "a little more slowly",
+          "new": true,
+          "components": [
+            [
+              "慢",
+              "slow"
+            ],
+            [
+              "一点",
+              "a little"
+            ]
+          ]
+        },
+        {
+          "id": "S0032L04",
+          "type": "A",
+          "target": "吗",
+          "known": "?",
+          "ref": "S0032"
+        }
+      ],
+      "patterns": [
+        "P50_neng_could"
+      ],
+      "cumulative_legos": 158
+    },
+    {
+      "seed_id": "S0062",
+      "seed_pair": [
+        "我不确定我能不能同时帮你",
+        "I'm not sure if I can help you at the same time."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0010L01",
+          "type": "M",
+          "target": "不确定",
+          "known": "I'm not sure",
+          "ref": "S0010"
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0010L02",
+          "type": "M",
+          "target": "能不能",
+          "known": "if I can",
+          "ref": "S0010"
+        },
+        {
+          "id": "S0062L01",
+          "type": "A",
+          "target": "同时",
+          "known": "at the same time",
+          "new": true
+        },
+        {
+          "id": "S0062L02",
+          "type": "M",
+          "target": "帮你",
+          "known": "help you",
+          "new": true,
+          "components": [
+            [
+              "帮",
+              "help"
+            ],
+            [
+              "你",
+              "you"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P51_tongshi_same_time"
+      ],
+      "cumulative_legos": 160
+    },
+    {
+      "seed_id": "S0063",
+      "seed_pair": [
+        "你确定你不介意帮我吗？",
+        "Are you sure you don't mind helping me?"
+      ],
+      "legos": [
+        {
+          "id": "S0063L01",
+          "type": "M",
+          "target": "你确定",
+          "known": "are you sure",
+          "new": true,
+          "components": [
+            [
+              "你",
+              "you"
+            ],
+            [
+              "确定",
+              "sure"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0063L02",
+          "type": "M",
+          "target": "不介意",
+          "known": "don't mind",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "介意",
+              "mind"
+            ]
+          ]
+        },
+        {
+          "id": "S0063L03",
+          "type": "M",
+          "target": "帮我",
+          "known": "helping me",
+          "new": true,
+          "components": [
+            [
+              "帮",
+              "help"
+            ],
+            [
+              "我",
+              "me"
+            ]
+          ]
+        },
+        {
+          "id": "S0032L04",
+          "type": "A",
+          "target": "吗",
+          "known": "?",
+          "ref": "S0032"
+        }
+      ],
+      "patterns": [
+        "P52_jieyi_mind"
+      ],
+      "cumulative_legos": 163
+    },
+    {
+      "seed_id": "S0064",
+      "seed_pair": [
+        "学中文不容易但很有意思",
+        "Learning Chinese isn't easy but it is fun."
+      ],
+      "legos": [
+        {
+          "id": "S0064L01",
+          "type": "M",
+          "target": "学中文",
+          "known": "learning Chinese",
+          "new": true,
+          "components": [
+            [
+              "学",
+              "learn"
+            ],
+            [
+              "中文",
+              "Chinese"
+            ]
+          ]
+        },
+        {
+          "id": "S0064L02",
+          "type": "M",
+          "target": "不容易",
+          "known": "isn't easy",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "容易",
+              "easy"
+            ]
+          ]
+        },
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "但",
+          "known": "but",
+          "ref": "S0019"
+        },
+        {
+          "id": "S0064L03",
+          "type": "M",
+          "target": "很有意思",
+          "known": "fun",
+          "new": true,
+          "components": [
+            [
+              "很",
+              "very"
+            ],
+            [
+              "有意思",
+              "interesting"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P53_rongyi_easy"
+      ],
+      "cumulative_legos": 166
+    },
+    {
+      "seed_id": "S0065",
+      "seed_pair": [
+        "花时间测试自己是重要的",
+        "It's important to take time to test yourself."
+      ],
+      "legos": [
+        {
+          "id": "S0065L01",
+          "type": "M",
+          "target": "花时间",
+          "known": "take time",
+          "new": true,
+          "components": [
+            [
+              "花",
+              "spend"
+            ],
+            [
+              "时间",
+              "time"
+            ]
+          ]
+        },
+        {
+          "id": "S0065L02",
+          "type": "A",
+          "target": "测试",
+          "known": "test",
+          "new": true
+        },
+        {
+          "id": "S0065L03",
+          "type": "A",
+          "target": "自己",
+          "known": "yourself",
+          "new": true
+        },
+        {
+          "id": "S0065L04",
+          "type": "M",
+          "target": "是重要的",
+          "known": "is important",
+          "new": true,
+          "components": [
+            [
+              "是",
+              "is"
+            ],
+            [
+              "重要",
+              "important"
+            ],
+            [
+              "的",
+              "marker"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P54_hua_shijian_take_time"
+      ],
+      "cumulative_legos": 170
+    },
+    {
+      "seed_id": "S0066",
+      "seed_pair": [
+        "找到答案不难",
+        "It's not difficult to find the answer."
+      ],
+      "legos": [
+        {
+          "id": "S0066L01",
+          "type": "M",
+          "target": "找到",
+          "known": "find",
+          "new": true,
+          "components": [
+            [
+              "找",
+              "look for"
+            ],
+            [
+              "到",
+              "achieve/reach"
+            ]
+          ]
+        },
+        {
+          "id": "S0066L02",
+          "type": "A",
+          "target": "答案",
+          "known": "answer",
+          "new": true
+        },
+        {
+          "id": "S0066L03",
+          "type": "M",
+          "target": "不难",
+          "known": "not difficult",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "难",
+              "difficult"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P55_zhaodao_find"
+      ],
+      "cumulative_legos": 173
+    },
+    {
+      "seed_id": "S0067",
+      "seed_pair": [
+        "你为什么想停？",
+        "Why do you want to stop?"
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0067L01",
+          "type": "M",
+          "target": "为什么",
+          "known": "why",
+          "new": true,
+          "components": [
+            [
+              "为",
+              "for"
+            ],
+            [
+              "什么",
+              "what"
+            ]
+          ]
+        },
+        {
+          "id": "S0067L02",
+          "type": "M",
+          "target": "想停",
+          "known": "want to stop",
+          "new": true,
+          "components": [
+            [
+              "想",
+              "want"
+            ],
+            [
+              "停",
+              "stop"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P56_weishenme_why"
+      ],
+      "cumulative_legos": 175
+    },
+    {
+      "seed_id": "S0068",
+      "seed_pair": [
+        "你在找什么？",
+        "What are you looking for?"
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0068L01",
+          "type": "M",
+          "target": "在找",
+          "known": "are looking for",
+          "new": true,
+          "components": [
+            [
+              "在",
+              "progressive"
+            ],
+            [
+              "找",
+              "look for"
+            ]
+          ]
+        },
+        {
+          "id": "S0068L02",
+          "type": "A",
+          "target": "什么",
+          "known": "what",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P57_zai_zhao_looking_for"
+      ],
+      "cumulative_legos": 177
+    },
+    {
+      "seed_id": "S0069",
+      "seed_pair": [
+        "他整个下午不想照顾那只小狗",
+        "He didn't want to look after the young dog all afternoon."
+      ],
+      "legos": [
+        {
+          "id": "S0052L01",
+          "type": "A",
+          "target": "他",
+          "known": "he",
+          "ref": "S0052"
+        },
+        {
+          "id": "S0069L01",
+          "type": "M",
+          "target": "整个下午",
+          "known": "all afternoon",
+          "new": true,
+          "components": [
+            [
+              "整个",
+              "whole"
+            ],
+            [
+              "下午",
+              "afternoon"
+            ]
+          ]
+        },
+        {
+          "id": "S0003L02",
+          "type": "M",
+          "target": "不想",
+          "known": "didn't want",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0069L02",
+          "type": "A",
+          "target": "照顾",
+          "known": "look after",
+          "new": true
+        },
+        {
+          "id": "S0069L03",
+          "type": "M",
+          "target": "那只",
+          "known": "that",
+          "new": true,
+          "components": [
+            [
+              "那",
+              "that"
+            ],
+            [
+              "只",
+              "measure word"
+            ]
+          ]
+        },
+        {
+          "id": "S0069L04",
+          "type": "M",
+          "target": "小狗",
+          "known": "young dog",
+          "new": true,
+          "components": [
+            [
+              "小",
+              "young/small"
+            ],
+            [
+              "狗",
+              "dog"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P58_zhaogu_look_after"
+      ],
+      "cumulative_legos": 181
+    },
+    {
+      "seed_id": "S0070",
+      "seed_pair": [
+        "她不想告诉我它在哪儿",
+        "She didn't want to tell me where it was."
+      ],
+      "legos": [
+        {
+          "id": "S0053L01",
+          "type": "A",
+          "target": "她",
+          "known": "she",
+          "ref": "S0053"
+        },
+        {
+          "id": "S0003L02",
+          "type": "M",
+          "target": "不想",
+          "known": "didn't want",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0070L01",
+          "type": "M",
+          "target": "告诉我",
+          "known": "tell me",
+          "new": true,
+          "components": [
+            [
+              "告诉",
+              "tell"
+            ],
+            [
+              "我",
+              "me"
+            ]
+          ]
+        },
+        {
+          "id": "S0070L02",
+          "type": "A",
+          "target": "它",
+          "known": "it",
+          "new": true
+        },
+        {
+          "id": "S0070L03",
+          "type": "M",
+          "target": "在哪儿",
+          "known": "where it was",
+          "new": true,
+          "components": [
+            [
+              "在",
+              "at/is"
+            ],
+            [
+              "哪儿",
+              "where"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P59_gaosu_tell"
+      ],
+      "cumulative_legos": 184
+    },
+    {
+      "seed_id": "S0071",
+      "seed_pair": [
+        "我们不想让任何人听到真相",
+        "We didn't want to let anyone hear the truth."
+      ],
+      "legos": [
+        {
+          "id": "S0054L01",
+          "type": "A",
+          "target": "我们",
+          "known": "we",
+          "ref": "S0054"
+        },
+        {
+          "id": "S0003L02",
+          "type": "M",
+          "target": "不想",
+          "known": "didn't want",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0071L01",
+          "type": "M",
+          "target": "让任何人",
+          "known": "let anyone",
+          "new": true,
+          "components": [
+            [
+              "让",
+              "let"
+            ],
+            [
+              "任何人",
+              "anyone"
+            ]
+          ]
+        },
+        {
+          "id": "S0071L02",
+          "type": "M",
+          "target": "听到",
+          "known": "hear",
+          "new": true,
+          "components": [
+            [
+              "听",
+              "listen"
+            ],
+            [
+              "到",
+              "achieve"
+            ]
+          ]
+        },
+        {
+          "id": "S0071L03",
+          "type": "A",
+          "target": "真相",
+          "known": "truth",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P60_rang_let"
+      ],
+      "cumulative_legos": 187
+    },
+    {
+      "seed_id": "S0072",
+      "seed_pair": [
+        "我觉得你做得很好",
+        "I think that you're doing very well."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0047L01",
+          "type": "A",
+          "target": "觉得",
+          "known": "think",
+          "ref": "S0047"
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0072L01",
+          "type": "M",
+          "target": "做得很好",
+          "known": "doing very well",
+          "new": true,
+          "components": [
+            [
+              "做",
+              "do"
+            ],
+            [
+              "得",
+              "complement marker"
+            ],
+            [
+              "很好",
+              "very well"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P61_de_complement"
+      ],
+      "cumulative_legos": 188
+    },
+    {
+      "seed_id": "S0073",
+      "seed_pair": [
+        "非常感谢，但我还有更多要学",
+        "Thank you very much, but I've got more to learn."
+      ],
+      "legos": [
+        {
+          "id": "S0073L01",
+          "type": "M",
+          "target": "非常感谢",
+          "known": "thank you very much",
+          "new": true,
+          "components": [
+            [
+              "非常",
+              "very"
+            ],
+            [
+              "感谢",
+              "thank"
+            ]
+          ]
+        },
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "但",
+          "known": "but",
+          "ref": "S0019"
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0073L02",
+          "type": "M",
+          "target": "还有",
+          "known": "have",
+          "new": true,
+          "components": [
+            [
+              "还",
+              "still"
+            ],
+            [
+              "有",
+              "have"
+            ]
+          ]
+        },
+        {
+          "id": "S0073L03",
+          "type": "M",
+          "target": "更多",
+          "known": "more",
+          "new": true,
+          "components": [
+            [
+              "更",
+              "more"
+            ],
+            [
+              "多",
+              "much"
+            ]
+          ]
+        },
+        {
+          "id": "S0073L04",
+          "type": "M",
+          "target": "要学",
+          "known": "to learn",
+          "new": true,
+          "components": [
+            [
+              "要",
+              "need to"
+            ],
+            [
+              "学",
+              "learn"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P62_feichang_very"
+      ],
+      "cumulative_legos": 192
+    },
+    {
+      "seed_id": "S0074",
+      "seed_pair": [
+        "非常感谢你帮我理解",
+        "Thank you very much for helping me to understand."
+      ],
+      "legos": [
+        {
+          "id": "S0073L01",
+          "type": "M",
+          "target": "非常感谢",
+          "known": "thank you very much",
+          "ref": "S0073"
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0063L03",
+          "type": "M",
+          "target": "帮我",
+          "known": "helping me",
+          "ref": "S0063"
+        },
+        {
+          "id": "S0074L01",
+          "type": "A",
+          "target": "理解",
+          "known": "understand",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P63_lijie_understand"
+      ],
+      "cumulative_legos": 193
+    },
+    {
+      "seed_id": "S0075",
+      "seed_pair": [
+        "你还有更多要学吗？",
+        "Have you got more to learn?"
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0073L02",
+          "type": "M",
+          "target": "还有",
+          "known": "have",
+          "ref": "S0073"
+        },
+        {
+          "id": "S0073L03",
+          "type": "M",
+          "target": "更多",
+          "known": "more",
+          "ref": "S0073"
+        },
+        {
+          "id": "S0073L04",
+          "type": "M",
+          "target": "要学",
+          "known": "to learn",
+          "ref": "S0073"
+        },
+        {
+          "id": "S0032L04",
+          "type": "A",
+          "target": "吗",
+          "known": "?",
+          "ref": "S0032"
+        }
+      ],
+      "patterns": [
+        "P64_hai_you_have"
+      ],
+      "cumulative_legos": 193
+    },
+    {
+      "seed_id": "S0076",
+      "seed_pair": [
+        "我对我已经学了多少很满意",
+        "I'm very happy with how much I've learnt already."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0076L01",
+          "type": "A",
+          "target": "对",
+          "known": "with",
+          "new": true
+        },
+        {
+          "id": "S0076L02",
+          "type": "M",
+          "target": "我已经学了多少",
+          "known": "how much I've learnt already",
+          "new": true,
+          "components": [
+            [
+              "我",
+              "I"
+            ],
+            [
+              "已经",
+              "already"
+            ],
+            [
+              "学了",
+              "learnt"
+            ],
+            [
+              "多少",
+              "how much"
+            ]
+          ]
+        },
+        {
+          "id": "S0076L03",
+          "type": "M",
+          "target": "很满意",
+          "known": "very happy",
+          "new": true,
+          "components": [
+            [
+              "很",
+              "very"
+            ],
+            [
+              "满意",
+              "satisfied"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P65_dui_manyi_happy_with"
+      ],
+      "cumulative_legos": 196
+    },
+    {
+      "seed_id": "S0077",
+      "seed_pair": [
+        "我对我开始理解得多快感到惊讶",
+        "I'm surprised at how quickly I'm starting to understand."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0076L01",
+          "type": "A",
+          "target": "对",
+          "known": "at",
+          "ref": "S0076"
+        },
+        {
+          "id": "S0077L01",
+          "type": "M",
+          "target": "我开始理解得多快",
+          "known": "how quickly I'm starting to understand",
+          "new": true,
+          "components": [
+            [
+              "我",
+              "I"
+            ],
+            [
+              "开始",
+              "starting"
+            ],
+            [
+              "理解",
+              "understand"
+            ],
+            [
+              "得",
+              "complement"
+            ],
+            [
+              "多快",
+              "how quickly"
+            ]
+          ]
+        },
+        {
+          "id": "S0077L02",
+          "type": "M",
+          "target": "感到惊讶",
+          "known": "surprised",
+          "new": true,
+          "components": [
+            [
+              "感到",
+              "feel"
+            ],
+            [
+              "惊讶",
+              "surprised"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P66_gandao_feel"
+      ],
+      "cumulative_legos": 198
+    },
+    {
+      "seed_id": "S0078",
+      "seed_pair": [
+        "我不明白你说的",
+        "I don't understand what you said."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0078L01",
+          "type": "M",
+          "target": "不明白",
+          "known": "don't understand",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "明白",
+              "understand"
+            ]
+          ]
+        },
+        {
+          "id": "S0078L02",
+          "type": "M",
+          "target": "你说的",
+          "known": "what you said",
+          "new": true,
+          "components": [
+            [
+              "你",
+              "you"
+            ],
+            [
+              "说",
+              "said"
+            ],
+            [
+              "的",
+              "marker"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P67_mingbai_understand"
+      ],
+      "cumulative_legos": 200
+    },
+    {
+      "seed_id": "S0079",
+      "seed_pair": [
+        "你什么时候开始学的？",
+        "When did you start to learn?"
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0079L01",
+          "type": "M",
+          "target": "什么时候",
+          "known": "when",
+          "new": true,
+          "components": [
+            [
+              "什么",
+              "what"
+            ],
+            [
+              "时候",
+              "time"
+            ]
+          ]
+        },
+        {
+          "id": "S0079L02",
+          "type": "M",
+          "target": "开始学的",
+          "known": "start to learn",
+          "new": true,
+          "components": [
+            [
+              "开始",
+              "start"
+            ],
+            [
+              "学",
+              "learn"
+            ],
+            [
+              "的",
+              "marker"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P68_shenme_shihou_when"
+      ],
+      "cumulative_legos": 202
+    },
+    {
+      "seed_id": "S0080",
+      "seed_pair": [
+        "我不确定我什么时候会准备好",
+        "I'm not sure when I'll be ready."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0010L01",
+          "type": "M",
+          "target": "不确定",
+          "known": "I'm not sure",
+          "ref": "S0010"
+        },
+        {
+          "id": "S0080L01",
+          "type": "M",
+          "target": "我什么时候会准备好",
+          "known": "when I'll be ready",
+          "new": true,
+          "components": [
+            [
+              "我",
+              "I"
+            ],
+            [
+              "什么时候",
+              "when"
+            ],
+            [
+              "会",
+              "will"
+            ],
+            [
+              "准备好",
+              "be ready"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P69_hui_will"
+      ],
+      "cumulative_legos": 203
+    },
+    {
+      "seed_id": "S0081",
+      "seed_pair": [
+        "你什么时候想开始？",
+        "When do you want to start?"
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0079L01",
+          "type": "M",
+          "target": "什么时候",
+          "known": "when",
+          "ref": "S0079"
+        },
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "想",
+          "known": "want",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0081L01",
+          "type": "A",
+          "target": "开始",
+          "known": "start",
+          "new": true
+        }
+      ],
+      "patterns": [
+        "P70_kaishi_start"
+      ],
+      "cumulative_legos": 204
+    },
+    {
+      "seed_id": "S0082",
+      "seed_pair": [
+        "我不会等你。为什么不？",
+        "I'm not going to wait for you. Why not?"
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0082L01",
+          "type": "M",
+          "target": "不会",
+          "known": "not going to",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "会",
+              "will"
+            ]
+          ]
+        },
+        {
+          "id": "S0082L02",
+          "type": "M",
+          "target": "等你",
+          "known": "wait for you",
+          "new": true,
+          "components": [
+            [
+              "等",
+              "wait"
+            ],
+            [
+              "你",
+              "you"
+            ]
+          ]
+        },
+        {
+          "id": "S0082L03",
+          "type": "M",
+          "target": "为什么不",
+          "known": "why not",
+          "new": true,
+          "components": [
+            [
+              "为什么",
+              "why"
+            ],
+            [
+              "不",
+              "not"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P71_bu_hui_not_going_to"
+      ],
+      "cumulative_legos": 207
+    },
+    {
+      "seed_id": "S0083",
+      "seed_pair": [
+        "我同意你说的关于你朋友的话",
+        "I agree with what you said about your friend."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0083L01",
+          "type": "A",
+          "target": "同意",
+          "known": "agree",
+          "new": true
+        },
+        {
+          "id": "S0083L02",
+          "type": "M",
+          "target": "你说的关于你朋友的话",
+          "known": "what you said about your friend",
+          "new": true,
+          "components": [
+            [
+              "你",
+              "you"
+            ],
+            [
+              "说的",
+              "said"
+            ],
+            [
+              "关于",
+              "about"
+            ],
+            [
+              "你朋友",
+              "your friend"
+            ],
+            [
+              "的话",
+              "words/what"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P72_tongyi_agree"
+      ],
+      "cumulative_legos": 209
+    },
+    {
+      "seed_id": "S0084",
+      "seed_pair": [
+        "我不同意他说的关于我朋友的话",
+        "I don't agree with what he said about my friend."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0084L01",
+          "type": "M",
+          "target": "不同意",
+          "known": "don't agree",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "同意",
+              "agree"
+            ]
+          ]
+        },
+        {
+          "id": "S0084L02",
+          "type": "M",
+          "target": "他说的关于我朋友的话",
+          "known": "what he said about my friend",
+          "new": true,
+          "components": [
+            [
+              "他",
+              "he"
+            ],
+            [
+              "说的",
+              "said"
+            ],
+            [
+              "关于",
+              "about"
+            ],
+            [
+              "我朋友",
+              "my friend"
+            ],
+            [
+              "的话",
+              "words/what"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P73_bu_tongyi_disagree"
+      ],
+      "cumulative_legos": 211
+    },
+    {
+      "seed_id": "S0085",
+      "seed_pair": [
+        "我不认识那些人",
+        "I don't know those people."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0085L01",
+          "type": "M",
+          "target": "不认识",
+          "known": "don't know",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "认识",
+              "know"
+            ]
+          ]
+        },
+        {
+          "id": "S0085L02",
+          "type": "M",
+          "target": "那些人",
+          "known": "those people",
+          "new": true,
+          "components": [
+            [
+              "那些",
+              "those"
+            ],
+            [
+              "人",
+              "people"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P74_bu_renshi_dont_know"
+      ],
+      "cumulative_legos": 213
+    },
+    {
+      "seed_id": "S0086",
+      "seed_pair": [
+        "不幸的是，这不可能",
+        "It wasn't possible, unfortunately."
+      ],
+      "legos": [
+        {
+          "id": "S0086L01",
+          "type": "M",
+          "target": "不幸的是",
+          "known": "unfortunately",
+          "new": true,
+          "components": [
+            [
+              "不幸",
+              "unfortunate"
+            ],
+            [
+              "的是",
+              "is that"
+            ]
+          ]
+        },
+        {
+          "id": "S0086L02",
+          "type": "A",
+          "target": "这",
+          "known": "this",
+          "new": true
+        },
+        {
+          "id": "S0086L03",
+          "type": "M",
+          "target": "不可能",
+          "known": "wasn't possible",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "可能",
+              "possible"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P75_buxing_unfortunately"
+      ],
+      "cumulative_legos": 216
+    },
+    {
+      "seed_id": "S0087",
+      "seed_pair": [
+        "他们是我不认识的人",
+        "They are people I don't know."
+      ],
+      "legos": [
+        {
+          "id": "S0087L01",
+          "type": "A",
+          "target": "他们",
+          "known": "they",
+          "new": true
+        },
+        {
+          "id": "S0087L02",
+          "type": "A",
+          "target": "是",
+          "known": "are",
+          "new": true
+        },
+        {
+          "id": "S0087L03",
+          "type": "M",
+          "target": "我不认识的人",
+          "known": "people I don't know",
+          "new": true,
+          "components": [
+            [
+              "我",
+              "I"
+            ],
+            [
+              "不认识",
+              "don't know"
+            ],
+            [
+              "的",
+              "marker"
+            ],
+            [
+              "人",
+              "people"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P76_relative_clause"
+      ],
+      "cumulative_legos": 219
+    },
+    {
+      "seed_id": "S0088",
+      "seed_pair": [
+        "我还没准备好和我不认识的人说话",
+        "I'm not ready to talk to people I don't know yet."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0088L01",
+          "type": "M",
+          "target": "还没准备好",
+          "known": "not ready yet",
+          "new": true,
+          "components": [
+            [
+              "还",
+              "yet"
+            ],
+            [
+              "没",
+              "not"
+            ],
+            [
+              "准备好",
+              "ready"
+            ]
+          ]
+        },
+        {
+          "id": "S0088L02",
+          "type": "M",
+          "target": "和我不认识的人",
+          "known": "to people I don't know",
+          "new": true,
+          "components": [
+            [
+              "和",
+              "with"
+            ],
+            [
+              "我",
+              "I"
+            ],
+            [
+              "不认识",
+              "don't know"
+            ],
+            [
+              "的",
+              "marker"
+            ],
+            [
+              "人",
+              "people"
+            ]
+          ]
+        },
+        {
+          "id": "S0088L03",
+          "type": "M",
+          "target": "说话",
+          "known": "talk",
+          "new": true,
+          "components": [
+            [
+              "说",
+              "speak"
+            ],
+            [
+              "话",
+              "words"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P77_hai_mei_not_yet"
+      ],
+      "cumulative_legos": 222
+    },
+    {
+      "seed_id": "S0089",
+      "seed_pair": [
+        "我觉得我在短时间内做了很多",
+        "I think that I've done a lot in a short time."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0047L01",
+          "type": "A",
+          "target": "觉得",
+          "known": "think",
+          "ref": "S0047"
+        },
+        {
+          "id": "S0089L01",
+          "type": "M",
+          "target": "我在短时间内做了很多",
+          "known": "I've done a lot in a short time",
+          "new": true,
+          "components": [
+            [
+              "我",
+              "I"
+            ],
+            [
+              "在",
+              "in"
+            ],
+            [
+              "短时间",
+              "short time"
+            ],
+            [
+              "内",
+              "within"
+            ],
+            [
+              "做了",
+              "have done"
+            ],
+            [
+              "很多",
+              "a lot"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P78_zai_nei_within"
+      ],
+      "cumulative_legos": 223
+    },
+    {
+      "seed_id": "S0090",
+      "seed_pair": [
+        "如果你能说慢一点那就太好了",
+        "If you can speak more slowly that would be great."
+      ],
+      "legos": [
+        {
+          "id": "S0090L01",
+          "type": "M",
+          "target": "如果你能",
+          "known": "if you can",
+          "new": true,
+          "components": [
+            [
+              "如果",
+              "if"
+            ],
+            [
+              "你",
+              "you"
+            ],
+            [
+              "能",
+              "can"
+            ]
+          ]
+        },
+        {
+          "id": "S0090L02",
+          "type": "M",
+          "target": "说慢一点",
+          "known": "speak more slowly",
+          "new": true,
+          "components": [
+            [
+              "说",
+              "speak"
+            ],
+            [
+              "慢一点",
+              "more slowly"
+            ]
+          ]
+        },
+        {
+          "id": "S0090L03",
+          "type": "M",
+          "target": "那就太好了",
+          "known": "that would be great",
+          "new": true,
+          "components": [
+            [
+              "那",
+              "that"
+            ],
+            [
+              "就",
+              "then"
+            ],
+            [
+              "太好了",
+              "great"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P79_ruguo_if"
+      ],
+      "cumulative_legos": 226
+    },
+    {
+      "seed_id": "S0091",
+      "seed_pair": [
+        "想得足够快来及时回答很难",
+        "It's difficult to think quickly enough to answer in time."
+      ],
+      "legos": [
+        {
+          "id": "S0091L01",
+          "type": "M",
+          "target": "想得足够快",
+          "known": "think quickly enough",
+          "new": true,
+          "components": [
+            [
+              "想",
+              "think"
+            ],
+            [
+              "得",
+              "complement"
+            ],
+            [
+              "足够快",
+              "quickly enough"
+            ]
+          ]
+        },
+        {
+          "id": "S0091L02",
+          "type": "M",
+          "target": "来及时回答",
+          "known": "to answer in time",
+          "new": true,
+          "components": [
+            [
+              "来",
+              "to"
+            ],
+            [
+              "及时",
+              "in time"
+            ],
+            [
+              "回答",
+              "answer"
+            ]
+          ]
+        },
+        {
+          "id": "S0091L03",
+          "type": "M",
+          "target": "很难",
+          "known": "difficult",
+          "new": true,
+          "components": [
+            [
+              "很",
+              "very"
+            ],
+            [
+              "难",
+              "difficult"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P80_hen_nan_difficult"
+      ],
+      "cumulative_legos": 229
+    },
+    {
+      "seed_id": "S0092",
+      "seed_pair": [
+        "我想继续做这个一会儿",
+        "I'd like to keep on doing this for a while."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "想",
+          "known": "would like",
+          "ref": "S0003"
+        },
+        {
+          "id": "S0092L01",
+          "type": "A",
+          "target": "继续",
+          "known": "keep on",
+          "new": true
+        },
+        {
+          "id": "S0092L02",
+          "type": "M",
+          "target": "做这个",
+          "known": "doing this",
+          "new": true,
+          "components": [
+            [
+              "做",
+              "do"
+            ],
+            [
+              "这个",
+              "this"
+            ]
+          ]
+        },
+        {
+          "id": "S0092L03",
+          "type": "M",
+          "target": "一会儿",
+          "known": "for a while",
+          "new": true,
+          "components": [
+            [
+              "一会",
+              "a while"
+            ],
+            [
+              "儿",
+              "suffix"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P81_jixu_continue"
+      ],
+      "cumulative_legos": 232
+    },
+    {
+      "seed_id": "S0093",
+      "seed_pair": [
+        "现在该走了",
+        "It's time to go now."
+      ],
+      "legos": [
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "target": "现在",
+          "known": "now",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0093L01",
+          "type": "M",
+          "target": "该走了",
+          "known": "time to go",
+          "new": true,
+          "components": [
+            [
+              "该",
+              "should"
+            ],
+            [
+              "走了",
+              "go"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P82_gai_should"
+      ],
+      "cumulative_legos": 233
+    },
+    {
+      "seed_id": "S0094",
+      "seed_pair": [
+        "这是它会成功的唯一方法",
+        "This is the only way it will work."
+      ],
+      "legos": [
+        {
+          "id": "S0086L02",
+          "type": "A",
+          "target": "这",
+          "known": "this",
+          "ref": "S0086"
+        },
+        {
+          "id": "S0087L02",
+          "type": "A",
+          "target": "是",
+          "known": "is",
+          "ref": "S0087"
+        },
+        {
+          "id": "S0094L01",
+          "type": "M",
+          "target": "它会成功的",
+          "known": "it will work",
+          "new": true,
+          "components": [
+            [
+              "它",
+              "it"
+            ],
+            [
+              "会",
+              "will"
+            ],
+            [
+              "成功",
+              "succeed"
+            ],
+            [
+              "的",
+              "marker"
+            ]
+          ]
+        },
+        {
+          "id": "S0094L02",
+          "type": "M",
+          "target": "唯一方法",
+          "known": "only way",
+          "new": true,
+          "components": [
+            [
+              "唯一",
+              "only"
+            ],
+            [
+              "方法",
+              "way"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P83_chenggong_succeed"
+      ],
+      "cumulative_legos": 235
+    },
+    {
+      "seed_id": "S0095",
+      "seed_pair": [
+        "你准备好坐下一班公共汽车回家吗？",
+        "Are you ready to go home on the next bus?"
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0095L01",
+          "type": "A",
+          "target": "准备好",
+          "known": "ready",
+          "new": true
+        },
+        {
+          "id": "S0095L02",
+          "type": "M",
+          "target": "坐下一班公共汽车",
+          "known": "go on the next bus",
+          "new": true,
+          "components": [
+            [
+              "坐",
+              "take"
+            ],
+            [
+              "下一班",
+              "next"
+            ],
+            [
+              "公共汽车",
+              "bus"
+            ]
+          ]
+        },
+        {
+          "id": "S0095L03",
+          "type": "M",
+          "target": "回家",
+          "known": "go home",
+          "new": true,
+          "components": [
+            [
+              "回",
+              "return"
+            ],
+            [
+              "家",
+              "home"
+            ]
+          ]
+        },
+        {
+          "id": "S0032L04",
+          "type": "A",
+          "target": "吗",
+          "known": "?",
+          "ref": "S0032"
+        }
+      ],
+      "patterns": [
+        "P84_zhunbei_hao_ready"
+      ],
+      "cumulative_legos": 238
+    },
+    {
+      "seed_id": "S0096",
+      "seed_pair": [
+        "不，我还没准备好，我还需要一点时间",
+        "No I'm not ready yet, I need a little more time."
+      ],
+      "legos": [
+        {
+          "id": "S0096L01",
+          "type": "A",
+          "target": "不",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0088L01",
+          "type": "M",
+          "target": "还没准备好",
+          "known": "not ready yet",
+          "ref": "S0088"
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0096L02",
+          "type": "M",
+          "target": "还需要",
+          "known": "still need",
+          "new": true,
+          "components": [
+            [
+              "还",
+              "still"
+            ],
+            [
+              "需要",
+              "need"
+            ]
+          ]
+        },
+        {
+          "id": "S0096L03",
+          "type": "M",
+          "target": "一点时间",
+          "known": "a little more time",
+          "new": true,
+          "components": [
+            [
+              "一点",
+              "a little"
+            ],
+            [
+              "时间",
+              "time"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P85_hai_xuyao_still_need"
+      ],
+      "cumulative_legos": 241
+    },
+    {
+      "seed_id": "S0097",
+      "seed_pair": [
+        "是的，我准备好随时走",
+        "Yes I'm ready to go as soon as you want."
+      ],
+      "legos": [
+        {
+          "id": "S0097L01",
+          "type": "M",
+          "target": "是的",
+          "known": "yes",
+          "new": true,
+          "components": [
+            [
+              "是",
+              "is"
+            ],
+            [
+              "的",
+              "marker"
+            ]
+          ]
+        },
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0095L01",
+          "type": "A",
+          "target": "准备好",
+          "known": "ready",
+          "ref": "S0095"
+        },
+        {
+          "id": "S0097L02",
+          "type": "M",
+          "target": "随时走",
+          "known": "go as soon as you want",
+          "new": true,
+          "components": [
+            [
+              "随时",
+              "at any time"
+            ],
+            [
+              "走",
+              "go"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P86_shide_yes"
+      ],
+      "cumulative_legos": 243
+    },
+    {
+      "seed_id": "S0098",
+      "seed_pair": [
+        "我应该考虑玩别的东西",
+        "I should consider playing something else."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0098L01",
+          "type": "A",
+          "target": "应该",
+          "known": "should",
+          "new": true
+        },
+        {
+          "id": "S0098L02",
+          "type": "A",
+          "target": "考虑",
+          "known": "consider",
+          "new": true
+        },
+        {
+          "id": "S0098L03",
+          "type": "A",
+          "target": "玩",
+          "known": "playing",
+          "new": true
+        },
+        {
+          "id": "S0098L04",
+          "type": "M",
+          "target": "别的东西",
+          "known": "something else",
+          "new": true,
+          "components": [
+            [
+              "别的",
+              "other"
+            ],
+            [
+              "东西",
+              "thing"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P87_yinggai_should"
+      ],
+      "cumulative_legos": 247
+    },
+    {
+      "seed_id": "S0099",
+      "seed_pair": [
+        "你应该问问自己为什么它不行",
+        "You should ask yourself why it's not working."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0098L01",
+          "type": "A",
+          "target": "应该",
+          "known": "should",
+          "ref": "S0098"
+        },
+        {
+          "id": "S0099L01",
+          "type": "M",
+          "target": "问问自己",
+          "known": "ask yourself",
+          "new": true,
+          "components": [
+            [
+              "问问",
+              "ask"
+            ],
+            [
+              "自己",
+              "yourself"
+            ]
+          ]
+        },
+        {
+          "id": "S0067L01",
+          "type": "M",
+          "target": "为什么",
+          "known": "why",
+          "ref": "S0067"
+        },
+        {
+          "id": "S0099L02",
+          "type": "M",
+          "target": "它不行",
+          "known": "it's not working",
+          "new": true,
+          "components": [
+            [
+              "它",
+              "it"
+            ],
+            [
+              "不行",
+              "not working"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P88_wenwen_ask"
+      ],
+      "cumulative_legos": 249
+    },
+    {
+      "seed_id": "S0100",
+      "seed_pair": [
+        "你不应该担心做类似的事",
+        "You shouldn't worry about doing something similar."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "target": "你",
+          "known": "you",
+          "ref": "S0001"
+        },
+        {
+          "id": "S0100L01",
+          "type": "M",
+          "target": "不应该",
+          "known": "shouldn't",
+          "new": true,
+          "components": [
+            [
+              "不",
+              "not"
+            ],
+            [
+              "应该",
+              "should"
+            ]
+          ]
+        },
+        {
+          "id": "S0046L01",
+          "type": "M",
+          "target": "担心",
+          "known": "worry",
+          "ref": "S0046"
+        },
+        {
+          "id": "S0100L02",
+          "type": "M",
+          "target": "做类似的事",
+          "known": "doing something similar",
+          "new": true,
+          "components": [
+            [
+              "做",
+              "do"
+            ],
+            [
+              "类似",
+              "similar"
+            ],
+            [
+              "的",
+              "marker"
+            ],
+            [
+              "事",
+              "thing"
+            ]
+          ]
+        }
+      ],
+      "patterns": [
+        "P89_bu_yinggai_shouldnt"
+      ],
+      "cumulative_legos": 251
+    }
+  ]
+}
