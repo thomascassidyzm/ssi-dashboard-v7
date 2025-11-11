@@ -175,6 +175,12 @@ Merged: Both sweeps agree + backward adds subjunctive details
 - Solution: Chunk up to "I really want" → "deseo" ✅ (different KNOWN)
 - **CHECK REGISTRY FIRST!**
 
+**CRITICAL**: A collision requires **BOTH target AND known to match**:
+- Registry: "hablar" = "to speak" (S0001)
+- Current: "hablar" = "speaking" ✅ **NOT a collision** (different KNOWN - extract as NEW LEGO!)
+- Registry: "quiero" = "I want" (S0001)
+- Current: "deseo" = "I want" ❌ **IS a collision** (same KNOWN, different TARGET)
+
 **3. Syntactic Uncertainty** - Can't produce correct form/syntax without context:
 - "que" alone → "that/which/than/what"? ❌ FAIL
 - "hables" alone → Wrong mood without "que" ❌ FAIL
