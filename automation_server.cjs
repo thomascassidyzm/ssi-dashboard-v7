@@ -212,6 +212,16 @@ async function ensureCourseDirectory(courseCode) {
 }
 
 /**
+ * Convert absolute courseDir to relative path from repo root
+ * This ensures paths work in Claude Code Web's different environment
+ */
+function getRelativeCourseDir(courseDir) {
+  // courseDir is like: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng_s0001-0020
+  // We want: public/vfs/courses/spa_for_eng_s0001-0020
+  return path.relative(__dirname, courseDir);
+}
+
+/**
  * Phase 1 Master Prompt: Parallel translation using 10 agents
  * For Web + API modes (deprecating Local mode)
  */
@@ -593,6 +603,7 @@ function generatePhase5MasterPrompt(courseCode, params, courseDir) {
   const totalSeeds = endSeed - startSeed + 1;
   const seedsPerAgent = 20;
   const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
+  const relativeDir = getRelativeCourseDir(courseDir);
 
   return `# Phase 5 Master Prompt: Practice Basket Generation with Self-Managing Parallelization
 
@@ -644,7 +655,7 @@ This is the **ONLY authoritative source** for Phase 5 basket generation methodol
 
 Mechanical prep has been done! Each agent has a scaffold ready:
 
-\`${courseDir}/phase5_scaffolds/agent_01.json\` through \`agent_${String(agentCount).padStart(2, '0')}.json\`
+\`${relativeDir}/phase5_scaffolds/agent_01.json\` through \`agent_${String(agentCount).padStart(2, '0')}.json\`
 
 Each scaffold contains:
 - **whitelist**: Available Spanish vocabulary (3-category rule applied)
@@ -709,7 +720,7 @@ For each agent, the task is:
 You are Practice Basket Generation Agent XX.
 
 ## Your Data
-**Scaffold**: Read \`${courseDir}/phase5_scaffolds/agent_XX.json\`
+**Scaffold**: Read \`${relativeDir}/phase5_scaffolds/agent_XX.json\`
 
 This contains:
 - Seeds with empty practice_phrases arrays (you fill these)
@@ -731,7 +742,7 @@ This contains:
 5. Update phrase_distribution to match actual counts
 
 ## Output
-Write to: \`${courseDir}/phase5_outputs/agent_XX_provisional.json\`
+Write to: \`${relativeDir}/phase5_outputs/agent_XX_provisional.json\`
 
 Format: Same scaffold structure with practice_phrases filled:
 

@@ -248,19 +248,9 @@ async function preparePhase5Scaffolds(courseDir) {
       }
     };
 
-    // Write full scaffold with whitelist (for validation later)
-    const scaffoldPathFull = path.join(scaffoldsDir, `seed_${seed.seed_id.toLowerCase()}_full.json`);
-    await fs.writeJson(scaffoldPathFull, scaffold);
-
-    // Write compact scaffold without whitelist (for AI agent)
-    const scaffoldCompact = JSON.parse(JSON.stringify(scaffold));
-    for (const legoId in scaffoldCompact.legos) {
-      if (scaffoldCompact.legos[legoId]._metadata) {
-        delete scaffoldCompact.legos[legoId]._metadata.whitelist_pairs;
-      }
-    }
+    // Write scaffold with whitelist (agent needs it for GATE validation)
     const scaffoldPath = path.join(scaffoldsDir, `seed_${seed.seed_id.toLowerCase()}.json`);
-    await fs.writeJson(scaffoldPath, scaffoldCompact);
+    await fs.writeJson(scaffoldPath, scaffold);
 
     // Update cumulative count for next seed
     cumulativeCount += seed.legos.filter(l => l.new).length;
