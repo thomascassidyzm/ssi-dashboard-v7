@@ -1,7 +1,7 @@
 {
   "agent_id": 2,
   "seed_range": "S0021-S0030",
-  "extracted_at": "2025-11-11T00:00:00.000Z",
+  "extracted_at": "2025-11-11T00:00:00Z",
   "seeds": {
     "S0021": {
       "seed_id": "S0021",
@@ -13,44 +13,51 @@
         {
           "provisional_id": "PROV_S0021_01",
           "type": "A",
+          "target": "por qué",
+          "known": "why",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0021_02",
+          "type": "A",
           "target": "estás",
           "known": "are you",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0021_02",
+          "provisional_id": "PROV_S0021_03",
           "type": "A",
           "target": "aprendiendo",
           "known": "learning",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0021_03",
+          "provisional_id": "PROV_S0021_04",
           "type": "A",
           "target": "su",
           "known": "her",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0021_04",
+          "provisional_id": "PROV_S0021_05",
           "type": "A",
           "target": "nombre",
           "known": "name",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0021_05",
+          "provisional_id": "PROV_S0021_06",
           "type": "M",
-          "target": "¿Por qué",
-          "known": "Why",
+          "target": "por qué estás",
+          "known": "why are you",
           "new": true,
           "components": [
-            ["¿Por", "Why"],
-            ["qué", "what"]
+            ["por qué", "why"],
+            ["estás", "are you"]
           ]
         },
         {
-          "provisional_id": "PROV_S0021_06",
+          "provisional_id": "PROV_S0021_07",
           "type": "M",
           "target": "estás aprendiendo",
           "known": "are you learning",
@@ -58,6 +65,17 @@
           "components": [
             ["estás", "are you"],
             ["aprendiendo", "learning"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0021_08",
+          "type": "M",
+          "target": "su nombre",
+          "known": "her name",
+          "new": true,
+          "components": [
+            ["su", "her"],
+            ["nombre", "name"]
           ]
         }
       ]
@@ -72,8 +90,8 @@
         {
           "provisional_id": "PROV_S0022_01",
           "type": "A",
-          "target": "Porque",
-          "known": "Because",
+          "target": "porque",
+          "known": "because",
           "new": true
         },
         {
@@ -100,19 +118,48 @@
         {
           "provisional_id": "PROV_S0022_05",
           "type": "A",
+          "target": "que",
+          "known": "who",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0022_06",
+          "type": "A",
           "target": "hablen",
           "known": "speak",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0022_06",
+          "provisional_id": "PROV_S0022_07",
           "type": "A",
           "target": "español",
           "known": "Spanish",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0022_07",
+          "provisional_id": "PROV_S0022_08",
+          "type": "M",
+          "target": "quiero conocer",
+          "known": "I want to meet",
+          "new": true,
+          "components": [
+            ["quiero", "I want"],
+            ["conocer", "to meet"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0022_09",
+          "type": "M",
+          "target": "personas que",
+          "known": "people who",
+          "new": true,
+          "components": [
+            ["personas", "people"],
+            ["que", "who"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0022_10",
           "type": "M",
           "target": "que hablen",
           "known": "who speak",
@@ -123,7 +170,7 @@
           ]
         },
         {
-          "provisional_id": "PROV_S0022_08",
+          "provisional_id": "PROV_S0022_11",
           "type": "M",
           "target": "personas que hablen",
           "known": "people who speak",
@@ -146,74 +193,114 @@
         {
           "provisional_id": "PROV_S0023_01",
           "type": "A",
-          "target": "empezar",
-          "known": "start",
+          "target": "voy",
+          "known": "I'm going",
           "new": true
         },
         {
           "provisional_id": "PROV_S0023_02",
+          "type": "A",
+          "target": "a",
+          "known": "to",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0023_03",
+          "type": "A",
+          "target": "empezar",
+          "known": "to start",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0023_04",
           "type": "A",
           "target": "hablar",
           "known": "talking",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0023_03",
+          "provisional_id": "PROV_S0023_05",
           "type": "A",
           "target": "más",
           "known": "more",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0023_04",
+          "provisional_id": "PROV_S0023_06",
           "type": "A",
           "target": "pronto",
           "known": "soon",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0023_05",
+          "provisional_id": "PROV_S0023_07",
           "type": "M",
-          "target": "Voy a",
+          "target": "voy a",
           "known": "I'm going to",
           "new": true,
           "components": [
-            ["Voy", "I go"],
+            ["voy", "I'm going"],
             ["a", "to"]
-          ]
-        },
-        {
-          "provisional_id": "PROV_S0023_06",
-          "type": "M",
-          "target": "empezar a",
-          "known": "to start",
-          "new": true,
-          "components": [
-            ["empezar", "start"],
-            ["a", "to"]
-          ]
-        },
-        {
-          "provisional_id": "PROV_S0023_07",
-          "type": "M",
-          "target": "a hablar",
-          "known": "talking",
-          "new": true,
-          "components": [
-            ["a", "to"],
-            ["hablar", "talk"]
           ]
         },
         {
           "provisional_id": "PROV_S0023_08",
           "type": "M",
+          "target": "voy a empezar",
+          "known": "I'm going to start",
+          "new": true,
+          "components": [
+            ["voy", "I'm going"],
+            ["a", "to"],
+            ["empezar", "to start"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0023_09",
+          "type": "M",
+          "target": "empezar a",
+          "known": "to start to",
+          "new": true,
+          "components": [
+            ["empezar", "to start"],
+            ["a", "to"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0023_10",
+          "type": "M",
           "target": "empezar a hablar",
           "known": "to start talking",
           "new": true,
           "components": [
-            ["empezar", "start"],
+            ["empezar", "to start"],
             ["a", "to"],
             ["hablar", "talking"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0023_11",
+          "type": "M",
+          "target": "voy a empezar a hablar",
+          "known": "I'm going to start talking",
+          "new": true,
+          "components": [
+            ["voy", "I'm going"],
+            ["a", "to"],
+            ["empezar", "to start"],
+            ["a", "to"],
+            ["hablar", "talking"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0023_12",
+          "type": "M",
+          "target": "más pronto",
+          "known": "more soon",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["pronto", "soon"]
           ]
         }
       ]
@@ -228,7 +315,7 @@
         {
           "provisional_id": "PROV_S0024_01",
           "type": "A",
-          "target": "No",
+          "target": "no",
           "known": "not",
           "new": true
         },
@@ -256,28 +343,53 @@
         {
           "provisional_id": "PROV_S0024_05",
           "type": "M",
-          "target": "voy a",
-          "known": "going to",
+          "target": "no voy",
+          "known": "I'm not going",
           "new": true,
           "components": [
-            ["voy", "go"],
-            ["a", "to"]
+            ["no", "not"],
+            ["voy", "I'm going"]
           ]
         },
         {
           "provisional_id": "PROV_S0024_06",
           "type": "M",
-          "target": "No voy a",
+          "target": "no voy a",
           "known": "I'm not going to",
           "new": true,
           "components": [
-            ["No", "not"],
-            ["voy", "I go"],
+            ["no", "not"],
+            ["voy", "I'm going"],
             ["a", "to"]
           ]
         },
         {
           "provisional_id": "PROV_S0024_07",
+          "type": "M",
+          "target": "voy a poder",
+          "known": "I'm going to be able",
+          "new": true,
+          "components": [
+            ["voy", "I'm going"],
+            ["a", "to"],
+            ["poder", "be able"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0024_08",
+          "type": "M",
+          "target": "no voy a poder",
+          "known": "I'm not going to be able",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["voy", "I'm going"],
+            ["a", "to"],
+            ["poder", "be able"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0024_09",
           "type": "M",
           "target": "poder recordar",
           "known": "be able to remember",
@@ -299,64 +411,81 @@
         {
           "provisional_id": "PROV_S0025_01",
           "type": "A",
-          "target": "ayudarme",
-          "known": "help me",
+          "target": "vas",
+          "known": "are you going",
           "new": true
         },
         {
           "provisional_id": "PROV_S0025_02",
           "type": "A",
-          "target": "irme",
-          "known": "go",
+          "target": "ayudarme",
+          "known": "to help me",
           "new": true
         },
         {
           "provisional_id": "PROV_S0025_03",
+          "type": "A",
+          "target": "antes",
+          "known": "before",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0025_04",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0025_05",
+          "type": "A",
+          "target": "tenga",
+          "known": "I have",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0025_06",
+          "type": "A",
+          "target": "irme",
+          "known": "to go",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0025_07",
           "type": "M",
-          "target": "Vas a",
-          "known": "Are you going to",
+          "target": "vas a",
+          "known": "are you going to",
           "new": true,
           "components": [
-            ["Vas", "you go"],
+            ["vas", "are you going"],
             ["a", "to"]
           ]
         },
         {
-          "provisional_id": "PROV_S0025_04",
+          "provisional_id": "PROV_S0025_08",
           "type": "M",
-          "target": "que irme",
-          "known": "to go",
+          "target": "vas a ayudarme",
+          "known": "are you going to help me",
           "new": true,
           "components": [
-            ["que", "to"],
-            ["irme", "go"]
+            ["vas", "are you going"],
+            ["a", "to"],
+            ["ayudarme", "to help me"]
           ]
         },
         {
-          "provisional_id": "PROV_S0025_05",
+          "provisional_id": "PROV_S0025_09",
           "type": "M",
-          "target": "tenga que",
-          "known": "have to",
+          "target": "antes de",
+          "known": "before",
           "new": true,
           "components": [
-            ["tenga", "I have"],
-            ["que", "to"]
+            ["antes", "before"],
+            ["de", "of"]
           ]
         },
         {
-          "provisional_id": "PROV_S0025_06",
-          "type": "M",
-          "target": "tenga que irme",
-          "known": "I have to go",
-          "new": true,
-          "components": [
-            ["tenga", "I have"],
-            ["que", "to"],
-            ["irme", "go"]
-          ]
-        },
-        {
-          "provisional_id": "PROV_S0025_07",
+          "provisional_id": "PROV_S0025_10",
           "type": "M",
           "target": "antes de que",
           "known": "before",
@@ -368,7 +497,66 @@
           ]
         },
         {
-          "provisional_id": "PROV_S0025_08",
+          "provisional_id": "PROV_S0025_11",
+          "type": "M",
+          "target": "que tenga",
+          "known": "I have",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["tenga", "I have"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0025_12",
+          "type": "M",
+          "target": "tenga que",
+          "known": "I have to",
+          "new": true,
+          "components": [
+            ["tenga", "I have"],
+            ["que", "to"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0025_13",
+          "type": "M",
+          "target": "tenga que irme",
+          "known": "I have to go",
+          "new": true,
+          "components": [
+            ["tenga", "I have"],
+            ["que", "to"],
+            ["irme", "to go"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0025_14",
+          "type": "M",
+          "target": "que tenga que",
+          "known": "I have to",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["tenga", "I have"],
+            ["que", "to"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0025_15",
+          "type": "M",
+          "target": "que tenga que irme",
+          "known": "I have to go",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["tenga", "I have"],
+            ["que", "to"],
+            ["irme", "to go"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0025_16",
           "type": "M",
           "target": "antes de que tenga que irme",
           "known": "before I have to go",
@@ -379,7 +567,7 @@
             ["que", "that"],
             ["tenga", "I have"],
             ["que", "to"],
-            ["irme", "go"]
+            ["irme", "to go"]
           ]
         }
       ]
@@ -394,44 +582,91 @@
         {
           "provisional_id": "PROV_S0026_01",
           "type": "A",
+          "target": "me",
+          "known": "me",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0026_02",
+          "type": "A",
+          "target": "gusta",
+          "known": "like",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0026_03",
+          "type": "A",
           "target": "sentir",
           "known": "feeling",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0026_02",
+          "provisional_id": "PROV_S0026_04",
+          "type": "A",
+          "target": "como",
+          "known": "as",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0026_05",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0026_06",
+          "type": "A",
+          "target": "estuviera",
+          "known": "I'm",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0026_07",
           "type": "A",
           "target": "casi",
           "known": "nearly",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0026_03",
+          "provisional_id": "PROV_S0026_08",
           "type": "A",
           "target": "preparado",
           "known": "ready",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0026_04",
+          "provisional_id": "PROV_S0026_09",
           "type": "A",
-          "target": "irme",
-          "known": "go",
+          "target": "para",
+          "known": "to",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0026_05",
+          "provisional_id": "PROV_S0026_10",
           "type": "M",
-          "target": "Me gusta",
+          "target": "me gusta",
           "known": "I like",
           "new": true,
           "components": [
-            ["Me", "me"],
+            ["me", "me"],
             ["gusta", "like"]
           ]
         },
         {
-          "provisional_id": "PROV_S0026_06",
+          "provisional_id": "PROV_S0026_11",
+          "type": "M",
+          "target": "me gusta sentir",
+          "known": "I like feeling",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["gusta", "like"],
+            ["sentir", "feeling"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0026_12",
           "type": "M",
           "target": "como si",
           "known": "as if",
@@ -442,7 +677,19 @@
           ]
         },
         {
-          "provisional_id": "PROV_S0026_07",
+          "provisional_id": "PROV_S0026_13",
+          "type": "M",
+          "target": "como si estuviera",
+          "known": "as if I'm",
+          "new": true,
+          "components": [
+            ["como", "as"],
+            ["si", "if"],
+            ["estuviera", "I'm"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0026_14",
           "type": "M",
           "target": "casi preparado",
           "known": "nearly ready",
@@ -453,26 +700,26 @@
           ]
         },
         {
-          "provisional_id": "PROV_S0026_08",
+          "provisional_id": "PROV_S0026_15",
           "type": "M",
-          "target": "estuviera casi preparado",
-          "known": "I'm nearly ready",
+          "target": "preparado para",
+          "known": "ready to",
           "new": true,
           "components": [
-            ["estuviera", "I'm"],
-            ["casi", "nearly"],
-            ["preparado", "ready"]
+            ["preparado", "ready"],
+            ["para", "to"]
           ]
         },
         {
-          "provisional_id": "PROV_S0026_09",
+          "provisional_id": "PROV_S0026_16",
           "type": "M",
-          "target": "para irme",
-          "known": "to go",
+          "target": "preparado para irme",
+          "known": "ready to go",
           "new": true,
           "components": [
+            ["preparado", "ready"],
             ["para", "to"],
-            ["irme", "go"]
+            ["irme", "to go"]
           ]
         }
       ]
@@ -509,23 +756,48 @@
           "provisional_id": "PROV_S0027_04",
           "type": "A",
           "target": "responder",
-          "known": "answer",
+          "known": "to answer",
           "new": true
         },
         {
           "provisional_id": "PROV_S0027_05",
           "type": "M",
-          "target": "No me gusta",
+          "target": "no me gusta",
           "known": "I don't like",
           "new": true,
           "components": [
-            ["No", "don't"],
+            ["no", "don't"],
             ["me", "me"],
             ["gusta", "like"]
           ]
         },
         {
           "provisional_id": "PROV_S0027_06",
+          "type": "M",
+          "target": "me gusta tomar",
+          "known": "I like taking",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["gusta", "like"],
+            ["tomar", "taking"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0027_07",
+          "type": "M",
+          "target": "no me gusta tomar",
+          "known": "I don't like taking",
+          "new": true,
+          "components": [
+            ["no", "don't"],
+            ["me", "me"],
+            ["gusta", "like"],
+            ["tomar", "taking"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0027_08",
           "type": "M",
           "target": "demasiado tiempo",
           "known": "too much time",
@@ -536,26 +808,50 @@
           ]
         },
         {
-          "provisional_id": "PROV_S0027_07",
+          "provisional_id": "PROV_S0027_09",
           "type": "M",
-          "target": "tomar demasiado tiempo",
-          "known": "taking too much time",
+          "target": "tiempo para",
+          "known": "time to",
           "new": true,
           "components": [
-            ["tomar", "taking"],
-            ["demasiado", "too much"],
-            ["tiempo", "time"]
+            ["tiempo", "time"],
+            ["para", "to"]
           ]
         },
         {
-          "provisional_id": "PROV_S0027_08",
+          "provisional_id": "PROV_S0027_10",
           "type": "M",
           "target": "para responder",
           "known": "to answer",
           "new": true,
           "components": [
             ["para", "to"],
-            ["responder", "answer"]
+            ["responder", "to answer"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0027_11",
+          "type": "M",
+          "target": "tiempo para responder",
+          "known": "time to answer",
+          "new": true,
+          "components": [
+            ["tiempo", "time"],
+            ["para", "to"],
+            ["responder", "to answer"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0027_12",
+          "type": "M",
+          "target": "demasiado tiempo para responder",
+          "known": "too much time to answer",
+          "new": true,
+          "components": [
+            ["demasiado", "too much"],
+            ["tiempo", "time"],
+            ["para", "to"],
+            ["responder", "to answer"]
           ]
         }
       ]
@@ -570,8 +866,8 @@
         {
           "provisional_id": "PROV_S0028_01",
           "type": "A",
-          "target": "Es",
-          "known": "It's",
+          "target": "es",
+          "known": "it's",
           "new": true
         },
         {
@@ -584,62 +880,69 @@
         {
           "provisional_id": "PROV_S0028_03",
           "type": "A",
-          "target": "empezar",
-          "known": "start",
+          "target": "tan",
+          "known": "as",
           "new": true
         },
         {
           "provisional_id": "PROV_S0028_04",
           "type": "A",
-          "target": "hablar",
-          "known": "talking",
+          "target": "como",
+          "known": "as",
           "new": true
         },
         {
           "provisional_id": "PROV_S0028_05",
-          "type": "A",
-          "target": "pronto",
-          "known": "soon",
-          "new": true
-        },
-        {
-          "provisional_id": "PROV_S0028_06",
           "type": "A",
           "target": "puedas",
           "known": "you can",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0028_07",
+          "provisional_id": "PROV_S0028_06",
           "type": "M",
-          "target": "Es útil",
-          "known": "It's useful",
+          "target": "es útil",
+          "known": "it's useful",
           "new": true,
           "components": [
-            ["Es", "It's"],
+            ["es", "it's"],
             ["útil", "useful"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0028_07",
+          "type": "M",
+          "target": "tan pronto",
+          "known": "as soon",
+          "new": true,
+          "components": [
+            ["tan", "as"],
+            ["pronto", "soon"]
           ]
         },
         {
           "provisional_id": "PROV_S0028_08",
           "type": "M",
-          "target": "empezar a",
-          "known": "to start",
+          "target": "tan pronto como",
+          "known": "as soon as",
           "new": true,
           "components": [
-            ["empezar", "start"],
-            ["a", "to"]
+            ["tan", "as"],
+            ["pronto", "soon"],
+            ["como", "as"]
           ]
         },
         {
           "provisional_id": "PROV_S0028_09",
           "type": "M",
-          "target": "a hablar",
-          "known": "talking",
+          "target": "tan pronto como puedas",
+          "known": "as soon as you can",
           "new": true,
           "components": [
-            ["a", "to"],
-            ["hablar", "talk"]
+            ["tan", "as"],
+            ["pronto", "soon"],
+            ["como", "as"],
+            ["puedas", "you can"]
           ]
         },
         {
@@ -649,21 +952,9 @@
           "known": "to start talking",
           "new": true,
           "components": [
-            ["empezar", "start"],
+            ["empezar", "to start"],
             ["a", "to"],
             ["hablar", "talking"]
-          ]
-        },
-        {
-          "provisional_id": "PROV_S0028_11",
-          "type": "M",
-          "target": "tan pronto como",
-          "known": "as soon as",
-          "new": true,
-          "components": [
-            ["tan", "as"],
-            ["pronto", "soon"],
-            ["como", "as"]
           ]
         }
       ]
@@ -678,45 +969,77 @@
         {
           "provisional_id": "PROV_S0029_01",
           "type": "A",
-          "target": "hablar",
-          "known": "speaking",
+          "target": "espero",
+          "known": "I'm looking forward",
           "new": true
         },
         {
           "provisional_id": "PROV_S0029_02",
+          "type": "A",
+          "target": "con",
+          "known": "with",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0029_03",
+          "type": "A",
+          "target": "ansias",
+          "known": "eagerness",
+          "new": true
+        },
+        {
+          "provisional_id": "PROV_S0029_04",
           "type": "A",
           "target": "mejor",
           "known": "better",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0029_03",
-          "type": "A",
-          "target": "pronto",
-          "known": "soon",
-          "new": true
-        },
-        {
-          "provisional_id": "PROV_S0029_04",
+          "provisional_id": "PROV_S0029_05",
           "type": "A",
           "target": "pueda",
           "known": "I can",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0029_05",
+          "provisional_id": "PROV_S0029_06",
           "type": "M",
-          "target": "Espero con ansias",
+          "target": "espero con ansias",
           "known": "I'm looking forward to",
           "new": true,
           "components": [
-            ["Espero", "I'm looking"],
+            ["espero", "I'm looking forward"],
             ["con", "with"],
             ["ansias", "eagerness"]
           ]
         },
         {
-          "provisional_id": "PROV_S0029_06",
+          "provisional_id": "PROV_S0029_07",
+          "type": "M",
+          "target": "con ansias hablar",
+          "known": "forward to speaking",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["ansias", "eagerness"],
+            ["hablar", "speaking"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0029_08",
+          "type": "M",
+          "target": "espero con ansias hablar",
+          "known": "I'm looking forward to speaking",
+          "new": true,
+          "components": [
+            ["espero", "I'm looking forward"],
+            ["con", "with"],
+            ["ansias", "eagerness"],
+            ["hablar", "speaking"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0029_09",
           "type": "M",
           "target": "hablar mejor",
           "known": "speaking better",
@@ -727,26 +1050,16 @@
           ]
         },
         {
-          "provisional_id": "PROV_S0029_07",
+          "provisional_id": "PROV_S0029_10",
           "type": "M",
-          "target": "con ansias",
-          "known": "forward to",
-          "new": true,
-          "components": [
-            ["con", "with"],
-            ["ansias", "eagerness"]
-          ]
-        },
-        {
-          "provisional_id": "PROV_S0029_08",
-          "type": "M",
-          "target": "tan pronto como",
-          "known": "as soon as",
+          "target": "tan pronto como pueda",
+          "known": "as soon as I can",
           "new": true,
           "components": [
             ["tan", "as"],
             ["pronto", "soon"],
-            ["como", "as"]
+            ["como", "as"],
+            ["pueda", "I can"]
           ]
         }
       ]
@@ -761,7 +1074,7 @@
         {
           "provisional_id": "PROV_S0030_01",
           "type": "A",
-          "target": "Quería",
+          "target": "quería",
           "known": "I wanted",
           "new": true
         },
@@ -785,6 +1098,40 @@
           "target": "ayer",
           "known": "yesterday",
           "new": true
+        },
+        {
+          "provisional_id": "PROV_S0030_05",
+          "type": "M",
+          "target": "quería preguntarte",
+          "known": "I wanted to ask you",
+          "new": true,
+          "components": [
+            ["quería", "I wanted"],
+            ["preguntarte", "to ask you"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0030_06",
+          "type": "M",
+          "target": "preguntarte algo",
+          "known": "to ask you something",
+          "new": true,
+          "components": [
+            ["preguntarte", "to ask you"],
+            ["algo", "something"]
+          ]
+        },
+        {
+          "provisional_id": "PROV_S0030_07",
+          "type": "M",
+          "target": "quería preguntarte algo",
+          "known": "I wanted to ask you something",
+          "new": true,
+          "components": [
+            ["quería", "I wanted"],
+            ["preguntarte", "to ask you"],
+            ["algo", "something"]
+          ]
         }
       ]
     }
