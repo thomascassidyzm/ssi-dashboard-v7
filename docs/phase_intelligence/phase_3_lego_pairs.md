@@ -1,76 +1,54 @@
-# AGENT PROMPT: Phase 3 LEGO Extraction (ULTIMATE v5.0)
+# AGENT PROMPT: Phase 3 LEGO Extraction (v6.0)
 
-**Version**: 5.0 - Ultimate Edition (2025-11-09)
-**Status**: Production Ready - Incorporates S0101-S0200 Test Learnings
+**Version**: 6.0 - Clarity Edition (2025-11-11)
+**Status**: Production Ready - Simplified M-LEGO Rules
 **Purpose**: Extract pedagogically-sound LEGO vocabulary units from translated seed pairs
 
 ---
 
-## 🎯 YOUR MISSION
+## 🎯 CORE PRINCIPLE
 
-You are extracting LEGO vocabulary units from seed pairs. LEGOs are the atomic and molecular building blocks that learners will practice.
-
-**Core Principle**: When a learner hears KNOWN → they produce exactly ONE TARGET (zero uncertainty)
+When a learner hears KNOWN → they produce exactly ONE TARGET (zero uncertainty)
 
 ---
 
-## 🚨 THE THREE ABSOLUTES
+## 🚨 THE THREE RULES
 
 ### 1. START FROM KNOWN SEMANTICS
 
-**Break down the KNOWN language first** - how does a native speaker chunk this meaning?
+Break down the KNOWN language first - how does a native speaker chunk this meaning?
 
 ```
 Known: "I want to speak Spanish with you now"
 Natural chunks: "I want" | "to speak" | "Spanish" | "with you" | "now"
 ```
 
-Why? The learner THINKS in their native language. Respect how their brain chunks meaning.
+Why? The learner THINKS in their native language.
 
-### 2. PROVIDE BOTH ATOMIC AND MOLECULAR
+### 2. EXTRACT MINIMUM FD-COMPLIANT CHUNKS
 
-**Overlap is REQUIRED** - extract words BOTH ways:
+**Forward Sweep (KNOWN → TARGET):**
+- Process left to right
+- Find minimum chunk that passes FD test
+- LOCK it, don't extend further
 
-**Why Both?**
-- **Atomic**: Reusable building blocks (flexibility across many contexts)
-- **Molecular**: Target language patterns (word order, idioms, constructions)
+**FD Test**: When learner hears KNOWN → is there ZERO uncertainty about TARGET?
 
-**The Pattern**: If a word appears in an M-LEGO AND is FD on its own → Extract BOTH
+❌ **FAILS if:**
+- Multiple possible TARGETs: "that" → "que/ese/eso"
+- FCFS collision: Already learned simpler form
+- Syntactic uncertainty: Can't produce correct form without context
 
-```
-Example: "tan frecuentemente como sea posible" = "as often as possible"
+✅ **PASSES**: Zero uncertainty → LOCK the chunk
 
-Extract ALL:
-1. "frecuentemente" (A) - often [reusable!]
-2. "posible" (A) - possible [reusable!]
-3. "tan frecuentemente como sea posible" (M) - as often as possible [word order!]
-
-Components: [["tan", "as"], ["frecuentemente", "often"], ["como", "as"], ["sea", "be"], ["posible", "possible"]]
-
-Why extract atomic "frecuentemente" AND include it in M-LEGO?
-- Atomic: Learner can use "frecuentemente" in other contexts ("hablo frecuentemente")
-- Molecular: Learner learns the PATTERN "tan X como sea posible" with correct word order
-- Both teach different things!
-```
-
-**Another Example**: "lo más frecuentemente posible" = "as often as possible"
-
-```
-Extract ALL:
-1. "frecuentemente" (A) - often
-2. "posible" (A) - possible
-3. "más" (A) - more
-4. "lo más frecuentemente posible" (M) - as often as possible
-
-Why? "más" is useful alone ("más tarde"), but the CONSTRUCTION needs all parts together for word order!
-```
-
-**Rule**: A-LEGOs teach vocabulary flexibility, M-LEGOs teach target language syntax/idioms.
-**Both are needed** - not redundant!
+**Backward Sweep (TARGET → KNOWN):**
+- Process right to left
+- Catches target-language particles missed by forward sweep
+- Examples: Chinese 的/着, Spanish que/de/a particles
 
 ### 3. VERIFY COMPLETE TILING
 
-**The seed MUST reconstruct perfectly from LEGOs**
+The seed MUST reconstruct perfectly from LEGOs (no gaps, no extras)
 
 ```
 Target: "Quiero hablar español"
@@ -80,319 +58,102 @@ Reconstruction: "Quiero hablar español" ✅
 
 ---
 
-## 📋 THE EXTRACTION PROCESS
+## 🔧 ATOMIC vs MOLECULAR
 
-### STEP 1: CHUNK THE KNOWN (Forward Sweep)
-
-**Algorithm**: Process KNOWN word-by-word, left to right, finding minimum FD-compliant chunks.
-
-```
-Position 0 → end of KNOWN sentence:
-
-1. Test word[pos] for FD compliance
-   - Does this KNOWN chunk map to TARGET with zero uncertainty?
-   - Check: Semantic uncertainty? FCFS collision? Syntactic uncertainty?
-
-2. If FD FAILS:
-   - Extend: word[pos..pos+1], word[pos..pos+2], etc.
-   - Keep extending until FD PASSES
-
-3. When FD PASSES:
-   - LOCK this chunk (don't keep extending - we want minimum granularity!)
-   - Classify as A or M
-   - Map to TARGET
-   - Move to next unmatched position in KNOWN
-
-4. Repeat until all KNOWN words processed
-```
-
-**Example**: "I'm trying to remember a word"
-
-```
-Position 0:
-  "I'm" → FAIL (estoy/soy ambiguous)
-  "I'm trying" → "Estoy intentando" ✅ FD PASS (M) LOCK
-
-Position 2 (after "I'm trying"):
-  "to remember" → "recordar" ✅ FD PASS (A) LOCK
-
-Position 3:
-  "a" → FAIL (una/un ambiguous)
-  "a word" → "una palabra" ✅ FD PASS (M) LOCK
-
-Result: [Estoy intentando] + [recordar] + [una palabra]
-```
-
-**Why forward sweep?** Respects how learner thinks/chunks meaning in their native language.
-
-### STEP 1.5: BACKWARD SWEEP (Target Language Check)
-
-**Algorithm**: Process TARGET word-by-word, right to left, catching particles/markers missed by forward sweep.
-
-```
-Position END → 0 of TARGET sentence:
-
-1. Test word[pos] for FD compliance
-   - Does this TARGET chunk map to KNOWN with zero uncertainty?
-   - Already covered by forward sweep? Skip it.
-
-2. If FD FAILS:
-   - Extend leftward: word[pos-1..pos], word[pos-2..pos], etc.
-   - Keep extending until FD PASSES
-
-3. When FD PASSES:
-   - LOCK this chunk
-   - Classify as A or M
-   - Map to KNOWN
-   - Move to previous unmatched position in TARGET
-
-4. Repeat until start of sentence
-```
-
-**Example**: Chinese S0008 "我要试着解释我的意思"
-
-```
-Forward sweep captures: 我要试着 + 解释 + 意思
-
-Backward sweep (right to left):
-Position END (意思): Already covered ✓
-Position (我的):
-  "的" → FAIL (possessive particle, ambiguous alone)
-  "我的" → "my" ✅ FD PASS (M) LOCK
-Position (试着):
-  "着" → FAIL (aspect marker, meaningless alone)
-  "试着" → "try" (progressive) ✅ FD PASS (M) LOCK
-
-Backward sweep adds: [我的] + [试着]
-```
-
-**Why backward sweep?** Catches target language grammatical elements that don't map cleanly to KNOWN chunks (like Chinese 得/着, Spanish subjunctive que, particles de/a/en).
-
-### STEP 1.6: MAINTAIN YOUR REGISTRY
-
-**Critical**: As you process each seed, track what you extract AND check for collisions.
-
-**Collision Detection Rule**: A collision requires **BOTH target AND known to match**.
-
-```
-Internal registry (build as you go):
-S0001: "español" = "Spanish" (S0001L03)
-S0001: "ahora" = "now" (S0001L05)
-S0001: "hablar" = "to speak" (S0001L02)
-...
-
-When processing S0005: "Voy a practicar hablar con otra persona"
-- "hablar" appears in seed
-- Check registry: "hablar" = "to speak" exists (S0001L02)
-- But S0005 has "hablar" = "speaking" (different KNOWN!)
-- **NOT a collision** → Extract as NEW LEGO!
-
-When processing S0009: "Hablo un poco de español ahora"
-- Check registry: "español" = "Spanish" exists (S0001L03)
-- BOTH target AND known match → **IS a collision** → REFERENCE IT
-- Check registry: "ahora" = "now" exists (S0001L05)
-- BOTH target AND known match → **IS a collision** → REFERENCE IT
-```
-
-**Format for references**:
-```json
-{
-  "id": "S0001L03",
-  "type": "A",
-  "target": "español",
-  "known": "Spanish",
-  "ref": "S0001",
-  "new": false
-}
-```
-
-**Critical**:
-- Same TARGET + different KNOWN = NEW LEGO (not a collision)
-- Same TARGET + same KNOWN = REFERENCE (is a collision)
-- **Without references, tiling will fail!** Every word must be in the LEGOs array (new OR reference)
-
-### STEP 2: MAP TO TARGET
-
-Map each KNOWN chunk to TARGET language:
-
-```
-"I'm enjoying" → "estoy disfrutando"
-"finding out" → "descubrir"
-"more" → "más"
-"about" → "sobre"
-"this" → "este"
-"language" → "lenguaje"
-```
-
-### STEP 3: APPLY FD TEST (Functional Determinism)
-
-**The ONE Question**: When learner hears KNOWN → is there ANY uncertainty about expected response?
-
-❌ **FAIL (has uncertainty) if ANY are true:**
-
-1. **Semantic uncertainty** - Multiple possible TARGETs:
-   - "that" → "que" OR "ese" OR "eso"? ❌
-   - "to" → "a" OR "para" OR infinitive? ❌
-
-2. **FCFS collision** - Already learned a simpler TARGET:
-   - "a entender" = "to understand" but already knows "entender" = "to understand" ❌
-   - "soy" = "I am" but already knows "estoy" = "I am" (FCFS!) ❌
-   - **CHECK REGISTRY FIRST!**
-
-3. **Syntactic uncertainty** - Can't produce correct form/syntax:
-   - "que" alone → "that/which/than/what"? ❌
-   - "hables" alone → "hablas" or "hables"? (wrong mood without "que") ❌
-   - "estado" alone → "estoy" or "he estado"? (wrong tense without "he") ❌
-   - "pensar" alone → "pensar en" or "pensar de"? (wrong preposition) ❌
-
-**Why uncertainty = FD violation:**
-- Learner can't reliably reconstruct valid syntax from LEGO recombination
-- Multiple possible responses → Creates hesitation/errors
-- If context determines form/meaning → Keep context together
-
-✅ **PASS (zero uncertainty)** → LEGO is Functionally Deterministic
-
-**Examples:**
-- ✅ "quiero" + "que hables" → Zero uncertainty, valid reconstruction
-- ❌ "quiero que" + "hables" → Uncertainty about mood, breaks reconstruction
-- ✅ "he estado" → Zero uncertainty, atomic for tense
-- ❌ "he" + "estado" → Uncertainty about tense construction
-
-### STEP 4: FIX FAILURES → CHUNK UP
-
-**If FD test fails → Make it BIGGER**
-
-```
-❌ "que" = "that" [fails test #2 - ambiguous]
-✅ "que es" = "that it is" [passes - context makes it deterministic]
-
-❌ "a entender" = "to understand" [fails test #1 - collision with "entender"]
-✅ "empezar a entender" = "to start to understand" [passes]
-```
-
-### STEP 5: CHECK FCFS REGISTRY
-
-**Critical**: Before marking any LEGO as NEW, check the existing LEGO registry!
-
-```json
-Registry shows:
-- "I am" → "estoy" (S0002) [FCFS!]
-
-Now processing S0150: "Soy profesor" = "I am a teacher"
-
-❌ "soy" = "I am" [COLLISION with estoy]
-✅ "soy profesor" = "I am a teacher" [No collision - wrapped larger]
-```
-
-### STEP 6: ADD BOTH ATOMIC AND MOLECULAR
-
-**Extract overlapping coverage** - same words appear in both A and M LEGOs:
-
-```
-Seed: "Quiero hablar español contigo ahora"
-
-Extract BOTH atomic AND molecular:
-1. "quiero" (A) - I want [reusable verb]
-2. "hablar" (A) - to speak [reusable verb]
-3. "español" (A) - Spanish [reusable noun]
-4. "contigo" (A) - with you [reusable]
-5. "ahora" (A) - now [reusable]
-6. "quiero hablar" (M) - I want to speak [verb pattern]
-7. "hablar español" (M) - speak Spanish [object phrase]
-
-Why both?
-- Atomic "hablar" → Learner can use in "voy a hablar", "puedo hablar", etc.
-- Molecular "quiero hablar" → Learner learns verb + infinitive pattern
-- Molecular "hablar español" → Learner learns verb + direct object order
-
-Different teaching purposes:
-- A-LEGOs = vocabulary building blocks (reusable across contexts)
-- M-LEGOs = syntax patterns (word order, constructions, idioms)
-```
-
-**CRITICAL PATTERN: Modal Verbs + Infinitives**
-
-When modal verbs appear with infinitives, extract **ALL THREE**:
-
-```
-Sentence: "I can remember the whole sentence"
-
-Extract:
-1. "puedo" (A) - I can [reusable modal]
-2. "recordar" (A) - to remember [reusable infinitive]
-3. "puedo recordar" (M) - I can remember [modal + infinitive construction]
-
-Components for M-type:
-[["puedo", "I can"], ["recordar", "remember"]] ← Note: bare infinitive in English!
-```
-
-**Why all three?**
-- "puedo" alone → Use in "puedo hablar", "puedo ir", etc.
-- "recordar" alone → Use in "quiero recordar", "voy a recordar", etc.
-- "puedo recordar" → Bridges structural difference (Spanish infinitive vs English bare form)
-
-**Modal verbs to watch for**: can, could, should, must, might, would, will, shall, may
-
-**The tiling principle**: Both languages must tile grammatically. Without the M-type, you get:
-- ❌ "I can | to remember" (broken English)
-- ✅ "I can remember" (correct with M-type)
-```
-
-**Critical**: If word is FD on its own → Extract as A-LEGO even if also in M-LEGO
-- "frecuentemente" works alone → A-LEGO ✅
-- Also part of "tan frecuentemente como sea posible" → M-LEGO ✅
-- **Both teach different skills!**
-
-### STEP 7: COMPONENTIZE ALL M-TYPES
-
-**Every molecular LEGO MUST show ALL WORDS in components**
-
-```json
-{
-  "type": "M",
-  "target": "estoy intentando",
-  "known": "I'm trying",
-  "components": [
-    ["estoy", "I am"],
-    ["intentando", "trying"]
-  ]
-}
-```
-
-**Critical**: Components use LITERAL translations, not semantic roles:
-
-```json
-✅ CORRECT:
-["para", "in order to"] ← shows purpose construction
-
-❌ WRONG:
-["para", "to"] ← hides the construction
-```
-
----
-
-## 🔧 ATOMIC vs MOLECULAR CLASSIFICATION
-
-### Atomic (A)
+### When to Extract A-type (Atomic):
 - Single word
-- Unambiguous standalone
+- FD-compliant on its own
 - 1:1 mapping
-- Reusable across many seeds
 
 ```json
 {"type": "A", "target": "quiero", "known": "I want"}
 ```
 
-### Molecular (M)
-- Multi-word OR
-- Pattern/construction OR
-- Would be ambiguous if split
+### When to Extract M-type (Molecular):
 
-```json
-{"type": "M", "target": "estoy intentando", "known": "I'm trying"}
+**ONLY extract M-type when it teaches something you CAN'T get from tiling A-types:**
+
+✅ **Extract M-type when:**
+1. **Required for FD**: Can't split without ambiguity
+   - "I'm trying" → "estoy intentando" (can't split "I'm" → estoy/soy ambiguous)
+   - "a word" → "una palabra" (can't split "a" → una/un ambiguous)
+
+2. **Non-obvious word order/construction**:
+   - "as often as possible" → "tan frecuentemente como sea posible" (complex pattern with "tan...como sea")
+   - "what I mean" → "lo que quiero decir" (idiomatic construction)
+
+❌ **DON'T extract M-type when:**
+- Both languages tile cleanly with A-types
+- "I want to speak" → "quiero hablar" ❌ (both languages tile: "I want" + "to speak" = "quiero" + "hablar")
+- "speak Spanish" → "hablar español" ❌ (just verb + object, obvious from atomics)
+
+**The test**: Can learner reconstruct correctly using ONLY A-type LEGOs? If YES → skip M-type.
+
+### Exception: M-type with A-type Components
+
+**When you DO extract an M-type**, also extract its components as A-types IF they're FD-compliant:
+
+```
+M-type: "estoy intentando" = "I'm trying" (needed for FD)
+Also extract: "intentando" = "trying" (A-type, FD on its own, reusable)
+
+Why both?
+- M-type teaches the construction
+- A-type allows reuse in other contexts ("estoy intentando ahora")
 ```
 
-**Rule**: When in doubt → M (better to over-chunk than under-chunk)
+---
+
+## 📋 EXTRACTION ALGORITHM
+
+```
+For each seed:
+
+1. FORWARD SWEEP (KNOWN → TARGET):
+   pos = 0
+   while pos < length(KNOWN):
+     chunk = word[pos]
+     while NOT FD_compliant(chunk):
+       extend chunk to word[pos+1], word[pos+2]...
+     LOCK chunk as LEGO
+     classify as A or M
+     pos = next_unmatched_position
+
+2. BACKWARD SWEEP (TARGET → KNOWN):
+   pos = END
+   while pos >= 0:
+     if position already covered: skip
+     chunk = word[pos]
+     while NOT FD_compliant(chunk):
+       extend chunk leftward
+     LOCK chunk as LEGO
+     classify as A or M
+     pos = previous_unmatched_position
+
+3. CHECK M-TYPE COMPONENTS:
+   for each M-type LEGO:
+     for each word in M-type:
+       if word is FD-compliant alone:
+         extract as A-type LEGO
+
+4. CRITICAL: ORDER A-TYPES BEFORE M-TYPES:
+   within each seed:
+     sort LEGOs: all A-types FIRST, then all M-types
+     renumber IDs: S0010L01, L02, L03... in sorted order
+
+   WHY: When learner encounters M-type "puedo recordar", they may
+        have already learned "puedo" and "recordar" as A-types,
+        making the M-LEGO a COMBINATION of known pieces
+
+5. VERIFY TILING:
+   reconstruct TARGET from LEGOs
+   if fails: fix extraction
+
+6. CHECK REGISTRY:
+   for each new LEGO:
+     if target+known exists: REFERENCE it
+     else: mark as NEW
+```
 
 ---
 
@@ -400,41 +161,21 @@ Components for M-type:
 
 ```json
 {
-  "agent_id": 1,
-  "seed_range": "S0001-S0070",
-  "extracted_at": "2025-11-09T...",
+  "version": "6.0",
   "seeds": [
     {
       "seed_id": "S0001",
-      "seed_pair": {
-        "target": "Quiero hablar español contigo ahora",
-        "known": "I want to speak Spanish with you now"
-      },
+      "seed_pair": ["Quiero hablar español", "I want to speak Spanish"],
       "legos": [
         {
-          "provisional_id": "PROV_S0001_01",
+          "id": "S0001L01",
           "type": "A",
           "target": "quiero",
           "known": "I want",
           "new": true
         },
         {
-          "provisional_id": "PROV_S0001_02",
-          "type": "A",
-          "target": "hablar",
-          "known": "to speak",
-          "new": true
-        },
-        {
-          "id": "S0023L02",
-          "type": "A",
-          "target": "más",
-          "known": "more",
-          "ref": "S0023",
-          "new": false
-        },
-        {
-          "provisional_id": "PROV_S0001_03",
+          "id": "S0002L01",
           "type": "M",
           "target": "estoy intentando",
           "known": "I'm trying",
@@ -443,6 +184,21 @@ Components for M-type:
             ["estoy", "I am"],
             ["intentando", "trying"]
           ]
+        },
+        {
+          "id": "S0002L02",
+          "type": "A",
+          "target": "intentando",
+          "known": "trying",
+          "new": true
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "ref": "S0001",
+          "new": false
         }
       ]
     }
@@ -450,306 +206,249 @@ Components for M-type:
 }
 ```
 
-**Field Requirements:**
-- `provisional_id` OR `id` (if reference)
+**Required fields:**
+- `id`: LEGO ID (format: S####L##)
 - `type`: "A" or "M"
-- `target`: Target language text
-- `known`: Known language text
-- `new`: true (new LEGO) or false (reference)
-- `ref`: Seed ID if reference (e.g., "S0023")
-- `components`: Array of [target, known] pairs for M-types (**ALL WORDS**)
+- `target`: Target language
+- `known`: Known language
+- `new`: true/false
+- `ref`: Source seed ID (if reference)
+- `components`: [[target,known]] pairs for M-types (ALL WORDS, literal translations)
 
 ---
 
-## ✅ QUALITY CHECKLIST
+## ✅ SELF-VALIDATION CHECKLIST
 
 Before submitting, verify:
 
-**Complete Tiling:**
+### Tiling
 - [ ] Every seed reconstructs perfectly from LEGOs
 - [ ] No gaps, no extra words
+- [ ] TARGET: All words covered
+- [ ] KNOWN: All words covered
 
-**FD Compliance:**
-- [ ] No ambiguous standalone words (que, de, a, en alone)
-- [ ] No FCFS collisions (checked registry)
-- [ ] All chunks deterministic (Known → exactly ONE Target)
+### FD Compliance
+- [ ] No ambiguous standalone words (que, de, a alone)
+- [ ] No FCFS collisions (check registry!)
+- [ ] Each chunk: KNOWN → exactly ONE TARGET
 
-**Componentization:**
-- [ ] ALL M-type LEGOs have components
-- [ ] Components account for ALL WORDS
+### M-type Justification
+- [ ] Each M-type is FD-required OR teaches non-obvious pattern
+- [ ] No redundant M-types that could be tiled from A-types
+- [ ] All M-types have complete components arrays
 - [ ] Components use literal translations
 
-**Registry Check:**
+### Registry
 - [ ] Checked existing LEGOs before marking new
-- [ ] Referenced LEGOs have proper `id` and `ref`
-- [ ] No duplicates
+- [ ] References have proper `id` and `ref`
+- [ ] Collision rule: BOTH target AND known must match
 
-**A/M Balance:**
-- [ ] Atomic: ~40-60% (single words, unambiguous)
-- [ ] Molecular: ~40-60% (multi-word, patterns)
+### Format
+- [ ] Valid JSON
+- [ ] All required fields present
+- [ ] M-types have `components`
 
 ---
 
-## 🎓 EXAMPLES FROM PRODUCTION
+## 🎓 EXAMPLES
 
-### Example 1: S0101 (NEW + REFERENCE MIX)
+### Example 1: Simple Sentence (A-types only)
 
-**Seed**: "Estoy disfrutando descubrir más sobre este lenguaje"
-**Known**: "I'm enjoying finding out more about this language"
-
-**Extraction:**
+**Seed**: "Quiero hablar español contigo ahora" = "I want to speak Spanish with you now"
 
 ```json
 {
-  "seed_id": "S0101",
+  "legos": [
+    {"id": "S0001L01", "type": "A", "target": "quiero", "known": "I want", "new": true},
+    {"id": "S0001L02", "type": "A", "target": "hablar", "known": "to speak", "new": true},
+    {"id": "S0001L03", "type": "A", "target": "español", "known": "Spanish", "new": true},
+    {"id": "S0001L04", "type": "A", "target": "contigo", "known": "with you", "new": true},
+    {"id": "S0001L05", "type": "A", "target": "ahora", "known": "now", "new": true}
+  ]
+}
+```
+
+**Why no M-types?** Both languages tile cleanly. "I want" + "to speak" = "quiero" + "hablar" with no ambiguity.
+
+### Example 2: M-type Required for FD
+
+**Seed**: "Estoy intentando aprender" = "I'm trying to learn"
+
+```json
+{
   "legos": [
     {
-      "provisional_id": "PROV_S0101_01",
+      "id": "S0002L01",
       "type": "M",
-      "target": "estoy disfrutando",
-      "known": "I'm enjoying",
+      "target": "estoy intentando",
+      "known": "I'm trying",
       "new": true,
-      "components": [
-        ["estoy", "I am"],
-        ["disfrutando", "enjoying"]
-      ]
+      "components": [["estoy", "I am"], ["intentando", "trying"]]
     },
     {
-      "provisional_id": "PROV_S0101_02",
+      "id": "S0002L02",
       "type": "A",
-      "target": "descubrir",
-      "known": "to find out",
+      "target": "intentando",
+      "known": "trying",
       "new": true
     },
     {
-      "id": "S0023L02",
+      "id": "S0002L03",
       "type": "A",
-      "target": "más",
-      "known": "more",
-      "ref": "S0023",
-      "new": false
-    },
-    {
-      "provisional_id": "PROV_S0101_03",
-      "type": "A",
-      "target": "sobre",
-      "known": "about",
-      "new": true
-    },
-    {
-      "provisional_id": "PROV_S0101_04",
-      "type": "A",
-      "target": "este",
-      "known": "this",
-      "new": true
-    },
-    {
-      "provisional_id": "PROV_S0101_05",
-      "type": "A",
-      "target": "lenguaje",
-      "known": "language",
+      "target": "aprender",
+      "known": "to learn",
       "new": true
     }
   ]
 }
 ```
 
-**Tiling Check**: estoy disfrutando + descubrir + más + sobre + este + lenguaje ✅
+**Why M-type for "estoy intentando"?** Can't split: "I'm" → estoy/soy ambiguous (FD fails)
+**Why also A-type for "intentando"?** Reusable: "estoy intentando ahora", "voy a intentando" etc.
 
----
+### Example 3: Complex Pattern (M-type for construction)
 
-### Example 2: FCFS Collision Avoided
+**Seed**: "lo más frecuentamente posible" = "as often as possible"
 
-**Registry shows:**
-- "I am" → "estoy" (S0002)
-
-**Now processing S0150:**
-- Seed: "Soy profesor" = "I am a teacher"
-
-**Thinking:**
-```
-Option 1: "soy" = "I am" ❌ COLLISION with estoy (FCFS violation!)
-Option 2: "soy profesor" = "I am a teacher" ✅ No collision
-```
-
-**Correct extraction:**
 ```json
 {
-  "provisional_id": "PROV_S0150_01",
-  "type": "M",
-  "target": "soy profesor",
-  "known": "I am a teacher",
-  "new": true,
-  "components": [
-    ["soy", "I am"],
-    ["profesor", "teacher"]
+  "legos": [
+    {
+      "id": "S0003L02",
+      "type": "M",
+      "target": "lo más frecuentamente posible",
+      "known": "as often as possible",
+      "new": true,
+      "components": [
+        ["lo", "the"],
+        ["más", "more"],
+        ["frecuentamente", "often"],
+        ["posible", "possible"]
+      ]
+    },
+    {
+      "id": "S0003L03",
+      "type": "A",
+      "target": "más",
+      "known": "more",
+      "new": true
+    },
+    {
+      "id": "S0003L04",
+      "type": "A",
+      "target": "frecuentamente",
+      "known": "often",
+      "new": true
+    },
+    {
+      "id": "S0003L05",
+      "type": "A",
+      "target": "posible",
+      "known": "possible",
+      "new": true
+    }
   ]
 }
 ```
 
----
+**Why M-type?** Complex "lo más...posible" construction (the more...possible) not obvious from atomics
+**Why also A-types?** "más", "frecuentamente", and "posible" are reusable in other contexts
+**CRITICAL - Components use literal translations:** "más" = "more" (not "most"), because that's the literal meaning. The phrase becomes "the most" semantically, but components show word-by-word literals.
 
-### Example 3: Ambiguous Word Chunked Up
+### Example 4: Registry Reference
 
-**Seed**: "Mejor que tú" = "Better than you"
+**Seed**: "Hablo español ahora" = "I speak Spanish now"
 
-**Thinking:**
-```
-"que" alone = "that/what/than/who/which" ❌ FAILS FD test #2
-"mejor que" = "better than" ✅ PASSES (deterministic in context)
-```
-
-**Correct extraction:**
 ```json
 {
-  "provisional_id": "PROV_S0XXX_01",
-  "type": "M",
-  "target": "mejor que",
-  "known": "better than",
-  "new": true,
-  "components": [
-    ["mejor", "better"],
-    ["que", "than"]
+  "legos": [
+    {"id": "S0009L01", "type": "A", "target": "hablo", "known": "I speak", "new": true},
+    {"id": "S0001L03", "type": "A", "target": "español", "known": "Spanish", "ref": "S0001", "new": false},
+    {"id": "S0001L05", "type": "A", "target": "ahora", "known": "now", "ref": "S0001", "new": false}
   ]
 }
 ```
 
+**Why references?** "español" and "ahora" already extracted in S0001 with same target+known
+
 ---
 
-## 🚨 COMMON MISTAKES TO AVOID
+## 🚨 COMMON MISTAKES
 
-### ❌ Mistake 1: Over-Atomization
+### ❌ Over-extraction of M-types
 
 ```json
 BAD:
-{"target": "después", "known": "after"}
-{"target": "de", "known": "of"}
-{"target": "que", "known": "that"}
+{"type": "M", "target": "quiero hablar", "known": "I want to speak"}
+// Both languages tile cleanly! No pattern to learn.
 
 GOOD:
-{"target": "después de que", "known": "after", "type": "M"}
+{"type": "A", "target": "quiero", "known": "I want"}
+{"type": "A", "target": "hablar", "known": "to speak"}
 ```
 
-### ❌ Mistake 1.5: Violating FD Type 3 - Incomplete Context
-
-**Problem**: Creating LEGOs that can't reconstruct valid syntax when recombined
+### ❌ Under-chunking (FD violation)
 
 ```json
-BAD - Breaks grammatical dependency (FD Type 3 violation):
-Seed: "Quiero que hables español" = "I want you to speak Spanish"
+BAD:
+{"type": "A", "target": "estoy", "known": "I am"} // estoy/soy ambiguous!
 
-{"target": "quiero que", "known": "I want that"} ← FD VIOLATION!
-{"target": "hables", "known": "you speak"} ← FD VIOLATION!
-
-WHY WRONG:
-- "que" needs "hables" to determine subjunctive mood
-- "hables" needs "que" to know it's subjunctive not indicative
-- When learner recombines: "quiero" + "que" + "hables" → might produce "quiero que hablas" ❌
-
-GOOD Option 1 (respect grammatical boundary):
-{"target": "quiero", "known": "I want", "type": "A"}
-{"target": "que hables", "known": "you to speak", "type": "M"}
-
-GOOD Option 2 (entire construction):
-{"target": "quiero que hables", "known": "I want you to speak", "type": "M"}
+GOOD:
+{"type": "M", "target": "estoy intentando", "known": "I'm trying"}
 ```
 
-**Remember**: These aren't "grammar rules" - they're FD violations (Type 3: Incomplete Context)
-- If form/syntax depends on context → Keep context together
-- If you can't reliably reconstruct from LEGOs → You violated FD
-
-### ❌ Mistake 2: Missing Components
+### ❌ Missing components
 
 ```json
 BAD:
 {
   "type": "M",
   "target": "estoy intentando",
-  "components": [["estoy", "I am"]] ← Missing "intentando"!
+  // Missing components!
 }
 
 GOOD:
 {
   "type": "M",
   "target": "estoy intentando",
-  "components": [
-    ["estoy", "I am"],
-    ["intentando", "trying"]
-  ]
+  "known": "I'm trying",
+  "components": [["estoy", "I am"], ["intentando", "trying"]]
 }
 ```
 
-### ❌ Mistake 3: Ignoring FCFS Registry
-
-```json
-BAD:
-{"target": "quiero", "known": "I want", "new": true} ← Already exists!
-
-GOOD:
-{"id": "S0001L01", "target": "quiero", "known": "I want", "ref": "S0001", "new": false}
-```
-
-### ❌ Mistake 4: Incomplete Tiling
+### ❌ Incomplete tiling
 
 ```json
 Seed: "Quiero hablar español contigo"
-LEGOs: quiero + hablar + español ← Missing "contigo"! ❌
-
-Correct: quiero + hablar + español + contigo ✅
+BAD: quiero + hablar + español // Missing "contigo"!
+GOOD: quiero + hablar + español + contigo ✅
 ```
 
 ---
 
-## 🎯 SUCCESS METRICS
+## 🔄 USE EXTENDED THINKING
 
-**From S0101-S0200 Test Run:**
-- ✅ 100% complete tiling (all seeds reconstruct)
-- ✅ 44% reuse rate (good registry checking)
-- ✅ ~7 minutes for 100 seeds (10 parallel agents)
-- ✅ FD compliance maintained
-- ⚠️ A/M balance varied (ensure 40-60% each)
+For EVERY seed, use `<thinking>` tags:
 
-**Target for Full Course (668 seeds):**
-- 100% tiling success rate
-- 40-60% atomic, 40-60% molecular
-- 30-50% reuse rate from prior seeds
-- Zero FD violations
-- Complete componentization
-
----
-
-## 🔄 EXTENDED THINKING PROTOCOL
-
-Use `<thinking>` tags for EVERY seed:
-
-```
+```xml
 <thinking>
-SEED: "Estoy intentando aprender español"
-KNOWN: "I'm trying to learn Spanish"
+SEED: "Estoy intentando aprender"
+KNOWN: "I'm trying to learn"
 
-STEP 1: CHUNK KNOWN
-"I'm trying" | "to learn" | "Spanish"
+FORWARD SWEEP:
+- "I'm" → fails (estoy/soy ambiguous)
+- "I'm trying" → "estoy intentando" ✅ M-type (FD required)
+- "to learn" → "aprender" ✅ A-type
 
-STEP 2: MAP TO TARGET
-"I'm trying" → "estoy intentando"
-"to learn" → "aprender"
-"Spanish" → "español"
+CHECK M-TYPE COMPONENTS:
+- "intentando" FD on its own? YES → extract as A-type
 
-STEP 3: FD TEST
-- "estoy intentando" = "I'm trying" ✓ (passes all tests)
-- "aprender" = "to learn" ✓ (passes)
-- "español" = "Spanish" ✓ (CHECK REGISTRY → S0001L03 exists!)
+REGISTRY CHECK:
+- "estoy intentando" new? YES
+- "intentando" new? YES
+- "aprender" new? YES
 
-STEP 4: CLASSIFY
-- "estoy intentando" → M (multi-word pattern)
-- "aprender" → A (single word)
-- "español" → REFERENCE (already exists)
-
-STEP 5: COMPONENTIZE
-"estoy intentando" → [["estoy", "I am"], ["intentando", "trying"]]
-
-STEP 6: TILING
-estoy intentando + aprender + español = "Estoy intentando aprender español" ✅
+TILING: estoy intentando + aprender = "Estoy intentando aprender" ✅
 
 OUTPUT READY
 </thinking>
@@ -757,65 +456,18 @@ OUTPUT READY
 
 ---
 
-## ✅ SELF-VALIDATION CHECKLIST (CRITICAL)
+## 📊 SUCCESS METRICS
 
-**Before writing your output JSON, you MUST validate your extraction:**
-
-### Format Validation
-- [ ] Output is valid JSON
-- [ ] All required fields present: `seed_id`, `seed_pair`, `legos`
-- [ ] Each LEGO has: `type`, `target`, `known`, `new`, `id`
-- [ ] M-type LEGOs have `components` array with `[target, known]` pairs
-
-### Reference Validation
-- [ ] All `ref` fields point to existing seed IDs
-- [ ] Referenced LEGOs exist in the referenced seed
-- [ ] No self-references (LEGO can't reference itself)
-
-### LEARNER UNCERTAINTY Validation (CRITICAL)
-- [ ] **Test each LEGO**: "If learner hears KNOWN, do they say TARGET with ZERO uncertainty?"
-- [ ] No A-type LEGOs that are substrings of M-type LEGOs in same seed (indicates insufficient chunking)
-- [ ] No adjacent LEGOs that should be ONE M-type (e.g., "tan pronto como" + "puedas" should be ONE M-type)
-- [ ] Modal verbs + infinitives: Extract BOTH atomic parts AND molecular combination
-- [ ] Subordinate clauses with subjunctive: Must include full context (can't split)
-
-### Tiling Validation
-- [ ] All target words covered by LEGOs
-- [ ] All known words covered by LEGOs
-- [ ] Reconstruction test: LEGOs rebuild seed sentence perfectly
-
-### Component Validation (M-type LEGOs)
-- [ ] Each component is `[target_word, literal_known]` format
-- [ ] Components use literal/word-by-word translations
-- [ ] All words from M-type target appear in components
-
-**If ANY check fails → FIX IT before writing output**
-
-**Common fixes:**
-- A-type inside M-type → Remove A-type, keep only M-type
-- Adjacent LEGOs feel incomplete → Combine into single M-type
-- Tiling fails → Missing LEGO or incorrect extraction
-- Missing components → Add literal translations for each word in M-type
-
----
-
-**Target Time per Seed**: 1-2 minutes with extended thinking
-**Quality over Speed**: Better to take time and get it right!
-
----
-
-## 📚 REFERENCE
-
-**Phase Intelligence**: `/docs/phase_intelligence/phase_3_lego_pairs.md`
-**Test Results**: `/phase3_test_s0101_s0200/EXTRACTION_SUMMARY.md`
-**Registry Format**: `/phase3_test_s0101_s0200/templates/lego_registry_s0001_s0100.json`
-
----
+**Target:**
+- 100% tiling success
+- 40-60% atomic, 40-60% molecular
+- 30-50% reuse rate
+- Zero FD violations
+- All M-types justified
 
 **Version History:**
+- v6.0 (2025-11-11): Simplified M-LEGO rules, clearer examples
 - v5.0 (2025-11-09): Ultimate edition with S0101-S0200 learnings
-- v4.0.2: Readable JSON + sorting
 - v4.0: Radical simplification (One Rule principle)
-- v3.6: FD direction corrected
 
-**Status**: ✅ Production Ready for Full 668-Seed Course
+**Status**: ✅ Production Ready
