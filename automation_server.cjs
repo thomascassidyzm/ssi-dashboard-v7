@@ -5346,6 +5346,31 @@ app.get('/api/courses', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/list
+ * List all available courses (simple directory listing)
+ */
+app.get('/api/courses/list', async (req, res) => {
+  try {
+    const coursesDirs = await fs.readdir(CONFIG.VFS_ROOT);
+
+    const courses = [];
+    for (const dir of coursesDirs) {
+      const dirPath = path.join(CONFIG.VFS_ROOT, dir);
+      const stat = await fs.stat(dirPath);
+
+      if (stat.isDirectory() && dir !== '.DS_Store') {
+        courses.push(dir);
+      }
+    }
+
+    res.json({ courses });
+  } catch (err) {
+    console.error('[Courses] List error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
  * GET /api/courses/:courseCode
  * Get detailed course information including translations and LEGOs
  *
@@ -8889,31 +8914,6 @@ app.get('/api/courses/:code/manifest', async (req, res) => {
     res.json(manifest);
   } catch (err) {
     console.error('[Manifest] Load error:', err);
-    res.status(500).json({ error: err.message });
-  }
-});
-
-/**
- * GET /api/courses/list
- * List all available courses
- */
-app.get('/api/courses/list', async (req, res) => {
-  try {
-    const coursesDirs = await fs.readdir(CONFIG.VFS_ROOT);
-
-    const courses = [];
-    for (const dir of coursesDirs) {
-      const dirPath = path.join(CONFIG.VFS_ROOT, dir);
-      const stat = await fs.stat(dirPath);
-
-      if (stat.isDirectory()) {
-        courses.push(dir);
-      }
-    }
-
-    res.json({ courses });
-  } catch (err) {
-    console.error('[Courses] List error:', err);
     res.status(500).json({ error: err.message });
   }
 });

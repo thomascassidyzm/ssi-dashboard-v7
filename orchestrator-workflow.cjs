@@ -14,6 +14,13 @@ const { spawn } = require('child_process');
 const path = require('path');
 const fs = require('fs-extra');
 const { generateOrchestratorPrompt, generateValidatorPrompt } = require('./orchestrator-prompt-helpers.cjs');
+const {
+  calculateSegments,
+  createSegmentStructure,
+  createCourseMetadata,
+  updateSegmentProgress,
+  updateCourseMetadata
+} = require('./scripts/segment-coordinator.cjs');
 
 // Helper: Run a preparation script
 async function runPrepScript(scriptName, courseCode, params) {
@@ -289,23 +296,80 @@ async function runMergeScript(scriptName, courseCode, orchestratorMode = false) 
  * Replaces spawnCourseOrchestrator() and pollAndContinue()
  *
  * @param {string} courseCode - Course code (e.g., "spa_for_eng")
- * @param {Object} params - Job parameters { target, known, seeds, startSeed, endSeed }
+ * @param {Object} params - Job parameters { target, known, seeds, startSeed, endSeed, startPhase, endPhase }
  * @param {Object} job - Job state object from STATE.jobs
  * @param {Function} spawnPhaseAgent - Function to spawn agents in iTerm2
  * @param {Function} closeAgentWindows - Function to close iTerm2 windows and free RAM
  * @param {string} trainingUrl - Base URL for training documentation
  */
 async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent, closeAgentWindows, trainingUrl) {
-  const { target, known, seeds, startSeed, endSeed } = params;
+  const { target, known, seeds, startSeed, endSeed, startPhase = 1, endPhase = 6, mode } = params;
   const courseDir = path.join(__dirname, 'vfs/courses', courseCode);
+
+  // Detect if segmentation should be enabled
+  const shouldSegment = mode === 'segmented' || seeds > 100;
+  const segmentSize = 100;
 
   console.log(`\n${'='.repeat(60)}`);
   console.log('ORCHESTRATOR WORKFLOW STARTING');
   console.log('='.repeat(60));
   console.log(`Course: ${courseCode}`);
   console.log(`Seeds: ${startSeed}-${endSeed} (${seeds} total)`);
-  console.log(`Architecture: 5 orchestrators × 10 agents = 50 concurrent per phase`);
+  console.log(`Phases: ${startPhase} → ${endPhase}${endPhase < 6 ? ' (partial run)' : ''}`);
+
+  if (shouldSegment) {
+    const numSegments = Math.ceil(seeds / segmentSize);
+    console.log(`Mode: SEGMENTED (${numSegments} segments × ${segmentSize} seeds)`);
+    console.log(`Architecture: Parallel segment processing`);
+  } else {
+    console.log(`Architecture: 5 orchestrators × 10 agents = 50 concurrent per phase`);
+  }
   console.log('='.repeat(60) + '\n');
+
+  // Initialize segmentation if needed
+  if (shouldSegment) {
+    console.log('🔧 Initializing segment structure...\n');
+
+    const segments = calculateSegments(startSeed, endSeed, segmentSize);
+    await createSegmentStructure(courseDir, segments, courseCode, job.jobId);
+    await createCourseMetadata(courseDir, courseCode, seeds, startSeed, endSeed, segments, job.jobId);
+
+    console.log(`✅ Created ${segments.length} segments\n`);
+
+    // Store segment info in job for tracking
+    job.segmentation = {
+      enabled: true,
+      total_segments: segments.length,
+      segments: segments.map(s => ({
+        id: s.id,
+        start: s.start,
+        end: s.end,
+        status: 'pending',
+        progress: 0
+      }))
+    };
+
+    // Display segment processing instructions
+    console.log('📋 SEGMENTED MODE ENABLED\n');
+    console.log('Each segment can be processed independently in parallel.');
+    console.log('For manual dispatch, open Claude Code web instances and process:');
+    segments.forEach(seg => {
+      console.log(`  - ${seg.id}: Seeds ${seg.start}-${seg.end} (${seg.count} seeds)`);
+    });
+    console.log(`\nSegment directories created in: ${path.join(courseDir, 'segments')}`);
+    console.log('See SEGMENT_ARCHITECTURE.md for details.\n');
+
+    // For segmented mode, we create the structure but don't run the full workflow
+    // Each segment should be processed independently
+    job.phase = 'segments_ready';
+    job.status = 'ready_for_segments';
+    job.progress = 5;
+
+    console.log('⏸️  Workflow initialization complete.');
+    console.log('Ready for segment processing. Run segments independently for Phases 1, 3, 5, 6.\n');
+
+    return;
+  }
 
   // Retry configuration
   const MAX_RETRIES = 2;
@@ -313,9 +377,10 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
 
   try {
     // ===== PHASE 1: SEED PAIRS =====
-    console.log('\n📍 PHASE 1: Seed Pair Translation\n');
-    job.phase = 'phase_1_prep';
-    job.progress = 0;
+    if (startPhase <= 1 && endPhase >= 1) {
+      console.log('\n📍 PHASE 1: Seed Pair Translation\n');
+      job.phase = 'phase_1_prep';
+      job.progress = 0;
 
     // Prep: Divide seeds into 5 chunks
     await runPrepScript('phase1-prepare-orchestrator-batches.cjs', courseCode, params);
@@ -414,10 +479,22 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
 
     console.log(`[Phase 1] ✅ COMPLETE! ${seeds} seed pairs generated and validated\n`);
     job.progress = 30;
+    } else if (startPhase > 1) {
+      console.log(`\n⏭️  PHASE 1: Skipped (startPhase=${startPhase})\n`);
+    }
+
+    if (endPhase < 3) {
+      console.log(`\n🛑 Workflow stopping at Phase ${endPhase} (as configured)\n`);
+      job.phase = 'complete';
+      job.status = 'completed';
+      job.progress = 100;
+      return;
+    }
 
     // ===== PHASE 3: LEGO PAIRS =====
-    console.log('\n📍 PHASE 3: LEGO Extraction\n');
-    job.phase = 'phase_3_prep';
+    if (startPhase <= 3 && endPhase >= 3) {
+      console.log('\n📍 PHASE 3: LEGO Extraction\n');
+      job.phase = 'phase_3_prep';
 
     // Prep: Divide seeds into 5 chunks
     await runPrepScript('phase3-prepare-orchestrator-batches.cjs', courseCode, params);
@@ -484,10 +561,22 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
 
     console.log(`[Phase 3] ✅ COMPLETE! LEGOs extracted for ${seeds} seeds\n`);
     job.progress = 50;
+    } else if (startPhase > 3) {
+      console.log(`\n⏭️  PHASE 3: Skipped (startPhase=${startPhase})\n`);
+    }
+
+    if (endPhase < 4) {
+      console.log(`\n🛑 Workflow stopping at Phase ${endPhase} (as configured)\n`);
+      job.phase = 'complete';
+      job.status = 'completed';
+      job.progress = 100;
+      return;
+    }
 
     // ===== PHASE 4: BATCH PREPARATION =====
-    console.log('\n📍 PHASE 4: Batch Preparation (Smart Deduplication)\n');
-    job.phase = 'phase_4';
+    if (startPhase <= 4 && endPhase >= 4) {
+      console.log('\n📍 PHASE 4: Batch Preparation (Smart Deduplication)\n');
+      job.phase = 'phase_4';
 
     // Phase 4 doesn't use orchestrators - it's a prep script that creates batches for Phase 5
     // Call with --orchestrator flag to create 5 mega-batches
@@ -516,10 +605,22 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
 
     console.log(`[Phase 4] ✅ COMPLETE! 5 mega-batches prepared\n`);
     job.progress = 55;
+    } else if (startPhase > 4) {
+      console.log(`\n⏭️  PHASE 4: Skipped (startPhase=${startPhase})\n`);
+    }
+
+    if (endPhase < 5) {
+      console.log(`\n🛑 Workflow stopping at Phase ${endPhase} (as configured)\n`);
+      job.phase = 'complete';
+      job.status = 'completed';
+      job.progress = 100;
+      return;
+    }
 
     // ===== PHASE 5: BASKETS =====
-    console.log('\n📍 PHASE 5: Basket Generation\n');
-    job.phase = 'phase_5_spawn';
+    if (startPhase <= 5 && endPhase >= 5) {
+      console.log('\n📍 PHASE 5: Basket Generation\n');
+      job.phase = 'phase_5_spawn';
 
     // Spawn 5 orchestrators with 30s delays
     const phase5Orchestrators = [];
@@ -582,9 +683,21 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
 
     console.log(`[Phase 5] ✅ COMPLETE! Baskets generated\n`);
     job.progress = 80;
+    } else if (startPhase > 5) {
+      console.log(`\n⏭️  PHASE 5: Skipped (startPhase=${startPhase})\n`);
+    }
+
+    if (endPhase < 6) {
+      console.log(`\n🛑 Workflow stopping at Phase ${endPhase} (as configured)\n`);
+      job.phase = 'complete';
+      job.status = 'completed';
+      job.progress = 100;
+      return;
+    }
 
     // ===== PHASE 6: INTRODUCTIONS =====
-    console.log('\n📍 PHASE 6: Introduction Generation\n');
+    if (startPhase <= 6 && endPhase >= 6) {
+      console.log('\n📍 PHASE 6: Introduction Generation\n');
     job.phase = 'phase_6_prep';
 
     // Prep: Divide LEGOs into 5 chunks
@@ -651,6 +764,9 @@ async function runOrchestratorWorkflow(courseCode, params, job, spawnPhaseAgent,
     await runMergeScript('phase6-merge-chunks.cjs', courseCode);
 
     console.log(`[Phase 6] ✅ COMPLETE! Introductions generated\n`);
+    } else if (startPhase > 6) {
+      console.log(`\n⏭️  PHASE 6: Skipped (startPhase=${startPhase})\n`);
+    }
 
     // ===== COMPLETE =====
     console.log('\n' + '='.repeat(60));

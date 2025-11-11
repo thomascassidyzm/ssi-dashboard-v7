@@ -1,1 +1,184 @@
-{"version":"curated_v7_spanish","seed_id":"S0005","generation_stage":"SCAFFOLD_READY_FOR_PHRASE_GENERATION","seed_pair":{"target":"Voy a practicar hablar con alguien más.","known":"I'm going to practise speaking with someone else."},"recent_context":{"S0001":["quiero | hablar | español | contigo | ahora","I want | to speak | Spanish | with you | now"],"S0002":["estoy intentando | aprender","I'm trying | to learn"],"S0003":["cómo | hablar | lo más a menudo posible","how | to speak | as often as possible"],"S0004":["cómo | decir | algo | en español","how | to say | something | in Spanish"]},"legos":{"S0005L01":{"lego":["I'm going to","Voy a"],"type":"M","available_legos":12,"is_final_lego":false,"practice_phrases":[],"phrase_distribution":{"really_short_1_2":0,"quite_short_3":0,"longer_4_5":0,"long_6_plus":0},"_metadata":{"lego_id":"S0005L01","seed_context":{"target":"Voy a practicar hablar con alguien más.","known":"I'm going to practise speaking with someone else."},"available_whitelist_size":19},"components":[["Voy","I go"],["a","to"]]},"S0005L02":{"lego":["to practise","practicar"],"type":"A","available_legos":13,"is_final_lego":false,"practice_phrases":[],"phrase_distribution":{"really_short_1_2":0,"quite_short_3":0,"longer_4_5":0,"long_6_plus":0},"_metadata":{"lego_id":"S0005L02","seed_context":{"target":"Voy a practicar hablar con alguien más.","known":"I'm going to practise speaking with someone else."},"available_whitelist_size":22}},"S0005L03":{"lego":["with","con"],"type":"A","available_legos":14,"is_final_lego":false,"practice_phrases":[],"phrase_distribution":{"really_short_1_2":0,"quite_short_3":0,"longer_4_5":0,"long_6_plus":0},"_metadata":{"lego_id":"S0005L03","seed_context":{"target":"Voy a practicar hablar con alguien más.","known":"I'm going to practise speaking with someone else."},"available_whitelist_size":23}},"S0005L04":{"lego":["someone else","alguien más"],"type":"M","available_legos":15,"is_final_lego":true,"practice_phrases":[],"phrase_distribution":{"really_short_1_2":0,"quite_short_3":0,"longer_4_5":0,"long_6_plus":0},"_metadata":{"lego_id":"S0005L04","seed_context":{"target":"Voy a practicar hablar con alguien más.","known":"I'm going to practise speaking with someone else."},"available_whitelist_size":24},"components":[["alguien","someone"],["más","else"]]}},"_instructions":{"task":"Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0","methodology":"Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)","output":"Write to: public/vfs/courses/spa_for_eng_s0001-0010/phase5_outputs/seed_s0005.json","whitelist_note":"3-category rule applied: A-types, M-types, M-components with literal translations"},"_stats":{"new_legos_in_seed":4,"phrases_to_generate":40,"cumulative_legos_before":12}}
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0005",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Voy a practicar hablar con alguien más.",
+    "known": "I'm going to practise speaking with someone else."
+  },
+  "recent_seed_pairs": {
+    "S0001": [
+      "Quiero hablar español contigo ahora.",
+      "I want to speak Spanish with you now."
+    ],
+    "S0002": [
+      "Estoy intentando aprender.",
+      "I'm trying to learn."
+    ],
+    "S0003": [
+      "cómo hablar lo más frecuentamente posible",
+      "how to speak as often as possible"
+    ],
+    "S0004": [
+      "cómo decir algo en español",
+      "how to say something in Spanish"
+    ]
+  },
+  "legos": {
+    "S0005L01": {
+      "lego": [
+        "to practise",
+        "practicar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0005L01",
+        "seed_context": {
+          "target": "Voy a practicar hablar con alguien más.",
+          "known": "I'm going to practise speaking with someone else."
+        }
+      }
+    },
+    "S0005L03": {
+      "lego": [
+        "with",
+        "con"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "to practise",
+          "practicar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0005L03",
+        "seed_context": {
+          "target": "Voy a practicar hablar con alguien más.",
+          "known": "I'm going to practise speaking with someone else."
+        }
+      }
+    },
+    "S0005L04": {
+      "lego": [
+        "I'm going to",
+        "voy a"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "to practise",
+          "practicar"
+        ],
+        [
+          "with",
+          "con"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0005L04",
+        "seed_context": {
+          "target": "Voy a practicar hablar con alguien más.",
+          "known": "I'm going to practise speaking with someone else."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0005L05": {
+      "lego": [
+        "someone else",
+        "alguien más"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "to practise",
+          "practicar"
+        ],
+        [
+          "with",
+          "con"
+        ],
+        [
+          "I'm going to",
+          "voy a"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0005L05",
+        "seed_context": {
+          "target": "Voy a practicar hablar con alguien más.",
+          "known": "I'm going to practise speaking with someone else."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng_s0001-0010/phase5_outputs/seed_s0005.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 4
+  }
+}
