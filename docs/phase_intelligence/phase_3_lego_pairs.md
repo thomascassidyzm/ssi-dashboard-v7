@@ -1,7 +1,7 @@
-# AGENT PROMPT: Phase 3 LEGO Extraction (v6.0 - Bidirectional Sweep)
+# AGENT PROMPT: Phase 3 LEGO Extraction (ULTIMATE v5.0)
 
-**Version**: 6.0 - Bidirectional Sweep Algorithm (2025-11-10)
-**Status**: Production Ready
+**Version**: 5.0 - Ultimate Edition (2025-11-09)
+**Status**: Production Ready - Incorporates S0101-S0200 Test Learnings
 **Purpose**: Extract pedagogically-sound LEGO vocabulary units from translated seed pairs
 
 ---
@@ -12,406 +12,289 @@ You are extracting LEGO vocabulary units from seed pairs. LEGOs are the atomic a
 
 **Core Principle**: When a learner hears KNOWN → they produce exactly ONE TARGET (zero uncertainty)
 
-**Critical**: This is achieved through a **bidirectional sweep algorithm** that ensures complete TARGET coverage.
+---
+
+## 🚨 THE THREE ABSOLUTES
+
+### 1. START FROM KNOWN SEMANTICS
+
+**Break down the KNOWN language first** - how does a native speaker chunk this meaning?
+
+```
+Known: "I want to speak Spanish with you now"
+Natural chunks: "I want" | "to speak" | "Spanish" | "with you" | "now"
+```
+
+Why? The learner THINKS in their native language. Respect how their brain chunks meaning.
+
+### 2. PROVIDE BOTH ATOMIC AND MOLECULAR
+
+**Overlap is REQUIRED** - extract words BOTH ways:
+
+**Why Both?**
+- **Atomic**: Reusable building blocks (flexibility across many contexts)
+- **Molecular**: Target language patterns (word order, idioms, constructions)
+
+**The Pattern**: If a word appears in an M-LEGO AND is FD on its own → Extract BOTH
+
+```
+Example: "tan frecuentemente como sea posible" = "as often as possible"
+
+Extract ALL:
+1. "frecuentemente" (A) - often [reusable!]
+2. "posible" (A) - possible [reusable!]
+3. "tan frecuentemente como sea posible" (M) - as often as possible [word order!]
+
+Components: [["tan", "as"], ["frecuentemente", "often"], ["como", "as"], ["sea", "be"], ["posible", "possible"]]
+
+Why extract atomic "frecuentemente" AND include it in M-LEGO?
+- Atomic: Learner can use "frecuentemente" in other contexts ("hablo frecuentemente")
+- Molecular: Learner learns the PATTERN "tan X como sea posible" with correct word order
+- Both teach different things!
+```
+
+**Another Example**: "lo más frecuentemente posible" = "as often as possible"
+
+```
+Extract ALL:
+1. "frecuentemente" (A) - often
+2. "posible" (A) - possible
+3. "más" (A) - more
+4. "lo más frecuentemente posible" (M) - as often as possible
+
+Why? "más" is useful alone ("más tarde"), but the CONSTRUCTION needs all parts together for word order!
+```
+
+**Rule**: A-LEGOs teach vocabulary flexibility, M-LEGOs teach target language syntax/idioms.
+**Both are needed** - not redundant!
+
+### 3. VERIFY COMPLETE TILING
+
+**The seed MUST reconstruct perfectly from LEGOs**
+
+```
+Target: "Quiero hablar español"
+LEGOs: quiero + hablar + español
+Reconstruction: "Quiero hablar español" ✅
+```
 
 ---
 
-## ⚠️ CRITICAL EXTRACTION PRINCIPLES
+## 📋 THE EXTRACTION PROCESS
 
-**1. ALWAYS extract LEGOs for EVERY word in the current seed**
+### STEP 1: CHUNK THE KNOWN (Forward Sweep)
 
-Even if a TARGET word appeared in a previous seed, you MUST extract it again if:
-- The KNOWN is different (e.g., "hablar" = "to speak" vs "hablar" = "speaking" are TWO different LEGOs!)
-- It appears in this seed's sentence (word-by-word sweep never skips words)
+Start from KNOWN language and chunk semantically:
 
-**2. Extract BOTH atomic AND molecular LEGOs**
+```
+Known: "I'm enjoying finding out more about this language"
 
-Example: "I'm going to practise speaking"
-- Extract: "practicar" = "to practise" (A)
-- Extract: "hablar" = "speaking" (A)
-- ALSO Extract: "practicar hablar" = "to practise speaking" (M)
+Forward sweep (KNOWN order):
+"I'm enjoying" | "finding out" | "more" | "about" | "this" | "language"
 
-Overlapping coverage provides multiple learning entry points!
+Check: Do these chunks make sense to a native speaker? ✅
+```
 
-**3. Registry lookup requires BOTH target AND known to match**
+**Why forward sweep?** Respects how learner thinks/chunks meaning in their native language.
 
-- Registry: "hablar" = "to speak" (S0001)
-- Current: "hablar" = "speaking" → **NOT a collision - extract as NEW LEGO!**
-- Current: "hablar" = "to speak" → **IS a collision - DO NOT extract, reference existing**
+### STEP 1.5: BACKWARD SWEEP (Target Language Check)
 
-**4. Never skip words during the sweep**
+After forward sweep, do a backward check through TARGET language to catch particles/markers:
 
-Process EVERY word sequentially. If a word doesn't need extraction (collision), mark it as covered by **referencing the existing LEGO**. But NEVER jump over words!
+```
+Target: "Estoy disfrutando descubrir más sobre este lenguaje"
 
-**CRITICAL: How to reference existing LEGOs**:
+Backward check (TARGET order):
+- Start from end, work backward
+- Look for particles that might be missed: de, que, a, etc.
+- Ensure ALL words covered (no orphans)
+```
 
-When you encounter a collision (BOTH target AND known match an existing LEGO), you MUST include it as a reference:
+**Why backward sweep?** Catches target language grammatical elements that don't map cleanly to KNOWN chunks (like Chinese 得, Spanish subjunctive que, etc.)
 
+### STEP 1.6: MAINTAIN YOUR REGISTRY
+
+**Critical**: As you process each seed, track what you extract:
+
+```
+Internal registry (build as you go):
+S0001: "español" = "Spanish" (S0001L03)
+S0001: "ahora" = "now" (S0001L05)
+...
+
+When processing S0009: "Hablo un poco de español ahora"
+- Check registry: "español" = "Spanish" exists! → REFERENCE IT
+- Check registry: "ahora" = "now" exists! → REFERENCE IT
+```
+
+**Format for references**:
 ```json
 {
   "id": "S0001L03",
-  "ref": "S0001",
   "type": "A",
   "target": "español",
   "known": "Spanish",
+  "ref": "S0001",
   "new": false
 }
 ```
 
-This ensures complete tiling! Without the reference, the seed cannot reconstruct.
+**Without references, tiling will fail!** Every word must be in the LEGOs array (new OR reference).
 
----
+### STEP 2: MAP TO TARGET
 
-## 🔄 THE BIDIRECTIONAL SWEEP ALGORITHM
+Map each KNOWN chunk to TARGET language:
 
-### Overview
-
-Extract LEGOs using THREE phases:
-1. **Forward Sweep** (KNOWN order) - Learner's perspective
-2. **Backward Sweep** (TARGET order) - Target language perspective
-3. **Nested Extraction** - Dive into molecular LEGOs for smaller chunks
-
-**Why bidirectional?**
-- Forward sweep: Respects how learner chunks meaning (KNOWN language)
-- Backward sweep: Captures target language particles, markers, word order
-- Together: Complete coverage, no missed grammatical elements
-
----
-
-## 📋 PHASE 1A: FORWARD SWEEP (KNOWN Order)
-
-**Goal**: Find minimum-size FD chunks following KNOWN word order
-
-**Process**:
 ```
-Position 0 → end of KNOWN sentence:
-
-1. Test word[pos] for FD compliance
-   - Does this KNOWN chunk map to TARGET with zero uncertainty?
-
-2. If FD FAILS:
-   - Extend: word[pos..pos+1], word[pos..pos+2], etc.
-   - Keep extending until FD PASSES
-
-3. When FD PASSES:
-   - Lock in this chunk (don't keep extending - we want minimum size!)
-   - Check A/M classification
-   - Move to next unmatched position
-
-4. Repeat until end of sentence
+"I'm enjoying" → "estoy disfrutando"
+"finding out" → "descubrir"
+"more" → "más"
+"about" → "sobre"
+"this" → "este"
+"language" → "lenguaje"
 ```
 
-**Example - Spanish S0006**:
+### STEP 3: APPLY FD TEST (Functional Determinism)
+
+**The ONE Question**: When learner hears KNOWN → is there ANY uncertainty about expected response?
+
+❌ **FAIL (has uncertainty) if ANY are true:**
+
+1. **Semantic uncertainty** - Multiple possible TARGETs:
+   - "that" → "que" OR "ese" OR "eso"? ❌
+   - "to" → "a" OR "para" OR infinitive? ❌
+
+2. **FCFS collision** - Already learned a simpler TARGET:
+   - "a entender" = "to understand" but already knows "entender" = "to understand" ❌
+   - "soy" = "I am" but already knows "estoy" = "I am" (FCFS!) ❌
+   - **CHECK REGISTRY FIRST!**
+
+3. **Syntactic uncertainty** - Can't produce correct form/syntax:
+   - "que" alone → "that/which/than/what"? ❌
+   - "hables" alone → "hablas" or "hables"? (wrong mood without "que") ❌
+   - "estado" alone → "estoy" or "he estado"? (wrong tense without "he") ❌
+   - "pensar" alone → "pensar en" or "pensar de"? (wrong preposition) ❌
+
+**Why uncertainty = FD violation:**
+- Learner can't reliably reconstruct valid syntax from LEGO recombination
+- Multiple possible responses → Creates hesitation/errors
+- If context determines form/meaning → Keep context together
+
+✅ **PASS (zero uncertainty)** → LEGO is Functionally Deterministic
+
+**Examples:**
+- ✅ "quiero" + "que hables" → Zero uncertainty, valid reconstruction
+- ❌ "quiero que" + "hables" → Uncertainty about mood, breaks reconstruction
+- ✅ "he estado" → Zero uncertainty, atomic for tense
+- ❌ "he" + "estado" → Uncertainty about tense construction
+
+### STEP 4: FIX FAILURES → CHUNK UP
+
+**If FD test fails → Make it BIGGER**
+
 ```
-Known: "I'm trying to remember a word"
-Target: "Estoy intentando recordar una palabra"
+❌ "que" = "that" [fails test #2 - ambiguous]
+✅ "que es" = "that it is" [passes - context makes it deterministic]
 
-Position 0:
-  "I'm" → FAIL (estoy/soy ambiguous)
-  "I'm trying" → "Estoy intentando" ✅ FD PASS (M) LOCK
-
-Position 2:
-  "to remember" → "recordar" ✅ FD PASS (A) LOCK
-
-Position 3:
-  "a" → FAIL (una/un ambiguous)
-  "a word" → "una palabra" ✅ FD PASS (M) LOCK
-
-Forward Result: [Estoy intentando] + [recordar] + [una palabra]
-```
-
----
-
-## 📋 PHASE 1B: BACKWARD SWEEP (TARGET Order)
-
-**Goal**: Find minimum-size FD chunks following TARGET word order (catches particles/markers)
-
-**Process**:
-```
-Position END → 0 of TARGET sentence:
-
-1. Test word[pos] for FD compliance
-   - Does this TARGET chunk map to KNOWN with zero uncertainty?
-
-2. If FD FAILS:
-   - Extend leftward: word[pos-1..pos], word[pos-2..pos], etc.
-   - Keep extending until FD PASSES
-
-3. When FD PASSES:
-   - Lock in this chunk
-   - Check A/M classification
-   - Move to previous unmatched position
-
-4. Repeat until start of sentence
-```
-
-**Example - Chinese S0013**:
-```
-Target: "你中文说得很好"
-Known: "You speak Chinese very well"
-
-From end:
-  "好" ← "well" ✅ FD PASS (A) LOCK
-  "很" ← "very" ✅ FD PASS (A) LOCK
-
-Can also extract:
-  "很好" ← "very well" ✅ FD PASS (M) LOCK
-
-  "得" ← ??? (degree marker, no English equivalent) FAIL
-  "说得很好" ← "speak very well" ✅ FD PASS (M) LOCK
-
-  "中文" ← "Chinese" ✅ FD PASS (A) LOCK
-  "你" ← "You" ✅ FD PASS (A) LOCK
-
-Backward Result: Catches "得" particle via "说得很好" molecular LEGO!
+❌ "a entender" = "to understand" [fails test #1 - collision with "entender"]
+✅ "empezar a entender" = "to start to understand" [passes]
 ```
 
----
+### STEP 5: CHECK FCFS REGISTRY
 
-## 📋 PHASE 1C: MERGE & VERIFY
+**Critical**: Before marking any LEGO as NEW, check the existing LEGO registry!
 
-**Merge both sweep results**:
-```
-1. Union of Forward Set and Backward Set
-2. Remove exact duplicates
-3. Keep overlapping LEGOs (different granularities are useful!)
-4. Verify complete tiling:
-   - All TARGET words covered
-   - No gaps
-   - No orphaned particles/markers
-```
+```json
+Registry shows:
+- "I am" → "estoy" (S0002) [FCFS!]
 
-**Example - Spanish S0011**:
-```
-Target: "Me gustaría poder hablar después de que termines"
-Known: "I'd like to be able to speak after you finish"
+Now processing S0150: "Soy profesor" = "I am a teacher"
 
-Forward sweep:
-- "Me gustaría" (M)
-- "poder" (A)
-- "hablar" (A)
-- "después de que termines" (M)
-
-Backward sweep:
-- "Me gustaría" (M) [duplicate, keep one]
-- "poder" (A) [duplicate, keep one]
-- "hablar" (A) [duplicate, keep one]
-- "después de que termines" (M) [duplicate, keep one]
-- "que termines" (M) [NEW - subjunctive clause!]
-- "termines" (A) [NEW - verb form!]
-
-Merged: Both sweeps agree + backward adds subjunctive details
+❌ "soy" = "I am" [COLLISION with estoy]
+✅ "soy profesor" = "I am a teacher" [No collision - wrapped larger]
 ```
 
----
+### STEP 6: ADD BOTH ATOMIC AND MOLECULAR
 
-## 🔍 THE FD TEST (Functional Determinism)
+**Extract overlapping coverage** - same words appear in both A and M LEGOs:
 
-**The ONE Question**: When learner hears KNOWN → is there ANY uncertainty about expected TARGET response?
-
-### FD FAILS if ANY of these are true:
-
-**1. Semantic Uncertainty** - Multiple possible TARGETs:
-- "that" → "que" OR "ese" OR "eso"? ❌ FAIL
-- "to" → "a" OR "para" OR infinitive marker? ❌ FAIL
-
-**2. FCFS Collision** - Already learned a different TARGET for same KNOWN:
-- Registry has: "I want" → "quiero" (S0001)
-- Current seed: "I want" → "deseo" ❌ COLLISION!
-- Solution: Chunk up to "I really want" → "deseo" ✅ (different KNOWN)
-- **CHECK REGISTRY FIRST!**
-
-**CRITICAL**: A collision requires **BOTH target AND known to match**:
-- Registry: "hablar" = "to speak" (S0001)
-- Current: "hablar" = "speaking" ✅ **NOT a collision** (different KNOWN - extract as NEW LEGO!)
-- Registry: "quiero" = "I want" (S0001)
-- Current: "deseo" = "I want" ❌ **IS a collision** (same KNOWN, different TARGET)
-
-**3. Syntactic Uncertainty** - Can't produce correct form/syntax without context:
-- "que" alone → "that/which/than/what"? ❌ FAIL
-- "hables" alone → Wrong mood without "que" ❌ FAIL
-- "estado" alone → "estoy" or "he estado"? ❌ FAIL (tense ambiguous)
-- "得" alone → Degree marker, meaningless standalone ❌ FAIL
-
-### FD PASSES:
-✅ **Zero uncertainty** → Learner can reliably produce correct TARGET
-
-**Examples**:
-- ✅ "quiero" = "I want" (unambiguous)
-- ✅ "que hables" = "you to speak" (includes mood context)
-- ✅ "说得很好" = "speak very well" (includes degree marker)
-- ✅ "después de que" = "after" (includes subjunctive trigger)
-
----
-
-## 🏷️ ATOMIC vs MOLECULAR CLASSIFICATION
-
-**Simple rule**:
-- **Multi-word in BOTH languages** → Molecular (M)
-- **Otherwise** → Atomic (A)
-
-**Examples**:
-
-Atomic (A):
-- "quiero" (single) = "I want" (multi) → A
-- "recordar" (single) = "to remember" (multi) → A
-- "我" (single) = "I" (single) → A
-
-Molecular (M):
-- "Estoy intentando" (multi) = "I'm trying" (multi) → M
-- "una palabra" (multi) = "a word" (multi) → M
-- "说得很好" (multi) = "speak very well" (multi) → M
-
-**Why this matters**:
-- A-LEGOs: Reusable vocabulary (flexible across contexts)
-- M-LEGOs: Syntax patterns, constructions, idioms (target language structure)
-
----
-
-## 📋 PHASE 2: EXTRACT NESTED LEGOs
-
-**Goal**: Dive into Molecular LEGOs to extract smaller FD chunks
-
-**Process**:
 ```
-For each Molecular LEGO from Phase 1:
+Seed: "Quiero hablar español contigo ahora"
 
-1. Look at the TARGET substring
-2. Test all possible sub-chunks for FD compliance
-3. Extract any that pass (both A and M types)
-4. These provide overlapping coverage at multiple granularities
+Extract BOTH atomic AND molecular:
+1. "quiero" (A) - I want [reusable verb]
+2. "hablar" (A) - to speak [reusable verb]
+3. "español" (A) - Spanish [reusable noun]
+4. "contigo" (A) - with you [reusable]
+5. "ahora" (A) - now [reusable]
+6. "quiero hablar" (M) - I want to speak [verb pattern]
+7. "hablar español" (M) - speak Spanish [object phrase]
+
+Why both?
+- Atomic "hablar" → Learner can use in "voy a hablar", "puedo hablar", etc.
+- Molecular "quiero hablar" → Learner learns verb + infinitive pattern
+- Molecular "hablar español" → Learner learns verb + direct object order
+
+Different teaching purposes:
+- A-LEGOs = vocabulary building blocks (reusable across contexts)
+- M-LEGOs = syntax patterns (word order, constructions, idioms)
 ```
 
-**Example - Chinese S0008**:
-```
-Molecular from Phase 1: "我要试着" = "I'm going to try"
+**Critical**: If word is FD on its own → Extract as A-LEGO even if also in M-LEGO
+- "frecuentemente" works alone → A-LEGO ✅
+- Also part of "tan frecuentemente como sea posible" → M-LEGO ✅
+- **Both teach different skills!**
 
-Dive into TARGET "我要试着":
-- "我" = "I" ✅ FD PASS (A) Extract
-- "要" = ambiguous ❌ FD FAIL
-- "我要" = "I'm going to" ✅ FD PASS (M) Extract
-- "试" = "try" ✅ FD PASS (A) Extract
-- "着" = aspect marker ❌ FD FAIL
-- "试着" = "try" (progressive) ✅ FD PASS (M) Extract
+### STEP 7: COMPONENTIZE ALL M-TYPES
 
-Nested LEGOs extracted:
-- "我" (A)
-- "我要" (M)
-- "试" (A)
-- "试着" (M)
+**Every molecular LEGO MUST show ALL WORDS in components**
 
-All are FD compliant, all are useful for recombination!
-```
-
-**Why overlapping coverage?**
-- "我" teaches basic pronoun
-- "我要" teaches future intention pattern
-- "我要试着" teaches full construction
-- Learner gets multiple entry points for practice
-
----
-
-## 🔧 COMPONENTIZATION (M-LEGOs Only)
-
-**Every Molecular LEGO MUST include components array**
-
-**Format**:
 ```json
 {
   "type": "M",
-  "target": "说得很好",
-  "known": "speak very well",
+  "target": "estoy intentando",
+  "known": "I'm trying",
   "components": [
-    ["说", "speak"],
-    ["得", "(degree marker)"],
-    ["很", "very"],
-    ["好", "well"]
+    ["estoy", "I am"],
+    ["intentando", "trying"]
   ]
 }
 ```
 
-**Critical Rules**:
+**Critical**: Components use LITERAL translations, not semantic roles:
 
-1. **TARGET word order** - Components follow TARGET language sequence
-2. **ALL words included** - Every word in target must appear in components
-3. **Literal translations** - Show actual meaning, not semantic role
-
-**Examples**:
-
+```json
 ✅ CORRECT:
-```json
-{
-  "target": "después de que",
-  "known": "after",
-  "components": [
-    ["después", "after"],
-    ["de", "of"],
-    ["que", "that"]
-  ]
-}
-```
+["para", "in order to"] ← shows purpose construction
 
-❌ WRONG (missing words):
-```json
-{
-  "target": "después de que",
-  "components": [
-    ["después", "after"],
-    ["que", "that"]
-  ]
-}
-// Missing "de"!
-```
-
-❌ WRONG (wrong order):
-```json
-{
-  "target": "中文说得很好",
-  "components": [
-    ["说", "speak"],
-    ["中文", "Chinese"],
-    ["得", "得"],
-    ["很好", "very well"]
-  ]
-}
-// Should follow TARGET order: 中文, 说, 得, 很好
+❌ WRONG:
+["para", "to"] ← hides the construction
 ```
 
 ---
 
-## 📤 PHASE 3: ORDER LEGOs FOR OUTPUT
+## 🔧 ATOMIC vs MOLECULAR CLASSIFICATION
 
-**Pedagogical ordering** - Atomic building blocks before molecular patterns
+### Atomic (A)
+- Single word
+- Unambiguous standalone
+- 1:1 mapping
+- Reusable across many seeds
 
-**Order**:
-1. **All Atomic LEGOs** (in sentence order)
-2. **All Molecular LEGOs** (in sentence order)
-
-**Example - Chinese S0008**:
 ```json
-{
-  "seed_id": "S0008",
-  "legos": [
-    // ATOMIC LEGOs first
-    {"type": "A", "target": "我", "known": "I"},
-    {"type": "A", "target": "试", "known": "try"},
-    {"type": "A", "target": "解释", "known": "to explain"},
-    {"type": "A", "target": "意思", "known": "meaning"},
-
-    // MOLECULAR LEGOs second
-    {"type": "M", "target": "我要", "known": "I'm going to", "components": [...]},
-    {"type": "M", "target": "试着", "known": "try", "components": [...]},
-    {"type": "M", "target": "我要试着", "known": "I'm going to try", "components": [...]},
-    {"type": "M", "target": "我的", "known": "my", "components": [...]},
-    {"type": "M", "target": "我的意思", "known": "what I mean", "components": [...]}
-  ]
-}
+{"type": "A", "target": "quiero", "known": "I want"}
 ```
 
-**Why this order?**
-- Learner sees individual words first
-- Then sees how they combine
-- Natural learning progression: vocabulary → patterns
+### Molecular (M)
+- Multi-word OR
+- Pattern/construction OR
+- Would be ambiguous if split
+
+```json
+{"type": "M", "target": "estoy intentando", "known": "I'm trying"}
+```
+
+**Rule**: When in doubt → M (better to over-chunk than under-chunk)
 
 ---
 
@@ -420,10 +303,10 @@ All are FD compliant, all are useful for recombination!
 ```json
 {
   "agent_id": 1,
-  "seed_range": "S0001-S0020",
-  "extracted_at": "2025-11-10T...",
-  "seeds": {
-    "S0001": {
+  "seed_range": "S0001-S0070",
+  "extracted_at": "2025-11-09T...",
+  "seeds": [
+    {
       "seed_id": "S0001",
       "seed_pair": {
         "target": "Quiero hablar español contigo ahora",
@@ -439,350 +322,360 @@ All are FD compliant, all are useful for recombination!
         },
         {
           "provisional_id": "PROV_S0001_02",
-          "type": "M",
-          "target": "quiero hablar",
-          "known": "I want to speak",
-          "new": true,
-          "components": [
-            ["quiero", "I want"],
-            ["hablar", "to speak"]
-          ]
+          "type": "A",
+          "target": "hablar",
+          "known": "to speak",
+          "new": true
         },
         {
-          "id": "S0002L03",
+          "id": "S0023L02",
           "type": "A",
-          "target": "español",
-          "known": "Spanish",
-          "ref": "S0002",
+          "target": "más",
+          "known": "more",
+          "ref": "S0023",
           "new": false
+        },
+        {
+          "provisional_id": "PROV_S0001_03",
+          "type": "M",
+          "target": "estoy intentando",
+          "known": "I'm trying",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["intentando", "trying"]
+          ]
         }
       ]
     }
-  }
+  ]
 }
 ```
 
-**Field Requirements**:
+**Field Requirements:**
 - `provisional_id` OR `id` (if reference)
 - `type`: "A" or "M"
 - `target`: Target language text
 - `known`: Known language text
 - `new`: true (new LEGO) or false (reference)
-- `ref`: Seed ID if reference (e.g., "S0002")
-- `components`: Array of [target, known] pairs for M-types (**ALL WORDS, TARGET ORDER**)
+- `ref`: Seed ID if reference (e.g., "S0023")
+- `components`: Array of [target, known] pairs for M-types (**ALL WORDS**)
 
 ---
 
-## ✅ COMPLETE WORKFLOW EXAMPLE
+## ✅ QUALITY CHECKLIST
 
-**Seed**: Spanish S0011
+Before submitting, verify:
+
+**Complete Tiling:**
+- [ ] Every seed reconstructs perfectly from LEGOs
+- [ ] No gaps, no extra words
+
+**FD Compliance:**
+- [ ] No ambiguous standalone words (que, de, a, en alone)
+- [ ] No FCFS collisions (checked registry)
+- [ ] All chunks deterministic (Known → exactly ONE Target)
+
+**Componentization:**
+- [ ] ALL M-type LEGOs have components
+- [ ] Components account for ALL WORDS
+- [ ] Components use literal translations
+
+**Registry Check:**
+- [ ] Checked existing LEGOs before marking new
+- [ ] Referenced LEGOs have proper `id` and `ref`
+- [ ] No duplicates
+
+**A/M Balance:**
+- [ ] Atomic: ~40-60% (single words, unambiguous)
+- [ ] Molecular: ~40-60% (multi-word, patterns)
+
+---
+
+## 🎓 EXAMPLES FROM PRODUCTION
+
+### Example 1: S0101 (NEW + REFERENCE MIX)
+
+**Seed**: "Estoy disfrutando descubrir más sobre este lenguaje"
+**Known**: "I'm enjoying finding out more about this language"
+
+**Extraction:**
+
+```json
+{
+  "seed_id": "S0101",
+  "legos": [
+    {
+      "provisional_id": "PROV_S0101_01",
+      "type": "M",
+      "target": "estoy disfrutando",
+      "known": "I'm enjoying",
+      "new": true,
+      "components": [
+        ["estoy", "I am"],
+        ["disfrutando", "enjoying"]
+      ]
+    },
+    {
+      "provisional_id": "PROV_S0101_02",
+      "type": "A",
+      "target": "descubrir",
+      "known": "to find out",
+      "new": true
+    },
+    {
+      "id": "S0023L02",
+      "type": "A",
+      "target": "más",
+      "known": "more",
+      "ref": "S0023",
+      "new": false
+    },
+    {
+      "provisional_id": "PROV_S0101_03",
+      "type": "A",
+      "target": "sobre",
+      "known": "about",
+      "new": true
+    },
+    {
+      "provisional_id": "PROV_S0101_04",
+      "type": "A",
+      "target": "este",
+      "known": "this",
+      "new": true
+    },
+    {
+      "provisional_id": "PROV_S0101_05",
+      "type": "A",
+      "target": "lenguaje",
+      "known": "language",
+      "new": true
+    }
+  ]
+}
 ```
-Target: "Me gustaría poder hablar después de que termines."
-Known: "I'd like to be able to speak after you finish."
+
+**Tiling Check**: estoy disfrutando + descubrir + más + sobre + este + lenguaje ✅
+
+---
+
+### Example 2: FCFS Collision Avoided
+
+**Registry shows:**
+- "I am" → "estoy" (S0002)
+
+**Now processing S0150:**
+- Seed: "Soy profesor" = "I am a teacher"
+
+**Thinking:**
+```
+Option 1: "soy" = "I am" ❌ COLLISION with estoy (FCFS violation!)
+Option 2: "soy profesor" = "I am a teacher" ✅ No collision
 ```
 
-### Phase 1A - Forward Sweep:
-```
-"I'd" → FAIL
-"I'd like" → "Me gustaría" ✅ (M) LOCK
-
-"to" → FAIL
-"to be able" → "poder" ✅ (A) LOCK
-
-"to" → FAIL
-"to speak" → "hablar" ✅ (A) LOCK
-
-"after" → FAIL
-"after you finish" → "después de que termines" ✅ (M) LOCK
-
-Forward: [Me gustaría] [poder] [hablar] [después de que termines]
+**Correct extraction:**
+```json
+{
+  "provisional_id": "PROV_S0150_01",
+  "type": "M",
+  "target": "soy profesor",
+  "known": "I am a teacher",
+  "new": true,
+  "components": [
+    ["soy", "I am"],
+    ["profesor", "teacher"]
+  ]
+}
 ```
 
-### Phase 1B - Backward Sweep:
+---
+
+### Example 3: Ambiguous Word Chunked Up
+
+**Seed**: "Mejor que tú" = "Better than you"
+
+**Thinking:**
 ```
-"termines" ← FAIL (subjunctive needs trigger)
-"que termines" ← "you finish" ✅ (M) LOCK
-
-"de" ← FAIL (preposition alone)
-"de que termines" ← FAIL
-"después de que termines" ← "after you finish" ✅ (M) LOCK
-
-"hablar" ← "speak" ✅ (A) LOCK
-"poder" ← "be able" ✅ (A) LOCK
-
-"gustaría" ← FAIL (conditional form needs "me")
-"Me gustaría" ← "I'd like" ✅ (M) LOCK
-
-Backward: [Me gustaría] [poder] [hablar] [después de que termines] [que termines]
+"que" alone = "that/what/than/who/which" ❌ FAILS FD test #2
+"mejor que" = "better than" ✅ PASSES (deterministic in context)
 ```
 
-### Phase 1C - Merge:
+**Correct extraction:**
+```json
+{
+  "provisional_id": "PROV_S0XXX_01",
+  "type": "M",
+  "target": "mejor que",
+  "known": "better than",
+  "new": true,
+  "components": [
+    ["mejor", "better"],
+    ["que", "than"]
+  ]
+}
 ```
-Union of Forward and Backward:
-- Me gustaría (M)
-- poder (A)
-- hablar (A)
-- después de que termines (M)
-- que termines (M) [NEW from backward!]
-
-Tiling check: Me gustaría + poder + hablar + después de que termines ✅
-All TARGET words covered: Me gustaría poder hablar después de que termines ✅
-```
-
-### Phase 2 - Nested Extraction:
-
-**Dive into "Me gustaría"**:
-- "Me" = "me" ✅ (A)
-- "gustaría" = "would like" ✅ (A)
-
-**Dive into "después de que termines"**:
-- "después" = "after" ✅ (A)
-- "después de" = "after" ✅ (M)
-- "después de que" = "after" ✅ (M)
-- "termines" = "finish" ✅ (A)
-- "que termines" = "you finish" ✅ (M) [already have from backward]
-
-**Dive into "que termines"**:
-- "que" = FAIL (ambiguous)
-- "termines" = "finish" ✅ (A)
-
-### Phase 3 - Order LEGOs:
-
-**Atomic LEGOs (sentence order)**:
-1. Me (A) = me
-2. gustaría (A) = would like
-3. poder (A) = be able
-4. hablar (A) = to speak
-5. después (A) = after
-6. termines (A) = finish
-
-**Molecular LEGOs (sentence order)**:
-7. Me gustaría (M) = I'd like
-8. después de (M) = after
-9. después de que (M) = after
-10. que termines (M) = you finish
-11. después de que termines (M) = after you finish
-
-**Final output**: Rich library with complete coverage and overlapping granularity!
 
 ---
 
 ## 🚨 COMMON MISTAKES TO AVOID
 
-### ❌ Mistake 1: Skipping Backward Sweep
+### ❌ Mistake 1: Over-Atomization
 
-**BAD** (Forward only):
-```
-"speak very well" → 说 + 很 + 好
-Missing: 得 (degree marker)
-```
-
-**GOOD** (Bidirectional):
-```
-Forward: 说, 很, 好
-Backward: 说得很好
-Merged: Catches 得 via molecular LEGO!
-```
-
-### ❌ Mistake 2: Wrong Component Order
-
-**BAD**:
 ```json
+BAD:
+{"target": "después", "known": "after"}
+{"target": "de", "known": "of"}
+{"target": "que", "known": "that"}
+
+GOOD:
+{"target": "después de que", "known": "after", "type": "M"}
+```
+
+### ❌ Mistake 1.5: Violating FD Type 3 - Incomplete Context
+
+**Problem**: Creating LEGOs that can't reconstruct valid syntax when recombined
+
+```json
+BAD - Breaks grammatical dependency (FD Type 3 violation):
+Seed: "Quiero que hables español" = "I want you to speak Spanish"
+
+{"target": "quiero que", "known": "I want that"} ← FD VIOLATION!
+{"target": "hables", "known": "you speak"} ← FD VIOLATION!
+
+WHY WRONG:
+- "que" needs "hables" to determine subjunctive mood
+- "hables" needs "que" to know it's subjunctive not indicative
+- When learner recombines: "quiero" + "que" + "hables" → might produce "quiero que hablas" ❌
+
+GOOD Option 1 (respect grammatical boundary):
+{"target": "quiero", "known": "I want", "type": "A"}
+{"target": "que hables", "known": "you to speak", "type": "M"}
+
+GOOD Option 2 (entire construction):
+{"target": "quiero que hables", "known": "I want you to speak", "type": "M"}
+```
+
+**Remember**: These aren't "grammar rules" - they're FD violations (Type 3: Incomplete Context)
+- If form/syntax depends on context → Keep context together
+- If you can't reliably reconstruct from LEGOs → You violated FD
+
+### ❌ Mistake 2: Missing Components
+
+```json
+BAD:
 {
-  "target": "中文说得很好",
+  "type": "M",
+  "target": "estoy intentando",
+  "components": [["estoy", "I am"]] ← Missing "intentando"!
+}
+
+GOOD:
+{
+  "type": "M",
+  "target": "estoy intentando",
   "components": [
-    ["说", "speak"],
-    ["中文", "Chinese"],
-    ["得", "得"],
-    ["很好", "very well"]
+    ["estoy", "I am"],
+    ["intentando", "trying"]
   ]
 }
 ```
 
-**GOOD** (TARGET order):
+### ❌ Mistake 3: Ignoring FCFS Registry
+
 ```json
-{
-  "target": "中文说得很好",
-  "components": [
-    ["中文", "Chinese"],
-    ["说", "speak"],
-    ["得", "(degree marker)"],
-    ["很好", "very well"]
-  ]
-}
+BAD:
+{"target": "quiero", "known": "I want", "new": true} ← Already exists!
+
+GOOD:
+{"id": "S0001L01", "target": "quiero", "known": "I want", "ref": "S0001", "new": false}
 ```
 
-### ❌ Mistake 3: Missing Components
+### ❌ Mistake 4: Incomplete Tiling
 
-**BAD**:
 ```json
-{
-  "target": "después de que",
-  "components": [
-    ["después", "after"],
-    ["que", "that"]
-  ]
-}
-// Missing "de"!
-```
+Seed: "Quiero hablar español contigo"
+LEGOs: quiero + hablar + español ← Missing "contigo"! ❌
 
-**GOOD**:
-```json
-{
-  "target": "después de que",
-  "components": [
-    ["después", "after"],
-    ["de", "of"],
-    ["que", "that"]
-  ]
-}
-```
-
-### ❌ Mistake 4: FCFS Collision
-
-**BAD**:
-```
-Registry: "I want" → "quiero" (S0001)
-Current: "I want" → "deseo" (S0050)
-❌ COLLISION - can't teach two TARGETs for same KNOWN!
-```
-
-**GOOD**:
-```
-Registry: "I want" → "quiero" (S0001)
-Current: "I really want" → "deseo" (S0050)
-✅ Different KNOWN phrase, no collision
+Correct: quiero + hablar + español + contigo ✅
 ```
 
 ---
 
-## 🎯 QUALITY CHECKLIST
+## 🎯 SUCCESS METRICS
 
-Before submitting, verify:
+**From S0101-S0200 Test Run:**
+- ✅ 100% complete tiling (all seeds reconstruct)
+- ✅ 44% reuse rate (good registry checking)
+- ✅ ~7 minutes for 100 seeds (10 parallel agents)
+- ✅ FD compliance maintained
+- ⚠️ A/M balance varied (ensure 40-60% each)
 
-**Complete Tiling**:
-- [ ] Every seed reconstructs perfectly from Phase 1 LEGOs
-- [ ] All TARGET words covered (including particles, markers)
-- [ ] No gaps, no orphaned words
-
-**FD Compliance**:
-- [ ] Every LEGO passes FD test (zero uncertainty)
-- [ ] No ambiguous standalone words
-- [ ] No FCFS collisions (checked registry)
-
-**Bidirectional Coverage**:
-- [ ] Forward sweep completed
-- [ ] Backward sweep completed
-- [ ] Both merged successfully
-
-**Componentization**:
-- [ ] ALL M-type LEGOs have components
-- [ ] Components account for ALL WORDS
-- [ ] Components follow TARGET order
-- [ ] Literal translations used
-
-**Ordering**:
-- [ ] Atomic LEGOs listed first
-- [ ] Molecular LEGOs listed second
-- [ ] Both in sentence order
-
-**Registry Check**:
-- [ ] Checked existing LEGOs before marking new
-- [ ] Referenced LEGOs have proper `id` and `ref`
-- [ ] No duplicates
+**Target for Full Course (668 seeds):**
+- 100% tiling success rate
+- 40-60% atomic, 40-60% molecular
+- 30-50% reuse rate from prior seeds
+- Zero FD violations
+- Complete componentization
 
 ---
 
-## 📚 WORKED EXAMPLES
+## 🔄 EXTENDED THINKING PROTOCOL
 
-### Example 1: Chinese S0008 (Complete)
+Use `<thinking>` tags for EVERY seed:
 
-**Seed**:
 ```
-Target: 我要试着解释我的意思
-Known: I'm going to try to explain what I mean.
-```
+<thinking>
+SEED: "Estoy intentando aprender español"
+KNOWN: "I'm trying to learn Spanish"
 
-**Phase 1A - Forward**:
-```
-"I'm going to try" → "我要试着" ✅ (M)
-"to explain" → "解释" ✅ (A)
-"what I mean" → "我的意思" ✅ (M)
+STEP 1: CHUNK KNOWN
+"I'm trying" | "to learn" | "Spanish"
 
-Tiling: [我要试着] + [解释] + [我的意思] ✅
-```
+STEP 2: MAP TO TARGET
+"I'm trying" → "estoy intentando"
+"to learn" → "aprender"
+"Spanish" → "español"
 
-**Phase 1B - Backward**:
-```
-"意思" ← "meaning" ✅ (A)
-"我的意思" ← "what I mean" ✅ (M)
-"解释" ← "explain" ✅ (A)
-"试着" ← "try" ✅ (M)
-"试" ← "try" ✅ (A)
-"要" ← FAIL
-"我要" ← "going to" ✅ (M)
-"我要试着" ← "I'm going to try" ✅ (M)
-"我" ← "I" ✅ (A)
-```
+STEP 3: FD TEST
+- "estoy intentando" = "I'm trying" ✓ (passes all tests)
+- "aprender" = "to learn" ✓ (passes)
+- "español" = "Spanish" ✓ (CHECK REGISTRY → S0001L03 exists!)
 
-**Phase 1C - Merge**:
-```
-Atomic: 我, 试, 解释, 意思
-Molecular: 我要, 试着, 我要试着, 我的意思
-```
+STEP 4: CLASSIFY
+- "estoy intentando" → M (multi-word pattern)
+- "aprender" → A (single word)
+- "español" → REFERENCE (already exists)
 
-**Phase 2 - Nested** (already extracted in backward sweep):
-```
-From "我要试着": 我, 我要, 试, 试着
-From "我的意思": 我, 意思, 我的
-```
+STEP 5: COMPONENTIZE
+"estoy intentando" → [["estoy", "I am"], ["intentando", "trying"]]
 
-**Phase 3 - Final Order**:
-```json
-{
-  "legos": [
-    {"type": "A", "target": "我", "known": "I"},
-    {"type": "A", "target": "试", "known": "try"},
-    {"type": "A", "target": "解释", "known": "to explain"},
-    {"type": "A", "target": "意思", "known": "meaning"},
+STEP 6: TILING
+estoy intentando + aprender + español = "Estoy intentando aprender español" ✅
 
-    {"type": "M", "target": "我要", "known": "I'm going to",
-     "components": [["我", "I"], ["要", "going to"]]},
-
-    {"type": "M", "target": "试着", "known": "try",
-     "components": [["试", "try"], ["着", "(progressive)"]]},
-
-    {"type": "M", "target": "我要试着", "known": "I'm going to try",
-     "components": [["我", "I"], ["要", "going to"], ["试着", "try"]]},
-
-    {"type": "M", "target": "我的", "known": "my",
-     "components": [["我", "I"], ["的", "'s"]]},
-
-    {"type": "M", "target": "我的意思", "known": "what I mean",
-     "components": [["我", "I"], ["的", "'s"], ["意思", "meaning"]]}
-  ]
-}
+OUTPUT READY
+</thinking>
 ```
 
 ---
 
-## 🎓 SUCCESS METRICS
-
-**Target for Production**:
-- ✅ 100% tiling success (all seeds reconstruct)
-- ✅ Zero FD violations
-- ✅ Complete TARGET coverage (no missed particles)
-- ✅ Rich overlapping library (multiple granularities)
-- ✅ Complete componentization (ALL words)
-- ✅ Zero FCFS collisions
-
-**Quality > Speed**: Take time to think through each seed carefully!
+**Target Time per Seed**: 1-2 minutes with extended thinking
+**Quality over Speed**: Better to take time and get it right!
 
 ---
 
-**Version History**:
-- v6.0 (2025-11-10): Bidirectional sweep algorithm + complete TARGET coverage
+## 📚 REFERENCE
+
+**Phase Intelligence**: `/docs/phase_intelligence/phase_3_lego_pairs.md`
+**Test Results**: `/phase3_test_s0101_s0200/EXTRACTION_SUMMARY.md`
+**Registry Format**: `/phase3_test_s0101_s0200/templates/lego_registry_s0001_s0100.json`
+
+---
+
+**Version History:**
 - v5.0 (2025-11-09): Ultimate edition with S0101-S0200 learnings
+- v4.0.2: Readable JSON + sorting
 - v4.0: Radical simplification (One Rule principle)
+- v3.6: FD direction corrected
 
-**Status**: ✅ Production Ready with Complete Coverage Guarantee
+**Status**: ✅ Production Ready for Full 668-Seed Course
