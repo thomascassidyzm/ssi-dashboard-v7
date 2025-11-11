@@ -16,6 +16,35 @@ You are extracting LEGO vocabulary units from seed pairs. LEGOs are the atomic a
 
 ---
 
+## ⚠️ CRITICAL EXTRACTION PRINCIPLES
+
+**1. ALWAYS extract LEGOs for EVERY word in the current seed**
+
+Even if a TARGET word appeared in a previous seed, you MUST extract it again if:
+- The KNOWN is different (e.g., "hablar" = "to speak" vs "hablar" = "speaking" are TWO different LEGOs!)
+- It appears in this seed's sentence (word-by-word sweep never skips words)
+
+**2. Extract BOTH atomic AND molecular LEGOs**
+
+Example: "I'm going to practise speaking"
+- Extract: "practicar" = "to practise" (A)
+- Extract: "hablar" = "speaking" (A)
+- ALSO Extract: "practicar hablar" = "to practise speaking" (M)
+
+Overlapping coverage provides multiple learning entry points!
+
+**3. Registry lookup requires BOTH target AND known to match**
+
+- Registry: "hablar" = "to speak" (S0001)
+- Current: "hablar" = "speaking" → **NOT a collision - extract as NEW LEGO!**
+- Current: "hablar" = "to speak" → **IS a collision - DO NOT extract, reference existing**
+
+**4. Never skip words during the sweep**
+
+Process EVERY word sequentially. If a word doesn't need extraction (collision), mark it as covered by referencing the existing LEGO. But NEVER jump over words!
+
+---
+
 ## 🔄 THE BIDIRECTIONAL SWEEP ALGORITHM
 
 ### Overview
