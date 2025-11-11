@@ -1,0 +1,247 @@
+{
+  "seed_id": "S0012",
+  "generation_stage": "PHRASE_GENERATION_COMPLETE",
+  "recent_seed_pairs": {
+    "S0002": [
+      "Estoy intentando aprender.",
+      "I'm trying to learn."
+    ],
+    "S0003": [
+      "cómo hablar lo más frecuentamente posible",
+      "how to speak as often as possible"
+    ],
+    "S0004": [
+      "cómo decir algo en español",
+      "how to say something in Spanish"
+    ],
+    "S0005": [
+      "Voy a practicar hablar con alguien más.",
+      "I'm going to practise speaking with someone else."
+    ],
+    "S0006": [
+      "Estoy intentando recordar una palabra.",
+      "I'm trying to remember a word."
+    ],
+    "S0007": [
+      "Quiero intentar tan duro como pueda hoy.",
+      "I want to try as hard as I can today."
+    ],
+    "S0008": [
+      "Voy a intentar explicar lo que quiero decir.",
+      "I'm going to try to explain what I mean."
+    ],
+    "S0009": [
+      "Hablo un poco de español ahora.",
+      "I speak a little Spanish now."
+    ],
+    "S0010": [
+      "No estoy seguro si puedo recordar toda la oración.",
+      "I'm not sure if I can remember the whole sentence."
+    ],
+    "S0011": [
+      "Me gustaría poder hablar después de que termines.",
+      "I'd like to be able to speak after you finish."
+    ]
+  },
+  "seed_pair": [
+    "No me gustaría adivinar lo que va a ocurrir mañana.",
+    "I wouldn't like to guess what's going to happen tomorrow."
+  ],
+  "legos": {
+    "S0012L01": {
+      "lego": [
+        "to guess",
+        "adivinar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["to guess", "adivinar", null, 1],
+        ["I can guess", "puedo adivinar", null, 2],
+        ["I want to guess", "quiero adivinar", null, 2],
+        ["I'm trying to guess", "estoy intentando adivinar", null, 3],
+        ["I'm going to guess", "voy a adivinar", null, 3],
+        ["I can guess something", "puedo adivinar algo", null, 3],
+        ["I want to try to guess", "quiero intentar adivinar", null, 4],
+        ["I'd like to be able to guess", "me gustaría poder adivinar", null, 4],
+        ["I'm trying to guess a word", "estoy intentando adivinar una palabra", null, 5],
+        ["I can guess if I try", "puedo adivinar si intento", null, 5],
+        ["I'm going to try to guess what you mean", "voy a intentar adivinar lo que quiero decir", null, 10],
+        ["I'm not sure if I can guess", "no estoy seguro si puedo adivinar", null, 7],
+        ["I want to be able to guess how to speak", "quiero poder adivinar cómo hablar", null, 7],
+        ["I'd like to guess what you want to say", "me gustaría adivinar lo que quiero decir", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 4,
+        "long_6_plus": 4
+      }
+    },
+    "S0012L02": {
+      "lego": [
+        "to happen",
+        "ocurrir"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "to guess",
+          "adivinar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["to happen", "ocurrir", null, 1],
+        ["it can happen", "puede ocurrir", null, 2],
+        ["it's going to happen", "va a ocurrir", null, 3],
+        ["I can guess what can happen", "puedo adivinar lo que puede ocurrir", null, 6],
+        ["I want to say what's going to happen", "quiero decir lo que va a ocurrir", null, 8],
+        ["I'm trying to remember what can happen", "estoy intentando recordar lo que puede ocurrir", null, 7],
+        ["I'm not sure what's going to happen", "no estoy seguro lo que va a ocurrir", null, 8],
+        ["I'd like to guess what's going to happen", "me gustaría adivinar lo que va a ocurrir", null, 8],
+        ["I can explain what's going to happen", "puedo explicar lo que va a ocurrir", null, 7],
+        ["I want to try to guess what can happen", "quiero intentar adivinar lo que puede ocurrir", null, 8],
+        ["I'm trying to be able to say what's going to happen", "estoy intentando poder decir lo que va a ocurrir", null, 10],
+        ["I'm going to try to explain what's going to happen", "voy a intentar explicar lo que va a ocurrir", null, 10]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 1,
+        "longer_4_5": 0,
+        "long_6_plus": 9
+      }
+    },
+    "S0012L03": {
+      "lego": [
+        "tomorrow",
+        "mañana"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "to guess",
+          "adivinar"
+        ],
+        [
+          "to happen",
+          "ocurrir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["tomorrow", "mañana", null, 1],
+        ["I can speak tomorrow", "puedo hablar mañana", null, 3],
+        ["I'm going to practise tomorrow", "voy a practicar mañana", null, 4],
+        ["I want to try tomorrow", "quiero intentar mañana", null, 3],
+        ["I'd like to speak Spanish tomorrow", "me gustaría hablar español mañana", null, 4],
+        ["I'm trying to remember a word tomorrow", "estoy intentando recordar una palabra mañana", null, 6],
+        ["I can guess what's going to happen tomorrow", "puedo adivinar lo que va a ocurrir mañana", null, 8],
+        ["I want to be able to speak tomorrow", "quiero poder hablar mañana", null, 5],
+        ["I'm going to speak with someone else tomorrow", "voy a hablar con alguien más mañana", null, 7],
+        ["I'd like to guess what's going to happen tomorrow", "me gustaría adivinar lo que va a ocurrir mañana", null, 9],
+        ["I'm trying to be able to speak Spanish tomorrow", "estoy intentando poder hablar español mañana", null, 6],
+        ["I want to try to explain what's going to happen tomorrow", "quiero intentar explicar lo que va a ocurrir mañana", null, 10],
+        ["I'm not sure if I can speak Spanish tomorrow", "no estoy seguro si puedo hablar español mañana", null, 9]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 7
+      }
+    },
+    "S0012L04": {
+      "lego": [
+        "I wouldn't like",
+        "no me gustaría"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "to guess",
+          "adivinar"
+        ],
+        [
+          "to happen",
+          "ocurrir"
+        ],
+        [
+          "tomorrow",
+          "mañana"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I wouldn't like", "no me gustaría", null, 2],
+        ["I wouldn't like to speak", "no me gustaría hablar", null, 3],
+        ["I wouldn't like to guess", "no me gustaría adivinar", null, 3],
+        ["I wouldn't like to try", "no me gustaría intentar", null, 3],
+        ["I wouldn't like to speak Spanish", "no me gustaría hablar español", null, 4],
+        ["I wouldn't like to guess something", "no me gustaría adivinar algo", null, 4],
+        ["I wouldn't like to be able to speak", "no me gustaría poder hablar", null, 4],
+        ["I wouldn't like to speak tomorrow", "no me gustaría hablar mañana", null, 4],
+        ["I wouldn't like to guess what can happen", "no me gustaría adivinar lo que puede ocurrir", null, 7],
+        ["I wouldn't like to try to guess tomorrow", "no me gustaría intentar adivinar mañana", null, 6],
+        ["I wouldn't like to speak Spanish with someone else tomorrow", "no me gustaría hablar español con alguien más mañana", null, 8],
+        ["I wouldn't like to be able to guess what's going to happen", "no me gustaría poder adivinar lo que va a ocurrir", null, 10],
+        ["I wouldn't like to guess what's going to happen tomorrow", "no me gustaría adivinar lo que va a ocurrir mañana", null, 10]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 3,
+        "longer_4_5": 5,
+        "long_6_plus": 4
+      }
+    },
+    "S0012L05": {
+      "lego": [
+        "what's going to happen",
+        "lo que va a ocurrir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "to guess",
+          "adivinar"
+        ],
+        [
+          "to happen",
+          "ocurrir"
+        ],
+        [
+          "tomorrow",
+          "mañana"
+        ],
+        [
+          "I wouldn't like",
+          "no me gustaría"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["what's going to happen", "lo que va a ocurrir", null, 4],
+        ["I can guess what's going to happen", "puedo adivinar lo que va a ocurrir", null, 6],
+        ["I want to say what's going to happen", "quiero decir lo que va a ocurrir", null, 7],
+        ["I'm not sure what's going to happen", "no estoy seguro lo que va a ocurrir", null, 7],
+        ["I'd like to guess what's going to happen", "me gustaría adivinar lo que va a ocurrir", null, 7],
+        ["I'm trying to remember what's going to happen", "estoy intentando recordar lo que va a ocurrir", null, 7],
+        ["I wouldn't like to guess what's going to happen", "no me gustaría adivinar lo que va a ocurrir", null, 8],
+        ["I want to explain what's going to happen", "quiero explicar lo que va a ocurrir", null, 7],
+        ["I can guess what's going to happen tomorrow", "puedo adivinar lo que va a ocurrir mañana", null, 7],
+        ["I wouldn't like to guess what's going to happen tomorrow", "no me gustaría adivinar lo que va a ocurrir mañana", null, 9],
+        ["I'm going to try to explain what's going to happen", "voy a intentar explicar lo que va a ocurrir", null, 9],
+        ["I'm trying to be able to say what's going to happen", "estoy intentando poder decir lo que va a ocurrir", null, 9],
+        ["I'd like to be able to guess what's going to happen tomorrow", "me gustaría poder adivinar lo que va a ocurrir mañana", null, 10],
+        ["I wouldn't like to guess what's going to happen tomorrow", "no me gustaría adivinar lo que va a ocurrir mañana", null, 9]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 1,
+        "long_6_plus": 13
+      }
+    }
+  }
+}

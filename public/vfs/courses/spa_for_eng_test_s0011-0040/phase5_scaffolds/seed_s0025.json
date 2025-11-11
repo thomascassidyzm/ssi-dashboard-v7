@@ -1,0 +1,176 @@
+{
+  "seed_id": "S0025",
+  "recent_seed_pairs": {
+    "S0015": [
+      "Y quiero que hables español conmigo mañana.",
+      "And I want you to speak Spanish with me tomorrow."
+    ],
+    "S0016": [
+      "Él quiere volver con todos los demás más tarde.",
+      "He wants to come back with everyone else later on."
+    ],
+    "S0017": [
+      "Ella quiere descubrir cuál es la respuesta.",
+      "She wants to find out what the answer is."
+    ],
+    "S0018": [
+      "Queremos reunirnos a las seis esta noche.",
+      "We want to meet at six o'clock this evening."
+    ],
+    "S0019": [
+      "Pero no quiero parar de hablar.",
+      "But I don't want to stop talking."
+    ],
+    "S0020": [
+      "Quieres aprender su nombre rápidamente.",
+      "You want to learn his name quickly."
+    ],
+    "S0021": [
+      "¿Por qué estás aprendiendo su nombre?",
+      "Why are you learning her name?"
+    ],
+    "S0022": [
+      "Porque quiero encontrar personas que hablan español.",
+      "Because I want to meet people who speak Spanish."
+    ],
+    "S0023": [
+      "Voy a comenzar a hablar más pronto.",
+      "I'm going to start talking more soon."
+    ],
+    "S0024": [
+      "No voy a poder recordar fácilmente.",
+      "I'm not going to be able to remember easily."
+    ]
+  },
+  "seed_pair": [
+    "¿Vas a ayudarme antes de que tenga que ir?",
+    "Are you going to help me before I have to go?"
+  ],
+  "legos": {
+    "S0025L01": {
+      "lego": [
+        "help me",
+        "ayudarme"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0025L02": {
+      "lego": [
+        "before",
+        "antes"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "help me",
+          "ayudarme"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0025L03": {
+      "lego": [
+        "I have",
+        "tenga"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "help me",
+          "ayudarme"
+        ],
+        [
+          "before",
+          "antes"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0025L04": {
+      "lego": [
+        "to go",
+        "ir"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "help me",
+          "ayudarme"
+        ],
+        [
+          "before",
+          "antes"
+        ],
+        [
+          "I have",
+          "tenga"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0025L05": {
+      "lego": [
+        "you are going to",
+        "vas a"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "help me",
+          "ayudarme"
+        ],
+        [
+          "before",
+          "antes"
+        ],
+        [
+          "I have",
+          "tenga"
+        ],
+        [
+          "to go",
+          "ir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0025L06": {
+      "lego": [
+        "before I have to",
+        "antes de que tenga que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "help me",
+          "ayudarme"
+        ],
+        [
+          "before",
+          "antes"
+        ],
+        [
+          "I have",
+          "tenga"
+        ],
+        [
+          "to go",
+          "ir"
+        ],
+        [
+          "you are going to",
+          "vas a"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": []
+    }
+  }
+}

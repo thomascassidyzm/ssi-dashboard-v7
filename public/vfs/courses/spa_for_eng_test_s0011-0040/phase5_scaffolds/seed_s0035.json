@@ -1,0 +1,95 @@
+{
+  "seed_id": "S0035",
+  "recent_seed_pairs": {
+    "S0025": [
+      "¿Vas a ayudarme antes de que tenga que ir?",
+      "Are you going to help me before I have to go?"
+    ],
+    "S0026": [
+      "Me gusta sentir como si estuviera casi preparado para ir.",
+      "I like feeling as if I'm nearly ready to go."
+    ],
+    "S0027": [
+      "No me gusta tomar demasiado tiempo para responder.",
+      "I don't like taking too much time to answer."
+    ],
+    "S0028": [
+      "Es útil comenzar a hablar tan pronto como puedas.",
+      "It's useful to start talking as soon as you can."
+    ],
+    "S0029": [
+      "Estoy deseando hablar mejor tan pronto como pueda.",
+      "I'm looking forward to speaking better as soon as I can."
+    ],
+    "S0030": [
+      "Quería preguntarte algo ayer.",
+      "I wanted to ask you something yesterday."
+    ],
+    "S0031": [
+      "Querías hablar conmigo esta noche.",
+      "You wanted to speak with me tonight."
+    ],
+    "S0032": [
+      "¿Querías mostrarme algo?",
+      "Did you want to show me something?"
+    ],
+    "S0033": [
+      "¿Cuánto tiempo llevas aprendiendo español?",
+      "How long have you been learning Spanish?"
+    ],
+    "S0034": [
+      "Él no quiere estar silencioso cuando otras personas están aquí.",
+      "He doesn't want to be quiet when other people are here."
+    ]
+  },
+  "seed_pair": [
+    "Ella no quiere leer nada esta tarde.",
+    "She doesn't want to read anything this afternoon."
+  ],
+  "legos": {
+    "S0035L03": {
+      "lego": [
+        "to read",
+        "leer"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0035L04": {
+      "lego": [
+        "anything",
+        "nada"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "to read",
+          "leer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0035L07": {
+      "lego": [
+        "this afternoon",
+        "esta tarde"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "to read",
+          "leer"
+        ],
+        [
+          "anything",
+          "nada"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": []
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "seed_id": "S0023",
+  "recent_seed_pairs": {
+    "S0013": [
+      "Hablas español muy bien.",
+      "You speak Spanish very well."
+    ],
+    "S0014": [
+      "¿Hablas español todo el día?",
+      "Do you speak Spanish all day?"
+    ],
+    "S0015": [
+      "Y quiero que hables español conmigo mañana.",
+      "And I want you to speak Spanish with me tomorrow."
+    ],
+    "S0016": [
+      "Él quiere volver con todos los demás más tarde.",
+      "He wants to come back with everyone else later on."
+    ],
+    "S0017": [
+      "Ella quiere descubrir cuál es la respuesta.",
+      "She wants to find out what the answer is."
+    ],
+    "S0018": [
+      "Queremos reunirnos a las seis esta noche.",
+      "We want to meet at six o'clock this evening."
+    ],
+    "S0019": [
+      "Pero no quiero parar de hablar.",
+      "But I don't want to stop talking."
+    ],
+    "S0020": [
+      "Quieres aprender su nombre rápidamente.",
+      "You want to learn his name quickly."
+    ],
+    "S0021": [
+      "¿Por qué estás aprendiendo su nombre?",
+      "Why are you learning her name?"
+    ],
+    "S0022": [
+      "Porque quiero encontrar personas que hablan español.",
+      "Because I want to meet people who speak Spanish."
+    ]
+  },
+  "seed_pair": [
+    "Voy a comenzar a hablar más pronto.",
+    "I'm going to start talking more soon."
+  ],
+  "legos": {
+    "S0023L01": {
+      "lego": [
+        "to start",
+        "comenzar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0023L04": {
+      "lego": [
+        "soon",
+        "pronto"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "to start",
+          "comenzar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0023L06": {
+      "lego": [
+        "to start talking",
+        "comenzar a hablar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "to start",
+          "comenzar"
+        ],
+        [
+          "soon",
+          "pronto"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0023L07": {
+      "lego": [
+        "more soon",
+        "más pronto"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "to start",
+          "comenzar"
+        ],
+        [
+          "soon",
+          "pronto"
+        ],
+        [
+          "to start talking",
+          "comenzar a hablar"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": []
+    }
+  }
+}

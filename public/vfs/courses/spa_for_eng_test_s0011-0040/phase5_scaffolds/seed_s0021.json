@@ -1,0 +1,118 @@
+{
+  "seed_id": "S0021",
+  "recent_seed_pairs": {
+    "S0011": [
+      "Me gustaría poder hablar después de que termines.",
+      "I'd like to be able to speak after you finish."
+    ],
+    "S0012": [
+      "No me gustaría adivinar lo que va a ocurrir mañana.",
+      "I wouldn't like to guess what's going to happen tomorrow."
+    ],
+    "S0013": [
+      "Hablas español muy bien.",
+      "You speak Spanish very well."
+    ],
+    "S0014": [
+      "¿Hablas español todo el día?",
+      "Do you speak Spanish all day?"
+    ],
+    "S0015": [
+      "Y quiero que hables español conmigo mañana.",
+      "And I want you to speak Spanish with me tomorrow."
+    ],
+    "S0016": [
+      "Él quiere volver con todos los demás más tarde.",
+      "He wants to come back with everyone else later on."
+    ],
+    "S0017": [
+      "Ella quiere descubrir cuál es la respuesta.",
+      "She wants to find out what the answer is."
+    ],
+    "S0018": [
+      "Queremos reunirnos a las seis esta noche.",
+      "We want to meet at six o'clock this evening."
+    ],
+    "S0019": [
+      "Pero no quiero parar de hablar.",
+      "But I don't want to stop talking."
+    ],
+    "S0020": [
+      "Quieres aprender su nombre rápidamente.",
+      "You want to learn his name quickly."
+    ]
+  },
+  "seed_pair": [
+    "¿Por qué estás aprendiendo su nombre?",
+    "Why are you learning her name?"
+  ],
+  "legos": {
+    "S0021L01": {
+      "lego": [
+        "you are",
+        "estás"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0021L02": {
+      "lego": [
+        "learning",
+        "aprendiendo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "you are",
+          "estás"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0021L05": {
+      "lego": [
+        "why",
+        "por qué"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you are",
+          "estás"
+        ],
+        [
+          "learning",
+          "aprendiendo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0021L06": {
+      "lego": [
+        "you are learning",
+        "estás aprendiendo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you are",
+          "estás"
+        ],
+        [
+          "learning",
+          "aprendiendo"
+        ],
+        [
+          "why",
+          "por qué"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": []
+    }
+  }
+}

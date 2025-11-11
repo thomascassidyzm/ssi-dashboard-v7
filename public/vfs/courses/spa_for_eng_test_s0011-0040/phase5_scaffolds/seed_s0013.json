@@ -1,0 +1,95 @@
+{
+  "seed_id": "S0013",
+  "recent_seed_pairs": {
+    "S0003": [
+      "cómo hablar lo más frecuentamente posible",
+      "how to speak as often as possible"
+    ],
+    "S0004": [
+      "cómo decir algo en español",
+      "how to say something in Spanish"
+    ],
+    "S0005": [
+      "Voy a practicar hablar con alguien más.",
+      "I'm going to practise speaking with someone else."
+    ],
+    "S0006": [
+      "Estoy intentando recordar una palabra.",
+      "I'm trying to remember a word."
+    ],
+    "S0007": [
+      "Quiero intentar tan duro como pueda hoy.",
+      "I want to try as hard as I can today."
+    ],
+    "S0008": [
+      "Voy a intentar explicar lo que quiero decir.",
+      "I'm going to try to explain what I mean."
+    ],
+    "S0009": [
+      "Hablo un poco de español ahora.",
+      "I speak a little Spanish now."
+    ],
+    "S0010": [
+      "No estoy seguro si puedo recordar toda la oración.",
+      "I'm not sure if I can remember the whole sentence."
+    ],
+    "S0011": [
+      "Me gustaría poder hablar después de que termines.",
+      "I'd like to be able to speak after you finish."
+    ],
+    "S0012": [
+      "No me gustaría adivinar lo que va a ocurrir mañana.",
+      "I wouldn't like to guess what's going to happen tomorrow."
+    ]
+  },
+  "seed_pair": [
+    "Hablas español muy bien.",
+    "You speak Spanish very well."
+  ],
+  "legos": {
+    "S0013L01": {
+      "lego": [
+        "you speak",
+        "hablas"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0013L03": {
+      "lego": [
+        "well",
+        "bien"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "you speak",
+          "hablas"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": []
+    },
+    "S0013L04": {
+      "lego": [
+        "very well",
+        "muy bien"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you speak",
+          "hablas"
+        ],
+        [
+          "well",
+          "bien"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": []
+    }
+  }
+}
