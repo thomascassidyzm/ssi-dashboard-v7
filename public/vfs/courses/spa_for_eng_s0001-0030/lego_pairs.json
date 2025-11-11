@@ -1,1848 +1,1909 @@
 {
-  "version": "7.7.0",
-  "course": "spa_for_eng_s0001-0030",
-  "target_language": "spa",
-  "known_language": "eng",
-  "seed_range": {
-    "start": 1,
-    "end": 30
-  },
-  "generated": "2025-11-11T01:03:42.619Z",
-  "total_seeds": 30,
-  "total_legos": 138,
-  "unique_legos": 113,
-  "seeds": {
-    "S0001": {
-      "seed_id": "S0001",
-      "seed_pair": {
-        "target": "Quiero hablar español contigo ahora.",
-        "known": "I want to speak Spanish with you now."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "quiero",
-          "known": "I want",
-          "new": true,
-          "id": "S0001L01"
-        },
-        {
-          "type": "A",
-          "target": "hablar",
-          "known": "to speak",
-          "new": true,
-          "id": "S0001L02"
-        },
-        {
-          "type": "A",
-          "target": "español",
-          "known": "Spanish",
-          "new": true,
-          "id": "S0001L03"
-        },
-        {
-          "type": "A",
-          "target": "contigo",
-          "known": "with you",
-          "new": true,
-          "id": "S0001L04"
-        },
-        {
-          "type": "A",
-          "target": "ahora",
-          "known": "now",
-          "new": true,
-          "id": "S0001L05"
-        }
+  "version": "7.0",
+  "seeds": [
+    [
+      "S0001",
+      [
+        "Quiero hablar español contigo ahora.",
+        "I want to speak Spanish with you now."
+      ],
+      [
+        [
+          "S0001L01",
+          "B",
+          "quiero",
+          "I want"
+        ],
+        [
+          "S0001L02",
+          "B",
+          "hablar",
+          "to speak"
+        ],
+        [
+          "S0001L03",
+          "B",
+          "español",
+          "Spanish"
+        ],
+        [
+          "S0001L04",
+          "B",
+          "contigo",
+          "with you"
+        ],
+        [
+          "S0001L05",
+          "B",
+          "ahora",
+          "now"
+        ]
       ]
-    },
-    "S0002": {
-      "seed_id": "S0002",
-      "seed_pair": {
-        "target": "Estoy intentando aprender.",
-        "known": "I'm trying to learn."
-      },
-      "legos": [
-        {
-          "type": "M",
-          "target": "estoy intentando",
-          "known": "I'm trying",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0002",
+      [
+        "Estoy intentando aprender.",
+        "I'm trying to learn."
+      ],
+      [
+        [
+          "S0002L01",
+          "C",
+          "estoy intentando",
+          "I'm trying",
+          [
             [
+              "S0002F0101",
+              "F",
               "estoy",
               "I am"
             ],
             [
+              "S0002F0102",
+              "F",
               "intentando",
               "trying"
             ]
-          ],
-          "id": "S0002L01"
-        },
-        {
-          "type": "A",
-          "target": "aprender",
-          "known": "to learn",
-          "new": true,
-          "id": "S0002L02"
-        }
+          ]
+        ],
+        [
+          "S0002L02",
+          "B",
+          "aprender",
+          "to learn"
+        ]
       ]
-    },
-    "S0003": {
-      "seed_id": "S0003",
-      "seed_pair": {
-        "target": "cómo hablar tan frecuentemente como sea posible.",
-        "known": "how to speak as often as possible."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "cómo",
-          "known": "how",
-          "new": true,
-          "id": "S0003L01"
-        },
-        {
-          "id": "PROV_S0001_02",
-          "type": "A",
-          "target": "hablar",
-          "known": "to speak",
-          "ref": "S0001",
-          "new": false
-        },
-        {
-          "type": "M",
-          "target": "tan frecuentemente como sea posible",
-          "known": "as often as possible",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0003",
+      [
+        "cómo hablar tan frecuentemente como sea posible.",
+        "how to speak as often as possible."
+      ],
+      [
+        [
+          "S0003L01",
+          "B",
+          "cómo",
+          "how"
+        ],
+        [
+          "PROV_S0001_02",
+          "B",
+          "hablar",
+          "to speak"
+        ],
+        [
+          "S0003L02",
+          "C",
+          "tan frecuentemente como sea posible",
+          "as often as possible",
+          [
             [
+              "S0003F0201",
+              "F",
               "tan",
               "as"
             ],
             [
+              "S0003F0202",
+              "F",
               "frecuentemente",
               "often"
             ],
             [
+              "S0003F0203",
+              "F",
               "como",
               "as"
             ],
             [
+              "S0003F0204",
+              "F",
               "sea",
               "be"
             ],
             [
+              "S0003F0205",
+              "F",
               "posible",
               "possible"
             ]
-          ],
-          "id": "S0003L02"
-        },
-        {
-          "type": "A",
-          "target": "frecuentemente",
-          "known": "often",
-          "new": true,
-          "id": "S0003L03"
-        },
-        {
-          "type": "A",
-          "target": "posible",
-          "known": "possible",
-          "new": true,
-          "id": "S0003L04"
-        }
+          ]
+        ],
+        [
+          "S0003L03",
+          "B",
+          "frecuentemente",
+          "often"
+        ],
+        [
+          "S0003L04",
+          "B",
+          "posible",
+          "possible"
+        ]
       ]
-    },
-    "S0004": {
-      "seed_id": "S0004",
-      "seed_pair": {
-        "target": "cómo decir algo en español.",
-        "known": "how to say something in Spanish"
-      },
-      "legos": [
-        {
-          "id": "PROV_S0003_01",
-          "type": "A",
-          "target": "cómo",
-          "known": "how",
-          "ref": "S0003",
-          "new": false
-        },
-        {
-          "type": "A",
-          "target": "decir",
-          "known": "to say",
-          "new": true,
-          "id": "S0004L01"
-        },
-        {
-          "type": "A",
-          "target": "algo",
-          "known": "something",
-          "new": true,
-          "id": "S0004L02"
-        },
-        {
-          "type": "M",
-          "target": "en español",
-          "known": "in Spanish",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0004",
+      [
+        "cómo decir algo en español.",
+        "how to say something in Spanish"
+      ],
+      [
+        [
+          "PROV_S0003_01",
+          "B",
+          "cómo",
+          "how"
+        ],
+        [
+          "S0004L01",
+          "B",
+          "decir",
+          "to say"
+        ],
+        [
+          "S0004L02",
+          "B",
+          "algo",
+          "something"
+        ],
+        [
+          "S0004L03",
+          "C",
+          "en español",
+          "in Spanish",
+          [
             [
+              "S0004F0301",
+              "F",
               "en",
               "in"
             ],
             [
+              "S0004F0302",
+              "F",
               "español",
               "Spanish"
             ]
-          ],
-          "id": "S0004L03"
-        }
+          ]
+        ]
       ]
-    },
-    "S0005": {
-      "seed_id": "S0005",
-      "seed_pair": {
-        "target": "Voy a practicar hablar con otra persona.",
-        "known": "I'm going to practise speaking with someone else."
-      },
-      "legos": [
-        {
-          "type": "M",
-          "target": "voy a",
-          "known": "I'm going to",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0005",
+      [
+        "Voy a practicar hablar con otra persona.",
+        "I'm going to practise speaking with someone else."
+      ],
+      [
+        [
+          "S0005L01",
+          "C",
+          "voy a",
+          "I'm going to",
+          [
             [
+              "S0005F0101",
+              "F",
               "voy",
               "I go"
             ],
             [
+              "S0005F0102",
+              "F",
               "a",
               "to"
             ]
-          ],
-          "id": "S0005L01"
-        },
-        {
-          "type": "A",
-          "target": "practicar",
-          "known": "to practise",
-          "new": true,
-          "id": "S0005L02"
-        },
-        {
-          "type": "A",
-          "target": "hablar",
-          "known": "speaking",
-          "new": true,
-          "id": "S0005L03"
-        },
-        {
-          "type": "A",
-          "target": "con",
-          "known": "with",
-          "new": true,
-          "id": "S0005L04"
-        },
-        {
-          "type": "M",
-          "target": "otra persona",
-          "known": "someone else",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0005L02",
+          "B",
+          "practicar",
+          "to practise"
+        ],
+        [
+          "S0005L03",
+          "B",
+          "hablar",
+          "speaking"
+        ],
+        [
+          "S0005L04",
+          "B",
+          "con",
+          "with"
+        ],
+        [
+          "S0005L05",
+          "C",
+          "otra persona",
+          "someone else",
+          [
             [
+              "S0005F0501",
+              "F",
               "otra",
               "another"
             ],
             [
+              "S0005F0502",
+              "F",
               "persona",
               "person"
             ]
-          ],
-          "id": "S0005L05"
-        }
+          ]
+        ]
       ]
-    },
-    "S0006": {
-      "seed_id": "S0006",
-      "seed_pair": {
-        "target": "Estoy intentando recordar una palabra.",
-        "known": "I'm trying to remember a word."
-      },
-      "legos": [
-        {
-          "id": "PROV_S0002_01",
-          "type": "M",
-          "target": "estoy intentando",
-          "known": "I'm trying",
-          "ref": "S0002",
-          "new": false
-        },
-        {
-          "type": "A",
-          "target": "recordar",
-          "known": "to remember",
-          "new": true,
-          "id": "S0006L01"
-        },
-        {
-          "type": "M",
-          "target": "una palabra",
-          "known": "a word",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0006",
+      [
+        "Estoy intentando recordar una palabra.",
+        "I'm trying to remember a word."
+      ],
+      [
+        [
+          "PROV_S0002_01",
+          "C",
+          "estoy intentando",
+          "I'm trying"
+        ],
+        [
+          "S0006L01",
+          "B",
+          "recordar",
+          "to remember"
+        ],
+        [
+          "S0006L02",
+          "C",
+          "una palabra",
+          "a word",
+          [
             [
+              "S0006F0201",
+              "F",
               "una",
               "a"
             ],
             [
+              "S0006F0202",
+              "F",
               "palabra",
               "word"
             ]
-          ],
-          "id": "S0006L02"
-        }
+          ]
+        ]
       ]
-    },
-    "S0007": {
-      "seed_id": "S0007",
-      "seed_pair": {
-        "target": "Quiero intentar con todo mi esfuerzo hoy.",
-        "known": "I want to try as hard as I can today."
-      },
-      "legos": [
-        {
-          "id": "PROV_S0001_01",
-          "type": "A",
-          "target": "quiero",
-          "known": "I want",
-          "ref": "S0001",
-          "new": false
-        },
-        {
-          "type": "M",
-          "target": "intentar con todo mi esfuerzo",
-          "known": "to try as hard as I can",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0007",
+      [
+        "Quiero intentar con todo mi esfuerzo hoy.",
+        "I want to try as hard as I can today."
+      ],
+      [
+        [
+          "PROV_S0001_01",
+          "B",
+          "quiero",
+          "I want"
+        ],
+        [
+          "S0007L01",
+          "C",
+          "intentar con todo mi esfuerzo",
+          "to try as hard as I can",
+          [
             [
+              "S0007F0101",
+              "F",
               "intentar",
               "to try"
             ],
             [
+              "S0007F0102",
+              "F",
               "con",
               "with"
             ],
             [
+              "S0007F0103",
+              "F",
               "todo",
               "all"
             ],
             [
+              "S0007F0104",
+              "F",
               "mi",
               "my"
             ],
             [
+              "S0007F0105",
+              "F",
               "esfuerzo",
               "effort"
             ]
-          ],
-          "id": "S0007L01"
-        },
-        {
-          "type": "A",
-          "target": "hoy",
-          "known": "today",
-          "new": true,
-          "id": "S0007L02"
-        }
+          ]
+        ],
+        [
+          "S0007L02",
+          "B",
+          "hoy",
+          "today"
+        ]
       ]
-    },
-    "S0008": {
-      "seed_id": "S0008",
-      "seed_pair": {
-        "target": "Voy a intentar explicar lo que quiero decir.",
-        "known": "I'm going to try to explain what I mean."
-      },
-      "legos": [
-        {
-          "id": "PROV_S0005_01",
-          "type": "M",
-          "target": "voy a",
-          "known": "I'm going to",
-          "ref": "S0005",
-          "new": false
-        },
-        {
-          "type": "A",
-          "target": "intentar",
-          "known": "to try",
-          "new": true,
-          "id": "S0008L01"
-        },
-        {
-          "type": "A",
-          "target": "explicar",
-          "known": "to explain",
-          "new": true,
-          "id": "S0008L02"
-        },
-        {
-          "type": "M",
-          "target": "lo que quiero decir",
-          "known": "what I mean",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0008",
+      [
+        "Voy a intentar explicar lo que quiero decir.",
+        "I'm going to try to explain what I mean."
+      ],
+      [
+        [
+          "PROV_S0005_01",
+          "C",
+          "voy a",
+          "I'm going to"
+        ],
+        [
+          "S0008L01",
+          "B",
+          "intentar",
+          "to try"
+        ],
+        [
+          "S0008L02",
+          "B",
+          "explicar",
+          "to explain"
+        ],
+        [
+          "S0008L03",
+          "C",
+          "lo que quiero decir",
+          "what I mean",
+          [
             [
+              "S0008F0301",
+              "F",
               "lo",
               "the"
             ],
             [
+              "S0008F0302",
+              "F",
               "que",
               "that"
             ],
             [
+              "S0008F0303",
+              "F",
               "quiero",
               "I want"
             ],
             [
+              "S0008F0304",
+              "F",
               "decir",
               "to say"
             ]
-          ],
-          "id": "S0008L03"
-        }
+          ]
+        ]
       ]
-    },
-    "S0009": {
-      "seed_id": "S0009",
-      "seed_pair": {
-        "target": "Hablo un poco de español ahora.",
-        "known": "I speak a little Spanish now."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "hablo",
-          "known": "I speak",
-          "new": true,
-          "id": "S0009L01"
-        },
-        {
-          "type": "M",
-          "target": "un poco de",
-          "known": "a little",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0009",
+      [
+        "Hablo un poco de español ahora.",
+        "I speak a little Spanish now."
+      ],
+      [
+        [
+          "S0009L01",
+          "B",
+          "hablo",
+          "I speak"
+        ],
+        [
+          "S0009L02",
+          "C",
+          "un poco de",
+          "a little",
+          [
             [
+              "S0009F0201",
+              "F",
               "un",
               "a"
             ],
             [
+              "S0009F0202",
+              "F",
               "poco",
               "little"
             ],
             [
+              "S0009F0203",
+              "F",
               "de",
               "of"
             ]
-          ],
-          "id": "S0009L02"
-        },
-        {
-          "id": "PROV_S0001_03",
-          "type": "A",
-          "target": "español",
-          "known": "Spanish",
-          "ref": "S0001",
-          "new": false
-        },
-        {
-          "id": "PROV_S0001_05",
-          "type": "A",
-          "target": "ahora",
-          "known": "now",
-          "ref": "S0001",
-          "new": false
-        }
+          ]
+        ],
+        [
+          "PROV_S0001_03",
+          "B",
+          "español",
+          "Spanish"
+        ],
+        [
+          "PROV_S0001_05",
+          "B",
+          "ahora",
+          "now"
+        ]
       ]
-    },
-    "S0010": {
-      "seed_id": "S0010",
-      "seed_pair": {
-        "target": "No estoy seguro si puedo recordar la oración completa.",
-        "known": "I'm not sure if I can remember the whole sentence."
-      },
-      "legos": [
-        {
-          "type": "M",
-          "target": "no estoy seguro",
-          "known": "I'm not sure",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0010",
+      [
+        "No estoy seguro si puedo recordar la oración completa.",
+        "I'm not sure if I can remember the whole sentence."
+      ],
+      [
+        [
+          "S0010L01",
+          "C",
+          "no estoy seguro",
+          "I'm not sure",
+          [
             [
+              "S0010F0101",
+              "F",
               "no",
               "not"
             ],
             [
+              "S0010F0102",
+              "F",
               "estoy",
               "I am"
             ],
             [
+              "S0010F0103",
+              "F",
               "seguro",
               "sure"
             ]
-          ],
-          "id": "S0010L01"
-        },
-        {
-          "type": "A",
-          "target": "si",
-          "known": "if",
-          "new": true,
-          "id": "S0010L02"
-        },
-        {
-          "type": "A",
-          "target": "puedo",
-          "known": "I can",
-          "new": true,
-          "id": "S0010L03"
-        },
-        {
-          "id": "PROV_S0006_01",
-          "type": "A",
-          "target": "recordar",
-          "known": "to remember",
-          "ref": "S0006",
-          "new": false
-        },
-        {
-          "type": "M",
-          "target": "la oración completa",
-          "known": "the whole sentence",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0010L02",
+          "B",
+          "si",
+          "if"
+        ],
+        [
+          "S0010L03",
+          "B",
+          "puedo",
+          "I can"
+        ],
+        [
+          "PROV_S0006_01",
+          "B",
+          "recordar",
+          "to remember"
+        ],
+        [
+          "S0010L04",
+          "C",
+          "la oración completa",
+          "the whole sentence",
+          [
             [
+              "S0010F0401",
+              "F",
               "la",
               "the"
             ],
             [
+              "S0010F0402",
+              "F",
               "oración",
               "sentence"
             ],
             [
+              "S0010F0403",
+              "F",
               "completa",
               "whole"
             ]
-          ],
-          "id": "S0010L04"
-        }
+          ]
+        ]
       ]
-    },
-    "S0011": {
-      "seed_id": "S0011",
-      "seed_pair": {
-        "target": "Me gustaría poder hablar después de que termines.",
-        "known": "I'd like to be able to speak after you finish."
-      },
-      "legos": [
-        {
-          "type": "M",
-          "target": "me gustaría",
-          "known": "I'd like",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0011",
+      [
+        "Me gustaría poder hablar después de que termines.",
+        "I'd like to be able to speak after you finish."
+      ],
+      [
+        [
+          "S0011L01",
+          "C",
+          "me gustaría",
+          "I'd like",
+          [
             [
+              "S0011F0101",
+              "F",
               "me",
               "me"
             ],
             [
+              "S0011F0102",
+              "F",
               "gustaría",
               "would like"
             ]
-          ],
-          "id": "S0011L01"
-        },
-        {
-          "type": "M",
-          "target": "poder hablar",
-          "known": "to be able to speak",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0011L02",
+          "C",
+          "poder hablar",
+          "to be able to speak",
+          [
             [
+              "S0011F0201",
+              "F",
               "poder",
               "to be able"
             ],
             [
+              "S0011F0202",
+              "F",
               "hablar",
               "to speak"
             ]
-          ],
-          "id": "S0011L02"
-        },
-        {
-          "type": "M",
-          "target": "después de que",
-          "known": "after",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0011L03",
+          "C",
+          "después de que",
+          "after",
+          [
             [
+              "S0011F0301",
+              "F",
               "después",
               "after"
             ],
             [
+              "S0011F0302",
+              "F",
               "de",
               "of"
             ],
             [
+              "S0011F0303",
+              "F",
               "que",
               "that"
             ]
-          ],
-          "id": "S0011L03"
-        },
-        {
-          "type": "A",
-          "target": "termines",
-          "known": "you finish",
-          "new": true,
-          "id": "S0011L04"
-        }
+          ]
+        ],
+        [
+          "S0011L04",
+          "B",
+          "termines",
+          "you finish"
+        ]
       ]
-    },
-    "S0012": {
-      "seed_id": "S0012",
-      "seed_pair": {
-        "target": "No me gustaría adivinar qué va a pasar mañana.",
-        "known": "I wouldn't like to guess what's going to happen tomorrow."
-      },
-      "legos": [
-        {
-          "type": "M",
-          "target": "no me gustaría",
-          "known": "I wouldn't like",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0012",
+      [
+        "No me gustaría adivinar qué va a pasar mañana.",
+        "I wouldn't like to guess what's going to happen tomorrow."
+      ],
+      [
+        [
+          "S0012L01",
+          "C",
+          "no me gustaría",
+          "I wouldn't like",
+          [
             [
+              "S0012F0101",
+              "F",
               "no",
               "not"
             ],
             [
+              "S0012F0102",
+              "F",
               "me",
               "me"
             ],
             [
+              "S0012F0103",
+              "F",
               "gustaría",
               "would like"
             ]
-          ],
-          "id": "S0012L01"
-        },
-        {
-          "type": "A",
-          "target": "adivinar",
-          "known": "to guess",
-          "new": true,
-          "id": "S0012L02"
-        },
-        {
-          "type": "M",
-          "target": "qué va a pasar",
-          "known": "what's going to happen",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0012L02",
+          "B",
+          "adivinar",
+          "to guess"
+        ],
+        [
+          "S0012L03",
+          "C",
+          "qué va a pasar",
+          "what's going to happen",
+          [
             [
+              "S0012F0301",
+              "F",
               "qué",
               "what"
             ],
             [
+              "S0012F0302",
+              "F",
               "va",
               "is going"
             ],
             [
+              "S0012F0303",
+              "F",
               "a",
               "to"
             ],
             [
+              "S0012F0304",
+              "F",
               "pasar",
               "to happen"
             ]
-          ],
-          "id": "S0012L03"
-        },
-        {
-          "type": "A",
-          "target": "mañana",
-          "known": "tomorrow",
-          "new": true,
-          "id": "S0012L04"
-        }
+          ]
+        ],
+        [
+          "S0012L04",
+          "B",
+          "mañana",
+          "tomorrow"
+        ]
       ]
-    },
-    "S0013": {
-      "seed_id": "S0013",
-      "seed_pair": {
-        "target": "Hablas español muy bien.",
-        "known": "You speak Spanish very well."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "hablas",
-          "known": "you speak",
-          "new": true,
-          "id": "S0013L01"
-        },
-        {
-          "id": "PROV_S0001_03",
-          "type": "A",
-          "target": "español",
-          "known": "Spanish",
-          "ref": "S0001",
-          "new": false
-        },
-        {
-          "type": "M",
-          "target": "muy bien",
-          "known": "very well",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0013",
+      [
+        "Hablas español muy bien.",
+        "You speak Spanish very well."
+      ],
+      [
+        [
+          "S0013L01",
+          "B",
+          "hablas",
+          "you speak"
+        ],
+        [
+          "PROV_S0001_03",
+          "B",
+          "español",
+          "Spanish"
+        ],
+        [
+          "S0013L02",
+          "C",
+          "muy bien",
+          "very well",
+          [
             [
+              "S0013F0201",
+              "F",
               "muy",
               "very"
             ],
             [
+              "S0013F0202",
+              "F",
               "bien",
               "well"
             ]
-          ],
-          "id": "S0013L02"
-        }
+          ]
+        ]
       ]
-    },
-    "S0014": {
-      "seed_id": "S0014",
-      "seed_pair": {
-        "target": "¿Hablas español todo el día?",
-        "known": "Do you speak Spanish all day?"
-      },
-      "legos": [
-        {
-          "id": "PROV_S0013_01",
-          "type": "A",
-          "target": "hablas",
-          "known": "you speak",
-          "ref": "S0013",
-          "new": false
-        },
-        {
-          "id": "PROV_S0001_03",
-          "type": "A",
-          "target": "español",
-          "known": "Spanish",
-          "ref": "S0001",
-          "new": false
-        },
-        {
-          "type": "M",
-          "target": "todo el día",
-          "known": "all day",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0014",
+      [
+        "¿Hablas español todo el día?",
+        "Do you speak Spanish all day?"
+      ],
+      [
+        [
+          "PROV_S0013_01",
+          "B",
+          "hablas",
+          "you speak"
+        ],
+        [
+          "PROV_S0001_03",
+          "B",
+          "español",
+          "Spanish"
+        ],
+        [
+          "S0014L01",
+          "C",
+          "todo el día",
+          "all day",
+          [
             [
+              "S0014F0101",
+              "F",
               "todo",
               "all"
             ],
             [
+              "S0014F0102",
+              "F",
               "el",
               "the"
             ],
             [
+              "S0014F0103",
+              "F",
               "día",
               "day"
             ]
-          ],
-          "id": "S0014L01"
-        }
+          ]
+        ]
       ]
-    },
-    "S0015": {
-      "seed_id": "S0015",
-      "seed_pair": {
-        "target": "Y quiero que hables español conmigo mañana.",
-        "known": "And I want you to speak Spanish with me tomorrow."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "y",
-          "known": "and",
-          "new": true,
-          "id": "S0015L01"
-        },
-        {
-          "id": "PROV_S0001_01",
-          "type": "A",
-          "target": "quiero",
-          "known": "I want",
-          "ref": "S0001",
-          "new": false
-        },
-        {
-          "type": "M",
-          "target": "que hables",
-          "known": "you to speak",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0015",
+      [
+        "Y quiero que hables español conmigo mañana.",
+        "And I want you to speak Spanish with me tomorrow."
+      ],
+      [
+        [
+          "S0015L01",
+          "B",
+          "y",
+          "and"
+        ],
+        [
+          "PROV_S0001_01",
+          "B",
+          "quiero",
+          "I want"
+        ],
+        [
+          "S0015L02",
+          "C",
+          "que hables",
+          "you to speak",
+          [
             [
+              "S0015F0201",
+              "F",
               "que",
               "that"
             ],
             [
+              "S0015F0202",
+              "F",
               "hables",
               "you speak"
             ]
-          ],
-          "id": "S0015L02"
-        },
-        {
-          "id": "PROV_S0001_03",
-          "type": "A",
-          "target": "español",
-          "known": "Spanish",
-          "ref": "S0001",
-          "new": false
-        },
-        {
-          "type": "A",
-          "target": "conmigo",
-          "known": "with me",
-          "new": true,
-          "id": "S0015L03"
-        },
-        {
-          "id": "PROV_S0012_04",
-          "type": "A",
-          "target": "mañana",
-          "known": "tomorrow",
-          "ref": "S0012",
-          "new": false
-        }
+          ]
+        ],
+        [
+          "PROV_S0001_03",
+          "B",
+          "español",
+          "Spanish"
+        ],
+        [
+          "S0015L03",
+          "B",
+          "conmigo",
+          "with me"
+        ],
+        [
+          "PROV_S0012_04",
+          "B",
+          "mañana",
+          "tomorrow"
+        ]
       ]
-    },
-    "S0016": {
-      "seed_id": "S0016",
-      "seed_pair": {
-        "target": "Él quiere volver con todos los demás más tarde.",
-        "known": "He wants to come back with everyone else later on."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "él",
-          "known": "he",
-          "new": true,
-          "id": "S0016L01"
-        },
-        {
-          "type": "A",
-          "target": "quiere",
-          "known": "wants",
-          "new": true,
-          "id": "S0016L02"
-        },
-        {
-          "type": "A",
-          "target": "volver",
-          "known": "to come back",
-          "new": true,
-          "id": "S0016L03"
-        },
-        {
-          "id": "PROV_S0005_04",
-          "type": "A",
-          "target": "con",
-          "known": "with",
-          "ref": "S0005",
-          "new": false
-        },
-        {
-          "type": "M",
-          "target": "todos los demás",
-          "known": "everyone else",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0016",
+      [
+        "Él quiere volver con todos los demás más tarde.",
+        "He wants to come back with everyone else later on."
+      ],
+      [
+        [
+          "S0016L01",
+          "B",
+          "él",
+          "he"
+        ],
+        [
+          "S0016L02",
+          "B",
+          "quiere",
+          "wants"
+        ],
+        [
+          "S0016L03",
+          "B",
+          "volver",
+          "to come back"
+        ],
+        [
+          "PROV_S0005_04",
+          "B",
+          "con",
+          "with"
+        ],
+        [
+          "S0016L04",
+          "C",
+          "todos los demás",
+          "everyone else",
+          [
             [
+              "S0016F0401",
+              "F",
               "todos",
               "everyone"
             ],
             [
+              "S0016F0402",
+              "F",
               "los",
               "the"
             ],
             [
+              "S0016F0403",
+              "F",
               "demás",
               "others"
             ]
-          ],
-          "id": "S0016L04"
-        },
-        {
-          "type": "M",
-          "target": "más tarde",
-          "known": "later on",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0016L05",
+          "C",
+          "más tarde",
+          "later on",
+          [
             [
+              "S0016F0501",
+              "F",
               "más",
               "more"
             ],
             [
+              "S0016F0502",
+              "F",
               "tarde",
               "late"
             ]
-          ],
-          "id": "S0016L05"
-        }
+          ]
+        ]
       ]
-    },
-    "S0017": {
-      "seed_id": "S0017",
-      "seed_pair": {
-        "target": "Ella quiere descubrir cuál es la respuesta.",
-        "known": "She wants to find out what the answer is."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "ella",
-          "known": "she",
-          "new": true,
-          "id": "S0017L01"
-        },
-        {
-          "id": "PROV_S0016_02",
-          "type": "A",
-          "target": "quiere",
-          "known": "wants",
-          "ref": "S0016",
-          "new": false
-        },
-        {
-          "type": "A",
-          "target": "descubrir",
-          "known": "to find out",
-          "new": true,
-          "id": "S0017L02"
-        },
-        {
-          "type": "M",
-          "target": "cuál es la respuesta",
-          "known": "what the answer is",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0017",
+      [
+        "Ella quiere descubrir cuál es la respuesta.",
+        "She wants to find out what the answer is."
+      ],
+      [
+        [
+          "S0017L01",
+          "B",
+          "ella",
+          "she"
+        ],
+        [
+          "PROV_S0016_02",
+          "B",
+          "quiere",
+          "wants"
+        ],
+        [
+          "S0017L02",
+          "B",
+          "descubrir",
+          "to find out"
+        ],
+        [
+          "S0017L03",
+          "C",
+          "cuál es la respuesta",
+          "what the answer is",
+          [
             [
+              "S0017F0301",
+              "F",
               "cuál",
               "what"
             ],
             [
+              "S0017F0302",
+              "F",
               "es",
               "is"
             ],
             [
+              "S0017F0303",
+              "F",
               "la",
               "the"
             ],
             [
+              "S0017F0304",
+              "F",
               "respuesta",
               "answer"
             ]
-          ],
-          "id": "S0017L03"
-        }
+          ]
+        ]
       ]
-    },
-    "S0018": {
-      "seed_id": "S0018",
-      "seed_pair": {
-        "target": "Queremos encontrarnos a las seis de la tarde.",
-        "known": "We want to meet at six o'clock this evening."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "queremos",
-          "known": "we want",
-          "new": true,
-          "id": "S0018L01"
-        },
-        {
-          "type": "A",
-          "target": "encontrarnos",
-          "known": "to meet",
-          "new": true,
-          "id": "S0018L02"
-        },
-        {
-          "type": "M",
-          "target": "a las seis",
-          "known": "at six o'clock",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0018",
+      [
+        "Queremos encontrarnos a las seis de la tarde.",
+        "We want to meet at six o'clock this evening."
+      ],
+      [
+        [
+          "S0018L01",
+          "B",
+          "queremos",
+          "we want"
+        ],
+        [
+          "S0018L02",
+          "B",
+          "encontrarnos",
+          "to meet"
+        ],
+        [
+          "S0018L03",
+          "C",
+          "a las seis",
+          "at six o'clock",
+          [
             [
+              "S0018F0301",
+              "F",
               "a",
               "at"
             ],
             [
+              "S0018F0302",
+              "F",
               "las",
               "the"
             ],
             [
+              "S0018F0303",
+              "F",
               "seis",
               "six"
             ]
-          ],
-          "id": "S0018L03"
-        },
-        {
-          "type": "M",
-          "target": "de la tarde",
-          "known": "this evening",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0018L04",
+          "C",
+          "de la tarde",
+          "this evening",
+          [
             [
+              "S0018F0401",
+              "F",
               "de",
               "of"
             ],
             [
+              "S0018F0402",
+              "F",
               "la",
               "the"
             ],
             [
+              "S0018F0403",
+              "F",
               "tarde",
               "evening"
             ]
-          ],
-          "id": "S0018L04"
-        }
+          ]
+        ]
       ]
-    },
-    "S0019": {
-      "seed_id": "S0019",
-      "seed_pair": {
-        "target": "Pero no quiero parar de hablar.",
-        "known": "But I don't want to stop talking."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "pero",
-          "known": "but",
-          "new": true,
-          "id": "S0019L01"
-        },
-        {
-          "type": "M",
-          "target": "no quiero",
-          "known": "I don't want",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0019",
+      [
+        "Pero no quiero parar de hablar.",
+        "But I don't want to stop talking."
+      ],
+      [
+        [
+          "S0019L01",
+          "B",
+          "pero",
+          "but"
+        ],
+        [
+          "S0019L02",
+          "C",
+          "no quiero",
+          "I don't want",
+          [
             [
+              "S0019F0201",
+              "F",
               "no",
               "not"
             ],
             [
+              "S0019F0202",
+              "F",
               "quiero",
               "I want"
             ]
-          ],
-          "id": "S0019L02"
-        },
-        {
-          "type": "M",
-          "target": "parar de",
-          "known": "to stop",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0019L03",
+          "C",
+          "parar de",
+          "to stop",
+          [
             [
+              "S0019F0301",
+              "F",
               "parar",
               "to stop"
             ],
             [
+              "S0019F0302",
+              "F",
               "de",
               "of"
             ]
-          ],
-          "id": "S0019L03"
-        },
-        {
-          "type": "A",
-          "target": "hablar",
-          "known": "talking",
-          "new": true,
-          "id": "S0019L04"
-        }
+          ]
+        ],
+        [
+          "S0019L04",
+          "B",
+          "hablar",
+          "talking"
+        ]
       ]
-    },
-    "S0020": {
-      "seed_id": "S0020",
-      "seed_pair": {
-        "target": "Quieres aprender su nombre rápidamente.",
-        "known": "You want to learn his name quickly."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "quieres",
-          "known": "you want",
-          "new": true,
-          "id": "S0020L01"
-        },
-        {
-          "id": "PROV_S0002_02",
-          "type": "A",
-          "target": "aprender",
-          "known": "to learn",
-          "ref": "S0002",
-          "new": false
-        },
-        {
-          "type": "M",
-          "target": "su nombre",
-          "known": "his name",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0020",
+      [
+        "Quieres aprender su nombre rápidamente.",
+        "You want to learn his name quickly."
+      ],
+      [
+        [
+          "S0020L01",
+          "B",
+          "quieres",
+          "you want"
+        ],
+        [
+          "PROV_S0002_02",
+          "B",
+          "aprender",
+          "to learn"
+        ],
+        [
+          "S0020L02",
+          "C",
+          "su nombre",
+          "his name",
+          [
             [
+              "S0020F0201",
+              "F",
               "su",
               "his"
             ],
             [
+              "S0020F0202",
+              "F",
               "nombre",
               "name"
             ]
-          ],
-          "id": "S0020L02"
-        },
-        {
-          "type": "A",
-          "target": "rápidamente",
-          "known": "quickly",
-          "new": true,
-          "id": "S0020L03"
-        }
+          ]
+        ],
+        [
+          "S0020L03",
+          "B",
+          "rápidamente",
+          "quickly"
+        ]
       ]
-    },
-    "S0021": {
-      "seed_id": "S0021",
-      "seed_pair": {
-        "target": "¿Por qué estás aprendiendo su nombre?",
-        "known": "Why are you learning her name?"
-      },
-      "legos": [
-        {
-          "type": "M",
-          "target": "¿Por qué",
-          "known": "Why",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0021",
+      [
+        "¿Por qué estás aprendiendo su nombre?",
+        "Why are you learning her name?"
+      ],
+      [
+        [
+          "S0021L01",
+          "C",
+          "¿Por qué",
+          "Why",
+          [
             [
+              "S0021F0101",
+              "F",
               "por",
               "for/by"
             ],
             [
+              "S0021F0102",
+              "F",
               "qué",
               "what"
             ]
-          ],
-          "id": "S0021L01"
-        },
-        {
-          "type": "M",
-          "target": "estás aprendiendo",
-          "known": "are you learning",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0021L02",
+          "C",
+          "estás aprendiendo",
+          "are you learning",
+          [
             [
+              "S0021F0201",
+              "F",
               "estás",
               "you are"
             ],
             [
+              "S0021F0202",
+              "F",
               "aprendiendo",
               "learning"
             ]
-          ],
-          "id": "S0021L02"
-        },
-        {
-          "type": "A",
-          "target": "su",
-          "known": "her",
-          "new": true,
-          "id": "S0021L03"
-        },
-        {
-          "type": "A",
-          "target": "nombre",
-          "known": "name",
-          "new": true,
-          "id": "S0021L04"
-        }
+          ]
+        ],
+        [
+          "S0021L03",
+          "B",
+          "su",
+          "her"
+        ],
+        [
+          "S0021L04",
+          "B",
+          "nombre",
+          "name"
+        ]
       ]
-    },
-    "S0022": {
-      "seed_id": "S0022",
-      "seed_pair": {
-        "target": "Porque quiero conocer personas que hablen español.",
-        "known": "Because I want to meet people who speak Spanish."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "Porque",
-          "known": "Because",
-          "new": true,
-          "id": "S0022L01"
-        },
-        {
-          "type": "A",
-          "target": "quiero",
-          "known": "I want",
-          "new": true,
-          "id": "S0022L02"
-        },
-        {
-          "type": "A",
-          "target": "conocer",
-          "known": "to meet",
-          "new": true,
-          "id": "S0022L03"
-        },
-        {
-          "type": "A",
-          "target": "personas",
-          "known": "people",
-          "new": true,
-          "id": "S0022L04"
-        },
-        {
-          "type": "M",
-          "target": "que hablen",
-          "known": "who speak",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0022",
+      [
+        "Porque quiero conocer personas que hablen español.",
+        "Because I want to meet people who speak Spanish."
+      ],
+      [
+        [
+          "S0022L01",
+          "B",
+          "Porque",
+          "Because"
+        ],
+        [
+          "S0022L02",
+          "B",
+          "quiero",
+          "I want"
+        ],
+        [
+          "S0022L03",
+          "B",
+          "conocer",
+          "to meet"
+        ],
+        [
+          "S0022L04",
+          "B",
+          "personas",
+          "people"
+        ],
+        [
+          "S0022L05",
+          "C",
+          "que hablen",
+          "who speak",
+          [
             [
+              "S0022F0501",
+              "F",
               "que",
               "who"
             ],
             [
+              "S0022F0502",
+              "F",
               "hablen",
               "speak"
             ]
-          ],
-          "id": "S0022L05"
-        },
-        {
-          "type": "A",
-          "target": "español",
-          "known": "Spanish",
-          "new": true,
-          "id": "S0022L06"
-        }
+          ]
+        ],
+        [
+          "S0022L06",
+          "B",
+          "español",
+          "Spanish"
+        ]
       ]
-    },
-    "S0023": {
-      "seed_id": "S0023",
-      "seed_pair": {
-        "target": "Voy a empezar a hablar más pronto.",
-        "known": "I'm going to start talking more soon."
-      },
-      "legos": [
-        {
-          "type": "M",
-          "target": "Voy a",
-          "known": "I'm going to",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0023",
+      [
+        "Voy a empezar a hablar más pronto.",
+        "I'm going to start talking more soon."
+      ],
+      [
+        [
+          "S0023L01",
+          "C",
+          "Voy a",
+          "I'm going to",
+          [
             [
+              "S0023F0101",
+              "F",
               "Voy",
               "I go/I'm going"
             ],
             [
+              "S0023F0102",
+              "F",
               "a",
               "to"
             ]
-          ],
-          "id": "S0023L01"
-        },
-        {
-          "type": "A",
-          "target": "empezar",
-          "known": "to start",
-          "new": true,
-          "id": "S0023L02"
-        },
-        {
-          "type": "M",
-          "target": "empezar a hablar",
-          "known": "start talking",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0023L02",
+          "B",
+          "empezar",
+          "to start"
+        ],
+        [
+          "S0023L03",
+          "C",
+          "empezar a hablar",
+          "start talking",
+          [
             [
+              "S0023F0301",
+              "F",
               "empezar",
               "start"
             ],
             [
+              "S0023F0302",
+              "F",
               "a",
               "to"
             ],
             [
+              "S0023F0303",
+              "F",
               "hablar",
               "talking"
             ]
-          ],
-          "id": "S0023L03"
-        },
-        {
-          "type": "A",
-          "target": "hablar",
-          "known": "to talk",
-          "new": true,
-          "id": "S0023L04"
-        },
-        {
-          "type": "A",
-          "target": "más",
-          "known": "more",
-          "new": true,
-          "id": "S0023L05"
-        },
-        {
-          "type": "A",
-          "target": "pronto",
-          "known": "soon",
-          "new": true,
-          "id": "S0023L06"
-        }
+          ]
+        ],
+        [
+          "S0023L04",
+          "B",
+          "hablar",
+          "to talk"
+        ],
+        [
+          "S0023L05",
+          "B",
+          "más",
+          "more"
+        ],
+        [
+          "S0023L06",
+          "B",
+          "pronto",
+          "soon"
+        ]
       ]
-    },
-    "S0024": {
-      "seed_id": "S0024",
-      "seed_pair": {
-        "target": "No voy a poder recordar fácilmente.",
-        "known": "I'm not going to be able to remember easily."
-      },
-      "legos": [
-        {
-          "type": "M",
-          "target": "No voy a",
-          "known": "I'm not going to",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0024",
+      [
+        "No voy a poder recordar fácilmente.",
+        "I'm not going to be able to remember easily."
+      ],
+      [
+        [
+          "S0024L01",
+          "C",
+          "No voy a",
+          "I'm not going to",
+          [
             [
+              "S0024F0101",
+              "F",
               "No",
               "not"
             ],
             [
+              "S0024F0102",
+              "F",
               "voy",
               "I go/I'm going"
             ],
             [
+              "S0024F0103",
+              "F",
               "a",
               "to"
             ]
-          ],
-          "id": "S0024L01"
-        },
-        {
-          "type": "A",
-          "target": "poder",
-          "known": "be able to",
-          "new": true,
-          "id": "S0024L02"
-        },
-        {
-          "type": "A",
-          "target": "recordar",
-          "known": "remember",
-          "new": true,
-          "id": "S0024L03"
-        },
-        {
-          "type": "A",
-          "target": "fácilmente",
-          "known": "easily",
-          "new": true,
-          "id": "S0024L04"
-        }
+          ]
+        ],
+        [
+          "S0024L02",
+          "B",
+          "poder",
+          "be able to"
+        ],
+        [
+          "S0024L03",
+          "B",
+          "recordar",
+          "remember"
+        ],
+        [
+          "S0024L04",
+          "B",
+          "fácilmente",
+          "easily"
+        ]
       ]
-    },
-    "S0025": {
-      "seed_id": "S0025",
-      "seed_pair": {
-        "target": "¿Vas a ayudarme antes de que tenga que irme?",
-        "known": "Are you going to help me before I have to go?"
-      },
-      "legos": [
-        {
-          "type": "M",
-          "target": "¿Vas a",
-          "known": "Are you going to",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0025",
+      [
+        "¿Vas a ayudarme antes de que tenga que irme?",
+        "Are you going to help me before I have to go?"
+      ],
+      [
+        [
+          "S0025L01",
+          "C",
+          "¿Vas a",
+          "Are you going to",
+          [
             [
+              "S0025F0101",
+              "F",
               "Vas",
               "you go/you're going"
             ],
             [
+              "S0025F0102",
+              "F",
               "a",
               "to"
             ]
-          ],
-          "id": "S0025L01"
-        },
-        {
-          "type": "A",
-          "target": "ayudar",
-          "known": "to help",
-          "new": true,
-          "id": "S0025L02"
-        },
-        {
-          "type": "M",
-          "target": "ayudarme",
-          "known": "help me",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0025L02",
+          "B",
+          "ayudar",
+          "to help"
+        ],
+        [
+          "S0025L03",
+          "C",
+          "ayudarme",
+          "help me",
+          [
             [
+              "S0025F0301",
+              "F",
               "ayudar",
               "help"
             ],
             [
+              "S0025F0302",
+              "F",
               "me",
               "me"
             ]
-          ],
-          "id": "S0025L03"
-        },
-        {
-          "type": "M",
-          "target": "antes de que",
-          "known": "before",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0025L04",
+          "C",
+          "antes de que",
+          "before",
+          [
             [
+              "S0025F0401",
+              "F",
               "antes",
               "before"
             ],
             [
+              "S0025F0402",
+              "F",
               "de",
               "of"
             ],
             [
+              "S0025F0403",
+              "F",
               "que",
               "that"
             ]
-          ],
-          "id": "S0025L04"
-        },
-        {
-          "type": "M",
-          "target": "tenga que",
-          "known": "I have to",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0025L05",
+          "C",
+          "tenga que",
+          "I have to",
+          [
             [
+              "S0025F0501",
+              "F",
               "tenga",
               "I have"
             ],
             [
+              "S0025F0502",
+              "F",
               "que",
               "to/that"
             ]
-          ],
-          "id": "S0025L05"
-        },
-        {
-          "type": "A",
-          "target": "irme",
-          "known": "go",
-          "new": true,
-          "id": "S0025L06"
-        }
+          ]
+        ],
+        [
+          "S0025L06",
+          "B",
+          "irme",
+          "go"
+        ]
       ]
-    },
-    "S0026": {
-      "seed_id": "S0026",
-      "seed_pair": {
-        "target": "Me gusta sentir como si estuviera casi preparado para irme.",
-        "known": "I like feeling as if I'm nearly ready to go."
-      },
-      "legos": [
-        {
-          "type": "M",
-          "target": "Me gusta",
-          "known": "I like",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0026",
+      [
+        "Me gusta sentir como si estuviera casi preparado para irme.",
+        "I like feeling as if I'm nearly ready to go."
+      ],
+      [
+        [
+          "S0026L01",
+          "C",
+          "Me gusta",
+          "I like",
+          [
             [
+              "S0026F0101",
+              "F",
               "Me",
               "me"
             ],
             [
+              "S0026F0102",
+              "F",
               "gusta",
               "pleases/likes"
             ]
-          ],
-          "id": "S0026L01"
-        },
-        {
-          "type": "A",
-          "target": "sentir",
-          "known": "feeling",
-          "new": true,
-          "id": "S0026L02"
-        },
-        {
-          "type": "M",
-          "target": "como si",
-          "known": "as if",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0026L02",
+          "B",
+          "sentir",
+          "feeling"
+        ],
+        [
+          "S0026L03",
+          "C",
+          "como si",
+          "as if",
+          [
             [
+              "S0026F0301",
+              "F",
               "como",
               "as/like"
             ],
             [
+              "S0026F0302",
+              "F",
               "si",
               "if"
             ]
-          ],
-          "id": "S0026L03"
-        },
-        {
-          "type": "A",
-          "target": "estuviera",
-          "known": "I'm",
-          "new": true,
-          "id": "S0026L04"
-        },
-        {
-          "type": "A",
-          "target": "casi",
-          "known": "nearly",
-          "new": true,
-          "id": "S0026L05"
-        },
-        {
-          "type": "A",
-          "target": "preparado",
-          "known": "ready",
-          "new": true,
-          "id": "S0026L06"
-        },
-        {
-          "type": "M",
-          "target": "para irme",
-          "known": "to go",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0026L04",
+          "B",
+          "estuviera",
+          "I'm"
+        ],
+        [
+          "S0026L05",
+          "B",
+          "casi",
+          "nearly"
+        ],
+        [
+          "S0026L06",
+          "B",
+          "preparado",
+          "ready"
+        ],
+        [
+          "S0026L07",
+          "C",
+          "para irme",
+          "to go",
+          [
             [
+              "S0026F0701",
+              "F",
               "para",
               "to/for"
             ],
             [
+              "S0026F0702",
+              "F",
               "irme",
               "go"
             ]
-          ],
-          "id": "S0026L07"
-        },
-        {
-          "id": "S0025L06",
-          "type": "A",
-          "target": "irme",
-          "known": "go",
-          "ref": "S0025",
-          "new": false
-        }
+          ]
+        ],
+        [
+          "S0025L06",
+          "B",
+          "irme",
+          "go"
+        ]
       ]
-    },
-    "S0027": {
-      "seed_id": "S0027",
-      "seed_pair": {
-        "target": "No me gusta tomar demasiado tiempo para responder.",
-        "known": "I don't like taking too much time to answer."
-      },
-      "legos": [
-        {
-          "type": "M",
-          "target": "No me gusta",
-          "known": "I don't like",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0027",
+      [
+        "No me gusta tomar demasiado tiempo para responder.",
+        "I don't like taking too much time to answer."
+      ],
+      [
+        [
+          "S0027L01",
+          "C",
+          "No me gusta",
+          "I don't like",
+          [
             [
+              "S0027F0101",
+              "F",
               "No",
               "not/don't"
             ],
             [
+              "S0027F0102",
+              "F",
               "me",
               "me"
             ],
             [
+              "S0027F0103",
+              "F",
               "gusta",
               "pleases/likes"
             ]
-          ],
-          "id": "S0027L01"
-        },
-        {
-          "type": "A",
-          "target": "tomar",
-          "known": "taking",
-          "new": true,
-          "id": "S0027L02"
-        },
-        {
-          "type": "A",
-          "target": "demasiado",
-          "known": "too much",
-          "new": true,
-          "id": "S0027L03"
-        },
-        {
-          "type": "A",
-          "target": "tiempo",
-          "known": "time",
-          "new": true,
-          "id": "S0027L04"
-        },
-        {
-          "type": "A",
-          "target": "responder",
-          "known": "to answer",
-          "new": true,
-          "id": "S0027L05"
-        },
-        {
-          "type": "M",
-          "target": "para responder",
-          "known": "to answer",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0027L02",
+          "B",
+          "tomar",
+          "taking"
+        ],
+        [
+          "S0027L03",
+          "B",
+          "demasiado",
+          "too much"
+        ],
+        [
+          "S0027L04",
+          "B",
+          "tiempo",
+          "time"
+        ],
+        [
+          "S0027L05",
+          "B",
+          "responder",
+          "to answer"
+        ],
+        [
+          "S0027L06",
+          "C",
+          "para responder",
+          "to answer",
+          [
             [
+              "S0027F0601",
+              "F",
               "para",
               "to/for"
             ],
             [
+              "S0027F0602",
+              "F",
               "responder",
               "answer"
             ]
-          ],
-          "id": "S0027L06"
-        }
+          ]
+        ]
       ]
-    },
-    "S0028": {
-      "seed_id": "S0028",
-      "seed_pair": {
-        "target": "Es útil empezar a hablar tan pronto como puedas.",
-        "known": "It's useful to start talking as soon as you can."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "útil",
-          "known": "useful",
-          "new": true,
-          "id": "S0028L01"
-        },
-        {
-          "type": "M",
-          "target": "Es útil",
-          "known": "It's useful",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0028",
+      [
+        "Es útil empezar a hablar tan pronto como puedas.",
+        "It's useful to start talking as soon as you can."
+      ],
+      [
+        [
+          "S0028L01",
+          "B",
+          "útil",
+          "useful"
+        ],
+        [
+          "S0028L02",
+          "C",
+          "Es útil",
+          "It's useful",
+          [
             [
+              "S0028F0201",
+              "F",
               "Es",
               "It is"
             ],
             [
+              "S0028F0202",
+              "F",
               "útil",
               "useful"
             ]
-          ],
-          "id": "S0028L02"
-        },
-        {
-          "id": "S0023L03",
-          "type": "M",
-          "target": "empezar a hablar",
-          "known": "start talking",
-          "ref": "S0023",
-          "new": false
-        },
-        {
-          "id": "S0023L06",
-          "type": "A",
-          "target": "pronto",
-          "known": "soon",
-          "ref": "S0023",
-          "new": false
-        },
-        {
-          "type": "M",
-          "target": "tan pronto como",
-          "known": "as soon as",
-          "new": true,
-          "components": [
+          ]
+        ],
+        [
+          "S0023L03",
+          "C",
+          "empezar a hablar",
+          "start talking"
+        ],
+        [
+          "S0023L06",
+          "B",
+          "pronto",
+          "soon"
+        ],
+        [
+          "S0028L03",
+          "C",
+          "tan pronto como",
+          "as soon as",
+          [
             [
+              "S0028F0301",
+              "F",
               "tan",
               "as"
             ],
             [
+              "S0028F0302",
+              "F",
               "pronto",
               "soon"
             ],
             [
+              "S0028F0303",
+              "F",
               "como",
               "as"
             ]
-          ],
-          "id": "S0028L03"
-        },
-        {
-          "type": "A",
-          "target": "puedas",
-          "known": "you can",
-          "new": true,
-          "id": "S0028L04"
-        }
+          ]
+        ],
+        [
+          "S0028L04",
+          "B",
+          "puedas",
+          "you can"
+        ]
       ]
-    },
-    "S0029": {
-      "seed_id": "S0029",
-      "seed_pair": {
-        "target": "Espero con ansias hablar mejor tan pronto como pueda.",
-        "known": "I'm looking forward to speaking better as soon as I can."
-      },
-      "legos": [
-        {
-          "type": "M",
-          "target": "Espero con ansias",
-          "known": "I'm looking forward to",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0029",
+      [
+        "Espero con ansias hablar mejor tan pronto como pueda.",
+        "I'm looking forward to speaking better as soon as I can."
+      ],
+      [
+        [
+          "S0029L01",
+          "C",
+          "Espero con ansias",
+          "I'm looking forward to",
+          [
             [
+              "S0029F0101",
+              "F",
               "Espero",
               "I hope/wait"
             ],
             [
+              "S0029F0102",
+              "F",
               "con",
               "with"
             ],
             [
+              "S0029F0103",
+              "F",
               "ansias",
               "eagerness/anxiety"
             ]
-          ],
-          "id": "S0029L01"
-        },
-        {
-          "id": "S0023L04",
-          "type": "A",
-          "target": "hablar",
-          "known": "to talk",
-          "ref": "S0023",
-          "new": false
-        },
-        {
-          "type": "A",
-          "target": "mejor",
-          "known": "better",
-          "new": true,
-          "id": "S0029L02"
-        },
-        {
-          "id": "S0028L03",
-          "type": "M",
-          "target": "tan pronto como",
-          "known": "as soon as",
-          "ref": "S0028",
-          "new": false
-        },
-        {
-          "type": "A",
-          "target": "pueda",
-          "known": "I can",
-          "new": true,
-          "id": "S0029L03"
-        }
+          ]
+        ],
+        [
+          "S0023L04",
+          "B",
+          "hablar",
+          "to talk"
+        ],
+        [
+          "S0029L02",
+          "B",
+          "mejor",
+          "better"
+        ],
+        [
+          "S0028L03",
+          "C",
+          "tan pronto como",
+          "as soon as"
+        ],
+        [
+          "S0029L03",
+          "B",
+          "pueda",
+          "I can"
+        ]
       ]
-    },
-    "S0030": {
-      "seed_id": "S0030",
-      "seed_pair": {
-        "target": "Quería preguntarte algo ayer.",
-        "known": "I wanted to ask you something yesterday."
-      },
-      "legos": [
-        {
-          "type": "A",
-          "target": "Quería",
-          "known": "I wanted",
-          "new": true,
-          "id": "S0030L01"
-        },
-        {
-          "type": "A",
-          "target": "preguntar",
-          "known": "to ask",
-          "new": true,
-          "id": "S0030L02"
-        },
-        {
-          "type": "M",
-          "target": "preguntarte",
-          "known": "to ask you",
-          "new": true,
-          "components": [
+    ],
+    [
+      "S0030",
+      [
+        "Quería preguntarte algo ayer.",
+        "I wanted to ask you something yesterday."
+      ],
+      [
+        [
+          "S0030L01",
+          "B",
+          "Quería",
+          "I wanted"
+        ],
+        [
+          "S0030L02",
+          "B",
+          "preguntar",
+          "to ask"
+        ],
+        [
+          "S0030L03",
+          "C",
+          "preguntarte",
+          "to ask you",
+          [
             [
+              "S0030F0301",
+              "F",
               "preguntar",
               "ask"
             ],
             [
+              "S0030F0302",
+              "F",
               "te",
               "you"
             ]
-          ],
-          "id": "S0030L03"
-        },
-        {
-          "type": "A",
-          "target": "algo",
-          "known": "something",
-          "new": true,
-          "id": "S0030L04"
-        },
-        {
-          "type": "A",
-          "target": "ayer",
-          "known": "yesterday",
-          "new": true,
-          "id": "S0030L05"
-        }
+          ]
+        ],
+        [
+          "S0030L04",
+          "B",
+          "algo",
+          "something"
+        ],
+        [
+          "S0030L05",
+          "B",
+          "ayer",
+          "yesterday"
+        ]
       ]
-    }
-  },
-  "_metadata": {
-    "extraction_agents": 2,
-    "tiling_validated": true,
-    "phase": "Phase 3 - LEGO Extraction",
-    "intelligence_version": "5.0 Ultimate"
-  }
+    ]
+  ]
 }
