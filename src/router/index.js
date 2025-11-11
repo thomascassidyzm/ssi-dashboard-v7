@@ -8,6 +8,7 @@ import CourseGeneration from '../views/CourseGeneration.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
 import CourseCompilation from '../views/CourseCompilation.vue'
+import AudioGeneration from '../views/AudioGeneration.vue'
 import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
@@ -49,6 +50,12 @@ const routes = [
     component: CourseCompilation,
     props: true,
     meta: { title: 'Course Compilation' }
+  },
+  {
+    path: '/audio',
+    name: 'AudioGeneration',
+    component: AudioGeneration,
+    meta: { title: 'Audio Generation' }
   },
   {
     path: '/phase/:id',
