@@ -305,9 +305,9 @@
           <h3 class="text-lg font-medium text-slate-300 mb-4">Select Seed Range</h3>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <!-- Phase 3 Quick Test (10 seeds) -->
+            <!-- Quick Test (10 seeds) -->
             <button
-              @click="quickPhase3Test"
+              @click="quickTest"
               :class="[
                 'p-6 rounded-lg border-2 transition text-left',
                 courseSize === 'test'
@@ -326,9 +326,9 @@
                   </svg>
                 </div>
               </div>
-              <h4 class="text-lg font-semibold text-slate-100 mb-1">Phase 3 Test (10 seeds)</h4>
+              <h4 class="text-lg font-semibold text-slate-100 mb-1">Quick Test (10 seeds)</h4>
               <p class="text-sm text-slate-400 mb-2">S0111-S0120 (5 parallel agents)</p>
-              <p class="text-xs text-slate-500">Test latest prompt improvements ~5 min</p>
+              <p class="text-xs text-slate-500">Test with current phase selection ~5 min</p>
             </button>
 
             <!-- Medium Course (100 seeds) -->
@@ -732,15 +732,14 @@ const selectCourseSize = (size, start, end) => {
   endSeed.value = end
 }
 
-const quickPhase3Test = () => {
-  // Set Phase 3 test configuration
-  phaseSelection.value = 'phase3'
+const quickTest = () => {
+  // Set test configuration (uses current phase selection)
   segmentMode.value = 'single'
   courseSize.value = 'test'
   startSeed.value = 111
   endSeed.value = 120
 
-  // Auto-start generation
+  // Auto-start generation with current phase
   startGeneration()
 }
 
