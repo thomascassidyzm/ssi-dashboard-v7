@@ -53,7 +53,7 @@ export default {
 
   // Course generation
   course: {
-    async generate({ target, known, seeds, startSeed, endSeed, executionMode = 'web', force = false }) {
+    async generate({ target, known, seeds, startSeed, endSeed, executionMode = 'web', phaseSelection = 'all', segmentMode = 'single', force = false }) {
       const response = await api.post('/api/courses/generate', {
         target,
         known,
@@ -61,6 +61,8 @@ export default {
         startSeed,
         endSeed,
         executionMode,
+        phaseSelection,
+        segmentMode,
         force
       })
       return response.data
