@@ -7,59 +7,67 @@
     {
       "seed_id": "S0361",
       "seed_pair": ["He was quiet.", "Él estaba callado."],
+      "extraction_notes": "FORWARD SWEEP: 'He was' → 'él estaba' must stay together (pragmatic FD: pronoun+verb, and 'estaba' needs subject for agreement). 'quiet' → 'callado' is standalone adjective. TILING: él estaba + callado ✓",
       "legos": [
         {
           "id": "S0361L01",
-          "type": "A",
-          "target": "él",
-          "known": "he",
-          "new": true
+          "type": "M",
+          "target": "él estaba",
+          "known": "he was",
+          "new": true,
+          "components": [
+            ["él", "he"],
+            ["estaba", "was"]
+          ]
         },
         {
           "id": "S0361L02",
-          "type": "M",
-          "target": "estaba callado",
-          "known": "was quiet",
-          "new": true,
-          "components": [
-            ["estaba", "was"],
-            ["callado", "quiet"]
-          ]
+          "type": "A",
+          "target": "callado",
+          "known": "quiet",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0362",
       "seed_pair": ["No he was rather quiet after you left.", "No él estaba bastante callado después de que te fuiste."],
+      "extraction_notes": "FORWARD SWEEP: 'No' standalone. 'he was' → 'él estaba' (reuse from S0361). 'rather' → 'bastante' adverb. 'quiet' → 'callado' reuse. 'después de que' is conjunction form (different from 'después de' + infinitive) - teaches pattern. 'te fuiste' = reflexive verb construction (irse). TILING: No + él estaba + bastante + callado + después de que + te fuiste ✓",
       "legos": [
         {
           "id": "S0362L01",
           "type": "A",
-          "target": "no",
-          "known": "no",
+          "target": "No",
+          "known": "No",
           "new": true
         },
         {
           "id": "S0362L02",
-          "type": "A",
-          "target": "él",
-          "known": "he",
-          "new": true
-        },
-        {
-          "id": "S0362L03",
           "type": "M",
-          "target": "estaba bastante callado",
-          "known": "was rather quiet",
+          "target": "él estaba",
+          "known": "he was",
           "new": true,
           "components": [
-            ["estaba", "was"],
-            ["bastante", "rather"],
-            ["callado", "quiet"]
+            ["él", "he"],
+            ["estaba", "was"]
           ]
         },
         {
+          "id": "S0362L03",
+          "type": "A",
+          "target": "bastante",
+          "known": "rather",
+          "new": true
+        },
+        {
           "id": "S0362L04",
+          "type": "A",
+          "target": "callado",
+          "known": "quiet",
+          "new": true
+        },
+        {
+          "id": "S0362L05",
           "type": "M",
           "target": "después de que",
           "known": "after",
@@ -71,14 +79,14 @@
           ]
         },
         {
-          "id": "S0362L05",
+          "id": "S0362L06",
           "type": "M",
           "target": "te fuiste",
           "known": "you left",
           "new": true,
           "components": [
-            ["te", "you"],
-            ["fuiste", "left"]
+            ["te", "you (reflexive)"],
+            ["fuiste", "left/went"]
           ]
         }
       ]
@@ -86,20 +94,27 @@
     {
       "seed_id": "S0363",
       "seed_pair": ["Yes he felt like talking a lot.", "Sí él tenía ganas de hablar mucho."],
+      "extraction_notes": "FORWARD SWEEP: 'Sí' standalone. 'tener ganas de' is idiomatic (literally 'to have desire of'). Kept with subject 'él' as conjugated phrase - 'tenía' without subject is ambiguous. 'hablar' shows gerund→infinitive pattern. 'mucho' standalone adverb. TILING: Sí + él tenía ganas de + hablar + mucho ✓",
       "legos": [
         {
           "id": "S0363L01",
           "type": "A",
-          "target": "sí",
-          "known": "yes",
+          "target": "Sí",
+          "known": "Yes",
           "new": true
         },
         {
           "id": "S0363L02",
-          "type": "A",
-          "target": "él",
-          "known": "he",
-          "new": true
+          "type": "M",
+          "target": "él tenía ganas de",
+          "known": "he felt like",
+          "new": true,
+          "components": [
+            ["él", "he"],
+            ["tenía", "had/felt"],
+            ["ganas", "desire/feel-like"],
+            ["de", "of/to"]
+          ]
         },
         {
           "id": "S0363L03",
@@ -110,48 +125,31 @@
         },
         {
           "id": "S0363L04",
-          "type": "M",
-          "target": "tenía ganas de",
-          "known": "felt like",
-          "new": true,
-          "components": [
-            ["tenía", "felt/had"],
-            ["ganas", "desire"],
-            ["de", "of/to"]
-          ]
-        },
-        {
-          "id": "S0363L05",
-          "type": "M",
+          "type": "A",
           "target": "mucho",
           "known": "a lot",
-          "new": true,
-          "components": [
-            ["mucho", "a lot"]
-          ]
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0364",
       "seed_pair": ["I heard that he didn't like that place.", "Escuché que a él no le gustó ese lugar."],
+      "extraction_notes": "FORWARD SWEEP: 'Escuché que' keeps conjunction (que alone fails FD - ambiguous). 'a él no le gustó' teaches gustar construction with emphatic 'a él' + required 'le'. 'ese lugar' keeps demonstrative+noun (gender agreement). TILING: Escuché que + a él no le gustó + ese lugar ✓",
       "legos": [
         {
           "id": "S0364L01",
-          "type": "A",
-          "target": "escuché",
-          "known": "I heard",
-          "new": true
+          "type": "M",
+          "target": "Escuché que",
+          "known": "I heard that",
+          "new": true,
+          "components": [
+            ["Escuché", "I heard"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0364L02",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
-        },
-        {
-          "id": "S0364L03",
           "type": "M",
           "target": "a él no le gustó",
           "known": "he didn't like",
@@ -159,13 +157,13 @@
           "components": [
             ["a", "to"],
             ["él", "he/him"],
-            ["no", "not/didn't"],
-            ["le", "him"],
-            ["gustó", "pleased/liked"]
+            ["no", "not"],
+            ["le", "to-him"],
+            ["gustó", "was-pleasing/liked"]
           ]
         },
         {
-          "id": "S0364L04",
+          "id": "S0364L03",
           "type": "M",
           "target": "ese lugar",
           "known": "that place",
@@ -180,44 +178,39 @@
     {
       "seed_id": "S0365",
       "seed_pair": ["I didn't hear what she said to him.", "No escuché lo que ella le dijo a él."],
+      "extraction_notes": "FORWARD SWEEP: 'No escuché' negative past construction. 'lo que' = 'what' in relative clauses. 'ella le dijo a él' teaches full indirect object with emphatic prepositional phrase (le + a él redundancy for clarity). TILING: No escuché + lo que + ella le dijo a él ✓",
       "legos": [
         {
           "id": "S0365L01",
-          "type": "A",
-          "target": "ella",
-          "known": "she",
-          "new": true
-        },
-        {
-          "id": "S0365L02",
           "type": "M",
-          "target": "no escuché",
+          "target": "No escuché",
           "known": "I didn't hear",
           "new": true,
           "components": [
-            ["no", "didn't"],
-            ["escuché", "I hear"]
+            ["No", "not/didn't"],
+            ["escuché", "I heard"]
           ]
         },
         {
-          "id": "S0365L03",
+          "id": "S0365L02",
           "type": "M",
           "target": "lo que",
           "known": "what",
           "new": true,
           "components": [
-            ["lo", "it"],
-            ["que", "what/that"]
+            ["lo", "it/the"],
+            ["que", "that/which"]
           ]
         },
         {
-          "id": "S0365L04",
+          "id": "S0365L03",
           "type": "M",
-          "target": "le dijo a él",
-          "known": "said to him",
+          "target": "ella le dijo a él",
+          "known": "she said to him",
           "new": true,
           "components": [
-            ["le", "to him"],
+            ["ella", "she"],
+            ["le", "to-him"],
             ["dijo", "said"],
             ["a", "to"],
             ["él", "him"]
@@ -228,60 +221,56 @@
     {
       "seed_id": "S0366",
       "seed_pair": ["Did you hear what he wanted to grow?", "¿Escuchaste lo que él quería cultivar?"],
+      "extraction_notes": "FORWARD SWEEP: 'Escuchaste' = 'Did you hear' (Spanish uses inflection, English uses auxiliary) - single word A-type. 'lo que' reuse. 'él quería' pronoun+verb (quería alone is ambiguous - I/he/she wanted). 'cultivar' standalone infinitive. TILING: Escuchaste + lo que + él quería + cultivar ✓",
       "legos": [
         {
           "id": "S0366L01",
           "type": "A",
-          "target": "él",
-          "known": "he",
+          "target": "Escuchaste",
+          "known": "Did you hear",
           "new": true
         },
         {
           "id": "S0366L02",
-          "type": "A",
-          "target": "quería",
-          "known": "wanted",
-          "new": true
-        },
-        {
-          "id": "S0366L03",
-          "type": "A",
-          "target": "cultivar",
-          "known": "to grow",
-          "new": true
-        },
-        {
-          "id": "S0366L04",
-          "type": "M",
-          "target": "escuchaste",
-          "known": "did you hear",
-          "new": true,
-          "components": [
-            ["escuchaste", "you heard"]
-          ]
-        },
-        {
-          "id": "S0366L05",
           "type": "M",
           "target": "lo que",
           "known": "what",
           "new": true,
           "components": [
-            ["lo", "it"],
-            ["que", "what/that"]
+            ["lo", "it/the"],
+            ["que", "that/which"]
           ]
+        },
+        {
+          "id": "S0366L03",
+          "type": "M",
+          "target": "él quería",
+          "known": "he wanted",
+          "new": true,
+          "components": [
+            ["él", "he"],
+            ["quería", "wanted"]
+          ]
+        },
+        {
+          "id": "S0366L04",
+          "type": "A",
+          "target": "cultivar",
+          "known": "to grow",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0367",
       "seed_pair": ["No nobody told me.", "No nadie me dijo."],
+      "extraction_notes": "FORWARD SWEEP: 'No' standalone (double negative standard in Spanish). 'nadie' standalone (can generate: nadie sabe, nadie vino). 'me dijo' keeps pronoun with verb. TILING: No + nadie + me dijo ✓",
       "legos": [
         {
           "id": "S0367L01",
           "type": "A",
-          "target": "no",
-          "known": "no",
+          "target": "No",
+          "known": "No",
           "new": true
         },
         {
@@ -307,51 +296,46 @@
     {
       "seed_id": "S0368",
       "seed_pair": ["Yes I heard that he wanted to grow tomatoes.", "Sí escuché que él quería cultivar tomates."],
+      "extraction_notes": "FORWARD SWEEP: All LEGOs reused from previous seeds except 'tomates'. Note: 'que' must pair with 'escuché' to avoid FD violation. TILING: Sí + escuché que + él quería + cultivar + tomates ✓",
       "legos": [
         {
           "id": "S0368L01",
           "type": "A",
-          "target": "sí",
-          "known": "yes",
+          "target": "Sí",
+          "known": "Yes",
           "new": true
         },
         {
           "id": "S0368L02",
-          "type": "A",
-          "target": "escuché",
-          "known": "I heard",
-          "new": true
+          "type": "M",
+          "target": "escuché que",
+          "known": "I heard that",
+          "new": true,
+          "components": [
+            ["escuché", "I heard"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0368L03",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
+          "type": "M",
+          "target": "él quería",
+          "known": "he wanted",
+          "new": true,
+          "components": [
+            ["él", "he"],
+            ["quería", "wanted"]
+          ]
         },
         {
           "id": "S0368L04",
-          "type": "A",
-          "target": "él",
-          "known": "he",
-          "new": true
-        },
-        {
-          "id": "S0368L05",
-          "type": "A",
-          "target": "quería",
-          "known": "wanted",
-          "new": true
-        },
-        {
-          "id": "S0368L06",
           "type": "A",
           "target": "cultivar",
           "known": "to grow",
           "new": true
         },
         {
-          "id": "S0368L07",
+          "id": "S0368L05",
           "type": "A",
           "target": "tomates",
           "known": "tomatoes",
@@ -362,34 +346,38 @@
     {
       "seed_id": "S0369",
       "seed_pair": ["I saw several horses on the road.", "Vi varios caballos en la carretera."],
+      "extraction_notes": "FORWARD SWEEP: 'Vi' standalone conjugated verb. 'varios' adjective (can generate: varios días, varios años). 'caballos' noun. 'en' preposition. 'la carretera' keeps article+noun (article alone fails pragmatic FD). TILING: Vi + varios + caballos + en + la carretera ✓",
       "legos": [
         {
           "id": "S0369L01",
           "type": "A",
-          "target": "vi",
+          "target": "Vi",
           "known": "I saw",
           "new": true
         },
         {
           "id": "S0369L02",
           "type": "A",
+          "target": "varios",
+          "known": "several",
+          "new": true
+        },
+        {
+          "id": "S0369L03",
+          "type": "A",
+          "target": "caballos",
+          "known": "horses",
+          "new": true
+        },
+        {
+          "id": "S0369L04",
+          "type": "A",
           "target": "en",
           "known": "on",
           "new": true
         },
         {
-          "id": "S0369L03",
-          "type": "M",
-          "target": "varios caballos",
-          "known": "several horses",
-          "new": true,
-          "components": [
-            ["varios", "several"],
-            ["caballos", "horses"]
-          ]
-        },
-        {
-          "id": "S0369L04",
+          "id": "S0369L05",
           "type": "M",
           "target": "la carretera",
           "known": "the road",
@@ -404,48 +392,40 @@
     {
       "seed_id": "S0370",
       "seed_pair": ["I didn't see anyone that I knew.", "No vi a nadie que yo conocía."],
+      "extraction_notes": "FORWARD SWEEP: 'No vi' negative construction. 'a nadie' personal 'a' required before 'nadie' (que alone would fail FD, yo alone fails pragmatic FD). 'que yo conocía' relative clause structure kept together. TILING: No vi + a nadie + que yo conocía ✓",
       "legos": [
         {
           "id": "S0370L01",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
-        },
-        {
-          "id": "S0370L02",
-          "type": "A",
-          "target": "yo",
-          "known": "I",
-          "new": true
-        },
-        {
-          "id": "S0370L03",
-          "type": "A",
-          "target": "conocía",
-          "known": "knew",
-          "new": true
-        },
-        {
-          "id": "S0370L04",
           "type": "M",
-          "target": "no vi",
+          "target": "No vi",
           "known": "I didn't see",
           "new": true,
           "components": [
-            ["no", "didn't"],
-            ["vi", "I see/saw"]
+            ["No", "not/didn't"],
+            ["vi", "I saw"]
           ]
         },
         {
-          "id": "S0370L05",
+          "id": "S0370L02",
           "type": "M",
           "target": "a nadie",
           "known": "anyone",
           "new": true,
           "components": [
-            ["a", "—"],
-            ["nadie", "anyone"]
+            ["a", "to/at (personal-a)"],
+            ["nadie", "no one/anyone"]
+          ]
+        },
+        {
+          "id": "S0370L03",
+          "type": "M",
+          "target": "que yo conocía",
+          "known": "that I knew",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["yo", "I"],
+            ["conocía", "knew"]
           ]
         }
       ]
