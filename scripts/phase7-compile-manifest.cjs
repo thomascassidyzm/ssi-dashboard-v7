@@ -21,6 +21,7 @@ const { v4: uuidv4, v5: uuidv5 } = require('uuid');
 const crypto = require('crypto');
 const Ajv = require('ajv');
 const manifestValidator = require('../services/manifest-validator.cjs');
+const welcomeService = require('../services/welcome-service.cjs');
 
 const courseCode = process.argv[2];
 
@@ -42,8 +43,7 @@ const ROLE_SEGMENTS = {
   'target1': { seg2: '6044', seg3: 'AC07', seg4: '8F4E' },
   'target2': { seg2: '6044', seg3: 'E115', seg4: '8F4E' },
   'source':  { seg2: '6044', seg3: '36CD', seg4: '31D4' },
-  'presentation': { seg2: '9CFE', seg3: '2486', seg4: '8F4E' },  // Presentation voice
-  'presentation_encouragement': { seg2: '9CFE', seg3: '2486', seg4: '8F4E' }  // Encouragement messages (same as presentation)
+  'presentation': { seg2: '9CFE', seg3: '2486', seg4: '8F4E' }  // Presentation voice (including encouragements)
 };
 
 // Generate deterministic UUID for audio sample using SSi legacy format
@@ -132,6 +132,62 @@ async function loadEncouragements(knownLanguageCode) {
   }
 }
 
+/**
+ * Load welcome for the course
+ * Welcomes are course-specific (one per language pair)
+ *
+ * @param {string} courseCode - Course code (e.g., 'ita_for_eng_10seeds')
+ * @returns {Object|null} - Welcome object or null if not found
+ */
+async function loadWelcome(courseCode) {
+  try {
+    const welcome = await welcomeService.getWelcomeForCourse(courseCode);
+
+    if (!welcome || !welcome.text) {
+      console.error(`\n❌ MISSING WELCOME FOR ${courseCode.toUpperCase()}`);
+      console.error(`\n📖 TO CREATE WELCOME:`);
+      console.error(`   1. Run the welcome generation script:`);
+      console.error(`      node scripts/generate-welcome.cjs ${courseCode}`);
+      console.error(`\n   2. The script will:`);
+      console.error(`      - Use Claude AI to generate appropriate welcome text`);
+      console.error(`      - Save to: vfs/canonical/welcomes.json`);
+      console.error(`      - Generate UUID for audio sample`);
+      console.error(`\n   3. Alternatively, manually edit vfs/canonical/welcomes.json:`);
+      console.error(`      {`);
+      console.error(`        "welcomes": {`);
+      console.error(`          "${courseCode}": {`);
+      console.error(`            "text": "Your welcome message in SOURCE language...",`);
+      console.error(`            "id": "GENERATED-UUID",`);
+      console.error(`            "generated_date": "2024-10-29T...",`);
+      console.error(`            "voice": null,`);
+      console.error(`            "duration": 0`);
+      console.error(`          }`);
+      console.error(`        }`);
+      console.error(`      }`);
+      console.error(`\n💡 TIP: Welcomes are spoken in the SOURCE language (known language).`);
+      console.error(`\nPhase 7 cannot proceed without a welcome.\n`);
+      throw new Error(`Missing welcome for course: ${courseCode}`);
+    }
+
+    console.log(`✓ Loaded welcome for ${courseCode}`);
+    if (welcome.id) {
+      console.log(`  UUID: ${welcome.id}`);
+      console.log(`  Duration: ${welcome.duration || 0}s`);
+    } else {
+      console.log(`  ⚠️  Audio not yet generated (will be created in Phase 8)`);
+    }
+
+    return welcome;
+  } catch (error) {
+    if (error.message.includes('Missing welcome')) {
+      throw error;
+    }
+
+    console.error(`\n❌ Failed to load welcome: ${error.message}\n`);
+    throw error;
+  }
+}
+
 async function compileManifest() {
   console.log(`\n📦 Phase 7: Compile Course Manifest`);
   console.log(`Course: ${courseCode}\n`);
@@ -169,6 +225,9 @@ async function compileManifest() {
 
   // Load canonical encouragements for source language
   const encouragements = await loadEncouragements(knownCode);
+
+  // Load course welcome
+  const welcome = await loadWelcome(courseCode);
 
   // Create LEGO lookup for quick access
   const legoLookup = {};
@@ -317,25 +376,9 @@ async function compileManifest() {
     seeds.push(seedObj);
   }
 
-  // Register encouragement samples
-  if (encouragements) {
-    const allEncouragements = [
-      ...(encouragements.pooledEncouragements || []),
-      ...(encouragements.orderedEncouragements || [])
-    ];
-
-    for (const enc of allEncouragements) {
-      registerSample(enc.text, knownCode, 'presentation_encouragement', 'natural');
-
-      // Mark this sample as an encouragement
-      if (samples[enc.text]) {
-        const encSample = samples[enc.text].find(s => s.role === 'presentation_encouragement');
-        if (encSample) {
-          encSample.is_encouragement = true;
-        }
-      }
-    }
-  }
+  // NOTE: Encouragements are NOT registered as samples here
+  // They will be added dynamically by the encouragement service after Phase A/B
+  // when checking if they already exist in the MAR
 
   // Create single slice with all seeds
   const slices = [{
@@ -353,6 +396,12 @@ async function compileManifest() {
     version: seedPairs.version,
     target: targetCode,
     known: knownCode,
+    introduction: {
+      id: welcome.id || "",  // UUID of audio sample (empty if not generated yet)
+      cadence: "natural",
+      role: "presentation",
+      duration: welcome.duration || 0
+    },
     slices: slices
   };
 

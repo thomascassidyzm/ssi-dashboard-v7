@@ -30,7 +30,29 @@
     },
     "introduction": {
       "type": "object",
-      "description": "Course introduction content"
+      "description": "Course welcome/introduction audio sample",
+      "required": ["id", "cadence", "role", "duration"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Welcome audio sample UUID (empty string if not generated yet)"
+        },
+        "cadence": {
+          "type": "string",
+          "enum": ["natural"],
+          "description": "Always natural for welcome"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["presentation"],
+          "description": "Always presentation voice (source language)"
+        },
+        "duration": {
+          "type": "number",
+          "description": "Audio duration in seconds",
+          "default": 0
+        }
+      }
     },
     "beltAssessor": {
       "type": "object",
@@ -154,8 +176,8 @@
                   },
                   "role": {
                     "type": "string",
-                    "enum": ["target1", "target2", "source", "presentation", "presentation_encouragement"],
-                    "description": "Voice role (target1=primary target voice, target2=alternate target voice, source=known language, presentation=teaching voice, presentation_encouragement=encouragement messages)"
+                    "enum": ["target1", "target2", "source", "presentation"],
+                    "description": "Voice role (target1=primary target voice, target2=alternate target voice, source=known language, presentation=teaching voice including encouragement messages)"
                   },
                   "duration": {
                     "type": "number",

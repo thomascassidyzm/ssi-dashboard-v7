@@ -227,7 +227,7 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments) {
 
       // Categorize by content type
       let contentType;
-      if (variant.role === 'presentation' || variant.role === 'presentation_encouragement') {
+      if (variant.role === 'presentation') {
         if (text.toLowerCase().includes('now,') || text.toLowerCase().includes('the ')) {
           contentType = 'presentations';
         } else {

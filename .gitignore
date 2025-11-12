@@ -28,3 +28,9 @@ logs/
 # Environment variables
 .env
 .env.local
+
+# Temporary files
+temp/
+
+# Audio files synced to S3 (use sync-welcomes-to-lfs.cjs)
+extracted-welcomes/

@@ -2,7 +2,23 @@
  * S3 Service
  *
  * Handles audio file uploads/downloads to AWS S3.
- * Uses flat structure: s3://bucket/mastered/{uuid}.mp3
+ *
+ * BUCKET USAGE:
+ *
+ * 1. COURSE AUDIO (lesson samples with UUIDs referenced in course manifests):
+ *    - STAGE_BUCKET (ssi-audio-stage) - Development/testing
+ *    - PROD_BUCKET (ssiborg-assets) - Live production
+ *    - Structure: s3://bucket/mastered/{uuid}.mp3
+ *    - These are generated per-course audio files
+ *
+ * 2. CANONICAL/STRUCTURAL FILES (shared resources, registries, templates):
+ *    - LFS_BUCKET (popty-bach-lfs) - Canonical welcomes, registries, etc.
+ *    - Structure: s3://popty-bach-lfs/canonical/welcomes/{language_code}.wav
+ *                 s3://popty-bach-lfs/canonical/welcomes.json
+ *    - These are shared across all courses and should not be mixed with course audio
+ *
+ * IMPORTANT: Only upload files with UUID filenames referenced in courses to
+ * STAGE_BUCKET/PROD_BUCKET. All structural/canonical files go to LFS_BUCKET.
  */
 
 const AWS = require('aws-sdk');
@@ -16,8 +32,9 @@ const s3 = new AWS.S3({
   region: process.env.AWS_REGION || 'eu-west-1'
 });
 
-const STAGE_BUCKET = 'ssi-audio-stage';
-const PROD_BUCKET = 'ssiborg-assets';
+const STAGE_BUCKET = 'ssi-audio-stage';       // Course audio - development
+const PROD_BUCKET = 'ssiborg-assets';         // Course audio - production
+const LFS_BUCKET = 'popty-bach-lfs';          // Canonical/structural files
 
 /**
  * Upload audio file to S3 (flat structure in mastered/)
@@ -216,6 +233,77 @@ async function copyAudio(uuid, sourceBucket, destBucket) {
   }).promise();
 }
 
+/**
+ * Upload a file to LFS bucket with custom path
+ * Used for canonical/structural files (not course audio)
+ *
+ * @param {string} key - S3 key (path within bucket)
+ * @param {Buffer|string} content - File content (Buffer or file path)
+ * @param {string} contentType - Content type (e.g., 'application/json', 'audio/wav')
+ * @returns {Promise<object>} S3 upload result with bucket, key, url
+ */
+async function uploadToLFS(key, content, contentType = 'application/octet-stream') {
+  let body;
+
+  if (typeof content === 'string') {
+    // It's a file path
+    body = await fs.readFile(content);
+  } else {
+    // It's already a buffer or string
+    body = content;
+  }
+
+  await s3.putObject({
+    Bucket: LFS_BUCKET,
+    Key: key,
+    Body: body,
+    ContentType: contentType,
+    ACL: 'public-read'
+  }).promise();
+
+  return {
+    bucket: LFS_BUCKET,
+    key,
+    url: `https://${LFS_BUCKET}.s3.amazonaws.com/${key}`
+  };
+}
+
+/**
+ * Download a file from LFS bucket
+ *
+ * @param {string} key - S3 key (path within bucket)
+ * @returns {Promise<Buffer>} File content
+ */
+async function downloadFromLFS(key) {
+  const response = await s3.getObject({
+    Bucket: LFS_BUCKET,
+    Key: key
+  }).promise();
+
+  return response.Body;
+}
+
+/**
+ * Check if a file exists in LFS bucket
+ *
+ * @param {string} key - S3 key (path within bucket)
+ * @returns {Promise<boolean>} True if exists, false otherwise
+ */
+async function existsInLFS(key) {
+  try {
+    await s3.headObject({
+      Bucket: LFS_BUCKET,
+      Key: key
+    }).promise();
+    return true;
+  } catch (err) {
+    if (err.code === 'NotFound') {
+      return false;
+    }
+    throw err;
+  }
+}
+
 module.exports = {
   uploadAudio,
   uploadAudioFile,
@@ -227,6 +315,10 @@ module.exports = {
   batchCheckAudio,
   deleteAudio,
   copyAudio,
+  uploadToLFS,
+  downloadFromLFS,
+  existsInLFS,
   STAGE_BUCKET,
-  PROD_BUCKET
+  PROD_BUCKET,
+  LFS_BUCKET
 };

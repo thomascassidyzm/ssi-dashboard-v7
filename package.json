@@ -11,9 +11,12 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.67.0",
+    "@aws-sdk/client-s3": "^3.929.0",
     "ajv": "^8.17.1",
     "axios": "^1.7.9",
     "dotenv": "^17.2.3",
+    "elevenlabs": "^1.59.0",
+    "microsoft-cognitiveservices-speech-sdk": "^1.46.0",
     "uuid": "^13.0.0",
     "vue": "^3.5.22",
     "vue-router": "^4.5.1"

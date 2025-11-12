@@ -16,8 +16,7 @@ const ROLE_CADENCES = {
   target1: 'slow',
   target2: 'slow',
   source: 'natural',
-  presentation: 'natural',
-  presentation_encouragement: 'natural'
+  presentation: 'natural'  // Includes encouragements
 };
 
 /**

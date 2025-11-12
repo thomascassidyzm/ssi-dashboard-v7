@@ -302,6 +302,99 @@ async function addEncouragementToIndex(language, voiceId, uuid) {
   }
 }
 
+/**
+ * Load encouragement samples for a language
+ * Samples are stored by language (not by voice) and matched by exact text
+ *
+ * @param {string} language - ISO 639-3 language code
+ * @returns {Promise<object>} Encouragement samples object
+ */
+async function loadEncouragementSamples(language) {
+  const samplesPath = path.join(MAR_BASE, 'encouragement_samples', `${language}_samples.json`);
+
+  if (await fs.pathExists(samplesPath)) {
+    return await fs.readJson(samplesPath);
+  }
+
+  // No samples yet for this language - return empty structure
+  return {
+    language,
+    voice: null,
+    last_updated: null,
+    sample_count: 0,
+    samples: []  // Array of samples, each with {text, uuid, duration, voice, generated_at}
+  };
+}
+
+/**
+ * Save encouragement samples for a language
+ *
+ * @param {string} language - ISO 639-3 language code
+ * @param {object} samplesData - Encouragement samples object
+ */
+async function saveEncouragementSamples(language, samplesData) {
+  const samplesPath = path.join(MAR_BASE, 'encouragement_samples', `${language}_samples.json`);
+  await fs.ensureDir(path.dirname(samplesPath));
+
+  // Update metadata
+  samplesData.language = language;
+  samplesData.last_updated = new Date().toISOString();
+  samplesData.sample_count = samplesData.samples.length;
+
+  await fs.writeJson(samplesPath, samplesData, { spaces: 2 });
+}
+
+/**
+ * Find encouragement sample by exact text match
+ * Returns the most recent sample if multiple exist for same text
+ *
+ * @param {string} language - ISO 639-3 language code
+ * @param {string} text - Exact encouragement text
+ * @returns {Promise<object|null>} Sample data or null
+ */
+async function findEncouragementSampleByText(language, text) {
+  const samplesData = await loadEncouragementSamples(language);
+
+  // Find all samples with matching text
+  const matches = samplesData.samples.filter(s => s.text === text);
+
+  if (matches.length === 0) {
+    return null;
+  }
+
+  // Return most recent if multiple exist (text was edited)
+  return matches.sort((a, b) =>
+    new Date(b.generated_at) - new Date(a.generated_at)
+  )[0];
+}
+
+/**
+ * Add an encouragement sample (doesn't replace, allows multiple versions)
+ *
+ * @param {string} language - ISO 639-3 language code
+ * @param {string} voiceId - Voice ID used for generation
+ * @param {string} uuid - Sample UUID (for audio file)
+ * @param {object} sampleData - Sample metadata (text, duration, filename)
+ */
+async function addEncouragementSample(language, voiceId, uuid, sampleData) {
+  const samplesData = await loadEncouragementSamples(language);
+
+  // Set voice if this is the first sample for this language
+  if (!samplesData.voice) {
+    samplesData.voice = voiceId;
+  }
+
+  // Add sample with generation timestamp
+  samplesData.samples.push({
+    uuid,
+    voice: voiceId,
+    generated_at: new Date().toISOString(),
+    ...sampleData
+  });
+
+  await saveEncouragementSamples(language, samplesData);
+}
+
 module.exports = {
   loadVoiceRegistry,
   saveVoiceRegistry,
@@ -317,5 +410,9 @@ module.exports = {
   loadEncouragementIndex,
   getEncouragementIndex,
   updateEncouragementIndex,
-  addEncouragementToIndex
+  addEncouragementToIndex,
+  loadEncouragementSamples,
+  saveEncouragementSamples,
+  findEncouragementSampleByText,
+  addEncouragementSample
 };

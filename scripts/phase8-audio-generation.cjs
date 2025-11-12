@@ -19,6 +19,8 @@ const voiceDiscovery = require('../services/voice-discovery-service.cjs');
 const qcService = require('../services/quality-control-service.cjs');
 const errorHandler = require('../services/error-handler-service.cjs');
 const encouragementService = require('../services/encouragement-service.cjs');
+const welcomeService = require('../services/welcome-service.cjs');
+const preflightCheck = require('../services/preflight-check-service.cjs');
 
 // Configuration
 const VFS_BASE = path.join(__dirname, '../vfs');
@@ -341,7 +343,7 @@ async function generateAudioFile(sample, voiceDetails, outputPath) {
  * Phase roles mapping
  */
 const PHASE_A_ROLES = ['target1', 'target2', 'source'];
-const PHASE_B_ROLES = ['presentation', 'presentation_encouragement'];
+const PHASE_B_ROLES = ['presentation'];  // Includes encouragements
 
 /**
  * Split samples by generation phase
@@ -650,27 +652,12 @@ function incrementVersion(currentVersion) {
 }
 
 /**
- * Convert presentation_encouragement → presentation in manifest
- * (MAR keeps original role, manifest uses simplified role)
+ * Normalize manifest roles
+ * NOTE: No longer needed - encouragements are added directly with role='presentation'
+ * Kept as no-op for backward compatibility
  */
 function normalizeManifestRoles(manifest) {
-  console.log('Normalizing manifest roles...');
-
-  let converted = 0;
-
-  for (const [text, variants] of Object.entries(manifest.samples)) {
-    for (const variant of variants) {
-      if (variant.role === 'presentation_encouragement') {
-        variant.role = 'presentation';
-        converted++;
-      }
-    }
-  }
-
-  if (converted > 0) {
-    console.log(`Converted ${converted} presentation_encouragement → presentation`);
-  }
-
+  // No-op: Encouragements are now added directly with role='presentation'
   return manifest;
 }
 
@@ -1007,6 +994,147 @@ async function handleEncouragements(sourceLanguage, voiceAssignments, manifest, 
     encouragements: allEncouragements,
     durations: allDurations,
     generated: generatedResults.filter(r => r.success).length
+  };
+}
+
+/**
+ * Check and generate welcome for course
+ * Welcome is course-specific and played at the start
+ *
+ * @param {string} courseCode - Course code
+ * @param {string} sourceLanguage - Source language code
+ * @param {Object} voiceAssignments - Voice assignments
+ * @param {Object} manifest - Course manifest
+ * @param {Object} options - Generation options
+ * @returns {Promise<Object>} { uuid, duration, generated: boolean }
+ */
+async function handleWelcome(courseCode, sourceLanguage, voiceAssignments, manifest, options = {}) {
+  console.log(`\n${'='.repeat(60)}`);
+  console.log(`Welcome Check: ${courseCode}`);
+  console.log(`${'='.repeat(60)}\n`);
+
+  // Get welcome from registry
+  const welcome = await welcomeService.getWelcomeForCourse(courseCode);
+
+  if (!welcome || !welcome.text) {
+    console.log('⚠️  No welcome found in registry - skipping\n');
+    return {
+      uuid: null,
+      duration: 0,
+      generated: false
+    };
+  }
+
+  console.log(`Welcome text: "${welcome.text.substring(0, 60)}..."\n`);
+
+  // Get voice (use presentation voice for welcome)
+  const welcomeVoice = voiceAssignments.presentation || voiceAssignments.source;
+  console.log(`Welcome voice: ${welcomeVoice}\n`);
+
+  // Check if welcome audio already exists
+  const { exists, sample } = await welcomeService.checkExistingWelcome(courseCode, welcomeVoice);
+
+  if (exists) {
+    console.log(`✓ Welcome audio already exists`);
+    console.log(`  UUID: ${sample.uuid}`);
+    console.log(`  Duration: ${sample.duration}s\n`);
+
+    // Update manifest with existing welcome
+    manifest.introduction.id = sample.uuid;
+    manifest.introduction.duration = sample.duration;
+
+    // Update registry
+    await welcomeService.updateWelcomeRegistry(courseCode, {
+      id: sample.uuid,
+      voice: welcomeVoice,
+      duration: sample.duration
+    });
+
+    return {
+      uuid: sample.uuid,
+      duration: sample.duration,
+      generated: false
+    };
+  }
+
+  // Need to generate welcome audio
+  console.log(`Generating welcome audio...\n`);
+
+  const uuid = welcome.id || welcomeService.generateWelcomeUUID(courseCode, welcome.text);
+  const tempDir = path.join(AUDIO_TEMP_DIR, 'welcome');
+  const outputPath = path.join(tempDir, `${uuid}.mp3`);
+
+  const welcomeData = {
+    courseCode,
+    text: welcome.text,
+    uuid
+  };
+
+  // Generate
+  const genResult = await welcomeService.generateWelcome(
+    welcomeData,
+    welcomeVoice,
+    sourceLanguage,
+    outputPath
+  );
+
+  if (!genResult.success) {
+    console.error(`✗ Failed to generate welcome: ${genResult.error}\n`);
+    return {
+      uuid: null,
+      duration: 0,
+      generated: false
+    };
+  }
+
+  // Process
+  const processResult = await welcomeService.processWelcome(genResult);
+
+  if (!processResult.success) {
+    console.error(`✗ Failed to process welcome\n`);
+    return {
+      uuid: null,
+      duration: 0,
+      generated: false
+    };
+  }
+
+  // Upload and register
+  const uploadResult = await welcomeService.uploadAndRegisterWelcome(
+    processResult,
+    welcomeVoice,
+    sourceLanguage,
+    options.uploadBucket || s3Service.STAGE_BUCKET
+  );
+
+  if (!uploadResult.success) {
+    console.error(`✗ Failed to upload welcome\n`);
+    return {
+      uuid: null,
+      duration: 0,
+      generated: false
+    };
+  }
+
+  console.log(`✓ Welcome generated successfully`);
+  console.log(`  UUID: ${uuid}`);
+  console.log(`  Duration: ${uploadResult.duration}s\n`);
+
+  // Update manifest
+  manifest.introduction.id = uuid;
+  manifest.introduction.duration = uploadResult.duration;
+
+  // Update registry
+  await welcomeService.updateWelcomeRegistry(courseCode, {
+    id: uuid,
+    voice: welcomeVoice,
+    duration: uploadResult.duration
+  });
+
+  return {
+    uuid,
+    duration: uploadResult.duration,
+    generated: true
   };
 }
 
@@ -1352,6 +1480,20 @@ async function generateAudioForCourse(courseCode, options = {}) {
   console.log(`${'='.repeat(60)}\n`);
 
   try {
+    // Run pre-flight checks
+    const preflightResults = await preflightCheck.runPreflightChecks({ verbose: true });
+
+    if (!preflightResults.allPassed) {
+      console.error('\n❌ Pre-flight checks failed. Please fix the issues above before continuing.\n');
+      return {
+        success: false,
+        error: 'Pre-flight checks failed',
+        details: preflightResults
+      };
+    }
+
+    console.log('✅ All pre-flight checks passed. Proceeding with audio generation...\n');
+
     // 1. Load course manifest
     console.log('Loading course manifest...');
     const manifest = await loadCourseManifest(courseCode);
@@ -1456,16 +1598,49 @@ async function generateAudioForCourse(courseCode, options = {}) {
       }
     }
 
-    // 9. Extract durations from S3 for ALL samples (new + existing + encouragements)
+    // 8b. Handle welcome (after Phase A + B complete, before S3 check)
+    // Check if it exists, generate if needed, update manifest
+    let welcomeData = null;
+    if (phase === 'auto' || phase === 'presentations') {
+      const languages = getLanguagesFromCourseCode(courseCode);
+      welcomeData = await handleWelcome(
+        courseCode,
+        languages.source,
+        voiceAssignments,
+        manifest,
+        { skipUpload, uploadBucket }
+      );
+
+      if (welcomeData.generated) {
+        totalGenerated += 1;
+      }
+
+      if (welcomeData.uuid && welcomeData.duration) {
+        allDurations[welcomeData.uuid] = welcomeData.duration;
+      }
+    }
+
+    // 9. Extract durations from S3 for ALL samples (new + existing + encouragements + welcome)
     // This ensures consistency and verifies existing files
     const allSampleIds = collectAllSampleIds(manifest);
+
+    // Add welcome UUID if it exists
+    if (manifest.introduction && manifest.introduction.id) {
+      allSampleIds.push(manifest.introduction.id);
+    }
+
     const s3Durations = await extractDurationsFromS3(allSampleIds, uploadBucket);
     allDurations = { ...allDurations, ...s3Durations };
 
     // 10. Update manifest with S3-verified durations
     updateManifestDurations(manifest, allDurations);
 
-    // 10a. Normalize roles (convert presentation_encouragement → presentation)
+    // Also update introduction duration if present
+    if (manifest.introduction && manifest.introduction.id && allDurations[manifest.introduction.id]) {
+      manifest.introduction.duration = allDurations[manifest.introduction.id];
+    }
+
+    // 10a. Normalize roles (no-op: encouragements already added with role='presentation')
     normalizeManifestRoles(manifest);
 
     // 10b. Version management - SKIPPED (see note below)

@@ -107,11 +107,11 @@ function generateEncouragementUUID(text, language) {
 }
 
 /**
- * Check if encouragements exist in MAR for a language
- * Uses encouragement index for fast language-level checking
+ * Check if encouragements exist as generated samples for a language
+ * Checks language-based sample storage (matched by exact text)
  *
  * @param {string} language - ISO 639-3 language code
- * @param {string} voiceId - Voice ID to check
+ * @param {string} voiceId - Voice ID to check (unused, for compatibility)
  * @param {Array<string>} phrases - Encouragement phrases to check
  * @returns {Promise<Object>} { existing: [...], missing: [...] }
  */
@@ -119,12 +119,12 @@ async function checkExistingEncouragements(language, voiceId, phrases) {
   const existing = [];
   const missing = [];
 
-  // Check encouragement index first for fast language-level check
-  const encouragementIndex = await marService.getEncouragementIndex(language);
+  // Load encouragement samples for this language
+  const samplesData = await marService.loadEncouragementSamples(language);
 
-  if (!encouragementIndex) {
-    // No encouragements exist for this language yet
-    console.log(`No encouragement index found for ${language} - all need generation`);
+  if (samplesData.sample_count === 0) {
+    // No samples exist for this language yet
+    console.log(`No encouragement samples found for ${language} - all need generation`);
 
     for (const phrase of phrases) {
       const uuid = generateEncouragementUUID(phrase, language);
@@ -138,35 +138,22 @@ async function checkExistingEncouragements(language, voiceId, phrases) {
     return { existing, missing };
   }
 
-  // Index exists - check which encouragements are in the index
-  console.log(`Found encouragement index for ${language}: ${encouragementIndex.count} encouragements`);
-
-  // Create a set of existing UUIDs for fast lookup
-  const existingUUIDs = new Set(encouragementIndex.uuids);
+  // Samples exist - check which phrases have generated audio (match by text)
+  console.log(`Found ${samplesData.sample_count} encouragement samples for ${language}`);
 
   for (const phrase of phrases) {
     const uuid = generateEncouragementUUID(phrase, language);
 
-    if (existingUUIDs.has(uuid)) {
-      // Get sample details from voice samples
-      const marEntry = await marService.getSample(encouragementIndex.voice, uuid);
+    // Find sample by exact text match (not by UUID)
+    const sample = await marService.findEncouragementSampleByText(language, phrase);
 
-      if (marEntry) {
-        existing.push({
-          text: phrase,
-          uuid,
-          duration: marEntry.duration,
-          exists: true
-        });
-      } else {
-        // UUID in index but sample missing - treat as missing
-        console.warn(`UUID ${uuid} in index but not found in voice samples`);
-        missing.push({
-          text: phrase,
-          uuid,
-          exists: false
-        });
-      }
+    if (sample) {
+      existing.push({
+        text: phrase,
+        uuid: sample.uuid,  // Use the sample's UUID, not generated one
+        duration: sample.duration,
+        exists: true
+      });
     } else {
       missing.push({
         text: phrase,
@@ -266,6 +253,7 @@ async function processEncouragements(generationResults) {
   await fs.ensureDir(processedDir);
 
   const processConfigs = [];
+  const encouragementMap = new Map(); // Map output path to encouragement data
 
   for (const result of generationResults) {
     if (!result.success) continue;
@@ -281,6 +269,9 @@ async function processEncouragements(generationResults) {
         targetLUFS: -16.0
       }
     });
+
+    // Map output path to encouragement data for later retrieval
+    encouragementMap.set(processedPath, result.encouragement);
   }
 
   const processResults = await audioProcessor.processBatch(
@@ -290,6 +281,11 @@ async function processEncouragements(generationResults) {
       console.log(`Processed ${current}/${total} encouragements`);
     }
   );
+
+  // Attach encouragement data to process results
+  for (const result of processResults) {
+    result.encouragement = encouragementMap.get(result.output);
+  }
 
   return processResults;
 }
@@ -307,7 +303,6 @@ async function uploadAndRegisterEncouragements(processResults, voiceId, language
   console.log('\n=== Uploading Encouragements to S3 ===\n');
 
   const durations = {};
-  const uploadedUUIDs = [];
 
   for (const result of processResults) {
     if (!result.success) continue;
@@ -323,19 +318,12 @@ async function uploadAndRegisterEncouragements(processResults, voiceId, language
       const duration = await audioProcessor.getAudioDuration(result.output);
       durations[uuid] = duration;
 
-      // Update MAR
-      await marService.saveSample(voiceId, uuid, {
-        text: result.input, // Will need to track this
-        language,
-        role: 'presentation', // Encouragements use presentation role
-        cadence: 'natural',
+      // Save to language-based encouragement sample storage
+      await marService.addEncouragementSample(language, voiceId, uuid, {
+        text: result.encouragement.text,
         duration,
-        filename: `${uuid}.mp3`,
-        is_encouragement: true // Mark as encouragement for filtering
+        filename: `${uuid}.mp3`
       });
-
-      // Track successfully uploaded UUID
-      uploadedUUIDs.push(uuid);
 
       console.log(`  Duration: ${duration.toFixed(3)}s`);
     } catch (error) {
@@ -343,21 +331,7 @@ async function uploadAndRegisterEncouragements(processResults, voiceId, language
     }
   }
 
-  console.log(`\nUploaded and registered ${Object.keys(durations).length} encouragements\n`);
-
-  // Update encouragement index with all uploaded UUIDs
-  if (uploadedUUIDs.length > 0) {
-    console.log('Updating encouragement index...');
-
-    // Get existing index to merge with new UUIDs
-    const existingIndex = await marService.getEncouragementIndex(language);
-    const allUUIDs = existingIndex
-      ? [...new Set([...existingIndex.uuids, ...uploadedUUIDs])]
-      : uploadedUUIDs;
-
-    await marService.updateEncouragementIndex(language, voiceId, allUUIDs);
-    console.log(`✓ Updated encouragement index for ${language}: ${allUUIDs.length} total encouragements\n`);
-  }
+  console.log(`\nUploaded and saved ${Object.keys(durations).length} encouragements to ${language}_samples.json\n`);
 
   return durations;
 }

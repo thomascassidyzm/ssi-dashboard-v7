@@ -424,21 +424,12 @@ class SampleValidator {
   }
 
   validateEncouragements(slice) {
-    // Pooled encouragements
-    for (const enc of slice.pooledEncouragements || []) {
-      if (enc.text) {
-        // Encouragements should have presentation_encouragement role
-        // (Note: old system also accepted 'presentation' but we use presentation_encouragement)
-        this.addExpectedSample(enc.text, 'presentation_encouragement');
-      }
-    }
-
-    // Ordered encouragements
-    for (const enc of slice.orderedEncouragements || []) {
-      if (enc.text) {
-        this.addExpectedSample(enc.text, 'presentation_encouragement');
-      }
-    }
+    // NOTE: Encouragements are NOT validated for sample coverage here
+    // They are added dynamically by the encouragement service after Phase A/B
+    // when checking if they already exist in the MAR
+    //
+    // The encouragements remain in the manifest (pooledEncouragements/orderedEncouragements arrays)
+    // but do NOT have sample placeholders until the encouragement service processes them
   }
 
   validate() {
