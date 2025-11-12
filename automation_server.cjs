@@ -495,153 +495,59 @@ ${Array.from({length: agentCount}, (_, i) => {
 \`\`\`markdown
 # Phase 3 Sub-Agent: Extract S00XX-S00YY
 
-## 📚 PHASE INTELLIGENCE (REQUIRED READING)
+## 📚 STEP 1: READ PHASE INTELLIGENCE
 
-**YOU MUST READ THIS FILE FIRST**:
-- Primary: https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_3_lego_pairs.md
-- Fallback: Local file at \`public/docs/phase_intelligence/phase_3_lego_pairs.md\`
-
-**Phase 3 v6.3 - Pragmatic FD Edition**
-
-This file contains the complete Phase 3 v6.3 methodology:
-- Core Principle (Pragmatic FD)
-- The Three Rules (Start from Known, Extract Maximum Tiling Set, Verify BOTH Languages)
-- Forward/Backward Sweep Algorithm
-- FD Test (3 questions)
-- A-before-M Ordering
-- Complete examples with reasoning
-
-**The rules below are HIGHLIGHTS from that file** - you must read the full file for complete methodology.
+**Read this document NOW** (430 lines - takes 2 minutes):
+- https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_3_lego_pairs.md
+- Or local: \`public/docs/phase_intelligence/phase_3_lego_pairs.md\`
 
 ---
 
-## 🚨 CRITICAL HIGHLIGHTS (From Phase Intelligence)
+## ✅ STEP 2: COMPREHENSION CHECKLIST
 
-### 1. TILING IN BOTH LANGUAGES (S0010 Lesson)
+**BEFORE you extract any seeds, confirm you understand these key principles from the intelligence doc:**
 
-**The S0010 lesson that taught us everything:**
+- [ ] **Pragmatic FD**: I will ask "Can this chunk generate meaningful practice on its own?" for EACH LEGO
+- [ ] **Reject standalone**: pronouns (él, she), articles (una, the), particles (de, of) - these must be paired with context
+- [ ] **Accept paired**: "él quiere" (pronoun+verb), "de vez en cuando" (idiomatic phrase)
+- [ ] **Tiling in BOTH languages**: LEGOs must reconstruct target AND known perfectly
+- [ ] **S0010 lesson**: "puedo recordar" = M-type (not separate A-types) because "I can remember" is a unit in English
+- [ ] **A-before-M ordering**: ALL Atomic LEGOs before ALL Molecular LEGOs (pedagogical requirement)
+- [ ] **Components for M-types**: Every M-type needs word-by-word component array
+- [ ] **Extended thinking required**: Use <thinking> tags for EVERY seed - no scripts, no loops
 
-❌ WRONG: "puedo" (I can) + "recordar" (to remember) as separate A-types
-   Problem: "I can" + "to remember" = "I can to remember" ← BROKEN ENGLISH!
-
-✅ RIGHT: "puedo recordar" as M-type ("I can remember" is unit in English)
-   - English: "I can remember" = modal + bare infinitive (grammatical unit)
-   - Spanish: "puedo recordar" = poder + infinitive (parallel structure)
-   - Components: [["puedo", "I can"], ["recordar", "to remember"]]
-
-**ALWAYS verify LEGOs reconstruct BOTH target AND known perfectly.**
-
-### 2. A-BEFORE-M ORDERING (Pedagogical Foundation)
-
-Within EACH seed: ALL Atomic LEGOs → ALL Molecular LEGOs
-
-Why: Learners need atomic pieces BEFORE molecular combinations.
-
-Example:
-\`\`\`json
-{
-  "legos": [
-    {"type": "A", ...},  // All A-types first
-    {"type": "A", ...},
-    {"type": "M", ...},  // Then all M-types
-    {"type": "M", ...}
-  ]
-}
-\`\`\`
-
-### 3. NO SCRIPTS (Quality Over Speed)
-
-❌ DO NOT write Python/JavaScript scripts to "automate" extraction
-❌ DO NOT write loops to process multiple seeds at once
-❌ DO NOT create validation scripts
-
-✅ USE Claude's reasoning and extended thinking for EVERY seed
-✅ MANUAL extraction with <thinking> tags
-
-**Why**: Script-based extraction sacrifices quality for speed. You are building world-class language learning materials that will be used by millions of learners.
-
-### 4. COMPONENTS FOR M-TYPES
-
-Every M-type needs components array showing literal word-by-word mapping:
-
-\`\`\`json
-{
-  "type": "M",
-  "target": "toda la oración",
-  "known": "the whole sentence",
-  "components": [
-    ["toda", "whole"],
-    ["la", "the"],
-    ["oración", "sentence"]
-  ]
-}
-\`\`\`
-
-### 5. MARK ALL new: true
-
-Phase 3 introduces LEGOs, so all are marked as new.
+**If you cannot check all boxes, read the intelligence doc again.**
 
 ---
 
-## 📖 YOUR SEED RANGE
+## 📖 STEP 3: YOUR ASSIGNMENT
 
-**Extract**: S00XX through S00YY (${seedsPerAgent} seeds)
+**Extract LEGOs from**: Seeds S00XX through S00YY (${seedsPerAgent} seeds)
 
-**Fetch seed_pairs.json from**:
-\`\`\`
-https://ssi-dashboard-v7.vercel.app/vfs/courses/${target}_for_${known}/seed_pairs.json
-\`\`\`
-
-(Note: Use the base course code ${target}_for_${known}, not the range-specific ${courseCode})
-
-Extract the translations array for your assigned seed range (filter to your seeds).
+**Get seed_pairs.json from**: https://ssi-dashboard-v7.vercel.app/vfs/courses/${target}_for_${known}/seed_pairs.json
 
 ---
 
-## 🔄 PROCESS (Per Seed)
+## 🔄 STEP 4: EXTRACT (Per Seed)
 
 For EACH of your ${seedsPerAgent} seeds:
 
-1. **Extended Thinking** (REQUIRED - use <thinking> tags for EVERY seed):
-   - Analyze KNOWN language semantics first
-   - Forward sweep: Find FD-compliant chunks
-   - Backward sweep: Catch target-language particles
-   - **Apply Pragmatic FD heuristic**: Ask yourself for EACH potential LEGO:
-     * "Can this chunk generate meaningful practice phrases on its own?"
-     * "Is this pedagogically useful as a standalone unit?"
-     * Examples to REJECT: standalone pronouns ("él", "she"), articles ("una", "the"), particles ("de", "of")
-     * Examples to ACCEPT WITH CONTEXT: "él quiere" (pronoun+verb), "de vez en cuando" (idiomatic phrase)
-   - **Verify TILING in BOTH languages**
-
-2. **Extract LEGOs**:
-   - A-before-M ordering
-   - Components for ALL M-types
-   - Mark all \`new: true\`
-
-3. **Self-Validate**:
-   - Does target reconstruct perfectly from LEGOs?
-   - Does known reconstruct perfectly from LEGOs?
-   - All M-types have components?
-   - A-before-M ordering correct?
-   - **Pragmatic FD check**: Did I extract any standalone pronouns, articles, or particles? (If yes, revisit and pair them with context)
-
-4. **Move to next seed**
+1. **Use <thinking> tags** - reason through extraction step-by-step
+2. **Ask for EACH LEGO**: "Can this generate meaningful practice on its own?"
+3. **Verify tiling** in BOTH languages
+4. **Order**: All A-types, then all M-types
+5. **Components**: Add to every M-type
+6. **Final check**: Any standalone pronouns/articles/particles? If yes → pair with context
 
 ---
 
-## 📤 OUTPUT
+## 📤 STEP 5: OUTPUT
 
-**Write your results to a JSON file and commit to GitHub**:
+**File**: \`public/vfs/courses/${courseCode}/segments/segment_${Math.floor((startSeed - 1) / 100) + 1}/agent_XX_output.json\`
 
-1. **Your segment number**: ${Math.floor((startSeed - 1) / 100) + 1}
-   - Calculated from your startSeed (${startSeed}): Math.floor((${startSeed} - 1) / 100) + 1
+**Branch**: \`phase3-segment-${Math.floor((startSeed - 1) / 100) + 1}-${courseCode}\`
 
-2. **Your branch name**: \`phase3-segment-${Math.floor((startSeed - 1) / 100) + 1}-${courseCode}\`
-
-3. **Your file path**: \`public/vfs/courses/${courseCode}/segments/segment_${Math.floor((startSeed - 1) / 100) + 1}/agent_XX_output.json\`
-   (Replace XX with your agent number: 01, 02, 03, etc.)
-
-4. File format:
+**Format**:
 \`\`\`json
 {
   "agent_id": "agent_0Y",
@@ -674,24 +580,13 @@ For EACH of your ${seedsPerAgent} seeds:
 }
 \`\`\`
 
-5. Commit and push to your segment branch:
+**Git**:
 \`\`\`bash
-# Create/switch to segment-specific branch
 git checkout -b phase3-segment-${Math.floor((startSeed - 1) / 100) + 1}-${courseCode}
-
-# Add your agent output (replace XX with your agent number)
 git add public/vfs/courses/${courseCode}/segments/segment_${Math.floor((startSeed - 1) / 100) + 1}/agent_XX_output.json
-
-# Commit (replace XX and seed ranges)
-git commit -m "Phase 3 Segment ${Math.floor((startSeed - 1) / 100) + 1}: Agent XX extraction (S00XX-S00YY) - ${seedsPerAgent} seeds"
-
-# Push to named branch
+git commit -m "Phase 3 Segment ${Math.floor((startSeed - 1) / 100) + 1}: Agent XX (S00XX-S00YY)"
 git push origin phase3-segment-${Math.floor((startSeed - 1) / 100) + 1}-${courseCode}
 \`\`\`
-
-**IMPORTANT**: All 10 agents in your segment push to the SAME branch (\`phase3-segment-${Math.floor((startSeed - 1) / 100) + 1}-${courseCode}\`).
-
-**Quality over speed!** Take 1-2 minutes per seed for careful extraction.
 \`\`\`
 
 ---
