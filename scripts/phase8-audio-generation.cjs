@@ -25,7 +25,7 @@ const preflightCheck = require('../services/preflight-check-service.cjs');
 // Configuration
 const VFS_BASE = path.join(__dirname, '../vfs');
 const AUDIO_TEMP_DIR = path.join(__dirname, '../temp/audio');
-const VOICES_REGISTRY = path.join(__dirname, '../samples_database/voices.json');
+const VOICES_REGISTRY = path.join(__dirname, '../vfs/canonical/voices.json');
 
 /**
  * Normalize text for matching (strip punctuation, lowercase)

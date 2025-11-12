@@ -34,3 +34,7 @@ temp/
 
 # Audio files synced to S3 (use sync-welcomes-to-lfs.cjs)
 extracted-welcomes/
+
+# Canonical resources synced from LFS (use sync-canonical-to-lfs.cjs)
+vfs/canonical/voices.json
+vfs/canonical/welcomes.json

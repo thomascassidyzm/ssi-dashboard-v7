@@ -257,8 +257,8 @@ async function uploadToLFS(key, content, contentType = 'application/octet-stream
     Bucket: LFS_BUCKET,
     Key: key,
     Body: body,
-    ContentType: contentType,
-    ACL: 'public-read'
+    ContentType: contentType
+    // Note: ACL removed - bucket uses bucket policy for public access
   }).promise();
 
   return {

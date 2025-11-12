@@ -148,7 +148,7 @@ async function generateWelcome(welcomeData, voiceId, language, outputPath) {
   console.log(`\n=== Generating Welcome for ${welcomeData.courseCode} ===\n`);
 
   // Get voice details
-  const voiceRegistry = await fs.readJson(path.join(__dirname, '../samples_database/voices.json'));
+  const voiceRegistry = await fs.readJson(path.join(__dirname, '../vfs/canonical/voices.json'));
   const voiceDetails = voiceRegistry.voices[voiceId];
 
   if (!voiceDetails) {

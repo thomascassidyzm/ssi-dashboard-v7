@@ -183,7 +183,7 @@ async function generateEncouragements(missingEncouragements, voiceId, language, 
   const results = [];
 
   // Get voice details (assuming ElevenLabs)
-  const voiceRegistry = await fs.readJson(path.join(__dirname, '../samples_database/voices.json'));
+  const voiceRegistry = await fs.readJson(path.join(__dirname, '../vfs/canonical/voices.json'));
   const voiceDetails = voiceRegistry.voices[voiceId];
 
   if (!voiceDetails) {
