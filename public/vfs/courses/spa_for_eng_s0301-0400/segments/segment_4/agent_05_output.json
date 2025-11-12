@@ -1,15 +1,13 @@
 {
   "agent_id": "agent_05",
   "seed_range": "S0341-S0350",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "extracted_at": "2025-11-12T00:00:00Z",
   "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
   "seeds": [
     {
       "seed_id": "S0341",
-      "seed_pair": [
-        "Conocí a alguien hace unos días.",
-        "I met someone a few days ago."
-      ],
+      "seed_pair": ["Conocí a alguien hace unos días.", "I met someone a few days ago."],
+      "extraction_notes": "Forward sweep: 'I met'→'conocí' (A-type conjugated verb), 'someone'→'a alguien' (M-type with personal a), 'ago'→'hace' (A-type standalone useful), 'a few days'→'unos días' (M-type quantifier+noun). Word order differs but tiling complete.",
       "legos": [
         {
           "id": "S0341L01",
@@ -20,307 +18,326 @@
         },
         {
           "id": "S0341L02",
-          "type": "M",
-          "target": "a alguien",
-          "known": "someone",
-          "new": true,
-          "components": [
-            ["a", "(personal a)"],
-            ["alguien", "someone"]
-          ]
+          "type": "A",
+          "target": "hace",
+          "known": "ago",
+          "new": true
         },
         {
           "id": "S0341L03",
           "type": "M",
-          "target": "hace unos días",
-          "known": "a few days ago",
+          "target": "a alguien",
+          "known": "someone",
           "new": true,
-          "components": [
-            ["hace", "ago"],
-            ["unos", "a few"],
-            ["días", "days"]
-          ]
+          "components": [["a", "to/personal a"], ["alguien", "someone"]]
+        },
+        {
+          "id": "S0341L04",
+          "type": "M",
+          "target": "unos días",
+          "known": "a few days",
+          "new": true,
+          "components": [["unos", "a few/some"], ["días", "days"]]
         }
       ]
     },
     {
       "seed_id": "S0342",
-      "seed_pair": [
-        "Conocí a alguien que dijo algo.",
-        "I met someone who said something."
-      ],
+      "seed_pair": ["Conocí a alguien que dijo algo.", "I met someone who said something."],
+      "extraction_notes": "Forward sweep: Reuses 'conocí' and 'a alguien' from S0341. 'who said'→'que dijo' (M-type - 'who' alone ambiguous que/quién, must pair with verb), 'something'→'algo' (A-type pronoun).",
       "legos": [
         {
           "id": "S0342L01",
           "type": "A",
-          "target": "que",
-          "known": "who",
+          "target": "conocí",
+          "known": "I met",
           "new": true
         },
         {
           "id": "S0342L02",
           "type": "A",
-          "target": "dijo",
-          "known": "said",
+          "target": "algo",
+          "known": "something",
           "new": true
         },
         {
           "id": "S0342L03",
-          "type": "A",
-          "target": "algo",
-          "known": "something",
-          "new": true
+          "type": "M",
+          "target": "a alguien",
+          "known": "someone",
+          "new": true,
+          "components": [["a", "to/personal a"], ["alguien", "someone"]]
+        },
+        {
+          "id": "S0342L04",
+          "type": "M",
+          "target": "que dijo",
+          "known": "who said",
+          "new": true,
+          "components": [["que", "who/that"], ["dijo", "said"]]
         }
       ]
     },
     {
       "seed_id": "S0343",
-      "seed_pair": [
-        "Que dijo que está preocupada por la...",
-        "Who said that she's worried about the..."
-      ],
+      "seed_pair": ["Que dijo que está preocupada por la economía.", "Who said that she's worried about the economy."],
+      "extraction_notes": "Continuation sentence. 'Que dijo'→'Who said' (M-type from S0342), 'que'→'that' (A-type subordinate conjunction), 'she's worried'→'está preocupada' (M-type - 'she's' alone ambiguous estar conjugation, must pair), 'about'→'por' (A-type preposition), 'the economy'→'la economía' (M-type - article alone can't generate practice).",
       "legos": [
         {
           "id": "S0343L01",
           "type": "A",
-          "target": "está",
-          "known": "she's",
+          "target": "que",
+          "known": "that",
           "new": true
         },
         {
           "id": "S0343L02",
-          "type": "A",
-          "target": "preocupada",
-          "known": "worried",
-          "new": true
-        },
-        {
-          "id": "S0343L03",
           "type": "A",
           "target": "por",
           "known": "about",
           "new": true
         },
         {
+          "id": "S0343L03",
+          "type": "M",
+          "target": "que dijo",
+          "known": "who said",
+          "new": true,
+          "components": [["que", "who/that"], ["dijo", "said"]]
+        },
+        {
           "id": "S0343L04",
-          "type": "A",
-          "target": "la",
-          "known": "the",
-          "new": true
+          "type": "M",
+          "target": "está preocupada",
+          "known": "she's worried",
+          "new": true,
+          "components": [["está", "she is"], ["preocupada", "worried"]]
+        },
+        {
+          "id": "S0343L05",
+          "type": "M",
+          "target": "la economía",
+          "known": "the economy",
+          "new": true,
+          "components": [["la", "the"], ["economía", "economy"]]
         }
       ]
     },
     {
       "seed_id": "S0344",
-      "seed_pair": [
-        "Que dijo que está contento de ayudarte.",
-        "Who said that he's happy to help you."
-      ],
+      "seed_pair": ["Que dijo que está contento de ayudarte.", "Who said that he's happy to help you."],
+      "extraction_notes": "Similar structure to S0343. 'he's happy'→'está contento' (M-type copula+adjective), 'to help you'→'de ayudarte' (M-type - 'de' required after 'contento', preposition+infinitive+clitic as unit).",
       "legos": [
         {
           "id": "S0344L01",
           "type": "A",
-          "target": "contento",
-          "known": "happy",
+          "target": "que",
+          "known": "that",
           "new": true
         },
         {
           "id": "S0344L02",
-          "type": "A",
-          "target": "de",
-          "known": "to",
-          "new": true
+          "type": "M",
+          "target": "que dijo",
+          "known": "who said",
+          "new": true,
+          "components": [["que", "who/that"], ["dijo", "said"]]
         },
         {
           "id": "S0344L03",
           "type": "M",
-          "target": "ayudarte",
-          "known": "help you",
+          "target": "está contento",
+          "known": "he's happy",
           "new": true,
-          "components": [
-            ["ayudar", "help"],
-            ["te", "you"]
-          ]
+          "components": [["está", "he is"], ["contento", "happy"]]
+        },
+        {
+          "id": "S0344L04",
+          "type": "M",
+          "target": "de ayudarte",
+          "known": "to help you",
+          "new": true,
+          "components": [["de", "to/of"], ["ayudarte", "help you"]]
         }
       ]
     },
     {
       "seed_id": "S0345",
-      "seed_pair": [
-        "Que dijo que no está preparado para...",
-        "Who said that he's not ready to leave..."
-      ],
+      "seed_pair": ["Que dijo que no está preparado para irse todavía.", "Who said that he's not ready to leave yet."],
+      "extraction_notes": "Complex negation and reflexive infinitive. 'he's not ready'→'no está preparado' (M-type negation+copula+adjective as unit), 'to leave'→'para irse' (M-type preposition+reflexive infinitive), 'yet'→'todavía' (A-type adverb standalone useful).",
       "legos": [
         {
           "id": "S0345L01",
           "type": "A",
-          "target": "no",
-          "known": "not",
+          "target": "que",
+          "known": "that",
           "new": true
         },
         {
           "id": "S0345L02",
           "type": "A",
-          "target": "preparado",
-          "known": "ready",
+          "target": "todavía",
+          "known": "yet",
           "new": true
         },
         {
           "id": "S0345L03",
-          "type": "A",
-          "target": "para",
-          "known": "to",
-          "new": true
+          "type": "M",
+          "target": "que dijo",
+          "known": "who said",
+          "new": true,
+          "components": [["que", "who/that"], ["dijo", "said"]]
+        },
+        {
+          "id": "S0345L04",
+          "type": "M",
+          "target": "no está preparado",
+          "known": "he's not ready",
+          "new": true,
+          "components": [["no", "not"], ["está", "he is"], ["preparado", "ready"]]
+        },
+        {
+          "id": "S0345L05",
+          "type": "M",
+          "target": "para irse",
+          "known": "to leave",
+          "new": true,
+          "components": [["para", "to/for"], ["irse", "to leave/to go"]]
         }
       ]
     },
     {
       "seed_id": "S0346",
-      "seed_pair": [
-        "Quería que ella supiera que me gustó su...",
-        "I wanted her to know that I liked her..."
-      ],
+      "seed_pair": ["Quería que ella supiera que me gustó su libro.", "I wanted her to know that I liked her book."],
+      "extraction_notes": "CRITICAL SUBJUNCTIVE! Per FD validation rule: 'supiera' fails FD alone (subjunctive without trigger). Must merge with trigger: 'quería que ella supiera'/'I wanted her to know' (M-type with subjunctive). 'I liked'→'me gustó' (M-type IO+verb), 'her book'→'su libro' (M-type possessive+noun).",
       "legos": [
         {
           "id": "S0346L01",
           "type": "A",
-          "target": "quería",
-          "known": "I wanted",
+          "target": "que",
+          "known": "that",
           "new": true
         },
         {
           "id": "S0346L02",
-          "type": "A",
-          "target": "ella",
-          "known": "her",
-          "new": true
+          "type": "M",
+          "target": "quería que ella supiera",
+          "known": "I wanted her to know",
+          "new": true,
+          "components": [["quería", "I wanted"], ["que", "that"], ["ella", "she/her"], ["supiera", "to know"]]
         },
         {
           "id": "S0346L03",
-          "type": "A",
-          "target": "su",
-          "known": "her",
-          "new": true
-        },
-        {
-          "id": "S0346L04",
-          "type": "M",
-          "target": "que supiera",
-          "known": "to know",
-          "new": true,
-          "components": [
-            ["que", "(subjunctive)"],
-            ["supiera", "to know"]
-          ]
-        },
-        {
-          "id": "S0346L05",
           "type": "M",
           "target": "me gustó",
           "known": "I liked",
           "new": true,
-          "components": [
-            ["me", "(to) me"],
-            ["gustó", "pleased/liked"]
-          ]
+          "components": [["me", "I/to me"], ["gustó", "liked/pleased"]]
+        },
+        {
+          "id": "S0346L04",
+          "type": "M",
+          "target": "su libro",
+          "known": "her book",
+          "new": true,
+          "components": [["su", "her/his/their"], ["libro", "book"]]
         }
       ]
     },
     {
       "seed_id": "S0347",
-      "seed_pair": [
-        "Él quería saber qué estaba pasando hace...",
-        "He wanted to know what was happening..."
-      ],
+      "seed_pair": ["Él quería saber qué estaba pasando hace una semana.", "He wanted to know what was happening a week ago."],
+      "extraction_notes": "Question embedded in past context. 'He wanted'→'Él quería' (M-type pronoun+verb - pragmatic FD), 'to know'→'saber' (A-type infinitive), 'what was happening'→'qué estaba pasando' (M-type question+past progressive), time phrase split: 'ago'→'hace' (A-type useful standalone) and 'a week'→'una semana' (M-type article+noun).",
       "legos": [
         {
           "id": "S0347L01",
-          "type": "A",
-          "target": "Él",
-          "known": "He",
-          "new": true
-        },
-        {
-          "id": "S0347L02",
           "type": "A",
           "target": "saber",
           "known": "to know",
           "new": true
         },
         {
-          "id": "S0347L03",
+          "id": "S0347L02",
           "type": "A",
-          "target": "qué",
-          "known": "what",
+          "target": "hace",
+          "known": "ago",
           "new": true
+        },
+        {
+          "id": "S0347L03",
+          "type": "M",
+          "target": "Él quería",
+          "known": "He wanted",
+          "new": true,
+          "components": [["Él", "He"], ["quería", "wanted"]]
         },
         {
           "id": "S0347L04",
           "type": "M",
-          "target": "estaba pasando",
-          "known": "was happening",
+          "target": "qué estaba pasando",
+          "known": "what was happening",
           "new": true,
-          "components": [
-            ["estaba", "was"],
-            ["pasando", "happening"]
-          ]
+          "components": [["qué", "what"], ["estaba", "was"], ["pasando", "happening"]]
+        },
+        {
+          "id": "S0347L05",
+          "type": "M",
+          "target": "una semana",
+          "known": "a week",
+          "new": true,
+          "components": [["una", "a/one"], ["semana", "week"]]
         }
       ]
     },
     {
       "seed_id": "S0348",
-      "seed_pair": [
-        "Ella no quería saber qué iba a pasar.",
-        "She didn't want to know what was going..."
-      ],
+      "seed_pair": ["Ella no quería saber qué iba a pasar.", "She didn't want to know what was going to happen."],
+      "extraction_notes": "Negative construction with near future. 'She didn't want'→'Ella no quería' (M-type pronoun+negation+verb), 'to know'→'saber' (A-type), 'what was going to happen'→'qué iba a pasar' (M-type question+near future construction 'iba a'+infinitive).",
       "legos": [
         {
           "id": "S0348L01",
           "type": "A",
-          "target": "Ella",
-          "known": "She",
+          "target": "saber",
+          "known": "to know",
           "new": true
         },
         {
           "id": "S0348L02",
-          "type": "A",
-          "target": "pasar",
-          "known": "happen",
-          "new": true
+          "type": "M",
+          "target": "Ella no quería",
+          "known": "She didn't want",
+          "new": true,
+          "components": [["Ella", "She"], ["no", "didn't/not"], ["quería", "want"]]
         },
         {
           "id": "S0348L03",
           "type": "M",
-          "target": "iba a",
-          "known": "was going to",
+          "target": "qué iba a pasar",
+          "known": "what was going to happen",
           "new": true,
-          "components": [
-            ["iba", "was going"],
-            ["a", "to"]
-          ]
+          "components": [["qué", "what"], ["iba", "was going"], ["a", "to"], ["pasar", "happen"]]
         }
       ]
     },
     {
       "seed_id": "S0349",
-      "seed_pair": [
-        "¿Quería él salir el viernes por la noche?",
-        "Did he want to go out on Friday night?"
-      ],
+      "seed_pair": ["¿Quería él salir el viernes por la noche?", "Did he want to go out on Friday night?"],
+      "extraction_notes": "Question with inversion. 'Did he want'→'Quería él' (M-type - English auxiliary 'did' absent in Spanish, verb-subject inversion for questions), 'to go out'→'salir' (A-type - English phrasal verb → Spanish single verb), 'on Friday night'→'el viernes por la noche' (M-type time expression).",
       "legos": [
         {
           "id": "S0349L01",
           "type": "A",
-          "target": "él",
-          "known": "he",
+          "target": "salir",
+          "known": "to go out",
           "new": true
         },
         {
           "id": "S0349L02",
-          "type": "A",
-          "target": "salir",
-          "known": "to go out",
-          "new": true
+          "type": "M",
+          "target": "Quería él",
+          "known": "Did he want",
+          "new": true,
+          "components": [["Quería", "Did want"], ["él", "he"]]
         },
         {
           "id": "S0349L03",
@@ -328,22 +345,14 @@
           "target": "el viernes por la noche",
           "known": "on Friday night",
           "new": true,
-          "components": [
-            ["el", "on (the)"],
-            ["viernes", "Friday"],
-            ["por", "at"],
-            ["la", "the"],
-            ["noche", "night"]
-          ]
+          "components": [["el", "on/the"], ["viernes", "Friday"], ["por", "by/in"], ["la", "the"], ["noche", "night"]]
         }
       ]
     },
     {
       "seed_id": "S0350",
-      "seed_pair": [
-        "Sí él quería ver a unos amigos viejos.",
-        "Yes he wanted to see some old friends."
-      ],
+      "seed_pair": ["Sí él quería ver a unos amigos viejos.", "Yes he wanted to see some old friends."],
+      "extraction_notes": "Affirmative response with personal a + noun phrase. 'Yes'→'Sí' (A-type), 'he wanted'→'él quería' (M-type pronoun+verb), 'to see'→'ver' (A-type infinitive), 'some old friends'→'a unos amigos viejos' (M-type - complete noun phrase with personal a, keeps adjective with noun despite word order).",
       "legos": [
         {
           "id": "S0350L01",
@@ -361,28 +370,19 @@
         },
         {
           "id": "S0350L03",
-          "type": "A",
-          "target": "amigos",
-          "known": "friends",
-          "new": true
+          "type": "M",
+          "target": "él quería",
+          "known": "he wanted",
+          "new": true,
+          "components": [["él", "he"], ["quería", "wanted"]]
         },
         {
           "id": "S0350L04",
-          "type": "A",
-          "target": "viejos",
-          "known": "old",
-          "new": true
-        },
-        {
-          "id": "S0350L05",
           "type": "M",
-          "target": "a unos",
-          "known": "some",
+          "target": "a unos amigos viejos",
+          "known": "some old friends",
           "new": true,
-          "components": [
-            ["a", "(personal a)"],
-            ["unos", "some"]
-          ]
+          "components": [["a", "to/personal a"], ["unos", "some"], ["amigos", "friends"], ["viejos", "old"]]
         }
       ]
     }
