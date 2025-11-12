@@ -1,7 +1,7 @@
 {
   "agent_id": "agent_02",
   "seed_range": "S0411-S0420",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "extracted_at": "2025-11-12T00:00:00Z",
   "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
   "seeds": [
     {
@@ -21,44 +21,41 @@
         {
           "id": "S0411L02",
           "type": "A",
-          "target": "una",
-          "known": "a",
-          "new": true
-        },
-        {
-          "id": "S0411L03",
-          "type": "A",
-          "target": "mesa",
-          "known": "table",
-          "new": true
-        },
-        {
-          "id": "S0411L04",
-          "type": "A",
           "target": "para",
           "known": "for",
           "new": true
         },
         {
-          "id": "S0411L05",
+          "id": "S0411L03",
           "type": "A",
           "target": "cuatro",
           "known": "four",
           "new": true
         },
         {
-          "id": "S0411L06",
+          "id": "S0411L04",
           "type": "M",
-          "target": "Nos gustaría",
-          "known": "We would like",
+          "target": "nos gustaría",
+          "known": "we would like",
           "new": true,
           "components": [
-            ["Nos", "We"],
+            ["nos", "we"],
             ["gustaría", "would like"]
           ]
         },
         {
-          "id": "S0411L07",
+          "id": "S0411L05",
+          "type": "M",
+          "target": "una mesa",
+          "known": "a table",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["mesa", "table"]
+          ]
+        },
+        {
+          "id": "S0411L06",
           "type": "M",
           "target": "esta noche",
           "known": "tonight",
@@ -94,11 +91,11 @@
         {
           "id": "S0412L03",
           "type": "M",
-          "target": "No podríamos",
-          "known": "We couldn't",
+          "target": "no podríamos",
+          "known": "we couldn't",
           "new": true,
           "components": [
-            ["No", "not"],
+            ["no", "not"],
             ["podríamos", "we could"]
           ]
         },
@@ -125,8 +122,8 @@
         {
           "id": "S0413L01",
           "type": "A",
-          "target": "Podríamos",
-          "known": "We could",
+          "target": "podríamos",
+          "known": "we could",
           "new": true
         },
         {
@@ -153,20 +150,16 @@
         {
           "id": "S0413L05",
           "type": "A",
-          "target": "borde",
-          "known": "edge",
+          "target": "demasiado",
+          "known": "too",
           "new": true
         },
         {
           "id": "S0413L06",
-          "type": "M",
-          "target": "demasiado cerca",
-          "known": "too close",
-          "new": true,
-          "components": [
-            ["demasiado", "too"],
-            ["cerca", "close"]
-          ]
+          "type": "A",
+          "target": "cerca",
+          "known": "close",
+          "new": true
         },
         {
           "id": "S0413L07",
@@ -191,8 +184,8 @@
         {
           "id": "S0414L01",
           "type": "A",
-          "target": "Podríamos",
-          "known": "Could we",
+          "target": "podríamos",
+          "known": "could we",
           "new": true
         },
         {
@@ -205,40 +198,34 @@
         {
           "id": "S0414L03",
           "type": "A",
-          "target": "una",
-          "known": "a",
-          "new": true
-        },
-        {
-          "id": "S0414L04",
-          "type": "A",
-          "target": "botella",
-          "known": "bottle",
-          "new": true
-        },
-        {
-          "id": "S0414L05",
-          "type": "A",
           "target": "de",
           "known": "of",
           "new": true
         },
         {
+          "id": "S0414L04",
+          "type": "M",
+          "target": "una botella",
+          "known": "a bottle",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["botella", "bottle"]
+          ]
+        },
+        {
+          "id": "S0414L05",
+          "type": "M",
+          "target": "vino tinto",
+          "known": "red wine",
+          "new": true,
+          "components": [
+            ["vino", "wine"],
+            ["tinto", "red"]
+          ]
+        },
+        {
           "id": "S0414L06",
-          "type": "A",
-          "target": "vino",
-          "known": "wine",
-          "new": true
-        },
-        {
-          "id": "S0414L07",
-          "type": "A",
-          "target": "tinto",
-          "known": "red",
-          "new": true
-        },
-        {
-          "id": "S0414L08",
           "type": "M",
           "target": "por favor",
           "known": "please",
@@ -260,33 +247,19 @@
         {
           "id": "S0415L01",
           "type": "A",
-          "target": "Eso",
-          "known": "That",
+          "target": "eso",
+          "known": "that",
           "new": true
         },
         {
           "id": "S0415L02",
-          "type": "A",
-          "target": "un",
-          "known": "a",
-          "new": true
-        },
-        {
-          "id": "S0415L03",
-          "type": "A",
-          "target": "problema",
-          "known": "problem",
-          "new": true
-        },
-        {
-          "id": "S0415L04",
           "type": "A",
           "target": "si",
           "known": "if",
           "new": true
         },
         {
-          "id": "S0415L05",
+          "id": "S0415L03",
           "type": "M",
           "target": "no sería",
           "known": "wouldn't be",
@@ -297,7 +270,18 @@
           ]
         },
         {
-          "id": "S0415L06",
+          "id": "S0415L04",
+          "type": "M",
+          "target": "un problema",
+          "known": "a problem",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["problema", "problem"]
+          ]
+        },
+        {
+          "id": "S0415L05",
           "type": "M",
           "target": "me preguntas",
           "known": "you ask me",
@@ -319,8 +303,8 @@
         {
           "id": "S0416L01",
           "type": "A",
-          "target": "Quieren",
-          "known": "They want",
+          "target": "quieren",
+          "known": "they want",
           "new": true
         },
         {
@@ -332,20 +316,17 @@
         },
         {
           "id": "S0416L03",
-          "type": "A",
-          "target": "el",
-          "known": "the",
-          "new": true
+          "type": "M",
+          "target": "el camino",
+          "known": "the way",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["camino", "way"]
+          ]
         },
         {
           "id": "S0416L04",
-          "type": "A",
-          "target": "camino",
-          "known": "way",
-          "new": true
-        },
-        {
-          "id": "S0416L05",
           "type": "M",
           "target": "el próximo año",
           "known": "next year",
@@ -368,8 +349,8 @@
         {
           "id": "S0417L01",
           "type": "A",
-          "target": "Quieren",
-          "known": "Do they want",
+          "target": "quieren",
+          "known": "do they want",
           "new": true
         },
         {
@@ -381,17 +362,14 @@
         },
         {
           "id": "S0417L03",
-          "type": "A",
-          "target": "esas",
-          "known": "those",
-          "new": true
-        },
-        {
-          "id": "S0417L04",
-          "type": "A",
-          "target": "hormigas",
-          "known": "ants",
-          "new": true
+          "type": "M",
+          "target": "esas hormigas",
+          "known": "those ants",
+          "new": true,
+          "components": [
+            ["esas", "those"],
+            ["hormigas", "ants"]
+          ]
         }
       ]
     },
@@ -405,8 +383,8 @@
         {
           "id": "S0418L01",
           "type": "A",
-          "target": "Necesitan",
-          "known": "They need",
+          "target": "necesitan",
+          "known": "they need",
           "new": true
         },
         {
@@ -418,24 +396,15 @@
         },
         {
           "id": "S0418L03",
-          "type": "A",
-          "target": "a",
-          "known": "to",
-          "new": true
-        },
-        {
-          "id": "S0418L04",
-          "type": "A",
-          "target": "la",
-          "known": "the",
-          "new": true
-        },
-        {
-          "id": "S0418L05",
-          "type": "A",
-          "target": "comunidad",
-          "known": "community",
-          "new": true
+          "type": "M",
+          "target": "a la comunidad",
+          "known": "the community",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["la", "the"],
+            ["comunidad", "community"]
+          ]
         }
       ]
     },
@@ -449,8 +418,8 @@
         {
           "id": "S0419L01",
           "type": "A",
-          "target": "Si",
-          "known": "If",
+          "target": "si",
+          "known": "if",
           "new": true
         },
         {
@@ -462,29 +431,13 @@
         },
         {
           "id": "S0419L03",
-          "type": "A",
-          "target": "que",
-          "known": "to",
-          "new": true
-        },
-        {
-          "id": "S0419L04",
           "type": "M",
-          "target": "la gente",
-          "known": "people",
+          "target": "que la gente los quiera",
+          "known": "people to like them",
           "new": true,
           "components": [
-            ["la", "the"],
-            ["gente", "people"]
-          ]
-        },
-        {
-          "id": "S0419L05",
-          "type": "M",
-          "target": "los quiera",
-          "known": "like them",
-          "new": true,
-          "components": [
+            ["que", "to"],
+            ["la gente", "people"],
             ["los", "them"],
             ["quiera", "like"]
           ]
@@ -508,12 +461,12 @@
         {
           "id": "S0420L02",
           "type": "M",
-          "target": "No necesitan",
-          "known": "They don't need",
+          "target": "no necesitan",
+          "known": "they don't need",
           "new": true,
           "components": [
-            ["No", "don't"],
-            ["necesitan", "They need"]
+            ["no", "don't"],
+            ["necesitan", "they need"]
           ]
         },
         {

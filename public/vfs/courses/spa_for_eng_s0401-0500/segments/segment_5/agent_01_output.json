@@ -1,18 +1,21 @@
 {
   "agent_id": "agent_01",
   "seed_range": "S0401-S0410",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "extracted_at": "2025-11-12T00:00:00Z",
   "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
   "seeds": [
     {
       "seed_id": "S0401",
-      "seed_pair": ["No it would be better to go straight home.", "No, sería mejor ir directamente a casa."],
+      "seed_pair": [
+        "No it would be better to go straight home.",
+        "No, sería mejor ir directamente a casa."
+      ],
       "legos": [
         {
           "id": "S0401L01",
           "type": "A",
-          "target": "No",
-          "known": "No",
+          "target": "no",
+          "known": "no",
           "new": true
         },
         {
@@ -35,7 +38,10 @@
           "target": "sería mejor",
           "known": "it would be better",
           "new": true,
-          "components": [["sería", "it would be"], ["mejor", "better"]]
+          "components": [
+            ["sería", "it would be"],
+            ["mejor", "better"]
+          ]
         },
         {
           "id": "S0401L05",
@@ -43,19 +49,25 @@
           "target": "a casa",
           "known": "home",
           "new": true,
-          "components": [["a", "to"], ["casa", "house"]]
+          "components": [
+            ["a", "to"],
+            ["casa", "house/home"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0402",
-      "seed_pair": ["Yes it would be nice to stop somewhere for food.", "Sí, sería agradable parar en algún lugar para comida."],
+      "seed_pair": [
+        "Yes it would be nice to stop somewhere for food.",
+        "Sí, sería agradable parar en algún lugar para comida."
+      ],
       "legos": [
         {
           "id": "S0402L01",
           "type": "A",
-          "target": "Sí",
-          "known": "Yes",
+          "target": "sí",
+          "known": "yes",
           "new": true
         },
         {
@@ -85,7 +97,10 @@
           "target": "sería agradable",
           "known": "it would be nice",
           "new": true,
-          "components": [["sería", "it would be"], ["agradable", "nice"]]
+          "components": [
+            ["sería", "it would be"],
+            ["agradable", "nice"]
+          ]
         },
         {
           "id": "S0402L06",
@@ -93,64 +108,65 @@
           "target": "en algún lugar",
           "known": "somewhere",
           "new": true,
-          "components": [["en", "at"], ["algún", "some"], ["lugar", "place"]]
+          "components": [
+            ["en", "in"],
+            ["algún", "some"],
+            ["lugar", "place"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0403",
-      "seed_pair": ["We should remain quiet for as long as possible.", "Deberíamos permanecer callados durante tanto tiempo como sea posible."],
+      "seed_pair": [
+        "We should remain quiet for as long as possible.",
+        "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+      ],
       "legos": [
         {
           "id": "S0403L01",
+          "type": "A",
+          "target": "deberíamos",
+          "known": "we should",
+          "new": true
+        },
+        {
+          "id": "S0403L02",
           "type": "A",
           "target": "permanecer",
           "known": "remain",
           "new": true
         },
         {
-          "id": "S0403L02",
+          "id": "S0403L03",
           "type": "A",
           "target": "callados",
           "known": "quiet",
           "new": true
         },
         {
-          "id": "S0403L03",
-          "type": "A",
-          "target": "durante",
-          "known": "for",
-          "new": true
-        },
-        {
           "id": "S0403L04",
           "type": "M",
-          "target": "Deberíamos",
-          "known": "We should",
+          "target": "durante tanto tiempo como sea posible",
+          "known": "for as long as possible",
           "new": true,
-          "components": [["Deberíamos", "We should"]]
-        },
-        {
-          "id": "S0403L05",
-          "type": "M",
-          "target": "tanto tiempo",
-          "known": "as long",
-          "new": true,
-          "components": [["tanto", "as"], ["tiempo", "long"]]
-        },
-        {
-          "id": "S0403L06",
-          "type": "M",
-          "target": "como sea posible",
-          "known": "as possible",
-          "new": true,
-          "components": [["como", "as"], ["sea", "be"], ["posible", "possible"]]
+          "components": [
+            ["durante", "for"],
+            ["tanto", "as/so"],
+            ["tiempo", "long/time"],
+            ["como", "as"],
+            ["sea", "be"],
+            ["posible", "possible"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0404",
-      "seed_pair": ["We shouldn't expect to finish before Thursday.", "No deberíamos esperar terminar antes del jueves."],
+      "seed_pair": [
+        "We shouldn't expect to finish before Thursday.",
+        "No deberíamos esperar terminar antes del jueves."
+      ],
       "legos": [
         {
           "id": "S0404L01",
@@ -169,10 +185,13 @@
         {
           "id": "S0404L03",
           "type": "M",
-          "target": "No deberíamos",
-          "known": "We should not",
+          "target": "no deberíamos",
+          "known": "we shouldn't",
           "new": true,
-          "components": [["No", "not"], ["deberíamos", "We should"]]
+          "components": [
+            ["no", "not"],
+            ["deberíamos", "we should"]
+          ]
         },
         {
           "id": "S0404L04",
@@ -180,42 +199,48 @@
           "target": "antes del jueves",
           "known": "before Thursday",
           "new": true,
-          "components": [["antes", "before"], ["del", ""], ["jueves", "Thursday"]]
+          "components": [
+            ["antes", "before"],
+            ["del", "of the"],
+            ["jueves", "Thursday"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0405",
-      "seed_pair": ["Should we ask if we have to book?", "¿Deberíamos preguntar si tenemos que reservar?"],
+      "seed_pair": [
+        "Should we ask if we have to book?",
+        "¿Deberíamos preguntar si tenemos que reservar?"
+      ],
       "legos": [
         {
           "id": "S0405L01",
+          "type": "A",
+          "target": "deberíamos",
+          "known": "should we",
+          "new": true
+        },
+        {
+          "id": "S0405L02",
           "type": "A",
           "target": "preguntar",
           "known": "ask",
           "new": true
         },
         {
-          "id": "S0405L02",
+          "id": "S0405L03",
           "type": "A",
           "target": "si",
           "known": "if",
           "new": true
         },
         {
-          "id": "S0405L03",
+          "id": "S0405L04",
           "type": "A",
           "target": "reservar",
           "known": "book",
           "new": true
-        },
-        {
-          "id": "S0405L04",
-          "type": "M",
-          "target": "Deberíamos",
-          "known": "Should we",
-          "new": true,
-          "components": [["Deberíamos", "Should we"]]
         },
         {
           "id": "S0405L05",
@@ -223,49 +248,58 @@
           "target": "tenemos que",
           "known": "we have to",
           "new": true,
-          "components": [["tenemos", "we have"], ["que", "to"]]
+          "components": [
+            ["tenemos", "we have"],
+            ["que", "to/that"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0406",
-      "seed_pair": ["No I'm sure it will be okay.", "No, estoy seguro de que estará bien."],
+      "seed_pair": [
+        "No I'm sure it will be okay.",
+        "No, estoy seguro de que estará bien."
+      ],
       "legos": [
         {
           "id": "S0406L01",
           "type": "A",
-          "target": "No",
-          "known": "No",
+          "target": "no",
+          "known": "no",
           "new": true
         },
         {
           "id": "S0406L02",
-          "type": "A",
-          "target": "bien",
-          "known": "okay",
-          "new": true
-        },
-        {
-          "id": "S0406L03",
           "type": "M",
           "target": "estoy seguro de que",
           "known": "I'm sure",
           "new": true,
-          "components": [["estoy", "I'm"], ["seguro", "sure"], ["de que", ""]]
+          "components": [
+            ["estoy", "I am"],
+            ["seguro", "sure"],
+            ["de que", "(that)"]
+          ]
         },
         {
-          "id": "S0406L04",
+          "id": "S0406L03",
           "type": "M",
-          "target": "estará",
-          "known": "it will be",
+          "target": "estará bien",
+          "known": "it will be okay",
           "new": true,
-          "components": [["estará", "it will be"]]
+          "components": [
+            ["estará", "it will be"],
+            ["bien", "okay/well"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0407",
-      "seed_pair": ["Shouldn't we try to set a good example?", "¿No deberíamos intentar establecer un buen ejemplo?"],
+      "seed_pair": [
+        "Shouldn't we try to set a good example?",
+        "¿No deberíamos intentar establecer un buen ejemplo?"
+      ],
       "legos": [
         {
           "id": "S0407L01",
@@ -284,10 +318,13 @@
         {
           "id": "S0407L03",
           "type": "M",
-          "target": "No deberíamos",
-          "known": "Shouldn't we",
+          "target": "no deberíamos",
+          "known": "shouldn't we",
           "new": true,
-          "components": [["No", "n't"], ["deberíamos", "Should we"]]
+          "components": [
+            ["no", "not"],
+            ["deberíamos", "should we"]
+          ]
         },
         {
           "id": "S0407L04",
@@ -295,76 +332,94 @@
           "target": "un buen ejemplo",
           "known": "a good example",
           "new": true,
-          "components": [["un", "a"], ["buen", "good"], ["ejemplo", "example"]]
+          "components": [
+            ["un", "a"],
+            ["buen", "good"],
+            ["ejemplo", "example"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0408",
-      "seed_pair": ["Yes that's the best way to make a happy family.", "Sí esa es la mejor manera de hacer una familia feliz."],
+      "seed_pair": [
+        "Yes that's the best way to make a happy family.",
+        "Sí esa es la mejor manera de hacer una familia feliz."
+      ],
       "legos": [
         {
           "id": "S0408L01",
           "type": "A",
-          "target": "Sí",
-          "known": "Yes",
+          "target": "sí",
+          "known": "yes",
           "new": true
         },
         {
           "id": "S0408L02",
           "type": "A",
-          "target": "esa",
-          "known": "that",
+          "target": "manera",
+          "known": "way",
           "new": true
         },
         {
           "id": "S0408L03",
-          "type": "A",
-          "target": "es",
-          "known": "is",
-          "new": true
+          "type": "M",
+          "target": "esa es",
+          "known": "that's",
+          "new": true,
+          "components": [
+            ["esa", "that"],
+            ["es", "is"]
+          ]
         },
         {
           "id": "S0408L04",
-          "type": "A",
-          "target": "de",
-          "known": "to",
-          "new": true
+          "type": "M",
+          "target": "la mejor",
+          "known": "the best",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["mejor", "best"]
+          ]
         },
         {
           "id": "S0408L05",
-          "type": "A",
-          "target": "hacer",
-          "known": "make",
-          "new": true
+          "type": "M",
+          "target": "de hacer",
+          "known": "to make",
+          "new": true,
+          "components": [
+            ["de", "to"],
+            ["hacer", "make"]
+          ]
         },
         {
           "id": "S0408L06",
           "type": "M",
-          "target": "la mejor manera",
-          "known": "the best way",
-          "new": true,
-          "components": [["la", "the"], ["mejor", "best"], ["manera", "way"]]
-        },
-        {
-          "id": "S0408L07",
-          "type": "M",
           "target": "una familia feliz",
           "known": "a happy family",
           "new": true,
-          "components": [["una", "a"], ["familia", "family"], ["feliz", "happy"]]
+          "components": [
+            ["una", "a"],
+            ["familia", "family"],
+            ["feliz", "happy"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0409",
-      "seed_pair": ["No it doesn't matter what we do.", "No no importa lo que hagamos."],
+      "seed_pair": [
+        "No it doesn't matter what we do.",
+        "No no importa lo que hagamos."
+      ],
       "legos": [
         {
           "id": "S0409L01",
           "type": "A",
-          "target": "No",
-          "known": "No",
+          "target": "no",
+          "known": "no",
           "new": true
         },
         {
@@ -373,7 +428,10 @@
           "target": "no importa",
           "known": "it doesn't matter",
           "new": true,
-          "components": [["no", "doesn't"], ["importa", "matter"]]
+          "components": [
+            ["no", "not/doesn't"],
+            ["importa", "matter"]
+          ]
         },
         {
           "id": "S0409L03",
@@ -381,29 +439,47 @@
           "target": "lo que hagamos",
           "known": "what we do",
           "new": true,
-          "components": [["lo que", "what"], ["hagamos", "we do"]]
+          "components": [
+            ["lo que", "what"],
+            ["hagamos", "we do"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0410",
-      "seed_pair": ["They still fight with each other.", "Todavía luchan el uno con el otro."],
+      "seed_pair": [
+        "They still fight with each other.",
+        "Todavía luchan el uno con el otro."
+      ],
       "legos": [
         {
           "id": "S0410L01",
-          "type": "M",
-          "target": "Todavía luchan",
-          "known": "They still fight",
-          "new": true,
-          "components": [["Todavía", "still"], ["luchan", "they fight"]]
+          "type": "A",
+          "target": "todavía",
+          "known": "still",
+          "new": true
         },
         {
           "id": "S0410L02",
+          "type": "A",
+          "target": "luchan",
+          "known": "they fight",
+          "new": true
+        },
+        {
+          "id": "S0410L03",
           "type": "M",
           "target": "el uno con el otro",
           "known": "with each other",
           "new": true,
-          "components": [["el uno", "each"], ["con", "with"], ["el otro", "other"]]
+          "components": [
+            ["el", "the"],
+            ["uno", "one/each"],
+            ["con", "with"],
+            ["el", "the"],
+            ["otro", "other"]
+          ]
         }
       ]
     }
