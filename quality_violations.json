@@ -1,0 +1,1071 @@
+{
+  "S0115": {
+    "seed_pair": [
+      "I don't feel as if I'm ready to have a conversation.",
+      "No siento como si estuviera preparado para tener una conversaci\u00f3n."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "para = to"
+      }
+    ]
+  },
+  "S0117": {
+    "seed_pair": [
+      "I'm definitely doing better than I was last time we talked to each other.",
+      "Definitivamente lo estoy haciendo mejor que la \u00faltima vez que hablamos."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "lo = it"
+      }
+    ]
+  },
+  "S0124": {
+    "seed_pair": [
+      "Cre\u00ed que eso era una buena idea.",
+      "I thought that was a good idea."
+    ],
+    "violations": [
+      {
+        "type": "missing_components",
+        "lego": "una buena = a good"
+      }
+    ]
+  },
+  "S0126": {
+    "seed_pair": [
+      "Este trabajo est\u00e1 cambiando la forma de mi cerebro.",
+      "This work is changing the shape of my brain."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "de = of"
+      }
+    ]
+  },
+  "S0143": {
+    "seed_pair": [
+      "It's the same thing as we were talking about earlier.",
+      "Es la misma cosa de la que est\u00e1bamos hablando antes."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "la = the"
+      }
+    ]
+  },
+  "S0147": {
+    "seed_pair": [
+      "She was very kind when she saw me feeling nervous.",
+      "Ella era muy amable cuando me vio sinti\u00e9ndome nervioso."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Ella = She"
+      }
+    ]
+  },
+  "S0148": {
+    "seed_pair": [
+      "He wasn't very patient when I couldn't answer.",
+      "\u00c9l no era muy paciente cuando no pude responder."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00c9l = He"
+      }
+    ]
+  },
+  "S0152": {
+    "seed_pair": [
+      "I would have done it differently if I had known what you wanted.",
+      "Lo habr\u00eda hecho diferentemente si hubiera sabido lo que quer\u00edas."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "lo = it"
+      }
+    ]
+  },
+  "S0153": {
+    "seed_pair": [
+      "I wouldn't have said it in exactly the same way.",
+      "No lo habr\u00eda dicho exactamente de la misma manera."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "lo = it"
+      }
+    ]
+  },
+  "S0164": {
+    "seed_pair": [
+      "An interesting book",
+      "Un libro interesante"
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "article",
+        "lego": "un = a"
+      }
+    ]
+  },
+  "S0171": {
+    "seed_pair": [
+      "\u00bfQuieres que te ayude a buscarlo?",
+      "Do you want me to help you look for it?"
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "te = you"
+      }
+    ]
+  },
+  "S0176": {
+    "seed_pair": [
+      "Le preguntar\u00e9 si podr\u00e1 ayudar el a\u00f1o pr\u00f3ximo.",
+      "I'll ask him if he'll be able to help next year."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Le = him"
+      }
+    ]
+  },
+  "S0177": {
+    "seed_pair": [
+      "Le preguntar\u00e9 d\u00f3nde quiere ir.",
+      "I'll ask her where she wants to go."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Le = her"
+      }
+    ]
+  },
+  "S0190": {
+    "seed_pair": [
+      "Do you mind if I ask you some questions?",
+      "\u00bfTe importa si te hago algunas preguntas?"
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Te = you"
+      }
+    ]
+  },
+  "S0196": {
+    "seed_pair": [
+      "\u00bfHas o\u00eddo la \u00faltima idea?",
+      "Have you heard the latest idea?"
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "la = the"
+      }
+    ]
+  },
+  "S0199": {
+    "seed_pair": [
+      "Mi amigo sol\u00eda trabajar en una oficina.",
+      "My friend used to work in an office."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "en = in"
+      }
+    ]
+  },
+  "S0301": {
+    "seed_pair": [
+      "He said that he wants to show you something.",
+      "\u00c9l dijo que quiere mostrarte algo."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00e9l = he"
+      },
+      {
+        "type": "a_before_m",
+        "pattern": "AAAAMA"
+      }
+    ]
+  },
+  "S0302": {
+    "seed_pair": [
+      "She said that she doesn't want to live in a city.",
+      "Ella dijo que no quiere vivir en una ciudad."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "ella = she"
+      },
+      {
+        "type": "a_before_m",
+        "pattern": "AAAMAAAA"
+      }
+    ]
+  },
+  "S0303": {
+    "seed_pair": [
+      "I think that he wants to sit down.",
+      "Creo que \u00e9l quiere sentarse."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MAAAA"
+      }
+    ]
+  },
+  "S0304": {
+    "seed_pair": [
+      "I think that she doesn't want to work from home.",
+      "Creo que ella no quiere trabajar desde casa."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MAAMAAA"
+      }
+    ]
+  },
+  "S0306": {
+    "seed_pair": [
+      "I know that young woman who's talking to your friend.",
+      "Conozco a esa mujer joven que est\u00e1 hablando con tu amigo."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MAAAAMAAA"
+      }
+    ]
+  },
+  "S0307": {
+    "seed_pair": [
+      "I know that young man who's sitting over there.",
+      "Conozco a ese hombre joven que est\u00e1 sentado all\u00ed."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MAAAAMA"
+      }
+    ]
+  },
+  "S0309": {
+    "seed_pair": [
+      "No I've never seen her before.",
+      "No nunca la he visto antes."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "AMAAAA"
+      }
+    ]
+  },
+  "S0310": {
+    "seed_pair": [
+      "She could write a story about that man.",
+      "Ella podr\u00eda escribir una historia sobre ese hombre."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "ella = she"
+      }
+    ]
+  },
+  "S0311": {
+    "seed_pair": [
+      "He couldn't believe the three most important facts.",
+      "\u00c9l no podr\u00eda creer los tres hechos m\u00e1s importantes."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00c9l = He"
+      }
+    ]
+  },
+  "S0312": {
+    "seed_pair": [
+      "She said that she could use the other room tomorrow night.",
+      "Ella dijo que podr\u00eda usar la otra habitaci\u00f3n ma\u00f1ana por la noche."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Ella = She"
+      }
+    ]
+  },
+  "S0313": {
+    "seed_pair": [
+      "He said that he couldn't watch all five games.",
+      "\u00c9l dijo que no podr\u00eda ver todos los cinco juegos."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00c9l = He"
+      }
+    ]
+  },
+  "S0319": {
+    "seed_pair": [
+      "She needs to move to a different country.",
+      "Ella necesita mudarse a un pa\u00eds diferente."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Ella = She"
+      }
+    ]
+  },
+  "S0320": {
+    "seed_pair": [
+      "He doesn't need to buy another television this year.",
+      "\u00c9l no necesita comprar otra televisi\u00f3n este a\u00f1o."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00c9l = He"
+      }
+    ]
+  },
+  "S0322": {
+    "seed_pair": [
+      "She said that she needs to read the same book.",
+      "Ella dijo que necesita leer el mismo libro."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "ella = she"
+      }
+    ]
+  },
+  "S0323": {
+    "seed_pair": [
+      "He said that he doesn't need to walk to school.",
+      "\u00c9l dijo que no necesita caminar a la escuela."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00e9l = he"
+      }
+    ]
+  },
+  "S0331": {
+    "seed_pair": [
+      "She can't provide all the answers.",
+      "Ella no puede proveer todas las respuestas."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Ella = She"
+      }
+    ]
+  },
+  "S0332": {
+    "seed_pair": [
+      "He can build a new life for his sister.",
+      "\u00c9l puede construir una nueva vida para su hermana."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00c9l = He"
+      }
+    ]
+  },
+  "S0333": {
+    "seed_pair": [
+      "She said that she can't spend much time with the group.",
+      "Ella dijo que no puede pasar mucho tiempo con el grupo."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Ella = She"
+      }
+    ]
+  },
+  "S0334": {
+    "seed_pair": [
+      "He said that he can let you hold the kitten",
+      "\u00c9l dijo que puede dejarte sostener el gatito"
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00c9l = He"
+      }
+    ]
+  },
+  "S0347": {
+    "seed_pair": [
+      "\u00c9l quer\u00eda saber qu\u00e9 estaba pasando hace...",
+      "He wanted to know what was happening..."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00c9l = He"
+      }
+    ]
+  },
+  "S0348": {
+    "seed_pair": [
+      "Ella no quer\u00eda saber qu\u00e9 iba a pasar.",
+      "She didn't want to know what was going..."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Ella = She"
+      }
+    ]
+  },
+  "S0349": {
+    "seed_pair": [
+      "\u00bfQuer\u00eda \u00e9l salir el viernes por la noche?",
+      "Did he want to go out on Friday night?"
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00e9l = he"
+      }
+    ]
+  },
+  "S0352": {
+    "seed_pair": [
+      "Even if he wanted to he wouldn't be able to.",
+      "Aunque \u00e9l quisiera no podr\u00eda."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00e9l = he"
+      }
+    ]
+  },
+  "S0353": {
+    "seed_pair": [
+      "She needed to run around the field.",
+      "Ella necesitaba correr alrededor del campo."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Ella = She"
+      }
+    ]
+  },
+  "S0354": {
+    "seed_pair": [
+      "He didn't need to appear angry.",
+      "\u00c9l no necesitaba aparecer enojado."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00c9l = He"
+      }
+    ]
+  },
+  "S0361": {
+    "seed_pair": [
+      "He was quiet.",
+      "\u00c9l estaba callado."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00e9l = he"
+      }
+    ]
+  },
+  "S0365": {
+    "seed_pair": [
+      "I didn't hear what she said to him.",
+      "No escuch\u00e9 lo que ella le dijo a \u00e9l."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "ella = she"
+      }
+    ]
+  },
+  "S0366": {
+    "seed_pair": [
+      "Did you hear what he wanted to grow?",
+      "\u00bfEscuchaste lo que \u00e9l quer\u00eda cultivar?"
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00e9l = he"
+      }
+    ]
+  },
+  "S0371": {
+    "seed_pair": [
+      "Fui a ver una pel\u00edcula el mi\u00e9rcoles.",
+      "I went to see a film on Wednesday."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "article",
+        "lego": "una = a"
+      }
+    ]
+  },
+  "S0372": {
+    "seed_pair": [
+      "\u00bfViste lo que ella estaba intentando crear?",
+      "Did you see what she was trying to create?"
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "ella = she"
+      }
+    ]
+  },
+  "S0377": {
+    "seed_pair": [
+      "\u00bfFuiste a alguna parte en el mundo el a\u00f1o pasado?",
+      "Did you go anywhere in the world last year?"
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "en = in"
+      }
+    ]
+  },
+  "S0384": {
+    "seed_pair": [
+      "I couldn't agree with what he said a moment ago.",
+      "No pude estar de acuerdo con lo que dijo hace un momento."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "con = with"
+      }
+    ]
+  },
+  "S0385": {
+    "seed_pair": [
+      "Did you agree with her?",
+      "\u00bfEstuviste de acuerdo con ella?"
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "con = with"
+      }
+    ]
+  },
+  "S0390": {
+    "seed_pair": [
+      "The one who is standing near the entrance.",
+      "La que est\u00e1 de pie cerca de la entrada."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "la = the"
+      }
+    ]
+  },
+  "S0392": {
+    "seed_pair": [
+      "That child with the black hair opposite the post office.",
+      "Ese ni\u00f1o con el pelo negro enfrente de la oficina de correos."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "con = with"
+      }
+    ]
+  },
+  "S0393": {
+    "seed_pair": [
+      "That boy with the green shirt.",
+      "Ese ni\u00f1o con la camisa verde."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "con = with"
+      }
+    ]
+  },
+  "S0394": {
+    "seed_pair": [
+      "That girl with the yellow dress.",
+      "Esa ni\u00f1a con el vestido amarillo."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "con = with"
+      }
+    ]
+  },
+  "S0398": {
+    "seed_pair": [
+      "We want to become more patient with our children.",
+      "Queremos volvernos m\u00e1s pacientes con nuestros ni\u00f1os."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "con = with"
+      }
+    ]
+  },
+  "S0441": {
+    "seed_pair": [
+      "Un acercamiento.",
+      "An approach."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "article",
+        "lego": "Un = An"
+      }
+    ]
+  },
+  "S0445": {
+    "seed_pair": [
+      "Ellos van a poder llevar esa maleta.",
+      "They will be able to carry that suitcase."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Ellos = They"
+      }
+    ]
+  },
+  "S0446": {
+    "seed_pair": [
+      "Ellos no van a poder romper esa ventana.",
+      "They won't be able to break that window."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Ellos = They"
+      }
+    ]
+  },
+  "S0449": {
+    "seed_pair": [
+      "Ellos dijeron que estaban casi preparados.",
+      "They said that they were almost ready."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Ellos = They"
+      }
+    ]
+  },
+  "S0461": {
+    "seed_pair": [
+      "A shop where I can buy some postcards.",
+      "Una tienda donde puedo comprar algunas postales."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "article",
+        "lego": "una = a"
+      }
+    ]
+  },
+  "S0466": {
+    "seed_pair": [
+      "Let me throw it over the wall.",
+      "D\u00e9jame lanzarlo sobre el muro."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "sobre = over"
+      }
+    ]
+  },
+  "S0474": {
+    "seed_pair": [
+      "I don't even want it as a free offer.",
+      "Ni siquiera lo quiero como oferta gratuita."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MAAAM"
+      }
+    ]
+  },
+  "S0475": {
+    "seed_pair": [
+      "There are many reasons to consider waiting.",
+      "Hay muchas razones para considerar esperar."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "AMAM"
+      }
+    ]
+  },
+  "S0476": {
+    "seed_pair": [
+      "I'm waiting for the end of the second half.",
+      "Estoy esperando el final de la segunda mitad."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MMAM"
+      }
+    ]
+  },
+  "S0477": {
+    "seed_pair": [
+      "He's been sick since the second day of the holidays.",
+      "\u00c9l ha estado enfermo desde el segundo d\u00eda de las vacaciones."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MAAMM"
+      }
+    ]
+  },
+  "S0479": {
+    "seed_pair": [
+      "It's the least I could do.",
+      "Es lo m\u00ednimo que podr\u00eda hacer."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "AMAM"
+      }
+    ]
+  },
+  "S0480": {
+    "seed_pair": [
+      "Whatever he says it's not far ahead now.",
+      "Lo que sea que \u00e9l diga no est\u00e1 muy lejos ahora."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MMMMA"
+      }
+    ]
+  },
+  "S0488": {
+    "seed_pair": [
+      "It's on the other side of that yellow line.",
+      "Est\u00e1 al otro lado de esa l\u00ednea amarilla."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "de = of"
+      }
+    ]
+  },
+  "S0601": {
+    "seed_pair": [
+      "We were talking about how it all started.",
+      "Est\u00e1bamos hablando sobre c\u00f3mo empez\u00f3 todo."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "sobre = about"
+      }
+    ]
+  },
+  "S0604": {
+    "seed_pair": [
+      "She offered to let us stay with her.",
+      "Ella se ofreci\u00f3 a dejarnos quedarnos con ella."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "ella = she"
+      }
+    ]
+  },
+  "S0610": {
+    "seed_pair": [
+      "He needs to look for work.",
+      "\u00c9l necesita buscar trabajo."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "\u00e9l = he"
+      }
+    ]
+  },
+  "S0611": {
+    "seed_pair": [
+      "I would have been ready to look somewhere else.",
+      "Yo habr\u00eda estado preparado para buscar en otro lugar."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "Yo = I"
+      }
+    ]
+  },
+  "S0629": {
+    "seed_pair": [
+      "I like it with milk but without sugar.",
+      "Me gusta con leche pero sin az\u00facar."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "con = with"
+      }
+    ]
+  },
+  "S0632": {
+    "seed_pair": [
+      "A glass of water.",
+      "Un vaso de agua."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "article",
+        "lego": "Un = A"
+      }
+    ]
+  },
+  "S0633": {
+    "seed_pair": [
+      "A large glass of water would be fine.",
+      "Un vaso grande de agua estar\u00eda bien."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "article",
+        "lego": "Un = A"
+      }
+    ]
+  },
+  "S0641": {
+    "seed_pair": [
+      "Pienso que es el rojo en esa silla.",
+      "I think that it's the red one on that chair."
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "en = on"
+      }
+    ]
+  },
+  "S0656": {
+    "seed_pair": [
+      "con todos ustedes",
+      "with you all"
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "particle",
+        "lego": "con = with"
+      }
+    ]
+  },
+  "S0661": {
+    "seed_pair": [
+      "you're all doing something",
+      "todos ustedes est\u00e1n haciendo algo"
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MMA"
+      }
+    ]
+  },
+  "S0662": {
+    "seed_pair": [
+      "you all speak it",
+      "todos ustedes lo hablan"
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MAA"
+      }
+    ]
+  },
+  "S0663": {
+    "seed_pair": [
+      "what you all said",
+      "lo que todos ustedes dijeron"
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MMA"
+      }
+    ]
+  },
+  "S0665": {
+    "seed_pair": [
+      "Do you all want to go?",
+      "\u00bfQuieren todos ustedes ir?"
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MAA"
+      }
+    ]
+  },
+  "S0666": {
+    "seed_pair": [
+      "What do you all think?",
+      "\u00bfQu\u00e9 piensan todos ustedes?"
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "AMA"
+      }
+    ]
+  },
+  "S0667": {
+    "seed_pair": [
+      "Do you all mind?",
+      "\u00bfLes importa a todos ustedes?"
+    ],
+    "violations": [
+      {
+        "type": "pragmatic_fd",
+        "subtype": "pronoun",
+        "lego": "les = you all"
+      }
+    ]
+  },
+  "S0668": {
+    "seed_pair": [
+      "I hope you'll all be able to go",
+      "Espero que todos ustedes puedan ir"
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "AAMAA"
+      }
+    ]
+  }
+}
