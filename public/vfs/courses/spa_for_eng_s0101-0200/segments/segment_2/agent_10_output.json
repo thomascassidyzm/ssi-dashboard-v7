@@ -1,0 +1,425 @@
+{
+  "agent_id": "agent_10",
+  "seed_range": "S0191-S0200",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0191",
+      "seed_pair": ["No, no me importa en absoluto.", "No I don't mind at all."],
+      "legos": [
+        {
+          "id": "S0191L01",
+          "type": "A",
+          "target": "No",
+          "known": "No",
+          "new": true
+        },
+        {
+          "id": "S0191L02",
+          "type": "A",
+          "target": "en absoluto",
+          "known": "at all",
+          "new": true
+        },
+        {
+          "id": "S0191L03",
+          "type": "M",
+          "target": "no me importa",
+          "known": "I don't mind",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["me", "to me"],
+            ["importa", "it matters"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0192",
+      "seed_pair": ["Estoy ocupado mañana por la noche.", "I'm busy tomorrow night."],
+      "legos": [
+        {
+          "id": "S0192L01",
+          "type": "M",
+          "target": "estoy ocupado",
+          "known": "I'm busy",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["ocupado", "busy"]
+          ]
+        },
+        {
+          "id": "S0192L02",
+          "type": "M",
+          "target": "mañana por la noche",
+          "known": "tomorrow night",
+          "new": true,
+          "components": [
+            ["mañana", "tomorrow"],
+            ["por", "by"],
+            ["la", "the"],
+            ["noche", "night"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0193",
+      "seed_pair": ["Lo siento pero estoy demasiado ocupado hoy.", "I'm sorry but I'm too busy today."],
+      "legos": [
+        {
+          "id": "S0193L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0193L02",
+          "type": "A",
+          "target": "hoy",
+          "known": "today",
+          "new": true
+        },
+        {
+          "id": "S0193L03",
+          "type": "M",
+          "target": "Lo siento",
+          "known": "I'm sorry",
+          "new": true,
+          "components": [
+            ["Lo", "it"],
+            ["siento", "I feel"]
+          ]
+        },
+        {
+          "id": "S0193L04",
+          "type": "M",
+          "target": "estoy demasiado ocupado",
+          "known": "I'm too busy",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["demasiado", "too"],
+            ["ocupado", "busy"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0194",
+      "seed_pair": ["¿Qué estás buscando?", "What are you looking for?"],
+      "legos": [
+        {
+          "id": "S0194L01",
+          "type": "A",
+          "target": "Qué",
+          "known": "What",
+          "new": true
+        },
+        {
+          "id": "S0194L02",
+          "type": "M",
+          "target": "estás buscando",
+          "known": "are you looking for",
+          "new": true,
+          "components": [
+            ["estás", "you are"],
+            ["buscando", "looking for"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0195",
+      "seed_pair": ["Estoy intentando encontrar el dinero que dejé en la mesa.", "I'm trying to find the money I left on the table."],
+      "legos": [
+        {
+          "id": "S0195L01",
+          "type": "A",
+          "target": "encontrar",
+          "known": "to find",
+          "new": true
+        },
+        {
+          "id": "S0195L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0195L03",
+          "type": "A",
+          "target": "dejé",
+          "known": "I left",
+          "new": true
+        },
+        {
+          "id": "S0195L04",
+          "type": "M",
+          "target": "Estoy intentando",
+          "known": "I'm trying",
+          "new": true,
+          "components": [
+            ["Estoy", "I am"],
+            ["intentando", "trying"]
+          ]
+        },
+        {
+          "id": "S0195L05",
+          "type": "M",
+          "target": "el dinero",
+          "known": "the money",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["dinero", "money"]
+          ]
+        },
+        {
+          "id": "S0195L06",
+          "type": "M",
+          "target": "en la mesa",
+          "known": "on the table",
+          "new": true,
+          "components": [
+            ["en", "on"],
+            ["la", "the"],
+            ["mesa", "table"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0196",
+      "seed_pair": ["¿Has oído la última idea?", "Have you heard the latest idea?"],
+      "legos": [
+        {
+          "id": "S0196L01",
+          "type": "A",
+          "target": "la",
+          "known": "the",
+          "new": true
+        },
+        {
+          "id": "S0196L02",
+          "type": "A",
+          "target": "última",
+          "known": "latest",
+          "new": true
+        },
+        {
+          "id": "S0196L03",
+          "type": "A",
+          "target": "idea",
+          "known": "idea",
+          "new": true
+        },
+        {
+          "id": "S0196L04",
+          "type": "M",
+          "target": "Has oído",
+          "known": "Have you heard",
+          "new": true,
+          "components": [
+            ["Has", "you have"],
+            ["oído", "heard"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0197",
+      "seed_pair": ["Mi hijo trabaja como profesor.", "My son works as a teacher."],
+      "legos": [
+        {
+          "id": "S0197L01",
+          "type": "A",
+          "target": "trabaja",
+          "known": "works",
+          "new": true
+        },
+        {
+          "id": "S0197L02",
+          "type": "A",
+          "target": "como",
+          "known": "as",
+          "new": true
+        },
+        {
+          "id": "S0197L03",
+          "type": "A",
+          "target": "profesor",
+          "known": "a teacher",
+          "new": true
+        },
+        {
+          "id": "S0197L04",
+          "type": "M",
+          "target": "Mi hijo",
+          "known": "My son",
+          "new": true,
+          "components": [
+            ["Mi", "My"],
+            ["hijo", "son"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0198",
+      "seed_pair": ["Mi hija trabaja para el consejo.", "My daughter works for the council."],
+      "legos": [
+        {
+          "id": "S0198L01",
+          "type": "A",
+          "target": "trabaja",
+          "known": "works",
+          "new": true
+        },
+        {
+          "id": "S0198L02",
+          "type": "A",
+          "target": "para",
+          "known": "for",
+          "new": true
+        },
+        {
+          "id": "S0198L03",
+          "type": "M",
+          "target": "Mi hija",
+          "known": "My daughter",
+          "new": true,
+          "components": [
+            ["Mi", "My"],
+            ["hija", "daughter"]
+          ]
+        },
+        {
+          "id": "S0198L04",
+          "type": "M",
+          "target": "el consejo",
+          "known": "the council",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["consejo", "council"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0199",
+      "seed_pair": ["Mi amigo solía trabajar en una oficina.", "My friend used to work in an office."],
+      "legos": [
+        {
+          "id": "S0199L01",
+          "type": "A",
+          "target": "en",
+          "known": "in",
+          "new": true
+        },
+        {
+          "id": "S0199L02",
+          "type": "M",
+          "target": "Mi amigo",
+          "known": "My friend",
+          "new": true,
+          "components": [
+            ["Mi", "My"],
+            ["amigo", "friend"]
+          ]
+        },
+        {
+          "id": "S0199L03",
+          "type": "M",
+          "target": "solía trabajar",
+          "known": "used to work",
+          "new": true,
+          "components": [
+            ["solía", "used to"],
+            ["trabajar", "work"]
+          ]
+        },
+        {
+          "id": "S0199L04",
+          "type": "M",
+          "target": "una oficina",
+          "known": "an office",
+          "new": true,
+          "components": [
+            ["una", "an"],
+            ["oficina", "office"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0200",
+      "seed_pair": ["Dicen que quieren asegurarse de que terminemos todo a tiempo.", "They say they want to make sure that we finish everything in time."],
+      "legos": [
+        {
+          "id": "S0200L01",
+          "type": "A",
+          "target": "Dicen",
+          "known": "They say",
+          "new": true
+        },
+        {
+          "id": "S0200L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0200L03",
+          "type": "A",
+          "target": "quieren",
+          "known": "they want",
+          "new": true
+        },
+        {
+          "id": "S0200L04",
+          "type": "A",
+          "target": "asegurarse",
+          "known": "to make sure",
+          "new": true
+        },
+        {
+          "id": "S0200L05",
+          "type": "A",
+          "target": "todo",
+          "known": "everything",
+          "new": true
+        },
+        {
+          "id": "S0200L06",
+          "type": "M",
+          "target": "de que terminemos",
+          "known": "that we finish",
+          "new": true,
+          "components": [
+            ["de que", "that"],
+            ["terminemos", "we finish"]
+          ]
+        },
+        {
+          "id": "S0200L07",
+          "type": "M",
+          "target": "a tiempo",
+          "known": "in time",
+          "new": true,
+          "components": [
+            ["a", "in"],
+            ["tiempo", "time"]
+          ]
+        }
+      ]
+    }
+  ]
+}
