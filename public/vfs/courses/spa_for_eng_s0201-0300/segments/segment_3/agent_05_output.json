@@ -1,0 +1,501 @@
+{
+  "agent_id": "agent_05",
+  "seed_range": "S0241-S0250",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0241",
+      "seed_pair": ["I don't want to give it to him.", "No quiero dárselo."],
+      "extraction_notes": "Clitic pronoun construction 'dárselo' = dar+se+lo (to give+to him+it) must be M-type due to complexity. Negation 'no' splits from verb.",
+      "legos": [
+        {
+          "id": "S0241L01",
+          "type": "A",
+          "target": "no",
+          "known": "don't",
+          "new": true
+        },
+        {
+          "id": "S0241L02",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "new": true
+        },
+        {
+          "id": "S0241L03",
+          "type": "M",
+          "target": "dárselo",
+          "known": "to give it to him",
+          "new": true,
+          "components": [
+            ["dar", "to give"],
+            ["se", "to him"],
+            ["lo", "it"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0242",
+      "seed_pair": ["I want to give her more time.", "Quiero darle más tiempo."],
+      "extraction_notes": "Clitic pronoun 'darle' = dar+le. 'her' alone fails FD (le/la/ella ambiguous), must pair with verb.",
+      "legos": [
+        {
+          "id": "S0242L01",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "new": true
+        },
+        {
+          "id": "S0242L02",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
+        },
+        {
+          "id": "S0242L03",
+          "type": "A",
+          "target": "tiempo",
+          "known": "time",
+          "new": true
+        },
+        {
+          "id": "S0242L04",
+          "type": "M",
+          "target": "darle",
+          "known": "to give her",
+          "new": true,
+          "components": [
+            ["dar", "to give"],
+            ["le", "her"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0243",
+      "seed_pair": ["I'm going to ask for the same thing to eat.", "Voy a pedir la misma cosa para comer."],
+      "extraction_notes": "Future construction 'voy a'. Purpose infinitive 'to eat' = 'para comer' (for to-eat). Articles need nouns per Pragmatic FD.",
+      "legos": [
+        {
+          "id": "S0243L01",
+          "type": "A",
+          "target": "pedir",
+          "known": "ask for",
+          "new": true
+        },
+        {
+          "id": "S0243L02",
+          "type": "M",
+          "target": "Voy a",
+          "known": "I'm going to",
+          "new": true,
+          "components": [
+            ["Voy", "I go"],
+            ["a", "to"]
+          ]
+        },
+        {
+          "id": "S0243L03",
+          "type": "M",
+          "target": "la misma cosa",
+          "known": "the same thing",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["misma", "same"],
+            ["cosa", "thing"]
+          ]
+        },
+        {
+          "id": "S0243L04",
+          "type": "M",
+          "target": "para comer",
+          "known": "to eat",
+          "new": true,
+          "components": [
+            ["para", "to"],
+            ["comer", "eat"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0244",
+      "seed_pair": ["I've learnt a lot already", "Ya he aprendido mucho."],
+      "extraction_notes": "Present perfect 'he aprendido' = haber auxiliary + past participle. Different word order (Ya comes first in Spanish).",
+      "legos": [
+        {
+          "id": "S0244L01",
+          "type": "A",
+          "target": "mucho",
+          "known": "a lot",
+          "new": true
+        },
+        {
+          "id": "S0244L02",
+          "type": "A",
+          "target": "Ya",
+          "known": "already",
+          "new": true
+        },
+        {
+          "id": "S0244L03",
+          "type": "M",
+          "target": "he aprendido",
+          "known": "I've learnt",
+          "new": true,
+          "components": [
+            ["he", "I have"],
+            ["aprendido", "learnt"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0245",
+      "seed_pair": ["I'm happy with how much I've done in a short time", "Estoy contento con cuánto he hecho en poco tiempo."],
+      "extraction_notes": "Estar+adjective for emotions. 'poco tiempo' (little/short time) is semantic unit. Present perfect 'he hecho'.",
+      "legos": [
+        {
+          "id": "S0245L01",
+          "type": "A",
+          "target": "en",
+          "known": "in",
+          "new": true
+        },
+        {
+          "id": "S0245L02",
+          "type": "A",
+          "target": "con",
+          "known": "with",
+          "new": true
+        },
+        {
+          "id": "S0245L03",
+          "type": "A",
+          "target": "cuánto",
+          "known": "how much",
+          "new": true
+        },
+        {
+          "id": "S0245L04",
+          "type": "M",
+          "target": "Estoy contento",
+          "known": "I'm happy",
+          "new": true,
+          "components": [
+            ["Estoy", "I am"],
+            ["contento", "happy"]
+          ]
+        },
+        {
+          "id": "S0245L05",
+          "type": "M",
+          "target": "he hecho",
+          "known": "I've done",
+          "new": true,
+          "components": [
+            ["he", "I have"],
+            ["hecho", "done"]
+          ]
+        },
+        {
+          "id": "S0245L06",
+          "type": "M",
+          "target": "poco tiempo",
+          "known": "a short time",
+          "new": true,
+          "components": [
+            ["poco", "short"],
+            ["tiempo", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0246",
+      "seed_pair": ["I wanted her to help you but she was too busy.", "Quería que ella te ayudara pero estaba demasiado ocupada."],
+      "extraction_notes": "Subjunctive 'ayudara' requires trigger 'que' per FD validation rules. English infinitive → Spanish subjunctive pattern. 'estaba' has implied subject pronoun.",
+      "legos": [
+        {
+          "id": "S0246L01",
+          "type": "A",
+          "target": "Quería",
+          "known": "I wanted",
+          "new": true
+        },
+        {
+          "id": "S0246L02",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0246L03",
+          "type": "A",
+          "target": "estaba",
+          "known": "she was",
+          "new": true
+        },
+        {
+          "id": "S0246L04",
+          "type": "A",
+          "target": "demasiado",
+          "known": "too",
+          "new": true
+        },
+        {
+          "id": "S0246L05",
+          "type": "A",
+          "target": "ocupada",
+          "known": "busy",
+          "new": true
+        },
+        {
+          "id": "S0246L06",
+          "type": "M",
+          "target": "que ella te ayudara",
+          "known": "her to help you",
+          "new": true,
+          "components": [
+            ["que", "to"],
+            ["ella", "her"],
+            ["te", "you"],
+            ["ayudara", "help"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0247",
+      "seed_pair": ["I thought that book was fairly good.", "Pensé que ese libro era bastante bueno."],
+      "extraction_notes": "Spanish requires conjunction 'que' after 'pensé', English omits it. 'that' in English is demonstrative 'ese', not conjunction.",
+      "legos": [
+        {
+          "id": "S0247L01",
+          "type": "A",
+          "target": "ese",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0247L02",
+          "type": "A",
+          "target": "libro",
+          "known": "book",
+          "new": true
+        },
+        {
+          "id": "S0247L03",
+          "type": "A",
+          "target": "era",
+          "known": "was",
+          "new": true
+        },
+        {
+          "id": "S0247L04",
+          "type": "A",
+          "target": "bastante",
+          "known": "fairly",
+          "new": true
+        },
+        {
+          "id": "S0247L05",
+          "type": "A",
+          "target": "bueno",
+          "known": "good",
+          "new": true
+        },
+        {
+          "id": "S0247L06",
+          "type": "M",
+          "target": "Pensé que",
+          "known": "I thought",
+          "new": true,
+          "components": [
+            ["Pensé", "I thought"],
+            ["que", "that"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0248",
+      "seed_pair": ["I thought the film was complete rubbish and I want my money back.", "Pensé que la película era basura completa y quiero mi dinero de vuelta."],
+      "extraction_notes": "Articles need nouns per Pragmatic FD ('the film', 'my money'). 'complete' ambiguous (adj/verb). 'de vuelta' = idiomatic 'back'.",
+      "legos": [
+        {
+          "id": "S0248L01",
+          "type": "A",
+          "target": "era",
+          "known": "was",
+          "new": true
+        },
+        {
+          "id": "S0248L02",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0248L03",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "new": true
+        },
+        {
+          "id": "S0248L04",
+          "type": "M",
+          "target": "Pensé que",
+          "known": "I thought",
+          "new": true,
+          "components": [
+            ["Pensé", "I thought"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0248L05",
+          "type": "M",
+          "target": "la película",
+          "known": "the film",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["película", "film"]
+          ]
+        },
+        {
+          "id": "S0248L06",
+          "type": "M",
+          "target": "basura completa",
+          "known": "complete rubbish",
+          "new": true,
+          "components": [
+            ["basura", "rubbish"],
+            ["completa", "complete"]
+          ]
+        },
+        {
+          "id": "S0248L07",
+          "type": "M",
+          "target": "mi dinero",
+          "known": "my money",
+          "new": true,
+          "components": [
+            ["mi", "my"],
+            ["dinero", "money"]
+          ]
+        },
+        {
+          "id": "S0248L08",
+          "type": "M",
+          "target": "de vuelta",
+          "known": "back",
+          "new": true,
+          "components": [
+            ["de", "of"],
+            ["vuelta", "return"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0249",
+      "seed_pair": ["I want you to help me before you go.", "Quiero que me ayudes antes de que te vayas."],
+      "extraction_notes": "Subjunctive 'ayudes' and 'vayas' both require triggers. 'antes de que' always triggers subjunctive. English infinitive → Spanish subjunctive.",
+      "legos": [
+        {
+          "id": "S0249L01",
+          "type": "A",
+          "target": "Quiero",
+          "known": "I want",
+          "new": true
+        },
+        {
+          "id": "S0249L02",
+          "type": "M",
+          "target": "que me ayudes",
+          "known": "you to help me",
+          "new": true,
+          "components": [
+            ["que", "to"],
+            ["me", "me"],
+            ["ayudes", "you help"]
+          ]
+        },
+        {
+          "id": "S0249L03",
+          "type": "M",
+          "target": "antes de que te vayas",
+          "known": "before you go",
+          "new": true,
+          "components": [
+            ["antes", "before"],
+            ["de", "of"],
+            ["que", "that"],
+            ["te", "you"],
+            ["vayas", "go"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0250",
+      "seed_pair": ["Can you tell me something else before I answer?", "¿Puedes decirme algo más antes de que responda?"],
+      "extraction_notes": "Clitic pronoun 'decirme' = decir+me. 'else' needs context (más/otro ambiguous). 'antes de que' triggers subjunctive 'responda'.",
+      "legos": [
+        {
+          "id": "S0250L01",
+          "type": "A",
+          "target": "Puedes",
+          "known": "Can you",
+          "new": true
+        },
+        {
+          "id": "S0250L02",
+          "type": "M",
+          "target": "decirme",
+          "known": "tell me",
+          "new": true,
+          "components": [
+            ["decir", "tell"],
+            ["me", "me"]
+          ]
+        },
+        {
+          "id": "S0250L03",
+          "type": "M",
+          "target": "algo más",
+          "known": "something else",
+          "new": true,
+          "components": [
+            ["algo", "something"],
+            ["más", "else"]
+          ]
+        },
+        {
+          "id": "S0250L04",
+          "type": "M",
+          "target": "antes de que responda",
+          "known": "before I answer",
+          "new": true,
+          "components": [
+            ["antes", "before"],
+            ["de", "of"],
+            ["que", "that"],
+            ["responda", "I answer"]
+          ]
+        }
+      ]
+    }
+  ]
+}
