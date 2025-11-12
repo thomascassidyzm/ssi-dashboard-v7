@@ -1,0 +1,384 @@
+{
+  "agent_id": "agent_03",
+  "seed_range": "S0221-S0230",
+  "extracted_at": "2025-11-12T00:00:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0221",
+      "seed_pair": ["I watched the football and then I watched a film.", "Vi el fútbol y luego vi una película."],
+      "extraction_notes": "Articles paired with nouns per Pragmatic FD (article alone fails FD due to gender ambiguity). 'Vi' appears twice but extracted once with reference.",
+      "legos": [
+        {
+          "id": "S0221L01",
+          "type": "A",
+          "target": "vi",
+          "known": "I watched",
+          "new": true
+        },
+        {
+          "id": "S0221L02",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0221L03",
+          "type": "A",
+          "target": "luego",
+          "known": "then",
+          "new": true
+        },
+        {
+          "id": "S0221L04",
+          "type": "M",
+          "target": "el fútbol",
+          "known": "the football",
+          "new": true,
+          "components": [["el", "the"], ["fútbol", "football"]]
+        },
+        {
+          "id": "S0221L05",
+          "type": "M",
+          "target": "una película",
+          "known": "a film",
+          "new": true,
+          "components": [["una", "a"], ["película", "film"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0222",
+      "seed_pair": ["He's trying to tell me what he wants", "Está intentando decirme lo que quiere."],
+      "extraction_notes": "Present continuous 'está intentando' kept as M-type. 'decirme' is enclitic pronoun (fused infinitive+pronoun) kept as M-type for correct tiling. 'lo que' kept paired as 'what' fails FD alone (qué vs lo que).",
+      "legos": [
+        {
+          "id": "S0222L01",
+          "type": "A",
+          "target": "quiere",
+          "known": "he wants",
+          "new": true
+        },
+        {
+          "id": "S0222L02",
+          "type": "M",
+          "target": "está intentando",
+          "known": "He's trying",
+          "new": true,
+          "components": [["Está", "He is"], ["intentando", "trying"]]
+        },
+        {
+          "id": "S0222L03",
+          "type": "M",
+          "target": "decirme",
+          "known": "to tell me",
+          "new": true,
+          "components": [["decir", "to tell"], ["me", "me"]]
+        },
+        {
+          "id": "S0222L04",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [["lo", "the/it"], ["que", "that/what"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0223",
+      "seed_pair": ["He's going to ask you tomorrow.", "Va a preguntarte mañana."],
+      "extraction_notes": "'va a' is ir a + infinitive future construction. 'preguntarte' is enclitic pronoun (fused infinitive+pronoun).",
+      "legos": [
+        {
+          "id": "S0223L01",
+          "type": "A",
+          "target": "mañana",
+          "known": "tomorrow",
+          "new": true
+        },
+        {
+          "id": "S0223L02",
+          "type": "M",
+          "target": "va a",
+          "known": "He's going to",
+          "new": true,
+          "components": [["va", "goes/is going"], ["a", "to"]]
+        },
+        {
+          "id": "S0223L03",
+          "type": "M",
+          "target": "preguntarte",
+          "known": "ask you",
+          "new": true,
+          "components": [["preguntar", "to ask"], ["te", "you"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0224",
+      "seed_pair": ["He's just started to learn.", "Acaba de empezar a aprender."],
+      "extraction_notes": "'acaba de empezar' is the 'has just started' construction. 'a aprender' kept together as 'to' alone fails FD (a vs para).",
+      "legos": [
+        {
+          "id": "S0224L01",
+          "type": "M",
+          "target": "acaba de empezar",
+          "known": "He's just started",
+          "new": true,
+          "components": [["acaba", "finishes/has"], ["de", "of"], ["empezar", "to start"]]
+        },
+        {
+          "id": "S0224L02",
+          "type": "M",
+          "target": "a aprender",
+          "known": "to learn",
+          "new": true,
+          "components": [["a", "to"], ["aprender", "to learn"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0225",
+      "seed_pair": ["He would give you an answer if he could.", "Te daría una respuesta si pudiera."],
+      "extraction_notes": "'te' is indirect object pronoun (word order differs from English but both are A-type). 'si pudiera' merged per FD validation - 'pudiera' alone fails FD (subjunctive needs trigger context).",
+      "legos": [
+        {
+          "id": "S0225L01",
+          "type": "A",
+          "target": "te",
+          "known": "you",
+          "new": true
+        },
+        {
+          "id": "S0225L02",
+          "type": "A",
+          "target": "daría",
+          "known": "he would give",
+          "new": true
+        },
+        {
+          "id": "S0225L03",
+          "type": "M",
+          "target": "una respuesta",
+          "known": "an answer",
+          "new": true,
+          "components": [["una", "an"], ["respuesta", "answer"]]
+        },
+        {
+          "id": "S0225L04",
+          "type": "M",
+          "target": "si pudiera",
+          "known": "if he could",
+          "new": true,
+          "components": [["si", "if"], ["pudiera", "he could"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0226",
+      "seed_pair": ["The man is trying to help me.", "El hombre está intentando ayudarme."],
+      "extraction_notes": "All M-types: article+noun, present continuous, and enclitic pronoun patterns.",
+      "legos": [
+        {
+          "id": "S0226L01",
+          "type": "M",
+          "target": "el hombre",
+          "known": "the man",
+          "new": true,
+          "components": [["el", "the"], ["hombre", "man"]]
+        },
+        {
+          "id": "S0226L02",
+          "type": "M",
+          "target": "está intentando",
+          "known": "is trying",
+          "new": true,
+          "components": [["está", "is"], ["intentando", "trying"]]
+        },
+        {
+          "id": "S0226L03",
+          "type": "M",
+          "target": "ayudarme",
+          "known": "to help me",
+          "new": true,
+          "components": [["ayudar", "to help"], ["me", "me"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0227",
+      "seed_pair": ["That man is going to tell me something new.", "Ese hombre va a decirme algo nuevo."],
+      "extraction_notes": "'algo' and 'nuevo' both pass Pragmatic FD test (can generate 5+ practice phrases independently). Demonstrative+noun paired due to FD failure of 'that' alone.",
+      "legos": [
+        {
+          "id": "S0227L01",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0227L02",
+          "type": "A",
+          "target": "nuevo",
+          "known": "new",
+          "new": true
+        },
+        {
+          "id": "S0227L03",
+          "type": "M",
+          "target": "ese hombre",
+          "known": "that man",
+          "new": true,
+          "components": [["ese", "that"], ["hombre", "man"]]
+        },
+        {
+          "id": "S0227L04",
+          "type": "M",
+          "target": "va a",
+          "known": "is going to",
+          "new": true,
+          "components": [["va", "goes/is going"], ["a", "to"]]
+        },
+        {
+          "id": "S0227L05",
+          "type": "M",
+          "target": "decirme",
+          "known": "tell me",
+          "new": true,
+          "components": [["decir", "to tell"], ["me", "me"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0228",
+      "seed_pair": ["That man has just started to practise speaking.", "Ese hombre acaba de empezar a practicar el habla."],
+      "extraction_notes": "'a practicar' kept together (required preposition after empezar). 'el habla' is article+noun for gerund 'speaking'.",
+      "legos": [
+        {
+          "id": "S0228L01",
+          "type": "M",
+          "target": "ese hombre",
+          "known": "that man",
+          "new": true,
+          "components": [["ese", "that"], ["hombre", "man"]]
+        },
+        {
+          "id": "S0228L02",
+          "type": "M",
+          "target": "acaba de empezar",
+          "known": "has just started",
+          "new": true,
+          "components": [["acaba", "finishes/has"], ["de", "of"], ["empezar", "to start"]]
+        },
+        {
+          "id": "S0228L03",
+          "type": "M",
+          "target": "a practicar",
+          "known": "to practise",
+          "new": true,
+          "components": [["a", "to"], ["practicar", "to practise"]]
+        },
+        {
+          "id": "S0228L04",
+          "type": "M",
+          "target": "el habla",
+          "known": "speaking",
+          "new": true,
+          "components": [["el", "the"], ["habla", "speech/speaking"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0229",
+      "seed_pair": ["That woman would help you if she could.", "Esa mujer te ayudaría si pudiera."],
+      "extraction_notes": "Feminine forms: 'esa mujer'. 'ayudaría' is conditional. 'si pudiera' keeps subjunctive with trigger.",
+      "legos": [
+        {
+          "id": "S0229L01",
+          "type": "A",
+          "target": "te",
+          "known": "you",
+          "new": true
+        },
+        {
+          "id": "S0229L02",
+          "type": "A",
+          "target": "ayudaría",
+          "known": "would help",
+          "new": true
+        },
+        {
+          "id": "S0229L03",
+          "type": "M",
+          "target": "esa mujer",
+          "known": "that woman",
+          "new": true,
+          "components": [["esa", "that"], ["mujer", "woman"]]
+        },
+        {
+          "id": "S0229L04",
+          "type": "M",
+          "target": "si pudiera",
+          "known": "if she could",
+          "new": true,
+          "components": [["si", "if"], ["pudiera", "she could"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0230",
+      "seed_pair": ["I know a young man who wants to work with you.", "Conozco a un hombre joven que quiere trabajar contigo."],
+      "extraction_notes": "'conozco a' includes personal 'a' (required before person direct objects). 'contigo' is fused form of con+ti. Adjective follows noun in Spanish.",
+      "legos": [
+        {
+          "id": "S0230L01",
+          "type": "A",
+          "target": "que",
+          "known": "who",
+          "new": true
+        },
+        {
+          "id": "S0230L02",
+          "type": "A",
+          "target": "quiere",
+          "known": "wants",
+          "new": true
+        },
+        {
+          "id": "S0230L03",
+          "type": "A",
+          "target": "trabajar",
+          "known": "to work",
+          "new": true
+        },
+        {
+          "id": "S0230L04",
+          "type": "M",
+          "target": "conozco a",
+          "known": "I know",
+          "new": true,
+          "components": [["conozco", "I know"], ["a", "(personal a)"]]
+        },
+        {
+          "id": "S0230L05",
+          "type": "M",
+          "target": "un hombre joven",
+          "known": "a young man",
+          "new": true,
+          "components": [["un", "a"], ["hombre", "man"], ["joven", "young"]]
+        },
+        {
+          "id": "S0230L06",
+          "type": "M",
+          "target": "contigo",
+          "known": "with you",
+          "new": true,
+          "components": [["con", "with"], ["tigo", "you"]]
+        }
+      ]
+    }
+  ]
+}
