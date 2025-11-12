@@ -1,0 +1,109 @@
+{
+  "agent_id": "agent_02",
+  "seed_range": "S0113-S0114",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0113",
+      "seed_pair": ["Why can't I remember what you said?", "¿Por qué no puedo recordar lo que dijiste?"],
+      "legos": [
+        {
+          "id": "S0113L01",
+          "type": "A",
+          "target": "dijiste",
+          "known": "you said",
+          "new": true
+        },
+        {
+          "id": "S0113L02",
+          "type": "M",
+          "target": "por qué",
+          "known": "why",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["qué", "what"]
+          ]
+        },
+        {
+          "id": "S0113L03",
+          "type": "M",
+          "target": "no puedo recordar",
+          "known": "I can't remember",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["puedo", "I can"],
+            ["recordar", "to remember"]
+          ]
+        },
+        {
+          "id": "S0113L04",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [
+            ["lo", "it"],
+            ["que", "that"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0114",
+      "seed_pair": ["I feel as if I'm doing worse today than yesterday.", "Siento como si estuviera haciendo peor hoy que ayer."],
+      "legos": [
+        {
+          "id": "S0114L01",
+          "type": "A",
+          "target": "siento",
+          "known": "I feel",
+          "new": true
+        },
+        {
+          "id": "S0114L02",
+          "type": "A",
+          "target": "peor",
+          "known": "worse",
+          "new": true
+        },
+        {
+          "id": "S0114L03",
+          "type": "A",
+          "target": "hoy",
+          "known": "today",
+          "new": true
+        },
+        {
+          "id": "S0114L04",
+          "type": "A",
+          "target": "que",
+          "known": "than",
+          "new": true
+        },
+        {
+          "id": "S0114L05",
+          "type": "A",
+          "target": "ayer",
+          "known": "yesterday",
+          "new": true
+        },
+        {
+          "id": "S0114L06",
+          "type": "M",
+          "target": "como si estuviera haciendo",
+          "known": "as if I'm doing",
+          "new": true,
+          "components": [
+            ["como", "as"],
+            ["si", "if"],
+            ["estuviera", "I were"],
+            ["haciendo", "doing"]
+          ]
+        }
+      ]
+    }
+  ]
+}
