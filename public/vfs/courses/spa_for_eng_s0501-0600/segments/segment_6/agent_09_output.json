@@ -1,0 +1,565 @@
+{
+  "agent_id": "agent_09",
+  "seed_range": "S0581-S0590",
+  "extracted_at": "2025-11-12T00:00:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0581",
+      "seed_pair": ["He'd like to know a little more about what it's like.", "Le gustaría saber un poco más sobre cómo es."],
+      "legos": [
+        {
+          "id": "S0581L01",
+          "type": "A",
+          "target": "saber",
+          "known": "to know",
+          "new": true
+        },
+        {
+          "id": "S0581L02",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
+        },
+        {
+          "id": "S0581L03",
+          "type": "A",
+          "target": "sobre",
+          "known": "about",
+          "new": true
+        },
+        {
+          "id": "S0581L04",
+          "type": "M",
+          "target": "le gustaría",
+          "known": "he'd like",
+          "new": true,
+          "components": [
+            ["le", "to him"],
+            ["gustaría", "would like"]
+          ]
+        },
+        {
+          "id": "S0581L05",
+          "type": "M",
+          "target": "un poco",
+          "known": "a little",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["poco", "little"]
+          ]
+        },
+        {
+          "id": "S0581L06",
+          "type": "M",
+          "target": "cómo es",
+          "known": "what it's like",
+          "new": true,
+          "components": [
+            ["cómo", "how/what"],
+            ["es", "it is"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0582",
+      "seed_pair": ["What's it like to grow up here?", "¿Cómo es crecer aquí?"],
+      "legos": [
+        {
+          "id": "S0582L01",
+          "type": "A",
+          "target": "crecer",
+          "known": "to grow up",
+          "new": true
+        },
+        {
+          "id": "S0582L02",
+          "type": "A",
+          "target": "aquí",
+          "known": "here",
+          "new": true
+        },
+        {
+          "id": "S0582L03",
+          "type": "M",
+          "target": "cómo es",
+          "known": "what it's like",
+          "new": true,
+          "components": [
+            ["cómo", "how/what"],
+            ["es", "it is"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0583",
+      "seed_pair": ["What's it like in this part of the world?", "¿Cómo es en esta parte del mundo?"],
+      "legos": [
+        {
+          "id": "S0583L01",
+          "type": "A",
+          "target": "en",
+          "known": "in",
+          "new": true
+        },
+        {
+          "id": "S0583L02",
+          "type": "A",
+          "target": "mundo",
+          "known": "world",
+          "new": true
+        },
+        {
+          "id": "S0583L03",
+          "type": "M",
+          "target": "cómo es",
+          "known": "what it's like",
+          "new": true,
+          "components": [
+            ["cómo", "how/what"],
+            ["es", "it is"]
+          ]
+        },
+        {
+          "id": "S0583L04",
+          "type": "M",
+          "target": "esta parte",
+          "known": "this part",
+          "new": true,
+          "components": [
+            ["esta", "this"],
+            ["parte", "part"]
+          ]
+        },
+        {
+          "id": "S0583L05",
+          "type": "M",
+          "target": "del",
+          "known": "of the",
+          "new": true,
+          "components": [
+            ["de", "of"],
+            ["el", "the"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0584",
+      "seed_pair": ["What's it like to wake up every morning and see the mountains?", "¿Cómo es despertar cada mañana y ver las montañas?"],
+      "legos": [
+        {
+          "id": "S0584L01",
+          "type": "A",
+          "target": "despertar",
+          "known": "to wake up",
+          "new": true
+        },
+        {
+          "id": "S0584L02",
+          "type": "A",
+          "target": "cada",
+          "known": "every",
+          "new": true
+        },
+        {
+          "id": "S0584L03",
+          "type": "A",
+          "target": "mañana",
+          "known": "morning",
+          "new": true
+        },
+        {
+          "id": "S0584L04",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0584L05",
+          "type": "A",
+          "target": "ver",
+          "known": "to see",
+          "new": true
+        },
+        {
+          "id": "S0584L06",
+          "type": "M",
+          "target": "cómo es",
+          "known": "what it's like",
+          "new": true,
+          "components": [
+            ["cómo", "how/what"],
+            ["es", "it is"]
+          ]
+        },
+        {
+          "id": "S0584L07",
+          "type": "M",
+          "target": "las montañas",
+          "known": "the mountains",
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["montañas", "mountains"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0585",
+      "seed_pair": ["I can see the mountains out of my bedroom window.", "Puedo ver las montañas desde la ventana de mi dormitorio."],
+      "legos": [
+        {
+          "id": "S0585L01",
+          "type": "A",
+          "target": "puedo",
+          "known": "I can",
+          "new": true
+        },
+        {
+          "id": "S0585L02",
+          "type": "A",
+          "target": "ver",
+          "known": "to see",
+          "new": true
+        },
+        {
+          "id": "S0585L03",
+          "type": "A",
+          "target": "desde",
+          "known": "out of",
+          "new": true
+        },
+        {
+          "id": "S0585L04",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "new": true
+        },
+        {
+          "id": "S0585L05",
+          "type": "A",
+          "target": "mi",
+          "known": "my",
+          "new": true
+        },
+        {
+          "id": "S0585L06",
+          "type": "A",
+          "target": "dormitorio",
+          "known": "bedroom",
+          "new": true
+        },
+        {
+          "id": "S0585L07",
+          "type": "M",
+          "target": "las montañas",
+          "known": "the mountains",
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["montañas", "mountains"]
+          ]
+        },
+        {
+          "id": "S0585L08",
+          "type": "M",
+          "target": "la ventana",
+          "known": "the window",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["ventana", "window"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0586",
+      "seed_pair": ["I want twenty boiled eggs.", "Quiero veinte huevos cocidos."],
+      "legos": [
+        {
+          "id": "S0586L01",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "new": true
+        },
+        {
+          "id": "S0586L02",
+          "type": "A",
+          "target": "veinte",
+          "known": "twenty",
+          "new": true
+        },
+        {
+          "id": "S0586L03",
+          "type": "A",
+          "target": "huevos",
+          "known": "eggs",
+          "new": true
+        },
+        {
+          "id": "S0586L04",
+          "type": "A",
+          "target": "cocidos",
+          "known": "boiled",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0587",
+      "seed_pair": ["She used to insist that we had eggs for supper.", "Ella solía insistir en que teníamos huevos para la cena."],
+      "legos": [
+        {
+          "id": "S0587L01",
+          "type": "A",
+          "target": "insistir",
+          "known": "to insist",
+          "new": true
+        },
+        {
+          "id": "S0587L02",
+          "type": "A",
+          "target": "teníamos",
+          "known": "we had",
+          "new": true
+        },
+        {
+          "id": "S0587L03",
+          "type": "A",
+          "target": "huevos",
+          "known": "eggs",
+          "new": true
+        },
+        {
+          "id": "S0587L04",
+          "type": "A",
+          "target": "para",
+          "known": "for",
+          "new": true
+        },
+        {
+          "id": "S0587L05",
+          "type": "M",
+          "target": "ella solía",
+          "known": "she used to",
+          "new": true,
+          "components": [
+            ["ella", "she"],
+            ["solía", "used to"]
+          ]
+        },
+        {
+          "id": "S0587L06",
+          "type": "M",
+          "target": "en que",
+          "known": "that",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0587L07",
+          "type": "M",
+          "target": "la cena",
+          "known": "supper",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["cena", "supper"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0588",
+      "seed_pair": ["So I wanted to grow up and leave home.", "Así que quería crecer y salir de casa."],
+      "legos": [
+        {
+          "id": "S0588L01",
+          "type": "A",
+          "target": "quería",
+          "known": "I wanted",
+          "new": true
+        },
+        {
+          "id": "S0588L02",
+          "type": "A",
+          "target": "crecer",
+          "known": "to grow up",
+          "new": true
+        },
+        {
+          "id": "S0588L03",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0588L04",
+          "type": "A",
+          "target": "salir",
+          "known": "to leave",
+          "new": true
+        },
+        {
+          "id": "S0588L05",
+          "type": "M",
+          "target": "así que",
+          "known": "so",
+          "new": true,
+          "components": [
+            ["así", "so/thus"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0588L06",
+          "type": "M",
+          "target": "de casa",
+          "known": "home",
+          "new": true,
+          "components": [
+            ["de", "from"],
+            ["casa", "house/home"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0589",
+      "seed_pair": ["She told me she'd just seen the last bus.", "Ella me dijo que acababa de ver el último autobús."],
+      "legos": [
+        {
+          "id": "S0589L01",
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "new": true
+        },
+        {
+          "id": "S0589L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0589L03",
+          "type": "A",
+          "target": "ver",
+          "known": "to see",
+          "new": true
+        },
+        {
+          "id": "S0589L04",
+          "type": "A",
+          "target": "autobús",
+          "known": "bus",
+          "new": true
+        },
+        {
+          "id": "S0589L05",
+          "type": "M",
+          "target": "me dijo",
+          "known": "told me",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["dijo", "told"]
+          ]
+        },
+        {
+          "id": "S0589L06",
+          "type": "M",
+          "target": "acababa de",
+          "known": "had just",
+          "new": true,
+          "components": [
+            ["acababa", "had"],
+            ["de", "just"]
+          ]
+        },
+        {
+          "id": "S0589L07",
+          "type": "M",
+          "target": "el último",
+          "known": "the last",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["último", "last"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0590",
+      "seed_pair": ["I saw the last bus leaving the station.", "Vi el último autobús saliendo de la estación."],
+      "legos": [
+        {
+          "id": "S0590L01",
+          "type": "A",
+          "target": "vi",
+          "known": "I saw",
+          "new": true
+        },
+        {
+          "id": "S0590L02",
+          "type": "A",
+          "target": "autobús",
+          "known": "bus",
+          "new": true
+        },
+        {
+          "id": "S0590L03",
+          "type": "A",
+          "target": "saliendo",
+          "known": "leaving",
+          "new": true
+        },
+        {
+          "id": "S0590L04",
+          "type": "A",
+          "target": "de",
+          "known": "from",
+          "new": true
+        },
+        {
+          "id": "S0590L05",
+          "type": "M",
+          "target": "el último",
+          "known": "the last",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["último", "last"]
+          ]
+        },
+        {
+          "id": "S0590L06",
+          "type": "M",
+          "target": "la estación",
+          "known": "the station",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["estación", "station"]
+          ]
+        }
+      ]
+    }
+  ]
+}
