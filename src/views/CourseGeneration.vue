@@ -305,9 +305,9 @@
           <h3 class="text-lg font-medium text-slate-300 mb-4">Select Seed Range</h3>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <!-- Test Course (30 seeds) -->
+            <!-- Phase 3 Quick Test (10 seeds) -->
             <button
-              @click="selectCourseSize('test', 1, 30)"
+              @click="quickPhase3Test"
               :class="[
                 'p-6 rounded-lg border-2 transition text-left',
                 courseSize === 'test'
@@ -316,7 +316,7 @@
               ]"
             >
               <div class="flex items-start justify-between mb-2">
-                <div class="text-2xl">✨</div>
+                <div class="text-2xl">⚡</div>
                 <div
                   v-if="courseSize === 'test'"
                   class="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center"
@@ -326,9 +326,9 @@
                   </svg>
                 </div>
               </div>
-              <h4 class="text-lg font-semibold text-slate-100 mb-1">Test (30 seeds)</h4>
-              <p class="text-sm text-slate-400 mb-2">Seeds 1-30</p>
-              <p class="text-xs text-slate-500">Quick test: Validate pipeline structure ~5-10 min</p>
+              <h4 class="text-lg font-semibold text-slate-100 mb-1">Phase 3 Test (10 seeds)</h4>
+              <p class="text-sm text-slate-400 mb-2">S0111-S0120 (5 parallel agents)</p>
+              <p class="text-xs text-slate-500">Test latest prompt improvements ~5 min</p>
             </button>
 
             <!-- Medium Course (100 seeds) -->
@@ -730,6 +730,18 @@ const selectCourseSize = (size, start, end) => {
   courseSize.value = size
   startSeed.value = start
   endSeed.value = end
+}
+
+const quickPhase3Test = () => {
+  // Set Phase 3 test configuration
+  phaseSelection.value = 'phase3'
+  segmentMode.value = 'single'
+  courseSize.value = 'test'
+  startSeed.value = 111
+  endSeed.value = 120
+
+  // Auto-start generation
+  startGeneration()
 }
 
 const extendToFullCourse = async () => {
