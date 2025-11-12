@@ -1,0 +1,129 @@
+{
+  "agent_id": "agent_03",
+  "seed_range": "S0115-S0116",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0115",
+      "seed_pair": [
+        "No siento como si estuviera preparado para tener una conversación.",
+        "I don't feel as if I'm ready to have a conversation."
+      ],
+      "legos": [
+        {
+          "id": "S0115L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0115L02",
+          "type": "A",
+          "target": "siento",
+          "known": "I feel",
+          "new": true
+        },
+        {
+          "id": "S0115L03",
+          "type": "A",
+          "target": "para",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0115L04",
+          "type": "A",
+          "target": "tener",
+          "known": "have",
+          "new": true
+        },
+        {
+          "id": "S0115L05",
+          "type": "M",
+          "target": "como si estuviera preparado",
+          "known": "as if I'm ready",
+          "new": true,
+          "components": [
+            ["como", "as"],
+            ["si", "if"],
+            ["estuviera", "I were"],
+            ["preparado", "ready"]
+          ]
+        },
+        {
+          "id": "S0115L06",
+          "type": "M",
+          "target": "una conversación",
+          "known": "a conversation",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["conversación", "conversation"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0116",
+      "seed_pair": [
+        "Esta no es la mejor opción que podría hacer.",
+        "This isn't the best choice I could make."
+      ],
+      "legos": [
+        {
+          "id": "S0116L01",
+          "type": "A",
+          "target": "Esta",
+          "known": "This",
+          "new": true
+        },
+        {
+          "id": "S0116L02",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0116L03",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "new": true
+        },
+        {
+          "id": "S0116L04",
+          "type": "A",
+          "target": "opción",
+          "known": "choice",
+          "new": true
+        },
+        {
+          "id": "S0116L05",
+          "type": "M",
+          "target": "la mejor",
+          "known": "the best",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["mejor", "best"]
+          ]
+        },
+        {
+          "id": "S0116L06",
+          "type": "M",
+          "target": "que podría hacer",
+          "known": "I could make",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["podría", "I could"],
+            ["hacer", "make"]
+          ]
+        }
+      ]
+    }
+  ]
+}
