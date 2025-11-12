@@ -1,0 +1,465 @@
+{
+  "agent_id": "agent_01",
+  "seed_range": "S0601-S0610",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0601",
+      "seed_pair": ["We were talking about how it all started.", "Estábamos hablando sobre cómo empezó todo."],
+      "legos": [
+        {
+          "id": "S0601L01",
+          "type": "A",
+          "target": "sobre",
+          "known": "about",
+          "new": true
+        },
+        {
+          "id": "S0601L02",
+          "type": "A",
+          "target": "cómo",
+          "known": "how",
+          "new": true
+        },
+        {
+          "id": "S0601L03",
+          "type": "M",
+          "target": "estábamos hablando",
+          "known": "we were talking",
+          "new": true,
+          "components": [
+            ["estábamos", "we were"],
+            ["hablando", "talking"]
+          ]
+        },
+        {
+          "id": "S0601L04",
+          "type": "M",
+          "target": "empezó todo",
+          "known": "it all started",
+          "new": true,
+          "components": [
+            ["empezó", "it started"],
+            ["todo", "all"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0602",
+      "seed_pair": ["How it started in the first place.", "Cómo empezó en primer lugar."],
+      "legos": [
+        {
+          "id": "S0602L01",
+          "type": "A",
+          "target": "cómo",
+          "known": "how",
+          "new": true
+        },
+        {
+          "id": "S0602L02",
+          "type": "M",
+          "target": "empezó",
+          "known": "it started",
+          "new": true,
+          "components": [
+            ["empezó", "it started"]
+          ]
+        },
+        {
+          "id": "S0602L03",
+          "type": "M",
+          "target": "en primer lugar",
+          "known": "in the first place",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["primer", "the first"],
+            ["lugar", "place"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0603",
+      "seed_pair": ["We didn't have anywhere to live at the time.", "No teníamos ningún lugar donde vivir en ese momento."],
+      "legos": [
+        {
+          "id": "S0603L01",
+          "type": "M",
+          "target": "no teníamos",
+          "known": "we didn't have",
+          "new": true,
+          "components": [
+            ["no", "didn't"],
+            ["teníamos", "we have"]
+          ]
+        },
+        {
+          "id": "S0603L02",
+          "type": "M",
+          "target": "ningún lugar",
+          "known": "anywhere",
+          "new": true,
+          "components": [
+            ["ningún", "no"],
+            ["lugar", "place"]
+          ]
+        },
+        {
+          "id": "S0603L03",
+          "type": "M",
+          "target": "donde vivir",
+          "known": "to live",
+          "new": true,
+          "components": [
+            ["donde", "(where)"],
+            ["vivir", "to live"]
+          ]
+        },
+        {
+          "id": "S0603L04",
+          "type": "M",
+          "target": "en ese momento",
+          "known": "at the time",
+          "new": true,
+          "components": [
+            ["en", "at"],
+            ["ese", "the"],
+            ["momento", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0604",
+      "seed_pair": ["She offered to let us stay with her.", "Ella se ofreció a dejarnos quedarnos con ella."],
+      "legos": [
+        {
+          "id": "S0604L01",
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "new": true
+        },
+        {
+          "id": "S0604L02",
+          "type": "M",
+          "target": "se ofreció a",
+          "known": "offered to",
+          "new": true,
+          "components": [
+            ["se", "(refl.)"],
+            ["ofreció", "offered"],
+            ["a", "to"]
+          ]
+        },
+        {
+          "id": "S0604L03",
+          "type": "M",
+          "target": "dejarnos quedarnos",
+          "known": "let us stay",
+          "new": true,
+          "components": [
+            ["dejarnos", "let us"],
+            ["quedarnos", "stay"]
+          ]
+        },
+        {
+          "id": "S0604L04",
+          "type": "M",
+          "target": "con ella",
+          "known": "with her",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["ella", "her"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0605",
+      "seed_pair": ["Because we needed help.", "Porque necesitábamos ayuda."],
+      "legos": [
+        {
+          "id": "S0605L01",
+          "type": "A",
+          "target": "porque",
+          "known": "because",
+          "new": true
+        },
+        {
+          "id": "S0605L02",
+          "type": "A",
+          "target": "ayuda",
+          "known": "help",
+          "new": true
+        },
+        {
+          "id": "S0605L03",
+          "type": "M",
+          "target": "necesitábamos",
+          "known": "we needed",
+          "new": true,
+          "components": [
+            ["necesitábamos", "we needed"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0606",
+      "seed_pair": ["If I'd known then what I know now I'd have waited.", "Si hubiera sabido entonces lo que sé ahora habría esperado."],
+      "legos": [
+        {
+          "id": "S0606L01",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0606L02",
+          "type": "A",
+          "target": "entonces",
+          "known": "then",
+          "new": true
+        },
+        {
+          "id": "S0606L03",
+          "type": "A",
+          "target": "ahora",
+          "known": "now",
+          "new": true
+        },
+        {
+          "id": "S0606L04",
+          "type": "M",
+          "target": "hubiera sabido",
+          "known": "I'd known",
+          "new": true,
+          "components": [
+            ["hubiera", "I'd"],
+            ["sabido", "known"]
+          ]
+        },
+        {
+          "id": "S0606L05",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [
+            ["lo", "(what)"],
+            ["que", "(that)"]
+          ]
+        },
+        {
+          "id": "S0606L06",
+          "type": "M",
+          "target": "sé",
+          "known": "I know",
+          "new": true,
+          "components": [
+            ["sé", "I know"]
+          ]
+        },
+        {
+          "id": "S0606L07",
+          "type": "M",
+          "target": "habría esperado",
+          "known": "I'd have waited",
+          "new": true,
+          "components": [
+            ["habría", "I'd have"],
+            ["esperado", "waited"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0607",
+      "seed_pair": ["If I'd known I'd have done things differently.", "Si hubiera sabido habría hecho las cosas de manera diferente."],
+      "legos": [
+        {
+          "id": "S0607L01",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0607L02",
+          "type": "M",
+          "target": "hubiera sabido",
+          "known": "I'd known",
+          "new": true,
+          "components": [
+            ["hubiera", "I'd"],
+            ["sabido", "known"]
+          ]
+        },
+        {
+          "id": "S0607L03",
+          "type": "M",
+          "target": "habría hecho",
+          "known": "I'd have done",
+          "new": true,
+          "components": [
+            ["habría", "I'd have"],
+            ["hecho", "done"]
+          ]
+        },
+        {
+          "id": "S0607L04",
+          "type": "M",
+          "target": "las cosas",
+          "known": "things",
+          "new": true,
+          "components": [
+            ["las", "(the)"],
+            ["cosas", "things"]
+          ]
+        },
+        {
+          "id": "S0607L05",
+          "type": "M",
+          "target": "de manera diferente",
+          "known": "differently",
+          "new": true,
+          "components": [
+            ["de manera", "in a...manner"],
+            ["diferente", "different"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0608",
+      "seed_pair": ["It would have been the sensible thing to do.", "Habría sido lo sensato que hacer."],
+      "legos": [
+        {
+          "id": "S0608L01",
+          "type": "M",
+          "target": "habría sido",
+          "known": "it would have been",
+          "new": true,
+          "components": [
+            ["habría", "it would have"],
+            ["sido", "been"]
+          ]
+        },
+        {
+          "id": "S0608L02",
+          "type": "M",
+          "target": "lo sensato",
+          "known": "the sensible thing",
+          "new": true,
+          "components": [
+            ["lo", "the...thing"],
+            ["sensato", "sensible"]
+          ]
+        },
+        {
+          "id": "S0608L03",
+          "type": "M",
+          "target": "que hacer",
+          "known": "to do",
+          "new": true,
+          "components": [
+            ["que", "(to)"],
+            ["hacer", "do"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0609",
+      "seed_pair": ["The sensible thing to do would have been to ask.", "Lo sensato que hacer habría sido preguntar."],
+      "legos": [
+        {
+          "id": "S0609L01",
+          "type": "A",
+          "target": "preguntar",
+          "known": "to ask",
+          "new": true
+        },
+        {
+          "id": "S0609L02",
+          "type": "M",
+          "target": "lo sensato",
+          "known": "the sensible thing",
+          "new": true,
+          "components": [
+            ["lo", "the...thing"],
+            ["sensato", "sensible"]
+          ]
+        },
+        {
+          "id": "S0609L03",
+          "type": "M",
+          "target": "que hacer",
+          "known": "to do",
+          "new": true,
+          "components": [
+            ["que", "(to)"],
+            ["hacer", "do"]
+          ]
+        },
+        {
+          "id": "S0609L04",
+          "type": "M",
+          "target": "habría sido",
+          "known": "would have been",
+          "new": true,
+          "components": [
+            ["habría", "would have"],
+            ["sido", "been"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0610",
+      "seed_pair": ["He needs to look for work.", "Él necesita buscar trabajo."],
+      "legos": [
+        {
+          "id": "S0610L01",
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0610L02",
+          "type": "A",
+          "target": "trabajo",
+          "known": "work",
+          "new": true
+        },
+        {
+          "id": "S0610L03",
+          "type": "M",
+          "target": "necesita",
+          "known": "needs to",
+          "new": true,
+          "components": [
+            ["necesita", "needs to"]
+          ]
+        },
+        {
+          "id": "S0610L04",
+          "type": "M",
+          "target": "buscar",
+          "known": "look for",
+          "new": true,
+          "components": [
+            ["buscar", "look for"]
+          ]
+        }
+      ]
+    }
+  ]
+}

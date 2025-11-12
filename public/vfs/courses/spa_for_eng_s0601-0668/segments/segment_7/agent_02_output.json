@@ -1,0 +1,425 @@
+{
+  "agent_id": "agent_02",
+  "seed_range": "S0611-S0620",
+  "extracted_at": "2025-11-12T00:00:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0611",
+      "seed_pair": [
+        "I would have been ready to look somewhere else.",
+        "Yo habría estado preparado para buscar en otro lugar."
+      ],
+      "legos": [
+        {
+          "id": "S0611L01",
+          "type": "A",
+          "target": "Yo",
+          "known": "I",
+          "new": true
+        },
+        {
+          "id": "S0611L02",
+          "type": "M",
+          "target": "habría estado preparado",
+          "known": "would have been ready",
+          "new": true,
+          "components": [
+            ["habría estado", "would have been"],
+            ["preparado", "ready"]
+          ]
+        },
+        {
+          "id": "S0611L03",
+          "type": "M",
+          "target": "para buscar",
+          "known": "to look",
+          "new": true,
+          "components": [
+            ["para", "to"],
+            ["buscar", "look"]
+          ]
+        },
+        {
+          "id": "S0611L04",
+          "type": "M",
+          "target": "en otro lugar",
+          "known": "somewhere else",
+          "new": true,
+          "components": [
+            ["en otro lugar", "somewhere"],
+            ["(included)", "else"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0612",
+      "seed_pair": [
+        "We would have bought something.",
+        "Habríamos comprado algo."
+      ],
+      "legos": [
+        {
+          "id": "S0612L01",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0612L02",
+          "type": "M",
+          "target": "Habríamos comprado",
+          "known": "We would have bought",
+          "new": true,
+          "components": [
+            ["Habríamos", "We would have"],
+            ["comprado", "bought"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0613",
+      "seed_pair": [
+        "We probably would have bought a house there.",
+        "Probablemente habríamos comprado una casa allí."
+      ],
+      "legos": [
+        {
+          "id": "S0613L01",
+          "type": "A",
+          "target": "Probablemente",
+          "known": "probably",
+          "new": true
+        },
+        {
+          "id": "S0613L02",
+          "type": "A",
+          "target": "allí",
+          "known": "there",
+          "new": true
+        },
+        {
+          "id": "S0613L03",
+          "type": "M",
+          "target": "habríamos comprado",
+          "known": "we would have bought",
+          "new": true,
+          "components": [
+            ["habríamos", "we would have"],
+            ["comprado", "bought"]
+          ]
+        },
+        {
+          "id": "S0613L04",
+          "type": "M",
+          "target": "una casa",
+          "known": "a house",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["casa", "house"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0614",
+      "seed_pair": [
+        "It's near where your family live.",
+        "Está cerca de donde vive tu familia."
+      ],
+      "legos": [
+        {
+          "id": "S0614L01",
+          "type": "A",
+          "target": "Está",
+          "known": "It's",
+          "new": true
+        },
+        {
+          "id": "S0614L02",
+          "type": "A",
+          "target": "donde",
+          "known": "where",
+          "new": true
+        },
+        {
+          "id": "S0614L03",
+          "type": "M",
+          "target": "cerca de",
+          "known": "near",
+          "new": true,
+          "components": [
+            ["cerca", "near"],
+            ["de", "(preposition)"]
+          ]
+        },
+        {
+          "id": "S0614L04",
+          "type": "M",
+          "target": "vive tu familia",
+          "known": "your family live",
+          "new": true,
+          "components": [
+            ["vive", "live"],
+            ["tu", "your"],
+            ["familia", "family"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0615",
+      "seed_pair": [
+        "I thought you were very brave to say that.",
+        "Pensé que fuiste muy valiente al decir eso."
+      ],
+      "legos": [
+        {
+          "id": "S0615L01",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0615L02",
+          "type": "M",
+          "target": "Pensé que",
+          "known": "I thought",
+          "new": true,
+          "components": [
+            ["Pensé", "I thought"],
+            ["que", "(that)"]
+          ]
+        },
+        {
+          "id": "S0615L03",
+          "type": "M",
+          "target": "fuiste muy valiente",
+          "known": "you were very brave",
+          "new": true,
+          "components": [
+            ["fuiste", "you were"],
+            ["muy", "very"],
+            ["valiente", "brave"]
+          ]
+        },
+        {
+          "id": "S0615L04",
+          "type": "M",
+          "target": "al decir",
+          "known": "to say",
+          "new": true,
+          "components": [
+            ["al", "to"],
+            ["decir", "say"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0616",
+      "seed_pair": [
+        "You were very brave to say you thought that.",
+        "Fuiste muy valiente al decir que pensabas eso."
+      ],
+      "legos": [
+        {
+          "id": "S0616L01",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0616L02",
+          "type": "M",
+          "target": "Fuiste muy valiente",
+          "known": "You were very brave",
+          "new": true,
+          "components": [
+            ["Fuiste", "You were"],
+            ["muy", "very"],
+            ["valiente", "brave"]
+          ]
+        },
+        {
+          "id": "S0616L03",
+          "type": "M",
+          "target": "al decir",
+          "known": "to say",
+          "new": true,
+          "components": [
+            ["al", "to"],
+            ["decir", "say"]
+          ]
+        },
+        {
+          "id": "S0616L04",
+          "type": "M",
+          "target": "que pensabas",
+          "known": "you thought",
+          "new": true,
+          "components": [
+            ["que", "(that)"],
+            ["pensabas", "you thought"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0617",
+      "seed_pair": [
+        "You thought that it was a mistake.",
+        "Pensaste que era un error."
+      ],
+      "legos": [
+        {
+          "id": "S0617L01",
+          "type": "M",
+          "target": "Pensaste que",
+          "known": "You thought",
+          "new": true,
+          "components": [
+            ["Pensaste", "You thought"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0617L02",
+          "type": "M",
+          "target": "era un error",
+          "known": "it was a mistake",
+          "new": true,
+          "components": [
+            ["era", "it was"],
+            ["un", "a"],
+            ["error", "mistake"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0618",
+      "seed_pair": [
+        "It doesn't feel like a long time.",
+        "No parece mucho tiempo."
+      ],
+      "legos": [
+        {
+          "id": "S0618L01",
+          "type": "M",
+          "target": "No parece",
+          "known": "It doesn't feel like",
+          "new": true,
+          "components": [
+            ["No", "doesn't"],
+            ["parece", "It feel like"]
+          ]
+        },
+        {
+          "id": "S0618L02",
+          "type": "M",
+          "target": "mucho tiempo",
+          "known": "a long time",
+          "new": true,
+          "components": [
+            ["mucho", "long"],
+            ["tiempo", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0619",
+      "seed_pair": [
+        "It's a long time since we saw each other.",
+        "Hace mucho tiempo desde que nos vimos."
+      ],
+      "legos": [
+        {
+          "id": "S0619L01",
+          "type": "M",
+          "target": "Hace mucho tiempo",
+          "known": "It's a long time",
+          "new": true,
+          "components": [
+            ["Hace", "It's"],
+            ["mucho", "a long"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0619L02",
+          "type": "M",
+          "target": "desde que",
+          "known": "since",
+          "new": true,
+          "components": [
+            ["desde", "since"],
+            ["que", "(that)"]
+          ]
+        },
+        {
+          "id": "S0619L03",
+          "type": "M",
+          "target": "nos vimos",
+          "known": "we saw each other",
+          "new": true,
+          "components": [
+            ["nos", "each other"],
+            ["vimos", "we saw"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0620",
+      "seed_pair": [
+        "It's a very long time since we last saw each other.",
+        "Hace muchísimo tiempo desde que nos vimos por última vez."
+      ],
+      "legos": [
+        {
+          "id": "S0620L01",
+          "type": "M",
+          "target": "Hace muchísimo tiempo",
+          "known": "It's a very long time",
+          "new": true,
+          "components": [
+            ["Hace", "It's"],
+            ["muchísimo", "a very long"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0620L02",
+          "type": "M",
+          "target": "desde que",
+          "known": "since",
+          "new": true,
+          "components": [
+            ["desde", "since"],
+            ["que", "(that)"]
+          ]
+        },
+        {
+          "id": "S0620L03",
+          "type": "M",
+          "target": "nos vimos por última vez",
+          "known": "we last saw each other",
+          "new": true,
+          "components": [
+            ["nos", "each other"],
+            ["vimos", "we saw"],
+            ["por última vez", "last"]
+          ]
+        }
+      ]
+    }
+  ]
+}

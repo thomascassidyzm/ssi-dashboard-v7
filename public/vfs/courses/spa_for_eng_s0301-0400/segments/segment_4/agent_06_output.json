@@ -1,0 +1,486 @@
+{
+  "agent_id": "agent_06",
+  "seed_range": "S0351-S0360",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0351",
+      "seed_pair": ["No he didn't want to leave me on my own.", "No él no quería dejarme solo."],
+      "legos": [
+        {
+          "id": "S0351L01",
+          "type": "A",
+          "target": "No",
+          "known": "No",
+          "new": true
+        },
+        {
+          "id": "S0351L02",
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0351L03",
+          "type": "M",
+          "target": "no quería",
+          "known": "didn't want",
+          "new": true,
+          "components": [["no", "didn't"], ["quería", "want"]]
+        },
+        {
+          "id": "S0351L04",
+          "type": "M",
+          "target": "dejarme",
+          "known": "to leave me",
+          "new": true,
+          "components": [["dejar", "to leave"], ["me", "me"]]
+        },
+        {
+          "id": "S0351L05",
+          "type": "M",
+          "target": "solo",
+          "known": "on my own",
+          "new": true,
+          "components": [["solo", "on my own"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0352",
+      "seed_pair": ["Even if he wanted to he wouldn't be able to.", "Aunque él quisiera no podría."],
+      "legos": [
+        {
+          "id": "S0352L01",
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0352L02",
+          "type": "M",
+          "target": "Aunque",
+          "known": "Even if",
+          "new": true,
+          "components": [["Aunque", "Even if"]]
+        },
+        {
+          "id": "S0352L03",
+          "type": "M",
+          "target": "quisiera",
+          "known": "wanted to",
+          "new": true,
+          "components": [["quisiera", "wanted to"]]
+        },
+        {
+          "id": "S0352L04",
+          "type": "M",
+          "target": "no podría",
+          "known": "he wouldn't be able to",
+          "new": true,
+          "components": [["no", "wouldn't"], ["podría", "he would be able to"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0353",
+      "seed_pair": ["She needed to run around the field.", "Ella necesitaba correr alrededor del campo."],
+      "legos": [
+        {
+          "id": "S0353L01",
+          "type": "A",
+          "target": "Ella",
+          "known": "She",
+          "new": true
+        },
+        {
+          "id": "S0353L02",
+          "type": "A",
+          "target": "correr",
+          "known": "run",
+          "new": true
+        },
+        {
+          "id": "S0353L03",
+          "type": "A",
+          "target": "campo",
+          "known": "field",
+          "new": true
+        },
+        {
+          "id": "S0353L04",
+          "type": "M",
+          "target": "necesitaba",
+          "known": "needed to",
+          "new": true,
+          "components": [["necesitaba", "needed to"]]
+        },
+        {
+          "id": "S0353L05",
+          "type": "M",
+          "target": "alrededor del",
+          "known": "around the",
+          "new": true,
+          "components": [["alrededor", "around"], ["del", "the"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0354",
+      "seed_pair": ["He didn't need to appear angry.", "Él no necesitaba aparecer enojado."],
+      "legos": [
+        {
+          "id": "S0354L01",
+          "type": "A",
+          "target": "Él",
+          "known": "He",
+          "new": true
+        },
+        {
+          "id": "S0354L02",
+          "type": "A",
+          "target": "aparecer",
+          "known": "appear",
+          "new": true
+        },
+        {
+          "id": "S0354L03",
+          "type": "A",
+          "target": "enojado",
+          "known": "angry",
+          "new": true
+        },
+        {
+          "id": "S0354L04",
+          "type": "M",
+          "target": "no necesitaba",
+          "known": "didn't need to",
+          "new": true,
+          "components": [["no", "didn't"], ["necesitaba", "need to"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0355",
+      "seed_pair": ["Did she need to talk to that woman you know?", "¿Necesitaba ella hablar con esa mujer que conoces?"],
+      "legos": [
+        {
+          "id": "S0355L01",
+          "type": "A",
+          "target": "hablar",
+          "known": "talk",
+          "new": true
+        },
+        {
+          "id": "S0355L02",
+          "type": "A",
+          "target": "con",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0355L03",
+          "type": "A",
+          "target": "esa",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0355L04",
+          "type": "A",
+          "target": "mujer",
+          "known": "woman",
+          "new": true
+        },
+        {
+          "id": "S0355L05",
+          "type": "M",
+          "target": "Necesitaba ella",
+          "known": "Did she need to",
+          "new": true,
+          "components": [["Necesitaba", "need to"], ["ella", "she"]]
+        },
+        {
+          "id": "S0355L06",
+          "type": "M",
+          "target": "que conoces",
+          "known": "you know",
+          "new": true,
+          "components": [["que", "[that/who]"], ["conoces", "you know"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0356",
+      "seed_pair": ["Yes they had something important to discuss.", "Sí ellos tenían algo importante que discutir."],
+      "legos": [
+        {
+          "id": "S0356L01",
+          "type": "A",
+          "target": "Sí",
+          "known": "Yes",
+          "new": true
+        },
+        {
+          "id": "S0356L02",
+          "type": "A",
+          "target": "ellos",
+          "known": "they",
+          "new": true
+        },
+        {
+          "id": "S0356L03",
+          "type": "A",
+          "target": "tenían",
+          "known": "had",
+          "new": true
+        },
+        {
+          "id": "S0356L04",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0356L05",
+          "type": "A",
+          "target": "importante",
+          "known": "important",
+          "new": true
+        },
+        {
+          "id": "S0356L06",
+          "type": "M",
+          "target": "que discutir",
+          "known": "to discuss",
+          "new": true,
+          "components": [["que", "to"], ["discutir", "discuss"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0357",
+      "seed_pair": ["No she just wanted to send her a message.", "No ella solo quería enviarle un mensaje."],
+      "legos": [
+        {
+          "id": "S0357L01",
+          "type": "A",
+          "target": "No",
+          "known": "No",
+          "new": true
+        },
+        {
+          "id": "S0357L02",
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "new": true
+        },
+        {
+          "id": "S0357L03",
+          "type": "A",
+          "target": "solo",
+          "known": "just",
+          "new": true
+        },
+        {
+          "id": "S0357L04",
+          "type": "A",
+          "target": "un",
+          "known": "a",
+          "new": true
+        },
+        {
+          "id": "S0357L05",
+          "type": "A",
+          "target": "mensaje",
+          "known": "message",
+          "new": true
+        },
+        {
+          "id": "S0357L06",
+          "type": "M",
+          "target": "quería",
+          "known": "wanted to",
+          "new": true,
+          "components": [["quería", "wanted to"]]
+        },
+        {
+          "id": "S0357L07",
+          "type": "M",
+          "target": "enviarle",
+          "known": "send her",
+          "new": true,
+          "components": [["enviar", "send"], ["le", "her"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0358",
+      "seed_pair": ["Your friend said that she couldn't reach the top.", "Tu amigo dijo que ella no podía alcanzar la cima."],
+      "legos": [
+        {
+          "id": "S0358L01",
+          "type": "A",
+          "target": "Tu",
+          "known": "Your",
+          "new": true
+        },
+        {
+          "id": "S0358L02",
+          "type": "A",
+          "target": "amigo",
+          "known": "friend",
+          "new": true
+        },
+        {
+          "id": "S0358L03",
+          "type": "A",
+          "target": "dijo",
+          "known": "said",
+          "new": true
+        },
+        {
+          "id": "S0358L04",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0358L05",
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "new": true
+        },
+        {
+          "id": "S0358L06",
+          "type": "A",
+          "target": "alcanzar",
+          "known": "reach",
+          "new": true
+        },
+        {
+          "id": "S0358L07",
+          "type": "A",
+          "target": "la",
+          "known": "the",
+          "new": true
+        },
+        {
+          "id": "S0358L08",
+          "type": "A",
+          "target": "cima",
+          "known": "top",
+          "new": true
+        },
+        {
+          "id": "S0358L09",
+          "type": "M",
+          "target": "no podía",
+          "known": "couldn't",
+          "new": true,
+          "components": [["no", "n't"], ["podía", "could"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0359",
+      "seed_pair": ["Your friend said that he could turn left.", "Tu amigo dijo que él podía girar a la izquierda."],
+      "legos": [
+        {
+          "id": "S0359L01",
+          "type": "A",
+          "target": "Tu",
+          "known": "Your",
+          "new": true
+        },
+        {
+          "id": "S0359L02",
+          "type": "A",
+          "target": "amigo",
+          "known": "friend",
+          "new": true
+        },
+        {
+          "id": "S0359L03",
+          "type": "A",
+          "target": "dijo",
+          "known": "said",
+          "new": true
+        },
+        {
+          "id": "S0359L04",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0359L05",
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0359L06",
+          "type": "A",
+          "target": "podía",
+          "known": "could",
+          "new": true
+        },
+        {
+          "id": "S0359L07",
+          "type": "A",
+          "target": "girar",
+          "known": "turn",
+          "new": true
+        },
+        {
+          "id": "S0359L08",
+          "type": "M",
+          "target": "a la izquierda",
+          "known": "left",
+          "new": true,
+          "components": [["a", ""], ["la", ""], ["izquierda", "left"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0360",
+      "seed_pair": ["Did your friend say anything else?", "¿Tu amigo dijo algo más?"],
+      "legos": [
+        {
+          "id": "S0360L01",
+          "type": "M",
+          "target": "Tu amigo",
+          "known": "your friend",
+          "new": true,
+          "components": [["Tu", "your"], ["amigo", "friend"]]
+        },
+        {
+          "id": "S0360L02",
+          "type": "M",
+          "target": "dijo",
+          "known": "did...say",
+          "new": true,
+          "components": [["dijo", "did...say"]]
+        },
+        {
+          "id": "S0360L03",
+          "type": "M",
+          "target": "algo más",
+          "known": "anything else",
+          "new": true,
+          "components": [["algo", "anything"], ["más", "else"]]
+        }
+      ]
+    }
+  ]
+}

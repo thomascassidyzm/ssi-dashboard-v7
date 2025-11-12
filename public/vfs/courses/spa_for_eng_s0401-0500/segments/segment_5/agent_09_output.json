@@ -1,0 +1,476 @@
+{
+  "agent_id": "agent_09",
+  "seed_range": "S0481-S0490",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0481",
+      "seed_pair": [
+        "It's the only real hope we have left.",
+        "Es la única esperanza real que nos queda."
+      ],
+      "legos": [
+        {
+          "id": "S0481L01",
+          "type": "A",
+          "target": "Es",
+          "known": "It's",
+          "new": true
+        },
+        {
+          "id": "S0481L02",
+          "type": "A",
+          "target": "esperanza",
+          "known": "hope",
+          "new": true
+        },
+        {
+          "id": "S0481L03",
+          "type": "A",
+          "target": "real",
+          "known": "real",
+          "new": true
+        },
+        {
+          "id": "S0481L04",
+          "type": "M",
+          "target": "la única",
+          "known": "the only",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["única", "only"]
+          ]
+        },
+        {
+          "id": "S0481L05",
+          "type": "M",
+          "target": "que nos queda",
+          "known": "we have left",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["nos", "us"],
+            ["queda", "remains"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0482",
+      "seed_pair": [
+        "The only real hope is that they're not serious.",
+        "La única esperanza real es que no son serios."
+      ],
+      "legos": [
+        {
+          "id": "S0482L01",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "new": true
+        },
+        {
+          "id": "S0482L02",
+          "type": "A",
+          "target": "esperanza",
+          "known": "hope",
+          "new": true
+        },
+        {
+          "id": "S0482L03",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0482L04",
+          "type": "A",
+          "target": "real",
+          "known": "real",
+          "new": true
+        },
+        {
+          "id": "S0482L05",
+          "type": "M",
+          "target": "La única",
+          "known": "The only",
+          "new": true,
+          "components": [
+            ["La", "The"],
+            ["única", "only"]
+          ]
+        },
+        {
+          "id": "S0482L06",
+          "type": "M",
+          "target": "no son serios",
+          "known": "they're not serious",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["son", "they are"],
+            ["serios", "serious"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0483",
+      "seed_pair": [
+        "Life isn't easy but it's not meant to be easy.",
+        "La vida no es fácil pero no está destinada a ser fácil."
+      ],
+      "legos": [
+        {
+          "id": "S0483L01",
+          "type": "A",
+          "target": "fácil",
+          "known": "easy",
+          "new": true
+        },
+        {
+          "id": "S0483L02",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0483L03",
+          "type": "M",
+          "target": "La vida",
+          "known": "Life",
+          "new": true,
+          "components": [
+            ["La", "The"],
+            ["vida", "life"]
+          ]
+        },
+        {
+          "id": "S0483L04",
+          "type": "M",
+          "target": "no es fácil",
+          "known": "isn't easy",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["es", "is"],
+            ["fácil", "easy"]
+          ]
+        },
+        {
+          "id": "S0483L05",
+          "type": "M",
+          "target": "no está destinada a ser",
+          "known": "it's not meant to be",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["está", "is"],
+            ["destinada", "meant"],
+            ["a", "to"],
+            ["ser", "be"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0484",
+      "seed_pair": [
+        "It's meant to be a challenge.",
+        "Está destinada a ser un desafío."
+      ],
+      "legos": [
+        {
+          "id": "S0484L01",
+          "type": "M",
+          "target": "Está destinada a ser",
+          "known": "It's meant to be",
+          "new": true,
+          "components": [
+            ["Está", "It is"],
+            ["destinada", "meant"],
+            ["a", "to"],
+            ["ser", "be"]
+          ]
+        },
+        {
+          "id": "S0484L02",
+          "type": "M",
+          "target": "un desafío",
+          "known": "a challenge",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["desafío", "challenge"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0485",
+      "seed_pair": [
+        "Nothing would make me happier than to get away.",
+        "Nada me haría más feliz que escapar."
+      ],
+      "legos": [
+        {
+          "id": "S0485L01",
+          "type": "A",
+          "target": "Nada",
+          "known": "Nothing",
+          "new": true
+        },
+        {
+          "id": "S0485L02",
+          "type": "A",
+          "target": "que",
+          "known": "than",
+          "new": true
+        },
+        {
+          "id": "S0485L03",
+          "type": "A",
+          "target": "escapar",
+          "known": "to get away",
+          "new": true
+        },
+        {
+          "id": "S0485L04",
+          "type": "M",
+          "target": "me haría",
+          "known": "would make me",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["haría", "would make"]
+          ]
+        },
+        {
+          "id": "S0485L05",
+          "type": "M",
+          "target": "más feliz",
+          "known": "happier",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["feliz", "happy"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0486",
+      "seed_pair": [
+        "I think your eyes are beautiful.",
+        "Creo que tus ojos son hermosos."
+      ],
+      "legos": [
+        {
+          "id": "S0486L01",
+          "type": "A",
+          "target": "ojos",
+          "known": "eyes",
+          "new": true
+        },
+        {
+          "id": "S0486L02",
+          "type": "A",
+          "target": "tus",
+          "known": "your",
+          "new": true
+        },
+        {
+          "id": "S0486L03",
+          "type": "M",
+          "target": "Creo que",
+          "known": "I think",
+          "new": true,
+          "components": [
+            ["Creo", "I think"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0486L04",
+          "type": "M",
+          "target": "son hermosos",
+          "known": "are beautiful",
+          "new": true,
+          "components": [
+            ["son", "are"],
+            ["hermosos", "beautiful"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0487",
+      "seed_pair": [
+        "It's under the bridge.",
+        "Está bajo el puente."
+      ],
+      "legos": [
+        {
+          "id": "S0487L01",
+          "type": "M",
+          "target": "Está bajo",
+          "known": "It's under",
+          "new": true,
+          "components": [
+            ["Está", "It is"],
+            ["bajo", "under"]
+          ]
+        },
+        {
+          "id": "S0487L02",
+          "type": "M",
+          "target": "el puente",
+          "known": "the bridge",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["puente", "bridge"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0488",
+      "seed_pair": [
+        "It's on the other side of that yellow line.",
+        "Está al otro lado de esa línea amarilla."
+      ],
+      "legos": [
+        {
+          "id": "S0488L01",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "new": true
+        },
+        {
+          "id": "S0488L02",
+          "type": "M",
+          "target": "Está al otro lado",
+          "known": "It's on the other side",
+          "new": true,
+          "components": [
+            ["Está", "It is"],
+            ["al", "on the"],
+            ["otro", "other"],
+            ["lado", "side"]
+          ]
+        },
+        {
+          "id": "S0488L03",
+          "type": "M",
+          "target": "esa línea amarilla",
+          "known": "that yellow line",
+          "new": true,
+          "components": [
+            ["esa", "that"],
+            ["línea", "line"],
+            ["amarilla", "yellow"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0489",
+      "seed_pair": [
+        "If you don't make me a strong cup of coffee right now.",
+        "Si no me haces una taza de café fuerte ahora mismo."
+      ],
+      "legos": [
+        {
+          "id": "S0489L01",
+          "type": "A",
+          "target": "Si",
+          "known": "If",
+          "new": true
+        },
+        {
+          "id": "S0489L02",
+          "type": "M",
+          "target": "no me haces",
+          "known": "you don't make me",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["me", "me"],
+            ["haces", "you make"]
+          ]
+        },
+        {
+          "id": "S0489L03",
+          "type": "M",
+          "target": "una taza de café fuerte",
+          "known": "a strong cup of coffee",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["taza", "cup"],
+            ["de", "of"],
+            ["café", "coffee"],
+            ["fuerte", "strong"]
+          ]
+        },
+        {
+          "id": "S0489L04",
+          "type": "M",
+          "target": "ahora mismo",
+          "known": "right now",
+          "new": true,
+          "components": [
+            ["ahora", "now"],
+            ["mismo", "right"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0490",
+      "seed_pair": [
+        "Then I will never trust anyone ever again.",
+        "Entonces nunca confiaré en nadie nunca más."
+      ],
+      "legos": [
+        {
+          "id": "S0490L01",
+          "type": "A",
+          "target": "Entonces",
+          "known": "Then",
+          "new": true
+        },
+        {
+          "id": "S0490L02",
+          "type": "M",
+          "target": "nunca confiaré en nadie",
+          "known": "I will never trust anyone",
+          "new": true,
+          "components": [
+            ["nunca", "never"],
+            ["confiaré", "I will trust"],
+            ["en", "in"],
+            ["nadie", "anyone"]
+          ]
+        },
+        {
+          "id": "S0490L03",
+          "type": "M",
+          "target": "nunca más",
+          "known": "ever again",
+          "new": true,
+          "components": [
+            ["nunca", "ever"],
+            ["más", "again"]
+          ]
+        }
+      ]
+    }
+  ]
+}

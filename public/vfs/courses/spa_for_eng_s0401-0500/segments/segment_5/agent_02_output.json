@@ -1,0 +1,534 @@
+{
+  "agent_id": "agent_02",
+  "seed_range": "S0411-S0420",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0411",
+      "seed_pair": [
+        "We would like to reserve a table for four tonight.",
+        "Nos gustaría reservar una mesa para cuatro esta noche."
+      ],
+      "legos": [
+        {
+          "id": "S0411L01",
+          "type": "A",
+          "target": "reservar",
+          "known": "to reserve",
+          "new": true
+        },
+        {
+          "id": "S0411L02",
+          "type": "A",
+          "target": "una",
+          "known": "a",
+          "new": true
+        },
+        {
+          "id": "S0411L03",
+          "type": "A",
+          "target": "mesa",
+          "known": "table",
+          "new": true
+        },
+        {
+          "id": "S0411L04",
+          "type": "A",
+          "target": "para",
+          "known": "for",
+          "new": true
+        },
+        {
+          "id": "S0411L05",
+          "type": "A",
+          "target": "cuatro",
+          "known": "four",
+          "new": true
+        },
+        {
+          "id": "S0411L06",
+          "type": "M",
+          "target": "Nos gustaría",
+          "known": "We would like",
+          "new": true,
+          "components": [
+            ["Nos", "We"],
+            ["gustaría", "would like"]
+          ]
+        },
+        {
+          "id": "S0411L07",
+          "type": "M",
+          "target": "esta noche",
+          "known": "tonight",
+          "new": true,
+          "components": [
+            ["esta", "this"],
+            ["noche", "night"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0412",
+      "seed_pair": [
+        "We couldn't allow them to win everything.",
+        "No podríamos permitirles ganar todo."
+      ],
+      "legos": [
+        {
+          "id": "S0412L01",
+          "type": "A",
+          "target": "ganar",
+          "known": "to win",
+          "new": true
+        },
+        {
+          "id": "S0412L02",
+          "type": "A",
+          "target": "todo",
+          "known": "everything",
+          "new": true
+        },
+        {
+          "id": "S0412L03",
+          "type": "M",
+          "target": "No podríamos",
+          "known": "We couldn't",
+          "new": true,
+          "components": [
+            ["No", "not"],
+            ["podríamos", "we could"]
+          ]
+        },
+        {
+          "id": "S0412L04",
+          "type": "M",
+          "target": "permitirles",
+          "known": "allow them",
+          "new": true,
+          "components": [
+            ["permitir", "allow"],
+            ["les", "them"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0413",
+      "seed_pair": [
+        "We could fall if we go too close to the edge.",
+        "Podríamos caer si vamos demasiado cerca del borde."
+      ],
+      "legos": [
+        {
+          "id": "S0413L01",
+          "type": "A",
+          "target": "Podríamos",
+          "known": "We could",
+          "new": true
+        },
+        {
+          "id": "S0413L02",
+          "type": "A",
+          "target": "caer",
+          "known": "fall",
+          "new": true
+        },
+        {
+          "id": "S0413L03",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0413L04",
+          "type": "A",
+          "target": "vamos",
+          "known": "we go",
+          "new": true
+        },
+        {
+          "id": "S0413L05",
+          "type": "A",
+          "target": "borde",
+          "known": "edge",
+          "new": true
+        },
+        {
+          "id": "S0413L06",
+          "type": "M",
+          "target": "demasiado cerca",
+          "known": "too close",
+          "new": true,
+          "components": [
+            ["demasiado", "too"],
+            ["cerca", "close"]
+          ]
+        },
+        {
+          "id": "S0413L07",
+          "type": "M",
+          "target": "del borde",
+          "known": "to the edge",
+          "new": true,
+          "components": [
+            ["del", "to the"],
+            ["borde", "edge"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0414",
+      "seed_pair": [
+        "Could we have a bottle of red wine please?",
+        "¿Podríamos tener una botella de vino tinto por favor?"
+      ],
+      "legos": [
+        {
+          "id": "S0414L01",
+          "type": "A",
+          "target": "Podríamos",
+          "known": "Could we",
+          "new": true
+        },
+        {
+          "id": "S0414L02",
+          "type": "A",
+          "target": "tener",
+          "known": "have",
+          "new": true
+        },
+        {
+          "id": "S0414L03",
+          "type": "A",
+          "target": "una",
+          "known": "a",
+          "new": true
+        },
+        {
+          "id": "S0414L04",
+          "type": "A",
+          "target": "botella",
+          "known": "bottle",
+          "new": true
+        },
+        {
+          "id": "S0414L05",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "new": true
+        },
+        {
+          "id": "S0414L06",
+          "type": "A",
+          "target": "vino",
+          "known": "wine",
+          "new": true
+        },
+        {
+          "id": "S0414L07",
+          "type": "A",
+          "target": "tinto",
+          "known": "red",
+          "new": true
+        },
+        {
+          "id": "S0414L08",
+          "type": "M",
+          "target": "por favor",
+          "known": "please",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["favor", "favor"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0415",
+      "seed_pair": [
+        "That wouldn't be a problem if you ask me.",
+        "Eso no sería un problema si me preguntas."
+      ],
+      "legos": [
+        {
+          "id": "S0415L01",
+          "type": "A",
+          "target": "Eso",
+          "known": "That",
+          "new": true
+        },
+        {
+          "id": "S0415L02",
+          "type": "A",
+          "target": "un",
+          "known": "a",
+          "new": true
+        },
+        {
+          "id": "S0415L03",
+          "type": "A",
+          "target": "problema",
+          "known": "problem",
+          "new": true
+        },
+        {
+          "id": "S0415L04",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0415L05",
+          "type": "M",
+          "target": "no sería",
+          "known": "wouldn't be",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["sería", "would be"]
+          ]
+        },
+        {
+          "id": "S0415L06",
+          "type": "M",
+          "target": "me preguntas",
+          "known": "you ask me",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["preguntas", "you ask"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0416",
+      "seed_pair": [
+        "They want to lead the way next year.",
+        "Quieren liderar el camino el próximo año."
+      ],
+      "legos": [
+        {
+          "id": "S0416L01",
+          "type": "A",
+          "target": "Quieren",
+          "known": "They want",
+          "new": true
+        },
+        {
+          "id": "S0416L02",
+          "type": "A",
+          "target": "liderar",
+          "known": "to lead",
+          "new": true
+        },
+        {
+          "id": "S0416L03",
+          "type": "A",
+          "target": "el",
+          "known": "the",
+          "new": true
+        },
+        {
+          "id": "S0416L04",
+          "type": "A",
+          "target": "camino",
+          "known": "way",
+          "new": true
+        },
+        {
+          "id": "S0416L05",
+          "type": "M",
+          "target": "el próximo año",
+          "known": "next year",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["próximo", "next"],
+            ["año", "year"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0417",
+      "seed_pair": [
+        "Do they want to kill those ants?",
+        "¿Quieren matar esas hormigas?"
+      ],
+      "legos": [
+        {
+          "id": "S0417L01",
+          "type": "A",
+          "target": "Quieren",
+          "known": "Do they want",
+          "new": true
+        },
+        {
+          "id": "S0417L02",
+          "type": "A",
+          "target": "matar",
+          "known": "to kill",
+          "new": true
+        },
+        {
+          "id": "S0417L03",
+          "type": "A",
+          "target": "esas",
+          "known": "those",
+          "new": true
+        },
+        {
+          "id": "S0417L04",
+          "type": "A",
+          "target": "hormigas",
+          "known": "ants",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0418",
+      "seed_pair": [
+        "They need to serve the community.",
+        "Necesitan servir a la comunidad."
+      ],
+      "legos": [
+        {
+          "id": "S0418L01",
+          "type": "A",
+          "target": "Necesitan",
+          "known": "They need",
+          "new": true
+        },
+        {
+          "id": "S0418L02",
+          "type": "A",
+          "target": "servir",
+          "known": "to serve",
+          "new": true
+        },
+        {
+          "id": "S0418L03",
+          "type": "A",
+          "target": "a",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0418L04",
+          "type": "A",
+          "target": "la",
+          "known": "the",
+          "new": true
+        },
+        {
+          "id": "S0418L05",
+          "type": "A",
+          "target": "comunidad",
+          "known": "community",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0419",
+      "seed_pair": [
+        "If they want people to like them.",
+        "Si quieren que la gente los quiera."
+      ],
+      "legos": [
+        {
+          "id": "S0419L01",
+          "type": "A",
+          "target": "Si",
+          "known": "If",
+          "new": true
+        },
+        {
+          "id": "S0419L02",
+          "type": "A",
+          "target": "quieren",
+          "known": "they want",
+          "new": true
+        },
+        {
+          "id": "S0419L03",
+          "type": "A",
+          "target": "que",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0419L04",
+          "type": "M",
+          "target": "la gente",
+          "known": "people",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["gente", "people"]
+          ]
+        },
+        {
+          "id": "S0419L05",
+          "type": "M",
+          "target": "los quiera",
+          "known": "like them",
+          "new": true,
+          "components": [
+            ["los", "them"],
+            ["quiera", "like"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0420",
+      "seed_pair": [
+        "They don't need to ask how old he is.",
+        "No necesitan preguntar cuántos años tiene."
+      ],
+      "legos": [
+        {
+          "id": "S0420L01",
+          "type": "A",
+          "target": "preguntar",
+          "known": "to ask",
+          "new": true
+        },
+        {
+          "id": "S0420L02",
+          "type": "M",
+          "target": "No necesitan",
+          "known": "They don't need",
+          "new": true,
+          "components": [
+            ["No", "don't"],
+            ["necesitan", "They need"]
+          ]
+        },
+        {
+          "id": "S0420L03",
+          "type": "M",
+          "target": "cuántos años tiene",
+          "known": "how old he is",
+          "new": true,
+          "components": [
+            ["cuántos", "how"],
+            ["años", "old"],
+            ["tiene", "he is"]
+          ]
+        }
+      ]
+    }
+  ]
+}

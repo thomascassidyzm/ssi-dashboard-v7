@@ -1,0 +1,547 @@
+{
+  "agent_id": "agent_01",
+  "seed_range": "S0101-S0110",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0101",
+      "seed_pair": [
+        "Estoy disfrutando descubrir más sobre este lenguaje",
+        "I'm enjoying finding out more about this language."
+      ],
+      "legos": [
+        {
+          "id": "S0101L01",
+          "type": "A",
+          "target": "descubrir",
+          "known": "finding out",
+          "new": true
+        },
+        {
+          "id": "S0101L02",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
+        },
+        {
+          "id": "S0101L03",
+          "type": "A",
+          "target": "sobre",
+          "known": "about",
+          "new": true
+        },
+        {
+          "id": "S0101L04",
+          "type": "M",
+          "target": "Estoy disfrutando",
+          "known": "I'm enjoying",
+          "new": true,
+          "components": [
+            ["Estoy", "I'm"],
+            ["disfrutando", "enjoying"]
+          ]
+        },
+        {
+          "id": "S0101L05",
+          "type": "M",
+          "target": "este lenguaje",
+          "known": "this language",
+          "new": true,
+          "components": [
+            ["este", "this"],
+            ["lenguaje", "language"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0102",
+      "seed_pair": [
+        "Estamos intentando decir que no es así",
+        "We're trying to say that it's not like that."
+      ],
+      "legos": [
+        {
+          "id": "S0102L01",
+          "type": "A",
+          "target": "decir",
+          "known": "to say",
+          "new": true
+        },
+        {
+          "id": "S0102L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0102L03",
+          "type": "A",
+          "target": "así",
+          "known": "like that",
+          "new": true
+        },
+        {
+          "id": "S0102L04",
+          "type": "M",
+          "target": "Estamos intentando",
+          "known": "We're trying",
+          "new": true,
+          "components": [
+            ["Estamos", "We're"],
+            ["intentando", "trying"]
+          ]
+        },
+        {
+          "id": "S0102L05",
+          "type": "M",
+          "target": "no es",
+          "known": "it's not",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["es", "it is"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0103",
+      "seed_pair": [
+        "No estamos intentando oír muchas más palabras",
+        "We're not trying to hear many more words."
+      ],
+      "legos": [
+        {
+          "id": "S0103L01",
+          "type": "A",
+          "target": "oír",
+          "known": "to hear",
+          "new": true
+        },
+        {
+          "id": "S0103L02",
+          "type": "A",
+          "target": "palabras",
+          "known": "words",
+          "new": true
+        },
+        {
+          "id": "S0103L03",
+          "type": "M",
+          "target": "No estamos intentando",
+          "known": "We're not trying",
+          "new": true,
+          "components": [
+            ["No", "not"],
+            ["estamos", "We're"],
+            ["intentando", "trying"]
+          ]
+        },
+        {
+          "id": "S0103L04",
+          "type": "M",
+          "target": "muchas más",
+          "known": "many more",
+          "new": true,
+          "components": [
+            ["muchas", "many"],
+            ["más", "more"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0104",
+      "seed_pair": [
+        "Necesitamos cambiar lo que estamos haciendo",
+        "We need to change what we're doing."
+      ],
+      "legos": [
+        {
+          "id": "S0104L01",
+          "type": "A",
+          "target": "Necesitamos",
+          "known": "We need",
+          "new": true
+        },
+        {
+          "id": "S0104L02",
+          "type": "A",
+          "target": "cambiar",
+          "known": "to change",
+          "new": true
+        },
+        {
+          "id": "S0104L03",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [
+            ["lo", "the"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0104L04",
+          "type": "M",
+          "target": "estamos haciendo",
+          "known": "we're doing",
+          "new": true,
+          "components": [
+            ["estamos", "we're"],
+            ["haciendo", "doing"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0105",
+      "seed_pair": [
+        "Por eso no sabía la respuesta",
+        "That is why he didn't know the answer."
+      ],
+      "legos": [
+        {
+          "id": "S0105L01",
+          "type": "M",
+          "target": "Por eso",
+          "known": "That is why",
+          "new": true,
+          "components": [
+            ["Por", "why"],
+            ["eso", "That is"]
+          ]
+        },
+        {
+          "id": "S0105L02",
+          "type": "M",
+          "target": "no sabía",
+          "known": "he didn't know",
+          "new": true,
+          "components": [
+            ["no", "didn't"],
+            ["sabía", "he know"]
+          ]
+        },
+        {
+          "id": "S0105L03",
+          "type": "M",
+          "target": "la respuesta",
+          "known": "the answer",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["respuesta", "answer"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0106",
+      "seed_pair": [
+        "No necesitamos sentirnos felices, solo necesitamos trabajar duro",
+        "We don't need to feel happy, we just need to work hard."
+      ],
+      "legos": [
+        {
+          "id": "S0106L01",
+          "type": "A",
+          "target": "sentirnos",
+          "known": "to feel",
+          "new": true
+        },
+        {
+          "id": "S0106L02",
+          "type": "A",
+          "target": "felices",
+          "known": "happy",
+          "new": true
+        },
+        {
+          "id": "S0106L03",
+          "type": "A",
+          "target": "solo",
+          "known": "just",
+          "new": true
+        },
+        {
+          "id": "S0106L04",
+          "type": "A",
+          "target": "necesitamos",
+          "known": "we need",
+          "new": true
+        },
+        {
+          "id": "S0106L05",
+          "type": "A",
+          "target": "trabajar",
+          "known": "to work",
+          "new": true
+        },
+        {
+          "id": "S0106L06",
+          "type": "A",
+          "target": "duro",
+          "known": "hard",
+          "new": true
+        },
+        {
+          "id": "S0106L07",
+          "type": "M",
+          "target": "No necesitamos",
+          "known": "We don't need",
+          "new": true,
+          "components": [
+            ["No", "don't"],
+            ["necesitamos", "we need"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0107",
+      "seed_pair": [
+        "Esperábamos ver lo que estabas haciendo",
+        "We hoped to see what you were doing."
+      ],
+      "legos": [
+        {
+          "id": "S0107L01",
+          "type": "A",
+          "target": "Esperábamos",
+          "known": "We hoped",
+          "new": true
+        },
+        {
+          "id": "S0107L02",
+          "type": "A",
+          "target": "ver",
+          "known": "to see",
+          "new": true
+        },
+        {
+          "id": "S0107L03",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [
+            ["lo", "the"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0107L04",
+          "type": "M",
+          "target": "estabas haciendo",
+          "known": "you were doing",
+          "new": true,
+          "components": [
+            ["estabas", "you were"],
+            ["haciendo", "doing"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0108",
+      "seed_pair": [
+        "No esperábamos despertar en el medio de la noche",
+        "We didn't hope to wake in the middle of the night."
+      ],
+      "legos": [
+        {
+          "id": "S0108L01",
+          "type": "A",
+          "target": "despertar",
+          "known": "to wake",
+          "new": true
+        },
+        {
+          "id": "S0108L02",
+          "type": "A",
+          "target": "en",
+          "known": "in",
+          "new": true
+        },
+        {
+          "id": "S0108L03",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "new": true
+        },
+        {
+          "id": "S0108L04",
+          "type": "M",
+          "target": "No esperábamos",
+          "known": "We didn't hope",
+          "new": true,
+          "components": [
+            ["No", "didn't"],
+            ["esperábamos", "we hope"]
+          ]
+        },
+        {
+          "id": "S0108L05",
+          "type": "M",
+          "target": "el medio",
+          "known": "the middle",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["medio", "middle"]
+          ]
+        },
+        {
+          "id": "S0108L06",
+          "type": "M",
+          "target": "la noche",
+          "known": "the night",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["noche", "night"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0109",
+      "seed_pair": [
+        "Debemos trabajar duro para aprender muchas palabras nuevas",
+        "We must work hard to learn a lot of new words."
+      ],
+      "legos": [
+        {
+          "id": "S0109L01",
+          "type": "A",
+          "target": "Debemos",
+          "known": "We must",
+          "new": true
+        },
+        {
+          "id": "S0109L02",
+          "type": "A",
+          "target": "trabajar",
+          "known": "work",
+          "new": true
+        },
+        {
+          "id": "S0109L03",
+          "type": "A",
+          "target": "duro",
+          "known": "hard",
+          "new": true
+        },
+        {
+          "id": "S0109L04",
+          "type": "A",
+          "target": "para",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0109L05",
+          "type": "A",
+          "target": "aprender",
+          "known": "learn",
+          "new": true
+        },
+        {
+          "id": "S0109L06",
+          "type": "A",
+          "target": "muchas",
+          "known": "a lot of",
+          "new": true
+        },
+        {
+          "id": "S0109L07",
+          "type": "A",
+          "target": "palabras",
+          "known": "words",
+          "new": true
+        },
+        {
+          "id": "S0109L08",
+          "type": "A",
+          "target": "nuevas",
+          "known": "new",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0110",
+      "seed_pair": [
+        "Somos amigos, y después de que terminemos me gustaría relajarme",
+        "We're friends, and after we finish I'd like to relax."
+      ],
+      "legos": [
+        {
+          "id": "S0110L01",
+          "type": "A",
+          "target": "Somos",
+          "known": "We're",
+          "new": true
+        },
+        {
+          "id": "S0110L02",
+          "type": "A",
+          "target": "amigos",
+          "known": "friends",
+          "new": true
+        },
+        {
+          "id": "S0110L03",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0110L04",
+          "type": "A",
+          "target": "terminemos",
+          "known": "we finish",
+          "new": true
+        },
+        {
+          "id": "S0110L05",
+          "type": "A",
+          "target": "relajarme",
+          "known": "to relax",
+          "new": true
+        },
+        {
+          "id": "S0110L06",
+          "type": "M",
+          "target": "después de que",
+          "known": "after",
+          "new": true,
+          "components": [
+            ["después", "after"],
+            ["de", "of"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0110L07",
+          "type": "M",
+          "target": "me gustaría",
+          "known": "I'd like",
+          "new": true,
+          "components": [
+            ["me", "I"],
+            ["gustaría", "'d like"]
+          ]
+        }
+      ]
+    }
+  ]
+}

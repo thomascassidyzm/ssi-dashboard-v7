@@ -1,0 +1,407 @@
+{
+  "agent_id": "agent_08",
+  "seed_range": "S0371-S0380",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0371",
+      "seed_pair": ["Fui a ver una película el miércoles.", "I went to see a film on Wednesday."],
+      "legos": [
+        {
+          "id": "S0371L01",
+          "type": "A",
+          "target": "una",
+          "known": "a",
+          "new": true
+        },
+        {
+          "id": "S0371L02",
+          "type": "A",
+          "target": "película",
+          "known": "film",
+          "new": true
+        },
+        {
+          "id": "S0371L03",
+          "type": "M",
+          "target": "Fui",
+          "known": "I went",
+          "new": true,
+          "components": [["Fui", "I went"]]
+        },
+        {
+          "id": "S0371L04",
+          "type": "M",
+          "target": "a ver",
+          "known": "to see",
+          "new": true,
+          "components": [["a", "to"], ["ver", "see"]]
+        },
+        {
+          "id": "S0371L05",
+          "type": "M",
+          "target": "el miércoles",
+          "known": "on Wednesday",
+          "new": true,
+          "components": [["el", "on"], ["miércoles", "Wednesday"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0372",
+      "seed_pair": ["¿Viste lo que ella estaba intentando crear?", "Did you see what she was trying to create?"],
+      "legos": [
+        {
+          "id": "S0372L01",
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "new": true
+        },
+        {
+          "id": "S0372L02",
+          "type": "M",
+          "target": "Viste",
+          "known": "Did you see",
+          "new": true,
+          "components": [["Viste", "Did you see"]]
+        },
+        {
+          "id": "S0372L03",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [["lo", "what"], ["que", "(that)"]]
+        },
+        {
+          "id": "S0372L04",
+          "type": "M",
+          "target": "estaba intentando",
+          "known": "was trying",
+          "new": true,
+          "components": [["estaba", "was"], ["intentando", "trying"]]
+        },
+        {
+          "id": "S0372L05",
+          "type": "M",
+          "target": "crear",
+          "known": "to create",
+          "new": true,
+          "components": [["crear", "to create"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0373",
+      "seed_pair": ["Fue hermoso.", "It was beautiful."],
+      "legos": [
+        {
+          "id": "S0373L01",
+          "type": "A",
+          "target": "hermoso",
+          "known": "beautiful",
+          "new": true
+        },
+        {
+          "id": "S0373L02",
+          "type": "M",
+          "target": "Fue",
+          "known": "It was",
+          "new": true,
+          "components": [["Fue", "It was"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0374",
+      "seed_pair": ["Sí pensé que era muy hermoso.", "Yes I thought it was very beautiful."],
+      "legos": [
+        {
+          "id": "S0374L01",
+          "type": "A",
+          "target": "Sí",
+          "known": "Yes",
+          "new": true
+        },
+        {
+          "id": "S0374L02",
+          "type": "A",
+          "target": "muy",
+          "known": "very",
+          "new": true
+        },
+        {
+          "id": "S0374L03",
+          "type": "A",
+          "target": "hermoso",
+          "known": "beautiful",
+          "new": true
+        },
+        {
+          "id": "S0374L04",
+          "type": "M",
+          "target": "pensé que",
+          "known": "I thought",
+          "new": true,
+          "components": [["pensé", "I thought"], ["que", "(that)"]]
+        },
+        {
+          "id": "S0374L05",
+          "type": "M",
+          "target": "era",
+          "known": "it was",
+          "new": true,
+          "components": [["era", "it was"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0375",
+      "seed_pair": ["No no sabía qué estaba haciendo.", "No I didn't know what she was doing."],
+      "legos": [
+        {
+          "id": "S0375L01",
+          "type": "A",
+          "target": "No",
+          "known": "No",
+          "new": true
+        },
+        {
+          "id": "S0375L02",
+          "type": "A",
+          "target": "qué",
+          "known": "what",
+          "new": true
+        },
+        {
+          "id": "S0375L03",
+          "type": "M",
+          "target": "no sabía",
+          "known": "I didn't know",
+          "new": true,
+          "components": [["no", "didn't"], ["sabía", "I know"]]
+        },
+        {
+          "id": "S0375L04",
+          "type": "M",
+          "target": "estaba haciendo",
+          "known": "she was doing",
+          "new": true,
+          "components": [["estaba", "she was"], ["haciendo", "doing"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0376",
+      "seed_pair": ["No fui a ninguna parte el mes pasado.", "I didn't go anywhere last month."],
+      "legos": [
+        {
+          "id": "S0376L01",
+          "type": "M",
+          "target": "No fui",
+          "known": "I didn't go",
+          "new": true,
+          "components": [["No", "didn't"], ["fui", "I go"]]
+        },
+        {
+          "id": "S0376L02",
+          "type": "M",
+          "target": "a ninguna parte",
+          "known": "anywhere",
+          "new": true,
+          "components": [["a", "to"], ["ninguna", "any"], ["parte", "where"]]
+        },
+        {
+          "id": "S0376L03",
+          "type": "M",
+          "target": "el mes pasado",
+          "known": "last month",
+          "new": true,
+          "components": [["el", "(the)"], ["mes", "month"], ["pasado", "last"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0377",
+      "seed_pair": ["¿Fuiste a alguna parte en el mundo el año pasado?", "Did you go anywhere in the world last year?"],
+      "legos": [
+        {
+          "id": "S0377L01",
+          "type": "A",
+          "target": "en",
+          "known": "in",
+          "new": true
+        },
+        {
+          "id": "S0377L02",
+          "type": "A",
+          "target": "el",
+          "known": "the",
+          "new": true
+        },
+        {
+          "id": "S0377L03",
+          "type": "A",
+          "target": "mundo",
+          "known": "world",
+          "new": true
+        },
+        {
+          "id": "S0377L04",
+          "type": "M",
+          "target": "Fuiste",
+          "known": "Did you go",
+          "new": true,
+          "components": [["Fuiste", "Did you go"]]
+        },
+        {
+          "id": "S0377L05",
+          "type": "M",
+          "target": "a alguna parte",
+          "known": "anywhere",
+          "new": true,
+          "components": [["a", "to"], ["alguna", "any"], ["parte", "where"]]
+        },
+        {
+          "id": "S0377L06",
+          "type": "M",
+          "target": "el año pasado",
+          "known": "last year",
+          "new": true,
+          "components": [["el", "(the)"], ["año", "year"], ["pasado", "last"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0378",
+      "seed_pair": ["No no tenía suficiente dinero para vacaciones.", "No I didn't have enough money for holidays."],
+      "legos": [
+        {
+          "id": "S0378L01",
+          "type": "A",
+          "target": "No",
+          "known": "No",
+          "new": true
+        },
+        {
+          "id": "S0378L02",
+          "type": "A",
+          "target": "suficiente",
+          "known": "enough",
+          "new": true
+        },
+        {
+          "id": "S0378L03",
+          "type": "A",
+          "target": "dinero",
+          "known": "money",
+          "new": true
+        },
+        {
+          "id": "S0378L04",
+          "type": "A",
+          "target": "para",
+          "known": "for",
+          "new": true
+        },
+        {
+          "id": "S0378L05",
+          "type": "A",
+          "target": "vacaciones",
+          "known": "holidays",
+          "new": true
+        },
+        {
+          "id": "S0378L06",
+          "type": "M",
+          "target": "no tenía",
+          "known": "I didn't have",
+          "new": true,
+          "components": [["no", "didn't"], ["tenía", "I have"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0379",
+      "seed_pair": ["Sí tuve suficiente suerte para viajar a África.", "Yes I was lucky enough to travel to Africa."],
+      "legos": [
+        {
+          "id": "S0379L01",
+          "type": "A",
+          "target": "Sí",
+          "known": "Yes",
+          "new": true
+        },
+        {
+          "id": "S0379L02",
+          "type": "A",
+          "target": "a",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0379L03",
+          "type": "A",
+          "target": "África",
+          "known": "Africa",
+          "new": true
+        },
+        {
+          "id": "S0379L04",
+          "type": "M",
+          "target": "tuve suficiente suerte",
+          "known": "I was lucky enough",
+          "new": true,
+          "components": [["tuve", "I was"], ["suficiente", "enough"], ["suerte", "lucky"]]
+        },
+        {
+          "id": "S0379L05",
+          "type": "M",
+          "target": "para viajar",
+          "known": "to travel",
+          "new": true,
+          "components": [["para", "to"], ["viajar", "travel"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0380",
+      "seed_pair": ["Pregunté qué quería incluir.", "I asked what she wanted to include."],
+      "legos": [
+        {
+          "id": "S0380L01",
+          "type": "A",
+          "target": "qué",
+          "known": "what",
+          "new": true
+        },
+        {
+          "id": "S0380L02",
+          "type": "M",
+          "target": "Pregunté",
+          "known": "I asked",
+          "new": true,
+          "components": [["Pregunté", "I asked"]]
+        },
+        {
+          "id": "S0380L03",
+          "type": "M",
+          "target": "quería",
+          "known": "she wanted",
+          "new": true,
+          "components": [["quería", "she wanted"]]
+        },
+        {
+          "id": "S0380L04",
+          "type": "M",
+          "target": "incluir",
+          "known": "to include",
+          "new": true,
+          "components": [["incluir", "to include"]]
+        }
+      ]
+    }
+  ]
+}

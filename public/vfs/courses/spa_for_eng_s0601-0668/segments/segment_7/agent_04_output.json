@@ -1,0 +1,315 @@
+{
+  "agent_id": "agent_04",
+  "seed_range": "S0631-S0640",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0631",
+      "seed_pair": ["What would you like?", "¿Qué quieres?"],
+      "legos": [
+        {
+          "id": "S0631L01",
+          "type": "A",
+          "target": "¿Qué",
+          "known": "What",
+          "new": true
+        },
+        {
+          "id": "S0631L02",
+          "type": "M",
+          "target": "quieres?",
+          "known": "would you like?",
+          "new": true,
+          "components": [["quieres", "would you like"], ["?", "?"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0632",
+      "seed_pair": ["A glass of water.", "Un vaso de agua."],
+      "legos": [
+        {
+          "id": "S0632L01",
+          "type": "A",
+          "target": "Un",
+          "known": "A",
+          "new": true
+        },
+        {
+          "id": "S0632L02",
+          "type": "A",
+          "target": "vaso",
+          "known": "glass",
+          "new": true
+        },
+        {
+          "id": "S0632L03",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "new": true
+        },
+        {
+          "id": "S0632L04",
+          "type": "A",
+          "target": "agua.",
+          "known": "water.",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0633",
+      "seed_pair": ["A large glass of water would be fine.", "Un vaso grande de agua estaría bien."],
+      "legos": [
+        {
+          "id": "S0633L01",
+          "type": "A",
+          "target": "Un",
+          "known": "A",
+          "new": true
+        },
+        {
+          "id": "S0633L02",
+          "type": "A",
+          "target": "vaso",
+          "known": "glass",
+          "new": true
+        },
+        {
+          "id": "S0633L03",
+          "type": "A",
+          "target": "grande",
+          "known": "large",
+          "new": true
+        },
+        {
+          "id": "S0633L04",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "new": true
+        },
+        {
+          "id": "S0633L05",
+          "type": "A",
+          "target": "agua",
+          "known": "water",
+          "new": true
+        },
+        {
+          "id": "S0633L06",
+          "type": "M",
+          "target": "estaría bien.",
+          "known": "would be fine.",
+          "new": true,
+          "components": [["estaría", "would be"], ["bien", "fine"], [".", "."]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0634",
+      "seed_pair": ["I'd like one of those.", "Me gustaría uno de esos."],
+      "legos": [
+        {
+          "id": "S0634L01",
+          "type": "A",
+          "target": "uno",
+          "known": "one",
+          "new": true
+        },
+        {
+          "id": "S0634L02",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "new": true
+        },
+        {
+          "id": "S0634L03",
+          "type": "A",
+          "target": "esos.",
+          "known": "those.",
+          "new": true
+        },
+        {
+          "id": "S0634L04",
+          "type": "M",
+          "target": "Me gustaría",
+          "known": "I'd like",
+          "new": true,
+          "components": [["Me", "to me"], ["gustaría", "would like"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0635",
+      "seed_pair": ["That is Jane's bag.", "Esa es la bolsa de Jane."],
+      "legos": [
+        {
+          "id": "S0635L01",
+          "type": "A",
+          "target": "Esa",
+          "known": "That",
+          "new": true
+        },
+        {
+          "id": "S0635L02",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "new": true
+        },
+        {
+          "id": "S0635L03",
+          "type": "M",
+          "target": "la bolsa de Jane.",
+          "known": "Jane's bag.",
+          "new": true,
+          "components": [["la", "the"], ["bolsa", "bag"], ["de", "'s"], ["Jane", "Jane"], [".", "."]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0636",
+      "seed_pair": ["I think that that is Jane's bag.", "Creo que esa es la bolsa de Jane."],
+      "legos": [
+        {
+          "id": "S0636L01",
+          "type": "A",
+          "target": "Creo",
+          "known": "I think",
+          "new": true
+        },
+        {
+          "id": "S0636L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0636L03",
+          "type": "A",
+          "target": "esa",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0636L04",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "new": true
+        },
+        {
+          "id": "S0636L05",
+          "type": "M",
+          "target": "la bolsa de Jane.",
+          "known": "Jane's bag.",
+          "new": true,
+          "components": [["la", "the"], ["bolsa", "bag"], ["de", "'s"], ["Jane", "Jane"], [".", "."]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0637",
+      "seed_pair": ["Where is her bag?", "¿Dónde está su bolsa?"],
+      "legos": [
+        {
+          "id": "S0637L01",
+          "type": "A",
+          "target": "¿Dónde",
+          "known": "Where",
+          "new": true
+        },
+        {
+          "id": "S0637L02",
+          "type": "A",
+          "target": "está",
+          "known": "is",
+          "new": true
+        },
+        {
+          "id": "S0637L03",
+          "type": "A",
+          "target": "su",
+          "known": "her",
+          "new": true
+        },
+        {
+          "id": "S0637L04",
+          "type": "A",
+          "target": "bolsa?",
+          "known": "bag?",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0638",
+      "seed_pair": ["I'm trying to think.", "Estoy intentando pensar."],
+      "legos": [
+        {
+          "id": "S0638L01",
+          "type": "A",
+          "target": "pensar.",
+          "known": "to think.",
+          "new": true
+        },
+        {
+          "id": "S0638L02",
+          "type": "M",
+          "target": "Estoy intentando",
+          "known": "I'm trying",
+          "new": true,
+          "components": [["Estoy", "I'm"], ["intentando", "trying"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0639",
+      "seed_pair": ["with you sir", "contigo señor"],
+      "legos": [
+        {
+          "id": "S0639L01",
+          "type": "A",
+          "target": "señor",
+          "known": "sir",
+          "new": true
+        },
+        {
+          "id": "S0639L02",
+          "type": "M",
+          "target": "contigo",
+          "known": "with you",
+          "new": true,
+          "components": [["contigo", "with you"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0640",
+      "seed_pair": ["It's the red one.", "Es el rojo."],
+      "legos": [
+        {
+          "id": "S0640L01",
+          "type": "M",
+          "target": "Es",
+          "known": "It's",
+          "new": true,
+          "components": [["Es", "It's"]]
+        },
+        {
+          "id": "S0640L02",
+          "type": "M",
+          "target": "el rojo.",
+          "known": "the red one.",
+          "new": true,
+          "components": [["el", "the"], ["rojo", "red one"], [".", "."]]
+        }
+      ]
+    }
+  ]
+}

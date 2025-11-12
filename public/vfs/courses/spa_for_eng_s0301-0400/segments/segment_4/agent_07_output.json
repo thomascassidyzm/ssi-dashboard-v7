@@ -1,0 +1,454 @@
+{
+  "agent_id": "agent_07",
+  "seed_range": "S0361-S0370",
+  "extracted_at": "2025-11-12T00:00:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0361",
+      "seed_pair": ["He was quiet.", "Él estaba callado."],
+      "legos": [
+        {
+          "id": "S0361L01",
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0361L02",
+          "type": "M",
+          "target": "estaba callado",
+          "known": "was quiet",
+          "new": true,
+          "components": [
+            ["estaba", "was"],
+            ["callado", "quiet"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0362",
+      "seed_pair": ["No he was rather quiet after you left.", "No él estaba bastante callado después de que te fuiste."],
+      "legos": [
+        {
+          "id": "S0362L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0362L02",
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0362L03",
+          "type": "M",
+          "target": "estaba bastante callado",
+          "known": "was rather quiet",
+          "new": true,
+          "components": [
+            ["estaba", "was"],
+            ["bastante", "rather"],
+            ["callado", "quiet"]
+          ]
+        },
+        {
+          "id": "S0362L04",
+          "type": "M",
+          "target": "después de que",
+          "known": "after",
+          "new": true,
+          "components": [
+            ["después", "after"],
+            ["de", "of"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0362L05",
+          "type": "M",
+          "target": "te fuiste",
+          "known": "you left",
+          "new": true,
+          "components": [
+            ["te", "you"],
+            ["fuiste", "left"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0363",
+      "seed_pair": ["Yes he felt like talking a lot.", "Sí él tenía ganas de hablar mucho."],
+      "legos": [
+        {
+          "id": "S0363L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0363L02",
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0363L03",
+          "type": "A",
+          "target": "hablar",
+          "known": "talking",
+          "new": true
+        },
+        {
+          "id": "S0363L04",
+          "type": "M",
+          "target": "tenía ganas de",
+          "known": "felt like",
+          "new": true,
+          "components": [
+            ["tenía", "felt/had"],
+            ["ganas", "desire"],
+            ["de", "of/to"]
+          ]
+        },
+        {
+          "id": "S0363L05",
+          "type": "M",
+          "target": "mucho",
+          "known": "a lot",
+          "new": true,
+          "components": [
+            ["mucho", "a lot"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0364",
+      "seed_pair": ["I heard that he didn't like that place.", "Escuché que a él no le gustó ese lugar."],
+      "legos": [
+        {
+          "id": "S0364L01",
+          "type": "A",
+          "target": "escuché",
+          "known": "I heard",
+          "new": true
+        },
+        {
+          "id": "S0364L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0364L03",
+          "type": "M",
+          "target": "a él no le gustó",
+          "known": "he didn't like",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["él", "he/him"],
+            ["no", "not/didn't"],
+            ["le", "him"],
+            ["gustó", "pleased/liked"]
+          ]
+        },
+        {
+          "id": "S0364L04",
+          "type": "M",
+          "target": "ese lugar",
+          "known": "that place",
+          "new": true,
+          "components": [
+            ["ese", "that"],
+            ["lugar", "place"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0365",
+      "seed_pair": ["I didn't hear what she said to him.", "No escuché lo que ella le dijo a él."],
+      "legos": [
+        {
+          "id": "S0365L01",
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "new": true
+        },
+        {
+          "id": "S0365L02",
+          "type": "M",
+          "target": "no escuché",
+          "known": "I didn't hear",
+          "new": true,
+          "components": [
+            ["no", "didn't"],
+            ["escuché", "I hear"]
+          ]
+        },
+        {
+          "id": "S0365L03",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [
+            ["lo", "it"],
+            ["que", "what/that"]
+          ]
+        },
+        {
+          "id": "S0365L04",
+          "type": "M",
+          "target": "le dijo a él",
+          "known": "said to him",
+          "new": true,
+          "components": [
+            ["le", "to him"],
+            ["dijo", "said"],
+            ["a", "to"],
+            ["él", "him"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0366",
+      "seed_pair": ["Did you hear what he wanted to grow?", "¿Escuchaste lo que él quería cultivar?"],
+      "legos": [
+        {
+          "id": "S0366L01",
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0366L02",
+          "type": "A",
+          "target": "quería",
+          "known": "wanted",
+          "new": true
+        },
+        {
+          "id": "S0366L03",
+          "type": "A",
+          "target": "cultivar",
+          "known": "to grow",
+          "new": true
+        },
+        {
+          "id": "S0366L04",
+          "type": "M",
+          "target": "escuchaste",
+          "known": "did you hear",
+          "new": true,
+          "components": [
+            ["escuchaste", "you heard"]
+          ]
+        },
+        {
+          "id": "S0366L05",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [
+            ["lo", "it"],
+            ["que", "what/that"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0367",
+      "seed_pair": ["No nobody told me.", "No nadie me dijo."],
+      "legos": [
+        {
+          "id": "S0367L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0367L02",
+          "type": "A",
+          "target": "nadie",
+          "known": "nobody",
+          "new": true
+        },
+        {
+          "id": "S0367L03",
+          "type": "M",
+          "target": "me dijo",
+          "known": "told me",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["dijo", "told"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0368",
+      "seed_pair": ["Yes I heard that he wanted to grow tomatoes.", "Sí escuché que él quería cultivar tomates."],
+      "legos": [
+        {
+          "id": "S0368L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0368L02",
+          "type": "A",
+          "target": "escuché",
+          "known": "I heard",
+          "new": true
+        },
+        {
+          "id": "S0368L03",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0368L04",
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0368L05",
+          "type": "A",
+          "target": "quería",
+          "known": "wanted",
+          "new": true
+        },
+        {
+          "id": "S0368L06",
+          "type": "A",
+          "target": "cultivar",
+          "known": "to grow",
+          "new": true
+        },
+        {
+          "id": "S0368L07",
+          "type": "A",
+          "target": "tomates",
+          "known": "tomatoes",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0369",
+      "seed_pair": ["I saw several horses on the road.", "Vi varios caballos en la carretera."],
+      "legos": [
+        {
+          "id": "S0369L01",
+          "type": "A",
+          "target": "vi",
+          "known": "I saw",
+          "new": true
+        },
+        {
+          "id": "S0369L02",
+          "type": "A",
+          "target": "en",
+          "known": "on",
+          "new": true
+        },
+        {
+          "id": "S0369L03",
+          "type": "M",
+          "target": "varios caballos",
+          "known": "several horses",
+          "new": true,
+          "components": [
+            ["varios", "several"],
+            ["caballos", "horses"]
+          ]
+        },
+        {
+          "id": "S0369L04",
+          "type": "M",
+          "target": "la carretera",
+          "known": "the road",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["carretera", "road"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0370",
+      "seed_pair": ["I didn't see anyone that I knew.", "No vi a nadie que yo conocía."],
+      "legos": [
+        {
+          "id": "S0370L01",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0370L02",
+          "type": "A",
+          "target": "yo",
+          "known": "I",
+          "new": true
+        },
+        {
+          "id": "S0370L03",
+          "type": "A",
+          "target": "conocía",
+          "known": "knew",
+          "new": true
+        },
+        {
+          "id": "S0370L04",
+          "type": "M",
+          "target": "no vi",
+          "known": "I didn't see",
+          "new": true,
+          "components": [
+            ["no", "didn't"],
+            ["vi", "I see/saw"]
+          ]
+        },
+        {
+          "id": "S0370L05",
+          "type": "M",
+          "target": "a nadie",
+          "known": "anyone",
+          "new": true,
+          "components": [
+            ["a", "—"],
+            ["nadie", "anyone"]
+          ]
+        }
+      ]
+    }
+  ]
+}

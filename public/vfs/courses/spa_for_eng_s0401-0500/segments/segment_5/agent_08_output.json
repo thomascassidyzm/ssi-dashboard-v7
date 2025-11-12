@@ -1,0 +1,453 @@
+{
+  "agent_id": "agent_08",
+  "seed_range": "S0471-S0480",
+  "extracted_at": "2025-11-12T10:30:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0471",
+      "seed_pair": ["Do you want to stop for a rest?", "¿Quieres parar para descansar?"],
+      "legos": [
+        {
+          "id": "S0471L01",
+          "type": "A",
+          "target": "quieres",
+          "known": "do you want",
+          "new": true
+        },
+        {
+          "id": "S0471L02",
+          "type": "A",
+          "target": "parar",
+          "known": "to stop",
+          "new": true
+        },
+        {
+          "id": "S0471L03",
+          "type": "M",
+          "target": "para descansar",
+          "known": "for a rest",
+          "new": true,
+          "components": [
+            ["para", "for"],
+            ["descansar", "a rest"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0472",
+      "seed_pair": ["Part of the problem is that we don't know the facts.", "Parte del problema es que no sabemos los hechos."],
+      "legos": [
+        {
+          "id": "S0472L01",
+          "type": "A",
+          "target": "parte",
+          "known": "part",
+          "new": true
+        },
+        {
+          "id": "S0472L02",
+          "type": "M",
+          "target": "del problema",
+          "known": "of the problem",
+          "new": true,
+          "components": [
+            ["del", "of the"],
+            ["problema", "problem"]
+          ]
+        },
+        {
+          "id": "S0472L03",
+          "type": "M",
+          "target": "es que",
+          "known": "is that",
+          "new": true,
+          "components": [
+            ["es", "is"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0472L04",
+          "type": "M",
+          "target": "no sabemos",
+          "known": "we don't know",
+          "new": true,
+          "components": [
+            ["no", "don't"],
+            ["sabemos", "we know"]
+          ]
+        },
+        {
+          "id": "S0472L05",
+          "type": "M",
+          "target": "los hechos",
+          "known": "the facts",
+          "new": true,
+          "components": [
+            ["los", "the"],
+            ["hechos", "facts"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0473",
+      "seed_pair": ["I don't want it.", "No lo quiero."],
+      "legos": [
+        {
+          "id": "S0473L01",
+          "type": "A",
+          "target": "no",
+          "known": "don't",
+          "new": true
+        },
+        {
+          "id": "S0473L02",
+          "type": "A",
+          "target": "lo",
+          "known": "it",
+          "new": true
+        },
+        {
+          "id": "S0473L03",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0474",
+      "seed_pair": ["I don't even want it as a free offer.", "Ni siquiera lo quiero como oferta gratuita."],
+      "legos": [
+        {
+          "id": "S0474L01",
+          "type": "M",
+          "target": "ni siquiera",
+          "known": "don't even",
+          "new": true,
+          "components": [
+            ["ni", "not"],
+            ["siquiera", "even"]
+          ]
+        },
+        {
+          "id": "S0474L02",
+          "type": "A",
+          "target": "lo",
+          "known": "it",
+          "new": true
+        },
+        {
+          "id": "S0474L03",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "new": true
+        },
+        {
+          "id": "S0474L04",
+          "type": "A",
+          "target": "como",
+          "known": "as",
+          "new": true
+        },
+        {
+          "id": "S0474L05",
+          "type": "M",
+          "target": "oferta gratuita",
+          "known": "a free offer",
+          "new": true,
+          "components": [
+            ["oferta", "offer"],
+            ["gratuita", "free"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0475",
+      "seed_pair": ["There are many reasons to consider waiting.", "Hay muchas razones para considerar esperar."],
+      "legos": [
+        {
+          "id": "S0475L01",
+          "type": "A",
+          "target": "hay",
+          "known": "there are",
+          "new": true
+        },
+        {
+          "id": "S0475L02",
+          "type": "M",
+          "target": "muchas razones",
+          "known": "many reasons",
+          "new": true,
+          "components": [
+            ["muchas", "many"],
+            ["razones", "reasons"]
+          ]
+        },
+        {
+          "id": "S0475L03",
+          "type": "A",
+          "target": "para",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0475L04",
+          "type": "M",
+          "target": "considerar esperar",
+          "known": "consider waiting",
+          "new": true,
+          "components": [
+            ["considerar", "consider"],
+            ["esperar", "waiting"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0476",
+      "seed_pair": ["I'm waiting for the end of the second half.", "Estoy esperando el final de la segunda mitad."],
+      "legos": [
+        {
+          "id": "S0476L01",
+          "type": "M",
+          "target": "estoy esperando",
+          "known": "I'm waiting",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["esperando", "waiting"]
+          ]
+        },
+        {
+          "id": "S0476L02",
+          "type": "M",
+          "target": "el final",
+          "known": "the end",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["final", "end"]
+          ]
+        },
+        {
+          "id": "S0476L03",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "new": true
+        },
+        {
+          "id": "S0476L04",
+          "type": "M",
+          "target": "la segunda mitad",
+          "known": "the second half",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["segunda", "second"],
+            ["mitad", "half"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0477",
+      "seed_pair": ["He's been sick since the second day of the holidays.", "Él ha estado enfermo desde el segundo día de las vacaciones."],
+      "legos": [
+        {
+          "id": "S0477L01",
+          "type": "M",
+          "target": "él ha estado",
+          "known": "he's been",
+          "new": true,
+          "components": [
+            ["él", "he"],
+            ["ha", "has"],
+            ["estado", "been"]
+          ]
+        },
+        {
+          "id": "S0477L02",
+          "type": "A",
+          "target": "enfermo",
+          "known": "sick",
+          "new": true
+        },
+        {
+          "id": "S0477L03",
+          "type": "A",
+          "target": "desde",
+          "known": "since",
+          "new": true
+        },
+        {
+          "id": "S0477L04",
+          "type": "M",
+          "target": "el segundo día",
+          "known": "the second day",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["segundo", "second"],
+            ["día", "day"]
+          ]
+        },
+        {
+          "id": "S0477L05",
+          "type": "M",
+          "target": "de las vacaciones",
+          "known": "of the holidays",
+          "new": true,
+          "components": [
+            ["de", "of"],
+            ["las", "the"],
+            ["vacaciones", "holidays"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0478",
+      "seed_pair": ["She has such a kind heart.", "Ella tiene un corazón tan amable."],
+      "legos": [
+        {
+          "id": "S0478L01",
+          "type": "A",
+          "target": "ella tiene",
+          "known": "she has",
+          "new": true
+        },
+        {
+          "id": "S0478L02",
+          "type": "M",
+          "target": "un corazón",
+          "known": "a heart",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["corazón", "heart"]
+          ]
+        },
+        {
+          "id": "S0478L03",
+          "type": "M",
+          "target": "tan amable",
+          "known": "such kind",
+          "new": true,
+          "components": [
+            ["tan", "such"],
+            ["amable", "kind"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0479",
+      "seed_pair": ["It's the least I could do.", "Es lo mínimo que podría hacer."],
+      "legos": [
+        {
+          "id": "S0479L01",
+          "type": "A",
+          "target": "es",
+          "known": "it's",
+          "new": true
+        },
+        {
+          "id": "S0479L02",
+          "type": "M",
+          "target": "lo mínimo",
+          "known": "the least",
+          "new": true,
+          "components": [
+            ["lo", "the"],
+            ["mínimo", "least"]
+          ]
+        },
+        {
+          "id": "S0479L03",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0479L04",
+          "type": "M",
+          "target": "podría hacer",
+          "known": "I could do",
+          "new": true,
+          "components": [
+            ["podría", "I could"],
+            ["hacer", "do"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0480",
+      "seed_pair": ["Whatever he says it's not far ahead now.", "Lo que sea que él diga no está muy lejos ahora."],
+      "legos": [
+        {
+          "id": "S0480L01",
+          "type": "M",
+          "target": "lo que sea que",
+          "known": "whatever",
+          "new": true,
+          "components": [
+            ["lo", "what"],
+            ["que", "that"],
+            ["sea", "it may be"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0480L02",
+          "type": "M",
+          "target": "él diga",
+          "known": "he says",
+          "new": true,
+          "components": [
+            ["él", "he"],
+            ["diga", "says"]
+          ]
+        },
+        {
+          "id": "S0480L03",
+          "type": "M",
+          "target": "no está",
+          "known": "it's not",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["está", "it is"]
+          ]
+        },
+        {
+          "id": "S0480L04",
+          "type": "M",
+          "target": "muy lejos",
+          "known": "far ahead",
+          "new": true,
+          "components": [
+            ["muy", "far"],
+            ["lejos", "ahead"]
+          ]
+        },
+        {
+          "id": "S0480L05",
+          "type": "A",
+          "target": "ahora",
+          "known": "now",
+          "new": true
+        }
+      ]
+    }
+  ]
+}
