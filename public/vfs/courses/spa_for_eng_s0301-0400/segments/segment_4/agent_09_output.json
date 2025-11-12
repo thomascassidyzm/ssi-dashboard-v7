@@ -1,0 +1,468 @@
+{
+  "agent_id": "agent_09",
+  "seed_range": "S0381-S0390",
+  "extracted_at": "2025-11-12T00:00:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0381",
+      "seed_pair": ["I didn't ask if he wanted to follow us.", "No pregunté si quería seguirnos."],
+      "legos": [
+        {
+          "id": "S0381L01",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0381L02",
+          "type": "A",
+          "target": "quería",
+          "known": "he wanted",
+          "new": true
+        },
+        {
+          "id": "S0381L03",
+          "type": "A",
+          "target": "seguir",
+          "known": "to follow",
+          "new": true
+        },
+        {
+          "id": "S0381L04",
+          "type": "A",
+          "target": "nos",
+          "known": "us",
+          "new": true
+        },
+        {
+          "id": "S0381L05",
+          "type": "M",
+          "target": "no pregunté",
+          "known": "I didn't ask",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["pregunté", "I asked"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0382",
+      "seed_pair": ["Did you ask where he wanted to put it?", "¿Preguntaste dónde quería ponerlo?"],
+      "legos": [
+        {
+          "id": "S0382L01",
+          "type": "A",
+          "target": "preguntaste",
+          "known": "you asked",
+          "new": true
+        },
+        {
+          "id": "S0382L02",
+          "type": "A",
+          "target": "dónde",
+          "known": "where",
+          "new": true
+        },
+        {
+          "id": "S0382L03",
+          "type": "A",
+          "target": "quería",
+          "known": "he wanted",
+          "new": true
+        },
+        {
+          "id": "S0382L04",
+          "type": "A",
+          "target": "poner",
+          "known": "to put",
+          "new": true
+        },
+        {
+          "id": "S0382L05",
+          "type": "A",
+          "target": "lo",
+          "known": "it",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0383",
+      "seed_pair": ["Yes he said he wanted to put it in the garden.", "Sí dijo que quería ponerlo en el jardín."],
+      "legos": [
+        {
+          "id": "S0383L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0383L02",
+          "type": "A",
+          "target": "dijo",
+          "known": "he said",
+          "new": true
+        },
+        {
+          "id": "S0383L03",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0383L04",
+          "type": "A",
+          "target": "quería",
+          "known": "he wanted",
+          "new": true
+        },
+        {
+          "id": "S0383L05",
+          "type": "A",
+          "target": "poner",
+          "known": "to put",
+          "new": true
+        },
+        {
+          "id": "S0383L06",
+          "type": "A",
+          "target": "lo",
+          "known": "it",
+          "new": true
+        },
+        {
+          "id": "S0383L07",
+          "type": "A",
+          "target": "en",
+          "known": "in",
+          "new": true
+        },
+        {
+          "id": "S0383L08",
+          "type": "A",
+          "target": "el",
+          "known": "the",
+          "new": true
+        },
+        {
+          "id": "S0383L09",
+          "type": "A",
+          "target": "jardín",
+          "known": "garden",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0384",
+      "seed_pair": ["I couldn't agree with what he said a moment ago.", "No pude estar de acuerdo con lo que dijo hace un momento."],
+      "legos": [
+        {
+          "id": "S0384L01",
+          "type": "A",
+          "target": "con",
+          "known": "with",
+          "new": true
+        },
+        {
+          "id": "S0384L02",
+          "type": "A",
+          "target": "dijo",
+          "known": "he said",
+          "new": true
+        },
+        {
+          "id": "S0384L03",
+          "type": "M",
+          "target": "no pude",
+          "known": "I couldn't",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["pude", "I could"]
+          ]
+        },
+        {
+          "id": "S0384L04",
+          "type": "M",
+          "target": "estar de acuerdo",
+          "known": "agree",
+          "new": true,
+          "components": [
+            ["estar", "to be"],
+            ["de", "of"],
+            ["acuerdo", "agreement"]
+          ]
+        },
+        {
+          "id": "S0384L05",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [
+            ["lo", "the"],
+            ["que", "that/which"]
+          ]
+        },
+        {
+          "id": "S0384L06",
+          "type": "M",
+          "target": "hace un momento",
+          "known": "a moment ago",
+          "new": true,
+          "components": [
+            ["hace", "ago"],
+            ["un", "a"],
+            ["momento", "moment"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0385",
+      "seed_pair": ["Did you agree with her?", "¿Estuviste de acuerdo con ella?"],
+      "legos": [
+        {
+          "id": "S0385L01",
+          "type": "A",
+          "target": "con",
+          "known": "with",
+          "new": true
+        },
+        {
+          "id": "S0385L02",
+          "type": "A",
+          "target": "ella",
+          "known": "her",
+          "new": true
+        },
+        {
+          "id": "S0385L03",
+          "type": "M",
+          "target": "estuviste de acuerdo",
+          "known": "you agreed",
+          "new": true,
+          "components": [
+            ["estuviste", "you were"],
+            ["de", "of"],
+            ["acuerdo", "agreement"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0386",
+      "seed_pair": ["Yes I agreed with her.", "Sí estuve de acuerdo con ella."],
+      "legos": [
+        {
+          "id": "S0386L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0386L02",
+          "type": "A",
+          "target": "con",
+          "known": "with",
+          "new": true
+        },
+        {
+          "id": "S0386L03",
+          "type": "A",
+          "target": "ella",
+          "known": "her",
+          "new": true
+        },
+        {
+          "id": "S0386L04",
+          "type": "M",
+          "target": "estuve de acuerdo",
+          "known": "I agreed",
+          "new": true,
+          "components": [
+            ["estuve", "I was"],
+            ["de", "of"],
+            ["acuerdo", "agreement"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0387",
+      "seed_pair": ["No I didn't think she was right.", "No no pensé que tenía razón."],
+      "legos": [
+        {
+          "id": "S0387L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0387L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0387L03",
+          "type": "M",
+          "target": "no pensé",
+          "known": "I didn't think",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["pensé", "I thought"]
+          ]
+        },
+        {
+          "id": "S0387L04",
+          "type": "M",
+          "target": "tenía razón",
+          "known": "was right",
+          "new": true,
+          "components": [
+            ["tenía", "had"],
+            ["razón", "reason"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0388",
+      "seed_pair": ["That person you work with.", "Esa persona con la que trabajas."],
+      "legos": [
+        {
+          "id": "S0388L01",
+          "type": "A",
+          "target": "esa",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0388L02",
+          "type": "A",
+          "target": "persona",
+          "known": "person",
+          "new": true
+        },
+        {
+          "id": "S0388L03",
+          "type": "A",
+          "target": "con",
+          "known": "with",
+          "new": true
+        },
+        {
+          "id": "S0388L04",
+          "type": "A",
+          "target": "trabajas",
+          "known": "you work",
+          "new": true
+        },
+        {
+          "id": "S0388L05",
+          "type": "M",
+          "target": "la que",
+          "known": "who",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["que", "who/which"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0389",
+      "seed_pair": ["That person over there.", "Esa persona allí."],
+      "legos": [
+        {
+          "id": "S0389L01",
+          "type": "A",
+          "target": "esa",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0389L02",
+          "type": "A",
+          "target": "persona",
+          "known": "person",
+          "new": true
+        },
+        {
+          "id": "S0389L03",
+          "type": "A",
+          "target": "allí",
+          "known": "over there",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0390",
+      "seed_pair": ["The one who is standing near the entrance.", "La que está de pie cerca de la entrada."],
+      "legos": [
+        {
+          "id": "S0390L01",
+          "type": "A",
+          "target": "la",
+          "known": "the",
+          "new": true
+        },
+        {
+          "id": "S0390L02",
+          "type": "A",
+          "target": "entrada",
+          "known": "entrance",
+          "new": true
+        },
+        {
+          "id": "S0390L03",
+          "type": "M",
+          "target": "la que",
+          "known": "the one who",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["que", "one who"]
+          ]
+        },
+        {
+          "id": "S0390L04",
+          "type": "M",
+          "target": "está de pie",
+          "known": "is standing",
+          "new": true,
+          "components": [
+            ["está", "is"],
+            ["de", "of"],
+            ["pie", "foot"]
+          ]
+        },
+        {
+          "id": "S0390L05",
+          "type": "M",
+          "target": "cerca de",
+          "known": "near",
+          "new": true,
+          "components": [
+            ["cerca", "close"],
+            ["de", "of"]
+          ]
+        }
+      ]
+    }
+  ]
+}
