@@ -1,7 +1,7 @@
 {
   "agent_id": "agent_10",
   "seed_range": "S0391-S0400",
-  "extracted_at": "2025-11-12T20:26:53Z",
+  "extracted_at": "2025-11-12T22:05:00Z",
   "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
   "seeds": [
     {
@@ -204,26 +204,23 @@
         {
           "id": "S0395L01",
           "type": "A",
-          "target": "girar",
-          "known": "turn",
+          "target": "necesitamos",
+          "known": "we need",
           "new": true
         },
         {
           "id": "S0395L02",
           "type": "A",
-          "target": "en",
-          "known": "at",
+          "target": "girar",
+          "known": "to turn",
           "new": true
         },
         {
           "id": "S0395L03",
-          "type": "M",
-          "target": "necesitamos",
-          "known": "we need to",
-          "new": true,
-          "components": [
-            ["necesitamos", "we need to"]
-          ]
+          "type": "A",
+          "target": "en",
+          "known": "at",
+          "new": true
         },
         {
           "id": "S0395L04",
@@ -260,20 +257,23 @@
       "legos": [
         {
           "id": "S0396L01",
-          "type": "M",
-          "target": "no necesitamos",
-          "known": "we don't need to",
-          "new": true,
-          "components": [
-            ["no", "don't"],
-            ["necesitamos", "we need to"]
-          ]
+          "type": "A",
+          "target": "no",
+          "known": "don't",
+          "new": true
         },
         {
           "id": "S0396L02",
+          "type": "A",
+          "target": "necesitamos",
+          "known": "we need",
+          "new": true
+        },
+        {
+          "id": "S0396L03",
           "type": "M",
           "target": "estar de pie",
-          "known": "stand",
+          "known": "to stand",
           "new": true,
           "components": [
             ["estar", "to be"],
@@ -282,17 +282,35 @@
           ]
         },
         {
-          "id": "S0396L03",
+          "id": "S0396L04",
           "type": "M",
-          "target": "hasta que todos los demás estén preparados",
-          "known": "until everybody else is ready",
+          "target": "hasta que",
+          "known": "until",
           "new": true,
           "components": [
             ["hasta", "until"],
-            ["que", "that"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0396L05",
+          "type": "M",
+          "target": "todos los demás",
+          "known": "everybody else",
+          "new": true,
+          "components": [
             ["todos", "everybody"],
             ["los", "the"],
-            ["demás", "else"],
+            ["demás", "else"]
+          ]
+        },
+        {
+          "id": "S0396L06",
+          "type": "M",
+          "target": "estén preparados",
+          "known": "is ready",
+          "new": true,
+          "components": [
             ["estén", "is"],
             ["preparados", "ready"]
           ]
@@ -309,30 +327,23 @@
         {
           "id": "S0397L01",
           "type": "A",
-          "target": "pronto",
-          "known": "soon",
+          "target": "necesitamos",
+          "known": "we need",
           "new": true
         },
         {
           "id": "S0397L02",
-          "type": "M",
-          "target": "necesitamos",
-          "known": "do we need to",
-          "new": true,
-          "components": [
-            ["necesitamos", "do we need to"]
-          ]
+          "type": "A",
+          "target": "prepararnos",
+          "known": "to get ready",
+          "new": true
         },
         {
           "id": "S0397L03",
-          "type": "M",
-          "target": "prepararnos",
-          "known": "get ready",
-          "new": true,
-          "components": [
-            ["preparar", "get ready"],
-            ["nos", "ourselves"]
-          ]
+          "type": "A",
+          "target": "pronto",
+          "known": "soon",
+          "new": true
         }
       ]
     },
@@ -346,44 +357,40 @@
         {
           "id": "S0398L01",
           "type": "A",
+          "target": "queremos",
+          "known": "we want",
+          "new": true
+        },
+        {
+          "id": "S0398L02",
+          "type": "A",
+          "target": "volvernos",
+          "known": "to become",
+          "new": true
+        },
+        {
+          "id": "S0398L03",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
+        },
+        {
+          "id": "S0398L04",
+          "type": "A",
+          "target": "pacientes",
+          "known": "patient",
+          "new": true
+        },
+        {
+          "id": "S0398L05",
+          "type": "A",
           "target": "con",
           "known": "with",
           "new": true
         },
         {
-          "id": "S0398L02",
-          "type": "M",
-          "target": "queremos",
-          "known": "we want to",
-          "new": true,
-          "components": [
-            ["queremos", "we want to"]
-          ]
-        },
-        {
-          "id": "S0398L03",
-          "type": "M",
-          "target": "volvernos",
-          "known": "become",
-          "new": true,
-          "components": [
-            ["volver", "become"],
-            ["nos", "ourselves"]
-          ]
-        },
-        {
-          "id": "S0398L04",
-          "type": "M",
-          "target": "más pacientes",
-          "known": "more patient",
-          "new": true,
-          "components": [
-            ["más", "more"],
-            ["pacientes", "patient"]
-          ]
-        },
-        {
-          "id": "S0398L05",
+          "id": "S0398L06",
           "type": "M",
           "target": "nuestros niños",
           "known": "our children",
@@ -405,23 +412,26 @@
         {
           "id": "S0399L01",
           "type": "A",
-          "target": "perder",
-          "known": "lose",
+          "target": "no",
+          "known": "don't",
           "new": true
         },
         {
           "id": "S0399L02",
-          "type": "M",
-          "target": "no queremos",
-          "known": "we don't want to",
-          "new": true,
-          "components": [
-            ["no", "don't"],
-            ["queremos", "we want to"]
-          ]
+          "type": "A",
+          "target": "queremos",
+          "known": "we want",
+          "new": true
         },
         {
           "id": "S0399L03",
+          "type": "A",
+          "target": "perder",
+          "known": "to lose",
+          "new": true
+        },
+        {
+          "id": "S0399L04",
           "type": "M",
           "target": "la esperanza",
           "known": "hope",
@@ -443,26 +453,23 @@
         {
           "id": "S0400L01",
           "type": "A",
-          "target": "comer",
-          "known": "eat",
+          "target": "queremos",
+          "known": "we want",
           "new": true
         },
         {
           "id": "S0400L02",
           "type": "A",
-          "target": "algo",
-          "known": "something",
+          "target": "comer",
+          "known": "to eat",
           "new": true
         },
         {
           "id": "S0400L03",
-          "type": "M",
-          "target": "queremos",
-          "known": "do we want to",
-          "new": true,
-          "components": [
-            ["queremos", "do we want to"]
-          ]
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
         },
         {
           "id": "S0400L04",
