@@ -1,7 +1,7 @@
 {
   "agent_id": "agent_08",
   "seed_range": "S0171-S0180",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "extracted_at": "2025-11-12T21:55:00.000Z",
   "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
   "seeds": [
     {
@@ -14,43 +14,27 @@
         {
           "id": "S0171L01",
           "type": "A",
-          "target": "te",
-          "known": "you",
+          "target": "quieres",
+          "known": "do you want",
           "new": true
         },
         {
           "id": "S0171L02",
-          "type": "A",
-          "target": "ayude",
-          "known": "help",
-          "new": true
+          "type": "M",
+          "target": "que te ayude",
+          "known": "me to help you",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["te", "you"],
+            ["ayude", "(I) help"]
+          ]
         },
         {
           "id": "S0171L03",
           "type": "M",
-          "target": "¿Quieres",
-          "known": "Do you want",
-          "new": true,
-          "components": [
-            ["¿", "Do"],
-            ["Quieres", "you want"]
-          ]
-        },
-        {
-          "id": "S0171L04",
-          "type": "M",
-          "target": "que",
-          "known": "me to",
-          "new": true,
-          "components": [
-            ["que", "me to"]
-          ]
-        },
-        {
-          "id": "S0171L05",
-          "type": "M",
           "target": "a buscarlo",
-          "known": "to look for it",
+          "known": "look for it",
           "new": true,
           "components": [
             ["a", "to"],
@@ -70,38 +54,32 @@
         {
           "id": "S0172L01",
           "type": "A",
-          "target": "Sí",
-          "known": "Yes",
+          "target": "sí",
+          "known": "yes",
           "new": true
         },
         {
           "id": "S0172L02",
-          "type": "A",
-          "target": "eso",
-          "known": "that",
-          "new": true
-        },
-        {
-          "id": "S0172L03",
           "type": "A",
           "target": "muy",
           "known": "very",
           "new": true
         },
         {
-          "id": "S0172L04",
+          "id": "S0172L03",
           "type": "A",
           "target": "útil",
           "known": "helpful",
           "new": true
         },
         {
-          "id": "S0172L05",
+          "id": "S0172L04",
           "type": "M",
-          "target": "sería",
-          "known": "would be",
+          "target": "eso sería",
+          "known": "that would be",
           "new": true,
           "components": [
+            ["eso", "that"],
             ["sería", "would be"]
           ]
         }
@@ -117,35 +95,29 @@
         {
           "id": "S0173L01",
           "type": "A",
-          "target": "No",
-          "known": "No",
+          "target": "no",
+          "known": "no",
           "new": true
         },
         {
           "id": "S0173L02",
-          "type": "M",
+          "type": "A",
           "target": "gracias",
           "known": "thank you",
-          "new": true,
-          "components": [
-            ["gracias", "thank you"]
-          ]
+          "new": true
         },
         {
           "id": "S0173L03",
-          "type": "M",
+          "type": "A",
           "target": "puedo",
           "known": "I can",
-          "new": true,
-          "components": [
-            ["puedo", "I can"]
-          ]
+          "new": true
         },
         {
           "id": "S0173L04",
           "type": "M",
           "target": "manejarlo",
-          "known": "manage it",
+          "known": "manage",
           "new": true,
           "components": [
             ["manejar", "manage"],
@@ -176,20 +148,16 @@
         {
           "id": "S0174L01",
           "type": "A",
-          "target": "entender",
-          "known": "understand",
+          "target": "puedes",
+          "known": "can you",
           "new": true
         },
         {
           "id": "S0174L02",
-          "type": "M",
-          "target": "¿Puedes",
-          "known": "Can you",
-          "new": true,
-          "components": [
-            ["¿", "Can"],
-            ["Puedes", "you"]
-          ]
+          "type": "A",
+          "target": "entender",
+          "known": "understand",
+          "new": true
         },
         {
           "id": "S0174L03",
@@ -198,7 +166,8 @@
           "known": "what",
           "new": true,
           "components": [
-            ["lo que", "what"]
+            ["lo", "that"],
+            ["que", "which"]
           ]
         },
         {
@@ -208,7 +177,7 @@
           "known": "I'm saying",
           "new": true,
           "components": [
-            ["estoy", "I'm"],
+            ["estoy", "I am"],
             ["diciendo", "saying"]
           ]
         }
@@ -224,36 +193,45 @@
         {
           "id": "S0175L01",
           "type": "A",
-          "target": "¿Qué",
-          "known": "What",
+          "target": "qué",
+          "known": "what",
           "new": true
         },
         {
           "id": "S0175L02",
+          "type": "A",
+          "target": "quieres",
+          "known": "do you want",
+          "new": true
+        },
+        {
+          "id": "S0175L03",
           "type": "A",
           "target": "hacer",
           "known": "to do",
           "new": true
         },
         {
-          "id": "S0175L03",
+          "id": "S0175L04",
           "type": "M",
-          "target": "quieres",
-          "known": "do you want",
+          "target": "el domingo",
+          "known": "on Sunday",
           "new": true,
           "components": [
-            ["quieres", "do you want"]
+            ["el", "the"],
+            ["domingo", "Sunday"]
           ]
         },
         {
-          "id": "S0175L04",
+          "id": "S0175L05",
           "type": "M",
-          "target": "el domingo por la mañana",
-          "known": "on Sunday morning",
+          "target": "por la mañana",
+          "known": "in the morning",
           "new": true,
           "components": [
-            ["el domingo", "on Sunday"],
-            ["por la mañana", "morning"]
+            ["por", "in"],
+            ["la", "the"],
+            ["mañana", "morning"]
           ]
         }
       ]
@@ -268,15 +246,15 @@
         {
           "id": "S0176L01",
           "type": "A",
-          "target": "Le",
-          "known": "him",
+          "target": "si",
+          "known": "if",
           "new": true
         },
         {
           "id": "S0176L02",
           "type": "A",
-          "target": "si",
-          "known": "if",
+          "target": "podrá",
+          "known": "he'll be able to",
           "new": true
         },
         {
@@ -289,31 +267,22 @@
         {
           "id": "S0176L04",
           "type": "M",
-          "target": "preguntaré",
-          "known": "I'll ask",
+          "target": "le preguntaré",
+          "known": "I'll ask him",
           "new": true,
           "components": [
+            ["le", "him"],
             ["preguntaré", "I'll ask"]
           ]
         },
         {
           "id": "S0176L05",
           "type": "M",
-          "target": "podrá",
-          "known": "he'll be able to",
-          "new": true,
-          "components": [
-            ["podrá", "he'll be able to"]
-          ]
-        },
-        {
-          "id": "S0176L06",
-          "type": "M",
           "target": "el año próximo",
           "known": "next year",
           "new": true,
           "components": [
-            ["el", "next"],
+            ["el", "the"],
             ["año", "year"],
             ["próximo", "next"]
           ]
@@ -330,15 +299,15 @@
         {
           "id": "S0177L01",
           "type": "A",
-          "target": "Le",
-          "known": "her",
+          "target": "dónde",
+          "known": "where",
           "new": true
         },
         {
           "id": "S0177L02",
           "type": "A",
-          "target": "dónde",
-          "known": "where",
+          "target": "quiere",
+          "known": "she wants",
           "new": true
         },
         {
@@ -351,21 +320,12 @@
         {
           "id": "S0177L04",
           "type": "M",
-          "target": "preguntaré",
-          "known": "I'll ask",
+          "target": "le preguntaré",
+          "known": "I'll ask her",
           "new": true,
           "components": [
+            ["le", "her"],
             ["preguntaré", "I'll ask"]
-          ]
-        },
-        {
-          "id": "S0177L05",
-          "type": "M",
-          "target": "quiere",
-          "known": "she wants",
-          "new": true,
-          "components": [
-            ["quiere", "she wants"]
           ]
         }
       ]
@@ -393,23 +353,20 @@
         },
         {
           "id": "S0178L03",
-          "type": "M",
-          "target": "No tuve",
-          "known": "I didn't have",
-          "new": true,
-          "components": [
-            ["No", "didn't"],
-            ["tuve", "I have"]
-          ]
+          "type": "A",
+          "target": "quería",
+          "known": "I wanted",
+          "new": true
         },
         {
           "id": "S0178L04",
           "type": "M",
-          "target": "quería",
-          "known": "I wanted",
+          "target": "no tuve",
+          "known": "I didn't have",
           "new": true,
           "components": [
-            ["quería", "I wanted"]
+            ["no", "not"],
+            ["tuve", "I had"]
           ]
         },
         {
@@ -435,8 +392,8 @@
         {
           "id": "S0179L01",
           "type": "A",
-          "target": "¿Qué",
-          "known": "What",
+          "target": "qué",
+          "known": "what",
           "new": true
         },
         {
@@ -453,19 +410,31 @@
           "known": "are you going to",
           "new": true,
           "components": [
-            ["vas", "you are going"],
+            ["vas", "you go"],
             ["a", "to"]
           ]
         },
         {
           "id": "S0179L04",
           "type": "M",
-          "target": "el domingo por la tarde",
-          "known": "on Sunday afternoon",
+          "target": "el domingo",
+          "known": "on Sunday",
           "new": true,
           "components": [
-            ["el domingo", "on Sunday"],
-            ["por la tarde", "afternoon"]
+            ["el", "the"],
+            ["domingo", "Sunday"]
+          ]
+        },
+        {
+          "id": "S0179L05",
+          "type": "M",
+          "target": "por la tarde",
+          "known": "in the afternoon",
+          "new": true,
+          "components": [
+            ["por", "in"],
+            ["la", "the"],
+            ["tarde", "afternoon"]
           ]
         }
       ]
@@ -486,31 +455,28 @@
         },
         {
           "id": "S0180L02",
-          "type": "A",
-          "target": "mi",
-          "known": "my",
-          "new": true
-        },
-        {
-          "id": "S0180L03",
-          "type": "A",
-          "target": "libro",
-          "known": "book",
-          "new": true
-        },
-        {
-          "id": "S0180L04",
           "type": "M",
-          "target": "Me gustaría",
+          "target": "me gustaría",
           "known": "I'd like",
           "new": true,
           "components": [
-            ["Me", "I"],
-            ["gustaría", "would like"]
+            ["me", "(to) me"],
+            ["gustaría", "would please"]
           ]
         },
         {
-          "id": "S0180L05",
+          "id": "S0180L03",
+          "type": "M",
+          "target": "mi libro",
+          "known": "my book",
+          "new": true,
+          "components": [
+            ["mi", "my"],
+            ["libro", "book"]
+          ]
+        },
+        {
+          "id": "S0180L04",
           "type": "M",
           "target": "por un rato",
           "known": "for a while",
