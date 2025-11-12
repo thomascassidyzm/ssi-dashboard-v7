@@ -1,0 +1,425 @@
+{
+  "agent_id": "agent_07",
+  "seed_range": "S0161-S0170",
+  "extracted_at": "2025-11-12T00:00:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0161",
+      "seed_pair": [
+        "Can you give me that book on Sunday morning?",
+        "¿Puedes darme ese libro el domingo por la mañana?"
+      ],
+      "legos": [
+        {
+          "id": "S0161L01",
+          "type": "A",
+          "target": "ese",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0161L02",
+          "type": "A",
+          "target": "libro",
+          "known": "book",
+          "new": true
+        },
+        {
+          "id": "S0161L03",
+          "type": "M",
+          "target": "puedes",
+          "known": "can you",
+          "new": true,
+          "components": [["puedes", "can you"]]
+        },
+        {
+          "id": "S0161L04",
+          "type": "M",
+          "target": "darme",
+          "known": "give me",
+          "new": true,
+          "components": [["dar", "give"], ["me", "me"]]
+        },
+        {
+          "id": "S0161L05",
+          "type": "M",
+          "target": "el domingo",
+          "known": "on Sunday",
+          "new": true,
+          "components": [["el", "on"], ["domingo", "Sunday"]]
+        },
+        {
+          "id": "S0161L06",
+          "type": "M",
+          "target": "por la mañana",
+          "known": "morning",
+          "new": true,
+          "components": [["por", "in"], ["la", "the"], ["mañana", "morning"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0162",
+      "seed_pair": [
+        "What do you think about that?",
+        "¿Qué piensas de eso?"
+      ],
+      "legos": [
+        {
+          "id": "S0162L01",
+          "type": "A",
+          "target": "Qué",
+          "known": "What",
+          "new": true
+        },
+        {
+          "id": "S0162L02",
+          "type": "A",
+          "target": "de",
+          "known": "about",
+          "new": true
+        },
+        {
+          "id": "S0162L03",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0162L04",
+          "type": "M",
+          "target": "piensas",
+          "known": "do you think",
+          "new": true,
+          "components": [["piensas", "do you think"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0163",
+      "seed_pair": [
+        "I think that it's interesting.",
+        "Creo que es interesante."
+      ],
+      "legos": [
+        {
+          "id": "S0163L01",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0163L02",
+          "type": "A",
+          "target": "interesante",
+          "known": "interesting",
+          "new": true
+        },
+        {
+          "id": "S0163L03",
+          "type": "M",
+          "target": "Creo",
+          "known": "I think",
+          "new": true,
+          "components": [["Creo", "I think"]]
+        },
+        {
+          "id": "S0163L04",
+          "type": "M",
+          "target": "es",
+          "known": "it's",
+          "new": true,
+          "components": [["es", "it's"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0164",
+      "seed_pair": [
+        "An interesting book",
+        "Un libro interesante"
+      ],
+      "legos": [
+        {
+          "id": "S0164L01",
+          "type": "A",
+          "target": "un",
+          "known": "a",
+          "new": true
+        },
+        {
+          "id": "S0164L02",
+          "type": "A",
+          "target": "libro",
+          "known": "book",
+          "new": true
+        },
+        {
+          "id": "S0164L03",
+          "type": "A",
+          "target": "interesante",
+          "known": "interesting",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0165",
+      "seed_pair": [
+        "But I'm not sure if it's true.",
+        "Pero no estoy seguro si es verdad."
+      ],
+      "legos": [
+        {
+          "id": "S0165L01",
+          "type": "A",
+          "target": "Pero",
+          "known": "But",
+          "new": true
+        },
+        {
+          "id": "S0165L02",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0165L03",
+          "type": "M",
+          "target": "no estoy seguro",
+          "known": "I'm not sure",
+          "new": true,
+          "components": [["no", "not"], ["estoy", "I'm"], ["seguro", "sure"]]
+        },
+        {
+          "id": "S0165L04",
+          "type": "M",
+          "target": "es verdad",
+          "known": "it's true",
+          "new": true,
+          "components": [["es", "it's"], ["verdad", "true"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0166",
+      "seed_pair": [
+        "My name is not very unusual.",
+        "Mi nombre no es muy inusual."
+      ],
+      "legos": [
+        {
+          "id": "S0166L01",
+          "type": "A",
+          "target": "Mi",
+          "known": "My",
+          "new": true
+        },
+        {
+          "id": "S0166L02",
+          "type": "A",
+          "target": "nombre",
+          "known": "name",
+          "new": true
+        },
+        {
+          "id": "S0166L03",
+          "type": "A",
+          "target": "no",
+          "known": "not",
+          "new": true
+        },
+        {
+          "id": "S0166L04",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "new": true
+        },
+        {
+          "id": "S0166L05",
+          "type": "A",
+          "target": "muy",
+          "known": "very",
+          "new": true
+        },
+        {
+          "id": "S0166L06",
+          "type": "A",
+          "target": "inusual",
+          "known": "unusual",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0167",
+      "seed_pair": [
+        "What do you need to do tomorrow afternoon?",
+        "¿Qué necesitas hacer mañana por la tarde?"
+      ],
+      "legos": [
+        {
+          "id": "S0167L01",
+          "type": "A",
+          "target": "Qué",
+          "known": "What",
+          "new": true
+        },
+        {
+          "id": "S0167L02",
+          "type": "A",
+          "target": "mañana",
+          "known": "tomorrow",
+          "new": true
+        },
+        {
+          "id": "S0167L03",
+          "type": "M",
+          "target": "necesitas",
+          "known": "do you need",
+          "new": true,
+          "components": [["necesitas", "do you need"]]
+        },
+        {
+          "id": "S0167L04",
+          "type": "M",
+          "target": "hacer",
+          "known": "to do",
+          "new": true,
+          "components": [["hacer", "to do"]]
+        },
+        {
+          "id": "S0167L05",
+          "type": "M",
+          "target": "por la tarde",
+          "known": "afternoon",
+          "new": true,
+          "components": [["por", "in"], ["la", "the"], ["tarde", "afternoon"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0168",
+      "seed_pair": [
+        "And then I'll be able to come and help later on.",
+        "Y entonces podré venir y ayudar más tarde."
+      ],
+      "legos": [
+        {
+          "id": "S0168L01",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0168L02",
+          "type": "A",
+          "target": "entonces",
+          "known": "then",
+          "new": true
+        },
+        {
+          "id": "S0168L03",
+          "type": "A",
+          "target": "venir",
+          "known": "come",
+          "new": true
+        },
+        {
+          "id": "S0168L04",
+          "type": "A",
+          "target": "ayudar",
+          "known": "help",
+          "new": true
+        },
+        {
+          "id": "S0168L05",
+          "type": "M",
+          "target": "podré",
+          "known": "I'll be able to",
+          "new": true,
+          "components": [["podré", "I'll be able to"]]
+        },
+        {
+          "id": "S0168L06",
+          "type": "M",
+          "target": "más tarde",
+          "known": "later on",
+          "new": true,
+          "components": [["más", "later"], ["tarde", "on"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0169",
+      "seed_pair": [
+        "What do you want me to do?",
+        "¿Qué quieres que haga?"
+      ],
+      "legos": [
+        {
+          "id": "S0169L01",
+          "type": "A",
+          "target": "Qué",
+          "known": "What",
+          "new": true
+        },
+        {
+          "id": "S0169L02",
+          "type": "M",
+          "target": "quieres",
+          "known": "do you want",
+          "new": true,
+          "components": [["quieres", "do you want"]]
+        },
+        {
+          "id": "S0169L03",
+          "type": "M",
+          "target": "que haga",
+          "known": "me to do",
+          "new": true,
+          "components": [["que", "to"], ["haga", "me do"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0170",
+      "seed_pair": [
+        "I'd like you to tell me what you need.",
+        "Me gustaría que me dijeras lo que necesitas."
+      ],
+      "legos": [
+        {
+          "id": "S0170L01",
+          "type": "M",
+          "target": "Me gustaría",
+          "known": "I'd like",
+          "new": true,
+          "components": [["Me", "I"], ["gustaría", "'d like"]]
+        },
+        {
+          "id": "S0170L02",
+          "type": "M",
+          "target": "que me dijeras",
+          "known": "you to tell me",
+          "new": true,
+          "components": [["que", "to"], ["me", "me"], ["dijeras", "you tell"]]
+        },
+        {
+          "id": "S0170L03",
+          "type": "M",
+          "target": "lo que necesitas",
+          "known": "what you need",
+          "new": true,
+          "components": [["lo que", "what"], ["necesitas", "you need"]]
+        }
+      ]
+    }
+  ]
+}
