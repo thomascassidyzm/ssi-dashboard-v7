@@ -1,96 +1,125 @@
 {
   "agent_id": "agent_06",
   "seed_range": "S0451-S0460",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "extracted_at": "2025-11-12T00:00:00Z",
   "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
   "seeds": [
     {
       "seed_id": "S0451",
-      "seed_pair": ["Ellos dijeron lo que querían hacer.", "They said what they wanted to do."],
+      "seed_pair": [
+        "They said what they wanted to do.",
+        "Ellos dijeron lo que querían hacer."
+      ],
       "legos": [
         {
           "id": "S0451L01",
           "type": "A",
-          "target": "lo que",
-          "known": "what",
+          "target": "ellos",
+          "known": "they",
           "new": true
         },
         {
           "id": "S0451L02",
           "type": "A",
+          "target": "dijeron",
+          "known": "said",
+          "new": true
+        },
+        {
+          "id": "S0451L03",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [
+            ["lo", "it"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0451L04",
+          "type": "A",
           "target": "querían",
           "known": "they wanted",
           "new": true
         },
         {
-          "id": "S0451L03",
+          "id": "S0451L05",
           "type": "A",
           "target": "hacer",
           "known": "to do",
           "new": true
-        },
-        {
-          "id": "S0451L04",
-          "type": "M",
-          "target": "Ellos dijeron",
-          "known": "They said",
-          "new": true,
-          "components": [
-            ["Ellos", "They"],
-            ["dijeron", "said"]
-          ]
         }
       ]
     },
     {
       "seed_id": "S0452",
-      "seed_pair": ["Ellos no dijeron lo que querían hacer.", "They didn't say what they wanted to do."],
+      "seed_pair": [
+        "They didn't say what they wanted to do.",
+        "Ellos no dijeron lo que querían hacer."
+      ],
       "legos": [
         {
           "id": "S0452L01",
           "type": "A",
-          "target": "lo que",
-          "known": "what",
+          "target": "ellos",
+          "known": "they",
           "new": true
         },
         {
           "id": "S0452L02",
+          "type": "M",
+          "target": "no dijeron",
+          "known": "didn't say",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["dijeron", "said"]
+          ]
+        },
+        {
+          "id": "S0452L03",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [
+            ["lo", "it"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0452L04",
           "type": "A",
           "target": "querían",
           "known": "they wanted",
           "new": true
         },
         {
-          "id": "S0452L03",
+          "id": "S0452L05",
           "type": "A",
           "target": "hacer",
           "known": "to do",
           "new": true
-        },
-        {
-          "id": "S0452L04",
-          "type": "M",
-          "target": "Ellos no dijeron",
-          "known": "They didn't say",
-          "new": true,
-          "components": [
-            ["Ellos", "They"],
-            ["no", "didn't"],
-            ["dijeron", "say"]
-          ]
         }
       ]
     },
     {
       "seed_id": "S0453",
-      "seed_pair": ["¿Dijeron quién vieron anoche?", "Did they say who they saw last night?"],
+      "seed_pair": [
+        "Did they say who they saw last night?",
+        "¿Dijeron quién vieron anoche?"
+      ],
       "legos": [
         {
           "id": "S0453L01",
-          "type": "A",
+          "type": "M",
           "target": "dijeron",
           "known": "did they say",
-          "new": true
+          "new": true,
+          "components": [
+            ["dijeron", "they said"]
+          ]
         },
         {
           "id": "S0453L02",
@@ -117,69 +146,59 @@
     },
     {
       "seed_id": "S0454",
-      "seed_pair": ["Nuestros amigos vinieron como a las seis.", "Our friends came round at about six o'clock."],
+      "seed_pair": [
+        "Our friends came round at about six o'clock.",
+        "Nuestros amigos vinieron como a las seis."
+      ],
       "legos": [
         {
           "id": "S0454L01",
+          "type": "M",
+          "target": "nuestros amigos",
+          "known": "our friends",
+          "new": true,
+          "components": [
+            ["nuestros", "our"],
+            ["amigos", "friends"]
+          ]
+        },
+        {
+          "id": "S0454L02",
           "type": "A",
           "target": "vinieron",
           "known": "came round",
           "new": true
         },
         {
-          "id": "S0454L02",
+          "id": "S0454L03",
           "type": "A",
           "target": "como",
           "known": "about",
           "new": true
         },
         {
-          "id": "S0454L03",
-          "type": "A",
-          "target": "a las",
-          "known": "at",
-          "new": true
-        },
-        {
           "id": "S0454L04",
-          "type": "A",
-          "target": "seis",
-          "known": "six o'clock",
-          "new": true
-        },
-        {
-          "id": "S0454L05",
           "type": "M",
-          "target": "Nuestros amigos",
-          "known": "Our friends",
+          "target": "a las seis",
+          "known": "at six o'clock",
           "new": true,
           "components": [
-            ["Nuestros", "Our"],
-            ["amigos", "friends"]
+            ["a", "at"],
+            ["las", "the"],
+            ["seis", "six"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0455",
-      "seed_pair": ["Tuvimos que irnos porque los niños estaban cansados.", "We had to leave because the children were tired."],
+      "seed_pair": [
+        "We had to leave because the children were tired.",
+        "Tuvimos que irnos porque los niños estaban cansados."
+      ],
       "legos": [
         {
           "id": "S0455L01",
-          "type": "A",
-          "target": "irnos",
-          "known": "leave",
-          "new": true
-        },
-        {
-          "id": "S0455L02",
-          "type": "A",
-          "target": "porque",
-          "known": "because",
-          "new": true
-        },
-        {
-          "id": "S0455L03",
           "type": "M",
           "target": "tuvimos que",
           "known": "we had to",
@@ -188,6 +207,20 @@
             ["tuvimos", "we had"],
             ["que", "to"]
           ]
+        },
+        {
+          "id": "S0455L02",
+          "type": "A",
+          "target": "irnos",
+          "known": "leave",
+          "new": true
+        },
+        {
+          "id": "S0455L03",
+          "type": "A",
+          "target": "porque",
+          "known": "because",
+          "new": true
         },
         {
           "id": "S0455L04",
@@ -215,33 +248,36 @@
     },
     {
       "seed_id": "S0456",
-      "seed_pair": ["Puede que esté allí pero no es muy probable.", "He might be there but it's not very likely."],
+      "seed_pair": [
+        "He might be there but it's not very likely.",
+        "Puede que esté allí pero no es muy probable."
+      ],
       "legos": [
         {
           "id": "S0456L01",
+          "type": "M",
+          "target": "puede que esté",
+          "known": "he might be",
+          "new": true,
+          "components": [
+            ["puede", "can/might"],
+            ["que", "that"],
+            ["esté", "he be"]
+          ]
+        },
+        {
+          "id": "S0456L02",
           "type": "A",
           "target": "allí",
           "known": "there",
           "new": true
         },
         {
-          "id": "S0456L02",
+          "id": "S0456L03",
           "type": "A",
           "target": "pero",
           "known": "but",
           "new": true
-        },
-        {
-          "id": "S0456L03",
-          "type": "M",
-          "target": "Puede que esté",
-          "known": "He might be",
-          "new": true,
-          "components": [
-            ["Puede", "might"],
-            ["que", "that"],
-            ["esté", "(he) be"]
-          ]
         },
         {
           "id": "S0456L04",
@@ -256,58 +292,54 @@
         },
         {
           "id": "S0456L05",
-          "type": "M",
-          "target": "muy probable",
-          "known": "very likely",
-          "new": true,
-          "components": [
-            ["muy", "very"],
-            ["probable", "likely"]
-          ]
+          "type": "A",
+          "target": "muy",
+          "known": "very",
+          "new": true
+        },
+        {
+          "id": "S0456L06",
+          "type": "A",
+          "target": "probable",
+          "known": "likely",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0457",
-      "seed_pair": ["Parte del problema es el número de áreas diferentes.", "Part of the problem is the number of different areas."],
+      "seed_pair": [
+        "Part of the problem is the number of different areas.",
+        "Parte del problema es el número de áreas diferentes."
+      ],
       "legos": [
         {
           "id": "S0457L01",
-          "type": "A",
-          "target": "Parte",
-          "known": "Part",
-          "new": true
+          "type": "M",
+          "target": "parte del",
+          "known": "part of the",
+          "new": true,
+          "components": [
+            ["parte", "part"],
+            ["del", "of the"]
+          ]
         },
         {
           "id": "S0457L02",
-          "type": "A",
-          "target": "del",
-          "known": "of the",
-          "new": true
-        },
-        {
-          "id": "S0457L03",
           "type": "A",
           "target": "problema",
           "known": "problem",
           "new": true
         },
         {
-          "id": "S0457L04",
+          "id": "S0457L03",
           "type": "A",
           "target": "es",
           "known": "is",
           "new": true
         },
         {
-          "id": "S0457L05",
-          "type": "A",
-          "target": "de",
-          "known": "of",
-          "new": true
-        },
-        {
-          "id": "S0457L06",
+          "id": "S0457L04",
           "type": "M",
           "target": "el número",
           "known": "the number",
@@ -318,7 +350,14 @@
           ]
         },
         {
-          "id": "S0457L07",
+          "id": "S0457L05",
+          "type": "A",
+          "target": "de",
+          "known": "of",
+          "new": true
+        },
+        {
+          "id": "S0457L06",
           "type": "M",
           "target": "áreas diferentes",
           "known": "different areas",
@@ -332,39 +371,33 @@
     },
     {
       "seed_id": "S0458",
-      "seed_pair": ["Todo era mucho más fácil en el pasado.", "It was all much easier in the past."],
+      "seed_pair": [
+        "It was all much easier in the past.",
+        "Todo era mucho más fácil en el pasado."
+      ],
       "legos": [
         {
           "id": "S0458L01",
           "type": "A",
-          "target": "mucho",
-          "known": "much",
+          "target": "todo",
+          "known": "all",
           "new": true
         },
         {
           "id": "S0458L02",
           "type": "M",
-          "target": "Todo era",
-          "known": "It was all",
+          "target": "era mucho más fácil",
+          "known": "was much easier",
           "new": true,
           "components": [
-            ["Todo", "all"],
-            ["era", "it was"]
-          ]
-        },
-        {
-          "id": "S0458L03",
-          "type": "M",
-          "target": "más fácil",
-          "known": "easier",
-          "new": true,
-          "components": [
+            ["era", "was"],
+            ["mucho", "much"],
             ["más", "more"],
             ["fácil", "easy"]
           ]
         },
         {
-          "id": "S0458L04",
+          "id": "S0458L03",
           "type": "M",
           "target": "en el pasado",
           "known": "in the past",
@@ -379,16 +412,19 @@
     },
     {
       "seed_id": "S0459",
-      "seed_pair": ["No estaba enfrente de la señal azul.", "It wasn't in front of the blue sign."],
+      "seed_pair": [
+        "It wasn't in front of the blue sign.",
+        "No estaba enfrente de la señal azul."
+      ],
       "legos": [
         {
           "id": "S0459L01",
           "type": "M",
-          "target": "No estaba",
-          "known": "It wasn't",
+          "target": "no estaba",
+          "known": "it wasn't",
           "new": true,
           "components": [
-            ["No", "not"],
+            ["no", "not"],
             ["estaba", "it was"]
           ]
         },
@@ -406,25 +442,34 @@
         {
           "id": "S0459L03",
           "type": "M",
-          "target": "la señal azul",
-          "known": "the blue sign",
+          "target": "la señal",
+          "known": "the sign",
           "new": true,
           "components": [
             ["la", "the"],
-            ["señal", "sign"],
-            ["azul", "blue"]
+            ["señal", "sign"]
           ]
+        },
+        {
+          "id": "S0459L04",
+          "type": "A",
+          "target": "azul",
+          "known": "blue",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0460",
-      "seed_pair": ["Quiero encontrar una tienda cerca del hotel.", "I want to find a shop near the hotel."],
+      "seed_pair": [
+        "I want to find a shop near the hotel.",
+        "Quiero encontrar una tienda cerca del hotel."
+      ],
       "legos": [
         {
           "id": "S0460L01",
           "type": "A",
-          "target": "Quiero",
+          "target": "quiero",
           "known": "I want",
           "new": true
         },
