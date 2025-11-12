@@ -580,7 +580,12 @@ Phase 3 introduces LEGOs, so all are marked as new.
 
 **Extract**: S00XX through S00YY (${seedsPerAgent} seeds)
 
-Read from: \`seed_pairs.json\` (or segment file)
+**Fetch seed_pairs.json from**:
+\`\`\`
+https://ssi-dashboard-v7.vercel.app/vfs/courses/${courseCode}/seed_pairs.json
+\`\`\`
+
+Extract the translations array for your assigned seed range.
 
 ---
 
