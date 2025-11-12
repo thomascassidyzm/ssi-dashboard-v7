@@ -1,0 +1,575 @@
+{
+  "agent_id": "agent_02",
+  "seed_range": "S0111-S0120",
+  "extracted_at": "2025-11-12T00:00:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0111",
+      "seed_pair": [
+        "When we learn something new it changes our brain.",
+        "Cuando aprendemos algo nuevo cambia nuestro cerebro"
+      ],
+      "legos": [
+        {
+          "id": "S0111L01",
+          "type": "A",
+          "target": "cuando",
+          "known": "when",
+          "new": true
+        },
+        {
+          "id": "S0111L02",
+          "type": "A",
+          "target": "aprendemos",
+          "known": "we learn",
+          "new": true
+        },
+        {
+          "id": "S0111L03",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0111L04",
+          "type": "A",
+          "target": "nuevo",
+          "known": "new",
+          "new": true
+        },
+        {
+          "id": "S0111L05",
+          "type": "A",
+          "target": "cambia",
+          "known": "it changes",
+          "new": true
+        },
+        {
+          "id": "S0111L06",
+          "type": "M",
+          "target": "nuestro cerebro",
+          "known": "our brain",
+          "new": true,
+          "components": [
+            ["nuestro", "our"],
+            ["cerebro", "brain"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0112",
+      "seed_pair": [
+        "That was very interesting, and I wasn't expecting it.",
+        "Eso fue muy interesante, y no estaba esperándolo"
+      ],
+      "legos": [
+        {
+          "id": "S0112L01",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0112L02",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0112L03",
+          "type": "M",
+          "target": "fue muy interesante",
+          "known": "was very interesting",
+          "new": true,
+          "components": [
+            ["fue", "was"],
+            ["muy", "very"],
+            ["interesante", "interesting"]
+          ]
+        },
+        {
+          "id": "S0112L04",
+          "type": "M",
+          "target": "no estaba esperándolo",
+          "known": "I wasn't expecting it",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["estaba", "was"],
+            ["esperando", "expecting"],
+            ["lo", "it"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0113",
+      "seed_pair": [
+        "Why can't I remember what you said?",
+        "¿Por qué no puedo recordar lo que dijiste?"
+      ],
+      "legos": [
+        {
+          "id": "S0113L01",
+          "type": "A",
+          "target": "dijiste",
+          "known": "you said",
+          "new": true
+        },
+        {
+          "id": "S0113L02",
+          "type": "M",
+          "target": "por qué",
+          "known": "why",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["qué", "what"]
+          ]
+        },
+        {
+          "id": "S0113L03",
+          "type": "M",
+          "target": "no puedo recordar",
+          "known": "can't I remember",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["puedo", "can I"],
+            ["recordar", "remember"]
+          ]
+        },
+        {
+          "id": "S0113L04",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [
+            ["lo", "that"],
+            ["que", "which"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0114",
+      "seed_pair": [
+        "I feel as if I'm doing worse today than yesterday.",
+        "Siento como si estuviera haciendo peor hoy que ayer."
+      ],
+      "legos": [
+        {
+          "id": "S0114L01",
+          "type": "A",
+          "target": "siento",
+          "known": "I feel",
+          "new": true
+        },
+        {
+          "id": "S0114L02",
+          "type": "A",
+          "target": "peor",
+          "known": "worse",
+          "new": true
+        },
+        {
+          "id": "S0114L03",
+          "type": "A",
+          "target": "hoy",
+          "known": "today",
+          "new": true
+        },
+        {
+          "id": "S0114L04",
+          "type": "A",
+          "target": "que",
+          "known": "than",
+          "new": true
+        },
+        {
+          "id": "S0114L05",
+          "type": "A",
+          "target": "ayer",
+          "known": "yesterday",
+          "new": true
+        },
+        {
+          "id": "S0114L06",
+          "type": "M",
+          "target": "como si estuviera haciendo",
+          "known": "as if I'm doing",
+          "new": true,
+          "components": [
+            ["como", "as"],
+            ["si", "if"],
+            ["estuviera", "I was"],
+            ["haciendo", "doing"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0115",
+      "seed_pair": [
+        "I don't feel as if I'm ready to have a conversation.",
+        "No siento como si estuviera preparado para tener una conversación."
+      ],
+      "legos": [
+        {
+          "id": "S0115L01",
+          "type": "A",
+          "target": "para",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0115L02",
+          "type": "A",
+          "target": "tener",
+          "known": "have",
+          "new": true
+        },
+        {
+          "id": "S0115L03",
+          "type": "M",
+          "target": "no siento",
+          "known": "I don't feel",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["siento", "I feel"]
+          ]
+        },
+        {
+          "id": "S0115L04",
+          "type": "M",
+          "target": "como si estuviera preparado",
+          "known": "as if I'm ready",
+          "new": true,
+          "components": [
+            ["como", "as"],
+            ["si", "if"],
+            ["estuviera", "I was"],
+            ["preparado", "ready"]
+          ]
+        },
+        {
+          "id": "S0115L05",
+          "type": "M",
+          "target": "una conversación",
+          "known": "a conversation",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["conversación", "conversation"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0116",
+      "seed_pair": [
+        "This isn't the best choice I could make.",
+        "Esta no es la mejor opción que podría hacer."
+      ],
+      "legos": [
+        {
+          "id": "S0116L01",
+          "type": "A",
+          "target": "esta",
+          "known": "this",
+          "new": true
+        },
+        {
+          "id": "S0116L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0116L03",
+          "type": "M",
+          "target": "no es",
+          "known": "isn't",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["es", "is"]
+          ]
+        },
+        {
+          "id": "S0116L04",
+          "type": "M",
+          "target": "la mejor opción",
+          "known": "the best choice",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["mejor", "best"],
+            ["opción", "choice"]
+          ]
+        },
+        {
+          "id": "S0116L05",
+          "type": "M",
+          "target": "podría hacer",
+          "known": "I could make",
+          "new": true,
+          "components": [
+            ["podría", "I could"],
+            ["hacer", "make"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0117",
+      "seed_pair": [
+        "I'm definitely doing better than I was last time we talked to each other.",
+        "Definitivamente lo estoy haciendo mejor que la última vez que hablamos."
+      ],
+      "legos": [
+        {
+          "id": "S0117L01",
+          "type": "A",
+          "target": "lo",
+          "known": "it",
+          "new": true
+        },
+        {
+          "id": "S0117L02",
+          "type": "A",
+          "target": "mejor",
+          "known": "better",
+          "new": true
+        },
+        {
+          "id": "S0117L03",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0117L04",
+          "type": "A",
+          "target": "hablamos",
+          "known": "we talked to each other",
+          "new": true
+        },
+        {
+          "id": "S0117L05",
+          "type": "M",
+          "target": "definitivamente lo estoy haciendo",
+          "known": "I'm definitely doing",
+          "new": true,
+          "components": [
+            ["definitivamente", "definitely"],
+            ["lo", "it"],
+            ["estoy", "I am"],
+            ["haciendo", "doing"]
+          ]
+        },
+        {
+          "id": "S0117L06",
+          "type": "M",
+          "target": "que la última vez",
+          "known": "than I was last time",
+          "new": true,
+          "components": [
+            ["que", "than"],
+            ["la", "the"],
+            ["última", "last"],
+            ["vez", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0118",
+      "seed_pair": [
+        "I feel better than I felt when we were in the pub.",
+        "Me siento mejor que como me sentía cuando estábamos en el pub."
+      ],
+      "legos": [
+        {
+          "id": "S0118L01",
+          "type": "A",
+          "target": "mejor",
+          "known": "better",
+          "new": true
+        },
+        {
+          "id": "S0118L02",
+          "type": "A",
+          "target": "cuando",
+          "known": "when",
+          "new": true
+        },
+        {
+          "id": "S0118L03",
+          "type": "A",
+          "target": "estábamos",
+          "known": "we were",
+          "new": true
+        },
+        {
+          "id": "S0118L04",
+          "type": "A",
+          "target": "en",
+          "known": "in",
+          "new": true
+        },
+        {
+          "id": "S0118L05",
+          "type": "M",
+          "target": "me siento",
+          "known": "I feel",
+          "new": true,
+          "components": [
+            ["me", "myself"],
+            ["siento", "feel"]
+          ]
+        },
+        {
+          "id": "S0118L06",
+          "type": "M",
+          "target": "que como",
+          "known": "than",
+          "new": true,
+          "components": [
+            ["que", "than"],
+            ["como", "as"]
+          ]
+        },
+        {
+          "id": "S0118L07",
+          "type": "M",
+          "target": "me sentía",
+          "known": "I felt",
+          "new": true,
+          "components": [
+            ["me", "myself"],
+            ["sentía", "felt"]
+          ]
+        },
+        {
+          "id": "S0118L08",
+          "type": "M",
+          "target": "el pub",
+          "known": "the pub",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["pub", "pub"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0119",
+      "seed_pair": [
+        "Can I ask you something before you leave?",
+        "¿Puedo preguntarte algo antes de que te vayas?"
+      ],
+      "legos": [
+        {
+          "id": "S0119L01",
+          "type": "A",
+          "target": "puedo",
+          "known": "can I",
+          "new": true
+        },
+        {
+          "id": "S0119L02",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0119L03",
+          "type": "M",
+          "target": "preguntarte",
+          "known": "ask you",
+          "new": true,
+          "components": [
+            ["preguntar", "ask"],
+            ["te", "you"]
+          ]
+        },
+        {
+          "id": "S0119L04",
+          "type": "M",
+          "target": "antes de que te vayas",
+          "known": "before you leave",
+          "new": true,
+          "components": [
+            ["antes", "before"],
+            ["de", "of"],
+            ["que", "that"],
+            ["te", "yourself"],
+            ["vayas", "leave"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0120",
+      "seed_pair": [
+        "It's interesting that you like to go by bus.",
+        "Es interesante que te guste ir en autobús."
+      ],
+      "legos": [
+        {
+          "id": "S0120L01",
+          "type": "A",
+          "target": "ir",
+          "known": "to go",
+          "new": true
+        },
+        {
+          "id": "S0120L02",
+          "type": "M",
+          "target": "es interesante",
+          "known": "it's interesting",
+          "new": true,
+          "components": [
+            ["es", "it is"],
+            ["interesante", "interesting"]
+          ]
+        },
+        {
+          "id": "S0120L03",
+          "type": "M",
+          "target": "que te guste",
+          "known": "that you like",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["te", "you"],
+            ["guste", "like"]
+          ]
+        },
+        {
+          "id": "S0120L04",
+          "type": "M",
+          "target": "en autobús",
+          "known": "by bus",
+          "new": true,
+          "components": [
+            ["en", "by"],
+            ["autobús", "bus"]
+          ]
+        }
+      ]
+    }
+  ]
+}
