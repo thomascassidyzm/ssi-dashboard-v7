@@ -2054,22 +2054,64 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
     // Handle Phase 3 Only selection
     if (phaseSelection === 'phase3') {
       console.log(`[Web Orchestrator] Running Phase 3 Only - LEGO Extraction`);
-      const phase3MasterPrompt = generatePhase3MasterPrompt(courseCode, { target, known, startSeed, endSeed }, courseDir);
+      console.log(`[Web Orchestrator] Segment Mode: ${segmentMode}`);
 
-      console.log(`[Web Orchestrator] Opening Phase 3 tab with master orchestrator...`);
-      await spawnClaudeWebAgent(phase3MasterPrompt, 3, 'safari');
-      console.log(`[Web Orchestrator] ✅ Phase 3 master prompt pasted and auto-submitted!`);
+      // Check if we should use staged segments (multiple orchestrators)
+      if (segmentMode === 'staged') {
+        const totalSeeds = endSeed - startSeed + 1;
+        const segmentSize = 100;
+        const segmentCount = Math.ceil(totalSeeds / segmentSize);
 
-      job.phase = 'phase_3_web';
-      job.message = 'Phase 3 master orchestrator running - monitor browser tab';
+        console.log(`[Web Orchestrator] Staged Segments Mode: Spawning ${segmentCount} orchestrators`);
 
-      // For Phase 3 Only, we're done spawning - agents will POST to API
-      console.log(`[Web Orchestrator] Phase 3 agents will POST results to API`);
-      console.log(`[Web Orchestrator] Monitor: https://ssi-dashboard-v7.vercel.app/courses/${courseCode}`);
+        for (let i = 0; i < segmentCount; i++) {
+          const segmentStart = startSeed + (i * segmentSize);
+          const segmentEnd = Math.min(segmentStart + segmentSize - 1, endSeed);
+          const segmentSeeds = segmentEnd - segmentStart + 1;
+          const segmentNumber = Math.floor((segmentStart - 1) / 100) + 1;
 
-      job.status = 'phase_3_running';
-      job.progress = 35;
-      return; // Exit early for Phase 3 Only
+          // Create segment-specific course code
+          const segmentCourseCode = `${target}_for_${known}_s${String(segmentStart).padStart(4, '0')}-${String(segmentEnd).padStart(4, '0')}`;
+
+          console.log(`[Web Orchestrator] Segment ${segmentNumber}: S${String(segmentStart).padStart(4, '0')}-S${String(segmentEnd).padStart(4, '0')} (${segmentSeeds} seeds)`);
+
+          const phase3MasterPrompt = generatePhase3MasterPrompt(segmentCourseCode, { target, known, startSeed: segmentStart, endSeed: segmentEnd }, courseDir);
+
+          console.log(`[Web Orchestrator] Opening Segment ${segmentNumber} tab...`);
+          await spawnClaudeWebAgent(phase3MasterPrompt, 3, 'safari');
+          console.log(`[Web Orchestrator] ✅ Segment ${segmentNumber} prompt pasted!`);
+
+          // Small delay between spawns to avoid overwhelming browser
+          await new Promise(resolve => setTimeout(resolve, 2000));
+        }
+
+        job.phase = 'phase_3_web_staged';
+        job.message = `Phase 3 staged: ${segmentCount} orchestrators running`;
+        job.status = 'phase_3_staged_running';
+        job.progress = 35;
+
+        console.log(`[Web Orchestrator] ✅ All ${segmentCount} segments spawned!`);
+        console.log(`[Web Orchestrator] Monitor browser tabs for progress`);
+        return;
+
+      } else {
+        // Single pass mode - one orchestrator for all seeds
+        console.log(`[Web Orchestrator] Single Pass Mode: One orchestrator for all seeds`);
+        const phase3MasterPrompt = generatePhase3MasterPrompt(courseCode, { target, known, startSeed, endSeed }, courseDir);
+
+        console.log(`[Web Orchestrator] Opening Phase 3 tab with master orchestrator...`);
+        await spawnClaudeWebAgent(phase3MasterPrompt, 3, 'safari');
+        console.log(`[Web Orchestrator] ✅ Phase 3 master prompt pasted and auto-submitted!`);
+
+        job.phase = 'phase_3_web';
+        job.message = 'Phase 3 master orchestrator running - monitor browser tab';
+        job.status = 'phase_3_running';
+        job.progress = 35;
+
+        console.log(`[Web Orchestrator] Phase 3 agents will commit to GitHub`);
+        console.log(`[Web Orchestrator] Monitor browser tab for progress`);
+        return;
+      }
     }
 
     // Handle Phase 5 Only selection
