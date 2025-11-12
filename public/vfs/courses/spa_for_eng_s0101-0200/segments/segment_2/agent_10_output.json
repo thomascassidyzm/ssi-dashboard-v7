@@ -11,27 +11,31 @@
         {
           "id": "S0191L01",
           "type": "A",
-          "target": "No",
-          "known": "No",
+          "target": "no",
+          "known": "no",
           "new": true
         },
         {
           "id": "S0191L02",
-          "type": "A",
-          "target": "en absoluto",
-          "known": "at all",
-          "new": true
-        },
-        {
-          "id": "S0191L03",
           "type": "M",
           "target": "no me importa",
           "known": "I don't mind",
           "new": true,
           "components": [
-            ["no", "not"],
-            ["me", "to me"],
-            ["importa", "it matters"]
+            ["no", "not/don't"],
+            ["me", "me"],
+            ["importa", "mind/matter"]
+          ]
+        },
+        {
+          "id": "S0191L03",
+          "type": "M",
+          "target": "en absoluto",
+          "known": "at all",
+          "new": true,
+          "components": [
+            ["en", "in/at"],
+            ["absoluto", "absolute/all"]
           ]
         }
       ]
@@ -42,6 +46,13 @@
       "legos": [
         {
           "id": "S0192L01",
+          "type": "A",
+          "target": "mañana",
+          "known": "tomorrow",
+          "new": true
+        },
+        {
+          "id": "S0192L02",
           "type": "M",
           "target": "estoy ocupado",
           "known": "I'm busy",
@@ -52,14 +63,13 @@
           ]
         },
         {
-          "id": "S0192L02",
+          "id": "S0192L03",
           "type": "M",
-          "target": "mañana por la noche",
-          "known": "tomorrow night",
+          "target": "por la noche",
+          "known": "night",
           "new": true,
           "components": [
-            ["mañana", "tomorrow"],
-            ["por", "by"],
+            ["por", "by/for"],
             ["la", "the"],
             ["noche", "night"]
           ]
@@ -87,12 +97,12 @@
         {
           "id": "S0193L03",
           "type": "M",
-          "target": "Lo siento",
+          "target": "lo siento",
           "known": "I'm sorry",
           "new": true,
           "components": [
-            ["Lo", "it"],
-            ["siento", "I feel"]
+            ["lo", "it"],
+            ["siento", "I feel/regret"]
           ]
         },
         {
@@ -103,7 +113,7 @@
           "new": true,
           "components": [
             ["estoy", "I am"],
-            ["demasiado", "too"],
+            ["demasiado", "too much"],
             ["ocupado", "busy"]
           ]
         }
@@ -116,15 +126,15 @@
         {
           "id": "S0194L01",
           "type": "A",
-          "target": "Qué",
-          "known": "What",
+          "target": "qué",
+          "known": "what",
           "new": true
         },
         {
           "id": "S0194L02",
           "type": "M",
           "target": "estás buscando",
-          "known": "are you looking for",
+          "known": "you're looking for",
           "new": true,
           "components": [
             ["estás", "you are"],
@@ -146,31 +156,17 @@
         },
         {
           "id": "S0195L02",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
-        },
-        {
-          "id": "S0195L03",
-          "type": "A",
-          "target": "dejé",
-          "known": "I left",
-          "new": true
-        },
-        {
-          "id": "S0195L04",
           "type": "M",
-          "target": "Estoy intentando",
+          "target": "estoy intentando",
           "known": "I'm trying",
           "new": true,
           "components": [
-            ["Estoy", "I am"],
+            ["estoy", "I am"],
             ["intentando", "trying"]
           ]
         },
         {
-          "id": "S0195L05",
+          "id": "S0195L03",
           "type": "M",
           "target": "el dinero",
           "known": "the money",
@@ -181,7 +177,18 @@
           ]
         },
         {
-          "id": "S0195L06",
+          "id": "S0195L04",
+          "type": "M",
+          "target": "que dejé",
+          "known": "I left",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["dejé", "I left"]
+          ]
+        },
+        {
+          "id": "S0195L05",
           "type": "M",
           "target": "en la mesa",
           "known": "on the table",
@@ -201,33 +208,30 @@
         {
           "id": "S0196L01",
           "type": "A",
-          "target": "la",
-          "known": "the",
-          "new": true
-        },
-        {
-          "id": "S0196L02",
-          "type": "A",
-          "target": "última",
-          "known": "latest",
-          "new": true
-        },
-        {
-          "id": "S0196L03",
-          "type": "A",
           "target": "idea",
           "known": "idea",
           "new": true
         },
         {
-          "id": "S0196L04",
+          "id": "S0196L02",
           "type": "M",
-          "target": "Has oído",
-          "known": "Have you heard",
+          "target": "has oído",
+          "known": "have you heard",
           "new": true,
           "components": [
-            ["Has", "you have"],
+            ["has", "you have"],
             ["oído", "heard"]
+          ]
+        },
+        {
+          "id": "S0196L03",
+          "type": "M",
+          "target": "la última",
+          "known": "the latest",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["última", "latest/last"]
           ]
         }
       ]
@@ -260,11 +264,11 @@
         {
           "id": "S0197L04",
           "type": "M",
-          "target": "Mi hijo",
-          "known": "My son",
+          "target": "mi hijo",
+          "known": "my son",
           "new": true,
           "components": [
-            ["Mi", "My"],
+            ["mi", "my"],
             ["hijo", "son"]
           ]
         }
@@ -291,11 +295,11 @@
         {
           "id": "S0198L03",
           "type": "M",
-          "target": "Mi hija",
-          "known": "My daughter",
+          "target": "mi hija",
+          "known": "my daughter",
           "new": true,
           "components": [
-            ["Mi", "My"],
+            ["mi", "my"],
             ["hija", "daughter"]
           ]
         },
@@ -326,11 +330,11 @@
         {
           "id": "S0199L02",
           "type": "M",
-          "target": "Mi amigo",
-          "known": "My friend",
+          "target": "mi amigo",
+          "known": "my friend",
           "new": true,
           "components": [
-            ["Mi", "My"],
+            ["mi", "my"],
             ["amigo", "friend"]
           ]
         },
@@ -342,7 +346,7 @@
           "new": true,
           "components": [
             ["solía", "used to"],
-            ["trabajar", "work"]
+            ["trabajar", "work/to work"]
           ]
         },
         {
@@ -365,57 +369,49 @@
         {
           "id": "S0200L01",
           "type": "A",
-          "target": "Dicen",
-          "known": "They say",
-          "new": true
-        },
-        {
-          "id": "S0200L02",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
-        },
-        {
-          "id": "S0200L03",
-          "type": "A",
           "target": "quieren",
           "known": "they want",
           "new": true
         },
         {
-          "id": "S0200L04",
-          "type": "A",
-          "target": "asegurarse",
-          "known": "to make sure",
-          "new": true
-        },
-        {
-          "id": "S0200L05",
+          "id": "S0200L02",
           "type": "A",
           "target": "todo",
           "known": "everything",
           "new": true
         },
         {
-          "id": "S0200L06",
+          "id": "S0200L03",
           "type": "M",
-          "target": "de que terminemos",
-          "known": "that we finish",
+          "target": "dicen que",
+          "known": "they say",
           "new": true,
           "components": [
-            ["de que", "that"],
+            ["dicen", "they say"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0200L04",
+          "type": "M",
+          "target": "asegurarse de que terminemos",
+          "known": "to make sure that we finish",
+          "new": true,
+          "components": [
+            ["asegurarse", "to make sure"],
+            ["de", "of"],
+            ["que", "that"],
             ["terminemos", "we finish"]
           ]
         },
         {
-          "id": "S0200L07",
+          "id": "S0200L05",
           "type": "M",
           "target": "a tiempo",
           "known": "in time",
           "new": true,
           "components": [
-            ["a", "in"],
+            ["a", "in/on"],
             ["tiempo", "time"]
           ]
         }
