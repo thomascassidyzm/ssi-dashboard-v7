@@ -10,7 +10,7 @@
         "Me gustaría poder hablar después de que termines.",
         "I'd like to be able to speak after you finish."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'I'd like' → 'me gustaría' (M-type: multi-word); 'to be able to' → 'poder' (A-type: single word infinitive); 'to speak' → 'hablar' (A-type); 'after you finish' → 'después de que termines' (M-type: subjunctive trigger with marked form). TILING: me gustaría + poder + hablar + después de que termines ✅",
+      "extraction_notes": "FORWARD SWEEP: 'I'd like' → 'me gustaría' (M-type: multi-word); 'to be able to speak' → 'poder hablar' (M-type: CRITICAL - splitting would create 'to be able to' + 'to speak' = 'to be able to to speak' ❌, following S0010 lesson); 'after you finish' → 'después de que termines' (M-type: subjunctive trigger with marked form). TILING: me gustaría + poder hablar + después de que termines ✅",
       "legos": [
         {
           "id": "S0011L01",
@@ -25,20 +25,17 @@
         },
         {
           "id": "S0011L02",
-          "type": "A",
-          "target": "poder",
-          "known": "to be able to",
-          "new": true
+          "type": "M",
+          "target": "poder hablar",
+          "known": "to be able to speak",
+          "new": true,
+          "components": [
+            ["poder", "to be able to"],
+            ["hablar", "to speak"]
+          ]
         },
         {
           "id": "S0011L03",
-          "type": "A",
-          "target": "hablar",
-          "known": "to speak",
-          "new": true
-        },
-        {
-          "id": "S0011L04",
           "type": "M",
           "target": "después de que termines",
           "known": "after you finish",
