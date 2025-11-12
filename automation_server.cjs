@@ -259,9 +259,9 @@ function generatePhase1MasterPrompt(courseCode, params, courseDir) {
 
 Translate all ${totalSeeds} canonical seeds into ${getLanguageName(target)} and ${getLanguageName(known)} using ${agentCount} parallel agents.
 
-**Phase Intelligence**: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase-intelligence/1
+**Phase Intelligence**: https://ssi-dashboard-v7.vercel.app/intelligence (Phase 1 - v2.6)
 
-**Canonical Seeds**: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/seeds?limit=${endSeed}
+**Canonical Seeds**: https://ssi-dashboard-v7.vercel.app/api/seeds?limit=${endSeed}
 
 ---
 
@@ -279,8 +279,8 @@ You are Translation Agent ${agent.agentNum}.
 Translate seeds ${agent.startSeed} through ${agent.endSeed} (${agent.totalSeeds} seeds total).
 
 ## Instructions
-1. Fetch Phase 1 intelligence: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase-intelligence/1
-2. Fetch canonical seeds: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/seeds?limit=${endSeed}
+1. Fetch Phase 1 intelligence: https://ssi-dashboard-v7.vercel.app/intelligence (Phase 1 - v2.6)
+2. Fetch canonical seeds: https://ssi-dashboard-v7.vercel.app/api/seeds?limit=${endSeed}
 3. Filter to seeds ${agent.startSeed}-${agent.endSeed}
 4. For each canonical seed:
    - Replace {target} placeholder with "${getLanguageName(target)}"
@@ -390,7 +390,9 @@ You are the **Master Orchestrator** for this segment. Your job is to:
 
 ## 📚 PHASE 3 INTELLIGENCE (Single Source of Truth)
 
-**YOU AND YOUR SUB-AGENTS MUST READ**: \`docs/phase_intelligence/phase_3_lego_pairs.md\` (v6.3)
+**YOU AND YOUR SUB-AGENTS MUST READ**: https://ssi-dashboard-v7.vercel.app/intelligence (Phase 3 - v6.3)
+
+Or if local files are available: \`docs/phase_intelligence/phase_3_lego_pairs.md\` (v6.3)
 
 This is the **ONLY authoritative source** for Phase 3 extraction methodology.
 
@@ -488,7 +490,9 @@ ${Array.from({length: agentCount}, (_, i) => {
 
 ## 📚 PHASE INTELLIGENCE (REQUIRED READING)
 
-**YOU MUST READ THIS FILE FIRST**: \`docs/phase_intelligence/phase_3_lego_pairs.md\` (v6.3)
+**YOU MUST READ THIS FILE FIRST**: https://ssi-dashboard-v7.vercel.app/intelligence (Phase 3 - v6.3)
+
+Or if local files are available: \`docs/phase_intelligence/phase_3_lego_pairs.md\` (v6.3)
 
 This file contains the complete Phase 3 v6.3 methodology:
 - Core Principle (Pragmatic FD)
@@ -727,7 +731,9 @@ You have full autonomy to manage the parallelization strategy based on your rate
 
 ## 📚 PHASE 5 INTELLIGENCE (Single Source of Truth)
 
-**READ**: \`docs/phase_intelligence/phase_5_lego_baskets.md\` (v5.0)
+**READ**: https://ssi-dashboard-v7.vercel.app/intelligence (Phase 5 - v6.1)
+
+Or if local files are available: \`docs/phase_intelligence/phase_5_lego_baskets.md\` (v6.1)
 
 This is the **ONLY authoritative source** for Phase 5 basket generation methodology.
 
@@ -940,9 +946,9 @@ function generatePhase1Brief(courseCode, params, courseDir) {
 
 Translate seeds ${seedRange} following Phase 1 intelligence.
 
-**Fetch Instructions**: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase-intelligence/1
+**Fetch Instructions**: GET https://ssi-dashboard-v7.vercel.app/intelligence (Phase 1 - v2.6)
 
-**Fetch Seeds**: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/seeds?limit=${endSeed}
+**Fetch Seeds**: GET https://ssi-dashboard-v7.vercel.app/api/seeds?limit=${endSeed}
 (Filter to seeds ${startSeed}-${endSeed})
 
 ---
@@ -1051,7 +1057,7 @@ function generatePhase3Brief(courseCode, params, courseDir) {
 
 Extract LEGOs from seeds ${seedRange} following Phase 3 intelligence.
 
-**Fetch Instructions**: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase-intelligence/3
+**Fetch Instructions**: GET https://ssi-dashboard-v7.vercel.app/intelligence (Phase 3 - v6.3)
 
 **Read seed_pairs.json** and filter to seeds ${startSeed}-${endSeed}.
 
@@ -1158,7 +1164,7 @@ ${validatorSection}
 
 Generate practice baskets for LEGOs from seeds ${seedRange}.
 
-**Fetch Instructions**: GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase-intelligence/5
+**Fetch Instructions**: GET https://ssi-dashboard-v7.vercel.app/intelligence (Phase 5 - v6.1)
 
 **Read lego_pairs.json** and filter to LEGOs with IDs ${seedRange}Lxx.
 
@@ -1363,7 +1369,7 @@ You are the **course generation orchestrator**. Execute phases 1, 3, and 5 seque
 
 **NEW Architecture**: Phase intelligence served from modular markdown files
 
-**Endpoint**: \`GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase-intelligence/:phase\`
+**Endpoint**: \`GET https://ssi-dashboard-v7.vercel.app/intelligence\`
 
 Fetch instructions for each phase:
 - **Phase 1**: \`/phase-intelligence/1\` → Returns phase_1_seed_pairs.md
@@ -1383,7 +1389,7 @@ Use WebFetch to get the latest methodology before executing each phase.
 - Phase 3: \`${courseDir}/lego_pairs.json\`
 - Phase 5: \`${courseDir}/lego_baskets.json\`
 
-**Canonical Seeds**: Fetch from \`GET https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/api/seeds?limit=${seeds}\`
+**Canonical Seeds**: Fetch from \`GET https://ssi-dashboard-v7.vercel.app/api/seeds?limit=${seeds}\`
 - Pipe-delimited format: \`S0001|I want to speak {target} with you now.\`
 - Token-efficient: ~3k tokens vs 30k for JSON
 
@@ -9426,7 +9432,7 @@ function initializeVFSWatcher() {
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
-    version: '8.0.0',
+    version: '8.1.0',
     timestamp: new Date().toISOString()
   });
 });
