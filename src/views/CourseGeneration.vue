@@ -20,7 +20,7 @@
           Generate New Course
         </h1>
         <p class="mt-2 text-slate-400">
-          SSi Course Production Dashboard v8.0.0 - Complete 8-phase generation pipeline
+          SSi Course Production Dashboard v8.1.0 - Swim-lane architecture with phase selection
         </p>
       </div>
     </header>
@@ -164,6 +164,141 @@
 
         <!-- Execution Mode Selection -->
         <ExecutionModeSelector v-model="executionMode" />
+
+        <!-- Phase Selection -->
+        <div class="mb-8">
+          <h3 class="text-lg font-medium text-slate-300 mb-4">Select Phases to Run</h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+            <!-- All Phases -->
+            <button
+              @click="phaseSelection = 'all'"
+              :class="[
+                'p-4 rounded-lg border-2 transition text-left',
+                phaseSelection === 'all'
+                  ? 'border-emerald-500 bg-emerald-500/10'
+                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
+              ]"
+            >
+              <div class="text-2xl mb-2">🎯</div>
+              <h4 class="text-sm font-semibold text-slate-100 mb-1">All Phases</h4>
+              <p class="text-xs text-slate-400">Complete pipeline (1→3→5→6→7)</p>
+            </button>
+
+            <!-- Phase 1 Only -->
+            <button
+              @click="phaseSelection = 'phase1'"
+              :class="[
+                'p-4 rounded-lg border-2 transition text-left',
+                phaseSelection === 'phase1'
+                  ? 'border-emerald-500 bg-emerald-500/10'
+                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
+              ]"
+            >
+              <div class="text-2xl mb-2">🌍</div>
+              <h4 class="text-sm font-semibold text-slate-100 mb-1">Phase 1 Only</h4>
+              <p class="text-xs text-slate-400">Translation (seed_pairs.json)</p>
+            </button>
+
+            <!-- Phase 3 Only -->
+            <button
+              @click="phaseSelection = 'phase3'"
+              :class="[
+                'p-4 rounded-lg border-2 transition text-left',
+                phaseSelection === 'phase3'
+                  ? 'border-emerald-500 bg-emerald-500/10'
+                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
+              ]"
+            >
+              <div class="text-2xl mb-2">🧱</div>
+              <h4 class="text-sm font-semibold text-slate-100 mb-1">Phase 3 Only</h4>
+              <p class="text-xs text-slate-400">LEGO extraction (lego_pairs.json)</p>
+            </button>
+
+            <!-- Phase 5 Only -->
+            <button
+              @click="phaseSelection = 'phase5'"
+              :class="[
+                'p-4 rounded-lg border-2 transition text-left',
+                phaseSelection === 'phase5'
+                  ? 'border-emerald-500 bg-emerald-500/10'
+                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
+              ]"
+            >
+              <div class="text-2xl mb-2">🧺</div>
+              <h4 class="text-sm font-semibold text-slate-100 mb-1">Phase 5 Only</h4>
+              <p class="text-xs text-slate-400">Practice baskets (lego_baskets.json)</p>
+            </button>
+          </div>
+
+          <!-- Phase Requirements Info -->
+          <div v-if="phaseSelection !== 'all'" class="mt-3 p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg">
+            <div class="flex items-start gap-2 text-xs text-amber-300">
+              <span>⚠️</span>
+              <div>
+                <strong>Phase {{ phaseSelection === 'phase1' ? '1' : phaseSelection === 'phase3' ? '3' : '5' }} requirements:</strong>
+                <span v-if="phaseSelection === 'phase1'"> No prerequisites</span>
+                <span v-else-if="phaseSelection === 'phase3'"> Requires seed_pairs.json (Phase 1 complete)</span>
+                <span v-else-if="phaseSelection === 'phase5'"> Requires lego_pairs.json (Phase 3 complete)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Segment Mode (for Phase 3/5) -->
+        <div v-if="phaseSelection === 'phase3' || phaseSelection === 'phase5'" class="mb-8">
+          <h3 class="text-lg font-medium text-slate-300 mb-4">Execution Strategy</h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <!-- Single Pass -->
+            <button
+              @click="segmentMode = 'single'"
+              :class="[
+                'p-4 rounded-lg border-2 transition text-left',
+                segmentMode === 'single'
+                  ? 'border-emerald-500 bg-emerald-500/10'
+                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
+              ]"
+            >
+              <div class="text-2xl mb-2">⚡</div>
+              <h4 class="text-sm font-semibold text-slate-100 mb-1">Single Pass</h4>
+              <p class="text-xs text-slate-400 mb-2">Process all seeds in one execution</p>
+              <p class="text-xs text-slate-500">Best for: &lt;100 seeds, testing</p>
+            </button>
+
+            <!-- Staged Segments (Swim-Lanes) -->
+            <button
+              @click="segmentMode = 'staged'"
+              :class="[
+                'p-4 rounded-lg border-2 transition text-left',
+                segmentMode === 'staged'
+                  ? 'border-emerald-500 bg-emerald-500/10'
+                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
+              ]"
+            >
+              <div class="text-2xl mb-2">🏊</div>
+              <h4 class="text-sm font-semibold text-slate-100 mb-1">Staged Segments</h4>
+              <p class="text-xs text-slate-400 mb-2">100-seed swim-lanes with quality gates</p>
+              <p class="text-xs text-slate-500">Best for: Full courses (668 seeds)</p>
+            </button>
+          </div>
+
+          <!-- Staged Mode Explanation -->
+          <div v-if="segmentMode === 'staged'" class="mt-3 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+            <div class="flex items-start gap-3">
+              <div class="text-blue-400 text-xl">📋</div>
+              <div class="text-xs text-slate-300">
+                <p class="font-medium mb-2">Staged Execution (APML 8.1.0 Swim-Lane Architecture):</p>
+                <ul class="list-disc list-inside space-y-1 text-slate-400">
+                  <li><strong>Stage 1:</strong> Process S0001-S0100 (foundation seeds) → Review quality</li>
+                  <li><strong>Stage 2:</strong> After approval, process remaining segments in parallel</li>
+                  <li>Each 100-seed segment uses 10 parallel sub-agents (10 seeds each)</li>
+                  <li>Quality gate between stages ensures high-quality foundation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Seed Range Selection -->
         <div v-if="!analysis" class="mb-8">
@@ -460,6 +595,8 @@ const startSeed = ref(1)
 const endSeed = ref(668)
 const courseSize = ref(null) // 'test' or 'full'
 const executionMode = ref('web') // 'local', 'api', or 'web'
+const phaseSelection = ref('all') // 'all', 'phase1', 'phase3', 'phase5'
+const segmentMode = ref('single') // 'single', 'staged'
 
 const targetLanguages = ref([])
 const knownLanguages = ref([])
@@ -637,6 +774,8 @@ const startGeneration = async (force = false) => {
       startSeed: startSeed.value,
       endSeed: endSeed.value,
       executionMode: executionMode.value,
+      phaseSelection: phaseSelection.value,
+      segmentMode: segmentMode.value,
       force: force
     })
 

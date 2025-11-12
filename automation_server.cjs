@@ -4626,13 +4626,19 @@ app.post('/api/courses/generate', async (req, res) => {
   // Extract execution mode (default to 'web' - recommended mode)
   const executionMode = req.body.executionMode || 'web';
 
+  // Extract phase selection (default to 'all' - complete pipeline)
+  const phaseSelection = req.body.phaseSelection || 'all';
+
+  // Extract segment mode (default to 'single' - process all seeds at once)
+  const segmentMode = req.body.segmentMode || 'single';
+
   // Calculate total seeds
   const seeds = endSeed - startSeed + 1;
 
   // Generate course code with seed range suffix (follows COURSE_FILE_PROTOCOLS.md)
   const courseCode = generateCourseCode(target, known, startSeed, endSeed);
 
-  console.log(`[API] Course generation requested: ${courseCode} (mode: ${executionMode}, seeds: ${startSeed}-${endSeed})`);
+  console.log(`[API] Course generation requested: ${courseCode} (mode: ${executionMode}, phase: ${phaseSelection}, segment: ${segmentMode}, seeds: ${startSeed}-${endSeed})`);
 
   // Safety check: Warn if course directory already exists with data
   const courseDir = path.join(CONFIG.VFS_ROOT, courseCode);
@@ -4685,6 +4691,8 @@ app.post('/api/courses/generate', async (req, res) => {
     progress: 0,
     startTime: new Date(),
     executionMode,
+    phaseSelection,
+    segmentMode,
     params: { target, known, seeds, startSeed, endSeed },
     windowIds: [] // Track iTerm2 windows for cleanup
   };
@@ -4695,7 +4703,7 @@ app.post('/api/courses/generate', async (req, res) => {
   try {
     if (executionMode === 'web') {
       console.log(`[API] Using Web Mode - Browser automation`);
-      spawnCourseOrchestratorWeb(courseCode, { target, known, seeds, startSeed, endSeed }).catch(err => {
+      spawnCourseOrchestratorWeb(courseCode, { target, known, seeds, startSeed, endSeed, phaseSelection, segmentMode }).catch(err => {
         console.error(`[API] Web orchestrator error:`, err);
         job.status = 'failed';
         job.error = err.message;
