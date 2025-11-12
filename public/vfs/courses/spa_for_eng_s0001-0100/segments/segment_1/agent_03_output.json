@@ -1,0 +1,538 @@
+{
+  "agent_id": "agent_03",
+  "seed_range": "S0021-S0030",
+  "extracted_at": "2025-11-12T10:30:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0021",
+      "seed_pair": [
+        "Why are you learning her name?",
+        "¿Por qué estás aprendiendo su nombre?"
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'why' → 'por qué' (question word, A-type). 'are you learning' → 'estás aprendiendo' (present continuous, must keep together for FD, M-type). 'her name' → 'su nombre' (possessive+noun, pragmatic FD: 'her' alone can't generate practice, M-type). TILING: por qué + estás aprendiendo + su nombre ✅",
+      "legos": [
+        {
+          "id": "S0021L01",
+          "type": "A",
+          "target": "por qué",
+          "known": "why",
+          "new": true
+        },
+        {
+          "id": "S0021L02",
+          "type": "M",
+          "target": "estás aprendiendo",
+          "known": "are you learning",
+          "new": true,
+          "components": [
+            ["estás", "are you"],
+            ["aprendiendo", "learning"]
+          ]
+        },
+        {
+          "id": "S0021L03",
+          "type": "M",
+          "target": "su nombre",
+          "known": "her name",
+          "new": true,
+          "components": [
+            ["su", "her"],
+            ["nombre", "name"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0022",
+      "seed_pair": [
+        "Because I want to meet people who speak Spanish.",
+        "Porque quiero encontrar personas que hablan español."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'because' → 'porque' (A-type). 'I want' → 'quiero' (A-type). 'to meet' → 'encontrar' (A-type). 'people' → 'personas' (A-type). 'who speak' → 'que hablan' (relative pronoun + verb, 'who' alone ambiguous, M-type). 'Spanish' → 'español' (A-type). TILING: porque + quiero + encontrar + personas + que hablan + español ✅",
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "target": "porque",
+          "known": "because",
+          "new": true
+        },
+        {
+          "id": "S0022L02",
+          "type": "A",
+          "target": "quiero",
+          "known": "I want",
+          "new": true
+        },
+        {
+          "id": "S0022L03",
+          "type": "A",
+          "target": "encontrar",
+          "known": "to meet",
+          "new": true
+        },
+        {
+          "id": "S0022L04",
+          "type": "A",
+          "target": "personas",
+          "known": "people",
+          "new": true
+        },
+        {
+          "id": "S0022L05",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "new": true
+        },
+        {
+          "id": "S0022L06",
+          "type": "M",
+          "target": "que hablan",
+          "known": "who speak",
+          "new": true,
+          "components": [
+            ["que", "who"],
+            ["hablan", "speak"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0023",
+      "seed_pair": [
+        "I'm going to start talking more soon.",
+        "Voy a comenzar a hablar más pronto."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'I'm going to' → 'voy a' (FD required, M-type). 'to start talking' → 'comenzar a hablar' (pattern: English gerund 'talking' → Spanish 'a + infinitive', M-type). 'more' → 'más' (A-type). 'soon' → 'pronto' (A-type). TILING: voy a + comenzar a hablar + más + pronto ✅",
+      "legos": [
+        {
+          "id": "S0023L01",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
+        },
+        {
+          "id": "S0023L02",
+          "type": "A",
+          "target": "pronto",
+          "known": "soon",
+          "new": true
+        },
+        {
+          "id": "S0023L03",
+          "type": "M",
+          "target": "voy a",
+          "known": "I'm going to",
+          "new": true,
+          "components": [
+            ["voy", "I go"],
+            ["a", "to"]
+          ]
+        },
+        {
+          "id": "S0023L04",
+          "type": "M",
+          "target": "comenzar a hablar",
+          "known": "to start talking",
+          "new": true,
+          "components": [
+            ["comenzar", "to start"],
+            ["a", "to"],
+            ["hablar", "to talk"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0024",
+      "seed_pair": [
+        "I'm not going to be able to remember easily.",
+        "No voy a poder recordar fácilmente."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'not' → 'no' (standalone useful, A-type). 'I'm going to' → 'voy a' (M-type, already extracted). 'to be able to' → 'poder' (modal verb, A-type). 'to remember' → 'recordar' (A-type). 'easily' → 'fácilmente' (A-type). TILING: no + voy a + poder + recordar + fácilmente ✅",
+      "legos": [
+        {
+          "id": "S0024L01",
+          "type": "A",
+          "target": "no",
+          "known": "not",
+          "new": true
+        },
+        {
+          "id": "S0024L02",
+          "type": "A",
+          "target": "poder",
+          "known": "to be able to",
+          "new": true
+        },
+        {
+          "id": "S0024L03",
+          "type": "A",
+          "target": "recordar",
+          "known": "to remember",
+          "new": true
+        },
+        {
+          "id": "S0024L04",
+          "type": "A",
+          "target": "fácilmente",
+          "known": "easily",
+          "new": true
+        },
+        {
+          "id": "S0024L05",
+          "type": "M",
+          "target": "voy a",
+          "known": "I'm going to",
+          "new": true,
+          "components": [
+            ["voy", "I go"],
+            ["a", "to"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0025",
+      "seed_pair": [
+        "Are you going to help me before I have to go?",
+        "¿Vas a ayudarme antes de que tenga que ir?"
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'are you going to' → 'vas a' (M-type, 2nd person). 'to help me' → 'ayudarme' (infinitive + attached pronoun, M-type pattern). 'before I have to' → 'antes de que tenga que' (subjunctive trigger + verb, M-type per v6.2 FD validation). 'to go' → 'ir' (A-type). CRITICAL: 'tenga' is subjunctive triggered by 'antes de que', must keep together. TILING: vas a + ayudarme + antes de que tenga que + ir ✅",
+      "legos": [
+        {
+          "id": "S0025L01",
+          "type": "A",
+          "target": "ir",
+          "known": "to go",
+          "new": true
+        },
+        {
+          "id": "S0025L02",
+          "type": "M",
+          "target": "vas a",
+          "known": "are you going to",
+          "new": true,
+          "components": [
+            ["vas", "you go"],
+            ["a", "to"]
+          ]
+        },
+        {
+          "id": "S0025L03",
+          "type": "M",
+          "target": "ayudarme",
+          "known": "to help me",
+          "new": true,
+          "components": [
+            ["ayudar", "to help"],
+            ["me", "me"]
+          ]
+        },
+        {
+          "id": "S0025L04",
+          "type": "M",
+          "target": "antes de que tenga que",
+          "known": "before I have to",
+          "new": true,
+          "components": [
+            ["antes de que", "before"],
+            ["tenga", "I have"],
+            ["que", "to"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0026",
+      "seed_pair": [
+        "I like feeling as if I'm nearly ready to go.",
+        "Me gusta sentir como si estuviera casi preparado para ir."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'I like' → 'me gusta' (gustar construction, M-type). 'feeling' → 'sentir' (gerund → infinitive, A-type). 'as if I'm' → 'como si estuviera' (subjunctive trigger + verb, M-type). 'nearly' → 'casi' (A-type). 'ready' → 'preparado' (A-type). 'to' → 'para' (purpose, A-type). 'to go' → 'ir' (A-type). CRITICAL: 'como si' triggers imperfect subjunctive 'estuviera'. TILING: me gusta + sentir + como si estuviera + casi + preparado + para + ir ✅",
+      "legos": [
+        {
+          "id": "S0026L01",
+          "type": "A",
+          "target": "sentir",
+          "known": "feeling",
+          "new": true
+        },
+        {
+          "id": "S0026L02",
+          "type": "A",
+          "target": "casi",
+          "known": "nearly",
+          "new": true
+        },
+        {
+          "id": "S0026L03",
+          "type": "A",
+          "target": "preparado",
+          "known": "ready",
+          "new": true
+        },
+        {
+          "id": "S0026L04",
+          "type": "A",
+          "target": "para",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0026L05",
+          "type": "A",
+          "target": "ir",
+          "known": "to go",
+          "new": true
+        },
+        {
+          "id": "S0026L06",
+          "type": "M",
+          "target": "me gusta",
+          "known": "I like",
+          "new": true,
+          "components": [
+            ["me", "to me"],
+            ["gusta", "pleases"]
+          ]
+        },
+        {
+          "id": "S0026L07",
+          "type": "M",
+          "target": "como si estuviera",
+          "known": "as if I'm",
+          "new": true,
+          "components": [
+            ["como", "as"],
+            ["si", "if"],
+            ["estuviera", "I were"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0027",
+      "seed_pair": [
+        "I don't like taking too much time to answer.",
+        "No me gusta tomar demasiado tiempo para responder."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'not' → 'no' (A-type). 'I like' → 'me gusta' (M-type, already extracted). 'taking' → 'tomar' (gerund → infinitive, A-type). 'too much' → 'demasiado' (M-type: 'too' alone is ambiguous muy/tan/demasiado). 'time' → 'tiempo' (A-type). 'to' → 'para' (purpose, A-type). 'to answer' → 'responder' (A-type). TILING: no + me gusta + tomar + demasiado + tiempo + para + responder ✅",
+      "legos": [
+        {
+          "id": "S0027L01",
+          "type": "A",
+          "target": "no",
+          "known": "not",
+          "new": true
+        },
+        {
+          "id": "S0027L02",
+          "type": "A",
+          "target": "tomar",
+          "known": "taking",
+          "new": true
+        },
+        {
+          "id": "S0027L03",
+          "type": "A",
+          "target": "tiempo",
+          "known": "time",
+          "new": true
+        },
+        {
+          "id": "S0027L04",
+          "type": "A",
+          "target": "para",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0027L05",
+          "type": "A",
+          "target": "responder",
+          "known": "to answer",
+          "new": true
+        },
+        {
+          "id": "S0027L06",
+          "type": "M",
+          "target": "me gusta",
+          "known": "I like",
+          "new": true,
+          "components": [
+            ["me", "to me"],
+            ["gusta", "pleases"]
+          ]
+        },
+        {
+          "id": "S0027L07",
+          "type": "M",
+          "target": "demasiado",
+          "known": "too much",
+          "new": true,
+          "components": [
+            ["demasiado", "too much"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0028",
+      "seed_pair": [
+        "It's useful to start talking as soon as you can.",
+        "Es útil comenzar a hablar tan pronto como puedas."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'it's useful' → 'es útil' (M-type). 'to start talking' → 'comenzar a hablar' (M-type, already extracted). 'as soon as you can' → 'tan pronto como puedas' (CRITICAL EXAMPLE: subjunctive trigger phrase, M-type). METHODOLOGY NOTE: This is the key example from v6.2 - 'puedas' is subjunctive, must keep with trigger 'tan pronto como'. TILING: es útil + comenzar a hablar + tan pronto como puedas ✅",
+      "legos": [
+        {
+          "id": "S0028L01",
+          "type": "M",
+          "target": "es útil",
+          "known": "it's useful",
+          "new": true,
+          "components": [
+            ["es", "it is"],
+            ["útil", "useful"]
+          ]
+        },
+        {
+          "id": "S0028L02",
+          "type": "M",
+          "target": "comenzar a hablar",
+          "known": "to start talking",
+          "new": true,
+          "components": [
+            ["comenzar", "to start"],
+            ["a", "to"],
+            ["hablar", "to talk"]
+          ]
+        },
+        {
+          "id": "S0028L03",
+          "type": "M",
+          "target": "tan pronto como puedas",
+          "known": "as soon as you can",
+          "new": true,
+          "components": [
+            ["tan", "as"],
+            ["pronto", "soon"],
+            ["como", "as"],
+            ["puedas", "you can"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "seed_pair": [
+        "I'm looking forward to speaking better as soon as I can.",
+        "Estoy deseando hablar mejor tan pronto como pueda."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'I'm looking forward to' → 'estoy deseando' (idiomatic expression, M-type). 'speaking' → 'hablar' (gerund → infinitive, A-type). 'better' → 'mejor' (A-type). 'as soon as I can' → 'tan pronto como pueda' (subjunctive trigger phrase, 1st person, M-type). TILING: estoy deseando + hablar + mejor + tan pronto como pueda ✅",
+      "legos": [
+        {
+          "id": "S0029L01",
+          "type": "A",
+          "target": "hablar",
+          "known": "speaking",
+          "new": true
+        },
+        {
+          "id": "S0029L02",
+          "type": "A",
+          "target": "mejor",
+          "known": "better",
+          "new": true
+        },
+        {
+          "id": "S0029L03",
+          "type": "M",
+          "target": "estoy deseando",
+          "known": "I'm looking forward to",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["deseando", "looking forward to"]
+          ]
+        },
+        {
+          "id": "S0029L04",
+          "type": "M",
+          "target": "tan pronto como pueda",
+          "known": "as soon as I can",
+          "new": true,
+          "components": [
+            ["tan", "as"],
+            ["pronto", "soon"],
+            ["como", "as"],
+            ["pueda", "I can"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "seed_pair": [
+        "I wanted to ask you something yesterday.",
+        "Quería preguntarte algo ayer."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'I wanted' → 'quería' (imperfect tense, A-type). 'to ask you' → 'preguntarte' (infinitive + attached pronoun pattern, M-type). 'something' → 'algo' (A-type). 'yesterday' → 'ayer' (A-type). TILING: quería + preguntarte + algo + ayer ✅",
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "target": "quería",
+          "known": "I wanted",
+          "new": true
+        },
+        {
+          "id": "S0030L02",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0030L03",
+          "type": "A",
+          "target": "ayer",
+          "known": "yesterday",
+          "new": true
+        },
+        {
+          "id": "S0030L04",
+          "type": "M",
+          "target": "preguntarte",
+          "known": "to ask you",
+          "new": true,
+          "components": [
+            ["preguntar", "to ask"],
+            ["te", "you"]
+          ]
+        }
+      ]
+    }
+  ],
+  "extraction_summary": {
+    "total_seeds": 10,
+    "total_legos": 63,
+    "atomic_legos": 33,
+    "molecular_legos": 30,
+    "atomic_percentage": "52.4%",
+    "molecular_percentage": "47.6%",
+    "key_patterns_identified": [
+      "Subjunctive triggers: 'antes de que tenga que', 'tan pronto como puedas/pueda', 'como si estuviera'",
+      "Infinitive + pronoun attachment: 'ayudarme', 'preguntarte'",
+      "Gerund → infinitive patterns: 'to start talking' → 'comenzar a hablar'",
+      "Gustar construction: 'me gusta'",
+      "Going to future: 'voy a', 'vas a'",
+      "Relative pronouns with verbs: 'que hablan'",
+      "Idiomatic expressions: 'estoy deseando', 'como si estuviera'"
+    ],
+    "validation_notes": "All seeds tile perfectly. A-before-M ordering applied. All M-types have components. Pragmatic FD applied throughout (no standalone pronouns/articles without context)."
+  }
+}
