@@ -1,0 +1,580 @@
+{
+  "agent_id": "agent_01",
+  "seed_range": "S0501-S0510",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0501",
+      "seed_pair": [
+        "If only I could trust you to play together without arguing.",
+        "Si tan solo pudiera confiar en ti para jugar juntos sin discutir."
+      ],
+      "legos": [
+        {
+          "id": "S0501L01",
+          "type": "A",
+          "target": "ti",
+          "known": "you",
+          "new": true
+        },
+        {
+          "id": "S0501L02",
+          "type": "A",
+          "target": "para",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0501L03",
+          "type": "A",
+          "target": "jugar",
+          "known": "play",
+          "new": true
+        },
+        {
+          "id": "S0501L04",
+          "type": "A",
+          "target": "juntos",
+          "known": "together",
+          "new": true
+        },
+        {
+          "id": "S0501L05",
+          "type": "A",
+          "target": "sin",
+          "known": "without",
+          "new": true
+        },
+        {
+          "id": "S0501L06",
+          "type": "A",
+          "target": "discutir",
+          "known": "arguing",
+          "new": true
+        },
+        {
+          "id": "S0501L07",
+          "type": "M",
+          "target": "si tan solo pudiera",
+          "known": "if only I could",
+          "new": true,
+          "components": [
+            ["si", "if"],
+            ["tan", "only/so"],
+            ["solo", "only"],
+            ["pudiera", "I could"]
+          ]
+        },
+        {
+          "id": "S0501L08",
+          "type": "M",
+          "target": "confiar en",
+          "known": "trust",
+          "new": true,
+          "components": [
+            ["confiar", "to trust"],
+            ["en", "in"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0502",
+      "seed_pair": [
+        "She almost got lost because she turned left instead of right.",
+        "Casi se perdió porque giró a la izquierda en lugar de a la derecha."
+      ],
+      "legos": [
+        {
+          "id": "S0502L01",
+          "type": "A",
+          "target": "porque",
+          "known": "because",
+          "new": true
+        },
+        {
+          "id": "S0502L02",
+          "type": "A",
+          "target": "giró",
+          "known": "she turned",
+          "new": true
+        },
+        {
+          "id": "S0502L03",
+          "type": "M",
+          "target": "casi se perdió",
+          "known": "she almost got lost",
+          "new": true,
+          "components": [
+            ["casi", "almost"],
+            ["se", "herself"],
+            ["perdió", "got lost"]
+          ]
+        },
+        {
+          "id": "S0502L04",
+          "type": "M",
+          "target": "a la izquierda",
+          "known": "left",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["la", "the"],
+            ["izquierda", "left"]
+          ]
+        },
+        {
+          "id": "S0502L05",
+          "type": "M",
+          "target": "en lugar de",
+          "known": "instead of",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["lugar", "place"],
+            ["de", "of"]
+          ]
+        },
+        {
+          "id": "S0502L06",
+          "type": "M",
+          "target": "a la derecha",
+          "known": "right",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["la", "the"],
+            ["derecha", "right"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0503",
+      "seed_pair": [
+        "I hate making trouble but that one's mine.",
+        "Odio causar problemas pero ese es mío."
+      ],
+      "legos": [
+        {
+          "id": "S0503L01",
+          "type": "A",
+          "target": "odio",
+          "known": "I hate",
+          "new": true
+        },
+        {
+          "id": "S0503L02",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0503L03",
+          "type": "A",
+          "target": "ese",
+          "known": "that one",
+          "new": true
+        },
+        {
+          "id": "S0503L04",
+          "type": "M",
+          "target": "causar problemas",
+          "known": "making trouble",
+          "new": true,
+          "components": [
+            ["causar", "to cause/making"],
+            ["problemas", "trouble/problems"]
+          ]
+        },
+        {
+          "id": "S0503L05",
+          "type": "M",
+          "target": "es mío",
+          "known": "'s mine",
+          "new": true,
+          "components": [
+            ["es", "is"],
+            ["mío", "mine"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0504",
+      "seed_pair": [
+        "I'm going to run across the grass.",
+        "Voy a correr a través del césped."
+      ],
+      "legos": [
+        {
+          "id": "S0504L01",
+          "type": "A",
+          "target": "correr",
+          "known": "run",
+          "new": true
+        },
+        {
+          "id": "S0504L02",
+          "type": "M",
+          "target": "voy a",
+          "known": "I'm going to",
+          "new": true,
+          "components": [
+            ["voy", "I go"],
+            ["a", "to"]
+          ]
+        },
+        {
+          "id": "S0504L03",
+          "type": "M",
+          "target": "a través de",
+          "known": "across",
+          "new": true,
+          "components": [
+            ["a", "at/to"],
+            ["través", "through"],
+            ["de", "of"]
+          ]
+        },
+        {
+          "id": "S0504L04",
+          "type": "M",
+          "target": "el césped",
+          "known": "the grass",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["césped", "grass"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0505",
+      "seed_pair": [
+        "So that I don't get left behind.",
+        "Para que no me quede atrás."
+      ],
+      "legos": [
+        {
+          "id": "S0505L01",
+          "type": "M",
+          "target": "para que",
+          "known": "so that",
+          "new": true,
+          "components": [
+            ["para", "for/so"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0505L02",
+          "type": "M",
+          "target": "no me quede atrás",
+          "known": "I don't get left behind",
+          "new": true,
+          "components": [
+            ["no", "don't/not"],
+            ["me", "myself/I"],
+            ["quede", "get/stay"],
+            ["atrás", "behind"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0506",
+      "seed_pair": [
+        "I used to live around here years ago before we moved.",
+        "Solía vivir por aquí hace años antes de que nos mudáramos."
+      ],
+      "legos": [
+        {
+          "id": "S0506L01",
+          "type": "A",
+          "target": "solía",
+          "known": "I used to",
+          "new": true
+        },
+        {
+          "id": "S0506L02",
+          "type": "A",
+          "target": "vivir",
+          "known": "live",
+          "new": true
+        },
+        {
+          "id": "S0506L03",
+          "type": "M",
+          "target": "por aquí",
+          "known": "around here",
+          "new": true,
+          "components": [
+            ["por", "around/by"],
+            ["aquí", "here"]
+          ]
+        },
+        {
+          "id": "S0506L04",
+          "type": "M",
+          "target": "hace años",
+          "known": "years ago",
+          "new": true,
+          "components": [
+            ["hace", "ago/makes"],
+            ["años", "years"]
+          ]
+        },
+        {
+          "id": "S0506L05",
+          "type": "M",
+          "target": "antes de que",
+          "known": "before",
+          "new": true,
+          "components": [
+            ["antes", "before"],
+            ["de", "of"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0506L06",
+          "type": "M",
+          "target": "nos mudáramos",
+          "known": "we moved",
+          "new": true,
+          "components": [
+            ["nos", "we/ourselves"],
+            ["mudáramos", "moved"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0507",
+      "seed_pair": [
+        "We moved to the city.",
+        "Nos mudamos a la ciudad."
+      ],
+      "legos": [
+        {
+          "id": "S0507L01",
+          "type": "A",
+          "target": "a",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0507L02",
+          "type": "M",
+          "target": "nos mudamos",
+          "known": "we moved",
+          "new": true,
+          "components": [
+            ["nos", "we/ourselves"],
+            ["mudamos", "moved"]
+          ]
+        },
+        {
+          "id": "S0507L03",
+          "type": "M",
+          "target": "la ciudad",
+          "known": "the city",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["ciudad", "city"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0508",
+      "seed_pair": [
+        "There's no point worrying about how you're going to pay.",
+        "No tiene sentido preocuparse por cómo vas a pagar."
+      ],
+      "legos": [
+        {
+          "id": "S0508L01",
+          "type": "A",
+          "target": "preocuparse",
+          "known": "worrying",
+          "new": true
+        },
+        {
+          "id": "S0508L02",
+          "type": "A",
+          "target": "por",
+          "known": "about",
+          "new": true
+        },
+        {
+          "id": "S0508L03",
+          "type": "A",
+          "target": "cómo",
+          "known": "how",
+          "new": true
+        },
+        {
+          "id": "S0508L04",
+          "type": "A",
+          "target": "pagar",
+          "known": "pay",
+          "new": true
+        },
+        {
+          "id": "S0508L05",
+          "type": "M",
+          "target": "no tiene sentido",
+          "known": "there's no point",
+          "new": true,
+          "components": [
+            ["no", "no"],
+            ["tiene", "has/there's"],
+            ["sentido", "sense/point"]
+          ]
+        },
+        {
+          "id": "S0508L06",
+          "type": "M",
+          "target": "vas a",
+          "known": "you're going to",
+          "new": true,
+          "components": [
+            ["vas", "you go"],
+            ["a", "to"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0509",
+      "seed_pair": [
+        "I heard that you're going to pay for a new bed.",
+        "Oí que vas a pagar por una cama nueva."
+      ],
+      "legos": [
+        {
+          "id": "S0509L01",
+          "type": "A",
+          "target": "oí",
+          "known": "I heard",
+          "new": true
+        },
+        {
+          "id": "S0509L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0509L03",
+          "type": "A",
+          "target": "pagar",
+          "known": "pay",
+          "new": true
+        },
+        {
+          "id": "S0509L04",
+          "type": "A",
+          "target": "por",
+          "known": "for",
+          "new": true
+        },
+        {
+          "id": "S0509L05",
+          "type": "M",
+          "target": "vas a",
+          "known": "you're going to",
+          "new": true,
+          "components": [
+            ["vas", "you go"],
+            ["a", "to"]
+          ]
+        },
+        {
+          "id": "S0509L06",
+          "type": "M",
+          "target": "una cama nueva",
+          "known": "a new bed",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["cama", "bed"],
+            ["nueva", "new"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0510",
+      "seed_pair": [
+        "She's gone to look for somewhere safe to park the car.",
+        "Ha ido a buscar algún lugar seguro para estacionar el carro."
+      ],
+      "legos": [
+        {
+          "id": "S0510L01",
+          "type": "M",
+          "target": "ha ido",
+          "known": "she's gone",
+          "new": true,
+          "components": [
+            ["ha", "she's/has"],
+            ["ido", "gone"]
+          ]
+        },
+        {
+          "id": "S0510L02",
+          "type": "M",
+          "target": "a buscar",
+          "known": "to look for",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["buscar", "look for/search"]
+          ]
+        },
+        {
+          "id": "S0510L03",
+          "type": "M",
+          "target": "algún lugar seguro",
+          "known": "somewhere safe",
+          "new": true,
+          "components": [
+            ["algún", "some"],
+            ["lugar", "place/where"],
+            ["seguro", "safe"]
+          ]
+        },
+        {
+          "id": "S0510L04",
+          "type": "M",
+          "target": "para estacionar",
+          "known": "to park",
+          "new": true,
+          "components": [
+            ["para", "to/for"],
+            ["estacionar", "park"]
+          ]
+        },
+        {
+          "id": "S0510L05",
+          "type": "M",
+          "target": "el carro",
+          "known": "the car",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["carro", "car"]
+          ]
+        }
+      ]
+    }
+  ]
+}
