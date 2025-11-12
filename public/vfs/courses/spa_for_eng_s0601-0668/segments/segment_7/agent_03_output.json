@@ -1,7 +1,7 @@
 {
   "agent_id": "agent_03",
   "seed_range": "S0621-S0630",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "extracted_at": "2025-11-12T21:51:00.000Z",
   "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
   "seeds": [
     {
@@ -13,13 +13,6 @@
       "legos": [
         {
           "id": "S0621L01",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
-        },
-        {
-          "id": "S0621L02",
           "type": "M",
           "target": "no me habría atrevido",
           "known": "I wouldn't have dared",
@@ -32,7 +25,7 @@
           ]
         },
         {
-          "id": "S0621L03",
+          "id": "S0621L02",
           "type": "M",
           "target": "a decirle",
           "known": "to tell her",
@@ -43,12 +36,13 @@
           ]
         },
         {
-          "id": "S0621L04",
+          "id": "S0621L03",
           "type": "M",
-          "target": "estaba roto",
-          "known": "it was broken",
+          "target": "que estaba roto",
+          "known": "that it was broken",
           "new": true,
           "components": [
+            ["que", "that"],
             ["estaba", "it was"],
             ["roto", "broken"]
           ]
@@ -239,25 +233,19 @@
         {
           "id": "S0626L02",
           "type": "A",
-          "target": "no",
-          "known": "not",
-          "new": true
-        },
-        {
-          "id": "S0626L03",
-          "type": "A",
           "target": "gracias",
           "known": "thank you",
           "new": true
         },
         {
-          "id": "S0626L04",
+          "id": "S0626L03",
           "type": "M",
-          "target": "tengo sed",
-          "known": "I'm thirsty",
+          "target": "no tengo sed",
+          "known": "I'm not thirsty",
           "new": true,
           "components": [
-            ["tengo", "I have/I'm"],
+            ["no", "not"],
+            ["tengo", "I have"],
             ["sed", "thirsty/thirst"]
           ]
         }
