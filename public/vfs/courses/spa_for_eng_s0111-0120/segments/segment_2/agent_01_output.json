@@ -1,0 +1,117 @@
+{
+  "agent_id": "agent_01",
+  "seed_range": "S0111-S0112",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0111",
+      "seed_pair": [
+        "Cuando aprendemos algo nuevo cambia nuestro cerebro",
+        "When we learn something new it changes our brain."
+      ],
+      "legos": [
+        {
+          "id": "S0111L01",
+          "type": "A",
+          "target": "Cuando",
+          "known": "When",
+          "new": true
+        },
+        {
+          "id": "S0111L02",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0111L03",
+          "type": "A",
+          "target": "nuevo",
+          "known": "new",
+          "new": true
+        },
+        {
+          "id": "S0111L04",
+          "type": "M",
+          "target": "aprendemos",
+          "known": "we learn",
+          "new": true,
+          "components": [
+            ["aprendemos", "we learn"]
+          ]
+        },
+        {
+          "id": "S0111L05",
+          "type": "M",
+          "target": "cambia",
+          "known": "it changes",
+          "new": true,
+          "components": [
+            ["cambia", "it changes"]
+          ]
+        },
+        {
+          "id": "S0111L06",
+          "type": "M",
+          "target": "nuestro cerebro",
+          "known": "our brain",
+          "new": true,
+          "components": [
+            ["nuestro", "our"],
+            ["cerebro", "brain"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0112",
+      "seed_pair": [
+        "Eso fue muy interesante, y no estaba esperándolo",
+        "That was very interesting, and I wasn't expecting it."
+      ],
+      "legos": [
+        {
+          "id": "S0112L01",
+          "type": "A",
+          "target": "Eso",
+          "known": "That",
+          "new": true
+        },
+        {
+          "id": "S0112L02",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0112L03",
+          "type": "M",
+          "target": "fue muy interesante",
+          "known": "was very interesting",
+          "new": true,
+          "components": [
+            ["fue", "was"],
+            ["muy", "very"],
+            ["interesante", "interesting"]
+          ]
+        },
+        {
+          "id": "S0112L04",
+          "type": "M",
+          "target": "no estaba esperándolo",
+          "known": "I wasn't expecting it",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["estaba", "I was"],
+            ["esperando", "expecting"],
+            ["lo", "it"]
+          ]
+        }
+      ]
+    }
+  ]
+}
