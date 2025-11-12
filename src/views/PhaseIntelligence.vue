@@ -102,7 +102,7 @@
                 </p>
               </div>
               <div class="text-sm text-slate-400">
-                <span class="font-mono">docs/phase_intelligence/phase_{{ selectedPhase }}.md</span>
+                <span class="font-mono">public/docs/phase_intelligence/phase_{{ selectedPhase }}.md</span>
               </div>
             </div>
           </div>
@@ -116,10 +116,10 @@
       <div class="mt-8 bg-slate-800/30 rounded-lg border border-slate-600/30 p-6">
         <h3 class="text-lg font-semibold text-slate-100 mb-3">Update Workflow</h3>
         <ol class="text-slate-400 space-y-2 text-sm">
-          <li>1. Edit: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">docs/phase_intelligence/phase_X_*.md</code></li>
+          <li>1. Edit: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">public/docs/phase_intelligence/phase_X_*.md</code></li>
           <li>2. Rebuild app: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">npm run build</code></li>
           <li>3. Deploy: <code class="text-emerald-400 bg-slate-900/50 px-2 py-1 rounded">git push</code> (auto-deploys to Vercel)</li>
-          <li>4. Done: Intelligence files are embedded in the app bundle</li>
+          <li>4. Done: Intelligence files are embedded in app and accessible at /docs URLs</li>
         </ol>
       </div>
 
@@ -131,13 +131,13 @@
 import { ref, computed } from 'vue'
 
 // Import phase intelligence files directly
-import phase1Raw from '../../docs/phase_intelligence/phase_1_seed_pairs.md?raw'
-import phase3Raw from '../../docs/phase_intelligence/phase_3_lego_pairs.md?raw'
-import phase5Raw from '../../docs/phase_intelligence/phase_5_lego_baskets.md?raw'
-import phase5_5Raw from '../../docs/phase_intelligence/phase_5.5_basket_deduplication.md?raw'
-import phase6Raw from '../../docs/phase_intelligence/phase_6_introductions.md?raw'
-import phase7Raw from '../../docs/phase_intelligence/phase_7_compilation.md?raw'
-import phase8Raw from '../../docs/phase_intelligence/phase_8_audio_generation.md?raw'
+import phase1Raw from '../../public/docs/phase_intelligence/phase_1_seed_pairs.md?raw'
+import phase3Raw from '../../public/docs/phase_intelligence/phase_3_lego_pairs.md?raw'
+import phase5Raw from '../../public/docs/phase_intelligence/phase_5_lego_baskets.md?raw'
+import phase5_5Raw from '../../public/docs/phase_intelligence/phase_5.5_basket_deduplication.md?raw'
+import phase6Raw from '../../public/docs/phase_intelligence/phase_6_introductions.md?raw'
+import phase7Raw from '../../public/docs/phase_intelligence/phase_7_compilation.md?raw'
+import phase8Raw from '../../public/docs/phase_intelligence/phase_8_audio_generation.md?raw'
 
 const phaseContent = {
   '1': phase1Raw,
