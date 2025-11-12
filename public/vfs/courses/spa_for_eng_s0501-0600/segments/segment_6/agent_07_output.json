@@ -1,0 +1,509 @@
+{
+  "agent_id": "agent_07",
+  "seed_range": "S0561-S0570",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0561",
+      "seed_pair": [
+        "I don't care if it's a fast car.",
+        "No me importa si es un carro rápido."
+      ],
+      "legos": [
+        {
+          "id": "S0561L01",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0561L02",
+          "type": "A",
+          "target": "es",
+          "known": "it's",
+          "new": true
+        },
+        {
+          "id": "S0561L03",
+          "type": "M",
+          "target": "No me importa",
+          "known": "I don't care",
+          "new": true,
+          "components": [
+            ["No", "no"],
+            ["me", "me"],
+            ["importa", "matters"]
+          ]
+        },
+        {
+          "id": "S0561L04",
+          "type": "M",
+          "target": "un carro rápido",
+          "known": "a fast car",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["carro", "car"],
+            ["rápido", "fast"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0562",
+      "seed_pair": [
+        "I just want to get there safely.",
+        "Solo quiero llegar allí con seguridad."
+      ],
+      "legos": [
+        {
+          "id": "S0562L01",
+          "type": "M",
+          "target": "Solo quiero",
+          "known": "I just want",
+          "new": true,
+          "components": [
+            ["Solo", "just"],
+            ["quiero", "I want"]
+          ]
+        },
+        {
+          "id": "S0562L02",
+          "type": "M",
+          "target": "llegar allí",
+          "known": "to get there",
+          "new": true,
+          "components": [
+            ["llegar", "to arrive"],
+            ["allí", "there"]
+          ]
+        },
+        {
+          "id": "S0562L03",
+          "type": "M",
+          "target": "con seguridad",
+          "known": "safely",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["seguridad", "safety"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0563",
+      "seed_pair": [
+        "I wouldn't have been able to keep going any longer.",
+        "No habría podido continuar más tiempo."
+      ],
+      "legos": [
+        {
+          "id": "S0563L01",
+          "type": "A",
+          "target": "continuar",
+          "known": "to keep going",
+          "new": true
+        },
+        {
+          "id": "S0563L02",
+          "type": "M",
+          "target": "No habría podido",
+          "known": "I wouldn't have been able",
+          "new": true,
+          "components": [
+            ["No", "not"],
+            ["habría", "I would have"],
+            ["podido", "been able"]
+          ]
+        },
+        {
+          "id": "S0563L03",
+          "type": "M",
+          "target": "más tiempo",
+          "known": "any longer",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["tiempo", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0564",
+      "seed_pair": [
+        "I wouldn't have been able to without your help.",
+        "No habría podido sin tu ayuda."
+      ],
+      "legos": [
+        {
+          "id": "S0564L01",
+          "type": "A",
+          "target": "sin",
+          "known": "without",
+          "new": true
+        },
+        {
+          "id": "S0564L02",
+          "type": "M",
+          "target": "No habría podido",
+          "known": "I wouldn't have been able to",
+          "new": true,
+          "components": [
+            ["No", "not"],
+            ["habría", "I would have"],
+            ["podido", "been able"]
+          ]
+        },
+        {
+          "id": "S0564L03",
+          "type": "M",
+          "target": "tu ayuda",
+          "known": "your help",
+          "new": true,
+          "components": [
+            ["tu", "your"],
+            ["ayuda", "help"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0565",
+      "seed_pair": [
+        "I'd have thought about it more carefully.",
+        "Habría pensado en ello más cuidadosamente."
+      ],
+      "legos": [
+        {
+          "id": "S0565L01",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
+        },
+        {
+          "id": "S0565L02",
+          "type": "A",
+          "target": "cuidadosamente",
+          "known": "carefully",
+          "new": true
+        },
+        {
+          "id": "S0565L03",
+          "type": "M",
+          "target": "Habría pensado",
+          "known": "I'd have thought",
+          "new": true,
+          "components": [
+            ["Habría", "I'd have"],
+            ["pensado", "thought"]
+          ]
+        },
+        {
+          "id": "S0565L04",
+          "type": "M",
+          "target": "en ello",
+          "known": "about it",
+          "new": true,
+          "components": [
+            ["en", "about"],
+            ["ello", "it"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0566",
+      "seed_pair": [
+        "I'd have thought more if it had been my choice.",
+        "Habría pensado más si hubiera sido mi elección."
+      ],
+      "legos": [
+        {
+          "id": "S0566L01",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
+        },
+        {
+          "id": "S0566L02",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0566L03",
+          "type": "M",
+          "target": "Habría pensado",
+          "known": "I'd have thought",
+          "new": true,
+          "components": [
+            ["Habría", "I'd have"],
+            ["pensado", "thought"]
+          ]
+        },
+        {
+          "id": "S0566L04",
+          "type": "M",
+          "target": "hubiera sido",
+          "known": "it had been",
+          "new": true,
+          "components": [
+            ["hubiera", "had"],
+            ["sido", "been"]
+          ]
+        },
+        {
+          "id": "S0566L05",
+          "type": "M",
+          "target": "mi elección",
+          "known": "my choice",
+          "new": true,
+          "components": [
+            ["mi", "my"],
+            ["elección", "choice"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0567",
+      "seed_pair": [
+        "It's been lovely spending time outdoors watching the children play.",
+        "Ha sido encantador pasar tiempo al aire libre observando a los niños jugar."
+      ],
+      "legos": [
+        {
+          "id": "S0567L01",
+          "type": "A",
+          "target": "encantador",
+          "known": "lovely",
+          "new": true
+        },
+        {
+          "id": "S0567L02",
+          "type": "A",
+          "target": "observando",
+          "known": "watching",
+          "new": true
+        },
+        {
+          "id": "S0567L03",
+          "type": "A",
+          "target": "jugar",
+          "known": "play",
+          "new": true
+        },
+        {
+          "id": "S0567L04",
+          "type": "M",
+          "target": "Ha sido",
+          "known": "It's been",
+          "new": true,
+          "components": [
+            ["Ha", "has"],
+            ["sido", "been"]
+          ]
+        },
+        {
+          "id": "S0567L05",
+          "type": "M",
+          "target": "pasar tiempo",
+          "known": "spending time",
+          "new": true,
+          "components": [
+            ["pasar", "to spend"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0567L06",
+          "type": "M",
+          "target": "al aire libre",
+          "known": "outdoors",
+          "new": true,
+          "components": [
+            ["al", "in the"],
+            ["aire", "air"],
+            ["libre", "free"]
+          ]
+        },
+        {
+          "id": "S0567L07",
+          "type": "M",
+          "target": "a los niños",
+          "known": "the children",
+          "new": true,
+          "components": [
+            ["a", "(personal a)"],
+            ["los", "the"],
+            ["niños", "children"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0568",
+      "seed_pair": [
+        "I'm expecting to see an improvement next time we meet.",
+        "Espero ver una mejora la próxima vez que nos encontremos."
+      ],
+      "legos": [
+        {
+          "id": "S0568L01",
+          "type": "A",
+          "target": "Espero",
+          "known": "I'm expecting to",
+          "new": true
+        },
+        {
+          "id": "S0568L02",
+          "type": "A",
+          "target": "ver",
+          "known": "see",
+          "new": true
+        },
+        {
+          "id": "S0568L03",
+          "type": "M",
+          "target": "una mejora",
+          "known": "an improvement",
+          "new": true,
+          "components": [
+            ["una", "an"],
+            ["mejora", "improvement"]
+          ]
+        },
+        {
+          "id": "S0568L04",
+          "type": "M",
+          "target": "la próxima vez que",
+          "known": "next time",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["próxima", "next"],
+            ["vez", "time"],
+            ["que", "(that)"]
+          ]
+        },
+        {
+          "id": "S0568L05",
+          "type": "M",
+          "target": "nos encontremos",
+          "known": "we meet",
+          "new": true,
+          "components": [
+            ["nos", "we"],
+            ["encontremos", "meet"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0569",
+      "seed_pair": [
+        "Have you decided how much you are willing to pay?",
+        "¿Has decidido cuánto estás dispuesto a pagar?"
+      ],
+      "legos": [
+        {
+          "id": "S0569L01",
+          "type": "A",
+          "target": "cuánto",
+          "known": "how much",
+          "new": true
+        },
+        {
+          "id": "S0569L02",
+          "type": "A",
+          "target": "pagar",
+          "known": "pay",
+          "new": true
+        },
+        {
+          "id": "S0569L03",
+          "type": "M",
+          "target": "Has decidido",
+          "known": "Have you decided",
+          "new": true,
+          "components": [
+            ["Has", "Have you"],
+            ["decidido", "decided"]
+          ]
+        },
+        {
+          "id": "S0569L04",
+          "type": "M",
+          "target": "estás dispuesto a",
+          "known": "you are willing to",
+          "new": true,
+          "components": [
+            ["estás", "you are"],
+            ["dispuesto", "willing"],
+            ["a", "to"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0570",
+      "seed_pair": [
+        "How much are you willing to pay for your ticket?",
+        "¿Cuánto estás dispuesto a pagar por tu billete?"
+      ],
+      "legos": [
+        {
+          "id": "S0570L01",
+          "type": "A",
+          "target": "cuánto",
+          "known": "How much",
+          "new": true
+        },
+        {
+          "id": "S0570L02",
+          "type": "A",
+          "target": "pagar",
+          "known": "pay",
+          "new": true
+        },
+        {
+          "id": "S0570L03",
+          "type": "A",
+          "target": "por",
+          "known": "for",
+          "new": true
+        },
+        {
+          "id": "S0570L04",
+          "type": "M",
+          "target": "estás dispuesto a",
+          "known": "are you willing to",
+          "new": true,
+          "components": [
+            ["estás", "are you"],
+            ["dispuesto", "willing"],
+            ["a", "to"]
+          ]
+        },
+        {
+          "id": "S0570L05",
+          "type": "M",
+          "target": "tu billete",
+          "known": "your ticket",
+          "new": true,
+          "components": [
+            ["tu", "your"],
+            ["billete", "ticket"]
+          ]
+        }
+      ]
+    }
+  ]
+}
