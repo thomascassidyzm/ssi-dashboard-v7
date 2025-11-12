@@ -1,0 +1,363 @@
+{
+  "agent_id": "agent_03",
+  "seed_range": "S0321-S0330",
+  "extracted_at": "2025-11-12T00:00:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0321",
+      "seed_pair": ["A book.", "Un libro."],
+      "legos": [
+        {
+          "id": "S0321L01",
+          "type": "M",
+          "target": "un libro",
+          "known": "a book",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["libro", "book"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0322",
+      "seed_pair": ["She said that she needs to read the same book.", "Ella dijo que necesita leer el mismo libro."],
+      "legos": [
+        {
+          "id": "S0322L01",
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "new": true
+        },
+        {
+          "id": "S0322L02",
+          "type": "A",
+          "target": "dijo",
+          "known": "said",
+          "new": true
+        },
+        {
+          "id": "S0322L03",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0322L04",
+          "type": "A",
+          "target": "necesita",
+          "known": "needs",
+          "new": true
+        },
+        {
+          "id": "S0322L05",
+          "type": "A",
+          "target": "leer",
+          "known": "to read",
+          "new": true
+        },
+        {
+          "id": "S0322L06",
+          "type": "M",
+          "target": "el mismo libro",
+          "known": "the same book",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["mismo", "same"],
+            ["libro", "book"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0323",
+      "seed_pair": ["He said that he doesn't need to walk to school.", "Él dijo que no necesita caminar a la escuela."],
+      "legos": [
+        {
+          "id": "S0323L01",
+          "type": "A",
+          "target": "él",
+          "known": "he",
+          "new": true
+        },
+        {
+          "id": "S0323L02",
+          "type": "A",
+          "target": "caminar",
+          "known": "to walk",
+          "new": true
+        },
+        {
+          "id": "S0323L03",
+          "type": "M",
+          "target": "no necesita",
+          "known": "doesn't need",
+          "new": true,
+          "components": [
+            ["no", "doesn't"],
+            ["necesita", "need"]
+          ]
+        },
+        {
+          "id": "S0323L04",
+          "type": "M",
+          "target": "a la escuela",
+          "known": "to school",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["la", "the"],
+            ["escuela", "school"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0324",
+      "seed_pair": ["That student has both of her hands up.", "Esa estudiante tiene las dos manos arriba."],
+      "legos": [
+        {
+          "id": "S0324L01",
+          "type": "A",
+          "target": "tiene",
+          "known": "has",
+          "new": true
+        },
+        {
+          "id": "S0324L02",
+          "type": "A",
+          "target": "arriba",
+          "known": "up",
+          "new": true
+        },
+        {
+          "id": "S0324L03",
+          "type": "M",
+          "target": "esa estudiante",
+          "known": "that student",
+          "new": true,
+          "components": [
+            ["esa", "that"],
+            ["estudiante", "student"]
+          ]
+        },
+        {
+          "id": "S0324L04",
+          "type": "M",
+          "target": "las dos manos",
+          "known": "both of her hands",
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["dos", "both/two"],
+            ["manos", "hands"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0325",
+      "seed_pair": ["I think that he needs to consider ten possible problems.", "Creo que necesita considerar diez problemas posibles."],
+      "legos": [
+        {
+          "id": "S0325L01",
+          "type": "A",
+          "target": "creo",
+          "known": "I think",
+          "new": true
+        },
+        {
+          "id": "S0325L02",
+          "type": "A",
+          "target": "considerar",
+          "known": "to consider",
+          "new": true
+        },
+        {
+          "id": "S0325L03",
+          "type": "A",
+          "target": "diez",
+          "known": "ten",
+          "new": true
+        },
+        {
+          "id": "S0325L04",
+          "type": "M",
+          "target": "problemas posibles",
+          "known": "possible problems",
+          "new": true,
+          "components": [
+            ["problemas", "problems"],
+            ["posibles", "possible"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0326",
+      "seed_pair": ["I don't think that she needs to sell the company.", "No creo que necesite vender la compañía."],
+      "legos": [
+        {
+          "id": "S0326L01",
+          "type": "A",
+          "target": "vender",
+          "known": "to sell",
+          "new": true
+        },
+        {
+          "id": "S0326L02",
+          "type": "M",
+          "target": "no creo que necesite",
+          "known": "I don't think that she needs",
+          "new": true,
+          "components": [
+            ["no", "don't"],
+            ["creo", "I think"],
+            ["que", "that"],
+            ["necesite", "she needs"]
+          ]
+        },
+        {
+          "id": "S0326L03",
+          "type": "M",
+          "target": "la compañía",
+          "known": "the company",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["compañía", "company"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0327",
+      "seed_pair": ["Do you think that she needs to offer another way?", "¿Crees que necesita ofrecer otra manera?"],
+      "legos": [
+        {
+          "id": "S0327L01",
+          "type": "A",
+          "target": "crees",
+          "known": "do you think",
+          "new": true
+        },
+        {
+          "id": "S0327L02",
+          "type": "A",
+          "target": "ofrecer",
+          "known": "to offer",
+          "new": true
+        },
+        {
+          "id": "S0327L03",
+          "type": "M",
+          "target": "otra manera",
+          "known": "another way",
+          "new": true,
+          "components": [
+            ["otra", "another"],
+            ["manera", "way"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0328",
+      "seed_pair": ["Yes I think she ought to.", "Sí pienso que debería."],
+      "legos": [
+        {
+          "id": "S0328L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0328L02",
+          "type": "A",
+          "target": "pienso",
+          "known": "I think",
+          "new": true
+        },
+        {
+          "id": "S0328L03",
+          "type": "A",
+          "target": "debería",
+          "known": "she ought to",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0329",
+      "seed_pair": ["It's important.", "Es importante."],
+      "legos": [
+        {
+          "id": "S0329L01",
+          "type": "M",
+          "target": "es importante",
+          "known": "it's important",
+          "new": true,
+          "components": [
+            ["es", "it's"],
+            ["importante", "important"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0330",
+      "seed_pair": ["No I don't think it's very important.", "No, no creo que sea muy importante."],
+      "legos": [
+        {
+          "id": "S0330L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0330L02",
+          "type": "A",
+          "target": "muy",
+          "known": "very",
+          "new": true
+        },
+        {
+          "id": "S0330L03",
+          "type": "A",
+          "target": "importante",
+          "known": "important",
+          "new": true
+        },
+        {
+          "id": "S0330L04",
+          "type": "M",
+          "target": "no creo",
+          "known": "I don't think",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["creo", "I think"]
+          ]
+        },
+        {
+          "id": "S0330L05",
+          "type": "M",
+          "target": "que sea",
+          "known": "that it's",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["sea", "it is"]
+          ]
+        }
+      ]
+    }
+  ]
+}
