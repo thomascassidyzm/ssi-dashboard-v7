@@ -602,10 +602,15 @@ Extract the translations array for your assigned seed range (filter to your seed
 
 For EACH of your ${seedsPerAgent} seeds:
 
-1. **Extended Thinking** (use <thinking> tags):
+1. **Extended Thinking** (REQUIRED - use <thinking> tags for EVERY seed):
    - Analyze KNOWN language semantics first
    - Forward sweep: Find FD-compliant chunks
    - Backward sweep: Catch target-language particles
+   - **Apply Pragmatic FD heuristic**: Ask yourself for EACH potential LEGO:
+     * "Can this chunk generate meaningful practice phrases on its own?"
+     * "Is this pedagogically useful as a standalone unit?"
+     * Examples to REJECT: standalone pronouns ("él", "she"), articles ("una", "the"), particles ("de", "of")
+     * Examples to ACCEPT WITH CONTEXT: "él quiere" (pronoun+verb), "de vez en cuando" (idiomatic phrase)
    - **Verify TILING in BOTH languages**
 
 2. **Extract LEGOs**:
@@ -618,6 +623,7 @@ For EACH of your ${seedsPerAgent} seeds:
    - Does known reconstruct perfectly from LEGOs?
    - All M-types have components?
    - A-before-M ordering correct?
+   - **Pragmatic FD check**: Did I extract any standalone pronouns, articles, or particles? (If yes, revisit and pair them with context)
 
 4. **Move to next seed**
 
