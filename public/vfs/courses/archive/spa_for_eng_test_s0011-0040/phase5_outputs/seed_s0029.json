@@ -1,0 +1,470 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0029",
+  "generation_stage": "GRAMMAR_REVIEWED",
+  "seed_pair": {
+    "target": "Estoy deseando hablar mejor tan pronto como pueda.",
+    "known": "I'm looking forward to speaking better as soon as I can."
+  },
+  "recent_seed_pairs": {
+    "S0019": [
+      "But I don't want to stop talking.",
+      "Pero no quiero parar de hablar."
+    ],
+    "S0020": [
+      "You want to learn his name quickly.",
+      "Quieres aprender su nombre rápidamente."
+    ],
+    "S0021": [
+      "Why are you learning her name?",
+      "¿Por qué estás aprendiendo su nombre?"
+    ],
+    "S0022": [
+      "Because I want to meet people who speak Spanish.",
+      "Porque quiero encontrar personas que hablan español."
+    ],
+    "S0023": [
+      "I'm going to start talking more soon.",
+      "Voy a comenzar a hablar más pronto."
+    ],
+    "S0024": [
+      "I'm not going to be able to remember easily.",
+      "No voy a poder recordar fácilmente."
+    ],
+    "S0025": [
+      "Are you going to help me before I have to go?",
+      "¿Vas a ayudarme antes de que tenga que ir?"
+    ],
+    "S0026": [
+      "I like feeling as if I'm nearly ready to go.",
+      "Me gusta sentir como si estuviera casi preparado para ir."
+    ],
+    "S0027": [
+      "I don't like taking too much time to answer.",
+      "No me gusta tomar demasiado tiempo para responder."
+    ],
+    "S0028": [
+      "It's useful to start talking as soon as you can.",
+      "Es útil comenzar a hablar tan pronto como puedas."
+    ]
+  },
+  "legos": {
+    "S0029L01": {
+      "lego": [
+        "I'm looking forward to",
+        "estoy deseando"
+      ],
+      "type": "M",
+      "components": [
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "deseando",
+          "desiring/wishing"
+        ]
+      ],
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I'm looking forward to",
+          "estoy deseando",
+          null,
+          1
+        ],
+        [
+          "I'm looking forward to learning",
+          "estoy deseando aprender",
+          null,
+          2
+        ],
+        [
+          "I'm looking forward to speaking",
+          "estoy deseando hablar",
+          null,
+          2
+        ],
+        [
+          "I'm looking forward to meeting people",
+          "estoy deseando encontrar personas",
+          null,
+          3
+        ],
+        [
+          "I'm looking forward to starting soon",
+          "estoy deseando comenzar pronto",
+          null,
+          3
+        ],
+        [
+          "I'm looking forward to speaking Spanish",
+          "estoy deseando hablar español",
+          null,
+          3
+        ],
+        [
+          "I'm looking forward to going",
+          "estoy deseando ir",
+          null,
+          2
+        ],
+        [
+          "I'm not looking forward to speaking",
+          "no estoy deseando hablar",
+          null,
+          3
+        ],
+        [
+          "I'm looking forward to starting to speak",
+          "estoy deseando comenzar a hablar",
+          null,
+          4
+        ],
+        [
+          "I'm looking forward to learning Spanish quickly",
+          "estoy deseando aprender español rápidamente",
+          null,
+          4
+        ],
+        [
+          "I'm looking forward to meeting people who speak Spanish",
+          "estoy deseando encontrar personas que hablan español",
+          null,
+          6
+        ],
+        [
+          "I'm looking forward to starting to speak more soon",
+          "estoy deseando comenzar a hablar más pronto",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 4,
+        "longer_4_5": 2,
+        "long_6_plus": 2
+      }
+    },
+    "S0029L02": {
+      "lego": [
+        "speaking",
+        "hablar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I'm looking forward to",
+          "estoy deseando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "speaking",
+          "hablar",
+          null,
+          1
+        ],
+        [
+          "speaking Spanish",
+          "hablar español",
+          null,
+          2
+        ],
+        [
+          "I'm looking forward to speaking",
+          "estoy deseando hablar",
+          null,
+          2
+        ],
+        [
+          "speaking more",
+          "hablar más",
+          null,
+          2
+        ],
+        [
+          "speaking quickly",
+          "hablar rápidamente",
+          null,
+          2
+        ],
+        [
+          "to start speaking",
+          "comenzar a hablar",
+          null,
+          2
+        ],
+        [
+          "I want to start speaking",
+          "quiero comenzar a hablar",
+          null,
+          3
+        ],
+        [
+          "I like speaking Spanish",
+          "me gusta hablar español",
+          null,
+          3
+        ],
+        [
+          "I'm looking forward to speaking more",
+          "estoy deseando hablar más",
+          null,
+          3
+        ],
+        [
+          "I'm looking forward to speaking Spanish soon",
+          "estoy deseando hablar español pronto",
+          null,
+          4
+        ],
+        [
+          "I'm going to start speaking more soon",
+          "voy a comenzar a hablar más pronto",
+          null,
+          6
+        ],
+        [
+          "it's useful to start speaking as soon as you can",
+          "es útil comenzar a hablar tan pronto como puedas",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 6,
+        "quite_short_3": 3,
+        "longer_4_5": 1,
+        "long_6_plus": 2
+      }
+    },
+    "S0029L03": {
+      "lego": [
+        "better",
+        "mejor"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I'm looking forward to",
+          "estoy deseando"
+        ],
+        [
+          "speaking",
+          "hablar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "better",
+          "mejor",
+          null,
+          1
+        ],
+        [
+          "speaking better",
+          "hablar mejor",
+          null,
+          2
+        ],
+        [
+          "I'm looking forward to speaking better",
+          "estoy deseando hablar mejor",
+          null,
+          3
+        ],
+        [
+          "to speak better",
+          "hablar mejor",
+          null,
+          2
+        ],
+        [
+          "I want to speak better",
+          "quiero hablar mejor",
+          null,
+          3
+        ],
+        [
+          "learning better",
+          "aprender mejor",
+          null,
+          2
+        ],
+        [
+          "I'm going to speak better",
+          "voy a hablar mejor",
+          null,
+          4
+        ],
+        [
+          "I like speaking better",
+          "me gusta hablar mejor",
+          null,
+          3
+        ],
+        [
+          "to start speaking better",
+          "comenzar a hablar mejor",
+          null,
+          3
+        ],
+        [
+          "I'm going to be able to speak better",
+          "voy a poder hablar mejor",
+          null,
+          5
+        ],
+        [
+          "I'm looking forward to speaking Spanish better",
+          "estoy deseando hablar español mejor",
+          null,
+          4
+        ],
+        [
+          "I want to start speaking better soon",
+          "quiero comenzar a hablar mejor pronto",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 4,
+        "longer_4_5": 4,
+        "long_6_plus": 0
+      }
+    },
+    "S0029L04": {
+      "lego": [
+        "as soon as I can",
+        "tan pronto como pueda"
+      ],
+      "type": "M",
+      "components": [
+        [
+          "tan",
+          "as"
+        ],
+        [
+          "pronto",
+          "soon"
+        ],
+        [
+          "como",
+          "as"
+        ],
+        [
+          "pueda",
+          "I can (subj)"
+        ]
+      ],
+      "current_seed_legos_available": [
+        [
+          "I'm looking forward to",
+          "estoy deseando"
+        ],
+        [
+          "speaking",
+          "hablar"
+        ],
+        [
+          "better",
+          "mejor"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "as soon as I can",
+          "tan pronto como pueda",
+          null,
+          1
+        ],
+        [
+          "I'm going as soon as I can",
+          "voy tan pronto como pueda",
+          null,
+          2
+        ],
+        [
+          "I'm going to go as soon as I can",
+          "voy a ir tan pronto como pueda",
+          null,
+          3
+        ],
+        [
+          "to speak as soon as I can",
+          "hablar tan pronto como pueda",
+          null,
+          2
+        ],
+        [
+          "I want to speak as soon as I can",
+          "quiero hablar tan pronto como pueda",
+          null,
+          3
+        ],
+        [
+          "I'm going to start as soon as I can",
+          "voy a comenzar tan pronto como pueda",
+          null,
+          4
+        ],
+        [
+          "speaking better as soon as I can",
+          "hablar mejor tan pronto como pueda",
+          null,
+          3
+        ],
+        [
+          "I want to start speaking as soon as I can",
+          "quiero comenzar a hablar tan pronto como pueda",
+          null,
+          5
+        ],
+        [
+          "I'm looking forward to speaking as soon as I can",
+          "estoy deseando hablar tan pronto como pueda",
+          null,
+          4
+        ],
+        [
+          "I'm going to start speaking better as soon as I can",
+          "voy a comenzar a hablar mejor tan pronto como pueda",
+          null,
+          7
+        ],
+        [
+          "I'm looking forward to speaking better as soon as I can",
+          "estoy deseando hablar mejor tan pronto como pueda",
+          null,
+          5
+        ],
+        [
+          "it's useful to start speaking as soon as you can",
+          "es útil comenzar a hablar tan pronto como puedas",
+          null,
+          7
+        ],
+        [
+          "I'm looking forward to speaking better as soon as I can",
+          "estoy deseando hablar mejor tan pronto como pueda",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 5,
+        "long_6_plus": 2
+      }
+    }
+  }
+}

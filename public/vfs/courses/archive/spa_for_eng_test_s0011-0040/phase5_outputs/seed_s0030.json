@@ -1,0 +1,436 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0030",
+  "generation_stage": "GRAMMAR_REVIEWED",
+  "seed_pair": {
+    "target": "Quería preguntarte algo ayer.",
+    "known": "I wanted to ask you something yesterday."
+  },
+  "recent_seed_pairs": {
+    "S0020": [
+      "You want to learn his name quickly.",
+      "Quieres aprender su nombre rápidamente."
+    ],
+    "S0021": [
+      "Why are you learning her name?",
+      "¿Por qué estás aprendiendo su nombre?"
+    ],
+    "S0022": [
+      "Because I want to meet people who speak Spanish.",
+      "Porque quiero encontrar personas que hablan español."
+    ],
+    "S0023": [
+      "I'm going to start talking more soon.",
+      "Voy a comenzar a hablar más pronto."
+    ],
+    "S0024": [
+      "I'm not going to be able to remember easily.",
+      "No voy a poder recordar fácilmente."
+    ],
+    "S0025": [
+      "Are you going to help me before I have to go?",
+      "¿Vas a ayudarme antes de que tenga que ir?"
+    ],
+    "S0026": [
+      "I like feeling as if I'm nearly ready to go.",
+      "Me gusta sentir como si estuviera casi preparado para ir."
+    ],
+    "S0027": [
+      "I don't like taking too much time to answer.",
+      "No me gusta tomar demasiado tiempo para responder."
+    ],
+    "S0028": [
+      "It's useful to start talking as soon as you can.",
+      "Es útil comenzar a hablar tan pronto como puedas."
+    ],
+    "S0029": [
+      "I'm looking forward to speaking better as soon as I can.",
+      "Estoy deseando hablar mejor tan pronto como pueda."
+    ]
+  },
+  "legos": {
+    "S0030L01": {
+      "lego": [
+        "I wanted",
+        "quería"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I wanted",
+          "quería",
+          null,
+          1
+        ],
+        [
+          "I wanted to speak",
+          "quería hablar",
+          null,
+          2
+        ],
+        [
+          "I wanted to learn",
+          "quería aprender",
+          null,
+          2
+        ],
+        [
+          "I wanted to go",
+          "quería ir",
+          null,
+          2
+        ],
+        [
+          "I wanted to start",
+          "quería comenzar",
+          null,
+          2
+        ],
+        [
+          "I wanted to speak Spanish",
+          "quería hablar español",
+          null,
+          3
+        ],
+        [
+          "I wanted to remember",
+          "quería recordar",
+          null,
+          2
+        ],
+        [
+          "I wanted to meet people",
+          "quería encontrar personas",
+          null,
+          3
+        ],
+        [
+          "I wanted to start speaking",
+          "quería comenzar a hablar",
+          null,
+          3
+        ],
+        [
+          "I wanted to speak better",
+          "quería hablar mejor",
+          null,
+          3
+        ],
+        [
+          "I wanted to be able to speak",
+          "quería poder hablar",
+          null,
+          4
+        ],
+        [
+          "I wanted to meet people who speak Spanish",
+          "quería encontrar personas que hablan español",
+          null,
+          6
+        ],
+        [
+          "I wanted to start speaking as soon as I can",
+          "quería comenzar a hablar tan pronto como pueda",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 6,
+        "quite_short_3": 4,
+        "longer_4_5": 1,
+        "long_6_plus": 2
+      }
+    },
+    "S0030L02": {
+      "lego": [
+        "to ask you",
+        "preguntarte"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I wanted",
+          "quería"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "to ask you",
+          "preguntarte",
+          null,
+          1
+        ],
+        [
+          "I wanted to ask you",
+          "quería preguntarte",
+          null,
+          2
+        ],
+        [
+          "I want to ask you",
+          "quiero preguntarte",
+          null,
+          2
+        ],
+        [
+          "I'm going to ask you",
+          "voy a preguntarte",
+          null,
+          2
+        ],
+        [
+          "I like to ask you",
+          "me gusta preguntarte",
+          null,
+          2
+        ],
+        [
+          "to ask you quickly",
+          "preguntarte rápidamente",
+          null,
+          2
+        ],
+        [
+          "I'm looking forward to asking you",
+          "estoy deseando preguntarte",
+          null,
+          3
+        ],
+        [
+          "I don't want to ask you",
+          "no quiero preguntarte",
+          null,
+          3
+        ],
+        [
+          "I wanted to ask you before",
+          "quería preguntarte antes",
+          null,
+          3
+        ],
+        [
+          "I'm going to be able to ask you",
+          "voy a poder preguntarte",
+          null,
+          4
+        ],
+        [
+          "I wanted to ask you before I have to go",
+          "quería preguntarte antes de que tenga que ir",
+          null,
+          7
+        ],
+        [
+          "I'm looking forward to asking you as soon as I can",
+          "estoy deseando preguntarte tan pronto como pueda",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 6,
+        "quite_short_3": 3,
+        "longer_4_5": 1,
+        "long_6_plus": 2
+      }
+    },
+    "S0030L03": {
+      "lego": [
+        "something",
+        "algo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I wanted",
+          "quería"
+        ],
+        [
+          "to ask you",
+          "preguntarte"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "something",
+          "algo",
+          null,
+          1
+        ],
+        [
+          "to ask you something",
+          "preguntarte algo",
+          null,
+          2
+        ],
+        [
+          "I wanted something",
+          "quería algo",
+          null,
+          2
+        ],
+        [
+          "I wanted to ask you something",
+          "quería preguntarte algo",
+          null,
+          3
+        ],
+        [
+          "I want something",
+          "quiero algo",
+          null,
+          2
+        ],
+        [
+          "I want to learn something",
+          "quiero aprender algo",
+          null,
+          3
+        ],
+        [
+          "I want to speak something",
+          "quiero hablar algo",
+          null,
+          3
+        ],
+        [
+          "I'm looking forward to something",
+          "estoy deseando algo",
+          null,
+          3
+        ],
+        [
+          "I don't want something",
+          "no quiero algo",
+          null,
+          3
+        ],
+        [
+          "I'm going to ask you something",
+          "voy a preguntarte algo",
+          null,
+          3
+        ],
+        [
+          "I wanted to learn something quickly",
+          "quería aprender algo rápidamente",
+          null,
+          4
+        ],
+        [
+          "I wanted to ask you something before I have to go",
+          "quería preguntarte algo antes de que tenga que ir",
+          null,
+          8
+        ],
+        [
+          "I'm looking forward to learning something as soon as I can",
+          "estoy deseando aprender algo tan pronto como pueda",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 6,
+        "longer_4_5": 1,
+        "long_6_plus": 3
+      }
+    },
+    "S0030L04": {
+      "lego": [
+        "yesterday",
+        "ayer"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I wanted",
+          "quería"
+        ],
+        [
+          "to ask you",
+          "preguntarte"
+        ],
+        [
+          "something",
+          "algo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "yesterday",
+          "ayer",
+          null,
+          1
+        ],
+        [
+          "I wanted yesterday",
+          "quería ayer",
+          null,
+          2
+        ],
+        [
+          "I wanted to speak yesterday",
+          "quería hablar ayer",
+          null,
+          3
+        ],
+        [
+          "I wanted to go yesterday",
+          "quería ir ayer",
+          null,
+          3
+        ],
+        [
+          "I wanted to learn yesterday",
+          "quería aprender ayer",
+          null,
+          3
+        ],
+        [
+          "I wanted to ask you yesterday",
+          "quería preguntarte ayer",
+          null,
+          3
+        ],
+        [
+          "I wanted to speak Spanish yesterday",
+          "quería hablar español ayer",
+          null,
+          4
+        ],
+        [
+          "I wanted to ask you something yesterday",
+          "quería preguntarte algo ayer",
+          null,
+          4
+        ],
+        [
+          "I wanted to meet people who speak Spanish yesterday",
+          "quería encontrar personas que hablan español ayer",
+          null,
+          7
+        ],
+        [
+          "I wanted to ask you something yesterday",
+          "quería preguntarte algo ayer",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 4,
+        "longer_4_5": 3,
+        "long_6_plus": 1
+      }
+    }
+  }
+}

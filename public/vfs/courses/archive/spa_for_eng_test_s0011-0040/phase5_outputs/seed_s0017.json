@@ -1,0 +1,474 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0017",
+  "generation_stage": "GRAMMAR_REVIEWED",
+  "seed_pair": {
+    "target": "Ella quiere descubrir cuál es la respuesta.",
+    "known": "She wants to find out what the answer is."
+  },
+  "recent_seed_pairs": {
+    "S0011": [
+      "I'd like to be able to speak after you finish.",
+      "Me gustaría poder hablar después de que termines."
+    ],
+    "S0012": [
+      "I wouldn't like to guess what's going to happen tomorrow.",
+      "No me gustaría adivinar lo que va a ocurrir mañana."
+    ],
+    "S0013": [
+      "You speak Spanish very well.",
+      "Hablas español muy bien."
+    ],
+    "S0014": [
+      "Do you speak Spanish all day?",
+      "¿Hablas español todo el día?"
+    ],
+    "S0015": [
+      "And I want you to speak Spanish with me tomorrow.",
+      "Y quiero que hables español conmigo mañana."
+    ],
+    "S0016": [
+      "He wants to come back with everyone else later on.",
+      "Él quiere volver con todos los demás más tarde."
+    ]
+  },
+  "legos": {
+    "S0017L01": {
+      "lego": [
+        "she wants",
+        "ella quiere"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "she wants",
+          "ella quiere",
+          null,
+          2
+        ],
+        [
+          "and she wants",
+          "y ella quiere",
+          null,
+          2
+        ],
+        [
+          "she wants Spanish",
+          "ella quiere español",
+          null,
+          3
+        ],
+        [
+          "she wants tomorrow",
+          "ella quiere mañana",
+          null,
+          3
+        ],
+        [
+          "I want and she wants",
+          "quiero y ella quiere",
+          null,
+          4
+        ],
+        [
+          "she wants Spanish very well",
+          "ella quiere español muy bien",
+          null,
+          5
+        ],
+        [
+          "and she wants Spanish with me",
+          "y ella quiere español conmigo",
+          null,
+          5
+        ],
+        [
+          "she wants to come back tomorrow",
+          "ella quiere volver mañana",
+          null,
+          4
+        ],
+        [
+          "she wants to come back with me",
+          "ella quiere volver conmigo",
+          null,
+          5
+        ],
+        [
+          "and she wants to speak Spanish well",
+          "y ella quiere hablar español bien",
+          null,
+          6
+        ],
+        [
+          "she wants to come back with everyone else",
+          "ella quiere volver con todos los demás",
+          null,
+          7
+        ],
+        [
+          "she wants to speak Spanish with me tomorrow",
+          "ella quiere hablar español conmigo mañana",
+          null,
+          6
+        ],
+        [
+          "I want to speak and she wants to come back",
+          "quiero hablar y ella quiere volver",
+          null,
+          6
+        ],
+        [
+          "she wants to speak Spanish with everyone else later on",
+          "ella quiere hablar español con todos los demás más tarde",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 5,
+        "long_6_plus": 5
+      }
+    },
+    "S0017L02": {
+      "lego": [
+        "to find out",
+        "descubrir"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "she wants",
+          "ella quiere"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "to find out",
+          "descubrir",
+          null,
+          1
+        ],
+        [
+          "she wants to find out",
+          "ella quiere descubrir",
+          null,
+          3
+        ],
+        [
+          "I want to find out",
+          "quiero descubrir",
+          null,
+          3
+        ],
+        [
+          "to find out tomorrow",
+          "descubrir mañana",
+          null,
+          2
+        ],
+        [
+          "he wants to find out",
+          "él quiere descubrir",
+          null,
+          3
+        ],
+        [
+          "she wants to find out tomorrow",
+          "ella quiere descubrir mañana",
+          null,
+          4
+        ],
+        [
+          "I want to find out tomorrow",
+          "quiero descubrir mañana",
+          null,
+          4
+        ],
+        [
+          "and I want to find out",
+          "y quiero descubrir",
+          null,
+          4
+        ],
+        [
+          "and she wants to find out",
+          "y ella quiere descubrir",
+          null,
+          4
+        ],
+        [
+          "he wants to find out later on",
+          "él quiere descubrir más tarde",
+          null,
+          5
+        ],
+        [
+          "she wants to find out very well",
+          "ella quiere descubrir muy bien",
+          null,
+          5
+        ],
+        [
+          "I want to find out and speak Spanish",
+          "quiero descubrir y hablar español",
+          null,
+          6
+        ],
+        [
+          "she wants to find out with everyone else",
+          "ella quiere descubrir con todos los demás",
+          null,
+          6
+        ],
+        [
+          "and she wants to find out tomorrow with me",
+          "y ella quiere descubrir mañana conmigo",
+          null,
+          6
+        ],
+        [
+          "I want to find out what's going to happen tomorrow",
+          "quiero descubrir lo que va a ocurrir mañana",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 3,
+        "longer_4_5": 5,
+        "long_6_plus": 5
+      }
+    },
+    "S0017L03": {
+      "lego": [
+        "what is",
+        "cuál es"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she wants",
+          "ella quiere"
+        ],
+        [
+          "to find out",
+          "descubrir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "what is",
+          "cuál es",
+          null,
+          2
+        ],
+        [
+          "what is Spanish",
+          "cuál es español",
+          null,
+          3
+        ],
+        [
+          "I want what is",
+          "quiero cuál es",
+          null,
+          3
+        ],
+        [
+          "what is tomorrow",
+          "cuál es mañana",
+          null,
+          3
+        ],
+        [
+          "she wants what is",
+          "ella quiere cuál es",
+          null,
+          4
+        ],
+        [
+          "I want to find out what is",
+          "quiero descubrir cuál es",
+          null,
+          4
+        ],
+        [
+          "she wants to find out what is",
+          "ella quiere descubrir cuál es",
+          null,
+          5
+        ],
+        [
+          "and she wants to find out what is",
+          "y ella quiere descubrir cuál es",
+          null,
+          6
+        ],
+        [
+          "I want to find out what is Spanish",
+          "quiero descubrir cuál es español",
+          null,
+          5
+        ],
+        [
+          "she wants to find out what is tomorrow",
+          "ella quiere descubrir cuál es mañana",
+          null,
+          6
+        ],
+        [
+          "I want to find out what is very well",
+          "quiero descubrir cuál es muy bien",
+          null,
+          6
+        ],
+        [
+          "and she wants to find out what is Spanish",
+          "y ella quiere descubrir cuál es español",
+          null,
+          7
+        ],
+        [
+          "he wants to find out what is with me",
+          "él quiere descubrir cuál es conmigo",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 3,
+        "longer_4_5": 4,
+        "long_6_plus": 5
+      }
+    },
+    "S0017L04": {
+      "lego": [
+        "the answer",
+        "la respuesta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she wants",
+          "ella quiere"
+        ],
+        [
+          "to find out",
+          "descubrir"
+        ],
+        [
+          "what is",
+          "cuál es"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "the answer",
+          "la respuesta",
+          null,
+          2
+        ],
+        [
+          "I want the answer",
+          "quiero la respuesta",
+          null,
+          3
+        ],
+        [
+          "the answer tomorrow",
+          "la respuesta mañana",
+          null,
+          3
+        ],
+        [
+          "she wants the answer",
+          "ella quiere la respuesta",
+          null,
+          3
+        ],
+        [
+          "to find out the answer",
+          "descubrir la respuesta",
+          null,
+          3
+        ],
+        [
+          "what is the answer",
+          "cuál es la respuesta",
+          null,
+          3
+        ],
+        [
+          "I want to find out the answer",
+          "quiero descubrir la respuesta",
+          null,
+          4
+        ],
+        [
+          "she wants to find out the answer",
+          "ella quiere descubrir la respuesta",
+          null,
+          4
+        ],
+        [
+          "I want to find out what the answer is",
+          "quiero descubrir cuál es la respuesta",
+          null,
+          5
+        ],
+        [
+          "she wants to find out what is the answer",
+          "ella quiere descubrir cuál es la respuesta",
+          null,
+          6
+        ],
+        [
+          "and she wants to find out the answer",
+          "y ella quiere descubrir la respuesta",
+          null,
+          5
+        ],
+        [
+          "I want to find out what the answer is tomorrow",
+          "quiero descubrir cuál es la respuesta mañana",
+          null,
+          6
+        ],
+        [
+          "he wants to find out what the answer is",
+          "él quiere descubrir cuál es la respuesta",
+          null,
+          6
+        ],
+        [
+          "and she wants to find out what the answer is",
+          "y ella quiere descubrir cuál es la respuesta",
+          null,
+          7
+        ],
+        [
+          "she wants to find out what the answer is",
+          "ella quiere descubrir cuál es la respuesta",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 5,
+        "longer_4_5": 3,
+        "long_6_plus": 6
+      }
+    }
+  }
+}

@@ -1,0 +1,430 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0011",
+  "generation_stage": "GRAMMAR_REVIEWED",
+  "seed_pair": {
+    "target": "Me gustaría poder hablar después de que termines.",
+    "known": "I'd like to be able to speak after you finish."
+  },
+  "recent_seed_pairs": {
+    "S0001": [
+      "I want to speak Spanish with you now.",
+      "Quiero hablar español contigo ahora."
+    ],
+    "S0002": [
+      "I'm trying to learn.",
+      "Estoy intentando aprender."
+    ],
+    "S0003": [
+      "how to speak as often as possible",
+      "cómo hablar lo más frecuentamente posible"
+    ],
+    "S0004": [
+      "how to say something in Spanish",
+      "cómo decir algo en español"
+    ],
+    "S0005": [
+      "I'm going to practise speaking with someone else.",
+      "Voy a practicar hablar con alguien más."
+    ],
+    "S0006": [
+      "I'm trying to remember a word.",
+      "Estoy intentando recordar una palabra."
+    ],
+    "S0007": [
+      "I want to try as hard as I can today.",
+      "Quiero intentar tan duro como pueda hoy."
+    ],
+    "S0008": [
+      "I'm going to try to explain what I mean.",
+      "Voy a intentar explicar lo que quiero decir."
+    ],
+    "S0009": [
+      "I speak a little Spanish now.",
+      "Hablo un poco de español ahora."
+    ],
+    "S0010": [
+      "I'm not sure if I can remember the whole sentence.",
+      "No estoy seguro si puedo recordar toda la oración."
+    ]
+  },
+  "legos": {
+    "S0011L01": {
+      "lego": [
+        "I'd like",
+        "me gustaría"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I'd like",
+          "me gustaría",
+          null,
+          1
+        ],
+        [
+          "I'd like something",
+          "me gustaría algo",
+          null,
+          2
+        ],
+        [
+          "I'd like to speak",
+          "me gustaría hablar",
+          null,
+          2
+        ],
+        [
+          "I'd like to speak Spanish",
+          "me gustaría hablar español",
+          null,
+          3
+        ],
+        [
+          "I'd like to learn",
+          "me gustaría aprender",
+          null,
+          2
+        ],
+        [
+          "I'd like to try",
+          "me gustaría intentar",
+          null,
+          2
+        ],
+        [
+          "I'd like to speak with you",
+          "me gustaría hablar contigo",
+          null,
+          3
+        ],
+        [
+          "I'd like to say something in Spanish",
+          "me gustaría decir algo en español",
+          null,
+          4
+        ],
+        [
+          "I'd like to speak Spanish with you now",
+          "me gustaría hablar español contigo ahora",
+          null,
+          5
+        ],
+        [
+          "I'd like to try to explain",
+          "me gustaría intentar explicar",
+          null,
+          3
+        ],
+        [
+          "I'd like to speak a little more",
+          "me gustaría hablar un poco más",
+          null,
+          4
+        ],
+        [
+          "I'd like to practise speaking with someone else",
+          "me gustaría practicar hablar con alguien más",
+          null,
+          5
+        ],
+        [
+          "I'd like to try to remember a word",
+          "me gustaría intentar recordar una palabra",
+          null,
+          5
+        ],
+        [
+          "I'd like to learn how to speak Spanish",
+          "me gustaría aprender cómo hablar español",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 5,
+        "quite_short_3": 3,
+        "longer_4_5": 6,
+        "long_6_plus": 0
+      }
+    },
+    "S0011L02": {
+      "lego": [
+        "to be able to speak",
+        "poder hablar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'd like",
+          "me gustaría"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "to be able to speak",
+          "poder hablar",
+          null,
+          2
+        ],
+        [
+          "I want to be able to speak",
+          "quiero poder hablar",
+          null,
+          3
+        ],
+        [
+          "I'd like to be able to speak",
+          "me gustaría poder hablar",
+          null,
+          3
+        ],
+        [
+          "to be able to speak Spanish",
+          "poder hablar español",
+          null,
+          3
+        ],
+        [
+          "I'd like to be able to speak Spanish",
+          "me gustaría poder hablar español",
+          null,
+          4
+        ],
+        [
+          "I want to be able to speak with you",
+          "quiero poder hablar contigo",
+          null,
+          4
+        ],
+        [
+          "I'd like to be able to speak with you",
+          "me gustaría poder hablar contigo",
+          null,
+          4
+        ],
+        [
+          "I'm trying to be able to speak",
+          "estoy intentando poder hablar",
+          null,
+          4
+        ],
+        [
+          "I want to be able to speak Spanish with you now",
+          "quiero poder hablar español contigo ahora",
+          null,
+          6
+        ],
+        [
+          "I'd like to be able to speak Spanish with you",
+          "me gustaría poder hablar español contigo",
+          null,
+          5
+        ],
+        [
+          "I'm trying to be able to speak more",
+          "estoy intentando poder hablar más",
+          null,
+          5
+        ],
+        [
+          "I'd like to be able to speak as often as possible",
+          "me gustaría poder hablar lo más frecuentamente posible",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 3,
+        "longer_4_5": 6,
+        "long_6_plus": 2
+      }
+    },
+    "S0011L03": {
+      "lego": [
+        "after",
+        "después de que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'd like",
+          "me gustaría"
+        ],
+        [
+          "to be able to speak",
+          "poder hablar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "after",
+          "después de que",
+          null,
+          1
+        ],
+        [
+          "I want to speak after",
+          "quiero hablar después de que",
+          null,
+          3
+        ],
+        [
+          "I'd like to speak after",
+          "me gustaría hablar después de que",
+          null,
+          3
+        ],
+        [
+          "I want to try after",
+          "quiero intentar después de que",
+          null,
+          3
+        ],
+        [
+          "I'd like to be able to speak after",
+          "me gustaría poder hablar después de que",
+          null,
+          4
+        ],
+        [
+          "I'm going to speak after",
+          "voy a hablar después de que",
+          null,
+          4
+        ],
+        [
+          "I'd like to be able to speak Spanish after",
+          "me gustaría poder hablar español después de que",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 3,
+        "longer_4_5": 3,
+        "long_6_plus": 0
+      }
+    },
+    "S0011L04": {
+      "lego": [
+        "you finish",
+        "termines"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I'd like",
+          "me gustaría"
+        ],
+        [
+          "to be able to speak",
+          "poder hablar"
+        ],
+        [
+          "after",
+          "después de que"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "you finish",
+          "termines",
+          null,
+          1
+        ],
+        [
+          "after you finish",
+          "después de que termines",
+          null,
+          2
+        ],
+        [
+          "I want to speak after you finish",
+          "quiero hablar después de que termines",
+          null,
+          4
+        ],
+        [
+          "I'd like to speak after you finish",
+          "me gustaría hablar después de que termines",
+          null,
+          4
+        ],
+        [
+          "I want to learn after you finish",
+          "quiero aprender después de que termines",
+          null,
+          4
+        ],
+        [
+          "I'm going to speak after you finish",
+          "voy a hablar después de que termines",
+          null,
+          4
+        ],
+        [
+          "I'd like to try after you finish",
+          "me gustaría intentar después de que termines",
+          null,
+          4
+        ],
+        [
+          "I want to be able to speak after you finish",
+          "quiero poder hablar después de que termines",
+          null,
+          5
+        ],
+        [
+          "I'd like to be able to speak after you finish",
+          "me gustaría poder hablar después de que termines",
+          null,
+          5
+        ],
+        [
+          "I'm going to try to speak after you finish",
+          "voy a intentar hablar después de que termines",
+          null,
+          5
+        ],
+        [
+          "I'd like to be able to speak Spanish after you finish",
+          "me gustaría poder hablar español después de que termines",
+          null,
+          6
+        ],
+        [
+          "I want to be able to speak with you after you finish",
+          "quiero poder hablar contigo después de que termines",
+          null,
+          6
+        ],
+        [
+          "I'd like to be able to speak after you finish.",
+          "me gustaría poder hablar después de que termines",
+          null,
+          5
+        ],
+        [
+          "I'd like to be able to speak after you finish.",
+          "Me gustaría poder hablar después de que termines.",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 0,
+        "longer_4_5": 8,
+        "long_6_plus": 4
+      }
+    }
+  }
+}

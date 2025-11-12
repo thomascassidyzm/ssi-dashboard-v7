@@ -1,7 +1,7 @@
-# AGENT PROMPT: Phase 3 LEGO Extraction (v6.0)
+# AGENT PROMPT: Phase 3 LEGO Extraction (v6.3)
 
-**Version**: 6.0 - Clarity Edition (2025-11-11)
-**Status**: Production Ready - Simplified M-LEGO Rules
+**Version**: 6.3 - Pragmatic FD Edition (2025-11-12)
+**Status**: Production Ready - Maximum Useful Granularity
 **Purpose**: Extract pedagogically-sound LEGO vocabulary units from translated seed pairs
 
 ---
@@ -9,6 +9,8 @@
 ## 🎯 CORE PRINCIPLE
 
 When a learner hears KNOWN → they produce exactly ONE TARGET (zero uncertainty)
+
+**Assumption**: Phase 1 curation ensures no FD violations exist between different seed pairs. If the same KNOWN phrase appears with different TARGET phrases across seeds, that's a Phase 1 error caught by Phase 2 collision detection.
 
 ---
 
@@ -25,12 +27,12 @@ Natural chunks: "I want" | "to speak" | "Spanish" | "with you" | "now"
 
 Why? The learner THINKS in their native language.
 
-### 2. EXTRACT MINIMUM FD-COMPLIANT CHUNKS
+### 2. EXTRACT MAXIMUM TILING SET (Most Granular FD-Compliant Chunks)
 
 **Forward Sweep (KNOWN → TARGET):**
 - Process left to right
-- Find minimum chunk that passes FD test
-- LOCK it, don't extend further
+- Find the smallest chunk that passes FD test
+- LOCK it, don't extend further (maximize granularity = maximize reusability)
 
 **FD Test**: When learner hears KNOWN → is there ZERO uncertainty about TARGET?
 
@@ -60,47 +62,41 @@ Reconstruction: "Quiero hablar español" ✅
 
 ## 🔧 ATOMIC vs MOLECULAR
 
-### When to Extract A-type (Atomic):
-- Single word
-- FD-compliant on its own
-- 1:1 mapping
+**A-type (Atomic)**: Single unit, no componentization needed
+- Example: "quiero" / "I want", "por qué" / "why", "con" / "with"
 
-```json
-{"type": "A", "target": "quiero", "known": "I want"}
-```
+**M-type (Molecular)**: Multi-word unit, needs components array to show word-by-word mapping
+- Example: "voy a" / "I'm going to" → components: [["voy", "I go"], ["a", "to"]]
 
-### When to Extract M-type (Molecular):
+**When to use M-type:**
+1. **FD requires it**: Can't split without ambiguity
+2. **Pattern teaching**: Non-obvious construction (like gerund → infinitive)
+3. **Pragmatic FD**: Can split technically, but shouldn't pedagogically
 
-**ONLY extract M-type when it teaches something you CAN'T get from tiling A-types:**
+**Key principle**: Extract the MAXIMUM USEFUL tiling set. Each chunk must:
+- Pass FD test (zero uncertainty KNOWN → TARGET)
+- Be capable of generating meaningful practice phrases
 
-✅ **Extract M-type when:**
-1. **Required for FD**: Can't split without ambiguity
-   - "I'm trying" → "estoy intentando" (can't split "I'm" → estoy/soy ambiguous)
-   - "a word" → "una palabra" (can't split "a" → una/un ambiguous)
+**Pragmatic FD Heuristic:**
 
-2. **Non-obvious word order/construction**:
-   - "as often as possible" → "tan frecuentemente como sea posible" (complex pattern with "tan...como sea")
-   - "what I mean" → "lo que quiero decir" (idiomatic construction)
+Even if both chunks pass FD independently, prefer M-type if splitting creates pedagogically weak chunks:
 
-❌ **DON'T extract M-type when:**
-- Both languages tile cleanly with A-types
-- "I want to speak" → "quiero hablar" ❌ (both languages tile: "I want" + "to speak" = "quiero" + "hablar")
-- "speak Spanish" → "hablar español" ❌ (just verb + object, obvious from atomics)
+✅ **Keep paired (generally):**
+- **Pronouns + verbs**: "he wants" / "él quiere"
+  - Why: "he" alone can't generate practice; "wants" needs subject agreement
+- **Articles + nouns**: "the house" / "la casa"
+  - Why: "the" alone is meaningless without noun
 
-**The test**: Can learner reconstruct correctly using ONLY A-type LEGOs? If YES → skip M-type.
+✅ **Can split:**
+- **Prepositions**: "with" / "con" is useful standalone
+- **Adverbs**: "quickly" / "rápidamente" is useful standalone
+- **Content words**: "to speak" + "Spanish" both generate practice
 
-### Exception: M-type with A-type Components
+**The test**: "Would a learner practice this chunk in isolation and generate 5+ meaningful phrases?"
+- If NO → keep paired with adjacent chunk (M-type)
+- If YES → maximum granularity achieved
 
-**When you DO extract an M-type**, also extract its components as A-types IF they're FD-compliant:
-
-```
-M-type: "estoy intentando" = "I'm trying" (needed for FD)
-Also extract: "intentando" = "trying" (A-type, FD on its own, reusable)
-
-Why both?
-- M-type teaches the construction
-- A-type allows reuse in other contexts ("estoy intentando ahora")
-```
+**Remember**: These are HEURISTICS, not rigid rules. Languages have exceptions. Use judgment.
 
 ---
 
@@ -130,29 +126,37 @@ For each seed:
      classify as A or M
      pos = previous_unmatched_position
 
-3. CHECK M-TYPE COMPONENTS:
+3. ADD COMPONENTS TO M-TYPES:
    for each M-type LEGO:
-     for each word in M-type:
-       if word is FD-compliant alone:
-         extract as A-type LEGO
+     add components array showing word-by-word literal mapping
+     (for learner transparency - NOT for extracting more LEGOs)
 
-4. CRITICAL: ORDER A-TYPES BEFORE M-TYPES:
-   within each seed:
-     sort LEGOs: all A-types FIRST, then all M-types
-     renumber IDs: S0010L01, L02, L03... in sorted order
-
-   WHY: When learner encounters M-type "puedo recordar", they may
-        have already learned "puedo" and "recordar" as A-types,
-        making the M-LEGO a COMBINATION of known pieces
-
-5. VERIFY TILING:
+4. VERIFY TILING:
    reconstruct TARGET from LEGOs
    if fails: fix extraction
 
-6. CHECK REGISTRY:
-   for each new LEGO:
-     if target+known exists: REFERENCE it
-     else: mark as NEW
+5. FD VALIDATION & MERGE:
+   for each LEGO in extraction order:
+     TEST: Does KNOWN → TARGET pass FD with zero uncertainty?
+
+     IF FAILS (marked forms like subjunctive without trigger):
+       Option A: Merge with PREVIOUS LEGO in seed
+       Option B: Merge with NEXT LEGO in seed
+       Choose option that creates FD-compliant LEGO
+       Update components array for merged M-type
+
+     EXAMPLE:
+       "puedas" / "you can" → FAILS FD (puedes/puedas ambiguous)
+       Previous LEGO: "tan pronto como" / "as soon as"
+       MERGE → "tan pronto como puedas" / "as soon as you can" ✅
+
+     CLUE: If TARGET has marked form (subjunctive: -as/-es/-an/-en endings,
+           conditional: -ría endings), check if KNOWN includes trigger context
+
+6. MARK ALL AS NEW:
+   for each extracted LEGO:
+     mark as new: true
+   (Deduplication happens later in Phase 3.5 script)
 ```
 
 ---
@@ -165,7 +169,7 @@ For each seed:
   "seeds": [
     {
       "seed_id": "S0001",
-      "seed_pair": ["Quiero hablar español", "I want to speak Spanish"],
+      "seed_pair": ["I want to speak Spanish", "Quiero hablar español"],
       "legos": [
         {
           "id": "S0001L01",
@@ -188,17 +192,36 @@ For each seed:
         {
           "id": "S0002L02",
           "type": "A",
-          "target": "intentando",
-          "known": "trying",
+          "target": "aprender",
+          "known": "to learn",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": ["I speak Spanish now", "Hablo español ahora"],
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "target": "hablo",
+          "known": "I speak",
           "new": true
         },
         {
-          "id": "S0001L03",
+          "id": "S0003L02",
           "type": "A",
           "target": "español",
           "known": "Spanish",
-          "ref": "S0001",
-          "new": false
+          "new": true
+        },
+        {
+          "id": "S0003L03",
+          "type": "A",
+          "target": "ahora",
+          "known": "now",
+          "new": true
         }
       ]
     }
@@ -238,10 +261,10 @@ Before submitting, verify:
 - [ ] All M-types have complete components arrays
 - [ ] Components use literal translations
 
-### Registry
-- [ ] Checked existing LEGOs before marking new
-- [ ] References have proper `id` and `ref`
-- [ ] Collision rule: BOTH target AND known must match
+### Initial Extraction (All New)
+- [ ] All LEGOs marked with `new: true`
+- [ ] All LEGOs needed to tile the seed are included
+- [ ] No registry checking during extraction (deduplication happens in Phase 3.5)
 
 ### Format
 - [ ] Valid JSON
@@ -250,126 +273,55 @@ Before submitting, verify:
 
 ---
 
-## 🎓 EXAMPLES
+## 🎓 EXAMPLE: Complete Seed Extraction
 
-### Example 1: Simple Sentence (A-types only)
-
-**Seed**: "Quiero hablar español contigo ahora" = "I want to speak Spanish with you now"
-
-```json
-{
-  "legos": [
-    {"id": "S0001L01", "type": "A", "target": "quiero", "known": "I want", "new": true},
-    {"id": "S0001L02", "type": "A", "target": "hablar", "known": "to speak", "new": true},
-    {"id": "S0001L03", "type": "A", "target": "español", "known": "Spanish", "new": true},
-    {"id": "S0001L04", "type": "A", "target": "contigo", "known": "with you", "new": true},
-    {"id": "S0001L05", "type": "A", "target": "ahora", "known": "now", "new": true}
-  ]
-}
-```
-
-**Why no M-types?** Both languages tile cleanly. "I want" + "to speak" = "quiero" + "hablar" with no ambiguity.
-
-### Example 2: M-type Required for FD
-
-**Seed**: "Estoy intentando aprender" = "I'm trying to learn"
+**Seed**: "Voy a practicar hablar con alguien más" = "I'm going to practise speaking with someone else"
 
 ```json
 {
   "legos": [
     {
-      "id": "S0002L01",
+      "id": "S0003L01",
       "type": "M",
-      "target": "estoy intentando",
-      "known": "I'm trying",
+      "target": "voy a",
+      "known": "I'm going to",
       "new": true,
-      "components": [["estoy", "I am"], ["intentando", "trying"]]
+      "components": [["voy", "I go"], ["a", "to"]]
     },
-    {
-      "id": "S0002L02",
-      "type": "A",
-      "target": "intentando",
-      "known": "trying",
-      "new": true
-    },
-    {
-      "id": "S0002L03",
-      "type": "A",
-      "target": "aprender",
-      "known": "to learn",
-      "new": true
-    }
-  ]
-}
-```
-
-**Why M-type for "estoy intentando"?** Can't split: "I'm" → estoy/soy ambiguous (FD fails)
-**Why also A-type for "intentando"?** Reusable: "estoy intentando ahora", "voy a intentando" etc.
-
-### Example 3: Complex Pattern (M-type for construction)
-
-**Seed**: "lo más frecuentamente posible" = "as often as possible"
-
-```json
-{
-  "legos": [
     {
       "id": "S0003L02",
       "type": "M",
-      "target": "lo más frecuentamente posible",
-      "known": "as often as possible",
+      "target": "practicar hablar",
+      "known": "practise speaking",
       "new": true,
-      "components": [
-        ["lo", "the"],
-        ["más", "more"],
-        ["frecuentamente", "often"],
-        ["posible", "possible"]
-      ]
+      "components": [["practicar", "to practise"], ["hablar", "to speak"]]
     },
     {
       "id": "S0003L03",
       "type": "A",
-      "target": "más",
-      "known": "more",
+      "target": "con",
+      "known": "with",
       "new": true
     },
     {
       "id": "S0003L04",
-      "type": "A",
-      "target": "frecuentamente",
-      "known": "often",
-      "new": true
-    },
-    {
-      "id": "S0003L05",
-      "type": "A",
-      "target": "posible",
-      "known": "possible",
-      "new": true
+      "type": "M",
+      "target": "alguien más",
+      "known": "someone else",
+      "new": true,
+      "components": [["alguien", "someone"], ["más", "else/more"]]
     }
   ]
 }
 ```
 
-**Why M-type?** Complex "lo más...posible" construction (the more...possible) not obvious from atomics
-**Why also A-types?** "más", "frecuentamente", and "posible" are reusable in other contexts
-**CRITICAL - Components use literal translations:** "más" = "more" (not "most"), because that's the literal meaning. The phrase becomes "the most" semantically, but components show word-by-word literals.
+**Extraction reasoning:**
+- "voy a" → M-type (FD: "I'm" alone ambiguous, must keep together)
+- "practicar hablar" → M-type (pattern: English gerund "speaking" → Spanish infinitive "hablar")
+- "con" → A-type (single unit, FD-compliant)
+- "alguien más" → M-type (FD: "else" alone ambiguous - otro/más/demás)
 
-### Example 4: Registry Reference
-
-**Seed**: "Hablo español ahora" = "I speak Spanish now"
-
-```json
-{
-  "legos": [
-    {"id": "S0009L01", "type": "A", "target": "hablo", "known": "I speak", "new": true},
-    {"id": "S0001L03", "type": "A", "target": "español", "known": "Spanish", "ref": "S0001", "new": false},
-    {"id": "S0001L05", "type": "A", "target": "ahora", "known": "now", "ref": "S0001", "new": false}
-  ]
-}
-```
-
-**Why references?** "español" and "ahora" already extracted in S0001 with same target+known
+**Components show literal word-by-word mapping for learner transparency.**
 
 ---
 
@@ -432,23 +384,20 @@ For EVERY seed, use `<thinking>` tags:
 
 ```xml
 <thinking>
-SEED: "Estoy intentando aprender"
-KNOWN: "I'm trying to learn"
+SEED: "Voy a practicar hablar con alguien más"
+KNOWN: "I'm going to practise speaking with someone else"
 
 FORWARD SWEEP:
-- "I'm" → fails (estoy/soy ambiguous)
-- "I'm trying" → "estoy intentando" ✅ M-type (FD required)
-- "to learn" → "aprender" ✅ A-type
+- "I'm" → fails (voy/estoy/soy ambiguous)
+- "I'm going to" → "voy a" ✅ M-type (FD required, add components)
+- "practise" → "practicar" ✅ could be A-type BUT...
+- "practise speaking" → need pattern: gerund→infinitive → M-type "practicar hablar" ✅
+- "with" → "con" ✅ A-type
+- "someone" → could be A-type BUT...
+- "someone else" → "else" ambiguous → M-type "alguien más" ✅
 
-CHECK M-TYPE COMPONENTS:
-- "intentando" FD on its own? YES → extract as A-type
-
-REGISTRY CHECK:
-- "estoy intentando" new? YES
-- "intentando" new? YES
-- "aprender" new? YES
-
-TILING: estoy intentando + aprender = "Estoy intentando aprender" ✅
+TILING: voy a + practicar hablar + con + alguien más ✅
+All words covered, maximum granularity achieved
 
 OUTPUT READY
 </thinking>
@@ -466,6 +415,9 @@ OUTPUT READY
 - All M-types justified
 
 **Version History:**
+- v6.3 (2025-11-12): Added Pragmatic FD heuristic - maximum USEFUL granularity, not just maximum granularity
+- v6.2 (2025-11-12): Added FD validation & merge step, Phase 1 assumption documented
+- v6.1 (2025-11-11): Maximum tiling set, no double extraction, components for transparency only
 - v6.0 (2025-11-11): Simplified M-LEGO rules, clearer examples
 - v5.0 (2025-11-09): Ultimate edition with S0101-S0200 learnings
 - v4.0: Radical simplification (One Rule principle)

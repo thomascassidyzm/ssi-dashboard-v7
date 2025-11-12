@@ -96,7 +96,7 @@ Known (English): Use canonical directly
 Decision: Target uses cognate, known uses natural canonical
 </thinking>
 
-Output: ["lo más frecuentemente posible", "as often as possible"]
+Output: ["as often as possible", "lo más frecuentemente posible"]
 ```
 
 **French for English (fra_for_eng):**
@@ -118,7 +118,7 @@ Known (English): Use canonical directly
 Decision: Target uses cognate, known uses natural canonical
 </thinking>
 
-Output: ["aussi fréquemment que possible", "as often as possible"]
+Output: ["as often as possible", "aussi fréquemment que possible"]
 ```
 
 **Mandarin for English (cmn_for_eng):**
@@ -140,7 +140,7 @@ Known (English): Use canonical directly
 Decision: No cognate available, use simple high-frequency pattern
 </thinking>
 
-Output: ["尽可能经常", "as often as possible"]
+Output: ["as often as possible", "尽可能经常"]
 ```
 
 ---
@@ -168,7 +168,7 @@ Known (English): Use canonical directly
 Decision: Semantic preservation > grammatical simplicity
 </thinking>
 
-Output: ["Y quiero que hables español conmigo mañana", "And I want you to speak Spanish with me tomorrow"]
+Output: ["And I want you to speak Spanish with me tomorrow", "Y quiero que hables español conmigo mañana"]
 ```
 
 **French for English:**
@@ -188,7 +188,7 @@ Known (English): Use canonical directly
 Decision: Semantic preservation > grammatical simplicity
 </thinking>
 
-Output: ["Et je veux que tu parles français avec moi demain", "And I want you to speak French with me tomorrow"]
+Output: ["And I want you to speak French with me tomorrow", "Et je veux que tu parles français avec moi demain"]
 ```
 
 **Mandarin for English:**
@@ -209,7 +209,7 @@ Known (English): Use canonical directly
 Decision: Simpler construction available (language difference)
 </thinking>
 
-Output: ["而且我想要你明天和我说英语", "And I want you to speak English with me tomorrow"]
+Output: ["And I want you to speak English with me tomorrow", "而且我想要你明天和我说英语"]
 ```
 
 ---
@@ -883,9 +883,9 @@ If your Extended Thinking identifies issues, regenerate that seed before continu
 
 ```json
 {
-  "S0001": ["Quiero hablar español contigo ahora.", "I want to speak Spanish with you now."],
-  "S0002": ["Estoy intentando aprender.", "I'm trying to learn."],
-  "S0003": ["Cómo hablar español lo más frecuentemente posible.", "How to speak Spanish as frequently as possible."]
+  "S0001": ["I want to speak Spanish with you now.", "Quiero hablar español contigo ahora."],
+  "S0002": ["I'm trying to learn.", "Estoy intentando aprender."],
+  "S0003": ["How to speak Spanish as frequently as possible.", "Cómo hablar español lo más frecuentemente posible."]
 }
 ```
 

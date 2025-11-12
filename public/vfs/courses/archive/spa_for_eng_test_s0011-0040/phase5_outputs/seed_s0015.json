@@ -1,0 +1,610 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0015",
+  "generation_stage": "GRAMMAR_REVIEWED",
+  "seed_pair": {
+    "target": "Y quiero que hables español conmigo mañana.",
+    "known": "And I want you to speak Spanish with me tomorrow."
+  },
+  "recent_seed_pairs": {
+    "S0005": [
+      "I'm going to practise speaking with someone else.",
+      "Voy a practicar hablar con alguien más."
+    ],
+    "S0006": [
+      "I'm trying to remember a word.",
+      "Estoy intentando recordar una palabra."
+    ],
+    "S0007": [
+      "I want to try as hard as I can today.",
+      "Quiero intentar tan duro como pueda hoy."
+    ],
+    "S0008": [
+      "I'm going to try to explain what I mean.",
+      "Voy a intentar explicar lo que quiero decir."
+    ],
+    "S0009": [
+      "I speak a little Spanish now.",
+      "Hablo un poco de español ahora."
+    ],
+    "S0010": [
+      "I'm not sure if I can remember the whole sentence.",
+      "No estoy seguro si puedo recordar toda la oración."
+    ],
+    "S0011": [
+      "I'd like to be able to speak after you finish.",
+      "Me gustaría poder hablar después de que termines."
+    ],
+    "S0012": [
+      "I wouldn't like to guess what's going to happen tomorrow.",
+      "No me gustaría adivinar lo que va a ocurrir mañana."
+    ],
+    "S0013": [
+      "You speak Spanish very well.",
+      "Hablas español muy bien."
+    ],
+    "S0014": [
+      "Do you speak Spanish all day?",
+      "¿Hablas español todo el día?"
+    ]
+  },
+  "legos": {
+    "S0015L01": {
+      "lego": [
+        "and",
+        "y"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "and",
+          "y",
+          null,
+          1
+        ],
+        [
+          "and I speak",
+          "y hablo",
+          null,
+          2
+        ],
+        [
+          "and you speak",
+          "y hablas",
+          null,
+          2
+        ],
+        [
+          "and I want",
+          "y quiero",
+          null,
+          2
+        ],
+        [
+          "and you speak Spanish",
+          "y hablas español",
+          null,
+          3
+        ],
+        [
+          "and I want to speak",
+          "y quiero hablar",
+          null,
+          3
+        ],
+        [
+          "and I'm going to try",
+          "y voy a intentar",
+          null,
+          3
+        ],
+        [
+          "and I speak a little Spanish",
+          "y hablo un poco de español",
+          null,
+          4
+        ],
+        [
+          "and you speak Spanish very well",
+          "y hablas español muy bien",
+          null,
+          5
+        ],
+        [
+          "and I want to be able to speak",
+          "y quiero poder hablar",
+          null,
+          4
+        ],
+        [
+          "and I'm going to practise speaking with someone",
+          "y voy a practicar hablar con alguien",
+          null,
+          5
+        ],
+        [
+          "and I'd like to speak after you finish",
+          "y me gustaría hablar después de que termines",
+          null,
+          6
+        ],
+        [
+          "and I'm trying to remember a word",
+          "y estoy intentando recordar una palabra",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 3,
+        "longer_4_5": 5,
+        "long_6_plus": 1
+      }
+    },
+    "S0015L02": {
+      "lego": [
+        "I want",
+        "quiero que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "and",
+          "y"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I want",
+          "quiero que",
+          null,
+          1
+        ],
+        [
+          "and I want",
+          "y quiero que",
+          null,
+          2
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      }
+    },
+    "S0015L03": {
+      "lego": [
+        "you to speak",
+        "hables"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "and",
+          "y"
+        ],
+        [
+          "I want",
+          "quiero que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "you to speak",
+          "hables",
+          null,
+          1
+        ],
+        [
+          "I want you to speak",
+          "quiero que hables",
+          null,
+          2
+        ],
+        [
+          "you to speak Spanish",
+          "hables español",
+          null,
+          2
+        ],
+        [
+          "you to speak well",
+          "hables bien",
+          null,
+          2
+        ],
+        [
+          "I want you to speak Spanish",
+          "quiero que hables español",
+          null,
+          3
+        ],
+        [
+          "and I want you to speak",
+          "y quiero que hables",
+          null,
+          3
+        ],
+        [
+          "you to speak very well",
+          "hables muy bien",
+          null,
+          3
+        ],
+        [
+          "I want you to speak well",
+          "quiero que hables bien",
+          null,
+          3
+        ],
+        [
+          "you to speak Spanish well",
+          "hables español bien",
+          null,
+          3
+        ],
+        [
+          "I want you to speak Spanish well",
+          "quiero que hables español bien",
+          null,
+          4
+        ],
+        [
+          "and I want you to speak Spanish",
+          "y quiero que hables español",
+          null,
+          4
+        ],
+        [
+          "I want you to speak very well",
+          "quiero que hables muy bien",
+          null,
+          4
+        ],
+        [
+          "you to speak Spanish very well",
+          "hables español muy bien",
+          null,
+          4
+        ],
+        [
+          "and I want you to speak Spanish very well",
+          "y quiero que hables español muy bien",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 5,
+        "longer_4_5": 5,
+        "long_6_plus": 1
+      }
+    },
+    "S0015L04": {
+      "lego": [
+        "Spanish",
+        "español"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "and",
+          "y"
+        ],
+        [
+          "I want",
+          "quiero que"
+        ],
+        [
+          "you to speak",
+          "hables"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Spanish",
+          "español",
+          null,
+          1
+        ],
+        [
+          "I speak Spanish",
+          "hablo español",
+          null,
+          2
+        ],
+        [
+          "you speak Spanish",
+          "hablas español",
+          null,
+          2
+        ],
+        [
+          "a little Spanish",
+          "un poco español",
+          null,
+          2
+        ],
+        [
+          "I want you to speak Spanish",
+          "quiero que hables español",
+          null,
+          3
+        ],
+        [
+          "I speak Spanish well",
+          "hablo español bien",
+          null,
+          3
+        ],
+        [
+          "you speak Spanish very well",
+          "hablas español muy bien",
+          null,
+          4
+        ],
+        [
+          "and I want you to speak Spanish",
+          "y quiero que hables español",
+          null,
+          4
+        ],
+        [
+          "I'd like to be able to speak Spanish",
+          "me gustaría poder hablar español",
+          null,
+          4
+        ],
+        [
+          "I'm going to try to speak Spanish",
+          "voy a intentar hablar español",
+          null,
+          5
+        ],
+        [
+          "and I want you to speak Spanish well",
+          "y quiero que hables español bien",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 2,
+        "longer_4_5": 5,
+        "long_6_plus": 0
+      }
+    },
+    "S0015L05": {
+      "lego": [
+        "with me",
+        "conmigo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "and",
+          "y"
+        ],
+        [
+          "I want",
+          "quiero que"
+        ],
+        [
+          "you to speak",
+          "hables"
+        ],
+        [
+          "Spanish",
+          "español"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "with me",
+          "conmigo",
+          null,
+          1
+        ],
+        [
+          "speak with me",
+          "hablar conmigo",
+          null,
+          2
+        ],
+        [
+          "you to speak with me",
+          "hables conmigo",
+          null,
+          2
+        ],
+        [
+          "I want you to speak with me",
+          "quiero que hables conmigo",
+          null,
+          3
+        ],
+        [
+          "speak Spanish with me",
+          "hablar español conmigo",
+          null,
+          3
+        ],
+        [
+          "you to speak Spanish with me",
+          "hables español conmigo",
+          null,
+          3
+        ],
+        [
+          "and I want you to speak with me",
+          "y quiero que hables conmigo",
+          null,
+          4
+        ],
+        [
+          "I want you to speak Spanish with me",
+          "quiero que hables español conmigo",
+          null,
+          4
+        ],
+        [
+          "and I want you to speak Spanish with me",
+          "y quiero que hables español conmigo",
+          null,
+          5
+        ],
+        [
+          "I'm going to practise speaking with someone",
+          "voy a practicar hablar con alguien",
+          null,
+          5
+        ],
+        [
+          "and I want you to speak Spanish with me well",
+          "y quiero que hables español conmigo bien",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 4,
+        "long_6_plus": 1
+      }
+    },
+    "S0015L06": {
+      "lego": [
+        "tomorrow",
+        "mañana"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "and",
+          "y"
+        ],
+        [
+          "I want",
+          "quiero que"
+        ],
+        [
+          "you to speak",
+          "hables"
+        ],
+        [
+          "Spanish",
+          "español"
+        ],
+        [
+          "with me",
+          "conmigo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "tomorrow",
+          "mañana",
+          null,
+          1
+        ],
+        [
+          "I want to speak tomorrow",
+          "quiero hablar mañana",
+          null,
+          3
+        ],
+        [
+          "speak with me tomorrow",
+          "hablar conmigo mañana",
+          null,
+          3
+        ],
+        [
+          "I'm going to speak tomorrow",
+          "voy a hablar mañana",
+          null,
+          3
+        ],
+        [
+          "you to speak tomorrow",
+          "hables mañana",
+          null,
+          2
+        ],
+        [
+          "I want you to speak tomorrow",
+          "quiero que hables mañana",
+          null,
+          3
+        ],
+        [
+          "what's going to happen tomorrow",
+          "lo que va a ocurrir mañana",
+          null,
+          4
+        ],
+        [
+          "I want you to speak with me tomorrow",
+          "quiero que hables conmigo mañana",
+          null,
+          4
+        ],
+        [
+          "you to speak Spanish tomorrow",
+          "hables español mañana",
+          null,
+          3
+        ],
+        [
+          "I want you to speak Spanish tomorrow",
+          "quiero que hables español mañana",
+          null,
+          4
+        ],
+        [
+          "and I want you to speak tomorrow",
+          "y quiero que hables mañana",
+          null,
+          4
+        ],
+        [
+          "I want you to speak Spanish with me tomorrow",
+          "quiero que hables español conmigo mañana",
+          null,
+          5
+        ],
+        [
+          "and I want you to speak Spanish with me tomorrow",
+          "y quiero que hables español conmigo mañana",
+          null,
+          6
+        ],
+        [
+          "And I want you to speak Spanish with me tomorrow.",
+          "Y quiero que hables español conmigo mañana.",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 5,
+        "longer_4_5": 5,
+        "long_6_plus": 2
+      }
+    }
+  }
+}

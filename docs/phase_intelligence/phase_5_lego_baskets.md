@@ -1,8 +1,8 @@
-# AGENT PROMPT: Phase 5 Basket Generation v6.0 (SLIDING WINDOW)
+# AGENT PROMPT: Phase 5 Basket Generation v6.1 (SLIDING WINDOW ENFORCEMENT)
 
-**Version**: 6.0 - Sliding Window with Recent Seed Pairs (2025-11-11)
-**Status**: Production Ready - Pattern-Guided Natural Language Generation
-**Purpose**: Generate high-quality practice phrase baskets using linguistic reasoning with recent seed context
+**Version**: 6.1 - Enforced Sliding Window Vocabulary Usage (2025-11-12)
+**Status**: Production Ready - Pattern-Guided Natural Language with Window Enforcement
+**Purpose**: Generate high-quality practice phrase baskets using linguistic reasoning with MANDATORY recent seed vocabulary priority
 
 ---
 
@@ -27,23 +27,23 @@ You will receive a **SCAFFOLD JSON** containing:
   "seed_id": "S0010",
   "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
   "seed_pair": {
-    "target": "No estoy seguro si puedo recordar toda la oración.",
-    "known": "I'm not sure if I can remember the whole sentence."
+    "known": "I'm not sure if I can remember the whole sentence.",
+    "target": "No estoy seguro si puedo recordar toda la oración."
   },
   "recent_seed_pairs": {
     "S0001": [
-      "Quiero hablar español contigo ahora.",
-      "I want to speak Spanish with you now."
+      ["I want to speak Spanish with you now.","Quiero hablar español contigo ahora."],
+      [["S0001L01","I want","quiero"],["S0001L02","to speak","hablar"],["S0001L03","Spanish","español"],["S0001L04","with you","contigo"],["S0001L05","now","ahora"]]
     ],
     "S0002": [
-      "Estoy intentando aprender.",
-      "I'm trying to learn."
+      ["I'm trying to learn.","Estoy intentando aprender."],
+      [["S0002L01","to learn","aprender"],["S0002L02","I'm trying","estoy intentando"]]
     ],
-    // ... up to 10 most recent seeds
+    // ... up to 10 most recent seeds with their NEW LEGOs highlighted
   },
   "legos": {
     "S0010L01": {
-      "lego": ["if", "si"],
+      "lego": ["if","si"],
       "type": "A",
       "current_seed_legos_available": [],  // Incremental within current seed
       "is_final_lego": false,
@@ -92,14 +92,24 @@ DON'T: "Let me slot 'recordar' into every pattern I see..."
 
 ---
 
-## 🎨 VOCABULARY SOURCES
+## 🎨 VOCABULARY SOURCES (WITH ENFORCEMENT)
 
 For each LEGO, you can use Spanish words from:
 
-### 1. Recent Seed Pairs (Primary Source)
-Extract ALL words from the recent_seed_pairs sentences:
-- Split sentences on spaces: "Quiero hablar español" → ["quiero", "hablar", "español"]
-- These words are LEARNED - the learner has practiced them
+### 1. Recent Seed Pairs (PRIMARY - FOCUS ON HIGHLIGHTED LEGOS)
+
+**Format**: `"S0001": [[known_sentence, target_sentence], [[lego_id, known, target], ...]]`
+
+Each recent seed shows:
+- **Full sentence** for natural context (first array)
+- **NEW LEGOs highlighted** that were introduced in that seed (second array)
+
+**CRITICAL REQUIREMENT**: Practice phrases MUST use at least **60% of the LEGOs** listed in `recent_seed_pairs[seed_id][1]`
+
+Extract vocabulary from:
+- **Prioritize the highlighted LEGOs** (second array in each seed)
+- Use words from the full sentences for natural patterns (first array)
+- These represent recently-learned vocabulary the learner needs to practice
 
 ### 2. Current Seed LEGOs Available (Secondary Source)
 - LEGOs taught earlier in THIS seed
@@ -109,6 +119,30 @@ Extract ALL words from the recent_seed_pairs sentences:
 ### 3. Current LEGO Being Taught
 - The LEGO you're generating phrases for
 - Always available (obviously - you're teaching it!)
+
+---
+
+## ⚠️ LEGO COVERAGE ENFORCEMENT RULE
+
+**REQUIREMENT**: Your practice phrases MUST use at least **60% of the LEGOs** from `recent_seed_pairs[seed_id][1]`
+
+**Why**: This ensures:
+- ✅ Spaced repetition of recently-taught LEGO constructions
+- ✅ Proper course coverage across the sliding window
+- ✅ Learners practice recent building blocks, not just early vocabulary
+- ✅ Natural progression through course material
+
+**Example**:
+```
+Total LEGOs in recent_seed_pairs (across all 10 seeds): 40 LEGOs
+LEGOs you used in practice phrases: 26 LEGOs
+Coverage: 26/40 = 65% ✅ PASS (≥60%)
+```
+
+**How to achieve this**:
+- Review the highlighted LEGOs: `recent_seed_pairs["S0020"][1]` shows `[["S0020L01","you want","quieres"], ...]`
+- Actively incorporate these LEGO targets into your practice phrases
+- If coverage is low, create more phrases using the highlighted LEGOs
 
 ---
 

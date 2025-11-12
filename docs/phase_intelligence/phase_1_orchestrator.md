@@ -87,30 +87,61 @@ Task 10: Translate seeds S0201-S0223
 **Each Task prompt should include:**
 
 ```markdown
-Translate seeds S0XXX-S0YYY using the translation-skill.
+You are a Phase 1 Translation Agent for {course_code}.
 
-SKILL LOCATION: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/skills/translation-skill
+Your task: Translate seeds S0XXX-S0YYY from {known_language} to {target_language}.
 
-REQUIRED READING (in order):
-1. rules/TWO_ABSOLUTE_RULES.md - NEVER violate these [ABSOLUTE]
-2. rules/ZERO_VARIATION.md - First-come-first-served principle
-3. rules/COGNATE_PREFERENCE.md - Check cognates FIRST (seeds 1-100)
-4. workflow/EXTENDED_THINKING.md - Use for EVERY seed [MANDATORY]
+**REQUIRED READING:**
+Read the complete Phase 1 translation methodology:
+docs/phase_intelligence/phase_1_seed_pairs.md
 
-INPUT:
-- Seed list with IDs and canonical text
-- Target language: {target_code}
-- Known language: {known_code}
+This document contains the complete v2.6 methodology. Pay special attention to:
 
-OUTPUT FORMAT:
-- {"S0001": [target, known], "S0002": [target, known], ...}
-- See schemas/OUTPUT_FORMAT.md for complete spec
+1. **TWO ABSOLUTE RULES (lines 44-71)** - NEVER violate these
+   - RULE 1: Never change canonical meaning
+   - RULE 2: Strongly prefer cognates for seeds 1-100
 
-CRITICAL:
-- Extended thinking for EVERY seed
-- TWO ABSOLUTE RULES never violated
-- Cognate preference mandatory (seeds 1-100)
-- Maintain vocabulary registry for consistency
+2. **Cognate Preference (lines 447-505)** - Check cognates FIRST for seeds 1-100
+   - Builds semantic networks, not just ease
+   - Use known language synonyms to match cognates
+
+3. **Zero Variation (lines 551-628)** - First-come-first-served principle
+   - Maintain vocabulary registry as you translate
+   - Same concept → same translation
+
+4. **Extended Thinking (lines 260-396)** - Use for EVERY seed translation
+   - Check vocabulary registry
+   - Check for cognates
+   - Validate grammar
+   - Document reasoning
+
+5. **Array Format (lines 884-889)** - [known, target] format REQUIRED
+   - English first, Spanish second
+   - Example: ["I want to speak", "Quiero hablar"]
+
+**INPUT:**
+Canonical seeds S0XXX-S0YYY:
+[List canonical English sentences here with seed IDs]
+
+Target language: {target_code}
+Known language: {known_code}
+
+**OUTPUT FORMAT:**
+{
+  "S0001": ["Known language translation", "Target language translation"],
+  "S0002": ["Known language translation", "Target language translation"],
+  ...
+}
+
+**CRITICAL REQUIREMENTS:**
+- Use extended thinking for EVERY seed (show your reasoning in <thinking> tags)
+- Check cognates FIRST for seeds 1-100
+- Maintain vocabulary registry (track first occurrences)
+- Array format: [known, target] (known language first, target second)
+- Validate grammar in both languages
+- Never change canonical meaning to avoid complex grammar
+
+Output your translations as JSON only (no markdown fences).
 ```
 
 ### STEP 4: Receive All 10 Outputs
@@ -130,8 +161,12 @@ For each translation, check:
 - ✓ Did agent check for cognate synonyms?
 - ✓ Is cognate used when available?
 
+**Array format:**
+- ✓ Format is [known, target] (English first, target language second)?
+- ✓ NOT [target, known] (old format)?
+
 **Consistency within your chunk:**
-- ✓ Same English word → same Spanish translation?
+- ✓ Same English word → same target translation?
 - ✓ Zero variation enforced (seeds 1-100)?
 
 **If issues found:**
@@ -148,8 +183,8 @@ Combine all 10 outputs into your chunk file:
   "chunk_number": 1,
   "total_seeds": 223,
   "translations": {
-    "S0001": ["Quiero hablar español contigo ahora.", "I want to speak Spanish with you now."],
-    "S0002": ["Estoy intentando aprender.", "I'm trying to learn."],
+    "S0001": ["I want to speak Spanish with you now.", "Quiero hablar español contigo ahora."],
+    "S0002": ["I'm trying to learn.", "Estoy intentando aprender."],
     ... all 223 seeds
   },
   "metadata": {
@@ -250,7 +285,7 @@ Only re-spawn for systematic issues (>5 errors, misunderstood rules, etc.)
 Before outputting chunk file, verify:
 
 - [ ] All seeds translated (no missing IDs)
-- [ ] Format correct: `{seed_id: [target, known]}`
+- [ ] Format correct: `{seed_id: [known, target]}` ← CRITICAL: Known first!
 - [ ] Grammar correct in BOTH languages
 - [ ] Cognates used when available (seeds 1-100)
 - [ ] Same English word → same translation (within chunk)

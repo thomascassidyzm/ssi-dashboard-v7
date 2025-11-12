@@ -55,9 +55,19 @@ function extractAvailableVocabulary(basket, legoId) {
   // 1. Extract ALL words from recent_seed_pairs (sliding window)
   //    If "ahora" appears in S0001, it's available for all subsequent seeds in the window
   if (basket.recent_seed_pairs) {
-    Object.values(basket.recent_seed_pairs).forEach(([spanish, english]) => {
+    Object.values(basket.recent_seed_pairs).forEach(seedPairData => {
+      // Handle both old format [spanish, english] and new format [[known, target], legos]
+      let targetSentence;
+      if (Array.isArray(seedPairData[0])) {
+        // New format: [[known, target], legos]
+        targetSentence = seedPairData[0][1]; // target is second element
+      } else {
+        // Old format: [spanish, english]
+        targetSentence = seedPairData[0];
+      }
+
       // Split and normalize Spanish words
-      spanish.split(/\s+/).forEach(word => {
+      targetSentence.split(/\s+/).forEach(word => {
         // Remove punctuation and normalize
         const normalized = word.trim().toLowerCase().replace(/[.,;:¿?¡!]/g, '');
         if (normalized) availableWords.add(normalized);

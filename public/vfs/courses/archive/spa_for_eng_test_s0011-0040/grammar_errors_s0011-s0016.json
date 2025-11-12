@@ -1,0 +1,170 @@
+[
+  {
+    "seed_id": "S0011",
+    "lego_id": "S0011L02",
+    "errors": [
+      {
+        "phrase_index": 8,
+        "english": "I'd like to be able to speak a little Spanish",
+        "spanish": "me gustaría poder hablar un poco español",
+        "error_type": "word_order",
+        "description": "In Spanish, when using 'un poco' with a noun, 'de' is required: 'un poco de español'. The phrase should be 'un poco de español' not 'un poco español'.",
+        "suggested_fix_english": "I'd like to be able to speak a little Spanish",
+        "suggested_fix_spanish": "me gustaría poder hablar un poco de español"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0012",
+    "lego_id": "S0012L04",
+    "errors": [
+      {
+        "phrase_index": 6,
+        "english": "I'd like to guess what you mean",
+        "spanish": "me gustaría adivinar lo que quiero decir",
+        "error_type": "semantic_mismatch",
+        "description": "The Spanish says 'what I mean' (lo que quiero decir) but the English says 'what you mean'. Should be 'lo que quieres decir' to match the English.",
+        "suggested_fix_english": "I'd like to guess what you mean",
+        "suggested_fix_spanish": "me gustaría adivinar lo que quieres decir"
+      },
+      {
+        "phrase_index": 11,
+        "english": "I wouldn't like to guess what you mean",
+        "spanish": "no me gustaría adivinar lo que quiero decir",
+        "error_type": "semantic_mismatch",
+        "description": "The Spanish says 'what I mean' (lo que quiero decir) but the English says 'what you mean'. Should be 'lo que quieres decir' to match the English.",
+        "suggested_fix_english": "I wouldn't like to guess what you mean",
+        "suggested_fix_spanish": "no me gustaría adivinar lo que quieres decir"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0012",
+    "lego_id": "S0012L06",
+    "errors": [
+      {
+        "phrase_index": 7,
+        "english": "I'm not sure what's going to happen",
+        "spanish": "no estoy seguro lo que va a ocurrir",
+        "error_type": "preposition",
+        "description": "Missing 'de' after 'seguro'. The construction 'no estoy seguro' requires 'de' before a clause: 'no estoy seguro de lo que va a ocurrir'.",
+        "suggested_fix_english": "I'm not sure what's going to happen",
+        "suggested_fix_spanish": "no estoy seguro de lo que va a ocurrir"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0012",
+    "lego_id": "S0012L07",
+    "errors": [
+      {
+        "phrase_index": 10,
+        "english": "I'm not sure what's going to happen tomorrow",
+        "spanish": "no estoy seguro lo que va a ocurrir mañana",
+        "error_type": "preposition",
+        "description": "Missing 'de' after 'seguro'. The construction 'no estoy seguro' requires 'de' before a clause: 'no estoy seguro de lo que va a ocurrir mañana'.",
+        "suggested_fix_english": "I'm not sure what's going to happen tomorrow",
+        "suggested_fix_spanish": "no estoy seguro de lo que va a ocurrir mañana"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0013",
+    "lego_id": "S0013L01",
+    "errors": [
+      {
+        "phrase_index": 5,
+        "english": "you speak a little Spanish",
+        "spanish": "hablas un poco español",
+        "error_type": "preposition",
+        "description": "Missing 'de' after 'un poco'. When 'un poco' modifies a noun, it requires 'de': 'un poco de español'.",
+        "suggested_fix_english": "you speak a little Spanish",
+        "suggested_fix_spanish": "hablas un poco de español"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0013",
+    "lego_id": "S0013L02",
+    "errors": [
+      {
+        "phrase_index": 4,
+        "english": "a little Spanish",
+        "spanish": "un poco español",
+        "error_type": "preposition",
+        "description": "Missing 'de' after 'un poco'. Should be 'un poco de español'.",
+        "suggested_fix_english": "a little Spanish",
+        "suggested_fix_spanish": "un poco de español"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0014",
+    "lego_id": "S0014L01",
+    "errors": [
+      {
+        "phrase_index": 9,
+        "english": "do you speak a little Spanish",
+        "spanish": "hablas un poco español",
+        "error_type": "preposition",
+        "description": "Missing 'de' after 'un poco'. Should be 'un poco de español'.",
+        "suggested_fix_english": "do you speak a little Spanish",
+        "suggested_fix_spanish": "hablas un poco de español"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0014",
+    "lego_id": "S0014L02",
+    "errors": [
+      {
+        "phrase_index": 5,
+        "english": "a little Spanish",
+        "spanish": "un poco español",
+        "error_type": "preposition",
+        "description": "Missing 'de' after 'un poco'. Should be 'un poco de español'.",
+        "suggested_fix_english": "a little Spanish",
+        "suggested_fix_spanish": "un poco de español"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0015",
+    "lego_id": "S0015L05",
+    "errors": [
+      {
+        "phrase_index": 8,
+        "english": "I'd like you to speak with me",
+        "spanish": "me gustaría que hables conmigo",
+        "error_type": "conjugation",
+        "description": "After 'me gustaría que', the subjunctive is required, but it should be the imperfect subjunctive 'hablaras' (or 'hablases'), not the present subjunctive 'hables'. For polite requests with 'gustaría', use imperfect subjunctive.",
+        "suggested_fix_english": "I'd like you to speak with me",
+        "suggested_fix_spanish": "me gustaría que hablaras conmigo"
+      },
+      {
+        "phrase_index": 11,
+        "english": "I'd like you to speak Spanish with me",
+        "spanish": "me gustaría que hables español conmigo",
+        "error_type": "conjugation",
+        "description": "After 'me gustaría que', the subjunctive is required, but it should be the imperfect subjunctive 'hablaras' (or 'hablases'), not the present subjunctive 'hables'. For polite requests with 'gustaría', use imperfect subjunctive.",
+        "suggested_fix_english": "I'd like you to speak Spanish with me",
+        "suggested_fix_spanish": "me gustaría que hablaras español conmigo"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0015",
+    "lego_id": "S0015L04",
+    "errors": [
+      {
+        "phrase_index": 3,
+        "english": "a little Spanish",
+        "spanish": "un poco español",
+        "error_type": "preposition",
+        "description": "Missing 'de' after 'un poco'. Should be 'un poco de español'.",
+        "suggested_fix_english": "a little Spanish",
+        "suggested_fix_spanish": "un poco de español"
+      }
+    ]
+  }
+]

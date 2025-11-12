@@ -1,0 +1,81 @@
+{
+  "batch_id": "S0271_S0280",
+  "batch_number": 8,
+  "wave": "wave1_s0201_s0360",
+  "seed_range": {
+    "start": "S0271",
+    "end": "S0280"
+  },
+  "seeds": [
+    {
+      "seed_id": "S0271",
+      "seed_pair": {
+        "target": "Would you like to come with us next month?",
+        "known": "¿Te gustaría venir con nosotros el próximo mes?"
+      }
+    },
+    {
+      "seed_id": "S0272",
+      "seed_pair": {
+        "target": "Yes that sounds like a great idea.",
+        "known": "Sí eso suena como una gran idea."
+      }
+    },
+    {
+      "seed_id": "S0273",
+      "seed_pair": {
+        "target": "No unfortunately I've got too much work.",
+        "known": "No desafortunadamente tengo demasiado trabajo."
+      }
+    },
+    {
+      "seed_id": "S0274",
+      "seed_pair": {
+        "target": "Do you have to leave in a few days?",
+        "known": "¿Tienes que salir en unos pocos días?"
+      }
+    },
+    {
+      "seed_id": "S0275",
+      "seed_pair": {
+        "target": "Longer.",
+        "known": "Más tiempo."
+      }
+    },
+    {
+      "seed_id": "S0276",
+      "seed_pair": {
+        "target": "No I can stay here for a little longer.",
+        "known": "No, puedo quedarme aquí un poco más de tiempo."
+      }
+    },
+    {
+      "seed_id": "S0277",
+      "seed_pair": {
+        "target": "Yes I've got an important meeting early next week.",
+        "known": "Sí tengo una reunión importante a principios de la próxima semana."
+      }
+    },
+    {
+      "seed_id": "S0278",
+      "seed_pair": {
+        "target": "Did you have to finish everything last night?",
+        "known": "¿Tuviste que terminar todo anoche?"
+      }
+    },
+    {
+      "seed_id": "S0279",
+      "seed_pair": {
+        "target": "Yes because there wasn't much time left.",
+        "known": "Sí porque no quedaba mucho tiempo."
+      }
+    },
+    {
+      "seed_id": "S0280",
+      "seed_pair": {
+        "target": "No I only had to do the most important job.",
+        "known": "No solo tuve que hacer el trabajo más importante."
+      }
+    }
+  ]
+}

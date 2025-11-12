@@ -49,8 +49,18 @@ function extractAvailableVocabulary(basket, legoId) {
 
   // 1. Extract ALL words from recent_seed_pairs (sliding window)
   if (basket.recent_seed_pairs) {
-    Object.values(basket.recent_seed_pairs).forEach(([spanish, english]) => {
-      spanish.split(/\s+/).forEach(word => {
+    Object.values(basket.recent_seed_pairs).forEach(seedPairData => {
+      // Handle both old format [spanish, english] and new format [[known, target], legos]
+      let targetSentence;
+      if (Array.isArray(seedPairData[0])) {
+        // New format: [[known, target], legos]
+        targetSentence = seedPairData[0][1]; // target is second element
+      } else {
+        // Old format: [spanish, english]
+        targetSentence = seedPairData[0];
+      }
+
+      targetSentence.split(/\s+/).forEach(word => {
         const normalized = word.trim().toLowerCase().replace(/[.,;:¿?¡!]/g, '');
         if (normalized) availableWords.add(normalized);
       });

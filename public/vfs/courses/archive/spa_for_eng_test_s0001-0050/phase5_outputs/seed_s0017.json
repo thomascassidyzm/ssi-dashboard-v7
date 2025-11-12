@@ -1,0 +1,456 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0017",
+  "generation_stage": "GATE_VIOLATIONS_REMOVED",
+  "seed_pair": {
+    "target": "Ella quiere descubrir cuál es la respuesta.",
+    "known": "She wants to find out what the answer is."
+  },
+  "recent_seed_pairs": {
+    "S0007": [
+      "Quiero intentar tan duro como pueda hoy.",
+      "I want to try as hard as I can today."
+    ],
+    "S0008": [
+      "Voy a intentar explicar lo que quiero decir.",
+      "I'm going to try to explain what I mean."
+    ],
+    "S0009": [
+      "Hablo un poco de español ahora.",
+      "I speak a little Spanish now."
+    ],
+    "S0010": [
+      "No estoy seguro si puedo recordar toda la oración.",
+      "I'm not sure if I can remember the whole sentence."
+    ],
+    "S0011": [
+      "Me gustaría poder hablar después de que termines.",
+      "I'd like to be able to speak after you finish."
+    ],
+    "S0012": [
+      "No me gustaría adivinar lo que va a ocurrir mañana.",
+      "I wouldn't like to guess what's going to happen tomorrow."
+    ],
+    "S0013": [
+      "Hablas español muy bien.",
+      "You speak Spanish very well."
+    ],
+    "S0014": [
+      "¿Hablas español todo el día?",
+      "Do you speak Spanish all day?"
+    ],
+    "S0015": [
+      "Y quiero que hables español conmigo mañana.",
+      "And I want you to speak Spanish with me tomorrow."
+    ],
+    "S0016": [
+      "Él quiere volver con todos los demás más tarde.",
+      "He wants to come back with everyone else later on."
+    ]
+  },
+  "legos": {
+    "S0017L01": {
+      "lego": [
+        "to find out",
+        "descubrir"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "to find out",
+          "descubrir",
+          null,
+          1
+        ],
+        [
+          "I want to find out",
+          "quiero descubrir",
+          null,
+          2
+        ],
+        [
+          "I'd like to find out",
+          "me gustaría descubrir",
+          null,
+          3
+        ],
+        [
+          "I can find out",
+          "puedo descubrir",
+          null,
+          2
+        ],
+        [
+          "I'm going to try to find out",
+          "voy a intentar descubrir",
+          null,
+          5
+        ],
+        [
+          "I'm not sure if I can find out",
+          "no estoy seguro si puedo descubrir",
+          null,
+          7
+        ],
+        [
+          "I'd like to be able to find out",
+          "me gustaría poder descubrir",
+          null,
+          5
+        ],
+        [
+          "I want to find out tomorrow",
+          "quiero descubrir mañana",
+          null,
+          3
+        ],
+        [
+          "You speak Spanish very well and I want to find out",
+          "hablas español muy bien y quiero descubrir",
+          null,
+          9
+        ],
+        [
+          "I'm going to find out after you finish",
+          "voy a descubrir después de que termines",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0017L01",
+        "seed_context": {
+          "target": "Ella quiere descubrir cuál es la respuesta.",
+          "known": "She wants to find out what the answer is."
+        }
+      }
+    },
+    "S0017L02": {
+      "lego": [
+        "she wants",
+        "ella quiere"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "to find out",
+          "descubrir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "she wants",
+          "ella quiere",
+          null,
+          2
+        ],
+        [
+          "she wants to speak",
+          "ella quiere hablar",
+          null,
+          3
+        ],
+        [
+          "she wants to find out",
+          "ella quiere descubrir",
+          null,
+          3
+        ],
+        [
+          "she wants to try",
+          "ella quiere intentar",
+          null,
+          3
+        ],
+        [
+          "she wants to speak Spanish",
+          "ella quiere hablar español",
+          null,
+          4
+        ],
+        [
+          "she wants to find out tomorrow",
+          "ella quiere descubrir mañana",
+          null,
+          4
+        ],
+        [
+          "she wants to be able to speak",
+          "ella quiere poder hablar",
+          null,
+          5
+        ],
+        [
+          "she wants to come back later on",
+          "ella quiere volver más tarde",
+          null,
+          5
+        ],
+        [
+          "she wants to speak Spanish very well",
+          "ella quiere hablar español muy bien",
+          null,
+          6
+        ],
+        [
+          "she wants to try to explain what she means",
+          "ella quiere intentar explicar lo que quiere decir",
+          null,
+          9
+        ],
+        [
+          "she wants to find out what's going to happen",
+          "ella quiere descubrir lo que va a ocurrir",
+          null,
+          8
+        ],
+        [
+          "she wants to speak a little Spanish",
+          "ella quiere hablar un poco de español",
+          null,
+          7
+        ],
+        [
+          "she wants to remember the whole sentence",
+          "ella quiere recordar toda la oración",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 3,
+        "longer_4_5": 4,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0017L02",
+        "seed_context": {
+          "target": "Ella quiere descubrir cuál es la respuesta.",
+          "known": "She wants to find out what the answer is."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0017L03": {
+      "lego": [
+        "what is",
+        "cuál es"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "to find out",
+          "descubrir"
+        ],
+        [
+          "she wants",
+          "ella quiere"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "what is",
+          "cuál es",
+          null,
+          2
+        ],
+        [
+          "she wants to find out what is",
+          "ella quiere descubrir cuál es",
+          null,
+          5
+        ],
+        [
+          "I'm not sure what is",
+          "no estoy seguro cuál es",
+          null,
+          5
+        ],
+        [
+          "I'm going to try to explain what is",
+          "voy a intentar explicar cuál es",
+          null,
+          7
+        ],
+        [
+          "she wants to explain what is",
+          "ella quiere explicar cuál es",
+          null,
+          5
+        ],
+        [
+          "I can remember what is",
+          "puedo recordar cuál es",
+          null,
+          4
+        ],
+        [
+          "I want to find out what is going to happen",
+          "quiero descubrir cuál es lo que va a ocurrir",
+          null,
+          10
+        ],
+        [
+          "she wants to speak about what is",
+          "ella quiere hablar de cuál es",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 4,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0017L03",
+        "seed_context": {
+          "target": "Ella quiere descubrir cuál es la respuesta.",
+          "known": "She wants to find out what the answer is."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0017L04": {
+      "lego": [
+        "the answer",
+        "la respuesta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "to find out",
+          "descubrir"
+        ],
+        [
+          "she wants",
+          "ella quiere"
+        ],
+        [
+          "what is",
+          "cuál es"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "the answer",
+          "la respuesta",
+          null,
+          2
+        ],
+        [
+          "she wants to find out the answer",
+          "ella quiere descubrir la respuesta",
+          null,
+          5
+        ],
+        [
+          "I can remember the answer",
+          "puedo recordar la respuesta",
+          null,
+          4
+        ],
+        [
+          "I'm not sure what the answer is",
+          "no estoy seguro cuál es la respuesta",
+          null,
+          7
+        ],
+        [
+          "she wants to explain what the answer is",
+          "ella quiere explicar cuál es la respuesta",
+          null,
+          7
+        ],
+        [
+          "I'm going to try to find out the answer",
+          "voy a intentar descubrir la respuesta",
+          null,
+          7
+        ],
+        [
+          "I want to find out what the answer is tomorrow",
+          "quiero descubrir cuál es la respuesta mañana",
+          null,
+          8
+        ],
+        [
+          "She wants to find out what the answer is.",
+          "Ella quiere descubrir cuál es la respuesta.",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 2,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0017L04",
+        "seed_context": {
+          "target": "Ella quiere descubrir cuál es la respuesta.",
+          "known": "She wants to find out what the answer is."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng_test_s0001-0050/phase5_outputs/seed_s0017.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

@@ -3,6 +3,32 @@ const fs = require('fs');
 const path = require('path');
 
 /**
+ * Custom JSON formatter: arrays on single lines, objects pretty-printed
+ * Makes practice_phrases much more readable
+ */
+function formatJSON(obj, indent = 0) {
+  const spaces = '  '.repeat(indent);
+
+  if (Array.isArray(obj)) {
+    // Arrays: single line
+    return JSON.stringify(obj);
+  } else if (obj && typeof obj === 'object') {
+    // Objects: pretty print
+    const entries = Object.entries(obj);
+    if (entries.length === 0) return '{}';
+
+    const lines = entries.map(([key, value]) => {
+      return `${spaces}  "${key}": ${formatJSON(value, indent + 1)}`;
+    });
+
+    return '{\n' + lines.join(',\n') + '\n' + spaces + '}';
+  } else {
+    // Primitives
+    return JSON.stringify(obj);
+  }
+}
+
+/**
  * Phase 5: Generate Scaffolds (v3 - Sliding Window)
  *
  * Builds scaffold JSON files for each seed containing:
@@ -60,17 +86,28 @@ legoPairs.seeds.forEach((seedData, seedIdx) => {
   console.log(`\n📝 ${seedId}: ${seedData.seed_pair[1]}`);
 
   // Build recent_seed_pairs from last 10 seeds (or all available if <10)
+  // WITH LEGO HIGHLIGHTS - shows which LEGOs were introduced in each seed
   const recentSeedPairs = {};
   const startIdx = Math.max(0, seedIdx - 10);
   for (let i = startIdx; i < seedIdx; i++) {
     const prevSeed = legoPairs.seeds[i];
+
+    // Extract new LEGOs introduced in this seed
+    // Compact format: [[id, known, target], ...] - KNOWN first (prompt), TARGET second (response)
+    const newLegosInSeed = prevSeed.legos
+      .filter(l => l.new)
+      .map(l => [l.id, l.known, l.target]);
+
+    // Compact format: [[known_sentence, target_sentence], [[lego_id, known, target], ...]]
+    // KNOWN first (English prompt), TARGET second (Spanish response)
     recentSeedPairs[prevSeed.seed_id] = [
-      prevSeed.seed_pair[0],  // Target (Spanish)
-      prevSeed.seed_pair[1]   // Known (English)
+      [prevSeed.seed_pair[1], prevSeed.seed_pair[0]],  // Sentence pair: [known, target]
+      newLegosInSeed  // New LEGOs: [[id, known, target], ...]
     ];
   }
 
-  console.log(`   📚 Recent context: ${Object.keys(recentSeedPairs).length} seed pairs (${Object.keys(recentSeedPairs).join(', ') || 'none'})`);
+  const totalRecentLegos = Object.values(recentSeedPairs).reduce((sum, sp) => sum + sp[1].length, 0);
+  console.log(`   📚 Recent context: ${Object.keys(recentSeedPairs).length} seed pairs, ${totalRecentLegos} LEGOs (${Object.keys(recentSeedPairs).join(', ') || 'none'})`);
 
   // Track LEGOs accumulated within current seed
   const currentSeedLegosAvailable = [];
@@ -106,8 +143,8 @@ legoPairs.seeds.forEach((seedData, seedIdx) => {
       _metadata: {
         lego_id: legoId,
         seed_context: {
-          target: seedData.seed_pair[0],
-          known: seedData.seed_pair[1]
+          known: seedData.seed_pair[1],  // Known language (prompt)
+          target: seedData.seed_pair[0]  // Target language (response)
         }
       }
     };
@@ -130,8 +167,8 @@ legoPairs.seeds.forEach((seedData, seedIdx) => {
     seed_id: seedId,
     generation_stage: "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
     seed_pair: {
-      target: seedData.seed_pair[0],
-      known: seedData.seed_pair[1]
+      known: seedData.seed_pair[1],  // Known language (English prompt)
+      target: seedData.seed_pair[0]  // Target language (Spanish response)
     },
     recent_seed_pairs: recentSeedPairs,
     legos: legosObj,
@@ -139,8 +176,9 @@ legoPairs.seeds.forEach((seedData, seedIdx) => {
       task: "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
       methodology: "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
       output: `Write to: ${path.join(fullCoursePath, 'phase5_outputs', `seed_${seedId.toLowerCase()}.json`)}`,
-      pattern_matching: "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
-      vocabulary_source: "Any words from recent_seed_pairs + current_seed_legos_available",
+      pattern_matching: "Use recent_seed_pairs sentences as natural language pattern examples",
+      lego_coverage_requirement: "Practice phrases MUST use at least 60% of the LEGOs listed in recent_seed_pairs[seed_id][1]",
+      vocabulary_source: "Prioritize LEGOs from recent_seed_pairs[seed_id][1] + current_seed_legos_available, then any words from sentences",
       overgeneration: "Generate 12-15 phrases knowing some may be filtered by GATE validation",
       quality: "Semantic meaning + syntactic correctness + pedagogical value",
       format: 'Array format: ["English phrase", "Spanish phrase", null, lego_count]'
@@ -149,13 +187,14 @@ legoPairs.seeds.forEach((seedData, seedIdx) => {
       new_legos_in_seed: newLegoCount,
       total_legos_in_seed: seedData.legos.length,
       phrases_to_generate: newLegoCount * 12,
-      recent_context_seeds: Object.keys(recentSeedPairs).length
+      recent_context_seeds: Object.keys(recentSeedPairs).length,
+      recent_legos_available: totalRecentLegos
     }
   };
 
-  // Write scaffold
+  // Write scaffold with custom formatting (compact arrays, pretty objects)
   const outputPath = path.join(outputDir, `seed_${seedId.toLowerCase()}.json`);
-  fs.writeFileSync(outputPath, JSON.stringify(scaffold, null, 2));
+  fs.writeFileSync(outputPath, formatJSON(scaffold) + '\n');
 
   console.log(`   💾 Scaffold written: ${outputPath}`);
   console.log(`   📊 Stats: ${newLegoCount} new LEGOs, ${newLegoCount * 12} phrases to generate`);

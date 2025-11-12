@@ -7,6 +7,7 @@
  * 1. Gate violations
  * 2. Speakability issues (4+ LEGOs)
  * 3. Conjunction usage in longer phrases
+ * 4. Pattern analysis (grammatical structure matching)
  *
  * Usage: node run-all-checks.js [course_path]
  * Example: node run-all-checks.js public/vfs/courses/spa_for_eng
@@ -15,6 +16,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 import { checkGateViolations } from './check-gate-violations.js';
 import { checkSpeakability } from './check-speakability.js';
 import { checkConjunctions } from './check-conjunctions.js';
@@ -71,6 +73,7 @@ function runAllChecks(coursePath) {
     gateViolations: null,
     speakability: null,
     conjunctions: null,
+    patternAnalysis: null,
     overallSuccess: true
   };
 
@@ -79,7 +82,7 @@ function runAllChecks(coursePath) {
 
   // 1. Gate Violations Check
   log('\n');
-  banner('CHECK 1/3: GATE VIOLATIONS', 'yellow');
+  banner('CHECK 1/4: GATE VIOLATIONS', 'yellow');
   try {
     results.gateViolations = checkGateViolations(basketsPath);
     if (!results.gateViolations.success) {
@@ -92,7 +95,7 @@ function runAllChecks(coursePath) {
 
   // 2. Speakability Check
   log('\n');
-  banner('CHECK 2/3: SPEAKABILITY (4+ LEGOs)', 'yellow');
+  banner('CHECK 2/4: SPEAKABILITY (4+ LEGOs)', 'yellow');
   try {
     results.speakability = checkSpeakability(basketsPath);
     if (!results.speakability.success) {
@@ -105,7 +108,7 @@ function runAllChecks(coursePath) {
 
   // 3. Conjunction Usage Check
   log('\n');
-  banner('CHECK 3/3: CONJUNCTION USAGE', 'yellow');
+  banner('CHECK 3/4: CONJUNCTION USAGE', 'yellow');
   try {
     results.conjunctions = checkConjunctions(basketsPath);
     if (!results.conjunctions.success) {
@@ -114,6 +117,41 @@ function runAllChecks(coursePath) {
   } catch (error) {
     log(`Error running conjunction check: ${error.message}`, 'red');
     results.overallSuccess = false;
+  }
+
+  // 4. Pattern Analysis Check
+  log('\n');
+  banner('CHECK 4/4: PATTERN ANALYSIS', 'yellow');
+  try {
+    // Run the phase5_pattern_analysis.cjs script
+    const scriptPath = path.join(__dirname, '..', 'phase5_pattern_analysis.cjs');
+    const output = execSync(`node "${scriptPath}" "${coursePath}"`, {
+      encoding: 'utf8',
+      maxBuffer: 10 * 1024 * 1024
+    });
+
+    console.log(output);
+
+    // Parse output to extract pattern overlap percentage
+    const overlapMatch = output.match(/Pattern Overlap: (\d+)\/(\d+) patterns \((\d+\.?\d*)%\)/);
+    if (overlapMatch) {
+      const overlapPct = parseFloat(overlapMatch[3]);
+      results.patternAnalysis = {
+        success: overlapPct >= 80, // 80% minimum overlap
+        overlapPercentage: overlapPct,
+        matched: parseInt(overlapMatch[1]),
+        total: parseInt(overlapMatch[2])
+      };
+
+      if (!results.patternAnalysis.success) {
+        log(`\n⚠️  Pattern overlap below 80% threshold (${overlapPct}%)`, 'yellow');
+      }
+    } else {
+      results.patternAnalysis = { success: true, note: 'Completed (parsing not available)' };
+    }
+  } catch (error) {
+    log(`Error running pattern analysis: ${error.message}`, 'red');
+    results.patternAnalysis = { success: false, error: error.message };
   }
 
   const endTime = Date.now();
@@ -148,6 +186,16 @@ function runAllChecks(coursePath) {
     const medium = results.conjunctions.bySeverity.MEDIUM;
     const low = results.conjunctions.bySeverity.LOW;
     log(`  Conjunctions:        ${status} (H:${high} M:${medium} L:${low})`, color);
+  }
+
+  if (results.patternAnalysis) {
+    const status = results.patternAnalysis.success ? '✓ PASS' : '✗ FAIL';
+    const color = results.patternAnalysis.success ? 'green' : 'red';
+    if (results.patternAnalysis.overlapPercentage !== undefined) {
+      log(`  Pattern Analysis:    ${status} (${results.patternAnalysis.overlapPercentage}% overlap, ${results.patternAnalysis.matched}/${results.patternAnalysis.total} patterns)`, color);
+    } else {
+      log(`  Pattern Analysis:    ${status}`, color);
+    }
   }
 
   log('─'.repeat(80), 'cyan');

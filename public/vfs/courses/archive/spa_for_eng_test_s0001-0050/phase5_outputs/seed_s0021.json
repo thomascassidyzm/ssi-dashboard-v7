@@ -1,0 +1,151 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0021",
+  "generation_stage": "PHRASE_GENERATION_COMPLETE",
+  "seed_pair": {
+    "known": "Why are you learning her name?",
+    "target": "¿Por qué estás aprendiendo su nombre?"
+  },
+  "recent_seed_pairs": {
+    "S0011": [["I'd like to be able to speak after you finish.","Me gustaría poder hablar después de que termines."],[["S0011L01","I'd like","me gustaría"],["S0011L02","to be able to speak","poder hablar"],["S0011L03","after you finish","después de que termines"]]],
+    "S0012": [["I wouldn't like to guess what's going to happen tomorrow.","No me gustaría adivinar lo que va a ocurrir mañana."],[["S0012L01","to guess","adivinar"],["S0012L02","to happen","ocurrir"],["S0012L03","tomorrow","mañana"],["S0012L04","I wouldn't like","no me gustaría"],["S0012L06","is going to","va a"]]],
+    "S0013": [["You speak Spanish very well.","Hablas español muy bien."],[["S0013L01","you speak","hablas"],["S0013L03","very","muy"],["S0013L04","well","bien"]]],
+    "S0014": [["Do you speak Spanish all day?","¿Hablas español todo el día?"],[["S0014L03","all day","todo el día"]]],
+    "S0015": [["And I want you to speak Spanish with me tomorrow.","Y quiero que hables español conmigo mañana."],[["S0015L01","and","y"],["S0015L04","with me","conmigo"],["S0015L06","you to speak","que hables"]]],
+    "S0016": [["He wants to come back with everyone else later on.","Él quiere volver con todos los demás más tarde."],[["S0016L01","to come back","volver"],["S0016L03","he wants","él quiere"],["S0016L04","everyone else","todos los demás"],["S0016L05","later on","más tarde"]]],
+    "S0017": [["She wants to find out what the answer is.","Ella quiere descubrir cuál es la respuesta."],[["S0017L01","to find out","descubrir"],["S0017L02","she wants","ella quiere"],["S0017L03","what is","cuál es"],["S0017L04","the answer","la respuesta"]]],
+    "S0018": [["We want to meet at six o'clock this evening.","Queremos reunirnos a las seis esta noche."],[["S0018L01","we want","queremos"],["S0018L02","to meet","reunirnos"],["S0018L03","at six o'clock","a las seis"],["S0018L04","this evening","esta noche"]]],
+    "S0019": [["But I don't want to stop talking.","Pero no quiero parar de hablar."],[["S0019L01","but","pero"],["S0019L02","talking","hablar"],["S0019L03","I don't want","no quiero"],["S0019L04","to stop","parar de"]]],
+    "S0020": [["You want to learn his name quickly.","Quieres aprender su nombre rápidamente."],[["S0020L01","you want","quieres"],["S0020L03","his","su"],["S0020L04","name","nombre"],["S0020L05","quickly","rápidamente"]]]
+  },
+  "legos": {
+    "S0021L01": {
+      "lego": ["her","su"],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["her", "su", null, 1],
+        ["her name", "su nombre", null, 2],
+        ["her answer", "su respuesta", null, 2],
+        ["you want her name", "quieres su nombre", null, 3],
+        ["he wants her name", "él quiere su nombre", null, 4],
+        ["I want her name", "quiero su nombre", null, 3],
+        ["you want to learn her name", "quieres aprender su nombre", null, 4],
+        ["she wants to find out her name", "ella quiere descubrir su nombre", null, 5],
+        ["he wants to come back with her later on", "él quiere volver con ella más tarde", null, 7],
+        ["I want to learn her name quickly", "quiero aprender su nombre rápidamente", null, 5],
+        ["she wants to find out what her answer is", "ella quiere descubrir cuál es su respuesta", null, 8],
+        ["you want to learn her name very well", "quieres aprender su nombre muy bien", null, 7],
+        ["we want to meet with her this evening", "queremos reunirnos con ella esta noche", null, 7],
+        ["but I don't want to stop learning her name", "pero no quiero parar de aprender su nombre", null, 9],
+        ["I'd like to be able to speak with her after you finish", "me gustaría poder hablar con ella después de que termines", null, 12]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 7
+      },
+      "_metadata": {
+        "lego_id": "S0021L01",
+        "seed_context": {
+          "known": "Why are you learning her name?",
+          "target": "¿Por qué estás aprendiendo su nombre?"
+        }
+      }
+    },
+    "S0021L03": {
+      "lego": ["why","por qué"],
+      "type": "M",
+      "current_seed_legos_available": [["her","su"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["why", "por qué", null, 1],
+        ["why tomorrow", "por qué mañana", null, 2],
+        ["why her name", "por qué su nombre", null, 3],
+        ["why you want", "por qué quieres", null, 3],
+        ["why he wants", "por qué él quiere", null, 4],
+        ["why I don't want", "por qué no quiero", null, 4],
+        ["why you speak very well", "por qué hablas muy bien", null, 5],
+        ["why she wants her name", "por qué ella quiere su nombre", null, 6],
+        ["why you want to come back", "por qué quieres volver", null, 5],
+        ["why he wants to find out her name", "por qué él quiere descubrir su nombre", null, 7],
+        ["why I wouldn't like to guess", "por qué no me gustaría adivinar", null, 6],
+        ["why we want to meet this evening", "por qué queremos reunirnos esta noche", null, 7],
+        ["why you speak Spanish all day", "por qué hablas español todo el día", null, 7],
+        ["why I don't want to stop learning her name", "por qué no quiero parar de aprender su nombre", null, 10],
+        ["why she wants to find out what the answer is", "por qué ella quiere descubrir cuál es la respuesta", null, 10]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 8
+      },
+      "_metadata": {
+        "lego_id": "S0021L03",
+        "seed_context": {
+          "known": "Why are you learning her name?",
+          "target": "¿Por qué estás aprendiendo su nombre?"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0021L04": {
+      "lego": ["are you learning","estás aprendiendo"],
+      "type": "M",
+      "current_seed_legos_available": [["her","su"],["why","por qué"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["are you learning", "estás aprendiendo", null, 2],
+        ["are you learning Spanish", "estás aprendiendo español", null, 3],
+        ["why are you learning", "por qué estás aprendiendo", null, 3],
+        ["are you learning her name", "estás aprendiendo su nombre", null, 4],
+        ["are you learning well", "estás aprendiendo bien", null, 4],
+        ["why are you learning her name", "por qué estás aprendiendo su nombre", null, 5],
+        ["are you learning Spanish very well", "estás aprendiendo español muy bien", null, 5],
+        ["are you learning her name quickly", "estás aprendiendo su nombre rápidamente", null, 5],
+        ["why are you learning Spanish", "por qué estás aprendiendo español", null, 4],
+        ["are you learning Spanish all day", "estás aprendiendo español todo el día", null, 6],
+        ["why are you learning her answer", "por qué estás aprendiendo su respuesta", null, 6],
+        ["are you learning what the answer is", "estás aprendiendo cuál es la respuesta", null, 6],
+        ["why are you learning Spanish with everyone else", "por qué estás aprendiendo español con todos los demás", null, 8],
+        ["why are you learning her name quickly", "por qué estás aprendiendo su nombre rápidamente", null, 6],
+        ["why are you learning her name", "por qué estás aprendiendo su nombre", null, 5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 2,
+        "longer_4_5": 5,
+        "long_6_plus": 7
+      },
+      "_metadata": {
+        "lego_id": "S0021L04",
+        "seed_context": {
+          "known": "Why are you learning her name?",
+          "target": "¿Por qué estás aprendiendo su nombre?"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng_test_s0001-0050/phase5_outputs/seed_s0021.json",
+    "pattern_matching": "Use recent_seed_pairs sentences as natural language pattern examples",
+    "lego_coverage_requirement": "Practice phrases MUST use at least 60% of the LEGOs listed in recent_seed_pairs[seed_id][1]",
+    "vocabulary_source": "Prioritize LEGOs from recent_seed_pairs[seed_id][1] + current_seed_legos_available, then any words from sentences",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10,
+    "recent_legos_available": 35
+  }
+}

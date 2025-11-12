@@ -1,0 +1,688 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0022",
+  "generation_stage": "GRAMMAR_REVIEWED",
+  "seed_pair": {
+    "target": "Porque quiero encontrar personas que hablan español.",
+    "known": "Because I want to meet people who speak Spanish."
+  },
+  "recent_seed_pairs": {
+    "S0015": [
+      "And I want you to speak Spanish with me tomorrow.",
+      "Y quiero que hables español conmigo mañana."
+    ],
+    "S0016": [
+      "He wants to come back with everyone else later on.",
+      "Él quiere volver con todos los demás más tarde."
+    ],
+    "S0017": [
+      "She wants to find out what the answer is.",
+      "Ella quiere descubrir cuál es la respuesta."
+    ],
+    "S0018": [
+      "We want to meet at six o'clock this evening.",
+      "Queremos reunirnos a las seis esta noche."
+    ],
+    "S0019": [
+      "But I don't want to stop talking.",
+      "Pero no quiero parar de hablar."
+    ],
+    "S0020": [
+      "You want to learn his name quickly.",
+      "Quieres aprender su nombre rápidamente."
+    ],
+    "S0021": [
+      "Why are you learning her name?",
+      "¿Por qué estás aprendiendo su nombre?"
+    ]
+  },
+  "legos": {
+    "S0022L01": {
+      "lego": [
+        "because",
+        "porque"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "because",
+          "porque",
+          null,
+          1
+        ],
+        [
+          "because I want",
+          "porque quiero",
+          null,
+          2
+        ],
+        [
+          "because tomorrow",
+          "porque mañana",
+          null,
+          2
+        ],
+        [
+          "because Spanish",
+          "porque español",
+          null,
+          2
+        ],
+        [
+          "and because",
+          "y porque",
+          null,
+          2
+        ],
+        [
+          "because you want",
+          "porque quieres",
+          null,
+          2
+        ],
+        [
+          "but because",
+          "pero porque",
+          null,
+          2
+        ],
+        [
+          "because I want Spanish",
+          "porque quiero español",
+          null,
+          3
+        ],
+        [
+          "because she wants",
+          "porque ella quiere",
+          null,
+          3
+        ],
+        [
+          "because he wants to come back",
+          "porque él quiere volver",
+          null,
+          4
+        ],
+        [
+          "because we want to meet",
+          "porque queremos reunirnos",
+          null,
+          3
+        ],
+        [
+          "because you want to learn quickly",
+          "porque quieres aprender rápidamente",
+          null,
+          4
+        ],
+        [
+          "because I want to stop talking tomorrow",
+          "porque quiero parar de hablar mañana",
+          null,
+          6
+        ],
+        [
+          "because we want to meet at six o'clock this evening",
+          "porque queremos reunirnos a las seis esta noche",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 7,
+        "quite_short_3": 3,
+        "longer_4_5": 2,
+        "long_6_plus": 2
+      }
+    },
+    "S0022L02": {
+      "lego": [
+        "I want",
+        "quiero"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "porque"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I want",
+          "quiero",
+          null,
+          1
+        ],
+        [
+          "because I want",
+          "porque quiero",
+          null,
+          2
+        ],
+        [
+          "I want Spanish",
+          "quiero español",
+          null,
+          2
+        ],
+        [
+          "I want tomorrow",
+          "quiero mañana",
+          null,
+          2
+        ],
+        [
+          "and I want",
+          "y quiero",
+          null,
+          2
+        ],
+        [
+          "but I want",
+          "pero quiero",
+          null,
+          2
+        ],
+        [
+          "I want to learn",
+          "quiero aprender",
+          null,
+          2
+        ],
+        [
+          "because I want Spanish",
+          "porque quiero español",
+          null,
+          3
+        ],
+        [
+          "I want to speak Spanish",
+          "quiero hablar español",
+          null,
+          3
+        ],
+        [
+          "because I want to learn",
+          "porque quiero aprender",
+          null,
+          3
+        ],
+        [
+          "because I want to stop talking",
+          "porque quiero parar de hablar",
+          null,
+          5
+        ],
+        [
+          "and because I want to learn quickly",
+          "y porque quiero aprender rápidamente",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 7,
+        "quite_short_3": 3,
+        "longer_4_5": 2,
+        "long_6_plus": 0
+      }
+    },
+    "S0022L03": {
+      "lego": [
+        "to meet",
+        "encontrar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "porque"
+        ],
+        [
+          "I want",
+          "quiero"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "to meet",
+          "encontrar",
+          null,
+          1
+        ],
+        [
+          "I want to meet",
+          "quiero encontrar",
+          null,
+          2
+        ],
+        [
+          "to meet tomorrow",
+          "encontrar mañana",
+          null,
+          2
+        ],
+        [
+          "because to meet",
+          "porque encontrar",
+          null,
+          2
+        ],
+        [
+          "to meet Spanish",
+          "encontrar español",
+          null,
+          2
+        ],
+        [
+          "because I want to meet",
+          "porque quiero encontrar",
+          null,
+          3
+        ],
+        [
+          "she wants to meet",
+          "ella quiere encontrar",
+          null,
+          3
+        ],
+        [
+          "to meet her name",
+          "encontrar su nombre",
+          null,
+          3
+        ],
+        [
+          "and I want to meet",
+          "y quiero encontrar",
+          null,
+          3
+        ],
+        [
+          "you want to meet quickly",
+          "quieres encontrar rápidamente",
+          null,
+          3
+        ],
+        [
+          "because I want to meet tomorrow",
+          "porque quiero encontrar mañana",
+          null,
+          4
+        ],
+        [
+          "but because I want to meet",
+          "pero porque quiero encontrar",
+          null,
+          4
+        ],
+        [
+          "we want to meet at six o'clock",
+          "queremos encontrar a las seis",
+          null,
+          5
+        ],
+        [
+          "because I want to meet her name quickly",
+          "porque quiero encontrar su nombre rápidamente",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 5,
+        "quite_short_3": 5,
+        "longer_4_5": 3,
+        "long_6_plus": 1
+      }
+    },
+    "S0022L04": {
+      "lego": [
+        "people",
+        "personas"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "porque"
+        ],
+        [
+          "I want",
+          "quiero"
+        ],
+        [
+          "to meet",
+          "encontrar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "people",
+          "personas",
+          null,
+          1
+        ],
+        [
+          "I want people",
+          "quiero personas",
+          null,
+          2
+        ],
+        [
+          "people tomorrow",
+          "personas mañana",
+          null,
+          2
+        ],
+        [
+          "to meet people",
+          "encontrar personas",
+          null,
+          2
+        ],
+        [
+          "because people",
+          "porque personas",
+          null,
+          2
+        ],
+        [
+          "I want to meet people",
+          "quiero encontrar personas",
+          null,
+          3
+        ],
+        [
+          "and people",
+          "y personas",
+          null,
+          2
+        ],
+        [
+          "because I want people",
+          "porque quiero personas",
+          null,
+          3
+        ],
+        [
+          "because I want to meet people",
+          "porque quiero encontrar personas",
+          null,
+          4
+        ],
+        [
+          "she wants to meet people",
+          "ella quiere encontrar personas",
+          null,
+          4
+        ],
+        [
+          "I want to meet people tomorrow",
+          "quiero encontrar personas mañana",
+          null,
+          4
+        ],
+        [
+          "and because I want to meet people",
+          "y porque quiero encontrar personas",
+          null,
+          5
+        ],
+        [
+          "but because you want to meet people quickly",
+          "pero porque quieres encontrar personas rápidamente",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 6,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 1
+      }
+    },
+    "S0022L05": {
+      "lego": [
+        "who speak",
+        "que hablan"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "porque"
+        ],
+        [
+          "I want",
+          "quiero"
+        ],
+        [
+          "to meet",
+          "encontrar"
+        ],
+        [
+          "people",
+          "personas"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "who speak",
+          "que hablan",
+          null,
+          2
+        ],
+        [
+          "people who speak",
+          "personas que hablan",
+          null,
+          3
+        ],
+        [
+          "who speak Spanish",
+          "que hablan español",
+          null,
+          3
+        ],
+        [
+          "I want who speak",
+          "quiero que hablan",
+          null,
+          3
+        ],
+        [
+          "to meet people who speak",
+          "encontrar personas que hablan",
+          null,
+          4
+        ],
+        [
+          "I want to meet people who speak",
+          "quiero encontrar personas que hablan",
+          null,
+          5
+        ],
+        [
+          "because people who speak",
+          "porque personas que hablan",
+          null,
+          4
+        ],
+        [
+          "and people who speak Spanish",
+          "y personas que hablan español",
+          null,
+          5
+        ],
+        [
+          "because I want people who speak",
+          "porque quiero personas que hablan",
+          null,
+          5
+        ],
+        [
+          "to meet people who speak Spanish",
+          "encontrar personas que hablan español",
+          null,
+          5
+        ],
+        [
+          "because I want to meet people who speak",
+          "porque quiero encontrar personas que hablan",
+          null,
+          6
+        ],
+        [
+          "and because I want to meet people who speak",
+          "y porque quiero encontrar personas que hablan",
+          null,
+          7
+        ],
+        [
+          "she wants to meet people who speak Spanish tomorrow",
+          "ella quiere encontrar personas que hablan español mañana",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 3,
+        "longer_4_5": 6,
+        "long_6_plus": 3
+      }
+    },
+    "S0022L06": {
+      "lego": [
+        "Spanish",
+        "español"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "porque"
+        ],
+        [
+          "I want",
+          "quiero"
+        ],
+        [
+          "to meet",
+          "encontrar"
+        ],
+        [
+          "people",
+          "personas"
+        ],
+        [
+          "who speak",
+          "que hablan"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Spanish",
+          "español",
+          null,
+          1
+        ],
+        [
+          "I want Spanish",
+          "quiero español",
+          null,
+          2
+        ],
+        [
+          "Spanish tomorrow",
+          "español mañana",
+          null,
+          2
+        ],
+        [
+          "who speak Spanish",
+          "que hablan español",
+          null,
+          3
+        ],
+        [
+          "because Spanish",
+          "porque español",
+          null,
+          2
+        ],
+        [
+          "people who speak Spanish",
+          "personas que hablan español",
+          null,
+          4
+        ],
+        [
+          "to meet Spanish",
+          "encontrar español",
+          null,
+          2
+        ],
+        [
+          "I want to learn Spanish",
+          "quiero aprender español",
+          null,
+          3
+        ],
+        [
+          "to meet people who speak Spanish",
+          "encontrar personas que hablan español",
+          null,
+          5
+        ],
+        [
+          "I want to meet people who speak Spanish",
+          "quiero encontrar personas que hablan español",
+          null,
+          6
+        ],
+        [
+          "because I want Spanish",
+          "porque quiero español",
+          null,
+          3
+        ],
+        [
+          "because I want to meet people who speak Spanish",
+          "porque quiero encontrar personas que hablan español",
+          null,
+          7
+        ],
+        [
+          "but because you want to meet people who speak Spanish",
+          "pero porque quieres encontrar personas que hablan español",
+          null,
+          8
+        ],
+        [
+          "because I want to meet people who speak Spanish",
+          "porque quiero encontrar personas que hablan español",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 5,
+        "quite_short_3": 3,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    }
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0038",
+  "generation_stage": "GRAMMAR_REVIEWED",
+  "seed_pair": {
+    "target": "Llevo aprendiendo aproximadamente una semana.",
+    "known": "I've been learning for about a week."
+  },
+  "recent_seed_pairs": {
+    "S0028": [
+      "It's useful to start talking as soon as you can.",
+      "Es útil comenzar a hablar tan pronto como puedas."
+    ],
+    "S0029": [
+      "I'm looking forward to speaking better as soon as I can.",
+      "Estoy deseando hablar mejor tan pronto como pueda."
+    ],
+    "S0030": [
+      "I wanted to ask you something yesterday.",
+      "Quería preguntarte algo ayer."
+    ],
+    "S0031": [
+      "You wanted to speak with me tonight.",
+      "Querías hablar conmigo esta noche."
+    ],
+    "S0032": [
+      "Did you want to show me something?",
+      "¿Querías mostrarme algo?"
+    ],
+    "S0033": [
+      "How long have you been learning Spanish?",
+      "¿Cuánto tiempo llevas aprendiendo español?"
+    ],
+    "S0034": [
+      "He doesn't want to be quiet when other people are here.",
+      "Él no quiere estar silencioso cuando otras personas están aquí."
+    ],
+    "S0035": [
+      "She doesn't want to read anything this afternoon.",
+      "Ella no quiere leer nada esta tarde."
+    ],
+    "S0036": [
+      "We don't want to interrupt the story.",
+      "No queremos interrumpir la historia."
+    ],
+    "S0037": [
+      "I started to think about it carefully last month.",
+      "Comencé a pensar sobre eso cuidadosamente el mes pasado."
+    ]
+  },
+  "legos": {
+    "S0038L01": {
+      "lego": [
+        "I've been learning",
+        "llevo aprendiendo"
+      ],
+      "type": "M",
+      "components": [
+        [
+          "llevo",
+          "I carry"
+        ],
+        [
+          "aprendiendo",
+          "learning"
+        ]
+      ],
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I've been learning",
+          "llevo aprendiendo",
+          null,
+          1
+        ],
+        [
+          "I've been learning Spanish",
+          "llevo aprendiendo español",
+          null,
+          2
+        ],
+        [
+          "I've been learning carefully",
+          "llevo aprendiendo cuidadosamente",
+          null,
+          2
+        ],
+        [
+          "how long have you been learning",
+          "cuánto tiempo llevas aprendiendo",
+          null,
+          2
+        ],
+        [
+          "I've been learning Spanish carefully",
+          "llevo aprendiendo español cuidadosamente",
+          null,
+          3
+        ],
+        [
+          "I've been learning about the story",
+          "llevo aprendiendo sobre la historia",
+          null,
+          4
+        ],
+        [
+          "I've been learning Spanish as soon as I can",
+          "llevo aprendiendo español tan pronto como pueda",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 1,
+        "longer_4_5": 1,
+        "long_6_plus": 1
+      }
+    },
+    "S0038L02": {
+      "lego": [
+        "for about",
+        "aproximadamente"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "llevo aprendiendo",
+          "I've been learning"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "for about",
+          "aproximadamente",
+          null,
+          1
+        ],
+        [
+          "I've been here for about",
+          "estoy aquí aproximadamente",
+          null,
+          3
+        ],
+        [
+          "how long have you been learning for about",
+          "cuánto tiempo llevas aprendiendo aproximadamente",
+          null,
+          3
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 2,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      }
+    },
+    "S0038L03": {
+      "lego": [
+        "a week",
+        "una semana"
+      ],
+      "type": "M",
+      "components": [
+        [
+          "una",
+          "a/one"
+        ],
+        [
+          "semana",
+          "week"
+        ]
+      ],
+      "current_seed_legos_available": [
+        [
+          "llevo aprendiendo",
+          "I've been learning"
+        ],
+        [
+          "aproximadamente",
+          "for about"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "a week",
+          "una semana",
+          null,
+          1
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      }
+    }
+  }
+}

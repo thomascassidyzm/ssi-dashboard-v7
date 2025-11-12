@@ -1,0 +1,176 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0004",
+  "generation_stage": "GRAMMAR_REVIEWED",
+  "seed_pair": {
+    "target": "cómo decir algo en español",
+    "known": "how to say something in Spanish"
+  },
+  "recent_seed_pairs": {
+    "S0001": [
+      "Quiero hablar español contigo ahora.",
+      "I want to speak Spanish with you now."
+    ],
+    "S0002": [
+      "Estoy intentando aprender.",
+      "I'm trying to learn."
+    ],
+    "S0003": [
+      "cómo hablar lo más frecuentamente posible",
+      "how to speak as often as possible"
+    ]
+  },
+  "legos": {
+    "S0004L02": {
+      "lego": [
+        "to say",
+        "decir"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["to say", "decir", null, 1],
+        ["I want to say", "quiero decir", null, 2],
+        ["to say", "decir", null, 1],
+        ["how to say", "cómo decir", null, 2],
+        ["I want to say now", "quiero decir ahora", null, 3],
+        ["to say Spanish", "decir español", null, 2],
+        ["how to say Spanish", "cómo decir español", null, 3],
+        ["I'm trying to say", "estoy intentando decir", null, 3],
+        ["I want to say Spanish", "quiero decir español", null, 3],
+        ["how to say Spanish now", "cómo decir español ahora", null, 4],
+        ["I'm trying to say Spanish", "estoy intentando decir español", null, 4],
+        ["I want to say Spanish now", "quiero decir español ahora", null, 4],
+        ["how to say Spanish with you", "cómo decir español contigo", null, 4]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 5,
+        "quite_short_3": 4,
+        "longer_4_5": 4,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0004L02",
+        "seed_context": {
+          "target": "cómo decir algo en español",
+          "known": "how to say something in Spanish"
+        }
+      }
+    },
+    "S0004L03": {
+      "lego": [
+        "something",
+        "algo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "to say",
+          "decir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["something", "algo", null, 1],
+        ["to say something", "decir algo", null, 2],
+        ["something", "algo", null, 1],
+        ["I want something", "quiero algo", null, 2],
+        ["to say something now", "decir algo ahora", null, 3],
+        ["how to say something", "cómo decir algo", null, 3],
+        ["I want to say something", "quiero decir algo", null, 3],
+        ["I'm trying to say something", "estoy intentando decir algo", null, 4],
+        ["how to say something now", "cómo decir algo ahora", null, 4],
+        ["I want to say something now", "quiero decir algo ahora", null, 4],
+        ["I'm trying to learn something", "estoy intentando aprender algo", null, 4],
+        ["how to say something with you", "cómo decir algo contigo", null, 4],
+        ["I want to say something with you", "quiero decir algo contigo", null, 5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 3,
+        "longer_4_5": 6,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0004L03",
+        "seed_context": {
+          "target": "cómo decir algo en español",
+          "known": "how to say something in Spanish"
+        }
+      }
+    },
+    "S0004L04": {
+      "lego": [
+        "in Spanish",
+        "en español"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "to say",
+          "decir"
+        ],
+        [
+          "something",
+          "algo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["in Spanish", "en español", null, 2],
+        ["to say in Spanish", "decir en español", null, 3],
+        ["in Spanish", "en español", null, 2],
+        ["how to say in Spanish", "cómo decir en español", null, 4],
+        ["to say something in Spanish", "decir algo en español", null, 4],
+        ["how to say something in Spanish", "cómo decir algo en español", null, 5],
+        ["I want to say something in Spanish", "quiero decir algo en español", null, 5],
+        ["I'm trying to learn in Spanish", "estoy intentando aprender en español", null, 5],
+        ["I want to speak in Spanish", "quiero hablar en español", null, 4],
+        ["how to speak in Spanish", "cómo hablar en español", null, 4],
+        ["I'm trying to say something in Spanish", "estoy intentando decir algo en español", null, 6],
+        ["how to say something in Spanish now", "cómo decir algo en español ahora", null, 6],
+        ["how to say something in Spanish", "cómo decir algo en español", null, 5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 1,
+        "longer_4_5": 6,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0004L04",
+        "seed_context": {
+          "target": "cómo decir algo en español",
+          "known": "how to say something in Spanish"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng_test_s0001-0050/phase5_outputs/seed_s0004.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 3
+  }
+}

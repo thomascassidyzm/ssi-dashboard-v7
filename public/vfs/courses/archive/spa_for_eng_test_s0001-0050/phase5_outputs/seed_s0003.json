@@ -1,0 +1,130 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0003",
+  "generation_stage": "GRAMMAR_REVIEWED",
+  "seed_pair": {
+    "target": "cómo hablar lo más frecuentamente posible",
+    "known": "how to speak as often as possible"
+  },
+  "recent_seed_pairs": {
+    "S0001": [
+      "Quiero hablar español contigo ahora.",
+      "I want to speak Spanish with you now."
+    ],
+    "S0002": [
+      "Estoy intentando aprender.",
+      "I'm trying to learn."
+    ]
+  },
+  "legos": {
+    "S0003L01": {
+      "lego": [
+        "how",
+        "cómo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["how", "cómo", null, 1],
+        ["how to speak", "cómo hablar", null, 2],
+        ["how", "cómo", null, 1],
+        ["how to speak Spanish", "cómo hablar español", null, 3],
+        ["how to learn", "cómo aprender", null, 2],
+        ["how to speak Spanish now", "cómo hablar español ahora", null, 4],
+        ["how to learn Spanish", "cómo aprender español", null, 3],
+        ["how to speak with you", "cómo hablar contigo", null, 3],
+        ["how to learn Spanish now", "cómo aprender español ahora", null, 4],
+        ["how to speak Spanish with you", "cómo hablar español contigo", null, 4],
+        ["how to speak Spanish with you now", "cómo hablar español contigo ahora", null, 5],
+        ["how to learn Spanish with you", "cómo aprender español contigo", null, 4],
+        ["how to learn Spanish with you now", "cómo aprender español contigo ahora", null, 5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 5,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0003L01",
+        "seed_context": {
+          "target": "cómo hablar lo más frecuentamente posible",
+          "known": "how to speak as often as possible"
+        }
+      }
+    },
+    "S0003L03": {
+      "lego": [
+        "as often as possible",
+        "lo más frecuentamente posible"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "how",
+          "cómo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["as often as possible", "lo más frecuentamente posible", null, 4],
+        ["how to speak as often as possible", "cómo hablar lo más frecuentamente posible", null, 6],
+        ["to speak as often as possible", "hablar lo más frecuentamente posible", null, 5],
+        ["I want to speak as often as possible", "quiero hablar lo más frecuentamente posible", null, 6],
+        ["to learn as often as possible", "aprender lo más frecuentamente posible", null, 5],
+        ["how to learn as often as possible", "cómo aprender lo más frecuentamente posible", null, 6],
+        ["I'm trying to learn as often as possible", "estoy intentando aprender lo más frecuentamente posible", null, 7],
+        ["to speak Spanish as often as possible", "hablar español lo más frecuentamente posible", null, 6],
+        ["how to speak Spanish as often as possible", "cómo hablar español lo más frecuentamente posible", null, 7],
+        ["I want to learn Spanish as often as possible", "quiero aprender español lo más frecuentamente posible", null, 7],
+        ["I want to speak Spanish as often as possible", "quiero hablar español lo más frecuentamente posible", null, 7],
+        ["I'm trying to speak as often as possible", "estoy intentando hablar lo más frecuentamente posible", null, 7],
+        ["how to speak as often as possible", "cómo hablar lo más frecuentamente posible", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 2,
+        "long_6_plus": 11
+      },
+      "_metadata": {
+        "lego_id": "S0003L03",
+        "seed_context": {
+          "target": "cómo hablar lo más frecuentamente posible",
+          "known": "how to speak as often as possible"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng_test_s0001-0050/phase5_outputs/seed_s0003.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 24,
+    "recent_context_seeds": 2
+  }
+}

@@ -1,0 +1,458 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0019",
+  "generation_stage": "GRAMMAR_REVIEWED",
+  "seed_pair": {
+    "target": "Pero no quiero parar de hablar.",
+    "known": "But I don't want to stop talking."
+  },
+  "recent_seed_pairs": {
+    "S0012": [
+      "I wouldn't like to guess what's going to happen tomorrow.",
+      "No me gustaría adivinar lo que va a ocurrir mañana."
+    ],
+    "S0013": [
+      "You speak Spanish very well.",
+      "Hablas español muy bien."
+    ],
+    "S0014": [
+      "Do you speak Spanish all day?",
+      "¿Hablas español todo el día?"
+    ],
+    "S0015": [
+      "And I want you to speak Spanish with me tomorrow.",
+      "Y quiero que hables español conmigo mañana."
+    ],
+    "S0016": [
+      "He wants to come back with everyone else later on.",
+      "Él quiere volver con todos los demás más tarde."
+    ],
+    "S0017": [
+      "She wants to find out what the answer is.",
+      "Ella quiere descubrir cuál es la respuesta."
+    ],
+    "S0018": [
+      "We want to meet at six o'clock this evening.",
+      "Queremos reunirnos a las seis esta noche."
+    ]
+  },
+  "legos": {
+    "S0019L01": {
+      "lego": [
+        "but",
+        "pero"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "but",
+          "pero",
+          null,
+          1
+        ],
+        [
+          "but I want",
+          "pero quiero",
+          null,
+          2
+        ],
+        [
+          "but tomorrow",
+          "pero mañana",
+          null,
+          2
+        ],
+        [
+          "but Spanish",
+          "pero español",
+          null,
+          2
+        ],
+        [
+          "but she wants",
+          "pero ella quiere",
+          null,
+          3
+        ],
+        [
+          "but very well",
+          "pero muy bien",
+          null,
+          3
+        ],
+        [
+          "but we want",
+          "pero queremos",
+          null,
+          3
+        ],
+        [
+          "but I want Spanish",
+          "pero quiero español",
+          null,
+          3
+        ],
+        [
+          "but he wants to come back",
+          "pero él quiere volver",
+          null,
+          4
+        ],
+        [
+          "but she wants to find out",
+          "pero ella quiere descubrir",
+          null,
+          4
+        ],
+        [
+          "but we want to meet tomorrow",
+          "pero queremos reunirnos mañana",
+          null,
+          4
+        ],
+        [
+          "but we want to meet at six o'clock this evening",
+          "pero queremos reunirnos a las seis esta noche",
+          null,
+          8
+        ],
+        [
+          "but she wants to find out what the answer is",
+          "pero ella quiere descubrir cuál es la respuesta",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 4,
+        "longer_4_5": 3,
+        "long_6_plus": 2
+      }
+    },
+    "S0019L02": {
+      "lego": [
+        "not",
+        "no"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "but",
+          "pero"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "not",
+          "no",
+          null,
+          1
+        ],
+        [
+          "not tomorrow",
+          "no mañana",
+          null,
+          2
+        ],
+        [
+          "not Spanish",
+          "no español",
+          null,
+          2
+        ],
+        [
+          "but not",
+          "pero no",
+          null,
+          2
+        ],
+        [
+          "not very well",
+          "no muy bien",
+          null,
+          3
+        ],
+        [
+          "but not tomorrow",
+          "pero no mañana",
+          null,
+          3
+        ],
+        [
+          "but not Spanish",
+          "pero no español",
+          null,
+          3
+        ],
+        [
+          "but not with me tomorrow",
+          "pero no conmigo mañana",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 3,
+        "longer_4_5": 1,
+        "long_6_plus": 0
+      }
+    },
+    "S0019L03": {
+      "lego": [
+        "I want",
+        "quiero"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "not",
+          "no"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I want",
+          "quiero",
+          null,
+          1
+        ],
+        [
+          "I want Spanish",
+          "quiero español",
+          null,
+          2
+        ],
+        [
+          "but I want",
+          "pero quiero",
+          null,
+          2
+        ],
+        [
+          "I want tomorrow",
+          "quiero mañana",
+          null,
+          2
+        ],
+        [
+          "I want very well",
+          "quiero muy bien",
+          null,
+          3
+        ],
+        [
+          "but I want Spanish",
+          "pero quiero español",
+          null,
+          3
+        ],
+        [
+          "I want to find out the answer",
+          "quiero descubrir la respuesta",
+          null,
+          4
+        ],
+        [
+          "but I want to find out what the answer is",
+          "pero quiero descubrir cuál es la respuesta",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 2,
+        "longer_4_5": 1,
+        "long_6_plus": 1
+      }
+    },
+    "S0019L04": {
+      "lego": [
+        "to stop",
+        "parar de"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "not",
+          "no"
+        ],
+        [
+          "I want",
+          "quiero"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "to stop",
+          "parar de",
+          null,
+          2
+        ],
+        [
+          "I want to stop",
+          "quiero parar de",
+          null,
+          3
+        ],
+        [
+          "but to stop",
+          "pero parar de",
+          null,
+          3
+        ],
+        [
+          "she wants to stop",
+          "ella quiere parar de",
+          null,
+          4
+        ],
+        [
+          "but I want to stop",
+          "pero quiero parar de",
+          null,
+          4
+        ],
+        [
+          "we want to stop",
+          "queremos parar de",
+          null,
+          3
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 3,
+        "longer_4_5": 2,
+        "long_6_plus": 0
+      }
+    },
+    "S0019L05": {
+      "lego": [
+        "talking",
+        "hablar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "not",
+          "no"
+        ],
+        [
+          "I want",
+          "quiero"
+        ],
+        [
+          "to stop",
+          "parar de"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "talking",
+          "hablar",
+          null,
+          1
+        ],
+        [
+          "talking Spanish",
+          "hablar español",
+          null,
+          2
+        ],
+        [
+          "talking tomorrow",
+          "hablar mañana",
+          null,
+          2
+        ],
+        [
+          "to stop talking",
+          "parar de hablar",
+          null,
+          3
+        ],
+        [
+          "I want talking",
+          "quiero hablar",
+          null,
+          2
+        ],
+        [
+          "but talking",
+          "pero hablar",
+          null,
+          2
+        ],
+        [
+          "I want to stop talking",
+          "quiero parar de hablar",
+          null,
+          4
+        ],
+        [
+          "talking very well",
+          "hablar muy bien",
+          null,
+          3
+        ],
+        [
+          "she wants to stop talking",
+          "ella quiere parar de hablar",
+          null,
+          5
+        ],
+        [
+          "but I want to stop talking",
+          "pero quiero parar de hablar",
+          null,
+          5
+        ],
+        [
+          "talking Spanish with me tomorrow",
+          "hablar español conmigo mañana",
+          null,
+          4
+        ],
+        [
+          "but we want to stop talking tomorrow",
+          "pero queremos parar de hablar mañana",
+          null,
+          6
+        ],
+        [
+          "but I don't want to stop talking",
+          "pero no quiero parar de hablar",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 5,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      }
+    }
+  }
+}

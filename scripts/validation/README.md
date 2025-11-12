@@ -76,6 +76,29 @@ Spanish:
 node scripts/validation/check-conjunctions.js [course_path]
 ```
 
+### 5. Pattern Analysis (Phase 5)
+Compares grammatical patterns between seed_pairs and basket practice phrases to ensure agents are learning from examples.
+
+**What it checks:**
+- Pattern overlap percentage (target: ≥80%)
+- Common verb patterns (quiero + infinitive, voy a + infinitive, etc.)
+- Question patterns (¿Por qué...?, etc.)
+- Relative clauses and complex structures
+- Novel patterns in baskets vs seed examples
+
+**Pattern detection includes:**
+- Verb conjugation patterns (quiero/quieres/quiere/queremos)
+- Future constructions (voy a/vas a + infinitive)
+- Preference expressions (me gusta/me gustaría)
+- Conditional patterns (si + clause)
+- Compound structures (comenzar a, parar de)
+
+```bash
+node scripts/phase5_pattern_analysis.cjs [course_path]
+```
+
+**Note:** Integrated into `run-all-checks.js` as CHECK 4/4
+
 ## Usage Examples
 
 ### Check all baskets in spa_for_eng course
@@ -88,6 +111,7 @@ node scripts/validation/run-all-checks.js public/vfs/courses/spa_for_eng
 node scripts/validation/check-gate-violations.js public/vfs/courses/spa_for_eng
 node scripts/validation/check-speakability.js public/vfs/courses/spa_for_eng
 node scripts/validation/check-conjunctions.js public/vfs/courses/spa_for_eng
+node scripts/phase5_pattern_analysis.cjs public/vfs/courses/spa_for_eng_test_s0001-0050
 ```
 
 ### Check different course
@@ -132,10 +156,11 @@ fi
 ```
 scripts/validation/
 ├── README.md                    # This file
-├── run-all-checks.js            # Master script
+├── run-all-checks.js            # Master script (runs all checks)
 ├── check-gate-violations.js     # GATE compliance checker
 ├── check-speakability.js        # Speakability analyzer
-└── check-conjunctions.js        # Conjunction usage checker
+├── check-conjunctions.js        # Conjunction usage checker
+└── ../phase5_pattern_analysis.cjs  # Pattern analysis (Phase 5)
 ```
 
 ## Requirements

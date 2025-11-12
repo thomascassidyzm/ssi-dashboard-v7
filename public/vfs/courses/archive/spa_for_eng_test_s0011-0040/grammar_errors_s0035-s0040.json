@@ -1,0 +1,125 @@
+[
+  {
+    "seed_id": "S0035",
+    "lego_id": "S0035L01",
+    "errors": [
+      {
+        "phrase_index": 3,
+        "english": "she doesn't want to be quiet",
+        "spanish": "ella no quiere estar silencioso",
+        "error_type": "agreement",
+        "description": "Gender agreement error: 'silencioso' is masculine, but the subject 'ella' is feminine. The adjective must agree with the subject.",
+        "suggested_fix_english": "she doesn't want to be quiet",
+        "suggested_fix_spanish": "ella no quiere estar silenciosa"
+      },
+      {
+        "phrase_index": 8,
+        "english": "she doesn't want to be quiet when other people are here",
+        "spanish": "ella no quiere estar silencioso cuando otras personas están aquí",
+        "error_type": "agreement",
+        "description": "Gender agreement error: 'silencioso' is masculine, but the subject 'ella' is feminine. The adjective must agree with the subject.",
+        "suggested_fix_english": "she doesn't want to be quiet when other people are here",
+        "suggested_fix_spanish": "ella no quiere estar silenciosa cuando otras personas están aquí"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0036",
+    "lego_id": "S0036L01",
+    "errors": [
+      {
+        "phrase_index": 4,
+        "english": "we don't want to be quiet",
+        "spanish": "no queremos estar silencioso",
+        "error_type": "agreement",
+        "description": "Number agreement error: 'silencioso' is singular, but the subject 'nosotros' (we) is plural. The adjective must agree in number.",
+        "suggested_fix_english": "we don't want to be quiet",
+        "suggested_fix_spanish": "no queremos estar silenciosos"
+      },
+      {
+        "phrase_index": 10,
+        "english": "we don't want to be quiet when other people are here",
+        "spanish": "no queremos estar silencioso cuando otras personas están aquí",
+        "error_type": "agreement",
+        "description": "Number agreement error: 'silencioso' is singular, but the subject 'nosotros' (we) is plural. The adjective must agree in number.",
+        "suggested_fix_english": "we don't want to be quiet when other people are here",
+        "suggested_fix_spanish": "no queremos estar silenciosos cuando otras personas están aquí"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0038",
+    "lego_id": "S0038L01",
+    "errors": [
+      {
+        "phrase_index": 4,
+        "english": "I've been learning to speak",
+        "spanish": "llevo aprendiendo hablar",
+        "error_type": "preposition",
+        "description": "Missing preposition 'a' before the infinitive. In Spanish, 'aprender' requires the preposition 'a' before another infinitive: 'aprender a + infinitive'.",
+        "suggested_fix_english": "I've been learning to speak",
+        "suggested_fix_spanish": "llevo aprendiendo a hablar"
+      },
+      {
+        "phrase_index": 5,
+        "english": "I've been learning to read",
+        "spanish": "llevo aprendiendo leer",
+        "error_type": "preposition",
+        "description": "Missing preposition 'a' before the infinitive. In Spanish, 'aprender' requires the preposition 'a' before another infinitive: 'aprender a + infinitive'.",
+        "suggested_fix_english": "I've been learning to read",
+        "suggested_fix_spanish": "llevo aprendiendo a leer"
+      },
+      {
+        "phrase_index": 6,
+        "english": "I've been learning to think",
+        "spanish": "llevo aprendiendo pensar",
+        "error_type": "preposition",
+        "description": "Missing preposition 'a' before the infinitive. In Spanish, 'aprender' requires the preposition 'a' before another infinitive: 'aprender a + infinitive'.",
+        "suggested_fix_english": "I've been learning to think",
+        "suggested_fix_spanish": "llevo aprendiendo a pensar"
+      },
+      {
+        "phrase_index": 10,
+        "english": "I've been learning to read the story carefully",
+        "spanish": "llevo aprendiendo leer la historia cuidadosamente",
+        "error_type": "preposition",
+        "description": "Missing preposition 'a' before the infinitive. In Spanish, 'aprender' requires the preposition 'a' before another infinitive: 'aprender a + infinitive'.",
+        "suggested_fix_english": "I've been learning to read the story carefully",
+        "suggested_fix_spanish": "llevo aprendiendo a leer la historia cuidadosamente"
+      },
+      {
+        "phrase_index": 11,
+        "english": "how long have you been learning to speak Spanish",
+        "spanish": "cuánto tiempo llevas aprendiendo hablar español",
+        "error_type": "preposition",
+        "description": "Missing preposition 'a' before the infinitive. In Spanish, 'aprender' requires the preposition 'a' before another infinitive: 'aprender a + infinitive'.",
+        "suggested_fix_english": "how long have you been learning to speak Spanish",
+        "suggested_fix_spanish": "cuánto tiempo llevas aprendiendo a hablar español"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0038",
+    "lego_id": "S0038L03",
+    "errors": [
+      {
+        "phrase_index": 1,
+        "english": "I started to think about it a week ago",
+        "spanish": "comencé a pensar sobre eso una semana",
+        "error_type": "other",
+        "description": "Missing 'hace' for expressing 'ago'. In Spanish, to say 'a week ago', you need 'hace una semana', not just 'una semana'.",
+        "suggested_fix_english": "I started to think about it a week ago",
+        "suggested_fix_spanish": "comencé a pensar sobre eso hace una semana"
+      },
+      {
+        "phrase_index": 2,
+        "english": "how long have you been learning Spanish for a week",
+        "spanish": "cuánto tiempo llevas aprendiendo español una semana",
+        "error_type": "semantic_mismatch",
+        "description": "Both the English and Spanish phrases are grammatically incorrect and semantically nonsensical. 'How long have you been learning Spanish for a week' doesn't make logical sense - you can't ask 'how long' and then provide a specific duration 'for a week' in the same question.",
+        "suggested_fix_english": "have you been learning Spanish for a week",
+        "suggested_fix_spanish": "llevas aprendiendo español una semana"
+      }
+    ]
+  }
+]

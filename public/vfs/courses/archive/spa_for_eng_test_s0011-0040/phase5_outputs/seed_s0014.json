@@ -1,0 +1,340 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0014",
+  "generation_stage": "GRAMMAR_REVIEWED",
+  "seed_pair": {
+    "target": "¿Hablas español todo el día?",
+    "known": "Do you speak Spanish all day?"
+  },
+  "recent_seed_pairs": {
+    "S0004": [
+      "how to say something in Spanish",
+      "cómo decir algo en español"
+    ],
+    "S0005": [
+      "I'm going to practise speaking with someone else.",
+      "Voy a practicar hablar con alguien más."
+    ],
+    "S0006": [
+      "I'm trying to remember a word.",
+      "Estoy intentando recordar una palabra."
+    ],
+    "S0007": [
+      "I want to try as hard as I can today.",
+      "Quiero intentar tan duro como pueda hoy."
+    ],
+    "S0008": [
+      "I'm going to try to explain what I mean.",
+      "Voy a intentar explicar lo que quiero decir."
+    ],
+    "S0009": [
+      "I speak a little Spanish now.",
+      "Hablo un poco de español ahora."
+    ],
+    "S0010": [
+      "I'm not sure if I can remember the whole sentence.",
+      "No estoy seguro si puedo recordar toda la oración."
+    ],
+    "S0011": [
+      "I'd like to be able to speak after you finish.",
+      "Me gustaría poder hablar después de que termines."
+    ],
+    "S0012": [
+      "I wouldn't like to guess what's going to happen tomorrow.",
+      "No me gustaría adivinar lo que va a ocurrir mañana."
+    ],
+    "S0013": [
+      "You speak Spanish very well.",
+      "Hablas español muy bien."
+    ]
+  },
+  "legos": {
+    "S0014L01": {
+      "lego": [
+        "you speak",
+        "hablas"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "you speak",
+          "hablas",
+          null,
+          1
+        ],
+        [
+          "you speak Spanish",
+          "hablas español",
+          null,
+          2
+        ],
+        [
+          "do you speak",
+          "hablas",
+          null,
+          1
+        ],
+        [
+          "you speak well",
+          "hablas bien",
+          null,
+          2
+        ],
+        [
+          "you speak a little",
+          "hablas un poco",
+          null,
+          2
+        ],
+        [
+          "do you speak Spanish",
+          "hablas español",
+          null,
+          2
+        ],
+        [
+          "you speak very well",
+          "hablas muy bien",
+          null,
+          3
+        ],
+        [
+          "you speak Spanish well",
+          "hablas español bien",
+          null,
+          3
+        ],
+        [
+          "you speak Spanish very well",
+          "hablas español muy bien",
+          null,
+          4
+        ],
+        [
+          "do you speak Spanish very well now",
+          "hablas español muy bien ahora",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 6,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 0
+      }
+    },
+    "S0014L02": {
+      "lego": [
+        "Spanish",
+        "español"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "you speak",
+          "hablas"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Spanish",
+          "español",
+          null,
+          1
+        ],
+        [
+          "in Spanish",
+          "en español",
+          null,
+          2
+        ],
+        [
+          "you speak Spanish",
+          "hablas español",
+          null,
+          2
+        ],
+        [
+          "I speak Spanish",
+          "hablo español",
+          null,
+          2
+        ],
+        [
+          "do you speak Spanish",
+          "hablas español",
+          null,
+          2
+        ],
+        [
+          "I want to speak Spanish",
+          "quiero hablar español",
+          null,
+          3
+        ],
+        [
+          "you speak Spanish well",
+          "hablas español bien",
+          null,
+          3
+        ],
+        [
+          "how to say something in Spanish",
+          "cómo decir algo en español",
+          null,
+          4
+        ],
+        [
+          "you speak Spanish very well",
+          "hablas español muy bien",
+          null,
+          4
+        ],
+        [
+          "I'm going to practise speaking Spanish",
+          "voy a practicar hablar español",
+          null,
+          4
+        ],
+        [
+          "I'd like to be able to speak Spanish",
+          "me gustaría poder hablar español",
+          null,
+          4
+        ],
+        [
+          "I speak a little Spanish now",
+          "hablo un poco de español ahora",
+          null,
+          5
+        ],
+        [
+          "do you speak Spanish very well",
+          "hablas español muy bien",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 5,
+        "quite_short_3": 2,
+        "longer_4_5": 6,
+        "long_6_plus": 0
+      }
+    },
+    "S0014L03": {
+      "lego": [
+        "all day",
+        "todo el día"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you speak",
+          "hablas"
+        ],
+        [
+          "Spanish",
+          "español"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "all day",
+          "todo el día",
+          null,
+          1
+        ],
+        [
+          "I speak all day",
+          "hablo todo el día",
+          null,
+          2
+        ],
+        [
+          "you speak all day",
+          "hablas todo el día",
+          null,
+          2
+        ],
+        [
+          "I want to speak all day",
+          "quiero hablar todo el día",
+          null,
+          3
+        ],
+        [
+          "do you speak all day",
+          "hablas todo el día",
+          null,
+          2
+        ],
+        [
+          "you speak Spanish all day",
+          "hablas español todo el día",
+          null,
+          3
+        ],
+        [
+          "I speak Spanish all day",
+          "hablo español todo el día",
+          null,
+          3
+        ],
+        [
+          "I'm trying to speak all day",
+          "estoy intentando hablar todo el día",
+          null,
+          4
+        ],
+        [
+          "do you speak Spanish all day",
+          "hablas español todo el día",
+          null,
+          3
+        ],
+        [
+          "I'd like to speak Spanish all day",
+          "me gustaría hablar español todo el día",
+          null,
+          4
+        ],
+        [
+          "I'm going to speak Spanish all day",
+          "voy a hablar español todo el día",
+          null,
+          5
+        ],
+        [
+          "I want to be able to speak all day",
+          "quiero poder hablar todo el día",
+          null,
+          5
+        ],
+        [
+          "I'm going to try to speak Spanish all day",
+          "voy a intentar hablar español todo el día",
+          null,
+          6
+        ],
+        [
+          "Do you speak Spanish all day?",
+          "¿Hablas español todo el día?",
+          null,
+          3
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 5,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      }
+    }
+  }
+}

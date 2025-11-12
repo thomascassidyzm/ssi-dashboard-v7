@@ -1,0 +1,86 @@
+=======================================================================
+SAMPLE PHRASE OUTPUT: S0022 - "Because I want to meet people who speak Spanish"
+=======================================================================
+
+This demonstrates the quality and progression of generated practice phrases.
+
+-----------------------------------------------------------------------
+LEGO 1: "porque" (because)
+-----------------------------------------------------------------------
+Type: A (Atomic)
+Available vocabulary: Recent seeds S0015-S0021
+
+Sample phrases (progressive complexity):
+
+1-2 LEGOs:
+  "because" → "porque"
+  "because I want" → "porque quiero"
+  "and because" → "y porque"
+
+3 LEGOs:
+  "because I want Spanish" → "porque quiero español"
+  "because she wants" → "porque ella quiere"
+  "because we want to meet" → "porque queremos reunirnos"
+
+4-5 LEGOs:
+  "because he wants to come back" → "porque él quiere volver"
+  "because you want to learn quickly" → "porque quieres aprender rápidamente"
+
+6+ LEGOs:
+  "because I want to stop talking tomorrow" → "porque quiero parar de hablar mañana"
+  "because we want to meet at six o'clock this evening" → "porque queremos reunirnos a las seis esta noche"
+
+-----------------------------------------------------------------------
+LEGO 6 (FINAL): "español" (Spanish)
+-----------------------------------------------------------------------
+Type: A (Atomic)
+Available vocabulary: Recent seeds + all previous LEGOs from S0022
+
+Sample phrases building to complete sentence:
+
+1-2 LEGOs:
+  "Spanish" → "español"
+  "I want Spanish" → "quiero español"
+
+3 LEGOs:
+  "who speak Spanish" → "que hablan español"
+  "I want to learn Spanish" → "quiero aprender español"
+
+4-5 LEGOs:
+  "people who speak Spanish" → "personas que hablan español"
+  "to meet people who speak Spanish" → "encontrar personas que hablan español"
+
+6+ LEGOs:
+  "I want to meet people who speak Spanish" → "quiero encontrar personas que hablan español"
+  "because I want to meet people who speak Spanish" → "porque quiero encontrar personas que hablan español" ✓
+
+FINAL PHRASE (matches seed sentence):
+  "because I want to meet people who speak Spanish" → "porque quiero encontrar personas que hablan español"
+
+=======================================================================
+KEY FEATURES DEMONSTRATED:
+=======================================================================
+
+✓ MEANINGFUL UTTERANCES: Each phrase is natural and communicative
+  - "because we want to meet at six o'clock this evening"
+  - "I want to meet people who speak Spanish"
+  
+✓ PROGRESSIVE COMPLEXITY: Builds from simple to complex
+  - Starts: "because" (1 LEGO)
+  - Builds: "because I want Spanish" (3 LEGOs)
+  - Culminates: "because I want to meet people who speak Spanish" (7 LEGOs)
+
+✓ VOCABULARY COMPLIANCE: All words from sliding window
+  - "porque", "quiero", "encontrar" from recent seeds
+  - "personas", "que hablan", "español" from sliding window
+  
+✓ M-TYPE COMPONENTS: Multi-word LEGOs broken down
+  - "que hablan" (who speak) = "que" + "hablan"
+  - Both components available for phrase construction
+
+✓ CONTEXTUAL RELEVANCE: Phrases relate to learning goals
+  - "I want to learn Spanish quickly"
+  - "why are you learning her name"
+  - "because I want to meet people who speak Spanish"
+
+=======================================================================

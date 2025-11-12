@@ -1,0 +1,512 @@
+[
+  {
+    "seed_id": "S0017",
+    "lego_id": "S0017L03",
+    "errors": [
+      {
+        "phrase_index": 13,
+        "english": "she wants to find out what is going to happen",
+        "spanish": "ella quiere descubrir cuál es va a ocurrir",
+        "error_type": "semantic_mismatch",
+        "description": "Spanish phrase is malformed. 'cuál es va a ocurrir' is incorrect - it mixes 'cuál es' (what is) with 'va a ocurrir' (going to happen) incorrectly. Should use 'qué va a ocurrir' or restructure entirely.",
+        "suggested_fix_english": "she wants to find out what is going to happen",
+        "suggested_fix_spanish": "ella quiere descubrir qué va a ocurrir"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0018",
+    "lego_id": "S0018L02",
+    "errors": [
+      {
+        "phrase_index": 2,
+        "english": "I want to meet",
+        "spanish": "quiero reunirnos",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is reflexive plural (ourselves), but subject is 'I' (singular). Should be 'reunirme' (to meet myself) or better 'encontrarme/conocer a alguien' depending on context. If meaning 'meet with others', needs object.",
+        "suggested_fix_english": "I want to meet",
+        "suggested_fix_spanish": "quiero reunirme"
+      },
+      {
+        "phrase_index": 5,
+        "english": "she wants to meet",
+        "spanish": "ella quiere reunirnos",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' means 'to meet ourselves/us' (plural reflexive), but subject is 'ella' (she). Should be 'reunirse' if intransitive or restructure.",
+        "suggested_fix_english": "she wants to meet",
+        "suggested_fix_spanish": "ella quiere reunirse"
+      },
+      {
+        "phrase_index": 7,
+        "english": "he wants to meet",
+        "spanish": "él quiere reunirnos",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is reflexive plural (ourselves), but subject is 'él' (he). Should be 'reunirse'.",
+        "suggested_fix_english": "he wants to meet",
+        "suggested_fix_spanish": "él quiere reunirse"
+      },
+      {
+        "phrase_index": 9,
+        "english": "I want to meet tomorrow",
+        "spanish": "quiero reunirnos mañana",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive but subject is 'I'. Should be 'reunirme'.",
+        "suggested_fix_english": "I want to meet tomorrow",
+        "suggested_fix_spanish": "quiero reunirme mañana"
+      },
+      {
+        "phrase_index": 11,
+        "english": "she wants to meet with everyone else",
+        "spanish": "ella quiere reunirnos con todos los demás",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive (to meet ourselves) but subject is 'ella' (she). Should be 'reunirse'.",
+        "suggested_fix_english": "she wants to meet with everyone else",
+        "suggested_fix_spanish": "ella quiere reunirse con todos los demás"
+      },
+      {
+        "phrase_index": 13,
+        "english": "I want to meet and speak Spanish tomorrow",
+        "spanish": "quiero reunirnos y hablar español mañana",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive but subject is 'I'. Should be 'reunirme'.",
+        "suggested_fix_english": "I want to meet and speak Spanish tomorrow",
+        "suggested_fix_spanish": "quiero reunirme y hablar español mañana"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0018",
+    "lego_id": "S0018L03",
+    "errors": [
+      {
+        "phrase_index": 6,
+        "english": "I want to meet at six o'clock",
+        "spanish": "quiero reunirnos a las seis",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive but subject is 'I'. Should be 'reunirme'.",
+        "suggested_fix_english": "I want to meet at six o'clock",
+        "suggested_fix_spanish": "quiero reunirme a las seis"
+      },
+      {
+        "phrase_index": 8,
+        "english": "she wants to meet at six o'clock",
+        "spanish": "ella quiere reunirnos a las seis",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive but subject is 'ella'. Should be 'reunirse'.",
+        "suggested_fix_english": "she wants to meet at six o'clock",
+        "suggested_fix_spanish": "ella quiere reunirse a las seis"
+      },
+      {
+        "phrase_index": 11,
+        "english": "I want to meet at six o'clock with me",
+        "spanish": "quiero reunirnos a las seis conmigo",
+        "error_type": "semantic_mismatch",
+        "description": "Logical error: 'I want to meet with me' doesn't make semantic sense in English. Additionally, 'reunirnos' is plural reflexive.",
+        "suggested_fix_english": "I want to meet at six o'clock",
+        "suggested_fix_spanish": "quiero reunirme a las seis"
+      },
+      {
+        "phrase_index": 14,
+        "english": "she wants to meet at six o'clock with everyone else",
+        "spanish": "ella quiere reunirnos a las seis con todos los demás",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive but subject is 'ella'. Should be 'reunirse'.",
+        "suggested_fix_english": "she wants to meet at six o'clock with everyone else",
+        "suggested_fix_spanish": "ella quiere reunirse a las seis con todos los demás"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0018",
+    "lego_id": "S0018L04",
+    "errors": [
+      {
+        "phrase_index": 5,
+        "english": "she wants to meet this evening",
+        "spanish": "ella quiere reunirnos esta noche",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive but subject is 'ella'. Should be 'reunirse'.",
+        "suggested_fix_english": "she wants to meet this evening",
+        "suggested_fix_spanish": "ella quiere reunirse esta noche"
+      },
+      {
+        "phrase_index": 9,
+        "english": "I want to meet at six o'clock this evening",
+        "spanish": "quiero reunirnos a las seis esta noche",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive but subject is 'I'. Should be 'reunirme'.",
+        "suggested_fix_english": "I want to meet at six o'clock this evening",
+        "suggested_fix_spanish": "quiero reunirme a las seis esta noche"
+      },
+      {
+        "phrase_index": 10,
+        "english": "he wants to meet at six o'clock this evening",
+        "spanish": "él quiere reunirnos a las seis esta noche",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive but subject is 'él'. Should be 'reunirse'.",
+        "suggested_fix_english": "he wants to meet at six o'clock this evening",
+        "suggested_fix_spanish": "él quiere reunirse a las seis esta noche"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0019",
+    "lego_id": "S0019L02",
+    "errors": [
+      {
+        "phrase_index": 2,
+        "english": "I want not",
+        "spanish": "quiero no",
+        "error_type": "word_order",
+        "description": "In both languages, the word order is incorrect. English should be 'I don't want' or 'I do not want'. Spanish should be 'no quiero' (negation comes before the verb).",
+        "suggested_fix_english": "I don't want",
+        "suggested_fix_spanish": "no quiero"
+      },
+      {
+        "phrase_index": 6,
+        "english": "I want not Spanish",
+        "spanish": "quiero no español",
+        "error_type": "word_order",
+        "description": "Incorrect word order in both languages. English should be 'I don't want Spanish'. Spanish should be 'no quiero español'.",
+        "suggested_fix_english": "I don't want Spanish",
+        "suggested_fix_spanish": "no quiero español"
+      },
+      {
+        "phrase_index": 9,
+        "english": "but I want not",
+        "spanish": "pero quiero no",
+        "error_type": "word_order",
+        "description": "Incorrect word order. English should be 'but I don't want'. Spanish should be 'pero no quiero'.",
+        "suggested_fix_english": "but I don't want",
+        "suggested_fix_spanish": "pero no quiero"
+      },
+      {
+        "phrase_index": 10,
+        "english": "she wants not to come back",
+        "spanish": "ella quiere no volver",
+        "error_type": "word_order",
+        "description": "In English, should be 'she doesn't want to come back'. The Spanish 'ella quiere no volver' is awkward; better as 'ella no quiere volver'.",
+        "suggested_fix_english": "she doesn't want to come back",
+        "suggested_fix_spanish": "ella no quiere volver"
+      },
+      {
+        "phrase_index": 12,
+        "english": "but I want not Spanish",
+        "spanish": "pero quiero no español",
+        "error_type": "word_order",
+        "description": "Incorrect word order. English should be 'but I don't want Spanish'. Spanish should be 'pero no quiero español'.",
+        "suggested_fix_english": "but I don't want Spanish",
+        "suggested_fix_spanish": "pero no quiero español"
+      },
+      {
+        "phrase_index": 13,
+        "english": "but we want not to meet tomorrow",
+        "spanish": "pero queremos no reunirnos mañana",
+        "error_type": "word_order",
+        "description": "Incorrect word order. English should be 'but we don't want to meet tomorrow'. Spanish better as 'pero no queremos reunirnos mañana'.",
+        "suggested_fix_english": "but we don't want to meet tomorrow",
+        "suggested_fix_spanish": "pero no queremos reunirnos mañana"
+      },
+      {
+        "phrase_index": 14,
+        "english": "but he wants not to come back with everyone else",
+        "spanish": "pero él quiere no volver con todos los demás",
+        "error_type": "word_order",
+        "description": "Incorrect word order. English should be 'but he doesn't want to come back with everyone else'. Spanish better as 'pero él no quiere volver con todos los demás'.",
+        "suggested_fix_english": "but he doesn't want to come back with everyone else",
+        "suggested_fix_spanish": "pero él no quiere volver con todos los demás"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0019",
+    "lego_id": "S0019L03",
+    "errors": [
+      {
+        "phrase_index": 3,
+        "english": "I want not",
+        "spanish": "quiero no",
+        "error_type": "word_order",
+        "description": "Incorrect word order. English should be 'I don't want'. Spanish should be 'no quiero'.",
+        "suggested_fix_english": "I don't want",
+        "suggested_fix_spanish": "no quiero"
+      },
+      {
+        "phrase_index": 5,
+        "english": "but I want not",
+        "spanish": "pero quiero no",
+        "error_type": "word_order",
+        "description": "Incorrect word order. English should be 'but I don't want'. Spanish should be 'pero no quiero'.",
+        "suggested_fix_english": "but I don't want",
+        "suggested_fix_spanish": "pero no quiero"
+      },
+      {
+        "phrase_index": 9,
+        "english": "but I want not Spanish",
+        "spanish": "pero quiero no español",
+        "error_type": "word_order",
+        "description": "Incorrect word order. English should be 'but I don't want Spanish'. Spanish should be 'pero no quiero español'.",
+        "suggested_fix_english": "but I don't want Spanish",
+        "suggested_fix_spanish": "pero no quiero español"
+      },
+      {
+        "phrase_index": 8,
+        "english": "I want to meet tomorrow",
+        "spanish": "quiero reunirnos mañana",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive but subject is 'I'. Should be 'reunirme'.",
+        "suggested_fix_english": "I want to meet tomorrow",
+        "suggested_fix_spanish": "quiero reunirme mañana"
+      },
+      {
+        "phrase_index": 11,
+        "english": "I want to meet at six o'clock this evening",
+        "spanish": "quiero reunirnos a las seis esta noche",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive but subject is 'I'. Should be 'reunirme'.",
+        "suggested_fix_english": "I want to meet at six o'clock this evening",
+        "suggested_fix_spanish": "quiero reunirme a las seis esta noche"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0019",
+    "lego_id": "S0019L04",
+    "errors": [
+      {
+        "phrase_index": 2,
+        "english": "to stop tomorrow",
+        "spanish": "parar de mañana",
+        "error_type": "semantic_mismatch",
+        "description": "'parar de' requires a verb (infinitive) after it, not a time adverb. 'parar de mañana' is grammatically incorrect. Should be 'parar mañana' (to stop tomorrow) without 'de'.",
+        "suggested_fix_english": "to stop tomorrow",
+        "suggested_fix_spanish": "parar mañana"
+      },
+      {
+        "phrase_index": 5,
+        "english": "I want not to stop",
+        "spanish": "quiero no parar de",
+        "error_type": "word_order",
+        "description": "Incorrect word order in English: should be 'I don't want to stop'. Spanish word order also problematic: better as 'no quiero parar de'. Also 'parar de' needs a verb after it.",
+        "suggested_fix_english": "I don't want to stop",
+        "suggested_fix_spanish": "no quiero parar"
+      },
+      {
+        "phrase_index": 8,
+        "english": "he wants to stop tomorrow",
+        "spanish": "él quiere parar de mañana",
+        "error_type": "semantic_mismatch",
+        "description": "'parar de' requires a verb after it, not a time adverb. Should be 'parar mañana'.",
+        "suggested_fix_english": "he wants to stop tomorrow",
+        "suggested_fix_spanish": "él quiere parar mañana"
+      },
+      {
+        "phrase_index": 9,
+        "english": "but I want not to stop",
+        "spanish": "pero quiero no parar de",
+        "error_type": "word_order",
+        "description": "Incorrect word order in English: should be 'but I don't want to stop'. Spanish better as 'pero no quiero parar de'. Also 'parar de' needs a verb.",
+        "suggested_fix_english": "but I don't want to stop",
+        "suggested_fix_spanish": "pero no quiero parar"
+      },
+      {
+        "phrase_index": 10,
+        "english": "she wants to stop with me",
+        "spanish": "ella quiere parar de conmigo",
+        "error_type": "semantic_mismatch",
+        "description": "'parar de' requires a verb after it. 'parar de conmigo' is incorrect. Should be 'parar conmigo' or restructure entirely.",
+        "suggested_fix_english": "she wants to stop with me",
+        "suggested_fix_spanish": "ella quiere parar conmigo"
+      },
+      {
+        "phrase_index": 11,
+        "english": "but we want to stop tomorrow",
+        "spanish": "pero queremos parar de mañana",
+        "error_type": "semantic_mismatch",
+        "description": "'parar de' requires a verb after it. Should be 'parar mañana'.",
+        "suggested_fix_english": "but we want to stop tomorrow",
+        "suggested_fix_spanish": "pero queremos parar mañana"
+      },
+      {
+        "phrase_index": 12,
+        "english": "I want to stop at six o'clock",
+        "spanish": "quiero parar de a las seis",
+        "error_type": "semantic_mismatch",
+        "description": "'parar de' requires a verb after it. 'parar de a las seis' is grammatically incorrect. Should be 'parar a las seis'.",
+        "suggested_fix_english": "I want to stop at six o'clock",
+        "suggested_fix_spanish": "quiero parar a las seis"
+      },
+      {
+        "phrase_index": 13,
+        "english": "but I want to stop this evening",
+        "spanish": "pero quiero parar de esta noche",
+        "error_type": "semantic_mismatch",
+        "description": "'parar de' requires a verb after it. Should be 'parar esta noche'.",
+        "suggested_fix_english": "but I want to stop this evening",
+        "suggested_fix_spanish": "pero quiero parar esta noche"
+      },
+      {
+        "phrase_index": 14,
+        "english": "but she wants not to stop with everyone else",
+        "spanish": "pero ella quiere no parar de con todos los demás",
+        "error_type": "word_order",
+        "description": "Multiple errors: English should be 'but she doesn't want to stop with everyone else'. Spanish should be 'pero ella no quiere parar con todos los demás' ('parar de' needs a verb, not a prepositional phrase).",
+        "suggested_fix_english": "but she doesn't want to stop with everyone else",
+        "suggested_fix_spanish": "pero ella no quiere parar con todos los demás"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0019",
+    "lego_id": "S0019L05",
+    "errors": [
+      {
+        "phrase_index": 10,
+        "english": "I want not to stop talking",
+        "spanish": "quiero no parar de hablar",
+        "error_type": "word_order",
+        "description": "Incorrect English word order: should be 'I don't want to stop talking'. Spanish is better as 'no quiero parar de hablar'.",
+        "suggested_fix_english": "I don't want to stop talking",
+        "suggested_fix_spanish": "no quiero parar de hablar"
+      },
+      {
+        "phrase_index": 13,
+        "english": "but I want not to stop talking",
+        "spanish": "pero quiero no parar de hablar",
+        "error_type": "word_order",
+        "description": "Incorrect English word order: should be 'but I don't want to stop talking'. Spanish is better as 'pero no quiero parar de hablar'.",
+        "suggested_fix_english": "but I don't want to stop talking",
+        "suggested_fix_spanish": "pero no quiero parar de hablar"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0020",
+    "lego_id": "S0020L01",
+    "errors": [
+      {
+        "phrase_index": 9,
+        "english": "but you want to meet",
+        "spanish": "pero quieres reunirnos",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive (ourselves) but subject is 'you' (singular or plural, but doesn't match 'nos'). Should be 'reunirte' for singular you.",
+        "suggested_fix_english": "but you want to meet",
+        "suggested_fix_spanish": "pero quieres reunirte"
+      },
+      {
+        "phrase_index": 12,
+        "english": "and you want to meet at six o'clock",
+        "spanish": "y quieres reunirnos a las seis",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' doesn't match 'you'. Should be 'reunirte'.",
+        "suggested_fix_english": "and you want to meet at six o'clock",
+        "suggested_fix_spanish": "y quieres reunirte a las seis"
+      },
+      {
+        "phrase_index": 14,
+        "english": "you want to meet with everyone else at six o'clock this evening",
+        "spanish": "quieres reunirnos con todos los demás a las seis esta noche",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' doesn't match 'you'. Should be 'reunirte'.",
+        "suggested_fix_english": "you want to meet with everyone else at six o'clock this evening",
+        "suggested_fix_spanish": "quieres reunirte con todos los demás a las seis esta noche"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0021",
+    "lego_id": "S0021L04",
+    "errors": [
+      {
+        "phrase_index": 3,
+        "english": "I want name",
+        "spanish": "quiero nombre",
+        "error_type": "article",
+        "description": "Missing article in both languages. English should be 'I want the name' or 'I want a name'. Spanish should be 'quiero el nombre' or 'quiero un nombre'.",
+        "suggested_fix_english": "I want the name",
+        "suggested_fix_spanish": "quiero el nombre"
+      },
+      {
+        "phrase_index": 4,
+        "english": "to learn name",
+        "spanish": "aprender nombre",
+        "error_type": "article",
+        "description": "Missing article. English should be 'to learn the name' or 'to learn a name'. Spanish should be 'aprender el nombre' or 'aprender un nombre'.",
+        "suggested_fix_english": "to learn the name",
+        "suggested_fix_spanish": "aprender el nombre"
+      },
+      {
+        "phrase_index": 6,
+        "english": "you want name",
+        "spanish": "quieres nombre",
+        "error_type": "article",
+        "description": "Missing article. English should be 'you want the name' or 'you want a name'. Spanish should be 'quieres el nombre' or 'quieres un nombre'.",
+        "suggested_fix_english": "you want the name",
+        "suggested_fix_spanish": "quieres el nombre"
+      },
+      {
+        "phrase_index": 7,
+        "english": "are you learning name",
+        "spanish": "estás aprendiendo nombre",
+        "error_type": "article",
+        "description": "Missing article. English should be 'are you learning the name' or 'are you learning a name'. Spanish should be 'estás aprendiendo el nombre' or 'estás aprendiendo un nombre'.",
+        "suggested_fix_english": "are you learning the name",
+        "suggested_fix_spanish": "estás aprendiendo el nombre"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0022",
+    "lego_id": "S0022L02",
+    "errors": [
+      {
+        "phrase_index": 10,
+        "english": "I want to meet tomorrow",
+        "spanish": "quiero reunirnos mañana",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive but subject is 'I'. Should be 'reunirme'.",
+        "suggested_fix_english": "I want to meet tomorrow",
+        "suggested_fix_spanish": "quiero reunirme mañana"
+      },
+      {
+        "phrase_index": 13,
+        "english": "but because I want to meet at six o'clock",
+        "spanish": "pero porque quiero reunirnos a las seis",
+        "error_type": "agreement",
+        "description": "Subject-verb mismatch: 'reunirnos' is plural reflexive but subject is 'I'. Should be 'reunirme'.",
+        "suggested_fix_english": "but because I want to meet at six o'clock",
+        "suggested_fix_spanish": "pero porque quiero reunirme a las seis"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0022",
+    "lego_id": "S0022L03",
+    "errors": [
+      {
+        "phrase_index": 11,
+        "english": "I want to meet with me",
+        "spanish": "quiero encontrar conmigo",
+        "error_type": "semantic_mismatch",
+        "description": "Logical error: 'I want to meet with me' doesn't make semantic sense in English. Spanish 'encontrar conmigo' is also illogical.",
+        "suggested_fix_english": "I want to meet someone",
+        "suggested_fix_spanish": "quiero encontrar a alguien"
+      }
+    ]
+  },
+  {
+    "seed_id": "S0022",
+    "lego_id": "S0022L04",
+    "errors": [
+      {
+        "phrase_index": 1,
+        "english": "Spanish people",
+        "spanish": "personas español",
+        "error_type": "agreement",
+        "description": "Adjective agreement error in Spanish. 'español' should agree with 'personas' (feminine plural), so it should be 'personas españolas'. However, if meaning 'people (who speak) Spanish', it's semantically awkward without context.",
+        "suggested_fix_english": "Spanish people",
+        "suggested_fix_spanish": "personas españolas"
+      }
+    ]
+  }
+]

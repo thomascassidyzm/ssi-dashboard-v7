@@ -1,0 +1,187 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0025",
+  "generation_stage": "PHRASE_GENERATION_COMPLETE",
+  "seed_pair": {
+    "known": "Are you going to help me before I have to go?",
+    "target": "¿Vas a ayudarme antes de que tenga que ir?"
+  },
+  "recent_seed_pairs": {
+    "S0015": [["And I want you to speak Spanish with me tomorrow.","Y quiero que hables español conmigo mañana."],[["S0015L01","and","y"],["S0015L04","with me","conmigo"],["S0015L06","you to speak","que hables"]]],
+    "S0016": [["He wants to come back with everyone else later on.","Él quiere volver con todos los demás más tarde."],[["S0016L01","to come back","volver"],["S0016L03","he wants","él quiere"],["S0016L04","everyone else","todos los demás"],["S0016L05","later on","más tarde"]]],
+    "S0017": [["She wants to find out what the answer is.","Ella quiere descubrir cuál es la respuesta."],[["S0017L01","to find out","descubrir"],["S0017L02","she wants","ella quiere"],["S0017L03","what is","cuál es"],["S0017L04","the answer","la respuesta"]]],
+    "S0018": [["We want to meet at six o'clock this evening.","Queremos reunirnos a las seis esta noche."],[["S0018L01","we want","queremos"],["S0018L02","to meet","reunirnos"],["S0018L03","at six o'clock","a las seis"],["S0018L04","this evening","esta noche"]]],
+    "S0019": [["But I don't want to stop talking.","Pero no quiero parar de hablar."],[["S0019L01","but","pero"],["S0019L02","talking","hablar"],["S0019L03","I don't want","no quiero"],["S0019L04","to stop","parar de"]]],
+    "S0020": [["You want to learn his name quickly.","Quieres aprender su nombre rápidamente."],[["S0020L01","you want","quieres"],["S0020L03","his","su"],["S0020L04","name","nombre"],["S0020L05","quickly","rápidamente"]]],
+    "S0021": [["Why are you learning her name?","¿Por qué estás aprendiendo su nombre?"],[["S0021L01","her","su"],["S0021L03","why","por qué"],["S0021L04","are you learning","estás aprendiendo"]]],
+    "S0022": [["Because I want to meet people who speak Spanish.","Porque quiero encontrar personas que hablan español."],[["S0022L01","because","porque"],["S0022L03","to meet","encontrar"],["S0022L04","people","personas"],["S0022L06","who speak","que hablan"]]],
+    "S0023": [["I'm going to start talking more soon.","Voy a comenzar a hablar más pronto."],[["S0023L01","more","más"],["S0023L02","soon","pronto"],["S0023L04","start talking","comenzar a hablar"]]],
+    "S0024": [["I'm not going to be able to remember easily.","No voy a poder recordar fácilmente."],[["S0024L01","to be able","poder"],["S0024L03","easily","fácilmente"],["S0024L04","I'm not going to","no voy a"]]]
+  },
+  "legos": {
+    "S0025L01": {
+      "lego": ["to help me","ayudarme"],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["to help me", "ayudarme", null, 1],
+        ["help me", "ayudarme", null, 1],
+        ["you want to help me", "quieres ayudarme", null, 3],
+        ["I want to help me", "quiero ayudarme", null, 3],
+        ["he wants to help me", "él quiere ayudarme", null, 4],
+        ["she wants to help me", "ella quiere ayudarme", null, 4],
+        ["to help me speak", "ayudarme hablar", null, 3],
+        ["to help me learn", "ayudarme aprender", null, 3],
+        ["you want to help me learn", "quieres ayudarme aprender", null, 4],
+        ["he wants to help me speak Spanish", "él quiere ayudarme hablar español", null, 5],
+        ["I want you to help me learn", "quiero que ayudarme aprender", null, 5],
+        ["you want to help me learn her name", "quieres ayudarme aprender su nombre", null, 5],
+        ["because you want to help me speak Spanish", "porque quieres ayudarme hablar español", null, 6],
+        ["you want to help me start talking more soon", "quieres ayudarme comenzar a hablar más pronto", null, 7],
+        ["she wants to help me be able to speak easily", "ella quiere ayudarme poder hablar fácilmente", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 4,
+        "longer_4_5": 4,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0025L01",
+        "seed_context": {
+          "known": "Are you going to help me before I have to go?",
+          "target": "¿Vas a ayudarme antes de que tenga que ir?"
+        }
+      }
+    },
+    "S0025L02": {
+      "lego": ["to go","ir"],
+      "type": "A",
+      "current_seed_legos_available": [["to help me","ayudarme"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["to go", "ir", null, 1],
+        ["I'm going", "voy", null, 1],
+        ["I want to go", "quiero ir", null, 3],
+        ["he wants to go", "él quiere ir", null, 4],
+        ["I'm going to go", "voy a ir", null, 3],
+        ["I'm going to speak", "voy a hablar", null, 3],
+        ["I'm going to learn", "voy a aprender", null, 3],
+        ["she wants to go", "ella quiere ir", null, 4],
+        ["I'm not going to go", "no voy a ir", null, 4],
+        ["I'm going to start talking", "voy a comenzar a hablar", null, 5],
+        ["I'm going to be able to go", "voy a poder ir", null, 5],
+        ["I want to help me learn to go", "quiero ayudarme aprender ir", null, 5],
+        ["because I'm going to start talking more soon", "porque voy a comenzar a hablar más pronto", null, 8],
+        ["I'm not going to be able to go easily", "no voy a poder ir fácilmente", null, 6],
+        ["he wants to help me to go later on", "él quiere ayudarme ir más tarde", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 4,
+        "longer_4_5": 4,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0025L02",
+        "seed_context": {
+          "known": "Are you going to help me before I have to go?",
+          "target": "¿Vas a ayudarme antes de que tenga que ir?"
+        }
+      }
+    },
+    "S0025L03": {
+      "lego": ["are you going to","vas a"],
+      "type": "M",
+      "current_seed_legos_available": [["to help me","ayudarme"],["to go","ir"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["are you going to", "vas a", null, 2],
+        ["are you going to speak", "vas a hablar", null, 3],
+        ["are you going to learn", "vas a aprender", null, 3],
+        ["are you going to go", "vas a ir", null, 3],
+        ["are you going to help me", "vas a ayudarme", null, 3],
+        ["are you going to speak Spanish", "vas a hablar español", null, 4],
+        ["are you going to learn her name", "vas a aprender su nombre", null, 5],
+        ["why are you going to learn", "por qué vas a aprender", null, 5],
+        ["are you going to help me speak", "vas a ayudarme hablar", null, 4],
+        ["are you going to start talking", "vas a comenzar a hablar", null, 5],
+        ["are you going to be able to speak", "vas a poder hablar", null, 5],
+        ["are you going to help me learn Spanish", "vas a ayudarme aprender español", null, 5],
+        ["why are you going to learn her name", "por qué vas a aprender su nombre", null, 7],
+        ["are you going to start talking more soon", "vas a comenzar a hablar más pronto", null, 7],
+        ["are you going to be able to help me easily", "vas a poder ayudarme fácilmente", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 4,
+        "longer_4_5": 5,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0025L03",
+        "seed_context": {
+          "known": "Are you going to help me before I have to go?",
+          "target": "¿Vas a ayudarme antes de que tenga que ir?"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0025L04": {
+      "lego": ["before I have to","antes de que tenga que"],
+      "type": "M",
+      "current_seed_legos_available": [["to help me","ayudarme"],["to go","ir"],["are you going to","vas a"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["before I have to", "antes de que tenga que", null, 5],
+        ["before I have to go", "antes de que tenga que ir", null, 6],
+        ["before I have to speak", "antes de que tenga que hablar", null, 6],
+        ["before I have to learn", "antes de que tenga que aprender", null, 6],
+        ["I want to speak before I have to go", "quiero hablar antes de que tenga que ir", null, 8],
+        ["help me before I have to go", "ayudarme antes de que tenga que ir", null, 7],
+        ["I want to learn before I have to go", "quiero aprender antes de que tenga que ir", null, 8],
+        ["are you going to speak before I have to go", "vas a hablar antes de que tenga que ir", null, 9],
+        ["are you going to help me before I have to go", "vas a ayudarme antes de que tenga que ir", null, 9],
+        ["I want to learn her name before I have to go", "quiero aprender su nombre antes de que tenga que ir", null, 10],
+        ["he wants to speak Spanish before I have to go", "él quiere hablar español antes de que tenga que ir", null, 10],
+        ["are you going to start talking before I have to go", "vas a comenzar a hablar antes de que tenga que ir", null, 11],
+        ["I'm going to be able to speak before I have to go", "voy a poder hablar antes de que tenga que ir", null, 11],
+        ["are you going to be able to help me before I have to go", "vas a poder ayudarme antes de que tenga que ir", null, 11],
+        ["are you going to help me before I have to go", "vas a ayudarme antes de que tenga que ir", null, 9]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 1,
+        "long_6_plus": 14
+      },
+      "_metadata": {
+        "lego_id": "S0025L04",
+        "seed_context": {
+          "known": "Are you going to help me before I have to go?",
+          "target": "¿Vas a ayudarme antes de que tenga que ir?"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng_test_s0001-0050/phase5_outputs/seed_s0025.json",
+    "pattern_matching": "Use recent_seed_pairs sentences as natural language pattern examples",
+    "lego_coverage_requirement": "Practice phrases MUST use at least 60% of the LEGOs listed in recent_seed_pairs[seed_id][1]",
+    "vocabulary_source": "Prioritize LEGOs from recent_seed_pairs[seed_id][1] + current_seed_legos_available, then any words from sentences",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10,
+    "recent_legos_available": 36
+  }
+}

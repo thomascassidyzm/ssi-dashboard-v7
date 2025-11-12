@@ -361,159 +361,276 @@ The automation server will automatically:
 function generatePhase3MasterPrompt(courseCode, params, courseDir) {
   const { target, known, startSeed, endSeed } = params;
   const totalSeeds = endSeed - startSeed + 1;
-  const seedsPerAgent = 20;
+  const seedsPerAgent = 10; // Changed to 10 for better control
   const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
 
-  return `# Phase 3 Master Prompt: LEGO Extraction with Self-Managing Parallelization
+  return `# Phase 3 Master Orchestrator: LEGO Extraction (Segment-Based)
 
 **Course**: ${courseCode}
-**Total Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
-**Target Agents**: ${agentCount} parallel agents
-**Seeds per agent**: ~${seedsPerAgent}
+**Segment Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
+**Sub-Agents**: ${agentCount} parallel agents
+**Seeds per agent**: ${seedsPerAgent}
 
 ---
 
 ## 🎯 YOUR MISSION
 
-You are the **LEGO Extraction Orchestrator**. Your job is to:
+You are the **Master Orchestrator** for this segment. Your job is to:
 
-1. **Spawn ${agentCount} parallel agents** to extract LEGOs from all ${totalSeeds} seeds
-2. **Monitor rate limits and adjust pacing** if needed
-3. **Handle errors gracefully** and retry failed agents
-4. **Report progress** as agents complete
+1. **Read Phase 3 intelligence** (v6.3 methodology)
+2. **Spawn ${agentCount} sub-agents in parallel** (ONE message with ${agentCount} Task tool calls)
+3. **Each sub-agent extracts ${seedsPerAgent} seeds** with IDENTICAL prompt (only seed range differs)
+4. **Wait for all ${agentCount} to complete**
+5. **Merge outputs** → segment file
+6. **Push to GitHub** for monitoring
 
-You have full autonomy to manage the parallelization strategy based on your rate limit observations.
+**CRITICAL**: Use ONE message with multiple Task tool calls to spawn all agents simultaneously.
 
 ---
 
 ## 📚 PHASE 3 INTELLIGENCE (Single Source of Truth)
 
-**READ**: \`docs/phase_intelligence/phase_3_lego_pairs.md\` (v5.0)
+**YOU AND YOUR SUB-AGENTS MUST READ**: \`docs/phase_intelligence/phase_3_lego_pairs.md\` (v6.3)
 
 This is the **ONLY authoritative source** for Phase 3 extraction methodology.
 
-**Key sections to review**:
-- THE THREE ABSOLUTES (Start from Known, Provide Both Levels, Verify Tiling)
-- THE EXTRACTION PROCESS (7-step protocol)
-- FD TEST (3 questions to check determinism)
-- FCFS REGISTRY (collision detection)
-- EXAMPLES FROM PRODUCTION (S0101-S0200 learnings)
-- EXTENDED THINKING PROTOCOL
+**This file contains the complete v6.3 methodology including**:
+- Core Principle (Pragmatic FD - Maximum USEFUL Granularity)
+- The Three Rules (detailed extraction protocol)
+- Forward/Backward Sweep Algorithm (bidirectional analysis)
+- FD Test (3-question validation)
+- Atomic vs Molecular Classification
+- A-before-M Ordering (pedagogical requirement)
+- Complete worked examples with reasoning
 
-**Critical principles** (from SSoT):
-- START FROM KNOWN semantics first
-- FD test: IF IN DOUBT → CHUNK UP
-- Provide BOTH atomic AND molecular LEGOs
-- Complete tiling mandatory
-- Componentize ALL M-types (ALL WORDS!)
-- Check FCFS registry for collisions
+**Your sub-agents MUST read this file** before starting extraction. The highlights below are NOT a replacement for reading the full methodology.
 
----
-
-## 📂 PREPARED SCAFFOLDS
-
-Mechanical prep has been done! Each agent has a scaffold ready:
-
-\`${courseDir}/phase3_scaffolds/agent_01.json\` through \`agent_${String(agentCount).padStart(2, '0')}.json\`
-
-Each scaffold contains:
-- **seeds**: The 20 seed pairs to process
-- **fcfs_registry**: LEGOs from prior seeds (for collision detection)
-- **legos**: Empty array (agent fills this)
+**Key principles** (highlights only - see full file for details):
+- **TILING FIRST**: Verify LEGOs reconstruct BOTH languages perfectly
+- **START FROM KNOWN semantics first**: How does native speaker chunk this?
+- **A-BEFORE-M ORDERING**: ALL Atomic LEGOs before Molecular LEGOs (non-negotiable)
+- **Componentize ALL M-types**: Show word-by-word literal mappings
+- **FD test**: IF IN DOUBT → CHUNK UP
+- **Mark all new: true**: Phase 3 introduces LEGOs
 
 ---
 
-## 🚀 EXECUTION STRATEGY
+## ⚠️ CRITICAL LESSON: S0010 TILING IN BOTH LANGUAGES
 
-${agentCount <= 10 ? `
-### Strategy: FULL PARALLELIZATION (${totalSeeds} seeds, ${agentCount} agents)
+**The mistake that taught us to verify BOTH languages:**
 
-Spawn all ${agentCount} agents in parallel - maximize speed!
-
-**After EACH agent completes → PUSH IMMEDIATELY:**
-
-\`\`\`bash
-git add public/vfs/courses/${courseCode}/phase3_outputs/agent_XX_provisional.json
-git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
-git push origin main
-\`\`\`
-
-**Critical**: Push each file immediately so automation tracks progress and can detect stuck jobs!
-` : `
-### Strategy: 2-WAVE EXECUTION (${totalSeeds} seeds, ${agentCount} agents)
-
-Minimize waves, maximize speed. Use **2 waves** to balance speed vs timeout risk:
-
-- **Wave 1**: Agents 1-${Math.ceil(agentCount / 2)} (${Math.ceil(agentCount / 2)} agents)
-- **Wave 2**: Agents ${Math.ceil(agentCount / 2) + 1}-${agentCount} (${agentCount - Math.ceil(agentCount / 2)} agents)
-
-**After EACH agent completes → PUSH IMMEDIATELY:**
-
-\`\`\`bash
-git add public/vfs/courses/${courseCode}/phase3_outputs/agent_XX_provisional.json
-git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
-git push origin main
-\`\`\`
-
-**Why immediate push:**
-- Automation sees files appearing in real-time
-- Easy to detect stuck jobs (no new file in 10+ min = problem)
-- Smart resume: Only redo missing agents if connection drops
-`}
-
----
-
-## 📋 AGENT TASK TEMPLATE
-
-For each agent, the task is:
-
-\`\`\`markdown
-You are LEGO Extraction Agent ${agentCount}.
-
-## Your Data
-**Scaffold**: Read \`${courseDir}/phase3_scaffolds/agent_XX.json\`
-
-This contains:
-- Your 20 seeds to process
-- FCFS registry (check for collisions!)
-- Empty legos arrays (you fill these)
-
-## Your Process
-1. For each seed, use extended thinking:
-   - STEP 1: Chunk KNOWN semantically
-   - STEP 2: Map to TARGET
-   - STEP 3: Apply FD test (3 questions)
-   - STEP 4: Fix failures (chunk up)
-   - STEP 5: Check FCFS registry for collisions
-   - STEP 6: Add both atomic AND molecular LEGOs
-   - STEP 7: Componentize all M-types (ALL WORDS!)
-
-2. Extract LEGOs following Phase 3 Ultimate Intelligence
-3. Use extended thinking for EVERY seed (1-2 min per seed)
-4. Verify complete tiling (seed reconstructs from LEGOs)
-
-## Output
-Write to: \`${courseDir}/phase3_outputs/agent_XX_provisional.json\`
-
-Format:
 \`\`\`json
 {
-  "agent_id": XX,
-  "seed_range": "S0XXX-S0YYY",
-  "extracted_at": "ISO timestamp",
+  "seed_id": "S0010",
+  "seed_pair": [
+    "I'm not sure if I can remember the whole sentence.",
+    "No estoy seguro si puedo recordar toda la oración."
+  ],
+  "legos": [
+    {"id": "S0010L01", "type": "A", "target": "si", "known": "if", "new": true},
+    {
+      "id": "S0010L02",
+      "type": "M",
+      "target": "no estoy seguro",
+      "known": "I'm not sure",
+      "new": true,
+      "components": [["no", "not"], ["estoy", "I am"], ["seguro", "sure"]]
+    },
+    {
+      "id": "S0010L03",
+      "type": "M",
+      "target": "puedo recordar",
+      "known": "I can remember",
+      "new": true,
+      "components": [["puedo", "I can"], ["recordar", "to remember"]]
+    },
+    {
+      "id": "S0010L04",
+      "type": "M",
+      "target": "toda la oración",
+      "known": "the whole sentence",
+      "new": true,
+      "components": [["toda", "whole"], ["la", "the"], ["oración", "sentence"]]
+    }
+  ]
+}
+\`\`\`
+
+**WHY L03 is M-type** (not "puedo" + "recordar" separately):
+- ❌ "I can" + "to remember" does NOT tile in English (wrong: "I can to remember")
+- ✅ "I can remember" (modal + bare infinitive) is a UNIT in English
+- ✅ Spanish "puedo recordar" also tiles as unit
+- **Lesson**: Must verify BOTH TARGET and KNOWN reconstruct perfectly!
+
+---
+
+## 🚀 SUB-AGENT SPAWNING
+
+You will spawn ${agentCount} sub-agents, each handling ${seedsPerAgent} seeds.
+
+**Seed distribution**:
+${Array.from({length: agentCount}, (_, i) => {
+  const agentStart = startSeed + (i * seedsPerAgent);
+  const agentEnd = Math.min(startSeed + ((i + 1) * seedsPerAgent) - 1, endSeed);
+  return `- Agent ${i + 1}: S${String(agentStart).padStart(4, '0')}-S${String(agentEnd).padStart(4, '0')}`;
+}).join('\n')}
+
+**Input file**: Read from \`seed_pairs.json\` (or segment file if using segmentation)
+
+---
+
+## 📋 SUB-AGENT PROMPT TEMPLATE
+
+**CRITICAL**: Give IDENTICAL prompts to all ${agentCount} agents - only the seed range changes!
+
+\`\`\`markdown
+# Phase 3 Sub-Agent: Extract S00XX-S00YY
+
+## 📚 PHASE INTELLIGENCE (REQUIRED READING)
+
+**YOU MUST READ THIS FILE FIRST**: \`docs/phase_intelligence/phase_3_lego_pairs.md\` (v6.3)
+
+This file contains the complete Phase 3 v6.3 methodology:
+- Core Principle (Pragmatic FD)
+- The Three Rules (Start from Known, Extract Maximum Tiling Set, Verify BOTH Languages)
+- Forward/Backward Sweep Algorithm
+- FD Test (3 questions)
+- A-before-M Ordering
+- Complete examples with reasoning
+
+**The rules below are HIGHLIGHTS from that file** - you must read the full file for complete methodology.
+
+---
+
+## 🚨 CRITICAL HIGHLIGHTS (From Phase Intelligence)
+
+### 1. TILING IN BOTH LANGUAGES (S0010 Lesson)
+
+**The S0010 lesson that taught us everything:**
+
+❌ WRONG: "puedo" (I can) + "recordar" (to remember) as separate A-types
+   Problem: "I can" + "to remember" = "I can to remember" ← BROKEN ENGLISH!
+
+✅ RIGHT: "puedo recordar" as M-type ("I can remember" is unit in English)
+   - English: "I can remember" = modal + bare infinitive (grammatical unit)
+   - Spanish: "puedo recordar" = poder + infinitive (parallel structure)
+   - Components: [["puedo", "I can"], ["recordar", "to remember"]]
+
+**ALWAYS verify LEGOs reconstruct BOTH target AND known perfectly.**
+
+### 2. A-BEFORE-M ORDERING (Pedagogical Foundation)
+
+Within EACH seed: ALL Atomic LEGOs → ALL Molecular LEGOs
+
+Why: Learners need atomic pieces BEFORE molecular combinations.
+
+Example:
+\`\`\`json
+{
+  "legos": [
+    {"type": "A", ...},  // All A-types first
+    {"type": "A", ...},
+    {"type": "M", ...},  // Then all M-types
+    {"type": "M", ...}
+  ]
+}
+\`\`\`
+
+### 3. NO SCRIPTS (Quality Over Speed)
+
+❌ DO NOT write Python/JavaScript scripts to "automate" extraction
+❌ DO NOT write loops to process multiple seeds at once
+❌ DO NOT create validation scripts
+
+✅ USE Claude's reasoning and extended thinking for EVERY seed
+✅ MANUAL extraction with <thinking> tags
+
+**Why**: Script-based extraction sacrifices quality for speed. You are building world-class language learning materials that will be used by millions of learners.
+
+### 4. COMPONENTS FOR M-TYPES
+
+Every M-type needs components array showing literal word-by-word mapping:
+
+\`\`\`json
+{
+  "type": "M",
+  "target": "toda la oración",
+  "known": "the whole sentence",
+  "components": [
+    ["toda", "whole"],
+    ["la", "the"],
+    ["oración", "sentence"]
+  ]
+}
+\`\`\`
+
+### 5. MARK ALL new: true
+
+Phase 3 introduces LEGOs, so all are marked as new.
+
+---
+
+## 📖 YOUR SEED RANGE
+
+**Extract**: S00XX through S00YY (${seedsPerAgent} seeds)
+
+Read from: \`seed_pairs.json\` (or segment file)
+
+---
+
+## 🔄 PROCESS (Per Seed)
+
+For EACH of your ${seedsPerAgent} seeds:
+
+1. **Extended Thinking** (use <thinking> tags):
+   - Analyze KNOWN language semantics first
+   - Forward sweep: Find FD-compliant chunks
+   - Backward sweep: Catch target-language particles
+   - **Verify TILING in BOTH languages**
+
+2. **Extract LEGOs**:
+   - A-before-M ordering
+   - Components for ALL M-types
+   - Mark all \`new: true\`
+
+3. **Self-Validate**:
+   - Does target reconstruct perfectly from LEGOs?
+   - Does known reconstruct perfectly from LEGOs?
+   - All M-types have components?
+   - A-before-M ordering correct?
+
+4. **Move to next seed**
+
+---
+
+## 📤 OUTPUT
+
+Write to JSON file with this structure:
+
+\`\`\`json
+{
+  "agent_id": "agent_0X",
+  "seed_range": "S00XX-S00YY",
+  "extracted_at": "<ISO timestamp>",
   "seeds": [
     {
-      "seed_id": "S0001",
-      "seed_pair": {"target": "...", "known": "..."},
+      "seed_id": "S00XX",
+      "seed_pair": ["target sentence", "known sentence"],
       "legos": [
         {
-          "provisional_id": "PROV_S0001_01" or "id": "S0023L02" if reference,
-          "type": "A" or "M",
-          "target": "Spanish text",
-          "known": "English text",
-          "new": true or false,
-          "ref": "S0023" (if reference),
-          "components": [[...]] (if M-type - ALL WORDS!)
+          "id": "S00XXL01",
+          "type": "A",
+          "target": "word",
+          "known": "word",
+          "new": true
+        },
+        {
+          "id": "S00XXL02",
+          "type": "M",
+          "target": "multi word",
+          "known": "multi word",
+          "new": true,
+          "components": [["multi", "multi"], ["word", "word"]]
         }
       ]
     }
@@ -521,77 +638,58 @@ Format:
 }
 \`\`\`
 
-**Quality over speed!** Take time to think through each seed.
+**Quality over speed!** Take 1-2 minutes per seed for careful extraction.
 \`\`\`
 
 ---
 
 ## 🎬 EXECUTE NOW
 
-Spawn your agents using whichever strategy you choose (full parallel, waves, or adaptive).
+### Step 1: Spawn All ${agentCount} Sub-Agents in Parallel
 
-**Monitor and adjust** based on what you observe.
+**CRITICAL**: Use ONE message with ${agentCount} Task tool calls.
 
-**Report progress** as agents complete - and **WRITE STATUS UPDATES** so the dashboard can track progress:
+For each agent, use this exact prompt structure (changing only the seed range):
 
-\`\`\`bash
-# After each agent completes, update status file
-cat > public/vfs/courses/${courseCode}/phase3_outputs/.progress.json << 'EOF'
-{
-  "phase": "phase3",
-  "status": "in_progress",
-  "completed_agents": 1,
-  "total_agents": ${agentCount},
-  "updated_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-}
-EOF
-
-git add public/vfs/courses/${courseCode}/phase3_outputs/.progress.json
-git commit -m "Phase 3 progress: 1/${agentCount} agents complete"
-git push origin main
+\`\`\`
+[Copy the entire "Phase 3 Sub-Agent" prompt template above]
+[Change only: "Extract S00XX through S00YY" to match agent's range]
 \`\`\`
 
-**Update this file each time an agent completes** so users can see real-time progress!
+### Step 2: Monitor Completion
 
-When all ${agentCount} agents finish:
+Watch for all ${agentCount} agent output files.
 
-1. **PUSH TO GITHUB IMMEDIATELY** (critical for automation):
+### Step 3: Merge Outputs
+
+Once all agents complete, merge their JSON files into segment file.
+
+### Step 4: Push to GitHub
 
 \`\`\`bash
 git add .
-git commit -m "Phase 3: LEGO extraction complete for ${courseCode}
+git commit -m "Phase 3 Segment Complete: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}
 
-- Extracted LEGOs for ${totalSeeds} seeds
-- ${agentCount} parallel agents
-- Ready for merge and validation"
+- Extracted ${totalSeeds} seeds
+- ${agentCount} parallel sub-agents
+- Ready for validation"
 
-git push origin HEAD:claude/phase3-${courseCode}-$(date +%s)
+git push origin main
 \`\`\`
-
-2. Report completion with the branch name
-
-The automation server will automatically:
-- Detect your pushed branch
-- Pull and merge your changes
-- Run the merge script: \`node scripts/phase3_merge_legos.cjs ${courseDir}\`
-- Continue to Phase 5
-
-**DO NOT wait for user confirmation - push immediately when agents complete!**
 
 ---
 
 ## ✅ SUCCESS CRITERIA
 
-- All ${totalSeeds} seeds processed
-- 100% complete tiling (all seeds reconstruct)
-- FD compliance (no ambiguous chunks)
-- Complete componentization (ALL WORDS in M-types)
-- FCFS registry checked (no collisions)
-- ~40-60% atomic, ~40-60% molecular
+- All ${totalSeeds} seeds extracted
+- A-before-M ordering: 100%
+- Tiling verified in BOTH languages
+- Components on all M-types
+- All marked \`new: true\`
 
-**Target time**: 15-25 minutes with adaptive parallelization
+**Target time**: ~15-20 minutes for ${totalSeeds} seeds
 
-**You've got this!** Manage it however you think best given rate limits and system load.
+**You are building world-class language learning materials!**
 `;
 }
 
