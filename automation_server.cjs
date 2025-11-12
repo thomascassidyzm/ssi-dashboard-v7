@@ -392,7 +392,9 @@ You are the **Master Orchestrator** for this segment. Your job is to:
 
 ## 📚 PHASE 3 INTELLIGENCE (Single Source of Truth)
 
-**YOU AND YOUR SUB-AGENTS MUST READ**: https://ssi-dashboard-v7.vercel.app/intelligence (Phase 3 - v6.3)
+**YOU AND YOUR SUB-AGENTS MUST READ**: https://ssi-dashboard-v7.vercel.app/api/intelligence/3
+
+(Raw markdown for Phase 3 v6.3 methodology)
 
 Or if local files are available: \`docs/phase_intelligence/phase_3_lego_pairs.md\` (v6.3)
 
