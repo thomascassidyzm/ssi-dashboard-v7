@@ -2011,7 +2011,10 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
   console.log(`[Web Orchestrator] Starting browser-based course generation: ${courseCode}`);
   console.log(`[Web Orchestrator] Mode: Claude Code on the Web (manual prompt execution)`);
 
-  const { target, known, seeds, startSeed, endSeed } = params;
+  const { target, known, seeds, startSeed, endSeed, phaseSelection, segmentMode } = params;
+
+  console.log(`[Web Orchestrator] Phase Selection: ${phaseSelection || 'all'}`);
+  console.log(`[Web Orchestrator] Segment Mode: ${segmentMode || 'single'}`);
 
   try {
     // Import the browser automation module
@@ -2023,19 +2026,42 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
     job.message = 'Opening browser tabs and pasting prompts automatically';
 
     console.log(`[Web Orchestrator] ============================================`);
-    console.log(`[Web Orchestrator] WEB MODE - SEQUENTIAL PHASE EXECUTION`);
+    console.log(`[Web Orchestrator] WEB MODE - ${phaseSelection ? phaseSelection.toUpperCase() : 'ALL PHASES'}`);
     console.log(`[Web Orchestrator] ============================================`);
-    console.log(`[Web Orchestrator] `);
-    console.log(`[Web Orchestrator] Phases will open ONE AT A TIME as previous`);
-    console.log(`[Web Orchestrator] phases complete (Phase 3 needs Phase 1 output,`);
-    console.log(`[Web Orchestrator] Phase 5 needs Phase 3 output).`);
-    console.log(`[Web Orchestrator] `);
-    console.log(`[Web Orchestrator] WORKFLOW:`);
-    console.log(`[Web Orchestrator]   1. Phase 1 tab opens → Execute → Wait for output`);
-    console.log(`[Web Orchestrator]   2. Phase 3 tab opens → Execute → Wait for output`);
-    console.log(`[Web Orchestrator]   3. Phase 5 tab opens → Execute → Complete!`);
-    console.log(`[Web Orchestrator] `);
-    console.log(`[Web Orchestrator] ============================================`);
+
+    // Handle Phase 3 Only selection
+    if (phaseSelection === 'phase3') {
+      console.log(`[Web Orchestrator] Running Phase 3 Only - LEGO Extraction`);
+      const phase3MasterPrompt = generatePhase3MasterPrompt(courseCode, { target, known, startSeed, endSeed }, courseDir);
+
+      console.log(`[Web Orchestrator] Opening Phase 3 tab with master orchestrator...`);
+      await spawnClaudeWebAgent(phase3MasterPrompt, 3, 'safari');
+      console.log(`[Web Orchestrator] ✅ Phase 3 master prompt pasted and auto-submitted!`);
+
+      job.phase = 'phase_3_web';
+      job.message = 'Phase 3 master orchestrator running - monitor browser tab';
+
+      // For Phase 3 Only, we're done spawning - agents will POST to API
+      console.log(`[Web Orchestrator] Phase 3 agents will POST results to API`);
+      console.log(`[Web Orchestrator] Monitor: https://ssi-dashboard-v7.vercel.app/courses/${courseCode}`);
+
+      job.status = 'phase_3_running';
+      job.progress = 35;
+      return; // Exit early for Phase 3 Only
+    }
+
+    // Handle Phase 5 Only selection
+    if (phaseSelection === 'phase5') {
+      console.log(`[Web Orchestrator] Running Phase 5 Only - Practice Baskets`);
+      // TODO: Implement Phase 5 only logic
+      throw new Error('Phase 5 only not yet implemented');
+    }
+
+    // Handle Phase 1 Only selection
+    if (phaseSelection === 'phase1') {
+      console.log(`[Web Orchestrator] Running Phase 1 Only - Translation`);
+      // Fall through to existing Phase 1 logic below
+    }
 
     // PHASE 1: Pedagogical Translation (with intelligent resume)
     job.phase = 'phase_1_web';
