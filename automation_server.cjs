@@ -503,20 +503,17 @@ ${Array.from({length: agentCount}, (_, i) => {
 
 ---
 
-## ✅ STEP 2: COMPREHENSION CHECKLIST
+## 🚨 STEP 2: KEY RULES (From Intelligence Doc)
 
-**BEFORE you extract any seeds, confirm you understand these key principles from the intelligence doc:**
+**Apply these rules from the intelligence doc:**
 
-- [ ] **Pragmatic FD**: I will ask "Can this chunk generate meaningful practice on its own?" for EACH LEGO
-- [ ] **Reject standalone**: pronouns (él, she), articles (una, the), particles (de, of) - these must be paired with context
-- [ ] **Accept paired**: "él quiere" (pronoun+verb), "de vez en cuando" (idiomatic phrase)
-- [ ] **Tiling in BOTH languages**: LEGOs must reconstruct target AND known perfectly
-- [ ] **S0010 lesson**: "puedo recordar" = M-type (not separate A-types) because "I can remember" is a unit in English
-- [ ] **A-before-M ordering**: ALL Atomic LEGOs before ALL Molecular LEGOs (pedagogical requirement)
-- [ ] **Components for M-types**: Every M-type needs word-by-word component array
-- [ ] **Extended thinking required**: Use <thinking> tags for EVERY seed - no scripts, no loops
-
-**If you cannot check all boxes, read the intelligence doc again.**
+1. **Pragmatic FD**: For EACH LEGO ask: "Can this generate meaningful practice alone?" If NO → pair it with context
+2. **Never extract standalone**: pronouns (él, she), articles (una, the), particles (de, of)
+3. **Always pair them**: "él quiere" (pronoun+verb), "de vez en cuando" (idiomatic phrase)
+4. **Tiling**: LEGOs must reconstruct BOTH target AND known perfectly
+5. **A-before-M**: ALL A-types first, then ALL M-types
+6. **Components**: Every M-type needs component array
+7. **Think per seed**: Use <thinking> tags - no scripts
 
 ---
 
