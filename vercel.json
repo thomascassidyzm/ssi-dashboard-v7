@@ -16,7 +16,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!vfs).*)",
+      "source": "/((?!vfs|api).*)",
       "destination": "/index.html"
     }
   ]
