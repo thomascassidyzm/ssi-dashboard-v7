@@ -1,7 +1,7 @@
 {
   "agent_id": "agent_03",
   "seed_range": "S0421-S0430",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "extracted_at": "2025-11-12T00:00:00Z",
   "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
   "seeds": [
     {
@@ -14,49 +14,38 @@
         {
           "id": "S0421L01",
           "type": "A",
-          "target": "Porque",
-          "known": "Because",
+          "target": "porque",
+          "known": "because",
           "new": true
         },
         {
           "id": "S0421L02",
-          "type": "A",
-          "target": "ya",
-          "known": "already",
-          "new": true
-        },
-        {
-          "id": "S0421L03",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
-        },
-        {
-          "id": "S0421L04",
           "type": "A",
           "target": "débil",
           "known": "weak",
           "new": true
         },
         {
-          "id": "S0421L05",
+          "id": "S0421L03",
           "type": "M",
-          "target": "saben",
-          "known": "they know",
+          "target": "ya saben",
+          "known": "they already know",
           "new": true,
           "components": [
+            ["ya", "already"],
             ["saben", "they know"]
           ]
         },
         {
-          "id": "S0421L06",
+          "id": "S0421L04",
           "type": "M",
-          "target": "se está poniendo",
-          "known": "he's getting",
+          "target": "que se está poniendo",
+          "known": "that he's getting",
           "new": true,
           "components": [
-            ["se está", "he's"],
+            ["que", "that"],
+            ["se", "(reflexive)"],
+            ["está", "is"],
             ["poniendo", "getting"]
           ]
         }
@@ -92,37 +81,40 @@
         {
           "id": "S0423L01",
           "type": "A",
-          "target": "preguntar",
-          "known": "to ask",
+          "target": "necesitan",
+          "known": "they need",
           "new": true
         },
         {
           "id": "S0423L02",
           "type": "A",
-          "target": "tan",
-          "known": "such",
+          "target": "preguntar",
+          "known": "to ask",
           "new": true
         },
         {
           "id": "S0423L03",
-          "type": "M",
-          "target": "necesitan",
-          "known": "do they need",
-          "new": true,
-          "components": [
-            ["necesitan", "do they need"]
-          ]
+          "type": "A",
+          "target": "tan",
+          "known": "so",
+          "new": true
         },
         {
           "id": "S0423L04",
+          "type": "A",
+          "target": "obvia",
+          "known": "obvious",
+          "new": true
+        },
+        {
+          "id": "S0423L05",
           "type": "M",
-          "target": "una pregunta obvia",
-          "known": "an obvious question",
+          "target": "una pregunta",
+          "known": "a question",
           "new": true,
           "components": [
-            ["una", "an"],
-            ["pregunta", "question"],
-            ["obvia", "obvious"]
+            ["una", "a"],
+            ["pregunta", "question"]
           ]
         }
       ]
@@ -137,8 +129,8 @@
         {
           "id": "S0424L01",
           "type": "A",
-          "target": "No",
-          "known": "No",
+          "target": "no",
+          "known": "no",
           "new": true
         },
         {
@@ -148,19 +140,29 @@
           "known": "they're wasting",
           "new": true,
           "components": [
-            ["están", "they're"],
+            ["están", "they are"],
             ["perdiendo", "wasting"]
           ]
         },
         {
           "id": "S0424L03",
           "type": "M",
-          "target": "el tiempo de todos",
-          "known": "everybody's time",
+          "target": "el tiempo",
+          "known": "the time",
           "new": true,
           "components": [
-            ["el tiempo", "time"],
-            ["de", "'s"],
+            ["el", "the"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0424L04",
+          "type": "M",
+          "target": "de todos",
+          "known": "of everybody",
+          "new": true,
+          "components": [
+            ["de", "of"],
             ["todos", "everybody"]
           ]
         }
@@ -176,39 +178,34 @@
         {
           "id": "S0425L01",
           "type": "A",
-          "target": "Sí",
-          "known": "Yes",
+          "target": "sí",
+          "known": "yes",
           "new": true
         },
         {
           "id": "S0425L02",
-          "type": "M",
+          "type": "A",
           "target": "necesitan",
           "known": "they need",
-          "new": true,
-          "components": [
-            ["necesitan", "they need"]
-          ]
+          "new": true
         },
         {
           "id": "S0425L03",
+          "type": "A",
+          "target": "entienden",
+          "known": "they understand",
+          "new": true
+        },
+        {
+          "id": "S0425L04",
           "type": "M",
           "target": "asegurarse de que",
           "known": "to make sure that",
           "new": true,
           "components": [
             ["asegurarse", "to make sure"],
-            ["de que", "that"]
-          ]
-        },
-        {
-          "id": "S0425L04",
-          "type": "M",
-          "target": "entienden",
-          "known": "they understand",
-          "new": true,
-          "components": [
-            ["entienden", "they understand"]
+            ["de", "of"],
+            ["que", "that"]
           ]
         }
       ]
@@ -223,30 +220,26 @@
         {
           "id": "S0426L01",
           "type": "A",
+          "target": "amarse",
+          "known": "to love each other",
+          "new": true
+        },
+        {
+          "id": "S0426L02",
+          "type": "A",
           "target": "pero",
           "known": "but",
           "new": true
         },
         {
-          "id": "S0426L02",
+          "id": "S0426L03",
           "type": "M",
           "target": "les gustaría",
           "known": "they would like",
           "new": true,
           "components": [
-            ["les", "they"],
+            ["les", "them"],
             ["gustaría", "would like"]
-          ]
-        },
-        {
-          "id": "S0426L03",
-          "type": "M",
-          "target": "amarse",
-          "known": "to love each other",
-          "new": true,
-          "components": [
-            ["amar", "to love"],
-            ["-se", "each other"]
           ]
         },
         {
@@ -256,7 +249,7 @@
           "known": "they're unhappy",
           "new": true,
           "components": [
-            ["están", "they're"],
+            ["están", "they are"],
             ["infelices", "unhappy"]
           ]
         }
@@ -272,19 +265,18 @@
         {
           "id": "S0427L01",
           "type": "A",
-          "target": "que",
-          "known": "that",
+          "target": "no",
+          "known": "no",
           "new": true
         },
         {
           "id": "S0427L02",
           "type": "M",
-          "target": "no les gustaría",
-          "known": "they wouldn't like",
+          "target": "les gustaría",
+          "known": "they would like",
           "new": true,
           "components": [
-            ["no", "not"],
-            ["les", "they"],
+            ["les", "them"],
             ["gustaría", "would like"]
           ]
         },
@@ -296,17 +288,18 @@
           "new": true,
           "components": [
             ["que", "that"],
-            ["pienses", "you to think"]
+            ["pienses", "you think"]
           ]
         },
         {
           "id": "S0427L04",
           "type": "M",
-          "target": "están aburridos",
-          "known": "they're bored",
+          "target": "que están aburridos",
+          "known": "that they're bored",
           "new": true,
           "components": [
-            ["están", "they're"],
+            ["que", "that"],
+            ["están", "they are"],
             ["aburridos", "bored"]
           ]
         }
@@ -323,10 +316,10 @@
           "id": "S0428L01",
           "type": "M",
           "target": "les gustaría",
-          "known": "would they like",
+          "known": "they would like",
           "new": true,
           "components": [
-            ["les", "they"],
+            ["les", "them"],
             ["gustaría", "would like"]
           ]
         },
@@ -338,7 +331,7 @@
           "new": true,
           "components": [
             ["visitar", "to visit"],
-            ["-nos", "us"]
+            ["nos", "us"]
           ]
         },
         {
@@ -348,7 +341,7 @@
           "known": "on Tuesday",
           "new": true,
           "components": [
-            ["el", "on"],
+            ["el", "the"],
             ["martes", "Tuesday"]
           ]
         }
@@ -364,29 +357,33 @@
         {
           "id": "S0429L01",
           "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0429L02",
+          "type": "A",
           "target": "eso",
           "known": "that",
           "new": true
         },
         {
-          "id": "S0429L02",
+          "id": "S0429L03",
+          "type": "A",
+          "target": "sería",
+          "known": "would be",
+          "new": true
+        },
+        {
+          "id": "S0429L04",
           "type": "A",
           "target": "perfecto",
           "known": "perfect",
           "new": true
         },
         {
-          "id": "S0429L03",
-          "type": "M",
-          "target": "sería",
-          "known": "would be",
-          "new": true,
-          "components": [
-            ["sería", "would be"]
-          ]
-        },
-        {
-          "id": "S0429L04",
+          "id": "S0429L05",
           "type": "M",
           "target": "para ellos",
           "known": "for them",
@@ -408,8 +405,8 @@
         {
           "id": "S0430L01",
           "type": "A",
-          "target": "No",
-          "known": "No",
+          "target": "no",
+          "known": "no",
           "new": true
         },
         {
