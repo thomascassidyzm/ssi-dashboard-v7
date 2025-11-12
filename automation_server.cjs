@@ -66,13 +66,13 @@ const PHASE_PROMPTS = {};
 
 // Phase intelligence files
 const phaseIntelligenceFiles = {
-  '1': 'docs/phase_intelligence/phase_1_orchestrator.md',  // Use lightweight orchestrator (points to skills/)
-  '3': 'docs/phase_intelligence/phase_3_lego_pairs.md',
-  '5': 'docs/phase_intelligence/phase_5_lego_baskets.md',
-  '5.5': 'docs/phase_intelligence/phase_5.5_basket_deduplication.md',
-  '6': 'docs/phase_intelligence/phase_6_introductions.md',
-  '7': 'docs/phase_intelligence/phase_7_compilation.md',
-  '8': 'docs/phase_intelligence/phase_8_audio_generation.md'
+  '1': 'public/docs/phase_intelligence/phase_1_orchestrator.md',  // Use lightweight orchestrator (points to skills/)
+  '3': 'public/docs/phase_intelligence/phase_3_lego_pairs.md',
+  '5': 'public/docs/phase_intelligence/phase_5_lego_baskets.md',
+  '5.5': 'public/docs/phase_intelligence/phase_5.5_basket_deduplication.md',
+  '6': 'public/docs/phase_intelligence/phase_6_introductions.md',
+  '7': 'public/docs/phase_intelligence/phase_7_compilation.md',
+  '8': 'public/docs/phase_intelligence/phase_8_audio_generation.md'
 };
 
 // Load each phase intelligence file
@@ -386,7 +386,10 @@ You are the **Master Orchestrator** for this segment. Your job is to:
 
 **CRITICAL**: Use ONE message with multiple Task tool calls to spawn all agents simultaneously.
 
-**OUTPUT METHOD**: Each sub-agent POSTs directly to API (no git, no branches, no merging needed).
+**OUTPUT METHOD**: Each sub-agent commits to segment-specific branch:
+- Calculate segment: Math.floor((startSeed - 1) / 100) + 1
+- Branch name: \`phase3-segment-X-${courseCode}\`
+- All 10 agents push to SAME branch (git handles concurrent commits)
 
 ---
 
@@ -494,9 +497,11 @@ ${Array.from({length: agentCount}, (_, i) => {
 
 ## 📚 PHASE INTELLIGENCE (REQUIRED READING)
 
-**YOU MUST READ THIS FILE FIRST**: https://ssi-dashboard-v7.vercel.app/intelligence (Phase 3 - v6.3)
+**YOU MUST READ THIS FILE FIRST**:
+- Primary: https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_3_lego_pairs.md
+- Fallback: Local file at \`public/docs/phase_intelligence/phase_3_lego_pairs.md\`
 
-Or if local files are available: \`docs/phase_intelligence/phase_3_lego_pairs.md\` (v6.3)
+**Phase 3 v6.3 - Pragmatic FD Edition**
 
 This file contains the complete Phase 3 v6.3 methodology:
 - Core Principle (Pragmatic FD)
@@ -622,9 +627,14 @@ For EACH of your ${seedsPerAgent} seeds:
 
 **Write your results to a JSON file and commit to GitHub**:
 
-1. Create file: \`public/vfs/courses/${courseCode}/extractions/agent_XX_output.json\`
+1. Calculate segment number: segment = Math.floor((startSeed - 1) / 100) + 1
+   - S0001-S0100 = Segment 1
+   - S0101-S0200 = Segment 2
+   - etc.
 
-2. File format:
+2. Create file: \`public/vfs/courses/${courseCode}/segments/segment_X/agent_YY_output.json\`
+
+3. File format:
 \`\`\`json
 {
   "agent_id": "agent_0Y",
@@ -657,12 +667,22 @@ For EACH of your ${seedsPerAgent} seeds:
 }
 \`\`\`
 
-3. Commit and push:
+4. Commit and push to predictable branch:
 \`\`\`bash
-git add public/vfs/courses/${courseCode}/extractions/agent_XX_output.json
-git commit -m "Phase 3: Agent XX extraction (S00XX-S00YY) - ${seedsPerAgent} seeds"
-git push origin HEAD
+# Create/switch to segment-specific branch
+git checkout -b phase3-segment-X-${courseCode}
+
+# Add your agent output
+git add public/vfs/courses/${courseCode}/segments/segment_X/agent_YY_output.json
+
+# Commit
+git commit -m "Phase 3 Segment X: Agent YY extraction (S00XX-S00YY) - ${seedsPerAgent} seeds"
+
+# Push to named branch
+git push origin phase3-segment-X-${courseCode}
 \`\`\`
+
+**IMPORTANT**: All 10 agents in this segment should push to the SAME branch (\`phase3-segment-X-${courseCode}\`).
 
 **Quality over speed!** Take 1-2 minutes per seed for careful extraction.
 \`\`\`
