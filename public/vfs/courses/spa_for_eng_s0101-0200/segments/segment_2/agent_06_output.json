@@ -11,8 +11,8 @@
         {
           "id": "S0151L01",
           "type": "A",
-          "target": "Eso",
-          "known": "That",
+          "target": "eso",
+          "known": "that",
           "new": true
         },
         {
@@ -29,7 +29,7 @@
           "target": "lo que",
           "known": "what",
           "new": true,
-          "components": [["lo", "it"], ["que", "that/what"]]
+          "components": [["lo", "the"], ["que", "that"]]
         },
         {
           "id": "S0151L04",
@@ -45,7 +45,7 @@
           "target": "que pasara",
           "known": "would happen",
           "new": true,
-          "components": [["que", "that"], ["pasara", "would happen"]]
+          "components": [["que", "that"], ["pasara", "happen"]]
         }
       ]
     },
@@ -85,9 +85,9 @@
           "id": "S0152L05",
           "type": "M",
           "target": "habría hecho",
-          "known": "I would have done",
+          "known": "would have done",
           "new": true,
-          "components": [["habría", "I would have"], ["hecho", "done"]]
+          "components": [["habría", "would have"], ["hecho", "done"]]
         },
         {
           "id": "S0152L06",
@@ -103,7 +103,7 @@
           "target": "lo que",
           "known": "what",
           "new": true,
-          "components": [["lo", "it"], ["que", "that/what"]]
+          "components": [["lo", "the"], ["que", "that"]]
         }
       ]
     },
@@ -129,9 +129,9 @@
           "id": "S0153L03",
           "type": "M",
           "target": "no habría dicho",
-          "known": "I wouldn't have said",
+          "known": "wouldn't have said",
           "new": true,
-          "components": [["no", "not"], ["habría", "I would have"], ["dicho", "said"]]
+          "components": [["no", "not"], ["habría", "would have"], ["dicho", "said"]]
         },
         {
           "id": "S0153L04",
@@ -150,8 +150,8 @@
         {
           "id": "S0154L01",
           "type": "A",
-          "target": "Dónde",
-          "known": "Where",
+          "target": "dónde",
+          "known": "where",
           "new": true
         },
         {
@@ -163,11 +163,10 @@
         },
         {
           "id": "S0154L03",
-          "type": "M",
+          "type": "A",
           "target": "encontrarte",
           "known": "to meet",
-          "new": true,
-          "components": [["encontrar", "to meet"], ["te", "yourself"]]
+          "new": true
         },
         {
           "id": "S0154L04",
@@ -175,7 +174,7 @@
           "target": "el sábado",
           "known": "on Saturday",
           "new": true,
-          "components": [["el", "on the"], ["sábado", "Saturday"]]
+          "components": [["el", "on"], ["sábado", "Saturday"]]
         },
         {
           "id": "S0154L05",
@@ -183,7 +182,7 @@
           "target": "por la noche",
           "known": "night",
           "new": true,
-          "components": [["por", "at/during"], ["la", "the"], ["noche", "night"]]
+          "components": [["por", "in"], ["la", "the"], ["noche", "night"]]
         }
       ]
     },
@@ -195,7 +194,7 @@
           "id": "S0155L01",
           "type": "A",
           "target": "esperar",
-          "known": "waiting for",
+          "known": "waiting",
           "new": true
         },
         {
@@ -225,7 +224,7 @@
           "target": "no me importa",
           "known": "I don't mind",
           "new": true,
-          "components": [["no", "not"], ["me", "to me"], ["importa", "it matters"]]
+          "components": [["no", "not"], ["me", "to me"], ["importa", "matters"]]
         },
         {
           "id": "S0155L06",
@@ -233,7 +232,7 @@
           "target": "por la mañana",
           "known": "morning",
           "new": true,
-          "components": [["por", "in/during"], ["la", "the"], ["mañana", "morning"]]
+          "components": [["por", "in"], ["la", "the"], ["mañana", "morning"]]
         }
       ]
     },
@@ -245,7 +244,7 @@
           "id": "S0156L01",
           "type": "A",
           "target": "quieres",
-          "known": "Do you want",
+          "known": "do you want",
           "new": true
         },
         {
@@ -288,7 +287,7 @@
           "id": "S0157L01",
           "type": "A",
           "target": "estar",
-          "known": "be",
+          "known": "to be",
           "new": true
         },
         {
@@ -302,9 +301,9 @@
           "id": "S0157L03",
           "type": "M",
           "target": "no podré",
-          "known": "I won't be able to",
+          "known": "I won't be able",
           "new": true,
-          "components": [["no", "not"], ["podré", "I will be able to"]]
+          "components": [["no", "not"], ["podré", "I will be able"]]
         },
         {
           "id": "S0157L04",
@@ -323,8 +322,8 @@
         {
           "id": "S0158L01",
           "type": "A",
-          "target": "Hablemos",
-          "known": "Let's talk",
+          "target": "hablemos",
+          "known": "let's talk",
           "new": true
         },
         {
@@ -340,7 +339,7 @@
           "target": "algo más",
           "known": "something else",
           "new": true,
-          "components": [["algo", "something"], ["más", "else/more"]]
+          "components": [["algo", "something"], ["más", "else"]]
         }
       ]
     },
@@ -351,8 +350,8 @@
         {
           "id": "S0159L01",
           "type": "A",
-          "target": "Eso",
-          "known": "That",
+          "target": "eso",
+          "known": "that",
           "new": true
         },
         {
@@ -376,7 +375,7 @@
           "target": "lo que",
           "known": "what",
           "new": true,
-          "components": [["lo", "it"], ["que", "that/what"]]
+          "components": [["lo", "the"], ["que", "that"]]
         },
         {
           "id": "S0159L05",
@@ -395,8 +394,8 @@
         {
           "id": "S0160L01",
           "type": "A",
-          "target": "Cómo",
-          "known": "How",
+          "target": "cómo",
+          "known": "how",
           "new": true
         },
         {
@@ -409,24 +408,24 @@
         {
           "id": "S0160L03",
           "type": "A",
-          "target": "esta",
-          "known": "this",
+          "target": "en",
+          "known": "in",
           "new": true
         },
         {
           "id": "S0160L04",
           "type": "A",
-          "target": "palabra",
-          "known": "word",
+          "target": "español",
+          "known": "Spanish",
           "new": true
         },
         {
           "id": "S0160L05",
           "type": "M",
-          "target": "en español",
-          "known": "in Spanish",
+          "target": "esta palabra",
+          "known": "this word",
           "new": true,
-          "components": [["en", "in"], ["español", "Spanish"]]
+          "components": [["esta", "this"], ["palabra", "word"]]
         }
       ]
     }
