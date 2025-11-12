@@ -6,7 +6,7 @@
   "seeds": [
     {
       "seed_id": "S0131",
-      "seed_pair": ["There are too many ideas going around in my head.", "Hay demasiadas ideas dando vueltas en mi cabeza."],
+      "seed_pair": ["There are too many ideas going around in my head", "Hay demasiadas ideas dando vueltas en mi cabeza"],
       "legos": [
         {
           "id": "S0131L01",
@@ -38,6 +38,20 @@
         },
         {
           "id": "S0131L05",
+          "type": "A",
+          "target": "mi",
+          "known": "my",
+          "new": true
+        },
+        {
+          "id": "S0131L06",
+          "type": "A",
+          "target": "cabeza",
+          "known": "head",
+          "new": true
+        },
+        {
+          "id": "S0131L07",
           "type": "M",
           "target": "dando vueltas",
           "known": "going around",
@@ -46,99 +60,91 @@
             ["dando", "giving"],
             ["vueltas", "turns"]
           ]
-        },
-        {
-          "id": "S0131L06",
-          "type": "M",
-          "target": "mi cabeza",
-          "known": "my head",
-          "new": true,
-          "components": [
-            ["mi", "my"],
-            ["cabeza", "head"]
-          ]
         }
       ]
     },
     {
       "seed_id": "S0132",
-      "seed_pair": ["That's less exciting than what she was saying.", "Eso es menos emocionante que lo que decía."],
+      "seed_pair": ["That's less exciting than what she was saying", "Eso es menos emocionante que lo que decía"],
       "legos": [
         {
           "id": "S0132L01",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0132L02",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "new": true
+        },
+        {
+          "id": "S0132L03",
           "type": "A",
           "target": "menos",
           "known": "less",
           "new": true
         },
         {
-          "id": "S0132L02",
+          "id": "S0132L04",
           "type": "A",
           "target": "emocionante",
           "known": "exciting",
           "new": true
         },
         {
-          "id": "S0132L03",
+          "id": "S0132L05",
           "type": "A",
           "target": "que",
           "known": "than",
           "new": true
         },
         {
-          "id": "S0132L04",
+          "id": "S0132L06",
           "type": "A",
           "target": "decía",
           "known": "she was saying",
           "new": true
         },
         {
-          "id": "S0132L05",
-          "type": "M",
-          "target": "eso es",
-          "known": "that's",
-          "new": true,
-          "components": [
-            ["eso", "that"],
-            ["es", "is"]
-          ]
-        },
-        {
-          "id": "S0132L06",
+          "id": "S0132L07",
           "type": "M",
           "target": "lo que",
           "known": "what",
           "new": true,
           "components": [
-            ["lo", "the"],
-            ["que", "that"]
+            ["lo", "the/it"],
+            ["que", "that/what"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0133",
-      "seed_pair": ["You get to know someone very well when you work together.", "Llegas a conocer muy bien a alguien cuando trabajan juntos."],
+      "seed_pair": ["You get to know someone very well when you work together", "Llegas a conocer muy bien a alguien cuando trabajan juntos"],
       "legos": [
         {
           "id": "S0133L01",
           "type": "A",
-          "target": "cuando",
-          "known": "when",
+          "target": "muy",
+          "known": "very",
           "new": true
         },
         {
           "id": "S0133L02",
           "type": "A",
-          "target": "trabajan",
-          "known": "you work",
+          "target": "bien",
+          "known": "well",
           "new": true
         },
         {
           "id": "S0133L03",
           "type": "A",
-          "target": "juntos",
-          "known": "together",
+          "target": "cuando",
+          "known": "when",
           "new": true
         },
         {
@@ -156,17 +162,6 @@
         {
           "id": "S0133L05",
           "type": "M",
-          "target": "muy bien",
-          "known": "very well",
-          "new": true,
-          "components": [
-            ["muy", "very"],
-            ["bien", "well"]
-          ]
-        },
-        {
-          "id": "S0133L06",
-          "type": "M",
           "target": "a alguien",
           "known": "someone",
           "new": true,
@@ -174,32 +169,43 @@
             ["a", "to"],
             ["alguien", "someone"]
           ]
+        },
+        {
+          "id": "S0133L06",
+          "type": "M",
+          "target": "trabajan juntos",
+          "known": "you work together",
+          "new": true,
+          "components": [
+            ["trabajan", "they work"],
+            ["juntos", "together"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0134",
-      "seed_pair": ["It's not a problem when you work at something difficult with them.", "No es un problema cuando trabajas en algo difícil con ellos."],
+      "seed_pair": ["It's not a problem when you work at something difficult with them", "No es un problema cuando trabajas en algo difícil con ellos"],
       "legos": [
         {
           "id": "S0134L01",
           "type": "A",
-          "target": "cuando",
-          "known": "when",
+          "target": "un",
+          "known": "a",
           "new": true
         },
         {
           "id": "S0134L02",
           "type": "A",
-          "target": "trabajas",
-          "known": "you work",
+          "target": "problema",
+          "known": "problem",
           "new": true
         },
         {
           "id": "S0134L03",
           "type": "A",
-          "target": "en",
-          "known": "at",
+          "target": "cuando",
+          "known": "when",
           "new": true
         },
         {
@@ -218,42 +224,45 @@
         },
         {
           "id": "S0134L06",
+          "type": "A",
+          "target": "con",
+          "known": "with",
+          "new": true
+        },
+        {
+          "id": "S0134L07",
+          "type": "A",
+          "target": "ellos",
+          "known": "them",
+          "new": true
+        },
+        {
+          "id": "S0134L08",
           "type": "M",
           "target": "no es",
           "known": "it's not",
           "new": true,
           "components": [
-            ["no", "not"],
+            ["no", "no/not"],
             ["es", "is"]
           ]
         },
         {
-          "id": "S0134L07",
+          "id": "S0134L09",
           "type": "M",
-          "target": "un problema",
-          "known": "a problem",
+          "target": "trabajas en",
+          "known": "you work at",
           "new": true,
           "components": [
-            ["un", "a"],
-            ["problema", "problem"]
-          ]
-        },
-        {
-          "id": "S0134L08",
-          "type": "M",
-          "target": "con ellos",
-          "known": "with them",
-          "new": true,
-          "components": [
-            ["con", "with"],
-            ["ellos", "them"]
+            ["trabajas", "you work"],
+            ["en", "at/in"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0135",
-      "seed_pair": ["I don't know why you think that it's so good.", "No sé por qué piensas que es tan bueno."],
+      "seed_pair": ["I don't know why you think that it's so good", "No sé por qué piensas que es tan bueno"],
       "legos": [
         {
           "id": "S0135L01",
@@ -280,7 +289,7 @@
           "id": "S0135L04",
           "type": "A",
           "target": "es",
-          "known": "it's",
+          "known": "is",
           "new": true
         },
         {
@@ -304,7 +313,7 @@
           "known": "I don't know",
           "new": true,
           "components": [
-            ["no", "not"],
+            ["no", "no/not"],
             ["sé", "I know"]
           ]
         }
@@ -312,20 +321,20 @@
     },
     {
       "seed_id": "S0136",
-      "seed_pair": ["Of course you can ask her because she's my friend.", "Por supuesto que puedes preguntarle porque es mi amiga."],
+      "seed_pair": ["Of course you can ask her because she's my friend", "Por supuesto que puedes preguntarle porque es mi amiga"],
       "legos": [
         {
           "id": "S0136L01",
           "type": "A",
-          "target": "puedes",
-          "known": "you can",
+          "target": "que",
+          "known": "that",
           "new": true
         },
         {
           "id": "S0136L02",
           "type": "A",
-          "target": "preguntarle",
-          "known": "ask her",
+          "target": "puedes",
+          "known": "you can",
           "new": true
         },
         {
@@ -339,37 +348,50 @@
           "id": "S0136L04",
           "type": "A",
           "target": "es",
-          "known": "she's",
+          "known": "is",
           "new": true
         },
         {
           "id": "S0136L05",
-          "type": "M",
-          "target": "por supuesto que",
-          "known": "of course",
-          "new": true,
-          "components": [
-            ["por", "by"],
-            ["supuesto", "supposed"],
-            ["que", "that"]
-          ]
+          "type": "A",
+          "target": "mi",
+          "known": "my",
+          "new": true
         },
         {
           "id": "S0136L06",
+          "type": "A",
+          "target": "amiga",
+          "known": "friend",
+          "new": true
+        },
+        {
+          "id": "S0136L07",
           "type": "M",
-          "target": "mi amiga",
-          "known": "my friend",
+          "target": "por supuesto",
+          "known": "of course",
           "new": true,
           "components": [
-            ["mi", "my"],
-            ["amiga", "friend"]
+            ["por", "for/by"],
+            ["supuesto", "supposed"]
+          ]
+        },
+        {
+          "id": "S0136L08",
+          "type": "M",
+          "target": "preguntarle",
+          "known": "ask her",
+          "new": true,
+          "components": [
+            ["preguntar", "to ask"],
+            ["le", "her/him"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0137",
-      "seed_pair": ["It's more important to talk often than to be perfect.", "Es más importante hablar frecuentemente que ser perfecto."],
+      "seed_pair": ["It's more important to talk often than to be perfect", "Es más importante hablar frecuentemente que ser perfecto"],
       "legos": [
         {
           "id": "S0137L01",
@@ -428,61 +450,73 @@
     },
     {
       "seed_id": "S0138",
-      "seed_pair": ["This was where my friend wanted to meet us.", "Esto era donde mi amigo quería reunirse con nosotros."],
+      "seed_pair": ["This was where my friend wanted to meet us", "Esto era donde mi amigo quería reunirse con nosotros"],
       "legos": [
         {
           "id": "S0138L01",
+          "type": "A",
+          "target": "esto",
+          "known": "this",
+          "new": true
+        },
+        {
+          "id": "S0138L02",
+          "type": "A",
+          "target": "era",
+          "known": "was",
+          "new": true
+        },
+        {
+          "id": "S0138L03",
           "type": "A",
           "target": "donde",
           "known": "where",
           "new": true
         },
         {
-          "id": "S0138L02",
+          "id": "S0138L04",
+          "type": "A",
+          "target": "mi",
+          "known": "my",
+          "new": true
+        },
+        {
+          "id": "S0138L05",
+          "type": "A",
+          "target": "amigo",
+          "known": "friend",
+          "new": true
+        },
+        {
+          "id": "S0138L06",
           "type": "A",
           "target": "quería",
           "known": "wanted",
           "new": true
         },
         {
-          "id": "S0138L03",
-          "type": "M",
-          "target": "esto era",
-          "known": "this was",
-          "new": true,
-          "components": [
-            ["esto", "this"],
-            ["era", "was"]
-          ]
+          "id": "S0138L07",
+          "type": "A",
+          "target": "nosotros",
+          "known": "us",
+          "new": true
         },
         {
-          "id": "S0138L04",
+          "id": "S0138L08",
           "type": "M",
-          "target": "mi amigo",
-          "known": "my friend",
+          "target": "reunirse con",
+          "known": "to meet",
           "new": true,
           "components": [
-            ["mi", "my"],
-            ["amigo", "friend"]
-          ]
-        },
-        {
-          "id": "S0138L05",
-          "type": "M",
-          "target": "reunirse con nosotros",
-          "known": "to meet us",
-          "new": true,
-          "components": [
-            ["reunirse", "to meet"],
-            ["con", "with"],
-            ["nosotros", "us"]
+            ["reunirse", "to meet oneself"],
+            ["con", "with"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0139",
-      "seed_pair": ["I'm sorry that I need to leave so early.", "Lo siento que necesito irme tan temprano."],
+      "seed_pair": ["I'm sorry that I need to leave so early", "Lo siento que necesito irme tan temprano"],
       "legos": [
         {
           "id": "S0139L01",
@@ -534,7 +568,7 @@
     },
     {
       "seed_id": "S0140",
-      "seed_pair": ["I'm sorry that I can't see what you're trying to show me.", "Lo siento que no puedo ver lo que estás intentando mostrarme."],
+      "seed_pair": ["I'm sorry that I can't see what you're trying to show me", "Lo siento que no puedo ver lo que estás intentando mostrarme"],
       "legos": [
         {
           "id": "S0140L01",
@@ -547,18 +581,11 @@
           "id": "S0140L02",
           "type": "A",
           "target": "ver",
-          "known": "see",
+          "known": "to see",
           "new": true
         },
         {
           "id": "S0140L03",
-          "type": "A",
-          "target": "mostrarme",
-          "known": "to show me",
-          "new": true
-        },
-        {
-          "id": "S0140L04",
           "type": "M",
           "target": "lo siento",
           "known": "I'm sorry",
@@ -569,29 +596,29 @@
           ]
         },
         {
-          "id": "S0140L05",
+          "id": "S0140L04",
           "type": "M",
           "target": "no puedo",
           "known": "I can't",
           "new": true,
           "components": [
-            ["no", "not"],
+            ["no", "no/not"],
             ["puedo", "I can"]
           ]
         },
         {
-          "id": "S0140L06",
+          "id": "S0140L05",
           "type": "M",
           "target": "lo que",
           "known": "what",
           "new": true,
           "components": [
-            ["lo", "the"],
-            ["que", "that"]
+            ["lo", "the/it"],
+            ["que", "that/what"]
           ]
         },
         {
-          "id": "S0140L07",
+          "id": "S0140L06",
           "type": "M",
           "target": "estás intentando",
           "known": "you're trying",
@@ -599,6 +626,17 @@
           "components": [
             ["estás", "you are"],
             ["intentando", "trying"]
+          ]
+        },
+        {
+          "id": "S0140L07",
+          "type": "M",
+          "target": "mostrarme",
+          "known": "to show me",
+          "new": true,
+          "components": [
+            ["mostrar", "to show"],
+            ["me", "me"]
           ]
         }
       ]
