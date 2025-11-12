@@ -1,0 +1,546 @@
+{
+  "agent_id": "agent_10",
+  "seed_range": "S0091-S0100",
+  "extracted_at": "2025-11-12T00:00:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0091",
+      "seed_pair": [
+        "It's difficult to think quickly enough to answer in time.",
+        "Es difícil pensar lo suficientemente rápido para responder a tiempo."
+      ],
+      "legos": [
+        {
+          "id": "S0091L01",
+          "type": "A",
+          "target": "pensar",
+          "known": "to think",
+          "new": true
+        },
+        {
+          "id": "S0091L02",
+          "type": "A",
+          "target": "para",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0091L03",
+          "type": "A",
+          "target": "responder",
+          "known": "to answer",
+          "new": true
+        },
+        {
+          "id": "S0091L04",
+          "type": "M",
+          "target": "es difícil",
+          "known": "it's difficult",
+          "new": true,
+          "components": [
+            ["es", "it is"],
+            ["difícil", "difficult"]
+          ]
+        },
+        {
+          "id": "S0091L05",
+          "type": "M",
+          "target": "lo suficientemente rápido",
+          "known": "quickly enough",
+          "new": true,
+          "components": [
+            ["lo", "the"],
+            ["suficientemente", "sufficiently"],
+            ["rápido", "quickly"]
+          ]
+        },
+        {
+          "id": "S0091L06",
+          "type": "M",
+          "target": "a tiempo",
+          "known": "in time",
+          "new": true,
+          "components": [
+            ["a", "in"],
+            ["tiempo", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0092",
+      "seed_pair": [
+        "I'd like to keep on doing this for a while.",
+        "Me gustaría continuar haciendo esto por un tiempo."
+      ],
+      "legos": [
+        {
+          "id": "S0092L01",
+          "type": "A",
+          "target": "continuar",
+          "known": "to keep on",
+          "new": true
+        },
+        {
+          "id": "S0092L02",
+          "type": "A",
+          "target": "haciendo",
+          "known": "doing",
+          "new": true
+        },
+        {
+          "id": "S0092L03",
+          "type": "A",
+          "target": "esto",
+          "known": "this",
+          "new": true
+        },
+        {
+          "id": "S0092L04",
+          "type": "M",
+          "target": "me gustaría",
+          "known": "I'd like",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["gustaría", "would like"]
+          ]
+        },
+        {
+          "id": "S0092L05",
+          "type": "M",
+          "target": "por un tiempo",
+          "known": "for a while",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["un", "a"],
+            ["tiempo", "while"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0093",
+      "seed_pair": [
+        "It's time to go now.",
+        "Es hora de ir ahora."
+      ],
+      "legos": [
+        {
+          "id": "S0093L01",
+          "type": "A",
+          "target": "ir",
+          "known": "go",
+          "new": true
+        },
+        {
+          "id": "S0093L02",
+          "type": "A",
+          "target": "ahora",
+          "known": "now",
+          "new": true
+        },
+        {
+          "id": "S0093L03",
+          "type": "M",
+          "target": "es hora de",
+          "known": "it's time to",
+          "new": true,
+          "components": [
+            ["es", "it is"],
+            ["hora", "time"],
+            ["de", "to"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0094",
+      "seed_pair": [
+        "This is the only way it will work.",
+        "Esta es la única manera en que funcionará."
+      ],
+      "legos": [
+        {
+          "id": "S0094L01",
+          "type": "A",
+          "target": "funcionará",
+          "known": "it will work",
+          "new": true
+        },
+        {
+          "id": "S0094L02",
+          "type": "M",
+          "target": "esta es",
+          "known": "this is",
+          "new": true,
+          "components": [
+            ["esta", "this"],
+            ["es", "is"]
+          ]
+        },
+        {
+          "id": "S0094L03",
+          "type": "M",
+          "target": "la única",
+          "known": "the only",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["única", "only"]
+          ]
+        },
+        {
+          "id": "S0094L04",
+          "type": "M",
+          "target": "manera en que",
+          "known": "way",
+          "new": true,
+          "components": [
+            ["manera", "way"],
+            ["en", "in"],
+            ["que", "which"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0095",
+      "seed_pair": [
+        "Are you ready to go home on the next bus?",
+        "¿Estás preparado para ir a casa en el próximo autobús?"
+      ],
+      "legos": [
+        {
+          "id": "S0095L01",
+          "type": "A",
+          "target": "para",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0095L02",
+          "type": "A",
+          "target": "ir",
+          "known": "go",
+          "new": true
+        },
+        {
+          "id": "S0095L03",
+          "type": "A",
+          "target": "en",
+          "known": "on",
+          "new": true
+        },
+        {
+          "id": "S0095L04",
+          "type": "A",
+          "target": "autobús",
+          "known": "bus",
+          "new": true
+        },
+        {
+          "id": "S0095L05",
+          "type": "M",
+          "target": "estás preparado",
+          "known": "are you ready",
+          "new": true,
+          "components": [
+            ["estás", "are you"],
+            ["preparado", "ready"]
+          ]
+        },
+        {
+          "id": "S0095L06",
+          "type": "M",
+          "target": "a casa",
+          "known": "home",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["casa", "house"]
+          ]
+        },
+        {
+          "id": "S0095L07",
+          "type": "M",
+          "target": "el próximo",
+          "known": "the next",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["próximo", "next"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0096",
+      "seed_pair": [
+        "No I'm not ready yet, I need a little more time.",
+        "No, no estoy preparado todavía, necesito un poco más de tiempo."
+      ],
+      "legos": [
+        {
+          "id": "S0096L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0096L02",
+          "type": "A",
+          "target": "todavía",
+          "known": "yet",
+          "new": true
+        },
+        {
+          "id": "S0096L03",
+          "type": "A",
+          "target": "necesito",
+          "known": "I need",
+          "new": true
+        },
+        {
+          "id": "S0096L04",
+          "type": "A",
+          "target": "tiempo",
+          "known": "time",
+          "new": true
+        },
+        {
+          "id": "S0096L05",
+          "type": "M",
+          "target": "no estoy preparado",
+          "known": "I'm not ready",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["estoy", "I am"],
+            ["preparado", "ready"]
+          ]
+        },
+        {
+          "id": "S0096L06",
+          "type": "M",
+          "target": "un poco",
+          "known": "a little",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["poco", "little"]
+          ]
+        },
+        {
+          "id": "S0096L07",
+          "type": "M",
+          "target": "más de",
+          "known": "more",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["de", "of"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0097",
+      "seed_pair": [
+        "Yes I'm ready to go as soon as you want.",
+        "Sí, estoy preparado para ir tan pronto como quieras."
+      ],
+      "legos": [
+        {
+          "id": "S0097L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0097L02",
+          "type": "A",
+          "target": "para",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0097L03",
+          "type": "A",
+          "target": "ir",
+          "known": "go",
+          "new": true
+        },
+        {
+          "id": "S0097L04",
+          "type": "M",
+          "target": "estoy preparado",
+          "known": "I'm ready",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["preparado", "ready"]
+          ]
+        },
+        {
+          "id": "S0097L05",
+          "type": "M",
+          "target": "tan pronto como quieras",
+          "known": "as soon as you want",
+          "new": true,
+          "components": [
+            ["tan", "as"],
+            ["pronto", "soon"],
+            ["como", "as"],
+            ["quieras", "you want"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0098",
+      "seed_pair": [
+        "I should consider playing something else.",
+        "Debería considerar jugar otra cosa."
+      ],
+      "legos": [
+        {
+          "id": "S0098L01",
+          "type": "A",
+          "target": "debería",
+          "known": "I should",
+          "new": true
+        },
+        {
+          "id": "S0098L02",
+          "type": "A",
+          "target": "considerar",
+          "known": "consider",
+          "new": true
+        },
+        {
+          "id": "S0098L03",
+          "type": "A",
+          "target": "jugar",
+          "known": "playing",
+          "new": true
+        },
+        {
+          "id": "S0098L04",
+          "type": "M",
+          "target": "otra cosa",
+          "known": "something else",
+          "new": true,
+          "components": [
+            ["otra", "another"],
+            ["cosa", "thing"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0099",
+      "seed_pair": [
+        "You should ask yourself why it's not working.",
+        "Deberías preguntarte por qué no está trabajando"
+      ],
+      "legos": [
+        {
+          "id": "S0099L01",
+          "type": "A",
+          "target": "deberías",
+          "known": "you should",
+          "new": true
+        },
+        {
+          "id": "S0099L02",
+          "type": "M",
+          "target": "preguntarte",
+          "known": "ask yourself",
+          "new": true,
+          "components": [
+            ["preguntar", "ask"],
+            ["te", "yourself"]
+          ]
+        },
+        {
+          "id": "S0099L03",
+          "type": "M",
+          "target": "por qué",
+          "known": "why",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["qué", "what"]
+          ]
+        },
+        {
+          "id": "S0099L04",
+          "type": "M",
+          "target": "no está trabajando",
+          "known": "it's not working",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["está", "it is"],
+            ["trabajando", "working"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0100",
+      "seed_pair": [
+        "You shouldn't worry about doing something similar.",
+        "No deberías preocuparte por hacer algo similar"
+      ],
+      "legos": [
+        {
+          "id": "S0100L01",
+          "type": "A",
+          "target": "hacer",
+          "known": "doing",
+          "new": true
+        },
+        {
+          "id": "S0100L02",
+          "type": "M",
+          "target": "no deberías",
+          "known": "you shouldn't",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["deberías", "you should"]
+          ]
+        },
+        {
+          "id": "S0100L03",
+          "type": "M",
+          "target": "preocuparte por",
+          "known": "worry about",
+          "new": true,
+          "components": [
+            ["preocupar", "worry"],
+            ["te", "yourself"],
+            ["por", "about"]
+          ]
+        },
+        {
+          "id": "S0100L04",
+          "type": "M",
+          "target": "algo similar",
+          "known": "something similar",
+          "new": true,
+          "components": [
+            ["algo", "something"],
+            ["similar", "similar"]
+          ]
+        }
+      ]
+    }
+  ]
+}
