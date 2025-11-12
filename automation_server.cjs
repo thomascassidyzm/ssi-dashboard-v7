@@ -620,23 +620,17 @@ For EACH of your ${seedsPerAgent} seeds:
 
 ## 📤 OUTPUT
 
-**POST your results directly to the API** (no git, no files):
+**Write your results to a JSON file and commit to GitHub**:
 
-\`\`\`javascript
-POST https://ssi-dashboard-v7.vercel.app/api/courses/${courseCode}/outputs
+1. Create file: \`public/vfs/courses/${courseCode}/extractions/agent_XX_output.json\`
 
-Headers:
-Content-Type: application/json
-
-Body:
+2. File format:
+\`\`\`json
 {
-  "phase": "3",
-  "segmentId": "segment_X_agent_Y",
-  "agentId": "agent_0Y",
-  "metadata": {
-    "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
-    "seedRange": "S00XX-S00YY"
-  },
+  "agent_id": "agent_0Y",
+  "seed_range": "S00XX-S00YY",
+  "extracted_at": "<ISO timestamp>",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
   "seeds": [
     {
       "seed_id": "S00XX",
@@ -663,13 +657,11 @@ Body:
 }
 \`\`\`
 
-**After successful POST**, you'll receive:
-\`\`\`json
-{
-  "success": true,
-  "message": "Successfully wrote 10 seeds to lego_pairs.json",
-  "totalSeeds": 10
-}
+3. Commit and push:
+\`\`\`bash
+git add public/vfs/courses/${courseCode}/extractions/agent_XX_output.json
+git commit -m "Phase 3: Agent XX extraction (S00XX-S00YY) - ${seedsPerAgent} seeds"
+git push origin HEAD
 \`\`\`
 
 **Quality over speed!** Take 1-2 minutes per seed for careful extraction.
