@@ -1,0 +1,386 @@
+{
+  "agent_id": "agent_06",
+  "seed_range": "S0551-S0560",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0551",
+      "seed_pair": ["The church is ugly.", "La iglesia es fea."],
+      "legos": [
+        {
+          "id": "S0551L01",
+          "type": "M",
+          "target": "la iglesia",
+          "known": "the church",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["iglesia", "church"]
+          ]
+        },
+        {
+          "id": "S0551L02",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "new": true
+        },
+        {
+          "id": "S0551L03",
+          "type": "A",
+          "target": "fea",
+          "known": "ugly",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0552",
+      "seed_pair": ["The church at the other end of the village is ugly.", "La iglesia al otro final del pueblo es fea."],
+      "legos": [
+        {
+          "id": "S0552L01",
+          "type": "M",
+          "target": "al",
+          "known": "at the",
+          "new": true,
+          "components": [
+            ["a", "at"],
+            ["el", "the"]
+          ]
+        },
+        {
+          "id": "S0552L02",
+          "type": "A",
+          "target": "otro",
+          "known": "other",
+          "new": true
+        },
+        {
+          "id": "S0552L03",
+          "type": "A",
+          "target": "final",
+          "known": "end",
+          "new": true
+        },
+        {
+          "id": "S0552L04",
+          "type": "M",
+          "target": "del",
+          "known": "of the",
+          "new": true,
+          "components": [
+            ["de", "of"],
+            ["el", "the"]
+          ]
+        },
+        {
+          "id": "S0552L05",
+          "type": "A",
+          "target": "pueblo",
+          "known": "village",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0553",
+      "seed_pair": ["I think the small church is very ugly.", "Creo que la iglesia pequeña es muy fea."],
+      "legos": [
+        {
+          "id": "S0553L01",
+          "type": "M",
+          "target": "creo que",
+          "known": "I think",
+          "new": true,
+          "components": [
+            ["creo", "I think"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0553L02",
+          "type": "A",
+          "target": "pequeña",
+          "known": "small",
+          "new": true
+        },
+        {
+          "id": "S0553L03",
+          "type": "A",
+          "target": "muy",
+          "known": "very",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0554",
+      "seed_pair": ["This towel isn't dry.", "Esta toalla no está seca."],
+      "legos": [
+        {
+          "id": "S0554L01",
+          "type": "M",
+          "target": "esta toalla",
+          "known": "this towel",
+          "new": true,
+          "components": [
+            ["esta", "this"],
+            ["toalla", "towel"]
+          ]
+        },
+        {
+          "id": "S0554L02",
+          "type": "M",
+          "target": "no está",
+          "known": "isn't",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["está", "is"]
+          ]
+        },
+        {
+          "id": "S0554L03",
+          "type": "A",
+          "target": "seca",
+          "known": "dry",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0555",
+      "seed_pair": ["And I'm too tired to fetch a new one.", "Y estoy demasiado cansado para traer una nueva."],
+      "legos": [
+        {
+          "id": "S0555L01",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0555L02",
+          "type": "M",
+          "target": "estoy demasiado cansado",
+          "known": "I'm too tired",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["demasiado", "too"],
+            ["cansado", "tired"]
+          ]
+        },
+        {
+          "id": "S0555L03",
+          "type": "A",
+          "target": "para",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0555L04",
+          "type": "A",
+          "target": "traer",
+          "known": "fetch",
+          "new": true
+        },
+        {
+          "id": "S0555L05",
+          "type": "M",
+          "target": "una nueva",
+          "known": "a new one",
+          "new": true,
+          "components": [
+            ["una", "one"],
+            ["nueva", "new"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0556",
+      "seed_pair": ["They play music late at night.", "Tocan música tarde en la noche."],
+      "legos": [
+        {
+          "id": "S0556L01",
+          "type": "M",
+          "target": "tocan",
+          "known": "they play",
+          "new": true,
+          "components": [
+            ["tocan", "they play"]
+          ]
+        },
+        {
+          "id": "S0556L02",
+          "type": "A",
+          "target": "música",
+          "known": "music",
+          "new": true
+        },
+        {
+          "id": "S0556L03",
+          "type": "A",
+          "target": "tarde",
+          "known": "late",
+          "new": true
+        },
+        {
+          "id": "S0556L04",
+          "type": "M",
+          "target": "en la noche",
+          "known": "at night",
+          "new": true,
+          "components": [
+            ["en", "at"],
+            ["la", "the"],
+            ["noche", "night"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0557",
+      "seed_pair": ["I wish they wouldn't play such loud music.", "Desearía que no tocaran música tan alta."],
+      "legos": [
+        {
+          "id": "S0557L01",
+          "type": "M",
+          "target": "desearía que",
+          "known": "I wish",
+          "new": true,
+          "components": [
+            ["desearía", "I wish"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0557L02",
+          "type": "M",
+          "target": "no tocaran",
+          "known": "they wouldn't play",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["tocaran", "they would play"]
+          ]
+        },
+        {
+          "id": "S0557L03",
+          "type": "A",
+          "target": "tan",
+          "known": "such",
+          "new": true
+        },
+        {
+          "id": "S0557L04",
+          "type": "A",
+          "target": "alta",
+          "known": "loud",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0558",
+      "seed_pair": ["It's so late at night.", "Es tan tarde en la noche."],
+      "legos": [
+        {
+          "id": "S0558L01",
+          "type": "A",
+          "target": "es",
+          "known": "it's",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0559",
+      "seed_pair": ["Have you found the path through the wood?", "¿Has encontrado el camino por el bosque?"],
+      "legos": [
+        {
+          "id": "S0559L01",
+          "type": "M",
+          "target": "has encontrado",
+          "known": "have you found",
+          "new": true,
+          "components": [
+            ["has", "have you"],
+            ["encontrado", "found"]
+          ]
+        },
+        {
+          "id": "S0559L02",
+          "type": "M",
+          "target": "el camino",
+          "known": "the path",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["camino", "path"]
+          ]
+        },
+        {
+          "id": "S0559L03",
+          "type": "A",
+          "target": "por",
+          "known": "through",
+          "new": true
+        },
+        {
+          "id": "S0559L04",
+          "type": "M",
+          "target": "el bosque",
+          "known": "the wood",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["bosque", "wood"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0560",
+      "seed_pair": ["It goes down to the beach.", "Va hacia abajo a la playa."],
+      "legos": [
+        {
+          "id": "S0560L01",
+          "type": "M",
+          "target": "va",
+          "known": "it goes",
+          "new": true,
+          "components": [
+            ["va", "it goes"]
+          ]
+        },
+        {
+          "id": "S0560L02",
+          "type": "M",
+          "target": "hacia abajo",
+          "known": "down",
+          "new": true,
+          "components": [
+            ["hacia", "toward"],
+            ["abajo", "down"]
+          ]
+        },
+        {
+          "id": "S0560L03",
+          "type": "M",
+          "target": "a la playa",
+          "known": "to the beach",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["la", "the"],
+            ["playa", "beach"]
+          ]
+        }
+      ]
+    }
+  ]
+}
