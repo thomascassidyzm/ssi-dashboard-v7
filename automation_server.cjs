@@ -361,7 +361,10 @@ The automation server will automatically:
 function generatePhase3MasterPrompt(courseCode, params, courseDir) {
   const { target, known, startSeed, endSeed } = params;
   const totalSeeds = endSeed - startSeed + 1;
-  const seedsPerAgent = 10; // Changed to 10 for better control
+
+  // Quick Test mode: 10 seeds = 5 agents × 2 seeds each
+  // Normal mode: 10 seeds per agent
+  const seedsPerAgent = totalSeeds === 10 ? 2 : 10;
   const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
 
   return `# Phase 3 Master Orchestrator: LEGO Extraction (Segment-Based)
