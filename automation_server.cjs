@@ -2081,8 +2081,11 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
           await spawnClaudeWebAgent(phase3MasterPrompt, 3, 'safari');
           console.log(`[Web Orchestrator] ✅ Segment ${segmentNumber} prompt pasted!`);
 
-          // Small delay between spawns to avoid overwhelming browser
-          await new Promise(resolve => setTimeout(resolve, 2000));
+          // Delay between spawns to allow browser to process each tab
+          if (i < segmentCount - 1) {
+            console.log(`[Web Orchestrator] Waiting 10 seconds before next segment...`);
+            await new Promise(resolve => setTimeout(resolve, 10000));
+          }
         }
 
         job.phase = 'phase_3_web_staged';
