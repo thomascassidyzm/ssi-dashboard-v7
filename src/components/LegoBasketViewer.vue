@@ -181,39 +181,55 @@
           <div class="p-6 space-y-6">
             <!-- Seed Info Card -->
             <div class="bg-slate-700/30 rounded-lg p-4">
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div>
-                  <span class="text-slate-400">Pattern Introduced:</span>
-                  <span class="ml-2 text-emerald-400">{{ formatPattern(seedData.basket.pattern_introduced || seedData.basket.patterns_introduced) || 'None' }}</span>
+                  <span class="text-slate-400">Generation Stage:</span>
+                  <span class="ml-2 text-emerald-400">{{ seedData.basket.generation_stage || 'COMPLETE' }}</span>
                 </div>
                 <div>
-                  <span class="text-slate-400">Pattern Count:</span>
-                  <span class="ml-2 text-slate-300">{{ seedData.basket.cumulative_patterns?.length || 0 }} patterns</span>
-                  <button
-                    @click.stop="togglePatternDetails(seedData.seedId)"
-                    class="ml-2 text-xs text-blue-400 hover:text-blue-300"
-                  >
-                    {{ expandedPatterns[seedData.seedId] ? '▼' : '▶' }}
-                  </button>
-                </div>
-                <div>
-                  <span class="text-slate-400">Cumulative LEGOs:</span>
-                  <span class="ml-2 text-slate-300">{{ seedData.basket.cumulative_legos }}</span>
+                  <span class="text-slate-400">LEGOs in Seed:</span>
+                  <span class="ml-2 text-slate-300">{{ getLegoCount(seedData.basket) }}</span>
                 </div>
               </div>
 
-              <!-- Pattern Details (Collapsible) -->
-              <div v-if="expandedPatterns[seedData.seedId]" class="mt-4 pt-4 border-t border-slate-600">
-                <div class="text-xs text-slate-400 mb-2 uppercase font-semibold">Available Patterns:</div>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    v-for="pattern in seedData.basket.cumulative_patterns"
-                    :key="pattern"
-                    class="px-2 py-1 bg-slate-700 text-slate-300 rounded text-xs font-mono"
-                    :title="getPatternDescription(pattern)"
+              <!-- Recent Seeds Context (Phase 5 v6.1) -->
+              <div v-if="seedData.basket.recent_seed_pairs" class="mt-4 pt-4 border-t border-slate-600">
+                <button
+                  @click.stop="togglePatternDetails(seedData.seedId)"
+                  class="flex items-center gap-2 text-xs text-blue-400 hover:text-blue-300"
+                >
+                  <span v-if="expandedPatterns[seedData.seedId]">▼</span>
+                  <span v-else>▶</span>
+                  <span>Sliding Window Context ({{ Object.keys(seedData.basket.recent_seed_pairs).length }} recent seeds)</span>
+                </button>
+
+                <div v-if="expandedPatterns[seedData.seedId]" class="mt-2 space-y-1 max-h-48 overflow-y-auto">
+                  <div
+                    v-for="(seedPair, seedId) in seedData.basket.recent_seed_pairs"
+                    :key="seedId"
+                    class="text-xs py-1 px-2 bg-slate-800/50 rounded"
                   >
-                    {{ formatPattern(pattern) }}
-                  </span>
+                    <span class="text-emerald-400 font-mono">{{ seedId }}:</span>
+                    <span class="text-slate-300 ml-2">{{ seedPair[0][1] }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- OLD FORMAT FALLBACK: Pattern tracking -->
+              <div v-else-if="seedData.basket.cumulative_patterns" class="mt-4 pt-4 border-t border-slate-600">
+                <div class="grid grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <span class="text-slate-400">Pattern:</span>
+                    <span class="ml-2 text-emerald-400">{{ formatPattern(seedData.basket.pattern_introduced) || 'None' }}</span>
+                  </div>
+                  <div>
+                    <span class="text-slate-400">Patterns:</span>
+                    <span class="ml-2 text-slate-300">{{ seedData.basket.cumulative_patterns.length }}</span>
+                  </div>
+                  <div>
+                    <span class="text-slate-400">Cumulative:</span>
+                    <span class="ml-2 text-slate-300">{{ seedData.basket.cumulative_legos }}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -263,14 +279,22 @@
                       <span class="text-emerald-400">{{ legoData.lego[1] }}</span>
                     </div>
                   </div>
-                  <div class="text-right text-xs">
+                  <div class="text-right text-xs space-y-1">
                     <div class="text-slate-400">
                       Type:
                       <span :class="getLegoType(legoData) === 'M' ? 'text-blue-400 font-bold' : 'text-emerald-400'">
                         {{ getLegoType(legoData) }}
                       </span>
                     </div>
-                    <div class="text-slate-400">Available: <span class="text-slate-300">{{ legoData.available_legos }}</span></div>
+                    <div v-if="legoData.is_final_lego" class="text-emerald-400 font-semibold">
+                      ⭐ Final LEGO
+                    </div>
+                    <div v-if="legoData.current_seed_legos_available !== undefined" class="text-slate-400">
+                      Prev: <span class="text-slate-300">{{ legoData.current_seed_legos_available.length }}</span>
+                    </div>
+                    <div v-else-if="legoData.available_legos !== undefined" class="text-slate-400">
+                      Available: <span class="text-slate-300">{{ legoData.available_legos }}</span>
+                    </div>
                   </div>
                 </div>
 
@@ -378,6 +402,29 @@
                         {{ phrase[3] }}
                       </span>
                     </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phrase Distribution (Phase 5 v6.1) -->
+              <div v-if="legoData.phrase_distribution" class="mt-3 pt-3 border-t border-slate-600">
+                <div class="text-xs text-slate-400 mb-2 uppercase font-semibold">Phrase Distribution:</div>
+                <div class="grid grid-cols-4 gap-2">
+                  <div class="bg-green-900/40 px-2 py-1 rounded text-center">
+                    <div class="text-green-300 font-bold">{{ legoData.phrase_distribution.really_short_1_2 }}</div>
+                    <div class="text-green-400/70 text-xs">1-2 LEGOs</div>
+                  </div>
+                  <div class="bg-yellow-900/40 px-2 py-1 rounded text-center">
+                    <div class="text-yellow-300 font-bold">{{ legoData.phrase_distribution.quite_short_3 }}</div>
+                    <div class="text-yellow-400/70 text-xs">3 LEGOs</div>
+                  </div>
+                  <div class="bg-blue-900/40 px-2 py-1 rounded text-center">
+                    <div class="text-blue-300 font-bold">{{ legoData.phrase_distribution.longer_4_5 }}</div>
+                    <div class="text-blue-400/70 text-xs">4-5 LEGOs</div>
+                  </div>
+                  <div class="bg-emerald-900/60 px-2 py-1 rounded text-center">
+                    <div class="text-emerald-300 font-bold">{{ legoData.phrase_distribution.long_6_plus }}</div>
+                    <div class="text-emerald-400/70 text-xs">6+ LEGOs</div>
                   </div>
                 </div>
               </div>

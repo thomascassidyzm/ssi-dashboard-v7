@@ -6,13 +6,13 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-3xl font-bold text-emerald-400">
-              SSI Course Production Dashboard v8.0.0
+              SSI Course Production Dashboard v8.1.0
             </h1>
             <p class="mt-2 text-slate-400">
-              Phase 4 Architecture + Intelligent Course Detection + Dynamic Phase Tracking
+              Swim-Lane Architecture + API Output Endpoints + Phase Selection Controls
             </p>
             <p class="mt-1 text-xs text-slate-500">
-              Build: 9a332af7 | APML v8.0.0 | Phases: 1 v2.6, 3 v4.0.2, 4 v1.0, 5 v3.0, 6 v2.0, 7 v1.0
+              Build: b7338b24 | APML v8.1.0 | Phases: 1 v2.6, 3 v6.3, 4 v1.0, 5 v6.1, 5.5 v2.0, 6 v2.0, 7 v1.0, 8 v1.0
             </p>
           </div>
           <EnvironmentSwitcher />
