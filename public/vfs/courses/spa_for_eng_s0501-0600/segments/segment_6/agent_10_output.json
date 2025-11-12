@@ -1,0 +1,529 @@
+{
+  "agent_id": "agent_10",
+  "seed_range": "S0591-S0600",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0591",
+      "seed_pair": ["She followed me down to the shops.", "Ella me siguió hasta las tiendas."],
+      "legos": [
+        {
+          "id": "S0591L01",
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "new": true
+        },
+        {
+          "id": "S0591L02",
+          "type": "A",
+          "target": "siguió",
+          "known": "followed",
+          "new": true
+        },
+        {
+          "id": "S0591L03",
+          "type": "A",
+          "target": "me",
+          "known": "me",
+          "new": true
+        },
+        {
+          "id": "S0591L04",
+          "type": "A",
+          "target": "hasta",
+          "known": "down to",
+          "new": true
+        },
+        {
+          "id": "S0591L05",
+          "type": "M",
+          "target": "las tiendas",
+          "known": "the shops",
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["tiendas", "shops"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0592",
+      "seed_pair": ["And along the main road.", "Y por la carretera principal."],
+      "legos": [
+        {
+          "id": "S0592L01",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0592L02",
+          "type": "A",
+          "target": "por",
+          "known": "along",
+          "new": true
+        },
+        {
+          "id": "S0592L03",
+          "type": "A",
+          "target": "principal",
+          "known": "main",
+          "new": true
+        },
+        {
+          "id": "S0592L04",
+          "type": "M",
+          "target": "la carretera",
+          "known": "the road",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["carretera", "road"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0593",
+      "seed_pair": ["However much I argued I still had to share.", "Por mucho que argumenté todavía tuve que compartir."],
+      "legos": [
+        {
+          "id": "S0593L01",
+          "type": "A",
+          "target": "argumenté",
+          "known": "I argued",
+          "new": true
+        },
+        {
+          "id": "S0593L02",
+          "type": "A",
+          "target": "todavía",
+          "known": "still",
+          "new": true
+        },
+        {
+          "id": "S0593L03",
+          "type": "A",
+          "target": "compartir",
+          "known": "share",
+          "new": true
+        },
+        {
+          "id": "S0593L04",
+          "type": "M",
+          "target": "por mucho que",
+          "known": "however much",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["mucho", "much"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0593L05",
+          "type": "M",
+          "target": "tuve que",
+          "known": "I had to",
+          "new": true,
+          "components": [
+            ["tuve", "I had"],
+            ["que", "to"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0594",
+      "seed_pair": ["I had to share my toys with my sister.", "Tuve que compartir mis juguetes con mi hermana."],
+      "legos": [
+        {
+          "id": "S0594L01",
+          "type": "A",
+          "target": "compartir",
+          "known": "share",
+          "new": true
+        },
+        {
+          "id": "S0594L02",
+          "type": "A",
+          "target": "con",
+          "known": "with",
+          "new": true
+        },
+        {
+          "id": "S0594L03",
+          "type": "M",
+          "target": "tuve que",
+          "known": "I had to",
+          "new": true,
+          "components": [
+            ["tuve", "I had"],
+            ["que", "to"]
+          ]
+        },
+        {
+          "id": "S0594L04",
+          "type": "M",
+          "target": "mis juguetes",
+          "known": "my toys",
+          "new": true,
+          "components": [
+            ["mis", "my"],
+            ["juguetes", "toys"]
+          ]
+        },
+        {
+          "id": "S0594L05",
+          "type": "M",
+          "target": "mi hermana",
+          "known": "my sister",
+          "new": true,
+          "components": [
+            ["mi", "my"],
+            ["hermana", "sister"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0595",
+      "seed_pair": ["I need to lie down in the garden.", "Necesito tumbarme en el jardín."],
+      "legos": [
+        {
+          "id": "S0595L01",
+          "type": "A",
+          "target": "necesito",
+          "known": "I need",
+          "new": true
+        },
+        {
+          "id": "S0595L02",
+          "type": "A",
+          "target": "tumbarme",
+          "known": "to lie down",
+          "new": true
+        },
+        {
+          "id": "S0595L03",
+          "type": "A",
+          "target": "en",
+          "known": "in",
+          "new": true
+        },
+        {
+          "id": "S0595L04",
+          "type": "M",
+          "target": "el jardín",
+          "known": "the garden",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["jardín", "garden"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0596",
+      "seed_pair": ["And I need to close my eyes for a while.", "Y necesito cerrar los ojos por un rato."],
+      "legos": [
+        {
+          "id": "S0596L01",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0596L02",
+          "type": "A",
+          "target": "necesito",
+          "known": "I need",
+          "new": true
+        },
+        {
+          "id": "S0596L03",
+          "type": "A",
+          "target": "cerrar",
+          "known": "to close",
+          "new": true
+        },
+        {
+          "id": "S0596L04",
+          "type": "A",
+          "target": "por",
+          "known": "for",
+          "new": true
+        },
+        {
+          "id": "S0596L05",
+          "type": "M",
+          "target": "los ojos",
+          "known": "my eyes",
+          "new": true,
+          "components": [
+            ["los", "the"],
+            ["ojos", "eyes"]
+          ]
+        },
+        {
+          "id": "S0596L06",
+          "type": "M",
+          "target": "un rato",
+          "known": "a while",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["rato", "while"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0597",
+      "seed_pair": ["I suspect that he's heard a hundred stories about it.", "Sospecho que ha oído cien historias sobre ello."],
+      "legos": [
+        {
+          "id": "S0597L01",
+          "type": "A",
+          "target": "sospecho",
+          "known": "I suspect",
+          "new": true
+        },
+        {
+          "id": "S0597L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0597L03",
+          "type": "A",
+          "target": "cien",
+          "known": "a hundred",
+          "new": true
+        },
+        {
+          "id": "S0597L04",
+          "type": "A",
+          "target": "historias",
+          "known": "stories",
+          "new": true
+        },
+        {
+          "id": "S0597L05",
+          "type": "M",
+          "target": "ha oído",
+          "known": "he's heard",
+          "new": true,
+          "components": [
+            ["ha", "has"],
+            ["oído", "heard"]
+          ]
+        },
+        {
+          "id": "S0597L06",
+          "type": "M",
+          "target": "sobre ello",
+          "known": "about it",
+          "new": true,
+          "components": [
+            ["sobre", "about"],
+            ["ello", "it"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0598",
+      "seed_pair": ["He's heard a thousand stories about what they were doing.", "Ha oído mil historias sobre lo que estaban haciendo."],
+      "legos": [
+        {
+          "id": "S0598L01",
+          "type": "A",
+          "target": "mil",
+          "known": "a thousand",
+          "new": true
+        },
+        {
+          "id": "S0598L02",
+          "type": "A",
+          "target": "historias",
+          "known": "stories",
+          "new": true
+        },
+        {
+          "id": "S0598L03",
+          "type": "A",
+          "target": "sobre",
+          "known": "about",
+          "new": true
+        },
+        {
+          "id": "S0598L04",
+          "type": "M",
+          "target": "ha oído",
+          "known": "he's heard",
+          "new": true,
+          "components": [
+            ["ha", "has"],
+            ["oído", "heard"]
+          ]
+        },
+        {
+          "id": "S0598L05",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [
+            ["lo", "the"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0598L06",
+          "type": "M",
+          "target": "estaban haciendo",
+          "known": "they were doing",
+          "new": true,
+          "components": [
+            ["estaban", "they were"],
+            ["haciendo", "doing"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0599",
+      "seed_pair": ["I'd have been happy to drive if you'd told me.", "Habría estado feliz de conducir si me lo hubieras dicho."],
+      "legos": [
+        {
+          "id": "S0599L01",
+          "type": "A",
+          "target": "conducir",
+          "known": "drive",
+          "new": true
+        },
+        {
+          "id": "S0599L02",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0599L03",
+          "type": "M",
+          "target": "habría estado",
+          "known": "I'd have been",
+          "new": true,
+          "components": [
+            ["habría", "I would have"],
+            ["estado", "been"]
+          ]
+        },
+        {
+          "id": "S0599L04",
+          "type": "M",
+          "target": "feliz de",
+          "known": "happy to",
+          "new": true,
+          "components": [
+            ["feliz", "happy"],
+            ["de", "to"]
+          ]
+        },
+        {
+          "id": "S0599L05",
+          "type": "M",
+          "target": "me lo",
+          "known": "me",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["lo", "(it)"]
+          ]
+        },
+        {
+          "id": "S0599L06",
+          "type": "M",
+          "target": "hubieras dicho",
+          "known": "you'd told",
+          "new": true,
+          "components": [
+            ["hubieras", "you had"],
+            ["dicho", "told"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0600",
+      "seed_pair": ["I'd have driven if you'd told me how tired you were.", "Habría conducido si me hubieras dicho lo cansado que estabas."],
+      "legos": [
+        {
+          "id": "S0600L01",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0600L02",
+          "type": "A",
+          "target": "me",
+          "known": "me",
+          "new": true
+        },
+        {
+          "id": "S0600L03",
+          "type": "A",
+          "target": "estabas",
+          "known": "you were",
+          "new": true
+        },
+        {
+          "id": "S0600L04",
+          "type": "M",
+          "target": "habría conducido",
+          "known": "I'd have driven",
+          "new": true,
+          "components": [
+            ["habría", "I would have"],
+            ["conducido", "driven"]
+          ]
+        },
+        {
+          "id": "S0600L05",
+          "type": "M",
+          "target": "hubieras dicho",
+          "known": "you'd told",
+          "new": true,
+          "components": [
+            ["hubieras", "you had"],
+            ["dicho", "told"]
+          ]
+        },
+        {
+          "id": "S0600L06",
+          "type": "M",
+          "target": "lo cansado que",
+          "known": "how tired",
+          "new": true,
+          "components": [
+            ["lo", "how"],
+            ["cansado", "tired"],
+            ["que", "(that)"]
+          ]
+        }
+      ]
+    }
+  ]
+}
