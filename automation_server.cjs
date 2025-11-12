@@ -582,10 +582,12 @@ Phase 3 introduces LEGOs, so all are marked as new.
 
 **Fetch seed_pairs.json from**:
 \`\`\`
-https://ssi-dashboard-v7.vercel.app/vfs/courses/${courseCode}/seed_pairs.json
+https://ssi-dashboard-v7.vercel.app/vfs/courses/${target}_for_${known}/seed_pairs.json
 \`\`\`
 
-Extract the translations array for your assigned seed range.
+(Note: Use the base course code ${target}_for_${known}, not the range-specific ${courseCode})
+
+Extract the translations array for your assigned seed range (filter to your seeds).
 
 ---
 
