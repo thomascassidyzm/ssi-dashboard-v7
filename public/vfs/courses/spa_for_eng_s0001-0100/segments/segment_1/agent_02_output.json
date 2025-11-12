@@ -115,17 +115,14 @@
         "Hablas español muy bien.",
         "You speak Spanish very well."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'you speak' → 'hablas' (M-type: Pragmatic FD - pronoun+verb pairing for agreement context); 'Spanish' → 'español' (A-type); 'very well' → 'muy bien' (M-type: idiomatic pairing, commonly taught together). TILING: hablas + español + muy bien ✅",
+      "extraction_notes": "FORWARD SWEEP: 'you speak' → 'hablas' (A-type: single conjugated verb encodes subject); 'Spanish' → 'español' (A-type); 'very well' → 'muy bien' (M-type: idiomatic pairing, commonly taught together). TILING: hablas + español + muy bien ✅",
       "legos": [
         {
           "id": "S0013L01",
-          "type": "M",
+          "type": "A",
           "target": "hablas",
           "known": "you speak",
-          "new": true,
-          "components": [
-            ["hablas", "you speak"]
-          ]
+          "new": true
         },
         {
           "id": "S0013L02",
@@ -153,17 +150,14 @@
         "¿Hablas español todo el día?",
         "Do you speak Spanish all day?"
       ],
-      "extraction_notes": "FORWARD SWEEP: 'do you speak' → 'hablas' (M-type: question form with pronoun+verb); 'Spanish' → 'español' (A-type); 'all day' → 'todo el día' (M-type: idiomatic time expression). TILING: hablas + español + todo el día ✅",
+      "extraction_notes": "FORWARD SWEEP: 'do you speak' → 'hablas' (A-type: single conjugated verb, question formed by intonation); 'Spanish' → 'español' (A-type); 'all day' → 'todo el día' (M-type: idiomatic time expression). TILING: hablas + español + todo el día ✅",
       "legos": [
         {
           "id": "S0014L01",
-          "type": "M",
+          "type": "A",
           "target": "hablas",
           "known": "do you speak",
-          "new": true,
-          "components": [
-            ["hablas", "you speak"]
-          ]
+          "new": true
         },
         {
           "id": "S0014L02",
