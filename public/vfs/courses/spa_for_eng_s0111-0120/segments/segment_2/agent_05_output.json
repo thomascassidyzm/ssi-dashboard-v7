@@ -1,0 +1,94 @@
+{
+  "agent_id": "agent_05",
+  "seed_range": "S0119-S0120",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0119",
+      "seed_pair": ["¿Puedo preguntarte algo antes de que te vayas?", "Can I ask you something before you leave?"],
+      "legos": [
+        {
+          "id": "S0119L01",
+          "type": "A",
+          "target": "puedo",
+          "known": "can I",
+          "new": true
+        },
+        {
+          "id": "S0119L02",
+          "type": "A",
+          "target": "preguntarte",
+          "known": "ask you",
+          "new": true
+        },
+        {
+          "id": "S0119L03",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0119L04",
+          "type": "M",
+          "target": "antes de que te vayas",
+          "known": "before you leave",
+          "new": true,
+          "components": [
+            ["antes de que", "before"],
+            ["te", "you"],
+            ["vayas", "leave"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0120",
+      "seed_pair": ["Es interesante que te guste ir en autobús.", "It's interesting that you like to go by bus."],
+      "legos": [
+        {
+          "id": "S0120L01",
+          "type": "A",
+          "target": "ir",
+          "known": "to go",
+          "new": true
+        },
+        {
+          "id": "S0120L02",
+          "type": "M",
+          "target": "es interesante",
+          "known": "it's interesting",
+          "new": true,
+          "components": [
+            ["es", "it is"],
+            ["interesante", "interesting"]
+          ]
+        },
+        {
+          "id": "S0120L03",
+          "type": "M",
+          "target": "que te guste",
+          "known": "that you like",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["te", "you"],
+            ["guste", "like"]
+          ]
+        },
+        {
+          "id": "S0120L04",
+          "type": "M",
+          "target": "en autobús",
+          "known": "by bus",
+          "new": true,
+          "components": [
+            ["en", "by"],
+            ["autobús", "bus"]
+          ]
+        }
+      ]
+    }
+  ]
+}
