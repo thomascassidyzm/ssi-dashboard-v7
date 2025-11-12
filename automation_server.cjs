@@ -381,10 +381,12 @@ You are the **Master Orchestrator** for this segment. Your job is to:
 2. **Spawn ${agentCount} sub-agents in parallel** (ONE message with ${agentCount} Task tool calls)
 3. **Each sub-agent extracts ${seedsPerAgent} seeds** with IDENTICAL prompt (only seed range differs)
 4. **Wait for all ${agentCount} to complete**
-5. **Merge outputs** → segment file
-6. **Push to GitHub** for monitoring
+5. **Verify all sub-agents successfully POSTed** to API
+6. **Done** - Vercel auto-deploys results
 
 **CRITICAL**: Use ONE message with multiple Task tool calls to spawn all agents simultaneously.
+
+**OUTPUT METHOD**: Each sub-agent POSTs directly to API (no git, no branches, no merging needed).
 
 ---
 
@@ -609,13 +611,23 @@ For EACH of your ${seedsPerAgent} seeds:
 
 ## 📤 OUTPUT
 
-Write to JSON file with this structure:
+**POST your results directly to the API** (no git, no files):
 
-\`\`\`json
+\`\`\`javascript
+POST https://ssi-dashboard-v7.vercel.app/api/courses/${courseCode}/outputs
+
+Headers:
+Content-Type: application/json
+
+Body:
 {
-  "agent_id": "agent_0X",
-  "seed_range": "S00XX-S00YY",
-  "extracted_at": "<ISO timestamp>",
+  "phase": "3",
+  "segmentId": "segment_X_agent_Y",
+  "agentId": "agent_0Y",
+  "metadata": {
+    "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+    "seedRange": "S00XX-S00YY"
+  },
   "seeds": [
     {
       "seed_id": "S00XX",
@@ -642,6 +654,15 @@ Write to JSON file with this structure:
 }
 \`\`\`
 
+**After successful POST**, you'll receive:
+\`\`\`json
+{
+  "success": true,
+  "message": "Successfully wrote 10 seeds to lego_pairs.json",
+  "totalSeeds": 10
+}
+\`\`\`
+
 **Quality over speed!** Take 1-2 minutes per seed for careful extraction.
 \`\`\`
 
@@ -662,24 +683,22 @@ For each agent, use this exact prompt structure (changing only the seed range):
 
 ### Step 2: Monitor Completion
 
-Watch for all ${agentCount} agent output files.
+Watch for all ${agentCount} sub-agents to report successful API POST.
 
-### Step 3: Merge Outputs
-
-Once all agents complete, merge their JSON files into segment file.
-
-### Step 4: Push to GitHub
-
-\`\`\`bash
-git add .
-git commit -m "Phase 3 Segment Complete: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}
-
-- Extracted ${totalSeeds} seeds
-- ${agentCount} parallel sub-agents
-- Ready for validation"
-
-git push origin main
+Each will show:
 \`\`\`
+✅ Successfully POSTed 10 seeds to API
+   Total seeds in lego_pairs.json: XX
+\`\`\`
+
+### Step 3: Verify
+
+Once all complete, verify results at:
+https://ssi-dashboard-v7.vercel.app/courses/${courseCode}
+
+### Step 4: Done!
+
+Vercel auto-deploys within seconds. No git, no merging, no manual steps needed!
 
 ---
 
