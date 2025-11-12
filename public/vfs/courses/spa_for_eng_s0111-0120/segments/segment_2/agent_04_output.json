@@ -1,0 +1,142 @@
+{
+  "agent_id": "agent_04",
+  "seed_range": "S0117-S0118",
+  "extracted_at": "2025-11-12T00:00:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0117",
+      "seed_pair": [
+        "I'm definitely doing better than I was last time we talked to each other.",
+        "Definitivamente lo estoy haciendo mejor que la última vez que hablamos."
+      ],
+      "legos": [
+        {
+          "id": "S0117L01",
+          "type": "A",
+          "target": "definitivamente",
+          "known": "definitely",
+          "new": true
+        },
+        {
+          "id": "S0117L02",
+          "type": "A",
+          "target": "mejor",
+          "known": "better",
+          "new": true
+        },
+        {
+          "id": "S0117L03",
+          "type": "A",
+          "target": "que",
+          "known": "than I was",
+          "new": true
+        },
+        {
+          "id": "S0117L04",
+          "type": "M",
+          "target": "lo estoy haciendo",
+          "known": "I'm doing",
+          "new": true,
+          "components": [
+            ["lo", "it"],
+            ["estoy", "I'm"],
+            ["haciendo", "doing"]
+          ]
+        },
+        {
+          "id": "S0117L05",
+          "type": "M",
+          "target": "la última vez que hablamos",
+          "known": "last time we talked to each other",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["última", "last"],
+            ["vez", "time"],
+            ["que", "that"],
+            ["hablamos", "we talked to each other"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0118",
+      "seed_pair": [
+        "I feel better than I felt when we were in the pub.",
+        "Me siento mejor que como me sentía cuando estábamos en el pub."
+      ],
+      "legos": [
+        {
+          "id": "S0118L01",
+          "type": "A",
+          "target": "mejor",
+          "known": "better",
+          "new": true
+        },
+        {
+          "id": "S0118L02",
+          "type": "A",
+          "target": "que",
+          "known": "than",
+          "new": true
+        },
+        {
+          "id": "S0118L03",
+          "type": "A",
+          "target": "cuando",
+          "known": "when",
+          "new": true
+        },
+        {
+          "id": "S0118L04",
+          "type": "A",
+          "target": "estábamos",
+          "known": "we were",
+          "new": true
+        },
+        {
+          "id": "S0118L05",
+          "type": "A",
+          "target": "en",
+          "known": "in",
+          "new": true
+        },
+        {
+          "id": "S0118L06",
+          "type": "M",
+          "target": "me siento",
+          "known": "I feel",
+          "new": true,
+          "components": [
+            ["me", "myself"],
+            ["siento", "I feel"]
+          ]
+        },
+        {
+          "id": "S0118L07",
+          "type": "M",
+          "target": "como me sentía",
+          "known": "I felt",
+          "new": true,
+          "components": [
+            ["como", "as"],
+            ["me", "myself"],
+            ["sentía", "I felt"]
+          ]
+        },
+        {
+          "id": "S0118L08",
+          "type": "M",
+          "target": "el pub",
+          "known": "the pub",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["pub", "pub"]
+          ]
+        }
+      ]
+    }
+  ]
+}
