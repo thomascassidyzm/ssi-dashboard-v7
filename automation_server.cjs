@@ -627,14 +627,15 @@ For EACH of your ${seedsPerAgent} seeds:
 
 **Write your results to a JSON file and commit to GitHub**:
 
-1. Calculate segment number: segment = Math.floor((startSeed - 1) / 100) + 1
-   - S0001-S0100 = Segment 1
-   - S0101-S0200 = Segment 2
-   - etc.
+1. **Your segment number**: ${Math.floor((startSeed - 1) / 100) + 1}
+   - Calculated from your startSeed (${startSeed}): Math.floor((${startSeed} - 1) / 100) + 1
 
-2. Create file: \`public/vfs/courses/${courseCode}/segments/segment_X/agent_YY_output.json\`
+2. **Your branch name**: \`phase3-segment-${Math.floor((startSeed - 1) / 100) + 1}-${courseCode}\`
 
-3. File format:
+3. **Your file path**: \`public/vfs/courses/${courseCode}/segments/segment_${Math.floor((startSeed - 1) / 100) + 1}/agent_XX_output.json\`
+   (Replace XX with your agent number: 01, 02, 03, etc.)
+
+4. File format:
 \`\`\`json
 {
   "agent_id": "agent_0Y",
@@ -667,22 +668,22 @@ For EACH of your ${seedsPerAgent} seeds:
 }
 \`\`\`
 
-4. Commit and push to predictable branch:
+5. Commit and push to your segment branch:
 \`\`\`bash
 # Create/switch to segment-specific branch
-git checkout -b phase3-segment-X-${courseCode}
+git checkout -b phase3-segment-${Math.floor((startSeed - 1) / 100) + 1}-${courseCode}
 
-# Add your agent output
-git add public/vfs/courses/${courseCode}/segments/segment_X/agent_YY_output.json
+# Add your agent output (replace XX with your agent number)
+git add public/vfs/courses/${courseCode}/segments/segment_${Math.floor((startSeed - 1) / 100) + 1}/agent_XX_output.json
 
-# Commit
-git commit -m "Phase 3 Segment X: Agent YY extraction (S00XX-S00YY) - ${seedsPerAgent} seeds"
+# Commit (replace XX and seed ranges)
+git commit -m "Phase 3 Segment ${Math.floor((startSeed - 1) / 100) + 1}: Agent XX extraction (S00XX-S00YY) - ${seedsPerAgent} seeds"
 
 # Push to named branch
-git push origin phase3-segment-X-${courseCode}
+git push origin phase3-segment-${Math.floor((startSeed - 1) / 100) + 1}-${courseCode}
 \`\`\`
 
-**IMPORTANT**: All 10 agents in this segment should push to the SAME branch (\`phase3-segment-X-${courseCode}\`).
+**IMPORTANT**: All 10 agents in your segment push to the SAME branch (\`phase3-segment-${Math.floor((startSeed - 1) / 100) + 1}-${courseCode}\`).
 
 **Quality over speed!** Take 1-2 minutes per seed for careful extraction.
 \`\`\`
