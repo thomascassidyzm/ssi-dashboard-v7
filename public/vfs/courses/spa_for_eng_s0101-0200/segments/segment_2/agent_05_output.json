@@ -1,8 +1,8 @@
 {
   "agent_id": "agent_05",
   "seed_range": "S0141-S0150",
-  "extracted_at": "2025-11-12T22:00:00Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0141",
@@ -10,44 +10,41 @@
         "No problem. Everything is okay.",
         "No hay problema. Todo está bien."
       ],
+      "extraction_notes": "Two separate sentences. 'No hay problema' is idiomatic. Created overlap with 'está bien' for pattern power.",
       "legos": [
         {
           "id": "S0141L01",
-          "type": "A",
-          "target": "no",
-          "known": "no",
-          "new": true
+          "type": "M",
+          "target": "No hay problema",
+          "known": "No problem",
+          "new": true,
+          "components": [
+            ["No", "No"],
+            ["hay", "there is"],
+            ["problema", "problem"]
+          ]
         },
         {
           "id": "S0141L02",
-          "type": "A",
-          "target": "hay",
-          "known": "there is",
-          "new": true
+          "type": "M",
+          "target": "Todo está bien",
+          "known": "Everything is okay",
+          "new": true,
+          "components": [
+            ["Todo", "Everything"],
+            ["está", "is"],
+            ["bien", "okay/well"]
+          ]
         },
         {
           "id": "S0141L03",
-          "type": "A",
-          "target": "problema",
-          "known": "problem",
-          "new": true
-        },
-        {
-          "id": "S0141L04",
-          "type": "A",
-          "target": "todo",
-          "known": "everything",
-          "new": true
-        },
-        {
-          "id": "S0141L05",
           "type": "M",
           "target": "está bien",
           "known": "is okay",
           "new": true,
           "components": [
             ["está", "is"],
-            ["bien", "okay"]
+            ["bien", "okay/well"]
           ]
         }
       ]
@@ -58,20 +55,32 @@
         "That's very kind of you and I'm grateful to you for helping.",
         "Eso es muy amable de tu parte y estoy agradecido a ti por ayudar."
       ],
+      "extraction_notes": "Created overlaps with 'muy amable' pattern. 'de tu parte' is idiomatic for 'of you'. Split compound sentence with overlaps for maximum recombination.",
       "legos": [
         {
           "id": "S0142L01",
-          "type": "A",
-          "target": "muy",
-          "known": "very",
-          "new": true
+          "type": "M",
+          "target": "Eso es muy amable de tu parte",
+          "known": "That's very kind of you",
+          "new": true,
+          "components": [
+            ["Eso", "That"],
+            ["es", "is"],
+            ["muy", "very"],
+            ["amable", "kind"],
+            ["de tu parte", "of you"]
+          ]
         },
         {
           "id": "S0142L02",
-          "type": "A",
-          "target": "amable",
-          "known": "kind",
-          "new": true
+          "type": "M",
+          "target": "muy amable",
+          "known": "very kind",
+          "new": true,
+          "components": [
+            ["muy", "very"],
+            ["amable", "kind"]
+          ]
         },
         {
           "id": "S0142L03",
@@ -83,57 +92,24 @@
         {
           "id": "S0142L04",
           "type": "M",
-          "target": "eso es",
-          "known": "that is",
+          "target": "estoy agradecido a ti",
+          "known": "I'm grateful to you",
           "new": true,
           "components": [
-            ["eso", "that"],
-            ["es", "is"]
+            ["estoy", "I'm"],
+            ["agradecido", "grateful"],
+            ["a ti", "to you"]
           ]
         },
         {
           "id": "S0142L05",
-          "type": "M",
-          "target": "de tu parte",
-          "known": "of you",
-          "new": true,
-          "components": [
-            ["de", "of"],
-            ["tu", "your"],
-            ["parte", "part"]
-          ]
-        },
-        {
-          "id": "S0142L06",
-          "type": "M",
-          "target": "estoy agradecido",
-          "known": "I'm grateful",
-          "new": true,
-          "components": [
-            ["estoy", "I am"],
-            ["agradecido", "grateful"]
-          ]
-        },
-        {
-          "id": "S0142L07",
-          "type": "M",
-          "target": "a ti",
-          "known": "to you",
-          "new": true,
-          "components": [
-            ["a", "to"],
-            ["ti", "you"]
-          ]
-        },
-        {
-          "id": "S0142L08",
           "type": "M",
           "target": "por ayudar",
           "known": "for helping",
           "new": true,
           "components": [
             ["por", "for"],
-            ["ayudar", "helping"]
+            ["ayudar", "helping/to help"]
           ]
         }
       ]
@@ -144,56 +120,45 @@
         "It's the same thing as we were talking about earlier.",
         "Es la misma cosa de la que estábamos hablando antes."
       ],
+      "extraction_notes": "'de la que' is relative pronoun construction. Created overlaps for 'estábamos hablando' (imperfect progressive pattern) and 'la misma cosa'.",
       "legos": [
         {
           "id": "S0143L01",
-          "type": "A",
-          "target": "cosa",
-          "known": "thing",
-          "new": true
+          "type": "M",
+          "target": "Es la misma cosa",
+          "known": "It's the same thing",
+          "new": true,
+          "components": [
+            ["Es", "It's"],
+            ["la misma", "the same"],
+            ["cosa", "thing"]
+          ]
         },
         {
           "id": "S0143L02",
-          "type": "A",
-          "target": "antes",
-          "known": "earlier",
-          "new": true
+          "type": "M",
+          "target": "la misma cosa",
+          "known": "the same thing",
+          "new": true,
+          "components": [
+            ["la misma", "the same"],
+            ["cosa", "thing"]
+          ]
         },
         {
           "id": "S0143L03",
           "type": "M",
-          "target": "es",
-          "known": "it is",
+          "target": "de la que estábamos hablando",
+          "known": "that we were talking about",
           "new": true,
           "components": [
-            ["es", "it is"]
+            ["de la que", "that/about which"],
+            ["estábamos", "we were"],
+            ["hablando", "talking"]
           ]
         },
         {
           "id": "S0143L04",
-          "type": "M",
-          "target": "la misma",
-          "known": "the same",
-          "new": true,
-          "components": [
-            ["la", "the"],
-            ["misma", "same"]
-          ]
-        },
-        {
-          "id": "S0143L05",
-          "type": "M",
-          "target": "de la que",
-          "known": "that",
-          "new": true,
-          "components": [
-            ["de", "about"],
-            ["la", "the"],
-            ["que", "that"]
-          ]
-        },
-        {
-          "id": "S0143L06",
           "type": "M",
           "target": "estábamos hablando",
           "known": "we were talking",
@@ -202,6 +167,13 @@
             ["estábamos", "we were"],
             ["hablando", "talking"]
           ]
+        },
+        {
+          "id": "S0143L05",
+          "type": "A",
+          "target": "antes",
+          "known": "earlier",
+          "new": true
         }
       ]
     },
@@ -211,23 +183,29 @@
         "I woke earlier than I wanted to this morning.",
         "Me desperté más temprano de lo que quería esta mañana."
       ],
+      "extraction_notes": "'Me desperté' is reflexive (inseparable). 'de lo que quería' is comparative construction. Created overlaps for comparison pattern.",
       "legos": [
         {
           "id": "S0144L01",
-          "type": "A",
-          "target": "quería",
-          "known": "I wanted",
-          "new": true
+          "type": "M",
+          "target": "Me desperté",
+          "known": "I woke",
+          "new": true,
+          "components": [
+            ["Me", "myself"],
+            ["desperté", "woke"]
+          ]
         },
         {
           "id": "S0144L02",
           "type": "M",
-          "target": "me desperté",
-          "known": "I woke",
+          "target": "más temprano de lo que quería",
+          "known": "earlier than I wanted to",
           "new": true,
           "components": [
-            ["me", "myself"],
-            ["desperté", "woke"]
+            ["más temprano", "earlier"],
+            ["de lo que", "than"],
+            ["quería", "I wanted"]
           ]
         },
         {
@@ -244,13 +222,12 @@
         {
           "id": "S0144L04",
           "type": "M",
-          "target": "de lo que",
-          "known": "than",
+          "target": "de lo que quería",
+          "known": "than I wanted to",
           "new": true,
           "components": [
-            ["de", "of"],
-            ["lo", "it"],
-            ["que", "that"]
+            ["de lo que", "than"],
+            ["quería", "I wanted"]
           ]
         },
         {
@@ -272,27 +249,41 @@
         "Why are you not happy any more?",
         "¿Por qué no estás feliz ya?"
       ],
+      "extraction_notes": "'Por qué' is question word (two words in Spanish). Created overlap 'estás feliz' to show estar + emotion pattern.",
       "legos": [
         {
           "id": "S0145L01",
-          "type": "A",
-          "target": "no",
-          "known": "not",
-          "new": true
+          "type": "M",
+          "target": "¿Por qué",
+          "known": "Why",
+          "new": true,
+          "components": [
+            ["¿Por", "Why"],
+            ["qué", "(question marker)"]
+          ]
         },
         {
           "id": "S0145L02",
-          "type": "A",
-          "target": "estás",
-          "known": "you are",
-          "new": true
+          "type": "M",
+          "target": "no estás feliz",
+          "known": "you are not happy",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["estás", "you are"],
+            ["feliz", "happy"]
+          ]
         },
         {
           "id": "S0145L03",
-          "type": "A",
-          "target": "feliz",
-          "known": "happy",
-          "new": true
+          "type": "M",
+          "target": "estás feliz",
+          "known": "you are happy",
+          "new": true,
+          "components": [
+            ["estás", "you are"],
+            ["feliz", "happy"]
+          ]
         },
         {
           "id": "S0145L04",
@@ -300,17 +291,6 @@
           "target": "ya",
           "known": "any more",
           "new": true
-        },
-        {
-          "id": "S0145L05",
-          "type": "M",
-          "target": "por qué",
-          "known": "why",
-          "new": true,
-          "components": [
-            ["por", "for"],
-            ["qué", "what"]
-          ]
         }
       ]
     },
@@ -320,30 +300,29 @@
         "Nothing seems to be working since we tried to fix it.",
         "Nada parece estar funcionando desde que intentamos arreglarlo."
       ],
+      "extraction_notes": "'desde que' requires 'que' after 'desde'. Created multiple overlaps: 'estar funcionando' (progressive pattern), 'intentamos arreglarlo', and 'arreglarlo' (infinitive + pronoun).",
       "legos": [
         {
           "id": "S0146L01",
           "type": "A",
-          "target": "nada",
-          "known": "nothing",
+          "target": "Nada",
+          "known": "Nothing",
           "new": true
         },
         {
           "id": "S0146L02",
-          "type": "A",
-          "target": "parece",
-          "known": "seems",
-          "new": true
+          "type": "M",
+          "target": "parece estar funcionando",
+          "known": "seems to be working",
+          "new": true,
+          "components": [
+            ["parece", "seems"],
+            ["estar", "to be"],
+            ["funcionando", "working"]
+          ]
         },
         {
           "id": "S0146L03",
-          "type": "A",
-          "target": "intentamos",
-          "known": "we tried",
-          "new": true
-        },
-        {
-          "id": "S0146L04",
           "type": "M",
           "target": "estar funcionando",
           "known": "to be working",
@@ -354,14 +333,26 @@
           ]
         },
         {
-          "id": "S0146L05",
+          "id": "S0146L04",
           "type": "M",
-          "target": "desde que",
-          "known": "since",
+          "target": "desde que intentamos arreglarlo",
+          "known": "since we tried to fix it",
           "new": true,
           "components": [
-            ["desde", "since"],
-            ["que", "that"]
+            ["desde que", "since"],
+            ["intentamos", "we tried"],
+            ["arreglarlo", "to fix it"]
+          ]
+        },
+        {
+          "id": "S0146L05",
+          "type": "M",
+          "target": "intentamos arreglarlo",
+          "known": "we tried to fix it",
+          "new": true,
+          "components": [
+            ["intentamos", "we tried"],
+            ["arreglarlo", "to fix it"]
           ]
         },
         {
@@ -383,58 +374,84 @@
         "She was very kind when she saw me feeling nervous.",
         "Ella era muy amable cuando me vio sintiéndome nervioso."
       ],
+      "extraction_notes": "'Ella' needs context (Heuristic 1). 'muy amable' pattern reappears (also in S0142). 'sintiéndome' is reflexive gerund. Created overlaps for pattern teaching.",
       "legos": [
         {
           "id": "S0147L01",
-          "type": "A",
-          "target": "ella",
-          "known": "she",
-          "new": true
+          "type": "M",
+          "target": "Ella era muy amable",
+          "known": "She was very kind",
+          "new": true,
+          "components": [
+            ["Ella", "She"],
+            ["era", "was"],
+            ["muy", "very"],
+            ["amable", "kind"]
+          ]
         },
         {
           "id": "S0147L02",
-          "type": "A",
-          "target": "era",
-          "known": "was",
-          "new": true
+          "type": "M",
+          "target": "era muy amable",
+          "known": "was very kind",
+          "new": true,
+          "components": [
+            ["era", "was"],
+            ["muy", "very"],
+            ["amable", "kind"]
+          ]
         },
         {
           "id": "S0147L03",
+          "type": "M",
+          "target": "muy amable",
+          "known": "very kind",
+          "new": true,
+          "components": [
+            ["muy", "very"],
+            ["amable", "kind"]
+          ]
+        },
+        {
+          "id": "S0147L04",
           "type": "A",
           "target": "cuando",
           "known": "when",
           "new": true
         },
         {
-          "id": "S0147L04",
-          "type": "A",
-          "target": "me",
-          "known": "me",
-          "new": true
-        },
-        {
           "id": "S0147L05",
-          "type": "A",
-          "target": "vio",
-          "known": "saw",
-          "new": true
+          "type": "M",
+          "target": "me vio sintiéndome nervioso",
+          "known": "she saw me feeling nervous",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["vio", "saw"],
+            ["sintiéndome", "feeling"],
+            ["nervioso", "nervous"]
+          ]
         },
         {
           "id": "S0147L06",
-          "type": "A",
-          "target": "nervioso",
-          "known": "nervous",
-          "new": true
+          "type": "M",
+          "target": "me vio",
+          "known": "she saw me",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["vio", "saw"]
+          ]
         },
         {
           "id": "S0147L07",
           "type": "M",
-          "target": "sintiéndome",
-          "known": "feeling",
+          "target": "sintiéndome nervioso",
+          "known": "feeling nervous",
           "new": true,
           "components": [
-            ["sintiendo", "feeling"],
-            ["me", "myself"]
+            ["sintiéndome", "feeling"],
+            ["nervioso", "nervous"]
           ]
         }
       ]
@@ -445,55 +462,75 @@
         "He wasn't very patient when I couldn't answer.",
         "Él no era muy paciente cuando no pude responder."
       ],
+      "extraction_notes": "'Él' needs context. 'muy paciente' pattern (like 'muy amable'). Created overlaps for negation pattern and ability expression with 'pude'.",
       "legos": [
         {
           "id": "S0148L01",
-          "type": "A",
-          "target": "él",
-          "known": "he",
-          "new": true
+          "type": "M",
+          "target": "Él no era muy paciente",
+          "known": "He wasn't very patient",
+          "new": true,
+          "components": [
+            ["Él", "He"],
+            ["no", "not"],
+            ["era", "was"],
+            ["muy", "very"],
+            ["paciente", "patient"]
+          ]
         },
         {
           "id": "S0148L02",
-          "type": "A",
-          "target": "no",
-          "known": "not",
-          "new": true
+          "type": "M",
+          "target": "no era muy paciente",
+          "known": "wasn't very patient",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["era", "was"],
+            ["muy", "very"],
+            ["paciente", "patient"]
+          ]
         },
         {
           "id": "S0148L03",
-          "type": "A",
-          "target": "era",
-          "known": "was",
-          "new": true
+          "type": "M",
+          "target": "muy paciente",
+          "known": "very patient",
+          "new": true,
+          "components": [
+            ["muy", "very"],
+            ["paciente", "patient"]
+          ]
         },
         {
           "id": "S0148L04",
-          "type": "A",
-          "target": "paciente",
-          "known": "patient",
-          "new": true
-        },
-        {
-          "id": "S0148L05",
           "type": "A",
           "target": "cuando",
           "known": "when",
           "new": true
         },
         {
-          "id": "S0148L06",
-          "type": "A",
-          "target": "pude",
-          "known": "I could",
-          "new": true
+          "id": "S0148L05",
+          "type": "M",
+          "target": "no pude responder",
+          "known": "I couldn't answer",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["pude", "I could"],
+            ["responder", "answer"]
+          ]
         },
         {
-          "id": "S0148L07",
-          "type": "A",
-          "target": "responder",
-          "known": "answer",
-          "new": true
+          "id": "S0148L06",
+          "type": "M",
+          "target": "pude responder",
+          "known": "I could answer",
+          "new": true,
+          "components": [
+            ["pude", "I could"],
+            ["responder", "answer"]
+          ]
         }
       ]
     },
@@ -503,48 +540,75 @@
         "This isn't very difficult, so I hope you'll finish soon.",
         "Esto no es muy difícil, entonces espero que termines pronto."
       ],
+      "extraction_notes": "Backward sweep critical: 'termines' is subjunctive triggered by 'espero que'. Must keep 'espero que termines' together (Heuristic 1). Created overlap 'espero que' to teach subjunctive trigger pattern.",
       "legos": [
         {
           "id": "S0149L01",
-          "type": "A",
-          "target": "esto",
-          "known": "this",
-          "new": true
+          "type": "M",
+          "target": "Esto no es muy difícil",
+          "known": "This isn't very difficult",
+          "new": true,
+          "components": [
+            ["Esto", "This"],
+            ["no", "not"],
+            ["es", "is"],
+            ["muy", "very"],
+            ["difícil", "difficult"]
+          ]
         },
         {
           "id": "S0149L02",
-          "type": "A",
-          "target": "no",
-          "known": "not",
-          "new": true
+          "type": "M",
+          "target": "no es muy difícil",
+          "known": "isn't very difficult",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["es", "is"],
+            ["muy", "very"],
+            ["difícil", "difficult"]
+          ]
         },
         {
           "id": "S0149L03",
-          "type": "A",
-          "target": "es",
-          "known": "is",
-          "new": true
+          "type": "M",
+          "target": "muy difícil",
+          "known": "very difficult",
+          "new": true,
+          "components": [
+            ["muy", "very"],
+            ["difícil", "difficult"]
+          ]
         },
         {
           "id": "S0149L04",
-          "type": "A",
-          "target": "difícil",
-          "known": "difficult",
-          "new": true
-        },
-        {
-          "id": "S0149L05",
           "type": "A",
           "target": "entonces",
           "known": "so",
           "new": true
         },
         {
+          "id": "S0149L05",
+          "type": "M",
+          "target": "espero que termines",
+          "known": "I hope you'll finish",
+          "new": true,
+          "components": [
+            ["espero", "I hope"],
+            ["que", "that"],
+            ["termines", "you'll finish"]
+          ]
+        },
+        {
           "id": "S0149L06",
-          "type": "A",
-          "target": "termines",
-          "known": "you'll finish",
-          "new": true
+          "type": "M",
+          "target": "espero que",
+          "known": "I hope that",
+          "new": true,
+          "components": [
+            ["espero", "I hope"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0149L07",
@@ -552,17 +616,6 @@
           "target": "pronto",
           "known": "soon",
           "new": true
-        },
-        {
-          "id": "S0149L08",
-          "type": "M",
-          "target": "espero que",
-          "known": "I hope",
-          "new": true,
-          "components": [
-            ["espero", "I hope"],
-            ["que", "that"]
-          ]
         }
       ]
     },
@@ -572,44 +625,21 @@
         "Can you tell me what your name is?",
         "¿Puedes decirme cuál es tu nombre?"
       ],
+      "extraction_notes": "'decirme' is infinitive + object pronoun (inseparable). 'cuál es tu nombre' is embedded question. Created overlaps for common question patterns.",
       "legos": [
         {
           "id": "S0150L01",
-          "type": "A",
-          "target": "puedes",
-          "known": "can you",
-          "new": true
+          "type": "M",
+          "target": "¿Puedes decirme",
+          "known": "Can you tell me",
+          "new": true,
+          "components": [
+            ["¿Puedes", "Can you"],
+            ["decirme", "tell me"]
+          ]
         },
         {
           "id": "S0150L02",
-          "type": "A",
-          "target": "cuál",
-          "known": "what",
-          "new": true
-        },
-        {
-          "id": "S0150L03",
-          "type": "A",
-          "target": "es",
-          "known": "is",
-          "new": true
-        },
-        {
-          "id": "S0150L04",
-          "type": "A",
-          "target": "tu",
-          "known": "your",
-          "new": true
-        },
-        {
-          "id": "S0150L05",
-          "type": "A",
-          "target": "nombre",
-          "known": "name",
-          "new": true
-        },
-        {
-          "id": "S0150L06",
           "type": "M",
           "target": "decirme",
           "known": "tell me",
@@ -618,8 +648,66 @@
             ["decir", "tell"],
             ["me", "me"]
           ]
+        },
+        {
+          "id": "S0150L03",
+          "type": "M",
+          "target": "cuál es tu nombre",
+          "known": "what your name is",
+          "new": true,
+          "components": [
+            ["cuál", "what"],
+            ["es", "is"],
+            ["tu nombre", "your name"]
+          ]
+        },
+        {
+          "id": "S0150L04",
+          "type": "M",
+          "target": "es tu nombre",
+          "known": "is your name",
+          "new": true,
+          "components": [
+            ["es", "is"],
+            ["tu nombre", "your name"]
+          ]
+        },
+        {
+          "id": "S0150L05",
+          "type": "M",
+          "target": "tu nombre",
+          "known": "your name",
+          "new": true,
+          "components": [
+            ["tu", "your"],
+            ["nombre", "name"]
+          ]
         }
       ]
     }
-  ]
+  ],
+  "summary": {
+    "total_seeds": 10,
+    "total_legos": 56,
+    "a_type_count": 8,
+    "m_type_count": 48,
+    "key_patterns_identified": [
+      "muy + adjective (amable, paciente, difícil)",
+      "estar + adjective/gerund",
+      "reflexive verbs (desperté, sintiéndome)",
+      "subjunctive triggers (espero que)",
+      "comparative constructions (más...de lo que)",
+      "infinitive + object pronouns (decirme, arreglarlo)",
+      "relative pronouns (de la que)",
+      "negative constructions (no...)"
+    ],
+    "notable_decisions": [
+      "Created overlaps for 'muy + adjective' pattern across multiple seeds for maximum recombination",
+      "Backward sweep caught subjunctive trigger in S0149 (espero que termines)",
+      "Kept reflexive verbs together (me desperté, sintiéndome)",
+      "Split compound sentences but created strategic overlaps for pattern teaching",
+      "Wrapped all standalone pronouns (Ella, Él) in context per Heuristic 1",
+      "Created progressive patterns (estar funcionando, estábamos hablando) for pedagogical value"
+    ]
+  }
 }
