@@ -48,3 +48,17 @@ validate_*.json
 !validate_extraction.js
 !test_v5_1_api.js
 public/vfs/courses/*/phase5_scaffolds/
+
+# Python cache and temporary generation scripts
+__pycache__/
+*.pyc
+generate_phrases_*.py
+comprehensive_phrase_gen.py
+examine_vocab.py
+linguistic_phrase_generator.py
+agent_02_phrase_generator.py
+generate_final.py
+generate_simple.py
+generate_ultra_fast.py
+generate_agent_03_baskets_fast.py
+generation_log.txt
