@@ -1,8 +1,8 @@
 {
   "agent_id": "agent_01",
   "seed_range": "S0501-S0510",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0501",
@@ -13,68 +13,66 @@
       "legos": [
         {
           "id": "S0501L01",
-          "type": "A",
-          "target": "ti",
-          "known": "you",
-          "new": true
-        },
-        {
-          "id": "S0501L02",
-          "type": "A",
-          "target": "para",
-          "known": "to",
-          "new": true
-        },
-        {
-          "id": "S0501L03",
-          "type": "A",
-          "target": "jugar",
-          "known": "play",
-          "new": true
-        },
-        {
-          "id": "S0501L04",
-          "type": "A",
-          "target": "juntos",
-          "known": "together",
-          "new": true
-        },
-        {
-          "id": "S0501L05",
-          "type": "A",
-          "target": "sin",
-          "known": "without",
-          "new": true
-        },
-        {
-          "id": "S0501L06",
-          "type": "A",
-          "target": "discutir",
-          "known": "arguing",
-          "new": true
-        },
-        {
-          "id": "S0501L07",
           "type": "M",
-          "target": "si tan solo pudiera",
-          "known": "if only I could",
+          "target": "si tan solo",
+          "known": "if only",
           "new": true,
           "components": [
             ["si", "if"],
-            ["tan", "only/so"],
-            ["solo", "only"],
-            ["pudiera", "I could"]
+            ["tan", "so/only"],
+            ["solo", "only"]
           ]
         },
         {
-          "id": "S0501L08",
+          "id": "S0501L02",
           "type": "M",
-          "target": "confiar en",
-          "known": "trust",
+          "target": "pudiera confiar en ti",
+          "known": "I could trust you",
           "new": true,
           "components": [
+            ["pudiera", "I could/might"],
             ["confiar", "to trust"],
-            ["en", "in"]
+            ["en", "in"],
+            ["ti", "you"]
+          ]
+        },
+        {
+          "id": "S0501L03",
+          "type": "M",
+          "target": "para jugar juntos",
+          "known": "to play together",
+          "new": true,
+          "components": [
+            ["para", "to/for"],
+            ["jugar", "to play"],
+            ["juntos", "together"]
+          ]
+        },
+        {
+          "id": "S0501L04",
+          "type": "M",
+          "target": "pudiera confiar en ti para jugar juntos",
+          "known": "I could trust you to play together",
+          "new": true,
+          "components": [
+            ["pudiera", "I could"],
+            ["confiar", "to trust"],
+            ["en", "in"],
+            ["ti", "you"],
+            ["para", "to"],
+            ["jugar", "to play"],
+            ["juntos", "together"]
+          ]
+        },
+        {
+          "id": "S0501L05",
+          "type": "M",
+          "target": "sin discutir",
+          "known": "without arguing",
+          "new": true,
+          "components": [
+            ["sin", "without"],
+            ["discutir", "to argue/arguing"]
           ]
         }
       ]
@@ -88,61 +86,77 @@
       "legos": [
         {
           "id": "S0502L01",
+          "type": "M",
+          "target": "casi se perdió",
+          "known": "almost got lost",
+          "new": true,
+          "components": [
+            ["casi", "almost"],
+            ["se", "herself"],
+            ["perdió", "got lost/lost"]
+          ]
+        },
+        {
+          "id": "S0502L02",
           "type": "A",
           "target": "porque",
           "known": "because",
           "new": true
         },
         {
-          "id": "S0502L02",
-          "type": "A",
-          "target": "giró",
-          "known": "she turned",
-          "new": true
-        },
-        {
           "id": "S0502L03",
           "type": "M",
-          "target": "casi se perdió",
-          "known": "she almost got lost",
+          "target": "giró a la izquierda",
+          "known": "turned left",
           "new": true,
           "components": [
-            ["casi", "almost"],
-            ["se", "herself"],
-            ["perdió", "got lost"]
-          ]
-        },
-        {
-          "id": "S0502L04",
-          "type": "M",
-          "target": "a la izquierda",
-          "known": "left",
-          "new": true,
-          "components": [
+            ["giró", "turned"],
             ["a", "to"],
             ["la", "the"],
             ["izquierda", "left"]
           ]
         },
         {
+          "id": "S0502L04",
+          "type": "M",
+          "target": "a la derecha",
+          "known": "to the right",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["la", "the"],
+            ["derecha", "right"]
+          ]
+        },
+        {
           "id": "S0502L05",
           "type": "M",
-          "target": "en lugar de",
-          "known": "instead of",
+          "target": "en lugar de a la derecha",
+          "known": "instead of right",
           "new": true,
           "components": [
             ["en", "in"],
             ["lugar", "place"],
-            ["de", "of"]
+            ["de", "of"],
+            ["a", "to"],
+            ["la", "the"],
+            ["derecha", "right"]
           ]
         },
         {
           "id": "S0502L06",
           "type": "M",
-          "target": "a la derecha",
-          "known": "right",
+          "target": "giró a la izquierda en lugar de a la derecha",
+          "known": "turned left instead of right",
           "new": true,
           "components": [
+            ["giró", "turned"],
+            ["a", "to"],
+            ["la", "the"],
+            ["izquierda", "left"],
+            ["en", "in"],
+            ["lugar", "place"],
+            ["de", "of"],
             ["a", "to"],
             ["la", "the"],
             ["derecha", "right"]
@@ -159,10 +173,15 @@
       "legos": [
         {
           "id": "S0503L01",
-          "type": "A",
-          "target": "odio",
-          "known": "I hate",
-          "new": true
+          "type": "M",
+          "target": "odio causar problemas",
+          "known": "I hate making trouble",
+          "new": true,
+          "components": [
+            ["odio", "I hate"],
+            ["causar", "to cause/making"],
+            ["problemas", "trouble/problems"]
+          ]
         },
         {
           "id": "S0503L02",
@@ -173,29 +192,12 @@
         },
         {
           "id": "S0503L03",
-          "type": "A",
-          "target": "ese",
-          "known": "that one",
-          "new": true
-        },
-        {
-          "id": "S0503L04",
           "type": "M",
-          "target": "causar problemas",
-          "known": "making trouble",
+          "target": "ese es mío",
+          "known": "that one's mine",
           "new": true,
           "components": [
-            ["causar", "to cause/making"],
-            ["problemas", "trouble/problems"]
-          ]
-        },
-        {
-          "id": "S0503L05",
-          "type": "M",
-          "target": "es mío",
-          "known": "'s mine",
-          "new": true,
-          "components": [
+            ["ese", "that one"],
             ["es", "is"],
             ["mío", "mine"]
           ]
@@ -211,42 +213,40 @@
       "legos": [
         {
           "id": "S0504L01",
-          "type": "A",
-          "target": "correr",
-          "known": "run",
-          "new": true
+          "type": "M",
+          "target": "voy a correr",
+          "known": "I'm going to run",
+          "new": true,
+          "components": [
+            ["voy", "I go/I'm going"],
+            ["a", "to"],
+            ["correr", "to run"]
+          ]
         },
         {
           "id": "S0504L02",
           "type": "M",
-          "target": "voy a",
-          "known": "I'm going to",
+          "target": "a través del césped",
+          "known": "across the grass",
           "new": true,
           "components": [
-            ["voy", "I go"],
-            ["a", "to"]
+            ["a través", "across/through"],
+            ["del", "of the"],
+            ["césped", "grass"]
           ]
         },
         {
           "id": "S0504L03",
           "type": "M",
-          "target": "a través de",
-          "known": "across",
+          "target": "voy a correr a través del césped",
+          "known": "I'm going to run across the grass",
           "new": true,
           "components": [
-            ["a", "at/to"],
-            ["través", "through"],
-            ["de", "of"]
-          ]
-        },
-        {
-          "id": "S0504L04",
-          "type": "M",
-          "target": "el césped",
-          "known": "the grass",
-          "new": true,
-          "components": [
-            ["el", "the"],
+            ["voy", "I'm going"],
+            ["a", "to"],
+            ["correr", "to run"],
+            ["a través", "across"],
+            ["del", "of the"],
             ["césped", "grass"]
           ]
         }
@@ -262,24 +262,39 @@
         {
           "id": "S0505L01",
           "type": "M",
-          "target": "para que",
-          "known": "so that",
+          "target": "para que no",
+          "known": "so that I don't",
           "new": true,
           "components": [
             ["para", "for/so"],
-            ["que", "that"]
+            ["que", "that"],
+            ["no", "don't/not"]
           ]
         },
         {
           "id": "S0505L02",
           "type": "M",
-          "target": "no me quede atrás",
-          "known": "I don't get left behind",
+          "target": "me quede atrás",
+          "known": "I get left behind",
           "new": true,
           "components": [
-            ["no", "don't/not"],
-            ["me", "myself/I"],
-            ["quede", "get/stay"],
+            ["me", "myself"],
+            ["quede", "stay/get left"],
+            ["atrás", "behind"]
+          ]
+        },
+        {
+          "id": "S0505L03",
+          "type": "M",
+          "target": "para que no me quede atrás",
+          "known": "so that I don't get left behind",
+          "new": true,
+          "components": [
+            ["para", "so"],
+            ["que", "that"],
+            ["no", "don't"],
+            ["me", "I"],
+            ["quede", "get left"],
             ["atrás", "behind"]
           ]
         }
@@ -294,31 +309,28 @@
       "legos": [
         {
           "id": "S0506L01",
-          "type": "A",
-          "target": "solía",
-          "known": "I used to",
-          "new": true
+          "type": "M",
+          "target": "solía vivir",
+          "known": "I used to live",
+          "new": true,
+          "components": [
+            ["solía", "I used to"],
+            ["vivir", "to live"]
+          ]
         },
         {
           "id": "S0506L02",
-          "type": "A",
-          "target": "vivir",
-          "known": "live",
-          "new": true
-        },
-        {
-          "id": "S0506L03",
           "type": "M",
           "target": "por aquí",
           "known": "around here",
           "new": true,
           "components": [
-            ["por", "around/by"],
+            ["por", "around/through"],
             ["aquí", "here"]
           ]
         },
         {
-          "id": "S0506L04",
+          "id": "S0506L03",
           "type": "M",
           "target": "hace años",
           "known": "years ago",
@@ -329,25 +341,32 @@
           ]
         },
         {
-          "id": "S0506L05",
+          "id": "S0506L04",
           "type": "M",
-          "target": "antes de que",
-          "known": "before",
+          "target": "antes de que nos mudáramos",
+          "known": "before we moved",
           "new": true,
           "components": [
             ["antes", "before"],
             ["de", "of"],
-            ["que", "that"]
+            ["que", "that"],
+            ["nos", "we/us"],
+            ["mudáramos", "moved"]
           ]
         },
         {
-          "id": "S0506L06",
+          "id": "S0506L05",
           "type": "M",
-          "target": "nos mudáramos",
-          "known": "we moved",
+          "target": "hace años antes de que nos mudáramos",
+          "known": "years ago before we moved",
           "new": true,
           "components": [
-            ["nos", "we/ourselves"],
+            ["hace", "ago"],
+            ["años", "years"],
+            ["antes", "before"],
+            ["de", "of"],
+            ["que", "that"],
+            ["nos", "we"],
             ["mudáramos", "moved"]
           ]
         }
@@ -362,13 +381,6 @@
       "legos": [
         {
           "id": "S0507L01",
-          "type": "A",
-          "target": "a",
-          "known": "to",
-          "new": true
-        },
-        {
-          "id": "S0507L02",
           "type": "M",
           "target": "nos mudamos",
           "known": "we moved",
@@ -379,12 +391,13 @@
           ]
         },
         {
-          "id": "S0507L03",
+          "id": "S0507L02",
           "type": "M",
-          "target": "la ciudad",
-          "known": "the city",
+          "target": "a la ciudad",
+          "known": "to the city",
           "new": true,
           "components": [
+            ["a", "to"],
             ["la", "the"],
             ["ciudad", "city"]
           ]
@@ -400,53 +413,65 @@
       "legos": [
         {
           "id": "S0508L01",
-          "type": "A",
-          "target": "preocuparse",
-          "known": "worrying",
-          "new": true
-        },
-        {
-          "id": "S0508L02",
-          "type": "A",
-          "target": "por",
-          "known": "about",
-          "new": true
-        },
-        {
-          "id": "S0508L03",
-          "type": "A",
-          "target": "cómo",
-          "known": "how",
-          "new": true
-        },
-        {
-          "id": "S0508L04",
-          "type": "A",
-          "target": "pagar",
-          "known": "pay",
-          "new": true
-        },
-        {
-          "id": "S0508L05",
           "type": "M",
           "target": "no tiene sentido",
           "known": "there's no point",
           "new": true,
           "components": [
             ["no", "no"],
-            ["tiene", "has/there's"],
+            ["tiene", "has/there is"],
             ["sentido", "sense/point"]
           ]
         },
         {
-          "id": "S0508L06",
+          "id": "S0508L02",
           "type": "M",
-          "target": "vas a",
-          "known": "you're going to",
+          "target": "preocuparse por",
+          "known": "worrying about",
           "new": true,
           "components": [
-            ["vas", "you go"],
-            ["a", "to"]
+            ["preocuparse", "to worry"],
+            ["por", "about"]
+          ]
+        },
+        {
+          "id": "S0508L03",
+          "type": "M",
+          "target": "cómo vas a pagar",
+          "known": "how you're going to pay",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["vas", "you're going"],
+            ["a", "to"],
+            ["pagar", "to pay"]
+          ]
+        },
+        {
+          "id": "S0508L04",
+          "type": "M",
+          "target": "vas a pagar",
+          "known": "you're going to pay",
+          "new": true,
+          "components": [
+            ["vas", "you're going"],
+            ["a", "to"],
+            ["pagar", "to pay"]
+          ]
+        },
+        {
+          "id": "S0508L05",
+          "type": "M",
+          "target": "preocuparse por cómo vas a pagar",
+          "known": "worrying about how you're going to pay",
+          "new": true,
+          "components": [
+            ["preocuparse", "to worry"],
+            ["por", "about"],
+            ["cómo", "how"],
+            ["vas", "you're going"],
+            ["a", "to"],
+            ["pagar", "to pay"]
           ]
         }
       ]
@@ -460,50 +485,63 @@
       "legos": [
         {
           "id": "S0509L01",
-          "type": "A",
-          "target": "oí",
-          "known": "I heard",
-          "new": true
-        },
-        {
-          "id": "S0509L02",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
-        },
-        {
-          "id": "S0509L03",
-          "type": "A",
-          "target": "pagar",
-          "known": "pay",
-          "new": true
-        },
-        {
-          "id": "S0509L04",
-          "type": "A",
-          "target": "por",
-          "known": "for",
-          "new": true
-        },
-        {
-          "id": "S0509L05",
           "type": "M",
-          "target": "vas a",
-          "known": "you're going to",
+          "target": "oí que",
+          "known": "I heard that",
           "new": true,
           "components": [
-            ["vas", "you go"],
-            ["a", "to"]
+            ["oí", "I heard"],
+            ["que", "that"]
           ]
         },
         {
-          "id": "S0509L06",
+          "id": "S0509L02",
+          "type": "M",
+          "target": "vas a pagar",
+          "known": "you're going to pay",
+          "new": true,
+          "components": [
+            ["vas", "you're going"],
+            ["a", "to"],
+            ["pagar", "to pay"]
+          ]
+        },
+        {
+          "id": "S0509L03",
           "type": "M",
           "target": "una cama nueva",
           "known": "a new bed",
           "new": true,
           "components": [
+            ["una", "a"],
+            ["cama", "bed"],
+            ["nueva", "new"]
+          ]
+        },
+        {
+          "id": "S0509L04",
+          "type": "M",
+          "target": "por una cama nueva",
+          "known": "for a new bed",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["una", "a"],
+            ["cama", "bed"],
+            ["nueva", "new"]
+          ]
+        },
+        {
+          "id": "S0509L05",
+          "type": "M",
+          "target": "vas a pagar por una cama nueva",
+          "known": "you're going to pay for a new bed",
+          "new": true,
+          "components": [
+            ["vas", "you're going"],
+            ["a", "to"],
+            ["pagar", "to pay"],
+            ["por", "for"],
             ["una", "a"],
             ["cama", "bed"],
             ["nueva", "new"]
@@ -521,57 +559,69 @@
         {
           "id": "S0510L01",
           "type": "M",
-          "target": "ha ido",
-          "known": "she's gone",
+          "target": "ha ido a buscar",
+          "known": "she's gone to look for",
           "new": true,
           "components": [
-            ["ha", "she's/has"],
-            ["ido", "gone"]
+            ["ha", "has"],
+            ["ido", "gone"],
+            ["a", "to"],
+            ["buscar", "to look for"]
           ]
         },
         {
           "id": "S0510L02",
           "type": "M",
-          "target": "a buscar",
-          "known": "to look for",
+          "target": "algún lugar seguro",
+          "known": "somewhere safe",
           "new": true,
           "components": [
-            ["a", "to"],
-            ["buscar", "look for/search"]
+            ["algún", "some/somewhere"],
+            ["lugar", "place"],
+            ["seguro", "safe"]
           ]
         },
         {
           "id": "S0510L03",
           "type": "M",
-          "target": "algún lugar seguro",
-          "known": "somewhere safe",
+          "target": "para estacionar el carro",
+          "known": "to park the car",
           "new": true,
           "components": [
-            ["algún", "some"],
-            ["lugar", "place/where"],
-            ["seguro", "safe"]
+            ["para", "to"],
+            ["estacionar", "to park"],
+            ["el", "the"],
+            ["carro", "car"]
           ]
         },
         {
           "id": "S0510L04",
           "type": "M",
-          "target": "para estacionar",
-          "known": "to park",
+          "target": "algún lugar seguro para estacionar el carro",
+          "known": "somewhere safe to park the car",
           "new": true,
           "components": [
-            ["para", "to/for"],
-            ["estacionar", "park"]
+            ["algún", "somewhere"],
+            ["lugar", "place"],
+            ["seguro", "safe"],
+            ["para", "to"],
+            ["estacionar", "to park"],
+            ["el", "the"],
+            ["carro", "car"]
           ]
         },
         {
           "id": "S0510L05",
           "type": "M",
-          "target": "el carro",
-          "known": "the car",
+          "target": "a buscar algún lugar seguro",
+          "known": "to look for somewhere safe",
           "new": true,
           "components": [
-            ["el", "the"],
-            ["carro", "car"]
+            ["a", "to"],
+            ["buscar", "to look for"],
+            ["algún", "some/somewhere"],
+            ["lugar", "place"],
+            ["seguro", "safe"]
           ]
         }
       ]
