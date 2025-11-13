@@ -1,8 +1,8 @@
 {
   "agent_id": "agent_01",
   "seed_range": "S0601-S0610",
-  "extracted_at": "2025-11-12T22:00:00Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0601",
@@ -24,31 +24,39 @@
         },
         {
           "id": "S0601L02",
-          "type": "A",
-          "target": "sobre",
-          "known": "about",
-          "new": true
+          "type": "M",
+          "target": "sobre cómo empezó todo",
+          "known": "about how it all started",
+          "new": true,
+          "components": [
+            ["sobre", "about"],
+            ["cómo", "how"],
+            ["empezó", "started"],
+            ["todo", "it all"]
+          ]
         },
         {
           "id": "S0601L03",
-          "type": "A",
-          "target": "cómo",
-          "known": "how",
-          "new": true
+          "type": "M",
+          "target": "cómo empezó todo",
+          "known": "how it all started",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["empezó", "started"],
+            ["todo", "it all"]
+          ]
         },
         {
           "id": "S0601L04",
-          "type": "A",
-          "target": "empezó",
-          "known": "started",
-          "new": true
-        },
-        {
-          "id": "S0601L05",
-          "type": "A",
-          "target": "todo",
-          "known": "it all",
-          "new": true
+          "type": "M",
+          "target": "empezó todo",
+          "known": "it all started",
+          "new": true,
+          "components": [
+            ["empezó", "started"],
+            ["todo", "it all"]
+          ]
         }
       ]
     },
@@ -61,20 +69,17 @@
       "legos": [
         {
           "id": "S0602L01",
-          "type": "A",
-          "target": "cómo",
-          "known": "how",
-          "new": true
+          "type": "M",
+          "target": "cómo empezó",
+          "known": "how it started",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["empezó", "it started"]
+          ]
         },
         {
           "id": "S0602L02",
-          "type": "A",
-          "target": "empezó",
-          "known": "it started",
-          "new": true
-        },
-        {
-          "id": "S0602L03",
           "type": "M",
           "target": "en primer lugar",
           "known": "in the first place",
@@ -101,8 +106,8 @@
           "known": "we didn't have",
           "new": true,
           "components": [
-            ["no", "didn't/not"],
-            ["teníamos", "we had"]
+            ["no", "didn't"],
+            ["teníamos", "we have"]
           ]
         },
         {
@@ -112,8 +117,8 @@
           "known": "anywhere to live",
           "new": true,
           "components": [
-            ["ningún", "any/no"],
-            ["lugar", "place"],
+            ["ningún", "any"],
+            ["lugar", "place/where"],
             ["donde", "where"],
             ["vivir", "to live"]
           ]
@@ -121,13 +126,24 @@
         {
           "id": "S0603L03",
           "type": "M",
+          "target": "donde vivir",
+          "known": "to live",
+          "new": true,
+          "components": [
+            ["donde", "where"],
+            ["vivir", "to live"]
+          ]
+        },
+        {
+          "id": "S0603L04",
+          "type": "M",
           "target": "en ese momento",
           "known": "at the time",
           "new": true,
           "components": [
             ["en", "at"],
-            ["ese", "that/the"],
-            ["momento", "time/moment"]
+            ["ese", "the"],
+            ["momento", "time"]
           ]
         }
       ]
@@ -142,29 +158,55 @@
         {
           "id": "S0604L01",
           "type": "M",
-          "target": "ella se ofreció a",
-          "known": "she offered to",
+          "target": "ella se ofreció",
+          "known": "she offered",
           "new": true,
           "components": [
             ["ella", "she"],
             ["se", "(reflexive)"],
-            ["ofreció", "offered"],
-            ["a", "to"]
+            ["ofreció", "offered"]
           ]
         },
         {
           "id": "S0604L02",
           "type": "M",
-          "target": "dejarnos quedarnos",
-          "known": "let us stay",
+          "target": "se ofreció a dejarnos quedarnos",
+          "known": "offered to let us stay",
           "new": true,
           "components": [
+            ["se", "(reflexive)"],
+            ["ofreció", "offered"],
+            ["a", "to"],
             ["dejarnos", "let us"],
             ["quedarnos", "stay"]
           ]
         },
         {
           "id": "S0604L03",
+          "type": "M",
+          "target": "a dejarnos quedarnos",
+          "known": "to let us stay",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["dejarnos", "let us"],
+            ["quedarnos", "stay"]
+          ]
+        },
+        {
+          "id": "S0604L04",
+          "type": "M",
+          "target": "quedarnos con ella",
+          "known": "stay with her",
+          "new": true,
+          "components": [
+            ["quedarnos", "stay"],
+            ["con", "with"],
+            ["ella", "her"]
+          ]
+        },
+        {
+          "id": "S0604L05",
           "type": "M",
           "target": "con ella",
           "known": "with her",
@@ -192,10 +234,14 @@
         },
         {
           "id": "S0605L02",
-          "type": "A",
-          "target": "necesitábamos",
-          "known": "we needed",
-          "new": true
+          "type": "M",
+          "target": "necesitábamos ayuda",
+          "known": "we needed help",
+          "new": true,
+          "components": [
+            ["necesitábamos", "we needed"],
+            ["ayuda", "help"]
+          ]
         },
         {
           "id": "S0605L03",
@@ -221,7 +267,7 @@
           "new": true,
           "components": [
             ["si", "if"],
-            ["hubiera", "I'd/I had"],
+            ["hubiera", "I'd"],
             ["sabido", "known"]
           ]
         },
@@ -234,17 +280,26 @@
         },
         {
           "id": "S0606L03",
-          "type": "A",
-          "target": "lo que",
-          "known": "what",
-          "new": true
+          "type": "M",
+          "target": "lo que sé ahora",
+          "known": "what I know now",
+          "new": true,
+          "components": [
+            ["lo que", "what"],
+            ["sé", "I know"],
+            ["ahora", "now"]
+          ]
         },
         {
           "id": "S0606L04",
-          "type": "A",
-          "target": "sé",
-          "known": "I know",
-          "new": true
+          "type": "M",
+          "target": "sé ahora",
+          "known": "I know now",
+          "new": true,
+          "components": [
+            ["sé", "I know"],
+            ["ahora", "now"]
+          ]
         },
         {
           "id": "S0606L05",
@@ -260,7 +315,7 @@
           "known": "I'd have waited",
           "new": true,
           "components": [
-            ["habría", "I'd have/I would have"],
+            ["habría", "I'd have"],
             ["esperado", "waited"]
           ]
         }
@@ -281,7 +336,7 @@
           "new": true,
           "components": [
             ["si", "if"],
-            ["hubiera", "I'd/I had"],
+            ["hubiera", "I'd"],
             ["sabido", "known"]
           ]
         },
@@ -292,26 +347,42 @@
           "known": "I'd have done",
           "new": true,
           "components": [
-            ["habría", "I'd have/I would have"],
+            ["habría", "I'd have"],
             ["hecho", "done"]
           ]
         },
         {
           "id": "S0607L03",
-          "type": "A",
+          "type": "M",
           "target": "las cosas",
           "known": "things",
-          "new": true
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["cosas", "things"]
+          ]
         },
         {
           "id": "S0607L04",
+          "type": "M",
+          "target": "hecho las cosas",
+          "known": "done things",
+          "new": true,
+          "components": [
+            ["hecho", "done"],
+            ["las", "the"],
+            ["cosas", "things"]
+          ]
+        },
+        {
+          "id": "S0607L05",
           "type": "M",
           "target": "de manera diferente",
           "known": "differently",
           "new": true,
           "components": [
-            ["de", "in/of"],
-            ["manera", "manner/way"],
+            ["de", "in"],
+            ["manera", "manner"],
             ["diferente", "different"]
           ]
         }
@@ -338,22 +409,35 @@
         {
           "id": "S0608L02",
           "type": "M",
-          "target": "lo sensato",
-          "known": "the sensible thing",
+          "target": "lo sensato que hacer",
+          "known": "the sensible thing to do",
           "new": true,
           "components": [
             ["lo", "the"],
-            ["sensato", "sensible/sensible thing"]
+            ["sensato", "sensible thing"],
+            ["que", "to"],
+            ["hacer", "do"]
           ]
         },
         {
           "id": "S0608L03",
           "type": "M",
+          "target": "lo sensato",
+          "known": "the sensible thing",
+          "new": true,
+          "components": [
+            ["lo", "the"],
+            ["sensato", "sensible thing"]
+          ]
+        },
+        {
+          "id": "S0608L04",
+          "type": "M",
           "target": "que hacer",
           "known": "to do",
           "new": true,
           "components": [
-            ["que", "to/that"],
+            ["que", "to"],
             ["hacer", "do"]
           ]
         }
@@ -369,27 +453,18 @@
         {
           "id": "S0609L01",
           "type": "M",
-          "target": "lo sensato",
-          "known": "the sensible thing",
+          "target": "lo sensato que hacer",
+          "known": "the sensible thing to do",
           "new": true,
           "components": [
             ["lo", "the"],
-            ["sensato", "sensible/sensible thing"]
-          ]
-        },
-        {
-          "id": "S0609L02",
-          "type": "M",
-          "target": "que hacer",
-          "known": "to do",
-          "new": true,
-          "components": [
-            ["que", "to/that"],
+            ["sensato", "sensible thing"],
+            ["que", "to"],
             ["hacer", "do"]
           ]
         },
         {
-          "id": "S0609L03",
+          "id": "S0609L02",
           "type": "M",
           "target": "habría sido",
           "known": "would have been",
@@ -400,7 +475,7 @@
           ]
         },
         {
-          "id": "S0609L04",
+          "id": "S0609L03",
           "type": "A",
           "target": "preguntar",
           "known": "to ask",
@@ -428,13 +503,29 @@
         },
         {
           "id": "S0610L02",
-          "type": "A",
-          "target": "buscar",
-          "known": "to look for",
-          "new": true
+          "type": "M",
+          "target": "necesita buscar trabajo",
+          "known": "needs to look for work",
+          "new": true,
+          "components": [
+            ["necesita", "needs"],
+            ["buscar", "to look for"],
+            ["trabajo", "work"]
+          ]
         },
         {
           "id": "S0610L03",
+          "type": "M",
+          "target": "buscar trabajo",
+          "known": "to look for work",
+          "new": true,
+          "components": [
+            ["buscar", "to look for"],
+            ["trabajo", "work"]
+          ]
+        },
+        {
+          "id": "S0610L04",
           "type": "A",
           "target": "trabajo",
           "known": "work",
