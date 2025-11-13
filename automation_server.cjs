@@ -2136,9 +2136,47 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
           }
         }
 
-        console.log(`[Web Orchestrator] ✅ All Phase 5 agents complete! Running merge script...`);
+        console.log(`[Web Orchestrator] ✅ All Phase 5 agents complete! Merging Claude branches...`);
+
+        // Auto-merge all Claude feature branches from Phase 5 agents
+        try {
+          console.log(`[Git Merge] Fetching all remote branches...`);
+          await execCommand('git fetch --all', { cwd: baseCourseDir });
+
+          console.log(`[Git Merge] Finding Claude Phase 5 branches...`);
+          const branchesResult = await execCommand('git branch -r | grep "origin/claude/phase5"', { cwd: baseCourseDir });
+
+          if (branchesResult.stdout.trim()) {
+            const branches = branchesResult.stdout.trim().split('\n').map(b => b.trim());
+            console.log(`[Git Merge] Found ${branches.length} Claude Phase 5 branches to merge`);
+
+            for (const branch of branches) {
+              const branchName = branch.replace('origin/', '');
+              console.log(`[Git Merge] Merging ${branchName}...`);
+
+              try {
+                await execCommand(`git merge ${branch} --no-edit -m "Auto-merge Phase 5 agent: ${branchName}"`, { cwd: baseCourseDir });
+                console.log(`[Git Merge] ✅ Merged ${branchName}`);
+              } catch (mergeErr) {
+                console.error(`[Git Merge] ⚠️  Error merging ${branchName}: ${mergeErr.message}`);
+                // Continue with other branches even if one fails
+              }
+            }
+
+            // Push merged main branch
+            console.log(`[Git Merge] Pushing merged main branch...`);
+            await execCommand('git push origin main', { cwd: baseCourseDir });
+            console.log(`[Git Merge] ✅ All Phase 5 branches merged and pushed to main`);
+          } else {
+            console.log(`[Git Merge] No Claude Phase 5 branches found (agents may have pushed directly to main)`);
+          }
+        } catch (gitErr) {
+          console.error(`[Git Merge] Error during auto-merge: ${gitErr.message}`);
+          console.log(`[Git Merge] Continuing with Phase 5 merge script...`);
+        }
 
         // Run Phase 5 merge script
+        console.log(`[Web Orchestrator] Running Phase 5 basket merge script...`);
         const { mergePhase5Outputs } = require('./scripts/phase5_merge_outputs.cjs');
         await mergePhase5Outputs(baseCourseDir);
 
