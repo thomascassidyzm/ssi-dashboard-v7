@@ -1,0 +1,599 @@
+{
+  "agent_id": "agent_08",
+  "seed_range": "S0271-S0280",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0271",
+      "seed_pair": [
+        "Would you like to come with us next month?",
+        "¿Te gustaría venir con nosotros el próximo mes?"
+      ],
+      "legos": [
+        {
+          "id": "S0271L01",
+          "type": "M",
+          "target": "te gustaría",
+          "known": "would you like",
+          "new": true,
+          "components": [
+            ["te", "you"],
+            ["gustaría", "would like"]
+          ]
+        },
+        {
+          "id": "S0271L02",
+          "type": "M",
+          "target": "te gustaría venir",
+          "known": "would you like to come",
+          "new": true,
+          "components": [
+            ["te", "you"],
+            ["gustaría", "would like"],
+            ["venir", "to come"]
+          ]
+        },
+        {
+          "id": "S0271L03",
+          "type": "A",
+          "target": "venir",
+          "known": "to come",
+          "new": true
+        },
+        {
+          "id": "S0271L04",
+          "type": "M",
+          "target": "con nosotros",
+          "known": "with us",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["nosotros", "us"]
+          ]
+        },
+        {
+          "id": "S0271L05",
+          "type": "M",
+          "target": "venir con nosotros",
+          "known": "come with us",
+          "new": true,
+          "components": [
+            ["venir", "to come"],
+            ["con", "with"],
+            ["nosotros", "us"]
+          ]
+        },
+        {
+          "id": "S0271L06",
+          "type": "M",
+          "target": "el próximo mes",
+          "known": "next month",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["próximo", "next"],
+            ["mes", "month"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0272",
+      "seed_pair": [
+        "Yes that sounds like a great idea.",
+        "Sí eso suena como una gran idea."
+      ],
+      "legos": [
+        {
+          "id": "S0272L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0272L02",
+          "type": "M",
+          "target": "eso suena",
+          "known": "that sounds",
+          "new": true,
+          "components": [
+            ["eso", "that"],
+            ["suena", "sounds"]
+          ]
+        },
+        {
+          "id": "S0272L03",
+          "type": "M",
+          "target": "suena como",
+          "known": "sounds like",
+          "new": true,
+          "components": [
+            ["suena", "sounds"],
+            ["como", "like"]
+          ]
+        },
+        {
+          "id": "S0272L04",
+          "type": "M",
+          "target": "eso suena como",
+          "known": "that sounds like",
+          "new": true,
+          "components": [
+            ["eso", "that"],
+            ["suena", "sounds"],
+            ["como", "like"]
+          ]
+        },
+        {
+          "id": "S0272L05",
+          "type": "M",
+          "target": "una gran idea",
+          "known": "a great idea",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["gran", "great"],
+            ["idea", "idea"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0273",
+      "seed_pair": [
+        "No unfortunately I've got too much work.",
+        "No desafortunadamente tengo demasiado trabajo."
+      ],
+      "legos": [
+        {
+          "id": "S0273L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0273L02",
+          "type": "A",
+          "target": "desafortunadamente",
+          "known": "unfortunately",
+          "new": true
+        },
+        {
+          "id": "S0273L03",
+          "type": "A",
+          "target": "tengo",
+          "known": "I have",
+          "new": true
+        },
+        {
+          "id": "S0273L04",
+          "type": "M",
+          "target": "demasiado trabajo",
+          "known": "too much work",
+          "new": true,
+          "components": [
+            ["demasiado", "too much"],
+            ["trabajo", "work"]
+          ]
+        },
+        {
+          "id": "S0273L05",
+          "type": "M",
+          "target": "tengo demasiado trabajo",
+          "known": "I have too much work",
+          "new": true,
+          "components": [
+            ["tengo", "I have"],
+            ["demasiado", "too much"],
+            ["trabajo", "work"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0274",
+      "seed_pair": [
+        "Do you have to leave in a few days?",
+        "¿Tienes que salir en unos pocos días?"
+      ],
+      "legos": [
+        {
+          "id": "S0274L01",
+          "type": "M",
+          "target": "tienes que",
+          "known": "you have to",
+          "new": true,
+          "components": [
+            ["tienes", "you have"],
+            ["que", "to"]
+          ]
+        },
+        {
+          "id": "S0274L02",
+          "type": "A",
+          "target": "salir",
+          "known": "to leave",
+          "new": true
+        },
+        {
+          "id": "S0274L03",
+          "type": "M",
+          "target": "tienes que salir",
+          "known": "you have to leave",
+          "new": true,
+          "components": [
+            ["tienes", "you have"],
+            ["que", "to"],
+            ["salir", "to leave"]
+          ]
+        },
+        {
+          "id": "S0274L04",
+          "type": "M",
+          "target": "en unos pocos días",
+          "known": "in a few days",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["unos", "a/some"],
+            ["pocos", "few"],
+            ["días", "days"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0275",
+      "seed_pair": [
+        "Longer.",
+        "Más tiempo."
+      ],
+      "legos": [
+        {
+          "id": "S0275L01",
+          "type": "M",
+          "target": "más tiempo",
+          "known": "longer",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["tiempo", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0276",
+      "seed_pair": [
+        "No I can stay here for a little longer.",
+        "No, puedo quedarme aquí un poco más de tiempo."
+      ],
+      "legos": [
+        {
+          "id": "S0276L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0276L02",
+          "type": "A",
+          "target": "puedo",
+          "known": "I can",
+          "new": true
+        },
+        {
+          "id": "S0276L03",
+          "type": "A",
+          "target": "quedarme",
+          "known": "to stay",
+          "new": true
+        },
+        {
+          "id": "S0276L04",
+          "type": "M",
+          "target": "puedo quedarme",
+          "known": "I can stay",
+          "new": true,
+          "components": [
+            ["puedo", "I can"],
+            ["quedarme", "stay"]
+          ]
+        },
+        {
+          "id": "S0276L05",
+          "type": "A",
+          "target": "aquí",
+          "known": "here",
+          "new": true
+        },
+        {
+          "id": "S0276L06",
+          "type": "M",
+          "target": "puedo quedarme aquí",
+          "known": "I can stay here",
+          "new": true,
+          "components": [
+            ["puedo", "I can"],
+            ["quedarme", "stay"],
+            ["aquí", "here"]
+          ]
+        },
+        {
+          "id": "S0276L07",
+          "type": "M",
+          "target": "un poco más de tiempo",
+          "known": "a little longer",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["poco", "little"],
+            ["más", "more"],
+            ["de", "of"],
+            ["tiempo", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0277",
+      "seed_pair": [
+        "Yes I've got an important meeting early next week.",
+        "Sí tengo una reunión importante a principios de la próxima semana."
+      ],
+      "legos": [
+        {
+          "id": "S0277L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0277L02",
+          "type": "A",
+          "target": "tengo",
+          "known": "I have",
+          "new": true
+        },
+        {
+          "id": "S0277L03",
+          "type": "M",
+          "target": "una reunión importante",
+          "known": "an important meeting",
+          "new": true,
+          "components": [
+            ["una", "an"],
+            ["reunión", "meeting"],
+            ["importante", "important"]
+          ]
+        },
+        {
+          "id": "S0277L04",
+          "type": "M",
+          "target": "tengo una reunión importante",
+          "known": "I have an important meeting",
+          "new": true,
+          "components": [
+            ["tengo", "I have"],
+            ["una", "an"],
+            ["reunión", "meeting"],
+            ["importante", "important"]
+          ]
+        },
+        {
+          "id": "S0277L05",
+          "type": "M",
+          "target": "a principios de la próxima semana",
+          "known": "early next week",
+          "new": true,
+          "components": [
+            ["a", "at"],
+            ["principios", "beginning"],
+            ["de", "of"],
+            ["la", "the"],
+            ["próxima", "next"],
+            ["semana", "week"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0278",
+      "seed_pair": [
+        "Did you have to finish everything last night?",
+        "¿Tuviste que terminar todo anoche?"
+      ],
+      "legos": [
+        {
+          "id": "S0278L01",
+          "type": "M",
+          "target": "tuviste que",
+          "known": "you had to",
+          "new": true,
+          "components": [
+            ["tuviste", "you had"],
+            ["que", "to"]
+          ]
+        },
+        {
+          "id": "S0278L02",
+          "type": "A",
+          "target": "terminar",
+          "known": "to finish",
+          "new": true
+        },
+        {
+          "id": "S0278L03",
+          "type": "M",
+          "target": "tuviste que terminar",
+          "known": "you had to finish",
+          "new": true,
+          "components": [
+            ["tuviste", "you had"],
+            ["que", "to"],
+            ["terminar", "to finish"]
+          ]
+        },
+        {
+          "id": "S0278L04",
+          "type": "A",
+          "target": "todo",
+          "known": "everything",
+          "new": true
+        },
+        {
+          "id": "S0278L05",
+          "type": "M",
+          "target": "terminar todo",
+          "known": "finish everything",
+          "new": true,
+          "components": [
+            ["terminar", "to finish"],
+            ["todo", "everything"]
+          ]
+        },
+        {
+          "id": "S0278L06",
+          "type": "A",
+          "target": "anoche",
+          "known": "last night",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0279",
+      "seed_pair": [
+        "Yes because there wasn't much time left.",
+        "Sí porque no quedaba mucho tiempo."
+      ],
+      "legos": [
+        {
+          "id": "S0279L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0279L02",
+          "type": "A",
+          "target": "porque",
+          "known": "because",
+          "new": true
+        },
+        {
+          "id": "S0279L03",
+          "type": "M",
+          "target": "no quedaba",
+          "known": "there wasn't",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["quedaba", "remained/was left"]
+          ]
+        },
+        {
+          "id": "S0279L04",
+          "type": "M",
+          "target": "mucho tiempo",
+          "known": "much time",
+          "new": true,
+          "components": [
+            ["mucho", "much"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0279L05",
+          "type": "M",
+          "target": "no quedaba mucho tiempo",
+          "known": "there wasn't much time",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["quedaba", "remained"],
+            ["mucho", "much"],
+            ["tiempo", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0280",
+      "seed_pair": [
+        "No I only had to do the most important job.",
+        "No solo tuve que hacer el trabajo más importante."
+      ],
+      "legos": [
+        {
+          "id": "S0280L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0280L02",
+          "type": "M",
+          "target": "solo tuve que",
+          "known": "I only had to",
+          "new": true,
+          "components": [
+            ["solo", "only"],
+            ["tuve", "I had"],
+            ["que", "to"]
+          ]
+        },
+        {
+          "id": "S0280L03",
+          "type": "M",
+          "target": "tuve que",
+          "known": "I had to",
+          "new": true,
+          "components": [
+            ["tuve", "I had"],
+            ["que", "to"]
+          ]
+        },
+        {
+          "id": "S0280L04",
+          "type": "A",
+          "target": "hacer",
+          "known": "to do",
+          "new": true
+        },
+        {
+          "id": "S0280L05",
+          "type": "M",
+          "target": "tuve que hacer",
+          "known": "I had to do",
+          "new": true,
+          "components": [
+            ["tuve", "I had"],
+            ["que", "to"],
+            ["hacer", "to do"]
+          ]
+        },
+        {
+          "id": "S0280L06",
+          "type": "M",
+          "target": "el trabajo más importante",
+          "known": "the most important job",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["trabajo", "job"],
+            ["más", "most"],
+            ["importante", "important"]
+          ]
+        }
+      ]
+    }
+  ]
+}
