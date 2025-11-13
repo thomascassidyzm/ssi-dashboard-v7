@@ -1,9 +1,8 @@
 {
   "agent_id": "agent_04",
   "seed_range": "S0331-S0340",
-  "extracted_at": "2025-11-12T00:00:00Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
-  "notes": "Complete re-extraction following v6.3 rules: no standalone pronouns/articles/particles, A-before-M ordering, tiling verified in both languages, components on all M-types",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0331",
@@ -11,24 +10,9 @@
         "She can't provide all the answers.",
         "Ella no puede proveer todas las respuestas."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'She can't' → M-type (pronoun+verb, 'she' alone can't generate practice). 'provide' → A-type. 'all the' → M-type (article agreement). 'answers' → A-type. TILING: ✅ Both languages reconstruct perfectly.",
       "legos": [
         {
           "id": "S0331L01",
-          "type": "A",
-          "target": "proveer",
-          "known": "provide",
-          "new": true
-        },
-        {
-          "id": "S0331L02",
-          "type": "A",
-          "target": "respuestas",
-          "known": "answers",
-          "new": true
-        },
-        {
-          "id": "S0331L03",
           "type": "M",
           "target": "ella no puede",
           "known": "she can't",
@@ -40,14 +24,45 @@
           ]
         },
         {
+          "id": "S0331L02",
+          "type": "M",
+          "target": "no puede proveer",
+          "known": "can't provide",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["puede", "can"],
+            ["proveer", "provide"]
+          ]
+        },
+        {
+          "id": "S0331L03",
+          "type": "A",
+          "target": "proveer",
+          "known": "provide",
+          "new": true
+        },
+        {
           "id": "S0331L04",
           "type": "M",
-          "target": "todas las",
-          "known": "all the",
+          "target": "todas las respuestas",
+          "known": "all the answers",
           "new": true,
           "components": [
             ["todas", "all"],
-            ["las", "the"]
+            ["las", "the"],
+            ["respuestas", "answers"]
+          ]
+        },
+        {
+          "id": "S0331L05",
+          "type": "M",
+          "target": "las respuestas",
+          "known": "the answers",
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["respuestas", "answers"]
           ]
         }
       ]
@@ -58,31 +73,9 @@
         "He can build a new life for his sister.",
         "Él puede construir una nueva vida para su hermana."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'He can' → M-type (pronoun+verb). 'build' → A-type. 'a new' → M-type (article+adjective gender agreement). 'life' → A-type. 'for' → A-type. 'his sister' → M-type (possessive+noun). TILING: ✅",
       "legos": [
         {
           "id": "S0332L01",
-          "type": "A",
-          "target": "construir",
-          "known": "build",
-          "new": true
-        },
-        {
-          "id": "S0332L02",
-          "type": "A",
-          "target": "vida",
-          "known": "life",
-          "new": true
-        },
-        {
-          "id": "S0332L03",
-          "type": "A",
-          "target": "para",
-          "known": "for",
-          "new": true
-        },
-        {
-          "id": "S0332L04",
           "type": "M",
           "target": "él puede",
           "known": "he can",
@@ -93,23 +86,54 @@
           ]
         },
         {
-          "id": "S0332L05",
+          "id": "S0332L02",
           "type": "M",
-          "target": "una nueva",
-          "known": "a new",
+          "target": "puede construir",
+          "known": "can build",
+          "new": true,
+          "components": [
+            ["puede", "can"],
+            ["construir", "build"]
+          ]
+        },
+        {
+          "id": "S0332L03",
+          "type": "A",
+          "target": "construir",
+          "known": "build",
+          "new": true
+        },
+        {
+          "id": "S0332L04",
+          "type": "M",
+          "target": "una nueva vida",
+          "known": "a new life",
           "new": true,
           "components": [
             ["una", "a"],
-            ["nueva", "new"]
+            ["nueva", "new"],
+            ["vida", "life"]
+          ]
+        },
+        {
+          "id": "S0332L05",
+          "type": "M",
+          "target": "nueva vida",
+          "known": "new life",
+          "new": true,
+          "components": [
+            ["nueva", "new"],
+            ["vida", "life"]
           ]
         },
         {
           "id": "S0332L06",
           "type": "M",
-          "target": "su hermana",
-          "known": "his sister",
+          "target": "para su hermana",
+          "known": "for his sister",
           "new": true,
           "components": [
+            ["para", "for"],
             ["su", "his"],
             ["hermana", "sister"]
           ]
@@ -122,24 +146,9 @@
         "She said that she can't spend much time with the group.",
         "Ella dijo que no puede pasar mucho tiempo con el grupo."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'She said' → M-type. 'that she can't' → 'que no puede' M-type (second 'she' dropped in Spanish). 'spend' → A-type. 'much time' → M-type. 'with' → A-type. 'the group' → M-type. TILING: ✅",
       "legos": [
         {
           "id": "S0333L01",
-          "type": "A",
-          "target": "pasar",
-          "known": "spend",
-          "new": true
-        },
-        {
-          "id": "S0333L02",
-          "type": "A",
-          "target": "con",
-          "known": "with",
-          "new": true
-        },
-        {
-          "id": "S0333L03",
           "type": "M",
           "target": "ella dijo",
           "known": "she said",
@@ -150,7 +159,18 @@
           ]
         },
         {
-          "id": "S0333L04",
+          "id": "S0333L02",
+          "type": "M",
+          "target": "dijo que",
+          "known": "said that",
+          "new": true,
+          "components": [
+            ["dijo", "said"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0333L03",
           "type": "M",
           "target": "que no puede",
           "known": "that she can't",
@@ -162,7 +182,38 @@
           ]
         },
         {
+          "id": "S0333L04",
+          "type": "M",
+          "target": "no puede pasar",
+          "known": "can't spend",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["puede", "can"],
+            ["pasar", "spend"]
+          ]
+        },
+        {
           "id": "S0333L05",
+          "type": "A",
+          "target": "pasar",
+          "known": "spend",
+          "new": true
+        },
+        {
+          "id": "S0333L06",
+          "type": "M",
+          "target": "pasar mucho tiempo",
+          "known": "spend much time",
+          "new": true,
+          "components": [
+            ["pasar", "spend"],
+            ["mucho", "much"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0333L07",
           "type": "M",
           "target": "mucho tiempo",
           "known": "much time",
@@ -173,12 +224,13 @@
           ]
         },
         {
-          "id": "S0333L06",
+          "id": "S0333L08",
           "type": "M",
-          "target": "el grupo",
-          "known": "the group",
+          "target": "con el grupo",
+          "known": "with the group",
           "new": true,
           "components": [
+            ["con", "with"],
             ["el", "the"],
             ["grupo", "group"]
           ]
@@ -191,24 +243,9 @@
         "He said that he can let you hold the kitten",
         "Él dijo que puede dejarte sostener el gatito"
       ],
-      "extraction_notes": "FORWARD SWEEP: 'He said' → M-type. 'that he can' → 'que puede' M-type (pronoun dropped). 'let you' → 'dejarte' A-type (single word). 'hold' → A-type. 'the kitten' → M-type. TILING: ✅",
       "legos": [
         {
           "id": "S0334L01",
-          "type": "A",
-          "target": "dejarte",
-          "known": "let you",
-          "new": true
-        },
-        {
-          "id": "S0334L02",
-          "type": "A",
-          "target": "sostener",
-          "known": "hold",
-          "new": true
-        },
-        {
-          "id": "S0334L03",
           "type": "M",
           "target": "él dijo",
           "known": "he said",
@@ -219,18 +256,66 @@
           ]
         },
         {
-          "id": "S0334L04",
+          "id": "S0334L02",
           "type": "M",
-          "target": "que puede",
-          "known": "that he can",
+          "target": "dijo que",
+          "known": "said that",
           "new": true,
           "components": [
-            ["que", "that"],
-            ["puede", "can"]
+            ["dijo", "said"],
+            ["que", "that"]
           ]
         },
         {
+          "id": "S0334L03",
+          "type": "M",
+          "target": "puede dejarte",
+          "known": "can let you",
+          "new": true,
+          "components": [
+            ["puede", "can"],
+            ["dejarte", "let you"]
+          ]
+        },
+        {
+          "id": "S0334L04",
+          "type": "A",
+          "target": "dejarte",
+          "known": "let you",
+          "new": true
+        },
+        {
           "id": "S0334L05",
+          "type": "M",
+          "target": "dejarte sostener",
+          "known": "let you hold",
+          "new": true,
+          "components": [
+            ["dejarte", "let you"],
+            ["sostener", "hold"]
+          ]
+        },
+        {
+          "id": "S0334L06",
+          "type": "A",
+          "target": "sostener",
+          "known": "hold",
+          "new": true
+        },
+        {
+          "id": "S0334L07",
+          "type": "M",
+          "target": "sostener el gatito",
+          "known": "hold the kitten",
+          "new": true,
+          "components": [
+            ["sostener", "hold"],
+            ["el", "the"],
+            ["gatito", "kitten"]
+          ]
+        },
+        {
+          "id": "S0334L08",
           "type": "M",
           "target": "el gatito",
           "known": "the kitten",
@@ -248,7 +333,6 @@
         "I think that he can add some valuable ideas.",
         "Creo que puede añadir algunas ideas valiosas."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'I think' → 'Creo' A-type (single word). 'that he can' → 'que puede' M-type. 'add' → A-type. 'some valuable ideas' → M-type (adjective position pattern: valuable ideas → ideas valiosas). TILING: ✅",
       "legos": [
         {
           "id": "S0335L01",
@@ -259,30 +343,52 @@
         },
         {
           "id": "S0335L02",
+          "type": "M",
+          "target": "creo que",
+          "known": "I think that",
+          "new": true,
+          "components": [
+            ["creo", "I think"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0335L03",
+          "type": "M",
+          "target": "puede añadir",
+          "known": "can add",
+          "new": true,
+          "components": [
+            ["puede", "can"],
+            ["añadir", "add"]
+          ]
+        },
+        {
+          "id": "S0335L04",
           "type": "A",
           "target": "añadir",
           "known": "add",
           "new": true
         },
         {
-          "id": "S0335L03",
-          "type": "M",
-          "target": "que puede",
-          "known": "that he can",
-          "new": true,
-          "components": [
-            ["que", "that"],
-            ["puede", "can"]
-          ]
-        },
-        {
-          "id": "S0335L04",
+          "id": "S0335L05",
           "type": "M",
           "target": "algunas ideas valiosas",
           "known": "some valuable ideas",
           "new": true,
           "components": [
             ["algunas", "some"],
+            ["ideas", "ideas"],
+            ["valiosas", "valuable"]
+          ]
+        },
+        {
+          "id": "S0335L06",
+          "type": "M",
+          "target": "ideas valiosas",
+          "known": "valuable ideas",
+          "new": true,
+          "components": [
             ["ideas", "ideas"],
             ["valiosas", "valuable"]
           ]
@@ -295,14 +401,17 @@
         "I don't think that she can open the door.",
         "No creo que pueda abrir la puerta."
       ],
-      "extraction_notes": "CRITICAL: 'pueda' is SUBJUNCTIVE triggered by 'No creo que' (doubt/denial). FD VALIDATION: 'que pueda' alone → FAILS (why subjunctive?). MERGED with trigger: 'No creo que pueda' / 'I don't think that she can' ✅. 'open' → A-type. 'the door' → M-type. TILING: ✅",
       "legos": [
         {
           "id": "S0336L01",
-          "type": "A",
-          "target": "abrir",
-          "known": "open",
-          "new": true
+          "type": "M",
+          "target": "no creo",
+          "known": "I don't think",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["creo", "I think"]
+          ]
         },
         {
           "id": "S0336L02",
@@ -314,11 +423,52 @@
             ["no", "not"],
             ["creo", "I think"],
             ["que", "that"],
-            ["pueda", "she can"]
+            ["pueda", "can (subjunctive)"]
           ]
         },
         {
           "id": "S0336L03",
+          "type": "M",
+          "target": "que pueda",
+          "known": "that she can",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["pueda", "can (subjunctive)"]
+          ]
+        },
+        {
+          "id": "S0336L04",
+          "type": "M",
+          "target": "pueda abrir",
+          "known": "can open",
+          "new": true,
+          "components": [
+            ["pueda", "can (subjunctive)"],
+            ["abrir", "open"]
+          ]
+        },
+        {
+          "id": "S0336L05",
+          "type": "A",
+          "target": "abrir",
+          "known": "open",
+          "new": true
+        },
+        {
+          "id": "S0336L06",
+          "type": "M",
+          "target": "abrir la puerta",
+          "known": "open the door",
+          "new": true,
+          "components": [
+            ["abrir", "open"],
+            ["la", "the"],
+            ["puerta", "door"]
+          ]
+        },
+        {
+          "id": "S0336L07",
           "type": "M",
           "target": "la puerta",
           "known": "the door",
@@ -336,7 +486,6 @@
         "Do you think that he can continue to play?",
         "¿Crees que puede continuar jugando?"
       ],
-      "extraction_notes": "FORWARD SWEEP: 'Do you think' → 'Crees' A-type (question form). 'that he can' → 'que puede' M-type. 'continue to play' → 'continuar jugando' M-type (pattern: 'to play' → 'jugando' gerund). TILING: ✅",
       "legos": [
         {
           "id": "S0337L01",
@@ -348,24 +497,49 @@
         {
           "id": "S0337L02",
           "type": "M",
-          "target": "que puede",
-          "known": "that he can",
+          "target": "crees que",
+          "known": "do you think that",
           "new": true,
           "components": [
-            ["que", "that"],
-            ["puede", "can"]
+            ["crees", "do you think"],
+            ["que", "that"]
           ]
         },
         {
           "id": "S0337L03",
+          "type": "M",
+          "target": "puede continuar",
+          "known": "can continue",
+          "new": true,
+          "components": [
+            ["puede", "can"],
+            ["continuar", "continue"]
+          ]
+        },
+        {
+          "id": "S0337L04",
+          "type": "A",
+          "target": "continuar",
+          "known": "continue",
+          "new": true
+        },
+        {
+          "id": "S0337L05",
           "type": "M",
           "target": "continuar jugando",
           "known": "continue to play",
           "new": true,
           "components": [
             ["continuar", "continue"],
-            ["jugando", "to play"]
+            ["jugando", "playing/to play"]
           ]
+        },
+        {
+          "id": "S0337L06",
+          "type": "A",
+          "target": "jugando",
+          "known": "playing",
+          "new": true
         }
       ]
     },
@@ -375,7 +549,6 @@
         "Badly.",
         "Mal."
       ],
-      "extraction_notes": "Simple one-word seed. 'Badly' → 'Mal' A-type. TILING: ✅",
       "legos": [
         {
           "id": "S0338L01",
@@ -392,7 +565,6 @@
         "No I think he's hurt himself quite badly.",
         "No, pienso que se ha lastimado bastante mal."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'No' → A-type. 'I think' → 'pienso' A-type. 'that he's hurt himself' → 'que se ha lastimado' M-type (reflexive + present perfect pattern). 'quite' → A-type. 'badly' → A-type. TILING: ✅",
       "legos": [
         {
           "id": "S0339L01",
@@ -410,30 +582,44 @@
         },
         {
           "id": "S0339L03",
-          "type": "A",
-          "target": "bastante",
-          "known": "quite",
-          "new": true
+          "type": "M",
+          "target": "pienso que",
+          "known": "I think that",
+          "new": true,
+          "components": [
+            ["pienso", "I think"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0339L04",
-          "type": "A",
-          "target": "mal",
-          "known": "badly",
-          "new": true
-        },
-        {
-          "id": "S0339L05",
           "type": "M",
-          "target": "que se ha lastimado",
-          "known": "that he's hurt himself",
+          "target": "se ha lastimado",
+          "known": "he's hurt himself",
           "new": true,
           "components": [
-            ["que", "that"],
             ["se", "himself"],
             ["ha", "has"],
             ["lastimado", "hurt"]
           ]
+        },
+        {
+          "id": "S0339L05",
+          "type": "M",
+          "target": "bastante mal",
+          "known": "quite badly",
+          "new": true,
+          "components": [
+            ["bastante", "quite"],
+            ["mal", "badly"]
+          ]
+        },
+        {
+          "id": "S0339L06",
+          "type": "A",
+          "target": "mal",
+          "known": "badly",
+          "new": true
         }
       ]
     },
@@ -443,7 +629,6 @@
         "Yes I'm sure he's going to be okay.",
         "Sí, estoy seguro que va a estar bien."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'Yes' → A-type. 'I'm sure' → 'estoy seguro' M-type. 'that he's going to be' → 'que va a estar' M-type (future construction + estar). 'okay' → 'bien' A-type. Note: 'estar' alone would be ambiguous (ser/estar). TILING: ✅",
       "legos": [
         {
           "id": "S0340L01",
@@ -454,13 +639,6 @@
         },
         {
           "id": "S0340L02",
-          "type": "A",
-          "target": "bien",
-          "known": "okay",
-          "new": true
-        },
-        {
-          "id": "S0340L03",
           "type": "M",
           "target": "estoy seguro",
           "known": "I'm sure",
@@ -471,17 +649,58 @@
           ]
         },
         {
-          "id": "S0340L04",
+          "id": "S0340L03",
           "type": "M",
-          "target": "que va a estar",
-          "known": "that he's going to be",
+          "target": "seguro que",
+          "known": "sure that",
           "new": true,
           "components": [
-            ["que", "that"],
-            ["va", "he goes"],
+            ["seguro", "sure"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0340L04",
+          "type": "M",
+          "target": "va a estar",
+          "known": "is going to be",
+          "new": true,
+          "components": [
+            ["va", "is going/goes"],
             ["a", "to"],
             ["estar", "be"]
           ]
+        },
+        {
+          "id": "S0340L05",
+          "type": "M",
+          "target": "va a estar bien",
+          "known": "is going to be okay",
+          "new": true,
+          "components": [
+            ["va", "is going"],
+            ["a", "to"],
+            ["estar", "be"],
+            ["bien", "okay/fine"]
+          ]
+        },
+        {
+          "id": "S0340L06",
+          "type": "M",
+          "target": "estar bien",
+          "known": "be okay",
+          "new": true,
+          "components": [
+            ["estar", "be"],
+            ["bien", "okay/fine"]
+          ]
+        },
+        {
+          "id": "S0340L07",
+          "type": "A",
+          "target": "bien",
+          "known": "okay",
+          "new": true
         }
       ]
     }
