@@ -1,8 +1,8 @@
 {
   "agent_id": "agent_04",
   "seed_range": "S0231-S0240",
-  "extracted_at": "2025-11-12T22:00:00Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0231",
@@ -10,55 +10,39 @@
         "I know an old man who wanted to ask for help.",
         "Conozco a un hombre viejo que quería pedir ayuda."
       ],
-      "extraction_notes": "Forward sweep: 'I know' → 'conozco' (A-type, verb). 'an old man' → 'a un hombre viejo' (M-type, includes personal a marker + noun phrase with post-positioned adjective). 'who' → 'que' (A-type). 'wanted' → 'quería' (A-type, he wanted). 'to ask for' → 'pedir' (A-type, single verb). 'help' → 'ayuda' (A-type). Tiling verified.",
       "legos": [
         {
           "id": "S0231L01",
-          "type": "A",
-          "target": "conozco",
-          "known": "I know",
-          "new": true
-        },
-        {
-          "id": "S0231L02",
           "type": "M",
-          "target": "a un hombre viejo",
-          "known": "an old man",
+          "target": "conozco a un hombre viejo",
+          "known": "I know an old man",
           "new": true,
           "components": [
-            ["a", "to"],
-            ["un", "a"],
+            ["conozco", "I know"],
+            ["a", "to/a"],
+            ["un", "an/a"],
             ["hombre", "man"],
             ["viejo", "old"]
           ]
         },
         {
-          "id": "S0231L03",
+          "id": "S0231L02",
           "type": "A",
           "target": "que",
           "known": "who",
           "new": true
         },
         {
-          "id": "S0231L04",
-          "type": "A",
-          "target": "quería",
-          "known": "wanted",
-          "new": true
-        },
-        {
-          "id": "S0231L05",
-          "type": "A",
-          "target": "pedir",
-          "known": "to ask for",
-          "new": true
-        },
-        {
-          "id": "S0231L06",
-          "type": "A",
-          "target": "ayuda",
-          "known": "help",
-          "new": true
+          "id": "S0231L03",
+          "type": "M",
+          "target": "quería pedir ayuda",
+          "known": "wanted to ask for help",
+          "new": true,
+          "components": [
+            ["quería", "wanted"],
+            ["pedir", "to ask for"],
+            ["ayuda", "help"]
+          ]
         }
       ]
     },
@@ -68,37 +52,30 @@
         "I know an old woman who can remember the answer.",
         "Conozco a una mujer vieja que puede recordar la respuesta."
       ],
-      "extraction_notes": "Forward sweep: 'I know' → 'conozco' (A-type). 'an old woman' → 'a una mujer vieja' (M-type, personal a + feminine noun phrase). 'who' → 'que' (A-type). 'can remember' → 'puede recordar' (M-type, modal + infinitive pattern maintained in both languages but taught as unit for fluency). 'the answer' → 'la respuesta' (M-type, article + noun). Tiling verified.",
       "legos": [
         {
           "id": "S0232L01",
-          "type": "A",
-          "target": "conozco",
-          "known": "I know",
-          "new": true
-        },
-        {
-          "id": "S0232L02",
           "type": "M",
-          "target": "a una mujer vieja",
-          "known": "an old woman",
+          "target": "conozco a una mujer vieja",
+          "known": "I know an old woman",
           "new": true,
           "components": [
-            ["a", "to"],
-            ["una", "a"],
+            ["conozco", "I know"],
+            ["a", "to/a"],
+            ["una", "an/a"],
             ["mujer", "woman"],
             ["vieja", "old"]
           ]
         },
         {
-          "id": "S0232L03",
+          "id": "S0232L02",
           "type": "A",
           "target": "que",
           "known": "who",
           "new": true
         },
         {
-          "id": "S0232L04",
+          "id": "S0232L03",
           "type": "M",
           "target": "puede recordar",
           "known": "can remember",
@@ -109,7 +86,7 @@
           ]
         },
         {
-          "id": "S0232L05",
+          "id": "S0232L04",
           "type": "M",
           "target": "la respuesta",
           "known": "the answer",
@@ -127,50 +104,37 @@
         "I know a young woman who knows your sister.",
         "Conozco a una mujer joven que conoce a tu hermana."
       ],
-      "extraction_notes": "Forward sweep: 'I know' → 'conozco' (A-type). 'a young woman' → 'a una mujer joven' (M-type, personal a + noun phrase). 'who' → 'que' (A-type). 'knows' → 'conoce' (A-type, third person singular). 'your sister' → 'a tu hermana' (M-type, includes personal a + possessive + noun). Tiling verified.",
       "legos": [
         {
           "id": "S0233L01",
-          "type": "A",
-          "target": "conozco",
-          "known": "I know",
-          "new": true
-        },
-        {
-          "id": "S0233L02",
           "type": "M",
-          "target": "a una mujer joven",
-          "known": "a young woman",
+          "target": "conozco a una mujer joven",
+          "known": "I know a young woman",
           "new": true,
           "components": [
-            ["a", "to"],
+            ["conozco", "I know"],
+            ["a", "to/a"],
             ["una", "a"],
             ["mujer", "woman"],
             ["joven", "young"]
           ]
         },
         {
-          "id": "S0233L03",
+          "id": "S0233L02",
           "type": "A",
           "target": "que",
           "known": "who",
           "new": true
         },
         {
-          "id": "S0233L04",
-          "type": "A",
-          "target": "conoce",
-          "known": "knows",
-          "new": true
-        },
-        {
-          "id": "S0233L05",
+          "id": "S0233L03",
           "type": "M",
-          "target": "a tu hermana",
-          "known": "your sister",
+          "target": "conoce a tu hermana",
+          "known": "knows your sister",
           "new": true,
           "components": [
-            ["a", "to"],
+            ["conoce", "knows"],
+            ["a", "to/a"],
             ["tu", "your"],
             ["hermana", "sister"]
           ]
@@ -183,61 +147,42 @@
         "I met someone last night who works with your brother.",
         "Conocí a alguien anoche que trabaja con tu hermano."
       ],
-      "extraction_notes": "Forward sweep: 'I met' → 'conocí' (A-type, preterite I met/knew). 'someone' → 'a alguien' (M-type, includes personal a). 'last night' → 'anoche' (A-type). 'who' → 'que' (A-type). 'works' → 'trabaja' (A-type). 'with' → 'con' (A-type). 'your brother' → 'tu hermano' (M-type, possessive + noun). Tiling verified.",
       "legos": [
         {
           "id": "S0234L01",
-          "type": "A",
-          "target": "conocí",
-          "known": "I met",
-          "new": true
-        },
-        {
-          "id": "S0234L02",
           "type": "M",
-          "target": "a alguien",
-          "known": "someone",
+          "target": "conocí a alguien",
+          "known": "I met someone",
           "new": true,
           "components": [
-            ["a", "to"],
+            ["conocí", "I met"],
+            ["a", "to/a"],
             ["alguien", "someone"]
           ]
         },
         {
-          "id": "S0234L03",
+          "id": "S0234L02",
           "type": "A",
           "target": "anoche",
           "known": "last night",
           "new": true
         },
         {
-          "id": "S0234L04",
+          "id": "S0234L03",
           "type": "A",
           "target": "que",
           "known": "who",
           "new": true
         },
         {
-          "id": "S0234L05",
-          "type": "A",
-          "target": "trabaja",
-          "known": "works",
-          "new": true
-        },
-        {
-          "id": "S0234L06",
-          "type": "A",
-          "target": "con",
-          "known": "with",
-          "new": true
-        },
-        {
-          "id": "S0234L07",
+          "id": "S0234L04",
           "type": "M",
-          "target": "tu hermano",
-          "known": "your brother",
+          "target": "trabaja con tu hermano",
+          "known": "works with your brother",
           "new": true,
           "components": [
+            ["trabaja", "works"],
+            ["con", "with"],
             ["tu", "your"],
             ["hermano", "brother"]
           ]
@@ -250,71 +195,48 @@
         "I met someone who said that he wanted to tell you something.",
         "Conocí a alguien que dijo que quería decirte algo."
       ],
-      "extraction_notes": "Forward sweep: 'I met' → 'conocí' (A-type). 'someone' → 'a alguien' (M-type, with personal a). 'who' → 'que' (A-type). 'said' → 'dijo' (A-type). 'that' → 'que' (A-type). 'he wanted' → 'quería' (A-type). 'to tell you' → 'decirte' (M-type, infinitive + clitic pronoun). 'something' → 'algo' (A-type). Tiling verified.",
       "legos": [
         {
           "id": "S0235L01",
-          "type": "A",
-          "target": "conocí",
-          "known": "I met",
-          "new": true
-        },
-        {
-          "id": "S0235L02",
           "type": "M",
-          "target": "a alguien",
-          "known": "someone",
+          "target": "conocí a alguien",
+          "known": "I met someone",
           "new": true,
           "components": [
-            ["a", "to"],
+            ["conocí", "I met"],
+            ["a", "to/a"],
             ["alguien", "someone"]
           ]
         },
         {
-          "id": "S0235L03",
+          "id": "S0235L02",
           "type": "A",
           "target": "que",
           "known": "who",
           "new": true
         },
         {
-          "id": "S0235L04",
-          "type": "A",
-          "target": "dijo",
-          "known": "said",
-          "new": true
-        },
-        {
-          "id": "S0235L05",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
-        },
-        {
-          "id": "S0235L06",
-          "type": "A",
-          "target": "quería",
-          "known": "wanted",
-          "new": true
-        },
-        {
-          "id": "S0235L07",
+          "id": "S0235L03",
           "type": "M",
-          "target": "decirte",
-          "known": "to tell you",
+          "target": "dijo que",
+          "known": "said that",
           "new": true,
           "components": [
-            ["decir", "to tell"],
-            ["te", "you"]
+            ["dijo", "said"],
+            ["que", "that"]
           ]
         },
         {
-          "id": "S0235L08",
-          "type": "A",
-          "target": "algo",
-          "known": "something",
-          "new": true
+          "id": "S0235L04",
+          "type": "M",
+          "target": "quería decirte algo",
+          "known": "wanted to tell you something",
+          "new": true,
+          "components": [
+            ["quería", "wanted"],
+            ["decirte", "to tell you"],
+            ["algo", "something"]
+          ]
         }
       ]
     },
@@ -324,71 +246,59 @@
         "I know someone who said that she was going to try to help.",
         "Conozco a alguien que dijo que iba a intentar ayudar."
       ],
-      "extraction_notes": "Forward sweep: 'I know' → 'conozco' (A-type). 'someone' → 'a alguien' (M-type). 'who' → 'que' (A-type). 'said' → 'dijo' (A-type). 'that' → 'que' (A-type). 'was going to' → 'iba a' (M-type, imperfect + a for near future). 'to try' → 'intentar' (A-type). 'to help' → 'ayudar' (A-type). Tiling verified.",
       "legos": [
         {
           "id": "S0236L01",
-          "type": "A",
-          "target": "conozco",
-          "known": "I know",
-          "new": true
-        },
-        {
-          "id": "S0236L02",
           "type": "M",
-          "target": "a alguien",
-          "known": "someone",
+          "target": "conozco a alguien",
+          "known": "I know someone",
           "new": true,
           "components": [
-            ["a", "to"],
+            ["conozco", "I know"],
+            ["a", "to/a"],
             ["alguien", "someone"]
           ]
         },
         {
-          "id": "S0236L03",
+          "id": "S0236L02",
           "type": "A",
           "target": "que",
           "known": "who",
           "new": true
         },
         {
-          "id": "S0236L04",
-          "type": "A",
-          "target": "dijo",
-          "known": "said",
-          "new": true
-        },
-        {
-          "id": "S0236L05",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
-        },
-        {
-          "id": "S0236L06",
+          "id": "S0236L03",
           "type": "M",
-          "target": "iba a",
-          "known": "was going to",
+          "target": "dijo que",
+          "known": "said that",
           "new": true,
           "components": [
-            ["iba", "was going"],
-            ["a", "to"]
+            ["dijo", "said"],
+            ["que", "that"]
           ]
         },
         {
-          "id": "S0236L07",
-          "type": "A",
-          "target": "intentar",
-          "known": "to try",
-          "new": true
+          "id": "S0236L04",
+          "type": "M",
+          "target": "iba a intentar",
+          "known": "was going to try",
+          "new": true,
+          "components": [
+            ["iba", "was going"],
+            ["a", "to"],
+            ["intentar", "to try"]
+          ]
         },
         {
-          "id": "S0236L08",
-          "type": "A",
-          "target": "ayudar",
-          "known": "to help",
-          "new": true
+          "id": "S0236L05",
+          "type": "M",
+          "target": "intentar ayudar",
+          "known": "to try to help",
+          "new": true,
+          "components": [
+            ["intentar", "to try"],
+            ["ayudar", "to help"]
+          ]
         }
       ]
     },
@@ -398,39 +308,42 @@
         "He wanted me to tell you before the weekend.",
         "Quería que te dijera antes del fin de semana."
       ],
-      "extraction_notes": "Forward sweep: 'wanted' → 'quería' (A-type, he wanted). 'me to tell you' → This triggers subjunctive in Spanish. 'que te dijera' is a unit (trigger + subjunctive). So 'quería que' (wanted that) + 'te dijera' (you I-tell-subjunctive). Actually, 'wanted me to' → 'quería que' + subjunctive. Let me reconsider: 'quería que te dijera' = 'wanted me to tell you'. The 'que' + subjunctive structure must stay together. So: 'quería que' (wanted that-subjunctive-trigger) + 'te dijera' (you I-told-subj). Actually, better: 'quería que te dijera' as full M-type because the subjunctive requires the 'que' context. 'before' → 'antes de' (M-type). 'the weekend' → 'el fin de semana' (M-type). Tiling verified.",
       "legos": [
         {
           "id": "S0237L01",
           "type": "M",
           "target": "quería que te dijera",
-          "known": "wanted me to tell you",
+          "known": "he wanted me to tell you",
           "new": true,
           "components": [
             ["quería", "wanted"],
             ["que", "that"],
             ["te", "you"],
-            ["dijera", "I tell"]
+            ["dijera", "to tell"]
           ]
         },
         {
           "id": "S0237L02",
           "type": "M",
-          "target": "antes del",
-          "known": "before the",
+          "target": "antes del fin de semana",
+          "known": "before the weekend",
           "new": true,
           "components": [
             ["antes", "before"],
-            ["del", "of the"]
+            ["del", "of the"],
+            ["fin", "end"],
+            ["de", "of"],
+            ["semana", "week"]
           ]
         },
         {
           "id": "S0237L03",
           "type": "M",
-          "target": "fin de semana",
-          "known": "weekend",
+          "target": "el fin de semana",
+          "known": "the weekend",
           "new": true,
           "components": [
+            ["el", "the"],
             ["fin", "end"],
             ["de", "of"],
             ["semana", "week"]
@@ -444,19 +357,18 @@
         "He wanted you to tell me yesterday.",
         "Quería que me dijeras ayer."
       ],
-      "extraction_notes": "Forward sweep: 'wanted you to tell me' → 'quería que me dijeras' (M-type, wanted + subjunctive trigger + clitic + subjunctive verb). This is a subjunctive construction that must be kept together for FD compliance. 'yesterday' → 'ayer' (A-type). Tiling verified.",
       "legos": [
         {
           "id": "S0238L01",
           "type": "M",
           "target": "quería que me dijeras",
-          "known": "wanted you to tell me",
+          "known": "he wanted you to tell me",
           "new": true,
           "components": [
             ["quería", "wanted"],
             ["que", "that"],
             ["me", "me"],
-            ["dijeras", "you tell"]
+            ["dijeras", "to tell"]
           ]
         },
         {
@@ -474,7 +386,6 @@
         "My mother likes to read.",
         "A mi madre le gusta leer."
       ],
-      "extraction_notes": "This uses the 'gustar' construction which is inverted in Spanish. 'My mother likes' → 'a mi madre le gusta' (M-type, the complete gustar construction with indirect object). FD test: 'my mother likes' needs full Spanish construction including 'a...le gusta' pattern. 'to read' → 'leer' (A-type). Tiling verified.",
       "legos": [
         {
           "id": "S0239L01",
@@ -487,7 +398,7 @@
             ["mi", "my"],
             ["madre", "mother"],
             ["le", "to her"],
-            ["gusta", "pleases"]
+            ["gusta", "likes/pleases"]
           ]
         },
         {
@@ -505,7 +416,6 @@
         "My father doesn't like to stop talking.",
         "A mi padre no le gusta dejar de hablar."
       ],
-      "extraction_notes": "Forward sweep: 'my father doesn't like' → 'a mi padre no le gusta' (M-type, negative gustar construction). 'to stop' → 'dejar de' (M-type, 'dejar de' means 'to stop doing something'). 'talking' → 'hablar' (A-type, infinitive in Spanish for English gerund). Tiling verified.",
       "legos": [
         {
           "id": "S0240L01",
@@ -517,28 +427,22 @@
             ["a", "to"],
             ["mi", "my"],
             ["padre", "father"],
-            ["no", "not"],
+            ["no", "not/doesn't"],
             ["le", "to him"],
-            ["gusta", "pleases"]
+            ["gusta", "likes/pleases"]
           ]
         },
         {
           "id": "S0240L02",
           "type": "M",
-          "target": "dejar de",
-          "known": "to stop",
+          "target": "dejar de hablar",
+          "known": "to stop talking",
           "new": true,
           "components": [
-            ["dejar", "to leave"],
-            ["de", "of"]
+            ["dejar", "to stop/leave"],
+            ["de", "of"],
+            ["hablar", "to talk/speak"]
           ]
-        },
-        {
-          "id": "S0240L03",
-          "type": "A",
-          "target": "hablar",
-          "known": "talking",
-          "new": true
         }
       ]
     }
