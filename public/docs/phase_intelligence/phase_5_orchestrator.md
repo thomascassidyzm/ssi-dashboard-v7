@@ -1,7 +1,8 @@
 # Phase 5: Practice Basket Generation Orchestration
 
-**Version**: v6.0 - Sliding Window Pipeline (2025-11-11)
+**Version**: v6.1 - Hierarchical Format Support (2025-11-13)
 **Purpose**: Generate natural, vocabulary-compliant practice phrases for each LEGO
+**Phase 3 Compatibility**: v7.0 hierarchical format (seed_pair → legos)
 
 ---
 
@@ -28,17 +29,23 @@ Phase 5 generates practice phrase baskets using a **sliding window approach** wi
 **Script**: `generate_scaffolds_v3.cjs`
 **Location**: `vfs/courses/{course}/generate_scaffolds_v3.cjs`
 
-**Key Logic**:
+**Key Logic** (Phase 3 v7.0 hierarchical format):
 ```javascript
-// Build recent_seed_pairs from last 10 seeds
-const recentSeedPairs = {};
-const startIdx = Math.max(0, seedIdx - 10);
-for (let i = startIdx; i < seedIdx; i++) {
-  const prevSeed = legoPairs.seeds[i];
-  recentSeedPairs[prevSeed.seed_id] = [
-    prevSeed.seed_pair[0],  // Target (Spanish)
-    prevSeed.seed_pair[1]   // Known (English)
-  ];
+// Read hierarchical lego_pairs.json
+const legoPairs = JSON.parse(fs.readFileSync('lego_pairs.json', 'utf8'));
+
+// Process each seed
+legoPairs.seeds.forEach((seedData, seedIdx) => {
+  // Build recent_seed_pairs from last 10 seeds (sliding window)
+  const recentSeedPairs = {};
+  const startIdx = Math.max(0, seedIdx - 10);
+  for (let i = startIdx; i < seedIdx; i++) {
+    const prevSeed = legoPairs.seeds[i];
+    recentSeedPairs[prevSeed.seed_id] = [
+      prevSeed.seed_pair[1],  // Target (Spanish)
+      prevSeed.seed_pair[0]   // Known (English)
+    ];
+  }
 }
 
 // Track LEGOs accumulated within current seed
@@ -64,7 +71,8 @@ node generate_scaffolds_v3.cjs
 ```
 
 **Output**: `phase5_scaffolds/seed_sXXXX.json` for each seed
-**Expected time**: ~1 minute for 134 seeds
+**Expected time**: ~1 minute for 668 seeds (full course)
+**Phase 3 v7.0 support**: ✅ Reads hierarchical lego_pairs.json format
 
 ---
 
