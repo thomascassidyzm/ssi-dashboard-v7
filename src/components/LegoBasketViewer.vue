@@ -691,16 +691,8 @@ export default {
     getLegoBaskets(basket) {
       if (!basket) return {}
 
-      // Debug logging
-      console.log('[LegoBasketViewer] getLegoBaskets called with:', {
-        hasLegosProperty: !!basket.legos,
-        basketKeys: Object.keys(basket).slice(0, 10),
-        firstKey: Object.keys(basket)[0]
-      })
-
       // v6.2+ format: LEGOs nested under 'legos' property
       if (basket.legos && typeof basket.legos === 'object') {
-        console.log('[LegoBasketViewer] Using v6.2+ format, legos count:', Object.keys(basket.legos).length)
         return basket.legos
       }
 
@@ -711,7 +703,6 @@ export default {
           baskets[key] = basket[key]
         }
       }
-      console.log('[LegoBasketViewer] Using legacy format, legos count:', Object.keys(baskets).length)
       return baskets
     },
     getLegoCount(basket) {
