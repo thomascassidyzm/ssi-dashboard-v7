@@ -1,69 +1,110 @@
 {
   "agent_id": "agent_10",
   "seed_range": "S0291-S0300",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0291",
-      "seed_pair": ["I hope I'll be able to speak better soon.", "Espero poder hablar mejor pronto."],
+      "seed_pair": [
+        "I hope I'll be able to speak better soon.",
+        "Espero poder hablar mejor pronto."
+      ],
+      "extraction_notes": "Forward sweep: 'espero' clear, 'poder' needs context (infinitive after espero), 'hablar mejor' useful chunk. Backward sweep confirms. Overlaps: 'espero poder' and 'poder hablar' share 'poder' for recombination power.",
       "legos": [
         {
           "id": "S0291L01",
           "type": "A",
-          "target": "hablar",
-          "known": "to speak",
+          "target": "espero",
+          "known": "I hope",
           "new": true
         },
         {
           "id": "S0291L02",
-          "type": "A",
-          "target": "mejor",
-          "known": "better",
-          "new": true
+          "type": "M",
+          "target": "espero poder",
+          "known": "I hope to be able to",
+          "new": true,
+          "components": [
+            ["espero", "I hope"],
+            ["poder", "to be able to"]
+          ]
         },
         {
           "id": "S0291L03",
-          "type": "A",
-          "target": "pronto",
-          "known": "soon",
-          "new": true
+          "type": "M",
+          "target": "poder hablar",
+          "known": "to be able to speak",
+          "new": true,
+          "components": [
+            ["poder", "to be able to"],
+            ["hablar", "to speak"]
+          ]
         },
         {
           "id": "S0291L04",
           "type": "M",
-          "target": "espero poder",
-          "known": "I hope I'll be able to",
+          "target": "hablar mejor",
+          "known": "speak better",
           "new": true,
-          "components": [["espero", "I hope"], ["poder", "to be able to"]]
+          "components": [
+            ["hablar", "speak/to speak"],
+            ["mejor", "better"]
+          ]
+        },
+        {
+          "id": "S0291L05",
+          "type": "A",
+          "target": "pronto",
+          "known": "soon",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0292",
-      "seed_pair": ["I hope you'll be able to come to the party.", "Espero que puedas venir a la fiesta."],
+      "seed_pair": [
+        "I hope you'll be able to come to the party.",
+        "Espero que puedas venir a la fiesta."
+      ],
+      "extraction_notes": "Backward sweep critical: 'puedas' (subjunctive) needs trigger 'espero que'. Forward sweep: 'venir a la fiesta' complete phrase. Overlaps: 'a la fiesta' and 'la fiesta' show prepositional construction.",
       "legos": [
         {
           "id": "S0292L01",
-          "type": "A",
-          "target": "venir",
-          "known": "to come",
-          "new": true
-        },
-        {
-          "id": "S0292L02",
-          "type": "A",
-          "target": "a",
-          "known": "to",
-          "new": true
-        },
-        {
-          "id": "S0292L03",
           "type": "M",
           "target": "espero que puedas",
           "known": "I hope you'll be able to",
           "new": true,
-          "components": [["espero", "I hope"], ["que", "that"], ["puedas", "you can / you're able to"]]
+          "components": [
+            ["espero", "I hope"],
+            ["que", "that"],
+            ["puedas", "you'll be able to"]
+          ]
+        },
+        {
+          "id": "S0292L02",
+          "type": "M",
+          "target": "venir a la fiesta",
+          "known": "come to the party",
+          "new": true,
+          "components": [
+            ["venir", "to come"],
+            ["a", "to"],
+            ["la", "the"],
+            ["fiesta", "party"]
+          ]
+        },
+        {
+          "id": "S0292L03",
+          "type": "M",
+          "target": "a la fiesta",
+          "known": "to the party",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["la", "the"],
+            ["fiesta", "party"]
+          ]
         },
         {
           "id": "S0292L04",
@@ -71,93 +112,150 @@
           "target": "la fiesta",
           "known": "the party",
           "new": true,
-          "components": [["la", "the"], ["fiesta", "party"]]
+          "components": [
+            ["la", "the"],
+            ["fiesta", "party"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0293",
-      "seed_pair": ["I have to find out where he's going to meet me.", "Tengo que descubrir dónde va a reunirse conmigo."],
+      "seed_pair": [
+        "I have to find out where he's going to meet me.",
+        "Tengo que descubrir dónde va a reunirse conmigo."
+      ],
+      "extraction_notes": "Forward sweep: 'tengo que' obligation, 'va a' future construction. Backward sweep: embedded question 'dónde va a reunirse conmigo' must stay together. Overlaps: 'tengo que descubrir', 'va a reunirse', 'reunirse conmigo' create multiple practice patterns.",
       "legos": [
         {
           "id": "S0293L01",
-          "type": "A",
-          "target": "descubrir",
-          "known": "to find out",
-          "new": true
-        },
-        {
-          "id": "S0293L02",
-          "type": "A",
-          "target": "dónde",
-          "known": "where",
-          "new": true
-        },
-        {
-          "id": "S0293L03",
           "type": "M",
           "target": "tengo que",
           "known": "I have to",
           "new": true,
-          "components": [["tengo", "I have"], ["que", "to / that"]]
+          "components": [
+            ["tengo", "I have"],
+            ["que", "to"]
+          ]
+        },
+        {
+          "id": "S0293L02",
+          "type": "M",
+          "target": "tengo que descubrir",
+          "known": "I have to find out",
+          "new": true,
+          "components": [
+            ["tengo", "I have"],
+            ["que", "to"],
+            ["descubrir", "find out"]
+          ]
+        },
+        {
+          "id": "S0293L03",
+          "type": "M",
+          "target": "dónde va a reunirse conmigo",
+          "known": "where he's going to meet me",
+          "new": true,
+          "components": [
+            ["dónde", "where"],
+            ["va", "he's going"],
+            ["a", "to"],
+            ["reunirse", "meet"],
+            ["conmigo", "me/with me"]
+          ]
         },
         {
           "id": "S0293L04",
           "type": "M",
-          "target": "va a",
-          "known": "he's going to",
+          "target": "va a reunirse",
+          "known": "going to meet",
           "new": true,
-          "components": [["va", "he goes"], ["a", "to"]]
+          "components": [
+            ["va", "going"],
+            ["a", "to"],
+            ["reunirse", "meet"]
+          ]
         },
         {
           "id": "S0293L05",
           "type": "M",
           "target": "reunirse conmigo",
-          "known": "to meet me",
+          "known": "meet me",
           "new": true,
-          "components": [["reunirse", "to meet"], ["conmigo", "with me"]]
+          "components": [
+            ["reunirse", "meet/to meet"],
+            ["conmigo", "me/with me"]
+          ]
+        },
+        {
+          "id": "S0293L06",
+          "type": "A",
+          "target": "conmigo",
+          "known": "with me",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0294",
-      "seed_pair": ["I don't have enough time to call you tonight.", "No tengo suficiente tiempo para llamarte esta noche."],
+      "seed_pair": [
+        "I don't have enough time to call you tonight.",
+        "No tengo suficiente tiempo para llamarte esta noche."
+      ],
+      "extraction_notes": "Forward sweep: 'no tengo' negation, 'suficiente tiempo' quantity phrase, 'para llamarte' infinitive with clitic. Overlaps: 'no tengo suficiente tiempo' complete negation, 'para llamarte' shows infinitive + pronoun pattern.",
       "legos": [
         {
           "id": "S0294L01",
-          "type": "A",
-          "target": "suficiente",
-          "known": "enough",
-          "new": true
-        },
-        {
-          "id": "S0294L02",
-          "type": "A",
-          "target": "tiempo",
-          "known": "time",
-          "new": true
-        },
-        {
-          "id": "S0294L03",
-          "type": "A",
-          "target": "para",
-          "known": "to",
-          "new": true
-        },
-        {
-          "id": "S0294L04",
-          "type": "A",
-          "target": "llamarte",
-          "known": "to call you",
-          "new": true
-        },
-        {
-          "id": "S0294L05",
           "type": "M",
           "target": "no tengo",
           "known": "I don't have",
           "new": true,
-          "components": [["no", "not / don't"], ["tengo", "I have"]]
+          "components": [
+            ["no", "don't"],
+            ["tengo", "have"]
+          ]
+        },
+        {
+          "id": "S0294L02",
+          "type": "M",
+          "target": "suficiente tiempo",
+          "known": "enough time",
+          "new": true,
+          "components": [
+            ["suficiente", "enough"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0294L03",
+          "type": "M",
+          "target": "no tengo suficiente tiempo",
+          "known": "I don't have enough time",
+          "new": true,
+          "components": [
+            ["no", "don't"],
+            ["tengo", "have"],
+            ["suficiente", "enough"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0294L04",
+          "type": "M",
+          "target": "para llamarte",
+          "known": "to call you",
+          "new": true,
+          "components": [
+            ["para", "to"],
+            ["llamarte", "call you"]
+          ]
+        },
+        {
+          "id": "S0294L05",
+          "type": "A",
+          "target": "llamarte",
+          "known": "call you",
+          "new": true
         },
         {
           "id": "S0294L06",
@@ -165,77 +263,128 @@
           "target": "esta noche",
           "known": "tonight",
           "new": true,
-          "components": [["esta", "this"], ["noche", "night"]]
+          "components": [
+            ["esta", "this"],
+            ["noche", "night"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0295",
-      "seed_pair": ["I didn't say that I wanted to finish in a day.", "No dije que quería terminar en un día."],
+      "seed_pair": [
+        "I didn't say that I wanted to finish in a day.",
+        "No dije que quería terminar en un día."
+      ],
+      "extraction_notes": "Forward sweep: 'no dije' past negation, 'que quería terminar' embedded clause with imperfect. Backward sweep confirms clause structure. Overlaps: 'no dije que' and 'que quería terminar' show embedded clause pattern.",
       "legos": [
         {
           "id": "S0295L01",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
+          "type": "M",
+          "target": "no dije",
+          "known": "I didn't say",
+          "new": true,
+          "components": [
+            ["no", "didn't"],
+            ["dije", "say"]
+          ]
         },
         {
           "id": "S0295L02",
-          "type": "A",
-          "target": "quería",
-          "known": "I wanted",
-          "new": true
+          "type": "M",
+          "target": "no dije que",
+          "known": "I didn't say that",
+          "new": true,
+          "components": [
+            ["no", "didn't"],
+            ["dije", "say"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0295L03",
+          "type": "M",
+          "target": "que quería terminar",
+          "known": "that I wanted to finish",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["quería", "I wanted"],
+            ["terminar", "to finish"]
+          ]
+        },
+        {
+          "id": "S0295L04",
+          "type": "M",
+          "target": "quería terminar",
+          "known": "I wanted to finish",
+          "new": true,
+          "components": [
+            ["quería", "I wanted"],
+            ["terminar", "to finish"]
+          ]
+        },
+        {
+          "id": "S0295L05",
           "type": "A",
           "target": "terminar",
           "known": "to finish",
           "new": true
         },
         {
-          "id": "S0295L04",
-          "type": "A",
-          "target": "en",
-          "known": "in",
-          "new": true
-        },
-        {
-          "id": "S0295L05",
-          "type": "M",
-          "target": "no dije",
-          "known": "I didn't say",
-          "new": true,
-          "components": [["no", "not / didn't"], ["dije", "I said"]]
-        },
-        {
           "id": "S0295L06",
+          "type": "M",
+          "target": "en un día",
+          "known": "in a day",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["un", "a"],
+            ["día", "day"]
+          ]
+        },
+        {
+          "id": "S0295L07",
           "type": "M",
           "target": "un día",
           "known": "a day",
           "new": true,
-          "components": [["un", "a"], ["día", "day"]]
+          "components": [
+            ["un", "a"],
+            ["día", "day"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0296",
-      "seed_pair": ["I said that I needed a little more time.", "Dije que necesitaba un poco más de tiempo."],
+      "seed_pair": [
+        "I said that I needed a little more time.",
+        "Dije que necesitaba un poco más de tiempo."
+      ],
+      "extraction_notes": "Forward sweep: 'dije que' introduces embedded clause, 'un poco más' quantity expression, 'de tiempo' partitive. Backward sweep: 'un poco más de tiempo' complete quantity phrase. Overlaps: 'un poco más' and full phrase show incremental construction.",
       "legos": [
         {
           "id": "S0296L01",
-          "type": "A",
-          "target": "dije",
-          "known": "I said",
-          "new": true
+          "type": "M",
+          "target": "dije que",
+          "known": "I said that",
+          "new": true,
+          "components": [
+            ["dije", "I said"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0296L02",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
+          "type": "M",
+          "target": "que necesitaba",
+          "known": "that I needed",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["necesitaba", "I needed"]
+          ]
         },
         {
           "id": "S0296L03",
@@ -246,61 +395,115 @@
         },
         {
           "id": "S0296L04",
-          "type": "A",
-          "target": "tiempo",
-          "known": "time",
-          "new": true
+          "type": "M",
+          "target": "un poco más",
+          "known": "a little more",
+          "new": true,
+          "components": [
+            ["un poco", "a little"],
+            ["más", "more"]
+          ]
         },
         {
           "id": "S0296L05",
           "type": "M",
-          "target": "un poco más de",
-          "known": "a little more",
+          "target": "un poco más de tiempo",
+          "known": "a little more time",
           "new": true,
-          "components": [["un", "a"], ["poco", "little"], ["más", "more"], ["de", "of"]]
+          "components": [
+            ["un poco", "a little"],
+            ["más", "more"],
+            ["de", "of"],
+            ["tiempo", "time"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0297",
-      "seed_pair": ["I don't know many people who speak Spanish.", "No conozco a muchas personas que hablan español."],
+      "seed_pair": [
+        "I don't know many people who speak Spanish.",
+        "No conozco a muchas personas que hablan español."
+      ],
+      "extraction_notes": "Forward sweep: 'no conozco' negation, personal 'a' required before 'muchas personas'. Backward sweep: 'que hablan español' relative clause. Overlaps: 'conozco a muchas personas', 'muchas personas que hablan español', 'que hablan español', 'hablan español' create rich recombination.",
       "legos": [
         {
           "id": "S0297L01",
-          "type": "A",
-          "target": "español",
-          "known": "Spanish",
-          "new": true
+          "type": "M",
+          "target": "no conozco",
+          "known": "I don't know",
+          "new": true,
+          "components": [
+            ["no", "don't"],
+            ["conozco", "know"]
+          ]
         },
         {
           "id": "S0297L02",
           "type": "M",
-          "target": "no conozco a",
-          "known": "I don't know",
+          "target": "conozco a muchas personas",
+          "known": "I know many people",
           "new": true,
-          "components": [["no", "not / don't"], ["conozco", "I know"], ["a", "(personal a)"]]
+          "components": [
+            ["conozco", "know"],
+            ["a", "(personal a)"],
+            ["muchas", "many"],
+            ["personas", "people"]
+          ]
         },
         {
           "id": "S0297L03",
           "type": "M",
-          "target": "muchas personas",
-          "known": "many people",
+          "target": "muchas personas que hablan español",
+          "known": "many people who speak Spanish",
           "new": true,
-          "components": [["muchas", "many"], ["personas", "people"]]
+          "components": [
+            ["muchas", "many"],
+            ["personas", "people"],
+            ["que", "who"],
+            ["hablan", "speak"],
+            ["español", "Spanish"]
+          ]
         },
         {
           "id": "S0297L04",
           "type": "M",
-          "target": "que hablan",
-          "known": "who speak",
+          "target": "que hablan español",
+          "known": "who speak Spanish",
           "new": true,
-          "components": [["que", "who"], ["hablan", "speak / they speak"]]
+          "components": [
+            ["que", "who"],
+            ["hablan", "speak"],
+            ["español", "Spanish"]
+          ]
+        },
+        {
+          "id": "S0297L05",
+          "type": "M",
+          "target": "hablan español",
+          "known": "speak Spanish",
+          "new": true,
+          "components": [
+            ["hablan", "speak"],
+            ["español", "Spanish"]
+          ]
+        },
+        {
+          "id": "S0297L06",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0298",
-      "seed_pair": ["I've got nothing left to say.", "No me queda nada que decir."],
+      "seed_pair": [
+        "I've got nothing left to say.",
+        "No me queda nada que decir."
+      ],
+      "extraction_notes": "Forward sweep: 'no me queda nada' idiomatic (literally 'nothing remains to me'), 'nada que decir' infinitive construction. Backward sweep confirms. Overlaps: 'me queda' and full phrase show 'quedar' construction; 'nada que decir' and 'que decir' show infinitive pattern.",
       "legos": [
         {
           "id": "S0298L01",
@@ -308,72 +511,171 @@
           "target": "no me queda nada",
           "known": "I've got nothing left",
           "new": true,
-          "components": [["no", "not"], ["me", "to me"], ["queda", "remains / have left"], ["nada", "nothing"]]
+          "components": [
+            ["no", "(negative)"],
+            ["me", "me/I"],
+            ["queda", "have left/remains"],
+            ["nada", "nothing"]
+          ]
         },
         {
           "id": "S0298L02",
           "type": "M",
+          "target": "me queda",
+          "known": "I have left",
+          "new": true,
+          "components": [
+            ["me", "me/I"],
+            ["queda", "have left/remains"]
+          ]
+        },
+        {
+          "id": "S0298L03",
+          "type": "M",
+          "target": "nada que decir",
+          "known": "nothing to say",
+          "new": true,
+          "components": [
+            ["nada", "nothing"],
+            ["que", "to"],
+            ["decir", "say"]
+          ]
+        },
+        {
+          "id": "S0298L04",
+          "type": "M",
           "target": "que decir",
           "known": "to say",
           "new": true,
-          "components": [["que", "to"], ["decir", "say / to say"]]
+          "components": [
+            ["que", "to"],
+            ["decir", "say"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0299",
-      "seed_pair": ["He wants to pay half.", "Él quiere pagar la mitad."],
+      "seed_pair": [
+        "He wants to pay half.",
+        "Él quiere pagar la mitad."
+      ],
+      "extraction_notes": "Forward sweep: 'él quiere' includes subject pronoun to remove ambiguity (quiere alone could be he/she/you-formal), 'pagar la mitad' complete phrase. Overlaps: 'quiere pagar' and 'pagar la mitad' show verb + infinitive pattern.",
       "legos": [
         {
           "id": "S0299L01",
-          "type": "A",
-          "target": "pagar",
-          "known": "to pay",
-          "new": true
-        },
-        {
-          "id": "S0299L02",
           "type": "M",
           "target": "él quiere",
           "known": "he wants",
           "new": true,
-          "components": [["él", "he"], ["quiere", "wants"]]
+          "components": [
+            ["él", "he"],
+            ["quiere", "wants"]
+          ]
+        },
+        {
+          "id": "S0299L02",
+          "type": "M",
+          "target": "quiere pagar",
+          "known": "wants to pay",
+          "new": true,
+          "components": [
+            ["quiere", "wants"],
+            ["pagar", "to pay"]
+          ]
         },
         {
           "id": "S0299L03",
           "type": "M",
+          "target": "pagar la mitad",
+          "known": "pay half",
+          "new": true,
+          "components": [
+            ["pagar", "pay/to pay"],
+            ["la", "the"],
+            ["mitad", "half"]
+          ]
+        },
+        {
+          "id": "S0299L04",
+          "type": "M",
           "target": "la mitad",
           "known": "half",
           "new": true,
-          "components": [["la", "the"], ["mitad", "half"]]
+          "components": [
+            ["la", "the"],
+            ["mitad", "half"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0300",
-      "seed_pair": ["She doesn't want to seem unfriendly.", "Ella no quiere parecer antipática."],
+      "seed_pair": [
+        "She doesn't want to seem unfriendly.",
+        "Ella no quiere parecer antipática."
+      ],
+      "extraction_notes": "Forward sweep: 'ella no quiere' subject + negation removes ambiguity, 'parecer antipática' copular construction with adjective agreement. Overlaps: 'no quiere parecer' and 'quiere parecer' show negation pattern; 'parecer antipática' shows adjective agreement.",
       "legos": [
         {
           "id": "S0300L01",
+          "type": "M",
+          "target": "ella no quiere",
+          "known": "she doesn't want",
+          "new": true,
+          "components": [
+            ["ella", "she"],
+            ["no", "doesn't"],
+            ["quiere", "want"]
+          ]
+        },
+        {
+          "id": "S0300L02",
+          "type": "M",
+          "target": "no quiere parecer",
+          "known": "doesn't want to seem",
+          "new": true,
+          "components": [
+            ["no", "doesn't"],
+            ["quiere", "want"],
+            ["parecer", "to seem"]
+          ]
+        },
+        {
+          "id": "S0300L03",
+          "type": "M",
+          "target": "quiere parecer",
+          "known": "wants to seem",
+          "new": true,
+          "components": [
+            ["quiere", "wants"],
+            ["parecer", "to seem"]
+          ]
+        },
+        {
+          "id": "S0300L04",
+          "type": "M",
+          "target": "parecer antipática",
+          "known": "seem unfriendly",
+          "new": true,
+          "components": [
+            ["parecer", "seem/to seem"],
+            ["antipática", "unfriendly"]
+          ]
+        },
+        {
+          "id": "S0300L05",
           "type": "A",
           "target": "parecer",
           "known": "to seem",
           "new": true
         },
         {
-          "id": "S0300L02",
+          "id": "S0300L06",
           "type": "A",
           "target": "antipática",
           "known": "unfriendly",
           "new": true
-        },
-        {
-          "id": "S0300L03",
-          "type": "M",
-          "target": "ella no quiere",
-          "known": "she doesn't want",
-          "new": true,
-          "components": [["ella", "she"], ["no", "not / doesn't"], ["quiere", "wants / want"]]
         }
       ]
     }
