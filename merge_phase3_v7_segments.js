@@ -2,6 +2,7 @@
 /**
  * Phase 3 v7.0 Segment Merger
  * Merges all agent_XX_output.json files from segments into compact lego_pairs.json
+ * Matches agent output format with compact component arrays
  */
 
 import fs from 'fs';
@@ -100,9 +101,48 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf8');
+// Use manual formatting to match agent output exactly
+let jsonOutput = '{\n';
+jsonOutput += '  "version": "8.1.1",\n';
+jsonOutput += '  "phase": "3",\n';
+jsonOutput += '  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",\n';
+jsonOutput += `  "generated_at": "${output.generated_at}",\n`;
+jsonOutput += '  "course": "spa_for_eng",\n';
+jsonOutput += `  "total_legos": ${output.total_legos},\n`;
+jsonOutput += '  "legos": [\n';
+
+allLegos.forEach((lego, index) => {
+  jsonOutput += '    {\n';
+  jsonOutput += `      "id": "${lego.id}",\n`;
+  jsonOutput += `      "type": "${lego.type}",\n`;
+  jsonOutput += `      "target": "${lego.target}",\n`;
+  jsonOutput += `      "known": "${lego.known}",\n`;
+  jsonOutput += `      "new": ${lego.new}`;
+
+  if (lego.components) {
+    jsonOutput += ',\n      "components": [\n';
+    lego.components.forEach((comp, compIndex) => {
+      jsonOutput += `        ${JSON.stringify(comp)}`;
+      if (compIndex < lego.components.length - 1) jsonOutput += ',';
+      jsonOutput += '\n';
+    });
+    jsonOutput += '      ]\n';
+  } else {
+    jsonOutput += '\n';
+  }
+
+  jsonOutput += '    }';
+  if (index < allLegos.length - 1) jsonOutput += ',';
+  jsonOutput += '\n';
+});
+
+jsonOutput += '  ]\n';
+jsonOutput += '}\n';
+
+fs.writeFileSync(outputPath, jsonOutput, 'utf8');
 
 console.log(`\n✅ Success!`);
 console.log(`   Written to: ${outputPath}`);
 console.log(`   File size: ${(fs.statSync(outputPath).size / 1024).toFixed(1)} KB`);
+console.log(`   Format: Compact components (matches agent output format)`);
 console.log(`   Location: public/vfs/courses/spa_for_eng/lego_pairs.json (alongside seed_pairs.json)\n`);
