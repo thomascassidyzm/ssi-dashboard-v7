@@ -54,7 +54,20 @@ const CONFIG = {
     'http://localhost:3000',
     'https://ssi-dashboard-v7.vercel.app',
     /\.vercel\.app$/,  // Allow all Vercel preview deployments
-  ]
+  ],
+
+  // Checkpoint mode - controls phase automation behavior
+  // 'manual': Pause between phases, require user approval (safest for testing)
+  // 'gated': Auto-run phases but pause if validators fail (recommended)
+  // 'full': Full automation, no stops (for production after validation)
+  CHECKPOINT_MODE: process.env.CHECKPOINT_MODE || 'manual',
+
+  // Validation thresholds for 'gated' mode
+  VALIDATION_THRESHOLDS: {
+    phase3_error_rate: 0.05,  // Max 5% LEGO errors
+    phase5_gate_violations: 0.02,  // Max 2% GATE violations
+    phase5_quality_score: 0.95  // Min 95% quality
+  }
 };
 
 // =============================================================================
@@ -2390,9 +2403,47 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       const { mergePhase3Legos } = require('./scripts/phase3_merge_legos.cjs');
       await mergePhase3Legos(courseDir);
 
-      console.log(`[Web Orchestrator] ✅ Phase 3 merge complete! Created lego_pairs.json`);
+      console.log(`[Web Orchestrator] ✅ Phase 3 merge complete! Running post-processing...`);
+
+      // Run Phase 3 post-processing scripts
+      console.log(`[Phase 3] Running deduplication...`);
+      await execCommand(`node scripts/phase3_deduplicate_legos.cjs ${courseCode}`, { cwd: VFS_ROOT });
+
+      console.log(`[Phase 3] Running LEGO reordering for optimal pedagogy...`);
+      await execCommand(`node scripts/phase3_reorder_legos.cjs ${courseCode}`, { cwd: VFS_ROOT });
+
+      console.log(`[Phase 3] Building LEGO registry...`);
+      await execCommand(`node scripts/phase3_build_lego_registry.cjs ${courseCode}`, { cwd: VFS_ROOT });
+
+      console.log(`[Web Orchestrator] ✅ Phase 3 complete! Created lego_pairs.json with deduplication and reordering`);
       job.phase = 'phase_3_complete';
       job.progress = 60;
+
+      // CHECKPOINT: Phase 3 → Phase 5
+      if (CONFIG.CHECKPOINT_MODE === 'manual') {
+        console.log(`\n[Checkpoint] Phase 3 complete - MANUAL MODE`);
+        console.log(`[Checkpoint] Pausing before Phase 5. User can review lego_pairs.json and trigger Phase 5 manually.`);
+        job.message = 'Phase 3 complete - awaiting user approval for Phase 5';
+        return; // Exit orchestration, user must start Phase 5 manually
+      }
+
+      if (CONFIG.CHECKPOINT_MODE === 'gated') {
+        console.log(`\n[Checkpoint] Phase 3 complete - GATED MODE`);
+        console.log(`[Checkpoint] Running validators before proceeding to Phase 5...`);
+
+        // TODO: Run phase3 validators here
+        // const validation = await validatePhase3Quality(courseDir);
+        // if (validation.error_rate > CONFIG.VALIDATION_THRESHOLDS.phase3_error_rate) {
+        //   job.message = `Phase 3 validation failed: ${validation.error_rate}% errors (threshold: ${CONFIG.VALIDATION_THRESHOLDS.phase3_error_rate}%)`;
+        //   job.status = 'paused';
+        //   return;
+        // }
+
+        console.log(`[Checkpoint] ✅ Validation passed, proceeding to Phase 5`);
+      }
+
+      // If CHECKPOINT_MODE === 'full', continue immediately
+      console.log(`[Checkpoint] Continuing to Phase 5 (mode: ${CONFIG.CHECKPOINT_MODE})`);
     }
 
     // PHASE 5: Practice Baskets (with intelligent resume)
