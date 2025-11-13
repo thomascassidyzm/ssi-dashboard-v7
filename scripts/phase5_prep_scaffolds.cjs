@@ -166,10 +166,14 @@ function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
   };
 }
 
-async function preparePhase5Scaffolds(courseDir) {
+async function preparePhase5Scaffolds(courseDir, baseCourseDir = null) {
   console.log(`[Phase 5 Prep] Starting scaffold generation for: ${courseDir}`);
 
-  const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+  // For quick tests / segment ranges, read from base course directory
+  const sourceDir = baseCourseDir || courseDir;
+  const legoPairsPath = path.join(sourceDir, 'lego_pairs.json');
+
+  console.log(`[Phase 5 Prep] Reading lego_pairs.json from: ${sourceDir}`);
 
   // Check if lego_pairs.json exists
   if (!await fs.pathExists(legoPairsPath)) {

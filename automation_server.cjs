@@ -2261,7 +2261,16 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       // Prep Phase 5 scaffolds (mechanical work)
       console.log(`[Web Orchestrator] Running Phase 5 scaffold prep script...`);
       const { preparePhase5Scaffolds } = require('./scripts/phase5_prep_scaffolds.cjs');
-      await preparePhase5Scaffolds(courseDir);
+
+      // For segment ranges (quick tests), read lego_pairs.json from base course
+      let baseCourseDir = null;
+      if (startSeed !== 1 || endSeed !== 668) {
+        const baseCourseCode = `${target}_for_${known}`;
+        baseCourseDir = path.join(CONFIG.VFS_ROOT, baseCourseCode);
+        console.log(`[Web Orchestrator] Segment mode detected - will read lego_pairs.json from: ${baseCourseDir}`);
+      }
+
+      await preparePhase5Scaffolds(courseDir, baseCourseDir);
       console.log(`[Web Orchestrator] ✅ Phase 5 scaffolds ready`);
 
       const phase5MasterPrompt = generatePhase5MasterPrompt(courseCode, { target, known, startSeed, endSeed }, courseDir);
