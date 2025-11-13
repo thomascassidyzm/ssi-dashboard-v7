@@ -1,0 +1,302 @@
+{
+  "agent_id": "agent_07",
+  "seed_range": "S0661-S0668",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0661",
+      "seed_pair": ["you're all doing something", "todos ustedes están haciendo algo"],
+      "extraction_notes": "Forward sweep: 'you all' → 'todos ustedes' (clear group reference). 'are doing' → 'están haciendo' (progressive pattern). Backward sweep: 'haciendo algo' is useful doing+something pattern. Overlaps created for pedagogical value.",
+      "legos": [
+        {
+          "id": "S0661L01",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all",
+          "new": true,
+          "components": [["todos", "all"], ["ustedes", "you"]]
+        },
+        {
+          "id": "S0661L02",
+          "type": "M",
+          "target": "están haciendo",
+          "known": "are doing",
+          "new": true,
+          "components": [["están", "are"], ["haciendo", "doing"]]
+        },
+        {
+          "id": "S0661L03",
+          "type": "M",
+          "target": "haciendo algo",
+          "known": "doing something",
+          "new": true,
+          "components": [["haciendo", "doing"], ["algo", "something"]]
+        },
+        {
+          "id": "S0661L04",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0662",
+      "seed_pair": ["you all speak it", "todos ustedes lo hablan"],
+      "extraction_notes": "Forward sweep: 'you all' → 'todos ustedes'. 'it' alone → 'lo' fails Heuristic 1 (standalone pronoun). 'speak it' → 'lo hablan' shows pronoun placement before verb.",
+      "legos": [
+        {
+          "id": "S0662L01",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all",
+          "new": true,
+          "components": [["todos", "all"], ["ustedes", "you"]]
+        },
+        {
+          "id": "S0662L02",
+          "type": "M",
+          "target": "lo hablan",
+          "known": "speak it",
+          "new": true,
+          "components": [["lo", "it"], ["hablan", "speak"]]
+        },
+        {
+          "id": "S0662L03",
+          "type": "A",
+          "target": "hablan",
+          "known": "speak",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0663",
+      "seed_pair": ["what you all said", "lo que todos ustedes dijeron"],
+      "extraction_notes": "Forward sweep: 'what' as relative pronoun = 'lo que' (not standalone 'qué'). 'you all' → 'todos ustedes'. Backward sweep: 'dijeron' is preterite form. Created overlap 'todos ustedes dijeron' for pattern teaching.",
+      "legos": [
+        {
+          "id": "S0663L01",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [["lo", "the/it"], ["que", "that/what"]]
+        },
+        {
+          "id": "S0663L02",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all",
+          "new": true,
+          "components": [["todos", "all"], ["ustedes", "you"]]
+        },
+        {
+          "id": "S0663L03",
+          "type": "A",
+          "target": "dijeron",
+          "known": "said",
+          "new": true
+        },
+        {
+          "id": "S0663L04",
+          "type": "M",
+          "target": "todos ustedes dijeron",
+          "known": "you all said",
+          "new": true,
+          "components": [["todos", "all"], ["ustedes", "you"], ["dijeron", "said"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0664",
+      "seed_pair": ["Are you all ready?", "¿Están todos ustedes preparados?"],
+      "extraction_notes": "Forward sweep: Question word order 'están todos ustedes'. 'ready' → 'preparados' alone fails Heuristic 1 (gender/number uncertain), needs context. 'are ready' → 'están preparados' passes FD.",
+      "legos": [
+        {
+          "id": "S0664L01",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all",
+          "new": true,
+          "components": [["todos", "all"], ["ustedes", "you"]]
+        },
+        {
+          "id": "S0664L02",
+          "type": "M",
+          "target": "están preparados",
+          "known": "are ready",
+          "new": true,
+          "components": [["están", "are"], ["preparados", "ready"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0665",
+      "seed_pair": ["Do you all want to go?", "¿Quieren todos ustedes ir?"],
+      "extraction_notes": "Forward sweep: 'want to go' → 'quieren ir' (verb + infinitive pattern). 'to go' → 'ir' is common infinitive. Question word order: 'quieren todos ustedes'.",
+      "legos": [
+        {
+          "id": "S0665L01",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all",
+          "new": true,
+          "components": [["todos", "all"], ["ustedes", "you"]]
+        },
+        {
+          "id": "S0665L02",
+          "type": "M",
+          "target": "quieren ir",
+          "known": "want to go",
+          "new": true,
+          "components": [["quieren", "want"], ["ir", "to go"]]
+        },
+        {
+          "id": "S0665L03",
+          "type": "A",
+          "target": "ir",
+          "known": "to go",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0666",
+      "seed_pair": ["What do you all think?", "¿Qué piensan todos ustedes?"],
+      "extraction_notes": "Forward sweep: 'what' as question word = 'qué'. 'think' → 'piensan' (present tense plural). Created overlap 'qué piensan' for question pattern (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0666L01",
+          "type": "A",
+          "target": "qué",
+          "known": "what",
+          "new": true
+        },
+        {
+          "id": "S0666L02",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all",
+          "new": true,
+          "components": [["todos", "all"], ["ustedes", "you"]]
+        },
+        {
+          "id": "S0666L03",
+          "type": "A",
+          "target": "piensan",
+          "known": "think",
+          "new": true
+        },
+        {
+          "id": "S0666L04",
+          "type": "M",
+          "target": "qué piensan",
+          "known": "what do you think",
+          "new": true,
+          "components": [["qué", "what"], ["piensan", "think"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0667",
+      "seed_pair": ["Do you all mind?", "¿Les importa a todos ustedes?"],
+      "extraction_notes": "Complex indirect object construction: 'les' (to you all) + 'importa' (matters). 'a todos ustedes' clarifies the indirect object. Both sweeps confirm 'les importa' and 'a todos ustedes' as distinct patterns.",
+      "legos": [
+        {
+          "id": "S0667L01",
+          "type": "M",
+          "target": "les importa",
+          "known": "do you mind",
+          "new": true,
+          "components": [["les", "to you"], ["importa", "matters/mind"]]
+        },
+        {
+          "id": "S0667L02",
+          "type": "M",
+          "target": "a todos ustedes",
+          "known": "to you all",
+          "new": true,
+          "components": [["a", "to"], ["todos", "all"], ["ustedes", "you"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0668",
+      "seed_pair": ["I hope you'll all be able to go", "Espero que todos ustedes puedan ir"],
+      "extraction_notes": "CRITICAL: 'espero que' triggers subjunctive! Backward sweep catches 'puedan' (subjunctive) vs 'pueden' (indicative). 'puedan ir' = 'can/be able to go'. Multiple overlaps for subjunctive pattern teaching (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0668L01",
+          "type": "A",
+          "target": "espero",
+          "known": "I hope",
+          "new": true
+        },
+        {
+          "id": "S0668L02",
+          "type": "M",
+          "target": "espero que",
+          "known": "I hope that",
+          "new": true,
+          "components": [["espero", "I hope"], ["que", "that"]]
+        },
+        {
+          "id": "S0668L03",
+          "type": "M",
+          "target": "todos ustedes puedan",
+          "known": "you all can",
+          "new": true,
+          "components": [["todos", "all"], ["ustedes", "you"], ["puedan", "can/be able to"]]
+        },
+        {
+          "id": "S0668L04",
+          "type": "M",
+          "target": "puedan ir",
+          "known": "be able to go",
+          "new": true,
+          "components": [["puedan", "can/be able to"], ["ir", "to go"]]
+        },
+        {
+          "id": "S0668L05",
+          "type": "A",
+          "target": "ir",
+          "known": "to go",
+          "new": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_seeds": 8,
+    "total_legos": 30,
+    "a_type_count": 8,
+    "m_type_count": 22,
+    "key_patterns_identified": [
+      "todos ustedes (you all) - appears in 7 of 8 seeds",
+      "subjunctive trigger: espero que (S0668)",
+      "indirect object: les importa (S0667)",
+      "relative pronoun: lo que (S0663)",
+      "progressive: están haciendo (S0661)",
+      "question word order in Spanish"
+    ],
+    "heuristic_1_violations": 0,
+    "heuristic_2_overlaps": [
+      "S0661: haciendo appears in 'están haciendo' and 'haciendo algo'",
+      "S0663: todos ustedes appears standalone and in 'todos ustedes dijeron'",
+      "S0666: qué appears standalone and in 'qué piensan'",
+      "S0668: multiple overlaps for subjunctive pattern (espero que, puedan ir)"
+    ],
+    "improvements_from_v6_3": [
+      "S0662: Changed standalone 'lo' to 'lo hablan' M-type (Heuristic 1 fix)",
+      "S0665: Added 'quieren ir' M-type for verb+infinitive pattern",
+      "S0666: Fixed capitalization 'qué', added 'qué piensan' overlap (Heuristic 2)",
+      "S0668: Changed standalone 'que' to 'espero que' M-type - CRITICAL subjunctive trigger!",
+      "S0668: Added overlapping patterns 'todos ustedes puedan' and 'puedan ir' (Heuristic 2)",
+      "S0661: Added 'haciendo algo' overlap (Heuristic 2)",
+      "S0663: Added 'todos ustedes dijeron' overlap (Heuristic 2)"
+    ]
+  }
+}

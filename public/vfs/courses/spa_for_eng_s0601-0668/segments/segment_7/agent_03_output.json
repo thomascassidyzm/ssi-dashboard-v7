@@ -1,0 +1,487 @@
+{
+  "agent_id": "agent_03",
+  "seed_range": "S0621-S0630",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0621",
+      "seed_pair": [
+        "I wouldn't have dared to tell her that it was broken.",
+        "No me habría atrevido a decirle que estaba roto."
+      ],
+      "legos": [
+        {
+          "id": "S0621L01",
+          "type": "M",
+          "target": "no me habría atrevido",
+          "known": "I wouldn't have dared",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["me", "myself"],
+            ["habría", "would have"],
+            ["atrevido", "dared"]
+          ]
+        },
+        {
+          "id": "S0621L02",
+          "type": "M",
+          "target": "me habría atrevido a",
+          "known": "I would have dared to",
+          "new": true,
+          "components": [
+            ["me", "myself"],
+            ["habría", "would have"],
+            ["atrevido", "dared"],
+            ["a", "to"]
+          ]
+        },
+        {
+          "id": "S0621L03",
+          "type": "M",
+          "target": "a decirle",
+          "known": "to tell her",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["decirle", "tell her"]
+          ]
+        },
+        {
+          "id": "S0621L04",
+          "type": "M",
+          "target": "que estaba roto",
+          "known": "that it was broken",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["estaba", "it was"],
+            ["roto", "broken"]
+          ]
+        },
+        {
+          "id": "S0621L05",
+          "type": "M",
+          "target": "estaba roto",
+          "known": "was broken",
+          "new": true,
+          "components": [
+            ["estaba", "was"],
+            ["roto", "broken"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0622",
+      "seed_pair": [
+        "I knew that the children had broken it.",
+        "Sabía que los niños lo habían roto."
+      ],
+      "legos": [
+        {
+          "id": "S0622L01",
+          "type": "A",
+          "target": "sabía",
+          "known": "I knew",
+          "new": true
+        },
+        {
+          "id": "S0622L02",
+          "type": "M",
+          "target": "sabía que",
+          "known": "I knew that",
+          "new": true,
+          "components": [
+            ["sabía", "I knew"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0622L03",
+          "type": "M",
+          "target": "que los niños",
+          "known": "that the children",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["los", "the"],
+            ["niños", "children"]
+          ]
+        },
+        {
+          "id": "S0622L04",
+          "type": "M",
+          "target": "los niños",
+          "known": "the children",
+          "new": true,
+          "components": [
+            ["los", "the"],
+            ["niños", "children"]
+          ]
+        },
+        {
+          "id": "S0622L05",
+          "type": "M",
+          "target": "lo habían roto",
+          "known": "had broken it",
+          "new": true,
+          "components": [
+            ["lo", "it"],
+            ["habían", "had"],
+            ["roto", "broken"]
+          ]
+        },
+        {
+          "id": "S0622L06",
+          "type": "M",
+          "target": "habían roto",
+          "known": "had broken",
+          "new": true,
+          "components": [
+            ["habían", "had"],
+            ["roto", "broken"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0623",
+      "seed_pair": [
+        "Do you want a cup of coffee or tea?",
+        "¿Quieres un café o un té?"
+      ],
+      "legos": [
+        {
+          "id": "S0623L01",
+          "type": "A",
+          "target": "quieres",
+          "known": "do you want",
+          "new": true
+        },
+        {
+          "id": "S0623L02",
+          "type": "A",
+          "target": "o",
+          "known": "or",
+          "new": true
+        },
+        {
+          "id": "S0623L03",
+          "type": "M",
+          "target": "un café",
+          "known": "a cup of coffee",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["café", "coffee"]
+          ]
+        },
+        {
+          "id": "S0623L04",
+          "type": "M",
+          "target": "un té",
+          "known": "a cup of tea",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["té", "tea"]
+          ]
+        },
+        {
+          "id": "S0623L05",
+          "type": "M",
+          "target": "o un té",
+          "known": "or tea",
+          "new": true,
+          "components": [
+            ["o", "or"],
+            ["un", "a"],
+            ["té", "tea"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0624",
+      "seed_pair": [
+        "Yes, that would be great, please.",
+        "Sí, eso sería genial, por favor."
+      ],
+      "legos": [
+        {
+          "id": "S0624L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0624L02",
+          "type": "A",
+          "target": "genial",
+          "known": "great",
+          "new": true
+        },
+        {
+          "id": "S0624L03",
+          "type": "M",
+          "target": "eso sería",
+          "known": "that would be",
+          "new": true,
+          "components": [
+            ["eso", "that"],
+            ["sería", "would be"]
+          ]
+        },
+        {
+          "id": "S0624L04",
+          "type": "M",
+          "target": "por favor",
+          "known": "please",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["favor", "favor"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0625",
+      "seed_pair": [
+        "Do you want something to drink?",
+        "¿Quieres algo de beber?"
+      ],
+      "legos": [
+        {
+          "id": "S0625L01",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0625L02",
+          "type": "A",
+          "target": "beber",
+          "known": "to drink",
+          "new": true
+        },
+        {
+          "id": "S0625L03",
+          "type": "M",
+          "target": "algo de beber",
+          "known": "something to drink",
+          "new": true,
+          "components": [
+            ["algo", "something"],
+            ["de", "to"],
+            ["beber", "drink"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0626",
+      "seed_pair": [
+        "No, I'm not thirsty, thank you.",
+        "No, no tengo sed, gracias."
+      ],
+      "legos": [
+        {
+          "id": "S0626L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0626L02",
+          "type": "A",
+          "target": "gracias",
+          "known": "thank you",
+          "new": true
+        },
+        {
+          "id": "S0626L03",
+          "type": "M",
+          "target": "no tengo sed",
+          "known": "I'm not thirsty",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["tengo", "I have"],
+            ["sed", "thirst"]
+          ]
+        },
+        {
+          "id": "S0626L04",
+          "type": "M",
+          "target": "tengo sed",
+          "known": "I'm thirsty",
+          "new": true,
+          "components": [
+            ["tengo", "I have"],
+            ["sed", "thirst"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0627",
+      "seed_pair": [
+        "Your coffee is ready.",
+        "Tu café está preparado."
+      ],
+      "legos": [
+        {
+          "id": "S0627L01",
+          "type": "M",
+          "target": "tu café",
+          "known": "your coffee",
+          "new": true,
+          "components": [
+            ["tu", "your"],
+            ["café", "coffee"]
+          ]
+        },
+        {
+          "id": "S0627L02",
+          "type": "M",
+          "target": "está preparado",
+          "known": "is ready",
+          "new": true,
+          "components": [
+            ["está", "is"],
+            ["preparado", "ready/prepared"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0628",
+      "seed_pair": [
+        "Do you like tea?",
+        "¿Te gusta el té?"
+      ],
+      "legos": [
+        {
+          "id": "S0628L01",
+          "type": "M",
+          "target": "te gusta",
+          "known": "do you like",
+          "new": true,
+          "components": [
+            ["te", "you"],
+            ["gusta", "like"]
+          ]
+        },
+        {
+          "id": "S0628L02",
+          "type": "M",
+          "target": "el té",
+          "known": "tea",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["té", "tea"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0629",
+      "seed_pair": [
+        "I like it with milk but without sugar.",
+        "Me gusta con leche pero sin azúcar."
+      ],
+      "legos": [
+        {
+          "id": "S0629L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0629L02",
+          "type": "M",
+          "target": "me gusta",
+          "known": "I like it",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["gusta", "like"]
+          ]
+        },
+        {
+          "id": "S0629L03",
+          "type": "M",
+          "target": "con leche",
+          "known": "with milk",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["leche", "milk"]
+          ]
+        },
+        {
+          "id": "S0629L04",
+          "type": "M",
+          "target": "sin azúcar",
+          "known": "without sugar",
+          "new": true,
+          "components": [
+            ["sin", "without"],
+            ["azúcar", "sugar"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0630",
+      "seed_pair": [
+        "Can I have something to drink please?",
+        "¿Puedo tener algo para beber por favor?"
+      ],
+      "legos": [
+        {
+          "id": "S0630L01",
+          "type": "M",
+          "target": "puedo tener",
+          "known": "can I have",
+          "new": true,
+          "components": [
+            ["puedo", "can I"],
+            ["tener", "have"]
+          ]
+        },
+        {
+          "id": "S0630L02",
+          "type": "M",
+          "target": "algo para beber",
+          "known": "something to drink",
+          "new": true,
+          "components": [
+            ["algo", "something"],
+            ["para", "to"],
+            ["beber", "drink"]
+          ]
+        },
+        {
+          "id": "S0630L03",
+          "type": "M",
+          "target": "para beber",
+          "known": "to drink",
+          "new": true,
+          "components": [
+            ["para", "to/for"],
+            ["beber", "drink"]
+          ]
+        }
+      ]
+    }
+  ]
+}
