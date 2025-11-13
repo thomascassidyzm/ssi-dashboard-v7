@@ -6,63 +6,65 @@
   "seeds": [
     {
       "seed_id": "S0441",
-      "seed_pair": ["Un acercamiento.", "An approach."],
+      "seed_pair": [
+        "An approach.",
+        "Un acercamiento."
+      ],
       "legos": [
         {
           "id": "S0441L01",
-          "type": "A",
-          "target": "Un",
-          "known": "An",
-          "new": true
-        },
-        {
-          "id": "S0441L02",
-          "type": "A",
-          "target": "acercamiento",
-          "known": "approach",
-          "new": true
+          "type": "M",
+          "target": "Un acercamiento",
+          "known": "An approach",
+          "new": true,
+          "components": [
+            ["Un", "An"],
+            ["acercamiento", "approach"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0442",
-      "seed_pair": ["¿Querían desarrollar un acercamiento nuevo?", "Did they want to develop a new approach?"],
+      "seed_pair": [
+        "Did they want to develop a new approach?",
+        "¿Querían desarrollar un acercamiento nuevo?"
+      ],
       "legos": [
         {
           "id": "S0442L01",
+          "type": "A",
+          "target": "Querían",
+          "known": "Did they want",
+          "new": true
+        },
+        {
+          "id": "S0442L02",
           "type": "A",
           "target": "desarrollar",
           "known": "to develop",
           "new": true
         },
         {
-          "id": "S0442L02",
-          "type": "M",
-          "target": "¿Querían",
-          "known": "Did they want",
-          "new": true,
-          "components": [
-            ["¿", "Did"],
-            ["Querían", "they want"]
-          ]
-        },
-        {
           "id": "S0442L03",
           "type": "M",
-          "target": "un acercamiento nuevo?",
-          "known": "a new approach?",
+          "target": "un acercamiento nuevo",
+          "known": "a new approach",
           "new": true,
           "components": [
             ["un", "a"],
             ["acercamiento", "approach"],
-            ["nuevo?", "new?"]
+            ["nuevo", "new"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0443",
-      "seed_pair": ["No querían continuar haciéndolo de la misma manera.", "No they wanted to keep doing it the same way."],
+      "seed_pair": [
+        "No they wanted to keep doing it the same way.",
+        "No querían continuar haciéndolo de la misma manera."
+      ],
       "legos": [
         {
           "id": "S0443L01",
@@ -80,23 +82,30 @@
         },
         {
           "id": "S0443L03",
-          "type": "M",
-          "target": "continuar haciéndolo",
-          "known": "to keep doing it",
-          "new": true,
-          "components": [
-            ["continuar", "to keep"],
-            ["haciéndolo", "doing it"]
-          ]
+          "type": "A",
+          "target": "continuar",
+          "known": "to keep",
+          "new": true
         },
         {
           "id": "S0443L04",
+          "type": "M",
+          "target": "haciéndolo",
+          "known": "doing it",
+          "new": true,
+          "components": [
+            ["haciendo", "doing"],
+            ["lo", "it"]
+          ]
+        },
+        {
+          "id": "S0443L05",
           "type": "M",
           "target": "de la misma manera",
           "known": "the same way",
           "new": true,
           "components": [
-            ["de", ""],
+            ["de", "in/of"],
             ["la", "the"],
             ["misma", "same"],
             ["manera", "way"]
@@ -106,7 +115,10 @@
     },
     {
       "seed_id": "S0444",
-      "seed_pair": ["Sí pensaban que podría hacerse más eficientemente.", "Yes they thought it could be done more efficiently."],
+      "seed_pair": [
+        "Yes they thought it could be done more efficiently.",
+        "Sí pensaban que podría hacerse más eficientemente."
+      ],
       "legos": [
         {
           "id": "S0444L01",
@@ -118,50 +130,56 @@
         {
           "id": "S0444L02",
           "type": "A",
-          "target": "pensaban",
-          "known": "they thought",
+          "target": "podría",
+          "known": "it could",
           "new": true
         },
         {
           "id": "S0444L03",
           "type": "A",
-          "target": "que",
-          "known": "that",
+          "target": "hacerse",
+          "known": "be done",
           "new": true
         },
         {
           "id": "S0444L04",
-          "type": "M",
-          "target": "podría hacerse",
-          "known": "it could be done",
-          "new": true,
-          "components": [
-            ["podría", "it could"],
-            ["hacerse", "be done"]
-          ]
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
         },
         {
           "id": "S0444L05",
+          "type": "A",
+          "target": "eficientemente",
+          "known": "efficiently",
+          "new": true
+        },
+        {
+          "id": "S0444L06",
           "type": "M",
-          "target": "más eficientemente",
-          "known": "more efficiently",
+          "target": "pensaban que",
+          "known": "they thought",
           "new": true,
           "components": [
-            ["más", "more"],
-            ["eficientemente", "efficiently"]
+            ["pensaban", "they thought"],
+            ["que", "that"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0445",
-      "seed_pair": ["Ellos van a poder llevar esa maleta.", "They will be able to carry that suitcase."],
+      "seed_pair": [
+        "They will be able to carry that suitcase.",
+        "Ellos van a poder llevar esa maleta."
+      ],
       "legos": [
         {
           "id": "S0445L01",
           "type": "A",
-          "target": "Ellos",
-          "known": "They",
+          "target": "poder",
+          "known": "be able to",
           "new": true
         },
         {
@@ -173,40 +191,41 @@
         },
         {
           "id": "S0445L03",
-          "type": "A",
-          "target": "esa",
-          "known": "that",
-          "new": true
+          "type": "M",
+          "target": "Ellos van a",
+          "known": "They will",
+          "new": true,
+          "components": [
+            ["Ellos", "They"],
+            ["van", "go/will"],
+            ["a", "to"]
+          ]
         },
         {
           "id": "S0445L04",
-          "type": "A",
-          "target": "maleta",
-          "known": "suitcase",
-          "new": true
-        },
-        {
-          "id": "S0445L05",
           "type": "M",
-          "target": "van a poder",
-          "known": "will be able to",
+          "target": "esa maleta",
+          "known": "that suitcase",
           "new": true,
           "components": [
-            ["van a", "will"],
-            ["poder", "be able to"]
+            ["esa", "that"],
+            ["maleta", "suitcase"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0446",
-      "seed_pair": ["Ellos no van a poder romper esa ventana.", "They won't be able to break that window."],
+      "seed_pair": [
+        "They won't be able to break that window.",
+        "Ellos no van a poder romper esa ventana."
+      ],
       "legos": [
         {
           "id": "S0446L01",
           "type": "A",
-          "target": "Ellos",
-          "known": "They",
+          "target": "poder",
+          "known": "be able to",
           "new": true
         },
         {
@@ -218,75 +237,107 @@
         },
         {
           "id": "S0446L03",
-          "type": "A",
-          "target": "esa",
-          "known": "that",
-          "new": true
+          "type": "M",
+          "target": "Ellos no van a",
+          "known": "They won't",
+          "new": true,
+          "components": [
+            ["Ellos", "They"],
+            ["no", "not"],
+            ["van", "go/will"],
+            ["a", "to"]
+          ]
         },
         {
           "id": "S0446L04",
-          "type": "A",
-          "target": "ventana",
-          "known": "window",
-          "new": true
-        },
-        {
-          "id": "S0446L05",
           "type": "M",
-          "target": "no van a poder",
-          "known": "won't be able to",
+          "target": "esa ventana",
+          "known": "that window",
           "new": true,
           "components": [
-            ["no", "not"],
-            ["van a", "will"],
-            ["poder", "be able to"]
+            ["esa", "that"],
+            ["ventana", "window"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0447",
-      "seed_pair": ["¿Van a poder llevarnos a casa después de la comida?", "Will they be able to drive us home after the meal?"],
+      "seed_pair": [
+        "Will they be able to drive us home after the meal?",
+        "¿Van a poder llevarnos a casa después de la comida?"
+      ],
       "legos": [
         {
           "id": "S0447L01",
-          "type": "M",
-          "target": "¿Van a poder",
-          "known": "Will they be able to",
-          "new": true,
-          "components": [
-            ["¿Van", "Will they"],
-            ["a poder", "be able to"]
-          ]
+          "type": "A",
+          "target": "poder",
+          "known": "be able to",
+          "new": true
         },
         {
           "id": "S0447L02",
           "type": "M",
-          "target": "llevarnos a casa",
-          "known": "drive us home",
+          "target": "Van a",
+          "known": "Will they",
           "new": true,
           "components": [
-            ["llevarnos", "drive us"],
-            ["a casa", "home"]
+            ["Van", "they will"],
+            ["a", "to"]
           ]
         },
         {
           "id": "S0447L03",
           "type": "M",
-          "target": "después de la comida?",
-          "known": "after the meal?",
+          "target": "llevarnos",
+          "known": "drive us",
           "new": true,
           "components": [
-            ["después de", "after"],
+            ["llevar", "to drive"],
+            ["nos", "us"]
+          ]
+        },
+        {
+          "id": "S0447L04",
+          "type": "M",
+          "target": "a casa",
+          "known": "home",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["casa", "house/home"]
+          ]
+        },
+        {
+          "id": "S0447L05",
+          "type": "M",
+          "target": "después de",
+          "known": "after",
+          "new": true,
+          "components": [
+            ["después", "after"],
+            ["de", "of"]
+          ]
+        },
+        {
+          "id": "S0447L06",
+          "type": "M",
+          "target": "la comida",
+          "known": "the meal",
+          "new": true,
+          "components": [
             ["la", "the"],
-            ["comida?", "meal?"]
+            ["comida", "meal"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0448",
-      "seed_pair": ["Sí van a estar contentos de ayudar.", "Yes they'll be happy to help."],
+      "seed_pair": [
+        "Yes they'll be happy to help.",
+        "Sí van a estar contentos de ayudar."
+      ],
       "legos": [
         {
           "id": "S0448L01",
@@ -298,23 +349,30 @@
         {
           "id": "S0448L02",
           "type": "A",
+          "target": "estar",
+          "known": "be",
+          "new": true
+        },
+        {
+          "id": "S0448L03",
+          "type": "A",
           "target": "contentos",
           "known": "happy",
           "new": true
         },
         {
-          "id": "S0448L03",
+          "id": "S0448L04",
           "type": "M",
-          "target": "van a estar",
-          "known": "they'll be",
+          "target": "van a",
+          "known": "they'll",
           "new": true,
           "components": [
-            ["van a", "they'll"],
-            ["estar", "be"]
+            ["van", "they go/will"],
+            ["a", "to"]
           ]
         },
         {
-          "id": "S0448L04",
+          "id": "S0448L05",
           "type": "M",
           "target": "de ayudar",
           "known": "to help",
@@ -328,55 +386,58 @@
     },
     {
       "seed_id": "S0449",
-      "seed_pair": ["Ellos dijeron que estaban casi preparados.", "They said that they were almost ready."],
+      "seed_pair": [
+        "They said that they were almost ready.",
+        "Ellos dijeron que estaban casi preparados."
+      ],
       "legos": [
         {
           "id": "S0449L01",
-          "type": "A",
-          "target": "Ellos",
-          "known": "They",
-          "new": true
-        },
-        {
-          "id": "S0449L02",
-          "type": "A",
-          "target": "dijeron",
-          "known": "said",
-          "new": true
-        },
-        {
-          "id": "S0449L03",
           "type": "A",
           "target": "que",
           "known": "that",
           "new": true
         },
         {
-          "id": "S0449L04",
+          "id": "S0449L02",
           "type": "A",
           "target": "estaban",
           "known": "they were",
           "new": true
         },
         {
-          "id": "S0449L05",
+          "id": "S0449L03",
           "type": "A",
           "target": "casi",
           "known": "almost",
           "new": true
         },
         {
-          "id": "S0449L06",
+          "id": "S0449L04",
           "type": "A",
           "target": "preparados",
           "known": "ready",
           "new": true
+        },
+        {
+          "id": "S0449L05",
+          "type": "M",
+          "target": "Ellos dijeron",
+          "known": "They said",
+          "new": true,
+          "components": [
+            ["Ellos", "They"],
+            ["dijeron", "said"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0450",
-      "seed_pair": ["No ellos tienen que tomar el tren ellos mismos.", "No they have to catch the train themselves."],
+      "seed_pair": [
+        "No they have to catch the train themselves.",
+        "No ellos tienen que tomar el tren ellos mismos."
+      ],
       "legos": [
         {
           "id": "S0450L01",
@@ -388,50 +449,41 @@
         {
           "id": "S0450L02",
           "type": "A",
-          "target": "ellos",
-          "known": "they",
-          "new": true
-        },
-        {
-          "id": "S0450L03",
-          "type": "A",
           "target": "tomar",
           "known": "catch",
           "new": true
         },
         {
-          "id": "S0450L04",
-          "type": "A",
-          "target": "el",
-          "known": "the",
-          "new": true
-        },
-        {
-          "id": "S0450L05",
-          "type": "A",
-          "target": "tren",
-          "known": "train",
-          "new": true
-        },
-        {
-          "id": "S0450L06",
+          "id": "S0450L03",
           "type": "M",
-          "target": "tienen que",
-          "known": "have to",
+          "target": "ellos tienen que",
+          "known": "they have to",
           "new": true,
           "components": [
+            ["ellos", "they"],
             ["tienen", "have"],
             ["que", "to"]
           ]
         },
         {
-          "id": "S0450L07",
+          "id": "S0450L04",
+          "type": "M",
+          "target": "el tren",
+          "known": "the train",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["tren", "train"]
+          ]
+        },
+        {
+          "id": "S0450L05",
           "type": "M",
           "target": "ellos mismos",
           "known": "themselves",
           "new": true,
           "components": [
-            ["ellos", "them"],
+            ["ellos", "they"],
             ["mismos", "selves"]
           ]
         }

@@ -48,17 +48,20 @@
         },
         {
           "id": "S0472L02",
-          "type": "M",
-          "target": "del problema",
-          "known": "of the problem",
-          "new": true,
-          "components": [
-            ["del", "of the"],
-            ["problema", "problem"]
-          ]
+          "type": "A",
+          "target": "del",
+          "known": "of the",
+          "new": true
         },
         {
           "id": "S0472L03",
+          "type": "A",
+          "target": "problema",
+          "known": "problem",
+          "new": true
+        },
+        {
+          "id": "S0472L04",
           "type": "M",
           "target": "es que",
           "known": "is that",
@@ -69,7 +72,7 @@
           ]
         },
         {
-          "id": "S0472L04",
+          "id": "S0472L05",
           "type": "M",
           "target": "no sabemos",
           "known": "we don't know",
@@ -80,7 +83,7 @@
           ]
         },
         {
-          "id": "S0472L05",
+          "id": "S0472L06",
           "type": "M",
           "target": "los hechos",
           "known": "the facts",
@@ -218,11 +221,11 @@
           "id": "S0476L01",
           "type": "M",
           "target": "estoy esperando",
-          "known": "I'm waiting",
+          "known": "I'm waiting for",
           "new": true,
           "components": [
             ["estoy", "I am"],
-            ["esperando", "waiting"]
+            ["esperando", "waiting for"]
           ]
         },
         {
@@ -319,10 +322,14 @@
       "legos": [
         {
           "id": "S0478L01",
-          "type": "A",
+          "type": "M",
           "target": "ella tiene",
           "known": "she has",
-          "new": true
+          "new": true,
+          "components": [
+            ["ella", "she"],
+            ["tiene", "has"]
+          ]
         },
         {
           "id": "S0478L02",
@@ -372,18 +379,12 @@
         },
         {
           "id": "S0479L03",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
-        },
-        {
-          "id": "S0479L04",
           "type": "M",
-          "target": "podría hacer",
+          "target": "que podría hacer",
           "known": "I could do",
           "new": true,
           "components": [
+            ["que", "(that)"],
             ["podría", "I could"],
             ["hacer", "do"]
           ]
