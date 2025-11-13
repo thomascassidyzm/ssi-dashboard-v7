@@ -1,0 +1,583 @@
+{
+  "agent_id": "agent_06",
+  "seed_range": "S0051-S0060",
+  "extracted_at": "2025-11-13T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0051",
+      "seed_pair": [
+        "I enjoy doing interesting things with my friends.",
+        "Disfruto hacer cosas interesantes con mis amigos."
+      ],
+      "legos": [
+        {
+          "id": "S0051L01",
+          "type": "M",
+          "target": "disfruto hacer",
+          "known": "I enjoy doing",
+          "new": true,
+          "components": [
+            ["disfruto", "I enjoy"],
+            ["hacer", "doing/to do"]
+          ]
+        },
+        {
+          "id": "S0051L02",
+          "type": "M",
+          "target": "cosas interesantes",
+          "known": "interesting things",
+          "new": true,
+          "components": [
+            ["cosas", "things"],
+            ["interesantes", "interesting"]
+          ]
+        },
+        {
+          "id": "S0051L03",
+          "type": "M",
+          "target": "con mis amigos",
+          "known": "with my friends",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["mis", "my"],
+            ["amigos", "friends"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0052",
+      "seed_pair": [
+        "He wanted to write a letter to his friend last week.",
+        "Quería escribir una carta a su amigo la semana pasada."
+      ],
+      "legos": [
+        {
+          "id": "S0052L01",
+          "type": "M",
+          "target": "quería escribir",
+          "known": "wanted to write",
+          "new": true,
+          "components": [
+            ["quería", "wanted"],
+            ["escribir", "to write"]
+          ]
+        },
+        {
+          "id": "S0052L02",
+          "type": "M",
+          "target": "escribir una carta",
+          "known": "write a letter",
+          "new": true,
+          "components": [
+            ["escribir", "to write/write"],
+            ["una", "a"],
+            ["carta", "letter"]
+          ]
+        },
+        {
+          "id": "S0052L03",
+          "type": "M",
+          "target": "una carta",
+          "known": "a letter",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["carta", "letter"]
+          ]
+        },
+        {
+          "id": "S0052L04",
+          "type": "M",
+          "target": "a su amigo",
+          "known": "to his friend",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["su", "his"],
+            ["amigo", "friend"]
+          ]
+        },
+        {
+          "id": "S0052L05",
+          "type": "M",
+          "target": "la semana pasada",
+          "known": "last week",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["semana", "week"],
+            ["pasada", "last/past"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0053",
+      "seed_pair": [
+        "She wanted to put his letter in her bag.",
+        "Quería poner su carta en su bolsa."
+      ],
+      "legos": [
+        {
+          "id": "S0053L01",
+          "type": "M",
+          "target": "quería poner",
+          "known": "wanted to put",
+          "new": true,
+          "components": [
+            ["quería", "wanted"],
+            ["poner", "to put"]
+          ]
+        },
+        {
+          "id": "S0053L02",
+          "type": "M",
+          "target": "poner su carta",
+          "known": "put his letter",
+          "new": true,
+          "components": [
+            ["poner", "to put/put"],
+            ["su", "his"],
+            ["carta", "letter"]
+          ]
+        },
+        {
+          "id": "S0053L03",
+          "type": "A",
+          "target": "su carta",
+          "known": "his letter",
+          "new": true
+        },
+        {
+          "id": "S0053L04",
+          "type": "M",
+          "target": "en su bolsa",
+          "known": "in her bag",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["su", "her"],
+            ["bolsa", "bag"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0054",
+      "seed_pair": [
+        "We wanted to give you a little more time.",
+        "Queríamos darte un poco más de tiempo."
+      ],
+      "legos": [
+        {
+          "id": "S0054L01",
+          "type": "M",
+          "target": "queríamos darte",
+          "known": "we wanted to give you",
+          "new": true,
+          "components": [
+            ["queríamos", "we wanted"],
+            ["darte", "to give you"]
+          ]
+        },
+        {
+          "id": "S0054L02",
+          "type": "M",
+          "target": "darte un poco más",
+          "known": "give you a little more",
+          "new": true,
+          "components": [
+            ["darte", "to give you/give you"],
+            ["un poco", "a little"],
+            ["más", "more"]
+          ]
+        },
+        {
+          "id": "S0054L03",
+          "type": "M",
+          "target": "un poco más de tiempo",
+          "known": "a little more time",
+          "new": true,
+          "components": [
+            ["un poco", "a little"],
+            ["más", "more"],
+            ["de", "of"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0054L04",
+          "type": "A",
+          "target": "tiempo",
+          "known": "time",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0055",
+      "seed_pair": [
+        "I don't enjoy waking up when I didn't sleep very well.",
+        "No disfruto despertarme cuando no dormí muy bien."
+      ],
+      "legos": [
+        {
+          "id": "S0055L01",
+          "type": "M",
+          "target": "no disfruto",
+          "known": "I don't enjoy",
+          "new": true,
+          "components": [
+            ["no", "don't/not"],
+            ["disfruto", "I enjoy"]
+          ]
+        },
+        {
+          "id": "S0055L02",
+          "type": "A",
+          "target": "despertarme",
+          "known": "waking up",
+          "new": true
+        },
+        {
+          "id": "S0055L03",
+          "type": "M",
+          "target": "no disfruto despertarme",
+          "known": "I don't enjoy waking up",
+          "new": true,
+          "components": [
+            ["no", "don't"],
+            ["disfruto", "I enjoy"],
+            ["despertarme", "waking up"]
+          ]
+        },
+        {
+          "id": "S0055L04",
+          "type": "A",
+          "target": "cuando",
+          "known": "when",
+          "new": true
+        },
+        {
+          "id": "S0055L05",
+          "type": "M",
+          "target": "no dormí",
+          "known": "I didn't sleep",
+          "new": true,
+          "components": [
+            ["no", "didn't/not"],
+            ["dormí", "I slept"]
+          ]
+        },
+        {
+          "id": "S0055L06",
+          "type": "M",
+          "target": "muy bien",
+          "known": "very well",
+          "new": true,
+          "components": [
+            ["muy", "very"],
+            ["bien", "well"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0056",
+      "seed_pair": [
+        "So I can remember how to say a few words.",
+        "Para poder recordar cómo decir unas pocas palabras."
+      ],
+      "legos": [
+        {
+          "id": "S0056L01",
+          "type": "M",
+          "target": "para poder",
+          "known": "so I can",
+          "new": true,
+          "components": [
+            ["para", "so/in order to"],
+            ["poder", "can/to be able"]
+          ]
+        },
+        {
+          "id": "S0056L02",
+          "type": "M",
+          "target": "poder recordar",
+          "known": "can remember",
+          "new": true,
+          "components": [
+            ["poder", "can"],
+            ["recordar", "remember"]
+          ]
+        },
+        {
+          "id": "S0056L03",
+          "type": "A",
+          "target": "recordar",
+          "known": "remember",
+          "new": true
+        },
+        {
+          "id": "S0056L04",
+          "type": "M",
+          "target": "cómo decir",
+          "known": "how to say",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["decir", "to say"]
+          ]
+        },
+        {
+          "id": "S0056L05",
+          "type": "M",
+          "target": "unas pocas palabras",
+          "known": "a few words",
+          "new": true,
+          "components": [
+            ["unas", "a/some"],
+            ["pocas", "few"],
+            ["palabras", "words"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0057",
+      "seed_pair": [
+        "I can't remember how to say what I wanted to say.",
+        "No puedo recordar cómo decir lo que quería decir."
+      ],
+      "legos": [
+        {
+          "id": "S0057L01",
+          "type": "M",
+          "target": "no puedo recordar",
+          "known": "I can't remember",
+          "new": true,
+          "components": [
+            ["no", "can't/not"],
+            ["puedo", "I can"],
+            ["recordar", "remember"]
+          ]
+        },
+        {
+          "id": "S0057L02",
+          "type": "M",
+          "target": "cómo decir",
+          "known": "how to say",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["decir", "to say"]
+          ]
+        },
+        {
+          "id": "S0057L03",
+          "type": "M",
+          "target": "recordar cómo decir",
+          "known": "remember how to say",
+          "new": true,
+          "components": [
+            ["recordar", "remember"],
+            ["cómo", "how"],
+            ["decir", "to say"]
+          ]
+        },
+        {
+          "id": "S0057L04",
+          "type": "M",
+          "target": "lo que quería decir",
+          "known": "what I wanted to say",
+          "new": true,
+          "components": [
+            ["lo que", "what"],
+            ["quería", "I wanted"],
+            ["decir", "to say"]
+          ]
+        },
+        {
+          "id": "S0057L05",
+          "type": "M",
+          "target": "quería decir",
+          "known": "wanted to say",
+          "new": true,
+          "components": [
+            ["quería", "wanted"],
+            ["decir", "to say"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0058",
+      "seed_pair": [
+        "It's interesting when you understand enough words.",
+        "Es interesante cuando comprendes suficientes palabras."
+      ],
+      "legos": [
+        {
+          "id": "S0058L01",
+          "type": "M",
+          "target": "es interesante",
+          "known": "it's interesting",
+          "new": true,
+          "components": [
+            ["es", "it's/is"],
+            ["interesante", "interesting"]
+          ]
+        },
+        {
+          "id": "S0058L02",
+          "type": "A",
+          "target": "cuando",
+          "known": "when",
+          "new": true
+        },
+        {
+          "id": "S0058L03",
+          "type": "M",
+          "target": "cuando comprendes",
+          "known": "when you understand",
+          "new": true,
+          "components": [
+            ["cuando", "when"],
+            ["comprendes", "you understand"]
+          ]
+        },
+        {
+          "id": "S0058L04",
+          "type": "M",
+          "target": "suficientes palabras",
+          "known": "enough words",
+          "new": true,
+          "components": [
+            ["suficientes", "enough"],
+            ["palabras", "words"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0059",
+      "seed_pair": [
+        "I know how to do what I need to do next week.",
+        "Sé hacer lo que necesito hacer la próxima semana."
+      ],
+      "legos": [
+        {
+          "id": "S0059L01",
+          "type": "M",
+          "target": "sé hacer",
+          "known": "I know how to do",
+          "new": true,
+          "components": [
+            ["sé", "I know"],
+            ["hacer", "how to do/to do"]
+          ]
+        },
+        {
+          "id": "S0059L02",
+          "type": "M",
+          "target": "lo que necesito hacer",
+          "known": "what I need to do",
+          "new": true,
+          "components": [
+            ["lo que", "what"],
+            ["necesito", "I need"],
+            ["hacer", "to do"]
+          ]
+        },
+        {
+          "id": "S0059L03",
+          "type": "M",
+          "target": "necesito hacer",
+          "known": "need to do",
+          "new": true,
+          "components": [
+            ["necesito", "I need"],
+            ["hacer", "to do"]
+          ]
+        },
+        {
+          "id": "S0059L04",
+          "type": "M",
+          "target": "la próxima semana",
+          "known": "next week",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["próxima", "next"],
+            ["semana", "week"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0060",
+      "seed_pair": [
+        "I don't know how to say enough different words yet.",
+        "Todavía no sé cómo decir suficientes palabras diferentes."
+      ],
+      "legos": [
+        {
+          "id": "S0060L01",
+          "type": "A",
+          "target": "todavía",
+          "known": "yet/still",
+          "new": true
+        },
+        {
+          "id": "S0060L02",
+          "type": "M",
+          "target": "no sé",
+          "known": "I don't know",
+          "new": true,
+          "components": [
+            ["no", "don't/not"],
+            ["sé", "I know"]
+          ]
+        },
+        {
+          "id": "S0060L03",
+          "type": "M",
+          "target": "todavía no sé",
+          "known": "I still don't know",
+          "new": true,
+          "components": [
+            ["todavía", "yet/still"],
+            ["no", "don't"],
+            ["sé", "I know"]
+          ]
+        },
+        {
+          "id": "S0060L04",
+          "type": "M",
+          "target": "cómo decir",
+          "known": "how to say",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["decir", "to say"]
+          ]
+        },
+        {
+          "id": "S0060L05",
+          "type": "M",
+          "target": "suficientes palabras diferentes",
+          "known": "enough different words",
+          "new": true,
+          "components": [
+            ["suficientes", "enough"],
+            ["palabras", "words"],
+            ["diferentes", "different"]
+          ]
+        }
+      ]
+    }
+  ]
+}
