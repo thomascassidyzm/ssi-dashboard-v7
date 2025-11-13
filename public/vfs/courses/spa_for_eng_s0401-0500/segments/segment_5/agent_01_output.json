@@ -1,0 +1,466 @@
+{
+  "agent_id": "agent_01",
+  "seed_range": "S0401-S0410",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0401",
+      "seed_pair": ["No, sería mejor ir directamente a casa.", "No it would be better to go straight home."],
+      "thinking": "FORWARD SWEEP: 'No'→'No' ✅ | 'it would be better'→'sería mejor' ✅ conditional construction | 'to go straight home'→'ir directamente a casa' ✅ complete phrase. BACKWARD SWEEP: 'a casa' requires preposition (not just 'casa'). OVERLAPS: 'sería mejor ir' adds pattern value showing conditional + infinitive.",
+      "legos": [
+        {
+          "id": "S0401L01",
+          "type": "A",
+          "target": "No",
+          "known": "No",
+          "new": true
+        },
+        {
+          "id": "S0401L02",
+          "type": "M",
+          "target": "sería mejor",
+          "known": "it would be better",
+          "new": true,
+          "components": [["sería", "it would be"], ["mejor", "better"]]
+        },
+        {
+          "id": "S0401L03",
+          "type": "M",
+          "target": "sería mejor ir",
+          "known": "it would be better to go",
+          "new": true,
+          "components": [["sería", "it would be"], ["mejor", "better"], ["ir", "to go"]]
+        },
+        {
+          "id": "S0401L04",
+          "type": "M",
+          "target": "ir directamente a casa",
+          "known": "to go straight home",
+          "new": true,
+          "components": [["ir", "to go"], ["directamente", "straight"], ["a", "to"], ["casa", "home"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0402",
+      "seed_pair": ["Sí, sería agradable parar en algún lugar para comida.", "Yes it would be nice to stop somewhere for food."],
+      "thinking": "FORWARD SWEEP: 'Sí'→'Yes' ✅ | 'it would be nice'→'sería agradable' ✅ | 'somewhere'→'en algún lugar' requires preposition. BACKWARD SWEEP: 'para comida' needs preposition. OVERLAPS: Multiple overlaps show conditional patterns, location phrases, and purpose constructions.",
+      "legos": [
+        {
+          "id": "S0402L01",
+          "type": "A",
+          "target": "Sí",
+          "known": "Yes",
+          "new": true
+        },
+        {
+          "id": "S0402L02",
+          "type": "M",
+          "target": "sería agradable",
+          "known": "it would be nice",
+          "new": true,
+          "components": [["sería", "it would be"], ["agradable", "nice"]]
+        },
+        {
+          "id": "S0402L03",
+          "type": "M",
+          "target": "sería agradable parar",
+          "known": "it would be nice to stop",
+          "new": true,
+          "components": [["sería", "it would be"], ["agradable", "nice"], ["parar", "to stop"]]
+        },
+        {
+          "id": "S0402L04",
+          "type": "M",
+          "target": "parar en algún lugar",
+          "known": "to stop somewhere",
+          "new": true,
+          "components": [["parar", "to stop"], ["en", "in"], ["algún", "some"], ["lugar", "place"]]
+        },
+        {
+          "id": "S0402L05",
+          "type": "M",
+          "target": "en algún lugar",
+          "known": "somewhere",
+          "new": true,
+          "components": [["en", "in"], ["algún", "some"], ["lugar", "place"]]
+        },
+        {
+          "id": "S0402L06",
+          "type": "M",
+          "target": "para comida",
+          "known": "for food",
+          "new": true,
+          "components": [["para", "for"], ["comida", "food"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0403",
+      "seed_pair": ["Deberíamos permanecer callados durante tanto tiempo como sea posible.", "We should remain quiet for as long as possible."],
+      "thinking": "FORWARD SWEEP: 'we should'→'deberíamos' ✅ | 'remain quiet'→'permanecer callados' ✅. BACKWARD SWEEP: 'como sea posible' is subjunctive trigger! Must stay together. 'tanto tiempo como sea posible' is idiomatic construction. OVERLAPS: Create chains showing modal + verb, and subjunctive pattern.",
+      "legos": [
+        {
+          "id": "S0403L01",
+          "type": "A",
+          "target": "deberíamos",
+          "known": "we should",
+          "new": true
+        },
+        {
+          "id": "S0403L02",
+          "type": "M",
+          "target": "permanecer callados",
+          "known": "remain quiet",
+          "new": true,
+          "components": [["permanecer", "remain"], ["callados", "quiet"]]
+        },
+        {
+          "id": "S0403L03",
+          "type": "M",
+          "target": "deberíamos permanecer callados",
+          "known": "we should remain quiet",
+          "new": true,
+          "components": [["deberíamos", "we should"], ["permanecer", "remain"], ["callados", "quiet"]]
+        },
+        {
+          "id": "S0403L04",
+          "type": "M",
+          "target": "tanto tiempo como sea posible",
+          "known": "as long as possible",
+          "new": true,
+          "components": [["tanto", "as"], ["tiempo", "long/time"], ["como", "as"], ["sea", "be (subjunctive)"], ["posible", "possible"]]
+        },
+        {
+          "id": "S0403L05",
+          "type": "M",
+          "target": "durante tanto tiempo como sea posible",
+          "known": "for as long as possible",
+          "new": true,
+          "components": [["durante", "for"], ["tanto", "as"], ["tiempo", "long"], ["como", "as"], ["sea", "be (subj.)"], ["posible", "possible"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0404",
+      "seed_pair": ["No deberíamos esperar terminar antes del jueves.", "We shouldn't expect to finish before Thursday."],
+      "thinking": "FORWARD SWEEP: 'we shouldn't'→'no deberíamos' ✅ | 'expect'→'esperar' ✅ | 'to finish'→'terminar' ✅. BACKWARD SWEEP: 'del jueves' is contraction (de + el). OVERLAPS: Show negated modal, verb chains, and time expressions.",
+      "legos": [
+        {
+          "id": "S0404L01",
+          "type": "M",
+          "target": "no deberíamos",
+          "known": "we shouldn't",
+          "new": true,
+          "components": [["no", "not"], ["deberíamos", "we should"]]
+        },
+        {
+          "id": "S0404L02",
+          "type": "A",
+          "target": "esperar",
+          "known": "to expect",
+          "new": true
+        },
+        {
+          "id": "S0404L03",
+          "type": "M",
+          "target": "no deberíamos esperar",
+          "known": "we shouldn't expect",
+          "new": true,
+          "components": [["no", "not"], ["deberíamos", "we should"], ["esperar", "to expect"]]
+        },
+        {
+          "id": "S0404L04",
+          "type": "M",
+          "target": "esperar terminar",
+          "known": "to expect to finish",
+          "new": true,
+          "components": [["esperar", "to expect"], ["terminar", "to finish"]]
+        },
+        {
+          "id": "S0404L05",
+          "type": "A",
+          "target": "terminar",
+          "known": "to finish",
+          "new": true
+        },
+        {
+          "id": "S0404L06",
+          "type": "M",
+          "target": "antes del jueves",
+          "known": "before Thursday",
+          "new": true,
+          "components": [["antes", "before"], ["del", "of the (de+el)"], ["jueves", "Thursday"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0405",
+      "seed_pair": ["¿Deberíamos preguntar si tenemos que reservar?", "Should we ask if we have to book?"],
+      "thinking": "FORWARD SWEEP: 'should we ask'→'deberíamos preguntar' ✅ | 'if'→'si' ✅ | 'we have to'→'tenemos que' ✅ obligation construction. OVERLAPS: Show question forms, conditional clauses, and obligation patterns.",
+      "legos": [
+        {
+          "id": "S0405L01",
+          "type": "M",
+          "target": "deberíamos preguntar",
+          "known": "should we ask",
+          "new": true,
+          "components": [["deberíamos", "should we"], ["preguntar", "ask"]]
+        },
+        {
+          "id": "S0405L02",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0405L03",
+          "type": "M",
+          "target": "tenemos que",
+          "known": "we have to",
+          "new": true,
+          "components": [["tenemos", "we have"], ["que", "to"]]
+        },
+        {
+          "id": "S0405L04",
+          "type": "M",
+          "target": "si tenemos que",
+          "known": "if we have to",
+          "new": true,
+          "components": [["si", "if"], ["tenemos", "we have"], ["que", "to"]]
+        },
+        {
+          "id": "S0405L05",
+          "type": "M",
+          "target": "tenemos que reservar",
+          "known": "we have to book",
+          "new": true,
+          "components": [["tenemos", "we have"], ["que", "to"], ["reservar", "book"]]
+        },
+        {
+          "id": "S0405L06",
+          "type": "A",
+          "target": "reservar",
+          "known": "to book",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0406",
+      "seed_pair": ["No, estoy seguro de que estará bien.", "No I'm sure it will be okay."],
+      "thinking": "FORWARD SWEEP: 'No'→'No' ✅ | 'I'm sure'→'estoy seguro' but needs 'de que' for subordinate clause. BACKWARD SWEEP: 'de que' required in Spanish for certainty expressions with clauses. HEURISTIC 1: Learner hearing 'I'm sure (that)' needs to know 'de que' is required.",
+      "legos": [
+        {
+          "id": "S0406L01",
+          "type": "A",
+          "target": "No",
+          "known": "No",
+          "new": true
+        },
+        {
+          "id": "S0406L02",
+          "type": "M",
+          "target": "estoy seguro de que",
+          "known": "I'm sure (that)",
+          "new": true,
+          "components": [["estoy", "I am"], ["seguro", "sure"], ["de", "of"], ["que", "that"]]
+        },
+        {
+          "id": "S0406L03",
+          "type": "M",
+          "target": "estará bien",
+          "known": "it will be okay",
+          "new": true,
+          "components": [["estará", "it will be"], ["bien", "okay/well"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0407",
+      "seed_pair": ["¿No deberíamos intentar establecer un buen ejemplo?", "Shouldn't we try to set a good example?"],
+      "thinking": "FORWARD SWEEP: 'shouldn't we'→'no deberíamos' ✅ question form | 'try to set'→'intentar establecer' ✅ verb chain. OVERLAPS: Create chains showing negated modal questions, verb infinitive chains, and adjective-noun patterns.",
+      "legos": [
+        {
+          "id": "S0407L01",
+          "type": "M",
+          "target": "no deberíamos",
+          "known": "shouldn't we",
+          "new": true,
+          "components": [["no", "not"], ["deberíamos", "should we"]]
+        },
+        {
+          "id": "S0407L02",
+          "type": "M",
+          "target": "no deberíamos intentar",
+          "known": "shouldn't we try",
+          "new": true,
+          "components": [["no", "not"], ["deberíamos", "should we"], ["intentar", "try"]]
+        },
+        {
+          "id": "S0407L03",
+          "type": "M",
+          "target": "intentar establecer",
+          "known": "try to set",
+          "new": true,
+          "components": [["intentar", "try"], ["establecer", "to set"]]
+        },
+        {
+          "id": "S0407L04",
+          "type": "M",
+          "target": "establecer un buen ejemplo",
+          "known": "set a good example",
+          "new": true,
+          "components": [["establecer", "set"], ["un", "a"], ["buen", "good"], ["ejemplo", "example"]]
+        },
+        {
+          "id": "S0407L05",
+          "type": "M",
+          "target": "un buen ejemplo",
+          "known": "a good example",
+          "new": true,
+          "components": [["un", "a"], ["buen", "good"], ["ejemplo", "example"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0408",
+      "seed_pair": ["Sí esa es la mejor manera de hacer una familia feliz.", "Yes that's the best way to make a happy family."],
+      "thinking": "FORWARD SWEEP: 'Yes'→'Sí' ✅ | 'that's the best way'→'esa es la mejor manera' ✅ | 'to make'→'de hacer' needs preposition 'de'. BACKWARD SWEEP: 'familia feliz' shows adjective after noun. OVERLAPS: Multiple chains show superlatives, purpose constructions, adjective placement.",
+      "legos": [
+        {
+          "id": "S0408L01",
+          "type": "A",
+          "target": "Sí",
+          "known": "Yes",
+          "new": true
+        },
+        {
+          "id": "S0408L02",
+          "type": "M",
+          "target": "esa es",
+          "known": "that's",
+          "new": true,
+          "components": [["esa", "that"], ["es", "is"]]
+        },
+        {
+          "id": "S0408L03",
+          "type": "M",
+          "target": "la mejor manera",
+          "known": "the best way",
+          "new": true,
+          "components": [["la", "the"], ["mejor", "best"], ["manera", "way"]]
+        },
+        {
+          "id": "S0408L04",
+          "type": "M",
+          "target": "esa es la mejor manera",
+          "known": "that's the best way",
+          "new": true,
+          "components": [["esa", "that"], ["es", "is"], ["la", "the"], ["mejor", "best"], ["manera", "way"]]
+        },
+        {
+          "id": "S0408L05",
+          "type": "M",
+          "target": "la mejor manera de hacer",
+          "known": "the best way to make",
+          "new": true,
+          "components": [["la", "the"], ["mejor", "best"], ["manera", "way"], ["de", "of/to"], ["hacer", "make"]]
+        },
+        {
+          "id": "S0408L06",
+          "type": "M",
+          "target": "hacer una familia feliz",
+          "known": "make a happy family",
+          "new": true,
+          "components": [["hacer", "make"], ["una", "a"], ["familia", "family"], ["feliz", "happy"]]
+        },
+        {
+          "id": "S0408L07",
+          "type": "M",
+          "target": "una familia feliz",
+          "known": "a happy family",
+          "new": true,
+          "components": [["una", "a"], ["familia", "family"], ["feliz", "happy"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0409",
+      "seed_pair": ["No no importa lo que hagamos.", "No it doesn't matter what we do."],
+      "thinking": "FORWARD SWEEP: 'No'→'No' ✅ | 'it doesn't matter'→'no importa' ✅. BACKWARD SWEEP: 'hagamos' is subjunctive! 'lo que hagamos' = 'what we do' - 'lo que' triggers subjunctive. HEURISTIC 1: Must keep 'lo que hagamos' together as subjunctive trigger.",
+      "legos": [
+        {
+          "id": "S0409L01",
+          "type": "A",
+          "target": "No",
+          "known": "No",
+          "new": true
+        },
+        {
+          "id": "S0409L02",
+          "type": "M",
+          "target": "no importa",
+          "known": "it doesn't matter",
+          "new": true,
+          "components": [["no", "not"], ["importa", "it matters"]]
+        },
+        {
+          "id": "S0409L03",
+          "type": "M",
+          "target": "lo que hagamos",
+          "known": "what we do",
+          "new": true,
+          "components": [["lo", "the"], ["que", "that/what"], ["hagamos", "we do (subjunctive)"]]
+        },
+        {
+          "id": "S0409L04",
+          "type": "M",
+          "target": "no importa lo que hagamos",
+          "known": "it doesn't matter what we do",
+          "new": true,
+          "components": [["no", "not"], ["importa", "it matters"], ["lo", "the"], ["que", "what"], ["hagamos", "we do (subj.)"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0410",
+      "seed_pair": ["Todavía luchan el uno con el otro.", "They still fight with each other."],
+      "thinking": "FORWARD SWEEP: 'still'→'todavía' ✅ | 'fight'→'luchan' ✅ | 'with each other'→'el uno con el otro' ✅ idiomatic phrase. OVERLAPS: 'todavía luchan' shows adverb placement with verb.",
+      "legos": [
+        {
+          "id": "S0410L01",
+          "type": "A",
+          "target": "todavía",
+          "known": "still",
+          "new": true
+        },
+        {
+          "id": "S0410L02",
+          "type": "A",
+          "target": "luchan",
+          "known": "they fight",
+          "new": true
+        },
+        {
+          "id": "S0410L03",
+          "type": "M",
+          "target": "todavía luchan",
+          "known": "they still fight",
+          "new": true,
+          "components": [["todavía", "still"], ["luchan", "they fight"]]
+        },
+        {
+          "id": "S0410L04",
+          "type": "M",
+          "target": "el uno con el otro",
+          "known": "with each other",
+          "new": true,
+          "components": [["el", "the"], ["uno", "one"], ["con", "with"], ["el", "the"], ["otro", "other"]]
+        }
+      ]
+    }
+  ]
+}

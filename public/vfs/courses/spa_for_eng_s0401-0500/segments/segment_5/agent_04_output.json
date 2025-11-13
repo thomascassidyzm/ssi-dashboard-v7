@@ -1,0 +1,482 @@
+{
+  "agent_id": "agent_04",
+  "seed_range": "S0431-S0440",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0431",
+      "seed_pair": [
+        "They're not ready yet but they'll be ready soon.",
+        "Todavía no están preparados pero van a estar preparados pronto."
+      ],
+      "legos": [
+        {
+          "id": "S0431L01",
+          "type": "M",
+          "target": "todavía no están preparados",
+          "known": "they're not ready yet",
+          "new": true,
+          "components": [
+            ["todavía", "yet"],
+            ["no", "not"],
+            ["están", "they're"],
+            ["preparados", "ready"]
+          ]
+        },
+        {
+          "id": "S0431L02",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0431L03",
+          "type": "M",
+          "target": "van a estar preparados pronto",
+          "known": "they'll be ready soon",
+          "new": true,
+          "components": [
+            ["van a estar", "they'll be"],
+            ["preparados", "ready"],
+            ["pronto", "soon"]
+          ]
+        },
+        {
+          "id": "S0431L04",
+          "type": "M",
+          "target": "van a estar preparados",
+          "known": "they'll be ready",
+          "new": true,
+          "components": [
+            ["van a estar", "they'll be"],
+            ["preparados", "ready"]
+          ]
+        },
+        {
+          "id": "S0431L05",
+          "type": "A",
+          "target": "pronto",
+          "known": "soon",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0432",
+      "seed_pair": [
+        "They could mean that they want you to ask.",
+        "Podrían significar que quieren que preguntes."
+      ],
+      "legos": [
+        {
+          "id": "S0432L01",
+          "type": "M",
+          "target": "podrían significar",
+          "known": "they could mean",
+          "new": true,
+          "components": [
+            ["podrían", "they could"],
+            ["significar", "mean"]
+          ]
+        },
+        {
+          "id": "S0432L02",
+          "type": "M",
+          "target": "que quieren que preguntes",
+          "known": "that they want you to ask",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["quieren", "they want"],
+            ["que", "you to"],
+            ["preguntes", "ask"]
+          ]
+        },
+        {
+          "id": "S0432L03",
+          "type": "M",
+          "target": "quieren que preguntes",
+          "known": "they want you to ask",
+          "new": true,
+          "components": [
+            ["quieren", "they want"],
+            ["que", "you to"],
+            ["preguntes", "ask"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0433",
+      "seed_pair": [
+        "They couldn't find out when the film started.",
+        "No pudieron descubrir cuándo empezó la película."
+      ],
+      "legos": [
+        {
+          "id": "S0433L01",
+          "type": "M",
+          "target": "no pudieron descubrir",
+          "known": "they couldn't find out",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["pudieron", "they could"],
+            ["descubrir", "find out"]
+          ]
+        },
+        {
+          "id": "S0433L02",
+          "type": "M",
+          "target": "cuándo empezó la película",
+          "known": "when the film started",
+          "new": true,
+          "components": [
+            ["cuándo", "when"],
+            ["empezó", "started"],
+            ["la", "the"],
+            ["película", "film"]
+          ]
+        },
+        {
+          "id": "S0433L03",
+          "type": "M",
+          "target": "empezó la película",
+          "known": "the film started",
+          "new": true,
+          "components": [
+            ["empezó", "started"],
+            ["la", "the"],
+            ["película", "film"]
+          ]
+        },
+        {
+          "id": "S0433L04",
+          "type": "M",
+          "target": "la película",
+          "known": "the film",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["película", "film"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0434",
+      "seed_pair": [
+        "Could they cut the number of students they take?",
+        "¿Podrían reducir el número de estudiantes que toman?"
+      ],
+      "legos": [
+        {
+          "id": "S0434L01",
+          "type": "M",
+          "target": "podrían reducir",
+          "known": "could they cut",
+          "new": true,
+          "components": [
+            ["podrían", "could they"],
+            ["reducir", "cut"]
+          ]
+        },
+        {
+          "id": "S0434L02",
+          "type": "M",
+          "target": "el número de estudiantes",
+          "known": "the number of students",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["número", "number"],
+            ["de", "of"],
+            ["estudiantes", "students"]
+          ]
+        },
+        {
+          "id": "S0434L03",
+          "type": "M",
+          "target": "el número de estudiantes que toman",
+          "known": "the number of students they take",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["número", "number"],
+            ["de", "of"],
+            ["estudiantes", "students"],
+            ["que", "they"],
+            ["toman", "take"]
+          ]
+        },
+        {
+          "id": "S0434L04",
+          "type": "M",
+          "target": "que toman",
+          "known": "they take",
+          "new": true,
+          "components": [
+            ["que", "they"],
+            ["toman", "take"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0435",
+      "seed_pair": [
+        "Yes they could if they wanted to.",
+        "Sí podrían si quisieran."
+      ],
+      "legos": [
+        {
+          "id": "S0435L01",
+          "type": "A",
+          "target": "sí",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0435L02",
+          "type": "A",
+          "target": "podrían",
+          "known": "they could",
+          "new": true
+        },
+        {
+          "id": "S0435L03",
+          "type": "M",
+          "target": "si quisieran",
+          "known": "if they wanted to",
+          "new": true,
+          "components": [
+            ["si", "if"],
+            ["quisieran", "they wanted to"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0436",
+      "seed_pair": [
+        "No there's a minimum number they need.",
+        "No hay un número mínimo que necesitan."
+      ],
+      "legos": [
+        {
+          "id": "S0436L01",
+          "type": "A",
+          "target": "no",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0436L02",
+          "type": "A",
+          "target": "hay",
+          "known": "there's",
+          "new": true
+        },
+        {
+          "id": "S0436L03",
+          "type": "M",
+          "target": "un número mínimo",
+          "known": "a minimum number",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["número", "number"],
+            ["mínimo", "minimum"]
+          ]
+        },
+        {
+          "id": "S0436L04",
+          "type": "M",
+          "target": "un número mínimo que necesitan",
+          "known": "a minimum number they need",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["número", "number"],
+            ["mínimo", "minimum"],
+            ["que", "they"],
+            ["necesitan", "need"]
+          ]
+        },
+        {
+          "id": "S0436L05",
+          "type": "M",
+          "target": "que necesitan",
+          "known": "they need",
+          "new": true,
+          "components": [
+            ["que", "they"],
+            ["necesitan", "need"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0437",
+      "seed_pair": [
+        "They wanted to raise as much as possible for charity.",
+        "Querían recaudar tanto como posible para caridad."
+      ],
+      "legos": [
+        {
+          "id": "S0437L01",
+          "type": "M",
+          "target": "querían recaudar",
+          "known": "they wanted to raise",
+          "new": true,
+          "components": [
+            ["querían", "they wanted"],
+            ["recaudar", "to raise"]
+          ]
+        },
+        {
+          "id": "S0437L02",
+          "type": "M",
+          "target": "tanto como posible",
+          "known": "as much as possible",
+          "new": true,
+          "components": [
+            ["tanto", "as much"],
+            ["como", "as"],
+            ["posible", "possible"]
+          ]
+        },
+        {
+          "id": "S0437L03",
+          "type": "M",
+          "target": "para caridad",
+          "known": "for charity",
+          "new": true,
+          "components": [
+            ["para", "for"],
+            ["caridad", "charity"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0438",
+      "seed_pair": [
+        "They didn't want to decide what he should do.",
+        "No querían decidir lo que debería hacer."
+      ],
+      "legos": [
+        {
+          "id": "S0438L01",
+          "type": "M",
+          "target": "no querían decidir",
+          "known": "they didn't want to decide",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["querían", "they wanted"],
+            ["decidir", "to decide"]
+          ]
+        },
+        {
+          "id": "S0438L02",
+          "type": "M",
+          "target": "lo que debería hacer",
+          "known": "what he should do",
+          "new": true,
+          "components": [
+            ["lo que", "what"],
+            ["debería", "he should"],
+            ["hacer", "do"]
+          ]
+        },
+        {
+          "id": "S0438L03",
+          "type": "M",
+          "target": "debería hacer",
+          "known": "he should do",
+          "new": true,
+          "components": [
+            ["debería", "he should"],
+            ["hacer", "do"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0439",
+      "seed_pair": [
+        "They don't want to die.",
+        "No quieren morir."
+      ],
+      "legos": [
+        {
+          "id": "S0439L01",
+          "type": "M",
+          "target": "no quieren morir",
+          "known": "they don't want to die",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["quieren", "they want"],
+            ["morir", "to die"]
+          ]
+        },
+        {
+          "id": "S0439L02",
+          "type": "A",
+          "target": "morir",
+          "known": "to die",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0440",
+      "seed_pair": [
+        "They want to travel while they're still young.",
+        "Quieren viajar mientras todavía son jóvenes."
+      ],
+      "legos": [
+        {
+          "id": "S0440L01",
+          "type": "M",
+          "target": "quieren viajar",
+          "known": "they want to travel",
+          "new": true,
+          "components": [
+            ["quieren", "they want"],
+            ["viajar", "to travel"]
+          ]
+        },
+        {
+          "id": "S0440L02",
+          "type": "M",
+          "target": "mientras todavía son jóvenes",
+          "known": "while they're still young",
+          "new": true,
+          "components": [
+            ["mientras", "while"],
+            ["todavía", "still"],
+            ["son", "they're"],
+            ["jóvenes", "young"]
+          ]
+        },
+        {
+          "id": "S0440L03",
+          "type": "M",
+          "target": "todavía son jóvenes",
+          "known": "they're still young",
+          "new": true,
+          "components": [
+            ["todavía", "still"],
+            ["son", "they're"],
+            ["jóvenes", "young"]
+          ]
+        }
+      ]
+    }
+  ]
+}

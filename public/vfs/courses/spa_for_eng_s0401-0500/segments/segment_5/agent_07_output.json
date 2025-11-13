@@ -1,0 +1,513 @@
+{
+  "agent_id": "agent_07",
+  "seed_range": "S0461-S0470",
+  "extracted_at": "2025-11-13T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0461",
+      "seed_pair": [
+        "A shop where I can buy some postcards.",
+        "Una tienda donde puedo comprar algunas postales."
+      ],
+      "reasoning": "FORWARD SWEEP: 'a shop'→'una tienda' (article+noun, FD✅), 'where I can buy'→'donde puedo comprar' (relative clause, FD✅), 'some postcards'→'algunas postales' (quantifier+noun, FD✅). BACKWARD SWEEP: All covered. OVERLAPS: Added 'puedo comprar' to show modal pattern. Heuristic 1: No standalone particles. Heuristic 2: 'puedo comprar' appears in 2 LEGOs for recombination.",
+      "legos": [
+        {
+          "id": "S0461L01",
+          "type": "M",
+          "target": "una tienda",
+          "known": "a shop",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["tienda", "shop"]
+          ]
+        },
+        {
+          "id": "S0461L02",
+          "type": "M",
+          "target": "donde puedo comprar",
+          "known": "where I can buy",
+          "new": true,
+          "components": [
+            ["donde", "where"],
+            ["puedo", "I can"],
+            ["comprar", "buy/to buy"]
+          ]
+        },
+        {
+          "id": "S0461L03",
+          "type": "M",
+          "target": "puedo comprar",
+          "known": "I can buy",
+          "new": true,
+          "components": [
+            ["puedo", "I can"],
+            ["comprar", "buy/to buy"]
+          ]
+        },
+        {
+          "id": "S0461L04",
+          "type": "M",
+          "target": "algunas postales",
+          "known": "some postcards",
+          "new": true,
+          "components": [
+            ["algunas", "some"],
+            ["postales", "postcards"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0462",
+      "seed_pair": [
+        "My grandfather fought in Italy during the war.",
+        "Mi abuelo combatió en Italia durante la guerra."
+      ],
+      "reasoning": "FORWARD SWEEP: 'my grandfather'→'mi abuelo' (possessive+noun, FD✅), 'fought'→'combatió' (preterite verb, FD✅), 'in Italy'→'en Italia' (preposition+place, FD✅), 'during the war'→'durante la guerra' (temporal phrase, FD✅). BACKWARD SWEEP: All covered, no new patterns needed. Heuristic 1: All particles wrapped in context. Heuristic 2: Clean tiling, no overlaps needed.",
+      "legos": [
+        {
+          "id": "S0462L01",
+          "type": "M",
+          "target": "mi abuelo",
+          "known": "my grandfather",
+          "new": true,
+          "components": [
+            ["mi", "my"],
+            ["abuelo", "grandfather"]
+          ]
+        },
+        {
+          "id": "S0462L02",
+          "type": "A",
+          "target": "combatió",
+          "known": "fought",
+          "new": true
+        },
+        {
+          "id": "S0462L03",
+          "type": "M",
+          "target": "en Italia",
+          "known": "in Italy",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["Italia", "Italy"]
+          ]
+        },
+        {
+          "id": "S0462L04",
+          "type": "M",
+          "target": "durante la guerra",
+          "known": "during the war",
+          "new": true,
+          "components": [
+            ["durante", "during"],
+            ["la", "the"],
+            ["guerra", "war"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0463",
+      "seed_pair": [
+        "My room number.",
+        "Mi número de habitación."
+      ],
+      "reasoning": "FORWARD SWEEP: 'room number'→'número de habitación' (compound noun with 'de' construction, FD✅), 'my room number'→'mi número de habitación' (full phrase, FD✅). BACKWARD SWEEP: Covered. OVERLAPS: Created overlap to show both bare compound and with possessive. Heuristic 1: No standalone 'de'. Heuristic 2: Two LEGOs show possessive pattern.",
+      "legos": [
+        {
+          "id": "S0463L01",
+          "type": "M",
+          "target": "número de habitación",
+          "known": "room number",
+          "new": true,
+          "components": [
+            ["número", "number"],
+            ["de", "of"],
+            ["habitación", "room"]
+          ]
+        },
+        {
+          "id": "S0463L02",
+          "type": "M",
+          "target": "mi número de habitación",
+          "known": "my room number",
+          "new": true,
+          "components": [
+            ["mi", "my"],
+            ["número", "number"],
+            ["de", "of"],
+            ["habitación", "room"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0464",
+      "seed_pair": [
+        "I told her my room number once but she forgot it.",
+        "Le dije mi número de habitación una vez pero ella lo olvidó."
+      ],
+      "reasoning": "FORWARD SWEEP: 'I told her'→'le dije' (indirect object+verb, FD✅), 'my room number'→'mi número de habitación' (from S0463, FD✅), 'once'→'una vez' (article+noun for time, FD✅), 'but'→'pero' (conjunction, FD✅), 'she forgot it'→'ella lo olvidó' (subject+direct object pronoun+verb, FD✅). BACKWARD SWEEP: 'olvidó' alone❌ needs subject, 'lo olvidó'❌ needs subject, 'ella lo olvidó'✅ complete. Heuristic 1: No standalone pronouns. Heuristic 2: Clean tiling.",
+      "legos": [
+        {
+          "id": "S0464L01",
+          "type": "M",
+          "target": "le dije",
+          "known": "I told her",
+          "new": true,
+          "components": [
+            ["le", "her/to her"],
+            ["dije", "I told"]
+          ]
+        },
+        {
+          "id": "S0464L02",
+          "type": "M",
+          "target": "mi número de habitación",
+          "known": "my room number",
+          "new": true,
+          "components": [
+            ["mi", "my"],
+            ["número", "number"],
+            ["de", "of"],
+            ["habitación", "room"]
+          ]
+        },
+        {
+          "id": "S0464L03",
+          "type": "M",
+          "target": "una vez",
+          "known": "once",
+          "new": true,
+          "components": [
+            ["una", "one"],
+            ["vez", "time"]
+          ]
+        },
+        {
+          "id": "S0464L04",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0464L05",
+          "type": "M",
+          "target": "ella lo olvidó",
+          "known": "she forgot it",
+          "new": true,
+          "components": [
+            ["ella", "she"],
+            ["lo", "it"],
+            ["olvidó", "forgot"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0465",
+      "seed_pair": [
+        "Next time I will ask her what her name is.",
+        "La próxima vez voy a preguntarle cuál es su nombre."
+      ],
+      "reasoning": "FORWARD SWEEP: 'next time'→'la próxima vez' (time expression, FD✅), 'I will ask her'→'voy a preguntarle' (ir a future+indirect object, FD✅), 'what her name is'→'cuál es su nombre' (question construction, FD✅). BACKWARD SWEEP: 'su nombre'→'her name' useful overlap. OVERLAPS: Added 'su nombre' to show possessive pattern. Heuristic 1: No standalone particles. Heuristic 2: 'su nombre' pattern useful for generation.",
+      "legos": [
+        {
+          "id": "S0465L01",
+          "type": "M",
+          "target": "la próxima vez",
+          "known": "next time",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["próxima", "next"],
+            ["vez", "time"]
+          ]
+        },
+        {
+          "id": "S0465L02",
+          "type": "M",
+          "target": "voy a preguntarle",
+          "known": "I will ask her",
+          "new": true,
+          "components": [
+            ["voy", "I go/I'm going"],
+            ["a", "to"],
+            ["preguntarle", "ask her/to ask her"]
+          ]
+        },
+        {
+          "id": "S0465L03",
+          "type": "M",
+          "target": "cuál es su nombre",
+          "known": "what her name is",
+          "new": true,
+          "components": [
+            ["cuál", "what/which"],
+            ["es", "is"],
+            ["su", "her/his"],
+            ["nombre", "name"]
+          ]
+        },
+        {
+          "id": "S0465L04",
+          "type": "M",
+          "target": "su nombre",
+          "known": "her name",
+          "new": true,
+          "components": [
+            ["su", "her/his"],
+            ["nombre", "name"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0466",
+      "seed_pair": [
+        "Let me throw it over the wall.",
+        "Déjame lanzarlo sobre el muro."
+      ],
+      "reasoning": "FORWARD SWEEP: 'let me'→'déjame' (imperative+pronoun, FD✅), 'throw it'→'lanzarlo' (infinitive+pronoun, FD✅), 'over the wall'→'sobre el muro' (preposition+article+noun, FD✅). BACKWARD SWEEP: Covered. OVERLAPS: Added 'déjame lanzarlo' to show imperative+infinitive pattern. Heuristic 1: Pronouns attached to verbs. Heuristic 2: 'déjame lanzarlo' shows command+action pattern for recombination.",
+      "legos": [
+        {
+          "id": "S0466L01",
+          "type": "A",
+          "target": "déjame",
+          "known": "let me",
+          "new": true
+        },
+        {
+          "id": "S0466L02",
+          "type": "M",
+          "target": "lanzarlo",
+          "known": "throw it",
+          "new": true,
+          "components": [
+            ["lanzar", "throw/to throw"],
+            ["lo", "it"]
+          ]
+        },
+        {
+          "id": "S0466L03",
+          "type": "M",
+          "target": "déjame lanzarlo",
+          "known": "let me throw it",
+          "new": true,
+          "components": [
+            ["déjame", "let me"],
+            ["lanzarlo", "throw it"]
+          ]
+        },
+        {
+          "id": "S0466L04",
+          "type": "M",
+          "target": "sobre el muro",
+          "known": "over the wall",
+          "new": true,
+          "components": [
+            ["sobre", "over/on"],
+            ["el", "the"],
+            ["muro", "wall"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0467",
+      "seed_pair": [
+        "It's next to the car park.",
+        "Está al lado del estacionamiento."
+      ],
+      "reasoning": "FORWARD SWEEP: 'it's'→'está' (location verb, FD✅), 'next to the car park'→'al lado del estacionamiento' (prepositional phrase with contraction 'del'=de+el, FD✅). BACKWARD SWEEP: 'estacionamiento' useful as standalone. OVERLAPS: Added 'estacionamiento' to show noun separately. Heuristic 1: Contraction 'del' kept in context. Heuristic 2: 'al lado del' shows prepositional pattern.",
+      "legos": [
+        {
+          "id": "S0467L01",
+          "type": "A",
+          "target": "está",
+          "known": "it's",
+          "new": true
+        },
+        {
+          "id": "S0467L02",
+          "type": "M",
+          "target": "al lado del estacionamiento",
+          "known": "next to the car park",
+          "new": true,
+          "components": [
+            ["al lado del", "next to the"],
+            ["estacionamiento", "car park"]
+          ]
+        },
+        {
+          "id": "S0467L03",
+          "type": "A",
+          "target": "estacionamiento",
+          "known": "car park",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0468",
+      "seed_pair": [
+        "It's a big world.",
+        "Es un mundo grande."
+      ],
+      "reasoning": "FORWARD SWEEP: 'it's'→'es' (copula, FD✅), 'a big world'→'un mundo grande' (article+noun+adjective showing adjective-after-noun order, FD✅). BACKWARD SWEEP: 'mundo grande'→'big world' useful to highlight adjective position. OVERLAPS: Added 'mundo grande' to emphasize word order pattern. Heuristic 1: No standalone articles. Heuristic 2: 'mundo grande' shows Spanish adjective placement.",
+      "legos": [
+        {
+          "id": "S0468L01",
+          "type": "A",
+          "target": "es",
+          "known": "it's",
+          "new": true
+        },
+        {
+          "id": "S0468L02",
+          "type": "M",
+          "target": "un mundo grande",
+          "known": "a big world",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["mundo", "world"],
+            ["grande", "big"]
+          ]
+        },
+        {
+          "id": "S0468L03",
+          "type": "M",
+          "target": "mundo grande",
+          "known": "big world",
+          "new": true,
+          "components": [
+            ["mundo", "world"],
+            ["grande", "big"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0469",
+      "seed_pair": [
+        "But that doesn't mean we can't change it.",
+        "Pero eso no significa que no podamos cambiarlo."
+      ],
+      "reasoning": "FORWARD SWEEP: 'but'→'pero' (conjunction, FD✅), 'that doesn't mean'→'eso no significa que' (includes subjunctive trigger 'que', FD✅), 'we can't change it'→'no podamos cambiarlo' (subjunctive clause, FD✅). BACKWARD SWEEP: 'cambiarlo'→'change it' useful overlap, 'podamos'❌ alone uncertain (indicative vs subjunctive), needs 'que' trigger. OVERLAPS: Added 'no significa que' and 'cambiarlo' for patterns. Heuristic 1: Subjunctive needs trigger 'que'. Heuristic 2: Multiple overlaps show 'significa que' + subjunctive pattern.",
+      "legos": [
+        {
+          "id": "S0469L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0469L02",
+          "type": "M",
+          "target": "eso no significa que",
+          "known": "that doesn't mean that",
+          "new": true,
+          "components": [
+            ["eso", "that"],
+            ["no", "not/doesn't"],
+            ["significa", "mean"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0469L03",
+          "type": "M",
+          "target": "no significa que",
+          "known": "doesn't mean that",
+          "new": true,
+          "components": [
+            ["no", "not/doesn't"],
+            ["significa", "mean"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0469L04",
+          "type": "M",
+          "target": "no podamos cambiarlo",
+          "known": "we can't change it",
+          "new": true,
+          "components": [
+            ["no", "not/can't"],
+            ["podamos", "we can"],
+            ["cambiarlo", "change it"]
+          ]
+        },
+        {
+          "id": "S0469L05",
+          "type": "M",
+          "target": "cambiarlo",
+          "known": "change it",
+          "new": true,
+          "components": [
+            ["cambiar", "change/to change"],
+            ["lo", "it"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0470",
+      "seed_pair": [
+        "How high do you want to climb before we stop?",
+        "¿Qué tan alto quieres escalar antes de que paremos?"
+      ],
+      "reasoning": "FORWARD SWEEP: 'how high'→'qué tan alto' (question construction, FD✅), 'do you want to climb'→'quieres escalar' (verb+infinitive, FD✅), 'before we stop'→'antes de que paremos' (subjunctive trigger+clause, FD✅). BACKWARD SWEEP: 'paremos'❌ alone uncertain (paramos vs paremos), 'que paremos'❌ needs trigger, 'de que paremos'❌ needs trigger, 'antes de que paremos'✅ complete. OVERLAPS: Added 'escalar' as standalone vocabulary. Heuristic 1: Subjunctive 'paremos' needs full 'antes de que' trigger. Heuristic 2: Clean patterns.",
+      "legos": [
+        {
+          "id": "S0470L01",
+          "type": "M",
+          "target": "qué tan alto",
+          "known": "how high",
+          "new": true,
+          "components": [
+            ["qué", "how/what"],
+            ["tan", "so"],
+            ["alto", "high"]
+          ]
+        },
+        {
+          "id": "S0470L02",
+          "type": "M",
+          "target": "quieres escalar",
+          "known": "do you want to climb",
+          "new": true,
+          "components": [
+            ["quieres", "you want"],
+            ["escalar", "to climb/climb"]
+          ]
+        },
+        {
+          "id": "S0470L03",
+          "type": "A",
+          "target": "escalar",
+          "known": "to climb",
+          "new": true
+        },
+        {
+          "id": "S0470L04",
+          "type": "M",
+          "target": "antes de que paremos",
+          "known": "before we stop",
+          "new": true,
+          "components": [
+            ["antes de que", "before"],
+            ["paremos", "we stop"]
+          ]
+        }
+      ]
+    }
+  ]
+}
