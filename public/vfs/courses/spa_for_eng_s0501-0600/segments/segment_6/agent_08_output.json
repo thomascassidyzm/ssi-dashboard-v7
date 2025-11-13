@@ -1,0 +1,639 @@
+{
+  "agent_id": "agent_08",
+  "seed_range": "S0571-S0580",
+  "extracted_at": "2025-11-13T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0571",
+      "seed_pair": [
+        "I'm not convinced that would be a very good idea.",
+        "No estoy convencido de que eso sería una muy buena idea."
+      ],
+      "legos": [
+        {
+          "id": "S0571L01",
+          "type": "M",
+          "target": "no estoy convencido",
+          "known": "I'm not convinced",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["estoy", "I am"],
+            ["convencido", "convinced"]
+          ]
+        },
+        {
+          "id": "S0571L02",
+          "type": "M",
+          "target": "de que eso sería",
+          "known": "that would be",
+          "new": true,
+          "components": [
+            ["de que", "that"],
+            ["eso", "that"],
+            ["sería", "would be"]
+          ]
+        },
+        {
+          "id": "S0571L03",
+          "type": "M",
+          "target": "una muy buena idea",
+          "known": "a very good idea",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["muy", "very"],
+            ["buena", "good"],
+            ["idea", "idea"]
+          ]
+        },
+        {
+          "id": "S0571L04",
+          "type": "M",
+          "target": "eso sería una muy buena idea",
+          "known": "that would be a very good idea",
+          "new": true,
+          "components": [
+            ["eso", "that"],
+            ["sería", "would be"],
+            ["una", "a"],
+            ["muy", "very"],
+            ["buena", "good"],
+            ["idea", "idea"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0572",
+      "seed_pair": [
+        "Have you forgotten what happened the last time they visited us?",
+        "¿Has olvidado lo que pasó la última vez que nos visitaron?"
+      ],
+      "legos": [
+        {
+          "id": "S0572L01",
+          "type": "M",
+          "target": "has olvidado",
+          "known": "have you forgotten",
+          "new": true,
+          "components": [
+            ["has", "have you"],
+            ["olvidado", "forgotten"]
+          ]
+        },
+        {
+          "id": "S0572L02",
+          "type": "M",
+          "target": "lo que pasó",
+          "known": "what happened",
+          "new": true,
+          "components": [
+            ["lo que", "what"],
+            ["pasó", "happened"]
+          ]
+        },
+        {
+          "id": "S0572L03",
+          "type": "M",
+          "target": "la última vez",
+          "known": "the last time",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["última", "last"],
+            ["vez", "time"]
+          ]
+        },
+        {
+          "id": "S0572L04",
+          "type": "M",
+          "target": "nos visitaron",
+          "known": "they visited us",
+          "new": true,
+          "components": [
+            ["nos", "us"],
+            ["visitaron", "they visited"]
+          ]
+        },
+        {
+          "id": "S0572L05",
+          "type": "M",
+          "target": "la última vez que nos visitaron",
+          "known": "the last time they visited us",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["última", "last"],
+            ["vez", "time"],
+            ["que", "that"],
+            ["nos", "us"],
+            ["visitaron", "they visited"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0573",
+      "seed_pair": [
+        "It's the kind of thing that makes the holidays very special.",
+        "Es el tipo de cosa que hace que las vacaciones sean muy especiales."
+      ],
+      "legos": [
+        {
+          "id": "S0573L01",
+          "type": "M",
+          "target": "es el tipo de",
+          "known": "it's the kind of",
+          "new": true,
+          "components": [
+            ["es", "it's"],
+            ["el", "the"],
+            ["tipo", "kind"],
+            ["de", "of"]
+          ]
+        },
+        {
+          "id": "S0573L02",
+          "type": "A",
+          "target": "cosa",
+          "known": "thing",
+          "new": true
+        },
+        {
+          "id": "S0573L03",
+          "type": "M",
+          "target": "que hace",
+          "known": "that makes",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["hace", "makes"]
+          ]
+        },
+        {
+          "id": "S0573L04",
+          "type": "M",
+          "target": "hace que las vacaciones sean muy especiales",
+          "known": "makes the holidays very special",
+          "new": true,
+          "components": [
+            ["hace", "makes"],
+            ["que", "that"],
+            ["las", "the"],
+            ["vacaciones", "holidays"],
+            ["sean", "are"],
+            ["muy", "very"],
+            ["especiales", "special"]
+          ]
+        },
+        {
+          "id": "S0573L05",
+          "type": "M",
+          "target": "las vacaciones",
+          "known": "the holidays",
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["vacaciones", "holidays"]
+          ]
+        },
+        {
+          "id": "S0573L06",
+          "type": "M",
+          "target": "las vacaciones sean muy especiales",
+          "known": "the holidays are very special",
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["vacaciones", "holidays"],
+            ["sean", "are"],
+            ["muy", "very"],
+            ["especiales", "special"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0574",
+      "seed_pair": [
+        "The holidays are very special for everyone.",
+        "Las vacaciones son muy especiales para todos."
+      ],
+      "legos": [
+        {
+          "id": "S0574L01",
+          "type": "M",
+          "target": "las vacaciones",
+          "known": "the holidays",
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["vacaciones", "holidays"]
+          ]
+        },
+        {
+          "id": "S0574L02",
+          "type": "M",
+          "target": "son muy especiales",
+          "known": "are very special",
+          "new": true,
+          "components": [
+            ["son", "are"],
+            ["muy", "very"],
+            ["especiales", "special"]
+          ]
+        },
+        {
+          "id": "S0574L03",
+          "type": "M",
+          "target": "para todos",
+          "known": "for everyone",
+          "new": true,
+          "components": [
+            ["para", "for"],
+            ["todos", "everyone"]
+          ]
+        },
+        {
+          "id": "S0574L04",
+          "type": "M",
+          "target": "las vacaciones son muy especiales",
+          "known": "the holidays are very special",
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["vacaciones", "holidays"],
+            ["son", "are"],
+            ["muy", "very"],
+            ["especiales", "special"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0575",
+      "seed_pair": [
+        "It's been upsetting.",
+        "Ha sido perturbador."
+      ],
+      "legos": [
+        {
+          "id": "S0575L01",
+          "type": "M",
+          "target": "ha sido",
+          "known": "it's been",
+          "new": true,
+          "components": [
+            ["ha", "has"],
+            ["sido", "been"]
+          ]
+        },
+        {
+          "id": "S0575L02",
+          "type": "A",
+          "target": "perturbador",
+          "known": "upsetting",
+          "new": true
+        },
+        {
+          "id": "S0575L03",
+          "type": "M",
+          "target": "ha sido perturbador",
+          "known": "it's been upsetting",
+          "new": true,
+          "components": [
+            ["ha", "has"],
+            ["sido", "been"],
+            ["perturbador", "upsetting"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0576",
+      "seed_pair": [
+        "It has been very upsetting waiting.",
+        "Ha sido muy perturbador esperar."
+      ],
+      "legos": [
+        {
+          "id": "S0576L01",
+          "type": "M",
+          "target": "ha sido",
+          "known": "it has been",
+          "new": true,
+          "components": [
+            ["ha", "has"],
+            ["sido", "been"]
+          ]
+        },
+        {
+          "id": "S0576L02",
+          "type": "M",
+          "target": "muy perturbador",
+          "known": "very upsetting",
+          "new": true,
+          "components": [
+            ["muy", "very"],
+            ["perturbador", "upsetting"]
+          ]
+        },
+        {
+          "id": "S0576L03",
+          "type": "A",
+          "target": "esperar",
+          "known": "waiting",
+          "new": true
+        },
+        {
+          "id": "S0576L04",
+          "type": "M",
+          "target": "ha sido muy perturbador",
+          "known": "it has been very upsetting",
+          "new": true,
+          "components": [
+            ["ha", "has"],
+            ["sido", "been"],
+            ["muy", "very"],
+            ["perturbador", "upsetting"]
+          ]
+        },
+        {
+          "id": "S0576L05",
+          "type": "M",
+          "target": "muy perturbador esperar",
+          "known": "very upsetting waiting",
+          "new": true,
+          "components": [
+            ["muy", "very"],
+            ["perturbador", "upsetting"],
+            ["esperar", "waiting"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0577",
+      "seed_pair": [
+        "We've been waiting for the news from the hospital.",
+        "Hemos estado esperando las noticias del hospital."
+      ],
+      "legos": [
+        {
+          "id": "S0577L01",
+          "type": "M",
+          "target": "hemos estado",
+          "known": "we've been",
+          "new": true,
+          "components": [
+            ["hemos", "we've"],
+            ["estado", "been"]
+          ]
+        },
+        {
+          "id": "S0577L02",
+          "type": "A",
+          "target": "esperando",
+          "known": "waiting",
+          "new": true
+        },
+        {
+          "id": "S0577L03",
+          "type": "M",
+          "target": "hemos estado esperando",
+          "known": "we've been waiting",
+          "new": true,
+          "components": [
+            ["hemos", "we've"],
+            ["estado", "been"],
+            ["esperando", "waiting"]
+          ]
+        },
+        {
+          "id": "S0577L04",
+          "type": "M",
+          "target": "las noticias",
+          "known": "the news",
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["noticias", "news"]
+          ]
+        },
+        {
+          "id": "S0577L05",
+          "type": "M",
+          "target": "del hospital",
+          "known": "from the hospital",
+          "new": true,
+          "components": [
+            ["del", "from the"],
+            ["hospital", "hospital"]
+          ]
+        },
+        {
+          "id": "S0577L06",
+          "type": "M",
+          "target": "las noticias del hospital",
+          "known": "the news from the hospital",
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["noticias", "news"],
+            ["del", "from the"],
+            ["hospital", "hospital"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0578",
+      "seed_pair": [
+        "Somewhere warmer.",
+        "En algún lugar más cálido."
+      ],
+      "legos": [
+        {
+          "id": "S0578L01",
+          "type": "M",
+          "target": "en algún lugar",
+          "known": "somewhere",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["algún", "some"],
+            ["lugar", "place"]
+          ]
+        },
+        {
+          "id": "S0578L02",
+          "type": "M",
+          "target": "más cálido",
+          "known": "warmer",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["cálido", "warm"]
+          ]
+        },
+        {
+          "id": "S0578L03",
+          "type": "M",
+          "target": "algún lugar más cálido",
+          "known": "somewhere warmer",
+          "new": true,
+          "components": [
+            ["algún", "some"],
+            ["lugar", "place"],
+            ["más", "more"],
+            ["cálido", "warm"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0579",
+      "seed_pair": [
+        "We've often tried.",
+        "Frecuentemente hemos intentado."
+      ],
+      "legos": [
+        {
+          "id": "S0579L01",
+          "type": "A",
+          "target": "frecuentemente",
+          "known": "often",
+          "new": true
+        },
+        {
+          "id": "S0579L02",
+          "type": "M",
+          "target": "hemos intentado",
+          "known": "we've tried",
+          "new": true,
+          "components": [
+            ["hemos", "we've"],
+            ["intentado", "tried"]
+          ]
+        },
+        {
+          "id": "S0579L03",
+          "type": "M",
+          "target": "frecuentemente hemos intentado",
+          "known": "we've often tried",
+          "new": true,
+          "components": [
+            ["frecuentemente", "often"],
+            ["hemos", "we've"],
+            ["intentado", "tried"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0580",
+      "seed_pair": [
+        "We've often wanted to take the children somewhere a little warmer.",
+        "Frecuentemente hemos querido llevar a los niños a algún lugar un poco más cálido."
+      ],
+      "legos": [
+        {
+          "id": "S0580L01",
+          "type": "M",
+          "target": "frecuentemente hemos querido",
+          "known": "we've often wanted",
+          "new": true,
+          "components": [
+            ["frecuentemente", "often"],
+            ["hemos", "we've"],
+            ["querido", "wanted"]
+          ]
+        },
+        {
+          "id": "S0580L02",
+          "type": "M",
+          "target": "hemos querido",
+          "known": "we've wanted",
+          "new": true,
+          "components": [
+            ["hemos", "we've"],
+            ["querido", "wanted"]
+          ]
+        },
+        {
+          "id": "S0580L03",
+          "type": "A",
+          "target": "llevar",
+          "known": "to take",
+          "new": true
+        },
+        {
+          "id": "S0580L04",
+          "type": "M",
+          "target": "a los niños",
+          "known": "the children",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["los", "the"],
+            ["niños", "children"]
+          ]
+        },
+        {
+          "id": "S0580L05",
+          "type": "M",
+          "target": "llevar a los niños",
+          "known": "to take the children",
+          "new": true,
+          "components": [
+            ["llevar", "to take"],
+            ["a", "to"],
+            ["los", "the"],
+            ["niños", "children"]
+          ]
+        },
+        {
+          "id": "S0580L06",
+          "type": "M",
+          "target": "a algún lugar",
+          "known": "somewhere",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["algún", "some"],
+            ["lugar", "place"]
+          ]
+        },
+        {
+          "id": "S0580L07",
+          "type": "M",
+          "target": "un poco más cálido",
+          "known": "a little warmer",
+          "new": true,
+          "components": [
+            ["un poco", "a little"],
+            ["más", "more"],
+            ["cálido", "warm"]
+          ]
+        },
+        {
+          "id": "S0580L08",
+          "type": "M",
+          "target": "a algún lugar un poco más cálido",
+          "known": "somewhere a little warmer",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["algún", "some"],
+            ["lugar", "place"],
+            ["un poco", "a little"],
+            ["más", "more"],
+            ["cálido", "warm"]
+          ]
+        }
+      ]
+    }
+  ]
+}

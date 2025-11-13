@@ -1,0 +1,461 @@
+{
+  "agent_id": "agent_05",
+  "seed_range": "S0541-S0550",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0541",
+      "seed_pair": [
+        "It's a good idea to try and breathe slowly.",
+        "Es una buena idea intentar respirar despacio."
+      ],
+      "extraction_notes": "Forward sweep: 'es una buena idea', 'intentar respirar', 'despacio'. Backward sweep confirms. Created overlap 'respirar despacio' + 'intentar respirar despacio' for pattern generation (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0541L01",
+          "type": "M",
+          "target": "es una buena idea",
+          "known": "it's a good idea",
+          "new": true,
+          "components": [
+            ["es", "it's"],
+            ["una", "a"],
+            ["buena", "good"],
+            ["idea", "idea"]
+          ]
+        },
+        {
+          "id": "S0541L02",
+          "type": "M",
+          "target": "intentar respirar",
+          "known": "to try and breathe",
+          "new": true,
+          "components": [
+            ["intentar", "to try"],
+            ["respirar", "breathe/to breathe"]
+          ]
+        },
+        {
+          "id": "S0541L03",
+          "type": "M",
+          "target": "respirar despacio",
+          "known": "breathe slowly",
+          "new": true,
+          "components": [
+            ["respirar", "breathe"],
+            ["despacio", "slowly"]
+          ]
+        },
+        {
+          "id": "S0541L04",
+          "type": "M",
+          "target": "intentar respirar despacio",
+          "known": "try and breathe slowly",
+          "new": true,
+          "components": [
+            ["intentar", "to try"],
+            ["respirar", "breathe"],
+            ["despacio", "slowly"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0542",
+      "seed_pair": [
+        "Whenever you feel angry.",
+        "Cuando sea que te sientas enojado."
+      ],
+      "extraction_notes": "Subjunctive construction. Forward sweep: 'cuando sea que' triggers subjunctive. Backward sweep: 'enojado' alone fails (gender ambiguous) → needs 'te sientas enojado'. Created overlap for pattern.",
+      "legos": [
+        {
+          "id": "S0542L01",
+          "type": "M",
+          "target": "cuando sea que te sientas",
+          "known": "whenever you feel",
+          "new": true,
+          "components": [
+            ["cuando", "when/whenever"],
+            ["sea", "be (subjunctive)"],
+            ["que", "that"],
+            ["te", "you"],
+            ["sientas", "feel (subjunctive)"]
+          ]
+        },
+        {
+          "id": "S0542L02",
+          "type": "M",
+          "target": "te sientas enojado",
+          "known": "you feel angry",
+          "new": true,
+          "components": [
+            ["te", "you"],
+            ["sientas", "feel"],
+            ["enojado", "angry"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0543",
+      "seed_pair": [
+        "She was right.",
+        "Ella tenía razón."
+      ],
+      "extraction_notes": "Idiomatic expression. Forward sweep: 'She' alone fails (standalone pronoun) → needs full phrase. 'tenía razón' is fixed expression (can't split). Backward sweep confirms.",
+      "legos": [
+        {
+          "id": "S0543L01",
+          "type": "M",
+          "target": "ella tenía razón",
+          "known": "she was right",
+          "new": true,
+          "components": [
+            ["ella", "she"],
+            ["tenía", "was/had"],
+            ["razón", "right/reason"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0544",
+      "seed_pair": [
+        "Whoever said it would be difficult was absolutely right.",
+        "Quien sea que dijo que sería difícil tenía absolutamente razón."
+      ],
+      "extraction_notes": "Complex sentence. Forward sweep: 'quien sea que' subjunctive construction, 'que sería difícil' conditional, 'tenía absolutamente razón' extends S0543's idiom. Backward sweep confirms all chunks.",
+      "legos": [
+        {
+          "id": "S0544L01",
+          "type": "M",
+          "target": "quien sea que dijo",
+          "known": "whoever said",
+          "new": true,
+          "components": [
+            ["quien", "who/whoever"],
+            ["sea", "be (subjunctive)"],
+            ["que", "that"],
+            ["dijo", "said"]
+          ]
+        },
+        {
+          "id": "S0544L02",
+          "type": "M",
+          "target": "que sería difícil",
+          "known": "it would be difficult",
+          "new": true,
+          "components": [
+            ["que", "that/it"],
+            ["sería", "would be"],
+            ["difícil", "difficult"]
+          ]
+        },
+        {
+          "id": "S0544L03",
+          "type": "M",
+          "target": "tenía absolutamente razón",
+          "known": "was absolutely right",
+          "new": true,
+          "components": [
+            ["tenía", "was/had"],
+            ["absolutamente", "absolutely"],
+            ["razón", "right/reason"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0545",
+      "seed_pair": [
+        "It's your turn to take the clean clothes upstairs.",
+        "Es tu turno de llevar la ropa limpia arriba."
+      ],
+      "extraction_notes": "Forward sweep: 'es tu turno', 'de llevar' construction, 'la ropa limpia' (adj follows noun), 'arriba' standalone OK. Created overlap 'llevar la ropa limpia' for pattern (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0545L01",
+          "type": "M",
+          "target": "es tu turno",
+          "known": "it's your turn",
+          "new": true,
+          "components": [
+            ["es", "it's"],
+            ["tu", "your"],
+            ["turno", "turn"]
+          ]
+        },
+        {
+          "id": "S0545L02",
+          "type": "M",
+          "target": "de llevar",
+          "known": "to take",
+          "new": true,
+          "components": [
+            ["de", "to"],
+            ["llevar", "take/carry"]
+          ]
+        },
+        {
+          "id": "S0545L03",
+          "type": "M",
+          "target": "la ropa limpia",
+          "known": "the clean clothes",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["ropa", "clothes"],
+            ["limpia", "clean"]
+          ]
+        },
+        {
+          "id": "S0545L04",
+          "type": "M",
+          "target": "llevar la ropa limpia",
+          "known": "take the clean clothes",
+          "new": true,
+          "components": [
+            ["llevar", "take"],
+            ["la", "the"],
+            ["ropa", "clothes"],
+            ["limpia", "clean"]
+          ]
+        },
+        {
+          "id": "S0545L05",
+          "type": "A",
+          "target": "arriba",
+          "known": "upstairs",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0546",
+      "seed_pair": [
+        "The dog is dirty and wet.",
+        "El perro está sucio y mojado."
+      ],
+      "extraction_notes": "Ser/estar distinction critical. Forward sweep: 'el perro', 'and' alone fails (particle) → needs full 'está sucio y mojado'. Backward sweep: adjectives need 'está'. No overlaps needed here.",
+      "legos": [
+        {
+          "id": "S0546L01",
+          "type": "M",
+          "target": "el perro",
+          "known": "the dog",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["perro", "dog"]
+          ]
+        },
+        {
+          "id": "S0546L02",
+          "type": "M",
+          "target": "está sucio y mojado",
+          "known": "is dirty and wet",
+          "new": true,
+          "components": [
+            ["está", "is"],
+            ["sucio", "dirty"],
+            ["y", "and"],
+            ["mojado", "wet"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0547",
+      "seed_pair": [
+        "Because he has been playing in the mud.",
+        "Porque ha estado jugando en el barro."
+      ],
+      "extraction_notes": "Present perfect continuous. Forward sweep: 'porque' OK, 'ha estado jugando' compound tense, 'en el barro' (preposition needed). Backward sweep confirms 'barro' needs 'en el'.",
+      "legos": [
+        {
+          "id": "S0547L01",
+          "type": "A",
+          "target": "porque",
+          "known": "because",
+          "new": true
+        },
+        {
+          "id": "S0547L02",
+          "type": "M",
+          "target": "ha estado jugando",
+          "known": "has been playing",
+          "new": true,
+          "components": [
+            ["ha", "has"],
+            ["estado", "been"],
+            ["jugando", "playing"]
+          ]
+        },
+        {
+          "id": "S0547L03",
+          "type": "M",
+          "target": "en el barro",
+          "known": "in the mud",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["el", "the"],
+            ["barro", "mud"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0548",
+      "seed_pair": [
+        "I am feeling sad at the moment.",
+        "Me estoy sintiendo triste en este momento."
+      ],
+      "extraction_notes": "Reflexive + progressive. Forward sweep: 'me estoy sintiendo' reflexive construction, 'triste' OK alone, 'en este momento' phrase. Created overlap 'me estoy sintiendo triste' for pattern (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0548L01",
+          "type": "M",
+          "target": "me estoy sintiendo",
+          "known": "I am feeling",
+          "new": true,
+          "components": [
+            ["me", "I/myself"],
+            ["estoy", "am"],
+            ["sintiendo", "feeling"]
+          ]
+        },
+        {
+          "id": "S0548L02",
+          "type": "A",
+          "target": "triste",
+          "known": "sad",
+          "new": true
+        },
+        {
+          "id": "S0548L03",
+          "type": "M",
+          "target": "me estoy sintiendo triste",
+          "known": "I am feeling sad",
+          "new": true,
+          "components": [
+            ["me", "I"],
+            ["estoy", "am"],
+            ["sintiendo", "feeling"],
+            ["triste", "sad"]
+          ]
+        },
+        {
+          "id": "S0548L04",
+          "type": "M",
+          "target": "en este momento",
+          "known": "at the moment",
+          "new": true,
+          "components": [
+            ["en", "at"],
+            ["este", "this"],
+            ["momento", "moment"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0549",
+      "seed_pair": [
+        "Because I have got to be quiet.",
+        "Porque tengo que estar callado."
+      ],
+      "extraction_notes": "Obligation structure. Forward sweep: 'porque' from S0547, 'tengo que' obligation, 'estar callado' ser/estar distinction. Created overlap 'tengo que estar callado' for full obligation pattern (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0549L01",
+          "type": "A",
+          "target": "porque",
+          "known": "because",
+          "new": true
+        },
+        {
+          "id": "S0549L02",
+          "type": "M",
+          "target": "tengo que",
+          "known": "I have got to",
+          "new": true,
+          "components": [
+            ["tengo", "I have"],
+            ["que", "to/that"]
+          ]
+        },
+        {
+          "id": "S0549L03",
+          "type": "M",
+          "target": "estar callado",
+          "known": "be quiet",
+          "new": true,
+          "components": [
+            ["estar", "be"],
+            ["callado", "quiet/silent"]
+          ]
+        },
+        {
+          "id": "S0549L04",
+          "type": "M",
+          "target": "tengo que estar callado",
+          "known": "have got to be quiet",
+          "new": true,
+          "components": [
+            ["tengo", "I have"],
+            ["que", "got to"],
+            ["estar", "be"],
+            ["callado", "quiet"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0550",
+      "seed_pair": [
+        "The end of the village.",
+        "El final del pueblo."
+      ],
+      "extraction_notes": "Simple phrase with contraction. Forward sweep: 'el final', 'del' (de + el contraction) needs noun → 'del pueblo'. Backward sweep: 'pueblo' needs 'del'. Created full phrase overlap.",
+      "legos": [
+        {
+          "id": "S0550L01",
+          "type": "M",
+          "target": "el final",
+          "known": "the end",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["final", "end"]
+          ]
+        },
+        {
+          "id": "S0550L02",
+          "type": "M",
+          "target": "del pueblo",
+          "known": "of the village",
+          "new": true,
+          "components": [
+            ["del", "of the"],
+            ["pueblo", "village/town"]
+          ]
+        },
+        {
+          "id": "S0550L03",
+          "type": "M",
+          "target": "el final del pueblo",
+          "known": "the end of the village",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["final", "end"],
+            ["del", "of the"],
+            ["pueblo", "village"]
+          ]
+        }
+      ]
+    }
+  ]
+}

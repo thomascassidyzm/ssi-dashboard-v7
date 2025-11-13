@@ -1,0 +1,463 @@
+{
+  "agent_id": "agent_04",
+  "seed_range": "S0531-S0540",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0531",
+      "seed_pair": [
+        "It isn't true that anyone can win the game.",
+        "No es verdad que cualquiera pueda ganar el juego."
+      ],
+      "thinking": "FORWARD SWEEP: 'it isn't true that' → 'no es verdad que' ✅ (includes 'que' to remove uncertainty). 'anyone' → 'cualquiera' ✅. 'can win' → 'pueda ganar' ✅ (subjunctive after 'que'). 'the game' → 'el juego' ✅. BACKWARD SWEEP: No additional patterns needed. No standalone particles.",
+      "legos": [
+        {
+          "id": "S0531L01",
+          "type": "M",
+          "target": "no es verdad que",
+          "known": "it isn't true that",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["es", "is"],
+            ["verdad", "true"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0531L02",
+          "type": "A",
+          "target": "cualquiera",
+          "known": "anyone",
+          "new": true
+        },
+        {
+          "id": "S0531L03",
+          "type": "M",
+          "target": "pueda ganar",
+          "known": "can win",
+          "new": true,
+          "components": [
+            ["pueda", "can/may"],
+            ["ganar", "win/to win"]
+          ]
+        },
+        {
+          "id": "S0531L04",
+          "type": "M",
+          "target": "el juego",
+          "known": "the game",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["juego", "game"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0532",
+      "seed_pair": [
+        "Unless they're lucky.",
+        "A menos que tengan suerte."
+      ],
+      "thinking": "FORWARD SWEEP: 'unless' → 'a menos que' ✅ (idiomatic phrase, needs all parts). 'they're lucky' → 'tengan suerte' ✅. BACKWARD SWEEP: Subjunctive trigger 'a menos que' caught. OVERLAPS: Create full phrase 'a menos que tengan suerte' for pattern maximization (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0532L01",
+          "type": "M",
+          "target": "a menos que",
+          "known": "unless",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["menos", "less"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0532L02",
+          "type": "M",
+          "target": "tengan suerte",
+          "known": "they're lucky",
+          "new": true,
+          "components": [
+            ["tengan", "they have"],
+            ["suerte", "luck"]
+          ]
+        },
+        {
+          "id": "S0532L03",
+          "type": "M",
+          "target": "a menos que tengan suerte",
+          "known": "unless they're lucky",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["menos", "less"],
+            ["que", "that"],
+            ["tengan", "they have"],
+            ["suerte", "luck"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0533",
+      "seed_pair": [
+        "She won't listen to every word you say.",
+        "No escuchará cada palabra que dices."
+      ],
+      "thinking": "FORWARD SWEEP: 'won't listen' → 'no escuchará' ✅ (she is implied in verb). 'every word' → 'cada palabra' ✅ (needs both parts). 'you say' → 'que dices' ✅. OVERLAPS: Create 'cada palabra que dices' for pattern maximization (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0533L01",
+          "type": "M",
+          "target": "no escuchará",
+          "known": "won't listen",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["escuchará", "will listen"]
+          ]
+        },
+        {
+          "id": "S0533L02",
+          "type": "M",
+          "target": "cada palabra",
+          "known": "every word",
+          "new": true,
+          "components": [
+            ["cada", "every/each"],
+            ["palabra", "word"]
+          ]
+        },
+        {
+          "id": "S0533L03",
+          "type": "M",
+          "target": "que dices",
+          "known": "you say",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["dices", "you say"]
+          ]
+        },
+        {
+          "id": "S0533L04",
+          "type": "M",
+          "target": "cada palabra que dices",
+          "known": "every word you say",
+          "new": true,
+          "components": [
+            ["cada", "every"],
+            ["palabra", "word"],
+            ["que", "that"],
+            ["dices", "you say"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0534",
+      "seed_pair": [
+        "Let's not go outside in this dreadful weather.",
+        "No vayamos afuera con este clima espantoso."
+      ],
+      "thinking": "FORWARD SWEEP: 'let's not go' → 'no vayamos' ✅. 'outside' → 'afuera' ✅. 'in this weather' → 'con este clima' ✅ (no standalone 'con' or 'este'). 'dreadful weather' → 'clima espantoso' ✅. OVERLAPS: Create 'este clima espantoso' for pattern maximization (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0534L01",
+          "type": "M",
+          "target": "no vayamos",
+          "known": "let's not go",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["vayamos", "let's go"]
+          ]
+        },
+        {
+          "id": "S0534L02",
+          "type": "A",
+          "target": "afuera",
+          "known": "outside",
+          "new": true
+        },
+        {
+          "id": "S0534L03",
+          "type": "M",
+          "target": "con este clima",
+          "known": "in this weather",
+          "new": true,
+          "components": [
+            ["con", "with/in"],
+            ["este", "this"],
+            ["clima", "weather/climate"]
+          ]
+        },
+        {
+          "id": "S0534L04",
+          "type": "M",
+          "target": "clima espantoso",
+          "known": "dreadful weather",
+          "new": true,
+          "components": [
+            ["clima", "weather"],
+            ["espantoso", "dreadful/frightful"]
+          ]
+        },
+        {
+          "id": "S0534L05",
+          "type": "M",
+          "target": "este clima espantoso",
+          "known": "this dreadful weather",
+          "new": true,
+          "components": [
+            ["este", "this"],
+            ["clima", "weather"],
+            ["espantoso", "dreadful"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0535",
+      "seed_pair": [
+        "He made a promise that he wouldn't choose the wrong job.",
+        "Hizo una promesa de que no elegiría el trabajo equivocado."
+      ],
+      "thinking": "FORWARD SWEEP: 'made a promise' → 'hizo una promesa' ✅. 'that he wouldn't choose' → 'de que no elegiría' ✅ (includes 'de que' construction). 'the wrong job' → 'el trabajo equivocado' ✅ (no standalone article or adjective).",
+      "legos": [
+        {
+          "id": "S0535L01",
+          "type": "M",
+          "target": "hizo una promesa",
+          "known": "made a promise",
+          "new": true,
+          "components": [
+            ["hizo", "made/did"],
+            ["una", "a"],
+            ["promesa", "promise"]
+          ]
+        },
+        {
+          "id": "S0535L02",
+          "type": "M",
+          "target": "de que no elegiría",
+          "known": "that he wouldn't choose",
+          "new": true,
+          "components": [
+            ["de", "of"],
+            ["que", "that"],
+            ["no", "not"],
+            ["elegiría", "would choose"]
+          ]
+        },
+        {
+          "id": "S0535L03",
+          "type": "M",
+          "target": "el trabajo equivocado",
+          "known": "the wrong job",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["trabajo", "job/work"],
+            ["equivocado", "wrong/mistaken"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0536",
+      "seed_pair": [
+        "I used to think that being crazy was bad.",
+        "Solía pensar que ser loco era malo."
+      ],
+      "thinking": "FORWARD SWEEP: 'I used to think' → 'solía pensar' ✅. 'that being crazy' → 'que ser loco' ✅ (includes 'que' for zero uncertainty). 'was bad' → 'era malo' ✅ (no standalone verb).",
+      "legos": [
+        {
+          "id": "S0536L01",
+          "type": "M",
+          "target": "solía pensar",
+          "known": "I used to think",
+          "new": true,
+          "components": [
+            ["solía", "used to"],
+            ["pensar", "think/to think"]
+          ]
+        },
+        {
+          "id": "S0536L02",
+          "type": "M",
+          "target": "que ser loco",
+          "known": "that being crazy",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["ser", "being/to be"],
+            ["loco", "crazy"]
+          ]
+        },
+        {
+          "id": "S0536L03",
+          "type": "M",
+          "target": "era malo",
+          "known": "was bad",
+          "new": true,
+          "components": [
+            ["era", "was"],
+            ["malo", "bad"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0537",
+      "seed_pair": [
+        "But I was wrong.",
+        "Pero estaba equivocado."
+      ],
+      "thinking": "FORWARD SWEEP: 'but' → 'pero' ✅. 'I was wrong' → 'estaba equivocado' ✅ (no standalone verb or adjective, implied subject).",
+      "legos": [
+        {
+          "id": "S0537L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0537L02",
+          "type": "M",
+          "target": "estaba equivocado",
+          "known": "I was wrong",
+          "new": true,
+          "components": [
+            ["estaba", "I was"],
+            ["equivocado", "wrong/mistaken"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0538",
+      "seed_pair": [
+        "I don't want to seem as though I don't care.",
+        "No quiero parecer como si no me importara."
+      ],
+      "thinking": "FORWARD SWEEP: 'I don't want to seem' → 'no quiero parecer' ✅ (complete thought). 'as though I don't care' → 'como si no me importara' ✅ (subjunctive trigger phrase). Both sweeps complete, no standalone particles.",
+      "legos": [
+        {
+          "id": "S0538L01",
+          "type": "M",
+          "target": "no quiero parecer",
+          "known": "I don't want to seem",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["quiero", "I want"],
+            ["parecer", "to seem/appear"]
+          ]
+        },
+        {
+          "id": "S0538L02",
+          "type": "M",
+          "target": "como si no me importara",
+          "known": "as though I don't care",
+          "new": true,
+          "components": [
+            ["como", "as/like"],
+            ["si", "if/as though"],
+            ["no", "not"],
+            ["me", "me"],
+            ["importara", "would matter/care"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0539",
+      "seed_pair": [
+        "But it's getting late.",
+        "Pero se está haciendo tarde."
+      ],
+      "thinking": "FORWARD SWEEP: 'but' → 'pero' ✅. 'it's getting late' → 'se está haciendo tarde' ✅ (idiomatic phrase, needs all parts). No standalone particles.",
+      "legos": [
+        {
+          "id": "S0539L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0539L02",
+          "type": "M",
+          "target": "se está haciendo tarde",
+          "known": "it's getting late",
+          "new": true,
+          "components": [
+            ["se", "itself"],
+            ["está", "is"],
+            ["haciendo", "making/becoming"],
+            ["tarde", "late"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0540",
+      "seed_pair": [
+        "I don't mind if you want to leave without the car.",
+        "No me importa si quieres irte sin el coche."
+      ],
+      "thinking": "FORWARD SWEEP: 'I don't mind' → 'no me importa' ✅. 'if you want' → 'si quieres' ✅ (no standalone 'si'). 'to leave' → 'irte' ✅. 'without the car' → 'sin el coche' ✅ (no standalone 'sin'). No standalone particles.",
+      "legos": [
+        {
+          "id": "S0540L01",
+          "type": "M",
+          "target": "no me importa",
+          "known": "I don't mind",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["me", "me"],
+            ["importa", "matters/cares"]
+          ]
+        },
+        {
+          "id": "S0540L02",
+          "type": "M",
+          "target": "si quieres",
+          "known": "if you want",
+          "new": true,
+          "components": [
+            ["si", "if"],
+            ["quieres", "you want"]
+          ]
+        },
+        {
+          "id": "S0540L03",
+          "type": "A",
+          "target": "irte",
+          "known": "to leave",
+          "new": true
+        },
+        {
+          "id": "S0540L04",
+          "type": "M",
+          "target": "sin el coche",
+          "known": "without the car",
+          "new": true,
+          "components": [
+            ["sin", "without"],
+            ["el", "the"],
+            ["coche", "car"]
+          ]
+        }
+      ]
+    }
+  ]
+}
