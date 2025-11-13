@@ -592,8 +592,18 @@ All agents will commit to their session branches. The master orchestrator will m
 function generatePhase5MasterPrompt(courseCode, params, courseDir) {
   const { target, known, startSeed, endSeed } = params;
   const totalSeeds = endSeed - startSeed + 1;
-  const seedsPerAgent = 20;
-  const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
+
+  // For small batches (≤10 seeds), use 1 agent per 2 seeds for parallelization
+  // For larger batches, use traditional 20 seeds per agent
+  let seedsPerAgent, agentCount;
+  if (totalSeeds <= 10) {
+    seedsPerAgent = 2;
+    agentCount = Math.ceil(totalSeeds / seedsPerAgent);
+  } else {
+    seedsPerAgent = 20;
+    agentCount = Math.ceil(totalSeeds / seedsPerAgent);
+  }
+
   const relativeDir = getRelativeCourseDir(courseDir);
 
   return `# Phase 5 Master Prompt: Practice Basket Generation with Self-Managing Parallelization
@@ -2101,8 +2111,17 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
         await fs.ensureDir(path.join(baseCourseDir, 'prompts'));
         await fs.writeFile(path.join(baseCourseDir, 'prompts', 'phase_5_master_prompt.md'), phase5MasterPrompt, 'utf8');
 
+        // Calculate expected agents (same logic as generatePhase5MasterPrompt)
+        const totalSeeds = endSeed - startSeed + 1;
+        let expectedAgents;
+        if (totalSeeds <= 10) {
+          expectedAgents = Math.ceil(totalSeeds / 2); // 2 seeds per agent for small batches
+        } else {
+          expectedAgents = Math.ceil(totalSeeds / 20); // 20 seeds per agent for larger batches
+        }
+
         console.log(`[Web Orchestrator] Opening Phase 5 tab and pasting master prompt...`);
-        console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 20)} parallel agents`);
+        console.log(`[Web Orchestrator] Master prompt will spawn ${expectedAgents} parallel agents`);
         await spawnClaudeWebAgent(phase5MasterPrompt, 3, 'safari');
         console.log(`[Web Orchestrator] ✅ Phase 5 master prompt pasted - HIT ENTER to spawn agents!`);
 
@@ -2111,7 +2130,6 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
 
         // Poll for all agent provisional outputs
         console.log(`[Web Orchestrator] Waiting for all Phase 5 agent outputs...`);
-        const expectedAgents = Math.ceil((endSeed - startSeed + 1) / 20);
         const outputsDir = path.join(baseCourseDir, 'phase5_outputs');
 
         // Wait for all provisional files
