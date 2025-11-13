@@ -1,0 +1,108 @@
+{
+  "agent_id": "agent_03",
+  "seed_range": "S0486-S0487",
+  "extracted_at": "2025-11-13T02:30:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0486",
+      "seed_pair": [
+        "I think your eyes are beautiful.",
+        "Creo que tus ojos son hermosos."
+      ],
+      "legos": [
+        {
+          "id": "S0486L01",
+          "type": "M",
+          "target": "creo que",
+          "known": "I think that",
+          "new": true,
+          "components": [
+            ["creo", "I think"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0486L02",
+          "type": "M",
+          "target": "tus ojos",
+          "known": "your eyes",
+          "new": true,
+          "components": [
+            ["tus", "your"],
+            ["ojos", "eyes"]
+          ]
+        },
+        {
+          "id": "S0486L03",
+          "type": "M",
+          "target": "son hermosos",
+          "known": "are beautiful",
+          "new": true,
+          "components": [
+            ["son", "are"],
+            ["hermosos", "beautiful"]
+          ]
+        },
+        {
+          "id": "S0486L04",
+          "type": "M",
+          "target": "tus ojos son hermosos",
+          "known": "your eyes are beautiful",
+          "new": true,
+          "components": [
+            ["tus", "your"],
+            ["ojos", "eyes"],
+            ["son", "are"],
+            ["hermosos", "beautiful"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0487",
+      "seed_pair": [
+        "It's under the bridge.",
+        "Está bajo el puente."
+      ],
+      "legos": [
+        {
+          "id": "S0487L01",
+          "type": "M",
+          "target": "el puente",
+          "known": "the bridge",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["puente", "bridge"]
+          ]
+        },
+        {
+          "id": "S0487L02",
+          "type": "M",
+          "target": "bajo el puente",
+          "known": "under the bridge",
+          "new": true,
+          "components": [
+            ["bajo", "under"],
+            ["el", "the"],
+            ["puente", "bridge"]
+          ]
+        },
+        {
+          "id": "S0487L03",
+          "type": "M",
+          "target": "está bajo el puente",
+          "known": "it's under the bridge",
+          "new": true,
+          "components": [
+            ["está", "it's/is"],
+            ["bajo", "under"],
+            ["el", "the"],
+            ["puente", "bridge"]
+          ]
+        }
+      ]
+    }
+  ]
+}
