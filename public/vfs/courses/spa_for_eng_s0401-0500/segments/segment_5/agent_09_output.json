@@ -1,8 +1,8 @@
 {
   "agent_id": "agent_09",
   "seed_range": "S0481-S0490",
-  "extracted_at": "2025-11-12T10:30:00Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0481",
@@ -14,11 +14,10 @@
         {
           "id": "S0481L01",
           "type": "M",
-          "target": "es la única esperanza real",
-          "known": "it's the only real hope",
+          "target": "la única esperanza real",
+          "known": "the only real hope",
           "new": true,
           "components": [
-            ["es", "it is"],
             ["la", "the"],
             ["única", "only"],
             ["esperanza", "hope"],
@@ -27,6 +26,20 @@
         },
         {
           "id": "S0481L02",
+          "type": "M",
+          "target": "esperanza real que nos queda",
+          "known": "real hope we have left",
+          "new": true,
+          "components": [
+            ["esperanza", "hope"],
+            ["real", "real"],
+            ["que", "that"],
+            ["nos", "us"],
+            ["queda", "remains/have left"]
+          ]
+        },
+        {
+          "id": "S0481L03",
           "type": "M",
           "target": "que nos queda",
           "known": "we have left",
@@ -81,6 +94,20 @@
             ["son", "they are"],
             ["serios", "serious"]
           ]
+        },
+        {
+          "id": "S0482L04",
+          "type": "M",
+          "target": "es que no son serios",
+          "known": "is that they're not serious",
+          "new": true,
+          "components": [
+            ["es", "is"],
+            ["que", "that"],
+            ["no", "not"],
+            ["son", "they are"],
+            ["serios", "serious"]
+          ]
         }
       ]
     },
@@ -93,20 +120,6 @@
       "legos": [
         {
           "id": "S0483L01",
-          "type": "A",
-          "target": "pero",
-          "known": "but",
-          "new": true
-        },
-        {
-          "id": "S0483L02",
-          "type": "A",
-          "target": "fácil",
-          "known": "easy",
-          "new": true
-        },
-        {
-          "id": "S0483L03",
           "type": "M",
           "target": "la vida",
           "known": "life",
@@ -117,7 +130,7 @@
           ]
         },
         {
-          "id": "S0483L04",
+          "id": "S0483L02",
           "type": "M",
           "target": "no es fácil",
           "known": "isn't easy",
@@ -126,6 +139,25 @@
             ["no", "not"],
             ["es", "is"],
             ["fácil", "easy"]
+          ]
+        },
+        {
+          "id": "S0483L03",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0483L04",
+          "type": "M",
+          "target": "destinada a ser",
+          "known": "meant to be",
+          "new": true,
+          "components": [
+            ["destinada", "meant/destined"],
+            ["a", "to"],
+            ["ser", "be"]
           ]
         },
         {
@@ -139,7 +171,20 @@
             ["está", "it is"],
             ["destinada", "meant/destined"],
             ["a", "to"],
-            ["ser", "to be"]
+            ["ser", "be"]
+          ]
+        },
+        {
+          "id": "S0483L06",
+          "type": "M",
+          "target": "destinada a ser fácil",
+          "known": "meant to be easy",
+          "new": true,
+          "components": [
+            ["destinada", "meant/destined"],
+            ["a", "to"],
+            ["ser", "be"],
+            ["fácil", "easy"]
           ]
         }
       ]
@@ -161,7 +206,7 @@
             ["está", "it is"],
             ["destinada", "meant/destined"],
             ["a", "to"],
-            ["ser", "to be"]
+            ["ser", "be"]
           ]
         },
         {
@@ -193,40 +238,39 @@
         },
         {
           "id": "S0485L02",
-          "type": "A",
-          "target": "que",
-          "known": "than",
-          "new": true
-        },
-        {
-          "id": "S0485L03",
           "type": "M",
-          "target": "me haría",
-          "known": "would make me",
+          "target": "me haría más feliz",
+          "known": "would make me happier",
           "new": true,
           "components": [
             ["me", "me"],
-            ["haría", "would make"]
-          ]
-        },
-        {
-          "id": "S0485L04",
-          "type": "M",
-          "target": "más feliz",
-          "known": "happier",
-          "new": true,
-          "components": [
+            ["haría", "would make"],
             ["más", "more"],
             ["feliz", "happy"]
           ]
         },
         {
-          "id": "S0485L05",
+          "id": "S0485L03",
           "type": "M",
-          "target": "escapar",
-          "known": "to get away",
+          "target": "nada me haría más feliz",
+          "known": "nothing would make me happier",
           "new": true,
           "components": [
+            ["nada", "nothing"],
+            ["me", "me"],
+            ["haría", "would make"],
+            ["más", "more"],
+            ["feliz", "happy"]
+          ]
+        },
+        {
+          "id": "S0485L04",
+          "type": "M",
+          "target": "que escapar",
+          "known": "than to get away",
+          "new": true,
+          "components": [
+            ["que", "than"],
             ["escapar", "to escape/get away"]
           ]
         }
@@ -271,6 +315,19 @@
             ["son", "are"],
             ["hermosos", "beautiful"]
           ]
+        },
+        {
+          "id": "S0486L04",
+          "type": "M",
+          "target": "tus ojos son hermosos",
+          "known": "your eyes are beautiful",
+          "new": true,
+          "components": [
+            ["tus", "your"],
+            ["ojos", "eyes"],
+            ["son", "are"],
+            ["hermosos", "beautiful"]
+          ]
         }
       ]
     },
@@ -284,12 +341,13 @@
         {
           "id": "S0487L01",
           "type": "M",
-          "target": "está bajo",
-          "known": "it's under",
+          "target": "bajo el puente",
+          "known": "under the bridge",
           "new": true,
           "components": [
-            ["está", "it is"],
-            ["bajo", "under"]
+            ["bajo", "under"],
+            ["el", "the"],
+            ["puente", "bridge"]
           ]
         },
         {
@@ -315,12 +373,11 @@
         {
           "id": "S0488L01",
           "type": "M",
-          "target": "está al otro lado de",
-          "known": "it's on the other side of",
+          "target": "al otro lado de",
+          "known": "on the other side of",
           "new": true,
           "components": [
-            ["está", "it is"],
-            ["al", "to the"],
+            ["al", "on the/to the"],
             ["otro", "other"],
             ["lado", "side"],
             ["de", "of"]
@@ -329,11 +386,34 @@
         {
           "id": "S0488L02",
           "type": "M",
+          "target": "el otro lado",
+          "known": "the other side",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["otro", "other"],
+            ["lado", "side"]
+          ]
+        },
+        {
+          "id": "S0488L03",
+          "type": "M",
           "target": "esa línea amarilla",
           "known": "that yellow line",
           "new": true,
           "components": [
             ["esa", "that"],
+            ["línea", "line"],
+            ["amarilla", "yellow"]
+          ]
+        },
+        {
+          "id": "S0488L04",
+          "type": "M",
+          "target": "línea amarilla",
+          "known": "yellow line",
+          "new": true,
+          "components": [
             ["línea", "line"],
             ["amarilla", "yellow"]
           ]
@@ -349,10 +429,16 @@
       "legos": [
         {
           "id": "S0489L01",
-          "type": "A",
-          "target": "si",
-          "known": "if",
-          "new": true
+          "type": "M",
+          "target": "si no me haces",
+          "known": "if you don't make me",
+          "new": true,
+          "components": [
+            ["si", "if"],
+            ["no", "not"],
+            ["me", "me"],
+            ["haces", "you make"]
+          ]
         },
         {
           "id": "S0489L02",
@@ -383,6 +469,17 @@
         {
           "id": "S0489L04",
           "type": "M",
+          "target": "café fuerte",
+          "known": "strong coffee",
+          "new": true,
+          "components": [
+            ["café", "coffee"],
+            ["fuerte", "strong"]
+          ]
+        },
+        {
+          "id": "S0489L05",
+          "type": "M",
           "target": "ahora mismo",
           "known": "right now",
           "new": true,
@@ -410,8 +507,19 @@
         {
           "id": "S0490L02",
           "type": "M",
+          "target": "confiaré en",
+          "known": "will trust in",
+          "new": true,
+          "components": [
+            ["confiaré", "I will trust"],
+            ["en", "in"]
+          ]
+        },
+        {
+          "id": "S0490L03",
+          "type": "M",
           "target": "nunca confiaré en nadie",
-          "known": "I will never trust anyone",
+          "known": "will never trust anyone",
           "new": true,
           "components": [
             ["nunca", "never"],
@@ -421,7 +529,7 @@
           ]
         },
         {
-          "id": "S0490L03",
+          "id": "S0490L04",
           "type": "M",
           "target": "nunca más",
           "known": "ever again",
