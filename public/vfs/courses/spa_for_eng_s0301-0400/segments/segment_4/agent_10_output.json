@@ -1,0 +1,581 @@
+{
+  "agent_id": "agent_10",
+  "seed_range": "S0391-S0400",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0391",
+      "seed_pair": [
+        "The one who is walking towards the bus.",
+        "La que está caminando hacia el autobús."
+      ],
+      "legos": [
+        {
+          "id": "S0391L01",
+          "type": "M",
+          "target": "la que",
+          "known": "the one who",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["que", "one who/that"]
+          ]
+        },
+        {
+          "id": "S0391L02",
+          "type": "M",
+          "target": "está caminando",
+          "known": "is walking",
+          "new": true,
+          "components": [
+            ["está", "is"],
+            ["caminando", "walking"]
+          ]
+        },
+        {
+          "id": "S0391L03",
+          "type": "M",
+          "target": "caminando hacia el autobús",
+          "known": "walking towards the bus",
+          "new": true,
+          "components": [
+            ["caminando", "walking"],
+            ["hacia", "towards"],
+            ["el", "the"],
+            ["autobús", "bus"]
+          ]
+        },
+        {
+          "id": "S0391L04",
+          "type": "M",
+          "target": "hacia el autobús",
+          "known": "towards the bus",
+          "new": true,
+          "components": [
+            ["hacia", "towards"],
+            ["el", "the"],
+            ["autobús", "bus"]
+          ]
+        },
+        {
+          "id": "S0391L05",
+          "type": "M",
+          "target": "el autobús",
+          "known": "the bus",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["autobús", "bus"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0392",
+      "seed_pair": [
+        "That child with the black hair opposite the post office.",
+        "Ese niño con el pelo negro enfrente de la oficina de correos."
+      ],
+      "legos": [
+        {
+          "id": "S0392L01",
+          "type": "M",
+          "target": "ese niño",
+          "known": "that child",
+          "new": true,
+          "components": [
+            ["ese", "that"],
+            ["niño", "child/boy"]
+          ]
+        },
+        {
+          "id": "S0392L02",
+          "type": "M",
+          "target": "con el pelo negro",
+          "known": "with the black hair",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["el", "the"],
+            ["pelo", "hair"],
+            ["negro", "black"]
+          ]
+        },
+        {
+          "id": "S0392L03",
+          "type": "M",
+          "target": "el pelo negro",
+          "known": "the black hair",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["pelo", "hair"],
+            ["negro", "black"]
+          ]
+        },
+        {
+          "id": "S0392L04",
+          "type": "M",
+          "target": "enfrente de la oficina de correos",
+          "known": "opposite the post office",
+          "new": true,
+          "components": [
+            ["enfrente de", "opposite/in front of"],
+            ["la", "the"],
+            ["oficina de correos", "post office"]
+          ]
+        },
+        {
+          "id": "S0392L05",
+          "type": "M",
+          "target": "la oficina de correos",
+          "known": "the post office",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["oficina", "office"],
+            ["de", "of"],
+            ["correos", "mail/post"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0393",
+      "seed_pair": [
+        "That boy with the green shirt.",
+        "Ese niño con la camisa verde."
+      ],
+      "legos": [
+        {
+          "id": "S0393L01",
+          "type": "M",
+          "target": "ese niño",
+          "known": "that boy",
+          "new": true,
+          "components": [
+            ["ese", "that"],
+            ["niño", "boy"]
+          ]
+        },
+        {
+          "id": "S0393L02",
+          "type": "M",
+          "target": "con la camisa verde",
+          "known": "with the green shirt",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["la", "the"],
+            ["camisa", "shirt"],
+            ["verde", "green"]
+          ]
+        },
+        {
+          "id": "S0393L03",
+          "type": "M",
+          "target": "la camisa verde",
+          "known": "the green shirt",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["camisa", "shirt"],
+            ["verde", "green"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0394",
+      "seed_pair": [
+        "That girl with the yellow dress.",
+        "Esa niña con el vestido amarillo."
+      ],
+      "legos": [
+        {
+          "id": "S0394L01",
+          "type": "M",
+          "target": "esa niña",
+          "known": "that girl",
+          "new": true,
+          "components": [
+            ["esa", "that"],
+            ["niña", "girl"]
+          ]
+        },
+        {
+          "id": "S0394L02",
+          "type": "M",
+          "target": "con el vestido amarillo",
+          "known": "with the yellow dress",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["el", "the"],
+            ["vestido", "dress"],
+            ["amarillo", "yellow"]
+          ]
+        },
+        {
+          "id": "S0394L03",
+          "type": "M",
+          "target": "el vestido amarillo",
+          "known": "the yellow dress",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["vestido", "dress"],
+            ["amarillo", "yellow"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0395",
+      "seed_pair": [
+        "We need to turn left at the next corner.",
+        "Necesitamos girar a la izquierda en la próxima esquina."
+      ],
+      "legos": [
+        {
+          "id": "S0395L01",
+          "type": "M",
+          "target": "necesitamos girar",
+          "known": "we need to turn",
+          "new": true,
+          "components": [
+            ["necesitamos", "we need"],
+            ["girar", "to turn"]
+          ]
+        },
+        {
+          "id": "S0395L02",
+          "type": "M",
+          "target": "girar a la izquierda",
+          "known": "turn left",
+          "new": true,
+          "components": [
+            ["girar", "turn"],
+            ["a", "to"],
+            ["la", "the"],
+            ["izquierda", "left"]
+          ]
+        },
+        {
+          "id": "S0395L03",
+          "type": "M",
+          "target": "a la izquierda",
+          "known": "left",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["la", "the"],
+            ["izquierda", "left"]
+          ]
+        },
+        {
+          "id": "S0395L04",
+          "type": "M",
+          "target": "en la próxima esquina",
+          "known": "at the next corner",
+          "new": true,
+          "components": [
+            ["en", "at"],
+            ["la", "the"],
+            ["próxima", "next"],
+            ["esquina", "corner"]
+          ]
+        },
+        {
+          "id": "S0395L05",
+          "type": "M",
+          "target": "la próxima esquina",
+          "known": "the next corner",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["próxima", "next"],
+            ["esquina", "corner"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0396",
+      "seed_pair": [
+        "We don't need to stand until everybody else is ready.",
+        "No necesitamos estar de pie hasta que todos los demás estén preparados."
+      ],
+      "legos": [
+        {
+          "id": "S0396L01",
+          "type": "M",
+          "target": "no necesitamos",
+          "known": "we don't need",
+          "new": true,
+          "components": [
+            ["no", "don't/not"],
+            ["necesitamos", "we need"]
+          ]
+        },
+        {
+          "id": "S0396L02",
+          "type": "M",
+          "target": "necesitamos estar de pie",
+          "known": "we need to stand",
+          "new": true,
+          "components": [
+            ["necesitamos", "we need"],
+            ["estar", "to be"],
+            ["de", "of"],
+            ["pie", "foot"]
+          ]
+        },
+        {
+          "id": "S0396L03",
+          "type": "M",
+          "target": "estar de pie",
+          "known": "to stand",
+          "new": true,
+          "components": [
+            ["estar", "to be"],
+            ["de", "of"],
+            ["pie", "foot"]
+          ]
+        },
+        {
+          "id": "S0396L04",
+          "type": "M",
+          "target": "hasta que todos los demás estén preparados",
+          "known": "until everybody else is ready",
+          "new": true,
+          "components": [
+            ["hasta que", "until"],
+            ["todos", "everybody/all"],
+            ["los", "the"],
+            ["demás", "others/else"],
+            ["estén", "are (subjunctive)"],
+            ["preparados", "ready"]
+          ]
+        },
+        {
+          "id": "S0396L05",
+          "type": "M",
+          "target": "todos los demás",
+          "known": "everybody else",
+          "new": true,
+          "components": [
+            ["todos", "everybody/all"],
+            ["los", "the"],
+            ["demás", "others/else"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0397",
+      "seed_pair": [
+        "Do we need to get ready soon?",
+        "¿Necesitamos prepararnos pronto?"
+      ],
+      "legos": [
+        {
+          "id": "S0397L01",
+          "type": "M",
+          "target": "necesitamos prepararnos",
+          "known": "we need to get ready",
+          "new": true,
+          "components": [
+            ["necesitamos", "we need"],
+            ["prepararnos", "to get ready/prepare ourselves"]
+          ]
+        },
+        {
+          "id": "S0397L02",
+          "type": "A",
+          "target": "prepararnos",
+          "known": "to get ready",
+          "new": true
+        },
+        {
+          "id": "S0397L03",
+          "type": "A",
+          "target": "pronto",
+          "known": "soon",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0398",
+      "seed_pair": [
+        "We want to become more patient with our children.",
+        "Queremos volvernos más pacientes con nuestros niños."
+      ],
+      "legos": [
+        {
+          "id": "S0398L01",
+          "type": "M",
+          "target": "queremos volvernos",
+          "known": "we want to become",
+          "new": true,
+          "components": [
+            ["queremos", "we want"],
+            ["volvernos", "to become/turn ourselves"]
+          ]
+        },
+        {
+          "id": "S0398L02",
+          "type": "M",
+          "target": "volvernos más pacientes",
+          "known": "to become more patient",
+          "new": true,
+          "components": [
+            ["volvernos", "to become"],
+            ["más", "more"],
+            ["pacientes", "patient"]
+          ]
+        },
+        {
+          "id": "S0398L03",
+          "type": "M",
+          "target": "más pacientes",
+          "known": "more patient",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["pacientes", "patient"]
+          ]
+        },
+        {
+          "id": "S0398L04",
+          "type": "M",
+          "target": "con nuestros niños",
+          "known": "with our children",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["nuestros", "our"],
+            ["niños", "children"]
+          ]
+        },
+        {
+          "id": "S0398L05",
+          "type": "M",
+          "target": "nuestros niños",
+          "known": "our children",
+          "new": true,
+          "components": [
+            ["nuestros", "our"],
+            ["niños", "children"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0399",
+      "seed_pair": [
+        "We don't want to lose hope.",
+        "No queremos perder la esperanza."
+      ],
+      "legos": [
+        {
+          "id": "S0399L01",
+          "type": "M",
+          "target": "no queremos",
+          "known": "we don't want",
+          "new": true,
+          "components": [
+            ["no", "don't/not"],
+            ["queremos", "we want"]
+          ]
+        },
+        {
+          "id": "S0399L02",
+          "type": "M",
+          "target": "no queremos perder",
+          "known": "we don't want to lose",
+          "new": true,
+          "components": [
+            ["no", "don't/not"],
+            ["queremos", "we want"],
+            ["perder", "to lose"]
+          ]
+        },
+        {
+          "id": "S0399L03",
+          "type": "M",
+          "target": "perder la esperanza",
+          "known": "to lose hope",
+          "new": true,
+          "components": [
+            ["perder", "to lose"],
+            ["la", "the"],
+            ["esperanza", "hope"]
+          ]
+        },
+        {
+          "id": "S0399L04",
+          "type": "M",
+          "target": "la esperanza",
+          "known": "hope",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["esperanza", "hope"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0400",
+      "seed_pair": [
+        "Do we want to eat something later on?",
+        "¿Queremos comer algo más tarde?"
+      ],
+      "legos": [
+        {
+          "id": "S0400L01",
+          "type": "M",
+          "target": "queremos comer",
+          "known": "we want to eat",
+          "new": true,
+          "components": [
+            ["queremos", "we want"],
+            ["comer", "to eat"]
+          ]
+        },
+        {
+          "id": "S0400L02",
+          "type": "M",
+          "target": "comer algo",
+          "known": "to eat something",
+          "new": true,
+          "components": [
+            ["comer", "to eat"],
+            ["algo", "something"]
+          ]
+        },
+        {
+          "id": "S0400L03",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0400L04",
+          "type": "M",
+          "target": "más tarde",
+          "known": "later on",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["tarde", "late/later"]
+          ]
+        }
+      ]
+    }
+  ]
+}
