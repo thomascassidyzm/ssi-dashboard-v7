@@ -1,0 +1,484 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0450",
+  "generation_stage": "PHRASE_GENERATION_COMPLETE",
+  "seed_pair": {
+    "target": "No ellos tienen que tomar el tren ellos mismos.",
+    "known": "No they have to catch the train themselves."
+  },
+  "recent_seed_pairs": {
+    "S0440": [
+      "Quieren viajar mientras todavía son jóvenes.",
+      "They want to travel while they're still young."
+    ],
+    "S0441": [
+      "Un acercamiento.",
+      "An approach."
+    ],
+    "S0442": [
+      "¿Querían desarrollar un acercamiento nuevo?",
+      "Did they want to develop a new approach?"
+    ],
+    "S0443": [
+      "No querían continuar haciéndolo de la misma manera.",
+      "No they wanted to keep doing it the same way."
+    ],
+    "S0444": [
+      "Sí pensaban que podría hacerse más eficientemente.",
+      "Yes they thought it could be done more efficiently."
+    ],
+    "S0445": [
+      "Ellos van a poder llevar esa maleta.",
+      "They will be able to carry that suitcase."
+    ],
+    "S0446": [
+      "Ellos no van a poder romper esa ventana.",
+      "They won't be able to break that window."
+    ],
+    "S0447": [
+      "¿Van a poder llevarnos a casa después de la comida?",
+      "Will they be able to drive us home after the meal?"
+    ],
+    "S0448": [
+      "Sí van a estar contentos de ayudar.",
+      "Yes they'll be happy to help."
+    ],
+    "S0449": [
+      "Ellos dijeron que estaban casi preparados.",
+      "They said that they were almost ready."
+    ]
+  },
+  "legos": {
+    "S0450L01": {
+      "lego": [
+        "no",
+        "no"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["no", "no", null, 1],
+        ["no they wanted", "no querían", null, 2],
+        ["no they will be able to", "no van a poder", null, 2],
+        ["no they wanted to develop", "no querían desarrollar", null, 3],
+        ["no they said that", "no dijeron que", null, 3],
+        ["no they will be able to carry that suitcase", "no van a poder llevar esa maleta", null, 5],
+        ["no they'll be happy to help", "no van a estar contentos de ayudar", null, 5],
+        ["no they wanted to continue doing it", "no querían continuar haciéndolo", null, 4],
+        ["no they thought that it could be done more efficiently", "no pensaban que podría hacerse más eficientemente", null, 7],
+        ["no they will be able to drive us home after the meal", "no van a poder llevarnos a casa después de la comida", null, 7],
+        ["no they wanted to develop a new approach", "no querían desarrollar un acercamiento nuevo", null, 6],
+        ["no they said that they were almost ready", "no dijeron que estaban casi preparados", null, 6],
+        ["no they wanted to continue doing it the same way", "no querían continuar haciéndolo de la misma manera", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0450L01",
+        "seed_context": {
+          "target": "No ellos tienen que tomar el tren ellos mismos.",
+          "known": "No they have to catch the train themselves."
+        }
+      }
+    },
+    "S0450L02": {
+      "lego": [
+        "they have to",
+        "tienen que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["they have to", "tienen que", null, 1],
+        ["yes they have to", "sí tienen que", null, 2],
+        ["no they have to", "no tienen que", null, 2],
+        ["they have to travel", "tienen que viajar", null, 3],
+        ["they have to develop", "tienen que desarrollar", null, 3],
+        ["yes they have to carry that suitcase", "sí tienen que llevar esa maleta", null, 5],
+        ["they have to break that window", "tienen que romper esa ventana", null, 5],
+        ["no they have to continue doing it", "no tienen que continuar haciéndolo", null, 5],
+        ["they have to help", "tienen que ayudar", null, 3],
+        ["yes they have to develop a new approach", "sí tienen que desarrollar un acercamiento nuevo", null, 6],
+        ["they have to drive us home after the meal", "tienen que llevarnos a casa después de la comida", null, 6],
+        ["no they have to continue doing it the same way", "no tienen que continuar haciéndolo de la misma manera", null, 8],
+        ["yes they have to be happy to help while they are young", "sí tienen que estar contentos de ayudar mientras son jóvenes", null, 9]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 1,
+        "long_6_plus": 6
+      },
+      "_metadata": {
+        "lego_id": "S0450L02",
+        "seed_context": {
+          "target": "No ellos tienen que tomar el tren ellos mismos.",
+          "known": "No they have to catch the train themselves."
+        }
+      },
+      "components": [
+        [
+          "tienen",
+          "they have"
+        ],
+        [
+          "que",
+          "to"
+        ]
+      ]
+    },
+    "S0450L03": {
+      "lego": [
+        "to catch",
+        "tomar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "they have to",
+          "tienen que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["to catch", "tomar", null, 1],
+        ["they have to catch", "tienen que tomar", null, 2],
+        ["yes to catch", "sí tomar", null, 2],
+        ["no they have to catch", "no tienen que tomar", null, 3],
+        ["they wanted to catch", "querían tomar", null, 3],
+        ["yes they have to catch", "sí tienen que tomar", null, 3],
+        ["they will be able to catch", "van a poder tomar", null, 4],
+        ["they thought that they could catch", "pensaban que podrían tomar", null, 5],
+        ["no they wanted to catch", "no querían tomar", null, 4],
+        ["yes they wanted to catch while young", "sí querían tomar mientras jóvenes", null, 6],
+        ["they have to catch while they are young", "tienen que tomar mientras son jóvenes", null, 6],
+        ["no they thought that they could catch", "no pensaban que podrían tomar", null, 6],
+        ["yes they will be able to catch while they are still young", "sí van a poder tomar mientras todavía son jóvenes", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 3,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0450L03",
+        "seed_context": {
+          "target": "No ellos tienen que tomar el tren ellos mismos.",
+          "known": "No they have to catch the train themselves."
+        }
+      }
+    },
+    "S0450L04": {
+      "lego": [
+        "the train",
+        "el tren"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "they have to",
+          "tienen que"
+        ],
+        [
+          "to catch",
+          "tomar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["the train", "el tren", null, 1],
+        ["to catch the train", "tomar el tren", null, 2],
+        ["yes the train", "sí el tren", null, 2],
+        ["they have to catch the train", "tienen que tomar el tren", null, 3],
+        ["they wanted the train", "querían el tren", null, 3],
+        ["no to catch the train", "no tomar el tren", null, 3],
+        ["yes they have to catch the train", "sí tienen que tomar el tren", null, 4],
+        ["they wanted to catch the train", "querían tomar el tren", null, 4],
+        ["no they have to catch the train", "no tienen que tomar el tren", null, 4],
+        ["they thought that they could catch the train", "pensaban que podrían tomar el tren", null, 6],
+        ["yes they wanted to catch the train while young", "sí querían tomar el tren mientras jóvenes", null, 7],
+        ["they have to catch the train while they are young", "tienen que tomar el tren mientras son jóvenes", null, 7],
+        ["no they thought that they could catch the train", "no pensaban que podrían tomar el tren", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 3,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0450L04",
+        "seed_context": {
+          "target": "No ellos tienen que tomar el tren ellos mismos.",
+          "known": "No they have to catch the train themselves."
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "tren",
+          "train"
+        ]
+      ]
+    },
+    "S0450L05": {
+      "lego": [
+        "to catch the train",
+        "tomar el tren"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "they have to",
+          "tienen que"
+        ],
+        [
+          "to catch",
+          "tomar"
+        ],
+        [
+          "the train",
+          "el tren"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["to catch the train", "tomar el tren", null, 1],
+        ["they have to catch the train", "tienen que tomar el tren", null, 2],
+        ["yes to catch the train", "sí tomar el tren", null, 2],
+        ["they wanted to catch the train", "querían tomar el tren", null, 3],
+        ["no they have to catch the train", "no tienen que tomar el tren", null, 3],
+        ["yes they have to catch the train", "sí tienen que tomar el tren", null, 3],
+        ["they thought that they could catch the train", "pensaban que podrían tomar el tren", null, 5],
+        ["no they wanted to catch the train", "no querían tomar el tren", null, 4],
+        ["yes they have to catch the train still", "sí tienen que tomar el tren todavía", null, 6],
+        ["they have to catch the train while young", "tienen que tomar el tren mientras jóvenes", null, 6],
+        ["no they thought that they could catch the train", "no pensaban que podrían tomar el tren", null, 6],
+        ["yes they wanted to catch the train while they are young", "sí querían tomar el tren mientras son jóvenes", null, 7],
+        ["they have to catch the train while they are still young", "tienen que tomar el tren mientras todavía son jóvenes", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 2,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0450L05",
+        "seed_context": {
+          "target": "No ellos tienen que tomar el tren ellos mismos.",
+          "known": "No they have to catch the train themselves."
+        }
+      },
+      "components": [
+        [
+          "tomar",
+          "to catch/take"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "tren",
+          "train"
+        ]
+      ]
+    },
+    "S0450L06": {
+      "lego": [
+        "themselves",
+        "ellos mismos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "they have to",
+          "tienen que"
+        ],
+        [
+          "to catch",
+          "tomar"
+        ],
+        [
+          "the train",
+          "el tren"
+        ],
+        [
+          "to catch the train",
+          "tomar el tren"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["themselves", "ellos mismos", null, 1],
+        ["they have to themselves", "tienen que ellos mismos", null, 2],
+        ["yes themselves", "sí ellos mismos", null, 2],
+        ["they wanted themselves", "querían ellos mismos", null, 3],
+        ["no themselves", "no ellos mismos", null, 2],
+        ["they have to catch the train themselves", "tienen que tomar el tren ellos mismos", null, 3],
+        ["yes they have to catch the train themselves", "sí tienen que tomar el tren ellos mismos", null, 4],
+        ["they wanted to catch the train themselves", "querían tomar el tren ellos mismos", null, 4],
+        ["no they have to catch the train themselves", "no tienen que tomar el tren ellos mismos", null, 4],
+        ["they thought that they could catch the train themselves", "pensaban que podrían tomar el tren ellos mismos", null, 6],
+        ["yes they wanted to catch the train themselves while young", "sí querían tomar el tren ellos mismos mientras jóvenes", null, 7],
+        ["they have to catch the train themselves while they are young", "tienen que tomar el tren ellos mismos mientras son jóvenes", null, 8],
+        ["no they thought that they could catch the train themselves", "no pensaban que podrían tomar el tren ellos mismos", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0450L06",
+        "seed_context": {
+          "target": "No ellos tienen que tomar el tren ellos mismos.",
+          "known": "No they have to catch the train themselves."
+        }
+      },
+      "components": [
+        [
+          "ellos",
+          "they"
+        ],
+        [
+          "mismos",
+          "themselves/same"
+        ]
+      ]
+    },
+    "S0450L07": {
+      "lego": [
+        "have to catch the train",
+        "tienen que tomar el tren"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "they have to",
+          "tienen que"
+        ],
+        [
+          "to catch",
+          "tomar"
+        ],
+        [
+          "the train",
+          "el tren"
+        ],
+        [
+          "to catch the train",
+          "tomar el tren"
+        ],
+        [
+          "themselves",
+          "ellos mismos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["have to catch the train", "tienen que tomar el tren", null, 1],
+        ["they have to catch the train", "tienen que tomar el tren", null, 1],
+        ["yes have to catch the train", "sí tienen que tomar el tren", null, 2],
+        ["no they have to catch the train", "no tienen que tomar el tren", null, 2],
+        ["they have to catch the train themselves", "tienen que tomar el tren ellos mismos", null, 2],
+        ["yes they have to catch the train", "sí tienen que tomar el tren", null, 2],
+        ["yes they have to catch the train themselves", "sí tienen que tomar el tren ellos mismos", null, 3],
+        ["no they have to catch the train themselves", "no tienen que tomar el tren ellos mismos", null, 3],
+        ["they have to catch the train themselves still", "tienen que tomar el tren ellos mismos todavía", null, 6],
+        ["they have to catch the train themselves while young", "tienen que tomar el tren ellos mismos mientras jóvenes", null, 6],
+        ["yes they have to catch the train themselves while young", "sí tienen que tomar el tren ellos mismos mientras jóvenes", null, 7],
+        ["they have to catch the train themselves while they are young", "tienen que tomar el tren ellos mismos mientras son jóvenes", null, 7],
+        ["No they have to catch the train themselves.", "No ellos tienen que tomar el tren ellos mismos.", null, 4]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 6,
+        "quite_short_3": 2,
+        "longer_4_5": 0,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0450L07",
+        "seed_context": {
+          "target": "No ellos tienen que tomar el tren ellos mismos.",
+          "known": "No they have to catch the train themselves."
+        }
+      },
+      "components": [
+        [
+          "tienen",
+          "they have"
+        ],
+        [
+          "que",
+          "to"
+        ],
+        [
+          "tomar",
+          "to catch"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "tren",
+          "train"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0450.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "total_legos_in_seed": 7,
+    "phrases_to_generate": 84,
+    "recent_context_seeds": 10
+  }
+}
