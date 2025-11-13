@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Phase 3 v7.0 Segment Merger
- * Merges all agent_XX_output.json files from segments into final lego_pairs.json
+ * Merges all agent_XX_output.json files from segments into compact lego_pairs.json
  */
 
 import fs from 'fs';
@@ -51,16 +51,18 @@ agentFiles.forEach((file, index) => {
         // Check for duplicate LEGO IDs
         if (seenLegoIds.has(lego.id)) {
           duplicateLegoIds.push(lego.id);
-        } else {
-          seenLegoIds.add(lego.id);
+          return; // Skip duplicates
         }
+        seenLegoIds.add(lego.id);
 
-        // Add source metadata
+        // Add LEGO in compact format (just the essential fields)
         allLegos.push({
-          ...lego,
-          source_seed: seed.seed_id,
-          extracted_by: agentData.agent_id,
-          methodology: agentData.methodology || 'Phase 3 v7.0 - Two Heuristics Edition'
+          id: lego.id,
+          type: lego.type,
+          target: lego.target,
+          known: lego.known,
+          new: lego.new,
+          ...(lego.components && { components: lego.components })
         });
       });
     });
@@ -75,17 +77,16 @@ console.log(`   Seeds processed: ${totalSeeds}`);
 console.log(`   Total LEGOs: ${allLegos.length}`);
 console.log(`   Unique LEGO IDs: ${seenLegoIds.size}`);
 if (duplicateLegoIds.length > 0) {
-  console.log(`   ⚠️  Duplicate IDs found: ${duplicateLegoIds.length} (${duplicateLegoIds.slice(0, 5).join(', ')}...)`);
+  console.log(`   ⚠️  Duplicates skipped: ${duplicateLegoIds.length}`);
 }
 
-// Create final output structure
+// Create final compact output structure
 const output = {
   version: "8.1.1",
   phase: "3",
   methodology: "Phase 3 v7.0 - Two Heuristics Edition",
   generated_at: new Date().toISOString(),
   course: "spa_for_eng",
-  total_seeds: totalSeeds,
   total_legos: allLegos.length,
   legos: allLegos
 };
