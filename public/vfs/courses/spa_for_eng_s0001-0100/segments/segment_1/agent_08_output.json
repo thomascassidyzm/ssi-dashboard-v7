@@ -1,0 +1,351 @@
+{
+  "agent_id": "agent_08",
+  "seed_range": "S0071-S0080",
+  "extracted_at": "2025-11-12T00:00:00Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0071",
+      "seed_pair": ["No queríamos permitir que nadie oyera la verdad.", "We didn't want to let anyone hear the truth."],
+      "legos": [
+        {
+          "id": "S0071L01",
+          "type": "M",
+          "target": "no queríamos",
+          "known": "we didn't want",
+          "new": true,
+          "components": [["no", "not/didn't"], ["queríamos", "we wanted"]]
+        },
+        {
+          "id": "S0071L02",
+          "type": "M",
+          "target": "permitir que",
+          "known": "to let",
+          "new": true,
+          "components": [["permitir", "to let/permit"], ["que", "that"]]
+        },
+        {
+          "id": "S0071L03",
+          "type": "M",
+          "target": "nadie oyera",
+          "known": "anyone hear",
+          "new": true,
+          "components": [["nadie", "anyone/nobody"], ["oyera", "hear/would hear"]]
+        },
+        {
+          "id": "S0071L04",
+          "type": "M",
+          "target": "la verdad",
+          "known": "the truth",
+          "new": true,
+          "components": [["la", "the"], ["verdad", "truth"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0072",
+      "seed_pair": ["Pienso que estás haciendo muy bien.", "I think that you're doing very well."],
+      "legos": [
+        {
+          "id": "S0072L01",
+          "type": "M",
+          "target": "pienso que",
+          "known": "I think that",
+          "new": true,
+          "components": [["pienso", "I think"], ["que", "that"]]
+        },
+        {
+          "id": "S0072L02",
+          "type": "M",
+          "target": "estás haciendo",
+          "known": "you're doing",
+          "new": true,
+          "components": [["estás", "you are"], ["haciendo", "doing"]]
+        },
+        {
+          "id": "S0072L03",
+          "type": "M",
+          "target": "muy bien",
+          "known": "very well",
+          "new": true,
+          "components": [["muy", "very"], ["bien", "well"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0073",
+      "seed_pair": ["Muchas gracias, pero tengo más que aprender.", "Thank you very much, but I've got more to learn."],
+      "legos": [
+        {
+          "id": "S0073L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0073L02",
+          "type": "A",
+          "target": "tengo",
+          "known": "I've got",
+          "new": true
+        },
+        {
+          "id": "S0073L03",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
+        },
+        {
+          "id": "S0073L04",
+          "type": "M",
+          "target": "muchas gracias",
+          "known": "thank you very much",
+          "new": true,
+          "components": [["muchas", "many/very much"], ["gracias", "thanks"]]
+        },
+        {
+          "id": "S0073L05",
+          "type": "M",
+          "target": "que aprender",
+          "known": "to learn",
+          "new": true,
+          "components": [["que", "to"], ["aprender", "learn"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0074",
+      "seed_pair": ["Muchas gracias por ayudarme a comprender.", "Thank you very much for helping me to understand."],
+      "legos": [
+        {
+          "id": "S0074L01",
+          "type": "A",
+          "target": "por",
+          "known": "for",
+          "new": true
+        },
+        {
+          "id": "S0074L02",
+          "type": "M",
+          "target": "muchas gracias",
+          "known": "thank you very much",
+          "new": true,
+          "components": [["muchas", "many/very much"], ["gracias", "thanks"]]
+        },
+        {
+          "id": "S0074L03",
+          "type": "M",
+          "target": "ayudarme",
+          "known": "helping me",
+          "new": true,
+          "components": [["ayudar", "to help/helping"], ["me", "me"]]
+        },
+        {
+          "id": "S0074L04",
+          "type": "M",
+          "target": "a comprender",
+          "known": "to understand",
+          "new": true,
+          "components": [["a", "to"], ["comprender", "understand"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0075",
+      "seed_pair": ["¿Tienes más que aprender?", "Have you got more to learn?"],
+      "legos": [
+        {
+          "id": "S0075L01",
+          "type": "A",
+          "target": "tienes",
+          "known": "have you got",
+          "new": true
+        },
+        {
+          "id": "S0075L02",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
+        },
+        {
+          "id": "S0075L03",
+          "type": "M",
+          "target": "que aprender",
+          "known": "to learn",
+          "new": true,
+          "components": [["que", "to"], ["aprender", "learn"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0076",
+      "seed_pair": ["Estoy muy feliz con cuánto he aprendido ya.", "I'm very happy with how much I've learnt already."],
+      "legos": [
+        {
+          "id": "S0076L01",
+          "type": "A",
+          "target": "con",
+          "known": "with",
+          "new": true
+        },
+        {
+          "id": "S0076L02",
+          "type": "A",
+          "target": "cuánto",
+          "known": "how much",
+          "new": true
+        },
+        {
+          "id": "S0076L03",
+          "type": "A",
+          "target": "ya",
+          "known": "already",
+          "new": true
+        },
+        {
+          "id": "S0076L04",
+          "type": "M",
+          "target": "estoy muy feliz",
+          "known": "I'm very happy",
+          "new": true,
+          "components": [["estoy", "I am"], ["muy", "very"], ["feliz", "happy"]]
+        },
+        {
+          "id": "S0076L05",
+          "type": "M",
+          "target": "he aprendido",
+          "known": "I've learnt",
+          "new": true,
+          "components": [["he", "I have"], ["aprendido", "learnt/learned"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0077",
+      "seed_pair": ["Estoy sorprendido de lo rápidamente que estoy comenzando a comprender.", "I'm surprised at how quickly I'm starting to understand."],
+      "legos": [
+        {
+          "id": "S0077L01",
+          "type": "M",
+          "target": "estoy sorprendido",
+          "known": "I'm surprised",
+          "new": true,
+          "components": [["estoy", "I am"], ["sorprendido", "surprised"]]
+        },
+        {
+          "id": "S0077L02",
+          "type": "M",
+          "target": "de lo rápidamente que",
+          "known": "at how quickly",
+          "new": true,
+          "components": [["de", "at"], ["lo", "the"], ["rápidamente", "quickly"], ["que", "that"]]
+        },
+        {
+          "id": "S0077L03",
+          "type": "M",
+          "target": "estoy comenzando",
+          "known": "I'm starting",
+          "new": true,
+          "components": [["estoy", "I am"], ["comenzando", "starting"]]
+        },
+        {
+          "id": "S0077L04",
+          "type": "M",
+          "target": "a comprender",
+          "known": "to understand",
+          "new": true,
+          "components": [["a", "to"], ["comprender", "understand"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0078",
+      "seed_pair": ["No comprendo lo que dijiste.", "I don't understand what you said."],
+      "legos": [
+        {
+          "id": "S0078L01",
+          "type": "A",
+          "target": "dijiste",
+          "known": "you said",
+          "new": true
+        },
+        {
+          "id": "S0078L02",
+          "type": "M",
+          "target": "no comprendo",
+          "known": "I don't understand",
+          "new": true,
+          "components": [["no", "not/don't"], ["comprendo", "I understand"]]
+        },
+        {
+          "id": "S0078L03",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [["lo", "the/it"], ["que", "that/which"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0079",
+      "seed_pair": ["¿Cuándo comenzaste a aprender?", "When did you start to learn?"],
+      "legos": [
+        {
+          "id": "S0079L01",
+          "type": "A",
+          "target": "cuándo",
+          "known": "when",
+          "new": true
+        },
+        {
+          "id": "S0079L02",
+          "type": "A",
+          "target": "comenzaste",
+          "known": "did you start",
+          "new": true
+        },
+        {
+          "id": "S0079L03",
+          "type": "M",
+          "target": "a aprender",
+          "known": "to learn",
+          "new": true,
+          "components": [["a", "to"], ["aprender", "learn"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0080",
+      "seed_pair": ["No estoy seguro de cuándo estaré preparado.", "I'm not sure when I'll be ready."],
+      "legos": [
+        {
+          "id": "S0080L01",
+          "type": "A",
+          "target": "cuándo",
+          "known": "when",
+          "new": true
+        },
+        {
+          "id": "S0080L02",
+          "type": "M",
+          "target": "no estoy seguro de",
+          "known": "I'm not sure",
+          "new": true,
+          "components": [["no", "not"], ["estoy", "I am"], ["seguro", "sure"], ["de", "of"]]
+        },
+        {
+          "id": "S0080L03",
+          "type": "M",
+          "target": "estaré preparado",
+          "known": "I'll be ready",
+          "new": true,
+          "components": [["estaré", "I'll be/I will be"], ["preparado", "ready"]]
+        }
+      ]
+    }
+  ]
+}

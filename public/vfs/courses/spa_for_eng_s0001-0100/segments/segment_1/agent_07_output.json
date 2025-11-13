@@ -1,0 +1,426 @@
+{
+  "agent_id": "agent_07",
+  "seed_range": "S0061-S0070",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0061",
+      "seed_pair": ["¿Podrías decir eso otra vez un poco más lentamente?", "Could you say that again a little more slowly?"],
+      "extraction_reasoning": "Forward sweep: 'Could you say' maps to 'Podrías decir' (M-type, modal+verb). 'that again' = 'eso otra vez' (M-type, pragmatic FD - both words weak alone). 'a little' = 'un poco' (M-type, article+noun as adverb). 'more' and 'slowly' are standalone A-types. Tiling verified in both languages.",
+      "legos": [
+        {
+          "id": "S0061L01",
+          "type": "A",
+          "target": "más",
+          "known": "more",
+          "new": true
+        },
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "target": "lentamente",
+          "known": "slowly",
+          "new": true
+        },
+        {
+          "id": "S0061L03",
+          "type": "M",
+          "target": "Podrías decir",
+          "known": "Could you say",
+          "new": true,
+          "components": [
+            ["Podrías", "Could you"],
+            ["decir", "say"]
+          ]
+        },
+        {
+          "id": "S0061L04",
+          "type": "M",
+          "target": "eso otra vez",
+          "known": "that again",
+          "new": true,
+          "components": [
+            ["eso", "that"],
+            ["otra", "other"],
+            ["vez", "time"]
+          ]
+        },
+        {
+          "id": "S0061L05",
+          "type": "M",
+          "target": "un poco",
+          "known": "a little",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["poco", "little"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0062",
+      "seed_pair": ["No estoy seguro si puedo ayudarte al mismo tiempo.", "I'm not sure if I can help you at the same time."],
+      "extraction_reasoning": "'I'm not sure' = 'No estoy seguro' (M-type, pronoun+verb+adj). 'if' = 'si' (A-type, generates conditional practice). 'I can' = 'puedo' (A-type, conjugated verb). 'help you' = 'ayudarte' (A-type, verb+clitic). 'at the same time' = 'al mismo tiempo' (M-type, multi-word temporal phrase).",
+      "legos": [
+        {
+          "id": "S0062L01",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0062L02",
+          "type": "A",
+          "target": "puedo",
+          "known": "I can",
+          "new": true
+        },
+        {
+          "id": "S0062L03",
+          "type": "A",
+          "target": "ayudarte",
+          "known": "help you",
+          "new": true
+        },
+        {
+          "id": "S0062L04",
+          "type": "M",
+          "target": "No estoy seguro",
+          "known": "I'm not sure",
+          "new": true,
+          "components": [
+            ["No", "not"],
+            ["estoy", "I'm"],
+            ["seguro", "sure"]
+          ]
+        },
+        {
+          "id": "S0062L05",
+          "type": "M",
+          "target": "al mismo tiempo",
+          "known": "at the same time",
+          "new": true,
+          "components": [
+            ["al", "at the"],
+            ["mismo", "same"],
+            ["tiempo", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0063",
+      "seed_pair": ["¿Estás seguro de que no te importa ayudarme?", "Are you sure you don't mind helping me?"],
+      "extraction_reasoning": "'Are you sure' requires 'de que' before clause → 'Estás seguro de que' (M-type). 'you don't mind' = 'no te importa' (M-type, idiomatic - 'importa' doesn't literally mean 'mind'). 'helping me' = 'ayudarme' (A-type, infinitive+clitic).",
+      "legos": [
+        {
+          "id": "S0063L01",
+          "type": "A",
+          "target": "ayudarme",
+          "known": "helping me",
+          "new": true
+        },
+        {
+          "id": "S0063L02",
+          "type": "M",
+          "target": "Estás seguro de que",
+          "known": "Are you sure",
+          "new": true,
+          "components": [
+            ["Estás", "Are you"],
+            ["seguro", "sure"],
+            ["de que", "that"]
+          ]
+        },
+        {
+          "id": "S0063L03",
+          "type": "M",
+          "target": "no te importa",
+          "known": "you don't mind",
+          "new": true,
+          "components": [
+            ["no", "don't"],
+            ["te", "to you"],
+            ["importa", "matter"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0064",
+      "seed_pair": ["Aprender español no es fácil pero es divertido.", "Learning Spanish isn't easy but it is fun."],
+      "extraction_reasoning": "'Learning' and 'Spanish' are both content words generating practice (A-types). 'isn't easy' = 'no es fácil' (M-type, negation+copula+adj). 'but' = 'pero' (A-type). 'it is fun' = 'es divertido' (M-type, subject 'it' implied in Spanish).",
+      "legos": [
+        {
+          "id": "S0064L01",
+          "type": "A",
+          "target": "Aprender",
+          "known": "Learning",
+          "new": true
+        },
+        {
+          "id": "S0064L02",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "new": true
+        },
+        {
+          "id": "S0064L03",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0064L04",
+          "type": "M",
+          "target": "no es fácil",
+          "known": "isn't easy",
+          "new": true,
+          "components": [
+            ["no", "isn't"],
+            ["es", "is"],
+            ["fácil", "easy"]
+          ]
+        },
+        {
+          "id": "S0064L05",
+          "type": "M",
+          "target": "es divertido",
+          "known": "it is fun",
+          "new": true,
+          "components": [
+            ["es", "it is"],
+            ["divertido", "fun"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0065",
+      "seed_pair": ["Es importante tomar tiempo para evaluarte.", "It's important to take time to test yourself."],
+      "extraction_reasoning": "'It's important' = 'Es importante' (M-type, subject 'it' implied). 'to take time' = 'tomar tiempo' (M-type, verb+object). Second 'to' (purpose) = 'para' (A-type). 'test yourself' = 'evaluarte' (A-type, verb+reflexive).",
+      "legos": [
+        {
+          "id": "S0065L01",
+          "type": "A",
+          "target": "para",
+          "known": "to",
+          "new": true
+        },
+        {
+          "id": "S0065L02",
+          "type": "A",
+          "target": "evaluarte",
+          "known": "test yourself",
+          "new": true
+        },
+        {
+          "id": "S0065L03",
+          "type": "M",
+          "target": "Es importante",
+          "known": "It's important",
+          "new": true,
+          "components": [
+            ["Es", "It's"],
+            ["importante", "important"]
+          ]
+        },
+        {
+          "id": "S0065L04",
+          "type": "M",
+          "target": "tomar tiempo",
+          "known": "take time",
+          "new": true,
+          "components": [
+            ["tomar", "take"],
+            ["tiempo", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0066",
+      "seed_pair": ["No es difícil encontrar la respuesta.", "It's not difficult to find the answer."],
+      "extraction_reasoning": "'It's not difficult' = 'No es difícil' (M-type, subject 'it' implied). 'to find' = 'encontrar' (A-type, infinitive). 'the answer' = 'la respuesta' (M-type, article+noun per pragmatic FD).",
+      "legos": [
+        {
+          "id": "S0066L01",
+          "type": "A",
+          "target": "encontrar",
+          "known": "to find",
+          "new": true
+        },
+        {
+          "id": "S0066L02",
+          "type": "M",
+          "target": "No es difícil",
+          "known": "It's not difficult",
+          "new": true,
+          "components": [
+            ["No", "not"],
+            ["es", "it's"],
+            ["difícil", "difficult"]
+          ]
+        },
+        {
+          "id": "S0066L03",
+          "type": "M",
+          "target": "la respuesta",
+          "known": "the answer",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["respuesta", "answer"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0067",
+      "seed_pair": ["¿Por qué quieres parar?", "Why do you want to stop?"],
+      "extraction_reasoning": "'Why' = 'Por qué' (A-type, atomic interrogative despite two Spanish words). 'do you want' = 'quieres' (A-type, question auxiliary 'do' is formation device). 'to stop' = 'parar' (A-type, infinitive). All three are strong standalone chunks.",
+      "legos": [
+        {
+          "id": "S0067L01",
+          "type": "A",
+          "target": "Por qué",
+          "known": "Why",
+          "new": true
+        },
+        {
+          "id": "S0067L02",
+          "type": "A",
+          "target": "quieres",
+          "known": "do you want",
+          "new": true
+        },
+        {
+          "id": "S0067L03",
+          "type": "A",
+          "target": "parar",
+          "known": "to stop",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0068",
+      "seed_pair": ["¿Qué estás buscando?", "What are you looking for?"],
+      "extraction_reasoning": "'What' = 'Qué' (A-type). 'are you looking for' = 'estás buscando' (M-type, present continuous, 'for' is built into 'buscar'). Tiling verified: The Spanish verb 'buscar' inherently means 'look for'.",
+      "legos": [
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "target": "Qué",
+          "known": "What",
+          "new": true
+        },
+        {
+          "id": "S0068L02",
+          "type": "M",
+          "target": "estás buscando",
+          "known": "are you looking for",
+          "new": true,
+          "components": [
+            ["estás", "are"],
+            ["buscando", "looking for"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0069",
+      "seed_pair": ["No quería cuidar el perro joven toda la tarde.", "He didn't want to look after the young dog all afternoon."],
+      "extraction_reasoning": "'He didn't want' = 'No quería' (M-type, subject 'he' implied in conjugation). 'to look after' = 'cuidar' (A-type, phrasal→single verb). 'the young dog' = 'el perro joven' (M-type, MUST keep together due to adj placement: English adj-noun vs Spanish noun-adj). 'all afternoon' = 'toda la tarde' (M-type, Spanish requires 'la', English doesn't).",
+      "legos": [
+        {
+          "id": "S0069L01",
+          "type": "A",
+          "target": "cuidar",
+          "known": "to look after",
+          "new": true
+        },
+        {
+          "id": "S0069L02",
+          "type": "M",
+          "target": "No quería",
+          "known": "He didn't want",
+          "new": true,
+          "components": [
+            ["No", "didn't"],
+            ["quería", "he wanted"]
+          ]
+        },
+        {
+          "id": "S0069L03",
+          "type": "M",
+          "target": "el perro joven",
+          "known": "the young dog",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["perro", "dog"],
+            ["joven", "young"]
+          ]
+        },
+        {
+          "id": "S0069L04",
+          "type": "M",
+          "target": "toda la tarde",
+          "known": "all afternoon",
+          "new": true,
+          "components": [
+            ["toda", "all"],
+            ["la", "the"],
+            ["tarde", "afternoon"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0070",
+      "seed_pair": ["Ella no quería decirme dónde estaba.", "She didn't want to tell me where it was."],
+      "extraction_reasoning": "'She didn't want' = 'Ella no quería' (M-type, subject 'Ella' explicit for emphasis). 'to tell me' = 'decirme' (A-type, verb+clitic pronoun). 'where' = 'dónde' (A-type). 'it was' = 'estaba' (A-type, subject implied).",
+      "legos": [
+        {
+          "id": "S0070L01",
+          "type": "A",
+          "target": "decirme",
+          "known": "to tell me",
+          "new": true
+        },
+        {
+          "id": "S0070L02",
+          "type": "A",
+          "target": "dónde",
+          "known": "where",
+          "new": true
+        },
+        {
+          "id": "S0070L03",
+          "type": "A",
+          "target": "estaba",
+          "known": "it was",
+          "new": true
+        },
+        {
+          "id": "S0070L04",
+          "type": "M",
+          "target": "Ella no quería",
+          "known": "She didn't want",
+          "new": true,
+          "components": [
+            ["Ella", "She"],
+            ["no", "didn't"],
+            ["quería", "wanted"]
+          ]
+        }
+      ]
+    }
+  ]
+}

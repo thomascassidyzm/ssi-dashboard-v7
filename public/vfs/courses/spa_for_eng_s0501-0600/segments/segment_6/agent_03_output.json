@@ -1,0 +1,499 @@
+{
+  "agent_id": "agent_03",
+  "seed_range": "S0521-S0530",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "seeds": [
+    {
+      "seed_id": "S0521",
+      "seed_pair": [
+        "I'm afraid that you'll forget why we needed to stay here.",
+        "Tengo miedo de que olvides por qué necesitábamos quedarnos aquí."
+      ],
+      "legos": [
+        {
+          "id": "S0521L01",
+          "type": "A",
+          "target": "necesitábamos",
+          "known": "we needed",
+          "new": true
+        },
+        {
+          "id": "S0521L02",
+          "type": "A",
+          "target": "quedarnos",
+          "known": "to stay",
+          "new": true
+        },
+        {
+          "id": "S0521L03",
+          "type": "A",
+          "target": "aquí",
+          "known": "here",
+          "new": true
+        },
+        {
+          "id": "S0521L04",
+          "type": "M",
+          "target": "tengo miedo",
+          "known": "I'm afraid",
+          "new": true,
+          "components": [
+            ["tengo", "I have"],
+            ["miedo", "fear"]
+          ]
+        },
+        {
+          "id": "S0521L05",
+          "type": "M",
+          "target": "de que olvides",
+          "known": "that you'll forget",
+          "new": true,
+          "components": [
+            ["de", "of"],
+            ["que", "that"],
+            ["olvides", "you forget"]
+          ]
+        },
+        {
+          "id": "S0521L06",
+          "type": "M",
+          "target": "por qué",
+          "known": "why",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["qué", "what"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0522",
+      "seed_pair": [
+        "Let's agree that it was stupid to tell the truth.",
+        "Acordemos que fue estúpido decir la verdad."
+      ],
+      "legos": [
+        {
+          "id": "S0522L01",
+          "type": "A",
+          "target": "acordemos",
+          "known": "let's agree",
+          "new": true
+        },
+        {
+          "id": "S0522L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0522L03",
+          "type": "A",
+          "target": "decir",
+          "known": "to tell",
+          "new": true
+        },
+        {
+          "id": "S0522L04",
+          "type": "M",
+          "target": "fue estúpido",
+          "known": "it was stupid",
+          "new": true,
+          "components": [
+            ["fue", "it was"],
+            ["estúpido", "stupid"]
+          ]
+        },
+        {
+          "id": "S0522L05",
+          "type": "M",
+          "target": "la verdad",
+          "known": "the truth",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["verdad", "truth"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0523",
+      "seed_pair": [
+        "Instead of giving an excuse.",
+        "En lugar de dar una excusa."
+      ],
+      "legos": [
+        {
+          "id": "S0523L01",
+          "type": "A",
+          "target": "dar",
+          "known": "giving",
+          "new": true
+        },
+        {
+          "id": "S0523L02",
+          "type": "M",
+          "target": "en lugar de",
+          "known": "instead of",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["lugar", "place"],
+            ["de", "of"]
+          ]
+        },
+        {
+          "id": "S0523L03",
+          "type": "M",
+          "target": "una excusa",
+          "known": "an excuse",
+          "new": true,
+          "components": [
+            ["una", "an"],
+            ["excusa", "excuse"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0524",
+      "seed_pair": [
+        "I'll call you back in three or four minutes.",
+        "Te llamaré de vuelta en tres o cuatro minutos."
+      ],
+      "legos": [
+        {
+          "id": "S0524L01",
+          "type": "A",
+          "target": "en",
+          "known": "in",
+          "new": true
+        },
+        {
+          "id": "S0524L02",
+          "type": "A",
+          "target": "minutos",
+          "known": "minutes",
+          "new": true
+        },
+        {
+          "id": "S0524L03",
+          "type": "M",
+          "target": "te llamaré",
+          "known": "I'll call you",
+          "new": true,
+          "components": [
+            ["te", "you"],
+            ["llamaré", "I'll call"]
+          ]
+        },
+        {
+          "id": "S0524L04",
+          "type": "M",
+          "target": "de vuelta",
+          "known": "back",
+          "new": true,
+          "components": [
+            ["de", "of"],
+            ["vuelta", "return"]
+          ]
+        },
+        {
+          "id": "S0524L05",
+          "type": "M",
+          "target": "tres o cuatro",
+          "known": "three or four",
+          "new": true,
+          "components": [
+            ["tres", "three"],
+            ["o", "or"],
+            ["cuatro", "four"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0525",
+      "seed_pair": [
+        "To check if you've been able to finish.",
+        "Para comprobar si has podido terminar."
+      ],
+      "legos": [
+        {
+          "id": "S0525L01",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0525L02",
+          "type": "A",
+          "target": "terminar",
+          "known": "to finish",
+          "new": true
+        },
+        {
+          "id": "S0525L03",
+          "type": "M",
+          "target": "para comprobar",
+          "known": "to check",
+          "new": true,
+          "components": [
+            ["para", "to"],
+            ["comprobar", "check"]
+          ]
+        },
+        {
+          "id": "S0525L04",
+          "type": "M",
+          "target": "has podido",
+          "known": "you've been able",
+          "new": true,
+          "components": [
+            ["has", "you have"],
+            ["podido", "been able"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0526",
+      "seed_pair": [
+        "I'm finding it hard to believe that you can't guess.",
+        "Me resulta difícil creer que no puedes adivinar."
+      ],
+      "legos": [
+        {
+          "id": "S0526L01",
+          "type": "A",
+          "target": "creer",
+          "known": "to believe",
+          "new": true
+        },
+        {
+          "id": "S0526L02",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0526L03",
+          "type": "A",
+          "target": "adivinar",
+          "known": "guess",
+          "new": true
+        },
+        {
+          "id": "S0526L04",
+          "type": "M",
+          "target": "me resulta difícil",
+          "known": "I'm finding it hard",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["resulta", "it is/results"],
+            ["difícil", "hard"]
+          ]
+        },
+        {
+          "id": "S0526L05",
+          "type": "M",
+          "target": "no puedes",
+          "known": "you can't",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["puedes", "you can"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0527",
+      "seed_pair": [
+        "Guess who told me that funny story.",
+        "Adivina quién me contó esa historia graciosa."
+      ],
+      "legos": [
+        {
+          "id": "S0527L01",
+          "type": "A",
+          "target": "adivina",
+          "known": "guess",
+          "new": true
+        },
+        {
+          "id": "S0527L02",
+          "type": "A",
+          "target": "quién",
+          "known": "who",
+          "new": true
+        },
+        {
+          "id": "S0527L03",
+          "type": "A",
+          "target": "graciosa",
+          "known": "funny",
+          "new": true
+        },
+        {
+          "id": "S0527L04",
+          "type": "M",
+          "target": "me contó",
+          "known": "told me",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["contó", "told"]
+          ]
+        },
+        {
+          "id": "S0527L05",
+          "type": "M",
+          "target": "esa historia",
+          "known": "that story",
+          "new": true,
+          "components": [
+            ["esa", "that"],
+            ["historia", "story"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0528",
+      "seed_pair": [
+        "I'm probably supposed to keep those things in another room.",
+        "Probablemente se supone que debo guardar esas cosas en otra habitación."
+      ],
+      "legos": [
+        {
+          "id": "S0528L01",
+          "type": "A",
+          "target": "probablemente",
+          "known": "probably",
+          "new": true
+        },
+        {
+          "id": "S0528L02",
+          "type": "A",
+          "target": "guardar",
+          "known": "keep",
+          "new": true
+        },
+        {
+          "id": "S0528L03",
+          "type": "A",
+          "target": "en",
+          "known": "in",
+          "new": true
+        },
+        {
+          "id": "S0528L04",
+          "type": "M",
+          "target": "se supone que debo",
+          "known": "I'm supposed to",
+          "new": true,
+          "components": [
+            ["se supone que", "it's supposed that"],
+            ["debo", "I must"]
+          ]
+        },
+        {
+          "id": "S0528L05",
+          "type": "M",
+          "target": "esas cosas",
+          "known": "those things",
+          "new": true,
+          "components": [
+            ["esas", "those"],
+            ["cosas", "things"]
+          ]
+        },
+        {
+          "id": "S0528L06",
+          "type": "M",
+          "target": "otra habitación",
+          "known": "another room",
+          "new": true,
+          "components": [
+            ["otra", "another"],
+            ["habitación", "room"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0529",
+      "seed_pair": [
+        "Can you all put your hands up?",
+        "¿Pueden todos levantar las manos?"
+      ],
+      "legos": [
+        {
+          "id": "S0529L01",
+          "type": "A",
+          "target": "pueden",
+          "known": "can you",
+          "new": true
+        },
+        {
+          "id": "S0529L02",
+          "type": "A",
+          "target": "todos",
+          "known": "all",
+          "new": true
+        },
+        {
+          "id": "S0529L03",
+          "type": "M",
+          "target": "levantar las manos",
+          "known": "put your hands up",
+          "new": true,
+          "components": [
+            ["levantar", "put up/raise"],
+            ["las", "your/the"],
+            ["manos", "hands"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0530",
+      "seed_pair": [
+        "So I can count them",
+        "Para que pueda contarlas"
+      ],
+      "legos": [
+        {
+          "id": "S0530L01",
+          "type": "M",
+          "target": "para que pueda",
+          "known": "so I can",
+          "new": true,
+          "components": [
+            ["para que", "so that"],
+            ["pueda", "I can"]
+          ]
+        },
+        {
+          "id": "S0530L02",
+          "type": "M",
+          "target": "contarlas",
+          "known": "count them",
+          "new": true,
+          "components": [
+            ["contar", "count"],
+            ["las", "them"]
+          ]
+        }
+      ]
+    }
+  ]
+}
