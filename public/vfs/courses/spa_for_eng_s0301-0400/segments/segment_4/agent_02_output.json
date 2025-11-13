@@ -1,19 +1,24 @@
 {
   "agent_id": "agent_02",
   "seed_range": "S0311-S0320",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "extracted_at": "2025-11-12T00:00:00Z",
   "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
   "seeds": [
     {
       "seed_id": "S0311",
-      "seed_pair": ["He couldn't believe the three most important facts.", "Él no podría creer los tres hechos más importantes."],
+      "seed_pair": ["Él no podría creer los tres hechos más importantes.", "He couldn't believe the three most important facts."],
       "legos": [
         {
           "id": "S0311L01",
-          "type": "A",
-          "target": "Él",
-          "known": "He",
-          "new": true
+          "type": "M",
+          "target": "Él no podría",
+          "known": "He couldn't",
+          "new": true,
+          "components": [
+            ["Él", "He"],
+            ["no", "not"],
+            ["podría", "could"]
+          ]
         },
         {
           "id": "S0311L02",
@@ -24,17 +29,6 @@
         },
         {
           "id": "S0311L03",
-          "type": "M",
-          "target": "no podría",
-          "known": "couldn't",
-          "new": true,
-          "components": [
-            ["no", "not"],
-            ["podría", "could"]
-          ]
-        },
-        {
-          "id": "S0311L04",
           "type": "M",
           "target": "los tres hechos más importantes",
           "known": "the three most important facts",
@@ -51,58 +45,60 @@
     },
     {
       "seed_id": "S0312",
-      "seed_pair": ["She said that she could use the other room tomorrow night.", "Ella dijo que podría usar la otra habitación mañana por la noche."],
+      "seed_pair": ["Ella dijo que podría usar la otra habitación mañana por la noche.", "She said that she could use the other room tomorrow night."],
       "legos": [
         {
           "id": "S0312L01",
-          "type": "A",
-          "target": "Ella",
-          "known": "She",
-          "new": true
+          "type": "M",
+          "target": "Ella dijo",
+          "known": "She said",
+          "new": true,
+          "components": [
+            ["Ella", "She"],
+            ["dijo", "said"]
+          ]
         },
         {
           "id": "S0312L02",
-          "type": "A",
-          "target": "dijo",
-          "known": "said",
-          "new": true
-        },
-        {
-          "id": "S0312L03",
           "type": "A",
           "target": "que",
           "known": "that",
           "new": true
         },
         {
+          "id": "S0312L03",
+          "type": "M",
+          "target": "podría",
+          "known": "she could",
+          "new": true,
+          "components": [
+            ["podría", "she could"]
+          ]
+        },
+        {
           "id": "S0312L04",
           "type": "A",
-          "target": "ella",
-          "known": "she",
+          "target": "usar",
+          "known": "use",
           "new": true
         },
         {
           "id": "S0312L05",
           "type": "M",
-          "target": "podría usar",
-          "known": "could use",
+          "target": "la otra",
+          "known": "the other",
           "new": true,
           "components": [
-            ["podría", "could"],
-            ["usar", "use"]
+            ["la", "the"],
+            ["otra", "other"]
           ]
         },
         {
           "id": "S0312L06",
-          "type": "M",
-          "target": "la otra habitación",
-          "known": "the other room",
-          "new": true,
-          "components": [
-            ["la", "the"],
-            ["otra", "other"],
-            ["habitación", "room"]
-          ]
+          "type": "A",
+          "target": "habitación",
+          "known": "room",
+          "new": true
         },
         {
           "id": "S0312L07",
@@ -112,7 +108,7 @@
           "new": true,
           "components": [
             ["mañana", "tomorrow"],
-            ["por", "at"],
+            ["por", "by"],
             ["la", "the"],
             ["noche", "night"]
           ]
@@ -121,28 +117,36 @@
     },
     {
       "seed_id": "S0313",
-      "seed_pair": ["He said that he couldn't watch all five games.", "Él dijo que no podría ver todos los cinco juegos."],
+      "seed_pair": ["Él dijo que no podría ver todos los cinco juegos.", "He said that he couldn't watch all five games."],
       "legos": [
         {
           "id": "S0313L01",
-          "type": "A",
-          "target": "Él",
-          "known": "He",
-          "new": true
+          "type": "M",
+          "target": "Él dijo",
+          "known": "He said",
+          "new": true,
+          "components": [
+            ["Él", "He"],
+            ["dijo", "said"]
+          ]
         },
         {
           "id": "S0313L02",
           "type": "A",
-          "target": "dijo",
-          "known": "said",
+          "target": "que",
+          "known": "that",
           "new": true
         },
         {
           "id": "S0313L03",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
+          "type": "M",
+          "target": "no podría",
+          "known": "he couldn't",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["podría", "could"]
+          ]
         },
         {
           "id": "S0313L04",
@@ -153,17 +157,6 @@
         },
         {
           "id": "S0313L05",
-          "type": "M",
-          "target": "no podría",
-          "known": "couldn't",
-          "new": true,
-          "components": [
-            ["no", "not"],
-            ["podría", "could"]
-          ]
-        },
-        {
-          "id": "S0313L06",
           "type": "M",
           "target": "todos los cinco juegos",
           "known": "all five games",
@@ -179,12 +172,12 @@
     },
     {
       "seed_id": "S0314",
-      "seed_pair": ["I think that she could put it on the table.", "Creo que ella podría ponerlo en la mesa."],
+      "seed_pair": ["Creo que ella podría ponerlo en la mesa.", "I think that she could put it on the table."],
       "legos": [
         {
           "id": "S0314L01",
           "type": "A",
-          "target": "creo",
+          "target": "Creo",
           "known": "I think",
           "new": true
         },
@@ -197,27 +190,17 @@
         },
         {
           "id": "S0314L03",
-          "type": "A",
-          "target": "ella",
-          "known": "she",
-          "new": true
+          "type": "M",
+          "target": "ella podría",
+          "known": "she could",
+          "new": true,
+          "components": [
+            ["ella", "she"],
+            ["podría", "could"]
+          ]
         },
         {
           "id": "S0314L04",
-          "type": "A",
-          "target": "podría",
-          "known": "could",
-          "new": true
-        },
-        {
-          "id": "S0314L05",
-          "type": "A",
-          "target": "en",
-          "known": "on",
-          "new": true
-        },
-        {
-          "id": "S0314L06",
           "type": "M",
           "target": "ponerlo",
           "known": "put it",
@@ -228,7 +211,14 @@
           ]
         },
         {
-          "id": "S0314L07",
+          "id": "S0314L05",
+          "type": "A",
+          "target": "en",
+          "known": "on",
+          "new": true
+        },
+        {
+          "id": "S0314L06",
           "type": "M",
           "target": "la mesa",
           "known": "the table",
@@ -242,12 +232,12 @@
     },
     {
       "seed_id": "S0315",
-      "seed_pair": ["I think that he couldn't afford the car that he wanted.", "Creo que no podría permitirse el coche que quería."],
+      "seed_pair": ["Creo que no podría permitirse el coche que quería.", "I think that he couldn't afford the car that he wanted."],
       "legos": [
         {
           "id": "S0315L01",
           "type": "A",
-          "target": "creo",
+          "target": "Creo",
           "known": "I think",
           "new": true
         },
@@ -260,31 +250,24 @@
         },
         {
           "id": "S0315L03",
-          "type": "A",
-          "target": "permitirse",
-          "known": "afford",
-          "new": true
-        },
-        {
-          "id": "S0315L04",
-          "type": "A",
-          "target": "quería",
-          "known": "he wanted",
-          "new": true
-        },
-        {
-          "id": "S0315L05",
           "type": "M",
           "target": "no podría",
           "known": "he couldn't",
           "new": true,
           "components": [
             ["no", "not"],
-            ["podría", "he could"]
+            ["podría", "could"]
           ]
         },
         {
-          "id": "S0315L06",
+          "id": "S0315L04",
+          "type": "A",
+          "target": "permitirse",
+          "known": "afford",
+          "new": true
+        },
+        {
+          "id": "S0315L05",
           "type": "M",
           "target": "el coche",
           "known": "the car",
@@ -293,19 +276,39 @@
             ["el", "the"],
             ["coche", "car"]
           ]
+        },
+        {
+          "id": "S0315L06",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0315L07",
+          "type": "M",
+          "target": "quería",
+          "known": "he wanted",
+          "new": true,
+          "components": [
+            ["quería", "he wanted"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0316",
-      "seed_pair": ["Do you think that she could bring her brother on Monday?", "¿Crees que ella podría traer a su hermano el lunes?"],
+      "seed_pair": ["¿Crees que ella podría traer a su hermano el lunes?", "Do you think that she could bring her brother on Monday?"],
       "legos": [
         {
           "id": "S0316L01",
-          "type": "A",
-          "target": "crees",
+          "type": "M",
+          "target": "Crees",
           "known": "Do you think",
-          "new": true
+          "new": true,
+          "components": [
+            ["Crees", "you think"]
+          ]
         },
         {
           "id": "S0316L02",
@@ -316,39 +319,36 @@
         },
         {
           "id": "S0316L03",
-          "type": "A",
-          "target": "ella",
-          "known": "she",
-          "new": true
+          "type": "M",
+          "target": "ella podría",
+          "known": "she could",
+          "new": true,
+          "components": [
+            ["ella", "she"],
+            ["podría", "could"]
+          ]
         },
         {
           "id": "S0316L04",
-          "type": "A",
-          "target": "podría",
-          "known": "could",
-          "new": true
-        },
-        {
-          "id": "S0316L05",
           "type": "A",
           "target": "traer",
           "known": "bring",
           "new": true
         },
         {
-          "id": "S0316L06",
+          "id": "S0316L05",
           "type": "M",
           "target": "a su hermano",
           "known": "her brother",
           "new": true,
           "components": [
-            ["a", "a"],
+            ["a", "(personal a)"],
             ["su", "her"],
             ["hermano", "brother"]
           ]
         },
         {
-          "id": "S0316L07",
+          "id": "S0316L06",
           "type": "M",
           "target": "el lunes",
           "known": "on Monday",
@@ -362,7 +362,7 @@
     },
     {
       "seed_id": "S0317",
-      "seed_pair": ["Yes I think she could if she wanted to.", "Sí pienso que podría si quisiera."],
+      "seed_pair": ["Sí pienso que podría si quisiera.", "Yes I think she could if she wanted to."],
       "legos": [
         {
           "id": "S0317L01",
@@ -373,41 +373,47 @@
         },
         {
           "id": "S0317L02",
-          "type": "A",
-          "target": "podría",
-          "known": "she could",
-          "new": true
-        },
-        {
-          "id": "S0317L03",
-          "type": "A",
-          "target": "si",
-          "known": "if",
-          "new": true
-        },
-        {
-          "id": "S0317L04",
-          "type": "A",
-          "target": "quisiera",
-          "known": "she wanted to",
-          "new": true
-        },
-        {
-          "id": "S0317L05",
           "type": "M",
           "target": "pienso que",
           "known": "I think",
           "new": true,
           "components": [
             ["pienso", "I think"],
-            ["que", "that"]
+            ["que", "(that)"]
+          ]
+        },
+        {
+          "id": "S0317L03",
+          "type": "M",
+          "target": "podría",
+          "known": "she could",
+          "new": true,
+          "components": [
+            ["podría", "she could"]
+          ]
+        },
+        {
+          "id": "S0317L04",
+          "type": "A",
+          "target": "si",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0317L05",
+          "type": "M",
+          "target": "quisiera",
+          "known": "she wanted to",
+          "new": true,
+          "components": [
+            ["quisiera", "she wanted to"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0318",
-      "seed_pair": ["No I don't think she could this time.", "No, no creo que pudiera esta vez."],
+      "seed_pair": ["No, no creo que pudiera esta vez.", "No I don't think she could this time."],
       "legos": [
         {
           "id": "S0318L01",
@@ -418,25 +424,19 @@
         },
         {
           "id": "S0318L02",
-          "type": "A",
-          "target": "pudiera",
-          "known": "she could",
-          "new": true
-        },
-        {
-          "id": "S0318L03",
           "type": "M",
-          "target": "no creo que",
-          "known": "I don't think",
+          "target": "no creo que pudiera",
+          "known": "I don't think she could",
           "new": true,
           "components": [
-            ["no", "don't"],
+            ["no", "not"],
             ["creo", "I think"],
-            ["que", "that"]
+            ["que", "(that)"],
+            ["pudiera", "she could"]
           ]
         },
         {
-          "id": "S0318L04",
+          "id": "S0318L03",
           "type": "M",
           "target": "esta vez",
           "known": "this time",
@@ -450,38 +450,35 @@
     },
     {
       "seed_id": "S0319",
-      "seed_pair": ["She needs to move to a different country.", "Ella necesita mudarse a un país diferente."],
+      "seed_pair": ["Ella necesita mudarse a un país diferente.", "She needs to move to a different country."],
       "legos": [
         {
           "id": "S0319L01",
-          "type": "A",
-          "target": "Ella",
-          "known": "She",
-          "new": true
+          "type": "M",
+          "target": "Ella necesita",
+          "known": "She needs",
+          "new": true,
+          "components": [
+            ["Ella", "She"],
+            ["necesita", "needs"]
+          ]
         },
         {
           "id": "S0319L02",
           "type": "A",
-          "target": "necesita",
-          "known": "needs to",
+          "target": "mudarse",
+          "known": "to move",
           "new": true
         },
         {
           "id": "S0319L03",
-          "type": "A",
-          "target": "mudarse",
-          "known": "move",
-          "new": true
-        },
-        {
-          "id": "S0319L04",
           "type": "A",
           "target": "a",
           "known": "to",
           "new": true
         },
         {
-          "id": "S0319L05",
+          "id": "S0319L04",
           "type": "M",
           "target": "un país diferente",
           "known": "a different country",
@@ -496,35 +493,29 @@
     },
     {
       "seed_id": "S0320",
-      "seed_pair": ["He doesn't need to buy another television this year.", "Él no necesita comprar otra televisión este año."],
+      "seed_pair": ["Él no necesita comprar otra televisión este año.", "He doesn't need to buy another television this year."],
       "legos": [
         {
           "id": "S0320L01",
-          "type": "A",
-          "target": "Él",
-          "known": "He",
-          "new": true
+          "type": "M",
+          "target": "Él no necesita",
+          "known": "He doesn't need",
+          "new": true,
+          "components": [
+            ["Él", "He"],
+            ["no", "doesn't"],
+            ["necesita", "need"]
+          ]
         },
         {
           "id": "S0320L02",
           "type": "A",
           "target": "comprar",
-          "known": "buy",
+          "known": "to buy",
           "new": true
         },
         {
           "id": "S0320L03",
-          "type": "M",
-          "target": "no necesita",
-          "known": "doesn't need to",
-          "new": true,
-          "components": [
-            ["no", "doesn't"],
-            ["necesita", "need to"]
-          ]
-        },
-        {
-          "id": "S0320L04",
           "type": "M",
           "target": "otra televisión",
           "known": "another television",
@@ -535,7 +526,7 @@
           ]
         },
         {
-          "id": "S0320L05",
+          "id": "S0320L04",
           "type": "M",
           "target": "este año",
           "known": "this year",

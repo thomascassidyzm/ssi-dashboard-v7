@@ -1,12 +1,13 @@
 {
   "agent_id": "agent_06",
   "seed_range": "S0351-S0360",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
+  "extracted_at": "2025-11-12T00:00:00Z",
   "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
   "seeds": [
     {
       "seed_id": "S0351",
       "seed_pair": ["No he didn't want to leave me on my own.", "No él no quería dejarme solo."],
+      "extraction_notes": "FORWARD SWEEP: 'No' stands alone. 'he' alone fails pragmatic FD (pronoun can't generate practice) → pair with verb. 'didn't want to' → 'no quería' (negative past). 'leave me' → 'dejarme' (verb + clitic). 'on my own' → 'solo' (idiomatic phrase meaning 'alone'). TILING VERIFIED: No + él no quería + dejarme + solo ✅",
       "legos": [
         {
           "id": "S0351L01",
@@ -18,204 +19,201 @@
         {
           "id": "S0351L02",
           "type": "A",
-          "target": "él",
-          "known": "he",
+          "target": "solo",
+          "known": "on my own",
           "new": true
         },
         {
           "id": "S0351L03",
           "type": "M",
-          "target": "no quería",
-          "known": "didn't want",
+          "target": "él no quería",
+          "known": "he didn't want to",
           "new": true,
-          "components": [["no", "didn't"], ["quería", "want"]]
+          "components": [
+            ["él", "he"],
+            ["no", "didn't/not"],
+            ["quería", "want to/wanted"]
+          ]
         },
         {
           "id": "S0351L04",
           "type": "M",
           "target": "dejarme",
-          "known": "to leave me",
+          "known": "leave me",
           "new": true,
-          "components": [["dejar", "to leave"], ["me", "me"]]
-        },
-        {
-          "id": "S0351L05",
-          "type": "M",
-          "target": "solo",
-          "known": "on my own",
-          "new": true,
-          "components": [["solo", "on my own"]]
+          "components": [
+            ["dejar", "to leave"],
+            ["me", "me"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0352",
       "seed_pair": ["Even if he wanted to he wouldn't be able to.", "Aunque él quisiera no podría."],
+      "extraction_notes": "FORWARD SWEEP: 'Although' triggers subjunctive 'quisiera'. FD VALIDATION: 'he wanted to' alone fails FD ('quería' vs 'quisiera' ambiguous without trigger). MERGE with trigger → 'even if he wanted to' → 'aunque él quisiera' (includes subjunctive context). 'he wouldn't be able to' → 'no podría' (pronoun implied in conditional verb). TILING VERIFIED: Aunque él quisiera + no podría ✅",
       "legos": [
         {
           "id": "S0352L01",
-          "type": "A",
-          "target": "él",
-          "known": "he",
-          "new": true
+          "type": "M",
+          "target": "Aunque él quisiera",
+          "known": "Even if he wanted to",
+          "new": true,
+          "components": [
+            ["Aunque", "Even if/Although"],
+            ["él", "he"],
+            ["quisiera", "wanted (subjunctive)"]
+          ]
         },
         {
           "id": "S0352L02",
           "type": "M",
-          "target": "Aunque",
-          "known": "Even if",
-          "new": true,
-          "components": [["Aunque", "Even if"]]
-        },
-        {
-          "id": "S0352L03",
-          "type": "M",
-          "target": "quisiera",
-          "known": "wanted to",
-          "new": true,
-          "components": [["quisiera", "wanted to"]]
-        },
-        {
-          "id": "S0352L04",
-          "type": "M",
           "target": "no podría",
           "known": "he wouldn't be able to",
           "new": true,
-          "components": [["no", "wouldn't"], ["podría", "he would be able to"]]
+          "components": [
+            ["no", "not/wouldn't"],
+            ["podría", "be able to/could (conditional)"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0353",
       "seed_pair": ["She needed to run around the field.", "Ella necesitaba correr alrededor del campo."],
+      "extraction_notes": "FORWARD SWEEP: 'she' alone fails pragmatic FD → pair with verb. 'run' → 'correr' FD-compliant. 'around' → requires 'de' in Spanish (compound preposition). 'the field' → article + noun. NOTE: 'del' = 'de' + 'el' (contraction). TILING: Ella necesitaba + correr + alrededor de + el campo → 'alrededor del campo' (morphological contraction) ✅",
       "legos": [
         {
           "id": "S0353L01",
-          "type": "A",
-          "target": "Ella",
-          "known": "She",
-          "new": true
-        },
-        {
-          "id": "S0353L02",
           "type": "A",
           "target": "correr",
           "known": "run",
           "new": true
         },
         {
+          "id": "S0353L02",
+          "type": "M",
+          "target": "Ella necesitaba",
+          "known": "She needed to",
+          "new": true,
+          "components": [
+            ["Ella", "She"],
+            ["necesitaba", "needed to/needed"]
+          ]
+        },
+        {
           "id": "S0353L03",
-          "type": "A",
-          "target": "campo",
-          "known": "field",
-          "new": true
+          "type": "M",
+          "target": "alrededor de",
+          "known": "around",
+          "new": true,
+          "components": [
+            ["alrededor", "around"],
+            ["de", "of"]
+          ]
         },
         {
           "id": "S0353L04",
           "type": "M",
-          "target": "necesitaba",
-          "known": "needed to",
+          "target": "el campo",
+          "known": "the field",
           "new": true,
-          "components": [["necesitaba", "needed to"]]
-        },
-        {
-          "id": "S0353L05",
-          "type": "M",
-          "target": "alrededor del",
-          "known": "around the",
-          "new": true,
-          "components": [["alrededor", "around"], ["del", "the"]]
+          "components": [
+            ["el", "the"],
+            ["campo", "field"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0354",
       "seed_pair": ["He didn't need to appear angry.", "Él no necesitaba aparecer enojado."],
+      "extraction_notes": "FORWARD SWEEP: 'he' alone fails pragmatic FD → pair with verb phrase. 'appear' → 'aparecer' FD-compliant. 'angry' → 'enojado' FD-compliant. TILING VERIFIED: Él no necesitaba + aparecer + enojado ✅",
       "legos": [
         {
           "id": "S0354L01",
-          "type": "A",
-          "target": "Él",
-          "known": "He",
-          "new": true
-        },
-        {
-          "id": "S0354L02",
           "type": "A",
           "target": "aparecer",
           "known": "appear",
           "new": true
         },
         {
-          "id": "S0354L03",
+          "id": "S0354L02",
           "type": "A",
           "target": "enojado",
           "known": "angry",
           "new": true
         },
         {
-          "id": "S0354L04",
+          "id": "S0354L03",
           "type": "M",
-          "target": "no necesitaba",
-          "known": "didn't need to",
+          "target": "Él no necesitaba",
+          "known": "He didn't need to",
           "new": true,
-          "components": [["no", "didn't"], ["necesitaba", "need to"]]
+          "components": [
+            ["Él", "He"],
+            ["no", "didn't/not"],
+            ["necesitaba", "need to/needed"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0355",
       "seed_pair": ["Did she need to talk to that woman you know?", "¿Necesitaba ella hablar con esa mujer que conoces?"],
+      "extraction_notes": "FORWARD SWEEP: Question form 'Did she need to' → '¿Necesitaba ella'. 'talk to' → 'hablar con' (preposition differs). 'that woman' → demonstrative + noun. 'you know' → 'que conoces' (Spanish requires relative pronoun 'que', English omits it). TILING VERIFIED: ¿Necesitaba ella + hablar con + esa mujer + que conoces? ✅",
       "legos": [
         {
           "id": "S0355L01",
-          "type": "A",
-          "target": "hablar",
-          "known": "talk",
-          "new": true
+          "type": "M",
+          "target": "¿Necesitaba ella",
+          "known": "Did she need to",
+          "new": true,
+          "components": [
+            ["¿", "Did (question marker)"],
+            ["Necesitaba", "need to/needed"],
+            ["ella", "she"]
+          ]
         },
         {
           "id": "S0355L02",
-          "type": "A",
-          "target": "con",
-          "known": "to",
-          "new": true
+          "type": "M",
+          "target": "hablar con",
+          "known": "talk to",
+          "new": true,
+          "components": [
+            ["hablar", "talk"],
+            ["con", "with/to"]
+          ]
         },
         {
           "id": "S0355L03",
-          "type": "A",
-          "target": "esa",
-          "known": "that",
-          "new": true
+          "type": "M",
+          "target": "esa mujer",
+          "known": "that woman",
+          "new": true,
+          "components": [
+            ["esa", "that"],
+            ["mujer", "woman"]
+          ]
         },
         {
           "id": "S0355L04",
-          "type": "A",
-          "target": "mujer",
-          "known": "woman",
-          "new": true
-        },
-        {
-          "id": "S0355L05",
-          "type": "M",
-          "target": "Necesitaba ella",
-          "known": "Did she need to",
-          "new": true,
-          "components": [["Necesitaba", "need to"], ["ella", "she"]]
-        },
-        {
-          "id": "S0355L06",
           "type": "M",
           "target": "que conoces",
           "known": "you know",
           "new": true,
-          "components": [["que", "[that/who]"], ["conoces", "you know"]]
+          "components": [
+            ["que", "that/who (relative pronoun)"],
+            ["conoces", "you know"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0356",
       "seed_pair": ["Yes they had something important to discuss.", "Sí ellos tenían algo importante que discutir."],
+      "extraction_notes": "FORWARD SWEEP: 'Yes' → 'Sí'. 'they' alone fails pragmatic FD → pair with verb. 'something' → 'algo'. 'important' → 'importante'. 'to discuss' → 'que discutir' (Spanish requires 'que' before infinitive after 'algo/something'). TILING VERIFIED: Sí + ellos tenían + algo + importante + que discutir ✅",
       "legos": [
         {
           "id": "S0356L01",
@@ -227,44 +225,45 @@
         {
           "id": "S0356L02",
           "type": "A",
-          "target": "ellos",
-          "known": "they",
-          "new": true
-        },
-        {
-          "id": "S0356L03",
-          "type": "A",
-          "target": "tenían",
-          "known": "had",
-          "new": true
-        },
-        {
-          "id": "S0356L04",
-          "type": "A",
           "target": "algo",
           "known": "something",
           "new": true
         },
         {
-          "id": "S0356L05",
+          "id": "S0356L03",
           "type": "A",
           "target": "importante",
           "known": "important",
           "new": true
         },
         {
-          "id": "S0356L06",
+          "id": "S0356L04",
+          "type": "M",
+          "target": "ellos tenían",
+          "known": "they had",
+          "new": true,
+          "components": [
+            ["ellos", "they"],
+            ["tenían", "had"]
+          ]
+        },
+        {
+          "id": "S0356L05",
           "type": "M",
           "target": "que discutir",
           "known": "to discuss",
           "new": true,
-          "components": [["que", "to"], ["discutir", "discuss"]]
+          "components": [
+            ["que", "to (relative/infinitive marker)"],
+            ["discutir", "discuss"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0357",
       "seed_pair": ["No she just wanted to send her a message.", "No ella solo quería enviarle un mensaje."],
+      "extraction_notes": "FORWARD SWEEP: 'No' → 'No'. 'just' → 'solo' (adverb, can stand alone). 'she wanted to' → 'ella quería' (pronoun + verb). 'send her' → 'enviarle' (verb + indirect object clitic). 'a message' → article + noun. TILING VERIFIED: No + ella + solo + quería + enviarle + un mensaje ✅",
       "legos": [
         {
           "id": "S0357L01",
@@ -276,201 +275,191 @@
         {
           "id": "S0357L02",
           "type": "A",
-          "target": "ella",
-          "known": "she",
-          "new": true
-        },
-        {
-          "id": "S0357L03",
-          "type": "A",
           "target": "solo",
           "known": "just",
           "new": true
         },
         {
-          "id": "S0357L04",
-          "type": "A",
-          "target": "un",
-          "known": "a",
-          "new": true
-        },
-        {
-          "id": "S0357L05",
-          "type": "A",
-          "target": "mensaje",
-          "known": "message",
-          "new": true
-        },
-        {
-          "id": "S0357L06",
+          "id": "S0357L03",
           "type": "M",
-          "target": "quería",
-          "known": "wanted to",
+          "target": "ella quería",
+          "known": "she wanted to",
           "new": true,
-          "components": [["quería", "wanted to"]]
+          "components": [
+            ["ella", "she"],
+            ["quería", "wanted to/wanted"]
+          ]
         },
         {
-          "id": "S0357L07",
+          "id": "S0357L04",
           "type": "M",
           "target": "enviarle",
           "known": "send her",
           "new": true,
-          "components": [["enviar", "send"], ["le", "her"]]
+          "components": [
+            ["enviar", "to send"],
+            ["le", "her/to her"]
+          ]
+        },
+        {
+          "id": "S0357L05",
+          "type": "M",
+          "target": "un mensaje",
+          "known": "a message",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["mensaje", "message"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0358",
       "seed_pair": ["Your friend said that she couldn't reach the top.", "Tu amigo dijo que ella no podía alcanzar la cima."],
+      "extraction_notes": "FORWARD SWEEP: 'your friend' → possessive + noun. 'said' → 'dijo'. 'that' → 'que' (subordinating conjunction). 'she couldn't' → 'ella no podía' (pronoun + negative + verb). 'reach' → 'alcanzar'. 'the top' → article + noun. TILING VERIFIED: Tu amigo + dijo + que + ella no podía + alcanzar + la cima ✅",
       "legos": [
         {
           "id": "S0358L01",
-          "type": "A",
-          "target": "Tu",
-          "known": "Your",
-          "new": true
-        },
-        {
-          "id": "S0358L02",
-          "type": "A",
-          "target": "amigo",
-          "known": "friend",
-          "new": true
-        },
-        {
-          "id": "S0358L03",
           "type": "A",
           "target": "dijo",
           "known": "said",
           "new": true
         },
         {
-          "id": "S0358L04",
+          "id": "S0358L02",
           "type": "A",
           "target": "que",
           "known": "that",
           "new": true
         },
         {
-          "id": "S0358L05",
-          "type": "A",
-          "target": "ella",
-          "known": "she",
-          "new": true
-        },
-        {
-          "id": "S0358L06",
+          "id": "S0358L03",
           "type": "A",
           "target": "alcanzar",
           "known": "reach",
           "new": true
         },
         {
-          "id": "S0358L07",
-          "type": "A",
-          "target": "la",
-          "known": "the",
-          "new": true
-        },
-        {
-          "id": "S0358L08",
-          "type": "A",
-          "target": "cima",
-          "known": "top",
-          "new": true
-        },
-        {
-          "id": "S0358L09",
+          "id": "S0358L04",
           "type": "M",
-          "target": "no podía",
-          "known": "couldn't",
+          "target": "Tu amigo",
+          "known": "Your friend",
           "new": true,
-          "components": [["no", "n't"], ["podía", "could"]]
+          "components": [
+            ["Tu", "Your"],
+            ["amigo", "friend"]
+          ]
+        },
+        {
+          "id": "S0358L05",
+          "type": "M",
+          "target": "ella no podía",
+          "known": "she couldn't",
+          "new": true,
+          "components": [
+            ["ella", "she"],
+            ["no", "not/couldn't"],
+            ["podía", "could"]
+          ]
+        },
+        {
+          "id": "S0358L06",
+          "type": "M",
+          "target": "la cima",
+          "known": "the top",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["cima", "top/summit"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0359",
       "seed_pair": ["Your friend said that he could turn left.", "Tu amigo dijo que él podía girar a la izquierda."],
+      "extraction_notes": "FORWARD SWEEP: 'your friend' → possessive + noun (reuse from S0358). 'said' → 'dijo' (reuse). 'that' → 'que' (reuse). 'he could' → 'él podía' (pronoun + verb). 'turn' → 'girar'. 'left' → 'a la izquierda' (direction requires 'a la' in Spanish). TILING VERIFIED: Tu amigo + dijo + que + él podía + girar + a la izquierda ✅",
       "legos": [
         {
           "id": "S0359L01",
-          "type": "A",
-          "target": "Tu",
-          "known": "Your",
-          "new": true
-        },
-        {
-          "id": "S0359L02",
-          "type": "A",
-          "target": "amigo",
-          "known": "friend",
-          "new": true
-        },
-        {
-          "id": "S0359L03",
           "type": "A",
           "target": "dijo",
           "known": "said",
           "new": true
         },
         {
-          "id": "S0359L04",
+          "id": "S0359L02",
           "type": "A",
           "target": "que",
           "known": "that",
           "new": true
         },
         {
-          "id": "S0359L05",
-          "type": "A",
-          "target": "él",
-          "known": "he",
-          "new": true
-        },
-        {
-          "id": "S0359L06",
-          "type": "A",
-          "target": "podía",
-          "known": "could",
-          "new": true
-        },
-        {
-          "id": "S0359L07",
+          "id": "S0359L03",
           "type": "A",
           "target": "girar",
           "known": "turn",
           "new": true
         },
         {
-          "id": "S0359L08",
+          "id": "S0359L04",
+          "type": "M",
+          "target": "Tu amigo",
+          "known": "Your friend",
+          "new": true,
+          "components": [
+            ["Tu", "Your"],
+            ["amigo", "friend"]
+          ]
+        },
+        {
+          "id": "S0359L05",
+          "type": "M",
+          "target": "él podía",
+          "known": "he could",
+          "new": true,
+          "components": [
+            ["él", "he"],
+            ["podía", "could"]
+          ]
+        },
+        {
+          "id": "S0359L06",
           "type": "M",
           "target": "a la izquierda",
           "known": "left",
           "new": true,
-          "components": [["a", ""], ["la", ""], ["izquierda", "left"]]
+          "components": [
+            ["a", "to"],
+            ["la", "the"],
+            ["izquierda", "left"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0360",
       "seed_pair": ["Did your friend say anything else?", "¿Tu amigo dijo algo más?"],
+      "extraction_notes": "FORWARD SWEEP: 'your friend' → reuse from S0358/S0359. In Spanish, question is formed with ¿? markers, no auxiliary 'did'. 'say' → 'dijo' (reuse). 'anything else' → 'algo más' (compound expression). TILING VERIFIED: ¿Tu amigo + dijo + algo más? ✅",
       "legos": [
         {
           "id": "S0360L01",
-          "type": "M",
-          "target": "Tu amigo",
-          "known": "your friend",
-          "new": true,
-          "components": [["Tu", "your"], ["amigo", "friend"]]
+          "type": "A",
+          "target": "dijo",
+          "known": "say",
+          "new": true
         },
         {
           "id": "S0360L02",
           "type": "M",
-          "target": "dijo",
-          "known": "did...say",
+          "target": "Tu amigo",
+          "known": "your friend",
           "new": true,
-          "components": [["dijo", "did...say"]]
+          "components": [
+            ["Tu", "your"],
+            ["amigo", "friend"]
+          ]
         },
         {
           "id": "S0360L03",
@@ -478,7 +467,10 @@
           "target": "algo más",
           "known": "anything else",
           "new": true,
-          "components": [["algo", "anything"], ["más", "else"]]
+          "components": [
+            ["algo", "anything/something"],
+            ["más", "else/more"]
+          ]
         }
       ]
     }

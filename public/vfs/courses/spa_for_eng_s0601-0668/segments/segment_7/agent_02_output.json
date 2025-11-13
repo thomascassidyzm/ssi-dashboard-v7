@@ -1,7 +1,7 @@
 {
   "agent_id": "agent_02",
   "seed_range": "S0611-S0620",
-  "extracted_at": "2025-11-12T00:00:00Z",
+  "extracted_at": "2025-11-12T00:00:00.000Z",
   "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
   "seeds": [
     {
@@ -14,19 +14,20 @@
         {
           "id": "S0611L01",
           "type": "A",
-          "target": "Yo",
-          "known": "I",
+          "target": "preparado",
+          "known": "ready",
           "new": true
         },
         {
           "id": "S0611L02",
           "type": "M",
-          "target": "habría estado preparado",
-          "known": "would have been ready",
+          "target": "yo habría estado",
+          "known": "I would have been",
           "new": true,
           "components": [
-            ["habría estado", "would have been"],
-            ["preparado", "ready"]
+            ["yo", "I"],
+            ["habría", "would have"],
+            ["estado", "been"]
           ]
         },
         {
@@ -47,8 +48,9 @@
           "known": "somewhere else",
           "new": true,
           "components": [
-            ["en otro lugar", "somewhere"],
-            ["(included)", "else"]
+            ["en", "in"],
+            ["otro", "other"],
+            ["lugar", "place/somewhere"]
           ]
         }
       ]
@@ -70,11 +72,11 @@
         {
           "id": "S0612L02",
           "type": "M",
-          "target": "Habríamos comprado",
-          "known": "We would have bought",
+          "target": "habríamos comprado",
+          "known": "we would have bought",
           "new": true,
           "components": [
-            ["Habríamos", "We would have"],
+            ["habríamos", "we would have"],
             ["comprado", "bought"]
           ]
         }
@@ -90,7 +92,7 @@
         {
           "id": "S0613L01",
           "type": "A",
-          "target": "Probablemente",
+          "target": "probablemente",
           "known": "probably",
           "new": true
         },
@@ -134,37 +136,34 @@
       "legos": [
         {
           "id": "S0614L01",
-          "type": "A",
-          "target": "Está",
-          "known": "It's",
-          "new": true
+          "type": "M",
+          "target": "está cerca de",
+          "known": "it's near",
+          "new": true,
+          "components": [
+            ["está", "it's"],
+            ["cerca", "near"],
+            ["de", "of"]
+          ]
         },
         {
           "id": "S0614L02",
-          "type": "A",
-          "target": "donde",
-          "known": "where",
-          "new": true
+          "type": "M",
+          "target": "donde vive",
+          "known": "where live",
+          "new": true,
+          "components": [
+            ["donde", "where"],
+            ["vive", "live"]
+          ]
         },
         {
           "id": "S0614L03",
           "type": "M",
-          "target": "cerca de",
-          "known": "near",
+          "target": "tu familia",
+          "known": "your family",
           "new": true,
           "components": [
-            ["cerca", "near"],
-            ["de", "(preposition)"]
-          ]
-        },
-        {
-          "id": "S0614L04",
-          "type": "M",
-          "target": "vive tu familia",
-          "known": "your family live",
-          "new": true,
-          "components": [
-            ["vive", "live"],
             ["tu", "your"],
             ["familia", "family"]
           ]
@@ -181,41 +180,53 @@
         {
           "id": "S0615L01",
           "type": "A",
+          "target": "muy",
+          "known": "very",
+          "new": true
+        },
+        {
+          "id": "S0615L02",
+          "type": "A",
+          "target": "valiente",
+          "known": "brave",
+          "new": true
+        },
+        {
+          "id": "S0615L03",
+          "type": "A",
           "target": "eso",
           "known": "that",
           "new": true
         },
         {
-          "id": "S0615L02",
-          "type": "M",
-          "target": "Pensé que",
-          "known": "I thought",
-          "new": true,
-          "components": [
-            ["Pensé", "I thought"],
-            ["que", "(that)"]
-          ]
-        },
-        {
-          "id": "S0615L03",
-          "type": "M",
-          "target": "fuiste muy valiente",
-          "known": "you were very brave",
-          "new": true,
-          "components": [
-            ["fuiste", "you were"],
-            ["muy", "very"],
-            ["valiente", "brave"]
-          ]
-        },
-        {
           "id": "S0615L04",
+          "type": "M",
+          "target": "pensé que",
+          "known": "I thought that",
+          "new": true,
+          "components": [
+            ["pensé", "I thought"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0615L05",
+          "type": "M",
+          "target": "fuiste",
+          "known": "you were",
+          "new": true,
+          "components": [
+            ["fuiste", "you were"]
+          ]
+        },
+        {
+          "id": "S0615L06",
           "type": "M",
           "target": "al decir",
           "known": "to say",
           "new": true,
           "components": [
-            ["al", "to"],
+            ["al", "to/at the"],
             ["decir", "say"]
           ]
         }
@@ -231,41 +242,59 @@
         {
           "id": "S0616L01",
           "type": "A",
+          "target": "muy",
+          "known": "very",
+          "new": true
+        },
+        {
+          "id": "S0616L02",
+          "type": "A",
+          "target": "valiente",
+          "known": "brave",
+          "new": true
+        },
+        {
+          "id": "S0616L03",
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0616L04",
+          "type": "A",
           "target": "eso",
           "known": "that",
           "new": true
         },
         {
-          "id": "S0616L02",
+          "id": "S0616L05",
           "type": "M",
-          "target": "Fuiste muy valiente",
-          "known": "You were very brave",
+          "target": "fuiste",
+          "known": "you were",
           "new": true,
           "components": [
-            ["Fuiste", "You were"],
-            ["muy", "very"],
-            ["valiente", "brave"]
+            ["fuiste", "you were"]
           ]
         },
         {
-          "id": "S0616L03",
+          "id": "S0616L06",
           "type": "M",
           "target": "al decir",
           "known": "to say",
           "new": true,
           "components": [
-            ["al", "to"],
+            ["al", "to/at the"],
             ["decir", "say"]
           ]
         },
         {
-          "id": "S0616L04",
+          "id": "S0616L07",
           "type": "M",
-          "target": "que pensabas",
+          "target": "pensabas",
           "known": "you thought",
           "new": true,
           "components": [
-            ["que", "(that)"],
             ["pensabas", "you thought"]
           ]
         }
@@ -280,23 +309,38 @@
       "legos": [
         {
           "id": "S0617L01",
-          "type": "M",
-          "target": "Pensaste que",
-          "known": "You thought",
-          "new": true,
-          "components": [
-            ["Pensaste", "You thought"],
-            ["que", "that"]
-          ]
+          "type": "A",
+          "target": "que",
+          "known": "that",
+          "new": true
         },
         {
           "id": "S0617L02",
           "type": "M",
-          "target": "era un error",
-          "known": "it was a mistake",
+          "target": "pensaste",
+          "known": "you thought",
           "new": true,
           "components": [
-            ["era", "it was"],
+            ["pensaste", "you thought"]
+          ]
+        },
+        {
+          "id": "S0617L03",
+          "type": "M",
+          "target": "era",
+          "known": "it was",
+          "new": true,
+          "components": [
+            ["era", "it was"]
+          ]
+        },
+        {
+          "id": "S0617L04",
+          "type": "M",
+          "target": "un error",
+          "known": "a mistake",
+          "new": true,
+          "components": [
             ["un", "a"],
             ["error", "mistake"]
           ]
@@ -313,12 +357,12 @@
         {
           "id": "S0618L01",
           "type": "M",
-          "target": "No parece",
-          "known": "It doesn't feel like",
+          "target": "no parece",
+          "known": "it doesn't feel like",
           "new": true,
           "components": [
-            ["No", "doesn't"],
-            ["parece", "It feel like"]
+            ["no", "doesn't"],
+            ["parece", "it feel like/seem"]
           ]
         },
         {
@@ -328,7 +372,7 @@
           "known": "a long time",
           "new": true,
           "components": [
-            ["mucho", "long"],
+            ["mucho", "much/a long"],
             ["tiempo", "time"]
           ]
         }
@@ -344,12 +388,12 @@
         {
           "id": "S0619L01",
           "type": "M",
-          "target": "Hace mucho tiempo",
-          "known": "It's a long time",
+          "target": "hace mucho tiempo",
+          "known": "it's a long time",
           "new": true,
           "components": [
-            ["Hace", "It's"],
-            ["mucho", "a long"],
+            ["hace", "it's/it makes"],
+            ["mucho", "much/a long"],
             ["tiempo", "time"]
           ]
         },
@@ -361,7 +405,7 @@
           "new": true,
           "components": [
             ["desde", "since"],
-            ["que", "(that)"]
+            ["que", "that"]
           ]
         },
         {
@@ -387,12 +431,12 @@
         {
           "id": "S0620L01",
           "type": "M",
-          "target": "Hace muchísimo tiempo",
-          "known": "It's a very long time",
+          "target": "hace muchísimo tiempo",
+          "known": "it's a very long time",
           "new": true,
           "components": [
-            ["Hace", "It's"],
-            ["muchísimo", "a very long"],
+            ["hace", "it's/it makes"],
+            ["muchísimo", "very much/a very long"],
             ["tiempo", "time"]
           ]
         },
@@ -404,19 +448,30 @@
           "new": true,
           "components": [
             ["desde", "since"],
-            ["que", "(that)"]
+            ["que", "that"]
           ]
         },
         {
           "id": "S0620L03",
           "type": "M",
-          "target": "nos vimos por última vez",
-          "known": "we last saw each other",
+          "target": "nos vimos",
+          "known": "we saw each other",
           "new": true,
           "components": [
             ["nos", "each other"],
-            ["vimos", "we saw"],
-            ["por última vez", "last"]
+            ["vimos", "we saw"]
+          ]
+        },
+        {
+          "id": "S0620L04",
+          "type": "M",
+          "target": "por última vez",
+          "known": "last",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["última", "last"],
+            ["vez", "time"]
           ]
         }
       ]
