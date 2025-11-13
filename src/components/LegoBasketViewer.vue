@@ -690,6 +690,13 @@ export default {
     },
     getLegoBaskets(basket) {
       if (!basket) return {}
+
+      // v6.2+ format: LEGOs nested under 'legos' property
+      if (basket.legos && typeof basket.legos === 'object') {
+        return basket.legos
+      }
+
+      // Legacy format: LEGOs at root level
       const baskets = {}
       for (const key in basket) {
         if (key.startsWith('S') && key.includes('L')) {
