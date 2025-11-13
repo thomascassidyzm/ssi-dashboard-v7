@@ -424,55 +424,6 @@ This is the **ONLY authoritative source** for Phase 3 extraction methodology.
 
 ---
 
-## ⚠️ CRITICAL LESSON: S0010 TILING IN BOTH LANGUAGES
-
-**The mistake that taught us to verify BOTH languages:**
-
-\`\`\`json
-{
-  "seed_id": "S0010",
-  "seed_pair": [
-    "I'm not sure if I can remember the whole sentence.",
-    "No estoy seguro si puedo recordar toda la oración."
-  ],
-  "legos": [
-    {"id": "S0010L01", "type": "A", "target": "si", "known": "if", "new": true},
-    {
-      "id": "S0010L02",
-      "type": "M",
-      "target": "no estoy seguro",
-      "known": "I'm not sure",
-      "new": true,
-      "components": [["no", "not"], ["estoy", "I am"], ["seguro", "sure"]]
-    },
-    {
-      "id": "S0010L03",
-      "type": "M",
-      "target": "puedo recordar",
-      "known": "I can remember",
-      "new": true,
-      "components": [["puedo", "I can"], ["recordar", "to remember"]]
-    },
-    {
-      "id": "S0010L04",
-      "type": "M",
-      "target": "toda la oración",
-      "known": "the whole sentence",
-      "new": true,
-      "components": [["toda", "whole"], ["la", "the"], ["oración", "sentence"]]
-    }
-  ]
-}
-\`\`\`
-
-**WHY L03 is M-type** (not "puedo" + "recordar" separately):
-- ❌ "I can" + "to remember" does NOT tile in English (wrong: "I can to remember")
-- ✅ "I can remember" (modal + bare infinitive) is a UNIT in English
-- ✅ Spanish "puedo recordar" also tiles as unit
-- **Lesson**: Must verify BOTH TARGET and KNOWN reconstruct perfectly!
-
----
-
 ## 🚀 SUB-AGENT SPAWNING
 
 You will spawn ${agentCount} sub-agents, each handling ${seedsPerAgent} seeds.
