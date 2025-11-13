@@ -1,8 +1,8 @@
 {
   "agent_id": "agent_07",
   "seed_range": "S0561-S0570",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0561",
@@ -10,31 +10,38 @@
         "I don't care if it's a fast car.",
         "No me importa si es un carro rápido."
       ],
+      "thinking": "FORWARD SWEEP: 'I don't care' → 'No me importa' ✅ idiomatic phrase; 'if' → 'si' ✅ clear; 'it's a fast car' → 'es un carro rápido' ✅ complete phrase with adjective. BACKWARD SWEEP: 'un carro rápido' = 'a fast car' useful for pattern generation (Heuristic 2). OVERLAPS: Adding 'un carro rápido' separately for recombination power.",
       "legos": [
         {
           "id": "S0561L01",
+          "type": "M",
+          "target": "no me importa",
+          "known": "I don't care",
+          "new": true,
+          "components": [
+            ["no", "not/don't"],
+            ["me", "me"],
+            ["importa", "care/matter"]
+          ]
+        },
+        {
+          "id": "S0561L02",
           "type": "A",
           "target": "si",
           "known": "if",
           "new": true
         },
         {
-          "id": "S0561L02",
-          "type": "A",
-          "target": "es",
-          "known": "it's",
-          "new": true
-        },
-        {
           "id": "S0561L03",
           "type": "M",
-          "target": "No me importa",
-          "known": "I don't care",
+          "target": "es un carro rápido",
+          "known": "it's a fast car",
           "new": true,
           "components": [
-            ["No", "no"],
-            ["me", "me"],
-            ["importa", "matters"]
+            ["es", "it's/is"],
+            ["un", "a"],
+            ["carro", "car"],
+            ["rápido", "fast"]
           ]
         },
         {
@@ -57,15 +64,16 @@
         "I just want to get there safely.",
         "Solo quiero llegar allí con seguridad."
       ],
+      "thinking": "FORWARD SWEEP: 'I just want' → 'Solo quiero' ✅; 'to get there' → 'llegar allí' ✅; 'safely' → 'con seguridad' ✅ (not 'seguramente'). BACKWARD SWEEP: All covered. OVERLAPS: Adding 'quiero llegar allí' for verb+infinitive pattern, and 'llegar allí con seguridad' for complete action phrase (Heuristic 2).",
       "legos": [
         {
           "id": "S0562L01",
           "type": "M",
-          "target": "Solo quiero",
+          "target": "solo quiero",
           "known": "I just want",
           "new": true,
           "components": [
-            ["Solo", "just"],
+            ["solo", "just/only"],
             ["quiero", "I want"]
           ]
         },
@@ -76,7 +84,7 @@
           "known": "to get there",
           "new": true,
           "components": [
-            ["llegar", "to arrive"],
+            ["llegar", "to arrive/get"],
             ["allí", "there"]
           ]
         },
@@ -87,6 +95,31 @@
           "known": "safely",
           "new": true,
           "components": [
+            ["con", "with"],
+            ["seguridad", "safety/security"]
+          ]
+        },
+        {
+          "id": "S0562L04",
+          "type": "M",
+          "target": "quiero llegar allí",
+          "known": "want to get there",
+          "new": true,
+          "components": [
+            ["quiero", "I want"],
+            ["llegar", "to arrive/get"],
+            ["allí", "there"]
+          ]
+        },
+        {
+          "id": "S0562L05",
+          "type": "M",
+          "target": "llegar allí con seguridad",
+          "known": "to get there safely",
+          "new": true,
+          "components": [
+            ["llegar", "to arrive"],
+            ["allí", "there"],
             ["con", "with"],
             ["seguridad", "safety"]
           ]
@@ -99,25 +132,26 @@
         "I wouldn't have been able to keep going any longer.",
         "No habría podido continuar más tiempo."
       ],
+      "thinking": "FORWARD SWEEP: 'I wouldn't have been able' → 'No habría podido' ✅ conditional perfect construction; 'to keep going' → 'continuar' ✅; 'any longer' → 'más tiempo' ✅. BACKWARD SWEEP: 'continuar más tiempo' useful overlap. OVERLAPS: Adding overlap for complete action phrase (Heuristic 2).",
       "legos": [
         {
           "id": "S0563L01",
+          "type": "M",
+          "target": "no habría podido",
+          "known": "I wouldn't have been able",
+          "new": true,
+          "components": [
+            ["no", "not/wouldn't"],
+            ["habría", "would have"],
+            ["podido", "been able"]
+          ]
+        },
+        {
+          "id": "S0563L02",
           "type": "A",
           "target": "continuar",
           "known": "to keep going",
           "new": true
-        },
-        {
-          "id": "S0563L02",
-          "type": "M",
-          "target": "No habría podido",
-          "known": "I wouldn't have been able",
-          "new": true,
-          "components": [
-            ["No", "not"],
-            ["habría", "I would have"],
-            ["podido", "been able"]
-          ]
         },
         {
           "id": "S0563L03",
@@ -126,6 +160,18 @@
           "known": "any longer",
           "new": true,
           "components": [
+            ["más", "more/any"],
+            ["tiempo", "time/longer"]
+          ]
+        },
+        {
+          "id": "S0563L04",
+          "type": "M",
+          "target": "continuar más tiempo",
+          "known": "keep going any longer",
+          "new": true,
+          "components": [
+            ["continuar", "keep going/continue"],
             ["más", "more"],
             ["tiempo", "time"]
           ]
@@ -138,24 +184,30 @@
         "I wouldn't have been able to without your help.",
         "No habría podido sin tu ayuda."
       ],
+      "thinking": "FORWARD SWEEP: 'I wouldn't have been able to' → 'No habría podido' ✅ (same as S0563); 'without your help' → 'sin tu ayuda' ✅. BACKWARD SWEEP: 'tu ayuda' = 'your help' useful for pattern generation. OVERLAPS: Adding 'tu ayuda' for possessive pattern (Heuristic 2).",
       "legos": [
         {
           "id": "S0564L01",
-          "type": "A",
-          "target": "sin",
-          "known": "without",
-          "new": true
+          "type": "M",
+          "target": "no habría podido",
+          "known": "I wouldn't have been able to",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["habría", "would have"],
+            ["podido", "been able"]
+          ]
         },
         {
           "id": "S0564L02",
           "type": "M",
-          "target": "No habría podido",
-          "known": "I wouldn't have been able to",
+          "target": "sin tu ayuda",
+          "known": "without your help",
           "new": true,
           "components": [
-            ["No", "not"],
-            ["habría", "I would have"],
-            ["podido", "been able"]
+            ["sin", "without"],
+            ["tu", "your"],
+            ["ayuda", "help"]
           ]
         },
         {
@@ -177,39 +229,49 @@
         "I'd have thought about it more carefully.",
         "Habría pensado en ello más cuidadosamente."
       ],
+      "thinking": "FORWARD SWEEP: 'I'd have thought' → 'Habría pensado' ✅; 'about it' → 'en ello' ✅; 'more carefully' → 'más cuidadosamente' ✅. BACKWARD SWEEP: 'pensado en ello' = 'thought about it' useful overlap. OVERLAPS: Adding for verb+preposition pattern (Heuristic 2).",
       "legos": [
         {
           "id": "S0565L01",
-          "type": "A",
-          "target": "más",
-          "known": "more",
-          "new": true
-        },
-        {
-          "id": "S0565L02",
-          "type": "A",
-          "target": "cuidadosamente",
-          "known": "carefully",
-          "new": true
-        },
-        {
-          "id": "S0565L03",
           "type": "M",
-          "target": "Habría pensado",
+          "target": "habría pensado",
           "known": "I'd have thought",
           "new": true,
           "components": [
-            ["Habría", "I'd have"],
+            ["habría", "I'd have/would have"],
             ["pensado", "thought"]
           ]
         },
         {
-          "id": "S0565L04",
+          "id": "S0565L02",
           "type": "M",
           "target": "en ello",
           "known": "about it",
           "new": true,
           "components": [
+            ["en", "about/in"],
+            ["ello", "it"]
+          ]
+        },
+        {
+          "id": "S0565L03",
+          "type": "M",
+          "target": "más cuidadosamente",
+          "known": "more carefully",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["cuidadosamente", "carefully"]
+          ]
+        },
+        {
+          "id": "S0565L04",
+          "type": "M",
+          "target": "pensado en ello",
+          "known": "thought about it",
+          "new": true,
+          "components": [
+            ["pensado", "thought"],
             ["en", "about"],
             ["ello", "it"]
           ]
@@ -222,45 +284,40 @@
         "I'd have thought more if it had been my choice.",
         "Habría pensado más si hubiera sido mi elección."
       ],
+      "thinking": "FORWARD SWEEP: 'I'd have thought' → 'Habría pensado' ✅; 'more' → 'más' ✅; 'if it had been' → 'si hubiera sido' ✅ pluperfect subjunctive trigger must stay together (Heuristic 1); 'my choice' → 'mi elección' ✅. BACKWARD SWEEP: Confirmed subjunctive trigger. OVERLAPS: 'habría pensado más' for conditional pattern (Heuristic 2).",
       "legos": [
         {
           "id": "S0566L01",
+          "type": "M",
+          "target": "habría pensado",
+          "known": "I'd have thought",
+          "new": true,
+          "components": [
+            ["habría", "I'd have"],
+            ["pensado", "thought"]
+          ]
+        },
+        {
+          "id": "S0566L02",
           "type": "A",
           "target": "más",
           "known": "more",
           "new": true
         },
         {
-          "id": "S0566L02",
-          "type": "A",
-          "target": "si",
-          "known": "if",
-          "new": true
-        },
-        {
           "id": "S0566L03",
           "type": "M",
-          "target": "Habría pensado",
-          "known": "I'd have thought",
+          "target": "si hubiera sido",
+          "known": "if it had been",
           "new": true,
           "components": [
-            ["Habría", "I'd have"],
-            ["pensado", "thought"]
-          ]
-        },
-        {
-          "id": "S0566L04",
-          "type": "M",
-          "target": "hubiera sido",
-          "known": "it had been",
-          "new": true,
-          "components": [
+            ["si", "if"],
             ["hubiera", "had"],
             ["sido", "been"]
           ]
         },
         {
-          "id": "S0566L05",
+          "id": "S0566L04",
           "type": "M",
           "target": "mi elección",
           "known": "my choice",
@@ -268,6 +325,18 @@
           "components": [
             ["mi", "my"],
             ["elección", "choice"]
+          ]
+        },
+        {
+          "id": "S0566L05",
+          "type": "M",
+          "target": "habría pensado más",
+          "known": "I'd have thought more",
+          "new": true,
+          "components": [
+            ["habría", "I'd have"],
+            ["pensado", "thought"],
+            ["más", "more"]
           ]
         }
       ]
@@ -278,70 +347,77 @@
         "It's been lovely spending time outdoors watching the children play.",
         "Ha sido encantador pasar tiempo al aire libre observando a los niños jugar."
       ],
+      "thinking": "FORWARD SWEEP: 'It's been lovely' → 'Ha sido encantador' ✅; 'spending time' → 'pasar tiempo' ✅; 'outdoors' → 'al aire libre' ✅; 'watching the children play' → 'observando a los niños jugar' ✅. BACKWARD SWEEP: 'a' particle needs context (personal 'a'), 'observando a los niños' = 'watching the children' useful, 'los niños' = 'the children' useful. OVERLAPS: Multiple overlaps for gerund patterns (Heuristic 2).",
       "legos": [
         {
           "id": "S0567L01",
-          "type": "A",
-          "target": "encantador",
-          "known": "lovely",
-          "new": true
-        },
-        {
-          "id": "S0567L02",
-          "type": "A",
-          "target": "observando",
-          "known": "watching",
-          "new": true
-        },
-        {
-          "id": "S0567L03",
-          "type": "A",
-          "target": "jugar",
-          "known": "play",
-          "new": true
-        },
-        {
-          "id": "S0567L04",
           "type": "M",
-          "target": "Ha sido",
-          "known": "It's been",
+          "target": "ha sido encantador",
+          "known": "it's been lovely",
           "new": true,
           "components": [
-            ["Ha", "has"],
-            ["sido", "been"]
+            ["ha", "it's/has"],
+            ["sido", "been"],
+            ["encantador", "lovely/charming"]
           ]
         },
         {
-          "id": "S0567L05",
+          "id": "S0567L02",
           "type": "M",
           "target": "pasar tiempo",
           "known": "spending time",
           "new": true,
           "components": [
-            ["pasar", "to spend"],
+            ["pasar", "to spend/pass"],
             ["tiempo", "time"]
           ]
         },
         {
-          "id": "S0567L06",
+          "id": "S0567L03",
           "type": "M",
           "target": "al aire libre",
           "known": "outdoors",
           "new": true,
           "components": [
-            ["al", "in the"],
+            ["al", "at the/to the"],
             ["aire", "air"],
             ["libre", "free"]
           ]
         },
         {
-          "id": "S0567L07",
+          "id": "S0567L04",
           "type": "M",
-          "target": "a los niños",
+          "target": "observando a los niños jugar",
+          "known": "watching the children play",
+          "new": true,
+          "components": [
+            ["observando", "watching"],
+            ["a", "to"],
+            ["los", "the"],
+            ["niños", "children"],
+            ["jugar", "play"]
+          ]
+        },
+        {
+          "id": "S0567L05",
+          "type": "M",
+          "target": "observando a los niños",
+          "known": "watching the children",
+          "new": true,
+          "components": [
+            ["observando", "watching"],
+            ["a", "to"],
+            ["los", "the"],
+            ["niños", "children"]
+          ]
+        },
+        {
+          "id": "S0567L06",
+          "type": "M",
+          "target": "los niños",
           "known": "the children",
           "new": true,
           "components": [
-            ["a", "(personal a)"],
             ["los", "the"],
             ["niños", "children"]
           ]
@@ -354,23 +430,21 @@
         "I'm expecting to see an improvement next time we meet.",
         "Espero ver una mejora la próxima vez que nos encontremos."
       ],
+      "thinking": "FORWARD SWEEP: 'I'm expecting to see' → 'Espero ver' ✅; 'an improvement' → 'una mejora' ✅; 'next time we meet' → 'la próxima vez que nos encontremos' ✅ subjunctive trigger must include 'que' (Heuristic 1). BACKWARD SWEEP: Reading right-to-left confirms 'que nos encontremos' needs full context. OVERLAPS: 'la próxima vez' useful separately (Heuristic 2).",
       "legos": [
         {
           "id": "S0568L01",
-          "type": "A",
-          "target": "Espero",
-          "known": "I'm expecting to",
-          "new": true
+          "type": "M",
+          "target": "espero ver",
+          "known": "I'm expecting to see",
+          "new": true,
+          "components": [
+            ["espero", "I'm expecting/hope"],
+            ["ver", "to see"]
+          ]
         },
         {
           "id": "S0568L02",
-          "type": "A",
-          "target": "ver",
-          "known": "see",
-          "new": true
-        },
-        {
-          "id": "S0568L03",
           "type": "M",
           "target": "una mejora",
           "known": "an improvement",
@@ -381,27 +455,30 @@
           ]
         },
         {
-          "id": "S0568L04",
+          "id": "S0568L03",
           "type": "M",
-          "target": "la próxima vez que",
-          "known": "next time",
+          "target": "la próxima vez que nos encontremos",
+          "known": "next time we meet",
           "new": true,
           "components": [
             ["la", "the"],
             ["próxima", "next"],
             ["vez", "time"],
-            ["que", "(that)"]
+            ["que", "that"],
+            ["nos", "us/we"],
+            ["encontremos", "meet"]
           ]
         },
         {
-          "id": "S0568L05",
+          "id": "S0568L04",
           "type": "M",
-          "target": "nos encontremos",
-          "known": "we meet",
+          "target": "la próxima vez",
+          "known": "next time",
           "new": true,
           "components": [
-            ["nos", "we"],
-            ["encontremos", "meet"]
+            ["la", "the"],
+            ["próxima", "next"],
+            ["vez", "time"]
           ]
         }
       ]
@@ -412,42 +489,49 @@
         "Have you decided how much you are willing to pay?",
         "¿Has decidido cuánto estás dispuesto a pagar?"
       ],
+      "thinking": "FORWARD SWEEP: 'Have you decided' → '¿Has decidido' ✅; 'how much' → 'cuánto' ✅; 'you are willing to pay' → 'estás dispuesto a pagar' ✅. BACKWARD SWEEP: 'dispuesto a pagar' = 'willing to pay' useful without subject (Heuristic 2). OVERLAPS: Adding 'dispuesto a pagar' for adjective+infinitive pattern.",
       "legos": [
         {
           "id": "S0569L01",
+          "type": "M",
+          "target": "has decidido",
+          "known": "have you decided",
+          "new": true,
+          "components": [
+            ["has", "have you"],
+            ["decidido", "decided"]
+          ]
+        },
+        {
+          "id": "S0569L02",
           "type": "A",
           "target": "cuánto",
           "known": "how much",
           "new": true
         },
         {
-          "id": "S0569L02",
-          "type": "A",
-          "target": "pagar",
-          "known": "pay",
-          "new": true
-        },
-        {
           "id": "S0569L03",
           "type": "M",
-          "target": "Has decidido",
-          "known": "Have you decided",
+          "target": "estás dispuesto a pagar",
+          "known": "you are willing to pay",
           "new": true,
           "components": [
-            ["Has", "Have you"],
-            ["decidido", "decided"]
+            ["estás", "you are"],
+            ["dispuesto", "willing"],
+            ["a", "to"],
+            ["pagar", "pay"]
           ]
         },
         {
           "id": "S0569L04",
           "type": "M",
-          "target": "estás dispuesto a",
-          "known": "you are willing to",
+          "target": "dispuesto a pagar",
+          "known": "willing to pay",
           "new": true,
           "components": [
-            ["estás", "you are"],
             ["dispuesto", "willing"],
-            ["a", "to"]
+            ["a", "to"],
+            ["pagar", "pay"]
           ]
         }
       ]
@@ -458,42 +542,42 @@
         "How much are you willing to pay for your ticket?",
         "¿Cuánto estás dispuesto a pagar por tu billete?"
       ],
+      "thinking": "FORWARD SWEEP: 'How much' → '¿Cuánto' ✅ (same as S0569); 'are you willing to pay' → 'estás dispuesto a pagar' ✅ (same as S0569); 'for your ticket' → 'por tu billete' ✅. BACKWARD SWEEP: 'tu billete' = 'your ticket' useful for possessive pattern. OVERLAPS: Adding 'tu billete' (Heuristic 2).",
       "legos": [
         {
           "id": "S0570L01",
           "type": "A",
           "target": "cuánto",
-          "known": "How much",
+          "known": "how much",
           "new": true
         },
         {
           "id": "S0570L02",
-          "type": "A",
-          "target": "pagar",
-          "known": "pay",
-          "new": true
-        },
-        {
-          "id": "S0570L03",
-          "type": "A",
-          "target": "por",
-          "known": "for",
-          "new": true
-        },
-        {
-          "id": "S0570L04",
           "type": "M",
-          "target": "estás dispuesto a",
-          "known": "are you willing to",
+          "target": "estás dispuesto a pagar",
+          "known": "are you willing to pay",
           "new": true,
           "components": [
-            ["estás", "are you"],
+            ["estás", "you are"],
             ["dispuesto", "willing"],
-            ["a", "to"]
+            ["a", "to"],
+            ["pagar", "pay"]
           ]
         },
         {
-          "id": "S0570L05",
+          "id": "S0570L03",
+          "type": "M",
+          "target": "por tu billete",
+          "known": "for your ticket",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["tu", "your"],
+            ["billete", "ticket"]
+          ]
+        },
+        {
+          "id": "S0570L04",
           "type": "M",
           "target": "tu billete",
           "known": "your ticket",
