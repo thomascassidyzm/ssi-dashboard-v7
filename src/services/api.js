@@ -244,8 +244,16 @@ export default {
         // Fallback to static files if API unavailable
         console.log(`[API] Server unavailable, using static files for ${courseCode}`)
 
-        const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
-        const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
+        // Detect segment range (e.g., spa_for_eng_s0520-0529)
+        const segmentMatch = courseCode.match(/^([a-z]{3}_for_[a-z]{3})_s\d{4}-\d{4}$/)
+        const baseCourseCode = segmentMatch ? segmentMatch[1] : courseCode
+
+        if (segmentMatch) {
+          console.log(`[API] Segment range detected - reading from base course: ${baseCourseCode}`)
+        }
+
+        const seedPairsRes = await fetch(`/vfs/courses/${baseCourseCode}/seed_pairs.json`)
+        const legoPairsRes = await fetch(`/vfs/courses/${baseCourseCode}/lego_pairs.json`)
 
         if (seedPairsRes.ok && legoPairsRes.ok) {
           const seedPairsData = await seedPairsRes.json()
@@ -359,8 +367,16 @@ export default {
         // Fallback to static files if API unavailable
         console.log(`[API] Server unavailable, using static files for provenance ${courseCode}/${seedId}`)
 
-        const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
-        const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
+        // Detect segment range (e.g., spa_for_eng_s0520-0529)
+        const segmentMatch = courseCode.match(/^([a-z]{3}_for_[a-z]{3})_s\d{4}-\d{4}$/)
+        const baseCourseCode = segmentMatch ? segmentMatch[1] : courseCode
+
+        if (segmentMatch) {
+          console.log(`[API] Segment range detected - reading from base course: ${baseCourseCode}`)
+        }
+
+        const seedPairsRes = await fetch(`/vfs/courses/${baseCourseCode}/seed_pairs.json`)
+        const legoPairsRes = await fetch(`/vfs/courses/${baseCourseCode}/lego_pairs.json`)
 
         if (seedPairsRes.ok && legoPairsRes.ok) {
           const seedPairsData = await seedPairsRes.json()
