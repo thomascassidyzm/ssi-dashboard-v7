@@ -1,0 +1,145 @@
+{
+  "agent_id": "agent_01",
+  "seed_range": "S0482-S0483",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0482",
+      "seed_pair": [
+        "The only real hope is that they're not serious.",
+        "La única esperanza real es que no son serios."
+      ],
+      "legos": [
+        {
+          "id": "S0482L01",
+          "type": "M",
+          "target": "la única esperanza real",
+          "known": "the only real hope",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["única", "only"],
+            ["esperanza", "hope"],
+            ["real", "real"]
+          ]
+        },
+        {
+          "id": "S0482L02",
+          "type": "M",
+          "target": "es que no son serios",
+          "known": "is that they're not serious",
+          "new": true,
+          "components": [
+            ["es", "is"],
+            ["que", "that"],
+            ["no", "not"],
+            ["son", "are"],
+            ["serios", "serious"]
+          ]
+        },
+        {
+          "id": "S0482L03",
+          "type": "M",
+          "target": "no son serios",
+          "known": "they're not serious",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["son", "are"],
+            ["serios", "serious"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0483",
+      "seed_pair": [
+        "Life isn't easy but it's not meant to be easy.",
+        "La vida no es fácil pero no está destinada a ser fácil."
+      ],
+      "legos": [
+        {
+          "id": "S0483L01",
+          "type": "A",
+          "target": "la vida",
+          "known": "life",
+          "new": true
+        },
+        {
+          "id": "S0483L02",
+          "type": "M",
+          "target": "la vida no es fácil",
+          "known": "life isn't easy",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["vida", "life"],
+            ["no", "not"],
+            ["es", "is"],
+            ["fácil", "easy"]
+          ]
+        },
+        {
+          "id": "S0483L03",
+          "type": "M",
+          "target": "no es fácil",
+          "known": "isn't easy",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["es", "is"],
+            ["fácil", "easy"]
+          ]
+        },
+        {
+          "id": "S0483L04",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0483L05",
+          "type": "M",
+          "target": "no está destinada a ser fácil",
+          "known": "it's not meant to be easy",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["está", "is"],
+            ["destinada", "meant/destined"],
+            ["a", "to"],
+            ["ser", "be"],
+            ["fácil", "easy"]
+          ]
+        },
+        {
+          "id": "S0483L06",
+          "type": "M",
+          "target": "no está destinada a ser",
+          "known": "it's not meant to be",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["está", "is"],
+            ["destinada", "meant/destined"],
+            ["a", "to"],
+            ["ser", "be"]
+          ]
+        },
+        {
+          "id": "S0483L07",
+          "type": "M",
+          "target": "ser fácil",
+          "known": "to be easy",
+          "new": true,
+          "components": [
+            ["ser", "to be/be"],
+            ["fácil", "easy"]
+          ]
+        }
+      ]
+    }
+  ]
+}
