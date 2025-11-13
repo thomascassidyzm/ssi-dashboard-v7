@@ -1,18 +1,19 @@
 {
   "agent_id": "agent_10",
   "seed_range": "S0191-S0200",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0191",
-      "seed_pair": ["No, no me importa en absoluto.", "No I don't mind at all."],
+      "seed_pair": ["No I don't mind at all.", "No, no me importa en absoluto."],
+      "extraction_notes": "Forward sweep: 'No' clear interjection, 'I don't mind' = 'no me importa' (idiomatic, needs full phrase), 'at all' = 'en absoluto' (idiomatic). Backward sweep confirms. No overlaps needed - perfect tiling.",
       "legos": [
         {
           "id": "S0191L01",
           "type": "A",
-          "target": "no",
-          "known": "no",
+          "target": "No",
+          "known": "No",
           "new": true
         },
         {
@@ -23,8 +24,8 @@
           "new": true,
           "components": [
             ["no", "not/don't"],
-            ["me", "me"],
-            ["importa", "mind/matter"]
+            ["me", "to me"],
+            ["importa", "matter/mind"]
           ]
         },
         {
@@ -42,17 +43,102 @@
     },
     {
       "seed_id": "S0192",
-      "seed_pair": ["Estoy ocupado mañana por la noche.", "I'm busy tomorrow night."],
+      "seed_pair": ["I'm busy tomorrow night.", "Estoy ocupado mañana por la noche."],
+      "extraction_notes": "Forward sweep: 'Estoy ocupado' needs context for gender, 'mañana' clear, 'tomorrow night' = complete 'mañana por la noche'. Backward sweep: 'noche' needs article/preposition. Created overlap 'por la noche' (Heuristic 2) - pedagogically valuable for recombination with other time words (hoy por la noche, etc.).",
       "legos": [
         {
           "id": "S0192L01",
+          "type": "M",
+          "target": "Estoy ocupado",
+          "known": "I'm busy",
+          "new": true,
+          "components": [
+            ["Estoy", "I am"],
+            ["ocupado", "busy"]
+          ]
+        },
+        {
+          "id": "S0192L02",
           "type": "A",
           "target": "mañana",
           "known": "tomorrow",
           "new": true
         },
         {
-          "id": "S0192L02",
+          "id": "S0192L03",
+          "type": "M",
+          "target": "mañana por la noche",
+          "known": "tomorrow night",
+          "new": true,
+          "components": [
+            ["mañana", "tomorrow"],
+            ["por", "by/for"],
+            ["la", "the"],
+            ["noche", "night"]
+          ]
+        },
+        {
+          "id": "S0192L04",
+          "type": "M",
+          "target": "por la noche",
+          "known": "at night",
+          "new": true,
+          "components": [
+            ["por", "at/by"],
+            ["la", "the"],
+            ["noche", "night"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0193",
+      "seed_pair": ["I'm sorry but I'm too busy today.", "Lo siento pero estoy demasiado ocupado hoy."],
+      "extraction_notes": "Forward sweep: 'Lo siento' idiomatic apology, 'pero' clear, 'estoy demasiado ocupado' with intensifier. Backward sweep confirms. Created overlaps (Heuristic 2): 'demasiado ocupado' and 'estoy ocupado' for pattern recombination - learner can build: estoy ocupado, estoy muy ocupado, estoy demasiado ocupado.",
+      "legos": [
+        {
+          "id": "S0193L01",
+          "type": "M",
+          "target": "Lo siento",
+          "known": "I'm sorry",
+          "new": true,
+          "components": [
+            ["Lo", "it"],
+            ["siento", "feel/am sorry"]
+          ]
+        },
+        {
+          "id": "S0193L02",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0193L03",
+          "type": "M",
+          "target": "estoy demasiado ocupado",
+          "known": "I'm too busy",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["demasiado", "too/too much"],
+            ["ocupado", "busy"]
+          ]
+        },
+        {
+          "id": "S0193L04",
+          "type": "M",
+          "target": "demasiado ocupado",
+          "known": "too busy",
+          "new": true,
+          "components": [
+            ["demasiado", "too"],
+            ["ocupado", "busy"]
+          ]
+        },
+        {
+          "id": "S0193L05",
           "type": "M",
           "target": "estoy ocupado",
           "known": "I'm busy",
@@ -63,78 +149,36 @@
           ]
         },
         {
-          "id": "S0192L03",
-          "type": "M",
-          "target": "por la noche",
-          "known": "night",
-          "new": true,
-          "components": [
-            ["por", "by/for"],
-            ["la", "the"],
-            ["noche", "night"]
-          ]
-        }
-      ]
-    },
-    {
-      "seed_id": "S0193",
-      "seed_pair": ["Lo siento pero estoy demasiado ocupado hoy.", "I'm sorry but I'm too busy today."],
-      "legos": [
-        {
-          "id": "S0193L01",
-          "type": "A",
-          "target": "pero",
-          "known": "but",
-          "new": true
-        },
-        {
-          "id": "S0193L02",
+          "id": "S0193L06",
           "type": "A",
           "target": "hoy",
           "known": "today",
           "new": true
-        },
-        {
-          "id": "S0193L03",
-          "type": "M",
-          "target": "lo siento",
-          "known": "I'm sorry",
-          "new": true,
-          "components": [
-            ["lo", "it"],
-            ["siento", "I feel/regret"]
-          ]
-        },
-        {
-          "id": "S0193L04",
-          "type": "M",
-          "target": "estoy demasiado ocupado",
-          "known": "I'm too busy",
-          "new": true,
-          "components": [
-            ["estoy", "I am"],
-            ["demasiado", "too much"],
-            ["ocupado", "busy"]
-          ]
         }
       ]
     },
     {
       "seed_id": "S0194",
-      "seed_pair": ["¿Qué estás buscando?", "What are you looking for?"],
+      "seed_pair": ["What are you looking for?", "¿Qué estás buscando?"],
+      "extraction_notes": "Forward sweep: 'What are you' alone = uncertain (could be '¿Qué eres?' vs '¿Qué estás?'), needs full question 'Qué estás buscando'. Backward sweep confirms 'buscando' needs context (could be infinitive). Created overlap 'estás buscando' (Heuristic 2) for declarative usage.",
       "legos": [
         {
           "id": "S0194L01",
-          "type": "A",
-          "target": "qué",
-          "known": "what",
-          "new": true
+          "type": "M",
+          "target": "Qué estás buscando",
+          "known": "What are you looking for",
+          "new": true,
+          "components": [
+            ["Qué", "What"],
+            ["estás", "are you"],
+            ["buscando", "looking for"]
+          ]
         },
         {
           "id": "S0194L02",
           "type": "M",
           "target": "estás buscando",
-          "known": "you're looking for",
+          "known": "you are looking for",
           "new": true,
           "components": [
             ["estás", "you are"],
@@ -145,50 +189,47 @@
     },
     {
       "seed_id": "S0195",
-      "seed_pair": ["Estoy intentando encontrar el dinero que dejé en la mesa.", "I'm trying to find the money I left on the table."],
+      "seed_pair": ["I'm trying to find the money I left on the table.", "Estoy intentando encontrar el dinero que dejé en la mesa."],
+      "extraction_notes": "Forward sweep: Progressive 'Estoy intentando encontrar', relative clause 'el dinero que dejé' needs 'que' for certainty (Heuristic 1). Backward sweep confirms. Created overlap 'intentando encontrar' (Heuristic 2) for use with other subjects: vas a intentar encontrar, está intentando encontrar, etc.",
       "legos": [
         {
           "id": "S0195L01",
-          "type": "A",
-          "target": "encontrar",
-          "known": "to find",
-          "new": true
+          "type": "M",
+          "target": "Estoy intentando encontrar",
+          "known": "I'm trying to find",
+          "new": true,
+          "components": [
+            ["Estoy", "I am"],
+            ["intentando", "trying"],
+            ["encontrar", "to find"]
+          ]
         },
         {
           "id": "S0195L02",
           "type": "M",
-          "target": "estoy intentando",
-          "known": "I'm trying",
+          "target": "intentando encontrar",
+          "known": "trying to find",
           "new": true,
           "components": [
-            ["estoy", "I am"],
-            ["intentando", "trying"]
+            ["intentando", "trying"],
+            ["encontrar", "to find"]
           ]
         },
         {
           "id": "S0195L03",
           "type": "M",
-          "target": "el dinero",
-          "known": "the money",
+          "target": "el dinero que dejé",
+          "known": "the money I left",
           "new": true,
           "components": [
             ["el", "the"],
-            ["dinero", "money"]
-          ]
-        },
-        {
-          "id": "S0195L04",
-          "type": "M",
-          "target": "que dejé",
-          "known": "I left",
-          "new": true,
-          "components": [
+            ["dinero", "money"],
             ["que", "that"],
             ["dejé", "I left"]
           ]
         },
         {
-          "id": "S0195L05",
+          "id": "S0195L04",
           "type": "M",
           "target": "en la mesa",
           "known": "on the table",
@@ -203,24 +244,30 @@
     },
     {
       "seed_id": "S0196",
-      "seed_pair": ["¿Has oído la última idea?", "Have you heard the latest idea?"],
+      "seed_pair": ["Have you heard the latest idea?", "¿Has oído la última idea?"],
+      "extraction_notes": "Forward sweep: Perfect 'Has oído', 'última' needs gender agreement with noun. Backward sweep confirms. Created overlaps (Heuristic 2): 'la última idea' complete, then 'la última' pattern for use with other feminine nouns (la última vez, la última semana).",
       "legos": [
         {
           "id": "S0196L01",
-          "type": "A",
-          "target": "idea",
-          "known": "idea",
-          "new": true
+          "type": "M",
+          "target": "Has oído",
+          "known": "Have you heard",
+          "new": true,
+          "components": [
+            ["Has", "Have you"],
+            ["oído", "heard"]
+          ]
         },
         {
           "id": "S0196L02",
           "type": "M",
-          "target": "has oído",
-          "known": "have you heard",
+          "target": "la última idea",
+          "known": "the latest idea",
           "new": true,
           "components": [
-            ["has", "you have"],
-            ["oído", "heard"]
+            ["la", "the"],
+            ["última", "latest"],
+            ["idea", "idea"]
           ]
         },
         {
@@ -233,74 +280,102 @@
             ["la", "the"],
             ["última", "latest/last"]
           ]
+        },
+        {
+          "id": "S0196L04",
+          "type": "A",
+          "target": "idea",
+          "known": "idea",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0197",
-      "seed_pair": ["Mi hijo trabaja como profesor.", "My son works as a teacher."],
+      "seed_pair": ["My son works as a teacher.", "Mi hijo trabaja como profesor."],
+      "extraction_notes": "Forward sweep: 'Mi hijo' clear, 'trabaja como' profession pattern (article dropped in Spanish). Backward sweep confirms. Created overlap 'trabaja como' (Heuristic 2) - valuable pattern for use with any profession: trabaja como médico, trabaja como ingeniero, etc.",
       "legos": [
         {
           "id": "S0197L01",
-          "type": "A",
-          "target": "trabaja",
-          "known": "works",
-          "new": true
+          "type": "M",
+          "target": "Mi hijo",
+          "known": "My son",
+          "new": true,
+          "components": [
+            ["Mi", "My"],
+            ["hijo", "son"]
+          ]
         },
         {
           "id": "S0197L02",
-          "type": "A",
-          "target": "como",
-          "known": "as",
-          "new": true
+          "type": "M",
+          "target": "trabaja como profesor",
+          "known": "works as a teacher",
+          "new": true,
+          "components": [
+            ["trabaja", "works"],
+            ["como", "as"],
+            ["profesor", "teacher"]
+          ]
         },
         {
           "id": "S0197L03",
-          "type": "A",
-          "target": "profesor",
-          "known": "a teacher",
-          "new": true
+          "type": "M",
+          "target": "trabaja como",
+          "known": "works as",
+          "new": true,
+          "components": [
+            ["trabaja", "works"],
+            ["como", "as"]
+          ]
         },
         {
           "id": "S0197L04",
-          "type": "M",
-          "target": "mi hijo",
-          "known": "my son",
-          "new": true,
-          "components": [
-            ["mi", "my"],
-            ["hijo", "son"]
-          ]
+          "type": "A",
+          "target": "profesor",
+          "known": "teacher",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0198",
-      "seed_pair": ["Mi hija trabaja para el consejo.", "My daughter works for the council."],
+      "seed_pair": ["My daughter works for the council.", "Mi hija trabaja para el consejo."],
+      "extraction_notes": "Forward sweep: 'Mi hija' clear, 'trabaja para' employment pattern. Backward sweep confirms. Created overlap 'trabaja para' (Heuristic 2) - parallel to S0197, valuable for employer contexts. Both 'trabaja como' and 'trabaja para' are important work-related patterns.",
       "legos": [
         {
           "id": "S0198L01",
-          "type": "A",
-          "target": "trabaja",
-          "known": "works",
-          "new": true
+          "type": "M",
+          "target": "Mi hija",
+          "known": "My daughter",
+          "new": true,
+          "components": [
+            ["Mi", "My"],
+            ["hija", "daughter"]
+          ]
         },
         {
           "id": "S0198L02",
-          "type": "A",
-          "target": "para",
-          "known": "for",
-          "new": true
+          "type": "M",
+          "target": "trabaja para el consejo",
+          "known": "works for the council",
+          "new": true,
+          "components": [
+            ["trabaja", "works"],
+            ["para", "for"],
+            ["el", "the"],
+            ["consejo", "council"]
+          ]
         },
         {
           "id": "S0198L03",
           "type": "M",
-          "target": "mi hija",
-          "known": "my daughter",
+          "target": "trabaja para",
+          "known": "works for",
           "new": true,
           "components": [
-            ["mi", "my"],
-            ["hija", "daughter"]
+            ["trabaja", "works"],
+            ["para", "for"]
           ]
         },
         {
@@ -318,28 +393,22 @@
     },
     {
       "seed_id": "S0199",
-      "seed_pair": ["Mi amigo solía trabajar en una oficina.", "My friend used to work in an office."],
+      "seed_pair": ["My friend used to work in an office.", "Mi amigo solía trabajar en una oficina."],
+      "extraction_notes": "Forward sweep: 'Mi amigo' clear, 'solía trabajar' imperfect + infinitive construction for 'used to', 'en una oficina' complete prepositional phrase (Heuristic 1: 'en' alone violates rule). Backward sweep confirms. No additional overlaps needed - clean tiling captures the construction.",
       "legos": [
         {
           "id": "S0199L01",
-          "type": "A",
-          "target": "en",
-          "known": "in",
-          "new": true
-        },
-        {
-          "id": "S0199L02",
           "type": "M",
-          "target": "mi amigo",
-          "known": "my friend",
+          "target": "Mi amigo",
+          "known": "My friend",
           "new": true,
           "components": [
-            ["mi", "my"],
+            ["Mi", "My"],
             ["amigo", "friend"]
           ]
         },
         {
-          "id": "S0199L03",
+          "id": "S0199L02",
           "type": "M",
           "target": "solía trabajar",
           "known": "used to work",
@@ -350,13 +419,14 @@
           ]
         },
         {
-          "id": "S0199L04",
+          "id": "S0199L03",
           "type": "M",
-          "target": "una oficina",
-          "known": "an office",
+          "target": "en una oficina",
+          "known": "in an office",
           "new": true,
           "components": [
-            ["una", "an"],
+            ["en", "in"],
+            ["una", "an/a"],
             ["oficina", "office"]
           ]
         }
@@ -364,35 +434,36 @@
     },
     {
       "seed_id": "S0200",
-      "seed_pair": ["Dicen que quieren asegurarse de que terminemos todo a tiempo.", "They say they want to make sure that we finish everything in time."],
+      "seed_pair": ["They say they want to make sure that we finish everything in time.", "Dicen que quieren asegurarse de que terminemos todo a tiempo."],
+      "extraction_notes": "COMPLEX SUBJUNCTIVE! Forward sweep: 'Dicen que' reporting structure, 'asegurarse de que terminemos' needs FULL construction (Heuristic 1 - subjunctive trigger required). Backward sweep RIGHT-TO-LEFT confirms: 'terminemos' alone = uncertain (indicative vs subjunctive), needs 'de que terminemos' trigger. Created overlaps (Heuristic 2): 'asegurarse de que terminemos' AND 'de que terminemos' for subjunctive pattern practice - critical grammatical construction!",
       "legos": [
         {
           "id": "S0200L01",
-          "type": "A",
-          "target": "quieren",
-          "known": "they want",
-          "new": true
-        },
-        {
-          "id": "S0200L02",
-          "type": "A",
-          "target": "todo",
-          "known": "everything",
-          "new": true
-        },
-        {
-          "id": "S0200L03",
           "type": "M",
-          "target": "dicen que",
-          "known": "they say",
+          "target": "Dicen que",
+          "known": "They say that",
           "new": true,
           "components": [
-            ["dicen", "they say"],
+            ["Dicen", "They say"],
             ["que", "that"]
           ]
         },
         {
-          "id": "S0200L04",
+          "id": "S0200L02",
+          "type": "M",
+          "target": "quieren asegurarse de que terminemos",
+          "known": "they want to make sure that we finish",
+          "new": true,
+          "components": [
+            ["quieren", "they want"],
+            ["asegurarse", "to make sure/ensure themselves"],
+            ["de", "of"],
+            ["que", "that"],
+            ["terminemos", "we finish"]
+          ]
+        },
+        {
+          "id": "S0200L03",
           "type": "M",
           "target": "asegurarse de que terminemos",
           "known": "to make sure that we finish",
@@ -405,7 +476,26 @@
           ]
         },
         {
+          "id": "S0200L04",
+          "type": "M",
+          "target": "de que terminemos",
+          "known": "that we finish",
+          "new": true,
+          "components": [
+            ["de", "of"],
+            ["que", "that"],
+            ["terminemos", "we finish"]
+          ]
+        },
+        {
           "id": "S0200L05",
+          "type": "A",
+          "target": "todo",
+          "known": "everything",
+          "new": true
+        },
+        {
+          "id": "S0200L06",
           "type": "M",
           "target": "a tiempo",
           "known": "in time",
