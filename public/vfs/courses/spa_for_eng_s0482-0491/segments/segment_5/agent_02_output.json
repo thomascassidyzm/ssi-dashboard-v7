@@ -1,0 +1,146 @@
+{
+  "agent_id": "agent_02",
+  "seed_range": "S0484-S0485",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0484",
+      "seed_pair": [
+        "It's meant to be a challenge.",
+        "Está destinada a ser un desafío."
+      ],
+      "legos": [
+        {
+          "id": "S0484L01",
+          "type": "M",
+          "target": "está destinada a ser",
+          "known": "it's meant to be",
+          "new": true,
+          "components": [
+            ["está", "it's"],
+            ["destinada", "meant/destined"],
+            ["a", "to"],
+            ["ser", "be"]
+          ]
+        },
+        {
+          "id": "S0484L02",
+          "type": "M",
+          "target": "ser un desafío",
+          "known": "to be a challenge",
+          "new": true,
+          "components": [
+            ["ser", "to be"],
+            ["un", "a"],
+            ["desafío", "challenge"]
+          ]
+        },
+        {
+          "id": "S0484L03",
+          "type": "M",
+          "target": "un desafío",
+          "known": "a challenge",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["desafío", "challenge"]
+          ]
+        },
+        {
+          "id": "S0484L04",
+          "type": "A",
+          "target": "desafío",
+          "known": "challenge",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0485",
+      "seed_pair": [
+        "Nothing would make me happier than to get away.",
+        "Nada me haría más feliz que escapar."
+      ],
+      "legos": [
+        {
+          "id": "S0485L01",
+          "type": "A",
+          "target": "nada",
+          "known": "nothing",
+          "new": true
+        },
+        {
+          "id": "S0485L02",
+          "type": "M",
+          "target": "nada me haría",
+          "known": "nothing would make me",
+          "new": true,
+          "components": [
+            ["nada", "nothing"],
+            ["me", "me"],
+            ["haría", "would make"]
+          ]
+        },
+        {
+          "id": "S0485L03",
+          "type": "M",
+          "target": "me haría más feliz",
+          "known": "would make me happier",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["haría", "would make"],
+            ["más", "more"],
+            ["feliz", "happy/happier"]
+          ]
+        },
+        {
+          "id": "S0485L04",
+          "type": "M",
+          "target": "me haría más feliz que escapar",
+          "known": "would make me happier than to get away",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["haría", "would make"],
+            ["más", "more"],
+            ["feliz", "happy"],
+            ["que", "than"],
+            ["escapar", "to get away/escape"]
+          ]
+        },
+        {
+          "id": "S0485L05",
+          "type": "M",
+          "target": "más feliz que",
+          "known": "happier than",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["feliz", "happy/happier"],
+            ["que", "than"]
+          ]
+        },
+        {
+          "id": "S0485L06",
+          "type": "M",
+          "target": "que escapar",
+          "known": "than to get away",
+          "new": true,
+          "components": [
+            ["que", "than"],
+            ["escapar", "to get away/escape"]
+          ]
+        },
+        {
+          "id": "S0485L07",
+          "type": "A",
+          "target": "escapar",
+          "known": "to get away",
+          "new": true
+        }
+      ]
+    }
+  ]
+}
