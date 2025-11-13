@@ -1,113 +1,112 @@
 {
   "agent_id": "agent_03",
   "seed_range": "S0121-S0130",
-  "extracted_at": "2025-11-12T00:00:00Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0121",
-      "seed_pair": ["Es inusual que no te guste usar tu auto.", "It's unusual that you don't like to use your car."],
+      "seed_pair": [
+        "It's unusual that you don't like to use your car.",
+        "Es inusual que no te guste usar tu auto."
+      ],
       "legos": [
         {
           "id": "S0121L01",
+          "type": "M",
+          "target": "es inusual que",
+          "known": "it's unusual that",
+          "new": true,
+          "components": [
+            ["es", "it's"],
+            ["inusual", "unusual"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0121L02",
+          "type": "M",
+          "target": "no te guste",
+          "known": "you don't like",
+          "new": true,
+          "components": [
+            ["no", "don't"],
+            ["te", "you"],
+            ["guste", "like"]
+          ]
+        },
+        {
+          "id": "S0121L03",
           "type": "A",
           "target": "usar",
           "known": "to use",
           "new": true
         },
         {
-          "id": "S0121L02",
-          "type": "A",
-          "target": "tu",
-          "known": "your",
-          "new": true
-        },
-        {
-          "id": "S0121L03",
-          "type": "A",
-          "target": "auto",
-          "known": "car",
-          "new": true
-        },
-        {
           "id": "S0121L04",
           "type": "M",
-          "target": "Es inusual",
-          "known": "It's unusual",
+          "target": "tu auto",
+          "known": "your car",
           "new": true,
           "components": [
-            ["Es", "It's"],
-            ["inusual", "unusual"]
+            ["tu", "your"],
+            ["auto", "car"]
           ]
         },
         {
           "id": "S0121L05",
           "type": "M",
-          "target": "que no te guste",
-          "known": "that you don't like",
+          "target": "usar tu auto",
+          "known": "to use your car",
           "new": true,
           "components": [
-            ["que", "that"],
-            ["no", "don't"],
-            ["te", "you"],
-            ["guste", "like"]
+            ["usar", "to use"],
+            ["tu", "your"],
+            ["auto", "car"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0122",
-      "seed_pair": ["Está empezando a sentirse más fácil y estoy entusiasmado por cómo va.", "It's starting to feel easier and I'm excited about how it's going."],
+      "seed_pair": [
+        "It's starting to feel easier and I'm excited about how it's going.",
+        "Está empezando a sentirse más fácil y estoy entusiasmado por cómo va."
+      ],
       "legos": [
         {
           "id": "S0122L01",
-          "type": "A",
-          "target": "y",
-          "known": "and",
-          "new": true
-        },
-        {
-          "id": "S0122L02",
-          "type": "A",
-          "target": "cómo",
-          "known": "how",
-          "new": true
-        },
-        {
-          "id": "S0122L03",
           "type": "M",
-          "target": "está empezando",
-          "known": "it's starting",
+          "target": "está empezando a sentirse",
+          "known": "it's starting to feel",
           "new": true,
           "components": [
             ["está", "it's"],
-            ["empezando", "starting"]
-          ]
-        },
-        {
-          "id": "S0122L04",
-          "type": "M",
-          "target": "a sentirse",
-          "known": "to feel",
-          "new": true,
-          "components": [
+            ["empezando", "starting"],
             ["a", "to"],
             ["sentirse", "feel"]
           ]
         },
         {
-          "id": "S0122L05",
+          "id": "S0122L02",
           "type": "M",
           "target": "más fácil",
           "known": "easier",
           "new": true,
           "components": [
             ["más", "more"],
-            ["fácil", "easy"]
+            ["fácil", "easy/easier"]
           ]
         },
         {
-          "id": "S0122L06",
+          "id": "S0122L03",
+          "type": "A",
+          "target": "y",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0122L04",
           "type": "M",
           "target": "estoy entusiasmado por",
           "known": "I'm excited about",
@@ -119,12 +118,13 @@
           ]
         },
         {
-          "id": "S0122L07",
+          "id": "S0122L05",
           "type": "M",
-          "target": "va",
-          "known": "it's going",
+          "target": "cómo va",
+          "known": "how it's going",
           "new": true,
           "components": [
+            ["cómo", "how"],
             ["va", "it's going"]
           ]
         }
@@ -132,16 +132,19 @@
     },
     {
       "seed_id": "S0123",
-      "seed_pair": ["Creo que eso es una buena idea.", "I think that's a good idea."],
+      "seed_pair": [
+        "I think that's a good idea.",
+        "Pienso que eso es una buena idea."
+      ],
       "legos": [
         {
           "id": "S0123L01",
           "type": "M",
-          "target": "Creo que",
-          "known": "I think",
+          "target": "pienso que",
+          "known": "I think that",
           "new": true,
           "components": [
-            ["Creo", "I think"],
+            ["pienso", "I think"],
             ["que", "that"]
           ]
         },
@@ -172,16 +175,19 @@
     },
     {
       "seed_id": "S0124",
-      "seed_pair": ["Creí que eso era una buena idea.", "I thought that was a good idea."],
+      "seed_pair": [
+        "I thought that was a good idea.",
+        "Creí que eso era una buena idea."
+      ],
       "legos": [
         {
           "id": "S0124L01",
           "type": "M",
-          "target": "Creí que",
+          "target": "creí que",
           "known": "I thought that",
           "new": true,
           "components": [
-            ["Creí", "I thought"],
+            ["creí", "I thought"],
             ["que", "that"]
           ]
         },
@@ -212,94 +218,67 @@
     },
     {
       "seed_id": "S0125",
-      "seed_pair": ["Creo que tu idea era muy buena.", "I believe that your idea was very good."],
+      "seed_pair": [
+        "I believe that your idea was very good.",
+        "Creo que tu idea era muy buena."
+      ],
       "legos": [
         {
           "id": "S0125L01",
-          "type": "A",
-          "target": "tu",
-          "known": "your",
-          "new": true
-        },
-        {
-          "id": "S0125L02",
-          "type": "A",
-          "target": "idea",
-          "known": "idea",
-          "new": true
-        },
-        {
-          "id": "S0125L03",
-          "type": "A",
-          "target": "era",
-          "known": "was",
-          "new": true
-        },
-        {
-          "id": "S0125L04",
-          "type": "A",
-          "target": "muy",
-          "known": "very",
-          "new": true
-        },
-        {
-          "id": "S0125L05",
-          "type": "A",
-          "target": "buena",
-          "known": "good",
-          "new": true
-        },
-        {
-          "id": "S0125L06",
           "type": "M",
-          "target": "Creo que",
+          "target": "creo que",
           "known": "I believe that",
           "new": true,
           "components": [
-            ["Creo", "I believe"],
+            ["creo", "I believe"],
             ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0125L02",
+          "type": "M",
+          "target": "tu idea",
+          "known": "your idea",
+          "new": true,
+          "components": [
+            ["tu", "your"],
+            ["idea", "idea"]
+          ]
+        },
+        {
+          "id": "S0125L03",
+          "type": "M",
+          "target": "era muy buena",
+          "known": "was very good",
+          "new": true,
+          "components": [
+            ["era", "was"],
+            ["muy", "very"],
+            ["buena", "good"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0126",
-      "seed_pair": ["Este trabajo está cambiando la forma de mi cerebro.", "This work is changing the shape of my brain."],
+      "seed_pair": [
+        "This work is changing the shape of my brain.",
+        "Este trabajo está cambiando la forma de mi cerebro."
+      ],
       "legos": [
         {
           "id": "S0126L01",
-          "type": "A",
-          "target": "de",
-          "known": "of",
-          "new": true
-        },
-        {
-          "id": "S0126L02",
-          "type": "A",
-          "target": "mi",
-          "known": "my",
-          "new": true
-        },
-        {
-          "id": "S0126L03",
-          "type": "A",
-          "target": "cerebro",
-          "known": "brain",
-          "new": true
-        },
-        {
-          "id": "S0126L04",
           "type": "M",
-          "target": "Este trabajo",
-          "known": "This work",
+          "target": "este trabajo",
+          "known": "this work",
           "new": true,
           "components": [
-            ["Este", "This"],
+            ["este", "this"],
             ["trabajo", "work"]
           ]
         },
         {
-          "id": "S0126L05",
+          "id": "S0126L02",
           "type": "M",
           "target": "está cambiando",
           "known": "is changing",
@@ -310,107 +289,91 @@
           ]
         },
         {
-          "id": "S0126L06",
+          "id": "S0126L03",
           "type": "M",
-          "target": "la forma",
-          "known": "the shape",
+          "target": "la forma de mi cerebro",
+          "known": "the shape of my brain",
           "new": true,
           "components": [
             ["la", "the"],
-            ["forma", "shape"]
+            ["forma", "shape"],
+            ["de", "of"],
+            ["mi", "my"],
+            ["cerebro", "brain"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0127",
-      "seed_pair": ["Eso no es por qué quería verte.", "That isn't why I wanted to see you."],
+      "seed_pair": [
+        "That isn't why I wanted to see you.",
+        "Eso no es por qué quería verte."
+      ],
       "legos": [
         {
           "id": "S0127L01",
-          "type": "A",
-          "target": "Eso",
-          "known": "That",
-          "new": true
-        },
-        {
-          "id": "S0127L02",
-          "type": "A",
-          "target": "quería",
-          "known": "I wanted",
-          "new": true
-        },
-        {
-          "id": "S0127L03",
           "type": "M",
-          "target": "no es",
-          "known": "isn't",
+          "target": "eso no es",
+          "known": "that isn't",
           "new": true,
           "components": [
+            ["eso", "that"],
             ["no", "not"],
             ["es", "is"]
           ]
         },
         {
-          "id": "S0127L04",
+          "id": "S0127L02",
           "type": "M",
           "target": "por qué",
           "known": "why",
           "new": true,
           "components": [
             ["por", "for"],
-            ["qué", "what"]
+            ["qué", "what/why"]
           ]
         },
         {
-          "id": "S0127L05",
+          "id": "S0127L03",
           "type": "M",
-          "target": "verte",
-          "known": "to see you",
+          "target": "quería verte",
+          "known": "I wanted to see you",
           "new": true,
           "components": [
-            ["ver", "to see"],
-            ["te", "you"]
+            ["quería", "I wanted"],
+            ["verte", "to see you"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0128",
-      "seed_pair": ["Eres como alguien que conocía.", "You're like someone I used to know."],
+      "seed_pair": [
+        "You're like someone I used to know.",
+        "Eres como alguien que conocía."
+      ],
       "legos": [
         {
           "id": "S0128L01",
-          "type": "A",
-          "target": "como",
-          "known": "like",
-          "new": true
-        },
-        {
-          "id": "S0128L02",
-          "type": "A",
-          "target": "alguien",
-          "known": "someone",
-          "new": true
-        },
-        {
-          "id": "S0128L03",
           "type": "M",
-          "target": "Eres",
-          "known": "You're",
+          "target": "eres como",
+          "known": "you're like",
           "new": true,
           "components": [
-            ["Eres", "You're"]
+            ["eres", "you're"],
+            ["como", "like"]
           ]
         },
         {
-          "id": "S0128L04",
+          "id": "S0128L02",
           "type": "M",
-          "target": "que conocía",
-          "known": "I used to know",
+          "target": "alguien que conocía",
+          "known": "someone I used to know",
           "new": true,
           "components": [
-            ["que", "that"],
+            ["alguien", "someone"],
+            ["que", "that/who"],
             ["conocía", "I used to know"]
           ]
         }
@@ -418,36 +381,48 @@
     },
     {
       "seed_id": "S0129",
-      "seed_pair": ["Estoy tan feliz de que te vaya tan bien.", "I'm so happy that you're doing so well."],
+      "seed_pair": [
+        "I'm so happy that you're doing so well.",
+        "Estoy tan feliz de que te vaya tan bien."
+      ],
       "legos": [
         {
           "id": "S0129L01",
           "type": "M",
-          "target": "Estoy",
-          "known": "I'm",
+          "target": "estoy tan feliz",
+          "known": "I'm so happy",
           "new": true,
           "components": [
-            ["Estoy", "I'm"]
-          ]
-        },
-        {
-          "id": "S0129L02",
-          "type": "M",
-          "target": "tan feliz",
-          "known": "so happy",
-          "new": true,
-          "components": [
+            ["estoy", "I'm"],
             ["tan", "so"],
             ["feliz", "happy"]
           ]
         },
         {
-          "id": "S0129L03",
+          "id": "S0129L02",
           "type": "M",
-          "target": "de que",
-          "known": "that",
+          "target": "de que te vaya tan bien",
+          "known": "that you're doing so well",
           "new": true,
           "components": [
+            ["de", "of"],
+            ["que", "that"],
+            ["te", "you"],
+            ["vaya", "are doing/going"],
+            ["tan", "so"],
+            ["bien", "well"]
+          ]
+        },
+        {
+          "id": "S0129L03",
+          "type": "M",
+          "target": "estoy tan feliz de que",
+          "known": "I'm so happy that",
+          "new": true,
+          "components": [
+            ["estoy", "I'm"],
+            ["tan", "so"],
+            ["feliz", "happy"],
             ["de", "of"],
             ["que", "that"]
           ]
@@ -455,21 +430,12 @@
         {
           "id": "S0129L04",
           "type": "M",
-          "target": "te vaya",
-          "known": "you're doing",
+          "target": "te vaya tan bien",
+          "known": "you're doing so well",
           "new": true,
           "components": [
             ["te", "you"],
-            ["vaya", "are going"]
-          ]
-        },
-        {
-          "id": "S0129L05",
-          "type": "M",
-          "target": "tan bien",
-          "known": "so well",
-          "new": true,
-          "components": [
+            ["vaya", "are doing/going"],
             ["tan", "so"],
             ["bien", "well"]
           ]
@@ -478,45 +444,24 @@
     },
     {
       "seed_id": "S0130",
-      "seed_pair": ["Eso fue una sorpresa, porque es mi amigo.", "That was a surprise, because he's my friend."],
+      "seed_pair": [
+        "That was a surprise, because he's my friend.",
+        "Eso fue una sorpresa, porque es mi amigo."
+      ],
       "legos": [
         {
           "id": "S0130L01",
-          "type": "A",
-          "target": "Eso",
-          "known": "That",
-          "new": true
+          "type": "M",
+          "target": "eso fue",
+          "known": "that was",
+          "new": true,
+          "components": [
+            ["eso", "that"],
+            ["fue", "was"]
+          ]
         },
         {
           "id": "S0130L02",
-          "type": "A",
-          "target": "fue",
-          "known": "was",
-          "new": true
-        },
-        {
-          "id": "S0130L03",
-          "type": "A",
-          "target": "porque",
-          "known": "because",
-          "new": true
-        },
-        {
-          "id": "S0130L04",
-          "type": "A",
-          "target": "mi",
-          "known": "my",
-          "new": true
-        },
-        {
-          "id": "S0130L05",
-          "type": "A",
-          "target": "amigo",
-          "known": "friend",
-          "new": true
-        },
-        {
-          "id": "S0130L06",
           "type": "M",
           "target": "una sorpresa",
           "known": "a surprise",
@@ -527,13 +472,22 @@
           ]
         },
         {
-          "id": "S0130L07",
+          "id": "S0130L03",
+          "type": "A",
+          "target": "porque",
+          "known": "because",
+          "new": true
+        },
+        {
+          "id": "S0130L04",
           "type": "M",
-          "target": "es",
-          "known": "he's",
+          "target": "es mi amigo",
+          "known": "he's my friend",
           "new": true,
           "components": [
-            ["es", "he's"]
+            ["es", "he's"],
+            ["mi", "my"],
+            ["amigo", "friend"]
           ]
         }
       ]
