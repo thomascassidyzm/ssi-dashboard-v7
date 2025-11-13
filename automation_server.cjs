@@ -643,9 +643,9 @@ You have full autonomy to manage the parallelization strategy based on your rate
 
 ## 📚 PHASE 5 INTELLIGENCE (Single Source of Truth)
 
-**READ**: https://ssi-dashboard-v7.vercel.app/intelligence (Phase 5 - v6.2)
+**READ THIS DOCUMENT FIRST - IT'S ESSENTIAL**: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
 
-Or if local files are available: \`docs/phase_intelligence/phase_5_lego_baskets.md\` (v6.2)
+Or if local files are available: \`public/docs/phase_intelligence/phase_5_lego_baskets.md\` (v6.2)
 
 This is the **ONLY authoritative source** for Phase 5 basket generation methodology.
 

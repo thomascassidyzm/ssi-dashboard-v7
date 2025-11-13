@@ -250,11 +250,18 @@ available_words.add(current_lego_spanish.split(' '))
 
 ## 🎯 PHRASE REQUIREMENTS
 
-### Distribution (12-15 phrases per LEGO):
-- **2 phrases**: 1-2 LEGOs (really_short)
-- **2 phrases**: 3 LEGOs (quite_short)
-- **2 phrases**: 4-5 LEGOs (longer)
-- **4-6 phrases**: 6+ LEGOs (long_6_plus)
+### Target Phrase Counts (Based on Overlap Level):
+
+**`overlap_level: "none"` - 10 phrases total**
+- Distribution: 2-2-2-4 (2 short 1-2 LEGOs, 2 medium 3 LEGOs, 2 longer 4 LEGOs, 4 long 5+ LEGOs)
+
+**`overlap_level: "partial"` - 7 phrases total**
+- Distribution: 1-2-1-3 (1 short 1-2 LEGOs, 2 medium 3 LEGOs, 1 longer 4 LEGOs, 3 long 5+ LEGOs)
+
+**`overlap_level: "complete"` - 5 phrases total**
+- Distribution: 1-1-1-2 (1 short 1-2 LEGOs, 1 medium 3 LEGOs, 1 longer 4 LEGOs, 2 long 5+ LEGOs)
+
+**CRITICAL: Use `target_phrase_count` from the scaffold - DO NOT generate 12-15 phrases!**
 
 ### Format:
 ```json
