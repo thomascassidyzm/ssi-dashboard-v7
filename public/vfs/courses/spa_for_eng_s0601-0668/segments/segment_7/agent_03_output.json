@@ -162,6 +162,13 @@
         },
         {
           "id": "S0623L02",
+          "type": "A",
+          "target": "o",
+          "known": "or",
+          "new": true
+        },
+        {
+          "id": "S0623L03",
           "type": "M",
           "target": "un café",
           "known": "a cup of coffee",
@@ -170,13 +177,6 @@
             ["un", "a"],
             ["café", "coffee"]
           ]
-        },
-        {
-          "id": "S0623L03",
-          "type": "A",
-          "target": "o",
-          "known": "or",
-          "new": true
         },
         {
           "id": "S0623L04",
@@ -219,6 +219,13 @@
         },
         {
           "id": "S0624L02",
+          "type": "A",
+          "target": "genial",
+          "known": "great",
+          "new": true
+        },
+        {
+          "id": "S0624L03",
           "type": "M",
           "target": "eso sería",
           "known": "that would be",
@@ -227,13 +234,6 @@
             ["eso", "that"],
             ["sería", "would be"]
           ]
-        },
-        {
-          "id": "S0624L03",
-          "type": "A",
-          "target": "genial",
-          "known": "great",
-          "new": true
         },
         {
           "id": "S0624L04",
@@ -264,6 +264,13 @@
         },
         {
           "id": "S0625L02",
+          "type": "A",
+          "target": "beber",
+          "known": "to drink",
+          "new": true
+        },
+        {
+          "id": "S0625L03",
           "type": "M",
           "target": "algo de beber",
           "known": "something to drink",
@@ -273,13 +280,6 @@
             ["de", "to"],
             ["beber", "drink"]
           ]
-        },
-        {
-          "id": "S0625L03",
-          "type": "A",
-          "target": "beber",
-          "known": "to drink",
-          "new": true
         }
       ]
     },
@@ -299,6 +299,13 @@
         },
         {
           "id": "S0626L02",
+          "type": "A",
+          "target": "gracias",
+          "known": "thank you",
+          "new": true
+        },
+        {
+          "id": "S0626L03",
           "type": "M",
           "target": "no tengo sed",
           "known": "I'm not thirsty",
@@ -310,7 +317,7 @@
           ]
         },
         {
-          "id": "S0626L03",
+          "id": "S0626L04",
           "type": "M",
           "target": "tengo sed",
           "known": "I'm thirsty",
@@ -319,13 +326,6 @@
             ["tengo", "I have"],
             ["sed", "thirst"]
           ]
-        },
-        {
-          "id": "S0626L04",
-          "type": "A",
-          "target": "gracias",
-          "known": "thank you",
-          "new": true
         }
       ]
     },
@@ -400,6 +400,13 @@
       "legos": [
         {
           "id": "S0629L01",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0629L02",
           "type": "M",
           "target": "me gusta",
           "known": "I like it",
@@ -410,7 +417,7 @@
           ]
         },
         {
-          "id": "S0629L02",
+          "id": "S0629L03",
           "type": "M",
           "target": "con leche",
           "known": "with milk",
@@ -419,13 +426,6 @@
             ["con", "with"],
             ["leche", "milk"]
           ]
-        },
-        {
-          "id": "S0629L03",
-          "type": "A",
-          "target": "pero",
-          "known": "but",
-          "new": true
         },
         {
           "id": "S0629L04",
