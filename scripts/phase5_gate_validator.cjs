@@ -28,6 +28,7 @@ if (!coursePath) {
 const projectRoot = path.resolve(__dirname, '..');
 const fullCoursePath = path.resolve(projectRoot, coursePath);
 const outputDir = path.join(fullCoursePath, 'phase5_outputs');
+const legoPairsPath = path.join(fullCoursePath, 'lego_pairs.json');
 
 // Validate paths
 if (!fs.existsSync(fullCoursePath)) {
@@ -40,8 +41,57 @@ if (!fs.existsSync(outputDir)) {
   process.exit(1);
 }
 
+if (!fs.existsSync(legoPairsPath)) {
+  console.error(`❌ Error: lego_pairs.json not found: ${legoPairsPath}`);
+  process.exit(1);
+}
+
 console.log('🚪 GATE Validator: Vocabulary Compliance Checker');
 console.log(`📁 Course: ${coursePath}\n`);
+
+// Load lego_pairs to build complete vocabulary registry
+const legoPairs = JSON.parse(fs.readFileSync(legoPairsPath, 'utf8'));
+const vocabularyRegistry = new Map(); // word -> first seed where it appeared
+
+// Build registry of ALL words learned in course up to each seed
+legoPairs.seeds.forEach(seed => {
+  const seedNum = parseInt(seed.seed_id.substring(1));
+
+  // Extract words from complete seed sentence
+  const completeSentence = seed.seed_pair[0].toLowerCase();
+  const spanishWords = completeSentence.split(/\s+/);
+
+  spanishWords.forEach(word => {
+    const normalized = word.replace(/[.,!?¿¡]/g, '');
+    if (normalized && !vocabularyRegistry.has(normalized)) {
+      vocabularyRegistry.set(normalized, seedNum);
+    }
+  });
+
+  // Also extract from LEGO targets
+  seed.legos.forEach(lego => {
+    lego.target.split(/\s+/).forEach(word => {
+      const normalized = word.toLowerCase().replace(/[.,!?¿¡]/g, '');
+      if (normalized && !vocabularyRegistry.has(normalized)) {
+        vocabularyRegistry.set(normalized, seedNum);
+      }
+    });
+
+    // Include component words from M-type LEGOs
+    if (lego.components) {
+      lego.components.forEach(([target, known]) => {
+        if (target) {
+          target.split(/\s+/).forEach(word => {
+            const normalized = word.toLowerCase().replace(/[.,!?¿¡]/g, '');
+            if (normalized && !vocabularyRegistry.has(normalized)) {
+              vocabularyRegistry.set(normalized, seedNum);
+            }
+          });
+        }
+      });
+    }
+  });
+});
 
 /**
  * Extract all vocabulary from a basket
@@ -102,6 +152,7 @@ function extractAvailableVocabulary(basket, legoId) {
 function validateBasket(basketPath) {
   const basket = JSON.parse(fs.readFileSync(basketPath, 'utf8'));
   const seedId = basket.seed_id;
+  const seedNum = parseInt(seedId.substring(1));
 
   console.log(`\n📦 Validating ${seedId}...`);
 
@@ -110,25 +161,52 @@ function validateBasket(basketPath) {
   let violationsPerLego = {};
 
   for (const [legoId, legoData] of Object.entries(basket.legos)) {
-    const availableWords = extractAvailableVocabulary(basket, legoId);
     const violations = [];
+
+    // Build available vocabulary for THIS specific LEGO
+    const availableWords = new Set();
+
+    // 1. Words from all seeds up to (but not including) current seed
+    for (const [word, firstSeed] of vocabularyRegistry.entries()) {
+      if (firstSeed < seedNum) {
+        availableWords.add(word);
+      }
+    }
+
+    // 2. Words from current_seed_legos_available (earlier LEGOs in this seed)
+    if (legoData.current_seed_legos_available) {
+      legoData.current_seed_legos_available.forEach(([english, spanish]) => {
+        spanish.split(/\s+/).forEach(word => {
+          const normalized = word.trim().toLowerCase().replace(/[.,;:¿?¡!]/g, '');
+          if (normalized) availableWords.add(normalized);
+        });
+      });
+    }
+
+    // 3. Words from current LEGO being taught
+    const [english, spanish] = legoData.lego;
+    spanish.split(/\s+/).forEach(word => {
+      const normalized = word.trim().toLowerCase().replace(/[.,;:¿?¡!]/g, '');
+      if (normalized) availableWords.add(normalized);
+    });
 
     legoData.practice_phrases.forEach((phrase, idx) => {
       totalPhrases++;
-      const [english, spanish] = phrase;
+      const [phraseEnglish, phraseSpanish] = phrase;
 
-      // Normalize Spanish words the same way we normalized available words
-      const spanishWords = spanish
+      // Normalize Spanish words
+      const spanishWords = phraseSpanish
         .split(/\s+/)
         .map(w => w.trim().toLowerCase().replace(/[.,;:¿?¡!]/g, ''))
         .filter(Boolean);
 
+      // Check each word against available vocabulary
       const unavailableWords = spanishWords.filter(word => !availableWords.has(word));
 
       if (unavailableWords.length > 0) {
         violations.push({
-          phrase: spanish,
-          english,
+          phrase: phraseSpanish,
+          english: phraseEnglish,
           unavailable: unavailableWords,
         });
         totalViolations++;

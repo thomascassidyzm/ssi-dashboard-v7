@@ -76,6 +76,25 @@ function buildWhitelistUpToLegoCount(legoPairsData, availableLegos) {
 }
 
 /**
+ * Check if a LEGO overlaps with earlier LEGOs in the same seed
+ */
+function hasOverlapWithEarlierLegos(currentLegoTarget, earlierLegosInSeed) {
+  const currentWords = new Set(
+    currentLegoTarget.toLowerCase().split(/\s+/).filter(Boolean)
+  );
+
+  for (const earlierLego of earlierLegosInSeed) {
+    const earlierWords = earlierLego.target.toLowerCase().split(/\s+/).filter(Boolean);
+    // Check if any word overlaps
+    if (earlierWords.some(word => currentWords.has(word))) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+/**
  * Generate scaffold for a single seed
  */
 function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
@@ -91,6 +110,7 @@ function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
   }
 
   let legoCount = cumulativeBeforeSeed;
+  const newLegosInSeed = []; // Track NEW LEGOs for overlap detection
 
   for (let i = 0; i < seed.legos.length; i++) {
     const lego = seed.legos[i];
@@ -104,20 +124,42 @@ function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
     // Build whitelist up to this LEGO (not including current LEGO)
     const whitelistPairs = buildWhitelistUpToLegoCount(legoPairsData, availableLegos);
 
+    // Detect overlap with earlier NEW LEGOs in this seed
+    const hasOverlap = hasOverlapWithEarlierLegos(lego.target, newLegosInSeed);
+
+    // Determine phrase distribution based on overlap
+    let phraseDistribution, targetPhraseCount;
+    if (hasOverlap) {
+      // Reduced set for overlapping LEGOs: 1 short, 1 medium, 5 long
+      phraseDistribution = {
+        really_short_1_2: 1,
+        quite_short_3_4: 1,
+        longer_5_plus: 5
+      };
+      targetPhraseCount = 7;
+    } else {
+      // Full set for fresh LEGOs: 2 short, 2 medium, 2 longer, 4 long
+      phraseDistribution = {
+        really_short_1_2: 2,
+        quite_short_3: 2,
+        longer_4_5: 2,
+        long_6_plus: 4
+      };
+      targetPhraseCount = 10;
+    }
+
     legoCount++; // Increment for next LEGO
+    newLegosInSeed.push({ id: lego.id, target: lego.target }); // Track for overlap detection
 
     const legoData = {
       lego: [lego.known, lego.target],
       type: lego.type,
       available_legos: availableLegos,
       is_final_lego: isFinalLego,
+      has_overlap: hasOverlap,
+      target_phrase_count: targetPhraseCount,
       practice_phrases: [], // AI fills this
-      phrase_distribution: {
-        really_short_1_2: 0,
-        quite_short_3: 0,
-        longer_4_5: 0,
-        long_6_plus: 0
-      },
+      phrase_distribution: phraseDistribution,
       _metadata: {
         lego_id: lego.id,
         seed_context: {
