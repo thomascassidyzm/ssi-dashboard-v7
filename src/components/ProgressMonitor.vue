@@ -237,15 +237,19 @@ const checkProgress = async () => {
     }
 
     // Check for output files (VFS-based detection)
+    // For segment ranges, check base course directory for seed_pairs.json and lego_pairs.json
+    const segmentMatch = props.courseCode.match(/^([a-z]{3}_for_[a-z]{3})_s\d{4}-\d{4}$/)
+    const baseCourseCode = segmentMatch ? segmentMatch[1] : props.courseCode
+
     try {
-      const seedPairsCheck = await fetch(`/vfs/courses/${props.courseCode}/seed_pairs.json`, { method: 'HEAD' })
+      const seedPairsCheck = await fetch(`/vfs/courses/${baseCourseCode}/seed_pairs.json`, { method: 'HEAD' })
       phase1FileExists.value = seedPairsCheck.ok
     } catch (err) {
       phase1FileExists.value = false
     }
 
     try {
-      const legoPairsCheck = await fetch(`/vfs/courses/${props.courseCode}/lego_pairs.json`, { method: 'HEAD' })
+      const legoPairsCheck = await fetch(`/vfs/courses/${baseCourseCode}/lego_pairs.json`, { method: 'HEAD' })
       phase3FileExists.value = legoPairsCheck.ok
     } catch (err) {
       phase3FileExists.value = false
