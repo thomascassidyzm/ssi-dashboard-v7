@@ -916,6 +916,54 @@
       }
     ]
   },
+  "S0483": {
+    "seed_pair": [
+      "Life isn't easy but it's not meant to be easy.",
+      "La vida no es f\u00e1cil pero no est\u00e1 destinada a ser f\u00e1cil."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "AMMAMMM"
+      }
+    ]
+  },
+  "S0484": {
+    "seed_pair": [
+      "It's meant to be a challenge.",
+      "Est\u00e1 destinada a ser un desaf\u00edo."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MMMA"
+      }
+    ]
+  },
+  "S0485": {
+    "seed_pair": [
+      "Nothing would make me happier than to get away.",
+      "Nada me har\u00eda m\u00e1s feliz que escapar."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "AMMMMMA"
+      }
+    ]
+  },
+  "S0491": {
+    "seed_pair": [
+      "I love the way you try to help.",
+      "Me encanta la forma en que intentas ayudar."
+    ],
+    "violations": [
+      {
+        "type": "a_before_m",
+        "pattern": "MMAAMMM"
+      }
+    ]
+  },
   "S0501": {
     "seed_pair": [
       "If only I could trust you to play together without arguing.",

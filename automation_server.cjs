@@ -9475,7 +9475,7 @@ function initializeVFSWatcher() {
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
-    version: '8.1.0',
+    version: '8.1.1',
     timestamp: new Date().toISOString()
   });
 });
