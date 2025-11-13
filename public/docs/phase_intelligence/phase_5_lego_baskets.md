@@ -1,8 +1,8 @@
-# AGENT PROMPT: Phase 5 Basket Generation v6.1 (SLIDING WINDOW ENFORCEMENT)
+# AGENT PROMPT: Phase 5 Basket Generation v6.2 (THREE-TIER OVERLAP DETECTION)
 
-**Version**: 6.1 - Enforced Sliding Window Vocabulary Usage (2025-11-12)
-**Status**: Production Ready - Pattern-Guided Natural Language with Window Enforcement
-**Purpose**: Generate high-quality practice phrase baskets using linguistic reasoning with MANDATORY recent seed vocabulary priority
+**Version**: 6.2 - Three-Tier Overlap Detection with Adaptive Phrase Counts (2025-11-13)
+**Status**: Production Ready - Pattern-Guided Natural Language with Smart Overlap Reduction
+**Purpose**: Generate high-quality practice phrase baskets using linguistic reasoning with automatic practice reduction for overlapping LEGOs
 
 ---
 
@@ -16,6 +16,42 @@ You will receive a **SCAFFOLD JSON** containing:
 ✅ **Structure** - JSON skeleton ready for phrase generation
 
 **Your ONLY task**: Fill the `practice_phrases` arrays with natural, meaningful utterances.
+
+---
+
+## 🎚️ THREE-TIER OVERLAP DETECTION (NEW IN v6.2)
+
+The scaffold automatically detects word overlap between LEGOs in the same seed and adjusts phrase requirements:
+
+### Overlap Levels
+
+**1. `overlap_level: "none"` - Fresh LEGO (10 phrases)**
+- All words are new → full scaffolding needed
+- Distribution: 2 short (1-2 LEGOs), 2 medium (3), 2 longer (4), 4 long (5 LEGOs)
+- Example: First LEGO "quiero" in seed S0001
+
+**2. `overlap_level: "partial"` - Some Word Overlap (7 phrases)**
+- Some words seen in earlier LEGOs this seed → reduced buildup
+- Distribution: 1 short (1-2 LEGOs), 1 medium (3), 5 longer (4-5 LEGOs)
+- Example: "quiero hablar" when "quiero" was just taught
+
+**3. `overlap_level: "complete"` - All Words Seen (5 phrases)**
+- ALL words just practiced in earlier LEGOs → skip simple practice
+- Distribution: 5 longer phrases (3-5 LEGOs only)
+- Example: "hablar español" when both "hablar" and "español" were just taught
+
+### Why This Matters
+
+**Pedagogical Rationale:**
+- Learners don't need full buildup for composite LEGOs when they just practiced every component
+- Reduces practice volume by 20% (from ~30k to ~24k phrases across 668 seeds)
+- Maintains quality exposure for truly new material
+- App pulls "up to 8" phrases on debut, so 5-7 phrases still provide solid practice
+
+**Your Task:**
+- Respect the `target_phrase_count` field in each LEGO
+- Follow the `phrase_distribution` buckets provided
+- Focus on longer, more complex phrases for overlapping LEGOs (skip "I want", go straight to "I want to speak Spanish")
 
 ---
 
@@ -47,12 +83,14 @@ You will receive a **SCAFFOLD JSON** containing:
       "type": "A",
       "current_seed_legos_available": [],  // Incremental within current seed
       "is_final_lego": false,
-      "practice_phrases": [],  // ← YOU FILL THIS
-      "phrase_distribution": {
-        "really_short_1_2": 0,
-        "quite_short_3": 0,
-        "longer_4_5": 0,
-        "long_6_plus": 0
+      "overlap_level": "none",              // ← NEW: "none", "partial", or "complete"
+      "target_phrase_count": 10,            // ← NEW: Adjusted based on overlap
+      "practice_phrases": [],               // ← YOU FILL THIS
+      "phrase_distribution": {              // ← Varies by overlap level
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
       }
     }
   }
@@ -389,7 +427,8 @@ Return the scaffold JSON with:
 - ✅ 100% vocabulary compliance (all words available)
 - ✅ 100% natural language (both English and Spanish)
 - ✅ 100% semantic correctness (phrases make sense)
-- ✅ 12-15 phrases per LEGO (proper distribution)
+- ✅ Respect `target_phrase_count` (5-10 phrases depending on overlap)
+- ✅ Follow `phrase_distribution` buckets (LEGO count, not word count)
 - ✅ Final LEGO culminates in complete seed sentence
 - ✅ Progressive complexity throughout
 
