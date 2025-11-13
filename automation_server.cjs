@@ -1877,11 +1877,11 @@ async function spawnCourseOrchestrator(courseCode, params) {
 async function mergePhase3Branches(courseDir) {
   try {
     console.log(`[Phase 3 Merge] Fetching all remote branches...`);
-    await execCommand('git fetch --all', { cwd: courseDir });
+    await execAsync('git fetch --all', { cwd: courseDir });
 
     // Find all phase3 segment branches (phase3-segment-*)
     console.log(`[Phase 3 Merge] Finding phase3-segment-* branches...`);
-    const branchResult = await execCommand('git branch -r', { cwd: courseDir });
+    const branchResult = await execAsync('git branch -r', { cwd: courseDir });
     const phase3Branches = branchResult.stdout
       .split('\n')
       .map(b => b.trim())
@@ -1901,7 +1901,7 @@ async function mergePhase3Branches(courseDir) {
         for (const branch of claudeBranches) {
           const branchName = branch.replace('origin/', '');
           console.log(`[Phase 3 Merge] Merging ${branchName}...`);
-          await execCommand(`git merge ${branch} --no-edit -m "Merge Phase 3 agent branch: ${branchName}"`, { cwd: courseDir });
+          await execAsync(`git merge ${branch} --no-edit -m "Merge Phase 3 agent branch: ${branchName}"`, { cwd: courseDir });
         }
       }
       return;
@@ -1916,7 +1916,7 @@ async function mergePhase3Branches(courseDir) {
       console.log(`[Phase 3 Merge] Merging ${branchName}...`);
 
       try {
-        await execCommand(`git merge ${branch} --no-edit -m "Merge Phase 3 segment: ${branchName}"`, { cwd: courseDir });
+        await execAsync(`git merge ${branch} --no-edit -m "Merge Phase 3 segment: ${branchName}"`, { cwd: courseDir });
         console.log(`[Phase 3 Merge] ✅ Merged ${branchName}`);
       } catch (err) {
         console.error(`[Phase 3 Merge] ⚠️  Error merging ${branchName}: ${err.message}`);
@@ -1926,7 +1926,7 @@ async function mergePhase3Branches(courseDir) {
 
     // Push merged main branch
     console.log(`[Phase 3 Merge] Pushing merged main branch...`);
-    await execCommand('git push origin main', { cwd: courseDir });
+    await execAsync('git push origin main', { cwd: courseDir });
     console.log(`[Phase 3 Merge] ✅ All branches merged and pushed to main`);
 
   } catch (err) {
@@ -1946,18 +1946,18 @@ async function pollForFile(filePath, pollInterval = 10000, pullFromGit = false) 
     if (pullFromGit) {
       try {
         console.log(`[Poll] Fetching all remote branches...`);
-        await execCommand('git fetch --all', { cwd: VFS_ROOT });
+        await execAsync('git fetch --all', { cwd: VFS_ROOT });
 
         // Find Claude feature branches (claude/*)
-        const branches = await execCommand('git branch -r | grep "origin/claude/"', { cwd: VFS_ROOT });
+        const branches = await execAsync('git branch -r | grep "origin/claude/"', { cwd: VFS_ROOT });
         if (branches.stdout.trim()) {
           const latestBranch = branches.stdout.trim().split('\n')[0].trim().replace('origin/', '');
           console.log(`[Poll] Found Claude branch: ${latestBranch}, merging...`);
-          await execCommand(`git merge origin/${latestBranch} --no-edit`, { cwd: VFS_ROOT });
+          await execAsync(`git merge origin/${latestBranch} --no-edit`, { cwd: VFS_ROOT });
           console.log(`[Poll] ✅ Merged ${latestBranch}`);
         } else {
           // Fallback to main branch pull
-          await execCommand('git pull origin main', { cwd: VFS_ROOT });
+          await execAsync('git pull origin main', { cwd: VFS_ROOT });
           console.log(`[Poll] ✅ Pulled from main`);
         }
       } catch (err) {
@@ -2187,10 +2187,10 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
         // Auto-merge all Claude feature branches from Phase 5 agents
         try {
           console.log(`[Git Merge] Fetching all remote branches...`);
-          await execCommand('git fetch --all', { cwd: baseCourseDir });
+          await execAsync('git fetch --all', { cwd: baseCourseDir });
 
           console.log(`[Git Merge] Finding Claude Phase 5 branches...`);
-          const branchesResult = await execCommand('git branch -r | grep "origin/claude/phase5"', { cwd: baseCourseDir });
+          const branchesResult = await execAsync('git branch -r | grep "origin/claude/phase5"', { cwd: baseCourseDir });
 
           if (branchesResult.stdout.trim()) {
             const branches = branchesResult.stdout.trim().split('\n').map(b => b.trim());
@@ -2201,7 +2201,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
               console.log(`[Git Merge] Merging ${branchName}...`);
 
               try {
-                await execCommand(`git merge ${branch} --no-edit -m "Auto-merge Phase 5 agent: ${branchName}"`, { cwd: baseCourseDir });
+                await execAsync(`git merge ${branch} --no-edit -m "Auto-merge Phase 5 agent: ${branchName}"`, { cwd: baseCourseDir });
                 console.log(`[Git Merge] ✅ Merged ${branchName}`);
               } catch (mergeErr) {
                 console.error(`[Git Merge] ⚠️  Error merging ${branchName}: ${mergeErr.message}`);
@@ -2211,7 +2211,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
 
             // Push merged main branch
             console.log(`[Git Merge] Pushing merged main branch...`);
-            await execCommand('git push origin main', { cwd: baseCourseDir });
+            await execAsync('git push origin main', { cwd: baseCourseDir });
             console.log(`[Git Merge] ✅ All Phase 5 branches merged and pushed to main`);
           } else {
             console.log(`[Git Merge] No Claude Phase 5 branches found (agents may have pushed directly to main)`);
@@ -2239,7 +2239,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
             console.log(`[Web Orchestrator] Validating ${seedFiles.length} seed outputs...`);
 
             // Run GATE validator
-            const gateResult = await execCommand(
+            const gateResult = await execAsync(
               `node scripts/phase5_gate_validator.cjs ${courseCode} ${seedFiles.join(' ')}`,
               { cwd: __dirname }
             );
@@ -2454,13 +2454,13 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
 
       // Run Phase 3 post-processing scripts
       console.log(`[Phase 3] Running deduplication...`);
-      await execCommand(`node scripts/phase3_deduplicate_legos.cjs ${courseCode}`, { cwd: VFS_ROOT });
+      await execAsync(`node scripts/phase3_deduplicate_legos.cjs ${courseCode}`, { cwd: VFS_ROOT });
 
       console.log(`[Phase 3] Running LEGO reordering for optimal pedagogy...`);
-      await execCommand(`node scripts/phase3_reorder_legos.cjs ${courseCode}`, { cwd: VFS_ROOT });
+      await execAsync(`node scripts/phase3_reorder_legos.cjs ${courseCode}`, { cwd: VFS_ROOT });
 
       console.log(`[Phase 3] Building LEGO registry...`);
-      await execCommand(`node scripts/phase3_build_lego_registry.cjs ${courseCode}`, { cwd: VFS_ROOT });
+      await execAsync(`node scripts/phase3_build_lego_registry.cjs ${courseCode}`, { cwd: VFS_ROOT });
 
       console.log(`[Web Orchestrator] ✅ Phase 3 complete! Created lego_pairs.json with deduplication and reordering`);
       job.phase = 'phase_3_complete';
