@@ -1,64 +1,96 @@
 {
   "agent_id": "agent_06",
   "seed_range": "S0151-S0160",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0151",
-      "seed_pair": ["That wasn't what I was hoping would happen.", "Eso no era lo que estaba esperando que pasara."],
+      "seed_pair": [
+        "That wasn't what I was hoping would happen.",
+        "Eso no era lo que estaba esperando que pasara."
+      ],
       "legos": [
         {
           "id": "S0151L01",
-          "type": "A",
-          "target": "eso",
-          "known": "that",
-          "new": true
+          "type": "M",
+          "target": "eso no era",
+          "known": "that wasn't",
+          "new": true,
+          "components": [
+            ["eso", "that"],
+            ["no", "not"],
+            ["era", "was"]
+          ]
         },
         {
           "id": "S0151L02",
           "type": "M",
-          "target": "no era",
-          "known": "wasn't",
+          "target": "lo que",
+          "known": "what",
           "new": true,
-          "components": [["no", "not"], ["era", "was"]]
+          "components": [
+            ["lo", "the"],
+            ["que", "that/what"]
+          ]
         },
         {
           "id": "S0151L03",
           "type": "M",
-          "target": "lo que",
-          "known": "what",
+          "target": "estaba esperando",
+          "known": "was hoping",
           "new": true,
-          "components": [["lo", "the"], ["que", "that"]]
+          "components": [
+            ["estaba", "was"],
+            ["esperando", "hoping/waiting"]
+          ]
         },
         {
           "id": "S0151L04",
           "type": "M",
-          "target": "estaba esperando",
-          "known": "I was hoping",
+          "target": "esperando que pasara",
+          "known": "hoping would happen",
           "new": true,
-          "components": [["estaba", "I was"], ["esperando", "hoping"]]
+          "components": [
+            ["esperando", "hoping"],
+            ["que", "that"],
+            ["pasara", "would happen"]
+          ]
         },
         {
           "id": "S0151L05",
           "type": "M",
-          "target": "que pasara",
-          "known": "would happen",
+          "target": "lo que estaba esperando que pasara",
+          "known": "what I was hoping would happen",
           "new": true,
-          "components": [["que", "that"], ["pasara", "happen"]]
+          "components": [
+            ["lo que", "what"],
+            ["estaba", "I was"],
+            ["esperando", "hoping"],
+            ["que", "that"],
+            ["pasara", "would happen"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0152",
-      "seed_pair": ["I would have done it differently if I had known what you wanted.", "Lo habría hecho diferentemente si hubiera sabido lo que querías."],
+      "seed_pair": [
+        "I would have done it differently if I had known what you wanted.",
+        "Lo habría hecho diferentemente si hubiera sabido lo que querías."
+      ],
       "legos": [
         {
           "id": "S0152L01",
-          "type": "A",
-          "target": "lo",
-          "known": "it",
-          "new": true
+          "type": "M",
+          "target": "lo habría hecho",
+          "known": "I would have done it",
+          "new": true,
+          "components": [
+            ["lo", "it"],
+            ["habría", "would have"],
+            ["hecho", "done"]
+          ]
         },
         {
           "id": "S0152L02",
@@ -69,54 +101,66 @@
         },
         {
           "id": "S0152L03",
-          "type": "A",
-          "target": "si",
-          "known": "if",
-          "new": true
+          "type": "M",
+          "target": "si hubiera sabido",
+          "known": "if I had known",
+          "new": true,
+          "components": [
+            ["si", "if"],
+            ["hubiera", "had"],
+            ["sabido", "known"]
+          ]
         },
         {
           "id": "S0152L04",
+          "type": "M",
+          "target": "lo que",
+          "known": "what",
+          "new": true,
+          "components": [
+            ["lo", "the"],
+            ["que", "that/what"]
+          ]
+        },
+        {
+          "id": "S0152L05",
           "type": "A",
           "target": "querías",
           "known": "you wanted",
           "new": true
         },
         {
-          "id": "S0152L05",
-          "type": "M",
-          "target": "habría hecho",
-          "known": "would have done",
-          "new": true,
-          "components": [["habría", "would have"], ["hecho", "done"]]
-        },
-        {
           "id": "S0152L06",
           "type": "M",
-          "target": "hubiera sabido",
-          "known": "I had known",
+          "target": "lo que querías",
+          "known": "what you wanted",
           "new": true,
-          "components": [["hubiera", "I had"], ["sabido", "known"]]
-        },
-        {
-          "id": "S0152L07",
-          "type": "M",
-          "target": "lo que",
-          "known": "what",
-          "new": true,
-          "components": [["lo", "the"], ["que", "that"]]
+          "components": [
+            ["lo que", "what"],
+            ["querías", "you wanted"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0153",
-      "seed_pair": ["I wouldn't have said it in exactly the same way.", "No lo habría dicho exactamente de la misma manera."],
+      "seed_pair": [
+        "I wouldn't have said it in exactly the same way.",
+        "No lo habría dicho exactamente de la misma manera."
+      ],
       "legos": [
         {
           "id": "S0153L01",
-          "type": "A",
-          "target": "lo",
-          "known": "it",
-          "new": true
+          "type": "M",
+          "target": "no lo habría dicho",
+          "known": "I wouldn't have said it",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["lo", "it"],
+            ["habría", "would have"],
+            ["dicho", "said"]
+          ]
         },
         {
           "id": "S0153L02",
@@ -128,24 +172,38 @@
         {
           "id": "S0153L03",
           "type": "M",
-          "target": "no habría dicho",
-          "known": "wouldn't have said",
+          "target": "de la misma manera",
+          "known": "in the same way",
           "new": true,
-          "components": [["no", "not"], ["habría", "would have"], ["dicho", "said"]]
+          "components": [
+            ["de", "in"],
+            ["la", "the"],
+            ["misma", "same"],
+            ["manera", "way"]
+          ]
         },
         {
           "id": "S0153L04",
           "type": "M",
-          "target": "de la misma manera",
-          "known": "in the same way",
+          "target": "exactamente de la misma manera",
+          "known": "in exactly the same way",
           "new": true,
-          "components": [["de", "in"], ["la", "the"], ["misma", "same"], ["manera", "way"]]
+          "components": [
+            ["exactamente", "exactly"],
+            ["de", "in"],
+            ["la", "the"],
+            ["misma", "same"],
+            ["manera", "way"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0154",
-      "seed_pair": ["Where do you want to meet on Saturday night?", "¿Dónde quieres encontrarte el sábado por la noche?"],
+      "seed_pair": [
+        "Where do you want to meet on Saturday night?",
+        "¿Dónde quieres encontrarte el sábado por la noche?"
+      ],
       "legos": [
         {
           "id": "S0154L01",
@@ -156,276 +214,342 @@
         },
         {
           "id": "S0154L02",
-          "type": "A",
-          "target": "quieres",
-          "known": "do you want",
-          "new": true
+          "type": "M",
+          "target": "quieres encontrarte",
+          "known": "you want to meet",
+          "new": true,
+          "components": [
+            ["quieres", "you want"],
+            ["encontrarte", "to meet/find yourself"]
+          ]
         },
         {
           "id": "S0154L03",
-          "type": "A",
-          "target": "encontrarte",
-          "known": "to meet",
-          "new": true
-        },
-        {
-          "id": "S0154L04",
           "type": "M",
-          "target": "el sábado",
-          "known": "on Saturday",
+          "target": "el sábado por la noche",
+          "known": "on Saturday night",
           "new": true,
-          "components": [["el", "on"], ["sábado", "Saturday"]]
-        },
-        {
-          "id": "S0154L05",
-          "type": "M",
-          "target": "por la noche",
-          "known": "night",
-          "new": true,
-          "components": [["por", "in"], ["la", "the"], ["noche", "night"]]
+          "components": [
+            ["el", "on"],
+            ["sábado", "Saturday"],
+            ["por", "by/in"],
+            ["la", "the"],
+            ["noche", "night"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0155",
-      "seed_pair": ["I don't mind waiting for a few minutes tomorrow morning.", "No me importa esperar unos minutos mañana por la mañana."],
+      "seed_pair": [
+        "I don't mind waiting for a few minutes tomorrow morning.",
+        "No me importa esperar unos minutos mañana por la mañana."
+      ],
       "legos": [
         {
           "id": "S0155L01",
+          "type": "M",
+          "target": "no me importa",
+          "known": "I don't mind",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["me", "me"],
+            ["importa", "matters/mind"]
+          ]
+        },
+        {
+          "id": "S0155L02",
+          "type": "M",
+          "target": "no me importa esperar",
+          "known": "I don't mind waiting",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["me", "me"],
+            ["importa", "matters"],
+            ["esperar", "to wait"]
+          ]
+        },
+        {
+          "id": "S0155L03",
           "type": "A",
           "target": "esperar",
           "known": "waiting",
           "new": true
         },
         {
-          "id": "S0155L02",
-          "type": "A",
-          "target": "unos",
-          "known": "a few",
-          "new": true
-        },
-        {
-          "id": "S0155L03",
-          "type": "A",
-          "target": "minutos",
-          "known": "minutes",
-          "new": true
-        },
-        {
           "id": "S0155L04",
-          "type": "A",
-          "target": "mañana",
-          "known": "tomorrow",
-          "new": true
+          "type": "M",
+          "target": "unos minutos",
+          "known": "a few minutes",
+          "new": true,
+          "components": [
+            ["unos", "a few/some"],
+            ["minutos", "minutes"]
+          ]
         },
         {
           "id": "S0155L05",
           "type": "M",
-          "target": "no me importa",
-          "known": "I don't mind",
+          "target": "mañana por la mañana",
+          "known": "tomorrow morning",
           "new": true,
-          "components": [["no", "not"], ["me", "to me"], ["importa", "matters"]]
-        },
-        {
-          "id": "S0155L06",
-          "type": "M",
-          "target": "por la mañana",
-          "known": "morning",
-          "new": true,
-          "components": [["por", "in"], ["la", "the"], ["mañana", "morning"]]
+          "components": [
+            ["mañana", "tomorrow"],
+            ["por", "by/in"],
+            ["la", "the"],
+            ["mañana", "morning"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0156",
-      "seed_pair": ["Do you want to go to a restaurant tonight?", "¿Quieres ir a un restaurante esta noche?"],
+      "seed_pair": [
+        "Do you want to go to a restaurant tonight?",
+        "¿Quieres ir a un restaurante esta noche?"
+      ],
       "legos": [
         {
           "id": "S0156L01",
-          "type": "A",
-          "target": "quieres",
-          "known": "do you want",
-          "new": true
+          "type": "M",
+          "target": "quieres ir",
+          "known": "you want to go",
+          "new": true,
+          "components": [
+            ["quieres", "you want"],
+            ["ir", "to go"]
+          ]
         },
         {
           "id": "S0156L02",
-          "type": "A",
-          "target": "ir",
-          "known": "to go",
-          "new": true
+          "type": "M",
+          "target": "a un restaurante",
+          "known": "to a restaurant",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["un", "a"],
+            ["restaurante", "restaurant"]
+          ]
         },
         {
           "id": "S0156L03",
-          "type": "A",
-          "target": "a",
-          "known": "to",
-          "new": true
-        },
-        {
-          "id": "S0156L04",
-          "type": "M",
-          "target": "un restaurante",
-          "known": "a restaurant",
-          "new": true,
-          "components": [["un", "a"], ["restaurante", "restaurant"]]
-        },
-        {
-          "id": "S0156L05",
           "type": "M",
           "target": "esta noche",
           "known": "tonight",
           "new": true,
-          "components": [["esta", "this"], ["noche", "night"]]
+          "components": [
+            ["esta", "this"],
+            ["noche", "night"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0157",
-      "seed_pair": ["I won't be able to be there next month.", "No podré estar ahí el próximo mes."],
+      "seed_pair": [
+        "I won't be able to be there next month.",
+        "No podré estar ahí el próximo mes."
+      ],
       "legos": [
         {
           "id": "S0157L01",
+          "type": "M",
+          "target": "no podré",
+          "known": "I won't be able",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["podré", "I will be able"]
+          ]
+        },
+        {
+          "id": "S0157L02",
+          "type": "M",
+          "target": "no podré estar",
+          "known": "I won't be able to be",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["podré", "I will be able"],
+            ["estar", "to be"]
+          ]
+        },
+        {
+          "id": "S0157L03",
           "type": "A",
           "target": "estar",
           "known": "to be",
           "new": true
         },
         {
-          "id": "S0157L02",
+          "id": "S0157L04",
           "type": "A",
           "target": "ahí",
           "known": "there",
           "new": true
         },
         {
-          "id": "S0157L03",
-          "type": "M",
-          "target": "no podré",
-          "known": "I won't be able",
-          "new": true,
-          "components": [["no", "not"], ["podré", "I will be able"]]
-        },
-        {
-          "id": "S0157L04",
+          "id": "S0157L05",
           "type": "M",
           "target": "el próximo mes",
           "known": "next month",
           "new": true,
-          "components": [["el", "the"], ["próximo", "next"], ["mes", "month"]]
+          "components": [
+            ["el", "the"],
+            ["próximo", "next"],
+            ["mes", "month"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0158",
-      "seed_pair": ["Let's talk about something else.", "Hablemos de algo más."],
+      "seed_pair": [
+        "Let's talk about something else.",
+        "Hablemos de algo más."
+      ],
       "legos": [
         {
           "id": "S0158L01",
-          "type": "A",
-          "target": "hablemos",
-          "known": "let's talk",
-          "new": true
+          "type": "M",
+          "target": "hablemos de",
+          "known": "let's talk about",
+          "new": true,
+          "components": [
+            ["hablemos", "let's talk"],
+            ["de", "about"]
+          ]
         },
         {
           "id": "S0158L02",
-          "type": "A",
-          "target": "de",
-          "known": "about",
-          "new": true
-        },
-        {
-          "id": "S0158L03",
           "type": "M",
           "target": "algo más",
           "known": "something else",
           "new": true,
-          "components": [["algo", "something"], ["más", "else"]]
+          "components": [
+            ["algo", "something"],
+            ["más", "more/else"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0159",
-      "seed_pair": ["That isn't what I'm trying to say.", "Eso no es lo que estoy intentando decir."],
+      "seed_pair": [
+        "That isn't what I'm trying to say.",
+        "Eso no es lo que estoy intentando decir."
+      ],
       "legos": [
         {
           "id": "S0159L01",
-          "type": "A",
-          "target": "eso",
-          "known": "that",
-          "new": true
+          "type": "M",
+          "target": "eso no es",
+          "known": "that isn't",
+          "new": true,
+          "components": [
+            ["eso", "that"],
+            ["no", "not"],
+            ["es", "is"]
+          ]
         },
         {
           "id": "S0159L02",
-          "type": "A",
-          "target": "decir",
-          "known": "to say",
-          "new": true
-        },
-        {
-          "id": "S0159L03",
-          "type": "M",
-          "target": "no es",
-          "known": "isn't",
-          "new": true,
-          "components": [["no", "not"], ["es", "is"]]
-        },
-        {
-          "id": "S0159L04",
           "type": "M",
           "target": "lo que",
           "known": "what",
           "new": true,
-          "components": [["lo", "the"], ["que", "that"]]
+          "components": [
+            ["lo", "the"],
+            ["que", "that/what"]
+          ]
         },
         {
-          "id": "S0159L05",
+          "id": "S0159L03",
           "type": "M",
           "target": "estoy intentando",
           "known": "I'm trying",
           "new": true,
-          "components": [["estoy", "I am"], ["intentando", "trying"]]
+          "components": [
+            ["estoy", "I am"],
+            ["intentando", "trying"]
+          ]
+        },
+        {
+          "id": "S0159L04",
+          "type": "M",
+          "target": "estoy intentando decir",
+          "known": "I'm trying to say",
+          "new": true,
+          "components": [
+            ["estoy", "I am"],
+            ["intentando", "trying"],
+            ["decir", "to say"]
+          ]
+        },
+        {
+          "id": "S0159L05",
+          "type": "A",
+          "target": "decir",
+          "known": "to say",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0160",
-      "seed_pair": ["How do you say this word in Spanish?", "¿Cómo dices esta palabra en español?"],
+      "seed_pair": [
+        "How do you say this word in Spanish?",
+        "¿Cómo dices esta palabra en español?"
+      ],
       "legos": [
         {
           "id": "S0160L01",
-          "type": "A",
-          "target": "cómo",
-          "known": "how",
-          "new": true
+          "type": "M",
+          "target": "cómo dices",
+          "known": "how do you say",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["dices", "you say"]
+          ]
         },
         {
           "id": "S0160L02",
-          "type": "A",
-          "target": "dices",
-          "known": "do you say",
-          "new": true
-        },
-        {
-          "id": "S0160L03",
-          "type": "A",
-          "target": "en",
-          "known": "in",
-          "new": true
-        },
-        {
-          "id": "S0160L04",
-          "type": "A",
-          "target": "español",
-          "known": "Spanish",
-          "new": true
-        },
-        {
-          "id": "S0160L05",
           "type": "M",
           "target": "esta palabra",
           "known": "this word",
           "new": true,
-          "components": [["esta", "this"], ["palabra", "word"]]
+          "components": [
+            ["esta", "this"],
+            ["palabra", "word"]
+          ]
+        },
+        {
+          "id": "S0160L03",
+          "type": "M",
+          "target": "en español",
+          "known": "in Spanish",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["español", "Spanish"]
+          ]
+        },
+        {
+          "id": "S0160L04",
+          "type": "M",
+          "target": "cómo dices esta palabra",
+          "known": "how do you say this word",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["dices", "you say"],
+            ["esta", "this"],
+            ["palabra", "word"]
+          ]
         }
       ]
     }
