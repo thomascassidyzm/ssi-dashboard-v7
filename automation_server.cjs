@@ -67,7 +67,7 @@ const PHASE_PROMPTS = {};
 // Phase intelligence files
 const phaseIntelligenceFiles = {
   '1': 'public/docs/phase_intelligence/phase_1_orchestrator.md',  // Use lightweight orchestrator (points to skills/)
-  '3': 'public/docs/phase_intelligence/phase_3_lego_pairs.md',
+  '3': 'public/docs/phase_intelligence/phase_3_lego_pairs_v7.md',
   '5': 'public/docs/phase_intelligence/phase_5_lego_baskets.md',
   '5.5': 'public/docs/phase_intelligence/phase_5.5_basket_deduplication.md',
   '6': 'public/docs/phase_intelligence/phase_6_introductions.md',
@@ -380,7 +380,7 @@ function generatePhase3MasterPrompt(courseCode, params, courseDir) {
 
 You are the **Master Orchestrator** for this segment. Your job is to:
 
-1. **Read Phase 3 intelligence** (v6.3 methodology)
+1. **Read Phase 3 intelligence** (v7.0 - Two Heuristics Edition)
 2. **Spawn ${agentCount} sub-agents in parallel** (ONE message with ${agentCount} Task tool calls)
 3. **Each sub-agent extracts ${seedsPerAgent} seeds** with IDENTICAL prompt (only seed range differs)
 4. **Wait for all ${agentCount} to complete**
@@ -400,29 +400,26 @@ You are the **Master Orchestrator** for this segment. Your job is to:
 
 **YOU AND YOUR SUB-AGENTS MUST READ**: https://ssi-dashboard-v7.vercel.app/api/intelligence/3
 
-(Raw markdown for Phase 3 v6.3 methodology)
+(Raw markdown for Phase 3 v7.0 - Two Heuristics Edition)
 
-Or if local files are available: \`docs/phase_intelligence/phase_3_lego_pairs.md\` (v6.3)
+Or if local files are available: \`public/docs/phase_intelligence/phase_3_lego_pairs_v7.md\`
 
 This is the **ONLY authoritative source** for Phase 3 extraction methodology.
 
-**This file contains the complete v6.3 methodology including**:
-- Core Principle (Pragmatic FD - Maximum USEFUL Granularity)
-- The Three Rules (detailed extraction protocol)
-- Forward/Backward Sweep Algorithm (bidirectional analysis)
-- FD Test (3-question validation)
-- Atomic vs Molecular Classification
-- A-before-M Ordering (pedagogical requirement)
+**This file contains the complete v7.0 methodology including**:
+- **Two Core Heuristics**: (1) Remove learner uncertainty, (2) Maximize patterns with minimum vocab
+- Three comprehensive examples (Spanish, Chinese, multilingual)
+- Forward/Backward Sweep Algorithm
+- Overlapping chains for recombination power
 - Complete worked examples with reasoning
 
 **Your sub-agents MUST read this file** before starting extraction. The highlights below are NOT a replacement for reading the full methodology.
 
 **Key principles** (highlights only - see full file for details):
-- **TILING FIRST**: Verify LEGOs reconstruct BOTH languages perfectly
-- **START FROM KNOWN semantics first**: How does native speaker chunk this?
-- **A-BEFORE-M ORDERING**: ALL Atomic LEGOs before Molecular LEGOs (non-negotiable)
+- **Heuristic 1**: Remove learner uncertainty (no standalone pronouns/articles/particles)
+- **Heuristic 2**: Maximize patterns with minimum vocab (overlapping chains)
+- **Forward + Backward sweeps**: Both required
 - **Componentize ALL M-types**: Show word-by-word literal mappings
-- **FD test**: IF IN DOUBT → CHUNK UP
 - **Mark all new: true**: Phase 3 introduces LEGOs
 
 ---
@@ -500,23 +497,27 @@ ${Array.from({length: agentCount}, (_, i) => {
 
 ## 📚 STEP 1: READ PHASE INTELLIGENCE
 
-**Read this document NOW** (430 lines - takes 2 minutes):
-- https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_3_lego_pairs.md
-- Or local: \`public/docs/phase_intelligence/phase_3_lego_pairs.md\`
+**Read this document NOW** (430 lines - v7.0):
+- https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_3_lego_pairs_v7.md
+- Or local: \`public/docs/phase_intelligence/phase_3_lego_pairs_v7.md\`
 
 ---
 
-## 🚨 STEP 2: KEY RULES (From Intelligence Doc)
+## 🚨 STEP 2: TWO CORE HEURISTICS (From Intelligence Doc)
 
-**Apply these rules from the intelligence doc:**
+**Apply these heuristics to EVERY seed**:
 
-1. **Pragmatic FD**: For EACH LEGO ask: "Can this generate meaningful practice alone?" If NO → pair it with context
-2. **Never extract standalone**: pronouns (él, she), articles (una, the), particles (de, of)
-3. **Always pair them**: "él quiere" (pronoun+verb), "de vez en cuando" (idiomatic phrase)
-4. **Tiling**: LEGOs must reconstruct BOTH target AND known perfectly
-5. **A-before-M**: ALL A-types first, then ALL M-types
-6. **Components**: Every M-type needs component array
-7. **Think per seed**: Use <thinking> tags - no scripts
+**Heuristic 1: Remove Learner Uncertainty**
+- When learner hears KNOWN → ZERO uncertainty about TARGET
+- No standalone pronouns/articles/particles (él, she, una, the, de, of, 的)
+- If uncertain → chunk UP with context
+
+**Heuristic 2: Maximize Patterns with Minimum Vocab**
+- Create overlapping chunks when pedagogically valuable
+- Each LEGO should generate multiple practice sentences
+- Example: "tardaron" in both "las noticias tardaron" AND "tardaron varias horas"
+
+**All strategies serve these two goals** (forward/backward sweeps, M-types, components)
 
 ---
 
@@ -533,10 +534,10 @@ ${Array.from({length: agentCount}, (_, i) => {
 For EACH of your ${seedsPerAgent} seeds:
 
 1. **Use <thinking> tags** - reason through extraction step-by-step
-2. **Ask for EACH LEGO**: "Can this generate meaningful practice on its own?"
-3. **Verify tiling** in BOTH languages
-4. **Order**: All A-types, then all M-types
-5. **Components**: Add to every M-type
+2. **Apply Heuristic 1**: Does KNOWN → TARGET have zero uncertainty? If NO → chunk UP
+3. **Apply Heuristic 2**: Can overlaps add recombination power? Create if valuable
+4. **Both sweeps**: Forward (KNOWN left-to-right) + Backward (TARGET right-to-left)
+5. **Components**: Add to every M-type (word-by-word literal mapping)
 6. **Final check**: Any standalone pronouns/articles/particles? If yes → pair with context
 
 ---
@@ -553,7 +554,7 @@ For EACH of your ${seedsPerAgent} seeds:
   "agent_id": "agent_0Y",
   "seed_range": "S00XX-S00YY",
   "extracted_at": "<ISO timestamp>",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S00XX",
@@ -1984,8 +1985,8 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
 
           // Delay between spawns to allow browser to process each tab
           if (i < segmentCount - 1) {
-            console.log(`[Web Orchestrator] Waiting 10 seconds before next segment...`);
-            await new Promise(resolve => setTimeout(resolve, 10000));
+            console.log(`[Web Orchestrator] Waiting 5 seconds before next segment...`);
+            await new Promise(resolve => setTimeout(resolve, 5000));
           }
         }
 

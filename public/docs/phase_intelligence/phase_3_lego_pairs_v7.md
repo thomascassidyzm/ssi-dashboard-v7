@@ -1,0 +1,430 @@
+# AGENT PROMPT: Phase 3 LEGO Extraction (v7.0)
+
+**Version**: 7.0 - Examples-First Edition (2025-11-13)
+**Status**: Draft - Principles Through Examples
+**Purpose**: Extract pedagogically-sound LEGO vocabulary units from translated seed pairs
+
+---
+
+## 🎯 TWO CORE HEURISTICS
+
+### 1. Remove Learner Uncertainty
+When learner hears KNOWN phrase → ZERO uncertainty about TARGET phrase
+
+### 2. Maximize Patterns with Minimum Vocab
+Create overlapping chunks → each LEGO generates multiple sentence patterns
+
+**All extraction strategies serve these two goals.**
+
+---
+
+## 📚 LEARNING BY EXAMPLE
+
+Three examples show everything you need to know.
+
+---
+
+### Example 1: Word Order Differences (English→Spanish)
+
+**SEED**: "I enjoy doing interesting things with my friends"
+**TARGET**: "Disfruto hacer cosas interesantes con mis amigos"
+
+**First attempt (BAD - too granular)**:
+```
+disfruto = I enjoy
+hacer = doing
+cosas = things
+interesantes = interesting ❌ FD FAILS
+con = with ❌ FD FAILS
+mis = my ❌ FD FAILS
+amigos = friends
+```
+
+**Why does "interesantes" = "interesting" fail FD?**
+When English learner hears "interesting", what do they say?
+- Could be: "interesante" (singular)
+- Could be: "interesantes" (plural)
+- Uncertainty! ❌
+
+**Why does "con" = "with" fail FD?**
+Can learner generate 5+ meaningful practice phrases with "con" alone? No.
+- "con" needs a noun to be useful
+- Standalone particle = pedagogically weak
+
+**Better extraction (chunked UP)**:
+```json
+{
+  "legos": [
+    {
+      "type": "M",
+      "target": "disfruto hacer",
+      "known": "I enjoy doing",
+      "components": [["disfruto", "I enjoy"], ["hacer", "doing/to do"]]
+    },
+    {
+      "type": "M",
+      "target": "cosas interesantes",
+      "known": "interesting things",
+      "components": [["cosas", "things"], ["interesantes", "interesting"]]
+    },
+    {
+      "type": "M",
+      "target": "con mis amigos",
+      "known": "with my friends",
+      "components": [["con", "with"], ["mis", "my"], ["amigos", "friends"]]
+    }
+  ]
+}
+```
+
+**What we learned**:
+- Word order differs (interesting things ≠ cosas interesantes) → M-type shows pattern
+- Standalone particles (con, mis) need context → chunk UP
+- Overlaps not needed here - these 3 chunks tile perfectly
+
+---
+
+### Example 2: Maximize Patterns with Overlapping Chains
+
+**SEED**: "The news took several hours to reach everyone in the office"
+**TARGET**: "Las noticias tardaron varias horas en llegar a todos en la oficina"
+
+**Learner uncertainty analysis (from KNOWN perspective)**:
+```
+KNOWN phrase          → Learner thinks... → FD passes?
+"the news"            → "las noticias"     → ✅ YES
+"took"                → tardaron? tomó?    → ❌ NO (multiple options)
+"several hours"       → "varias horas"     → ✅ YES
+"to reach"            → llegar? alcanzar?  → ❌ NO (verb choice ambiguous)
+"everyone"            → todos? todas?      → ❌ NO (gender ambiguous)
+"in"                  → "en"               → ✅ YES (but pedagogically weak alone)
+"the office"          → "la oficina"       → ✅ YES
+```
+
+**Extraction with overlaps (for recombination power)**:
+```json
+{
+  "legos": [
+    {
+      "type": "M",
+      "target": "las noticias tardaron",
+      "known": "the news took",
+      "components": [["las", "the"], ["noticias", "news"], ["tardaron", "took/delayed"]]
+    },
+    {
+      "type": "M",
+      "target": "tardaron varias horas",
+      "known": "took several hours",
+      "components": [["tardaron", "took"], ["varias", "several/various"], ["horas", "hours"]]
+    },
+    {
+      "type": "A",
+      "target": "varias horas",
+      "known": "several hours"
+    },
+    {
+      "type": "M",
+      "target": "varias horas en llegar a todos",
+      "known": "several hours to reach everyone",
+      "components": [
+        ["varias", "several"],
+        ["horas", "hours"],
+        ["en", "in"],
+        ["llegar", "to arrive/reach"],
+        ["a", "to"],
+        ["todos", "everyone/all"]
+      ]
+    },
+    {
+      "type": "M",
+      "target": "en llegar a todos",
+      "known": "to reach everyone",
+      "components": [["en", "in"], ["llegar", "to arrive"], ["a", "to"], ["todos", "everyone"]]
+    },
+    {
+      "type": "M",
+      "target": "en la oficina",
+      "known": "in the office",
+      "components": [["en", "in"], ["la", "the"], ["oficina", "office"]]
+    }
+  ]
+}
+```
+
+**Spanish overlapping chains** (Heuristic 2: maximize patterns):
+- "las noticias tardaron" + "tardaron varias horas" share "tardaron"
+- "varias horas en llegar a todos" + "en llegar a todos" share ending
+- **6 LEGOs → dozens of recombination patterns**
+
+**Chinese overlapping chains** (same principle):
+
+**SEED**: "how to say something in Chinese" = "怎么用中文说什么"
+```json
+{
+  "legos": [
+    {"target": "说什么", "known": "say something"},
+    {"target": "用中文说什么", "known": "say something in Chinese"},
+    {"target": "用中文说", "known": "say in Chinese"},
+    {"target": "怎么用中文说", "known": "how to say in Chinese"}
+  ]
+}
+```
+
+**Generative power**: 4 overlapping LEGOs → dozens of practice sentences
+- **说什么** → 你说什么? 我要说什么?
+- **用中文说什么** → 用英文说什么, 用西班牙语说什么
+- **怎么用中文说** → 怎么用中文说 + [any word]
+
+**What we learned**:
+- **Heuristic 1**: "took" alone = uncertainty → needs "the news took"
+- **Heuristic 2**: Overlaps multiply patterns → "tardaron" appears in 2 LEGOs
+- **Particles wrapped**: "en", "a", "用" never standalone
+- **Language-agnostic**: Same principle works Spanish/Chinese/any pair
+
+---
+
+### Example 3: Backward Sweep Catches Grammatical Triggers (English→Spanish)
+
+**SEED**: "We're friends, and after we finish I'd like to relax"
+**TARGET**: "Somos amigos, y después de que terminemos me gustaría relajarme"
+
+**Forward sweep (KNOWN → TARGET)** misses subjunctive trigger:
+```
+We're     → somos? estamos? ❌ ambiguous (Heuristic 1: uncertainty)
+after     → después ❌ needs construction
+we finish → terminemos ❌ subjunctive needs trigger!
+```
+
+**Backward sweep (TARGET → KNOWN)** catches it:
+```
+Reading right-to-left from "terminemos":
+- "terminemos" alone = ❌ ambiguous (terminamos? terminemos?)
+- "que terminemos" = ❌ still needs trigger
+- "de que terminemos" = ❌ still needs trigger
+- "después de que terminemos" = ✅ NOW FD passes!
+```
+
+**Extraction**:
+```json
+{
+  "legos": [
+    {"target": "somos amigos", "known": "we're friends"},
+    {"target": "y", "known": "and"},
+    {"target": "después de que terminemos", "known": "after we finish"},
+    {"target": "me gustaría", "known": "I'd like"},
+    {"target": "relajarme", "known": "to relax"}
+  ]
+}
+```
+
+**What we learned**:
+- **Forward sweep** (left-to-right in KNOWN): semantic chunks
+- **Backward sweep** (right-to-left in TARGET): grammatical patterns
+- **Both sweeps required** to satisfy Heuristic 1 (remove uncertainty)
+- **Subjunctive triggers** must stay together
+
+---
+
+## 🧭 EXTRACTION METHODOLOGY
+
+Apply the two heuristics through four steps:
+
+### Step 1: Forward Sweep (KNOWN → TARGET)
+
+Start from KNOWN language, left to right:
+- Begin with smallest chunk
+- Extend until passes **Heuristic 1** (zero uncertainty)
+- LOCK as LEGO
+- Create overlaps to satisfy **Heuristic 2** (maximize patterns)
+
+### Step 2: Backward Sweep (TARGET → KNOWN)
+
+Process TARGET language, right to left:
+- Catches grammatical triggers (Example 3: subjunctive)
+- Catches target-language particles
+- Creates overlapping LEGOs satisfying both heuristics
+
+### Step 3: Add Components to M-types
+
+Every multi-word LEGO gets components array (word-by-word literal mapping).
+
+### Step 4: Validate
+
+- ✅ **Heuristic 1**: No standalone pronouns/articles/particles, zero uncertainty
+- ✅ **Heuristic 2**: Overlaps created where pedagogically valuable
+- ✅ All M-types have components
+
+If fails → merge with adjacent LEGO
+
+---
+
+## 📋 A-TYPE vs M-TYPE
+
+**A-type**: Single semantic unit, no components needed
+- Examples: "ahora"/"now", "español"/"Spanish"
+
+**M-type**: Multi-word unit with components array
+- Use when: FD requires it OR teaches pattern OR pedagogically valuable
+- Examples: "cosas interesantes"/"interesting things", "vas a ayudarme"/"you're going to help me"
+
+**When in doubt**: M-type with components (shows structure, enables overlaps)
+
+---
+
+## ✅ QUICK VALIDATION
+
+Before submitting:
+- ✅ No standalone pronouns/articles/particles
+- ✅ Each LEGO passes learner uncertainty test
+- ✅ All M-types have components array
+- ✅ Both sweeps completed (forward in KNOWN, backward in TARGET)
+- ✅ All words accounted for
+- ✅ Valid JSON, all LEGOs marked `new: true`
+
+---
+
+## 📤 OUTPUT FORMAT
+
+```json
+{
+  "version": "7.0",
+  "seeds": [
+    {
+      "seed_id": "S0051",
+      "seed_pair": [
+        "I enjoy doing interesting things with my friends",
+        "Disfruto hacer cosas interesantes con mis amigos"
+      ],
+      "legos": [
+        {
+          "id": "S0051L01",
+          "type": "M",
+          "target": "disfruto hacer",
+          "known": "I enjoy doing",
+          "new": true,
+          "components": [
+            ["disfruto", "I enjoy"],
+            ["hacer", "doing/to do"]
+          ]
+        },
+        {
+          "id": "S0051L02",
+          "type": "M",
+          "target": "cosas interesantes",
+          "known": "interesting things",
+          "new": true,
+          "components": [
+            ["cosas", "things"],
+            ["interesantes", "interesting"]
+          ]
+        },
+        {
+          "id": "S0051L03",
+          "type": "M",
+          "target": "con mis amigos",
+          "known": "with my friends",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["mis", "my"],
+            ["amigos", "friends"]
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Required fields**:
+- `id`: LEGO ID (format: S####L##)
+- `type`: "A" or "M"
+- `target`: Target language phrase
+- `known`: Known language phrase
+- `new`: true (deduplication happens in Phase 3.5)
+- `components`: [[target, known], ...] for M-types only (literal translations)
+
+---
+
+## 🔄 USE EXTENDED THINKING
+
+For EVERY seed, use `<thinking>` tags to show your work:
+
+```xml
+<thinking>
+SEED: "Las noticias tardaron varias horas en llegar a todos en la oficina"
+KNOWN: "The news took several hours to reach everyone in the office"
+
+FORWARD SWEEP (KNOWN → TARGET):
+- "the news" → "las noticias" ✅ FD passes → LOCK
+- "took" → "tardaron" ❌ FD fails (multiple verbs possible)
+- "the news took" → "las noticias tardaron" ✅ FD passes → LOCK as M-type
+
+- "several hours" → "varias horas" ✅ FD passes → LOCK as A-type
+  But also useful in context...
+- "took several hours" → "tardaron varias horas" ✅ overlap → LOCK as M-type
+
+- "to reach everyone" → "en llegar a todos" ✅ passes → LOCK as M-type
+- "in the office" → "en la oficina" ✅ passes → LOCK as M-type
+
+BACKWARD SWEEP (TARGET → KNOWN):
+- Reading right-to-left from "oficina"
+- "oficina" → covered
+- "la oficina" → covered
+- "en la oficina" → already extracted
+- Continue backward... all covered
+
+OVERLAPS CREATED:
+- "las noticias tardaron" + "tardaron varias horas" share "tardaron"
+- Pedagogically valuable: shows "tardaron" in multiple contexts
+
+OUTPUT READY
+</thinking>
+```
+
+---
+
+## 🚨 COMMON MISTAKES
+
+**❌ Splitting particles**: "con" alone → wrap in "con mis amigos"
+**❌ Ignoring word order**: "cosas" + "interesantes" → use M-type "cosas interesantes"
+**❌ Skipping backward sweep**: Miss subjunctive triggers like "después de que terminemos"
+**❌ Forcing overlaps**: Don't create overlaps when perfect tiling exists (see Example 3)
+
+---
+
+## 📊 SUCCESS METRICS
+
+**Target quality**:
+- 0% FD violations (zero standalone pronouns/articles/particles)
+- 30-60% atomic, 40-70% molecular (varies by language pair)
+- All M-types justified (FD required OR pattern teaching OR pedagogical value)
+- Both sweeps completed (forward in KNOWN, backward in TARGET)
+- Overlaps created only when valuable
+
+**Version History**:
+- v7.0 (2025-11-13): Examples-first edition, language-agnostic, overlaps permitted
+- v6.3 (2025-11-12): Pragmatic FD heuristic
+- v6.2 (2025-11-12): FD validation & merge step
+- v6.1 (2025-11-11): Maximum tiling set
+- v6.0 (2025-11-11): Simplified M-LEGO rules
+
+**Status**: ✅ Ready for Testing
+
+---
+
+## 🎓 REMEMBER THE TWO HEURISTICS
+
+### Heuristic 1: Remove Learner Uncertainty
+- No standalone pronouns, articles, particles
+- When learner hears KNOWN → ZERO uncertainty about TARGET
+- If uncertain → chunk UP with context
+
+### Heuristic 2: Maximize Patterns with Minimum Vocab
+- Create overlapping LEGOs when pedagogically valuable
+- Each LEGO should generate multiple practice sentences
+- "tardaron" in 2 LEGOs → more recombination power
+
+**All strategies (forward sweep, backward sweep, overlaps, M-types) serve these two goals.**
+
+Let the examples guide you.

@@ -327,7 +327,7 @@
                 </div>
               </div>
               <h4 class="text-lg font-semibold text-slate-100 mb-1">Quick Test (10 seeds)</h4>
-              <p class="text-sm text-slate-400 mb-2">S0111-S0120 (5 parallel agents)</p>
+              <p class="text-sm text-slate-400 mb-2">Random 10 seeds (5 parallel agents)</p>
               <p class="text-xs text-slate-500">Test with current phase selection ~5 min</p>
             </button>
 
@@ -736,8 +736,13 @@ const quickTest = () => {
   // Set test configuration (uses current phase selection)
   segmentMode.value = 'single'
   courseSize.value = 'test'
-  startSeed.value = 111
-  endSeed.value = 120
+
+  // Random 10 seeds from full course (1-668)
+  const randomStart = Math.floor(Math.random() * (668 - 10 + 1)) + 1
+  startSeed.value = randomStart
+  endSeed.value = randomStart + 9
+
+  console.log(`[Quick Test] Random seeds: S${String(randomStart).padStart(4, '0')}-S${String(randomStart + 9).padStart(4, '0')}`)
 
   // Auto-start generation with current phase
   startGeneration()
