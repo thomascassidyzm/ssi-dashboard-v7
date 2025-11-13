@@ -462,6 +462,7 @@ export default {
           const phase5Res = await fetch(`/vfs/courses/${courseCode}/phase5_outputs/seed_${seedId.toLowerCase()}.json`)
           if (phase5Res.ok) {
             const basketData = await phase5Res.json()
+            // Return in same format as API server
             return { basket: basketData }
           }
         } catch (phase5Err) {
@@ -473,7 +474,8 @@ export default {
           const basketRes = await fetch(`/vfs/courses/${courseCode}/baskets/lego_baskets_${seedId.toLowerCase()}.json`)
           if (basketRes.ok) {
             const basketData = await basketRes.json()
-            return basketData
+            // Legacy format is already unwrapped, wrap it to match API server format
+            return { basket: basketData }
           }
         } catch (basketErr) {
           console.error('[API] Failed to load basket from VFS:', basketErr)
