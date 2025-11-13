@@ -1,8 +1,8 @@
 {
   "agent_id": "agent_10",
   "seed_range": "S0391-S0400",
-  "extracted_at": "2025-11-12T22:05:00Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0391",
@@ -13,24 +13,17 @@
       "legos": [
         {
           "id": "S0391L01",
-          "type": "A",
-          "target": "hacia",
-          "known": "towards",
-          "new": true
-        },
-        {
-          "id": "S0391L02",
           "type": "M",
           "target": "la que",
           "known": "the one who",
           "new": true,
           "components": [
-            ["la", "the one"],
-            ["que", "who"]
+            ["la", "the"],
+            ["que", "one who/that"]
           ]
         },
         {
-          "id": "S0391L03",
+          "id": "S0391L02",
           "type": "M",
           "target": "está caminando",
           "known": "is walking",
@@ -41,7 +34,32 @@
           ]
         },
         {
+          "id": "S0391L03",
+          "type": "M",
+          "target": "caminando hacia el autobús",
+          "known": "walking towards the bus",
+          "new": true,
+          "components": [
+            ["caminando", "walking"],
+            ["hacia", "towards"],
+            ["el", "the"],
+            ["autobús", "bus"]
+          ]
+        },
+        {
           "id": "S0391L04",
+          "type": "M",
+          "target": "hacia el autobús",
+          "known": "towards the bus",
+          "new": true,
+          "components": [
+            ["hacia", "towards"],
+            ["el", "the"],
+            ["autobús", "bus"]
+          ]
+        },
+        {
+          "id": "S0391L05",
           "type": "M",
           "target": "el autobús",
           "known": "the bus",
@@ -62,20 +80,26 @@
       "legos": [
         {
           "id": "S0392L01",
-          "type": "A",
-          "target": "con",
-          "known": "with",
-          "new": true
-        },
-        {
-          "id": "S0392L02",
           "type": "M",
           "target": "ese niño",
           "known": "that child",
           "new": true,
           "components": [
             ["ese", "that"],
-            ["niño", "child"]
+            ["niño", "child/boy"]
+          ]
+        },
+        {
+          "id": "S0392L02",
+          "type": "M",
+          "target": "con el pelo negro",
+          "known": "with the black hair",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["el", "the"],
+            ["pelo", "hair"],
+            ["negro", "black"]
           ]
         },
         {
@@ -93,12 +117,13 @@
         {
           "id": "S0392L04",
           "type": "M",
-          "target": "enfrente de",
-          "known": "opposite",
+          "target": "enfrente de la oficina de correos",
+          "known": "opposite the post office",
           "new": true,
           "components": [
-            ["enfrente", "opposite"],
-            ["de", "of"]
+            ["enfrente de", "opposite/in front of"],
+            ["la", "the"],
+            ["oficina de correos", "post office"]
           ]
         },
         {
@@ -111,7 +136,7 @@
             ["la", "the"],
             ["oficina", "office"],
             ["de", "of"],
-            ["correos", "post"]
+            ["correos", "mail/post"]
           ]
         }
       ]
@@ -125,13 +150,6 @@
       "legos": [
         {
           "id": "S0393L01",
-          "type": "A",
-          "target": "con",
-          "known": "with",
-          "new": true
-        },
-        {
-          "id": "S0393L02",
           "type": "M",
           "target": "ese niño",
           "known": "that boy",
@@ -139,6 +157,19 @@
           "components": [
             ["ese", "that"],
             ["niño", "boy"]
+          ]
+        },
+        {
+          "id": "S0393L02",
+          "type": "M",
+          "target": "con la camisa verde",
+          "known": "with the green shirt",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["la", "the"],
+            ["camisa", "shirt"],
+            ["verde", "green"]
           ]
         },
         {
@@ -164,13 +195,6 @@
       "legos": [
         {
           "id": "S0394L01",
-          "type": "A",
-          "target": "con",
-          "known": "with",
-          "new": true
-        },
-        {
-          "id": "S0394L02",
           "type": "M",
           "target": "esa niña",
           "known": "that girl",
@@ -178,6 +202,19 @@
           "components": [
             ["esa", "that"],
             ["niña", "girl"]
+          ]
+        },
+        {
+          "id": "S0394L02",
+          "type": "M",
+          "target": "con el vestido amarillo",
+          "known": "with the yellow dress",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["el", "the"],
+            ["vestido", "dress"],
+            ["amarillo", "yellow"]
           ]
         },
         {
@@ -203,27 +240,30 @@
       "legos": [
         {
           "id": "S0395L01",
-          "type": "A",
-          "target": "necesitamos",
-          "known": "we need",
-          "new": true
+          "type": "M",
+          "target": "necesitamos girar",
+          "known": "we need to turn",
+          "new": true,
+          "components": [
+            ["necesitamos", "we need"],
+            ["girar", "to turn"]
+          ]
         },
         {
           "id": "S0395L02",
-          "type": "A",
-          "target": "girar",
-          "known": "to turn",
-          "new": true
+          "type": "M",
+          "target": "girar a la izquierda",
+          "known": "turn left",
+          "new": true,
+          "components": [
+            ["girar", "turn"],
+            ["a", "to"],
+            ["la", "the"],
+            ["izquierda", "left"]
+          ]
         },
         {
           "id": "S0395L03",
-          "type": "A",
-          "target": "en",
-          "known": "at",
-          "new": true
-        },
-        {
-          "id": "S0395L04",
           "type": "M",
           "target": "a la izquierda",
           "known": "left",
@@ -232,6 +272,19 @@
             ["a", "to"],
             ["la", "the"],
             ["izquierda", "left"]
+          ]
+        },
+        {
+          "id": "S0395L04",
+          "type": "M",
+          "target": "en la próxima esquina",
+          "known": "at the next corner",
+          "new": true,
+          "components": [
+            ["en", "at"],
+            ["la", "the"],
+            ["próxima", "next"],
+            ["esquina", "corner"]
           ]
         },
         {
@@ -257,17 +310,27 @@
       "legos": [
         {
           "id": "S0396L01",
-          "type": "A",
-          "target": "no",
-          "known": "don't",
-          "new": true
+          "type": "M",
+          "target": "no necesitamos",
+          "known": "we don't need",
+          "new": true,
+          "components": [
+            ["no", "don't/not"],
+            ["necesitamos", "we need"]
+          ]
         },
         {
           "id": "S0396L02",
-          "type": "A",
-          "target": "necesitamos",
-          "known": "we need",
-          "new": true
+          "type": "M",
+          "target": "necesitamos estar de pie",
+          "known": "we need to stand",
+          "new": true,
+          "components": [
+            ["necesitamos", "we need"],
+            ["estar", "to be"],
+            ["de", "of"],
+            ["pie", "foot"]
+          ]
         },
         {
           "id": "S0396L03",
@@ -284,12 +347,16 @@
         {
           "id": "S0396L04",
           "type": "M",
-          "target": "hasta que",
-          "known": "until",
+          "target": "hasta que todos los demás estén preparados",
+          "known": "until everybody else is ready",
           "new": true,
           "components": [
-            ["hasta", "until"],
-            ["que", "that"]
+            ["hasta que", "until"],
+            ["todos", "everybody/all"],
+            ["los", "the"],
+            ["demás", "others/else"],
+            ["estén", "are (subjunctive)"],
+            ["preparados", "ready"]
           ]
         },
         {
@@ -299,20 +366,9 @@
           "known": "everybody else",
           "new": true,
           "components": [
-            ["todos", "everybody"],
+            ["todos", "everybody/all"],
             ["los", "the"],
-            ["demás", "else"]
-          ]
-        },
-        {
-          "id": "S0396L06",
-          "type": "M",
-          "target": "estén preparados",
-          "known": "is ready",
-          "new": true,
-          "components": [
-            ["estén", "is"],
-            ["preparados", "ready"]
+            ["demás", "others/else"]
           ]
         }
       ]
@@ -326,10 +382,14 @@
       "legos": [
         {
           "id": "S0397L01",
-          "type": "A",
-          "target": "necesitamos",
-          "known": "we need",
-          "new": true
+          "type": "M",
+          "target": "necesitamos prepararnos",
+          "known": "we need to get ready",
+          "new": true,
+          "components": [
+            ["necesitamos", "we need"],
+            ["prepararnos", "to get ready/prepare ourselves"]
+          ]
         },
         {
           "id": "S0397L02",
@@ -356,41 +416,52 @@
       "legos": [
         {
           "id": "S0398L01",
-          "type": "A",
-          "target": "queremos",
-          "known": "we want",
-          "new": true
+          "type": "M",
+          "target": "queremos volvernos",
+          "known": "we want to become",
+          "new": true,
+          "components": [
+            ["queremos", "we want"],
+            ["volvernos", "to become/turn ourselves"]
+          ]
         },
         {
           "id": "S0398L02",
-          "type": "A",
-          "target": "volvernos",
-          "known": "to become",
-          "new": true
+          "type": "M",
+          "target": "volvernos más pacientes",
+          "known": "to become more patient",
+          "new": true,
+          "components": [
+            ["volvernos", "to become"],
+            ["más", "more"],
+            ["pacientes", "patient"]
+          ]
         },
         {
           "id": "S0398L03",
-          "type": "A",
-          "target": "más",
-          "known": "more",
-          "new": true
+          "type": "M",
+          "target": "más pacientes",
+          "known": "more patient",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["pacientes", "patient"]
+          ]
         },
         {
           "id": "S0398L04",
-          "type": "A",
-          "target": "pacientes",
-          "known": "patient",
-          "new": true
+          "type": "M",
+          "target": "con nuestros niños",
+          "known": "with our children",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["nuestros", "our"],
+            ["niños", "children"]
+          ]
         },
         {
           "id": "S0398L05",
-          "type": "A",
-          "target": "con",
-          "known": "with",
-          "new": true
-        },
-        {
-          "id": "S0398L06",
           "type": "M",
           "target": "nuestros niños",
           "known": "our children",
@@ -411,24 +482,38 @@
       "legos": [
         {
           "id": "S0399L01",
-          "type": "A",
-          "target": "no",
-          "known": "don't",
-          "new": true
+          "type": "M",
+          "target": "no queremos",
+          "known": "we don't want",
+          "new": true,
+          "components": [
+            ["no", "don't/not"],
+            ["queremos", "we want"]
+          ]
         },
         {
           "id": "S0399L02",
-          "type": "A",
-          "target": "queremos",
-          "known": "we want",
-          "new": true
+          "type": "M",
+          "target": "no queremos perder",
+          "known": "we don't want to lose",
+          "new": true,
+          "components": [
+            ["no", "don't/not"],
+            ["queremos", "we want"],
+            ["perder", "to lose"]
+          ]
         },
         {
           "id": "S0399L03",
-          "type": "A",
-          "target": "perder",
-          "known": "to lose",
-          "new": true
+          "type": "M",
+          "target": "perder la esperanza",
+          "known": "to lose hope",
+          "new": true,
+          "components": [
+            ["perder", "to lose"],
+            ["la", "the"],
+            ["esperanza", "hope"]
+          ]
         },
         {
           "id": "S0399L04",
@@ -452,17 +537,25 @@
       "legos": [
         {
           "id": "S0400L01",
-          "type": "A",
-          "target": "queremos",
-          "known": "we want",
-          "new": true
+          "type": "M",
+          "target": "queremos comer",
+          "known": "we want to eat",
+          "new": true,
+          "components": [
+            ["queremos", "we want"],
+            ["comer", "to eat"]
+          ]
         },
         {
           "id": "S0400L02",
-          "type": "A",
-          "target": "comer",
-          "known": "to eat",
-          "new": true
+          "type": "M",
+          "target": "comer algo",
+          "known": "to eat something",
+          "new": true,
+          "components": [
+            ["comer", "to eat"],
+            ["algo", "something"]
+          ]
         },
         {
           "id": "S0400L03",
@@ -479,7 +572,7 @@
           "new": true,
           "components": [
             ["más", "more"],
-            ["tarde", "late"]
+            ["tarde", "late/later"]
           ]
         }
       ]
