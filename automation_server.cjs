@@ -826,20 +826,23 @@ node scripts/phase5_merge_baskets.cjs ${courseDir}
 
 ---
 
-## ✅ SUCCESS CRITERIA
+## ✅ SUCCESS CRITERIA (v6.2)
 
 **Per Agent:**
-- All LEGOs have exactly 10 practice_phrases
-- 2-2-2-4 distribution maintained
+- LEGOs have correct phrase counts based on **overlap_level**:
+  - "none" = 10 phrases (distribution: 2-2-2-4)
+  - "partial" = 7 phrases (distribution: 1-2-1-3)
+  - "complete" = 5 phrases (distribution: 1-1-1-2)
 - 100% GATE compliance (all Spanish words in whitelist)
 - Natural language in both English and Spanish
-- Final LEGO phrase #10 = complete seed sentence
+- Final LEGO's highest phrase # = complete seed sentence
 - No template patterns detected
 
 **Overall:**
 - All ${totalSeeds} seeds processed
 - All baskets validated and formatted
 - Zero GATE violations
+- Overlap detection correctly applied
 - "Top dollar content" quality achieved
 
 **Target time**: 20-30 minutes with adaptive parallelization
