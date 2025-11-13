@@ -1,8 +1,8 @@
 {
   "agent_id": "agent_09",
   "seed_range": "S0181-S0190",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0181",
@@ -20,30 +20,36 @@
         },
         {
           "id": "S0181L02",
-          "type": "A",
-          "target": "llevar",
-          "known": "take",
-          "new": true
-        },
-        {
-          "id": "S0181L03",
           "type": "M",
           "target": "tengo que",
           "known": "I have to",
           "new": true,
           "components": [
             ["tengo", "I have"],
-            ["que", "to"]
+            ["que", "to/that"]
+          ]
+        },
+        {
+          "id": "S0181L03",
+          "type": "M",
+          "target": "tengo que llevar",
+          "known": "I have to take",
+          "new": true,
+          "components": [
+            ["tengo", "I have"],
+            ["que", "to"],
+            ["llevar", "to take/carry"]
           ]
         },
         {
           "id": "S0181L04",
           "type": "M",
-          "target": "a mi madre",
-          "known": "my mother",
+          "target": "llevar a mi madre",
+          "known": "take my mother",
           "new": true,
           "components": [
-            ["a", "(personal a)"],
+            ["llevar", "to take"],
+            ["a", "to"],
             ["mi", "my"],
             ["madre", "mother"]
           ]
@@ -75,7 +81,7 @@
           "known": "Have you seen",
           "new": true,
           "components": [
-            ["Has", "(you) have"],
+            ["Has", "Have you"],
             ["visto", "seen"]
           ]
         },
@@ -93,12 +99,25 @@
         {
           "id": "S0182L03",
           "type": "M",
+          "target": "Has visto mis llaves",
+          "known": "Have you seen my keys",
+          "new": true,
+          "components": [
+            ["Has", "Have you"],
+            ["visto", "seen"],
+            ["mis", "my"],
+            ["llaves", "keys"]
+          ]
+        },
+        {
+          "id": "S0182L04",
+          "type": "M",
           "target": "en algún lugar",
           "known": "anywhere",
           "new": true,
           "components": [
             ["en", "in"],
-            ["algún", "any/some"],
+            ["algún", "some"],
             ["lugar", "place"]
           ]
         }
@@ -137,9 +156,9 @@
           "known": "I haven't seen them",
           "new": true,
           "components": [
-            ["no", "not/haven't"],
+            ["no", "not"],
             ["las", "them"],
-            ["he", "I have"],
+            ["he", "have I"],
             ["visto", "seen"]
           ]
         }
@@ -189,7 +208,7 @@
           "known": "a while ago",
           "new": true,
           "components": [
-            ["hace", "ago"],
+            ["hace", "ago/makes"],
             ["un", "a"],
             ["rato", "while/moment"]
           ]
@@ -210,7 +229,7 @@
           "known": "I think",
           "new": true,
           "components": [
-            ["Creo", "I think"],
+            ["Creo", "I think/believe"],
             ["que", "that"]
           ]
         },
@@ -228,11 +247,24 @@
         {
           "id": "S0185L03",
           "type": "M",
+          "target": "Creo que las dejaste",
+          "known": "I think you left them",
+          "new": true,
+          "components": [
+            ["Creo", "I think"],
+            ["que", "that"],
+            ["las", "them"],
+            ["dejaste", "you left"]
+          ]
+        },
+        {
+          "id": "S0185L04",
+          "type": "M",
           "target": "en el trabajo",
           "known": "at work",
           "new": true,
           "components": [
-            ["en", "at"],
+            ["en", "at/in"],
             ["el", "the"],
             ["trabajo", "work"]
           ]
@@ -243,7 +275,7 @@
       "seed_id": "S0186",
       "seed_pair": [
         "Do you want to talk about something different next week?",
-        "¿Quieres hablar de algo diferente la semana próxima?"
+        "¿Quieres hablar de algo diferente la próxima semana?"
       ],
       "legos": [
         {
@@ -255,42 +287,61 @@
         },
         {
           "id": "S0186L02",
-          "type": "A",
-          "target": "hablar",
-          "known": "to talk",
-          "new": true
+          "type": "M",
+          "target": "hablar de",
+          "known": "to talk about",
+          "new": true,
+          "components": [
+            ["hablar", "to talk"],
+            ["de", "about/of"]
+          ]
         },
         {
           "id": "S0186L03",
-          "type": "A",
-          "target": "de",
-          "known": "about",
-          "new": true
+          "type": "M",
+          "target": "Quieres hablar de",
+          "known": "Do you want to talk about",
+          "new": true,
+          "components": [
+            ["Quieres", "Do you want"],
+            ["hablar", "to talk"],
+            ["de", "about"]
+          ]
         },
         {
           "id": "S0186L04",
-          "type": "A",
-          "target": "algo",
-          "known": "something",
-          "new": true
+          "type": "M",
+          "target": "algo diferente",
+          "known": "something different",
+          "new": true,
+          "components": [
+            ["algo", "something"],
+            ["diferente", "different"]
+          ]
         },
         {
           "id": "S0186L05",
-          "type": "A",
-          "target": "diferente",
-          "known": "different",
-          "new": true
+          "type": "M",
+          "target": "hablar de algo diferente",
+          "known": "to talk about something different",
+          "new": true,
+          "components": [
+            ["hablar", "to talk"],
+            ["de", "about"],
+            ["algo", "something"],
+            ["diferente", "different"]
+          ]
         },
         {
           "id": "S0186L06",
           "type": "M",
-          "target": "la semana próxima",
+          "target": "la próxima semana",
           "known": "next week",
           "new": true,
           "components": [
             ["la", "the"],
-            ["semana", "week"],
-            ["próxima", "next"]
+            ["próxima", "next"],
+            ["semana", "week"]
           ]
         }
       ]
@@ -310,7 +361,7 @@
           "new": true,
           "components": [
             ["Estoy", "I am"],
-            ["contento", "happy"]
+            ["contento", "happy/content"]
           ]
         },
         {
@@ -320,8 +371,8 @@
           "known": "so far",
           "new": true,
           "components": [
-            ["hasta", "so/until"],
-            ["ahora", "far/now"]
+            ["hasta", "until/up to"],
+            ["ahora", "now"]
           ]
         }
       ]
@@ -335,32 +386,57 @@
       "legos": [
         {
           "id": "S0188L01",
-          "type": "A",
-          "target": "cambiar",
-          "known": "to change",
-          "new": true
-        },
-        {
-          "id": "S0188L02",
           "type": "M",
           "target": "Así que",
           "known": "So",
           "new": true,
           "components": [
-            ["Así", "So/Thus"],
+            ["Así", "Thus/Like that"],
             ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0188L02",
+          "type": "M",
+          "target": "no necesito",
+          "known": "I don't need to",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["necesito", "I need"]
           ]
         },
         {
           "id": "S0188L03",
           "type": "M",
-          "target": "no necesito",
-          "known": "I don't need",
+          "target": "Así que no necesito",
+          "known": "So I don't need",
           "new": true,
           "components": [
-            ["no", "don't/not"],
+            ["Así", "So/Thus"],
+            ["que", "that"],
+            ["no", "don't"],
             ["necesito", "I need"]
           ]
+        },
+        {
+          "id": "S0188L04",
+          "type": "M",
+          "target": "no necesito cambiar",
+          "known": "I don't need to change",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["necesito", "I need"],
+            ["cambiar", "to change"]
+          ]
+        },
+        {
+          "id": "S0188L05",
+          "type": "A",
+          "target": "cambiar",
+          "known": "to change",
+          "new": true
         }
       ]
     },
@@ -400,6 +476,20 @@
             ["buena", "good"],
             ["idea", "idea"]
           ]
+        },
+        {
+          "id": "S0189L04",
+          "type": "M",
+          "target": "esa es una buena idea",
+          "known": "that's a good idea",
+          "new": true,
+          "components": [
+            ["esa", "that"],
+            ["es", "is"],
+            ["una", "a"],
+            ["buena", "good"],
+            ["idea", "idea"]
+          ]
         }
       ]
     },
@@ -412,31 +502,36 @@
       "legos": [
         {
           "id": "S0190L01",
-          "type": "A",
-          "target": "si",
-          "known": "if",
-          "new": true
-        },
-        {
-          "id": "S0190L02",
           "type": "M",
-          "target": "Te importa",
-          "known": "Do you mind",
+          "target": "Te importa si",
+          "known": "Do you mind if",
           "new": true,
           "components": [
-            ["Te", "you"],
-            ["importa", "mind/matter"]
+            ["Te", "To you"],
+            ["importa", "it matters"],
+            ["si", "if"]
           ]
         },
         {
-          "id": "S0190L03",
+          "id": "S0190L02",
           "type": "M",
           "target": "te hago algunas preguntas",
           "known": "I ask you some questions",
           "new": true,
           "components": [
             ["te", "you"],
-            ["hago", "I make/ask"],
+            ["hago", "I do/make"],
+            ["algunas", "some"],
+            ["preguntas", "questions"]
+          ]
+        },
+        {
+          "id": "S0190L03",
+          "type": "M",
+          "target": "algunas preguntas",
+          "known": "some questions",
+          "new": true,
+          "components": [
             ["algunas", "some"],
             ["preguntas", "questions"]
           ]
