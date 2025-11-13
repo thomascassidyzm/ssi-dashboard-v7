@@ -137,28 +137,29 @@ function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
     const overlapLevel = checkOverlapLevel(lego.target, newLegosInSeed);
 
     // Determine phrase distribution based on overlap level
+    // Note: Bucket names refer to LEGO count, not word count
     let phraseDistribution, targetPhraseCount;
     if (overlapLevel === 'complete') {
-      // Minimal set for fully overlapping LEGOs: just 5 long phrases
+      // Minimal set for fully overlapping LEGOs: just 5 longer phrases (3-5 LEGOs)
       phraseDistribution = {
-        longer_5_plus: 5
+        longer_3_to_5_legos: 5
       };
       targetPhraseCount = 5;
     } else if (overlapLevel === 'partial') {
-      // Reduced set for partially overlapping LEGOs: 1 short, 1 medium, 5 long
+      // Reduced set for partially overlapping LEGOs
       phraseDistribution = {
-        really_short_1_2: 1,
-        quite_short_3_4: 1,
-        longer_5_plus: 5
+        short_1_to_2_legos: 1,
+        medium_3_legos: 1,
+        longer_4_to_5_legos: 5
       };
       targetPhraseCount = 7;
     } else {
-      // Full set for fresh LEGOs: 2 short, 2 medium, 2 longer, 4 long
+      // Full set for fresh LEGOs: progressive buildup from 1-5 LEGOs
       phraseDistribution = {
-        really_short_1_2: 2,
-        quite_short_3: 2,
-        longer_4_5: 2,
-        long_6_plus: 4
+        short_1_to_2_legos: 2,
+        medium_3_legos: 2,
+        longer_4_legos: 2,
+        longest_5_legos: 4
       };
       targetPhraseCount = 10;
     }
