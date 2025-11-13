@@ -643,15 +643,16 @@ You have full autonomy to manage the parallelization strategy based on your rate
 
 ## 📚 PHASE 5 INTELLIGENCE (Single Source of Truth)
 
-**READ**: https://ssi-dashboard-v7.vercel.app/intelligence (Phase 5 - v6.1)
+**READ**: https://ssi-dashboard-v7.vercel.app/intelligence (Phase 5 - v6.2)
 
-Or if local files are available: \`docs/phase_intelligence/phase_5_lego_baskets.md\` (v6.1)
+Or if local files are available: \`docs/phase_intelligence/phase_5_lego_baskets.md\` (v6.2)
 
 This is the **ONLY authoritative source** for Phase 5 basket generation methodology.
 
 **Key sections to review**:
 - 🚨 CRITICAL: THIS IS A LINGUISTIC TASK, NOT A CODING TASK
 - 🔑 UNDERSTANDING THE WHITELIST (3-Category Rule)
+- 🎯 THREE-TIER OVERLAP DETECTION (v6.2 - CRITICAL NEW FEATURE)
 - 🎨 PHRASE GENERATION PROCESS (Per LEGO)
 - WORD CLASS RECOGNITION (verb/noun/adjective/phrase)
 - 🛡️ GATE COMPLIANCE (Zero Tolerance)
@@ -662,8 +663,11 @@ This is the **ONLY authoritative source** for Phase 5 basket generation methodol
 - Use extended thinking for EVERY LEGO
 - Understand word class before generating
 - GATE compliance: Every Spanish word in whitelist
-- 2-2-2-4 distribution mandatory
-- Final LEGO phrase #10 = complete seed sentence
+- **NEW v6.2**: Three-tier overlap detection (none/partial/complete)
+  - "none" = 10 phrases (standard distribution: 2-2-2-4)
+  - "partial" = 7 phrases (compressed: 1-2-1-3)
+  - "complete" = 5 phrases (minimal: 1-1-1-2)
+- Final LEGO phrase (highest #) = complete seed sentence
 
 ---
 
@@ -678,6 +682,8 @@ Each scaffold contains:
 - **seeds**: The seed pairs with LEGOs
 - **legos**: Empty practice_phrases arrays (agent fills these)
 - **is_final_lego**: Flag marking final LEGO in each seed
+- **overlap_level**: "none", "partial", or "complete" (v6.2)
+- **target_phrase_count**: 10, 7, or 5 based on overlap_level (v6.2)
 
 **Whitelist was built using 3-category rule:**
 1. Atomic LEGOs (A-type) - complete words
@@ -741,21 +747,27 @@ You are Practice Basket Generation Agent XX.
 This contains:
 - Seeds with empty practice_phrases arrays (you fill these)
 - Whitelist (3-category rule applied)
-- is_final_lego flags (phrase #10 must be seed sentence)
+- **overlap_level** and **target_phrase_count** for each LEGO (v6.2)
+- is_final_lego flags (highest phrase # must be seed sentence)
 
 ## Your Process
-1. Read Phase 5 Ultimate Intelligence v5.0
-2. For each NEW LEGO, use extended thinking:
+1. Read Phase 5 Ultimate Intelligence v6.2 (with overlap detection)
+2. For each LEGO, check its **overlap_level** and **target_phrase_count**:
+   - **"none"**: Generate 10 phrases (distribution: 2-2-2-4)
+   - **"partial"**: Generate 7 phrases (distribution: 1-2-1-3)
+   - **"complete"**: Generate 5 phrases (distribution: 1-1-1-2)
+
+3. For each LEGO, use extended thinking:
    - STEP 1: Understand the LEGO (word class, natural usage, seed theme)
    - STEP 2: Identify grammatical role (verb/noun/adjective/phrase)
-   - STEP 3: Generate 10 natural phrases (2-2-2-4 distribution)
+   - STEP 3: Generate phrases according to overlap_level
    - STEP 4: Validate EVERY Spanish word against whitelist
-   - STEP 5: If is_final_lego: true, phrase #10 = complete seed sentence
+   - STEP 5: If is_final_lego: true, highest phrase # = complete seed sentence
    - STEP 6: Check phrases sound natural in BOTH languages
 
-3. Fill practice_phrases arrays following Phase 5 v5.0
-4. Use extended thinking for EVERY LEGO (quality over speed!)
-5. Update phrase_distribution to match actual counts
+4. Fill practice_phrases arrays following Phase 5 v6.2
+5. Use extended thinking for EVERY LEGO (quality over speed!)
+6. Ensure phrase_distribution matches actual counts
 
 ## Output
 Write to: \`${relativeDir}/phase5_outputs/agent_XX_provisional.json\`
