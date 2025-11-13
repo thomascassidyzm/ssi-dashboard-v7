@@ -1838,6 +1838,71 @@ async function spawnCourseOrchestrator(courseCode, params) {
 }
 
 /**
+ * Merge all Phase 3 agent branches to main
+ * Fetches all remote branches matching phase3-* pattern and merges them
+ */
+async function mergePhase3Branches(courseDir) {
+  try {
+    console.log(`[Phase 3 Merge] Fetching all remote branches...`);
+    await execCommand('git fetch --all', { cwd: courseDir });
+
+    // Find all phase3 segment branches (phase3-segment-*)
+    console.log(`[Phase 3 Merge] Finding phase3-segment-* branches...`);
+    const branchResult = await execCommand('git branch -r', { cwd: courseDir });
+    const phase3Branches = branchResult.stdout
+      .split('\n')
+      .map(b => b.trim())
+      .filter(b => b.match(/origin\/phase3-segment-\d+/));
+
+    if (phase3Branches.length === 0) {
+      console.log(`[Phase 3 Merge] No phase3 branches found - agents may have committed to session branches`);
+
+      // Try to find claude/* branches instead
+      const claudeBranches = branchResult.stdout
+        .split('\n')
+        .map(b => b.trim())
+        .filter(b => b.match(/origin\/claude\//));
+
+      if (claudeBranches.length > 0) {
+        console.log(`[Phase 3 Merge] Found ${claudeBranches.length} claude/* branches to merge`);
+        for (const branch of claudeBranches) {
+          const branchName = branch.replace('origin/', '');
+          console.log(`[Phase 3 Merge] Merging ${branchName}...`);
+          await execCommand(`git merge ${branch} --no-edit -m "Merge Phase 3 agent branch: ${branchName}"`, { cwd: courseDir });
+        }
+      }
+      return;
+    }
+
+    console.log(`[Phase 3 Merge] Found ${phase3Branches.length} phase3 branches to merge:`);
+    phase3Branches.forEach(b => console.log(`  - ${b}`));
+
+    // Merge each branch to main
+    for (const branch of phase3Branches) {
+      const branchName = branch.replace('origin/', '');
+      console.log(`[Phase 3 Merge] Merging ${branchName}...`);
+
+      try {
+        await execCommand(`git merge ${branch} --no-edit -m "Merge Phase 3 segment: ${branchName}"`, { cwd: courseDir });
+        console.log(`[Phase 3 Merge] ✅ Merged ${branchName}`);
+      } catch (err) {
+        console.error(`[Phase 3 Merge] ⚠️  Error merging ${branchName}: ${err.message}`);
+        // Continue with other branches even if one fails
+      }
+    }
+
+    // Push merged main branch
+    console.log(`[Phase 3 Merge] Pushing merged main branch...`);
+    await execCommand('git push origin main', { cwd: courseDir });
+    console.log(`[Phase 3 Merge] ✅ All branches merged and pushed to main`);
+
+  } catch (err) {
+    console.error(`[Phase 3 Merge] Error during branch merge: ${err.message}`);
+    throw err;
+  }
+}
+
+/**
  * Poll for file existence with timeout between checks
  * Polls indefinitely until file appears
  * In Web mode, pulls from git before checking (Claude Code on Web pushes to GitHub)
@@ -2144,7 +2209,12 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
         }
       }
 
-      console.log(`[Web Orchestrator] ✅ All Phase 3 agents complete! Running merge script...`);
+      console.log(`[Web Orchestrator] ✅ All Phase 3 agents complete! Merging git branches...`);
+
+      // Merge all phase3 agent branches to main
+      await mergePhase3Branches(courseDir);
+
+      console.log(`[Web Orchestrator] ✅ Git branches merged! Running LEGO merge script...`);
 
       // Run Phase 3 merge script
       const { mergePhase3Legos } = require('./scripts/phase3_merge_legos.cjs');
