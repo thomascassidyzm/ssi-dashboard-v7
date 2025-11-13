@@ -2033,8 +2033,126 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
     // Handle Phase 5 Only selection
     if (phaseSelection === 'phase5') {
       console.log(`[Web Orchestrator] Running Phase 5 Only - Practice Baskets`);
-      // TODO: Implement Phase 5 only logic
-      throw new Error('Phase 5 only not yet implemented');
+
+      // Detect segment range and get base course code
+      const segmentMatch = courseCode.match(/^([a-z]{3}_for_[a-z]{3})_s\d{4}-\d{4}$/);
+      const baseCourseCode = segmentMatch ? segmentMatch[1] : courseCode;
+      const baseCourseDir = segmentMatch ? path.join(CONFIG.VFS_ROOT, baseCourseCode) : courseDir;
+
+      if (segmentMatch) {
+        console.log(`[Web Orchestrator] Segment range detected: ${courseCode}`);
+        console.log(`[Web Orchestrator] Using base course: ${baseCourseCode}`);
+      }
+
+      // Check prerequisites in base course directory
+      const seedPairsPath = path.join(baseCourseDir, 'seed_pairs.json');
+      const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+
+      if (!await fs.pathExists(seedPairsPath)) {
+        throw new Error(`Phase 5 requires seed_pairs.json in ${baseCourseCode} - run Phase 1 first`);
+      }
+      if (!await fs.pathExists(legoPairsPath)) {
+        throw new Error(`Phase 5 requires lego_pairs.json in ${baseCourseCode} - run Phase 3 first`);
+      }
+
+      job.phase = 'phase_5_web';
+      job.progress = 65;
+      job.message = 'Phase 5: Checking for existing baskets';
+
+      console.log(`\n[Web Orchestrator] ====================================`);
+      console.log(`[Web Orchestrator] PHASE 5: PRACTICE BASKETS (ONLY)`);
+      console.log(`[Web Orchestrator] ====================================`);
+
+      const basketsDir = path.join(baseCourseDir, 'baskets');
+      let phase5AlreadyComplete = false;
+
+      // Check if baskets directory exists with correct number of basket files
+      if (await fs.pathExists(basketsDir)) {
+        try {
+          const basketFiles = await fs.readdir(basketsDir);
+          const basketCount = basketFiles.filter(f => f.match(/^lego_baskets_s\d+\.json$/)).length;
+
+          console.log(`[Resume] Found existing baskets directory with ${basketCount} basket files`);
+
+          if (basketCount >= seeds) {
+            phase5AlreadyComplete = true;
+            console.log(`[Resume] ✅ Phase 5 already complete! Found ${basketCount}/${seeds} baskets`);
+            console.log(`[Resume] (To regenerate: delete ${basketsDir})\n`);
+            job.phase = 'phase_5_complete';
+            job.progress = 100;
+            job.status = 'completed';
+            job.message = 'Phase 5 already completed';
+          } else {
+            console.log(`[Resume] 🔄 Phase 5 needs extension! Existing: ${basketCount} baskets, will process lego_pairs.json for all ${seeds} seeds\n`);
+          }
+        } catch (err) {
+          console.log(`[Resume] baskets directory exists but invalid, will regenerate`);
+        }
+      }
+
+      if (!phase5AlreadyComplete) {
+        // Prep Phase 5 scaffolds (mechanical work)
+        console.log(`[Web Orchestrator] Running Phase 5 scaffold prep script...`);
+        const { preparePhase5Scaffolds } = require('./scripts/phase5_prep_scaffolds.cjs');
+        await preparePhase5Scaffolds(baseCourseDir);
+        console.log(`[Web Orchestrator] ✅ Phase 5 scaffolds ready`);
+
+        const phase5MasterPrompt = generatePhase5MasterPrompt(baseCourseCode, { target, known, startSeed, endSeed }, baseCourseDir);
+        await fs.writeFile(path.join(baseCourseDir, 'prompts', 'phase_5_master_prompt.md'), phase5MasterPrompt, 'utf8');
+
+        console.log(`[Web Orchestrator] Opening Phase 5 tab and pasting master prompt...`);
+        console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 20)} parallel agents`);
+        await spawnClaudeWebAgent(phase5MasterPrompt, 3, 'safari');
+        console.log(`[Web Orchestrator] ✅ Phase 5 master prompt pasted - HIT ENTER to spawn agents!`);
+
+        job.progress = 70;
+        job.message = 'Phase 5 tab opened - waiting for execution';
+
+        // Poll for all agent provisional outputs
+        console.log(`[Web Orchestrator] Waiting for all Phase 5 agent outputs...`);
+        const expectedAgents = Math.ceil((endSeed - startSeed + 1) / 20);
+        const outputsDir = path.join(baseCourseDir, 'phase5_outputs');
+
+        // Wait for all provisional files
+        let agentsComplete = 0;
+        while (agentsComplete < expectedAgents) {
+          await new Promise(resolve => setTimeout(resolve, 10000)); // Check every 10 seconds
+
+          if (await fs.pathExists(outputsDir)) {
+            const files = await fs.readdir(outputsDir);
+            agentsComplete = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
+
+            // Update job with detailed progress
+            job.message = `Phase 5: ${agentsComplete}/${expectedAgents} agents complete`;
+            job.subProgress = {
+              phase: 'phase_5',
+              completed: agentsComplete,
+              total: expectedAgents,
+              percentage: Math.round((agentsComplete / expectedAgents) * 100)
+            };
+
+            console.log(`[Web Orchestrator] Phase 5 agents complete: ${agentsComplete}/${expectedAgents}`);
+          }
+        }
+
+        console.log(`[Web Orchestrator] ✅ All Phase 5 agents complete! Running merge script...`);
+
+        // Run Phase 5 merge script
+        const { mergePhase5Outputs } = require('./scripts/phase5_merge_outputs.cjs');
+        await mergePhase5Outputs(baseCourseDir);
+
+        console.log(`[Web Orchestrator] ✅ Phase 5 merge complete! Created basket files`);
+        job.phase = 'phase_5_complete';
+        job.progress = 100;
+        job.status = 'completed';
+        job.message = 'Phase 5 completed successfully';
+      }
+
+      console.log(`\n[Web Orchestrator] ====================================`);
+      console.log(`[Web Orchestrator] ✅ PHASE 5 COMPLETE`);
+      console.log(`[Web Orchestrator] ====================================`);
+
+      return; // Exit after Phase 5 only
     }
 
     // Handle Phase 1 Only selection
