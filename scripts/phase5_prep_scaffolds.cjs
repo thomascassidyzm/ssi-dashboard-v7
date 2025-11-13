@@ -76,22 +76,31 @@ function buildWhitelistUpToLegoCount(legoPairsData, availableLegos) {
 }
 
 /**
- * Check if a LEGO overlaps with earlier LEGOs in the same seed
+ * Check overlap level of LEGO with earlier LEGOs in the same seed
+ *
+ * Returns:
+ * - 'complete': ALL words in current LEGO have appeared in earlier LEGOs
+ * - 'partial': SOME words overlap, but not all
+ * - 'none': No overlap
  */
-function hasOverlapWithEarlierLegos(currentLegoTarget, earlierLegosInSeed) {
-  const currentWords = new Set(
-    currentLegoTarget.toLowerCase().split(/\s+/).filter(Boolean)
-  );
+function checkOverlapLevel(currentLegoTarget, earlierLegosInSeed) {
+  const currentWords = currentLegoTarget.toLowerCase().split(/\s+/).filter(Boolean);
 
+  if (currentWords.length === 0) return 'none';
+
+  // Collect all words from earlier LEGOs
+  const earlierWords = new Set();
   for (const earlierLego of earlierLegosInSeed) {
-    const earlierWords = earlierLego.target.toLowerCase().split(/\s+/).filter(Boolean);
-    // Check if any word overlaps
-    if (earlierWords.some(word => currentWords.has(word))) {
-      return true;
-    }
+    earlierLego.target.toLowerCase().split(/\s+/).filter(Boolean)
+      .forEach(word => earlierWords.add(word));
   }
 
-  return false;
+  // Count how many current words appeared earlier
+  const overlapCount = currentWords.filter(word => earlierWords.has(word)).length;
+
+  if (overlapCount === 0) return 'none';
+  if (overlapCount === currentWords.length) return 'complete';
+  return 'partial';
 }
 
 /**
@@ -125,12 +134,18 @@ function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
     const whitelistPairs = buildWhitelistUpToLegoCount(legoPairsData, availableLegos);
 
     // Detect overlap with earlier NEW LEGOs in this seed
-    const hasOverlap = hasOverlapWithEarlierLegos(lego.target, newLegosInSeed);
+    const overlapLevel = checkOverlapLevel(lego.target, newLegosInSeed);
 
-    // Determine phrase distribution based on overlap
+    // Determine phrase distribution based on overlap level
     let phraseDistribution, targetPhraseCount;
-    if (hasOverlap) {
-      // Reduced set for overlapping LEGOs: 1 short, 1 medium, 5 long
+    if (overlapLevel === 'complete') {
+      // Minimal set for fully overlapping LEGOs: just 5 long phrases
+      phraseDistribution = {
+        longer_5_plus: 5
+      };
+      targetPhraseCount = 5;
+    } else if (overlapLevel === 'partial') {
+      // Reduced set for partially overlapping LEGOs: 1 short, 1 medium, 5 long
       phraseDistribution = {
         really_short_1_2: 1,
         quite_short_3_4: 1,
@@ -156,7 +171,7 @@ function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
       type: lego.type,
       available_legos: availableLegos,
       is_final_lego: isFinalLego,
-      has_overlap: hasOverlap,
+      overlap_level: overlapLevel,
       target_phrase_count: targetPhraseCount,
       practice_phrases: [], // AI fills this
       phrase_distribution: phraseDistribution,
