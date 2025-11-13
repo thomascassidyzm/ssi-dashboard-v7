@@ -1,24 +1,22 @@
 {
   "agent_id": "agent_05",
   "seed_range": "S0441-S0450",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0441",
-      "seed_pair": [
-        "An approach.",
-        "Un acercamiento."
-      ],
+      "seed_pair": ["An approach.", "Un acercamiento."],
+      "extraction_notes": "Simple M-type: article + noun in both languages",
       "legos": [
         {
           "id": "S0441L01",
           "type": "M",
-          "target": "Un acercamiento",
-          "known": "An approach",
+          "target": "un acercamiento",
+          "known": "an approach",
           "new": true,
           "components": [
-            ["Un", "An"],
+            ["un", "an"],
             ["acercamiento", "approach"]
           ]
         }
@@ -26,16 +24,14 @@
     },
     {
       "seed_id": "S0442",
-      "seed_pair": [
-        "Did they want to develop a new approach?",
-        "¿Querían desarrollar un acercamiento nuevo?"
-      ],
+      "seed_pair": ["Did they want to develop a new approach?", "¿Querían desarrollar un acercamiento nuevo?"],
+      "extraction_notes": "Word order difference: 'new approach' vs 'acercamiento nuevo'. Created overlap with 'desarrollar' + noun phrase for recombination.",
       "legos": [
         {
           "id": "S0442L01",
           "type": "A",
-          "target": "Querían",
-          "known": "Did they want",
+          "target": "querían",
+          "known": "did they want",
           "new": true
         },
         {
@@ -56,21 +52,32 @@
             ["acercamiento", "approach"],
             ["nuevo", "new"]
           ]
+        },
+        {
+          "id": "S0442L04",
+          "type": "M",
+          "target": "desarrollar un acercamiento nuevo",
+          "known": "to develop a new approach",
+          "new": true,
+          "components": [
+            ["desarrollar", "to develop"],
+            ["un", "a"],
+            ["acercamiento", "approach"],
+            ["nuevo", "new"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0443",
-      "seed_pair": [
-        "No they wanted to keep doing it the same way.",
-        "No querían continuar haciéndolo de la misma manera."
-      ],
+      "seed_pair": ["No they wanted to keep doing it the same way.", "No querían continuar haciéndolo de la misma manera."],
+      "extraction_notes": "Key pattern: 'haciéndolo' shows gerund + attached pronoun. 'querían' here means 'wanted' (statement) vs S0442 'did they want' (question).",
       "legos": [
         {
           "id": "S0443L01",
           "type": "A",
-          "target": "No",
-          "known": "No",
+          "target": "no",
+          "known": "no",
           "new": true
         },
         {
@@ -82,30 +89,23 @@
         },
         {
           "id": "S0443L03",
-          "type": "A",
-          "target": "continuar",
-          "known": "to keep",
-          "new": true
-        },
-        {
-          "id": "S0443L04",
           "type": "M",
-          "target": "haciéndolo",
-          "known": "doing it",
+          "target": "continuar haciéndolo",
+          "known": "to keep doing it",
           "new": true,
           "components": [
-            ["haciendo", "doing"],
-            ["lo", "it"]
+            ["continuar", "to keep/continue"],
+            ["haciéndolo", "doing it"]
           ]
         },
         {
-          "id": "S0443L05",
+          "id": "S0443L04",
           "type": "M",
           "target": "de la misma manera",
           "known": "the same way",
           "new": true,
           "components": [
-            ["de", "in/of"],
+            ["de", "of"],
             ["la", "the"],
             ["misma", "same"],
             ["manera", "way"]
@@ -115,94 +115,90 @@
     },
     {
       "seed_id": "S0444",
-      "seed_pair": [
-        "Yes they thought it could be done more efficiently.",
-        "Sí pensaban que podría hacerse más eficientemente."
-      ],
+      "seed_pair": ["Yes they thought it could be done more efficiently.", "Sí pensaban que podría hacerse más eficientemente."],
+      "extraction_notes": "Key patterns: 'pensaban que' (thought that), 'podría hacerse' (conditional passive reflexive). Created overlap for pedagogical value.",
       "legos": [
         {
           "id": "S0444L01",
           "type": "A",
-          "target": "Sí",
-          "known": "Yes",
+          "target": "sí",
+          "known": "yes",
           "new": true
         },
         {
           "id": "S0444L02",
-          "type": "A",
-          "target": "podría",
-          "known": "it could",
-          "new": true
-        },
-        {
-          "id": "S0444L03",
-          "type": "A",
-          "target": "hacerse",
-          "known": "be done",
-          "new": true
-        },
-        {
-          "id": "S0444L04",
-          "type": "A",
-          "target": "más",
-          "known": "more",
-          "new": true
-        },
-        {
-          "id": "S0444L05",
-          "type": "A",
-          "target": "eficientemente",
-          "known": "efficiently",
-          "new": true
-        },
-        {
-          "id": "S0444L06",
           "type": "M",
           "target": "pensaban que",
-          "known": "they thought",
+          "known": "they thought that",
           "new": true,
           "components": [
             ["pensaban", "they thought"],
             ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0444L03",
+          "type": "M",
+          "target": "podría hacerse",
+          "known": "it could be done",
+          "new": true,
+          "components": [
+            ["podría", "could"],
+            ["hacerse", "be done"]
+          ]
+        },
+        {
+          "id": "S0444L04",
+          "type": "M",
+          "target": "pensaban que podría hacerse",
+          "known": "they thought that it could be done",
+          "new": true,
+          "components": [
+            ["pensaban", "they thought"],
+            ["que", "that"],
+            ["podría", "could"],
+            ["hacerse", "be done"]
+          ]
+        },
+        {
+          "id": "S0444L05",
+          "type": "M",
+          "target": "más eficientemente",
+          "known": "more efficiently",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["eficientemente", "efficiently"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0445",
-      "seed_pair": [
-        "They will be able to carry that suitcase.",
-        "Ellos van a poder llevar esa maleta."
-      ],
+      "seed_pair": ["They will be able to carry that suitcase.", "Ellos van a poder llevar esa maleta."],
+      "extraction_notes": "Key pattern: 'van a poder' (going to be able to = will be able to). Created overlaps: 'poder llevar', 'llevar esa maleta' for recombination.",
       "legos": [
         {
           "id": "S0445L01",
-          "type": "A",
-          "target": "poder",
-          "known": "be able to",
-          "new": true
+          "type": "M",
+          "target": "van a poder",
+          "known": "will be able to",
+          "new": true,
+          "components": [
+            ["van", "will/are going"],
+            ["a", "to"],
+            ["poder", "be able"]
+          ]
         },
         {
           "id": "S0445L02",
           "type": "A",
           "target": "llevar",
-          "known": "carry",
+          "known": "to carry",
           "new": true
         },
         {
           "id": "S0445L03",
-          "type": "M",
-          "target": "Ellos van a",
-          "known": "They will",
-          "new": true,
-          "components": [
-            ["Ellos", "They"],
-            ["van", "go/will"],
-            ["a", "to"]
-          ]
-        },
-        {
-          "id": "S0445L04",
           "type": "M",
           "target": "esa maleta",
           "known": "that suitcase",
@@ -211,45 +207,59 @@
             ["esa", "that"],
             ["maleta", "suitcase"]
           ]
+        },
+        {
+          "id": "S0445L04",
+          "type": "M",
+          "target": "llevar esa maleta",
+          "known": "to carry that suitcase",
+          "new": true,
+          "components": [
+            ["llevar", "to carry"],
+            ["esa", "that"],
+            ["maleta", "suitcase"]
+          ]
+        },
+        {
+          "id": "S0445L05",
+          "type": "M",
+          "target": "poder llevar",
+          "known": "be able to carry",
+          "new": true,
+          "components": [
+            ["poder", "be able"],
+            ["llevar", "to carry"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0446",
-      "seed_pair": [
-        "They won't be able to break that window.",
-        "Ellos no van a poder romper esa ventana."
-      ],
+      "seed_pair": ["They won't be able to break that window.", "Ellos no van a poder romper esa ventana."],
+      "extraction_notes": "Negative construction: 'no van a poder'. Created similar overlaps as S0445 for consistency and recombination power.",
       "legos": [
         {
           "id": "S0446L01",
-          "type": "A",
-          "target": "poder",
-          "known": "be able to",
-          "new": true
+          "type": "M",
+          "target": "no van a poder",
+          "known": "won't be able to",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["van", "will/are going"],
+            ["a", "to"],
+            ["poder", "be able"]
+          ]
         },
         {
           "id": "S0446L02",
           "type": "A",
           "target": "romper",
-          "known": "break",
+          "known": "to break",
           "new": true
         },
         {
           "id": "S0446L03",
-          "type": "M",
-          "target": "Ellos no van a",
-          "known": "They won't",
-          "new": true,
-          "components": [
-            ["Ellos", "They"],
-            ["no", "not"],
-            ["van", "go/will"],
-            ["a", "to"]
-          ]
-        },
-        {
-          "id": "S0446L04",
           "type": "M",
           "target": "esa ventana",
           "known": "that window",
@@ -258,212 +268,235 @@
             ["esa", "that"],
             ["ventana", "window"]
           ]
+        },
+        {
+          "id": "S0446L04",
+          "type": "M",
+          "target": "romper esa ventana",
+          "known": "to break that window",
+          "new": true,
+          "components": [
+            ["romper", "to break"],
+            ["esa", "that"],
+            ["ventana", "window"]
+          ]
+        },
+        {
+          "id": "S0446L05",
+          "type": "M",
+          "target": "poder romper",
+          "known": "be able to break",
+          "new": true,
+          "components": [
+            ["poder", "be able"],
+            ["romper", "to break"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0447",
-      "seed_pair": [
-        "Will they be able to drive us home after the meal?",
-        "¿Van a poder llevarnos a casa después de la comida?"
-      ],
+      "seed_pair": ["Will they be able to drive us home after the meal?", "¿Van a poder llevarnos a casa después de la comida?"],
+      "extraction_notes": "Key pattern: 'llevarnos' (infinitive + attached pronoun 'nos'). 'a casa' = 'home' (literally 'to house'). Created overlap 'poder llevarnos'.",
       "legos": [
         {
           "id": "S0447L01",
-          "type": "A",
-          "target": "poder",
-          "known": "be able to",
-          "new": true
+          "type": "M",
+          "target": "van a poder",
+          "known": "will they be able to",
+          "new": true,
+          "components": [
+            ["van", "will/are going"],
+            ["a", "to"],
+            ["poder", "be able"]
+          ]
         },
         {
           "id": "S0447L02",
           "type": "M",
-          "target": "Van a",
-          "known": "Will they",
+          "target": "llevarnos a casa",
+          "known": "to drive us home",
           "new": true,
           "components": [
-            ["Van", "they will"],
-            ["a", "to"]
+            ["llevarnos", "to take/drive us"],
+            ["a", "to"],
+            ["casa", "home/house"]
           ]
         },
         {
           "id": "S0447L03",
           "type": "M",
-          "target": "llevarnos",
-          "known": "drive us",
+          "target": "después de la comida",
+          "known": "after the meal",
           "new": true,
           "components": [
-            ["llevar", "to drive"],
-            ["nos", "us"]
+            ["después", "after"],
+            ["de", "of"],
+            ["la", "the"],
+            ["comida", "meal"]
           ]
         },
         {
           "id": "S0447L04",
           "type": "M",
-          "target": "a casa",
-          "known": "home",
+          "target": "poder llevarnos",
+          "known": "be able to drive us",
           "new": true,
           "components": [
-            ["a", "to"],
-            ["casa", "house/home"]
-          ]
-        },
-        {
-          "id": "S0447L05",
-          "type": "M",
-          "target": "después de",
-          "known": "after",
-          "new": true,
-          "components": [
-            ["después", "after"],
-            ["de", "of"]
-          ]
-        },
-        {
-          "id": "S0447L06",
-          "type": "M",
-          "target": "la comida",
-          "known": "the meal",
-          "new": true,
-          "components": [
-            ["la", "the"],
-            ["comida", "meal"]
+            ["poder", "be able"],
+            ["llevarnos", "to drive/take us"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0448",
-      "seed_pair": [
-        "Yes they'll be happy to help.",
-        "Sí van a estar contentos de ayudar."
-      ],
+      "seed_pair": ["Yes they'll be happy to help.", "Sí van a estar contentos de ayudar."],
+      "extraction_notes": "Pattern: adjective + 'de' + infinitive ('contentos de ayudar' = 'happy to help'). Created overlaps for pedagogical recombination.",
       "legos": [
         {
           "id": "S0448L01",
           "type": "A",
-          "target": "Sí",
-          "known": "Yes",
+          "target": "sí",
+          "known": "yes",
           "new": true
         },
         {
           "id": "S0448L02",
-          "type": "A",
-          "target": "estar",
-          "known": "be",
-          "new": true
+          "type": "M",
+          "target": "van a estar contentos de",
+          "known": "they'll be happy to",
+          "new": true,
+          "components": [
+            ["van", "they'll/are going"],
+            ["a", "to"],
+            ["estar", "be"],
+            ["contentos", "happy"],
+            ["de", "to"]
+          ]
         },
         {
           "id": "S0448L03",
           "type": "A",
-          "target": "contentos",
-          "known": "happy",
+          "target": "ayudar",
+          "known": "to help",
           "new": true
         },
         {
           "id": "S0448L04",
           "type": "M",
-          "target": "van a",
-          "known": "they'll",
+          "target": "estar contentos de",
+          "known": "be happy to",
           "new": true,
           "components": [
-            ["van", "they go/will"],
-            ["a", "to"]
+            ["estar", "be"],
+            ["contentos", "happy"],
+            ["de", "to"]
           ]
         },
         {
           "id": "S0448L05",
           "type": "M",
-          "target": "de ayudar",
-          "known": "to help",
+          "target": "contentos de ayudar",
+          "known": "happy to help",
           "new": true,
           "components": [
+            ["contentos", "happy"],
             ["de", "to"],
-            ["ayudar", "help"]
+            ["ayudar", "to help/help"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0449",
-      "seed_pair": [
-        "They said that they were almost ready.",
-        "Ellos dijeron que estaban casi preparados."
-      ],
+      "seed_pair": ["They said that they were almost ready.", "Ellos dijeron que estaban casi preparados."],
+      "extraction_notes": "Subordinate clause with 'que' (that). Created overlap 'dijeron que estaban' showing reported speech pattern.",
       "legos": [
         {
           "id": "S0449L01",
           "type": "A",
-          "target": "que",
-          "known": "that",
+          "target": "dijeron",
+          "known": "they said",
           "new": true
         },
         {
           "id": "S0449L02",
-          "type": "A",
-          "target": "estaban",
-          "known": "they were",
-          "new": true
+          "type": "M",
+          "target": "dijeron que",
+          "known": "they said that",
+          "new": true,
+          "components": [
+            ["dijeron", "they said"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0449L03",
-          "type": "A",
-          "target": "casi",
-          "known": "almost",
-          "new": true
+          "type": "M",
+          "target": "estaban casi preparados",
+          "known": "they were almost ready",
+          "new": true,
+          "components": [
+            ["estaban", "they were"],
+            ["casi", "almost"],
+            ["preparados", "ready"]
+          ]
         },
         {
           "id": "S0449L04",
-          "type": "A",
-          "target": "preparados",
-          "known": "ready",
-          "new": true
+          "type": "M",
+          "target": "casi preparados",
+          "known": "almost ready",
+          "new": true,
+          "components": [
+            ["casi", "almost"],
+            ["preparados", "ready"]
+          ]
         },
         {
           "id": "S0449L05",
           "type": "M",
-          "target": "Ellos dijeron",
-          "known": "They said",
+          "target": "dijeron que estaban",
+          "known": "they said that they were",
           "new": true,
           "components": [
-            ["Ellos", "They"],
-            ["dijeron", "said"]
+            ["dijeron", "they said"],
+            ["que", "that"],
+            ["estaban", "they were"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0450",
-      "seed_pair": [
-        "No they have to catch the train themselves.",
-        "No ellos tienen que tomar el tren ellos mismos."
-      ],
+      "seed_pair": ["No they have to catch the train themselves.", "No ellos tienen que tomar el tren ellos mismos."],
+      "extraction_notes": "Idiomatic: 'tomar el tren' = 'catch/take the train'. 'ellos mismos' = 'themselves' (emphatic pronoun). Created overlap 'tienen que tomar el tren'.",
       "legos": [
         {
           "id": "S0450L01",
           "type": "A",
-          "target": "No",
-          "known": "No",
+          "target": "no",
+          "known": "no",
           "new": true
         },
         {
           "id": "S0450L02",
-          "type": "A",
-          "target": "tomar",
-          "known": "catch",
-          "new": true
-        },
-        {
-          "id": "S0450L03",
           "type": "M",
-          "target": "ellos tienen que",
+          "target": "tienen que",
           "known": "they have to",
           "new": true,
           "components": [
-            ["ellos", "they"],
-            ["tienen", "have"],
+            ["tienen", "they have"],
             ["que", "to"]
           ]
+        },
+        {
+          "id": "S0450L03",
+          "type": "A",
+          "target": "tomar",
+          "known": "to catch",
+          "new": true
         },
         {
           "id": "S0450L04",
@@ -479,12 +512,38 @@
         {
           "id": "S0450L05",
           "type": "M",
+          "target": "tomar el tren",
+          "known": "to catch the train",
+          "new": true,
+          "components": [
+            ["tomar", "to catch/take"],
+            ["el", "the"],
+            ["tren", "train"]
+          ]
+        },
+        {
+          "id": "S0450L06",
+          "type": "M",
           "target": "ellos mismos",
           "known": "themselves",
           "new": true,
           "components": [
             ["ellos", "they"],
-            ["mismos", "selves"]
+            ["mismos", "themselves/same"]
+          ]
+        },
+        {
+          "id": "S0450L07",
+          "type": "M",
+          "target": "tienen que tomar el tren",
+          "known": "have to catch the train",
+          "new": true,
+          "components": [
+            ["tienen", "they have"],
+            ["que", "to"],
+            ["tomar", "to catch"],
+            ["el", "the"],
+            ["tren", "train"]
           ]
         }
       ]
