@@ -1,0 +1,300 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0447",
+  "generation_stage": "PHRASE_GENERATION_COMPLETE",
+  "seed_pair": {
+    "target": "¿Van a poder llevarnos a casa después de la comida?",
+    "known": "Will they be able to drive us home after the meal?"
+  },
+  "recent_seed_pairs": {
+    "S0437": [
+      "Querían recaudar tanto como posible para caridad.",
+      "They wanted to raise as much as possible for charity."
+    ],
+    "S0438": [
+      "No querían decidir lo que debería hacer.",
+      "They didn't want to decide what he should do."
+    ],
+    "S0439": [
+      "No quieren morir.",
+      "They don't want to die."
+    ],
+    "S0440": [
+      "Quieren viajar mientras todavía son jóvenes.",
+      "They want to travel while they're still young."
+    ],
+    "S0441": [
+      "Un acercamiento.",
+      "An approach."
+    ],
+    "S0442": [
+      "¿Querían desarrollar un acercamiento nuevo?",
+      "Did they want to develop a new approach?"
+    ],
+    "S0443": [
+      "No querían continuar haciéndolo de la misma manera.",
+      "No they wanted to keep doing it the same way."
+    ],
+    "S0444": [
+      "Sí pensaban que podría hacerse más eficientemente.",
+      "Yes they thought it could be done more efficiently."
+    ],
+    "S0445": [
+      "Ellos van a poder llevar esa maleta.",
+      "They will be able to carry that suitcase."
+    ],
+    "S0446": [
+      "Ellos no van a poder romper esa ventana.",
+      "They won't be able to break that window."
+    ]
+  },
+  "legos": {
+    "S0447L01": {
+      "lego": [
+        "will they be able to",
+        "van a poder"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["will they be able to", "van a poder", null, 1],
+        ["yes will they be able to", "sí van a poder", null, 2],
+        ["will they be able to travel", "van a poder viajar", null, 3],
+        ["no will they be able to", "no van a poder", null, 2],
+        ["will they be able to carry that suitcase", "van a poder llevar esa maleta", null, 4],
+        ["yes will they be able to develop", "sí van a poder desarrollar", null, 3],
+        ["will they be able to break that window", "van a poder romper esa ventana", null, 4],
+        ["yes will they be able to carry that suitcase", "sí van a poder llevar esa maleta", null, 5],
+        ["will they be able to continue doing it", "van a poder continuar haciéndolo", null, 4],
+        ["no will they be able to break that window", "no van a poder romper esa ventana", null, 5],
+        ["will they be able to develop a new approach", "van a poder desarrollar un acercamiento nuevo", null, 6],
+        ["yes will they be able to do it more efficiently", "sí van a poder hacerse más eficientemente", null, 7],
+        ["will they be able to travel while they are still young", "van a poder viajar mientras todavía son jóvenes", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0447L01",
+        "seed_context": {
+          "target": "¿Van a poder llevarnos a casa después de la comida?",
+          "known": "Will they be able to drive us home after the meal?"
+        }
+      },
+      "components": [
+        [
+          "van",
+          "will/are going"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "poder",
+          "be able"
+        ]
+      ]
+    },
+    "S0447L02": {
+      "lego": [
+        "to drive us home",
+        "llevarnos a casa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "will they be able to",
+          "van a poder"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["to drive us home", "llevarnos a casa", null, 1],
+        ["will they be able to drive us home", "van a poder llevarnos a casa", null, 2],
+        ["yes to drive us home", "sí llevarnos a casa", null, 2],
+        ["they wanted to drive us home", "querían llevarnos a casa", null, 3],
+        ["no will they be able to drive us home", "no van a poder llevarnos a casa", null, 3],
+        ["yes will they be able to drive us home", "sí van a poder llevarnos a casa", null, 3],
+        ["they thought that they could drive us home", "pensaban que podrían llevarnos a casa", null, 5],
+        ["no they wanted to drive us home", "no querían llevarnos a casa", null, 4],
+        ["will they be able to drive us home still", "van a poder llevarnos a casa todavía", null, 5],
+        ["yes they wanted to drive us home while young", "sí querían llevarnos a casa mientras jóvenes", null, 6],
+        ["will they be able to drive us home while they are young", "van a poder llevarnos a casa mientras son jóvenes", null, 7],
+        ["no they thought that they could drive us home", "no pensaban que podrían llevarnos a casa", null, 6],
+        ["yes will they be able to drive us home while they are still young", "sí van a poder llevarnos a casa mientras todavía son jóvenes", null, 9]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 3,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0447L02",
+        "seed_context": {
+          "target": "¿Van a poder llevarnos a casa después de la comida?",
+          "known": "Will they be able to drive us home after the meal?"
+        }
+      },
+      "components": [
+        [
+          "llevarnos",
+          "to take/drive us"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "casa",
+          "home/house"
+        ]
+      ]
+    },
+    "S0447L03": {
+      "lego": [
+        "after the meal",
+        "después de la comida"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "will they be able to",
+          "van a poder"
+        ],
+        [
+          "to drive us home",
+          "llevarnos a casa"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["after the meal", "después de la comida", null, 1],
+        ["to drive us home after the meal", "llevarnos a casa después de la comida", null, 2],
+        ["yes after the meal", "sí después de la comida", null, 2],
+        ["will they be able to drive us home after the meal", "van a poder llevarnos a casa después de la comida", null, 3],
+        ["they wanted after the meal", "querían después de la comida", null, 3],
+        ["no after the meal", "no después de la comida", null, 2],
+        ["yes will they be able to drive us home after the meal", "sí van a poder llevarnos a casa después de la comida", null, 4],
+        ["they wanted to drive us home after the meal", "querían llevarnos a casa después de la comida", null, 4],
+        ["no will they be able to drive us home after the meal", "no van a poder llevarnos a casa después de la comida", null, 5],
+        ["they thought that they could drive us home after the meal", "pensaban que podrían llevarnos a casa después de la comida", null, 6],
+        ["yes they wanted to drive us home after the meal", "sí querían llevarnos a casa después de la comida", null, 5],
+        ["will they be able to drive us home after the meal still", "van a poder llevarnos a casa después de la comida todavía", null, 6],
+        ["yes they wanted to drive us home after the meal while young", "sí querían llevarnos a casa después de la comida mientras jóvenes", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0447L03",
+        "seed_context": {
+          "target": "¿Van a poder llevarnos a casa después de la comida?",
+          "known": "Will they be able to drive us home after the meal?"
+        }
+      },
+      "components": [
+        [
+          "después",
+          "after"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "comida",
+          "meal"
+        ]
+      ]
+    },
+    "S0447L04": {
+      "lego": [
+        "be able to drive us",
+        "poder llevarnos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "will they be able to",
+          "van a poder"
+        ],
+        [
+          "to drive us home",
+          "llevarnos a casa"
+        ],
+        [
+          "after the meal",
+          "después de la comida"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["be able to drive us", "poder llevarnos", null, 1],
+        ["be able to drive us home", "poder llevarnos a casa", null, 2],
+        ["yes be able to drive us", "sí poder llevarnos", null, 2],
+        ["will they be able to drive us home", "van a poder llevarnos a casa", null, 3],
+        ["be able to drive us home after the meal", "poder llevarnos a casa después de la comida", null, 3],
+        ["no be able to drive us home", "no poder llevarnos a casa", null, 3],
+        ["yes will they be able to drive us home", "sí van a poder llevarnos a casa", null, 4],
+        ["they wanted to be able to drive us home", "querían poder llevarnos a casa", null, 4],
+        ["will they be able to drive us home after the meal", "van a poder llevarnos a casa después de la comida", null, 4],
+        ["yes they wanted to be able to drive us home", "sí querían poder llevarnos a casa", null, 5],
+        ["no will they be able to drive us home after the meal", "no van a poder llevarnos a casa después de la comida", null, 5],
+        ["yes will they be able to drive us home after the meal still", "sí van a poder llevarnos a casa después de la comida todavía", null, 7],
+        ["Will they be able to drive us home after the meal?", "¿Van a poder llevarnos a casa después de la comida?", null, 5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 4,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0447L04",
+        "seed_context": {
+          "target": "¿Van a poder llevarnos a casa después de la comida?",
+          "known": "Will they be able to drive us home after the meal?"
+        }
+      },
+      "components": [
+        [
+          "poder",
+          "be able"
+        ],
+        [
+          "llevarnos",
+          "to drive/take us"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0447.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

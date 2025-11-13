@@ -1,0 +1,346 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0449",
+  "generation_stage": "PHRASE_GENERATION_COMPLETE",
+  "seed_pair": {
+    "target": "Ellos dijeron que estaban casi preparados.",
+    "known": "They said that they were almost ready."
+  },
+  "recent_seed_pairs": {
+    "S0439": [
+      "No quieren morir.",
+      "They don't want to die."
+    ],
+    "S0440": [
+      "Quieren viajar mientras todavía son jóvenes.",
+      "They want to travel while they're still young."
+    ],
+    "S0441": [
+      "Un acercamiento.",
+      "An approach."
+    ],
+    "S0442": [
+      "¿Querían desarrollar un acercamiento nuevo?",
+      "Did they want to develop a new approach?"
+    ],
+    "S0443": [
+      "No querían continuar haciéndolo de la misma manera.",
+      "No they wanted to keep doing it the same way."
+    ],
+    "S0444": [
+      "Sí pensaban que podría hacerse más eficientemente.",
+      "Yes they thought it could be done more efficiently."
+    ],
+    "S0445": [
+      "Ellos van a poder llevar esa maleta.",
+      "They will be able to carry that suitcase."
+    ],
+    "S0446": [
+      "Ellos no van a poder romper esa ventana.",
+      "They won't be able to break that window."
+    ],
+    "S0447": [
+      "¿Van a poder llevarnos a casa después de la comida?",
+      "Will they be able to drive us home after the meal?"
+    ],
+    "S0448": [
+      "Sí van a estar contentos de ayudar.",
+      "Yes they'll be happy to help."
+    ]
+  },
+  "legos": {
+    "S0449L01": {
+      "lego": [
+        "they said",
+        "dijeron"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["they said", "dijeron", null, 1],
+        ["yes they said", "sí dijeron", null, 2],
+        ["no they said", "no dijeron", null, 2],
+        ["they said they wanted", "dijeron querían", null, 3],
+        ["they said they will be able to", "dijeron van a poder", null, 3],
+        ["yes they said they wanted to travel", "sí dijeron querían viajar", null, 5],
+        ["they said they won't be able to", "dijeron no van a poder", null, 4],
+        ["no they said they wanted to develop", "no dijeron querían desarrollar", null, 5],
+        ["they said they thought that it could be done", "dijeron pensaban que podría hacerse", null, 6],
+        ["yes they said they will be able to carry that suitcase", "sí dijeron van a poder llevar esa maleta", null, 7],
+        ["they said they'll be happy to help", "dijeron van a estar contentos de ayudar", null, 6],
+        ["no they said they won't be able to break that window", "no dijeron no van a poder romper esa ventana", null, 8],
+        ["yes they said they wanted to continue doing it the same way", "sí dijeron querían continuar haciéndolo de la misma manera", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0449L01",
+        "seed_context": {
+          "target": "Ellos dijeron que estaban casi preparados.",
+          "known": "They said that they were almost ready."
+        }
+      }
+    },
+    "S0449L02": {
+      "lego": [
+        "they said that",
+        "dijeron que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they said",
+          "dijeron"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["they said that", "dijeron que", null, 1],
+        ["yes they said that", "sí dijeron que", null, 2],
+        ["no they said that", "no dijeron que", null, 2],
+        ["they said that they wanted", "dijeron que querían", null, 3],
+        ["they said that they will be able to", "dijeron que van a poder", null, 4],
+        ["yes they said that they wanted to travel", "sí dijeron que querían viajar", null, 5],
+        ["they said that they won't be able to", "dijeron que no van a poder", null, 5],
+        ["no they said that they wanted to develop", "no dijeron que querían desarrollar", null, 6],
+        ["they said that they thought it could be done", "dijeron que pensaban podría hacerse", null, 6],
+        ["yes they said that they will be able to carry that suitcase", "sí dijeron que van a poder llevar esa maleta", null, 7],
+        ["they said that they'll be happy to help", "dijeron que van a estar contentos de ayudar", null, 6],
+        ["no they said that they won't be able to break that window", "no dijeron que no van a poder romper esa ventana", null, 8],
+        ["yes they said that they wanted to continue doing it the same way", "sí dijeron que querían continuar haciéndolo de la misma manera", null, 9]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 1,
+        "longer_4_5": 3,
+        "long_6_plus": 6
+      },
+      "_metadata": {
+        "lego_id": "S0449L02",
+        "seed_context": {
+          "target": "Ellos dijeron que estaban casi preparados.",
+          "known": "They said that they were almost ready."
+        }
+      },
+      "components": [
+        [
+          "dijeron",
+          "they said"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0449L03": {
+      "lego": [
+        "they were almost ready",
+        "estaban casi preparados"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they said",
+          "dijeron"
+        ],
+        [
+          "they said that",
+          "dijeron que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["they were almost ready", "estaban casi preparados", null, 1],
+        ["yes they were almost ready", "sí estaban casi preparados", null, 2],
+        ["they said that they were almost ready", "dijeron que estaban casi preparados", null, 3],
+        ["no they were almost ready", "no estaban casi preparados", null, 2],
+        ["yes they said that they were almost ready", "sí dijeron que estaban casi preparados", null, 4],
+        ["they were almost ready but", "estaban casi preparados pero", null, 4],
+        ["they thought that they were almost ready", "pensaban que estaban casi preparados", null, 5],
+        ["no they said that they were almost ready", "no dijeron que estaban casi preparados", null, 5],
+        ["they were almost ready while they are young", "estaban casi preparados mientras son jóvenes", null, 6],
+        ["yes they thought that they were almost ready", "sí pensaban que estaban casi preparados", null, 6],
+        ["they said that they were almost ready still", "dijeron que estaban casi preparados todavía", null, 6],
+        ["no they were almost ready to continue doing it", "no estaban casi preparados continuar haciéndolo", null, 7],
+        ["yes they said that they were almost ready while they are young", "sí dijeron que estaban casi preparados mientras son jóvenes", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 1,
+        "longer_4_5": 4,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0449L03",
+        "seed_context": {
+          "target": "Ellos dijeron que estaban casi preparados.",
+          "known": "They said that they were almost ready."
+        }
+      },
+      "components": [
+        [
+          "estaban",
+          "they were"
+        ],
+        [
+          "casi",
+          "almost"
+        ],
+        [
+          "preparados",
+          "ready"
+        ]
+      ]
+    },
+    "S0449L04": {
+      "lego": [
+        "almost ready",
+        "casi preparados"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they said",
+          "dijeron"
+        ],
+        [
+          "they said that",
+          "dijeron que"
+        ],
+        [
+          "they were almost ready",
+          "estaban casi preparados"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["almost ready", "casi preparados", null, 1],
+        ["they were almost ready", "estaban casi preparados", null, 2],
+        ["yes almost ready", "sí casi preparados", null, 2],
+        ["they said that they were almost ready", "dijeron que estaban casi preparados", null, 3],
+        ["no almost ready", "no casi preparados", null, 2],
+        ["yes they were almost ready", "sí estaban casi preparados", null, 3],
+        ["they thought that they were almost ready", "pensaban que estaban casi preparados", null, 4],
+        ["yes they said that they were almost ready", "sí dijeron que estaban casi preparados", null, 4],
+        ["they were almost ready still", "estaban casi preparados todavía", null, 5],
+        ["no they said that they were almost ready", "no dijeron que estaban casi preparados", null, 5],
+        ["they were almost ready while they are young", "estaban casi preparados mientras son jóvenes", null, 6],
+        ["yes they thought that they were almost ready still", "sí pensaban que estaban casi preparados todavía", null, 7],
+        ["yes they said that they were almost ready while they are young", "sí dijeron que estaban casi preparados mientras son jóvenes", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0449L04",
+        "seed_context": {
+          "target": "Ellos dijeron que estaban casi preparados.",
+          "known": "They said that they were almost ready."
+        }
+      },
+      "components": [
+        [
+          "casi",
+          "almost"
+        ],
+        [
+          "preparados",
+          "ready"
+        ]
+      ]
+    },
+    "S0449L05": {
+      "lego": [
+        "they said that they were",
+        "dijeron que estaban"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they said",
+          "dijeron"
+        ],
+        [
+          "they said that",
+          "dijeron que"
+        ],
+        [
+          "they were almost ready",
+          "estaban casi preparados"
+        ],
+        [
+          "almost ready",
+          "casi preparados"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["they said that they were", "dijeron que estaban", null, 1],
+        ["they said that they were almost ready", "dijeron que estaban casi preparados", null, 2],
+        ["yes they said that they were", "sí dijeron que estaban", null, 2],
+        ["no they said that they were", "no dijeron que estaban", null, 3],
+        ["yes they said that they were almost ready", "sí dijeron que estaban casi preparados", null, 3],
+        ["they said that they were almost ready but", "dijeron que estaban casi preparados pero", null, 4],
+        ["they said that they were almost ready still", "dijeron que estaban casi preparados todavía", null, 5],
+        ["no they said that they were almost ready", "no dijeron que estaban casi preparados", null, 4],
+        ["yes they said that they were almost ready still", "sí dijeron que estaban casi preparados todavía", null, 6],
+        ["they said that they were almost ready while young", "dijeron que estaban casi preparados mientras jóvenes", null, 6],
+        ["no they said that they were almost ready but yes", "no dijeron que estaban casi preparados pero sí", null, 7],
+        ["yes they said that they were almost ready while they are young", "sí dijeron que estaban casi preparados mientras son jóvenes", null, 8],
+        ["They said that they were almost ready.", "Ellos dijeron que estaban casi preparados.", null, 5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0449L05",
+        "seed_context": {
+          "target": "Ellos dijeron que estaban casi preparados.",
+          "known": "They said that they were almost ready."
+        }
+      },
+      "components": [
+        [
+          "dijeron",
+          "they said"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "estaban",
+          "they were"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0449.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0443",
+  "generation_stage": "PHRASE_GENERATION_COMPLETE",
+  "seed_pair": {
+    "target": "No querían continuar haciéndolo de la misma manera.",
+    "known": "No they wanted to keep doing it the same way."
+  },
+  "recent_seed_pairs": {
+    "S0433": [
+      "No pudieron descubrir cuándo empezó la película.",
+      "They couldn't find out when the film started."
+    ],
+    "S0434": [
+      "¿Podrían reducir el número de estudiantes que toman?",
+      "Could they cut the number of students they take?"
+    ],
+    "S0435": [
+      "Sí podrían si quisieran.",
+      "Yes they could if they wanted to."
+    ],
+    "S0436": [
+      "No hay un número mínimo que necesitan.",
+      "No there's a minimum number they need."
+    ],
+    "S0437": [
+      "Querían recaudar tanto como posible para caridad.",
+      "They wanted to raise as much as possible for charity."
+    ],
+    "S0438": [
+      "No querían decidir lo que debería hacer.",
+      "They didn't want to decide what he should do."
+    ],
+    "S0439": [
+      "No quieren morir.",
+      "They don't want to die."
+    ],
+    "S0440": [
+      "Quieren viajar mientras todavía son jóvenes.",
+      "They want to travel while they're still young."
+    ],
+    "S0441": [
+      "Un acercamiento.",
+      "An approach."
+    ],
+    "S0442": [
+      "¿Querían desarrollar un acercamiento nuevo?",
+      "Did they want to develop a new approach?"
+    ]
+  },
+  "legos": {
+    "S0443L01": {
+      "lego": [
+        "no",
+        "no"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["no", "no", null, 1],
+        ["no they wanted", "no querían", null, 2],
+        ["no they wanted to travel", "no querían viajar", null, 3],
+        ["no they could mean", "no podrían significar", null, 3],
+        ["no they wanted to develop an approach", "no querían desarrollar un acercamiento", null, 4],
+        ["no there is a minimum number", "no hay un número mínimo", null, 5],
+        ["no they could reduce the number", "no podrían reducir el número", null, 5],
+        ["no they wanted to discover when it started", "no querían descubrir cuándo empezó", null, 6],
+        ["no they could discover when the film started", "no podrían descubrir cuándo empezó la película", null, 7],
+        ["no they wanted to raise as much as possible", "no querían recaudar tanto como posible", null, 7],
+        ["no they wanted to decide what he should do", "no querían decidir lo que debería hacer", null, 8],
+        ["no they wanted to develop a new approach", "no querían desarrollar un acercamiento nuevo", null, 6],
+        ["no they wanted to travel while they are still young", "no querían viajar mientras todavía son jóvenes", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 7
+      },
+      "_metadata": {
+        "lego_id": "S0443L01",
+        "seed_context": {
+          "target": "No querían continuar haciéndolo de la misma manera.",
+          "known": "No they wanted to keep doing it the same way."
+        }
+      }
+    },
+    "S0443L02": {
+      "lego": [
+        "they wanted",
+        "querían"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["they wanted", "querían", null, 1],
+        ["no they wanted", "no querían", null, 2],
+        ["they wanted to travel", "querían viajar", null, 3],
+        ["yes they wanted to develop", "sí querían desarrollar", null, 3],
+        ["they wanted to develop an approach", "querían desarrollar un acercamiento", null, 4],
+        ["they wanted to discover when", "querían descubrir cuándo", null, 4],
+        ["no they wanted to reduce the number", "no querían reducir el número", null, 5],
+        ["they wanted to discover when the film started", "querían descubrir cuándo empezó la película", null, 6],
+        ["they wanted to raise as much as possible", "querían recaudar tanto como posible", null, 6],
+        ["no they wanted to decide what he should do", "no querían decidir lo que debería hacer", null, 8],
+        ["they wanted to develop a new approach while young", "querían desarrollar un acercamiento nuevo mientras jóvenes", null, 7],
+        ["yes they wanted to travel while they are still young", "sí querían viajar mientras todavía son jóvenes", null, 8],
+        ["they wanted to raise as much as possible for charity", "querían recaudar tanto como posible para caridad", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 6
+      },
+      "_metadata": {
+        "lego_id": "S0443L02",
+        "seed_context": {
+          "target": "No querían continuar haciéndolo de la misma manera.",
+          "known": "No they wanted to keep doing it the same way."
+        }
+      }
+    },
+    "S0443L03": {
+      "lego": [
+        "to keep doing it",
+        "continuar haciéndolo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "they wanted",
+          "querían"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["to keep doing it", "continuar haciéndolo", null, 1],
+        ["they wanted to keep doing it", "querían continuar haciéndolo", null, 2],
+        ["no they wanted to keep doing it", "no querían continuar haciéndolo", null, 3],
+        ["yes they could keep doing it", "sí podrían continuar haciéndolo", null, 3],
+        ["they wanted to keep doing it but", "querían continuar haciéndolo pero", null, 4],
+        ["no they wanted to keep doing it still", "no querían continuar haciéndolo todavía", null, 5],
+        ["they could keep doing it while young", "podrían continuar haciéndolo mientras jóvenes", null, 5],
+        ["yes they wanted to keep doing it while young", "sí querían continuar haciéndolo mientras jóvenes", null, 6],
+        ["they wanted to keep doing it while they are young", "querían continuar haciéndolo mientras son jóvenes", null, 7],
+        ["no they wanted to keep doing it but yes", "no querían continuar haciéndolo pero sí", null, 6],
+        ["yes they wanted to keep doing it as much as possible", "sí querían continuar haciéndolo tanto como posible", null, 7],
+        ["they wanted to keep doing it while they are still young", "querían continuar haciéndolo mientras todavía son jóvenes", null, 8],
+        ["no they could keep doing it if they wanted to", "no podrían continuar haciéndolo si quisieran", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 6
+      },
+      "_metadata": {
+        "lego_id": "S0443L03",
+        "seed_context": {
+          "target": "No querían continuar haciéndolo de la misma manera.",
+          "known": "No they wanted to keep doing it the same way."
+        }
+      },
+      "components": [
+        [
+          "continuar",
+          "to keep/continue"
+        ],
+        [
+          "haciéndolo",
+          "doing it"
+        ]
+      ]
+    },
+    "S0443L04": {
+      "lego": [
+        "the same way",
+        "de la misma manera"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "they wanted",
+          "querían"
+        ],
+        [
+          "to keep doing it",
+          "continuar haciéndolo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["the same way", "de la misma manera", null, 1],
+        ["to keep doing it the same way", "continuar haciéndolo de la misma manera", null, 2],
+        ["they wanted to keep doing it the same way", "querían continuar haciéndolo de la misma manera", null, 3],
+        ["yes to keep doing it the same way", "sí continuar haciéndolo de la misma manera", null, 3],
+        ["no they wanted to keep doing it the same way", "no querían continuar haciéndolo de la misma manera", null, 4],
+        ["they could keep doing it the same way", "podrían continuar haciéndolo de la misma manera", null, 4],
+        ["yes they wanted to keep doing it the same way", "sí querían continuar haciéndolo de la misma manera", null, 4],
+        ["they wanted to keep doing it the same way still", "querían continuar haciéndolo de la misma manera todavía", null, 6],
+        ["yes they wanted to keep doing it the same way still", "sí querían continuar haciéndolo de la misma manera todavía", null, 7],
+        ["no they wanted to keep doing it the same way still", "no querían continuar haciéndolo de la misma manera todavía", null, 8],
+        ["they could keep doing it the same way while young", "podrían continuar haciéndolo de la misma manera mientras jóvenes", null, 7],
+        ["yes they wanted to keep doing it the same way while young", "sí querían continuar haciéndolo de la misma manera mientras jóvenes", null, 8],
+        ["No they wanted to keep doing it the same way.", "No querían continuar haciéndolo de la misma manera.", null, 5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 6
+      },
+      "_metadata": {
+        "lego_id": "S0443L04",
+        "seed_context": {
+          "target": "No querían continuar haciéndolo de la misma manera.",
+          "known": "No they wanted to keep doing it the same way."
+        }
+      },
+      "components": [
+        [
+          "de",
+          "of"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "misma",
+          "same"
+        ],
+        [
+          "manera",
+          "way"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0443.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}
