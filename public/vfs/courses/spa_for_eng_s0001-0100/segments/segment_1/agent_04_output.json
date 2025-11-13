@@ -1,12 +1,12 @@
 {
   "agent_id": "agent_04",
   "seed_range": "S0031-S0040",
-  "extracted_at": "2025-11-12T22:00:00Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0031",
-      "seed_pair": ["Querías hablar conmigo esta noche.", "You wanted to speak with me tonight."],
+      "seed_pair": ["You wanted to speak with me tonight.", "Querías hablar conmigo esta noche."],
       "legos": [
         {
           "id": "S0031L01",
@@ -17,20 +17,42 @@
         },
         {
           "id": "S0031L02",
+          "type": "M",
+          "target": "querías hablar",
+          "known": "you wanted to speak",
+          "new": true,
+          "components": [
+            ["querías", "you wanted"],
+            ["hablar", "to speak"]
+          ]
+        },
+        {
+          "id": "S0031L03",
           "type": "A",
           "target": "hablar",
           "known": "to speak",
           "new": true
         },
         {
-          "id": "S0031L03",
+          "id": "S0031L04",
+          "type": "M",
+          "target": "hablar conmigo",
+          "known": "to speak with me",
+          "new": true,
+          "components": [
+            ["hablar", "to speak"],
+            ["conmigo", "with me"]
+          ]
+        },
+        {
+          "id": "S0031L05",
           "type": "A",
           "target": "conmigo",
           "known": "with me",
           "new": true
         },
         {
-          "id": "S0031L04",
+          "id": "S0031L06",
           "type": "M",
           "target": "esta noche",
           "known": "tonight",
@@ -44,7 +66,7 @@
     },
     {
       "seed_id": "S0032",
-      "seed_pair": ["¿Querías mostrarme algo?", "Did you want to show me something?"],
+      "seed_pair": ["Did you want to show me something?", "¿Querías mostrarme algo?"],
       "legos": [
         {
           "id": "S0032L01",
@@ -55,13 +77,28 @@
         },
         {
           "id": "S0032L02",
-          "type": "A",
-          "target": "mostrarme",
-          "known": "to show me",
-          "new": true
+          "type": "M",
+          "target": "querías mostrarme",
+          "known": "did you want to show me",
+          "new": true,
+          "components": [
+            ["querías", "did you want"],
+            ["mostrarme", "to show me"]
+          ]
         },
         {
           "id": "S0032L03",
+          "type": "M",
+          "target": "mostrarme",
+          "known": "to show me",
+          "new": true,
+          "components": [
+            ["mostrar", "to show"],
+            ["me", "me"]
+          ]
+        },
+        {
+          "id": "S0032L04",
           "type": "A",
           "target": "algo",
           "known": "something",
@@ -71,17 +108,10 @@
     },
     {
       "seed_id": "S0033",
-      "seed_pair": ["¿Cuánto tiempo llevas aprendiendo español?", "How long have you been learning Spanish?"],
+      "seed_pair": ["How long have you been learning Spanish?", "¿Cuánto tiempo llevas aprendiendo español?"],
       "legos": [
         {
           "id": "S0033L01",
-          "type": "A",
-          "target": "español",
-          "known": "Spanish",
-          "new": true
-        },
-        {
-          "id": "S0033L02",
           "type": "M",
           "target": "cuánto tiempo",
           "known": "how long",
@@ -92,71 +122,102 @@
           ]
         },
         {
+          "id": "S0033L02",
+          "type": "M",
+          "target": "cuánto tiempo llevas",
+          "known": "how long have you been",
+          "new": true,
+          "components": [
+            ["cuánto", "how much"],
+            ["tiempo", "time"],
+            ["llevas", "you have been"]
+          ]
+        },
+        {
           "id": "S0033L03",
           "type": "M",
           "target": "llevas aprendiendo",
           "known": "have you been learning",
           "new": true,
           "components": [
-            ["llevas", "you carry/have been"],
+            ["llevas", "you have been"],
             ["aprendiendo", "learning"]
           ]
+        },
+        {
+          "id": "S0033L04",
+          "type": "M",
+          "target": "aprendiendo español",
+          "known": "learning Spanish",
+          "new": true,
+          "components": [
+            ["aprendiendo", "learning"],
+            ["español", "Spanish"]
+          ]
+        },
+        {
+          "id": "S0033L05",
+          "type": "A",
+          "target": "español",
+          "known": "Spanish",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0034",
-      "seed_pair": ["Él no quiere estar silencioso cuando otras personas están aquí.", "He doesn't want to be quiet when other people are here."],
+      "seed_pair": ["He doesn't want to be quiet when other people are here.", "Él no quiere estar silencioso cuando otras personas están aquí."],
       "legos": [
         {
           "id": "S0034L01",
           "type": "A",
-          "target": "estar",
-          "known": "to be",
+          "target": "él",
+          "known": "he",
           "new": true
         },
         {
           "id": "S0034L02",
-          "type": "A",
-          "target": "silencioso",
-          "known": "quiet",
-          "new": true
+          "type": "M",
+          "target": "no quiere",
+          "known": "doesn't want",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["quiere", "wants"]
+          ]
         },
         {
           "id": "S0034L03",
+          "type": "M",
+          "target": "no quiere estar",
+          "known": "doesn't want to be",
+          "new": true,
+          "components": [
+            ["no", "doesn't"],
+            ["quiere", "want"],
+            ["estar", "to be"]
+          ]
+        },
+        {
+          "id": "S0034L04",
+          "type": "M",
+          "target": "estar silencioso",
+          "known": "to be quiet",
+          "new": true,
+          "components": [
+            ["estar", "to be"],
+            ["silencioso", "quiet"]
+          ]
+        },
+        {
+          "id": "S0034L05",
           "type": "A",
           "target": "cuando",
           "known": "when",
           "new": true
         },
         {
-          "id": "S0034L04",
-          "type": "A",
-          "target": "están",
-          "known": "are",
-          "new": true
-        },
-        {
-          "id": "S0034L05",
-          "type": "A",
-          "target": "aquí",
-          "known": "here",
-          "new": true
-        },
-        {
           "id": "S0034L06",
-          "type": "M",
-          "target": "él no quiere",
-          "known": "he doesn't want",
-          "new": true,
-          "components": [
-            ["él", "he"],
-            ["no", "not/doesn't"],
-            ["quiere", "wants"]
-          ]
-        },
-        {
-          "id": "S0034L07",
           "type": "M",
           "target": "otras personas",
           "known": "other people",
@@ -165,41 +226,95 @@
             ["otras", "other"],
             ["personas", "people"]
           ]
+        },
+        {
+          "id": "S0034L07",
+          "type": "M",
+          "target": "están aquí",
+          "known": "are here",
+          "new": true,
+          "components": [
+            ["están", "are"],
+            ["aquí", "here"]
+          ]
+        },
+        {
+          "id": "S0034L08",
+          "type": "M",
+          "target": "cuando otras personas están aquí",
+          "known": "when other people are here",
+          "new": true,
+          "components": [
+            ["cuando", "when"],
+            ["otras", "other"],
+            ["personas", "people"],
+            ["están", "are"],
+            ["aquí", "here"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0035",
-      "seed_pair": ["Ella no quiere leer nada esta tarde.", "She doesn't want to read anything this afternoon."],
+      "seed_pair": ["She doesn't want to read anything this afternoon.", "Ella no quiere leer nada esta tarde."],
       "legos": [
         {
           "id": "S0035L01",
+          "type": "A",
+          "target": "ella",
+          "known": "she",
+          "new": true
+        },
+        {
+          "id": "S0035L02",
+          "type": "M",
+          "target": "no quiere",
+          "known": "doesn't want",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["quiere", "wants"]
+          ]
+        },
+        {
+          "id": "S0035L03",
+          "type": "M",
+          "target": "no quiere leer",
+          "known": "doesn't want to read",
+          "new": true,
+          "components": [
+            ["no", "doesn't"],
+            ["quiere", "want"],
+            ["leer", "to read"]
+          ]
+        },
+        {
+          "id": "S0035L04",
           "type": "A",
           "target": "leer",
           "known": "to read",
           "new": true
         },
         {
-          "id": "S0035L02",
+          "id": "S0035L05",
+          "type": "M",
+          "target": "leer nada",
+          "known": "to read anything",
+          "new": true,
+          "components": [
+            ["leer", "to read"],
+            ["nada", "anything/nothing"]
+          ]
+        },
+        {
+          "id": "S0035L06",
           "type": "A",
           "target": "nada",
           "known": "anything",
           "new": true
         },
         {
-          "id": "S0035L03",
-          "type": "M",
-          "target": "ella no quiere",
-          "known": "she doesn't want",
-          "new": true,
-          "components": [
-            ["ella", "she"],
-            ["no", "not/doesn't"],
-            ["quiere", "wants"]
-          ]
-        },
-        {
-          "id": "S0035L04",
+          "id": "S0035L07",
           "type": "M",
           "target": "esta tarde",
           "known": "this afternoon",
@@ -213,28 +328,52 @@
     },
     {
       "seed_id": "S0036",
-      "seed_pair": ["No queremos interrumpir la historia.", "We don't want to interrupt the story."],
+      "seed_pair": ["We don't want to interrupt the story.", "No queremos interrumpir la historia."],
       "legos": [
         {
           "id": "S0036L01",
+          "type": "M",
+          "target": "no queremos",
+          "known": "we don't want",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["queremos", "we want"]
+          ]
+        },
+        {
+          "id": "S0036L02",
+          "type": "M",
+          "target": "no queremos interrumpir",
+          "known": "we don't want to interrupt",
+          "new": true,
+          "components": [
+            ["no", "don't"],
+            ["queremos", "we want"],
+            ["interrumpir", "to interrupt"]
+          ]
+        },
+        {
+          "id": "S0036L03",
           "type": "A",
           "target": "interrumpir",
           "known": "to interrupt",
           "new": true
         },
         {
-          "id": "S0036L02",
+          "id": "S0036L04",
           "type": "M",
-          "target": "no queremos",
-          "known": "we don't want",
+          "target": "interrumpir la historia",
+          "known": "to interrupt the story",
           "new": true,
           "components": [
-            ["no", "not/don't"],
-            ["queremos", "we want"]
+            ["interrumpir", "to interrupt"],
+            ["la", "the"],
+            ["historia", "story"]
           ]
         },
         {
-          "id": "S0036L03",
+          "id": "S0036L05",
           "type": "M",
           "target": "la historia",
           "known": "the story",
@@ -248,31 +387,17 @@
     },
     {
       "seed_id": "S0037",
-      "seed_pair": ["Comencé a pensar sobre eso cuidadosamente el mes pasado.", "I started to think about it carefully last month."],
+      "seed_pair": ["I started to think about it carefully last month.", "Comencé a pensar sobre eso cuidadosamente el mes pasado."],
       "legos": [
         {
           "id": "S0037L01",
           "type": "A",
-          "target": "sobre",
-          "known": "about",
+          "target": "comencé",
+          "known": "I started",
           "new": true
         },
         {
           "id": "S0037L02",
-          "type": "A",
-          "target": "eso",
-          "known": "it",
-          "new": true
-        },
-        {
-          "id": "S0037L03",
-          "type": "A",
-          "target": "cuidadosamente",
-          "known": "carefully",
-          "new": true
-        },
-        {
-          "id": "S0037L04",
           "type": "M",
           "target": "comencé a pensar",
           "known": "I started to think",
@@ -284,7 +409,44 @@
           ]
         },
         {
+          "id": "S0037L03",
+          "type": "A",
+          "target": "pensar",
+          "known": "to think",
+          "new": true
+        },
+        {
+          "id": "S0037L04",
+          "type": "M",
+          "target": "pensar sobre eso",
+          "known": "to think about it",
+          "new": true,
+          "components": [
+            ["pensar", "to think"],
+            ["sobre", "about"],
+            ["eso", "it/that"]
+          ]
+        },
+        {
           "id": "S0037L05",
+          "type": "M",
+          "target": "sobre eso",
+          "known": "about it",
+          "new": true,
+          "components": [
+            ["sobre", "about"],
+            ["eso", "it/that"]
+          ]
+        },
+        {
+          "id": "S0037L06",
+          "type": "A",
+          "target": "cuidadosamente",
+          "known": "carefully",
+          "new": true
+        },
+        {
+          "id": "S0037L07",
           "type": "M",
           "target": "el mes pasado",
           "known": "last month",
@@ -299,28 +461,47 @@
     },
     {
       "seed_id": "S0038",
-      "seed_pair": ["Llevo aprendiendo aproximadamente una semana.", "I've been learning for about a week."],
+      "seed_pair": ["I've been learning for about a week.", "Llevo aprendiendo aproximadamente una semana."],
       "legos": [
         {
           "id": "S0038L01",
+          "type": "M",
+          "target": "llevo aprendiendo",
+          "known": "I've been learning",
+          "new": true,
+          "components": [
+            ["llevo", "I've been"],
+            ["aprendiendo", "learning"]
+          ]
+        },
+        {
+          "id": "S0038L02",
+          "type": "A",
+          "target": "aprendiendo",
+          "known": "learning",
+          "new": true
+        },
+        {
+          "id": "S0038L03",
           "type": "A",
           "target": "aproximadamente",
           "known": "about",
           "new": true
         },
         {
-          "id": "S0038L02",
+          "id": "S0038L04",
           "type": "M",
-          "target": "llevo aprendiendo",
-          "known": "I've been learning",
+          "target": "aproximadamente una semana",
+          "known": "about a week",
           "new": true,
           "components": [
-            ["llevo", "I carry/have been"],
-            ["aprendiendo", "learning"]
+            ["aproximadamente", "about/approximately"],
+            ["una", "a/one"],
+            ["semana", "week"]
           ]
         },
         {
-          "id": "S0038L03",
+          "id": "S0038L05",
           "type": "M",
           "target": "una semana",
           "known": "a week",
@@ -334,7 +515,7 @@
     },
     {
       "seed_id": "S0039",
-      "seed_pair": ["Pero estoy un poco cansado esta mañana.", "But I'm a little tired this morning."],
+      "seed_pair": ["But I'm a little tired this morning.", "Pero estoy un poco cansado esta mañana."],
       "legos": [
         {
           "id": "S0039L01",
@@ -345,18 +526,56 @@
         },
         {
           "id": "S0039L02",
+          "type": "A",
+          "target": "estoy",
+          "known": "I'm",
+          "new": true
+        },
+        {
+          "id": "S0039L03",
           "type": "M",
           "target": "estoy un poco cansado",
           "known": "I'm a little tired",
           "new": true,
           "components": [
-            ["estoy", "I am"],
-            ["un poco", "a little"],
+            ["estoy", "I'm"],
+            ["un", "a"],
+            ["poco", "little"],
             ["cansado", "tired"]
           ]
         },
         {
-          "id": "S0039L03",
+          "id": "S0039L04",
+          "type": "M",
+          "target": "un poco",
+          "known": "a little",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["poco", "little"]
+          ]
+        },
+        {
+          "id": "S0039L05",
+          "type": "M",
+          "target": "un poco cansado",
+          "known": "a little tired",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["poco", "little"],
+            ["cansado", "tired"]
+          ]
+        },
+        {
+          "id": "S0039L06",
+          "type": "A",
+          "target": "cansado",
+          "known": "tired",
+          "new": true
+        },
+        {
+          "id": "S0039L07",
           "type": "M",
           "target": "esta mañana",
           "known": "this morning",
@@ -370,7 +589,7 @@
     },
     {
       "seed_id": "S0040",
-      "seed_pair": ["¿Cómo te sientes en este momento?", "How do you feel at the moment?"],
+      "seed_pair": ["How do you feel at the moment?", "¿Cómo te sientes en este momento?"],
       "legos": [
         {
           "id": "S0040L01",
@@ -382,16 +601,28 @@
         {
           "id": "S0040L02",
           "type": "M",
-          "target": "te sientes",
-          "known": "do you feel",
+          "target": "cómo te sientes",
+          "known": "how do you feel",
           "new": true,
           "components": [
-            ["te", "yourself"],
-            ["sientes", "you feel"]
+            ["cómo", "how"],
+            ["te", "you"],
+            ["sientes", "feel"]
           ]
         },
         {
           "id": "S0040L03",
+          "type": "M",
+          "target": "te sientes",
+          "known": "you feel",
+          "new": true,
+          "components": [
+            ["te", "you/yourself"],
+            ["sientes", "feel"]
+          ]
+        },
+        {
+          "id": "S0040L04",
           "type": "M",
           "target": "en este momento",
           "known": "at the moment",
