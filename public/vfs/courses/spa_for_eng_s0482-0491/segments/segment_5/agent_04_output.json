@@ -1,0 +1,161 @@
+{
+  "agent_id": "agent_04",
+  "seed_range": "S0488-S0489",
+  "extracted_at": "2025-11-13T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0488",
+      "seed_pair": [
+        "It's on the other side of that yellow line.",
+        "Está al otro lado de esa línea amarilla."
+      ],
+      "legos": [
+        {
+          "id": "S0488L01",
+          "type": "M",
+          "target": "Está al otro lado de",
+          "known": "It's on the other side of",
+          "new": true,
+          "components": [
+            ["Está", "It's"],
+            ["al", "on/to the"],
+            ["otro", "other"],
+            ["lado", "side"],
+            ["de", "of"]
+          ]
+        },
+        {
+          "id": "S0488L02",
+          "type": "M",
+          "target": "al otro lado de",
+          "known": "on the other side of",
+          "new": true,
+          "components": [
+            ["al", "on/to the"],
+            ["otro", "other"],
+            ["lado", "side"],
+            ["de", "of"]
+          ]
+        },
+        {
+          "id": "S0488L03",
+          "type": "M",
+          "target": "esa línea amarilla",
+          "known": "that yellow line",
+          "new": true,
+          "components": [
+            ["esa", "that"],
+            ["línea", "line"],
+            ["amarilla", "yellow"]
+          ]
+        },
+        {
+          "id": "S0488L04",
+          "type": "M",
+          "target": "línea amarilla",
+          "known": "yellow line",
+          "new": true,
+          "components": [
+            ["línea", "line"],
+            ["amarilla", "yellow"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0489",
+      "seed_pair": [
+        "If you don't make me a strong cup of coffee right now.",
+        "Si no me haces una taza de café fuerte ahora mismo."
+      ],
+      "legos": [
+        {
+          "id": "S0489L01",
+          "type": "M",
+          "target": "Si no",
+          "known": "If not",
+          "new": true,
+          "components": [
+            ["Si", "If"],
+            ["no", "not"]
+          ]
+        },
+        {
+          "id": "S0489L02",
+          "type": "M",
+          "target": "Si no me haces",
+          "known": "If you don't make me",
+          "new": true,
+          "components": [
+            ["Si", "If"],
+            ["no", "don't"],
+            ["me", "me"],
+            ["haces", "make"]
+          ]
+        },
+        {
+          "id": "S0489L03",
+          "type": "M",
+          "target": "no me haces",
+          "known": "you don't make me",
+          "new": true,
+          "components": [
+            ["no", "don't"],
+            ["me", "me"],
+            ["haces", "make"]
+          ]
+        },
+        {
+          "id": "S0489L04",
+          "type": "M",
+          "target": "una taza de café fuerte",
+          "known": "a strong cup of coffee",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["taza", "cup"],
+            ["de", "of"],
+            ["café", "coffee"],
+            ["fuerte", "strong"]
+          ]
+        },
+        {
+          "id": "S0489L05",
+          "type": "M",
+          "target": "taza de café fuerte",
+          "known": "strong cup of coffee",
+          "new": true,
+          "components": [
+            ["taza", "cup"],
+            ["de", "of"],
+            ["café", "coffee"],
+            ["fuerte", "strong"]
+          ]
+        },
+        {
+          "id": "S0489L06",
+          "type": "M",
+          "target": "café fuerte",
+          "known": "strong coffee",
+          "new": true,
+          "components": [
+            ["café", "coffee"],
+            ["fuerte", "strong"]
+          ]
+        },
+        {
+          "id": "S0489L07",
+          "type": "M",
+          "target": "ahora mismo",
+          "known": "right now",
+          "new": true,
+          "components": [
+            ["ahora", "now"],
+            ["mismo", "right"]
+          ]
+        }
+      ]
+    }
+  ]
+}
