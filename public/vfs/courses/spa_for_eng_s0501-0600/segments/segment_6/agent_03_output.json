@@ -1,8 +1,8 @@
 {
   "agent_id": "agent_03",
   "seed_range": "S0521-S0530",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T02:50:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0521",
@@ -13,27 +13,6 @@
       "legos": [
         {
           "id": "S0521L01",
-          "type": "A",
-          "target": "necesitábamos",
-          "known": "we needed",
-          "new": true
-        },
-        {
-          "id": "S0521L02",
-          "type": "A",
-          "target": "quedarnos",
-          "known": "to stay",
-          "new": true
-        },
-        {
-          "id": "S0521L03",
-          "type": "A",
-          "target": "aquí",
-          "known": "here",
-          "new": true
-        },
-        {
-          "id": "S0521L04",
           "type": "M",
           "target": "tengo miedo",
           "known": "I'm afraid",
@@ -44,7 +23,7 @@
           ]
         },
         {
-          "id": "S0521L05",
+          "id": "S0521L02",
           "type": "M",
           "target": "de que olvides",
           "known": "that you'll forget",
@@ -52,18 +31,48 @@
           "components": [
             ["de", "of"],
             ["que", "that"],
-            ["olvides", "you forget"]
+            ["olvides", "you forget/you'll forget"]
           ]
         },
         {
-          "id": "S0521L06",
+          "id": "S0521L03",
           "type": "M",
           "target": "por qué",
           "known": "why",
           "new": true,
           "components": [
-            ["por", "for"],
+            ["por", "for/by"],
             ["qué", "what"]
+          ]
+        },
+        {
+          "id": "S0521L04",
+          "type": "A",
+          "target": "necesitábamos",
+          "known": "we needed",
+          "new": true
+        },
+        {
+          "id": "S0521L05",
+          "type": "M",
+          "target": "quedarnos aquí",
+          "known": "to stay here",
+          "new": true,
+          "components": [
+            ["quedarnos", "to stay ourselves/to stay"],
+            ["aquí", "here"]
+          ]
+        },
+        {
+          "id": "S0521L06",
+          "type": "M",
+          "target": "necesitábamos quedarnos aquí",
+          "known": "we needed to stay here",
+          "new": true,
+          "components": [
+            ["necesitábamos", "we needed"],
+            ["quedarnos", "to stay"],
+            ["aquí", "here"]
           ]
         }
       ]
@@ -84,10 +93,15 @@
         },
         {
           "id": "S0522L02",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
+          "type": "M",
+          "target": "que fue estúpido",
+          "known": "that it was stupid",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["fue", "it was/was"],
+            ["estúpido", "stupid"]
+          ]
         },
         {
           "id": "S0522L03",
@@ -99,21 +113,22 @@
         {
           "id": "S0522L04",
           "type": "M",
-          "target": "fue estúpido",
-          "known": "it was stupid",
+          "target": "la verdad",
+          "known": "the truth",
           "new": true,
           "components": [
-            ["fue", "it was"],
-            ["estúpido", "stupid"]
+            ["la", "the"],
+            ["verdad", "truth"]
           ]
         },
         {
           "id": "S0522L05",
           "type": "M",
-          "target": "la verdad",
-          "known": "the truth",
+          "target": "decir la verdad",
+          "known": "to tell the truth",
           "new": true,
           "components": [
+            ["decir", "to tell"],
             ["la", "the"],
             ["verdad", "truth"]
           ]
@@ -129,13 +144,6 @@
       "legos": [
         {
           "id": "S0523L01",
-          "type": "A",
-          "target": "dar",
-          "known": "giving",
-          "new": true
-        },
-        {
-          "id": "S0523L02",
           "type": "M",
           "target": "en lugar de",
           "known": "instead of",
@@ -147,14 +155,44 @@
           ]
         },
         {
+          "id": "S0523L02",
+          "type": "A",
+          "target": "dar",
+          "known": "to give",
+          "new": true
+        },
+        {
           "id": "S0523L03",
           "type": "M",
           "target": "una excusa",
           "known": "an excuse",
           "new": true,
           "components": [
+            ["una", "an/a"],
+            ["excusa", "excuse"]
+          ]
+        },
+        {
+          "id": "S0523L04",
+          "type": "M",
+          "target": "dar una excusa",
+          "known": "to give an excuse",
+          "new": true,
+          "components": [
+            ["dar", "to give"],
             ["una", "an"],
             ["excusa", "excuse"]
+          ]
+        },
+        {
+          "id": "S0523L05",
+          "type": "M",
+          "target": "en lugar de dar",
+          "known": "instead of giving",
+          "new": true,
+          "components": [
+            ["en lugar de", "instead of"],
+            ["dar", "giving/to give"]
           ]
         }
       ]
@@ -168,20 +206,6 @@
       "legos": [
         {
           "id": "S0524L01",
-          "type": "A",
-          "target": "en",
-          "known": "in",
-          "new": true
-        },
-        {
-          "id": "S0524L02",
-          "type": "A",
-          "target": "minutos",
-          "known": "minutes",
-          "new": true
-        },
-        {
-          "id": "S0524L03",
           "type": "M",
           "target": "te llamaré",
           "known": "I'll call you",
@@ -192,18 +216,30 @@
           ]
         },
         {
-          "id": "S0524L04",
+          "id": "S0524L02",
           "type": "M",
           "target": "de vuelta",
           "known": "back",
           "new": true,
           "components": [
             ["de", "of"],
-            ["vuelta", "return"]
+            ["vuelta", "return/turn"]
           ]
         },
         {
-          "id": "S0524L05",
+          "id": "S0524L03",
+          "type": "M",
+          "target": "te llamaré de vuelta",
+          "known": "I'll call you back",
+          "new": true,
+          "components": [
+            ["te", "you"],
+            ["llamaré", "I'll call"],
+            ["de vuelta", "back"]
+          ]
+        },
+        {
+          "id": "S0524L04",
           "type": "M",
           "target": "tres o cuatro",
           "known": "three or four",
@@ -212,6 +248,25 @@
             ["tres", "three"],
             ["o", "or"],
             ["cuatro", "four"]
+          ]
+        },
+        {
+          "id": "S0524L05",
+          "type": "A",
+          "target": "minutos",
+          "known": "minutes",
+          "new": true
+        },
+        {
+          "id": "S0524L06",
+          "type": "M",
+          "target": "en tres o cuatro minutos",
+          "known": "in three or four minutes",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["tres o cuatro", "three or four"],
+            ["minutos", "minutes"]
           ]
         }
       ]
@@ -225,38 +280,55 @@
       "legos": [
         {
           "id": "S0525L01",
-          "type": "A",
-          "target": "si",
-          "known": "if",
-          "new": true
-        },
-        {
-          "id": "S0525L02",
-          "type": "A",
-          "target": "terminar",
-          "known": "to finish",
-          "new": true
-        },
-        {
-          "id": "S0525L03",
           "type": "M",
           "target": "para comprobar",
           "known": "to check",
           "new": true,
           "components": [
-            ["para", "to"],
-            ["comprobar", "check"]
+            ["para", "to/for"],
+            ["comprobar", "to check/verify"]
           ]
         },
         {
-          "id": "S0525L04",
+          "id": "S0525L02",
           "type": "M",
           "target": "has podido",
           "known": "you've been able",
           "new": true,
           "components": [
             ["has", "you have"],
-            ["podido", "been able"]
+            ["podido", "been able/could"]
+          ]
+        },
+        {
+          "id": "S0525L03",
+          "type": "A",
+          "target": "terminar",
+          "known": "to finish",
+          "new": true
+        },
+        {
+          "id": "S0525L04",
+          "type": "M",
+          "target": "podido terminar",
+          "known": "been able to finish",
+          "new": true,
+          "components": [
+            ["podido", "been able"],
+            ["terminar", "to finish"]
+          ]
+        },
+        {
+          "id": "S0525L05",
+          "type": "M",
+          "target": "si has podido terminar",
+          "known": "if you've been able to finish",
+          "new": true,
+          "components": [
+            ["si", "if"],
+            ["has", "you've/you have"],
+            ["podido", "been able"],
+            ["terminar", "to finish"]
           ]
         }
       ]
@@ -270,46 +342,78 @@
       "legos": [
         {
           "id": "S0526L01",
+          "type": "M",
+          "target": "me resulta difícil",
+          "known": "I'm finding it hard",
+          "new": true,
+          "components": [
+            ["me", "to me"],
+            ["resulta", "it results/turns out"],
+            ["difícil", "difficult/hard"]
+          ]
+        },
+        {
+          "id": "S0526L02",
           "type": "A",
           "target": "creer",
           "known": "to believe",
           "new": true
         },
         {
-          "id": "S0526L02",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
-        },
-        {
           "id": "S0526L03",
-          "type": "A",
-          "target": "adivinar",
-          "known": "guess",
-          "new": true
-        },
-        {
-          "id": "S0526L04",
-          "type": "M",
-          "target": "me resulta difícil",
-          "known": "I'm finding it hard",
-          "new": true,
-          "components": [
-            ["me", "me"],
-            ["resulta", "it is/results"],
-            ["difícil", "hard"]
-          ]
-        },
-        {
-          "id": "S0526L05",
           "type": "M",
           "target": "no puedes",
           "known": "you can't",
           "new": true,
           "components": [
-            ["no", "not"],
+            ["no", "not/no"],
             ["puedes", "you can"]
+          ]
+        },
+        {
+          "id": "S0526L04",
+          "type": "A",
+          "target": "adivinar",
+          "known": "to guess",
+          "new": true
+        },
+        {
+          "id": "S0526L05",
+          "type": "M",
+          "target": "no puedes adivinar",
+          "known": "you can't guess",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["puedes", "you can"],
+            ["adivinar", "guess"]
+          ]
+        },
+        {
+          "id": "S0526L06",
+          "type": "M",
+          "target": "que no puedes adivinar",
+          "known": "that you can't guess",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["no", "not"],
+            ["puedes", "you can"],
+            ["adivinar", "guess"]
+          ]
+        },
+        {
+          "id": "S0526L07",
+          "type": "M",
+          "target": "creer que no puedes adivinar",
+          "known": "to believe that you can't guess",
+          "new": true,
+          "components": [
+            ["creer", "to believe"],
+            ["que", "that"],
+            ["no", "not"],
+            ["puedes", "you can"],
+            ["adivinar", "guess"]
           ]
         }
       ]
@@ -337,13 +441,6 @@
         },
         {
           "id": "S0527L03",
-          "type": "A",
-          "target": "graciosa",
-          "known": "funny",
-          "new": true
-        },
-        {
-          "id": "S0527L04",
           "type": "M",
           "target": "me contó",
           "known": "told me",
@@ -354,14 +451,52 @@
           ]
         },
         {
+          "id": "S0527L04",
+          "type": "M",
+          "target": "quién me contó",
+          "known": "who told me",
+          "new": true,
+          "components": [
+            ["quién", "who"],
+            ["me", "me"],
+            ["contó", "told"]
+          ]
+        },
+        {
           "id": "S0527L05",
           "type": "M",
-          "target": "esa historia",
-          "known": "that story",
+          "target": "historia graciosa",
+          "known": "funny story",
+          "new": true,
+          "components": [
+            ["historia", "story"],
+            ["graciosa", "funny"]
+          ]
+        },
+        {
+          "id": "S0527L06",
+          "type": "M",
+          "target": "esa historia graciosa",
+          "known": "that funny story",
           "new": true,
           "components": [
             ["esa", "that"],
-            ["historia", "story"]
+            ["historia", "story"],
+            ["graciosa", "funny"]
+          ]
+        },
+        {
+          "id": "S0527L07",
+          "type": "M",
+          "target": "me contó esa historia graciosa",
+          "known": "told me that funny story",
+          "new": true,
+          "components": [
+            ["me", "me"],
+            ["contó", "told"],
+            ["esa", "that"],
+            ["historia", "story"],
+            ["graciosa", "funny"]
           ]
         }
       ]
@@ -382,27 +517,33 @@
         },
         {
           "id": "S0528L02",
-          "type": "A",
-          "target": "guardar",
-          "known": "keep",
-          "new": true
-        },
-        {
-          "id": "S0528L03",
-          "type": "A",
-          "target": "en",
-          "known": "in",
-          "new": true
-        },
-        {
-          "id": "S0528L04",
           "type": "M",
           "target": "se supone que debo",
           "known": "I'm supposed to",
           "new": true,
           "components": [
-            ["se supone que", "it's supposed that"],
-            ["debo", "I must"]
+            ["se", "itself/reflexive"],
+            ["supone", "supposes/assumes"],
+            ["que", "that"],
+            ["debo", "I should/must"]
+          ]
+        },
+        {
+          "id": "S0528L03",
+          "type": "A",
+          "target": "guardar",
+          "known": "to keep",
+          "new": true
+        },
+        {
+          "id": "S0528L04",
+          "type": "M",
+          "target": "debo guardar",
+          "known": "I should keep",
+          "new": true,
+          "components": [
+            ["debo", "I should/must"],
+            ["guardar", "keep"]
           ]
         },
         {
@@ -419,10 +560,34 @@
         {
           "id": "S0528L06",
           "type": "M",
+          "target": "guardar esas cosas",
+          "known": "to keep those things",
+          "new": true,
+          "components": [
+            ["guardar", "to keep"],
+            ["esas", "those"],
+            ["cosas", "things"]
+          ]
+        },
+        {
+          "id": "S0528L07",
+          "type": "M",
           "target": "otra habitación",
           "known": "another room",
           "new": true,
           "components": [
+            ["otra", "another"],
+            ["habitación", "room"]
+          ]
+        },
+        {
+          "id": "S0528L08",
+          "type": "M",
+          "target": "en otra habitación",
+          "known": "in another room",
+          "new": true,
+          "components": [
+            ["en", "in"],
             ["otra", "another"],
             ["habitación", "room"]
           ]
@@ -438,27 +603,42 @@
       "legos": [
         {
           "id": "S0529L01",
-          "type": "A",
-          "target": "pueden",
-          "known": "can you",
-          "new": true
+          "type": "M",
+          "target": "pueden todos",
+          "known": "can you all",
+          "new": true,
+          "components": [
+            ["pueden", "can/you all can"],
+            ["todos", "all/everyone"]
+          ]
         },
         {
           "id": "S0529L02",
           "type": "A",
-          "target": "todos",
-          "known": "all",
+          "target": "levantar",
+          "known": "to put up",
           "new": true
         },
         {
           "id": "S0529L03",
           "type": "M",
-          "target": "levantar las manos",
-          "known": "put your hands up",
+          "target": "las manos",
+          "known": "your hands",
           "new": true,
           "components": [
-            ["levantar", "put up/raise"],
-            ["las", "your/the"],
+            ["las", "the"],
+            ["manos", "hands"]
+          ]
+        },
+        {
+          "id": "S0529L04",
+          "type": "M",
+          "target": "levantar las manos",
+          "known": "to put your hands up",
+          "new": true,
+          "components": [
+            ["levantar", "to raise/lift"],
+            ["las", "the"],
             ["manos", "hands"]
           ]
         }
@@ -478,19 +658,27 @@
           "known": "so I can",
           "new": true,
           "components": [
-            ["para que", "so that"],
-            ["pueda", "I can"]
+            ["para", "for/so that"],
+            ["que", "that"],
+            ["pueda", "I can/may"]
           ]
         },
         {
           "id": "S0530L02",
-          "type": "M",
+          "type": "A",
           "target": "contarlas",
           "known": "count them",
+          "new": true
+        },
+        {
+          "id": "S0530L03",
+          "type": "M",
+          "target": "pueda contarlas",
+          "known": "I can count them",
           "new": true,
           "components": [
-            ["contar", "count"],
-            ["las", "them"]
+            ["pueda", "I can"],
+            ["contarlas", "count them"]
           ]
         }
       ]
