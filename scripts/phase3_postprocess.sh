@@ -28,6 +28,10 @@ echo "🔍 Deduplicating LEGOs..."
 node scripts/phase3_deduplicate_legos.cjs "$SPA"
 echo "✅ Deduplicated"
 
+echo "🔄 Re-ordering LEGOs for optimal pedagogy..."
+node scripts/phase3_reorder_legos.cjs "$SPA"
+echo "✅ Re-ordered"
+
 echo "📋 Building LEGO registry..."
 node scripts/phase3_build_lego_registry.cjs "$SPA"
 echo "✅ Registry built"
@@ -54,6 +58,10 @@ echo "✅ Merged"
 echo "🔍 Deduplicating LEGOs..."
 node scripts/phase3_deduplicate_legos.cjs "$CMN"
 echo "✅ Deduplicated"
+
+echo "🔄 Re-ordering LEGOs for optimal pedagogy..."
+node scripts/phase3_reorder_legos.cjs "$CMN"
+echo "✅ Re-ordered"
 
 echo "📋 Building LEGO registry..."
 node scripts/phase3_build_lego_registry.cjs "$CMN"
