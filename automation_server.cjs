@@ -367,6 +367,9 @@ function generatePhase3MasterPrompt(courseCode, params, courseDir) {
   const seedsPerAgent = totalSeeds === 10 ? 2 : 10;
   const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
 
+  // Calculate segment number from startSeed
+  const segmentNum = Math.floor((startSeed - 1) / 100) + 1;
+
   return `# Phase 3 Master Orchestrator: LEGO Extraction (Segment-Based)
 
 **Course**: ${courseCode}
@@ -495,7 +498,7 @@ For EACH of your ${seedsPerAgent} seeds:
 
 ## 📤 STEP 5: OUTPUT
 
-**File**: \`public/vfs/courses/${courseCode}/segments/segment_${Math.floor((startSeed - 1) / 100) + 1}/agent_XX_output.json\`
+**File**: \`public/vfs/courses/${courseCode}/segments/segment_${segmentNum}/agent_XX_output.json\`
 
 **Format**:
 \`\`\`json
