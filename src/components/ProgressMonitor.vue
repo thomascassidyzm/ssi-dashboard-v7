@@ -256,21 +256,21 @@ const checkProgress = async () => {
     }
 
     try {
-      const basketsCheck = await fetch(`/vfs/courses/${props.courseCode}/baskets/`, { method: 'HEAD' })
+      const basketsCheck = await fetch(`/vfs/courses/${baseCourseCode}/baskets/`, { method: 'HEAD' })
       phase5FileExists.value = basketsCheck.ok
     } catch (err) {
       phase5FileExists.value = false
     }
 
     try {
-      const introductionsCheck = await fetch(`/vfs/courses/${props.courseCode}/introductions.json`, { method: 'HEAD' })
+      const introductionsCheck = await fetch(`/vfs/courses/${baseCourseCode}/introductions.json`, { method: 'HEAD' })
       phase6FileExists.value = introductionsCheck.ok
     } catch (err) {
       phase6FileExists.value = false
     }
 
     try {
-      const manifestCheck = await fetch(`/vfs/courses/${props.courseCode}/course_manifest.json`, { method: 'HEAD' })
+      const manifestCheck = await fetch(`/vfs/courses/${baseCourseCode}/course_manifest.json`, { method: 'HEAD' })
       phase7FileExists.value = manifestCheck.ok
     } catch (err) {
       phase7FileExists.value = false
