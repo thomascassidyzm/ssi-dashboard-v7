@@ -1,0 +1,130 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0081",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Cuándo quieres comenzar?",
+    "known": "When do you want to start?"
+  },
+  "recent_seed_pairs": {
+    "S0071": [
+      "No queríamos permitir que nadie oyera la verdad",
+      "We didn't want to let anyone hear the truth."
+    ],
+    "S0072": [
+      "Pienso que estás haciendo muy bien",
+      "I think that you're doing very well."
+    ],
+    "S0073": [
+      "Muchas gracias, pero tengo más que aprender",
+      "Thank you very much, but I've got more to learn."
+    ],
+    "S0074": [
+      "Muchas gracias por ayudarme a comprender",
+      "Thank you very much for helping me to understand."
+    ],
+    "S0075": [
+      "¿Tienes más que aprender?",
+      "Have you got more to learn?"
+    ],
+    "S0076": [
+      "Estoy muy feliz con cuánto he aprendido ya",
+      "I'm very happy with how much I've learnt already."
+    ],
+    "S0077": [
+      "Estoy sorprendido de lo rápidamente que estoy comenzando a comprender",
+      "I'm surprised at how quickly I'm starting to understand."
+    ],
+    "S0078": [
+      "No comprendo lo que dijiste",
+      "I don't understand what you said."
+    ],
+    "S0079": [
+      "¿Cuándo comenzaste a aprender?",
+      "When did you start to learn?"
+    ],
+    "S0080": [
+      "No estoy seguro de cuándo estaré preparado",
+      "I'm not sure when I'll be ready."
+    ]
+  },
+  "legos": {
+    "S0081L01": {
+      "lego": [
+        "when",
+        "cuándo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0081L01",
+        "seed_context": {
+          "target": "¿Cuándo quieres comenzar?",
+          "known": "When do you want to start?"
+        }
+      }
+    },
+    "S0081L02": {
+      "lego": [
+        "do you want to start",
+        "quieres comenzar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "when",
+          "cuándo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0081L02",
+        "seed_context": {
+          "target": "¿Cuándo quieres comenzar?",
+          "known": "When do you want to start?"
+        }
+      },
+      "components": [
+        [
+          "quieres",
+          "do you want"
+        ],
+        [
+          "comenzar",
+          "to start"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0081.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "total_legos_in_seed": 2,
+    "phrases_to_generate": 24,
+    "recent_context_seeds": 10
+  }
+}

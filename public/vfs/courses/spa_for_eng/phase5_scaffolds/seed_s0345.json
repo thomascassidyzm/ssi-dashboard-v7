@@ -1,0 +1,292 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0345",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Who said that he's not ready to leave yet.",
+    "known": "Que dijo que no está preparado para irse todavía."
+  },
+  "recent_seed_pairs": {
+    "S0335": [
+      "Creo que puede añadir algunas ideas valiosas.",
+      "I think that he can add some valuable ideas."
+    ],
+    "S0336": [
+      "No creo que pueda abrir la puerta.",
+      "I don't think that she can open the door."
+    ],
+    "S0337": [
+      "¿Crees que puede continuar jugando?",
+      "Do you think that he can continue to play?"
+    ],
+    "S0338": [
+      "Mal.",
+      "Badly."
+    ],
+    "S0339": [
+      "No, pienso que se ha lastimado bastante mal.",
+      "No I think he's hurt himself quite badly."
+    ],
+    "S0340": [
+      "Sí, estoy seguro que va a estar bien.",
+      "Yes I'm sure he's going to be okay."
+    ],
+    "S0341": [
+      "I met someone a few days ago.",
+      "Conocí a alguien hace unos días."
+    ],
+    "S0342": [
+      "I met someone who said something.",
+      "Conocí a alguien que dijo algo."
+    ],
+    "S0343": [
+      "Who said that she's worried about the economy.",
+      "Que dijo que está preocupada por la economía."
+    ],
+    "S0344": [
+      "Who said that he's happy to help you.",
+      "Que dijo que está contento de ayudarte."
+    ]
+  },
+  "legos": {
+    "S0345L01": {
+      "lego": [
+        "who said that",
+        "que dijo que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0345L01",
+        "seed_context": {
+          "target": "Who said that he's not ready to leave yet.",
+          "known": "Que dijo que no está preparado para irse todavía."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "who"
+        ],
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0345L02": {
+      "lego": [
+        "he's not ready to leave yet",
+        "no está preparado para irse todavía"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "who said that",
+          "que dijo que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0345L02",
+        "seed_context": {
+          "target": "Who said that he's not ready to leave yet.",
+          "known": "Que dijo que no está preparado para irse todavía."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "está",
+          "is"
+        ],
+        [
+          "preparado",
+          "ready/prepared"
+        ],
+        [
+          "para",
+          "to"
+        ],
+        [
+          "irse",
+          "leave (reflexive)"
+        ],
+        [
+          "todavía",
+          "yet"
+        ]
+      ]
+    },
+    "S0345L03": {
+      "lego": [
+        "he's not ready",
+        "no está preparado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "who said that",
+          "que dijo que"
+        ],
+        [
+          "he's not ready to leave yet",
+          "no está preparado para irse todavía"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0345L03",
+        "seed_context": {
+          "target": "Who said that he's not ready to leave yet.",
+          "known": "Que dijo que no está preparado para irse todavía."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "está",
+          "is"
+        ],
+        [
+          "preparado",
+          "ready/prepared"
+        ]
+      ]
+    },
+    "S0345L04": {
+      "lego": [
+        "to leave",
+        "para irse"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "who said that",
+          "que dijo que"
+        ],
+        [
+          "he's not ready to leave yet",
+          "no está preparado para irse todavía"
+        ],
+        [
+          "he's not ready",
+          "no está preparado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0345L04",
+        "seed_context": {
+          "target": "Who said that he's not ready to leave yet.",
+          "known": "Que dijo que no está preparado para irse todavía."
+        }
+      },
+      "components": [
+        [
+          "para",
+          "to"
+        ],
+        [
+          "irse",
+          "leave (reflexive)"
+        ]
+      ]
+    },
+    "S0345L05": {
+      "lego": [
+        "yet",
+        "todavía"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "who said that",
+          "que dijo que"
+        ],
+        [
+          "he's not ready to leave yet",
+          "no está preparado para irse todavía"
+        ],
+        [
+          "he's not ready",
+          "no está preparado"
+        ],
+        [
+          "to leave",
+          "para irse"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0345L05",
+        "seed_context": {
+          "target": "Who said that he's not ready to leave yet.",
+          "known": "Que dijo que no está preparado para irse todavía."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0345.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0367",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No nadie me dijo.",
+    "known": "No nobody told me."
+  },
+  "recent_seed_pairs": {
+    "S0357": [
+      "No ella solo quería enviarle un mensaje.",
+      "No she just wanted to send her a message."
+    ],
+    "S0358": [
+      "Tu amigo dijo que ella no podía alcanzar la cima.",
+      "Your friend said that she couldn't reach the top."
+    ],
+    "S0359": [
+      "Tu amigo dijo que él podía girar a la izquierda.",
+      "Your friend said that he could turn left."
+    ],
+    "S0360": [
+      "¿Tu amigo dijo algo más?",
+      "Did your friend say anything else?"
+    ],
+    "S0361": [
+      "Él estaba callado.",
+      "He was quiet."
+    ],
+    "S0362": [
+      "No él estaba bastante callado después de que te fuiste.",
+      "No he was rather quiet after you left."
+    ],
+    "S0363": [
+      "Sí él tenía ganas de hablar mucho.",
+      "Yes he felt like talking a lot."
+    ],
+    "S0364": [
+      "Escuché que a él no le gustó ese lugar.",
+      "I heard that he didn't like that place."
+    ],
+    "S0365": [
+      "No escuché lo que ella le dijo a él.",
+      "I didn't hear what she said to him."
+    ],
+    "S0366": [
+      "¿Escuchaste lo que él quería cultivar?",
+      "Did you hear what he wanted to grow?"
+    ]
+  },
+  "legos": {
+    "S0367L01": {
+      "lego": [
+        "No",
+        "No"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0367L01",
+        "seed_context": {
+          "target": "No nadie me dijo.",
+          "known": "No nobody told me."
+        }
+      }
+    },
+    "S0367L02": {
+      "lego": [
+        "nobody",
+        "nadie"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "No",
+          "No"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0367L02",
+        "seed_context": {
+          "target": "No nadie me dijo.",
+          "known": "No nobody told me."
+        }
+      }
+    },
+    "S0367L03": {
+      "lego": [
+        "nobody told me",
+        "nadie me dijo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "No",
+          "No"
+        ],
+        [
+          "nobody",
+          "nadie"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0367L03",
+        "seed_context": {
+          "target": "No nadie me dijo.",
+          "known": "No nobody told me."
+        }
+      },
+      "components": [
+        [
+          "nadie",
+          "nobody"
+        ],
+        [
+          "me",
+          "me"
+        ],
+        [
+          "dijo",
+          "told"
+        ]
+      ]
+    },
+    "S0367L04": {
+      "lego": [
+        "told me",
+        "me dijo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "No",
+          "No"
+        ],
+        [
+          "nobody",
+          "nadie"
+        ],
+        [
+          "nobody told me",
+          "nadie me dijo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0367L04",
+        "seed_context": {
+          "target": "No nadie me dijo.",
+          "known": "No nobody told me."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "me"
+        ],
+        [
+          "dijo",
+          "told"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0367.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

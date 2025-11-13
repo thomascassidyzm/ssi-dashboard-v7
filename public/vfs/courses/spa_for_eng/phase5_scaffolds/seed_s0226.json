@@ -1,0 +1,186 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0226",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "El hombre está intentando ayudarme.",
+    "known": "The man is trying to help me."
+  },
+  "recent_seed_pairs": {
+    "S0216": [
+      "Vi a algunos amigos.",
+      "I saw a few friends."
+    ],
+    "S0217": [
+      "Tuve un vaso o dos de agua.",
+      "I had a glass or two of water."
+    ],
+    "S0218": [
+      "No hice mucho el domingo.",
+      "I didn't do much on Sunday."
+    ],
+    "S0219": [
+      "Fue agradable relajarse por un rato.",
+      "It was nice to relax for a while."
+    ],
+    "S0220": [
+      "¿Viste un poco de televisión?",
+      "Did you watch a bit of television?"
+    ],
+    "S0221": [
+      "Vi el fútbol y luego vi una película.",
+      "I watched the football and then I watched a film."
+    ],
+    "S0222": [
+      "Está intentando decirme lo que quiere.",
+      "He's trying to tell me what he wants"
+    ],
+    "S0223": [
+      "Va a preguntarte mañana.",
+      "He's going to ask you tomorrow."
+    ],
+    "S0224": [
+      "Acaba de empezar a aprender.",
+      "He's just started to learn."
+    ],
+    "S0225": [
+      "Te daría una respuesta si pudiera.",
+      "He would give you an answer if he could."
+    ]
+  },
+  "legos": {
+    "S0226L01": {
+      "lego": [
+        "the man",
+        "el hombre"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0226L01",
+        "seed_context": {
+          "target": "El hombre está intentando ayudarme.",
+          "known": "The man is trying to help me."
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "hombre",
+          "man"
+        ]
+      ]
+    },
+    "S0226L02": {
+      "lego": [
+        "is trying",
+        "está intentando"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "the man",
+          "el hombre"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0226L02",
+        "seed_context": {
+          "target": "El hombre está intentando ayudarme.",
+          "known": "The man is trying to help me."
+        }
+      },
+      "components": [
+        [
+          "está",
+          "is"
+        ],
+        [
+          "intentando",
+          "trying"
+        ]
+      ]
+    },
+    "S0226L03": {
+      "lego": [
+        "is trying to help me",
+        "está intentando ayudarme"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "the man",
+          "el hombre"
+        ],
+        [
+          "is trying",
+          "está intentando"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0226L03",
+        "seed_context": {
+          "target": "El hombre está intentando ayudarme.",
+          "known": "The man is trying to help me."
+        }
+      },
+      "components": [
+        [
+          "está",
+          "is"
+        ],
+        [
+          "intentando",
+          "trying"
+        ],
+        [
+          "ayudarme",
+          "to help me"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0226.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

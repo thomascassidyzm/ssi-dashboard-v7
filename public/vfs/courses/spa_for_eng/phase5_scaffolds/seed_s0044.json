@@ -1,0 +1,212 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0044",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "O si necesito mejorar.",
+    "known": "Or if I need to improve."
+  },
+  "recent_seed_pairs": {
+    "S0034": [
+      "Él no quiere estar silencioso cuando otras personas están aquí.",
+      "He doesn't want to be quiet when other people are here."
+    ],
+    "S0035": [
+      "Ella no quiere leer nada esta tarde.",
+      "She doesn't want to read anything this afternoon."
+    ],
+    "S0036": [
+      "No queremos interrumpir la historia.",
+      "We don't want to interrupt the story."
+    ],
+    "S0037": [
+      "Comencé a pensar sobre eso cuidadosamente el mes pasado.",
+      "I started to think about it carefully last month."
+    ],
+    "S0038": [
+      "Llevo aprendiendo aproximadamente una semana.",
+      "I've been learning for about a week."
+    ],
+    "S0039": [
+      "Pero estoy un poco cansado esta mañana.",
+      "But I'm a little tired this morning."
+    ],
+    "S0040": [
+      "¿Cómo te sientes en este momento?",
+      "How do you feel at the moment?"
+    ],
+    "S0041": [
+      "Me siento bien, pero estoy comenzando a sentirme cansado.",
+      "I feel okay, but I'm starting to feel tired."
+    ],
+    "S0042": [
+      "Estaba comenzando a sentirme mejor que anoche.",
+      "I was starting to feel better than last night."
+    ],
+    "S0043": [
+      "No estaba pensando en cómo responder.",
+      "I wasn't thinking about how to answer."
+    ]
+  },
+  "legos": {
+    "S0044L01": {
+      "lego": [
+        "or",
+        "o"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0044L01",
+        "seed_context": {
+          "target": "O si necesito mejorar.",
+          "known": "Or if I need to improve."
+        }
+      }
+    },
+    "S0044L02": {
+      "lego": [
+        "if I need to improve",
+        "si necesito mejorar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "or",
+          "o"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0044L02",
+        "seed_context": {
+          "target": "O si necesito mejorar.",
+          "known": "Or if I need to improve."
+        }
+      },
+      "components": [
+        [
+          "si",
+          "if"
+        ],
+        [
+          "necesito",
+          "I need"
+        ],
+        [
+          "mejorar",
+          "to improve"
+        ]
+      ]
+    },
+    "S0044L03": {
+      "lego": [
+        "I need to improve",
+        "necesito mejorar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "or",
+          "o"
+        ],
+        [
+          "if I need to improve",
+          "si necesito mejorar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0044L03",
+        "seed_context": {
+          "target": "O si necesito mejorar.",
+          "known": "Or if I need to improve."
+        }
+      },
+      "components": [
+        [
+          "necesito",
+          "I need"
+        ],
+        [
+          "mejorar",
+          "to improve"
+        ]
+      ]
+    },
+    "S0044L04": {
+      "lego": [
+        "to improve",
+        "mejorar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "or",
+          "o"
+        ],
+        [
+          "if I need to improve",
+          "si necesito mejorar"
+        ],
+        [
+          "I need to improve",
+          "necesito mejorar"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0044L04",
+        "seed_context": {
+          "target": "O si necesito mejorar.",
+          "known": "Or if I need to improve."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0044.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

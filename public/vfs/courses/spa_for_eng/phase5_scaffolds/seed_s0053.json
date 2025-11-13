@@ -1,0 +1,226 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0053",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Quería poner su carta en su bolsa.",
+    "known": "She wanted to put his letter in her bag."
+  },
+  "recent_seed_pairs": {
+    "S0043": [
+      "No estaba pensando en cómo responder.",
+      "I wasn't thinking about how to answer."
+    ],
+    "S0044": [
+      "O si necesito mejorar.",
+      "Or if I need to improve."
+    ],
+    "S0045": [
+      "No necesito saber todo.",
+      "I don't need to know everything."
+    ],
+    "S0046": [
+      "Pero no me preocupo por hacer errores.",
+      "But I don't worry about making mistakes."
+    ],
+    "S0047": [
+      "Porque pienso que es una cosa buena hacer errores.",
+      "Because I think that it's a good thing to make mistakes."
+    ],
+    "S0048": [
+      "No me importa hacer errores.",
+      "I don't care about making mistakes."
+    ],
+    "S0049": [
+      "Es así, si sabes lo que quiero decir.",
+      "It's like this, if you know what I mean."
+    ],
+    "S0050": [
+      "No estoy intentando terminar lo más rápidamente posible.",
+      "I'm not trying to finish as quickly as possible."
+    ],
+    "S0051": [
+      "Disfruto hacer cosas interesantes con mis amigos.",
+      "I enjoy doing interesting things with my friends."
+    ],
+    "S0052": [
+      "Quería escribir una carta a su amigo la semana pasada.",
+      "He wanted to write a letter to his friend last week."
+    ]
+  },
+  "legos": {
+    "S0053L01": {
+      "lego": [
+        "wanted to put",
+        "quería poner"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0053L01",
+        "seed_context": {
+          "target": "Quería poner su carta en su bolsa.",
+          "known": "She wanted to put his letter in her bag."
+        }
+      },
+      "components": [
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "poner",
+          "to put"
+        ]
+      ]
+    },
+    "S0053L02": {
+      "lego": [
+        "put his letter",
+        "poner su carta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "wanted to put",
+          "quería poner"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0053L02",
+        "seed_context": {
+          "target": "Quería poner su carta en su bolsa.",
+          "known": "She wanted to put his letter in her bag."
+        }
+      },
+      "components": [
+        [
+          "poner",
+          "to put/put"
+        ],
+        [
+          "su",
+          "his"
+        ],
+        [
+          "carta",
+          "letter"
+        ]
+      ]
+    },
+    "S0053L03": {
+      "lego": [
+        "his letter",
+        "su carta"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "wanted to put",
+          "quería poner"
+        ],
+        [
+          "put his letter",
+          "poner su carta"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0053L03",
+        "seed_context": {
+          "target": "Quería poner su carta en su bolsa.",
+          "known": "She wanted to put his letter in her bag."
+        }
+      }
+    },
+    "S0053L04": {
+      "lego": [
+        "in her bag",
+        "en su bolsa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "wanted to put",
+          "quería poner"
+        ],
+        [
+          "put his letter",
+          "poner su carta"
+        ],
+        [
+          "his letter",
+          "su carta"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0053L04",
+        "seed_context": {
+          "target": "Quería poner su carta en su bolsa.",
+          "known": "She wanted to put his letter in her bag."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "su",
+          "her"
+        ],
+        [
+          "bolsa",
+          "bag"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0053.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

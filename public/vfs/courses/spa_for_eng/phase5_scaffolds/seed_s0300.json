@@ -1,0 +1,320 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0300",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Ella no quiere parecer antipática.",
+    "known": "She doesn't want to seem unfriendly."
+  },
+  "recent_seed_pairs": {
+    "S0290": [
+      "Me pregunto si él sabe la respuesta.",
+      "I wonder if he knows the answer."
+    ],
+    "S0291": [
+      "Espero poder hablar mejor pronto.",
+      "I hope I'll be able to speak better soon."
+    ],
+    "S0292": [
+      "Espero que puedas venir a la fiesta.",
+      "I hope you'll be able to come to the party."
+    ],
+    "S0293": [
+      "Tengo que descubrir dónde va a reunirse conmigo.",
+      "I have to find out where he's going to meet me."
+    ],
+    "S0294": [
+      "No tengo suficiente tiempo para llamarte esta noche.",
+      "I don't have enough time to call you tonight."
+    ],
+    "S0295": [
+      "No dije que quería terminar en un día.",
+      "I didn't say that I wanted to finish in a day."
+    ],
+    "S0296": [
+      "Dije que necesitaba un poco más de tiempo.",
+      "I said that I needed a little more time."
+    ],
+    "S0297": [
+      "No conozco a muchas personas que hablan español.",
+      "I don't know many people who speak Spanish."
+    ],
+    "S0298": [
+      "No me queda nada que decir.",
+      "I've got nothing left to say."
+    ],
+    "S0299": [
+      "Él quiere pagar la mitad.",
+      "He wants to pay half."
+    ]
+  },
+  "legos": {
+    "S0300L01": {
+      "lego": [
+        "she doesn't want",
+        "ella no quiere"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0300L01",
+        "seed_context": {
+          "target": "Ella no quiere parecer antipática.",
+          "known": "She doesn't want to seem unfriendly."
+        }
+      },
+      "components": [
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "no",
+          "doesn't"
+        ],
+        [
+          "quiere",
+          "want"
+        ]
+      ]
+    },
+    "S0300L02": {
+      "lego": [
+        "doesn't want to seem",
+        "no quiere parecer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she doesn't want",
+          "ella no quiere"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0300L02",
+        "seed_context": {
+          "target": "Ella no quiere parecer antipática.",
+          "known": "She doesn't want to seem unfriendly."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "doesn't"
+        ],
+        [
+          "quiere",
+          "want"
+        ],
+        [
+          "parecer",
+          "to seem"
+        ]
+      ]
+    },
+    "S0300L03": {
+      "lego": [
+        "wants to seem",
+        "quiere parecer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she doesn't want",
+          "ella no quiere"
+        ],
+        [
+          "doesn't want to seem",
+          "no quiere parecer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0300L03",
+        "seed_context": {
+          "target": "Ella no quiere parecer antipática.",
+          "known": "She doesn't want to seem unfriendly."
+        }
+      },
+      "components": [
+        [
+          "quiere",
+          "wants"
+        ],
+        [
+          "parecer",
+          "to seem"
+        ]
+      ]
+    },
+    "S0300L04": {
+      "lego": [
+        "seem unfriendly",
+        "parecer antipática"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she doesn't want",
+          "ella no quiere"
+        ],
+        [
+          "doesn't want to seem",
+          "no quiere parecer"
+        ],
+        [
+          "wants to seem",
+          "quiere parecer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0300L04",
+        "seed_context": {
+          "target": "Ella no quiere parecer antipática.",
+          "known": "She doesn't want to seem unfriendly."
+        }
+      },
+      "components": [
+        [
+          "parecer",
+          "seem/to seem"
+        ],
+        [
+          "antipática",
+          "unfriendly"
+        ]
+      ]
+    },
+    "S0300L05": {
+      "lego": [
+        "to seem",
+        "parecer"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "she doesn't want",
+          "ella no quiere"
+        ],
+        [
+          "doesn't want to seem",
+          "no quiere parecer"
+        ],
+        [
+          "wants to seem",
+          "quiere parecer"
+        ],
+        [
+          "seem unfriendly",
+          "parecer antipática"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0300L05",
+        "seed_context": {
+          "target": "Ella no quiere parecer antipática.",
+          "known": "She doesn't want to seem unfriendly."
+        }
+      }
+    },
+    "S0300L06": {
+      "lego": [
+        "unfriendly",
+        "antipática"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "she doesn't want",
+          "ella no quiere"
+        ],
+        [
+          "doesn't want to seem",
+          "no quiere parecer"
+        ],
+        [
+          "wants to seem",
+          "quiere parecer"
+        ],
+        [
+          "seem unfriendly",
+          "parecer antipática"
+        ],
+        [
+          "to seem",
+          "parecer"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0300L06",
+        "seed_context": {
+          "target": "Ella no quiere parecer antipática.",
+          "known": "She doesn't want to seem unfriendly."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0300.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

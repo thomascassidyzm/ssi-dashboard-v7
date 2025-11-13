@@ -1,0 +1,140 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0637",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Dónde está su bolsa?",
+    "known": "Where is her bag?"
+  },
+  "recent_seed_pairs": {
+    "S0627": [
+      "Tu café está preparado.",
+      "Your coffee is ready."
+    ],
+    "S0628": [
+      "¿Te gusta el té?",
+      "Do you like tea?"
+    ],
+    "S0629": [
+      "Me gusta con leche pero sin azúcar.",
+      "I like it with milk but without sugar."
+    ],
+    "S0630": [
+      "¿Puedo tener algo para beber por favor?",
+      "Can I have something to drink please?"
+    ],
+    "S0631": [
+      "¿Qué quieres?",
+      "What would you like?"
+    ],
+    "S0632": [
+      "Un vaso de agua.",
+      "A glass of water."
+    ],
+    "S0633": [
+      "Un vaso grande de agua estaría bien.",
+      "A large glass of water would be fine."
+    ],
+    "S0634": [
+      "Me gustaría uno de esos.",
+      "I'd like one of those."
+    ],
+    "S0635": [
+      "Esa es la bolsa de Jane.",
+      "That is Jane's bag."
+    ],
+    "S0636": [
+      "Creo que esa es la bolsa de Jane.",
+      "I think that that is Jane's bag."
+    ]
+  },
+  "legos": {
+    "S0637L01": {
+      "lego": [
+        "Where is?",
+        "¿Dónde está?"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0637L01",
+        "seed_context": {
+          "target": "¿Dónde está su bolsa?",
+          "known": "Where is her bag?"
+        }
+      },
+      "components": [
+        [
+          "Dónde",
+          "Where"
+        ],
+        [
+          "está",
+          "is"
+        ]
+      ]
+    },
+    "S0637L02": {
+      "lego": [
+        "her bag",
+        "su bolsa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Where is?",
+          "¿Dónde está?"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0637L02",
+        "seed_context": {
+          "target": "¿Dónde está su bolsa?",
+          "known": "Where is her bag?"
+        }
+      },
+      "components": [
+        [
+          "su",
+          "her"
+        ],
+        [
+          "bolsa",
+          "bag"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0637.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "total_legos_in_seed": 2,
+    "phrases_to_generate": 24,
+    "recent_context_seeds": 10
+  }
+}

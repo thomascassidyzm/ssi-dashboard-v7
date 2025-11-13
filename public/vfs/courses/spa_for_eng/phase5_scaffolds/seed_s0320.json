@@ -1,0 +1,240 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0320",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Él no necesita comprar otra televisión este año.",
+    "known": "He doesn't need to buy another television this year."
+  },
+  "recent_seed_pairs": {
+    "S0310": [
+      "Ella podría escribir una historia sobre ese hombre.",
+      "She could write a story about that man."
+    ],
+    "S0311": [
+      "Él no podría creer los tres hechos más importantes.",
+      "He couldn't believe the three most important facts."
+    ],
+    "S0312": [
+      "Ella dijo que podría usar la otra habitación mañana por la noche.",
+      "She said that she could use the other room tomorrow night."
+    ],
+    "S0313": [
+      "Él dijo que no podría ver todos los cinco juegos.",
+      "He said that he couldn't watch all five games."
+    ],
+    "S0314": [
+      "Pienso que ella podría ponerlo en la mesa.",
+      "I think that she could put it on the table."
+    ],
+    "S0315": [
+      "Pienso que no podría permitirse el coche que quería.",
+      "I think that he couldn't afford the car that he wanted."
+    ],
+    "S0316": [
+      "¿Crees que ella podría traer a su hermano el lunes?",
+      "Do you think that she could bring her brother on Monday?"
+    ],
+    "S0317": [
+      "Sí pienso que podría si quisiera.",
+      "Yes I think she could if she wanted to."
+    ],
+    "S0318": [
+      "No, no creo que pudiera esta vez.",
+      "No I don't think she could this time."
+    ],
+    "S0319": [
+      "Ella necesita mudarse a un país diferente.",
+      "She needs to move to a different country."
+    ]
+  },
+  "legos": {
+    "S0320L01": {
+      "lego": [
+        "He doesn't need to buy",
+        "Él no necesita comprar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0320L01",
+        "seed_context": {
+          "target": "Él no necesita comprar otra televisión este año.",
+          "known": "He doesn't need to buy another television this year."
+        }
+      },
+      "components": [
+        [
+          "Él",
+          "He"
+        ],
+        [
+          "no",
+          "not/doesn't"
+        ],
+        [
+          "necesita",
+          "need"
+        ],
+        [
+          "comprar",
+          "to buy"
+        ]
+      ]
+    },
+    "S0320L02": {
+      "lego": [
+        "doesn't need to buy",
+        "no necesita comprar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "He doesn't need to buy",
+          "Él no necesita comprar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0320L02",
+        "seed_context": {
+          "target": "Él no necesita comprar otra televisión este año.",
+          "known": "He doesn't need to buy another television this year."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not/doesn't"
+        ],
+        [
+          "necesita",
+          "need"
+        ],
+        [
+          "comprar",
+          "to buy"
+        ]
+      ]
+    },
+    "S0320L03": {
+      "lego": [
+        "another television",
+        "otra televisión"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "He doesn't need to buy",
+          "Él no necesita comprar"
+        ],
+        [
+          "doesn't need to buy",
+          "no necesita comprar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0320L03",
+        "seed_context": {
+          "target": "Él no necesita comprar otra televisión este año.",
+          "known": "He doesn't need to buy another television this year."
+        }
+      },
+      "components": [
+        [
+          "otra",
+          "another"
+        ],
+        [
+          "televisión",
+          "television"
+        ]
+      ]
+    },
+    "S0320L04": {
+      "lego": [
+        "this year",
+        "este año"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "He doesn't need to buy",
+          "Él no necesita comprar"
+        ],
+        [
+          "doesn't need to buy",
+          "no necesita comprar"
+        ],
+        [
+          "another television",
+          "otra televisión"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0320L04",
+        "seed_context": {
+          "target": "Él no necesita comprar otra televisión este año.",
+          "known": "He doesn't need to buy another television this year."
+        }
+      },
+      "components": [
+        [
+          "este",
+          "this"
+        ],
+        [
+          "año",
+          "year"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0320.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

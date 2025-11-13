@@ -1,0 +1,222 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0263",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No sé quién quieres decir.",
+    "known": "I don't know who you mean."
+  },
+  "recent_seed_pairs": {
+    "S0253": [
+      "Debo estar preparado en unos pocos minutos.",
+      "I should be ready in a few minutes."
+    ],
+    "S0254": [
+      "He estado preparado desde esta mañana.",
+      "I've been ready since this morning."
+    ],
+    "S0255": [
+      "¿Cuándo crees que estarás preparado para salir?",
+      "When do you think you'll be ready to leave?"
+    ],
+    "S0256": [
+      "Creo que estaré listo en menos de una hora.",
+      "I think I'll be ready in less than an hour."
+    ],
+    "S0257": [
+      "Me gusta esa cosa azul.",
+      "I like that blue thing."
+    ],
+    "S0258": [
+      "¿Qué es esa cosa azul de allí?",
+      "What's that blue thing over there?"
+    ],
+    "S0259": [
+      "Una idea.",
+      "An idea."
+    ],
+    "S0260": [
+      "No tengo ni la más mínima idea.",
+      "I don't have the faintest idea."
+    ],
+    "S0261": [
+      "Creo que puede ser algo importante.",
+      "I think it might be something important."
+    ],
+    "S0262": [
+      "¿Quién era ese hombre con el que hablabas ayer?",
+      "Who was that man you were talking to yesterday?"
+    ]
+  },
+  "legos": {
+    "S0263L01": {
+      "lego": [
+        "I don't know",
+        "no sé"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0263L01",
+        "seed_context": {
+          "target": "No sé quién quieres decir.",
+          "known": "I don't know who you mean."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not/don't"
+        ],
+        [
+          "sé",
+          "I know"
+        ]
+      ]
+    },
+    "S0263L02": {
+      "lego": [
+        "who",
+        "quién"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I don't know",
+          "no sé"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0263L02",
+        "seed_context": {
+          "target": "No sé quién quieres decir.",
+          "known": "I don't know who you mean."
+        }
+      }
+    },
+    "S0263L03": {
+      "lego": [
+        "you mean/want to say",
+        "quieres decir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't know",
+          "no sé"
+        ],
+        [
+          "who",
+          "quién"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0263L03",
+        "seed_context": {
+          "target": "No sé quién quieres decir.",
+          "known": "I don't know who you mean."
+        }
+      },
+      "components": [
+        [
+          "quieres",
+          "you want"
+        ],
+        [
+          "decir",
+          "to say/mean"
+        ]
+      ]
+    },
+    "S0263L04": {
+      "lego": [
+        "who you mean",
+        "quién quieres decir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't know",
+          "no sé"
+        ],
+        [
+          "who",
+          "quién"
+        ],
+        [
+          "you mean/want to say",
+          "quieres decir"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0263L04",
+        "seed_context": {
+          "target": "No sé quién quieres decir.",
+          "known": "I don't know who you mean."
+        }
+      },
+      "components": [
+        [
+          "quién",
+          "who"
+        ],
+        [
+          "quieres",
+          "you want"
+        ],
+        [
+          "decir",
+          "to say/mean"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0263.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

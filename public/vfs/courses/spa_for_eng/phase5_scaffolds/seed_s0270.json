@@ -1,0 +1,386 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0270",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Porque estoy preocupado de que voy a llegar tarde.",
+    "known": "Because I'm worried that I'm going to be late."
+  },
+  "recent_seed_pairs": {
+    "S0260": [
+      "No tengo ni la más mínima idea.",
+      "I don't have the faintest idea."
+    ],
+    "S0261": [
+      "Creo que puede ser algo importante.",
+      "I think it might be something important."
+    ],
+    "S0262": [
+      "¿Quién era ese hombre con el que hablabas ayer?",
+      "Who was that man you were talking to yesterday?"
+    ],
+    "S0263": [
+      "No sé quién quieres decir.",
+      "I don't know who you mean."
+    ],
+    "S0264": [
+      "Un hombre viejo.",
+      "An old man."
+    ],
+    "S0265": [
+      "Un amigo.",
+      "A friend."
+    ],
+    "S0266": [
+      "Era un viejo amigo de mi padre.",
+      "He was an old friend of my father."
+    ],
+    "S0267": [
+      "¿Has sabido de tu amigo?",
+      "Have you heard from your friend?"
+    ],
+    "S0268": [
+      "Sí, me envió dos correos electrónicos la semana pasada.",
+      "Yes she sent me two emails last week."
+    ],
+    "S0269": [
+      "¿Por qué no quieres esperar a tu padre?",
+      "Why don't you want to wait for your father?"
+    ]
+  },
+  "legos": {
+    "S0270L01": {
+      "lego": [
+        "because",
+        "porque"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0270L01",
+        "seed_context": {
+          "target": "Porque estoy preocupado de que voy a llegar tarde.",
+          "known": "Because I'm worried that I'm going to be late."
+        }
+      }
+    },
+    "S0270L02": {
+      "lego": [
+        "I'm worried that",
+        "estoy preocupado de que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "porque"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0270L02",
+        "seed_context": {
+          "target": "Porque estoy preocupado de que voy a llegar tarde.",
+          "known": "Because I'm worried that I'm going to be late."
+        }
+      },
+      "components": [
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "preocupado",
+          "worried"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0270L03": {
+      "lego": [
+        "I'm worried",
+        "estoy preocupado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "porque"
+        ],
+        [
+          "I'm worried that",
+          "estoy preocupado de que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0270L03",
+        "seed_context": {
+          "target": "Porque estoy preocupado de que voy a llegar tarde.",
+          "known": "Because I'm worried that I'm going to be late."
+        }
+      },
+      "components": [
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "preocupado",
+          "worried"
+        ]
+      ]
+    },
+    "S0270L04": {
+      "lego": [
+        "I'm going to be late",
+        "voy a llegar tarde"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "porque"
+        ],
+        [
+          "I'm worried that",
+          "estoy preocupado de que"
+        ],
+        [
+          "I'm worried",
+          "estoy preocupado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0270L04",
+        "seed_context": {
+          "target": "Porque estoy preocupado de que voy a llegar tarde.",
+          "known": "Because I'm worried that I'm going to be late."
+        }
+      },
+      "components": [
+        [
+          "voy",
+          "I go/am going"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "llegar",
+          "to arrive"
+        ],
+        [
+          "tarde",
+          "late"
+        ]
+      ]
+    },
+    "S0270L05": {
+      "lego": [
+        "to be late/arrive late",
+        "llegar tarde"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "porque"
+        ],
+        [
+          "I'm worried that",
+          "estoy preocupado de que"
+        ],
+        [
+          "I'm worried",
+          "estoy preocupado"
+        ],
+        [
+          "I'm going to be late",
+          "voy a llegar tarde"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0270L05",
+        "seed_context": {
+          "target": "Porque estoy preocupado de que voy a llegar tarde.",
+          "known": "Because I'm worried that I'm going to be late."
+        }
+      },
+      "components": [
+        [
+          "llegar",
+          "to arrive"
+        ],
+        [
+          "tarde",
+          "late"
+        ]
+      ]
+    },
+    "S0270L06": {
+      "lego": [
+        "I'm going to",
+        "voy a"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "porque"
+        ],
+        [
+          "I'm worried that",
+          "estoy preocupado de que"
+        ],
+        [
+          "I'm worried",
+          "estoy preocupado"
+        ],
+        [
+          "I'm going to be late",
+          "voy a llegar tarde"
+        ],
+        [
+          "to be late/arrive late",
+          "llegar tarde"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0270L06",
+        "seed_context": {
+          "target": "Porque estoy preocupado de que voy a llegar tarde.",
+          "known": "Because I'm worried that I'm going to be late."
+        }
+      },
+      "components": [
+        [
+          "voy",
+          "I go"
+        ],
+        [
+          "a",
+          "to"
+        ]
+      ]
+    },
+    "S0270L07": {
+      "lego": [
+        "late",
+        "tarde"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "porque"
+        ],
+        [
+          "I'm worried that",
+          "estoy preocupado de que"
+        ],
+        [
+          "I'm worried",
+          "estoy preocupado"
+        ],
+        [
+          "I'm going to be late",
+          "voy a llegar tarde"
+        ],
+        [
+          "to be late/arrive late",
+          "llegar tarde"
+        ],
+        [
+          "I'm going to",
+          "voy a"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0270L07",
+        "seed_context": {
+          "target": "Porque estoy preocupado de que voy a llegar tarde.",
+          "known": "Because I'm worried that I'm going to be late."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0270.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "total_legos_in_seed": 7,
+    "phrases_to_generate": 84,
+    "recent_context_seeds": 10
+  }
+}

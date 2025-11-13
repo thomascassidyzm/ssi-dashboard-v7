@@ -1,0 +1,286 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0106",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No necesitamos sentirnos felices, solo necesitamos trabajar duro",
+    "known": "We don't need to feel happy, we just need to work hard."
+  },
+  "recent_seed_pairs": {
+    "S0096": [
+      "No, no estoy preparado todavía, necesito un poco más de tiempo.",
+      "No I'm not ready yet, I need a little more time."
+    ],
+    "S0097": [
+      "Sí, estoy preparado para ir tan pronto como quieras.",
+      "Yes I'm ready to go as soon as you want."
+    ],
+    "S0098": [
+      "Debería considerar jugar otra cosa.",
+      "I should consider playing something else."
+    ],
+    "S0099": [
+      "Deberías preguntarte por qué no está trabajando",
+      "You should ask yourself why it's not working."
+    ],
+    "S0100": [
+      "No deberías preocuparte por hacer algo similar",
+      "You shouldn't worry about doing something similar."
+    ],
+    "S0101": [
+      "Estoy disfrutando descubrir más sobre este lenguaje",
+      "I'm enjoying finding out more about this language."
+    ],
+    "S0102": [
+      "Estamos intentando decir que no es así",
+      "We're trying to say that it's not like that."
+    ],
+    "S0103": [
+      "No estamos intentando oír muchas más palabras",
+      "We're not trying to hear many more words."
+    ],
+    "S0104": [
+      "Necesitamos cambiar lo que estamos haciendo",
+      "We need to change what we're doing."
+    ],
+    "S0105": [
+      "Por eso no sabía la respuesta",
+      "That is why he didn't know the answer."
+    ]
+  },
+  "legos": {
+    "S0106L01": {
+      "lego": [
+        "we don't need to feel",
+        "no necesitamos sentirnos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0106L01",
+        "seed_context": {
+          "target": "No necesitamos sentirnos felices, solo necesitamos trabajar duro",
+          "known": "We don't need to feel happy, we just need to work hard."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "don't/not"
+        ],
+        [
+          "necesitamos",
+          "we need"
+        ],
+        [
+          "sentirnos",
+          "to feel"
+        ]
+      ]
+    },
+    "S0106L02": {
+      "lego": [
+        "to feel happy",
+        "sentirnos felices"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we don't need to feel",
+          "no necesitamos sentirnos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0106L02",
+        "seed_context": {
+          "target": "No necesitamos sentirnos felices, solo necesitamos trabajar duro",
+          "known": "We don't need to feel happy, we just need to work hard."
+        }
+      },
+      "components": [
+        [
+          "sentirnos",
+          "to feel"
+        ],
+        [
+          "felices",
+          "happy"
+        ]
+      ]
+    },
+    "S0106L03": {
+      "lego": [
+        "we just need",
+        "solo necesitamos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we don't need to feel",
+          "no necesitamos sentirnos"
+        ],
+        [
+          "to feel happy",
+          "sentirnos felices"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0106L03",
+        "seed_context": {
+          "target": "No necesitamos sentirnos felices, solo necesitamos trabajar duro",
+          "known": "We don't need to feel happy, we just need to work hard."
+        }
+      },
+      "components": [
+        [
+          "solo",
+          "just/only"
+        ],
+        [
+          "necesitamos",
+          "we need"
+        ]
+      ]
+    },
+    "S0106L04": {
+      "lego": [
+        "we need to work hard",
+        "necesitamos trabajar duro"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we don't need to feel",
+          "no necesitamos sentirnos"
+        ],
+        [
+          "to feel happy",
+          "sentirnos felices"
+        ],
+        [
+          "we just need",
+          "solo necesitamos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0106L04",
+        "seed_context": {
+          "target": "No necesitamos sentirnos felices, solo necesitamos trabajar duro",
+          "known": "We don't need to feel happy, we just need to work hard."
+        }
+      },
+      "components": [
+        [
+          "necesitamos",
+          "we need"
+        ],
+        [
+          "trabajar",
+          "to work"
+        ],
+        [
+          "duro",
+          "hard"
+        ]
+      ]
+    },
+    "S0106L05": {
+      "lego": [
+        "to work hard",
+        "trabajar duro"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we don't need to feel",
+          "no necesitamos sentirnos"
+        ],
+        [
+          "to feel happy",
+          "sentirnos felices"
+        ],
+        [
+          "we just need",
+          "solo necesitamos"
+        ],
+        [
+          "we need to work hard",
+          "necesitamos trabajar duro"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0106L05",
+        "seed_context": {
+          "target": "No necesitamos sentirnos felices, solo necesitamos trabajar duro",
+          "known": "We don't need to feel happy, we just need to work hard."
+        }
+      },
+      "components": [
+        [
+          "trabajar",
+          "to work"
+        ],
+        [
+          "duro",
+          "hard"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0106.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

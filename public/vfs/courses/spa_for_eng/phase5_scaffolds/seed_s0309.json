@@ -1,0 +1,372 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0309",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No nunca la he visto antes.",
+    "known": "No I've never seen her before."
+  },
+  "recent_seed_pairs": {
+    "S0299": [
+      "Él quiere pagar la mitad.",
+      "He wants to pay half."
+    ],
+    "S0300": [
+      "Ella no quiere parecer antipática.",
+      "She doesn't want to seem unfriendly."
+    ],
+    "S0301": [
+      "Él dijo que quiere mostrarte algo.",
+      "He said that he wants to show you something."
+    ],
+    "S0302": [
+      "Ella dijo que no quiere vivir en una ciudad.",
+      "She said that she doesn't want to live in a city."
+    ],
+    "S0303": [
+      "Creo que él quiere sentarse.",
+      "I think that he wants to sit down."
+    ],
+    "S0304": [
+      "Creo que ella no quiere trabajar desde casa.",
+      "I think that she doesn't want to work from home."
+    ],
+    "S0305": [
+      "Mujer.",
+      "Woman."
+    ],
+    "S0306": [
+      "Conozco a esa mujer joven que está hablando con tu amigo.",
+      "I know that young woman who's talking to your friend."
+    ],
+    "S0307": [
+      "Conozco a ese hombre joven que está sentado allí.",
+      "I know that young man who's sitting over there."
+    ],
+    "S0308": [
+      "Sí ella es una amiga de mi madre.",
+      "Yes she's a friend of my mother."
+    ]
+  },
+  "legos": {
+    "S0309L01": {
+      "lego": [
+        "no",
+        "no"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0309L01",
+        "seed_context": {
+          "target": "No nunca la he visto antes.",
+          "known": "No I've never seen her before."
+        }
+      }
+    },
+    "S0309L02": {
+      "lego": [
+        "never",
+        "nunca"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0309L02",
+        "seed_context": {
+          "target": "No nunca la he visto antes.",
+          "known": "No I've never seen her before."
+        }
+      }
+    },
+    "S0309L03": {
+      "lego": [
+        "I've seen her",
+        "la he visto"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "never",
+          "nunca"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0309L03",
+        "seed_context": {
+          "target": "No nunca la he visto antes.",
+          "known": "No I've never seen her before."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "her"
+        ],
+        [
+          "he",
+          "I've"
+        ],
+        [
+          "visto",
+          "seen"
+        ]
+      ]
+    },
+    "S0309L04": {
+      "lego": [
+        "I've seen",
+        "he visto"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "never",
+          "nunca"
+        ],
+        [
+          "I've seen her",
+          "la he visto"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0309L04",
+        "seed_context": {
+          "target": "No nunca la he visto antes.",
+          "known": "No I've never seen her before."
+        }
+      },
+      "components": [
+        [
+          "he",
+          "I have"
+        ],
+        [
+          "visto",
+          "seen"
+        ]
+      ]
+    },
+    "S0309L05": {
+      "lego": [
+        "before",
+        "antes"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "never",
+          "nunca"
+        ],
+        [
+          "I've seen her",
+          "la he visto"
+        ],
+        [
+          "I've seen",
+          "he visto"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0309L05",
+        "seed_context": {
+          "target": "No nunca la he visto antes.",
+          "known": "No I've never seen her before."
+        }
+      }
+    },
+    "S0309L06": {
+      "lego": [
+        "I've never seen her",
+        "nunca la he visto"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "never",
+          "nunca"
+        ],
+        [
+          "I've seen her",
+          "la he visto"
+        ],
+        [
+          "I've seen",
+          "he visto"
+        ],
+        [
+          "before",
+          "antes"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0309L06",
+        "seed_context": {
+          "target": "No nunca la he visto antes.",
+          "known": "No I've never seen her before."
+        }
+      },
+      "components": [
+        [
+          "nunca",
+          "never"
+        ],
+        [
+          "la",
+          "her"
+        ],
+        [
+          "he",
+          "I've"
+        ],
+        [
+          "visto",
+          "seen"
+        ]
+      ]
+    },
+    "S0309L07": {
+      "lego": [
+        "seen before",
+        "visto antes"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "never",
+          "nunca"
+        ],
+        [
+          "I've seen her",
+          "la he visto"
+        ],
+        [
+          "I've seen",
+          "he visto"
+        ],
+        [
+          "before",
+          "antes"
+        ],
+        [
+          "I've never seen her",
+          "nunca la he visto"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0309L07",
+        "seed_context": {
+          "target": "No nunca la he visto antes.",
+          "known": "No I've never seen her before."
+        }
+      },
+      "components": [
+        [
+          "visto",
+          "seen"
+        ],
+        [
+          "antes",
+          "before"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0309.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "total_legos_in_seed": 7,
+    "phrases_to_generate": 84,
+    "recent_context_seeds": 10
+  }
+}

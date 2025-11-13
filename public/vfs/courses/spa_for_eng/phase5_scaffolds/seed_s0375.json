@@ -1,0 +1,284 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0375",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No no sabía qué estaba haciendo.",
+    "known": "No I didn't know what she was doing."
+  },
+  "recent_seed_pairs": {
+    "S0365": [
+      "No escuché lo que ella le dijo a él.",
+      "I didn't hear what she said to him."
+    ],
+    "S0366": [
+      "¿Escuchaste lo que él quería cultivar?",
+      "Did you hear what he wanted to grow?"
+    ],
+    "S0367": [
+      "No nadie me dijo.",
+      "No nobody told me."
+    ],
+    "S0368": [
+      "Sí escuché que él quería cultivar tomates.",
+      "Yes I heard that he wanted to grow tomatoes."
+    ],
+    "S0369": [
+      "Vi varios caballos en la carretera.",
+      "I saw several horses on the road."
+    ],
+    "S0370": [
+      "No vi a nadie que yo conocía.",
+      "I didn't see anyone that I knew."
+    ],
+    "S0371": [
+      "Fui a ver una película el miércoles.",
+      "I went to see a film on Wednesday."
+    ],
+    "S0372": [
+      "¿Viste lo que ella estaba intentando crear?",
+      "Did you see what she was trying to create?"
+    ],
+    "S0373": [
+      "Fue hermoso.",
+      "It was beautiful."
+    ],
+    "S0374": [
+      "Sí pensé que era muy hermoso.",
+      "Yes I thought it was very beautiful."
+    ]
+  },
+  "legos": {
+    "S0375L01": {
+      "lego": [
+        "no",
+        "no"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0375L01",
+        "seed_context": {
+          "target": "No no sabía qué estaba haciendo.",
+          "known": "No I didn't know what she was doing."
+        }
+      }
+    },
+    "S0375L02": {
+      "lego": [
+        "I didn't know",
+        "no sabía"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0375L02",
+        "seed_context": {
+          "target": "No no sabía qué estaba haciendo.",
+          "known": "No I didn't know what she was doing."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "didn't"
+        ],
+        [
+          "sabía",
+          "I know"
+        ]
+      ]
+    },
+    "S0375L03": {
+      "lego": [
+        "I didn't know what she was doing",
+        "no sabía qué estaba haciendo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "I didn't know",
+          "no sabía"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0375L03",
+        "seed_context": {
+          "target": "No no sabía qué estaba haciendo.",
+          "known": "No I didn't know what she was doing."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "didn't"
+        ],
+        [
+          "sabía",
+          "I know"
+        ],
+        [
+          "qué",
+          "what"
+        ],
+        [
+          "estaba",
+          "she was"
+        ],
+        [
+          "haciendo",
+          "doing"
+        ]
+      ]
+    },
+    "S0375L04": {
+      "lego": [
+        "what she was doing",
+        "qué estaba haciendo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "I didn't know",
+          "no sabía"
+        ],
+        [
+          "I didn't know what she was doing",
+          "no sabía qué estaba haciendo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0375L04",
+        "seed_context": {
+          "target": "No no sabía qué estaba haciendo.",
+          "known": "No I didn't know what she was doing."
+        }
+      },
+      "components": [
+        [
+          "qué",
+          "what"
+        ],
+        [
+          "estaba",
+          "she was"
+        ],
+        [
+          "haciendo",
+          "doing"
+        ]
+      ]
+    },
+    "S0375L05": {
+      "lego": [
+        "was doing",
+        "estaba haciendo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "I didn't know",
+          "no sabía"
+        ],
+        [
+          "I didn't know what she was doing",
+          "no sabía qué estaba haciendo"
+        ],
+        [
+          "what she was doing",
+          "qué estaba haciendo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0375L05",
+        "seed_context": {
+          "target": "No no sabía qué estaba haciendo.",
+          "known": "No I didn't know what she was doing."
+        }
+      },
+      "components": [
+        [
+          "estaba",
+          "was"
+        ],
+        [
+          "haciendo",
+          "doing"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0375.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0339",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No, pienso que se ha lastimado bastante mal.",
+    "known": "No I think he's hurt himself quite badly."
+  },
+  "recent_seed_pairs": {
+    "S0329": [
+      "Es importante.",
+      "It's important."
+    ],
+    "S0330": [
+      "No, no creo que sea muy importante.",
+      "No I don't think it's very important."
+    ],
+    "S0331": [
+      "Ella no puede proveer todas las respuestas.",
+      "She can't provide all the answers."
+    ],
+    "S0332": [
+      "Él puede construir una nueva vida para su hermana.",
+      "He can build a new life for his sister."
+    ],
+    "S0333": [
+      "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+      "She said that she can't spend much time with the group."
+    ],
+    "S0334": [
+      "Él dijo que puede dejarte sostener el gatito",
+      "He said that he can let you hold the kitten"
+    ],
+    "S0335": [
+      "Creo que puede añadir algunas ideas valiosas.",
+      "I think that he can add some valuable ideas."
+    ],
+    "S0336": [
+      "No creo que pueda abrir la puerta.",
+      "I don't think that she can open the door."
+    ],
+    "S0337": [
+      "¿Crees que puede continuar jugando?",
+      "Do you think that he can continue to play?"
+    ],
+    "S0338": [
+      "Mal.",
+      "Badly."
+    ]
+  },
+  "legos": {
+    "S0339L01": {
+      "lego": [
+        "no",
+        "no"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0339L01",
+        "seed_context": {
+          "target": "No, pienso que se ha lastimado bastante mal.",
+          "known": "No I think he's hurt himself quite badly."
+        }
+      }
+    },
+    "S0339L02": {
+      "lego": [
+        "I think",
+        "pienso"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0339L02",
+        "seed_context": {
+          "target": "No, pienso que se ha lastimado bastante mal.",
+          "known": "No I think he's hurt himself quite badly."
+        }
+      }
+    },
+    "S0339L03": {
+      "lego": [
+        "I think that",
+        "pienso que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "I think",
+          "pienso"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0339L03",
+        "seed_context": {
+          "target": "No, pienso que se ha lastimado bastante mal.",
+          "known": "No I think he's hurt himself quite badly."
+        }
+      },
+      "components": [
+        [
+          "pienso",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0339L04": {
+      "lego": [
+        "he's hurt himself",
+        "se ha lastimado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "I think",
+          "pienso"
+        ],
+        [
+          "I think that",
+          "pienso que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0339L04",
+        "seed_context": {
+          "target": "No, pienso que se ha lastimado bastante mal.",
+          "known": "No I think he's hurt himself quite badly."
+        }
+      },
+      "components": [
+        [
+          "se",
+          "himself"
+        ],
+        [
+          "ha",
+          "has"
+        ],
+        [
+          "lastimado",
+          "hurt"
+        ]
+      ]
+    },
+    "S0339L05": {
+      "lego": [
+        "quite badly",
+        "bastante mal"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "I think",
+          "pienso"
+        ],
+        [
+          "I think that",
+          "pienso que"
+        ],
+        [
+          "he's hurt himself",
+          "se ha lastimado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0339L05",
+        "seed_context": {
+          "target": "No, pienso que se ha lastimado bastante mal.",
+          "known": "No I think he's hurt himself quite badly."
+        }
+      },
+      "components": [
+        [
+          "bastante",
+          "quite"
+        ],
+        [
+          "mal",
+          "badly"
+        ]
+      ]
+    },
+    "S0339L06": {
+      "lego": [
+        "badly",
+        "mal"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "I think",
+          "pienso"
+        ],
+        [
+          "I think that",
+          "pienso que"
+        ],
+        [
+          "he's hurt himself",
+          "se ha lastimado"
+        ],
+        [
+          "quite badly",
+          "bastante mal"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0339L06",
+        "seed_context": {
+          "target": "No, pienso que se ha lastimado bastante mal.",
+          "known": "No I think he's hurt himself quite badly."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0339.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

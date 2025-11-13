@@ -1,0 +1,462 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0307",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Conozco a ese hombre joven que está sentado allí.",
+    "known": "I know that young man who's sitting over there."
+  },
+  "recent_seed_pairs": {
+    "S0297": [
+      "No conozco a muchas personas que hablan español.",
+      "I don't know many people who speak Spanish."
+    ],
+    "S0298": [
+      "No me queda nada que decir.",
+      "I've got nothing left to say."
+    ],
+    "S0299": [
+      "Él quiere pagar la mitad.",
+      "He wants to pay half."
+    ],
+    "S0300": [
+      "Ella no quiere parecer antipática.",
+      "She doesn't want to seem unfriendly."
+    ],
+    "S0301": [
+      "Él dijo que quiere mostrarte algo.",
+      "He said that he wants to show you something."
+    ],
+    "S0302": [
+      "Ella dijo que no quiere vivir en una ciudad.",
+      "She said that she doesn't want to live in a city."
+    ],
+    "S0303": [
+      "Creo que él quiere sentarse.",
+      "I think that he wants to sit down."
+    ],
+    "S0304": [
+      "Creo que ella no quiere trabajar desde casa.",
+      "I think that she doesn't want to work from home."
+    ],
+    "S0305": [
+      "Mujer.",
+      "Woman."
+    ],
+    "S0306": [
+      "Conozco a esa mujer joven que está hablando con tu amigo.",
+      "I know that young woman who's talking to your friend."
+    ]
+  },
+  "legos": {
+    "S0307L01": {
+      "lego": [
+        "I know",
+        "conozco a"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0307L01",
+        "seed_context": {
+          "target": "Conozco a ese hombre joven que está sentado allí.",
+          "known": "I know that young man who's sitting over there."
+        }
+      },
+      "components": [
+        [
+          "conozco",
+          "I know"
+        ],
+        [
+          "a",
+          "to/personal a"
+        ]
+      ]
+    },
+    "S0307L02": {
+      "lego": [
+        "that young man",
+        "ese hombre joven"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0307L02",
+        "seed_context": {
+          "target": "Conozco a ese hombre joven que está sentado allí.",
+          "known": "I know that young man who's sitting over there."
+        }
+      },
+      "components": [
+        [
+          "ese",
+          "that"
+        ],
+        [
+          "hombre",
+          "man"
+        ],
+        [
+          "joven",
+          "young"
+        ]
+      ]
+    },
+    "S0307L03": {
+      "lego": [
+        "young man",
+        "hombre joven"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young man",
+          "ese hombre joven"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0307L03",
+        "seed_context": {
+          "target": "Conozco a ese hombre joven que está sentado allí.",
+          "known": "I know that young man who's sitting over there."
+        }
+      },
+      "components": [
+        [
+          "hombre",
+          "man"
+        ],
+        [
+          "joven",
+          "young"
+        ]
+      ]
+    },
+    "S0307L04": {
+      "lego": [
+        "who's sitting",
+        "que está sentado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young man",
+          "ese hombre joven"
+        ],
+        [
+          "young man",
+          "hombre joven"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0307L04",
+        "seed_context": {
+          "target": "Conozco a ese hombre joven que está sentado allí.",
+          "known": "I know that young man who's sitting over there."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "who"
+        ],
+        [
+          "está",
+          "is"
+        ],
+        [
+          "sentado",
+          "sitting/seated"
+        ]
+      ]
+    },
+    "S0307L05": {
+      "lego": [
+        "is sitting",
+        "está sentado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young man",
+          "ese hombre joven"
+        ],
+        [
+          "young man",
+          "hombre joven"
+        ],
+        [
+          "who's sitting",
+          "que está sentado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0307L05",
+        "seed_context": {
+          "target": "Conozco a ese hombre joven que está sentado allí.",
+          "known": "I know that young man who's sitting over there."
+        }
+      },
+      "components": [
+        [
+          "está",
+          "is"
+        ],
+        [
+          "sentado",
+          "sitting/seated"
+        ]
+      ]
+    },
+    "S0307L06": {
+      "lego": [
+        "over there",
+        "allí"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young man",
+          "ese hombre joven"
+        ],
+        [
+          "young man",
+          "hombre joven"
+        ],
+        [
+          "who's sitting",
+          "que está sentado"
+        ],
+        [
+          "is sitting",
+          "está sentado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0307L06",
+        "seed_context": {
+          "target": "Conozco a ese hombre joven que está sentado allí.",
+          "known": "I know that young man who's sitting over there."
+        }
+      }
+    },
+    "S0307L07": {
+      "lego": [
+        "sitting over there",
+        "sentado allí"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young man",
+          "ese hombre joven"
+        ],
+        [
+          "young man",
+          "hombre joven"
+        ],
+        [
+          "who's sitting",
+          "que está sentado"
+        ],
+        [
+          "is sitting",
+          "está sentado"
+        ],
+        [
+          "over there",
+          "allí"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0307L07",
+        "seed_context": {
+          "target": "Conozco a ese hombre joven que está sentado allí.",
+          "known": "I know that young man who's sitting over there."
+        }
+      },
+      "components": [
+        [
+          "sentado",
+          "sitting"
+        ],
+        [
+          "allí",
+          "over there"
+        ]
+      ]
+    },
+    "S0307L08": {
+      "lego": [
+        "I know that young man",
+        "conozco a ese hombre joven"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young man",
+          "ese hombre joven"
+        ],
+        [
+          "young man",
+          "hombre joven"
+        ],
+        [
+          "who's sitting",
+          "que está sentado"
+        ],
+        [
+          "is sitting",
+          "está sentado"
+        ],
+        [
+          "over there",
+          "allí"
+        ],
+        [
+          "sitting over there",
+          "sentado allí"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0307L08",
+        "seed_context": {
+          "target": "Conozco a ese hombre joven que está sentado allí.",
+          "known": "I know that young man who's sitting over there."
+        }
+      },
+      "components": [
+        [
+          "conozco",
+          "I know"
+        ],
+        [
+          "a",
+          "personal a"
+        ],
+        [
+          "ese",
+          "that"
+        ],
+        [
+          "hombre",
+          "man"
+        ],
+        [
+          "joven",
+          "young"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0307.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 8,
+    "total_legos_in_seed": 8,
+    "phrases_to_generate": 96,
+    "recent_context_seeds": 10
+  }
+}

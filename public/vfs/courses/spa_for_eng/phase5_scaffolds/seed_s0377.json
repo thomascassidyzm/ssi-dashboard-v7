@@ -1,0 +1,288 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0377",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Fuiste a alguna parte en el mundo el año pasado?",
+    "known": "Did you go anywhere in the world last year?"
+  },
+  "recent_seed_pairs": {
+    "S0367": [
+      "No nadie me dijo.",
+      "No nobody told me."
+    ],
+    "S0368": [
+      "Sí escuché que él quería cultivar tomates.",
+      "Yes I heard that he wanted to grow tomatoes."
+    ],
+    "S0369": [
+      "Vi varios caballos en la carretera.",
+      "I saw several horses on the road."
+    ],
+    "S0370": [
+      "No vi a nadie que yo conocía.",
+      "I didn't see anyone that I knew."
+    ],
+    "S0371": [
+      "Fui a ver una película el miércoles.",
+      "I went to see a film on Wednesday."
+    ],
+    "S0372": [
+      "¿Viste lo que ella estaba intentando crear?",
+      "Did you see what she was trying to create?"
+    ],
+    "S0373": [
+      "Fue hermoso.",
+      "It was beautiful."
+    ],
+    "S0374": [
+      "Sí pensé que era muy hermoso.",
+      "Yes I thought it was very beautiful."
+    ],
+    "S0375": [
+      "No no sabía qué estaba haciendo.",
+      "No I didn't know what she was doing."
+    ],
+    "S0376": [
+      "No fui a ninguna parte el mes pasado.",
+      "I didn't go anywhere last month."
+    ]
+  },
+  "legos": {
+    "S0377L01": {
+      "lego": [
+        "did you go",
+        "fuiste"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0377L01",
+        "seed_context": {
+          "target": "¿Fuiste a alguna parte en el mundo el año pasado?",
+          "known": "Did you go anywhere in the world last year?"
+        }
+      }
+    },
+    "S0377L02": {
+      "lego": [
+        "did you go anywhere",
+        "fuiste a alguna parte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "did you go",
+          "fuiste"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0377L02",
+        "seed_context": {
+          "target": "¿Fuiste a alguna parte en el mundo el año pasado?",
+          "known": "Did you go anywhere in the world last year?"
+        }
+      },
+      "components": [
+        [
+          "fuiste",
+          "did you go"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "alguna",
+          "some"
+        ],
+        [
+          "parte",
+          "where/place"
+        ]
+      ]
+    },
+    "S0377L03": {
+      "lego": [
+        "anywhere",
+        "a alguna parte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "did you go",
+          "fuiste"
+        ],
+        [
+          "did you go anywhere",
+          "fuiste a alguna parte"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0377L03",
+        "seed_context": {
+          "target": "¿Fuiste a alguna parte en el mundo el año pasado?",
+          "known": "Did you go anywhere in the world last year?"
+        }
+      },
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "alguna",
+          "some"
+        ],
+        [
+          "parte",
+          "where/place"
+        ]
+      ]
+    },
+    "S0377L04": {
+      "lego": [
+        "in the world",
+        "en el mundo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "did you go",
+          "fuiste"
+        ],
+        [
+          "did you go anywhere",
+          "fuiste a alguna parte"
+        ],
+        [
+          "anywhere",
+          "a alguna parte"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0377L04",
+        "seed_context": {
+          "target": "¿Fuiste a alguna parte en el mundo el año pasado?",
+          "known": "Did you go anywhere in the world last year?"
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "mundo",
+          "world"
+        ]
+      ]
+    },
+    "S0377L05": {
+      "lego": [
+        "last year",
+        "el año pasado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "did you go",
+          "fuiste"
+        ],
+        [
+          "did you go anywhere",
+          "fuiste a alguna parte"
+        ],
+        [
+          "anywhere",
+          "a alguna parte"
+        ],
+        [
+          "in the world",
+          "en el mundo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0377L05",
+        "seed_context": {
+          "target": "¿Fuiste a alguna parte en el mundo el año pasado?",
+          "known": "Did you go anywhere in the world last year?"
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "año",
+          "year"
+        ],
+        [
+          "pasado",
+          "last"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0377.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

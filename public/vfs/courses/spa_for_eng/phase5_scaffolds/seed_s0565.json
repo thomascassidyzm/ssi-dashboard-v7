@@ -1,0 +1,232 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0565",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Habría pensado en ello más cuidadosamente.",
+    "known": "I'd have thought about it more carefully."
+  },
+  "recent_seed_pairs": {
+    "S0555": [
+      "Y estoy demasiado cansado para traer una nueva.",
+      "And I'm too tired to fetch a new one."
+    ],
+    "S0556": [
+      "Tocan música tarde en la noche.",
+      "They play music late at night."
+    ],
+    "S0557": [
+      "Desearía que no tocaran música tan alta.",
+      "I wish they wouldn't play such loud music."
+    ],
+    "S0558": [
+      "Es tan tarde en la noche.",
+      "It's so late at night."
+    ],
+    "S0559": [
+      "¿Has encontrado el camino por el bosque?",
+      "Have you found the path through the wood?"
+    ],
+    "S0560": [
+      "Va hacia abajo a la playa.",
+      "It goes down to the beach."
+    ],
+    "S0561": [
+      "No me importa si es un carro rápido.",
+      "I don't care if it's a fast car."
+    ],
+    "S0562": [
+      "Solo quiero llegar allí con seguridad.",
+      "I just want to get there safely."
+    ],
+    "S0563": [
+      "No habría podido continuar más tiempo.",
+      "I wouldn't have been able to keep going any longer."
+    ],
+    "S0564": [
+      "No habría podido sin tu ayuda.",
+      "I wouldn't have been able to without your help."
+    ]
+  },
+  "legos": {
+    "S0565L01": {
+      "lego": [
+        "I'd have thought",
+        "habría pensado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0565L01",
+        "seed_context": {
+          "target": "Habría pensado en ello más cuidadosamente.",
+          "known": "I'd have thought about it more carefully."
+        }
+      },
+      "components": [
+        [
+          "habría",
+          "I'd have/would have"
+        ],
+        [
+          "pensado",
+          "thought"
+        ]
+      ]
+    },
+    "S0565L02": {
+      "lego": [
+        "about it",
+        "en ello"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'd have thought",
+          "habría pensado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0565L02",
+        "seed_context": {
+          "target": "Habría pensado en ello más cuidadosamente.",
+          "known": "I'd have thought about it more carefully."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "about/in"
+        ],
+        [
+          "ello",
+          "it"
+        ]
+      ]
+    },
+    "S0565L03": {
+      "lego": [
+        "more carefully",
+        "más cuidadosamente"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'd have thought",
+          "habría pensado"
+        ],
+        [
+          "about it",
+          "en ello"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0565L03",
+        "seed_context": {
+          "target": "Habría pensado en ello más cuidadosamente.",
+          "known": "I'd have thought about it more carefully."
+        }
+      },
+      "components": [
+        [
+          "más",
+          "more"
+        ],
+        [
+          "cuidadosamente",
+          "carefully"
+        ]
+      ]
+    },
+    "S0565L04": {
+      "lego": [
+        "thought about it",
+        "pensado en ello"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'd have thought",
+          "habría pensado"
+        ],
+        [
+          "about it",
+          "en ello"
+        ],
+        [
+          "more carefully",
+          "más cuidadosamente"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0565L04",
+        "seed_context": {
+          "target": "Habría pensado en ello más cuidadosamente.",
+          "known": "I'd have thought about it more carefully."
+        }
+      },
+      "components": [
+        [
+          "pensado",
+          "thought"
+        ],
+        [
+          "en",
+          "about"
+        ],
+        [
+          "ello",
+          "it"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0565.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,436 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0334",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Él dijo que puede dejarte sostener el gatito",
+    "known": "He said that he can let you hold the kitten"
+  },
+  "recent_seed_pairs": {
+    "S0324": [
+      "Esa estudiante tiene las dos manos arriba.",
+      "That student has both of her hands up."
+    ],
+    "S0325": [
+      "Creo que necesita considerar diez problemas posibles.",
+      "I think that he needs to consider ten possible problems."
+    ],
+    "S0326": [
+      "No creo que necesite vender la compañía.",
+      "I don't think that she needs to sell the company."
+    ],
+    "S0327": [
+      "¿Crees que necesita ofrecer otra manera?",
+      "Do you think that she needs to offer another way?"
+    ],
+    "S0328": [
+      "Sí pienso que debería.",
+      "Yes I think she ought to."
+    ],
+    "S0329": [
+      "Es importante.",
+      "It's important."
+    ],
+    "S0330": [
+      "No, no creo que sea muy importante.",
+      "No I don't think it's very important."
+    ],
+    "S0331": [
+      "Ella no puede proveer todas las respuestas.",
+      "She can't provide all the answers."
+    ],
+    "S0332": [
+      "Él puede construir una nueva vida para su hermana.",
+      "He can build a new life for his sister."
+    ],
+    "S0333": [
+      "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+      "She said that she can't spend much time with the group."
+    ]
+  },
+  "legos": {
+    "S0334L01": {
+      "lego": [
+        "he said",
+        "él dijo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0334L01",
+        "seed_context": {
+          "target": "Él dijo que puede dejarte sostener el gatito",
+          "known": "He said that he can let you hold the kitten"
+        }
+      },
+      "components": [
+        [
+          "él",
+          "he"
+        ],
+        [
+          "dijo",
+          "said"
+        ]
+      ]
+    },
+    "S0334L02": {
+      "lego": [
+        "said that",
+        "dijo que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "he said",
+          "él dijo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0334L02",
+        "seed_context": {
+          "target": "Él dijo que puede dejarte sostener el gatito",
+          "known": "He said that he can let you hold the kitten"
+        }
+      },
+      "components": [
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0334L03": {
+      "lego": [
+        "can let you",
+        "puede dejarte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "he said",
+          "él dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0334L03",
+        "seed_context": {
+          "target": "Él dijo que puede dejarte sostener el gatito",
+          "known": "He said that he can let you hold the kitten"
+        }
+      },
+      "components": [
+        [
+          "puede",
+          "can"
+        ],
+        [
+          "dejarte",
+          "let you"
+        ]
+      ]
+    },
+    "S0334L04": {
+      "lego": [
+        "let you",
+        "dejarte"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "he said",
+          "él dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "can let you",
+          "puede dejarte"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0334L04",
+        "seed_context": {
+          "target": "Él dijo que puede dejarte sostener el gatito",
+          "known": "He said that he can let you hold the kitten"
+        }
+      }
+    },
+    "S0334L05": {
+      "lego": [
+        "let you hold",
+        "dejarte sostener"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "he said",
+          "él dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "can let you",
+          "puede dejarte"
+        ],
+        [
+          "let you",
+          "dejarte"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0334L05",
+        "seed_context": {
+          "target": "Él dijo que puede dejarte sostener el gatito",
+          "known": "He said that he can let you hold the kitten"
+        }
+      },
+      "components": [
+        [
+          "dejarte",
+          "let you"
+        ],
+        [
+          "sostener",
+          "hold"
+        ]
+      ]
+    },
+    "S0334L06": {
+      "lego": [
+        "hold",
+        "sostener"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "he said",
+          "él dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "can let you",
+          "puede dejarte"
+        ],
+        [
+          "let you",
+          "dejarte"
+        ],
+        [
+          "let you hold",
+          "dejarte sostener"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0334L06",
+        "seed_context": {
+          "target": "Él dijo que puede dejarte sostener el gatito",
+          "known": "He said that he can let you hold the kitten"
+        }
+      }
+    },
+    "S0334L07": {
+      "lego": [
+        "hold the kitten",
+        "sostener el gatito"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "he said",
+          "él dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "can let you",
+          "puede dejarte"
+        ],
+        [
+          "let you",
+          "dejarte"
+        ],
+        [
+          "let you hold",
+          "dejarte sostener"
+        ],
+        [
+          "hold",
+          "sostener"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0334L07",
+        "seed_context": {
+          "target": "Él dijo que puede dejarte sostener el gatito",
+          "known": "He said that he can let you hold the kitten"
+        }
+      },
+      "components": [
+        [
+          "sostener",
+          "hold"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "gatito",
+          "kitten"
+        ]
+      ]
+    },
+    "S0334L08": {
+      "lego": [
+        "the kitten",
+        "el gatito"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "he said",
+          "él dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "can let you",
+          "puede dejarte"
+        ],
+        [
+          "let you",
+          "dejarte"
+        ],
+        [
+          "let you hold",
+          "dejarte sostener"
+        ],
+        [
+          "hold",
+          "sostener"
+        ],
+        [
+          "hold the kitten",
+          "sostener el gatito"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0334L08",
+        "seed_context": {
+          "target": "Él dijo que puede dejarte sostener el gatito",
+          "known": "He said that he can let you hold the kitten"
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "gatito",
+          "kitten"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0334.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 8,
+    "total_legos_in_seed": 8,
+    "phrases_to_generate": 96,
+    "recent_context_seeds": 10
+  }
+}

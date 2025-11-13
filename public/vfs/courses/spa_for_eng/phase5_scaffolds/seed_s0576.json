@@ -1,0 +1,280 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0576",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Ha sido muy perturbador esperar.",
+    "known": "It has been very upsetting waiting."
+  },
+  "recent_seed_pairs": {
+    "S0566": [
+      "Habría pensado más si hubiera sido mi elección.",
+      "I'd have thought more if it had been my choice."
+    ],
+    "S0567": [
+      "Ha sido encantador pasar tiempo al aire libre observando a los niños jugar.",
+      "It's been lovely spending time outdoors watching the children play."
+    ],
+    "S0568": [
+      "Espero ver una mejora la próxima vez que nos encontremos.",
+      "I'm expecting to see an improvement next time we meet."
+    ],
+    "S0569": [
+      "¿Has decidido cuánto estás dispuesto a pagar?",
+      "Have you decided how much you are willing to pay?"
+    ],
+    "S0570": [
+      "¿Cuánto estás dispuesto a pagar por tu billete?",
+      "How much are you willing to pay for your ticket?"
+    ],
+    "S0571": [
+      "No estoy convencido de que eso sería una muy buena idea.",
+      "I'm not convinced that would be a very good idea."
+    ],
+    "S0572": [
+      "¿Has olvidado lo que pasó la última vez que nos visitaron?",
+      "Have you forgotten what happened the last time they visited us?"
+    ],
+    "S0573": [
+      "Es el tipo de cosa que hace que las vacaciones sean muy especiales.",
+      "It's the kind of thing that makes the holidays very special."
+    ],
+    "S0574": [
+      "Las vacaciones son muy especiales para todos.",
+      "The holidays are very special for everyone."
+    ],
+    "S0575": [
+      "Ha sido perturbador.",
+      "It's been upsetting."
+    ]
+  },
+  "legos": {
+    "S0576L01": {
+      "lego": [
+        "it has been",
+        "ha sido"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0576L01",
+        "seed_context": {
+          "target": "Ha sido muy perturbador esperar.",
+          "known": "It has been very upsetting waiting."
+        }
+      },
+      "components": [
+        [
+          "ha",
+          "has"
+        ],
+        [
+          "sido",
+          "been"
+        ]
+      ]
+    },
+    "S0576L02": {
+      "lego": [
+        "very upsetting",
+        "muy perturbador"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it has been",
+          "ha sido"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0576L02",
+        "seed_context": {
+          "target": "Ha sido muy perturbador esperar.",
+          "known": "It has been very upsetting waiting."
+        }
+      },
+      "components": [
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "perturbador",
+          "upsetting"
+        ]
+      ]
+    },
+    "S0576L03": {
+      "lego": [
+        "waiting",
+        "esperar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "it has been",
+          "ha sido"
+        ],
+        [
+          "very upsetting",
+          "muy perturbador"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0576L03",
+        "seed_context": {
+          "target": "Ha sido muy perturbador esperar.",
+          "known": "It has been very upsetting waiting."
+        }
+      }
+    },
+    "S0576L04": {
+      "lego": [
+        "it has been very upsetting",
+        "ha sido muy perturbador"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it has been",
+          "ha sido"
+        ],
+        [
+          "very upsetting",
+          "muy perturbador"
+        ],
+        [
+          "waiting",
+          "esperar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0576L04",
+        "seed_context": {
+          "target": "Ha sido muy perturbador esperar.",
+          "known": "It has been very upsetting waiting."
+        }
+      },
+      "components": [
+        [
+          "ha",
+          "has"
+        ],
+        [
+          "sido",
+          "been"
+        ],
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "perturbador",
+          "upsetting"
+        ]
+      ]
+    },
+    "S0576L05": {
+      "lego": [
+        "very upsetting waiting",
+        "muy perturbador esperar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it has been",
+          "ha sido"
+        ],
+        [
+          "very upsetting",
+          "muy perturbador"
+        ],
+        [
+          "waiting",
+          "esperar"
+        ],
+        [
+          "it has been very upsetting",
+          "ha sido muy perturbador"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0576L05",
+        "seed_context": {
+          "target": "Ha sido muy perturbador esperar.",
+          "known": "It has been very upsetting waiting."
+        }
+      },
+      "components": [
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "perturbador",
+          "upsetting"
+        ],
+        [
+          "esperar",
+          "waiting"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0576.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

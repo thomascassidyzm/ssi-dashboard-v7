@@ -1,0 +1,314 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0116",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Esta no es la mejor opción que podría hacer.",
+    "known": "This isn't the best choice I could make."
+  },
+  "recent_seed_pairs": {
+    "S0106": [
+      "No necesitamos sentirnos felices, solo necesitamos trabajar duro",
+      "We don't need to feel happy, we just need to work hard."
+    ],
+    "S0107": [
+      "Esperábamos ver lo que estabas haciendo",
+      "We hoped to see what you were doing."
+    ],
+    "S0108": [
+      "No esperábamos despertar en el medio de la noche",
+      "We didn't hope to wake in the middle of the night."
+    ],
+    "S0109": [
+      "Debemos trabajar duro para aprender muchas palabras nuevas",
+      "We must work hard to learn a lot of new words."
+    ],
+    "S0110": [
+      "Somos amigos, y después de que terminemos me gustaría relajarme",
+      "We're friends, and after we finish I'd like to relax."
+    ],
+    "S0111": [
+      "Cuando aprendemos algo nuevo cambia nuestro cerebro",
+      "When we learn something new it changes our brain."
+    ],
+    "S0112": [
+      "Eso fue muy interesante, y no estaba esperándolo",
+      "That was very interesting, and I wasn't expecting it."
+    ],
+    "S0113": [
+      "¿Por qué no puedo recordar lo que dijiste?",
+      "Why can't I remember what you said?"
+    ],
+    "S0114": [
+      "Siento como si estuviera haciendo peor hoy que ayer.",
+      "I feel as if I'm doing worse today than yesterday."
+    ],
+    "S0115": [
+      "No siento como si estuviera preparado para tener una conversación.",
+      "I don't feel as if I'm ready to have a conversation."
+    ]
+  },
+  "legos": {
+    "S0116L01": {
+      "lego": [
+        "this isn't",
+        "esta no es"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0116L01",
+        "seed_context": {
+          "target": "Esta no es la mejor opción que podría hacer.",
+          "known": "This isn't the best choice I could make."
+        }
+      },
+      "components": [
+        [
+          "esta",
+          "this"
+        ],
+        [
+          "no",
+          "not"
+        ],
+        [
+          "es",
+          "is"
+        ]
+      ]
+    },
+    "S0116L02": {
+      "lego": [
+        "the best choice",
+        "la mejor opción"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "this isn't",
+          "esta no es"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0116L02",
+        "seed_context": {
+          "target": "Esta no es la mejor opción que podría hacer.",
+          "known": "This isn't the best choice I could make."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "mejor",
+          "best"
+        ],
+        [
+          "opción",
+          "choice/option"
+        ]
+      ]
+    },
+    "S0116L03": {
+      "lego": [
+        "I could make",
+        "que podría hacer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "this isn't",
+          "esta no es"
+        ],
+        [
+          "the best choice",
+          "la mejor opción"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0116L03",
+        "seed_context": {
+          "target": "Esta no es la mejor opción que podría hacer.",
+          "known": "This isn't the best choice I could make."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "podría",
+          "I could"
+        ],
+        [
+          "hacer",
+          "make/do"
+        ]
+      ]
+    },
+    "S0116L04": {
+      "lego": [
+        "choice I could make",
+        "opción que podría hacer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "this isn't",
+          "esta no es"
+        ],
+        [
+          "the best choice",
+          "la mejor opción"
+        ],
+        [
+          "I could make",
+          "que podría hacer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0116L04",
+        "seed_context": {
+          "target": "Esta no es la mejor opción que podría hacer.",
+          "known": "This isn't the best choice I could make."
+        }
+      },
+      "components": [
+        [
+          "opción",
+          "choice"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "podría",
+          "I could"
+        ],
+        [
+          "hacer",
+          "make"
+        ]
+      ]
+    },
+    "S0116L05": {
+      "lego": [
+        "the best choice I could make",
+        "la mejor opción que podría hacer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "this isn't",
+          "esta no es"
+        ],
+        [
+          "the best choice",
+          "la mejor opción"
+        ],
+        [
+          "I could make",
+          "que podría hacer"
+        ],
+        [
+          "choice I could make",
+          "opción que podría hacer"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0116L05",
+        "seed_context": {
+          "target": "Esta no es la mejor opción que podría hacer.",
+          "known": "This isn't the best choice I could make."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "mejor",
+          "best"
+        ],
+        [
+          "opción",
+          "choice"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "podría",
+          "I could"
+        ],
+        [
+          "hacer",
+          "make"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0116.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

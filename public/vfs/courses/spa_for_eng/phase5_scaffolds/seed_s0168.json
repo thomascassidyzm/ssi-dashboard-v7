@@ -1,0 +1,312 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0168",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Y entonces podré venir y ayudar más tarde.",
+    "known": "And then I'll be able to come and help later on."
+  },
+  "recent_seed_pairs": {
+    "S0158": [
+      "Hablemos de algo más.",
+      "Let's talk about something else."
+    ],
+    "S0159": [
+      "Eso no es lo que estoy intentando decir.",
+      "That isn't what I'm trying to say."
+    ],
+    "S0160": [
+      "¿Cómo dices esta palabra en español?",
+      "How do you say this word in Spanish?"
+    ],
+    "S0161": [
+      "¿Puedes darme ese libro el domingo por la mañana?",
+      "Can you give me that book on Sunday morning?"
+    ],
+    "S0162": [
+      "¿Qué piensas de eso?",
+      "What do you think about that?"
+    ],
+    "S0163": [
+      "Pienso que es interesante.",
+      "I think that it's interesting."
+    ],
+    "S0164": [
+      "Un libro interesante.",
+      "An interesting book"
+    ],
+    "S0165": [
+      "Pero no estoy seguro si es verdad.",
+      "But I'm not sure if it's true."
+    ],
+    "S0166": [
+      "Mi nombre no es muy inusual.",
+      "My name is not very unusual."
+    ],
+    "S0167": [
+      "¿Qué necesitas hacer mañana por la tarde?",
+      "What do you need to do tomorrow afternoon?"
+    ]
+  },
+  "legos": {
+    "S0168L01": {
+      "lego": [
+        "and then",
+        "y entonces"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0168L01",
+        "seed_context": {
+          "target": "Y entonces podré venir y ayudar más tarde.",
+          "known": "And then I'll be able to come and help later on."
+        }
+      },
+      "components": [
+        [
+          "y",
+          "and"
+        ],
+        [
+          "entonces",
+          "then"
+        ]
+      ]
+    },
+    "S0168L02": {
+      "lego": [
+        "I'll be able to",
+        "podré"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "and then",
+          "y entonces"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0168L02",
+        "seed_context": {
+          "target": "Y entonces podré venir y ayudar más tarde.",
+          "known": "And then I'll be able to come and help later on."
+        }
+      }
+    },
+    "S0168L03": {
+      "lego": [
+        "I'll be able to come",
+        "podré venir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "and then",
+          "y entonces"
+        ],
+        [
+          "I'll be able to",
+          "podré"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0168L03",
+        "seed_context": {
+          "target": "Y entonces podré venir y ayudar más tarde.",
+          "known": "And then I'll be able to come and help later on."
+        }
+      },
+      "components": [
+        [
+          "podré",
+          "I'll be able to"
+        ],
+        [
+          "venir",
+          "come"
+        ]
+      ]
+    },
+    "S0168L04": {
+      "lego": [
+        "to come",
+        "venir"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "and then",
+          "y entonces"
+        ],
+        [
+          "I'll be able to",
+          "podré"
+        ],
+        [
+          "I'll be able to come",
+          "podré venir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0168L04",
+        "seed_context": {
+          "target": "Y entonces podré venir y ayudar más tarde.",
+          "known": "And then I'll be able to come and help later on."
+        }
+      }
+    },
+    "S0168L05": {
+      "lego": [
+        "and help",
+        "y ayudar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "and then",
+          "y entonces"
+        ],
+        [
+          "I'll be able to",
+          "podré"
+        ],
+        [
+          "I'll be able to come",
+          "podré venir"
+        ],
+        [
+          "to come",
+          "venir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0168L05",
+        "seed_context": {
+          "target": "Y entonces podré venir y ayudar más tarde.",
+          "known": "And then I'll be able to come and help later on."
+        }
+      },
+      "components": [
+        [
+          "y",
+          "and"
+        ],
+        [
+          "ayudar",
+          "help"
+        ]
+      ]
+    },
+    "S0168L06": {
+      "lego": [
+        "later on",
+        "más tarde"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "and then",
+          "y entonces"
+        ],
+        [
+          "I'll be able to",
+          "podré"
+        ],
+        [
+          "I'll be able to come",
+          "podré venir"
+        ],
+        [
+          "to come",
+          "venir"
+        ],
+        [
+          "and help",
+          "y ayudar"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0168L06",
+        "seed_context": {
+          "target": "Y entonces podré venir y ayudar más tarde.",
+          "known": "And then I'll be able to come and help later on."
+        }
+      },
+      "components": [
+        [
+          "más",
+          "more/later"
+        ],
+        [
+          "tarde",
+          "late"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0168.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

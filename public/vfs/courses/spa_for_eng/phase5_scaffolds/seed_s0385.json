@@ -1,0 +1,194 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0385",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Estuviste de acuerdo con ella?",
+    "known": "Did you agree with her?"
+  },
+  "recent_seed_pairs": {
+    "S0375": [
+      "No no sabía qué estaba haciendo.",
+      "No I didn't know what she was doing."
+    ],
+    "S0376": [
+      "No fui a ninguna parte el mes pasado.",
+      "I didn't go anywhere last month."
+    ],
+    "S0377": [
+      "¿Fuiste a alguna parte en el mundo el año pasado?",
+      "Did you go anywhere in the world last year?"
+    ],
+    "S0378": [
+      "No no tenía suficiente dinero para vacaciones.",
+      "No I didn't have enough money for holidays."
+    ],
+    "S0379": [
+      "Sí tuve suficiente suerte para viajar a África.",
+      "Yes I was lucky enough to travel to Africa."
+    ],
+    "S0380": [
+      "Pregunté qué quería incluir.",
+      "I asked what she wanted to include."
+    ],
+    "S0381": [
+      "No pregunté si quería seguirnos.",
+      "I didn't ask if he wanted to follow us."
+    ],
+    "S0382": [
+      "¿Preguntaste dónde quería ponerlo?",
+      "Did you ask where he wanted to put it?"
+    ],
+    "S0383": [
+      "Sí dijo que quería ponerlo en el jardín.",
+      "Yes he said he wanted to put it in the garden."
+    ],
+    "S0384": [
+      "No pude estar de acuerdo con lo que dijo...",
+      "I couldn't agree with what he said a moment ago."
+    ]
+  },
+  "legos": {
+    "S0385L01": {
+      "lego": [
+        "you agreed",
+        "estuviste de acuerdo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0385L01",
+        "seed_context": {
+          "target": "¿Estuviste de acuerdo con ella?",
+          "known": "Did you agree with her?"
+        }
+      },
+      "components": [
+        [
+          "estuviste",
+          "you were"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "acuerdo",
+          "agreement"
+        ]
+      ]
+    },
+    "S0385L02": {
+      "lego": [
+        "in agreement with her",
+        "de acuerdo con ella"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you agreed",
+          "estuviste de acuerdo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0385L02",
+        "seed_context": {
+          "target": "¿Estuviste de acuerdo con ella?",
+          "known": "Did you agree with her?"
+        }
+      },
+      "components": [
+        [
+          "de",
+          "of"
+        ],
+        [
+          "acuerdo",
+          "agreement"
+        ],
+        [
+          "con",
+          "with"
+        ],
+        [
+          "ella",
+          "her"
+        ]
+      ]
+    },
+    "S0385L03": {
+      "lego": [
+        "with her",
+        "con ella"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you agreed",
+          "estuviste de acuerdo"
+        ],
+        [
+          "in agreement with her",
+          "de acuerdo con ella"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0385L03",
+        "seed_context": {
+          "target": "¿Estuviste de acuerdo con ella?",
+          "known": "Did you agree with her?"
+        }
+      },
+      "components": [
+        [
+          "con",
+          "with"
+        ],
+        [
+          "ella",
+          "her"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0385.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

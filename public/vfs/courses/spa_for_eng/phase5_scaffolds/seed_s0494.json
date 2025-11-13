@@ -1,0 +1,194 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0494",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Qué pasa después de la primera parte del espectáculo?",
+    "known": "What happens after the first part of the show?"
+  },
+  "recent_seed_pairs": {
+    "S0484": [
+      "Está destinada a ser un desafío.",
+      "It's meant to be a challenge."
+    ],
+    "S0485": [
+      "Nada me haría más feliz que escapar.",
+      "Nothing would make me happier than to get away."
+    ],
+    "S0486": [
+      "Creo que tus ojos son hermosos.",
+      "I think your eyes are beautiful."
+    ],
+    "S0487": [
+      "Está bajo el puente.",
+      "It's under the bridge."
+    ],
+    "S0488": [
+      "Está al otro lado de esa línea amarilla.",
+      "It's on the other side of that yellow line."
+    ],
+    "S0489": [
+      "Si no me haces una taza de café fuerte ahora mismo.",
+      "If you don't make me a strong cup of coffee right now."
+    ],
+    "S0490": [
+      "Entonces nunca confiaré en nadie nunca más.",
+      "Then I will never trust anyone ever again."
+    ],
+    "S0491": [
+      "Me encanta la forma en que intentas ayudar.",
+      "I love the way you try to help."
+    ],
+    "S0492": [
+      "¿Cuál de esos lugares crees que es el más interesante?",
+      "Which of those places do you think is the most interesting?"
+    ],
+    "S0493": [
+      "¿Qué va a venir después?",
+      "What's going to come next?"
+    ]
+  },
+  "legos": {
+    "S0494L01": {
+      "lego": [
+        "what happens",
+        "qué pasa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0494L01",
+        "seed_context": {
+          "target": "¿Qué pasa después de la primera parte del espectáculo?",
+          "known": "What happens after the first part of the show?"
+        }
+      },
+      "components": [
+        [
+          "qué",
+          "what"
+        ],
+        [
+          "pasa",
+          "happens"
+        ]
+      ]
+    },
+    "S0494L02": {
+      "lego": [
+        "after the first part",
+        "después de la primera parte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "what happens",
+          "qué pasa"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0494L02",
+        "seed_context": {
+          "target": "¿Qué pasa después de la primera parte del espectáculo?",
+          "known": "What happens after the first part of the show?"
+        }
+      },
+      "components": [
+        [
+          "después",
+          "after"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "primera",
+          "first"
+        ],
+        [
+          "parte",
+          "part"
+        ]
+      ]
+    },
+    "S0494L03": {
+      "lego": [
+        "of the show",
+        "del espectáculo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "what happens",
+          "qué pasa"
+        ],
+        [
+          "after the first part",
+          "después de la primera parte"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0494L03",
+        "seed_context": {
+          "target": "¿Qué pasa después de la primera parte del espectáculo?",
+          "known": "What happens after the first part of the show?"
+        }
+      },
+      "components": [
+        [
+          "del",
+          "of the"
+        ],
+        [
+          "espectáculo",
+          "show/spectacle"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0494.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

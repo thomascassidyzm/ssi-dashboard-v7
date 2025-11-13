@@ -1,0 +1,306 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0426",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Les gustaría amarse pero están infelices.",
+    "known": "They would like to love each other but they're unhappy."
+  },
+  "recent_seed_pairs": {
+    "S0416": [
+      "Quieren liderar el camino el próximo año.",
+      "They want to lead the way next year."
+    ],
+    "S0417": [
+      "¿Quieren matar esas hormigas?",
+      "Do they want to kill those ants?"
+    ],
+    "S0418": [
+      "Necesitan servir a la comunidad.",
+      "They need to serve the community."
+    ],
+    "S0419": [
+      "Si quieren que la gente los quiera.",
+      "If they want people to like them."
+    ],
+    "S0420": [
+      "No necesitan preguntar cuántos años tiene.",
+      "They don't need to ask how old he is."
+    ],
+    "S0421": [
+      "Porque ya saben que se está poniendo débil.",
+      "Because they already know he's getting weak."
+    ],
+    "S0422": [
+      "Una pregunta.",
+      "A question."
+    ],
+    "S0423": [
+      "¿Necesitan preguntar una pregunta tan obvia?",
+      "Do they need to ask such an obvious question?"
+    ],
+    "S0424": [
+      "No están perdiendo el tiempo de todos.",
+      "No they're wasting everybody's time."
+    ],
+    "S0425": [
+      "Sí necesitan asegurarse de que entienden.",
+      "Yes they need to make sure they understand."
+    ]
+  },
+  "legos": {
+    "S0426L01": {
+      "lego": [
+        "they would like",
+        "les gustaría"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0426L01",
+        "seed_context": {
+          "target": "Les gustaría amarse pero están infelices.",
+          "known": "They would like to love each other but they're unhappy."
+        }
+      },
+      "components": [
+        [
+          "les",
+          "to them"
+        ],
+        [
+          "gustaría",
+          "would please"
+        ]
+      ]
+    },
+    "S0426L02": {
+      "lego": [
+        "they would like to love each other",
+        "les gustaría amarse"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they would like",
+          "les gustaría"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0426L02",
+        "seed_context": {
+          "target": "Les gustaría amarse pero están infelices.",
+          "known": "They would like to love each other but they're unhappy."
+        }
+      },
+      "components": [
+        [
+          "les",
+          "to them"
+        ],
+        [
+          "gustaría",
+          "would please"
+        ],
+        [
+          "amarse",
+          "to love each other"
+        ]
+      ]
+    },
+    "S0426L03": {
+      "lego": [
+        "to love each other",
+        "amarse"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "they would like",
+          "les gustaría"
+        ],
+        [
+          "they would like to love each other",
+          "les gustaría amarse"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0426L03",
+        "seed_context": {
+          "target": "Les gustaría amarse pero están infelices.",
+          "known": "They would like to love each other but they're unhappy."
+        }
+      }
+    },
+    "S0426L04": {
+      "lego": [
+        "but",
+        "pero"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "they would like",
+          "les gustaría"
+        ],
+        [
+          "they would like to love each other",
+          "les gustaría amarse"
+        ],
+        [
+          "to love each other",
+          "amarse"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0426L04",
+        "seed_context": {
+          "target": "Les gustaría amarse pero están infelices.",
+          "known": "They would like to love each other but they're unhappy."
+        }
+      }
+    },
+    "S0426L05": {
+      "lego": [
+        "they're unhappy",
+        "están infelices"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they would like",
+          "les gustaría"
+        ],
+        [
+          "they would like to love each other",
+          "les gustaría amarse"
+        ],
+        [
+          "to love each other",
+          "amarse"
+        ],
+        [
+          "but",
+          "pero"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0426L05",
+        "seed_context": {
+          "target": "Les gustaría amarse pero están infelices.",
+          "known": "They would like to love each other but they're unhappy."
+        }
+      },
+      "components": [
+        [
+          "están",
+          "they are"
+        ],
+        [
+          "infelices",
+          "unhappy"
+        ]
+      ]
+    },
+    "S0426L06": {
+      "lego": [
+        "unhappy",
+        "infelices"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "they would like",
+          "les gustaría"
+        ],
+        [
+          "they would like to love each other",
+          "les gustaría amarse"
+        ],
+        [
+          "to love each other",
+          "amarse"
+        ],
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "they're unhappy",
+          "están infelices"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0426L06",
+        "seed_context": {
+          "target": "Les gustaría amarse pero están infelices.",
+          "known": "They would like to love each other but they're unhappy."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0426.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

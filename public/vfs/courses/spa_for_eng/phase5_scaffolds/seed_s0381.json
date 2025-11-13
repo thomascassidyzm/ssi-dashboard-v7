@@ -1,0 +1,222 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0381",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No pregunté si quería seguirnos.",
+    "known": "I didn't ask if he wanted to follow us."
+  },
+  "recent_seed_pairs": {
+    "S0371": [
+      "Fui a ver una película el miércoles.",
+      "I went to see a film on Wednesday."
+    ],
+    "S0372": [
+      "¿Viste lo que ella estaba intentando crear?",
+      "Did you see what she was trying to create?"
+    ],
+    "S0373": [
+      "Fue hermoso.",
+      "It was beautiful."
+    ],
+    "S0374": [
+      "Sí pensé que era muy hermoso.",
+      "Yes I thought it was very beautiful."
+    ],
+    "S0375": [
+      "No no sabía qué estaba haciendo.",
+      "No I didn't know what she was doing."
+    ],
+    "S0376": [
+      "No fui a ninguna parte el mes pasado.",
+      "I didn't go anywhere last month."
+    ],
+    "S0377": [
+      "¿Fuiste a alguna parte en el mundo el año pasado?",
+      "Did you go anywhere in the world last year?"
+    ],
+    "S0378": [
+      "No no tenía suficiente dinero para vacaciones.",
+      "No I didn't have enough money for holidays."
+    ],
+    "S0379": [
+      "Sí tuve suficiente suerte para viajar a África.",
+      "Yes I was lucky enough to travel to Africa."
+    ],
+    "S0380": [
+      "Pregunté qué quería incluir.",
+      "I asked what she wanted to include."
+    ]
+  },
+  "legos": {
+    "S0381L01": {
+      "lego": [
+        "I didn't ask",
+        "No pregunté"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0381L01",
+        "seed_context": {
+          "target": "No pregunté si quería seguirnos.",
+          "known": "I didn't ask if he wanted to follow us."
+        }
+      },
+      "components": [
+        [
+          "No",
+          "I didn't"
+        ],
+        [
+          "pregunté",
+          "ask"
+        ]
+      ]
+    },
+    "S0381L02": {
+      "lego": [
+        "if he wanted to follow us",
+        "si quería seguirnos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I didn't ask",
+          "No pregunté"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0381L02",
+        "seed_context": {
+          "target": "No pregunté si quería seguirnos.",
+          "known": "I didn't ask if he wanted to follow us."
+        }
+      },
+      "components": [
+        [
+          "si",
+          "if"
+        ],
+        [
+          "quería",
+          "he wanted"
+        ],
+        [
+          "seguirnos",
+          "to follow us"
+        ]
+      ]
+    },
+    "S0381L03": {
+      "lego": [
+        "he wanted to follow us",
+        "quería seguirnos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I didn't ask",
+          "No pregunté"
+        ],
+        [
+          "if he wanted to follow us",
+          "si quería seguirnos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0381L03",
+        "seed_context": {
+          "target": "No pregunté si quería seguirnos.",
+          "known": "I didn't ask if he wanted to follow us."
+        }
+      },
+      "components": [
+        [
+          "quería",
+          "he wanted"
+        ],
+        [
+          "seguirnos",
+          "to follow us"
+        ]
+      ]
+    },
+    "S0381L04": {
+      "lego": [
+        "follow us",
+        "seguirnos"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I didn't ask",
+          "No pregunté"
+        ],
+        [
+          "if he wanted to follow us",
+          "si quería seguirnos"
+        ],
+        [
+          "he wanted to follow us",
+          "quería seguirnos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0381L04",
+        "seed_context": {
+          "target": "No pregunté si quería seguirnos.",
+          "known": "I didn't ask if he wanted to follow us."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0381.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

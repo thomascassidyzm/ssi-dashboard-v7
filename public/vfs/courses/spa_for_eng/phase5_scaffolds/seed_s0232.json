@@ -1,0 +1,230 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0232",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Conozco a una mujer vieja que puede recordar la respuesta.",
+    "known": "I know an old woman who can remember the answer."
+  },
+  "recent_seed_pairs": {
+    "S0222": [
+      "Está intentando decirme lo que quiere.",
+      "He's trying to tell me what he wants"
+    ],
+    "S0223": [
+      "Va a preguntarte mañana.",
+      "He's going to ask you tomorrow."
+    ],
+    "S0224": [
+      "Acaba de empezar a aprender.",
+      "He's just started to learn."
+    ],
+    "S0225": [
+      "Te daría una respuesta si pudiera.",
+      "He would give you an answer if he could."
+    ],
+    "S0226": [
+      "El hombre está intentando ayudarme.",
+      "The man is trying to help me."
+    ],
+    "S0227": [
+      "Ese hombre va a decirme algo nuevo.",
+      "That man is going to tell me something new."
+    ],
+    "S0228": [
+      "Ese hombre acaba de empezar a practicar el habla.",
+      "That man has just started to practise speaking."
+    ],
+    "S0229": [
+      "Esa mujer te ayudaría si pudiera.",
+      "That woman would help you if she could."
+    ],
+    "S0230": [
+      "Conozco a un hombre joven que quiere trabajar contigo.",
+      "I know a young man who wants to work with you."
+    ],
+    "S0231": [
+      "Conozco a un hombre viejo que quería pedir ayuda.",
+      "I know an old man who wanted to ask for help."
+    ]
+  },
+  "legos": {
+    "S0232L01": {
+      "lego": [
+        "I know an old woman",
+        "conozco a una mujer vieja"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0232L01",
+        "seed_context": {
+          "target": "Conozco a una mujer vieja que puede recordar la respuesta.",
+          "known": "I know an old woman who can remember the answer."
+        }
+      },
+      "components": [
+        [
+          "conozco",
+          "I know"
+        ],
+        [
+          "a",
+          "to/a"
+        ],
+        [
+          "una",
+          "an/a"
+        ],
+        [
+          "mujer",
+          "woman"
+        ],
+        [
+          "vieja",
+          "old"
+        ]
+      ]
+    },
+    "S0232L02": {
+      "lego": [
+        "who",
+        "que"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I know an old woman",
+          "conozco a una mujer vieja"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0232L02",
+        "seed_context": {
+          "target": "Conozco a una mujer vieja que puede recordar la respuesta.",
+          "known": "I know an old woman who can remember the answer."
+        }
+      }
+    },
+    "S0232L03": {
+      "lego": [
+        "can remember",
+        "puede recordar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know an old woman",
+          "conozco a una mujer vieja"
+        ],
+        [
+          "who",
+          "que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0232L03",
+        "seed_context": {
+          "target": "Conozco a una mujer vieja que puede recordar la respuesta.",
+          "known": "I know an old woman who can remember the answer."
+        }
+      },
+      "components": [
+        [
+          "puede",
+          "can"
+        ],
+        [
+          "recordar",
+          "to remember"
+        ]
+      ]
+    },
+    "S0232L04": {
+      "lego": [
+        "the answer",
+        "la respuesta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know an old woman",
+          "conozco a una mujer vieja"
+        ],
+        [
+          "who",
+          "que"
+        ],
+        [
+          "can remember",
+          "puede recordar"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0232L04",
+        "seed_context": {
+          "target": "Conozco a una mujer vieja que puede recordar la respuesta.",
+          "known": "I know an old woman who can remember the answer."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "respuesta",
+          "answer"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0232.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

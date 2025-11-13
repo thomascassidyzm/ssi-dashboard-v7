@@ -1,0 +1,102 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0422",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Una pregunta.",
+    "known": "A question."
+  },
+  "recent_seed_pairs": {
+    "S0412": [
+      "No podríamos permitirles ganar todo.",
+      "We couldn't allow them to win everything."
+    ],
+    "S0413": [
+      "Podríamos caer si vamos demasiado cerca del borde.",
+      "We could fall if we go too close to the edge."
+    ],
+    "S0414": [
+      "¿Podríamos tener una botella de vino tinto por favor?",
+      "Could we have a bottle of red wine please?"
+    ],
+    "S0415": [
+      "Eso no sería un problema si me preguntas.",
+      "That wouldn't be a problem if you ask me."
+    ],
+    "S0416": [
+      "Quieren liderar el camino el próximo año.",
+      "They want to lead the way next year."
+    ],
+    "S0417": [
+      "¿Quieren matar esas hormigas?",
+      "Do they want to kill those ants?"
+    ],
+    "S0418": [
+      "Necesitan servir a la comunidad.",
+      "They need to serve the community."
+    ],
+    "S0419": [
+      "Si quieren que la gente los quiera.",
+      "If they want people to like them."
+    ],
+    "S0420": [
+      "No necesitan preguntar cuántos años tiene.",
+      "They don't need to ask how old he is."
+    ],
+    "S0421": [
+      "Porque ya saben que se está poniendo débil.",
+      "Because they already know he's getting weak."
+    ]
+  },
+  "legos": {
+    "S0422L01": {
+      "lego": [
+        "a question",
+        "una pregunta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0422L01",
+        "seed_context": {
+          "target": "Una pregunta.",
+          "known": "A question."
+        }
+      },
+      "components": [
+        [
+          "una",
+          "a"
+        ],
+        [
+          "pregunta",
+          "question"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0422.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 1,
+    "total_legos_in_seed": 1,
+    "phrases_to_generate": 12,
+    "recent_context_seeds": 10
+  }
+}

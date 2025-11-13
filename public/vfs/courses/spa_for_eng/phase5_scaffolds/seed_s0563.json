@@ -1,0 +1,226 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0563",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No habría podido continuar más tiempo.",
+    "known": "I wouldn't have been able to keep going any longer."
+  },
+  "recent_seed_pairs": {
+    "S0553": [
+      "Creo que la iglesia pequeña es muy fea.",
+      "I think the small church is very ugly."
+    ],
+    "S0554": [
+      "Esta toalla no está seca.",
+      "This towel isn't dry."
+    ],
+    "S0555": [
+      "Y estoy demasiado cansado para traer una nueva.",
+      "And I'm too tired to fetch a new one."
+    ],
+    "S0556": [
+      "Tocan música tarde en la noche.",
+      "They play music late at night."
+    ],
+    "S0557": [
+      "Desearía que no tocaran música tan alta.",
+      "I wish they wouldn't play such loud music."
+    ],
+    "S0558": [
+      "Es tan tarde en la noche.",
+      "It's so late at night."
+    ],
+    "S0559": [
+      "¿Has encontrado el camino por el bosque?",
+      "Have you found the path through the wood?"
+    ],
+    "S0560": [
+      "Va hacia abajo a la playa.",
+      "It goes down to the beach."
+    ],
+    "S0561": [
+      "No me importa si es un carro rápido.",
+      "I don't care if it's a fast car."
+    ],
+    "S0562": [
+      "Solo quiero llegar allí con seguridad.",
+      "I just want to get there safely."
+    ]
+  },
+  "legos": {
+    "S0563L01": {
+      "lego": [
+        "I wouldn't have been able",
+        "no habría podido"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0563L01",
+        "seed_context": {
+          "target": "No habría podido continuar más tiempo.",
+          "known": "I wouldn't have been able to keep going any longer."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not/wouldn't"
+        ],
+        [
+          "habría",
+          "would have"
+        ],
+        [
+          "podido",
+          "been able"
+        ]
+      ]
+    },
+    "S0563L02": {
+      "lego": [
+        "to keep going",
+        "continuar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I wouldn't have been able",
+          "no habría podido"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0563L02",
+        "seed_context": {
+          "target": "No habría podido continuar más tiempo.",
+          "known": "I wouldn't have been able to keep going any longer."
+        }
+      }
+    },
+    "S0563L03": {
+      "lego": [
+        "any longer",
+        "más tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I wouldn't have been able",
+          "no habría podido"
+        ],
+        [
+          "to keep going",
+          "continuar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0563L03",
+        "seed_context": {
+          "target": "No habría podido continuar más tiempo.",
+          "known": "I wouldn't have been able to keep going any longer."
+        }
+      },
+      "components": [
+        [
+          "más",
+          "more/any"
+        ],
+        [
+          "tiempo",
+          "time/longer"
+        ]
+      ]
+    },
+    "S0563L04": {
+      "lego": [
+        "keep going any longer",
+        "continuar más tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I wouldn't have been able",
+          "no habría podido"
+        ],
+        [
+          "to keep going",
+          "continuar"
+        ],
+        [
+          "any longer",
+          "más tiempo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0563L04",
+        "seed_context": {
+          "target": "No habría podido continuar más tiempo.",
+          "known": "I wouldn't have been able to keep going any longer."
+        }
+      },
+      "components": [
+        [
+          "continuar",
+          "keep going/continue"
+        ],
+        [
+          "más",
+          "more"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0563.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

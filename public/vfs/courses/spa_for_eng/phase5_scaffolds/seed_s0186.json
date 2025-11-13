@@ -1,0 +1,338 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0186",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Quieres hablar de algo diferente la próxima semana?",
+    "known": "Do you want to talk about something different next week?"
+  },
+  "recent_seed_pairs": {
+    "S0176": [
+      "Le preguntaré si podrá ayudar el año próximo.",
+      "I'll ask him if he'll be able to help next year."
+    ],
+    "S0177": [
+      "Le preguntaré dónde quiere ir.",
+      "I'll ask her where she wants to go."
+    ],
+    "S0178": [
+      "No tuve tiempo, aunque quería verte.",
+      "I didn't have time, although I wanted to see you."
+    ],
+    "S0179": [
+      "¿Qué vas a hacer el domingo por la tarde?",
+      "What are you going to do on Sunday afternoon?"
+    ],
+    "S0180": [
+      "Me gustaría leer mi libro por un rato.",
+      "I'd like to read my book for a while."
+    ],
+    "S0181": [
+      "Pero tengo que llevar a mi madre al doctor.",
+      "But I have to take my mother to the doctor."
+    ],
+    "S0182": [
+      "¿Has visto mis llaves en algún lugar?",
+      "Have you seen my keys anywhere?"
+    ],
+    "S0183": [
+      "No, me temo que no las he visto.",
+      "No I'm afraid I haven't seen them."
+    ],
+    "S0184": [
+      "Sí las vi en la oficina hace un rato.",
+      "Yes I saw them in the office a while ago."
+    ],
+    "S0185": [
+      "Creo que las dejaste en el trabajo.",
+      "I think you left them at work."
+    ]
+  },
+  "legos": {
+    "S0186L01": {
+      "lego": [
+        "Do you want",
+        "Quieres"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0186L01",
+        "seed_context": {
+          "target": "¿Quieres hablar de algo diferente la próxima semana?",
+          "known": "Do you want to talk about something different next week?"
+        }
+      }
+    },
+    "S0186L02": {
+      "lego": [
+        "to talk about",
+        "hablar de"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Do you want",
+          "Quieres"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0186L02",
+        "seed_context": {
+          "target": "¿Quieres hablar de algo diferente la próxima semana?",
+          "known": "Do you want to talk about something different next week?"
+        }
+      },
+      "components": [
+        [
+          "hablar",
+          "to talk"
+        ],
+        [
+          "de",
+          "about/of"
+        ]
+      ]
+    },
+    "S0186L03": {
+      "lego": [
+        "Do you want to talk about",
+        "Quieres hablar de"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Do you want",
+          "Quieres"
+        ],
+        [
+          "to talk about",
+          "hablar de"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0186L03",
+        "seed_context": {
+          "target": "¿Quieres hablar de algo diferente la próxima semana?",
+          "known": "Do you want to talk about something different next week?"
+        }
+      },
+      "components": [
+        [
+          "Quieres",
+          "Do you want"
+        ],
+        [
+          "hablar",
+          "to talk"
+        ],
+        [
+          "de",
+          "about"
+        ]
+      ]
+    },
+    "S0186L04": {
+      "lego": [
+        "something different",
+        "algo diferente"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Do you want",
+          "Quieres"
+        ],
+        [
+          "to talk about",
+          "hablar de"
+        ],
+        [
+          "Do you want to talk about",
+          "Quieres hablar de"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0186L04",
+        "seed_context": {
+          "target": "¿Quieres hablar de algo diferente la próxima semana?",
+          "known": "Do you want to talk about something different next week?"
+        }
+      },
+      "components": [
+        [
+          "algo",
+          "something"
+        ],
+        [
+          "diferente",
+          "different"
+        ]
+      ]
+    },
+    "S0186L05": {
+      "lego": [
+        "to talk about something different",
+        "hablar de algo diferente"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Do you want",
+          "Quieres"
+        ],
+        [
+          "to talk about",
+          "hablar de"
+        ],
+        [
+          "Do you want to talk about",
+          "Quieres hablar de"
+        ],
+        [
+          "something different",
+          "algo diferente"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0186L05",
+        "seed_context": {
+          "target": "¿Quieres hablar de algo diferente la próxima semana?",
+          "known": "Do you want to talk about something different next week?"
+        }
+      },
+      "components": [
+        [
+          "hablar",
+          "to talk"
+        ],
+        [
+          "de",
+          "about"
+        ],
+        [
+          "algo",
+          "something"
+        ],
+        [
+          "diferente",
+          "different"
+        ]
+      ]
+    },
+    "S0186L06": {
+      "lego": [
+        "next week",
+        "la próxima semana"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Do you want",
+          "Quieres"
+        ],
+        [
+          "to talk about",
+          "hablar de"
+        ],
+        [
+          "Do you want to talk about",
+          "Quieres hablar de"
+        ],
+        [
+          "something different",
+          "algo diferente"
+        ],
+        [
+          "to talk about something different",
+          "hablar de algo diferente"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0186L06",
+        "seed_context": {
+          "target": "¿Quieres hablar de algo diferente la próxima semana?",
+          "known": "Do you want to talk about something different next week?"
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "próxima",
+          "next"
+        ],
+        [
+          "semana",
+          "week"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0186.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

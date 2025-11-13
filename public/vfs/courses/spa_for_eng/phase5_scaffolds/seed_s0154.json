@@ -1,0 +1,184 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0154",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Dónde quieres encontrarte el sábado por la noche?",
+    "known": "Where do you want to meet on Saturday night?"
+  },
+  "recent_seed_pairs": {
+    "S0144": [
+      "Me desperté más temprano de lo que quería esta mañana.",
+      "I woke earlier than I wanted to this morning."
+    ],
+    "S0145": [
+      "¿Por qué no estás feliz ya?",
+      "Why are you not happy any more?"
+    ],
+    "S0146": [
+      "Nada parece estar funcionando desde que intentamos arreglarlo.",
+      "Nothing seems to be working since we tried to fix it."
+    ],
+    "S0147": [
+      "Ella era muy amable cuando me vio sintiéndome nervioso.",
+      "She was very kind when she saw me feeling nervous."
+    ],
+    "S0148": [
+      "Él no era muy paciente cuando no pude responder.",
+      "He wasn't very patient when I couldn't answer."
+    ],
+    "S0149": [
+      "Esto no es muy difícil, entonces espero que termines pronto.",
+      "This isn't very difficult, so I hope you'll finish soon."
+    ],
+    "S0150": [
+      "¿Puedes decirme cuál es tu nombre?",
+      "Can you tell me what your name is?"
+    ],
+    "S0151": [
+      "Eso no era lo que estaba esperando que pasara.",
+      "That wasn't what I was hoping would happen."
+    ],
+    "S0152": [
+      "Lo habría hecho diferentemente si hubiera sabido lo que querías.",
+      "I would have done it differently if I had known what you wanted."
+    ],
+    "S0153": [
+      "No lo habría dicho exactamente de la misma manera.",
+      "I wouldn't have said it in exactly the same way."
+    ]
+  },
+  "legos": {
+    "S0154L01": {
+      "lego": [
+        "where",
+        "dónde"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0154L01",
+        "seed_context": {
+          "target": "¿Dónde quieres encontrarte el sábado por la noche?",
+          "known": "Where do you want to meet on Saturday night?"
+        }
+      }
+    },
+    "S0154L02": {
+      "lego": [
+        "you want to meet",
+        "quieres encontrarte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "where",
+          "dónde"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0154L02",
+        "seed_context": {
+          "target": "¿Dónde quieres encontrarte el sábado por la noche?",
+          "known": "Where do you want to meet on Saturday night?"
+        }
+      },
+      "components": [
+        [
+          "quieres",
+          "you want"
+        ],
+        [
+          "encontrarte",
+          "to meet/find yourself"
+        ]
+      ]
+    },
+    "S0154L03": {
+      "lego": [
+        "on Saturday night",
+        "el sábado por la noche"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "where",
+          "dónde"
+        ],
+        [
+          "you want to meet",
+          "quieres encontrarte"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0154L03",
+        "seed_context": {
+          "target": "¿Dónde quieres encontrarte el sábado por la noche?",
+          "known": "Where do you want to meet on Saturday night?"
+        }
+      },
+      "components": [
+        [
+          "el",
+          "on"
+        ],
+        [
+          "sábado",
+          "Saturday"
+        ],
+        [
+          "por",
+          "by/in"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "noche",
+          "night"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0154.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

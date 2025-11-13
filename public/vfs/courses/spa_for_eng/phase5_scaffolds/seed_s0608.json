@@ -1,0 +1,236 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0608",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Habría sido lo sensato que hacer.",
+    "known": "It would have been the sensible thing to do."
+  },
+  "recent_seed_pairs": {
+    "S0598": [
+      "Ha oído mil historias sobre lo que estaban haciendo.",
+      "He's heard a thousand stories about what they were doing."
+    ],
+    "S0599": [
+      "Habría estado feliz de conducir si me lo hubieras dicho.",
+      "I'd have been happy to drive if you'd told me."
+    ],
+    "S0600": [
+      "Habría conducido si me hubieras dicho lo cansado que estabas.",
+      "I'd have driven if you'd told me how tired you were."
+    ],
+    "S0601": [
+      "Estábamos hablando sobre cómo empezó todo.",
+      "We were talking about how it all started."
+    ],
+    "S0602": [
+      "Cómo empezó en primer lugar.",
+      "How it started in the first place."
+    ],
+    "S0603": [
+      "No teníamos ningún lugar donde vivir en ese momento.",
+      "We didn't have anywhere to live at the time."
+    ],
+    "S0604": [
+      "Ella se ofreció a dejarnos quedarnos con ella.",
+      "She offered to let us stay with her."
+    ],
+    "S0605": [
+      "Porque necesitábamos ayuda.",
+      "Because we needed help."
+    ],
+    "S0606": [
+      "Si hubiera sabido entonces lo que sé ahora habría esperado.",
+      "If I'd known then what I know now I'd have waited."
+    ],
+    "S0607": [
+      "Si hubiera sabido habría hecho las cosas de manera diferente.",
+      "If I'd known I'd have done things differently."
+    ]
+  },
+  "legos": {
+    "S0608L01": {
+      "lego": [
+        "it would have been",
+        "habría sido"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0608L01",
+        "seed_context": {
+          "target": "Habría sido lo sensato que hacer.",
+          "known": "It would have been the sensible thing to do."
+        }
+      },
+      "components": [
+        [
+          "habría",
+          "would have"
+        ],
+        [
+          "sido",
+          "been"
+        ]
+      ]
+    },
+    "S0608L02": {
+      "lego": [
+        "the sensible thing to do",
+        "lo sensato que hacer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it would have been",
+          "habría sido"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0608L02",
+        "seed_context": {
+          "target": "Habría sido lo sensato que hacer.",
+          "known": "It would have been the sensible thing to do."
+        }
+      },
+      "components": [
+        [
+          "lo",
+          "the"
+        ],
+        [
+          "sensato",
+          "sensible thing"
+        ],
+        [
+          "que",
+          "to"
+        ],
+        [
+          "hacer",
+          "do"
+        ]
+      ]
+    },
+    "S0608L03": {
+      "lego": [
+        "the sensible thing",
+        "lo sensato"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it would have been",
+          "habría sido"
+        ],
+        [
+          "the sensible thing to do",
+          "lo sensato que hacer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0608L03",
+        "seed_context": {
+          "target": "Habría sido lo sensato que hacer.",
+          "known": "It would have been the sensible thing to do."
+        }
+      },
+      "components": [
+        [
+          "lo",
+          "the"
+        ],
+        [
+          "sensato",
+          "sensible thing"
+        ]
+      ]
+    },
+    "S0608L04": {
+      "lego": [
+        "to do",
+        "que hacer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it would have been",
+          "habría sido"
+        ],
+        [
+          "the sensible thing to do",
+          "lo sensato que hacer"
+        ],
+        [
+          "the sensible thing",
+          "lo sensato"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0608L04",
+        "seed_context": {
+          "target": "Habría sido lo sensato que hacer.",
+          "known": "It would have been the sensible thing to do."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "to"
+        ],
+        [
+          "hacer",
+          "do"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0608.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

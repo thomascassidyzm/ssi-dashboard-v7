@@ -1,0 +1,176 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0066",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No es difícil encontrar la respuesta.",
+    "known": "It's not difficult to find the answer."
+  },
+  "recent_seed_pairs": {
+    "S0056": [
+      "Para poder recordar cómo decir unas pocas palabras.",
+      "So I can remember how to say a few words."
+    ],
+    "S0057": [
+      "No puedo recordar cómo decir lo que quería decir.",
+      "I can't remember how to say what I wanted to say."
+    ],
+    "S0058": [
+      "Es interesante cuando comprendes suficientes palabras.",
+      "It's interesting when you understand enough words."
+    ],
+    "S0059": [
+      "Sé hacer lo que necesito hacer la próxima semana.",
+      "I know how to do what I need to do next week."
+    ],
+    "S0060": [
+      "Todavía no sé cómo decir suficientes palabras diferentes.",
+      "I don't know how to say enough different words yet."
+    ],
+    "S0061": [
+      "¿Podrías decir eso otra vez un poco más lentamente?",
+      "Could you say that again a little more slowly?"
+    ],
+    "S0062": [
+      "No estoy seguro si puedo ayudarte al mismo tiempo.",
+      "I'm not sure if I can help you at the same time."
+    ],
+    "S0063": [
+      "¿Estás seguro de que no te importa ayudarme?",
+      "Are you sure you don't mind helping me?"
+    ],
+    "S0064": [
+      "Aprender español no es fácil pero es divertido.",
+      "Learning Spanish isn't easy but it is fun."
+    ],
+    "S0065": [
+      "Es importante tomar tiempo para evaluarte.",
+      "It's important to take time to test yourself."
+    ]
+  },
+  "legos": {
+    "S0066L01": {
+      "lego": [
+        "it's not difficult",
+        "no es difícil"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0066L01",
+        "seed_context": {
+          "target": "No es difícil encontrar la respuesta.",
+          "known": "It's not difficult to find the answer."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "es",
+          "is"
+        ],
+        [
+          "difícil",
+          "difficult"
+        ]
+      ]
+    },
+    "S0066L02": {
+      "lego": [
+        "to find",
+        "encontrar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "it's not difficult",
+          "no es difícil"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0066L02",
+        "seed_context": {
+          "target": "No es difícil encontrar la respuesta.",
+          "known": "It's not difficult to find the answer."
+        }
+      }
+    },
+    "S0066L03": {
+      "lego": [
+        "the answer",
+        "la respuesta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's not difficult",
+          "no es difícil"
+        ],
+        [
+          "to find",
+          "encontrar"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0066L03",
+        "seed_context": {
+          "target": "No es difícil encontrar la respuesta.",
+          "known": "It's not difficult to find the answer."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "respuesta",
+          "answer"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0066.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

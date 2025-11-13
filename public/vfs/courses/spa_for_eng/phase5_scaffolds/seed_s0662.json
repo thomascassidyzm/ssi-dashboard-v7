@@ -1,0 +1,172 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0662",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "todos ustedes lo hablan",
+    "known": "you all speak it"
+  },
+  "recent_seed_pairs": {
+    "S0652": [
+      "¿Qué necesita señor?",
+      "What do you need sir?"
+    ],
+    "S0653": [
+      "¿Le importa señora?",
+      "Do you mind madam?"
+    ],
+    "S0654": [
+      "No estoy seguro de si puedo ayudarte, señor.",
+      "I'm not sure if I can help you, sir."
+    ],
+    "S0655": [
+      "Creo que estás haciéndolo muy bien, señora.",
+      "I think that you're doing very well, madam."
+    ],
+    "S0656": [
+      "con todos ustedes",
+      "with you all"
+    ],
+    "S0657": [
+      "¿cómo se sienten todos ustedes?",
+      "how do you all feel?"
+    ],
+    "S0658": [
+      "¿Quieren todos ustedes?",
+      "Do you all want?"
+    ],
+    "S0659": [
+      "¿Podrían todos ustedes decir eso?",
+      "Could you all say that"
+    ],
+    "S0660": [
+      "Puedo ayudar a todos ustedes",
+      "I can help you all"
+    ],
+    "S0661": [
+      "todos ustedes están haciendo algo",
+      "you're all doing something"
+    ]
+  },
+  "legos": {
+    "S0662L01": {
+      "lego": [
+        "you all",
+        "todos ustedes"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0662L01",
+        "seed_context": {
+          "target": "todos ustedes lo hablan",
+          "known": "you all speak it"
+        }
+      },
+      "components": [
+        [
+          "todos",
+          "all"
+        ],
+        [
+          "ustedes",
+          "you"
+        ]
+      ]
+    },
+    "S0662L02": {
+      "lego": [
+        "speak it",
+        "lo hablan"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you all",
+          "todos ustedes"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0662L02",
+        "seed_context": {
+          "target": "todos ustedes lo hablan",
+          "known": "you all speak it"
+        }
+      },
+      "components": [
+        [
+          "lo",
+          "it"
+        ],
+        [
+          "hablan",
+          "speak"
+        ]
+      ]
+    },
+    "S0662L03": {
+      "lego": [
+        "speak",
+        "hablan"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "you all",
+          "todos ustedes"
+        ],
+        [
+          "speak it",
+          "lo hablan"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0662L03",
+        "seed_context": {
+          "target": "todos ustedes lo hablan",
+          "known": "you all speak it"
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0662.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

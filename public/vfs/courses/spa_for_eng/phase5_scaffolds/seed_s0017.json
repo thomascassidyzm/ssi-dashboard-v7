@@ -1,0 +1,226 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0017",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Ella quiere descubrir cuál es la respuesta.",
+    "known": "She wants to find out what the answer is."
+  },
+  "recent_seed_pairs": {
+    "S0007": [
+      "Quiero intentar tan duro como pueda hoy.",
+      "I want to try as hard as I can today."
+    ],
+    "S0008": [
+      "Voy a intentar explicar lo que quiero decir.",
+      "I'm going to try to explain what I mean."
+    ],
+    "S0009": [
+      "Hablo un poco de español ahora.",
+      "I speak a little Spanish now."
+    ],
+    "S0010": [
+      "No estoy seguro si puedo recordar toda la oración.",
+      "I'm not sure if I can remember the whole sentence."
+    ],
+    "S0011": [
+      "Me gustaría poder hablar después de que termines.",
+      "I'd like to be able to speak after you finish."
+    ],
+    "S0012": [
+      "No me gustaría adivinar lo que va a ocurrir mañana.",
+      "I wouldn't like to guess what's going to happen tomorrow."
+    ],
+    "S0013": [
+      "Hablas español muy bien.",
+      "You speak Spanish very well."
+    ],
+    "S0014": [
+      "¿Hablas español todo el día?",
+      "Do you speak Spanish all day?"
+    ],
+    "S0015": [
+      "Y quiero que hables español conmigo mañana.",
+      "And I want you to speak Spanish with me tomorrow."
+    ],
+    "S0016": [
+      "Él quiere volver con todos los demás más tarde.",
+      "He wants to come back with everyone else later."
+    ]
+  },
+  "legos": {
+    "S0017L01": {
+      "lego": [
+        "she wants",
+        "ella quiere"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0017L01",
+        "seed_context": {
+          "target": "Ella quiere descubrir cuál es la respuesta.",
+          "known": "She wants to find out what the answer is."
+        }
+      },
+      "components": [
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "quiere",
+          "wants"
+        ]
+      ]
+    },
+    "S0017L02": {
+      "lego": [
+        "to find out",
+        "descubrir"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "she wants",
+          "ella quiere"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0017L02",
+        "seed_context": {
+          "target": "Ella quiere descubrir cuál es la respuesta.",
+          "known": "She wants to find out what the answer is."
+        }
+      }
+    },
+    "S0017L03": {
+      "lego": [
+        "what the answer is",
+        "cuál es la respuesta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she wants",
+          "ella quiere"
+        ],
+        [
+          "to find out",
+          "descubrir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0017L03",
+        "seed_context": {
+          "target": "Ella quiere descubrir cuál es la respuesta.",
+          "known": "She wants to find out what the answer is."
+        }
+      },
+      "components": [
+        [
+          "cuál",
+          "what/which"
+        ],
+        [
+          "es",
+          "is"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "respuesta",
+          "answer"
+        ]
+      ]
+    },
+    "S0017L04": {
+      "lego": [
+        "wants to find out",
+        "quiere descubrir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she wants",
+          "ella quiere"
+        ],
+        [
+          "to find out",
+          "descubrir"
+        ],
+        [
+          "what the answer is",
+          "cuál es la respuesta"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0017L04",
+        "seed_context": {
+          "target": "Ella quiere descubrir cuál es la respuesta.",
+          "known": "She wants to find out what the answer is."
+        }
+      },
+      "components": [
+        [
+          "quiere",
+          "wants"
+        ],
+        [
+          "descubrir",
+          "to find out"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0017.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

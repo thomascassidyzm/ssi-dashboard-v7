@@ -1,0 +1,266 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0613",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Probablemente habríamos comprado una casa allí.",
+    "known": "We probably would have bought a house there."
+  },
+  "recent_seed_pairs": {
+    "S0603": [
+      "No teníamos ningún lugar donde vivir en ese momento.",
+      "We didn't have anywhere to live at the time."
+    ],
+    "S0604": [
+      "Ella se ofreció a dejarnos quedarnos con ella.",
+      "She offered to let us stay with her."
+    ],
+    "S0605": [
+      "Porque necesitábamos ayuda.",
+      "Because we needed help."
+    ],
+    "S0606": [
+      "Si hubiera sabido entonces lo que sé ahora habría esperado.",
+      "If I'd known then what I know now I'd have waited."
+    ],
+    "S0607": [
+      "Si hubiera sabido habría hecho las cosas de manera diferente.",
+      "If I'd known I'd have done things differently."
+    ],
+    "S0608": [
+      "Habría sido lo sensato que hacer.",
+      "It would have been the sensible thing to do."
+    ],
+    "S0609": [
+      "Lo sensato que hacer habría sido preguntar.",
+      "The sensible thing to do would have been to ask."
+    ],
+    "S0610": [
+      "Él necesita buscar trabajo.",
+      "He needs to look for work."
+    ],
+    "S0611": [
+      "Yo habría estado preparado para buscar en otro lugar.",
+      "I would have been ready to look somewhere else."
+    ],
+    "S0612": [
+      "Habríamos comprado algo.",
+      "We would have bought something."
+    ]
+  },
+  "legos": {
+    "S0613L01": {
+      "lego": [
+        "probably",
+        "probablemente"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0613L01",
+        "seed_context": {
+          "target": "Probablemente habríamos comprado una casa allí.",
+          "known": "We probably would have bought a house there."
+        }
+      }
+    },
+    "S0613L02": {
+      "lego": [
+        "there",
+        "allí"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "probably",
+          "probablemente"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0613L02",
+        "seed_context": {
+          "target": "Probablemente habríamos comprado una casa allí.",
+          "known": "We probably would have bought a house there."
+        }
+      }
+    },
+    "S0613L03": {
+      "lego": [
+        "we would have bought",
+        "habríamos comprado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "probably",
+          "probablemente"
+        ],
+        [
+          "there",
+          "allí"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0613L03",
+        "seed_context": {
+          "target": "Probablemente habríamos comprado una casa allí.",
+          "known": "We probably would have bought a house there."
+        }
+      },
+      "components": [
+        [
+          "habríamos",
+          "we would have"
+        ],
+        [
+          "comprado",
+          "bought"
+        ]
+      ]
+    },
+    "S0613L04": {
+      "lego": [
+        "a house",
+        "una casa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "probably",
+          "probablemente"
+        ],
+        [
+          "there",
+          "allí"
+        ],
+        [
+          "we would have bought",
+          "habríamos comprado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0613L04",
+        "seed_context": {
+          "target": "Probablemente habríamos comprado una casa allí.",
+          "known": "We probably would have bought a house there."
+        }
+      },
+      "components": [
+        [
+          "una",
+          "a"
+        ],
+        [
+          "casa",
+          "house"
+        ]
+      ]
+    },
+    "S0613L05": {
+      "lego": [
+        "we would have bought a house",
+        "habríamos comprado una casa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "probably",
+          "probablemente"
+        ],
+        [
+          "there",
+          "allí"
+        ],
+        [
+          "we would have bought",
+          "habríamos comprado"
+        ],
+        [
+          "a house",
+          "una casa"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0613L05",
+        "seed_context": {
+          "target": "Probablemente habríamos comprado una casa allí.",
+          "known": "We probably would have bought a house there."
+        }
+      },
+      "components": [
+        [
+          "habríamos",
+          "we would have"
+        ],
+        [
+          "comprado",
+          "bought"
+        ],
+        [
+          "una",
+          "a"
+        ],
+        [
+          "casa",
+          "house"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0613.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

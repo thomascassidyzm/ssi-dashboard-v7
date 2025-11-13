@@ -1,0 +1,298 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0572",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Has olvidado lo que pasó la última vez que nos visitaron?",
+    "known": "Have you forgotten what happened the last time they visited us?"
+  },
+  "recent_seed_pairs": {
+    "S0562": [
+      "Solo quiero llegar allí con seguridad.",
+      "I just want to get there safely."
+    ],
+    "S0563": [
+      "No habría podido continuar más tiempo.",
+      "I wouldn't have been able to keep going any longer."
+    ],
+    "S0564": [
+      "No habría podido sin tu ayuda.",
+      "I wouldn't have been able to without your help."
+    ],
+    "S0565": [
+      "Habría pensado en ello más cuidadosamente.",
+      "I'd have thought about it more carefully."
+    ],
+    "S0566": [
+      "Habría pensado más si hubiera sido mi elección.",
+      "I'd have thought more if it had been my choice."
+    ],
+    "S0567": [
+      "Ha sido encantador pasar tiempo al aire libre observando a los niños jugar.",
+      "It's been lovely spending time outdoors watching the children play."
+    ],
+    "S0568": [
+      "Espero ver una mejora la próxima vez que nos encontremos.",
+      "I'm expecting to see an improvement next time we meet."
+    ],
+    "S0569": [
+      "¿Has decidido cuánto estás dispuesto a pagar?",
+      "Have you decided how much you are willing to pay?"
+    ],
+    "S0570": [
+      "¿Cuánto estás dispuesto a pagar por tu billete?",
+      "How much are you willing to pay for your ticket?"
+    ],
+    "S0571": [
+      "No estoy convencido de que eso sería una muy buena idea.",
+      "I'm not convinced that would be a very good idea."
+    ]
+  },
+  "legos": {
+    "S0572L01": {
+      "lego": [
+        "have you forgotten",
+        "has olvidado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0572L01",
+        "seed_context": {
+          "target": "¿Has olvidado lo que pasó la última vez que nos visitaron?",
+          "known": "Have you forgotten what happened the last time they visited us?"
+        }
+      },
+      "components": [
+        [
+          "has",
+          "have you"
+        ],
+        [
+          "olvidado",
+          "forgotten"
+        ]
+      ]
+    },
+    "S0572L02": {
+      "lego": [
+        "what happened",
+        "lo que pasó"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "have you forgotten",
+          "has olvidado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0572L02",
+        "seed_context": {
+          "target": "¿Has olvidado lo que pasó la última vez que nos visitaron?",
+          "known": "Have you forgotten what happened the last time they visited us?"
+        }
+      },
+      "components": [
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "pasó",
+          "happened"
+        ]
+      ]
+    },
+    "S0572L03": {
+      "lego": [
+        "the last time",
+        "la última vez"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "have you forgotten",
+          "has olvidado"
+        ],
+        [
+          "what happened",
+          "lo que pasó"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0572L03",
+        "seed_context": {
+          "target": "¿Has olvidado lo que pasó la última vez que nos visitaron?",
+          "known": "Have you forgotten what happened the last time they visited us?"
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "última",
+          "last"
+        ],
+        [
+          "vez",
+          "time"
+        ]
+      ]
+    },
+    "S0572L04": {
+      "lego": [
+        "they visited us",
+        "nos visitaron"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "have you forgotten",
+          "has olvidado"
+        ],
+        [
+          "what happened",
+          "lo que pasó"
+        ],
+        [
+          "the last time",
+          "la última vez"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0572L04",
+        "seed_context": {
+          "target": "¿Has olvidado lo que pasó la última vez que nos visitaron?",
+          "known": "Have you forgotten what happened the last time they visited us?"
+        }
+      },
+      "components": [
+        [
+          "nos",
+          "us"
+        ],
+        [
+          "visitaron",
+          "they visited"
+        ]
+      ]
+    },
+    "S0572L05": {
+      "lego": [
+        "the last time they visited us",
+        "la última vez que nos visitaron"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "have you forgotten",
+          "has olvidado"
+        ],
+        [
+          "what happened",
+          "lo que pasó"
+        ],
+        [
+          "the last time",
+          "la última vez"
+        ],
+        [
+          "they visited us",
+          "nos visitaron"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0572L05",
+        "seed_context": {
+          "target": "¿Has olvidado lo que pasó la última vez que nos visitaron?",
+          "known": "Have you forgotten what happened the last time they visited us?"
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "última",
+          "last"
+        ],
+        [
+          "vez",
+          "time"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "nos",
+          "us"
+        ],
+        [
+          "visitaron",
+          "they visited"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0572.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

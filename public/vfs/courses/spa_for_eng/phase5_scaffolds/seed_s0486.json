@@ -1,0 +1,236 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0486",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Creo que tus ojos son hermosos.",
+    "known": "I think your eyes are beautiful."
+  },
+  "recent_seed_pairs": {
+    "S0476": [
+      "Estoy esperando el final de la segunda mitad.",
+      "I'm waiting for the end of the second half."
+    ],
+    "S0477": [
+      "Él ha estado enfermo desde el segundo día de las vacaciones.",
+      "He's been sick since the second day of the holidays."
+    ],
+    "S0478": [
+      "Ella tiene un corazón tan amable.",
+      "She has such a kind heart."
+    ],
+    "S0479": [
+      "Es lo mínimo que podría hacer.",
+      "It's the least I could do."
+    ],
+    "S0480": [
+      "Lo que sea que él diga no está muy lejos ahora.",
+      "Whatever he says it's not far ahead now."
+    ],
+    "S0481": [
+      "Es la única esperanza real que nos queda.",
+      "It's the only real hope we have left."
+    ],
+    "S0482": [
+      "La única esperanza real es que no son serios.",
+      "The only real hope is that they're not serious."
+    ],
+    "S0483": [
+      "La vida no es fácil pero no está destinada a ser fácil.",
+      "Life isn't easy but it's not meant to be easy."
+    ],
+    "S0484": [
+      "Está destinada a ser un desafío.",
+      "It's meant to be a challenge."
+    ],
+    "S0485": [
+      "Nada me haría más feliz que escapar.",
+      "Nothing would make me happier than to get away."
+    ]
+  },
+  "legos": {
+    "S0486L01": {
+      "lego": [
+        "I think that",
+        "creo que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0486L01",
+        "seed_context": {
+          "target": "Creo que tus ojos son hermosos.",
+          "known": "I think your eyes are beautiful."
+        }
+      },
+      "components": [
+        [
+          "creo",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0486L02": {
+      "lego": [
+        "your eyes",
+        "tus ojos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think that",
+          "creo que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0486L02",
+        "seed_context": {
+          "target": "Creo que tus ojos son hermosos.",
+          "known": "I think your eyes are beautiful."
+        }
+      },
+      "components": [
+        [
+          "tus",
+          "your"
+        ],
+        [
+          "ojos",
+          "eyes"
+        ]
+      ]
+    },
+    "S0486L03": {
+      "lego": [
+        "are beautiful",
+        "son hermosos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think that",
+          "creo que"
+        ],
+        [
+          "your eyes",
+          "tus ojos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0486L03",
+        "seed_context": {
+          "target": "Creo que tus ojos son hermosos.",
+          "known": "I think your eyes are beautiful."
+        }
+      },
+      "components": [
+        [
+          "son",
+          "are"
+        ],
+        [
+          "hermosos",
+          "beautiful"
+        ]
+      ]
+    },
+    "S0486L04": {
+      "lego": [
+        "your eyes are beautiful",
+        "tus ojos son hermosos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think that",
+          "creo que"
+        ],
+        [
+          "your eyes",
+          "tus ojos"
+        ],
+        [
+          "are beautiful",
+          "son hermosos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0486L04",
+        "seed_context": {
+          "target": "Creo que tus ojos son hermosos.",
+          "known": "I think your eyes are beautiful."
+        }
+      },
+      "components": [
+        [
+          "tus",
+          "your"
+        ],
+        [
+          "ojos",
+          "eyes"
+        ],
+        [
+          "son",
+          "are"
+        ],
+        [
+          "hermosos",
+          "beautiful"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0486.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

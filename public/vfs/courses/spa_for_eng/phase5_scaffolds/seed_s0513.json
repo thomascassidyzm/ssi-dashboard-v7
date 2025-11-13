@@ -1,0 +1,356 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0513",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Me duele más cuando muevo la cabeza arriba y abajo.",
+    "known": "It hurts most when I move my head up and down."
+  },
+  "recent_seed_pairs": {
+    "S0503": [
+      "Odio causar problemas pero ese es mío.",
+      "I hate making trouble but that one's mine."
+    ],
+    "S0504": [
+      "Voy a correr a través del césped.",
+      "I'm going to run across the grass."
+    ],
+    "S0505": [
+      "Para que no me quede atrás.",
+      "So that I don't get left behind."
+    ],
+    "S0506": [
+      "Solía vivir por aquí hace años antes de que nos mudáramos.",
+      "I used to live around here years ago before we moved."
+    ],
+    "S0507": [
+      "Nos mudamos a la ciudad.",
+      "We moved to the city."
+    ],
+    "S0508": [
+      "No tiene sentido preocuparse por cómo vas a pagar.",
+      "There's no point worrying about how you're going to pay."
+    ],
+    "S0509": [
+      "Oí que vas a pagar por una cama nueva.",
+      "I heard that you're going to pay for a new bed."
+    ],
+    "S0510": [
+      "Ha ido a buscar algún lugar seguro para estacionar el carro.",
+      "She's gone to look for somewhere safe to park the car."
+    ],
+    "S0511": [
+      "Las noticias tardaron varias horas en llegar a todos en la oficina.",
+      "The news took several hours to reach everyone in the office."
+    ],
+    "S0512": [
+      "¿Puedes mantener la puerta abierta mientras busco las llaves?",
+      "Can you hold the door open while I fetch the keys?"
+    ]
+  },
+  "legos": {
+    "S0513L01": {
+      "lego": [
+        "it hurts (me)",
+        "me duele"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0513L01",
+        "seed_context": {
+          "target": "Me duele más cuando muevo la cabeza arriba y abajo.",
+          "known": "It hurts most when I move my head up and down."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "me"
+        ],
+        [
+          "duele",
+          "hurts"
+        ]
+      ]
+    },
+    "S0513L02": {
+      "lego": [
+        "it hurts most",
+        "me duele más"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it hurts (me)",
+          "me duele"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0513L02",
+        "seed_context": {
+          "target": "Me duele más cuando muevo la cabeza arriba y abajo.",
+          "known": "It hurts most when I move my head up and down."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "me"
+        ],
+        [
+          "duele",
+          "hurts"
+        ],
+        [
+          "más",
+          "most/more"
+        ]
+      ]
+    },
+    "S0513L03": {
+      "lego": [
+        "when I move",
+        "cuando muevo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it hurts (me)",
+          "me duele"
+        ],
+        [
+          "it hurts most",
+          "me duele más"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0513L03",
+        "seed_context": {
+          "target": "Me duele más cuando muevo la cabeza arriba y abajo.",
+          "known": "It hurts most when I move my head up and down."
+        }
+      },
+      "components": [
+        [
+          "cuando",
+          "when"
+        ],
+        [
+          "muevo",
+          "I move"
+        ]
+      ]
+    },
+    "S0513L04": {
+      "lego": [
+        "I move my head",
+        "muevo la cabeza"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it hurts (me)",
+          "me duele"
+        ],
+        [
+          "it hurts most",
+          "me duele más"
+        ],
+        [
+          "when I move",
+          "cuando muevo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0513L04",
+        "seed_context": {
+          "target": "Me duele más cuando muevo la cabeza arriba y abajo.",
+          "known": "It hurts most when I move my head up and down."
+        }
+      },
+      "components": [
+        [
+          "muevo",
+          "I move"
+        ],
+        [
+          "la",
+          "the/my"
+        ],
+        [
+          "cabeza",
+          "head"
+        ]
+      ]
+    },
+    "S0513L05": {
+      "lego": [
+        "my head up and down",
+        "la cabeza arriba y abajo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it hurts (me)",
+          "me duele"
+        ],
+        [
+          "it hurts most",
+          "me duele más"
+        ],
+        [
+          "when I move",
+          "cuando muevo"
+        ],
+        [
+          "I move my head",
+          "muevo la cabeza"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0513L05",
+        "seed_context": {
+          "target": "Me duele más cuando muevo la cabeza arriba y abajo.",
+          "known": "It hurts most when I move my head up and down."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "my/the"
+        ],
+        [
+          "cabeza",
+          "head"
+        ],
+        [
+          "arriba",
+          "up"
+        ],
+        [
+          "y",
+          "and"
+        ],
+        [
+          "abajo",
+          "down"
+        ]
+      ]
+    },
+    "S0513L06": {
+      "lego": [
+        "up and down",
+        "arriba y abajo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it hurts (me)",
+          "me duele"
+        ],
+        [
+          "it hurts most",
+          "me duele más"
+        ],
+        [
+          "when I move",
+          "cuando muevo"
+        ],
+        [
+          "I move my head",
+          "muevo la cabeza"
+        ],
+        [
+          "my head up and down",
+          "la cabeza arriba y abajo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0513L06",
+        "seed_context": {
+          "target": "Me duele más cuando muevo la cabeza arriba y abajo.",
+          "known": "It hurts most when I move my head up and down."
+        }
+      },
+      "components": [
+        [
+          "arriba",
+          "up"
+        ],
+        [
+          "y",
+          "and"
+        ],
+        [
+          "abajo",
+          "down"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0513.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

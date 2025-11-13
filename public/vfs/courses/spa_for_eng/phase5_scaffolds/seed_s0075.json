@@ -1,0 +1,184 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0075",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Tienes más que aprender?",
+    "known": "Have you got more to learn?"
+  },
+  "recent_seed_pairs": {
+    "S0065": [
+      "Es importante tomar tiempo para evaluarte.",
+      "It's important to take time to test yourself."
+    ],
+    "S0066": [
+      "No es difícil encontrar la respuesta.",
+      "It's not difficult to find the answer."
+    ],
+    "S0067": [
+      "¿Por qué quieres parar?",
+      "Why do you want to stop?"
+    ],
+    "S0068": [
+      "¿Qué estás buscando?",
+      "What are you looking for?"
+    ],
+    "S0069": [
+      "No quería cuidar el perro joven toda la tarde.",
+      "He didn't want to look after the young dog all afternoon."
+    ],
+    "S0070": [
+      "Ella no quería decirme dónde estaba.",
+      "She didn't want to tell me where it was."
+    ],
+    "S0071": [
+      "No queríamos permitir que nadie oyera la verdad",
+      "We didn't want to let anyone hear the truth."
+    ],
+    "S0072": [
+      "Pienso que estás haciendo muy bien",
+      "I think that you're doing very well."
+    ],
+    "S0073": [
+      "Muchas gracias, pero tengo más que aprender",
+      "Thank you very much, but I've got more to learn."
+    ],
+    "S0074": [
+      "Muchas gracias por ayudarme a comprender",
+      "Thank you very much for helping me to understand."
+    ]
+  },
+  "legos": {
+    "S0075L01": {
+      "lego": [
+        "have you got / do you have",
+        "tienes"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0075L01",
+        "seed_context": {
+          "target": "¿Tienes más que aprender?",
+          "known": "Have you got more to learn?"
+        }
+      }
+    },
+    "S0075L02": {
+      "lego": [
+        "more to learn",
+        "más que aprender"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "have you got / do you have",
+          "tienes"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0075L02",
+        "seed_context": {
+          "target": "¿Tienes más que aprender?",
+          "known": "Have you got more to learn?"
+        }
+      },
+      "components": [
+        [
+          "más",
+          "more"
+        ],
+        [
+          "que",
+          "to"
+        ],
+        [
+          "aprender",
+          "learn"
+        ]
+      ]
+    },
+    "S0075L03": {
+      "lego": [
+        "have you got more to learn",
+        "tienes más que aprender"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "have you got / do you have",
+          "tienes"
+        ],
+        [
+          "more to learn",
+          "más que aprender"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0075L03",
+        "seed_context": {
+          "target": "¿Tienes más que aprender?",
+          "known": "Have you got more to learn?"
+        }
+      },
+      "components": [
+        [
+          "tienes",
+          "you have"
+        ],
+        [
+          "más",
+          "more"
+        ],
+        [
+          "que",
+          "to"
+        ],
+        [
+          "aprender",
+          "learn"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0075.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

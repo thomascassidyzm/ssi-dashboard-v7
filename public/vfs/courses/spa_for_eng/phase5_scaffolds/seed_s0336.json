@@ -1,0 +1,392 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0336",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No creo que pueda abrir la puerta.",
+    "known": "I don't think that she can open the door."
+  },
+  "recent_seed_pairs": {
+    "S0326": [
+      "No creo que necesite vender la compañía.",
+      "I don't think that she needs to sell the company."
+    ],
+    "S0327": [
+      "¿Crees que necesita ofrecer otra manera?",
+      "Do you think that she needs to offer another way?"
+    ],
+    "S0328": [
+      "Sí pienso que debería.",
+      "Yes I think she ought to."
+    ],
+    "S0329": [
+      "Es importante.",
+      "It's important."
+    ],
+    "S0330": [
+      "No, no creo que sea muy importante.",
+      "No I don't think it's very important."
+    ],
+    "S0331": [
+      "Ella no puede proveer todas las respuestas.",
+      "She can't provide all the answers."
+    ],
+    "S0332": [
+      "Él puede construir una nueva vida para su hermana.",
+      "He can build a new life for his sister."
+    ],
+    "S0333": [
+      "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+      "She said that she can't spend much time with the group."
+    ],
+    "S0334": [
+      "Él dijo que puede dejarte sostener el gatito",
+      "He said that he can let you hold the kitten"
+    ],
+    "S0335": [
+      "Creo que puede añadir algunas ideas valiosas.",
+      "I think that he can add some valuable ideas."
+    ]
+  },
+  "legos": {
+    "S0336L01": {
+      "lego": [
+        "I don't think",
+        "no creo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0336L01",
+        "seed_context": {
+          "target": "No creo que pueda abrir la puerta.",
+          "known": "I don't think that she can open the door."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "creo",
+          "I think"
+        ]
+      ]
+    },
+    "S0336L02": {
+      "lego": [
+        "I don't think that she can",
+        "no creo que pueda"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't think",
+          "no creo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0336L02",
+        "seed_context": {
+          "target": "No creo que pueda abrir la puerta.",
+          "known": "I don't think that she can open the door."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "creo",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "pueda",
+          "can (subjunctive)"
+        ]
+      ]
+    },
+    "S0336L03": {
+      "lego": [
+        "that she can",
+        "que pueda"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't think",
+          "no creo"
+        ],
+        [
+          "I don't think that she can",
+          "no creo que pueda"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0336L03",
+        "seed_context": {
+          "target": "No creo que pueda abrir la puerta.",
+          "known": "I don't think that she can open the door."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "pueda",
+          "can (subjunctive)"
+        ]
+      ]
+    },
+    "S0336L04": {
+      "lego": [
+        "can open",
+        "pueda abrir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't think",
+          "no creo"
+        ],
+        [
+          "I don't think that she can",
+          "no creo que pueda"
+        ],
+        [
+          "that she can",
+          "que pueda"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0336L04",
+        "seed_context": {
+          "target": "No creo que pueda abrir la puerta.",
+          "known": "I don't think that she can open the door."
+        }
+      },
+      "components": [
+        [
+          "pueda",
+          "can (subjunctive)"
+        ],
+        [
+          "abrir",
+          "open"
+        ]
+      ]
+    },
+    "S0336L05": {
+      "lego": [
+        "open",
+        "abrir"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I don't think",
+          "no creo"
+        ],
+        [
+          "I don't think that she can",
+          "no creo que pueda"
+        ],
+        [
+          "that she can",
+          "que pueda"
+        ],
+        [
+          "can open",
+          "pueda abrir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0336L05",
+        "seed_context": {
+          "target": "No creo que pueda abrir la puerta.",
+          "known": "I don't think that she can open the door."
+        }
+      }
+    },
+    "S0336L06": {
+      "lego": [
+        "open the door",
+        "abrir la puerta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't think",
+          "no creo"
+        ],
+        [
+          "I don't think that she can",
+          "no creo que pueda"
+        ],
+        [
+          "that she can",
+          "que pueda"
+        ],
+        [
+          "can open",
+          "pueda abrir"
+        ],
+        [
+          "open",
+          "abrir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0336L06",
+        "seed_context": {
+          "target": "No creo que pueda abrir la puerta.",
+          "known": "I don't think that she can open the door."
+        }
+      },
+      "components": [
+        [
+          "abrir",
+          "open"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "puerta",
+          "door"
+        ]
+      ]
+    },
+    "S0336L07": {
+      "lego": [
+        "the door",
+        "la puerta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't think",
+          "no creo"
+        ],
+        [
+          "I don't think that she can",
+          "no creo que pueda"
+        ],
+        [
+          "that she can",
+          "que pueda"
+        ],
+        [
+          "can open",
+          "pueda abrir"
+        ],
+        [
+          "open",
+          "abrir"
+        ],
+        [
+          "open the door",
+          "abrir la puerta"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0336L07",
+        "seed_context": {
+          "target": "No creo que pueda abrir la puerta.",
+          "known": "I don't think that she can open the door."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "puerta",
+          "door"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0336.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "total_legos_in_seed": 7,
+    "phrases_to_generate": 84,
+    "recent_context_seeds": 10
+  }
+}

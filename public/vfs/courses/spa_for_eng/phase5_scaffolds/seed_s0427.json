@@ -1,0 +1,350 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0427",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No les gustaría que pienses que están aburridos.",
+    "known": "They wouldn't like you to think that they're bored."
+  },
+  "recent_seed_pairs": {
+    "S0417": [
+      "¿Quieren matar esas hormigas?",
+      "Do they want to kill those ants?"
+    ],
+    "S0418": [
+      "Necesitan servir a la comunidad.",
+      "They need to serve the community."
+    ],
+    "S0419": [
+      "Si quieren que la gente los quiera.",
+      "If they want people to like them."
+    ],
+    "S0420": [
+      "No necesitan preguntar cuántos años tiene.",
+      "They don't need to ask how old he is."
+    ],
+    "S0421": [
+      "Porque ya saben que se está poniendo débil.",
+      "Because they already know he's getting weak."
+    ],
+    "S0422": [
+      "Una pregunta.",
+      "A question."
+    ],
+    "S0423": [
+      "¿Necesitan preguntar una pregunta tan obvia?",
+      "Do they need to ask such an obvious question?"
+    ],
+    "S0424": [
+      "No están perdiendo el tiempo de todos.",
+      "No they're wasting everybody's time."
+    ],
+    "S0425": [
+      "Sí necesitan asegurarse de que entienden.",
+      "Yes they need to make sure they understand."
+    ],
+    "S0426": [
+      "Les gustaría amarse pero están infelices.",
+      "They would like to love each other but they're unhappy."
+    ]
+  },
+  "legos": {
+    "S0427L01": {
+      "lego": [
+        "they wouldn't like",
+        "no les gustaría"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0427L01",
+        "seed_context": {
+          "target": "No les gustaría que pienses que están aburridos.",
+          "known": "They wouldn't like you to think that they're bored."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "les",
+          "to them"
+        ],
+        [
+          "gustaría",
+          "would please"
+        ]
+      ]
+    },
+    "S0427L02": {
+      "lego": [
+        "they wouldn't like you to think",
+        "no les gustaría que pienses"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they wouldn't like",
+          "no les gustaría"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0427L02",
+        "seed_context": {
+          "target": "No les gustaría que pienses que están aburridos.",
+          "known": "They wouldn't like you to think that they're bored."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "les",
+          "to them"
+        ],
+        [
+          "gustaría",
+          "would please"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "pienses",
+          "you think"
+        ]
+      ]
+    },
+    "S0427L03": {
+      "lego": [
+        "that you think",
+        "que pienses"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they wouldn't like",
+          "no les gustaría"
+        ],
+        [
+          "they wouldn't like you to think",
+          "no les gustaría que pienses"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0427L03",
+        "seed_context": {
+          "target": "No les gustaría que pienses que están aburridos.",
+          "known": "They wouldn't like you to think that they're bored."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "pienses",
+          "you think"
+        ]
+      ]
+    },
+    "S0427L04": {
+      "lego": [
+        "you to think that they're bored",
+        "que pienses que están aburridos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they wouldn't like",
+          "no les gustaría"
+        ],
+        [
+          "they wouldn't like you to think",
+          "no les gustaría que pienses"
+        ],
+        [
+          "that you think",
+          "que pienses"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0427L04",
+        "seed_context": {
+          "target": "No les gustaría que pienses que están aburridos.",
+          "known": "They wouldn't like you to think that they're bored."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "pienses",
+          "you think"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "están",
+          "they are"
+        ],
+        [
+          "aburridos",
+          "bored"
+        ]
+      ]
+    },
+    "S0427L05": {
+      "lego": [
+        "they're bored",
+        "están aburridos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they wouldn't like",
+          "no les gustaría"
+        ],
+        [
+          "they wouldn't like you to think",
+          "no les gustaría que pienses"
+        ],
+        [
+          "that you think",
+          "que pienses"
+        ],
+        [
+          "you to think that they're bored",
+          "que pienses que están aburridos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0427L05",
+        "seed_context": {
+          "target": "No les gustaría que pienses que están aburridos.",
+          "known": "They wouldn't like you to think that they're bored."
+        }
+      },
+      "components": [
+        [
+          "están",
+          "they are"
+        ],
+        [
+          "aburridos",
+          "bored"
+        ]
+      ]
+    },
+    "S0427L06": {
+      "lego": [
+        "bored",
+        "aburridos"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "they wouldn't like",
+          "no les gustaría"
+        ],
+        [
+          "they wouldn't like you to think",
+          "no les gustaría que pienses"
+        ],
+        [
+          "that you think",
+          "que pienses"
+        ],
+        [
+          "you to think that they're bored",
+          "que pienses que están aburridos"
+        ],
+        [
+          "they're bored",
+          "están aburridos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0427L06",
+        "seed_context": {
+          "target": "No les gustaría que pienses que están aburridos.",
+          "known": "They wouldn't like you to think that they're bored."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0427.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

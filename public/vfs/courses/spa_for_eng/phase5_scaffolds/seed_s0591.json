@@ -1,0 +1,236 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0591",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Ella me siguió hasta las tiendas.",
+    "known": "She followed me down to the shops."
+  },
+  "recent_seed_pairs": {
+    "S0581": [
+      "Le gustaría saber un poco más sobre cómo es.",
+      "He'd like to know a little more about what it's like."
+    ],
+    "S0582": [
+      "¿Cómo es crecer aquí?",
+      "What's it like to grow up here?"
+    ],
+    "S0583": [
+      "¿Cómo es en esta parte del mundo?",
+      "What's it like in this part of the world?"
+    ],
+    "S0584": [
+      "¿Cómo es despertar cada mañana y ver las montañas?",
+      "What's it like to wake up every morning and see the mountains?"
+    ],
+    "S0585": [
+      "Puedo ver las montañas desde la ventana de mi dormitorio.",
+      "I can see the mountains out of my bedroom window."
+    ],
+    "S0586": [
+      "Quiero veinte huevos cocidos.",
+      "I want twenty boiled eggs."
+    ],
+    "S0587": [
+      "Ella solía insistir en que teníamos huevos para la cena.",
+      "She used to insist that we had eggs for supper."
+    ],
+    "S0588": [
+      "Así que quería crecer y salir de casa.",
+      "So I wanted to grow up and leave home."
+    ],
+    "S0589": [
+      "Ella me dijo que acababa de ver el último autobús.",
+      "She told me she'd just seen the last bus."
+    ],
+    "S0590": [
+      "Vi el último autobús saliendo de la estación.",
+      "I saw the last bus leaving the station."
+    ]
+  },
+  "legos": {
+    "S0591L01": {
+      "lego": [
+        "she followed me",
+        "ella me siguió"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0591L01",
+        "seed_context": {
+          "target": "Ella me siguió hasta las tiendas.",
+          "known": "She followed me down to the shops."
+        }
+      },
+      "components": [
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "me",
+          "me"
+        ],
+        [
+          "siguió",
+          "followed"
+        ]
+      ]
+    },
+    "S0591L02": {
+      "lego": [
+        "followed me",
+        "me siguió"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she followed me",
+          "ella me siguió"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0591L02",
+        "seed_context": {
+          "target": "Ella me siguió hasta las tiendas.",
+          "known": "She followed me down to the shops."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "me"
+        ],
+        [
+          "siguió",
+          "followed"
+        ]
+      ]
+    },
+    "S0591L03": {
+      "lego": [
+        "down to the shops",
+        "hasta las tiendas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she followed me",
+          "ella me siguió"
+        ],
+        [
+          "followed me",
+          "me siguió"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0591L03",
+        "seed_context": {
+          "target": "Ella me siguió hasta las tiendas.",
+          "known": "She followed me down to the shops."
+        }
+      },
+      "components": [
+        [
+          "hasta",
+          "down to"
+        ],
+        [
+          "las",
+          "the"
+        ],
+        [
+          "tiendas",
+          "shops"
+        ]
+      ]
+    },
+    "S0591L04": {
+      "lego": [
+        "the shops",
+        "las tiendas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she followed me",
+          "ella me siguió"
+        ],
+        [
+          "followed me",
+          "me siguió"
+        ],
+        [
+          "down to the shops",
+          "hasta las tiendas"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0591L04",
+        "seed_context": {
+          "target": "Ella me siguió hasta las tiendas.",
+          "known": "She followed me down to the shops."
+        }
+      },
+      "components": [
+        [
+          "las",
+          "the"
+        ],
+        [
+          "tiendas",
+          "shops"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0591.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

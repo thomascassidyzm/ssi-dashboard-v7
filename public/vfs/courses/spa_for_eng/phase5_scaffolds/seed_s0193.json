@@ -1,0 +1,316 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0193",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Lo siento pero estoy demasiado ocupado hoy.",
+    "known": "I'm sorry but I'm too busy today."
+  },
+  "recent_seed_pairs": {
+    "S0183": [
+      "No, me temo que no las he visto.",
+      "No I'm afraid I haven't seen them."
+    ],
+    "S0184": [
+      "Sí las vi en la oficina hace un rato.",
+      "Yes I saw them in the office a while ago."
+    ],
+    "S0185": [
+      "Creo que las dejaste en el trabajo.",
+      "I think you left them at work."
+    ],
+    "S0186": [
+      "¿Quieres hablar de algo diferente la próxima semana?",
+      "Do you want to talk about something different next week?"
+    ],
+    "S0187": [
+      "Estoy contento hasta ahora.",
+      "I'm happy so far."
+    ],
+    "S0188": [
+      "Así que no necesito cambiar.",
+      "So I don't need to change."
+    ],
+    "S0189": [
+      "Sí, esa es una buena idea.",
+      "Yes that's a good idea."
+    ],
+    "S0190": [
+      "¿Te importa si te hago algunas preguntas?",
+      "Do you mind if I ask you some questions?"
+    ],
+    "S0191": [
+      "No, no me importa en absoluto.",
+      "No I don't mind at all."
+    ],
+    "S0192": [
+      "Estoy ocupado mañana por la noche.",
+      "I'm busy tomorrow night."
+    ]
+  },
+  "legos": {
+    "S0193L01": {
+      "lego": [
+        "I'm sorry",
+        "Lo siento"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0193L01",
+        "seed_context": {
+          "target": "Lo siento pero estoy demasiado ocupado hoy.",
+          "known": "I'm sorry but I'm too busy today."
+        }
+      },
+      "components": [
+        [
+          "Lo",
+          "it"
+        ],
+        [
+          "siento",
+          "feel/am sorry"
+        ]
+      ]
+    },
+    "S0193L02": {
+      "lego": [
+        "but",
+        "pero"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0193L02",
+        "seed_context": {
+          "target": "Lo siento pero estoy demasiado ocupado hoy.",
+          "known": "I'm sorry but I'm too busy today."
+        }
+      }
+    },
+    "S0193L03": {
+      "lego": [
+        "I'm too busy",
+        "estoy demasiado ocupado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ],
+        [
+          "but",
+          "pero"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0193L03",
+        "seed_context": {
+          "target": "Lo siento pero estoy demasiado ocupado hoy.",
+          "known": "I'm sorry but I'm too busy today."
+        }
+      },
+      "components": [
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "demasiado",
+          "too/too much"
+        ],
+        [
+          "ocupado",
+          "busy"
+        ]
+      ]
+    },
+    "S0193L04": {
+      "lego": [
+        "too busy",
+        "demasiado ocupado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ],
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "I'm too busy",
+          "estoy demasiado ocupado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0193L04",
+        "seed_context": {
+          "target": "Lo siento pero estoy demasiado ocupado hoy.",
+          "known": "I'm sorry but I'm too busy today."
+        }
+      },
+      "components": [
+        [
+          "demasiado",
+          "too"
+        ],
+        [
+          "ocupado",
+          "busy"
+        ]
+      ]
+    },
+    "S0193L05": {
+      "lego": [
+        "I'm busy",
+        "estoy ocupado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ],
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "I'm too busy",
+          "estoy demasiado ocupado"
+        ],
+        [
+          "too busy",
+          "demasiado ocupado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0193L05",
+        "seed_context": {
+          "target": "Lo siento pero estoy demasiado ocupado hoy.",
+          "known": "I'm sorry but I'm too busy today."
+        }
+      },
+      "components": [
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "ocupado",
+          "busy"
+        ]
+      ]
+    },
+    "S0193L06": {
+      "lego": [
+        "today",
+        "hoy"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ],
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "I'm too busy",
+          "estoy demasiado ocupado"
+        ],
+        [
+          "too busy",
+          "demasiado ocupado"
+        ],
+        [
+          "I'm busy",
+          "estoy ocupado"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0193L06",
+        "seed_context": {
+          "target": "Lo siento pero estoy demasiado ocupado hoy.",
+          "known": "I'm sorry but I'm too busy today."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0193.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

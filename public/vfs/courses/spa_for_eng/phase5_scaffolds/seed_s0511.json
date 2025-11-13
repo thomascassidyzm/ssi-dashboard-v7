@@ -1,0 +1,368 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0511",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Las noticias tardaron varias horas en llegar a todos en la oficina.",
+    "known": "The news took several hours to reach everyone in the office."
+  },
+  "recent_seed_pairs": {
+    "S0501": [
+      "Si tan solo pudiera confiar en ti para jugar juntos sin discutir.",
+      "If only I could trust you to play together without arguing."
+    ],
+    "S0502": [
+      "Casi se perdió porque giró a la izquierda en lugar de a la derecha.",
+      "She almost got lost because she turned left instead of right."
+    ],
+    "S0503": [
+      "Odio causar problemas pero ese es mío.",
+      "I hate making trouble but that one's mine."
+    ],
+    "S0504": [
+      "Voy a correr a través del césped.",
+      "I'm going to run across the grass."
+    ],
+    "S0505": [
+      "Para que no me quede atrás.",
+      "So that I don't get left behind."
+    ],
+    "S0506": [
+      "Solía vivir por aquí hace años antes de que nos mudáramos.",
+      "I used to live around here years ago before we moved."
+    ],
+    "S0507": [
+      "Nos mudamos a la ciudad.",
+      "We moved to the city."
+    ],
+    "S0508": [
+      "No tiene sentido preocuparse por cómo vas a pagar.",
+      "There's no point worrying about how you're going to pay."
+    ],
+    "S0509": [
+      "Oí que vas a pagar por una cama nueva.",
+      "I heard that you're going to pay for a new bed."
+    ],
+    "S0510": [
+      "Ha ido a buscar algún lugar seguro para estacionar el carro.",
+      "She's gone to look for somewhere safe to park the car."
+    ]
+  },
+  "legos": {
+    "S0511L01": {
+      "lego": [
+        "the news took",
+        "las noticias tardaron"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0511L01",
+        "seed_context": {
+          "target": "Las noticias tardaron varias horas en llegar a todos en la oficina.",
+          "known": "The news took several hours to reach everyone in the office."
+        }
+      },
+      "components": [
+        [
+          "las",
+          "the"
+        ],
+        [
+          "noticias",
+          "news"
+        ],
+        [
+          "tardaron",
+          "took"
+        ]
+      ]
+    },
+    "S0511L02": {
+      "lego": [
+        "took several hours",
+        "tardaron varias horas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "the news took",
+          "las noticias tardaron"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0511L02",
+        "seed_context": {
+          "target": "Las noticias tardaron varias horas en llegar a todos en la oficina.",
+          "known": "The news took several hours to reach everyone in the office."
+        }
+      },
+      "components": [
+        [
+          "tardaron",
+          "took"
+        ],
+        [
+          "varias",
+          "several"
+        ],
+        [
+          "horas",
+          "hours"
+        ]
+      ]
+    },
+    "S0511L03": {
+      "lego": [
+        "several hours",
+        "varias horas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "the news took",
+          "las noticias tardaron"
+        ],
+        [
+          "took several hours",
+          "tardaron varias horas"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0511L03",
+        "seed_context": {
+          "target": "Las noticias tardaron varias horas en llegar a todos en la oficina.",
+          "known": "The news took several hours to reach everyone in the office."
+        }
+      },
+      "components": [
+        [
+          "varias",
+          "several"
+        ],
+        [
+          "horas",
+          "hours"
+        ]
+      ]
+    },
+    "S0511L04": {
+      "lego": [
+        "several hours to reach everyone",
+        "varias horas en llegar a todos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "the news took",
+          "las noticias tardaron"
+        ],
+        [
+          "took several hours",
+          "tardaron varias horas"
+        ],
+        [
+          "several hours",
+          "varias horas"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0511L04",
+        "seed_context": {
+          "target": "Las noticias tardaron varias horas en llegar a todos en la oficina.",
+          "known": "The news took several hours to reach everyone in the office."
+        }
+      },
+      "components": [
+        [
+          "varias",
+          "several"
+        ],
+        [
+          "horas",
+          "hours"
+        ],
+        [
+          "en",
+          "in/to"
+        ],
+        [
+          "llegar",
+          "reach/arrive"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "todos",
+          "everyone"
+        ]
+      ]
+    },
+    "S0511L05": {
+      "lego": [
+        "to reach everyone",
+        "en llegar a todos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "the news took",
+          "las noticias tardaron"
+        ],
+        [
+          "took several hours",
+          "tardaron varias horas"
+        ],
+        [
+          "several hours",
+          "varias horas"
+        ],
+        [
+          "several hours to reach everyone",
+          "varias horas en llegar a todos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0511L05",
+        "seed_context": {
+          "target": "Las noticias tardaron varias horas en llegar a todos en la oficina.",
+          "known": "The news took several hours to reach everyone in the office."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "llegar",
+          "reach/arrive"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "todos",
+          "everyone"
+        ]
+      ]
+    },
+    "S0511L06": {
+      "lego": [
+        "in the office",
+        "en la oficina"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "the news took",
+          "las noticias tardaron"
+        ],
+        [
+          "took several hours",
+          "tardaron varias horas"
+        ],
+        [
+          "several hours",
+          "varias horas"
+        ],
+        [
+          "several hours to reach everyone",
+          "varias horas en llegar a todos"
+        ],
+        [
+          "to reach everyone",
+          "en llegar a todos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0511L06",
+        "seed_context": {
+          "target": "Las noticias tardaron varias horas en llegar a todos en la oficina.",
+          "known": "The news took several hours to reach everyone in the office."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "oficina",
+          "office"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0511.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0196",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Has oído la última idea?",
+    "known": "Have you heard the latest idea?"
+  },
+  "recent_seed_pairs": {
+    "S0186": [
+      "¿Quieres hablar de algo diferente la próxima semana?",
+      "Do you want to talk about something different next week?"
+    ],
+    "S0187": [
+      "Estoy contento hasta ahora.",
+      "I'm happy so far."
+    ],
+    "S0188": [
+      "Así que no necesito cambiar.",
+      "So I don't need to change."
+    ],
+    "S0189": [
+      "Sí, esa es una buena idea.",
+      "Yes that's a good idea."
+    ],
+    "S0190": [
+      "¿Te importa si te hago algunas preguntas?",
+      "Do you mind if I ask you some questions?"
+    ],
+    "S0191": [
+      "No, no me importa en absoluto.",
+      "No I don't mind at all."
+    ],
+    "S0192": [
+      "Estoy ocupado mañana por la noche.",
+      "I'm busy tomorrow night."
+    ],
+    "S0193": [
+      "Lo siento pero estoy demasiado ocupado hoy.",
+      "I'm sorry but I'm too busy today."
+    ],
+    "S0194": [
+      "¿Qué estás buscando?",
+      "What are you looking for?"
+    ],
+    "S0195": [
+      "Estoy intentando encontrar el dinero que dejé en la mesa.",
+      "I'm trying to find the money I left on the table."
+    ]
+  },
+  "legos": {
+    "S0196L01": {
+      "lego": [
+        "Have you heard",
+        "Has oído"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0196L01",
+        "seed_context": {
+          "target": "¿Has oído la última idea?",
+          "known": "Have you heard the latest idea?"
+        }
+      },
+      "components": [
+        [
+          "Has",
+          "Have you"
+        ],
+        [
+          "oído",
+          "heard"
+        ]
+      ]
+    },
+    "S0196L02": {
+      "lego": [
+        "the latest idea",
+        "la última idea"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Have you heard",
+          "Has oído"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0196L02",
+        "seed_context": {
+          "target": "¿Has oído la última idea?",
+          "known": "Have you heard the latest idea?"
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "última",
+          "latest"
+        ],
+        [
+          "idea",
+          "idea"
+        ]
+      ]
+    },
+    "S0196L03": {
+      "lego": [
+        "the latest",
+        "la última"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Have you heard",
+          "Has oído"
+        ],
+        [
+          "the latest idea",
+          "la última idea"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0196L03",
+        "seed_context": {
+          "target": "¿Has oído la última idea?",
+          "known": "Have you heard the latest idea?"
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "última",
+          "latest/last"
+        ]
+      ]
+    },
+    "S0196L04": {
+      "lego": [
+        "idea",
+        "idea"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "Have you heard",
+          "Has oído"
+        ],
+        [
+          "the latest idea",
+          "la última idea"
+        ],
+        [
+          "the latest",
+          "la última"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0196L04",
+        "seed_context": {
+          "target": "¿Has oído la última idea?",
+          "known": "Have you heard the latest idea?"
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0196.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

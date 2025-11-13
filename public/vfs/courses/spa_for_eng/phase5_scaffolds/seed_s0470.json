@@ -1,0 +1,222 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0470",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Qué tan alto quieres escalar antes de que paremos?",
+    "known": "How high do you want to climb before we stop?"
+  },
+  "recent_seed_pairs": {
+    "S0460": [
+      "Quiero encontrar una tienda cerca del hotel.",
+      "I want to find a shop near the hotel."
+    ],
+    "S0461": [
+      "Una tienda donde puedo comprar algunas postales.",
+      "A shop where I can buy some postcards."
+    ],
+    "S0462": [
+      "Mi abuelo combatió en Italia durante la guerra.",
+      "My grandfather fought in Italy during the war."
+    ],
+    "S0463": [
+      "Mi número de habitación.",
+      "My room number."
+    ],
+    "S0464": [
+      "Le dije mi número de habitación una vez pero ella lo olvidó.",
+      "I told her my room number once but she forgot it."
+    ],
+    "S0465": [
+      "La próxima vez voy a preguntarle cuál es su nombre.",
+      "Next time I will ask her what her name is."
+    ],
+    "S0466": [
+      "Déjame lanzarlo sobre el muro.",
+      "Let me throw it over the wall."
+    ],
+    "S0467": [
+      "Está al lado del estacionamiento.",
+      "It's next to the car park."
+    ],
+    "S0468": [
+      "Es un mundo grande.",
+      "It's a big world."
+    ],
+    "S0469": [
+      "Pero eso no significa que no podamos cambiarlo.",
+      "But that doesn't mean we can't change it."
+    ]
+  },
+  "legos": {
+    "S0470L01": {
+      "lego": [
+        "how high",
+        "qué tan alto"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0470L01",
+        "seed_context": {
+          "target": "¿Qué tan alto quieres escalar antes de que paremos?",
+          "known": "How high do you want to climb before we stop?"
+        }
+      },
+      "components": [
+        [
+          "qué",
+          "how/what"
+        ],
+        [
+          "tan",
+          "so"
+        ],
+        [
+          "alto",
+          "high"
+        ]
+      ]
+    },
+    "S0470L02": {
+      "lego": [
+        "do you want to climb",
+        "quieres escalar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "how high",
+          "qué tan alto"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0470L02",
+        "seed_context": {
+          "target": "¿Qué tan alto quieres escalar antes de que paremos?",
+          "known": "How high do you want to climb before we stop?"
+        }
+      },
+      "components": [
+        [
+          "quieres",
+          "you want"
+        ],
+        [
+          "escalar",
+          "to climb/climb"
+        ]
+      ]
+    },
+    "S0470L03": {
+      "lego": [
+        "to climb",
+        "escalar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "how high",
+          "qué tan alto"
+        ],
+        [
+          "do you want to climb",
+          "quieres escalar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0470L03",
+        "seed_context": {
+          "target": "¿Qué tan alto quieres escalar antes de que paremos?",
+          "known": "How high do you want to climb before we stop?"
+        }
+      }
+    },
+    "S0470L04": {
+      "lego": [
+        "before we stop",
+        "antes de que paremos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "how high",
+          "qué tan alto"
+        ],
+        [
+          "do you want to climb",
+          "quieres escalar"
+        ],
+        [
+          "to climb",
+          "escalar"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0470L04",
+        "seed_context": {
+          "target": "¿Qué tan alto quieres escalar antes de que paremos?",
+          "known": "How high do you want to climb before we stop?"
+        }
+      },
+      "components": [
+        [
+          "antes de que",
+          "before"
+        ],
+        [
+          "paremos",
+          "we stop"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0470.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

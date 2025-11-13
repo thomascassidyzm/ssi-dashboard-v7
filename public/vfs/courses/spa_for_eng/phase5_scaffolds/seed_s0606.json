@@ -1,0 +1,320 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0606",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Si hubiera sabido entonces lo que sé ahora habría esperado.",
+    "known": "If I'd known then what I know now I'd have waited."
+  },
+  "recent_seed_pairs": {
+    "S0596": [
+      "Y necesito cerrar los ojos por un rato.",
+      "And I need to close my eyes for a while."
+    ],
+    "S0597": [
+      "Sospecho que ha oído cien historias sobre ello.",
+      "I suspect that he's heard a hundred stories about it."
+    ],
+    "S0598": [
+      "Ha oído mil historias sobre lo que estaban haciendo.",
+      "He's heard a thousand stories about what they were doing."
+    ],
+    "S0599": [
+      "Habría estado feliz de conducir si me lo hubieras dicho.",
+      "I'd have been happy to drive if you'd told me."
+    ],
+    "S0600": [
+      "Habría conducido si me hubieras dicho lo cansado que estabas.",
+      "I'd have driven if you'd told me how tired you were."
+    ],
+    "S0601": [
+      "Estábamos hablando sobre cómo empezó todo.",
+      "We were talking about how it all started."
+    ],
+    "S0602": [
+      "Cómo empezó en primer lugar.",
+      "How it started in the first place."
+    ],
+    "S0603": [
+      "No teníamos ningún lugar donde vivir en ese momento.",
+      "We didn't have anywhere to live at the time."
+    ],
+    "S0604": [
+      "Ella se ofreció a dejarnos quedarnos con ella.",
+      "She offered to let us stay with her."
+    ],
+    "S0605": [
+      "Porque necesitábamos ayuda.",
+      "Because we needed help."
+    ]
+  },
+  "legos": {
+    "S0606L01": {
+      "lego": [
+        "if I'd known",
+        "si hubiera sabido"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0606L01",
+        "seed_context": {
+          "target": "Si hubiera sabido entonces lo que sé ahora habría esperado.",
+          "known": "If I'd known then what I know now I'd have waited."
+        }
+      },
+      "components": [
+        [
+          "si",
+          "if"
+        ],
+        [
+          "hubiera",
+          "I'd"
+        ],
+        [
+          "sabido",
+          "known"
+        ]
+      ]
+    },
+    "S0606L02": {
+      "lego": [
+        "then",
+        "entonces"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "if I'd known",
+          "si hubiera sabido"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0606L02",
+        "seed_context": {
+          "target": "Si hubiera sabido entonces lo que sé ahora habría esperado.",
+          "known": "If I'd known then what I know now I'd have waited."
+        }
+      }
+    },
+    "S0606L03": {
+      "lego": [
+        "what I know now",
+        "lo que sé ahora"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "if I'd known",
+          "si hubiera sabido"
+        ],
+        [
+          "then",
+          "entonces"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0606L03",
+        "seed_context": {
+          "target": "Si hubiera sabido entonces lo que sé ahora habría esperado.",
+          "known": "If I'd known then what I know now I'd have waited."
+        }
+      },
+      "components": [
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "sé",
+          "I know"
+        ],
+        [
+          "ahora",
+          "now"
+        ]
+      ]
+    },
+    "S0606L04": {
+      "lego": [
+        "I know now",
+        "sé ahora"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "if I'd known",
+          "si hubiera sabido"
+        ],
+        [
+          "then",
+          "entonces"
+        ],
+        [
+          "what I know now",
+          "lo que sé ahora"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0606L04",
+        "seed_context": {
+          "target": "Si hubiera sabido entonces lo que sé ahora habría esperado.",
+          "known": "If I'd known then what I know now I'd have waited."
+        }
+      },
+      "components": [
+        [
+          "sé",
+          "I know"
+        ],
+        [
+          "ahora",
+          "now"
+        ]
+      ]
+    },
+    "S0606L05": {
+      "lego": [
+        "now",
+        "ahora"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "if I'd known",
+          "si hubiera sabido"
+        ],
+        [
+          "then",
+          "entonces"
+        ],
+        [
+          "what I know now",
+          "lo que sé ahora"
+        ],
+        [
+          "I know now",
+          "sé ahora"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0606L05",
+        "seed_context": {
+          "target": "Si hubiera sabido entonces lo que sé ahora habría esperado.",
+          "known": "If I'd known then what I know now I'd have waited."
+        }
+      }
+    },
+    "S0606L06": {
+      "lego": [
+        "I'd have waited",
+        "habría esperado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "if I'd known",
+          "si hubiera sabido"
+        ],
+        [
+          "then",
+          "entonces"
+        ],
+        [
+          "what I know now",
+          "lo que sé ahora"
+        ],
+        [
+          "I know now",
+          "sé ahora"
+        ],
+        [
+          "now",
+          "ahora"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0606L06",
+        "seed_context": {
+          "target": "Si hubiera sabido entonces lo que sé ahora habría esperado.",
+          "known": "If I'd known then what I know now I'd have waited."
+        }
+      },
+      "components": [
+        [
+          "habría",
+          "I'd have"
+        ],
+        [
+          "esperado",
+          "waited"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0606.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

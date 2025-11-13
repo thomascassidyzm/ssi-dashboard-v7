@@ -1,0 +1,140 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0628",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Te gusta el té?",
+    "known": "Do you like tea?"
+  },
+  "recent_seed_pairs": {
+    "S0618": [
+      "No parece mucho tiempo.",
+      "It doesn't feel like a long time."
+    ],
+    "S0619": [
+      "Hace mucho tiempo desde que nos vimos.",
+      "It's a long time since we saw each other."
+    ],
+    "S0620": [
+      "Hace muchísimo tiempo desde que nos vimos por última vez.",
+      "It's a very long time since we last saw each other."
+    ],
+    "S0621": [
+      "No me habría atrevido a decirle que estaba roto.",
+      "I wouldn't have dared to tell her that it was broken."
+    ],
+    "S0622": [
+      "Sabía que los niños lo habían roto.",
+      "I knew that the children had broken it."
+    ],
+    "S0623": [
+      "¿Quieres un café o un té?",
+      "Do you want a cup of coffee or tea?"
+    ],
+    "S0624": [
+      "Sí, eso sería genial, por favor.",
+      "Yes, that would be great, please."
+    ],
+    "S0625": [
+      "¿Quieres algo de beber?",
+      "Do you want something to drink?"
+    ],
+    "S0626": [
+      "No, no tengo sed, gracias.",
+      "No, I'm not thirsty, thank you."
+    ],
+    "S0627": [
+      "Tu café está preparado.",
+      "Your coffee is ready."
+    ]
+  },
+  "legos": {
+    "S0628L01": {
+      "lego": [
+        "do you like",
+        "te gusta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0628L01",
+        "seed_context": {
+          "target": "¿Te gusta el té?",
+          "known": "Do you like tea?"
+        }
+      },
+      "components": [
+        [
+          "te",
+          "you"
+        ],
+        [
+          "gusta",
+          "like"
+        ]
+      ]
+    },
+    "S0628L02": {
+      "lego": [
+        "tea",
+        "el té"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "do you like",
+          "te gusta"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0628L02",
+        "seed_context": {
+          "target": "¿Te gusta el té?",
+          "known": "Do you like tea?"
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "té",
+          "tea"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0628.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "total_legos_in_seed": 2,
+    "phrases_to_generate": 24,
+    "recent_context_seeds": 10
+  }
+}

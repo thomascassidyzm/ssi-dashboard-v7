@@ -1,0 +1,276 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0255",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Cuándo crees que estarás preparado para salir?",
+    "known": "When do you think you'll be ready to leave?"
+  },
+  "recent_seed_pairs": {
+    "S0245": [
+      "I'm happy with how much I've done in a short time",
+      "Estoy contento con cuánto he hecho en poco tiempo."
+    ],
+    "S0246": [
+      "I wanted her to help you but she was too busy.",
+      "Quería que ella te ayudara pero estaba demasiado ocupada."
+    ],
+    "S0247": [
+      "I thought that book was fairly good.",
+      "Pensé que ese libro era bastante bueno."
+    ],
+    "S0248": [
+      "I thought the film was complete rubbish and I want my money back.",
+      "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+    ],
+    "S0249": [
+      "I want you to help me before you go.",
+      "Quiero que me ayudes antes de que te vayas."
+    ],
+    "S0250": [
+      "Can you tell me something else before I answer?",
+      "¿Puedes decirme algo más antes de que responda?"
+    ],
+    "S0251": [
+      "No quiero descubrir hasta después de que terminemos.",
+      "I don't want to find out until after we finish."
+    ],
+    "S0252": [
+      "¿Cuándo estarás preparado para empezar?",
+      "When will you be ready to start?"
+    ],
+    "S0253": [
+      "Debo estar preparado en unos pocos minutos.",
+      "I should be ready in a few minutes."
+    ],
+    "S0254": [
+      "He estado preparado desde esta mañana.",
+      "I've been ready since this morning."
+    ]
+  },
+  "legos": {
+    "S0255L01": {
+      "lego": [
+        "when do you think",
+        "cuándo crees"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0255L01",
+        "seed_context": {
+          "target": "¿Cuándo crees que estarás preparado para salir?",
+          "known": "When do you think you'll be ready to leave?"
+        }
+      },
+      "components": [
+        [
+          "cuándo",
+          "when"
+        ],
+        [
+          "crees",
+          "you think"
+        ]
+      ]
+    },
+    "S0255L02": {
+      "lego": [
+        "you think you'll be ready",
+        "crees que estarás preparado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "when do you think",
+          "cuándo crees"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0255L02",
+        "seed_context": {
+          "target": "¿Cuándo crees que estarás preparado para salir?",
+          "known": "When do you think you'll be ready to leave?"
+        }
+      },
+      "components": [
+        [
+          "crees",
+          "you think"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "estarás",
+          "you will be"
+        ],
+        [
+          "preparado",
+          "ready"
+        ]
+      ]
+    },
+    "S0255L03": {
+      "lego": [
+        "you'll be ready",
+        "estarás preparado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "when do you think",
+          "cuándo crees"
+        ],
+        [
+          "you think you'll be ready",
+          "crees que estarás preparado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0255L03",
+        "seed_context": {
+          "target": "¿Cuándo crees que estarás preparado para salir?",
+          "known": "When do you think you'll be ready to leave?"
+        }
+      },
+      "components": [
+        [
+          "estarás",
+          "you will be"
+        ],
+        [
+          "preparado",
+          "ready"
+        ]
+      ]
+    },
+    "S0255L04": {
+      "lego": [
+        "ready",
+        "preparado"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "when do you think",
+          "cuándo crees"
+        ],
+        [
+          "you think you'll be ready",
+          "crees que estarás preparado"
+        ],
+        [
+          "you'll be ready",
+          "estarás preparado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0255L04",
+        "seed_context": {
+          "target": "¿Cuándo crees que estarás preparado para salir?",
+          "known": "When do you think you'll be ready to leave?"
+        }
+      }
+    },
+    "S0255L05": {
+      "lego": [
+        "to leave",
+        "para salir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "when do you think",
+          "cuándo crees"
+        ],
+        [
+          "you think you'll be ready",
+          "crees que estarás preparado"
+        ],
+        [
+          "you'll be ready",
+          "estarás preparado"
+        ],
+        [
+          "ready",
+          "preparado"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0255L05",
+        "seed_context": {
+          "target": "¿Cuándo crees que estarás preparado para salir?",
+          "known": "When do you think you'll be ready to leave?"
+        }
+      },
+      "components": [
+        [
+          "para",
+          "to/for"
+        ],
+        [
+          "salir",
+          "to leave/go out"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0255.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

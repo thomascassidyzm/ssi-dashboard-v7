@@ -1,0 +1,286 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0132",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Eso es menos emocionante que lo que decía.",
+    "known": "That's less exciting than what she was saying."
+  },
+  "recent_seed_pairs": {
+    "S0122": [
+      "Está empezando a sentirse más fácil y estoy entusiasmado por cómo va.",
+      "It's starting to feel easier and I'm excited about how it's going."
+    ],
+    "S0123": [
+      "Pienso que eso es una buena idea.",
+      "I think that's a good idea."
+    ],
+    "S0124": [
+      "Creí que eso era una buena idea.",
+      "I thought that was a good idea."
+    ],
+    "S0125": [
+      "Creo que tu idea era muy buena.",
+      "I believe that your idea was very good."
+    ],
+    "S0126": [
+      "Este trabajo está cambiando la forma de mi cerebro.",
+      "This work is changing the shape of my brain."
+    ],
+    "S0127": [
+      "Eso no es por qué quería verte.",
+      "That isn't why I wanted to see you."
+    ],
+    "S0128": [
+      "Eres como alguien que conocía.",
+      "You're like someone I used to know."
+    ],
+    "S0129": [
+      "Estoy tan feliz de que te vaya tan bien.",
+      "I'm so happy that you're doing so well."
+    ],
+    "S0130": [
+      "Eso fue una sorpresa, porque es mi amigo.",
+      "That was a surprise, because he's my friend."
+    ],
+    "S0131": [
+      "Hay demasiadas ideas dando vueltas en mi cabeza.",
+      "There are too many ideas going around in my head."
+    ]
+  },
+  "legos": {
+    "S0132L01": {
+      "lego": [
+        "That's",
+        "Eso es"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0132L01",
+        "seed_context": {
+          "target": "Eso es menos emocionante que lo que decía.",
+          "known": "That's less exciting than what she was saying."
+        }
+      },
+      "components": [
+        [
+          "Eso",
+          "That"
+        ],
+        [
+          "es",
+          "is"
+        ]
+      ]
+    },
+    "S0132L02": {
+      "lego": [
+        "is less exciting",
+        "es menos emocionante"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "That's",
+          "Eso es"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0132L02",
+        "seed_context": {
+          "target": "Eso es menos emocionante que lo que decía.",
+          "known": "That's less exciting than what she was saying."
+        }
+      },
+      "components": [
+        [
+          "es",
+          "is"
+        ],
+        [
+          "menos",
+          "less"
+        ],
+        [
+          "emocionante",
+          "exciting"
+        ]
+      ]
+    },
+    "S0132L03": {
+      "lego": [
+        "less exciting",
+        "menos emocionante"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "That's",
+          "Eso es"
+        ],
+        [
+          "is less exciting",
+          "es menos emocionante"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0132L03",
+        "seed_context": {
+          "target": "Eso es menos emocionante que lo que decía.",
+          "known": "That's less exciting than what she was saying."
+        }
+      },
+      "components": [
+        [
+          "menos",
+          "less"
+        ],
+        [
+          "emocionante",
+          "exciting"
+        ]
+      ]
+    },
+    "S0132L04": {
+      "lego": [
+        "than what she was saying",
+        "que lo que decía"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "That's",
+          "Eso es"
+        ],
+        [
+          "is less exciting",
+          "es menos emocionante"
+        ],
+        [
+          "less exciting",
+          "menos emocionante"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0132L04",
+        "seed_context": {
+          "target": "Eso es menos emocionante que lo que decía.",
+          "known": "That's less exciting than what she was saying."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "than"
+        ],
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "decía",
+          "she was saying"
+        ]
+      ]
+    },
+    "S0132L05": {
+      "lego": [
+        "what she was saying",
+        "lo que decía"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "That's",
+          "Eso es"
+        ],
+        [
+          "is less exciting",
+          "es menos emocionante"
+        ],
+        [
+          "less exciting",
+          "menos emocionante"
+        ],
+        [
+          "than what she was saying",
+          "que lo que decía"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0132L05",
+        "seed_context": {
+          "target": "Eso es menos emocionante que lo que decía.",
+          "known": "That's less exciting than what she was saying."
+        }
+      },
+      "components": [
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "decía",
+          "she was saying"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0132.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

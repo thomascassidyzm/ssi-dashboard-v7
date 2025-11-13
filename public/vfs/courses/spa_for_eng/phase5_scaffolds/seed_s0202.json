@@ -1,0 +1,266 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0202",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Nadie estaba seguro de cómo responder la pregunta",
+    "known": "Nobody was sure how to answer the question."
+  },
+  "recent_seed_pairs": {
+    "S0192": [
+      "Estoy ocupado mañana por la noche.",
+      "I'm busy tomorrow night."
+    ],
+    "S0193": [
+      "Lo siento pero estoy demasiado ocupado hoy.",
+      "I'm sorry but I'm too busy today."
+    ],
+    "S0194": [
+      "¿Qué estás buscando?",
+      "What are you looking for?"
+    ],
+    "S0195": [
+      "Estoy intentando encontrar el dinero que dejé en la mesa.",
+      "I'm trying to find the money I left on the table."
+    ],
+    "S0196": [
+      "¿Has oído la última idea?",
+      "Have you heard the latest idea?"
+    ],
+    "S0197": [
+      "Mi hijo trabaja como profesor.",
+      "My son works as a teacher."
+    ],
+    "S0198": [
+      "Mi hija trabaja para el consejo.",
+      "My daughter works for the council."
+    ],
+    "S0199": [
+      "Mi amigo solía trabajar en una oficina.",
+      "My friend used to work in an office."
+    ],
+    "S0200": [
+      "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+      "They say they want to make sure that we finish everything in time."
+    ],
+    "S0201": [
+      "Queríamos saber qué iba a pasar",
+      "We wanted to know what was going to happen."
+    ]
+  },
+  "legos": {
+    "S0202L01": {
+      "lego": [
+        "nobody",
+        "nadie"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0202L01",
+        "seed_context": {
+          "target": "Nadie estaba seguro de cómo responder la pregunta",
+          "known": "Nobody was sure how to answer the question."
+        }
+      }
+    },
+    "S0202L02": {
+      "lego": [
+        "was sure",
+        "estaba seguro de"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "nobody",
+          "nadie"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0202L02",
+        "seed_context": {
+          "target": "Nadie estaba seguro de cómo responder la pregunta",
+          "known": "Nobody was sure how to answer the question."
+        }
+      },
+      "components": [
+        [
+          "estaba",
+          "was"
+        ],
+        [
+          "seguro",
+          "sure"
+        ],
+        [
+          "de",
+          "of"
+        ]
+      ]
+    },
+    "S0202L03": {
+      "lego": [
+        "how to answer",
+        "cómo responder"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "nobody",
+          "nadie"
+        ],
+        [
+          "was sure",
+          "estaba seguro de"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0202L03",
+        "seed_context": {
+          "target": "Nadie estaba seguro de cómo responder la pregunta",
+          "known": "Nobody was sure how to answer the question."
+        }
+      },
+      "components": [
+        [
+          "cómo",
+          "how"
+        ],
+        [
+          "responder",
+          "to answer"
+        ]
+      ]
+    },
+    "S0202L04": {
+      "lego": [
+        "the question",
+        "la pregunta"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "nobody",
+          "nadie"
+        ],
+        [
+          "was sure",
+          "estaba seguro de"
+        ],
+        [
+          "how to answer",
+          "cómo responder"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0202L04",
+        "seed_context": {
+          "target": "Nadie estaba seguro de cómo responder la pregunta",
+          "known": "Nobody was sure how to answer the question."
+        }
+      }
+    },
+    "S0202L05": {
+      "lego": [
+        "answer the question",
+        "responder la pregunta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "nobody",
+          "nadie"
+        ],
+        [
+          "was sure",
+          "estaba seguro de"
+        ],
+        [
+          "how to answer",
+          "cómo responder"
+        ],
+        [
+          "the question",
+          "la pregunta"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0202L05",
+        "seed_context": {
+          "target": "Nadie estaba seguro de cómo responder la pregunta",
+          "known": "Nobody was sure how to answer the question."
+        }
+      },
+      "components": [
+        [
+          "responder",
+          "answer"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "pregunta",
+          "question"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0202.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

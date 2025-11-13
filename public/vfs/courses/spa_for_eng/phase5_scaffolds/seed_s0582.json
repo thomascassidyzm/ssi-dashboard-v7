@@ -1,0 +1,262 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0582",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Cómo es crecer aquí?",
+    "known": "What's it like to grow up here?"
+  },
+  "recent_seed_pairs": {
+    "S0572": [
+      "¿Has olvidado lo que pasó la última vez que nos visitaron?",
+      "Have you forgotten what happened the last time they visited us?"
+    ],
+    "S0573": [
+      "Es el tipo de cosa que hace que las vacaciones sean muy especiales.",
+      "It's the kind of thing that makes the holidays very special."
+    ],
+    "S0574": [
+      "Las vacaciones son muy especiales para todos.",
+      "The holidays are very special for everyone."
+    ],
+    "S0575": [
+      "Ha sido perturbador.",
+      "It's been upsetting."
+    ],
+    "S0576": [
+      "Ha sido muy perturbador esperar.",
+      "It has been very upsetting waiting."
+    ],
+    "S0577": [
+      "Hemos estado esperando las noticias del hospital.",
+      "We've been waiting for the news from the hospital."
+    ],
+    "S0578": [
+      "En algún lugar más cálido.",
+      "Somewhere warmer."
+    ],
+    "S0579": [
+      "Frecuentemente hemos intentado.",
+      "We've often tried."
+    ],
+    "S0580": [
+      "Frecuentemente hemos querido llevar a los niños a algún lugar un poco más cálido.",
+      "We've often wanted to take the children somewhere a little warmer."
+    ],
+    "S0581": [
+      "Le gustaría saber un poco más sobre cómo es.",
+      "He'd like to know a little more about what it's like."
+    ]
+  },
+  "legos": {
+    "S0582L01": {
+      "lego": [
+        "what's it like",
+        "cómo es"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0582L01",
+        "seed_context": {
+          "target": "¿Cómo es crecer aquí?",
+          "known": "What's it like to grow up here?"
+        }
+      },
+      "components": [
+        [
+          "cómo",
+          "how/what"
+        ],
+        [
+          "es",
+          "it's/is"
+        ]
+      ]
+    },
+    "S0582L02": {
+      "lego": [
+        "what's it like to grow up",
+        "cómo es crecer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "what's it like",
+          "cómo es"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0582L02",
+        "seed_context": {
+          "target": "¿Cómo es crecer aquí?",
+          "known": "What's it like to grow up here?"
+        }
+      },
+      "components": [
+        [
+          "cómo",
+          "how/what"
+        ],
+        [
+          "es",
+          "it's/is"
+        ],
+        [
+          "crecer",
+          "to grow up"
+        ]
+      ]
+    },
+    "S0582L03": {
+      "lego": [
+        "to grow up",
+        "crecer"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "what's it like",
+          "cómo es"
+        ],
+        [
+          "what's it like to grow up",
+          "cómo es crecer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0582L03",
+        "seed_context": {
+          "target": "¿Cómo es crecer aquí?",
+          "known": "What's it like to grow up here?"
+        }
+      }
+    },
+    "S0582L04": {
+      "lego": [
+        "to grow up here",
+        "crecer aquí"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "what's it like",
+          "cómo es"
+        ],
+        [
+          "what's it like to grow up",
+          "cómo es crecer"
+        ],
+        [
+          "to grow up",
+          "crecer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0582L04",
+        "seed_context": {
+          "target": "¿Cómo es crecer aquí?",
+          "known": "What's it like to grow up here?"
+        }
+      },
+      "components": [
+        [
+          "crecer",
+          "to grow up"
+        ],
+        [
+          "aquí",
+          "here"
+        ]
+      ]
+    },
+    "S0582L05": {
+      "lego": [
+        "here",
+        "aquí"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "what's it like",
+          "cómo es"
+        ],
+        [
+          "what's it like to grow up",
+          "cómo es crecer"
+        ],
+        [
+          "to grow up",
+          "crecer"
+        ],
+        [
+          "to grow up here",
+          "crecer aquí"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0582L05",
+        "seed_context": {
+          "target": "¿Cómo es crecer aquí?",
+          "known": "What's it like to grow up here?"
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0582.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

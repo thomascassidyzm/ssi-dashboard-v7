@@ -1,0 +1,418 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0133",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Llegas a conocer muy bien a alguien cuando trabajan juntos.",
+    "known": "You get to know someone very well when you work together."
+  },
+  "recent_seed_pairs": {
+    "S0123": [
+      "Pienso que eso es una buena idea.",
+      "I think that's a good idea."
+    ],
+    "S0124": [
+      "Creí que eso era una buena idea.",
+      "I thought that was a good idea."
+    ],
+    "S0125": [
+      "Creo que tu idea era muy buena.",
+      "I believe that your idea was very good."
+    ],
+    "S0126": [
+      "Este trabajo está cambiando la forma de mi cerebro.",
+      "This work is changing the shape of my brain."
+    ],
+    "S0127": [
+      "Eso no es por qué quería verte.",
+      "That isn't why I wanted to see you."
+    ],
+    "S0128": [
+      "Eres como alguien que conocía.",
+      "You're like someone I used to know."
+    ],
+    "S0129": [
+      "Estoy tan feliz de que te vaya tan bien.",
+      "I'm so happy that you're doing so well."
+    ],
+    "S0130": [
+      "Eso fue una sorpresa, porque es mi amigo.",
+      "That was a surprise, because he's my friend."
+    ],
+    "S0131": [
+      "Hay demasiadas ideas dando vueltas en mi cabeza.",
+      "There are too many ideas going around in my head."
+    ],
+    "S0132": [
+      "Eso es menos emocionante que lo que decía.",
+      "That's less exciting than what she was saying."
+    ]
+  },
+  "legos": {
+    "S0133L01": {
+      "lego": [
+        "You get to know",
+        "Llegas a conocer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0133L01",
+        "seed_context": {
+          "target": "Llegas a conocer muy bien a alguien cuando trabajan juntos.",
+          "known": "You get to know someone very well when you work together."
+        }
+      },
+      "components": [
+        [
+          "Llegas",
+          "You get"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "conocer",
+          "know"
+        ]
+      ]
+    },
+    "S0133L02": {
+      "lego": [
+        "to know someone very well",
+        "conocer muy bien a alguien"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "You get to know",
+          "Llegas a conocer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0133L02",
+        "seed_context": {
+          "target": "Llegas a conocer muy bien a alguien cuando trabajan juntos.",
+          "known": "You get to know someone very well when you work together."
+        }
+      },
+      "components": [
+        [
+          "conocer",
+          "to know"
+        ],
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "bien",
+          "well"
+        ],
+        [
+          "a",
+          ""
+        ],
+        [
+          "alguien",
+          "someone"
+        ]
+      ]
+    },
+    "S0133L03": {
+      "lego": [
+        "someone very well",
+        "muy bien a alguien"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "You get to know",
+          "Llegas a conocer"
+        ],
+        [
+          "to know someone very well",
+          "conocer muy bien a alguien"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0133L03",
+        "seed_context": {
+          "target": "Llegas a conocer muy bien a alguien cuando trabajan juntos.",
+          "known": "You get to know someone very well when you work together."
+        }
+      },
+      "components": [
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "bien",
+          "well"
+        ],
+        [
+          "a",
+          ""
+        ],
+        [
+          "alguien",
+          "someone"
+        ]
+      ]
+    },
+    "S0133L04": {
+      "lego": [
+        "someone",
+        "a alguien"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "You get to know",
+          "Llegas a conocer"
+        ],
+        [
+          "to know someone very well",
+          "conocer muy bien a alguien"
+        ],
+        [
+          "someone very well",
+          "muy bien a alguien"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0133L04",
+        "seed_context": {
+          "target": "Llegas a conocer muy bien a alguien cuando trabajan juntos.",
+          "known": "You get to know someone very well when you work together."
+        }
+      },
+      "components": [
+        [
+          "a",
+          ""
+        ],
+        [
+          "alguien",
+          "someone"
+        ]
+      ]
+    },
+    "S0133L05": {
+      "lego": [
+        "very well",
+        "muy bien"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "You get to know",
+          "Llegas a conocer"
+        ],
+        [
+          "to know someone very well",
+          "conocer muy bien a alguien"
+        ],
+        [
+          "someone very well",
+          "muy bien a alguien"
+        ],
+        [
+          "someone",
+          "a alguien"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0133L05",
+        "seed_context": {
+          "target": "Llegas a conocer muy bien a alguien cuando trabajan juntos.",
+          "known": "You get to know someone very well when you work together."
+        }
+      },
+      "components": [
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "bien",
+          "well"
+        ]
+      ]
+    },
+    "S0133L06": {
+      "lego": [
+        "when you work together",
+        "cuando trabajan juntos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "You get to know",
+          "Llegas a conocer"
+        ],
+        [
+          "to know someone very well",
+          "conocer muy bien a alguien"
+        ],
+        [
+          "someone very well",
+          "muy bien a alguien"
+        ],
+        [
+          "someone",
+          "a alguien"
+        ],
+        [
+          "very well",
+          "muy bien"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0133L06",
+        "seed_context": {
+          "target": "Llegas a conocer muy bien a alguien cuando trabajan juntos.",
+          "known": "You get to know someone very well when you work together."
+        }
+      },
+      "components": [
+        [
+          "cuando",
+          "when"
+        ],
+        [
+          "trabajan",
+          "you work"
+        ],
+        [
+          "juntos",
+          "together"
+        ]
+      ]
+    },
+    "S0133L07": {
+      "lego": [
+        "work together",
+        "trabajan juntos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "You get to know",
+          "Llegas a conocer"
+        ],
+        [
+          "to know someone very well",
+          "conocer muy bien a alguien"
+        ],
+        [
+          "someone very well",
+          "muy bien a alguien"
+        ],
+        [
+          "someone",
+          "a alguien"
+        ],
+        [
+          "very well",
+          "muy bien"
+        ],
+        [
+          "when you work together",
+          "cuando trabajan juntos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0133L07",
+        "seed_context": {
+          "target": "Llegas a conocer muy bien a alguien cuando trabajan juntos.",
+          "known": "You get to know someone very well when you work together."
+        }
+      },
+      "components": [
+        [
+          "trabajan",
+          "work"
+        ],
+        [
+          "juntos",
+          "together"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0133.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "total_legos_in_seed": 7,
+    "phrases_to_generate": 84,
+    "recent_context_seeds": 10
+  }
+}

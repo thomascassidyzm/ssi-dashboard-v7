@@ -1,0 +1,462 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0302",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Ella dijo que no quiere vivir en una ciudad.",
+    "known": "She said that she doesn't want to live in a city."
+  },
+  "recent_seed_pairs": {
+    "S0292": [
+      "Espero que puedas venir a la fiesta.",
+      "I hope you'll be able to come to the party."
+    ],
+    "S0293": [
+      "Tengo que descubrir dónde va a reunirse conmigo.",
+      "I have to find out where he's going to meet me."
+    ],
+    "S0294": [
+      "No tengo suficiente tiempo para llamarte esta noche.",
+      "I don't have enough time to call you tonight."
+    ],
+    "S0295": [
+      "No dije que quería terminar en un día.",
+      "I didn't say that I wanted to finish in a day."
+    ],
+    "S0296": [
+      "Dije que necesitaba un poco más de tiempo.",
+      "I said that I needed a little more time."
+    ],
+    "S0297": [
+      "No conozco a muchas personas que hablan español.",
+      "I don't know many people who speak Spanish."
+    ],
+    "S0298": [
+      "No me queda nada que decir.",
+      "I've got nothing left to say."
+    ],
+    "S0299": [
+      "Él quiere pagar la mitad.",
+      "He wants to pay half."
+    ],
+    "S0300": [
+      "Ella no quiere parecer antipática.",
+      "She doesn't want to seem unfriendly."
+    ],
+    "S0301": [
+      "Él dijo que quiere mostrarte algo.",
+      "He said that he wants to show you something."
+    ]
+  },
+  "legos": {
+    "S0302L01": {
+      "lego": [
+        "she said",
+        "ella dijo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0302L01",
+        "seed_context": {
+          "target": "Ella dijo que no quiere vivir en una ciudad.",
+          "known": "She said that she doesn't want to live in a city."
+        }
+      },
+      "components": [
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "dijo",
+          "said"
+        ]
+      ]
+    },
+    "S0302L02": {
+      "lego": [
+        "said that",
+        "dijo que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0302L02",
+        "seed_context": {
+          "target": "Ella dijo que no quiere vivir en una ciudad.",
+          "known": "She said that she doesn't want to live in a city."
+        }
+      },
+      "components": [
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0302L03": {
+      "lego": [
+        "that she doesn't want",
+        "que no quiere"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0302L03",
+        "seed_context": {
+          "target": "Ella dijo que no quiere vivir en una ciudad.",
+          "known": "She said that she doesn't want to live in a city."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "no",
+          "not/doesn't"
+        ],
+        [
+          "quiere",
+          "want"
+        ]
+      ]
+    },
+    "S0302L04": {
+      "lego": [
+        "doesn't want",
+        "no quiere"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "that she doesn't want",
+          "que no quiere"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0302L04",
+        "seed_context": {
+          "target": "Ella dijo que no quiere vivir en una ciudad.",
+          "known": "She said that she doesn't want to live in a city."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "doesn't"
+        ],
+        [
+          "quiere",
+          "want"
+        ]
+      ]
+    },
+    "S0302L05": {
+      "lego": [
+        "to live",
+        "vivir"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "that she doesn't want",
+          "que no quiere"
+        ],
+        [
+          "doesn't want",
+          "no quiere"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0302L05",
+        "seed_context": {
+          "target": "Ella dijo que no quiere vivir en una ciudad.",
+          "known": "She said that she doesn't want to live in a city."
+        }
+      }
+    },
+    "S0302L06": {
+      "lego": [
+        "in a city",
+        "en una ciudad"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "that she doesn't want",
+          "que no quiere"
+        ],
+        [
+          "doesn't want",
+          "no quiere"
+        ],
+        [
+          "to live",
+          "vivir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0302L06",
+        "seed_context": {
+          "target": "Ella dijo que no quiere vivir en una ciudad.",
+          "known": "She said that she doesn't want to live in a city."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "una",
+          "a"
+        ],
+        [
+          "ciudad",
+          "city"
+        ]
+      ]
+    },
+    "S0302L07": {
+      "lego": [
+        "to live in a city",
+        "vivir en una ciudad"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "that she doesn't want",
+          "que no quiere"
+        ],
+        [
+          "doesn't want",
+          "no quiere"
+        ],
+        [
+          "to live",
+          "vivir"
+        ],
+        [
+          "in a city",
+          "en una ciudad"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0302L07",
+        "seed_context": {
+          "target": "Ella dijo que no quiere vivir en una ciudad.",
+          "known": "She said that she doesn't want to live in a city."
+        }
+      },
+      "components": [
+        [
+          "vivir",
+          "to live"
+        ],
+        [
+          "en",
+          "in"
+        ],
+        [
+          "una",
+          "a"
+        ],
+        [
+          "ciudad",
+          "city"
+        ]
+      ]
+    },
+    "S0302L08": {
+      "lego": [
+        "doesn't want to live",
+        "no quiere vivir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "that she doesn't want",
+          "que no quiere"
+        ],
+        [
+          "doesn't want",
+          "no quiere"
+        ],
+        [
+          "to live",
+          "vivir"
+        ],
+        [
+          "in a city",
+          "en una ciudad"
+        ],
+        [
+          "to live in a city",
+          "vivir en una ciudad"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0302L08",
+        "seed_context": {
+          "target": "Ella dijo que no quiere vivir en una ciudad.",
+          "known": "She said that she doesn't want to live in a city."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "doesn't"
+        ],
+        [
+          "quiere",
+          "want"
+        ],
+        [
+          "vivir",
+          "to live"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0302.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 8,
+    "total_legos_in_seed": 8,
+    "phrases_to_generate": 96,
+    "recent_context_seeds": 10
+  }
+}

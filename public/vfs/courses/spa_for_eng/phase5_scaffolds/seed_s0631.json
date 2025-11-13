@@ -1,0 +1,102 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0631",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Qué quieres?",
+    "known": "What would you like?"
+  },
+  "recent_seed_pairs": {
+    "S0621": [
+      "No me habría atrevido a decirle que estaba roto.",
+      "I wouldn't have dared to tell her that it was broken."
+    ],
+    "S0622": [
+      "Sabía que los niños lo habían roto.",
+      "I knew that the children had broken it."
+    ],
+    "S0623": [
+      "¿Quieres un café o un té?",
+      "Do you want a cup of coffee or tea?"
+    ],
+    "S0624": [
+      "Sí, eso sería genial, por favor.",
+      "Yes, that would be great, please."
+    ],
+    "S0625": [
+      "¿Quieres algo de beber?",
+      "Do you want something to drink?"
+    ],
+    "S0626": [
+      "No, no tengo sed, gracias.",
+      "No, I'm not thirsty, thank you."
+    ],
+    "S0627": [
+      "Tu café está preparado.",
+      "Your coffee is ready."
+    ],
+    "S0628": [
+      "¿Te gusta el té?",
+      "Do you like tea?"
+    ],
+    "S0629": [
+      "Me gusta con leche pero sin azúcar.",
+      "I like it with milk but without sugar."
+    ],
+    "S0630": [
+      "¿Puedo tener algo para beber por favor?",
+      "Can I have something to drink please?"
+    ]
+  },
+  "legos": {
+    "S0631L01": {
+      "lego": [
+        "What would you like?",
+        "¿Qué quieres?"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0631L01",
+        "seed_context": {
+          "target": "¿Qué quieres?",
+          "known": "What would you like?"
+        }
+      },
+      "components": [
+        [
+          "Qué",
+          "What"
+        ],
+        [
+          "quieres",
+          "would you like/want"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0631.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 1,
+    "total_legos_in_seed": 1,
+    "phrases_to_generate": 12,
+    "recent_context_seeds": 10
+  }
+}

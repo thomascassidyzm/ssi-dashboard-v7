@@ -1,0 +1,326 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0356",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Sí ellos tenían algo importante que discutir.",
+    "known": "Yes they had something important to discuss."
+  },
+  "recent_seed_pairs": {
+    "S0346": [
+      "I wanted her to know that I liked her book.",
+      "Quería que ella supiera que me gustó su libro."
+    ],
+    "S0347": [
+      "He wanted to know what was happening a week ago.",
+      "Él quería saber qué estaba pasando hace una semana."
+    ],
+    "S0348": [
+      "She didn't want to know what was going to happen.",
+      "Ella no quería saber qué iba a pasar."
+    ],
+    "S0349": [
+      "Did he want to go out on Friday night?",
+      "¿Quería él salir el viernes por la noche?"
+    ],
+    "S0350": [
+      "Yes he wanted to see some old friends.",
+      "Sí él quería ver a unos amigos viejos."
+    ],
+    "S0351": [
+      "No él no quería dejarme solo.",
+      "No he didn't want to leave me on my own."
+    ],
+    "S0352": [
+      "Aunque él quisiera no podría.",
+      "Even if he wanted to he wouldn't be able to."
+    ],
+    "S0353": [
+      "Ella necesitaba correr alrededor del campo.",
+      "She needed to run around the field."
+    ],
+    "S0354": [
+      "Él no necesitaba aparecer enojado.",
+      "He didn't need to appear angry."
+    ],
+    "S0355": [
+      "¿Necesitaba ella hablar con esa mujer que conoces?",
+      "Did she need to talk to that woman you know?"
+    ]
+  },
+  "legos": {
+    "S0356L01": {
+      "lego": [
+        "Yes",
+        "sí"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0356L01",
+        "seed_context": {
+          "target": "Sí ellos tenían algo importante que discutir.",
+          "known": "Yes they had something important to discuss."
+        }
+      }
+    },
+    "S0356L02": {
+      "lego": [
+        "they had",
+        "ellos tenían"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "sí"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0356L02",
+        "seed_context": {
+          "target": "Sí ellos tenían algo importante que discutir.",
+          "known": "Yes they had something important to discuss."
+        }
+      },
+      "components": [
+        [
+          "ellos",
+          "they"
+        ],
+        [
+          "tenían",
+          "had"
+        ]
+      ]
+    },
+    "S0356L03": {
+      "lego": [
+        "had something",
+        "tenían algo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "sí"
+        ],
+        [
+          "they had",
+          "ellos tenían"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0356L03",
+        "seed_context": {
+          "target": "Sí ellos tenían algo importante que discutir.",
+          "known": "Yes they had something important to discuss."
+        }
+      },
+      "components": [
+        [
+          "tenían",
+          "had"
+        ],
+        [
+          "algo",
+          "something"
+        ]
+      ]
+    },
+    "S0356L04": {
+      "lego": [
+        "something important",
+        "algo importante"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "sí"
+        ],
+        [
+          "they had",
+          "ellos tenían"
+        ],
+        [
+          "had something",
+          "tenían algo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0356L04",
+        "seed_context": {
+          "target": "Sí ellos tenían algo importante que discutir.",
+          "known": "Yes they had something important to discuss."
+        }
+      },
+      "components": [
+        [
+          "algo",
+          "something"
+        ],
+        [
+          "importante",
+          "important"
+        ]
+      ]
+    },
+    "S0356L05": {
+      "lego": [
+        "important to discuss",
+        "importante que discutir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "sí"
+        ],
+        [
+          "they had",
+          "ellos tenían"
+        ],
+        [
+          "had something",
+          "tenían algo"
+        ],
+        [
+          "something important",
+          "algo importante"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0356L05",
+        "seed_context": {
+          "target": "Sí ellos tenían algo importante que discutir.",
+          "known": "Yes they had something important to discuss."
+        }
+      },
+      "components": [
+        [
+          "importante",
+          "important"
+        ],
+        [
+          "que",
+          "to"
+        ],
+        [
+          "discutir",
+          "discuss"
+        ]
+      ]
+    },
+    "S0356L06": {
+      "lego": [
+        "to discuss",
+        "que discutir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "sí"
+        ],
+        [
+          "they had",
+          "ellos tenían"
+        ],
+        [
+          "had something",
+          "tenían algo"
+        ],
+        [
+          "something important",
+          "algo importante"
+        ],
+        [
+          "important to discuss",
+          "importante que discutir"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0356L06",
+        "seed_context": {
+          "target": "Sí ellos tenían algo importante que discutir.",
+          "known": "Yes they had something important to discuss."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "to"
+        ],
+        [
+          "discutir",
+          "discuss"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0356.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

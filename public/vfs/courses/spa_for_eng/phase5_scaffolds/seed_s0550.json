@@ -1,0 +1,190 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0550",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "El final del pueblo.",
+    "known": "The end of the village."
+  },
+  "recent_seed_pairs": {
+    "S0540": [
+      "No me importa si quieres irte sin el coche.",
+      "I don't mind if you want to leave without the car."
+    ],
+    "S0541": [
+      "Es una buena idea intentar respirar despacio.",
+      "It's a good idea to try and breathe slowly."
+    ],
+    "S0542": [
+      "Cuando sea que te sientas enojado.",
+      "Whenever you feel angry."
+    ],
+    "S0543": [
+      "Ella tenía razón.",
+      "She was right."
+    ],
+    "S0544": [
+      "Quien sea que dijo que sería difícil tenía absolutamente razón.",
+      "Whoever said it would be difficult was absolutely right."
+    ],
+    "S0545": [
+      "Es tu turno de llevar la ropa limpia arriba.",
+      "It's your turn to take the clean clothes upstairs."
+    ],
+    "S0546": [
+      "El perro está sucio y mojado.",
+      "The dog is dirty and wet."
+    ],
+    "S0547": [
+      "Porque ha estado jugando en el barro.",
+      "Because he has been playing in the mud."
+    ],
+    "S0548": [
+      "Me estoy sintiendo triste en este momento.",
+      "I am feeling sad at the moment."
+    ],
+    "S0549": [
+      "Porque tengo que estar callado.",
+      "Because I have got to be quiet."
+    ]
+  },
+  "legos": {
+    "S0550L01": {
+      "lego": [
+        "the end",
+        "el final"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0550L01",
+        "seed_context": {
+          "target": "El final del pueblo.",
+          "known": "The end of the village."
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "final",
+          "end"
+        ]
+      ]
+    },
+    "S0550L02": {
+      "lego": [
+        "of the village",
+        "del pueblo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "the end",
+          "el final"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0550L02",
+        "seed_context": {
+          "target": "El final del pueblo.",
+          "known": "The end of the village."
+        }
+      },
+      "components": [
+        [
+          "del",
+          "of the"
+        ],
+        [
+          "pueblo",
+          "village/town"
+        ]
+      ]
+    },
+    "S0550L03": {
+      "lego": [
+        "the end of the village",
+        "el final del pueblo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "the end",
+          "el final"
+        ],
+        [
+          "of the village",
+          "del pueblo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0550L03",
+        "seed_context": {
+          "target": "El final del pueblo.",
+          "known": "The end of the village."
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "final",
+          "end"
+        ],
+        [
+          "del",
+          "of the"
+        ],
+        [
+          "pueblo",
+          "village"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0550.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

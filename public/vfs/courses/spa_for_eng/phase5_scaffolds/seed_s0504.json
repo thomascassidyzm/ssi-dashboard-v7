@@ -1,0 +1,206 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0504",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Voy a correr a través del césped.",
+    "known": "I'm going to run across the grass."
+  },
+  "recent_seed_pairs": {
+    "S0494": [
+      "¿Qué pasa después de la primera parte del espectáculo?",
+      "What happens after the first part of the show?"
+    ],
+    "S0495": [
+      "Cuando importa.",
+      "When it matters."
+    ],
+    "S0496": [
+      "No estoy planeando perder cuando realmente importa.",
+      "I'm not planning to lose when it really matters."
+    ],
+    "S0497": [
+      "Eso suena como si necesitaras dormir un poco.",
+      "That sounds as though you need to get some sleep."
+    ],
+    "S0498": [
+      "Está de pie solo allá dentro de la entrada.",
+      "He's standing alone over there inside the entrance."
+    ],
+    "S0499": [
+      "Quizás deberíamos abrir la puerta y cerrar la ventana.",
+      "Maybe we should open the door and close the window."
+    ],
+    "S0500": [
+      "¿Por qué no quieres sentarte entre las dos chicas?",
+      "Why don't you want to sit between the two girls?"
+    ],
+    "S0501": [
+      "Si tan solo pudiera confiar en ti para jugar juntos sin discutir.",
+      "If only I could trust you to play together without arguing."
+    ],
+    "S0502": [
+      "Casi se perdió porque giró a la izquierda en lugar de a la derecha.",
+      "She almost got lost because she turned left instead of right."
+    ],
+    "S0503": [
+      "Odio causar problemas pero ese es mío.",
+      "I hate making trouble but that one's mine."
+    ]
+  },
+  "legos": {
+    "S0504L01": {
+      "lego": [
+        "I'm going to run",
+        "voy a correr"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0504L01",
+        "seed_context": {
+          "target": "Voy a correr a través del césped.",
+          "known": "I'm going to run across the grass."
+        }
+      },
+      "components": [
+        [
+          "voy",
+          "I go/I'm going"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "correr",
+          "to run"
+        ]
+      ]
+    },
+    "S0504L02": {
+      "lego": [
+        "across the grass",
+        "a través del césped"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm going to run",
+          "voy a correr"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0504L02",
+        "seed_context": {
+          "target": "Voy a correr a través del césped.",
+          "known": "I'm going to run across the grass."
+        }
+      },
+      "components": [
+        [
+          "a través",
+          "across/through"
+        ],
+        [
+          "del",
+          "of the"
+        ],
+        [
+          "césped",
+          "grass"
+        ]
+      ]
+    },
+    "S0504L03": {
+      "lego": [
+        "I'm going to run across the grass",
+        "voy a correr a través del césped"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm going to run",
+          "voy a correr"
+        ],
+        [
+          "across the grass",
+          "a través del césped"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0504L03",
+        "seed_context": {
+          "target": "Voy a correr a través del césped.",
+          "known": "I'm going to run across the grass."
+        }
+      },
+      "components": [
+        [
+          "voy",
+          "I'm going"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "correr",
+          "to run"
+        ],
+        [
+          "a través",
+          "across"
+        ],
+        [
+          "del",
+          "of the"
+        ],
+        [
+          "césped",
+          "grass"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0504.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0431",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Todavía no están preparados pero van a estar preparados pronto.",
+    "known": "They're not ready yet but they'll be ready soon."
+  },
+  "recent_seed_pairs": {
+    "S0421": [
+      "Porque ya saben que se está poniendo débil.",
+      "Because they already know he's getting weak."
+    ],
+    "S0422": [
+      "Una pregunta.",
+      "A question."
+    ],
+    "S0423": [
+      "¿Necesitan preguntar una pregunta tan obvia?",
+      "Do they need to ask such an obvious question?"
+    ],
+    "S0424": [
+      "No están perdiendo el tiempo de todos.",
+      "No they're wasting everybody's time."
+    ],
+    "S0425": [
+      "Sí necesitan asegurarse de que entienden.",
+      "Yes they need to make sure they understand."
+    ],
+    "S0426": [
+      "Les gustaría amarse pero están infelices.",
+      "They would like to love each other but they're unhappy."
+    ],
+    "S0427": [
+      "No les gustaría que pienses que están aburridos.",
+      "They wouldn't like you to think that they're bored."
+    ],
+    "S0428": [
+      "¿Les gustaría visitarnos el martes?",
+      "Would they like to visit us on Tuesday?"
+    ],
+    "S0429": [
+      "Sí eso sería perfecto para ellos.",
+      "Yes that would be perfect for them."
+    ],
+    "S0430": [
+      "No eso no sería posible.",
+      "No that wouldn't be possible."
+    ]
+  },
+  "legos": {
+    "S0431L01": {
+      "lego": [
+        "they're not ready yet",
+        "todavía no están preparados"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0431L01",
+        "seed_context": {
+          "target": "Todavía no están preparados pero van a estar preparados pronto.",
+          "known": "They're not ready yet but they'll be ready soon."
+        }
+      },
+      "components": [
+        [
+          "todavía",
+          "yet"
+        ],
+        [
+          "no",
+          "not"
+        ],
+        [
+          "están",
+          "they're"
+        ],
+        [
+          "preparados",
+          "ready"
+        ]
+      ]
+    },
+    "S0431L02": {
+      "lego": [
+        "but",
+        "pero"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "they're not ready yet",
+          "todavía no están preparados"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0431L02",
+        "seed_context": {
+          "target": "Todavía no están preparados pero van a estar preparados pronto.",
+          "known": "They're not ready yet but they'll be ready soon."
+        }
+      }
+    },
+    "S0431L03": {
+      "lego": [
+        "they'll be ready soon",
+        "van a estar preparados pronto"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they're not ready yet",
+          "todavía no están preparados"
+        ],
+        [
+          "but",
+          "pero"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0431L03",
+        "seed_context": {
+          "target": "Todavía no están preparados pero van a estar preparados pronto.",
+          "known": "They're not ready yet but they'll be ready soon."
+        }
+      },
+      "components": [
+        [
+          "van a estar",
+          "they'll be"
+        ],
+        [
+          "preparados",
+          "ready"
+        ],
+        [
+          "pronto",
+          "soon"
+        ]
+      ]
+    },
+    "S0431L04": {
+      "lego": [
+        "they'll be ready",
+        "van a estar preparados"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they're not ready yet",
+          "todavía no están preparados"
+        ],
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "they'll be ready soon",
+          "van a estar preparados pronto"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0431L04",
+        "seed_context": {
+          "target": "Todavía no están preparados pero van a estar preparados pronto.",
+          "known": "They're not ready yet but they'll be ready soon."
+        }
+      },
+      "components": [
+        [
+          "van a estar",
+          "they'll be"
+        ],
+        [
+          "preparados",
+          "ready"
+        ]
+      ]
+    },
+    "S0431L05": {
+      "lego": [
+        "soon",
+        "pronto"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "they're not ready yet",
+          "todavía no están preparados"
+        ],
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "they'll be ready soon",
+          "van a estar preparados pronto"
+        ],
+        [
+          "they'll be ready",
+          "van a estar preparados"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0431L05",
+        "seed_context": {
+          "target": "Todavía no están preparados pero van a estar preparados pronto.",
+          "known": "They're not ready yet but they'll be ready soon."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0431.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

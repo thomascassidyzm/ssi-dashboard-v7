@@ -1,0 +1,162 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0435",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Sí podrían si quisieran.",
+    "known": "Yes they could if they wanted to."
+  },
+  "recent_seed_pairs": {
+    "S0425": [
+      "Sí necesitan asegurarse de que entienden.",
+      "Yes they need to make sure they understand."
+    ],
+    "S0426": [
+      "Les gustaría amarse pero están infelices.",
+      "They would like to love each other but they're unhappy."
+    ],
+    "S0427": [
+      "No les gustaría que pienses que están aburridos.",
+      "They wouldn't like you to think that they're bored."
+    ],
+    "S0428": [
+      "¿Les gustaría visitarnos el martes?",
+      "Would they like to visit us on Tuesday?"
+    ],
+    "S0429": [
+      "Sí eso sería perfecto para ellos.",
+      "Yes that would be perfect for them."
+    ],
+    "S0430": [
+      "No eso no sería posible.",
+      "No that wouldn't be possible."
+    ],
+    "S0431": [
+      "Todavía no están preparados pero van a estar preparados pronto.",
+      "They're not ready yet but they'll be ready soon."
+    ],
+    "S0432": [
+      "Podrían significar que quieren que preguntes.",
+      "They could mean that they want you to ask."
+    ],
+    "S0433": [
+      "No pudieron descubrir cuándo empezó la película.",
+      "They couldn't find out when the film started."
+    ],
+    "S0434": [
+      "¿Podrían reducir el número de estudiantes que toman?",
+      "Could they cut the number of students they take?"
+    ]
+  },
+  "legos": {
+    "S0435L01": {
+      "lego": [
+        "yes",
+        "sí"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0435L01",
+        "seed_context": {
+          "target": "Sí podrían si quisieran.",
+          "known": "Yes they could if they wanted to."
+        }
+      }
+    },
+    "S0435L02": {
+      "lego": [
+        "they could",
+        "podrían"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "yes",
+          "sí"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0435L02",
+        "seed_context": {
+          "target": "Sí podrían si quisieran.",
+          "known": "Yes they could if they wanted to."
+        }
+      }
+    },
+    "S0435L03": {
+      "lego": [
+        "if they wanted to",
+        "si quisieran"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "yes",
+          "sí"
+        ],
+        [
+          "they could",
+          "podrían"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0435L03",
+        "seed_context": {
+          "target": "Sí podrían si quisieran.",
+          "known": "Yes they could if they wanted to."
+        }
+      },
+      "components": [
+        [
+          "si",
+          "if"
+        ],
+        [
+          "quisieran",
+          "they wanted to"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0435.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

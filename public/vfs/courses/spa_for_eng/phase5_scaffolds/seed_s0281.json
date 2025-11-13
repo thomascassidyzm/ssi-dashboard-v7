@@ -1,0 +1,286 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0281",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Te importa si termino mi café antes de que empieces?",
+    "known": "Do you mind if I finish my coffee before you start?"
+  },
+  "recent_seed_pairs": {
+    "S0271": [
+      "¿Te gustaría venir con nosotros el próximo mes?",
+      "Would you like to come with us next month?"
+    ],
+    "S0272": [
+      "Sí eso suena como una gran idea.",
+      "Yes that sounds like a great idea."
+    ],
+    "S0273": [
+      "No desafortunadamente tengo demasiado trabajo.",
+      "No unfortunately I've got too much work."
+    ],
+    "S0274": [
+      "¿Tienes que salir en unos pocos días?",
+      "Do you have to leave in a few days?"
+    ],
+    "S0275": [
+      "Más tiempo.",
+      "Longer."
+    ],
+    "S0276": [
+      "No, puedo quedarme aquí un poco más de tiempo.",
+      "No I can stay here for a little longer."
+    ],
+    "S0277": [
+      "Sí tengo una reunión importante a principios de la próxima semana.",
+      "Yes I've got an important meeting early next week."
+    ],
+    "S0278": [
+      "¿Tuviste que terminar todo anoche?",
+      "Did you have to finish everything last night?"
+    ],
+    "S0279": [
+      "Sí porque no quedaba mucho tiempo.",
+      "Yes because there wasn't much time left."
+    ],
+    "S0280": [
+      "No solo tuve que hacer el trabajo más importante.",
+      "No I only had to do the most important job."
+    ]
+  },
+  "legos": {
+    "S0281L01": {
+      "lego": [
+        "do you mind",
+        "te importa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0281L01",
+        "seed_context": {
+          "target": "¿Te importa si termino mi café antes de que empieces?",
+          "known": "Do you mind if I finish my coffee before you start?"
+        }
+      },
+      "components": [
+        [
+          "te",
+          "you"
+        ],
+        [
+          "importa",
+          "mind/matter"
+        ]
+      ]
+    },
+    "S0281L02": {
+      "lego": [
+        "do you mind if",
+        "te importa si"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "do you mind",
+          "te importa"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0281L02",
+        "seed_context": {
+          "target": "¿Te importa si termino mi café antes de que empieces?",
+          "known": "Do you mind if I finish my coffee before you start?"
+        }
+      },
+      "components": [
+        [
+          "te",
+          "you"
+        ],
+        [
+          "importa",
+          "mind"
+        ],
+        [
+          "si",
+          "if"
+        ]
+      ]
+    },
+    "S0281L03": {
+      "lego": [
+        "if I finish",
+        "si termino"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "do you mind",
+          "te importa"
+        ],
+        [
+          "do you mind if",
+          "te importa si"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0281L03",
+        "seed_context": {
+          "target": "¿Te importa si termino mi café antes de que empieces?",
+          "known": "Do you mind if I finish my coffee before you start?"
+        }
+      },
+      "components": [
+        [
+          "si",
+          "if"
+        ],
+        [
+          "termino",
+          "I finish"
+        ]
+      ]
+    },
+    "S0281L04": {
+      "lego": [
+        "my coffee",
+        "mi café"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "do you mind",
+          "te importa"
+        ],
+        [
+          "do you mind if",
+          "te importa si"
+        ],
+        [
+          "if I finish",
+          "si termino"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0281L04",
+        "seed_context": {
+          "target": "¿Te importa si termino mi café antes de que empieces?",
+          "known": "Do you mind if I finish my coffee before you start?"
+        }
+      },
+      "components": [
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "café",
+          "coffee"
+        ]
+      ]
+    },
+    "S0281L05": {
+      "lego": [
+        "before you start",
+        "antes de que empieces"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "do you mind",
+          "te importa"
+        ],
+        [
+          "do you mind if",
+          "te importa si"
+        ],
+        [
+          "if I finish",
+          "si termino"
+        ],
+        [
+          "my coffee",
+          "mi café"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0281L05",
+        "seed_context": {
+          "target": "¿Te importa si termino mi café antes de que empieces?",
+          "known": "Do you mind if I finish my coffee before you start?"
+        }
+      },
+      "components": [
+        [
+          "antes de",
+          "before"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "empieces",
+          "you start"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0281.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

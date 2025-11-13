@@ -1,0 +1,240 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0179",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Qué vas a hacer el domingo por la tarde?",
+    "known": "What are you going to do on Sunday afternoon?"
+  },
+  "recent_seed_pairs": {
+    "S0169": [
+      "¿Qué quieres que haga?",
+      "What do you want me to do?"
+    ],
+    "S0170": [
+      "Me gustaría que me dijeras lo que necesitas.",
+      "I'd like you to tell me what you need."
+    ],
+    "S0171": [
+      "¿Quieres que te ayude a buscarlo?",
+      "Do you want me to help you look for it?"
+    ],
+    "S0172": [
+      "Sí, eso sería muy útil.",
+      "Yes that would be very helpful."
+    ],
+    "S0173": [
+      "No gracias, puedo manejarlo por mi cuenta.",
+      "No thank you I can manage on my own."
+    ],
+    "S0174": [
+      "¿Puedes entender lo que estoy diciendo?",
+      "Can you understand what I'm saying?"
+    ],
+    "S0175": [
+      "¿Qué quieres hacer el domingo por la mañana?",
+      "What do you want to do on Sunday morning?"
+    ],
+    "S0176": [
+      "Le preguntaré si podrá ayudar el año próximo.",
+      "I'll ask him if he'll be able to help next year."
+    ],
+    "S0177": [
+      "Le preguntaré dónde quiere ir.",
+      "I'll ask her where she wants to go."
+    ],
+    "S0178": [
+      "No tuve tiempo, aunque quería verte.",
+      "I didn't have time, although I wanted to see you."
+    ]
+  },
+  "legos": {
+    "S0179L01": {
+      "lego": [
+        "what are you going to do",
+        "qué vas a hacer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0179L01",
+        "seed_context": {
+          "target": "¿Qué vas a hacer el domingo por la tarde?",
+          "known": "What are you going to do on Sunday afternoon?"
+        }
+      },
+      "components": [
+        [
+          "qué",
+          "what"
+        ],
+        [
+          "vas a",
+          "are you going to"
+        ],
+        [
+          "hacer",
+          "do"
+        ]
+      ]
+    },
+    "S0179L02": {
+      "lego": [
+        "you're going to do",
+        "vas a hacer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "what are you going to do",
+          "qué vas a hacer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0179L02",
+        "seed_context": {
+          "target": "¿Qué vas a hacer el domingo por la tarde?",
+          "known": "What are you going to do on Sunday afternoon?"
+        }
+      },
+      "components": [
+        [
+          "vas a",
+          "are going to"
+        ],
+        [
+          "hacer",
+          "do"
+        ]
+      ]
+    },
+    "S0179L03": {
+      "lego": [
+        "on Sunday afternoon",
+        "el domingo por la tarde"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "what are you going to do",
+          "qué vas a hacer"
+        ],
+        [
+          "you're going to do",
+          "vas a hacer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0179L03",
+        "seed_context": {
+          "target": "¿Qué vas a hacer el domingo por la tarde?",
+          "known": "What are you going to do on Sunday afternoon?"
+        }
+      },
+      "components": [
+        [
+          "el",
+          "on"
+        ],
+        [
+          "domingo",
+          "Sunday"
+        ],
+        [
+          "por la tarde",
+          "in the afternoon"
+        ]
+      ]
+    },
+    "S0179L04": {
+      "lego": [
+        "in the afternoon",
+        "por la tarde"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "what are you going to do",
+          "qué vas a hacer"
+        ],
+        [
+          "you're going to do",
+          "vas a hacer"
+        ],
+        [
+          "on Sunday afternoon",
+          "el domingo por la tarde"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0179L04",
+        "seed_context": {
+          "target": "¿Qué vas a hacer el domingo por la tarde?",
+          "known": "What are you going to do on Sunday afternoon?"
+        }
+      },
+      "components": [
+        [
+          "por",
+          "in"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "tarde",
+          "afternoon"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0179.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0314",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Pienso que ella podría ponerlo en la mesa.",
+    "known": "I think that she could put it on the table."
+  },
+  "recent_seed_pairs": {
+    "S0304": [
+      "Creo que ella no quiere trabajar desde casa.",
+      "I think that she doesn't want to work from home."
+    ],
+    "S0305": [
+      "Mujer.",
+      "Woman."
+    ],
+    "S0306": [
+      "Conozco a esa mujer joven que está hablando con tu amigo.",
+      "I know that young woman who's talking to your friend."
+    ],
+    "S0307": [
+      "Conozco a ese hombre joven que está sentado allí.",
+      "I know that young man who's sitting over there."
+    ],
+    "S0308": [
+      "Sí ella es una amiga de mi madre.",
+      "Yes she's a friend of my mother."
+    ],
+    "S0309": [
+      "No nunca la he visto antes.",
+      "No I've never seen her before."
+    ],
+    "S0310": [
+      "Ella podría escribir una historia sobre ese hombre.",
+      "She could write a story about that man."
+    ],
+    "S0311": [
+      "Él no podría creer los tres hechos más importantes.",
+      "He couldn't believe the three most important facts."
+    ],
+    "S0312": [
+      "Ella dijo que podría usar la otra habitación mañana por la noche.",
+      "She said that she could use the other room tomorrow night."
+    ],
+    "S0313": [
+      "Él dijo que no podría ver todos los cinco juegos.",
+      "He said that he couldn't watch all five games."
+    ]
+  },
+  "legos": {
+    "S0314L01": {
+      "lego": [
+        "I think that",
+        "Pienso que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0314L01",
+        "seed_context": {
+          "target": "Pienso que ella podría ponerlo en la mesa.",
+          "known": "I think that she could put it on the table."
+        }
+      },
+      "components": [
+        [
+          "Pienso",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0314L02": {
+      "lego": [
+        "she could put it",
+        "ella podría ponerlo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think that",
+          "Pienso que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0314L02",
+        "seed_context": {
+          "target": "Pienso que ella podría ponerlo en la mesa.",
+          "known": "I think that she could put it on the table."
+        }
+      },
+      "components": [
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "podría",
+          "could"
+        ],
+        [
+          "ponerlo",
+          "put it"
+        ]
+      ]
+    },
+    "S0314L03": {
+      "lego": [
+        "could put it",
+        "podría ponerlo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think that",
+          "Pienso que"
+        ],
+        [
+          "she could put it",
+          "ella podría ponerlo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0314L03",
+        "seed_context": {
+          "target": "Pienso que ella podría ponerlo en la mesa.",
+          "known": "I think that she could put it on the table."
+        }
+      },
+      "components": [
+        [
+          "podría",
+          "could"
+        ],
+        [
+          "ponerlo",
+          "put it"
+        ]
+      ]
+    },
+    "S0314L04": {
+      "lego": [
+        "put it",
+        "ponerlo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I think that",
+          "Pienso que"
+        ],
+        [
+          "she could put it",
+          "ella podría ponerlo"
+        ],
+        [
+          "could put it",
+          "podría ponerlo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0314L04",
+        "seed_context": {
+          "target": "Pienso que ella podría ponerlo en la mesa.",
+          "known": "I think that she could put it on the table."
+        }
+      }
+    },
+    "S0314L05": {
+      "lego": [
+        "on the table",
+        "en la mesa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think that",
+          "Pienso que"
+        ],
+        [
+          "she could put it",
+          "ella podría ponerlo"
+        ],
+        [
+          "could put it",
+          "podría ponerlo"
+        ],
+        [
+          "put it",
+          "ponerlo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0314L05",
+        "seed_context": {
+          "target": "Pienso que ella podría ponerlo en la mesa.",
+          "known": "I think that she could put it on the table."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "on"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "mesa",
+          "table"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0314.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

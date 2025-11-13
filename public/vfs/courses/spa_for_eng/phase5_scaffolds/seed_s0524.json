@@ -1,0 +1,334 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0524",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Te llamaré de vuelta en tres o cuatro minutos.",
+    "known": "I'll call you back in three or four minutes."
+  },
+  "recent_seed_pairs": {
+    "S0514": [
+      "Encontré la casa perfecta el primer día.",
+      "I found the perfect house on the first day."
+    ],
+    "S0515": [
+      "En el primer día del año nuevo.",
+      "On the first day of the new year."
+    ],
+    "S0516": [
+      "Ambos vinieron por su cuenta.",
+      "They both came on their own."
+    ],
+    "S0517": [
+      "Pero se fueron el uno con el otro.",
+      "But they left with each other."
+    ],
+    "S0518": [
+      "No podría imaginarme teniendo exactamente el mismo problema.",
+      "I couldn't imagine myself having exactly the same problem."
+    ],
+    "S0519": [
+      "No he visto a su nuevo bebé todavía.",
+      "I haven't seen their new baby yet."
+    ],
+    "S0520": [
+      "Podría haberle pasado a toda la familia.",
+      "It might have happened to the whole family."
+    ],
+    "S0521": [
+      "Tengo miedo de que olvides por qué necesitábamos quedarnos aquí.",
+      "I'm afraid that you'll forget why we needed to stay here."
+    ],
+    "S0522": [
+      "Acordemos que fue estúpido decir la verdad.",
+      "Let's agree that it was stupid to tell the truth."
+    ],
+    "S0523": [
+      "En lugar de dar una excusa.",
+      "Instead of giving an excuse."
+    ]
+  },
+  "legos": {
+    "S0524L01": {
+      "lego": [
+        "I'll call you",
+        "te llamaré"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0524L01",
+        "seed_context": {
+          "target": "Te llamaré de vuelta en tres o cuatro minutos.",
+          "known": "I'll call you back in three or four minutes."
+        }
+      },
+      "components": [
+        [
+          "te",
+          "you"
+        ],
+        [
+          "llamaré",
+          "I'll call"
+        ]
+      ]
+    },
+    "S0524L02": {
+      "lego": [
+        "back",
+        "de vuelta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'll call you",
+          "te llamaré"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0524L02",
+        "seed_context": {
+          "target": "Te llamaré de vuelta en tres o cuatro minutos.",
+          "known": "I'll call you back in three or four minutes."
+        }
+      },
+      "components": [
+        [
+          "de",
+          "of"
+        ],
+        [
+          "vuelta",
+          "return/turn"
+        ]
+      ]
+    },
+    "S0524L03": {
+      "lego": [
+        "I'll call you back",
+        "te llamaré de vuelta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'll call you",
+          "te llamaré"
+        ],
+        [
+          "back",
+          "de vuelta"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0524L03",
+        "seed_context": {
+          "target": "Te llamaré de vuelta en tres o cuatro minutos.",
+          "known": "I'll call you back in three or four minutes."
+        }
+      },
+      "components": [
+        [
+          "te",
+          "you"
+        ],
+        [
+          "llamaré",
+          "I'll call"
+        ],
+        [
+          "de vuelta",
+          "back"
+        ]
+      ]
+    },
+    "S0524L04": {
+      "lego": [
+        "three or four",
+        "tres o cuatro"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'll call you",
+          "te llamaré"
+        ],
+        [
+          "back",
+          "de vuelta"
+        ],
+        [
+          "I'll call you back",
+          "te llamaré de vuelta"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0524L04",
+        "seed_context": {
+          "target": "Te llamaré de vuelta en tres o cuatro minutos.",
+          "known": "I'll call you back in three or four minutes."
+        }
+      },
+      "components": [
+        [
+          "tres",
+          "three"
+        ],
+        [
+          "o",
+          "or"
+        ],
+        [
+          "cuatro",
+          "four"
+        ]
+      ]
+    },
+    "S0524L05": {
+      "lego": [
+        "minutes",
+        "minutos"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I'll call you",
+          "te llamaré"
+        ],
+        [
+          "back",
+          "de vuelta"
+        ],
+        [
+          "I'll call you back",
+          "te llamaré de vuelta"
+        ],
+        [
+          "three or four",
+          "tres o cuatro"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0524L05",
+        "seed_context": {
+          "target": "Te llamaré de vuelta en tres o cuatro minutos.",
+          "known": "I'll call you back in three or four minutes."
+        }
+      }
+    },
+    "S0524L06": {
+      "lego": [
+        "in three or four minutes",
+        "en tres o cuatro minutos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'll call you",
+          "te llamaré"
+        ],
+        [
+          "back",
+          "de vuelta"
+        ],
+        [
+          "I'll call you back",
+          "te llamaré de vuelta"
+        ],
+        [
+          "three or four",
+          "tres o cuatro"
+        ],
+        [
+          "minutes",
+          "minutos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0524L06",
+        "seed_context": {
+          "target": "Te llamaré de vuelta en tres o cuatro minutos.",
+          "known": "I'll call you back in three or four minutes."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "tres o cuatro",
+          "three or four"
+        ],
+        [
+          "minutos",
+          "minutes"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0524.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

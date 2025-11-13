@@ -1,0 +1,340 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0256",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Creo que estaré listo en menos de una hora.",
+    "known": "I think I'll be ready in less than an hour."
+  },
+  "recent_seed_pairs": {
+    "S0246": [
+      "I wanted her to help you but she was too busy.",
+      "Quería que ella te ayudara pero estaba demasiado ocupada."
+    ],
+    "S0247": [
+      "I thought that book was fairly good.",
+      "Pensé que ese libro era bastante bueno."
+    ],
+    "S0248": [
+      "I thought the film was complete rubbish and I want my money back.",
+      "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+    ],
+    "S0249": [
+      "I want you to help me before you go.",
+      "Quiero que me ayudes antes de que te vayas."
+    ],
+    "S0250": [
+      "Can you tell me something else before I answer?",
+      "¿Puedes decirme algo más antes de que responda?"
+    ],
+    "S0251": [
+      "No quiero descubrir hasta después de que terminemos.",
+      "I don't want to find out until after we finish."
+    ],
+    "S0252": [
+      "¿Cuándo estarás preparado para empezar?",
+      "When will you be ready to start?"
+    ],
+    "S0253": [
+      "Debo estar preparado en unos pocos minutos.",
+      "I should be ready in a few minutes."
+    ],
+    "S0254": [
+      "He estado preparado desde esta mañana.",
+      "I've been ready since this morning."
+    ],
+    "S0255": [
+      "¿Cuándo crees que estarás preparado para salir?",
+      "When do you think you'll be ready to leave?"
+    ]
+  },
+  "legos": {
+    "S0256L01": {
+      "lego": [
+        "I think",
+        "creo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0256L01",
+        "seed_context": {
+          "target": "Creo que estaré listo en menos de una hora.",
+          "known": "I think I'll be ready in less than an hour."
+        }
+      }
+    },
+    "S0256L02": {
+      "lego": [
+        "I think I'll be ready",
+        "creo que estaré listo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "creo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0256L02",
+        "seed_context": {
+          "target": "Creo que estaré listo en menos de una hora.",
+          "known": "I think I'll be ready in less than an hour."
+        }
+      },
+      "components": [
+        [
+          "creo",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "estaré",
+          "I will be"
+        ],
+        [
+          "listo",
+          "ready"
+        ]
+      ]
+    },
+    "S0256L03": {
+      "lego": [
+        "I'll be ready",
+        "estaré listo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "creo"
+        ],
+        [
+          "I think I'll be ready",
+          "creo que estaré listo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0256L03",
+        "seed_context": {
+          "target": "Creo que estaré listo en menos de una hora.",
+          "known": "I think I'll be ready in less than an hour."
+        }
+      },
+      "components": [
+        [
+          "estaré",
+          "I will be"
+        ],
+        [
+          "listo",
+          "ready"
+        ]
+      ]
+    },
+    "S0256L04": {
+      "lego": [
+        "ready",
+        "listo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "creo"
+        ],
+        [
+          "I think I'll be ready",
+          "creo que estaré listo"
+        ],
+        [
+          "I'll be ready",
+          "estaré listo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0256L04",
+        "seed_context": {
+          "target": "Creo que estaré listo en menos de una hora.",
+          "known": "I think I'll be ready in less than an hour."
+        }
+      }
+    },
+    "S0256L05": {
+      "lego": [
+        "in less than an hour",
+        "en menos de una hora"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "creo"
+        ],
+        [
+          "I think I'll be ready",
+          "creo que estaré listo"
+        ],
+        [
+          "I'll be ready",
+          "estaré listo"
+        ],
+        [
+          "ready",
+          "listo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0256L05",
+        "seed_context": {
+          "target": "Creo que estaré listo en menos de una hora.",
+          "known": "I think I'll be ready in less than an hour."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "menos",
+          "less"
+        ],
+        [
+          "de",
+          "than/of"
+        ],
+        [
+          "una",
+          "an/a"
+        ],
+        [
+          "hora",
+          "hour"
+        ]
+      ]
+    },
+    "S0256L06": {
+      "lego": [
+        "less than an hour",
+        "menos de una hora"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "creo"
+        ],
+        [
+          "I think I'll be ready",
+          "creo que estaré listo"
+        ],
+        [
+          "I'll be ready",
+          "estaré listo"
+        ],
+        [
+          "ready",
+          "listo"
+        ],
+        [
+          "in less than an hour",
+          "en menos de una hora"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0256L06",
+        "seed_context": {
+          "target": "Creo que estaré listo en menos de una hora.",
+          "known": "I think I'll be ready in less than an hour."
+        }
+      },
+      "components": [
+        [
+          "menos",
+          "less"
+        ],
+        [
+          "de",
+          "than/of"
+        ],
+        [
+          "una",
+          "an/a"
+        ],
+        [
+          "hora",
+          "hour"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0256.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

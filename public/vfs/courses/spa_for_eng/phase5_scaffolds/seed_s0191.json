@@ -1,0 +1,176 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0191",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No, no me importa en absoluto.",
+    "known": "No I don't mind at all."
+  },
+  "recent_seed_pairs": {
+    "S0181": [
+      "Pero tengo que llevar a mi madre al doctor.",
+      "But I have to take my mother to the doctor."
+    ],
+    "S0182": [
+      "¿Has visto mis llaves en algún lugar?",
+      "Have you seen my keys anywhere?"
+    ],
+    "S0183": [
+      "No, me temo que no las he visto.",
+      "No I'm afraid I haven't seen them."
+    ],
+    "S0184": [
+      "Sí las vi en la oficina hace un rato.",
+      "Yes I saw them in the office a while ago."
+    ],
+    "S0185": [
+      "Creo que las dejaste en el trabajo.",
+      "I think you left them at work."
+    ],
+    "S0186": [
+      "¿Quieres hablar de algo diferente la próxima semana?",
+      "Do you want to talk about something different next week?"
+    ],
+    "S0187": [
+      "Estoy contento hasta ahora.",
+      "I'm happy so far."
+    ],
+    "S0188": [
+      "Así que no necesito cambiar.",
+      "So I don't need to change."
+    ],
+    "S0189": [
+      "Sí, esa es una buena idea.",
+      "Yes that's a good idea."
+    ],
+    "S0190": [
+      "¿Te importa si te hago algunas preguntas?",
+      "Do you mind if I ask you some questions?"
+    ]
+  },
+  "legos": {
+    "S0191L01": {
+      "lego": [
+        "No",
+        "No"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0191L01",
+        "seed_context": {
+          "target": "No, no me importa en absoluto.",
+          "known": "No I don't mind at all."
+        }
+      }
+    },
+    "S0191L02": {
+      "lego": [
+        "I don't mind",
+        "no me importa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "No",
+          "No"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0191L02",
+        "seed_context": {
+          "target": "No, no me importa en absoluto.",
+          "known": "No I don't mind at all."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not/don't"
+        ],
+        [
+          "me",
+          "to me"
+        ],
+        [
+          "importa",
+          "matter/mind"
+        ]
+      ]
+    },
+    "S0191L03": {
+      "lego": [
+        "at all",
+        "en absoluto"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "No",
+          "No"
+        ],
+        [
+          "I don't mind",
+          "no me importa"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0191L03",
+        "seed_context": {
+          "target": "No, no me importa en absoluto.",
+          "known": "No I don't mind at all."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in/at"
+        ],
+        [
+          "absoluto",
+          "absolute/all"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0191.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

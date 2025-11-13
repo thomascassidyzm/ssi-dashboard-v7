@@ -1,0 +1,400 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0147",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Ella era muy amable cuando me vio sintiéndome nervioso.",
+    "known": "She was very kind when she saw me feeling nervous."
+  },
+  "recent_seed_pairs": {
+    "S0137": [
+      "Es más importante hablar frecuentemente que ser perfecto.",
+      "It's more important to talk often than to be perfect."
+    ],
+    "S0138": [
+      "Esto era donde mi amigo quería reunirse con nosotros.",
+      "This was where my friend wanted to meet us."
+    ],
+    "S0139": [
+      "Lo siento que necesito irme tan temprano.",
+      "I'm sorry that I need to leave so early."
+    ],
+    "S0140": [
+      "Lo siento que no puedo ver lo que estás intentando mostrarme.",
+      "I'm sorry that I can't see what you're trying to show me."
+    ],
+    "S0141": [
+      "No hay problema. Todo está bien.",
+      "No problem. Everything is okay."
+    ],
+    "S0142": [
+      "Eso es muy amable de tu parte y estoy agradecido a ti por ayudar.",
+      "That's very kind of you and I'm grateful to you for helping."
+    ],
+    "S0143": [
+      "Es la misma cosa de la que estábamos hablando antes.",
+      "It's the same thing as we were talking about earlier."
+    ],
+    "S0144": [
+      "Me desperté más temprano de lo que quería esta mañana.",
+      "I woke earlier than I wanted to this morning."
+    ],
+    "S0145": [
+      "¿Por qué no estás feliz ya?",
+      "Why are you not happy any more?"
+    ],
+    "S0146": [
+      "Nada parece estar funcionando desde que intentamos arreglarlo.",
+      "Nothing seems to be working since we tried to fix it."
+    ]
+  },
+  "legos": {
+    "S0147L01": {
+      "lego": [
+        "She was very kind",
+        "Ella era muy amable"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0147L01",
+        "seed_context": {
+          "target": "Ella era muy amable cuando me vio sintiéndome nervioso.",
+          "known": "She was very kind when she saw me feeling nervous."
+        }
+      },
+      "components": [
+        [
+          "Ella",
+          "She"
+        ],
+        [
+          "era",
+          "was"
+        ],
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "amable",
+          "kind"
+        ]
+      ]
+    },
+    "S0147L02": {
+      "lego": [
+        "was very kind",
+        "era muy amable"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "She was very kind",
+          "Ella era muy amable"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0147L02",
+        "seed_context": {
+          "target": "Ella era muy amable cuando me vio sintiéndome nervioso.",
+          "known": "She was very kind when she saw me feeling nervous."
+        }
+      },
+      "components": [
+        [
+          "era",
+          "was"
+        ],
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "amable",
+          "kind"
+        ]
+      ]
+    },
+    "S0147L03": {
+      "lego": [
+        "very kind",
+        "muy amable"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "She was very kind",
+          "Ella era muy amable"
+        ],
+        [
+          "was very kind",
+          "era muy amable"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0147L03",
+        "seed_context": {
+          "target": "Ella era muy amable cuando me vio sintiéndome nervioso.",
+          "known": "She was very kind when she saw me feeling nervous."
+        }
+      },
+      "components": [
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "amable",
+          "kind"
+        ]
+      ]
+    },
+    "S0147L04": {
+      "lego": [
+        "when",
+        "cuando"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "She was very kind",
+          "Ella era muy amable"
+        ],
+        [
+          "was very kind",
+          "era muy amable"
+        ],
+        [
+          "very kind",
+          "muy amable"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0147L04",
+        "seed_context": {
+          "target": "Ella era muy amable cuando me vio sintiéndome nervioso.",
+          "known": "She was very kind when she saw me feeling nervous."
+        }
+      }
+    },
+    "S0147L05": {
+      "lego": [
+        "she saw me feeling nervous",
+        "me vio sintiéndome nervioso"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "She was very kind",
+          "Ella era muy amable"
+        ],
+        [
+          "was very kind",
+          "era muy amable"
+        ],
+        [
+          "very kind",
+          "muy amable"
+        ],
+        [
+          "when",
+          "cuando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0147L05",
+        "seed_context": {
+          "target": "Ella era muy amable cuando me vio sintiéndome nervioso.",
+          "known": "She was very kind when she saw me feeling nervous."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "me"
+        ],
+        [
+          "vio",
+          "saw"
+        ],
+        [
+          "sintiéndome",
+          "feeling"
+        ],
+        [
+          "nervioso",
+          "nervous"
+        ]
+      ]
+    },
+    "S0147L06": {
+      "lego": [
+        "she saw me",
+        "me vio"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "She was very kind",
+          "Ella era muy amable"
+        ],
+        [
+          "was very kind",
+          "era muy amable"
+        ],
+        [
+          "very kind",
+          "muy amable"
+        ],
+        [
+          "when",
+          "cuando"
+        ],
+        [
+          "she saw me feeling nervous",
+          "me vio sintiéndome nervioso"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0147L06",
+        "seed_context": {
+          "target": "Ella era muy amable cuando me vio sintiéndome nervioso.",
+          "known": "She was very kind when she saw me feeling nervous."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "me"
+        ],
+        [
+          "vio",
+          "saw"
+        ]
+      ]
+    },
+    "S0147L07": {
+      "lego": [
+        "feeling nervous",
+        "sintiéndome nervioso"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "She was very kind",
+          "Ella era muy amable"
+        ],
+        [
+          "was very kind",
+          "era muy amable"
+        ],
+        [
+          "very kind",
+          "muy amable"
+        ],
+        [
+          "when",
+          "cuando"
+        ],
+        [
+          "she saw me feeling nervous",
+          "me vio sintiéndome nervioso"
+        ],
+        [
+          "she saw me",
+          "me vio"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0147L07",
+        "seed_context": {
+          "target": "Ella era muy amable cuando me vio sintiéndome nervioso.",
+          "known": "She was very kind when she saw me feeling nervous."
+        }
+      },
+      "components": [
+        [
+          "sintiéndome",
+          "feeling"
+        ],
+        [
+          "nervioso",
+          "nervous"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0147.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "total_legos_in_seed": 7,
+    "phrases_to_generate": 84,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,398 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0526",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Me resulta difícil creer que no puedes adivinar.",
+    "known": "I'm finding it hard to believe that you can't guess."
+  },
+  "recent_seed_pairs": {
+    "S0516": [
+      "Ambos vinieron por su cuenta.",
+      "They both came on their own."
+    ],
+    "S0517": [
+      "Pero se fueron el uno con el otro.",
+      "But they left with each other."
+    ],
+    "S0518": [
+      "No podría imaginarme teniendo exactamente el mismo problema.",
+      "I couldn't imagine myself having exactly the same problem."
+    ],
+    "S0519": [
+      "No he visto a su nuevo bebé todavía.",
+      "I haven't seen their new baby yet."
+    ],
+    "S0520": [
+      "Podría haberle pasado a toda la familia.",
+      "It might have happened to the whole family."
+    ],
+    "S0521": [
+      "Tengo miedo de que olvides por qué necesitábamos quedarnos aquí.",
+      "I'm afraid that you'll forget why we needed to stay here."
+    ],
+    "S0522": [
+      "Acordemos que fue estúpido decir la verdad.",
+      "Let's agree that it was stupid to tell the truth."
+    ],
+    "S0523": [
+      "En lugar de dar una excusa.",
+      "Instead of giving an excuse."
+    ],
+    "S0524": [
+      "Te llamaré de vuelta en tres o cuatro minutos.",
+      "I'll call you back in three or four minutes."
+    ],
+    "S0525": [
+      "Para comprobar si has podido terminar.",
+      "To check if you've been able to finish."
+    ]
+  },
+  "legos": {
+    "S0526L01": {
+      "lego": [
+        "I'm finding it hard",
+        "me resulta difícil"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0526L01",
+        "seed_context": {
+          "target": "Me resulta difícil creer que no puedes adivinar.",
+          "known": "I'm finding it hard to believe that you can't guess."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "to me"
+        ],
+        [
+          "resulta",
+          "it results/turns out"
+        ],
+        [
+          "difícil",
+          "difficult/hard"
+        ]
+      ]
+    },
+    "S0526L02": {
+      "lego": [
+        "to believe",
+        "creer"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I'm finding it hard",
+          "me resulta difícil"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0526L02",
+        "seed_context": {
+          "target": "Me resulta difícil creer que no puedes adivinar.",
+          "known": "I'm finding it hard to believe that you can't guess."
+        }
+      }
+    },
+    "S0526L03": {
+      "lego": [
+        "you can't",
+        "no puedes"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm finding it hard",
+          "me resulta difícil"
+        ],
+        [
+          "to believe",
+          "creer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0526L03",
+        "seed_context": {
+          "target": "Me resulta difícil creer que no puedes adivinar.",
+          "known": "I'm finding it hard to believe that you can't guess."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not/no"
+        ],
+        [
+          "puedes",
+          "you can"
+        ]
+      ]
+    },
+    "S0526L04": {
+      "lego": [
+        "to guess",
+        "adivinar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I'm finding it hard",
+          "me resulta difícil"
+        ],
+        [
+          "to believe",
+          "creer"
+        ],
+        [
+          "you can't",
+          "no puedes"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0526L04",
+        "seed_context": {
+          "target": "Me resulta difícil creer que no puedes adivinar.",
+          "known": "I'm finding it hard to believe that you can't guess."
+        }
+      }
+    },
+    "S0526L05": {
+      "lego": [
+        "you can't guess",
+        "no puedes adivinar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm finding it hard",
+          "me resulta difícil"
+        ],
+        [
+          "to believe",
+          "creer"
+        ],
+        [
+          "you can't",
+          "no puedes"
+        ],
+        [
+          "to guess",
+          "adivinar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0526L05",
+        "seed_context": {
+          "target": "Me resulta difícil creer que no puedes adivinar.",
+          "known": "I'm finding it hard to believe that you can't guess."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "puedes",
+          "you can"
+        ],
+        [
+          "adivinar",
+          "guess"
+        ]
+      ]
+    },
+    "S0526L06": {
+      "lego": [
+        "that you can't guess",
+        "que no puedes adivinar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm finding it hard",
+          "me resulta difícil"
+        ],
+        [
+          "to believe",
+          "creer"
+        ],
+        [
+          "you can't",
+          "no puedes"
+        ],
+        [
+          "to guess",
+          "adivinar"
+        ],
+        [
+          "you can't guess",
+          "no puedes adivinar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0526L06",
+        "seed_context": {
+          "target": "Me resulta difícil creer que no puedes adivinar.",
+          "known": "I'm finding it hard to believe that you can't guess."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "no",
+          "not"
+        ],
+        [
+          "puedes",
+          "you can"
+        ],
+        [
+          "adivinar",
+          "guess"
+        ]
+      ]
+    },
+    "S0526L07": {
+      "lego": [
+        "to believe that you can't guess",
+        "creer que no puedes adivinar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm finding it hard",
+          "me resulta difícil"
+        ],
+        [
+          "to believe",
+          "creer"
+        ],
+        [
+          "you can't",
+          "no puedes"
+        ],
+        [
+          "to guess",
+          "adivinar"
+        ],
+        [
+          "you can't guess",
+          "no puedes adivinar"
+        ],
+        [
+          "that you can't guess",
+          "que no puedes adivinar"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0526L07",
+        "seed_context": {
+          "target": "Me resulta difícil creer que no puedes adivinar.",
+          "known": "I'm finding it hard to believe that you can't guess."
+        }
+      },
+      "components": [
+        [
+          "creer",
+          "to believe"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "no",
+          "not"
+        ],
+        [
+          "puedes",
+          "you can"
+        ],
+        [
+          "adivinar",
+          "guess"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0526.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "total_legos_in_seed": 7,
+    "phrases_to_generate": 84,
+    "recent_context_seeds": 10
+  }
+}

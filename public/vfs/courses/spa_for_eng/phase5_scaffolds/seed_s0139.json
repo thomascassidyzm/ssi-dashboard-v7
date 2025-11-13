@@ -1,0 +1,518 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0139",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Lo siento que necesito irme tan temprano.",
+    "known": "I'm sorry that I need to leave so early."
+  },
+  "recent_seed_pairs": {
+    "S0129": [
+      "Estoy tan feliz de que te vaya tan bien.",
+      "I'm so happy that you're doing so well."
+    ],
+    "S0130": [
+      "Eso fue una sorpresa, porque es mi amigo.",
+      "That was a surprise, because he's my friend."
+    ],
+    "S0131": [
+      "Hay demasiadas ideas dando vueltas en mi cabeza.",
+      "There are too many ideas going around in my head."
+    ],
+    "S0132": [
+      "Eso es menos emocionante que lo que decía.",
+      "That's less exciting than what she was saying."
+    ],
+    "S0133": [
+      "Llegas a conocer muy bien a alguien cuando trabajan juntos.",
+      "You get to know someone very well when you work together."
+    ],
+    "S0134": [
+      "No es un problema cuando trabajas en algo difícil con ellos.",
+      "It's not a problem when you work at something difficult with them."
+    ],
+    "S0135": [
+      "No sé por qué piensas que es tan bueno.",
+      "I don't know why you think that it's so good."
+    ],
+    "S0136": [
+      "Por supuesto que puedes preguntarle porque es mi amiga.",
+      "Of course you can ask her because she's my friend."
+    ],
+    "S0137": [
+      "Es más importante hablar frecuentemente que ser perfecto.",
+      "It's more important to talk often than to be perfect."
+    ],
+    "S0138": [
+      "Esto era donde mi amigo quería reunirse con nosotros.",
+      "This was where my friend wanted to meet us."
+    ]
+  },
+  "legos": {
+    "S0139L01": {
+      "lego": [
+        "I'm sorry",
+        "Lo siento"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0139L01",
+        "seed_context": {
+          "target": "Lo siento que necesito irme tan temprano.",
+          "known": "I'm sorry that I need to leave so early."
+        }
+      },
+      "components": [
+        [
+          "Lo",
+          ""
+        ],
+        [
+          "siento",
+          "I'm sorry"
+        ]
+      ]
+    },
+    "S0139L02": {
+      "lego": [
+        "I'm sorry that I need",
+        "Lo siento que necesito"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0139L02",
+        "seed_context": {
+          "target": "Lo siento que necesito irme tan temprano.",
+          "known": "I'm sorry that I need to leave so early."
+        }
+      },
+      "components": [
+        [
+          "Lo siento",
+          "I'm sorry"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "necesito",
+          "I need"
+        ]
+      ]
+    },
+    "S0139L03": {
+      "lego": [
+        "that I need to leave",
+        "que necesito irme"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ],
+        [
+          "I'm sorry that I need",
+          "Lo siento que necesito"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0139L03",
+        "seed_context": {
+          "target": "Lo siento que necesito irme tan temprano.",
+          "known": "I'm sorry that I need to leave so early."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "necesito",
+          "I need"
+        ],
+        [
+          "irme",
+          "to leave"
+        ]
+      ]
+    },
+    "S0139L04": {
+      "lego": [
+        "need to leave so early",
+        "necesito irme tan temprano"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ],
+        [
+          "I'm sorry that I need",
+          "Lo siento que necesito"
+        ],
+        [
+          "that I need to leave",
+          "que necesito irme"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0139L04",
+        "seed_context": {
+          "target": "Lo siento que necesito irme tan temprano.",
+          "known": "I'm sorry that I need to leave so early."
+        }
+      },
+      "components": [
+        [
+          "necesito",
+          "need"
+        ],
+        [
+          "irme",
+          "to leave"
+        ],
+        [
+          "tan",
+          "so"
+        ],
+        [
+          "temprano",
+          "early"
+        ]
+      ]
+    },
+    "S0139L05": {
+      "lego": [
+        "need to leave",
+        "necesito irme"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ],
+        [
+          "I'm sorry that I need",
+          "Lo siento que necesito"
+        ],
+        [
+          "that I need to leave",
+          "que necesito irme"
+        ],
+        [
+          "need to leave so early",
+          "necesito irme tan temprano"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0139L05",
+        "seed_context": {
+          "target": "Lo siento que necesito irme tan temprano.",
+          "known": "I'm sorry that I need to leave so early."
+        }
+      },
+      "components": [
+        [
+          "necesito",
+          "need"
+        ],
+        [
+          "irme",
+          "to leave"
+        ]
+      ]
+    },
+    "S0139L06": {
+      "lego": [
+        "I need",
+        "necesito"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ],
+        [
+          "I'm sorry that I need",
+          "Lo siento que necesito"
+        ],
+        [
+          "that I need to leave",
+          "que necesito irme"
+        ],
+        [
+          "need to leave so early",
+          "necesito irme tan temprano"
+        ],
+        [
+          "need to leave",
+          "necesito irme"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0139L06",
+        "seed_context": {
+          "target": "Lo siento que necesito irme tan temprano.",
+          "known": "I'm sorry that I need to leave so early."
+        }
+      }
+    },
+    "S0139L07": {
+      "lego": [
+        "leave so early",
+        "irme tan temprano"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ],
+        [
+          "I'm sorry that I need",
+          "Lo siento que necesito"
+        ],
+        [
+          "that I need to leave",
+          "que necesito irme"
+        ],
+        [
+          "need to leave so early",
+          "necesito irme tan temprano"
+        ],
+        [
+          "need to leave",
+          "necesito irme"
+        ],
+        [
+          "I need",
+          "necesito"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0139L07",
+        "seed_context": {
+          "target": "Lo siento que necesito irme tan temprano.",
+          "known": "I'm sorry that I need to leave so early."
+        }
+      },
+      "components": [
+        [
+          "irme",
+          "leave"
+        ],
+        [
+          "tan",
+          "so"
+        ],
+        [
+          "temprano",
+          "early"
+        ]
+      ]
+    },
+    "S0139L08": {
+      "lego": [
+        "to leave",
+        "irme"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ],
+        [
+          "I'm sorry that I need",
+          "Lo siento que necesito"
+        ],
+        [
+          "that I need to leave",
+          "que necesito irme"
+        ],
+        [
+          "need to leave so early",
+          "necesito irme tan temprano"
+        ],
+        [
+          "need to leave",
+          "necesito irme"
+        ],
+        [
+          "I need",
+          "necesito"
+        ],
+        [
+          "leave so early",
+          "irme tan temprano"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0139L08",
+        "seed_context": {
+          "target": "Lo siento que necesito irme tan temprano.",
+          "known": "I'm sorry that I need to leave so early."
+        }
+      }
+    },
+    "S0139L09": {
+      "lego": [
+        "so early",
+        "tan temprano"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm sorry",
+          "Lo siento"
+        ],
+        [
+          "I'm sorry that I need",
+          "Lo siento que necesito"
+        ],
+        [
+          "that I need to leave",
+          "que necesito irme"
+        ],
+        [
+          "need to leave so early",
+          "necesito irme tan temprano"
+        ],
+        [
+          "need to leave",
+          "necesito irme"
+        ],
+        [
+          "I need",
+          "necesito"
+        ],
+        [
+          "leave so early",
+          "irme tan temprano"
+        ],
+        [
+          "to leave",
+          "irme"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0139L09",
+        "seed_context": {
+          "target": "Lo siento que necesito irme tan temprano.",
+          "known": "I'm sorry that I need to leave so early."
+        }
+      },
+      "components": [
+        [
+          "tan",
+          "so"
+        ],
+        [
+          "temprano",
+          "early"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0139.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 9,
+    "total_legos_in_seed": 9,
+    "phrases_to_generate": 108,
+    "recent_context_seeds": 10
+  }
+}

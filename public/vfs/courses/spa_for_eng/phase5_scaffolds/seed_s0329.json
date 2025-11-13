@@ -1,0 +1,92 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0329",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Es importante.",
+    "known": "It's important."
+  },
+  "recent_seed_pairs": {
+    "S0319": [
+      "Ella necesita mudarse a un país diferente.",
+      "She needs to move to a different country."
+    ],
+    "S0320": [
+      "Él no necesita comprar otra televisión este año.",
+      "He doesn't need to buy another television this year."
+    ],
+    "S0321": [
+      "Un libro.",
+      "A book."
+    ],
+    "S0322": [
+      "Ella dijo que necesita leer el mismo libro.",
+      "She said that she needs to read the same book."
+    ],
+    "S0323": [
+      "Él dijo que no necesita caminar a la escuela.",
+      "He said that he doesn't need to walk to school."
+    ],
+    "S0324": [
+      "Esa estudiante tiene las dos manos arriba.",
+      "That student has both of her hands up."
+    ],
+    "S0325": [
+      "Creo que necesita considerar diez problemas posibles.",
+      "I think that he needs to consider ten possible problems."
+    ],
+    "S0326": [
+      "No creo que necesite vender la compañía.",
+      "I don't think that she needs to sell the company."
+    ],
+    "S0327": [
+      "¿Crees que necesita ofrecer otra manera?",
+      "Do you think that she needs to offer another way?"
+    ],
+    "S0328": [
+      "Sí pienso que debería.",
+      "Yes I think she ought to."
+    ]
+  },
+  "legos": {
+    "S0329L01": {
+      "lego": [
+        "it's important",
+        "es importante"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0329L01",
+        "seed_context": {
+          "target": "Es importante.",
+          "known": "It's important."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0329.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 1,
+    "total_legos_in_seed": 1,
+    "phrases_to_generate": 12,
+    "recent_context_seeds": 10
+  }
+}

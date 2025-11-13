@@ -1,0 +1,360 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0108",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No esperábamos despertar en el medio de la noche",
+    "known": "We didn't hope to wake in the middle of the night."
+  },
+  "recent_seed_pairs": {
+    "S0098": [
+      "Debería considerar jugar otra cosa.",
+      "I should consider playing something else."
+    ],
+    "S0099": [
+      "Deberías preguntarte por qué no está trabajando",
+      "You should ask yourself why it's not working."
+    ],
+    "S0100": [
+      "No deberías preocuparte por hacer algo similar",
+      "You shouldn't worry about doing something similar."
+    ],
+    "S0101": [
+      "Estoy disfrutando descubrir más sobre este lenguaje",
+      "I'm enjoying finding out more about this language."
+    ],
+    "S0102": [
+      "Estamos intentando decir que no es así",
+      "We're trying to say that it's not like that."
+    ],
+    "S0103": [
+      "No estamos intentando oír muchas más palabras",
+      "We're not trying to hear many more words."
+    ],
+    "S0104": [
+      "Necesitamos cambiar lo que estamos haciendo",
+      "We need to change what we're doing."
+    ],
+    "S0105": [
+      "Por eso no sabía la respuesta",
+      "That is why he didn't know the answer."
+    ],
+    "S0106": [
+      "No necesitamos sentirnos felices, solo necesitamos trabajar duro",
+      "We don't need to feel happy, we just need to work hard."
+    ],
+    "S0107": [
+      "Esperábamos ver lo que estabas haciendo",
+      "We hoped to see what you were doing."
+    ]
+  },
+  "legos": {
+    "S0108L01": {
+      "lego": [
+        "we didn't hope",
+        "no esperábamos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0108L01",
+        "seed_context": {
+          "target": "No esperábamos despertar en el medio de la noche",
+          "known": "We didn't hope to wake in the middle of the night."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "didn't/not"
+        ],
+        [
+          "esperábamos",
+          "we hoped"
+        ]
+      ]
+    },
+    "S0108L02": {
+      "lego": [
+        "we didn't hope to wake",
+        "no esperábamos despertar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we didn't hope",
+          "no esperábamos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0108L02",
+        "seed_context": {
+          "target": "No esperábamos despertar en el medio de la noche",
+          "known": "We didn't hope to wake in the middle of the night."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "didn't/not"
+        ],
+        [
+          "esperábamos",
+          "we hoped"
+        ],
+        [
+          "despertar",
+          "to wake"
+        ]
+      ]
+    },
+    "S0108L03": {
+      "lego": [
+        "to wake in the middle of the night",
+        "despertar en el medio de la noche"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we didn't hope",
+          "no esperábamos"
+        ],
+        [
+          "we didn't hope to wake",
+          "no esperábamos despertar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0108L03",
+        "seed_context": {
+          "target": "No esperábamos despertar en el medio de la noche",
+          "known": "We didn't hope to wake in the middle of the night."
+        }
+      },
+      "components": [
+        [
+          "despertar",
+          "to wake"
+        ],
+        [
+          "en",
+          "in"
+        ],
+        [
+          "el medio",
+          "the middle"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "la noche",
+          "the night"
+        ]
+      ]
+    },
+    "S0108L04": {
+      "lego": [
+        "in the middle of the night",
+        "en el medio de la noche"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we didn't hope",
+          "no esperábamos"
+        ],
+        [
+          "we didn't hope to wake",
+          "no esperábamos despertar"
+        ],
+        [
+          "to wake in the middle of the night",
+          "despertar en el medio de la noche"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0108L04",
+        "seed_context": {
+          "target": "No esperábamos despertar en el medio de la noche",
+          "known": "We didn't hope to wake in the middle of the night."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "el medio",
+          "the middle"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "la noche",
+          "the night"
+        ]
+      ]
+    },
+    "S0108L05": {
+      "lego": [
+        "the middle of the night",
+        "el medio de la noche"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we didn't hope",
+          "no esperábamos"
+        ],
+        [
+          "we didn't hope to wake",
+          "no esperábamos despertar"
+        ],
+        [
+          "to wake in the middle of the night",
+          "despertar en el medio de la noche"
+        ],
+        [
+          "in the middle of the night",
+          "en el medio de la noche"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0108L05",
+        "seed_context": {
+          "target": "No esperábamos despertar en el medio de la noche",
+          "known": "We didn't hope to wake in the middle of the night."
+        }
+      },
+      "components": [
+        [
+          "el medio",
+          "the middle"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "la noche",
+          "the night"
+        ]
+      ]
+    },
+    "S0108L06": {
+      "lego": [
+        "the night",
+        "la noche"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we didn't hope",
+          "no esperábamos"
+        ],
+        [
+          "we didn't hope to wake",
+          "no esperábamos despertar"
+        ],
+        [
+          "to wake in the middle of the night",
+          "despertar en el medio de la noche"
+        ],
+        [
+          "in the middle of the night",
+          "en el medio de la noche"
+        ],
+        [
+          "the middle of the night",
+          "el medio de la noche"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0108L06",
+        "seed_context": {
+          "target": "No esperábamos despertar en el medio de la noche",
+          "known": "We didn't hope to wake in the middle of the night."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "noche",
+          "night"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0108.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

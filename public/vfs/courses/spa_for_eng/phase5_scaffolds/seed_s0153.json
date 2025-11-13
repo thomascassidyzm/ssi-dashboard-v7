@@ -1,0 +1,246 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0153",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No lo habría dicho exactamente de la misma manera.",
+    "known": "I wouldn't have said it in exactly the same way."
+  },
+  "recent_seed_pairs": {
+    "S0143": [
+      "Es la misma cosa de la que estábamos hablando antes.",
+      "It's the same thing as we were talking about earlier."
+    ],
+    "S0144": [
+      "Me desperté más temprano de lo que quería esta mañana.",
+      "I woke earlier than I wanted to this morning."
+    ],
+    "S0145": [
+      "¿Por qué no estás feliz ya?",
+      "Why are you not happy any more?"
+    ],
+    "S0146": [
+      "Nada parece estar funcionando desde que intentamos arreglarlo.",
+      "Nothing seems to be working since we tried to fix it."
+    ],
+    "S0147": [
+      "Ella era muy amable cuando me vio sintiéndome nervioso.",
+      "She was very kind when she saw me feeling nervous."
+    ],
+    "S0148": [
+      "Él no era muy paciente cuando no pude responder.",
+      "He wasn't very patient when I couldn't answer."
+    ],
+    "S0149": [
+      "Esto no es muy difícil, entonces espero que termines pronto.",
+      "This isn't very difficult, so I hope you'll finish soon."
+    ],
+    "S0150": [
+      "¿Puedes decirme cuál es tu nombre?",
+      "Can you tell me what your name is?"
+    ],
+    "S0151": [
+      "Eso no era lo que estaba esperando que pasara.",
+      "That wasn't what I was hoping would happen."
+    ],
+    "S0152": [
+      "Lo habría hecho diferentemente si hubiera sabido lo que querías.",
+      "I would have done it differently if I had known what you wanted."
+    ]
+  },
+  "legos": {
+    "S0153L01": {
+      "lego": [
+        "I wouldn't have said it",
+        "no lo habría dicho"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0153L01",
+        "seed_context": {
+          "target": "No lo habría dicho exactamente de la misma manera.",
+          "known": "I wouldn't have said it in exactly the same way."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "lo",
+          "it"
+        ],
+        [
+          "habría",
+          "would have"
+        ],
+        [
+          "dicho",
+          "said"
+        ]
+      ]
+    },
+    "S0153L02": {
+      "lego": [
+        "exactly",
+        "exactamente"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I wouldn't have said it",
+          "no lo habría dicho"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0153L02",
+        "seed_context": {
+          "target": "No lo habría dicho exactamente de la misma manera.",
+          "known": "I wouldn't have said it in exactly the same way."
+        }
+      }
+    },
+    "S0153L03": {
+      "lego": [
+        "in the same way",
+        "de la misma manera"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I wouldn't have said it",
+          "no lo habría dicho"
+        ],
+        [
+          "exactly",
+          "exactamente"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0153L03",
+        "seed_context": {
+          "target": "No lo habría dicho exactamente de la misma manera.",
+          "known": "I wouldn't have said it in exactly the same way."
+        }
+      },
+      "components": [
+        [
+          "de",
+          "in"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "misma",
+          "same"
+        ],
+        [
+          "manera",
+          "way"
+        ]
+      ]
+    },
+    "S0153L04": {
+      "lego": [
+        "in exactly the same way",
+        "exactamente de la misma manera"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I wouldn't have said it",
+          "no lo habría dicho"
+        ],
+        [
+          "exactly",
+          "exactamente"
+        ],
+        [
+          "in the same way",
+          "de la misma manera"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0153L04",
+        "seed_context": {
+          "target": "No lo habría dicho exactamente de la misma manera.",
+          "known": "I wouldn't have said it in exactly the same way."
+        }
+      },
+      "components": [
+        [
+          "exactamente",
+          "exactly"
+        ],
+        [
+          "de",
+          "in"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "misma",
+          "same"
+        ],
+        [
+          "manera",
+          "way"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0153.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

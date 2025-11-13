@@ -1,0 +1,306 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0020",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Quieres aprender su nombre rápidamente.",
+    "known": "You want to learn his name quickly."
+  },
+  "recent_seed_pairs": {
+    "S0010": [
+      "No estoy seguro si puedo recordar toda la oración.",
+      "I'm not sure if I can remember the whole sentence."
+    ],
+    "S0011": [
+      "Me gustaría poder hablar después de que termines.",
+      "I'd like to be able to speak after you finish."
+    ],
+    "S0012": [
+      "No me gustaría adivinar lo que va a ocurrir mañana.",
+      "I wouldn't like to guess what's going to happen tomorrow."
+    ],
+    "S0013": [
+      "Hablas español muy bien.",
+      "You speak Spanish very well."
+    ],
+    "S0014": [
+      "¿Hablas español todo el día?",
+      "Do you speak Spanish all day?"
+    ],
+    "S0015": [
+      "Y quiero que hables español conmigo mañana.",
+      "And I want you to speak Spanish with me tomorrow."
+    ],
+    "S0016": [
+      "Él quiere volver con todos los demás más tarde.",
+      "He wants to come back with everyone else later."
+    ],
+    "S0017": [
+      "Ella quiere descubrir cuál es la respuesta.",
+      "She wants to find out what the answer is."
+    ],
+    "S0018": [
+      "Queremos reunirnos a las seis esta noche.",
+      "We want to meet at six o'clock this evening."
+    ],
+    "S0019": [
+      "Pero no quiero parar de hablar.",
+      "But I don't want to stop talking."
+    ]
+  },
+  "legos": {
+    "S0020L01": {
+      "lego": [
+        "you want",
+        "quieres"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0020L01",
+        "seed_context": {
+          "target": "Quieres aprender su nombre rápidamente.",
+          "known": "You want to learn his name quickly."
+        }
+      }
+    },
+    "S0020L02": {
+      "lego": [
+        "to learn",
+        "aprender"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "you want",
+          "quieres"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0020L02",
+        "seed_context": {
+          "target": "Quieres aprender su nombre rápidamente.",
+          "known": "You want to learn his name quickly."
+        }
+      }
+    },
+    "S0020L03": {
+      "lego": [
+        "his name",
+        "su nombre"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you want",
+          "quieres"
+        ],
+        [
+          "to learn",
+          "aprender"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0020L03",
+        "seed_context": {
+          "target": "Quieres aprender su nombre rápidamente.",
+          "known": "You want to learn his name quickly."
+        }
+      },
+      "components": [
+        [
+          "su",
+          "his"
+        ],
+        [
+          "nombre",
+          "name"
+        ]
+      ]
+    },
+    "S0020L04": {
+      "lego": [
+        "quickly",
+        "rápidamente"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "you want",
+          "quieres"
+        ],
+        [
+          "to learn",
+          "aprender"
+        ],
+        [
+          "his name",
+          "su nombre"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0020L04",
+        "seed_context": {
+          "target": "Quieres aprender su nombre rápidamente.",
+          "known": "You want to learn his name quickly."
+        }
+      }
+    },
+    "S0020L05": {
+      "lego": [
+        "you want to learn",
+        "quieres aprender"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you want",
+          "quieres"
+        ],
+        [
+          "to learn",
+          "aprender"
+        ],
+        [
+          "his name",
+          "su nombre"
+        ],
+        [
+          "quickly",
+          "rápidamente"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0020L05",
+        "seed_context": {
+          "target": "Quieres aprender su nombre rápidamente.",
+          "known": "You want to learn his name quickly."
+        }
+      },
+      "components": [
+        [
+          "quieres",
+          "you want"
+        ],
+        [
+          "aprender",
+          "to learn"
+        ]
+      ]
+    },
+    "S0020L06": {
+      "lego": [
+        "to learn his name",
+        "aprender su nombre"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you want",
+          "quieres"
+        ],
+        [
+          "to learn",
+          "aprender"
+        ],
+        [
+          "his name",
+          "su nombre"
+        ],
+        [
+          "quickly",
+          "rápidamente"
+        ],
+        [
+          "you want to learn",
+          "quieres aprender"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0020L06",
+        "seed_context": {
+          "target": "Quieres aprender su nombre rápidamente.",
+          "known": "You want to learn his name quickly."
+        }
+      },
+      "components": [
+        [
+          "aprender",
+          "to learn"
+        ],
+        [
+          "su",
+          "his"
+        ],
+        [
+          "nombre",
+          "name"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0020.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0091",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Es difícil pensar lo suficientemente rápido para responder a tiempo.",
+    "known": "It's difficult to think quickly enough to answer in time."
+  },
+  "recent_seed_pairs": {
+    "S0081": [
+      "¿Cuándo quieres comenzar?",
+      "When do you want to start?"
+    ],
+    "S0082": [
+      "No voy a esperarte. ¿Por qué no?",
+      "I'm not going to wait for you. Why not?"
+    ],
+    "S0083": [
+      "Estoy de acuerdo con lo que dijiste sobre tu amigo.",
+      "I agree with what you said about your friend."
+    ],
+    "S0084": [
+      "No estoy de acuerdo con lo que dijo sobre mi amigo.",
+      "I don't agree with what he said about my friend."
+    ],
+    "S0085": [
+      "No conozco a esas personas.",
+      "I don't know those people."
+    ],
+    "S0086": [
+      "No fue posible, desafortunadamente.",
+      "It wasn't possible, unfortunately."
+    ],
+    "S0087": [
+      "Son personas que no conozco.",
+      "They are people I don't know."
+    ],
+    "S0088": [
+      "No estoy preparado para hablar con personas que no conozco todavía.",
+      "I'm not ready to talk to people I don't know yet."
+    ],
+    "S0089": [
+      "Pienso que he hecho mucho en un breve tiempo.",
+      "I think that I've done a lot in a short time."
+    ],
+    "S0090": [
+      "Si puedes hablar más lentamente, eso sería excelente.",
+      "If you can speak more slowly that would be great."
+    ]
+  },
+  "legos": {
+    "S0091L01": {
+      "lego": [
+        "it's difficult",
+        "es difícil"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0091L01",
+        "seed_context": {
+          "target": "Es difícil pensar lo suficientemente rápido para responder a tiempo.",
+          "known": "It's difficult to think quickly enough to answer in time."
+        }
+      },
+      "components": [
+        [
+          "es",
+          "it's/is"
+        ],
+        [
+          "difícil",
+          "difficult"
+        ]
+      ]
+    },
+    "S0091L02": {
+      "lego": [
+        "to think",
+        "pensar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "it's difficult",
+          "es difícil"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0091L02",
+        "seed_context": {
+          "target": "Es difícil pensar lo suficientemente rápido para responder a tiempo.",
+          "known": "It's difficult to think quickly enough to answer in time."
+        }
+      }
+    },
+    "S0091L03": {
+      "lego": [
+        "quickly enough",
+        "lo suficientemente rápido"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's difficult",
+          "es difícil"
+        ],
+        [
+          "to think",
+          "pensar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0091L03",
+        "seed_context": {
+          "target": "Es difícil pensar lo suficientemente rápido para responder a tiempo.",
+          "known": "It's difficult to think quickly enough to answer in time."
+        }
+      },
+      "components": [
+        [
+          "lo",
+          "the"
+        ],
+        [
+          "suficientemente",
+          "sufficiently/enough"
+        ],
+        [
+          "rápido",
+          "quick/quickly"
+        ]
+      ]
+    },
+    "S0091L04": {
+      "lego": [
+        "to answer",
+        "para responder"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's difficult",
+          "es difícil"
+        ],
+        [
+          "to think",
+          "pensar"
+        ],
+        [
+          "quickly enough",
+          "lo suficientemente rápido"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0091L04",
+        "seed_context": {
+          "target": "Es difícil pensar lo suficientemente rápido para responder a tiempo.",
+          "known": "It's difficult to think quickly enough to answer in time."
+        }
+      },
+      "components": [
+        [
+          "para",
+          "to"
+        ],
+        [
+          "responder",
+          "answer/respond"
+        ]
+      ]
+    },
+    "S0091L05": {
+      "lego": [
+        "in time",
+        "a tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's difficult",
+          "es difícil"
+        ],
+        [
+          "to think",
+          "pensar"
+        ],
+        [
+          "quickly enough",
+          "lo suficientemente rápido"
+        ],
+        [
+          "to answer",
+          "para responder"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0091L05",
+        "seed_context": {
+          "target": "Es difícil pensar lo suficientemente rápido para responder a tiempo.",
+          "known": "It's difficult to think quickly enough to answer in time."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "in"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0091L06": {
+      "lego": [
+        "to answer in time",
+        "para responder a tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's difficult",
+          "es difícil"
+        ],
+        [
+          "to think",
+          "pensar"
+        ],
+        [
+          "quickly enough",
+          "lo suficientemente rápido"
+        ],
+        [
+          "to answer",
+          "para responder"
+        ],
+        [
+          "in time",
+          "a tiempo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0091L06",
+        "seed_context": {
+          "target": "Es difícil pensar lo suficientemente rápido para responder a tiempo.",
+          "known": "It's difficult to think quickly enough to answer in time."
+        }
+      },
+      "components": [
+        [
+          "para",
+          "to"
+        ],
+        [
+          "responder",
+          "answer"
+        ],
+        [
+          "a",
+          "in"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0091.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

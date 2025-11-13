@@ -1,0 +1,270 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0424",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No están perdiendo el tiempo de todos.",
+    "known": "No they're wasting everybody's time."
+  },
+  "recent_seed_pairs": {
+    "S0414": [
+      "¿Podríamos tener una botella de vino tinto por favor?",
+      "Could we have a bottle of red wine please?"
+    ],
+    "S0415": [
+      "Eso no sería un problema si me preguntas.",
+      "That wouldn't be a problem if you ask me."
+    ],
+    "S0416": [
+      "Quieren liderar el camino el próximo año.",
+      "They want to lead the way next year."
+    ],
+    "S0417": [
+      "¿Quieren matar esas hormigas?",
+      "Do they want to kill those ants?"
+    ],
+    "S0418": [
+      "Necesitan servir a la comunidad.",
+      "They need to serve the community."
+    ],
+    "S0419": [
+      "Si quieren que la gente los quiera.",
+      "If they want people to like them."
+    ],
+    "S0420": [
+      "No necesitan preguntar cuántos años tiene.",
+      "They don't need to ask how old he is."
+    ],
+    "S0421": [
+      "Porque ya saben que se está poniendo débil.",
+      "Because they already know he's getting weak."
+    ],
+    "S0422": [
+      "Una pregunta.",
+      "A question."
+    ],
+    "S0423": [
+      "¿Necesitan preguntar una pregunta tan obvia?",
+      "Do they need to ask such an obvious question?"
+    ]
+  },
+  "legos": {
+    "S0424L01": {
+      "lego": [
+        "no",
+        "no"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0424L01",
+        "seed_context": {
+          "target": "No están perdiendo el tiempo de todos.",
+          "known": "No they're wasting everybody's time."
+        }
+      }
+    },
+    "S0424L02": {
+      "lego": [
+        "they're wasting",
+        "están perdiendo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0424L02",
+        "seed_context": {
+          "target": "No están perdiendo el tiempo de todos.",
+          "known": "No they're wasting everybody's time."
+        }
+      },
+      "components": [
+        [
+          "están",
+          "they are"
+        ],
+        [
+          "perdiendo",
+          "wasting/losing"
+        ]
+      ]
+    },
+    "S0424L03": {
+      "lego": [
+        "wasting time",
+        "perdiendo el tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "they're wasting",
+          "están perdiendo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0424L03",
+        "seed_context": {
+          "target": "No están perdiendo el tiempo de todos.",
+          "known": "No they're wasting everybody's time."
+        }
+      },
+      "components": [
+        [
+          "perdiendo",
+          "wasting"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0424L04": {
+      "lego": [
+        "everybody's time",
+        "el tiempo de todos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "they're wasting",
+          "están perdiendo"
+        ],
+        [
+          "wasting time",
+          "perdiendo el tiempo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0424L04",
+        "seed_context": {
+          "target": "No están perdiendo el tiempo de todos.",
+          "known": "No they're wasting everybody's time."
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "tiempo",
+          "time"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "todos",
+          "everybody"
+        ]
+      ]
+    },
+    "S0424L05": {
+      "lego": [
+        "everybody",
+        "todos"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "they're wasting",
+          "están perdiendo"
+        ],
+        [
+          "wasting time",
+          "perdiendo el tiempo"
+        ],
+        [
+          "everybody's time",
+          "el tiempo de todos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0424L05",
+        "seed_context": {
+          "target": "No están perdiendo el tiempo de todos.",
+          "known": "No they're wasting everybody's time."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0424.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

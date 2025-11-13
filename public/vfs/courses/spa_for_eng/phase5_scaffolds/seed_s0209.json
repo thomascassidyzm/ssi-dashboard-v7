@@ -1,0 +1,320 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0209",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Quieren pasar más tiempo reuniéndose como grupo",
+    "known": "They want to spend more time meeting as a group."
+  },
+  "recent_seed_pairs": {
+    "S0199": [
+      "Mi amigo solía trabajar en una oficina.",
+      "My friend used to work in an office."
+    ],
+    "S0200": [
+      "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+      "They say they want to make sure that we finish everything in time."
+    ],
+    "S0201": [
+      "Queríamos saber qué iba a pasar",
+      "We wanted to know what was going to happen."
+    ],
+    "S0202": [
+      "Nadie estaba seguro de cómo responder la pregunta",
+      "Nobody was sure how to answer the question."
+    ],
+    "S0203": [
+      "¿Qué harías si te pidiera que me ayudaras?",
+      "What would you do if I asked you to help me?"
+    ],
+    "S0204": [
+      "Quería que ella te ayudara a tratar con los arreglos",
+      "I wanted her to help you to deal with the arrangements."
+    ],
+    "S0205": [
+      "He olvidado la palabra que estaba intentando decir",
+      "I've forgotten the word I was trying to say."
+    ],
+    "S0206": [
+      "Disfruto la oportunidad de practicar hablar contigo",
+      "I enjoy the chance to practise speaking with you."
+    ],
+    "S0207": [
+      "Has hecho lo que necesitabas hacer",
+      "You've done what you needed to do."
+    ],
+    "S0208": [
+      "No quería preguntarte cómo decirlo",
+      "I didn't want to ask you how to say it."
+    ]
+  },
+  "legos": {
+    "S0209L01": {
+      "lego": [
+        "they want to spend",
+        "quieren pasar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0209L01",
+        "seed_context": {
+          "target": "Quieren pasar más tiempo reuniéndose como grupo",
+          "known": "They want to spend more time meeting as a group."
+        }
+      },
+      "components": [
+        [
+          "quieren",
+          "they want"
+        ],
+        [
+          "pasar",
+          "to spend"
+        ]
+      ]
+    },
+    "S0209L02": {
+      "lego": [
+        "more time",
+        "más tiempo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "they want to spend",
+          "quieren pasar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0209L02",
+        "seed_context": {
+          "target": "Quieren pasar más tiempo reuniéndose como grupo",
+          "known": "They want to spend more time meeting as a group."
+        }
+      }
+    },
+    "S0209L03": {
+      "lego": [
+        "spend more time",
+        "pasar más tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they want to spend",
+          "quieren pasar"
+        ],
+        [
+          "more time",
+          "más tiempo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0209L03",
+        "seed_context": {
+          "target": "Quieren pasar más tiempo reuniéndose como grupo",
+          "known": "They want to spend more time meeting as a group."
+        }
+      },
+      "components": [
+        [
+          "pasar",
+          "spend"
+        ],
+        [
+          "más",
+          "more"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0209L04": {
+      "lego": [
+        "meeting",
+        "reuniéndose"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "they want to spend",
+          "quieren pasar"
+        ],
+        [
+          "more time",
+          "más tiempo"
+        ],
+        [
+          "spend more time",
+          "pasar más tiempo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0209L04",
+        "seed_context": {
+          "target": "Quieren pasar más tiempo reuniéndose como grupo",
+          "known": "They want to spend more time meeting as a group."
+        }
+      }
+    },
+    "S0209L05": {
+      "lego": [
+        "as a group",
+        "como grupo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they want to spend",
+          "quieren pasar"
+        ],
+        [
+          "more time",
+          "más tiempo"
+        ],
+        [
+          "spend more time",
+          "pasar más tiempo"
+        ],
+        [
+          "meeting",
+          "reuniéndose"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0209L05",
+        "seed_context": {
+          "target": "Quieren pasar más tiempo reuniéndose como grupo",
+          "known": "They want to spend more time meeting as a group."
+        }
+      },
+      "components": [
+        [
+          "como",
+          "as"
+        ],
+        [
+          "grupo",
+          "group"
+        ]
+      ]
+    },
+    "S0209L06": {
+      "lego": [
+        "meeting as a group",
+        "reuniéndose como grupo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they want to spend",
+          "quieren pasar"
+        ],
+        [
+          "more time",
+          "más tiempo"
+        ],
+        [
+          "spend more time",
+          "pasar más tiempo"
+        ],
+        [
+          "meeting",
+          "reuniéndose"
+        ],
+        [
+          "as a group",
+          "como grupo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0209L06",
+        "seed_context": {
+          "target": "Quieren pasar más tiempo reuniéndose como grupo",
+          "known": "They want to spend more time meeting as a group."
+        }
+      },
+      "components": [
+        [
+          "reuniéndose",
+          "meeting"
+        ],
+        [
+          "como",
+          "as"
+        ],
+        [
+          "grupo",
+          "group"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0209.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

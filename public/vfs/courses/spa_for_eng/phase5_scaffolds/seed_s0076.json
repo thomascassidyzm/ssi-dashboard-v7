@@ -1,0 +1,330 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0076",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Estoy muy feliz con cuánto he aprendido ya",
+    "known": "I'm very happy with how much I've learnt already."
+  },
+  "recent_seed_pairs": {
+    "S0066": [
+      "No es difícil encontrar la respuesta.",
+      "It's not difficult to find the answer."
+    ],
+    "S0067": [
+      "¿Por qué quieres parar?",
+      "Why do you want to stop?"
+    ],
+    "S0068": [
+      "¿Qué estás buscando?",
+      "What are you looking for?"
+    ],
+    "S0069": [
+      "No quería cuidar el perro joven toda la tarde.",
+      "He didn't want to look after the young dog all afternoon."
+    ],
+    "S0070": [
+      "Ella no quería decirme dónde estaba.",
+      "She didn't want to tell me where it was."
+    ],
+    "S0071": [
+      "No queríamos permitir que nadie oyera la verdad",
+      "We didn't want to let anyone hear the truth."
+    ],
+    "S0072": [
+      "Pienso que estás haciendo muy bien",
+      "I think that you're doing very well."
+    ],
+    "S0073": [
+      "Muchas gracias, pero tengo más que aprender",
+      "Thank you very much, but I've got more to learn."
+    ],
+    "S0074": [
+      "Muchas gracias por ayudarme a comprender",
+      "Thank you very much for helping me to understand."
+    ],
+    "S0075": [
+      "¿Tienes más que aprender?",
+      "Have you got more to learn?"
+    ]
+  },
+  "legos": {
+    "S0076L01": {
+      "lego": [
+        "I'm very happy",
+        "estoy muy feliz"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0076L01",
+        "seed_context": {
+          "target": "Estoy muy feliz con cuánto he aprendido ya",
+          "known": "I'm very happy with how much I've learnt already."
+        }
+      },
+      "components": [
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "feliz",
+          "happy"
+        ]
+      ]
+    },
+    "S0076L02": {
+      "lego": [
+        "very happy",
+        "muy feliz"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm very happy",
+          "estoy muy feliz"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0076L02",
+        "seed_context": {
+          "target": "Estoy muy feliz con cuánto he aprendido ya",
+          "known": "I'm very happy with how much I've learnt already."
+        }
+      },
+      "components": [
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "feliz",
+          "happy"
+        ]
+      ]
+    },
+    "S0076L03": {
+      "lego": [
+        "happy with",
+        "feliz con"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm very happy",
+          "estoy muy feliz"
+        ],
+        [
+          "very happy",
+          "muy feliz"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0076L03",
+        "seed_context": {
+          "target": "Estoy muy feliz con cuánto he aprendido ya",
+          "known": "I'm very happy with how much I've learnt already."
+        }
+      },
+      "components": [
+        [
+          "feliz",
+          "happy"
+        ],
+        [
+          "con",
+          "with"
+        ]
+      ]
+    },
+    "S0076L04": {
+      "lego": [
+        "how much I've learnt",
+        "cuánto he aprendido"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm very happy",
+          "estoy muy feliz"
+        ],
+        [
+          "very happy",
+          "muy feliz"
+        ],
+        [
+          "happy with",
+          "feliz con"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0076L04",
+        "seed_context": {
+          "target": "Estoy muy feliz con cuánto he aprendido ya",
+          "known": "I'm very happy with how much I've learnt already."
+        }
+      },
+      "components": [
+        [
+          "cuánto",
+          "how much"
+        ],
+        [
+          "he",
+          "I have"
+        ],
+        [
+          "aprendido",
+          "learnt/learned"
+        ]
+      ]
+    },
+    "S0076L05": {
+      "lego": [
+        "I've learnt",
+        "he aprendido"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm very happy",
+          "estoy muy feliz"
+        ],
+        [
+          "very happy",
+          "muy feliz"
+        ],
+        [
+          "happy with",
+          "feliz con"
+        ],
+        [
+          "how much I've learnt",
+          "cuánto he aprendido"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0076L05",
+        "seed_context": {
+          "target": "Estoy muy feliz con cuánto he aprendido ya",
+          "known": "I'm very happy with how much I've learnt already."
+        }
+      },
+      "components": [
+        [
+          "he",
+          "I have"
+        ],
+        [
+          "aprendido",
+          "learnt/learned"
+        ]
+      ]
+    },
+    "S0076L06": {
+      "lego": [
+        "already",
+        "ya"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I'm very happy",
+          "estoy muy feliz"
+        ],
+        [
+          "very happy",
+          "muy feliz"
+        ],
+        [
+          "happy with",
+          "feliz con"
+        ],
+        [
+          "how much I've learnt",
+          "cuánto he aprendido"
+        ],
+        [
+          "I've learnt",
+          "he aprendido"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0076L06",
+        "seed_context": {
+          "target": "Estoy muy feliz con cuánto he aprendido ya",
+          "known": "I'm very happy with how much I've learnt already."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0076.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

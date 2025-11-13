@@ -1,0 +1,280 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0062",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+    "known": "I'm not sure if I can help you at the same time."
+  },
+  "recent_seed_pairs": {
+    "S0052": [
+      "Quería escribir una carta a su amigo la semana pasada.",
+      "He wanted to write a letter to his friend last week."
+    ],
+    "S0053": [
+      "Quería poner su carta en su bolsa.",
+      "She wanted to put his letter in her bag."
+    ],
+    "S0054": [
+      "Queríamos darte un poco más de tiempo.",
+      "We wanted to give you a little more time."
+    ],
+    "S0055": [
+      "No disfruto despertarme cuando no dormí muy bien.",
+      "I don't enjoy waking up when I didn't sleep very well."
+    ],
+    "S0056": [
+      "Para poder recordar cómo decir unas pocas palabras.",
+      "So I can remember how to say a few words."
+    ],
+    "S0057": [
+      "No puedo recordar cómo decir lo que quería decir.",
+      "I can't remember how to say what I wanted to say."
+    ],
+    "S0058": [
+      "Es interesante cuando comprendes suficientes palabras.",
+      "It's interesting when you understand enough words."
+    ],
+    "S0059": [
+      "Sé hacer lo que necesito hacer la próxima semana.",
+      "I know how to do what I need to do next week."
+    ],
+    "S0060": [
+      "Todavía no sé cómo decir suficientes palabras diferentes.",
+      "I don't know how to say enough different words yet."
+    ],
+    "S0061": [
+      "¿Podrías decir eso otra vez un poco más lentamente?",
+      "Could you say that again a little more slowly?"
+    ]
+  },
+  "legos": {
+    "S0062L01": {
+      "lego": [
+        "I'm not sure",
+        "no estoy seguro"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0062L01",
+        "seed_context": {
+          "target": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+          "known": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "seguro",
+          "sure"
+        ]
+      ]
+    },
+    "S0062L02": {
+      "lego": [
+        "if I can help you",
+        "si puedo ayudarte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm not sure",
+          "no estoy seguro"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0062L02",
+        "seed_context": {
+          "target": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+          "known": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [
+        [
+          "si",
+          "if"
+        ],
+        [
+          "puedo",
+          "I can"
+        ],
+        [
+          "ayudarte",
+          "help you"
+        ]
+      ]
+    },
+    "S0062L03": {
+      "lego": [
+        "I can help you",
+        "puedo ayudarte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm not sure",
+          "no estoy seguro"
+        ],
+        [
+          "if I can help you",
+          "si puedo ayudarte"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0062L03",
+        "seed_context": {
+          "target": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+          "known": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [
+        [
+          "puedo",
+          "I can"
+        ],
+        [
+          "ayudarte",
+          "help you"
+        ]
+      ]
+    },
+    "S0062L04": {
+      "lego": [
+        "help you",
+        "ayudarte"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I'm not sure",
+          "no estoy seguro"
+        ],
+        [
+          "if I can help you",
+          "si puedo ayudarte"
+        ],
+        [
+          "I can help you",
+          "puedo ayudarte"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0062L04",
+        "seed_context": {
+          "target": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+          "known": "I'm not sure if I can help you at the same time."
+        }
+      }
+    },
+    "S0062L05": {
+      "lego": [
+        "at the same time",
+        "al mismo tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm not sure",
+          "no estoy seguro"
+        ],
+        [
+          "if I can help you",
+          "si puedo ayudarte"
+        ],
+        [
+          "I can help you",
+          "puedo ayudarte"
+        ],
+        [
+          "help you",
+          "ayudarte"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0062L05",
+        "seed_context": {
+          "target": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+          "known": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [
+        [
+          "al",
+          "at the"
+        ],
+        [
+          "mismo",
+          "same"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0062.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

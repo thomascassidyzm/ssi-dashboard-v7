@@ -1,0 +1,144 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0602",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Cómo empezó en primer lugar.",
+    "known": "How it started in the first place."
+  },
+  "recent_seed_pairs": {
+    "S0592": [
+      "Y por la carretera principal.",
+      "And along the main road."
+    ],
+    "S0593": [
+      "Por mucho que argumenté todavía tuve que compartir.",
+      "However much I argued I still had to share."
+    ],
+    "S0594": [
+      "Tuve que compartir mis juguetes con mi hermana.",
+      "I had to share my toys with my sister."
+    ],
+    "S0595": [
+      "Necesito tumbarme en el jardín.",
+      "I need to lie down in the garden."
+    ],
+    "S0596": [
+      "Y necesito cerrar los ojos por un rato.",
+      "And I need to close my eyes for a while."
+    ],
+    "S0597": [
+      "Sospecho que ha oído cien historias sobre ello.",
+      "I suspect that he's heard a hundred stories about it."
+    ],
+    "S0598": [
+      "Ha oído mil historias sobre lo que estaban haciendo.",
+      "He's heard a thousand stories about what they were doing."
+    ],
+    "S0599": [
+      "Habría estado feliz de conducir si me lo hubieras dicho.",
+      "I'd have been happy to drive if you'd told me."
+    ],
+    "S0600": [
+      "Habría conducido si me hubieras dicho lo cansado que estabas.",
+      "I'd have driven if you'd told me how tired you were."
+    ],
+    "S0601": [
+      "Estábamos hablando sobre cómo empezó todo.",
+      "We were talking about how it all started."
+    ]
+  },
+  "legos": {
+    "S0602L01": {
+      "lego": [
+        "how it started",
+        "cómo empezó"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0602L01",
+        "seed_context": {
+          "target": "Cómo empezó en primer lugar.",
+          "known": "How it started in the first place."
+        }
+      },
+      "components": [
+        [
+          "cómo",
+          "how"
+        ],
+        [
+          "empezó",
+          "it started"
+        ]
+      ]
+    },
+    "S0602L02": {
+      "lego": [
+        "in the first place",
+        "en primer lugar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "how it started",
+          "cómo empezó"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0602L02",
+        "seed_context": {
+          "target": "Cómo empezó en primer lugar.",
+          "known": "How it started in the first place."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "primer",
+          "first"
+        ],
+        [
+          "lugar",
+          "place"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0602.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "total_legos_in_seed": 2,
+    "phrases_to_generate": 24,
+    "recent_context_seeds": 10
+  }
+}

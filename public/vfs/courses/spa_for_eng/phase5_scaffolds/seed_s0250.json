@@ -1,0 +1,458 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0250",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Can you tell me something else before I answer?",
+    "known": "¿Puedes decirme algo más antes de que responda?"
+  },
+  "recent_seed_pairs": {
+    "S0240": [
+      "A mi padre no le gusta dejar de hablar.",
+      "My father doesn't like to stop talking."
+    ],
+    "S0241": [
+      "I don't want to give it to him.",
+      "No quiero dárselo."
+    ],
+    "S0242": [
+      "I want to give her more time.",
+      "Quiero darle más tiempo."
+    ],
+    "S0243": [
+      "I'm going to ask for the same thing to eat.",
+      "Voy a pedir la misma cosa para comer."
+    ],
+    "S0244": [
+      "I've learnt a lot already",
+      "Ya he aprendido mucho."
+    ],
+    "S0245": [
+      "I'm happy with how much I've done in a short time",
+      "Estoy contento con cuánto he hecho en poco tiempo."
+    ],
+    "S0246": [
+      "I wanted her to help you but she was too busy.",
+      "Quería que ella te ayudara pero estaba demasiado ocupada."
+    ],
+    "S0247": [
+      "I thought that book was fairly good.",
+      "Pensé que ese libro era bastante bueno."
+    ],
+    "S0248": [
+      "I thought the film was complete rubbish and I want my money back.",
+      "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+    ],
+    "S0249": [
+      "I want you to help me before you go.",
+      "Quiero que me ayudes antes de que te vayas."
+    ]
+  },
+  "legos": {
+    "S0250L01": {
+      "lego": [
+        "Can you",
+        "Puedes"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0250L01",
+        "seed_context": {
+          "target": "Can you tell me something else before I answer?",
+          "known": "¿Puedes decirme algo más antes de que responda?"
+        }
+      }
+    },
+    "S0250L02": {
+      "lego": [
+        "Can you tell me",
+        "Puedes decirme"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you",
+          "Puedes"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0250L02",
+        "seed_context": {
+          "target": "Can you tell me something else before I answer?",
+          "known": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "Puedes",
+          "Can you"
+        ],
+        [
+          "decirme",
+          "tell me"
+        ]
+      ]
+    },
+    "S0250L03": {
+      "lego": [
+        "tell me",
+        "decirme"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you",
+          "Puedes"
+        ],
+        [
+          "Can you tell me",
+          "Puedes decirme"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0250L03",
+        "seed_context": {
+          "target": "Can you tell me something else before I answer?",
+          "known": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "decir",
+          "to tell"
+        ],
+        [
+          "me",
+          "me"
+        ]
+      ]
+    },
+    "S0250L04": {
+      "lego": [
+        "Can you tell me something else",
+        "Puedes decirme algo más"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you",
+          "Puedes"
+        ],
+        [
+          "Can you tell me",
+          "Puedes decirme"
+        ],
+        [
+          "tell me",
+          "decirme"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0250L04",
+        "seed_context": {
+          "target": "Can you tell me something else before I answer?",
+          "known": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "Puedes",
+          "Can you"
+        ],
+        [
+          "decirme",
+          "tell me"
+        ],
+        [
+          "algo",
+          "something"
+        ],
+        [
+          "más",
+          "else"
+        ]
+      ]
+    },
+    "S0250L05": {
+      "lego": [
+        "tell me something else",
+        "decirme algo más"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you",
+          "Puedes"
+        ],
+        [
+          "Can you tell me",
+          "Puedes decirme"
+        ],
+        [
+          "tell me",
+          "decirme"
+        ],
+        [
+          "Can you tell me something else",
+          "Puedes decirme algo más"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0250L05",
+        "seed_context": {
+          "target": "Can you tell me something else before I answer?",
+          "known": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "decirme",
+          "tell me"
+        ],
+        [
+          "algo",
+          "something"
+        ],
+        [
+          "más",
+          "else"
+        ]
+      ]
+    },
+    "S0250L06": {
+      "lego": [
+        "something else",
+        "algo más"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you",
+          "Puedes"
+        ],
+        [
+          "Can you tell me",
+          "Puedes decirme"
+        ],
+        [
+          "tell me",
+          "decirme"
+        ],
+        [
+          "Can you tell me something else",
+          "Puedes decirme algo más"
+        ],
+        [
+          "tell me something else",
+          "decirme algo más"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0250L06",
+        "seed_context": {
+          "target": "Can you tell me something else before I answer?",
+          "known": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "algo",
+          "something"
+        ],
+        [
+          "más",
+          "else"
+        ]
+      ]
+    },
+    "S0250L07": {
+      "lego": [
+        "before I answer",
+        "antes de que responda"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you",
+          "Puedes"
+        ],
+        [
+          "Can you tell me",
+          "Puedes decirme"
+        ],
+        [
+          "tell me",
+          "decirme"
+        ],
+        [
+          "Can you tell me something else",
+          "Puedes decirme algo más"
+        ],
+        [
+          "tell me something else",
+          "decirme algo más"
+        ],
+        [
+          "something else",
+          "algo más"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0250L07",
+        "seed_context": {
+          "target": "Can you tell me something else before I answer?",
+          "known": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "antes de que",
+          "before"
+        ],
+        [
+          "responda",
+          "I answer"
+        ]
+      ]
+    },
+    "S0250L08": {
+      "lego": [
+        "before",
+        "antes de que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you",
+          "Puedes"
+        ],
+        [
+          "Can you tell me",
+          "Puedes decirme"
+        ],
+        [
+          "tell me",
+          "decirme"
+        ],
+        [
+          "Can you tell me something else",
+          "Puedes decirme algo más"
+        ],
+        [
+          "tell me something else",
+          "decirme algo más"
+        ],
+        [
+          "something else",
+          "algo más"
+        ],
+        [
+          "before I answer",
+          "antes de que responda"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0250L08",
+        "seed_context": {
+          "target": "Can you tell me something else before I answer?",
+          "known": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "antes",
+          "before"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0250.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 8,
+    "total_legos_in_seed": 8,
+    "phrases_to_generate": 96,
+    "recent_context_seeds": 10
+  }
+}

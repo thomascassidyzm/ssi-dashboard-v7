@@ -1,0 +1,386 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0137",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Es más importante hablar frecuentemente que ser perfecto.",
+    "known": "It's more important to talk often than to be perfect."
+  },
+  "recent_seed_pairs": {
+    "S0127": [
+      "Eso no es por qué quería verte.",
+      "That isn't why I wanted to see you."
+    ],
+    "S0128": [
+      "Eres como alguien que conocía.",
+      "You're like someone I used to know."
+    ],
+    "S0129": [
+      "Estoy tan feliz de que te vaya tan bien.",
+      "I'm so happy that you're doing so well."
+    ],
+    "S0130": [
+      "Eso fue una sorpresa, porque es mi amigo.",
+      "That was a surprise, because he's my friend."
+    ],
+    "S0131": [
+      "Hay demasiadas ideas dando vueltas en mi cabeza.",
+      "There are too many ideas going around in my head."
+    ],
+    "S0132": [
+      "Eso es menos emocionante que lo que decía.",
+      "That's less exciting than what she was saying."
+    ],
+    "S0133": [
+      "Llegas a conocer muy bien a alguien cuando trabajan juntos.",
+      "You get to know someone very well when you work together."
+    ],
+    "S0134": [
+      "No es un problema cuando trabajas en algo difícil con ellos.",
+      "It's not a problem when you work at something difficult with them."
+    ],
+    "S0135": [
+      "No sé por qué piensas que es tan bueno.",
+      "I don't know why you think that it's so good."
+    ],
+    "S0136": [
+      "Por supuesto que puedes preguntarle porque es mi amiga.",
+      "Of course you can ask her because she's my friend."
+    ]
+  },
+  "legos": {
+    "S0137L01": {
+      "lego": [
+        "It's more important",
+        "Es más importante"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0137L01",
+        "seed_context": {
+          "target": "Es más importante hablar frecuentemente que ser perfecto.",
+          "known": "It's more important to talk often than to be perfect."
+        }
+      },
+      "components": [
+        [
+          "Es",
+          "It's"
+        ],
+        [
+          "más",
+          "more"
+        ],
+        [
+          "importante",
+          "important"
+        ]
+      ]
+    },
+    "S0137L02": {
+      "lego": [
+        "more important to talk often",
+        "más importante hablar frecuentemente"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "It's more important",
+          "Es más importante"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0137L02",
+        "seed_context": {
+          "target": "Es más importante hablar frecuentemente que ser perfecto.",
+          "known": "It's more important to talk often than to be perfect."
+        }
+      },
+      "components": [
+        [
+          "más",
+          "more"
+        ],
+        [
+          "importante",
+          "important"
+        ],
+        [
+          "hablar",
+          "to talk"
+        ],
+        [
+          "frecuentemente",
+          "often"
+        ]
+      ]
+    },
+    "S0137L03": {
+      "lego": [
+        "to talk often",
+        "hablar frecuentemente"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "It's more important",
+          "Es más importante"
+        ],
+        [
+          "more important to talk often",
+          "más importante hablar frecuentemente"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0137L03",
+        "seed_context": {
+          "target": "Es más importante hablar frecuentemente que ser perfecto.",
+          "known": "It's more important to talk often than to be perfect."
+        }
+      },
+      "components": [
+        [
+          "hablar",
+          "to talk"
+        ],
+        [
+          "frecuentemente",
+          "often"
+        ]
+      ]
+    },
+    "S0137L04": {
+      "lego": [
+        "to talk",
+        "hablar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "It's more important",
+          "Es más importante"
+        ],
+        [
+          "more important to talk often",
+          "más importante hablar frecuentemente"
+        ],
+        [
+          "to talk often",
+          "hablar frecuentemente"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0137L04",
+        "seed_context": {
+          "target": "Es más importante hablar frecuentemente que ser perfecto.",
+          "known": "It's more important to talk often than to be perfect."
+        }
+      }
+    },
+    "S0137L05": {
+      "lego": [
+        "often",
+        "frecuentemente"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "It's more important",
+          "Es más importante"
+        ],
+        [
+          "more important to talk often",
+          "más importante hablar frecuentemente"
+        ],
+        [
+          "to talk often",
+          "hablar frecuentemente"
+        ],
+        [
+          "to talk",
+          "hablar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0137L05",
+        "seed_context": {
+          "target": "Es más importante hablar frecuentemente que ser perfecto.",
+          "known": "It's more important to talk often than to be perfect."
+        }
+      }
+    },
+    "S0137L06": {
+      "lego": [
+        "than to be perfect",
+        "que ser perfecto"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "It's more important",
+          "Es más importante"
+        ],
+        [
+          "more important to talk often",
+          "más importante hablar frecuentemente"
+        ],
+        [
+          "to talk often",
+          "hablar frecuentemente"
+        ],
+        [
+          "to talk",
+          "hablar"
+        ],
+        [
+          "often",
+          "frecuentemente"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0137L06",
+        "seed_context": {
+          "target": "Es más importante hablar frecuentemente que ser perfecto.",
+          "known": "It's more important to talk often than to be perfect."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "than"
+        ],
+        [
+          "ser",
+          "to be"
+        ],
+        [
+          "perfecto",
+          "perfect"
+        ]
+      ]
+    },
+    "S0137L07": {
+      "lego": [
+        "to be perfect",
+        "ser perfecto"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "It's more important",
+          "Es más importante"
+        ],
+        [
+          "more important to talk often",
+          "más importante hablar frecuentemente"
+        ],
+        [
+          "to talk often",
+          "hablar frecuentemente"
+        ],
+        [
+          "to talk",
+          "hablar"
+        ],
+        [
+          "often",
+          "frecuentemente"
+        ],
+        [
+          "than to be perfect",
+          "que ser perfecto"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0137L07",
+        "seed_context": {
+          "target": "Es más importante hablar frecuentemente que ser perfecto.",
+          "known": "It's more important to talk often than to be perfect."
+        }
+      },
+      "components": [
+        [
+          "ser",
+          "to be"
+        ],
+        [
+          "perfecto",
+          "perfect"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0137.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "total_legos_in_seed": 7,
+    "phrases_to_generate": 84,
+    "recent_context_seeds": 10
+  }
+}

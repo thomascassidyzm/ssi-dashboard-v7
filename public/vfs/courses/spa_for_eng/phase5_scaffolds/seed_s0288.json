@@ -1,0 +1,260 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0288",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "A la mayoría de la gente que conozco le gusta ver la televisión.",
+    "known": "Most people I know like watching television."
+  },
+  "recent_seed_pairs": {
+    "S0278": [
+      "¿Tuviste que terminar todo anoche?",
+      "Did you have to finish everything last night?"
+    ],
+    "S0279": [
+      "Sí porque no quedaba mucho tiempo.",
+      "Yes because there wasn't much time left."
+    ],
+    "S0280": [
+      "No solo tuve que hacer el trabajo más importante.",
+      "No I only had to do the most important job."
+    ],
+    "S0281": [
+      "¿Te importa si termino mi café antes de que empieces?",
+      "Do you mind if I finish my coffee before you start?"
+    ],
+    "S0282": [
+      "No, eso no es un problema.",
+      "No that's not a problem."
+    ],
+    "S0283": [
+      "¿Cuáles de tus amigos hablan español?",
+      "Which of your friends speak Spanish?"
+    ],
+    "S0284": [
+      "¿Conoces a la amiga de mi hermana?",
+      "Do you know my sister's friend?"
+    ],
+    "S0285": [
+      "Ella habla español.",
+      "She speaks Spanish."
+    ],
+    "S0286": [
+      "Personas a las que les gusta hablar español.",
+      "People who like speaking Spanish."
+    ],
+    "S0287": [
+      "¿Cuántas personas conoces a las que les gusta ver la televisión?",
+      "How many people do you know who like watching television?"
+    ]
+  },
+  "legos": {
+    "S0288L01": {
+      "lego": [
+        "most people",
+        "la mayoría de la gente"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0288L01",
+        "seed_context": {
+          "target": "A la mayoría de la gente que conozco le gusta ver la televisión.",
+          "known": "Most people I know like watching television."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "mayoría",
+          "majority/most"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "gente",
+          "people"
+        ]
+      ]
+    },
+    "S0288L02": {
+      "lego": [
+        "people I know",
+        "la gente que conozco"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "most people",
+          "la mayoría de la gente"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0288L02",
+        "seed_context": {
+          "target": "A la mayoría de la gente que conozco le gusta ver la televisión.",
+          "known": "Most people I know like watching television."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "gente",
+          "people"
+        ],
+        [
+          "que",
+          "that/who"
+        ],
+        [
+          "conozco",
+          "I know"
+        ]
+      ]
+    },
+    "S0288L03": {
+      "lego": [
+        "I know",
+        "que conozco"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "most people",
+          "la mayoría de la gente"
+        ],
+        [
+          "people I know",
+          "la gente que conozco"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0288L03",
+        "seed_context": {
+          "target": "A la mayoría de la gente que conozco le gusta ver la televisión.",
+          "known": "Most people I know like watching television."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that/who"
+        ],
+        [
+          "conozco",
+          "I know"
+        ]
+      ]
+    },
+    "S0288L04": {
+      "lego": [
+        "like watching television",
+        "le gusta ver la televisión"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "most people",
+          "la mayoría de la gente"
+        ],
+        [
+          "people I know",
+          "la gente que conozco"
+        ],
+        [
+          "I know",
+          "que conozco"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0288L04",
+        "seed_context": {
+          "target": "A la mayoría de la gente que conozco le gusta ver la televisión.",
+          "known": "Most people I know like watching television."
+        }
+      },
+      "components": [
+        [
+          "le",
+          "them"
+        ],
+        [
+          "gusta",
+          "like"
+        ],
+        [
+          "ver",
+          "watching/to watch"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "televisión",
+          "television"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0288.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

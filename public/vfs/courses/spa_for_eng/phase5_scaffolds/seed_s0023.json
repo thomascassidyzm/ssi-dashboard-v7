@@ -1,0 +1,356 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0023",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Voy a comenzar a hablar más pronto.",
+    "known": "I'm going to start talking more soon."
+  },
+  "recent_seed_pairs": {
+    "S0013": [
+      "Hablas español muy bien.",
+      "You speak Spanish very well."
+    ],
+    "S0014": [
+      "¿Hablas español todo el día?",
+      "Do you speak Spanish all day?"
+    ],
+    "S0015": [
+      "Y quiero que hables español conmigo mañana.",
+      "And I want you to speak Spanish with me tomorrow."
+    ],
+    "S0016": [
+      "Él quiere volver con todos los demás más tarde.",
+      "He wants to come back with everyone else later."
+    ],
+    "S0017": [
+      "Ella quiere descubrir cuál es la respuesta.",
+      "She wants to find out what the answer is."
+    ],
+    "S0018": [
+      "Queremos reunirnos a las seis esta noche.",
+      "We want to meet at six o'clock this evening."
+    ],
+    "S0019": [
+      "Pero no quiero parar de hablar.",
+      "But I don't want to stop talking."
+    ],
+    "S0020": [
+      "Quieres aprender su nombre rápidamente.",
+      "You want to learn his name quickly."
+    ],
+    "S0021": [
+      "¿Por qué estás aprendiendo su nombre?",
+      "Why are you learning her name?"
+    ],
+    "S0022": [
+      "Porque quiero encontrar personas que hablan español.",
+      "Because I want to meet people who speak Spanish."
+    ]
+  },
+  "legos": {
+    "S0023L01": {
+      "lego": [
+        "I'm going to start",
+        "voy a comenzar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0023L01",
+        "seed_context": {
+          "target": "Voy a comenzar a hablar más pronto.",
+          "known": "I'm going to start talking more soon."
+        }
+      },
+      "components": [
+        [
+          "voy",
+          "I'm going"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "comenzar",
+          "start"
+        ]
+      ]
+    },
+    "S0023L02": {
+      "lego": [
+        "I'm going to start talking",
+        "voy a comenzar a hablar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm going to start",
+          "voy a comenzar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0023L02",
+        "seed_context": {
+          "target": "Voy a comenzar a hablar más pronto.",
+          "known": "I'm going to start talking more soon."
+        }
+      },
+      "components": [
+        [
+          "voy",
+          "I'm going"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "comenzar",
+          "start"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "hablar",
+          "talk"
+        ]
+      ]
+    },
+    "S0023L03": {
+      "lego": [
+        "to start talking",
+        "comenzar a hablar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm going to start",
+          "voy a comenzar"
+        ],
+        [
+          "I'm going to start talking",
+          "voy a comenzar a hablar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0023L03",
+        "seed_context": {
+          "target": "Voy a comenzar a hablar más pronto.",
+          "known": "I'm going to start talking more soon."
+        }
+      },
+      "components": [
+        [
+          "comenzar",
+          "to start"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "hablar",
+          "talk"
+        ]
+      ]
+    },
+    "S0023L04": {
+      "lego": [
+        "to talk more",
+        "a hablar más"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm going to start",
+          "voy a comenzar"
+        ],
+        [
+          "I'm going to start talking",
+          "voy a comenzar a hablar"
+        ],
+        [
+          "to start talking",
+          "comenzar a hablar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0023L04",
+        "seed_context": {
+          "target": "Voy a comenzar a hablar más pronto.",
+          "known": "I'm going to start talking more soon."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "hablar",
+          "talk"
+        ],
+        [
+          "más",
+          "more"
+        ]
+      ]
+    },
+    "S0023L05": {
+      "lego": [
+        "talk more",
+        "hablar más"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm going to start",
+          "voy a comenzar"
+        ],
+        [
+          "I'm going to start talking",
+          "voy a comenzar a hablar"
+        ],
+        [
+          "to start talking",
+          "comenzar a hablar"
+        ],
+        [
+          "to talk more",
+          "a hablar más"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0023L05",
+        "seed_context": {
+          "target": "Voy a comenzar a hablar más pronto.",
+          "known": "I'm going to start talking more soon."
+        }
+      },
+      "components": [
+        [
+          "hablar",
+          "talk"
+        ],
+        [
+          "más",
+          "more"
+        ]
+      ]
+    },
+    "S0023L06": {
+      "lego": [
+        "more soon",
+        "más pronto"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm going to start",
+          "voy a comenzar"
+        ],
+        [
+          "I'm going to start talking",
+          "voy a comenzar a hablar"
+        ],
+        [
+          "to start talking",
+          "comenzar a hablar"
+        ],
+        [
+          "to talk more",
+          "a hablar más"
+        ],
+        [
+          "talk more",
+          "hablar más"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0023L06",
+        "seed_context": {
+          "target": "Voy a comenzar a hablar más pronto.",
+          "known": "I'm going to start talking more soon."
+        }
+      },
+      "components": [
+        [
+          "más",
+          "more"
+        ],
+        [
+          "pronto",
+          "soon"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0023.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

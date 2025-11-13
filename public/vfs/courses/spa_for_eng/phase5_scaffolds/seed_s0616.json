@@ -1,0 +1,334 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0616",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Fuiste muy valiente al decir que pensabas eso.",
+    "known": "You were very brave to say you thought that."
+  },
+  "recent_seed_pairs": {
+    "S0606": [
+      "Si hubiera sabido entonces lo que sé ahora habría esperado.",
+      "If I'd known then what I know now I'd have waited."
+    ],
+    "S0607": [
+      "Si hubiera sabido habría hecho las cosas de manera diferente.",
+      "If I'd known I'd have done things differently."
+    ],
+    "S0608": [
+      "Habría sido lo sensato que hacer.",
+      "It would have been the sensible thing to do."
+    ],
+    "S0609": [
+      "Lo sensato que hacer habría sido preguntar.",
+      "The sensible thing to do would have been to ask."
+    ],
+    "S0610": [
+      "Él necesita buscar trabajo.",
+      "He needs to look for work."
+    ],
+    "S0611": [
+      "Yo habría estado preparado para buscar en otro lugar.",
+      "I would have been ready to look somewhere else."
+    ],
+    "S0612": [
+      "Habríamos comprado algo.",
+      "We would have bought something."
+    ],
+    "S0613": [
+      "Probablemente habríamos comprado una casa allí.",
+      "We probably would have bought a house there."
+    ],
+    "S0614": [
+      "Está cerca de donde vive tu familia.",
+      "It's near where your family live."
+    ],
+    "S0615": [
+      "Pensé que fuiste muy valiente al decir eso.",
+      "I thought you were very brave to say that."
+    ]
+  },
+  "legos": {
+    "S0616L01": {
+      "lego": [
+        "that",
+        "eso"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0616L01",
+        "seed_context": {
+          "target": "Fuiste muy valiente al decir que pensabas eso.",
+          "known": "You were very brave to say you thought that."
+        }
+      }
+    },
+    "S0616L02": {
+      "lego": [
+        "you were very brave",
+        "fuiste muy valiente"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "that",
+          "eso"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0616L02",
+        "seed_context": {
+          "target": "Fuiste muy valiente al decir que pensabas eso.",
+          "known": "You were very brave to say you thought that."
+        }
+      },
+      "components": [
+        [
+          "fuiste",
+          "you were"
+        ],
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "valiente",
+          "brave"
+        ]
+      ]
+    },
+    "S0616L03": {
+      "lego": [
+        "very brave",
+        "muy valiente"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "that",
+          "eso"
+        ],
+        [
+          "you were very brave",
+          "fuiste muy valiente"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0616L03",
+        "seed_context": {
+          "target": "Fuiste muy valiente al decir que pensabas eso.",
+          "known": "You were very brave to say you thought that."
+        }
+      },
+      "components": [
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "valiente",
+          "brave"
+        ]
+      ]
+    },
+    "S0616L04": {
+      "lego": [
+        "brave to say",
+        "valiente al decir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "that",
+          "eso"
+        ],
+        [
+          "you were very brave",
+          "fuiste muy valiente"
+        ],
+        [
+          "very brave",
+          "muy valiente"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0616L04",
+        "seed_context": {
+          "target": "Fuiste muy valiente al decir que pensabas eso.",
+          "known": "You were very brave to say you thought that."
+        }
+      },
+      "components": [
+        [
+          "valiente",
+          "brave"
+        ],
+        [
+          "al",
+          "to/on"
+        ],
+        [
+          "decir",
+          "say"
+        ]
+      ]
+    },
+    "S0616L05": {
+      "lego": [
+        "to say that",
+        "al decir que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "that",
+          "eso"
+        ],
+        [
+          "you were very brave",
+          "fuiste muy valiente"
+        ],
+        [
+          "very brave",
+          "muy valiente"
+        ],
+        [
+          "brave to say",
+          "valiente al decir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0616L05",
+        "seed_context": {
+          "target": "Fuiste muy valiente al decir que pensabas eso.",
+          "known": "You were very brave to say you thought that."
+        }
+      },
+      "components": [
+        [
+          "al",
+          "to/on"
+        ],
+        [
+          "decir",
+          "say"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0616L06": {
+      "lego": [
+        "you thought that",
+        "pensabas eso"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "that",
+          "eso"
+        ],
+        [
+          "you were very brave",
+          "fuiste muy valiente"
+        ],
+        [
+          "very brave",
+          "muy valiente"
+        ],
+        [
+          "brave to say",
+          "valiente al decir"
+        ],
+        [
+          "to say that",
+          "al decir que"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0616L06",
+        "seed_context": {
+          "target": "Fuiste muy valiente al decir que pensabas eso.",
+          "known": "You were very brave to say you thought that."
+        }
+      },
+      "components": [
+        [
+          "pensabas",
+          "you thought"
+        ],
+        [
+          "eso",
+          "that"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0616.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

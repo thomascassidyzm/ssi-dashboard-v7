@@ -1,0 +1,334 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0587",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Ella solía insistir en que teníamos huevos para la cena.",
+    "known": "She used to insist that we had eggs for supper."
+  },
+  "recent_seed_pairs": {
+    "S0577": [
+      "Hemos estado esperando las noticias del hospital.",
+      "We've been waiting for the news from the hospital."
+    ],
+    "S0578": [
+      "En algún lugar más cálido.",
+      "Somewhere warmer."
+    ],
+    "S0579": [
+      "Frecuentemente hemos intentado.",
+      "We've often tried."
+    ],
+    "S0580": [
+      "Frecuentemente hemos querido llevar a los niños a algún lugar un poco más cálido.",
+      "We've often wanted to take the children somewhere a little warmer."
+    ],
+    "S0581": [
+      "Le gustaría saber un poco más sobre cómo es.",
+      "He'd like to know a little more about what it's like."
+    ],
+    "S0582": [
+      "¿Cómo es crecer aquí?",
+      "What's it like to grow up here?"
+    ],
+    "S0583": [
+      "¿Cómo es en esta parte del mundo?",
+      "What's it like in this part of the world?"
+    ],
+    "S0584": [
+      "¿Cómo es despertar cada mañana y ver las montañas?",
+      "What's it like to wake up every morning and see the mountains?"
+    ],
+    "S0585": [
+      "Puedo ver las montañas desde la ventana de mi dormitorio.",
+      "I can see the mountains out of my bedroom window."
+    ],
+    "S0586": [
+      "Quiero veinte huevos cocidos.",
+      "I want twenty boiled eggs."
+    ]
+  },
+  "legos": {
+    "S0587L01": {
+      "lego": [
+        "she used to",
+        "ella solía"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0587L01",
+        "seed_context": {
+          "target": "Ella solía insistir en que teníamos huevos para la cena.",
+          "known": "She used to insist that we had eggs for supper."
+        }
+      },
+      "components": [
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "solía",
+          "used to"
+        ]
+      ]
+    },
+    "S0587L02": {
+      "lego": [
+        "used to insist",
+        "solía insistir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she used to",
+          "ella solía"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0587L02",
+        "seed_context": {
+          "target": "Ella solía insistir en que teníamos huevos para la cena.",
+          "known": "She used to insist that we had eggs for supper."
+        }
+      },
+      "components": [
+        [
+          "solía",
+          "used to"
+        ],
+        [
+          "insistir",
+          "to insist"
+        ]
+      ]
+    },
+    "S0587L03": {
+      "lego": [
+        "to insist that",
+        "insistir en que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she used to",
+          "ella solía"
+        ],
+        [
+          "used to insist",
+          "solía insistir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0587L03",
+        "seed_context": {
+          "target": "Ella solía insistir en que teníamos huevos para la cena.",
+          "known": "She used to insist that we had eggs for supper."
+        }
+      },
+      "components": [
+        [
+          "insistir",
+          "to insist"
+        ],
+        [
+          "en",
+          "in/on"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0587L04": {
+      "lego": [
+        "that we had",
+        "en que teníamos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she used to",
+          "ella solía"
+        ],
+        [
+          "used to insist",
+          "solía insistir"
+        ],
+        [
+          "to insist that",
+          "insistir en que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0587L04",
+        "seed_context": {
+          "target": "Ella solía insistir en que teníamos huevos para la cena.",
+          "known": "She used to insist that we had eggs for supper."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "teníamos",
+          "we had"
+        ]
+      ]
+    },
+    "S0587L05": {
+      "lego": [
+        "eggs",
+        "huevos"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "she used to",
+          "ella solía"
+        ],
+        [
+          "used to insist",
+          "solía insistir"
+        ],
+        [
+          "to insist that",
+          "insistir en que"
+        ],
+        [
+          "that we had",
+          "en que teníamos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0587L05",
+        "seed_context": {
+          "target": "Ella solía insistir en que teníamos huevos para la cena.",
+          "known": "She used to insist that we had eggs for supper."
+        }
+      }
+    },
+    "S0587L06": {
+      "lego": [
+        "for supper",
+        "para la cena"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she used to",
+          "ella solía"
+        ],
+        [
+          "used to insist",
+          "solía insistir"
+        ],
+        [
+          "to insist that",
+          "insistir en que"
+        ],
+        [
+          "that we had",
+          "en que teníamos"
+        ],
+        [
+          "eggs",
+          "huevos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0587L06",
+        "seed_context": {
+          "target": "Ella solía insistir en que teníamos huevos para la cena.",
+          "known": "She used to insist that we had eggs for supper."
+        }
+      },
+      "components": [
+        [
+          "para",
+          "for"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "cena",
+          "supper/dinner"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0587.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

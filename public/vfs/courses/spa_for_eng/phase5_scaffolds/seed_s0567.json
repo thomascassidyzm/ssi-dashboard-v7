@@ -1,0 +1,360 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0567",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Ha sido encantador pasar tiempo al aire libre observando a los niños jugar.",
+    "known": "It's been lovely spending time outdoors watching the children play."
+  },
+  "recent_seed_pairs": {
+    "S0557": [
+      "Desearía que no tocaran música tan alta.",
+      "I wish they wouldn't play such loud music."
+    ],
+    "S0558": [
+      "Es tan tarde en la noche.",
+      "It's so late at night."
+    ],
+    "S0559": [
+      "¿Has encontrado el camino por el bosque?",
+      "Have you found the path through the wood?"
+    ],
+    "S0560": [
+      "Va hacia abajo a la playa.",
+      "It goes down to the beach."
+    ],
+    "S0561": [
+      "No me importa si es un carro rápido.",
+      "I don't care if it's a fast car."
+    ],
+    "S0562": [
+      "Solo quiero llegar allí con seguridad.",
+      "I just want to get there safely."
+    ],
+    "S0563": [
+      "No habría podido continuar más tiempo.",
+      "I wouldn't have been able to keep going any longer."
+    ],
+    "S0564": [
+      "No habría podido sin tu ayuda.",
+      "I wouldn't have been able to without your help."
+    ],
+    "S0565": [
+      "Habría pensado en ello más cuidadosamente.",
+      "I'd have thought about it more carefully."
+    ],
+    "S0566": [
+      "Habría pensado más si hubiera sido mi elección.",
+      "I'd have thought more if it had been my choice."
+    ]
+  },
+  "legos": {
+    "S0567L01": {
+      "lego": [
+        "it's been lovely",
+        "ha sido encantador"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0567L01",
+        "seed_context": {
+          "target": "Ha sido encantador pasar tiempo al aire libre observando a los niños jugar.",
+          "known": "It's been lovely spending time outdoors watching the children play."
+        }
+      },
+      "components": [
+        [
+          "ha",
+          "it's/has"
+        ],
+        [
+          "sido",
+          "been"
+        ],
+        [
+          "encantador",
+          "lovely/charming"
+        ]
+      ]
+    },
+    "S0567L02": {
+      "lego": [
+        "spending time",
+        "pasar tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's been lovely",
+          "ha sido encantador"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0567L02",
+        "seed_context": {
+          "target": "Ha sido encantador pasar tiempo al aire libre observando a los niños jugar.",
+          "known": "It's been lovely spending time outdoors watching the children play."
+        }
+      },
+      "components": [
+        [
+          "pasar",
+          "to spend/pass"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0567L03": {
+      "lego": [
+        "outdoors",
+        "al aire libre"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's been lovely",
+          "ha sido encantador"
+        ],
+        [
+          "spending time",
+          "pasar tiempo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0567L03",
+        "seed_context": {
+          "target": "Ha sido encantador pasar tiempo al aire libre observando a los niños jugar.",
+          "known": "It's been lovely spending time outdoors watching the children play."
+        }
+      },
+      "components": [
+        [
+          "al",
+          "at the/to the"
+        ],
+        [
+          "aire",
+          "air"
+        ],
+        [
+          "libre",
+          "free"
+        ]
+      ]
+    },
+    "S0567L04": {
+      "lego": [
+        "watching the children play",
+        "observando a los niños jugar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's been lovely",
+          "ha sido encantador"
+        ],
+        [
+          "spending time",
+          "pasar tiempo"
+        ],
+        [
+          "outdoors",
+          "al aire libre"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0567L04",
+        "seed_context": {
+          "target": "Ha sido encantador pasar tiempo al aire libre observando a los niños jugar.",
+          "known": "It's been lovely spending time outdoors watching the children play."
+        }
+      },
+      "components": [
+        [
+          "observando",
+          "watching"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "los",
+          "the"
+        ],
+        [
+          "niños",
+          "children"
+        ],
+        [
+          "jugar",
+          "play"
+        ]
+      ]
+    },
+    "S0567L05": {
+      "lego": [
+        "watching the children",
+        "observando a los niños"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's been lovely",
+          "ha sido encantador"
+        ],
+        [
+          "spending time",
+          "pasar tiempo"
+        ],
+        [
+          "outdoors",
+          "al aire libre"
+        ],
+        [
+          "watching the children play",
+          "observando a los niños jugar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0567L05",
+        "seed_context": {
+          "target": "Ha sido encantador pasar tiempo al aire libre observando a los niños jugar.",
+          "known": "It's been lovely spending time outdoors watching the children play."
+        }
+      },
+      "components": [
+        [
+          "observando",
+          "watching"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "los",
+          "the"
+        ],
+        [
+          "niños",
+          "children"
+        ]
+      ]
+    },
+    "S0567L06": {
+      "lego": [
+        "the children",
+        "los niños"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's been lovely",
+          "ha sido encantador"
+        ],
+        [
+          "spending time",
+          "pasar tiempo"
+        ],
+        [
+          "outdoors",
+          "al aire libre"
+        ],
+        [
+          "watching the children play",
+          "observando a los niños jugar"
+        ],
+        [
+          "watching the children",
+          "observando a los niños"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0567L06",
+        "seed_context": {
+          "target": "Ha sido encantador pasar tiempo al aire libre observando a los niños jugar.",
+          "known": "It's been lovely spending time outdoors watching the children play."
+        }
+      },
+      "components": [
+        [
+          "los",
+          "the"
+        ],
+        [
+          "niños",
+          "children"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0567.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0560",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Va hacia abajo a la playa.",
+    "known": "It goes down to the beach."
+  },
+  "recent_seed_pairs": {
+    "S0550": [
+      "El final del pueblo.",
+      "The end of the village."
+    ],
+    "S0551": [
+      "La iglesia es fea.",
+      "The church is ugly."
+    ],
+    "S0552": [
+      "La iglesia al otro final del pueblo es fea.",
+      "The church at the other end of the village is ugly."
+    ],
+    "S0553": [
+      "Creo que la iglesia pequeña es muy fea.",
+      "I think the small church is very ugly."
+    ],
+    "S0554": [
+      "Esta toalla no está seca.",
+      "This towel isn't dry."
+    ],
+    "S0555": [
+      "Y estoy demasiado cansado para traer una nueva.",
+      "And I'm too tired to fetch a new one."
+    ],
+    "S0556": [
+      "Tocan música tarde en la noche.",
+      "They play music late at night."
+    ],
+    "S0557": [
+      "Desearía que no tocaran música tan alta.",
+      "I wish they wouldn't play such loud music."
+    ],
+    "S0558": [
+      "Es tan tarde en la noche.",
+      "It's so late at night."
+    ],
+    "S0559": [
+      "¿Has encontrado el camino por el bosque?",
+      "Have you found the path through the wood?"
+    ]
+  },
+  "legos": {
+    "S0560L01": {
+      "lego": [
+        "it goes down",
+        "va hacia abajo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0560L01",
+        "seed_context": {
+          "target": "Va hacia abajo a la playa.",
+          "known": "It goes down to the beach."
+        }
+      },
+      "components": [
+        [
+          "va",
+          "goes/it goes"
+        ],
+        [
+          "hacia",
+          "toward"
+        ],
+        [
+          "abajo",
+          "down"
+        ]
+      ]
+    },
+    "S0560L02": {
+      "lego": [
+        "to the beach",
+        "a la playa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it goes down",
+          "va hacia abajo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0560L02",
+        "seed_context": {
+          "target": "Va hacia abajo a la playa.",
+          "known": "It goes down to the beach."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "playa",
+          "beach"
+        ]
+      ]
+    },
+    "S0560L03": {
+      "lego": [
+        "down to the beach",
+        "hacia abajo a la playa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it goes down",
+          "va hacia abajo"
+        ],
+        [
+          "to the beach",
+          "a la playa"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0560L03",
+        "seed_context": {
+          "target": "Va hacia abajo a la playa.",
+          "known": "It goes down to the beach."
+        }
+      },
+      "components": [
+        [
+          "hacia",
+          "toward"
+        ],
+        [
+          "abajo",
+          "down"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "playa",
+          "beach"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0560.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

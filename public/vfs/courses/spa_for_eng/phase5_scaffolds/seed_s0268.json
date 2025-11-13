@@ -1,0 +1,276 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0268",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Sí, me envió dos correos electrónicos la semana pasada.",
+    "known": "Yes she sent me two emails last week."
+  },
+  "recent_seed_pairs": {
+    "S0258": [
+      "¿Qué es esa cosa azul de allí?",
+      "What's that blue thing over there?"
+    ],
+    "S0259": [
+      "Una idea.",
+      "An idea."
+    ],
+    "S0260": [
+      "No tengo ni la más mínima idea.",
+      "I don't have the faintest idea."
+    ],
+    "S0261": [
+      "Creo que puede ser algo importante.",
+      "I think it might be something important."
+    ],
+    "S0262": [
+      "¿Quién era ese hombre con el que hablabas ayer?",
+      "Who was that man you were talking to yesterday?"
+    ],
+    "S0263": [
+      "No sé quién quieres decir.",
+      "I don't know who you mean."
+    ],
+    "S0264": [
+      "Un hombre viejo.",
+      "An old man."
+    ],
+    "S0265": [
+      "Un amigo.",
+      "A friend."
+    ],
+    "S0266": [
+      "Era un viejo amigo de mi padre.",
+      "He was an old friend of my father."
+    ],
+    "S0267": [
+      "¿Has sabido de tu amigo?",
+      "Have you heard from your friend?"
+    ]
+  },
+  "legos": {
+    "S0268L01": {
+      "lego": [
+        "yes",
+        "sí"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0268L01",
+        "seed_context": {
+          "target": "Sí, me envió dos correos electrónicos la semana pasada.",
+          "known": "Yes she sent me two emails last week."
+        }
+      }
+    },
+    "S0268L02": {
+      "lego": [
+        "she sent me/sent me",
+        "me envió"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "yes",
+          "sí"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0268L02",
+        "seed_context": {
+          "target": "Sí, me envió dos correos electrónicos la semana pasada.",
+          "known": "Yes she sent me two emails last week."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "me"
+        ],
+        [
+          "envió",
+          "sent"
+        ]
+      ]
+    },
+    "S0268L03": {
+      "lego": [
+        "two emails",
+        "dos correos electrónicos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "yes",
+          "sí"
+        ],
+        [
+          "she sent me/sent me",
+          "me envió"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0268L03",
+        "seed_context": {
+          "target": "Sí, me envió dos correos electrónicos la semana pasada.",
+          "known": "Yes she sent me two emails last week."
+        }
+      },
+      "components": [
+        [
+          "dos",
+          "two"
+        ],
+        [
+          "correos",
+          "mails"
+        ],
+        [
+          "electrónicos",
+          "electronic"
+        ]
+      ]
+    },
+    "S0268L04": {
+      "lego": [
+        "emails",
+        "correos electrónicos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "yes",
+          "sí"
+        ],
+        [
+          "she sent me/sent me",
+          "me envió"
+        ],
+        [
+          "two emails",
+          "dos correos electrónicos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0268L04",
+        "seed_context": {
+          "target": "Sí, me envió dos correos electrónicos la semana pasada.",
+          "known": "Yes she sent me two emails last week."
+        }
+      },
+      "components": [
+        [
+          "correos",
+          "mails"
+        ],
+        [
+          "electrónicos",
+          "electronic"
+        ]
+      ]
+    },
+    "S0268L05": {
+      "lego": [
+        "last week",
+        "la semana pasada"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "yes",
+          "sí"
+        ],
+        [
+          "she sent me/sent me",
+          "me envió"
+        ],
+        [
+          "two emails",
+          "dos correos electrónicos"
+        ],
+        [
+          "emails",
+          "correos electrónicos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0268L05",
+        "seed_context": {
+          "target": "Sí, me envió dos correos electrónicos la semana pasada.",
+          "known": "Yes she sent me two emails last week."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "semana",
+          "week"
+        ],
+        [
+          "pasada",
+          "last/past"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0268.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0303",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Creo que él quiere sentarse.",
+    "known": "I think that he wants to sit down."
+  },
+  "recent_seed_pairs": {
+    "S0293": [
+      "Tengo que descubrir dónde va a reunirse conmigo.",
+      "I have to find out where he's going to meet me."
+    ],
+    "S0294": [
+      "No tengo suficiente tiempo para llamarte esta noche.",
+      "I don't have enough time to call you tonight."
+    ],
+    "S0295": [
+      "No dije que quería terminar en un día.",
+      "I didn't say that I wanted to finish in a day."
+    ],
+    "S0296": [
+      "Dije que necesitaba un poco más de tiempo.",
+      "I said that I needed a little more time."
+    ],
+    "S0297": [
+      "No conozco a muchas personas que hablan español.",
+      "I don't know many people who speak Spanish."
+    ],
+    "S0298": [
+      "No me queda nada que decir.",
+      "I've got nothing left to say."
+    ],
+    "S0299": [
+      "Él quiere pagar la mitad.",
+      "He wants to pay half."
+    ],
+    "S0300": [
+      "Ella no quiere parecer antipática.",
+      "She doesn't want to seem unfriendly."
+    ],
+    "S0301": [
+      "Él dijo que quiere mostrarte algo.",
+      "He said that he wants to show you something."
+    ],
+    "S0302": [
+      "Ella dijo que no quiere vivir en una ciudad.",
+      "She said that she doesn't want to live in a city."
+    ]
+  },
+  "legos": {
+    "S0303L01": {
+      "lego": [
+        "I think",
+        "creo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0303L01",
+        "seed_context": {
+          "target": "Creo que él quiere sentarse.",
+          "known": "I think that he wants to sit down."
+        }
+      }
+    },
+    "S0303L02": {
+      "lego": [
+        "I think that",
+        "creo que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "creo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0303L02",
+        "seed_context": {
+          "target": "Creo que él quiere sentarse.",
+          "known": "I think that he wants to sit down."
+        }
+      },
+      "components": [
+        [
+          "creo",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0303L03": {
+      "lego": [
+        "that he wants",
+        "que él quiere"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "creo"
+        ],
+        [
+          "I think that",
+          "creo que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0303L03",
+        "seed_context": {
+          "target": "Creo que él quiere sentarse.",
+          "known": "I think that he wants to sit down."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "él",
+          "he"
+        ],
+        [
+          "quiere",
+          "wants"
+        ]
+      ]
+    },
+    "S0303L04": {
+      "lego": [
+        "he wants",
+        "él quiere"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "creo"
+        ],
+        [
+          "I think that",
+          "creo que"
+        ],
+        [
+          "that he wants",
+          "que él quiere"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0303L04",
+        "seed_context": {
+          "target": "Creo que él quiere sentarse.",
+          "known": "I think that he wants to sit down."
+        }
+      },
+      "components": [
+        [
+          "él",
+          "he"
+        ],
+        [
+          "quiere",
+          "wants"
+        ]
+      ]
+    },
+    "S0303L05": {
+      "lego": [
+        "to sit down",
+        "sentarse"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "creo"
+        ],
+        [
+          "I think that",
+          "creo que"
+        ],
+        [
+          "that he wants",
+          "que él quiere"
+        ],
+        [
+          "he wants",
+          "él quiere"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0303L05",
+        "seed_context": {
+          "target": "Creo que él quiere sentarse.",
+          "known": "I think that he wants to sit down."
+        }
+      }
+    },
+    "S0303L06": {
+      "lego": [
+        "wants to sit down",
+        "quiere sentarse"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "creo"
+        ],
+        [
+          "I think that",
+          "creo que"
+        ],
+        [
+          "that he wants",
+          "que él quiere"
+        ],
+        [
+          "he wants",
+          "él quiere"
+        ],
+        [
+          "to sit down",
+          "sentarse"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0303L06",
+        "seed_context": {
+          "target": "Creo que él quiere sentarse.",
+          "known": "I think that he wants to sit down."
+        }
+      },
+      "components": [
+        [
+          "quiere",
+          "wants"
+        ],
+        [
+          "sentarse",
+          "to sit down"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0303.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

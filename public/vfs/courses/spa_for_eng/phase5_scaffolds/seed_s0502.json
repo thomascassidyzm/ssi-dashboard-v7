@@ -1,0 +1,386 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0502",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Casi se perdió porque giró a la izquierda en lugar de a la derecha.",
+    "known": "She almost got lost because she turned left instead of right."
+  },
+  "recent_seed_pairs": {
+    "S0492": [
+      "¿Cuál de esos lugares crees que es el más interesante?",
+      "Which of those places do you think is the most interesting?"
+    ],
+    "S0493": [
+      "¿Qué va a venir después?",
+      "What's going to come next?"
+    ],
+    "S0494": [
+      "¿Qué pasa después de la primera parte del espectáculo?",
+      "What happens after the first part of the show?"
+    ],
+    "S0495": [
+      "Cuando importa.",
+      "When it matters."
+    ],
+    "S0496": [
+      "No estoy planeando perder cuando realmente importa.",
+      "I'm not planning to lose when it really matters."
+    ],
+    "S0497": [
+      "Eso suena como si necesitaras dormir un poco.",
+      "That sounds as though you need to get some sleep."
+    ],
+    "S0498": [
+      "Está de pie solo allá dentro de la entrada.",
+      "He's standing alone over there inside the entrance."
+    ],
+    "S0499": [
+      "Quizás deberíamos abrir la puerta y cerrar la ventana.",
+      "Maybe we should open the door and close the window."
+    ],
+    "S0500": [
+      "¿Por qué no quieres sentarte entre las dos chicas?",
+      "Why don't you want to sit between the two girls?"
+    ],
+    "S0501": [
+      "Si tan solo pudiera confiar en ti para jugar juntos sin discutir.",
+      "If only I could trust you to play together without arguing."
+    ]
+  },
+  "legos": {
+    "S0502L01": {
+      "lego": [
+        "almost got lost",
+        "casi se perdió"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0502L01",
+        "seed_context": {
+          "target": "Casi se perdió porque giró a la izquierda en lugar de a la derecha.",
+          "known": "She almost got lost because she turned left instead of right."
+        }
+      },
+      "components": [
+        [
+          "casi",
+          "almost"
+        ],
+        [
+          "se",
+          "herself"
+        ],
+        [
+          "perdió",
+          "got lost/lost"
+        ]
+      ]
+    },
+    "S0502L02": {
+      "lego": [
+        "because",
+        "porque"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "almost got lost",
+          "casi se perdió"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0502L02",
+        "seed_context": {
+          "target": "Casi se perdió porque giró a la izquierda en lugar de a la derecha.",
+          "known": "She almost got lost because she turned left instead of right."
+        }
+      }
+    },
+    "S0502L03": {
+      "lego": [
+        "turned left",
+        "giró a la izquierda"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "almost got lost",
+          "casi se perdió"
+        ],
+        [
+          "because",
+          "porque"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0502L03",
+        "seed_context": {
+          "target": "Casi se perdió porque giró a la izquierda en lugar de a la derecha.",
+          "known": "She almost got lost because she turned left instead of right."
+        }
+      },
+      "components": [
+        [
+          "giró",
+          "turned"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "izquierda",
+          "left"
+        ]
+      ]
+    },
+    "S0502L04": {
+      "lego": [
+        "to the right",
+        "a la derecha"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "almost got lost",
+          "casi se perdió"
+        ],
+        [
+          "because",
+          "porque"
+        ],
+        [
+          "turned left",
+          "giró a la izquierda"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0502L04",
+        "seed_context": {
+          "target": "Casi se perdió porque giró a la izquierda en lugar de a la derecha.",
+          "known": "She almost got lost because she turned left instead of right."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "derecha",
+          "right"
+        ]
+      ]
+    },
+    "S0502L05": {
+      "lego": [
+        "instead of right",
+        "en lugar de a la derecha"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "almost got lost",
+          "casi se perdió"
+        ],
+        [
+          "because",
+          "porque"
+        ],
+        [
+          "turned left",
+          "giró a la izquierda"
+        ],
+        [
+          "to the right",
+          "a la derecha"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0502L05",
+        "seed_context": {
+          "target": "Casi se perdió porque giró a la izquierda en lugar de a la derecha.",
+          "known": "She almost got lost because she turned left instead of right."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "lugar",
+          "place"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "derecha",
+          "right"
+        ]
+      ]
+    },
+    "S0502L06": {
+      "lego": [
+        "turned left instead of right",
+        "giró a la izquierda en lugar de a la derecha"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "almost got lost",
+          "casi se perdió"
+        ],
+        [
+          "because",
+          "porque"
+        ],
+        [
+          "turned left",
+          "giró a la izquierda"
+        ],
+        [
+          "to the right",
+          "a la derecha"
+        ],
+        [
+          "instead of right",
+          "en lugar de a la derecha"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0502L06",
+        "seed_context": {
+          "target": "Casi se perdió porque giró a la izquierda en lugar de a la derecha.",
+          "known": "She almost got lost because she turned left instead of right."
+        }
+      },
+      "components": [
+        [
+          "giró",
+          "turned"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "izquierda",
+          "left"
+        ],
+        [
+          "en",
+          "in"
+        ],
+        [
+          "lugar",
+          "place"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "derecha",
+          "right"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0502.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

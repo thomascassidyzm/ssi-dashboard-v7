@@ -1,0 +1,286 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0178",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No tuve tiempo, aunque quería verte.",
+    "known": "I didn't have time, although I wanted to see you."
+  },
+  "recent_seed_pairs": {
+    "S0168": [
+      "Y entonces podré venir y ayudar más tarde.",
+      "And then I'll be able to come and help later on."
+    ],
+    "S0169": [
+      "¿Qué quieres que haga?",
+      "What do you want me to do?"
+    ],
+    "S0170": [
+      "Me gustaría que me dijeras lo que necesitas.",
+      "I'd like you to tell me what you need."
+    ],
+    "S0171": [
+      "¿Quieres que te ayude a buscarlo?",
+      "Do you want me to help you look for it?"
+    ],
+    "S0172": [
+      "Sí, eso sería muy útil.",
+      "Yes that would be very helpful."
+    ],
+    "S0173": [
+      "No gracias, puedo manejarlo por mi cuenta.",
+      "No thank you I can manage on my own."
+    ],
+    "S0174": [
+      "¿Puedes entender lo que estoy diciendo?",
+      "Can you understand what I'm saying?"
+    ],
+    "S0175": [
+      "¿Qué quieres hacer el domingo por la mañana?",
+      "What do you want to do on Sunday morning?"
+    ],
+    "S0176": [
+      "Le preguntaré si podrá ayudar el año próximo.",
+      "I'll ask him if he'll be able to help next year."
+    ],
+    "S0177": [
+      "Le preguntaré dónde quiere ir.",
+      "I'll ask her where she wants to go."
+    ]
+  },
+  "legos": {
+    "S0178L01": {
+      "lego": [
+        "I didn't have time",
+        "no tuve tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0178L01",
+        "seed_context": {
+          "target": "No tuve tiempo, aunque quería verte.",
+          "known": "I didn't have time, although I wanted to see you."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "tuve",
+          "I had"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0178L02": {
+      "lego": [
+        "I had time",
+        "tuve tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I didn't have time",
+          "no tuve tiempo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0178L02",
+        "seed_context": {
+          "target": "No tuve tiempo, aunque quería verte.",
+          "known": "I didn't have time, although I wanted to see you."
+        }
+      },
+      "components": [
+        [
+          "tuve",
+          "I had"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0178L03": {
+      "lego": [
+        "although I wanted to see you",
+        "aunque quería verte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I didn't have time",
+          "no tuve tiempo"
+        ],
+        [
+          "I had time",
+          "tuve tiempo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0178L03",
+        "seed_context": {
+          "target": "No tuve tiempo, aunque quería verte.",
+          "known": "I didn't have time, although I wanted to see you."
+        }
+      },
+      "components": [
+        [
+          "aunque",
+          "although"
+        ],
+        [
+          "quería",
+          "I wanted"
+        ],
+        [
+          "verte",
+          "to see you"
+        ]
+      ]
+    },
+    "S0178L04": {
+      "lego": [
+        "I wanted to see you",
+        "quería verte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I didn't have time",
+          "no tuve tiempo"
+        ],
+        [
+          "I had time",
+          "tuve tiempo"
+        ],
+        [
+          "although I wanted to see you",
+          "aunque quería verte"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0178L04",
+        "seed_context": {
+          "target": "No tuve tiempo, aunque quería verte.",
+          "known": "I didn't have time, although I wanted to see you."
+        }
+      },
+      "components": [
+        [
+          "quería",
+          "I wanted"
+        ],
+        [
+          "verte",
+          "to see you"
+        ]
+      ]
+    },
+    "S0178L05": {
+      "lego": [
+        "to see you",
+        "verte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I didn't have time",
+          "no tuve tiempo"
+        ],
+        [
+          "I had time",
+          "tuve tiempo"
+        ],
+        [
+          "although I wanted to see you",
+          "aunque quería verte"
+        ],
+        [
+          "I wanted to see you",
+          "quería verte"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0178L05",
+        "seed_context": {
+          "target": "No tuve tiempo, aunque quería verte.",
+          "known": "I didn't have time, although I wanted to see you."
+        }
+      },
+      "components": [
+        [
+          "ver",
+          "to see"
+        ],
+        [
+          "te",
+          "you"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0178.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

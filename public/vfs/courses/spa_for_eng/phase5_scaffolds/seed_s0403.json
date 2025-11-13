@@ -1,0 +1,300 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0403",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "We should remain quiet for as long as possible.",
+    "known": "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+  },
+  "recent_seed_pairs": {
+    "S0393": [
+      "Ese niño con la camisa verde.",
+      "That boy with the green shirt."
+    ],
+    "S0394": [
+      "Esa niña con el vestido amarillo.",
+      "That girl with the yellow dress."
+    ],
+    "S0395": [
+      "Necesitamos girar a la izquierda en la próxima esquina.",
+      "We need to turn left at the next corner."
+    ],
+    "S0396": [
+      "No necesitamos estar de pie hasta que todos los demás estén preparados.",
+      "We don't need to stand until everybody else is ready."
+    ],
+    "S0397": [
+      "¿Necesitamos prepararnos pronto?",
+      "Do we need to get ready soon?"
+    ],
+    "S0398": [
+      "Queremos volvernos más pacientes con nuestros niños.",
+      "We want to become more patient with our children."
+    ],
+    "S0399": [
+      "No queremos perder la esperanza.",
+      "We don't want to lose hope."
+    ],
+    "S0400": [
+      "¿Queremos comer algo más tarde?",
+      "Do we want to eat something later on?"
+    ],
+    "S0401": [
+      "No it would be better to go straight home.",
+      "No, sería mejor ir directamente a casa."
+    ],
+    "S0402": [
+      "Yes it would be nice to stop somewhere for food.",
+      "Sí, sería agradable parar en algún lugar para comida."
+    ]
+  },
+  "legos": {
+    "S0403L01": {
+      "lego": [
+        "we should",
+        "deberíamos"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0403L01",
+        "seed_context": {
+          "target": "We should remain quiet for as long as possible.",
+          "known": "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+        }
+      }
+    },
+    "S0403L02": {
+      "lego": [
+        "remain quiet",
+        "permanecer callados"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we should",
+          "deberíamos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0403L02",
+        "seed_context": {
+          "target": "We should remain quiet for as long as possible.",
+          "known": "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+        }
+      },
+      "components": [
+        [
+          "permanecer",
+          "remain"
+        ],
+        [
+          "callados",
+          "quiet"
+        ]
+      ]
+    },
+    "S0403L03": {
+      "lego": [
+        "we should remain quiet",
+        "deberíamos permanecer callados"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we should",
+          "deberíamos"
+        ],
+        [
+          "remain quiet",
+          "permanecer callados"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0403L03",
+        "seed_context": {
+          "target": "We should remain quiet for as long as possible.",
+          "known": "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+        }
+      },
+      "components": [
+        [
+          "deberíamos",
+          "we should"
+        ],
+        [
+          "permanecer",
+          "remain"
+        ],
+        [
+          "callados",
+          "quiet"
+        ]
+      ]
+    },
+    "S0403L04": {
+      "lego": [
+        "as long as possible",
+        "tanto tiempo como sea posible"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we should",
+          "deberíamos"
+        ],
+        [
+          "remain quiet",
+          "permanecer callados"
+        ],
+        [
+          "we should remain quiet",
+          "deberíamos permanecer callados"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0403L04",
+        "seed_context": {
+          "target": "We should remain quiet for as long as possible.",
+          "known": "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+        }
+      },
+      "components": [
+        [
+          "tanto",
+          "as"
+        ],
+        [
+          "tiempo",
+          "long/time"
+        ],
+        [
+          "como",
+          "as"
+        ],
+        [
+          "sea",
+          "be (subjunctive)"
+        ],
+        [
+          "posible",
+          "possible"
+        ]
+      ]
+    },
+    "S0403L05": {
+      "lego": [
+        "for as long as possible",
+        "durante tanto tiempo como sea posible"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we should",
+          "deberíamos"
+        ],
+        [
+          "remain quiet",
+          "permanecer callados"
+        ],
+        [
+          "we should remain quiet",
+          "deberíamos permanecer callados"
+        ],
+        [
+          "as long as possible",
+          "tanto tiempo como sea posible"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0403L05",
+        "seed_context": {
+          "target": "We should remain quiet for as long as possible.",
+          "known": "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+        }
+      },
+      "components": [
+        [
+          "durante",
+          "for"
+        ],
+        [
+          "tanto",
+          "as"
+        ],
+        [
+          "tiempo",
+          "long"
+        ],
+        [
+          "como",
+          "as"
+        ],
+        [
+          "sea",
+          "be (subj.)"
+        ],
+        [
+          "posible",
+          "possible"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0403.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0533",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No escuchará cada palabra que dices.",
+    "known": "She won't listen to every word you say."
+  },
+  "recent_seed_pairs": {
+    "S0523": [
+      "En lugar de dar una excusa.",
+      "Instead of giving an excuse."
+    ],
+    "S0524": [
+      "Te llamaré de vuelta en tres o cuatro minutos.",
+      "I'll call you back in three or four minutes."
+    ],
+    "S0525": [
+      "Para comprobar si has podido terminar.",
+      "To check if you've been able to finish."
+    ],
+    "S0526": [
+      "Me resulta difícil creer que no puedes adivinar.",
+      "I'm finding it hard to believe that you can't guess."
+    ],
+    "S0527": [
+      "Adivina quién me contó esa historia graciosa.",
+      "Guess who told me that funny story."
+    ],
+    "S0528": [
+      "Probablemente se supone que debo guardar esas cosas en otra habitación.",
+      "I'm probably supposed to keep those things in another room."
+    ],
+    "S0529": [
+      "¿Pueden todos levantar las manos?",
+      "Can you all put your hands up?"
+    ],
+    "S0530": [
+      "Para que pueda contarlas",
+      "So I can count them"
+    ],
+    "S0531": [
+      "No es verdad que cualquiera pueda ganar el juego.",
+      "It isn't true that anyone can win the game."
+    ],
+    "S0532": [
+      "A menos que tengan suerte.",
+      "Unless they're lucky."
+    ]
+  },
+  "legos": {
+    "S0533L01": {
+      "lego": [
+        "won't listen",
+        "no escuchará"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0533L01",
+        "seed_context": {
+          "target": "No escuchará cada palabra que dices.",
+          "known": "She won't listen to every word you say."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "escuchará",
+          "will listen"
+        ]
+      ]
+    },
+    "S0533L02": {
+      "lego": [
+        "every word",
+        "cada palabra"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "won't listen",
+          "no escuchará"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0533L02",
+        "seed_context": {
+          "target": "No escuchará cada palabra que dices.",
+          "known": "She won't listen to every word you say."
+        }
+      },
+      "components": [
+        [
+          "cada",
+          "every/each"
+        ],
+        [
+          "palabra",
+          "word"
+        ]
+      ]
+    },
+    "S0533L03": {
+      "lego": [
+        "you say",
+        "que dices"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "won't listen",
+          "no escuchará"
+        ],
+        [
+          "every word",
+          "cada palabra"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0533L03",
+        "seed_context": {
+          "target": "No escuchará cada palabra que dices.",
+          "known": "She won't listen to every word you say."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "dices",
+          "you say"
+        ]
+      ]
+    },
+    "S0533L04": {
+      "lego": [
+        "every word you say",
+        "cada palabra que dices"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "won't listen",
+          "no escuchará"
+        ],
+        [
+          "every word",
+          "cada palabra"
+        ],
+        [
+          "you say",
+          "que dices"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0533L04",
+        "seed_context": {
+          "target": "No escuchará cada palabra que dices.",
+          "known": "She won't listen to every word you say."
+        }
+      },
+      "components": [
+        [
+          "cada",
+          "every"
+        ],
+        [
+          "palabra",
+          "word"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "dices",
+          "you say"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0533.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

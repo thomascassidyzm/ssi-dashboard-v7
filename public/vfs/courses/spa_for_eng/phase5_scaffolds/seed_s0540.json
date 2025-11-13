@@ -1,0 +1,226 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0540",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No me importa si quieres irte sin el coche.",
+    "known": "I don't mind if you want to leave without the car."
+  },
+  "recent_seed_pairs": {
+    "S0530": [
+      "Para que pueda contarlas",
+      "So I can count them"
+    ],
+    "S0531": [
+      "No es verdad que cualquiera pueda ganar el juego.",
+      "It isn't true that anyone can win the game."
+    ],
+    "S0532": [
+      "A menos que tengan suerte.",
+      "Unless they're lucky."
+    ],
+    "S0533": [
+      "No escuchará cada palabra que dices.",
+      "She won't listen to every word you say."
+    ],
+    "S0534": [
+      "No vayamos afuera con este clima espantoso.",
+      "Let's not go outside in this dreadful weather."
+    ],
+    "S0535": [
+      "Hizo una promesa de que no elegiría el trabajo equivocado.",
+      "He made a promise that he wouldn't choose the wrong job."
+    ],
+    "S0536": [
+      "Solía pensar que ser loco era malo.",
+      "I used to think that being crazy was bad."
+    ],
+    "S0537": [
+      "Pero estaba equivocado.",
+      "But I was wrong."
+    ],
+    "S0538": [
+      "No quiero parecer como si no me importara.",
+      "I don't want to seem as though I don't care."
+    ],
+    "S0539": [
+      "Pero se está haciendo tarde.",
+      "But it's getting late."
+    ]
+  },
+  "legos": {
+    "S0540L01": {
+      "lego": [
+        "I don't mind",
+        "no me importa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0540L01",
+        "seed_context": {
+          "target": "No me importa si quieres irte sin el coche.",
+          "known": "I don't mind if you want to leave without the car."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "me",
+          "me"
+        ],
+        [
+          "importa",
+          "matters/cares"
+        ]
+      ]
+    },
+    "S0540L02": {
+      "lego": [
+        "if you want",
+        "si quieres"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't mind",
+          "no me importa"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0540L02",
+        "seed_context": {
+          "target": "No me importa si quieres irte sin el coche.",
+          "known": "I don't mind if you want to leave without the car."
+        }
+      },
+      "components": [
+        [
+          "si",
+          "if"
+        ],
+        [
+          "quieres",
+          "you want"
+        ]
+      ]
+    },
+    "S0540L03": {
+      "lego": [
+        "to leave",
+        "irte"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I don't mind",
+          "no me importa"
+        ],
+        [
+          "if you want",
+          "si quieres"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0540L03",
+        "seed_context": {
+          "target": "No me importa si quieres irte sin el coche.",
+          "known": "I don't mind if you want to leave without the car."
+        }
+      }
+    },
+    "S0540L04": {
+      "lego": [
+        "without the car",
+        "sin el coche"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't mind",
+          "no me importa"
+        ],
+        [
+          "if you want",
+          "si quieres"
+        ],
+        [
+          "to leave",
+          "irte"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0540L04",
+        "seed_context": {
+          "target": "No me importa si quieres irte sin el coche.",
+          "known": "I don't mind if you want to leave without the car."
+        }
+      },
+      "components": [
+        [
+          "sin",
+          "without"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "coche",
+          "car"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0540.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0577",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Hemos estado esperando las noticias del hospital.",
+    "known": "We've been waiting for the news from the hospital."
+  },
+  "recent_seed_pairs": {
+    "S0567": [
+      "Ha sido encantador pasar tiempo al aire libre observando a los niños jugar.",
+      "It's been lovely spending time outdoors watching the children play."
+    ],
+    "S0568": [
+      "Espero ver una mejora la próxima vez que nos encontremos.",
+      "I'm expecting to see an improvement next time we meet."
+    ],
+    "S0569": [
+      "¿Has decidido cuánto estás dispuesto a pagar?",
+      "Have you decided how much you are willing to pay?"
+    ],
+    "S0570": [
+      "¿Cuánto estás dispuesto a pagar por tu billete?",
+      "How much are you willing to pay for your ticket?"
+    ],
+    "S0571": [
+      "No estoy convencido de que eso sería una muy buena idea.",
+      "I'm not convinced that would be a very good idea."
+    ],
+    "S0572": [
+      "¿Has olvidado lo que pasó la última vez que nos visitaron?",
+      "Have you forgotten what happened the last time they visited us?"
+    ],
+    "S0573": [
+      "Es el tipo de cosa que hace que las vacaciones sean muy especiales.",
+      "It's the kind of thing that makes the holidays very special."
+    ],
+    "S0574": [
+      "Las vacaciones son muy especiales para todos.",
+      "The holidays are very special for everyone."
+    ],
+    "S0575": [
+      "Ha sido perturbador.",
+      "It's been upsetting."
+    ],
+    "S0576": [
+      "Ha sido muy perturbador esperar.",
+      "It has been very upsetting waiting."
+    ]
+  },
+  "legos": {
+    "S0577L01": {
+      "lego": [
+        "we've been",
+        "hemos estado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0577L01",
+        "seed_context": {
+          "target": "Hemos estado esperando las noticias del hospital.",
+          "known": "We've been waiting for the news from the hospital."
+        }
+      },
+      "components": [
+        [
+          "hemos",
+          "we've"
+        ],
+        [
+          "estado",
+          "been"
+        ]
+      ]
+    },
+    "S0577L02": {
+      "lego": [
+        "waiting",
+        "esperando"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "we've been",
+          "hemos estado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0577L02",
+        "seed_context": {
+          "target": "Hemos estado esperando las noticias del hospital.",
+          "known": "We've been waiting for the news from the hospital."
+        }
+      }
+    },
+    "S0577L03": {
+      "lego": [
+        "we've been waiting",
+        "hemos estado esperando"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we've been",
+          "hemos estado"
+        ],
+        [
+          "waiting",
+          "esperando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0577L03",
+        "seed_context": {
+          "target": "Hemos estado esperando las noticias del hospital.",
+          "known": "We've been waiting for the news from the hospital."
+        }
+      },
+      "components": [
+        [
+          "hemos",
+          "we've"
+        ],
+        [
+          "estado",
+          "been"
+        ],
+        [
+          "esperando",
+          "waiting"
+        ]
+      ]
+    },
+    "S0577L04": {
+      "lego": [
+        "the news",
+        "las noticias"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we've been",
+          "hemos estado"
+        ],
+        [
+          "waiting",
+          "esperando"
+        ],
+        [
+          "we've been waiting",
+          "hemos estado esperando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0577L04",
+        "seed_context": {
+          "target": "Hemos estado esperando las noticias del hospital.",
+          "known": "We've been waiting for the news from the hospital."
+        }
+      },
+      "components": [
+        [
+          "las",
+          "the"
+        ],
+        [
+          "noticias",
+          "news"
+        ]
+      ]
+    },
+    "S0577L05": {
+      "lego": [
+        "from the hospital",
+        "del hospital"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we've been",
+          "hemos estado"
+        ],
+        [
+          "waiting",
+          "esperando"
+        ],
+        [
+          "we've been waiting",
+          "hemos estado esperando"
+        ],
+        [
+          "the news",
+          "las noticias"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0577L05",
+        "seed_context": {
+          "target": "Hemos estado esperando las noticias del hospital.",
+          "known": "We've been waiting for the news from the hospital."
+        }
+      },
+      "components": [
+        [
+          "del",
+          "from the"
+        ],
+        [
+          "hospital",
+          "hospital"
+        ]
+      ]
+    },
+    "S0577L06": {
+      "lego": [
+        "the news from the hospital",
+        "las noticias del hospital"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we've been",
+          "hemos estado"
+        ],
+        [
+          "waiting",
+          "esperando"
+        ],
+        [
+          "we've been waiting",
+          "hemos estado esperando"
+        ],
+        [
+          "the news",
+          "las noticias"
+        ],
+        [
+          "from the hospital",
+          "del hospital"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0577L06",
+        "seed_context": {
+          "target": "Hemos estado esperando las noticias del hospital.",
+          "known": "We've been waiting for the news from the hospital."
+        }
+      },
+      "components": [
+        [
+          "las",
+          "the"
+        ],
+        [
+          "noticias",
+          "news"
+        ],
+        [
+          "del",
+          "from the"
+        ],
+        [
+          "hospital",
+          "hospital"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0577.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

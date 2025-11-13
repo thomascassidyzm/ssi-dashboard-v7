@@ -1,0 +1,324 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0368",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Sí escuché que él quería cultivar tomates.",
+    "known": "Yes I heard that he wanted to grow tomatoes."
+  },
+  "recent_seed_pairs": {
+    "S0358": [
+      "Tu amigo dijo que ella no podía alcanzar la cima.",
+      "Your friend said that she couldn't reach the top."
+    ],
+    "S0359": [
+      "Tu amigo dijo que él podía girar a la izquierda.",
+      "Your friend said that he could turn left."
+    ],
+    "S0360": [
+      "¿Tu amigo dijo algo más?",
+      "Did your friend say anything else?"
+    ],
+    "S0361": [
+      "Él estaba callado.",
+      "He was quiet."
+    ],
+    "S0362": [
+      "No él estaba bastante callado después de que te fuiste.",
+      "No he was rather quiet after you left."
+    ],
+    "S0363": [
+      "Sí él tenía ganas de hablar mucho.",
+      "Yes he felt like talking a lot."
+    ],
+    "S0364": [
+      "Escuché que a él no le gustó ese lugar.",
+      "I heard that he didn't like that place."
+    ],
+    "S0365": [
+      "No escuché lo que ella le dijo a él.",
+      "I didn't hear what she said to him."
+    ],
+    "S0366": [
+      "¿Escuchaste lo que él quería cultivar?",
+      "Did you hear what he wanted to grow?"
+    ],
+    "S0367": [
+      "No nadie me dijo.",
+      "No nobody told me."
+    ]
+  },
+  "legos": {
+    "S0368L01": {
+      "lego": [
+        "Yes",
+        "Sí"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0368L01",
+        "seed_context": {
+          "target": "Sí escuché que él quería cultivar tomates.",
+          "known": "Yes I heard that he wanted to grow tomatoes."
+        }
+      }
+    },
+    "S0368L02": {
+      "lego": [
+        "I heard that",
+        "escuché que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0368L02",
+        "seed_context": {
+          "target": "Sí escuché que él quería cultivar tomates.",
+          "known": "Yes I heard that he wanted to grow tomatoes."
+        }
+      },
+      "components": [
+        [
+          "escuché",
+          "I heard"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0368L03": {
+      "lego": [
+        "he wanted to grow tomatoes",
+        "él quería cultivar tomates"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ],
+        [
+          "I heard that",
+          "escuché que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0368L03",
+        "seed_context": {
+          "target": "Sí escuché que él quería cultivar tomates.",
+          "known": "Yes I heard that he wanted to grow tomatoes."
+        }
+      },
+      "components": [
+        [
+          "él",
+          "he"
+        ],
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "cultivar",
+          "to grow"
+        ],
+        [
+          "tomates",
+          "tomatoes"
+        ]
+      ]
+    },
+    "S0368L04": {
+      "lego": [
+        "wanted to grow tomatoes",
+        "quería cultivar tomates"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ],
+        [
+          "I heard that",
+          "escuché que"
+        ],
+        [
+          "he wanted to grow tomatoes",
+          "él quería cultivar tomates"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0368L04",
+        "seed_context": {
+          "target": "Sí escuché que él quería cultivar tomates.",
+          "known": "Yes I heard that he wanted to grow tomatoes."
+        }
+      },
+      "components": [
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "cultivar",
+          "to grow"
+        ],
+        [
+          "tomates",
+          "tomatoes"
+        ]
+      ]
+    },
+    "S0368L05": {
+      "lego": [
+        "grow tomatoes",
+        "cultivar tomates"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ],
+        [
+          "I heard that",
+          "escuché que"
+        ],
+        [
+          "he wanted to grow tomatoes",
+          "él quería cultivar tomates"
+        ],
+        [
+          "wanted to grow tomatoes",
+          "quería cultivar tomates"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0368L05",
+        "seed_context": {
+          "target": "Sí escuché que él quería cultivar tomates.",
+          "known": "Yes I heard that he wanted to grow tomatoes."
+        }
+      },
+      "components": [
+        [
+          "cultivar",
+          "grow"
+        ],
+        [
+          "tomates",
+          "tomatoes"
+        ]
+      ]
+    },
+    "S0368L06": {
+      "lego": [
+        "tomatoes",
+        "tomates"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ],
+        [
+          "I heard that",
+          "escuché que"
+        ],
+        [
+          "he wanted to grow tomatoes",
+          "él quería cultivar tomates"
+        ],
+        [
+          "wanted to grow tomatoes",
+          "quería cultivar tomates"
+        ],
+        [
+          "grow tomatoes",
+          "cultivar tomates"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0368L06",
+        "seed_context": {
+          "target": "Sí escuché que él quería cultivar tomates.",
+          "known": "Yes I heard that he wanted to grow tomatoes."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0368.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

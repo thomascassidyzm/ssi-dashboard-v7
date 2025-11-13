@@ -1,0 +1,306 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0206",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Disfruto la oportunidad de practicar hablar contigo",
+    "known": "I enjoy the chance to practise speaking with you."
+  },
+  "recent_seed_pairs": {
+    "S0196": [
+      "¿Has oído la última idea?",
+      "Have you heard the latest idea?"
+    ],
+    "S0197": [
+      "Mi hijo trabaja como profesor.",
+      "My son works as a teacher."
+    ],
+    "S0198": [
+      "Mi hija trabaja para el consejo.",
+      "My daughter works for the council."
+    ],
+    "S0199": [
+      "Mi amigo solía trabajar en una oficina.",
+      "My friend used to work in an office."
+    ],
+    "S0200": [
+      "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+      "They say they want to make sure that we finish everything in time."
+    ],
+    "S0201": [
+      "Queríamos saber qué iba a pasar",
+      "We wanted to know what was going to happen."
+    ],
+    "S0202": [
+      "Nadie estaba seguro de cómo responder la pregunta",
+      "Nobody was sure how to answer the question."
+    ],
+    "S0203": [
+      "¿Qué harías si te pidiera que me ayudaras?",
+      "What would you do if I asked you to help me?"
+    ],
+    "S0204": [
+      "Quería que ella te ayudara a tratar con los arreglos",
+      "I wanted her to help you to deal with the arrangements."
+    ],
+    "S0205": [
+      "He olvidado la palabra que estaba intentando decir",
+      "I've forgotten the word I was trying to say."
+    ]
+  },
+  "legos": {
+    "S0206L01": {
+      "lego": [
+        "I enjoy",
+        "disfruto"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0206L01",
+        "seed_context": {
+          "target": "Disfruto la oportunidad de practicar hablar contigo",
+          "known": "I enjoy the chance to practise speaking with you."
+        }
+      }
+    },
+    "S0206L02": {
+      "lego": [
+        "the chance",
+        "la oportunidad"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I enjoy",
+          "disfruto"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0206L02",
+        "seed_context": {
+          "target": "Disfruto la oportunidad de practicar hablar contigo",
+          "known": "I enjoy the chance to practise speaking with you."
+        }
+      }
+    },
+    "S0206L03": {
+      "lego": [
+        "to practise speaking",
+        "de practicar hablar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I enjoy",
+          "disfruto"
+        ],
+        [
+          "the chance",
+          "la oportunidad"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0206L03",
+        "seed_context": {
+          "target": "Disfruto la oportunidad de practicar hablar contigo",
+          "known": "I enjoy the chance to practise speaking with you."
+        }
+      },
+      "components": [
+        [
+          "de",
+          "to"
+        ],
+        [
+          "practicar",
+          "practise"
+        ],
+        [
+          "hablar",
+          "speaking"
+        ]
+      ]
+    },
+    "S0206L04": {
+      "lego": [
+        "practise speaking",
+        "practicar hablar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I enjoy",
+          "disfruto"
+        ],
+        [
+          "the chance",
+          "la oportunidad"
+        ],
+        [
+          "to practise speaking",
+          "de practicar hablar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0206L04",
+        "seed_context": {
+          "target": "Disfruto la oportunidad de practicar hablar contigo",
+          "known": "I enjoy the chance to practise speaking with you."
+        }
+      },
+      "components": [
+        [
+          "practicar",
+          "practise"
+        ],
+        [
+          "hablar",
+          "speaking"
+        ]
+      ]
+    },
+    "S0206L05": {
+      "lego": [
+        "speaking with you",
+        "hablar contigo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I enjoy",
+          "disfruto"
+        ],
+        [
+          "the chance",
+          "la oportunidad"
+        ],
+        [
+          "to practise speaking",
+          "de practicar hablar"
+        ],
+        [
+          "practise speaking",
+          "practicar hablar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0206L05",
+        "seed_context": {
+          "target": "Disfruto la oportunidad de practicar hablar contigo",
+          "known": "I enjoy the chance to practise speaking with you."
+        }
+      },
+      "components": [
+        [
+          "hablar",
+          "speaking"
+        ],
+        [
+          "contigo",
+          "with you"
+        ]
+      ]
+    },
+    "S0206L06": {
+      "lego": [
+        "with you",
+        "contigo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I enjoy",
+          "disfruto"
+        ],
+        [
+          "the chance",
+          "la oportunidad"
+        ],
+        [
+          "to practise speaking",
+          "de practicar hablar"
+        ],
+        [
+          "practise speaking",
+          "practicar hablar"
+        ],
+        [
+          "speaking with you",
+          "hablar contigo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0206L06",
+        "seed_context": {
+          "target": "Disfruto la oportunidad de practicar hablar contigo",
+          "known": "I enjoy the chance to practise speaking with you."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0206.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

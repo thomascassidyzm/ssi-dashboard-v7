@@ -1,0 +1,280 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0107",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Esperábamos ver lo que estabas haciendo",
+    "known": "We hoped to see what you were doing."
+  },
+  "recent_seed_pairs": {
+    "S0097": [
+      "Sí, estoy preparado para ir tan pronto como quieras.",
+      "Yes I'm ready to go as soon as you want."
+    ],
+    "S0098": [
+      "Debería considerar jugar otra cosa.",
+      "I should consider playing something else."
+    ],
+    "S0099": [
+      "Deberías preguntarte por qué no está trabajando",
+      "You should ask yourself why it's not working."
+    ],
+    "S0100": [
+      "No deberías preocuparte por hacer algo similar",
+      "You shouldn't worry about doing something similar."
+    ],
+    "S0101": [
+      "Estoy disfrutando descubrir más sobre este lenguaje",
+      "I'm enjoying finding out more about this language."
+    ],
+    "S0102": [
+      "Estamos intentando decir que no es así",
+      "We're trying to say that it's not like that."
+    ],
+    "S0103": [
+      "No estamos intentando oír muchas más palabras",
+      "We're not trying to hear many more words."
+    ],
+    "S0104": [
+      "Necesitamos cambiar lo que estamos haciendo",
+      "We need to change what we're doing."
+    ],
+    "S0105": [
+      "Por eso no sabía la respuesta",
+      "That is why he didn't know the answer."
+    ],
+    "S0106": [
+      "No necesitamos sentirnos felices, solo necesitamos trabajar duro",
+      "We don't need to feel happy, we just need to work hard."
+    ]
+  },
+  "legos": {
+    "S0107L01": {
+      "lego": [
+        "we hoped",
+        "esperábamos"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0107L01",
+        "seed_context": {
+          "target": "Esperábamos ver lo que estabas haciendo",
+          "known": "We hoped to see what you were doing."
+        }
+      }
+    },
+    "S0107L02": {
+      "lego": [
+        "we hoped to see",
+        "esperábamos ver"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we hoped",
+          "esperábamos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0107L02",
+        "seed_context": {
+          "target": "Esperábamos ver lo que estabas haciendo",
+          "known": "We hoped to see what you were doing."
+        }
+      },
+      "components": [
+        [
+          "esperábamos",
+          "we hoped"
+        ],
+        [
+          "ver",
+          "to see"
+        ]
+      ]
+    },
+    "S0107L03": {
+      "lego": [
+        "to see what you were doing",
+        "ver lo que estabas haciendo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we hoped",
+          "esperábamos"
+        ],
+        [
+          "we hoped to see",
+          "esperábamos ver"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0107L03",
+        "seed_context": {
+          "target": "Esperábamos ver lo que estabas haciendo",
+          "known": "We hoped to see what you were doing."
+        }
+      },
+      "components": [
+        [
+          "ver",
+          "to see"
+        ],
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "estabas",
+          "you were"
+        ],
+        [
+          "haciendo",
+          "doing"
+        ]
+      ]
+    },
+    "S0107L04": {
+      "lego": [
+        "what you were doing",
+        "lo que estabas haciendo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we hoped",
+          "esperábamos"
+        ],
+        [
+          "we hoped to see",
+          "esperábamos ver"
+        ],
+        [
+          "to see what you were doing",
+          "ver lo que estabas haciendo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0107L04",
+        "seed_context": {
+          "target": "Esperábamos ver lo que estabas haciendo",
+          "known": "We hoped to see what you were doing."
+        }
+      },
+      "components": [
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "estabas",
+          "you were"
+        ],
+        [
+          "haciendo",
+          "doing"
+        ]
+      ]
+    },
+    "S0107L05": {
+      "lego": [
+        "you were doing",
+        "estabas haciendo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we hoped",
+          "esperábamos"
+        ],
+        [
+          "we hoped to see",
+          "esperábamos ver"
+        ],
+        [
+          "to see what you were doing",
+          "ver lo que estabas haciendo"
+        ],
+        [
+          "what you were doing",
+          "lo que estabas haciendo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0107L05",
+        "seed_context": {
+          "target": "Esperábamos ver lo que estabas haciendo",
+          "known": "We hoped to see what you were doing."
+        }
+      },
+      "components": [
+        [
+          "estabas",
+          "you were"
+        ],
+        [
+          "haciendo",
+          "doing"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0107.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

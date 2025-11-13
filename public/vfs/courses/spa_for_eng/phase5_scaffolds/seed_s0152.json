@@ -1,0 +1,320 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0152",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Lo habría hecho diferentemente si hubiera sabido lo que querías.",
+    "known": "I would have done it differently if I had known what you wanted."
+  },
+  "recent_seed_pairs": {
+    "S0142": [
+      "Eso es muy amable de tu parte y estoy agradecido a ti por ayudar.",
+      "That's very kind of you and I'm grateful to you for helping."
+    ],
+    "S0143": [
+      "Es la misma cosa de la que estábamos hablando antes.",
+      "It's the same thing as we were talking about earlier."
+    ],
+    "S0144": [
+      "Me desperté más temprano de lo que quería esta mañana.",
+      "I woke earlier than I wanted to this morning."
+    ],
+    "S0145": [
+      "¿Por qué no estás feliz ya?",
+      "Why are you not happy any more?"
+    ],
+    "S0146": [
+      "Nada parece estar funcionando desde que intentamos arreglarlo.",
+      "Nothing seems to be working since we tried to fix it."
+    ],
+    "S0147": [
+      "Ella era muy amable cuando me vio sintiéndome nervioso.",
+      "She was very kind when she saw me feeling nervous."
+    ],
+    "S0148": [
+      "Él no era muy paciente cuando no pude responder.",
+      "He wasn't very patient when I couldn't answer."
+    ],
+    "S0149": [
+      "Esto no es muy difícil, entonces espero que termines pronto.",
+      "This isn't very difficult, so I hope you'll finish soon."
+    ],
+    "S0150": [
+      "¿Puedes decirme cuál es tu nombre?",
+      "Can you tell me what your name is?"
+    ],
+    "S0151": [
+      "Eso no era lo que estaba esperando que pasara.",
+      "That wasn't what I was hoping would happen."
+    ]
+  },
+  "legos": {
+    "S0152L01": {
+      "lego": [
+        "I would have done it",
+        "lo habría hecho"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0152L01",
+        "seed_context": {
+          "target": "Lo habría hecho diferentemente si hubiera sabido lo que querías.",
+          "known": "I would have done it differently if I had known what you wanted."
+        }
+      },
+      "components": [
+        [
+          "lo",
+          "it"
+        ],
+        [
+          "habría",
+          "would have"
+        ],
+        [
+          "hecho",
+          "done"
+        ]
+      ]
+    },
+    "S0152L02": {
+      "lego": [
+        "differently",
+        "diferentemente"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I would have done it",
+          "lo habría hecho"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0152L02",
+        "seed_context": {
+          "target": "Lo habría hecho diferentemente si hubiera sabido lo que querías.",
+          "known": "I would have done it differently if I had known what you wanted."
+        }
+      }
+    },
+    "S0152L03": {
+      "lego": [
+        "if I had known",
+        "si hubiera sabido"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I would have done it",
+          "lo habría hecho"
+        ],
+        [
+          "differently",
+          "diferentemente"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0152L03",
+        "seed_context": {
+          "target": "Lo habría hecho diferentemente si hubiera sabido lo que querías.",
+          "known": "I would have done it differently if I had known what you wanted."
+        }
+      },
+      "components": [
+        [
+          "si",
+          "if"
+        ],
+        [
+          "hubiera",
+          "had"
+        ],
+        [
+          "sabido",
+          "known"
+        ]
+      ]
+    },
+    "S0152L04": {
+      "lego": [
+        "what",
+        "lo que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I would have done it",
+          "lo habría hecho"
+        ],
+        [
+          "differently",
+          "diferentemente"
+        ],
+        [
+          "if I had known",
+          "si hubiera sabido"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0152L04",
+        "seed_context": {
+          "target": "Lo habría hecho diferentemente si hubiera sabido lo que querías.",
+          "known": "I would have done it differently if I had known what you wanted."
+        }
+      },
+      "components": [
+        [
+          "lo",
+          "the"
+        ],
+        [
+          "que",
+          "that/what"
+        ]
+      ]
+    },
+    "S0152L05": {
+      "lego": [
+        "you wanted",
+        "querías"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I would have done it",
+          "lo habría hecho"
+        ],
+        [
+          "differently",
+          "diferentemente"
+        ],
+        [
+          "if I had known",
+          "si hubiera sabido"
+        ],
+        [
+          "what",
+          "lo que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0152L05",
+        "seed_context": {
+          "target": "Lo habría hecho diferentemente si hubiera sabido lo que querías.",
+          "known": "I would have done it differently if I had known what you wanted."
+        }
+      }
+    },
+    "S0152L06": {
+      "lego": [
+        "what you wanted",
+        "lo que querías"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I would have done it",
+          "lo habría hecho"
+        ],
+        [
+          "differently",
+          "diferentemente"
+        ],
+        [
+          "if I had known",
+          "si hubiera sabido"
+        ],
+        [
+          "what",
+          "lo que"
+        ],
+        [
+          "you wanted",
+          "querías"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0152L06",
+        "seed_context": {
+          "target": "Lo habría hecho diferentemente si hubiera sabido lo que querías.",
+          "known": "I would have done it differently if I had known what you wanted."
+        }
+      },
+      "components": [
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "querías",
+          "you wanted"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0152.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

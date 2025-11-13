@@ -1,0 +1,244 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0323",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Él dijo que no necesita caminar a la escuela.",
+    "known": "He said that he doesn't need to walk to school."
+  },
+  "recent_seed_pairs": {
+    "S0313": [
+      "Él dijo que no podría ver todos los cinco juegos.",
+      "He said that he couldn't watch all five games."
+    ],
+    "S0314": [
+      "Pienso que ella podría ponerlo en la mesa.",
+      "I think that she could put it on the table."
+    ],
+    "S0315": [
+      "Pienso que no podría permitirse el coche que quería.",
+      "I think that he couldn't afford the car that he wanted."
+    ],
+    "S0316": [
+      "¿Crees que ella podría traer a su hermano el lunes?",
+      "Do you think that she could bring her brother on Monday?"
+    ],
+    "S0317": [
+      "Sí pienso que podría si quisiera.",
+      "Yes I think she could if she wanted to."
+    ],
+    "S0318": [
+      "No, no creo que pudiera esta vez.",
+      "No I don't think she could this time."
+    ],
+    "S0319": [
+      "Ella necesita mudarse a un país diferente.",
+      "She needs to move to a different country."
+    ],
+    "S0320": [
+      "Él no necesita comprar otra televisión este año.",
+      "He doesn't need to buy another television this year."
+    ],
+    "S0321": [
+      "Un libro.",
+      "A book."
+    ],
+    "S0322": [
+      "Ella dijo que necesita leer el mismo libro.",
+      "She said that she needs to read the same book."
+    ]
+  },
+  "legos": {
+    "S0323L01": {
+      "lego": [
+        "he said that",
+        "él dijo que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0323L01",
+        "seed_context": {
+          "target": "Él dijo que no necesita caminar a la escuela.",
+          "known": "He said that he doesn't need to walk to school."
+        }
+      },
+      "components": [
+        [
+          "él",
+          "he"
+        ],
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0323L02": {
+      "lego": [
+        "that (he) doesn't need",
+        "que no necesita"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "he said that",
+          "él dijo que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0323L02",
+        "seed_context": {
+          "target": "Él dijo que no necesita caminar a la escuela.",
+          "known": "He said that he doesn't need to walk to school."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "no",
+          "doesn't/not"
+        ],
+        [
+          "necesita",
+          "need"
+        ]
+      ]
+    },
+    "S0323L03": {
+      "lego": [
+        "doesn't need to walk",
+        "no necesita caminar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "he said that",
+          "él dijo que"
+        ],
+        [
+          "that (he) doesn't need",
+          "que no necesita"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0323L03",
+        "seed_context": {
+          "target": "Él dijo que no necesita caminar a la escuela.",
+          "known": "He said that he doesn't need to walk to school."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "doesn't"
+        ],
+        [
+          "necesita",
+          "need"
+        ],
+        [
+          "caminar",
+          "to walk"
+        ]
+      ]
+    },
+    "S0323L04": {
+      "lego": [
+        "to school",
+        "a la escuela"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "he said that",
+          "él dijo que"
+        ],
+        [
+          "that (he) doesn't need",
+          "que no necesita"
+        ],
+        [
+          "doesn't need to walk",
+          "no necesita caminar"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0323L04",
+        "seed_context": {
+          "target": "Él dijo que no necesita caminar a la escuela.",
+          "known": "He said that he doesn't need to walk to school."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "escuela",
+          "school"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0323.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0398",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Queremos volvernos más pacientes con nuestros niños.",
+    "known": "We want to become more patient with our children."
+  },
+  "recent_seed_pairs": {
+    "S0388": [
+      "Esa persona con la que trabajas.",
+      "That person you work with."
+    ],
+    "S0389": [
+      "Esa persona allí.",
+      "That person over there."
+    ],
+    "S0390": [
+      "La que está de pie cerca de la entrada.",
+      "The one who is standing near the entrance."
+    ],
+    "S0391": [
+      "La que está caminando hacia el autobús.",
+      "The one who is walking towards the bus."
+    ],
+    "S0392": [
+      "Ese niño con el pelo negro enfrente de la oficina de correos.",
+      "That child with the black hair opposite the post office."
+    ],
+    "S0393": [
+      "Ese niño con la camisa verde.",
+      "That boy with the green shirt."
+    ],
+    "S0394": [
+      "Esa niña con el vestido amarillo.",
+      "That girl with the yellow dress."
+    ],
+    "S0395": [
+      "Necesitamos girar a la izquierda en la próxima esquina.",
+      "We need to turn left at the next corner."
+    ],
+    "S0396": [
+      "No necesitamos estar de pie hasta que todos los demás estén preparados.",
+      "We don't need to stand until everybody else is ready."
+    ],
+    "S0397": [
+      "¿Necesitamos prepararnos pronto?",
+      "Do we need to get ready soon?"
+    ]
+  },
+  "legos": {
+    "S0398L01": {
+      "lego": [
+        "we want to become",
+        "queremos volvernos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0398L01",
+        "seed_context": {
+          "target": "Queremos volvernos más pacientes con nuestros niños.",
+          "known": "We want to become more patient with our children."
+        }
+      },
+      "components": [
+        [
+          "queremos",
+          "we want"
+        ],
+        [
+          "volvernos",
+          "to become/turn ourselves"
+        ]
+      ]
+    },
+    "S0398L02": {
+      "lego": [
+        "to become more patient",
+        "volvernos más pacientes"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we want to become",
+          "queremos volvernos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0398L02",
+        "seed_context": {
+          "target": "Queremos volvernos más pacientes con nuestros niños.",
+          "known": "We want to become more patient with our children."
+        }
+      },
+      "components": [
+        [
+          "volvernos",
+          "to become"
+        ],
+        [
+          "más",
+          "more"
+        ],
+        [
+          "pacientes",
+          "patient"
+        ]
+      ]
+    },
+    "S0398L03": {
+      "lego": [
+        "more patient",
+        "más pacientes"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we want to become",
+          "queremos volvernos"
+        ],
+        [
+          "to become more patient",
+          "volvernos más pacientes"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0398L03",
+        "seed_context": {
+          "target": "Queremos volvernos más pacientes con nuestros niños.",
+          "known": "We want to become more patient with our children."
+        }
+      },
+      "components": [
+        [
+          "más",
+          "more"
+        ],
+        [
+          "pacientes",
+          "patient"
+        ]
+      ]
+    },
+    "S0398L04": {
+      "lego": [
+        "with our children",
+        "con nuestros niños"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we want to become",
+          "queremos volvernos"
+        ],
+        [
+          "to become more patient",
+          "volvernos más pacientes"
+        ],
+        [
+          "more patient",
+          "más pacientes"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0398L04",
+        "seed_context": {
+          "target": "Queremos volvernos más pacientes con nuestros niños.",
+          "known": "We want to become more patient with our children."
+        }
+      },
+      "components": [
+        [
+          "con",
+          "with"
+        ],
+        [
+          "nuestros",
+          "our"
+        ],
+        [
+          "niños",
+          "children"
+        ]
+      ]
+    },
+    "S0398L05": {
+      "lego": [
+        "our children",
+        "nuestros niños"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we want to become",
+          "queremos volvernos"
+        ],
+        [
+          "to become more patient",
+          "volvernos más pacientes"
+        ],
+        [
+          "more patient",
+          "más pacientes"
+        ],
+        [
+          "with our children",
+          "con nuestros niños"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0398L05",
+        "seed_context": {
+          "target": "Queremos volvernos más pacientes con nuestros niños.",
+          "known": "We want to become more patient with our children."
+        }
+      },
+      "components": [
+        [
+          "nuestros",
+          "our"
+        ],
+        [
+          "niños",
+          "children"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0398.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

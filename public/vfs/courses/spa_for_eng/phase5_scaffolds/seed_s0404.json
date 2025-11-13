@@ -1,0 +1,320 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0404",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "We shouldn't expect to finish before Thursday.",
+    "known": "No deberíamos esperar terminar antes del jueves."
+  },
+  "recent_seed_pairs": {
+    "S0394": [
+      "Esa niña con el vestido amarillo.",
+      "That girl with the yellow dress."
+    ],
+    "S0395": [
+      "Necesitamos girar a la izquierda en la próxima esquina.",
+      "We need to turn left at the next corner."
+    ],
+    "S0396": [
+      "No necesitamos estar de pie hasta que todos los demás estén preparados.",
+      "We don't need to stand until everybody else is ready."
+    ],
+    "S0397": [
+      "¿Necesitamos prepararnos pronto?",
+      "Do we need to get ready soon?"
+    ],
+    "S0398": [
+      "Queremos volvernos más pacientes con nuestros niños.",
+      "We want to become more patient with our children."
+    ],
+    "S0399": [
+      "No queremos perder la esperanza.",
+      "We don't want to lose hope."
+    ],
+    "S0400": [
+      "¿Queremos comer algo más tarde?",
+      "Do we want to eat something later on?"
+    ],
+    "S0401": [
+      "No it would be better to go straight home.",
+      "No, sería mejor ir directamente a casa."
+    ],
+    "S0402": [
+      "Yes it would be nice to stop somewhere for food.",
+      "Sí, sería agradable parar en algún lugar para comida."
+    ],
+    "S0403": [
+      "We should remain quiet for as long as possible.",
+      "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+    ]
+  },
+  "legos": {
+    "S0404L01": {
+      "lego": [
+        "we shouldn't",
+        "no deberíamos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0404L01",
+        "seed_context": {
+          "target": "We shouldn't expect to finish before Thursday.",
+          "known": "No deberíamos esperar terminar antes del jueves."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "deberíamos",
+          "we should"
+        ]
+      ]
+    },
+    "S0404L02": {
+      "lego": [
+        "to expect",
+        "esperar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "we shouldn't",
+          "no deberíamos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0404L02",
+        "seed_context": {
+          "target": "We shouldn't expect to finish before Thursday.",
+          "known": "No deberíamos esperar terminar antes del jueves."
+        }
+      }
+    },
+    "S0404L03": {
+      "lego": [
+        "we shouldn't expect",
+        "no deberíamos esperar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we shouldn't",
+          "no deberíamos"
+        ],
+        [
+          "to expect",
+          "esperar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0404L03",
+        "seed_context": {
+          "target": "We shouldn't expect to finish before Thursday.",
+          "known": "No deberíamos esperar terminar antes del jueves."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "deberíamos",
+          "we should"
+        ],
+        [
+          "esperar",
+          "to expect"
+        ]
+      ]
+    },
+    "S0404L04": {
+      "lego": [
+        "to expect to finish",
+        "esperar terminar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we shouldn't",
+          "no deberíamos"
+        ],
+        [
+          "to expect",
+          "esperar"
+        ],
+        [
+          "we shouldn't expect",
+          "no deberíamos esperar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0404L04",
+        "seed_context": {
+          "target": "We shouldn't expect to finish before Thursday.",
+          "known": "No deberíamos esperar terminar antes del jueves."
+        }
+      },
+      "components": [
+        [
+          "esperar",
+          "to expect"
+        ],
+        [
+          "terminar",
+          "to finish"
+        ]
+      ]
+    },
+    "S0404L05": {
+      "lego": [
+        "to finish",
+        "terminar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "we shouldn't",
+          "no deberíamos"
+        ],
+        [
+          "to expect",
+          "esperar"
+        ],
+        [
+          "we shouldn't expect",
+          "no deberíamos esperar"
+        ],
+        [
+          "to expect to finish",
+          "esperar terminar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0404L05",
+        "seed_context": {
+          "target": "We shouldn't expect to finish before Thursday.",
+          "known": "No deberíamos esperar terminar antes del jueves."
+        }
+      }
+    },
+    "S0404L06": {
+      "lego": [
+        "before Thursday",
+        "antes del jueves"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we shouldn't",
+          "no deberíamos"
+        ],
+        [
+          "to expect",
+          "esperar"
+        ],
+        [
+          "we shouldn't expect",
+          "no deberíamos esperar"
+        ],
+        [
+          "to expect to finish",
+          "esperar terminar"
+        ],
+        [
+          "to finish",
+          "terminar"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0404L06",
+        "seed_context": {
+          "target": "We shouldn't expect to finish before Thursday.",
+          "known": "No deberíamos esperar terminar antes del jueves."
+        }
+      },
+      "components": [
+        [
+          "antes",
+          "before"
+        ],
+        [
+          "del",
+          "of the (de+el)"
+        ],
+        [
+          "jueves",
+          "Thursday"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0404.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,458 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0333",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+    "known": "She said that she can't spend much time with the group."
+  },
+  "recent_seed_pairs": {
+    "S0323": [
+      "Él dijo que no necesita caminar a la escuela.",
+      "He said that he doesn't need to walk to school."
+    ],
+    "S0324": [
+      "Esa estudiante tiene las dos manos arriba.",
+      "That student has both of her hands up."
+    ],
+    "S0325": [
+      "Creo que necesita considerar diez problemas posibles.",
+      "I think that he needs to consider ten possible problems."
+    ],
+    "S0326": [
+      "No creo que necesite vender la compañía.",
+      "I don't think that she needs to sell the company."
+    ],
+    "S0327": [
+      "¿Crees que necesita ofrecer otra manera?",
+      "Do you think that she needs to offer another way?"
+    ],
+    "S0328": [
+      "Sí pienso que debería.",
+      "Yes I think she ought to."
+    ],
+    "S0329": [
+      "Es importante.",
+      "It's important."
+    ],
+    "S0330": [
+      "No, no creo que sea muy importante.",
+      "No I don't think it's very important."
+    ],
+    "S0331": [
+      "Ella no puede proveer todas las respuestas.",
+      "She can't provide all the answers."
+    ],
+    "S0332": [
+      "Él puede construir una nueva vida para su hermana.",
+      "He can build a new life for his sister."
+    ]
+  },
+  "legos": {
+    "S0333L01": {
+      "lego": [
+        "she said",
+        "ella dijo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0333L01",
+        "seed_context": {
+          "target": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+          "known": "She said that she can't spend much time with the group."
+        }
+      },
+      "components": [
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "dijo",
+          "said"
+        ]
+      ]
+    },
+    "S0333L02": {
+      "lego": [
+        "said that",
+        "dijo que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0333L02",
+        "seed_context": {
+          "target": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+          "known": "She said that she can't spend much time with the group."
+        }
+      },
+      "components": [
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0333L03": {
+      "lego": [
+        "that she can't",
+        "que no puede"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0333L03",
+        "seed_context": {
+          "target": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+          "known": "She said that she can't spend much time with the group."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "no",
+          "not"
+        ],
+        [
+          "puede",
+          "can"
+        ]
+      ]
+    },
+    "S0333L04": {
+      "lego": [
+        "can't spend",
+        "no puede pasar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "that she can't",
+          "que no puede"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0333L04",
+        "seed_context": {
+          "target": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+          "known": "She said that she can't spend much time with the group."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "puede",
+          "can"
+        ],
+        [
+          "pasar",
+          "spend"
+        ]
+      ]
+    },
+    "S0333L05": {
+      "lego": [
+        "spend",
+        "pasar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "that she can't",
+          "que no puede"
+        ],
+        [
+          "can't spend",
+          "no puede pasar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0333L05",
+        "seed_context": {
+          "target": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+          "known": "She said that she can't spend much time with the group."
+        }
+      }
+    },
+    "S0333L06": {
+      "lego": [
+        "spend much time",
+        "pasar mucho tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "that she can't",
+          "que no puede"
+        ],
+        [
+          "can't spend",
+          "no puede pasar"
+        ],
+        [
+          "spend",
+          "pasar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0333L06",
+        "seed_context": {
+          "target": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+          "known": "She said that she can't spend much time with the group."
+        }
+      },
+      "components": [
+        [
+          "pasar",
+          "spend"
+        ],
+        [
+          "mucho",
+          "much"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0333L07": {
+      "lego": [
+        "much time",
+        "mucho tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "that she can't",
+          "que no puede"
+        ],
+        [
+          "can't spend",
+          "no puede pasar"
+        ],
+        [
+          "spend",
+          "pasar"
+        ],
+        [
+          "spend much time",
+          "pasar mucho tiempo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0333L07",
+        "seed_context": {
+          "target": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+          "known": "She said that she can't spend much time with the group."
+        }
+      },
+      "components": [
+        [
+          "mucho",
+          "much"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0333L08": {
+      "lego": [
+        "with the group",
+        "con el grupo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "that she can't",
+          "que no puede"
+        ],
+        [
+          "can't spend",
+          "no puede pasar"
+        ],
+        [
+          "spend",
+          "pasar"
+        ],
+        [
+          "spend much time",
+          "pasar mucho tiempo"
+        ],
+        [
+          "much time",
+          "mucho tiempo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0333L08",
+        "seed_context": {
+          "target": "Ella dijo que no puede pasar mucho tiempo con el grupo.",
+          "known": "She said that she can't spend much time with the group."
+        }
+      },
+      "components": [
+        [
+          "con",
+          "with"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "grupo",
+          "group"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0333.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 8,
+    "total_legos_in_seed": 8,
+    "phrases_to_generate": 96,
+    "recent_context_seeds": 10
+  }
+}

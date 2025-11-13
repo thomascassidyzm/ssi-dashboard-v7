@@ -1,0 +1,314 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0119",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Puedo preguntarte algo antes de que te vayas?",
+    "known": "Can I ask you something before you leave?"
+  },
+  "recent_seed_pairs": {
+    "S0109": [
+      "Debemos trabajar duro para aprender muchas palabras nuevas",
+      "We must work hard to learn a lot of new words."
+    ],
+    "S0110": [
+      "Somos amigos, y después de que terminemos me gustaría relajarme",
+      "We're friends, and after we finish I'd like to relax."
+    ],
+    "S0111": [
+      "Cuando aprendemos algo nuevo cambia nuestro cerebro",
+      "When we learn something new it changes our brain."
+    ],
+    "S0112": [
+      "Eso fue muy interesante, y no estaba esperándolo",
+      "That was very interesting, and I wasn't expecting it."
+    ],
+    "S0113": [
+      "¿Por qué no puedo recordar lo que dijiste?",
+      "Why can't I remember what you said?"
+    ],
+    "S0114": [
+      "Siento como si estuviera haciendo peor hoy que ayer.",
+      "I feel as if I'm doing worse today than yesterday."
+    ],
+    "S0115": [
+      "No siento como si estuviera preparado para tener una conversación.",
+      "I don't feel as if I'm ready to have a conversation."
+    ],
+    "S0116": [
+      "Esta no es la mejor opción que podría hacer.",
+      "This isn't the best choice I could make."
+    ],
+    "S0117": [
+      "Definitivamente lo estoy haciendo mejor que la última vez que hablamos.",
+      "I'm definitely doing better than I was last time..."
+    ],
+    "S0118": [
+      "Me siento mejor que como me sentía cuando estábamos en el pub.",
+      "I feel better than I felt when we were in the pub."
+    ]
+  },
+  "legos": {
+    "S0119L01": {
+      "lego": [
+        "can I",
+        "puedo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0119L01",
+        "seed_context": {
+          "target": "¿Puedo preguntarte algo antes de que te vayas?",
+          "known": "Can I ask you something before you leave?"
+        }
+      }
+    },
+    "S0119L02": {
+      "lego": [
+        "ask you",
+        "preguntarte"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "can I",
+          "puedo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0119L02",
+        "seed_context": {
+          "target": "¿Puedo preguntarte algo antes de que te vayas?",
+          "known": "Can I ask you something before you leave?"
+        }
+      }
+    },
+    "S0119L03": {
+      "lego": [
+        "something",
+        "algo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "can I",
+          "puedo"
+        ],
+        [
+          "ask you",
+          "preguntarte"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0119L03",
+        "seed_context": {
+          "target": "¿Puedo preguntarte algo antes de que te vayas?",
+          "known": "Can I ask you something before you leave?"
+        }
+      }
+    },
+    "S0119L04": {
+      "lego": [
+        "ask you something",
+        "preguntarte algo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "can I",
+          "puedo"
+        ],
+        [
+          "ask you",
+          "preguntarte"
+        ],
+        [
+          "something",
+          "algo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0119L04",
+        "seed_context": {
+          "target": "¿Puedo preguntarte algo antes de que te vayas?",
+          "known": "Can I ask you something before you leave?"
+        }
+      },
+      "components": [
+        [
+          "preguntarte",
+          "ask you"
+        ],
+        [
+          "algo",
+          "something"
+        ]
+      ]
+    },
+    "S0119L05": {
+      "lego": [
+        "can I ask you",
+        "puedo preguntarte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "can I",
+          "puedo"
+        ],
+        [
+          "ask you",
+          "preguntarte"
+        ],
+        [
+          "something",
+          "algo"
+        ],
+        [
+          "ask you something",
+          "preguntarte algo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0119L05",
+        "seed_context": {
+          "target": "¿Puedo preguntarte algo antes de que te vayas?",
+          "known": "Can I ask you something before you leave?"
+        }
+      },
+      "components": [
+        [
+          "puedo",
+          "can I"
+        ],
+        [
+          "preguntarte",
+          "ask you"
+        ]
+      ]
+    },
+    "S0119L06": {
+      "lego": [
+        "before you leave",
+        "antes de que te vayas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "can I",
+          "puedo"
+        ],
+        [
+          "ask you",
+          "preguntarte"
+        ],
+        [
+          "something",
+          "algo"
+        ],
+        [
+          "ask you something",
+          "preguntarte algo"
+        ],
+        [
+          "can I ask you",
+          "puedo preguntarte"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0119L06",
+        "seed_context": {
+          "target": "¿Puedo preguntarte algo antes de que te vayas?",
+          "known": "Can I ask you something before you leave?"
+        }
+      },
+      "components": [
+        [
+          "antes",
+          "before"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "te",
+          "yourself"
+        ],
+        [
+          "vayas",
+          "you leave"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0119.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

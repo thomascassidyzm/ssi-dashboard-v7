@@ -1,0 +1,316 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0055",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No disfruto despertarme cuando no dormí muy bien.",
+    "known": "I don't enjoy waking up when I didn't sleep very well."
+  },
+  "recent_seed_pairs": {
+    "S0045": [
+      "No necesito saber todo.",
+      "I don't need to know everything."
+    ],
+    "S0046": [
+      "Pero no me preocupo por hacer errores.",
+      "But I don't worry about making mistakes."
+    ],
+    "S0047": [
+      "Porque pienso que es una cosa buena hacer errores.",
+      "Because I think that it's a good thing to make mistakes."
+    ],
+    "S0048": [
+      "No me importa hacer errores.",
+      "I don't care about making mistakes."
+    ],
+    "S0049": [
+      "Es así, si sabes lo que quiero decir.",
+      "It's like this, if you know what I mean."
+    ],
+    "S0050": [
+      "No estoy intentando terminar lo más rápidamente posible.",
+      "I'm not trying to finish as quickly as possible."
+    ],
+    "S0051": [
+      "Disfruto hacer cosas interesantes con mis amigos.",
+      "I enjoy doing interesting things with my friends."
+    ],
+    "S0052": [
+      "Quería escribir una carta a su amigo la semana pasada.",
+      "He wanted to write a letter to his friend last week."
+    ],
+    "S0053": [
+      "Quería poner su carta en su bolsa.",
+      "She wanted to put his letter in her bag."
+    ],
+    "S0054": [
+      "Queríamos darte un poco más de tiempo.",
+      "We wanted to give you a little more time."
+    ]
+  },
+  "legos": {
+    "S0055L01": {
+      "lego": [
+        "I don't enjoy",
+        "no disfruto"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0055L01",
+        "seed_context": {
+          "target": "No disfruto despertarme cuando no dormí muy bien.",
+          "known": "I don't enjoy waking up when I didn't sleep very well."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "don't/not"
+        ],
+        [
+          "disfruto",
+          "I enjoy"
+        ]
+      ]
+    },
+    "S0055L02": {
+      "lego": [
+        "waking up",
+        "despertarme"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I don't enjoy",
+          "no disfruto"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0055L02",
+        "seed_context": {
+          "target": "No disfruto despertarme cuando no dormí muy bien.",
+          "known": "I don't enjoy waking up when I didn't sleep very well."
+        }
+      }
+    },
+    "S0055L03": {
+      "lego": [
+        "I don't enjoy waking up",
+        "no disfruto despertarme"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't enjoy",
+          "no disfruto"
+        ],
+        [
+          "waking up",
+          "despertarme"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0055L03",
+        "seed_context": {
+          "target": "No disfruto despertarme cuando no dormí muy bien.",
+          "known": "I don't enjoy waking up when I didn't sleep very well."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "don't"
+        ],
+        [
+          "disfruto",
+          "I enjoy"
+        ],
+        [
+          "despertarme",
+          "waking up"
+        ]
+      ]
+    },
+    "S0055L04": {
+      "lego": [
+        "when",
+        "cuando"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I don't enjoy",
+          "no disfruto"
+        ],
+        [
+          "waking up",
+          "despertarme"
+        ],
+        [
+          "I don't enjoy waking up",
+          "no disfruto despertarme"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0055L04",
+        "seed_context": {
+          "target": "No disfruto despertarme cuando no dormí muy bien.",
+          "known": "I don't enjoy waking up when I didn't sleep very well."
+        }
+      }
+    },
+    "S0055L05": {
+      "lego": [
+        "I didn't sleep",
+        "no dormí"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't enjoy",
+          "no disfruto"
+        ],
+        [
+          "waking up",
+          "despertarme"
+        ],
+        [
+          "I don't enjoy waking up",
+          "no disfruto despertarme"
+        ],
+        [
+          "when",
+          "cuando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0055L05",
+        "seed_context": {
+          "target": "No disfruto despertarme cuando no dormí muy bien.",
+          "known": "I don't enjoy waking up when I didn't sleep very well."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "didn't/not"
+        ],
+        [
+          "dormí",
+          "I slept"
+        ]
+      ]
+    },
+    "S0055L06": {
+      "lego": [
+        "very well",
+        "muy bien"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't enjoy",
+          "no disfruto"
+        ],
+        [
+          "waking up",
+          "despertarme"
+        ],
+        [
+          "I don't enjoy waking up",
+          "no disfruto despertarme"
+        ],
+        [
+          "when",
+          "cuando"
+        ],
+        [
+          "I didn't sleep",
+          "no dormí"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0055L06",
+        "seed_context": {
+          "target": "No disfruto despertarme cuando no dormí muy bien.",
+          "known": "I don't enjoy waking up when I didn't sleep very well."
+        }
+      },
+      "components": [
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "bien",
+          "well"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0055.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

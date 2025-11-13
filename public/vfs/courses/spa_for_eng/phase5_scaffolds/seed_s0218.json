@@ -1,0 +1,222 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0218",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No hice mucho el domingo.",
+    "known": "I didn't do much on Sunday."
+  },
+  "recent_seed_pairs": {
+    "S0208": [
+      "No quería preguntarte cómo decirlo",
+      "I didn't want to ask you how to say it."
+    ],
+    "S0209": [
+      "Quieren pasar más tiempo reuniéndose como grupo",
+      "They want to spend more time meeting as a group."
+    ],
+    "S0210": [
+      "Piensan que necesitamos discutir el problema",
+      "They think that we need to discuss the problem."
+    ],
+    "S0211": [
+      "Nos dijeron que no querían explicar.",
+      "They told us that they didn't want to explain."
+    ],
+    "S0212": [
+      "Querían pedir ayuda.",
+      "They wanted to ask for help."
+    ],
+    "S0213": [
+      "No sabemos qué están intentando lograr.",
+      "We don't know what they're trying to achieve."
+    ],
+    "S0214": [
+      "¿Pasaste un buen tiempo el fin de semana?",
+      "Did you have a good time at the weekend?"
+    ],
+    "S0215": [
+      "Salí el sábado por la noche.",
+      "I went out on Saturday night."
+    ],
+    "S0216": [
+      "Vi a algunos amigos.",
+      "I saw a few friends."
+    ],
+    "S0217": [
+      "Tuve un vaso o dos de agua.",
+      "I had a glass or two of water."
+    ]
+  },
+  "legos": {
+    "S0218L01": {
+      "lego": [
+        "I didn't do",
+        "no hice"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0218L01",
+        "seed_context": {
+          "target": "No hice mucho el domingo.",
+          "known": "I didn't do much on Sunday."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "didn't/not"
+        ],
+        [
+          "hice",
+          "I did/do"
+        ]
+      ]
+    },
+    "S0218L02": {
+      "lego": [
+        "much",
+        "mucho"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I didn't do",
+          "no hice"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0218L02",
+        "seed_context": {
+          "target": "No hice mucho el domingo.",
+          "known": "I didn't do much on Sunday."
+        }
+      }
+    },
+    "S0218L03": {
+      "lego": [
+        "on Sunday",
+        "el domingo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I didn't do",
+          "no hice"
+        ],
+        [
+          "much",
+          "mucho"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0218L03",
+        "seed_context": {
+          "target": "No hice mucho el domingo.",
+          "known": "I didn't do much on Sunday."
+        }
+      },
+      "components": [
+        [
+          "el",
+          "on/the"
+        ],
+        [
+          "domingo",
+          "Sunday"
+        ]
+      ]
+    },
+    "S0218L04": {
+      "lego": [
+        "I didn't do much",
+        "no hice mucho"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I didn't do",
+          "no hice"
+        ],
+        [
+          "much",
+          "mucho"
+        ],
+        [
+          "on Sunday",
+          "el domingo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0218L04",
+        "seed_context": {
+          "target": "No hice mucho el domingo.",
+          "known": "I didn't do much on Sunday."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "didn't/not"
+        ],
+        [
+          "hice",
+          "I did/do"
+        ],
+        [
+          "mucho",
+          "much"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0218.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

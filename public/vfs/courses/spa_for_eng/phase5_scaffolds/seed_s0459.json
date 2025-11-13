@@ -1,0 +1,198 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0459",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No estaba enfrente de la señal azul.",
+    "known": "It wasn't in front of the blue sign."
+  },
+  "recent_seed_pairs": {
+    "S0449": [
+      "Ellos dijeron que estaban casi preparados.",
+      "They said that they were almost ready."
+    ],
+    "S0450": [
+      "No ellos tienen que tomar el tren ellos mismos.",
+      "No they have to catch the train themselves."
+    ],
+    "S0451": [
+      "Ellos dijeron lo que querían hacer.",
+      "They said what they wanted to do."
+    ],
+    "S0452": [
+      "Ellos no dijeron lo que querían hacer.",
+      "They didn't say what they wanted to do."
+    ],
+    "S0453": [
+      "¿Dijeron quién vieron anoche?",
+      "Did they say who they saw last night?"
+    ],
+    "S0454": [
+      "Nuestros amigos vinieron como a las seis.",
+      "Our friends came round at about six o'clock."
+    ],
+    "S0455": [
+      "Tuvimos que irnos porque los niños estaban cansados.",
+      "We had to leave because the children were tired."
+    ],
+    "S0456": [
+      "Puede que esté allí pero no es muy probable.",
+      "He might be there but it's not very likely."
+    ],
+    "S0457": [
+      "Parte del problema es el número de áreas diferentes.",
+      "Part of the problem is the number of different areas."
+    ],
+    "S0458": [
+      "Todo era mucho más fácil en el pasado.",
+      "It was all much easier in the past."
+    ]
+  },
+  "legos": {
+    "S0459L01": {
+      "lego": [
+        "it wasn't",
+        "no estaba"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0459L01",
+        "seed_context": {
+          "target": "No estaba enfrente de la señal azul.",
+          "known": "It wasn't in front of the blue sign."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "estaba",
+          "wasn't/was"
+        ]
+      ]
+    },
+    "S0459L02": {
+      "lego": [
+        "in front of the blue sign",
+        "enfrente de la señal azul"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it wasn't",
+          "no estaba"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0459L02",
+        "seed_context": {
+          "target": "No estaba enfrente de la señal azul.",
+          "known": "It wasn't in front of the blue sign."
+        }
+      },
+      "components": [
+        [
+          "enfrente",
+          "in front"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "señal",
+          "sign"
+        ],
+        [
+          "azul",
+          "blue"
+        ]
+      ]
+    },
+    "S0459L03": {
+      "lego": [
+        "the blue sign",
+        "la señal azul"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it wasn't",
+          "no estaba"
+        ],
+        [
+          "in front of the blue sign",
+          "enfrente de la señal azul"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0459L03",
+        "seed_context": {
+          "target": "No estaba enfrente de la señal azul.",
+          "known": "It wasn't in front of the blue sign."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "señal",
+          "sign"
+        ],
+        [
+          "azul",
+          "blue"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0459.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

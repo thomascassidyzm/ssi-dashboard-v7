@@ -1,0 +1,222 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0145",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Por qué no estás feliz ya?",
+    "known": "Why are you not happy any more?"
+  },
+  "recent_seed_pairs": {
+    "S0135": [
+      "No sé por qué piensas que es tan bueno.",
+      "I don't know why you think that it's so good."
+    ],
+    "S0136": [
+      "Por supuesto que puedes preguntarle porque es mi amiga.",
+      "Of course you can ask her because she's my friend."
+    ],
+    "S0137": [
+      "Es más importante hablar frecuentemente que ser perfecto.",
+      "It's more important to talk often than to be perfect."
+    ],
+    "S0138": [
+      "Esto era donde mi amigo quería reunirse con nosotros.",
+      "This was where my friend wanted to meet us."
+    ],
+    "S0139": [
+      "Lo siento que necesito irme tan temprano.",
+      "I'm sorry that I need to leave so early."
+    ],
+    "S0140": [
+      "Lo siento que no puedo ver lo que estás intentando mostrarme.",
+      "I'm sorry that I can't see what you're trying to show me."
+    ],
+    "S0141": [
+      "No hay problema. Todo está bien.",
+      "No problem. Everything is okay."
+    ],
+    "S0142": [
+      "Eso es muy amable de tu parte y estoy agradecido a ti por ayudar.",
+      "That's very kind of you and I'm grateful to you for helping."
+    ],
+    "S0143": [
+      "Es la misma cosa de la que estábamos hablando antes.",
+      "It's the same thing as we were talking about earlier."
+    ],
+    "S0144": [
+      "Me desperté más temprano de lo que quería esta mañana.",
+      "I woke earlier than I wanted to this morning."
+    ]
+  },
+  "legos": {
+    "S0145L01": {
+      "lego": [
+        "Why",
+        "¿Por qué"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0145L01",
+        "seed_context": {
+          "target": "¿Por qué no estás feliz ya?",
+          "known": "Why are you not happy any more?"
+        }
+      },
+      "components": [
+        [
+          "¿Por",
+          "Why"
+        ],
+        [
+          "qué",
+          "(question marker)"
+        ]
+      ]
+    },
+    "S0145L02": {
+      "lego": [
+        "you are not happy",
+        "no estás feliz"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Why",
+          "¿Por qué"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0145L02",
+        "seed_context": {
+          "target": "¿Por qué no estás feliz ya?",
+          "known": "Why are you not happy any more?"
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "estás",
+          "you are"
+        ],
+        [
+          "feliz",
+          "happy"
+        ]
+      ]
+    },
+    "S0145L03": {
+      "lego": [
+        "you are happy",
+        "estás feliz"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Why",
+          "¿Por qué"
+        ],
+        [
+          "you are not happy",
+          "no estás feliz"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0145L03",
+        "seed_context": {
+          "target": "¿Por qué no estás feliz ya?",
+          "known": "Why are you not happy any more?"
+        }
+      },
+      "components": [
+        [
+          "estás",
+          "you are"
+        ],
+        [
+          "feliz",
+          "happy"
+        ]
+      ]
+    },
+    "S0145L04": {
+      "lego": [
+        "any more",
+        "ya"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "Why",
+          "¿Por qué"
+        ],
+        [
+          "you are not happy",
+          "no estás feliz"
+        ],
+        [
+          "you are happy",
+          "estás feliz"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0145L04",
+        "seed_context": {
+          "target": "¿Por qué no estás feliz ya?",
+          "known": "Why are you not happy any more?"
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0145.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

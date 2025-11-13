@@ -1,0 +1,186 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0124",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Creí que eso era una buena idea.",
+    "known": "I thought that was a good idea."
+  },
+  "recent_seed_pairs": {
+    "S0114": [
+      "Siento como si estuviera haciendo peor hoy que ayer.",
+      "I feel as if I'm doing worse today than yesterday."
+    ],
+    "S0115": [
+      "No siento como si estuviera preparado para tener una conversación.",
+      "I don't feel as if I'm ready to have a conversation."
+    ],
+    "S0116": [
+      "Esta no es la mejor opción que podría hacer.",
+      "This isn't the best choice I could make."
+    ],
+    "S0117": [
+      "Definitivamente lo estoy haciendo mejor que la última vez que hablamos.",
+      "I'm definitely doing better than I was last time..."
+    ],
+    "S0118": [
+      "Me siento mejor que como me sentía cuando estábamos en el pub.",
+      "I feel better than I felt when we were in the pub."
+    ],
+    "S0119": [
+      "¿Puedo preguntarte algo antes de que te vayas?",
+      "Can I ask you something before you leave?"
+    ],
+    "S0120": [
+      "Es interesante que te guste ir en autobús.",
+      "It's interesting that you like to go by bus."
+    ],
+    "S0121": [
+      "Es inusual que no te guste usar tu auto.",
+      "It's unusual that you don't like to use your car."
+    ],
+    "S0122": [
+      "Está empezando a sentirse más fácil y estoy entusiasmado por cómo va.",
+      "It's starting to feel easier and I'm excited about how it's going."
+    ],
+    "S0123": [
+      "Pienso que eso es una buena idea.",
+      "I think that's a good idea."
+    ]
+  },
+  "legos": {
+    "S0124L01": {
+      "lego": [
+        "I thought that",
+        "creí que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0124L01",
+        "seed_context": {
+          "target": "Creí que eso era una buena idea.",
+          "known": "I thought that was a good idea."
+        }
+      },
+      "components": [
+        [
+          "creí",
+          "I thought"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0124L02": {
+      "lego": [
+        "that was",
+        "eso era"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I thought that",
+          "creí que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0124L02",
+        "seed_context": {
+          "target": "Creí que eso era una buena idea.",
+          "known": "I thought that was a good idea."
+        }
+      },
+      "components": [
+        [
+          "eso",
+          "that"
+        ],
+        [
+          "era",
+          "was"
+        ]
+      ]
+    },
+    "S0124L03": {
+      "lego": [
+        "a good idea",
+        "una buena idea"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I thought that",
+          "creí que"
+        ],
+        [
+          "that was",
+          "eso era"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0124L03",
+        "seed_context": {
+          "target": "Creí que eso era una buena idea.",
+          "known": "I thought that was a good idea."
+        }
+      },
+      "components": [
+        [
+          "una",
+          "a"
+        ],
+        [
+          "buena",
+          "good"
+        ],
+        [
+          "idea",
+          "idea"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0124.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

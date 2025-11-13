@@ -1,0 +1,346 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0200",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+    "known": "They say they want to make sure that we finish everything in time."
+  },
+  "recent_seed_pairs": {
+    "S0190": [
+      "¿Te importa si te hago algunas preguntas?",
+      "Do you mind if I ask you some questions?"
+    ],
+    "S0191": [
+      "No, no me importa en absoluto.",
+      "No I don't mind at all."
+    ],
+    "S0192": [
+      "Estoy ocupado mañana por la noche.",
+      "I'm busy tomorrow night."
+    ],
+    "S0193": [
+      "Lo siento pero estoy demasiado ocupado hoy.",
+      "I'm sorry but I'm too busy today."
+    ],
+    "S0194": [
+      "¿Qué estás buscando?",
+      "What are you looking for?"
+    ],
+    "S0195": [
+      "Estoy intentando encontrar el dinero que dejé en la mesa.",
+      "I'm trying to find the money I left on the table."
+    ],
+    "S0196": [
+      "¿Has oído la última idea?",
+      "Have you heard the latest idea?"
+    ],
+    "S0197": [
+      "Mi hijo trabaja como profesor.",
+      "My son works as a teacher."
+    ],
+    "S0198": [
+      "Mi hija trabaja para el consejo.",
+      "My daughter works for the council."
+    ],
+    "S0199": [
+      "Mi amigo solía trabajar en una oficina.",
+      "My friend used to work in an office."
+    ]
+  },
+  "legos": {
+    "S0200L01": {
+      "lego": [
+        "They say that",
+        "Dicen que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0200L01",
+        "seed_context": {
+          "target": "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+          "known": "They say they want to make sure that we finish everything in time."
+        }
+      },
+      "components": [
+        [
+          "Dicen",
+          "They say"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0200L02": {
+      "lego": [
+        "they want to make sure that we finish",
+        "quieren asegurarse de que terminemos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "They say that",
+          "Dicen que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0200L02",
+        "seed_context": {
+          "target": "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+          "known": "They say they want to make sure that we finish everything in time."
+        }
+      },
+      "components": [
+        [
+          "quieren",
+          "they want"
+        ],
+        [
+          "asegurarse",
+          "to make sure/ensure themselves"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "terminemos",
+          "we finish"
+        ]
+      ]
+    },
+    "S0200L03": {
+      "lego": [
+        "to make sure that we finish",
+        "asegurarse de que terminemos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "They say that",
+          "Dicen que"
+        ],
+        [
+          "they want to make sure that we finish",
+          "quieren asegurarse de que terminemos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0200L03",
+        "seed_context": {
+          "target": "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+          "known": "They say they want to make sure that we finish everything in time."
+        }
+      },
+      "components": [
+        [
+          "asegurarse",
+          "to make sure"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "terminemos",
+          "we finish"
+        ]
+      ]
+    },
+    "S0200L04": {
+      "lego": [
+        "that we finish",
+        "de que terminemos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "They say that",
+          "Dicen que"
+        ],
+        [
+          "they want to make sure that we finish",
+          "quieren asegurarse de que terminemos"
+        ],
+        [
+          "to make sure that we finish",
+          "asegurarse de que terminemos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0200L04",
+        "seed_context": {
+          "target": "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+          "known": "They say they want to make sure that we finish everything in time."
+        }
+      },
+      "components": [
+        [
+          "de",
+          "of"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "terminemos",
+          "we finish"
+        ]
+      ]
+    },
+    "S0200L05": {
+      "lego": [
+        "everything",
+        "todo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "They say that",
+          "Dicen que"
+        ],
+        [
+          "they want to make sure that we finish",
+          "quieren asegurarse de que terminemos"
+        ],
+        [
+          "to make sure that we finish",
+          "asegurarse de que terminemos"
+        ],
+        [
+          "that we finish",
+          "de que terminemos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0200L05",
+        "seed_context": {
+          "target": "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+          "known": "They say they want to make sure that we finish everything in time."
+        }
+      }
+    },
+    "S0200L06": {
+      "lego": [
+        "in time",
+        "a tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "They say that",
+          "Dicen que"
+        ],
+        [
+          "they want to make sure that we finish",
+          "quieren asegurarse de que terminemos"
+        ],
+        [
+          "to make sure that we finish",
+          "asegurarse de que terminemos"
+        ],
+        [
+          "that we finish",
+          "de que terminemos"
+        ],
+        [
+          "everything",
+          "todo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0200L06",
+        "seed_context": {
+          "target": "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+          "known": "They say they want to make sure that we finish everything in time."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "in/on"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0200.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

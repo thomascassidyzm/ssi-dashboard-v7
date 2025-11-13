@@ -1,0 +1,198 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0532",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "A menos que tengan suerte.",
+    "known": "Unless they're lucky."
+  },
+  "recent_seed_pairs": {
+    "S0522": [
+      "Acordemos que fue estúpido decir la verdad.",
+      "Let's agree that it was stupid to tell the truth."
+    ],
+    "S0523": [
+      "En lugar de dar una excusa.",
+      "Instead of giving an excuse."
+    ],
+    "S0524": [
+      "Te llamaré de vuelta en tres o cuatro minutos.",
+      "I'll call you back in three or four minutes."
+    ],
+    "S0525": [
+      "Para comprobar si has podido terminar.",
+      "To check if you've been able to finish."
+    ],
+    "S0526": [
+      "Me resulta difícil creer que no puedes adivinar.",
+      "I'm finding it hard to believe that you can't guess."
+    ],
+    "S0527": [
+      "Adivina quién me contó esa historia graciosa.",
+      "Guess who told me that funny story."
+    ],
+    "S0528": [
+      "Probablemente se supone que debo guardar esas cosas en otra habitación.",
+      "I'm probably supposed to keep those things in another room."
+    ],
+    "S0529": [
+      "¿Pueden todos levantar las manos?",
+      "Can you all put your hands up?"
+    ],
+    "S0530": [
+      "Para que pueda contarlas",
+      "So I can count them"
+    ],
+    "S0531": [
+      "No es verdad que cualquiera pueda ganar el juego.",
+      "It isn't true that anyone can win the game."
+    ]
+  },
+  "legos": {
+    "S0532L01": {
+      "lego": [
+        "unless",
+        "a menos que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0532L01",
+        "seed_context": {
+          "target": "A menos que tengan suerte.",
+          "known": "Unless they're lucky."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "menos",
+          "less"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0532L02": {
+      "lego": [
+        "they're lucky",
+        "tengan suerte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "unless",
+          "a menos que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0532L02",
+        "seed_context": {
+          "target": "A menos que tengan suerte.",
+          "known": "Unless they're lucky."
+        }
+      },
+      "components": [
+        [
+          "tengan",
+          "they have"
+        ],
+        [
+          "suerte",
+          "luck"
+        ]
+      ]
+    },
+    "S0532L03": {
+      "lego": [
+        "unless they're lucky",
+        "a menos que tengan suerte"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "unless",
+          "a menos que"
+        ],
+        [
+          "they're lucky",
+          "tengan suerte"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0532L03",
+        "seed_context": {
+          "target": "A menos que tengan suerte.",
+          "known": "Unless they're lucky."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "menos",
+          "less"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "tengan",
+          "they have"
+        ],
+        [
+          "suerte",
+          "luck"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0532.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

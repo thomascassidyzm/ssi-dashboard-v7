@@ -1,0 +1,232 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0412",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No podríamos permitirles ganar todo.",
+    "known": "We couldn't allow them to win everything."
+  },
+  "recent_seed_pairs": {
+    "S0402": [
+      "Yes it would be nice to stop somewhere for food.",
+      "Sí, sería agradable parar en algún lugar para comida."
+    ],
+    "S0403": [
+      "We should remain quiet for as long as possible.",
+      "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+    ],
+    "S0404": [
+      "We shouldn't expect to finish before Thursday.",
+      "No deberíamos esperar terminar antes del jueves."
+    ],
+    "S0405": [
+      "Should we ask if we have to book?",
+      "¿Deberíamos preguntar si tenemos que reservar?"
+    ],
+    "S0406": [
+      "No I'm sure it will be okay.",
+      "No, estoy seguro de que estará bien."
+    ],
+    "S0407": [
+      "Shouldn't we try to set a good example?",
+      "¿No deberíamos intentar establecer un buen ejemplo?"
+    ],
+    "S0408": [
+      "Yes that's the best way to make a happy family.",
+      "Sí esa es la mejor manera de hacer una familia feliz."
+    ],
+    "S0409": [
+      "No it doesn't matter what we do.",
+      "No no importa lo que hagamos."
+    ],
+    "S0410": [
+      "They still fight with each other.",
+      "Todavía luchan el uno con el otro."
+    ],
+    "S0411": [
+      "Nos gustaría reservar una mesa para cuatro esta noche.",
+      "We would like to reserve a table for four tonight."
+    ]
+  },
+  "legos": {
+    "S0412L01": {
+      "lego": [
+        "we couldn't",
+        "no podríamos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0412L01",
+        "seed_context": {
+          "target": "No podríamos permitirles ganar todo.",
+          "known": "We couldn't allow them to win everything."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "podríamos",
+          "we could"
+        ]
+      ]
+    },
+    "S0412L02": {
+      "lego": [
+        "we couldn't allow them",
+        "no podríamos permitirles"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we couldn't",
+          "no podríamos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0412L02",
+        "seed_context": {
+          "target": "No podríamos permitirles ganar todo.",
+          "known": "We couldn't allow them to win everything."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "podríamos",
+          "we could"
+        ],
+        [
+          "permitirles",
+          "allow them"
+        ]
+      ]
+    },
+    "S0412L03": {
+      "lego": [
+        "allow them to win",
+        "permitirles ganar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we couldn't",
+          "no podríamos"
+        ],
+        [
+          "we couldn't allow them",
+          "no podríamos permitirles"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0412L03",
+        "seed_context": {
+          "target": "No podríamos permitirles ganar todo.",
+          "known": "We couldn't allow them to win everything."
+        }
+      },
+      "components": [
+        [
+          "permitirles",
+          "allow them"
+        ],
+        [
+          "ganar",
+          "to win"
+        ]
+      ]
+    },
+    "S0412L04": {
+      "lego": [
+        "win everything",
+        "ganar todo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we couldn't",
+          "no podríamos"
+        ],
+        [
+          "we couldn't allow them",
+          "no podríamos permitirles"
+        ],
+        [
+          "allow them to win",
+          "permitirles ganar"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0412L04",
+        "seed_context": {
+          "target": "No podríamos permitirles ganar todo.",
+          "known": "We couldn't allow them to win everything."
+        }
+      },
+      "components": [
+        [
+          "ganar",
+          "to win"
+        ],
+        [
+          "todo",
+          "everything"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0412.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

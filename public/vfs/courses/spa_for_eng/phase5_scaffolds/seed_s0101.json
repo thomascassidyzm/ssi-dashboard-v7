@@ -1,0 +1,344 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0101",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Estoy disfrutando descubrir más sobre este lenguaje",
+    "known": "I'm enjoying finding out more about this language."
+  },
+  "recent_seed_pairs": {
+    "S0091": [
+      "Es difícil pensar lo suficientemente rápido para responder a tiempo.",
+      "It's difficult to think quickly enough to answer in time."
+    ],
+    "S0092": [
+      "Me gustaría continuar haciendo esto por un tiempo.",
+      "I'd like to keep on doing this for a while."
+    ],
+    "S0093": [
+      "Es hora de ir ahora.",
+      "It's time to go now."
+    ],
+    "S0094": [
+      "Esta es la única manera en que funcionará.",
+      "This is the only way it will work."
+    ],
+    "S0095": [
+      "¿Estás preparado para ir a casa en el próximo autobús?",
+      "Are you ready to go home on the next bus?"
+    ],
+    "S0096": [
+      "No, no estoy preparado todavía, necesito un poco más de tiempo.",
+      "No I'm not ready yet, I need a little more time."
+    ],
+    "S0097": [
+      "Sí, estoy preparado para ir tan pronto como quieras.",
+      "Yes I'm ready to go as soon as you want."
+    ],
+    "S0098": [
+      "Debería considerar jugar otra cosa.",
+      "I should consider playing something else."
+    ],
+    "S0099": [
+      "Deberías preguntarte por qué no está trabajando",
+      "You should ask yourself why it's not working."
+    ],
+    "S0100": [
+      "No deberías preocuparte por hacer algo similar",
+      "You shouldn't worry about doing something similar."
+    ]
+  },
+  "legos": {
+    "S0101L01": {
+      "lego": [
+        "I'm enjoying",
+        "estoy disfrutando"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0101L01",
+        "seed_context": {
+          "target": "Estoy disfrutando descubrir más sobre este lenguaje",
+          "known": "I'm enjoying finding out more about this language."
+        }
+      },
+      "components": [
+        [
+          "estoy",
+          "I'm"
+        ],
+        [
+          "disfrutando",
+          "enjoying"
+        ]
+      ]
+    },
+    "S0101L02": {
+      "lego": [
+        "enjoying finding out",
+        "disfrutando descubrir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm enjoying",
+          "estoy disfrutando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0101L02",
+        "seed_context": {
+          "target": "Estoy disfrutando descubrir más sobre este lenguaje",
+          "known": "I'm enjoying finding out more about this language."
+        }
+      },
+      "components": [
+        [
+          "disfrutando",
+          "enjoying"
+        ],
+        [
+          "descubrir",
+          "finding out/to find out"
+        ]
+      ]
+    },
+    "S0101L03": {
+      "lego": [
+        "finding out more",
+        "descubrir más"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm enjoying",
+          "estoy disfrutando"
+        ],
+        [
+          "enjoying finding out",
+          "disfrutando descubrir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0101L03",
+        "seed_context": {
+          "target": "Estoy disfrutando descubrir más sobre este lenguaje",
+          "known": "I'm enjoying finding out more about this language."
+        }
+      },
+      "components": [
+        [
+          "descubrir",
+          "finding out"
+        ],
+        [
+          "más",
+          "more"
+        ]
+      ]
+    },
+    "S0101L04": {
+      "lego": [
+        "more about this language",
+        "más sobre este lenguaje"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm enjoying",
+          "estoy disfrutando"
+        ],
+        [
+          "enjoying finding out",
+          "disfrutando descubrir"
+        ],
+        [
+          "finding out more",
+          "descubrir más"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0101L04",
+        "seed_context": {
+          "target": "Estoy disfrutando descubrir más sobre este lenguaje",
+          "known": "I'm enjoying finding out more about this language."
+        }
+      },
+      "components": [
+        [
+          "más",
+          "more"
+        ],
+        [
+          "sobre",
+          "about"
+        ],
+        [
+          "este",
+          "this"
+        ],
+        [
+          "lenguaje",
+          "language"
+        ]
+      ]
+    },
+    "S0101L05": {
+      "lego": [
+        "about this language",
+        "sobre este lenguaje"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm enjoying",
+          "estoy disfrutando"
+        ],
+        [
+          "enjoying finding out",
+          "disfrutando descubrir"
+        ],
+        [
+          "finding out more",
+          "descubrir más"
+        ],
+        [
+          "more about this language",
+          "más sobre este lenguaje"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0101L05",
+        "seed_context": {
+          "target": "Estoy disfrutando descubrir más sobre este lenguaje",
+          "known": "I'm enjoying finding out more about this language."
+        }
+      },
+      "components": [
+        [
+          "sobre",
+          "about"
+        ],
+        [
+          "este",
+          "this"
+        ],
+        [
+          "lenguaje",
+          "language"
+        ]
+      ]
+    },
+    "S0101L06": {
+      "lego": [
+        "this language",
+        "este lenguaje"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm enjoying",
+          "estoy disfrutando"
+        ],
+        [
+          "enjoying finding out",
+          "disfrutando descubrir"
+        ],
+        [
+          "finding out more",
+          "descubrir más"
+        ],
+        [
+          "more about this language",
+          "más sobre este lenguaje"
+        ],
+        [
+          "about this language",
+          "sobre este lenguaje"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0101L06",
+        "seed_context": {
+          "target": "Estoy disfrutando descubrir más sobre este lenguaje",
+          "known": "I'm enjoying finding out more about this language."
+        }
+      },
+      "components": [
+        [
+          "este",
+          "this"
+        ],
+        [
+          "lenguaje",
+          "language"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0101.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

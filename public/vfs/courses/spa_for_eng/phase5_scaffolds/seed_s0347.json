@@ -1,0 +1,290 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0347",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "He wanted to know what was happening a week ago.",
+    "known": "Él quería saber qué estaba pasando hace una semana."
+  },
+  "recent_seed_pairs": {
+    "S0337": [
+      "¿Crees que puede continuar jugando?",
+      "Do you think that he can continue to play?"
+    ],
+    "S0338": [
+      "Mal.",
+      "Badly."
+    ],
+    "S0339": [
+      "No, pienso que se ha lastimado bastante mal.",
+      "No I think he's hurt himself quite badly."
+    ],
+    "S0340": [
+      "Sí, estoy seguro que va a estar bien.",
+      "Yes I'm sure he's going to be okay."
+    ],
+    "S0341": [
+      "I met someone a few days ago.",
+      "Conocí a alguien hace unos días."
+    ],
+    "S0342": [
+      "I met someone who said something.",
+      "Conocí a alguien que dijo algo."
+    ],
+    "S0343": [
+      "Who said that she's worried about the economy.",
+      "Que dijo que está preocupada por la economía."
+    ],
+    "S0344": [
+      "Who said that he's happy to help you.",
+      "Que dijo que está contento de ayudarte."
+    ],
+    "S0345": [
+      "Who said that he's not ready to leave yet.",
+      "Que dijo que no está preparado para irse todavía."
+    ],
+    "S0346": [
+      "I wanted her to know that I liked her book.",
+      "Quería que ella supiera que me gustó su libro."
+    ]
+  },
+  "legos": {
+    "S0347L01": {
+      "lego": [
+        "wanted to know",
+        "quería saber"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0347L01",
+        "seed_context": {
+          "target": "He wanted to know what was happening a week ago.",
+          "known": "Él quería saber qué estaba pasando hace una semana."
+        }
+      },
+      "components": [
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "saber",
+          "to know"
+        ]
+      ]
+    },
+    "S0347L02": {
+      "lego": [
+        "wanted to know what",
+        "quería saber qué"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "wanted to know",
+          "quería saber"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0347L02",
+        "seed_context": {
+          "target": "He wanted to know what was happening a week ago.",
+          "known": "Él quería saber qué estaba pasando hace una semana."
+        }
+      },
+      "components": [
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "saber",
+          "to know"
+        ],
+        [
+          "qué",
+          "what"
+        ]
+      ]
+    },
+    "S0347L03": {
+      "lego": [
+        "what was happening",
+        "qué estaba pasando"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "wanted to know",
+          "quería saber"
+        ],
+        [
+          "wanted to know what",
+          "quería saber qué"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0347L03",
+        "seed_context": {
+          "target": "He wanted to know what was happening a week ago.",
+          "known": "Él quería saber qué estaba pasando hace una semana."
+        }
+      },
+      "components": [
+        [
+          "qué",
+          "what"
+        ],
+        [
+          "estaba",
+          "was"
+        ],
+        [
+          "pasando",
+          "happening"
+        ]
+      ]
+    },
+    "S0347L04": {
+      "lego": [
+        "was happening",
+        "estaba pasando"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "wanted to know",
+          "quería saber"
+        ],
+        [
+          "wanted to know what",
+          "quería saber qué"
+        ],
+        [
+          "what was happening",
+          "qué estaba pasando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0347L04",
+        "seed_context": {
+          "target": "He wanted to know what was happening a week ago.",
+          "known": "Él quería saber qué estaba pasando hace una semana."
+        }
+      },
+      "components": [
+        [
+          "estaba",
+          "was"
+        ],
+        [
+          "pasando",
+          "happening"
+        ]
+      ]
+    },
+    "S0347L05": {
+      "lego": [
+        "a week ago",
+        "hace una semana"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "wanted to know",
+          "quería saber"
+        ],
+        [
+          "wanted to know what",
+          "quería saber qué"
+        ],
+        [
+          "what was happening",
+          "qué estaba pasando"
+        ],
+        [
+          "was happening",
+          "estaba pasando"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0347L05",
+        "seed_context": {
+          "target": "He wanted to know what was happening a week ago.",
+          "known": "Él quería saber qué estaba pasando hace una semana."
+        }
+      },
+      "components": [
+        [
+          "hace",
+          "ago"
+        ],
+        [
+          "una",
+          "a/one"
+        ],
+        [
+          "semana",
+          "week"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0347.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

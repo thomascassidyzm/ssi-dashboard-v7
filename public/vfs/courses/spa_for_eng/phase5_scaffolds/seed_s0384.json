@@ -1,0 +1,302 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0384",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No pude estar de acuerdo con lo que dijo...",
+    "known": "I couldn't agree with what he said a moment ago."
+  },
+  "recent_seed_pairs": {
+    "S0374": [
+      "Sí pensé que era muy hermoso.",
+      "Yes I thought it was very beautiful."
+    ],
+    "S0375": [
+      "No no sabía qué estaba haciendo.",
+      "No I didn't know what she was doing."
+    ],
+    "S0376": [
+      "No fui a ninguna parte el mes pasado.",
+      "I didn't go anywhere last month."
+    ],
+    "S0377": [
+      "¿Fuiste a alguna parte en el mundo el año pasado?",
+      "Did you go anywhere in the world last year?"
+    ],
+    "S0378": [
+      "No no tenía suficiente dinero para vacaciones.",
+      "No I didn't have enough money for holidays."
+    ],
+    "S0379": [
+      "Sí tuve suficiente suerte para viajar a África.",
+      "Yes I was lucky enough to travel to Africa."
+    ],
+    "S0380": [
+      "Pregunté qué quería incluir.",
+      "I asked what she wanted to include."
+    ],
+    "S0381": [
+      "No pregunté si quería seguirnos.",
+      "I didn't ask if he wanted to follow us."
+    ],
+    "S0382": [
+      "¿Preguntaste dónde quería ponerlo?",
+      "Did you ask where he wanted to put it?"
+    ],
+    "S0383": [
+      "Sí dijo que quería ponerlo en el jardín.",
+      "Yes he said he wanted to put it in the garden."
+    ]
+  },
+  "legos": {
+    "S0384L01": {
+      "lego": [
+        "I couldn't",
+        "No pude"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0384L01",
+        "seed_context": {
+          "target": "No pude estar de acuerdo con lo que dijo...",
+          "known": "I couldn't agree with what he said a moment ago."
+        }
+      },
+      "components": [
+        [
+          "No",
+          "I couldn't/not"
+        ],
+        [
+          "pude",
+          "I could"
+        ]
+      ]
+    },
+    "S0384L02": {
+      "lego": [
+        "agree",
+        "estar de acuerdo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I couldn't",
+          "No pude"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0384L02",
+        "seed_context": {
+          "target": "No pude estar de acuerdo con lo que dijo...",
+          "known": "I couldn't agree with what he said a moment ago."
+        }
+      },
+      "components": [
+        [
+          "estar",
+          "to be"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "acuerdo",
+          "agreement"
+        ]
+      ]
+    },
+    "S0384L03": {
+      "lego": [
+        "agree with",
+        "estar de acuerdo con"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I couldn't",
+          "No pude"
+        ],
+        [
+          "agree",
+          "estar de acuerdo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0384L03",
+        "seed_context": {
+          "target": "No pude estar de acuerdo con lo que dijo...",
+          "known": "I couldn't agree with what he said a moment ago."
+        }
+      },
+      "components": [
+        [
+          "estar",
+          "to be"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "acuerdo",
+          "agreement"
+        ],
+        [
+          "con",
+          "with"
+        ]
+      ]
+    },
+    "S0384L04": {
+      "lego": [
+        "with what he said",
+        "con lo que dijo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I couldn't",
+          "No pude"
+        ],
+        [
+          "agree",
+          "estar de acuerdo"
+        ],
+        [
+          "agree with",
+          "estar de acuerdo con"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0384L04",
+        "seed_context": {
+          "target": "No pude estar de acuerdo con lo que dijo...",
+          "known": "I couldn't agree with what he said a moment ago."
+        }
+      },
+      "components": [
+        [
+          "con",
+          "with"
+        ],
+        [
+          "lo",
+          "what"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "dijo",
+          "he said"
+        ]
+      ]
+    },
+    "S0384L05": {
+      "lego": [
+        "what he said",
+        "lo que dijo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I couldn't",
+          "No pude"
+        ],
+        [
+          "agree",
+          "estar de acuerdo"
+        ],
+        [
+          "agree with",
+          "estar de acuerdo con"
+        ],
+        [
+          "with what he said",
+          "con lo que dijo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0384L05",
+        "seed_context": {
+          "target": "No pude estar de acuerdo con lo que dijo...",
+          "known": "I couldn't agree with what he said a moment ago."
+        }
+      },
+      "components": [
+        [
+          "lo",
+          "what"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "dijo",
+          "he said"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0384.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

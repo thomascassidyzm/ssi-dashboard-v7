@@ -1,0 +1,330 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0146",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Nada parece estar funcionando desde que intentamos arreglarlo.",
+    "known": "Nothing seems to be working since we tried to fix it."
+  },
+  "recent_seed_pairs": {
+    "S0136": [
+      "Por supuesto que puedes preguntarle porque es mi amiga.",
+      "Of course you can ask her because she's my friend."
+    ],
+    "S0137": [
+      "Es más importante hablar frecuentemente que ser perfecto.",
+      "It's more important to talk often than to be perfect."
+    ],
+    "S0138": [
+      "Esto era donde mi amigo quería reunirse con nosotros.",
+      "This was where my friend wanted to meet us."
+    ],
+    "S0139": [
+      "Lo siento que necesito irme tan temprano.",
+      "I'm sorry that I need to leave so early."
+    ],
+    "S0140": [
+      "Lo siento que no puedo ver lo que estás intentando mostrarme.",
+      "I'm sorry that I can't see what you're trying to show me."
+    ],
+    "S0141": [
+      "No hay problema. Todo está bien.",
+      "No problem. Everything is okay."
+    ],
+    "S0142": [
+      "Eso es muy amable de tu parte y estoy agradecido a ti por ayudar.",
+      "That's very kind of you and I'm grateful to you for helping."
+    ],
+    "S0143": [
+      "Es la misma cosa de la que estábamos hablando antes.",
+      "It's the same thing as we were talking about earlier."
+    ],
+    "S0144": [
+      "Me desperté más temprano de lo que quería esta mañana.",
+      "I woke earlier than I wanted to this morning."
+    ],
+    "S0145": [
+      "¿Por qué no estás feliz ya?",
+      "Why are you not happy any more?"
+    ]
+  },
+  "legos": {
+    "S0146L01": {
+      "lego": [
+        "Nothing",
+        "Nada"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0146L01",
+        "seed_context": {
+          "target": "Nada parece estar funcionando desde que intentamos arreglarlo.",
+          "known": "Nothing seems to be working since we tried to fix it."
+        }
+      }
+    },
+    "S0146L02": {
+      "lego": [
+        "seems to be working",
+        "parece estar funcionando"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Nothing",
+          "Nada"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0146L02",
+        "seed_context": {
+          "target": "Nada parece estar funcionando desde que intentamos arreglarlo.",
+          "known": "Nothing seems to be working since we tried to fix it."
+        }
+      },
+      "components": [
+        [
+          "parece",
+          "seems"
+        ],
+        [
+          "estar",
+          "to be"
+        ],
+        [
+          "funcionando",
+          "working"
+        ]
+      ]
+    },
+    "S0146L03": {
+      "lego": [
+        "to be working",
+        "estar funcionando"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Nothing",
+          "Nada"
+        ],
+        [
+          "seems to be working",
+          "parece estar funcionando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0146L03",
+        "seed_context": {
+          "target": "Nada parece estar funcionando desde que intentamos arreglarlo.",
+          "known": "Nothing seems to be working since we tried to fix it."
+        }
+      },
+      "components": [
+        [
+          "estar",
+          "to be"
+        ],
+        [
+          "funcionando",
+          "working"
+        ]
+      ]
+    },
+    "S0146L04": {
+      "lego": [
+        "since we tried to fix it",
+        "desde que intentamos arreglarlo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Nothing",
+          "Nada"
+        ],
+        [
+          "seems to be working",
+          "parece estar funcionando"
+        ],
+        [
+          "to be working",
+          "estar funcionando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0146L04",
+        "seed_context": {
+          "target": "Nada parece estar funcionando desde que intentamos arreglarlo.",
+          "known": "Nothing seems to be working since we tried to fix it."
+        }
+      },
+      "components": [
+        [
+          "desde que",
+          "since"
+        ],
+        [
+          "intentamos",
+          "we tried"
+        ],
+        [
+          "arreglarlo",
+          "to fix it"
+        ]
+      ]
+    },
+    "S0146L05": {
+      "lego": [
+        "we tried to fix it",
+        "intentamos arreglarlo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Nothing",
+          "Nada"
+        ],
+        [
+          "seems to be working",
+          "parece estar funcionando"
+        ],
+        [
+          "to be working",
+          "estar funcionando"
+        ],
+        [
+          "since we tried to fix it",
+          "desde que intentamos arreglarlo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0146L05",
+        "seed_context": {
+          "target": "Nada parece estar funcionando desde que intentamos arreglarlo.",
+          "known": "Nothing seems to be working since we tried to fix it."
+        }
+      },
+      "components": [
+        [
+          "intentamos",
+          "we tried"
+        ],
+        [
+          "arreglarlo",
+          "to fix it"
+        ]
+      ]
+    },
+    "S0146L06": {
+      "lego": [
+        "to fix it",
+        "arreglarlo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Nothing",
+          "Nada"
+        ],
+        [
+          "seems to be working",
+          "parece estar funcionando"
+        ],
+        [
+          "to be working",
+          "estar funcionando"
+        ],
+        [
+          "since we tried to fix it",
+          "desde que intentamos arreglarlo"
+        ],
+        [
+          "we tried to fix it",
+          "intentamos arreglarlo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0146L06",
+        "seed_context": {
+          "target": "Nada parece estar funcionando desde que intentamos arreglarlo.",
+          "known": "Nothing seems to be working since we tried to fix it."
+        }
+      },
+      "components": [
+        [
+          "arreglar",
+          "to fix"
+        ],
+        [
+          "lo",
+          "it"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0146.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

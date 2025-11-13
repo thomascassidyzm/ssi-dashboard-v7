@@ -1,0 +1,282 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0150",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Puedes decirme cuál es tu nombre?",
+    "known": "Can you tell me what your name is?"
+  },
+  "recent_seed_pairs": {
+    "S0140": [
+      "Lo siento que no puedo ver lo que estás intentando mostrarme.",
+      "I'm sorry that I can't see what you're trying to show me."
+    ],
+    "S0141": [
+      "No hay problema. Todo está bien.",
+      "No problem. Everything is okay."
+    ],
+    "S0142": [
+      "Eso es muy amable de tu parte y estoy agradecido a ti por ayudar.",
+      "That's very kind of you and I'm grateful to you for helping."
+    ],
+    "S0143": [
+      "Es la misma cosa de la que estábamos hablando antes.",
+      "It's the same thing as we were talking about earlier."
+    ],
+    "S0144": [
+      "Me desperté más temprano de lo que quería esta mañana.",
+      "I woke earlier than I wanted to this morning."
+    ],
+    "S0145": [
+      "¿Por qué no estás feliz ya?",
+      "Why are you not happy any more?"
+    ],
+    "S0146": [
+      "Nada parece estar funcionando desde que intentamos arreglarlo.",
+      "Nothing seems to be working since we tried to fix it."
+    ],
+    "S0147": [
+      "Ella era muy amable cuando me vio sintiéndome nervioso.",
+      "She was very kind when she saw me feeling nervous."
+    ],
+    "S0148": [
+      "Él no era muy paciente cuando no pude responder.",
+      "He wasn't very patient when I couldn't answer."
+    ],
+    "S0149": [
+      "Esto no es muy difícil, entonces espero que termines pronto.",
+      "This isn't very difficult, so I hope you'll finish soon."
+    ]
+  },
+  "legos": {
+    "S0150L01": {
+      "lego": [
+        "Can you tell me",
+        "¿Puedes decirme"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0150L01",
+        "seed_context": {
+          "target": "¿Puedes decirme cuál es tu nombre?",
+          "known": "Can you tell me what your name is?"
+        }
+      },
+      "components": [
+        [
+          "¿Puedes",
+          "Can you"
+        ],
+        [
+          "decirme",
+          "tell me"
+        ]
+      ]
+    },
+    "S0150L02": {
+      "lego": [
+        "tell me",
+        "decirme"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you tell me",
+          "¿Puedes decirme"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0150L02",
+        "seed_context": {
+          "target": "¿Puedes decirme cuál es tu nombre?",
+          "known": "Can you tell me what your name is?"
+        }
+      },
+      "components": [
+        [
+          "decir",
+          "tell"
+        ],
+        [
+          "me",
+          "me"
+        ]
+      ]
+    },
+    "S0150L03": {
+      "lego": [
+        "what your name is",
+        "cuál es tu nombre"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you tell me",
+          "¿Puedes decirme"
+        ],
+        [
+          "tell me",
+          "decirme"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0150L03",
+        "seed_context": {
+          "target": "¿Puedes decirme cuál es tu nombre?",
+          "known": "Can you tell me what your name is?"
+        }
+      },
+      "components": [
+        [
+          "cuál",
+          "what"
+        ],
+        [
+          "es",
+          "is"
+        ],
+        [
+          "tu nombre",
+          "your name"
+        ]
+      ]
+    },
+    "S0150L04": {
+      "lego": [
+        "is your name",
+        "es tu nombre"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you tell me",
+          "¿Puedes decirme"
+        ],
+        [
+          "tell me",
+          "decirme"
+        ],
+        [
+          "what your name is",
+          "cuál es tu nombre"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0150L04",
+        "seed_context": {
+          "target": "¿Puedes decirme cuál es tu nombre?",
+          "known": "Can you tell me what your name is?"
+        }
+      },
+      "components": [
+        [
+          "es",
+          "is"
+        ],
+        [
+          "tu nombre",
+          "your name"
+        ]
+      ]
+    },
+    "S0150L05": {
+      "lego": [
+        "your name",
+        "tu nombre"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you tell me",
+          "¿Puedes decirme"
+        ],
+        [
+          "tell me",
+          "decirme"
+        ],
+        [
+          "what your name is",
+          "cuál es tu nombre"
+        ],
+        [
+          "is your name",
+          "es tu nombre"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0150L05",
+        "seed_context": {
+          "target": "¿Puedes decirme cuál es tu nombre?",
+          "known": "Can you tell me what your name is?"
+        }
+      },
+      "components": [
+        [
+          "tu",
+          "your"
+        ],
+        [
+          "nombre",
+          "name"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0150.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

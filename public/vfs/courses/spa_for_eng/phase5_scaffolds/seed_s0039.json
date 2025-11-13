@@ -1,0 +1,372 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0039",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Pero estoy un poco cansado esta mañana.",
+    "known": "But I'm a little tired this morning."
+  },
+  "recent_seed_pairs": {
+    "S0029": [
+      "Estoy deseando hablar mejor tan pronto como pueda.",
+      "I'm looking forward to speaking better as soon as I can."
+    ],
+    "S0030": [
+      "Quería preguntarte algo ayer.",
+      "I wanted to ask you something yesterday."
+    ],
+    "S0031": [
+      "Querías hablar conmigo esta noche.",
+      "You wanted to speak with me tonight."
+    ],
+    "S0032": [
+      "¿Querías mostrarme algo?",
+      "Did you want to show me something?"
+    ],
+    "S0033": [
+      "¿Cuánto tiempo llevas aprendiendo español?",
+      "How long have you been learning Spanish?"
+    ],
+    "S0034": [
+      "Él no quiere estar silencioso cuando otras personas están aquí.",
+      "He doesn't want to be quiet when other people are here."
+    ],
+    "S0035": [
+      "Ella no quiere leer nada esta tarde.",
+      "She doesn't want to read anything this afternoon."
+    ],
+    "S0036": [
+      "No queremos interrumpir la historia.",
+      "We don't want to interrupt the story."
+    ],
+    "S0037": [
+      "Comencé a pensar sobre eso cuidadosamente el mes pasado.",
+      "I started to think about it carefully last month."
+    ],
+    "S0038": [
+      "Llevo aprendiendo aproximadamente una semana.",
+      "I've been learning for about a week."
+    ]
+  },
+  "legos": {
+    "S0039L01": {
+      "lego": [
+        "but",
+        "pero"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0039L01",
+        "seed_context": {
+          "target": "Pero estoy un poco cansado esta mañana.",
+          "known": "But I'm a little tired this morning."
+        }
+      }
+    },
+    "S0039L02": {
+      "lego": [
+        "I'm",
+        "estoy"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "but",
+          "pero"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0039L02",
+        "seed_context": {
+          "target": "Pero estoy un poco cansado esta mañana.",
+          "known": "But I'm a little tired this morning."
+        }
+      }
+    },
+    "S0039L03": {
+      "lego": [
+        "I'm a little tired",
+        "estoy un poco cansado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "I'm",
+          "estoy"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0039L03",
+        "seed_context": {
+          "target": "Pero estoy un poco cansado esta mañana.",
+          "known": "But I'm a little tired this morning."
+        }
+      },
+      "components": [
+        [
+          "estoy",
+          "I'm"
+        ],
+        [
+          "un",
+          "a"
+        ],
+        [
+          "poco",
+          "little"
+        ],
+        [
+          "cansado",
+          "tired"
+        ]
+      ]
+    },
+    "S0039L04": {
+      "lego": [
+        "a little",
+        "un poco"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "I'm",
+          "estoy"
+        ],
+        [
+          "I'm a little tired",
+          "estoy un poco cansado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0039L04",
+        "seed_context": {
+          "target": "Pero estoy un poco cansado esta mañana.",
+          "known": "But I'm a little tired this morning."
+        }
+      },
+      "components": [
+        [
+          "un",
+          "a"
+        ],
+        [
+          "poco",
+          "little"
+        ]
+      ]
+    },
+    "S0039L05": {
+      "lego": [
+        "a little tired",
+        "un poco cansado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "I'm",
+          "estoy"
+        ],
+        [
+          "I'm a little tired",
+          "estoy un poco cansado"
+        ],
+        [
+          "a little",
+          "un poco"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0039L05",
+        "seed_context": {
+          "target": "Pero estoy un poco cansado esta mañana.",
+          "known": "But I'm a little tired this morning."
+        }
+      },
+      "components": [
+        [
+          "un",
+          "a"
+        ],
+        [
+          "poco",
+          "little"
+        ],
+        [
+          "cansado",
+          "tired"
+        ]
+      ]
+    },
+    "S0039L06": {
+      "lego": [
+        "tired",
+        "cansado"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "I'm",
+          "estoy"
+        ],
+        [
+          "I'm a little tired",
+          "estoy un poco cansado"
+        ],
+        [
+          "a little",
+          "un poco"
+        ],
+        [
+          "a little tired",
+          "un poco cansado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0039L06",
+        "seed_context": {
+          "target": "Pero estoy un poco cansado esta mañana.",
+          "known": "But I'm a little tired this morning."
+        }
+      }
+    },
+    "S0039L07": {
+      "lego": [
+        "this morning",
+        "esta mañana"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "but",
+          "pero"
+        ],
+        [
+          "I'm",
+          "estoy"
+        ],
+        [
+          "I'm a little tired",
+          "estoy un poco cansado"
+        ],
+        [
+          "a little",
+          "un poco"
+        ],
+        [
+          "a little tired",
+          "un poco cansado"
+        ],
+        [
+          "tired",
+          "cansado"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0039L07",
+        "seed_context": {
+          "target": "Pero estoy un poco cansado esta mañana.",
+          "known": "But I'm a little tired this morning."
+        }
+      },
+      "components": [
+        [
+          "esta",
+          "this"
+        ],
+        [
+          "mañana",
+          "morning"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0039.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "total_legos_in_seed": 7,
+    "phrases_to_generate": 84,
+    "recent_context_seeds": 10
+  }
+}

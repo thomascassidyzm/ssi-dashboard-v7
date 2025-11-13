@@ -1,0 +1,172 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0618",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No parece mucho tiempo.",
+    "known": "It doesn't feel like a long time."
+  },
+  "recent_seed_pairs": {
+    "S0608": [
+      "Habría sido lo sensato que hacer.",
+      "It would have been the sensible thing to do."
+    ],
+    "S0609": [
+      "Lo sensato que hacer habría sido preguntar.",
+      "The sensible thing to do would have been to ask."
+    ],
+    "S0610": [
+      "Él necesita buscar trabajo.",
+      "He needs to look for work."
+    ],
+    "S0611": [
+      "Yo habría estado preparado para buscar en otro lugar.",
+      "I would have been ready to look somewhere else."
+    ],
+    "S0612": [
+      "Habríamos comprado algo.",
+      "We would have bought something."
+    ],
+    "S0613": [
+      "Probablemente habríamos comprado una casa allí.",
+      "We probably would have bought a house there."
+    ],
+    "S0614": [
+      "Está cerca de donde vive tu familia.",
+      "It's near where your family live."
+    ],
+    "S0615": [
+      "Pensé que fuiste muy valiente al decir eso.",
+      "I thought you were very brave to say that."
+    ],
+    "S0616": [
+      "Fuiste muy valiente al decir que pensabas eso.",
+      "You were very brave to say you thought that."
+    ],
+    "S0617": [
+      "Pensaste que era un error.",
+      "You thought that it was a mistake."
+    ]
+  },
+  "legos": {
+    "S0618L01": {
+      "lego": [
+        "much",
+        "mucho"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0618L01",
+        "seed_context": {
+          "target": "No parece mucho tiempo.",
+          "known": "It doesn't feel like a long time."
+        }
+      }
+    },
+    "S0618L02": {
+      "lego": [
+        "it doesn't feel like",
+        "no parece"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "much",
+          "mucho"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0618L02",
+        "seed_context": {
+          "target": "No parece mucho tiempo.",
+          "known": "It doesn't feel like a long time."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "doesn't"
+        ],
+        [
+          "parece",
+          "feel like/seem"
+        ]
+      ]
+    },
+    "S0618L03": {
+      "lego": [
+        "a long time",
+        "mucho tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "much",
+          "mucho"
+        ],
+        [
+          "it doesn't feel like",
+          "no parece"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0618L03",
+        "seed_context": {
+          "target": "No parece mucho tiempo.",
+          "known": "It doesn't feel like a long time."
+        }
+      },
+      "components": [
+        [
+          "mucho",
+          "much/a lot of"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0618.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

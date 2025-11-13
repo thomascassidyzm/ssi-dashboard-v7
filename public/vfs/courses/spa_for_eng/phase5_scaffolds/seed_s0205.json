@@ -1,0 +1,280 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0205",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "He olvidado la palabra que estaba intentando decir",
+    "known": "I've forgotten the word I was trying to say."
+  },
+  "recent_seed_pairs": {
+    "S0195": [
+      "Estoy intentando encontrar el dinero que dejé en la mesa.",
+      "I'm trying to find the money I left on the table."
+    ],
+    "S0196": [
+      "¿Has oído la última idea?",
+      "Have you heard the latest idea?"
+    ],
+    "S0197": [
+      "Mi hijo trabaja como profesor.",
+      "My son works as a teacher."
+    ],
+    "S0198": [
+      "Mi hija trabaja para el consejo.",
+      "My daughter works for the council."
+    ],
+    "S0199": [
+      "Mi amigo solía trabajar en una oficina.",
+      "My friend used to work in an office."
+    ],
+    "S0200": [
+      "Dicen que quieren asegurarse de que terminemos todo a tiempo.",
+      "They say they want to make sure that we finish everything in time."
+    ],
+    "S0201": [
+      "Queríamos saber qué iba a pasar",
+      "We wanted to know what was going to happen."
+    ],
+    "S0202": [
+      "Nadie estaba seguro de cómo responder la pregunta",
+      "Nobody was sure how to answer the question."
+    ],
+    "S0203": [
+      "¿Qué harías si te pidiera que me ayudaras?",
+      "What would you do if I asked you to help me?"
+    ],
+    "S0204": [
+      "Quería que ella te ayudara a tratar con los arreglos",
+      "I wanted her to help you to deal with the arrangements."
+    ]
+  },
+  "legos": {
+    "S0205L01": {
+      "lego": [
+        "I've forgotten",
+        "he olvidado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0205L01",
+        "seed_context": {
+          "target": "He olvidado la palabra que estaba intentando decir",
+          "known": "I've forgotten the word I was trying to say."
+        }
+      },
+      "components": [
+        [
+          "he",
+          "I've"
+        ],
+        [
+          "olvidado",
+          "forgotten"
+        ]
+      ]
+    },
+    "S0205L02": {
+      "lego": [
+        "the word",
+        "la palabra"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I've forgotten",
+          "he olvidado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0205L02",
+        "seed_context": {
+          "target": "He olvidado la palabra que estaba intentando decir",
+          "known": "I've forgotten the word I was trying to say."
+        }
+      }
+    },
+    "S0205L03": {
+      "lego": [
+        "that I was trying to say",
+        "que estaba intentando decir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I've forgotten",
+          "he olvidado"
+        ],
+        [
+          "the word",
+          "la palabra"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0205L03",
+        "seed_context": {
+          "target": "He olvidado la palabra que estaba intentando decir",
+          "known": "I've forgotten the word I was trying to say."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "estaba",
+          "I was"
+        ],
+        [
+          "intentando",
+          "trying"
+        ],
+        [
+          "decir",
+          "to say"
+        ]
+      ]
+    },
+    "S0205L04": {
+      "lego": [
+        "was trying to say",
+        "estaba intentando decir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I've forgotten",
+          "he olvidado"
+        ],
+        [
+          "the word",
+          "la palabra"
+        ],
+        [
+          "that I was trying to say",
+          "que estaba intentando decir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0205L04",
+        "seed_context": {
+          "target": "He olvidado la palabra que estaba intentando decir",
+          "known": "I've forgotten the word I was trying to say."
+        }
+      },
+      "components": [
+        [
+          "estaba",
+          "was"
+        ],
+        [
+          "intentando",
+          "trying"
+        ],
+        [
+          "decir",
+          "to say"
+        ]
+      ]
+    },
+    "S0205L05": {
+      "lego": [
+        "trying to say",
+        "intentando decir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I've forgotten",
+          "he olvidado"
+        ],
+        [
+          "the word",
+          "la palabra"
+        ],
+        [
+          "that I was trying to say",
+          "que estaba intentando decir"
+        ],
+        [
+          "was trying to say",
+          "estaba intentando decir"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0205L05",
+        "seed_context": {
+          "target": "He olvidado la palabra que estaba intentando decir",
+          "known": "I've forgotten the word I was trying to say."
+        }
+      },
+      "components": [
+        [
+          "intentando",
+          "trying"
+        ],
+        [
+          "decir",
+          "to say"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0205.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

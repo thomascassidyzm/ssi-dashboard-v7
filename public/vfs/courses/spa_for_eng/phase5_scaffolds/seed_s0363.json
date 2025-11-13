@@ -1,0 +1,266 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0363",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Sí él tenía ganas de hablar mucho.",
+    "known": "Yes he felt like talking a lot."
+  },
+  "recent_seed_pairs": {
+    "S0353": [
+      "Ella necesitaba correr alrededor del campo.",
+      "She needed to run around the field."
+    ],
+    "S0354": [
+      "Él no necesitaba aparecer enojado.",
+      "He didn't need to appear angry."
+    ],
+    "S0355": [
+      "¿Necesitaba ella hablar con esa mujer que conoces?",
+      "Did she need to talk to that woman you know?"
+    ],
+    "S0356": [
+      "Sí ellos tenían algo importante que discutir.",
+      "Yes they had something important to discuss."
+    ],
+    "S0357": [
+      "No ella solo quería enviarle un mensaje.",
+      "No she just wanted to send her a message."
+    ],
+    "S0358": [
+      "Tu amigo dijo que ella no podía alcanzar la cima.",
+      "Your friend said that she couldn't reach the top."
+    ],
+    "S0359": [
+      "Tu amigo dijo que él podía girar a la izquierda.",
+      "Your friend said that he could turn left."
+    ],
+    "S0360": [
+      "¿Tu amigo dijo algo más?",
+      "Did your friend say anything else?"
+    ],
+    "S0361": [
+      "Él estaba callado.",
+      "He was quiet."
+    ],
+    "S0362": [
+      "No él estaba bastante callado después de que te fuiste.",
+      "No he was rather quiet after you left."
+    ]
+  },
+  "legos": {
+    "S0363L01": {
+      "lego": [
+        "Yes",
+        "Sí"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0363L01",
+        "seed_context": {
+          "target": "Sí él tenía ganas de hablar mucho.",
+          "known": "Yes he felt like talking a lot."
+        }
+      }
+    },
+    "S0363L02": {
+      "lego": [
+        "he felt like talking a lot",
+        "él tenía ganas de hablar mucho"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0363L02",
+        "seed_context": {
+          "target": "Sí él tenía ganas de hablar mucho.",
+          "known": "Yes he felt like talking a lot."
+        }
+      },
+      "components": [
+        [
+          "él",
+          "he"
+        ],
+        [
+          "tenía ganas de",
+          "felt like"
+        ],
+        [
+          "hablar",
+          "talking"
+        ],
+        [
+          "mucho",
+          "a lot"
+        ]
+      ]
+    },
+    "S0363L03": {
+      "lego": [
+        "felt like talking",
+        "tenía ganas de hablar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ],
+        [
+          "he felt like talking a lot",
+          "él tenía ganas de hablar mucho"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0363L03",
+        "seed_context": {
+          "target": "Sí él tenía ganas de hablar mucho.",
+          "known": "Yes he felt like talking a lot."
+        }
+      },
+      "components": [
+        [
+          "tenía ganas de",
+          "felt like"
+        ],
+        [
+          "hablar",
+          "talking"
+        ]
+      ]
+    },
+    "S0363L04": {
+      "lego": [
+        "talking a lot",
+        "hablar mucho"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ],
+        [
+          "he felt like talking a lot",
+          "él tenía ganas de hablar mucho"
+        ],
+        [
+          "felt like talking",
+          "tenía ganas de hablar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0363L04",
+        "seed_context": {
+          "target": "Sí él tenía ganas de hablar mucho.",
+          "known": "Yes he felt like talking a lot."
+        }
+      },
+      "components": [
+        [
+          "hablar",
+          "talking"
+        ],
+        [
+          "mucho",
+          "a lot"
+        ]
+      ]
+    },
+    "S0363L05": {
+      "lego": [
+        "a lot",
+        "mucho"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ],
+        [
+          "he felt like talking a lot",
+          "él tenía ganas de hablar mucho"
+        ],
+        [
+          "felt like talking",
+          "tenía ganas de hablar"
+        ],
+        [
+          "talking a lot",
+          "hablar mucho"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0363L05",
+        "seed_context": {
+          "target": "Sí él tenía ganas de hablar mucho.",
+          "known": "Yes he felt like talking a lot."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0363.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

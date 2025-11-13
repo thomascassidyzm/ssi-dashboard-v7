@@ -1,0 +1,280 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0464",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Le dije mi número de habitación una vez pero ella lo olvidó.",
+    "known": "I told her my room number once but she forgot it."
+  },
+  "recent_seed_pairs": {
+    "S0454": [
+      "Nuestros amigos vinieron como a las seis.",
+      "Our friends came round at about six o'clock."
+    ],
+    "S0455": [
+      "Tuvimos que irnos porque los niños estaban cansados.",
+      "We had to leave because the children were tired."
+    ],
+    "S0456": [
+      "Puede que esté allí pero no es muy probable.",
+      "He might be there but it's not very likely."
+    ],
+    "S0457": [
+      "Parte del problema es el número de áreas diferentes.",
+      "Part of the problem is the number of different areas."
+    ],
+    "S0458": [
+      "Todo era mucho más fácil en el pasado.",
+      "It was all much easier in the past."
+    ],
+    "S0459": [
+      "No estaba enfrente de la señal azul.",
+      "It wasn't in front of the blue sign."
+    ],
+    "S0460": [
+      "Quiero encontrar una tienda cerca del hotel.",
+      "I want to find a shop near the hotel."
+    ],
+    "S0461": [
+      "Una tienda donde puedo comprar algunas postales.",
+      "A shop where I can buy some postcards."
+    ],
+    "S0462": [
+      "Mi abuelo combatió en Italia durante la guerra.",
+      "My grandfather fought in Italy during the war."
+    ],
+    "S0463": [
+      "Mi número de habitación.",
+      "My room number."
+    ]
+  },
+  "legos": {
+    "S0464L01": {
+      "lego": [
+        "I told her",
+        "le dije"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0464L01",
+        "seed_context": {
+          "target": "Le dije mi número de habitación una vez pero ella lo olvidó.",
+          "known": "I told her my room number once but she forgot it."
+        }
+      },
+      "components": [
+        [
+          "le",
+          "her/to her"
+        ],
+        [
+          "dije",
+          "I told"
+        ]
+      ]
+    },
+    "S0464L02": {
+      "lego": [
+        "my room number",
+        "mi número de habitación"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I told her",
+          "le dije"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0464L02",
+        "seed_context": {
+          "target": "Le dije mi número de habitación una vez pero ella lo olvidó.",
+          "known": "I told her my room number once but she forgot it."
+        }
+      },
+      "components": [
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "número",
+          "number"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "habitación",
+          "room"
+        ]
+      ]
+    },
+    "S0464L03": {
+      "lego": [
+        "once",
+        "una vez"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I told her",
+          "le dije"
+        ],
+        [
+          "my room number",
+          "mi número de habitación"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0464L03",
+        "seed_context": {
+          "target": "Le dije mi número de habitación una vez pero ella lo olvidó.",
+          "known": "I told her my room number once but she forgot it."
+        }
+      },
+      "components": [
+        [
+          "una",
+          "one"
+        ],
+        [
+          "vez",
+          "time"
+        ]
+      ]
+    },
+    "S0464L04": {
+      "lego": [
+        "but",
+        "pero"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I told her",
+          "le dije"
+        ],
+        [
+          "my room number",
+          "mi número de habitación"
+        ],
+        [
+          "once",
+          "una vez"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0464L04",
+        "seed_context": {
+          "target": "Le dije mi número de habitación una vez pero ella lo olvidó.",
+          "known": "I told her my room number once but she forgot it."
+        }
+      }
+    },
+    "S0464L05": {
+      "lego": [
+        "she forgot it",
+        "ella lo olvidó"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I told her",
+          "le dije"
+        ],
+        [
+          "my room number",
+          "mi número de habitación"
+        ],
+        [
+          "once",
+          "una vez"
+        ],
+        [
+          "but",
+          "pero"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0464L05",
+        "seed_context": {
+          "target": "Le dije mi número de habitación una vez pero ella lo olvidó.",
+          "known": "I told her my room number once but she forgot it."
+        }
+      },
+      "components": [
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "lo",
+          "it"
+        ],
+        [
+          "olvidó",
+          "forgot"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0464.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

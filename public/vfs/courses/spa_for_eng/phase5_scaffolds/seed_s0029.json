@@ -1,0 +1,294 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0029",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Estoy deseando hablar mejor tan pronto como pueda.",
+    "known": "I'm looking forward to speaking better as soon as I can."
+  },
+  "recent_seed_pairs": {
+    "S0019": [
+      "Pero no quiero parar de hablar.",
+      "But I don't want to stop talking."
+    ],
+    "S0020": [
+      "Quieres aprender su nombre rápidamente.",
+      "You want to learn his name quickly."
+    ],
+    "S0021": [
+      "¿Por qué estás aprendiendo su nombre?",
+      "Why are you learning her name?"
+    ],
+    "S0022": [
+      "Porque quiero encontrar personas que hablan español.",
+      "Because I want to meet people who speak Spanish."
+    ],
+    "S0023": [
+      "Voy a comenzar a hablar más pronto.",
+      "I'm going to start talking more soon."
+    ],
+    "S0024": [
+      "No voy a poder recordar fácilmente.",
+      "I'm not going to be able to remember easily."
+    ],
+    "S0025": [
+      "¿Vas a ayudarme antes de que tenga que ir?",
+      "Are you going to help me before I have to go?"
+    ],
+    "S0026": [
+      "Me gusta sentir como si estuviera casi preparado para ir.",
+      "I like feeling as if I'm nearly ready to go."
+    ],
+    "S0027": [
+      "No me gusta tomar demasiado tiempo para responder.",
+      "I don't like taking too much time to answer."
+    ],
+    "S0028": [
+      "Es útil comenzar a hablar tan pronto como puedas.",
+      "It's useful to start talking as soon as you can."
+    ]
+  },
+  "legos": {
+    "S0029L01": {
+      "lego": [
+        "I'm looking forward to",
+        "estoy deseando"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0029L01",
+        "seed_context": {
+          "target": "Estoy deseando hablar mejor tan pronto como pueda.",
+          "known": "I'm looking forward to speaking better as soon as I can."
+        }
+      },
+      "components": [
+        [
+          "estoy",
+          "I'm"
+        ],
+        [
+          "deseando",
+          "looking forward to/wishing"
+        ]
+      ]
+    },
+    "S0029L02": {
+      "lego": [
+        "I'm looking forward to speaking",
+        "estoy deseando hablar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm looking forward to",
+          "estoy deseando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0029L02",
+        "seed_context": {
+          "target": "Estoy deseando hablar mejor tan pronto como pueda.",
+          "known": "I'm looking forward to speaking better as soon as I can."
+        }
+      },
+      "components": [
+        [
+          "estoy",
+          "I'm"
+        ],
+        [
+          "deseando",
+          "looking forward to"
+        ],
+        [
+          "hablar",
+          "speaking"
+        ]
+      ]
+    },
+    "S0029L03": {
+      "lego": [
+        "looking forward to speaking better",
+        "deseando hablar mejor"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm looking forward to",
+          "estoy deseando"
+        ],
+        [
+          "I'm looking forward to speaking",
+          "estoy deseando hablar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0029L03",
+        "seed_context": {
+          "target": "Estoy deseando hablar mejor tan pronto como pueda.",
+          "known": "I'm looking forward to speaking better as soon as I can."
+        }
+      },
+      "components": [
+        [
+          "deseando",
+          "looking forward to"
+        ],
+        [
+          "hablar",
+          "speaking"
+        ],
+        [
+          "mejor",
+          "better"
+        ]
+      ]
+    },
+    "S0029L04": {
+      "lego": [
+        "to speak better",
+        "hablar mejor"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm looking forward to",
+          "estoy deseando"
+        ],
+        [
+          "I'm looking forward to speaking",
+          "estoy deseando hablar"
+        ],
+        [
+          "looking forward to speaking better",
+          "deseando hablar mejor"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0029L04",
+        "seed_context": {
+          "target": "Estoy deseando hablar mejor tan pronto como pueda.",
+          "known": "I'm looking forward to speaking better as soon as I can."
+        }
+      },
+      "components": [
+        [
+          "hablar",
+          "to speak"
+        ],
+        [
+          "mejor",
+          "better"
+        ]
+      ]
+    },
+    "S0029L05": {
+      "lego": [
+        "as soon as I can",
+        "tan pronto como pueda"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm looking forward to",
+          "estoy deseando"
+        ],
+        [
+          "I'm looking forward to speaking",
+          "estoy deseando hablar"
+        ],
+        [
+          "looking forward to speaking better",
+          "deseando hablar mejor"
+        ],
+        [
+          "to speak better",
+          "hablar mejor"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0029L05",
+        "seed_context": {
+          "target": "Estoy deseando hablar mejor tan pronto como pueda.",
+          "known": "I'm looking forward to speaking better as soon as I can."
+        }
+      },
+      "components": [
+        [
+          "tan",
+          "as"
+        ],
+        [
+          "pronto",
+          "soon"
+        ],
+        [
+          "como",
+          "as"
+        ],
+        [
+          "pueda",
+          "I can"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0029.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

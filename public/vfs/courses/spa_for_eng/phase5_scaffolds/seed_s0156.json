@@ -1,0 +1,186 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0156",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Quieres ir a un restaurante esta noche?",
+    "known": "Do you want to go to a restaurant tonight?"
+  },
+  "recent_seed_pairs": {
+    "S0146": [
+      "Nada parece estar funcionando desde que intentamos arreglarlo.",
+      "Nothing seems to be working since we tried to fix it."
+    ],
+    "S0147": [
+      "Ella era muy amable cuando me vio sintiéndome nervioso.",
+      "She was very kind when she saw me feeling nervous."
+    ],
+    "S0148": [
+      "Él no era muy paciente cuando no pude responder.",
+      "He wasn't very patient when I couldn't answer."
+    ],
+    "S0149": [
+      "Esto no es muy difícil, entonces espero que termines pronto.",
+      "This isn't very difficult, so I hope you'll finish soon."
+    ],
+    "S0150": [
+      "¿Puedes decirme cuál es tu nombre?",
+      "Can you tell me what your name is?"
+    ],
+    "S0151": [
+      "Eso no era lo que estaba esperando que pasara.",
+      "That wasn't what I was hoping would happen."
+    ],
+    "S0152": [
+      "Lo habría hecho diferentemente si hubiera sabido lo que querías.",
+      "I would have done it differently if I had known what you wanted."
+    ],
+    "S0153": [
+      "No lo habría dicho exactamente de la misma manera.",
+      "I wouldn't have said it in exactly the same way."
+    ],
+    "S0154": [
+      "¿Dónde quieres encontrarte el sábado por la noche?",
+      "Where do you want to meet on Saturday night?"
+    ],
+    "S0155": [
+      "No me importa esperar unos minutos mañana por la mañana.",
+      "I don't mind waiting for a few minutes tomorrow morning."
+    ]
+  },
+  "legos": {
+    "S0156L01": {
+      "lego": [
+        "you want to go",
+        "quieres ir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0156L01",
+        "seed_context": {
+          "target": "¿Quieres ir a un restaurante esta noche?",
+          "known": "Do you want to go to a restaurant tonight?"
+        }
+      },
+      "components": [
+        [
+          "quieres",
+          "you want"
+        ],
+        [
+          "ir",
+          "to go"
+        ]
+      ]
+    },
+    "S0156L02": {
+      "lego": [
+        "to a restaurant",
+        "a un restaurante"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you want to go",
+          "quieres ir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0156L02",
+        "seed_context": {
+          "target": "¿Quieres ir a un restaurante esta noche?",
+          "known": "Do you want to go to a restaurant tonight?"
+        }
+      },
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "un",
+          "a"
+        ],
+        [
+          "restaurante",
+          "restaurant"
+        ]
+      ]
+    },
+    "S0156L03": {
+      "lego": [
+        "tonight",
+        "esta noche"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you want to go",
+          "quieres ir"
+        ],
+        [
+          "to a restaurant",
+          "a un restaurante"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0156L03",
+        "seed_context": {
+          "target": "¿Quieres ir a un restaurante esta noche?",
+          "known": "Do you want to go to a restaurant tonight?"
+        }
+      },
+      "components": [
+        [
+          "esta",
+          "this"
+        ],
+        [
+          "noche",
+          "night"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0156.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

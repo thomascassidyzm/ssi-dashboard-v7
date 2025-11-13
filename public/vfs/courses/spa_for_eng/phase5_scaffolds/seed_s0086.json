@@ -1,0 +1,134 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0086",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No fue posible, desafortunadamente.",
+    "known": "It wasn't possible, unfortunately."
+  },
+  "recent_seed_pairs": {
+    "S0076": [
+      "Estoy muy feliz con cuánto he aprendido ya",
+      "I'm very happy with how much I've learnt already."
+    ],
+    "S0077": [
+      "Estoy sorprendido de lo rápidamente que estoy comenzando a comprender",
+      "I'm surprised at how quickly I'm starting to understand."
+    ],
+    "S0078": [
+      "No comprendo lo que dijiste",
+      "I don't understand what you said."
+    ],
+    "S0079": [
+      "¿Cuándo comenzaste a aprender?",
+      "When did you start to learn?"
+    ],
+    "S0080": [
+      "No estoy seguro de cuándo estaré preparado",
+      "I'm not sure when I'll be ready."
+    ],
+    "S0081": [
+      "¿Cuándo quieres comenzar?",
+      "When do you want to start?"
+    ],
+    "S0082": [
+      "No voy a esperarte. ¿Por qué no?",
+      "I'm not going to wait for you. Why not?"
+    ],
+    "S0083": [
+      "Estoy de acuerdo con lo que dijiste sobre tu amigo.",
+      "I agree with what you said about your friend."
+    ],
+    "S0084": [
+      "No estoy de acuerdo con lo que dijo sobre mi amigo.",
+      "I don't agree with what he said about my friend."
+    ],
+    "S0085": [
+      "No conozco a esas personas.",
+      "I don't know those people."
+    ]
+  },
+  "legos": {
+    "S0086L01": {
+      "lego": [
+        "it wasn't possible",
+        "no fue posible"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0086L01",
+        "seed_context": {
+          "target": "No fue posible, desafortunadamente.",
+          "known": "It wasn't possible, unfortunately."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "fue",
+          "it was"
+        ],
+        [
+          "posible",
+          "possible"
+        ]
+      ]
+    },
+    "S0086L02": {
+      "lego": [
+        "unfortunately",
+        "desafortunadamente"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "it wasn't possible",
+          "no fue posible"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0086L02",
+        "seed_context": {
+          "target": "No fue posible, desafortunadamente.",
+          "known": "It wasn't possible, unfortunately."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0086.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "total_legos_in_seed": 2,
+    "phrases_to_generate": 24,
+    "recent_context_seeds": 10
+  }
+}

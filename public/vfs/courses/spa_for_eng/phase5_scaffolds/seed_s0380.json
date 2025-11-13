@@ -1,0 +1,230 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0380",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Pregunté qué quería incluir.",
+    "known": "I asked what she wanted to include."
+  },
+  "recent_seed_pairs": {
+    "S0370": [
+      "No vi a nadie que yo conocía.",
+      "I didn't see anyone that I knew."
+    ],
+    "S0371": [
+      "Fui a ver una película el miércoles.",
+      "I went to see a film on Wednesday."
+    ],
+    "S0372": [
+      "¿Viste lo que ella estaba intentando crear?",
+      "Did you see what she was trying to create?"
+    ],
+    "S0373": [
+      "Fue hermoso.",
+      "It was beautiful."
+    ],
+    "S0374": [
+      "Sí pensé que era muy hermoso.",
+      "Yes I thought it was very beautiful."
+    ],
+    "S0375": [
+      "No no sabía qué estaba haciendo.",
+      "No I didn't know what she was doing."
+    ],
+    "S0376": [
+      "No fui a ninguna parte el mes pasado.",
+      "I didn't go anywhere last month."
+    ],
+    "S0377": [
+      "¿Fuiste a alguna parte en el mundo el año pasado?",
+      "Did you go anywhere in the world last year?"
+    ],
+    "S0378": [
+      "No no tenía suficiente dinero para vacaciones.",
+      "No I didn't have enough money for holidays."
+    ],
+    "S0379": [
+      "Sí tuve suficiente suerte para viajar a África.",
+      "Yes I was lucky enough to travel to Africa."
+    ]
+  },
+  "legos": {
+    "S0380L01": {
+      "lego": [
+        "I asked",
+        "pregunté"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0380L01",
+        "seed_context": {
+          "target": "Pregunté qué quería incluir.",
+          "known": "I asked what she wanted to include."
+        }
+      }
+    },
+    "S0380L02": {
+      "lego": [
+        "I asked what she wanted to include",
+        "pregunté qué quería incluir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I asked",
+          "pregunté"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0380L02",
+        "seed_context": {
+          "target": "Pregunté qué quería incluir.",
+          "known": "I asked what she wanted to include."
+        }
+      },
+      "components": [
+        [
+          "pregunté",
+          "I asked"
+        ],
+        [
+          "qué",
+          "what"
+        ],
+        [
+          "quería",
+          "she wanted"
+        ],
+        [
+          "incluir",
+          "to include"
+        ]
+      ]
+    },
+    "S0380L03": {
+      "lego": [
+        "what she wanted to include",
+        "qué quería incluir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I asked",
+          "pregunté"
+        ],
+        [
+          "I asked what she wanted to include",
+          "pregunté qué quería incluir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0380L03",
+        "seed_context": {
+          "target": "Pregunté qué quería incluir.",
+          "known": "I asked what she wanted to include."
+        }
+      },
+      "components": [
+        [
+          "qué",
+          "what"
+        ],
+        [
+          "quería",
+          "she wanted"
+        ],
+        [
+          "incluir",
+          "to include"
+        ]
+      ]
+    },
+    "S0380L04": {
+      "lego": [
+        "wanted to include",
+        "quería incluir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I asked",
+          "pregunté"
+        ],
+        [
+          "I asked what she wanted to include",
+          "pregunté qué quería incluir"
+        ],
+        [
+          "what she wanted to include",
+          "qué quería incluir"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0380L04",
+        "seed_context": {
+          "target": "Pregunté qué quería incluir.",
+          "known": "I asked what she wanted to include."
+        }
+      },
+      "components": [
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "incluir",
+          "to include"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0380.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

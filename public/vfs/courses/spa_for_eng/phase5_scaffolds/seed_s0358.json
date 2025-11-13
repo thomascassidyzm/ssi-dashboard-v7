@@ -1,0 +1,344 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0358",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Tu amigo dijo que ella no podía alcanzar la cima.",
+    "known": "Your friend said that she couldn't reach the top."
+  },
+  "recent_seed_pairs": {
+    "S0348": [
+      "She didn't want to know what was going to happen.",
+      "Ella no quería saber qué iba a pasar."
+    ],
+    "S0349": [
+      "Did he want to go out on Friday night?",
+      "¿Quería él salir el viernes por la noche?"
+    ],
+    "S0350": [
+      "Yes he wanted to see some old friends.",
+      "Sí él quería ver a unos amigos viejos."
+    ],
+    "S0351": [
+      "No él no quería dejarme solo.",
+      "No he didn't want to leave me on my own."
+    ],
+    "S0352": [
+      "Aunque él quisiera no podría.",
+      "Even if he wanted to he wouldn't be able to."
+    ],
+    "S0353": [
+      "Ella necesitaba correr alrededor del campo.",
+      "She needed to run around the field."
+    ],
+    "S0354": [
+      "Él no necesitaba aparecer enojado.",
+      "He didn't need to appear angry."
+    ],
+    "S0355": [
+      "¿Necesitaba ella hablar con esa mujer que conoces?",
+      "Did she need to talk to that woman you know?"
+    ],
+    "S0356": [
+      "Sí ellos tenían algo importante que discutir.",
+      "Yes they had something important to discuss."
+    ],
+    "S0357": [
+      "No ella solo quería enviarle un mensaje.",
+      "No she just wanted to send her a message."
+    ]
+  },
+  "legos": {
+    "S0358L01": {
+      "lego": [
+        "Your friend",
+        "tu amigo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0358L01",
+        "seed_context": {
+          "target": "Tu amigo dijo que ella no podía alcanzar la cima.",
+          "known": "Your friend said that she couldn't reach the top."
+        }
+      },
+      "components": [
+        [
+          "tu",
+          "Your"
+        ],
+        [
+          "amigo",
+          "friend"
+        ]
+      ]
+    },
+    "S0358L02": {
+      "lego": [
+        "said that",
+        "dijo que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Your friend",
+          "tu amigo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0358L02",
+        "seed_context": {
+          "target": "Tu amigo dijo que ella no podía alcanzar la cima.",
+          "known": "Your friend said that she couldn't reach the top."
+        }
+      },
+      "components": [
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0358L03": {
+      "lego": [
+        "she couldn't",
+        "ella no podía"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Your friend",
+          "tu amigo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0358L03",
+        "seed_context": {
+          "target": "Tu amigo dijo que ella no podía alcanzar la cima.",
+          "known": "Your friend said that she couldn't reach the top."
+        }
+      },
+      "components": [
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "no",
+          "couldn't"
+        ],
+        [
+          "podía",
+          "could"
+        ]
+      ]
+    },
+    "S0358L04": {
+      "lego": [
+        "couldn't reach",
+        "no podía alcanzar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Your friend",
+          "tu amigo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "she couldn't",
+          "ella no podía"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0358L04",
+        "seed_context": {
+          "target": "Tu amigo dijo que ella no podía alcanzar la cima.",
+          "known": "Your friend said that she couldn't reach the top."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "couldn't"
+        ],
+        [
+          "podía",
+          "could"
+        ],
+        [
+          "alcanzar",
+          "reach"
+        ]
+      ]
+    },
+    "S0358L05": {
+      "lego": [
+        "reach the top",
+        "alcanzar la cima"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Your friend",
+          "tu amigo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "she couldn't",
+          "ella no podía"
+        ],
+        [
+          "couldn't reach",
+          "no podía alcanzar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0358L05",
+        "seed_context": {
+          "target": "Tu amigo dijo que ella no podía alcanzar la cima.",
+          "known": "Your friend said that she couldn't reach the top."
+        }
+      },
+      "components": [
+        [
+          "alcanzar",
+          "reach"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "cima",
+          "top"
+        ]
+      ]
+    },
+    "S0358L06": {
+      "lego": [
+        "the top",
+        "la cima"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Your friend",
+          "tu amigo"
+        ],
+        [
+          "said that",
+          "dijo que"
+        ],
+        [
+          "she couldn't",
+          "ella no podía"
+        ],
+        [
+          "couldn't reach",
+          "no podía alcanzar"
+        ],
+        [
+          "reach the top",
+          "alcanzar la cima"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0358L06",
+        "seed_context": {
+          "target": "Tu amigo dijo que ella no podía alcanzar la cima.",
+          "known": "Your friend said that she couldn't reach the top."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "cima",
+          "top"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0358.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

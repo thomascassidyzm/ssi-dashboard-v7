@@ -1,0 +1,348 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0115",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No siento como si estuviera preparado para tener una conversación.",
+    "known": "I don't feel as if I'm ready to have a conversation."
+  },
+  "recent_seed_pairs": {
+    "S0105": [
+      "Por eso no sabía la respuesta",
+      "That is why he didn't know the answer."
+    ],
+    "S0106": [
+      "No necesitamos sentirnos felices, solo necesitamos trabajar duro",
+      "We don't need to feel happy, we just need to work hard."
+    ],
+    "S0107": [
+      "Esperábamos ver lo que estabas haciendo",
+      "We hoped to see what you were doing."
+    ],
+    "S0108": [
+      "No esperábamos despertar en el medio de la noche",
+      "We didn't hope to wake in the middle of the night."
+    ],
+    "S0109": [
+      "Debemos trabajar duro para aprender muchas palabras nuevas",
+      "We must work hard to learn a lot of new words."
+    ],
+    "S0110": [
+      "Somos amigos, y después de que terminemos me gustaría relajarme",
+      "We're friends, and after we finish I'd like to relax."
+    ],
+    "S0111": [
+      "Cuando aprendemos algo nuevo cambia nuestro cerebro",
+      "When we learn something new it changes our brain."
+    ],
+    "S0112": [
+      "Eso fue muy interesante, y no estaba esperándolo",
+      "That was very interesting, and I wasn't expecting it."
+    ],
+    "S0113": [
+      "¿Por qué no puedo recordar lo que dijiste?",
+      "Why can't I remember what you said?"
+    ],
+    "S0114": [
+      "Siento como si estuviera haciendo peor hoy que ayer.",
+      "I feel as if I'm doing worse today than yesterday."
+    ]
+  },
+  "legos": {
+    "S0115L01": {
+      "lego": [
+        "I don't feel",
+        "no siento"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0115L01",
+        "seed_context": {
+          "target": "No siento como si estuviera preparado para tener una conversación.",
+          "known": "I don't feel as if I'm ready to have a conversation."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "siento",
+          "I feel"
+        ]
+      ]
+    },
+    "S0115L02": {
+      "lego": [
+        "as if I'm ready",
+        "como si estuviera preparado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't feel",
+          "no siento"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0115L02",
+        "seed_context": {
+          "target": "No siento como si estuviera preparado para tener una conversación.",
+          "known": "I don't feel as if I'm ready to have a conversation."
+        }
+      },
+      "components": [
+        [
+          "como",
+          "as"
+        ],
+        [
+          "si",
+          "if"
+        ],
+        [
+          "estuviera",
+          "I were"
+        ],
+        [
+          "preparado",
+          "ready"
+        ]
+      ]
+    },
+    "S0115L03": {
+      "lego": [
+        "to have",
+        "para tener"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't feel",
+          "no siento"
+        ],
+        [
+          "as if I'm ready",
+          "como si estuviera preparado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0115L03",
+        "seed_context": {
+          "target": "No siento como si estuviera preparado para tener una conversación.",
+          "known": "I don't feel as if I'm ready to have a conversation."
+        }
+      },
+      "components": [
+        [
+          "para",
+          "to/for"
+        ],
+        [
+          "tener",
+          "to have"
+        ]
+      ]
+    },
+    "S0115L04": {
+      "lego": [
+        "a conversation",
+        "una conversación"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't feel",
+          "no siento"
+        ],
+        [
+          "as if I'm ready",
+          "como si estuviera preparado"
+        ],
+        [
+          "to have",
+          "para tener"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0115L04",
+        "seed_context": {
+          "target": "No siento como si estuviera preparado para tener una conversación.",
+          "known": "I don't feel as if I'm ready to have a conversation."
+        }
+      },
+      "components": [
+        [
+          "una",
+          "a"
+        ],
+        [
+          "conversación",
+          "conversation"
+        ]
+      ]
+    },
+    "S0115L05": {
+      "lego": [
+        "to have a conversation",
+        "tener una conversación"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't feel",
+          "no siento"
+        ],
+        [
+          "as if I'm ready",
+          "como si estuviera preparado"
+        ],
+        [
+          "to have",
+          "para tener"
+        ],
+        [
+          "a conversation",
+          "una conversación"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0115L05",
+        "seed_context": {
+          "target": "No siento como si estuviera preparado para tener una conversación.",
+          "known": "I don't feel as if I'm ready to have a conversation."
+        }
+      },
+      "components": [
+        [
+          "tener",
+          "to have"
+        ],
+        [
+          "una",
+          "a"
+        ],
+        [
+          "conversación",
+          "conversation"
+        ]
+      ]
+    },
+    "S0115L06": {
+      "lego": [
+        "ready to have",
+        "preparado para tener"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't feel",
+          "no siento"
+        ],
+        [
+          "as if I'm ready",
+          "como si estuviera preparado"
+        ],
+        [
+          "to have",
+          "para tener"
+        ],
+        [
+          "a conversation",
+          "una conversación"
+        ],
+        [
+          "to have a conversation",
+          "tener una conversación"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0115L06",
+        "seed_context": {
+          "target": "No siento como si estuviera preparado para tener una conversación.",
+          "known": "I don't feel as if I'm ready to have a conversation."
+        }
+      },
+      "components": [
+        [
+          "preparado",
+          "ready"
+        ],
+        [
+          "para",
+          "to"
+        ],
+        [
+          "tener",
+          "to have"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0115.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

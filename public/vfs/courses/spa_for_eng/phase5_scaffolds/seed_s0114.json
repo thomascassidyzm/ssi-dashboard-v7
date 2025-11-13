@@ -1,0 +1,428 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0114",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Siento como si estuviera haciendo peor hoy que ayer.",
+    "known": "I feel as if I'm doing worse today than yesterday."
+  },
+  "recent_seed_pairs": {
+    "S0104": [
+      "Necesitamos cambiar lo que estamos haciendo",
+      "We need to change what we're doing."
+    ],
+    "S0105": [
+      "Por eso no sabía la respuesta",
+      "That is why he didn't know the answer."
+    ],
+    "S0106": [
+      "No necesitamos sentirnos felices, solo necesitamos trabajar duro",
+      "We don't need to feel happy, we just need to work hard."
+    ],
+    "S0107": [
+      "Esperábamos ver lo que estabas haciendo",
+      "We hoped to see what you were doing."
+    ],
+    "S0108": [
+      "No esperábamos despertar en el medio de la noche",
+      "We didn't hope to wake in the middle of the night."
+    ],
+    "S0109": [
+      "Debemos trabajar duro para aprender muchas palabras nuevas",
+      "We must work hard to learn a lot of new words."
+    ],
+    "S0110": [
+      "Somos amigos, y después de que terminemos me gustaría relajarme",
+      "We're friends, and after we finish I'd like to relax."
+    ],
+    "S0111": [
+      "Cuando aprendemos algo nuevo cambia nuestro cerebro",
+      "When we learn something new it changes our brain."
+    ],
+    "S0112": [
+      "Eso fue muy interesante, y no estaba esperándolo",
+      "That was very interesting, and I wasn't expecting it."
+    ],
+    "S0113": [
+      "¿Por qué no puedo recordar lo que dijiste?",
+      "Why can't I remember what you said?"
+    ]
+  },
+  "legos": {
+    "S0114L01": {
+      "lego": [
+        "I feel",
+        "siento"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0114L01",
+        "seed_context": {
+          "target": "Siento como si estuviera haciendo peor hoy que ayer.",
+          "known": "I feel as if I'm doing worse today than yesterday."
+        }
+      }
+    },
+    "S0114L02": {
+      "lego": [
+        "as if I'm doing",
+        "como si estuviera haciendo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I feel",
+          "siento"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0114L02",
+        "seed_context": {
+          "target": "Siento como si estuviera haciendo peor hoy que ayer.",
+          "known": "I feel as if I'm doing worse today than yesterday."
+        }
+      },
+      "components": [
+        [
+          "como",
+          "as"
+        ],
+        [
+          "si",
+          "if"
+        ],
+        [
+          "estuviera",
+          "I were"
+        ],
+        [
+          "haciendo",
+          "doing"
+        ]
+      ]
+    },
+    "S0114L03": {
+      "lego": [
+        "doing worse",
+        "haciendo peor"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I feel",
+          "siento"
+        ],
+        [
+          "as if I'm doing",
+          "como si estuviera haciendo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0114L03",
+        "seed_context": {
+          "target": "Siento como si estuviera haciendo peor hoy que ayer.",
+          "known": "I feel as if I'm doing worse today than yesterday."
+        }
+      },
+      "components": [
+        [
+          "haciendo",
+          "doing"
+        ],
+        [
+          "peor",
+          "worse"
+        ]
+      ]
+    },
+    "S0114L04": {
+      "lego": [
+        "worse",
+        "peor"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I feel",
+          "siento"
+        ],
+        [
+          "as if I'm doing",
+          "como si estuviera haciendo"
+        ],
+        [
+          "doing worse",
+          "haciendo peor"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0114L04",
+        "seed_context": {
+          "target": "Siento como si estuviera haciendo peor hoy que ayer.",
+          "known": "I feel as if I'm doing worse today than yesterday."
+        }
+      }
+    },
+    "S0114L05": {
+      "lego": [
+        "today",
+        "hoy"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I feel",
+          "siento"
+        ],
+        [
+          "as if I'm doing",
+          "como si estuviera haciendo"
+        ],
+        [
+          "doing worse",
+          "haciendo peor"
+        ],
+        [
+          "worse",
+          "peor"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0114L05",
+        "seed_context": {
+          "target": "Siento como si estuviera haciendo peor hoy que ayer.",
+          "known": "I feel as if I'm doing worse today than yesterday."
+        }
+      }
+    },
+    "S0114L06": {
+      "lego": [
+        "yesterday",
+        "ayer"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I feel",
+          "siento"
+        ],
+        [
+          "as if I'm doing",
+          "como si estuviera haciendo"
+        ],
+        [
+          "doing worse",
+          "haciendo peor"
+        ],
+        [
+          "worse",
+          "peor"
+        ],
+        [
+          "today",
+          "hoy"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0114L06",
+        "seed_context": {
+          "target": "Siento como si estuviera haciendo peor hoy que ayer.",
+          "known": "I feel as if I'm doing worse today than yesterday."
+        }
+      }
+    },
+    "S0114L07": {
+      "lego": [
+        "than yesterday",
+        "que ayer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I feel",
+          "siento"
+        ],
+        [
+          "as if I'm doing",
+          "como si estuviera haciendo"
+        ],
+        [
+          "doing worse",
+          "haciendo peor"
+        ],
+        [
+          "worse",
+          "peor"
+        ],
+        [
+          "today",
+          "hoy"
+        ],
+        [
+          "yesterday",
+          "ayer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0114L07",
+        "seed_context": {
+          "target": "Siento como si estuviera haciendo peor hoy que ayer.",
+          "known": "I feel as if I'm doing worse today than yesterday."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "than"
+        ],
+        [
+          "ayer",
+          "yesterday"
+        ]
+      ]
+    },
+    "S0114L08": {
+      "lego": [
+        "worse today than yesterday",
+        "peor hoy que ayer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I feel",
+          "siento"
+        ],
+        [
+          "as if I'm doing",
+          "como si estuviera haciendo"
+        ],
+        [
+          "doing worse",
+          "haciendo peor"
+        ],
+        [
+          "worse",
+          "peor"
+        ],
+        [
+          "today",
+          "hoy"
+        ],
+        [
+          "yesterday",
+          "ayer"
+        ],
+        [
+          "than yesterday",
+          "que ayer"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0114L08",
+        "seed_context": {
+          "target": "Siento como si estuviera haciendo peor hoy que ayer.",
+          "known": "I feel as if I'm doing worse today than yesterday."
+        }
+      },
+      "components": [
+        [
+          "peor",
+          "worse"
+        ],
+        [
+          "hoy",
+          "today"
+        ],
+        [
+          "que",
+          "than"
+        ],
+        [
+          "ayer",
+          "yesterday"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0114.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 8,
+    "total_legos_in_seed": 8,
+    "phrases_to_generate": 96,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0585",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Puedo ver las montañas desde la ventana de mi dormitorio.",
+    "known": "I can see the mountains out of my bedroom window."
+  },
+  "recent_seed_pairs": {
+    "S0575": [
+      "Ha sido perturbador.",
+      "It's been upsetting."
+    ],
+    "S0576": [
+      "Ha sido muy perturbador esperar.",
+      "It has been very upsetting waiting."
+    ],
+    "S0577": [
+      "Hemos estado esperando las noticias del hospital.",
+      "We've been waiting for the news from the hospital."
+    ],
+    "S0578": [
+      "En algún lugar más cálido.",
+      "Somewhere warmer."
+    ],
+    "S0579": [
+      "Frecuentemente hemos intentado.",
+      "We've often tried."
+    ],
+    "S0580": [
+      "Frecuentemente hemos querido llevar a los niños a algún lugar un poco más cálido.",
+      "We've often wanted to take the children somewhere a little warmer."
+    ],
+    "S0581": [
+      "Le gustaría saber un poco más sobre cómo es.",
+      "He'd like to know a little more about what it's like."
+    ],
+    "S0582": [
+      "¿Cómo es crecer aquí?",
+      "What's it like to grow up here?"
+    ],
+    "S0583": [
+      "¿Cómo es en esta parte del mundo?",
+      "What's it like in this part of the world?"
+    ],
+    "S0584": [
+      "¿Cómo es despertar cada mañana y ver las montañas?",
+      "What's it like to wake up every morning and see the mountains?"
+    ]
+  },
+  "legos": {
+    "S0585L01": {
+      "lego": [
+        "I can see",
+        "puedo ver"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0585L01",
+        "seed_context": {
+          "target": "Puedo ver las montañas desde la ventana de mi dormitorio.",
+          "known": "I can see the mountains out of my bedroom window."
+        }
+      },
+      "components": [
+        [
+          "puedo",
+          "I can"
+        ],
+        [
+          "ver",
+          "to see"
+        ]
+      ]
+    },
+    "S0585L02": {
+      "lego": [
+        "I can see the mountains",
+        "puedo ver las montañas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I can see",
+          "puedo ver"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0585L02",
+        "seed_context": {
+          "target": "Puedo ver las montañas desde la ventana de mi dormitorio.",
+          "known": "I can see the mountains out of my bedroom window."
+        }
+      },
+      "components": [
+        [
+          "puedo",
+          "I can"
+        ],
+        [
+          "ver",
+          "to see"
+        ],
+        [
+          "las",
+          "the"
+        ],
+        [
+          "montañas",
+          "mountains"
+        ]
+      ]
+    },
+    "S0585L03": {
+      "lego": [
+        "out of the window",
+        "desde la ventana"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I can see",
+          "puedo ver"
+        ],
+        [
+          "I can see the mountains",
+          "puedo ver las montañas"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0585L03",
+        "seed_context": {
+          "target": "Puedo ver las montañas desde la ventana de mi dormitorio.",
+          "known": "I can see the mountains out of my bedroom window."
+        }
+      },
+      "components": [
+        [
+          "desde",
+          "from/out of"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "ventana",
+          "window"
+        ]
+      ]
+    },
+    "S0585L04": {
+      "lego": [
+        "my bedroom window",
+        "la ventana de mi dormitorio"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I can see",
+          "puedo ver"
+        ],
+        [
+          "I can see the mountains",
+          "puedo ver las montañas"
+        ],
+        [
+          "out of the window",
+          "desde la ventana"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0585L04",
+        "seed_context": {
+          "target": "Puedo ver las montañas desde la ventana de mi dormitorio.",
+          "known": "I can see the mountains out of my bedroom window."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "ventana",
+          "window"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "dormitorio",
+          "bedroom"
+        ]
+      ]
+    },
+    "S0585L05": {
+      "lego": [
+        "of my bedroom",
+        "de mi dormitorio"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I can see",
+          "puedo ver"
+        ],
+        [
+          "I can see the mountains",
+          "puedo ver las montañas"
+        ],
+        [
+          "out of the window",
+          "desde la ventana"
+        ],
+        [
+          "my bedroom window",
+          "la ventana de mi dormitorio"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0585L05",
+        "seed_context": {
+          "target": "Puedo ver las montañas desde la ventana de mi dormitorio.",
+          "known": "I can see the mountains out of my bedroom window."
+        }
+      },
+      "components": [
+        [
+          "de",
+          "of"
+        ],
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "dormitorio",
+          "bedroom"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0585.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

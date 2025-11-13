@@ -1,0 +1,180 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0406",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No I'm sure it will be okay.",
+    "known": "No, estoy seguro de que estará bien."
+  },
+  "recent_seed_pairs": {
+    "S0396": [
+      "No necesitamos estar de pie hasta que todos los demás estén preparados.",
+      "We don't need to stand until everybody else is ready."
+    ],
+    "S0397": [
+      "¿Necesitamos prepararnos pronto?",
+      "Do we need to get ready soon?"
+    ],
+    "S0398": [
+      "Queremos volvernos más pacientes con nuestros niños.",
+      "We want to become more patient with our children."
+    ],
+    "S0399": [
+      "No queremos perder la esperanza.",
+      "We don't want to lose hope."
+    ],
+    "S0400": [
+      "¿Queremos comer algo más tarde?",
+      "Do we want to eat something later on?"
+    ],
+    "S0401": [
+      "No it would be better to go straight home.",
+      "No, sería mejor ir directamente a casa."
+    ],
+    "S0402": [
+      "Yes it would be nice to stop somewhere for food.",
+      "Sí, sería agradable parar en algún lugar para comida."
+    ],
+    "S0403": [
+      "We should remain quiet for as long as possible.",
+      "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+    ],
+    "S0404": [
+      "We shouldn't expect to finish before Thursday.",
+      "No deberíamos esperar terminar antes del jueves."
+    ],
+    "S0405": [
+      "Should we ask if we have to book?",
+      "¿Deberíamos preguntar si tenemos que reservar?"
+    ]
+  },
+  "legos": {
+    "S0406L01": {
+      "lego": [
+        "No",
+        "No"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0406L01",
+        "seed_context": {
+          "target": "No I'm sure it will be okay.",
+          "known": "No, estoy seguro de que estará bien."
+        }
+      }
+    },
+    "S0406L02": {
+      "lego": [
+        "I'm sure (that)",
+        "estoy seguro de que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "No",
+          "No"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0406L02",
+        "seed_context": {
+          "target": "No I'm sure it will be okay.",
+          "known": "No, estoy seguro de que estará bien."
+        }
+      },
+      "components": [
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "seguro",
+          "sure"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0406L03": {
+      "lego": [
+        "it will be okay",
+        "estará bien"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "No",
+          "No"
+        ],
+        [
+          "I'm sure (that)",
+          "estoy seguro de que"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0406L03",
+        "seed_context": {
+          "target": "No I'm sure it will be okay.",
+          "known": "No, estoy seguro de que estará bien."
+        }
+      },
+      "components": [
+        [
+          "estará",
+          "it will be"
+        ],
+        [
+          "bien",
+          "okay/well"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0406.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0262",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Quién era ese hombre con el que hablabas ayer?",
+    "known": "Who was that man you were talking to yesterday?"
+  },
+  "recent_seed_pairs": {
+    "S0252": [
+      "¿Cuándo estarás preparado para empezar?",
+      "When will you be ready to start?"
+    ],
+    "S0253": [
+      "Debo estar preparado en unos pocos minutos.",
+      "I should be ready in a few minutes."
+    ],
+    "S0254": [
+      "He estado preparado desde esta mañana.",
+      "I've been ready since this morning."
+    ],
+    "S0255": [
+      "¿Cuándo crees que estarás preparado para salir?",
+      "When do you think you'll be ready to leave?"
+    ],
+    "S0256": [
+      "Creo que estaré listo en menos de una hora.",
+      "I think I'll be ready in less than an hour."
+    ],
+    "S0257": [
+      "Me gusta esa cosa azul.",
+      "I like that blue thing."
+    ],
+    "S0258": [
+      "¿Qué es esa cosa azul de allí?",
+      "What's that blue thing over there?"
+    ],
+    "S0259": [
+      "Una idea.",
+      "An idea."
+    ],
+    "S0260": [
+      "No tengo ni la más mínima idea.",
+      "I don't have the faintest idea."
+    ],
+    "S0261": [
+      "Creo que puede ser algo importante.",
+      "I think it might be something important."
+    ]
+  },
+  "legos": {
+    "S0262L01": {
+      "lego": [
+        "who was",
+        "quién era"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0262L01",
+        "seed_context": {
+          "target": "¿Quién era ese hombre con el que hablabas ayer?",
+          "known": "Who was that man you were talking to yesterday?"
+        }
+      },
+      "components": [
+        [
+          "quién",
+          "who"
+        ],
+        [
+          "era",
+          "was"
+        ]
+      ]
+    },
+    "S0262L02": {
+      "lego": [
+        "that man",
+        "ese hombre"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "who was",
+          "quién era"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0262L02",
+        "seed_context": {
+          "target": "¿Quién era ese hombre con el que hablabas ayer?",
+          "known": "Who was that man you were talking to yesterday?"
+        }
+      },
+      "components": [
+        [
+          "ese",
+          "that"
+        ],
+        [
+          "hombre",
+          "man"
+        ]
+      ]
+    },
+    "S0262L03": {
+      "lego": [
+        "you were talking to/with whom you were talking",
+        "con el que hablabas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "who was",
+          "quién era"
+        ],
+        [
+          "that man",
+          "ese hombre"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0262L03",
+        "seed_context": {
+          "target": "¿Quién era ese hombre con el que hablabas ayer?",
+          "known": "Who was that man you were talking to yesterday?"
+        }
+      },
+      "components": [
+        [
+          "con",
+          "with"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "que",
+          "that/whom"
+        ],
+        [
+          "hablabas",
+          "you were talking"
+        ]
+      ]
+    },
+    "S0262L04": {
+      "lego": [
+        "were talking yesterday",
+        "hablabas ayer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "who was",
+          "quién era"
+        ],
+        [
+          "that man",
+          "ese hombre"
+        ],
+        [
+          "you were talking to/with whom you were talking",
+          "con el que hablabas"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0262L04",
+        "seed_context": {
+          "target": "¿Quién era ese hombre con el que hablabas ayer?",
+          "known": "Who was that man you were talking to yesterday?"
+        }
+      },
+      "components": [
+        [
+          "hablabas",
+          "were talking"
+        ],
+        [
+          "ayer",
+          "yesterday"
+        ]
+      ]
+    },
+    "S0262L05": {
+      "lego": [
+        "yesterday",
+        "ayer"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "who was",
+          "quién era"
+        ],
+        [
+          "that man",
+          "ese hombre"
+        ],
+        [
+          "you were talking to/with whom you were talking",
+          "con el que hablabas"
+        ],
+        [
+          "were talking yesterday",
+          "hablabas ayer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0262L05",
+        "seed_context": {
+          "target": "¿Quién era ese hombre con el que hablabas ayer?",
+          "known": "Who was that man you were talking to yesterday?"
+        }
+      }
+    },
+    "S0262L06": {
+      "lego": [
+        "that man you were talking to",
+        "ese hombre con el que hablabas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "who was",
+          "quién era"
+        ],
+        [
+          "that man",
+          "ese hombre"
+        ],
+        [
+          "you were talking to/with whom you were talking",
+          "con el que hablabas"
+        ],
+        [
+          "were talking yesterday",
+          "hablabas ayer"
+        ],
+        [
+          "yesterday",
+          "ayer"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0262L06",
+        "seed_context": {
+          "target": "¿Quién era ese hombre con el que hablabas ayer?",
+          "known": "Who was that man you were talking to yesterday?"
+        }
+      },
+      "components": [
+        [
+          "ese",
+          "that"
+        ],
+        [
+          "hombre",
+          "man"
+        ],
+        [
+          "con",
+          "with"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "que",
+          "whom/that"
+        ],
+        [
+          "hablabas",
+          "you were talking"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0262.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

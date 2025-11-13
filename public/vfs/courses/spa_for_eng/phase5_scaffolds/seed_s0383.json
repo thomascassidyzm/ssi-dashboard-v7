@@ -1,0 +1,266 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0383",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Sí dijo que quería ponerlo en el jardín.",
+    "known": "Yes he said he wanted to put it in the garden."
+  },
+  "recent_seed_pairs": {
+    "S0373": [
+      "Fue hermoso.",
+      "It was beautiful."
+    ],
+    "S0374": [
+      "Sí pensé que era muy hermoso.",
+      "Yes I thought it was very beautiful."
+    ],
+    "S0375": [
+      "No no sabía qué estaba haciendo.",
+      "No I didn't know what she was doing."
+    ],
+    "S0376": [
+      "No fui a ninguna parte el mes pasado.",
+      "I didn't go anywhere last month."
+    ],
+    "S0377": [
+      "¿Fuiste a alguna parte en el mundo el año pasado?",
+      "Did you go anywhere in the world last year?"
+    ],
+    "S0378": [
+      "No no tenía suficiente dinero para vacaciones.",
+      "No I didn't have enough money for holidays."
+    ],
+    "S0379": [
+      "Sí tuve suficiente suerte para viajar a África.",
+      "Yes I was lucky enough to travel to Africa."
+    ],
+    "S0380": [
+      "Pregunté qué quería incluir.",
+      "I asked what she wanted to include."
+    ],
+    "S0381": [
+      "No pregunté si quería seguirnos.",
+      "I didn't ask if he wanted to follow us."
+    ],
+    "S0382": [
+      "¿Preguntaste dónde quería ponerlo?",
+      "Did you ask where he wanted to put it?"
+    ]
+  },
+  "legos": {
+    "S0383L01": {
+      "lego": [
+        "Yes",
+        "Sí"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0383L01",
+        "seed_context": {
+          "target": "Sí dijo que quería ponerlo en el jardín.",
+          "known": "Yes he said he wanted to put it in the garden."
+        }
+      }
+    },
+    "S0383L02": {
+      "lego": [
+        "he said he wanted",
+        "dijo que quería"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0383L02",
+        "seed_context": {
+          "target": "Sí dijo que quería ponerlo en el jardín.",
+          "known": "Yes he said he wanted to put it in the garden."
+        }
+      },
+      "components": [
+        [
+          "dijo",
+          "he said"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "quería",
+          "he wanted"
+        ]
+      ]
+    },
+    "S0383L03": {
+      "lego": [
+        "he wanted to put it",
+        "quería ponerlo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ],
+        [
+          "he said he wanted",
+          "dijo que quería"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0383L03",
+        "seed_context": {
+          "target": "Sí dijo que quería ponerlo en el jardín.",
+          "known": "Yes he said he wanted to put it in the garden."
+        }
+      },
+      "components": [
+        [
+          "quería",
+          "he wanted"
+        ],
+        [
+          "ponerlo",
+          "to put it"
+        ]
+      ]
+    },
+    "S0383L04": {
+      "lego": [
+        "put it",
+        "ponerlo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ],
+        [
+          "he said he wanted",
+          "dijo que quería"
+        ],
+        [
+          "he wanted to put it",
+          "quería ponerlo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0383L04",
+        "seed_context": {
+          "target": "Sí dijo que quería ponerlo en el jardín.",
+          "known": "Yes he said he wanted to put it in the garden."
+        }
+      }
+    },
+    "S0383L05": {
+      "lego": [
+        "in the garden",
+        "en el jardín"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Yes",
+          "Sí"
+        ],
+        [
+          "he said he wanted",
+          "dijo que quería"
+        ],
+        [
+          "he wanted to put it",
+          "quería ponerlo"
+        ],
+        [
+          "put it",
+          "ponerlo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0383L05",
+        "seed_context": {
+          "target": "Sí dijo que quería ponerlo en el jardín.",
+          "known": "Yes he said he wanted to put it in the garden."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "jardín",
+          "garden"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0383.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

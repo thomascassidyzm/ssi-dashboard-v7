@@ -1,0 +1,488 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0245",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "I'm happy with how much I've done in a short time",
+    "known": "Estoy contento con cuánto he hecho en poco tiempo."
+  },
+  "recent_seed_pairs": {
+    "S0235": [
+      "Conocí a alguien que dijo que quería decirte algo.",
+      "I met someone who said that he wanted to tell you something."
+    ],
+    "S0236": [
+      "Conozco a alguien que dijo que iba a intentar ayudar.",
+      "I know someone who said that she was going to try to help."
+    ],
+    "S0237": [
+      "Quería que te dijera antes del fin de semana.",
+      "He wanted me to tell you before the weekend."
+    ],
+    "S0238": [
+      "Quería que me dijeras ayer.",
+      "He wanted you to tell me yesterday."
+    ],
+    "S0239": [
+      "A mi madre le gusta leer.",
+      "My mother likes to read."
+    ],
+    "S0240": [
+      "A mi padre no le gusta dejar de hablar.",
+      "My father doesn't like to stop talking."
+    ],
+    "S0241": [
+      "I don't want to give it to him.",
+      "No quiero dárselo."
+    ],
+    "S0242": [
+      "I want to give her more time.",
+      "Quiero darle más tiempo."
+    ],
+    "S0243": [
+      "I'm going to ask for the same thing to eat.",
+      "Voy a pedir la misma cosa para comer."
+    ],
+    "S0244": [
+      "I've learnt a lot already",
+      "Ya he aprendido mucho."
+    ]
+  },
+  "legos": {
+    "S0245L01": {
+      "lego": [
+        "I'm happy",
+        "Estoy contento"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0245L01",
+        "seed_context": {
+          "target": "I'm happy with how much I've done in a short time",
+          "known": "Estoy contento con cuánto he hecho en poco tiempo."
+        }
+      },
+      "components": [
+        [
+          "Estoy",
+          "I'm"
+        ],
+        [
+          "contento",
+          "happy"
+        ]
+      ]
+    },
+    "S0245L02": {
+      "lego": [
+        "I'm happy with how much I've done",
+        "Estoy contento con cuánto he hecho"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm happy",
+          "Estoy contento"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0245L02",
+        "seed_context": {
+          "target": "I'm happy with how much I've done in a short time",
+          "known": "Estoy contento con cuánto he hecho en poco tiempo."
+        }
+      },
+      "components": [
+        [
+          "Estoy",
+          "I'm"
+        ],
+        [
+          "contento",
+          "happy"
+        ],
+        [
+          "con",
+          "with"
+        ],
+        [
+          "cuánto",
+          "how much"
+        ],
+        [
+          "he",
+          "I've"
+        ],
+        [
+          "hecho",
+          "done"
+        ]
+      ]
+    },
+    "S0245L03": {
+      "lego": [
+        "with how much",
+        "con cuánto"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm happy",
+          "Estoy contento"
+        ],
+        [
+          "I'm happy with how much I've done",
+          "Estoy contento con cuánto he hecho"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0245L03",
+        "seed_context": {
+          "target": "I'm happy with how much I've done in a short time",
+          "known": "Estoy contento con cuánto he hecho en poco tiempo."
+        }
+      },
+      "components": [
+        [
+          "con",
+          "with"
+        ],
+        [
+          "cuánto",
+          "how much"
+        ]
+      ]
+    },
+    "S0245L04": {
+      "lego": [
+        "how much I've done",
+        "cuánto he hecho"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm happy",
+          "Estoy contento"
+        ],
+        [
+          "I'm happy with how much I've done",
+          "Estoy contento con cuánto he hecho"
+        ],
+        [
+          "with how much",
+          "con cuánto"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0245L04",
+        "seed_context": {
+          "target": "I'm happy with how much I've done in a short time",
+          "known": "Estoy contento con cuánto he hecho en poco tiempo."
+        }
+      },
+      "components": [
+        [
+          "cuánto",
+          "how much"
+        ],
+        [
+          "he",
+          "I've"
+        ],
+        [
+          "hecho",
+          "done"
+        ]
+      ]
+    },
+    "S0245L05": {
+      "lego": [
+        "I've done",
+        "he hecho"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm happy",
+          "Estoy contento"
+        ],
+        [
+          "I'm happy with how much I've done",
+          "Estoy contento con cuánto he hecho"
+        ],
+        [
+          "with how much",
+          "con cuánto"
+        ],
+        [
+          "how much I've done",
+          "cuánto he hecho"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0245L05",
+        "seed_context": {
+          "target": "I'm happy with how much I've done in a short time",
+          "known": "Estoy contento con cuánto he hecho en poco tiempo."
+        }
+      },
+      "components": [
+        [
+          "he",
+          "I've"
+        ],
+        [
+          "hecho",
+          "done"
+        ]
+      ]
+    },
+    "S0245L06": {
+      "lego": [
+        "I've done in a short time",
+        "he hecho en poco tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm happy",
+          "Estoy contento"
+        ],
+        [
+          "I'm happy with how much I've done",
+          "Estoy contento con cuánto he hecho"
+        ],
+        [
+          "with how much",
+          "con cuánto"
+        ],
+        [
+          "how much I've done",
+          "cuánto he hecho"
+        ],
+        [
+          "I've done",
+          "he hecho"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0245L06",
+        "seed_context": {
+          "target": "I'm happy with how much I've done in a short time",
+          "known": "Estoy contento con cuánto he hecho en poco tiempo."
+        }
+      },
+      "components": [
+        [
+          "he",
+          "I've"
+        ],
+        [
+          "hecho",
+          "done"
+        ],
+        [
+          "en",
+          "in"
+        ],
+        [
+          "poco",
+          "short/little"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0245L07": {
+      "lego": [
+        "in a short time",
+        "en poco tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm happy",
+          "Estoy contento"
+        ],
+        [
+          "I'm happy with how much I've done",
+          "Estoy contento con cuánto he hecho"
+        ],
+        [
+          "with how much",
+          "con cuánto"
+        ],
+        [
+          "how much I've done",
+          "cuánto he hecho"
+        ],
+        [
+          "I've done",
+          "he hecho"
+        ],
+        [
+          "I've done in a short time",
+          "he hecho en poco tiempo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0245L07",
+        "seed_context": {
+          "target": "I'm happy with how much I've done in a short time",
+          "known": "Estoy contento con cuánto he hecho en poco tiempo."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "poco",
+          "short/little"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0245L08": {
+      "lego": [
+        "short time",
+        "poco tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'm happy",
+          "Estoy contento"
+        ],
+        [
+          "I'm happy with how much I've done",
+          "Estoy contento con cuánto he hecho"
+        ],
+        [
+          "with how much",
+          "con cuánto"
+        ],
+        [
+          "how much I've done",
+          "cuánto he hecho"
+        ],
+        [
+          "I've done",
+          "he hecho"
+        ],
+        [
+          "I've done in a short time",
+          "he hecho en poco tiempo"
+        ],
+        [
+          "in a short time",
+          "en poco tiempo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0245L08",
+        "seed_context": {
+          "target": "I'm happy with how much I've done in a short time",
+          "known": "Estoy contento con cuánto he hecho en poco tiempo."
+        }
+      },
+      "components": [
+        [
+          "poco",
+          "short/little"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0245.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 8,
+    "total_legos_in_seed": 8,
+    "phrases_to_generate": 96,
+    "recent_context_seeds": 10
+  }
+}

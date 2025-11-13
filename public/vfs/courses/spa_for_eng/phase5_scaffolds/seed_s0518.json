@@ -1,0 +1,396 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0518",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No podría imaginarme teniendo exactamente el mismo problema.",
+    "known": "I couldn't imagine myself having exactly the same problem."
+  },
+  "recent_seed_pairs": {
+    "S0508": [
+      "No tiene sentido preocuparse por cómo vas a pagar.",
+      "There's no point worrying about how you're going to pay."
+    ],
+    "S0509": [
+      "Oí que vas a pagar por una cama nueva.",
+      "I heard that you're going to pay for a new bed."
+    ],
+    "S0510": [
+      "Ha ido a buscar algún lugar seguro para estacionar el carro.",
+      "She's gone to look for somewhere safe to park the car."
+    ],
+    "S0511": [
+      "Las noticias tardaron varias horas en llegar a todos en la oficina.",
+      "The news took several hours to reach everyone in the office."
+    ],
+    "S0512": [
+      "¿Puedes mantener la puerta abierta mientras busco las llaves?",
+      "Can you hold the door open while I fetch the keys?"
+    ],
+    "S0513": [
+      "Me duele más cuando muevo la cabeza arriba y abajo.",
+      "It hurts most when I move my head up and down."
+    ],
+    "S0514": [
+      "Encontré la casa perfecta el primer día.",
+      "I found the perfect house on the first day."
+    ],
+    "S0515": [
+      "En el primer día del año nuevo.",
+      "On the first day of the new year."
+    ],
+    "S0516": [
+      "Ambos vinieron por su cuenta.",
+      "They both came on their own."
+    ],
+    "S0517": [
+      "Pero se fueron el uno con el otro.",
+      "But they left with each other."
+    ]
+  },
+  "legos": {
+    "S0518L01": {
+      "lego": [
+        "I couldn't",
+        "no podría"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0518L01",
+        "seed_context": {
+          "target": "No podría imaginarme teniendo exactamente el mismo problema.",
+          "known": "I couldn't imagine myself having exactly the same problem."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "podría",
+          "I could"
+        ]
+      ]
+    },
+    "S0518L02": {
+      "lego": [
+        "I couldn't imagine myself",
+        "no podría imaginarme"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I couldn't",
+          "no podría"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0518L02",
+        "seed_context": {
+          "target": "No podría imaginarme teniendo exactamente el mismo problema.",
+          "known": "I couldn't imagine myself having exactly the same problem."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "podría",
+          "I could"
+        ],
+        [
+          "imaginarme",
+          "imagine myself"
+        ]
+      ]
+    },
+    "S0518L03": {
+      "lego": [
+        "imagine myself",
+        "imaginarme"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I couldn't",
+          "no podría"
+        ],
+        [
+          "I couldn't imagine myself",
+          "no podría imaginarme"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0518L03",
+        "seed_context": {
+          "target": "No podría imaginarme teniendo exactamente el mismo problema.",
+          "known": "I couldn't imagine myself having exactly the same problem."
+        }
+      }
+    },
+    "S0518L04": {
+      "lego": [
+        "imagine myself having",
+        "imaginarme teniendo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I couldn't",
+          "no podría"
+        ],
+        [
+          "I couldn't imagine myself",
+          "no podría imaginarme"
+        ],
+        [
+          "imagine myself",
+          "imaginarme"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0518L04",
+        "seed_context": {
+          "target": "No podría imaginarme teniendo exactamente el mismo problema.",
+          "known": "I couldn't imagine myself having exactly the same problem."
+        }
+      },
+      "components": [
+        [
+          "imaginarme",
+          "imagine myself"
+        ],
+        [
+          "teniendo",
+          "having"
+        ]
+      ]
+    },
+    "S0518L05": {
+      "lego": [
+        "having exactly the same problem",
+        "teniendo exactamente el mismo problema"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I couldn't",
+          "no podría"
+        ],
+        [
+          "I couldn't imagine myself",
+          "no podría imaginarme"
+        ],
+        [
+          "imagine myself",
+          "imaginarme"
+        ],
+        [
+          "imagine myself having",
+          "imaginarme teniendo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0518L05",
+        "seed_context": {
+          "target": "No podría imaginarme teniendo exactamente el mismo problema.",
+          "known": "I couldn't imagine myself having exactly the same problem."
+        }
+      },
+      "components": [
+        [
+          "teniendo",
+          "having"
+        ],
+        [
+          "exactamente",
+          "exactly"
+        ],
+        [
+          "el mismo",
+          "the same"
+        ],
+        [
+          "problema",
+          "problem"
+        ]
+      ]
+    },
+    "S0518L06": {
+      "lego": [
+        "exactly the same problem",
+        "exactamente el mismo problema"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I couldn't",
+          "no podría"
+        ],
+        [
+          "I couldn't imagine myself",
+          "no podría imaginarme"
+        ],
+        [
+          "imagine myself",
+          "imaginarme"
+        ],
+        [
+          "imagine myself having",
+          "imaginarme teniendo"
+        ],
+        [
+          "having exactly the same problem",
+          "teniendo exactamente el mismo problema"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0518L06",
+        "seed_context": {
+          "target": "No podría imaginarme teniendo exactamente el mismo problema.",
+          "known": "I couldn't imagine myself having exactly the same problem."
+        }
+      },
+      "components": [
+        [
+          "exactamente",
+          "exactly"
+        ],
+        [
+          "el mismo",
+          "the same"
+        ],
+        [
+          "problema",
+          "problem"
+        ]
+      ]
+    },
+    "S0518L07": {
+      "lego": [
+        "the same problem",
+        "el mismo problema"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I couldn't",
+          "no podría"
+        ],
+        [
+          "I couldn't imagine myself",
+          "no podría imaginarme"
+        ],
+        [
+          "imagine myself",
+          "imaginarme"
+        ],
+        [
+          "imagine myself having",
+          "imaginarme teniendo"
+        ],
+        [
+          "having exactly the same problem",
+          "teniendo exactamente el mismo problema"
+        ],
+        [
+          "exactly the same problem",
+          "exactamente el mismo problema"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0518L07",
+        "seed_context": {
+          "target": "No podría imaginarme teniendo exactamente el mismo problema.",
+          "known": "I couldn't imagine myself having exactly the same problem."
+        }
+      },
+      "components": [
+        [
+          "el mismo",
+          "the same"
+        ],
+        [
+          "problema",
+          "problem"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0518.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "total_legos_in_seed": 7,
+    "phrases_to_generate": 84,
+    "recent_context_seeds": 10
+  }
+}

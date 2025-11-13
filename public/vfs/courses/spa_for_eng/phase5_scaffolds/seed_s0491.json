@@ -1,0 +1,410 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0491",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Me encanta la forma en que intentas ayudar.",
+    "known": "I love the way you try to help."
+  },
+  "recent_seed_pairs": {
+    "S0481": [
+      "Es la única esperanza real que nos queda.",
+      "It's the only real hope we have left."
+    ],
+    "S0482": [
+      "La única esperanza real es que no son serios.",
+      "The only real hope is that they're not serious."
+    ],
+    "S0483": [
+      "La vida no es fácil pero no está destinada a ser fácil.",
+      "Life isn't easy but it's not meant to be easy."
+    ],
+    "S0484": [
+      "Está destinada a ser un desafío.",
+      "It's meant to be a challenge."
+    ],
+    "S0485": [
+      "Nada me haría más feliz que escapar.",
+      "Nothing would make me happier than to get away."
+    ],
+    "S0486": [
+      "Creo que tus ojos son hermosos.",
+      "I think your eyes are beautiful."
+    ],
+    "S0487": [
+      "Está bajo el puente.",
+      "It's under the bridge."
+    ],
+    "S0488": [
+      "Está al otro lado de esa línea amarilla.",
+      "It's on the other side of that yellow line."
+    ],
+    "S0489": [
+      "Si no me haces una taza de café fuerte ahora mismo.",
+      "If you don't make me a strong cup of coffee right now."
+    ],
+    "S0490": [
+      "Entonces nunca confiaré en nadie nunca más.",
+      "Then I will never trust anyone ever again."
+    ]
+  },
+  "legos": {
+    "S0491L01": {
+      "lego": [
+        "I love",
+        "Me encanta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0491L01",
+        "seed_context": {
+          "target": "Me encanta la forma en que intentas ayudar.",
+          "known": "I love the way you try to help."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "me/I"
+        ],
+        [
+          "encanta",
+          "love/enchants"
+        ]
+      ]
+    },
+    "S0491L02": {
+      "lego": [
+        "the way",
+        "la forma en que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I love",
+          "Me encanta"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0491L02",
+        "seed_context": {
+          "target": "Me encanta la forma en que intentas ayudar.",
+          "known": "I love the way you try to help."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "forma",
+          "way/form"
+        ],
+        [
+          "en",
+          "in"
+        ],
+        [
+          "que",
+          "that/which"
+        ]
+      ]
+    },
+    "S0491L03": {
+      "lego": [
+        "you try",
+        "intentas"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I love",
+          "Me encanta"
+        ],
+        [
+          "the way",
+          "la forma en que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0491L03",
+        "seed_context": {
+          "target": "Me encanta la forma en que intentas ayudar.",
+          "known": "I love the way you try to help."
+        }
+      }
+    },
+    "S0491L04": {
+      "lego": [
+        "to help",
+        "ayudar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I love",
+          "Me encanta"
+        ],
+        [
+          "the way",
+          "la forma en que"
+        ],
+        [
+          "you try",
+          "intentas"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0491L04",
+        "seed_context": {
+          "target": "Me encanta la forma en que intentas ayudar.",
+          "known": "I love the way you try to help."
+        }
+      }
+    },
+    "S0491L05": {
+      "lego": [
+        "I love the way",
+        "Me encanta la forma en que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I love",
+          "Me encanta"
+        ],
+        [
+          "the way",
+          "la forma en que"
+        ],
+        [
+          "you try",
+          "intentas"
+        ],
+        [
+          "to help",
+          "ayudar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0491L05",
+        "seed_context": {
+          "target": "Me encanta la forma en que intentas ayudar.",
+          "known": "I love the way you try to help."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "me/I"
+        ],
+        [
+          "encanta",
+          "love/enchants"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "forma",
+          "way/form"
+        ],
+        [
+          "en",
+          "in"
+        ],
+        [
+          "que",
+          "that/which"
+        ]
+      ]
+    },
+    "S0491L06": {
+      "lego": [
+        "the way you try to help",
+        "la forma en que intentas ayudar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I love",
+          "Me encanta"
+        ],
+        [
+          "the way",
+          "la forma en que"
+        ],
+        [
+          "you try",
+          "intentas"
+        ],
+        [
+          "to help",
+          "ayudar"
+        ],
+        [
+          "I love the way",
+          "Me encanta la forma en que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0491L06",
+        "seed_context": {
+          "target": "Me encanta la forma en que intentas ayudar.",
+          "known": "I love the way you try to help."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "forma",
+          "way/form"
+        ],
+        [
+          "en",
+          "in"
+        ],
+        [
+          "que",
+          "that/which"
+        ],
+        [
+          "intentas",
+          "you try"
+        ],
+        [
+          "ayudar",
+          "to help"
+        ]
+      ]
+    },
+    "S0491L07": {
+      "lego": [
+        "you try to help",
+        "intentas ayudar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I love",
+          "Me encanta"
+        ],
+        [
+          "the way",
+          "la forma en que"
+        ],
+        [
+          "you try",
+          "intentas"
+        ],
+        [
+          "to help",
+          "ayudar"
+        ],
+        [
+          "I love the way",
+          "Me encanta la forma en que"
+        ],
+        [
+          "the way you try to help",
+          "la forma en que intentas ayudar"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0491L07",
+        "seed_context": {
+          "target": "Me encanta la forma en que intentas ayudar.",
+          "known": "I love the way you try to help."
+        }
+      },
+      "components": [
+        [
+          "intentas",
+          "you try"
+        ],
+        [
+          "ayudar",
+          "to help"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0491.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "total_legos_in_seed": 7,
+    "phrases_to_generate": 84,
+    "recent_context_seeds": 10
+  }
+}

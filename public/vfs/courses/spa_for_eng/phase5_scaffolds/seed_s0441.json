@@ -1,0 +1,102 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0441",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Un acercamiento.",
+    "known": "An approach."
+  },
+  "recent_seed_pairs": {
+    "S0431": [
+      "Todavía no están preparados pero van a estar preparados pronto.",
+      "They're not ready yet but they'll be ready soon."
+    ],
+    "S0432": [
+      "Podrían significar que quieren que preguntes.",
+      "They could mean that they want you to ask."
+    ],
+    "S0433": [
+      "No pudieron descubrir cuándo empezó la película.",
+      "They couldn't find out when the film started."
+    ],
+    "S0434": [
+      "¿Podrían reducir el número de estudiantes que toman?",
+      "Could they cut the number of students they take?"
+    ],
+    "S0435": [
+      "Sí podrían si quisieran.",
+      "Yes they could if they wanted to."
+    ],
+    "S0436": [
+      "No hay un número mínimo que necesitan.",
+      "No there's a minimum number they need."
+    ],
+    "S0437": [
+      "Querían recaudar tanto como posible para caridad.",
+      "They wanted to raise as much as possible for charity."
+    ],
+    "S0438": [
+      "No querían decidir lo que debería hacer.",
+      "They didn't want to decide what he should do."
+    ],
+    "S0439": [
+      "No quieren morir.",
+      "They don't want to die."
+    ],
+    "S0440": [
+      "Quieren viajar mientras todavía son jóvenes.",
+      "They want to travel while they're still young."
+    ]
+  },
+  "legos": {
+    "S0441L01": {
+      "lego": [
+        "an approach",
+        "un acercamiento"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0441L01",
+        "seed_context": {
+          "target": "Un acercamiento.",
+          "known": "An approach."
+        }
+      },
+      "components": [
+        [
+          "un",
+          "an"
+        ],
+        [
+          "acercamiento",
+          "approach"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0441.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 1,
+    "total_legos_in_seed": 1,
+    "phrases_to_generate": 12,
+    "recent_context_seeds": 10
+  }
+}

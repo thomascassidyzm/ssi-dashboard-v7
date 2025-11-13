@@ -1,0 +1,252 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0313",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Él dijo que no podría ver todos los cinco juegos.",
+    "known": "He said that he couldn't watch all five games."
+  },
+  "recent_seed_pairs": {
+    "S0303": [
+      "Creo que él quiere sentarse.",
+      "I think that he wants to sit down."
+    ],
+    "S0304": [
+      "Creo que ella no quiere trabajar desde casa.",
+      "I think that she doesn't want to work from home."
+    ],
+    "S0305": [
+      "Mujer.",
+      "Woman."
+    ],
+    "S0306": [
+      "Conozco a esa mujer joven que está hablando con tu amigo.",
+      "I know that young woman who's talking to your friend."
+    ],
+    "S0307": [
+      "Conozco a ese hombre joven que está sentado allí.",
+      "I know that young man who's sitting over there."
+    ],
+    "S0308": [
+      "Sí ella es una amiga de mi madre.",
+      "Yes she's a friend of my mother."
+    ],
+    "S0309": [
+      "No nunca la he visto antes.",
+      "No I've never seen her before."
+    ],
+    "S0310": [
+      "Ella podría escribir una historia sobre ese hombre.",
+      "She could write a story about that man."
+    ],
+    "S0311": [
+      "Él no podría creer los tres hechos más importantes.",
+      "He couldn't believe the three most important facts."
+    ],
+    "S0312": [
+      "Ella dijo que podría usar la otra habitación mañana por la noche.",
+      "She said that she could use the other room tomorrow night."
+    ]
+  },
+  "legos": {
+    "S0313L01": {
+      "lego": [
+        "He said that",
+        "Él dijo que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0313L01",
+        "seed_context": {
+          "target": "Él dijo que no podría ver todos los cinco juegos.",
+          "known": "He said that he couldn't watch all five games."
+        }
+      },
+      "components": [
+        [
+          "Él",
+          "He"
+        ],
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0313L02": {
+      "lego": [
+        "said that he couldn't",
+        "dijo que no podría"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "He said that",
+          "Él dijo que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0313L02",
+        "seed_context": {
+          "target": "Él dijo que no podría ver todos los cinco juegos.",
+          "known": "He said that he couldn't watch all five games."
+        }
+      },
+      "components": [
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "no",
+          "not"
+        ],
+        [
+          "podría",
+          "he could"
+        ]
+      ]
+    },
+    "S0313L03": {
+      "lego": [
+        "couldn't watch",
+        "no podría ver"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "He said that",
+          "Él dijo que"
+        ],
+        [
+          "said that he couldn't",
+          "dijo que no podría"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0313L03",
+        "seed_context": {
+          "target": "Él dijo que no podría ver todos los cinco juegos.",
+          "known": "He said that he couldn't watch all five games."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not/couldn't"
+        ],
+        [
+          "podría",
+          "could"
+        ],
+        [
+          "ver",
+          "watch/see"
+        ]
+      ]
+    },
+    "S0313L04": {
+      "lego": [
+        "all five games",
+        "todos los cinco juegos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "He said that",
+          "Él dijo que"
+        ],
+        [
+          "said that he couldn't",
+          "dijo que no podría"
+        ],
+        [
+          "couldn't watch",
+          "no podría ver"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0313L04",
+        "seed_context": {
+          "target": "Él dijo que no podría ver todos los cinco juegos.",
+          "known": "He said that he couldn't watch all five games."
+        }
+      },
+      "components": [
+        [
+          "todos",
+          "all"
+        ],
+        [
+          "los",
+          "the"
+        ],
+        [
+          "cinco",
+          "five"
+        ],
+        [
+          "juegos",
+          "games"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0313.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

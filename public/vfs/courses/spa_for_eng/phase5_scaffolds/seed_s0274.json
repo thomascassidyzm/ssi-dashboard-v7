@@ -1,0 +1,230 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0274",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Tienes que salir en unos pocos días?",
+    "known": "Do you have to leave in a few days?"
+  },
+  "recent_seed_pairs": {
+    "S0264": [
+      "Un hombre viejo.",
+      "An old man."
+    ],
+    "S0265": [
+      "Un amigo.",
+      "A friend."
+    ],
+    "S0266": [
+      "Era un viejo amigo de mi padre.",
+      "He was an old friend of my father."
+    ],
+    "S0267": [
+      "¿Has sabido de tu amigo?",
+      "Have you heard from your friend?"
+    ],
+    "S0268": [
+      "Sí, me envió dos correos electrónicos la semana pasada.",
+      "Yes she sent me two emails last week."
+    ],
+    "S0269": [
+      "¿Por qué no quieres esperar a tu padre?",
+      "Why don't you want to wait for your father?"
+    ],
+    "S0270": [
+      "Porque estoy preocupado de que voy a llegar tarde.",
+      "Because I'm worried that I'm going to be late."
+    ],
+    "S0271": [
+      "¿Te gustaría venir con nosotros el próximo mes?",
+      "Would you like to come with us next month?"
+    ],
+    "S0272": [
+      "Sí eso suena como una gran idea.",
+      "Yes that sounds like a great idea."
+    ],
+    "S0273": [
+      "No desafortunadamente tengo demasiado trabajo.",
+      "No unfortunately I've got too much work."
+    ]
+  },
+  "legos": {
+    "S0274L01": {
+      "lego": [
+        "you have to",
+        "tienes que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0274L01",
+        "seed_context": {
+          "target": "¿Tienes que salir en unos pocos días?",
+          "known": "Do you have to leave in a few days?"
+        }
+      },
+      "components": [
+        [
+          "tienes",
+          "you have"
+        ],
+        [
+          "que",
+          "to"
+        ]
+      ]
+    },
+    "S0274L02": {
+      "lego": [
+        "to leave",
+        "salir"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "you have to",
+          "tienes que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0274L02",
+        "seed_context": {
+          "target": "¿Tienes que salir en unos pocos días?",
+          "known": "Do you have to leave in a few days?"
+        }
+      }
+    },
+    "S0274L03": {
+      "lego": [
+        "you have to leave",
+        "tienes que salir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you have to",
+          "tienes que"
+        ],
+        [
+          "to leave",
+          "salir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0274L03",
+        "seed_context": {
+          "target": "¿Tienes que salir en unos pocos días?",
+          "known": "Do you have to leave in a few days?"
+        }
+      },
+      "components": [
+        [
+          "tienes",
+          "you have"
+        ],
+        [
+          "que",
+          "to"
+        ],
+        [
+          "salir",
+          "to leave"
+        ]
+      ]
+    },
+    "S0274L04": {
+      "lego": [
+        "in a few days",
+        "en unos pocos días"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you have to",
+          "tienes que"
+        ],
+        [
+          "to leave",
+          "salir"
+        ],
+        [
+          "you have to leave",
+          "tienes que salir"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0274L04",
+        "seed_context": {
+          "target": "¿Tienes que salir en unos pocos días?",
+          "known": "Do you have to leave in a few days?"
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "unos",
+          "a/some"
+        ],
+        [
+          "pocos",
+          "few"
+        ],
+        [
+          "días",
+          "days"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0274.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

@@ -1,0 +1,448 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0528",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Probablemente se supone que debo guardar esas cosas en otra habitación.",
+    "known": "I'm probably supposed to keep those things in another room."
+  },
+  "recent_seed_pairs": {
+    "S0518": [
+      "No podría imaginarme teniendo exactamente el mismo problema.",
+      "I couldn't imagine myself having exactly the same problem."
+    ],
+    "S0519": [
+      "No he visto a su nuevo bebé todavía.",
+      "I haven't seen their new baby yet."
+    ],
+    "S0520": [
+      "Podría haberle pasado a toda la familia.",
+      "It might have happened to the whole family."
+    ],
+    "S0521": [
+      "Tengo miedo de que olvides por qué necesitábamos quedarnos aquí.",
+      "I'm afraid that you'll forget why we needed to stay here."
+    ],
+    "S0522": [
+      "Acordemos que fue estúpido decir la verdad.",
+      "Let's agree that it was stupid to tell the truth."
+    ],
+    "S0523": [
+      "En lugar de dar una excusa.",
+      "Instead of giving an excuse."
+    ],
+    "S0524": [
+      "Te llamaré de vuelta en tres o cuatro minutos.",
+      "I'll call you back in three or four minutes."
+    ],
+    "S0525": [
+      "Para comprobar si has podido terminar.",
+      "To check if you've been able to finish."
+    ],
+    "S0526": [
+      "Me resulta difícil creer que no puedes adivinar.",
+      "I'm finding it hard to believe that you can't guess."
+    ],
+    "S0527": [
+      "Adivina quién me contó esa historia graciosa.",
+      "Guess who told me that funny story."
+    ]
+  },
+  "legos": {
+    "S0528L01": {
+      "lego": [
+        "probably",
+        "probablemente"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0528L01",
+        "seed_context": {
+          "target": "Probablemente se supone que debo guardar esas cosas en otra habitación.",
+          "known": "I'm probably supposed to keep those things in another room."
+        }
+      }
+    },
+    "S0528L02": {
+      "lego": [
+        "I'm supposed to",
+        "se supone que debo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "probably",
+          "probablemente"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0528L02",
+        "seed_context": {
+          "target": "Probablemente se supone que debo guardar esas cosas en otra habitación.",
+          "known": "I'm probably supposed to keep those things in another room."
+        }
+      },
+      "components": [
+        [
+          "se",
+          "itself/reflexive"
+        ],
+        [
+          "supone",
+          "supposes/assumes"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "debo",
+          "I should/must"
+        ]
+      ]
+    },
+    "S0528L03": {
+      "lego": [
+        "to keep",
+        "guardar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "probably",
+          "probablemente"
+        ],
+        [
+          "I'm supposed to",
+          "se supone que debo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0528L03",
+        "seed_context": {
+          "target": "Probablemente se supone que debo guardar esas cosas en otra habitación.",
+          "known": "I'm probably supposed to keep those things in another room."
+        }
+      }
+    },
+    "S0528L04": {
+      "lego": [
+        "I should keep",
+        "debo guardar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "probably",
+          "probablemente"
+        ],
+        [
+          "I'm supposed to",
+          "se supone que debo"
+        ],
+        [
+          "to keep",
+          "guardar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0528L04",
+        "seed_context": {
+          "target": "Probablemente se supone que debo guardar esas cosas en otra habitación.",
+          "known": "I'm probably supposed to keep those things in another room."
+        }
+      },
+      "components": [
+        [
+          "debo",
+          "I should/must"
+        ],
+        [
+          "guardar",
+          "keep"
+        ]
+      ]
+    },
+    "S0528L05": {
+      "lego": [
+        "those things",
+        "esas cosas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "probably",
+          "probablemente"
+        ],
+        [
+          "I'm supposed to",
+          "se supone que debo"
+        ],
+        [
+          "to keep",
+          "guardar"
+        ],
+        [
+          "I should keep",
+          "debo guardar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0528L05",
+        "seed_context": {
+          "target": "Probablemente se supone que debo guardar esas cosas en otra habitación.",
+          "known": "I'm probably supposed to keep those things in another room."
+        }
+      },
+      "components": [
+        [
+          "esas",
+          "those"
+        ],
+        [
+          "cosas",
+          "things"
+        ]
+      ]
+    },
+    "S0528L06": {
+      "lego": [
+        "to keep those things",
+        "guardar esas cosas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "probably",
+          "probablemente"
+        ],
+        [
+          "I'm supposed to",
+          "se supone que debo"
+        ],
+        [
+          "to keep",
+          "guardar"
+        ],
+        [
+          "I should keep",
+          "debo guardar"
+        ],
+        [
+          "those things",
+          "esas cosas"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0528L06",
+        "seed_context": {
+          "target": "Probablemente se supone que debo guardar esas cosas en otra habitación.",
+          "known": "I'm probably supposed to keep those things in another room."
+        }
+      },
+      "components": [
+        [
+          "guardar",
+          "to keep"
+        ],
+        [
+          "esas",
+          "those"
+        ],
+        [
+          "cosas",
+          "things"
+        ]
+      ]
+    },
+    "S0528L07": {
+      "lego": [
+        "another room",
+        "otra habitación"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "probably",
+          "probablemente"
+        ],
+        [
+          "I'm supposed to",
+          "se supone que debo"
+        ],
+        [
+          "to keep",
+          "guardar"
+        ],
+        [
+          "I should keep",
+          "debo guardar"
+        ],
+        [
+          "those things",
+          "esas cosas"
+        ],
+        [
+          "to keep those things",
+          "guardar esas cosas"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0528L07",
+        "seed_context": {
+          "target": "Probablemente se supone que debo guardar esas cosas en otra habitación.",
+          "known": "I'm probably supposed to keep those things in another room."
+        }
+      },
+      "components": [
+        [
+          "otra",
+          "another"
+        ],
+        [
+          "habitación",
+          "room"
+        ]
+      ]
+    },
+    "S0528L08": {
+      "lego": [
+        "in another room",
+        "en otra habitación"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "probably",
+          "probablemente"
+        ],
+        [
+          "I'm supposed to",
+          "se supone que debo"
+        ],
+        [
+          "to keep",
+          "guardar"
+        ],
+        [
+          "I should keep",
+          "debo guardar"
+        ],
+        [
+          "those things",
+          "esas cosas"
+        ],
+        [
+          "to keep those things",
+          "guardar esas cosas"
+        ],
+        [
+          "another room",
+          "otra habitación"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0528L08",
+        "seed_context": {
+          "target": "Probablemente se supone que debo guardar esas cosas en otra habitación.",
+          "known": "I'm probably supposed to keep those things in another room."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "otra",
+          "another"
+        ],
+        [
+          "habitación",
+          "room"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0528.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 8,
+    "total_legos_in_seed": 8,
+    "phrases_to_generate": 96,
+    "recent_context_seeds": 10
+  }
+}

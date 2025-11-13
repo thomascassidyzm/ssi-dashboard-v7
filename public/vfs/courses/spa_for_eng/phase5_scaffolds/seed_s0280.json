@@ -1,0 +1,328 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0280",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No solo tuve que hacer el trabajo más importante.",
+    "known": "No I only had to do the most important job."
+  },
+  "recent_seed_pairs": {
+    "S0270": [
+      "Porque estoy preocupado de que voy a llegar tarde.",
+      "Because I'm worried that I'm going to be late."
+    ],
+    "S0271": [
+      "¿Te gustaría venir con nosotros el próximo mes?",
+      "Would you like to come with us next month?"
+    ],
+    "S0272": [
+      "Sí eso suena como una gran idea.",
+      "Yes that sounds like a great idea."
+    ],
+    "S0273": [
+      "No desafortunadamente tengo demasiado trabajo.",
+      "No unfortunately I've got too much work."
+    ],
+    "S0274": [
+      "¿Tienes que salir en unos pocos días?",
+      "Do you have to leave in a few days?"
+    ],
+    "S0275": [
+      "Más tiempo.",
+      "Longer."
+    ],
+    "S0276": [
+      "No, puedo quedarme aquí un poco más de tiempo.",
+      "No I can stay here for a little longer."
+    ],
+    "S0277": [
+      "Sí tengo una reunión importante a principios de la próxima semana.",
+      "Yes I've got an important meeting early next week."
+    ],
+    "S0278": [
+      "¿Tuviste que terminar todo anoche?",
+      "Did you have to finish everything last night?"
+    ],
+    "S0279": [
+      "Sí porque no quedaba mucho tiempo.",
+      "Yes because there wasn't much time left."
+    ]
+  },
+  "legos": {
+    "S0280L01": {
+      "lego": [
+        "no",
+        "no"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0280L01",
+        "seed_context": {
+          "target": "No solo tuve que hacer el trabajo más importante.",
+          "known": "No I only had to do the most important job."
+        }
+      }
+    },
+    "S0280L02": {
+      "lego": [
+        "I only had to",
+        "solo tuve que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0280L02",
+        "seed_context": {
+          "target": "No solo tuve que hacer el trabajo más importante.",
+          "known": "No I only had to do the most important job."
+        }
+      },
+      "components": [
+        [
+          "solo",
+          "only"
+        ],
+        [
+          "tuve",
+          "I had"
+        ],
+        [
+          "que",
+          "to"
+        ]
+      ]
+    },
+    "S0280L03": {
+      "lego": [
+        "I had to",
+        "tuve que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "I only had to",
+          "solo tuve que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0280L03",
+        "seed_context": {
+          "target": "No solo tuve que hacer el trabajo más importante.",
+          "known": "No I only had to do the most important job."
+        }
+      },
+      "components": [
+        [
+          "tuve",
+          "I had"
+        ],
+        [
+          "que",
+          "to"
+        ]
+      ]
+    },
+    "S0280L04": {
+      "lego": [
+        "to do",
+        "hacer"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "I only had to",
+          "solo tuve que"
+        ],
+        [
+          "I had to",
+          "tuve que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0280L04",
+        "seed_context": {
+          "target": "No solo tuve que hacer el trabajo más importante.",
+          "known": "No I only had to do the most important job."
+        }
+      }
+    },
+    "S0280L05": {
+      "lego": [
+        "I had to do",
+        "tuve que hacer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "I only had to",
+          "solo tuve que"
+        ],
+        [
+          "I had to",
+          "tuve que"
+        ],
+        [
+          "to do",
+          "hacer"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0280L05",
+        "seed_context": {
+          "target": "No solo tuve que hacer el trabajo más importante.",
+          "known": "No I only had to do the most important job."
+        }
+      },
+      "components": [
+        [
+          "tuve",
+          "I had"
+        ],
+        [
+          "que",
+          "to"
+        ],
+        [
+          "hacer",
+          "to do"
+        ]
+      ]
+    },
+    "S0280L06": {
+      "lego": [
+        "the most important job",
+        "el trabajo más importante"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "I only had to",
+          "solo tuve que"
+        ],
+        [
+          "I had to",
+          "tuve que"
+        ],
+        [
+          "to do",
+          "hacer"
+        ],
+        [
+          "I had to do",
+          "tuve que hacer"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0280L06",
+        "seed_context": {
+          "target": "No solo tuve que hacer el trabajo más importante.",
+          "known": "No I only had to do the most important job."
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "trabajo",
+          "job"
+        ],
+        [
+          "más",
+          "most"
+        ],
+        [
+          "importante",
+          "important"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0280.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

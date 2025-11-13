@@ -1,0 +1,272 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0254",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "He estado preparado desde esta mañana.",
+    "known": "I've been ready since this morning."
+  },
+  "recent_seed_pairs": {
+    "S0244": [
+      "I've learnt a lot already",
+      "Ya he aprendido mucho."
+    ],
+    "S0245": [
+      "I'm happy with how much I've done in a short time",
+      "Estoy contento con cuánto he hecho en poco tiempo."
+    ],
+    "S0246": [
+      "I wanted her to help you but she was too busy.",
+      "Quería que ella te ayudara pero estaba demasiado ocupada."
+    ],
+    "S0247": [
+      "I thought that book was fairly good.",
+      "Pensé que ese libro era bastante bueno."
+    ],
+    "S0248": [
+      "I thought the film was complete rubbish and I want my money back.",
+      "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+    ],
+    "S0249": [
+      "I want you to help me before you go.",
+      "Quiero que me ayudes antes de que te vayas."
+    ],
+    "S0250": [
+      "Can you tell me something else before I answer?",
+      "¿Puedes decirme algo más antes de que responda?"
+    ],
+    "S0251": [
+      "No quiero descubrir hasta después de que terminemos.",
+      "I don't want to find out until after we finish."
+    ],
+    "S0252": [
+      "¿Cuándo estarás preparado para empezar?",
+      "When will you be ready to start?"
+    ],
+    "S0253": [
+      "Debo estar preparado en unos pocos minutos.",
+      "I should be ready in a few minutes."
+    ]
+  },
+  "legos": {
+    "S0254L01": {
+      "lego": [
+        "I've been",
+        "he estado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0254L01",
+        "seed_context": {
+          "target": "He estado preparado desde esta mañana.",
+          "known": "I've been ready since this morning."
+        }
+      },
+      "components": [
+        [
+          "he",
+          "I have"
+        ],
+        [
+          "estado",
+          "been"
+        ]
+      ]
+    },
+    "S0254L02": {
+      "lego": [
+        "been ready",
+        "estado preparado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I've been",
+          "he estado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0254L02",
+        "seed_context": {
+          "target": "He estado preparado desde esta mañana.",
+          "known": "I've been ready since this morning."
+        }
+      },
+      "components": [
+        [
+          "estado",
+          "been"
+        ],
+        [
+          "preparado",
+          "ready"
+        ]
+      ]
+    },
+    "S0254L03": {
+      "lego": [
+        "ready",
+        "preparado"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I've been",
+          "he estado"
+        ],
+        [
+          "been ready",
+          "estado preparado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0254L03",
+        "seed_context": {
+          "target": "He estado preparado desde esta mañana.",
+          "known": "I've been ready since this morning."
+        }
+      }
+    },
+    "S0254L04": {
+      "lego": [
+        "since this morning",
+        "desde esta mañana"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I've been",
+          "he estado"
+        ],
+        [
+          "been ready",
+          "estado preparado"
+        ],
+        [
+          "ready",
+          "preparado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0254L04",
+        "seed_context": {
+          "target": "He estado preparado desde esta mañana.",
+          "known": "I've been ready since this morning."
+        }
+      },
+      "components": [
+        [
+          "desde",
+          "since"
+        ],
+        [
+          "esta",
+          "this"
+        ],
+        [
+          "mañana",
+          "morning"
+        ]
+      ]
+    },
+    "S0254L05": {
+      "lego": [
+        "this morning",
+        "esta mañana"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I've been",
+          "he estado"
+        ],
+        [
+          "been ready",
+          "estado preparado"
+        ],
+        [
+          "ready",
+          "preparado"
+        ],
+        [
+          "since this morning",
+          "desde esta mañana"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0254L05",
+        "seed_context": {
+          "target": "He estado preparado desde esta mañana.",
+          "known": "I've been ready since this morning."
+        }
+      },
+      "components": [
+        [
+          "esta",
+          "this"
+        ],
+        [
+          "mañana",
+          "morning"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0254.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

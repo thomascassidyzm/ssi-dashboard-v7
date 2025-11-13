@@ -1,0 +1,222 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0529",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Pueden todos levantar las manos?",
+    "known": "Can you all put your hands up?"
+  },
+  "recent_seed_pairs": {
+    "S0519": [
+      "No he visto a su nuevo bebé todavía.",
+      "I haven't seen their new baby yet."
+    ],
+    "S0520": [
+      "Podría haberle pasado a toda la familia.",
+      "It might have happened to the whole family."
+    ],
+    "S0521": [
+      "Tengo miedo de que olvides por qué necesitábamos quedarnos aquí.",
+      "I'm afraid that you'll forget why we needed to stay here."
+    ],
+    "S0522": [
+      "Acordemos que fue estúpido decir la verdad.",
+      "Let's agree that it was stupid to tell the truth."
+    ],
+    "S0523": [
+      "En lugar de dar una excusa.",
+      "Instead of giving an excuse."
+    ],
+    "S0524": [
+      "Te llamaré de vuelta en tres o cuatro minutos.",
+      "I'll call you back in three or four minutes."
+    ],
+    "S0525": [
+      "Para comprobar si has podido terminar.",
+      "To check if you've been able to finish."
+    ],
+    "S0526": [
+      "Me resulta difícil creer que no puedes adivinar.",
+      "I'm finding it hard to believe that you can't guess."
+    ],
+    "S0527": [
+      "Adivina quién me contó esa historia graciosa.",
+      "Guess who told me that funny story."
+    ],
+    "S0528": [
+      "Probablemente se supone que debo guardar esas cosas en otra habitación.",
+      "I'm probably supposed to keep those things in another room."
+    ]
+  },
+  "legos": {
+    "S0529L01": {
+      "lego": [
+        "can you all",
+        "pueden todos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0529L01",
+        "seed_context": {
+          "target": "¿Pueden todos levantar las manos?",
+          "known": "Can you all put your hands up?"
+        }
+      },
+      "components": [
+        [
+          "pueden",
+          "can/you all can"
+        ],
+        [
+          "todos",
+          "all/everyone"
+        ]
+      ]
+    },
+    "S0529L02": {
+      "lego": [
+        "to put up",
+        "levantar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "can you all",
+          "pueden todos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0529L02",
+        "seed_context": {
+          "target": "¿Pueden todos levantar las manos?",
+          "known": "Can you all put your hands up?"
+        }
+      }
+    },
+    "S0529L03": {
+      "lego": [
+        "your hands",
+        "las manos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "can you all",
+          "pueden todos"
+        ],
+        [
+          "to put up",
+          "levantar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0529L03",
+        "seed_context": {
+          "target": "¿Pueden todos levantar las manos?",
+          "known": "Can you all put your hands up?"
+        }
+      },
+      "components": [
+        [
+          "las",
+          "the"
+        ],
+        [
+          "manos",
+          "hands"
+        ]
+      ]
+    },
+    "S0529L04": {
+      "lego": [
+        "to put your hands up",
+        "levantar las manos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "can you all",
+          "pueden todos"
+        ],
+        [
+          "to put up",
+          "levantar"
+        ],
+        [
+          "your hands",
+          "las manos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0529L04",
+        "seed_context": {
+          "target": "¿Pueden todos levantar las manos?",
+          "known": "Can you all put your hands up?"
+        }
+      },
+      "components": [
+        [
+          "levantar",
+          "to raise/lift"
+        ],
+        [
+          "las",
+          "the"
+        ],
+        [
+          "manos",
+          "hands"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0529.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

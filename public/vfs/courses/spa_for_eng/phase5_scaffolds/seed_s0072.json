@@ -1,0 +1,236 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0072",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Pienso que estás haciendo muy bien",
+    "known": "I think that you're doing very well."
+  },
+  "recent_seed_pairs": {
+    "S0062": [
+      "No estoy seguro si puedo ayudarte al mismo tiempo.",
+      "I'm not sure if I can help you at the same time."
+    ],
+    "S0063": [
+      "¿Estás seguro de que no te importa ayudarme?",
+      "Are you sure you don't mind helping me?"
+    ],
+    "S0064": [
+      "Aprender español no es fácil pero es divertido.",
+      "Learning Spanish isn't easy but it is fun."
+    ],
+    "S0065": [
+      "Es importante tomar tiempo para evaluarte.",
+      "It's important to take time to test yourself."
+    ],
+    "S0066": [
+      "No es difícil encontrar la respuesta.",
+      "It's not difficult to find the answer."
+    ],
+    "S0067": [
+      "¿Por qué quieres parar?",
+      "Why do you want to stop?"
+    ],
+    "S0068": [
+      "¿Qué estás buscando?",
+      "What are you looking for?"
+    ],
+    "S0069": [
+      "No quería cuidar el perro joven toda la tarde.",
+      "He didn't want to look after the young dog all afternoon."
+    ],
+    "S0070": [
+      "Ella no quería decirme dónde estaba.",
+      "She didn't want to tell me where it was."
+    ],
+    "S0071": [
+      "No queríamos permitir que nadie oyera la verdad",
+      "We didn't want to let anyone hear the truth."
+    ]
+  },
+  "legos": {
+    "S0072L01": {
+      "lego": [
+        "I think that",
+        "pienso que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0072L01",
+        "seed_context": {
+          "target": "Pienso que estás haciendo muy bien",
+          "known": "I think that you're doing very well."
+        }
+      },
+      "components": [
+        [
+          "pienso",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0072L02": {
+      "lego": [
+        "you're doing",
+        "estás haciendo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think that",
+          "pienso que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0072L02",
+        "seed_context": {
+          "target": "Pienso que estás haciendo muy bien",
+          "known": "I think that you're doing very well."
+        }
+      },
+      "components": [
+        [
+          "estás",
+          "you are"
+        ],
+        [
+          "haciendo",
+          "doing"
+        ]
+      ]
+    },
+    "S0072L03": {
+      "lego": [
+        "very well",
+        "muy bien"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think that",
+          "pienso que"
+        ],
+        [
+          "you're doing",
+          "estás haciendo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0072L03",
+        "seed_context": {
+          "target": "Pienso que estás haciendo muy bien",
+          "known": "I think that you're doing very well."
+        }
+      },
+      "components": [
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "bien",
+          "well"
+        ]
+      ]
+    },
+    "S0072L04": {
+      "lego": [
+        "you're doing very well",
+        "estás haciendo muy bien"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think that",
+          "pienso que"
+        ],
+        [
+          "you're doing",
+          "estás haciendo"
+        ],
+        [
+          "very well",
+          "muy bien"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0072L04",
+        "seed_context": {
+          "target": "Pienso que estás haciendo muy bien",
+          "known": "I think that you're doing very well."
+        }
+      },
+      "components": [
+        [
+          "estás",
+          "you are"
+        ],
+        [
+          "haciendo",
+          "doing"
+        ],
+        [
+          "muy",
+          "very"
+        ],
+        [
+          "bien",
+          "well"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0072.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

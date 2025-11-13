@@ -1,0 +1,302 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0049",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Es así, si sabes lo que quiero decir.",
+    "known": "It's like this, if you know what I mean."
+  },
+  "recent_seed_pairs": {
+    "S0039": [
+      "Pero estoy un poco cansado esta mañana.",
+      "But I'm a little tired this morning."
+    ],
+    "S0040": [
+      "¿Cómo te sientes en este momento?",
+      "How do you feel at the moment?"
+    ],
+    "S0041": [
+      "Me siento bien, pero estoy comenzando a sentirme cansado.",
+      "I feel okay, but I'm starting to feel tired."
+    ],
+    "S0042": [
+      "Estaba comenzando a sentirme mejor que anoche.",
+      "I was starting to feel better than last night."
+    ],
+    "S0043": [
+      "No estaba pensando en cómo responder.",
+      "I wasn't thinking about how to answer."
+    ],
+    "S0044": [
+      "O si necesito mejorar.",
+      "Or if I need to improve."
+    ],
+    "S0045": [
+      "No necesito saber todo.",
+      "I don't need to know everything."
+    ],
+    "S0046": [
+      "Pero no me preocupo por hacer errores.",
+      "But I don't worry about making mistakes."
+    ],
+    "S0047": [
+      "Porque pienso que es una cosa buena hacer errores.",
+      "Because I think that it's a good thing to make mistakes."
+    ],
+    "S0048": [
+      "No me importa hacer errores.",
+      "I don't care about making mistakes."
+    ]
+  },
+  "legos": {
+    "S0049L01": {
+      "lego": [
+        "it's like this",
+        "es así"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0049L01",
+        "seed_context": {
+          "target": "Es así, si sabes lo que quiero decir.",
+          "known": "It's like this, if you know what I mean."
+        }
+      },
+      "components": [
+        [
+          "es",
+          "it is"
+        ],
+        [
+          "así",
+          "like this/thus"
+        ]
+      ]
+    },
+    "S0049L02": {
+      "lego": [
+        "if you know what I mean",
+        "si sabes lo que quiero decir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's like this",
+          "es así"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0049L02",
+        "seed_context": {
+          "target": "Es así, si sabes lo que quiero decir.",
+          "known": "It's like this, if you know what I mean."
+        }
+      },
+      "components": [
+        [
+          "si",
+          "if"
+        ],
+        [
+          "sabes",
+          "you know"
+        ],
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "quiero",
+          "I want"
+        ],
+        [
+          "decir",
+          "to say"
+        ]
+      ]
+    },
+    "S0049L03": {
+      "lego": [
+        "you know what I mean",
+        "sabes lo que quiero decir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's like this",
+          "es así"
+        ],
+        [
+          "if you know what I mean",
+          "si sabes lo que quiero decir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0049L03",
+        "seed_context": {
+          "target": "Es así, si sabes lo que quiero decir.",
+          "known": "It's like this, if you know what I mean."
+        }
+      },
+      "components": [
+        [
+          "sabes",
+          "you know"
+        ],
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "quiero",
+          "I want"
+        ],
+        [
+          "decir",
+          "to say"
+        ]
+      ]
+    },
+    "S0049L04": {
+      "lego": [
+        "what I mean",
+        "lo que quiero decir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's like this",
+          "es así"
+        ],
+        [
+          "if you know what I mean",
+          "si sabes lo que quiero decir"
+        ],
+        [
+          "you know what I mean",
+          "sabes lo que quiero decir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0049L04",
+        "seed_context": {
+          "target": "Es así, si sabes lo que quiero decir.",
+          "known": "It's like this, if you know what I mean."
+        }
+      },
+      "components": [
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "quiero",
+          "I want"
+        ],
+        [
+          "decir",
+          "to say"
+        ]
+      ]
+    },
+    "S0049L05": {
+      "lego": [
+        "I mean",
+        "quiero decir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "it's like this",
+          "es así"
+        ],
+        [
+          "if you know what I mean",
+          "si sabes lo que quiero decir"
+        ],
+        [
+          "you know what I mean",
+          "sabes lo que quiero decir"
+        ],
+        [
+          "what I mean",
+          "lo que quiero decir"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0049L05",
+        "seed_context": {
+          "target": "Es así, si sabes lo que quiero decir.",
+          "known": "It's like this, if you know what I mean."
+        }
+      },
+      "components": [
+        [
+          "quiero",
+          "I want"
+        ],
+        [
+          "decir",
+          "to say"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0049.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

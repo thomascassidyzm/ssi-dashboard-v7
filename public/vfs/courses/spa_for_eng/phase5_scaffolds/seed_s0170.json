@@ -1,0 +1,298 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0170",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Me gustaría que me dijeras lo que necesitas.",
+    "known": "I'd like you to tell me what you need."
+  },
+  "recent_seed_pairs": {
+    "S0160": [
+      "¿Cómo dices esta palabra en español?",
+      "How do you say this word in Spanish?"
+    ],
+    "S0161": [
+      "¿Puedes darme ese libro el domingo por la mañana?",
+      "Can you give me that book on Sunday morning?"
+    ],
+    "S0162": [
+      "¿Qué piensas de eso?",
+      "What do you think about that?"
+    ],
+    "S0163": [
+      "Pienso que es interesante.",
+      "I think that it's interesting."
+    ],
+    "S0164": [
+      "Un libro interesante.",
+      "An interesting book"
+    ],
+    "S0165": [
+      "Pero no estoy seguro si es verdad.",
+      "But I'm not sure if it's true."
+    ],
+    "S0166": [
+      "Mi nombre no es muy inusual.",
+      "My name is not very unusual."
+    ],
+    "S0167": [
+      "¿Qué necesitas hacer mañana por la tarde?",
+      "What do you need to do tomorrow afternoon?"
+    ],
+    "S0168": [
+      "Y entonces podré venir y ayudar más tarde.",
+      "And then I'll be able to come and help later on."
+    ],
+    "S0169": [
+      "¿Qué quieres que haga?",
+      "What do you want me to do?"
+    ]
+  },
+  "legos": {
+    "S0170L01": {
+      "lego": [
+        "I'd like",
+        "me gustaría"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0170L01",
+        "seed_context": {
+          "target": "Me gustaría que me dijeras lo que necesitas.",
+          "known": "I'd like you to tell me what you need."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "me"
+        ],
+        [
+          "gustaría",
+          "would like"
+        ]
+      ]
+    },
+    "S0170L02": {
+      "lego": [
+        "I'd like you to tell me",
+        "me gustaría que me dijeras"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'd like",
+          "me gustaría"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0170L02",
+        "seed_context": {
+          "target": "Me gustaría que me dijeras lo que necesitas.",
+          "known": "I'd like you to tell me what you need."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "me"
+        ],
+        [
+          "gustaría",
+          "would like"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "me",
+          "me"
+        ],
+        [
+          "dijeras",
+          "you tell"
+        ]
+      ]
+    },
+    "S0170L03": {
+      "lego": [
+        "you to tell me",
+        "que me dijeras"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'd like",
+          "me gustaría"
+        ],
+        [
+          "I'd like you to tell me",
+          "me gustaría que me dijeras"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0170L03",
+        "seed_context": {
+          "target": "Me gustaría que me dijeras lo que necesitas.",
+          "known": "I'd like you to tell me what you need."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "me",
+          "me"
+        ],
+        [
+          "dijeras",
+          "you tell"
+        ]
+      ]
+    },
+    "S0170L04": {
+      "lego": [
+        "what you need",
+        "lo que necesitas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'd like",
+          "me gustaría"
+        ],
+        [
+          "I'd like you to tell me",
+          "me gustaría que me dijeras"
+        ],
+        [
+          "you to tell me",
+          "que me dijeras"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0170L04",
+        "seed_context": {
+          "target": "Me gustaría que me dijeras lo que necesitas.",
+          "known": "I'd like you to tell me what you need."
+        }
+      },
+      "components": [
+        [
+          "lo",
+          "the"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "necesitas",
+          "you need"
+        ]
+      ]
+    },
+    "S0170L05": {
+      "lego": [
+        "that you need",
+        "que necesitas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'd like",
+          "me gustaría"
+        ],
+        [
+          "I'd like you to tell me",
+          "me gustaría que me dijeras"
+        ],
+        [
+          "you to tell me",
+          "que me dijeras"
+        ],
+        [
+          "what you need",
+          "lo que necesitas"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0170L05",
+        "seed_context": {
+          "target": "Me gustaría que me dijeras lo que necesitas.",
+          "known": "I'd like you to tell me what you need."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "necesitas",
+          "you need"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0170.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

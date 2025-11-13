@@ -1,0 +1,274 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0436",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No hay un número mínimo que necesitan.",
+    "known": "No there's a minimum number they need."
+  },
+  "recent_seed_pairs": {
+    "S0426": [
+      "Les gustaría amarse pero están infelices.",
+      "They would like to love each other but they're unhappy."
+    ],
+    "S0427": [
+      "No les gustaría que pienses que están aburridos.",
+      "They wouldn't like you to think that they're bored."
+    ],
+    "S0428": [
+      "¿Les gustaría visitarnos el martes?",
+      "Would they like to visit us on Tuesday?"
+    ],
+    "S0429": [
+      "Sí eso sería perfecto para ellos.",
+      "Yes that would be perfect for them."
+    ],
+    "S0430": [
+      "No eso no sería posible.",
+      "No that wouldn't be possible."
+    ],
+    "S0431": [
+      "Todavía no están preparados pero van a estar preparados pronto.",
+      "They're not ready yet but they'll be ready soon."
+    ],
+    "S0432": [
+      "Podrían significar que quieren que preguntes.",
+      "They could mean that they want you to ask."
+    ],
+    "S0433": [
+      "No pudieron descubrir cuándo empezó la película.",
+      "They couldn't find out when the film started."
+    ],
+    "S0434": [
+      "¿Podrían reducir el número de estudiantes que toman?",
+      "Could they cut the number of students they take?"
+    ],
+    "S0435": [
+      "Sí podrían si quisieran.",
+      "Yes they could if they wanted to."
+    ]
+  },
+  "legos": {
+    "S0436L01": {
+      "lego": [
+        "no",
+        "no"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0436L01",
+        "seed_context": {
+          "target": "No hay un número mínimo que necesitan.",
+          "known": "No there's a minimum number they need."
+        }
+      }
+    },
+    "S0436L02": {
+      "lego": [
+        "there's",
+        "hay"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0436L02",
+        "seed_context": {
+          "target": "No hay un número mínimo que necesitan.",
+          "known": "No there's a minimum number they need."
+        }
+      }
+    },
+    "S0436L03": {
+      "lego": [
+        "a minimum number",
+        "un número mínimo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "there's",
+          "hay"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0436L03",
+        "seed_context": {
+          "target": "No hay un número mínimo que necesitan.",
+          "known": "No there's a minimum number they need."
+        }
+      },
+      "components": [
+        [
+          "un",
+          "a"
+        ],
+        [
+          "número",
+          "number"
+        ],
+        [
+          "mínimo",
+          "minimum"
+        ]
+      ]
+    },
+    "S0436L04": {
+      "lego": [
+        "a minimum number they need",
+        "un número mínimo que necesitan"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "there's",
+          "hay"
+        ],
+        [
+          "a minimum number",
+          "un número mínimo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0436L04",
+        "seed_context": {
+          "target": "No hay un número mínimo que necesitan.",
+          "known": "No there's a minimum number they need."
+        }
+      },
+      "components": [
+        [
+          "un",
+          "a"
+        ],
+        [
+          "número",
+          "number"
+        ],
+        [
+          "mínimo",
+          "minimum"
+        ],
+        [
+          "que",
+          "they"
+        ],
+        [
+          "necesitan",
+          "need"
+        ]
+      ]
+    },
+    "S0436L05": {
+      "lego": [
+        "they need",
+        "que necesitan"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "no",
+          "no"
+        ],
+        [
+          "there's",
+          "hay"
+        ],
+        [
+          "a minimum number",
+          "un número mínimo"
+        ],
+        [
+          "a minimum number they need",
+          "un número mínimo que necesitan"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0436L05",
+        "seed_context": {
+          "target": "No hay un número mínimo que necesitan.",
+          "known": "No there's a minimum number they need."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "they"
+        ],
+        [
+          "necesitan",
+          "need"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0436.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

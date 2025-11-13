@@ -1,0 +1,346 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0297",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No conozco a muchas personas que hablan español.",
+    "known": "I don't know many people who speak Spanish."
+  },
+  "recent_seed_pairs": {
+    "S0287": [
+      "¿Cuántas personas conoces a las que les gusta ver la televisión?",
+      "How many people do you know who like watching television?"
+    ],
+    "S0288": [
+      "A la mayoría de la gente que conozco le gusta ver la televisión.",
+      "Most people I know like watching television."
+    ],
+    "S0289": [
+      "Me pregunto si ella va a estar allí esta tarde.",
+      "I wonder if she's going to be there this afternoon."
+    ],
+    "S0290": [
+      "Me pregunto si él sabe la respuesta.",
+      "I wonder if he knows the answer."
+    ],
+    "S0291": [
+      "Espero poder hablar mejor pronto.",
+      "I hope I'll be able to speak better soon."
+    ],
+    "S0292": [
+      "Espero que puedas venir a la fiesta.",
+      "I hope you'll be able to come to the party."
+    ],
+    "S0293": [
+      "Tengo que descubrir dónde va a reunirse conmigo.",
+      "I have to find out where he's going to meet me."
+    ],
+    "S0294": [
+      "No tengo suficiente tiempo para llamarte esta noche.",
+      "I don't have enough time to call you tonight."
+    ],
+    "S0295": [
+      "No dije que quería terminar en un día.",
+      "I didn't say that I wanted to finish in a day."
+    ],
+    "S0296": [
+      "Dije que necesitaba un poco más de tiempo.",
+      "I said that I needed a little more time."
+    ]
+  },
+  "legos": {
+    "S0297L01": {
+      "lego": [
+        "I don't know",
+        "no conozco"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0297L01",
+        "seed_context": {
+          "target": "No conozco a muchas personas que hablan español.",
+          "known": "I don't know many people who speak Spanish."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "don't"
+        ],
+        [
+          "conozco",
+          "know"
+        ]
+      ]
+    },
+    "S0297L02": {
+      "lego": [
+        "I know many people",
+        "conozco a muchas personas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't know",
+          "no conozco"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0297L02",
+        "seed_context": {
+          "target": "No conozco a muchas personas que hablan español.",
+          "known": "I don't know many people who speak Spanish."
+        }
+      },
+      "components": [
+        [
+          "conozco",
+          "know"
+        ],
+        [
+          "a",
+          "(personal a)"
+        ],
+        [
+          "muchas",
+          "many"
+        ],
+        [
+          "personas",
+          "people"
+        ]
+      ]
+    },
+    "S0297L03": {
+      "lego": [
+        "many people who speak Spanish",
+        "muchas personas que hablan español"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't know",
+          "no conozco"
+        ],
+        [
+          "I know many people",
+          "conozco a muchas personas"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0297L03",
+        "seed_context": {
+          "target": "No conozco a muchas personas que hablan español.",
+          "known": "I don't know many people who speak Spanish."
+        }
+      },
+      "components": [
+        [
+          "muchas",
+          "many"
+        ],
+        [
+          "personas",
+          "people"
+        ],
+        [
+          "que",
+          "who"
+        ],
+        [
+          "hablan",
+          "speak"
+        ],
+        [
+          "español",
+          "Spanish"
+        ]
+      ]
+    },
+    "S0297L04": {
+      "lego": [
+        "who speak Spanish",
+        "que hablan español"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't know",
+          "no conozco"
+        ],
+        [
+          "I know many people",
+          "conozco a muchas personas"
+        ],
+        [
+          "many people who speak Spanish",
+          "muchas personas que hablan español"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0297L04",
+        "seed_context": {
+          "target": "No conozco a muchas personas que hablan español.",
+          "known": "I don't know many people who speak Spanish."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "who"
+        ],
+        [
+          "hablan",
+          "speak"
+        ],
+        [
+          "español",
+          "Spanish"
+        ]
+      ]
+    },
+    "S0297L05": {
+      "lego": [
+        "speak Spanish",
+        "hablan español"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't know",
+          "no conozco"
+        ],
+        [
+          "I know many people",
+          "conozco a muchas personas"
+        ],
+        [
+          "many people who speak Spanish",
+          "muchas personas que hablan español"
+        ],
+        [
+          "who speak Spanish",
+          "que hablan español"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0297L05",
+        "seed_context": {
+          "target": "No conozco a muchas personas que hablan español.",
+          "known": "I don't know many people who speak Spanish."
+        }
+      },
+      "components": [
+        [
+          "hablan",
+          "speak"
+        ],
+        [
+          "español",
+          "Spanish"
+        ]
+      ]
+    },
+    "S0297L06": {
+      "lego": [
+        "Spanish",
+        "español"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I don't know",
+          "no conozco"
+        ],
+        [
+          "I know many people",
+          "conozco a muchas personas"
+        ],
+        [
+          "many people who speak Spanish",
+          "muchas personas que hablan español"
+        ],
+        [
+          "who speak Spanish",
+          "que hablan español"
+        ],
+        [
+          "speak Spanish",
+          "hablan español"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0297L06",
+        "seed_context": {
+          "target": "No conozco a muchas personas que hablan español.",
+          "known": "I don't know many people who speak Spanish."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0297.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

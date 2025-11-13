@@ -1,0 +1,190 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0438",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No querían decidir lo que debería hacer.",
+    "known": "They didn't want to decide what he should do."
+  },
+  "recent_seed_pairs": {
+    "S0428": [
+      "¿Les gustaría visitarnos el martes?",
+      "Would they like to visit us on Tuesday?"
+    ],
+    "S0429": [
+      "Sí eso sería perfecto para ellos.",
+      "Yes that would be perfect for them."
+    ],
+    "S0430": [
+      "No eso no sería posible.",
+      "No that wouldn't be possible."
+    ],
+    "S0431": [
+      "Todavía no están preparados pero van a estar preparados pronto.",
+      "They're not ready yet but they'll be ready soon."
+    ],
+    "S0432": [
+      "Podrían significar que quieren que preguntes.",
+      "They could mean that they want you to ask."
+    ],
+    "S0433": [
+      "No pudieron descubrir cuándo empezó la película.",
+      "They couldn't find out when the film started."
+    ],
+    "S0434": [
+      "¿Podrían reducir el número de estudiantes que toman?",
+      "Could they cut the number of students they take?"
+    ],
+    "S0435": [
+      "Sí podrían si quisieran.",
+      "Yes they could if they wanted to."
+    ],
+    "S0436": [
+      "No hay un número mínimo que necesitan.",
+      "No there's a minimum number they need."
+    ],
+    "S0437": [
+      "Querían recaudar tanto como posible para caridad.",
+      "They wanted to raise as much as possible for charity."
+    ]
+  },
+  "legos": {
+    "S0438L01": {
+      "lego": [
+        "they didn't want to decide",
+        "no querían decidir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0438L01",
+        "seed_context": {
+          "target": "No querían decidir lo que debería hacer.",
+          "known": "They didn't want to decide what he should do."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "querían",
+          "they wanted"
+        ],
+        [
+          "decidir",
+          "to decide"
+        ]
+      ]
+    },
+    "S0438L02": {
+      "lego": [
+        "what he should do",
+        "lo que debería hacer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they didn't want to decide",
+          "no querían decidir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0438L02",
+        "seed_context": {
+          "target": "No querían decidir lo que debería hacer.",
+          "known": "They didn't want to decide what he should do."
+        }
+      },
+      "components": [
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "debería",
+          "he should"
+        ],
+        [
+          "hacer",
+          "do"
+        ]
+      ]
+    },
+    "S0438L03": {
+      "lego": [
+        "he should do",
+        "debería hacer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they didn't want to decide",
+          "no querían decidir"
+        ],
+        [
+          "what he should do",
+          "lo que debería hacer"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0438L03",
+        "seed_context": {
+          "target": "No querían decidir lo que debería hacer.",
+          "known": "They didn't want to decide what he should do."
+        }
+      },
+      "components": [
+        [
+          "debería",
+          "he should"
+        ],
+        [
+          "hacer",
+          "do"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0438.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

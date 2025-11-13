@@ -1,0 +1,218 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0252",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Cuándo estarás preparado para empezar?",
+    "known": "When will you be ready to start?"
+  },
+  "recent_seed_pairs": {
+    "S0242": [
+      "I want to give her more time.",
+      "Quiero darle más tiempo."
+    ],
+    "S0243": [
+      "I'm going to ask for the same thing to eat.",
+      "Voy a pedir la misma cosa para comer."
+    ],
+    "S0244": [
+      "I've learnt a lot already",
+      "Ya he aprendido mucho."
+    ],
+    "S0245": [
+      "I'm happy with how much I've done in a short time",
+      "Estoy contento con cuánto he hecho en poco tiempo."
+    ],
+    "S0246": [
+      "I wanted her to help you but she was too busy.",
+      "Quería que ella te ayudara pero estaba demasiado ocupada."
+    ],
+    "S0247": [
+      "I thought that book was fairly good.",
+      "Pensé que ese libro era bastante bueno."
+    ],
+    "S0248": [
+      "I thought the film was complete rubbish and I want my money back.",
+      "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+    ],
+    "S0249": [
+      "I want you to help me before you go.",
+      "Quiero que me ayudes antes de que te vayas."
+    ],
+    "S0250": [
+      "Can you tell me something else before I answer?",
+      "¿Puedes decirme algo más antes de que responda?"
+    ],
+    "S0251": [
+      "No quiero descubrir hasta después de que terminemos.",
+      "I don't want to find out until after we finish."
+    ]
+  },
+  "legos": {
+    "S0252L01": {
+      "lego": [
+        "when will you be",
+        "cuándo estarás"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0252L01",
+        "seed_context": {
+          "target": "¿Cuándo estarás preparado para empezar?",
+          "known": "When will you be ready to start?"
+        }
+      },
+      "components": [
+        [
+          "cuándo",
+          "when"
+        ],
+        [
+          "estarás",
+          "you will be"
+        ]
+      ]
+    },
+    "S0252L02": {
+      "lego": [
+        "ready",
+        "preparado"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "when will you be",
+          "cuándo estarás"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0252L02",
+        "seed_context": {
+          "target": "¿Cuándo estarás preparado para empezar?",
+          "known": "When will you be ready to start?"
+        }
+      }
+    },
+    "S0252L03": {
+      "lego": [
+        "you'll be ready",
+        "estarás preparado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "when will you be",
+          "cuándo estarás"
+        ],
+        [
+          "ready",
+          "preparado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0252L03",
+        "seed_context": {
+          "target": "¿Cuándo estarás preparado para empezar?",
+          "known": "When will you be ready to start?"
+        }
+      },
+      "components": [
+        [
+          "estarás",
+          "you will be"
+        ],
+        [
+          "preparado",
+          "ready"
+        ]
+      ]
+    },
+    "S0252L04": {
+      "lego": [
+        "to start",
+        "para empezar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "when will you be",
+          "cuándo estarás"
+        ],
+        [
+          "ready",
+          "preparado"
+        ],
+        [
+          "you'll be ready",
+          "estarás preparado"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0252L04",
+        "seed_context": {
+          "target": "¿Cuándo estarás preparado para empezar?",
+          "known": "When will you be ready to start?"
+        }
+      },
+      "components": [
+        [
+          "para",
+          "to/for"
+        ],
+        [
+          "empezar",
+          "to start/begin"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0252.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

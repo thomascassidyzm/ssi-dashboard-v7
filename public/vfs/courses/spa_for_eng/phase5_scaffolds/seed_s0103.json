@@ -1,0 +1,338 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0103",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No estamos intentando oír muchas más palabras",
+    "known": "We're not trying to hear many more words."
+  },
+  "recent_seed_pairs": {
+    "S0093": [
+      "Es hora de ir ahora.",
+      "It's time to go now."
+    ],
+    "S0094": [
+      "Esta es la única manera en que funcionará.",
+      "This is the only way it will work."
+    ],
+    "S0095": [
+      "¿Estás preparado para ir a casa en el próximo autobús?",
+      "Are you ready to go home on the next bus?"
+    ],
+    "S0096": [
+      "No, no estoy preparado todavía, necesito un poco más de tiempo.",
+      "No I'm not ready yet, I need a little more time."
+    ],
+    "S0097": [
+      "Sí, estoy preparado para ir tan pronto como quieras.",
+      "Yes I'm ready to go as soon as you want."
+    ],
+    "S0098": [
+      "Debería considerar jugar otra cosa.",
+      "I should consider playing something else."
+    ],
+    "S0099": [
+      "Deberías preguntarte por qué no está trabajando",
+      "You should ask yourself why it's not working."
+    ],
+    "S0100": [
+      "No deberías preocuparte por hacer algo similar",
+      "You shouldn't worry about doing something similar."
+    ],
+    "S0101": [
+      "Estoy disfrutando descubrir más sobre este lenguaje",
+      "I'm enjoying finding out more about this language."
+    ],
+    "S0102": [
+      "Estamos intentando decir que no es así",
+      "We're trying to say that it's not like that."
+    ]
+  },
+  "legos": {
+    "S0103L01": {
+      "lego": [
+        "we're not trying",
+        "no estamos intentando"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0103L01",
+        "seed_context": {
+          "target": "No estamos intentando oír muchas más palabras",
+          "known": "We're not trying to hear many more words."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "estamos",
+          "we're"
+        ],
+        [
+          "intentando",
+          "trying"
+        ]
+      ]
+    },
+    "S0103L02": {
+      "lego": [
+        "trying to hear",
+        "intentando oír"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we're not trying",
+          "no estamos intentando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0103L02",
+        "seed_context": {
+          "target": "No estamos intentando oír muchas más palabras",
+          "known": "We're not trying to hear many more words."
+        }
+      },
+      "components": [
+        [
+          "intentando",
+          "trying"
+        ],
+        [
+          "oír",
+          "to hear"
+        ]
+      ]
+    },
+    "S0103L03": {
+      "lego": [
+        "to hear many more words",
+        "oír muchas más palabras"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we're not trying",
+          "no estamos intentando"
+        ],
+        [
+          "trying to hear",
+          "intentando oír"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0103L03",
+        "seed_context": {
+          "target": "No estamos intentando oír muchas más palabras",
+          "known": "We're not trying to hear many more words."
+        }
+      },
+      "components": [
+        [
+          "oír",
+          "to hear"
+        ],
+        [
+          "muchas",
+          "many"
+        ],
+        [
+          "más",
+          "more"
+        ],
+        [
+          "palabras",
+          "words"
+        ]
+      ]
+    },
+    "S0103L04": {
+      "lego": [
+        "many more words",
+        "muchas más palabras"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we're not trying",
+          "no estamos intentando"
+        ],
+        [
+          "trying to hear",
+          "intentando oír"
+        ],
+        [
+          "to hear many more words",
+          "oír muchas más palabras"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0103L04",
+        "seed_context": {
+          "target": "No estamos intentando oír muchas más palabras",
+          "known": "We're not trying to hear many more words."
+        }
+      },
+      "components": [
+        [
+          "muchas",
+          "many"
+        ],
+        [
+          "más",
+          "more"
+        ],
+        [
+          "palabras",
+          "words"
+        ]
+      ]
+    },
+    "S0103L05": {
+      "lego": [
+        "more words",
+        "más palabras"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we're not trying",
+          "no estamos intentando"
+        ],
+        [
+          "trying to hear",
+          "intentando oír"
+        ],
+        [
+          "to hear many more words",
+          "oír muchas más palabras"
+        ],
+        [
+          "many more words",
+          "muchas más palabras"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0103L05",
+        "seed_context": {
+          "target": "No estamos intentando oír muchas más palabras",
+          "known": "We're not trying to hear many more words."
+        }
+      },
+      "components": [
+        [
+          "más",
+          "more"
+        ],
+        [
+          "palabras",
+          "words"
+        ]
+      ]
+    },
+    "S0103L06": {
+      "lego": [
+        "words",
+        "palabras"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "we're not trying",
+          "no estamos intentando"
+        ],
+        [
+          "trying to hear",
+          "intentando oír"
+        ],
+        [
+          "to hear many more words",
+          "oír muchas más palabras"
+        ],
+        [
+          "many more words",
+          "muchas más palabras"
+        ],
+        [
+          "more words",
+          "más palabras"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0103L06",
+        "seed_context": {
+          "target": "No estamos intentando oír muchas más palabras",
+          "known": "We're not trying to hear many more words."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0103.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

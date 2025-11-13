@@ -1,0 +1,240 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0581",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Le gustaría saber un poco más sobre cómo es.",
+    "known": "He'd like to know a little more about what it's like."
+  },
+  "recent_seed_pairs": {
+    "S0571": [
+      "No estoy convencido de que eso sería una muy buena idea.",
+      "I'm not convinced that would be a very good idea."
+    ],
+    "S0572": [
+      "¿Has olvidado lo que pasó la última vez que nos visitaron?",
+      "Have you forgotten what happened the last time they visited us?"
+    ],
+    "S0573": [
+      "Es el tipo de cosa que hace que las vacaciones sean muy especiales.",
+      "It's the kind of thing that makes the holidays very special."
+    ],
+    "S0574": [
+      "Las vacaciones son muy especiales para todos.",
+      "The holidays are very special for everyone."
+    ],
+    "S0575": [
+      "Ha sido perturbador.",
+      "It's been upsetting."
+    ],
+    "S0576": [
+      "Ha sido muy perturbador esperar.",
+      "It has been very upsetting waiting."
+    ],
+    "S0577": [
+      "Hemos estado esperando las noticias del hospital.",
+      "We've been waiting for the news from the hospital."
+    ],
+    "S0578": [
+      "En algún lugar más cálido.",
+      "Somewhere warmer."
+    ],
+    "S0579": [
+      "Frecuentemente hemos intentado.",
+      "We've often tried."
+    ],
+    "S0580": [
+      "Frecuentemente hemos querido llevar a los niños a algún lugar un poco más cálido.",
+      "We've often wanted to take the children somewhere a little warmer."
+    ]
+  },
+  "legos": {
+    "S0581L01": {
+      "lego": [
+        "he'd like to know",
+        "le gustaría saber"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0581L01",
+        "seed_context": {
+          "target": "Le gustaría saber un poco más sobre cómo es.",
+          "known": "He'd like to know a little more about what it's like."
+        }
+      },
+      "components": [
+        [
+          "le",
+          "him/he"
+        ],
+        [
+          "gustaría",
+          "would like"
+        ],
+        [
+          "saber",
+          "to know"
+        ]
+      ]
+    },
+    "S0581L02": {
+      "lego": [
+        "to know a little more",
+        "saber un poco más"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "he'd like to know",
+          "le gustaría saber"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0581L02",
+        "seed_context": {
+          "target": "Le gustaría saber un poco más sobre cómo es.",
+          "known": "He'd like to know a little more about what it's like."
+        }
+      },
+      "components": [
+        [
+          "saber",
+          "to know"
+        ],
+        [
+          "un poco",
+          "a little"
+        ],
+        [
+          "más",
+          "more"
+        ]
+      ]
+    },
+    "S0581L03": {
+      "lego": [
+        "a little more",
+        "un poco más"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "he'd like to know",
+          "le gustaría saber"
+        ],
+        [
+          "to know a little more",
+          "saber un poco más"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0581L03",
+        "seed_context": {
+          "target": "Le gustaría saber un poco más sobre cómo es.",
+          "known": "He'd like to know a little more about what it's like."
+        }
+      },
+      "components": [
+        [
+          "un poco",
+          "a little"
+        ],
+        [
+          "más",
+          "more"
+        ]
+      ]
+    },
+    "S0581L04": {
+      "lego": [
+        "about what it's like",
+        "sobre cómo es"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "he'd like to know",
+          "le gustaría saber"
+        ],
+        [
+          "to know a little more",
+          "saber un poco más"
+        ],
+        [
+          "a little more",
+          "un poco más"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0581L04",
+        "seed_context": {
+          "target": "Le gustaría saber un poco más sobre cómo es.",
+          "known": "He'd like to know a little more about what it's like."
+        }
+      },
+      "components": [
+        [
+          "sobre",
+          "about"
+        ],
+        [
+          "cómo",
+          "how/what"
+        ],
+        [
+          "es",
+          "it's/is"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0581.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

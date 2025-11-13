@@ -1,0 +1,190 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0416",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Quieren liderar el camino el próximo año.",
+    "known": "They want to lead the way next year."
+  },
+  "recent_seed_pairs": {
+    "S0406": [
+      "No I'm sure it will be okay.",
+      "No, estoy seguro de que estará bien."
+    ],
+    "S0407": [
+      "Shouldn't we try to set a good example?",
+      "¿No deberíamos intentar establecer un buen ejemplo?"
+    ],
+    "S0408": [
+      "Yes that's the best way to make a happy family.",
+      "Sí esa es la mejor manera de hacer una familia feliz."
+    ],
+    "S0409": [
+      "No it doesn't matter what we do.",
+      "No no importa lo que hagamos."
+    ],
+    "S0410": [
+      "They still fight with each other.",
+      "Todavía luchan el uno con el otro."
+    ],
+    "S0411": [
+      "Nos gustaría reservar una mesa para cuatro esta noche.",
+      "We would like to reserve a table for four tonight."
+    ],
+    "S0412": [
+      "No podríamos permitirles ganar todo.",
+      "We couldn't allow them to win everything."
+    ],
+    "S0413": [
+      "Podríamos caer si vamos demasiado cerca del borde.",
+      "We could fall if we go too close to the edge."
+    ],
+    "S0414": [
+      "¿Podríamos tener una botella de vino tinto por favor?",
+      "Could we have a bottle of red wine please?"
+    ],
+    "S0415": [
+      "Eso no sería un problema si me preguntas.",
+      "That wouldn't be a problem if you ask me."
+    ]
+  },
+  "legos": {
+    "S0416L01": {
+      "lego": [
+        "they want to lead",
+        "quieren liderar"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0416L01",
+        "seed_context": {
+          "target": "Quieren liderar el camino el próximo año.",
+          "known": "They want to lead the way next year."
+        }
+      },
+      "components": [
+        [
+          "quieren",
+          "they want"
+        ],
+        [
+          "liderar",
+          "to lead"
+        ]
+      ]
+    },
+    "S0416L02": {
+      "lego": [
+        "lead the way",
+        "liderar el camino"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they want to lead",
+          "quieren liderar"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0416L02",
+        "seed_context": {
+          "target": "Quieren liderar el camino el próximo año.",
+          "known": "They want to lead the way next year."
+        }
+      },
+      "components": [
+        [
+          "liderar",
+          "to lead"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "camino",
+          "way"
+        ]
+      ]
+    },
+    "S0416L03": {
+      "lego": [
+        "next year",
+        "el próximo año"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they want to lead",
+          "quieren liderar"
+        ],
+        [
+          "lead the way",
+          "liderar el camino"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0416L03",
+        "seed_context": {
+          "target": "Quieren liderar el camino el próximo año.",
+          "known": "They want to lead the way next year."
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "próximo",
+          "next"
+        ],
+        [
+          "año",
+          "year"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0416.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 3,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10
+  }
+}

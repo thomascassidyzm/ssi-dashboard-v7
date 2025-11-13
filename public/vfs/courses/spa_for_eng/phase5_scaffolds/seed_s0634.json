@@ -1,0 +1,144 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0634",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Me gustaría uno de esos.",
+    "known": "I'd like one of those."
+  },
+  "recent_seed_pairs": {
+    "S0624": [
+      "Sí, eso sería genial, por favor.",
+      "Yes, that would be great, please."
+    ],
+    "S0625": [
+      "¿Quieres algo de beber?",
+      "Do you want something to drink?"
+    ],
+    "S0626": [
+      "No, no tengo sed, gracias.",
+      "No, I'm not thirsty, thank you."
+    ],
+    "S0627": [
+      "Tu café está preparado.",
+      "Your coffee is ready."
+    ],
+    "S0628": [
+      "¿Te gusta el té?",
+      "Do you like tea?"
+    ],
+    "S0629": [
+      "Me gusta con leche pero sin azúcar.",
+      "I like it with milk but without sugar."
+    ],
+    "S0630": [
+      "¿Puedo tener algo para beber por favor?",
+      "Can I have something to drink please?"
+    ],
+    "S0631": [
+      "¿Qué quieres?",
+      "What would you like?"
+    ],
+    "S0632": [
+      "Un vaso de agua.",
+      "A glass of water."
+    ],
+    "S0633": [
+      "Un vaso grande de agua estaría bien.",
+      "A large glass of water would be fine."
+    ]
+  },
+  "legos": {
+    "S0634L01": {
+      "lego": [
+        "I'd like",
+        "me gustaría"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0634L01",
+        "seed_context": {
+          "target": "Me gustaría uno de esos.",
+          "known": "I'd like one of those."
+        }
+      },
+      "components": [
+        [
+          "me",
+          "I"
+        ],
+        [
+          "gustaría",
+          "would like"
+        ]
+      ]
+    },
+    "S0634L02": {
+      "lego": [
+        "one of those",
+        "uno de esos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I'd like",
+          "me gustaría"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0634L02",
+        "seed_context": {
+          "target": "Me gustaría uno de esos.",
+          "known": "I'd like one of those."
+        }
+      },
+      "components": [
+        [
+          "uno",
+          "one"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "esos",
+          "those"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0634.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "total_legos_in_seed": 2,
+    "phrases_to_generate": 24,
+    "recent_context_seeds": 10
+  }
+}

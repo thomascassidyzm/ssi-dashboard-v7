@@ -1,0 +1,840 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0248",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "I thought the film was complete rubbish and I want my money back.",
+    "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+  },
+  "recent_seed_pairs": {
+    "S0238": [
+      "Quería que me dijeras ayer.",
+      "He wanted you to tell me yesterday."
+    ],
+    "S0239": [
+      "A mi madre le gusta leer.",
+      "My mother likes to read."
+    ],
+    "S0240": [
+      "A mi padre no le gusta dejar de hablar.",
+      "My father doesn't like to stop talking."
+    ],
+    "S0241": [
+      "I don't want to give it to him.",
+      "No quiero dárselo."
+    ],
+    "S0242": [
+      "I want to give her more time.",
+      "Quiero darle más tiempo."
+    ],
+    "S0243": [
+      "I'm going to ask for the same thing to eat.",
+      "Voy a pedir la misma cosa para comer."
+    ],
+    "S0244": [
+      "I've learnt a lot already",
+      "Ya he aprendido mucho."
+    ],
+    "S0245": [
+      "I'm happy with how much I've done in a short time",
+      "Estoy contento con cuánto he hecho en poco tiempo."
+    ],
+    "S0246": [
+      "I wanted her to help you but she was too busy.",
+      "Quería que ella te ayudara pero estaba demasiado ocupada."
+    ],
+    "S0247": [
+      "I thought that book was fairly good.",
+      "Pensé que ese libro era bastante bueno."
+    ]
+  },
+  "legos": {
+    "S0248L01": {
+      "lego": [
+        "I thought",
+        "Pensé"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L01",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      }
+    },
+    "S0248L02": {
+      "lego": [
+        "I thought that",
+        "Pensé que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I thought",
+          "Pensé"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L02",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      },
+      "components": [
+        [
+          "Pensé",
+          "I thought"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0248L03": {
+      "lego": [
+        "I thought the film was complete rubbish",
+        "Pensé que la película era basura completa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought that",
+          "Pensé que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L03",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      },
+      "components": [
+        [
+          "Pensé",
+          "I thought"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "película",
+          "film"
+        ],
+        [
+          "era",
+          "was"
+        ],
+        [
+          "basura",
+          "rubbish"
+        ],
+        [
+          "completa",
+          "complete"
+        ]
+      ]
+    },
+    "S0248L04": {
+      "lego": [
+        "the film",
+        "la película"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought that",
+          "Pensé que"
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L04",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "película",
+          "film"
+        ]
+      ]
+    },
+    "S0248L05": {
+      "lego": [
+        "the film was complete rubbish",
+        "la película era basura completa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought that",
+          "Pensé que"
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ],
+        [
+          "the film",
+          "la película"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L05",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "película",
+          "film"
+        ],
+        [
+          "era",
+          "was"
+        ],
+        [
+          "basura",
+          "rubbish"
+        ],
+        [
+          "completa",
+          "complete"
+        ]
+      ]
+    },
+    "S0248L06": {
+      "lego": [
+        "was complete rubbish",
+        "era basura completa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought that",
+          "Pensé que"
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ],
+        [
+          "the film",
+          "la película"
+        ],
+        [
+          "the film was complete rubbish",
+          "la película era basura completa"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L06",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      },
+      "components": [
+        [
+          "era",
+          "was"
+        ],
+        [
+          "basura",
+          "rubbish"
+        ],
+        [
+          "completa",
+          "complete"
+        ]
+      ]
+    },
+    "S0248L07": {
+      "lego": [
+        "complete rubbish",
+        "basura completa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought that",
+          "Pensé que"
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ],
+        [
+          "the film",
+          "la película"
+        ],
+        [
+          "the film was complete rubbish",
+          "la película era basura completa"
+        ],
+        [
+          "was complete rubbish",
+          "era basura completa"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L07",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      },
+      "components": [
+        [
+          "basura",
+          "rubbish"
+        ],
+        [
+          "completa",
+          "complete"
+        ]
+      ]
+    },
+    "S0248L08": {
+      "lego": [
+        "and",
+        "y"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought that",
+          "Pensé que"
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ],
+        [
+          "the film",
+          "la película"
+        ],
+        [
+          "the film was complete rubbish",
+          "la película era basura completa"
+        ],
+        [
+          "was complete rubbish",
+          "era basura completa"
+        ],
+        [
+          "complete rubbish",
+          "basura completa"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L08",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      }
+    },
+    "S0248L09": {
+      "lego": [
+        "I want",
+        "quiero"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought that",
+          "Pensé que"
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ],
+        [
+          "the film",
+          "la película"
+        ],
+        [
+          "the film was complete rubbish",
+          "la película era basura completa"
+        ],
+        [
+          "was complete rubbish",
+          "era basura completa"
+        ],
+        [
+          "complete rubbish",
+          "basura completa"
+        ],
+        [
+          "and",
+          "y"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L09",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      }
+    },
+    "S0248L10": {
+      "lego": [
+        "I want my money back",
+        "quiero mi dinero de vuelta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought that",
+          "Pensé que"
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ],
+        [
+          "the film",
+          "la película"
+        ],
+        [
+          "the film was complete rubbish",
+          "la película era basura completa"
+        ],
+        [
+          "was complete rubbish",
+          "era basura completa"
+        ],
+        [
+          "complete rubbish",
+          "basura completa"
+        ],
+        [
+          "and",
+          "y"
+        ],
+        [
+          "I want",
+          "quiero"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L10",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      },
+      "components": [
+        [
+          "quiero",
+          "I want"
+        ],
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "dinero",
+          "money"
+        ],
+        [
+          "de vuelta",
+          "back"
+        ]
+      ]
+    },
+    "S0248L11": {
+      "lego": [
+        "my money",
+        "mi dinero"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought that",
+          "Pensé que"
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ],
+        [
+          "the film",
+          "la película"
+        ],
+        [
+          "the film was complete rubbish",
+          "la película era basura completa"
+        ],
+        [
+          "was complete rubbish",
+          "era basura completa"
+        ],
+        [
+          "complete rubbish",
+          "basura completa"
+        ],
+        [
+          "and",
+          "y"
+        ],
+        [
+          "I want",
+          "quiero"
+        ],
+        [
+          "I want my money back",
+          "quiero mi dinero de vuelta"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L11",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      },
+      "components": [
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "dinero",
+          "money"
+        ]
+      ]
+    },
+    "S0248L12": {
+      "lego": [
+        "my money back",
+        "mi dinero de vuelta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought that",
+          "Pensé que"
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ],
+        [
+          "the film",
+          "la película"
+        ],
+        [
+          "the film was complete rubbish",
+          "la película era basura completa"
+        ],
+        [
+          "was complete rubbish",
+          "era basura completa"
+        ],
+        [
+          "complete rubbish",
+          "basura completa"
+        ],
+        [
+          "and",
+          "y"
+        ],
+        [
+          "I want",
+          "quiero"
+        ],
+        [
+          "I want my money back",
+          "quiero mi dinero de vuelta"
+        ],
+        [
+          "my money",
+          "mi dinero"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L12",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      },
+      "components": [
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "dinero",
+          "money"
+        ],
+        [
+          "de vuelta",
+          "back"
+        ]
+      ]
+    },
+    "S0248L13": {
+      "lego": [
+        "back",
+        "de vuelta"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought that",
+          "Pensé que"
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ],
+        [
+          "the film",
+          "la película"
+        ],
+        [
+          "the film was complete rubbish",
+          "la película era basura completa"
+        ],
+        [
+          "was complete rubbish",
+          "era basura completa"
+        ],
+        [
+          "complete rubbish",
+          "basura completa"
+        ],
+        [
+          "and",
+          "y"
+        ],
+        [
+          "I want",
+          "quiero"
+        ],
+        [
+          "I want my money back",
+          "quiero mi dinero de vuelta"
+        ],
+        [
+          "my money",
+          "mi dinero"
+        ],
+        [
+          "my money back",
+          "mi dinero de vuelta"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0248L13",
+        "seed_context": {
+          "target": "I thought the film was complete rubbish and I want my money back.",
+          "known": "Pensé que la película era basura completa y quiero mi dinero de vuelta."
+        }
+      },
+      "components": [
+        [
+          "de",
+          "of"
+        ],
+        [
+          "vuelta",
+          "return"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0248.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 13,
+    "total_legos_in_seed": 13,
+    "phrases_to_generate": 156,
+    "recent_context_seeds": 10
+  }
+}

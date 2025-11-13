@@ -1,0 +1,550 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0306",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Conozco a esa mujer joven que está hablando con tu amigo.",
+    "known": "I know that young woman who's talking to your friend."
+  },
+  "recent_seed_pairs": {
+    "S0296": [
+      "Dije que necesitaba un poco más de tiempo.",
+      "I said that I needed a little more time."
+    ],
+    "S0297": [
+      "No conozco a muchas personas que hablan español.",
+      "I don't know many people who speak Spanish."
+    ],
+    "S0298": [
+      "No me queda nada que decir.",
+      "I've got nothing left to say."
+    ],
+    "S0299": [
+      "Él quiere pagar la mitad.",
+      "He wants to pay half."
+    ],
+    "S0300": [
+      "Ella no quiere parecer antipática.",
+      "She doesn't want to seem unfriendly."
+    ],
+    "S0301": [
+      "Él dijo que quiere mostrarte algo.",
+      "He said that he wants to show you something."
+    ],
+    "S0302": [
+      "Ella dijo que no quiere vivir en una ciudad.",
+      "She said that she doesn't want to live in a city."
+    ],
+    "S0303": [
+      "Creo que él quiere sentarse.",
+      "I think that he wants to sit down."
+    ],
+    "S0304": [
+      "Creo que ella no quiere trabajar desde casa.",
+      "I think that she doesn't want to work from home."
+    ],
+    "S0305": [
+      "Mujer.",
+      "Woman."
+    ]
+  },
+  "legos": {
+    "S0306L01": {
+      "lego": [
+        "I know",
+        "conozco a"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0306L01",
+        "seed_context": {
+          "target": "Conozco a esa mujer joven que está hablando con tu amigo.",
+          "known": "I know that young woman who's talking to your friend."
+        }
+      },
+      "components": [
+        [
+          "conozco",
+          "I know"
+        ],
+        [
+          "a",
+          "to/personal a"
+        ]
+      ]
+    },
+    "S0306L02": {
+      "lego": [
+        "that young woman",
+        "esa mujer joven"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0306L02",
+        "seed_context": {
+          "target": "Conozco a esa mujer joven que está hablando con tu amigo.",
+          "known": "I know that young woman who's talking to your friend."
+        }
+      },
+      "components": [
+        [
+          "esa",
+          "that"
+        ],
+        [
+          "mujer",
+          "woman"
+        ],
+        [
+          "joven",
+          "young"
+        ]
+      ]
+    },
+    "S0306L03": {
+      "lego": [
+        "young woman",
+        "mujer joven"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young woman",
+          "esa mujer joven"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0306L03",
+        "seed_context": {
+          "target": "Conozco a esa mujer joven que está hablando con tu amigo.",
+          "known": "I know that young woman who's talking to your friend."
+        }
+      },
+      "components": [
+        [
+          "mujer",
+          "woman"
+        ],
+        [
+          "joven",
+          "young"
+        ]
+      ]
+    },
+    "S0306L04": {
+      "lego": [
+        "who's talking",
+        "que está hablando"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young woman",
+          "esa mujer joven"
+        ],
+        [
+          "young woman",
+          "mujer joven"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0306L04",
+        "seed_context": {
+          "target": "Conozco a esa mujer joven que está hablando con tu amigo.",
+          "known": "I know that young woman who's talking to your friend."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "who"
+        ],
+        [
+          "está",
+          "is"
+        ],
+        [
+          "hablando",
+          "talking"
+        ]
+      ]
+    },
+    "S0306L05": {
+      "lego": [
+        "is talking",
+        "está hablando"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young woman",
+          "esa mujer joven"
+        ],
+        [
+          "young woman",
+          "mujer joven"
+        ],
+        [
+          "who's talking",
+          "que está hablando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0306L05",
+        "seed_context": {
+          "target": "Conozco a esa mujer joven que está hablando con tu amigo.",
+          "known": "I know that young woman who's talking to your friend."
+        }
+      },
+      "components": [
+        [
+          "está",
+          "is"
+        ],
+        [
+          "hablando",
+          "talking"
+        ]
+      ]
+    },
+    "S0306L06": {
+      "lego": [
+        "to your friend",
+        "con tu amigo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young woman",
+          "esa mujer joven"
+        ],
+        [
+          "young woman",
+          "mujer joven"
+        ],
+        [
+          "who's talking",
+          "que está hablando"
+        ],
+        [
+          "is talking",
+          "está hablando"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0306L06",
+        "seed_context": {
+          "target": "Conozco a esa mujer joven que está hablando con tu amigo.",
+          "known": "I know that young woman who's talking to your friend."
+        }
+      },
+      "components": [
+        [
+          "con",
+          "with/to"
+        ],
+        [
+          "tu",
+          "your"
+        ],
+        [
+          "amigo",
+          "friend"
+        ]
+      ]
+    },
+    "S0306L07": {
+      "lego": [
+        "your friend",
+        "tu amigo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young woman",
+          "esa mujer joven"
+        ],
+        [
+          "young woman",
+          "mujer joven"
+        ],
+        [
+          "who's talking",
+          "que está hablando"
+        ],
+        [
+          "is talking",
+          "está hablando"
+        ],
+        [
+          "to your friend",
+          "con tu amigo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0306L07",
+        "seed_context": {
+          "target": "Conozco a esa mujer joven que está hablando con tu amigo.",
+          "known": "I know that young woman who's talking to your friend."
+        }
+      },
+      "components": [
+        [
+          "tu",
+          "your"
+        ],
+        [
+          "amigo",
+          "friend"
+        ]
+      ]
+    },
+    "S0306L08": {
+      "lego": [
+        "talking to your friend",
+        "hablando con tu amigo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young woman",
+          "esa mujer joven"
+        ],
+        [
+          "young woman",
+          "mujer joven"
+        ],
+        [
+          "who's talking",
+          "que está hablando"
+        ],
+        [
+          "is talking",
+          "está hablando"
+        ],
+        [
+          "to your friend",
+          "con tu amigo"
+        ],
+        [
+          "your friend",
+          "tu amigo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0306L08",
+        "seed_context": {
+          "target": "Conozco a esa mujer joven que está hablando con tu amigo.",
+          "known": "I know that young woman who's talking to your friend."
+        }
+      },
+      "components": [
+        [
+          "hablando",
+          "talking"
+        ],
+        [
+          "con",
+          "to/with"
+        ],
+        [
+          "tu",
+          "your"
+        ],
+        [
+          "amigo",
+          "friend"
+        ]
+      ]
+    },
+    "S0306L09": {
+      "lego": [
+        "I know that young woman",
+        "conozco a esa mujer joven"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I know",
+          "conozco a"
+        ],
+        [
+          "that young woman",
+          "esa mujer joven"
+        ],
+        [
+          "young woman",
+          "mujer joven"
+        ],
+        [
+          "who's talking",
+          "que está hablando"
+        ],
+        [
+          "is talking",
+          "está hablando"
+        ],
+        [
+          "to your friend",
+          "con tu amigo"
+        ],
+        [
+          "your friend",
+          "tu amigo"
+        ],
+        [
+          "talking to your friend",
+          "hablando con tu amigo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0306L09",
+        "seed_context": {
+          "target": "Conozco a esa mujer joven que está hablando con tu amigo.",
+          "known": "I know that young woman who's talking to your friend."
+        }
+      },
+      "components": [
+        [
+          "conozco",
+          "I know"
+        ],
+        [
+          "a",
+          "personal a"
+        ],
+        [
+          "esa",
+          "that"
+        ],
+        [
+          "mujer",
+          "woman"
+        ],
+        [
+          "joven",
+          "young"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0306.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 9,
+    "total_legos_in_seed": 9,
+    "phrases_to_generate": 108,
+    "recent_context_seeds": 10
+  }
+}

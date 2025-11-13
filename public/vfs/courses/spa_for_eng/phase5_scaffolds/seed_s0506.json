@@ -1,0 +1,310 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0506",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Solía vivir por aquí hace años antes de que nos mudáramos.",
+    "known": "I used to live around here years ago before we moved."
+  },
+  "recent_seed_pairs": {
+    "S0496": [
+      "No estoy planeando perder cuando realmente importa.",
+      "I'm not planning to lose when it really matters."
+    ],
+    "S0497": [
+      "Eso suena como si necesitaras dormir un poco.",
+      "That sounds as though you need to get some sleep."
+    ],
+    "S0498": [
+      "Está de pie solo allá dentro de la entrada.",
+      "He's standing alone over there inside the entrance."
+    ],
+    "S0499": [
+      "Quizás deberíamos abrir la puerta y cerrar la ventana.",
+      "Maybe we should open the door and close the window."
+    ],
+    "S0500": [
+      "¿Por qué no quieres sentarte entre las dos chicas?",
+      "Why don't you want to sit between the two girls?"
+    ],
+    "S0501": [
+      "Si tan solo pudiera confiar en ti para jugar juntos sin discutir.",
+      "If only I could trust you to play together without arguing."
+    ],
+    "S0502": [
+      "Casi se perdió porque giró a la izquierda en lugar de a la derecha.",
+      "She almost got lost because she turned left instead of right."
+    ],
+    "S0503": [
+      "Odio causar problemas pero ese es mío.",
+      "I hate making trouble but that one's mine."
+    ],
+    "S0504": [
+      "Voy a correr a través del césped.",
+      "I'm going to run across the grass."
+    ],
+    "S0505": [
+      "Para que no me quede atrás.",
+      "So that I don't get left behind."
+    ]
+  },
+  "legos": {
+    "S0506L01": {
+      "lego": [
+        "I used to live",
+        "solía vivir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0506L01",
+        "seed_context": {
+          "target": "Solía vivir por aquí hace años antes de que nos mudáramos.",
+          "known": "I used to live around here years ago before we moved."
+        }
+      },
+      "components": [
+        [
+          "solía",
+          "I used to"
+        ],
+        [
+          "vivir",
+          "to live"
+        ]
+      ]
+    },
+    "S0506L02": {
+      "lego": [
+        "around here",
+        "por aquí"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I used to live",
+          "solía vivir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0506L02",
+        "seed_context": {
+          "target": "Solía vivir por aquí hace años antes de que nos mudáramos.",
+          "known": "I used to live around here years ago before we moved."
+        }
+      },
+      "components": [
+        [
+          "por",
+          "around/through"
+        ],
+        [
+          "aquí",
+          "here"
+        ]
+      ]
+    },
+    "S0506L03": {
+      "lego": [
+        "years ago",
+        "hace años"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I used to live",
+          "solía vivir"
+        ],
+        [
+          "around here",
+          "por aquí"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0506L03",
+        "seed_context": {
+          "target": "Solía vivir por aquí hace años antes de que nos mudáramos.",
+          "known": "I used to live around here years ago before we moved."
+        }
+      },
+      "components": [
+        [
+          "hace",
+          "ago/makes"
+        ],
+        [
+          "años",
+          "years"
+        ]
+      ]
+    },
+    "S0506L04": {
+      "lego": [
+        "before we moved",
+        "antes de que nos mudáramos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I used to live",
+          "solía vivir"
+        ],
+        [
+          "around here",
+          "por aquí"
+        ],
+        [
+          "years ago",
+          "hace años"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0506L04",
+        "seed_context": {
+          "target": "Solía vivir por aquí hace años antes de que nos mudáramos.",
+          "known": "I used to live around here years ago before we moved."
+        }
+      },
+      "components": [
+        [
+          "antes",
+          "before"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "nos",
+          "we/us"
+        ],
+        [
+          "mudáramos",
+          "moved"
+        ]
+      ]
+    },
+    "S0506L05": {
+      "lego": [
+        "years ago before we moved",
+        "hace años antes de que nos mudáramos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I used to live",
+          "solía vivir"
+        ],
+        [
+          "around here",
+          "por aquí"
+        ],
+        [
+          "years ago",
+          "hace años"
+        ],
+        [
+          "before we moved",
+          "antes de que nos mudáramos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0506L05",
+        "seed_context": {
+          "target": "Solía vivir por aquí hace años antes de que nos mudáramos.",
+          "known": "I used to live around here years ago before we moved."
+        }
+      },
+      "components": [
+        [
+          "hace",
+          "ago"
+        ],
+        [
+          "años",
+          "years"
+        ],
+        [
+          "antes",
+          "before"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "nos",
+          "we"
+        ],
+        [
+          "mudáramos",
+          "moved"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0506.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

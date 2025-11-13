@@ -1,0 +1,272 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0242",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "I want to give her more time.",
+    "known": "Quiero darle más tiempo."
+  },
+  "recent_seed_pairs": {
+    "S0232": [
+      "Conozco a una mujer vieja que puede recordar la respuesta.",
+      "I know an old woman who can remember the answer."
+    ],
+    "S0233": [
+      "Conozco a una mujer joven que conoce a tu hermana.",
+      "I know a young woman who knows your sister."
+    ],
+    "S0234": [
+      "Conocí a alguien anoche que trabaja con tu hermano.",
+      "I met someone last night who works with your brother."
+    ],
+    "S0235": [
+      "Conocí a alguien que dijo que quería decirte algo.",
+      "I met someone who said that he wanted to tell you something."
+    ],
+    "S0236": [
+      "Conozco a alguien que dijo que iba a intentar ayudar.",
+      "I know someone who said that she was going to try to help."
+    ],
+    "S0237": [
+      "Quería que te dijera antes del fin de semana.",
+      "He wanted me to tell you before the weekend."
+    ],
+    "S0238": [
+      "Quería que me dijeras ayer.",
+      "He wanted you to tell me yesterday."
+    ],
+    "S0239": [
+      "A mi madre le gusta leer.",
+      "My mother likes to read."
+    ],
+    "S0240": [
+      "A mi padre no le gusta dejar de hablar.",
+      "My father doesn't like to stop talking."
+    ],
+    "S0241": [
+      "I don't want to give it to him.",
+      "No quiero dárselo."
+    ]
+  },
+  "legos": {
+    "S0242L01": {
+      "lego": [
+        "I want",
+        "Quiero"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0242L01",
+        "seed_context": {
+          "target": "I want to give her more time.",
+          "known": "Quiero darle más tiempo."
+        }
+      }
+    },
+    "S0242L02": {
+      "lego": [
+        "I want to give her",
+        "Quiero darle"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I want",
+          "Quiero"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0242L02",
+        "seed_context": {
+          "target": "I want to give her more time.",
+          "known": "Quiero darle más tiempo."
+        }
+      },
+      "components": [
+        [
+          "Quiero",
+          "I want"
+        ],
+        [
+          "darle",
+          "to give her"
+        ]
+      ]
+    },
+    "S0242L03": {
+      "lego": [
+        "give her",
+        "darle"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I want",
+          "Quiero"
+        ],
+        [
+          "I want to give her",
+          "Quiero darle"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0242L03",
+        "seed_context": {
+          "target": "I want to give her more time.",
+          "known": "Quiero darle más tiempo."
+        }
+      },
+      "components": [
+        [
+          "dar",
+          "to give"
+        ],
+        [
+          "le",
+          "her"
+        ]
+      ]
+    },
+    "S0242L04": {
+      "lego": [
+        "give her more time",
+        "darle más tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I want",
+          "Quiero"
+        ],
+        [
+          "I want to give her",
+          "Quiero darle"
+        ],
+        [
+          "give her",
+          "darle"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0242L04",
+        "seed_context": {
+          "target": "I want to give her more time.",
+          "known": "Quiero darle más tiempo."
+        }
+      },
+      "components": [
+        [
+          "darle",
+          "give her"
+        ],
+        [
+          "más",
+          "more"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0242L05": {
+      "lego": [
+        "more time",
+        "más tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I want",
+          "Quiero"
+        ],
+        [
+          "I want to give her",
+          "Quiero darle"
+        ],
+        [
+          "give her",
+          "darle"
+        ],
+        [
+          "give her more time",
+          "darle más tiempo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0242L05",
+        "seed_context": {
+          "target": "I want to give her more time.",
+          "known": "Quiero darle más tiempo."
+        }
+      },
+      "components": [
+        [
+          "más",
+          "more"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0242.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

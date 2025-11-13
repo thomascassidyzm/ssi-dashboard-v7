@@ -1,0 +1,338 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0620",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Hace muchísimo tiempo desde que nos vimos por última vez.",
+    "known": "It's a very long time since we last saw each other."
+  },
+  "recent_seed_pairs": {
+    "S0610": [
+      "Él necesita buscar trabajo.",
+      "He needs to look for work."
+    ],
+    "S0611": [
+      "Yo habría estado preparado para buscar en otro lugar.",
+      "I would have been ready to look somewhere else."
+    ],
+    "S0612": [
+      "Habríamos comprado algo.",
+      "We would have bought something."
+    ],
+    "S0613": [
+      "Probablemente habríamos comprado una casa allí.",
+      "We probably would have bought a house there."
+    ],
+    "S0614": [
+      "Está cerca de donde vive tu familia.",
+      "It's near where your family live."
+    ],
+    "S0615": [
+      "Pensé que fuiste muy valiente al decir eso.",
+      "I thought you were very brave to say that."
+    ],
+    "S0616": [
+      "Fuiste muy valiente al decir que pensabas eso.",
+      "You were very brave to say you thought that."
+    ],
+    "S0617": [
+      "Pensaste que era un error.",
+      "You thought that it was a mistake."
+    ],
+    "S0618": [
+      "No parece mucho tiempo.",
+      "It doesn't feel like a long time."
+    ],
+    "S0619": [
+      "Hace mucho tiempo desde que nos vimos.",
+      "It's a long time since we saw each other."
+    ]
+  },
+  "legos": {
+    "S0620L01": {
+      "lego": [
+        "very much",
+        "muchísimo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0620L01",
+        "seed_context": {
+          "target": "Hace muchísimo tiempo desde que nos vimos por última vez.",
+          "known": "It's a very long time since we last saw each other."
+        }
+      }
+    },
+    "S0620L02": {
+      "lego": [
+        "it's a very long time",
+        "hace muchísimo tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "very much",
+          "muchísimo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0620L02",
+        "seed_context": {
+          "target": "Hace muchísimo tiempo desde que nos vimos por última vez.",
+          "known": "It's a very long time since we last saw each other."
+        }
+      },
+      "components": [
+        [
+          "hace",
+          "it's/it has been"
+        ],
+        [
+          "muchísimo",
+          "very much"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0620L03": {
+      "lego": [
+        "a very long time",
+        "muchísimo tiempo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "very much",
+          "muchísimo"
+        ],
+        [
+          "it's a very long time",
+          "hace muchísimo tiempo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0620L03",
+        "seed_context": {
+          "target": "Hace muchísimo tiempo desde que nos vimos por última vez.",
+          "known": "It's a very long time since we last saw each other."
+        }
+      },
+      "components": [
+        [
+          "muchísimo",
+          "very much"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    },
+    "S0620L04": {
+      "lego": [
+        "since we saw each other",
+        "desde que nos vimos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "very much",
+          "muchísimo"
+        ],
+        [
+          "it's a very long time",
+          "hace muchísimo tiempo"
+        ],
+        [
+          "a very long time",
+          "muchísimo tiempo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0620L04",
+        "seed_context": {
+          "target": "Hace muchísimo tiempo desde que nos vimos por última vez.",
+          "known": "It's a very long time since we last saw each other."
+        }
+      },
+      "components": [
+        [
+          "desde",
+          "since"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "nos",
+          "each other"
+        ],
+        [
+          "vimos",
+          "we saw"
+        ]
+      ]
+    },
+    "S0620L05": {
+      "lego": [
+        "we saw each other",
+        "nos vimos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "very much",
+          "muchísimo"
+        ],
+        [
+          "it's a very long time",
+          "hace muchísimo tiempo"
+        ],
+        [
+          "a very long time",
+          "muchísimo tiempo"
+        ],
+        [
+          "since we saw each other",
+          "desde que nos vimos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0620L05",
+        "seed_context": {
+          "target": "Hace muchísimo tiempo desde que nos vimos por última vez.",
+          "known": "It's a very long time since we last saw each other."
+        }
+      },
+      "components": [
+        [
+          "nos",
+          "each other"
+        ],
+        [
+          "vimos",
+          "we saw"
+        ]
+      ]
+    },
+    "S0620L06": {
+      "lego": [
+        "for the last time",
+        "por última vez"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "very much",
+          "muchísimo"
+        ],
+        [
+          "it's a very long time",
+          "hace muchísimo tiempo"
+        ],
+        [
+          "a very long time",
+          "muchísimo tiempo"
+        ],
+        [
+          "since we saw each other",
+          "desde que nos vimos"
+        ],
+        [
+          "we saw each other",
+          "nos vimos"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0620L06",
+        "seed_context": {
+          "target": "Hace muchísimo tiempo desde que nos vimos por última vez.",
+          "known": "It's a very long time since we last saw each other."
+        }
+      },
+      "components": [
+        [
+          "por",
+          "for"
+        ],
+        [
+          "última",
+          "last"
+        ],
+        [
+          "vez",
+          "time"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0620.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10
+  }
+}

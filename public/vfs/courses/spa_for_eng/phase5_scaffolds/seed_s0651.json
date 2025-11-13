@@ -1,0 +1,130 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0651",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Qué piensa señora?",
+    "known": "What do you think madam?"
+  },
+  "recent_seed_pairs": {
+    "S0641": [
+      "Pienso que es el rojo en esa silla.",
+      "I think that it's the red one on that chair."
+    ],
+    "S0642": [
+      "¿Cómo se siente señora?",
+      "how do you feel madam?"
+    ],
+    "S0643": [
+      "¿Quiere usted señor?",
+      "Do you want sir"
+    ],
+    "S0644": [
+      "¿Podría decir eso señor?",
+      "Could you say that sir?"
+    ],
+    "S0645": [
+      "Puedo ayudarle señora",
+      "I can help you madam"
+    ],
+    "S0646": [
+      "Está haciendo algo señor.",
+      "You're doing something sir."
+    ],
+    "S0647": [
+      "Lo habla señora",
+      "You speak it madam"
+    ],
+    "S0648": [
+      "lo que dijo señora",
+      "what you said madam"
+    ],
+    "S0649": [
+      "¿Está preparado señor?",
+      "Are you ready sir?"
+    ],
+    "S0650": [
+      "¿Quiere ir señora?",
+      "Do you want to go madam?"
+    ]
+  },
+  "legos": {
+    "S0651L01": {
+      "lego": [
+        "madam",
+        "señora"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0651L01",
+        "seed_context": {
+          "target": "¿Qué piensa señora?",
+          "known": "What do you think madam?"
+        }
+      }
+    },
+    "S0651L02": {
+      "lego": [
+        "what do you think",
+        "qué piensa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "madam",
+          "señora"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0651L02",
+        "seed_context": {
+          "target": "¿Qué piensa señora?",
+          "known": "What do you think madam?"
+        }
+      },
+      "components": [
+        [
+          "qué",
+          "what"
+        ],
+        [
+          "piensa",
+          "do you think"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0651.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "total_legos_in_seed": 2,
+    "phrases_to_generate": 24,
+    "recent_context_seeds": 10
+  }
+}

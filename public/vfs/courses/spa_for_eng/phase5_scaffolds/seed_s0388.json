@@ -1,0 +1,148 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0388",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Esa persona con la que trabajas.",
+    "known": "That person you work with."
+  },
+  "recent_seed_pairs": {
+    "S0378": [
+      "No no tenía suficiente dinero para vacaciones.",
+      "No I didn't have enough money for holidays."
+    ],
+    "S0379": [
+      "Sí tuve suficiente suerte para viajar a África.",
+      "Yes I was lucky enough to travel to Africa."
+    ],
+    "S0380": [
+      "Pregunté qué quería incluir.",
+      "I asked what she wanted to include."
+    ],
+    "S0381": [
+      "No pregunté si quería seguirnos.",
+      "I didn't ask if he wanted to follow us."
+    ],
+    "S0382": [
+      "¿Preguntaste dónde quería ponerlo?",
+      "Did you ask where he wanted to put it?"
+    ],
+    "S0383": [
+      "Sí dijo que quería ponerlo en el jardín.",
+      "Yes he said he wanted to put it in the garden."
+    ],
+    "S0384": [
+      "No pude estar de acuerdo con lo que dijo...",
+      "I couldn't agree with what he said a moment ago."
+    ],
+    "S0385": [
+      "¿Estuviste de acuerdo con ella?",
+      "Did you agree with her?"
+    ],
+    "S0386": [
+      "Sí estuve de acuerdo con ella.",
+      "Yes I agreed with her."
+    ],
+    "S0387": [
+      "No no pensé que tenía razón.",
+      "No I didn't think she was right."
+    ]
+  },
+  "legos": {
+    "S0388L01": {
+      "lego": [
+        "That person",
+        "Esa persona"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0388L01",
+        "seed_context": {
+          "target": "Esa persona con la que trabajas.",
+          "known": "That person you work with."
+        }
+      },
+      "components": [
+        [
+          "Esa",
+          "That"
+        ],
+        [
+          "persona",
+          "person"
+        ]
+      ]
+    },
+    "S0388L02": {
+      "lego": [
+        "you work with",
+        "con la que trabajas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "That person",
+          "Esa persona"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0388L02",
+        "seed_context": {
+          "target": "Esa persona con la que trabajas.",
+          "known": "That person you work with."
+        }
+      },
+      "components": [
+        [
+          "con",
+          "with"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "que",
+          "whom/that"
+        ],
+        [
+          "trabajas",
+          "you work"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0388.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "total_legos_in_seed": 2,
+    "phrases_to_generate": 24,
+    "recent_context_seeds": 10
+  }
+}

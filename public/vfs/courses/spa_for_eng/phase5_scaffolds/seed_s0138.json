@@ -1,0 +1,522 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0138",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Esto era donde mi amigo quería reunirse con nosotros.",
+    "known": "This was where my friend wanted to meet us."
+  },
+  "recent_seed_pairs": {
+    "S0128": [
+      "Eres como alguien que conocía.",
+      "You're like someone I used to know."
+    ],
+    "S0129": [
+      "Estoy tan feliz de que te vaya tan bien.",
+      "I'm so happy that you're doing so well."
+    ],
+    "S0130": [
+      "Eso fue una sorpresa, porque es mi amigo.",
+      "That was a surprise, because he's my friend."
+    ],
+    "S0131": [
+      "Hay demasiadas ideas dando vueltas en mi cabeza.",
+      "There are too many ideas going around in my head."
+    ],
+    "S0132": [
+      "Eso es menos emocionante que lo que decía.",
+      "That's less exciting than what she was saying."
+    ],
+    "S0133": [
+      "Llegas a conocer muy bien a alguien cuando trabajan juntos.",
+      "You get to know someone very well when you work together."
+    ],
+    "S0134": [
+      "No es un problema cuando trabajas en algo difícil con ellos.",
+      "It's not a problem when you work at something difficult with them."
+    ],
+    "S0135": [
+      "No sé por qué piensas que es tan bueno.",
+      "I don't know why you think that it's so good."
+    ],
+    "S0136": [
+      "Por supuesto que puedes preguntarle porque es mi amiga.",
+      "Of course you can ask her because she's my friend."
+    ],
+    "S0137": [
+      "Es más importante hablar frecuentemente que ser perfecto.",
+      "It's more important to talk often than to be perfect."
+    ]
+  },
+  "legos": {
+    "S0138L01": {
+      "lego": [
+        "This was",
+        "Esto era"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0138L01",
+        "seed_context": {
+          "target": "Esto era donde mi amigo quería reunirse con nosotros.",
+          "known": "This was where my friend wanted to meet us."
+        }
+      },
+      "components": [
+        [
+          "Esto",
+          "This"
+        ],
+        [
+          "era",
+          "was"
+        ]
+      ]
+    },
+    "S0138L02": {
+      "lego": [
+        "was where",
+        "era donde"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "This was",
+          "Esto era"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0138L02",
+        "seed_context": {
+          "target": "Esto era donde mi amigo quería reunirse con nosotros.",
+          "known": "This was where my friend wanted to meet us."
+        }
+      },
+      "components": [
+        [
+          "era",
+          "was"
+        ],
+        [
+          "donde",
+          "where"
+        ]
+      ]
+    },
+    "S0138L03": {
+      "lego": [
+        "where",
+        "donde"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "This was",
+          "Esto era"
+        ],
+        [
+          "was where",
+          "era donde"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0138L03",
+        "seed_context": {
+          "target": "Esto era donde mi amigo quería reunirse con nosotros.",
+          "known": "This was where my friend wanted to meet us."
+        }
+      }
+    },
+    "S0138L04": {
+      "lego": [
+        "where my friend wanted",
+        "donde mi amigo quería"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "This was",
+          "Esto era"
+        ],
+        [
+          "was where",
+          "era donde"
+        ],
+        [
+          "where",
+          "donde"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0138L04",
+        "seed_context": {
+          "target": "Esto era donde mi amigo quería reunirse con nosotros.",
+          "known": "This was where my friend wanted to meet us."
+        }
+      },
+      "components": [
+        [
+          "donde",
+          "where"
+        ],
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "amigo",
+          "friend"
+        ],
+        [
+          "quería",
+          "wanted"
+        ]
+      ]
+    },
+    "S0138L05": {
+      "lego": [
+        "my friend wanted",
+        "mi amigo quería"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "This was",
+          "Esto era"
+        ],
+        [
+          "was where",
+          "era donde"
+        ],
+        [
+          "where",
+          "donde"
+        ],
+        [
+          "where my friend wanted",
+          "donde mi amigo quería"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0138L05",
+        "seed_context": {
+          "target": "Esto era donde mi amigo quería reunirse con nosotros.",
+          "known": "This was where my friend wanted to meet us."
+        }
+      },
+      "components": [
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "amigo",
+          "friend"
+        ],
+        [
+          "quería",
+          "wanted"
+        ]
+      ]
+    },
+    "S0138L06": {
+      "lego": [
+        "my friend",
+        "mi amigo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "This was",
+          "Esto era"
+        ],
+        [
+          "was where",
+          "era donde"
+        ],
+        [
+          "where",
+          "donde"
+        ],
+        [
+          "where my friend wanted",
+          "donde mi amigo quería"
+        ],
+        [
+          "my friend wanted",
+          "mi amigo quería"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0138L06",
+        "seed_context": {
+          "target": "Esto era donde mi amigo quería reunirse con nosotros.",
+          "known": "This was where my friend wanted to meet us."
+        }
+      },
+      "components": [
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "amigo",
+          "friend"
+        ]
+      ]
+    },
+    "S0138L07": {
+      "lego": [
+        "wanted",
+        "quería"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "This was",
+          "Esto era"
+        ],
+        [
+          "was where",
+          "era donde"
+        ],
+        [
+          "where",
+          "donde"
+        ],
+        [
+          "where my friend wanted",
+          "donde mi amigo quería"
+        ],
+        [
+          "my friend wanted",
+          "mi amigo quería"
+        ],
+        [
+          "my friend",
+          "mi amigo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0138L07",
+        "seed_context": {
+          "target": "Esto era donde mi amigo quería reunirse con nosotros.",
+          "known": "This was where my friend wanted to meet us."
+        }
+      }
+    },
+    "S0138L08": {
+      "lego": [
+        "wanted to meet us",
+        "quería reunirse con nosotros"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "This was",
+          "Esto era"
+        ],
+        [
+          "was where",
+          "era donde"
+        ],
+        [
+          "where",
+          "donde"
+        ],
+        [
+          "where my friend wanted",
+          "donde mi amigo quería"
+        ],
+        [
+          "my friend wanted",
+          "mi amigo quería"
+        ],
+        [
+          "my friend",
+          "mi amigo"
+        ],
+        [
+          "wanted",
+          "quería"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0138L08",
+        "seed_context": {
+          "target": "Esto era donde mi amigo quería reunirse con nosotros.",
+          "known": "This was where my friend wanted to meet us."
+        }
+      },
+      "components": [
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "reunirse",
+          "to meet"
+        ],
+        [
+          "con",
+          ""
+        ],
+        [
+          "nosotros",
+          "us"
+        ]
+      ]
+    },
+    "S0138L09": {
+      "lego": [
+        "to meet us",
+        "reunirse con nosotros"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "This was",
+          "Esto era"
+        ],
+        [
+          "was where",
+          "era donde"
+        ],
+        [
+          "where",
+          "donde"
+        ],
+        [
+          "where my friend wanted",
+          "donde mi amigo quería"
+        ],
+        [
+          "my friend wanted",
+          "mi amigo quería"
+        ],
+        [
+          "my friend",
+          "mi amigo"
+        ],
+        [
+          "wanted",
+          "quería"
+        ],
+        [
+          "wanted to meet us",
+          "quería reunirse con nosotros"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0138L09",
+        "seed_context": {
+          "target": "Esto era donde mi amigo quería reunirse con nosotros.",
+          "known": "This was where my friend wanted to meet us."
+        }
+      },
+      "components": [
+        [
+          "reunirse",
+          "to meet"
+        ],
+        [
+          "con",
+          ""
+        ],
+        [
+          "nosotros",
+          "us"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0138.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 9,
+    "total_legos_in_seed": 9,
+    "phrases_to_generate": 108,
+    "recent_context_seeds": 10
+  }
+}

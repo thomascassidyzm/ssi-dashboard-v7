@@ -1,0 +1,230 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0401",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "No it would be better to go straight home.",
+    "known": "No, sería mejor ir directamente a casa."
+  },
+  "recent_seed_pairs": {
+    "S0391": [
+      "La que está caminando hacia el autobús.",
+      "The one who is walking towards the bus."
+    ],
+    "S0392": [
+      "Ese niño con el pelo negro enfrente de la oficina de correos.",
+      "That child with the black hair opposite the post office."
+    ],
+    "S0393": [
+      "Ese niño con la camisa verde.",
+      "That boy with the green shirt."
+    ],
+    "S0394": [
+      "Esa niña con el vestido amarillo.",
+      "That girl with the yellow dress."
+    ],
+    "S0395": [
+      "Necesitamos girar a la izquierda en la próxima esquina.",
+      "We need to turn left at the next corner."
+    ],
+    "S0396": [
+      "No necesitamos estar de pie hasta que todos los demás estén preparados.",
+      "We don't need to stand until everybody else is ready."
+    ],
+    "S0397": [
+      "¿Necesitamos prepararnos pronto?",
+      "Do we need to get ready soon?"
+    ],
+    "S0398": [
+      "Queremos volvernos más pacientes con nuestros niños.",
+      "We want to become more patient with our children."
+    ],
+    "S0399": [
+      "No queremos perder la esperanza.",
+      "We don't want to lose hope."
+    ],
+    "S0400": [
+      "¿Queremos comer algo más tarde?",
+      "Do we want to eat something later on?"
+    ]
+  },
+  "legos": {
+    "S0401L01": {
+      "lego": [
+        "No",
+        "No"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0401L01",
+        "seed_context": {
+          "target": "No it would be better to go straight home.",
+          "known": "No, sería mejor ir directamente a casa."
+        }
+      }
+    },
+    "S0401L02": {
+      "lego": [
+        "it would be better",
+        "sería mejor"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "No",
+          "No"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0401L02",
+        "seed_context": {
+          "target": "No it would be better to go straight home.",
+          "known": "No, sería mejor ir directamente a casa."
+        }
+      },
+      "components": [
+        [
+          "sería",
+          "it would be"
+        ],
+        [
+          "mejor",
+          "better"
+        ]
+      ]
+    },
+    "S0401L03": {
+      "lego": [
+        "it would be better to go",
+        "sería mejor ir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "No",
+          "No"
+        ],
+        [
+          "it would be better",
+          "sería mejor"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0401L03",
+        "seed_context": {
+          "target": "No it would be better to go straight home.",
+          "known": "No, sería mejor ir directamente a casa."
+        }
+      },
+      "components": [
+        [
+          "sería",
+          "it would be"
+        ],
+        [
+          "mejor",
+          "better"
+        ],
+        [
+          "ir",
+          "to go"
+        ]
+      ]
+    },
+    "S0401L04": {
+      "lego": [
+        "to go straight home",
+        "ir directamente a casa"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "No",
+          "No"
+        ],
+        [
+          "it would be better",
+          "sería mejor"
+        ],
+        [
+          "it would be better to go",
+          "sería mejor ir"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0401L04",
+        "seed_context": {
+          "target": "No it would be better to go straight home.",
+          "known": "No, sería mejor ir directamente a casa."
+        }
+      },
+      "components": [
+        [
+          "ir",
+          "to go"
+        ],
+        [
+          "directamente",
+          "straight"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "casa",
+          "home"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0401.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}

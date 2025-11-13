@@ -1,0 +1,262 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0018",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "Queremos reunirnos a las seis esta noche.",
+    "known": "We want to meet at six o'clock this evening."
+  },
+  "recent_seed_pairs": {
+    "S0008": [
+      "Voy a intentar explicar lo que quiero decir.",
+      "I'm going to try to explain what I mean."
+    ],
+    "S0009": [
+      "Hablo un poco de español ahora.",
+      "I speak a little Spanish now."
+    ],
+    "S0010": [
+      "No estoy seguro si puedo recordar toda la oración.",
+      "I'm not sure if I can remember the whole sentence."
+    ],
+    "S0011": [
+      "Me gustaría poder hablar después de que termines.",
+      "I'd like to be able to speak after you finish."
+    ],
+    "S0012": [
+      "No me gustaría adivinar lo que va a ocurrir mañana.",
+      "I wouldn't like to guess what's going to happen tomorrow."
+    ],
+    "S0013": [
+      "Hablas español muy bien.",
+      "You speak Spanish very well."
+    ],
+    "S0014": [
+      "¿Hablas español todo el día?",
+      "Do you speak Spanish all day?"
+    ],
+    "S0015": [
+      "Y quiero que hables español conmigo mañana.",
+      "And I want you to speak Spanish with me tomorrow."
+    ],
+    "S0016": [
+      "Él quiere volver con todos los demás más tarde.",
+      "He wants to come back with everyone else later."
+    ],
+    "S0017": [
+      "Ella quiere descubrir cuál es la respuesta.",
+      "She wants to find out what the answer is."
+    ]
+  },
+  "legos": {
+    "S0018L01": {
+      "lego": [
+        "we want",
+        "queremos"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0018L01",
+        "seed_context": {
+          "target": "Queremos reunirnos a las seis esta noche.",
+          "known": "We want to meet at six o'clock this evening."
+        }
+      }
+    },
+    "S0018L02": {
+      "lego": [
+        "to meet",
+        "reunirnos"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "we want",
+          "queremos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0018L02",
+        "seed_context": {
+          "target": "Queremos reunirnos a las seis esta noche.",
+          "known": "We want to meet at six o'clock this evening."
+        }
+      }
+    },
+    "S0018L03": {
+      "lego": [
+        "at six o'clock",
+        "a las seis"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we want",
+          "queremos"
+        ],
+        [
+          "to meet",
+          "reunirnos"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0018L03",
+        "seed_context": {
+          "target": "Queremos reunirnos a las seis esta noche.",
+          "known": "We want to meet at six o'clock this evening."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "at"
+        ],
+        [
+          "las",
+          "the"
+        ],
+        [
+          "seis",
+          "six"
+        ]
+      ]
+    },
+    "S0018L04": {
+      "lego": [
+        "this evening",
+        "esta noche"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we want",
+          "queremos"
+        ],
+        [
+          "to meet",
+          "reunirnos"
+        ],
+        [
+          "at six o'clock",
+          "a las seis"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0018L04",
+        "seed_context": {
+          "target": "Queremos reunirnos a las seis esta noche.",
+          "known": "We want to meet at six o'clock this evening."
+        }
+      },
+      "components": [
+        [
+          "esta",
+          "this"
+        ],
+        [
+          "noche",
+          "evening/night"
+        ]
+      ]
+    },
+    "S0018L05": {
+      "lego": [
+        "we want to meet",
+        "queremos reunirnos"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we want",
+          "queremos"
+        ],
+        [
+          "to meet",
+          "reunirnos"
+        ],
+        [
+          "at six o'clock",
+          "a las seis"
+        ],
+        [
+          "this evening",
+          "esta noche"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0018L05",
+        "seed_context": {
+          "target": "Queremos reunirnos a las seis esta noche.",
+          "known": "We want to meet at six o'clock this evening."
+        }
+      },
+      "components": [
+        [
+          "queremos",
+          "we want"
+        ],
+        [
+          "reunirnos",
+          "to meet"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0018.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 5,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10
+  }
+}

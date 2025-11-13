@@ -1,0 +1,252 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0434",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "target": "¿Podrían reducir el número de estudiantes que toman?",
+    "known": "Could they cut the number of students they take?"
+  },
+  "recent_seed_pairs": {
+    "S0424": [
+      "No están perdiendo el tiempo de todos.",
+      "No they're wasting everybody's time."
+    ],
+    "S0425": [
+      "Sí necesitan asegurarse de que entienden.",
+      "Yes they need to make sure they understand."
+    ],
+    "S0426": [
+      "Les gustaría amarse pero están infelices.",
+      "They would like to love each other but they're unhappy."
+    ],
+    "S0427": [
+      "No les gustaría que pienses que están aburridos.",
+      "They wouldn't like you to think that they're bored."
+    ],
+    "S0428": [
+      "¿Les gustaría visitarnos el martes?",
+      "Would they like to visit us on Tuesday?"
+    ],
+    "S0429": [
+      "Sí eso sería perfecto para ellos.",
+      "Yes that would be perfect for them."
+    ],
+    "S0430": [
+      "No eso no sería posible.",
+      "No that wouldn't be possible."
+    ],
+    "S0431": [
+      "Todavía no están preparados pero van a estar preparados pronto.",
+      "They're not ready yet but they'll be ready soon."
+    ],
+    "S0432": [
+      "Podrían significar que quieren que preguntes.",
+      "They could mean that they want you to ask."
+    ],
+    "S0433": [
+      "No pudieron descubrir cuándo empezó la película.",
+      "They couldn't find out when the film started."
+    ]
+  },
+  "legos": {
+    "S0434L01": {
+      "lego": [
+        "could they cut",
+        "podrían reducir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0434L01",
+        "seed_context": {
+          "target": "¿Podrían reducir el número de estudiantes que toman?",
+          "known": "Could they cut the number of students they take?"
+        }
+      },
+      "components": [
+        [
+          "podrían",
+          "could they"
+        ],
+        [
+          "reducir",
+          "cut"
+        ]
+      ]
+    },
+    "S0434L02": {
+      "lego": [
+        "the number of students",
+        "el número de estudiantes"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "could they cut",
+          "podrían reducir"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0434L02",
+        "seed_context": {
+          "target": "¿Podrían reducir el número de estudiantes que toman?",
+          "known": "Could they cut the number of students they take?"
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "número",
+          "number"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "estudiantes",
+          "students"
+        ]
+      ]
+    },
+    "S0434L03": {
+      "lego": [
+        "the number of students they take",
+        "el número de estudiantes que toman"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "could they cut",
+          "podrían reducir"
+        ],
+        [
+          "the number of students",
+          "el número de estudiantes"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0434L03",
+        "seed_context": {
+          "target": "¿Podrían reducir el número de estudiantes que toman?",
+          "known": "Could they cut the number of students they take?"
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "número",
+          "number"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "estudiantes",
+          "students"
+        ],
+        [
+          "que",
+          "they"
+        ],
+        [
+          "toman",
+          "take"
+        ]
+      ]
+    },
+    "S0434L04": {
+      "lego": [
+        "they take",
+        "que toman"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "could they cut",
+          "podrían reducir"
+        ],
+        [
+          "the number of students",
+          "el número de estudiantes"
+        ],
+        [
+          "the number of students they take",
+          "el número de estudiantes que toman"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0434L04",
+        "seed_context": {
+          "target": "¿Podrían reducir el número de estudiantes que toman?",
+          "known": "Could they cut the number of students they take?"
+        }
+      },
+      "components": [
+        [
+          "que",
+          "they"
+        ],
+        [
+          "toman",
+          "take"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0434.json",
+    "pattern_matching": "Use recent_seed_pairs as full sentence examples showing patterns and vocabulary",
+    "vocabulary_source": "Any words from recent_seed_pairs + current_seed_legos_available",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10
+  }
+}
