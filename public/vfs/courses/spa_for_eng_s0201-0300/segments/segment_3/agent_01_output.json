@@ -1,72 +1,75 @@
 {
   "agent_id": "agent_01",
   "seed_range": "S0201-S0210",
-  "extracted_at": "2025-11-12T00:00:00Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0201",
-      "seed_pair": ["Queríamos saber qué iba a pasar", "We wanted to know what was going to happen"],
-      "extraction_notes": "Forward sweep: 'Queríamos' is single conjugated word (A-type). 'iba a' requires pairing (FD: 'was' alone ambiguous). Tiling verified.",
+      "seed_pair": [
+        "We wanted to know what was going to happen.",
+        "Queríamos saber qué iba a pasar"
+      ],
+      "extraction_notes": "Forward sweep: 'queríamos saber' removes ambiguity of 'wanted'. Backward sweep + overlap: 'iba a pasar' valuable for future tense practice.",
       "legos": [
         {
           "id": "S0201L01",
-          "type": "A",
-          "target": "Queríamos",
-          "known": "We wanted",
-          "new": true
+          "type": "M",
+          "target": "queríamos saber",
+          "known": "we wanted to know",
+          "new": true,
+          "components": [
+            ["queríamos", "we wanted"],
+            ["saber", "to know"]
+          ]
         },
         {
           "id": "S0201L02",
-          "type": "A",
-          "target": "saber",
-          "known": "to know",
-          "new": true
+          "type": "M",
+          "target": "qué iba a pasar",
+          "known": "what was going to happen",
+          "new": true,
+          "components": [
+            ["qué", "what"],
+            ["iba", "was going"],
+            ["a", "to"],
+            ["pasar", "happen"]
+          ]
         },
         {
           "id": "S0201L03",
-          "type": "A",
-          "target": "qué",
-          "known": "what",
-          "new": true
-        },
-        {
-          "id": "S0201L04",
-          "type": "A",
-          "target": "pasar",
-          "known": "to happen",
-          "new": true
-        },
-        {
-          "id": "S0201L05",
           "type": "M",
-          "target": "iba a",
-          "known": "was going to",
+          "target": "iba a pasar",
+          "known": "was going to happen",
           "new": true,
           "components": [
             ["iba", "was going"],
-            ["a", "to"]
+            ["a", "to"],
+            ["pasar", "happen"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0202",
-      "seed_pair": ["Nadie estaba seguro de cómo responder la pregunta", "Nobody was sure how to answer the question"],
-      "extraction_notes": "Pragmatic FD: 'estaba seguro de' kept together (collocation). 'cómo responder' captures pattern. Article+noun paired.",
+      "seed_pair": [
+        "Nobody was sure how to answer the question.",
+        "Nadie estaba seguro de cómo responder la pregunta"
+      ],
+      "extraction_notes": "Forward sweep: 'estaba seguro de' shows ser/estar distinction. Overlap: 'responder la pregunta' for verb+object pattern.",
       "legos": [
         {
           "id": "S0202L01",
           "type": "A",
-          "target": "Nadie",
-          "known": "Nobody",
+          "target": "nadie",
+          "known": "nobody",
           "new": true
         },
         {
           "id": "S0202L02",
           "type": "M",
           "target": "estaba seguro de",
-          "known": "was sure of",
+          "known": "was sure",
           "new": true,
           "components": [
             ["estaba", "was"],
@@ -87,11 +90,19 @@
         },
         {
           "id": "S0202L04",
-          "type": "M",
+          "type": "A",
           "target": "la pregunta",
           "known": "the question",
+          "new": true
+        },
+        {
+          "id": "S0202L05",
+          "type": "M",
+          "target": "responder la pregunta",
+          "known": "answer the question",
           "new": true,
           "components": [
+            ["responder", "answer"],
             ["la", "the"],
             ["pregunta", "question"]
           ]
@@ -100,49 +111,48 @@
     },
     {
       "seed_id": "S0203",
-      "seed_pair": ["¿Qué harías si te pidiera que me ayudaras?", "What would you do if I asked you to help me?"],
-      "extraction_notes": "Subjunctive forms handled: 'te pidiera' (imperfect subj. with pronoun), 'que me ayudaras' (pattern: to+inf → que+subj after pedir).",
+      "seed_pair": [
+        "What would you do if I asked you to help me?",
+        "¿Qué harías si te pidiera que me ayudaras?"
+      ],
+      "extraction_notes": "Backward sweep catches subjunctive trigger: 'pidiera que me ayudaras' must stay together. 'ayudaras' alone fails FD (indicative vs subjunctive ambiguity).",
       "legos": [
         {
           "id": "S0203L01",
-          "type": "A",
-          "target": "Qué",
-          "known": "What",
-          "new": true
-        },
-        {
-          "id": "S0203L02",
-          "type": "A",
-          "target": "harías",
-          "known": "would you do",
-          "new": true
-        },
-        {
-          "id": "S0203L03",
-          "type": "A",
-          "target": "si",
-          "known": "if",
-          "new": true
-        },
-        {
-          "id": "S0203L04",
           "type": "M",
-          "target": "te pidiera",
-          "known": "I asked you",
+          "target": "qué harías",
+          "known": "what would you do",
           "new": true,
           "components": [
-            ["te", "you"],
-            ["pidiera", "I asked"]
+            ["qué", "what"],
+            ["harías", "would you do"]
           ]
         },
         {
-          "id": "S0203L05",
+          "id": "S0203L02",
           "type": "M",
-          "target": "que me ayudaras",
-          "known": "to help me",
+          "target": "si te pidiera que me ayudaras",
+          "known": "if I asked you to help me",
           "new": true,
           "components": [
-            ["que", "to"],
+            ["si", "if"],
+            ["te", "you"],
+            ["pidiera", "asked"],
+            ["que", "that"],
+            ["me", "me"],
+            ["ayudaras", "help"]
+          ]
+        },
+        {
+          "id": "S0203L03",
+          "type": "M",
+          "target": "te pidiera que me ayudaras",
+          "known": "I asked you to help me",
+          "new": true,
+          "components": [
+            ["te", "you"],
+            ["pidiera", "asked"],
+            ["que", "that"],
             ["me", "me"],
             ["ayudaras", "help"]
           ]
@@ -151,63 +161,54 @@
     },
     {
       "seed_id": "S0204",
-      "seed_pair": ["Quería que ella te ayudara a tratar con los arreglos", "I wanted her to help you to deal with the arrangements"],
-      "extraction_notes": "Pattern 'want someone to X' → 'querer que [person] X-subj'. 'que ella' introduces subj. clause. 'a tratar' shows verb linking.",
+      "seed_pair": [
+        "I wanted her to help you to deal with the arrangements.",
+        "Quería que ella te ayudara a tratar con los arreglos"
+      ],
+      "extraction_notes": "Subjunctive trigger: 'quería que ella te ayudara' stays together. Overlap: 'tratar con los arreglos' for pattern practice.",
       "legos": [
         {
           "id": "S0204L01",
-          "type": "A",
-          "target": "Quería",
-          "known": "I wanted",
-          "new": true
+          "type": "M",
+          "target": "quería que ella te ayudara",
+          "known": "I wanted her to help you",
+          "new": true,
+          "components": [
+            ["quería", "I wanted"],
+            ["que", "that"],
+            ["ella", "her"],
+            ["te", "you"],
+            ["ayudara", "to help"]
+          ]
         },
         {
           "id": "S0204L02",
-          "type": "A",
-          "target": "con",
-          "known": "with",
-          "new": true
+          "type": "M",
+          "target": "a tratar con",
+          "known": "to deal with",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["tratar", "deal"],
+            ["con", "with"]
+          ]
         },
         {
           "id": "S0204L03",
-          "type": "M",
-          "target": "que ella",
-          "known": "her to",
-          "new": true,
-          "components": [
-            ["que", "to"],
-            ["ella", "her"]
-          ]
+          "type": "A",
+          "target": "los arreglos",
+          "known": "the arrangements",
+          "new": true
         },
         {
           "id": "S0204L04",
           "type": "M",
-          "target": "te ayudara",
-          "known": "help you",
+          "target": "tratar con los arreglos",
+          "known": "deal with the arrangements",
           "new": true,
           "components": [
-            ["te", "you"],
-            ["ayudara", "help"]
-          ]
-        },
-        {
-          "id": "S0204L05",
-          "type": "M",
-          "target": "a tratar",
-          "known": "to deal",
-          "new": true,
-          "components": [
-            ["a", "to"],
-            ["tratar", "deal"]
-          ]
-        },
-        {
-          "id": "S0204L06",
-          "type": "M",
-          "target": "los arreglos",
-          "known": "the arrangements",
-          "new": true,
-          "components": [
+            ["tratar", "deal"],
+            ["con", "with"],
             ["los", "the"],
             ["arreglos", "arrangements"]
           ]
@@ -216,84 +217,92 @@
     },
     {
       "seed_id": "S0205",
-      "seed_pair": ["He olvidado la palabra que estaba intentando decir", "I've forgotten the word I was trying to say"],
-      "extraction_notes": "Present perfect structure. 'que' is relative pronoun (often omitted in English but required in Spanish). Past progressive kept together.",
+      "seed_pair": [
+        "I've forgotten the word I was trying to say.",
+        "He olvidado la palabra que estaba intentando decir"
+      ],
+      "extraction_notes": "Forward sweep: 'he olvidado' for perfect tense. Multiple overlaps: 'que estaba intentando decir' → 'estaba intentando decir' → 'intentando decir' for progressive tense practice.",
       "legos": [
         {
           "id": "S0205L01",
-          "type": "A",
-          "target": "decir",
-          "known": "to say",
-          "new": true
-        },
-        {
-          "id": "S0205L02",
           "type": "M",
-          "target": "He olvidado",
+          "target": "he olvidado",
           "known": "I've forgotten",
           "new": true,
           "components": [
-            ["He", "I have"],
+            ["he", "I've"],
             ["olvidado", "forgotten"]
           ]
         },
         {
-          "id": "S0205L03",
-          "type": "M",
+          "id": "S0205L02",
+          "type": "A",
           "target": "la palabra",
           "known": "the word",
+          "new": true
+        },
+        {
+          "id": "S0205L03",
+          "type": "M",
+          "target": "que estaba intentando decir",
+          "known": "that I was trying to say",
           "new": true,
           "components": [
-            ["la", "the"],
-            ["palabra", "word"]
+            ["que", "that"],
+            ["estaba", "I was"],
+            ["intentando", "trying"],
+            ["decir", "to say"]
           ]
         },
         {
           "id": "S0205L04",
           "type": "M",
-          "target": "que estaba intentando",
-          "known": "I was trying",
+          "target": "estaba intentando decir",
+          "known": "was trying to say",
           "new": true,
           "components": [
-            ["que", "that"],
-            ["estaba", "I was"],
-            ["intentando", "trying"]
+            ["estaba", "was"],
+            ["intentando", "trying"],
+            ["decir", "to say"]
+          ]
+        },
+        {
+          "id": "S0205L05",
+          "type": "M",
+          "target": "intentando decir",
+          "known": "trying to say",
+          "new": true,
+          "components": [
+            ["intentando", "trying"],
+            ["decir", "to say"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0206",
-      "seed_pair": ["Disfruto la oportunidad de practicar hablar contigo", "I enjoy the chance to practise speaking with you"],
-      "extraction_notes": "Pattern: 'oportunidad de' requires 'de'. English gerund 'speaking' → Spanish infinitive 'hablar'. 'contigo' is single word unit.",
+      "seed_pair": [
+        "I enjoy the chance to practise speaking with you.",
+        "Disfruto la oportunidad de practicar hablar contigo"
+      ],
+      "extraction_notes": "Forward sweep captures main chunks. Overlaps: 'de practicar hablar' → 'practicar hablar' and 'hablar contigo' for verb combinations.",
       "legos": [
         {
           "id": "S0206L01",
           "type": "A",
-          "target": "Disfruto",
+          "target": "disfruto",
           "known": "I enjoy",
           "new": true
         },
         {
           "id": "S0206L02",
           "type": "A",
-          "target": "contigo",
-          "known": "with you",
+          "target": "la oportunidad",
+          "known": "the chance",
           "new": true
         },
         {
           "id": "S0206L03",
-          "type": "M",
-          "target": "la oportunidad",
-          "known": "the chance",
-          "new": true,
-          "components": [
-            ["la", "the"],
-            ["oportunidad", "chance"]
-          ]
-        },
-        {
-          "id": "S0206L04",
           "type": "M",
           "target": "de practicar hablar",
           "known": "to practise speaking",
@@ -303,37 +312,79 @@
             ["practicar", "practise"],
             ["hablar", "speaking"]
           ]
+        },
+        {
+          "id": "S0206L04",
+          "type": "M",
+          "target": "practicar hablar",
+          "known": "practise speaking",
+          "new": true,
+          "components": [
+            ["practicar", "practise"],
+            ["hablar", "speaking"]
+          ]
+        },
+        {
+          "id": "S0206L05",
+          "type": "M",
+          "target": "hablar contigo",
+          "known": "speaking with you",
+          "new": true,
+          "components": [
+            ["hablar", "speaking"],
+            ["contigo", "with you"]
+          ]
+        },
+        {
+          "id": "S0206L06",
+          "type": "A",
+          "target": "contigo",
+          "known": "with you",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0207",
-      "seed_pair": ["Has hecho lo que necesitabas hacer", "You've done what you needed to do"],
-      "extraction_notes": "Present perfect. 'lo que' is Spanish way to express 'what' as pronoun (neuter article + que). Clean tiling.",
+      "seed_pair": [
+        "You've done what you needed to do.",
+        "Has hecho lo que necesitabas hacer"
+      ],
+      "extraction_notes": "Forward sweep: 'has hecho' for perfect tense. 'lo que' is pedagogically valuable pattern. Overlap: 'necesitabas hacer' for needed+infinitive.",
       "legos": [
         {
           "id": "S0207L01",
-          "type": "A",
-          "target": "necesitabas",
-          "known": "you needed",
-          "new": true
+          "type": "M",
+          "target": "has hecho",
+          "known": "you've done",
+          "new": true,
+          "components": [
+            ["has", "you've"],
+            ["hecho", "done"]
+          ]
         },
         {
           "id": "S0207L02",
-          "type": "A",
-          "target": "hacer",
-          "known": "to do",
-          "new": true
+          "type": "M",
+          "target": "lo que necesitabas hacer",
+          "known": "what you needed to do",
+          "new": true,
+          "components": [
+            ["lo", "what"],
+            ["que", "(relative)"],
+            ["necesitabas", "you needed"],
+            ["hacer", "to do"]
+          ]
         },
         {
           "id": "S0207L03",
           "type": "M",
-          "target": "Has hecho",
-          "known": "You've done",
+          "target": "necesitabas hacer",
+          "known": "you needed to do",
           "new": true,
           "components": [
-            ["Has", "You have"],
-            ["hecho", "done"]
+            ["necesitabas", "you needed"],
+            ["hacer", "to do"]
           ]
         },
         {
@@ -344,33 +395,36 @@
           "new": true,
           "components": [
             ["lo", "what"],
-            ["que", "that"]
+            ["que", "(relative)"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0208",
-      "seed_pair": ["No quería preguntarte cómo decirlo", "I didn't want to ask you how to say it"],
-      "extraction_notes": "Negative construction. Infinitive+pronoun clitics (preguntarte, decirlo) are single-word units in Spanish.",
+      "seed_pair": [
+        "I didn't want to ask you how to say it.",
+        "No quería preguntarte cómo decirlo"
+      ],
+      "extraction_notes": "Forward sweep: 'no quería' for negative past. 'preguntarte' includes pronoun (not standalone). Overlap: full phrase 'preguntarte cómo decirlo'.",
       "legos": [
         {
           "id": "S0208L01",
+          "type": "M",
+          "target": "no quería",
+          "known": "I didn't want",
+          "new": true,
+          "components": [
+            ["no", "didn't"],
+            ["quería", "want"]
+          ]
+        },
+        {
+          "id": "S0208L02",
           "type": "A",
           "target": "preguntarte",
           "known": "to ask you",
           "new": true
-        },
-        {
-          "id": "S0208L02",
-          "type": "M",
-          "target": "No quería",
-          "known": "I didn't want",
-          "new": true,
-          "components": [
-            ["No", "not"],
-            ["quería", "I wanted"]
-          ]
         },
         {
           "id": "S0208L03",
@@ -379,48 +433,68 @@
           "known": "how to say it",
           "new": true,
           "components": [
-            ["cómo", "how to"],
-            ["decirlo", "say it"]
+            ["cómo", "how"],
+            ["decirlo", "to say it"]
+          ]
+        },
+        {
+          "id": "S0208L04",
+          "type": "M",
+          "target": "preguntarte cómo decirlo",
+          "known": "to ask you how to say it",
+          "new": true,
+          "components": [
+            ["preguntarte", "to ask you"],
+            ["cómo", "how"],
+            ["decirlo", "to say it"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0209",
-      "seed_pair": ["Quieren pasar más tiempo reuniéndose como grupo", "They want to spend more time meeting as a group"],
-      "extraction_notes": "Spanish drops article before 'grupo' where English uses 'a group'. Reflexive gerund 'reuniéndose' is single unit.",
+      "seed_pair": [
+        "They want to spend more time meeting as a group.",
+        "Quieren pasar más tiempo reuniéndose como grupo"
+      ],
+      "extraction_notes": "Forward sweep: 'quieren pasar' removes ambiguity. Overlaps: 'pasar más tiempo' and 'reuniéndose como grupo' for pattern practice.",
       "legos": [
         {
           "id": "S0209L01",
-          "type": "A",
-          "target": "Quieren",
-          "known": "They want",
-          "new": true
+          "type": "M",
+          "target": "quieren pasar",
+          "known": "they want to spend",
+          "new": true,
+          "components": [
+            ["quieren", "they want"],
+            ["pasar", "to spend"]
+          ]
         },
         {
           "id": "S0209L02",
           "type": "A",
-          "target": "pasar",
-          "known": "to spend",
+          "target": "más tiempo",
+          "known": "more time",
           "new": true
         },
         {
           "id": "S0209L03",
+          "type": "M",
+          "target": "pasar más tiempo",
+          "known": "spend more time",
+          "new": true,
+          "components": [
+            ["pasar", "spend"],
+            ["más", "more"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0209L04",
           "type": "A",
           "target": "reuniéndose",
           "known": "meeting",
           "new": true
-        },
-        {
-          "id": "S0209L04",
-          "type": "M",
-          "target": "más tiempo",
-          "known": "more time",
-          "new": true,
-          "components": [
-            ["más", "more"],
-            ["tiempo", "time"]
-          ]
         },
         {
           "id": "S0209L05",
@@ -429,7 +503,19 @@
           "known": "as a group",
           "new": true,
           "components": [
-            ["como", "as a"],
+            ["como", "as"],
+            ["grupo", "group"]
+          ]
+        },
+        {
+          "id": "S0209L06",
+          "type": "M",
+          "target": "reuniéndose como grupo",
+          "known": "meeting as a group",
+          "new": true,
+          "components": [
+            ["reuniéndose", "meeting"],
+            ["como", "as"],
             ["grupo", "group"]
           ]
         }
@@ -437,29 +523,40 @@
     },
     {
       "seed_id": "S0210",
-      "seed_pair": ["Piensan que necesitamos discutir el problema", "They think that we need to discuss the problem"],
-      "extraction_notes": "Straightforward extraction. 'que' as conjunction after 'think' is FD-compliant. Mostly atomic units.",
+      "seed_pair": [
+        "They think that we need to discuss the problem.",
+        "Piensan que necesitamos discutir el problema"
+      ],
+      "extraction_notes": "Forward sweep captures main verbs. Overlaps: 'que necesitamos' → 'necesitamos discutir' and 'discutir el problema' for verb combinations.",
       "legos": [
         {
           "id": "S0210L01",
           "type": "A",
-          "target": "Piensan",
-          "known": "They think",
+          "target": "piensan",
+          "known": "they think",
           "new": true
         },
         {
           "id": "S0210L02",
-          "type": "A",
-          "target": "que",
-          "known": "that",
-          "new": true
+          "type": "M",
+          "target": "que necesitamos",
+          "known": "that we need",
+          "new": true,
+          "components": [
+            ["que", "that"],
+            ["necesitamos", "we need"]
+          ]
         },
         {
           "id": "S0210L03",
-          "type": "A",
-          "target": "necesitamos",
-          "known": "we need",
-          "new": true
+          "type": "M",
+          "target": "necesitamos discutir",
+          "known": "we need to discuss",
+          "new": true,
+          "components": [
+            ["necesitamos", "we need"],
+            ["discutir", "to discuss"]
+          ]
         },
         {
           "id": "S0210L04",
@@ -470,11 +567,19 @@
         },
         {
           "id": "S0210L05",
-          "type": "M",
+          "type": "A",
           "target": "el problema",
           "known": "the problem",
+          "new": true
+        },
+        {
+          "id": "S0210L06",
+          "type": "M",
+          "target": "discutir el problema",
+          "known": "discuss the problem",
           "new": true,
           "components": [
+            ["discutir", "discuss"],
             ["el", "the"],
             ["problema", "problem"]
           ]
