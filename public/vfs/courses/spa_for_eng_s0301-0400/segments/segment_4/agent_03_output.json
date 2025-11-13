@@ -1,114 +1,129 @@
 {
   "agent_id": "agent_03",
   "seed_range": "S0321-S0330",
-  "extracted_at": "2025-11-12T00:00:00Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T02:48:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0321",
-      "seed_pair": ["Un libro.", "A book."],
+      "seed_pair": ["A book.", "Un libro."],
+      "extraction_notes": "FORWARD SWEEP: 'a book' → 'un libro' ✅ FD passes. VALIDATION: 'un' alone is standalone article (violates Heuristic 1). Keep as single A-type LEGO.",
       "legos": [
         {
           "id": "S0321L01",
           "type": "A",
-          "target": "un",
-          "known": "a",
-          "new": true
-        },
-        {
-          "id": "S0321L02",
-          "type": "A",
-          "target": "libro",
-          "known": "book",
+          "target": "un libro",
+          "known": "a book",
           "new": true
         }
       ]
     },
     {
       "seed_id": "S0322",
-      "seed_pair": ["Ella dijo que necesita leer el mismo libro.", "She said that she needs to read the same book."],
+      "seed_pair": ["She said that she needs to read the same book.", "Ella dijo que necesita leer el mismo libro."],
+      "extraction_notes": "FORWARD SWEEP: 'she said that' → 'ella dijo que' ✅, 'needs to read' → 'necesita leer' ✅, 'the same book' → 'el mismo libro' ✅. OVERLAPS (Heuristic 2): 'dijo que necesita' shows reporting verb chain, 'necesita leer' + 'leer el mismo libro' share 'leer' for recombination power. VALIDATION: All M-types have components, no standalone particles.",
       "legos": [
         {
           "id": "S0322L01",
-          "type": "A",
-          "target": "leer",
-          "known": "to read",
-          "new": true
+          "type": "M",
+          "target": "ella dijo que",
+          "known": "she said that",
+          "new": true,
+          "components": [
+            ["ella", "she"],
+            ["dijo", "said"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0322L02",
-          "type": "A",
-          "target": "libro",
-          "known": "book",
-          "new": true
+          "type": "M",
+          "target": "dijo que necesita",
+          "known": "said that (she) needs",
+          "new": true,
+          "components": [
+            ["dijo", "said"],
+            ["que", "that"],
+            ["necesita", "needs"]
+          ]
         },
         {
           "id": "S0322L03",
           "type": "M",
-          "target": "ella dijo",
-          "known": "she said",
+          "target": "necesita leer",
+          "known": "needs to read",
           "new": true,
           "components": [
-            ["ella", "she"],
-            ["dijo", "said"]
+            ["necesita", "needs"],
+            ["leer", "to read"]
           ]
         },
         {
           "id": "S0322L04",
           "type": "M",
-          "target": "que necesita",
-          "known": "that she needs",
+          "target": "el mismo libro",
+          "known": "the same book",
           "new": true,
           "components": [
-            ["que", "that"],
-            ["necesita", "she needs"]
+            ["el", "the"],
+            ["mismo", "same"],
+            ["libro", "book"]
           ]
         },
         {
           "id": "S0322L05",
           "type": "M",
-          "target": "el mismo",
-          "known": "the same",
+          "target": "leer el mismo libro",
+          "known": "to read the same book",
           "new": true,
           "components": [
+            ["leer", "to read"],
             ["el", "the"],
-            ["mismo", "same"]
+            ["mismo", "same"],
+            ["libro", "book"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0323",
-      "seed_pair": ["Él dijo que no necesita caminar a la escuela.", "He said that he doesn't need to walk to school."],
+      "seed_pair": ["He said that he doesn't need to walk to school.", "Él dijo que no necesita caminar a la escuela."],
+      "extraction_notes": "FORWARD SWEEP: 'he said that' → 'él dijo que' ✅, 'doesn't need' → 'no necesita' ✅, 'to walk' → 'caminar' ✅, 'to school' → 'a la escuela' ✅. OVERLAPS: 'que no necesita' + 'no necesita caminar' share 'no necesita' for negative construction pattern. VALIDATION: No standalone particles.",
       "legos": [
         {
           "id": "S0323L01",
-          "type": "A",
-          "target": "caminar",
-          "known": "to walk",
-          "new": true
+          "type": "M",
+          "target": "él dijo que",
+          "known": "he said that",
+          "new": true,
+          "components": [
+            ["él", "he"],
+            ["dijo", "said"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0323L02",
           "type": "M",
-          "target": "él dijo",
-          "known": "he said",
+          "target": "que no necesita",
+          "known": "that (he) doesn't need",
           "new": true,
           "components": [
-            ["él", "he"],
-            ["dijo", "said"]
+            ["que", "that"],
+            ["no", "doesn't/not"],
+            ["necesita", "need"]
           ]
         },
         {
           "id": "S0323L03",
           "type": "M",
-          "target": "que no necesita",
-          "known": "that he doesn't need",
+          "target": "no necesita caminar",
+          "known": "doesn't need to walk",
           "new": true,
           "components": [
-            ["que", "that"],
-            ["no", "not"],
-            ["necesita", "he needs"]
+            ["no", "doesn't"],
+            ["necesita", "need"],
+            ["caminar", "to walk"]
           ]
         },
         {
@@ -127,24 +142,11 @@
     },
     {
       "seed_id": "S0324",
-      "seed_pair": ["Esa estudiante tiene las dos manos arriba.", "That student has both of her hands up."],
+      "seed_pair": ["That student has both of her hands up.", "Esa estudiante tiene las dos manos arriba."],
+      "extraction_notes": "FORWARD SWEEP: 'that student' → 'esa estudiante' ✅, 'has both of her hands' → 'tiene las dos manos' ✅ (note: 'both of her' becomes 'the two'), 'up' → 'arriba' ✅. OVERLAPS: 'tiene las dos manos' + 'las dos manos' for possession pattern. VALIDATION: All particles wrapped in context.",
       "legos": [
         {
           "id": "S0324L01",
-          "type": "A",
-          "target": "tiene",
-          "known": "has",
-          "new": true
-        },
-        {
-          "id": "S0324L02",
-          "type": "A",
-          "target": "arriba",
-          "known": "up",
-          "new": true
-        },
-        {
-          "id": "S0324L03",
           "type": "M",
           "target": "esa estudiante",
           "known": "that student",
@@ -155,97 +157,146 @@
           ]
         },
         {
-          "id": "S0324L04",
+          "id": "S0324L02",
+          "type": "M",
+          "target": "tiene las dos manos",
+          "known": "has both of her hands/has the two hands",
+          "new": true,
+          "components": [
+            ["tiene", "has"],
+            ["las", "the"],
+            ["dos", "two/both"],
+            ["manos", "hands"]
+          ]
+        },
+        {
+          "id": "S0324L03",
           "type": "M",
           "target": "las dos manos",
-          "known": "both of her hands",
+          "known": "both hands/the two hands",
           "new": true,
           "components": [
             ["las", "the"],
-            ["dos", "two"],
+            ["dos", "two/both"],
             ["manos", "hands"]
           ]
+        },
+        {
+          "id": "S0324L04",
+          "type": "A",
+          "target": "arriba",
+          "known": "up",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0325",
-      "seed_pair": ["Creo que necesita considerar diez problemas posibles.", "I think that he needs to consider ten possible problems."],
+      "seed_pair": ["I think that he needs to consider ten possible problems.", "Creo que necesita considerar diez problemas posibles."],
+      "extraction_notes": "FORWARD SWEEP: 'I think that' → 'creo que' ✅, 'needs to consider' → 'necesita considerar' ✅, 'ten possible problems' → 'diez problemas posibles' ✅ (word order: possible problems → problemas posibles). OVERLAPS: 'creo que necesita' shows opinion + necessity, 'problemas posibles' teaches adjective placement. BACKWARD SWEEP: Confirms adjective comes after noun. VALIDATION: 'posibles' alone would violate Heuristic 1 (singular/plural ambiguity) → chunked with 'problemas'.",
       "legos": [
         {
           "id": "S0325L01",
-          "type": "A",
-          "target": "creo",
-          "known": "I think",
-          "new": true
+          "type": "M",
+          "target": "creo que",
+          "known": "I think that",
+          "new": true,
+          "components": [
+            ["creo", "I think"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0325L02",
-          "type": "A",
-          "target": "considerar",
-          "known": "to consider",
-          "new": true
+          "type": "M",
+          "target": "creo que necesita",
+          "known": "I think that (he) needs",
+          "new": true,
+          "components": [
+            ["creo", "I think"],
+            ["que", "that"],
+            ["necesita", "needs"]
+          ]
         },
         {
           "id": "S0325L03",
-          "type": "A",
-          "target": "diez",
-          "known": "ten",
-          "new": true
+          "type": "M",
+          "target": "necesita considerar",
+          "known": "needs to consider",
+          "new": true,
+          "components": [
+            ["necesita", "needs"],
+            ["considerar", "to consider"]
+          ]
         },
         {
           "id": "S0325L04",
-          "type": "A",
-          "target": "problemas",
-          "known": "problems",
-          "new": true
+          "type": "M",
+          "target": "diez problemas posibles",
+          "known": "ten possible problems",
+          "new": true,
+          "components": [
+            ["diez", "ten"],
+            ["problemas", "problems"],
+            ["posibles", "possible"]
+          ]
         },
         {
           "id": "S0325L05",
-          "type": "A",
-          "target": "posibles",
-          "known": "possible",
-          "new": true
-        },
-        {
-          "id": "S0325L06",
           "type": "M",
-          "target": "que necesita",
-          "known": "that he needs",
+          "target": "problemas posibles",
+          "known": "possible problems",
           "new": true,
           "components": [
-            ["que", "that"],
-            ["necesita", "he needs"]
+            ["problemas", "problems"],
+            ["posibles", "possible"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0326",
-      "seed_pair": ["No creo que necesite vender la compañía.", "I don't think that she needs to sell the company."],
+      "seed_pair": ["I don't think that she needs to sell the company.", "No creo que necesite vender la compañía."],
+      "extraction_notes": "CRITICAL SUBJUNCTIVE TRIGGER! BACKWARD SWEEP catches: 'necesite' (subjunctive) triggered by 'no creo que'. FORWARD SWEEP: 'I don't think that' → 'no creo que' ✅, but must extend to 'no creo que necesite' to capture subjunctive trigger. OVERLAPS: 'no creo que' + 'no creo que necesite' shows negative opinion triggers subjunctive. 'necesite vender' shows subjunctive + infinitive pattern. VALIDATION: Grammatical trigger kept intact.",
       "legos": [
         {
           "id": "S0326L01",
-          "type": "A",
-          "target": "vender",
-          "known": "to sell",
-          "new": true
+          "type": "M",
+          "target": "no creo que",
+          "known": "I don't think that",
+          "new": true,
+          "components": [
+            ["no", "I don't/not"],
+            ["creo", "think"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0326L02",
           "type": "M",
           "target": "no creo que necesite",
-          "known": "I don't think that she needs",
+          "known": "I don't think that (she) needs",
           "new": true,
           "components": [
-            ["no", "not"],
-            ["creo", "I think"],
+            ["no", "I don't"],
+            ["creo", "think"],
             ["que", "that"],
-            ["necesite", "she needs (subjunctive)"]
+            ["necesite", "needs (subjunctive)"]
           ]
         },
         {
           "id": "S0326L03",
+          "type": "M",
+          "target": "necesite vender",
+          "known": "needs to sell",
+          "new": true,
+          "components": [
+            ["necesite", "needs (subjunctive)"],
+            ["vender", "to sell"]
+          ]
+        },
+        {
+          "id": "S0326L04",
           "type": "M",
           "target": "la compañía",
           "known": "the company",
@@ -259,52 +310,60 @@
     },
     {
       "seed_id": "S0327",
-      "seed_pair": ["¿Crees que necesita ofrecer otra manera?", "Do you think that she needs to offer another way?"],
+      "seed_pair": ["Do you think that she needs to offer another way?", "¿Crees que necesita ofrecer otra manera?"],
+      "extraction_notes": "FORWARD SWEEP: 'do you think that' → 'crees que' ✅ (question form), 'needs to offer' → 'necesita ofrecer' ✅, 'another way' → 'otra manera' ✅. OVERLAPS: 'crees que necesita' shows question + necessity pattern. VALIDATION: No standalone particles, all chunks pass FD test.",
       "legos": [
         {
           "id": "S0327L01",
-          "type": "A",
-          "target": "crees",
-          "known": "do you think",
-          "new": true
+          "type": "M",
+          "target": "crees que",
+          "known": "do you think that",
+          "new": true,
+          "components": [
+            ["crees", "do you think/you think"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0327L02",
-          "type": "A",
-          "target": "ofrecer",
-          "known": "to offer",
-          "new": true
+          "type": "M",
+          "target": "crees que necesita",
+          "known": "do you think that (she) needs",
+          "new": true,
+          "components": [
+            ["crees", "do you think"],
+            ["que", "that"],
+            ["necesita", "needs"]
+          ]
         },
         {
           "id": "S0327L03",
-          "type": "A",
-          "target": "otra",
-          "known": "another",
-          "new": true
+          "type": "M",
+          "target": "necesita ofrecer",
+          "known": "needs to offer",
+          "new": true,
+          "components": [
+            ["necesita", "needs"],
+            ["ofrecer", "to offer"]
+          ]
         },
         {
           "id": "S0327L04",
-          "type": "A",
-          "target": "manera",
-          "known": "way",
-          "new": true
-        },
-        {
-          "id": "S0327L05",
           "type": "M",
-          "target": "que necesita",
-          "known": "that she needs",
+          "target": "otra manera",
+          "known": "another way",
           "new": true,
           "components": [
-            ["que", "that"],
-            ["necesita", "she needs"]
+            ["otra", "another"],
+            ["manera", "way"]
           ]
         }
       ]
     },
     {
       "seed_id": "S0328",
-      "seed_pair": ["Sí pienso que debería.", "Yes I think she ought to."],
+      "seed_pair": ["Yes I think she ought to.", "Sí pienso que debería."],
+      "extraction_notes": "FORWARD SWEEP: 'yes' → 'sí' ✅ (stands alone), 'I think that' → 'pienso que' ✅, 'she ought to' → 'debería' ✅ (modal verb, stands alone contextually). VALIDATION: Simple structure, minimal overlaps needed.",
       "legos": [
         {
           "id": "S0328L01",
@@ -315,44 +374,42 @@
         },
         {
           "id": "S0328L02",
-          "type": "A",
-          "target": "pienso",
-          "known": "I think",
-          "new": true
+          "type": "M",
+          "target": "pienso que",
+          "known": "I think that",
+          "new": true,
+          "components": [
+            ["pienso", "I think"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0328L03",
-          "type": "M",
-          "target": "que debería",
-          "known": "she ought to",
-          "new": true,
-          "components": [
-            ["que", "that"],
-            ["debería", "she ought to"]
-          ]
+          "type": "A",
+          "target": "debería",
+          "known": "she ought to/should",
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0329",
-      "seed_pair": ["Es importante.", "It's important."],
+      "seed_pair": ["It's important.", "Es importante."],
+      "extraction_notes": "FORWARD SWEEP: 'it's important' → 'es importante' ✅. Simple copula + adjective construction, keep as A-type.",
       "legos": [
         {
           "id": "S0329L01",
-          "type": "M",
+          "type": "A",
           "target": "es importante",
           "known": "it's important",
-          "new": true,
-          "components": [
-            ["es", "it is"],
-            ["importante", "important"]
-          ]
+          "new": true
         }
       ]
     },
     {
       "seed_id": "S0330",
-      "seed_pair": ["No, no creo que sea muy importante.", "No I don't think it's very important."],
+      "seed_pair": ["No I don't think it's very important.", "No, no creo que sea muy importante."],
+      "extraction_notes": "CRITICAL SUBJUNCTIVE TRIGGER! BACKWARD SWEEP catches: 'sea' (subjunctive of 'ser') triggered by 'no creo que'. FORWARD SWEEP: 'no' → 'no' ✅, 'I don't think that' → 'no creo que' ✅, must extend to 'no creo que sea' to capture subjunctive trigger. 'very important' → 'muy importante' ✅. OVERLAPS: 'no creo que' + 'no creo que sea' shows negative opinion triggers subjunctive with 'ser'. VALIDATION: Heuristic 1 satisfied (no 'muy' alone - would be weak adverb), grammatical trigger intact.",
       "legos": [
         {
           "id": "S0330L01",
@@ -363,29 +420,38 @@
         },
         {
           "id": "S0330L02",
-          "type": "A",
-          "target": "muy",
-          "known": "very",
-          "new": true
+          "type": "M",
+          "target": "no creo que",
+          "known": "I don't think that",
+          "new": true,
+          "components": [
+            ["no", "I don't/not"],
+            ["creo", "think"],
+            ["que", "that"]
+          ]
         },
         {
           "id": "S0330L03",
-          "type": "A",
-          "target": "importante",
-          "known": "important",
-          "new": true
+          "type": "M",
+          "target": "no creo que sea",
+          "known": "I don't think that it is",
+          "new": true,
+          "components": [
+            ["no", "I don't"],
+            ["creo", "think"],
+            ["que", "that"],
+            ["sea", "is/it is (subjunctive)"]
+          ]
         },
         {
           "id": "S0330L04",
           "type": "M",
-          "target": "no creo que sea",
-          "known": "I don't think it's",
+          "target": "muy importante",
+          "known": "very important",
           "new": true,
           "components": [
-            ["no", "not"],
-            ["creo", "I think"],
-            ["que", "that"],
-            ["sea", "it is (subjunctive)"]
+            ["muy", "very"],
+            ["importante", "important"]
           ]
         }
       ]
