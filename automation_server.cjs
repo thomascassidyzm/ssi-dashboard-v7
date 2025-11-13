@@ -2098,6 +2098,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
         console.log(`[Web Orchestrator] ✅ Phase 5 scaffolds ready`);
 
         const phase5MasterPrompt = generatePhase5MasterPrompt(baseCourseCode, { target, known, startSeed, endSeed }, baseCourseDir);
+        await fs.ensureDir(path.join(baseCourseDir, 'prompts'));
         await fs.writeFile(path.join(baseCourseDir, 'prompts', 'phase_5_master_prompt.md'), phase5MasterPrompt, 'utf8');
 
         console.log(`[Web Orchestrator] Opening Phase 5 tab and pasting master prompt...`);
