@@ -2207,11 +2207,43 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
         }
 
         // Run Phase 5 merge script
-        console.log(`[Web Orchestrator] Running Phase 5 basket merge script...`);
+        console.log(`[Web Orchestrator] Running Phase 5 output extraction...`);
         const { mergePhase5Outputs } = require('./scripts/phase5_merge_outputs.cjs');
         await mergePhase5Outputs(baseCourseDir);
+        console.log(`[Web Orchestrator] ✅ Phase 5 outputs extracted`);
 
-        console.log(`[Web Orchestrator] ✅ Phase 5 merge complete! Created basket files`);
+        // Run validators
+        console.log(`[Web Orchestrator] Running Phase 5 validators...`);
+        try {
+          // Get list of extracted seed files
+          const phase5Dir = path.join(baseCourseDir, 'phase5_outputs');
+          const files = await fs.readdir(phase5Dir);
+          const seedFiles = files.filter(f => f.match(/^seed_s\d{4}\.json$/)).sort();
+
+          if (seedFiles.length > 0) {
+            console.log(`[Web Orchestrator] Validating ${seedFiles.length} seed outputs...`);
+
+            // Run GATE validator
+            const gateResult = await execCommand(
+              `node scripts/phase5_gate_validator.cjs ${courseCode} ${seedFiles.join(' ')}`,
+              { cwd: __dirname }
+            );
+
+            // Extract compliance from output
+            const complianceMatch = gateResult.stdout.match(/Overall compliance:\s+(\d+)%/);
+            const compliance = complianceMatch ? parseInt(complianceMatch[1]) : 0;
+
+            console.log(`[Web Orchestrator] ✅ GATE Validation complete - ${compliance}% compliance`);
+
+            if (compliance < 85) {
+              console.warn(`[Web Orchestrator] ⚠️  Warning: GATE compliance below 85%`);
+            }
+          }
+        } catch (validationErr) {
+          console.error(`[Web Orchestrator] ⚠️  Validation error (continuing anyway): ${validationErr.message}`);
+        }
+
+        console.log(`[Web Orchestrator] ✅ Phase 5 complete!`);
         job.phase = 'phase_5_complete';
         job.progress = 100;
         job.status = 'completed';
@@ -5188,21 +5220,31 @@ app.get('/api/courses/:courseCode/baskets', async (req, res) => {
 app.get('/api/courses/:courseCode/baskets/:seedId', async (req, res) => {
   try {
     const { courseCode, seedId } = req.params;
-    // New structure: individual basket files in baskets/ directory
-    const basketPath = path.join(CONFIG.VFS_ROOT, courseCode, 'baskets', `lego_baskets_${seedId.toLowerCase()}.json`);
 
-    // Check if basket file exists
-    if (!await fs.pathExists(basketPath)) {
-      return res.status(404).json({
-        error: `Basket not found for seed ${seedId}`,
-        courseCode,
-        seedId,
-        path: basketPath
-      });
+    // Try phase5_outputs first (v6.2+ format)
+    const phase5Path = path.join(CONFIG.VFS_ROOT, courseCode, 'phase5_outputs', `seed_${seedId.toLowerCase()}.json`);
+
+    let basket;
+    let basketPath;
+
+    if (await fs.pathExists(phase5Path)) {
+      basketPath = phase5Path;
+      basket = await fs.readJson(phase5Path);
+    } else {
+      // Fallback to legacy baskets directory
+      basketPath = path.join(CONFIG.VFS_ROOT, courseCode, 'baskets', `lego_baskets_${seedId.toLowerCase()}.json`);
+
+      if (!await fs.pathExists(basketPath)) {
+        return res.status(404).json({
+          error: `Basket not found for seed ${seedId}`,
+          courseCode,
+          seedId,
+          triedPaths: [phase5Path, basketPath]
+        });
+      }
+
+      basket = await fs.readJson(basketPath);
     }
-
-    // Load individual basket file
-    const basket = await fs.readJson(basketPath);
 
     // Calculate statistics from new basket format
     // Count all LEGO entries (keys like S0001L01, S0001L02, etc.)

@@ -458,6 +458,18 @@ export default {
         console.log(`[API] Server unavailable, using static basket file for ${seedId}`)
 
         try {
+          // Try phase5_outputs directory first (v6.2+ format)
+          const phase5Res = await fetch(`/vfs/courses/${courseCode}/phase5_outputs/seed_${seedId.toLowerCase()}.json`)
+          if (phase5Res.ok) {
+            const basketData = await phase5Res.json()
+            return { basket: basketData }
+          }
+        } catch (phase5Err) {
+          console.log('[API] Phase 5 output not found, trying legacy baskets/')
+        }
+
+        try {
+          // Fallback to legacy baskets directory
           const basketRes = await fetch(`/vfs/courses/${courseCode}/baskets/lego_baskets_${seedId.toLowerCase()}.json`)
           if (basketRes.ok) {
             const basketData = await basketRes.json()
