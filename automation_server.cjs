@@ -497,8 +497,6 @@ For EACH of your ${seedsPerAgent} seeds:
 
 **File**: \`public/vfs/courses/${courseCode}/segments/segment_${Math.floor((startSeed - 1) / 100) + 1}/agent_XX_output.json\`
 
-**Branch**: \`phase3-segment-${Math.floor((startSeed - 1) / 100) + 1}-${courseCode}\`
-
 **Format**:
 \`\`\`json
 {
@@ -532,13 +530,7 @@ For EACH of your ${seedsPerAgent} seeds:
 }
 \`\`\`
 
-**Git**:
-\`\`\`bash
-git checkout -b phase3-segment-${Math.floor((startSeed - 1) / 100) + 1}-${courseCode}
-git add public/vfs/courses/${courseCode}/segments/segment_${Math.floor((startSeed - 1) / 100) + 1}/agent_XX_output.json
-git commit -m "Phase 3 Segment ${Math.floor((startSeed - 1) / 100) + 1}: Agent XX (S00XX-S00YY)"
-git push origin phase3-segment-${Math.floor((startSeed - 1) / 100) + 1}-${courseCode}
-\`\`\`
+**IMPORTANT**: Save the file using the Write tool, then commit and push to your session branch (Claude Code on Web handles git automatically).
 \`\`\`
 
 ---
@@ -573,15 +565,15 @@ https://ssi-dashboard-v7.vercel.app/courses/${courseCode}
 
 ### Step 4: Done!
 
-Vercel auto-deploys within seconds. No git, no merging, no manual steps needed!
+All agents will commit to their session branches. The master orchestrator will merge them automatically.
 
 ---
 
 ## ✅ SUCCESS CRITERIA
 
 - All ${totalSeeds} seeds extracted
-- A-before-M ordering: 100%
-- Tiling verified in BOTH languages
+- Zero Pragmatic FD violations (no standalone pronouns/articles/particles)
+- Overlapping chains used where pedagogically valuable
 - Components on all M-types
 - All marked \`new: true\`
 
