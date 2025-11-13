@@ -1,30 +1,62 @@
 {
   "agent_id": "agent_02",
   "seed_range": "S0011-S0020",
-  "extracted_at": "2025-11-12T00:00:00.000Z",
-  "methodology": "Phase 3 v6.3 - Pragmatic FD Edition",
+  "extracted_at": "2025-11-13T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S0011",
       "seed_pair": [
-        "Me gustaría poder hablar después de que termines.",
-        "I'd like to be able to speak after you finish."
+        "I'd like to be able to speak after you finish.",
+        "Me gustaría poder hablar después de que termines."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'I'd like' → 'me gustaría' (M-type: multi-word); 'to be able to speak' → 'poder hablar' (M-type: CRITICAL - splitting would create 'to be able to' + 'to speak' = 'to be able to to speak' ❌, following S0010 lesson); 'after you finish' → 'después de que termines' (M-type: subjunctive trigger with marked form). TILING: me gustaría + poder hablar + después de que termines ✅",
       "legos": [
         {
           "id": "S0011L01",
-          "type": "M",
+          "type": "A",
           "target": "me gustaría",
           "known": "I'd like",
-          "new": true,
-          "components": [
-            ["me", "me"],
-            ["gustaría", "would like"]
-          ]
+          "new": true
         },
         {
           "id": "S0011L02",
+          "type": "A",
+          "target": "poder",
+          "known": "to be able to",
+          "new": true
+        },
+        {
+          "id": "S0011L03",
+          "type": "A",
+          "target": "hablar",
+          "known": "to speak",
+          "new": true
+        },
+        {
+          "id": "S0011L04",
+          "type": "M",
+          "target": "después de que termines",
+          "known": "after you finish",
+          "new": true,
+          "components": [
+            ["después de", "after"],
+            ["que", "that"],
+            ["termines", "you finish"]
+          ]
+        },
+        {
+          "id": "S0011L05",
+          "type": "M",
+          "target": "me gustaría poder",
+          "known": "I'd like to be able to",
+          "new": true,
+          "components": [
+            ["me gustaría", "I'd like"],
+            ["poder", "to be able to"]
+          ]
+        },
+        {
+          "id": "S0011L06",
           "type": "M",
           "target": "poder hablar",
           "known": "to be able to speak",
@@ -33,27 +65,15 @@
             ["poder", "to be able to"],
             ["hablar", "to speak"]
           ]
-        },
-        {
-          "id": "S0011L03",
-          "type": "M",
-          "target": "después de que termines",
-          "known": "after you finish",
-          "new": true,
-          "components": [
-            ["después de que", "after"],
-            ["termines", "you finish"]
-          ]
         }
       ]
     },
     {
       "seed_id": "S0012",
       "seed_pair": [
-        "No me gustaría adivinar lo que va a ocurrir mañana.",
-        "I wouldn't like to guess what's going to happen tomorrow."
+        "I wouldn't like to guess what's going to happen tomorrow.",
+        "No me gustaría adivinar lo que va a ocurrir mañana."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'I wouldn't like' → 'no me gustaría' (M-type: negation + multi-word); 'to guess' → 'adivinar' (A-type); 'what' → 'lo que' (M-type: FD required, 'what' as relative pronoun needs both words); 'is going to happen' → 'va a ocurrir' (M-type: future construction); 'tomorrow' → 'mañana' (A-type). TILING: no me gustaría + adivinar + lo que + va a ocurrir + mañana ✅",
       "legos": [
         {
           "id": "S0012L01",
@@ -63,8 +83,7 @@
           "new": true,
           "components": [
             ["no", "not"],
-            ["me", "me"],
-            ["gustaría", "would like"]
+            ["me gustaría", "I'd like"]
           ]
         },
         {
@@ -81,8 +100,8 @@
           "known": "what",
           "new": true,
           "components": [
-            ["lo", "the/it"],
-            ["que", "that/which"]
+            ["lo", "the"],
+            ["que", "that/what"]
           ]
         },
         {
@@ -92,9 +111,8 @@
           "known": "is going to happen",
           "new": true,
           "components": [
-            ["va", "goes/is going"],
-            ["a", "to"],
-            ["ocurrir", "to happen"]
+            ["va a", "is going to"],
+            ["ocurrir", "happen"]
           ]
         },
         {
@@ -103,16 +121,39 @@
           "target": "mañana",
           "known": "tomorrow",
           "new": true
+        },
+        {
+          "id": "S0012L06",
+          "type": "M",
+          "target": "lo que va a ocurrir",
+          "known": "what's going to happen",
+          "new": true,
+          "components": [
+            ["lo que", "what"],
+            ["va a", "is going to"],
+            ["ocurrir", "happen"]
+          ]
+        },
+        {
+          "id": "S0012L07",
+          "type": "M",
+          "target": "va a ocurrir mañana",
+          "known": "going to happen tomorrow",
+          "new": true,
+          "components": [
+            ["va a", "is going to"],
+            ["ocurrir", "happen"],
+            ["mañana", "tomorrow"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0013",
       "seed_pair": [
-        "Hablas español muy bien.",
-        "You speak Spanish very well."
+        "You speak Spanish very well.",
+        "Hablas español muy bien."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'you speak' → 'hablas' (A-type: single conjugated verb encodes subject); 'Spanish' → 'español' (A-type); 'very well' → 'muy bien' (M-type: idiomatic pairing, commonly taught together). TILING: hablas + español + muy bien ✅",
       "legos": [
         {
           "id": "S0013L01",
@@ -138,16 +179,26 @@
             ["muy", "very"],
             ["bien", "well"]
           ]
+        },
+        {
+          "id": "S0013L04",
+          "type": "M",
+          "target": "hablas español",
+          "known": "you speak Spanish",
+          "new": true,
+          "components": [
+            ["hablas", "you speak"],
+            ["español", "Spanish"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0014",
       "seed_pair": [
-        "¿Hablas español todo el día?",
-        "Do you speak Spanish all day?"
+        "Do you speak Spanish all day?",
+        "¿Hablas español todo el día?"
       ],
-      "extraction_notes": "FORWARD SWEEP: 'do you speak' → 'hablas' (A-type: single conjugated verb, question formed by intonation); 'Spanish' → 'español' (A-type); 'all day' → 'todo el día' (M-type: idiomatic time expression). TILING: hablas + español + todo el día ✅",
       "legos": [
         {
           "id": "S0014L01",
@@ -174,16 +225,26 @@
             ["el", "the"],
             ["día", "day"]
           ]
+        },
+        {
+          "id": "S0014L04",
+          "type": "M",
+          "target": "hablas español",
+          "known": "do you speak Spanish",
+          "new": true,
+          "components": [
+            ["hablas", "do you speak"],
+            ["español", "Spanish"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0015",
       "seed_pair": [
-        "Y quiero que hables español conmigo mañana.",
-        "And I want you to speak Spanish with me tomorrow."
+        "And I want you to speak Spanish with me tomorrow.",
+        "Y quiero que hables español conmigo mañana."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'and' → 'y' (A-type); 'I want' → 'quiero' (A-type: single word); 'you to speak' → 'que hables' (M-type: subjunctive trigger 'quiero que' requires 'que hables' as unit); 'Spanish' → 'español' (A-type); 'with me' → 'conmigo' (A-type: single word); 'tomorrow' → 'mañana' (A-type). TILING: y + quiero + que hables + español + conmigo + mañana ✅",
       "legos": [
         {
           "id": "S0015L01",
@@ -202,10 +263,11 @@
         {
           "id": "S0015L03",
           "type": "M",
-          "target": "que hables",
-          "known": "you to speak",
+          "target": "quiero que hables",
+          "known": "I want you to speak",
           "new": true,
           "components": [
+            ["quiero", "I want"],
             ["que", "that"],
             ["hables", "you speak"]
           ]
@@ -230,16 +292,28 @@
           "target": "mañana",
           "known": "tomorrow",
           "new": true
+        },
+        {
+          "id": "S0015L07",
+          "type": "M",
+          "target": "quiero que hables español",
+          "known": "I want you to speak Spanish",
+          "new": true,
+          "components": [
+            ["quiero", "I want"],
+            ["que", "that"],
+            ["hables", "you speak"],
+            ["español", "Spanish"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0016",
       "seed_pair": [
-        "Él quiere volver con todos los demás más tarde.",
-        "He wants to come back with everyone else later on."
+        "He wants to come back with everyone else later.",
+        "Él quiere volver con todos los demás más tarde."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'he wants' → 'él quiere' (M-type: Pragmatic FD - pronoun+verb pairing); 'to come back' → 'volver' (A-type: single word infinitive); 'with' → 'con' (A-type); 'everyone else' → 'todos los demás' (M-type: multi-word phrase); 'later on' → 'más tarde' (M-type: idiomatic time expression). TILING: él quiere + volver + con + todos los demás + más tarde ✅",
       "legos": [
         {
           "id": "S0016L01",
@@ -261,32 +335,36 @@
         },
         {
           "id": "S0016L03",
-          "type": "A",
-          "target": "con",
-          "known": "with",
-          "new": true
+          "type": "M",
+          "target": "con todos los demás",
+          "known": "with everyone else",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["todos", "everyone/all"],
+            ["los demás", "the others/else"]
+          ]
         },
         {
           "id": "S0016L04",
           "type": "M",
-          "target": "todos los demás",
-          "known": "everyone else",
+          "target": "más tarde",
+          "known": "later",
           "new": true,
           "components": [
-            ["todos", "everyone/all"],
-            ["los", "the"],
-            ["demás", "rest/others"]
+            ["más", "more"],
+            ["tarde", "late"]
           ]
         },
         {
           "id": "S0016L05",
           "type": "M",
-          "target": "más tarde",
-          "known": "later on",
+          "target": "quiere volver",
+          "known": "wants to come back",
           "new": true,
           "components": [
-            ["más", "more"],
-            ["tarde", "late"]
+            ["quiere", "wants"],
+            ["volver", "to come back"]
           ]
         }
       ]
@@ -294,10 +372,9 @@
     {
       "seed_id": "S0017",
       "seed_pair": [
-        "Ella quiere descubrir cuál es la respuesta.",
-        "She wants to find out what the answer is."
+        "She wants to find out what the answer is.",
+        "Ella quiere descubrir cuál es la respuesta."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'she wants' → 'ella quiere' (M-type: Pragmatic FD - pronoun+verb pairing); 'to find out' → 'descubrir' (A-type: single word infinitive); 'what the answer is' → 'cuál es la respuesta' (M-type: embedded question structure). TILING: ella quiere + descubrir + cuál es la respuesta ✅",
       "legos": [
         {
           "id": "S0017L01",
@@ -329,16 +406,26 @@
             ["la", "the"],
             ["respuesta", "answer"]
           ]
+        },
+        {
+          "id": "S0017L04",
+          "type": "M",
+          "target": "quiere descubrir",
+          "known": "wants to find out",
+          "new": true,
+          "components": [
+            ["quiere", "wants"],
+            ["descubrir", "to find out"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0018",
       "seed_pair": [
-        "Queremos reunirnos a las seis esta noche.",
-        "We want to meet at six o'clock this evening."
+        "We want to meet at six o'clock this evening.",
+        "Queremos reunirnos a las seis esta noche."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'we want' → 'queremos' (A-type: single conjugated verb that implies 'we'); 'to meet' → 'reunirnos' (A-type: single reflexive verb); 'at six o'clock' → 'a las seis' (M-type: time expression with preposition); 'this evening' → 'esta noche' (M-type: time phrase). TILING: queremos + reunirnos + a las seis + esta noche ✅",
       "legos": [
         {
           "id": "S0018L01",
@@ -376,16 +463,26 @@
             ["esta", "this"],
             ["noche", "evening/night"]
           ]
+        },
+        {
+          "id": "S0018L05",
+          "type": "M",
+          "target": "queremos reunirnos",
+          "known": "we want to meet",
+          "new": true,
+          "components": [
+            ["queremos", "we want"],
+            ["reunirnos", "to meet"]
+          ]
         }
       ]
     },
     {
       "seed_id": "S0019",
       "seed_pair": [
-        "Pero no quiero parar de hablar.",
-        "But I don't want to stop talking."
+        "But I don't want to stop talking.",
+        "Pero no quiero parar de hablar."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'but' → 'pero' (A-type); 'I don't want' → 'no quiero' (M-type: negation + verb); 'to stop' → 'parar' (A-type); 'talking' → 'de hablar' (M-type: gerund to infinitive pattern with preposition). TILING: pero + no quiero + parar + de hablar ✅",
       "legos": [
         {
           "id": "S0019L01",
@@ -401,26 +498,34 @@
           "known": "I don't want",
           "new": true,
           "components": [
-            ["no", "not"],
+            ["no", "don't"],
             ["quiero", "I want"]
           ]
         },
         {
           "id": "S0019L03",
-          "type": "A",
-          "target": "parar",
-          "known": "to stop",
-          "new": true
+          "type": "M",
+          "target": "parar de hablar",
+          "known": "to stop talking",
+          "new": true,
+          "components": [
+            ["parar", "to stop"],
+            ["de", "of"],
+            ["hablar", "talking/to talk"]
+          ]
         },
         {
           "id": "S0019L04",
           "type": "M",
-          "target": "de hablar",
-          "known": "talking",
+          "target": "no quiero parar de hablar",
+          "known": "I don't want to stop talking",
           "new": true,
           "components": [
+            ["no", "don't"],
+            ["quiero", "I want"],
+            ["parar", "to stop"],
             ["de", "of"],
-            ["hablar", "to speak"]
+            ["hablar", "talking"]
           ]
         }
       ]
@@ -428,10 +533,9 @@
     {
       "seed_id": "S0020",
       "seed_pair": [
-        "Quieres aprender su nombre rápidamente.",
-        "You want to learn his name quickly."
+        "You want to learn his name quickly.",
+        "Quieres aprender su nombre rápidamente."
       ],
-      "extraction_notes": "FORWARD SWEEP: 'you want' → 'quieres' (A-type: single conjugated verb implies 'you'); 'to learn' → 'aprender' (A-type); 'his name' → 'su nombre' (M-type: possessive + noun); 'quickly' → 'rápidamente' (A-type). TILING: quieres + aprender + su nombre + rápidamente ✅",
       "legos": [
         {
           "id": "S0020L01",
@@ -454,7 +558,7 @@
           "known": "his name",
           "new": true,
           "components": [
-            ["su", "his/her/their"],
+            ["su", "his"],
             ["nombre", "name"]
           ]
         },
@@ -464,6 +568,29 @@
           "target": "rápidamente",
           "known": "quickly",
           "new": true
+        },
+        {
+          "id": "S0020L05",
+          "type": "M",
+          "target": "quieres aprender",
+          "known": "you want to learn",
+          "new": true,
+          "components": [
+            ["quieres", "you want"],
+            ["aprender", "to learn"]
+          ]
+        },
+        {
+          "id": "S0020L06",
+          "type": "M",
+          "target": "aprender su nombre",
+          "known": "to learn his name",
+          "new": true,
+          "components": [
+            ["aprender", "to learn"],
+            ["su", "his"],
+            ["nombre", "name"]
+          ]
         }
       ]
     }
