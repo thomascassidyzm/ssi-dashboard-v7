@@ -2143,77 +2143,52 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
           job.progress = 70;
           job.message = 'Phase 5 tab opened - waiting for execution';
 
-          // Poll for completion using DUAL detection: files OR git branches
+          // Poll for completion via git branch detection
           console.log(`[Web Orchestrator] Waiting for Phase 5 completion...`);
-          console.log(`[Web Orchestrator] Monitoring: provisional files AND git branches`);
+          console.log(`[Web Orchestrator] Monitoring git branches (claude/phase5-*)`);
+          console.log(`[Web Orchestrator] Note: Claude Code on Web commits directly to branches`);
 
-          const outputsDir = path.join(baseCourseDir, 'phase5_outputs');
           const jobStartTime = job.startTime;
-          let agentsComplete = 0;
-          let gitBranchesDetected = false;
-          let detectionMethod = '';
+          let completed = false;
 
-          while (agentsComplete < expectedAgents && !gitBranchesDetected) {
+          while (!completed) {
             await new Promise(resolve => setTimeout(resolve, 10000)); // Check every 10 seconds
 
-            // Detection Method 1: Provisional files (local filesystem)
-            if (await fs.pathExists(outputsDir)) {
-              const files = await fs.readdir(outputsDir);
-              const provisionalCount = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
-
-              if (provisionalCount > agentsComplete) {
-                agentsComplete = provisionalCount;
-                job.message = `Phase 5: ${agentsComplete}/${expectedAgents} agents (file-based)`;
-                job.subProgress = {
-                  phase: 'phase_5',
-                  completed: agentsComplete,
-                  total: expectedAgents,
-                  percentage: Math.round((agentsComplete / expectedAgents) * 100)
-                };
-                console.log(`[Web Orchestrator] File-based: ${agentsComplete}/${expectedAgents} agents`);
-
-                if (agentsComplete >= expectedAgents) {
-                  detectionMethod = 'file-based';
-                  break;
-                }
-              }
-            }
-
-            // Detection Method 2: Git branches (remote commits)
+            // Check for new git branches with commits
             const newBranches = await pollGitBranches(baseCourseDir, jobStartTime, 'claude/phase5');
             if (newBranches.length > 0) {
               const newBranchCount = newBranches.filter(b => b.isNew).length;
 
               if (newBranchCount > 0) {
-                console.log(`[Web Orchestrator] Git-based: Detected ${newBranchCount} new Claude branches!`);
+                console.log(`[Web Orchestrator] ✅ Detected ${newBranchCount} new Claude branch(es)!`);
                 newBranches.forEach(b => {
                   if (b.isNew) {
                     console.log(`  ✓ ${b.branch} (committed ${b.commitTime.toISOString()})`);
                   }
                 });
 
-                gitBranchesDetected = true;
-                detectionMethod = 'git-based';
+                completed = true;
 
                 // Update job status
-                job.message = `Phase 5: Completion detected via git branches`;
+                job.message = `Phase 5: Work complete - found ${newBranchCount} branch(es)`;
                 job.subProgress = {
                   phase: 'phase_5',
                   completed: newBranchCount,
-                  total: expectedAgents,
+                  total: newBranchCount,
                   percentage: 100
                 };
+              } else {
+                // Old branches exist but no new ones yet
+                job.message = `Phase 5: Waiting for Claude to push branches...`;
+                console.log(`[Web Orchestrator] Found ${newBranches.length} old branches, waiting for new commits...`);
               }
+            } else {
+              // No branches at all yet
+              job.message = `Phase 5: Waiting for Claude to complete and push...`;
             }
           }
 
-          if (gitBranchesDetected) {
-            console.log(`[Web Orchestrator] ✅ Phase 5 complete (git-based detection)!`);
-          } else {
-            console.log(`[Web Orchestrator] ✅ Phase 5 complete (file-based detection)!`);
-          }
-
-          console.log(`[Web Orchestrator] Merging Claude branches...`);
+          console.log(`[Web Orchestrator] ✅ Phase 5 complete! Merging branches...`);
         }
 
         // Auto-merge all Claude feature branches from Phase 5 agents
@@ -2494,75 +2469,52 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       job.progress = 40;
       job.message = 'Phase 3 tab opened - waiting for execution';
 
-      // Poll for completion using DUAL detection: files OR git branches
+      // Poll for completion via git branch detection
       console.log(`[Web Orchestrator] Waiting for Phase 3 completion...`);
-      console.log(`[Web Orchestrator] Monitoring: provisional files AND git branches`);
+      console.log(`[Web Orchestrator] Monitoring git branches (claude/phase3-*)`);
+      console.log(`[Web Orchestrator] Note: Claude Code on Web commits directly to branches`);
 
-      const expectedAgents = Math.ceil((endSeed - startSeed + 1) / 20);
-      const outputsDir = path.join(courseDir, 'phase3_outputs');
       const jobStartTime = job.startTime;
-      let agentsComplete = 0;
-      let gitBranchesDetected = false;
+      let completed = false;
 
-      while (agentsComplete < expectedAgents && !gitBranchesDetected) {
+      while (!completed) {
         await new Promise(resolve => setTimeout(resolve, 10000)); // Check every 10 seconds
 
-        // Detection Method 1: Provisional files (local filesystem)
-        if (await fs.pathExists(outputsDir)) {
-          const files = await fs.readdir(outputsDir);
-          const provisionalCount = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
-
-          if (provisionalCount > agentsComplete) {
-            agentsComplete = provisionalCount;
-            job.message = `Phase 3: ${agentsComplete}/${expectedAgents} agents (file-based)`;
-            job.subProgress = {
-              phase: 'phase_3',
-              completed: agentsComplete,
-              total: expectedAgents,
-              percentage: Math.round((agentsComplete / expectedAgents) * 100)
-            };
-            console.log(`[Web Orchestrator] File-based: ${agentsComplete}/${expectedAgents} agents`);
-
-            if (agentsComplete >= expectedAgents) {
-              break;
-            }
-          }
-        }
-
-        // Detection Method 2: Git branches (remote commits)
+        // Check for new git branches with commits
         const newBranches = await pollGitBranches(courseDir, jobStartTime, 'claude/phase3');
         if (newBranches.length > 0) {
           const newBranchCount = newBranches.filter(b => b.isNew).length;
 
           if (newBranchCount > 0) {
-            console.log(`[Web Orchestrator] Git-based: Detected ${newBranchCount} new Claude branches!`);
+            console.log(`[Web Orchestrator] ✅ Detected ${newBranchCount} new Claude branch(es)!`);
             newBranches.forEach(b => {
               if (b.isNew) {
                 console.log(`  ✓ ${b.branch} (committed ${b.commitTime.toISOString()})`);
               }
             });
 
-            gitBranchesDetected = true;
+            completed = true;
 
             // Update job status
-            job.message = `Phase 3: Completion detected via git branches`;
+            job.message = `Phase 3: Work complete - found ${newBranchCount} branch(es)`;
             job.subProgress = {
               phase: 'phase_3',
               completed: newBranchCount,
-              total: expectedAgents,
+              total: newBranchCount,
               percentage: 100
             };
+          } else {
+            // Old branches exist but no new ones yet
+            job.message = `Phase 3: Waiting for Claude to push branches...`;
+            console.log(`[Web Orchestrator] Found ${newBranches.length} old branches, waiting for new commits...`);
           }
+        } else {
+          // No branches at all yet
+          job.message = `Phase 3: Waiting for Claude to complete and push...`;
         }
       }
 
-      if (gitBranchesDetected) {
-        console.log(`[Web Orchestrator] ✅ Phase 3 complete (git-based detection)!`);
-      } else {
-        console.log(`[Web Orchestrator] ✅ Phase 3 complete (file-based detection)!`);
-      }
-
-      console.log(`[Web Orchestrator] Merging git branches...`);
+      console.log(`[Web Orchestrator] ✅ Phase 3 complete! Merging branches...`);
 
       // Merge all phase3 agent branches to main
       await mergePhase3Branches(courseDir);
