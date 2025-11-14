@@ -1,0 +1,1090 @@
+{
+  "version": "7.0",
+  "course": "cmn_for_eng_s0454-0463",
+  "target_language": "spa",
+  "known_language": "eng",
+  "generated": "2025-11-14T12:50:58.839Z",
+  "total_seeds": 10,
+  "seeds": [
+    {
+      "seed_id": "S0454",
+      "seed_pair": [
+        "Nuestros amigos vinieron como a las seis.",
+        "Our friends came round at about six o'clock."
+      ],
+      "legos": [
+        {
+          "id": "S0454L01",
+          "type": "M",
+          "target": "nuestros amigos",
+          "known": "our friends",
+          "new": true,
+          "components": [
+            [
+              "nuestros",
+              "our"
+            ],
+            [
+              "amigos",
+              "friends"
+            ]
+          ]
+        },
+        {
+          "id": "S0454L02",
+          "type": "M",
+          "target": "nuestros amigos vinieron",
+          "known": "our friends came round",
+          "new": true,
+          "components": [
+            [
+              "nuestros",
+              "our"
+            ],
+            [
+              "amigos",
+              "friends"
+            ],
+            [
+              "vinieron",
+              "came"
+            ]
+          ]
+        },
+        {
+          "id": "S0454L03",
+          "type": "M",
+          "target": "vinieron como a las seis",
+          "known": "came round at about six o'clock",
+          "new": true,
+          "components": [
+            [
+              "vinieron",
+              "came"
+            ],
+            [
+              "como",
+              "about"
+            ],
+            [
+              "a",
+              "at"
+            ],
+            [
+              "las",
+              "the"
+            ],
+            [
+              "seis",
+              "six"
+            ]
+          ]
+        },
+        {
+          "id": "S0454L04",
+          "type": "M",
+          "target": "como a las seis",
+          "known": "at about six o'clock",
+          "new": true,
+          "components": [
+            [
+              "como",
+              "about"
+            ],
+            [
+              "a",
+              "at"
+            ],
+            [
+              "las",
+              "the"
+            ],
+            [
+              "seis",
+              "six"
+            ]
+          ]
+        },
+        {
+          "id": "S0454L05",
+          "type": "M",
+          "target": "las seis",
+          "known": "six o'clock",
+          "new": true,
+          "components": [
+            [
+              "las",
+              "the"
+            ],
+            [
+              "seis",
+              "six"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0455",
+      "seed_pair": [
+        "Tuvimos que irnos porque los niños estaban cansados.",
+        "We had to leave because the children were tired."
+      ],
+      "legos": [
+        {
+          "id": "S0455L01",
+          "type": "M",
+          "target": "tuvimos que",
+          "known": "we had to",
+          "new": true,
+          "components": [
+            [
+              "tuvimos",
+              "we had"
+            ],
+            [
+              "que",
+              "to"
+            ]
+          ]
+        },
+        {
+          "id": "S0455L02",
+          "type": "M",
+          "target": "tuvimos que irnos",
+          "known": "we had to leave",
+          "new": true,
+          "components": [
+            [
+              "tuvimos",
+              "we had"
+            ],
+            [
+              "que",
+              "to"
+            ],
+            [
+              "irnos",
+              "leave/go"
+            ]
+          ]
+        },
+        {
+          "id": "S0455L03",
+          "type": "M",
+          "target": "los niños",
+          "known": "the children",
+          "new": true,
+          "components": [
+            [
+              "los",
+              "the"
+            ],
+            [
+              "niños",
+              "children"
+            ]
+          ]
+        },
+        {
+          "id": "S0455L04",
+          "type": "M",
+          "target": "estaban cansados",
+          "known": "were tired",
+          "new": true,
+          "components": [
+            [
+              "estaban",
+              "were"
+            ],
+            [
+              "cansados",
+              "tired"
+            ]
+          ]
+        },
+        {
+          "id": "S0455L05",
+          "type": "M",
+          "target": "los niños estaban cansados",
+          "known": "the children were tired",
+          "new": true,
+          "components": [
+            [
+              "los",
+              "the"
+            ],
+            [
+              "niños",
+              "children"
+            ],
+            [
+              "estaban",
+              "were"
+            ],
+            [
+              "cansados",
+              "tired"
+            ]
+          ]
+        },
+        {
+          "id": "S0455L06",
+          "type": "M",
+          "target": "porque los niños estaban cansados",
+          "known": "because the children were tired",
+          "new": true,
+          "components": [
+            [
+              "porque",
+              "because"
+            ],
+            [
+              "los",
+              "the"
+            ],
+            [
+              "niños",
+              "children"
+            ],
+            [
+              "estaban",
+              "were"
+            ],
+            [
+              "cansados",
+              "tired"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0456",
+      "seed_pair": [
+        "He might be there but it's not very likely.",
+        "Puede que esté allí pero no es muy probable."
+      ],
+      "legos": [
+        {
+          "id": "S0456L01",
+          "type": "M",
+          "target": "Puede que esté",
+          "known": "might be",
+          "new": true,
+          "components": [
+            [
+              "Puede",
+              "might"
+            ],
+            [
+              "que",
+              "that"
+            ],
+            [
+              "esté",
+              "be (subjunctive)"
+            ]
+          ]
+        },
+        {
+          "id": "S0456L02",
+          "type": "M",
+          "target": "Puede que esté allí",
+          "known": "might be there",
+          "new": true,
+          "components": [
+            [
+              "Puede",
+              "might"
+            ],
+            [
+              "que",
+              "that"
+            ],
+            [
+              "esté",
+              "be (subjunctive)"
+            ],
+            [
+              "allí",
+              "there"
+            ]
+          ]
+        },
+        {
+          "id": "S0456L03",
+          "type": "A",
+          "target": "allí",
+          "known": "there",
+          "new": true
+        },
+        {
+          "id": "S0456L04",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0456L05",
+          "type": "M",
+          "target": "no es muy probable",
+          "known": "it's not very likely",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "es",
+              "is"
+            ],
+            [
+              "muy",
+              "very"
+            ],
+            [
+              "probable",
+              "likely"
+            ]
+          ]
+        },
+        {
+          "id": "S0456L06",
+          "type": "M",
+          "target": "muy probable",
+          "known": "very likely",
+          "new": true,
+          "components": [
+            [
+              "muy",
+              "very"
+            ],
+            [
+              "probable",
+              "likely"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0457",
+      "seed_pair": [
+        "Part of the problem is the number of different areas.",
+        "Parte del problema es el número de áreas diferentes."
+      ],
+      "legos": [
+        {
+          "id": "S0457L01",
+          "type": "M",
+          "target": "Parte del problema",
+          "known": "Part of the problem",
+          "new": true,
+          "components": [
+            [
+              "Parte",
+              "Part"
+            ],
+            [
+              "del",
+              "of the"
+            ],
+            [
+              "problema",
+              "problem"
+            ]
+          ]
+        },
+        {
+          "id": "S0457L02",
+          "type": "M",
+          "target": "del problema",
+          "known": "of the problem",
+          "new": true,
+          "components": [
+            [
+              "del",
+              "of the"
+            ],
+            [
+              "problema",
+              "problem"
+            ]
+          ]
+        },
+        {
+          "id": "S0457L03",
+          "type": "A",
+          "target": "es",
+          "known": "is",
+          "new": true
+        },
+        {
+          "id": "S0457L04",
+          "type": "M",
+          "target": "el número de",
+          "known": "the number of",
+          "new": true,
+          "components": [
+            [
+              "el",
+              "the"
+            ],
+            [
+              "número",
+              "number"
+            ],
+            [
+              "de",
+              "of"
+            ]
+          ]
+        },
+        {
+          "id": "S0457L05",
+          "type": "M",
+          "target": "el número",
+          "known": "the number",
+          "new": true,
+          "components": [
+            [
+              "el",
+              "the"
+            ],
+            [
+              "número",
+              "number"
+            ]
+          ]
+        },
+        {
+          "id": "S0457L06",
+          "type": "M",
+          "target": "áreas diferentes",
+          "known": "different areas",
+          "new": true,
+          "components": [
+            [
+              "áreas",
+              "areas"
+            ],
+            [
+              "diferentes",
+              "different"
+            ]
+          ]
+        },
+        {
+          "id": "S0457L07",
+          "type": "A",
+          "target": "áreas",
+          "known": "areas",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0458",
+      "seed_pair": [
+        "It was all much easier in the past.",
+        "Todo era mucho más fácil en el pasado."
+      ],
+      "legos": [
+        {
+          "id": "S0458L01",
+          "type": "M",
+          "target": "todo era",
+          "known": "it was all",
+          "new": true,
+          "components": [
+            [
+              "todo",
+              "all/everything"
+            ],
+            [
+              "era",
+              "was"
+            ]
+          ]
+        },
+        {
+          "id": "S0458L02",
+          "type": "M",
+          "target": "mucho más fácil",
+          "known": "much easier",
+          "new": true,
+          "components": [
+            [
+              "mucho",
+              "much"
+            ],
+            [
+              "más",
+              "more"
+            ],
+            [
+              "fácil",
+              "easy"
+            ]
+          ]
+        },
+        {
+          "id": "S0458L03",
+          "type": "M",
+          "target": "más fácil",
+          "known": "easier",
+          "new": true,
+          "components": [
+            [
+              "más",
+              "more"
+            ],
+            [
+              "fácil",
+              "easy"
+            ]
+          ]
+        },
+        {
+          "id": "S0458L04",
+          "type": "A",
+          "target": "fácil",
+          "known": "easy",
+          "new": true
+        },
+        {
+          "id": "S0458L05",
+          "type": "M",
+          "target": "en el pasado",
+          "known": "in the past",
+          "new": true,
+          "components": [
+            [
+              "en",
+              "in"
+            ],
+            [
+              "el",
+              "the"
+            ],
+            [
+              "pasado",
+              "past"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0459",
+      "seed_pair": [
+        "It wasn't in front of the blue sign.",
+        "No estaba enfrente de la señal azul."
+      ],
+      "legos": [
+        {
+          "id": "S0459L01",
+          "type": "M",
+          "target": "no estaba",
+          "known": "it wasn't",
+          "new": true,
+          "components": [
+            [
+              "no",
+              "not"
+            ],
+            [
+              "estaba",
+              "was"
+            ]
+          ]
+        },
+        {
+          "id": "S0459L02",
+          "type": "M",
+          "target": "enfrente de la señal azul",
+          "known": "in front of the blue sign",
+          "new": true,
+          "components": [
+            [
+              "enfrente",
+              "in front"
+            ],
+            [
+              "de",
+              "of"
+            ],
+            [
+              "la",
+              "the"
+            ],
+            [
+              "señal",
+              "sign"
+            ],
+            [
+              "azul",
+              "blue"
+            ]
+          ]
+        },
+        {
+          "id": "S0459L03",
+          "type": "M",
+          "target": "la señal azul",
+          "known": "the blue sign",
+          "new": true,
+          "components": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "señal",
+              "sign"
+            ],
+            [
+              "azul",
+              "blue"
+            ]
+          ]
+        },
+        {
+          "id": "S0459L04",
+          "type": "M",
+          "target": "señal azul",
+          "known": "blue sign",
+          "new": true,
+          "components": [
+            [
+              "señal",
+              "sign"
+            ],
+            [
+              "azul",
+              "blue"
+            ]
+          ]
+        },
+        {
+          "id": "S0459L05",
+          "type": "A",
+          "target": "azul",
+          "known": "blue",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0460",
+      "seed_pair": [
+        "I want to find a shop near the hotel.",
+        "Quiero encontrar una tienda cerca del hotel."
+      ],
+      "legos": [
+        {
+          "id": "S0460L01",
+          "type": "M",
+          "target": "quiero encontrar",
+          "known": "I want to find",
+          "new": true,
+          "components": [
+            [
+              "quiero",
+              "I want"
+            ],
+            [
+              "encontrar",
+              "to find"
+            ]
+          ]
+        },
+        {
+          "id": "S0460L02",
+          "type": "M",
+          "target": "quiero encontrar una tienda",
+          "known": "I want to find a shop",
+          "new": true,
+          "components": [
+            [
+              "quiero",
+              "I want"
+            ],
+            [
+              "encontrar",
+              "to find"
+            ],
+            [
+              "una",
+              "a"
+            ],
+            [
+              "tienda",
+              "shop"
+            ]
+          ]
+        },
+        {
+          "id": "S0460L03",
+          "type": "M",
+          "target": "una tienda",
+          "known": "a shop",
+          "new": true,
+          "components": [
+            [
+              "una",
+              "a"
+            ],
+            [
+              "tienda",
+              "shop"
+            ]
+          ]
+        },
+        {
+          "id": "S0460L04",
+          "type": "M",
+          "target": "una tienda cerca del hotel",
+          "known": "a shop near the hotel",
+          "new": true,
+          "components": [
+            [
+              "una",
+              "a"
+            ],
+            [
+              "tienda",
+              "shop"
+            ],
+            [
+              "cerca",
+              "near"
+            ],
+            [
+              "del",
+              "the"
+            ],
+            [
+              "hotel",
+              "hotel"
+            ]
+          ]
+        },
+        {
+          "id": "S0460L05",
+          "type": "M",
+          "target": "cerca del hotel",
+          "known": "near the hotel",
+          "new": true,
+          "components": [
+            [
+              "cerca",
+              "near"
+            ],
+            [
+              "del",
+              "the"
+            ],
+            [
+              "hotel",
+              "hotel"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0461",
+      "seed_pair": [
+        "A shop where I can buy some postcards.",
+        "Una tienda donde puedo comprar algunas postales."
+      ],
+      "legos": [
+        {
+          "id": "S0461L01",
+          "type": "M",
+          "target": "una tienda",
+          "known": "a shop",
+          "new": true,
+          "components": [
+            [
+              "una",
+              "a"
+            ],
+            [
+              "tienda",
+              "shop"
+            ]
+          ]
+        },
+        {
+          "id": "S0461L02",
+          "type": "M",
+          "target": "una tienda donde puedo comprar",
+          "known": "a shop where I can buy",
+          "new": true,
+          "components": [
+            [
+              "una",
+              "a"
+            ],
+            [
+              "tienda",
+              "shop"
+            ],
+            [
+              "donde",
+              "where"
+            ],
+            [
+              "puedo",
+              "I can"
+            ],
+            [
+              "comprar",
+              "buy"
+            ]
+          ]
+        },
+        {
+          "id": "S0461L03",
+          "type": "M",
+          "target": "donde puedo comprar",
+          "known": "where I can buy",
+          "new": true,
+          "components": [
+            [
+              "donde",
+              "where"
+            ],
+            [
+              "puedo",
+              "I can"
+            ],
+            [
+              "comprar",
+              "buy"
+            ]
+          ]
+        },
+        {
+          "id": "S0461L04",
+          "type": "M",
+          "target": "donde puedo comprar algunas postales",
+          "known": "where I can buy some postcards",
+          "new": true,
+          "components": [
+            [
+              "donde",
+              "where"
+            ],
+            [
+              "puedo",
+              "I can"
+            ],
+            [
+              "comprar",
+              "buy"
+            ],
+            [
+              "algunas",
+              "some"
+            ],
+            [
+              "postales",
+              "postcards"
+            ]
+          ]
+        },
+        {
+          "id": "S0461L05",
+          "type": "M",
+          "target": "puedo comprar",
+          "known": "I can buy",
+          "new": true,
+          "components": [
+            [
+              "puedo",
+              "I can"
+            ],
+            [
+              "comprar",
+              "buy"
+            ]
+          ]
+        },
+        {
+          "id": "S0461L06",
+          "type": "M",
+          "target": "puedo comprar algunas postales",
+          "known": "I can buy some postcards",
+          "new": true,
+          "components": [
+            [
+              "puedo",
+              "I can"
+            ],
+            [
+              "comprar",
+              "buy"
+            ],
+            [
+              "algunas",
+              "some"
+            ],
+            [
+              "postales",
+              "postcards"
+            ]
+          ]
+        },
+        {
+          "id": "S0461L07",
+          "type": "M",
+          "target": "algunas postales",
+          "known": "some postcards",
+          "new": true,
+          "components": [
+            [
+              "algunas",
+              "some"
+            ],
+            [
+              "postales",
+              "postcards"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0462",
+      "seed_pair": [
+        "My grandfather fought in Italy during the war.",
+        "Mi abuelo combatió en Italia durante la guerra."
+      ],
+      "legos": [
+        {
+          "id": "S0462L01",
+          "type": "M",
+          "target": "mi abuelo",
+          "known": "my grandfather",
+          "new": true,
+          "components": [
+            [
+              "mi",
+              "my"
+            ],
+            [
+              "abuelo",
+              "grandfather"
+            ]
+          ]
+        },
+        {
+          "id": "S0462L02",
+          "type": "A",
+          "target": "combatió",
+          "known": "fought",
+          "new": true
+        },
+        {
+          "id": "S0462L03",
+          "type": "M",
+          "target": "en Italia",
+          "known": "in Italy",
+          "new": true,
+          "components": [
+            [
+              "en",
+              "in"
+            ],
+            [
+              "Italia",
+              "Italy"
+            ]
+          ]
+        },
+        {
+          "id": "S0462L04",
+          "type": "M",
+          "target": "durante la guerra",
+          "known": "during the war",
+          "new": true,
+          "components": [
+            [
+              "durante",
+              "during"
+            ],
+            [
+              "la",
+              "the"
+            ],
+            [
+              "guerra",
+              "war"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0463",
+      "seed_pair": [
+        "My room number.",
+        "Mi número de habitación."
+      ],
+      "legos": [
+        {
+          "id": "S0463L01",
+          "type": "M",
+          "target": "número de habitación",
+          "known": "room number",
+          "new": true,
+          "components": [
+            [
+              "número",
+              "number"
+            ],
+            [
+              "de",
+              "of"
+            ],
+            [
+              "habitación",
+              "room"
+            ]
+          ]
+        },
+        {
+          "id": "S0463L02",
+          "type": "M",
+          "target": "mi número de habitación",
+          "known": "my room number",
+          "new": true,
+          "components": [
+            [
+              "mi",
+              "my"
+            ],
+            [
+              "número",
+              "number"
+            ],
+            [
+              "de",
+              "of"
+            ],
+            [
+              "habitación",
+              "room"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
