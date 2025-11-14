@@ -38,12 +38,13 @@ function generateBasePresentation(targetLang, knownLego, targetLego, knownSeed) 
 }
 
 function generateCompositePresentation(targetLang, knownLego, targetLego, knownSeed, components) {
-  // Build component explanation with {target} tags
+  // Build component explanation with {target1} tags
   // Component format: [[targetPart, knownPart], ...]
+  // All target language parts use {target1} for consistent TTS voice
   const componentParts = components.map((comp, index) => {
     const targetPart = comp[0];
     const knownPart = comp[1];
-    return `{target${index + 1}}'${targetPart}' means ${knownPart}`;
+    return `{target1}'${targetPart}' means ${knownPart}`;
   });
 
   // Join with proper grammar
