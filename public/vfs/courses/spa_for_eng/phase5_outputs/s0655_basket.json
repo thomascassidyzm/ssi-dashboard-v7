@@ -1,0 +1,95 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0655",
+  "generation_stage": "COMPLETE",
+  "seed_pair": {
+    "target": "I think that you're doing very well, madam.",
+    "known": "Creo que estás haciéndolo muy bien, señora."
+  },
+  "legos": {
+    "S0655L01": {
+      "lego": ["madam", "señora"],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Madam", "señora", null, 1],
+        ["Madam, are you ready?", "señora está preparado", null, 2],
+        ["Do you want to go, madam?", "quiere ir señora", null, 3],
+        ["What do you think, madam?", "qué piensa señora", null, 3],
+        ["Do you mind, madam?", "le importa señora", null, 4],
+        ["Madam, what do you need?", "señora qué necesita", null, 4],
+        ["Madam, are you ready to go?", "señora está preparado para ir", null, 5],
+        ["What do you think about that, madam?", "qué piensa de eso señora", null, 5],
+        ["Madam, do you mind if I ask?", "señora le importa si pregunto", null, 6],
+        ["Do you want to go now, madam?", "quiere ir ahora señora", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0655L02": {
+      "lego": ["I think that", "creo que"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I think that", "creo que", null, 1],
+        ["I think that you're ready", "creo que está preparado", null, 2],
+        ["I think that you want to go", "creo que quiere ir", null, 3],
+        ["I think that you need help", "creo que necesita ayuda", null, 3],
+        ["I think that you're doing well", "creo que está haciéndolo bien", null, 4],
+        ["I think that madam wants to go", "creo que señora quiere ir", null, 4],
+        ["I think that you're doing very well", "creo que está haciéndolo muy bien", null, 5],
+        ["I think that you don't mind", "creo que no le importa", null, 5],
+        ["I think that you're ready to start", "creo que está preparado para empezar", null, 6],
+        ["I think that you're doing very well, madam", "creo que estás haciéndolo muy bien señora", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0655L03": {
+      "lego": ["you're doing very well", "estás haciéndolo muy bien"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["You're doing very well", "estás haciéndolo muy bien", null, 1],
+        ["You're doing very well, madam", "estás haciéndolo muy bien señora", null, 2],
+        ["I think that you're doing very well", "creo que estás haciéndolo muy bien", null, 3],
+        ["You're doing very well now", "estás haciéndolo muy bien ahora", null, 3],
+        ["You're doing very well with that", "estás haciéndolo muy bien con eso", null, 4],
+        ["I think that you're doing very well, madam", "creo que estás haciéndolo muy bien señora", null, 4],
+        ["You're doing very well right now", "estás haciéndolo muy bien ahora mismo", null, 5],
+        ["I think that you're doing very well with that", "creo que estás haciéndolo muy bien con eso", null, 5],
+        ["You're doing very well, I think", "estás haciéndolo muy bien creo", null, 6],
+        ["I think that you're doing very well now, madam", "creo que estás haciéndolo muy bien ahora señora", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0655L04": {
+      "lego": ["very well", "muy bien"],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Very well", "muy bien", null, 1],
+        ["Very well, madam", "muy bien señora", null, 2],
+        ["You're doing very well", "estás haciéndolo muy bien", null, 3],
+        ["I think that you're doing very well", "creo que estás haciéndolo muy bien", null, 4],
+        ["I think that you're doing very well, madam", "creo que estás haciéndolo muy bien señora", null, 5]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      }
+    }
+  }
+}
