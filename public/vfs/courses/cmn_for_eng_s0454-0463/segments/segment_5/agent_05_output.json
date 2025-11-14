@@ -1,0 +1,92 @@
+{
+  "agent_id": "agent_05",
+  "seed_range": "S0462-S0463",
+  "extracted_at": "2025-11-14T02:23:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0462",
+      "seed_pair": [
+        "My grandfather fought in Italy during the war.",
+        "Mi abuelo combatió en Italia durante la guerra."
+      ],
+      "legos": [
+        {
+          "id": "S0462L01",
+          "type": "M",
+          "target": "mi abuelo",
+          "known": "my grandfather",
+          "new": true,
+          "components": [
+            ["mi", "my"],
+            ["abuelo", "grandfather"]
+          ]
+        },
+        {
+          "id": "S0462L02",
+          "type": "A",
+          "target": "combatió",
+          "known": "fought",
+          "new": true
+        },
+        {
+          "id": "S0462L03",
+          "type": "M",
+          "target": "en Italia",
+          "known": "in Italy",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["Italia", "Italy"]
+          ]
+        },
+        {
+          "id": "S0462L04",
+          "type": "M",
+          "target": "durante la guerra",
+          "known": "during the war",
+          "new": true,
+          "components": [
+            ["durante", "during"],
+            ["la", "the"],
+            ["guerra", "war"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0463",
+      "seed_pair": [
+        "My room number.",
+        "Mi número de habitación."
+      ],
+      "legos": [
+        {
+          "id": "S0463L01",
+          "type": "M",
+          "target": "número de habitación",
+          "known": "room number",
+          "new": true,
+          "components": [
+            ["número", "number"],
+            ["de", "of"],
+            ["habitación", "room"]
+          ]
+        },
+        {
+          "id": "S0463L02",
+          "type": "M",
+          "target": "mi número de habitación",
+          "known": "my room number",
+          "new": true,
+          "components": [
+            ["mi", "my"],
+            ["número", "number"],
+            ["de", "of"],
+            ["habitación", "room"]
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "agent_id": "agent_04",
+  "seed_range": "S0460-S0461",
+  "extracted_at": "2025-11-14T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0460",
+      "seed_pair": [
+        "I want to find a shop near the hotel.",
+        "Quiero encontrar una tienda cerca del hotel."
+      ],
+      "legos": [
+        {
+          "id": "S0460L01",
+          "type": "M",
+          "target": "quiero encontrar",
+          "known": "I want to find",
+          "new": true,
+          "components": [
+            ["quiero", "I want"],
+            ["encontrar", "to find"]
+          ]
+        },
+        {
+          "id": "S0460L02",
+          "type": "M",
+          "target": "quiero encontrar una tienda",
+          "known": "I want to find a shop",
+          "new": true,
+          "components": [
+            ["quiero", "I want"],
+            ["encontrar", "to find"],
+            ["una", "a"],
+            ["tienda", "shop"]
+          ]
+        },
+        {
+          "id": "S0460L03",
+          "type": "M",
+          "target": "una tienda",
+          "known": "a shop",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["tienda", "shop"]
+          ]
+        },
+        {
+          "id": "S0460L04",
+          "type": "M",
+          "target": "una tienda cerca del hotel",
+          "known": "a shop near the hotel",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["tienda", "shop"],
+            ["cerca", "near"],
+            ["del", "the"],
+            ["hotel", "hotel"]
+          ]
+        },
+        {
+          "id": "S0460L05",
+          "type": "M",
+          "target": "cerca del hotel",
+          "known": "near the hotel",
+          "new": true,
+          "components": [
+            ["cerca", "near"],
+            ["del", "the"],
+            ["hotel", "hotel"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0461",
+      "seed_pair": [
+        "A shop where I can buy some postcards.",
+        "Una tienda donde puedo comprar algunas postales."
+      ],
+      "legos": [
+        {
+          "id": "S0461L01",
+          "type": "M",
+          "target": "una tienda",
+          "known": "a shop",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["tienda", "shop"]
+          ]
+        },
+        {
+          "id": "S0461L02",
+          "type": "M",
+          "target": "una tienda donde puedo comprar",
+          "known": "a shop where I can buy",
+          "new": true,
+          "components": [
+            ["una", "a"],
+            ["tienda", "shop"],
+            ["donde", "where"],
+            ["puedo", "I can"],
+            ["comprar", "buy"]
+          ]
+        },
+        {
+          "id": "S0461L03",
+          "type": "M",
+          "target": "donde puedo comprar",
+          "known": "where I can buy",
+          "new": true,
+          "components": [
+            ["donde", "where"],
+            ["puedo", "I can"],
+            ["comprar", "buy"]
+          ]
+        },
+        {
+          "id": "S0461L04",
+          "type": "M",
+          "target": "donde puedo comprar algunas postales",
+          "known": "where I can buy some postcards",
+          "new": true,
+          "components": [
+            ["donde", "where"],
+            ["puedo", "I can"],
+            ["comprar", "buy"],
+            ["algunas", "some"],
+            ["postales", "postcards"]
+          ]
+        },
+        {
+          "id": "S0461L05",
+          "type": "M",
+          "target": "puedo comprar",
+          "known": "I can buy",
+          "new": true,
+          "components": [
+            ["puedo", "I can"],
+            ["comprar", "buy"]
+          ]
+        },
+        {
+          "id": "S0461L06",
+          "type": "M",
+          "target": "puedo comprar algunas postales",
+          "known": "I can buy some postcards",
+          "new": true,
+          "components": [
+            ["puedo", "I can"],
+            ["comprar", "buy"],
+            ["algunas", "some"],
+            ["postales", "postcards"]
+          ]
+        },
+        {
+          "id": "S0461L07",
+          "type": "M",
+          "target": "algunas postales",
+          "known": "some postcards",
+          "new": true,
+          "components": [
+            ["algunas", "some"],
+            ["postales", "postcards"]
+          ]
+        }
+      ]
+    }
+  ]
+}
