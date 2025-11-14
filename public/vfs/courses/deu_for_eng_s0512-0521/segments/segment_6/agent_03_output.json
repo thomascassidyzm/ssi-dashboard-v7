@@ -1,0 +1,92 @@
+{
+  "agent_id": "agent_03",
+  "seed_range": "S0516-S0517",
+  "extracted_at": "2025-11-14T15:45:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0516",
+      "seed_pair": [
+        "Sie sind beide alleine gekommen.",
+        "They both came on their own."
+      ],
+      "legos": [
+        {
+          "id": "S0516L01",
+          "type": "M",
+          "target": "sie sind beide",
+          "known": "they both",
+          "new": true,
+          "components": [
+            ["sie", "they"],
+            ["sind", "are"],
+            ["beide", "both"]
+          ]
+        },
+        {
+          "id": "S0516L02",
+          "type": "M",
+          "target": "alleine gekommen",
+          "known": "came on their own",
+          "new": true,
+          "components": [
+            ["alleine", "on their own/alone"],
+            ["gekommen", "came/come"]
+          ]
+        },
+        {
+          "id": "S0516L03",
+          "type": "M",
+          "target": "beide alleine gekommen",
+          "known": "both came on their own",
+          "new": true,
+          "components": [
+            ["beide", "both"],
+            ["alleine", "on their own"],
+            ["gekommen", "came"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0517",
+      "seed_pair": [
+        "Aber sie sind zusammen gegangen.",
+        "But they left with each other."
+      ],
+      "legos": [
+        {
+          "id": "S0517L01",
+          "type": "A",
+          "target": "aber",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0517L02",
+          "type": "M",
+          "target": "zusammen gegangen",
+          "known": "left with each other",
+          "new": true,
+          "components": [
+            ["zusammen", "with each other/together"],
+            ["gegangen", "left/gone"]
+          ]
+        },
+        {
+          "id": "S0517L03",
+          "type": "M",
+          "target": "sie sind zusammen gegangen",
+          "known": "they left with each other",
+          "new": true,
+          "components": [
+            ["sie", "they"],
+            ["sind", "are"],
+            ["zusammen", "with each other"],
+            ["gegangen", "left/gone"]
+          ]
+        }
+      ]
+    }
+  ]
+}
