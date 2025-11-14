@@ -95,19 +95,21 @@ export default {
             console.log(`[API] Loaded ${manifest.courses.length} courses from manifest (generated ${manifest.generated_at})`)
 
             // Transform manifest format to API format
-            const courses = manifest.courses.map(course => ({
-              course_code: course.course_code,
-              source_language: course.source_language,
-              target_language: course.target_language,
-              total_seeds: course.total_seeds,
-              version: course.format,
-              created_at: new Date().toISOString(),
-              status: 'phase_3_complete',
-              seed_pairs: course.actual_seed_count,
-              lego_pairs: course.lego_count,
-              lego_baskets: course.has_baskets ? 1 : 0,
-              phases_completed: ['1', '3']
-            }))
+            const courses = manifest.courses
+              .filter(course => course.actual_seed_count > 0 && course.lego_count > 0)
+              .map(course => ({
+                course_code: course.course_code,
+                source_language: course.source_language,
+                target_language: course.target_language,
+                total_seeds: course.total_seeds,
+                version: course.format,
+                created_at: new Date().toISOString(),
+                status: 'phase_3_complete',
+                seed_pairs: course.actual_seed_count,
+                lego_pairs: course.lego_count,
+                lego_baskets: course.has_baskets ? 1 : 0,
+                phases_completed: ['1', '3']
+              }))
 
             return { courses }
           }
@@ -244,16 +246,32 @@ export default {
         // Fallback to static files if API unavailable
         console.log(`[API] Server unavailable, using static files for ${courseCode}`)
 
-        // Detect segment range (e.g., spa_for_eng_s0520-0529)
-        const segmentMatch = courseCode.match(/^([a-z]{3}_for_[a-z]{3})_s\d{4}-\d{4}$/)
-        const baseCourseCode = segmentMatch ? segmentMatch[1] : courseCode
+        // Use the courseCode as-is for static file paths
+        // (segment ranges have their own directories, not a base course)
+        const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
+        const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
 
-        if (segmentMatch) {
-          console.log(`[API] Segment range detected - reading from base course: ${baseCourseCode}`)
+        // Try to load optional files (may not exist for all courses)
+        let legoBasketsData = null
+        let introductionsData = null
+
+        try {
+          const basketsRes = await fetch(`/vfs/courses/${courseCode}/lego_baskets.json`)
+          if (basketsRes.ok) {
+            legoBasketsData = await basketsRes.json()
+          }
+        } catch (e) {
+          // File doesn't exist, that's ok
         }
 
-        const seedPairsRes = await fetch(`/vfs/courses/${baseCourseCode}/seed_pairs.json`)
-        const legoPairsRes = await fetch(`/vfs/courses/${baseCourseCode}/lego_pairs.json`)
+        try {
+          const introsRes = await fetch(`/vfs/courses/${courseCode}/introductions.json`)
+          if (introsRes.ok) {
+            introductionsData = await introsRes.json()
+          }
+        } catch (e) {
+          // File doesn't exist, that's ok
+        }
 
         if (seedPairsRes.ok && legoPairsRes.ok) {
           const seedPairsData = await seedPairsRes.json()
@@ -318,6 +336,10 @@ export default {
           const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
           const match = matchStandard || matchBasic
 
+          // Count baskets and introductions
+          const basketCount = legoBasketsData?.baskets?.length || 0
+          const introductionsCount = introductionsData?.presentations ? Object.keys(introductionsData.presentations).length : 0
+
           const course = {
             course_code: courseCode,
             source_language: match ? match[2].toUpperCase() : 'UNK',
@@ -328,7 +350,10 @@ export default {
             status: 'phase_3_complete',
             seed_pairs: translations.length,
             lego_pairs: legos.length,
-            lego_baskets: 0,
+            lego_baskets: basketCount,
+            amino_acids: {
+              introductions: introductionsCount
+            },
             phases_completed: ['1', '3'],
             target_language_name: match ? match[1] : 'unknown',
             known_language_name: match ? match[2] : 'unknown'
@@ -339,7 +364,7 @@ export default {
             translations,
             legos,
             lego_breakdowns: seedsArray, // Raw v7.7 format for visualizer
-            baskets: []
+            baskets: legoBasketsData?.baskets || []
           }
 
           // Cache the static file data
@@ -367,16 +392,9 @@ export default {
         // Fallback to static files if API unavailable
         console.log(`[API] Server unavailable, using static files for provenance ${courseCode}/${seedId}`)
 
-        // Detect segment range (e.g., spa_for_eng_s0520-0529)
-        const segmentMatch = courseCode.match(/^([a-z]{3}_for_[a-z]{3})_s\d{4}-\d{4}$/)
-        const baseCourseCode = segmentMatch ? segmentMatch[1] : courseCode
-
-        if (segmentMatch) {
-          console.log(`[API] Segment range detected - reading from base course: ${baseCourseCode}`)
-        }
-
-        const seedPairsRes = await fetch(`/vfs/courses/${baseCourseCode}/seed_pairs.json`)
-        const legoPairsRes = await fetch(`/vfs/courses/${baseCourseCode}/lego_pairs.json`)
+        // Use the courseCode as-is for static file paths
+        const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
+        const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
 
         if (seedPairsRes.ok && legoPairsRes.ok) {
           const seedPairsData = await seedPairsRes.json()
