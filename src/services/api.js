@@ -445,38 +445,53 @@ export default {
     },
 
     async getBasket(courseCode, seedId) {
+      // ALWAYS use static files (GitHub SSoT)
+      console.log(`[API] Loading basket ${seedId} from static files (GitHub SSoT)`)
+
       try {
-        // Try API server first
-        const response = await api.get(`/api/courses/${courseCode}/baskets/${seedId}`)
-        return response.data
+        // Load from merged lego_baskets.json (Phase 5+ format)
+        const basketsRes = await fetch(`/vfs/courses/${courseCode}/lego_baskets.json`)
+        if (basketsRes.ok) {
+          const allBaskets = await basketsRes.json()
+
+          // Find basket by seedId in baskets object
+          // Baskets are keyed like "S0001L01", "S0001L02" etc - find all for this seed
+          const seedBaskets = {}
+          for (const [key, basketData] of Object.entries(allBaskets.baskets || {})) {
+            if (key.startsWith(seedId)) {
+              seedBaskets[key] = basketData
+            }
+          }
+
+          if (Object.keys(seedBaskets).length > 0) {
+            // Get seed_pair from seed_pairs.json
+            const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
+            let seedPair = null
+            if (seedPairsRes.ok) {
+              const seedPairsData = await seedPairsRes.json()
+              const translation = seedPairsData.translations?.[seedId]
+              if (translation) {
+                seedPair = {
+                  target: translation[0],
+                  known: translation[1]
+                }
+              }
+            }
+
+            // Return basket in expected format
+            return {
+              basket: {
+                seed_pair: seedPair,
+                legos: seedBaskets,  // v6.2+ format with LEGOs nested
+                generation_stage: 'COMPLETE'
+              }
+            }
+          }
+        }
+
+        throw new Error(`Basket not found for ${seedId}`)
       } catch (err) {
-        // Fallback to static basket files in VFS structure
-        console.log(`[API] Server unavailable, using static basket file for ${seedId}`)
-
-        try {
-          // Try phase5_outputs directory first (v6.2+ format)
-          const phase5Res = await fetch(`/vfs/courses/${courseCode}/phase5_outputs/seed_${seedId.toLowerCase()}.json`)
-          if (phase5Res.ok) {
-            const basketData = await phase5Res.json()
-            // Return in same format as API server
-            return { basket: basketData }
-          }
-        } catch (phase5Err) {
-          console.log('[API] Phase 5 output not found, trying legacy baskets/')
-        }
-
-        try {
-          // Fallback to legacy baskets directory
-          const basketRes = await fetch(`/vfs/courses/${courseCode}/baskets/lego_baskets_${seedId.toLowerCase()}.json`)
-          if (basketRes.ok) {
-            const basketData = await basketRes.json()
-            // Legacy format is already unwrapped, wrap it to match API server format
-            return { basket: basketData }
-          }
-        } catch (basketErr) {
-          console.error('[API] Failed to load basket from VFS:', basketErr)
-        }
-
+        console.error(`[API] Failed to fetch basket for ${seedId}:`, err)
         throw err
       }
     },
