@@ -13,7 +13,8 @@ import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
 import PhaseIntelligence from '../views/PhaseIntelligence.vue'
-import Skills from '../views/Skills.vue'
+// DEPRECATED: Skills.vue - unused feature
+// import Skills from '../views/Skills.vue'
 
 // Quality Review Components
 import QualityDashboard from '../components/quality/QualityDashboard.vue'
@@ -96,12 +97,13 @@ const routes = [
     component: PhaseIntelligence,
     meta: { title: 'Phase Intelligence' }
   },
-  {
-    path: '/skills',
-    name: 'Skills',
-    component: Skills,
-    meta: { title: 'Skills Library' }
-  },
+  // DEPRECATED: Skills route - feature not in use
+  // {
+  //   path: '/skills',
+  //   name: 'Skills',
+  //   component: Skills,
+  //   meta: { title: 'Skills Library' }
+  // },
 
   // Quality Review Routes
   {
