@@ -1,104 +1,104 @@
 {
   "version": "curated_v7_spanish",
-  "seed_id": "S0371",
+  "seed_id": "S0347",
   "generation_stage": "PHRASES_GENERATED",
   "seed_pair": {
-    "target": "I went to see a film on Wednesday.",
-    "known": "Fui a ver una película el miércoles."
+    "target": "Él quería saber qué estaba pasando hace una semana.",
+    "known": "He wanted to know what was happening a week ago."
   },
   "recent_context": {
-    "S0366": [
-      "Escuchaste | lo que él quería cultivar | él quería cultivar | quería cultivar | cultivar",
-      "Did you hear | what he wanted to grow | he wanted to grow | wanted to grow | to grow"
+    "S0342": [
+      "conocí a alguien | que dijo algo | que dijo | dijo algo",
+      "I met someone | who said something | who said | said something"
     ],
-    "S0367": [
-      "No | nadie | nadie me dijo | me dijo",
-      "No | nobody | nobody told me | told me"
+    "S0343": [
+      "que dijo que | está preocupada por la economía | está preocupada | por la economía",
+      "who said that | she's worried about the economy | she's worried | about the economy"
     ],
-    "S0368": [
-      "Sí | escuché que | él quería cultivar tomates | quería cultivar tomates | cultivar tomates | tomates",
-      "Yes | I heard that | he wanted to grow tomatoes | wanted to grow tomatoes | grow tomatoes | tomatoes"
+    "S0344": [
+      "que dijo que | está contento de ayudarte | está contento | ayudarte",
+      "who said that | he's happy to help you | he's happy | to help you"
     ],
-    "S0369": [
-      "Vi | varios caballos | en la carretera | varios | caballos",
-      "I saw | several horses | on the road | several | horses"
+    "S0345": [
+      "que dijo que | no está preparado para irse todavía | no está preparado | para irse | todavía",
+      "who said that | he's not ready to leave yet | he's not ready | to leave | yet"
     ],
-    "S0370": [
-      "No vi | a nadie que yo conocía | que yo conocía | yo conocía | conocía",
-      "I didn't see | anyone that I knew | that I knew | I knew | knew"
+    "S0346": [
+      "quería que ella supiera que | quería | me gustó su libro | me gustó | su libro",
+      "I wanted her to know that | I wanted | I liked her book | I liked | her book"
     ]
   },
   "legos": {
-    "S0371L01": {
+    "S0347L01": {
       "lego": [
-        "I went",
-        "fui"
+        "wanted to know",
+        "quería saber"
       ],
-      "type": "A",
-      "available_legos": 1760,
+      "type": "M",
+      "available_legos": 1650,
       "is_final_lego": false,
       "overlap_level": "none",
       "target_phrase_count": 10,
       "practice_phrases": [
         [
-          "I went",
-          "fui",
-          null,
-          1
-        ],
-        [
-          "I went worse today than yesterday",
-          "fui peor hoy que ayer",
-          null,
-          2
-        ],
-        [
-          "I went to to the party",
-          "fui a a la fiesta",
+          "wanted to know",
+          "quería saber",
           null,
           3
         ],
         [
-          "I went a good thing",
-          "fui una cosa buena",
+          "I wanted to know",
+          "quería saber",
           null,
           3
         ],
         [
-          "I went to to school early next week",
-          "fui a a la escuela a principios de la próxima semana",
+          "he wanted to know",
+          "él quería saber",
           null,
-          4
+          3
         ],
         [
-          "I went I watched a film month",
-          "fui vi una película mes",
+          "she wanted to know",
+          "ella quería saber",
           null,
-          4
+          3
         ],
         [
-          "I went from home were talking yesterday",
-          "fui desde casa hablabas ayer",
+          "yes wanted to know",
+          "sí quería saber",
+          null,
+          3
+        ],
+        [
+          "I think he wanted to know",
+          "creo que él quería saber",
           null,
           5
         ],
         [
-          "I went job a week ago",
-          "fui trabajo hace una semana",
+          "someone wanted to know",
+          "alguien quería saber",
           null,
-          6
+          3
         ],
         [
-          "I went from home tomorrow morning",
-          "fui desde casa mañana por la mañana",
+          "he wanted to know yesterday",
+          "él quería saber ayer",
           null,
-          7
+          4
         ],
         [
-          "I went",
-          "fui",
+          "I wanted to know that",
+          "quería saber que",
           null,
-          8
+          4
+        ],
+        [
+          "he wanted to know something",
+          "él quería saber algo",
+          null,
+          4
         ]
       ],
       "phrase_distribution": {
@@ -108,10 +108,10 @@
         "longest_5_legos": 4
       },
       "_metadata": {
-        "lego_id": "S0371L01",
+        "lego_id": "S0347L01",
         "seed_context": {
-          "target": "I went to see a film on Wednesday.",
-          "known": "Fui a ver una película el miércoles."
+          "target": "Él quería saber qué estaba pasando hace una semana.",
+          "known": "He wanted to know what was happening a week ago."
         },
         "whitelist_pairs": [
           [
@@ -132,7 +132,7 @@
           ],
           [
             "a",
-            ""
+            "personal a"
           ],
           [
             "a alguien",
@@ -141,14 +141,6 @@
           [
             "a buscarlo",
             "to look for it"
-          ],
-          [
-            "a él",
-            "to him"
-          ],
-          [
-            "a él no le gustó ese lugar",
-            "he didn't like that place"
           ],
           [
             "a hablar más",
@@ -161,10 +153,6 @@
           [
             "a la fiesta",
             "to the party"
-          ],
-          [
-            "a la izquierda",
-            "to the left"
           ],
           [
             "a las que",
@@ -189,10 +177,6 @@
           [
             "a mi padre no le gusta",
             "my father doesn't like"
-          ],
-          [
-            "a nadie que yo conocía",
-            "anyone that I knew"
           ],
           [
             "a principios de la próxima semana",
@@ -279,16 +263,8 @@
             "at the same time"
           ],
           [
-            "alcanzar",
-            "reach"
-          ],
-          [
-            "alcanzar la cima",
-            "reach the top"
-          ],
-          [
             "algo",
-            "anything"
+            "something"
           ],
           [
             "algo ayer",
@@ -312,7 +288,7 @@
           ],
           [
             "algo más",
-            "anything else"
+            "something else"
           ],
           [
             "algo nuevo",
@@ -359,14 +335,6 @@
             "over there"
           ],
           [
-            "alrededor",
-            "around"
-          ],
-          [
-            "alrededor del campo",
-            "around the field"
-          ],
-          [
             "amable",
             "kind"
           ],
@@ -385,10 +353,6 @@
           [
             "amigos",
             "friends"
-          ],
-          [
-            "amigos viejos",
-            "old friends"
           ],
           [
             "añadir",
@@ -437,14 +401,6 @@
           [
             "antipática",
             "unfriendly"
-          ],
-          [
-            "aparecer",
-            "appear"
-          ],
-          [
-            "aparecer enojado",
-            "appear angry"
           ],
           [
             "aprendemos",
@@ -540,11 +496,7 @@
           ],
           [
             "aunque",
-            "Even if"
-          ],
-          [
-            "aunque él quisiera",
-            "Even if he wanted to"
+            "although"
           ],
           [
             "aunque quería verte",
@@ -608,15 +560,11 @@
           ],
           [
             "bastante",
-            "rather"
+            "quite"
           ],
           [
             "bastante bueno",
             "fairly good"
-          ],
-          [
-            "bastante callado",
-            "rather quiet"
           ],
           [
             "bastante mal",
@@ -671,20 +619,12 @@
             "look for it"
           ],
           [
-            "caballos",
-            "horses"
-          ],
-          [
             "cabeza",
             "head"
           ],
           [
             "café",
             "coffee"
-          ],
-          [
-            "callado",
-            "quiet"
           ],
           [
             "cambia",
@@ -711,16 +651,8 @@
             "to walk"
           ],
           [
-            "campo",
-            "field"
-          ],
-          [
             "cansado",
             "tired"
-          ],
-          [
-            "carretera",
-            "road"
           ],
           [
             "carta",
@@ -741,10 +673,6 @@
           [
             "cerebro",
             "brain"
-          ],
-          [
-            "cima",
-            "top"
           ],
           [
             "cinco",
@@ -892,7 +820,7 @@
           ],
           [
             "con",
-            "to/with"
+            "with"
           ],
           [
             "con alguien más",
@@ -952,7 +880,7 @@
           ],
           [
             "conoces",
-            "you know"
+            "do you know"
           ],
           [
             "conoces a",
@@ -968,7 +896,7 @@
           ],
           [
             "conocía",
-            "knew"
+            "I used to know"
           ],
           [
             "conozco",
@@ -1061,10 +989,6 @@
           [
             "correos electrónicos",
             "emails"
-          ],
-          [
-            "correr",
-            "to run"
           ],
           [
             "cosa",
@@ -1257,14 +1181,6 @@
           [
             "cuidar",
             "to look after"
-          ],
-          [
-            "cultivar",
-            "grow"
-          ],
-          [
-            "cultivar tomates",
-            "grow tomatoes"
           ],
           [
             "dando",
@@ -1475,14 +1391,6 @@
             "to stop talking"
           ],
           [
-            "dejarme",
-            "leave me"
-          ],
-          [
-            "dejarme solo",
-            "leave me on my own"
-          ],
-          [
             "dejarte",
             "let you"
           ],
@@ -1500,7 +1408,7 @@
           ],
           [
             "del",
-            "the"
+            "of the"
           ],
           [
             "demasiadas",
@@ -1595,14 +1503,6 @@
             "after"
           ],
           [
-            "después de que",
-            "after"
-          ],
-          [
-            "después de que te fuiste",
-            "after you left"
-          ],
-          [
             "después de que terminemos",
             "after we finish"
           ],
@@ -1688,11 +1588,11 @@
           ],
           [
             "dijo",
-            "told"
+            "said"
           ],
           [
             "dijo algo",
-            "say anything"
+            "said something"
           ],
           [
             "dijo que",
@@ -1811,10 +1711,6 @@
             "next year"
           ],
           [
-            "el campo",
-            "the field"
-          ],
-          [
             "el coche que",
             "the car that"
           ],
@@ -1853,14 +1749,6 @@
           [
             "el domingo por la tarde",
             "on Sunday afternoon"
-          ],
-          [
-            "él estaba bastante callado",
-            "he was rather quiet"
-          ],
-          [
-            "Él estaba callado",
-            "He was quiet"
           ],
           [
             "el fin de semana",
@@ -1907,20 +1795,12 @@
             "He doesn't need to buy"
           ],
           [
-            "él no necesitaba",
-            "He didn't need to"
-          ],
-          [
             "Él no podría creer",
             "He couldn't believe"
           ],
           [
             "el perro joven",
             "the young dog"
-          ],
-          [
-            "él podía",
-            "he could"
           ],
           [
             "el problema",
@@ -1933,14 +1813,6 @@
           [
             "él puede",
             "he can"
-          ],
-          [
-            "él quería cultivar",
-            "he wanted to grow"
-          ],
-          [
-            "él quería cultivar tomates",
-            "he wanted to grow tomatoes"
           ],
           [
             "él quiere",
@@ -1959,16 +1831,8 @@
             "he knows"
           ],
           [
-            "él tenía ganas de hablar mucho",
-            "he felt like talking a lot"
-          ],
-          [
             "el trabajo más importante",
             "the most important job"
-          ],
-          [
-            "el viernes por la noche",
-            "on Friday night"
           ],
           [
             "electrónicos",
@@ -2011,20 +1875,8 @@
             "she speaks"
           ],
           [
-            "ella le dijo a él",
-            "she said to him"
-          ],
-          [
             "Ella necesita mudarse",
             "She needs to move"
-          ],
-          [
-            "ella necesitaba",
-            "She needed to"
-          ],
-          [
-            "ella no podía",
-            "she couldn't"
           ],
           [
             "ella no puede",
@@ -2055,20 +1907,12 @@
             "she wants"
           ],
           [
-            "ella solo quería",
-            "she just wanted"
-          ],
-          [
             "ella va a estar",
             "she's going to be"
           ],
           [
             "ellos",
-            "they"
-          ],
-          [
-            "ellos tenían",
-            "they had"
+            "them"
           ],
           [
             "emocionante",
@@ -2143,10 +1987,6 @@
             "at the moment"
           ],
           [
-            "en la carretera",
-            "on the road"
-          ],
-          [
             "en la mesa",
             "on the table"
           ],
@@ -2207,10 +2047,6 @@
             "to meet/find yourself"
           ],
           [
-            "enojado",
-            "angry"
-          ],
-          [
             "entender",
             "understand"
           ],
@@ -2221,14 +2057,6 @@
           [
             "entusiasmado",
             "excited"
-          ],
-          [
-            "enviarle",
-            "send her"
-          ],
-          [
-            "enviarle un mensaje",
-            "send her a message"
           ],
           [
             "envió",
@@ -2407,26 +2235,6 @@
             "write a story"
           ],
           [
-            "Escuchaste",
-            "Did you hear"
-          ],
-          [
-            "escuché",
-            "I heard"
-          ],
-          [
-            "Escuché",
-            "I heard"
-          ],
-          [
-            "escuché que",
-            "I heard that"
-          ],
-          [
-            "Escuché que",
-            "I heard that"
-          ],
-          [
             "escuela",
             "school"
           ],
@@ -2453,10 +2261,6 @@
           [
             "ese libro era bastante bueno",
             "that book was fairly good"
-          ],
-          [
-            "ese lugar",
-            "that place"
           ],
           [
             "eso",
@@ -2655,14 +2459,6 @@
             "was"
           ],
           [
-            "estaba bastante callado",
-            "was rather quiet"
-          ],
-          [
-            "estaba callado",
-            "was quiet"
-          ],
-          [
             "estaba comenzando a sentirme mejor",
             "I was starting to feel better"
           ],
@@ -2681,10 +2477,6 @@
           [
             "estaba intentando decir",
             "was trying to say"
-          ],
-          [
-            "estaba pasando",
-            "was happening"
           ],
           [
             "estaba seguro de",
@@ -3071,10 +2863,6 @@
             "was very interesting"
           ],
           [
-            "fuiste",
-            "left"
-          ],
-          [
             "funcionando",
             "working"
           ],
@@ -3093,14 +2881,6 @@
           [
             "gente",
             "people"
-          ],
-          [
-            "girar",
-            "turn"
-          ],
-          [
-            "girar a la izquierda",
-            "turn left"
           ],
           [
             "gracias",
@@ -3176,11 +2956,7 @@
           ],
           [
             "hablar",
-            "talking"
-          ],
-          [
-            "hablar con",
-            "to talk to"
+            "speak/to speak"
           ],
           [
             "hablar conmigo",
@@ -3219,10 +2995,6 @@
             "speak better"
           ],
           [
-            "hablar mucho",
-            "talking a lot"
-          ],
-          [
             "hablas",
             "do you speak"
           ],
@@ -3257,10 +3029,6 @@
           [
             "hace un rato",
             "a while ago"
-          ],
-          [
-            "hace una semana",
-            "a week ago"
           ],
           [
             "hace unos días",
@@ -3483,10 +3251,6 @@
             "important"
           ],
           [
-            "importante que discutir",
-            "important to discuss"
-          ],
-          [
             "importantes",
             "important"
           ],
@@ -3591,10 +3355,6 @@
             "leave (reflexive)"
           ],
           [
-            "izquierda",
-            "left"
-          ],
-          [
             "joven",
             "young"
           ],
@@ -3621,10 +3381,6 @@
           [
             "la amiga de mi hermana",
             "my sister's friend"
-          ],
-          [
-            "la cima",
-            "the top"
           ],
           [
             "la compañía",
@@ -3784,19 +3540,11 @@
           ],
           [
             "le",
-            "to him"
-          ],
-          [
-            "le dijo",
-            "said to him"
+            "them"
           ],
           [
             "le gusta ver la televisión",
             "like watching television"
-          ],
-          [
-            "le gustó",
-            "like"
           ],
           [
             "le preguntaré",
@@ -3941,14 +3689,6 @@
           [
             "lo que dijo",
             "what he said"
-          ],
-          [
-            "lo que él quería cultivar",
-            "what he wanted to grow"
-          ],
-          [
-            "lo que ella le dijo a él",
-            "what she said to him"
           ],
           [
             "lo que estaba esperando que pasara",
@@ -4096,7 +3836,7 @@
           ],
           [
             "más",
-            "else/more"
+            "most"
           ],
           [
             "más fácil",
@@ -4148,7 +3888,7 @@
           ],
           [
             "me",
-            "me"
+            "to me"
           ],
           [
             "Me",
@@ -4157,10 +3897,6 @@
           [
             "Me desperté",
             "I woke"
-          ],
-          [
-            "me dijo",
-            "told me"
           ],
           [
             "me envió",
@@ -4269,10 +4005,6 @@
           [
             "menos emocionante",
             "less exciting"
-          ],
-          [
-            "mensaje",
-            "message"
           ],
           [
             "mes",
@@ -4412,7 +4144,7 @@
           ],
           [
             "mucho",
-            "a lot"
+            "much"
           ],
           [
             "mucho tiempo",
@@ -4429,10 +4161,6 @@
           [
             "mujer joven",
             "young woman"
-          ],
-          [
-            "mujer que conoces",
-            "woman you know"
           ],
           [
             "muy",
@@ -4492,11 +4220,7 @@
           ],
           [
             "nadie",
-            "anyone"
-          ],
-          [
-            "nadie me dijo",
-            "nobody told me"
+            "nobody"
           ],
           [
             "necesita",
@@ -4520,23 +4244,7 @@
           ],
           [
             "necesitaba",
-            "need"
-          ],
-          [
-            "necesitaba aparecer",
-            "need to appear"
-          ],
-          [
-            "necesitaba correr",
-            "needed to run"
-          ],
-          [
-            "necesitaba ella",
-            "Did she need to"
-          ],
-          [
-            "necesitaba hablar",
-            "need to talk"
+            "I needed"
           ],
           [
             "necesitabas",
@@ -4616,11 +4324,11 @@
           ],
           [
             "no",
-            "didn't"
+            "not"
           ],
           [
             "No",
-            "didn't"
+            "don't/not"
           ],
           [
             "no comprendo",
@@ -4691,10 +4399,6 @@
             "I didn't sleep"
           ],
           [
-            "no él no quería",
-            "No he didn't want"
-          ],
-          [
             "no era muy paciente",
             "wasn't very patient"
           ],
@@ -4725,10 +4429,6 @@
           [
             "No es un problema",
             "It's not a problem"
-          ],
-          [
-            "No escuché",
-            "I didn't hear"
           ],
           [
             "no esperábamos",
@@ -4823,10 +4523,6 @@
             "I haven't seen them"
           ],
           [
-            "no le gustó ese lugar",
-            "didn't like that place"
-          ],
-          [
             "no lo habría dicho",
             "I wouldn't have said it"
           ],
@@ -4867,10 +4563,6 @@
             "doesn't need to buy"
           ],
           [
-            "no necesitaba",
-            "didn't need to"
-          ],
-          [
             "no necesitamos sentirnos",
             "we don't need to feel"
           ],
@@ -4887,20 +4579,12 @@
             "I don't need to know"
           ],
           [
-            "no podía alcanzar",
-            "couldn't reach"
-          ],
-          [
             "no podré",
             "I won't be able"
           ],
           [
             "no podré estar",
             "I won't be able to be"
-          ],
-          [
-            "no podría",
-            "wouldn't be able to"
           ],
           [
             "no podría creer",
@@ -4956,11 +4640,7 @@
           ],
           [
             "no quería",
-            "didn't want"
-          ],
-          [
-            "no quería saber",
-            "didn't want to know"
+            "I didn't want"
           ],
           [
             "no queríamos",
@@ -5057,10 +4737,6 @@
           [
             "no tuve tiempo",
             "I didn't have time"
-          ],
-          [
-            "No vi",
-            "I didn't see"
           ],
           [
             "no voy a",
@@ -5339,12 +5015,8 @@
             "last/past"
           ],
           [
-            "pasando",
-            "happening"
-          ],
-          [
             "pasar",
-            "happen"
+            "spend"
           ],
           [
             "pasar más tiempo",
@@ -5535,14 +5207,6 @@
             "can remember"
           ],
           [
-            "podía",
-            "could"
-          ],
-          [
-            "podía girar",
-            "could turn"
-          ],
-          [
             "podrá",
             "will be able"
           ],
@@ -5560,7 +5224,7 @@
           ],
           [
             "podría",
-            "be able to/could"
+            "she could"
           ],
           [
             "podría escribir",
@@ -5596,7 +5260,7 @@
           ],
           [
             "por",
-            "at/during"
+            "about"
           ],
           [
             "Por",
@@ -5955,10 +5619,6 @@
             "than I felt"
           ],
           [
-            "que conoces",
-            "you know"
-          ],
-          [
             "que conozco",
             "I know"
           ],
@@ -5977,10 +5637,6 @@
           [
             "que dijo que",
             "who said that"
-          ],
-          [
-            "que discutir",
-            "to discuss"
           ],
           [
             "que él quiere",
@@ -6017,10 +5673,6 @@
           [
             "que estaba intentando decir",
             "that I was trying to say"
-          ],
-          [
-            "qué estaba pasando",
-            "what was happening"
           ],
           [
             "Qué estás buscando",
@@ -6147,10 +5799,6 @@
             "what are you going to do"
           ],
           [
-            "que yo conocía",
-            "that I knew"
-          ],
-          [
             "queda",
             "have left/remains"
           ],
@@ -6172,19 +5820,11 @@
           ],
           [
             "quería",
-            "wanted"
+            "I wanted"
           ],
           [
             "Quería",
             "I wanted"
-          ],
-          [
-            "quería cultivar",
-            "wanted to grow"
-          ],
-          [
-            "quería cultivar tomates",
-            "wanted to grow tomatoes"
           ],
           [
             "quería decir",
@@ -6193,14 +5833,6 @@
           [
             "quería decirte algo",
             "wanted to tell you something"
-          ],
-          [
-            "quería dejarme",
-            "want to leave me"
-          ],
-          [
-            "quería enviarle",
-            "wanted to send her"
           ],
           [
             "quería escribir",
@@ -6243,24 +5875,8 @@
             "wanted to meet us"
           ],
           [
-            "quería saber",
-            "wanted to know"
-          ],
-          [
-            "quería saber qué",
-            "wanted to know what"
-          ],
-          [
-            "quería salir",
-            "wanted to go out"
-          ],
-          [
             "quería terminar",
             "I wanted to finish"
-          ],
-          [
-            "quería ver a",
-            "wanted to see"
           ],
           [
             "quería verte",
@@ -6476,7 +6092,7 @@
           ],
           [
             "quisiera",
-            "wanted"
+            "she wanted to"
           ],
           [
             "rápidamente",
@@ -6620,7 +6236,7 @@
           ],
           [
             "salir",
-            "to go out"
+            "to leave"
           ],
           [
             "se",
@@ -6732,7 +6348,7 @@
           ],
           [
             "sí",
-            "Yes"
+            "yes"
           ],
           [
             "Sí",
@@ -6852,15 +6468,11 @@
           ],
           [
             "solo",
-            "just"
+            "only"
           ],
           [
             "solo necesitamos",
             "we just need"
-          ],
-          [
-            "solo quería",
-            "just wanted"
           ],
           [
             "solo tuve que",
@@ -7011,10 +6623,6 @@
             "he would give you"
           ],
           [
-            "te fuiste",
-            "you left"
-          ],
-          [
             "te gustaría",
             "would you like"
           ],
@@ -7109,22 +6717,6 @@
           [
             "tengo una reunión importante",
             "I have an important meeting"
-          ],
-          [
-            "tenía ganas de",
-            "felt like"
-          ],
-          [
-            "tenía ganas de hablar",
-            "felt like talking"
-          ],
-          [
-            "tenían",
-            "had"
-          ],
-          [
-            "tenían algo",
-            "had something"
           ],
           [
             "terminar",
@@ -7243,10 +6835,6 @@
             "to take time"
           ],
           [
-            "tomates",
-            "tomatoes"
-          ],
-          [
             "trabaja",
             "works"
           ],
@@ -7340,15 +6928,7 @@
           ],
           [
             "tu amigo",
-            "Your friend"
-          ],
-          [
-            "tu amigo dijo",
-            "Did your friend say"
-          ],
-          [
-            "tu amigo dijo que",
-            "Your friend said that"
+            "your friend"
           ],
           [
             "tu auto",
@@ -7443,10 +7023,6 @@
             "an interesting book"
           ],
           [
-            "un mensaje",
-            "a message"
-          ],
-          [
             "un país diferente",
             "a different country"
           ],
@@ -7500,7 +7076,7 @@
           ],
           [
             "una",
-            "a/one"
+            "a"
           ],
           [
             "una amiga",
@@ -7576,11 +7152,7 @@
           ],
           [
             "unos",
-            "some"
-          ],
-          [
-            "unos amigos viejos",
-            "some old friends"
+            "a few"
           ],
           [
             "unos minutos",
@@ -7643,14 +7215,6 @@
             "valuable"
           ],
           [
-            "varios",
-            "several"
-          ],
-          [
-            "varios caballos",
-            "several horses"
-          ],
-          [
             "vas",
             "you're going"
           ],
@@ -7696,11 +7260,7 @@
           ],
           [
             "ver",
-            "to see"
-          ],
-          [
-            "ver a unos amigos viejos",
-            "to see some old friends"
+            "watch/see"
           ],
           [
             "ver la televisión",
@@ -7728,11 +7288,7 @@
           ],
           [
             "vi",
-            "I see"
-          ],
-          [
-            "Vi",
-            "I saw"
+            "I watched"
           ],
           [
             "vi a",
@@ -7757,14 +7313,6 @@
           [
             "viejo",
             "old"
-          ],
-          [
-            "viejos",
-            "old"
-          ],
-          [
-            "viernes",
-            "Friday"
           ],
           [
             "vio",
@@ -7877,71 +7425,91 @@
           [
             "Ya he aprendido",
             "I've already learnt"
-          ],
-          [
-            "yo",
-            "I"
-          ],
-          [
-            "yo conocía",
-            "I knew"
           ]
         ],
-        "available_whitelist_size": 1943
-      }
+        "available_whitelist_size": 1828
+      },
+      "components": [
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "saber",
+          "to know"
+        ]
+      ]
     },
-    "S0371L02": {
+    "S0347L02": {
       "lego": [
-        "I went to see",
-        "fui a ver"
+        "wanted to know what",
+        "quería saber qué"
       ],
       "type": "M",
-      "available_legos": 1761,
+      "available_legos": 1651,
       "is_final_lego": false,
       "overlap_level": "partial",
       "target_phrase_count": 7,
       "practice_phrases": [
         [
-          "I went to see",
-          "fui a ver",
-          null,
-          1
-        ],
-        [
-          "I went to see I'm going to be late",
-          "fui a ver voy a llegar tarde",
-          null,
-          2
-        ],
-        [
-          "I went to see to I have too much work",
-          "fui a ver a tengo demasiado trabajo",
-          null,
-          3
-        ],
-        [
-          "I went to see something else",
-          "fui a ver otra cosa",
-          null,
-          3
-        ],
-        [
-          "I went to see to to school early next week",
-          "fui a ver a a la escuela a principios de la próxima semana",
+          "wanted to know what",
+          "quería saber qué",
           null,
           4
         ],
         [
-          "I went to see he wanted to grow tomatoes Monday",
-          "fui a ver él quería cultivar tomates lunes",
+          "I wanted to know what",
+          "quería saber qué",
           null,
           4
         ],
         [
-          "I went to see",
-          "fui a ver",
+          "he wanted to know what",
+          "él quería saber qué",
+          null,
+          4
+        ],
+        [
+          "yes wanted to know what",
+          "sí quería saber qué",
+          null,
+          4
+        ],
+        [
+          "she wanted to know what",
+          "ella quería saber qué",
+          null,
+          4
+        ],
+        [
+          "I think he wanted to know what",
+          "creo que él quería saber qué",
+          null,
+          6
+        ],
+        [
+          "someone wanted to know what",
+          "alguien quería saber qué",
+          null,
+          4
+        ],
+        [
+          "he wanted to know what happened",
+          "él quería saber qué pasó",
           null,
           5
+        ],
+        [
+          "I wanted to know what that was",
+          "quería saber qué fue eso",
+          null,
+          6
+        ],
+        [
+          "he wanted to know what was happening",
+          "él quería saber qué estaba pasando",
+          null,
+          6
         ]
       ],
       "phrase_distribution": {
@@ -7950,10 +7518,10 @@
         "longer_4_to_5_legos": 5
       },
       "_metadata": {
-        "lego_id": "S0371L02",
+        "lego_id": "S0347L02",
         "seed_context": {
-          "target": "I went to see a film on Wednesday.",
-          "known": "Fui a ver una película el miércoles."
+          "target": "Él quería saber qué estaba pasando hace una semana.",
+          "known": "He wanted to know what was happening a week ago."
         },
         "whitelist_pairs": [
           [
@@ -7974,7 +7542,7 @@
           ],
           [
             "a",
-            ""
+            "personal a"
           ],
           [
             "a alguien",
@@ -7983,14 +7551,6 @@
           [
             "a buscarlo",
             "to look for it"
-          ],
-          [
-            "a él",
-            "to him"
-          ],
-          [
-            "a él no le gustó ese lugar",
-            "he didn't like that place"
           ],
           [
             "a hablar más",
@@ -8003,10 +7563,6 @@
           [
             "a la fiesta",
             "to the party"
-          ],
-          [
-            "a la izquierda",
-            "to the left"
           ],
           [
             "a las que",
@@ -8031,10 +7587,6 @@
           [
             "a mi padre no le gusta",
             "my father doesn't like"
-          ],
-          [
-            "a nadie que yo conocía",
-            "anyone that I knew"
           ],
           [
             "a principios de la próxima semana",
@@ -8121,16 +7673,8 @@
             "at the same time"
           ],
           [
-            "alcanzar",
-            "reach"
-          ],
-          [
-            "alcanzar la cima",
-            "reach the top"
-          ],
-          [
             "algo",
-            "anything"
+            "something"
           ],
           [
             "algo ayer",
@@ -8154,7 +7698,7 @@
           ],
           [
             "algo más",
-            "anything else"
+            "something else"
           ],
           [
             "algo nuevo",
@@ -8201,14 +7745,6 @@
             "over there"
           ],
           [
-            "alrededor",
-            "around"
-          ],
-          [
-            "alrededor del campo",
-            "around the field"
-          ],
-          [
             "amable",
             "kind"
           ],
@@ -8227,10 +7763,6 @@
           [
             "amigos",
             "friends"
-          ],
-          [
-            "amigos viejos",
-            "old friends"
           ],
           [
             "añadir",
@@ -8279,14 +7811,6 @@
           [
             "antipática",
             "unfriendly"
-          ],
-          [
-            "aparecer",
-            "appear"
-          ],
-          [
-            "aparecer enojado",
-            "appear angry"
           ],
           [
             "aprendemos",
@@ -8382,11 +7906,7 @@
           ],
           [
             "aunque",
-            "Even if"
-          ],
-          [
-            "aunque él quisiera",
-            "Even if he wanted to"
+            "although"
           ],
           [
             "aunque quería verte",
@@ -8450,15 +7970,11 @@
           ],
           [
             "bastante",
-            "rather"
+            "quite"
           ],
           [
             "bastante bueno",
             "fairly good"
-          ],
-          [
-            "bastante callado",
-            "rather quiet"
           ],
           [
             "bastante mal",
@@ -8513,20 +8029,12 @@
             "look for it"
           ],
           [
-            "caballos",
-            "horses"
-          ],
-          [
             "cabeza",
             "head"
           ],
           [
             "café",
             "coffee"
-          ],
-          [
-            "callado",
-            "quiet"
           ],
           [
             "cambia",
@@ -8553,16 +8061,8 @@
             "to walk"
           ],
           [
-            "campo",
-            "field"
-          ],
-          [
             "cansado",
             "tired"
-          ],
-          [
-            "carretera",
-            "road"
           ],
           [
             "carta",
@@ -8583,10 +8083,6 @@
           [
             "cerebro",
             "brain"
-          ],
-          [
-            "cima",
-            "top"
           ],
           [
             "cinco",
@@ -8734,7 +8230,7 @@
           ],
           [
             "con",
-            "to/with"
+            "with"
           ],
           [
             "con alguien más",
@@ -8794,7 +8290,7 @@
           ],
           [
             "conoces",
-            "you know"
+            "do you know"
           ],
           [
             "conoces a",
@@ -8810,7 +8306,7 @@
           ],
           [
             "conocía",
-            "knew"
+            "I used to know"
           ],
           [
             "conozco",
@@ -8903,10 +8399,6 @@
           [
             "correos electrónicos",
             "emails"
-          ],
-          [
-            "correr",
-            "to run"
           ],
           [
             "cosa",
@@ -9099,14 +8591,6 @@
           [
             "cuidar",
             "to look after"
-          ],
-          [
-            "cultivar",
-            "grow"
-          ],
-          [
-            "cultivar tomates",
-            "grow tomatoes"
           ],
           [
             "dando",
@@ -9317,14 +8801,6 @@
             "to stop talking"
           ],
           [
-            "dejarme",
-            "leave me"
-          ],
-          [
-            "dejarme solo",
-            "leave me on my own"
-          ],
-          [
             "dejarte",
             "let you"
           ],
@@ -9342,7 +8818,7 @@
           ],
           [
             "del",
-            "the"
+            "of the"
           ],
           [
             "demasiadas",
@@ -9437,14 +8913,6 @@
             "after"
           ],
           [
-            "después de que",
-            "after"
-          ],
-          [
-            "después de que te fuiste",
-            "after you left"
-          ],
-          [
             "después de que terminemos",
             "after we finish"
           ],
@@ -9530,11 +8998,11 @@
           ],
           [
             "dijo",
-            "told"
+            "said"
           ],
           [
             "dijo algo",
-            "say anything"
+            "said something"
           ],
           [
             "dijo que",
@@ -9653,10 +9121,6 @@
             "next year"
           ],
           [
-            "el campo",
-            "the field"
-          ],
-          [
             "el coche que",
             "the car that"
           ],
@@ -9695,14 +9159,6 @@
           [
             "el domingo por la tarde",
             "on Sunday afternoon"
-          ],
-          [
-            "él estaba bastante callado",
-            "he was rather quiet"
-          ],
-          [
-            "Él estaba callado",
-            "He was quiet"
           ],
           [
             "el fin de semana",
@@ -9749,20 +9205,12 @@
             "He doesn't need to buy"
           ],
           [
-            "él no necesitaba",
-            "He didn't need to"
-          ],
-          [
             "Él no podría creer",
             "He couldn't believe"
           ],
           [
             "el perro joven",
             "the young dog"
-          ],
-          [
-            "él podía",
-            "he could"
           ],
           [
             "el problema",
@@ -9775,14 +9223,6 @@
           [
             "él puede",
             "he can"
-          ],
-          [
-            "él quería cultivar",
-            "he wanted to grow"
-          ],
-          [
-            "él quería cultivar tomates",
-            "he wanted to grow tomatoes"
           ],
           [
             "él quiere",
@@ -9801,16 +9241,8 @@
             "he knows"
           ],
           [
-            "él tenía ganas de hablar mucho",
-            "he felt like talking a lot"
-          ],
-          [
             "el trabajo más importante",
             "the most important job"
-          ],
-          [
-            "el viernes por la noche",
-            "on Friday night"
           ],
           [
             "electrónicos",
@@ -9853,20 +9285,8 @@
             "she speaks"
           ],
           [
-            "ella le dijo a él",
-            "she said to him"
-          ],
-          [
             "Ella necesita mudarse",
             "She needs to move"
-          ],
-          [
-            "ella necesitaba",
-            "She needed to"
-          ],
-          [
-            "ella no podía",
-            "she couldn't"
           ],
           [
             "ella no puede",
@@ -9897,20 +9317,12 @@
             "she wants"
           ],
           [
-            "ella solo quería",
-            "she just wanted"
-          ],
-          [
             "ella va a estar",
             "she's going to be"
           ],
           [
             "ellos",
-            "they"
-          ],
-          [
-            "ellos tenían",
-            "they had"
+            "them"
           ],
           [
             "emocionante",
@@ -9985,10 +9397,6 @@
             "at the moment"
           ],
           [
-            "en la carretera",
-            "on the road"
-          ],
-          [
             "en la mesa",
             "on the table"
           ],
@@ -10049,10 +9457,6 @@
             "to meet/find yourself"
           ],
           [
-            "enojado",
-            "angry"
-          ],
-          [
             "entender",
             "understand"
           ],
@@ -10063,14 +9467,6 @@
           [
             "entusiasmado",
             "excited"
-          ],
-          [
-            "enviarle",
-            "send her"
-          ],
-          [
-            "enviarle un mensaje",
-            "send her a message"
           ],
           [
             "envió",
@@ -10249,26 +9645,6 @@
             "write a story"
           ],
           [
-            "Escuchaste",
-            "Did you hear"
-          ],
-          [
-            "escuché",
-            "I heard"
-          ],
-          [
-            "Escuché",
-            "I heard"
-          ],
-          [
-            "escuché que",
-            "I heard that"
-          ],
-          [
-            "Escuché que",
-            "I heard that"
-          ],
-          [
             "escuela",
             "school"
           ],
@@ -10295,10 +9671,6 @@
           [
             "ese libro era bastante bueno",
             "that book was fairly good"
-          ],
-          [
-            "ese lugar",
-            "that place"
           ],
           [
             "eso",
@@ -10497,14 +9869,6 @@
             "was"
           ],
           [
-            "estaba bastante callado",
-            "was rather quiet"
-          ],
-          [
-            "estaba callado",
-            "was quiet"
-          ],
-          [
             "estaba comenzando a sentirme mejor",
             "I was starting to feel better"
           ],
@@ -10523,10 +9887,6 @@
           [
             "estaba intentando decir",
             "was trying to say"
-          ],
-          [
-            "estaba pasando",
-            "was happening"
           ],
           [
             "estaba seguro de",
@@ -10913,14 +10273,6 @@
             "was very interesting"
           ],
           [
-            "fui",
-            "I went"
-          ],
-          [
-            "fuiste",
-            "left"
-          ],
-          [
             "funcionando",
             "working"
           ],
@@ -10939,14 +10291,6 @@
           [
             "gente",
             "people"
-          ],
-          [
-            "girar",
-            "turn"
-          ],
-          [
-            "girar a la izquierda",
-            "turn left"
           ],
           [
             "gracias",
@@ -11022,11 +10366,7 @@
           ],
           [
             "hablar",
-            "talking"
-          ],
-          [
-            "hablar con",
-            "to talk to"
+            "speak/to speak"
           ],
           [
             "hablar conmigo",
@@ -11065,10 +10405,6 @@
             "speak better"
           ],
           [
-            "hablar mucho",
-            "talking a lot"
-          ],
-          [
             "hablas",
             "do you speak"
           ],
@@ -11103,10 +10439,6 @@
           [
             "hace un rato",
             "a while ago"
-          ],
-          [
-            "hace una semana",
-            "a week ago"
           ],
           [
             "hace unos días",
@@ -11329,10 +10661,6 @@
             "important"
           ],
           [
-            "importante que discutir",
-            "important to discuss"
-          ],
-          [
             "importantes",
             "important"
           ],
@@ -11437,10 +10765,6 @@
             "leave (reflexive)"
           ],
           [
-            "izquierda",
-            "left"
-          ],
-          [
             "joven",
             "young"
           ],
@@ -11467,10 +10791,6 @@
           [
             "la amiga de mi hermana",
             "my sister's friend"
-          ],
-          [
-            "la cima",
-            "the top"
           ],
           [
             "la compañía",
@@ -11630,19 +10950,11 @@
           ],
           [
             "le",
-            "to him"
-          ],
-          [
-            "le dijo",
-            "said to him"
+            "them"
           ],
           [
             "le gusta ver la televisión",
             "like watching television"
-          ],
-          [
-            "le gustó",
-            "like"
           ],
           [
             "le preguntaré",
@@ -11787,14 +11099,6 @@
           [
             "lo que dijo",
             "what he said"
-          ],
-          [
-            "lo que él quería cultivar",
-            "what he wanted to grow"
-          ],
-          [
-            "lo que ella le dijo a él",
-            "what she said to him"
           ],
           [
             "lo que estaba esperando que pasara",
@@ -11942,7 +11246,7 @@
           ],
           [
             "más",
-            "else/more"
+            "most"
           ],
           [
             "más fácil",
@@ -11994,7 +11298,7 @@
           ],
           [
             "me",
-            "me"
+            "to me"
           ],
           [
             "Me",
@@ -12003,10 +11307,6 @@
           [
             "Me desperté",
             "I woke"
-          ],
-          [
-            "me dijo",
-            "told me"
           ],
           [
             "me envió",
@@ -12115,10 +11415,6 @@
           [
             "menos emocionante",
             "less exciting"
-          ],
-          [
-            "mensaje",
-            "message"
           ],
           [
             "mes",
@@ -12258,7 +11554,7 @@
           ],
           [
             "mucho",
-            "a lot"
+            "much"
           ],
           [
             "mucho tiempo",
@@ -12275,10 +11571,6 @@
           [
             "mujer joven",
             "young woman"
-          ],
-          [
-            "mujer que conoces",
-            "woman you know"
           ],
           [
             "muy",
@@ -12338,11 +11630,7 @@
           ],
           [
             "nadie",
-            "anyone"
-          ],
-          [
-            "nadie me dijo",
-            "nobody told me"
+            "nobody"
           ],
           [
             "necesita",
@@ -12366,23 +11654,7 @@
           ],
           [
             "necesitaba",
-            "need"
-          ],
-          [
-            "necesitaba aparecer",
-            "need to appear"
-          ],
-          [
-            "necesitaba correr",
-            "needed to run"
-          ],
-          [
-            "necesitaba ella",
-            "Did she need to"
-          ],
-          [
-            "necesitaba hablar",
-            "need to talk"
+            "I needed"
           ],
           [
             "necesitabas",
@@ -12462,11 +11734,11 @@
           ],
           [
             "no",
-            "didn't"
+            "not"
           ],
           [
             "No",
-            "didn't"
+            "don't/not"
           ],
           [
             "no comprendo",
@@ -12537,10 +11809,6 @@
             "I didn't sleep"
           ],
           [
-            "no él no quería",
-            "No he didn't want"
-          ],
-          [
             "no era muy paciente",
             "wasn't very patient"
           ],
@@ -12571,10 +11839,6 @@
           [
             "No es un problema",
             "It's not a problem"
-          ],
-          [
-            "No escuché",
-            "I didn't hear"
           ],
           [
             "no esperábamos",
@@ -12669,10 +11933,6 @@
             "I haven't seen them"
           ],
           [
-            "no le gustó ese lugar",
-            "didn't like that place"
-          ],
-          [
             "no lo habría dicho",
             "I wouldn't have said it"
           ],
@@ -12713,10 +11973,6 @@
             "doesn't need to buy"
           ],
           [
-            "no necesitaba",
-            "didn't need to"
-          ],
-          [
             "no necesitamos sentirnos",
             "we don't need to feel"
           ],
@@ -12733,20 +11989,12 @@
             "I don't need to know"
           ],
           [
-            "no podía alcanzar",
-            "couldn't reach"
-          ],
-          [
             "no podré",
             "I won't be able"
           ],
           [
             "no podré estar",
             "I won't be able to be"
-          ],
-          [
-            "no podría",
-            "wouldn't be able to"
           ],
           [
             "no podría creer",
@@ -12802,11 +12050,7 @@
           ],
           [
             "no quería",
-            "didn't want"
-          ],
-          [
-            "no quería saber",
-            "didn't want to know"
+            "I didn't want"
           ],
           [
             "no queríamos",
@@ -12903,10 +12147,6 @@
           [
             "no tuve tiempo",
             "I didn't have time"
-          ],
-          [
-            "No vi",
-            "I didn't see"
           ],
           [
             "no voy a",
@@ -13185,12 +12425,8 @@
             "last/past"
           ],
           [
-            "pasando",
-            "happening"
-          ],
-          [
             "pasar",
-            "happen"
+            "spend"
           ],
           [
             "pasar más tiempo",
@@ -13381,14 +12617,6 @@
             "can remember"
           ],
           [
-            "podía",
-            "could"
-          ],
-          [
-            "podía girar",
-            "could turn"
-          ],
-          [
             "podrá",
             "will be able"
           ],
@@ -13406,7 +12634,7 @@
           ],
           [
             "podría",
-            "be able to/could"
+            "she could"
           ],
           [
             "podría escribir",
@@ -13442,7 +12670,7 @@
           ],
           [
             "por",
-            "at/during"
+            "about"
           ],
           [
             "Por",
@@ -13801,10 +13029,6 @@
             "than I felt"
           ],
           [
-            "que conoces",
-            "you know"
-          ],
-          [
             "que conozco",
             "I know"
           ],
@@ -13823,10 +13047,6 @@
           [
             "que dijo que",
             "who said that"
-          ],
-          [
-            "que discutir",
-            "to discuss"
           ],
           [
             "que él quiere",
@@ -13863,10 +13083,6 @@
           [
             "que estaba intentando decir",
             "that I was trying to say"
-          ],
-          [
-            "qué estaba pasando",
-            "what was happening"
           ],
           [
             "Qué estás buscando",
@@ -13993,10 +13209,6 @@
             "what are you going to do"
           ],
           [
-            "que yo conocía",
-            "that I knew"
-          ],
-          [
             "queda",
             "have left/remains"
           ],
@@ -14025,28 +13237,12 @@
             "I wanted"
           ],
           [
-            "quería cultivar",
-            "wanted to grow"
-          ],
-          [
-            "quería cultivar tomates",
-            "wanted to grow tomatoes"
-          ],
-          [
             "quería decir",
             "wanted to say"
           ],
           [
             "quería decirte algo",
             "wanted to tell you something"
-          ],
-          [
-            "quería dejarme",
-            "want to leave me"
-          ],
-          [
-            "quería enviarle",
-            "wanted to send her"
           ],
           [
             "quería escribir",
@@ -14093,20 +13289,8 @@
             "wanted to know"
           ],
           [
-            "quería saber qué",
-            "wanted to know what"
-          ],
-          [
-            "quería salir",
-            "wanted to go out"
-          ],
-          [
             "quería terminar",
             "I wanted to finish"
-          ],
-          [
-            "quería ver a",
-            "wanted to see"
           ],
           [
             "quería verte",
@@ -14322,7 +13506,7 @@
           ],
           [
             "quisiera",
-            "wanted"
+            "she wanted to"
           ],
           [
             "rápidamente",
@@ -14466,7 +13650,7 @@
           ],
           [
             "salir",
-            "to go out"
+            "to leave"
           ],
           [
             "se",
@@ -14578,7 +13762,7 @@
           ],
           [
             "sí",
-            "Yes"
+            "yes"
           ],
           [
             "Sí",
@@ -14698,15 +13882,11 @@
           ],
           [
             "solo",
-            "just"
+            "only"
           ],
           [
             "solo necesitamos",
             "we just need"
-          ],
-          [
-            "solo quería",
-            "just wanted"
           ],
           [
             "solo tuve que",
@@ -14857,10 +14037,6 @@
             "he would give you"
           ],
           [
-            "te fuiste",
-            "you left"
-          ],
-          [
             "te gustaría",
             "would you like"
           ],
@@ -14955,22 +14131,6 @@
           [
             "tengo una reunión importante",
             "I have an important meeting"
-          ],
-          [
-            "tenía ganas de",
-            "felt like"
-          ],
-          [
-            "tenía ganas de hablar",
-            "felt like talking"
-          ],
-          [
-            "tenían",
-            "had"
-          ],
-          [
-            "tenían algo",
-            "had something"
           ],
           [
             "terminar",
@@ -15089,10 +14249,6 @@
             "to take time"
           ],
           [
-            "tomates",
-            "tomatoes"
-          ],
-          [
             "trabaja",
             "works"
           ],
@@ -15186,15 +14342,7 @@
           ],
           [
             "tu amigo",
-            "Your friend"
-          ],
-          [
-            "tu amigo dijo",
-            "Did your friend say"
-          ],
-          [
-            "tu amigo dijo que",
-            "Your friend said that"
+            "your friend"
           ],
           [
             "tu auto",
@@ -15289,10 +14437,6 @@
             "an interesting book"
           ],
           [
-            "un mensaje",
-            "a message"
-          ],
-          [
             "un país diferente",
             "a different country"
           ],
@@ -15346,7 +14490,7 @@
           ],
           [
             "una",
-            "a/one"
+            "a"
           ],
           [
             "una amiga",
@@ -15422,11 +14566,7 @@
           ],
           [
             "unos",
-            "some"
-          ],
-          [
-            "unos amigos viejos",
-            "some old friends"
+            "a few"
           ],
           [
             "unos minutos",
@@ -15489,14 +14629,6 @@
             "valuable"
           ],
           [
-            "varios",
-            "several"
-          ],
-          [
-            "varios caballos",
-            "several horses"
-          ],
-          [
             "vas",
             "you're going"
           ],
@@ -15542,11 +14674,7 @@
           ],
           [
             "ver",
-            "to see"
-          ],
-          [
-            "ver a unos amigos viejos",
-            "to see some old friends"
+            "watch/see"
           ],
           [
             "ver la televisión",
@@ -15574,11 +14702,7 @@
           ],
           [
             "vi",
-            "I see"
-          ],
-          [
-            "Vi",
-            "I saw"
+            "I watched"
           ],
           [
             "vi a",
@@ -15603,14 +14727,6 @@
           [
             "viejo",
             "old"
-          ],
-          [
-            "viejos",
-            "old"
-          ],
-          [
-            "viernes",
-            "Friday"
           ],
           [
             "vio",
@@ -15723,85 +14839,95 @@
           [
             "Ya he aprendido",
             "I've already learnt"
-          ],
-          [
-            "yo",
-            "I"
-          ],
-          [
-            "yo conocía",
-            "I knew"
           ]
         ],
-        "available_whitelist_size": 1944
+        "available_whitelist_size": 1829
       },
       "components": [
         [
-          "fui",
-          "I went"
+          "quería",
+          "wanted"
         ],
         [
-          "a",
-          "to"
+          "saber",
+          "to know"
         ],
         [
-          "ver",
-          "see"
+          "qué",
+          "what"
         ]
       ]
     },
-    "S0371L03": {
+    "S0347L03": {
       "lego": [
-        "to see a film",
-        "a ver una película"
+        "what was happening",
+        "qué estaba pasando"
       ],
       "type": "M",
-      "available_legos": 1762,
+      "available_legos": 1652,
       "is_final_lego": false,
       "overlap_level": "partial",
       "target_phrase_count": 7,
       "practice_phrases": [
         [
-          "to see a film",
-          "a ver una película",
-          null,
-          1
-        ],
-        [
-          "to see a film something yesterday",
-          "a ver una película algo ayer",
-          null,
-          2
-        ],
-        [
-          "to see a film we were in the pub",
-          "a ver una película estábamos en el pub",
+          "what was happening",
+          "qué estaba pasando",
           null,
           3
         ],
         [
-          "to see a film it's a good thing",
-          "a ver una película es una cosa buena",
-          null,
-          3
-        ],
-        [
-          "to see a film to school early next week",
-          "a ver una película a la escuela a principios de la próxima semana",
+          "yes what was happening",
+          "sí qué estaba pasando",
           null,
           4
         ],
         [
-          "to see a film grow tomatoes tomorrow night",
-          "a ver una película cultivar tomates mañana por la noche",
-          null,
-          4
-        ],
-        [
-          "to see a film",
-          "a ver una película",
+          "I think what was happening",
+          "creo que qué estaba pasando",
           null,
           5
+        ],
+        [
+          "he wanted to know what was happening",
+          "él quería saber qué estaba pasando",
+          null,
+          6
+        ],
+        [
+          "I wanted to know what was happening",
+          "quería saber qué estaba pasando",
+          null,
+          6
+        ],
+        [
+          "what was happening yesterday",
+          "qué estaba pasando ayer",
+          null,
+          4
+        ],
+        [
+          "what was happening at home",
+          "qué estaba pasando en casa",
+          null,
+          5
+        ],
+        [
+          "someone wanted to know what was happening",
+          "alguien quería saber qué estaba pasando",
+          null,
+          6
+        ],
+        [
+          "I'm sure he wanted to know what was happening",
+          "estoy seguro de que él quería saber qué estaba pasando",
+          null,
+          10
+        ],
+        [
+          "she wanted to know what was happening tonight",
+          "ella quería saber qué estaba pasando esta noche",
+          null,
+          8
         ]
       ],
       "phrase_distribution": {
@@ -15810,10 +14936,10 @@
         "longer_4_to_5_legos": 5
       },
       "_metadata": {
-        "lego_id": "S0371L03",
+        "lego_id": "S0347L03",
         "seed_context": {
-          "target": "I went to see a film on Wednesday.",
-          "known": "Fui a ver una película el miércoles."
+          "target": "Él quería saber qué estaba pasando hace una semana.",
+          "known": "He wanted to know what was happening a week ago."
         },
         "whitelist_pairs": [
           [
@@ -15834,7 +14960,7 @@
           ],
           [
             "a",
-            "to"
+            "personal a"
           ],
           [
             "a alguien",
@@ -15843,14 +14969,6 @@
           [
             "a buscarlo",
             "to look for it"
-          ],
-          [
-            "a él",
-            "to him"
-          ],
-          [
-            "a él no le gustó ese lugar",
-            "he didn't like that place"
           ],
           [
             "a hablar más",
@@ -15863,10 +14981,6 @@
           [
             "a la fiesta",
             "to the party"
-          ],
-          [
-            "a la izquierda",
-            "to the left"
           ],
           [
             "a las que",
@@ -15891,10 +15005,6 @@
           [
             "a mi padre no le gusta",
             "my father doesn't like"
-          ],
-          [
-            "a nadie que yo conocía",
-            "anyone that I knew"
           ],
           [
             "a principios de la próxima semana",
@@ -15981,16 +15091,8 @@
             "at the same time"
           ],
           [
-            "alcanzar",
-            "reach"
-          ],
-          [
-            "alcanzar la cima",
-            "reach the top"
-          ],
-          [
             "algo",
-            "anything"
+            "something"
           ],
           [
             "algo ayer",
@@ -16014,7 +15116,7 @@
           ],
           [
             "algo más",
-            "anything else"
+            "something else"
           ],
           [
             "algo nuevo",
@@ -16061,14 +15163,6 @@
             "over there"
           ],
           [
-            "alrededor",
-            "around"
-          ],
-          [
-            "alrededor del campo",
-            "around the field"
-          ],
-          [
             "amable",
             "kind"
           ],
@@ -16087,10 +15181,6 @@
           [
             "amigos",
             "friends"
-          ],
-          [
-            "amigos viejos",
-            "old friends"
           ],
           [
             "añadir",
@@ -16139,14 +15229,6 @@
           [
             "antipática",
             "unfriendly"
-          ],
-          [
-            "aparecer",
-            "appear"
-          ],
-          [
-            "aparecer enojado",
-            "appear angry"
           ],
           [
             "aprendemos",
@@ -16242,11 +15324,7 @@
           ],
           [
             "aunque",
-            "Even if"
-          ],
-          [
-            "aunque él quisiera",
-            "Even if he wanted to"
+            "although"
           ],
           [
             "aunque quería verte",
@@ -16310,15 +15388,11 @@
           ],
           [
             "bastante",
-            "rather"
+            "quite"
           ],
           [
             "bastante bueno",
             "fairly good"
-          ],
-          [
-            "bastante callado",
-            "rather quiet"
           ],
           [
             "bastante mal",
@@ -16373,20 +15447,12 @@
             "look for it"
           ],
           [
-            "caballos",
-            "horses"
-          ],
-          [
             "cabeza",
             "head"
           ],
           [
             "café",
             "coffee"
-          ],
-          [
-            "callado",
-            "quiet"
           ],
           [
             "cambia",
@@ -16413,16 +15479,8 @@
             "to walk"
           ],
           [
-            "campo",
-            "field"
-          ],
-          [
             "cansado",
             "tired"
-          ],
-          [
-            "carretera",
-            "road"
           ],
           [
             "carta",
@@ -16443,10 +15501,6 @@
           [
             "cerebro",
             "brain"
-          ],
-          [
-            "cima",
-            "top"
           ],
           [
             "cinco",
@@ -16594,7 +15648,7 @@
           ],
           [
             "con",
-            "to/with"
+            "with"
           ],
           [
             "con alguien más",
@@ -16654,7 +15708,7 @@
           ],
           [
             "conoces",
-            "you know"
+            "do you know"
           ],
           [
             "conoces a",
@@ -16670,7 +15724,7 @@
           ],
           [
             "conocía",
-            "knew"
+            "I used to know"
           ],
           [
             "conozco",
@@ -16763,10 +15817,6 @@
           [
             "correos electrónicos",
             "emails"
-          ],
-          [
-            "correr",
-            "to run"
           ],
           [
             "cosa",
@@ -16959,14 +16009,6 @@
           [
             "cuidar",
             "to look after"
-          ],
-          [
-            "cultivar",
-            "grow"
-          ],
-          [
-            "cultivar tomates",
-            "grow tomatoes"
           ],
           [
             "dando",
@@ -17177,14 +16219,6 @@
             "to stop talking"
           ],
           [
-            "dejarme",
-            "leave me"
-          ],
-          [
-            "dejarme solo",
-            "leave me on my own"
-          ],
-          [
             "dejarte",
             "let you"
           ],
@@ -17202,7 +16236,7 @@
           ],
           [
             "del",
-            "the"
+            "of the"
           ],
           [
             "demasiadas",
@@ -17297,14 +16331,6 @@
             "after"
           ],
           [
-            "después de que",
-            "after"
-          ],
-          [
-            "después de que te fuiste",
-            "after you left"
-          ],
-          [
             "después de que terminemos",
             "after we finish"
           ],
@@ -17390,11 +16416,11 @@
           ],
           [
             "dijo",
-            "told"
+            "said"
           ],
           [
             "dijo algo",
-            "say anything"
+            "said something"
           ],
           [
             "dijo que",
@@ -17513,10 +16539,6 @@
             "next year"
           ],
           [
-            "el campo",
-            "the field"
-          ],
-          [
             "el coche que",
             "the car that"
           ],
@@ -17555,14 +16577,6 @@
           [
             "el domingo por la tarde",
             "on Sunday afternoon"
-          ],
-          [
-            "él estaba bastante callado",
-            "he was rather quiet"
-          ],
-          [
-            "Él estaba callado",
-            "He was quiet"
           ],
           [
             "el fin de semana",
@@ -17609,20 +16623,12 @@
             "He doesn't need to buy"
           ],
           [
-            "él no necesitaba",
-            "He didn't need to"
-          ],
-          [
             "Él no podría creer",
             "He couldn't believe"
           ],
           [
             "el perro joven",
             "the young dog"
-          ],
-          [
-            "él podía",
-            "he could"
           ],
           [
             "el problema",
@@ -17635,14 +16641,6 @@
           [
             "él puede",
             "he can"
-          ],
-          [
-            "él quería cultivar",
-            "he wanted to grow"
-          ],
-          [
-            "él quería cultivar tomates",
-            "he wanted to grow tomatoes"
           ],
           [
             "él quiere",
@@ -17661,16 +16659,8 @@
             "he knows"
           ],
           [
-            "él tenía ganas de hablar mucho",
-            "he felt like talking a lot"
-          ],
-          [
             "el trabajo más importante",
             "the most important job"
-          ],
-          [
-            "el viernes por la noche",
-            "on Friday night"
           ],
           [
             "electrónicos",
@@ -17713,20 +16703,8 @@
             "she speaks"
           ],
           [
-            "ella le dijo a él",
-            "she said to him"
-          ],
-          [
             "Ella necesita mudarse",
             "She needs to move"
-          ],
-          [
-            "ella necesitaba",
-            "She needed to"
-          ],
-          [
-            "ella no podía",
-            "she couldn't"
           ],
           [
             "ella no puede",
@@ -17757,20 +16735,12 @@
             "she wants"
           ],
           [
-            "ella solo quería",
-            "she just wanted"
-          ],
-          [
             "ella va a estar",
             "she's going to be"
           ],
           [
             "ellos",
-            "they"
-          ],
-          [
-            "ellos tenían",
-            "they had"
+            "them"
           ],
           [
             "emocionante",
@@ -17845,10 +16815,6 @@
             "at the moment"
           ],
           [
-            "en la carretera",
-            "on the road"
-          ],
-          [
             "en la mesa",
             "on the table"
           ],
@@ -17909,10 +16875,6 @@
             "to meet/find yourself"
           ],
           [
-            "enojado",
-            "angry"
-          ],
-          [
             "entender",
             "understand"
           ],
@@ -17923,14 +16885,6 @@
           [
             "entusiasmado",
             "excited"
-          ],
-          [
-            "enviarle",
-            "send her"
-          ],
-          [
-            "enviarle un mensaje",
-            "send her a message"
           ],
           [
             "envió",
@@ -18109,26 +17063,6 @@
             "write a story"
           ],
           [
-            "Escuchaste",
-            "Did you hear"
-          ],
-          [
-            "escuché",
-            "I heard"
-          ],
-          [
-            "Escuché",
-            "I heard"
-          ],
-          [
-            "escuché que",
-            "I heard that"
-          ],
-          [
-            "Escuché que",
-            "I heard that"
-          ],
-          [
             "escuela",
             "school"
           ],
@@ -18155,10 +17089,6 @@
           [
             "ese libro era bastante bueno",
             "that book was fairly good"
-          ],
-          [
-            "ese lugar",
-            "that place"
           ],
           [
             "eso",
@@ -18357,14 +17287,6 @@
             "was"
           ],
           [
-            "estaba bastante callado",
-            "was rather quiet"
-          ],
-          [
-            "estaba callado",
-            "was quiet"
-          ],
-          [
             "estaba comenzando a sentirme mejor",
             "I was starting to feel better"
           ],
@@ -18383,10 +17305,6 @@
           [
             "estaba intentando decir",
             "was trying to say"
-          ],
-          [
-            "estaba pasando",
-            "was happening"
           ],
           [
             "estaba seguro de",
@@ -18773,18 +17691,6 @@
             "was very interesting"
           ],
           [
-            "fui",
-            "I went"
-          ],
-          [
-            "fui a ver",
-            "I went to see"
-          ],
-          [
-            "fuiste",
-            "left"
-          ],
-          [
             "funcionando",
             "working"
           ],
@@ -18803,14 +17709,6 @@
           [
             "gente",
             "people"
-          ],
-          [
-            "girar",
-            "turn"
-          ],
-          [
-            "girar a la izquierda",
-            "turn left"
           ],
           [
             "gracias",
@@ -18886,11 +17784,7 @@
           ],
           [
             "hablar",
-            "talking"
-          ],
-          [
-            "hablar con",
-            "to talk to"
+            "speak/to speak"
           ],
           [
             "hablar conmigo",
@@ -18929,10 +17823,6 @@
             "speak better"
           ],
           [
-            "hablar mucho",
-            "talking a lot"
-          ],
-          [
             "hablas",
             "do you speak"
           ],
@@ -18967,10 +17857,6 @@
           [
             "hace un rato",
             "a while ago"
-          ],
-          [
-            "hace una semana",
-            "a week ago"
           ],
           [
             "hace unos días",
@@ -19193,10 +18079,6 @@
             "important"
           ],
           [
-            "importante que discutir",
-            "important to discuss"
-          ],
-          [
             "importantes",
             "important"
           ],
@@ -19301,10 +18183,6 @@
             "leave (reflexive)"
           ],
           [
-            "izquierda",
-            "left"
-          ],
-          [
             "joven",
             "young"
           ],
@@ -19331,10 +18209,6 @@
           [
             "la amiga de mi hermana",
             "my sister's friend"
-          ],
-          [
-            "la cima",
-            "the top"
           ],
           [
             "la compañía",
@@ -19494,19 +18368,11 @@
           ],
           [
             "le",
-            "to him"
-          ],
-          [
-            "le dijo",
-            "said to him"
+            "them"
           ],
           [
             "le gusta ver la televisión",
             "like watching television"
-          ],
-          [
-            "le gustó",
-            "like"
           ],
           [
             "le preguntaré",
@@ -19651,14 +18517,6 @@
           [
             "lo que dijo",
             "what he said"
-          ],
-          [
-            "lo que él quería cultivar",
-            "what he wanted to grow"
-          ],
-          [
-            "lo que ella le dijo a él",
-            "what she said to him"
           ],
           [
             "lo que estaba esperando que pasara",
@@ -19806,7 +18664,7 @@
           ],
           [
             "más",
-            "else/more"
+            "most"
           ],
           [
             "más fácil",
@@ -19858,7 +18716,7 @@
           ],
           [
             "me",
-            "me"
+            "to me"
           ],
           [
             "Me",
@@ -19867,10 +18725,6 @@
           [
             "Me desperté",
             "I woke"
-          ],
-          [
-            "me dijo",
-            "told me"
           ],
           [
             "me envió",
@@ -19979,10 +18833,6 @@
           [
             "menos emocionante",
             "less exciting"
-          ],
-          [
-            "mensaje",
-            "message"
           ],
           [
             "mes",
@@ -20122,7 +18972,7 @@
           ],
           [
             "mucho",
-            "a lot"
+            "much"
           ],
           [
             "mucho tiempo",
@@ -20139,10 +18989,6 @@
           [
             "mujer joven",
             "young woman"
-          ],
-          [
-            "mujer que conoces",
-            "woman you know"
           ],
           [
             "muy",
@@ -20202,11 +19048,7 @@
           ],
           [
             "nadie",
-            "anyone"
-          ],
-          [
-            "nadie me dijo",
-            "nobody told me"
+            "nobody"
           ],
           [
             "necesita",
@@ -20230,23 +19072,7 @@
           ],
           [
             "necesitaba",
-            "need"
-          ],
-          [
-            "necesitaba aparecer",
-            "need to appear"
-          ],
-          [
-            "necesitaba correr",
-            "needed to run"
-          ],
-          [
-            "necesitaba ella",
-            "Did she need to"
-          ],
-          [
-            "necesitaba hablar",
-            "need to talk"
+            "I needed"
           ],
           [
             "necesitabas",
@@ -20326,11 +19152,11 @@
           ],
           [
             "no",
-            "didn't"
+            "not"
           ],
           [
             "No",
-            "didn't"
+            "don't/not"
           ],
           [
             "no comprendo",
@@ -20401,10 +19227,6 @@
             "I didn't sleep"
           ],
           [
-            "no él no quería",
-            "No he didn't want"
-          ],
-          [
             "no era muy paciente",
             "wasn't very patient"
           ],
@@ -20435,10 +19257,6 @@
           [
             "No es un problema",
             "It's not a problem"
-          ],
-          [
-            "No escuché",
-            "I didn't hear"
           ],
           [
             "no esperábamos",
@@ -20533,10 +19351,6 @@
             "I haven't seen them"
           ],
           [
-            "no le gustó ese lugar",
-            "didn't like that place"
-          ],
-          [
             "no lo habría dicho",
             "I wouldn't have said it"
           ],
@@ -20577,10 +19391,6 @@
             "doesn't need to buy"
           ],
           [
-            "no necesitaba",
-            "didn't need to"
-          ],
-          [
             "no necesitamos sentirnos",
             "we don't need to feel"
           ],
@@ -20597,20 +19407,12 @@
             "I don't need to know"
           ],
           [
-            "no podía alcanzar",
-            "couldn't reach"
-          ],
-          [
             "no podré",
             "I won't be able"
           ],
           [
             "no podré estar",
             "I won't be able to be"
-          ],
-          [
-            "no podría",
-            "wouldn't be able to"
           ],
           [
             "no podría creer",
@@ -20666,11 +19468,7 @@
           ],
           [
             "no quería",
-            "didn't want"
-          ],
-          [
-            "no quería saber",
-            "didn't want to know"
+            "I didn't want"
           ],
           [
             "no queríamos",
@@ -20767,10 +19565,6 @@
           [
             "no tuve tiempo",
             "I didn't have time"
-          ],
-          [
-            "No vi",
-            "I didn't see"
           ],
           [
             "no voy a",
@@ -21049,12 +19843,8 @@
             "last/past"
           ],
           [
-            "pasando",
-            "happening"
-          ],
-          [
             "pasar",
-            "happen"
+            "spend"
           ],
           [
             "pasar más tiempo",
@@ -21245,14 +20035,6 @@
             "can remember"
           ],
           [
-            "podía",
-            "could"
-          ],
-          [
-            "podía girar",
-            "could turn"
-          ],
-          [
             "podrá",
             "will be able"
           ],
@@ -21270,7 +20052,7 @@
           ],
           [
             "podría",
-            "be able to/could"
+            "she could"
           ],
           [
             "podría escribir",
@@ -21306,7 +20088,7 @@
           ],
           [
             "por",
-            "at/during"
+            "about"
           ],
           [
             "Por",
@@ -21665,10 +20447,6 @@
             "than I felt"
           ],
           [
-            "que conoces",
-            "you know"
-          ],
-          [
             "que conozco",
             "I know"
           ],
@@ -21687,10 +20465,6 @@
           [
             "que dijo que",
             "who said that"
-          ],
-          [
-            "que discutir",
-            "to discuss"
           ],
           [
             "que él quiere",
@@ -21727,10 +20501,6 @@
           [
             "que estaba intentando decir",
             "that I was trying to say"
-          ],
-          [
-            "qué estaba pasando",
-            "what was happening"
           ],
           [
             "Qué estás buscando",
@@ -21857,10 +20627,6 @@
             "what are you going to do"
           ],
           [
-            "que yo conocía",
-            "that I knew"
-          ],
-          [
             "queda",
             "have left/remains"
           ],
@@ -21889,28 +20655,12 @@
             "I wanted"
           ],
           [
-            "quería cultivar",
-            "wanted to grow"
-          ],
-          [
-            "quería cultivar tomates",
-            "wanted to grow tomatoes"
-          ],
-          [
             "quería decir",
             "wanted to say"
           ],
           [
             "quería decirte algo",
             "wanted to tell you something"
-          ],
-          [
-            "quería dejarme",
-            "want to leave me"
-          ],
-          [
-            "quería enviarle",
-            "wanted to send her"
           ],
           [
             "quería escribir",
@@ -21961,16 +20711,8 @@
             "wanted to know what"
           ],
           [
-            "quería salir",
-            "wanted to go out"
-          ],
-          [
             "quería terminar",
             "I wanted to finish"
-          ],
-          [
-            "quería ver a",
-            "wanted to see"
           ],
           [
             "quería verte",
@@ -22186,7 +20928,7 @@
           ],
           [
             "quisiera",
-            "wanted"
+            "she wanted to"
           ],
           [
             "rápidamente",
@@ -22330,7 +21072,7 @@
           ],
           [
             "salir",
-            "to go out"
+            "to leave"
           ],
           [
             "se",
@@ -22442,7 +21184,7 @@
           ],
           [
             "sí",
-            "Yes"
+            "yes"
           ],
           [
             "Sí",
@@ -22562,15 +21304,11 @@
           ],
           [
             "solo",
-            "just"
+            "only"
           ],
           [
             "solo necesitamos",
             "we just need"
-          ],
-          [
-            "solo quería",
-            "just wanted"
           ],
           [
             "solo tuve que",
@@ -22721,10 +21459,6 @@
             "he would give you"
           ],
           [
-            "te fuiste",
-            "you left"
-          ],
-          [
             "te gustaría",
             "would you like"
           ],
@@ -22819,22 +21553,6 @@
           [
             "tengo una reunión importante",
             "I have an important meeting"
-          ],
-          [
-            "tenía ganas de",
-            "felt like"
-          ],
-          [
-            "tenía ganas de hablar",
-            "felt like talking"
-          ],
-          [
-            "tenían",
-            "had"
-          ],
-          [
-            "tenían algo",
-            "had something"
           ],
           [
             "terminar",
@@ -22953,10 +21671,6 @@
             "to take time"
           ],
           [
-            "tomates",
-            "tomatoes"
-          ],
-          [
             "trabaja",
             "works"
           ],
@@ -23050,15 +21764,7 @@
           ],
           [
             "tu amigo",
-            "Your friend"
-          ],
-          [
-            "tu amigo dijo",
-            "Did your friend say"
-          ],
-          [
-            "tu amigo dijo que",
-            "Your friend said that"
+            "your friend"
           ],
           [
             "tu auto",
@@ -23153,10 +21859,6 @@
             "an interesting book"
           ],
           [
-            "un mensaje",
-            "a message"
-          ],
-          [
             "un país diferente",
             "a different country"
           ],
@@ -23210,7 +21912,7 @@
           ],
           [
             "una",
-            "a/one"
+            "a"
           ],
           [
             "una amiga",
@@ -23286,11 +21988,7 @@
           ],
           [
             "unos",
-            "some"
-          ],
-          [
-            "unos amigos viejos",
-            "some old friends"
+            "a few"
           ],
           [
             "unos minutos",
@@ -23353,14 +22051,6 @@
             "valuable"
           ],
           [
-            "varios",
-            "several"
-          ],
-          [
-            "varios caballos",
-            "several horses"
-          ],
-          [
             "vas",
             "you're going"
           ],
@@ -23406,11 +22096,7 @@
           ],
           [
             "ver",
-            "see"
-          ],
-          [
-            "ver a unos amigos viejos",
-            "to see some old friends"
+            "watch/see"
           ],
           [
             "ver la televisión",
@@ -23438,11 +22124,7 @@
           ],
           [
             "vi",
-            "I see"
-          ],
-          [
-            "Vi",
-            "I saw"
+            "I watched"
           ],
           [
             "vi a",
@@ -23467,14 +22149,6 @@
           [
             "viejo",
             "old"
-          ],
-          [
-            "viejos",
-            "old"
-          ],
-          [
-            "viernes",
-            "Friday"
           ],
           [
             "vio",
@@ -23587,87 +22261,105 @@
           [
             "Ya he aprendido",
             "I've already learnt"
-          ],
-          [
-            "yo",
-            "I"
-          ],
-          [
-            "yo conocía",
-            "I knew"
           ]
         ],
-        "available_whitelist_size": 1945
+        "available_whitelist_size": 1830
       },
       "components": [
         [
-          "a",
-          "to"
+          "qué",
+          "what"
         ],
         [
-          "ver",
-          "see"
+          "estaba",
+          "was"
         ],
         [
-          "una",
-          "a"
-        ],
-        [
-          "película",
-          "film"
+          "pasando",
+          "happening"
         ]
       ]
     },
-    "S0371L04": {
+    "S0347L04": {
       "lego": [
-        "a film",
-        "una película"
+        "was happening",
+        "estaba pasando"
       ],
       "type": "M",
-      "available_legos": 1763,
+      "available_legos": 1653,
       "is_final_lego": false,
       "overlap_level": "complete",
       "target_phrase_count": 5,
       "practice_phrases": [
         [
-          "a film",
-          "una película",
-          null,
-          1
-        ],
-        [
-          "a film better than last night",
-          "una película mejor que anoche",
+          "was happening",
+          "estaba pasando",
           null,
           2
         ],
         [
-          "a film to go home",
-          "una película para ir a casa",
+          "what was happening",
+          "qué estaba pasando",
           null,
           3
         ],
         [
-          "a film thing",
-          "una película cosa",
+          "yes was happening",
+          "sí estaba pasando",
           null,
           3
         ],
         [
-          "a film to school early next week",
-          "una película a la escuela a principios de la próxima semana",
+          "something was happening",
+          "algo estaba pasando",
+          null,
+          3
+        ],
+        [
+          "I think was happening",
+          "creo que estaba pasando",
           null,
           4
+        ],
+        [
+          "was happening yesterday",
+          "estaba pasando ayer",
+          null,
+          3
+        ],
+        [
+          "that was happening",
+          "eso estaba pasando",
+          null,
+          3
+        ],
+        [
+          "I wanted to know what was happening",
+          "quería saber qué estaba pasando",
+          null,
+          6
+        ],
+        [
+          "he wanted to know what was happening",
+          "él quería saber qué estaba pasando",
+          null,
+          6
+        ],
+        [
+          "something was happening at home",
+          "algo estaba pasando en casa",
+          null,
+          5
         ]
       ],
       "phrase_distribution": {
         "longer_3_to_5_legos": 5
       },
       "_metadata": {
-        "lego_id": "S0371L04",
+        "lego_id": "S0347L04",
         "seed_context": {
-          "target": "I went to see a film on Wednesday.",
-          "known": "Fui a ver una película el miércoles."
+          "target": "Él quería saber qué estaba pasando hace una semana.",
+          "known": "He wanted to know what was happening a week ago."
         },
         "whitelist_pairs": [
           [
@@ -23688,7 +22380,7 @@
           ],
           [
             "a",
-            "to"
+            "personal a"
           ],
           [
             "a alguien",
@@ -23697,14 +22389,6 @@
           [
             "a buscarlo",
             "to look for it"
-          ],
-          [
-            "a él",
-            "to him"
-          ],
-          [
-            "a él no le gustó ese lugar",
-            "he didn't like that place"
           ],
           [
             "a hablar más",
@@ -23717,10 +22401,6 @@
           [
             "a la fiesta",
             "to the party"
-          ],
-          [
-            "a la izquierda",
-            "to the left"
           ],
           [
             "a las que",
@@ -23745,10 +22425,6 @@
           [
             "a mi padre no le gusta",
             "my father doesn't like"
-          ],
-          [
-            "a nadie que yo conocía",
-            "anyone that I knew"
           ],
           [
             "a principios de la próxima semana",
@@ -23777,10 +22453,6 @@
           [
             "a un restaurante",
             "to a restaurant"
-          ],
-          [
-            "a ver una película",
-            "to see a film"
           ],
           [
             "abrir",
@@ -23839,16 +22511,8 @@
             "at the same time"
           ],
           [
-            "alcanzar",
-            "reach"
-          ],
-          [
-            "alcanzar la cima",
-            "reach the top"
-          ],
-          [
             "algo",
-            "anything"
+            "something"
           ],
           [
             "algo ayer",
@@ -23872,7 +22536,7 @@
           ],
           [
             "algo más",
-            "anything else"
+            "something else"
           ],
           [
             "algo nuevo",
@@ -23919,14 +22583,6 @@
             "over there"
           ],
           [
-            "alrededor",
-            "around"
-          ],
-          [
-            "alrededor del campo",
-            "around the field"
-          ],
-          [
             "amable",
             "kind"
           ],
@@ -23945,10 +22601,6 @@
           [
             "amigos",
             "friends"
-          ],
-          [
-            "amigos viejos",
-            "old friends"
           ],
           [
             "añadir",
@@ -23997,14 +22649,6 @@
           [
             "antipática",
             "unfriendly"
-          ],
-          [
-            "aparecer",
-            "appear"
-          ],
-          [
-            "aparecer enojado",
-            "appear angry"
           ],
           [
             "aprendemos",
@@ -24100,11 +22744,7 @@
           ],
           [
             "aunque",
-            "Even if"
-          ],
-          [
-            "aunque él quisiera",
-            "Even if he wanted to"
+            "although"
           ],
           [
             "aunque quería verte",
@@ -24168,15 +22808,11 @@
           ],
           [
             "bastante",
-            "rather"
+            "quite"
           ],
           [
             "bastante bueno",
             "fairly good"
-          ],
-          [
-            "bastante callado",
-            "rather quiet"
           ],
           [
             "bastante mal",
@@ -24231,20 +22867,12 @@
             "look for it"
           ],
           [
-            "caballos",
-            "horses"
-          ],
-          [
             "cabeza",
             "head"
           ],
           [
             "café",
             "coffee"
-          ],
-          [
-            "callado",
-            "quiet"
           ],
           [
             "cambia",
@@ -24271,16 +22899,8 @@
             "to walk"
           ],
           [
-            "campo",
-            "field"
-          ],
-          [
             "cansado",
             "tired"
-          ],
-          [
-            "carretera",
-            "road"
           ],
           [
             "carta",
@@ -24301,10 +22921,6 @@
           [
             "cerebro",
             "brain"
-          ],
-          [
-            "cima",
-            "top"
           ],
           [
             "cinco",
@@ -24452,7 +23068,7 @@
           ],
           [
             "con",
-            "to/with"
+            "with"
           ],
           [
             "con alguien más",
@@ -24512,7 +23128,7 @@
           ],
           [
             "conoces",
-            "you know"
+            "do you know"
           ],
           [
             "conoces a",
@@ -24528,7 +23144,7 @@
           ],
           [
             "conocía",
-            "knew"
+            "I used to know"
           ],
           [
             "conozco",
@@ -24621,10 +23237,6 @@
           [
             "correos electrónicos",
             "emails"
-          ],
-          [
-            "correr",
-            "to run"
           ],
           [
             "cosa",
@@ -24817,14 +23429,6 @@
           [
             "cuidar",
             "to look after"
-          ],
-          [
-            "cultivar",
-            "grow"
-          ],
-          [
-            "cultivar tomates",
-            "grow tomatoes"
           ],
           [
             "dando",
@@ -25035,14 +23639,6 @@
             "to stop talking"
           ],
           [
-            "dejarme",
-            "leave me"
-          ],
-          [
-            "dejarme solo",
-            "leave me on my own"
-          ],
-          [
             "dejarte",
             "let you"
           ],
@@ -25060,7 +23656,7 @@
           ],
           [
             "del",
-            "the"
+            "of the"
           ],
           [
             "demasiadas",
@@ -25155,14 +23751,6 @@
             "after"
           ],
           [
-            "después de que",
-            "after"
-          ],
-          [
-            "después de que te fuiste",
-            "after you left"
-          ],
-          [
             "después de que terminemos",
             "after we finish"
           ],
@@ -25248,11 +23836,11 @@
           ],
           [
             "dijo",
-            "told"
+            "said"
           ],
           [
             "dijo algo",
-            "say anything"
+            "said something"
           ],
           [
             "dijo que",
@@ -25371,10 +23959,6 @@
             "next year"
           ],
           [
-            "el campo",
-            "the field"
-          ],
-          [
             "el coche que",
             "the car that"
           ],
@@ -25413,14 +23997,6 @@
           [
             "el domingo por la tarde",
             "on Sunday afternoon"
-          ],
-          [
-            "él estaba bastante callado",
-            "he was rather quiet"
-          ],
-          [
-            "Él estaba callado",
-            "He was quiet"
           ],
           [
             "el fin de semana",
@@ -25467,20 +24043,12 @@
             "He doesn't need to buy"
           ],
           [
-            "él no necesitaba",
-            "He didn't need to"
-          ],
-          [
             "Él no podría creer",
             "He couldn't believe"
           ],
           [
             "el perro joven",
             "the young dog"
-          ],
-          [
-            "él podía",
-            "he could"
           ],
           [
             "el problema",
@@ -25493,14 +24061,6 @@
           [
             "él puede",
             "he can"
-          ],
-          [
-            "él quería cultivar",
-            "he wanted to grow"
-          ],
-          [
-            "él quería cultivar tomates",
-            "he wanted to grow tomatoes"
           ],
           [
             "él quiere",
@@ -25519,16 +24079,8 @@
             "he knows"
           ],
           [
-            "él tenía ganas de hablar mucho",
-            "he felt like talking a lot"
-          ],
-          [
             "el trabajo más importante",
             "the most important job"
-          ],
-          [
-            "el viernes por la noche",
-            "on Friday night"
           ],
           [
             "electrónicos",
@@ -25571,20 +24123,8 @@
             "she speaks"
           ],
           [
-            "ella le dijo a él",
-            "she said to him"
-          ],
-          [
             "Ella necesita mudarse",
             "She needs to move"
-          ],
-          [
-            "ella necesitaba",
-            "She needed to"
-          ],
-          [
-            "ella no podía",
-            "she couldn't"
           ],
           [
             "ella no puede",
@@ -25615,20 +24155,12 @@
             "she wants"
           ],
           [
-            "ella solo quería",
-            "she just wanted"
-          ],
-          [
             "ella va a estar",
             "she's going to be"
           ],
           [
             "ellos",
-            "they"
-          ],
-          [
-            "ellos tenían",
-            "they had"
+            "them"
           ],
           [
             "emocionante",
@@ -25703,10 +24235,6 @@
             "at the moment"
           ],
           [
-            "en la carretera",
-            "on the road"
-          ],
-          [
             "en la mesa",
             "on the table"
           ],
@@ -25767,10 +24295,6 @@
             "to meet/find yourself"
           ],
           [
-            "enojado",
-            "angry"
-          ],
-          [
             "entender",
             "understand"
           ],
@@ -25781,14 +24305,6 @@
           [
             "entusiasmado",
             "excited"
-          ],
-          [
-            "enviarle",
-            "send her"
-          ],
-          [
-            "enviarle un mensaje",
-            "send her a message"
           ],
           [
             "envió",
@@ -25967,26 +24483,6 @@
             "write a story"
           ],
           [
-            "Escuchaste",
-            "Did you hear"
-          ],
-          [
-            "escuché",
-            "I heard"
-          ],
-          [
-            "Escuché",
-            "I heard"
-          ],
-          [
-            "escuché que",
-            "I heard that"
-          ],
-          [
-            "Escuché que",
-            "I heard that"
-          ],
-          [
             "escuela",
             "school"
           ],
@@ -26013,10 +24509,6 @@
           [
             "ese libro era bastante bueno",
             "that book was fairly good"
-          ],
-          [
-            "ese lugar",
-            "that place"
           ],
           [
             "eso",
@@ -26215,14 +24707,6 @@
             "was"
           ],
           [
-            "estaba bastante callado",
-            "was rather quiet"
-          ],
-          [
-            "estaba callado",
-            "was quiet"
-          ],
-          [
             "estaba comenzando a sentirme mejor",
             "I was starting to feel better"
           ],
@@ -26241,10 +24725,6 @@
           [
             "estaba intentando decir",
             "was trying to say"
-          ],
-          [
-            "estaba pasando",
-            "was happening"
           ],
           [
             "estaba seguro de",
@@ -26631,18 +25111,6 @@
             "was very interesting"
           ],
           [
-            "fui",
-            "I went"
-          ],
-          [
-            "fui a ver",
-            "I went to see"
-          ],
-          [
-            "fuiste",
-            "left"
-          ],
-          [
             "funcionando",
             "working"
           ],
@@ -26661,14 +25129,6 @@
           [
             "gente",
             "people"
-          ],
-          [
-            "girar",
-            "turn"
-          ],
-          [
-            "girar a la izquierda",
-            "turn left"
           ],
           [
             "gracias",
@@ -26744,11 +25204,7 @@
           ],
           [
             "hablar",
-            "talking"
-          ],
-          [
-            "hablar con",
-            "to talk to"
+            "speak/to speak"
           ],
           [
             "hablar conmigo",
@@ -26787,10 +25243,6 @@
             "speak better"
           ],
           [
-            "hablar mucho",
-            "talking a lot"
-          ],
-          [
             "hablas",
             "do you speak"
           ],
@@ -26825,10 +25277,6 @@
           [
             "hace un rato",
             "a while ago"
-          ],
-          [
-            "hace una semana",
-            "a week ago"
           ],
           [
             "hace unos días",
@@ -27051,10 +25499,6 @@
             "important"
           ],
           [
-            "importante que discutir",
-            "important to discuss"
-          ],
-          [
             "importantes",
             "important"
           ],
@@ -27159,10 +25603,6 @@
             "leave (reflexive)"
           ],
           [
-            "izquierda",
-            "left"
-          ],
-          [
             "joven",
             "young"
           ],
@@ -27189,10 +25629,6 @@
           [
             "la amiga de mi hermana",
             "my sister's friend"
-          ],
-          [
-            "la cima",
-            "the top"
           ],
           [
             "la compañía",
@@ -27352,19 +25788,11 @@
           ],
           [
             "le",
-            "to him"
-          ],
-          [
-            "le dijo",
-            "said to him"
+            "them"
           ],
           [
             "le gusta ver la televisión",
             "like watching television"
-          ],
-          [
-            "le gustó",
-            "like"
           ],
           [
             "le preguntaré",
@@ -27509,14 +25937,6 @@
           [
             "lo que dijo",
             "what he said"
-          ],
-          [
-            "lo que él quería cultivar",
-            "what he wanted to grow"
-          ],
-          [
-            "lo que ella le dijo a él",
-            "what she said to him"
           ],
           [
             "lo que estaba esperando que pasara",
@@ -27664,7 +26084,7 @@
           ],
           [
             "más",
-            "else/more"
+            "most"
           ],
           [
             "más fácil",
@@ -27716,7 +26136,7 @@
           ],
           [
             "me",
-            "me"
+            "to me"
           ],
           [
             "Me",
@@ -27725,10 +26145,6 @@
           [
             "Me desperté",
             "I woke"
-          ],
-          [
-            "me dijo",
-            "told me"
           ],
           [
             "me envió",
@@ -27837,10 +26253,6 @@
           [
             "menos emocionante",
             "less exciting"
-          ],
-          [
-            "mensaje",
-            "message"
           ],
           [
             "mes",
@@ -27980,7 +26392,7 @@
           ],
           [
             "mucho",
-            "a lot"
+            "much"
           ],
           [
             "mucho tiempo",
@@ -27997,10 +26409,6 @@
           [
             "mujer joven",
             "young woman"
-          ],
-          [
-            "mujer que conoces",
-            "woman you know"
           ],
           [
             "muy",
@@ -28060,11 +26468,7 @@
           ],
           [
             "nadie",
-            "anyone"
-          ],
-          [
-            "nadie me dijo",
-            "nobody told me"
+            "nobody"
           ],
           [
             "necesita",
@@ -28088,23 +26492,7 @@
           ],
           [
             "necesitaba",
-            "need"
-          ],
-          [
-            "necesitaba aparecer",
-            "need to appear"
-          ],
-          [
-            "necesitaba correr",
-            "needed to run"
-          ],
-          [
-            "necesitaba ella",
-            "Did she need to"
-          ],
-          [
-            "necesitaba hablar",
-            "need to talk"
+            "I needed"
           ],
           [
             "necesitabas",
@@ -28184,11 +26572,11 @@
           ],
           [
             "no",
-            "didn't"
+            "not"
           ],
           [
             "No",
-            "didn't"
+            "don't/not"
           ],
           [
             "no comprendo",
@@ -28259,10 +26647,6 @@
             "I didn't sleep"
           ],
           [
-            "no él no quería",
-            "No he didn't want"
-          ],
-          [
             "no era muy paciente",
             "wasn't very patient"
           ],
@@ -28293,10 +26677,6 @@
           [
             "No es un problema",
             "It's not a problem"
-          ],
-          [
-            "No escuché",
-            "I didn't hear"
           ],
           [
             "no esperábamos",
@@ -28391,10 +26771,6 @@
             "I haven't seen them"
           ],
           [
-            "no le gustó ese lugar",
-            "didn't like that place"
-          ],
-          [
             "no lo habría dicho",
             "I wouldn't have said it"
           ],
@@ -28435,10 +26811,6 @@
             "doesn't need to buy"
           ],
           [
-            "no necesitaba",
-            "didn't need to"
-          ],
-          [
             "no necesitamos sentirnos",
             "we don't need to feel"
           ],
@@ -28455,20 +26827,12 @@
             "I don't need to know"
           ],
           [
-            "no podía alcanzar",
-            "couldn't reach"
-          ],
-          [
             "no podré",
             "I won't be able"
           ],
           [
             "no podré estar",
             "I won't be able to be"
-          ],
-          [
-            "no podría",
-            "wouldn't be able to"
           ],
           [
             "no podría creer",
@@ -28524,11 +26888,7 @@
           ],
           [
             "no quería",
-            "didn't want"
-          ],
-          [
-            "no quería saber",
-            "didn't want to know"
+            "I didn't want"
           ],
           [
             "no queríamos",
@@ -28625,10 +26985,6 @@
           [
             "no tuve tiempo",
             "I didn't have time"
-          ],
-          [
-            "No vi",
-            "I didn't see"
           ],
           [
             "no voy a",
@@ -28912,7 +27268,7 @@
           ],
           [
             "pasar",
-            "happen"
+            "spend"
           ],
           [
             "pasar más tiempo",
@@ -29103,14 +27459,6 @@
             "can remember"
           ],
           [
-            "podía",
-            "could"
-          ],
-          [
-            "podía girar",
-            "could turn"
-          ],
-          [
             "podrá",
             "will be able"
           ],
@@ -29128,7 +27476,7 @@
           ],
           [
             "podría",
-            "be able to/could"
+            "she could"
           ],
           [
             "podría escribir",
@@ -29164,7 +27512,7 @@
           ],
           [
             "por",
-            "at/during"
+            "about"
           ],
           [
             "Por",
@@ -29523,10 +27871,6 @@
             "than I felt"
           ],
           [
-            "que conoces",
-            "you know"
-          ],
-          [
             "que conozco",
             "I know"
           ],
@@ -29545,10 +27889,6 @@
           [
             "que dijo que",
             "who said that"
-          ],
-          [
-            "que discutir",
-            "to discuss"
           ],
           [
             "que él quiere",
@@ -29715,10 +28055,6 @@
             "what are you going to do"
           ],
           [
-            "que yo conocía",
-            "that I knew"
-          ],
-          [
             "queda",
             "have left/remains"
           ],
@@ -29747,28 +28083,12 @@
             "I wanted"
           ],
           [
-            "quería cultivar",
-            "wanted to grow"
-          ],
-          [
-            "quería cultivar tomates",
-            "wanted to grow tomatoes"
-          ],
-          [
             "quería decir",
             "wanted to say"
           ],
           [
             "quería decirte algo",
             "wanted to tell you something"
-          ],
-          [
-            "quería dejarme",
-            "want to leave me"
-          ],
-          [
-            "quería enviarle",
-            "wanted to send her"
           ],
           [
             "quería escribir",
@@ -29819,16 +28139,8 @@
             "wanted to know what"
           ],
           [
-            "quería salir",
-            "wanted to go out"
-          ],
-          [
             "quería terminar",
             "I wanted to finish"
-          ],
-          [
-            "quería ver a",
-            "wanted to see"
           ],
           [
             "quería verte",
@@ -30044,7 +28356,7 @@
           ],
           [
             "quisiera",
-            "wanted"
+            "she wanted to"
           ],
           [
             "rápidamente",
@@ -30188,7 +28500,7 @@
           ],
           [
             "salir",
-            "to go out"
+            "to leave"
           ],
           [
             "se",
@@ -30300,7 +28612,7 @@
           ],
           [
             "sí",
-            "Yes"
+            "yes"
           ],
           [
             "Sí",
@@ -30420,15 +28732,11 @@
           ],
           [
             "solo",
-            "just"
+            "only"
           ],
           [
             "solo necesitamos",
             "we just need"
-          ],
-          [
-            "solo quería",
-            "just wanted"
           ],
           [
             "solo tuve que",
@@ -30579,10 +28887,6 @@
             "he would give you"
           ],
           [
-            "te fuiste",
-            "you left"
-          ],
-          [
             "te gustaría",
             "would you like"
           ],
@@ -30677,22 +28981,6 @@
           [
             "tengo una reunión importante",
             "I have an important meeting"
-          ],
-          [
-            "tenía ganas de",
-            "felt like"
-          ],
-          [
-            "tenía ganas de hablar",
-            "felt like talking"
-          ],
-          [
-            "tenían",
-            "had"
-          ],
-          [
-            "tenían algo",
-            "had something"
           ],
           [
             "terminar",
@@ -30811,10 +29099,6 @@
             "to take time"
           ],
           [
-            "tomates",
-            "tomatoes"
-          ],
-          [
             "trabaja",
             "works"
           ],
@@ -30908,15 +29192,7 @@
           ],
           [
             "tu amigo",
-            "Your friend"
-          ],
-          [
-            "tu amigo dijo",
-            "Did your friend say"
-          ],
-          [
-            "tu amigo dijo que",
-            "Your friend said that"
+            "your friend"
           ],
           [
             "tu auto",
@@ -31009,10 +29285,6 @@
           [
             "un libro interesante",
             "an interesting book"
-          ],
-          [
-            "un mensaje",
-            "a message"
           ],
           [
             "un país diferente",
@@ -31144,11 +29416,7 @@
           ],
           [
             "unos",
-            "some"
-          ],
-          [
-            "unos amigos viejos",
-            "some old friends"
+            "a few"
           ],
           [
             "unos minutos",
@@ -31211,14 +29479,6 @@
             "valuable"
           ],
           [
-            "varios",
-            "several"
-          ],
-          [
-            "varios caballos",
-            "several horses"
-          ],
-          [
             "vas",
             "you're going"
           ],
@@ -31264,11 +29524,7 @@
           ],
           [
             "ver",
-            "see"
-          ],
-          [
-            "ver a unos amigos viejos",
-            "to see some old friends"
+            "watch/see"
           ],
           [
             "ver la televisión",
@@ -31296,11 +29552,7 @@
           ],
           [
             "vi",
-            "I see"
-          ],
-          [
-            "Vi",
-            "I saw"
+            "I watched"
           ],
           [
             "vi a",
@@ -31325,14 +29577,6 @@
           [
             "viejo",
             "old"
-          ],
-          [
-            "viejos",
-            "old"
-          ],
-          [
-            "viernes",
-            "Friday"
           ],
           [
             "vio",
@@ -31445,99 +29689,91 @@
           [
             "Ya he aprendido",
             "I've already learnt"
-          ],
-          [
-            "yo",
-            "I"
-          ],
-          [
-            "yo conocía",
-            "I knew"
           ]
         ],
-        "available_whitelist_size": 1946
+        "available_whitelist_size": 1832
       },
       "components": [
         [
-          "una",
-          "a"
+          "estaba",
+          "was"
         ],
         [
-          "película",
-          "film"
+          "pasando",
+          "happening"
         ]
       ]
     },
-    "S0371L05": {
+    "S0347L05": {
       "lego": [
-        "on Wednesday",
-        "el miércoles"
+        "a week ago",
+        "hace una semana"
       ],
       "type": "M",
-      "available_legos": 1764,
+      "available_legos": 1654,
       "is_final_lego": true,
       "overlap_level": "none",
       "target_phrase_count": 10,
       "practice_phrases": [
         [
-          "on Wednesday",
-          "el miércoles",
-          null,
-          1
-        ],
-        [
-          "on Wednesday Spanish",
-          "el miércoles español",
-          null,
-          2
-        ],
-        [
-          "on Wednesday the party",
-          "el miércoles la fiesta",
+          "a week ago",
+          "hace una semana",
           null,
           3
         ],
         [
-          "on Wednesday the same book",
-          "el miércoles el mismo libro",
-          null,
-          3
-        ],
-        [
-          "on Wednesday to school early next week",
-          "el miércoles a la escuela a principios de la próxima semana",
+          "yes a week ago",
+          "sí hace una semana",
           null,
           4
         ],
         [
-          "on Wednesday blue thing this afternoon",
-          "el miércoles cosa azul esta tarde",
-          null,
-          4
-        ],
-        [
-          "on Wednesday from home the night",
-          "el miércoles desde casa la noche",
+          "that was a week ago",
+          "eso fue hace una semana",
           null,
           5
         ],
         [
-          "on Wednesday at work on Saturday night",
-          "el miércoles en el trabajo el sábado por la noche",
+          "it happened a week ago",
+          "pasó hace una semana",
+          null,
+          4
+        ],
+        [
+          "I met someone a week ago",
+          "conocí a alguien hace una semana",
+          null,
+          5
+        ],
+        [
+          "something happened a week ago",
+          "algo pasó hace una semana",
+          null,
+          5
+        ],
+        [
+          "I wanted to know a week ago",
+          "quería saber hace una semana",
+          null,
+          5
+        ],
+        [
+          "what was happening a week ago",
+          "qué estaba pasando hace una semana",
           null,
           6
         ],
         [
-          "on Wednesday to work from home in Spanish",
-          "el miércoles trabajar desde casa en español",
+          "he wanted to know what was happening a week ago",
+          "él quería saber qué estaba pasando hace una semana",
           null,
-          7
+          9
         ],
         [
-          "I went to see a film on Wednesday.",
-          "Fui a ver una película el miércoles.",
+          "He wanted to know what was happening a week ago.",
+          "Él quería saber qué estaba pasando hace una semana.",
           null,
-          10
+          9
         ]
       ],
       "phrase_distribution": {
@@ -31547,10 +29783,10 @@
         "longest_5_legos": 4
       },
       "_metadata": {
-        "lego_id": "S0371L05",
+        "lego_id": "S0347L05",
         "seed_context": {
-          "target": "I went to see a film on Wednesday.",
-          "known": "Fui a ver una película el miércoles."
+          "target": "Él quería saber qué estaba pasando hace una semana.",
+          "known": "He wanted to know what was happening a week ago."
         },
         "whitelist_pairs": [
           [
@@ -31571,7 +29807,7 @@
           ],
           [
             "a",
-            "to"
+            "personal a"
           ],
           [
             "a alguien",
@@ -31580,14 +29816,6 @@
           [
             "a buscarlo",
             "to look for it"
-          ],
-          [
-            "a él",
-            "to him"
-          ],
-          [
-            "a él no le gustó ese lugar",
-            "he didn't like that place"
           ],
           [
             "a hablar más",
@@ -31600,10 +29828,6 @@
           [
             "a la fiesta",
             "to the party"
-          ],
-          [
-            "a la izquierda",
-            "to the left"
           ],
           [
             "a las que",
@@ -31628,10 +29852,6 @@
           [
             "a mi padre no le gusta",
             "my father doesn't like"
-          ],
-          [
-            "a nadie que yo conocía",
-            "anyone that I knew"
           ],
           [
             "a principios de la próxima semana",
@@ -31660,10 +29880,6 @@
           [
             "a un restaurante",
             "to a restaurant"
-          ],
-          [
-            "a ver una película",
-            "to see a film"
           ],
           [
             "abrir",
@@ -31722,16 +29938,8 @@
             "at the same time"
           ],
           [
-            "alcanzar",
-            "reach"
-          ],
-          [
-            "alcanzar la cima",
-            "reach the top"
-          ],
-          [
             "algo",
-            "anything"
+            "something"
           ],
           [
             "algo ayer",
@@ -31755,7 +29963,7 @@
           ],
           [
             "algo más",
-            "anything else"
+            "something else"
           ],
           [
             "algo nuevo",
@@ -31802,14 +30010,6 @@
             "over there"
           ],
           [
-            "alrededor",
-            "around"
-          ],
-          [
-            "alrededor del campo",
-            "around the field"
-          ],
-          [
             "amable",
             "kind"
           ],
@@ -31828,10 +30028,6 @@
           [
             "amigos",
             "friends"
-          ],
-          [
-            "amigos viejos",
-            "old friends"
           ],
           [
             "añadir",
@@ -31880,14 +30076,6 @@
           [
             "antipática",
             "unfriendly"
-          ],
-          [
-            "aparecer",
-            "appear"
-          ],
-          [
-            "aparecer enojado",
-            "appear angry"
           ],
           [
             "aprendemos",
@@ -31983,11 +30171,7 @@
           ],
           [
             "aunque",
-            "Even if"
-          ],
-          [
-            "aunque él quisiera",
-            "Even if he wanted to"
+            "although"
           ],
           [
             "aunque quería verte",
@@ -32051,15 +30235,11 @@
           ],
           [
             "bastante",
-            "rather"
+            "quite"
           ],
           [
             "bastante bueno",
             "fairly good"
-          ],
-          [
-            "bastante callado",
-            "rather quiet"
           ],
           [
             "bastante mal",
@@ -32114,20 +30294,12 @@
             "look for it"
           ],
           [
-            "caballos",
-            "horses"
-          ],
-          [
             "cabeza",
             "head"
           ],
           [
             "café",
             "coffee"
-          ],
-          [
-            "callado",
-            "quiet"
           ],
           [
             "cambia",
@@ -32154,16 +30326,8 @@
             "to walk"
           ],
           [
-            "campo",
-            "field"
-          ],
-          [
             "cansado",
             "tired"
-          ],
-          [
-            "carretera",
-            "road"
           ],
           [
             "carta",
@@ -32184,10 +30348,6 @@
           [
             "cerebro",
             "brain"
-          ],
-          [
-            "cima",
-            "top"
           ],
           [
             "cinco",
@@ -32335,7 +30495,7 @@
           ],
           [
             "con",
-            "to/with"
+            "with"
           ],
           [
             "con alguien más",
@@ -32395,7 +30555,7 @@
           ],
           [
             "conoces",
-            "you know"
+            "do you know"
           ],
           [
             "conoces a",
@@ -32411,7 +30571,7 @@
           ],
           [
             "conocía",
-            "knew"
+            "I used to know"
           ],
           [
             "conozco",
@@ -32504,10 +30664,6 @@
           [
             "correos electrónicos",
             "emails"
-          ],
-          [
-            "correr",
-            "to run"
           ],
           [
             "cosa",
@@ -32700,14 +30856,6 @@
           [
             "cuidar",
             "to look after"
-          ],
-          [
-            "cultivar",
-            "grow"
-          ],
-          [
-            "cultivar tomates",
-            "grow tomatoes"
           ],
           [
             "dando",
@@ -32918,14 +31066,6 @@
             "to stop talking"
           ],
           [
-            "dejarme",
-            "leave me"
-          ],
-          [
-            "dejarme solo",
-            "leave me on my own"
-          ],
-          [
             "dejarte",
             "let you"
           ],
@@ -32943,7 +31083,7 @@
           ],
           [
             "del",
-            "the"
+            "of the"
           ],
           [
             "demasiadas",
@@ -33038,14 +31178,6 @@
             "after"
           ],
           [
-            "después de que",
-            "after"
-          ],
-          [
-            "después de que te fuiste",
-            "after you left"
-          ],
-          [
             "después de que terminemos",
             "after we finish"
           ],
@@ -33131,11 +31263,11 @@
           ],
           [
             "dijo",
-            "told"
+            "said"
           ],
           [
             "dijo algo",
-            "say anything"
+            "said something"
           ],
           [
             "dijo que",
@@ -33254,10 +31386,6 @@
             "next year"
           ],
           [
-            "el campo",
-            "the field"
-          ],
-          [
             "el coche que",
             "the car that"
           ],
@@ -33296,14 +31424,6 @@
           [
             "el domingo por la tarde",
             "on Sunday afternoon"
-          ],
-          [
-            "él estaba bastante callado",
-            "he was rather quiet"
-          ],
-          [
-            "Él estaba callado",
-            "He was quiet"
           ],
           [
             "el fin de semana",
@@ -33350,20 +31470,12 @@
             "He doesn't need to buy"
           ],
           [
-            "él no necesitaba",
-            "He didn't need to"
-          ],
-          [
             "Él no podría creer",
             "He couldn't believe"
           ],
           [
             "el perro joven",
             "the young dog"
-          ],
-          [
-            "él podía",
-            "he could"
           ],
           [
             "el problema",
@@ -33376,14 +31488,6 @@
           [
             "él puede",
             "he can"
-          ],
-          [
-            "él quería cultivar",
-            "he wanted to grow"
-          ],
-          [
-            "él quería cultivar tomates",
-            "he wanted to grow tomatoes"
           ],
           [
             "él quiere",
@@ -33402,16 +31506,8 @@
             "he knows"
           ],
           [
-            "él tenía ganas de hablar mucho",
-            "he felt like talking a lot"
-          ],
-          [
             "el trabajo más importante",
             "the most important job"
-          ],
-          [
-            "el viernes por la noche",
-            "on Friday night"
           ],
           [
             "electrónicos",
@@ -33454,20 +31550,8 @@
             "she speaks"
           ],
           [
-            "ella le dijo a él",
-            "she said to him"
-          ],
-          [
             "Ella necesita mudarse",
             "She needs to move"
-          ],
-          [
-            "ella necesitaba",
-            "She needed to"
-          ],
-          [
-            "ella no podía",
-            "she couldn't"
           ],
           [
             "ella no puede",
@@ -33498,20 +31582,12 @@
             "she wants"
           ],
           [
-            "ella solo quería",
-            "she just wanted"
-          ],
-          [
             "ella va a estar",
             "she's going to be"
           ],
           [
             "ellos",
-            "they"
-          ],
-          [
-            "ellos tenían",
-            "they had"
+            "them"
           ],
           [
             "emocionante",
@@ -33586,10 +31662,6 @@
             "at the moment"
           ],
           [
-            "en la carretera",
-            "on the road"
-          ],
-          [
             "en la mesa",
             "on the table"
           ],
@@ -33650,10 +31722,6 @@
             "to meet/find yourself"
           ],
           [
-            "enojado",
-            "angry"
-          ],
-          [
             "entender",
             "understand"
           ],
@@ -33664,14 +31732,6 @@
           [
             "entusiasmado",
             "excited"
-          ],
-          [
-            "enviarle",
-            "send her"
-          ],
-          [
-            "enviarle un mensaje",
-            "send her a message"
           ],
           [
             "envió",
@@ -33850,26 +31910,6 @@
             "write a story"
           ],
           [
-            "Escuchaste",
-            "Did you hear"
-          ],
-          [
-            "escuché",
-            "I heard"
-          ],
-          [
-            "Escuché",
-            "I heard"
-          ],
-          [
-            "escuché que",
-            "I heard that"
-          ],
-          [
-            "Escuché que",
-            "I heard that"
-          ],
-          [
             "escuela",
             "school"
           ],
@@ -33896,10 +31936,6 @@
           [
             "ese libro era bastante bueno",
             "that book was fairly good"
-          ],
-          [
-            "ese lugar",
-            "that place"
           ],
           [
             "eso",
@@ -34096,14 +32132,6 @@
           [
             "estaba",
             "was"
-          ],
-          [
-            "estaba bastante callado",
-            "was rather quiet"
-          ],
-          [
-            "estaba callado",
-            "was quiet"
           ],
           [
             "estaba comenzando a sentirme mejor",
@@ -34514,18 +32542,6 @@
             "was very interesting"
           ],
           [
-            "fui",
-            "I went"
-          ],
-          [
-            "fui a ver",
-            "I went to see"
-          ],
-          [
-            "fuiste",
-            "left"
-          ],
-          [
             "funcionando",
             "working"
           ],
@@ -34544,14 +32560,6 @@
           [
             "gente",
             "people"
-          ],
-          [
-            "girar",
-            "turn"
-          ],
-          [
-            "girar a la izquierda",
-            "turn left"
           ],
           [
             "gracias",
@@ -34627,11 +32635,7 @@
           ],
           [
             "hablar",
-            "talking"
-          ],
-          [
-            "hablar con",
-            "to talk to"
+            "speak/to speak"
           ],
           [
             "hablar conmigo",
@@ -34670,10 +32674,6 @@
             "speak better"
           ],
           [
-            "hablar mucho",
-            "talking a lot"
-          ],
-          [
             "hablas",
             "do you speak"
           ],
@@ -34708,10 +32708,6 @@
           [
             "hace un rato",
             "a while ago"
-          ],
-          [
-            "hace una semana",
-            "a week ago"
           ],
           [
             "hace unos días",
@@ -34934,10 +32930,6 @@
             "important"
           ],
           [
-            "importante que discutir",
-            "important to discuss"
-          ],
-          [
             "importantes",
             "important"
           ],
@@ -35042,10 +33034,6 @@
             "leave (reflexive)"
           ],
           [
-            "izquierda",
-            "left"
-          ],
-          [
             "joven",
             "young"
           ],
@@ -35072,10 +33060,6 @@
           [
             "la amiga de mi hermana",
             "my sister's friend"
-          ],
-          [
-            "la cima",
-            "the top"
           ],
           [
             "la compañía",
@@ -35235,19 +33219,11 @@
           ],
           [
             "le",
-            "to him"
-          ],
-          [
-            "le dijo",
-            "said to him"
+            "them"
           ],
           [
             "le gusta ver la televisión",
             "like watching television"
-          ],
-          [
-            "le gustó",
-            "like"
           ],
           [
             "le preguntaré",
@@ -35392,14 +33368,6 @@
           [
             "lo que dijo",
             "what he said"
-          ],
-          [
-            "lo que él quería cultivar",
-            "what he wanted to grow"
-          ],
-          [
-            "lo que ella le dijo a él",
-            "what she said to him"
           ],
           [
             "lo que estaba esperando que pasara",
@@ -35547,7 +33515,7 @@
           ],
           [
             "más",
-            "else/more"
+            "most"
           ],
           [
             "más fácil",
@@ -35599,7 +33567,7 @@
           ],
           [
             "me",
-            "me"
+            "to me"
           ],
           [
             "Me",
@@ -35608,10 +33576,6 @@
           [
             "Me desperté",
             "I woke"
-          ],
-          [
-            "me dijo",
-            "told me"
           ],
           [
             "me envió",
@@ -35720,10 +33684,6 @@
           [
             "menos emocionante",
             "less exciting"
-          ],
-          [
-            "mensaje",
-            "message"
           ],
           [
             "mes",
@@ -35863,7 +33823,7 @@
           ],
           [
             "mucho",
-            "a lot"
+            "much"
           ],
           [
             "mucho tiempo",
@@ -35880,10 +33840,6 @@
           [
             "mujer joven",
             "young woman"
-          ],
-          [
-            "mujer que conoces",
-            "woman you know"
           ],
           [
             "muy",
@@ -35943,11 +33899,7 @@
           ],
           [
             "nadie",
-            "anyone"
-          ],
-          [
-            "nadie me dijo",
-            "nobody told me"
+            "nobody"
           ],
           [
             "necesita",
@@ -35971,23 +33923,7 @@
           ],
           [
             "necesitaba",
-            "need"
-          ],
-          [
-            "necesitaba aparecer",
-            "need to appear"
-          ],
-          [
-            "necesitaba correr",
-            "needed to run"
-          ],
-          [
-            "necesitaba ella",
-            "Did she need to"
-          ],
-          [
-            "necesitaba hablar",
-            "need to talk"
+            "I needed"
           ],
           [
             "necesitabas",
@@ -36067,11 +34003,11 @@
           ],
           [
             "no",
-            "didn't"
+            "not"
           ],
           [
             "No",
-            "didn't"
+            "don't/not"
           ],
           [
             "no comprendo",
@@ -36142,10 +34078,6 @@
             "I didn't sleep"
           ],
           [
-            "no él no quería",
-            "No he didn't want"
-          ],
-          [
             "no era muy paciente",
             "wasn't very patient"
           ],
@@ -36176,10 +34108,6 @@
           [
             "No es un problema",
             "It's not a problem"
-          ],
-          [
-            "No escuché",
-            "I didn't hear"
           ],
           [
             "no esperábamos",
@@ -36274,10 +34202,6 @@
             "I haven't seen them"
           ],
           [
-            "no le gustó ese lugar",
-            "didn't like that place"
-          ],
-          [
             "no lo habría dicho",
             "I wouldn't have said it"
           ],
@@ -36318,10 +34242,6 @@
             "doesn't need to buy"
           ],
           [
-            "no necesitaba",
-            "didn't need to"
-          ],
-          [
             "no necesitamos sentirnos",
             "we don't need to feel"
           ],
@@ -36338,20 +34258,12 @@
             "I don't need to know"
           ],
           [
-            "no podía alcanzar",
-            "couldn't reach"
-          ],
-          [
             "no podré",
             "I won't be able"
           ],
           [
             "no podré estar",
             "I won't be able to be"
-          ],
-          [
-            "no podría",
-            "wouldn't be able to"
           ],
           [
             "no podría creer",
@@ -36407,11 +34319,7 @@
           ],
           [
             "no quería",
-            "didn't want"
-          ],
-          [
-            "no quería saber",
-            "didn't want to know"
+            "I didn't want"
           ],
           [
             "no queríamos",
@@ -36508,10 +34416,6 @@
           [
             "no tuve tiempo",
             "I didn't have time"
-          ],
-          [
-            "No vi",
-            "I didn't see"
           ],
           [
             "no voy a",
@@ -36795,7 +34699,7 @@
           ],
           [
             "pasar",
-            "happen"
+            "spend"
           ],
           [
             "pasar más tiempo",
@@ -36986,14 +34890,6 @@
             "can remember"
           ],
           [
-            "podía",
-            "could"
-          ],
-          [
-            "podía girar",
-            "could turn"
-          ],
-          [
             "podrá",
             "will be able"
           ],
@@ -37011,7 +34907,7 @@
           ],
           [
             "podría",
-            "be able to/could"
+            "she could"
           ],
           [
             "podría escribir",
@@ -37047,7 +34943,7 @@
           ],
           [
             "por",
-            "at/during"
+            "about"
           ],
           [
             "Por",
@@ -37406,10 +35302,6 @@
             "than I felt"
           ],
           [
-            "que conoces",
-            "you know"
-          ],
-          [
             "que conozco",
             "I know"
           ],
@@ -37428,10 +35320,6 @@
           [
             "que dijo que",
             "who said that"
-          ],
-          [
-            "que discutir",
-            "to discuss"
           ],
           [
             "que él quiere",
@@ -37598,10 +35486,6 @@
             "what are you going to do"
           ],
           [
-            "que yo conocía",
-            "that I knew"
-          ],
-          [
             "queda",
             "have left/remains"
           ],
@@ -37630,28 +35514,12 @@
             "I wanted"
           ],
           [
-            "quería cultivar",
-            "wanted to grow"
-          ],
-          [
-            "quería cultivar tomates",
-            "wanted to grow tomatoes"
-          ],
-          [
             "quería decir",
             "wanted to say"
           ],
           [
             "quería decirte algo",
             "wanted to tell you something"
-          ],
-          [
-            "quería dejarme",
-            "want to leave me"
-          ],
-          [
-            "quería enviarle",
-            "wanted to send her"
           ],
           [
             "quería escribir",
@@ -37702,16 +35570,8 @@
             "wanted to know what"
           ],
           [
-            "quería salir",
-            "wanted to go out"
-          ],
-          [
             "quería terminar",
             "I wanted to finish"
-          ],
-          [
-            "quería ver a",
-            "wanted to see"
           ],
           [
             "quería verte",
@@ -37927,7 +35787,7 @@
           ],
           [
             "quisiera",
-            "wanted"
+            "she wanted to"
           ],
           [
             "rápidamente",
@@ -38071,7 +35931,7 @@
           ],
           [
             "salir",
-            "to go out"
+            "to leave"
           ],
           [
             "se",
@@ -38183,7 +36043,7 @@
           ],
           [
             "sí",
-            "Yes"
+            "yes"
           ],
           [
             "Sí",
@@ -38303,15 +36163,11 @@
           ],
           [
             "solo",
-            "just"
+            "only"
           ],
           [
             "solo necesitamos",
             "we just need"
-          ],
-          [
-            "solo quería",
-            "just wanted"
           ],
           [
             "solo tuve que",
@@ -38462,10 +36318,6 @@
             "he would give you"
           ],
           [
-            "te fuiste",
-            "you left"
-          ],
-          [
             "te gustaría",
             "would you like"
           ],
@@ -38560,22 +36412,6 @@
           [
             "tengo una reunión importante",
             "I have an important meeting"
-          ],
-          [
-            "tenía ganas de",
-            "felt like"
-          ],
-          [
-            "tenía ganas de hablar",
-            "felt like talking"
-          ],
-          [
-            "tenían",
-            "had"
-          ],
-          [
-            "tenían algo",
-            "had something"
           ],
           [
             "terminar",
@@ -38694,10 +36530,6 @@
             "to take time"
           ],
           [
-            "tomates",
-            "tomatoes"
-          ],
-          [
             "trabaja",
             "works"
           ],
@@ -38791,15 +36623,7 @@
           ],
           [
             "tu amigo",
-            "Your friend"
-          ],
-          [
-            "tu amigo dijo",
-            "Did your friend say"
-          ],
-          [
-            "tu amigo dijo que",
-            "Your friend said that"
+            "your friend"
           ],
           [
             "tu auto",
@@ -38892,10 +36716,6 @@
           [
             "un libro interesante",
             "an interesting book"
-          ],
-          [
-            "un mensaje",
-            "a message"
           ],
           [
             "un país diferente",
@@ -38998,10 +36818,6 @@
             "a word"
           ],
           [
-            "una película",
-            "a film"
-          ],
-          [
             "una respuesta",
             "an answer"
           ],
@@ -39031,11 +36847,7 @@
           ],
           [
             "unos",
-            "some"
-          ],
-          [
-            "unos amigos viejos",
-            "some old friends"
+            "a few"
           ],
           [
             "unos minutos",
@@ -39098,14 +36910,6 @@
             "valuable"
           ],
           [
-            "varios",
-            "several"
-          ],
-          [
-            "varios caballos",
-            "several horses"
-          ],
-          [
             "vas",
             "you're going"
           ],
@@ -39151,11 +36955,7 @@
           ],
           [
             "ver",
-            "see"
-          ],
-          [
-            "ver a unos amigos viejos",
-            "to see some old friends"
+            "watch/see"
           ],
           [
             "ver la televisión",
@@ -39183,11 +36983,7 @@
           ],
           [
             "vi",
-            "I see"
-          ],
-          [
-            "Vi",
-            "I saw"
+            "I watched"
           ],
           [
             "vi a",
@@ -39212,14 +37008,6 @@
           [
             "viejo",
             "old"
-          ],
-          [
-            "viejos",
-            "old"
-          ],
-          [
-            "viernes",
-            "Friday"
           ],
           [
             "vio",
@@ -39332,26 +37120,22 @@
           [
             "Ya he aprendido",
             "I've already learnt"
-          ],
-          [
-            "yo",
-            "I"
-          ],
-          [
-            "yo conocía",
-            "I knew"
           ]
         ],
-        "available_whitelist_size": 1947
+        "available_whitelist_size": 1833
       },
       "components": [
         [
-          "el",
-          "on"
+          "hace",
+          "ago"
         ],
         [
-          "miércoles",
-          "Wednesday"
+          "una",
+          "a/one"
+        ],
+        [
+          "semana",
+          "week"
         ]
       ]
     }
@@ -39359,12 +37143,12 @@
   "_instructions": {
     "task": "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
     "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
-    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0371.json",
+    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0347.json",
     "whitelist_note": "3-category rule applied: A-types, M-types, M-components with literal translations"
   },
   "_stats": {
     "new_legos_in_seed": 5,
     "phrases_to_generate": 50,
-    "cumulative_legos_before": 1760
+    "cumulative_legos_before": 1650
   }
 }
