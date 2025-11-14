@@ -1819,6 +1819,68 @@ async function mergePhase3Branches(courseDir) {
 }
 
 /**
+ * Poll git remote for new branches matching a pattern
+ * Returns branches with commit times newer than jobStartTime
+ *
+ * @param {string} baseCourseDir - Path to course directory
+ * @param {Date} jobStartTime - Job start time to compare against
+ * @param {string} phasePattern - Branch pattern to match (e.g., 'claude/phase5')
+ * @returns {Array} Array of { branch, remoteBranch, commitTime, isNew }
+ */
+async function pollGitBranches(baseCourseDir, jobStartTime, phasePattern = 'claude/phase') {
+  try {
+    // Fetch latest branches
+    await execAsync('git fetch --all', { cwd: baseCourseDir });
+
+    // Find matching branches
+    const branchesResult = await execAsync(
+      `git branch -r | grep "origin/${phasePattern}"`,
+      { cwd: baseCourseDir }
+    );
+
+    if (!branchesResult.stdout.trim()) {
+      return [];
+    }
+
+    const branches = branchesResult.stdout.trim().split('\n').map(b => b.trim());
+    const branchInfo = [];
+
+    for (const branch of branches) {
+      try {
+        // Get latest commit time on this branch
+        const branchName = branch.replace('origin/', '');
+        const commitTimeResult = await execAsync(
+          `git log ${branch} -1 --format=%ct`,
+          { cwd: baseCourseDir }
+        );
+
+        const commitTime = new Date(parseInt(commitTimeResult.stdout.trim()) * 1000);
+        const isNew = commitTime > jobStartTime;
+
+        branchInfo.push({
+          branch: branchName,
+          remoteBranch: branch,
+          commitTime,
+          isNew
+        });
+      } catch (branchErr) {
+        console.error(`[Git Poll] Error checking branch ${branch}: ${branchErr.message}`);
+        // Continue with other branches
+      }
+    }
+
+    return branchInfo;
+
+  } catch (err) {
+    // No branches found or git error - not critical, just return empty
+    if (!err.message.includes('returned non-zero exit code')) {
+      console.error(`[Git Poll] Error polling branches: ${err.message}`);
+    }
+    return [];
+  }
+}
+
+/**
  * Poll for file existence with timeout between checks
  * Polls indefinitely until file appears
  * In Web mode, pulls from git before checking (Claude Code on Web pushes to GitHub)
@@ -2081,33 +2143,77 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
           job.progress = 70;
           job.message = 'Phase 5 tab opened - waiting for execution';
 
-          // Poll for all agent provisional outputs
-          console.log(`[Web Orchestrator] Waiting for all Phase 5 agent outputs...`);
-          const outputsDir = path.join(baseCourseDir, 'phase5_outputs');
+          // Poll for completion using DUAL detection: files OR git branches
+          console.log(`[Web Orchestrator] Waiting for Phase 5 completion...`);
+          console.log(`[Web Orchestrator] Monitoring: provisional files AND git branches`);
 
-          // Wait for all provisional files
+          const outputsDir = path.join(baseCourseDir, 'phase5_outputs');
+          const jobStartTime = job.startTime;
           let agentsComplete = 0;
-          while (agentsComplete < expectedAgents) {
+          let gitBranchesDetected = false;
+          let detectionMethod = '';
+
+          while (agentsComplete < expectedAgents && !gitBranchesDetected) {
             await new Promise(resolve => setTimeout(resolve, 10000)); // Check every 10 seconds
 
+            // Detection Method 1: Provisional files (local filesystem)
             if (await fs.pathExists(outputsDir)) {
               const files = await fs.readdir(outputsDir);
-              agentsComplete = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
+              const provisionalCount = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
 
-              // Update job with detailed progress
-              job.message = `Phase 5: ${agentsComplete}/${expectedAgents} agents complete`;
-              job.subProgress = {
-                phase: 'phase_5',
-                completed: agentsComplete,
-                total: expectedAgents,
-                percentage: Math.round((agentsComplete / expectedAgents) * 100)
-              };
+              if (provisionalCount > agentsComplete) {
+                agentsComplete = provisionalCount;
+                job.message = `Phase 5: ${agentsComplete}/${expectedAgents} agents (file-based)`;
+                job.subProgress = {
+                  phase: 'phase_5',
+                  completed: agentsComplete,
+                  total: expectedAgents,
+                  percentage: Math.round((agentsComplete / expectedAgents) * 100)
+                };
+                console.log(`[Web Orchestrator] File-based: ${agentsComplete}/${expectedAgents} agents`);
 
-              console.log(`[Web Orchestrator] Phase 5 agents complete: ${agentsComplete}/${expectedAgents}`);
+                if (agentsComplete >= expectedAgents) {
+                  detectionMethod = 'file-based';
+                  break;
+                }
+              }
+            }
+
+            // Detection Method 2: Git branches (remote commits)
+            const newBranches = await pollGitBranches(baseCourseDir, jobStartTime, 'claude/phase5');
+            if (newBranches.length > 0) {
+              const newBranchCount = newBranches.filter(b => b.isNew).length;
+
+              if (newBranchCount > 0) {
+                console.log(`[Web Orchestrator] Git-based: Detected ${newBranchCount} new Claude branches!`);
+                newBranches.forEach(b => {
+                  if (b.isNew) {
+                    console.log(`  ✓ ${b.branch} (committed ${b.commitTime.toISOString()})`);
+                  }
+                });
+
+                gitBranchesDetected = true;
+                detectionMethod = 'git-based';
+
+                // Update job status
+                job.message = `Phase 5: Completion detected via git branches`;
+                job.subProgress = {
+                  phase: 'phase_5',
+                  completed: newBranchCount,
+                  total: expectedAgents,
+                  percentage: 100
+                };
+              }
             }
           }
 
-          console.log(`[Web Orchestrator] ✅ All Phase 5 agents complete! Merging Claude branches...`);
+          if (gitBranchesDetected) {
+            console.log(`[Web Orchestrator] ✅ Phase 5 complete (git-based detection)!`);
+          } else {
+            console.log(`[Web Orchestrator] ✅ Phase 5 complete (file-based detection)!`);
+          }
+
+          console.log(`[Web Orchestrator] Merging Claude branches...`);
         }
 
         // Auto-merge all Claude feature branches from Phase 5 agents
@@ -2267,11 +2373,61 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       job.progress = 5;
       job.message = 'Phase 1 tab opened - waiting for execution';
 
-      // Poll for seed_pairs.json (pull from git in Web mode)
-      console.log(`[Web Orchestrator] Waiting for seed_pairs.json...`);
-      await pollForFile(seedPairsPath, 60000, true); // Pull from git before each check
+      // Poll for completion using DUAL detection: file OR git branches
+      console.log(`[Web Orchestrator] Waiting for Phase 1 completion...`);
+      console.log(`[Web Orchestrator] Monitoring: seed_pairs.json AND git branches`);
 
-      console.log(`[Web Orchestrator] ✅ Phase 1 complete! Found seed_pairs.json`);
+      const jobStartTime = job.startTime;
+      let fileDetected = false;
+      let gitBranchesDetected = false;
+
+      while (!fileDetected && !gitBranchesDetected) {
+        await new Promise(resolve => setTimeout(resolve, 10000)); // Check every 10 seconds
+
+        // Detection Method 1: File exists (after git pull)
+        await execAsync('git fetch --all && git pull origin main', { cwd: courseDir }).catch(() => {});
+        if (await fs.pathExists(seedPairsPath)) {
+          console.log(`[Web Orchestrator] File-based: seed_pairs.json detected!`);
+          fileDetected = true;
+          break;
+        }
+
+        // Detection Method 2: Git branches (remote commits)
+        const newBranches = await pollGitBranches(courseDir, jobStartTime, 'claude/phase1');
+        if (newBranches.length > 0) {
+          const newBranchCount = newBranches.filter(b => b.isNew).length;
+
+          if (newBranchCount > 0) {
+            console.log(`[Web Orchestrator] Git-based: Detected ${newBranchCount} new Claude branches!`);
+            newBranches.forEach(b => {
+              if (b.isNew) {
+                console.log(`  ✓ ${b.branch} (committed ${b.commitTime.toISOString()})`);
+              }
+            });
+
+            gitBranchesDetected = true;
+
+            // Merge branches immediately
+            console.log(`[Web Orchestrator] Merging Phase 1 branches...`);
+            for (const b of newBranches.filter(br => br.isNew)) {
+              try {
+                await execAsync(`git merge ${b.remoteBranch} --no-edit -m "Auto-merge Phase 1: ${b.branch}"`, { cwd: courseDir });
+                console.log(`  ✓ Merged ${b.branch}`);
+              } catch (err) {
+                console.error(`  ⚠️  Error merging ${b.branch}: ${err.message}`);
+              }
+            }
+            await execAsync('git push origin main', { cwd: courseDir });
+            console.log(`[Web Orchestrator] ✅ Phase 1 branches merged and pushed!`);
+          }
+        }
+      }
+
+      if (gitBranchesDetected) {
+        console.log(`[Web Orchestrator] ✅ Phase 1 complete (git-based detection)!`);
+      } else {
+        console.log(`[Web Orchestrator] ✅ Phase 1 complete (file-based detection)!`);
+      }
       job.phase = 'phase_1_complete';
       job.progress = 30;
     }
@@ -2338,34 +2494,75 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       job.progress = 40;
       job.message = 'Phase 3 tab opened - waiting for execution';
 
-      // Poll for all agent provisional outputs
-      console.log(`[Web Orchestrator] Waiting for all Phase 3 agent outputs...`);
+      // Poll for completion using DUAL detection: files OR git branches
+      console.log(`[Web Orchestrator] Waiting for Phase 3 completion...`);
+      console.log(`[Web Orchestrator] Monitoring: provisional files AND git branches`);
+
       const expectedAgents = Math.ceil((endSeed - startSeed + 1) / 20);
       const outputsDir = path.join(courseDir, 'phase3_outputs');
-
-      // Wait for all provisional files
+      const jobStartTime = job.startTime;
       let agentsComplete = 0;
-      while (agentsComplete < expectedAgents) {
+      let gitBranchesDetected = false;
+
+      while (agentsComplete < expectedAgents && !gitBranchesDetected) {
         await new Promise(resolve => setTimeout(resolve, 10000)); // Check every 10 seconds
 
+        // Detection Method 1: Provisional files (local filesystem)
         if (await fs.pathExists(outputsDir)) {
           const files = await fs.readdir(outputsDir);
-          agentsComplete = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
+          const provisionalCount = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
 
-          // Update job with detailed progress
-          job.message = `Phase 3: ${agentsComplete}/${expectedAgents} agents complete`;
-          job.subProgress = {
-            phase: 'phase_3',
-            completed: agentsComplete,
-            total: expectedAgents,
-            percentage: Math.round((agentsComplete / expectedAgents) * 100)
-          };
+          if (provisionalCount > agentsComplete) {
+            agentsComplete = provisionalCount;
+            job.message = `Phase 3: ${agentsComplete}/${expectedAgents} agents (file-based)`;
+            job.subProgress = {
+              phase: 'phase_3',
+              completed: agentsComplete,
+              total: expectedAgents,
+              percentage: Math.round((agentsComplete / expectedAgents) * 100)
+            };
+            console.log(`[Web Orchestrator] File-based: ${agentsComplete}/${expectedAgents} agents`);
 
-          console.log(`[Web Orchestrator] Phase 3 agents complete: ${agentsComplete}/${expectedAgents}`);
+            if (agentsComplete >= expectedAgents) {
+              break;
+            }
+          }
+        }
+
+        // Detection Method 2: Git branches (remote commits)
+        const newBranches = await pollGitBranches(courseDir, jobStartTime, 'claude/phase3');
+        if (newBranches.length > 0) {
+          const newBranchCount = newBranches.filter(b => b.isNew).length;
+
+          if (newBranchCount > 0) {
+            console.log(`[Web Orchestrator] Git-based: Detected ${newBranchCount} new Claude branches!`);
+            newBranches.forEach(b => {
+              if (b.isNew) {
+                console.log(`  ✓ ${b.branch} (committed ${b.commitTime.toISOString()})`);
+              }
+            });
+
+            gitBranchesDetected = true;
+
+            // Update job status
+            job.message = `Phase 3: Completion detected via git branches`;
+            job.subProgress = {
+              phase: 'phase_3',
+              completed: newBranchCount,
+              total: expectedAgents,
+              percentage: 100
+            };
+          }
         }
       }
 
-      console.log(`[Web Orchestrator] ✅ All Phase 3 agents complete! Merging git branches...`);
+      if (gitBranchesDetected) {
+        console.log(`[Web Orchestrator] ✅ Phase 3 complete (git-based detection)!`);
+      } else {
+        console.log(`[Web Orchestrator] ✅ Phase 3 complete (file-based detection)!`);
+      }
+
+      console.log(`[Web Orchestrator] Merging git branches...`);
 
       // Merge all phase3 agent branches to main
       await mergePhase3Branches(courseDir);
@@ -5553,19 +5750,21 @@ app.get('/api/courses', async (req, res) => {
 
         // Check if this is a valid course (has either format)
         if (hasOldFormat || hasNewFormat) {
-          // Parse course code - support both patterns:
+          // Parse course code - support multiple patterns:
           // - xxx_for_yyy (intelligent, no suffix)
           // - xxx_for_yyy_NNseeds (legacy with suffix)
+          // - xxx_for_yyy_sXXXX-XXXX (segment range)
           const matchWithSeeds = dir.match(/^([a-z]{3})_for_([a-z]{3})_(\d+)seeds$/);
           const matchWithoutSeeds = dir.match(/^([a-z]{3})_for_([a-z]{3})$/);
+          const matchSegmentRange = dir.match(/^([a-z]{3})_for_([a-z]{3})_s\d{4}-\d{4}$/);
 
-          if (!matchWithSeeds && !matchWithoutSeeds) {
+          if (!matchWithSeeds && !matchWithoutSeeds && !matchSegmentRange) {
             console.log(`[API] Skipping directory ${dir} - doesn't match course code pattern`);
             continue;
           }
 
-          const targetLang = matchWithSeeds ? matchWithSeeds[1] : matchWithoutSeeds[1];
-          const knownLang = matchWithSeeds ? matchWithSeeds[2] : matchWithoutSeeds[2];
+          const targetLang = matchWithSeeds ? matchWithSeeds[1] : matchSegmentRange ? matchSegmentRange[1] : matchWithoutSeeds[1];
+          const knownLang = matchWithSeeds ? matchWithSeeds[2] : matchSegmentRange ? matchSegmentRange[2] : matchWithoutSeeds[2];
           // Seed count will be read from actual file, not directory name
 
           let translationCount = 0;
