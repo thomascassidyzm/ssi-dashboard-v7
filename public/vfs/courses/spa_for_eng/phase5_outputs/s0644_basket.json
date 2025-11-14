@@ -1,0 +1,96 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0644",
+  "generation_stage": "COMPLETE",
+  "seed_pair": {
+    "target": "Could you say that sir?",
+    "known": "¿Podría decir eso señor?"
+  },
+  "legos": {
+    "S0644L01": {
+      "lego": ["could you", "podría"],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Could you", "podría", null, 1],
+        ["Could you sir", "podría señor", null, 2],
+        ["Could you with you", "podría contigo", null, 2],
+        ["I think could you", "pienso podría", null, 2],
+        ["I think that could you", "pienso que podría", null, 3],
+        ["Could you it's the red one", "podría es el rojo", null, 3],
+        ["Could you on that chair", "podría en esa silla", null, 3],
+        ["Could you how do you feel madam", "podría cómo se siente señora", null, 4],
+        ["I think that could you the red one", "pienso que podría el rojo", null, 4],
+        ["Could you do you want", "podría quiere usted", null, 2]
+      ]
+    },
+    "S0644L02": {
+      "lego": ["that", "eso"],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["That", "eso", null, 1],
+        ["Could you that", "podría eso", null, 2],
+        ["That sir", "eso señor", null, 2],
+        ["I think that", "pienso que eso", null, 2],
+        ["That with you", "eso contigo", null, 2],
+        ["That it's the red one", "eso es el rojo", null, 3],
+        ["Could you that on that chair", "podría eso en esa silla", null, 4],
+        ["I think that that is the red one", "pienso que eso es el rojo", null, 5],
+        ["That how do you feel madam", "eso cómo se siente señora", null, 4],
+        ["Could you that do you want", "podría eso quiere usted", null, 3]
+      ]
+    },
+    "S0644L03": {
+      "lego": ["sir", "señor"],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Sir", "señor", null, 1],
+        ["With you sir", "contigo señor", null, 2],
+        ["Could you sir", "podría señor", null, 2],
+        ["That sir", "eso señor", null, 2],
+        ["I think sir", "pienso señor", null, 2],
+        ["It's the red one sir", "es el rojo señor", null, 3],
+        ["On that chair sir", "en esa silla señor", null, 3],
+        ["How do you feel sir", "cómo se siente señor", null, 3],
+        ["Could you that sir", "podría eso señor", null, 3],
+        ["Do you want sir", "quiere usted señor", null, 2]
+      ]
+    },
+    "S0644L04": {
+      "lego": ["could you say", "podría decir"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Could you say", "podría decir", null, 1],
+        ["Could you say sir", "podría decir señor", null, 2],
+        ["Could you say that", "podría decir eso", null, 2],
+        ["I think could you say", "pienso podría decir", null, 2],
+        ["Could you say with you", "podría decir contigo", null, 2],
+        ["Could you say it's the red one", "podría decir es el rojo", null, 4],
+        ["Could you say on that chair", "podría decir en esa silla", null, 4],
+        ["I think that could you say that", "pienso que podría decir eso", null, 5],
+        ["Could you say how do you feel madam", "podría decir cómo se siente señora", null, 5],
+        ["Could you say do you want", "podría decir quiere usted", null, 3]
+      ]
+    },
+    "S0644L05": {
+      "lego": ["say that", "decir eso"],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Say that", "decir eso", null, 1],
+        ["Could you say that", "podría decir eso", null, 2],
+        ["Say that sir", "decir eso señor", null, 2],
+        ["I think say that", "pienso decir eso", null, 2],
+        ["Say that with you", "decir eso contigo", null, 2],
+        ["Could you say that with you", "podría decir eso contigo", null, 3],
+        ["Say that it's the red one", "decir eso es el rojo", null, 4],
+        ["I think that could you say that", "pienso que podría decir eso", null, 5],
+        ["Could you say that on that chair", "podría decir eso en esa silla", null, 5],
+        ["Could you say that sir", "podría decir eso señor", null, 3]
+      ]
+    }
+  }
+}
