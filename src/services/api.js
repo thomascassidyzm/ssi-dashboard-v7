@@ -92,8 +92,9 @@ export default {
           console.log(`[API] Loaded ${manifest.courses.length} courses from manifest (generated ${manifest.generated_at})`)
 
           // Transform manifest format to API format
+          // Show courses with Phase 1 (translations) OR Phase 3 (LEGOs)
           const courses = manifest.courses
-            .filter(course => course.actual_seed_count > 0 && course.lego_count > 0)
+            .filter(course => course.actual_seed_count > 0) // Must have at least Phase 1
             .map(course => ({
               course_code: course.course_code,
               source_language: course.source_language,
@@ -101,11 +102,11 @@ export default {
               total_seeds: course.total_seeds,
               version: course.format,
               created_at: new Date().toISOString(),
-              status: 'phase_3_complete',
+              status: course.lego_count > 0 ? 'phase_3_complete' : 'phase_1_complete',
               seed_pairs: course.actual_seed_count,
               lego_pairs: course.lego_count,
               lego_baskets: course.has_baskets ? 1 : 0,
-              phases_completed: ['1', '3']
+              phases_completed: course.lego_count > 0 ? ['1', '3'] : ['1']
             }))
 
           return { courses }
