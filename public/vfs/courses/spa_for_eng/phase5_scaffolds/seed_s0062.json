@@ -1,1 +1,488 @@
-{"version":"curated_v7_spanish","seed_id":"S0062","generation_stage":"SCAFFOLD_READY_FOR_PHRASE_GENERATION","seed_pair":{"target":"I'm not sure if I can help you at the same time.","known":"No estoy seguro si puedo ayudarte al mismo tiempo."},"recent_context":{"S0057":["no puedo recordar | cómo decir | recordar cómo decir | lo que quería decir | quería decir","I can't remember | how to say | remember how to say | what I wanted to say | wanted to say"],"S0058":["es interesante | cuando | cuando comprendes | suficientes palabras","it's interesting | when | when you understand | enough words"],"S0059":["sé hacer | lo que necesito hacer | necesito hacer | la próxima semana","I know how to do | what I need to do | need to do | next week"],"S0060":["todavía | no sé | todavía no sé | cómo decir | suficientes palabras diferentes","yet/still | I don't know | I still don't know | how to say | enough different words"],"S0061":["podrías decir | decir eso | otra vez | un poco más | más lentamente | un poco más lentamente","could you say | say that | again | a little more | more slowly | a little more slowly"]},"legos":{"S0062L01":{"lego":["I'm not sure","no estoy seguro"],"type":"M","available_legos":315,"is_final_lego":false,"overlap_level":"none","target_phrase_count":10,"practice_phrases":[],"phrase_distribution":{"short_1_to_2_legos":2,"medium_3_legos":2,"longer_4_legos":2,"longest_5_legos":4},"_metadata":{"lego_id":"S0062L01","seed_context":{"target":"I'm not sure if I can help you at the same time.","known":"No estoy seguro si puedo ayudarte al mismo tiempo."},"whitelist_pairs":[["a","to"],["a hablar más","to talk more"],["a las seis","at six o'clock"],["a su amigo","to his friend"],["adivinar","to guess"],["ahora","now"],["algo","something"],["algo ayer","something yesterday"],["algo en español","something in Spanish"],["alguien","someone"],["alguien más","someone else"],["amigo","friend"],["amigos","friends"],["anoche","last night"],["antes de que","before"],["antes de que tenga que ir","before I have to go"],["aprender","to learn"],["aprender su nombre","to learn his name"],["aprendiendo","learning"],["aprendiendo español","learning Spanish"],["aprendiendo su nombre","learning her name"],["aproximadamente","about/approximately"],["aproximadamente una semana","about a week"],["aquí","here"],["así","like this/thus"],["ayer","yesterday"],["ayudarme","help me"],["bien","well"],["bolsa","bag"],["buena","good"],["cansado","tired"],["carta","letter"],["casi","nearly"],["casi preparado","nearly ready"],["comencé","I started"],["comencé a pensar","I started to think"],["comenzando","starting"],["comenzando a sentirme","starting to feel"],["comenzar","to start"],["comenzar a hablar","to start talking"],["como","as"],["cómo","how"],["cómo decir","how to say"],["cómo decir algo","how to say something"],["cómo hablar","how to speak"],["como pueda","as I can"],["cómo responder","how to answer"],["como si","as if"],["como si estuviera","as if I were"],["cómo te sientes","how do you feel"],["comprendes","you understand"],["con","with"],["con alguien más","with someone else"],["con mis amigos","with my friends"],["con todos los demás","with everyone else"],["conmigo","with me"],["contigo","with you"],["cosa","thing"],["cosas","things"],["cosas interesantes","interesting things"],["cuál","what/which"],["cuál es la respuesta","what the answer is"],["cuando","when"],["cuando comprendes","when you understand"],["cuando otras personas están aquí","when other people are here"],["cuánto","how much"],["cuánto tiempo","how long"],["cuánto tiempo llevas","how long have you been"],["cuidadosamente","carefully"],["darte","to give you/give you"],["darte un poco más","give you a little more"],["de","of"],["decir","say/to say"],["decir algo","say something"],["decir eso","say that"],["demasiado","too much"],["demasiado tiempo","too much time"],["descubrir","to find out"],["deseando","looking forward to"],["deseando hablar mejor","looking forward to speaking better"],["despertarme","waking up"],["después de","after"],["después de que termines","after you finish"],["día","day"],["diferentes","different"],["disfruto","I enjoy"],["disfruto hacer","I enjoy doing"],["dormí","I slept"],["duro","hard"],["el","the"],["él","he"],["el mes pasado","last month"],["él quiere","he wants"],["ella","she"],["ella quiere","she wants"],["en","in"],["en cómo responder","about how to answer"],["en español","in Spanish"],["en este momento","at the moment"],["en su bolsa","in her bag"],["encontrar","to meet"],["errores","mistakes"],["es","it's/is"],["es así","it's like this"],["es interesante","it's interesting"],["es una cosa buena","it's a good thing"],["es útil","it's useful"],["es útil comenzar a hablar","it's useful to start talking"],["escribir","to write/write"],["escribir una carta","write a letter"],["eso","that"],["español","Spanish"],["esta","this"],["esta mañana","this morning"],["esta noche","tonight"],["esta tarde","this afternoon"],["estaba","I was"],["estaba comenzando a sentirme mejor","I was starting to feel better"],["están","are"],["están aquí","are here"],["estar","to be"],["estar silencioso","to be quiet"],["estás","are you"],["estás aprendiendo","are you learning"],["este","this"],["estoy","I am"],["estoy comenzando a sentirme cansado","I'm starting to feel tired"],["estoy deseando","I'm looking forward to"],["estoy deseando hablar","I'm looking forward to speaking"],["estoy intentando","I'm trying"],["estoy intentando terminar","I'm trying to finish"],["estoy un poco cansado","I'm a little tired"],["estuviera","I were"],["estuviera casi preparado","I were nearly ready"],["explicar","to explain"],["fácilmente","easily"],["frecuentemente","often/frequently"],["gusta","like"],["hablan","speak"],["hablan español","speak Spanish"],["hablar","to speak"],["hablar conmigo","to speak with me"],["hablar español","speak Spanish"],["hablar más","talk more"],["hablar mejor","to speak better"],["hablas","do you speak"],["hablas español","do you speak Spanish"],["hables","you speak"],["hablo","I speak"],["hacer","to do"],["hacer errores","making mistakes"],["historia","story"],["hoy","today"],["importa","it matters"],["intentando","trying"],["intentando aprender","trying to learn"],["intentando recordar","trying to remember"],["intentando terminar","trying to finish"],["intentar","try"],["intentar explicar","try to explain"],["interesante","interesting"],["interesantes","interesting"],["interrumpir","to interrupt"],["interrumpir la historia","to interrupt the story"],["ir","go"],["la","the"],["la historia","the story"],["la próxima semana","next week"],["la semana pasada","last week"],["las","the"],["leer","to read"],["leer nada","to read anything"],["lentamente","slowly"],["llevas","you have been"],["llevas aprendiendo","have you been learning"],["llevo","I've been"],["llevo aprendiendo","I've been learning"],["lo","the"],["lo más","the most"],["lo más frecuentemente posible","as often as possible"],["lo más rápidamente posible","as quickly as possible"],["lo que","what"],["lo que necesito hacer","what I need to do"],["lo que quería decir","what I wanted to say"],["lo que quiero decir","what I mean"],["lo que va a ocurrir","what's going to happen"],["los demás","the others/else"],["mañana","morning"],["más","more"],["más lentamente","more slowly"],["más pronto","more soon"],["más tarde","later"],["me","to me"],["me gusta sentir","I like feeling"],["me gustaría","I'd like"],["me gustaría poder","I'd like to be able to"],["me importa","I care"],["me preocupo por","I worry about"],["me siento bien","I feel okay"],["mejor","better"],["mejor que anoche","better than last night"],["mejorar","to improve"],["mes","month"],["mis","my"],["momento","moment"],["mostrar","to show"],["mostrarme","to show me"],["muy","very"],["muy bien","very well"],["nada","anything"],["necesito","I need"],["necesito hacer","need to do"],["necesito mejorar","I need to improve"],["necesito saber","I need to know"],["no","don't"],["no disfruto","I don't enjoy"],["no disfruto despertarme","I don't enjoy waking up"],["no dormí","I didn't sleep"],["no estaba pensando","I wasn't thinking"],["no estoy intentando terminar","I'm not trying to finish"],["no estoy seguro","I'm not sure"],["no me gusta","I don't like"],["no me gusta tomar","I don't like taking"],["no me gustaría","I wouldn't like"],["no me importa","I don't care"],["no me preocupo por hacer errores","I don't worry about making mistakes"],["no necesito saber","I don't need to know"],["no puedo recordar","I can't remember"],["no queremos","we don't want"],["no queremos interrumpir","we don't want to interrupt"],["no quiere","doesn't want"],["no quiere estar","doesn't want to be"],["no quiere leer","doesn't want to read"],["no quiero","I don't want"],["no quiero parar de hablar","I don't want to stop talking"],["no sé","I don't know"],["no voy a poder","I'm not going to be able to"],["noche","night"],["nombre","name"],["o","or"],["ocurrir","happen"],["oración","sentence"],["otra","another"],["otra vez","again"],["otras","other"],["otras personas","other people"],["palabra","word"],["palabras","words"],["para","so/in order to"],["para ir","to go"],["para poder","so I can"],["para responder","to answer"],["parar","to stop"],["parar de hablar","to stop talking"],["pasada","last/past"],["pasado","last/past"],["pensando","thinking"],["pensando en cómo responder","thinking about how to answer"],["pensar","to think"],["pensar sobre eso","to think about it"],["pero","but"],["personas","people"],["personas que hablan español","people who speak Spanish"],["pienso","I think"],["pienso que","I think that"],["pocas","few"],["poco","little"],["poder","can"],["poder hablar","to be able to speak"],["poder recordar","can remember"],["podrías","could you"],["podrías decir","could you say"],["poner","to put/put"],["poner su carta","put his letter"],["por","about/for"],["por hacer errores","about making mistakes"],["por qué","why"],["por qué estás aprendiendo","why are you learning"],["porque","because"],["porque quiero","because I want"],["posible","possible"],["practicar","practise"],["practicar hablar","practise speaking"],["preguntarte","to ask you"],["preguntarte algo","to ask you something"],["preocupo","I worry"],["preparado","ready"],["preparado para ir","ready to go"],["pronto","soon"],["próxima","next"],["pueda","I can"],["puedas","you can"],["puedo","I can"],["puedo recordar","I can remember"],["que","that"],["que hablan español","who speak Spanish"],["queremos","we want"],["queremos reunirnos","we want to meet"],["quería","wanted"],["quería decir","wanted to say"],["quería escribir","wanted to write"],["quería poner","wanted to put"],["quería preguntarte","I wanted to ask you"],["queríamos","we wanted"],["queríamos darte","we wanted to give you"],["querías","did you want"],["querías hablar","you wanted to speak"],["querías mostrarme","did you want to show me"],["quiere","want"],["quiere descubrir","wants to find out"],["quiere volver","wants to come back"],["quieres","you want"],["quieres aprender","you want to learn"],["quiero","I want"],["quiero decir","I mean"],["quiero encontrar","I want to meet"],["quiero encontrar personas","I want to meet people"],["quiero hablar","I want to speak"],["quiero intentar","I want to try"],["quiero que hables","I want you to speak"],["quiero que hables español","I want you to speak Spanish"],["rápidamente","quickly"],["recordar","remember"],["recordar cómo decir","remember how to say"],["recordar fácilmente","remember easily"],["recordar toda la oración","remember the whole sentence"],["recordar una palabra","remember a word"],["responder","to answer"],["respuesta","answer"],["reunirnos","to meet"],["saber","to know"],["saber todo","know everything"],["sabes","you know"],["sabes lo que quiero decir","you know what I mean"],["sé","I know"],["sé hacer","I know how to do"],["seguro","sure"],["seis","six"],["semana","week"],["sentir","to feel"],["sentir como si","to feel as if"],["sentirme","feel myself"],["sentirme cansado","feel tired"],["sentirme mejor","feel better"],["si","if"],["si necesito mejorar","if I need to improve"],["si puedo","if I can"],["si puedo recordar","if I can remember"],["si sabes lo que quiero decir","if you know what I mean"],["sientes","feel"],["siento","feel"],["silencioso","quiet"],["sobre","about"],["sobre eso","about it"],["su","her"],["su carta","his letter"],["su nombre","her name"],["suficientes","enough"],["suficientes palabras","enough words"],["suficientes palabras diferentes","enough different words"],["tan","as"],["tan duro como pueda","as hard as I can"],["tan pronto como","as soon as"],["tan pronto como pueda","as soon as I can"],["tan pronto como puedas","as soon as you can"],["tarde","afternoon"],["te","you/yourself"],["te sientes","you feel"],["tenga que","I have to"],["tenga que ir","I have to go"],["terminar","to finish"],["termines","you finish"],["tiempo","time"],["tiempo para responder","time to answer"],["toda","whole"],["toda la oración","the whole sentence"],["todavía","yet/still"],["todavía no sé","I still don't know"],["todo","everything"],["todo el día","all day"],["todos","everyone/all"],["tomar","to take"],["tomar demasiado tiempo","to take too much time"],["un","a"],["un poco","a little"],["un poco cansado","a little tired"],["un poco de","a little"],["un poco de español","a little Spanish"],["un poco más","a little more"],["un poco más de tiempo","a little more time"],["un poco más lentamente","a little more slowly"],["una","a"],["una carta","a letter"],["una cosa buena","a good thing"],["una palabra","a word"],["una semana","a week"],["unas","a/some"],["unas pocas palabras","a few words"],["útil","useful"],["va a","is going to"],["va a ocurrir","is going to happen"],["va a ocurrir mañana","going to happen tomorrow"],["vas","you're going"],["vas a ayudarme","you're going to help me"],["vez","time"],["volver","to come back"],["voy","I'm going"],["voy a","I'm going to"],["voy a comenzar","I'm going to start"],["voy a comenzar a hablar","I'm going to start talking"],["voy a intentar","I'm going to try"],["voy a poder","I'm going to be able to"],["voy a practicar","I'm going to practise"],["y","and"]],"available_whitelist_size":414},"components":[["no","not"],["estoy","I am"],["seguro","sure"]]},"S0062L02":{"lego":["if I can help you","si puedo ayudarte"],"type":"M","available_legos":316,"is_final_lego":false,"overlap_level":"none","target_phrase_count":10,"practice_phrases":[],"phrase_distribution":{"short_1_to_2_legos":2,"medium_3_legos":2,"longer_4_legos":2,"longest_5_legos":4},"_metadata":{"lego_id":"S0062L02","seed_context":{"target":"I'm not sure if I can help you at the same time.","known":"No estoy seguro si puedo ayudarte al mismo tiempo."},"whitelist_pairs":[["a","to"],["a hablar más","to talk more"],["a las seis","at six o'clock"],["a su amigo","to his friend"],["adivinar","to guess"],["ahora","now"],["algo","something"],["algo ayer","something yesterday"],["algo en español","something in Spanish"],["alguien","someone"],["alguien más","someone else"],["amigo","friend"],["amigos","friends"],["anoche","last night"],["antes de que","before"],["antes de que tenga que ir","before I have to go"],["aprender","to learn"],["aprender su nombre","to learn his name"],["aprendiendo","learning"],["aprendiendo español","learning Spanish"],["aprendiendo su nombre","learning her name"],["aproximadamente","about/approximately"],["aproximadamente una semana","about a week"],["aquí","here"],["así","like this/thus"],["ayer","yesterday"],["ayudarme","help me"],["bien","well"],["bolsa","bag"],["buena","good"],["cansado","tired"],["carta","letter"],["casi","nearly"],["casi preparado","nearly ready"],["comencé","I started"],["comencé a pensar","I started to think"],["comenzando","starting"],["comenzando a sentirme","starting to feel"],["comenzar","to start"],["comenzar a hablar","to start talking"],["como","as"],["cómo","how"],["cómo decir","how to say"],["cómo decir algo","how to say something"],["cómo hablar","how to speak"],["como pueda","as I can"],["cómo responder","how to answer"],["como si","as if"],["como si estuviera","as if I were"],["cómo te sientes","how do you feel"],["comprendes","you understand"],["con","with"],["con alguien más","with someone else"],["con mis amigos","with my friends"],["con todos los demás","with everyone else"],["conmigo","with me"],["contigo","with you"],["cosa","thing"],["cosas","things"],["cosas interesantes","interesting things"],["cuál","what/which"],["cuál es la respuesta","what the answer is"],["cuando","when"],["cuando comprendes","when you understand"],["cuando otras personas están aquí","when other people are here"],["cuánto","how much"],["cuánto tiempo","how long"],["cuánto tiempo llevas","how long have you been"],["cuidadosamente","carefully"],["darte","to give you/give you"],["darte un poco más","give you a little more"],["de","of"],["decir","say/to say"],["decir algo","say something"],["decir eso","say that"],["demasiado","too much"],["demasiado tiempo","too much time"],["descubrir","to find out"],["deseando","looking forward to"],["deseando hablar mejor","looking forward to speaking better"],["despertarme","waking up"],["después de","after"],["después de que termines","after you finish"],["día","day"],["diferentes","different"],["disfruto","I enjoy"],["disfruto hacer","I enjoy doing"],["dormí","I slept"],["duro","hard"],["el","the"],["él","he"],["el mes pasado","last month"],["él quiere","he wants"],["ella","she"],["ella quiere","she wants"],["en","in"],["en cómo responder","about how to answer"],["en español","in Spanish"],["en este momento","at the moment"],["en su bolsa","in her bag"],["encontrar","to meet"],["errores","mistakes"],["es","it's/is"],["es así","it's like this"],["es interesante","it's interesting"],["es una cosa buena","it's a good thing"],["es útil","it's useful"],["es útil comenzar a hablar","it's useful to start talking"],["escribir","to write/write"],["escribir una carta","write a letter"],["eso","that"],["español","Spanish"],["esta","this"],["esta mañana","this morning"],["esta noche","tonight"],["esta tarde","this afternoon"],["estaba","I was"],["estaba comenzando a sentirme mejor","I was starting to feel better"],["están","are"],["están aquí","are here"],["estar","to be"],["estar silencioso","to be quiet"],["estás","are you"],["estás aprendiendo","are you learning"],["este","this"],["estoy","I am"],["estoy comenzando a sentirme cansado","I'm starting to feel tired"],["estoy deseando","I'm looking forward to"],["estoy deseando hablar","I'm looking forward to speaking"],["estoy intentando","I'm trying"],["estoy intentando terminar","I'm trying to finish"],["estoy un poco cansado","I'm a little tired"],["estuviera","I were"],["estuviera casi preparado","I were nearly ready"],["explicar","to explain"],["fácilmente","easily"],["frecuentemente","often/frequently"],["gusta","like"],["hablan","speak"],["hablan español","speak Spanish"],["hablar","to speak"],["hablar conmigo","to speak with me"],["hablar español","speak Spanish"],["hablar más","talk more"],["hablar mejor","to speak better"],["hablas","do you speak"],["hablas español","do you speak Spanish"],["hables","you speak"],["hablo","I speak"],["hacer","to do"],["hacer errores","making mistakes"],["historia","story"],["hoy","today"],["importa","it matters"],["intentando","trying"],["intentando aprender","trying to learn"],["intentando recordar","trying to remember"],["intentando terminar","trying to finish"],["intentar","try"],["intentar explicar","try to explain"],["interesante","interesting"],["interesantes","interesting"],["interrumpir","to interrupt"],["interrumpir la historia","to interrupt the story"],["ir","go"],["la","the"],["la historia","the story"],["la próxima semana","next week"],["la semana pasada","last week"],["las","the"],["leer","to read"],["leer nada","to read anything"],["lentamente","slowly"],["llevas","you have been"],["llevas aprendiendo","have you been learning"],["llevo","I've been"],["llevo aprendiendo","I've been learning"],["lo","the"],["lo más","the most"],["lo más frecuentemente posible","as often as possible"],["lo más rápidamente posible","as quickly as possible"],["lo que","what"],["lo que necesito hacer","what I need to do"],["lo que quería decir","what I wanted to say"],["lo que quiero decir","what I mean"],["lo que va a ocurrir","what's going to happen"],["los demás","the others/else"],["mañana","morning"],["más","more"],["más lentamente","more slowly"],["más pronto","more soon"],["más tarde","later"],["me","to me"],["me gusta sentir","I like feeling"],["me gustaría","I'd like"],["me gustaría poder","I'd like to be able to"],["me importa","I care"],["me preocupo por","I worry about"],["me siento bien","I feel okay"],["mejor","better"],["mejor que anoche","better than last night"],["mejorar","to improve"],["mes","month"],["mis","my"],["momento","moment"],["mostrar","to show"],["mostrarme","to show me"],["muy","very"],["muy bien","very well"],["nada","anything"],["necesito","I need"],["necesito hacer","need to do"],["necesito mejorar","I need to improve"],["necesito saber","I need to know"],["no","not"],["no disfruto","I don't enjoy"],["no disfruto despertarme","I don't enjoy waking up"],["no dormí","I didn't sleep"],["no estaba pensando","I wasn't thinking"],["no estoy intentando terminar","I'm not trying to finish"],["no estoy seguro","I'm not sure"],["no me gusta","I don't like"],["no me gusta tomar","I don't like taking"],["no me gustaría","I wouldn't like"],["no me importa","I don't care"],["no me preocupo por hacer errores","I don't worry about making mistakes"],["no necesito saber","I don't need to know"],["no puedo recordar","I can't remember"],["no queremos","we don't want"],["no queremos interrumpir","we don't want to interrupt"],["no quiere","doesn't want"],["no quiere estar","doesn't want to be"],["no quiere leer","doesn't want to read"],["no quiero","I don't want"],["no quiero parar de hablar","I don't want to stop talking"],["no sé","I don't know"],["no voy a poder","I'm not going to be able to"],["noche","night"],["nombre","name"],["o","or"],["ocurrir","happen"],["oración","sentence"],["otra","another"],["otra vez","again"],["otras","other"],["otras personas","other people"],["palabra","word"],["palabras","words"],["para","so/in order to"],["para ir","to go"],["para poder","so I can"],["para responder","to answer"],["parar","to stop"],["parar de hablar","to stop talking"],["pasada","last/past"],["pasado","last/past"],["pensando","thinking"],["pensando en cómo responder","thinking about how to answer"],["pensar","to think"],["pensar sobre eso","to think about it"],["pero","but"],["personas","people"],["personas que hablan español","people who speak Spanish"],["pienso","I think"],["pienso que","I think that"],["pocas","few"],["poco","little"],["poder","can"],["poder hablar","to be able to speak"],["poder recordar","can remember"],["podrías","could you"],["podrías decir","could you say"],["poner","to put/put"],["poner su carta","put his letter"],["por","about/for"],["por hacer errores","about making mistakes"],["por qué","why"],["por qué estás aprendiendo","why are you learning"],["porque","because"],["porque quiero","because I want"],["posible","possible"],["practicar","practise"],["practicar hablar","practise speaking"],["preguntarte","to ask you"],["preguntarte algo","to ask you something"],["preocupo","I worry"],["preparado","ready"],["preparado para ir","ready to go"],["pronto","soon"],["próxima","next"],["pueda","I can"],["puedas","you can"],["puedo","I can"],["puedo recordar","I can remember"],["que","that"],["que hablan español","who speak Spanish"],["queremos","we want"],["queremos reunirnos","we want to meet"],["quería","wanted"],["quería decir","wanted to say"],["quería escribir","wanted to write"],["quería poner","wanted to put"],["quería preguntarte","I wanted to ask you"],["queríamos","we wanted"],["queríamos darte","we wanted to give you"],["querías","did you want"],["querías hablar","you wanted to speak"],["querías mostrarme","did you want to show me"],["quiere","want"],["quiere descubrir","wants to find out"],["quiere volver","wants to come back"],["quieres","you want"],["quieres aprender","you want to learn"],["quiero","I want"],["quiero decir","I mean"],["quiero encontrar","I want to meet"],["quiero encontrar personas","I want to meet people"],["quiero hablar","I want to speak"],["quiero intentar","I want to try"],["quiero que hables","I want you to speak"],["quiero que hables español","I want you to speak Spanish"],["rápidamente","quickly"],["recordar","remember"],["recordar cómo decir","remember how to say"],["recordar fácilmente","remember easily"],["recordar toda la oración","remember the whole sentence"],["recordar una palabra","remember a word"],["responder","to answer"],["respuesta","answer"],["reunirnos","to meet"],["saber","to know"],["saber todo","know everything"],["sabes","you know"],["sabes lo que quiero decir","you know what I mean"],["sé","I know"],["sé hacer","I know how to do"],["seguro","sure"],["seis","six"],["semana","week"],["sentir","to feel"],["sentir como si","to feel as if"],["sentirme","feel myself"],["sentirme cansado","feel tired"],["sentirme mejor","feel better"],["si","if"],["si necesito mejorar","if I need to improve"],["si puedo","if I can"],["si puedo recordar","if I can remember"],["si sabes lo que quiero decir","if you know what I mean"],["sientes","feel"],["siento","feel"],["silencioso","quiet"],["sobre","about"],["sobre eso","about it"],["su","her"],["su carta","his letter"],["su nombre","her name"],["suficientes","enough"],["suficientes palabras","enough words"],["suficientes palabras diferentes","enough different words"],["tan","as"],["tan duro como pueda","as hard as I can"],["tan pronto como","as soon as"],["tan pronto como pueda","as soon as I can"],["tan pronto como puedas","as soon as you can"],["tarde","afternoon"],["te","you/yourself"],["te sientes","you feel"],["tenga que","I have to"],["tenga que ir","I have to go"],["terminar","to finish"],["termines","you finish"],["tiempo","time"],["tiempo para responder","time to answer"],["toda","whole"],["toda la oración","the whole sentence"],["todavía","yet/still"],["todavía no sé","I still don't know"],["todo","everything"],["todo el día","all day"],["todos","everyone/all"],["tomar","to take"],["tomar demasiado tiempo","to take too much time"],["un","a"],["un poco","a little"],["un poco cansado","a little tired"],["un poco de","a little"],["un poco de español","a little Spanish"],["un poco más","a little more"],["un poco más de tiempo","a little more time"],["un poco más lentamente","a little more slowly"],["una","a"],["una carta","a letter"],["una cosa buena","a good thing"],["una palabra","a word"],["una semana","a week"],["unas","a/some"],["unas pocas palabras","a few words"],["útil","useful"],["va a","is going to"],["va a ocurrir","is going to happen"],["va a ocurrir mañana","going to happen tomorrow"],["vas","you're going"],["vas a ayudarme","you're going to help me"],["vez","time"],["volver","to come back"],["voy","I'm going"],["voy a","I'm going to"],["voy a comenzar","I'm going to start"],["voy a comenzar a hablar","I'm going to start talking"],["voy a intentar","I'm going to try"],["voy a poder","I'm going to be able to"],["voy a practicar","I'm going to practise"],["y","and"]],"available_whitelist_size":414},"components":[["si","if"],["puedo","I can"],["ayudarte","help you"]]},"S0062L03":{"lego":["I can help you","puedo ayudarte"],"type":"M","available_legos":317,"is_final_lego":false,"overlap_level":"complete","target_phrase_count":5,"practice_phrases":[],"phrase_distribution":{"longer_3_to_5_legos":5},"_metadata":{"lego_id":"S0062L03","seed_context":{"target":"I'm not sure if I can help you at the same time.","known":"No estoy seguro si puedo ayudarte al mismo tiempo."},"whitelist_pairs":[["a","to"],["a hablar más","to talk more"],["a las seis","at six o'clock"],["a su amigo","to his friend"],["adivinar","to guess"],["ahora","now"],["algo","something"],["algo ayer","something yesterday"],["algo en español","something in Spanish"],["alguien","someone"],["alguien más","someone else"],["amigo","friend"],["amigos","friends"],["anoche","last night"],["antes de que","before"],["antes de que tenga que ir","before I have to go"],["aprender","to learn"],["aprender su nombre","to learn his name"],["aprendiendo","learning"],["aprendiendo español","learning Spanish"],["aprendiendo su nombre","learning her name"],["aproximadamente","about/approximately"],["aproximadamente una semana","about a week"],["aquí","here"],["así","like this/thus"],["ayer","yesterday"],["ayudarme","help me"],["ayudarte","help you"],["bien","well"],["bolsa","bag"],["buena","good"],["cansado","tired"],["carta","letter"],["casi","nearly"],["casi preparado","nearly ready"],["comencé","I started"],["comencé a pensar","I started to think"],["comenzando","starting"],["comenzando a sentirme","starting to feel"],["comenzar","to start"],["comenzar a hablar","to start talking"],["como","as"],["cómo","how"],["cómo decir","how to say"],["cómo decir algo","how to say something"],["cómo hablar","how to speak"],["como pueda","as I can"],["cómo responder","how to answer"],["como si","as if"],["como si estuviera","as if I were"],["cómo te sientes","how do you feel"],["comprendes","you understand"],["con","with"],["con alguien más","with someone else"],["con mis amigos","with my friends"],["con todos los demás","with everyone else"],["conmigo","with me"],["contigo","with you"],["cosa","thing"],["cosas","things"],["cosas interesantes","interesting things"],["cuál","what/which"],["cuál es la respuesta","what the answer is"],["cuando","when"],["cuando comprendes","when you understand"],["cuando otras personas están aquí","when other people are here"],["cuánto","how much"],["cuánto tiempo","how long"],["cuánto tiempo llevas","how long have you been"],["cuidadosamente","carefully"],["darte","to give you/give you"],["darte un poco más","give you a little more"],["de","of"],["decir","say/to say"],["decir algo","say something"],["decir eso","say that"],["demasiado","too much"],["demasiado tiempo","too much time"],["descubrir","to find out"],["deseando","looking forward to"],["deseando hablar mejor","looking forward to speaking better"],["despertarme","waking up"],["después de","after"],["después de que termines","after you finish"],["día","day"],["diferentes","different"],["disfruto","I enjoy"],["disfruto hacer","I enjoy doing"],["dormí","I slept"],["duro","hard"],["el","the"],["él","he"],["el mes pasado","last month"],["él quiere","he wants"],["ella","she"],["ella quiere","she wants"],["en","in"],["en cómo responder","about how to answer"],["en español","in Spanish"],["en este momento","at the moment"],["en su bolsa","in her bag"],["encontrar","to meet"],["errores","mistakes"],["es","it's/is"],["es así","it's like this"],["es interesante","it's interesting"],["es una cosa buena","it's a good thing"],["es útil","it's useful"],["es útil comenzar a hablar","it's useful to start talking"],["escribir","to write/write"],["escribir una carta","write a letter"],["eso","that"],["español","Spanish"],["esta","this"],["esta mañana","this morning"],["esta noche","tonight"],["esta tarde","this afternoon"],["estaba","I was"],["estaba comenzando a sentirme mejor","I was starting to feel better"],["están","are"],["están aquí","are here"],["estar","to be"],["estar silencioso","to be quiet"],["estás","are you"],["estás aprendiendo","are you learning"],["este","this"],["estoy","I am"],["estoy comenzando a sentirme cansado","I'm starting to feel tired"],["estoy deseando","I'm looking forward to"],["estoy deseando hablar","I'm looking forward to speaking"],["estoy intentando","I'm trying"],["estoy intentando terminar","I'm trying to finish"],["estoy un poco cansado","I'm a little tired"],["estuviera","I were"],["estuviera casi preparado","I were nearly ready"],["explicar","to explain"],["fácilmente","easily"],["frecuentemente","often/frequently"],["gusta","like"],["hablan","speak"],["hablan español","speak Spanish"],["hablar","to speak"],["hablar conmigo","to speak with me"],["hablar español","speak Spanish"],["hablar más","talk more"],["hablar mejor","to speak better"],["hablas","do you speak"],["hablas español","do you speak Spanish"],["hables","you speak"],["hablo","I speak"],["hacer","to do"],["hacer errores","making mistakes"],["historia","story"],["hoy","today"],["importa","it matters"],["intentando","trying"],["intentando aprender","trying to learn"],["intentando recordar","trying to remember"],["intentando terminar","trying to finish"],["intentar","try"],["intentar explicar","try to explain"],["interesante","interesting"],["interesantes","interesting"],["interrumpir","to interrupt"],["interrumpir la historia","to interrupt the story"],["ir","go"],["la","the"],["la historia","the story"],["la próxima semana","next week"],["la semana pasada","last week"],["las","the"],["leer","to read"],["leer nada","to read anything"],["lentamente","slowly"],["llevas","you have been"],["llevas aprendiendo","have you been learning"],["llevo","I've been"],["llevo aprendiendo","I've been learning"],["lo","the"],["lo más","the most"],["lo más frecuentemente posible","as often as possible"],["lo más rápidamente posible","as quickly as possible"],["lo que","what"],["lo que necesito hacer","what I need to do"],["lo que quería decir","what I wanted to say"],["lo que quiero decir","what I mean"],["lo que va a ocurrir","what's going to happen"],["los demás","the others/else"],["mañana","morning"],["más","more"],["más lentamente","more slowly"],["más pronto","more soon"],["más tarde","later"],["me","to me"],["me gusta sentir","I like feeling"],["me gustaría","I'd like"],["me gustaría poder","I'd like to be able to"],["me importa","I care"],["me preocupo por","I worry about"],["me siento bien","I feel okay"],["mejor","better"],["mejor que anoche","better than last night"],["mejorar","to improve"],["mes","month"],["mis","my"],["momento","moment"],["mostrar","to show"],["mostrarme","to show me"],["muy","very"],["muy bien","very well"],["nada","anything"],["necesito","I need"],["necesito hacer","need to do"],["necesito mejorar","I need to improve"],["necesito saber","I need to know"],["no","not"],["no disfruto","I don't enjoy"],["no disfruto despertarme","I don't enjoy waking up"],["no dormí","I didn't sleep"],["no estaba pensando","I wasn't thinking"],["no estoy intentando terminar","I'm not trying to finish"],["no estoy seguro","I'm not sure"],["no me gusta","I don't like"],["no me gusta tomar","I don't like taking"],["no me gustaría","I wouldn't like"],["no me importa","I don't care"],["no me preocupo por hacer errores","I don't worry about making mistakes"],["no necesito saber","I don't need to know"],["no puedo recordar","I can't remember"],["no queremos","we don't want"],["no queremos interrumpir","we don't want to interrupt"],["no quiere","doesn't want"],["no quiere estar","doesn't want to be"],["no quiere leer","doesn't want to read"],["no quiero","I don't want"],["no quiero parar de hablar","I don't want to stop talking"],["no sé","I don't know"],["no voy a poder","I'm not going to be able to"],["noche","night"],["nombre","name"],["o","or"],["ocurrir","happen"],["oración","sentence"],["otra","another"],["otra vez","again"],["otras","other"],["otras personas","other people"],["palabra","word"],["palabras","words"],["para","so/in order to"],["para ir","to go"],["para poder","so I can"],["para responder","to answer"],["parar","to stop"],["parar de hablar","to stop talking"],["pasada","last/past"],["pasado","last/past"],["pensando","thinking"],["pensando en cómo responder","thinking about how to answer"],["pensar","to think"],["pensar sobre eso","to think about it"],["pero","but"],["personas","people"],["personas que hablan español","people who speak Spanish"],["pienso","I think"],["pienso que","I think that"],["pocas","few"],["poco","little"],["poder","can"],["poder hablar","to be able to speak"],["poder recordar","can remember"],["podrías","could you"],["podrías decir","could you say"],["poner","to put/put"],["poner su carta","put his letter"],["por","about/for"],["por hacer errores","about making mistakes"],["por qué","why"],["por qué estás aprendiendo","why are you learning"],["porque","because"],["porque quiero","because I want"],["posible","possible"],["practicar","practise"],["practicar hablar","practise speaking"],["preguntarte","to ask you"],["preguntarte algo","to ask you something"],["preocupo","I worry"],["preparado","ready"],["preparado para ir","ready to go"],["pronto","soon"],["próxima","next"],["pueda","I can"],["puedas","you can"],["puedo","I can"],["puedo recordar","I can remember"],["que","that"],["que hablan español","who speak Spanish"],["queremos","we want"],["queremos reunirnos","we want to meet"],["quería","wanted"],["quería decir","wanted to say"],["quería escribir","wanted to write"],["quería poner","wanted to put"],["quería preguntarte","I wanted to ask you"],["queríamos","we wanted"],["queríamos darte","we wanted to give you"],["querías","did you want"],["querías hablar","you wanted to speak"],["querías mostrarme","did you want to show me"],["quiere","want"],["quiere descubrir","wants to find out"],["quiere volver","wants to come back"],["quieres","you want"],["quieres aprender","you want to learn"],["quiero","I want"],["quiero decir","I mean"],["quiero encontrar","I want to meet"],["quiero encontrar personas","I want to meet people"],["quiero hablar","I want to speak"],["quiero intentar","I want to try"],["quiero que hables","I want you to speak"],["quiero que hables español","I want you to speak Spanish"],["rápidamente","quickly"],["recordar","remember"],["recordar cómo decir","remember how to say"],["recordar fácilmente","remember easily"],["recordar toda la oración","remember the whole sentence"],["recordar una palabra","remember a word"],["responder","to answer"],["respuesta","answer"],["reunirnos","to meet"],["saber","to know"],["saber todo","know everything"],["sabes","you know"],["sabes lo que quiero decir","you know what I mean"],["sé","I know"],["sé hacer","I know how to do"],["seguro","sure"],["seis","six"],["semana","week"],["sentir","to feel"],["sentir como si","to feel as if"],["sentirme","feel myself"],["sentirme cansado","feel tired"],["sentirme mejor","feel better"],["si","if"],["si necesito mejorar","if I need to improve"],["si puedo","if I can"],["si puedo ayudarte","if I can help you"],["si puedo recordar","if I can remember"],["si sabes lo que quiero decir","if you know what I mean"],["sientes","feel"],["siento","feel"],["silencioso","quiet"],["sobre","about"],["sobre eso","about it"],["su","her"],["su carta","his letter"],["su nombre","her name"],["suficientes","enough"],["suficientes palabras","enough words"],["suficientes palabras diferentes","enough different words"],["tan","as"],["tan duro como pueda","as hard as I can"],["tan pronto como","as soon as"],["tan pronto como pueda","as soon as I can"],["tan pronto como puedas","as soon as you can"],["tarde","afternoon"],["te","you/yourself"],["te sientes","you feel"],["tenga que","I have to"],["tenga que ir","I have to go"],["terminar","to finish"],["termines","you finish"],["tiempo","time"],["tiempo para responder","time to answer"],["toda","whole"],["toda la oración","the whole sentence"],["todavía","yet/still"],["todavía no sé","I still don't know"],["todo","everything"],["todo el día","all day"],["todos","everyone/all"],["tomar","to take"],["tomar demasiado tiempo","to take too much time"],["un","a"],["un poco","a little"],["un poco cansado","a little tired"],["un poco de","a little"],["un poco de español","a little Spanish"],["un poco más","a little more"],["un poco más de tiempo","a little more time"],["un poco más lentamente","a little more slowly"],["una","a"],["una carta","a letter"],["una cosa buena","a good thing"],["una palabra","a word"],["una semana","a week"],["unas","a/some"],["unas pocas palabras","a few words"],["útil","useful"],["va a","is going to"],["va a ocurrir","is going to happen"],["va a ocurrir mañana","going to happen tomorrow"],["vas","you're going"],["vas a ayudarme","you're going to help me"],["vez","time"],["volver","to come back"],["voy","I'm going"],["voy a","I'm going to"],["voy a comenzar","I'm going to start"],["voy a comenzar a hablar","I'm going to start talking"],["voy a intentar","I'm going to try"],["voy a poder","I'm going to be able to"],["voy a practicar","I'm going to practise"],["y","and"]],"available_whitelist_size":416},"components":[["puedo","I can"],["ayudarte","help you"]]},"S0062L04":{"lego":["help you","ayudarte"],"type":"A","available_legos":318,"is_final_lego":false,"overlap_level":"complete","target_phrase_count":5,"practice_phrases":[],"phrase_distribution":{"longer_3_to_5_legos":5},"_metadata":{"lego_id":"S0062L04","seed_context":{"target":"I'm not sure if I can help you at the same time.","known":"No estoy seguro si puedo ayudarte al mismo tiempo."},"whitelist_pairs":[["a","to"],["a hablar más","to talk more"],["a las seis","at six o'clock"],["a su amigo","to his friend"],["adivinar","to guess"],["ahora","now"],["algo","something"],["algo ayer","something yesterday"],["algo en español","something in Spanish"],["alguien","someone"],["alguien más","someone else"],["amigo","friend"],["amigos","friends"],["anoche","last night"],["antes de que","before"],["antes de que tenga que ir","before I have to go"],["aprender","to learn"],["aprender su nombre","to learn his name"],["aprendiendo","learning"],["aprendiendo español","learning Spanish"],["aprendiendo su nombre","learning her name"],["aproximadamente","about/approximately"],["aproximadamente una semana","about a week"],["aquí","here"],["así","like this/thus"],["ayer","yesterday"],["ayudarme","help me"],["ayudarte","help you"],["bien","well"],["bolsa","bag"],["buena","good"],["cansado","tired"],["carta","letter"],["casi","nearly"],["casi preparado","nearly ready"],["comencé","I started"],["comencé a pensar","I started to think"],["comenzando","starting"],["comenzando a sentirme","starting to feel"],["comenzar","to start"],["comenzar a hablar","to start talking"],["como","as"],["cómo","how"],["cómo decir","how to say"],["cómo decir algo","how to say something"],["cómo hablar","how to speak"],["como pueda","as I can"],["cómo responder","how to answer"],["como si","as if"],["como si estuviera","as if I were"],["cómo te sientes","how do you feel"],["comprendes","you understand"],["con","with"],["con alguien más","with someone else"],["con mis amigos","with my friends"],["con todos los demás","with everyone else"],["conmigo","with me"],["contigo","with you"],["cosa","thing"],["cosas","things"],["cosas interesantes","interesting things"],["cuál","what/which"],["cuál es la respuesta","what the answer is"],["cuando","when"],["cuando comprendes","when you understand"],["cuando otras personas están aquí","when other people are here"],["cuánto","how much"],["cuánto tiempo","how long"],["cuánto tiempo llevas","how long have you been"],["cuidadosamente","carefully"],["darte","to give you/give you"],["darte un poco más","give you a little more"],["de","of"],["decir","say/to say"],["decir algo","say something"],["decir eso","say that"],["demasiado","too much"],["demasiado tiempo","too much time"],["descubrir","to find out"],["deseando","looking forward to"],["deseando hablar mejor","looking forward to speaking better"],["despertarme","waking up"],["después de","after"],["después de que termines","after you finish"],["día","day"],["diferentes","different"],["disfruto","I enjoy"],["disfruto hacer","I enjoy doing"],["dormí","I slept"],["duro","hard"],["el","the"],["él","he"],["el mes pasado","last month"],["él quiere","he wants"],["ella","she"],["ella quiere","she wants"],["en","in"],["en cómo responder","about how to answer"],["en español","in Spanish"],["en este momento","at the moment"],["en su bolsa","in her bag"],["encontrar","to meet"],["errores","mistakes"],["es","it's/is"],["es así","it's like this"],["es interesante","it's interesting"],["es una cosa buena","it's a good thing"],["es útil","it's useful"],["es útil comenzar a hablar","it's useful to start talking"],["escribir","to write/write"],["escribir una carta","write a letter"],["eso","that"],["español","Spanish"],["esta","this"],["esta mañana","this morning"],["esta noche","tonight"],["esta tarde","this afternoon"],["estaba","I was"],["estaba comenzando a sentirme mejor","I was starting to feel better"],["están","are"],["están aquí","are here"],["estar","to be"],["estar silencioso","to be quiet"],["estás","are you"],["estás aprendiendo","are you learning"],["este","this"],["estoy","I am"],["estoy comenzando a sentirme cansado","I'm starting to feel tired"],["estoy deseando","I'm looking forward to"],["estoy deseando hablar","I'm looking forward to speaking"],["estoy intentando","I'm trying"],["estoy intentando terminar","I'm trying to finish"],["estoy un poco cansado","I'm a little tired"],["estuviera","I were"],["estuviera casi preparado","I were nearly ready"],["explicar","to explain"],["fácilmente","easily"],["frecuentemente","often/frequently"],["gusta","like"],["hablan","speak"],["hablan español","speak Spanish"],["hablar","to speak"],["hablar conmigo","to speak with me"],["hablar español","speak Spanish"],["hablar más","talk more"],["hablar mejor","to speak better"],["hablas","do you speak"],["hablas español","do you speak Spanish"],["hables","you speak"],["hablo","I speak"],["hacer","to do"],["hacer errores","making mistakes"],["historia","story"],["hoy","today"],["importa","it matters"],["intentando","trying"],["intentando aprender","trying to learn"],["intentando recordar","trying to remember"],["intentando terminar","trying to finish"],["intentar","try"],["intentar explicar","try to explain"],["interesante","interesting"],["interesantes","interesting"],["interrumpir","to interrupt"],["interrumpir la historia","to interrupt the story"],["ir","go"],["la","the"],["la historia","the story"],["la próxima semana","next week"],["la semana pasada","last week"],["las","the"],["leer","to read"],["leer nada","to read anything"],["lentamente","slowly"],["llevas","you have been"],["llevas aprendiendo","have you been learning"],["llevo","I've been"],["llevo aprendiendo","I've been learning"],["lo","the"],["lo más","the most"],["lo más frecuentemente posible","as often as possible"],["lo más rápidamente posible","as quickly as possible"],["lo que","what"],["lo que necesito hacer","what I need to do"],["lo que quería decir","what I wanted to say"],["lo que quiero decir","what I mean"],["lo que va a ocurrir","what's going to happen"],["los demás","the others/else"],["mañana","morning"],["más","more"],["más lentamente","more slowly"],["más pronto","more soon"],["más tarde","later"],["me","to me"],["me gusta sentir","I like feeling"],["me gustaría","I'd like"],["me gustaría poder","I'd like to be able to"],["me importa","I care"],["me preocupo por","I worry about"],["me siento bien","I feel okay"],["mejor","better"],["mejor que anoche","better than last night"],["mejorar","to improve"],["mes","month"],["mis","my"],["momento","moment"],["mostrar","to show"],["mostrarme","to show me"],["muy","very"],["muy bien","very well"],["nada","anything"],["necesito","I need"],["necesito hacer","need to do"],["necesito mejorar","I need to improve"],["necesito saber","I need to know"],["no","not"],["no disfruto","I don't enjoy"],["no disfruto despertarme","I don't enjoy waking up"],["no dormí","I didn't sleep"],["no estaba pensando","I wasn't thinking"],["no estoy intentando terminar","I'm not trying to finish"],["no estoy seguro","I'm not sure"],["no me gusta","I don't like"],["no me gusta tomar","I don't like taking"],["no me gustaría","I wouldn't like"],["no me importa","I don't care"],["no me preocupo por hacer errores","I don't worry about making mistakes"],["no necesito saber","I don't need to know"],["no puedo recordar","I can't remember"],["no queremos","we don't want"],["no queremos interrumpir","we don't want to interrupt"],["no quiere","doesn't want"],["no quiere estar","doesn't want to be"],["no quiere leer","doesn't want to read"],["no quiero","I don't want"],["no quiero parar de hablar","I don't want to stop talking"],["no sé","I don't know"],["no voy a poder","I'm not going to be able to"],["noche","night"],["nombre","name"],["o","or"],["ocurrir","happen"],["oración","sentence"],["otra","another"],["otra vez","again"],["otras","other"],["otras personas","other people"],["palabra","word"],["palabras","words"],["para","so/in order to"],["para ir","to go"],["para poder","so I can"],["para responder","to answer"],["parar","to stop"],["parar de hablar","to stop talking"],["pasada","last/past"],["pasado","last/past"],["pensando","thinking"],["pensando en cómo responder","thinking about how to answer"],["pensar","to think"],["pensar sobre eso","to think about it"],["pero","but"],["personas","people"],["personas que hablan español","people who speak Spanish"],["pienso","I think"],["pienso que","I think that"],["pocas","few"],["poco","little"],["poder","can"],["poder hablar","to be able to speak"],["poder recordar","can remember"],["podrías","could you"],["podrías decir","could you say"],["poner","to put/put"],["poner su carta","put his letter"],["por","about/for"],["por hacer errores","about making mistakes"],["por qué","why"],["por qué estás aprendiendo","why are you learning"],["porque","because"],["porque quiero","because I want"],["posible","possible"],["practicar","practise"],["practicar hablar","practise speaking"],["preguntarte","to ask you"],["preguntarte algo","to ask you something"],["preocupo","I worry"],["preparado","ready"],["preparado para ir","ready to go"],["pronto","soon"],["próxima","next"],["pueda","I can"],["puedas","you can"],["puedo","I can"],["puedo ayudarte","I can help you"],["puedo recordar","I can remember"],["que","that"],["que hablan español","who speak Spanish"],["queremos","we want"],["queremos reunirnos","we want to meet"],["quería","wanted"],["quería decir","wanted to say"],["quería escribir","wanted to write"],["quería poner","wanted to put"],["quería preguntarte","I wanted to ask you"],["queríamos","we wanted"],["queríamos darte","we wanted to give you"],["querías","did you want"],["querías hablar","you wanted to speak"],["querías mostrarme","did you want to show me"],["quiere","want"],["quiere descubrir","wants to find out"],["quiere volver","wants to come back"],["quieres","you want"],["quieres aprender","you want to learn"],["quiero","I want"],["quiero decir","I mean"],["quiero encontrar","I want to meet"],["quiero encontrar personas","I want to meet people"],["quiero hablar","I want to speak"],["quiero intentar","I want to try"],["quiero que hables","I want you to speak"],["quiero que hables español","I want you to speak Spanish"],["rápidamente","quickly"],["recordar","remember"],["recordar cómo decir","remember how to say"],["recordar fácilmente","remember easily"],["recordar toda la oración","remember the whole sentence"],["recordar una palabra","remember a word"],["responder","to answer"],["respuesta","answer"],["reunirnos","to meet"],["saber","to know"],["saber todo","know everything"],["sabes","you know"],["sabes lo que quiero decir","you know what I mean"],["sé","I know"],["sé hacer","I know how to do"],["seguro","sure"],["seis","six"],["semana","week"],["sentir","to feel"],["sentir como si","to feel as if"],["sentirme","feel myself"],["sentirme cansado","feel tired"],["sentirme mejor","feel better"],["si","if"],["si necesito mejorar","if I need to improve"],["si puedo","if I can"],["si puedo ayudarte","if I can help you"],["si puedo recordar","if I can remember"],["si sabes lo que quiero decir","if you know what I mean"],["sientes","feel"],["siento","feel"],["silencioso","quiet"],["sobre","about"],["sobre eso","about it"],["su","her"],["su carta","his letter"],["su nombre","her name"],["suficientes","enough"],["suficientes palabras","enough words"],["suficientes palabras diferentes","enough different words"],["tan","as"],["tan duro como pueda","as hard as I can"],["tan pronto como","as soon as"],["tan pronto como pueda","as soon as I can"],["tan pronto como puedas","as soon as you can"],["tarde","afternoon"],["te","you/yourself"],["te sientes","you feel"],["tenga que","I have to"],["tenga que ir","I have to go"],["terminar","to finish"],["termines","you finish"],["tiempo","time"],["tiempo para responder","time to answer"],["toda","whole"],["toda la oración","the whole sentence"],["todavía","yet/still"],["todavía no sé","I still don't know"],["todo","everything"],["todo el día","all day"],["todos","everyone/all"],["tomar","to take"],["tomar demasiado tiempo","to take too much time"],["un","a"],["un poco","a little"],["un poco cansado","a little tired"],["un poco de","a little"],["un poco de español","a little Spanish"],["un poco más","a little more"],["un poco más de tiempo","a little more time"],["un poco más lentamente","a little more slowly"],["una","a"],["una carta","a letter"],["una cosa buena","a good thing"],["una palabra","a word"],["una semana","a week"],["unas","a/some"],["unas pocas palabras","a few words"],["útil","useful"],["va a","is going to"],["va a ocurrir","is going to happen"],["va a ocurrir mañana","going to happen tomorrow"],["vas","you're going"],["vas a ayudarme","you're going to help me"],["vez","time"],["volver","to come back"],["voy","I'm going"],["voy a","I'm going to"],["voy a comenzar","I'm going to start"],["voy a comenzar a hablar","I'm going to start talking"],["voy a intentar","I'm going to try"],["voy a poder","I'm going to be able to"],["voy a practicar","I'm going to practise"],["y","and"]],"available_whitelist_size":417}},"S0062L05":{"lego":["at the same time","al mismo tiempo"],"type":"M","available_legos":319,"is_final_lego":true,"overlap_level":"none","target_phrase_count":10,"practice_phrases":[],"phrase_distribution":{"short_1_to_2_legos":2,"medium_3_legos":2,"longer_4_legos":2,"longest_5_legos":4},"_metadata":{"lego_id":"S0062L05","seed_context":{"target":"I'm not sure if I can help you at the same time.","known":"No estoy seguro si puedo ayudarte al mismo tiempo."},"whitelist_pairs":[["a","to"],["a hablar más","to talk more"],["a las seis","at six o'clock"],["a su amigo","to his friend"],["adivinar","to guess"],["ahora","now"],["algo","something"],["algo ayer","something yesterday"],["algo en español","something in Spanish"],["alguien","someone"],["alguien más","someone else"],["amigo","friend"],["amigos","friends"],["anoche","last night"],["antes de que","before"],["antes de que tenga que ir","before I have to go"],["aprender","to learn"],["aprender su nombre","to learn his name"],["aprendiendo","learning"],["aprendiendo español","learning Spanish"],["aprendiendo su nombre","learning her name"],["aproximadamente","about/approximately"],["aproximadamente una semana","about a week"],["aquí","here"],["así","like this/thus"],["ayer","yesterday"],["ayudarme","help me"],["ayudarte","help you"],["bien","well"],["bolsa","bag"],["buena","good"],["cansado","tired"],["carta","letter"],["casi","nearly"],["casi preparado","nearly ready"],["comencé","I started"],["comencé a pensar","I started to think"],["comenzando","starting"],["comenzando a sentirme","starting to feel"],["comenzar","to start"],["comenzar a hablar","to start talking"],["como","as"],["cómo","how"],["cómo decir","how to say"],["cómo decir algo","how to say something"],["cómo hablar","how to speak"],["como pueda","as I can"],["cómo responder","how to answer"],["como si","as if"],["como si estuviera","as if I were"],["cómo te sientes","how do you feel"],["comprendes","you understand"],["con","with"],["con alguien más","with someone else"],["con mis amigos","with my friends"],["con todos los demás","with everyone else"],["conmigo","with me"],["contigo","with you"],["cosa","thing"],["cosas","things"],["cosas interesantes","interesting things"],["cuál","what/which"],["cuál es la respuesta","what the answer is"],["cuando","when"],["cuando comprendes","when you understand"],["cuando otras personas están aquí","when other people are here"],["cuánto","how much"],["cuánto tiempo","how long"],["cuánto tiempo llevas","how long have you been"],["cuidadosamente","carefully"],["darte","to give you/give you"],["darte un poco más","give you a little more"],["de","of"],["decir","say/to say"],["decir algo","say something"],["decir eso","say that"],["demasiado","too much"],["demasiado tiempo","too much time"],["descubrir","to find out"],["deseando","looking forward to"],["deseando hablar mejor","looking forward to speaking better"],["despertarme","waking up"],["después de","after"],["después de que termines","after you finish"],["día","day"],["diferentes","different"],["disfruto","I enjoy"],["disfruto hacer","I enjoy doing"],["dormí","I slept"],["duro","hard"],["el","the"],["él","he"],["el mes pasado","last month"],["él quiere","he wants"],["ella","she"],["ella quiere","she wants"],["en","in"],["en cómo responder","about how to answer"],["en español","in Spanish"],["en este momento","at the moment"],["en su bolsa","in her bag"],["encontrar","to meet"],["errores","mistakes"],["es","it's/is"],["es así","it's like this"],["es interesante","it's interesting"],["es una cosa buena","it's a good thing"],["es útil","it's useful"],["es útil comenzar a hablar","it's useful to start talking"],["escribir","to write/write"],["escribir una carta","write a letter"],["eso","that"],["español","Spanish"],["esta","this"],["esta mañana","this morning"],["esta noche","tonight"],["esta tarde","this afternoon"],["estaba","I was"],["estaba comenzando a sentirme mejor","I was starting to feel better"],["están","are"],["están aquí","are here"],["estar","to be"],["estar silencioso","to be quiet"],["estás","are you"],["estás aprendiendo","are you learning"],["este","this"],["estoy","I am"],["estoy comenzando a sentirme cansado","I'm starting to feel tired"],["estoy deseando","I'm looking forward to"],["estoy deseando hablar","I'm looking forward to speaking"],["estoy intentando","I'm trying"],["estoy intentando terminar","I'm trying to finish"],["estoy un poco cansado","I'm a little tired"],["estuviera","I were"],["estuviera casi preparado","I were nearly ready"],["explicar","to explain"],["fácilmente","easily"],["frecuentemente","often/frequently"],["gusta","like"],["hablan","speak"],["hablan español","speak Spanish"],["hablar","to speak"],["hablar conmigo","to speak with me"],["hablar español","speak Spanish"],["hablar más","talk more"],["hablar mejor","to speak better"],["hablas","do you speak"],["hablas español","do you speak Spanish"],["hables","you speak"],["hablo","I speak"],["hacer","to do"],["hacer errores","making mistakes"],["historia","story"],["hoy","today"],["importa","it matters"],["intentando","trying"],["intentando aprender","trying to learn"],["intentando recordar","trying to remember"],["intentando terminar","trying to finish"],["intentar","try"],["intentar explicar","try to explain"],["interesante","interesting"],["interesantes","interesting"],["interrumpir","to interrupt"],["interrumpir la historia","to interrupt the story"],["ir","go"],["la","the"],["la historia","the story"],["la próxima semana","next week"],["la semana pasada","last week"],["las","the"],["leer","to read"],["leer nada","to read anything"],["lentamente","slowly"],["llevas","you have been"],["llevas aprendiendo","have you been learning"],["llevo","I've been"],["llevo aprendiendo","I've been learning"],["lo","the"],["lo más","the most"],["lo más frecuentemente posible","as often as possible"],["lo más rápidamente posible","as quickly as possible"],["lo que","what"],["lo que necesito hacer","what I need to do"],["lo que quería decir","what I wanted to say"],["lo que quiero decir","what I mean"],["lo que va a ocurrir","what's going to happen"],["los demás","the others/else"],["mañana","morning"],["más","more"],["más lentamente","more slowly"],["más pronto","more soon"],["más tarde","later"],["me","to me"],["me gusta sentir","I like feeling"],["me gustaría","I'd like"],["me gustaría poder","I'd like to be able to"],["me importa","I care"],["me preocupo por","I worry about"],["me siento bien","I feel okay"],["mejor","better"],["mejor que anoche","better than last night"],["mejorar","to improve"],["mes","month"],["mis","my"],["momento","moment"],["mostrar","to show"],["mostrarme","to show me"],["muy","very"],["muy bien","very well"],["nada","anything"],["necesito","I need"],["necesito hacer","need to do"],["necesito mejorar","I need to improve"],["necesito saber","I need to know"],["no","not"],["no disfruto","I don't enjoy"],["no disfruto despertarme","I don't enjoy waking up"],["no dormí","I didn't sleep"],["no estaba pensando","I wasn't thinking"],["no estoy intentando terminar","I'm not trying to finish"],["no estoy seguro","I'm not sure"],["no me gusta","I don't like"],["no me gusta tomar","I don't like taking"],["no me gustaría","I wouldn't like"],["no me importa","I don't care"],["no me preocupo por hacer errores","I don't worry about making mistakes"],["no necesito saber","I don't need to know"],["no puedo recordar","I can't remember"],["no queremos","we don't want"],["no queremos interrumpir","we don't want to interrupt"],["no quiere","doesn't want"],["no quiere estar","doesn't want to be"],["no quiere leer","doesn't want to read"],["no quiero","I don't want"],["no quiero parar de hablar","I don't want to stop talking"],["no sé","I don't know"],["no voy a poder","I'm not going to be able to"],["noche","night"],["nombre","name"],["o","or"],["ocurrir","happen"],["oración","sentence"],["otra","another"],["otra vez","again"],["otras","other"],["otras personas","other people"],["palabra","word"],["palabras","words"],["para","so/in order to"],["para ir","to go"],["para poder","so I can"],["para responder","to answer"],["parar","to stop"],["parar de hablar","to stop talking"],["pasada","last/past"],["pasado","last/past"],["pensando","thinking"],["pensando en cómo responder","thinking about how to answer"],["pensar","to think"],["pensar sobre eso","to think about it"],["pero","but"],["personas","people"],["personas que hablan español","people who speak Spanish"],["pienso","I think"],["pienso que","I think that"],["pocas","few"],["poco","little"],["poder","can"],["poder hablar","to be able to speak"],["poder recordar","can remember"],["podrías","could you"],["podrías decir","could you say"],["poner","to put/put"],["poner su carta","put his letter"],["por","about/for"],["por hacer errores","about making mistakes"],["por qué","why"],["por qué estás aprendiendo","why are you learning"],["porque","because"],["porque quiero","because I want"],["posible","possible"],["practicar","practise"],["practicar hablar","practise speaking"],["preguntarte","to ask you"],["preguntarte algo","to ask you something"],["preocupo","I worry"],["preparado","ready"],["preparado para ir","ready to go"],["pronto","soon"],["próxima","next"],["pueda","I can"],["puedas","you can"],["puedo","I can"],["puedo ayudarte","I can help you"],["puedo recordar","I can remember"],["que","that"],["que hablan español","who speak Spanish"],["queremos","we want"],["queremos reunirnos","we want to meet"],["quería","wanted"],["quería decir","wanted to say"],["quería escribir","wanted to write"],["quería poner","wanted to put"],["quería preguntarte","I wanted to ask you"],["queríamos","we wanted"],["queríamos darte","we wanted to give you"],["querías","did you want"],["querías hablar","you wanted to speak"],["querías mostrarme","did you want to show me"],["quiere","want"],["quiere descubrir","wants to find out"],["quiere volver","wants to come back"],["quieres","you want"],["quieres aprender","you want to learn"],["quiero","I want"],["quiero decir","I mean"],["quiero encontrar","I want to meet"],["quiero encontrar personas","I want to meet people"],["quiero hablar","I want to speak"],["quiero intentar","I want to try"],["quiero que hables","I want you to speak"],["quiero que hables español","I want you to speak Spanish"],["rápidamente","quickly"],["recordar","remember"],["recordar cómo decir","remember how to say"],["recordar fácilmente","remember easily"],["recordar toda la oración","remember the whole sentence"],["recordar una palabra","remember a word"],["responder","to answer"],["respuesta","answer"],["reunirnos","to meet"],["saber","to know"],["saber todo","know everything"],["sabes","you know"],["sabes lo que quiero decir","you know what I mean"],["sé","I know"],["sé hacer","I know how to do"],["seguro","sure"],["seis","six"],["semana","week"],["sentir","to feel"],["sentir como si","to feel as if"],["sentirme","feel myself"],["sentirme cansado","feel tired"],["sentirme mejor","feel better"],["si","if"],["si necesito mejorar","if I need to improve"],["si puedo","if I can"],["si puedo ayudarte","if I can help you"],["si puedo recordar","if I can remember"],["si sabes lo que quiero decir","if you know what I mean"],["sientes","feel"],["siento","feel"],["silencioso","quiet"],["sobre","about"],["sobre eso","about it"],["su","her"],["su carta","his letter"],["su nombre","her name"],["suficientes","enough"],["suficientes palabras","enough words"],["suficientes palabras diferentes","enough different words"],["tan","as"],["tan duro como pueda","as hard as I can"],["tan pronto como","as soon as"],["tan pronto como pueda","as soon as I can"],["tan pronto como puedas","as soon as you can"],["tarde","afternoon"],["te","you/yourself"],["te sientes","you feel"],["tenga que","I have to"],["tenga que ir","I have to go"],["terminar","to finish"],["termines","you finish"],["tiempo","time"],["tiempo para responder","time to answer"],["toda","whole"],["toda la oración","the whole sentence"],["todavía","yet/still"],["todavía no sé","I still don't know"],["todo","everything"],["todo el día","all day"],["todos","everyone/all"],["tomar","to take"],["tomar demasiado tiempo","to take too much time"],["un","a"],["un poco","a little"],["un poco cansado","a little tired"],["un poco de","a little"],["un poco de español","a little Spanish"],["un poco más","a little more"],["un poco más de tiempo","a little more time"],["un poco más lentamente","a little more slowly"],["una","a"],["una carta","a letter"],["una cosa buena","a good thing"],["una palabra","a word"],["una semana","a week"],["unas","a/some"],["unas pocas palabras","a few words"],["útil","useful"],["va a","is going to"],["va a ocurrir","is going to happen"],["va a ocurrir mañana","going to happen tomorrow"],["vas","you're going"],["vas a ayudarme","you're going to help me"],["vez","time"],["volver","to come back"],["voy","I'm going"],["voy a","I'm going to"],["voy a comenzar","I'm going to start"],["voy a comenzar a hablar","I'm going to start talking"],["voy a intentar","I'm going to try"],["voy a poder","I'm going to be able to"],["voy a practicar","I'm going to practise"],["y","and"]],"available_whitelist_size":417},"components":[["al","at the"],["mismo","same"],["tiempo","time"]]}},"_instructions":{"task":"Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0","methodology":"Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)","output":"Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0062.json","whitelist_note":"3-category rule applied: A-types, M-types, M-components with literal translations"},"_stats":{"new_legos_in_seed":5,"phrases_to_generate":50,"cumulative_legos_before":315}}
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0062",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "known": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+    "target": "I'm not sure if I can help you at the same time."
+  },
+  "recent_context": {
+    "S0052": {
+      "sentence": [
+        "wanted to write | to write a letter | a letter | to his friend | last week",
+        "quería escribir | escribir una carta | una carta | a su amigo | la semana pasada"
+      ],
+      "new_legos": [
+        [
+          "S0052L01",
+          "wanted to write",
+          "quería escribir"
+        ],
+        [
+          "S0052L02",
+          "to write a letter",
+          "escribir una carta"
+        ],
+        [
+          "S0052L03",
+          "a letter",
+          "una carta"
+        ],
+        [
+          "S0052L04",
+          "to his friend",
+          "a su amigo"
+        ],
+        [
+          "S0052L05",
+          "last week",
+          "la semana pasada"
+        ]
+      ]
+    },
+    "S0053": {
+      "sentence": [
+        "wanted to put | to put his letter | his letter | in her bag",
+        "quería poner | poner su carta | su carta | en su bolsa"
+      ],
+      "new_legos": [
+        [
+          "S0053L01",
+          "wanted to put",
+          "quería poner"
+        ],
+        [
+          "S0053L02",
+          "to put his letter",
+          "poner su carta"
+        ],
+        [
+          "S0053L03",
+          "his letter",
+          "su carta"
+        ],
+        [
+          "S0053L04",
+          "in her bag",
+          "en su bolsa"
+        ]
+      ]
+    },
+    "S0054": {
+      "sentence": [
+        "we wanted to give you | give you a little more | a little more time | time",
+        "queríamos darte | darte un poco más | un poco más de tiempo | tiempo"
+      ],
+      "new_legos": [
+        [
+          "S0054L01",
+          "we wanted to give you",
+          "queríamos darte"
+        ],
+        [
+          "S0054L02",
+          "give you a little more",
+          "darte un poco más"
+        ],
+        [
+          "S0054L03",
+          "a little more time",
+          "un poco más de tiempo"
+        ],
+        [
+          "S0054L04",
+          "time",
+          "tiempo"
+        ]
+      ]
+    },
+    "S0055": {
+      "sentence": [
+        "I don't enjoy | waking up | I don't enjoy waking up | when | I didn't sleep | very well",
+        "no disfruto | despertarme | no disfruto despertarme | cuando | no dormí | muy bien"
+      ],
+      "new_legos": [
+        [
+          "S0055L01",
+          "I don't enjoy",
+          "no disfruto"
+        ],
+        [
+          "S0055L02",
+          "waking up",
+          "despertarme"
+        ],
+        [
+          "S0055L03",
+          "I don't enjoy waking up",
+          "no disfruto despertarme"
+        ],
+        [
+          "S0055L05",
+          "I didn't sleep",
+          "no dormí"
+        ]
+      ]
+    },
+    "S0056": {
+      "sentence": [
+        "so I can | can remember | remember | how to say | a few words",
+        "para poder | poder recordar | recordar | cómo decir | unas pocas palabras"
+      ],
+      "new_legos": [
+        [
+          "S0056L01",
+          "so I can",
+          "para poder"
+        ],
+        [
+          "S0056L02",
+          "can remember",
+          "poder recordar"
+        ],
+        [
+          "S0056L03",
+          "remember",
+          "recordar"
+        ],
+        [
+          "S0056L05",
+          "a few words",
+          "unas pocas palabras"
+        ]
+      ]
+    },
+    "S0057": {
+      "sentence": [
+        "I can't remember | how to say | to remember how to say | what I wanted to say | wanted to say",
+        "no puedo recordar | cómo decir | recordar cómo decir | lo que quería decir | quería decir"
+      ],
+      "new_legos": [
+        [
+          "S0057L01",
+          "I can't remember",
+          "no puedo recordar"
+        ],
+        [
+          "S0057L03",
+          "to remember how to say",
+          "recordar cómo decir"
+        ],
+        [
+          "S0057L04",
+          "what I wanted to say",
+          "lo que quería decir"
+        ],
+        [
+          "S0057L05",
+          "wanted to say",
+          "quería decir"
+        ]
+      ]
+    },
+    "S0058": {
+      "sentence": [
+        "it's interesting | when | when you understand | enough words",
+        "es interesante | cuando | cuando comprendes | suficientes palabras"
+      ],
+      "new_legos": [
+        [
+          "S0058L01",
+          "it's interesting",
+          "es interesante"
+        ],
+        [
+          "S0058L03",
+          "when you understand",
+          "cuando comprendes"
+        ],
+        [
+          "S0058L04",
+          "enough words",
+          "suficientes palabras"
+        ]
+      ]
+    },
+    "S0059": {
+      "sentence": [
+        "I know how to do | what I need to do | need to do | next week",
+        "sé hacer | lo que necesito hacer | necesito hacer | la próxima semana"
+      ],
+      "new_legos": [
+        [
+          "S0059L01",
+          "I know how to do",
+          "sé hacer"
+        ],
+        [
+          "S0059L02",
+          "what I need to do",
+          "lo que necesito hacer"
+        ],
+        [
+          "S0059L03",
+          "need to do",
+          "necesito hacer"
+        ],
+        [
+          "S0059L04",
+          "next week",
+          "la próxima semana"
+        ]
+      ]
+    },
+    "S0060": {
+      "sentence": [
+        "yet/still | I don't know | I still don't know | how to say | enough different words",
+        "todavía | no sé | todavía no sé | cómo decir | suficientes palabras diferentes"
+      ],
+      "new_legos": [
+        [
+          "S0060L01",
+          "yet/still",
+          "todavía"
+        ],
+        [
+          "S0060L02",
+          "I don't know",
+          "no sé"
+        ],
+        [
+          "S0060L03",
+          "I still don't know",
+          "todavía no sé"
+        ],
+        [
+          "S0060L05",
+          "enough different words",
+          "suficientes palabras diferentes"
+        ]
+      ]
+    },
+    "S0061": {
+      "sentence": [
+        "could you say | to say that | again | a little more | more slowly | a little more slowly",
+        "podrías decir | decir eso | otra vez | un poco más | más lentamente | un poco más lentamente"
+      ],
+      "new_legos": [
+        [
+          "S0061L01",
+          "could you say",
+          "podrías decir"
+        ],
+        [
+          "S0061L02",
+          "to say that",
+          "decir eso"
+        ],
+        [
+          "S0061L03",
+          "again",
+          "otra vez"
+        ],
+        [
+          "S0061L04",
+          "a little more",
+          "un poco más"
+        ],
+        [
+          "S0061L05",
+          "more slowly",
+          "más lentamente"
+        ],
+        [
+          "S0061L06",
+          "a little more slowly",
+          "un poco más lentamente"
+        ]
+      ]
+    }
+  },
+  "legos": {
+    "S0062L02": {
+      "lego": [
+        "if I can help you",
+        "si puedo ayudarte"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0062L02",
+        "seed_context": {
+          "known": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [
+        [
+          "si",
+          "if"
+        ],
+        [
+          "puedo",
+          "I can"
+        ],
+        [
+          "ayudarte",
+          "help you"
+        ]
+      ]
+    },
+    "S0062L03": {
+      "lego": [
+        "I can help you",
+        "puedo ayudarte"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0062L02",
+          "known": "if I can help you",
+          "target": "si puedo ayudarte",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0062L03",
+        "seed_context": {
+          "known": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [
+        [
+          "puedo",
+          "I can"
+        ],
+        [
+          "ayudarte",
+          "help you"
+        ]
+      ]
+    },
+    "S0062L04": {
+      "lego": [
+        "help you",
+        "ayudarte"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0062L02",
+          "known": "if I can help you",
+          "target": "si puedo ayudarte",
+          "type": "M"
+        },
+        {
+          "id": "S0062L03",
+          "known": "I can help you",
+          "target": "puedo ayudarte",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0062L04",
+        "seed_context": {
+          "known": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      }
+    },
+    "S0062L05": {
+      "lego": [
+        "at the same time",
+        "al mismo tiempo"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0062L02",
+          "known": "if I can help you",
+          "target": "si puedo ayudarte",
+          "type": "M"
+        },
+        {
+          "id": "S0062L03",
+          "known": "I can help you",
+          "target": "puedo ayudarte",
+          "type": "M"
+        },
+        {
+          "id": "S0062L04",
+          "known": "help you",
+          "target": "ayudarte",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0062L05",
+        "seed_context": {
+          "known": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [
+        [
+          "al",
+          "at the"
+        ],
+        [
+          "mismo",
+          "same"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0062.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_to_generate": 40,
+    "recent_seeds_count": 10
+  }
+}

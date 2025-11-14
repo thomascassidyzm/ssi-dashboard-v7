@@ -2018,54 +2018,97 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
         await preparePhase5Scaffolds(baseCourseDir);
         console.log(`[Web Orchestrator] ✅ Phase 5 scaffolds ready`);
 
-        const phase5MasterPrompt = generatePhase5MasterPrompt(baseCourseCode, { target, known, startSeed, endSeed }, baseCourseDir);
-        await fs.ensureDir(path.join(baseCourseDir, 'prompts'));
-        await fs.writeFile(path.join(baseCourseDir, 'prompts', 'phase_5_master_prompt.md'), phase5MasterPrompt, 'utf8');
-
-        // Calculate expected agents (same logic as generatePhase5MasterPrompt)
         const totalSeeds = endSeed - startSeed + 1;
-        let expectedAgents;
-        if (totalSeeds <= 10) {
-          expectedAgents = Math.ceil(totalSeeds / 2); // 2 seeds per agent for small batches
-        } else {
-          expectedAgents = Math.ceil(totalSeeds / 20); // 20 seeds per agent for larger batches
-        }
 
-        console.log(`[Web Orchestrator] Opening Phase 5 tab and pasting master prompt...`);
-        console.log(`[Web Orchestrator] Master prompt will spawn ${expectedAgents} parallel agents`);
-        await spawnClaudeWebAgent(phase5MasterPrompt, 3, 'safari');
-        console.log(`[Web Orchestrator] ✅ Phase 5 master prompt pasted - HIT ENTER to spawn agents!`);
+        // Check if we should use staged segments (>100 seeds)
+        if (totalSeeds > 100) {
+          const segmentSize = 100;
+          const segmentCount = Math.ceil(totalSeeds / segmentSize);
 
-        job.progress = 70;
-        job.message = 'Phase 5 tab opened - waiting for execution';
+          console.log(`[Web Orchestrator] Staged Segments Mode: Spawning ${segmentCount} orchestrators (100 seeds each)`);
 
-        // Poll for all agent provisional outputs
-        console.log(`[Web Orchestrator] Waiting for all Phase 5 agent outputs...`);
-        const outputsDir = path.join(baseCourseDir, 'phase5_outputs');
+          for (let i = 0; i < segmentCount; i++) {
+            const segmentStart = startSeed + (i * segmentSize);
+            const segmentEnd = Math.min(segmentStart + segmentSize - 1, endSeed);
+            const segmentSeeds = segmentEnd - segmentStart + 1;
 
-        // Wait for all provisional files
-        let agentsComplete = 0;
-        while (agentsComplete < expectedAgents) {
-          await new Promise(resolve => setTimeout(resolve, 10000)); // Check every 10 seconds
+            // Create segment-specific course code
+            const segmentCourseCode = `${target}_for_${known}_s${String(segmentStart).padStart(4, '0')}-${String(segmentEnd).padStart(4, '0')}`;
 
-          if (await fs.pathExists(outputsDir)) {
-            const files = await fs.readdir(outputsDir);
-            agentsComplete = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
+            console.log(`[Web Orchestrator] Segment ${i + 1}/${segmentCount}: S${String(segmentStart).padStart(4, '0')}-S${String(segmentEnd).padStart(4, '0')} (${segmentSeeds} seeds)`);
 
-            // Update job with detailed progress
-            job.message = `Phase 5: ${agentsComplete}/${expectedAgents} agents complete`;
-            job.subProgress = {
-              phase: 'phase_5',
-              completed: agentsComplete,
-              total: expectedAgents,
-              percentage: Math.round((agentsComplete / expectedAgents) * 100)
-            };
+            const phase5MasterPrompt = generatePhase5OrchestratorPrompt(segmentCourseCode, { target, known, startSeed: segmentStart, endSeed: segmentEnd }, baseCourseDir);
 
-            console.log(`[Web Orchestrator] Phase 5 agents complete: ${agentsComplete}/${expectedAgents}`);
+            console.log(`[Web Orchestrator] Opening Segment ${i + 1} tab...`);
+            await spawnClaudeWebAgent(phase5MasterPrompt, 3, 'safari');
+            console.log(`[Web Orchestrator] ✅ Segment ${i + 1} prompt pasted!`);
+
+            // Delay between spawns to allow browser to process each tab
+            if (i < segmentCount - 1) {
+              console.log(`[Web Orchestrator] Waiting 5 seconds before next segment...`);
+              await new Promise(resolve => setTimeout(resolve, 5000));
+            }
           }
-        }
 
-        console.log(`[Web Orchestrator] ✅ All Phase 5 agents complete! Merging Claude branches...`);
+          job.phase = 'phase_5_web_staged';
+          job.message = `Phase 5 staged: ${segmentCount} orchestrators running`;
+          job.status = 'phase_5_staged_running';
+          job.progress = 70;
+
+          console.log(`[Web Orchestrator] ✅ All ${segmentCount} segments spawned!`);
+          console.log(`[Web Orchestrator] Monitor browser tabs for progress`);
+          console.log(`[Web Orchestrator] Note: Staged mode - manual merge required when all tabs complete`);
+
+          // For staged mode, we don't wait - user will manually merge when complete
+          return;
+
+        } else {
+          // Single pass mode for ≤100 seeds
+          console.log(`[Web Orchestrator] Single Pass Mode: One orchestrator for ${totalSeeds} seeds`);
+
+          const phase5MasterPrompt = generatePhase5OrchestratorPrompt(baseCourseCode, { target, known, startSeed, endSeed }, baseCourseDir);
+          await fs.ensureDir(path.join(baseCourseDir, 'prompts'));
+          await fs.writeFile(path.join(baseCourseDir, 'prompts', 'phase_5_master_prompt.md'), phase5MasterPrompt, 'utf8');
+
+          // Calculate expected agents
+          const expectedAgents = Math.ceil(totalSeeds / 10); // 10 seeds per agent
+
+          console.log(`[Web Orchestrator] Opening Phase 5 tab and pasting master prompt...`);
+          console.log(`[Web Orchestrator] Master prompt will spawn ${expectedAgents} parallel agents`);
+          await spawnClaudeWebAgent(phase5MasterPrompt, 3, 'safari');
+          console.log(`[Web Orchestrator] ✅ Phase 5 master prompt pasted - HIT ENTER to spawn agents!`);
+
+          job.progress = 70;
+          job.message = 'Phase 5 tab opened - waiting for execution';
+
+          // Poll for all agent provisional outputs
+          console.log(`[Web Orchestrator] Waiting for all Phase 5 agent outputs...`);
+          const outputsDir = path.join(baseCourseDir, 'phase5_outputs');
+
+          // Wait for all provisional files
+          let agentsComplete = 0;
+          while (agentsComplete < expectedAgents) {
+            await new Promise(resolve => setTimeout(resolve, 10000)); // Check every 10 seconds
+
+            if (await fs.pathExists(outputsDir)) {
+              const files = await fs.readdir(outputsDir);
+              agentsComplete = files.filter(f => f.match(/^agent_\d+_provisional\.json$/)).length;
+
+              // Update job with detailed progress
+              job.message = `Phase 5: ${agentsComplete}/${expectedAgents} agents complete`;
+              job.subProgress = {
+                phase: 'phase_5',
+                completed: agentsComplete,
+                total: expectedAgents,
+                percentage: Math.round((agentsComplete / expectedAgents) * 100)
+              };
+
+              console.log(`[Web Orchestrator] Phase 5 agents complete: ${agentsComplete}/${expectedAgents}`);
+            }
+          }
+
+          console.log(`[Web Orchestrator] ✅ All Phase 5 agents complete! Merging Claude branches...`);
+        }
 
         // Auto-merge all Claude feature branches from Phase 5 agents
         try {

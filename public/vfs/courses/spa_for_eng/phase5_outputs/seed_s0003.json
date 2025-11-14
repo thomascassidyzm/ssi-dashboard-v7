@@ -164,118 +164,6 @@
         ]
       ]
     },
-    "S0003L02": {
-      "lego": [
-        "to speak",
-        "hablar"
-      ],
-      "type": "A",
-      "available_legos": 11,
-      "is_final_lego": false,
-      "overlap_level": "complete",
-      "target_phrase_count": 5,
-      "practice_phrases": [
-        [
-          "how to speak",
-          "cómo hablar",
-          null,
-          null
-        ],
-        [
-          "I want to speak Spanish",
-          "Quiero hablar español",
-          null,
-          null
-        ],
-        [
-          "I'm trying to learn how to speak",
-          "Estoy intentando aprender cómo hablar",
-          null,
-          null
-        ],
-        [
-          "I want to learn how to speak Spanish",
-          "Quiero aprender cómo hablar español",
-          null,
-          null
-        ],
-        [
-          "I'm trying to learn how to speak Spanish",
-          "Estoy intentando aprender cómo hablar español",
-          null,
-          null
-        ]
-      ],
-      "phrase_distribution": {
-        "longer_3_to_5_legos": 5
-      },
-      "_metadata": {
-        "lego_id": "S0003L02",
-        "seed_context": {
-          "target": "how to speak as often as possible",
-          "known": "cómo hablar lo más frecuentemente posible"
-        },
-        "whitelist_pairs": [
-          [
-            "ahora",
-            "now"
-          ],
-          [
-            "aprender",
-            "to learn"
-          ],
-          [
-            "cómo",
-            "how"
-          ],
-          [
-            "cómo hablar",
-            "how to speak"
-          ],
-          [
-            "contigo",
-            "with you"
-          ],
-          [
-            "español",
-            "Spanish"
-          ],
-          [
-            "estoy",
-            "I'm"
-          ],
-          [
-            "estoy intentando",
-            "I'm trying"
-          ],
-          [
-            "hablar",
-            "to speak"
-          ],
-          [
-            "hablar español",
-            "speak Spanish"
-          ],
-          [
-            "intentando",
-            "trying"
-          ],
-          [
-            "intentando aprender",
-            "trying to learn"
-          ],
-          [
-            "quiero",
-            "I want"
-          ],
-          [
-            "quiero hablar",
-            "I want to speak"
-          ]
-        ],
-        "available_whitelist_size": 14
-      }
-    },
     "S0003L03": {
       "lego": [
         "as often as possible",
@@ -285,7 +173,7 @@
       "available_legos": 12,
       "is_final_lego": true,
       "overlap_level": "none",
-      "target_phrase_count": 10,
+      "target_phrase_count": 8,
       "practice_phrases": [
         [
           "as often as possible",
@@ -326,18 +214,6 @@
         [
           "I want to learn how to speak Spanish as often as possible",
           "Quiero aprender cómo hablar español lo más frecuentemente posible",
-          null,
-          null
-        ],
-        [
-          "how to speak as often as possible",
-          "cómo hablar lo más frecuentemente posible",
-          null,
-          null
-        ],
-        [
-          "how to speak as often as possible",
-          "cómo hablar lo más frecuentemente posible",
           null,
           null
         ],

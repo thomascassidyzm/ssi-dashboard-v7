@@ -391,69 +391,6 @@
           ]
         ]
       }
-    },
-    "S0090L05": {
-      "lego": [
-        "more slowly",
-        "más lentamente"
-      ],
-      "type": "M",
-      "available_legos": 431,
-      "is_final_lego": true,
-      "overlap_level": "complete",
-      "target_phrase_count": 5,
-      "practice_phrases": [
-        [
-          "More slowly, please",
-          "Más lentamente, por favor",
-          null,
-          null
-        ],
-        [
-          "Speak more slowly",
-          "Habla más lentamente",
-          null,
-          null
-        ],
-        [
-          "I need to speak more slowly",
-          "Necesito hablar más lentamente",
-          null,
-          null
-        ],
-        [
-          "You can speak more slowly, that would be great",
-          "Puedes hablar más lentamente, eso sería excelente",
-          null,
-          null
-        ],
-        [
-          "If you can speak more slowly, that would be great",
-          "Si puedes hablar más lentamente, eso sería excelente",
-          null,
-          null
-        ]
-      ],
-      "phrase_distribution": {
-        "longer_3_to_5_legos": 5
-      },
-      "_metadata": {
-        "lego_id": "S0090L05",
-        "seed_context": {
-          "target": "If you can speak more slowly that would be great.",
-          "known": "Si puedes hablar más lentamente, eso sería excelente."
-        },
-        "components": [
-          [
-            "más",
-            "more"
-          ],
-          [
-            "lentamente",
-            "slowly"
-          ]
-        ]
-      }
     }
   },
   "_instructions": {
